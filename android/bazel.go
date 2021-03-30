@@ -124,53 +124,64 @@ var (
 	// Configure modules in these directories to enable bp2build_available: true or false by default.
 	bp2buildDefaultConfig = Bp2BuildConfig{
 		"bionic":                Bp2BuildDefaultTrueRecursively,
+		"external/gwp_asan":     Bp2BuildDefaultTrueRecursively,
 		"system/core/libcutils": Bp2BuildDefaultTrueRecursively,
 		"system/logging/liblog": Bp2BuildDefaultTrueRecursively,
 	}
 
 	// Per-module denylist to always opt modules out.
-	bp2buildModuleDoNotConvert = map[string]bool{
-		"libBionicBenchmarksUtils":      true,
-		"libbionic_spawn_benchmark":     true,
-		"libc_jemalloc_wrapper":         true,
-		"libc_bootstrap":                true,
-		"libc_init_static":              true,
-		"libc_init_dynamic":             true,
-		"libc_tzcode":                   true,
-		"libc_freebsd":                  true,
-		"libc_freebsd_large_stack":      true,
-		"libc_netbsd":                   true,
-		"libc_openbsd_ndk":              true,
-		"libc_openbsd_large_stack":      true,
-		"libc_openbsd":                  true,
-		"libc_gdtoa":                    true,
-		"libc_fortify":                  true,
-		"libc_bionic":                   true,
-		"libc_bionic_ndk":               true,
-		"libc_bionic_systrace":          true,
-		"libc_pthread":                  true,
-		"libc_syscalls":                 true,
-		"libc_aeabi":                    true,
-		"libc_ndk":                      true,
-		"libc_nopthread":                true,
-		"libc_common":                   true,
-		"libc_static_dispatch":          true,
-		"libc_dynamic_dispatch":         true,
-		"libc_common_static":            true,
-		"libc_common_shared":            true,
-		"libc_unwind_static":            true,
-		"libc_nomalloc":                 true,
-		"libasync_safe":                 true,
-		"libc_malloc_debug_backtrace":   true,
-		"libsystemproperties":           true,
-		"libdl_static":                  true,
-		"liblinker_main":                true,
-		"liblinker_malloc":              true,
-		"liblinker_debuggerd_stub":      true,
-		"libbionic_tests_headers_posix": true,
-		"libc_dns":                      true,
+
+	bp2buildModuleDoNotConvertList = []string{
+		// "libBionicBenchmarksUtils",
+		"libbionic_spawn_benchmark", // cc_library_static, depends on //system/libbase
+		"libc_jemalloc_wrapper",     // cc_library_static, depends on //external/jemalloc_new
+		// "libc_bootstrap",
+		// "libc_init_static",
+		// "libc_init_dynamic",
+		// "libc_tzcode",
+		// "libc_freebsd",
+		// "libc_freebsd_large_stack",
+		// "libc_netbsd",
+		// "libc_openbsd_ndk",
+		// "libc_openbsd_large_stack",
+		// "libc_openbsd",
+		// "libc_gdtoa",
+		// "libc_fortify",
+		// "libc_bionic",
+		"libc_bionic_ndk", // cc_library_static, depends on //bionic/libc/system_properties
+		// "libc_bionic_systrace",
+		// "libc_pthread",
+		// "libc_syscalls",
+		// "libc_aeabi",
+		"libc_ndk",       // cc_library_static, depends on //bionic/libm:libm
+		"libc_nopthread", // cc_library_static, depends on //external/arm-optimized-routines
+		"libc_common",    // cc_library_static, depends on //bionic/libc:libc_nopthread
+		// "libc_static_dispatch",
+		// "libc_dynamic_dispatch",
+		"libc_common_static", // cc_library_static, depends on //bionic/libc:libc_common
+		"libc_common_shared", // cc_library_static, depends on //bionic/libc:libc_common
+		// "libc_unwind_static",
+		"libc_nomalloc", // cc_library_static, depends on //bionic/libc:libc_common
+		// "libasync_safe",
+		"libc_malloc_debug_backtrace", // cc_library_static, depends on //system/libbase
+		"libsystemproperties",         // cc_library_static, depends on //system/core/property_service/libpropertyinfoparser
+		// "libdl_static",
+		"liblinker_main",           // cc_library_static, depends on //system/libbase
+		"liblinker_malloc",         // cc_library_static, depends on //system/logging/liblog:liblog
+		"liblinker_debuggerd_stub", // cc_library_static, depends on //system/libbase
+		// "libbionic_tests_headers_posix",
+		// "libc_dns",
 	}
+
+	// Used for quicker lookups
+	bp2buildModuleDoNotConvert = map[string]bool{}
 )
+
+func init() {
+	for _, moduleName := range bp2buildModuleDoNotConvertList {
+		bp2buildModuleDoNotConvert[moduleName] = true
+	}
+}
 
 // ConvertWithBp2build returns whether the given BazelModuleBase should be converted with bp2build.
 func (b *BazelModuleBase) ConvertWithBp2build(ctx BazelConversionPathContext) bool {
