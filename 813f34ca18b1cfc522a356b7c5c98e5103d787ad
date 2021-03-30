@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a187faa_ac19b53d",
+        "filename": "android/mutator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-30T19:18:35Z",
+      "side": 1,
+      "message": "It _should_ be safe as we\u0027re not using the non-bazel-ified module after conversion, but change it to add a method instead so we don\u0027t inherit from the base module.",
+      "parentUuid": "328b933a_c8172431",
+      "range": {
+        "startLine": 543,
+        "startChar": 1,
+        "endLine": 543,
+        "endChar": 43
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b2ffcfa_d9a06214",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-03-29T11:00:45Z",
       "side": 1,
       "message": "Missing a word?",
+      "range": {
+        "startLine": 449,
+        "startChar": 3,
+        "endLine": 449,
+        "endChar": 48
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d16e7b79_4c778161",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-30T19:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b2ffcfa_d9a06214",
       "range": {
         "startLine": 449,
         "startChar": 3,
@@ -94,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8446402_c44333eb",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-30T19:18:35Z",
+      "side": 1,
+      "message": "Done. On reflection, I must\u0027ve been a bit tired when I sent this out...",
+      "parentUuid": "d0db0515_beadea7a",
+      "range": {
+        "startLine": 466,
+        "startChar": 53,
+        "endLine": 466,
+        "endChar": 54
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e46f0add_27fb5a7d",
@@ -107,6 +179,30 @@
       "writtenOn": "2021-03-29T09:41:59Z",
       "side": 1,
       "message": "Do I understand correctly that this is needed becuse moduleBase.variableProperties is an interface{}? This code assumes that whatever that field is set to has a Product_variables field, but then why not just declare that field to be of the right type instead of interface{} ?",
+      "range": {
+        "startLine": 477,
+        "startChar": 19,
+        "endLine": 477,
+        "endChar": 105
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecdab9ff_4cf00cbd",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-30T19:18:35Z",
+      "side": 1,
+      "message": "The context for why it is an interface is\n\n```\nFor each module, take the default product variable properties and\ncreate a new type that contains only the properties that exist in\nthe current module.  This will provide better errors when attemping\nto set product variable properties that will never get used for\na module, and fixes errors when a module attempts to use a product\nvariable that also contains properties that don\u0027t apply to the\ncurrent module.\n```\n\n\nfrom https://r.android.com/1128243 -- arguably that should be documented a bit more thoroughly in the code itself",
+      "parentUuid": "e46f0add_27fb5a7d",
       "range": {
         "startLine": 477,
         "startChar": 19,
@@ -140,6 +236,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b84a1db_958603f5",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-30T19:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "684208c0_4487f2a0",
+      "range": {
+        "startLine": 484,
+        "startChar": 2,
+        "endLine": 484,
+        "endChar": 21
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ab1a94d_f40332de",
@@ -163,6 +283,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e18ce6b8_87a68891",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-30T19:18:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ab1a94d_f40332de",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 13
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "082ef405_d3663906",
@@ -176,6 +320,30 @@
       "writtenOn": "2021-03-29T11:00:45Z",
       "side": 1,
       "message": "Why is this needed?",
+      "range": {
+        "startLine": 190,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 41
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fa83812_f8f8a16f",
+        "filename": "cc/object.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-30T19:18:35Z",
+      "side": 1,
+      "message": "was going to check if there were any unused productVariableProps, but instead I filed a bug about unused properties and forgot to remove this line. Deleted.",
+      "parentUuid": "082ef405_d3663906",
       "range": {
         "startLine": 190,
         "startChar": 2,
