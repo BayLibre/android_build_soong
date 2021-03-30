@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6610e7b_4bd2d1ad",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5069,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-30T18:37:55Z",
+      "side": 1,
+      "message": "Ouch! Yes. I\u0027ll fix that in a followup given that I didn\u0027t add it in this commit.",
+      "parentUuid": "57cf182c_be753541",
+      "range": {
+        "startLine": 5069,
+        "startChar": 120,
+        "endLine": 5069,
+        "endChar": 134
+      },
+      "revId": "856cd33d8e237dbfb2e92f0ef45842a9b25818ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "215774b7_cb92f22d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-03-30T17:50:57Z",
       "side": 1,
       "message": "Can this be simplified using TestingModule.OutputFiles()?",
+      "range": {
+        "startLine": 2553,
+        "startChar": 2,
+        "endLine": 2554,
+        "endChar": 52
+      },
+      "revId": "856cd33d8e237dbfb2e92f0ef45842a9b25818ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9096b3cc_d13efb1e",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2554,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-30T18:37:55Z",
+      "side": 1,
+      "message": "Yes it can. I\u0027ll do that as a follow up.",
+      "parentUuid": "215774b7_cb92f22d",
       "range": {
         "startLine": 2553,
         "startChar": 2,
