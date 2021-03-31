@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "405d45c8_49dc4a66",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-03-31T08:08:14Z",
+      "side": 1,
+      "message": "I also think it\u0027s better, but I just tried a simpler implementation. I\u0027ll do that.",
+      "parentUuid": "9b737490_a2c230fd",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "316876d396b82c0f3a897d8c589ca0353b059f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6abe2099_ed8a9eba",
         "filename": "filesystem/logical_partition.go",
         "patchSetId": 1
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "...if doing it in lpmake is infeasible",
       "parentUuid": "6abe2099_ed8a9eba",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 107
+      },
+      "revId": "316876d396b82c0f3a897d8c589ca0353b059f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a06ebe19_b5171985",
+        "filename": "filesystem/logical_partition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-03-31T08:08:14Z",
+      "side": 1,
+      "message": "Can we? We can\u0027t read the input file directly in Soong, right?",
+      "parentUuid": "7a679491_13ba0dea",
       "range": {
         "startLine": 183,
         "startChar": 2,
