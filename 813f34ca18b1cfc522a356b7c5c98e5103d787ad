@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7df9187c_d29d86d9",
+        "filename": "android/mutator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-03-31T07:05:08Z",
+      "side": 1,
+      "message": "I traced through the code a bit and I could find neither the code nor documentation about how this works.\n\nI suppose what you are saying is that variableProperties somehow ends up in the attributes of Bazel targets produced by bp2build, but how does that work?\n\nMy uncertain understanding is that the attributes in the BUILD file are those that are returned in from bp2build.getBuildProperties(). That calls ExtractModuleProperties, then Module.GetProperties(), but that is only m.registerProps, which sounds like something that is set in the module *type* definition and not for each individual module.\n\nIs the data from variableProperties plumbed to registerProps in android.initProductVariableModule(variable.go:618)?\n\n(I\u0027ll approve since it looks like this is a flaw in my understanding and not in the code itself)",
+      "parentUuid": "0a187faa_ac19b53d",
+      "range": {
+        "startLine": 543,
+        "startChar": 1,
+        "endLine": 543,
+        "endChar": 43
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b2ffcfa_d9a06214",
         "filename": "android/variable.go",
         "patchSetId": 2
