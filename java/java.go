@@ -1147,7 +1147,7 @@ func (j *Import) TargetSdkVersion() android.SdkSpec {
 }
 
 func (j *Import) MinSdkVersionString() string {
-	return j.MinSdkVersion().Version.String()
+	return j.MinSdkVersion().ApiLevel.String()
 }
 
 func (j *Import) Prebuilt() *android.Prebuilt {
