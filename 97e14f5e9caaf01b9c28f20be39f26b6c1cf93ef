@@ -39,6 +39,30 @@
       },
       "revId": "97e14f5e9caaf01b9c28f20be39f26b6c1cf93ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed777d60_efe99aa0",
+        "filename": "android/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-31T14:59:15Z",
+      "side": 1,
+      "message": "AFAIK there are currently no usages of this outside this package. It was added initially in order to let people roll their own just in case it was needed but it could probably be renamed to stop exporting it.",
+      "parentUuid": "e036b2b5_f90b8b74",
+      "range": {
+        "startLine": 458,
+        "startChar": 1,
+        "endLine": 458,
+        "endChar": 8
+      },
+      "revId": "97e14f5e9caaf01b9c28f20be39f26b6c1cf93ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
