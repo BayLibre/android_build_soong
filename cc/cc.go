@@ -3255,6 +3255,7 @@ func (c *Module) ShouldSupportSdkVersion(ctx android.BaseModuleContext,
 type Defaults struct {
 	android.ModuleBase
 	android.DefaultsModuleBase
+	android.BazelModuleBase
 	android.ApexModuleBase
 }
 
@@ -3301,6 +3302,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&RustBindgenClangProperties{},
 	)
 
+	android.InitBazelModule(module)
 	android.InitDefaultsModule(module)
 
 	return module

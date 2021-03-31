@@ -3371,6 +3371,9 @@ func TestDefaults(t *testing.T) {
 			shared: {
 				srcs: ["baz.c"],
 			},
+			bazel_module: {
+				bp2build_available: true,
+			},
 		}
 
 		cc_library_static {
