@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3076944c_c2e23b64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2021-03-31T03:33:39Z",
+      "side": 1,
+      "message": "I think reverting these CLs might fix the build failure.\n\nIn particular, the older CLs in the platform/prebuilts/ndk repository have successfully built already, so they don\u0027t need to be reverted.\n",
+      "revId": "74bdc288173adfbf6b9185f26c376428a8a1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
