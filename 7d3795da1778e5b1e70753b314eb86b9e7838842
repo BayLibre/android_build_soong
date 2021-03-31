@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07147e7f_e39b9599",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-03-31T19:40:55Z",
+      "side": 1,
+      "message": "If this is for super.img (and not super_empty.img), doing it in lpmake does seem better. It should be able to calculate it since the partition images are passed in directly.",
+      "revId": "7d3795da1778e5b1e70753b314eb86b9e7838842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
