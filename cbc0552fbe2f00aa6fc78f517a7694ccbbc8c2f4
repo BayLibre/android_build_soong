@@ -22,6 +22,30 @@
       },
       "revId": "cbc0552fbe2f00aa6fc78f517a7694ccbbc8c2f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc8269b4_65bda071",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-03-31T18:16:18Z",
+      "side": 1,
+      "message": "Indeed, but there is soong logic for what to do with include directories if none are specified. For non-mixed build logic, there\u0027s this:\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/genrule/genrule.go;l\u003d253;drc\u003d0702791a99d076f79f2971ff96cf0e4eb5308319\n\nSo we\u0027re effectively emulating that here.",
+      "parentUuid": "f9b10522_a06c57fc",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 58
+      },
+      "revId": "cbc0552fbe2f00aa6fc78f517a7694ccbbc8c2f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
