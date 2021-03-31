@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "897e322e_71bd26b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-31T21:45:29Z",
+      "side": 1,
+      "message": "Lost the +2 after resolving merge conflict.",
+      "revId": "bb7f1ac7940ec14a72fbf39581aaabc124d9bd1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
