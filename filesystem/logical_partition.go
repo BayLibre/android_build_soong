@@ -17,6 +17,7 @@ package filesystem
 import (
 	"fmt"
 	"strconv"
+	"strings"
 
 	"github.com/google/blueprint/proptools"
 
@@ -40,7 +41,8 @@ type logicalPartitionProperties struct {
 	// Set the name of the output. Defaults to <module_name>.img.
 	Stem *string
 
-	// Total size of the logical partition
+	// Total size of the logical partition. If set to "auto", total size is automatically
+	// calculated as: the sum of partition sizes plus 1MB per one partition for metadata.
 	Size *string
 
 	// List of partitions for default group. Default group has no size limit and automatically
@@ -114,15 +116,6 @@ func (l *logicalPartition) GenerateAndroidBuildActions(ctx android.ModuleContext
 
 	cmd := builder.Command().BuiltTool("lpmake")
 
-	size := proptools.String(l.properties.Size)
-	if size == "" {
-		ctx.PropertyErrorf("size", "must be set")
-	}
-	if _, err := strconv.Atoi(size); err != nil {
-		ctx.PropertyErrorf("size", "must be a number")
-	}
-	cmd.FlagWithArg("--device-size=", size)
-
 	// TODO(jiyong): consider supporting A/B devices. Then we need to adjust num of slots.
 	cmd.FlagWithArg("--metadata-slots=", "2")
 	cmd.FlagWithArg("--metadata-size=", "65536")
@@ -133,6 +126,7 @@ func (l *logicalPartition) GenerateAndroidBuildActions(ctx android.ModuleContext
 
 	groupNames := make(map[string]bool)
 	partitionNames := make(map[string]bool)
+	var partitionSizes []string
 
 	addPartitionsToGroup := func(partitions []partitionProperties, gName string) {
 		for _, part := range partitions {
@@ -149,6 +143,8 @@ func (l *logicalPartition) GenerateAndroidBuildActions(ctx android.ModuleContext
 			pSize := fmt.Sprintf("$(cat %s)", sparseImageSizes[pName])
 			cmd.FlagWithArg("--partition=", fmt.Sprintf("%s:readonly:%s:%s", pName, pSize, gName))
 			cmd.FlagWithInput("--image="+pName+"=", sparseImages[pName])
+
+			partitionSizes = append(partitionSizes, pSize)
 		}
 	}
 
@@ -177,6 +173,18 @@ func (l *logicalPartition) GenerateAndroidBuildActions(ctx android.ModuleContext
 
 		addPartitionsToGroup(group.Partitions, gName)
 	}
+
+	size := proptools.String(l.properties.Size)
+	if size == "" {
+		ctx.PropertyErrorf("size", "must be set")
+	} else if size == "auto" {
+		// device size minimum is "sum(partitionSizes) + 1MB * len(partitions)"
+		// use bash arithmetic $((expr)) to calculate.
+		size = "$((" + strings.Join(partitionSizes, "+") + "+" + strconv.Itoa(len(partitionSizes)*1048576) + "))"
+	} else if _, err := strconv.Atoi(size); err != nil {
+		ctx.PropertyErrorf("size", `must be a number or "auto"`)
+	}
+	cmd.FlagWithArg("--device-size=", size)
 
 	l.output = android.PathForModuleOut(ctx, l.installFileName()).OutputPath
 	cmd.FlagWithOutput("--output=", l.output)
