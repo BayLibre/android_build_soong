@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2303ecc_d2ba99d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2021-03-31T23:03:00Z",
+      "side": 1,
+      "message": "This change reapplies https://android-review.googlesource.com/c/platform/build/soong/+/1554719 (Icc79844f5e70f0eaa97ea758449c30fbddd030d2).\n",
+      "revId": "4ccd490ae5c8a987af2a573ae959cc5e13190157",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
