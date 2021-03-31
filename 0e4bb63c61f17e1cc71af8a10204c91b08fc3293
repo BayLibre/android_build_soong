@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "176a88f5_e50bd9e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-31T17:51:04Z",
+      "side": 1,
+      "message": "PTAL. I have diverged it from the existing boot_image already as I am working on this now.",
+      "revId": "0e4bb63c61f17e1cc71af8a10204c91b08fc3293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

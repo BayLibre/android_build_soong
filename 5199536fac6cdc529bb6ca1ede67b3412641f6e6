@@ -22,6 +22,30 @@
       },
       "revId": "5199536fac6cdc529bb6ca1ede67b3412641f6e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "248f2150_a541340f",
+        "filename": "java/boot_image.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-31T17:51:04Z",
+      "side": 1,
+      "message": "I need it soon. I already have a boot_image in frameworks/base/boot/Android.bp which I want to replace with this.\n\nAs to how it will change I am not 100% sure but it will need to be able to add dependencies on all the modules in the BCP some of which are in APEXes, some of which are not. That will need a special mutator that runs after apex variants are created and I will need some special properties that allow me to specify both the apex AND the module, e.g. something like this:\ncontents: [\n  { apex: \"com.android.i18n\", module: \"core-icu4j\" },\n  ....\n],",
+      "parentUuid": "82c5be71_bf67a694",
+      "range": {
+        "startLine": 55,
+        "startChar": 77,
+        "endLine": 56,
+        "endChar": 14
+      },
+      "revId": "5199536fac6cdc529bb6ca1ede67b3412641f6e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
