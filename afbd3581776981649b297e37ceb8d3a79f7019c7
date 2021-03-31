@@ -16,6 +16,29 @@
       "message": "As you requested.",
       "revId": "afbd3581776981649b297e37ceb8d3a79f7019c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7301d0b_59c0f01f",
+        "filename": "android/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-31T14:00:47Z",
+      "side": 1,
+      "message": "Drop.",
+      "range": {
+        "startLine": 469,
+        "startChar": 27,
+        "endLine": 469,
+        "endChar": 41
+      },
+      "revId": "afbd3581776981649b297e37ceb8d3a79f7019c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
