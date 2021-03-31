@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f311218b_d42c8c69",
+        "filename": "android/mutator.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-31T12:41:17Z",
+      "side": 1,
+      "message": "This is the point at which we\u0027re creating the translated module that will be converted to BUILD syntax and we are setting the properties within it.\n\nTo do so, we were calling the Soong implementation of CreateModule in top down mutator (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/mutator.go;l\u003d590-609;drc\u003d12b4c2706de31a61ae1c935fd4865aec822d1595), which appends the matching properties from the Soong module\u0027s variableProperties (and commonProperties) into the newly created BazelModule (only for properties with a matching name/type).\n\nTo remove this, I added createModuleWithoutInheritance, which effectively just calls the blueprint implementation of CreateModule without including any Soong-specific inheritance of commonProperties or variableProperties.",
+      "parentUuid": "7df9187c_d29d86d9",
+      "range": {
+        "startLine": 543,
+        "startChar": 1,
+        "endLine": 543,
+        "endChar": 43
+      },
+      "revId": "813f34ca18b1cfc522a356b7c5c98e5103d787ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b2ffcfa_d9a06214",
