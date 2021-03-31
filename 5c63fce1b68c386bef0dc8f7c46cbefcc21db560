@@ -51,6 +51,24 @@
       "parentUuid": "93e8425c_88d7a3a2",
       "revId": "5c63fce1b68c386bef0dc8f7c46cbefcc21db560",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9df52b07_9e474810",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-31T23:05:50Z",
+      "side": 1,
+      "message": "It doesn\u0027t particularly make it easier for me. I can put this change to one side on my local repo and carry on with everything else so if you don\u0027t need it urgently then it can stay unsubmitted.",
+      "parentUuid": "2759330c_6a2b4fca",
+      "revId": "5c63fce1b68c386bef0dc8f7c46cbefcc21db560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

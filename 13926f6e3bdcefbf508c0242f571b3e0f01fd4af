@@ -45,6 +45,54 @@
       },
       "revId": "13926f6e3bdcefbf508c0242f571b3e0f01fd4af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49035776_a11c5807",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-31T23:05:50Z",
+      "side": 1,
+      "message": "I was referring to the things like ag/13776553. The override_apex is only an issue for boot jars because boot jars aren\u0027t handled as dependencies. If they were handled as dependencies then the install path wouldn\u0027t have to be assumed to be the same as the config and so you wouldn\u0027t need to change the config to use com.google.android.com.",
+      "parentUuid": "26994ad1_36cfbd6a",
+      "range": {
+        "startLine": 131,
+        "startChar": 37,
+        "endLine": 131,
+        "endChar": 69
+      },
+      "revId": "13926f6e3bdcefbf508c0242f571b3e0f01fd4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3ee8e25_f84a0aff",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-03-31T23:05:50Z",
+      "side": 1,
+      "message": "No, I did mean that one. That is the change that will handle dependencies properly for boot jars and so avoid the issue.",
+      "parentUuid": "7652d604_d8e226aa",
+      "range": {
+        "startLine": 131,
+        "startChar": 11,
+        "endLine": 131,
+        "endChar": 22
+      },
+      "revId": "13926f6e3bdcefbf508c0242f571b3e0f01fd4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
