@@ -117,6 +117,30 @@
       },
       "revId": "316876d396b82c0f3a897d8c589ca0353b059f84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "198a4d0a_981647d2",
+        "filename": "filesystem/logical_partition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-31T08:15:13Z",
+      "side": 1,
+      "message": "Ah, I misread the code. I thought partitionSizes are list of sizes, but they are commands. We can\u0027t.",
+      "parentUuid": "a06ebe19_b5171985",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 107
+      },
+      "revId": "316876d396b82c0f3a897d8c589ca0353b059f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
