@@ -45,6 +45,30 @@
       },
       "revId": "316876d396b82c0f3a897d8c589ca0353b059f84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a679491_13ba0dea",
+        "filename": "filesystem/logical_partition.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-03-31T07:40:14Z",
+      "side": 1,
+      "message": "...if doing it in lpmake is infeasible",
+      "parentUuid": "6abe2099_ed8a9eba",
+      "range": {
+        "startLine": 183,
+        "startChar": 2,
+        "endLine": 183,
+        "endChar": 107
+      },
+      "revId": "316876d396b82c0f3a897d8c589ca0353b059f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
