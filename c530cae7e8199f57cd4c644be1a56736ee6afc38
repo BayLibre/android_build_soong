@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e55f045_ddb1a5c2",
+        "filename": "android/bazel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-03-31T14:59:28Z",
+      "side": 1,
+      "message": "FYI Liz - android/bazel.go changes are the new thing here. \n\nThe other changes are just a patch of https://android-review.googlesource.com/c/platform/build/soong/+/1652048 from Jin, which is unsubmitted",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 31
+      },
+      "revId": "c530cae7e8199f57cd4c644be1a56736ee6afc38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
