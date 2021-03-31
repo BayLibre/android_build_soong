@@ -93,6 +93,54 @@
       },
       "revId": "13926f6e3bdcefbf508c0242f571b3e0f01fd4af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd1285a_2ba03e0f",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-31T23:50:44Z",
+      "side": 1,
+      "message": "If you say so. I\u0027ll add my repro case to that ticket then.",
+      "parentUuid": "b3ee8e25_f84a0aff",
+      "range": {
+        "startLine": 131,
+        "startChar": 11,
+        "endLine": 131,
+        "endChar": 22
+      },
+      "revId": "13926f6e3bdcefbf508c0242f571b3e0f01fd4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "572ae317_7f058b24",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-31T23:50:44Z",
+      "side": 1,
+      "message": "Right. I consider ag/13776553 a workaround for b/177892522, not b/180325915.",
+      "parentUuid": "49035776_a11c5807",
+      "range": {
+        "startLine": 131,
+        "startChar": 37,
+        "endLine": 131,
+        "endChar": 69
+      },
+      "revId": "13926f6e3bdcefbf508c0242f571b3e0f01fd4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
