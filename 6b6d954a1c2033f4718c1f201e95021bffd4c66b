@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a854f1_ee6b2776",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-03-31T12:01:17Z",
+      "side": 1,
+      "message": "I think there is an \"if\" missing here. Feel free to do as a follow-up if you don\u0027t want to rerun presumbit.",
+      "range": {
+        "startLine": 670,
+        "startChar": 3,
+        "endLine": 670,
+        "endChar": 6
+      },
+      "revId": "6b6d954a1c2033f4718c1f201e95021bffd4c66b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
