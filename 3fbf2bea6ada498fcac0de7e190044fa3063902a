@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce2adb1d_c2cdb557",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-03-31T02:32:37Z",
+      "side": 1,
+      "message": "This CL broke aosp-master-bazel on nazel-clean. Confirmed with a local build. Can you take a look?\nhttps://android-build.googleplex.com/builds/submitted/7246683/nazel-clean/latest/view/logs/build_error.log\n\n(Local build log)\n\n```\nINFO: Analyzed target //:aosp_arm64-userdebug (6 packages loaded, 15 targets configured).\nINFO: Found 1 target...\n\n[0 / 92] [Prepa] BazelWorkspaceStatusAction stable-status.txt\nWARNING: Use of implicit local fallback will go away soon, please set a fallback strategy instead. See --legacy_local_fallback optio\nn.\n[4,053 / 5,532] [Prepa] //art/runtime:libart clang++ arch/arm/registers_arm.cc [linux_glibc]; 6s ... (242 actions, 35 running)\n[4,523 / 5,532] [Prepa] //art/runtime:libart clang++ verifier/reg_type.cc [linux_glibc]; 16s ... (107 actions, 35 running)\n[8,144 / 14,267] [Prepa] //packages/modules/adb:adb clang++ shell_service_protocol.cpp [linux_glibc]; 28s ... (32 actions, 17 runnin\ng)\n[9,246 / 16,030] [Prepa] //packages/modules/adb:adb clang++ shell_service_protocol.cpp [linux_glibc]; 41s ... (49 actions, 34 runnin\ng)\nERROR: /usr/local/google/home/jungjw/android/aosp/BUILD:47:12: //external/conscrypt:conscrypt.module.intra.core.api.stubs.source met\nalava merged [common] failed: (Exit 1): bash failed: error executing command /bin/bash -c ... (remaining 1 argument(s) skipped)\nopen out/soong/.temp/sbox/07b66e6de6ee225f20db2e07f8ba7e1a999dc340/out/.intermediates/external/conscrypt/conscrypt_generated_constan\nts/gen/com/android/org/conscrypt/NativeConstants.java: permission denied\nTarget //:aosp_arm64-userdebug failed to build\nUse --verbose_failures to see the command lines of failed build steps.\nINFO: Elapsed time: 116.878s, Critical Path: 43.80s\nINFO: 1018 processes: 38 internal, 980 local.\nFAILED: Build did NOT complete successfully\nFAILED: Build did NOT complete successfully\n18:46:12 bazel failed with: exit status 1\n\n```",
+      "revId": "3fbf2bea6ada498fcac0de7e190044fa3063902a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
