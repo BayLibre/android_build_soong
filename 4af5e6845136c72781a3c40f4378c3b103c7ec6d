@@ -16,6 +16,23 @@
       "message": "LGTM, but I\u0027m not super familiar with this code.\n\n+paulduffin do you know this stuff well enough to review properly?",
       "revId": "4af5e6845136c72781a3c40f4378c3b103c7ec6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f78a3ad_d051286b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-03-31T12:34:10Z",
+      "side": 1,
+      "message": "Seems reasonable to me, on the basis that if any of your deps compile against the module sdk you need to be using either the module sdk or system server sdk. I\u0027ll let Paul have a look too.",
+      "revId": "4af5e6845136c72781a3c40f4378c3b103c7ec6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
