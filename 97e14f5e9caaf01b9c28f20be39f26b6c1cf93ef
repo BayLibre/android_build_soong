@@ -16,6 +16,29 @@
       "message": "As you requested.",
       "revId": "97e14f5e9caaf01b9c28f20be39f26b6c1cf93ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e036b2b5_f90b8b74",
+        "filename": "android/fixture.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-31T14:07:26Z",
+      "side": 1,
+      "message": "Maybe a side issue for this CL, but this doesn\u0027t need to be exported, right?",
+      "range": {
+        "startLine": 458,
+        "startChar": 1,
+        "endLine": 458,
+        "endChar": 8
+      },
+      "revId": "97e14f5e9caaf01b9c28f20be39f26b6c1cf93ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
