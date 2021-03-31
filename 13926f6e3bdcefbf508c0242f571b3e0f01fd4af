@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26994ad1_36cfbd6a",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-31T22:39:18Z",
+      "side": 1,
+      "message": "What does this refer to? I wouldn\u0027t classify any of the commits in that ticket as workarounds.",
+      "range": {
+        "startLine": 131,
+        "startChar": 37,
+        "endLine": 131,
+        "endChar": 69
+      },
+      "revId": "13926f6e3bdcefbf508c0242f571b3e0f01fd4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7652d604_d8e226aa",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-31T22:39:18Z",
+      "side": 1,
+      "message": "Is this related? Or do you mean b/180325915?",
+      "range": {
+        "startLine": 131,
+        "startChar": 11,
+        "endLine": 131,
+        "endChar": 22
+      },
+      "revId": "13926f6e3bdcefbf508c0242f571b3e0f01fd4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -33,6 +33,24 @@
       "message": "Ping. Martin, can I submit this?",
       "revId": "5c63fce1b68c386bef0dc8f7c46cbefcc21db560",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2759330c_6a2b4fca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-03-31T22:39:18Z",
+      "side": 1,
+      "message": "I\u0027ve taken the approach to only have fixes for this locally as long as other issues is blocking switching to prebuilts (ag/13552665) - I have a similar workaround in ag/13776553.\n\nBut if submitting it makes it easier for you then sure. Should we c-p ag/13776553 to AOSP as well then?",
+      "parentUuid": "93e8425c_88d7a3a2",
+      "revId": "5c63fce1b68c386bef0dc8f7c46cbefcc21db560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
