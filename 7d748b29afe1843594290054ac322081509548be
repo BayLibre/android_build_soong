@@ -33,6 +33,24 @@
       "message": "Can you move the append here?  I don\u0027t know what I was thinking when I wrote it to modify the glob list in place, but it doesn\u0027t serve any purpose.",
       "revId": "7d748b29afe1843594290054ac322081509548be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb1cddee_eb53340f",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2021-03-31T00:29:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c7c7221_756165c1",
+      "revId": "7d748b29afe1843594290054ac322081509548be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
