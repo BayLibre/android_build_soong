@@ -45,6 +45,7 @@ var VndkMustUseVendorVariantList = []string{
 	"android.hardware.power.stats-ndk_platform",
 	"android.hardware.power.stats-unstable-ndk_platform",
 	"android.hardware.rebootescrow-ndk_platform",
+	"android.hardware.security.authgraph-V1-ndk_platform",
 	"android.hardware.security.keymint-V1-ndk_platform",
 	"android.hardware.security.keymint-ndk_platform",
 	"android.hardware.security.keymint-unstable-ndk_platform",
