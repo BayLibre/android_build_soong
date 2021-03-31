@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9b10522_a06c57fc",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-03-31T17:43:36Z",
+      "side": 1,
+      "message": "in Soong, it looks like we should also be able to handle those explictly from an export_include_dirs property -- but it doesn\u0027t look like we\u0027re handling that on the bp2build side at this point anyway, but we may want to file a bug to track that we may need to handle later",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 58
+      },
+      "revId": "cbc0552fbe2f00aa6fc78f517a7694ccbbc8c2f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
