@@ -34,17 +34,17 @@ import (
 	"android/soong/shared"
 )
 
-type CqueryRequestType int
+type CqueryRequest int
 
 const (
-	getAllFiles CqueryRequestType = iota
+	getAllFiles CqueryRequest = iota
 	getAllFilesAndCcObjectFiles
 )
 
 // Map key to describe bazel cquery requests.
 type cqueryKey struct {
 	label       string
-	requestType cquery.RequestType
+	requestType *cquery.Request
 	archType    ArchType
 }
 
@@ -238,7 +238,7 @@ func (context *bazelContext) BazelEnabled() bool {
 // If the given request was already made (and the results are available), then
 // returns (result, true). If the request is queued but no results are available,
 // then returns ("", false).
-func (context *bazelContext) cquery(label string, requestType cquery.RequestType,
+func (context *bazelContext) cquery(label string, requestType *cquery.Request,
 	archType ArchType) (string, bool) {
 	key := cqueryKey{label, requestType, archType}
 	if result, ok := context.results[key]; ok {
@@ -446,7 +446,7 @@ func indent(original string) string {
 // and grouped by their request type. The data retrieved for each label depends on its
 // request type.
 func (context *bazelContext) cqueryStarlarkFileContents() []byte {
-	requestTypeToCqueryIdEntries := map[cquery.RequestType][]string{}
+	requestTypeToCqueryIdEntries := map[*cquery.Request][]string{}
 	for val, _ := range context.requests {
 		cqueryId := getCqueryId(val)
 		mapEntryString := fmt.Sprintf("%q : True", cqueryId)
@@ -471,7 +471,7 @@ def %s(target):
     return id_string + ">>" + %s(target)
 `
 
-	for _, requestType := range cquery.RequestTypes {
+	for _, requestType := range cquery.Requests {
 		labelMapName := requestType.Name() + "_Labels"
 		functionName := requestType.Name() + "_Fn"
 		labelRegistrationMapSection += fmt.Sprintf(mapDeclarationFormatString,
