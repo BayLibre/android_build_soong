@@ -17,6 +17,7 @@ package filesystem
 import (
 	"fmt"
 	"strconv"
+	"strings"
 
 	"github.com/google/blueprint/proptools"
 
@@ -40,7 +41,8 @@ type logicalPartitionProperties struct {
 	// Set the name of the output. Defaults to <module_name>.img.
 	Stem *string
 
-	// Total size of the logical partition
+	// Total size of the logical partition. If set to "auto", total size is automatically
+	// calculated as: the sum of partition sizes plus 1MB per one partition for metadata.
 	Size *string
 
 	// List of partitions for default group. Default group has no size limit and automatically
@@ -117,9 +119,8 @@ func (l *logicalPartition) GenerateAndroidBuildActions(ctx android.ModuleContext
 	size := proptools.String(l.properties.Size)
 	if size == "" {
 		ctx.PropertyErrorf("size", "must be set")
-	}
-	if _, err := strconv.Atoi(size); err != nil {
-		ctx.PropertyErrorf("size", "must be a number")
+	} else if _, err := strconv.Atoi(size); err != nil && size != "auto" {
+		ctx.PropertyErrorf("size", `must be a number or "auto"`)
 	}
 	cmd.FlagWithArg("--device-size=", size)
 
