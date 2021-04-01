@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be536c4_11a5f9f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-01T05:59:54Z",
+      "side": 1,
+      "message": "Why is this needed currently, while we\u0027re flattening the prop values?",
+      "revId": "144f6c19994439c951dd5a5d9e62470c3ff938b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
