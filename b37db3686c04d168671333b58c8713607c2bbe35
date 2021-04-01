@@ -16,6 +16,63 @@
       "message": "ping",
       "revId": "b37db3686c04d168671333b58c8713607c2bbe35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a6ca17c_a0751f3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-01T00:32:36Z",
+      "side": 1,
+      "message": "It\u0027s hard to tell how much sense this makes without seeing the chagnes to cc that this would enable.",
+      "revId": "b37db3686c04d168671333b58c8713607c2bbe35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fc026da_df9cfbd7",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-01T00:32:36Z",
+      "side": 1,
+      "message": "Captalize this and all the other methods with godoc that you changed to exported",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "b37db3686c04d168671333b58c8713607c2bbe35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f1b669e_afec15a9",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-01T00:32:36Z",
+      "side": 1,
+      "message": "These all seem pretty specific to java, do they need to be moved to the android package?",
+      "revId": "b37db3686c04d168671333b58c8713607c2bbe35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
