@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d432d20_fe8b953d",
+        "filename": "bp2build/cc_library_headers_conversion_test.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-01T09:12:22Z",
+      "side": 1,
+      "message": "It would be cool if we could just set this to be true by default for every target in the test",
+      "range": {
+        "startLine": 174,
+        "startChar": 58,
+        "endLine": 174,
+        "endChar": 82
+      },
+      "revId": "0b0d86cc4bf11490f5a4ac964da0154d2e714bf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abc9f089_e03f7e6a",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-01T09:12:22Z",
+      "side": 1,
+      "message": "Drop cc from the name, since we are in the cc package?",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "0b0d86cc4bf11490f5a4ac964da0154d2e714bf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50d37ba3_4da7ce1c",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-01T09:12:22Z",
+      "side": 1,
+      "message": "Maybe mark this file as branched from library.go or library_headers.go? (if Gerrit supports that)",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "0b0d86cc4bf11490f5a4ac964da0154d2e714bf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
