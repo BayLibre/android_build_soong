@@ -16,6 +16,23 @@
       "message": "Hang on. I have something better.",
       "revId": "2e28fe349dc454cec3bd517dc454ccdafbd3fd8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d48c0223_dfdff321",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-01T16:02:11Z",
+      "side": 1,
+      "message": "See aosp/1662203 !",
+      "revId": "2e28fe349dc454cec3bd517dc454ccdafbd3fd8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
