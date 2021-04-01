@@ -22,6 +22,30 @@
       },
       "revId": "25c47a43a592f32663de7aae2d1de7b3cb8aaba1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a64f1bf_fd76b21e",
+        "filename": "bp2build/conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-01T11:51:23Z",
+      "side": 0,
+      "message": "I didn\u0027t see an advantage in creating indirections when they\u0027re only used once. Added some comments for readability.",
+      "parentUuid": "c73091c9_f84f4aca",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "25c47a43a592f32663de7aae2d1de7b3cb8aaba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
