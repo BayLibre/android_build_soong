@@ -22,6 +22,30 @@
       },
       "revId": "760fb185bec0890ba8ab81e12248cbdedfadb291",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b1b429_376a6c4b",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-01T06:24:17Z",
+      "side": 1,
+      "message": "Hmm mildly prefer separate comments and using the list as append only (no grouping or sorting etc) because that documents the order that we ran into problems and might also help avoid merge conflicts.\n\nI know it looks a bit crowded in Gerrit but it looks nicer in vi with a wider screen etc.",
+      "parentUuid": "6591dfe0_67dc3d88",
+      "range": {
+        "startLine": 133,
+        "startChar": 48,
+        "endLine": 133,
+        "endChar": 65
+      },
+      "revId": "760fb185bec0890ba8ab81e12248cbdedfadb291",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
