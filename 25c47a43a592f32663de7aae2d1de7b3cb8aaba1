@@ -46,6 +46,30 @@
       },
       "revId": "25c47a43a592f32663de7aae2d1de7b3cb8aaba1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dd16cd9_e24a382d",
+        "filename": "bp2build/conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-01T11:58:03Z",
+      "side": 0,
+      "message": "I\u0027m afraid I\u0027m not familiar enough with Golang to comment on the customs in that language, so your call. \n\n(IMHO the boilerplate Golang requires makes it advisable to group less functionality into a func)",
+      "parentUuid": "5a64f1bf_fd76b21e",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "25c47a43a592f32663de7aae2d1de7b3cb8aaba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
