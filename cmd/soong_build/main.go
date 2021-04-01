@@ -127,7 +127,7 @@ func main() {
 		// Run the alternate pipeline of bp2build mutators and singleton to convert Blueprint to BUILD files
 		// before everything else.
 		runBp2Build(srcDir, configuration, extraNinjaDeps)
-	} else if configuration.BazelContext.BazelEnabled() {
+	} else if configuration.BazelContext.BazelEnabled() && shouldPrepareBuildActions(configuration) {
 		// Bazel-enabled mode. Soong runs in two passes.
 		// First pass: Analyze the build tree, but only store all bazel commands
 		// needed to correctly evaluate the tree in the second pass.
