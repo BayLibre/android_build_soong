@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1459331_e4bfd513",
+        "filename": "android/arch.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-01T14:18:16Z",
+      "side": 1,
+      "message": "nit: why is it called dst? It\u0027s not a \"destination\", is it?",
+      "range": {
+        "startLine": 1724,
+        "startChar": 41,
+        "endLine": 1724,
+        "endChar": 44
+      },
+      "revId": "f41f95934cf63ee06c033430cb6be0cd9630df29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80961fae_533cddbc",
+        "filename": "android/arch.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 1738,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-01T14:18:16Z",
+      "side": 1,
+      "message": "Mind taking a shot at not duplicating all this code from GetArchProperties()? For example, the non-duplicated method could take a list of:\n\n1: Field string names [\"x86\"/arm\"...], [\"android\", \"linux_bionic\"...]\n2: \"Arch\"/\"Target\"\n\nand then the typed result map could be handled by relying on the fact that the items representing the same OS/target have the same index in the field string names in (1) and OsTypeList/ArchTypeList()\n\non a related note: why is OsTypeList a variable and ArchTypeList a function?",
+      "range": {
+        "startLine": 1733,
+        "startChar": 1,
+        "endLine": 1738,
+        "endChar": 64
+      },
+      "revId": "f41f95934cf63ee06c033430cb6be0cd9630df29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fe24ed0_3a51a413",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-01T14:18:16Z",
+      "side": 1,
+      "message": "Let\u0027s not ignore the error? (also below in the two places in prettyPrintLabelListAttribute)",
+      "range": {
+        "startLine": 54,
+        "startChar": 9,
+        "endLine": 54,
+        "endChar": 10
+      },
+      "revId": "f41f95934cf63ee06c033430cb6be0cd9630df29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596a57cb_4b4a2b85",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-01T14:18:16Z",
+      "side": 1,
+      "message": "This looks like the same as the code in prettyPrintStringListAttribute. Deduplicate.\n\n(Maybe it\u0027s also possible to factor out the common parts from the code that iterates over platformOsMap, but that\u0027s not as obvious a win as this)",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 36
+      },
+      "revId": "f41f95934cf63ee06c033430cb6be0cd9630df29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
