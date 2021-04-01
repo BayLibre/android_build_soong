@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe21d22b_f924f279",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-01T05:20:50Z",
+      "side": 1,
+      "message": "Using codenames would be very confusing in java, because the framework has very different semantics for \"R\" vs. \"30\".  An app with targetSdkVersion/minSdkVersion \"R\" can _only_ be run on an R development (pre SDK-finalization) build.  Once the SDK is finalized, those \"R\" apps will no longer run on a \"30\" build.  That is to ensure that apps built against the developer preview releases have to be recompiled against a final SDK before shipping to allow for SDK changes after developer previews are released.  If the build system translates \"R\" to \"30\" that will be very confusing, because in some places \"R\" will be valid and in other places it won\u0027t.  I\u0027d prefer if cc didn\u0027t use codenames either, but I think that ship has sailed.",
+      "parentUuid": "6b59812e_7bd4aaf4",
+      "revId": "b37db3686c04d168671333b58c8713607c2bbe35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8fc026da_df9cfbd7",
         "filename": "android/sdk_version.go",
         "patchSetId": 4
