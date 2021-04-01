@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d478d873_f89a9cd6",
+        "filename": "bp2build/cc_library_headers_conversion_test.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-01T11:30:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d432d20_fe8b953d",
+      "range": {
+        "startLine": 174,
+        "startChar": 58,
+        "endLine": 174,
+        "endChar": 82
+      },
+      "revId": "0b0d86cc4bf11490f5a4ac964da0154d2e714bf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abc9f089_e03f7e6a",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19a5a005_21bd6a37",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-01T11:30:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abc9f089_e03f7e6a",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "0b0d86cc4bf11490f5a4ac964da0154d2e714bf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50d37ba3_4da7ce1c",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-01T09:12:22Z",
       "side": 1,
       "message": "Maybe mark this file as branched from library.go or library_headers.go? (if Gerrit supports that)",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 2
+      },
+      "revId": "0b0d86cc4bf11490f5a4ac964da0154d2e714bf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ddd5c37_b4a9b9b2",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-01T11:30:33Z",
+      "side": 1,
+      "message": "Can\u0027t seem to find a way to make git recognize this as a branched file :(",
+      "parentUuid": "50d37ba3_4da7ce1c",
       "range": {
         "startLine": 98,
         "startChar": 0,
