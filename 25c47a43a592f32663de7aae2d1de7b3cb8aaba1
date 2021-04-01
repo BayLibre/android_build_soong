@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c73091c9_f84f4aca",
+        "filename": "bp2build/conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-01T07:39:49Z",
+      "side": 0,
+      "message": "Why are you inlining these? The test is way more readable with these as separate functions.",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 29
+      },
+      "revId": "25c47a43a592f32663de7aae2d1de7b3cb8aaba1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
