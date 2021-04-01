@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62978cf4_efd8aeda",
+        "filename": "scripts/toc.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-04-01T09:49:48Z",
+      "side": 1,
+      "message": "Interesting! Thanks for checking this out and making Mac tool builds more hermetic.",
+      "revId": "4ad44e713be043891578945e0f6f05f3cb5086ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
