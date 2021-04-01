@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ec0b796_5028486d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-01T11:47:54Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "6d15d635569d420035e924c12a08091f0e9c579d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50f11330_475af011",
+        "filename": "android/apex.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-01T11:47:54Z",
+      "side": 1,
+      "message": "ah, these are the ones I\u0027m looking to fix.",
+      "range": {
+        "startLine": 807,
+        "startChar": 64,
+        "endLine": 814,
+        "endChar": 64
+      },
+      "revId": "6d15d635569d420035e924c12a08091f0e9c579d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f956acb_f7b26999",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1368,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-01T11:47:54Z",
+      "side": 1,
+      "message": "At some point we probably need to start versioning core as well",
+      "range": {
+        "startLine": 1365,
+        "startChar": 2,
+        "endLine": 1368,
+        "endChar": 2
+      },
+      "revId": "6d15d635569d420035e924c12a08091f0e9c579d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
