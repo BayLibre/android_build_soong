@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36e8ffb7_36a23337",
+        "filename": "android/bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-01T04:25:05Z",
+      "side": 1,
+      "message": "Just had two thoughts on this\n\n1 - I think we should start annotating why things are here, e.g.\n\n\"liblinker_debuggerd_stub\", // cc_library_static, depends on //system/libbase\n\n2 - I don\u0027t think we should keep this sorted alphabetically, because it makes merging/rebasing harder\n\nWDYT?",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 26
+      },
+      "revId": "b164b381b2073caad3915537e65ad9e4c721ad0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
