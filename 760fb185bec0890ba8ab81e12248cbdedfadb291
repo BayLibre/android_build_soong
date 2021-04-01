@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6591dfe0_67dc3d88",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-01T05:28:27Z",
+      "side": 1,
+      "message": "How about putting a single comment title and remove the individual annotations?\n\n// cc_library_static / ruperts\n\"foo\"\n\"bar\" // depends on foo\n\n// cc_library_static / cparsons\n\"bar\"\n\n// genrule / cparsons\n\"baz\"",
+      "range": {
+        "startLine": 133,
+        "startChar": 48,
+        "endLine": 133,
+        "endChar": 65
+      },
+      "revId": "760fb185bec0890ba8ab81e12248cbdedfadb291",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
