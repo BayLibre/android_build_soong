@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "afb618d7_a6a9da26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-01T00:59:21Z",
+      "side": 1,
+      "message": "Yes, compiler enforces that. If a module whose min_sdk_version is set to 29 uses an API having __INTRODUCED_IN(30) in its declaration, the compiler enforces that the call to the API is guarded with `__builin_available(android 30,*)`",
+      "parentUuid": "af483b0f_a9eeabc4",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 50,
+        "endChar": 28
+      },
+      "revId": "f3761fb3cbb63dffdabb79785f5c553b3cb66e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bfe04728_d53331bb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-01T00:38:34Z",
       "side": 1,
       "message": "nil?",
+      "range": {
+        "startLine": 1625,
+        "startChar": 9,
+        "endLine": 1625,
+        "endChar": 19
+      },
+      "revId": "f3761fb3cbb63dffdabb79785f5c553b3cb66e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "972c660a_c9cc7108",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1625,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-01T00:59:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b876b463_a44d38c6",
       "range": {
         "startLine": 1625,
         "startChar": 9,
