@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3db35436_16499c05",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-01T22:23:26Z",
+      "side": 1,
+      "message": "Colin, do you know why this is separate? Same with the others? Why the code is copy/pasted?",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 10
+      },
+      "revId": "5baa97ef2fff69b11fac2a5a18648cc525faabfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e277011a_e4b4d8ac",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-01T22:23:26Z",
+      "side": 1,
+      "message": "these are the referenced broken lines",
+      "range": {
+        "startLine": 274,
+        "startChar": 7,
+        "endLine": 274,
+        "endChar": 118
+      },
+      "revId": "5baa97ef2fff69b11fac2a5a18648cc525faabfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
