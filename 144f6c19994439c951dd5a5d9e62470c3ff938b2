@@ -16,6 +16,24 @@
       "message": "Why is this needed currently, while we\u0027re flattening the prop values?",
       "revId": "144f6c19994439c951dd5a5d9e62470c3ff938b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8d0798c_0d31af29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-01T12:35:15Z",
+      "side": 1,
+      "message": "Was aiming to simplify adding `label: \"//prebuilts/clang/host/linux-x86:libclang_rt\"` for the various \"libclang_rt.builtins-*-android\" modules as we have one label that will suffice for all of them.",
+      "parentUuid": "8be536c4_11a5f9f0",
+      "revId": "144f6c19994439c951dd5a5d9e62470c3ff938b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
