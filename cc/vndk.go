@@ -381,7 +381,7 @@ func IsForVndkApex(mctx android.BottomUpMutatorContext, m *Module) bool {
 			if mctx.ModuleName() == "libz" {
 				return false
 			}
-			return m.ImageVariation().Variation == android.CoreVariation && lib.shared() && m.isVndkSp()
+			return m.ImageVariation().Variation == android.CoreVariation && lib.shared() && m.IsVndkSp()
 		}
 
 		useCoreVariant := m.VndkVersion() == mctx.DeviceConfig().PlatformVndkVersion() &&
@@ -601,31 +601,30 @@ type vndkSnapshotSingleton struct {
 	vndkSnapshotZipFile android.OptionalPath
 }
 
-func isVndkSnapshotAware(config android.DeviceConfig, m *Module,
-	apexInfo android.ApexInfo) (i snapshotLibraryInterface, vndkType string, isVndkSnapshotLib bool) {
+func isVndkSnapshotAware(config android.DeviceConfig, m LinkableInterface,
+	apexInfo android.ApexInfo) (vndkType string, isVndkSnapshotLib bool) {
 
 	if m.Target().NativeBridge == android.NativeBridgeEnabled {
-		return nil, "", false
+		return "", false
 	}
 	// !inVendor: There's product/vendor variants for VNDK libs. We only care about vendor variants.
 	// !installable: Snapshot only cares about "installable" modules.
 	// IsSnapshotPrebuilt: Snapshotting a snapshot doesn't make sense.
-	if !m.InVendor() || !m.installable(apexInfo) || m.IsSnapshotPrebuilt() {
-		return nil, "", false
+	if !m.InVendor() || !installable(m, apexInfo) || m.IsSnapshotPrebuilt() {
+		return "", false
 	}
-	l, ok := m.linker.(snapshotLibraryInterface)
-	if !ok || !l.shared() {
-		return nil, "", false
+	if !m.SnapshotLibrary() || !m.Shared() {
+		return "", false
 	}
 	if m.VndkVersion() == config.PlatformVndkVersion() && m.IsVndk() && !m.IsVndkExt() {
-		if m.isVndkSp() {
-			return l, "vndk-sp", true
+		if m.IsVndkSp() {
+			return "vndk-sp", true
 		} else {
-			return l, "vndk-core", true
+			return "vndk-core", true
 		}
 	}
 
-	return nil, "", false
+	return "", false
 }
 
 func (c *vndkSnapshotSingleton) GenerateBuildActions(ctx android.SingletonContext) {
@@ -738,7 +737,7 @@ func (c *vndkSnapshotSingleton) GenerateBuildActions(ctx android.SingletonContex
 
 		apexInfo := ctx.ModuleProvider(module, android.ApexInfoProvider).(android.ApexInfo)
 
-		l, vndkType, ok := isVndkSnapshotAware(ctx.DeviceConfig(), m, apexInfo)
+		vndkType, ok := isVndkSnapshotAware(ctx.DeviceConfig(), m, apexInfo)
 		if !ok {
 			return
 		}
@@ -777,7 +776,7 @@ func (c *vndkSnapshotSingleton) GenerateBuildActions(ctx android.SingletonContex
 		}
 
 		if ctx.Config().VndkSnapshotBuildArtifacts() {
-			headers = append(headers, l.snapshotHeaders()...)
+			headers = append(headers, m.SnapshotHeaders()...)
 		}
 	})
 
