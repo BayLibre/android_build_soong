@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "255ba161_2aa3f0b3",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1896,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-01T23:45:59Z",
+      "side": 1,
+      "message": "I\u0027d prefer \"static_libs or whole_static_libs\"",
+      "range": {
+        "startLine": 1896,
+        "startChar": 74,
+        "endLine": 1896,
+        "endChar": 94
+      },
+      "revId": "5baa97ef2fff69b11fac2a5a18648cc525faabfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3db35436_16499c05",
@@ -14,6 +37,30 @@
       "writtenOn": "2021-04-01T22:23:26Z",
       "side": 1,
       "message": "Colin, do you know why this is separate? Same with the others? Why the code is copy/pasted?",
+      "range": {
+        "startLine": 127,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 10
+      },
+      "revId": "5baa97ef2fff69b11fac2a5a18648cc525faabfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6330803c_cda93067",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-01T23:45:59Z",
+      "side": 1,
+      "message": "There isn\u0027t generic reflection-based support for properties for these image variations they way there is for arch properties, because there aren\u0027t very many of them.",
+      "parentUuid": "3db35436_16499c05",
       "range": {
         "startLine": 127,
         "startChar": 2,
