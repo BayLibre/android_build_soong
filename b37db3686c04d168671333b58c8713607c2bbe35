@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "635e029e_2de2cb05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-01T05:35:41Z",
+      "side": 1,
+      "message": "Yes, I am aware of the difference. I actually thought that R !\u003d 30 in Java is against the intuition and is one of the major sources of mistake (see the recent announcement from omakoto@). At the source code level, people (even in Java) have been using codename as in `@EnabledSince(targetSdkVersion \u003d Build.VERSION_CODES.R)`. I wish that the preview SDKs have pesudo code names like \"R_preview1\", \"R_preview2\", etc, which translates to \"R\", not 29 or 30, when used in the aapt rule.\n\nAnyway, fixing that is not my immediate goal and this CL doesn\u0027t do that.",
+      "parentUuid": "fe21d22b_f924f279",
+      "revId": "b37db3686c04d168671333b58c8713607c2bbe35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fc026da_df9cfbd7",
