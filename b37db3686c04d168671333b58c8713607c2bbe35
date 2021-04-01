@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b59812e_7bd4aaf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-01T03:23:21Z",
+      "side": 1,
+      "message": "I am preparing it as part of b/183090215. The goal there is make it possible to use things like `sdk_version: \"module_30\"` in cc modules to get access to the `# apex` APIs.\n\nAnother side effect of this entire changes would be that we will be able to use `sdk_version: \"\u003ccodename\u003e\"` across cc and java, which currently is supported only for cc.",
+      "parentUuid": "3a6ca17c_a0751f3b",
+      "revId": "b37db3686c04d168671333b58c8713607c2bbe35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fc026da_df9cfbd7",
@@ -58,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5949d880_8cbce329",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-01T03:23:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fc026da_df9cfbd7",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "b37db3686c04d168671333b58c8713607c2bbe35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9f1b669e_afec15a9",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-04-01T00:32:36Z",
       "side": 1,
       "message": "These all seem pretty specific to java, do they need to be moved to the android package?",
+      "revId": "b37db3686c04d168671333b58c8713607c2bbe35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7bbd41f_7a61c2e3",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-01T03:23:21Z",
+      "side": 1,
+      "message": "b/183090215 aims to make \"some\" of these available to cc modules. (by the way, this CL doesn\u0027t make that happen yet.) That\u0027s why I moved these from the java package to here. As you correctly pointed out, some of these, like SdkCore and SdkSystemServer, wouldn\u0027t make sense in cc modules. Then I will have to move those back to the java package. I didn\u0027t do that in this CL because that will just make things complicated.",
+      "parentUuid": "9f1b669e_afec15a9",
       "revId": "b37db3686c04d168671333b58c8713607c2bbe35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
