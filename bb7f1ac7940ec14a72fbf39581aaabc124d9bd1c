@@ -16,6 +16,23 @@
       "message": "Lost the +2 after resolving merge conflict.",
       "revId": "bb7f1ac7940ec14a72fbf39581aaabc124d9bd1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3428467d_b8ee429c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-01T09:36:53Z",
+      "side": 1,
+      "message": "Adding back the +2 that was lost after fixing a merge conflict.",
+      "revId": "bb7f1ac7940ec14a72fbf39581aaabc124d9bd1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
