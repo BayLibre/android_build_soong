@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc8e1aa1_49c1803c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-01T12:25:56Z",
+      "side": 1,
+      "message": "Nikita, I added this test a while ago after fixing an issue that ngeoffray@ found. I know that you are in the process of cleaning it up so I\u0027m not sure if this test is worth adding in given that it should hopefully be removed soon. What do you think? Are you going to be finished soon or is this worth adding for now?",
+      "revId": "f062902ed2e5591546617469ec1086822bb4fc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
