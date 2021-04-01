@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "af483b0f_a9eeabc4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-01T00:39:26Z",
+      "side": 1,
+      "message": "Is this enforced by something?",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 50,
+        "endChar": 28
+      },
+      "revId": "f3761fb3cbb63dffdabb79785f5c553b3cb66e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bfe04728_d53331bb",
