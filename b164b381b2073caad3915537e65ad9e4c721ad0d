@@ -22,6 +22,30 @@
       },
       "revId": "b164b381b2073caad3915537e65ad9e4c721ad0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d8670d1_886b0210",
+        "filename": "android/bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-01T04:38:58Z",
+      "side": 1,
+      "message": "I sent https://android-review.googlesource.com/c/platform/build/soong/+/1661719",
+      "parentUuid": "36e8ffb7_36a23337",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 26
+      },
+      "revId": "b164b381b2073caad3915537e65ad9e4c721ad0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
