@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce56ae9_69e7ebdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-01T09:59:41Z",
+      "side": 1,
+      "message": "Ping. Ulya, would you mind taking a quick look at this? It is blocking a couple of major changes to simply the test fixture mechanism.",
+      "revId": "284165afb5f46efa45a8121ece6e4e45e59e2adc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
