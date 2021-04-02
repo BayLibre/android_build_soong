@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3d2710b1_f4cf38dc",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1896,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-02T00:04:33Z",
+      "side": 1,
+      "message": "I thought you might say this given your predisposition for grepability, but I can\u0027t resist an opportunity to encourage people to learn regex, and I thought that it wouldn\u0027t matter. Sure - as a general principle, this could help if someone wanted to refactor the name \u0027whole_static_libs\u0027, but I fail to see the use here. Maybe it is that the principle is valuable even when it does not hold? Anyway, done.",
+      "parentUuid": "255ba161_2aa3f0b3",
+      "range": {
+        "startLine": 1896,
+        "startChar": 74,
+        "endLine": 1896,
+        "endChar": 94
+      },
+      "revId": "5baa97ef2fff69b11fac2a5a18648cc525faabfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3db35436_16499c05",
         "filename": "cc/linker.go",
         "patchSetId": 1
