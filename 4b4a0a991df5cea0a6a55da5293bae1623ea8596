@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000009550086",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1652048?revision\u003d35",
+      "fixSuggestions": [
+        {
+          "fixId": "db58ba6c_67c68014",
+          "description": "Change to \"android/bazel_handler.go\"",
+          "replacements": [
+            {
+              "path": "android/bazel_handler.go",
+              "range": {
+                "startLine": 268,
+                "startChar": 38,
+                "endLine": 268,
+                "endChar": 45
+              },
+              "replacement": "probably"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "284ddb93_5d49479d",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-04-02T05:02:27Z",
+      "side": 1,
+      "message": "Common typo found: \"probaby\" -- should it be \"probably\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 268,
+        "startChar": 38,
+        "endLine": 268,
+        "endChar": 45
+      },
+      "revId": "4b4a0a991df5cea0a6a55da5293bae1623ea8596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
