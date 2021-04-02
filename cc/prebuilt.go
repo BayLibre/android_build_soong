@@ -305,6 +305,7 @@ func PrebuiltStaticLibraryFactory() android.Module {
 func NewPrebuiltStaticLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) {
 	module, library := NewPrebuiltLibrary(hod)
 	library.BuildOnlyStatic()
+	module.bazelHandler = &prebuiltStaticLibraryBazelHandler{module: module, library: library}
 	return module, library
 }
 
@@ -317,6 +318,57 @@ type prebuiltObjectLinker struct {
 	objectLinker
 
 	properties prebuiltObjectProperties
+}
+
+type prebuiltStaticLibraryBazelHandler struct {
+	bazelHandler
+
+	module  *Module
+	library *libraryDecorator
+}
+
+func (h *prebuiltStaticLibraryBazelHandler) generateBazelBuildActions(ctx android.ModuleContext, label string) bool {
+	bazelCtx := ctx.Config().BazelContext
+	staticLibs, ok := bazelCtx.GetPrebuiltCcStaticLibraryFiles(label, ctx.Arch().ArchType)
+	if !ok {
+		return false
+	}
+	if len(staticLibs) != 1 {
+		ctx.ModuleErrorf("expected 1 static library from bazel target %q, got %s", label, staticLibs)
+		return false
+	}
+	// h.module.libraryDecorator.flagExporter.setProvider(ctx)
+
+	// TODO(eakammer): do we also need to pass along some flags?
+	out := android.PathForBazelOut(ctx, staticLibs[0])
+	h.module.outputFile = android.OptionalPathForPath(out)
+
+	h.library.exportVersioningMacroIfNeeded(ctx)
+
+	// h.library.flagExporter.exportIncludes(ctx)
+	// h.library.flagExporter.reexportDirs(deps.ReexportedDirs...)
+	// h.library.flagExporter.reexportSystemDirs(deps.ReexportedSystemDirs...)
+	// h.library.flagExporter.reexportFlags(deps.ReexportedFlags...)
+	// h.library.flagExporter.reexportDeps(deps.ReexportedDeps...)
+	// h.library.flagExporter.addExportedGeneratedHeaders(deps.ReexportedGeneratedHeaders...)
+
+	// h.library.flagExporter.setProvider(ctx)
+
+	depSet := android.NewDepSetBuilder(android.TOPOLOGICAL).Direct(out).Build()
+	ctx.SetProvider(StaticLibraryInfoProvider, StaticLibraryInfo{
+		StaticLibrary: out,
+
+		TransitiveStaticLibrariesForOrdering: depSet,
+	})
+
+	// Dependencies on this library will expect collectedSnapshotHeaders to
+	// be set, otherwise validation will fail. For now, set this to an empty
+	// list.
+	// TODO(cparsons): More closely mirror the collectHeadersForSnapshot
+	// implementation.
+	h.library.collectedSnapshotHeaders = android.Paths{}
+
+	return true
 }
 
 func (p *prebuiltObjectLinker) prebuilt() *android.Prebuilt {

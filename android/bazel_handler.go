@@ -58,6 +58,10 @@ type BazelContext interface {
 	// Returns the results of GetOutputFiles and GetCcObjectFiles in a single query (in that order).
 	GetOutputFilesAndCcObjectFiles(label string, archType ArchType) ([]string, []string, bool)
 
+	// GetPrebuiltCcStaticLibraryFiles returns paths to prebuilt cc static libraries, and whether the
+	// results were available
+	GetPrebuiltCcStaticLibraryFiles(label string, archType ArchType) ([]string, bool)
+
 	// ** End cquery methods
 
 	// Issues commands to Bazel to receive results for all cquery requests
@@ -115,6 +119,11 @@ func (m MockBazelContext) GetOutputFilesAndCcObjectFiles(label string, archType 
 	return result, result, ok
 }
 
+func (m MockBazelContext) GetPrebuiltCcStaticLibraryFiles(label string, archType ArchType) ([]string, bool) {
+	result, ok := m.AllFiles[label]
+	return result, ok
+}
+
 func (m MockBazelContext) InvokeBazel() error {
 	panic("unimplemented")
 }
@@ -158,11 +167,28 @@ func (bazelCtx *bazelContext) GetOutputFilesAndCcObjectFiles(label string, archT
 	return outputFiles, ccObjects, ok
 }
 
+// GetPrebuiltCcStaticLibraryFiles returns a slice of prebuilt static libraries for the given
+// label/archType if there are query results; otherwise, it enqueues the query and returns false.
+func (bazelCtx *bazelContext) GetPrebuiltCcStaticLibraryFiles(label string, archType ArchType) ([]string, bool) {
+	result, ok := bazelCtx.cquery(label, cquery.GetPrebuiltCcStaticLibraryFiles, archType)
+	if !ok {
+		return nil, false
+	}
+
+	bazelOutput := strings.TrimSpace(result)
+	ret := cquery.GetPrebuiltCcStaticLibraryFiles.ParseResult(bazelOutput)
+	return ret, ok
+}
+
 func (n noopBazelContext) GetOutputFiles(label string, archType ArchType) ([]string, bool) {
 	panic("unimplemented")
 }
 
 func (n noopBazelContext) GetOutputFilesAndCcObjectFiles(label string, archType ArchType) ([]string, []string, bool) {
+	panic("unimplemented")
+}
+
+func (n noopBazelContext) GetPrebuiltCcStaticLibraryFiles(label string, archType ArchType) ([]string, bool) {
 	panic("unimplemented")
 }
 
