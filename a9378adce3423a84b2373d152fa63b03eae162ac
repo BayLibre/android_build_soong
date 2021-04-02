@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c2ffac3_1967e1f6",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1649,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-02T22:25:15Z",
+      "side": 1,
+      "message": "should we add a TODO or just file a bug that we need to handle this from bazel eventually?",
+      "range": {
+        "startLine": 1649,
+        "startChar": 1,
+        "endLine": 1649,
+        "endChar": 42
+      },
+      "revId": "a9378adce3423a84b2373d152fa63b03eae162ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
