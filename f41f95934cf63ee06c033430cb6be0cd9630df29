@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0756295b_92eeb9a5",
+        "filename": "android/arch.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-02T08:00:23Z",
+      "side": 1,
+      "message": "It\u0027s destination. dst is used elsewhere in this file (appendProperties), and a lot in blueprint/proptools.",
+      "parentUuid": "f1459331_e4bfd513",
+      "range": {
+        "startLine": 1724,
+        "startChar": 41,
+        "endLine": 1724,
+        "endChar": 44
+      },
+      "revId": "f41f95934cf63ee06c033430cb6be0cd9630df29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80961fae_533cddbc",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-01T14:18:16Z",
       "side": 1,
       "message": "Mind taking a shot at not duplicating all this code from GetArchProperties()? For example, the non-duplicated method could take a list of:\n\n1: Field string names [\"x86\"/arm\"...], [\"android\", \"linux_bionic\"...]\n2: \"Arch\"/\"Target\"\n\nand then the typed result map could be handled by relying on the fact that the items representing the same OS/target have the same index in the field string names in (1) and OsTypeList/ArchTypeList()\n\non a related note: why is OsTypeList a variable and ArchTypeList a function?",
+      "range": {
+        "startLine": 1733,
+        "startChar": 1,
+        "endLine": 1738,
+        "endChar": 64
+      },
+      "revId": "f41f95934cf63ee06c033430cb6be0cd9630df29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b67ec76_b16847e2",
+        "filename": "android/arch.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 1738,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-02T08:00:23Z",
+      "side": 1,
+      "message": "\u003e on a related note: why is OsTypeList a variable and ArchTypeList a function?\n\nI took a look; no reason why OsTypeList shouldn\u0027t be a function to be consistent.\n\nI\u0027d love to de-duplicate this, but do you mind if I do it outside of this CL? Liz\u0027s recent product variables CL also gave me some ideas on making this simpler and less manual for upcoming property types.",
+      "parentUuid": "80961fae_533cddbc",
       "range": {
         "startLine": 1733,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fece54bc_ebb52ff2",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-02T08:00:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fe24ed0_3a51a413",
+      "range": {
+        "startLine": 54,
+        "startChar": 9,
+        "endLine": 54,
+        "endChar": 10
+      },
+      "revId": "f41f95934cf63ee06c033430cb6be0cd9630df29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "596a57cb_4b4a2b85",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-01T14:18:16Z",
       "side": 1,
       "message": "This looks like the same as the code in prettyPrintStringListAttribute. Deduplicate.\n\n(Maybe it\u0027s also possible to factor out the common parts from the code that iterates over platformOsMap, but that\u0027s not as obvious a win as this)",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 83,
+        "endChar": 36
+      },
+      "revId": "f41f95934cf63ee06c033430cb6be0cd9630df29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b6edd84_f0329b70",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-02T08:00:23Z",
+      "side": 1,
+      "message": "Done, for both functions and for os and arch. This made my brain hurt a little, but at least now we get a generic pretty printer for select maps.",
+      "parentUuid": "596a57cb_4b4a2b85",
       "range": {
         "startLine": 83,
         "startChar": 1,
