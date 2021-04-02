@@ -221,6 +221,9 @@ func (library *libraryDecorator) androidMkWriteAdditionalDependenciesForSourceAb
 }
 
 func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
+	if strings.Contains(ctx.BaseModuleName(), "note_memtag_heap_sync") {
+		fmt.Println("@@@@@ note_memtag_heap_sync")
+	}
 	if library.static() {
 		entries.Class = "STATIC_LIBRARIES"
 	} else if library.shared() {
