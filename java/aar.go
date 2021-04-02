@@ -640,6 +640,11 @@ func (a *AARImport) minSdkVersion() sdkSpec {
 	return a.sdkVersion()
 }
 
+// TODO(b/175678607) remove this
+func (a *AARImport) MinSdkVersion() string {
+	return a.minSdkVersion().version.String()
+}
+
 func (a *AARImport) targetSdkVersion() sdkSpec {
 	return a.sdkVersion()
 }
