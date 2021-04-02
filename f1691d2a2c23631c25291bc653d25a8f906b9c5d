@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b3322e9_797c3ded",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-02T23:33:10Z",
+      "side": 1,
+      "message": "Jaewoong, this was approved by Colin but I found a conflict with yours (aosp/1660819). Can you review?",
+      "revId": "f1691d2a2c23631c25291bc653d25a8f906b9c5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
