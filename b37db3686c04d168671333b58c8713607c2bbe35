@@ -169,6 +169,24 @@
       "parentUuid": "9f1b669e_afec15a9",
       "revId": "b37db3686c04d168671333b58c8713607c2bbe35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a689f69_3fe2f824",
+        "filename": "android/sdk_version.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-02T23:11:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7bbd41f_7a61c2e3",
+      "revId": "b37db3686c04d168671333b58c8713607c2bbe35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
