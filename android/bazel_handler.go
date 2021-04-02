@@ -34,10 +34,15 @@ import (
 	"android/soong/shared"
 )
 
+type cqueryRequest interface {
+	Name() string
+	StarlarkFunctionBody() string
+}
+
 // Map key to describe bazel cquery requests.
 type cqueryKey struct {
 	label       string
-	requestType cquery.RequestType
+	requestType cqueryRequest
 	archType    ArchType
 }
 
@@ -133,7 +138,7 @@ func (bazelCtx *bazelContext) GetOutputFiles(label string, archType ArchType) ([
 	var ret []string
 	if ok {
 		bazelOutput := strings.TrimSpace(rawString)
-		ret = cquery.GetOutputFiles.ParseResult(bazelOutput).([]string)
+		ret = cquery.GetOutputFiles.ParseResult(bazelOutput)
 	}
 	return ret, ok
 }
@@ -145,7 +150,7 @@ func (bazelCtx *bazelContext) GetOutputFilesAndCcObjectFiles(label string, archT
 	result, ok := bazelCtx.cquery(label, cquery.GetOutputFilesAndCcObjectFiles, archType)
 	if ok {
 		bazelOutput := strings.TrimSpace(result)
-		returnResult := cquery.GetOutputFilesAndCcObjectFiles.ParseResult(bazelOutput).(cquery.GetOutputFilesAndCcObjectFiles_Result)
+		returnResult := cquery.GetOutputFilesAndCcObjectFiles.ParseResult(bazelOutput)
 		outputFiles = returnResult.OutputFiles
 		ccObjects = returnResult.CcObjectFiles
 	}
@@ -231,7 +236,7 @@ func (context *bazelContext) BazelEnabled() bool {
 // If the given request was already made (and the results are available), then
 // returns (result, true). If the request is queued but no results are available,
 // then returns ("", false).
-func (context *bazelContext) cquery(label string, requestType cquery.RequestType,
+func (context *bazelContext) cquery(label string, requestType cqueryRequest,
 	archType ArchType) (string, bool) {
 	key := cqueryKey{label, requestType, archType}
 	if result, ok := context.results[key]; ok {
@@ -449,7 +454,7 @@ func indent(original string) string {
 // and grouped by their request type. The data retrieved for each label depends on its
 // request type.
 func (context *bazelContext) cqueryStarlarkFileContents() []byte {
-	requestTypeToCqueryIdEntries := map[cquery.RequestType][]string{}
+	requestTypeToCqueryIdEntries := map[cqueryRequest][]string{}
 	for val, _ := range context.requests {
 		cqueryId := getCqueryId(val)
 		mapEntryString := fmt.Sprintf("%q : True", cqueryId)
