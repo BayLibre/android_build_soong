@@ -60,6 +60,10 @@ func (mod *Module) AndroidMkEntries() []android.AndroidMkEntries {
 				entries.AddStrings("LOCAL_SHARED_LIBRARIES", mod.Properties.AndroidMkSharedLibs...)
 				entries.AddStrings("LOCAL_STATIC_LIBRARIES", mod.Properties.AndroidMkStaticLibs...)
 				entries.AddStrings("LOCAL_SOONG_LINK_TYPE", mod.makeLinkType)
+				if mod.UseVndk() {
+					entries.SetBool("LOCAL_USE_VNDK", true)
+				}
+
 			},
 		},
 	}
@@ -70,6 +74,7 @@ func (mod *Module) AndroidMkEntries() []android.AndroidMkEntries {
 		// If the compiler is disabled, this is a SourceProvider.
 		mod.SubAndroidMk(&ret, mod.sourceProvider)
 	}
+	ret.SubName += mod.Properties.RustSubName
 	ret.SubName += mod.Properties.SubName
 
 	return []android.AndroidMkEntries{ret}
