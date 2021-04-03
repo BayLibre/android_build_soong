@@ -16,6 +16,24 @@
       "message": "On second thought, are we still using gcov?\n\nhttps://android.googlesource.com/platform/build/+/d2170430feed3f047055ac271914b8d2f372bd99/core/definitions.mk#1715\n\nhttps://android.googlesource.com/platform/build/+/d2170430feed3f047055ac271914b8d2f372bd99/core/definitions.mk#1862\n\nhttps://android.googlesource.com/platform/build/+/d2170430feed3f047055ac271914b8d2f372bd99/core/combo/fdo.mk#24\n\n(fdo.mk also links -lgcc. That file hasn\u0027t been touched since 2014.)\n\nIt seems that LLVM has support for two methods of coverage profiling -- gcov and Clang -- but both are supported by libclang_rt.profile-$arch-android.a.",
       "revId": "252831b03abe3d8a8849a2e271068acc056a3c47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daef988d_eb7562d5",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-04-03T05:55:29Z",
+      "side": 0,
+      "message": "https://source.corp.google.com/search?q\u003dlgcov%20file:Android.*\u0026sq\u003dpackage:%5Eandroid$ seems to show some `-lgcov` still in vendor build files, but I\u0027m suspicious about if it is used (TARGET_ENABLE_INSTRUMENTATION has to be defined for that, and I don\u0027t see any build configs defining that in android-build).\n\n+allenhair in case he knows if there are still other `gcov`-based builds going on, since Pirama is on vacation for a week.",
+      "parentUuid": "58599280_eea3de65",
+      "revId": "252831b03abe3d8a8849a2e271068acc056a3c47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
