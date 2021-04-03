@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff054b35_9bd19d83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2021-04-03T05:10:11Z",
+      "side": 1,
+      "message": "FWIW: 32-bit x86 ART doesn\u0027t link because asm_support_x86.S\u0027s SETUP_GOT_NOSAVE is calling __x86.get_pc_thunk.bx. __x86.get_pc_thunk.* are compiler-generated functions that GCC emits into any object file that needs one. Clang doesn\u0027t emit these helper functions. Removing the last bit of GCC-compiled code (libatomic.a) may have broken it.\n\nA similar problem came up in Bionic -- I added a couple of thunks manually:\n\nhttps://android-review.googlesource.com/c/platform/bionic/+/1289855/\n",
+      "revId": "c2018e2ed4ef5c8d9eeb23d563fbe5791f9992d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
