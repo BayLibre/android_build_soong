@@ -49,6 +49,11 @@ func (p *PackagingSpec) FileName() string {
 	return ""
 }
 
+// The path to the built artifact
+func (p *PackagingSpec) SrcPath() Path {
+	return p.srcPath
+}
+
 // Path relative to the root of the package
 func (p *PackagingSpec) RelPathInPackage() string {
 	return p.relPathInPackage
