@@ -1410,7 +1410,11 @@ func apexFileForRustExecutable(ctx android.BaseModuleContext, rustm *rust.Module
 	if rustm.Target().NativeBridge == android.NativeBridgeEnabled {
 		dirInApex = filepath.Join(dirInApex, rustm.Target().NativeBridgeRelativePath)
 	}
-	fileToCopy := rustm.OutputFile().Path()
+	ps := rustm.PackagingSpecs()
+	if len(ps) == 0 {
+		panic(fmt.Errorf("%q doesn't produce any output\n", rustm.BaseModuleName()))
+	}
+	fileToCopy := ps[0].SrcPath()
 	androidMkModuleName := rustm.BaseModuleName() + rustm.Properties.SubName
 	af := newApexFile(ctx, fileToCopy, androidMkModuleName, dirInApex, nativeExecutable, rustm)
 	return af
@@ -1429,7 +1433,11 @@ func apexFileForRustLibrary(ctx android.BaseModuleContext, rustm *rust.Module) a
 	if rustm.Target().NativeBridge == android.NativeBridgeEnabled {
 		dirInApex = filepath.Join(dirInApex, rustm.Target().NativeBridgeRelativePath)
 	}
-	fileToCopy := rustm.OutputFile().Path()
+	ps := rustm.PackagingSpecs()
+	if len(ps) == 0 {
+		panic(fmt.Errorf("%q doesn't produce any output\n", rustm.BaseModuleName()))
+	}
+	fileToCopy := ps[0].SrcPath()
 	androidMkModuleName := rustm.BaseModuleName() + rustm.Properties.SubName
 	return newApexFile(ctx, fileToCopy, androidMkModuleName, dirInApex, nativeSharedLib, rustm)
 }

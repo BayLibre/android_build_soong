@@ -341,7 +341,14 @@ func (compiler *baseCompiler) install(ctx ModuleContext) {
 	if compiler.strippedOutputFile.Valid() {
 		path = compiler.strippedOutputFile
 	}
-	compiler.path = ctx.InstallFile(compiler.installDir(ctx), path.Path().Base(), path.Path())
+	// The apex variant is not installable because it is included in the APEX and won't appear
+	// in the system partition as a standalone file.
+	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+	if !apexInfo.IsForPlatform() {
+		ctx.PackageFile(compiler.installDir(ctx), path.Path().Base(), path.Path())
+	} else {
+		compiler.path = ctx.InstallFile(compiler.installDir(ctx), path.Path().Base(), path.Path())
+	}
 }
 
 func (compiler *baseCompiler) getStem(ctx ModuleContext) string {

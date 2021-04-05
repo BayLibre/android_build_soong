@@ -533,13 +533,7 @@ func (mod *Module) CoverageFiles() android.Paths {
 	panic(fmt.Errorf("CoverageFiles called on non-library module: %q", mod.BaseModuleName()))
 }
 
-func (mod *Module) installable(apexInfo android.ApexInfo) bool {
-	// The apex variant is not installable because it is included in the APEX and won't appear
-	// in the system partition as a standalone file.
-	if !apexInfo.IsForPlatform() {
-		return false
-	}
-
+func (mod *Module) installable() bool {
 	return mod.outputFile.Valid() && !mod.Properties.PreventInstall
 }
 
@@ -725,8 +719,7 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 
 		mod.outputFile = android.OptionalPathForPath(outputFile)
 
-		apexInfo := actx.Provider(android.ApexInfoProvider).(android.ApexInfo)
-		if mod.installable(apexInfo) {
+		if mod.installable() {
 			mod.compiler.install(ctx)
 		}
 	}
