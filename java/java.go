@@ -775,8 +775,8 @@ func (j *TestHost) AddExtraResource(p android.Path) {
 
 func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if j.testProperties.Test_options.Unit_test == nil && ctx.Host() {
-		// TODO(b/): Clean temporary heuristic to avoid unexpected onboarding.
-		defaultUnitTest := !inList("tradefed", j.properties.Libs) && !inList("cts", j.testProperties.Test_suites)
+		// TODO(b/180736967): Clean temporary heuristic to avoid unexpected onboarding.
+		defaultUnitTest := !inList("tradefed", j.properties.Libs)
 		j.testProperties.Test_options.Unit_test = proptools.BoolPtr(defaultUnitTest)
 	}
 	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.testProperties.Test_config, j.testProperties.Test_config_template,
