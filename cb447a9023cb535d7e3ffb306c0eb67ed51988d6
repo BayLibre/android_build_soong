@@ -33,6 +33,24 @@
       "message": "Even though this is now a private interface, can we retain the documentation in some form?",
       "revId": "cb447a9023cb535d7e3ffb306c0eb67ed51988d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ccd9487_ab6d79bc",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-05T17:59:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71b959ca_18aeba00",
+      "revId": "cb447a9023cb535d7e3ffb306c0eb67ed51988d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
