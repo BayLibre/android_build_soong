@@ -34,6 +34,24 @@
       "parentUuid": "58599280_eea3de65",
       "revId": "252831b03abe3d8a8849a2e271068acc056a3c47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6b3b6df_912dc2cb",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1060646
+      },
+      "writtenOn": "2021-04-05T19:15:06Z",
+      "side": 0,
+      "message": "We\u0027re still getting gcov-formated coverage data from the studio emulator builds on aosp-emu-master-dev. See code-coverage-linux.zip from\nhttps://android-build.googleplex.com/builds/build-details/7258578/targets/sdk_tools_linux\n\nAFAIK the other active branches have already migrated to Clang coverage. As mentioned earlier, LLVM supports both gcov and clang coverage. I\u0027m not sure whether the studio builds use gcc or llvm to produce the gcov-formatted output.",
+      "parentUuid": "daef988d_eb7562d5",
+      "revId": "252831b03abe3d8a8849a2e271068acc056a3c47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
