@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0caf0573_c59b0d32",
+        "filename": "rust/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-05T21:56:36Z",
+      "side": 1,
+      "message": "Does this need to be an InstallPath?  If an OutputPath is enough you could use PathForOutput(\"rustdoc\", ctx.ModuleName().\".timestamp\") and not need android.PathForRustdocInstall.",
+      "revId": "8f927a30059bea179176dc7fb960e4c4b0c3fca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3856e251_4f868c58",
+        "filename": "rust/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-05T21:56:36Z",
+      "side": 1,
+      "message": "Implicit: ctx.RustModule().outputFile.Path()",
+      "range": {
+        "startLine": 332,
+        "startChar": 2,
+        "endLine": 332,
+        "endChar": 65
+      },
+      "revId": "8f927a30059bea179176dc7fb960e4c4b0c3fca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0d45c3a_63663578",
+        "filename": "rust/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-05T21:56:36Z",
+      "side": 1,
+      "message": "module is already an android.Module.",
+      "range": {
+        "startLine": 34,
+        "startChar": 14,
+        "endLine": 34,
+        "endChar": 37
+      },
+      "revId": "8f927a30059bea179176dc7fb960e4c4b0c3fca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d2f17ac_ec299ef4",
+        "filename": "rust/doc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-05T21:56:36Z",
+      "side": 1,
+      "message": "IIRC, you can call ctx.Phony multiple times on the same name, so you could just add ctx.Phony() to the code that produces m.docTimestampFile.",
+      "revId": "8f927a30059bea179176dc7fb960e4c4b0c3fca1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
