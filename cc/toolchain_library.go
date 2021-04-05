@@ -41,6 +41,12 @@ type toolchainLibraryDecorator struct {
 	Properties toolchainLibraryProperties
 }
 
+type toolchainLibraryBazelHandler struct {
+	bazelHandler
+
+	module *Module
+}
+
 func (*toolchainLibraryDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
 	// toolchain libraries can't have any dependencies
 	return deps
@@ -68,7 +74,35 @@ func ToolchainLibraryFactory() android.Module {
 	module.installer = nil
 	module.library = toolchainLibrary
 	module.Properties.Sdk_version = StringPtr("current")
+	module.bazelHandler = &toolchainLibraryBazelHandler{module: module}
 	return module.Init()
+}
+
+func (h *toolchainLibraryBazelHandler) generateBazelBuildActions(ctx android.ModuleContext, label string) bool {
+	bazelCtx := ctx.Config().BazelContext
+	staticLibs, ok := bazelCtx.GetPrebuiltCcStaticLibraryFiles(label, ctx.Arch().ArchType)
+	if !ok {
+		return false
+	}
+	if len(staticLibs) > 1 {
+		ctx.ModuleErrorf("expected 1 static library from bazel target %q, got %s", label, staticLibs)
+		return false
+	} else if len(staticLibs) == 0 {
+		h.module.outputFile = android.OptionalPath{}
+		return true
+	}
+
+	out := android.PathForBazelOut(ctx, staticLibs[0])
+	h.module.outputFile = android.OptionalPathForPath(out)
+
+	depSet := android.NewDepSetBuilder(android.TOPOLOGICAL).Direct(out).Build()
+	ctx.SetProvider(StaticLibraryInfoProvider, StaticLibraryInfo{
+		StaticLibrary: out,
+
+		TransitiveStaticLibrariesForOrdering: depSet,
+	})
+
+	return true
 }
 
 func (library *toolchainLibraryDecorator) compile(ctx ModuleContext, flags Flags,
