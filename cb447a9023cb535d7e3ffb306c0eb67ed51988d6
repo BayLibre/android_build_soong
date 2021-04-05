@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9857e3b2_77e5bf18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-05T17:16:44Z",
+      "side": 1,
+      "message": "Hmm, my initial reaction was discomfort with this change -- I suppose I\u0027m used to applying Java idioms, so I find go idioms more intuitive and confusing 😊\n\nThat said, I think this change isn\u0027t harmful, and if it abides by Go idioms better, then lets do it.\n\n",
+      "revId": "cb447a9023cb535d7e3ffb306c0eb67ed51988d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71b959ca_18aeba00",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-05T17:16:44Z",
+      "side": 1,
+      "message": "Even though this is now a private interface, can we retain the documentation in some form?",
+      "revId": "cb447a9023cb535d7e3ffb306c0eb67ed51988d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
