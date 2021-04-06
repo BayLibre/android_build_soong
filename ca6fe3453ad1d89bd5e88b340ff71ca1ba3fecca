@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d133f4b_0e354070",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-06T18:01:37Z",
+      "side": 1,
+      "message": "I don\u0027t know python or the Soong side of python enough to know whether this is the right way to do it but it generally looks ok to me.",
+      "revId": "ca6fe3453ad1d89bd5e88b340ff71ca1ba3fecca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
