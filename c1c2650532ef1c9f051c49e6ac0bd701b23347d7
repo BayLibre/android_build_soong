@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60a2a090_baefd821",
+        "filename": "bp2build/cc_object_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-06T09:34:06Z",
+      "side": 1,
+      "message": "Should we ask bp2build to not generate a //conditions:default case, so that errors are raised if an unexpected platform is used, and so that there is less noise in the BUILD files?",
+      "range": {
+        "startLine": 455,
+        "startChar": 8,
+        "endLine": 455,
+        "endChar": 35
+      },
+      "revId": "c1c2650532ef1c9f051c49e6ac0bd701b23347d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d65582a2_758429ee",
         "filename": "bp2build/configurability.go",
         "patchSetId": 3
