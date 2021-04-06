@@ -33,6 +33,23 @@
       "message": "Just verified on latest master, this is still required.\n",
       "revId": "06bc95e17dd0df000f4a62be267dd298c5b547cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c747b62_1bfac379",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-06T10:27:56Z",
+      "side": 1,
+      "message": "Could you update the comment to explain why this is necessary in more detail?",
+      "revId": "06bc95e17dd0df000f4a62be267dd298c5b547cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
