@@ -179,6 +179,29 @@ func TestPrebuiltEtcHost(t *testing.T) {
 	}
 }
 
+func TestPrebuiltRootInstallDirPath(t *testing.T) {
+	result := prepareForPrebuiltEtcTest.RunTestWithBp(t, `
+		prebuilt_root {
+			name: "foo.conf",
+			src: "foo.conf",
+		}
+
+		prebuilt_root {
+			name: "bar.conf",
+			src: "bar.conf",
+			sub_dir: "bar/baz",
+		}
+	`)
+
+	p := result.Module("foo.conf", "android_arm64_armv8-a").(*PrebuiltEtc)
+	expected := "out/soong/target/product/test_device/system"
+	android.AssertPathRelativeToTopEquals(t, "install dir", expected, p.installDirPath)
+
+	p = result.Module("bar.conf", "android_arm64_armv8-a").(*PrebuiltEtc)
+	expected = "out/soong/target/product/test_device/system/bar/baz"
+	android.AssertPathRelativeToTopEquals(t, "install dir", expected, p.installDirPath)
+}
+
 func TestPrebuiltUserShareInstallDirPath(t *testing.T) {
 	result := prepareForPrebuiltEtcTest.RunTestWithBp(t, `
 		prebuilt_usr_share {

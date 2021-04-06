@@ -47,6 +47,7 @@ func init() {
 func RegisterPrebuiltEtcBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("prebuilt_etc", PrebuiltEtcFactory)
 	ctx.RegisterModuleType("prebuilt_etc_host", PrebuiltEtcHostFactory)
+	ctx.RegisterModuleType("prebuilt_root", PrebuiltRootFactory)
 	ctx.RegisterModuleType("prebuilt_usr_share", PrebuiltUserShareFactory)
 	ctx.RegisterModuleType("prebuilt_usr_share_host", PrebuiltUserShareHostFactory)
 	ctx.RegisterModuleType("prebuilt_font", PrebuiltFontFactory)
@@ -349,6 +350,16 @@ func PrebuiltEtcHostFactory() android.Module {
 	InitPrebuiltEtcModule(module, "etc")
 	// This module is host-only
 	android.InitAndroidArchModule(module, android.HostSupported, android.MultilibCommon)
+	return module
+}
+
+// prebuilt_root is for a prebuilt artifact that is installed in
+// <partition>/<sub_dir> directory.
+func PrebuiltRootFactory() android.Module {
+	module := &PrebuiltEtc{}
+	InitPrebuiltEtcModule(module, ".")
+	// This module is device-only
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
 	return module
 }
 
