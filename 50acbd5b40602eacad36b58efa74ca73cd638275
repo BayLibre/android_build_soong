@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29fe3c87_d4c574ad",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-06T21:31:15Z",
+      "side": 1,
+      "message": "Subtracting global headers from arch headers seems correct for include-sets, but I\u0027m not sure the same is true for include/exclude sets. I\u0027m especially concerned with cases where there\u0027s overlap between the includes of set A and the excludes of set B. Maybe this ends up eventually doing the \"correct\" thing -- I\u0027m not exactly familiar enough with the code to be certain. But I think this indicates we should inspect this a bit more deeply and/or document this a bit more heavily.\n\nExample:\n\nGlobal:\n    Include: A\n    Exclude: X\nArch:\n    Include: X\n\nWhat\u0027s the appropriate arch-specific behavior? Include X, or not?",
+      "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad678bcb_3dfa41b0",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-06T21:31:15Z",
+      "side": 1,
+      "message": "Do we always want string lists to be unique?\n\nIf so, is this something that should be done preprocessing vs. postprocessing?\nSince Value is a public field, callers can still add values to it after construction, and thus there may be duplicates later.",
+      "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaae43c5_8b0220f7",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-06T21:31:15Z",
+      "side": 1,
+      "message": "This is unsuccessful in changing the targets generated in bionic/libc.\nI believe this is because header globbing is aggressive (`**/*.h`).\n\nA concrete example:\n\n\"libc_headers_arch\", has global include, \"kernel/uapi\", but arch include \"kernel/uapi/asm-arm\" for arm. \nSince the global include is a parent directory of the arch include, the global include captures all headers that the arch include intends to capture. As a result, the arch include has empty headers.",
+      "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
