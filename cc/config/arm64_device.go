@@ -25,6 +25,8 @@ var (
 	arm64Cflags = []string{
 		// Help catch common 32/64-bit errors.
 		"-Werror=implicit-function-declaration",
+		// http://b/158772658 for mitigating SLS
+		"-mharden-sls=retbr",
 	}
 
 	arm64ArchVariantCflags = map[string][]string{
