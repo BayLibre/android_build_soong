@@ -39,6 +39,30 @@
       },
       "revId": "c1c2650532ef1c9f051c49e6ac0bd701b23347d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a7753fb_1d84886a",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-06T07:02:02Z",
+      "side": 1,
+      "message": "Hm, I don\u0027t see much utility/win to make that an interface{} and have varying type defs and function signatures when we\u0027re already in the deep in the prettyPrint call stack that use reflect.Value throughout.",
+      "parentUuid": "d65582a2_758429ee",
+      "range": {
+        "startLine": 33,
+        "startChar": 56,
+        "endLine": 33,
+        "endChar": 69
+      },
+      "revId": "c1c2650532ef1c9f051c49e6ac0bd701b23347d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
