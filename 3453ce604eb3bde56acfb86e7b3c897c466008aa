@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "735ba818_89240b84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-06T18:59:27Z",
+      "side": 1,
+      "message": "There are some uses in build/soong/java/sdk_library.go and build/soong/java/system_modules.go. Shouldn\u0027t they use this as well?",
+      "revId": "3453ce604eb3bde56acfb86e7b3c897c466008aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
