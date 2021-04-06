@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44fa25bd_92e9c564",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-06T22:52:18Z",
+      "side": 1,
+      "message": "Yes. Is this current result \"correct\"? I would expect that the result would be \nInclude: A, X   (that arch inclusion overrides global exclusion)",
+      "parentUuid": "e4e97ae4_b16c6a40",
+      "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad678bcb_3dfa41b0",
         "filename": "bazel/properties.go",
         "patchSetId": 1
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Yep, if we want the strings to be unique then it is probably safer to make things unique as a final step. But I added the comment because the equivalent MakeLabelListAttribute function does make things unique in the constructor",
       "parentUuid": "ad678bcb_3dfa41b0",
+      "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2509bfea_a6ef7493",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-06T22:52:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "382089ae_29dae431",
       "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -108,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd34bf5e_fec81471",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-06T22:52:18Z",
+      "side": 1,
+      "message": "I\u0027m not sure; I would also be fine with, for now, making all headers (even arch-specific headers), globally listed. This is the least strict approach, but, the closest matching Soong\u0027s non-sandbox behavior, for now. It seems thus lower priority to ensure that arch-specific header sources are handled correctly. (Arch-specific include paths, however, are still very important, and will be required to get successful builds of bionic)",
+      "parentUuid": "dd3671bb_39d95fc2",
+      "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ebf7c79_e9e7f971",
         "filename": "cc/library.go",
         "patchSetId": 1
@@ -137,6 +191,24 @@
       "side": 1,
       "message": "This was just a simple/short way to write the code, happy to change it if necessary\n\nNote that we often sort things through (e.g. in the Unique... functions) for readability and to make testing easier",
       "parentUuid": "0ebf7c79_e9e7f971",
+      "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a60ba30b_fea7dc0b",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2118,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-06T22:52:18Z",
+      "side": 1,
+      "message": "Ah, if we\u0027re sorting things later anyway, then this particular change won\u0027t matter (but my concerns regarding ordering consistency remain). Perhaps something to look at later.",
+      "parentUuid": "979c5964_cc01b830",
       "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

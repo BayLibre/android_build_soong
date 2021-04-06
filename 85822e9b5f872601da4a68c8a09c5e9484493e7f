@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "413ea149_c6ff6bdb",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2091,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-06T22:52:18Z",
+      "side": 0,
+      "message": "FYI, (Don\u0027t need to do this in this CL)\n\nWe can make some steps to fix b/183742505 here:\n\nInstead of setting `includeDirs \u003d baseCompilerProps.Include_dirs`, instead:\n\n    for _, rawIncludeDir :\u003d range baseCompilerProps.Include_dirs {\n        localizedIncludeDir :\u003d strings.TrimPrefix(rawIncludeDir, ctx.ModuleDir() + \"/\")\n        includeDirs \u003d append(includeDirs, localizedIncludeDir)\n    }\n\nThis gets part of the way there; if an absolute include_dir lives under the current directory, it makes the path relative.\nHowever, there are more complicated scenarios which aren\u0027t fixed by this, and need a more clever solution. For example, //bionic/libc:libc_openbsd depends on include path \"system/core/libcutils/include\", which exists globally elsewhere.\n\nWe may need to consider refactoring such inclusions into header libraries prior to migration...",
+      "revId": "85822e9b5f872601da4a68c8a09c5e9484493e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
