@@ -16,6 +16,23 @@
       "message": "PTAL. Build/test failures are unrelated.",
       "revId": "54105c48f4496d7d5dcb3c6a4c6179266dfffc8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3c1825a_f9d70138",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-06T03:17:36Z",
+      "side": 1,
+      "message": "bypassing presubmit.\n\n1) build_test4 has been red for a while. unrelated.\n2) gki test failure is unrelated\n3) the following change passed presubmit along with this change.",
+      "revId": "54105c48f4496d7d5dcb3c6a4c6179266dfffc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
