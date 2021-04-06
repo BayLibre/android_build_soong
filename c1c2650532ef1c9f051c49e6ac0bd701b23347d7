@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d359b0ae_bad893e6",
+        "filename": "bp2build/cc_object_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-06T09:46:50Z",
+      "side": 1,
+      "message": "I don\u0027t think so, since the other conditions aren\u0027t exhaustive all the time. i.e. if a module doesn\u0027t have special props for x86, the x86 condition would not get generated, and without a default condition, bazel analysis will fail unexpectedly.",
+      "parentUuid": "60a2a090_baefd821",
+      "range": {
+        "startLine": 455,
+        "startChar": 8,
+        "endLine": 455,
+        "endChar": 35
+      },
+      "revId": "c1c2650532ef1c9f051c49e6ac0bd701b23347d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d65582a2_758429ee",
