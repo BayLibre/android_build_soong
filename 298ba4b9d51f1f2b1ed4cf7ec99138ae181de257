@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c88a93a9_5cb4c643",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-06T18:00:27Z",
+      "side": 1,
+      "message": "This seems wrong to me. A classpathFragment is NOT a prebuilt_etc module. It is certainly not prebuilt. It seems to be pretending to be one simply to try and reuse some code in the apex module for putting a file into the /etc directory in the APEX.\n\nI think it is better for the classpathFragment to refactor the apex functionality to allow the logic to copy the file into the /etc directory to be used for other types. Maybe do something similar to how apex handles compat_configs which also copies files into the etc directory in the apex.\n\nI know there is precedent for this as that is how the linkerConfig module is implemented. I don\u0027t know enough about linkerConfig to know whether that makes sense for it but the classpathFragment is not the same as linkerConfig.",
+      "revId": "298ba4b9d51f1f2b1ed4cf7ec99138ae181de257",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
