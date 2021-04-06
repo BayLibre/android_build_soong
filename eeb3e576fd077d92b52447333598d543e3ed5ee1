@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28efe27e_c58787af",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-06T12:24:57Z",
+      "side": 1,
+      "message": "will we be allowing subdir? Then this can be used to install the prebuilt anywhere.",
+      "range": {
+        "startLine": 357,
+        "startChar": 15,
+        "endLine": 357,
+        "endChar": 24
+      },
+      "revId": "eeb3e576fd077d92b52447333598d543e3ed5ee1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
