@@ -29,6 +29,7 @@ package etc
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/google/blueprint/proptools"
 
@@ -47,6 +48,7 @@ func init() {
 func RegisterPrebuiltEtcBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("prebuilt_etc", PrebuiltEtcFactory)
 	ctx.RegisterModuleType("prebuilt_etc_host", PrebuiltEtcHostFactory)
+	ctx.RegisterModuleType("prebuilt_root", PrebuiltRootFactory)
 	ctx.RegisterModuleType("prebuilt_usr_share", PrebuiltUserShareFactory)
 	ctx.RegisterModuleType("prebuilt_usr_share_host", PrebuiltUserShareHostFactory)
 	ctx.RegisterModuleType("prebuilt_font", PrebuiltFontFactory)
@@ -121,6 +123,8 @@ type PrebuiltEtc struct {
 
 	sourceFilePath android.Path
 	outputFilePath android.OutputPath
+	// If set to true, sub_dir can't be set. This is for prebuilt_root.
+	subdirForbidden bool
 	// The base install location, e.g. "etc" for prebuilt_etc, "usr/share" for prebuilt_usr_share.
 	installDirBase string
 	// The base install location when soc_specific property is set to true, e.g. "firmware" for
@@ -263,6 +267,18 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 	p.outputFilePath = android.PathForModuleOut(ctx, filename).OutputPath
 
+	if p.subdirForbidden {
+		if p.SubDir() != "" {
+			ctx.PropertyErrorf("sub_dir", "Cannot set sub_dir for prebuilt_root module")
+			return
+		}
+
+		if strings.Contains(filename, "/") {
+			ctx.PropertyErrorf("filename", "filename cannot contain separator '/'")
+			return
+		}
+	}
+
 	// Check that `sub_dir` and `relative_install_path` are not set at the same time.
 	if p.properties.Sub_dir != nil && p.properties.Relative_install_path != nil {
 		ctx.PropertyErrorf("sub_dir", "relative_install_path is set. Cannot set sub_dir")
@@ -349,6 +365,17 @@ func PrebuiltEtcHostFactory() android.Module {
 	InitPrebuiltEtcModule(module, "etc")
 	// This module is host-only
 	android.InitAndroidArchModule(module, android.HostSupported, android.MultilibCommon)
+	return module
+}
+
+// prebuilt_root is for a prebuilt artifact that is installed in
+// <partition>/ directory. Can't have any sub directories.
+func PrebuiltRootFactory() android.Module {
+	module := &PrebuiltEtc{}
+	module.subdirForbidden = true
+	InitPrebuiltEtcModule(module, ".")
+	// This module is device-only
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
 	return module
 }
 
