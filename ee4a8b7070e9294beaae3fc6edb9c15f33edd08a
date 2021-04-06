@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e09accab_c40fe3ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2021-04-06T12:29:40Z",
+      "side": 1,
+      "message": "I\u0027m assuming that the sed command is also sent to the RBE action?",
+      "revId": "ee4a8b7070e9294beaae3fc6edb9c15f33edd08a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
