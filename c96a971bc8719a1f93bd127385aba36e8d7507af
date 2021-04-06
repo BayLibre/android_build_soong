@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc4eac20_db362118",
+        "filename": "apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-06T17:42:08Z",
+      "side": 1,
+      "message": "This seems unnecessary.",
+      "revId": "c96a971bc8719a1f93bd127385aba36e8d7507af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
