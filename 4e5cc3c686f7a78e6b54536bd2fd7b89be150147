@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c103c0a_0e1ee7cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-06T15:24:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "14e7f8eb_e340a7ef",
+      "range": {
+        "startLine": 7,
+        "startChar": 58,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "4e5cc3c686f7a78e6b54536bd2fd7b89be150147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eead19f0_6c61b495",
@@ -85,6 +109,24 @@
       "writtenOn": "2021-03-24T09:39:57Z",
       "side": 1,
       "message": "could you please add some details about what do json (or textproto) is going to be used for?",
+      "revId": "4e5cc3c686f7a78e6b54536bd2fd7b89be150147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78e67db1_8bec2cd2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-06T15:24:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eead19f0_6c61b495",
       "revId": "4e5cc3c686f7a78e6b54536bd2fd7b89be150147",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
