@@ -63,6 +63,30 @@
       },
       "revId": "c1c2650532ef1c9f051c49e6ac0bd701b23347d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4711dab_e8661c6f",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-06T07:08:16Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "4a7753fb_1d84886a",
+      "range": {
+        "startLine": 33,
+        "startChar": 56,
+        "endLine": 33,
+        "endChar": 69
+      },
+      "revId": "c1c2650532ef1c9f051c49e6ac0bd701b23347d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
