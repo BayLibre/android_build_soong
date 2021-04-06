@@ -16,6 +16,24 @@
       "message": "I\u0027m assuming that the sed command is also sent to the RBE action?",
       "revId": "ee4a8b7070e9294beaae3fc6edb9c15f33edd08a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aebab00_800c2ba9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-06T16:27:35Z",
+      "side": 1,
+      "message": "Yes, everything in the RuleBuilder is combined into the sbox invocation, and the sbox invocation is sent to RBE.",
+      "parentUuid": "e09accab_c40fe3ed",
+      "revId": "ee4a8b7070e9294beaae3fc6edb9c15f33edd08a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
