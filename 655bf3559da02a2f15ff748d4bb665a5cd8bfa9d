@@ -215,6 +215,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cca3e13f_1957b9a0",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-06T09:51:08Z",
+      "side": 1,
+      "message": "I do have a document that I started writing to discuss this but I never quite finished it and I got taken off that work onto more important stuff. That work is now back on my priority list so I am working on resurrecting the doc (which of course is now out of date) and finishing it off.",
+      "parentUuid": "5c2122f5_6e0e443b",
+      "revId": "655bf3559da02a2f15ff748d4bb665a5cd8bfa9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "49207428_4029946a",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 1
