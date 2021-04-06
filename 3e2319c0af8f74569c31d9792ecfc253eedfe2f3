@@ -16,6 +16,24 @@
       "message": "I suspect the asm/... failures might be fixed by http://b/183739834",
       "revId": "3e2319c0af8f74569c31d9792ecfc253eedfe2f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e0911b3_9284086c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-06T20:12:03Z",
+      "side": 1,
+      "message": "I sent a related CL, https://android-review.googlesource.com/c/platform/build/soong/+/1665920, to address http://b/183739834\n\nOnce that is submitted, I will rebase/revisit this CL",
+      "parentUuid": "21151aea_815cf227",
+      "revId": "3e2319c0af8f74569c31d9792ecfc253eedfe2f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
