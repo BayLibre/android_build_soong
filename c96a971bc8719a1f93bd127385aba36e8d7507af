@@ -16,6 +16,24 @@
       "message": "This seems unnecessary.",
       "revId": "c96a971bc8719a1f93bd127385aba36e8d7507af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a074cda2_60895387",
+        "filename": "apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-06T17:44:39Z",
+      "side": 1,
+      "message": "Yes, fat fingers..",
+      "parentUuid": "fc4eac20_db362118",
+      "revId": "c96a971bc8719a1f93bd127385aba36e8d7507af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
