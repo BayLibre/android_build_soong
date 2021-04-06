@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1530af79_ede97b83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-06T06:42:48Z",
+      "side": 1,
+      "message": "I don\u0027t feel very strongly about this, so +2.",
+      "revId": "c1c2650532ef1c9f051c49e6ac0bd701b23347d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d65582a2_758429ee",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-06T06:42:48Z",
+      "side": 1,
+      "message": "nit: maybe use interface{} here instead? I understand that prettyPrint() requires a reflect.Value and that it\u0027s not very useful to make that an interface{} because that value comes directly from reflection, but maybe it\u0027s better to limit the places where reflection data types are used.\n\nSame applies to selectMap -- maybe it\u0027s better to make its value type interface{} instead of reflect.Value?",
+      "range": {
+        "startLine": 33,
+        "startChar": 56,
+        "endLine": 33,
+        "endChar": 69
+      },
+      "revId": "c1c2650532ef1c9f051c49e6ac0bd701b23347d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
