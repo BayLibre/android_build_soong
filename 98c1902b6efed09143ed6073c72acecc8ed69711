@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06954789_02ee583a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-06T09:49:19Z",
+      "side": 1,
+      "message": "Just going through old changes in my todo list. What is the status of this? Is it still needed or can it be abandoned?",
+      "revId": "98c1902b6efed09143ed6073c72acecc8ed69711",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
