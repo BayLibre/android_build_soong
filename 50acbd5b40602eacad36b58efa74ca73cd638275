@@ -50,6 +50,23 @@
       "message": "This is unsuccessful in changing the targets generated in bionic/libc.\nI believe this is because header globbing is aggressive (`**/*.h`).\n\nA concrete example:\n\n\"libc_headers_arch\", has global include, \"kernel/uapi\", but arch include \"kernel/uapi/asm-arm\" for arm. \nSince the global include is a parent directory of the arch include, the global include captures all headers that the arch include intends to capture. As a result, the arch include has empty headers.",
       "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ebf7c79_e9e7f971",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2118,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-06T21:44:19Z",
+      "side": 1,
+      "message": "This changes the ordering of these includes. I\"m not actually sure which order is correct, but I suspect in rare cases it may matter. We may want to look into this.",
+      "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
