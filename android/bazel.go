@@ -129,51 +129,49 @@ var (
 	// Configure modules in these directories to enable bp2build_available: true or false by default.
 	bp2buildDefaultConfig = Bp2BuildConfig{
 		"bionic":                Bp2BuildDefaultTrueRecursively,
+		"external/gwp_asan":     Bp2BuildDefaultTrueRecursively,
 		"system/core/libcutils": Bp2BuildDefaultTrueRecursively,
 		"system/logging/liblog": Bp2BuildDefaultTrueRecursively,
 	}
 
 	// Per-module denylist to always opt modules out.
 	bp2buildModuleDoNotConvertList = []string{
-		"libBionicBenchmarksUtils",      // ruperts@, cc_library_static
+		"libBionicBenchmarksUtils",      // ruperts@, cc_library_static, 'map' file not found
 		"libbionic_spawn_benchmark",     // ruperts@, cc_library_static, depends on //system/libbase
 		"libc_jemalloc_wrapper",         // ruperts@, cc_library_static, depends on //external/jemalloc_new
-		"libc_bootstrap",                // ruperts@, cc_library_static
-		"libc_init_static",              // ruperts@, cc_library_static
-		"libc_init_dynamic",             // ruperts@, cc_library_static
-		"libc_tzcode",                   // ruperts@, cc_library_static
-		"libc_freebsd",                  // ruperts@, cc_library_static
-		"libc_freebsd_large_stack",      // ruperts@, cc_library_static
+		"libc_bootstrap",                // ruperts@, cc_library_static, 'libc_init_common.h' file not found
+		"libc_init_static",              // ruperts@, cc_library_static, 'asm/auxvec.h' file not found
+		"libc_init_dynamic",             // ruperts@, cc_library_static, 'asm/types.h' file not found
+		"libc_tzcode",                   // ruperts@, cc_library_static, 'asm/types.h' file not found
+		"libc_freebsd",                  // ruperts@, cc_library_static, 'asm/types.h' file not found
+		"libc_freebsd_large_stack",      // ruperts@, cc_library_static, 'asm/param.h' file not found
 		"libc_netbsd",                   // ruperts@, cc_library_static
-		"libc_openbsd_ndk",              // ruperts@, cc_library_static
-		"libc_openbsd_large_stack",      // ruperts@, cc_library_static
-		"libc_openbsd",                  // ruperts@, cc_library_static
-		"libc_gdtoa",                    // ruperts@, cc_library_static
-		"libc_fortify",                  // ruperts@, cc_library_static
-		"libc_bionic",                   // ruperts@, cc_library_static
+		"libc_openbsd_ndk",              // ruperts@, cc_library_static, 'asm/types.h' file not found
+		"libc_openbsd_large_stack",      // ruperts@, cc_library_static, 'asm/types.h' file not found
+		"libc_openbsd",                  // ruperts@, cc_library_static, 'asm/types.h' file not found
+		"libc_gdtoa",                    // ruperts@, cc_library_static, 'asm/types.h' file not found
+		"libc_fortify",                  // ruperts@, cc_library_static, 'asm/poll.h' file not found
+		"libc_bionic",                   // ruperts@, cc_library_static, 'asm/types.h' file not found
 		"libc_bionic_ndk",               // ruperts@, cc_library_static, depends on //bionic/libc/system_properties
-		"libc_bionic_systrace",          // ruperts@, cc_library_static
-		"libc_pthread",                  // ruperts@, cc_library_static
-		"libc_syscalls",                 // ruperts@, cc_library_static
-		"libc_aeabi",                    // ruperts@, cc_library_static
+		"libc_bionic_systrace",          // ruperts@, cc_library_static, 'private/bionic_systrace.h' file not found
+		"libc_pthread",                  // ruperts@, cc_library_static, 'atexit.h' file not found
+		"libc_syscalls",                 // ruperts@, cc_library_static, 'asm/errno.h' file not found
 		"libc_ndk",                      // ruperts@, cc_library_static, depends on //bionic/libm:libm
 		"libc_nopthread",                // ruperts@, cc_library_static, depends on //external/arm-optimized-routines
 		"libc_common",                   // ruperts@, cc_library_static, depends on //bionic/libc:libc_nopthread
-		"libc_static_dispatch",          // ruperts@, cc_library_static
-		"libc_dynamic_dispatch",         // ruperts@, cc_library_static
 		"libc_common_static",            // ruperts@, cc_library_static, depends on //bionic/libc:libc_common
 		"libc_common_shared",            // ruperts@, cc_library_static, depends on //bionic/libc:libc_common
-		"libc_unwind_static",            // ruperts@, cc_library_static
+		"libc_unwind_static",            // ruperts@, cc_library_static, 'asm/auxvec.h' file not found
 		"libc_nomalloc",                 // ruperts@, cc_library_static, depends on //bionic/libc:libc_common
-		"libasync_safe",                 // ruperts@, cc_library_static
+		"libasync_safe",                 // ruperts@, cc_library_static, 'asm/errno.h' file not found
 		"libc_malloc_debug_backtrace",   // ruperts@, cc_library_static, depends on //system/libbase
 		"libsystemproperties",           // ruperts@, cc_library_static, depends on //system/core/property_service/libpropertyinfoparser
-		"libdl_static",                  // ruperts@, cc_library_static
+		"libdl_static",                  // ruperts@, cc_library_static, 'asm/types.h' file not found
 		"liblinker_main",                // ruperts@, cc_library_static, depends on //system/libbase
 		"liblinker_malloc",              // ruperts@, cc_library_static, depends on //system/logging/liblog:liblog
 		"liblinker_debuggerd_stub",      // ruperts@, cc_library_static, depends on //system/libbase
-		"libbionic_tests_headers_posix", // ruperts@, cc_library_static
-		"libc_dns",                      // ruperts@, cc_library_static
+		"libbionic_tests_headers_posix", // ruperts@, cc_library_static, 'sys/uio.h' file not found
+		"libc_dns",                      // ruperts@, cc_library_static, 'asm/param.h' file not found
 		"note_memtag_heap_async",        // cparsons@, cc_library_static
 		"note_memtag_heap_sync",         // cparsons@, cc_library_static
 	}
