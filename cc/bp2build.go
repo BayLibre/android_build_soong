@@ -109,6 +109,23 @@ func bp2BuildParseHeaderLibs(ctx android.TopDownMutatorContext, module *Module) 
 	return ret
 }
 
+func bp2BuildListHeadersInDir(ctx android.TopDownMutatorContext, includeDir string) bazel.LabelList {
+	var globInfix string
+
+	if includeDir == "." {
+		globInfix = ""
+	} else {
+		globInfix = "/**"
+	}
+
+	var includeDirGlobs []string
+	includeDirGlobs = append(includeDirGlobs, includeDir+globInfix+"/*.h")
+	includeDirGlobs = append(includeDirGlobs, includeDir+globInfix+"/*.inc")
+	includeDirGlobs = append(includeDirGlobs, includeDir+globInfix+"/*.hpp")
+
+	return android.BazelLabelForModuleSrc(ctx, includeDirGlobs)
+}
+
 // bp2BuildParseExportedIncludes creates a label list attribute contains the
 // exported included directories of a module.
 func bp2BuildParseExportedIncludes(ctx android.TopDownMutatorContext, module *Module) (bazel.LabelListAttribute, bazel.LabelListAttribute) {
@@ -119,13 +136,10 @@ func bp2BuildParseExportedIncludes(ctx android.TopDownMutatorContext, module *Mo
 
 	includeDirsLabels := android.BazelLabelForModuleSrc(ctx, includeDirs)
 
-	var includeDirGlobs []string
+	var headersLabels bazel.LabelList
 	for _, includeDir := range includeDirs {
-		includeDirGlobs = append(includeDirGlobs, includeDir+"/**/*.h")
-		includeDirGlobs = append(includeDirGlobs, includeDir+"/**/*.inc")
-		includeDirGlobs = append(includeDirGlobs, includeDir+"/**/*.hpp")
+		headersLabels.Append(bp2BuildListHeadersInDir(ctx, includeDir))
 	}
 
-	headersLabels := android.BazelLabelForModuleSrc(ctx, includeDirGlobs)
 	return bazel.MakeLabelListAttribute(includeDirsLabels), bazel.MakeLabelListAttribute(headersLabels)
 }

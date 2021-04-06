@@ -208,6 +208,7 @@ cc_library_static {
         "export_include_dir_2/export_include_dir_2_b.h",
     ],
     includes = [
+        ".",
         "export_include_dir_1",
         "export_include_dir_2",
         "include_dir_1",
@@ -219,27 +220,47 @@ cc_library_static {
     srcs = [
         "foo_static1.cc",
         "foo_static2.cc",
+        "include_dir_1/include_dir_1_a.h",
+        "include_dir_1/include_dir_1_b.h",
+        "include_dir_2/include_dir_2_a.h",
+        "include_dir_2/include_dir_2_b.h",
+        "local_include_dir_1/local_include_dir_1_a.h",
+        "local_include_dir_1/local_include_dir_1_b.h",
+        "local_include_dir_2/local_include_dir_2_a.h",
+        "local_include_dir_2/local_include_dir_2_b.h",
     ],
 )`, `cc_library_static(
     name = "static_lib_1",
+    includes = [
+        ".",
+    ],
     linkstatic = True,
     srcs = [
         "static_lib_1.cc",
     ],
 )`, `cc_library_static(
     name = "static_lib_2",
+    includes = [
+        ".",
+    ],
     linkstatic = True,
     srcs = [
         "static_lib_2.cc",
     ],
 )`, `cc_library_static(
     name = "whole_static_lib_1",
+    includes = [
+        ".",
+    ],
     linkstatic = True,
     srcs = [
         "whole_static_lib_1.cc",
     ],
 )`, `cc_library_static(
     name = "whole_static_lib_2",
+    includes = [
+        ".",
+    ],
     linkstatic = True,
     srcs = [
         "whole_static_lib_2.cc",
