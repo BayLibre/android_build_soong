@@ -33,6 +33,29 @@
       "message": "LGTM, thanks for spotting this and fixing it. We should add a comment about why we specifically use unstripped in some places (Rust needs linkage information from stripped sections), but I can add that in a follow-on CL.",
       "revId": "350b75d11b588d744e8c0fc33a03107418c9d8dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06ab98dc_662f7aaf",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2021-04-07T13:20:05Z",
+      "side": 1,
+      "message": "nit: compiler",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 11
+      },
+      "revId": "350b75d11b588d744e8c0fc33a03107418c9d8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
