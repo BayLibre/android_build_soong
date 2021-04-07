@@ -34,6 +34,24 @@
       "parentUuid": "e7ef18ca_0a5b40b0",
       "revId": "003bbb15855916a3dcf47a31d1263d0e016647b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d945f9c_c1041499",
+        "filename": "java/boot_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-07T12:24:28Z",
+      "side": 1,
+      "message": "Basically because you are duplicating all of the state in ModuleBase and that does not work well in go.\n\nThe ModuleBase in classpathFragment will not be initialized when classpathFragment is embedded in BootImage.\n\nThe embedded classpathFragment will not be able to see the ModuleBase of BootImage.\n\nAny code in classpathFragment that attempts to access its ModuleBase directly via its \"this\" pointer will work when it is created via say systemserver_bootclasspath that does initialize it but won\u0027t when it is called from BootImage code which doesn\u0027t.\n\nI could not find any code in classpathFragment that would be affected at the moment but it would be very easy to add something and it would be very confusing for the next person who finds their code works ok when running standalone but not when embedded.\n\ne.g. say that you wanted to access BaseModuleName() in classpathFragment. When standalone it would work, when embedded it would return an empty string.",
+      "parentUuid": "36091a5e_23f0bedb",
+      "revId": "003bbb15855916a3dcf47a31d1263d0e016647b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
