@@ -750,9 +750,16 @@ func (f *fixture) RunTest() *TestResult {
 	extraNinjaDeps, errs := ctx.ParseBlueprintsFiles("ignored")
 	if len(errs) == 0 {
 		ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
-		extraNinjaDeps, errs = ctx.PrepareBuildActions(f.config)
-		if len(errs) == 0 {
-			ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
+		build := func() {
+			extraNinjaDeps, errs = ctx.PrepareBuildActions(f.config)
+			if len(errs) == 0 {
+				ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
+			}
+		}
+		build()
+		if f.config.BazelContext.BazelEnabled() {
+			f.config.BazelContext.InvokeBazel()
+			build()
 		}
 	}
 

@@ -695,9 +695,11 @@ func TestGenruleWithBazel(t *testing.T) {
 
 	result := android.GroupFixturePreparers(
 		prepareForGenRuleTest, android.FixtureModifyConfig(func(config android.Config) {
-			config.BazelContext = android.MockBazelContext{
-				AllFiles: map[string][]string{
-					"//foo/bar:bar": []string{"bazelone.txt", "bazeltwo.txt"}}}
+			config.BazelContext = android.MockBazelContext(
+				map[string]string{
+					"//foo/bar:bar": "bazelone.txt, bazeltwo.txt",
+				},
+				"outputbase")
 		})).RunTestWithBp(t, testGenruleBp()+bp)
 
 	gen := result.Module("foo", "").(*Module)

@@ -103,7 +103,7 @@ type config struct {
 
 	// A specialized context object for Bazel/Soong mixed builds and migration
 	// purposes.
-	BazelContext BazelContext
+	BazelContext *BazelContext
 
 	ProductVariablesFileName string
 
@@ -275,7 +275,7 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 		// passed to PathForSource or PathForModuleSrc.
 		TestAllowNonExistentPaths: true,
 
-		BazelContext: noopBazelContext{},
+		BazelContext: noopBazelContext(),
 	}
 	config.deviceConfig = &deviceConfig{
 		config: config,
