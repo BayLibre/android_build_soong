@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a08e983_d2248da7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-07T20:15:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cf2250eb_98f32bda",
+      "revId": "6aef015c45926e6b87624289e0050c6f398c4be3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45aa40c5_4351a7f5",
@@ -71,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7544e676_09b9bdf8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-07T20:15:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "152e75f1_f34c22b5",
+      "revId": "6aef015c45926e6b87624289e0050c6f398c4be3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "983615eb_5d8a0f3e",
@@ -102,6 +138,24 @@
       "side": 1,
       "message": "The suffix here means the main architecture. So, say, it will be \"x86\" for \"aosp_cf_x86_phone-userdebug\", \"arm64\" for \"aosp_crosshatch-userdebug\", etc. And of course \"libbase.vendor_static.30.arm64\" can have both arm and arm64, like:\n\n    vendor_snapshot_static {\n        name: \"libbase\",\n        target_arch: \"arm64\",\n        arch: { arm: { src: \"libbase_32.a\" }, arm64: { src: \"libbase_64.a\" }, },\n    }",
       "parentUuid": "983615eb_5d8a0f3e",
+      "revId": "6aef015c45926e6b87624289e0050c6f398c4be3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e14b2e05_c8bfa35f",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-07T20:15:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "241258dd_a26dd8c8",
       "revId": "6aef015c45926e6b87624289e0050c6f398c4be3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
