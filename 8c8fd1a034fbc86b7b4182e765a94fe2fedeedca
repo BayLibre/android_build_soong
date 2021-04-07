@@ -69,6 +69,24 @@
       "parentUuid": "e74d2eb7_b7392063",
       "revId": "8c8fd1a034fbc86b7b4182e765a94fe2fedeedca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14fbee5e_7bc19d1e",
+        "filename": "java/boot_image.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-07T12:26:29Z",
+      "side": 1,
+      "message": "The image name was simply what is used internally in Soong already. I don\u0027t see why you need to know the name of the apex in this code.",
+      "parentUuid": "6676353d_9c3630a7",
+      "revId": "8c8fd1a034fbc86b7b4182e765a94fe2fedeedca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
