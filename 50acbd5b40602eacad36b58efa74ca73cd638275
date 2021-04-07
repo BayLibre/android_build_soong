@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd279df2_824b8014",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-07T03:39:24Z",
+      "side": 1,
+      "message": "since LabelLists are computed by BazelLabelForModuleSrc{Excludes} from []string slices of included and excluded globs/lists, I think we shouldn\u0027t bother with the Excludes field here? The Excludes field is not used in the code generator (it only prettyprints Includes), and I\u0027m not what else actually uses it, or if it\u0027s even useful as a LabelList field.",
+      "parentUuid": "44fa25bd_92e9c564",
+      "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad678bcb_3dfa41b0",
         "filename": "bazel/properties.go",
         "patchSetId": 1
@@ -109,6 +127,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e68ca7c2_fdc4da87",
+        "filename": "bp2build/cc_library_headers_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-07T03:39:24Z",
+      "side": 1,
+      "message": "Will be useful to have a test that mimics the behavior in libc_headers_arch where the arch-specific glob is subtracted away because it exists in the base list.",
+      "range": {
+        "startLine": 161,
+        "startChar": 12,
+        "endLine": 161,
+        "endChar": 51
+      },
+      "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eaae43c5_8b0220f7",
         "filename": "cc/bp2build.go",
         "patchSetId": 1
@@ -156,6 +197,24 @@
       "side": 1,
       "message": "I\u0027m not sure; I would also be fine with, for now, making all headers (even arch-specific headers), globally listed. This is the least strict approach, but, the closest matching Soong\u0027s non-sandbox behavior, for now. It seems thus lower priority to ensure that arch-specific header sources are handled correctly. (Arch-specific include paths, however, are still very important, and will be required to get successful builds of bionic)",
       "parentUuid": "dd3671bb_39d95fc2",
+      "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5efbde1e_882cfc6b",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-07T03:39:24Z",
+      "side": 1,
+      "message": "I agree with going with the recursive glob flattening approach for now, given that it doesn\u0027t deviate much from Soong and provides the same behavior for arch specific includes.",
+      "parentUuid": "fd34bf5e_fec81471",
       "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
