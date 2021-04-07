@@ -57,6 +57,7 @@ var _ android.ExcludeFromVisibilityEnforcementTag = platformBootclasspathDepende
 
 type platformBootclasspathModule struct {
 	android.ModuleBase
+	ClasspathFragmentBase
 
 	properties platformBootclasspathProperties
 
@@ -93,6 +94,8 @@ type platformBootclasspathProperties struct {
 func platformBootclasspathFactory() android.Module {
 	m := &platformBootclasspathModule{}
 	m.AddProperties(&m.properties)
+	// TODO(satayev): split systemserver and apex jars into separate configs.
+	initClasspathFragment(m)
 	android.InitAndroidArchModule(m, android.DeviceSupported, android.MultilibCommon)
 	return m
 }
@@ -182,6 +185,8 @@ func addDependenciesOntoBootImageModules(ctx android.BottomUpMutatorContext, mod
 }
 
 func (b *platformBootclasspathModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	b.classpathFragmentBase().generateAndroidBuildActions(ctx)
+
 	ctx.VisitDirectDepsIf(isActiveModule, func(module android.Module) {
 		tag := ctx.OtherModuleDependencyTag(module)
 		if tag == platformBootclasspathModuleDepTag {
@@ -214,4 +219,8 @@ func (b *platformBootclasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 
 func (b *platformBootclasspathModule) getImageConfig(ctx android.EarlyModuleContext) *bootImageConfig {
 	return defaultBootImageConfig(ctx)
+}
+
+func (b *platformBootclasspathModule) AndroidMkEntries() []android.AndroidMkEntries {
+	return b.classpathFragmentBase().getAndroidMkEntries()
 }
