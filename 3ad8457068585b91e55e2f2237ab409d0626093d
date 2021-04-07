@@ -34,6 +34,24 @@
       "parentUuid": "68ec2cdf_929001c6",
       "revId": "3ad8457068585b91e55e2f2237ab409d0626093d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5bc9b06_38c3803c",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-07T16:09:29Z",
+      "side": 1,
+      "message": "Great!",
+      "parentUuid": "2cf94686_db1a63c0",
+      "revId": "3ad8457068585b91e55e2f2237ab409d0626093d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
