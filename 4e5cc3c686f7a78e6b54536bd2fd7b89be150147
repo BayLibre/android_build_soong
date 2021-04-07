@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46bb631a_197934a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-07T11:16:10Z",
+      "side": 1,
+      "message": "There are no any explicit static configs planned for now, so there is no real concern from my side whether devs have to use json/textproto.\n\nSupporting both is kinda trivial, so I thought that should be fine.",
+      "parentUuid": "58161db0_950ec2d9",
+      "range": {
+        "startLine": 7,
+        "startChar": 58,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "4e5cc3c686f7a78e6b54536bd2fd7b89be150147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eead19f0_6c61b495",

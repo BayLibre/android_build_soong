@@ -33,6 +33,24 @@
       "message": "Maybe a stupid question, but is there anything classpaths_pb2-specific about this code? Why isn\u0027t there a general purpose converter (give it a proto to use). I have a similar converter for the sdk protos and it seems unnecessary to have so many of these",
       "revId": "ca6fe3453ad1d89bd5e88b340ff71ca1ba3fecca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "237e30a4_ffb95323",
+        "filename": "scripts/conv_classpaths_proto.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-07T11:16:10Z",
+      "side": 1,
+      "message": "Not a stupid question. (any are welcome! ^_^)\n\nIt is specific to classpaths_pb2 as it has the generated code to parse/serialize that specific proto message.\n\nprotoc ( - proto compiler) knows how to do this generically for any proto, but only in textproto format. There is an open issue to support JSON as well, https://github.com/protocolbuffers/protobuf/issues/4024.\n\nThese are not the only ones, there are a couple more I\u0027ve seen that do the same for other protos in aosp; sometimes a bit more in case there is a need for some custom checking before/after processing.",
+      "parentUuid": "6d08c248_5c174b4e",
+      "revId": "ca6fe3453ad1d89bd5e88b340ff71ca1ba3fecca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
