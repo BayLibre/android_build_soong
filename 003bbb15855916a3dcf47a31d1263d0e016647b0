@@ -52,6 +52,24 @@
       "parentUuid": "36091a5e_23f0bedb",
       "revId": "003bbb15855916a3dcf47a31d1263d0e016647b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2838f7d1_eb084b56",
+        "filename": "java/boot_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-07T13:03:21Z",
+      "side": 1,
+      "message": "Ah.. thank you for explaining! I clearly misunderstood how struct embedding works..",
+      "parentUuid": "7d945f9c_c1041499",
+      "revId": "003bbb15855916a3dcf47a31d1263d0e016647b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
