@@ -281,6 +281,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9514d1b2_e35ba161",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-07T10:05:23Z",
+      "side": 1,
+      "message": "No, my bad for being unclear, I agree with the current approach of hdrs \u003d base headers + (arch headers - base headers)",
+      "parentUuid": "c413c0af_2824a797",
+      "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ebf7c79_e9e7f971",
         "filename": "cc/library.go",
         "patchSetId": 1
