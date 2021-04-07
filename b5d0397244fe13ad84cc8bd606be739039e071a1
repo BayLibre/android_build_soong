@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53e4d49b_c7d2838a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-07T15:27:48Z",
+      "side": 1,
+      "message": "There is no need to generate two dexpreopt.config files (the \"slim\" one and the \"full\" one added in this CL). If the full config is needed anyway, then there is no reason to have a slim one. I only added the slim config because I needed a small subset of the config fields for dexpreopt. Now I regret it.\n\nCan you rework the patch and add the missing fields to the slim config (and rename it appropriately)? ",
+      "revId": "b5d0397244fe13ad84cc8bd606be739039e071a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
