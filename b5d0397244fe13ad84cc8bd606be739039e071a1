@@ -16,6 +16,29 @@
       "message": "There is no need to generate two dexpreopt.config files (the \"slim\" one and the \"full\" one added in this CL). If the full config is needed anyway, then there is no reason to have a slim one. I only added the slim config because I needed a small subset of the config fields for dexpreopt. Now I regret it.\n\nCan you rework the patch and add the missing fields to the slim config (and rename it appropriately)? ",
       "revId": "b5d0397244fe13ad84cc8bd606be739039e071a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5484da2_df1df31a",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-07T15:30:57Z",
+      "side": 1,
+      "message": "Does it work? There are some complex fields that need to be converted to their JSON counterparts (see lines 332-349 below). I expect that the new function dumps them incorrectly.",
+      "range": {
+        "startLine": 315,
+        "startChar": 1,
+        "endLine": 315,
+        "endChar": 52
+      },
+      "revId": "b5d0397244fe13ad84cc8bd606be739039e071a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
