@@ -16,6 +16,24 @@
       "message": "FYI, (Don\u0027t need to do this in this CL)\n\nWe can make some steps to fix b/183742505 here:\n\nInstead of setting `includeDirs \u003d baseCompilerProps.Include_dirs`, instead:\n\n    for _, rawIncludeDir :\u003d range baseCompilerProps.Include_dirs {\n        localizedIncludeDir :\u003d strings.TrimPrefix(rawIncludeDir, ctx.ModuleDir() + \"/\")\n        includeDirs \u003d append(includeDirs, localizedIncludeDir)\n    }\n\nThis gets part of the way there; if an absolute include_dir lives under the current directory, it makes the path relative.\nHowever, there are more complicated scenarios which aren\u0027t fixed by this, and need a more clever solution. For example, //bionic/libc:libc_openbsd depends on include path \"system/core/libcutils/include\", which exists globally elsewhere.\n\nWe may need to consider refactoring such inclusions into header libraries prior to migration...",
       "revId": "85822e9b5f872601da4a68c8a09c5e9484493e7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce6f3f85_0a6bfda3",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2091,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-07T09:54:10Z",
+      "side": 0,
+      "message": "Done\n\nFor your example from http://b/183742505, the generated BUILD target currently looks like this\n\ncc_library_static(\n    name \u003d \"libc_dns\",\n    copts \u003d [\n        \"-D_LIBC\u003d1\",\n        \"-D__BIONIC_LP32_USE_STAT64\",\n        \"-Wall\",\n        \"-Wextra\",\n        \"-Wunused\",\n        \"-Wno-char-subscripts\",\n        \"-Wno-deprecated-declarations\",\n        \"-Wno-gcc-compat\",\n        \"-Wframe-larger-than\u003d2048\",\n        \"-Werror\u003dpointer-to-int-cast\",\n        \"-Werror\u003dint-to-pointer-cast\",\n        \"-Werror\u003dtype-limits\",\n        \"-Werror\",\n        \"-Wexit-time-destructors\",\n        \"-fno-emulated-tls\",\n        \"-DANDROID_CHANGES\",\n        \"-DINET6\",\n        \"-Wno-unused-parameter\",\n        \"-include netbsd-compat.h\",\n        \"-Wframe-larger-than\u003d66000\",\n        \"-include private/bsd_sys_param.h\",\n    ],\n    deps \u003d [\n        \"//external/gwp_asan:gwp_asan_headers\",\n        \":libc_headers\",\n    ],\n    includes \u003d [\n        \"async_safe/include\",\n        \"platform\",\n        \"system/core/libcutils/include\",\n        \"dns/include\",\n        \"private\",\n        \"upstream-netbsd/lib/libc/include\",\n        \"upstream-netbsd/android/include\",\n    ],\n    linkstatic \u003d True,\n    srcs \u003d [\n        \"dns/nameser/ns_name.c\",\n        \"dns/nameser/ns_netint.c\",\n        \"dns/nameser/ns_parse.c\",\n        \"dns/nameser/ns_print.c\",\n        \"dns/nameser/ns_samedomain.c\",\n        \"dns/nameser/ns_ttl.c\",\n        \"dns/net/getaddrinfo.c\",\n        \"dns/net/gethnamaddr.c\",\n        \"dns/net/getnameinfo.c\",\n        \"dns/net/getservent.c\",\n        \"dns/net/nsdispatch.c\",\n        \"dns/net/sethostent.c\",\n        \"dns/resolv/herror.c\",\n        \"dns/resolv/res_cache.c\",\n        \"dns/resolv/res_comp.c\",\n        \"dns/resolv/res_data.c\",\n        \"dns/resolv/res_debug.c\",\n        \"dns/resolv/res_init.c\",\n        \"dns/resolv/res_mkquery.c\",\n        \"dns/resolv/res_query.c\",\n        \"dns/resolv/res_send.c\",\n        \"dns/resolv/res_state.c\",\n        \"dns/resolv/res_stats.c\",\n        \"upstream-netbsd/lib/libc/isc/ev_streams.c\",\n        \"upstream-netbsd/lib/libc/isc/ev_timers.c\",\n    ],\n)",
+      "parentUuid": "413ea149_c6ff6bdb",
+      "revId": "85822e9b5f872601da4a68c8a09c5e9484493e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

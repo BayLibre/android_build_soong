@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17540749_c35f5595",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-07T09:54:10Z",
+      "side": 1,
+      "message": "OK, I updated this to not update the excludes.",
+      "parentUuid": "fd279df2_824b8014",
+      "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad678bcb_3dfa41b0",
@@ -138,6 +156,30 @@
       "writtenOn": "2021-04-07T03:39:24Z",
       "side": 1,
       "message": "Will be useful to have a test that mimics the behavior in libc_headers_arch where the arch-specific glob is subtracted away because it exists in the base list.",
+      "range": {
+        "startLine": 161,
+        "startChar": 12,
+        "endLine": 161,
+        "endChar": 51
+      },
+      "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "157571dc_12a0dfc5",
+        "filename": "bp2build/cc_library_headers_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-07T09:54:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e68ca7c2_fdc4da87",
       "range": {
         "startLine": 161,
         "startChar": 12,
@@ -215,6 +257,24 @@
       "side": 1,
       "message": "I agree with going with the recursive glob flattening approach for now, given that it doesn\u0027t deviate much from Soong and provides the same behavior for arch specific includes.",
       "parentUuid": "fd34bf5e_fec81471",
+      "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c413c0af_2824a797",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-07T09:54:10Z",
+      "side": 1,
+      "message": "The current approach is\n\nhdrs \u003d base headers + arch headers\n\nExcept that arch headers are usually empty, because the base headers already include them, and we prevent duplicates from appearing in the arch headers\n\nI could rewrite this to be\n\nhdrs \u003d base headers + headers from all arches combined\n\nIs that what you are both suggesting? Although it would be equivalent in most cases to what we have now, it seems less correct, so I\u0027m not sure what that would gain?",
+      "parentUuid": "5efbde1e_882cfc6b",
       "revId": "50acbd5b40602eacad36b58efa74ca73cd638275",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
