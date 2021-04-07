@@ -16,6 +16,24 @@
       "message": "Are we retaining this FIXME? I know I \"Ack\"ed the previous comment, but I still think we may want to put some thought into unique-ifying and/or sorting these strings (as things like cflags may place importance in ordering and duplication)",
       "revId": "3ad8457068585b91e55e2f2237ab409d0626093d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf94686_db1a63c0",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-07T16:08:14Z",
+      "side": 1,
+      "message": "Reworded, how about this?",
+      "parentUuid": "68ec2cdf_929001c6",
+      "revId": "3ad8457068585b91e55e2f2237ab409d0626093d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
