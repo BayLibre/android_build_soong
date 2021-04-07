@@ -52,6 +52,24 @@
       "parentUuid": "f80688e0_6e82a4cf",
       "revId": "298ba4b9d51f1f2b1ed4cf7ec99138ae181de257",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5853eb17_0ebcc709",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-07T12:01:53Z",
+      "side": 1,
+      "message": "Ideally we would still have a proper interface for that, but will refactor this as I am splitting the change anyhow.",
+      "parentUuid": "4c65500f_dff55372",
+      "revId": "298ba4b9d51f1f2b1ed4cf7ec99138ae181de257",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

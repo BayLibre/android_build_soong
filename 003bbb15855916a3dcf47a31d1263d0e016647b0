@@ -16,6 +16,24 @@
       "message": "This is not a good idea. You are embedding another ModuleBase instance in this module.\n\nYou basically have the following choices:\n1. You keep classpathFragment as a separate module type and have platform_bootclasspath module create an instance of it.\n2. You extract the common functionality into a \u0027helper\u0027 struct that you can embed nicely here. You can still keep the classpathFragment as a module type if you need to do that.\n3. You keep classpathFragment as a module type and have any module that wants that functionality to extend it. This is the least flexible option so definitely not something that I would recommend.\n\nEmbedding \u0027helper\u0027 structs is tricky but fortunately there are lots of examples, e.g. SdkBase and you should follow their example. They do have to jump through lots of hoops to make it work, e.g. SdkBase has a \"module SdkAware\" field that is initialized to point to the containing module so that code in SdkBase can access it.",
       "revId": "003bbb15855916a3dcf47a31d1263d0e016647b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36091a5e_23f0bedb",
+        "filename": "java/boot_image.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-07T12:01:53Z",
+      "side": 1,
+      "message": "I am not entirely sure why is this a bad idea?",
+      "parentUuid": "e7ef18ca_0a5b40b0",
+      "revId": "003bbb15855916a3dcf47a31d1263d0e016647b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
