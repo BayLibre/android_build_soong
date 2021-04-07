@@ -22,6 +22,30 @@
       },
       "revId": "08f476bf831850e7e1a86d56d72b518007783045",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a48f685_22623fce",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1693,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-07T15:19:15Z",
+      "side": 1,
+      "message": "it triggers linktype violations as not everyone who use these stubs compile against the public sdk.\n\nAnd no, they aren\u0027t java_sdk_libraries either, it\u0027s just that their names happen to match",
+      "parentUuid": "b3f191e1_42fdc6bf",
+      "range": {
+        "startLine": 1693,
+        "startChar": 70,
+        "endLine": 1693,
+        "endChar": 88
+      },
+      "revId": "08f476bf831850e7e1a86d56d72b518007783045",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
