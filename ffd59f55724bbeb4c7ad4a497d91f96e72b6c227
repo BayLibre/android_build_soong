@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79d0fdff_b5130ad0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-04-07T08:44:51Z",
+      "side": 1,
+      "message": "I\u0027ve rebased this change to my pending change, to make writing tests easier.",
+      "revId": "ffd59f55724bbeb4c7ad4a497d91f96e72b6c227",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
