@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65c977ae_820c652d",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-07T13:26:37Z",
+      "side": 1,
+      "message": "nit: was this case change intentional? It is only used in error messages, so not a big deal",
+      "range": {
+        "startLine": 212,
+        "startChar": 101,
+        "endLine": 212,
+        "endChar": 104
+      },
+      "revId": "12a9325e23ec09bdeac6c6be24c68bbd277cdb2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
