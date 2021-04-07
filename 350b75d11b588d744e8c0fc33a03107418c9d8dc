@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7854b099_c22bd447",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-07T13:25:28Z",
+      "side": 1,
+      "message": "Yes, I missed that. I added a brief comment about that to Module.unstrippedOutputFile. PTAL. You may put more detailed description in a follow-up CL.",
+      "parentUuid": "c5ccb241_49d47e34",
+      "revId": "350b75d11b588d744e8c0fc33a03107418c9d8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06ab98dc_662f7aaf",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-04-07T13:20:05Z",
       "side": 1,
       "message": "nit: compiler",
+      "range": {
+        "startLine": 118,
+        "startChar": 4,
+        "endLine": 118,
+        "endChar": 11
+      },
+      "revId": "350b75d11b588d744e8c0fc33a03107418c9d8dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c56db756_9cc503d7",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-07T13:25:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06ab98dc_662f7aaf",
       "range": {
         "startLine": 118,
         "startChar": 4,
