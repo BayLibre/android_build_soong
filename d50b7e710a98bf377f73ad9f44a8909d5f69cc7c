@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5bcbc15_5cfd92a8",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-07T11:58:46Z",
+      "side": 1,
+      "message": "Ok. aosp/1666821 is it.",
+      "parentUuid": "0d2ef147_5dff54ab",
+      "revId": "d50b7e710a98bf377f73ad9f44a8909d5f69cc7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "625a734a_bff49c6f",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-07T05:01:47Z",
       "side": 1,
       "message": "InstallFile can already  handle calling PackageFile without installing if SkipInstall is set.",
+      "revId": "d50b7e710a98bf377f73ad9f44a8909d5f69cc7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9664d67_f68955b2",
+        "filename": "rust/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-07T11:58:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "625a734a_bff49c6f",
       "revId": "d50b7e710a98bf377f73ad9f44a8909d5f69cc7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
