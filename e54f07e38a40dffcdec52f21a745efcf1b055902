@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "e54f07e38a40dffcdec52f21a745efcf1b055902",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ade439f_84c885a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-07T17:51:23Z",
+      "side": 1,
+      "message": "Bypassing presubmit. The GKI test has been red and isn\u0027t related with this CL.",
+      "revId": "e54f07e38a40dffcdec52f21a745efcf1b055902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
