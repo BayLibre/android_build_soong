@@ -166,3 +166,134 @@ func TestDexPreoptProfile(t *testing.T) {
 		t.Errorf("\nwant installs:\n   %v\ngot:\n   %v", wantInstalls, rule.Installs())
 	}
 }
+
+func TestDexPreoptConfigToJson(t *testing.T) {
+	config := android.TestConfig("out", nil, "", nil)
+	ctx := android.BuilderContextForTesting(config)
+	module := testSystemModuleConfig(ctx, "test")
+	data, err := moduleConfigToJSON(module)
+	if err != nil {
+		t.Errorf("Failed to convert module config data to JSON, %v", err)
+	}
+	parsed, err := ParseModuleConfig(ctx, data)
+	if err != nil {
+		t.Errorf("Failed to parse JSON, %v", err)
+	}
+	before := fmt.Sprintf("%v", module)
+	after := fmt.Sprintf("%v", parsed)
+	android.AssertStringEquals(t, "The result must be the same as the original after marshalling and unmarshalling it.", before, after)
+}
+
+func TestDexPreoptConfigCompatibility(t *testing.T) {
+	config := android.TestConfig("out", nil, "", nil)
+	ctx := android.BuilderContextForTesting(config)
+	// An arbitrary json file at the moment to keep compatibility
+	json := `
+	{
+		"BuildPath": "out/soong/.intermediates/packages/apps/DocumentsUI/DocumentsUI/android_common/dexpreopt/DocumentsUI.jar",
+		"DexPath": "out/soong/.intermediates/packages/apps/DocumentsUI/DocumentsUI/android_common/aligned/DocumentsUI.jar",
+		"ManifestPath": "out/soong/.intermediates/packages/apps/DocumentsUI/DocumentsUI/android_common/manifest_merger/AndroidManifest.xml",
+		"ProfileClassListing": "",
+		"ProfileBootListing": "",
+		"EnforceUsesLibrariesStatusFile": "out/soong/.intermediates/packages/apps/DocumentsUI/DocumentsUI/android_common/enforce_uses_libraries.status",
+		"ClassLoaderContexts": null,
+		"DexPreoptImages": [
+			"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-framework.art"
+		],
+		"DexPreoptImagesDeps": [
+			[
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-framework.art",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-framework.oat",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-framework.vdex",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-ext.art",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-ext.oat",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-ext.vdex",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-core-icu4j.art",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-core-icu4j.oat",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-core-icu4j.vdex",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-telephony-common.art",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-telephony-common.oat",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-telephony-common.vdex",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-voip-common.art",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-voip-common.oat",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-voip-common.vdex",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-ims-common.art",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-ims-common.oat",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-ims-common.vdex",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-framework-atb-backward-compatibility.art",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-framework-atb-backward-compatibility.oat",
+				"out/soong/vsoc_x86/dex_bootjars/android/system/framework/x86/boot-framework-atb-backward-compatibility.vdex"
+			]
+		],
+		"PreoptBootClassPathDexFiles": [
+			"out/soong/vsoc_x86/dex_artjars_input/core-oj.jar",
+			"out/soong/vsoc_x86/dex_artjars_input/core-libart.jar",
+			"out/soong/vsoc_x86/dex_artjars_input/okhttp.jar",
+			"out/soong/vsoc_x86/dex_artjars_input/bouncycastle.jar",
+			"out/soong/vsoc_x86/dex_artjars_input/apache-xml.jar",
+			"out/soong/vsoc_x86/dex_bootjars_input/framework.jar",
+			"out/soong/vsoc_x86/dex_bootjars_input/ext.jar",
+			"out/soong/vsoc_x86/dex_bootjars_input/core-icu4j.jar",
+			"out/soong/vsoc_x86/dex_bootjars_input/telephony-common.jar",
+			"out/soong/vsoc_x86/dex_bootjars_input/voip-common.jar",
+			"out/soong/vsoc_x86/dex_bootjars_input/ims-common.jar",
+			"out/soong/vsoc_x86/dex_bootjars_input/framework-atb-backward-compatibility.jar",
+			"out/soong/vsoc_x86/updatable_bootjars/conscrypt.jar",
+			"out/soong/vsoc_x86/updatable_bootjars/updatable-media.jar",
+			"out/soong/vsoc_x86/updatable_bootjars/framework-mediaprovider.jar",
+			"out/soong/vsoc_x86/updatable_bootjars/framework-statsd.jar",
+			"out/soong/vsoc_x86/updatable_bootjars/framework-permission.jar",
+			"out/soong/vsoc_x86/updatable_bootjars/framework-sdkextensions.jar",
+			"out/soong/vsoc_x86/updatable_bootjars/framework-wifi.jar",
+			"out/soong/vsoc_x86/updatable_bootjars/framework-tethering.jar",
+			"out/soong/vsoc_x86/updatable_bootjars/android.net.ipsec.ike.jar"
+		],
+		"Name": "DocumentsUI",
+		"DexLocation": "/system/priv-app/DocumentsUI/DocumentsUI.apk",
+		"UncompressedDex": true,
+		"HasApkLibraries": false,
+		"PreoptFlags": null,
+		"ProfileIsTextListing": false,
+		"EnforceUsesLibraries": true,
+		"ProvidesUsesLibrary": "DocumentsUI",
+		"Archs": [
+			"x86"
+		],
+		"DexPreoptImageLocations": [
+			"out/soong/vsoc_x86/dex_artjars/android/apex/art_boot_images/javalib/boot.art",
+			"out/soong/vsoc_x86/dex_bootjars/android/system/framework/boot-framework.art"
+		],
+		"PreoptBootClassPathDexLocations": [
+			"/apex/com.android.art/javalib/core-oj.jar",
+			"/apex/com.android.art/javalib/core-libart.jar",
+			"/apex/com.android.art/javalib/okhttp.jar",
+			"/apex/com.android.art/javalib/bouncycastle.jar",
+			"/apex/com.android.art/javalib/apache-xml.jar",
+			"/system/framework/framework.jar",
+			"/system/framework/ext.jar",
+			"/apex/com.android.i18n/javalib/core-icu4j.jar",
+			"/system/framework/telephony-common.jar",
+			"/system/framework/voip-common.jar",
+			"/system/framework/ims-common.jar",
+			"/system/framework/framework-atb-backward-compatibility.jar",
+			"/apex/com.android.conscrypt/javalib/conscrypt.jar",
+			"/apex/com.android.media/javalib/updatable-media.jar",
+			"/apex/com.android.mediaprovider/javalib/framework-mediaprovider.jar",
+			"/apex/com.android.os.statsd/javalib/framework-statsd.jar",
+			"/apex/com.android.permission/javalib/framework-permission.jar",
+			"/apex/com.android.sdkext/javalib/framework-sdkextensions.jar",
+			"/apex/com.android.wifi/javalib/framework-wifi.jar",
+			"/apex/com.android.tethering/javalib/framework-tethering.jar",
+			"/apex/com.android.ipsec/javalib/android.net.ipsec.ike.jar"
+		],
+		"PreoptExtractedApk": false,
+		"NoCreateAppImage": false,
+		"ForceCreateAppImage": false,
+		"PresignedPrebuilt": false
+	}
+	`
+	_, err := ParseModuleConfig(ctx, []byte(json))
+	if err != nil {
+		t.Errorf("Failed to parse JSON, %v", err)
+	}
+}
