@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d2ef147_5dff54ab",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-07T05:01:47Z",
+      "side": 1,
+      "message": "This seems like an odd use of PackagingSpec, since you\u0027re not using the target destination information at all.  Would it be better to fix rust to have OutputFile be the stripped file like it is for C++, and use a different interface to get the file used for linking?",
+      "revId": "d50b7e710a98bf377f73ad9f44a8909d5f69cc7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "625a734a_bff49c6f",
+        "filename": "rust/compiler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-07T05:01:47Z",
+      "side": 1,
+      "message": "InstallFile can already  handle calling PackageFile without installing if SkipInstall is set.",
+      "revId": "d50b7e710a98bf377f73ad9f44a8909d5f69cc7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
