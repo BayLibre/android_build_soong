@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab988cff_90b3708c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-07T16:44:43Z",
+      "side": 1,
+      "message": "I\u0027m concerned that this is taking an internal implementation detail between two parts of the build and making it an external API that we can\u0027t change.  Could you instead create your own JSON or textproto output that you control the fields of?  The dexpreopt package (which is part of dexpreopt_gen for Make modules) could then translate the build config into the exported config.",
+      "revId": "b5d0397244fe13ad84cc8bd606be739039e071a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5484da2_df1df31a",
