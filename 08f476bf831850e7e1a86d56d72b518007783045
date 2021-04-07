@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3f191e1_42fdc6bf",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1693,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-07T15:10:10Z",
+      "side": 1,
+      "message": "Why? What is wrong with treating them as stubs? Or are they not actually stubs and just have a name that happens to match?",
+      "range": {
+        "startLine": 1693,
+        "startChar": 70,
+        "endLine": 1693,
+        "endChar": 88
+      },
+      "revId": "08f476bf831850e7e1a86d56d72b518007783045",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
