@@ -50,6 +50,24 @@
       "message": "Doesn\u0027t this mean you could never have an arm library in the snapshot?",
       "revId": "6aef015c45926e6b87624289e0050c6f398c4be3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "241258dd_a26dd8c8",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-04-07T06:05:05Z",
+      "side": 1,
+      "message": "The suffix here means the main architecture. So, say, it will be \"x86\" for \"aosp_cf_x86_phone-userdebug\", \"arm64\" for \"aosp_crosshatch-userdebug\", etc. And of course \"libbase.vendor_static.30.arm64\" can have both arm and arm64, like:\n\n    vendor_snapshot_static {\n        name: \"libbase\",\n        target_arch: \"arm64\",\n        arch: { arm: { src: \"libbase_32.a\" }, arm64: { src: \"libbase_64.a\" }, },\n    }",
+      "parentUuid": "983615eb_5d8a0f3e",
+      "revId": "6aef015c45926e6b87624289e0050c6f398c4be3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
