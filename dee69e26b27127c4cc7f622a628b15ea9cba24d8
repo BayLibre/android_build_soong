@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfa598b1_972e4301",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 48
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-07T14:19:31Z",
+      "side": 1,
+      "message": "(this CL is still missing bp2build unit tests, will mail for review once it\u0027s ready. Marking as active to send it for presubmit testing)",
+      "revId": "dee69e26b27127c4cc7f622a628b15ea9cba24d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
