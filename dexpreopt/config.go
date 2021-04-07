@@ -115,7 +115,7 @@ type ModuleConfig struct {
 	DexLocation     string // dex location on device
 	BuildPath       android.OutputPath
 	DexPath         android.Path
-	ManifestPath    android.Path
+	ManifestPath    android.OptionalPath
 	UncompressedDex bool
 	HasApkLibraries bool
 	PreoptFlags     []string
@@ -266,19 +266,21 @@ func SetTestGlobalConfig(config android.Config, globalConfig *GlobalConfig) {
 // stage.
 func ParseModuleConfig(ctx android.PathContext, data []byte) (*ModuleConfig, error) {
 	type ModuleJSONConfig struct {
-		*ModuleConfig
+		BuildPath    string
+		DexPath      string
+		ManifestPath string
 
-		// Copies of entries in ModuleConfig that are not constructable without extra parameters.  They will be
-		// used to construct the real value manually below.
-		BuildPath                      string
-		DexPath                        string
-		ManifestPath                   string
-		ProfileClassListing            string
+		ProfileClassListing string
+		ProfileBootListing  string
+
 		EnforceUsesLibrariesStatusFile string
 		ClassLoaderContexts            jsonClassLoaderContextMap
-		DexPreoptImages                []string
-		DexPreoptImageLocations        []string
-		PreoptBootClassPathDexFiles    []string
+
+		DexPreoptImages     []string
+		DexPreoptImagesDeps [][]string
+
+		PreoptBootClassPathDexFiles []string
+		*ModuleConfig
 	}
 
 	config := ModuleJSONConfig{}
@@ -291,18 +293,87 @@ func ParseModuleConfig(ctx android.PathContext, data []byte) (*ModuleConfig, err
 	// Construct paths that require a PathContext.
 	config.ModuleConfig.BuildPath = constructPath(ctx, config.BuildPath).(android.OutputPath)
 	config.ModuleConfig.DexPath = constructPath(ctx, config.DexPath)
-	config.ModuleConfig.ManifestPath = constructPath(ctx, config.ManifestPath)
+	config.ModuleConfig.ManifestPath = android.OptionalPathForPath(constructPath(ctx, config.ManifestPath))
 	config.ModuleConfig.ProfileClassListing = android.OptionalPathForPath(constructPath(ctx, config.ProfileClassListing))
 	config.ModuleConfig.EnforceUsesLibrariesStatusFile = constructPath(ctx, config.EnforceUsesLibrariesStatusFile)
 	config.ModuleConfig.ClassLoaderContexts = fromJsonClassLoaderContext(ctx, config.ClassLoaderContexts)
 	config.ModuleConfig.DexPreoptImages = constructPaths(ctx, config.DexPreoptImages)
-	config.ModuleConfig.DexPreoptImageLocations = config.DexPreoptImageLocations
 	config.ModuleConfig.PreoptBootClassPathDexFiles = constructPaths(ctx, config.PreoptBootClassPathDexFiles)
 
 	// This needs to exist, but dependencies are already handled in Make, so we don't need to pass them through JSON.
 	config.ModuleConfig.DexPreoptImagesDeps = make([]android.OutputPaths, len(config.ModuleConfig.DexPreoptImages))
 
 	return config.ModuleConfig, nil
+}
+
+func pathsToStrings(paths []android.Path) []string {
+	ret := make([]string, 0, len(paths))
+	for _, p := range paths {
+		ret = append(ret, p.String())
+	}
+	return ret
+}
+func toPathList(s android.OutputPaths) []android.Path {
+	intf := make([]android.Path, 0, len(s))
+	for _, op := range s {
+		intf = append(intf, op)
+	}
+	return intf
+}
+
+func pathListsToStringLists(pathss []android.OutputPaths) [][]string {
+	ret := make([][]string, 0, len(pathss))
+	for _, ps := range pathss {
+		ret = append(ret, pathsToStrings(toPathList(ps)))
+	}
+	return ret
+}
+
+func moduleConfigToJSON(config *ModuleConfig) ([]byte, error) {
+	return json.MarshalIndent(&struct {
+		BuildPath    string
+		DexPath      string
+		ManifestPath string
+
+		ProfileClassListing string
+		ProfileBootListing  string
+
+		EnforceUsesLibrariesStatusFile string
+		ClassLoaderContexts            jsonClassLoaderContextMap
+
+		DexPreoptImages     []string
+		DexPreoptImagesDeps [][]string
+
+		PreoptBootClassPathDexFiles []string
+		*ModuleConfig
+	}{
+		BuildPath:                      config.BuildPath.String(),
+		DexPath:                        config.DexPath.String(),
+		ManifestPath:                   config.ManifestPath.String(),
+		ProfileClassListing:            config.ProfileClassListing.String(),
+		ProfileBootListing:             config.ProfileBootListing.String(),
+		EnforceUsesLibrariesStatusFile: config.EnforceUsesLibrariesStatusFile.String(),
+		DexPreoptImages:                pathsToStrings(config.DexPreoptImages),
+		DexPreoptImagesDeps:            pathListsToStringLists(config.DexPreoptImagesDeps),
+		PreoptBootClassPathDexFiles:    pathsToStrings(config.PreoptBootClassPathDexFiles),
+		ModuleConfig:                   config,
+	}, "", "    ")
+}
+
+// WriteModuleConfig serializes a ModuleConfig into a per-module dexpreopt.config JSON file.
+// These config files are used for post-processing.
+func WriteModuleConfig(ctx android.ModuleContext, config *ModuleConfig, path android.WritablePath) {
+	if path == nil {
+		return
+	}
+
+	data, err := moduleConfigToJSON(config)
+	if err != nil {
+		ctx.ModuleErrorf("failed to JSON marshal module dexpreopt.config: %v", err)
+		return
+	}
+
+	android.WriteFileRule(ctx, path, string(data))
 }
 
 // WriteSlimModuleConfigForMake serializes a subset of ModuleConfig into a per-module
