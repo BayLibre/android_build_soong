@@ -172,3 +172,64 @@ func TestPlatformBootclasspath_Dist(t *testing.T) {
 	android.AssertStringEquals(t, "platform dist goals phony", ".PHONY: droidcore\n", goals[0])
 	android.AssertStringEquals(t, "platform dist goals call", "$(call dist-for-goals,droidcore,out/soong/hiddenapi/hiddenapi-flags.csv:hiddenapi-flags.csv)\n", android.StringRelativeToTop(result.Config, goals[1]))
 }
+
+func TestPlatformBootclasspathVariant(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForTestWithPlatformBootclasspath,
+		android.FixtureWithRootAndroidBp(`
+			platform_bootclasspath {
+				name: "platform-bootclasspath",
+			}
+		`),
+	).RunTest(t)
+
+	variants := result.ModuleVariantsForTests("platform-bootclasspath")
+	android.AssertIntEquals(t, "expect 1 variant", 1, len(variants))
+}
+
+func TestPlatformBootclasspath_ClasspathFragmentPaths(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForTestWithPlatformBootclasspath,
+		android.FixtureWithRootAndroidBp(`
+			platform_bootclasspath {
+				name: "platform-bootclasspath",
+			}
+		`),
+	).RunTest(t)
+
+	p := result.Module("platform-bootclasspath", "android_common").(*platformBootclasspathModule)
+	android.AssertStringEquals(t, "output filepath", p.Name()+".pb", p.ClasspathFragmentBase.outputFilepath.Base())
+	android.AssertPathRelativeToTopEquals(t, "install filepath", "out/soong/target/product/test_device/system/etc/classpaths", p.ClasspathFragmentBase.installDirPath)
+}
+
+func TestPlatformBootclasspathModule_AndroidMkEntries(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForTestWithPlatformBootclasspath,
+		android.FixtureWithRootAndroidBp(`
+			platform_bootclasspath {
+				name: "platform-bootclasspath",
+			}
+		`),
+	).RunTest(t)
+
+	want := map[string][]string{
+		"LOCAL_MODULE":                {"platform-bootclasspath"},
+		"LOCAL_MODULE_CLASS":          {"ETC"},
+		"LOCAL_INSTALLED_MODULE_STEM": {"platform-bootclasspath.pb"},
+		// Output and Install paths are tested separately
+	}
+
+	p := result.Module("platform-bootclasspath", "android_common").(*platformBootclasspathModule)
+
+	entries := android.AndroidMkEntriesForTest(t, result.TestContext, p)
+	android.AssertIntEquals(t, "expect 1 entry", 1, len(entries))
+
+	got := entries[0]
+	for k, expectedValue := range want {
+		if value, ok := got.EntryMap[k]; ok {
+			android.AssertDeepEquals(t, k, expectedValue, value)
+		} else {
+			t.Errorf("No %s defined, saw %q", k, got.EntryMap)
+		}
+	}
+}
