@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "152e75f1_f34c22b5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-04-07T06:05:37Z",
+      "side": 1,
+      "message": "I\u0027ll do it as a followup CL.",
+      "parentUuid": "45aa40c5_4351a7f5",
+      "revId": "6aef015c45926e6b87624289e0050c6f398c4be3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "983615eb_5d8a0f3e",
         "filename": "cc/snapshot_prebuilt.go",
         "patchSetId": 1
