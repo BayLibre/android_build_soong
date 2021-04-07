@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b38b8d6_f92270d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-07T11:39:02Z",
+      "side": 1,
+      "message": "The change as it stands is hard to review and understand what is going on for a number of reasons:\n1. It is trying to do lots of different things in one change.\n2. There are no tests for the new functionality.\n3. It needs more context in the commit comment and the code comments.\n\nBreaking it down into a number of smaller changes will make it easier to address all of those issues. A few rules of thumb I follow:\n1. Keep refactoring (i.e. restructuring code without changing behaviour) separate from functional changes.\n2. When writing a commit comment that provides an overview of the change if you find yourself writing \"and this change also does ...\" - then chances are it should be split up.\n3. Never mix code moves and code changes together (not relevant to this change AFAICT).\n\nBased on the changes here I think you could break it down as follows:\n1. Add classpathFragment (or classpathFragmentBase if you go the embed route).\n2. Add systemserver_classpath_fragment.\n3. Integrate with apex.\n4. Integrate with platform_bootclasspath.\n5. Integrate with bootclasspath_fragment\n6. Refactoring in dexpreopt config - change of method type.\n7. Make variables - this seems to have broken the build.\n\nThe latter two could be combined into one as the refactoring is small.\n\nEach of those changes really needs at least one test.",
+      "revId": "8c8fd1a034fbc86b7b4182e765a94fe2fedeedca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e74d2eb7_b7392063",
+        "filename": "java/boot_image.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-07T11:39:02Z",
+      "side": 1,
+      "message": "Why is \"com.android.art\" special cased here and below? This sort of thing should be being specified in the Android.bp file not hard coded in Soong.",
+      "revId": "8c8fd1a034fbc86b7b4182e765a94fe2fedeedca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

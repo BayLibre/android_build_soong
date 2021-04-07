@@ -34,6 +34,24 @@
       "parentUuid": "c88a93a9_5cb4c643",
       "revId": "298ba4b9d51f1f2b1ed4cf7ec99138ae181de257",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c65500f_dff55372",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-07T11:39:02Z",
+      "side": 1,
+      "message": "bootclasspath_fragments are very different to the other types so I would keep them separate. It is time consuming to separate things apart if you do want to treat them differently. e.g. The platform_compat_config pretended to be a PrebuiltEtc module in a similar way to what you are doing \n\nI think that it would be better if you simply duplicated the etc handling code in apex to deal with which is basically what I did with compat config. It is about three lines of code so not a lot and I think it is more important to get the structure correct.",
+      "parentUuid": "f80688e0_6e82a4cf",
+      "revId": "298ba4b9d51f1f2b1ed4cf7ec99138ae181de257",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
