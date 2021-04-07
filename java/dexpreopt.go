@@ -45,6 +45,8 @@ type dexpreopter struct {
 	// <uses-library> by Make modules. The path is passed to Make via LOCAL_SOONG_DEXPREOPT_CONFIG
 	// variable. If the path is nil, no config is generated (which is the case for apps and tests).
 	configPath android.WritablePath
+	// A path to a full dexpreopt.config to dexpreopt in the post processing.
+	fullConfigPath android.WritablePath
 }
 
 type DexpreoptProperties struct {
@@ -250,6 +252,9 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Wr
 
 		PresignedPrebuilt: d.isPresignedPrebuilt,
 	}
+
+	d.fullConfigPath = android.PathForModuleOut(ctx, "dexpreopt", "full_dexpreopt.config")
+	dexpreopt.WriteModuleConfig(ctx, dexpreoptConfig, d.fullConfigPath)
 
 	dexpreoptRule, err := dexpreopt.GenerateDexpreoptRule(ctx, globalSoong, global, dexpreoptConfig)
 	if err != nil {

@@ -129,6 +129,9 @@ func (library *Library) AndroidMkEntries() []android.AndroidMkEntries {
 					if library.dexpreopter.configPath != nil {
 						entries.SetPath("LOCAL_SOONG_DEXPREOPT_CONFIG", library.dexpreopter.configPath)
 					}
+					if library.dexpreopter.fullConfigPath != nil {
+						entries.SetPath("LOCAL_SOONG_FULL_DEXPREOPT_CONFIG", library.dexpreopter.fullConfigPath)
+					}
 				},
 			},
 		})
@@ -397,6 +400,9 @@ func (app *AndroidApp) AndroidMkEntries() []android.AndroidMkEntries {
 				}
 				if len(app.dexpreopter.builtInstalled) > 0 {
 					entries.SetString("LOCAL_SOONG_BUILT_INSTALLED", app.dexpreopter.builtInstalled)
+				}
+				if app.dexpreopter.fullConfigPath != nil {
+					entries.SetPath("LOCAL_SOONG_FULL_DEXPREOPT_CONFIG", app.dexpreopter.fullConfigPath)
 				}
 				for _, extra := range app.extraOutputFiles {
 					install := app.onDeviceDir + "/" + extra.Base()

@@ -305,6 +305,22 @@ func ParseModuleConfig(ctx android.PathContext, data []byte) (*ModuleConfig, err
 	return config.ModuleConfig, nil
 }
 
+// WriteModuleConfig serializes a ModuleConfig into a per-module dexpreopt.config JSON file.
+// These config files are used for post-processing.
+func WriteModuleConfig(ctx android.ModuleContext, config *ModuleConfig, path android.WritablePath) {
+	if path == nil {
+		return
+	}
+
+	data, err := json.MarshalIndent(config, "", "    ")
+	if err != nil {
+		ctx.ModuleErrorf("failed to JSON marshal module dexpreopt.config: %v", err)
+		return
+	}
+
+	android.WriteFileRule(ctx, path, string(data))
+}
+
 // WriteSlimModuleConfigForMake serializes a subset of ModuleConfig into a per-module
 // dexpreopt.config JSON file. It is a way to pass dexpreopt information about Soong modules to
 // Make, which is needed when a Make module has a <uses-library> dependency on a Soong module.
