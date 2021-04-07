@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b4d5fe_ebece2c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-07T12:05:00Z",
+      "side": 1,
+      "message": "Happy to split into small CLs, I mainly wanted your opinion of whole approach in general, which I assume is usually easier to review in one change.\n\n(While generally, I support go/small-cls, it is usually PITA in android due to slow/flaky presubmits and frequent merge conflicts. Slow presubmits in soong/ specifically, but I\u0027ve heard you are working on some improvements to that, so thank you! :\n)",
+      "parentUuid": "7b38b8d6_f92270d1",
+      "revId": "8c8fd1a034fbc86b7b4182e765a94fe2fedeedca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e74d2eb7_b7392063",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-07T11:39:02Z",
       "side": 1,
       "message": "Why is \"com.android.art\" special cased here and below? This sort of thing should be being specified in the Android.bp file not hard coded in Soong.",
+      "revId": "8c8fd1a034fbc86b7b4182e765a94fe2fedeedca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6676353d_9c3630a7",
+        "filename": "java/boot_image.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-07T12:05:00Z",
+      "side": 1,
+      "message": "Agreed, this was mostly done for local convenience. Ideally, the image_name would be com.android.art, instead of arbitrary \"art\" I think; so it could signify what\u0027s included. For system though, we need to keep \"exclude\" for now at least.",
+      "parentUuid": "e74d2eb7_b7392063",
       "revId": "8c8fd1a034fbc86b7b4182e765a94fe2fedeedca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
