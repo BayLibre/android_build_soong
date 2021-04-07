@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58161db0_950ec2d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-07T10:55:14Z",
+      "side": 1,
+      "message": "guess you resolved this by making it support both?",
+      "parentUuid": "6c103c0a_0e1ee7cd",
+      "range": {
+        "startLine": 7,
+        "startChar": 58,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "4e5cc3c686f7a78e6b54536bd2fd7b89be150147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eead19f0_6c61b495",

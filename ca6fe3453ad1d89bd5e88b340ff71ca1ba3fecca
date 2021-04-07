@@ -16,6 +16,23 @@
       "message": "I don\u0027t know python or the Soong side of python enough to know whether this is the right way to do it but it generally looks ok to me.",
       "revId": "ca6fe3453ad1d89bd5e88b340ff71ca1ba3fecca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d08c248_5c174b4e",
+        "filename": "scripts/conv_classpaths_proto.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-07T10:55:14Z",
+      "side": 1,
+      "message": "Maybe a stupid question, but is there anything classpaths_pb2-specific about this code? Why isn\u0027t there a general purpose converter (give it a proto to use). I have a similar converter for the sdk protos and it seems unnecessary to have so many of these",
+      "revId": "ca6fe3453ad1d89bd5e88b340ff71ca1ba3fecca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
