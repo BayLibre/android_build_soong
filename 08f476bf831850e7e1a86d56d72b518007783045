@@ -46,6 +46,30 @@
       },
       "revId": "08f476bf831850e7e1a86d56d72b518007783045",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c302229d_cbbe7114",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1693,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-07T15:28:30Z",
+      "side": 1,
+      "message": "\u003e And no, they aren\u0027t java_sdk_libraries either, it\u0027s just that their names happen to match.\n\nYuck!",
+      "parentUuid": "3a48f685_22623fce",
+      "range": {
+        "startLine": 1693,
+        "startChar": 70,
+        "endLine": 1693,
+        "endChar": 88
+      },
+      "revId": "08f476bf831850e7e1a86d56d72b518007783045",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
