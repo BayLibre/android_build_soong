@@ -73,8 +73,12 @@ func (fuzzer *fuzzDecorator) compilerDeps(ctx DepsContext, deps Deps) Deps {
 	if libFuzzerRuntimeLibrary := config.LibFuzzerRuntimeLibrary(ctx.toolchain()); libFuzzerRuntimeLibrary != "" {
 		deps.StaticLibs = append(deps.StaticLibs, libFuzzerRuntimeLibrary)
 	}
-	if libclangRuntimeLibrary := config.LibclangRuntimeLibrary(ctx.toolchain(), "asan"); libclangRuntimeLibrary != "" {
-		deps.SharedLibs = append(deps.SharedLibs, libclangRuntimeLibrary)
+	if libclangRuntimeLibrary := config.LibclangRuntimeLibrary(ctx.toolchain(), "hwasan"); libclangRuntimeLibrary != "" {
+		if mod, ok := ctx.Module().(*Module); ok {
+			if mod.IsSanitizerEnabled(cc.Fuzzer) {
+				deps.SharedLibs = append(deps.SharedLibs, libclangRuntimeLibrary)
+			}
+		}
 	}
 	deps.SharedLibs = append(deps.SharedLibs, "libc++")
 	deps.Rlibs = append(deps.Rlibs, "liblibfuzzer_sys")
