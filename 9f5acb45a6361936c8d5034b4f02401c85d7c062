@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e32d6402_38108501",
+        "filename": "android/bazel.go",
+        "patchSetId": 57
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-08T10:51:57Z",
+      "side": 1,
+      "message": "Could you add notes about why these don\u0027t work?",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 51
+      },
+      "revId": "9f5acb45a6361936c8d5034b4f02401c85d7c062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51dbe122_f45c6dbe",
+        "filename": "bazel/properties.go",
+        "patchSetId": 57
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-08T10:51:57Z",
+      "side": 1,
+      "message": "We should probably look for the alternative header extensions as well\n\ne.g. .inc and .hpp",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 36
+      },
+      "revId": "9f5acb45a6361936c8d5034b4f02401c85d7c062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
