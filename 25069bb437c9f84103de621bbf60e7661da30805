@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c1372c6_5b85e53a",
+        "filename": "bazel/properties.go",
+        "patchSetId": 59
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-08T19:53:51Z",
+      "side": 1,
+      "message": "godocs?",
+      "range": {
+        "startLine": 51,
+        "startChar": 21,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "revId": "25069bb437c9f84103de621bbf60e7661da30805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4c39c96_2c2dad18",
+        "filename": "bazel/properties.go",
+        "patchSetId": 59
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-08T19:53:51Z",
+      "side": 1,
+      "message": "soong globs for more header extensions (https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/library.go;l\u003d531;drc\u003dc58d3d214ea25d2ef56c1bc13374243dc699a44a) at some point we should reconcile this difference",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 33
+      },
+      "revId": "25069bb437c9f84103de621bbf60e7661da30805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ec3cdc9_57156e0e",
+        "filename": "bazel/properties.go",
+        "patchSetId": 59
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-08T19:53:51Z",
+      "side": 1,
+      "message": "godocs?",
+      "range": {
+        "startLine": 259,
+        "startChar": 33,
+        "endLine": 259,
+        "endChar": 39
+      },
+      "revId": "25069bb437c9f84103de621bbf60e7661da30805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6df8cff3_c3a7c851",
+        "filename": "bp2build/cc_object_conversion_test.go",
+        "patchSetId": 59
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-08T19:53:51Z",
+      "side": 1,
+      "message": "not blocking, but this is invalid for a cc module, so the conversion may be somewhat deceptive.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 18
+      },
+      "revId": "25069bb437c9f84103de621bbf60e7661da30805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8286f0b_e94a8281",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 59
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-08T19:53:51Z",
+      "side": 1,
+      "message": "Filed http://b/184866745 for us to look at properties that should prepend rather than append",
+      "range": {
+        "startLine": 72,
+        "startChar": 28,
+        "endLine": 72,
+        "endChar": 34
+      },
+      "revId": "25069bb437c9f84103de621bbf60e7661da30805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d29c7ba_715a8e79",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 59
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-08T19:53:51Z",
+      "side": 1,
+      "message": "could we return a struct for these instead? three similar returns feels like a lot.",
+      "range": {
+        "startLine": 65,
+        "startChar": 17,
+        "endLine": 68,
+        "endChar": 31
+      },
+      "revId": "25069bb437c9f84103de621bbf60e7661da30805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5903ba6f_9bc534d0",
+        "filename": "cc/library.go",
+        "patchSetId": 59
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-08T19:53:51Z",
+      "side": 1,
+      "message": "may be nice to refactor this out soon",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 2
+      },
+      "revId": "25069bb437c9f84103de621bbf60e7661da30805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
