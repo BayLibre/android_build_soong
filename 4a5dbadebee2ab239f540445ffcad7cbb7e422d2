@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84b9aacb_c817ea5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-08T17:28:04Z",
+      "side": 1,
+      "message": "Forgot to click \"send\".\n\nI don\u0027t fully understand Soong internals to fully grok all the details here, but based on the tests +2.",
+      "revId": "4a5dbadebee2ab239f540445ffcad7cbb7e422d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "948d1b33_0810bee3",
+        "filename": "apex/platform_bootclasspath_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-08T17:28:04Z",
+      "side": 1,
+      "message": "\u003e Please remove the trailing whitespace.\n\nPlease fix.",
+      "parentUuid": "cd84e21e_dfb0e391",
+      "range": {
+        "startLine": 82,
+        "startChar": 98,
+        "endLine": 82,
+        "endChar": 100
+      },
+      "revId": "4a5dbadebee2ab239f540445ffcad7cbb7e422d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
