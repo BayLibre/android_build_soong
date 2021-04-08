@@ -95,19 +95,27 @@ type noopBazelContext struct{}
 
 var _ BazelContext = noopBazelContext{}
 
+type OutputFilesAndCcObjectFiles struct {
+	outputFiles   []string
+	ccObjectFiles []string
+}
+
 // A bazel context to use for tests.
 type MockBazelContext struct {
-	AllFiles map[string][]string
+	OutputBaseDir string
+
+	LabelToOutputFiles                 map[string][]string
+	LabelToOutputFilesAndCcObjectFiles map[string]OutputFilesAndCcObjectFiles
 }
 
 func (m MockBazelContext) GetOutputFiles(label string, archType ArchType) ([]string, bool) {
-	result, ok := m.AllFiles[label]
+	result, ok := m.LabelToOutputFiles[label]
 	return result, ok
 }
 
 func (m MockBazelContext) GetOutputFilesAndCcObjectFiles(label string, archType ArchType) ([]string, []string, bool) {
-	result, ok := m.AllFiles[label]
-	return result, result, ok
+	result, ok := m.LabelToOutputFilesAndCcObjectFiles[label]
+	return result.outputFiles, result.ccObjectFiles, ok
 }
 
 func (m MockBazelContext) InvokeBazel() error {
@@ -118,9 +126,7 @@ func (m MockBazelContext) BazelEnabled() bool {
 	return true
 }
 
-func (m MockBazelContext) OutputBase() string {
-	return "outputbase"
-}
+func (m MockBazelContext) OutputBase() string { return m.OutputBaseDir }
 
 func (m MockBazelContext) BuildStatementsToRegister() []bazel.BuildStatement {
 	return []bazel.BuildStatement{}
