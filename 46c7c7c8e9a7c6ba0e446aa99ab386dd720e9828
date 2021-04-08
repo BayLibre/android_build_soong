@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2656d850_f70e3fa7",
+        "filename": "android/bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-08T04:47:06Z",
+      "side": 1,
+      "message": "I would like to submit this CL now, and address the subpackage/boundary issue (e.g. \u0027bionic/libc/async_safe\u0027 is a subpackage) in a followup",
+      "range": {
+        "startLine": 148,
+        "startChar": 67,
+        "endLine": 148,
+        "endChar": 107
+      },
+      "revId": "46c7c7c8e9a7c6ba0e446aa99ab386dd720e9828",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
