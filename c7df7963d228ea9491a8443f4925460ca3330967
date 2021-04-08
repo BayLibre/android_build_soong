@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b9cee5c_20104937",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-08T17:20:13Z",
+      "side": 1,
+      "message": "nit: contribute to it",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "c7df7963d228ea9491a8443f4925460ca3330967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c45de32_0d46a56e",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-08T17:20:13Z",
+      "side": 1,
+      "message": "nit: perhaps Bootclasspath_fragments, to avoid confusion when people decide to add systemserverclasspath_fragments to it. Not the biggest issue of course.",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 10
+      },
+      "revId": "c7df7963d228ea9491a8443f4925460ca3330967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
