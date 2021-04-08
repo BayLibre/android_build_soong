@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f5f25fa_d328882c",
+        "filename": "cc/ndkstubgen/test_ndkstubgen.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-04-08T21:52:56Z",
+      "side": 1,
+      "message": "rprichard: Does this make sense, or should the stub just be exposing its interposing symbols?",
+      "revId": "cb60763b23a22147125a98bf251d72b2ff9f0fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
