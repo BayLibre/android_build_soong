@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7affa9ce_ad769048",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2021-04-08T22:34:51Z",
+      "side": 1,
+      "message": "I\u0027ll leave this one to Ivan. ;)",
+      "revId": "c79b9df9b3fd3968cfc69f8fbcc2e1dbb7e699e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
