@@ -69,6 +69,30 @@
       },
       "revId": "c7df7963d228ea9491a8443f4925460ca3330967",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "446b462e_6612d957",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-08T17:52:30Z",
+      "side": 1,
+      "message": "Right, but you are calling this property just \"fragments\". Technically it\u0027s implied that it\u0027s on bootclasspath_fragment, but it may not be immediately obvious. If we just keep \"fragments\", we may as well move it to common properties.",
+      "parentUuid": "d9d12688_e564352d",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 10
+      },
+      "revId": "c7df7963d228ea9491a8443f4925460ca3330967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
