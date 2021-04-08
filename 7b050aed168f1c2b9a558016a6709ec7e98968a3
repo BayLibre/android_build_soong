@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd09b11_e84988f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-08T22:09:04Z",
+      "side": 1,
+      "message": "LGTM although \"unnecessarily long BUILD files\" are gonna be a thing for a while...",
+      "revId": "7b050aed168f1c2b9a558016a6709ec7e98968a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
