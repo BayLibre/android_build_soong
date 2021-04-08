@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0d92390_2b72b71d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-08T11:23:18Z",
+      "side": 1,
+      "message": "This is so that we have well organized tests whose entry point is nevertheless one single executable.",
+      "revId": "3b730c4bc831eb9cdd2dd86b4229737e22b025a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
