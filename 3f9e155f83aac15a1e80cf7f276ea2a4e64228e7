@@ -16,6 +16,24 @@
       "message": "food for thought: I have concerns that there may be more overlap from what we need from different cc targets. What do you think about combining this with the other cc library query into a single query which collects all relevant CcInfo fields for any target?\n\nMaybe this is overkill now, but we should keep an eye on that...\n\nFor example, I foresee that we will need to propagate \"exported\" data from these libraries...",
       "revId": "3f9e155f83aac15a1e80cf7f276ea2a4e64228e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f16e202_1fcaddcc",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-08T20:07:59Z",
+      "side": 1,
+      "message": "yeah, i wondered about that somewhat -- I figured it may get handled with the TODO for b/184543518 (partially as we don\u0027t have any more complex cc_prebuilt* modules converted at this point), but I\u0027m open to doing so preemptively. I think it may be a better fit to consolidate after https://r.android.com/1646768 gets submitted -- or I can keep piling on merge conflicts for you :/",
+      "parentUuid": "edf744a4_80a05e99",
+      "revId": "3f9e155f83aac15a1e80cf7f276ea2a4e64228e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
