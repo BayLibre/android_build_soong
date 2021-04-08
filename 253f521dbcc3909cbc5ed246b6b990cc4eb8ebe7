@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61a9fd55_38969c80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-04-08T08:14:57Z",
+      "side": 1,
+      "message": "Build team, I really feel guilty to add these logics more and more. But I have to make it work before freezing S.\n\nI\u0027m trying hard to refactor this kind of codes (b/178470649), but no notable progress so far.",
+      "revId": "253f521dbcc3909cbc5ed246b6b990cc4eb8ebe7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
