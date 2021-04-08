@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21e977e5_0554adb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-08T15:00:51Z",
+      "side": 1,
+      "message": "It has changed many times in the past year (fields added, removed, changed type). I don\u0027t expect it to keep changing as much, but it\u0027s not stable.\n\nIf dexpreopt.config format becomes an API, we should have a test for it.",
+      "parentUuid": "1ddd591f_e33e2834",
+      "revId": "b5d0397244fe13ad84cc8bd606be739039e071a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5484da2_df1df31a",
