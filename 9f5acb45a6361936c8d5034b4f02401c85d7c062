@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a3a708_93e58f06",
+        "filename": "android/bazel.go",
+        "patchSetId": 57
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-08T11:31:04Z",
+      "side": 1,
+      "message": "Done, also found out that libdl_android builds too :) Added tests for that.",
+      "parentUuid": "e32d6402_38108501",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 51
+      },
+      "revId": "9f5acb45a6361936c8d5034b4f02401c85d7c062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51dbe122_f45c6dbe",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-08T10:51:57Z",
       "side": 1,
       "message": "We should probably look for the alternative header extensions as well\n\ne.g. .inc and .hpp",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 36
+      },
+      "revId": "9f5acb45a6361936c8d5034b4f02401c85d7c062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fa42c2f_ae7d3ae8",
+        "filename": "bazel/properties.go",
+        "patchSetId": 57
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-08T11:31:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51dbe122_f45c6dbe",
       "range": {
         "startLine": 57,
         "startChar": 0,
