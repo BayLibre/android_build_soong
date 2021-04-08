@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e28732_9b3c896d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-08T23:31:20Z",
+      "side": 1,
+      "message": "test failure (apct/device_boot_health_check_extra on flame_hwasan-userdebug on git_master) is unrelated and has been flaky.",
+      "revId": "94e22fd35e368f5362c3c78bec2054de23d9ac1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
