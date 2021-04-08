@@ -16,6 +16,24 @@
       "message": "I don\u0027t think that these are needed.\n\nA classpathFragment that is used in an APEX should list the jars that it includes. Just like the i18n-bootclasspath-fragment does. It doesn\u0027t need to know the apex to which it belongs.\n\nSimilarly, a classpathFragment in platform_bootclasspath doesn\u0027t need to know which apexes to exclude as the platform_bootclasspath knows (thanks to https://r.android.com/1670067) which fragments it should include and which standalone jars it should use so it can make sure to only generate classpath information for those fragments that don\u0027t generate it themselves.",
       "revId": "72656a4081e29313268d648960be4177b2ef97c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2089194d_d483db64",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-08T17:12:25Z",
+      "side": 1,
+      "message": "Didn\u0027t see those yet. Agreed, these were meant as a temporary measure only.",
+      "parentUuid": "d73356d8_44647fc7",
+      "revId": "72656a4081e29313268d648960be4177b2ef97c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
