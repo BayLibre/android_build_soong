@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ddd591f_e33e2834",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-08T14:02:28Z",
+      "side": 1,
+      "message": "Ulya, is the config struct expected to be changed frequently?\nIf not, how about adding warning message about compatibility on parse/generate json code, and adding test case which checks if dexpreopt_gen can handle json file at the arbitrary moment? (because the json is already API between soong and make (but in the same build))",
+      "parentUuid": "ab988cff_90b3708c",
+      "revId": "b5d0397244fe13ad84cc8bd606be739039e071a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5484da2_df1df31a",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-04-07T15:30:57Z",
       "side": 1,
       "message": "Does it work? There are some complex fields that need to be converted to their JSON counterparts (see lines 332-349 below). I expect that the new function dumps them incorrectly.",
+      "range": {
+        "startLine": 315,
+        "startChar": 1,
+        "endLine": 315,
+        "endChar": 52
+      },
+      "revId": "b5d0397244fe13ad84cc8bd606be739039e071a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8649e0e0_819564a1",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-08T14:02:28Z",
+      "side": 1,
+      "message": "You are right, thanks for catching this, I will update this block accordingly.",
+      "parentUuid": "b5484da2_df1df31a",
       "range": {
         "startLine": 315,
         "startChar": 1,
