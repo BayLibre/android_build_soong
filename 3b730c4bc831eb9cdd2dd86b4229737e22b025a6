@@ -16,6 +16,52 @@
       "message": "This is so that we have well organized tests whose entry point is nevertheless one single executable.",
       "revId": "3b730c4bc831eb9cdd2dd86b4229737e22b025a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac89aab2_6f3f64df",
+        "filename": "tests/lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-08T12:15:04Z",
+      "side": 1,
+      "message": "TIL.",
+      "range": {
+        "startLine": 60,
+        "startChar": 21,
+        "endLine": 60,
+        "endChar": 29
+      },
+      "revId": "3b730c4bc831eb9cdd2dd86b4229737e22b025a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a06ec281_b4b79152",
+        "filename": "tests/lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-08T12:15:04Z",
+      "side": 1,
+      "message": "Why is this needed?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 20
+      },
+      "revId": "3b730c4bc831eb9cdd2dd86b4229737e22b025a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
