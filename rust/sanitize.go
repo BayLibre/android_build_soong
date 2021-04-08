@@ -46,7 +46,8 @@ var fuzzerFlags = []string{
 	"-C llvm-args=-sanitizer-coverage-inline-8bit-counters",
 	"-C llvm-args=-sanitizer-coverage-trace-geps",
 	"-C llvm-args=-sanitizer-coverage-prune-blocks=0",
-	"-Z sanitizer=address",
+	"-Z sanitizer=hwaddress",
+	"-C target-feature=+tagged-globals",
 
 	// Sancov breaks with lto
 	// TODO: Remove when https://bugs.llvm.org/show_bug.cgi?id=41734 is resolved and sancov works with LTO
@@ -133,12 +134,12 @@ func rustSanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 		var depTag blueprint.DependencyTag
 		var deps []string
 
-		if Bool(mod.sanitize.Properties.Sanitize.Fuzzer) || Bool(mod.sanitize.Properties.Sanitize.Address) {
+		if Bool(mod.sanitize.Properties.Sanitize.Address) {
 			variations = append(variations,
 				blueprint.Variation{Mutator: "link", Variation: "shared"})
 			depTag = cc.SharedDepTag()
 			deps = []string{config.LibclangRuntimeLibrary(mod.toolchain(mctx), "asan")}
-		} else if mod.IsSanitizerEnabled(cc.Hwasan) {
+		} else if mod.IsSanitizerEnabled(cc.Hwasan) || mod.IsSanitizerEnabled(cc.Fuzzer) {
 			// TODO(b/180495975): HWASan for static Rust binaries isn't supported yet.
 			if binary, ok := mod.compiler.(*binaryDecorator); ok {
 				if Bool(binary.Properties.Static_executable) {
@@ -285,11 +286,9 @@ func (mod *Module) SetSanitizeDep(b bool) {
 
 func (mod *Module) StaticallyLinked() bool {
 	if lib, ok := mod.compiler.(libraryInterface); ok {
-		if lib.rlib() || lib.static() {
-			return true
-		}
-	} else if Bool(mod.compiler.(*binaryDecorator).Properties.Static_executable) {
-		return true
+		return lib.rlib() || lib.static()
+	} else if binary, ok := mod.compiler.(*binaryDecorator); ok {
+		return Bool(binary.Properties.Static_executable)
 	}
 	return false
 }
