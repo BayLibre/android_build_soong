@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edf744a4_80a05e99",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-08T19:46:24Z",
+      "side": 1,
+      "message": "food for thought: I have concerns that there may be more overlap from what we need from different cc targets. What do you think about combining this with the other cc library query into a single query which collects all relevant CcInfo fields for any target?\n\nMaybe this is overkill now, but we should keep an eye on that...\n\nFor example, I foresee that we will need to propagate \"exported\" data from these libraries...",
+      "revId": "3f9e155f83aac15a1e80cf7f276ea2a4e64228e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
