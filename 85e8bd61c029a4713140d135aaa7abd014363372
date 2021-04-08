@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c65cbbf5_ca0b73c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1453040
+      },
+      "writtenOn": "2021-04-08T17:56:36Z",
+      "side": 1,
+      "message": "LGTM but can\u0027t give +2. ",
+      "revId": "85e8bd61c029a4713140d135aaa7abd014363372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
