@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79fa4a9f_dcbf2a34",
+        "filename": "bazel/properties.go",
+        "patchSetId": 55
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-08T08:54:36Z",
+      "side": 1,
+      "message": "With explicit lists, we can catch package boundaries problem instead of silently failing to potentially missing files from Bazel\u0027s globs.",
+      "parentUuid": "ac49611e_bef1e6ef",
+      "range": {
+        "startLine": 51,
+        "startChar": 21,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "revId": "c05c444fdb7a167f8fee4b5e7246af9da82caa59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e4832f5_9d5889fd",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-08T08:48:27Z",
       "side": 1,
       "message": "nit: maybe you don\u0027t need to have this if statement if you use filepath.Join?",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 17
+      },
+      "revId": "c05c444fdb7a167f8fee4b5e7246af9da82caa59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2636f31_29f4af51",
+        "filename": "bazel/properties.go",
+        "patchSetId": 55
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-08T08:54:36Z",
+      "side": 1,
+      "message": "filepath.Join will result in \"./*.h\", instead of the more common \"*.h\".",
+      "parentUuid": "1e4832f5_9d5889fd",
       "range": {
         "startLine": 56,
         "startChar": 2,
