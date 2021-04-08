@@ -34,6 +34,24 @@
       "parentUuid": "edf744a4_80a05e99",
       "revId": "3f9e155f83aac15a1e80cf7f276ea2a4e64228e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b37bf127_3a144ac0",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-08T20:33:46Z",
+      "side": 1,
+      "message": "Going to defer this dedupe until we have bp2build working for cc_prebuilt_library_static targets",
+      "parentUuid": "2f16e202_1fcaddcc",
+      "revId": "3f9e155f83aac15a1e80cf7f276ea2a4e64228e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
