@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e7adc22_bc22adef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-08T17:54:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b9cee5c_20104937",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "c7df7963d228ea9491a8443f4925460ca3330967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c45de32_0d46a56e",
@@ -84,6 +108,30 @@
       "writtenOn": "2021-04-08T17:52:30Z",
       "side": 1,
       "message": "Right, but you are calling this property just \"fragments\". Technically it\u0027s implied that it\u0027s on bootclasspath_fragment, but it may not be immediately obvious. If we just keep \"fragments\", we may as well move it to common properties.",
+      "parentUuid": "d9d12688_e564352d",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 10
+      },
+      "revId": "c7df7963d228ea9491a8443f4925460ca3330967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "144fe188_9371b8c6",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-08T17:54:21Z",
+      "side": 1,
+      "message": "Ack",
       "parentUuid": "d9d12688_e564352d",
       "range": {
         "startLine": 90,
