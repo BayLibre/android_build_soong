@@ -62,6 +62,30 @@
       },
       "revId": "3b730c4bc831eb9cdd2dd86b4229737e22b025a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0878f8d7_8fe22654",
+        "filename": "tests/lib.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-08T13:06:19Z",
+      "side": 1,
+      "message": "It\u0027s not. Removed. I suppose it\u0027s a remnant of previous attempts to put together this test?",
+      "parentUuid": "a06ec281_b4b79152",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 20
+      },
+      "revId": "3b730c4bc831eb9cdd2dd86b4229737e22b025a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
