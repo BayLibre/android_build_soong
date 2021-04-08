@@ -45,6 +45,30 @@
       },
       "revId": "c7df7963d228ea9491a8443f4925460ca3330967",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d12688_e564352d",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-08T17:39:39Z",
+      "side": 1,
+      "message": "I think that systemserverclasspath_fragments should be aggregated separately to bootclasspath_fragments.",
+      "parentUuid": "3c45de32_0d46a56e",
+      "range": {
+        "startLine": 90,
+        "startChar": 1,
+        "endLine": 90,
+        "endChar": 10
+      },
+      "revId": "c7df7963d228ea9491a8443f4925460ca3330967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
