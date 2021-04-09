@@ -70,6 +70,30 @@
       },
       "revId": "85f162ef4a6208d54c74b0a2a3ecf99de81c3c50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "921988a6_f9080850",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-09T19:57:19Z",
+      "side": 1,
+      "message": "\"moderately don\u0027t prefer\" is more strongly than I feel about it. This LGTM.",
+      "parentUuid": "cf06ce6c_158313cb",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "85f162ef4a6208d54c74b0a2a3ecf99de81c3c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
