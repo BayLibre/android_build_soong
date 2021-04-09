@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecdb2ef8_f80476b1",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2021-04-09T18:08:03Z",
+      "side": 1,
+      "message": "good catch",
+      "parentUuid": "6fb298aa_00332e21",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 4
+      },
+      "revId": "c79b9df9b3fd3968cfc69f8fbcc2e1dbb7e699e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "898fc468_b0ea1d55",
@@ -104,6 +128,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66738580_0b6d6f7d",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2021-04-09T18:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "898fc468_b0ea1d55",
+      "range": {
+        "startLine": 148,
+        "startChar": 12,
+        "endLine": 148,
+        "endChar": 30
+      },
+      "revId": "c79b9df9b3fd3968cfc69f8fbcc2e1dbb7e699e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db5aaeae_930458f5",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2021-04-09T18:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94841e5b_5700eb60",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 10
+      },
+      "revId": "c79b9df9b3fd3968cfc69f8fbcc2e1dbb7e699e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2574e536_458d40cf",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-04-09T13:16:45Z",
       "side": 1,
       "message": "Is this needed for static library variants too?",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 39
+      },
+      "revId": "c79b9df9b3fd3968cfc69f8fbcc2e1dbb7e699e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d61d2ee_6bac8c70",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2021-04-09T18:08:03Z",
+      "side": 1,
+      "message": "yes, good point",
+      "parentUuid": "2574e536_458d40cf",
       "range": {
         "startLine": 232,
         "startChar": 0,
