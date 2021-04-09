@@ -16,6 +16,23 @@
       "message": "It looks like this is only used for static executables. I think dynamic executables/libraries would use the unwinder from libc.so instead. The unwinder APIs were added to libc.so starting in R.\n\nI recently removed libgcc_stripped -- do we need to put it back? Maybe it can be restored and only exposed to the VNDK, or exposed as a VNDK snapshot static library? (I was thinking of removing external/libunwind_llvm from the manifest, but I suppose that has the same issue.)\n\nhttps://android-review.googlesource.com/c/platform/build/soong/+/1663859\n\nIf I\u0027m right that this only affects static executables, then I wonder why we don\u0027t just use the ordinary platform unwinder? (i.e. the libunwind.a prebuilt in prebuilts/clang.) I\u0027d guess that we\u0027re already using the latest libc.a, Clang, builtins library, etc. What libc++/libc++abi is used? I see static libc++ archives in prebuilts/ndk, but I see no static archives at all in prebuilts/vndk.\n",
       "revId": "d4c9f55468c359bb69636bf4fa3b80d79cdbb3bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04707e58_5d6186a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-04-09T01:11:59Z",
+      "side": 1,
+      "message": "Talked to Ryan and got some information that future Clang may be incompatible with old prebuilt libraries. We may want to freeze the entire build system including compiler toolchains in the future. But before Clang becomes problematic, let\u0027s stick to this method.",
+      "revId": "d4c9f55468c359bb69636bf4fa3b80d79cdbb3bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
