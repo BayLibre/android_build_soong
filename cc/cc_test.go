@@ -3807,8 +3807,9 @@ var prepareForTestWithMemtagHeap = android.GroupFixturePreparers(
 	}),
 	android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 		variables.MemtagHeapExcludePaths = []string{"subdir_exclude"}
-		variables.MemtagHeapSyncIncludePaths = []string{"subdir_sync"}
-		variables.MemtagHeapAsyncIncludePaths = []string{"subdir_async"}
+		// "subdir_exclude" is covered by both include and exclude paths. Exclude wins.
+		variables.MemtagHeapSyncIncludePaths = []string{"subdir_sync", "subdir_exclude"}
+		variables.MemtagHeapAsyncIncludePaths = []string{"subdir_async", "subdir_exclude"}
 	}),
 )
 
