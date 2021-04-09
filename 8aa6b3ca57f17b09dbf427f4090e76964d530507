@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a20fc9_85fa2424",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-09T19:56:13Z",
+      "side": 1,
+      "message": "TYVM for this!",
+      "revId": "8aa6b3ca57f17b09dbf427f4090e76964d530507",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5abca07c_2afc4f75",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-09T19:56:13Z",
+      "side": 1,
+      "message": "I would\u0027ve expected this to maybe be something along the lines of map[bazelCommand]string instead (though I forget if this is possible in golang off the top of my head). Can we at least add a comment as to what the keys of this map are expected to be?",
+      "revId": "8aa6b3ca57f17b09dbf427f4090e76964d530507",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6d92f92_8c340672",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-09T19:56:13Z",
+      "side": 1,
+      "message": "Now that we have bazelCommand, might we combine the parameters \"command string\" and \"labels []string\" into a single bazelCommand parameter here?\n\nAlso, I realize that labels []string only ever contains exactly one element, and it\u0027s not always a label.\n\n(It\u0027s \u0027deps(//:buildroot)\u0027 for cquery and aquery, and \u0027//:phonyroot\u0027 for build).) perhaps we can change the type and name of this field in bazelCommand?",
+      "revId": "8aa6b3ca57f17b09dbf427f4090e76964d530507",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
