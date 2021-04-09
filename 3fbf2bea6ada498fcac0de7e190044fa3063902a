@@ -33,6 +33,24 @@
       "message": "According to some investigation and local tests, this patch broke \u0027WITHOUT_CHECK_API \u003d true\u0027 feature. I\u0027m not sure it\u0027s intentional or you aware of that, but we heavily use WITHOUT_CHECK_API, so we ran into this issue, where either reverting this commit or turning WITHOUT_CHECK_API to false fixed the build.",
       "revId": "3fbf2bea6ada498fcac0de7e190044fa3063902a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff7b9b6a_5da4f745",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-09T20:49:11Z",
+      "side": 1,
+      "message": "I can reproduce on legacy.art.module.platform.api.stubs.source.  The issue is that we pass -sourcepath libcore/mmodules/core_platform_api, but there are no java files in that directory.  When API checking is enabled we copy the API .txt files from that directory, so the directory exists in the sandbox.  With WITHOUT_CHECK_API\u003dtrue there is nothing to copy and the directory doesn\u0027t exist.  I\u0027ll keep looking at a fix.",
+      "parentUuid": "ba0ce401_6b9e3755",
+      "revId": "3fbf2bea6ada498fcac0de7e190044fa3063902a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
