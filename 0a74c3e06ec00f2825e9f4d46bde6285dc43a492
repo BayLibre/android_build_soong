@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d2fff55_1ca6ae33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2021-04-09T18:09:27Z",
+      "side": 1,
+      "message": "Is there a location I can put a rust_bin/rust_fuz with HWASan for testing purposes? to make sure things continue to work end-to-end",
+      "revId": "0a74c3e06ec00f2825e9f4d46bde6285dc43a492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
