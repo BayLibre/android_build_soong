@@ -16,6 +16,23 @@
       "message": "Is there a location I can put a rust_bin/rust_fuz with HWASan for testing purposes? to make sure things continue to work end-to-end",
       "revId": "0a74c3e06ec00f2825e9f4d46bde6285dc43a492",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d4d0fd3_f6152e2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-04-09T18:15:41Z",
+      "side": 1,
+      "message": "Thanks! For the example fuzzer, maybe under tools/security/fuzzing",
+      "revId": "0a74c3e06ec00f2825e9f4d46bde6285dc43a492",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
