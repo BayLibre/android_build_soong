@@ -50,6 +50,24 @@
       "message": "inseob@ explained it to me some more. I think this change makes sense.\n",
       "revId": "d4c9f55468c359bb69636bf4fa3b80d79cdbb3bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4d39b41_3653f86a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2021-04-09T01:16:11Z",
+      "side": 1,
+      "message": "For reference, the example I had in mind was https://reviews.llvm.org/D93585:\n\n    // Outline atomics for AArch64 are supported by compiler-rt\n    // and libgcc since 9.3.1\n\nA new version of Clang may assume that the libclang_rt.builtins-*.a library has new functions available. i.e. Upstream LLVM assumes that Clang and the Clang builtins library come from the same version.",
+      "parentUuid": "04707e58_5d6186a2",
+      "revId": "d4c9f55468c359bb69636bf4fa3b80d79cdbb3bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
