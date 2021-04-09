@@ -5,9 +5,9 @@ import (
 )
 
 var (
-	GetOutputFiles                  = &getOutputFilesRequestType{}
-	GetOutputFilesAndCcObjectFiles  = &getOutputFilesAndCcObjectFilesType{}
-	GetPrebuiltCcStaticLibraryFiles = &getPrebuiltCcStaticLibraryFiles{}
+	GetOutputFiles                 = &getOutputFilesRequestType{}
+	GetOutputFilesAndCcObjectFiles = &getOutputFilesAndCcObjectFilesType{}
+	GetCcIncludes                  = &getCcIncludes{}
 )
 
 type GetOutputFilesAndCcObjectFiles_Result struct {
@@ -40,6 +40,42 @@ func (g getOutputFilesRequestType) StarlarkFunctionBody() string {
 // Starlark given in StarlarkFunctionBody.
 func (g getOutputFilesRequestType) ParseResult(rawString string) []string {
 	return strings.Split(rawString, ", ")
+}
+
+type getCcIncludes struct{}
+
+type CcIncludes struct {
+	Includes       []string
+	SystemIncludes []string
+}
+
+func (g getCcIncludes) Name() string {
+	return "getCcIncludes"
+}
+
+func (g getCcIncludes) StarlarkFunctionBody() string {
+	return `
+includes = providers(target)["CcInfo"].compilation_context.includes.to_list()
+system_includes = providers(target)["CcInfo"].compilation_context.system_includes.to_list()
+
+results = [
+  ', '.join(includes),
+  ', '.join(system_includes),
+]
+
+return '|'.join(results)`
+}
+
+func (g getCcIncludes) ParseResult(rawString string) interface{} {
+	splitString := strings.Split(rawString, "|")
+	includesString := splitString[0]
+	systemIncludesString := splitString[1]
+	includes := strings.Split(includesString, ", ")
+	systemIncludes := strings.Split(systemIncludesString, ", ")
+	return CcIncludes{
+		Includes:       includes,
+		SystemIncludes: systemIncludes,
+	}
 }
 
 type getOutputFilesAndCcObjectFilesType struct{}

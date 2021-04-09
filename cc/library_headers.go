@@ -43,6 +43,37 @@ func RegisterLibraryHeadersBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_prebuilt_library_headers", prebuiltLibraryHeaderFactory)
 }
 
+type libraryHeaderBazelHandler struct {
+	bazelHandler
+
+	module *Module
+}
+
+func (h *libraryHeaderBazelHandler) generateBazelBuildActions(ctx android.ModuleContext, label string) bool {
+	bazelCtx := ctx.Config().BazelContext
+	res, ok := bazelCtx.GetCcIncludes(label, ctx.Arch().ArchType)
+	if !ok {
+		return false
+	}
+
+	includes := make(android.Paths, len(res.Includes))
+	for i, includePath := range res.Includes {
+		includes[i] = android.PathForBazelOut(ctx, includePath)
+	}
+
+	systemIncludes := make(android.Paths, len(res.SystemIncludes))
+	for i, includePath := range res.SystemIncludes {
+		systemIncludes[i] = android.PathForBazelOut(ctx, includePath)
+	}
+
+	ctx.SetProvider(FlagExporterInfoProvider, FlagExporterInfo{
+		IncludeDirs:       includes,
+		SystemIncludeDirs: systemIncludes,
+	})
+
+	return true
+}
+
 // cc_library_headers contains a set of c/c++ headers which are imported by
 // other soong cc modules using the header_libs property. For best practices,
 // use export_include_dirs property or LOCAL_EXPORT_C_INCLUDE_DIRS for
@@ -51,6 +82,7 @@ func LibraryHeaderFactory() android.Module {
 	module, library := NewLibrary(android.HostAndDeviceSupported)
 	library.HeaderOnly()
 	module.sdkMemberTypes = []android.SdkMemberType{headersLibrarySdkMemberType}
+	module.bazelHandler = &libraryHeaderBazelHandler{module: module}
 	return module.Init()
 }
 
