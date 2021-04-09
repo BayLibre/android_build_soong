@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "844bf71f_25536b35",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-09T18:42:37Z",
+      "side": 1,
+      "message": "I was feeling _very_ uninspired for this naming, so if you have better suggestions, super open to them.",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 25
+      },
+      "revId": "85f162ef4a6208d54c74b0a2a3ecf99de81c3c50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
