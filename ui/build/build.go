@@ -233,6 +233,11 @@ func Build(ctx Context, config Config, what int) {
 		startRBE(ctx, config)
 	}
 
+	runMicrofactory(ctx, config, ".bootstrap/bin/mk2rbc", "android/soong/mk2rbc/cmd",
+		map[string]string{"android/soong": "build/soong"})
+	runMicrofactory(ctx, config, ".bootstrap/bin/rbcrun", "rbcrun/cmd",
+		map[string]string{"go.starlark.net": "external/starlark-go", "rbcrun": "build/make/tools/rbcrun"})
+
 	if what&BuildProductConfig != 0 {
 		// Run make for product config
 		runMakeProductConfig(ctx, config)
