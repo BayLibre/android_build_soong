@@ -16,6 +16,24 @@
       "message": "Ah, that worked very well, because the objcopy -S is actually no-op if the sections are allocated.\nSo, it turns out that the widely debated --only-keep-debug on the bug is, in fact, needed. But as the bug sais, it is in llbm now.\n\nThe problem with first attempt to land this CL before was the saved_debug_frame dance didn\u0027t work in LLVM.\nOn the other hand, `--keep-section .debug_frame` is shorter and seems to work just fine.",
       "revId": "3ff9bc3caac1c375a95703ee8e71b66537b2ff20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06dd2c12_17e90a54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-04-09T01:11:48Z",
+      "side": 1,
+      "message": "Was there actually a change for something here on the ART side? I\u0027d want to mention that on the bug where this got reverted/relanded too to make it more obvious what happened.",
+      "parentUuid": "ad409b25_5de7f9f9",
+      "revId": "3ff9bc3caac1c375a95703ee8e71b66537b2ff20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
