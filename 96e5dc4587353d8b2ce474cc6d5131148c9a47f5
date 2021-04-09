@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "845d9d8f_84629378",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-09T21:03:28Z",
+      "side": 1,
+      "message": "This is too late to build this, the product config has already been read.  This needs to happen before any calls to dumpMakeVars.",
+      "revId": "96e5dc4587353d8b2ce474cc6d5131148c9a47f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
