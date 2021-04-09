@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42fe1ba2_60b7db0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 60
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-09T04:01:52Z",
+      "side": 1,
+      "message": "Rebased, resolved merge conflicts with https://android-review.googlesource.com/c/platform/build/soong/+/1664504, PTAL!",
+      "revId": "2aedac78d393a889ee923adbb6dba169f2a7a95f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
