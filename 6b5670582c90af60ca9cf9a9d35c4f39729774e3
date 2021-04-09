@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cd0b951_9f53d2f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-09T17:46:42Z",
+      "side": 1,
+      "message": "can you please diff out/soong/hiddenapi/hiddenapi-flags.csv before and after?",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "6b5670582c90af60ca9cf9a9d35c4f39729774e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3e6189b_2f6c8db8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-09T17:46:42Z",
+      "side": 1,
+      "message": "Nice!",
+      "revId": "6b5670582c90af60ca9cf9a9d35c4f39729774e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
