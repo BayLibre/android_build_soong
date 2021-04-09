@@ -16,6 +16,115 @@
       "message": "I\u0027ll leave this one to Ivan. ;)",
       "revId": "c79b9df9b3fd3968cfc69f8fbcc2e1dbb7e699e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f90dfbb7_98784768",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-04-09T13:16:45Z",
+      "side": 1,
+      "message": "Thanks! Just a few comments but overall looks good.",
+      "revId": "c79b9df9b3fd3968cfc69f8fbcc2e1dbb7e699e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fb298aa_00332e21",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-04-09T13:16:45Z",
+      "side": 1,
+      "message": "nit: Should this be else-if? I don\u0027t think hwasan and asan would both be enabled at the same time.",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 4
+      },
+      "revId": "c79b9df9b3fd3968cfc69f8fbcc2e1dbb7e699e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "898fc468_b0ea1d55",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-04-09T13:16:45Z",
+      "side": 1,
+      "message": "nit: This should specify it\u0027s for statically linked binaries for readability purposes, since just below this we support statically linked libraries.",
+      "range": {
+        "startLine": 148,
+        "startChar": 12,
+        "endLine": 148,
+        "endChar": 30
+      },
+      "revId": "c79b9df9b3fd3968cfc69f8fbcc2e1dbb7e699e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94841e5b_5700eb60",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-04-09T13:16:45Z",
+      "side": 1,
+      "message": "mctx.ModuleErrorf(...) instead for a more a verbose error that includes the module name.",
+      "range": {
+        "startLine": 148,
+        "startChar": 5,
+        "endLine": 148,
+        "endChar": 10
+      },
+      "revId": "c79b9df9b3fd3968cfc69f8fbcc2e1dbb7e699e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2574e536_458d40cf",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-04-09T13:16:45Z",
+      "side": 1,
+      "message": "Is this needed for static library variants too?",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 39
+      },
+      "revId": "c79b9df9b3fd3968cfc69f8fbcc2e1dbb7e699e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
