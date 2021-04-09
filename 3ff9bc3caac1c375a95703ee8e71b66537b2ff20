@@ -34,6 +34,24 @@
       "parentUuid": "ad409b25_5de7f9f9",
       "revId": "3ff9bc3caac1c375a95703ee8e71b66537b2ff20",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ed800cc_20070aa3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-09T01:15:41Z",
+      "side": 1,
+      "message": "No change on ART or libunwind side.\nThe original CL didn\u0027t work as intended (it would always erase .debug_frame data).\nI reverted it because I was the first to notice unwinding was broken on Android.",
+      "parentUuid": "06dd2c12_17e90a54",
+      "revId": "3ff9bc3caac1c375a95703ee8e71b66537b2ff20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
