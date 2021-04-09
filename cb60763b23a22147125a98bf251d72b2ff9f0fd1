@@ -33,6 +33,24 @@
       "message": "rprichard: Does this make sense, or should the stub just be exposing its interposing symbols?",
       "revId": "cb60763b23a22147125a98bf251d72b2ff9f0fd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f6ebb50_b7b2201a",
+        "filename": "cc/ndkstubgen/test_ndkstubgen.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2021-04-09T00:26:50Z",
+      "side": 1,
+      "message": "I think this is right. I don\u0027t think the stub needs to expose the interposing symbols.",
+      "parentUuid": "5f5f25fa_d328882c",
+      "revId": "cb60763b23a22147125a98bf251d72b2ff9f0fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
