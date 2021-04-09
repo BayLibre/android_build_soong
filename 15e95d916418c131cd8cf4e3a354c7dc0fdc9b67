@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d94c356_e929b6c2",
+        "filename": "tests/bootstrap_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-09T17:27:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7556989_988f08b3",
+      "range": {
+        "startLine": 300,
+        "startChar": 9,
+        "endLine": 300,
+        "endChar": 42
+      },
+      "revId": "15e95d916418c131cd8cf4e3a354c7dc0fdc9b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df5f34c1_7f7c2258",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-09T08:27:27Z",
       "side": 1,
       "message": "nit: maybe also check for the old action just in case?",
+      "range": {
+        "startLine": 405,
+        "startChar": 2,
+        "endLine": 405,
+        "endChar": 73
+      },
+      "revId": "15e95d916418c131cd8cf4e3a354c7dc0fdc9b67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b98bbeb_7ddda16f",
+        "filename": "tests/bootstrap_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-09T17:27:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df5f34c1_7f7c2258",
       "range": {
         "startLine": 405,
         "startChar": 2,
