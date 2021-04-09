@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abf86a49_667bcdec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2021-04-09T18:29:39Z",
+      "side": 1,
+      "message": "Don\u0027t know much about the rust fuzzing setup yet, but this looks consistent with the cc_fuzz implementation.",
+      "revId": "fc2d0d0120e9a8d050112c70feb75f5e561d03f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
