@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffce67a8_09f682a4",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-09T09:58:23Z",
+      "side": 1,
+      "message": "FYI (but maybe worth leaving in a comment too):\nwe don\u0027t expect new files, e.g. max_target_s, to be created every release as ~all changes to hiddenapi lists should be done via @UnsupportedAppUsage annotations in source code. Existing lists are mainly for historic reasons, too many to add (especially for low_priority max_o stuff), or for generated signatures that can\u0027t be annotated (e.g. Resources but not AIDL).",
+      "range": {
+        "startLine": 34,
+        "startChar": 5,
+        "endLine": 34,
+        "endChar": 30
+      },
+      "revId": "db25012951f42aaf63ea3db24e731c13b5b6dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54e22d11_f51d51aa",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-09T09:58:23Z",
+      "side": 1,
+      "message": "nit: //[::space::]and here and below",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 6
+      },
+      "revId": "db25012951f42aaf63ea3db24e731c13b5b6dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efcdb652_8fd4521e",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-09T09:58:23Z",
+      "side": 1,
+      "message": "maybe it\u0027s just me, but having just \"p\" here for a variable name makes reading/scanning the code a bit harder, as I am also reading max-target-p/q/r. Maybe just use \"path\" for these loops to avoid any confusion",
+      "range": {
+        "startLine": 390,
+        "startChar": 8,
+        "endLine": 390,
+        "endChar": 9
+      },
+      "revId": "db25012951f42aaf63ea3db24e731c13b5b6dbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
