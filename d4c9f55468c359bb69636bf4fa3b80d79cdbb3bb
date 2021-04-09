@@ -33,6 +33,23 @@
       "message": "Talked to Ryan and got some information that future Clang may be incompatible with old prebuilt libraries. We may want to freeze the entire build system including compiler toolchains in the future. But before Clang becomes problematic, let\u0027s stick to this method.",
       "revId": "d4c9f55468c359bb69636bf4fa3b80d79cdbb3bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d76b4cb5_832a8cf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1229339
+      },
+      "writtenOn": "2021-04-09T01:12:48Z",
+      "side": 1,
+      "message": "inseob@ explained it to me some more. I think this change makes sense.\n",
+      "revId": "d4c9f55468c359bb69636bf4fa3b80d79cdbb3bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
