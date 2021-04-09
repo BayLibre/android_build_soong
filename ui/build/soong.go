@@ -160,6 +160,25 @@ func runSoong(ctx Context, config Config) {
 		ctx.Fatalf("failed to write environment file %s: %s", envFile, err)
 	}
 
+	runMicrofactory := func(relExePath string, pkg string, mapping map[string]string) {
+		name := filepath.Base(relExePath)
+		ctx.BeginTrace(metrics.RunSoong, name)
+		defer ctx.EndTrace()
+		cfg := microfactory.Config{TrimPath: absPath(ctx, ".")}
+		for pkgPrefix, pathPrefix := range mapping {
+			cfg.Map(pkgPrefix, pathPrefix)
+		}
+
+		exePath := filepath.Join(config.SoongOutDir(), relExePath)
+		dir := filepath.Dir(exePath)
+		if err := os.MkdirAll(dir, 0777); err != nil {
+			ctx.Fatalf("cannot create %s: %s", dir, err)
+		}
+		if _, err := microfactory.Build(&cfg, exePath, pkg); err != nil {
+			ctx.Fatalf("failed to build %s: %s", name, err)
+		}
+	}
+
 	func() {
 		ctx.BeginTrace(metrics.RunSoong, "environment check")
 		defer ctx.EndTrace()
@@ -174,20 +193,12 @@ func runSoong(ctx Context, config Config) {
 		}
 	}()
 
-	var cfg microfactory.Config
-	cfg.Map("github.com/google/blueprint", "build/blueprint")
-
-	cfg.TrimPath = absPath(ctx, ".")
-
-	func() {
-		ctx.BeginTrace(metrics.RunSoong, "bpglob")
-		defer ctx.EndTrace()
-
-		bpglob := filepath.Join(config.SoongOutDir(), ".minibootstrap/bpglob")
-		if _, err := microfactory.Build(&cfg, bpglob, "github.com/google/blueprint/bootstrap/bpglob"); err != nil {
-			ctx.Fatalln("Failed to build bpglob:", err)
-		}
-	}()
+	runMicrofactory(".minibootstrap/bpglob", "github.com/google/blueprint/bootstrap/bpglob",
+		map[string]string{"github.com/google/blueprint": "build/blueprint"})
+	runMicrofactory(".bootstrap/bin/mk2rbc", "android/soong/mk2rbc/cmd",
+		map[string]string{"android/soong": "build/soong"})
+	runMicrofactory(".bootstrap/bin/rbcrun", "rbcrun/cmd",
+		map[string]string{"go.starlark.net": "external/starlark-go", "rbcrun": "build/make/tools/rbcrun"})
 
 	ninja := func(name, file string) {
 		ctx.BeginTrace(metrics.RunSoong, name)
