@@ -34,6 +34,24 @@
       "parentUuid": "67e51a52_42fe7223",
       "revId": "13e589a86bfb591ba3d268cef19c7e1515715104",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79932cfa_abc86f0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-12T13:25:14Z",
+      "side": 1,
+      "message": "I think it\u0027s fine:\n- It already generated a good change: removing Includes and Excludes property;\n- Helped me understand the structure of Base/Module (it may be obvious to you, but it\u0027s not trivial);\n- The follow up changes don\u0027t really refactor much of the existing structure; they add actual build actions.\n- there is no cost in submitting this change separately;\n\nThe follow up changes are already being split functionally, e.g., no apex integration, no systemserver jars separation, etc.",
+      "parentUuid": "008fc922_15c20235",
+      "revId": "13e589a86bfb591ba3d268cef19c7e1515715104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
