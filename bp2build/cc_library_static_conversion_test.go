@@ -144,35 +144,35 @@ cc_library_static {
     name: "foo_static",
     srcs: [
         "foo_static1.cc",
-	"foo_static2.cc",
+        "foo_static2.cc",
     ],
     cflags: [
         "-Dflag1",
-	"-Dflag2"
+        "-Dflag2"
     ],
     static_libs: [
         "static_lib_1",
-	"static_lib_2"
+        "static_lib_2"
     ],
     whole_static_libs: [
         "whole_static_lib_1",
-	"whole_static_lib_2"
+        "whole_static_lib_2"
     ],
     include_dirs: [
-	"include_dir_1",
-	"include_dir_2",
+        "include_dir_1",
+        "include_dir_2",
     ],
     local_include_dirs: [
         "local_include_dir_1",
-	"local_include_dir_2",
+        "local_include_dir_2",
     ],
     export_include_dirs: [
-	"export_include_dir_1",
-	"export_include_dir_2"
+        "export_include_dir_1",
+        "export_include_dir_2"
     ],
     header_libs: [
         "header_lib_1",
-	"header_lib_2"
+        "header_lib_2"
     ],
 
     // TODO: Also support export_header_lib_headers
@@ -278,6 +278,65 @@ cc_library_static {
         "implicit_include_2.h",
     ],
 )`},
+		},
+		{
+			description:                        "cc_library_static arch-specific",
+			moduleTypeUnderTest:                "cc_library_static",
+			moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+			moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+			filesystem: map[string]string{
+				"impl.cpp": "",
+				"impl.h":   "",
+				// Arch-specific files and headers
+				"x86/x86_impl.cpp":       "",
+				"x86/x86_impl.h":         "",
+				"x86_64/x86_64_impl.cpp": "",
+				"x86_64/x86_64_impl.h":   "",
+			},
+			bp: soongCcLibraryStaticPreamble + `
+cc_library_static {
+    name: "foo_static",
+    srcs: ["impl.cpp"],
+    cflags: [
+        "-Dflag1",
+        "-Dflag2"
+    ],
+   arch: {
+        x86: {
+            ldflags: ["-Wl,--exclude-libs=baz.a"],
+            srcs: ["x86/x86_impl.cpp"],
+        },
+        x86_64: {
+            ldflags: ["-Wl,--exclude-libs=qux.a"],
+            srcs: ["x86_64/x86_64_impl.cpp"],
+        },
+    },
+
+    bazel_module: { bp2build_available: true },
+}`,
+			expectedBazelTargets: []string{`cc_library_static(
+    name = "foo_static",
+    copts = [
+        "-Dflag1",
+        "-Dflag2",
+    ],
+    hdrs = ["impl.h"] + select({
+        "//build/bazel/platforms/arch:x86": ["x86/x86_impl.h"],
+        "//build/bazel/platforms/arch:x86_64": ["x86_64/x86_64_impl.h"],
+        "//conditions:default": [],
+    }),
+    includes = ["."],
+    linkstatic = True,
+    srcs = [
+        "impl.cpp",
+        "impl.h",
+    ] + select({
+        "//build/bazel/platforms/arch:x86": ["x86/x86_impl.cpp"],
+        "//build/bazel/platforms/arch:x86_64": ["x86_64/x86_64_impl.cpp"],
+        "//conditions:default": [],
+    }),
+)`,
+			},
 		},
 	}
 

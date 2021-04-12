@@ -60,20 +60,22 @@ func TestCcLibraryBp2Build(t *testing.T) {
 				"android.cpp": "",
 				"darwin.cpp":  "",
 				// Refer to cc.headerExts for the supported header extensions in Soong.
-				"header.h":         "",
-				"header.hh":        "",
-				"header.hpp":       "",
-				"header.hxx":       "",
-				"header.h++":       "",
-				"header.inl":       "",
-				"header.inc":       "",
-				"header.ipp":       "",
-				"header.h.generic": "",
-				"impl.cpp":         "",
-				"linux.cpp":        "",
-				"x86.cpp":          "",
-				"x86_64.cpp":       "",
-				"foo-dir/a.h":      "",
+				"header.h":               "",
+				"header.hh":              "",
+				"header.hpp":             "",
+				"header.hxx":             "",
+				"header.h++":             "",
+				"header.inl":             "",
+				"header.inc":             "",
+				"header.ipp":             "",
+				"header.h.generic":       "",
+				"impl.cpp":               "",
+				"linux.cpp":              "",
+				"x86/x86_impl.cpp":       "",
+				"x86_64/x86_64_impl.cpp": "",
+				"x86/x86_impl.h":         "",
+				"x86_64/x86_64_impl.h":   "",
+				"foo-dir/a.h":            "",
 			},
 			bp: soongCcLibraryPreamble + `
 cc_library_headers { name: "some-headers" }
@@ -87,11 +89,11 @@ cc_library {
     arch: {
         x86: {
             ldflags: ["-Wl,--exclude-libs=baz.a"],
-            srcs: ["x86.cpp"],
+            srcs: ["x86/x86_impl.cpp"],
         },
         x86_64: {
             ldflags: ["-Wl,--exclude-libs=qux.a"],
-            srcs: ["x86_64.cpp"],
+            srcs: ["x86_64/x86_64_impl.cpp"],
         },
     },
     target: {
@@ -122,7 +124,11 @@ cc_library {
         "header.ipp",
         "header.h.generic",
         "foo-dir/a.h",
-    ],
+    ] + select({
+        "//build/bazel/platforms/arch:x86": ["x86/x86_impl.h"],
+        "//build/bazel/platforms/arch:x86_64": ["x86_64/x86_64_impl.h"],
+        "//conditions:default": [],
+    }),
     includes = ["foo-dir"],
     linkopts = ["-Wl,--exclude-libs=bar.a"] + select({
         "//build/bazel/platforms/arch:x86": ["-Wl,--exclude-libs=baz.a"],
@@ -130,8 +136,8 @@ cc_library {
         "//conditions:default": [],
     }),
     srcs = ["impl.cpp"] + select({
-        "//build/bazel/platforms/arch:x86": ["x86.cpp"],
-        "//build/bazel/platforms/arch:x86_64": ["x86_64.cpp"],
+        "//build/bazel/platforms/arch:x86": ["x86/x86_impl.cpp"],
+        "//build/bazel/platforms/arch:x86_64": ["x86_64/x86_64_impl.cpp"],
         "//conditions:default": [],
     }) + select({
         "//build/bazel/platforms/os:android": ["android.cpp"],
