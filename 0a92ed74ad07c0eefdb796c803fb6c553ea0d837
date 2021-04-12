@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5556e258_ce364589",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-12T16:23:33Z",
+      "side": 1,
+      "message": "If this breakage was truly caused by full_cc_library CLs, why weren\u0027t these rolled back instead of denylisting a module which was previously working?",
+      "revId": "0a92ed74ad07c0eefdb796c803fb6c553ea0d837",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
