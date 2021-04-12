@@ -492,12 +492,6 @@ type snapshotLibraryProperties struct {
 	// Prebuilt file for each arch.
 	Src *string `android:"arch_variant"`
 
-	// list of directories that will be added to the include path (using -I).
-	Export_include_dirs []string `android:"arch_variant"`
-
-	// list of directories that will be added to the system path (using -isystem).
-	Export_system_include_dirs []string `android:"arch_variant"`
-
 	// list of flags that will be used for any module that links against this module.
 	Export_flags []string `android:"arch_variant"`
 
@@ -559,9 +553,13 @@ func (p *snapshotLibraryDecorator) link(ctx ModuleContext, flags Flags, deps Pat
 		return nil
 	}
 
-	p.libraryDecorator.reexportDirs(android.PathsForModuleSrc(ctx, p.properties.Export_include_dirs)...)
-	p.libraryDecorator.reexportSystemDirs(android.PathsForModuleSrc(ctx, p.properties.Export_system_include_dirs)...)
+	p.libraryDecorator.exportIncludes(ctx)
+	p.libraryDecorator.reexportDirs(deps.ReexportedDirs...)
+	p.libraryDecorator.reexportSystemDirs(deps.ReexportedSystemDirs...)
 	p.libraryDecorator.reexportFlags(p.properties.Export_flags...)
+	p.libraryDecorator.reexportFlags(deps.ReexportedFlags...)
+	p.libraryDecorator.reexportDeps(deps.ReexportedDeps...)
+	p.libraryDecorator.addExportedGeneratedHeaders(deps.ReexportedGeneratedHeaders...)
 
 	in := android.PathForModuleSrc(ctx, *p.properties.Src)
 	p.unstrippedOutputFile = in
