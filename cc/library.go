@@ -2180,12 +2180,15 @@ func CcLibraryStaticBp2Build(ctx android.TopDownMutatorContext) {
 	}
 
 	// For Bazel, be more explicit about headers - list all header files in include dirs as srcs
+	var hdrs bazel.LabelList
 	for _, includeDir := range includeDirs {
-		compilerAttrs.srcs.Value.Append(bp2BuildListHeadersInDir(ctx, includeDir))
+		hdrs.Append(bp2BuildListHeadersInDir(ctx, includeDir))
 	}
 	for _, localIncludeDir := range localIncludeDirs {
-		compilerAttrs.srcs.Value.Append(bp2BuildListHeadersInDir(ctx, localIncludeDir))
+		hdrs.Append(bp2BuildListHeadersInDir(ctx, localIncludeDir))
 	}
+	hdrs = bazel.UniqueBazelLabelList(hdrs)
+	compilerAttrs.srcs.Value.Append(hdrs)
 
 	var staticLibs []string
 	var wholeStaticLibs []string
