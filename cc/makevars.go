@@ -282,11 +282,11 @@ func makeVarsToolchain(ctx android.MakeVarsContext, secondPrefix string,
 		ctx.Strict(makePrefix+"AR", "${config.ClangBin}/llvm-ar")
 		ctx.Strict(makePrefix+"READELF", gccCmd(toolchain, "readelf"))
 		ctx.Strict(makePrefix+"NM", gccCmd(toolchain, "nm"))
-		ctx.Strict(makePrefix+"STRIP", gccCmd(toolchain, "strip"))
+		ctx.Strict(makePrefix+"STRIP", "${config.ClangBin}/llvm-strip")
 	}
 
 	if target.Os.Class == android.Device {
-		ctx.Strict(makePrefix+"OBJCOPY", gccCmd(toolchain, "objcopy"))
+		ctx.Strict(makePrefix+"OBJCOPY", "${config.ClangBin}/llvm-objcopy")
 		ctx.Strict(makePrefix+"LD", gccCmd(toolchain, "ld"))
 		ctx.Strict(makePrefix+"GCC_VERSION", toolchain.GccVersion())
 		ctx.Strict(makePrefix+"NDK_TRIPLE", config.NDKTriple(toolchain))
