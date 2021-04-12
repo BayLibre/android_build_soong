@@ -16,6 +16,24 @@
       "message": "I\u0027m hitting linking error with this:\n   \u003d note: ld.lld: error: undefined symbol: __emutls_v.__sancov_lowest_stack\n          \u003e\u003e\u003e referenced by mod.rs:179 (prebuilts/rust/linux-x86/1.50.0/src/stdlibs/library/core/src/ptr/mod.rs:179)\n\nlibfuzzer-sys and our libclang_rt are out of sync, maybe?",
       "revId": "c044f5bce8b0169b5c696f301e15335f12b927f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dcaee79_7b8e7db4",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-04-12T19:16:22Z",
+      "side": 1,
+      "message": "Ack, resolved in https://android-review.googlesource.com/c/platform/build/soong/+/1671669",
+      "parentUuid": "3d3e54c3_16da85df",
+      "revId": "c044f5bce8b0169b5c696f301e15335f12b927f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
