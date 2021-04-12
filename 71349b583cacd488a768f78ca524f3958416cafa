@@ -16,6 +16,24 @@
       "message": "You definitely need some tests in here.",
       "revId": "71349b583cacd488a768f78ca524f3958416cafa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "827eac26_2c57c35c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-12T14:32:09Z",
+      "side": 1,
+      "message": "For the actual contents / format of the generated file there are integration tests outside of soong: DeviceBootTest, tests for derive_classpath.\n\nAdded a test for Mk entries, there isn\u0027t really much else to test I think?",
+      "parentUuid": "ecd2e8e3_9aef60e7",
+      "revId": "71349b583cacd488a768f78ca524f3958416cafa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
