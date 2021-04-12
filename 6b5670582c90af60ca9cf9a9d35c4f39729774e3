@@ -39,6 +39,29 @@
       "message": "Nice!",
       "revId": "6b5670582c90af60ca9cf9a9d35c4f39729774e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a774592_67ad14d2",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-04-12T08:59:36Z",
+      "side": 1,
+      "message": "seems like this code may be a bit neater if you reflected the structure of the flags to generate_hiddenapi_lists with some structure in the augmentationInfo struct?\n\ne.g. you could have a struct with like:\n\nstruct {\n  List string // or an enum, \"unsupported\", \"max-target-r\" etc.\n  IgnoreConflicts bool\n  Tag string\n}\n\nor something along those lines.",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 33
+      },
+      "revId": "6b5670582c90af60ca9cf9a9d35c4f39729774e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
