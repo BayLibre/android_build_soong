@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a73e1939_29927740",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-12T10:47:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cd0b951_9f53d2f7",
+      "range": {
+        "startLine": 22,
+        "startChar": 6,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "6b5670582c90af60ca9cf9a9d35c4f39729774e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d3e6189b_2f6c8db8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-12T08:59:36Z",
       "side": 1,
       "message": "seems like this code may be a bit neater if you reflected the structure of the flags to generate_hiddenapi_lists with some structure in the augmentationInfo struct?\n\ne.g. you could have a struct with like:\n\nstruct {\n  List string // or an enum, \"unsupported\", \"max-target-r\" etc.\n  IgnoreConflicts bool\n  Tag string\n}\n\nor something along those lines.",
+      "range": {
+        "startLine": 116,
+        "startChar": 5,
+        "endLine": 116,
+        "endChar": 33
+      },
+      "revId": "6b5670582c90af60ca9cf9a9d35c4f39729774e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6810032b_65d5d014",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-12T10:47:44Z",
+      "side": 1,
+      "message": "Agreed. However, I will leave that sort of refactoring to a follow up CL if and when it becomes beneficial. I don\u0027t like to do too much refactoring in one go as it makes it difficult to follow.",
+      "parentUuid": "9a774592_67ad14d2",
       "range": {
         "startLine": 116,
         "startChar": 5,
