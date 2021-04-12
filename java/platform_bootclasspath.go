@@ -208,7 +208,16 @@ func addDependencyOntoApexModulePair(ctx android.BottomUpMutatorContext, apex st
 	// error, unless missing dependencies are allowed. The simplest way to handle that is to add a
 	// dependency that will not be satisfied and the default behavior will handle it.
 	if !addedDep {
+		// Add dependency on the unprefixed (i.e. source or renamed prebuilt) module which we know does
+		// not exist. The resulting error message will contain useful information about the available
+		// variants.
 		ctx.AddFarVariationDependencies(variations, tag, name)
+
+		// Add dependency on the missing prefixed prebuilt variant too if a module with that names
+		// exists so that information about its available variants will be reported too.
+		if ctx.OtherModuleExists(prebuiltName) {
+			ctx.AddFarVariationDependencies(variations, tag, prebuiltName)
+		}
 	}
 }
 
