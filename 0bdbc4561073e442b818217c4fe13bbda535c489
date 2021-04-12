@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd75bb95_686766c3",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2937,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-04-12T19:45:53Z",
+      "side": 1,
+      "message": "Chatted offline and I\u0027ll work on adding snapshot support for Rust C-library variants in a follow-on CL. Thanks for flagging this.",
+      "parentUuid": "a168ce86_4c497e4c",
+      "range": {
+        "startLine": 2937,
+        "startChar": 2,
+        "endLine": 2937,
+        "endChar": 81
+      },
+      "revId": "0bdbc4561073e442b818217c4fe13bbda535c489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9edeffe8_219278b0",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-12T12:40:41Z",
       "side": 1,
       "message": "Shouldn\u0027t this be the opposite? Make tries to strip .vendor as a suffix.",
+      "range": {
+        "startLine": 77,
+        "startChar": 94,
+        "endLine": 78,
+        "endChar": 26
+      },
+      "revId": "0bdbc4561073e442b818217c4fe13bbda535c489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "563079a3_de0e643b",
+        "filename": "rust/rust.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-04-12T19:45:53Z",
+      "side": 1,
+      "message": "Ah, thanks!",
+      "parentUuid": "9edeffe8_219278b0",
       "range": {
         "startLine": 77,
         "startChar": 94,
