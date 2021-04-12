@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "487ce673_e7e0bca6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2021-04-12T07:14:35Z",
+      "side": 1,
+      "message": "Thanks- I wanted to write something like this but I wasn\u0027t familiar enough with blueprint internals to pull it off",
+      "revId": "7f99ec7c1fd073e40205bd3bfd1818f1ad54df9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
