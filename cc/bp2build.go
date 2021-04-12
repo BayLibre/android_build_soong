@@ -162,7 +162,7 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 }
 
 func bp2BuildListHeadersInDir(ctx android.TopDownMutatorContext, includeDir string) bazel.LabelList {
-	globs := bazel.GlobsInDir(includeDir, includeDir != ".", headerExts)
+	globs := bazel.GlobsInDir(includeDir, true, headerExts)
 	return android.BazelLabelForModuleSrc(ctx, globs)
 }
 
