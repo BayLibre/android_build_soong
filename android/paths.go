@@ -1634,6 +1634,14 @@ func PathForBazelOut(ctx PathContext, paths ...string) BazelOutPath {
 	}
 }
 
+func PathsForBazelOut(ctx PathContext, paths []string) Paths {
+	outs := make(Paths, 0, len(paths))
+	for _, p := range paths {
+		outs = append(outs, PathForBazelOut(ctx, p))
+	}
+	return outs
+}
+
 // PathForModuleOut returns a Path representing the paths... under the module's
 // output directory.
 func PathForModuleOut(ctx ModuleOutPathContext, paths ...string) ModuleOutPath {
