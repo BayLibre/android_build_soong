@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67e51a52_42fe7223",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-12T12:58:24Z",
+      "side": 1,
+      "message": "I know I suggested that you split the changes up but I don\u0027t think that this is a worthwhile change. It doesn\u0027t really provide any functionality and follow up changes refactor this code a lot.\n\nI would suggest that you either pull the changes to this file from the follow up change into this one (with some tests if possible) and then split the follow up change into separate changes (with tests).",
+      "revId": "13e589a86bfb591ba3d268cef19c7e1515715104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
