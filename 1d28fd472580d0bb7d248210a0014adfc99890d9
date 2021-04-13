@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2dd87d78_b1b8820b",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-04-13T15:10:55Z",
+      "side": 1,
+      "message": "Initially I didn\u0027t think I\u0027d need the LinkableInterface methods, but that wasn\u0027t the case so I pulled it into this interface. I kept them split though thinking it would be a little cleaner, though I don\u0027t feel strongly either way.",
+      "parentUuid": "c3aad9db_4c768217",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 98
+      },
+      "revId": "1d28fd472580d0bb7d248210a0014adfc99890d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b6bcb712_518b157f",
         "filename": "cc/image.go",
         "patchSetId": 2
@@ -70,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dee993eb_4784e0dd",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-04-13T15:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d638201_9b65d4bb",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 0
+      },
+      "revId": "1d28fd472580d0bb7d248210a0014adfc99890d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec0e0419_f1b0fa3e",
@@ -93,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79b09c72_5eae4c2f",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-04-13T15:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec0e0419_f1b0fa3e",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 444,
+        "endChar": 20
+      },
+      "revId": "1d28fd472580d0bb7d248210a0014adfc99890d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92dcd382_5f9cb5a2",
@@ -106,6 +178,24 @@
       "writtenOn": "2021-04-13T01:21:06Z",
       "side": 1,
       "message": "nit: unnecessary newline",
+      "revId": "1d28fd472580d0bb7d248210a0014adfc99890d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c82e055c_7c9c542f",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-04-13T15:10:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92dcd382_5f9cb5a2",
       "revId": "1d28fd472580d0bb7d248210a0014adfc99890d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
