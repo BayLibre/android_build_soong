@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f71dc54d_09d18d20",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-13T13:38:50Z",
+      "side": 1,
+      "message": "Shouldn\u0027t these be panics?",
+      "revId": "125b00d6b6f74790dd529cfca64bbe1416001927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -116,6 +116,24 @@
       "parentUuid": "589e9d4d_5840690f",
       "revId": "2120ee6261c5afa1fd763796c527bab5ff785334",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ff811c4_6b9fdaad",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-13T13:38:50Z",
+      "side": 1,
+      "message": "Thanks.\n\n\u003e We do have pretty good test coverage of this code\n\nNow perhaps - it\u0027s not certain it stays good.",
+      "parentUuid": "1415f55e_0842a639",
+      "revId": "2120ee6261c5afa1fd763796c527bab5ff785334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
