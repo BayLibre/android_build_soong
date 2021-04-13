@@ -110,6 +110,8 @@ type AndroidMkEntries struct {
 	DistFiles TaggedDistFiles
 	// The output file for Kati to process and/or install. If absent, the module is skipped.
 	OutputFile OptionalPath
+	// Whether to ignore an empty output file.
+	IgnoreEmpty bool
 	// If true, the module is skipped and does not appear on the final Android-<product name>.mk
 	// file. Useful when a module needs to be skipped conditionally.
 	Disabled bool
@@ -507,7 +509,9 @@ func (a *AndroidMkEntries) fillInEntries(ctx fillInEntriesContext, mod blueprint
 		a.SetString("LOCAL_LICENSE_PACKAGE_NAME", *amod.commonProperties.Effective_package_name)
 	}
 	a.SetString("LOCAL_MODULE_CLASS", a.Class)
-	a.SetString("LOCAL_PREBUILT_MODULE_FILE", a.OutputFile.String())
+	if a.OutputFile.Valid() {
+		a.SetString("LOCAL_PREBUILT_MODULE_FILE", a.OutputFile.String())
+	}
 	a.AddStrings("LOCAL_REQUIRED_MODULES", a.Required...)
 	a.AddStrings("LOCAL_HOST_REQUIRED_MODULES", a.Host_required...)
 	a.AddStrings("LOCAL_TARGET_REQUIRED_MODULES", a.Target_required...)
@@ -617,7 +621,7 @@ func (a *AndroidMkEntries) write(w io.Writer) {
 		return
 	}
 
-	if !a.OutputFile.Valid() {
+	if !a.OutputFile.Valid() && !a.IgnoreEmpty {
 		return
 	}
 
