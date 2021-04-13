@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "049f2656_6ff1f792",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T15:49:54Z",
+      "side": 1,
+      "message": "Nit: Spelling",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "d441c93ed41573a323d256c9729e05bcc7594142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "33dc41c4_afcabb53",
@@ -14,6 +37,40 @@
       "writtenOn": "2021-04-13T13:58:07Z",
       "side": 1,
       "message": "Ping.\n\nPresubmit failures on git_master seem to be due to automerger not being in sync yet.",
+      "revId": "d441c93ed41573a323d256c9729e05bcc7594142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c229ab7_ed54f150",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T15:49:54Z",
+      "side": 1,
+      "message": "Why did you replace the previous code with this instead of appending them?",
+      "revId": "d441c93ed41573a323d256c9729e05bcc7594142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a325eb28_7d617e03",
+        "filename": "java/platform_bootclasspath_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T15:49:54Z",
+      "side": 1,
+      "message": "If you do fix the nit or rebase this could you move these tests above the previous one? That will avoid them conflicting with my changes.",
       "revId": "d441c93ed41573a323d256c9729e05bcc7594142",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
