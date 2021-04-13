@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86ad7780_12d47b16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-13T13:18:31Z",
+      "side": 1,
+      "message": "Nice change! Did you notice the discrepancy in the test configurations due to some failure, or just analytically?",
+      "revId": "1b75695ceb1d577102713f64d1931be06315a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aa2a94e_f30d0895",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6599,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-13T13:18:31Z",
+      "side": 1,
+      "message": "Nit: remove extra period.",
+      "range": {
+        "startLine": 6599,
+        "startChar": 43,
+        "endLine": 6599,
+        "endChar": 44
+      },
+      "revId": "1b75695ceb1d577102713f64d1931be06315a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fb61258_d51bf58f",
+        "filename": "java/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-13T13:18:31Z",
+      "side": 1,
+      "message": "I might have missed something in your previous work, but what are the \"dexpreopt and standard configurations\"? In reality dexpreopt is usually enabled (globally).",
+      "range": {
+        "startLine": 181,
+        "startChar": 65,
+        "endLine": 182,
+        "endChar": 18
+      },
+      "revId": "1b75695ceb1d577102713f64d1931be06315a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e3043fa_d6c4fe04",
+        "filename": "java/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-13T13:18:31Z",
+      "side": 1,
+      "message": "It may be a bit unfortunate from the usability standpoint that the names FixtureConfigureBootJars and FixtureSetBootJars are so close. At least I was confused at first because I thought it\u0027s the same thing, and I thought that it doesn\u0027t set ART jars. Maybe rename FixtureConfigureBootJars -\u003e FixtureConfigureAllBootJars or somehow else make them not so easy to confuse?",
+      "range": {
+        "startLine": 183,
+        "startChar": 5,
+        "endLine": 183,
+        "endChar": 29
+      },
+      "revId": "1b75695ceb1d577102713f64d1931be06315a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "015e589a_29953628",
+        "filename": "java/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-13T13:18:31Z",
+      "side": 1,
+      "message": "I\u0027d make a regexp, something like:\n\n    \u0027^(\u0027 + strings.Join(artApexNames, \u0027|\u0027) + \u0027):\u0027\n\nIt can be precompiled once into a DFA. Not that performance matters much here (both lists are small), but in this case a regexp also requires less code.",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 3
+      },
+      "revId": "1b75695ceb1d577102713f64d1931be06315a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
