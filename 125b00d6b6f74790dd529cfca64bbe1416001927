@@ -34,6 +34,24 @@
       "parentUuid": "f71dc54d_09d18d20",
       "revId": "125b00d6b6f74790dd529cfca64bbe1416001927",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ab65fc4_e15ea64f",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-13T17:32:51Z",
+      "side": 1,
+      "message": "The point with panics is that they shouldn\u0027t normally be tested (other than that they _don\u0027t_ happen) - they\u0027re e assertions after all, and I think that applies to these too.\n\nPanics give much better debug info since they have stack traces.",
+      "parentUuid": "7579c88c_4e903b77",
+      "revId": "125b00d6b6f74790dd529cfca64bbe1416001927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
