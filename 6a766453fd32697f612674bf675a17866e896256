@@ -16,6 +16,69 @@
       "message": "Ping.",
       "revId": "6a766453fd32697f612674bf675a17866e896256",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af5c713f_1d6ca850",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-13T09:42:16Z",
+      "side": 1,
+      "message": "How does \"Join\" prevent anything, isn\u0027t before and after equivalent?",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 46
+      },
+      "revId": "6a766453fd32697f612674bf675a17866e896256",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "880fa529_29bab2d5",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-13T09:42:16Z",
+      "side": 1,
+      "message": "nit: do you not want these in a separate struct?",
+      "revId": "6a766453fd32697f612674bf675a17866e896256",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a38067b0_52499684",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-13T09:42:16Z",
+      "side": 1,
+      "message": "this is noop?",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 270,
+        "endChar": 2
+      },
+      "revId": "6a766453fd32697f612674bf675a17866e896256",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
