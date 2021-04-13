@@ -16,6 +16,24 @@
       "message": "Help me understand why removing these is okay. Wouldn\u0027t it make old snapshots incompatible with the latest build system?",
       "revId": "a42c70757218b6ff97ce96b68933519c7dc6fc66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26849892_2956d279",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-04-13T00:34:10Z",
+      "side": 0,
+      "message": "Oh yeah I didn\u0027t mean this. I\u0027ll add some more tests.",
+      "parentUuid": "2a3872e2_3cd73626",
+      "revId": "a42c70757218b6ff97ce96b68933519c7dc6fc66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
