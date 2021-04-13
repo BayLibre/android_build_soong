@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b382bb6a_cc4a736a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T13:49:24Z",
+      "side": 1,
+      "message": "Yes. I have been aware of (and initially confused by) the two BootJars fields in different config files for a while and knew it would become a problem eventually. I also found out that \"eventually\" was now when I started moving functionality from hidden API singleton (which uses the Config.productVariables.BootJars field) and platform_bootclasspath (which indirectly, via the boot image code, uses the dexpreopt.GlobalConfig.BootJars field) and found tests failing.",
+      "parentUuid": "86ad7780_12d47b16",
+      "revId": "1b75695ceb1d577102713f64d1931be06315a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4aa2a94e_f30d0895",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-13T13:18:31Z",
       "side": 1,
       "message": "Nit: remove extra period.",
+      "range": {
+        "startLine": 6599,
+        "startChar": 43,
+        "endLine": 6599,
+        "endChar": 44
+      },
+      "revId": "1b75695ceb1d577102713f64d1931be06315a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "259d4b3a_9d195efa",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 6599,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T13:49:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aa2a94e_f30d0895",
       "range": {
         "startLine": 6599,
         "startChar": 43,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cde9489_bdd444de",
+        "filename": "java/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T13:49:24Z",
+      "side": 1,
+      "message": "Clarified.",
+      "parentUuid": "2fb61258_d51bf58f",
+      "range": {
+        "startLine": 181,
+        "startChar": 65,
+        "endLine": 182,
+        "endChar": 18
+      },
+      "revId": "1b75695ceb1d577102713f64d1931be06315a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e3043fa_d6c4fe04",
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94fde76e_9cab271d",
+        "filename": "java/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T13:49:24Z",
+      "side": 1,
+      "message": "I\u0027m not sure that FixtureConfigureAllBootJars is any clearer.\n\nI think that given that FixtureSetBootJars is either being used within dexpreopt package (and so cannot use this function) or has to be qualified as dexpreopt.FixtureSetBootJars the difference should be reasonably obvious. If the name does not suffice then the documentation should make it clear.",
+      "parentUuid": "3e3043fa_d6c4fe04",
+      "range": {
+        "startLine": 183,
+        "startChar": 5,
+        "endLine": 183,
+        "endChar": 29
+      },
+      "revId": "1b75695ceb1d577102713f64d1931be06315a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "015e589a_29953628",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-04-13T13:18:31Z",
       "side": 1,
       "message": "I\u0027d make a regexp, something like:\n\n    \u0027^(\u0027 + strings.Join(artApexNames, \u0027|\u0027) + \u0027):\u0027\n\nIt can be precompiled once into a DFA. Not that performance matters much here (both lists are small), but in this case a regexp also requires less code.",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 3
+      },
+      "revId": "1b75695ceb1d577102713f64d1931be06315a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be472259_75d3125b",
+        "filename": "java/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T13:49:24Z",
+      "side": 1,
+      "message": "It would be a little more complicated than that as each apex name contains \".\" and they would need quoting (either by replacing with \\. or by wrapping the whole name between \\Q...\\E) to prevent it matching something like \"com_android_art:\".\n\nHopefully, eventually we will only need to check for \"com.android.art:\" so don\u0027t want to spend too much time improving this. I think this code will do for now.",
+      "parentUuid": "015e589a_29953628",
       "range": {
         "startLine": 187,
         "startChar": 0,
