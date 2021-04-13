@@ -104,6 +104,18 @@ func TestCcLibraryStaticBp2Build(t *testing.T) {
 				// NOTE: Soong implicitly includes headers in the current directory
 				"implicit_include_1.h": "",
 				"implicit_include_2.h": "",
+				// subpackage with subfolder
+				"subpackage/Android.bp":                   "",
+				"subpackage/subpackage_header.h":          "",
+				"subpackage/subfolder/subfolder_header.h": "",
+				// subsubpackage with subfolder
+				"subpackage/subsubpackage/Android.bp":                   "",
+				"subpackage/subsubpackage/subsubpackage_header.h":       "",
+				"subpackage/subsubpackage/subfolder/subfolder_header.h": "",
+				// subsubsubpackage with subfolder
+				"subpackage/subsubpackage/subsubsubpackage/Android.bp":                   "",
+				"subpackage/subsubpackage/subsubsubpackage/subsubsubpackage_header.h":    "",
+				"subpackage/subsubpackage/subsubsubpackage/subfolder/subfolder_header.h": "",
 			},
 			bp: soongCcLibraryStaticPreamble + `
 cc_library_headers {
@@ -161,6 +173,7 @@ cc_library_static {
     include_dirs: [
 	"include_dir_1",
 	"include_dir_2",
+	"subpackage",
     ],
     local_include_dirs: [
         "local_include_dir_1",
@@ -206,6 +219,7 @@ cc_library_static {
         "export_include_dir_2",
         "include_dir_1",
         "include_dir_2",
+        "subpackage",
         "local_include_dir_1",
         "local_include_dir_2",
         ".",
@@ -218,6 +232,12 @@ cc_library_static {
         "include_dir_1/include_dir_1_b.h",
         "include_dir_2/include_dir_2_a.h",
         "include_dir_2/include_dir_2_b.h",
+        "//subpackage:subpackage_header.h",
+        "//subpackage:subfolder/subfolder_header.h",
+        "//subpackage/subsubpackage:subsubpackage_header.h",
+        "//subpackage/subsubpackage:subfolder/subfolder_header.h",
+        "//subpackage/subsubpackage/subsubsubpackage:subsubsubpackage_header.h",
+        "//subpackage/subsubpackage/subsubsubpackage:subfolder/subfolder_header.h",
         "local_include_dir_1/local_include_dir_1_a.h",
         "local_include_dir_1/local_include_dir_1_b.h",
         "local_include_dir_2/local_include_dir_2_a.h",

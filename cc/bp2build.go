@@ -16,6 +16,9 @@ package cc
 import (
 	"android/soong/android"
 	"android/soong/bazel"
+
+	"github.com/google/blueprint/pathtools"
+
 	"strings"
 )
 
@@ -161,9 +164,92 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 	}
 }
 
+// Returns true if a prefix + components[:i] + /Android.bp exists
+// FIXME: Could check for BUILD file instead of checking for Android.bp file?
+func directoryHasBlueprint(fs pathtools.FileSystem, prefix string, components []string, componentIndex int) bool {
+	blueprintPath := prefix
+	if blueprintPath != "" {
+		blueprintPath = blueprintPath + "/"
+	}
+	for i := 0; i <= componentIndex; i++ {
+		blueprintPath = blueprintPath + components[i] + "/"
+	}
+	blueprintPath = blueprintPath + "Android.bp"
+	if exists, _, _ := fs.Exists(blueprintPath); exists {
+		return true
+	} else {
+		return false
+	}
+}
+
+// Transform paths to acknowledge package boundaries
+// e.g. something like
+//   async_safe/include/async_safe/CHECK.h
+// might become
+//   //bionic/libc/async_safe:include/async_safe/CHECK.h
+// if the "async_safe" folder is a package.
+func transformSubpackagePath(ctx android.TopDownMutatorContext, includeDir string, path bazel.Label) bazel.Label {
+	var newPath bazel.Label
+
+	// FIXME: Do we need to transform Bp_text as well?
+	newPath.Bp_text = path.Bp_text
+
+	if strings.HasPrefix(path.Label, "//") {
+		// Assume absolute paths are already correct
+		newPath.Label = path.Label
+	} else {
+		newLabel := ""
+		pathComponents := strings.Split(path.Label, "/")
+		foundBlueprint := false
+		// Check the deepest subdirectory first and work upwards
+		for i := len(pathComponents) - 1; i >= 0; i-- {
+			pathComponent := pathComponents[i]
+			var sep string
+			if !foundBlueprint && directoryHasBlueprint(ctx.Config().FileSystem(), ctx.ModuleDir(), pathComponents, i) {
+				sep = ":"
+				foundBlueprint = true
+			} else {
+				sep = "/"
+			}
+			if newLabel == "" {
+				newLabel = pathComponent
+			} else {
+				newLabel = pathComponent + sep + newLabel
+			}
+		}
+		if foundBlueprint {
+			// Ensure paths end up looking like //bionic/... instead of //./bionic/...
+			moduleDir := ctx.ModuleDir()
+			if strings.HasPrefix(moduleDir, ".") {
+				moduleDir = moduleDir[1:]
+			}
+			// Make the path into an absolute path
+			if moduleDir == "" {
+				newLabel = "//" + newLabel
+			} else {
+				newLabel = "//" + moduleDir + "/" + newLabel
+			}
+		}
+		newPath.Label = newLabel
+	}
+	return newPath
+}
+
+func transformSubpackagePaths(ctx android.TopDownMutatorContext, includeDir string, paths bazel.LabelList) bazel.LabelList {
+	var newPaths bazel.LabelList
+	for _, include := range paths.Includes {
+		newPaths.Includes = append(newPaths.Includes, transformSubpackagePath(ctx, includeDir, include))
+	}
+	for _, exclude := range paths.Excludes {
+		newPaths.Excludes = append(newPaths.Excludes, transformSubpackagePath(ctx, includeDir, exclude))
+	}
+	return newPaths
+}
+
 func bp2BuildListHeadersInDir(ctx android.TopDownMutatorContext, includeDir string) bazel.LabelList {
 	globs := bazel.GlobsInDir(includeDir, includeDir != ".", headerExts)
-	return android.BazelLabelForModuleSrc(ctx, globs)
+	headers := android.BazelLabelForModuleSrc(ctx, globs)
+	return transformSubpackagePaths(ctx, includeDir, headers)
 }
 
 // Bazel wants include paths to be relative to the module

@@ -1797,3 +1797,7 @@ func (c *config) UpdatableBootJars() ConfiguredJarList {
 func (c *config) RBEWrapper() string {
 	return c.GetenvWithDefault("RBE_WRAPPER", remoteexec.DefaultWrapperPath)
 }
+
+func (c *config) FileSystem() pathtools.FileSystem {
+	return c.fs
+}
