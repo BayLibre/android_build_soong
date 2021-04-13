@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "deec8e8d_ca539c7f",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T09:57:05Z",
+      "side": 1,
+      "message": "The String() representation of the paths will be identical. However, they will differ in the value Rel() returns.\n\nPathForOutput(ctx, \"hiddenapi\", \"hiddenapi-flags.csv\") will create a Path whose Rel() method will return \"hiddenapi/hiddenapi-flags.csv\".\n\nhiddenApiDir.Join(ctx, \"hiddenapi-flags.csv\") will create a Path whose Rel() method will return \"hiddenapi-flags.csv\".\n\nFor 99% of the usages that does not matter. However, the java_resources property uses the Rel() value as the path to store the file in the resulting APK. The only place where these paths are stored in an APK is the CtsHiddenApiBlocklistTest... APKs and they expect the files to be at the top.",
+      "parentUuid": "af5c713f_1d6ca850",
+      "range": {
+        "startLine": 104,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 46
+      },
+      "revId": "6a766453fd32697f612674bf675a17866e896256",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "880fa529_29bab2d5",
         "filename": "java/platform_bootclasspath.go",
         "patchSetId": 2
@@ -54,6 +78,24 @@
       "writtenOn": "2021-04-13T09:42:16Z",
       "side": 1,
       "message": "nit: do you not want these in a separate struct?",
+      "revId": "6a766453fd32697f612674bf675a17866e896256",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5782e863_406fdbb1",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T09:57:05Z",
+      "side": 1,
+      "message": "There is no need to do that at the moment as these are not going to be used anywhere else.",
+      "parentUuid": "880fa529_29bab2d5",
       "revId": "6a766453fd32697f612674bf675a17866e896256",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -71,6 +113,30 @@
       "writtenOn": "2021-04-13T09:42:16Z",
       "side": 1,
       "message": "this is noop?",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 270,
+        "endChar": 2
+      },
+      "revId": "6a766453fd32697f612674bf675a17866e896256",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfaf1fc7_035f960a",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T09:57:05Z",
+      "side": 1,
+      "message": "It is. I forgot to clean it up. I\u0027ll do it as a follow up to this CL.",
+      "parentUuid": "a38067b0_52499684",
       "range": {
         "startLine": 268,
         "startChar": 1,
