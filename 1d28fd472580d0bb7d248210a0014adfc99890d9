@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3aad9db_4c768217",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-13T01:21:06Z",
+      "side": 1,
+      "message": "Out of curiosity. Why did you choose not to revise LinkableInterface?",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 98
+      },
+      "revId": "1d28fd472580d0bb7d248210a0014adfc99890d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6bcb712_518b157f",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-13T01:21:06Z",
+      "side": 1,
+      "message": "This should eventually be android.SdkSpec, but that must be out of scope of this change. I can handle that as part of b/175678607",
+      "range": {
+        "startLine": 223,
+        "startChar": 14,
+        "endLine": 223,
+        "endChar": 20
+      },
+      "revId": "1d28fd472580d0bb7d248210a0014adfc99890d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d638201_9b65d4bb",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-13T01:21:06Z",
+      "side": 1,
+      "message": "Can you make this as a function and call it from ImageMutatorBegin?",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 405,
+        "endChar": 0
+      },
+      "revId": "1d28fd472580d0bb7d248210a0014adfc99890d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec0e0419_f1b0fa3e",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-13T01:21:06Z",
+      "side": 1,
+      "message": "Can these conditions be part of the new interface?",
+      "range": {
+        "startLine": 426,
+        "startChar": 0,
+        "endLine": 444,
+        "endChar": 20
+      },
+      "revId": "1d28fd472580d0bb7d248210a0014adfc99890d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92dcd382_5f9cb5a2",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-13T01:21:06Z",
+      "side": 1,
+      "message": "nit: unnecessary newline",
+      "revId": "1d28fd472580d0bb7d248210a0014adfc99890d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
