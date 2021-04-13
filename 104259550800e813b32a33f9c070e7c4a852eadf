@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e42db3e2_3e6b67cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-13T08:32:25Z",
+      "side": 1,
+      "message": "Thanks! This makes the glob refactoring way less risky.",
+      "revId": "104259550800e813b32a33f9c070e7c4a852eadf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
