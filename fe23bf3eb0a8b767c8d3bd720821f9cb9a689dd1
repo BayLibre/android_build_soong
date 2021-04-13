@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20f1bf0f_167ce7d8",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-13T01:09:16Z",
+      "side": 1,
+      "message": "add a test for the \"too many splits\" edge case?",
+      "range": {
+        "startLine": 75,
+        "startChar": 26,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "fe23bf3eb0a8b767c8d3bd720821f9cb9a689dd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
