@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf5e8a49_963ad828",
+        "filename": "rust/fuzz.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2021-04-13T23:02:28Z",
+      "side": 0,
+      "message": "fyi, this is a bit redundant since runtime library dependency is handled by rustSanitizerRuntimeMutator in sanitize.go. So I removed this part and the corresponding test.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 2
+      },
+      "revId": "c8ae73e67825200efa8458f594115b1dcd7773ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

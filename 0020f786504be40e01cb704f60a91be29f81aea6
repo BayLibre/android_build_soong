@@ -22,6 +22,30 @@
       },
       "revId": "0020f786504be40e01cb704f60a91be29f81aea6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce502bcc_62b7c4fb",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1124693
+      },
+      "writtenOn": "2021-04-13T23:02:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ebec932_a47698b7",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "0020f786504be40e01cb704f60a91be29f81aea6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
