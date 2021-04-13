@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6befc745_49903378",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T12:45:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "778ed586_0d53969d",
+      "revId": "2120ee6261c5afa1fd763796c527bab5ff785334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1702e156_865cc45e",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e7a484a_2007fa0e",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T12:45:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1702e156_865cc45e",
+      "range": {
+        "startLine": 216,
+        "startChar": 87,
+        "endLine": 216,
+        "endChar": 92
+      },
+      "revId": "2120ee6261c5afa1fd763796c527bab5ff785334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "589e9d4d_5840690f",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-04-13T09:47:21Z",
       "side": 1,
       "message": "I thought I saw so many issues here, until it finally sunk in that these AddFarVariantionDependencies calls only exist to generate errors. To be fair the comments do point that out, but still.\n\n- I suggest adding a wrapper in android/mutator.go so that these calls can read\n\n  ctx.ReportMissingDependencyError(variations, tag, foo)\n\ninstead, and then its implementation calls AddFarVariationDependencies.\n\n- Besides being confusing, can\u0027t it also lead to tricky bugs? I.e. if we get a logic bug so that these calls are done in the wrong code paths and actually are successful. It would be good to check afterwards that they did indeed report an error, but I don\u0027t know offhand how easy that is to do.",
+      "revId": "2120ee6261c5afa1fd763796c527bab5ff785334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1415f55e_0842a639",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T12:45:18Z",
+      "side": 1,
+      "message": "Extracted into separate method. Not on the ctx as I am not sure that this is going to be more generally needed but just in the same file for now.\n\nYou can call Failed() to see if an error has been reported but you can\u0027t tell who reported it. It also doesn\u0027t work when allow missing dependencies is true. The AddFarVariationDependencies() method does return an array of module references, each one corresponding to the name in the input list of names. If it did not find the module the reference is nil. So I have added a check to ensure that was not found.\n\nWe do have pretty good test coverage of this code, both for the normal and error cases so we should be ok.",
+      "parentUuid": "589e9d4d_5840690f",
       "revId": "2120ee6261c5afa1fd763796c527bab5ff785334",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
