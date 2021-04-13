@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cbfe023_24c6690d",
+        "filename": "rust/image.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-04-13T17:22:08Z",
+      "side": 1,
+      "message": "Ah right; we do support this in the follow-on patch but I can shuffle that change to this CL.",
+      "parentUuid": "1c0ad1ca_b7a28932",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 13
+      },
+      "revId": "ae841028f71d5434ed37a28b940b0b6b36f2b3a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bccf970_f75a13ac",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-13T17:05:36Z",
       "side": 1,
       "message": "For consistency, indentation here should be tabs.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 15
+      },
+      "revId": "ae841028f71d5434ed37a28b940b0b6b36f2b3a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b5c4c5d_604deb10",
+        "filename": "rust/image_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-04-13T17:22:08Z",
+      "side": 1,
+      "message": "Ah thanks, good catch. I\u0027m not sure how this got reformatted.",
+      "parentUuid": "2bccf970_f75a13ac",
       "range": {
         "startLine": 93,
         "startChar": 0,
