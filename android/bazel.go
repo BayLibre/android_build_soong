@@ -129,16 +129,17 @@ var (
 	// Configure modules in these directories to enable bp2build_available: true or false by default.
 	bp2buildDefaultConfig = Bp2BuildConfig{
 		"bionic":                Bp2BuildDefaultTrueRecursively,
+		"external/gwp_asan":     Bp2BuildDefaultTrueRecursively,
 		"system/core/libcutils": Bp2BuildDefaultTrueRecursively,
 		"system/logging/liblog": Bp2BuildDefaultTrueRecursively,
 	}
 
 	// Per-module denylist to always opt modules out.
 	bp2buildModuleDoNotConvertList = []string{
-		"libBionicBenchmarksUtils",      // ruperts@, cc_library_static, 'map' file not found
-		"libbionic_spawn_benchmark",     // ruperts@, cc_library_static, depends on //system/libbase
-		"libc_jemalloc_wrapper",         // ruperts@, cc_library_static, depends on //external/jemalloc_new
-		"libc_bootstrap",                // ruperts@, cc_library_static, 'bionic/libc/async_safe' is a subpackage
+		"libBionicBenchmarksUtils",  // ruperts@, cc_library_static, 'map' file not found
+		"libbionic_spawn_benchmark", // ruperts@, cc_library_static, depends on //system/libbase
+		"libc_jemalloc_wrapper",     // ruperts@, cc_library_static, depends on //external/jemalloc_new
+		// "libc_bootstrap",                // ruperts@, cc_library_static, 'private/bionic_auxv.h' file not found
 		"libc_init_static",              // ruperts@, cc_library_static, 'bionic/libc/async_safe' is a subpackage
 		"libc_init_dynamic",             // ruperts@, cc_library_static, 'bionic/libc/async_safe' is a subpackage
 		"libc_tzcode",                   // ruperts@, cc_library_static, 'bionic/libc/async_safe' is a subpackage
