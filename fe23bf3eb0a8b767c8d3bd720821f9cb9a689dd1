@@ -22,6 +22,30 @@
       },
       "revId": "fe23bf3eb0a8b767c8d3bd720821f9cb9a689dd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ec2a421_c2e1ad5e",
+        "filename": "bazel/cquery/request_type_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-13T19:07:55Z",
+      "side": 1,
+      "message": "Will add in a followup due to the lack of stick +2 and slow presubmits",
+      "parentUuid": "20f1bf0f_167ce7d8",
+      "range": {
+        "startLine": 75,
+        "startChar": 26,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "fe23bf3eb0a8b767c8d3bd720821f9cb9a689dd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
