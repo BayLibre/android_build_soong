@@ -170,8 +170,6 @@ var (
 		"libc_dns",                      // ruperts@, cc_library_static, 'android/log.h' file not found
 		"libc_static_dispatch",          // eakammer@, cc_library_static, 'private/bionic_asm.h' file not found
 		"libc_dynamic_dispatch",         // eakammer@, cc_library_static, 'private/bionic_ifuncs.h' file not found
-		"note_memtag_heap_async",        // jingwen@, cc_library_static, 'private/bionic_asm.h' file not found (arm64)
-		"note_memtag_heap_sync",         // jingwen@, cc_library_static, 'private/bionic_asm.h' file not found (arm64)
 
 		// List of all full_cc_libraries in //bionic, with their immediate failures
 		"libc",              // jingwen@, cc_library, depends on //external/gwp_asan
