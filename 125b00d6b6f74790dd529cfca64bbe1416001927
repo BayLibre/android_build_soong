@@ -70,6 +70,24 @@
       "parentUuid": "1ab65fc4_e15ea64f",
       "revId": "125b00d6b6f74790dd529cfca64bbe1416001927",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "183f10b7_85cff452",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-13T17:47:14Z",
+      "side": 1,
+      "message": "I think that\u0027s of lesser importance since these shouldn\u0027t happen ever, regardless of input or test setup. ModuleErrorf is for input (user) errors.",
+      "parentUuid": "da6208d7_a655902c",
+      "revId": "125b00d6b6f74790dd529cfca64bbe1416001927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
