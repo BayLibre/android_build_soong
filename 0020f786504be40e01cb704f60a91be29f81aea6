@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ebec932_a47698b7",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-04-13T17:42:03Z",
+      "side": 1,
+      "message": "Since HWASAN is only supported on AArch64, we should to split this out and use different sanitizers for different architectures (e.g. HWASAN for arm64, and ASAN for other targets that don\u0027t support HWASAN), otherwise fuzzers will only be supported for AArch64 targets.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 0
+      },
+      "revId": "0020f786504be40e01cb704f60a91be29f81aea6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
