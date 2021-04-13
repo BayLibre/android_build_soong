@@ -125,6 +125,8 @@ func (ll *LabelList) Append(other LabelList) {
 	}
 }
 
+// UniqueBazelLabels takes a []Label and deduplicates the labels, keeping the
+// first occurrence of a Label.
 func UniqueBazelLabels(originalLabels []Label) []Label {
 	uniqueLabelsSet := make(map[Label]bool)
 	for _, l := range originalLabels {
@@ -498,6 +500,26 @@ func (attrs *StringListAttribute) SetValueForOS(os string, value []string) {
 		panic(fmt.Errorf("Unknown os: %s", os))
 	}
 	*v = value
+}
+
+// Append appends all values, including os and arch specific ones, from another
+// StringListAttribute to this StringListAttribute
+func (attrs *StringListAttribute) Append(other StringListAttribute) {
+	for arch := range PlatformArchMap {
+		this := attrs.GetValueForArch(arch)
+		that := other.GetValueForArch(arch)
+		this = append(this, that...)
+		attrs.SetValueForArch(arch, this)
+	}
+
+	for os := range PlatformOsMap {
+		this := attrs.GetValueForOS(os)
+		that := other.GetValueForOS(os)
+		this = append(this, that...)
+		attrs.SetValueForOS(os, this)
+	}
+
+	attrs.Value = append(attrs.Value, other.Value...)
 }
 
 // TryVariableSubstitution, replace string substitution formatting within each string in slice with
