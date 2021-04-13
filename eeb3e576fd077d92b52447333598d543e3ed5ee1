@@ -22,6 +22,30 @@
       },
       "revId": "eeb3e576fd077d92b52447333598d543e3ed5ee1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7388e21_33dc44c8",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-04-13T07:16:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28efe27e_c58787af",
+      "range": {
+        "startLine": 357,
+        "startChar": 15,
+        "endLine": 357,
+        "endChar": 24
+      },
+      "revId": "eeb3e576fd077d92b52447333598d543e3ed5ee1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
