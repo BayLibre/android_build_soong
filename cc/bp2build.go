@@ -53,6 +53,8 @@ func depsBp2BuildMutator(ctx android.BottomUpMutatorContext) {
 		if baseLinkerProps, ok := p.(*BaseLinkerProperties); ok {
 			allDeps = append(allDeps, baseLinkerProps.Header_libs...)
 			allDeps = append(allDeps, baseLinkerProps.Export_header_lib_headers...)
+			allDeps = append(allDeps, baseLinkerProps.Static_libs...)
+			allDeps = append(allDeps, baseLinkerProps.Whole_static_libs...)
 		}
 	}
 
@@ -61,20 +63,31 @@ func depsBp2BuildMutator(ctx android.BottomUpMutatorContext) {
 
 // Convenience struct to hold all attributes parsed from compiler properties.
 type compilerAttributes struct {
-	copts bazel.StringListAttribute
-	srcs  bazel.LabelListAttribute
-	hdrs  bazel.LabelListAttribute
+	copts    bazel.StringListAttribute
+	srcs     bazel.LabelListAttribute
+	hdrs     bazel.LabelListAttribute
+	includes bazel.StringListAttribute
 }
 
 // bp2BuildParseCompilerProps returns copts, srcs and hdrs and other attributes.
 func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Module) compilerAttributes {
 	var hdrs, srcs bazel.LabelListAttribute
-	var copts bazel.StringListAttribute
+	var copts, includes bazel.StringListAttribute
 
 	hdrsAndSrcs := func(baseCompilerProps *BaseCompilerProperties) (bazel.LabelList, bazel.LabelList) {
 		srcsList := android.BazelLabelForModuleSrcExcludes(
 			ctx, baseCompilerProps.Srcs, baseCompilerProps.Exclude_srcs)
 		hdrsList := android.BazelLabelForModuleSrc(ctx, srcsList.LooseHdrsGlobs(headerExts))
+
+		// For Bazel, be more explicit about headers - list all header files in include dirs as srcs
+		for _, includeDir := range baseCompilerProps.Include_dirs {
+			localHdrs := bp2BuildListHeadersInDir(ctx, includeDir)
+			srcsList.Append(localHdrs)
+		}
+		for _, localIncludeDir := range baseCompilerProps.Local_include_dirs {
+			localHdrs := bp2BuildListHeadersInDir(ctx, localIncludeDir)
+			srcsList.Append(localHdrs)
+		}
 		return hdrsList, srcsList
 	}
 
@@ -82,16 +95,29 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
 			hdrs.Value, srcs.Value = hdrsAndSrcs(baseCompilerProps)
 			copts.Value = baseCompilerProps.Cflags
+			includes.Value = append(baseCompilerProps.Include_dirs, baseCompilerProps.Local_include_dirs...)
 			break
 		}
 	}
+
+	if c, ok := module.compiler.(*baseCompiler); ok && c.includeBuildDirectory() {
+		includes.Value = append(includes.Value, ".")
+		srcs.Value.Append(bp2BuildListHeadersInDir(ctx, "."))
+	} else if c, ok := module.compiler.(*libraryDecorator); ok && c.includeBuildDirectory() {
+		includes.Value = append(includes.Value, ".")
+		srcs.Value.Append(bp2BuildListHeadersInDir(ctx, "."))
+	}
+
+	srcs.Value = bazel.UniqueBazelLabelList(srcs.Value)
 
 	for arch, props := range module.GetArchProperties(&BaseCompilerProperties{}) {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
 			hdrsList, srcsList := hdrsAndSrcs(baseCompilerProps)
 			hdrs.SetValueForArch(arch.Name, bazel.SubtractBazelLabelList(hdrsList, hdrs.Value))
-			srcs.SetValueForArch(arch.Name, srcsList)
+			srcs.SetValueForArch(arch.Name, bazel.SubtractBazelLabelList(srcsList, srcs.Value))
 			copts.SetValueForArch(arch.Name, baseCompilerProps.Cflags)
+			includes.SetValueForArch(arch.Name,
+				append(baseCompilerProps.Include_dirs, baseCompilerProps.Local_include_dirs...))
 		}
 	}
 
@@ -99,15 +125,18 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
 			hdrsList, srcsList := hdrsAndSrcs(baseCompilerProps)
 			hdrs.SetValueForOS(os.Name, bazel.SubtractBazelLabelList(hdrsList, hdrs.Value))
-			srcs.SetValueForOS(os.Name, srcsList)
+			srcs.SetValueForOS(os.Name, bazel.SubtractBazelLabelList(srcsList, srcs.Value))
 			copts.SetValueForOS(os.Name, baseCompilerProps.Cflags)
+			includes.SetValueForOS(os.Name,
+				append(baseCompilerProps.Include_dirs, baseCompilerProps.Local_include_dirs...))
 		}
 	}
 
 	return compilerAttributes{
-		hdrs:  hdrs,
-		srcs:  srcs,
-		copts: copts,
+		hdrs:     hdrs,
+		srcs:     srcs,
+		copts:    copts,
+		includes: includes,
 	}
 }
 
@@ -128,6 +157,8 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 		if baseLinkerProps, ok := linkerProps.(*BaseLinkerProperties); ok {
 			libs := baseLinkerProps.Header_libs
 			libs = append(libs, baseLinkerProps.Export_header_lib_headers...)
+			libs = append(libs, baseLinkerProps.Static_libs...)
+			libs = append(libs, baseLinkerProps.Whole_static_libs...)
 			deps = bazel.MakeLabelListAttribute(
 				android.BazelLabelForModuleDeps(ctx, android.SortedUniqueStrings(libs)))
 			linkopts.Value = baseLinkerProps.Ldflags
@@ -139,6 +170,8 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 		if baseLinkerProps, ok := p.(*BaseLinkerProperties); ok {
 			libs := baseLinkerProps.Header_libs
 			libs = append(libs, baseLinkerProps.Export_header_lib_headers...)
+			libs = append(libs, baseLinkerProps.Static_libs...)
+			libs = append(libs, baseLinkerProps.Whole_static_libs...)
 			libs = android.SortedUniqueStrings(libs)
 			deps.SetValueForArch(arch.Name, android.BazelLabelForModuleDeps(ctx, libs))
 			linkopts.SetValueForArch(arch.Name, baseLinkerProps.Ldflags)
@@ -149,6 +182,8 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 		if baseLinkerProps, ok := p.(*BaseLinkerProperties); ok {
 			libs := baseLinkerProps.Header_libs
 			libs = append(libs, baseLinkerProps.Export_header_lib_headers...)
+			libs = append(libs, baseLinkerProps.Static_libs...)
+			libs = append(libs, baseLinkerProps.Whole_static_libs...)
 			libs = android.SortedUniqueStrings(libs)
 			deps.SetValueForOS(os.Name, android.BazelLabelForModuleDeps(ctx, libs))
 			linkopts.SetValueForOS(os.Name, baseLinkerProps.Ldflags)

@@ -129,7 +129,18 @@ cc_library {
         "//build/bazel/platforms/arch:x86_64": ["-Wl,--exclude-libs=qux.a"],
         "//conditions:default": [],
     }),
-    srcs = ["impl.cpp"] + select({
+    srcs = [
+        "impl.cpp",
+        "header.h",
+        "header.hh",
+        "header.hpp",
+        "header.hxx",
+        "header.h++",
+        "header.inl",
+        "header.inc",
+        "header.ipp",
+        "header.h.generic",
+    ] + select({
         "//build/bazel/platforms/arch:x86": ["x86.cpp"],
         "//build/bazel/platforms/arch:x86_64": ["x86_64.cpp"],
         "//conditions:default": [],
@@ -210,7 +221,13 @@ cc_library {
         "//build/bazel/platforms/arch:x86_64": ["-Wl,--exclude-libs=libgcc_eh.a"],
         "//conditions:default": [],
     }),
-    srcs = ["ld_android.cpp"],
+    srcs = [
+        "ld_android.cpp",
+        "linked_list.h",
+        "linker.h",
+        "linker_block_allocator.h",
+        "linker_cfi.h",
+    ],
 )`},
 		},
 	}
