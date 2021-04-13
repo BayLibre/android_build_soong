@@ -222,6 +222,30 @@
       },
       "revId": "1b75695ceb1d577102713f64d1931be06315a650",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b22ded86_66f668df",
+        "filename": "java/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-13T13:58:45Z",
+      "side": 1,
+      "message": "Oh right, I didn\u0027t think about the dot.",
+      "parentUuid": "be472259_75d3125b",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 3
+      },
+      "revId": "1b75695ceb1d577102713f64d1931be06315a650",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
