@@ -202,18 +202,20 @@ cc_library_static {
         "export_include_dir_2/export_include_dir_2_b.h",
     ],
     includes = [
-        "export_include_dir_1",
-        "export_include_dir_2",
         "include_dir_1",
         "include_dir_2",
         "local_include_dir_1",
         "local_include_dir_2",
         ".",
+        "export_include_dir_1",
+        "export_include_dir_2",
     ],
     linkstatic = True,
     srcs = [
         "foo_static1.cc",
         "foo_static2.cc",
+        "implicit_include_1.h",
+        "implicit_include_2.h",
         "include_dir_1/include_dir_1_a.h",
         "include_dir_1/include_dir_1_b.h",
         "include_dir_2/include_dir_2_a.h",
@@ -222,8 +224,6 @@ cc_library_static {
         "local_include_dir_1/local_include_dir_1_b.h",
         "local_include_dir_2/local_include_dir_2_a.h",
         "local_include_dir_2/local_include_dir_2_b.h",
-        "implicit_include_1.h",
-        "implicit_include_2.h",
     ],
 )`, `cc_library_static(
     name = "static_lib_1",
@@ -234,9 +234,9 @@ cc_library_static {
     includes = ["."],
     linkstatic = True,
     srcs = [
-        "static_lib_1.cc",
         "implicit_include_1.h",
         "implicit_include_2.h",
+        "static_lib_1.cc",
     ],
 )`, `cc_library_static(
     name = "static_lib_2",
@@ -247,9 +247,9 @@ cc_library_static {
     includes = ["."],
     linkstatic = True,
     srcs = [
-        "static_lib_2.cc",
         "implicit_include_1.h",
         "implicit_include_2.h",
+        "static_lib_2.cc",
     ],
 )`, `cc_library_static(
     name = "whole_static_lib_1",
@@ -260,9 +260,9 @@ cc_library_static {
     includes = ["."],
     linkstatic = True,
     srcs = [
-        "whole_static_lib_1.cc",
         "implicit_include_1.h",
         "implicit_include_2.h",
+        "whole_static_lib_1.cc",
     ],
 )`, `cc_library_static(
     name = "whole_static_lib_2",
@@ -273,9 +273,9 @@ cc_library_static {
     includes = ["."],
     linkstatic = True,
     srcs = [
-        "whole_static_lib_2.cc",
         "implicit_include_1.h",
         "implicit_include_2.h",
+        "whole_static_lib_2.cc",
     ],
 )`},
 		},
@@ -317,12 +317,12 @@ cc_library_static {
     ],
     linkstatic = True,
     srcs = [
-        "//subpackage:subpackage_header.h",
-        "//subpackage:subdirectory/subdirectory_header.h",
-        "//subpackage/subsubpackage:subsubpackage_header.h",
-        "//subpackage/subsubpackage:subdirectory/subdirectory_header.h",
-        "//subpackage/subsubpackage/subsubsubpackage:subsubsubpackage_header.h",
         "//subpackage/subsubpackage/subsubsubpackage:subdirectory/subdirectory_header.h",
+        "//subpackage/subsubpackage/subsubsubpackage:subsubsubpackage_header.h",
+        "//subpackage/subsubpackage:subdirectory/subdirectory_header.h",
+        "//subpackage/subsubpackage:subsubpackage_header.h",
+        "//subpackage:subdirectory/subdirectory_header.h",
+        "//subpackage:subpackage_header.h",
     ],
 )`},
 		},

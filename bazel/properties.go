@@ -179,6 +179,32 @@ func SubtractBazelLabels(haystack []Label, needle []Label) []Label {
 	return labels
 }
 
+func (ll *LabelList) UniqueSortedLists() {
+	uniqueLabels := make(map[Label]bool)
+	for _, l := range ll.Includes {
+		uniqueLabels[l] = true
+	}
+	ll.Includes = []Label{}
+	for l := range uniqueLabels {
+		ll.Includes = append(ll.Includes, l)
+	}
+	sort.SliceStable(ll.Includes, func(i, j int) bool {
+		return ll.Includes[i].Label < ll.Includes[j].Label
+	})
+
+	uniqueLabels = make(map[Label]bool)
+	for _, l := range ll.Excludes {
+		uniqueLabels[l] = true
+	}
+	ll.Excludes = []Label{}
+	for l := range uniqueLabels {
+		ll.Excludes = append(ll.Excludes, l)
+	}
+	sort.SliceStable(ll.Excludes, func(i, j int) bool {
+		return ll.Excludes[i].Label < ll.Excludes[j].Label
+	})
+}
+
 // Subtract needle from haystack
 func SubtractBazelLabelList(haystack LabelList, needle LabelList) LabelList {
 	var result LabelList
@@ -482,6 +508,26 @@ func (attrs *StringListAttribute) SetValueForOS(os string, value []string) {
 		panic(fmt.Errorf("Unknown os: %s", os))
 	}
 	*v = value
+}
+
+// Append appends all values, including os and arch specific ones, from another
+// StringListAttribute to this StringListAttribute
+func (attrs *StringListAttribute) Append(other StringListAttribute) {
+	for arch := range PlatformArchMap {
+		this := attrs.GetValueForArch(arch)
+		that := other.GetValueForArch(arch)
+		this = append(this, that...)
+		attrs.SetValueForArch(arch, this)
+	}
+
+	for os := range PlatformOsMap {
+		this := attrs.GetValueForOS(os)
+		that := other.GetValueForOS(os)
+		this = append(this, that...)
+		attrs.SetValueForOS(os, this)
+	}
+
+	attrs.Value = append(attrs.Value, other.Value...)
 }
 
 // TryVariableSubstitution, replace string substitution formatting within each string in slice with
