@@ -22,6 +22,30 @@
       },
       "revId": "6986f761e0052c314192a36bcfd47a86591706c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18068473_997d5333",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-13T10:34:51Z",
+      "side": 0,
+      "message": "it\u0027s on line 124",
+      "parentUuid": "85364008_51d14205",
+      "range": {
+        "startLine": 402,
+        "startChar": 27,
+        "endLine": 402,
+        "endChar": 59
+      },
+      "revId": "6986f761e0052c314192a36bcfd47a86591706c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
