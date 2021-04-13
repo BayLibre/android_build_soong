@@ -16,6 +16,7 @@ package cc
 import (
 	"android/soong/android"
 	"android/soong/bazel"
+	"path/filepath"
 	"strings"
 )
 
@@ -53,6 +54,8 @@ func depsBp2BuildMutator(ctx android.BottomUpMutatorContext) {
 		if baseLinkerProps, ok := p.(*BaseLinkerProperties); ok {
 			allDeps = append(allDeps, baseLinkerProps.Header_libs...)
 			allDeps = append(allDeps, baseLinkerProps.Export_header_lib_headers...)
+			allDeps = append(allDeps, baseLinkerProps.Static_libs...)
+			allDeps = append(allDeps, baseLinkerProps.Whole_static_libs...)
 		}
 	}
 
@@ -61,53 +64,84 @@ func depsBp2BuildMutator(ctx android.BottomUpMutatorContext) {
 
 // Convenience struct to hold all attributes parsed from compiler properties.
 type compilerAttributes struct {
-	copts bazel.StringListAttribute
-	srcs  bazel.LabelListAttribute
-	hdrs  bazel.LabelListAttribute
+	copts    bazel.StringListAttribute
+	srcs     bazel.LabelListAttribute
+	hdrs     bazel.LabelListAttribute
+	includes bazel.StringListAttribute
 }
 
 // bp2BuildParseCompilerProps returns copts, srcs and hdrs and other attributes.
 func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Module) compilerAttributes {
-	var hdrs, srcs bazel.LabelListAttribute
-	var copts bazel.StringListAttribute
+	var localHdrs, srcs bazel.LabelListAttribute
+	var copts, localIncludeDirs bazel.StringListAttribute
 
-	hdrsAndSrcs := func(baseCompilerProps *BaseCompilerProperties) (bazel.LabelList, bazel.LabelList) {
-		srcsList := android.BazelLabelForModuleSrcExcludes(
-			ctx, baseCompilerProps.Srcs, baseCompilerProps.Exclude_srcs)
-		hdrsList := android.BazelLabelForModuleSrc(ctx, srcsList.LooseHdrsGlobs(headerExts))
-		return hdrsList, srcsList
+	makeIncludeFlag := func(dir string, siblingSourceroot bool) string {
+		if siblingSourceroot {
+			return "-I../sourceroot/" + dir // TODO: fix this
+		} else {
+			return "-I" + filepath.Join(ctx.ModuleDir(), dir)
+		}
+	}
+
+	parseSrcs := func(baseCompilerProps *BaseCompilerProperties) bazel.LabelList {
+		return android.BazelLabelForModuleSrcExcludes(ctx, baseCompilerProps.Srcs, baseCompilerProps.Exclude_srcs)
+	}
+
+	parseLocalIncludeDirs := func(baseCompilerProps *BaseCompilerProperties) []string {
+		return append(baseCompilerProps.Include_dirs, baseCompilerProps.Local_include_dirs...)
+	}
+
+	parseCopts := func(baseCompilerProps *BaseCompilerProperties, siblingSourceroot bool) []string {
+		copts := append([]string{}, baseCompilerProps.Cflags...)
+		for _, dir := range parseLocalIncludeDirs(baseCompilerProps) {
+			copts = append(copts, makeIncludeFlag(dir, siblingSourceroot))
+		}
+		return copts
 	}
 
 	for _, props := range module.compiler.compilerProps() {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
-			hdrs.Value, srcs.Value = hdrsAndSrcs(baseCompilerProps)
-			copts.Value = baseCompilerProps.Cflags
+			srcs.Value = parseSrcs(baseCompilerProps)
+			copts.Value = parseCopts(baseCompilerProps, false)
+			localIncludeDirs.Value = parseLocalIncludeDirs(baseCompilerProps)
 			break
 		}
 	}
 
+	// TODO: make this DRY
+	if c, ok := module.compiler.(*baseCompiler); ok && c.includeBuildDirectory() {
+		copts.Value = append(copts.Value, makeIncludeFlag(".", false))
+		localHdrs.Value = bp2BuildListHeadersInDir(ctx, ".")
+	} else if c, ok := module.compiler.(*libraryDecorator); ok && c.includeBuildDirectory() {
+		copts.Value = append(copts.Value, makeIncludeFlag(".", false))
+		localHdrs.Value = bp2BuildListHeadersInDir(ctx, ".")
+	}
+
 	for arch, props := range module.GetArchProperties(&BaseCompilerProperties{}) {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
-			hdrsList, srcsList := hdrsAndSrcs(baseCompilerProps)
-			hdrs.SetValueForArch(arch.Name, bazel.SubtractBazelLabelList(hdrsList, hdrs.Value))
-			srcs.SetValueForArch(arch.Name, srcsList)
-			copts.SetValueForArch(arch.Name, baseCompilerProps.Cflags)
+			srcsList := parseSrcs(baseCompilerProps)
+			srcs.SetValueForArch(arch.Name, bazel.SubtractBazelLabelList(srcsList, srcs.Value))
+			copts.SetValueForArch(arch.Name, parseCopts(baseCompilerProps, false))
+			localIncludeDirs.SetValueForArch(arch.Name, parseLocalIncludeDirs(baseCompilerProps))
 		}
 	}
 
 	for os, props := range module.GetTargetProperties(&BaseCompilerProperties{}) {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
-			hdrsList, srcsList := hdrsAndSrcs(baseCompilerProps)
-			hdrs.SetValueForOS(os.Name, bazel.SubtractBazelLabelList(hdrsList, hdrs.Value))
-			srcs.SetValueForOS(os.Name, srcsList)
-			copts.SetValueForOS(os.Name, baseCompilerProps.Cflags)
+			srcsList := parseSrcs(baseCompilerProps)
+			srcs.SetValueForOS(os.Name, bazel.SubtractBazelLabelList(srcsList, srcs.Value))
+			copts.SetValueForOS(os.Name, parseCopts(baseCompilerProps, false))
+			localIncludeDirs.SetValueForOS(os.Name, parseLocalIncludeDirs(baseCompilerProps))
 		}
 	}
 
+	// Combine local, non-exported hdrs into srcs
+	srcs.Append(localHdrs)
+
 	return compilerAttributes{
-		hdrs:  hdrs,
 		srcs:  srcs,
 		copts: copts,
+		// includes: localIncludeDirs,
 	}
 }
 
@@ -128,6 +162,8 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 		if baseLinkerProps, ok := linkerProps.(*BaseLinkerProperties); ok {
 			libs := baseLinkerProps.Header_libs
 			libs = append(libs, baseLinkerProps.Export_header_lib_headers...)
+			libs = append(libs, baseLinkerProps.Static_libs...)
+			libs = append(libs, baseLinkerProps.Whole_static_libs...)
 			deps = bazel.MakeLabelListAttribute(
 				android.BazelLabelForModuleDeps(ctx, android.SortedUniqueStrings(libs)))
 			linkopts.Value = baseLinkerProps.Ldflags
@@ -139,6 +175,8 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 		if baseLinkerProps, ok := p.(*BaseLinkerProperties); ok {
 			libs := baseLinkerProps.Header_libs
 			libs = append(libs, baseLinkerProps.Export_header_lib_headers...)
+			libs = append(libs, baseLinkerProps.Static_libs...)
+			libs = append(libs, baseLinkerProps.Whole_static_libs...)
 			libs = android.SortedUniqueStrings(libs)
 			deps.SetValueForArch(arch.Name, android.BazelLabelForModuleDeps(ctx, libs))
 			linkopts.SetValueForArch(arch.Name, baseLinkerProps.Ldflags)
@@ -149,6 +187,8 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 		if baseLinkerProps, ok := p.(*BaseLinkerProperties); ok {
 			libs := baseLinkerProps.Header_libs
 			libs = append(libs, baseLinkerProps.Export_header_lib_headers...)
+			libs = append(libs, baseLinkerProps.Static_libs...)
+			libs = append(libs, baseLinkerProps.Whole_static_libs...)
 			libs = android.SortedUniqueStrings(libs)
 			deps.SetValueForOS(os.Name, android.BazelLabelForModuleDeps(ctx, libs))
 			linkopts.SetValueForOS(os.Name, baseLinkerProps.Ldflags)
@@ -162,12 +202,12 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 }
 
 func bp2BuildListHeadersInDir(ctx android.TopDownMutatorContext, includeDir string) bazel.LabelList {
-	globs := bazel.GlobsInDir(includeDir, includeDir != ".", headerExts)
+	globs := bazel.GlobsInDir(includeDir, true, headerExts)
 	return android.BazelLabelForModuleSrc(ctx, globs)
 }
 
 // Bazel wants include paths to be relative to the module
-func bp2BuildMakePathsRelativeToModule(ctx android.TopDownMutatorContext, paths []string) []string {
+func bp2BuildMakePathsRelativeToModule(ctx android.BazelConversionPathContext, paths []string) []string {
 	var relativePaths []string
 	for _, path := range paths {
 		relativePath := strings.TrimPrefix(path, ctx.ModuleDir()+"/")
@@ -176,8 +216,9 @@ func bp2BuildMakePathsRelativeToModule(ctx android.TopDownMutatorContext, paths 
 	return relativePaths
 }
 
-// bp2BuildParseExportedIncludes creates a label list attribute contains the
-// exported included directories of a module.
+// bp2BuildParseExportedIncludes creates a string list attribute contains the
+// exported included directories of a module, and a label list attribute
+// containing the exported headers of a module.
 func bp2BuildParseExportedIncludes(ctx android.TopDownMutatorContext, module *Module) (bazel.StringListAttribute, bazel.LabelListAttribute) {
 	libraryDecorator := module.linker.(*libraryDecorator)
 

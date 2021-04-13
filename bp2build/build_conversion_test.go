@@ -1045,8 +1045,8 @@ genrule {
         "out",
     ],
     srcs = [
-        "in1",
         "srcs-from-3",
+        "in1",
     ],
 )`,
 			description: "genrule applies properties from genrule_defaults transitively",
