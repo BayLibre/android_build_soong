@@ -34,6 +34,24 @@
       "parentUuid": "2a3872e2_3cd73626",
       "revId": "a42c70757218b6ff97ce96b68933519c7dc6fc66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "414dcc34_06e61e27",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-04-13T01:19:13Z",
+      "side": 0,
+      "message": "Fixed",
+      "parentUuid": "26849892_2956d279",
+      "revId": "a42c70757218b6ff97ce96b68933519c7dc6fc66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
