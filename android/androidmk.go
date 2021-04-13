@@ -110,6 +110,8 @@ type AndroidMkEntries struct {
 	DistFiles TaggedDistFiles
 	// The output file for Kati to process and/or install. If absent, the module is skipped.
 	OutputFile OptionalPath
+	// Whether to ignore an empty output file.
+	IgnoreEmpty bool
 	// If true, the module is skipped and does not appear on the final Android-<product name>.mk
 	// file. Useful when a module needs to be skipped conditionally.
 	Disabled bool
@@ -617,7 +619,7 @@ func (a *AndroidMkEntries) write(w io.Writer) {
 		return
 	}
 
-	if !a.OutputFile.Valid() {
+	if !a.OutputFile.Valid() && !a.IgnoreEmpty {
 		return
 	}
 
