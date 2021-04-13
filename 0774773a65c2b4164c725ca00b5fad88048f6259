@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5179e876_1b989441",
+        "filename": "android/arch.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-13T10:32:14Z",
+      "side": 0,
+      "message": "for the parity with UnmarshalText, remove it.",
+      "range": {
+        "startLine": 178,
+        "startChar": 15,
+        "endLine": 178,
+        "endChar": 28
+      },
+      "revId": "0774773a65c2b4164c725ca00b5fad88048f6259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
