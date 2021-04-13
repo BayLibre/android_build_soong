@@ -52,6 +52,24 @@
       "parentUuid": "7579c88c_4e903b77",
       "revId": "125b00d6b6f74790dd529cfca64bbe1416001927",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da6208d7_a655902c",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T17:35:12Z",
+      "side": 1,
+      "message": "I wasn\u0027t thinking about testing for them but rather that a panic in a test prevents any more tests from being run (at least in that package) which means that you never know whether it is hiding another failure.",
+      "parentUuid": "1ab65fc4_e15ea64f",
+      "revId": "125b00d6b6f74790dd529cfca64bbe1416001927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
