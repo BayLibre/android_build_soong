@@ -16,6 +16,24 @@
       "message": "Needs a rebase?",
       "revId": "f40afec4e0e29f777565a1cd90a13d8bded253b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fce1140_e9b4d8ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-13T22:06:22Z",
+      "side": 1,
+      "message": "I don\u0027t think so, I _think_ the tests started in a weird sync state where it had the soong change but not the blueprint change. :shruggie: Will rebase if a retry fails.",
+      "parentUuid": "1c814c94_8260939c",
+      "revId": "f40afec4e0e29f777565a1cd90a13d8bded253b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
