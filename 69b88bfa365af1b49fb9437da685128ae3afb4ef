@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be6bd92e_bfc76d1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T12:32:16Z",
+      "side": 1,
+      "message": "I tested using \"m UNSAFE_DISABLE_HIDDENAPI_FLAGS\u003dtrue\" and the build broke so this change fixes it.",
+      "revId": "69b88bfa365af1b49fb9437da685128ae3afb4ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
