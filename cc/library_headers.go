@@ -46,11 +46,37 @@ func RegisterLibraryHeadersBuildComponents(ctx android.RegistrationContext) {
 type libraryHeaderBazelHander struct {
 	bazelHandler
 
-	module *Module
+	module  *Module
+	library *libraryDecorator
 }
 
 func (h *libraryHeaderBazelHander) generateBazelBuildActions(ctx android.ModuleContext, label string) bool {
-	return false
+	bazelCtx := ctx.Config().BazelContext
+	ccInfo, ok, err := bazelCtx.GetCcInfo(label, ctx.Arch().ArchType)
+	if err != nil {
+		ctx.ModuleErrorf("Error getting Bazel CcInfo: %s", err)
+	}
+	if !ok {
+		return false
+	}
+
+	// HeaderLibraryInfo is an empty struct to indicate to dependencies that this is a header library
+	ctx.SetProvider(HeaderLibraryInfoProvider, HeaderLibraryInfo{})
+
+	flagExporterInfo := flagExporterInfoFromCcInfo(ctx, ccInfo)
+	h.library.flagExporterInfo = &flagExporterInfo
+	// flag exporters consolidates properties like includes, flags, dependencies that should be
+	// exported from this module to other modules
+	ctx.SetProvider(FlagExporterInfoProvider, flagExporterInfo)
+
+	// Dependencies on this library will expect collectedSnapshotHeaders to be set, otherwise
+	// validation will fail. For now, set this to an empty list.
+	// TODO(cparsons): More closely mirror the collectHeadersForSnapshot implementation.
+	h.library.collectedSnapshotHeaders = android.Paths{}
+
+	h.module.outputFile = android.OptionalPath{}
+
+	return true
 }
 
 // cc_library_headers contains a set of c/c++ headers which are imported by
@@ -61,7 +87,7 @@ func LibraryHeaderFactory() android.Module {
 	module, library := NewLibrary(android.HostAndDeviceSupported)
 	library.HeaderOnly()
 	module.sdkMemberTypes = []android.SdkMemberType{headersLibrarySdkMemberType}
-	module.bazelHandler = libraryHeaderBazelHander{module: module}
+	module.bazelHandler = &libraryHeaderBazelHander{module: module, library: library}
 	return module.Init()
 }
 
