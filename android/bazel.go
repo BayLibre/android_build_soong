@@ -175,9 +175,6 @@ var (
 		"libbionic_tests_headers_posix", // ruperts@, cc_library_static, 'complex.h' file not found
 		"libc_dns",                      // ruperts@, cc_library_static, 'bionic/libc/async_safe' is a subpackage
 
-		"note_memtag_heap_async", // jingwen@, b/185079815, features.h includes not found
-		"note_memtag_heap_sync",  // jingwen@, b/185079815, features.h includes not found
-
 		// List of all full_cc_libraries in //bionic, with their immediate failures
 		"libc",              // jingwen@, cc_library, depends on //external/gwp_asan
 		"libc_malloc_debug", // jingwen@, cc_library, fatal error: 'assert.h' file not found
