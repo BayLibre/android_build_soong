@@ -109,18 +109,18 @@ func (ll *LabelList) Append(other LabelList) {
 	}
 }
 
+// UniqueBazelLabels takes a []Label and deduplicates the labels, keeping the
+// first occurrence of a Label. This maintains the ordering of the original slice.
 func UniqueBazelLabels(originalLabels []Label) []Label {
 	uniqueLabelsSet := make(map[Label]bool)
+	uniqueLabels := []Label{}
 	for _, l := range originalLabels {
+		if uniqueLabelsSet[l] {
+			continue
+		}
 		uniqueLabelsSet[l] = true
-	}
-	var uniqueLabels []Label
-	for l, _ := range uniqueLabelsSet {
 		uniqueLabels = append(uniqueLabels, l)
 	}
-	sort.SliceStable(uniqueLabels, func(i, j int) bool {
-		return uniqueLabels[i].Label < uniqueLabels[j].Label
-	})
 	return uniqueLabels
 }
 
@@ -482,6 +482,64 @@ func (attrs *StringListAttribute) SetValueForOS(os string, value []string) {
 		panic(fmt.Errorf("Unknown os: %s", os))
 	}
 	*v = value
+}
+
+// Append appends all values, including os and arch specific ones, from another
+// StringListAttribute to this StringListAttribute
+func (attrs *StringListAttribute) Append(other StringListAttribute) {
+	for arch := range PlatformArchMap {
+		this := attrs.GetValueForArch(arch)
+		that := other.GetValueForArch(arch)
+		this = append(this, that...)
+		attrs.SetValueForArch(arch, this)
+	}
+
+	for os := range PlatformOsMap {
+		this := attrs.GetValueForOS(os)
+		that := other.GetValueForOS(os)
+		this = append(this, that...)
+		attrs.SetValueForOS(os, this)
+	}
+
+	attrs.Value = append(attrs.Value, other.Value...)
+}
+
+// firstUniqueStrings deduplicates a string slice, keeping the first copy of a
+// duplicated element, and retaining the order of remaining elements.
+func firstUniqueStrings(input []string) []string {
+	uniqueStringSet := make(map[string]bool)
+	uniqueStrings := []string{}
+	for _, l := range input {
+		if uniqueStringSet[l] {
+			continue
+		}
+		uniqueStringSet[l] = true
+		uniqueStrings = append(uniqueStrings, l)
+	}
+	return uniqueStrings
+}
+
+// Unique deduplicates all string list attribute values, keeping the first
+// occurrence of a duplicated element for each list (os, arch, or base value).
+func (attrs *StringListAttribute) Unique() {
+	for arch := range PlatformArchMap {
+		this := attrs.GetValueForArch(arch)
+		attrs.SetValueForArch(arch, firstUniqueStrings(this))
+	}
+
+	for os := range PlatformOsMap {
+		this := attrs.GetValueForOS(os)
+		attrs.SetValueForOS(os,
+			firstUniqueStrings(this))
+	}
+
+	attrs.Value = firstUniqueStrings(attrs.Value)
+}
+
+// UniqueAppend appends values from "other" iff the value doesn't already exist.
+func (attrs *StringListAttribute) UniqueAppend(other StringListAttribute) {
+	attrs.Append(other)
+	attrs.Unique()
 }
 
 // TryVariableSubstitution, replace string substitution formatting within each string in slice with

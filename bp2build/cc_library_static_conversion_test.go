@@ -202,13 +202,13 @@ cc_library_static {
         "export_include_dir_2/export_include_dir_2_b.h",
     ],
     includes = [
-        "export_include_dir_1",
-        "export_include_dir_2",
         "include_dir_1",
         "include_dir_2",
         "local_include_dir_1",
         "local_include_dir_2",
         ".",
+        "export_include_dir_1",
+        "export_include_dir_2",
     ],
     linkstatic = True,
     srcs = [
