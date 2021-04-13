@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t these be panics?",
       "revId": "125b00d6b6f74790dd529cfca64bbe1416001927",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7579c88c_4e903b77",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T17:27:12Z",
+      "side": 1,
+      "message": "Generally, if I have a ctx then I will use that rather than panic. Panic doesn\u0027t play well with tests.",
+      "parentUuid": "f71dc54d_09d18d20",
+      "revId": "125b00d6b6f74790dd529cfca64bbe1416001927",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
