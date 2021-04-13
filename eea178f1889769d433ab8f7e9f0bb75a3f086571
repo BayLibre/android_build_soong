@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44658cdb_9703584f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-13T12:32:49Z",
+      "side": 1,
+      "message": "PTAL. I had to refactor to make this work when UNSAFE_DISABLE_HIDDENAPI_FLAGS\u003dtrue.",
+      "revId": "eea178f1889769d433ab8f7e9f0bb75a3f086571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
