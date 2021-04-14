@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a437778e_0d608784",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-14T12:43:15Z",
+      "side": 1,
+      "message": "It\u0027s only used for genrules so far. We could remove it and replace the genrule usage with something more bespoke, especially since the module name could be retrieved from the converted target label.",
+      "parentUuid": "571511ae_25dd71a4",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 51
+      },
+      "revId": "321fb2d8096cdcbe944eed3abaaa0c6e56a832e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2145cf9_d7b5ff7c",
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "Not sure about Soong, but this was intended to check whether a label that was already generated for use by Bazel (eg via android.BazelLabelForModuleSrc) was already an absolute path",
       "parentUuid": "f2145cf9_d7b5ff7c",
+      "range": {
+        "startLine": 197,
+        "startChar": 35,
+        "endLine": 197,
+        "endChar": 37
+      },
+      "revId": "321fb2d8096cdcbe944eed3abaaa0c6e56a832e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd384797_fe9161a4",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-14T12:43:15Z",
+      "side": 1,
+      "message": "Ah, gotcha",
+      "parentUuid": "b82d177b_79174350",
       "range": {
         "startLine": 197,
         "startChar": 35,
