@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "072b671b_9ea3ec6f",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-14T13:41:22Z",
+      "side": 1,
+      "message": "Yeah, I was a bit concerned that we could run into an Android.bp file where nothing in a subdirectory was actually converted yet, but if there are no issues currently, I think deferring for now makes sense, should we file a bug for tracking this?",
+      "range": {
+        "startLine": 420,
+        "startChar": 3,
+        "endLine": 420,
+        "endChar": 77
+      },
+      "revId": "c8d4c917a5d8fe4d39fa996f7d1c356bcef77e8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610ab046_1a65ebe8",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-14T13:41:22Z",
+      "side": 1,
+      "message": "nit: Could we use filepath.Join() in this function instead? or since we\u0027re also building up the path in transformSubpackagePath, could we take advantage of that and reduce repeat work?",
+      "range": {
+        "startLine": 427,
+        "startChar": 32,
+        "endLine": 427,
+        "endChar": 53
+      },
+      "revId": "c8d4c917a5d8fe4d39fa996f7d1c356bcef77e8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
