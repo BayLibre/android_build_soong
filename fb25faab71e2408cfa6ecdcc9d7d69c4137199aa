@@ -141,6 +141,24 @@
       "parentUuid": "1b9fc4d4_f475dfa0",
       "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8631ddb7_32738a2e",
+        "filename": "android/paths.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-14T20:44:13Z",
+      "side": 1,
+      "message": "The choice to call `transformSubpackagePaths` for all callers of `BazelLabelForModuleSrcExcludes` seems appropriate to me.\n\nBazelLabelForModuleSrcExcludes returns an absolute path when there is a reference to a module in a separate directory. Since the transform seems specific to paths, perhaps performing the transform only when the target is a path, not a reference to another module would help improve the clarity. May mean moving it to expandSrcsForBazel?\n\nAs for the input paths, unfortunately, the docs were based on the documentation for PathsForModuleSrcExcludes (the ~equivalent Soong method). Effectively, it expects input from a property tagged with `android:\"path\"`, which is a list of strings, which can take the form of:\n* a path relative to the local module\u0027s directory\n* references to other modules.\n\nIn a separate CL, I\u0027ll clarify for all these related functions.",
+      "parentUuid": "57c9438a_27b224c4",
+      "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
