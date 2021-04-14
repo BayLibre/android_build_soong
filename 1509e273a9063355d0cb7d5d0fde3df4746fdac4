@@ -22,6 +22,30 @@
       },
       "revId": "1509e273a9063355d0cb7d5d0fde3df4746fdac4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "105178ae_e453da6d",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2021-04-14T17:36:02Z",
+      "side": 1,
+      "message": "Discussed offline. Long term it might make more sense for soong to produce both flavours (compressed and uncompressed), and then let PRODUCT_PACKAGES configure which ones to pick. Having said that, it will be a significant change in how compressed apexes are produced, and we don\u0027t want enabling apex compression to be blocked on it.",
+      "parentUuid": "bec0658a_7654a73f",
+      "range": {
+        "startLine": 788,
+        "startChar": 112,
+        "endLine": 788,
+        "endChar": 126
+      },
+      "revId": "1509e273a9063355d0cb7d5d0fde3df4746fdac4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
