@@ -166,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5ba5a67_d8a3b3e5",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-14T13:00:20Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/build/soong/+/1675466",
+      "parentUuid": "a437778e_0d608784",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 51
+      },
+      "revId": "321fb2d8096cdcbe944eed3abaaa0c6e56a832e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2145cf9_d7b5ff7c",
