@@ -46,6 +46,30 @@
       },
       "revId": "daae7a5f1e2284cd022ca26868341ad210e5646a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a639c63_342d6555",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T13:42:17Z",
+      "side": 1,
+      "message": "Happy to keep Bp_text if it is useful for something, it just appeared to be make things needlessly complicated so far",
+      "parentUuid": "e576adf9_6c8b7a19",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "daae7a5f1e2284cd022ca26868341ad210e5646a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
