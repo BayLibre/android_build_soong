@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b46f4a6f_87b48c5a",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-14T22:01:01Z",
+      "side": 1,
+      "message": "the resolved references * ?",
+      "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3cc45fb_a1beb520",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-14T22:01:01Z",
+      "side": 1,
+      "message": "OutputFileProducer*, also extra space before \"generated\"",
+      "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6db79647_8b0df7f2",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-14T22:01:01Z",
+      "side": 1,
+      "message": "Maybe separate into two sentences? \"... marked as having missing dependencies. This will throw a ModuleError unless ctx.Config().AllowMissingDependencies() is true.\"",
+      "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee80afb_8fd41a54",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-14T22:01:01Z",
+      "side": 1,
+      "message": "Some of my comments above are relevant here too.",
+      "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f551df_88838fe0",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-14T22:01:01Z",
+      "side": 1,
+      "message": "having trouble understanding this. do you mean \"we can catch package boundary problems instead of silently failing\" ?",
+      "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f46bba61_5716cc19",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-14T22:01:01Z",
+      "side": 1,
+      "message": "Likewise here",
+      "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a440934_c7385674",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-14T22:01:01Z",
+      "side": 1,
+      "message": "Likewise here",
+      "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af3fcbf7_c8095cdb",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-14T22:01:01Z",
+      "side": 1,
+      "message": "Likewise here",
+      "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
