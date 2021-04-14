@@ -87,6 +87,24 @@
       "parentUuid": "96939f2e_12205078",
       "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "311a268b_9690fa60",
+        "filename": "android/paths.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T20:05:49Z",
+      "side": 1,
+      "message": "Okay, I moved transformSubpackagePaths to BazelLabelForModuleSrcExcludes so that it happens for both of them\n\nPersonally, I am tempted to revert to the original version where the transformations only happened for bp2BuildListHeadersInDir, but I\u0027ll leave this as is for now in case the transformations are useful elsewhere\n\nI\u0027m not sure what you are asking about BazelLabelForModuleSrcExcludes - are you asking about the outputs, or the inputs, or both? Either way, cc-ing eakammer@, who wrote that function and may have an opinion on what the contract should be",
+      "parentUuid": "1c2b1e98_3083d65a",
+      "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
