@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "274169c2_f22e63a2",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-14T14:21:19Z",
+      "side": 1,
+      "message": "Added a comment for the immediate cause. The way  I found this is that tests need to set ALLOW_MISSING_DEPENDENCIES\u003d1 because there are a number of tools in the Android.bp files under build/soong whose dependencies are kinda big and thus would blow up the mock source tree quite a bit.",
+      "parentUuid": "c2458ace_c50b6c54",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 347,
+        "endChar": 82
+      },
+      "revId": "d25c89daad398880a42e4b6ea3761b6836e08e98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6068854a_69412d0d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-14T13:05:45Z",
       "side": 1,
       "message": "bp2build",
+      "range": {
+        "startLine": 432,
+        "startChar": 10,
+        "endLine": 432,
+        "endChar": 17
+      },
+      "revId": "d25c89daad398880a42e4b6ea3761b6836e08e98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2194908a_57b0a88a",
+        "filename": "tests/bootstrap_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-14T14:21:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6068854a_69412d0d",
       "range": {
         "startLine": 432,
         "startChar": 10,
