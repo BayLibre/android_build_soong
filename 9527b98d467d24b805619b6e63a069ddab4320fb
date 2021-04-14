@@ -86,6 +86,24 @@
       "parentUuid": "64bbb4fb_62b1a338",
       "revId": "9527b98d467d24b805619b6e63a069ddab4320fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea255610_b223d3c7",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-14T20:49:10Z",
+      "side": 1,
+      "message": "For now how about changing it to:\n\n if ctx.Config().KatiEnabled() \u0026\u0026 !prebuilt.ExportedToMake() {\n     return false\n }",
+      "parentUuid": "d295fb61_60c8745f",
+      "revId": "9527b98d467d24b805619b6e63a069ddab4320fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
