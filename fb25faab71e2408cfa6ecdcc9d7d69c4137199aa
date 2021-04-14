@@ -177,6 +177,24 @@
       "parentUuid": "8631ddb7_32738a2e",
       "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebdf8681_30f2cdf4",
+        "filename": "android/paths.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T21:06:48Z",
+      "side": 1,
+      "message": "Also updated the docs to make it clearer that the transformation will return absolute labels when necessary.",
+      "parentUuid": "b7cc29e0_057f46dd",
+      "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
