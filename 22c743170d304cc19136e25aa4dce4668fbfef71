@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a494c495_687b5404",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-14T21:49:43Z",
+      "side": 1,
+      "message": "PTAL. Changed commit message and seem to have lost the +2s.",
+      "revId": "22c743170d304cc19136e25aa4dce4668fbfef71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
