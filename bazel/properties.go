@@ -19,6 +19,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"sort"
+	"strings"
 )
 
 // BazelTargetModuleProperties contain properties and metadata used for
@@ -38,8 +39,12 @@ var productVariableSubstitutionPattern = regexp.MustCompile("%(d|s)")
 // Label is used to represent a Bazel compatible Label. Also stores the original bp text to support
 // string replacement.
 type Label struct {
-	Bp_text string
-	Label   string
+	Label string
+}
+
+func (l *Label) TargetName() string {
+	parts := strings.Split(l.Label, ":")
+	return parts[len(parts)-1]
 }
 
 // LabelList is used to represent a list of Bazel labels.

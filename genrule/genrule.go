@@ -844,9 +844,9 @@ func GenruleBp2Build(ctx android.TopDownMutatorContext) {
 	allReplacements.Append(tools.Value)
 	allReplacements.Append(srcs.Value)
 
-	// Replace in and out variables with $< and $@
 	var cmd string
 	if m.properties.Cmd != nil {
+		// Replace Soong genrule variables with Bazel equivalents.
 		cmd = strings.Replace(*m.properties.Cmd, "$(in)", "$(SRCS)", -1)
 		cmd = strings.Replace(cmd, "$(out)", "$(OUTS)", -1)
 		cmd = strings.Replace(cmd, "$(genDir)", "$(GENDIR)", -1)
@@ -855,10 +855,17 @@ func GenruleBp2Build(ctx android.TopDownMutatorContext) {
 			cmd = strings.Replace(cmd, "$(locations)", fmt.Sprintf("$(locations %s)", tools.Value.Includes[0].Label), -1)
 		}
 		for _, l := range allReplacements.Includes {
-			bpLoc := fmt.Sprintf("$(location %s)", l.Bp_text)
-			bpLocs := fmt.Sprintf("$(locations %s)", l.Bp_text)
+			// Replace module location expansions in the cmd with the Bazel label.
 			bazelLoc := fmt.Sprintf("$(location %s)", l.Label)
 			bazelLocs := fmt.Sprintf("$(locations %s)", l.Label)
+
+			bpLocWithColon := fmt.Sprintf("$(location :%s)", l.TargetName())
+			bpLocsWithColon := fmt.Sprintf("$(locations :%s)", l.TargetName())
+			cmd = strings.Replace(cmd, bpLocWithColon, bazelLoc, -1)
+			cmd = strings.Replace(cmd, bpLocsWithColon, bazelLocs, -1)
+
+			bpLoc := fmt.Sprintf("$(location %s)", l.TargetName())
+			bpLocs := fmt.Sprintf("$(locations %s)", l.TargetName())
 			cmd = strings.Replace(cmd, bpLoc, bazelLoc, -1)
 			cmd = strings.Replace(cmd, bpLocs, bazelLocs, -1)
 		}

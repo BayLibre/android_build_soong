@@ -401,13 +401,11 @@ type BazelConversionPathContext interface {
 func BazelLabelForModuleDeps(ctx BazelConversionPathContext, modules []string) bazel.LabelList {
 	var labels bazel.LabelList
 	for _, module := range modules {
-		bpText := module
 		if m := SrcIsModule(module); m == "" {
 			module = ":" + module
 		}
 		if m, t := SrcIsModuleWithTag(module); m != "" {
 			l := getOtherModuleLabel(ctx, m, t)
-			l.Bp_text = bpText
 			labels.Includes = append(labels.Includes, l)
 		} else {
 			ctx.ModuleErrorf("%q, is not a module reference", module)
@@ -465,7 +463,6 @@ func expandSrcsForBazel(ctx BazelConversionPathContext, paths, expandedExcludes 
 		if m, tag := SrcIsModuleWithTag(p); m != "" {
 			l := getOtherModuleLabel(ctx, m, tag)
 			if !InList(l.Label, expandedExcludes) {
-				l.Bp_text = fmt.Sprintf(":%s", m)
 				labels.Includes = append(labels.Includes, l)
 			}
 		} else {
