@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f47151_5cb5be79",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-14T10:03:44Z",
+      "side": 1,
+      "message": "Could you break these out into a new test structs? This test struct is getting pretty large and it\u0027s testing many things together.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 81
+      },
+      "revId": "321fb2d8096cdcbe944eed3abaaa0c6e56a832e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0206f2f8_2d2afa99",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-14T10:03:44Z",
+      "side": 1,
+      "message": "nit: packageRelativePath?",
+      "range": {
+        "startLine": 191,
+        "startChar": 83,
+        "endLine": 191,
+        "endChar": 87
+      },
+      "revId": "321fb2d8096cdcbe944eed3abaaa0c6e56a832e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dce211e_10dd41be",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-14T10:03:44Z",
+      "side": 1,
+      "message": "I don\u0027t think so, this is the soong name right? It makes sense to carry it over though.",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 51
+      },
+      "revId": "321fb2d8096cdcbe944eed3abaaa0c6e56a832e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2145cf9_d7b5ff7c",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-14T10:03:44Z",
+      "side": 1,
+      "message": "Does Soong use this outside of \"//visibility\" labels?",
+      "range": {
+        "startLine": 197,
+        "startChar": 35,
+        "endLine": 197,
+        "endChar": 37
+      },
+      "revId": "321fb2d8096cdcbe944eed3abaaa0c6e56a832e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c64f548_ae529c5f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-14T10:03:44Z",
+      "side": 1,
+      "message": "Early return newPath here, so you can remove and outdent the else block\n\n  newPath.Label \u003d path.Label\n  return newPath",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 28
+      },
+      "revId": "321fb2d8096cdcbe944eed3abaaa0c6e56a832e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "868c6a67_2269b786",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-14T10:03:44Z",
+      "side": 1,
+      "message": "This seems like pretty global behavior, seems like it should be part of BazelLabelForModuleSrc{Excludes}, and not something cc specific?",
+      "range": {
+        "startLine": 252,
+        "startChar": 8,
+        "endLine": 252,
+        "endChar": 32
+      },
+      "revId": "321fb2d8096cdcbe944eed3abaaa0c6e56a832e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
