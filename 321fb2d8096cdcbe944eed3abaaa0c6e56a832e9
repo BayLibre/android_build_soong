@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13979458_af4789bc",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T12:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66f47151_5cb5be79",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 81
+      },
+      "revId": "321fb2d8096cdcbe944eed3abaaa0c6e56a832e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0206f2f8_2d2afa99",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-14T10:03:44Z",
       "side": 1,
       "message": "nit: packageRelativePath?",
+      "range": {
+        "startLine": 191,
+        "startChar": 83,
+        "endLine": 191,
+        "endChar": 87
+      },
+      "revId": "321fb2d8096cdcbe944eed3abaaa0c6e56a832e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1482bfe9_d4a5405a",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T12:10:51Z",
+      "side": 1,
+      "message": "Not necessarily relative (we check below whether it is absolute)",
+      "parentUuid": "0206f2f8_2d2afa99",
       "range": {
         "startLine": 191,
         "startChar": 83,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "571511ae_25dd71a4",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T12:10:51Z",
+      "side": 1,
+      "message": "I wasn\u0027t really sure what Bp_text was for. It seems to add an extra layer of complexity to everything. Do we only use it for genrules? Do you expect we will need to use it for many things?",
+      "parentUuid": "1dce211e_10dd41be",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 194,
+        "endChar": 51
+      },
+      "revId": "321fb2d8096cdcbe944eed3abaaa0c6e56a832e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2145cf9_d7b5ff7c",
         "filename": "cc/bp2build.go",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-14T10:03:44Z",
       "side": 1,
       "message": "Does Soong use this outside of \"//visibility\" labels?",
+      "range": {
+        "startLine": 197,
+        "startChar": 35,
+        "endLine": 197,
+        "endChar": 37
+      },
+      "revId": "321fb2d8096cdcbe944eed3abaaa0c6e56a832e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b82d177b_79174350",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T12:10:51Z",
+      "side": 1,
+      "message": "Not sure about Soong, but this was intended to check whether a label that was already generated for use by Bazel (eg via android.BazelLabelForModuleSrc) was already an absolute path",
+      "parentUuid": "f2145cf9_d7b5ff7c",
       "range": {
         "startLine": 197,
         "startChar": 35,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4bc0c77_a2fb70cc",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T12:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c64f548_ae529c5f",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 28
+      },
+      "revId": "321fb2d8096cdcbe944eed3abaaa0c6e56a832e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "868c6a67_2269b786",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-04-14T10:03:44Z",
       "side": 1,
       "message": "This seems like pretty global behavior, seems like it should be part of BazelLabelForModuleSrc{Excludes}, and not something cc specific?",
+      "range": {
+        "startLine": 252,
+        "startChar": 8,
+        "endLine": 252,
+        "endChar": 32
+      },
+      "revId": "321fb2d8096cdcbe944eed3abaaa0c6e56a832e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "834953ef_2b0cd57b",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T12:10:51Z",
+      "side": 1,
+      "message": "Okay, moved transformSubpackagePaths etc from bp2BuildListHeadersInDir to BazelLabelForModuleSrc for now\n\n(this also made me realize we can drop the includeDir param, cool)",
+      "parentUuid": "868c6a67_2269b786",
       "range": {
         "startLine": 252,
         "startChar": 8,
