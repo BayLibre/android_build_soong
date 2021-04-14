@@ -34,6 +34,24 @@
       "parentUuid": "9a47363d_394f4d2f",
       "revId": "5f9dc45168882db220e76bb386db75101a919041",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26094fe4_1f273c99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T13:12:51Z",
+      "side": 1,
+      "message": "(This is maybe another reason having a separate mixed builds deny list could be a good idea...)",
+      "parentUuid": "aef1e6dc_9ab40812",
+      "revId": "5f9dc45168882db220e76bb386db75101a919041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
