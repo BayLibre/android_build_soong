@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "561a7743_6451d884",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-14T14:42:04Z",
+      "side": 1,
+      "message": "WDYT? This compromises on the independence of each test case a bit, but the speedup is quite convincing.",
+      "revId": "1496cc9c068e0a5b307b02593f4ec78317dae13e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
