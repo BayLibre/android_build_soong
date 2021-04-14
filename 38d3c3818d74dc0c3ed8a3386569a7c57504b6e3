@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86bb77aa_be9cf622",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-04-14T16:55:14Z",
+      "side": 1,
+      "message": "Should this be \u0027debug\u0027?",
+      "range": {
+        "startLine": 93,
+        "startChar": 49,
+        "endLine": 93,
+        "endChar": 55
+      },
+      "revId": "38d3c3818d74dc0c3ed8a3386569a7c57504b6e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
