@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d7e94ed_33a6964b",
+        "filename": "android/paths.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-14T16:57:45Z",
+      "side": 1,
+      "message": "nit: folder -\u003e directory :)",
+      "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b7274af_c03342c9",
+        "filename": "android/paths.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-14T16:57:45Z",
+      "side": 1,
+      "message": "Why do we assume absolute paths are already correct?",
+      "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
