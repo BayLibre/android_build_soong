@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec0658a_7654a73f",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-14T17:01:43Z",
+      "side": 1,
+      "message": "Why doesn\u0027t soong create rules for both variants and let the user decide which one to use?",
+      "range": {
+        "startLine": 788,
+        "startChar": 112,
+        "endLine": 788,
+        "endChar": 126
+      },
+      "revId": "1509e273a9063355d0cb7d5d0fde3df4746fdac4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
