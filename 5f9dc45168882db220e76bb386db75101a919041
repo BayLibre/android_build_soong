@@ -52,6 +52,24 @@
       "parentUuid": "aef1e6dc_9ab40812",
       "revId": "5f9dc45168882db220e76bb386db75101a919041",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39b8c461_60e7445e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T13:21:57Z",
+      "side": 1,
+      "message": "Done, looks like only libc_gdtoa has a problem with mixed builds",
+      "parentUuid": "26094fe4_1f273c99",
+      "revId": "5f9dc45168882db220e76bb386db75101a919041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
