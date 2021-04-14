@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebe1d0cb_4a0be0ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-14T02:46:04Z",
+      "side": 1,
+      "message": "These CLs are ready to be reviewed 😊\n(TODO in the following CLs..: generate dexpreopt.config even if dexpreopt is disabled for unbundled vendor build)",
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
