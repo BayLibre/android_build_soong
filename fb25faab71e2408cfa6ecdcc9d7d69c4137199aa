@@ -105,6 +105,24 @@
       "parentUuid": "1c2b1e98_3083d65a",
       "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b9fc4d4_f475dfa0",
+        "filename": "android/paths.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T20:24:12Z",
+      "side": 1,
+      "message": "FWIW, returning the transformed paths as absolute paths was to avoid errors like:\n\nERROR: /usr/local/google/home/ruperts/aosp-2/bionic/libc/BUILD:1210:18: //bionic/libc:libc_aeabi_mainlib: invalid label \u0027async_safe:include/async_safe/CHECK.h\u0027 in element 0 of attribute \u0027srcs\u0027 in \u0027cc_library\u0027 rule: invalid target name \u0027async_safe:include/async_safe/CHECK.h\u0027: target names may not contain \u0027:\u0027\n\nBazel seems very unhappy with relative paths like async_safe:include/async_safe/CHECK.h (even if the colon is in the right place)\n\nBut Bazel is happy to accept absolute paths like //bionic/libc/async_safe:include/async_safe/CHECK.h",
+      "parentUuid": "311a268b_9690fa60",
+      "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
