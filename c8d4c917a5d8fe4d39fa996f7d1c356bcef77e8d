@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "298e79c5_7b37ea74",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T14:03:52Z",
+      "side": 1,
+      "message": "Obviously easy to change this line to search for BUILD instead of Android.bp, but as you probably guessed the problem is on the first run, the BUILD files won\u0027t exist yet...\n\nNot a problem so far but maybe we could auto-generate empty BUILD files for each Android.bp file? (even if bp2build didn\u0027t convert any targets?)\n\nFiled http://b/185358476",
+      "parentUuid": "072b671b_9ea3ec6f",
+      "range": {
+        "startLine": 420,
+        "startChar": 3,
+        "endLine": 420,
+        "endChar": 77
+      },
+      "revId": "c8d4c917a5d8fe4d39fa996f7d1c356bcef77e8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "610ab046_1a65ebe8",
         "filename": "android/paths.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-14T13:41:22Z",
       "side": 1,
       "message": "nit: Could we use filepath.Join() in this function instead? or since we\u0027re also building up the path in transformSubpackagePath, could we take advantage of that and reduce repeat work?",
+      "range": {
+        "startLine": 427,
+        "startChar": 32,
+        "endLine": 427,
+        "endChar": 53
+      },
+      "revId": "c8d4c917a5d8fe4d39fa996f7d1c356bcef77e8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07b6c271_4af7d4d3",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T14:03:52Z",
+      "side": 1,
+      "message": "Switched to using Join. \n\nIt is a little tricky to share more state because the parent function is working backwards (it wants to put the colon in the last possible place) but the child function is working forwards (to construct the path to that place). Maybe there is a nicer way to do this... ?",
+      "parentUuid": "610ab046_1a65ebe8",
       "range": {
         "startLine": 427,
         "startChar": 32,
