@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a47363d_394f4d2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T13:11:22Z",
+      "side": 1,
+      "message": "This seems to break mixed builds, so maybe something has to be added back to the deny list for now...\n\nhttps://android-build.googleplex.com/builds/pending/P21763735/mixed_libc-incremental/latest/view/logs/build_error.log\n\nBuildbot Version: androidbuild_buildbot_20210401.00_RC00\nMachine: prodrbe8-xpzy\nbuild/soong/soong_ui.bash --make-mode USE_BAZEL_ANALYSIS\u003d1 BAZEL_STARTUP_ARGS\u003d\"--max_idle_secs\u003d5\" BAZEL_BUILD_ARGS\u003d\"--color\u003dno --curses\u003dno --show_progress_rate_limit\u003d5\" TARGET_PRODUCT\u003daosp_arm64 TARGET_BUILD_VARIANT\u003duserdebug libc dist DIST_DIR\u003d/buildbot/dist_dirs/aosp-master-bazel-linux-mixed_libc-incremental/P21763735\nFAILED: out/soong/.intermediates/bionic/libc/libc/android_arm64_armv8-a_shared_apex10000/unsorted/libc.so\nprebuilts/clang/host/linux-x86/clang-r416183/bin/clang++  @out/soong/.intermediates/bionic/libc/libc/android_arm64_armv8-a_shared_apex10000/unsorted/libc.so.rsp -Wl,--whole-archive  out/soong/.intermediates/external/scudo/libscudo/android_arm64_armv8-a_static_apex10000/libscudo.a out/bazel/output/execroot/__main__/bazel-out/sourceroot/k8-fastbuild-ST-c2c501618683/bin/external/gwp_asan/libgwp_asan_mainlib.a out/soong/.intermediates/bionic/libc/libc_init_dynamic/android_arm64_armv8-a_static_apex10000/libc_init_dynamic.a out/soong/.intermediates/bionic/libc/libc_common_shared/android_arm64_armv8-a_static_apex10000/libc_common_shared.a prebuilts/clang/host/linux-x86/clang-r416183/lib64/clang/12.0.4/lib/linux/aarch64/libunwind-exported.a -Wl,--no-whole-archive  out/soong/.intermediates/bionic/libdl/libdl_android/android_arm64_armv8-a_static_apex10000/libdl_android.a out/bazel/output/execroot/sourceroot/prebuilts/clang/host/linux-x86/clang-r407598b/lib64/clang/12.0.2/lib/linux/libclang_rt.builtins-aarch64-android.a out/soong/.intermediates/bionic/linker/ld-android/android_arm64_armv8-a_shared_apex10000/ld-android.so out/soong/.intermediates/bionic/libdl/libdl/android_arm64_armv8-a_shared_apex10000/libdl.so  -o out/soong/.intermediates/bionic/libc/libc/android_arm64_armv8-a_shared_apex10000/unsorted/libc.so -target aarch64-linux-android10000 -Bprebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/aarch64-linux-android/bin -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--build-id\u003dmd5 -Wl,--warn-shared-textrel -Wl,--fatal-warnings -Wl,--no-undefined-version -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libgcc_stripped.a -Wl,--exclude-libs,libunwind_llvm.a -Wl,--exclude-libs,libunwind.a -Wl,--icf\u003dsafe -fuse-ld\u003dlld -Wl,--pack-dyn-relocs\u003dnone -Wl,--no-undefined -Wl,--hash-style\u003dgnu -Wl,-z,separate-code -Wl,-z,max-page-size\u003d4096  -Wl,--exclude-libs\u003dlibclang_rt.builtins-aarch64-android.a  -nostdlib -Wl,--gc-sections -shared -Wl,-soname,libc.so -Wl,-z,muldefs -Wl,--version-script,out/bazel/output/execroot/__main__/bazel-out/sourceroot/k8-fastbuild/bin/bionic/libc/libc.arm64.map \nld.lld: error: undefined symbol: __strtorQ\n\u003e\u003e\u003e referenced by strtold.cpp:39 (bionic/libc/bionic/strtold.cpp:39)\n\u003e\u003e\u003e               strtold.o:(strtold) in archive out/soong/.intermediates/bionic/libc/libc_common_shared/android_arm64_armv8-a_static_apex10000/libc_common_shared.a\n\u003e\u003e\u003e did you mean: __strtord\n\u003e\u003e\u003e defined in: out/soong/.intermediates/bionic/libc/libc_common_shared/android_arm64_armv8-a_static_apex10000/libc_common_shared.a(strtord.o)\nclang-12: error: linker command failed with exit code 1 (use -v to see invocation)",
+      "revId": "5f9dc45168882db220e76bb386db75101a919041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
