@@ -195,6 +195,24 @@
       "parentUuid": "b7cc29e0_057f46dd",
       "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66d96190_2be5a8f0",
+        "filename": "android/paths.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-14T21:07:39Z",
+      "side": 1,
+      "message": "\u003e Re: absolute paths, I\u0027ve seen that commonly used to refer to //full/paths/from/the/workspace/root\n\nThat doesn\u0027t make it any less ambiguous, especially in the very same file where there is defined a function `absolutePath(path string)`, which has a completely different meaning for \"absolute path\" than the one you are using.\n\n\u003e renamed to \"absolute labels\" for now with some examples\n\nLooks great.",
+      "parentUuid": "b7cc29e0_057f46dd",
+      "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
