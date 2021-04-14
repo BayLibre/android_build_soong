@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1efef3f_2b6d1f77",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-14T18:20:15Z",
+      "side": 1,
+      "message": "Can you elaborate a bit, here? This function could use a docstring to elaborate on what\u0027s expected of the return value.",
+      "revId": "d25c89daad398880a42e4b6ea3761b6836e08e98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2458ace_c50b6c54",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 2
