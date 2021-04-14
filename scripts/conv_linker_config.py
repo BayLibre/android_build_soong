@@ -78,6 +78,15 @@ def Append(args):
   with open(args.output, 'wb') as f:
     f.write(pb.SerializeToString())
 
+def Merge(args):
+  base = linker_config_pb2.LinkerConfig()
+  with open(args.base, 'rb') as f:
+    base.ParseFromString(f.read())
+  with open(args.from_, 'rb') as f:
+    base.MergeFromString(f.read())
+
+  with open(args.out, 'wb') as f:
+    f.write(base.SerializeToString())
 
 def GetArgParser():
   parser = argparse.ArgumentParser()
@@ -160,6 +169,28 @@ def GetArgParser():
       type=str,
       help='Values of the libraries to append. If there are more than one it should be separated by empty space')
   append.set_defaults(func=Append)
+
+  append = subparsers.add_parser(
+      'merge', help='Merge two configurations')
+  append.add_argument(
+      '-b',
+      '--base',
+      required=True,
+      type=str,
+      help='Base linker configuration file in protobuf.')
+  append.add_argument(
+      '-o',
+      '--out',
+      required=True,
+      type=str,
+      help='Ouptut linker configuration file to write in protobuf.')
+  append.add_argument(
+      '--from',
+      dest='from_',
+      required=True,
+      type=str,
+      help='Linker configuration file in protobuf to override.')
+  append.set_defaults(func=Merge)
 
   return parser
 
