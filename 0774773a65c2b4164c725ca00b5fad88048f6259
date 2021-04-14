@@ -22,6 +22,98 @@
       },
       "revId": "0774773a65c2b4164c725ca00b5fad88048f6259",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee8fc839_501b04e3",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 0,
+      "message": "Why is it necessary to move?",
+      "range": {
+        "startLine": 269,
+        "startChar": 2,
+        "endLine": 269,
+        "endChar": 15
+      },
+      "revId": "0774773a65c2b4164c725ca00b5fad88048f6259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c0fc399_6c3575ed",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 0,
+      "message": "Can you add back this comment (update it as necessary), so that it is clear that fields with non-trivial constructors are overridden?",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 272,
+        "endChar": 53
+      },
+      "revId": "0774773a65c2b4164c725ca00b5fad88048f6259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4607fd15_629420a2",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 0,
+      "message": "Please explain in the commit message why this is removed (presumably because it\u0027s a trivially convertible to/from JSON).",
+      "range": {
+        "startLine": 280,
+        "startChar": 2,
+        "endLine": 280,
+        "endChar": 25
+      },
+      "revId": "0774773a65c2b4164c725ca00b5fad88048f6259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "212fb62f_35019737",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 0,
+      "message": "Your change will break this (the full config is generated after condition on lines 157-159).\n\nIt may not be possible to generate a full dexpreopt.config for a module that has disabled dexpreopt, because some fields will not be possible to construct. In that case such fields should be zero-initialized or set to some explicit invalid value.",
+      "range": {
+        "startLine": 144,
+        "startChar": 2,
+        "endLine": 144,
+        "endChar": 80
+      },
+      "revId": "0774773a65c2b4164c725ca00b5fad88048f6259",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

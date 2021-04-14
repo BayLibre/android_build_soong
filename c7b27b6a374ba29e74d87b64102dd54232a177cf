@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "158fb554_a18048ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 1,
+      "message": "Can you split these changes in separate CLs?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ebe1d0cb_4a0be0ec",
@@ -14,6 +37,322 @@
       "writtenOn": "2021-04-14T02:46:04Z",
       "side": 1,
       "message": "These CLs are ready to be reviewed 😊\n(TODO in the following CLs..: generate dexpreopt.config even if dexpreopt is disabled for unbundled vendor build)",
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aac0c64c_b5920677",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 1,
+      "message": "Sorry for the delay in review!\n",
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b66c44a_e5831416",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 1,
+      "message": "Please explain in the commit message why this is added.",
+      "range": {
+        "startLine": 274,
+        "startChar": 2,
+        "endLine": 274,
+        "endChar": 20
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95915540_590ea4a7",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 1,
+      "message": "Please explain in the commit message why this is added.",
+      "range": {
+        "startLine": 280,
+        "startChar": 2,
+        "endLine": 280,
+        "endChar": 32
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb3380b8_d7268624",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 1,
+      "message": "IIRC this function can be replaced with android.Paths.Strings().",
+      "range": {
+        "startLine": 309,
+        "startChar": 5,
+        "endLine": 309,
+        "endChar": 19
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c8053dd_67b90ad9",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 1,
+      "message": "Instead of []android.Path, use android.Paths (here and in other places).",
+      "range": {
+        "startLine": 309,
+        "startChar": 26,
+        "endLine": 309,
+        "endChar": 40
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36e369fd_87104b36",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 1,
+      "message": "Use something more descriptive like \"paths\".",
+      "range": {
+        "startLine": 316,
+        "startChar": 16,
+        "endLine": 316,
+        "endChar": 17
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c26a011a_574f7266",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 1,
+      "message": "IIRC this function can be replaced with android.OutputPaths.Paths().",
+      "range": {
+        "startLine": 316,
+        "startChar": 5,
+        "endLine": 316,
+        "endChar": 15
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa742965_6b004722",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 1,
+      "message": "Is this Haskell-style? :) In Go I believe pathLists would be more conventional.",
+      "range": {
+        "startLine": 324,
+        "startChar": 28,
+        "endLine": 324,
+        "endChar": 34
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70a8a64_23897bee",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 1,
+      "message": "This is just android.OutputPaths.Strings()",
+      "range": {
+        "startLine": 327,
+        "startChar": 20,
+        "endLine": 327,
+        "endChar": 50
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2864229_8f2e9541",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 1,
+      "message": "Please don\u0027t copy-paste ModuleJSONConfig definition here, instead move it out of ParseModuleConfig to global scope and add some comments.",
+      "range": {
+        "startLine": 333,
+        "startChar": 28,
+        "endLine": 349,
+        "endChar": 2
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d21f09da_41890687",
+        "filename": "dexpreopt/dexpreopt_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 1,
+      "message": "Nice idea to test f^-1(f(x)) \u003d x!\n\nCan you use test assert functions that Paul recently introduced, e.g. android.AssertStringEquals?",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 2
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e70ae493_22bc45f7",
+        "filename": "dexpreopt/dexpreopt_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 1,
+      "message": "This is really easy to change for anyone (and break the \"API\"), so it won\u0027t prevent breakages. Also, this tests that Soong can read some particular config, but it doesn\u0027t test that Soong doesn\u0027t write a config with incompatible structure. I had something like this in mind:\n\n1. The test should require approval of the relevant team (so, perhaps, you can be one of the few OWNERs for that test, but not me or build system developers, so that each change of the test would be reviewed properly).\n\n2. The test should ensure that the generated dexpreopt.config files conform to some JSON schema: the necessary fields are present, but not any extra fields (so, if I add a new field, the test would still fail even though it wouldn\u0027t break anything on your side). The latter is to prevent accidental use of non-validated fields (if I add the field, and you start using the field, but it\u0027s not validated, so I change it and break your build).\n\n3. Some config fields are optional or have complex structure (e.g. the ClassLoaderContexts field is a map of trees, so it can be just {}, or have arbitrary many subtrees). The validation script should check that if a field is present, it has expected structure. Testing one particular config does not mean that all configs are valid, so it would be better if all the generated configs go through this test.\n\n5. To satisfy these requirements, you can have a python script that accepts a JSON dexpreopt.config file and validates it (owned by you/your team), and plug that script in the pipeline for generating dexpreopt.config files.\n\nI\u0027m not sure it\u0027s the best possible solution to ensure compatibility, but it seems safer than a Soong unit test. Maybe Colin can tell if this is a bad idea.",
+      "range": {
+        "startLine": 189,
+        "startChar": 5,
+        "endLine": 189,
+        "endChar": 37
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1663c8f5_3b34d925",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 1,
+      "message": "Suggest replacing with something like this:\n\n  The config is used for two purposes:\n\n    - Passing dexpreopt information about libraries from Soong to Make. This is\n      needed when a \u003cuses-library\u003e is defined in Android.bp, but used in \n      Android.mk (see dex_preopt_config_merger.py). Note that dexpreopt.config\n      might be needed even if dexpreopt is disabled for the library itself.\n\n    - Dexpreopt post-processing (using dexpreopt artifacts from a prebuilt system\n      image to imcrementally dexpreopt another partition).",
+      "range": {
+        "startLine": 47,
+        "startChar": 19,
+        "endLine": 47,
+        "endChar": 76
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5dcb111_6914351f",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-14T15:09:42Z",
+      "side": 1,
+      "message": "This won\u0027t work (disabling config generation if dexpreopt is disabled), because sometimes a dexpreopted app uses a non-dexpreoptd library, and the app still needs the config for the library.",
+      "range": {
+        "startLine": 46,
+        "startChar": 76,
+        "endLine": 47,
+        "endChar": 16
+      },
       "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
