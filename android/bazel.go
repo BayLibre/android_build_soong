@@ -175,9 +175,6 @@ var (
 		"libbionic_tests_headers_posix", // ruperts@, cc_library_static, 'complex.h' file not found
 		"libc_dns",                      // ruperts@, cc_library_static, 'bionic/libc/async_safe' is a subpackage
 
-		"note_memtag_heap_async", // jingwen@, b/185079815, features.h includes not found
-		"note_memtag_heap_sync",  // jingwen@, b/185079815, features.h includes not found
-
 		// List of all full_cc_libraries in //bionic, with their immediate failures
 		"libc",              // jingwen@, cc_library, depends on //external/gwp_asan
 		"libc_malloc_debug", // jingwen@, cc_library, fatal error: 'assert.h' file not found
@@ -190,12 +187,37 @@ var (
 
 	// Used for quicker lookups
 	bp2buildModuleDoNotConvert = map[string]bool{}
+
+	// A module that converts with bp2build may still be incompatible with mixed builds. Add them here.
+	mixedBuildsDisabledList = []string{
+		// "note_memtag_heap_async", // jingwen@, b/185079815, features.h includes not found
+		// "note_memtag_heap_sync",  // jingwen@, b/185079815, features.h includes not found
+	}
+
+	// Used for quicker lookups
+	mixedBuildsDisabled = map[string]bool{}
 )
 
 func init() {
 	for _, moduleName := range bp2buildModuleDoNotConvertList {
 		bp2buildModuleDoNotConvert[moduleName] = true
 	}
+
+	for _, moduleName := range mixedBuildsDisabledList {
+		mixedBuildsDisabled[moduleName] = true
+	}
+}
+
+// MixedBuildsEnabled checks that a module is ready to be replaced by a
+// converted or handcrafted Bazel target.
+func (b *BazelModuleBase) MixedBuildsEnabled(ctx BazelConversionPathContext, m Module) bool {
+	if !ctx.Config().BazelContext.BazelEnabled() {
+		return false
+	}
+	if len(b.GetBazelLabel(ctx, m)) == 0 {
+		return false
+	}
+	return !mixedBuildsDisabled[ctx.Module().Name()]
 }
 
 // ConvertWithBp2build returns whether the given BazelModuleBase should be converted with bp2build.
