@@ -69,6 +69,24 @@
       "parentUuid": "8b7274af_c03342c9",
       "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c2b1e98_3083d65a",
+        "filename": "android/paths.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-14T18:47:14Z",
+      "side": 1,
+      "message": "I think part of the underlying issue this highlights is that we\u0027re building transformation on transformation here, and it\u0027s becoming very unclear what\u0027s expected at each level of the transformation. Not all of this is related to this CL, but I\u0027m afraid this CL exacerbates it.\n\nParticularly, it\u0027s unclear in what cases BazelLabelForModuleSrcExcludes returns absolute paths. It accepts a `paths []string`, what format are these path strings expected to be in? \n\nAlso, why does BazelLabelForModuleSrcExcludes not undergo transformSubpackagePaths? It\u0027s a public method; I would expect that its callers also want valid labels.\n\nI\"m wary of \"lets add this assertion in and see if it bites us later\". I find this path-related code difficult to understand, and adding logic for unknown corner cases, without additional explanation as to when the corner cases arise, and why they are corner cases, will only make the code more confusing.",
+      "parentUuid": "96939f2e_12205078",
+      "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
