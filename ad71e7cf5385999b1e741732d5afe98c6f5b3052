@@ -16,6 +16,24 @@
       "message": "This can be done via `relative_install_path` as well. Wouldn\u0027t it be cleaner and safer to factor out these two properties and add them only to non-root modules?",
       "revId": "ad71e7cf5385999b1e741732d5afe98c6f5b3052",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84da5c5b_5c5375e0",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-04-14T04:20:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e917bef_782a13b1",
+      "revId": "ad71e7cf5385999b1e741732d5afe98c6f5b3052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
