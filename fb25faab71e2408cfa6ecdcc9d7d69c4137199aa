@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c37c0037_0e095dff",
+        "filename": "android/paths.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T18:19:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d7e94ed_33a6964b",
+      "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b7274af_c03342c9",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-14T16:57:45Z",
       "side": 1,
       "message": "Why do we assume absolute paths are already correct?",
+      "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96939f2e_12205078",
+        "filename": "android/paths.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T18:19:24Z",
+      "side": 1,
+      "message": "All the transformation logic started out in cc/bp2build.go, being called by bp2BuildListHeadersInDir() only. I think all the paths were relative paths, so it was an easy assumption to make.\n\nJin asked me to move everything to android/paths.go and call the transformation logic for BazelLabelForModuleSrc(), so maybe that assumption should be revisited now. It does seem surprising that we would generate an absolute path that wasn\u0027t valid, but I guess it could happen. \n\nThat said, unless this currently blocks something, I suggest we wait and see whether it becomes a problem?",
+      "parentUuid": "8b7274af_c03342c9",
       "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
