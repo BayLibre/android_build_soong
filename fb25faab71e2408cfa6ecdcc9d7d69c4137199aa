@@ -159,6 +159,24 @@
       "parentUuid": "57c9438a_27b224c4",
       "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7cc29e0_057f46dd",
+        "filename": "android/paths.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-14T21:00:10Z",
+      "side": 1,
+      "message": "Thanks Liz!\n\nRe: absolute paths, I\u0027ve seen that commonly used to refer to //full/paths/from/the/workspace/root. \n\nBut renamed to \"absolute labels\" for now with some examples. Does that make things clearer?",
+      "parentUuid": "8631ddb7_32738a2e",
+      "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
