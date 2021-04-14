@@ -123,6 +123,24 @@
       "parentUuid": "311a268b_9690fa60",
       "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57c9438a_27b224c4",
+        "filename": "android/paths.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-14T20:34:22Z",
+      "side": 1,
+      "message": "Returning the transformed paths as \"absolute paths\" is totally fine; lets just it clear in the documentation that an absolute path is being returned in all cases.\n\nAlso, \"absolute path\" is a bit overloaded -- it would be reasonable to interpret \"absolute path\" as being an absolute filepath, such as `/usr/local/cparsons/workspace/bionic/libc`.\n\n\n\u003e I\u0027m not sure what you are asking about BazelLabelForModuleSrcExcludes - are you asking about the outputs, or the inputs, or both? \n\nBoth, I suppose. :) When paths are represented in string form (either params or return values), it is unclear what the properties of the path are. Are they a an absolute filepath? relative filepath? (relative to what?) or label-like string?\n\n\nI\u0027m still quite confused as to when \"Assume absolute paths are already correct\" triggers, and why. I\u0027d like to understand this better, but if you\u0027d clean this up separately, then OK. At the very least, we should avoid calling them \"absolute paths\" here.",
+      "parentUuid": "1b9fc4d4_f475dfa0",
+      "revId": "fb25faab71e2408cfa6ecdcc9d7d69c4137199aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
