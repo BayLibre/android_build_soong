@@ -429,7 +429,6 @@ function test_dump_json_module_graph() {
   fi
 }
 
-test_smoke
 test_null_build
 test_null_build_after_docs
 test_soong_build_rebuilt_if_blueprint_changes
