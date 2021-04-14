@@ -356,23 +356,42 @@ func ExistentPathsForSources(ctx PathContext, paths []string) Paths {
 	return ret
 }
 
-// PathsForModuleSrc returns Paths rooted from the module's local source directory.  It expands globs, references to
-// SourceFileProducer modules using the ":name" syntax, and references to OutputFileProducer modules using the
-// ":name{.tag}" syntax.  Properties passed as the paths argument must have been annotated with struct tag
+// PathsForModuleSrc returns a Paths{} containing the resolved references in paths:
+// * filepath, relative to local module directory, resolves as a filepath relative to the local
+//   source directory
+// * glob, relative to the local module directory, resolves as filepath(s), relative to the local
+//  source directory.
+// * other modules using the ":name{.tag}" syntax. These modules must implement SourceFileProducer
+//    or OutputFileProducer. These resolve as a filepath to an output filepath or generated source
+//    filepath.
+// Properties passed as the paths argument must have been annotated with struct tag
 // `android:"path"` so that dependencies on SourceFileProducer modules will have already been handled by the
-// path_properties mutator.  If ctx.Config().AllowMissingDependencies() is true then any missing SourceFileProducer or
-// OutputFileProducer dependencies will cause the module to be marked as having missing dependencies.
+// path_deps mutator.
+// If a requested module is not found as a dependency:
+//   * if ctx.Config().AllowMissingDependencies() is true, this module to be marked as having
+//     missing dependencies
+//   * otherwise, a ModuleError is thrown.
 func PathsForModuleSrc(ctx ModuleMissingDepsPathContext, paths []string) Paths {
 	return PathsForModuleSrcExcludes(ctx, paths, nil)
 }
 
-// PathsForModuleSrcExcludes returns Paths rooted from the module's local source directory, excluding paths listed in
-// the excludes arguments.  It expands globs, references to SourceFileProducer modules using the ":name" syntax, and
-// references to OutputFileProducer modules using the ":name{.tag}" syntax.  Properties passed as the paths or excludes
-// argument must have been annotated with struct tag `android:"path"` so that dependencies on SourceFileProducer modules
-// will have already been handled by the path_properties mutator.  If ctx.Config().AllowMissingDependencies() is
-// true then any missing SourceFileProducer or OutputFileProducer dependencies will cause the module to be marked as
-// having missing dependencies.
+// PathsForModuleSrcExcludes returns a Paths{} containing the resolved references in paths, minus
+// those listed in excludes. Elements of paths and excludes are resolved as:
+// * filepath, relative to local module directory, resolves as a filepath relative to the local
+//   source directory
+// * glob, relative to the local module directory, resolves as filepath(s), relative to the local
+//  source directory. Not valid in excludes.
+// * other modules using the ":name{.tag}" syntax. These modules must implement SourceFileProducer
+//    or OutputFileProducer. These resolve as a filepath to an output filepath or generated source
+//    filepath.
+// excluding the items (similarly resolved
+// Properties passed as the paths argument must have been annotated with struct tag
+// `android:"path"` so that dependencies on SourceFileProducer modules will have already been handled by the
+// path_deps mutator.
+// If a requested module is not found as a dependency:
+//   * if ctx.Config().AllowMissingDependencies() is true, this module to be marked as having
+//     missing dependencies
+//   * otherwise, a ModuleError is thrown.
 func PathsForModuleSrcExcludes(ctx ModuleMissingDepsPathContext, paths, excludes []string) Paths {
 	ret, missingDeps := PathsAndMissingDepsForModuleSrcExcludes(ctx, paths, excludes)
 	if ctx.Config().AllowMissingDependencies() {
@@ -504,27 +523,52 @@ func transformSubpackagePaths(ctx BazelConversionPathContext, paths bazel.LabelL
 	return newPaths
 }
 
-// BazelLabelForModuleSrc returns bazel.LabelList with paths rooted from the module's local source
-// directory. It expands globs, and resolves references to modules using the ":name" syntax to
-// bazel-compatible labels.  Properties passed as the paths or excludes argument must have been
-// annotated with struct tag `android:"path"` so that dependencies on other modules will have
-// already been handled by the path_properties mutator.
-//
-// With expanded globs, we can catch package boundaries problem instead of
-// silently failing to potentially missing files from Bazel's globs.
+// BazelLabelForModuleSrc returns a bazel.LabelList{} containing the resolved references in paths.
+// Valid elements of paths include:
+// * filepath, relative to local module directory, resolves as a filepath relative to the local
+//   module directory or, if within a subpackage, an absolute Bazel label (e.g.
+//   "//path/to/subdir:<path>).
+// * glob, relative to the local module directory, resolves as filepath(s), relative to the local
+//    module directory or an absolute Bazel label if within a subpackage. Because Soong does not
+//    have a concept of crossing package boundaries, the glob as computed by Soong may contain paths
+//    that cross package-boundaries that would be unknowingly omitted if the glob were handled by
+//    Bazel. To allow identification and detect (within Bazel) use of paths that cross package
+//    boundaries, we expand globs within Soong rather than converting Soong glob syntax to Bazel
+//    glob syntax.
+// * other modules using the ":name{.tag}" syntax. These modules must implement SourceFileProducer
+//    or OutputFileProducer. These resolve as a Bazel label for a target. If the Bazel target is in
+//    the local module directory, it will be returned relative to the current package (e.g.
+//    ":<target>"). Otherwise, it will be returned as an absolute Bazel label (e.g.
+//    "//path/to/dir:<target>"). If the reference to another module cannot be resolved,the function
+//    will panic.
+// Properties passed as the paths argument must have been annotated with struct tag `android:"path"`
+// so that dependencies on SourceFileProducer modules will have already been handled by the
+// path_deps mutator.
 func BazelLabelForModuleSrc(ctx BazelConversionPathContext, paths []string) bazel.LabelList {
 	return BazelLabelForModuleSrcExcludes(ctx, paths, []string(nil))
 }
 
-// BazelLabelForModuleSrcExcludes returns bazel.LabelList with paths rooted from the module's local
-// source directory, excluding labels included in the excludes argument. It expands globs, and
-// resolves references to modules using the ":name" syntax to bazel-compatible labels. Properties
-// passed as the paths or excludes argument must have been annotated with struct tag
-// `android:"path"` so that dependencies on other modules will have already been handled by the
-// path_properties mutator.
-//
-// With expanded globs, we can catch package boundaries problem instead of
-// silently failing to potentially missing files from Bazel's globs.
+// BazelLabelForModuleSrcExcludes returns a bazel.LabelList{} containing the resolved references in
+// paths, minus those listed in excludes. Valid elements of paths and excludes include:
+// * filepath, relative to local module directory, resolves as a filepath relative to the local
+//   module directory or, if within a subpackage, an absolute Bazel label (e.g.
+//   "//path/to/subdir:<path>).
+// * glob, relative to the local module directory, resolves as filepath(s), relative to the local
+//    module directory or an absolute Bazel label if within a subpackage. Because Soong does not
+//    have a concept of crossing package boundaries, the glob as computed by Soong may contain paths
+//    that cross package-boundaries that would be unknowingly omitted if the glob were handled by
+//    Bazel. To allow identification and detect (within Bazel) use of paths that cross package
+//    boundaries, we expand globs within Soong rather than converting Soong glob syntax to Bazel
+//    glob syntax.
+// * other modules using the ":name{.tag}" syntax. These modules must implement SourceFileProducer
+//    or OutputFileProducer. These resolve as a Bazel label for a target. If the Bazel target is in
+//    the local module directory, it will be returned relative to the current package (e.g.
+//    ":<target>"). Otherwise, it will be returned as an absolute Bazel label (e.g.
+//    "//path/to/dir:<target>"). If the reference to another module cannot be resolved,the function
+//    will panic.
+// Properties passed as the paths argument must have been annotated with struct tag `android:"path"`
+// so that dependencies on SourceFileProducer modules will have already been handled by the
+// path_deps mutator.
 func BazelLabelForModuleSrcExcludes(ctx BazelConversionPathContext, paths, excludes []string) bazel.LabelList {
 	excludeLabels := expandSrcsForBazel(ctx, excludes, []string(nil))
 	excluded := make([]string, 0, len(excludeLabels.Includes))
@@ -537,12 +581,27 @@ func BazelLabelForModuleSrcExcludes(ctx BazelConversionPathContext, paths, exclu
 	return labels
 }
 
-// expandSrcsForBazel returns bazel.LabelList with paths rooted from the module's local
-// source directory, excluding labels included in the excludes argument. It expands globs, and
-// resolves references to modules using the ":name" syntax to bazel-compatible labels.  Properties
-// passed as the paths or excludes argument must have been annotated with struct tag
+// expandSrcsForBazel returns bazel.LabelList with paths rooted from the module's local source
+// directory and Bazel target labels, excluding those included in the excludes argument (which
+// should already be expanded to resolve references to Soong-modules). Valid elements of paths
+// include:
+// * filepath, relative to local module directory, resolves as a filepath relative to the local
+//   source directory
+// * glob, relative to the local module directory, resolves as filepath(s), relative to the local
+//    module directory. Because Soong does not have a concept of crossing package boundaries, the
+//    glob as computed by Soong may contain paths that cross package-boundaries that would be
+//    unknowingly omitted if the glob were handled by Bazel. To allow identification and detect
+//    (within Bazel) use of paths that cross package boundaries, we expand globs within Soong rather
+//    than converting Soong glob syntax to Bazel glob syntax. **Invalid for excludes.**
+// * other modules using the ":name{.tag}" syntax. These modules must implement SourceFileProducer
+//    or OutputFileProducer. These resolve as a Bazel label for a target. If the Bazel target is in
+//    the local module directory, it will be returned relative to the current package (e.g.
+//    ":<target>"). Otherwise, it will be returned as an absolute Bazel label (e.g.
+//    "//path/to/dir:<target>"). If the reference to another module cannot be resolved,the function
+//    will panic.
+// Properties passed as the paths or excludes argument must have been annotated with struct tag
 // `android:"path"` so that dependencies on other modules will have already been handled by the
-// path_properties mutator.
+// path_deps mutator.
 func expandSrcsForBazel(ctx BazelConversionPathContext, paths, expandedExcludes []string) bazel.LabelList {
 	if paths == nil {
 		return bazel.LabelList{}
@@ -679,14 +738,19 @@ func getPathsFromModuleDep(ctx ModuleWithDepsPathContext, path, moduleName, tag 
 	}
 }
 
-// PathsAndMissingDepsForModuleSrcExcludes returns Paths rooted from the module's local source directory, excluding
-// paths listed in the excludes arguments, and a list of missing dependencies.  It expands globs, references to
-// SourceFileProducer modules using the ":name" syntax, and references to OutputFileProducer modules using the
-// ":name{.tag}" syntax.  Properties passed as the paths or excludes argument must have been annotated with struct tag
+// PathsAndMissingDepsForModuleSrcExcludes returns a Paths{} containing the resolved references in
+// paths, minus those listed in excludes. Elements of paths and excludes are resolved as:
+// * filepath, relative to local module directory, resolves as a filepath relative to the local
+//   source directory
+// * glob, relative to the local module directory, resolves as filepath(s), relative to the local
+//  source directory. Not valid in excludes.
+// * other modules using the ":name{.tag}" syntax. These modules must implement SourceFileProducer
+//    or OutputFileProducer. These resolve as a filepath to an output filepath or generated source
+//    filepath.
+// and a list of the module names of missing module dependencies are returned as the second return.
+// Properties passed as the paths argument must have been annotated with struct tag
 // `android:"path"` so that dependencies on SourceFileProducer modules will have already been handled by the
-// path_properties mutator.  If ctx.Config().AllowMissingDependencies() is true then any missing SourceFileProducer or
-// OutputFileProducer dependencies will be returned, and they will NOT cause the module to be marked as having missing
-// dependencies.
+// path_deps mutator.
 func PathsAndMissingDepsForModuleSrcExcludes(ctx ModuleWithDepsPathContext, paths, excludes []string) (Paths, []string) {
 	prefix := pathForModuleSrc(ctx).String()
 
