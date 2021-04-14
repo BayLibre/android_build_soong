@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "752538c8_a2476533",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-14T12:06:11Z",
+      "side": 1,
+      "message": "This makes the Blueprint \u003c-\u003e soong_ui / soong_build a bit more messy, but I didn\u0027t want to add even more refactoring to this change.\n\nIf I have time, there are at least the following things that could be improved:\n\n- The concept of \"output file\" (Args.OutFile) can probably go away\n- It\u0027s probably nicer to remove that hardwired \"-d ${out}.d\" argument from the build.ninja rule\n- The build.ninja rule should probably be removed to something else since it now does something else, too\n- Given that we now write a depfile based on the return value of RunBlueprint, passing in extraNinjaDeps to RunBlueprint is not necessary\n- AFAICT the only place where Ninja dependencies are collected in singletons/mutators is globSingleton, so that functionality could be removed in favor of manually adding glob list files to the depfile\n\nThe situation with singleton modules / singletons is kinda unfortunate, but it at least made me realize that AddNinjaDeps() on singleton and module contexts is unnecessary 😊",
+      "revId": "ded0cc650ccadbb1d84d6f730d77079082426fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
