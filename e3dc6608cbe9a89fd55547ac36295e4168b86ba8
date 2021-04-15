@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d5b2bc8_3673278c",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-15T15:29:02Z",
+      "side": 1,
+      "message": "It is actually the name of the property although it is not being used ATM. Follow up CLs will use it that way. I added it here because it is useful when debugging to be able to identify the category.",
+      "parentUuid": "ba77c50a_903d72a4",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 13
+      },
+      "revId": "e3dc6608cbe9a89fd55547ac36295e4168b86ba8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c9b1c54_ab7c1d8d",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab99020c_ab01ee3c",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-15T15:29:02Z",
+      "side": 1,
+      "message": "I\u0027ll rename to propertyValueAccessor in a follow up CL.",
+      "parentUuid": "8c9b1c54_ab7c1d8d",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 17
+      },
+      "revId": "e3dc6608cbe9a89fd55547ac36295e4168b86ba8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d880658d_ee24665a",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-04-15T13:17:48Z",
       "side": 1,
       "message": "similar to above, maybe mutateCommand?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "e3dc6608cbe9a89fd55547ac36295e4168b86ba8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39023980_1e5b86aa",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-15T15:29:02Z",
+      "side": 1,
+      "message": "I get where you\u0027re coming from. Methods/funcs are supposed to be verb phrases, e.g. mutateCommand. However, objects and types are supposed to be noun phrases, e.g. commandMutator. So, how do you name an object that represents a func/method?\n\nA noun phrase works better in a field or variable definition. I think:\n    commandMutator func(...)\nlooks more \"normal\" than\n    mutateCommand func(...)\n\nHowever, a verb phrase works better when you\u0027re actually using it. I think:\n    category.mutateCommand(command, path)\nlooks more \"normal\" than\n    category.commandMutator(command, path)\n\nHaving said that there are lots of examples in go where the type and the variables are called mutator rather than mutate\u003cX\u003e.\n\nMaybe mutateCommandFunc would work better?\n\nI\u0027ll leave this as is for now if you feel strongly enough I\u0027ll rename it in a follow up CL.",
+      "parentUuid": "d880658d_ee24665a",
       "range": {
         "startLine": 82,
         "startChar": 1,
