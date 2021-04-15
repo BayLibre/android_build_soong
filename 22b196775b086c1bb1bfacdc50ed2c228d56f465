@@ -16,6 +16,24 @@
       "message": "Will update further if necessary after Rupert\u0027s CL gets submitted.",
       "revId": "22b196775b086c1bb1bfacdc50ed2c228d56f465",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "163d79ed_10f78435",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-15T22:45:41Z",
+      "side": 1,
+      "message": "Submitted now (https://android-review.googlesource.com/c/platform/build/soong/+/1673638)",
+      "parentUuid": "05ff60ec_6a4db226",
+      "revId": "22b196775b086c1bb1bfacdc50ed2c228d56f465",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
