@@ -63,12 +63,12 @@ func (f *FuzzConfig) String() string {
 type FuzzProperties struct {
 	// Optional list of seed files to be installed to the fuzz target's output
 	// directory.
-	Corpus []string `android:"path"`
+	Corpus android.ModuleRelativeInputs `android:"path"`
 	// Optional list of data files to be installed to the fuzz target's output
 	// directory. Directory structure relative to the module is preserved.
-	Data []string `android:"path"`
+	Data android.ModuleRelativeInputs `android:"path"`
 	// Optional dictionary to be installed to the fuzz target's output directory.
-	Dictionary *string `android:"path"`
+	Dictionary *android.ModuleRelativeInput `android:"path"`
 	// Config for running the target on fuzzing infrastructure.
 	Fuzz_config *FuzzConfig
 }
@@ -258,7 +258,7 @@ func (fuzz *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 		"fuzz", ctx.Target().Arch.ArchType.String(), ctx.ModuleName())
 	fuzz.binaryDecorator.baseInstaller.install(ctx, file)
 
-	fuzz.corpus = android.PathsForModuleSrc(ctx, fuzz.Properties.Corpus)
+	fuzz.corpus = fuzz.Properties.Corpus.Paths(ctx)
 	builder := android.NewRuleBuilder(pctx, ctx)
 	intermediateDir := android.PathForModuleOut(ctx, "corpus")
 	for _, entry := range fuzz.corpus {
@@ -269,7 +269,7 @@ func (fuzz *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 	builder.Build("copy_corpus", "copy corpus")
 	fuzz.corpusIntermediateDir = intermediateDir
 
-	fuzz.data = android.PathsForModuleSrc(ctx, fuzz.Properties.Data)
+	fuzz.data = fuzz.Properties.Data.Paths(ctx)
 	builder = android.NewRuleBuilder(pctx, ctx)
 	intermediateDir = android.PathForModuleOut(ctx, "data")
 	for _, entry := range fuzz.data {
@@ -281,7 +281,7 @@ func (fuzz *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 	fuzz.dataIntermediateDir = intermediateDir
 
 	if fuzz.Properties.Dictionary != nil {
-		fuzz.dictionary = android.PathForModuleSrc(ctx, *fuzz.Properties.Dictionary)
+		fuzz.dictionary = fuzz.Properties.Dictionary.Path(ctx)
 		if fuzz.dictionary.Ext() != ".dict" {
 			ctx.PropertyErrorf("dictionary",
 				"Fuzzer dictionary %q does not have '.dict' extension",

@@ -113,6 +113,10 @@ type hostToolDependencyTag struct {
 	label string
 }
 type generatorProperties struct {
+	// properties for includes/excludes src
+	// must be first as an embedded struct implementing functions
+	android.ArchVariantModuleRelativeSrcExcludes `android:"arch_variant"`
+
 	// The command to run on one or more input files. Cmd supports substitution of a few variables
 	//
 	// Available variables for substitution:
@@ -134,16 +138,10 @@ type generatorProperties struct {
 	Tools []string
 
 	// Local file that is used as the tool
-	Tool_files []string `android:"path"`
+	Tool_files android.ModuleRelativeInputs `android:"path"`
 
 	// List of directories to export generated headers from
 	Export_include_dirs []string
-
-	// list of input files
-	Srcs []string `android:"path,arch_variant"`
-
-	// input files to exclude
-	Exclude_srcs []string `android:"path,arch_variant"`
 }
 
 type Module struct {
@@ -835,11 +833,11 @@ func GenruleBp2Build(ctx android.TopDownMutatorContext) {
 
 	// Bazel only has the "tools" attribute.
 	tools_prop := android.BazelLabelForModuleDeps(ctx, m.properties.Tools)
-	tool_files_prop := android.BazelLabelForModuleSrc(ctx, m.properties.Tool_files)
+	tool_files_prop := m.properties.Tool_files.BazelLabels(ctx)
 	tools_prop.Append(tool_files_prop)
 
 	tools := bazel.MakeLabelListAttribute(tools_prop)
-	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, m.properties.Srcs))
+	srcs := bazel.MakeLabelListAttribute(m.properties.ArchVariantModuleRelativeSrcExcludes.BazelLabels(ctx))
 
 	var allReplacements bazel.LabelList
 	allReplacements.Append(tools.Value)

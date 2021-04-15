@@ -109,12 +109,12 @@ func createImport(mctx android.LoadHookContext, module, scope, apiver, path, sdk
 func createApiModule(mctx android.LoadHookContext, name string, path string) {
 	genruleProps := struct {
 		Name *string
-		Srcs []string
-		Out  []string
-		Cmd  *string
+		android.ArchVariantModuleRelativeSrcExcludes
+		Out []string
+		Cmd *string
 	}{}
 	genruleProps.Name = proptools.StringPtr(name)
-	genruleProps.Srcs = []string{path}
+	genruleProps.ArchVariantModuleRelativeSrcExcludes.Srcs = []string{path}
 	genruleProps.Out = []string{name}
 	genruleProps.Cmd = proptools.StringPtr("cp $(in) $(out)")
 	mctx.CreateModule(genrule.GenRuleFactory, &genruleProps)

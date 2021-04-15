@@ -34,11 +34,11 @@ import (
 // LibraryProperties is a collection of properties shared by cc library rules.
 type LibraryProperties struct {
 	// local file name to pass to the linker as -unexported_symbols_list
-	Unexported_symbols_list *string `android:"path,arch_variant"`
+	Unexported_symbols_list *android.ModuleRelativeInput `android:"path,arch_variant"`
 	// local file name to pass to the linker as -force_symbols_not_weak_list
-	Force_symbols_not_weak_list *string `android:"path,arch_variant"`
+	Force_symbols_not_weak_list *android.ModuleRelativeInput `android:"path,arch_variant"`
 	// local file name to pass to the linker as -force_symbols_weak_list
-	Force_symbols_weak_list *string `android:"path,arch_variant"`
+	Force_symbols_weak_list *android.ModuleRelativeInput `android:"path,arch_variant"`
 
 	// rename host libraries to prevent overlap with system installed libraries
 	Unique_host_soname *bool
@@ -64,7 +64,7 @@ type LibraryProperties struct {
 	Stubs struct {
 		// Relative path to the symbol map. The symbol map provides the list of
 		// symbols that are exported for stubs variant of this library.
-		Symbol_file *string `android:"path"`
+		Symbol_file *android.ModuleRelativeInput `android:"path"`
 
 		// List versions to generate stubs libs for. The version name "current" is always
 		// implicitly added.
@@ -98,7 +98,7 @@ type LibraryProperties struct {
 
 		// Path to a symbol file that specifies the symbols to be included in the generated
 		// ABI dump file
-		Symbol_file *string `android:"path"`
+		Symbol_file *android.ModuleRelativeInput `android:"path"`
 
 		// Symbol versions that should be ignored from the symbol file
 		Exclude_symbol_versions []string
@@ -143,7 +143,7 @@ type SharedProperties struct {
 // Use `StaticProperties` or `SharedProperties`, depending on which variant is needed.
 // `StaticOrSharedProperties` exists only to avoid duplication.
 type StaticOrSharedProperties struct {
-	Srcs []string `android:"path,arch_variant"`
+	Srcs android.ModuleRelativeInputs `android:"path,arch_variant"`
 
 	Sanitized Sanitized `android:"arch_variant"`
 
@@ -767,19 +767,19 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 		if library.stubsVersion() != "" {
 			vndkVer = library.stubsVersion()
 		}
-		objs, versionScript := compileStubLibrary(ctx, flags, String(library.Properties.Llndk.Symbol_file), vndkVer, "--llndk")
+		objs, versionScript := compileStubLibrary(ctx, flags, library.Properties.Llndk.Symbol_file, vndkVer, "--llndk")
 		if !Bool(library.Properties.Llndk.Unversioned) {
 			library.versionScriptPath = android.OptionalPathForPath(versionScript)
 		}
 		return objs
 	}
 	if library.buildStubs() {
-		symbolFile := String(library.Properties.Stubs.Symbol_file)
+		symbolFile := library.Properties.Stubs.Symbol_file.String()
 		if symbolFile != "" && !strings.HasSuffix(symbolFile, ".map.txt") {
 			ctx.PropertyErrorf("symbol_file", "%q doesn't have .map.txt suffix", symbolFile)
 			return Objects{}
 		}
-		objs, versionScript := compileStubLibrary(ctx, flags, String(library.Properties.Stubs.Symbol_file), library.MutatedProperties.StubsVersion, "--apex")
+		objs, versionScript := compileStubLibrary(ctx, flags, library.Properties.Stubs.Symbol_file, library.MutatedProperties.StubsVersion, "--apex")
 		library.versionScriptPath = android.OptionalPathForPath(versionScript)
 		return objs
 	}
@@ -1121,9 +1121,9 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 	var linkerDeps android.Paths
 	linkerDeps = append(linkerDeps, flags.LdFlagsDeps...)
 
-	unexportedSymbols := ctx.ExpandOptionalSource(library.Properties.Unexported_symbols_list, "unexported_symbols_list")
-	forceNotWeakSymbols := ctx.ExpandOptionalSource(library.Properties.Force_symbols_not_weak_list, "force_symbols_not_weak_list")
-	forceWeakSymbols := ctx.ExpandOptionalSource(library.Properties.Force_symbols_weak_list, "force_symbols_weak_list")
+	unexportedSymbols := library.Properties.Unexported_symbols_list.OptionalPath(ctx)
+	forceNotWeakSymbols := library.Properties.Force_symbols_not_weak_list.OptionalPath(ctx)
+	forceWeakSymbols := library.Properties.Force_symbols_weak_list.OptionalPath(ctx)
 	if !ctx.Darwin() {
 		if unexportedSymbols.Valid() {
 			ctx.PropertyErrorf("unexported_symbols_list", "Only supported on Darwin")
@@ -1346,7 +1346,7 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objec
 		}
 		exportedHeaderFlags := strings.Join(SourceAbiFlags, " ")
 		library.sAbiOutputFile = transformDumpToLinkedDump(ctx, objs.sAbiDumpFiles, soFile, fileName, exportedHeaderFlags,
-			android.OptionalPathForModuleSrc(ctx, library.symbolFileForAbiCheck(ctx)),
+			library.symbolFileForAbiCheck(ctx).OptionalPath(ctx),
 			library.Properties.Header_abi_checker.Exclude_symbol_versions,
 			library.Properties.Header_abi_checker.Exclude_symbol_tags)
 
@@ -1679,7 +1679,7 @@ func (library *libraryDecorator) buildStubs() bool {
 	return library.MutatedProperties.BuildStubs
 }
 
-func (library *libraryDecorator) symbolFileForAbiCheck(ctx ModuleContext) *string {
+func (library *libraryDecorator) symbolFileForAbiCheck(ctx ModuleContext) *android.ModuleRelativeInput {
 	if library.Properties.Header_abi_checker.Symbol_file != nil {
 		return library.Properties.Header_abi_checker.Symbol_file
 	}

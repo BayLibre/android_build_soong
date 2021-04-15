@@ -42,7 +42,7 @@ var (
 type llndkLibraryProperties struct {
 	// Relative path to the symbol map.
 	// An example file can be seen here: TODO(danalbert): Make an example.
-	Symbol_file *string
+	Symbol_file *android.ModuleRelativeInput
 
 	// Whether to export any headers as -isystem instead of -I. Mainly for use by
 	// bionic/libc.

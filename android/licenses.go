@@ -190,7 +190,7 @@ func licensesPropertyFlattener(ctx ModuleContext) {
 	// license modules have no licenses, but license_kinds must refer to license_kind modules
 	if l, ok := m.(*licenseModule); ok {
 		mergeProps(&m.base().commonProperties.Effective_licenses, ctx.ModuleName())
-		mergeProps(&m.base().commonProperties.Effective_license_text, PathsForModuleSrc(ctx, l.properties.License_text).Strings()...)
+		mergeProps(&m.base().commonProperties.Effective_license_text, l.properties.License_text.Paths(ctx).Strings()...)
 		for _, module := range ctx.GetDirectDepsWithTag(licenseKindTag) {
 			if lk, ok := module.(*licenseKindModule); ok {
 				mergeProps(&m.base().commonProperties.Effective_license_conditions, lk.properties.Conditions...)

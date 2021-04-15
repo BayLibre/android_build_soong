@@ -34,14 +34,8 @@ var (
 // This file contains the basic C/C++/assembly to .o compliation steps
 
 type BaseCompilerProperties struct {
-	// list of source files used to compile the C/C++ module.  May be .c, .cpp, or .S files.
-	// srcs may reference the outputs of other modules that produce source files like genrule
-	// or filegroup using the syntax ":module".
-	Srcs []string `android:"path,arch_variant"`
-
-	// list of source files that should not be used to build the C/C++ module.
-	// This is most useful in the arch/multilib variants to remove non-common files
-	Exclude_srcs []string `android:"path,arch_variant"`
+	// May be .c, .cpp, or .S files.
+	android.ArchVariantModuleRelativeSrcExcludes `android:"arch_variant"`
 
 	// list of module-specific flags that will be used for C and C++ compiles.
 	Cflags []string `android:"arch_variant"`
@@ -147,13 +141,8 @@ type BaseCompilerProperties struct {
 
 	Target struct {
 		Vendor, Product struct {
-			// list of source files that should only be used in vendor or
-			// product variant of the C/C++ module.
-			Srcs []string `android:"path"`
-
-			// list of source files that should not be used to build vendor
-			// or product variant of the C/C++ module.
-			Exclude_srcs []string `android:"path"`
+			// source files exclusive to vendor or product variant of the C/C++ module.
+			android.ArchVariantModuleRelativeSrcExcludes `android:"arch_variant"`
 
 			// List of additional cflags that should be used to build vendor
 			// or product variant of the C/C++ module.
@@ -164,13 +153,8 @@ type BaseCompilerProperties struct {
 			Exclude_generated_sources []string
 		}
 		Recovery struct {
-			// list of source files that should only be used in the
-			// recovery variant of the C/C++ module.
-			Srcs []string `android:"path"`
-
-			// list of source files that should not be used to
-			// build the recovery variant of the C/C++ module.
-			Exclude_srcs []string `android:"path"`
+			// source files exclusive to the recovery variant of the C/C++ module.
+			android.ArchVariantModuleRelativeSrcExcludes `android:"arch_variant"`
 
 			// List of additional cflags that should be used to build the recovery
 			// variant of the C/C++ module.
@@ -181,9 +165,8 @@ type BaseCompilerProperties struct {
 			Exclude_generated_sources []string
 		}
 		Vendor_ramdisk struct {
-			// list of source files that should not be used to
-			// build the vendor ramdisk variant of the C/C++ module.
-			Exclude_srcs []string `android:"path"`
+			// source files exclusive to the vendor_ramdisk variant of the C/C++ module.
+			android.ArchVariantModuleRelativeSrcExcludes `android:"arch_variant"`
 
 			// List of additional cflags that should be used to build the vendor ramdisk
 			// variant of the C/C++ module.
@@ -299,7 +282,7 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	tc := ctx.toolchain()
 	modulePath := android.PathForModuleSrc(ctx).String()
 
-	compiler.srcsBeforeGen = android.PathsForModuleSrcExcludes(ctx, compiler.Properties.Srcs, compiler.Properties.Exclude_srcs)
+	compiler.srcsBeforeGen = compiler.Properties.ArchVariantModuleRelativeSrcExcludes.Paths(ctx)
 	compiler.srcsBeforeGen = append(compiler.srcsBeforeGen, deps.GeneratedSources...)
 
 	CheckBadCompilerFlags(ctx, "cflags", compiler.Properties.Cflags)
@@ -561,7 +544,7 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 			"-I"+android.PathForModuleGen(ctx, "sysprop", "include").String())
 	}
 
-	if len(compiler.Properties.Srcs) > 0 {
+	if compiler.Properties.ArchVariantModuleRelativeSrcExcludes.HasSources() {
 		module := ctx.ModuleDir() + "/Android.bp:" + ctx.ModuleName()
 		if inList("-Wno-error", flags.Local.CFlags) || inList("-Wno-error", flags.Local.CppFlags) {
 			addToModuleList(ctx, modulesUsingWnoErrorKey, module)
@@ -594,18 +577,13 @@ func (compiler *baseCompiler) hasSrcExt(ext string) bool {
 			return true
 		}
 	}
-	for _, src := range compiler.Properties.Srcs {
-		if filepath.Ext(src) == ext {
-			return true
-		}
-	}
 	for _, src := range compiler.Properties.OriginalSrcs {
 		if filepath.Ext(src) == ext {
 			return true
 		}
 	}
 
-	return false
+	return compiler.Properties.ArchVariantModuleRelativeSrcExcludes.AnySourceHasExtension(ext)
 }
 
 func (compiler *baseCompiler) uniqueApexVariations() bool {

@@ -51,7 +51,7 @@ type prebuiltLinkerProperties struct {
 	// Optionally provide an import library if this is a Windows PE DLL prebuilt.
 	// This is needed only if this library is linked by other modules in build time.
 	// Only makes sense for the Windows target.
-	Windows_import_lib *string `android:"path,arch_variant"`
+	Windows_import_lib *android.ModuleRelativeInput `android:"path,arch_variant"`
 }
 
 type prebuiltLinker struct {
@@ -155,7 +155,7 @@ func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 				// Consumers of this library actually links to the import library in build
 				// time and dynamically links to the DLL in run time. i.e.
 				// a.exe <-- static link --> foo.lib <-- dynamic link --> foo.dll
-				importLibSrc := android.PathForModuleSrc(ctx, String(p.properties.Windows_import_lib))
+				importLibSrc := p.properties.Windows_import_lib.Path(ctx)
 				importLibName := p.libraryDecorator.getLibName(ctx) + ".lib"
 				importLibOutputFile := android.PathForModuleOut(ctx, importLibName)
 				implicits = append(implicits, importLibOutputFile)

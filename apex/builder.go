@@ -194,7 +194,7 @@ var (
 // a.manifest.PbOut is protobuf format for R+ devices.
 // TODO(jiyong): make this to return paths instead of directly storing the paths to apexBundle
 func (a *apexBundle) buildManifest(ctx android.ModuleContext, provideNativeLibs, requireNativeLibs []string) {
-	src := android.PathForModuleSrc(ctx, proptools.StringDefault(a.properties.Manifest, "apex_manifest.json"))
+	src := a.properties.Manifest.PathDefault(ctx, "apex_manifest.json")
 
 	// Put dependency({provide|require}NativeLibs) in apex_manifest.json
 	provideNativeLibs = android.SortedUniqueStrings(provideNativeLibs)
@@ -259,7 +259,7 @@ func (a *apexBundle) buildFileContexts(ctx android.ModuleContext) android.Output
 	if a.properties.File_contexts == nil {
 		fileContexts = android.PathForSource(ctx, "system/sepolicy/apex", ctx.ModuleName()+"-file_contexts")
 	} else {
-		fileContexts = android.PathForModuleSrc(ctx, *a.properties.File_contexts)
+		fileContexts = a.properties.File_contexts.Path(ctx)
 	}
 	if a.Platform() {
 		if matched, err := path.Match("system/sepolicy/**/*", fileContexts.String()); err != nil || !matched {
@@ -497,7 +497,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 		implicitInputs = append(implicitInputs, imageContentFile)
 
 		// Compare content.txt against allowed_files.
-		allowedFilesFile := android.PathForModuleSrc(ctx, proptools.String(a.overridableProperties.Allowed_files))
+		allowedFilesFile := a.overridableProperties.Allowed_files.Path(ctx)
 		phonyOutput := android.PathForModuleOut(ctx, a.Name()+"-diff-phony-output")
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        diffApexContentRule,
@@ -589,7 +589,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 		}
 
 		if a.properties.AndroidManifest != nil {
-			androidManifestFile := android.PathForModuleSrc(ctx, proptools.String(a.properties.AndroidManifest))
+			androidManifestFile := a.properties.AndroidManifest.Path(ctx)
 			implicitInputs = append(implicitInputs, androidManifestFile)
 			optFlags = append(optFlags, "--android_manifest "+androidManifestFile.String())
 		}

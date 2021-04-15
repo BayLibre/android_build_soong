@@ -92,7 +92,7 @@ type variableProperties struct {
 		Debuggable struct {
 			Cflags          []string
 			Cppflags        []string
-			Init_rc         []string
+			Init_rc         ModuleRelativeInputs
 			Required        []string
 			Host_required   []string
 			Target_required []string

@@ -97,8 +97,8 @@ func PythonBinaryBp2Build(ctx android.TopDownMutatorContext) {
 		// do nothing, since python_version defaults to PY3.
 	}
 
-	srcs := android.BazelLabelForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs)
-	data := android.BazelLabelForModuleSrc(ctx, m.properties.Data)
+	srcs := m.properties.ArchVariantModuleRelativeSrcExcludes.BazelLabels(ctx)
+	data := m.properties.Data.BazelLabels(ctx)
 
 	attrs := &bazelPythonBinaryAttributes{
 		Main:           main,

@@ -122,7 +122,7 @@ type BaseLinkerProperties struct {
 			Exclude_runtime_libs []string
 
 			// version script for vendor or product variant
-			Version_script *string `android:"arch_variant"`
+			Version_script *android.ModuleRelativeInput `android:"arch_variant"`
 		}
 		Recovery struct {
 			// list of shared libs that only should be used to build the recovery
@@ -192,7 +192,7 @@ type BaseLinkerProperties struct {
 	Pack_relocations *bool `android:"arch_variant"`
 
 	// local file name to pass to the linker as --version_script
-	Version_script *string `android:"path,arch_variant"`
+	Version_script *android.ModuleRelativeInput `android:"path,arch_variant"`
 
 	// list of static libs that should not be used to build this module
 	Exclude_static_libs []string `android:"arch_variant"`
@@ -509,17 +509,12 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 	// Version_script is not needed when linking stubs lib where the version
 	// script is created from the symbol map file.
 	if !linker.dynamicProperties.BuildStubs {
-		versionScript := ctx.ExpandOptionalSource(
-			linker.Properties.Version_script, "version_script")
+		versionScript := linker.Properties.Version_script.OptionalPath(ctx)
 
 		if ctx.inVendor() && linker.Properties.Target.Vendor.Version_script != nil {
-			versionScript = ctx.ExpandOptionalSource(
-				linker.Properties.Target.Vendor.Version_script,
-				"target.vendor.version_script")
+			versionScript = linker.Properties.Target.Vendor.Version_script.OptionalPath(ctx)
 		} else if ctx.inProduct() && linker.Properties.Target.Product.Version_script != nil {
-			versionScript = ctx.ExpandOptionalSource(
-				linker.Properties.Target.Product.Version_script,
-				"target.product.version_script")
+			versionScript = linker.Properties.Target.Product.Version_script.OptionalPath(ctx)
 		}
 
 		if versionScript.Valid() {

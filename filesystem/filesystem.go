@@ -54,7 +54,7 @@ type filesystemProperties struct {
 
 	// Path to the private key that avbtool will use to sign this filesystem image.
 	// TODO(jiyong): allow apex_key to be specified here
-	Avb_private_key *string `android:"path"`
+	Avb_private_key *android.ModuleRelativeInput `android:"path"`
 
 	// Hash and signing algorithm for avbtool. Default is SHA256_RSA4096.
 	Avb_algorithm *string
@@ -67,7 +67,7 @@ type filesystemProperties struct {
 	Type *string
 
 	// file_contexts file to make image. Currently, only ext4 is supported.
-	File_contexts *string `android:"path"`
+	File_contexts *android.ModuleRelativeInput `android:"path"`
 
 	// Base directory relative to root, to which deps are installed, e.g. "system". Default is "."
 	// (root).
@@ -238,7 +238,7 @@ func (f *filesystem) buildFileContexts(ctx android.ModuleContext) android.Output
 	fcBin := android.PathForModuleOut(ctx, "file_contexts.bin")
 	builder.Command().BuiltTool("sefcontext_compile").
 		FlagWithOutput("-o ", fcBin).
-		Input(android.PathForModuleSrc(ctx, proptools.String(f.properties.File_contexts)))
+		Input(f.properties.File_contexts.Path(ctx))
 	builder.Build("build_filesystem_file_contexts", fmt.Sprintf("Creating filesystem file contexts for %s", f.BaseModuleName()))
 	return fcBin.OutputPath
 }
@@ -283,14 +283,14 @@ func (f *filesystem) buildPropFile(ctx android.ModuleContext) (propFile android.
 		addPath("avb_avbtool", ctx.Config().HostToolPath(ctx, "avbtool"))
 		algorithm := proptools.StringDefault(f.properties.Avb_algorithm, "SHA256_RSA4096")
 		addStr("avb_algorithm", algorithm)
-		key := android.PathForModuleSrc(ctx, proptools.String(f.properties.Avb_private_key))
+		key := f.properties.Avb_private_key.Path(ctx)
 		addPath("avb_key_path", key)
 		addStr("avb_add_hashtree_footer_args", "--do_not_generate_fec")
 		partitionName := proptools.StringDefault(f.properties.Partition_name, f.Name())
 		addStr("partition_name", partitionName)
 	}
 
-	if proptools.String(f.properties.File_contexts) != "" {
+	if f.properties.File_contexts != nil {
 		addPath("selinux_fc", f.buildFileContexts(ctx))
 	}
 
@@ -313,7 +313,7 @@ func (f *filesystem) buildCpioImage(ctx android.ModuleContext, compressed bool) 
 			"Consider adding this to bootimg module and signing the entire boot image.")
 	}
 
-	if proptools.String(f.properties.File_contexts) != "" {
+	if f.properties.File_contexts != nil {
 		ctx.PropertyErrorf("file_contexts", "file_contexts is not supported for compressed cpio image.")
 	}
 

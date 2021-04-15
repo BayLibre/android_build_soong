@@ -45,14 +45,14 @@ type vbmetaProperties struct {
 	Stem *string
 
 	// Path to the private key that avbtool will use to sign this vbmeta image.
-	Private_key *string `android:"path"`
+	Private_key *android.ModuleRelativeInput `android:"path"`
 
 	// Algorithm that avbtool will use to sign this vbmeta image. Default is SHA256_RSA4096.
 	Algorithm *string
 
 	// File whose content will provide the rollback index. If unspecified, the rollback index
 	// is from PLATFORM_SECURITY_PATCH
-	Rollback_index_file *string `android:"path"`
+	Rollback_index_file *android.ModuleRelativeInput `android:"path"`
 
 	// Rollback index location of this vbmeta image. Must be 0, 1, 2, etc. Default is 0.
 	Rollback_index_location *int64
@@ -75,12 +75,12 @@ type chainedPartitionProperties struct {
 
 	// Path to the public key that the chained partition is signed with. If this is specified,
 	// private_key is ignored.
-	Public_key *string `android:"path"`
+	Public_key *android.ModuleRelativeInput `android:"path"`
 
 	// Path to the private key that the chained partition is signed with. If this is specified,
 	// and public_key is not specified, a public key is extracted from this private key and
 	// the extracted public key is embedded in the vbmeta image.
-	Private_key *string `android:"path"`
+	Private_key *android.ModuleRelativeInput `android:"path"`
 }
 
 // vbmeta is the partition image that has the verification information for other partitions.
@@ -121,7 +121,7 @@ func (v *vbmeta) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	builder := android.NewRuleBuilder(pctx, ctx)
 	cmd := builder.Command().BuiltTool("avbtool").Text("make_vbmeta_image")
 
-	key := android.PathForModuleSrc(ctx, proptools.String(v.properties.Private_key))
+	key := v.properties.Private_key.Path(ctx)
 	cmd.FlagWithInput("--key ", key)
 
 	algorithm := proptools.StringDefault(v.properties.Algorithm, "SHA256_RSA4096")
@@ -166,7 +166,7 @@ func (v *vbmeta) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 		var publicKey android.Path
 		if cp.Public_key != nil {
-			publicKey = android.PathForModuleSrc(ctx, proptools.String(cp.Public_key))
+			publicKey = cp.Public_key.Path(ctx)
 		} else {
 			publicKey = extractedPublicKeys[name]
 		}
@@ -192,7 +192,7 @@ func (v *vbmeta) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 func (v *vbmeta) rollbackIndexCommand(ctx android.ModuleContext) string {
 	var cmd string
 	if v.properties.Rollback_index_file != nil {
-		f := android.PathForModuleSrc(ctx, proptools.String(v.properties.Rollback_index_file))
+		f := v.properties.Rollback_index_file.Path(ctx)
 		cmd = "cat " + f.String()
 	} else {
 		cmd = "date -d 'TZ=\"GMT\" " + ctx.Config().PlatformSecurityPatch() + "' +%s"
@@ -223,7 +223,7 @@ func (v *vbmeta) extractPublicKeys(ctx android.ModuleContext) map[string]android
 			continue
 		}
 
-		privateKeyFile := android.PathForModuleSrc(ctx, proptools.String(cp.Private_key))
+		privateKeyFile := cp.Private_key.Path(ctx)
 		publicKeyFile := android.PathForModuleOut(ctx, name+".avbpubkey").OutputPath
 
 		builder.Command().

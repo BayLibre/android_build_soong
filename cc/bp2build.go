@@ -72,8 +72,7 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 	var copts bazel.StringListAttribute
 
 	hdrsAndSrcs := func(baseCompilerProps *BaseCompilerProperties) (bazel.LabelList, bazel.LabelList) {
-		srcsList := android.BazelLabelForModuleSrcExcludes(
-			ctx, baseCompilerProps.Srcs, baseCompilerProps.Exclude_srcs)
+		srcsList := baseCompilerProps.ArchVariantModuleRelativeSrcExcludes.BazelLabels(ctx)
 		hdrsList := android.BazelLabelForModuleSrc(ctx, srcsList.LooseHdrsGlobs(headerExts))
 		return hdrsList, srcsList
 	}

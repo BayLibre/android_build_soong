@@ -67,14 +67,16 @@ type headerProperties struct {
 	// Install path within the sysroot. This is relative to usr/include.
 	To *string
 
-	// List of headers to install. Glob compatible. Common case is "include/**/*.h".
-	Srcs []string `android:"path"`
-
-	// Source paths that should be excluded from the srcs glob.
-	Exclude_srcs []string `android:"path"`
+	// List of headers to install.
+	android.ModuleRelativeSrcExcludes
 
 	// Path to the NOTICE file associated with the headers.
-	License *string `android:"path"`
+	License *android.ModuleRelativeInput `android:"path"`
+
+	// True if this API is not yet ready to be shipped in the NDK. It will be
+	// available in the platform for testing, but will be excluded from the
+	// sysroot provided to the NDK proper.
+	Draft bool
 }
 
 type headerModule struct {
@@ -119,13 +121,13 @@ func getHeaderInstallDir(ctx android.ModuleContext, header android.Path, from st
 }
 
 func (m *headerModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	if String(m.properties.License) == "" {
+	if m.properties.License == nil {
 		ctx.PropertyErrorf("license", "field is required")
 	}
 
-	m.licensePath = android.PathForModuleSrc(ctx, String(m.properties.License))
+	m.licensePath = m.properties.License.Path(ctx)
 
-	srcFiles := android.PathsForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs)
+	srcFiles := m.properties.ModuleRelativeSrcExcludes.Paths(ctx)
 	for _, header := range srcFiles {
 		installDir := getHeaderInstallDir(ctx, header, String(m.properties.From),
 			String(m.properties.To))
@@ -140,7 +142,7 @@ func (m *headerModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	if len(m.installPaths) == 0 {
-		ctx.ModuleErrorf("srcs %q matched zero files", m.properties.Srcs)
+		ctx.PropertyErrorf("srcs", "srcs %s matched zero files", m.properties.ModuleRelativeSrcExcludes)
 	}
 }
 

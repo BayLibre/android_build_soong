@@ -49,9 +49,9 @@ type apexKey struct {
 type apexKeyProperties struct {
 	// Path or module to the public key file in avbpubkey format. Installed to the device.
 	// Base name of the file is used as the ID for the key.
-	Public_key *string `android:"path"`
+	Public_key *android.ModuleRelativeInput `android:"path"`
 	// Path or module to the private key file in pem format. Used to sign APEXs.
-	Private_key *string `android:"path"`
+	Private_key *android.ModuleRelativeInput `android:"path"`
 
 	// Whether this key is installable to one of the partitions. Defualt: true.
 	Installable *bool
@@ -72,22 +72,22 @@ func (m *apexKey) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// If the keys are from other modules (i.e. :module syntax) respect it.
 	// Otherwise, try to locate the key files in the default cert dir or
 	// in the local module dir
-	if android.SrcIsModule(String(m.properties.Public_key)) != "" {
-		m.publicKeyFile = android.PathForModuleSrc(ctx, String(m.properties.Public_key))
+	if m.properties.Public_key.IsModule() {
+		m.publicKeyFile = m.properties.Public_key.Path(ctx)
 	} else {
-		m.publicKeyFile = ctx.Config().ApexKeyDir(ctx).Join(ctx, String(m.properties.Public_key))
+		m.publicKeyFile = ctx.Config().ApexKeyDir(ctx).Join(ctx, m.properties.Public_key.String())
 		// If not found, fall back to the local key pairs
 		if !android.ExistentPathForSource(ctx, m.publicKeyFile.String()).Valid() {
-			m.publicKeyFile = android.PathForModuleSrc(ctx, String(m.properties.Public_key))
+			m.publicKeyFile = m.properties.Public_key.Path(ctx)
 		}
 	}
 
-	if android.SrcIsModule(String(m.properties.Private_key)) != "" {
-		m.privateKeyFile = android.PathForModuleSrc(ctx, String(m.properties.Private_key))
+	if m.properties.Private_key.IsModule() {
+		m.privateKeyFile = m.properties.Private_key.Path(ctx)
 	} else {
-		m.privateKeyFile = ctx.Config().ApexKeyDir(ctx).Join(ctx, String(m.properties.Private_key))
+		m.privateKeyFile = ctx.Config().ApexKeyDir(ctx).Join(ctx, m.properties.Private_key.String())
 		if !android.ExistentPathForSource(ctx, m.privateKeyFile.String()).Valid() {
-			m.privateKeyFile = android.PathForModuleSrc(ctx, String(m.properties.Private_key))
+			m.privateKeyFile = m.properties.Private_key.Path(ctx)
 		}
 	}
 

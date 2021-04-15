@@ -235,19 +235,19 @@ type ApexFileProperties struct {
 	// This cannot be marked as `android:"arch_variant"` because the `prebuilt_apex` is only mutated
 	// for android_common. That is so that it will have the same arch variant as, and so be compatible
 	// with, the source `apex` module type that it replaces.
-	Src  *string `android:"path"`
+	Src  *android.ModuleRelativeInput `android:"path"`
 	Arch struct {
 		Arm struct {
-			Src *string `android:"path"`
+			Src *android.ModuleRelativeInput `android:"path"`
 		}
 		Arm64 struct {
-			Src *string `android:"path"`
+			Src *android.ModuleRelativeInput `android:"path"`
 		}
 		X86 struct {
-			Src *string `android:"path"`
+			Src *android.ModuleRelativeInput `android:"path"`
 		}
 		X86_64 struct {
-			Src *string `android:"path"`
+			Src *android.ModuleRelativeInput `android:"path"`
 		}
 	}
 }
@@ -267,16 +267,16 @@ func (p *ApexFileProperties) prebuiltApexSelector(ctx android.BaseModuleContext,
 	var src string
 	switch multiTargets[0].Arch.ArchType {
 	case android.Arm:
-		src = String(p.Arch.Arm.Src)
+		src = p.Arch.Arm.Src.String()
 	case android.Arm64:
-		src = String(p.Arch.Arm64.Src)
+		src = p.Arch.Arm64.Src.String()
 	case android.X86:
-		src = String(p.Arch.X86.Src)
+		src = p.Arch.X86.Src.String()
 	case android.X86_64:
-		src = String(p.Arch.X86_64.Src)
+		src = p.Arch.X86_64.Src.String()
 	}
 	if src == "" {
-		src = String(p.Src)
+		src = p.Src.String()
 	}
 
 	if src == "" {
@@ -375,7 +375,7 @@ func PrebuiltFactory() android.Module {
 		}
 
 		// Add a source reference to retrieve the selected apex from the selector module.
-		module.selectedApexProperties.Selected_apex = proptools.StringPtr(apexFileSource)
+		module.selectedApexProperties.Selected_apex = android.NewModuleRelativeInput(apexFileSource)
 	})
 
 	return module
@@ -397,10 +397,10 @@ func createApexSelectorModule(ctx android.LoadHookContext, name string, apexFile
 func createDeapexerModule(ctx android.LoadHookContext, deapexerName string, apexFileSource string, deapexerProperties *DeapexerProperties) {
 	props := struct {
 		Name          *string
-		Selected_apex *string
+		Selected_apex *android.ModuleRelativeInput
 	}{
 		Name:          proptools.StringPtr(deapexerName),
-		Selected_apex: proptools.StringPtr(apexFileSource),
+		Selected_apex: android.NewModuleRelativeInput(apexFileSource),
 	}
 	ctx.CreateModule(privateDeapexerFactory,
 		&props,
@@ -466,7 +466,7 @@ func (p *Prebuilt) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 
 func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// TODO(jungjw): Check the key validity.
-	p.inputApex = android.OptionalPathForModuleSrc(ctx, p.selectedApexProperties.Selected_apex).Path()
+	p.inputApex = p.selectedApexProperties.Selected_apex.Path(ctx)
 	p.installDir = android.PathForModuleInstall(ctx, "apex")
 	p.installFilename = p.InstallFilename()
 	if !strings.HasSuffix(p.installFilename, imageApexSuffix) {
@@ -685,7 +685,7 @@ func apexSetFactory() android.Module {
 		}
 
 		// After passing the arch specific src properties to the creating the apex selector module
-		module.selectedApexProperties.Selected_apex = proptools.StringPtr(apexFileSource)
+		module.selectedApexProperties.Selected_apex = android.NewModuleRelativeInput(apexFileSource)
 	})
 
 	return module
@@ -724,7 +724,7 @@ func (a *ApexSet) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		ctx.ModuleErrorf("filename should end in %s for apex_set", imageApexSuffix)
 	}
 
-	inputApex := android.OptionalPathForModuleSrc(ctx, a.selectedApexProperties.Selected_apex).Path()
+	inputApex := a.selectedApexProperties.Selected_apex.Path(ctx)
 	a.outputApex = android.PathForModuleOut(ctx, a.installFilename)
 	ctx.Build(pctx, android.BuildParams{
 		Rule:   android.Cp,

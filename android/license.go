@@ -41,7 +41,7 @@ type licenseProperties struct {
 	// Specifies a short copyright notice to use for the license.
 	Copyright_notice *string
 	// Specifies the path or label for the text of the license.
-	License_text []string `android:"path"`
+	License_text ModuleRelativeInputs `android:"path"`
 	// Specifies the package name to which the license applies.
 	Package_name *string
 	// Specifies where this license can be used

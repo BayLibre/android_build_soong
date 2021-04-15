@@ -19,7 +19,6 @@ import (
 	"android/soong/etc"
 
 	"github.com/google/blueprint"
-	"github.com/google/blueprint/proptools"
 )
 
 // prebuilt_etc_xml installs an xml file under <partition>/etc/<subdir>.
@@ -63,7 +62,7 @@ func registerXmlBuildComponents(ctx android.RegistrationContext) {
 
 type prebuiltEtcXmlProperties struct {
 	// Optional DTD that will be used to validate the xml file.
-	Schema *string `android:"path"`
+	Schema *android.ModuleRelativeInput `android:"path"`
 }
 
 type prebuiltEtcXml struct {
@@ -80,7 +79,7 @@ func (p *prebuiltEtcXml) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 	p.PrebuiltEtc.GenerateAndroidBuildActions(ctx)
 
 	if p.properties.Schema != nil {
-		schema := android.PathForModuleSrc(ctx, proptools.String(p.properties.Schema))
+		schema := p.properties.Schema.Path(ctx)
 
 		switch schema.Ext() {
 		case ".dtd":

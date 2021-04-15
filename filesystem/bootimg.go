@@ -43,13 +43,13 @@ type bootimgProperties struct {
 	Stem *string
 
 	// Path to the linux kernel prebuilt file
-	Kernel_prebuilt *string `android:"arch_variant,path"`
+	Kernel_prebuilt *android.ModuleRelativeInput `android:"arch_variant,path"`
 
 	// Filesystem module that is used as ramdisk
 	Ramdisk_module *string
 
 	// Path to the device tree blob (DTB) prebuilt file to add to this boot image
-	Dtb_prebuilt *string `android:"arch_variant,path"`
+	Dtb_prebuilt *android.ModuleRelativeInput `android:"arch_variant,path"`
 
 	// Header version number. Must be set to one of the version numbers that are currently
 	// supported. Refer to
@@ -65,7 +65,7 @@ type bootimgProperties struct {
 
 	// File that contains bootconfig parameters. This can be set only when `vendor_boot` is true
 	// and `header_version` is greater than or equal to 4.
-	Bootconfig *string `android:"arch_variant,path"`
+	Bootconfig *android.ModuleRelativeInput `android:"arch_variant,path"`
 
 	// When set to true, sign the image with avbtool. Default is false.
 	Use_avb *bool
@@ -75,7 +75,7 @@ type bootimgProperties struct {
 
 	// Path to the private key that avbtool will use to sign this filesystem image.
 	// TODO(jiyong): allow apex_key to be specified here
-	Avb_private_key *string `android:"path"`
+	Avb_private_key *android.ModuleRelativeInput `android:"path"`
 
 	// Hash and signing algorithm for avbtool. Default is SHA256_RSA4096.
 	Avb_algorithm *string
@@ -131,25 +131,25 @@ func (b *bootimg) buildBootImage(ctx android.ModuleContext, vendor bool) android
 	builder := android.NewRuleBuilder(pctx, ctx)
 	cmd := builder.Command().BuiltTool("mkbootimg")
 
-	kernel := proptools.String(b.properties.Kernel_prebuilt)
-	if vendor && kernel != "" {
+	kernel := b.properties.Kernel_prebuilt
+	if vendor && kernel != nil {
 		ctx.PropertyErrorf("kernel_prebuilt", "vendor_boot partition can't have kernel")
 		return output
 	}
-	if !vendor && kernel == "" {
+	if !vendor && kernel == nil {
 		ctx.PropertyErrorf("kernel_prebuilt", "boot partition must have kernel")
 		return output
 	}
-	if kernel != "" {
-		cmd.FlagWithInput("--kernel ", android.PathForModuleSrc(ctx, kernel))
+	if kernel != nil {
+		cmd.FlagWithInput("--kernel ", kernel.Path(ctx))
 	}
 
-	dtbName := proptools.String(b.properties.Dtb_prebuilt)
-	if dtbName == "" {
+	dtbPrebuilt := b.properties.Dtb_prebuilt
+	if dtbPrebuilt == nil {
 		ctx.PropertyErrorf("dtb_prebuilt", "must be set")
 		return output
 	}
-	dtb := android.PathForModuleSrc(ctx, dtbName)
+	dtb := dtbPrebuilt.Path(ctx)
 	cmd.FlagWithInput("--dtb ", dtb)
 
 	cmdline := proptools.String(b.properties.Cmdline)
@@ -194,8 +194,8 @@ func (b *bootimg) buildBootImage(ctx android.ModuleContext, vendor bool) android
 		return output
 	}
 
-	bootconfig := proptools.String(b.properties.Bootconfig)
-	if bootconfig != "" {
+	bootconfig := b.properties.Bootconfig
+	if bootconfig != nil {
 		if !vendor {
 			ctx.PropertyErrorf("bootconfig", "requires vendor_boot: true")
 			return output
@@ -204,7 +204,7 @@ func (b *bootimg) buildBootImage(ctx android.ModuleContext, vendor bool) android
 			ctx.PropertyErrorf("bootconfig", "requires header_version: 4 or later")
 			return output
 		}
-		cmd.FlagWithInput("--vendor_bootconfig ", android.PathForModuleSrc(ctx, bootconfig))
+		cmd.FlagWithInput("--vendor_bootconfig ", bootconfig.Path(ctx))
 	}
 
 	flag := "--output "
@@ -247,7 +247,7 @@ func (b *bootimg) buildPropFile(ctx android.ModuleContext) (propFile android.Out
 	addPath("avb_avbtool", ctx.Config().HostToolPath(ctx, "avbtool"))
 	algorithm := proptools.StringDefault(b.properties.Avb_algorithm, "SHA256_RSA4096")
 	addStr("avb_algorithm", algorithm)
-	key := android.PathForModuleSrc(ctx, proptools.String(b.properties.Avb_private_key))
+	key := b.properties.Avb_private_key.Path(ctx)
 	addPath("avb_key_path", key)
 	addStr("avb_add_hash_footer_args", "") // TODO(jiyong): add --rollback_index
 	partitionName := proptools.StringDefault(b.properties.Partition_name, b.Name())

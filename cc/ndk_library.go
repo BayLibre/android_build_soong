@@ -68,7 +68,7 @@ var (
 type libraryProperties struct {
 	// Relative path to the symbol map.
 	// An example file can be seen here: TODO(danalbert): Make an example.
-	Symbol_file *string
+	Symbol_file *android.ModuleRelativeInput
 
 	// The first API level a library was available. A library will be generated
 	// for every API level beginning with this one.
@@ -204,12 +204,12 @@ func (stub *stubDecorator) compilerFlags(ctx ModuleContext, flags Flags, deps Pa
 	return addStubLibraryCompilerFlags(flags)
 }
 
-func compileStubLibrary(ctx ModuleContext, flags Flags, symbolFile, apiLevel, genstubFlags string) (Objects, android.ModuleGenPath) {
+func compileStubLibrary(ctx ModuleContext, flags Flags, symbolFile *android.ModuleRelativeInput, apiLevel, genstubFlags string) (Objects, android.ModuleGenPath) {
 	arch := ctx.Arch().ArchType.String()
 
 	stubSrcPath := android.PathForModuleGen(ctx, "stub.c")
 	versionScriptPath := android.PathForModuleGen(ctx, "stub.map")
-	symbolFilePath := android.PathForModuleSrc(ctx, symbolFile)
+	symbolFilePath := symbolFile.Path(ctx)
 	apiLevelsJson := android.GetApiLevelsJson(ctx)
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        genStubSrc,
@@ -230,9 +230,9 @@ func compileStubLibrary(ctx ModuleContext, flags Flags, symbolFile, apiLevel, ge
 	return compileObjs(ctx, flagsToBuilderFlags(flags), subdir, srcs, nil, nil), versionScriptPath
 }
 
-func parseSymbolFileForCoverage(ctx ModuleContext, symbolFile string) android.ModuleOutPath {
+func parseSymbolFileForCoverage(ctx ModuleContext, symbolFile *android.ModuleRelativeInput) android.ModuleOutPath {
 	apiLevelsJson := android.GetApiLevelsJson(ctx)
-	symbolFilePath := android.PathForModuleSrc(ctx, symbolFile)
+	symbolFilePath := symbolFile.Path(ctx)
 	outputFileName := strings.Split(symbolFilePath.Base(), ".")[0]
 	parsedApiCoveragePath := android.PathForModuleOut(ctx, outputFileName+".xml")
 	ctx.Build(pctx, android.BuildParams{
@@ -249,7 +249,7 @@ func parseSymbolFileForCoverage(ctx ModuleContext, symbolFile string) android.Mo
 }
 
 func (c *stubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
-	if !strings.HasSuffix(String(c.properties.Symbol_file), ".map.txt") {
+	if !strings.HasSuffix(c.properties.Symbol_file.String(), ".map.txt") {
 		ctx.PropertyErrorf("symbol_file", "must end with .map.txt")
 	}
 
@@ -263,12 +263,11 @@ func (c *stubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) O
 		return Objects{}
 	}
 
-	symbolFile := String(c.properties.Symbol_file)
-	objs, versionScript := compileStubLibrary(ctx, flags, symbolFile,
+	objs, versionScript := compileStubLibrary(ctx, flags, c.properties.Symbol_file,
 		c.apiLevel.String(), "")
 	c.versionScriptPath = versionScript
 	if c.apiLevel.IsCurrent() && ctx.PrimaryArch() {
-		c.parsedCoverageXmlPath = parseSymbolFileForCoverage(ctx, symbolFile)
+		c.parsedCoverageXmlPath = parseSymbolFileForCoverage(ctx, c.properties.Symbol_file)
 	}
 	return objs
 }

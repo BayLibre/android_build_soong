@@ -57,7 +57,7 @@ func vendorPublicLibraries(config android.Config) *[]string {
 //
 type vendorPublicLibraryProperties struct {
 	// Relative path to the symbol map.
-	Symbol_file *string
+	Symbol_file *android.ModuleRelativeInput
 
 	// Whether the system library uses symbol versions.
 	Unversioned *bool
@@ -103,7 +103,7 @@ func (stub *vendorPublicLibraryStubDecorator) compilerFlags(ctx ModuleContext, f
 }
 
 func (stub *vendorPublicLibraryStubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) Objects {
-	objs, versionScript := compileStubLibrary(ctx, flags, String(stub.Properties.Symbol_file), "current", "")
+	objs, versionScript := compileStubLibrary(ctx, flags, stub.Properties.Symbol_file, "current", "")
 	stub.versionScriptPath = versionScript
 	return objs
 }

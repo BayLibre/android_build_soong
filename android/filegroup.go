@@ -69,10 +69,7 @@ func FilegroupBp2Build(ctx TopDownMutatorContext) {
 }
 
 type fileGroupProperties struct {
-	// srcs lists files that will be included in this filegroup
-	Srcs []string `android:"path"`
-
-	Exclude_srcs []string `android:"path"`
+	ModuleRelativeSrcExcludes
 
 	// The base path to the files.  May be used by other modules to determine which portion
 	// of the path to use.  For example, when a filegroup is used as data in a cc_test rule,

@@ -355,6 +355,69 @@ func ExistentPathsForSources(ctx PathContext, paths []string) Paths {
 	return ret
 }
 
+// ModuleRelativeInput can be used for module easy access to Path expansion
+//   path relative to the module directory
+//   glob using go glob syntax, relative to the module directory
+//   other modules with syntax ":<other-module>{.tag}"
+type ModuleRelativeInput string
+
+func NewModuleRelativeInput(s string) *ModuleRelativeInput {
+	i := ModuleRelativeInput(s)
+
+	return &i
+}
+
+func (i *ModuleRelativeInput) String() string {
+	if i == nil {
+		return ""
+	}
+	return string(*i)
+}
+
+// Path returns *one* path corresponding to i
+func (i *ModuleRelativeInput) Path(ctx ModuleMissingDepsPathContext) Path {
+	return PathForModuleSrc(ctx, i.String())
+}
+
+// OptionalPath returns *one* path corresponding to i, if set, or an empty OptionalPath
+func (i *ModuleRelativeInput) OptionalPath(ctx ModuleMissingDepsPathContext) OptionalPath {
+	if i == nil {
+		return OptionalPath{}
+	}
+	return OptionalPathForPath(i.Path(ctx))
+}
+
+// PathWithDefault returns *one* path corresponding to i, if set, or an empty OptionalPath
+func (i *ModuleRelativeInput) PathDefault(ctx ModuleMissingDepsPathContext, def ModuleRelativeInput) Path {
+	if i == nil {
+		in := &def
+		return in.Path(ctx)
+	}
+	return i.Path(ctx)
+}
+
+// IsModule returns whether this ModuleRelativeInput is a reference to a module.
+func (i *ModuleRelativeInput) IsModule() bool {
+	return SrcIsModule(i.String()) != ""
+}
+
+// ModuleRelativeInputs can be used for module for easy access to Path expansion.
+// Valid inputs:
+//   path relative to the module directory
+//   glob using go glob syntax
+//   other modules with syntax ":<other-module>{.tag}"
+type ModuleRelativeInputs []string
+
+// Paths returns Paths containing the resolved references in paths, relative to the local source
+// directory. Missing dependencies will be collected or throw an error based on
+// ctx.Config().AllowDependencies().
+// Properties passed as the paths argument should have been annotated with struct tag
+// `android:"path"` so that dependencies on SourceFileProducer modules will have already been handled by the
+// path_deps mutator.
+func (i ModuleRelativeInputs) Paths(ctx ModuleMissingDepsPathContext) Paths {
+	return PathsForModuleSrc(ctx, i)
+}
+
 // PathsForModuleSrc returns a Paths{} containing the resolved references in paths:
 // * filepath, relative to local module directory, resolves as a filepath relative to the local
 //   source directory
@@ -372,6 +435,72 @@ func ExistentPathsForSources(ctx PathContext, paths []string) Paths {
 //   * otherwise, a ModuleError is thrown.
 func PathsForModuleSrc(ctx ModuleMissingDepsPathContext, paths []string) Paths {
 	return PathsForModuleSrcExcludes(ctx, paths, nil)
+}
+
+type ModuleRelativeSrcExcludes struct {
+	// inputs to include:
+	//  * paths relative to the module directory
+	//  * globs relative to the module directory
+	//  * references to other modules Using the syntax ":module", to reference the outputs of other
+	Srcs []string `android:"path"`
+	// inputs to exclude, relative to the module directory.
+	//  * paths relative to the module directory
+	//  * references to other modules Using the syntax ":module", to reference the outputs of other
+	Exclude_srcs []string `android:"path"`
+}
+
+func (i ModuleRelativeSrcExcludes) String() string {
+	return fmt.Sprintf("Srcs: %q, Excluding %q", i.Srcs, i.Exclude_srcs)
+}
+
+// Paths returns Paths containing the resolved paths, relative to the local source
+// directory. Missing dependencies will be collected or throw an error based on
+// ctx.Config().AllowDependencies().
+// Properties passed as the paths argument should have been annotated with struct tag
+// `android:"path"` so that dependencies on SourceFileProducer modules will have already been handled by the
+// path_deps mutator.
+func (i ModuleRelativeSrcExcludes) Paths(ctx ModuleMissingDepsPathContext) Paths {
+	return PathsForModuleSrcExcludes(ctx, i.Srcs, i.Exclude_srcs)
+}
+
+// ArchvariantModuleRelativeSrcExcludes contains both a Srcs and Exclude_srcs path property that
+// supports arch variants.
+type ArchVariantModuleRelativeSrcExcludes struct {
+	// inputs to include:
+	//  * paths relative to the module directory
+	//  * globs relative to the module directory
+	//  * references to other modules Using the syntax ":module", to reference the outputs of other
+	//    modules that produce source files (e.g. filegroup or genrule).
+	Srcs []string `android:"path,arch_variant"`
+	// inputs to exclude, relative to the module directory.
+	//  * paths relative to the module directory
+	//  * references to other modules Using the syntax ":module", to reference the outputs of other
+	Exclude_srcs []string `android:"path,arch_variant"`
+}
+
+// HasSources whether any Srcs are specified.
+func (i ArchVariantModuleRelativeSrcExcludes) HasSources() bool {
+	return len(i.Srcs) > 0
+}
+
+// SourceHasExtension returns whether any Srcs have the specified extension.
+func (i ArchVariantModuleRelativeSrcExcludes) AnySourceHasExtension(ext string) bool {
+	for _, src := range i.Srcs {
+		if filepath.Ext(src) == ext {
+			return true
+		}
+	}
+	return false
+}
+
+// Paths returns Paths containing the resolved references in paths, relative to the local source
+// directory. Missing dependencies will be collected or throw an error based on
+// ctx.Config().AllowDependencies().
+// Properties passed as the paths argument should have been annotated with struct tag
+// `android:"path"` so that dependencies on SourceFileProducer modules will have already been handled by the
+// path_deps mutator.
+func (i ArchVariantModuleRelativeSrcExcludes) Paths(ctx ModuleMissingDepsPathContext) Paths {
+	return PathsForModuleSrcExcludes(ctx, i.Srcs, i.Exclude_srcs)
 }
 
 // PathsForModuleSrcExcludes returns a Paths{} containing the resolved references in paths, minus

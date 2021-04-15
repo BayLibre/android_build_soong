@@ -39,15 +39,17 @@ type TestOptions struct {
 type TestProperties struct {
 	// the name of the test configuration (for example "AndroidTest.xml") that should be
 	// installed with the module.
+	// TODO(eakammer)
 	Test_config *string `android:"path,arch_variant"`
 
 	// the name of the test configuration template (for example "AndroidTestTemplate.xml") that
 	// should be installed with the module.
+	// TODO(eakammer)
 	Test_config_template *string `android:"path,arch_variant"`
 
 	// list of files or filegroup modules that provide data that should be installed alongside
 	// the test
-	Data []string `android:"path,arch_variant"`
+	Data android.ModuleRelativeInputs `android:"path,arch_variant"`
 
 	// list of java modules that provide data that should be installed alongside the test.
 	Java_data []string
@@ -82,7 +84,7 @@ func (test *testDecorator) install(ctx android.ModuleContext, file android.Path)
 
 	test.binaryDecorator.pythonInstaller.install(ctx, file)
 
-	dataSrcPaths := android.PathsForModuleSrc(ctx, test.testProperties.Data)
+	dataSrcPaths := test.testProperties.Data.Paths(ctx)
 
 	for _, dataSrcPath := range dataSrcPaths {
 		test.data = append(test.data, android.DataPath{SrcPath: dataSrcPath})

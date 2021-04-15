@@ -42,7 +42,7 @@ type TestOptions struct {
 	Test_suite_tag []string
 
 	// a list of extra test configuration files that should be installed with the module.
-	Extra_test_configs []string `android:"path,arch_variant"`
+	Extra_test_configs android.ModuleRelativeInputs `android:"path,arch_variant"`
 
 	// If the test is a hostside(no device required) unittest that shall be run during presubmit check.
 	Unit_test *bool
@@ -60,7 +60,7 @@ type TestBinaryProperties struct {
 
 	// list of files or filegroup modules that provide data that should be installed alongside
 	// the test
-	Data []string `android:"path,arch_variant"`
+	Data android.ModuleRelativeInputs `android:"path,arch_variant"`
 
 	// list of shared library modules that should be installed alongside the test
 	Data_libs []string `android:"arch_variant"`
@@ -404,7 +404,7 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 	test.testConfig = tradefed.AutoGenNativeTestConfig(ctx, test.Properties.Test_config,
 		test.Properties.Test_config_template, test.Properties.Test_suites, configs, test.Properties.Auto_gen_config, testInstallBase)
 
-	test.extraTestConfigs = android.PathsForModuleSrc(ctx, test.Properties.Test_options.Extra_test_configs)
+	test.extraTestConfigs = test.Properties.Test_options.Extra_test_configs.Paths(ctx)
 
 	test.binaryDecorator.baseInstaller.dir = "nativetest"
 	test.binaryDecorator.baseInstaller.dir64 = "nativetest64"
@@ -481,7 +481,7 @@ func NewTestLibrary(hod android.HostOrDeviceSupported) *Module {
 type BenchmarkProperties struct {
 	// list of files or filegroup modules that provide data that should be installed alongside
 	// the test
-	Data []string `android:"path"`
+	Data android.ModuleRelativeInputs `android:"path"`
 
 	// list of compatibility suites (for example "cts", "vts") that the module should be
 	// installed into.
@@ -534,7 +534,7 @@ func (benchmark *benchmarkDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps
 }
 
 func (benchmark *benchmarkDecorator) install(ctx ModuleContext, file android.Path) {
-	benchmark.data = android.PathsForModuleSrc(ctx, benchmark.Properties.Data)
+	benchmark.data = benchmark.Properties.Data.Paths(ctx)
 
 	var configs []tradefed.Config
 	if Bool(benchmark.Properties.Require_root) {

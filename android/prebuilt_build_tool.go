@@ -22,10 +22,10 @@ func init() {
 
 type prebuiltBuildToolProperties struct {
 	// Source file to be executed for this build tool
-	Src *string `android:"path,arch_variant"`
+	Src *ModuleRelativeInput `android:"path,arch_variant"`
 
 	// Extra files that should trigger rules using this tool to rebuild
-	Deps []string `android:"path,arch_variant"`
+	Deps ModuleRelativeInputs `android:"path,arch_variant"`
 
 	// Create a make variable with the specified name that contains the path to
 	// this prebuilt built tool, relative to the root of the source tree.
@@ -58,7 +58,7 @@ func (t *prebuiltBuildTool) DepsMutator(ctx BottomUpMutatorContext) {
 func (t *prebuiltBuildTool) GenerateAndroidBuildActions(ctx ModuleContext) {
 	sourcePath := t.prebuilt.SingleSourcePath(ctx)
 	installedPath := PathForModuleOut(ctx, t.BaseModuleName())
-	deps := PathsForModuleSrc(ctx, t.properties.Deps)
+	deps := t.properties.Deps.Paths(ctx)
 
 	var fromPath = sourcePath.String()
 	if !filepath.IsAbs(fromPath) {

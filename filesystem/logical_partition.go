@@ -72,7 +72,7 @@ type partitionProperties struct {
 	Name *string
 
 	// Filesystem that is placed on the partition
-	Filesystem *string `android:"path"`
+	Filesystem *android.ModuleRelativeInput `android:"path"`
 }
 
 // logical_partition is a partition image which has one or more logical partitions in it.
@@ -190,7 +190,7 @@ func (l *logicalPartition) GenerateAndroidBuildActions(ctx android.ModuleContext
 // Add a rule that converts the filesystem for the given partition to the given rule builder. The
 // path to the sparse file and the text file having the size of the partition are returned.
 func sparseFilesystem(ctx android.ModuleContext, p partitionProperties, builder *android.RuleBuilder) (sparseImg android.OutputPath, sizeTxt android.OutputPath) {
-	img := android.PathForModuleSrc(ctx, proptools.String(p.Filesystem))
+	img := p.Filesystem.Path(ctx)
 	name := proptools.String(p.Name)
 	sparseImg = android.PathForModuleOut(ctx, name+".img").OutputPath
 

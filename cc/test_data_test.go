@@ -161,7 +161,7 @@ type testDataTest struct {
 	android.ModuleBase
 	data       android.Paths
 	Properties struct {
-		Data []string `android:"path"`
+		Data android.ModuleRelativeInputs `android:"path"`
 	}
 }
 
@@ -173,5 +173,5 @@ func newTest() android.Module {
 }
 
 func (test *testDataTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	test.data = android.PathsForModuleSrc(ctx, test.Properties.Data)
+	test.data = test.Properties.Data.Paths(ctx)
 }

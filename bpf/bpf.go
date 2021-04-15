@@ -57,7 +57,7 @@ type BpfModule interface {
 }
 
 type BpfProperties struct {
-	Srcs         []string `android:"path"`
+	Srcs         android.ModuleRelativeInputs `android:"path"`
 	Cflags       []string
 	Include_dirs []string
 }
@@ -95,7 +95,7 @@ func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	cflags = append(cflags, bpf.properties.Cflags...)
 
-	srcs := android.PathsForModuleSrc(ctx, bpf.properties.Srcs)
+	srcs := bpf.properties.Srcs.Paths(ctx)
 
 	for _, src := range srcs {
 		obj := android.ObjPathWithExt(ctx, "", src, "o")

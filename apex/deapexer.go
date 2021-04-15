@@ -55,7 +55,7 @@ type SelectedApexProperties struct {
 	// Is tagged as `android:"path"` because it will usually contain a string of the form ":<module>"
 	// and is tagged as "`blueprint:"mutate"` because it is only initialized in a LoadHook not an
 	// Android.bp file.
-	Selected_apex *string `android:"path" blueprint:"mutated"`
+	Selected_apex *android.ModuleRelativeInput `android:"path" blueprint:"mutated"`
 }
 
 type Deapexer struct {
@@ -84,7 +84,7 @@ func (p *Deapexer) DepsMutator(ctx android.BottomUpMutatorContext) {
 }
 
 func (p *Deapexer) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	p.inputApex = android.OptionalPathForModuleSrc(ctx, p.selectedApexProperties.Selected_apex).Path()
+	p.inputApex = p.selectedApexProperties.Selected_apex.Path(ctx)
 
 	// Create and remember the directory into which the .apex file's contents will be unpacked.
 	deapexerOutput := android.PathForModuleOut(ctx, "deapexer")

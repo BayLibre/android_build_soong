@@ -73,11 +73,11 @@ func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
 type apexBundleProperties struct {
 	// Json manifest file describing meta info of this APEX bundle. Refer to
 	// system/apex/proto/apex_manifest.proto for the schema. Default: "apex_manifest.json"
-	Manifest *string `android:"path"`
+	Manifest *android.ModuleRelativeInput `android:"path"`
 
 	// AndroidManifest.xml file used for the zip container of this APEX bundle. If unspecified,
 	// a default one is automatically generated.
-	AndroidManifest *string `android:"path"`
+	AndroidManifest *android.ModuleRelativeInput `android:"path"`
 
 	// Canonical name of this APEX bundle. Used to determine the path to the activated APEX on
 	// device (/apex/<apex_name>). If unspecified, follows the name property.
@@ -86,7 +86,7 @@ type apexBundleProperties struct {
 	// Determines the file contexts file for setting the security contexts to files in this APEX
 	// bundle. For platform APEXes, this should points to a file under /system/sepolicy Default:
 	// /system/sepolicy/apex/<module_name>_file_contexts.
-	File_contexts *string `android:"path"`
+	File_contexts *android.ModuleRelativeInput `android:"path"`
 
 	ApexNativeDependencies
 
@@ -304,7 +304,7 @@ type overridableProperties struct {
 	Package_name string
 
 	// A txt file containing list of files that are allowed to be included in this APEX.
-	Allowed_files *string `android:"path"`
+	Allowed_files *android.ModuleRelativeInput `android:"path"`
 }
 
 type apexBundle struct {
@@ -797,8 +797,9 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 // DepsMutator for the overridden properties.
 func (a *apexBundle) OverridablePropertiesDepsMutator(ctx android.BottomUpMutatorContext) {
-	if a.overridableProperties.Allowed_files != nil {
-		android.ExtractSourceDeps(ctx, a.overridableProperties.Allowed_files)
+	if prop := a.overridableProperties.Allowed_files; prop != nil {
+		s := string(*prop)
+		android.ExtractSourceDeps(ctx, &s)
 	}
 
 	commonVariation := ctx.Config().AndroidCommonTarget.Variations()
