@@ -224,6 +224,9 @@ prebuilt_bootclasspath_fragment {
     core_platform_api: {
         stub_libs: ["mycoreplatform"],
     },
+    hidden_api: {
+        all_flags: "hiddenapi/all-flags.csv",
+    },
 }
 
 java_import {
@@ -281,6 +284,9 @@ prebuilt_bootclasspath_fragment {
     core_platform_api: {
         stub_libs: ["mysdk_mycoreplatform@current"],
     },
+    hidden_api: {
+        all_flags: "hiddenapi/all-flags.csv",
+    },
 }
 
 java_import {
@@ -335,6 +341,7 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
+.intermediates/mybootclasspathfragment/android_common/modular-hiddenapi/all-flags.csv -> hiddenapi/all-flags.csv
 .intermediates/mybootlib/android_common/javac/mybootlib.jar -> java/mybootlib.jar
 .intermediates/mysdklibrary.stubs/android_common/javac/mysdklibrary.stubs.jar -> sdk_library/public/mysdklibrary-stubs.jar
 .intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_api.txt -> sdk_library/public/mysdklibrary.txt
@@ -487,6 +494,7 @@ prebuilt_bootclasspath_fragment {
         max_target_o_low_priority: ["hiddenapi/my-max-target-o-low-priority.txt"],
         blocked: ["hiddenapi/my-blocked.txt"],
         unsupported_packages: ["hiddenapi/my-unsupported-packages.txt"],
+        all_flags: "hiddenapi/all-flags.csv",
     },
 }
 
@@ -523,6 +531,7 @@ my-max-target-p.txt -> hiddenapi/my-max-target-p.txt
 my-max-target-o-low-priority.txt -> hiddenapi/my-max-target-o-low-priority.txt
 my-blocked.txt -> hiddenapi/my-blocked.txt
 my-unsupported-packages.txt -> hiddenapi/my-unsupported-packages.txt
+.intermediates/mybootclasspathfragment/android_common/modular-hiddenapi/all-flags.csv -> hiddenapi/all-flags.csv
 .intermediates/mybootlib/android_common/javac/mybootlib.jar -> java/mybootlib.jar
 .intermediates/mysdklibrary.stubs/android_common/javac/mysdklibrary.stubs.jar -> sdk_library/public/mysdklibrary-stubs.jar
 .intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_api.txt -> sdk_library/public/mysdklibrary.txt
