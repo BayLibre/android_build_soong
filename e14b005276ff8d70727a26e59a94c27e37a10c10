@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa656ad9_f6dbdc62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-04-15T21:28:04Z",
+      "side": 1,
+      "message": "f*cking easel continues to give...\n```\nprebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-strip: out/target/product/bonito/obj/ETC/easel_ramdisk.img_intermediates//prebuilt/system/bin//ezlsh.blue: don\u0027t know how to handle section `.relr.dyn\u0027 [0x      13]\n```\nthis might actually be where the .mk-related uses of gccCmd are coming into play?",
+      "revId": "e14b005276ff8d70727a26e59a94c27e37a10c10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
