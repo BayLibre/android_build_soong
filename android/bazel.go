@@ -126,6 +126,16 @@ const (
 )
 
 var (
+	// Do not write BUILD files for these directories
+	// NOTE: this is not recursive
+	bp2buildDoNotWriteBuildFileList = []string{
+		"external/perfetto",         // ruperts@, b/185881288, generated BUILD file clashes with existing BUILD file
+		"external/rust/cxx",         // ruperts@, to fix mixed_libc-incremental CI failure (cannot reproduce locally)
+		"external/tflite-support",   // ruperts@, to fix mixed_libc-incremental CI failure (cannot reproduce locally)
+		"external/nos/host/generic", // ruperts@, to fix bp2build-incremental CI failure (cannot reproduce locally)
+		"external/ruy",              // ruperts@, to fix bp2build-incremental CI failure (cannot reproduce locally)
+	}
+
 	// Configure modules in these directories to enable bp2build_available: true or false by default.
 	bp2buildDefaultConfig = Bp2BuildConfig{
 		"bionic":                Bp2BuildDefaultTrueRecursively,
@@ -190,17 +200,30 @@ var (
 	}
 
 	// Used for quicker lookups
-	bp2buildModuleDoNotConvert = map[string]bool{}
-	mixedBuildsDisabled        = map[string]bool{}
+	bp2buildDoNotWriteBuildFile = map[string]bool{}
+	bp2buildModuleDoNotConvert  = map[string]bool{}
+	mixedBuildsDisabled         = map[string]bool{}
 )
 
 func init() {
+	for _, moduleName := range bp2buildDoNotWriteBuildFileList {
+		bp2buildDoNotWriteBuildFile[moduleName] = true
+	}
+
 	for _, moduleName := range bp2buildModuleDoNotConvertList {
 		bp2buildModuleDoNotConvert[moduleName] = true
 	}
 
 	for _, moduleName := range mixedBuildsDisabledList {
 		mixedBuildsDisabled[moduleName] = true
+	}
+}
+
+func ShouldWriteBuildFileForDir(dir string) bool {
+	if _, ok := bp2buildDoNotWriteBuildFile[dir]; ok {
+		return false
+	} else {
+		return true
 	}
 }
 
