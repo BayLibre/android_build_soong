@@ -134,7 +134,7 @@ var (
 		"system/logging/liblog": Bp2BuildDefaultTrueRecursively,
 	}
 
-	// Per-module denylist to always opt modules out.
+	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
 	bp2buildModuleDoNotConvertList = []string{
 		"libBionicBenchmarksUtils",      // ruperts@, cc_library_static, 'map' file not found
 		"libbionic_spawn_benchmark",     // ruperts@, cc_library_static, depends on //system/libbase
@@ -167,7 +167,7 @@ var (
 		"liblinker_malloc",              // ruperts@, cc_library_static, depends on //system/logging/liblog:liblog
 		"liblinker_debuggerd_stub",      // ruperts@, cc_library_static, depends on //system/libbase
 		"libbionic_tests_headers_posix", // ruperts@, cc_library_static, 'complex.h' file not found
-		"libc_dns",                      // ruperts@, cc_library_static, 'android/log.h' file not found
+		"libc_dns",                      // ruperts@, cc_library_static, 'bionic/libc/async_safe' is a subpackage
 
 		// List of all full_cc_libraries in //bionic, with their immediate failures
 		"libc",              // jingwen@, cc_library, depends on //external/gwp_asan
@@ -184,14 +184,38 @@ var (
 		"libc_gdtoa",             // ruperts@, cc_library_static, OK for bp2build but undefined symbol: __strtorQ for mixed builds
 	}
 
+	// Per-module denylist to opt modules out of mixed builds. Such modules will
+	// still be generated via bp2build.
+	mixedBuildsDisabledList = []string{
+		"note_memtag_heap_async", // jingwen@, b/185079815, features.h includes not found
+		"note_memtag_heap_sync",  // jingwen@, b/185079815, features.h includes not found
+	}
+
 	// Used for quicker lookups
 	bp2buildModuleDoNotConvert = map[string]bool{}
+	mixedBuildsDisabled        = map[string]bool{}
 )
 
 func init() {
 	for _, moduleName := range bp2buildModuleDoNotConvertList {
 		bp2buildModuleDoNotConvert[moduleName] = true
 	}
+
+	for _, moduleName := range mixedBuildsDisabledList {
+		mixedBuildsDisabled[moduleName] = true
+	}
+}
+
+// MixedBuildsEnabled checks that a module is ready to be replaced by a
+// converted or handcrafted Bazel target.
+func (b *BazelModuleBase) MixedBuildsEnabled(ctx BazelConversionPathContext) bool {
+	if !ctx.Config().BazelContext.BazelEnabled() {
+		return false
+	}
+	if len(b.GetBazelLabel(ctx, ctx.Module())) == 0 {
+		return false
+	}
+	return !mixedBuildsDisabled[ctx.Module().Name()]
 }
 
 // ConvertWithBp2build returns whether the given BazelModuleBase should be converted with bp2build.
