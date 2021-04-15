@@ -176,7 +176,7 @@ func propsToAttributes(props map[string]string) string {
 	return attributes
 }
 
-func GenerateBazelTargets(ctx *CodegenContext) (map[string]BazelTargets, CodegenMetrics) {
+func GenerateBazelTargets(ctx *CodegenContext, generateEmpty bool) (map[string]BazelTargets, CodegenMetrics) {
 	buildFileToTargets := make(map[string]BazelTargets)
 	buildFileToAppend := make(map[string]bool)
 
@@ -185,9 +185,13 @@ func GenerateBazelTargets(ctx *CodegenContext) (map[string]BazelTargets, Codegen
 		RuleClassCount: make(map[string]int),
 	}
 
+	dirs := make(map[string]bool)
+
 	bpCtx := ctx.Context()
 	bpCtx.VisitAllModules(func(m blueprint.Module) {
 		dir := bpCtx.ModuleDir(m)
+		dirs[dir] = true
+
 		var t BazelTarget
 
 		switch ctx.Mode() {
@@ -230,6 +234,19 @@ func GenerateBazelTargets(ctx *CodegenContext) (map[string]BazelTargets, Codegen
 
 		buildFileToTargets[dir] = append(buildFileToTargets[dir], t)
 	})
+
+	if generateEmpty {
+		for dir, _ := range dirs {
+			// To ensure that BUILD files are always generated, add a placeholder target
+			if len(buildFileToTargets[dir]) == 0 {
+				buildFileToTargets[dir] = append(buildFileToTargets[dir], BazelTarget{
+					name: "__placeholder__",
+					// No actual content - so this won't render in the BUILD file
+					ruleClass: "genrule",
+				})
+			}
+		}
+	}
 
 	return buildFileToTargets, metrics
 }
