@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b8048a_2ffd9513",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-15T13:36:04Z",
+      "side": 1,
+      "message": "Do we really need this? These files are not kept in sync with code; i.e. there are old signatures that don\u0027t exist in source code already. They are not meant to be appended (and haven\u0027t been modified outside of changes by Mathew or me).\n\nI don\u0027t see a need for this, although in the spirit of modularization they could be modularized of course. FYI, if we do this, we would want strict owners control over these files in similar fashion.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "135eded552cebb033bb2205e68b7516b59dbc42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
