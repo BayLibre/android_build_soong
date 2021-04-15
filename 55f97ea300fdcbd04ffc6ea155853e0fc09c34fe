@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e118c84_30a066cb",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-15T14:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b46f4a6f_87b48c5a",
+      "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3cc45fb_a1beb520",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-14T22:01:01Z",
       "side": 1,
       "message": "OutputFileProducer*, also extra space before \"generated\"",
+      "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a73ef7a_42ff31de",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-15T14:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3cc45fb_a1beb520",
       "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "689e5e89_d5ebbc36",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-15T14:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6db79647_8b0df7f2",
+      "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dee80afb_8fd41a54",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-04-14T22:01:01Z",
       "side": 1,
       "message": "Some of my comments above are relevant here too.",
+      "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "145b3bd1_17f092d4",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-15T14:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dee80afb_8fd41a54",
       "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -86,6 +158,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a40df045_e12ee15e",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-15T14:55:30Z",
+      "side": 1,
+      "message": "That was copied and pasted from previous comment. Expanded quite a bit for clarity.",
+      "parentUuid": "52f551df_88838fe0",
+      "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f46bba61_5716cc19",
@@ -99,6 +189,24 @@
       "writtenOn": "2021-04-14T22:01:01Z",
       "side": 1,
       "message": "Likewise here",
+      "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7f1986d_8ef4f42f",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-15T14:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f46bba61_5716cc19",
       "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -120,6 +228,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0577b0e7_a05cbf93",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-15T14:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a440934_c7385674",
+      "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af3fcbf7_c8095cdb",
@@ -133,6 +259,24 @@
       "writtenOn": "2021-04-14T22:01:01Z",
       "side": 1,
       "message": "Likewise here",
+      "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32742d2c_fd054796",
+        "filename": "android/paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-15T14:55:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af3fcbf7_c8095cdb",
       "revId": "55f97ea300fdcbd04ffc6ea155853e0fc09c34fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
