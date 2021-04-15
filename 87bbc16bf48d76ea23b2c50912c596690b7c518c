@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b84767e_19860e15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-15T14:41:01Z",
+      "side": 1,
+      "message": "I wish that the filesystem package doesn\u0027t depend on other packages like cc or linkerconfig.\n\nThere are some other ways to avoid the circular dependency. For example, you can add a new top-down mutator that passes all dependencies of a PackageModule to a dependency that can accept/process the list. For example, \n\n```\ntype PackageAggregator interface { Aggregate(deps []android.Module) }\n```\n\nThe linkerconfig module implements the interface to extract the list of stub libraries from the deps. The extracted list is stored in the linkerconfig struct and used when generating the build rule for the module.\n\n(Note that linkerconfig shouldn\u0027t store the passed deps anywhere)",
+      "revId": "87bbc16bf48d76ea23b2c50912c596690b7c518c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
