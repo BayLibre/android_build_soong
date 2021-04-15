@@ -22,6 +22,30 @@
       },
       "revId": "135eded552cebb033bb2205e68b7516b59dbc42e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c519787b_00093549",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-15T14:10:14Z",
+      "side": 1,
+      "message": "We most definitely do need this. The hidden API processing is being modularized so that means that the hidden API processing for the ART apex\u0027s contributions will be done by the ART\u0027s bootclasspath_fragment. That module exists in repo manifests that do not include the frameworks/base repo and so will not be able to access the files where they are.\n\nThat is a large part of the reason why hidden API processing is effectively disabled when the frameworks/base repo is not present. See https://cs.android.com/android/platform/superproject/+/master:build/soong/java/hiddenapi_singleton.go;l\u003d144 for the logic.\n\nSo, the only way for ART to be sure that it can always access those files is to move them into an ART repository.\n\nAs for the owners control you should take a look at the change which adds the files to ART - https://r.android.com/1675578 in the same topic as this one. You can see that it has the following:\n* A custom OWNERS file that includes the tools/platform-compat/OWNERS file.\n* PREUPLOAD.cfg changes which warn when adding new entries to the files and ensure that they are sorted.\n\nChange https://r.android.com/1675890 which does the same thing for ICU is very similar.\n\nAFAICT they have the same level of protection and they had in frameworks/base. The only difference is that the owners of the repo can modify those files. I could prevent that by adding \"set noparent\" but I don\u0027t think that would be particularly helpful.",
+      "parentUuid": "82b8048a_2ffd9513",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "135eded552cebb033bb2205e68b7516b59dbc42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
