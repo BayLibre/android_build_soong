@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "744cf327_070054d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-15T10:22:28Z",
+      "side": 1,
+      "message": "Generally `m nothing` is not enough to test even trivial dexpreopt changes. This is because part of Soong code (build/soong/dexpreopt) is built into a standalone binary dexpreopt_gen, which executes Soong code at the very late stage of the build (so, close to the end of `m` rather than at `m nothing` time). This dexpreopt_gen is used for Java modules in Android.mk files, so that they are handled by the same code as Android.bp modules.\n\nI think this particular CL is ok since it passed presubmit.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "33a3a8182f9833b75ab4fa14c27dcdc8667ae2cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
