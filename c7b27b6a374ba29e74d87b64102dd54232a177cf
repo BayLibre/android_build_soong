@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7efc0928_930ab215",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-15T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "158fb554_a18048ab",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ebe1d0cb_4a0be0ec",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -58,6 +82,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c27504b_cc3dc4ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-15T09:50:18Z",
+      "side": 1,
+      "message": "Thanks for detailed review!",
+      "parentUuid": "aac0c64c_b5920677",
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b66c44a_e5831416",
@@ -81,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28b32637_1d333fc7",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-15T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b66c44a_e5831416",
+      "range": {
+        "startLine": 274,
+        "startChar": 2,
+        "endLine": 274,
+        "endChar": 20
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95915540_590ea4a7",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-04-14T15:09:42Z",
       "side": 1,
       "message": "Please explain in the commit message why this is added.",
+      "range": {
+        "startLine": 280,
+        "startChar": 2,
+        "endLine": 280,
+        "endChar": 32
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c9e4ea2_6722a7d0",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-15T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95915540_590ea4a7",
       "range": {
         "startLine": 280,
         "startChar": 2,
@@ -150,6 +240,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ce00cdd_8aaaf78d",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-15T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb3380b8_d7268624",
+      "range": {
+        "startLine": 309,
+        "startChar": 5,
+        "endLine": 309,
+        "endChar": 19
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7821733a_8f05162d",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-15T09:50:18Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "2c8053dd_67b90ad9",
+      "range": {
+        "startLine": 309,
+        "startChar": 26,
+        "endLine": 309,
+        "endChar": 40
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36e369fd_87104b36",
@@ -196,6 +334,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ace8ac7_5dd83d4f",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-15T09:50:18Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "36e369fd_87104b36",
+      "range": {
+        "startLine": 316,
+        "startChar": 16,
+        "endLine": 316,
+        "endChar": 17
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f4a082_aa2d5658",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-15T09:50:18Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "c26a011a_574f7266",
+      "range": {
+        "startLine": 316,
+        "startChar": 5,
+        "endLine": 316,
+        "endChar": 15
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa742965_6b004722",
@@ -209,6 +395,30 @@
       "writtenOn": "2021-04-14T15:09:42Z",
       "side": 1,
       "message": "Is this Haskell-style? :) In Go I believe pathLists would be more conventional.",
+      "range": {
+        "startLine": 324,
+        "startChar": 28,
+        "endLine": 324,
+        "endChar": 34
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b3e0eba_f76670ff",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-15T09:50:18Z",
+      "side": 1,
+      "message": "Yeah, changed 😊",
+      "parentUuid": "fa742965_6b004722",
       "range": {
         "startLine": 324,
         "startChar": 28,
@@ -242,6 +452,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e46ae81_0daa1761",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-15T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f70a8a64_23897bee",
+      "range": {
+        "startLine": 327,
+        "startChar": 20,
+        "endLine": 327,
+        "endChar": 50
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2864229_8f2e9541",
@@ -255,6 +489,30 @@
       "writtenOn": "2021-04-14T15:09:42Z",
       "side": 1,
       "message": "Please don\u0027t copy-paste ModuleJSONConfig definition here, instead move it out of ParseModuleConfig to global scope and add some comments.",
+      "range": {
+        "startLine": 333,
+        "startChar": 28,
+        "endLine": 349,
+        "endChar": 2
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64bb44cf_e55bf67e",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-15T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2864229_8f2e9541",
       "range": {
         "startLine": 333,
         "startChar": 28,
@@ -288,6 +546,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23fa8f06_8c9a1c17",
+        "filename": "dexpreopt/dexpreopt_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-15T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d21f09da_41890687",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 2
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e70ae493_22bc45f7",
@@ -301,6 +583,30 @@
       "writtenOn": "2021-04-14T15:09:42Z",
       "side": 1,
       "message": "This is really easy to change for anyone (and break the \"API\"), so it won\u0027t prevent breakages. Also, this tests that Soong can read some particular config, but it doesn\u0027t test that Soong doesn\u0027t write a config with incompatible structure. I had something like this in mind:\n\n1. The test should require approval of the relevant team (so, perhaps, you can be one of the few OWNERs for that test, but not me or build system developers, so that each change of the test would be reviewed properly).\n\n2. The test should ensure that the generated dexpreopt.config files conform to some JSON schema: the necessary fields are present, but not any extra fields (so, if I add a new field, the test would still fail even though it wouldn\u0027t break anything on your side). The latter is to prevent accidental use of non-validated fields (if I add the field, and you start using the field, but it\u0027s not validated, so I change it and break your build).\n\n3. Some config fields are optional or have complex structure (e.g. the ClassLoaderContexts field is a map of trees, so it can be just {}, or have arbitrary many subtrees). The validation script should check that if a field is present, it has expected structure. Testing one particular config does not mean that all configs are valid, so it would be better if all the generated configs go through this test.\n\n5. To satisfy these requirements, you can have a python script that accepts a JSON dexpreopt.config file and validates it (owned by you/your team), and plug that script in the pipeline for generating dexpreopt.config files.\n\nI\u0027m not sure it\u0027s the best possible solution to ensure compatibility, but it seems safer than a Soong unit test. Maybe Colin can tell if this is a bad idea.",
+      "range": {
+        "startLine": 189,
+        "startChar": 5,
+        "endLine": 189,
+        "endChar": 37
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f1a4561_e4752b21",
+        "filename": "dexpreopt/dexpreopt_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-15T09:50:18Z",
+      "side": 1,
+      "message": "I am also think of adding an E2E test in mixed flash target(such as n+1 version system and n version vendor). The test generates odex/vdex from n+1 system and n vensor(including dexpreopt.config from n version), and check if it is valid(maybe check if there isn\u0027t dexpreopting in runtime).\n\nBy this, we can guarantee the compatibility of config file, can\u0027t we?\n\n(And I also agree with you in terms of fragility of this TC) So how about removing this TC, and pursuing the E2E test instead, WDYT?\n(the E2E test will be available when the most of this work is ended)",
+      "parentUuid": "e70ae493_22bc45f7",
       "range": {
         "startLine": 189,
         "startChar": 5,
@@ -347,6 +653,54 @@
       "writtenOn": "2021-04-14T15:09:42Z",
       "side": 1,
       "message": "This won\u0027t work (disabling config generation if dexpreopt is disabled), because sometimes a dexpreopted app uses a non-dexpreoptd library, and the app still needs the config for the library.",
+      "range": {
+        "startLine": 46,
+        "startChar": 76,
+        "endLine": 47,
+        "endChar": 16
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a81e9ac_96e600b3",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-15T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1663c8f5_3b34d925",
+      "range": {
+        "startLine": 47,
+        "startChar": 19,
+        "endLine": 47,
+        "endChar": 76
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12c688ad_57d34a7c",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-15T09:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5dcb111_6914351f",
       "range": {
         "startLine": 46,
         "startChar": 76,
