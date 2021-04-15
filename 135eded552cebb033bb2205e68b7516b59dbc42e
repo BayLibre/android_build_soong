@@ -46,6 +46,93 @@
       },
       "revId": "135eded552cebb033bb2205e68b7516b59dbc42e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09c02706_eff5b9ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-15T14:21:54Z",
+      "side": 1,
+      "message": "These files could be easily moved to tools/platform-compat which must be present at least for UnsupporterAppUsage.java.\n\nBut given that you\u0027ve already created these changes, I don\u0027t fully mind going forward.",
+      "parentUuid": "c519787b_00093549",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "135eded552cebb033bb2205e68b7516b59dbc42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "536dacec_f2496f6b",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-15T14:21:54Z",
+      "side": 1,
+      "message": "nit: not really generating any build actions?",
+      "range": {
+        "startLine": 262,
+        "startChar": 26,
+        "endLine": 262,
+        "endChar": 55
+      },
+      "revId": "135eded552cebb033bb2205e68b7516b59dbc42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e737d71_d29470f0",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-15T14:21:54Z",
+      "side": 1,
+      "message": "maybe a quick check that there are no duplicate paths?",
+      "revId": "135eded552cebb033bb2205e68b7516b59dbc42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f8b1d58_f85e8239",
+        "filename": "java/platform_bootclasspath_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-15T14:21:54Z",
+      "side": 1,
+      "message": "OOC, is this how modules are referenced in bp files? maybe for consistency change this to []string? \n\nfragments: [ \":bar-fragment\" ],\n\nso it looks like declaring a dep",
+      "range": {
+        "startLine": 144,
+        "startChar": 5,
+        "endLine": 144,
+        "endChar": 29
+      },
+      "revId": "135eded552cebb033bb2205e68b7516b59dbc42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
