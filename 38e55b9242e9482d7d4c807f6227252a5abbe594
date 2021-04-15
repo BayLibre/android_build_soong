@@ -46,6 +46,30 @@
       },
       "revId": "38e55b9242e9482d7d4c807f6227252a5abbe594",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f370f5de_9e32424f",
+        "filename": "docs/map_files.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-04-15T20:26:09Z",
+      "side": 1,
+      "message": "yes.\n\nbut also because it means if you screw up and add a new symbol in 32 without explicitly saying 32, you get 21 or whatever based on when the library appeared.",
+      "parentUuid": "c7bbd7e6_2f91759d",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 101,
+        "endChar": 16
+      },
+      "revId": "38e55b9242e9482d7d4c807f6227252a5abbe594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
