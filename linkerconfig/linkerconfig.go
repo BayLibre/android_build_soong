@@ -35,6 +35,8 @@ func registerLinkerConfigBuildComponent(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("linker_config", linkerConfigFactory)
 }
 
+var PrepareForTestWithLinkerConfigBuildComponents = android.FixtureRegisterWithContext(registerLinkerConfigBuildComponent)
+
 type linkerConfigProperties struct {
 	// source linker configuration property file
 	Src *string `android:"path"`

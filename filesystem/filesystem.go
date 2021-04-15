@@ -17,16 +17,22 @@ package filesystem
 import (
 	"fmt"
 	"path/filepath"
+	"sort"
 	"strings"
 
 	"android/soong/android"
+	"android/soong/cc"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 )
 
 func init() {
-	android.RegisterModuleType("android_filesystem", filesystemFactory)
+	registerBuildComponents(android.InitRegistrationContext)
+}
+
+func registerBuildComponents(ctx android.RegistrationContext) {
+	ctx.RegisterModuleType("android_filesystem", filesystemFactory)
 }
 
 type filesystem struct {
@@ -128,7 +134,54 @@ func (f *filesystem) installFileName() string {
 
 var pctx = android.NewPackageContext("android/soong/filesystem")
 
+func (f *filesystem) fillinProvideLibs(ctx android.ModuleContext, src android.Path) android.Path {
+	// Collection deps to be installed in the filesystem
+	deps := f.CollectDeps(ctx)
+	var provideLibs []string
+
+	// Choose libs which has stub variants from the collected deps
+	ctx.WalkDeps(func(child, parent android.Module) bool {
+		if c, ok := child.(*cc.Module); ok && cc.IsStubTarget(c) {
+			for _, ps := range c.PackagingSpecs() {
+				if _, ok := deps[ps.RelPathInPackage()]; ok {
+					provideLibs = append(provideLibs, ps.FileName())
+					delete(deps, ps.RelPathInPackage())
+				}
+			}
+		}
+		return true
+	})
+
+	if len(provideLibs) == 0 {
+		return nil
+	}
+
+	sort.Strings(provideLibs)
+
+	// add them as "provideLibs" to the passed src linker.config.pb
+	linkerConfig := android.PathForModuleOut(ctx, "linker.config.pb").OutputPath
+	rule := android.NewRuleBuilder(pctx, ctx)
+	rule.Command().
+		BuiltTool("conv_linker_config").
+		Flag("append").
+		FlagWithInput("-s ", src).
+		FlagWithOutput("-o ", linkerConfig).
+		FlagWithArg("--key ", "provideLibs").
+		FlagWithArg("--value ", proptools.ShellEscapeIncludingSpaces(strings.Join(provideLibs, " ")))
+	rule.Build("linker.config.pb", "Fill provideLibs linker.config.pb")
+
+	// return a new linker.config.pb
+	return linkerConfig
+}
+
 func (f *filesystem) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	f.SetPackagingSpecHook(ctx, func(ps android.PackagingSpec) android.Path {
+		if ps.RelPathInPackage() == "etc/linker.config.pb" {
+			return f.fillinProvideLibs(ctx, ps.Src())
+		}
+		return nil
+	})
+
 	switch f.fsType(ctx) {
 	case ext4Type:
 		f.output = f.buildImageUsingBuildImage(ctx)
