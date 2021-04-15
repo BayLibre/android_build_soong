@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41955a8a_dac845b8",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-15T23:34:47Z",
+      "side": 1,
+      "message": "Setting a provider is a build action, it\u0027s just not a ninja rule. Those will come along soon.",
+      "parentUuid": "536dacec_f2496f6b",
+      "range": {
+        "startLine": 262,
+        "startChar": 26,
+        "endLine": 262,
+        "endChar": 55
+      },
+      "revId": "135eded552cebb033bb2205e68b7516b59dbc42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e737d71_d29470f0",
@@ -112,6 +136,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3af4f18f_b8970152",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-15T23:34:47Z",
+      "side": 1,
+      "message": "I\u0027m not sure that is worth doing. There\u0027s not an easy way for duplicate paths to be added as the dependencies structure is flat and cannot form a DAG. That is because while platform_bootclasspath can reference bootclasspath_fragments they can\u0027t reference each other. If duplicate paths could cause an issue then that should be handled by the script which detects conflicts when important.",
+      "parentUuid": "3e737d71_d29470f0",
+      "revId": "135eded552cebb033bb2205e68b7516b59dbc42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f8b1d58_f85e8239",
@@ -125,6 +167,30 @@
       "writtenOn": "2021-04-15T14:21:54Z",
       "side": 1,
       "message": "OOC, is this how modules are referenced in bp files? maybe for consistency change this to []string? \n\nfragments: [ \":bar-fragment\" ],\n\nso it looks like declaring a dep",
+      "range": {
+        "startLine": 144,
+        "startChar": 5,
+        "endLine": 144,
+        "endChar": 29
+      },
+      "revId": "135eded552cebb033bb2205e68b7516b59dbc42e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd0c33a2_82437ac2",
+        "filename": "java/platform_bootclasspath_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-15T23:34:47Z",
+      "side": 1,
+      "message": "\u003e OOC, is this how modules are referenced in bp files?\n\nNot generally no as most module references do not need to select a specific APEX for a module. However, each fragment comes from a different APEX and so we need to have some way to specify the apex variant of the fragment.\n\nUsually, this reference would look something like {apex: \"com.android.bar\", module: \"bar-fragment\"} but in this case I don\u0027t specify the apex so that I can run this test in the java package instead of having to add it to the apex package.\n\n\u003e fragments: [ \":bar-fragment\" ],\n\nThat syntax is already in use and means something else which I think would be incredibly confusing. The more usual form of \"com.android.bar:bar-fragment\" might be a little less confusing, at least if you are familiar with how the bootclasspath is configured in make.\n\nHowever, while obviously, there are exceptions like \":module{tag}\" generally Colin does not like specially formatted strings in bp files. If we can come up with a better idea then it will be easy to change as there are only a few places (tests and frameworks/base) where it is used.",
+      "parentUuid": "2f8b1d58_f85e8239",
       "range": {
         "startLine": 144,
         "startChar": 5,
