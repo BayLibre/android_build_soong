@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3631f05_4bc97acf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-15T11:41:59Z",
+      "side": 1,
+      "message": "With dexpreopt config changes it is also good to run a first boot time check to see if the dexpreopt artifacts are ok (if something goes off at build time, precompiled files may be rejected at boot time and presubmit won\u0027t show that).\n\nCan you run this boot time test:\n\nIn one terminal, build, flash and boot (I normally use launch_cvd on cuttlefish to avoid flashing, e.g. aosp_cf_x86_64_phone-userdebug target).\n\nIn another terminal, grep first boot logcat for messages:\n\n  $ adb wait-for-device \\\n    \u0026\u0026 adb -s $S root \\\n    \u0026\u0026 adb -s $S logcat \\\n    | grep -E \u0027ClassLoaderContext [a-z ]+ mismatch\u0027 -C 1\n\nThe output should not contain any error messages.\n\nSpoiler: I just tried that myself with your CLs and it works (no errors), but if you keep working on dexpreopt then this is the current way to see if it really works. On AOSP it should be clean, on internal master there are currently a few failures.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "6b72e58d30c7c2e570b7bd776fa52e9670bc6354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "863beb77_09b92c84",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-15T11:41:59Z",
+      "side": 1,
+      "message": "Drop. Maybe also move the comment out of struct definition and expand it to explain what is the purpose of this struct.",
+      "range": {
+        "startLine": 266,
+        "startChar": 46,
+        "endLine": 266,
+        "endChar": 51
+      },
+      "revId": "6b72e58d30c7c2e570b7bd776fa52e9670bc6354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5291f0f_b86b1c56",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-15T11:41:59Z",
+      "side": 1,
+      "message": "Nit: it\u0027s really \u0027pathsLists\u0027 not \u0027pathLists\u0027, and likewise \u0027pathsListsToStringsLists\u0027.",
+      "range": {
+        "startLine": 312,
+        "startChar": 28,
+        "endLine": 312,
+        "endChar": 37
+      },
+      "revId": "6b72e58d30c7c2e570b7bd776fa52e9670bc6354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3bec211_6922c26a",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-15T11:41:59Z",
+      "side": 1,
+      "message": "Nit: I generally try to break comment lines at 100 characters boundary. It\u0027s not a big deal but looks nicer if all comments have approximately the same width.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 58
+      },
+      "revId": "6b72e58d30c7c2e570b7bd776fa52e9670bc6354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc5699b4_2a9641aa",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-15T11:41:59Z",
+      "side": 1,
+      "message": "Nit: add blank line.",
+      "revId": "6b72e58d30c7c2e570b7bd776fa52e9670bc6354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "617dd400_668ad22b",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-15T11:41:59Z",
+      "side": 1,
+      "message": "I remember that I had a problem (like a Soong crash) with non-dexpreopted modules reaching this point to generate the full dexpreopt config, so I\u0027m surprised that you don\u0027t have it. It might be that (d.isApp || d.isTest) condition filters out those cases. Anyway, if presubmit passes it should be ok.",
+      "revId": "6b72e58d30c7c2e570b7bd776fa52e9670bc6354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a3198346_d5a915f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-15T11:41:59Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "7efc0928_930ab215",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ebe1d0cb_4a0be0ec",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -607,6 +631,30 @@
       "side": 1,
       "message": "I am also think of adding an E2E test in mixed flash target(such as n+1 version system and n version vendor). The test generates odex/vdex from n+1 system and n vensor(including dexpreopt.config from n version), and check if it is valid(maybe check if there isn\u0027t dexpreopting in runtime).\n\nBy this, we can guarantee the compatibility of config file, can\u0027t we?\n\n(And I also agree with you in terms of fragility of this TC) So how about removing this TC, and pursuing the E2E test instead, WDYT?\n(the E2E test will be available when the most of this work is ended)",
       "parentUuid": "e70ae493_22bc45f7",
+      "range": {
+        "startLine": 189,
+        "startChar": 5,
+        "endLine": 189,
+        "endChar": 37
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0201d502_ccd10eaa",
+        "filename": "dexpreopt/dexpreopt_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-15T11:41:59Z",
+      "side": 1,
+      "message": "E2E test would be great.\n\nI\u0027m not sure it can replace the validation script, because this E2E test may be rather heavyweight and it will not run on every build (it may not even run on every presubmit IIUC).\n\nI will ask Colin at the build system meeting today and post an update.",
+      "parentUuid": "4f1a4561_e4752b21",
       "range": {
         "startLine": 189,
         "startChar": 5,
