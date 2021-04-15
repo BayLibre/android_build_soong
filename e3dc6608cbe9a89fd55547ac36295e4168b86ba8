@@ -157,6 +157,30 @@
       },
       "revId": "e3dc6608cbe9a89fd55547ac36295e4168b86ba8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1828a929_57454da7",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-15T15:37:58Z",
+      "side": 1,
+      "message": "Right.. I think it\u0027s just my \"java\" habits are in place here, where it wasn\u0027t really possible to assign a \"func\".\n\nHaving \"func\" as suffix makes it more intuitive to me at least, but I don\u0027t feel strong enough for you to change this.\n\nIn fact, given that it\u0027s actually invoked when used -- category.commandMutator(...) -- and not just accessed as a field, should be quite obvious for golang readers that it\u0027s a func and has side-effects I assume?",
+      "parentUuid": "39023980_1e5b86aa",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "e3dc6608cbe9a89fd55547ac36295e4168b86ba8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
