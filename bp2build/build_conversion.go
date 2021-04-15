@@ -176,7 +176,7 @@ func propsToAttributes(props map[string]string) string {
 	return attributes
 }
 
-func GenerateBazelTargets(ctx *CodegenContext) (map[string]BazelTargets, CodegenMetrics) {
+func GenerateBazelTargets(ctx *CodegenContext, generateEmpty bool) (map[string]BazelTargets, CodegenMetrics) {
 	buildFileToTargets := make(map[string]BazelTargets)
 	buildFileToAppend := make(map[string]bool)
 
@@ -185,9 +185,13 @@ func GenerateBazelTargets(ctx *CodegenContext) (map[string]BazelTargets, Codegen
 		RuleClassCount: make(map[string]int),
 	}
 
+	dirs := make(map[string]bool)
+
 	bpCtx := ctx.Context()
 	bpCtx.VisitAllModules(func(m blueprint.Module) {
 		dir := bpCtx.ModuleDir(m)
+		dirs[dir] = true
+
 		var t BazelTarget
 
 		switch ctx.Mode() {
@@ -230,6 +234,21 @@ func GenerateBazelTargets(ctx *CodegenContext) (map[string]BazelTargets, Codegen
 
 		buildFileToTargets[dir] = append(buildFileToTargets[dir], t)
 	})
+
+	if generateEmpty {
+		for dir, _ := range dirs {
+			// Even if we aren't going to convert any Soong targets for this Android.bp file yet,
+			// Generate a BUILD file anyway to help resolve Bazel package paths consistently
+			// And expose all the files here in a filegroup
+			if len(buildFileToTargets[dir]) == 0 {
+				buildFileToTargets[dir] = append(buildFileToTargets[dir], BazelTarget{
+					name:      "src",
+					content:   `filegroup(name = "srcs", srcs = glob(["**/*"]))`,
+					ruleClass: "filegroup",
+				})
+			}
+		}
+	}
 
 	return buildFileToTargets, metrics
 }
