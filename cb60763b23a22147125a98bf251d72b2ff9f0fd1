@@ -51,6 +51,24 @@
       "parentUuid": "5f5f25fa_d328882c",
       "revId": "cb60763b23a22147125a98bf251d72b2ff9f0fd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1253452a_05395852",
+        "filename": "cc/ndkstubgen/test_ndkstubgen.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-04-15T20:18:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f6ebb50_b7b2201a",
+      "revId": "cb60763b23a22147125a98bf251d72b2ff9f0fd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
