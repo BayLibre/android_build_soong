@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffc415fc_7d4d65f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-15T14:17:27Z",
+      "side": 1,
+      "message": "This is blocked on submitting https://android-review.googlesource.com/c/platform/bionic/+/1677126 (or equivalent) first",
+      "revId": "f54e01a882382f0ad517da0030eb20a30f982aac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
