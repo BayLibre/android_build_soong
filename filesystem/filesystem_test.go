@@ -21,6 +21,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
+	"android/soong/linkerconfig"
 )
 
 func TestMain(m *testing.M) {
@@ -30,6 +31,7 @@ func TestMain(m *testing.M) {
 var fixture = android.GroupFixturePreparers(
 	android.PrepareForIntegrationTestWithAndroid,
 	cc.PrepareForIntegrationTestWithCc,
+	linkerconfig.PrepareForTestWithLinkerConfigBuildComponents,
 	PrepareForTestWithFilesystemBuildComponents,
 )
 
@@ -69,6 +71,39 @@ func TestFileSystemDeps(t *testing.T) {
 	}, getDeps(t, m).Files())
 }
 
+func TestFileSystemFillsLinkerConfigWithStubLibs(t *testing.T) {
+	result := fixture.RunTestWithBp(t, `
+		android_filesystem {
+			name: "myfilesystem",
+			deps: [
+				"libfoo",
+				"mylinkerconfig",
+			],
+		}
+
+		cc_library {
+			name: "libfoo",
+			stubs: {
+				versions: ["1"],
+			},
+		}
+
+		linker_config {
+			name: "mylinkerconfig",
+			src: "linker.config.json",
+		}
+	`)
+
+	m := result.ModuleForTests("myfilesystem", "android_common")
+
+	linkerConfig := m.Output("linker.config.pb")
+
+	android.AssertStringDoesContain(t, "linker.config.pb should have libfoo",
+		linkerConfig.RuleParams.Command, "libfoo.so")
+	android.AssertSame(t, "installed linker.config.pb should be from filesystem's output",
+		linkerConfig.Output.String(), getDeps(t, m).SrcOf("etc/linker.config.pb"))
+}
+
 // Testing utilities
 
 type copyCmd struct {
@@ -85,6 +120,15 @@ func (z zipContents) Files() []string {
 		ret = append(ret, cp.dest)
 	}
 	return ret
+}
+
+func (z zipContents) SrcOf(dest string) string {
+	for _, cp := range z.copies {
+		if cp.dest == dest {
+			return cp.src
+		}
+	}
+	return ""
 }
 
 func getDeps(t *testing.T, m android.TestingModule) zipContents {
