@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8984f580_e81148df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-15T19:39:33Z",
+      "side": 1,
+      "message": " Probably need a way to toggle this behavior, e.g. would be useful to disable it for tests.",
+      "revId": "7bdf5527203a1cdf828b6030692d5f1f101142c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
