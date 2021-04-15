@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1175798_49eff7fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-15T13:17:48Z",
+      "side": 1,
+      "message": "Left a couple of nits, not sure if these naming conventions are common in golang",
+      "revId": "e3dc6608cbe9a89fd55547ac36295e4168b86ba8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba77c50a_903d72a4",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-15T13:17:48Z",
+      "side": 1,
+      "message": "just name?",
+      "range": {
+        "startLine": 74,
+        "startChar": 1,
+        "endLine": 74,
+        "endChar": 13
+      },
+      "revId": "e3dc6608cbe9a89fd55547ac36295e4168b86ba8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c9b1c54_ab7c1d8d",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-15T13:17:48Z",
+      "side": 1,
+      "message": "perhaps just me, but I am expecting that this returns an accessor that must be accessed further to get propertyValues, e.g. category.propertyAccessor(p).properties().\n\nMaybe propertyValue?",
+      "range": {
+        "startLine": 78,
+        "startChar": 1,
+        "endLine": 78,
+        "endChar": 17
+      },
+      "revId": "e3dc6608cbe9a89fd55547ac36295e4168b86ba8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d880658d_ee24665a",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-15T13:17:48Z",
+      "side": 1,
+      "message": "similar to above, maybe mutateCommand?",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "e3dc6608cbe9a89fd55547ac36295e4168b86ba8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
