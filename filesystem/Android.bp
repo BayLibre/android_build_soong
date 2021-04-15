@@ -9,14 +9,17 @@ bootstrap_go_package {
         "blueprint",
         "soong",
         "soong-android",
+        "soong-cc",
     ],
     srcs: [
         "bootimg.go",
         "filesystem.go",
         "logical_partition.go",
         "vbmeta.go",
+        "testing.go",
     ],
     testSrcs: [
+        "filesystem_test.go",
     ],
     pluginFor: ["soong_build"],
 }
