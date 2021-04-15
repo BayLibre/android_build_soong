@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11c18e7f_6fb8a5e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-15T15:18:02Z",
+      "side": 1,
+      "message": "TBH I get a bit overwhelmed trying to work out the difference between these functions now. It\u0027s hard for me to visually diff the long comments, they look very similar to each other.\n\nIn general I also get confused in paths.go trying to understand what part of the file is Soong related and what part is Bazel related and what part is maybe related to both Soong and Bazel\n\nOne idea:\n\nMove the Bazel-related paths functions to another file, bazel_paths.go\n\nHave a big comment at the top of that file explaining Soong-\u003eBazel path issues in general\n\nHave shorter comments for each function explaining what is unique or special about each function?\n\nWhat do you think?",
+      "revId": "da465cd9a51e3e7839df77b9a3b8556f30494c91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
