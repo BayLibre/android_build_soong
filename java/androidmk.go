@@ -447,9 +447,16 @@ func (a *AndroidTest) AndroidMkEntries() []android.AndroidMkEntries {
 		androidMkWriteExtraTestConfigs(a.extraTestConfigs, entries)
 		androidMkWriteTestData(a.data, entries)
 		entries.AddStrings("LOCAL_TEST_MAINLINE_MODULES", a.testProperties.Test_mainline_modules...)
+		androidMkWriteTestExecutable(a.testExecutable, entries)
 	})
 
 	return entriesList
+}
+
+func androidMkWriteTestExecutable(testExecutable android.Path, entries *android.AndroidMkEntries) {
+	if testExecutable != nil {
+		entries.SetString("LOCAL_TEST_EXECUTABLE", testExecutable.String())
+	}
 }
 
 func (a *AndroidTestHelperApp) AndroidMkEntries() []android.AndroidMkEntries {

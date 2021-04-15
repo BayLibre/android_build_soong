@@ -945,6 +945,9 @@ type AndroidTest struct {
 	testConfig       android.Path
 	extraTestConfigs android.Paths
 	data             android.Paths
+
+	// The generated test executable.
+	testExecutable android.Path
 }
 
 func (a *AndroidTest) InstallInTestcases() bool {
@@ -974,6 +977,22 @@ func (a *AndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.testConfig = a.FixTestConfig(ctx, testConfig)
 	a.extraTestConfigs = android.PathsForModuleSrc(ctx, a.testProperties.Test_options.Extra_test_configs)
 	a.data = android.PathsForModuleSrc(ctx, a.testProperties.Data)
+
+	// Generate the test executable.
+	// TODO(hzalek): Force generation whenever the module is built.
+
+	testExecutableContent := "atest_tradefed.sh template/atest_local_min --template:map test=atest --include-filter " + ctx.ModuleName() + " \\$@"
+	testExecutableFile := android.PathForModuleOut(ctx, "local", ctx.ModuleName()+".sh")
+
+	rule := android.NewRuleBuilder(pctx, ctx)
+	rule.Command().Text("rm -f").Output(testExecutableFile)
+	testExecutableDir := android.PathForModuleOut(ctx, "local")
+	rule.Command().Text("mkdir -p").Output(testExecutableDir)
+	rule.Command().Text("/bin/bash -c \"echo -e '" + testExecutableContent + "'\" > ").Output(testExecutableFile)
+	rule.Command().Text("chmod a+x").Output(testExecutableFile)
+	rule.Build("generate_test_executable", "generate the test executable")
+
+	a.testExecutable = testExecutableFile
 }
 
 func (a *AndroidTest) FixTestConfig(ctx android.ModuleContext, testConfig android.Path) android.Path {
