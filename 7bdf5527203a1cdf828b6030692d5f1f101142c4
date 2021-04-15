@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d81e3544_3aef62f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-15T23:25:39Z",
+      "side": 1,
+      "message": "Maybe a fix would be to check in an empty prebuilts/sdk/tools/BUILD.bazel file, so that the hardcoded paths in prebuilts/sdk/BUILD.bazel could acknowledge the subpackage?",
+      "parentUuid": "9ecca1df_bfb2f4a7",
+      "revId": "7bdf5527203a1cdf828b6030692d5f1f101142c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41a77ae5_b6748a2b",
         "filename": "bp2build/build_conversion.go",
         "patchSetId": 1
