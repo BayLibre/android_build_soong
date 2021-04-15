@@ -181,6 +181,30 @@
       },
       "revId": "e3dc6608cbe9a89fd55547ac36295e4168b86ba8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6084e65f_7988ee2c",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-15T15:44:29Z",
+      "side": 1,
+      "message": "It\u0027s not always easy to tell as it looks exactly like a call to a method.",
+      "parentUuid": "1828a929_57454da7",
+      "range": {
+        "startLine": 82,
+        "startChar": 1,
+        "endLine": 82,
+        "endChar": 15
+      },
+      "revId": "e3dc6608cbe9a89fd55547ac36295e4168b86ba8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
