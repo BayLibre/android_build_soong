@@ -97,7 +97,13 @@ func pathPropertiesForPropertyStruct(ps interface{}) []string {
 			case reflect.String:
 				ret = append(ret, sv.String())
 			case reflect.Slice:
-				ret = append(ret, sv.Interface().([]string)...)
+				var items []string
+				if sv.Type().Name() == "ModuleRelativeInputs" {
+					items = sv.Interface().(ModuleRelativeInputs)
+				} else {
+					items = sv.Interface().([]string)
+				}
+				ret = append(ret, items...)
 			default:
 				panic(fmt.Errorf(`field %s in type %s has tag android:"path" but is not a string or slice of strings, it is a %s`,
 					v.Type().FieldByIndex(i).Name, v.Type(), sv.Type()))

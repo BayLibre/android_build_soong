@@ -79,6 +79,24 @@ type BazelConversionPathContext interface {
 	OtherModuleDir(m blueprint.Module) string
 }
 
+// BazelLabels returns a list of paths relative to the module directory or Bazel-compatible label if
+// a reference to a module or the path is within a subpackage.
+func (i ModuleRelativeInputs) BazelLabels(ctx BazelConversionPathContext) bazel.LabelList {
+	return BazelLabelForModuleSrc(ctx, i)
+}
+
+// BazelLabels returns a list of paths relative to the module directory or Bazel-compatible label if
+// a reference to a module or the path is within a subpackage.
+func (i ModuleRelativeSrcExcludes) BazelLabels(ctx BazelConversionPathContext) bazel.LabelList {
+	return BazelLabelForModuleSrcExcludes(ctx, i.Srcs, i.Exclude_srcs)
+}
+
+// BazelLabels returns a list of paths relative to the module directory or Bazel-compatible label if
+// a reference to a module or the path is within a subpackage.
+func (i ArchVariantModuleRelativeSrcExcludes) BazelLabels(ctx BazelConversionPathContext) bazel.LabelList {
+	return BazelLabelForModuleSrcExcludes(ctx, i.Srcs, i.Exclude_srcs)
+}
+
 // BazelLabelForModuleDeps expects a list of reference to other modules, ("<module>"
 // or ":<module>") and returns a Bazel-compatible label which corresponds to dependencies on the
 // module within the given ctx.

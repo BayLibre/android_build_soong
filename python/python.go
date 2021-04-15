@@ -43,18 +43,11 @@ func RegisterPythonPreDepsMutators(ctx android.RegisterMutatorsContext) {
 
 // the version-specific properties that apply to python modules.
 type VersionProperties struct {
+	android.ArchVariantModuleRelativeSrcExcludes `android:"arch_variant"`
+
 	// whether the module is required to be built with this version.
 	// Defaults to true for Python 3, and false otherwise.
 	Enabled *bool `android:"arch_variant"`
-
-	// list of source files specific to this Python version.
-	// Using the syntax ":module", srcs may reference the outputs of other modules that produce source files,
-	// e.g. genrule or filegroup.
-	Srcs []string `android:"path,arch_variant"`
-
-	// list of source files that should not be used to build the Python module for this version.
-	// This is most useful to remove files that are not common to all Python versions.
-	Exclude_srcs []string `android:"path,arch_variant"`
 
 	// list of the Python libraries used only for this Python version.
 	Libs []string `android:"arch_variant"`
@@ -65,6 +58,8 @@ type VersionProperties struct {
 
 // properties that apply to all python modules
 type BaseProperties struct {
+	android.ArchVariantModuleRelativeSrcExcludes `android:"arch_variant"`
+
 	// the package path prefix within the output artifact at which to place the source/data
 	// files of the current module.
 	// eg. Pkg_path = "a/b/c"; Other packages can reference this module by using
@@ -75,20 +70,9 @@ type BaseProperties struct {
 	// true, if the Python module is used internally, eg, Python std libs.
 	Is_internal *bool `android:"arch_variant"`
 
-	// list of source (.py) files compatible both with Python2 and Python3 used to compile the
-	// Python module.
-	// srcs may reference the outputs of other modules that produce source files like genrule
-	// or filegroup using the syntax ":module".
-	// Srcs has to be non-empty.
-	Srcs []string `android:"path,arch_variant"`
-
-	// list of source files that should not be used to build the C/C++ module.
-	// This is most useful in the arch/multilib variants to remove non-common files
-	Exclude_srcs []string `android:"path,arch_variant"`
-
 	// list of files or filegroup modules that provide data that should be installed alongside
 	// the test. the file extension can be arbitrary except for (.py).
-	Data []string `android:"path,arch_variant"`
+	Data android.ModuleRelativeInputs `android:"path,arch_variant"`
 
 	// list of java modules that provide data that should be installed alongside the test.
 	Java_data []string
@@ -460,7 +444,7 @@ func (p *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 // generatePythonBuildActions performs build actions common to all Python modules
 func (p *Module) generatePythonBuildActions(ctx android.ModuleContext) {
-	expandedSrcs := android.PathsForModuleSrcExcludes(ctx, p.properties.Srcs, p.properties.Exclude_srcs)
+	expandedSrcs := p.properties.ArchVariantModuleRelativeSrcExcludes.Paths(ctx)
 	requiresSrcs := true
 	if p.bootstrapper != nil && !p.bootstrapper.autorun() {
 		requiresSrcs = false
@@ -470,7 +454,7 @@ func (p *Module) generatePythonBuildActions(ctx android.ModuleContext) {
 	}
 
 	// expand data files from "data" property.
-	expandedData := android.PathsForModuleSrc(ctx, p.properties.Data)
+	expandedData := p.properties.Data.Paths(ctx)
 
 	// Emulate the data property for java_data dependencies.
 	for _, javaData := range ctx.GetDirectDepsWithTag(javaDataTag) {
