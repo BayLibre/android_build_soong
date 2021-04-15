@@ -1107,7 +1107,7 @@ func TestAllowlistingBp2buildTargetsExplicitly(t *testing.T) {
     srcs: ["a", "b"],
     bazel_module: { bp2build_available: false },
 }`,
-			expectedCount: 0,
+			expectedCount: 1, // 1 because of __placeholder__
 		},
 		{
 			description:                        "implicitly unavailable",
@@ -1118,7 +1118,7 @@ func TestAllowlistingBp2buildTargetsExplicitly(t *testing.T) {
     name: "foo",
     srcs: ["a", "b"],
 }`,
-			expectedCount: 0,
+			expectedCount: 1, // 1 because of __placeholder__
 		},
 		{
 			description:                        "explicitly available",
@@ -1184,10 +1184,10 @@ func TestAllowlistingBp2buildTargetsWithConfig(t *testing.T) {
 			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
 			expectedCount: map[string]int{
 				"migrated":                           1,
-				"migrated/but_not_really":            0,
+				"migrated/but_not_really":            1, // 1 because of __placeholder__
 				"migrated/but_not_really/but_really": 1,
-				"not_migrated":                       0,
-				"also_not_migrated":                  0,
+				"not_migrated":                       1, // 1 because of __placeholder__
+				"also_not_migrated":                  1, // 1 because of __placeholder__
 			},
 			bp2buildConfig: android.Bp2BuildConfig{
 				"migrated":                android.Bp2BuildDefaultTrueRecursively,
@@ -1209,9 +1209,9 @@ func TestAllowlistingBp2buildTargetsWithConfig(t *testing.T) {
 			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
 			expectedCount: map[string]int{
 				"package-opt-in":             2,
-				"package-opt-in/subpackage":  0,
+				"package-opt-in/subpackage":  1, // 1 because of __placeholder__
 				"package-opt-out":            1,
-				"package-opt-out/subpackage": 0,
+				"package-opt-out/subpackage": 1, // 1 because of __placeholder__
 			},
 			bp2buildConfig: android.Bp2BuildConfig{
 				"package-opt-in":  android.Bp2BuildDefaultFalse,
