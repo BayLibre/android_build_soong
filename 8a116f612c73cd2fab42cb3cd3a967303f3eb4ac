@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b1e343f_ade0c3f2",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-04-15T00:31:31Z",
+      "side": 1,
+      "message": "A bit confused as base and from sounds similar to me. What about use term \u0027override\u0027 directly?",
+      "range": {
+        "startLine": 188,
+        "startChar": 6,
+        "endLine": 188,
+        "endChar": 14
+      },
+      "revId": "8a116f612c73cd2fab42cb3cd3a967303f3eb4ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
