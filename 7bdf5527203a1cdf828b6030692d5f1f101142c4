@@ -56,6 +56,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26dc2f8c_c4086b9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-15T23:17:48Z",
+      "side": 1,
+      "message": "The original tree has\n\nprebuilts/sdk/Android.bp\nprebuilts/sdk/BUILD.bazel\n\nThis CL adds (an empty)\n\nprebuilts/sdk/BUILD \n\nSomehow the original BUILD.bazel didn\u0027t mark prebuilts/sdk as a subpackage, but the new BUILD file does\n\nThis seems to cause a number of build errors - e.g. bazel build //bionic/... fails with errors like\n\nERROR: /usr/local/google/home/ruperts/aosp-3/prebuilts/sdk/BUILD.bazel:3:14: Label \u0027//prebuilts/sdk:tools/linux/bin/aapt2\u0027 is invalid because \u0027prebuilts/sdk/tools\u0027 is a subpackage; perhaps you meant to put the colon here: \u0027//prebuilts/sdk/tools:linux/bin/aapt2\u0027?\n\nERROR: /usr/local/google/home/ruperts/aosp-3/prebuilts/sdk/BUILD.bazel:5:12: Label \u0027//prebuilts/sdk:tools/linux/bin/zipalign\u0027 is invalid because \u0027prebuilts/sdk/tools\u0027 is a subpackage; perhaps you meant to put the colon here: \u0027//prebuilts/sdk/tools:linux/bin/zipalign\u0027?\n\nI\u0027m still a little confused why the original BUILD.bazel didn\u0027t mark prebuilts/sdk as a subpackage. \n\nBut maybe we should not generate empty BUILD files if a BUILD.bazel file exists?\n\ncc ahumesky@",
+      "revId": "7bdf5527203a1cdf828b6030692d5f1f101142c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "41a77ae5_b6748a2b",
         "filename": "bp2build/build_conversion.go",
         "patchSetId": 1
