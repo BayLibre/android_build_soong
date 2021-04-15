@@ -34,6 +34,24 @@
       "parentUuid": "8984f580_e81148df",
       "revId": "7bdf5527203a1cdf828b6030692d5f1f101142c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bd984e9_754f6752",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-15T22:41:01Z",
+      "side": 1,
+      "message": "Not sure, although I have just upgraded to a super fast SSD.\n\nHowever this definitely makes using git a pain (since there are now thousands of BUILD files to ignore), and it also messes up some tests which previously didn\u0027t expect BUILD files to be generated (above)",
+      "parentUuid": "8ee05da3_3eac4a14",
+      "revId": "7bdf5527203a1cdf828b6030692d5f1f101142c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
