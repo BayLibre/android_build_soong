@@ -201,10 +201,12 @@ type SanitizeUserProps struct {
 		No_recover       []string `android:"arch_variant"`
 	} `android:"arch_variant"`
 
-	// Sanitizers to run with flag configuration specified
+	// Sanitizers to run with configuration specified
 	Config struct {
 		// Enables CFI support flags for assembly-heavy libraries
 		Cfi_assembly_support *bool `android:"arch_variant"`
+		// Disable 32 CFI support flags for specified libraries
+		Disable_cfi_32bit *bool `android:"arch_variant"`
 	} `android:"arch_variant"`
 
 	// value to pass to -fsanitize-recover=
@@ -400,6 +402,12 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 
 	// Is CFI actually enabled?
 	if !ctx.Config().EnableCFI() {
+		s.Cfi = boolPtr(false)
+		s.Diag.Cfi = boolPtr(false)
+	}
+
+	// Disable CFI for 32bit for specified libraries
+	if ctx.Arch().ArchType == android.Arm && Bool(s.Config.Disable_cfi_32bit) {
 		s.Cfi = boolPtr(false)
 		s.Diag.Cfi = boolPtr(false)
 	}
