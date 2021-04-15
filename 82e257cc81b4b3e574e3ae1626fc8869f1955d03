@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c912c28c_a61899b4",
+        "filename": "rust/builder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-15T21:46:34Z",
+      "side": 1,
+      "message": "This can be android.PathForOutput(ctx, \"rustdoc\", ctx.ModuleName())",
+      "range": {
+        "startLine": 324,
+        "startChar": 19,
+        "endLine": 324,
+        "endChar": 40
+      },
+      "revId": "82e257cc81b4b3e574e3ae1626fc8869f1955d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
