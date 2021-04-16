@@ -25,4 +25,25 @@ function test_bazel_smoke {
   tools/bazel info
 }
 
+function test_mixed_builds_integrated_bp2build_smoke {
+  setup
+  create_mock_bazel
+
+  mkdir -p a
+  touch a/a.txt
+  cat > a/Android.bp <<'EOF'
+filegroup {
+  name: "a",
+  srcs: ["a.txt"],
+  bazel_module: { bp2build_available: true },
+}
+EOF
+
+  INTEGRATED_BP2BUILD=1 USE_BAZEL_ANALYSIS=1 run_soong || fail "Build failed"
+}
+
+test_mixed_builds_integrated_bp2build_smoke
+exit 0
+
 test_bazel_smoke
+test_mixed_builds_integrated_bp2build_smoke

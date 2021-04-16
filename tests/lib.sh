@@ -2,7 +2,7 @@
 
 HARDWIRED_MOCK_TOP=
 # Uncomment this to be able to view the source tree after a test is run
-# HARDWIRED_MOCK_TOP=/tmp/td
+HARDWIRED_MOCK_TOP=/tmp/td
 
 REAL_TOP="$(readlink -f "$(dirname "$0")"/../../..)"
 
