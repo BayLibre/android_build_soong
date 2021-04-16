@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "163304b0_916b4e74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-16T12:50:30Z",
+      "side": 1,
+      "message": "I have a nit, otherwise LGTM.",
+      "revId": "819266ce171fb937a6605fc5ecfd0e211475b697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23395118_83d0ca22",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-16T12:50:30Z",
+      "side": 1,
+      "message": "This function is not used here. Can you pass DeviceConfig() directly instead of the anonymous interface?",
+      "range": {
+        "startLine": 605,
+        "startChar": 1,
+        "endLine": 605,
+        "endChar": 24
+      },
+      "revId": "819266ce171fb937a6605fc5ecfd0e211475b697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
