@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3f119a26_67963cb7",
+        "filename": "android/bazel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-16T16:33:27Z",
+      "side": 1,
+      "message": "I originally did, but then I synced and they reappeared. Whoops. Though, as Liz has pointed out, the note_* targets fail for arm64, so they need to remain denylisted for everything.",
+      "parentUuid": "24bea269_150fa155",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 124
+      },
+      "revId": "7d967ff04a7682ac434255e36bc6a225944137e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8196370a_5635046f",
         "filename": "android/bazel.go",
         "patchSetId": 3
