@@ -7186,6 +7186,43 @@ func TestApexKeysTxt(t *testing.T) {
 	ensureContains(t, content, `name="myapex.apex" public_key="PRESIGNED" private_key="PRESIGNED" container_certificate="PRESIGNED" container_private_key="PRESIGNED" partition="system"`)
 }
 
+func TestAllowedFilesNoOverride(t *testing.T) {
+	ctx := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			apps: ["app"],
+			allowed_files: ":allowed",
+			updatable: false,
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		filegroup {
+			name: "allowed",
+			srcs: ["allowed.txt"],
+		}
+
+		android_app {
+			name: "app",
+			srcs: ["foo/bar/MyClass.java"],
+			package_name: "foo",
+			sdk_version: "none",
+			system_modules: "none",
+			apex_available: [ "myapex" ],
+		}`,
+	)
+
+	rule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("diffApexContentRule")
+	if expected, actual := "allowed.txt", rule.Args["allowed_files_file"]; expected != actual {
+		t.Errorf("allowed_files_file: expected %q but got %q", expected, actual)
+	}
+}
+
 func TestAllowedFiles(t *testing.T) {
 	ctx := testApex(t, `
 		apex {

@@ -776,10 +776,6 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 // DepsMutator for the overridden properties.
 func (a *apexBundle) OverridablePropertiesDepsMutator(ctx android.BottomUpMutatorContext) {
-	if a.overridableProperties.Allowed_files != nil {
-		android.ExtractSourceDeps(ctx, a.overridableProperties.Allowed_files)
-	}
-
 	commonVariation := ctx.Config().AndroidCommonTarget.Variations()
 	ctx.AddFarVariationDependencies(commonVariation, androidAppTag, a.overridableProperties.Apps...)
 	ctx.AddFarVariationDependencies(commonVariation, rroTag, a.overridableProperties.Rros...)

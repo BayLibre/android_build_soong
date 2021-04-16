@@ -434,9 +434,13 @@ func (p OutputPaths) Strings() []string {
 // If the dependency is not found, a missingErrorDependency is returned.
 // If the module dependency is not a SourceFileProducer or OutputFileProducer, appropriate errors will be returned.
 func getPathsFromModuleDep(ctx ModuleWithDepsPathContext, path, moduleName, tag string) (Paths, error) {
-	module := ctx.GetDirectDepWithTag(moduleName, sourceOrOutputDepTag(tag))
+	module := ctx.GetDirectDepWithTag(moduleName, sourceOrOutputDepTag(tag, false))
 	if module == nil {
-		return nil, missingDependencyError{[]string{moduleName}}
+		// try override
+		module = ctx.GetDirectDepWithTag(moduleName, sourceOrOutputDepTag(tag, true))
+		if module == nil {
+			return nil, missingDependencyError{[]string{moduleName}}
+		}
 	}
 	if aModule, ok := module.(Module); ok && !aModule.Enabled() {
 		return nil, missingDependencyError{[]string{moduleName}}
