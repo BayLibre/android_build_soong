@@ -457,7 +457,7 @@ func bp2buildArchPathDepsMutator(ctx BottomUpMutatorContext) {
 			}
 		}
 	}
-	addPathDepsForProps(ctx, properties)
+	addPathDepsForProps(ctx, properties, baseSourceOrOutput)
 }
 
 // osMutator splits an arch-specific module into a variant for each OS that is enabled for the

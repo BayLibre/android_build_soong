@@ -2757,16 +2757,27 @@ func SrcIsModuleWithTag(s string) (module, tag string) {
 	return "", ""
 }
 
+type sourceOrOutputDependency int
+
+const (
+	baseSourceOrOutput sourceOrOutputDependency = iota
+	overrideSoureOrOutput
+)
+
 type sourceOrOutputDependencyTag struct {
 	blueprint.BaseDependencyTag
-	tag string
+	tag     string
+	depType sourceOrOutputDependency
 }
 
-func sourceOrOutputDepTag(tag string) blueprint.DependencyTag {
-	return sourceOrOutputDependencyTag{tag: tag}
+func sourceOrOutputDepTag(tag string, depType sourceOrOutputDependency) blueprint.DependencyTag {
+	return sourceOrOutputDependencyTag{
+		tag:     tag,
+		depType: depType,
+	}
 }
 
-var SourceDepTag = sourceOrOutputDepTag("")
+var SourceDepTag = sourceOrOutputDepTag("", baseSourceOrOutput)
 
 // Adds necessary dependencies to satisfy filegroup or generated sources modules listed in srcFiles
 // using ":module" syntax, if any.
@@ -2781,7 +2792,7 @@ func ExtractSourcesDeps(ctx BottomUpMutatorContext, srcFiles []string) {
 				ctx.ModuleErrorf("found source dependency duplicate: %q!", s)
 			} else {
 				set[s] = true
-				ctx.AddDependency(ctx.Module(), sourceOrOutputDepTag(t), m)
+				ctx.AddDependency(ctx.Module(), sourceOrOutputDepTag(t, baseSourceOrOutput), m)
 			}
 		}
 	}
@@ -2794,7 +2805,7 @@ func ExtractSourcesDeps(ctx BottomUpMutatorContext, srcFiles []string) {
 func ExtractSourceDeps(ctx BottomUpMutatorContext, s *string) {
 	if s != nil {
 		if m, t := SrcIsModuleWithTag(*s); m != "" {
-			ctx.AddDependency(ctx.Module(), sourceOrOutputDepTag(t), m)
+			ctx.AddDependency(ctx.Module(), sourceOrOutputDepTag(t, baseSourceOrOutput), m)
 		}
 	}
 }
