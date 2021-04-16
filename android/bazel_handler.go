@@ -321,9 +321,8 @@ type builtinBazelRunner struct{}
 // the invocation returned an error code.
 func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.RunName, command bazelCommand,
 	extraFlags ...string) (string, string, error) {
-	cmdFlags := []string{"--output_base=" + paths.outputBase, command.command}
+	cmdFlags := []string{"--output_base=" + absolutePath(paths.outputBase), command.command}
 	cmdFlags = append(cmdFlags, command.expression)
-	cmdFlags = append(cmdFlags, "--package_path=%workspace%/"+paths.intermediatesDir())
 	cmdFlags = append(cmdFlags, "--profile="+shared.BazelMetricsFilename(paths, runName))
 
 	// Set default platforms to canonicalized values for mixed builds requests.
@@ -347,7 +346,7 @@ func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.
 	cmdFlags = append(cmdFlags, extraFlags...)
 
 	bazelCmd := exec.Command(paths.bazelPath, cmdFlags...)
-	bazelCmd.Dir = paths.workspaceDir
+	bazelCmd.Dir = absolutePath(paths.syntheticWorkspaceDir())
 	bazelCmd.Env = append(os.Environ(), "HOME="+paths.homeDir, pwdPrefix(),
 		// Disables local host detection of gcc; toolchain information is defined
 		// explicitly in BUILD files.
@@ -398,7 +397,7 @@ func (context *bazelContext) mainBzlFileContents() []byte {
 
 def _config_node_transition_impl(settings, attr):
     return {
-        "//command_line_option:platforms": "@sourceroot//build/bazel/platforms:android_%s" % attr.arch,
+        "//command_line_option:platforms": "@//build/bazel/platforms:android_%s" % attr.arch,
     }
 
 _config_node_transition = transition(
@@ -452,11 +451,12 @@ phony_root = rule(
 // must be referenced via the local repository prefix, such as
 // @sourceroot//foo/bar:baz.
 func canonicalizeLabel(label string) string {
-	if strings.HasPrefix(label, "//") {
-		return "@sourceroot" + label
-	} else {
-		return "@sourceroot//" + label
-	}
+	return label
+	//if strings.HasPrefix(label, "//") {
+	//	return "@sourceroot" + label
+	//} else {
+	//	return "@sourceroot//" + label
+	//}
 }
 
 func (context *bazelContext) mainBuildFileContents() []byte {
@@ -487,7 +487,7 @@ config_node(name = "%s",
 
 	labelsByArch := map[string][]string{}
 	for val, _ := range context.requests {
-		labelString := fmt.Sprintf("\"%s\"", canonicalizeLabel(val.label))
+		labelString := fmt.Sprintf("\"@%s\"", canonicalizeLabel(val.label))
 		archString := getArchString(val)
 		labelsByArch[archString] = append(labelsByArch[archString], labelString)
 	}
@@ -599,6 +599,14 @@ func (p *bazelPaths) intermediatesDir() string {
 	return filepath.Join(p.buildDir, "bazel")
 }
 
+func (p *bazelPaths) injectedFilesDir() string {
+	return filepath.Join(p.buildDir, "soong_injection")
+}
+
+func (p *bazelPaths) syntheticWorkspaceDir() string {
+	return filepath.Join(p.buildDir, "workspace")
+}
+
 // Issues commands to Bazel to receive results for all cquery requests
 // queued in the BazelContext.
 func (context *bazelContext) InvokeBazel() error {
@@ -608,47 +616,47 @@ func (context *bazelContext) InvokeBazel() error {
 	var cqueryErr string
 	var err error
 
-	intermediatesDirPath := absolutePath(context.paths.intermediatesDir())
-	if _, err := os.Stat(intermediatesDirPath); os.IsNotExist(err) {
-		err = os.Mkdir(intermediatesDirPath, 0777)
+	soongInjectionPath := absolutePath(context.paths.injectedFilesDir())
+	if _, err := os.Stat(soongInjectionPath); os.IsNotExist(err) {
+		err = os.Mkdir(soongInjectionPath, 0777)
 	}
-
 	if err != nil {
 		return err
 	}
+
+	err = ioutil.WriteFile(filepath.Join(soongInjectionPath, "WORKSPACE.bazel"), []byte{}, 0666)
+	if err != nil {
+		return err
+	}
+
 	err = ioutil.WriteFile(
-		filepath.Join(intermediatesDirPath, "main.bzl"),
+		filepath.Join(soongInjectionPath, "main.bzl"),
 		context.mainBzlFileContents(), 0666)
 	if err != nil {
 		return err
 	}
+
 	err = ioutil.WriteFile(
-		filepath.Join(intermediatesDirPath, "BUILD.bazel"),
+		filepath.Join(soongInjectionPath, "BUILD.bazel"),
 		context.mainBuildFileContents(), 0666)
 	if err != nil {
 		return err
 	}
-	cqueryFileRelpath := filepath.Join(context.paths.intermediatesDir(), "buildroot.cquery")
+	cqueryFileRelpath := filepath.Join(context.paths.injectedFilesDir(), "buildroot.cquery")
 	err = ioutil.WriteFile(
 		absolutePath(cqueryFileRelpath),
 		context.cqueryStarlarkFileContents(), 0666)
 	if err != nil {
 		return err
 	}
-	err = ioutil.WriteFile(
-		filepath.Join(intermediatesDirPath, "WORKSPACE.bazel"),
-		context.workspaceFileContents(), 0666)
-	if err != nil {
-		return err
-	}
-	buildrootLabel := "//:buildroot"
+	buildrootLabel := "@soong_injection//:buildroot"
 	cqueryOutput, cqueryErr, err = context.issueBazelCommand(
 		context.paths,
 		bazel.CqueryBuildRootRunName,
 		bazelCommand{"cquery", fmt.Sprintf("kind(rule, deps(%s))", buildrootLabel)},
 		"--output=starlark",
-		"--starlark:file="+cqueryFileRelpath)
-	err = ioutil.WriteFile(filepath.Join(intermediatesDirPath, "cquery.out"),
+		"--starlark:file="+absolutePath(cqueryFileRelpath))
+	err = ioutil.WriteFile(filepath.Join(soongInjectionPath, "cquery.out"),
 		[]byte(cqueryOutput), 0666)
 	if err != nil {
 		return err
@@ -702,7 +710,7 @@ func (context *bazelContext) InvokeBazel() error {
 	_, _, err = context.issueBazelCommand(
 		context.paths,
 		bazel.BazelBuildPhonyRootRunName,
-		bazelCommand{"build", "//:phonyroot"})
+		bazelCommand{"build", "@soong_injection//:phonyroot"})
 
 	if err != nil {
 		return err
