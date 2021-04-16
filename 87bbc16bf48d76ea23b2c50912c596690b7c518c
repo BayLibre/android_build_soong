@@ -16,6 +16,24 @@
       "message": "I wish that the filesystem package doesn\u0027t depend on other packages like cc or linkerconfig.\n\nThere are some other ways to avoid the circular dependency. For example, you can add a new top-down mutator that passes all dependencies of a PackageModule to a dependency that can accept/process the list. For example, \n\n```\ntype PackageAggregator interface { Aggregate(deps []android.Module) }\n```\n\nThe linkerconfig module implements the interface to extract the list of stub libraries from the deps. The extracted list is stored in the linkerconfig struct and used when generating the build rule for the module.\n\n(Note that linkerconfig shouldn\u0027t store the passed deps anywhere)",
       "revId": "87bbc16bf48d76ea23b2c50912c596690b7c518c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8182a695_bb4bf989",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-04-16T00:02:29Z",
+      "side": 1,
+      "message": "If your concern is that the importing of cc/linkerconfig here, I could move them to linkerconfig package.\nBut in any way, we probably need some kind of \"linker_config -\u003e filesystem\" or \"filesystem -\u003e linker_config\" dependency. It\u0027s because not every PackagingBase needs linker.config.pb(cvd hosting tools doesn\u0027t).\n\nI\u0027m thinking of that\n- filesystem doesn\u0027t do anything special about linker.config.pb (or linker_config module)\n- linker_config module knows about \"filesystem\" and when has a callback to be called in PackagingBase.CopyDepsToZip. (Of course this should be an interface like `ContentDescriber`(?)), in which it generates linker.config.pb with stub libraries.\n- PackagingBase calls ContentDescriber.Describe(deps) with the collected \"deps\". This way, we can easily add a new content describing module to any of PackagingBase. (e.g. \"installed-files.txt\" in the package)",
+      "parentUuid": "6b84767e_19860e15",
+      "revId": "87bbc16bf48d76ea23b2c50912c596690b7c518c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
