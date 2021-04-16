@@ -70,6 +70,30 @@
       },
       "revId": "82e257cc81b4b3e574e3ae1626fc8869f1955d03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a20df75_936f5396",
+        "filename": "rust/builder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-04-16T20:42:23Z",
+      "side": 1,
+      "message": "Ah, excellent. Any idea why PathForNdkInstall or PathForMainlineSdksInstall even exist then?",
+      "parentUuid": "2539b3ca_1a152751",
+      "range": {
+        "startLine": 324,
+        "startChar": 19,
+        "endLine": 324,
+        "endChar": 40
+      },
+      "revId": "82e257cc81b4b3e574e3ae1626fc8869f1955d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
