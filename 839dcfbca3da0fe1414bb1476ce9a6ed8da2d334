@@ -34,6 +34,58 @@
       "parentUuid": "a6a57cef_a0a4fda2",
       "revId": "839dcfbca3da0fe1414bb1476ce9a6ed8da2d334",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae82b3c6_a8c20e96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-16T22:46:00Z",
+      "side": 1,
+      "message": "I agree. I much prefer that we leave the option open for this to be a standalone binary not tethered to dependencies on soong. (Also makes this should make this feature more readable IMO)",
+      "parentUuid": "ec054663_b5db08ef",
+      "revId": "839dcfbca3da0fe1414bb1476ce9a6ed8da2d334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9bae2a3_eb167c22",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-16T22:46:00Z",
+      "side": 1,
+      "message": "Apologies, but could you document this code a bit more? I generically know what you\u0027re doing here, but I\u0027m finding individual functions hard to follow 😊",
+      "revId": "839dcfbca3da0fe1414bb1476ce9a6ed8da2d334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79a64288_951506af",
+        "filename": "tests/bootstrap_test.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-16T22:46:00Z",
+      "side": 1,
+      "message": "should be enabled by the time you sync (I hope)",
+      "revId": "839dcfbca3da0fe1414bb1476ce9a6ed8da2d334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
