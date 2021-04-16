@@ -75,7 +75,7 @@ func shouldCollectHeadersForSnapshot(ctx android.ModuleContext, m *Module, apexI
 		ctx.DeviceConfig().RecoverySnapshotVersion() != "current" {
 		return false
 	}
-	if _, _, ok := isVndkSnapshotAware(ctx.DeviceConfig(), m, apexInfo); ok {
+	if _, _, ok := isVndkSnapshotAware(ctx, m, apexInfo); ok {
 		return ctx.Config().VndkSnapshotBuildArtifacts()
 	}
 
