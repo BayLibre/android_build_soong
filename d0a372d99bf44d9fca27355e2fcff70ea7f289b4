@@ -33,6 +33,24 @@
       "message": "Do we have a bug filed?",
       "revId": "d0a372d99bf44d9fca27355e2fcff70ea7f289b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "363e66cc_0142550b",
+        "filename": "tests/bootstrap_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-16T17:07:10Z",
+      "side": 1,
+      "message": "Filed b/185591972",
+      "parentUuid": "ef84c054_cbc607cc",
+      "revId": "d0a372d99bf44d9fca27355e2fcff70ea7f289b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
