@@ -94,6 +94,30 @@
       },
       "revId": "82e257cc81b4b3e574e3ae1626fc8869f1955d03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a126161_ef2c105b",
+        "filename": "rust/builder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-16T20:54:58Z",
+      "side": 1,
+      "message": "Maybe they need an InstallPath instead of an OutputPath?",
+      "parentUuid": "5a20df75_936f5396",
+      "range": {
+        "startLine": 324,
+        "startChar": 19,
+        "endLine": 324,
+        "endChar": 40
+      },
+      "revId": "82e257cc81b4b3e574e3ae1626fc8869f1955d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
