@@ -15,10 +15,15 @@
 package linkerconfig
 
 import (
-	"android/soong/android"
-	"android/soong/etc"
 	"fmt"
+	"sort"
+	"strings"
 
+	"android/soong/android"
+	"android/soong/cc"
+	"android/soong/etc"
+
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 )
 
@@ -34,6 +39,8 @@ func init() {
 func registerLinkerConfigBuildComponent(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("linker_config", linkerConfigFactory)
 }
+
+var PrepareForTestWithLinkerConfigBuildComponents = android.FixtureRegisterWithContext(registerLinkerConfigBuildComponent)
 
 type linkerConfigProperties struct {
 	// source linker configuration property file
@@ -52,6 +59,8 @@ type linkerConfig struct {
 
 	outputFilePath android.OutputPath
 	installDirPath android.InstallPath
+
+	aggregatedDeps []android.PackageDep
 }
 
 // Implement PrebuiltEtcModule interface to fit in APEX prebuilt list.
@@ -80,19 +89,65 @@ func (l *linkerConfig) OutputFiles(tag string) (android.Paths, error) {
 	}
 }
 
+var _ android.PackageAggregator = (*linkerConfig)(nil)
+
+func (l *linkerConfig) AggregatePackageDeps(deps []android.PackageDep) {
+	l.aggregatedDeps = deps
+}
+
+type aggregatorDep struct {
+	blueprint.BaseDependencyTag
+}
+
+func (l *linkerConfig) PackageDepsMutator(mctx android.BottomUpMutatorContext) {
+	for _, d := range l.aggregatedDeps {
+		mctx.AddFarVariationDependencies(d.Target.Variations(), aggregatorDep{}, d.Name)
+	}
+}
+
 func (l *linkerConfig) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	inputFile := android.PathForModuleSrc(ctx, android.String(l.properties.Src))
-	l.outputFilePath = android.PathForModuleOut(ctx, "linker.config.pb").OutputPath
-	l.installDirPath = android.PathForModuleInstall(ctx, "etc")
-	linkerConfigRule := android.NewRuleBuilder(pctx, ctx)
-	linkerConfigRule.Command().
+	input := android.PathForModuleSrc(ctx, android.String(l.properties.Src))
+	output := android.PathForModuleOut(ctx, "linker.config.pb").OutputPath
+
+	// First, convert the input json to protobuf format
+	interimOutput := android.PathForModuleOut(ctx, "temp.pb")
+	builder := android.NewRuleBuilder(pctx, ctx)
+	builder.Command().
 		BuiltTool("conv_linker_config").
 		Flag("proto").
-		FlagWithInput("-s ", inputFile).
-		FlagWithOutput("-o ", l.outputFilePath)
-	linkerConfigRule.Build("conv_linker_config",
-		"Generate linker config protobuf "+l.outputFilePath.String())
+		FlagWithInput("-s ", input).
+		FlagWithOutput("-o ", interimOutput)
 
+	// Secondly, if there's provideLibs gathered, append them
+	var provideLibs []string
+	ctx.WalkDeps(func(child, parent android.Module) bool {
+		if c, ok := child.(*cc.Module); ok && cc.IsStubTarget(c) {
+			for _, ps := range c.PackagingSpecs() {
+				provideLibs = append(provideLibs, ps.FileName())
+			}
+		}
+		return true
+	})
+	provideLibs = android.FirstUniqueStrings(provideLibs)
+	sort.Strings(provideLibs)
+	if len(provideLibs) > 0 {
+		builder.Command().
+			BuiltTool("conv_linker_config").
+			Flag("append").
+			FlagWithInput("-s ", interimOutput).
+			FlagWithOutput("-o ", output).
+			FlagWithArg("--key ", "provideLibs").
+			FlagWithArg("--value ", proptools.ShellEscapeIncludingSpaces(strings.Join(provideLibs, " ")))
+	} else {
+		// If nothing to add, just cp to the final output
+		builder.Command().Text("cp").Input(interimOutput).Output(output)
+	}
+	builder.Temporary(interimOutput)
+	builder.DeleteTemporaryFiles()
+	builder.Build("conv_linker_config", fmt.Sprintf("Generate linker config protobuf %s", output))
+
+	l.outputFilePath = output
+	l.installDirPath = android.PathForModuleInstall(ctx, "etc")
 	if !proptools.BoolDefault(l.properties.Installable, true) {
 		l.SkipInstall()
 	}

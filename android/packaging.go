@@ -299,6 +299,8 @@ type PackageAggregator interface {
 	PackageDepsMutator(mctx BottomUpMutatorContext)
 }
 
+var PrepareForTestWithPackagingComponents = FixtureRegisterWithContext(registerPackagingComponents)
+
 func init() {
 	registerPackagingComponents(InitRegistrationContext)
 }

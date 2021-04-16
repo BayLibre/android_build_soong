@@ -457,7 +457,7 @@ func runAggregatorTest(t *testing.T, bp string, expected []string) {
 			ctx.RegisterModuleType("aggregator", aggregatorTestModuleFactory)
 			ctx.RegisterModuleType("package_module", packageMultiTargetTestModuleFactory)
 		}),
-		FixtureRegisterWithContext(registerPackagingComponents),
+		PrepareForTestWithPackagingComponents,
 		FixtureWithRootAndroidBp(bp),
 	).RunTest(t)
 
