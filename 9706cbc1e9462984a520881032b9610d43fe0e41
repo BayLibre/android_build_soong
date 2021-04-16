@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0df091b_2806bd78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-04-16T04:23:34Z",
+      "side": 1,
+      "message": "I removed unnecessary dependency to cc package since the current commit is intended only to add a basic fixture setup for filesystem package. We can add more and more tests when necessary.",
+      "revId": "9706cbc1e9462984a520881032b9610d43fe0e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

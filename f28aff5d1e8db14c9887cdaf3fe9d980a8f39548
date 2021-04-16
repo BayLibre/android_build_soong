@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7ccb6a1_c6fa933a",
+        "filename": "filesystem/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-04-16T04:23:34Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "eb0fdb36_8538d94a",
+      "revId": "f28aff5d1e8db14c9887cdaf3fe9d980a8f39548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73a1e52b_8811a273",
@@ -84,6 +102,30 @@
       "writtenOn": "2021-04-16T02:57:37Z",
       "side": 1,
       "message": "This is a rule from packaging.go, not filesystem.go. So this looks like a test for packagingbase.",
+      "range": {
+        "startLine": 93,
+        "startChar": 9,
+        "endLine": 93,
+        "endChar": 27
+      },
+      "revId": "f28aff5d1e8db14c9887cdaf3fe9d980a8f39548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c55ab389_6f3900b6",
+        "filename": "filesystem/filesystem_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-04-16T04:23:34Z",
+      "side": 1,
+      "message": "Oh, yeah, this doesn\u0027t belong here.\nRemoved.",
+      "parentUuid": "73a1e52b_8811a273",
       "range": {
         "startLine": 93,
         "startChar": 9,
