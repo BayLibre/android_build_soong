@@ -16,6 +16,23 @@
       "message": "@Colin: I tried to fix that test case, but I\u0027m having a truly horrid day and I wasn\u0027t able to do so in the time I had available :(",
       "revId": "d0a372d99bf44d9fca27355e2fcff70ea7f289b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef84c054_cbc607cc",
+        "filename": "tests/bootstrap_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-16T14:36:11Z",
+      "side": 1,
+      "message": "Do we have a bug filed?",
+      "revId": "d0a372d99bf44d9fca27355e2fcff70ea7f289b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
