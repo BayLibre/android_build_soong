@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8657d14f_14327b30",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-04-16T18:36:34Z",
+      "side": 1,
+      "message": "Is this buildbot-friendly? Would we have access to this file in a buildbot?",
+      "revId": "2201e63a1190a54fade27b3be1cf3d9c4f8b8082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "252f944e_9d6051a7",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-04-16T18:36:34Z",
+      "side": 1,
+      "message": "Don\u0027t we have a message length concern with this error message?",
+      "revId": "2201e63a1190a54fade27b3be1cf3d9c4f8b8082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
