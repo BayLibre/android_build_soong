@@ -34,6 +34,24 @@
       "parentUuid": "6b84767e_19860e15",
       "revId": "87bbc16bf48d76ea23b2c50912c596690b7c518c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b69ce610_9d3a5feb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-16T00:40:33Z",
+      "side": 1,
+      "message": "No. linker_config and filesystem module types shouldn\u0027t be aware of each other because they don\u0027t need to.\n\nCalling the hook in GenerateAndroidBuildActions doesn\u0027t look nice because then the build rule for linker_config is created inside of the filesystem module. (see that ctx in fillinProvideLibs is still that of filesystem)",
+      "parentUuid": "8182a695_bb4bf989",
+      "revId": "87bbc16bf48d76ea23b2c50912c596690b7c518c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
