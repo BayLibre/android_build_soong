@@ -52,6 +52,24 @@
       "parentUuid": "3b981acd_9617ff19",
       "revId": "7a519073464d4ea57e660cea2dc6d680d5e82100",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9545c55_384ea373",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-16T14:56:36Z",
+      "side": 1,
+      "message": "Makes total sense -- I was just joking around.\nI\u0027ve legitimately never approved a CL that *just* added color to text, however, so I\u0027m amused. (I guess I\u0027ve reviewed some CSS-only CLs before, though, which is approximately the same thing)",
+      "parentUuid": "06501eb7_6fb64546",
+      "revId": "7a519073464d4ea57e660cea2dc6d680d5e82100",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
