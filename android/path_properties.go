@@ -34,7 +34,10 @@ func registerPathDepsMutator(ctx RegisterMutatorsContext) {
 // ":module" module reference syntax in a property that is tagged with `android:"path"`.
 func pathDepsMutator(ctx BottomUpMutatorContext) {
 	props := ctx.Module().base().generalProperties
+	addPathDepsForProps(ctx, props, false)
+}
 
+func addPathDepsForProps(ctx BottomUpMutatorContext, props []interface{}, override bool) {
 	// Iterate through each property struct of the module extracting the contents of all properties
 	// tagged with `android:"path"`.
 	var pathProperties []string
@@ -45,10 +48,15 @@ func pathDepsMutator(ctx BottomUpMutatorContext) {
 	// Remove duplicates to avoid multiple dependencies.
 	pathProperties = FirstUniqueStrings(pathProperties)
 
+	deps := make(map[string]bool)
 	// Add dependencies to anything that is a module reference.
 	for _, s := range pathProperties {
 		if m, t := SrcIsModuleWithTag(s); m != "" {
-			ctx.AddDependency(ctx.Module(), sourceOrOutputDepTag(t), m)
+			if _, added := deps[s]; added {
+			} else {
+				deps[s] = true
+				ctx.AddDependency(ctx.Module(), sourceOrOutputDepTag(t, override), m)
+			}
 		}
 	}
 }

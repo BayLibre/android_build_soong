@@ -101,6 +101,7 @@ type OverridableModule interface {
 	Module
 	moduleBase() *OverridableModuleBase
 
+	getOverridableProperties() []interface{}
 	setOverridableProperties(prop []interface{})
 
 	addOverride(o OverrideModule)
@@ -148,6 +149,10 @@ func InitOverridableModule(m OverridableModule, overridesProperty *[]string) {
 
 func (o *OverridableModuleBase) moduleBase() *OverridableModuleBase {
 	return o
+}
+
+func (b *OverridableModuleBase) getOverridableProperties() []interface{} {
+	return b.overridableProperties
 }
 
 func (b *OverridableModuleBase) setOverridableProperties(prop []interface{}) {
@@ -217,6 +222,7 @@ func RegisterOverridePostDepsMutators(ctx RegisterMutatorsContext) {
 	ctx.BottomUp("perform_override", performOverrideMutator).Parallel()
 	// overridableModuleDepsMutator calls OverridablePropertiesDepsMutator so that overridable modules can
 	// add deps from overridable properties.
+	ctx.BottomUp("overridable_paths", overridableModulePathsMutator).Parallel()
 	ctx.BottomUp("overridable_deps", overridableModuleDepsMutator).Parallel()
 	// Because overridableModuleDepsMutator is run after PrebuiltPostDepsMutator,
 	// prebuilt's ReplaceDependencies doesn't affect to those deps added by overridable properties.
@@ -301,6 +307,13 @@ func performOverrideMutator(ctx BottomUpMutatorContext) {
 		ctx.CreateLocalVariations(o.Name())
 		// To allow dependencies to be added without having to know the above variation.
 		ctx.AliasVariation(o.Name())
+	}
+}
+
+func overridableModulePathsMutator(ctx BottomUpMutatorContext) {
+	if b, ok := ctx.Module().(OverridableModule); ok {
+		props := b.getOverridableProperties()
+		addPathDepsForProps(ctx, props, true)
 	}
 }
 
