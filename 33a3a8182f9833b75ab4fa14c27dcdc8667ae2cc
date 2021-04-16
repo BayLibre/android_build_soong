@@ -22,6 +22,30 @@
       },
       "revId": "33a3a8182f9833b75ab4fa14c27dcdc8667ae2cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab6a2c7e_5170b421",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-16T03:39:55Z",
+      "side": 1,
+      "message": "I just thought m nothing would be okay because this CL just changed the type.\nBut your suggestion is fair enough, I will test m instead of m nothing in similar cases.\n\n(WRT this CL, it is already tested by presubmit test)",
+      "parentUuid": "744cf327_070054d9",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 15
+      },
+      "revId": "33a3a8182f9833b75ab4fa14c27dcdc8667ae2cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
