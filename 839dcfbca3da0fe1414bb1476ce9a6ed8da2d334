@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6a57cef_a0a4fda2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-16T11:53:16Z",
+      "side": 1,
+      "message": "WDYT?\n\nI was vacillating between using the android.* file system I/O and regular Golang, then ended up with the latter because:\n\n- android. didn\u0027t have Readdir() and it looked like I am supposed to use Glob() instead\n- Globbing was not exposed from Blueprint except through singleton/module contexts\n- I\u0027m not entirely sure if I want to have the symlink forest creation in the soong_build binary and this makes it easy to change that\n",
+      "revId": "839dcfbca3da0fe1414bb1476ce9a6ed8da2d334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
