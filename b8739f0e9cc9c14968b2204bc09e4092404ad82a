@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d63de6d8_4533936f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-16T07:17:38Z",
+      "side": 1,
+      "message": "Unfortunately, I can\u0027t submit this now because test_glob_noop_incremental is red :(",
+      "revId": "b8739f0e9cc9c14968b2204bc09e4092404ad82a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
