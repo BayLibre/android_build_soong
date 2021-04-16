@@ -52,6 +52,53 @@ func (m *componentTestModule) GenerateAndroidBuildActions(ctx ModuleContext) {
 	ctx.InstallFile(installDir, m.Name(), builtFile)
 }
 
+// Another module to be packaged. This is an aggregator module which can depend on other modules
+// in the same package.
+type aggregatorTestModule struct {
+	ModuleBase
+
+	aggregatedDeps []PackageDep
+	filePaths      []string
+}
+
+func aggregatorTestModuleFactory() Module {
+	m := &aggregatorTestModule{}
+	InitAndroidArchModule(m, HostAndDeviceSupported, MultilibCommon)
+	return m
+}
+
+func (m *aggregatorTestModule) DepsMutator(ctx BottomUpMutatorContext) {
+}
+
+type aggregatorDepTag struct {
+	blueprint.BaseDependencyTag
+}
+
+var _ PackageAggregator = (*aggregatorTestModule)(nil)
+
+// Implements PackageAggregator
+func (m *aggregatorTestModule) AggregatePackageDeps(deps []PackageDep) {
+	m.aggregatedDeps = deps
+}
+
+// Implements PackageAggregator
+func (m *aggregatorTestModule) PackageDepsMutator(mctx BottomUpMutatorContext) {
+	for _, d := range m.aggregatedDeps {
+		mctx.AddFarVariationDependencies(d.Target.Variations(), aggregatorDepTag{}, d.Name)
+	}
+}
+
+func (m *aggregatorTestModule) GenerateAndroidBuildActions(ctx ModuleContext) {
+	for _, dep := range ctx.GetDirectDepsWithTag(aggregatorDepTag{}) {
+		for _, ps := range dep.TransitivePackagingSpecs() {
+			m.filePaths = append(m.filePaths, ps.RelPathInPackage())
+		}
+	}
+	builtFile := PathForModuleOut(ctx, m.Name())
+	installDir := PathForModuleInstall(ctx, "etc")
+	ctx.InstallFile(installDir, m.Name(), builtFile)
+}
+
 // Module that itself is a package
 type packageTestModule struct {
 	ModuleBase
@@ -110,8 +157,10 @@ func runPackagingTest(t *testing.T, multitarget bool, bp string, expected []stri
 		PrepareForTestWithArchMutator,
 		FixtureRegisterWithContext(func(ctx RegistrationContext) {
 			ctx.RegisterModuleType("component", componentTestModuleFactory)
+			ctx.RegisterModuleType("aggregator", aggregatorTestModuleFactory)
 			ctx.RegisterModuleType("package_module", moduleFactory)
 		}),
+		FixtureRegisterWithContext(registerPackagingComponents),
 		FixtureWithRootAndroidBp(bp),
 	).RunTest(t)
 
@@ -244,6 +293,38 @@ func TestPackagingBaseMultiTarget(t *testing.T) {
 			compile_multilib: "both",
 		}
 		`, []string{"lib32/foo", "lib64/foo", "lib64/bar"})
+
+	runPackagingTest(t, multiTarget,
+		`
+		component {
+			name: "foo",
+			deps: ["bar"],
+		}
+
+		component {
+			name: "bar",
+		}
+
+		aggregator {
+			name: "alice",
+		}
+
+		aggregator {
+			name: "bob",
+		}
+
+		package_module {
+			name: "package",
+			deps: ["foo"],
+			multilib: {
+				common: {
+					deps: ["alice", "bob"],
+				},
+			},
+			compile_multilib: "both",
+		}
+		`, []string{"lib32/foo", "lib32/bar", "lib64/foo", "lib64/bar", "etc/alice", "etc/bob"})
+
 }
 
 func TestPackagingBaseSingleTarget(t *testing.T) {
@@ -364,4 +445,56 @@ func TestPackagingBaseSingleTarget(t *testing.T) {
 			install_deps: ["bar"],
 		}
 		`, []string{"lib64/foo"})
+}
+
+func runAggregatorTest(t *testing.T, bp string, expected []string) {
+	t.Helper()
+
+	result := GroupFixturePreparers(
+		PrepareForTestWithArchMutator,
+		FixtureRegisterWithContext(func(ctx RegistrationContext) {
+			ctx.RegisterModuleType("component", componentTestModuleFactory)
+			ctx.RegisterModuleType("aggregator", aggregatorTestModuleFactory)
+			ctx.RegisterModuleType("package_module", packageMultiTargetTestModuleFactory)
+		}),
+		FixtureRegisterWithContext(registerPackagingComponents),
+		FixtureWithRootAndroidBp(bp),
+	).RunTest(t)
+
+	archVariant := "android_common"
+	p := result.Module("aggr", archVariant).(*aggregatorTestModule)
+	actual := p.filePaths
+	actual = SortedUniqueStrings(actual)
+	expected = SortedUniqueStrings(expected)
+	AssertDeepEquals(t, "file paths", expected, actual)
+}
+
+func TestPackagingBaseAggregator(t *testing.T) {
+	runAggregatorTest(t,
+		`
+		component {
+			name: "foo",
+			deps: ["bar"],
+		}
+
+		component {
+			name: "bar",
+		}
+
+		aggregator {
+			name: "aggr",
+		}
+
+		package_module {
+			name: "package",
+			deps: ["foo"],
+			multilib: {
+				common: {
+					deps: ["aggr"],
+				},
+			},
+			compile_multilib: "both",
+		}
+		`, []string{"lib32/foo", "lib32/bar", "lib64/foo", "lib64/bar"})
+
 }
