@@ -125,6 +125,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86f5c40_3f852ee9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-16T00:36:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd984e9_754f6752",
+      "revId": "7bdf5527203a1cdf828b6030692d5f1f101142c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41a77ae5_b6748a2b",
@@ -138,6 +156,30 @@
       "writtenOn": "2021-04-15T22:58:55Z",
       "side": 1,
       "message": "Maybe instead of generating BUILD files for the complete tree, we could just generate BUILD files for the complete subtrees specified in android/bazel.go ?\n\ne.g. currently\n\n\tbp2buildDefaultConfig \u003d Bp2BuildConfig{\n\t\t\"bionic\":                Bp2BuildDefaultTrueRecursively,\n\t\t\"external/gwp_asan\":     Bp2BuildDefaultTrueRecursively,\n\t\t\"system/core/libcutils\": Bp2BuildDefaultTrueRecursively,\n\t\t\"system/logging/liblog\": Bp2BuildDefaultTrueRecursively,\n\t}",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 18
+      },
+      "revId": "7bdf5527203a1cdf828b6030692d5f1f101142c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0ba5684_27442351",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-16T00:36:53Z",
+      "side": 1,
+      "message": "(marking as resolved since generating everything also seems fine)",
+      "parentUuid": "41a77ae5_b6748a2b",
       "range": {
         "startLine": 188,
         "startChar": 1,
