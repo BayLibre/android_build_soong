@@ -255,8 +255,6 @@ func runCommand(command *sbox_proto.Command, tempDir string) (depFile string, er
 		return "", err
 	}
 
-	commandDescription := rawCommand
-
 	cmd := exec.Command("bash", "-c", rawCommand)
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = os.Stdout
@@ -285,7 +283,16 @@ func runCommand(command *sbox_proto.Command, tempDir string) (depFile string, er
 	}
 
 	if exit, ok := err.(*exec.ExitError); ok && !exit.Success() {
-		return "", fmt.Errorf("sbox command failed with err:\n%s\n%w\n", commandDescription, err)
+		commandLineFile := filepath.Join(tempDir, "command.txt")
+		ioutil.WriteFile(commandLineFile, []byte(rawCommand+"\n"), 0666)
+		descriptiveErr := fmt.Errorf(
+			"* The failing command was run inside an sbox sandbox with temporary directory\n"+
+				"* %s\n"+
+				"* The failing command line can be found in\n"+
+				"* %s\n"+
+				"* %w\n",
+			tempDir, commandLineFile, err)
+		return "", descriptiveErr
 	} else if err != nil {
 		return "", err
 	}
@@ -298,7 +305,7 @@ func runCommand(command *sbox_proto.Command, tempDir string) (depFile string, er
 
 		// build error message
 		errorMessage := "mismatch between declared and actual outputs\n"
-		errorMessage += "in sbox command(" + commandDescription + ")\n\n"
+		errorMessage += "in sbox command(" + rawCommand + ")\n\n"
 		errorMessage += "in sandbox " + tempDir + ",\n"
 		errorMessage += fmt.Sprintf("failed to create %v files:\n", len(missingOutputErrors))
 		for _, missingOutputError := range missingOutputErrors {
