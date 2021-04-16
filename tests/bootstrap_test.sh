@@ -126,7 +126,7 @@ function test_glob_noop_incremental() {
 
   # This test needs to start from a clean build, but setup creates an
   # initialized tree that has already been built once.  Clear the out
-  # directory to start from scratch.
+  # directory to start from scratch (see b/185591972)
   rm -rf out
 
   mkdir -p a
@@ -566,6 +566,7 @@ function test_dump_json_module_graph() {
     fail "JSON file was not created"
   fi
 }
+
 
 test_smoke
 test_null_build
