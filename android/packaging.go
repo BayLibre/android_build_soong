@@ -188,14 +188,29 @@ func (PackagingItemAlwaysDepTag) IsPackagingItem() bool {
 
 // See PackageModule.AddDeps
 func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.DependencyTag) {
+	for _, d := range p.gatherDeps(ctx) {
+		ctx.AddFarVariationDependencies(d.Target.Variations(), depTag, d.Name)
+	}
+}
+
+// PackageDep represents a dependency from a PackageModule that can be passed to PackageAggregator
+// modules.
+type PackageDep struct {
+	Name   string // name of the dependency
+	Target        // android.Target for which the dependency is added
+}
+
+func (p *PackagingBase) gatherDeps(ctx BaseModuleContext) []PackageDep {
+	var deps []PackageDep
 	for _, t := range p.getSupportedTargets(ctx) {
 		for _, dep := range p.getDepsForArch(ctx, t.Arch.ArchType) {
 			if p.IgnoreMissingDependencies && !ctx.OtherModuleExists(dep) {
 				continue
 			}
-			ctx.AddFarVariationDependencies(t.Variations(), depTag, dep)
+			deps = append(deps, PackageDep{Name: dep, Target: t})
 		}
 	}
+	return deps
 }
 
 // See PackageModule.CopyDepsToZip
@@ -268,4 +283,71 @@ func (d *packagingSpecsDepSet) ToList() []PackagingSpec {
 		return nil
 	}
 	return d.depSet.ToList().([]PackagingSpec)
+}
+
+// PackageAggregator is an interface that a module can implement to depend on other modules in the
+// same package.
+type PackageAggregator interface {
+	// AggregatePackageDeps passes the dependency list of a PackageModule down to this module
+	// implementing PackageAggregator interface. Each dependency comes with the target that it
+	// is added for. The dependency list doesn't include PackageAggregator modules, because
+	// otherwise there will be circular dependency among them.
+	AggregatePackageDeps(deps []PackageDep)
+
+	// PackageDepsMutator may add dependencies to the dependency list passed via the prior call
+	// to AggregatePackageDeps.
+	PackageDepsMutator(mctx BottomUpMutatorContext)
+}
+
+func init() {
+	registerPackagingComponents(InitRegistrationContext)
+}
+
+func registerPackagingComponents(ctx RegistrationContext) {
+	ctx.PostDepsMutators(registerPostDepsMutators)
+}
+
+func registerPostDepsMutators(ctx RegisterMutatorsContext) {
+	ctx.TopDown("package_deps", packageAggregationMutator).Parallel()
+	ctx.BottomUp("package_deps", packageDepsMutator).Parallel()
+}
+
+func packageAggregationMutator(mctx TopDownMutatorContext) {
+	p, ok := mctx.Module().(PackageModule)
+	if !ok {
+		return
+	}
+	pb := p.packagingBase()
+
+	// Gather aggregators so that we can filter them out from deps. Otherwise, there will be
+	// circular dependencies among aggregators.
+	var aggregators []string
+	mctx.VisitDirectDeps(func(child Module) {
+		if _, ok := child.(PackageAggregator); ok {
+			name := mctx.OtherModuleName(child)
+			aggregators = append(aggregators, name)
+		}
+	})
+
+	// Gather deps
+	var deps []PackageDep
+	for _, d := range pb.gatherDeps(mctx) {
+		if InList(d.Name, aggregators) {
+			continue
+		}
+		deps = append(deps, d)
+	}
+
+	// Pass deps down to aggregators if any
+	mctx.VisitDirectDeps(func(child Module) {
+		if pa, ok := child.(PackageAggregator); ok {
+			pa.AggregatePackageDeps(deps)
+		}
+	})
+}
+
+func packageDepsMutator(mctx BottomUpMutatorContext) {
+	if p, ok := mctx.Module().(PackageAggregator); ok {
+		p.PackageDepsMutator(mctx)
+	}
 }
