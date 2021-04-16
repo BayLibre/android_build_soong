@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c05082b_986383d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-04-16T16:42:45Z",
+      "side": 1,
+      "message": "test failures are from renderscript:\n```\nandroid.renderscript.RSRuntimeException: Loading of ScriptC script failed.\n\tat android.renderscript.ScriptC.\u003cinit\u003e(ScriptC.java:82)\n\tat android.cts.rscpp.ScriptC_verify.\u003cinit\u003e(ScriptC_verify.java:37)\n\tat android.cts.rscpp.RSCppTest.setUp(RSCppTest.java:117)\n\tat junit.framework.TestCase.runBare(TestCase.java:132)\n\tat junit.framework.TestResult$1.protect(TestResult.java:115)\n\tat androidx.test.internal.runner.junit3.AndroidTestResult.runProtected(AndroidTestResult.java:73)\n\tat junit.framework.TestResult.run(TestResult.java:118)\n\tat androidx.test.internal.runner.junit3.AndroidTestResult.run(AndroidTestResult.java:51)\n\tat junit.framework.TestCase.run(TestCase.java:124)\n\tat androidx.test.internal.runner.junit3.NonLeakyTestSuite$NonLeakyTest.run(NonLeakyTestSuite.java:62)\n\tat androidx.test.internal.runner.junit3.AndroidTestSuite$2.run(AndroidTestSuite.java:101)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:462)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)\n\tat java.lang.Thread.run(Thread.java:920)\n```\n\ncould that actually be caused by this? are ELF files involved?\n\n(i\u0027ll kick off treehugger again anyway...)",
+      "revId": "315b6ded11c6e806877e00ce94c8f154edb2b138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
