@@ -39,6 +39,30 @@
       },
       "revId": "819266ce171fb937a6605fc5ecfd0e211475b697",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e99284_61ee5a08",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-04-16T14:06:26Z",
+      "side": 1,
+      "message": "Thanks for catching that!\nI used the function for my local test but forgot to remove it.\nUpdated!",
+      "parentUuid": "23395118_83d0ca22",
+      "range": {
+        "startLine": 605,
+        "startChar": 1,
+        "endLine": 605,
+        "endChar": 24
+      },
+      "revId": "819266ce171fb937a6605fc5ecfd0e211475b697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
