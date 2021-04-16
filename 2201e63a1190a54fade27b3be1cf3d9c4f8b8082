@@ -90,6 +90,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6e8e9f0_304b81df",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-16T21:57:27Z",
+      "side": 1,
+      "message": "Switched to buffering the output and printing the whole command line before the output on failure.  It\u0027s still a big wall of text, but very similar to the non-sbox case, and the useful output is at the bottom instead of in the middle.",
+      "parentUuid": "f0d8f730_428b4421",
+      "revId": "2201e63a1190a54fade27b3be1cf3d9c4f8b8082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "252f944e_9d6051a7",
