@@ -51,6 +51,24 @@
       "parentUuid": "ef84c054_cbc607cc",
       "revId": "d0a372d99bf44d9fca27355e2fcff70ea7f289b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "711e3495_45bcb49c",
+        "filename": "tests/bootstrap_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-16T18:46:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "363e66cc_0142550b",
+      "revId": "d0a372d99bf44d9fca27355e2fcff70ea7f289b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
