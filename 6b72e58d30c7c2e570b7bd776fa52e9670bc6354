@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b368c6e2_d1b453e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-16T14:37:45Z",
+      "side": 1,
+      "message": "`adb root` is probably not required for reading logcat, I just have it out of habit because I sometimes inspect files and so on with `adb shell`.\n\nRe how long to wait, I normally wait until the cuttlefish emulator posts a message VIRTUAL_DEVICE_BOOT_COMPLETED. Or else you can grep logcat for \u0027Posting BOOT_COMPLETED\u0027.",
+      "parentUuid": "aab3300c_595c099a",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "6b72e58d30c7c2e570b7bd776fa52e9670bc6354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "863beb77_09b92c84",
