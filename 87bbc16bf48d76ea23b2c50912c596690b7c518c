@@ -52,6 +52,23 @@
       "parentUuid": "8182a695_bb4bf989",
       "revId": "87bbc16bf48d76ea23b2c50912c596690b7c518c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96a63fb7_1a939dd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-04-16T00:50:26Z",
+      "side": 1,
+      "message": "Adding Kiyoung, he is the author of linker_config module",
+      "revId": "87bbc16bf48d76ea23b2c50912c596690b7c518c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
