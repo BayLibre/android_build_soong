@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bb7f74f1_c622af10",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-16T20:44:29Z",
+      "side": 1,
+      "message": "It would not be available in the buildbot, but I think it is low enough value that it is a reasonable tradeoff.",
+      "parentUuid": "8657d14f_14327b30",
+      "revId": "2201e63a1190a54fade27b3be1cf3d9c4f8b8082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "252f944e_9d6051a7",
         "filename": "cmd/sbox/sbox.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-16T18:36:34Z",
       "side": 1,
       "message": "Don\u0027t we have a message length concern with this error message?",
+      "revId": "2201e63a1190a54fade27b3be1cf3d9c4f8b8082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eef076d_d6deff5c",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-16T20:44:29Z",
+      "side": 1,
+      "message": "This message is much rarer, and the sign of a misconfigured rule rather than a failing tool.  I can look at improving this error message in another CL.",
+      "parentUuid": "252f944e_9d6051a7",
       "revId": "2201e63a1190a54fade27b3be1cf3d9c4f8b8082",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
