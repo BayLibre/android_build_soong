@@ -16,6 +16,7 @@ package bp2build
 
 import (
 	"android/soong/android"
+
 	"fmt"
 	"os"
 	"strings"
