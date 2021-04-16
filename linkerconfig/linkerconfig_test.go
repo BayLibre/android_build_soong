@@ -28,7 +28,7 @@ func TestMain(m *testing.M) {
 
 var prepareForLinkerConfigTest = android.GroupFixturePreparers(
 	android.PrepareForTestWithAndroidBuildComponents,
-	android.FixtureRegisterWithContext(registerLinkerConfigBuildComponent),
+	PrepareForTestWithLinkerConfigBuildComponents,
 	android.FixtureAddFile("linker.config.json", nil),
 )
 

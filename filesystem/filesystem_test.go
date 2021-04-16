@@ -19,6 +19,8 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/cc"
+	"android/soong/linkerconfig"
 )
 
 func TestMain(m *testing.M) {
@@ -27,6 +29,9 @@ func TestMain(m *testing.M) {
 
 var fixture = android.GroupFixturePreparers(
 	android.PrepareForIntegrationTestWithAndroid,
+	android.PrepareForTestWithPackagingComponents,
+	cc.PrepareForIntegrationTestWithCc,
+	linkerconfig.PrepareForTestWithLinkerConfigBuildComponents,
 	PrepareForTestWithFilesystemBuildComponents,
 )
 
@@ -39,4 +44,34 @@ func TestFileSystemDeps(t *testing.T) {
 
 	// produces "myfilesystem.img"
 	result.ModuleForTests("myfilesystem", "android_common").Output("myfilesystem.img")
+}
+
+func TestFileSystemFillsLinkerConfigWithStubLibs(t *testing.T) {
+	result := fixture.RunTestWithBp(t, `
+		android_filesystem {
+			name: "myfilesystem",
+			deps: [
+				"libfoo",
+				"mylinkerconfig",
+			],
+		}
+
+		cc_library {
+			name: "libfoo",
+			stubs: {
+				symbol_file: "libfoo.map.txt",
+			},
+		}
+
+		linker_config {
+			name: "mylinkerconfig",
+			src: "linker.config.json",
+		}
+	`)
+
+	module := result.ModuleForTests("mylinkerconfig", "android_arm64_armv8-a")
+	output := module.Output("linker.config.pb")
+
+	android.AssertStringDoesContain(t, "linker.config.pb should have libfoo",
+		output.RuleParams.Command, "libfoo.so")
 }
