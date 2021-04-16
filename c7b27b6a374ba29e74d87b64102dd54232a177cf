@@ -691,6 +691,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0be2d4ba_97d052f0",
+        "filename": "dexpreopt/dexpreopt_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-16T04:53:06Z",
+      "side": 1,
+      "message": "\u003e 1. Let\u0027s export dexpreopt_gen binary together with dexpreopt.config files, then you can use it to read the configs, and no compatibility checks will be needed. You\u0027ll need some logic to generate dexpreopt commands for /product anyway, so why not reuse dexproept_gen for this?\n\nI expect that dexpreopt_gen binary and global config comes from system build, and module config comes from vendor build. If we use dexpreopt_gen binary from vendor, we should take care of compatibility of global config instead.\n\n\u003e 2. Please write a design doc for this whole work (b/158843648).\nHere is rough design(or procedure which I expect)\nhttps://docs.google.com/document/d/1UmQWfRCGb72p3N5ijL6rEzEcm_OxxpyqYCSyZ8IDcm0/edit?resourcekey\u003d0-WT_q7k_Qixlb-X0BnxTf5A\nI feel like I need to write down the detailed one.\n\n\n(And I feel like having the json validator owned by me(or team) sounds good, it depends on discussion on (1), and remove the original case anyway)",
+      "parentUuid": "babf9511_b1a63464",
+      "range": {
+        "startLine": 189,
+        "startChar": 5,
+        "endLine": 189,
+        "endChar": 37
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1663c8f5_3b34d925",
         "filename": "java/dexpreopt.go",
         "patchSetId": 4

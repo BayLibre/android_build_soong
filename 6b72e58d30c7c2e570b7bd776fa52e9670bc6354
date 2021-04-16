@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aab3300c_595c099a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-16T04:53:06Z",
+      "side": 1,
+      "message": "Oh, thanks for letting me know. The TC looks super useful for me. I will test it for following CLs, and the E2E test.\n\nBTW, I have a few questions, adb root is required? and how long should I wait for the message for mismatch failure?",
+      "parentUuid": "d3631f05_4bc97acf",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "6b72e58d30c7c2e570b7bd776fa52e9670bc6354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "863beb77_09b92c84",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-15T11:41:59Z",
       "side": 1,
       "message": "Drop. Maybe also move the comment out of struct definition and expand it to explain what is the purpose of this struct.",
+      "range": {
+        "startLine": 266,
+        "startChar": 46,
+        "endLine": 266,
+        "endChar": 51
+      },
+      "revId": "6b72e58d30c7c2e570b7bd776fa52e9670bc6354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9a0d728_d300c097",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-16T04:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "863beb77_09b92c84",
       "range": {
         "startLine": 266,
         "startChar": 46,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a08b0e4a_caad7dab",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-16T04:53:06Z",
+      "side": 1,
+      "message": "changed to path\u0027s\u0027List according to []android.OutputPaths.",
+      "parentUuid": "e5291f0f_b86b1c56",
+      "range": {
+        "startLine": 312,
+        "startChar": 28,
+        "endLine": 312,
+        "endChar": 37
+      },
+      "revId": "6b72e58d30c7c2e570b7bd776fa52e9670bc6354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3bec211_6922c26a",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-15T11:41:59Z",
       "side": 1,
       "message": "Nit: I generally try to break comment lines at 100 characters boundary. It\u0027s not a big deal but looks nicer if all comments have approximately the same width.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 58
+      },
+      "revId": "6b72e58d30c7c2e570b7bd776fa52e9670bc6354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90602348_f29ae534",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-16T04:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3bec211_6922c26a",
       "range": {
         "startLine": 44,
         "startChar": 0,
@@ -112,6 +208,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b153a1b7_46932b76",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-16T04:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc5699b4_2a9641aa",
+      "revId": "6b72e58d30c7c2e570b7bd776fa52e9670bc6354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "617dd400_668ad22b",
         "filename": "java/dexpreopt.go",
         "patchSetId": 6
@@ -123,6 +237,24 @@
       "writtenOn": "2021-04-15T11:41:59Z",
       "side": 1,
       "message": "I remember that I had a problem (like a Soong crash) with non-dexpreopted modules reaching this point to generate the full dexpreopt config, so I\u0027m surprised that you don\u0027t have it. It might be that (d.isApp || d.isTest) condition filters out those cases. Anyway, if presubmit passes it should be ok.",
+      "revId": "6b72e58d30c7c2e570b7bd776fa52e9670bc6354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "343b0010_8a0e1474",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-16T04:53:06Z",
+      "side": 1,
+      "message": "With (d.isApp || d.isTest) condition, it doesn\u0027t break the build even though dexpreopt is disabled.\n\nThe thing to do is generating config for app as well regardless the dexpreopt is disabled.(such as with TARGET_BUILD_UNBUNDLED_IMAGE\u003dtrue)",
+      "parentUuid": "617dd400_668ad22b",
       "revId": "6b72e58d30c7c2e570b7bd776fa52e9670bc6354",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
