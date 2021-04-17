@@ -69,6 +69,24 @@
       "parentUuid": "363e66cc_0142550b",
       "revId": "d0a372d99bf44d9fca27355e2fcff70ea7f289b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e888868_71b668e3",
+        "filename": "tests/bootstrap_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-17T02:40:04Z",
+      "side": 1,
+      "message": "This is fixed now.",
+      "parentUuid": "711e3495_45bcb49c",
+      "revId": "d0a372d99bf44d9fca27355e2fcff70ea7f289b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
