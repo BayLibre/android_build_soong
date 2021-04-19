@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6b4c4a1_0341d94d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-04-19T02:30:53Z",
+      "side": 1,
+      "message": "I\u0027m curious if this works with two modules. Yeah, for example, having installed-files.txt and linker.config.pb. Another circular dependency (at soong level)?",
+      "range": {
+        "startLine": 11,
+        "startChar": 27,
+        "endLine": 13,
+        "endChar": 48
+      },
+      "revId": "2fc2c5b2130c5e94bc6acb9e52e502a4e09b4ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b486c10_43e6c277",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-04-19T02:30:53Z",
+      "side": 1,
+      "message": "And, I\u0027m curious if this would work when there\u0027s two ",
+      "revId": "2fc2c5b2130c5e94bc6acb9e52e502a4e09b4ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "43c85653_85a4abe0",
         "filename": "android/packaging.go",
         "patchSetId": 2
