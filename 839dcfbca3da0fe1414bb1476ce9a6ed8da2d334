@@ -73,6 +73,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "51d89595_8cb5e3ae",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-19T10:14:23Z",
+      "side": 1,
+      "message": "Better? I admit I wrote this change in a hurry :)",
+      "parentUuid": "b9bae2a3_eb167c22",
+      "revId": "839dcfbca3da0fe1414bb1476ce9a6ed8da2d334",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "79a64288_951506af",
         "filename": "tests/bootstrap_test.sh",
         "patchSetId": 3
