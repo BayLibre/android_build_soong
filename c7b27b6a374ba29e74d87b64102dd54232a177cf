@@ -739,6 +739,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "29092c9b_810f3248",
+        "filename": "dexpreopt/dexpreopt_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-19T12:28:47Z",
+      "side": 1,
+      "message": "I elaborated the doc a little bit. (explaining that where does each config come from.)\n\nAnd I\u0027m going to upload a validation script in the following CL.\n\nWhich things to do are remaining in this CL?",
+      "parentUuid": "6939a5a4_0a53f6bb",
+      "range": {
+        "startLine": 189,
+        "startChar": 5,
+        "endLine": 189,
+        "endChar": 37
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1663c8f5_3b34d925",
         "filename": "java/dexpreopt.go",
         "patchSetId": 4
