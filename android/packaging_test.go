@@ -125,13 +125,8 @@ func packageTestModuleFactory() Module {
 	return module
 }
 
-type packagingDepTag struct {
-	blueprint.BaseDependencyTag
-	PackagingItemAlwaysDepTag
-}
-
 func (m *packageTestModule) DepsMutator(ctx BottomUpMutatorContext) {
-	m.AddDeps(ctx, packagingDepTag{})
+	m.AddDeps(ctx, false)
 	ctx.AddDependency(ctx.Module(), installDepTag{}, m.properties.Install_deps...)
 }
 
