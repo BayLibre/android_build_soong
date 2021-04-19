@@ -203,6 +203,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "782d69ad_069010a6",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-19T12:18:07Z",
+      "side": 1,
+      "message": "I think I am not following you. This if block is to filter-out aggregators from the dependencies which we will pass down to the aggregators, otherwise the aggregators will experience circular dependencies. Could you elaborate what you mean?",
+      "parentUuid": "73969235_75b1d01a",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 3
+      },
+      "revId": "2fc2c5b2130c5e94bc6acb9e52e502a4e09b4ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d8464ee9_443fe02c",
         "filename": "android/packaging.go",
         "patchSetId": 2
