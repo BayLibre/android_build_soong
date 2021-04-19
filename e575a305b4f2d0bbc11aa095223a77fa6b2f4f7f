@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4e3eaa69_f224b6ea",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-04-19T07:58:25Z",
+      "side": 1,
+      "message": "Oh, I see this comes from the other CL (cvd-host-package usage).\nHmm, this works fine today, but I\u0027m worried that we\u0027re adding dependencies(calling AddDependencies) for those \"extra deps\" with our own dep-tag, which deprives the derived class of accessing those dependencies. (e.g. VisitDirectDepsWithTag(..??)).",
+      "parentUuid": "f2c713e1_de50b110",
+      "range": {
+        "startLine": 69,
+        "startChar": 39,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "e575a305b4f2d0bbc11aa095223a77fa6b2f4f7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a19e1ecc_173d8135",
         "filename": "android/packaging.go",
         "patchSetId": 1
