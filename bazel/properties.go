@@ -35,11 +35,25 @@ const BazelTargetModuleNamePrefix = "__bp2build__"
 
 var productVariableSubstitutionPattern = regexp.MustCompile("%(d|s)")
 
-// Label is used to represent a Bazel compatible Label. Also stores the original bp text to support
-// string replacement.
+// Label is used to represent a Bazel compatible Label. Also stores the original
+// bp text to support string replacement.
 type Label struct {
-	Bp_text string
-	Label   string
+	// The string representation of a Bazel target label. This can be a
+	// relative or fully qualified label.
+	//
+	// These labels are used for generating BUILD files and Bazel query in mixed
+	// builds.
+	Label string
+
+	// The original Soong/Blueprint module name that the label was derived from.
+	// While there is a reversible 1:1 mapping from the module name to Bazel
+	// label with bp2build that could make computing the original module name
+	// from the label possible, it is not the case for handcrafted targets,
+	// where modules can have a custom label mapping through the { bazel_module:
+	// { label: <label> } } property. With handcrafted labels, those modules
+	// don't go through bp2build conversion, but relies on handcrafted
+	// targets in the source tree.
+	OriginalModuleName string
 }
 
 // LabelList is used to represent a list of Bazel labels.
