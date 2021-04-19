@@ -18,20 +18,56 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/java"
 )
 
-func TestSnapshotWithBootImage(t *testing.T) {
+func TestSnapshotWithBootImage_ImageName(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForSdkTestWithJava,
+		prepareForSdkTestWithApex,
+
+		// Some additional files needed for the art apex.
+		android.FixtureMergeMockFs(android.MockFS{
+			"com.android.art.avbpubkey":                          nil,
+			"com.android.art.pem":                                nil,
+			"system/sepolicy/apex/com.android.art-file_contexts": nil,
+		}),
+		java.FixtureConfigureBootJars("com.android.art:mybootlib"),
 		android.FixtureWithRootAndroidBp(`
 			sdk {
 				name: "mysdk",
 				boot_images: ["mybootimage"],
+				java_boot_libs: ["mybootlib"],
+			}
+
+			apex {
+				name: "com.android.art",
+				key: "com.android.art.key",
+				bootclasspath_fragments: [
+					"mybootimage",
+				],
+				updatable: false,
 			}
 
 			boot_image {
 				name: "mybootimage",
 				image_name: "art",
+				apex_available: ["com.android.art"],
+			}
+
+			apex_key {
+				name: "com.android.art.key",
+				public_key: "com.android.art.avbpubkey",
+				private_key: "com.android.art.pem",
+			}
+
+			java_library {
+				name: "mybootlib",
+				srcs: ["Test.java"],
+				system_modules: "none",
+				sdk_version: "none",
+				compile_dex: true,
+				apex_available: ["com.android.art"],
 			}
 		`),
 	).RunTest(t)
@@ -44,8 +80,16 @@ prebuilt_boot_image {
     name: "mybootimage",
     prefer: false,
     visibility: ["//visibility:public"],
-    apex_available: ["//apex_available:platform"],
+    apex_available: ["com.android.art"],
     image_name: "art",
+}
+
+java_import {
+    name: "mybootlib",
+    prefer: false,
+    visibility: ["//visibility:public"],
+    apex_available: ["com.android.art"],
+    jars: ["java/mybootlib.jar"],
 }
 `),
 		checkVersionedAndroidBpContents(`
@@ -55,17 +99,118 @@ prebuilt_boot_image {
     name: "mysdk_mybootimage@current",
     sdk_member_name: "mybootimage",
     visibility: ["//visibility:public"],
-    apex_available: ["//apex_available:platform"],
+    apex_available: ["com.android.art"],
     image_name: "art",
+}
+
+java_import {
+    name: "mysdk_mybootlib@current",
+    sdk_member_name: "mybootlib",
+    visibility: ["//visibility:public"],
+    apex_available: ["com.android.art"],
+    jars: ["java/mybootlib.jar"],
 }
 
 sdk_snapshot {
     name: "mysdk@current",
     visibility: ["//visibility:public"],
     boot_images: ["mysdk_mybootimage@current"],
+    java_boot_libs: ["mysdk_mybootlib@current"],
 }
 `),
-		checkAllCopyRules(""))
+		checkAllCopyRules(`
+.intermediates/mybootlib/android_common/javac/mybootlib.jar -> java/mybootlib.jar
+`),
+		snapshotTestPreparer(checkSnapshotPreferredWithSource, android.GroupFixturePreparers(
+			android.FixtureAddTextFile("prebuilts/apex/Android.bp", `
+				prebuilt_apex {
+					name: "com.android.art",
+					src: "art.apex",
+					exported_java_libs: [
+						"mybootlib",
+					],
+				}
+			`),
+			android.FixtureAddFile("prebuilts/apex/art.apex", nil),
+		),
+		),
+	)
+}
+
+func TestSnapshotWithBootClasspathFragment_Contents(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForSdkTestWithJava,
+		android.FixtureWithRootAndroidBp(`
+			sdk {
+				name: "mysdk",
+				bootclasspath_fragments: ["mybootclasspathfragment"],
+				java_boot_libs: ["mybootlib"],
+			}
+
+			boot_image {
+				name: "mybootclasspathfragment",
+				contents: ["mybootlib"],
+			}
+
+			java_library {
+				name: "mybootlib",
+				srcs: ["Test.java"],
+				system_modules: "none",
+				sdk_version: "none",
+				compile_dex: true,
+			}
+		`),
+	).RunTest(t)
+
+	CheckSnapshot(t, result, "mysdk", "",
+		checkUnversionedAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+prebuilt_bootclasspath_fragment {
+    name: "mybootclasspathfragment",
+    prefer: false,
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    contents: ["mybootlib"],
+}
+
+java_import {
+    name: "mybootlib",
+    prefer: false,
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    jars: ["java/mybootlib.jar"],
+}
+`),
+		checkVersionedAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+prebuilt_bootclasspath_fragment {
+    name: "mysdk_mybootclasspathfragment@current",
+    sdk_member_name: "mybootclasspathfragment",
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    contents: ["mysdk_mybootlib@current"],
+}
+
+java_import {
+    name: "mysdk_mybootlib@current",
+    sdk_member_name: "mybootlib",
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    jars: ["java/mybootlib.jar"],
+}
+
+sdk_snapshot {
+    name: "mysdk@current",
+    visibility: ["//visibility:public"],
+    bootclasspath_fragments: ["mysdk_mybootclasspathfragment@current"],
+    java_boot_libs: ["mysdk_mybootlib@current"],
+}
+`),
+		checkAllCopyRules(`
+.intermediates/mybootlib/android_common/javac/mybootlib.jar -> java/mybootlib.jar
+`))
 }
 
 // Test that boot_image works with sdk.
