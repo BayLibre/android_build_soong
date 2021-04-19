@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12fbb887_0fe3979a",
+        "filename": "bazel/properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-19T10:00:43Z",
+      "side": 1,
+      "message": "UniqueBazelLabels already sorts... ? Can you call that here?\n\nOr call UniqueBazelLabelList, which also exists?",
+      "range": {
+        "startLine": 182,
+        "startChar": 21,
+        "endLine": 182,
+        "endChar": 38
+      },
+      "revId": "1b85e078b37b67bc1412aded40ea82ae803191e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec85bb58_2ee88ccb",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2171,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-19T10:00:43Z",
+      "side": 1,
+      "message": "I think we either need to do a final pass of deduplication, e.g. right before the bazelCcLibraryStaticAttributes initialization below, or maybe as part of CreateBazelTargetModule() ? \n\nOR, maybe we could have new methods like AppendAndDeduplicate(...) instead of Append(...) ?",
+      "range": {
+        "startLine": 2171,
+        "startChar": 20,
+        "endLine": 2171,
+        "endChar": 26
+      },
+      "revId": "1b85e078b37b67bc1412aded40ea82ae803191e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
