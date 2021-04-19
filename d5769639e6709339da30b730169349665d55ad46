@@ -16,6 +16,23 @@
       "message": ";\u0027\n",
       "revId": "d5769639e6709339da30b730169349665d55ad46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f006fc2_6ae37ea0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-19T08:50:30Z",
+      "side": 1,
+      "message": "Any objections to submitting this? Or suggestions for changes?\n\nContext: I sent this last week because I thought it was needed urgently to unblock https://android-review.googlesource.com/c/platform/build/soong/+/1673685 - I assume that is still the case?",
+      "revId": "d5769639e6709339da30b730169349665d55ad46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
