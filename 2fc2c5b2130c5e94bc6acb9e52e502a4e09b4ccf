@@ -225,6 +225,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecf6d366_9834f6fb",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-04-19T13:52:11Z",
+      "side": 1,
+      "message": "Oh, I mis-read this line. Sorry for the trouble.\n\nSo, we are filtering \"aggregators\" from the deps and then passing \"filtered deps\" to aggregators, right?\nHmm, then how about making it fail when there\u0027s more than one aggregators? rather than silently making them run okay with missing deps.\n\nI\u0027m not strong on this. It\u0027s up to you.",
+      "parentUuid": "782d69ad_069010a6",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 3
+      },
+      "revId": "2fc2c5b2130c5e94bc6acb9e52e502a4e09b4ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8464ee9_443fe02c",
