@@ -16,6 +16,24 @@
       "message": "Curious for context on mac build breaking.",
       "revId": "b035d9094a4f7da112174667425014dd5367ef51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80a9403f_4b71f0fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-19T17:59:20Z",
+      "side": 1,
+      "message": "See https://android-review.googlesource.com/c/platform/build/soong/+/1680065/1..2/java/java_test.go#486 for the diff",
+      "parentUuid": "a617ad33_f85e0473",
+      "revId": "b035d9094a4f7da112174667425014dd5367ef51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
