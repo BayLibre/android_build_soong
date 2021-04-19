@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a617ad33_f85e0473",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1054268
+      },
+      "writtenOn": "2021-04-19T17:52:43Z",
+      "side": 1,
+      "message": "Curious for context on mac build breaking.",
+      "revId": "b035d9094a4f7da112174667425014dd5367ef51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
