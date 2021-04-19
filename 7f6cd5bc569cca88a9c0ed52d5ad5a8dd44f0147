@@ -16,6 +16,29 @@
       "message": "Please check if this doesn\u0027t affect the builds in the mainline-prod branch.\n\nAPEXes there are build with TARGET_BUILD_APPS too. https://source.corp.google.com/android/vendor/google/build/build_mainline_modules.sh;rcl\u003de236fb97a7fc5794b42d6b4335f85120ed6e3b54;l\u003d68\n\n",
       "revId": "7f6cd5bc569cca88a9c0ed52d5ad5a8dd44f0147",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3100650_e2d56f78",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-19T19:35:37Z",
+      "side": 1,
+      "message": "I don\u0027t think this flag is right for this purpose - it should only turn off build targets and checks that assume a full platform tree. Maybe UnbundledBuildApps is what you\u0027re looking for?\n\n(Even better would be to have separate outputs for the compressed APEXes so that build artifacts don\u0027t depend on flags this way, but I suppose that\u0027d be a whole different cup of tea, and that there are any number of reasons for it being this way.)",
+      "range": {
+        "startLine": 521,
+        "startChar": 130,
+        "endLine": 521,
+        "endChar": 160
+      },
+      "revId": "7f6cd5bc569cca88a9c0ed52d5ad5a8dd44f0147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
