@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43c85653_85a4abe0",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-04-19T02:24:39Z",
+      "side": 1,
+      "message": "I didn\u0027t know this works. Even if it\u0027s okay, can we use the different name for the readability?",
+      "range": {
+        "startLine": 311,
+        "startChar": 14,
+        "endLine": 311,
+        "endChar": 26
+      },
+      "revId": "2fc2c5b2130c5e94bc6acb9e52e502a4e09b4ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60cbf70e_74fc048f",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-04-19T02:24:39Z",
+      "side": 1,
+      "message": "Why do we narrow down the domain from (name, target) to (name)? Should we keep them?",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 3
+      },
+      "revId": "2fc2c5b2130c5e94bc6acb9e52e502a4e09b4ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8464ee9_443fe02c",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-04-19T02:24:39Z",
+      "side": 1,
+      "message": "AFAIU, CopyDepsToZips cares about only \"`depTag` should implement PackagingItem marker interface.\" (in the comment of the method). But here we are passing \"deps\" regardless of the depTag used in AddDeps. And we also ignores dependencies added not in AddDeps().\n\nThe former could be fixed by using the same depTag(passed to AddDeps), but well I don\u0027t know how to fix the latter one.",
+      "range": {
+        "startLine": 344,
+        "startChar": 6,
+        "endLine": 344,
+        "endChar": 26
+      },
+      "revId": "2fc2c5b2130c5e94bc6acb9e52e502a4e09b4ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
