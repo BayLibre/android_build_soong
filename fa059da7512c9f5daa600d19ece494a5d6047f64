@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71c1e92f_258a2b54",
+        "filename": "linkerconfig/linkerconfig.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-04-19T02:08:23Z",
+      "side": 1,
+      "message": "filter deps with aggregatorDep?",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 55
+      },
+      "revId": "fa059da7512c9f5daa600d19ece494a5d6047f64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
