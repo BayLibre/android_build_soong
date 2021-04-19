@@ -70,6 +70,24 @@
       "parentUuid": "06501eb7_6fb64546",
       "revId": "7a519073464d4ea57e660cea2dc6d680d5e82100",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b18a3c57_49271fe7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-19T07:30:45Z",
+      "side": 1,
+      "message": "Actually, if my memory serves well, this is probably the first time in my career I used ANSI escape sequences in production-quality checked-in-and-reviewed code :)",
+      "parentUuid": "b9545c55_384ea373",
+      "revId": "7a519073464d4ea57e660cea2dc6d680d5e82100",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
