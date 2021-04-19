@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d38c487_d37bfcb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-19T12:14:16Z",
+      "side": 1,
+      "message": "Please check if this doesn\u0027t affect the builds in the mainline-prod branch.\n\nAPEXes there are build with TARGET_BUILD_APPS too. https://source.corp.google.com/android/vendor/google/build/build_mainline_modules.sh;rcl\u003de236fb97a7fc5794b42d6b4335f85120ed6e3b54;l\u003d68\n\n",
+      "revId": "7f6cd5bc569cca88a9c0ed52d5ad5a8dd44f0147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
