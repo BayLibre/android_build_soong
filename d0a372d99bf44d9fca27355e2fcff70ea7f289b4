@@ -87,6 +87,24 @@
       "parentUuid": "711e3495_45bcb49c",
       "revId": "d0a372d99bf44d9fca27355e2fcff70ea7f289b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50e16f8b_23da6dde",
+        "filename": "tests/bootstrap_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-19T07:28:50Z",
+      "side": 1,
+      "message": "Ack, I re-enabled the test",
+      "parentUuid": "3e888868_71b668e3",
+      "revId": "d0a372d99bf44d9fca27355e2fcff70ea7f289b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
