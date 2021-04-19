@@ -33,6 +33,24 @@
       "message": "Any objections to submitting this? Or suggestions for changes?\n\nContext: I sent this last week because I thought it was needed urgently to unblock https://android-review.googlesource.com/c/platform/build/soong/+/1673685 - I assume that is still the case?",
       "revId": "d5769639e6709339da30b730169349665d55ad46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f462275_788be630",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-19T19:05:28Z",
+      "side": 1,
+      "message": "I have some concerns with submitting as-is, because this greatly pollutes the source tree.\n\nIIUC, this still would have the problem that if I did `bp2build; rm -rf out/` I have my source tree in a difficult-to-revert state (BUILD files are everywhere).\n\nIf possible, I\u0027d like to hold off and address this after lberki\u0027s change aosp/1676621\n\nThis way, only the symlink forest will be affected.",
+      "parentUuid": "4f006fc2_6ae37ea0",
+      "revId": "d5769639e6709339da30b730169349665d55ad46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
