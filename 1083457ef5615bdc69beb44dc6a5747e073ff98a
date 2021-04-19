@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13b5fcfa_1442d14b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1311067
+      },
+      "writtenOn": "2021-04-19T06:50:26Z",
+      "side": 1,
+      "message": "shebang of the par file is consistent with the main python script rather than use /usr/bin/python arbitrarily.",
+      "range": {
+        "startLine": 9,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "1083457ef5615bdc69beb44dc6a5747e073ff98a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
