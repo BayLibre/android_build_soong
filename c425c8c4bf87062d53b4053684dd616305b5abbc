@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0e79a9a_898e3cbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-19T10:20:52Z",
+      "side": 1,
+      "message": "Update: this now works. Questions:\n\n- What is canonicalizeLabel for? Is neutering it like this the right thing to do?\n- What to do about testing? Ideally, we\u0027d have a subset of .bp modules in the mock top such that minimal C++ compilations work, but that probably requires either moving modules around in the main source tree or being able to put parts of real .bp files into the mock top.",
+      "revId": "c425c8c4bf87062d53b4053684dd616305b5abbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
