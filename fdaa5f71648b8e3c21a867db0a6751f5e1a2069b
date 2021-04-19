@@ -163,6 +163,30 @@
       },
       "revId": "fdaa5f71648b8e3c21a867db0a6751f5e1a2069b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df13c0ca_85047d4b",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1376,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-19T23:13:40Z",
+      "side": 1,
+      "message": "Right. When SDK is finalized, \u0027current\u0027 should better be the latest SDK version number (e.g. 31 for S).\n\nOne of my goals in the context of b/175678607 is exactly that. The ApiLevel struct will translate the user string \"current\" into either FutureApiLevelInt (10000) or 31 depending on whether PlatformSdkCodename is \"REL\" or not. To make it happen, we first need to eliminate all the places where strings are directly used as versions. It is taking some time, so I don\u0027t expect I can land that in S.\n\nHowever, in this particular place, using 10000 is not harmful even after the SDK finalization, because 10000 \u003e 31.",
+      "parentUuid": "c92d5a82_6dbfe4cb",
+      "range": {
+        "startLine": 1376,
+        "startChar": 0,
+        "endLine": 1376,
+        "endChar": 47
+      },
+      "revId": "fdaa5f71648b8e3c21a867db0a6751f5e1a2069b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
