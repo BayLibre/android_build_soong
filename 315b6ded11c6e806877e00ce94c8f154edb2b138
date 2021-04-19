@@ -34,6 +34,24 @@
       "parentUuid": "9c05082b_986383d6",
       "revId": "315b6ded11c6e806877e00ce94c8f154edb2b138",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d133cc_43d5ff85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-04-19T19:57:25Z",
+      "side": 1,
+      "message": "local repro:\n```\n04-19 19:52:57.143  2580  2601 E RenderScript: Unable to open shared library (/data/user_de/0/android.rscpp.cts/code_cache/com.android.renderscript.cache/librs.verify.so): (null)\n04-19 19:52:57.143  2580  2601 V RenderScript: Invoking /system/bin/bcc with args \u0027/system/bin/bcc -unroll-runtime -scalarize-load-store -rs-global-info -rs-global-info-skip-constant -o verify -output_path /data/user_de/0/android.rscpp.cts/code_cache/com.android.renderscript.cache -bclib /system/lib64/libclcore_x86.bc -mtriple x86_64-unknown-linux -O 3 -fPIC -embedRSInfo /data/user_de/0/android.rscpp.cts/code_cache/com.android.renderscript.cache/verify.bc -build-checksum 214add7a\u0027\n04-19 19:52:57.921  2580  2601 V RenderScript: Invoking /system/bin/ld.mc with args \u0027/system/bin/ld.mc -shared -nostdlib /system/lib64/libcompiler_rt.so -mtriple\u003dx86_64-unknown-linux --library-path\u003d/system/vendor/lib64  --library-path\u003d/system/lib64 -lRSDriver -lm -lc /data/user_de/0/android.rscpp.cts/code_cache/com.android.renderscript.cache/verify.o -o /data/user_de/0/android.rscpp.cts/code_cache/com.android.renderscript.cache/librs.verify.so\u0027\n04-19 19:52:58.012  2580  2601 E RenderScript: Child process \"/system/bin/ld.mc\" terminated with status 256\n04-19 19:52:58.012  2580  2601 E RenderScript: Linker: Failed to link object file \u0027verify\u0027\n```\nthere might be an easy hack if we knew _which_ renderscript library to just build that targeting an older API level (which seems like it might be a good idea anyway)?",
+      "parentUuid": "af35904a_c80cd5ac",
+      "revId": "315b6ded11c6e806877e00ce94c8f154edb2b138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
