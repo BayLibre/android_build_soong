@@ -46,6 +46,30 @@
       },
       "revId": "731bb91b8e65c57ec0a55e2ed11abb9910a89c6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f5dcc70_c63ee722",
+        "filename": "tests/run_integration_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-19T07:58:07Z",
+      "side": 1,
+      "message": "Eh, nope, it actually matters: https://stackoverflow.com/questions/61978350/difference-between-shebang-flags-vs-set-builtin-flags\n\ntl;dr the flags may or may not take effect depending on how the script is executed.",
+      "parentUuid": "5c589ec9_2c8cecbf",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 15
+      },
+      "revId": "731bb91b8e65c57ec0a55e2ed11abb9910a89c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
