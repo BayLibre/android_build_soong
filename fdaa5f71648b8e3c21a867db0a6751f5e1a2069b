@@ -140,6 +140,29 @@
       "parentUuid": "9a3dce76_7892e907",
       "revId": "fdaa5f71648b8e3c21a867db0a6751f5e1a2069b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c92d5a82_6dbfe4cb",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1376,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-19T17:03:46Z",
+      "side": 1,
+      "message": "sorry for the post-review comment, trying to understand so we can translate sdk_version/min_sdk_version to Bazel -- should this instead be the platform api level if the platform sdk was finalized?",
+      "range": {
+        "startLine": 1376,
+        "startChar": 0,
+        "endLine": 1376,
+        "endChar": 47
+      },
+      "revId": "fdaa5f71648b8e3c21a867db0a6751f5e1a2069b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
