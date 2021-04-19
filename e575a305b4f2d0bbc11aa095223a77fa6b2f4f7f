@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd557434_b77eaba9",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-19T08:42:58Z",
+      "side": 1,
+      "message": "That was the original design where the dependencyTag was private to packaging.go. We are going back to the original design.\n\nI can\u0027t think of a use case that a module needs to have access to the individual dependencies. Even if it\u0027s needed in the future, we could extend AddDeps so that we can pass an arbitrary object which is recorded to the dependencyTag. Then modules can identify the dependencies by examining the attached object (via a new interface), though it won\u0027t be directly via *WithTag functions.",
+      "parentUuid": "4e3eaa69_f224b6ea",
+      "range": {
+        "startLine": 69,
+        "startChar": 39,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "e575a305b4f2d0bbc11aa095223a77fa6b2f4f7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a19e1ecc_173d8135",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-04-19T07:52:39Z",
       "side": 1,
       "message": "This should be true, so we\u0027d better make it an error when it\u0027s not.",
+      "range": {
+        "startLine": 217,
+        "startChar": 4,
+        "endLine": 217,
+        "endChar": 47
+      },
+      "revId": "e575a305b4f2d0bbc11aa095223a77fa6b2f4f7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6792b82a_58a7a670",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-19T08:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a19e1ecc_173d8135",
       "range": {
         "startLine": 217,
         "startChar": 4,
