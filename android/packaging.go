@@ -58,10 +58,15 @@ type PackageModule interface {
 	Module
 	packagingBase() *PackagingBase
 
-	// AddDeps adds dependencies to the `deps` modules. This should be called in DepsMutator.
-	// When adding the dependencies, depTag is used as the tag. If `deps` modules are meant to
-	// be copied to a zip in CopyDepsToZip, `depTag` should implement PackagingItem marker interface.
-	AddDeps(ctx BottomUpMutatorContext, depTag blueprint.DependencyTag)
+	// AddDeps adds modules in the `deps` property and those returned from `GatherExtraDeps` as
+	// dependencies so that they are packaged into this module. This should be called in
+	// DepsMutator. When installTogether is set to true, the dependencies are also separately
+	// installed when this module is installed.
+	AddDeps(ctx BottomUpMutatorContext, installTogether bool)
+
+	// ExtraDeps returns extra dependencies that need to be packaged but are from properties
+	// other than the `deps` property.
+	GatherExtraDeps(ctx BaseModuleContext) []PackageDep
 
 	// CopyDepsToZip zips the built artifacts of the dependencies into the given zip file and
 	// returns zip entries in it. This is expected to be called in GenerateAndroidBuildActions,
@@ -168,26 +173,20 @@ func (p *PackagingBase) getSupportedTargets(ctx BaseModuleContext) []Target {
 	return ret
 }
 
-// PackagingItem is a marker interface for dependency tags.
-// Direct dependencies with a tag implementing PackagingItem are packaged in CopyDepsToZip().
-type PackagingItem interface {
-	// IsPackagingItem returns true if the dep is to be packaged
-	IsPackagingItem() bool
+type packagingDependencyTag struct {
+	blueprint.BaseDependencyTag
+	installTogether bool
 }
 
-// DepTag provides default implementation of PackagingItem interface.
-// PackagingBase-derived modules can define their own dependency tag by embedding this, which
-// can be passed to AddDeps() or AddDependencies().
-type PackagingItemAlwaysDepTag struct {
-}
+var _ InstallNeededDependencyTag = packagingDependencyTag{}
 
-// IsPackagingItem returns true if the dep is to be packaged
-func (PackagingItemAlwaysDepTag) IsPackagingItem() bool {
-	return true
+func (tag packagingDependencyTag) InstallDepNeeded() bool {
+	return tag.installTogether
 }
 
 // See PackageModule.AddDeps
-func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.DependencyTag) {
+func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, installTogether bool) {
+	depTag := packagingDependencyTag{installTogether: installTogether}
 	for _, d := range p.gatherDeps(ctx) {
 		ctx.AddFarVariationDependencies(d.Target.Variations(), depTag, d.Name)
 	}
@@ -200,6 +199,11 @@ type PackageDep struct {
 	Target        // android.Target for which the dependency is added
 }
 
+// See PackageModule.GatherExtraDeps
+func (p *PackagingBase) GatherExtraDeps(ctx BaseModuleContext) []PackageDep {
+	return nil
+}
+
 func (p *PackagingBase) gatherDeps(ctx BaseModuleContext) []PackageDep {
 	var deps []PackageDep
 	for _, t := range p.getSupportedTargets(ctx) {
@@ -210,6 +214,9 @@ func (p *PackagingBase) gatherDeps(ctx BaseModuleContext) []PackageDep {
 			deps = append(deps, PackageDep{Name: dep, Target: t})
 		}
 	}
+	if pm, ok := ctx.Module().(PackageModule); ok {
+		deps = append(deps, pm.GatherExtraDeps(ctx)...)
+	}
 	return deps
 }
 
@@ -217,7 +224,7 @@ func (p *PackagingBase) gatherDeps(ctx BaseModuleContext) []PackageDep {
 func (p *PackagingBase) CopyDepsToZip(ctx ModuleContext, zipOut WritablePath) (entries []string) {
 	m := make(map[string]PackagingSpec)
 	ctx.VisitDirectDeps(func(child Module) {
-		if pi, ok := ctx.OtherModuleDependencyTag(child).(PackagingItem); !ok || !pi.IsPackagingItem() {
+		if _, ok := ctx.OtherModuleDependencyTag(child).(packagingDependencyTag); !ok {
 			return
 		}
 		for _, ps := range child.TransitivePackagingSpecs() {
