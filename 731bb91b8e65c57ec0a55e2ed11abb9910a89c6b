@@ -94,6 +94,30 @@
       },
       "revId": "731bb91b8e65c57ec0a55e2ed11abb9910a89c6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc4dbd5c_464d563f",
+        "filename": "tests/run_integration_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-19T08:04:38Z",
+      "side": 1,
+      "message": "But it _should_ modify the global state if the script is written intentionally to work with those flags, right?",
+      "parentUuid": "5486abaa_c7d98456",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 15
+      },
+      "revId": "731bb91b8e65c57ec0a55e2ed11abb9910a89c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
