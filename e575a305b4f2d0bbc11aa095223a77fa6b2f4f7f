@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c713e1_de50b110",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-04-19T07:52:39Z",
+      "side": 1,
+      "message": "Isn\u0027t it too difficult for the derived modules to implement this method? (note that AddDeps() uses getSupportedTargets() to iterate over \"targets\")",
+      "range": {
+        "startLine": 69,
+        "startChar": 39,
+        "endLine": 69,
+        "endChar": 52
+      },
+      "revId": "e575a305b4f2d0bbc11aa095223a77fa6b2f4f7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a19e1ecc_173d8135",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-04-19T07:52:39Z",
+      "side": 1,
+      "message": "This should be true, so we\u0027d better make it an error when it\u0027s not.",
+      "range": {
+        "startLine": 217,
+        "startChar": 4,
+        "endLine": 217,
+        "endChar": 47
+      },
+      "revId": "e575a305b4f2d0bbc11aa095223a77fa6b2f4f7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
