@@ -249,6 +249,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "166cd58a_cf48272b",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-19T14:33:02Z",
+      "side": 1,
+      "message": "Yes, that\u0027s right. But limiting aggregators to one doesn\u0027t allow us to remove the filtering since the aggregator itself can\u0027t depend on itself.",
+      "parentUuid": "ecf6d366_9834f6fb",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 3
+      },
+      "revId": "2fc2c5b2130c5e94bc6acb9e52e502a4e09b4ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8464ee9_443fe02c",
