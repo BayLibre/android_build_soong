@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b79f9720_f1562535",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-19T18:49:43Z",
+      "side": 1,
+      "message": "Just documentation nits. Thanks for this!",
+      "revId": "a6e7f55f4342c7028fe663cb047d0844c2ecd8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "438098a4_0d5cc4aa",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-19T18:49:43Z",
+      "side": 1,
+      "message": "This could use a little more elaboration. Something like:\n\n\"node represents a file or directory in a directory tree. This tree is used\nto enumerate certain file directories which should be excluded from symlinking.\nFor a given directory tree node, if node.excluded is true, then this\ndirectory should be excluded from symlinking. Otherwise, the node\nshould not be excluded, but one of its children may be excluded\n(determined by traversing the tree).\n\"",
+      "revId": "a6e7f55f4342c7028fe663cb047d0844c2ecd8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c177e48_f2cf4bb0",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-19T18:49:43Z",
+      "side": 1,
+      "message": "Is this basename or full path? This only returns the shallow file or directory names in thie directory, correct?",
+      "revId": "a6e7f55f4342c7028fe663cb047d0844c2ecd8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e40ce046_ff288a1f",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-19T18:49:43Z",
+      "side": 1,
+      "message": "The usage of `exclude *node` here is a bit confusing; perhaps we can do this check in the caller?",
+      "revId": "a6e7f55f4342c7028fe663cb047d0844c2ecd8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "645ac9d2_0efa2916",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-19T18:49:43Z",
+      "side": 1,
+      "message": "What about acc?",
+      "revId": "a6e7f55f4342c7028fe663cb047d0844c2ecd8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5f3c016_6a67f7fa",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-19T18:49:43Z",
+      "side": 1,
+      "message": "Do you envision this is where logic pertaining to merging source/bp2build BUILD files will go? Or will we exclude such build files from the symlinking and handle them separately?",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 7
+      },
+      "revId": "a6e7f55f4342c7028fe663cb047d0844c2ecd8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
