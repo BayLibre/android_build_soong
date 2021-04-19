@@ -69,6 +69,24 @@
       "parentUuid": "7f462275_788be630",
       "revId": "d5769639e6709339da30b730169349665d55ad46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "599262ee_3d757369",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-19T19:25:24Z",
+      "side": 1,
+      "message": "How and where might we store such a list? Would we record all calls to bazel.GlobsInDir and use them in a postprocessing step?  (https://cs.android.com/android/platform/superproject/+/master:build/soong/bazel/properties.go;l\u003d53;drc\u003dmaster)",
+      "parentUuid": "2fa2e83f_15caf987",
+      "revId": "d5769639e6709339da30b730169349665d55ad46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
