@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "881969b9_1ba21e90",
+        "filename": "bazel/properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-19T13:33:32Z",
+      "side": 1,
+      "message": "Yes! Done.",
+      "parentUuid": "12fbb887_0fe3979a",
+      "range": {
+        "startLine": 182,
+        "startChar": 21,
+        "endLine": 182,
+        "endChar": 38
+      },
+      "revId": "1b85e078b37b67bc1412aded40ea82ae803191e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec85bb58_2ee88ccb",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-19T10:00:43Z",
       "side": 1,
       "message": "I think we either need to do a final pass of deduplication, e.g. right before the bazelCcLibraryStaticAttributes initialization below, or maybe as part of CreateBazelTargetModule() ? \n\nOR, maybe we could have new methods like AppendAndDeduplicate(...) instead of Append(...) ?",
+      "range": {
+        "startLine": 2171,
+        "startChar": 20,
+        "endLine": 2171,
+        "endChar": 26
+      },
+      "revId": "1b85e078b37b67bc1412aded40ea82ae803191e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a3ea7fe_efa8f548",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2171,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-19T13:33:32Z",
+      "side": 1,
+      "message": "Created and refactored into UniqueAppend for LabelListAttribute and StringListAttribute.",
+      "parentUuid": "ec85bb58_2ee88ccb",
       "range": {
         "startLine": 2171,
         "startChar": 20,
