@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b5c24b5_01dc0cc7",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-19T19:19:38Z",
+      "side": 1,
+      "message": "I wonder if this structure could be simplified for clarity.\n\nCan we maintain that excluded \u003d\u003d (children \u003d\u003d nil) ? \nAdmittedly, I don\u0027t know if this actually *does* make things clearer, but food for thought.",
+      "revId": "a6e7f55f4342c7028fe663cb047d0844c2ecd8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c177e48_f2cf4bb0",
