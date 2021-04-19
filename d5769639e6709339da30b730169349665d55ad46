@@ -51,6 +51,24 @@
       "parentUuid": "4f006fc2_6ae37ea0",
       "revId": "d5769639e6709339da30b730169349665d55ad46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa2e83f_15caf987",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-19T19:17:44Z",
+      "side": 1,
+      "message": "I also wonder if we could do this more strategically, e.g. only add empty BUILD files corresponding to directories with Android.bp where we use files, perhaps adding an appropriate \"exports_files\" to the file rather than a stub?",
+      "parentUuid": "7f462275_788be630",
+      "revId": "d5769639e6709339da30b730169349665d55ad46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
