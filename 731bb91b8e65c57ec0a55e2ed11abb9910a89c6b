@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1c87058_06b81e03",
+        "filename": "tests/run_integration_tests.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-19T07:32:32Z",
+      "side": 1,
+      "message": "Huh, I never saw these flags used in the shebang before. Wouldn\u0027t it be more standard to use `set`?",
+      "range": {
+        "startLine": 1,
+        "startChar": 12,
+        "endLine": 1,
+        "endChar": 15
+      },
+      "revId": "731bb91b8e65c57ec0a55e2ed11abb9910a89c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
