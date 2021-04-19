@@ -38,8 +38,13 @@ var productVariableSubstitutionPattern = regexp.MustCompile("%(d|s)")
 // Label is used to represent a Bazel compatible Label. Also stores the original bp text to support
 // string replacement.
 type Label struct {
+	// The string representation of the label. This can be a relative or fully qualified label.
+	Label string
+
+	// The original text that the label was derived from. While we can have a
+	// programmatic 1:1 mapping from blueprint text to label with bp2build, it
+	// is not the case for handcrafted targets.
 	Bp_text string
-	Label   string
 }
 
 // LabelList is used to represent a list of Bazel labels.
