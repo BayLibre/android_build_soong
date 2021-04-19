@@ -87,6 +87,24 @@
       "parentUuid": "2fa2e83f_15caf987",
       "revId": "d5769639e6709339da30b730169349665d55ad46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb44b4de_3ebf41f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-19T19:53:34Z",
+      "side": 1,
+      "message": "Possibly, I\u0027d been thinking during transformSubpackagePath as that would also handle non-header-specific globs",
+      "parentUuid": "599262ee_3d757369",
+      "revId": "d5769639e6709339da30b730169349665d55ad46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
