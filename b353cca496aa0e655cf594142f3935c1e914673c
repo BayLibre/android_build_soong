@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a5ad46d_93da8bff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-20T09:35:23Z",
+      "side": 1,
+      "message": "FYI this blocks https://android-review.googlesource.com/c/platform/build/soong/+/1677620 which itself blocks a number of other things",
+      "revId": "b353cca496aa0e655cf594142f3935c1e914673c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8550848a_1a04c8f3",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-20T09:35:23Z",
+      "side": 1,
+      "message": "This line is so mysterious to me. Could we use longer names?\n\nforestPath? sourcePath? buildPath? \n\nchildExclude... ? (?)\n\naccumulator... ?",
+      "range": {
+        "startLine": 152,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 60
+      },
+      "revId": "b353cca496aa0e655cf594142f3935c1e914673c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
