@@ -81,6 +81,30 @@
       },
       "revId": "b353cca496aa0e655cf594142f3935c1e914673c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cc25d26_954d007f",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-20T10:49:09Z",
+      "side": 1,
+      "message": "Thanks!\n\nAgree that Go style seems to encourage incomprehensibility, but the Soong codebase generally uses longer names",
+      "parentUuid": "68ec518d_1f5e8c61",
+      "range": {
+        "startLine": 152,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 60
+      },
+      "revId": "b353cca496aa0e655cf594142f3935c1e914673c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
