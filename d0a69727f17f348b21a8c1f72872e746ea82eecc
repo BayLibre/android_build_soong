@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c76af4a_48ea285d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-20T12:17:33Z",
+      "side": 1,
+      "message": "Would leave the +2 to Chris :-)",
+      "revId": "d0a69727f17f348b21a8c1f72872e746ea82eecc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2bd256a_f3e3ef92",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-20T12:17:33Z",
+      "side": 1,
+      "message": "Please add comments like for intermediatesDir. Same for syntheticWorkspaceDir.",
+      "range": {
+        "startLine": 589,
+        "startChar": 21,
+        "endLine": 589,
+        "endChar": 37
+      },
+      "revId": "d0a69727f17f348b21a8c1f72872e746ea82eecc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
