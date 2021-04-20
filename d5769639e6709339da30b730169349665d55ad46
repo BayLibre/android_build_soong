@@ -105,6 +105,41 @@
       "parentUuid": "599262ee_3d757369",
       "revId": "d5769639e6709339da30b730169349665d55ad46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddf7a5e9_ca3f1813",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-20T00:03:38Z",
+      "side": 1,
+      "message": "Hmm...\n\nIf we wanted to submit urgently and \"pollute\" the source tree, then being more selective about which BUILD files are generated is probably worth doing\n\nBut if we are waiting for the symlink forest changes from Lukacs, then I think it is fine to generate every BUILD file, rather than trying to be more selective in which BUILD files we generate.\n\nWDYT?",
+      "parentUuid": "cb44b4de_3ebf41f1",
+      "revId": "d5769639e6709339da30b730169349665d55ad46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8e45458_be5cbc12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-20T00:03:38Z",
+      "side": 1,
+      "message": "thin",
+      "revId": "d5769639e6709339da30b730169349665d55ad46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
