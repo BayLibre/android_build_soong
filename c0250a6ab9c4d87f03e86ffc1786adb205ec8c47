@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8345099_1409c93a",
+        "filename": "scripts/lint_project_xml_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-20T17:46:41Z",
+      "side": 1,
+      "message": "disallowed? :)",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 14
+      },
+      "revId": "c0250a6ab9c4d87f03e86ffc1786adb205ec8c47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
