@@ -16,6 +16,29 @@
       "message": "Colin, PTAL.",
       "revId": "b9c94a35f6219e8b9da6af9c92a210c3dc9d8be1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73b289e6_3637db9f",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-20T17:55:30Z",
+      "side": 1,
+      "message": "Can you set this as a function pointer stored in the filesystem module from the system image factory instead?",
+      "range": {
+        "startLine": 198,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 58
+      },
+      "revId": "b9c94a35f6219e8b9da6af9c92a210c3dc9d8be1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
