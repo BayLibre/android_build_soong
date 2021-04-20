@@ -92,12 +92,6 @@ type apexBundleProperties struct {
 
 	Multilib apexMultilibProperties
 
-	// List of boot images that are embedded inside this APEX bundle.
-	//
-	// deprecated: Use Bootclasspath_fragments
-	// TODO(b/177892522): Remove after has been replaced by Bootclasspath_fragments
-	Boot_images []string
-
 	// List of bootclasspath fragments that are embedded inside this APEX bundle.
 	Bootclasspath_fragments []string
 
@@ -573,7 +567,7 @@ var (
 	certificateTag  = dependencyTag{name: "certificate"}
 	executableTag   = dependencyTag{name: "executable", payload: true}
 	fsTag           = dependencyTag{name: "filesystem", payload: true}
-	bootImageTag    = dependencyTag{name: "bootImage", payload: true, sourceOnly: true}
+	bcpfTag         = dependencyTag{name: "bootclasspathFragment", payload: true, sourceOnly: true}
 	compatConfigTag = dependencyTag{name: "compatConfig", payload: true, sourceOnly: true}
 	javaLibTag      = dependencyTag{name: "javaLib", payload: true}
 	jniLibTag       = dependencyTag{name: "jniLib", payload: true}
@@ -753,8 +747,7 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 	// Common-arch dependencies come next
 	commonVariation := ctx.Config().AndroidCommonTarget.Variations()
-	ctx.AddFarVariationDependencies(commonVariation, bootImageTag, a.properties.Boot_images...)
-	ctx.AddFarVariationDependencies(commonVariation, bootImageTag, a.properties.Bootclasspath_fragments...)
+	ctx.AddFarVariationDependencies(commonVariation, bcpfTag, a.properties.Bootclasspath_fragments...)
 	ctx.AddFarVariationDependencies(commonVariation, javaLibTag, a.properties.Java_libs...)
 	ctx.AddFarVariationDependencies(commonVariation, bpfTag, a.properties.Bpfs...)
 	ctx.AddFarVariationDependencies(commonVariation, fsTag, a.properties.Filesystems...)
@@ -1700,7 +1693,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 				} else {
 					ctx.PropertyErrorf("binaries", "%q is neither cc_binary, rust_binary, (embedded) py_binary, (host) blueprint_go_binary, (host) bootstrap_go_binary, nor sh_binary", depName)
 				}
-			case bootImageTag:
+			case bcpfTag:
 				{
 					if _, ok := child.(*java.BootImageModule); !ok {
 						ctx.PropertyErrorf("boot_images", "%q is not a boot_image module", depName)
