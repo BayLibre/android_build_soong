@@ -158,6 +158,24 @@
       "parentUuid": "ddf7a5e9_ca3f1813",
       "revId": "d5769639e6709339da30b730169349665d55ad46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc3409b6_0a34ad94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-20T11:03:14Z",
+      "side": 1,
+      "message": "(Marking as resolved since lberki@ has submitted https://android-review.googlesource.com/c/platform/build/soong/+/1676621/ now)",
+      "parentUuid": "c8381912_81d4b837",
+      "revId": "d5769639e6709339da30b730169349665d55ad46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
