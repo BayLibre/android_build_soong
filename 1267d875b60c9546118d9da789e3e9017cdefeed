@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1d2ed81_e4e0ca6b",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-20T01:06:31Z",
+      "side": 1,
+      "message": "Nit: Since this function is so similar to SdkApiStubDexJar, it\u0027d be nice to move it down next to it.",
+      "revId": "1267d875b60c9546118d9da789e3e9017cdefeed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd6caeb_d47a71ad",
+        "filename": "sdk/java_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-20T01:06:31Z",
+      "side": 1,
+      "message": "I take it the prebuilt only retains the public stubs. Test that system and module don\u0027t have stub jars for it?",
+      "revId": "1267d875b60c9546118d9da789e3e9017cdefeed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
