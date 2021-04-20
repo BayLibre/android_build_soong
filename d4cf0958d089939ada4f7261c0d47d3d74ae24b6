@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd0751ee_c670beba",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-20T05:32:02Z",
+      "side": 1,
+      "message": "Added some more words.",
+      "parentUuid": "43b80eaf_26944ed9",
+      "range": {
+        "startLine": 41,
+        "startChar": 30,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "d4cf0958d089939ada4f7261c0d47d3d74ae24b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1629e52_122d8132",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c47e5022_e8b6d4c5",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-20T05:32:02Z",
+      "side": 1,
+      "message": "Added some more words.",
+      "parentUuid": "f1629e52_122d8132",
+      "range": {
+        "startLine": 44,
+        "startChar": 41,
+        "endLine": 44,
+        "endChar": 53
+      },
+      "revId": "d4cf0958d089939ada4f7261c0d47d3d74ae24b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6476ea0_02271fbe",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-19T08:57:27Z",
       "side": 1,
       "message": "Why is that not the case? This is still a bit mysterious to me...",
+      "range": {
+        "startLine": 45,
+        "startChar": 73,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "d4cf0958d089939ada4f7261c0d47d3d74ae24b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "930b7826_dbd96481",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-20T05:32:02Z",
+      "side": 1,
+      "message": "Elaborated the comment a little. For modules that don\u0027t use bp2build, but rely on handcrafted targets, the original module name may not be reversibly computed from the bazel label (See BazelLabelForModuleDeps), so keeping the source module name here is needed.",
+      "parentUuid": "c6476ea0_02271fbe",
       "range": {
         "startLine": 45,
         "startChar": 73,
