@@ -427,6 +427,11 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 	ninjaDeps = append(ninjaDeps, codegenContext.AdditionalNinjaDeps()...)
 	ninjaDeps = append(ninjaDeps, symlinkForestDeps...)
 
+	// Only report metrics when in bp2build mode. The metrics aren't relevant
+	// for queryview, since that's a total repo-wide conversion and there's a
+	// 1:1 mapping for each module.
+	metrics.Print()
+
 	depFile := bp2buildMarker + ".d"
 	err = deptools.WriteDepFile(shared.JoinPath(topDir, depFile), bp2buildMarker, ninjaDeps)
 	if err != nil {
