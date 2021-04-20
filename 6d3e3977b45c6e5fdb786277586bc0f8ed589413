@@ -34,6 +34,24 @@
       "parentUuid": "12a5458f_b5173bd6",
       "revId": "6d3e3977b45c6e5fdb786277586bc0f8ed589413",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae46a22c_d6d9451a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-20T22:31:10Z",
+      "side": 1,
+      "message": "There are plenty more places, as can be found by searching for ticket TODOs: https://cs.android.com/search?q\u003db%2F177892522\u0026ss\u003dandroid%2Fplatform%2Fsuperproject I suppose those are for other things and come later then.",
+      "parentUuid": "6ac44af5_4c4de821",
+      "revId": "6d3e3977b45c6e5fdb786277586bc0f8ed589413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
