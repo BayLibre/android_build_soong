@@ -107,21 +107,30 @@ func (ob Object) Config() string {
 
 }
 
-func autogenTemplate(ctx android.ModuleContext, output android.WritablePath, template string, configs []Config, testInstallBase string) {
-	autogenTemplateWithNameAndOutputFile(ctx, ctx.ModuleName(), output, template, configs, "", testInstallBase)
+func autogenTemplate(ctx android.ModuleContext, output android.WritablePath, template string, configs []Config, testInstallBase string, runnerOptions []string) {
+	autogenTemplateWithNameAndOutputFile(ctx, ctx.ModuleName(), output, template, configs, "", testInstallBase, runnerOptions)
 }
 
-func autogenTemplateWithName(ctx android.ModuleContext, name string, output android.WritablePath, template string, configs []Config, testInstallBase string) {
-	autogenTemplateWithNameAndOutputFile(ctx, name, output, template, configs, "", testInstallBase)
+func autogenTemplateWithName(ctx android.ModuleContext, name string, output android.WritablePath, template string, configs []Config, testInstallBase string, runnerOptions []string) {
+	autogenTemplateWithNameAndOutputFile(ctx, name, output, template, configs, "", testInstallBase, runnerOptions)
 }
 
-func autogenTemplateWithNameAndOutputFile(ctx android.ModuleContext, name string, output android.WritablePath, template string, configs []Config, outputFileName string, testInstallBase string) {
+func autogenTemplateWithNameAndOutputFile(ctx android.ModuleContext, name string, output android.WritablePath, template string, configs []Config, outputFileName string, testInstallBase string, runnerOptions []string) {
 	var configStrings []string
 	for _, config := range configs {
 		configStrings = append(configStrings, config.Config())
 	}
 	extraConfigs := strings.Join(configStrings, fmt.Sprintf("\\n%s", test_xml_indent))
 	extraConfigs = proptools.NinjaAndShellEscape(extraConfigs)
+
+    // For the options use for test runner.
+    var runnerOptionStrings []string
+	for _, runnerOption := range runnerOptions {
+	    optionArgs := strings.Split(runnerOption, ":")
+		runnerOptionStrings = append(runnerOptionStrings, fmt.Sprintf(`<option name="%s" key="%s" />`, optionArgs[0], optionArgs[1]))
+	}
+	runnerOptionsString := strings.Join(runnerOptionStrings, fmt.Sprintf("\\n%s", test_xml_indent))
+	runnerOptionsString = proptools.NinjaAndShellEscape(runnerOptionsString)
 
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        autogenTestConfig,
@@ -133,6 +142,7 @@ func autogenTemplateWithNameAndOutputFile(ctx android.ModuleContext, name string
 			"extraConfigs":    extraConfigs,
 			"outputFileName":  outputFileName,
 			"testInstallBase": testInstallBase,
+			"runnerOptions": runnerOptionsString,
 		},
 	})
 }
@@ -144,12 +154,12 @@ func AutoGenNativeTestConfig(ctx android.ModuleContext, testConfigProp *string,
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String(), config, testInstallBase)
+			autogenTemplate(ctx, autogenPath, templatePath.String(), config, testInstallBase, nil)
 		} else {
 			if ctx.Device() {
-				autogenTemplate(ctx, autogenPath, "${NativeTestConfigTemplate}", config, testInstallBase)
+				autogenTemplate(ctx, autogenPath, "${NativeTestConfigTemplate}", config, testInstallBase, nil)
 			} else {
-				autogenTemplate(ctx, autogenPath, "${NativeHostTestConfigTemplate}", config, testInstallBase)
+				autogenTemplate(ctx, autogenPath, "${NativeHostTestConfigTemplate}", config, testInstallBase, nil)
 			}
 		}
 		return autogenPath
@@ -163,9 +173,9 @@ func AutoGenShellTestConfig(ctx android.ModuleContext, testConfigProp *string,
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplateWithNameAndOutputFile(ctx, ctx.ModuleName(), autogenPath, templatePath.String(), config, outputFileName, "")
+			autogenTemplateWithNameAndOutputFile(ctx, ctx.ModuleName(), autogenPath, templatePath.String(), config, outputFileName, "", nil)
 		} else {
-			autogenTemplateWithNameAndOutputFile(ctx, ctx.ModuleName(), autogenPath, "${ShellTestConfigTemplate}", config, outputFileName, "")
+			autogenTemplateWithNameAndOutputFile(ctx, ctx.ModuleName(), autogenPath, "${ShellTestConfigTemplate}", config, outputFileName, "", nil)
 		}
 		return autogenPath
 	}
@@ -178,9 +188,9 @@ func AutoGenNativeBenchmarkTestConfig(ctx android.ModuleContext, testConfigProp 
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String(), configs, "")
+			autogenTemplate(ctx, autogenPath, templatePath.String(), configs, "", nil)
 		} else {
-			autogenTemplate(ctx, autogenPath, "${NativeBenchmarkTestConfigTemplate}", configs, "")
+			autogenTemplate(ctx, autogenPath, "${NativeBenchmarkTestConfigTemplate}", configs, "", nil)
 		}
 		return autogenPath
 	}
@@ -188,20 +198,20 @@ func AutoGenNativeBenchmarkTestConfig(ctx android.ModuleContext, testConfigProp 
 }
 
 func AutoGenJavaTestConfig(ctx android.ModuleContext, testConfigProp *string, testConfigTemplateProp *string,
-	testSuites []string, autoGenConfig *bool, unitTest *bool) android.Path {
+	testSuites []string, autoGenConfig *bool, unitTest *bool, runnerOptions []string) android.Path {
 	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig, testConfigTemplateProp)
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String(), nil, "")
+			autogenTemplate(ctx, autogenPath, templatePath.String(), nil, "", runnerOptions)
 		} else {
 			if ctx.Device() {
-				autogenTemplate(ctx, autogenPath, "${JavaTestConfigTemplate}", nil, "")
+				autogenTemplate(ctx, autogenPath, "${JavaTestConfigTemplate}", nil, "", runnerOptions)
 			} else {
 				if Bool(unitTest) {
-					autogenTemplate(ctx, autogenPath, "${JavaHostUnitTestConfigTemplate}", nil, "")
+					autogenTemplate(ctx, autogenPath, "${JavaHostUnitTestConfigTemplate}", nil, "", runnerOptions)
 				} else {
-					autogenTemplate(ctx, autogenPath, "${JavaHostTestConfigTemplate}", nil, "")
+					autogenTemplate(ctx, autogenPath, "${JavaHostTestConfigTemplate}", nil, "", runnerOptions)
 				}
 			}
 		}
@@ -217,9 +227,9 @@ func AutoGenPythonBinaryHostTestConfig(ctx android.ModuleContext, testConfigProp
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String(), nil, "")
+			autogenTemplate(ctx, autogenPath, templatePath.String(), nil, "", nil)
 		} else {
-			autogenTemplate(ctx, autogenPath, "${PythonBinaryHostTestConfigTemplate}", nil, "")
+			autogenTemplate(ctx, autogenPath, "${PythonBinaryHostTestConfigTemplate}", nil, "", nil)
 		}
 		return autogenPath
 	}
@@ -232,12 +242,12 @@ func AutoGenRustTestConfig(ctx android.ModuleContext, testConfigProp *string,
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String(), config, "")
+			autogenTemplate(ctx, autogenPath, templatePath.String(), config, "", nil)
 		} else {
 			if ctx.Device() {
-				autogenTemplate(ctx, autogenPath, "${RustDeviceTestConfigTemplate}", config, "")
+				autogenTemplate(ctx, autogenPath, "${RustDeviceTestConfigTemplate}", config, "", nil)
 			} else {
-				autogenTemplate(ctx, autogenPath, "${RustHostTestConfigTemplate}", config, "")
+				autogenTemplate(ctx, autogenPath, "${RustHostTestConfigTemplate}", config, "", nil)
 			}
 		}
 		return autogenPath
@@ -251,12 +261,12 @@ func AutoGenRustBenchmarkConfig(ctx android.ModuleContext, testConfigProp *strin
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String(), config, "")
+			autogenTemplate(ctx, autogenPath, templatePath.String(), config, "", nil)
 		} else {
 			if ctx.Device() {
-				autogenTemplate(ctx, autogenPath, "${RustDeviceBenchmarkConfigTemplate}", config, "")
+				autogenTemplate(ctx, autogenPath, "${RustDeviceBenchmarkConfigTemplate}", config, "", nil)
 			} else {
-				autogenTemplate(ctx, autogenPath, "${RustHostBenchmarkConfigTemplate}", config, "")
+				autogenTemplate(ctx, autogenPath, "${RustHostBenchmarkConfigTemplate}", config, "", nil)
 			}
 		}
 		return autogenPath
@@ -270,9 +280,9 @@ func AutoGenRobolectricTestConfig(ctx android.ModuleContext, testConfigProp *str
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String(), nil, "")
+			autogenTemplate(ctx, autogenPath, templatePath.String(), nil, "", nil)
 		} else {
-			autogenTemplate(ctx, autogenPath, "${RobolectricTestConfigTemplate}", nil, "")
+			autogenTemplate(ctx, autogenPath, "${RobolectricTestConfigTemplate}", nil, "", nil)
 		}
 		return autogenPath
 	}

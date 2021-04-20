@@ -679,6 +679,9 @@ type TestOptions struct {
 
 	// If the test is a hostside(no device required) unittest that shall be run during presubmit check.
 	Unit_test *bool
+	
+	// A list of tradefed options for the test runner.
+	Runner_options []string `android:"arch_variant"`
 }
 
 type testProperties struct {
@@ -794,7 +797,7 @@ func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		j.testProperties.Test_options.Unit_test = proptools.BoolPtr(defaultUnitTest)
 	}
 	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.testProperties.Test_config, j.testProperties.Test_config_template,
-		j.testProperties.Test_suites, j.testProperties.Auto_gen_config, j.testProperties.Test_options.Unit_test)
+		j.testProperties.Test_suites, j.testProperties.Auto_gen_config, j.testProperties.Test_options.Unit_test, j.testProperties.Test_options.Runner_options)
 
 	j.data = android.PathsForModuleSrc(ctx, j.testProperties.Data)
 
@@ -836,7 +839,7 @@ func (j *TestHelperLibrary) GenerateAndroidBuildActions(ctx android.ModuleContex
 
 func (j *JavaTestImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.prebuiltTestProperties.Test_config, nil,
-		j.prebuiltTestProperties.Test_suites, nil, nil)
+		j.prebuiltTestProperties.Test_suites, nil, nil, nil)
 
 	j.Import.GenerateAndroidBuildActions(ctx)
 }
