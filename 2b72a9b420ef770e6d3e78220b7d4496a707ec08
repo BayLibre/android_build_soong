@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "027391a0_1b881844",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-20T11:17:52Z",
+      "side": 1,
+      "message": "Mind adding an integration test under build/soong/tests? This looks like functionality that would benefit from it.",
+      "revId": "2b72a9b420ef770e6d3e78220b7d4496a707ec08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
