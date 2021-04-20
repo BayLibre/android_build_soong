@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "943f6844_c9314129",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-20T20:13:44Z",
+      "side": 1,
+      "message": "🎉",
+      "revId": "e2d936b792717b75526481ebd16963627ccca24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3c9b5ef_87c0ad31",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-20T20:13:44Z",
+      "side": 1,
+      "message": "nit: golang uses camel case for constants",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 101,
+        "endChar": 9
+      },
+      "revId": "e2d936b792717b75526481ebd16963627ccca24d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
