@@ -15,6 +15,8 @@
 package python
 
 import (
+	"github.com/google/blueprint/proptools"
+
 	"android/soong/android"
 	"android/soong/tradefed"
 )
@@ -79,6 +81,10 @@ func (test *testDecorator) install(ctx android.ModuleContext, file android.Path)
 	test.binaryDecorator.pythonInstaller.dir64 = "nativetest64"
 
 	test.binaryDecorator.pythonInstaller.relative = ctx.ModuleName()
+
+	if ctx.Host() && test.testProperties.Test_options.Unit_test == nil {
+		test.testProperties.Test_options.Unit_test = proptools.BoolPtr(true)
+	}
 
 	test.binaryDecorator.pythonInstaller.install(ctx, file)
 
