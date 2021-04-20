@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af35ec3d_714e9cb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-04-20T18:03:11Z",
+      "side": 1,
+      "message": "(there\u0027s more detail on the bug, but basically i\u0027m trying to flush out all the remaining GNU binutils uses, but renderscript gets in the way, so i\u0027m going to try to get the \u0027safe\u0027 stuff over first, and worry about the harder things later...)",
+      "revId": "2e70f79273797696bff07e14fc2a39830fe7c8f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
