@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e5e26510_de2fe51f",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-20T06:41:59Z",
+      "side": 1,
+      "message": "done, I hope the new wording works better",
+      "parentUuid": "438098a4_0d5cc4aa",
+      "revId": "a6e7f55f4342c7028fe663cb047d0844c2ecd8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7b5c24b5_01dc0cc7",
         "filename": "bp2build/symlink_forest.go",
         "patchSetId": 5
@@ -48,6 +66,24 @@
       "writtenOn": "2021-04-19T19:19:38Z",
       "side": 1,
       "message": "I wonder if this structure could be simplified for clarity.\n\nCan we maintain that excluded \u003d\u003d (children \u003d\u003d nil) ? \nAdmittedly, I don\u0027t know if this actually *does* make things clearer, but food for thought.",
+      "revId": "a6e7f55f4342c7028fe663cb047d0844c2ecd8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "074ad6ee_80b25dfb",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-20T06:41:59Z",
+      "side": 1,
+      "message": "I actually thought about that! In the end, I decided that:\n\n1. it\u0027s clearer that way\n2. would make more sense if there were methods private to \"node\" but that\u0027s not how Golang works\n3. I think it\u0027s better if the tree structure is separate from the description of what to do at each node (the use case I had in mind was removing BUILD/WORKSPACE files existing in the main tree, but arguably, that\u0027s YAGNI)",
+      "parentUuid": "7b5c24b5_01dc0cc7",
       "revId": "a6e7f55f4342c7028fe663cb047d0844c2ecd8e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -69,6 +105,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82cbde88_7e482142",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-20T06:41:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c177e48_f2cf4bb0",
+      "revId": "a6e7f55f4342c7028fe663cb047d0844c2ecd8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e40ce046_ff288a1f",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-04-19T18:49:43Z",
       "side": 1,
       "message": "The usage of `exclude *node` here is a bit confusing; perhaps we can do this check in the caller?",
+      "revId": "a6e7f55f4342c7028fe663cb047d0844c2ecd8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b79dc3e_36a069a5",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-20T06:41:59Z",
+      "side": 1,
+      "message": "Done. I was a bit ambivalent because it results in code duplication in plantSymlinkForestRecursive but I think the code I came up with is better and results in creating fewer unnecessary directories in the first place.",
+      "parentUuid": "e40ce046_ff288a1f",
       "revId": "a6e7f55f4342c7028fe663cb047d0844c2ecd8e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -103,6 +175,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f5fb2b5_c4981297",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-20T06:41:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "645ac9d2_0efa2916",
+      "revId": "a6e7f55f4342c7028fe663cb047d0844c2ecd8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5f3c016_6a67f7fa",
@@ -116,6 +206,30 @@
       "writtenOn": "2021-04-19T18:49:43Z",
       "side": 1,
       "message": "Do you envision this is where logic pertaining to merging source/bp2build BUILD files will go? Or will we exclude such build files from the symlinking and handle them separately?",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 7
+      },
+      "revId": "a6e7f55f4342c7028fe663cb047d0844c2ecd8e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d8cca75_e2a60b59",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-20T06:41:59Z",
+      "side": 1,
+      "message": "Good question! I decided to YAGNI this question but I see the following options:\n\n1. Handle it in bp2build\n2. Handle it in a step after bp2build\n\nIt\u0027s better if the symlink forest creation logic is only concerned with symlink forest creation.",
+      "parentUuid": "e5f3c016_6a67f7fa",
       "range": {
         "startLine": 159,
         "startChar": 0,
