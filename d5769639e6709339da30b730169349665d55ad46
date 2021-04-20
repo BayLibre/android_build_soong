@@ -176,6 +176,24 @@
       "parentUuid": "c8381912_81d4b837",
       "revId": "d5769639e6709339da30b730169349665d55ad46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa099754_3e80bfac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-20T11:12:24Z",
+      "side": 1,
+      "message": "Unresolving because I\u0027m not sure what the new way to run Bazel builds is (not mixed builds)\n\nE.g. I used to run\n\nbuild/bazel/scripts/bp2build-sync.py remove\nGENERATE_BAZEL_FILES\u003dtrue m nothing\nbuild/bazel/scripts/bp2build-sync.py write\nbazel build //bionic/...\n\nBut if bp2build-sync is going away and being replaced by the symlink forest, what is the new way to use Bazel... ?\n\nGENERATE_BAZEL_FILES\u003dtrue m nothing\nbazel build //bionic/...\n\nSeems unlikely to work. I guess we need a new way to run Bazel builds... ?",
+      "parentUuid": "fc3409b6_0a34ad94",
+      "revId": "d5769639e6709339da30b730169349665d55ad46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
