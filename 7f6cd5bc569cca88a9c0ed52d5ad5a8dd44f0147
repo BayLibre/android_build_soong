@@ -63,6 +63,30 @@
       },
       "revId": "7f6cd5bc569cca88a9c0ed52d5ad5a8dd44f0147",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e00be8df_9d2d264d",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-20T09:51:34Z",
+      "side": 1,
+      "message": "Yes, something like that sounds cleaner. Completely agree it\u0027s out of scope here.",
+      "parentUuid": "ddb5f30b_e324b025",
+      "range": {
+        "startLine": 521,
+        "startChar": 130,
+        "endLine": 521,
+        "endChar": 160
+      },
+      "revId": "7f6cd5bc569cca88a9c0ed52d5ad5a8dd44f0147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
