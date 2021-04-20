@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ac5c1a4_1ec9a96b",
+        "filename": "cc/linkable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-20T04:43:28Z",
+      "side": 1,
+      "message": "Wow, this interface is growing so fast. Do you think it\u0027s worth to define an interface to group the functions for the snapshot support and embed the interface here? I guess that would provide some logical grouping of these functions.",
+      "revId": "0a32dce647438dcb7fd7e23a599664e4f0e1760a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
