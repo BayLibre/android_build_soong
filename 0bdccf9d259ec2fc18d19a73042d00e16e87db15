@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58858dc6_46e16213",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-20T07:55:00Z",
+      "side": 1,
+      "message": "it\u0027s good that at least one of us is paying attention  :)",
+      "parentUuid": "440880f0_98e83d82",
+      "range": {
+        "startLine": 52,
+        "startChar": 17,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "0bdccf9d259ec2fc18d19a73042d00e16e87db15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea0fe0f1_507fb4c3",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-20T07:22:37Z",
       "side": 1,
       "message": "nit, suggestions: ensureNodeExists? getOrCreateNode?",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "0bdccf9d259ec2fc18d19a73042d00e16e87db15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f883d2ac_a645988e",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-20T07:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea0fe0f1_507fb4c3",
       "range": {
         "startLine": 25,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a788c46f_4d9112ed",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-20T07:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d08d4737_ce944516",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "0bdccf9d259ec2fc18d19a73042d00e16e87db15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b34abd44_eb0dfbec",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c786695_1be2f249",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-20T07:55:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b34abd44_eb0dfbec",
+      "range": {
+        "startLine": 427,
+        "startChar": 1,
+        "endLine": 427,
+        "endChar": 30
+      },
+      "revId": "0bdccf9d259ec2fc18d19a73042d00e16e87db15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26be103a_8d899cfe",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-04-20T07:22:37Z",
       "side": 1,
       "message": "Will it be useful to also do a readlink -f check here?",
+      "range": {
+        "startLine": 507,
+        "startChar": 5,
+        "endLine": 507,
+        "endChar": 35
+      },
+      "revId": "0bdccf9d259ec2fc18d19a73042d00e16e87db15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e495d443_54a9b135",
+        "filename": "tests/bootstrap_test.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-20T07:55:00Z",
+      "side": 1,
+      "message": "Added one at test_integrated_bp2build_bazel_workspace_structure (since that\u0027s what checks for the structure of the symlink forest)",
+      "parentUuid": "26be103a_8d899cfe",
       "range": {
         "startLine": 507,
         "startChar": 5,
