@@ -212,6 +212,24 @@
       "parentUuid": "fa099754_3e80bfac",
       "revId": "d5769639e6709339da30b730169349665d55ad46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "187e1aca_6a057a6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-20T21:31:38Z",
+      "side": 1,
+      "message": "I suggested on Chris\u0027 CL to make this the default, and give a --config\u003dno_soong or --config\u003dstandalone escape hatch that resets the package_path.",
+      "parentUuid": "833337bc_384a5db0",
+      "revId": "d5769639e6709339da30b730169349665d55ad46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
