@@ -39,6 +39,30 @@
       },
       "revId": "7f6cd5bc569cca88a9c0ed52d5ad5a8dd44f0147",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddb5f30b_e324b025",
+        "filename": "apex/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2021-04-20T09:20:32Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t think this flag is right for this purpose - it should only turn off build targets and checks that assume a full platform tree. Maybe UnbundledBuildApps is what you\u0027re looking for?\n\nDone\n\n\u003e (Even better would be to have separate outputs for the compressed APEXes so that build artifacts don\u0027t depend on flags this way, but I suppose that\u0027d be a whole different cup of tea, and that there are any number of reasons for it being this way.)\n\nWe are looking into changing build logic around compression, but that\u0027s a bigger change and I first want to weight if it\u0027s worth it. To give you more context, we are discussing the following alternative:\n\n1. Let\u0027s say we have a com.foo apex soong rule that has compressible: true.\n2. It will emit two build rules:\n   a. com.foo one that produces uncompressed apex\n   b. com.foo-compressed that produces compressed version of this apex\n3. Whether to include compressed version of an apex into system partition will be controlled at PRODUCT_PACKAGES level, i.e.:\n   a. If you want uncompressed, you put PRODUCT_PACKAGES +\u003d com.foo\n   b. If you want compressed, you put PRODUCT_PACKAGES +\u003d com.foo-compressed",
+      "parentUuid": "d3100650_e2d56f78",
+      "range": {
+        "startLine": 521,
+        "startChar": 130,
+        "endLine": 521,
+        "endChar": 160
+      },
+      "revId": "7f6cd5bc569cca88a9c0ed52d5ad5a8dd44f0147",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
