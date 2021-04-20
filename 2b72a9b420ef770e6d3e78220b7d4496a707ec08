@@ -34,6 +34,23 @@
       "parentUuid": "027391a0_1b881844",
       "revId": "2b72a9b420ef770e6d3e78220b7d4496a707ec08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "719ca6f2_e605694c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-20T12:10:57Z",
+      "side": 1,
+      "message": "Should we hold off this CL until we\u0027ve changed CI to use the synthetic workspace?",
+      "revId": "2b72a9b420ef770e6d3e78220b7d4496a707ec08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
