@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "440880f0_98e83d82",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-20T07:22:37Z",
+      "side": 1,
+      "message": "This return value seems to be unused in line 402 of main.go. Revert?",
+      "range": {
+        "startLine": 52,
+        "startChar": 17,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "0bdccf9d259ec2fc18d19a73042d00e16e87db15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea0fe0f1_507fb4c3",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-20T07:22:37Z",
+      "side": 1,
+      "message": "nit, suggestions: ensureNodeExists? getOrCreateNode?",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "0bdccf9d259ec2fc18d19a73042d00e16e87db15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d08d4737_ce944516",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-20T07:22:37Z",
+      "side": 1,
+      "message": "The usage of this function seems to create a tree where everything is excluded. The reason was not clear to me until I saw the callsite. Mind naming it as such, or parameterize the function with the excluded bool value?",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 21
+      },
+      "revId": "0bdccf9d259ec2fc18d19a73042d00e16e87db15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b34abd44_eb0dfbec",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-20T07:22:37Z",
+      "side": 1,
+      "message": "no-op?",
+      "range": {
+        "startLine": 427,
+        "startChar": 1,
+        "endLine": 427,
+        "endChar": 30
+      },
+      "revId": "0bdccf9d259ec2fc18d19a73042d00e16e87db15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26be103a_8d899cfe",
+        "filename": "tests/bootstrap_test.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-20T07:22:37Z",
+      "side": 1,
+      "message": "Will it be useful to also do a readlink -f check here?",
+      "range": {
+        "startLine": 507,
+        "startChar": 5,
+        "endLine": 507,
+        "endChar": 35
+      },
+      "revId": "0bdccf9d259ec2fc18d19a73042d00e16e87db15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
