@@ -39,6 +39,30 @@
       },
       "revId": "d0a69727f17f348b21a8c1f72872e746ea82eecc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "254a572f_bca8d16a",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-20T12:23:26Z",
+      "side": 1,
+      "message": "Done! I also removed intermediatesDir() because it\u0027s not used anymore and removed the \"workspace-relative\" clause from the documentation because p.buildDir can be either absolute or relative depending on what $OUTDIR is set to.",
+      "parentUuid": "b2bd256a_f3e3ef92",
+      "range": {
+        "startLine": 589,
+        "startChar": 21,
+        "endLine": 589,
+        "endChar": 37
+      },
+      "revId": "d0a69727f17f348b21a8c1f72872e746ea82eecc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
