@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e17897b_b4dcd3b1",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-20T21:26:44Z",
+      "side": 1,
+      "message": "I think this target should be generated even if there are converted modules.",
+      "range": {
+        "startLine": 243,
+        "startChar": 3,
+        "endLine": 243,
+        "endChar": 41
+      },
+      "revId": "51cd8e80e627414034361167b9ffa98877b40f08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
