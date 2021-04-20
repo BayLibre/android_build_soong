@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9665880e_33027a2a",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-20T15:26:06Z",
+      "side": 0,
+      "message": "I think this is dead code now, yes?",
+      "revId": "3784448c9ebf9d52639980862d76382614723049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
