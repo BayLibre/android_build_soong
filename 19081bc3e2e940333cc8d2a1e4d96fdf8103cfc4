@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "428f7f04_60605488",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-20T23:48:46Z",
+      "side": 1,
+      "message": "You could avoid this by assigning a method reference.  Make buildExtraFiles a method on systemImage, and then use module.filesystem.buildExtraFiles \u003d module.buildExtraFiles.",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "19081bc3e2e940333cc8d2a1e4d96fdf8103cfc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
