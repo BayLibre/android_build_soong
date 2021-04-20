@@ -194,6 +194,24 @@
       "parentUuid": "fc3409b6_0a34ad94",
       "revId": "d5769639e6709339da30b730169349665d55ad46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "833337bc_384a5db0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-20T11:16:29Z",
+      "side": 1,
+      "message": "Aha, Jin suggests\n\nGENERATE_BAZEL_FILES\u003dtrue m nothing\nbazel build --package_path\u003dout/soong/workspace //bionic/...\n\nThat seems to work\n\nI guess we should update the docs at http://go/bp2build\n\nShould we also update bazel.sh to do this automatically?",
+      "parentUuid": "fa099754_3e80bfac",
+      "revId": "d5769639e6709339da30b730169349665d55ad46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
