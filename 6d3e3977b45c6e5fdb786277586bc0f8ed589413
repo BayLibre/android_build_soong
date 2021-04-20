@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12a5458f_b5173bd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-20T12:37:45Z",
+      "side": 1,
+      "message": "Looks like there are tests that need updating in both build/soong/apex/boot_image_test.go and build/soong/sdk/boot_image_sdk_test.go: https://cs.android.com/search?q\u003df:build%2Fsoong%20boot_images\u0026ss\u003dandroid\n\nAlso here: https://cs.android.com/android/platform/superproject/+/master:build/soong/java/boot_image.go;l\u003d31;drc\u003d9b381ef2b898156bea070edd045d7e86d79b4fb3",
+      "revId": "6d3e3977b45c6e5fdb786277586bc0f8ed589413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
