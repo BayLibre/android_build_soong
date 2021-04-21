@@ -16,6 +16,24 @@
       "message": "I sent https://android-review.googlesource.com/c/platform/build/soong/+/1677620 last week which should unblock this, as I understand",
       "revId": "d191f04a23dc5c61d6f4016f4cd46fd422862f75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daa4281e_791b1dfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T14:52:13Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/build/soong/+/1677620 has been submitted now so I suspect you are unblocked on this CL",
+      "parentUuid": "26472955_bbf70ad6",
+      "revId": "d191f04a23dc5c61d6f4016f4cd46fd422862f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
