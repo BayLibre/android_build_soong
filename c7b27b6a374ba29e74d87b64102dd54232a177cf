@@ -787,6 +787,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f725945_9e52821f",
+        "filename": "dexpreopt/dexpreopt_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-21T15:06:16Z",
+      "side": 1,
+      "message": "I filed the bug for it(b/185992282) aosp/1683365 is WIP.\n\nBTW, I would like to work on the script using this dexpreopt.zip first(so it would be great if this CL can be merged before working on that), and then focus on validator next. Because the script is required in this dessert.(Of course, I will finish both, but I am talking about the order.) WDYT?",
+      "parentUuid": "af78d062_ebf651d0",
+      "range": {
+        "startLine": 189,
+        "startChar": 5,
+        "endLine": 189,
+        "endChar": 37
+      },
+      "revId": "c7b27b6a374ba29e74d87b64102dd54232a177cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1663c8f5_3b34d925",
         "filename": "java/dexpreopt.go",
         "patchSetId": 4
