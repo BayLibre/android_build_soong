@@ -304,7 +304,7 @@ FlagFile = namedtuple('FlagFile', ('flag', 'file', 'ignore_conflicts', 'packages
 def parse_ordered_flags(ordered_flags):
     r = []
     currentflag, file, ignore_conflicts, packages, tag = None, None, False, False, None
-    for flag_value in ordered_flags:
+    for flag_value in (ordered_flags or []):
         flag, value = flag_value[0], flag_value[1]
         if flag in ALL_FLAGS_SET:
             if currentflag:
