@@ -22,6 +22,30 @@
       },
       "revId": "19081bc3e2e940333cc8d2a1e4d96fdf8103cfc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a10383_2c0eb3b9",
+        "filename": "filesystem/system_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-21T00:13:08Z",
+      "side": 1,
+      "message": "Done. \n\nThank you for the tip. A lot to learn!",
+      "parentUuid": "428f7f04_60605488",
+      "range": {
+        "startLine": 45,
+        "startChar": 7,
+        "endLine": 45,
+        "endChar": 34
+      },
+      "revId": "19081bc3e2e940333cc8d2a1e4d96fdf8103cfc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
