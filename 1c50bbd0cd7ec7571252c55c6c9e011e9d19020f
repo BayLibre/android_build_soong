@@ -16,6 +16,24 @@
       "message": "Hmm seems bazel_handler_test.go is still failing\n\nI will try rebasing again...",
       "revId": "1c50bbd0cd7ec7571252c55c6c9e011e9d19020f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f264741d_327f710e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T15:20:51Z",
+      "side": 1,
+      "message": "Passes locally before rebasing, so I am pretty confused about the CI failures\n\nruperts@ruperts9018238:~/aosp-2/build/soong/android$ go test\nPASS\nok  \tandroid/soong/android\t0.671s\n\ne.g.\n\nhttps://android-build.googleplex.com/builds/treetop/android-review/1683265?ref\u003dCOMMENT\u0026revision\u003d4",
+      "parentUuid": "87f153e9_1022c5c7",
+      "revId": "1c50bbd0cd7ec7571252c55c6c9e011e9d19020f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
