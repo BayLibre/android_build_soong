@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6a45930_f100f13c",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-21T07:27:19Z",
+      "side": 1,
+      "message": "package?",
+      "range": {
+        "startLine": 238,
+        "startChar": 65,
+        "endLine": 238,
+        "endChar": 72
+      },
+      "revId": "fce4b345153e022938169a7cc1e9ab21d997322a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc7c8403_c96f8ea1",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-21T07:27:19Z",
+      "side": 1,
+      "message": "to be more precise: for every Android.bp file with at least one module",
+      "range": {
+        "startLine": 239,
+        "startChar": 61,
+        "endLine": 239,
+        "endChar": 82
+      },
+      "revId": "fce4b345153e022938169a7cc1e9ab21d997322a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
