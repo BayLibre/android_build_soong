@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5200ab7_0e533d4a",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1688,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-21T15:42:19Z",
+      "side": 1,
+      "message": "This conditional is quite complex. Could you split the individual checks out and use android.AssertStringDoesContain() and android.AssertStringDoesNotContain().",
+      "revId": "b1849e557eeca1aedaac16e8a3dbbbce007acb31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18511d9a_1f31e256",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1699,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-21T15:42:19Z",
+      "side": 1,
+      "message": "Ditto with splitting these out into separate AssertStringDoes...Contain() calls.",
+      "revId": "b1849e557eeca1aedaac16e8a3dbbbce007acb31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
