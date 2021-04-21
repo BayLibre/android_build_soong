@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87f153e9_1022c5c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T15:19:42Z",
+      "side": 1,
+      "message": "Hmm seems bazel_handler_test.go is still failing\n\nI will try rebasing again...",
+      "revId": "1c50bbd0cd7ec7571252c55c6c9e011e9d19020f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
