@@ -93,6 +93,30 @@
       },
       "revId": "8d0df2898d5f72c49ec472e5cae64fda392c0195",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b001229e_755812ab",
+        "filename": "tests/bootstrap_test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-21T10:10:58Z",
+      "side": 1,
+      "message": "ah ha, didn\u0027t notice it was `mkdir -p`. This is fine.",
+      "parentUuid": "8a0d1a4a_70c597f3",
+      "range": {
+        "startLine": 645,
+        "startChar": 13,
+        "endLine": 645,
+        "endChar": 18
+      },
+      "revId": "8d0df2898d5f72c49ec472e5cae64fda392c0195",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
