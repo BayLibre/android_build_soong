@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa7d7361_c9c86f72",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T09:51:28Z",
+      "side": 1,
+      "message": "Why did the spacing change here? Is there an extra blank line on 323 now?",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 70
+      },
+      "revId": "dad40abb5cb9d5ab27d7edacfb164e141aa1301f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab119f77_ae23b4d1",
         "filename": "bp2build/configurability.go",
         "patchSetId": 16
