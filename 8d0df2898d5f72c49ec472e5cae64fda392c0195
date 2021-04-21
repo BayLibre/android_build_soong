@@ -22,6 +22,29 @@
       },
       "revId": "8d0df2898d5f72c49ec472e5cae64fda392c0195",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b5c6c4a_247d092b",
+        "filename": "tests/bootstrap_test.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-21T10:06:33Z",
+      "side": 1,
+      "message": "Wait, isn\u0027t this case specifically permitted with the new conditional branch?\n\nIt should be an error for non-BUILD files right?",
+      "range": {
+        "startLine": 645,
+        "startChar": 13,
+        "endLine": 645,
+        "endChar": 18
+      },
+      "revId": "8d0df2898d5f72c49ec472e5cae64fda392c0195",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
