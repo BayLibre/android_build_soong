@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a8009f5_4c6a141c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-21T09:10:39Z",
+      "side": 1,
+      "message": "+pedro fyi (4 lint changes in this stack)",
+      "revId": "302c5b8d80fb8b850d33a831b2a4b221c743bbee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
