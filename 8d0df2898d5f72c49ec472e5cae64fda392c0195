@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2187b579_7baf43c9",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T10:05:20Z",
+      "side": 1,
+      "message": "When we ignore an existing BUILD file, can we print something out?",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 58
+      },
+      "revId": "8d0df2898d5f72c49ec472e5cae64fda392c0195",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
