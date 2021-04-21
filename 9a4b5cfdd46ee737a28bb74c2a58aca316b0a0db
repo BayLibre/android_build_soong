@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f0ae0ee_56feb7b8",
+        "filename": "scripts/hiddenapi/generate_hiddenapi_lists.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-04-21T15:53:35Z",
+      "side": 1,
+      "message": "probable cleaner to set `default\u003d[]` in the flag definition on line 117?",
+      "range": {
+        "startLine": 307,
+        "startChar": 36,
+        "endLine": 307,
+        "endChar": 42
+      },
+      "revId": "9a4b5cfdd46ee737a28bb74c2a58aca316b0a0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
