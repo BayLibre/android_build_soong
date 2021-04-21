@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5e2e158_1d444d86",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T09:11:21Z",
+      "side": 1,
+      "message": "It depends -- we are generating filegroups for every Android.bp now\n\nSo it is not fine if there is an existing Android.bp target called all_srcs \n\n(we could assume there never will be?)",
+      "parentUuid": "c7bcde41_27dea69c",
+      "range": {
+        "startLine": 242,
+        "startChar": 16,
+        "endLine": 242,
+        "endChar": 33
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6792ccca_36e1eebb",
         "filename": "bp2build/conversion.go",
         "patchSetId": 12
@@ -72,6 +96,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80c14a09_abaffa0c",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T09:11:21Z",
+      "side": 1,
+      "message": "Yes, but I think this approach isn\u0027t actually going to scale, because\n\n~/aosp-2$ find . | grep \u0027/BUILD$\u0027 | wc -l\n987\n\n(those are 987 existing BUILD files in the tree, not bp2build generated files...)\n\n--------\n\nI am still confused why these CI errors aren\u0027t reproducible locally though. I would expect to have the same build errors locally that we are seeing in CI. But local builds are fine, with the exception of external/perfetto\n\nE.g. this works fine locally\n\nrm -rf out \u0026\u0026 m clean \u0026\u0026 GENERATE_BAZEL_FILES\u003dtrue m nothing \u0026\u0026 bazel build --package_path\u003dout/soong/workspace //bionic/...",
+      "parentUuid": "6792ccca_36e1eebb",
+      "range": {
+        "startLine": 52,
+        "startChar": 14,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ccf9541_3f6b6ec7",
         "filename": "bp2build/testing.go",
         "patchSetId": 12
@@ -83,6 +131,30 @@
       "writtenOn": "2021-04-21T08:49:12Z",
       "side": 1,
       "message": "It\u0027s odd that you explicitly call GenerateBazelTargets() with a flag that\u0027s different from it\u0027s production value. Why? (especially that you then filter out the files that would be generated if the flag was \"true\" in the next line)",
+      "range": {
+        "startLine": 186,
+        "startChar": 59,
+        "endLine": 186,
+        "endChar": 64
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a7f2739_8d157d1f",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T09:11:21Z",
+      "side": 1,
+      "message": "A number of existing tests count the number of BUILD files that are generated, and expect the count to sometimes be 0. So I was trying to support the existing behavior for them.\n\ne.g. in build_conversion_test.go\n\n\t\t\texpectedCount: map[string]int{\n\t\t\t\t\"migrated\":                           1,\n\t\t\t\t\"migrated/but_not_really\":            0,\n\t\t\t\t\"migrated/but_not_really/but_really\": 1,\n\t\t\t\t\"not_migrated\":                       0,\n\t\t\t\t\"also_not_migrated\":                  0,\n\t\t\t},\n\nOpen to other suggestions...\n\n(cc jingwen@ who wrote those tests)",
+      "parentUuid": "4ccf9541_3f6b6ec7",
       "range": {
         "startLine": 186,
         "startChar": 59,
@@ -134,6 +206,54 @@
         "startChar": 36,
         "endLine": 66,
         "endChar": 40
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee49ff97_b1022222",
+        "filename": "tests/bp2build_bazel_test.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T09:11:21Z",
+      "side": 1,
+      "message": "I\u0027m was just trying to find the name of the output file without hardcoding k8-fastbuild etc. Replied in the other thread.",
+      "parentUuid": "a879615e_c253c716",
+      "range": {
+        "startLine": 66,
+        "startChar": 36,
+        "endLine": 66,
+        "endChar": 40
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ade9ba2_70ee00d0",
+        "filename": "tests/bp2build_bazel_test.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T09:11:21Z",
+      "side": 1,
+      "message": "It\u0027s kind of ugly...\n\nEither\n\n./out/bazel/output_user_root/7edc8d81e9422b0a81689154306039c3/execroot/__main__/bazel-out/k8-fastbuild/bin/foo/convertible_soong_module/the_answer.txt\n\nor\n\n./bazel-out/k8-fastbuild/bin/foo/convertible_soong_module/the_answer.txt\n\nI will update the test to hardcode bazel-out/k8-fastbuild/bin/foo/convertible_soong_module/the_answer.txt",
+      "parentUuid": "f0e7e254_27e838c3",
+      "range": {
+        "startLine": 66,
+        "startChar": 27,
+        "endLine": 66,
+        "endChar": 32
       },
       "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
