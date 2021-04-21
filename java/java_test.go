@@ -1647,31 +1647,64 @@ func TestJavaSdkLibrary_StubOrImplOnlyLibs(t *testing.T) {
 		java_sdk_library {
 			name: "sdklib",
 			srcs: ["a.java"],
-			impl_only_libs: ["foo"],
-			stub_only_libs: ["bar"],
+			libs: ["lib"],
+			static_libs: ["static-lib"],
+			impl_only_libs: ["impl-only-lib"],
+			stub_only_libs: ["stub-only-lib"],
+			stub_only_static_libs: ["stub-only-static-lib"],
 		}
-		java_library {
-			name: "foo",
+		java_defaults {
+			name: "defaults",
 			srcs: ["a.java"],
 			sdk_version: "current",
 		}
 		java_library {
-			name: "bar",
-			srcs: ["a.java"],
-			sdk_version: "current",
+			name: "lib",
+			defaults: ["defaults"],
+		}
+		java_library {
+			name: "static-lib",
+			defaults: ["defaults"],
+		}
+		java_library {
+			name: "impl-only-lib",
+			defaults: ["defaults"],
+		}
+		java_library {
+			name: "stub-only-lib",
+			defaults: ["defaults"],
+		}
+		java_library {
+			name: "stub-only-static-lib",
+			defaults: ["defaults"],
 		}
 		`)
-
+	jarPath := func(m string) string {
+		return filepath.Join("out", "soong", ".intermediates", m, "android_common", "turbine-combined", m+".jar")
+	}
+	staticlib := jarPath("static-lib")
 	for _, implName := range []string{"sdklib", "sdklib.impl"} {
 		implJavacCp := result.ModuleForTests(implName, "android_common").Rule("javac").Args["classpath"]
-		if !strings.Contains(implJavacCp, "/foo.jar") || strings.Contains(implJavacCp, "/bar.jar") {
-			t.Errorf("%v javac classpath %v does not contain foo and not bar", implName, implJavacCp)
+		if !(strings.Contains(implJavacCp, "/lib.jar") && strings.Contains(implJavacCp, "/impl-only-lib.jar")) || strings.Contains(implJavacCp, "/stub-only-lib.jar") {
+			t.Errorf("%v javac classpath %v does not contain just lib and impl-only-lib", implName, implJavacCp)
+		}
+		implCombineJar := result.ModuleForTests(implName, "android_common").Rule("combineJar")
+		if len(implCombineJar.Inputs) != 2 || implCombineJar.Inputs[1].String() != staticlib {
+			t.Errorf("impl combineJar inputs %v does not contain %q", implCombineJar.Inputs, staticlib)
 		}
 	}
+
 	stubName := apiScopePublic.stubsLibraryModuleName("sdklib")
 	stubsJavacCp := result.ModuleForTests(stubName, "android_common").Rule("javac").Args["classpath"]
-	if strings.Contains(stubsJavacCp, "/foo.jar") || !strings.Contains(stubsJavacCp, "/bar.jar") {
-		t.Errorf("stubs javac classpath %v does not contain bar and not foo", stubsJavacCp)
+	if !strings.Contains(stubsJavacCp, "/stub-only-lib.jar") ||
+		strings.Contains(stubsJavacCp, "/impl-only-lib.jar") ||
+		strings.Contains(stubsJavacCp, "/lib.jar") {
+		t.Errorf("stubs javac classpath %v does not contain just stub-only-lib", stubsJavacCp)
+	}
+	stubCombineJar := result.ModuleForTests(stubName, "android_common").Rule("combineJar")
+	stubOnlyStaticLib := jarPath("stub-only-static-lib")
+	if len(stubCombineJar.Inputs) != 2 || stubCombineJar.Inputs[1].String() != stubOnlyStaticLib {
+		t.Errorf("stub combineJar inputs %v does not contain %q", stubCombineJar.Inputs, stubOnlyStaticLib)
 	}
 }
 
