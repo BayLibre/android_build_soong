@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae34c5f1_a7889ca1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-21T09:09:13Z",
+      "side": 1,
+      "message": "Continuing the theme of Colin\u0027s comment on the other change ;D",
+      "revId": "5a4202575e310abfda81a0732b3d14341033ab63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
