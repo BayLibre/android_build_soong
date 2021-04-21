@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f62dbcda_451463a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-21T17:10:23Z",
+      "side": 1,
+      "message": "What variant does it depend on then? Mutator order isn\u0027t clear to me here, but regardless whether the prebuilt mutator ran before or after the apex one, I thought it\u0027d end up depending on the corresponding variant of the prebuilt.\n\nOr is it that the prebuilt doesn\u0027t get split by the apex mutator at all?\n\nThis change is iffy, but since you say it\u0027s going away I don\u0027t mind that. I\u0027m more concerned that there may be something else at play here.",
+      "range": {
+        "startLine": 19,
+        "startChar": 18,
+        "endLine": 20,
+        "endChar": 53
+      },
+      "revId": "894546d301573b902a02e4251718d16244de61fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
