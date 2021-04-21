@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31e11a6d_0d59520b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-21T17:52:27Z",
+      "side": 1,
+      "message": "\"easy\"?",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 7
+      },
+      "revId": "fb96a85198065cace5ee0907d85ae4d6ef4f2704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28769a61_47a2f780",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-21T17:52:27Z",
+      "side": 1,
+      "message": "On the dependencies, right? I first thought this talked about blocking the renames of the bcp_fragment modules themselves to the source names in PrebuiltRenameMutator.",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 11
+      },
+      "revId": "fb96a85198065cace5ee0907d85ae4d6ef4f2704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3d2a911_635b82af",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1927,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-21T17:52:27Z",
+      "side": 1,
+      "message": "A bit surprised to see rename work bundled up with another change from you.\n\nRelated, could you consider a CL that renames boot_image to bootclasspath_fragment everywhere internally and in tests in one go? I was confused by \"boot_image\" in tests instead of \"bootclasspath_fragment\", had to look up if they are the same thing.\n\nI don\u0027t think you necessarily have to move out the renames in this CL though.",
+      "range": {
+        "startLine": 1927,
+        "startChar": 21,
+        "endLine": 1927,
+        "endChar": 42
+      },
+      "revId": "fb96a85198065cace5ee0907d85ae4d6ef4f2704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77592eea_a6246002",
+        "filename": "apex/boot_image_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-21T17:52:27Z",
+      "side": 1,
+      "message": "The boot_image here and below don\u0027t have any contents lists. How do they exercise the AddDependency logic?",
+      "revId": "fb96a85198065cace5ee0907d85ae4d6ef4f2704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8954f41a_505eabcc",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-21T17:52:27Z",
+      "side": 1,
+      "message": "Unfinished sentence.",
+      "range": {
+        "startLine": 212,
+        "startChar": 44,
+        "endLine": 212,
+        "endChar": 62
+      },
+      "revId": "fb96a85198065cace5ee0907d85ae4d6ef4f2704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
