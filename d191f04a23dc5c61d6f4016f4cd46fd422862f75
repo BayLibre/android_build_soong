@@ -34,6 +34,23 @@
       "parentUuid": "26472955_bbf70ad6",
       "revId": "d191f04a23dc5c61d6f4016f4cd46fd422862f75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75dad716_722e6a99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-21T15:01:31Z",
+      "side": 1,
+      "message": "I\u0027m also handling this in https://android-review.googlesource.com/c/platform/build/soong/+/1674326 to generate correct buildable targets for current set of bionic targets, should we use that CL instead?",
+      "revId": "d191f04a23dc5c61d6f4016f4cd46fd422862f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
