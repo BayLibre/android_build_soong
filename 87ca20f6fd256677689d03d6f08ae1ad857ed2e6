@@ -16,6 +16,24 @@
       "message": "Add lint_test.go here",
       "revId": "87ca20f6fd256677689d03d6f08ae1ad857ed2e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8b4f222_c89167b1",
+        "filename": "java/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-04-21T23:57:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e17ef67f_d2019223",
+      "revId": "87ca20f6fd256677689d03d6f08ae1ad857ed2e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
