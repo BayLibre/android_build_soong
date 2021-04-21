@@ -22,6 +22,30 @@
       },
       "revId": "b0f4ca0cbde2322596e0fec87360d37a07822934",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "249584d7_2b54c116",
+        "filename": "android/bazel.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T14:50:56Z",
+      "side": 1,
+      "message": "Keeping this in case we ever want to allow the existing BUILD files to be used instead of ignored",
+      "parentUuid": "c3a28abd_424de2a2",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 20
+      },
+      "revId": "b0f4ca0cbde2322596e0fec87360d37a07822934",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
