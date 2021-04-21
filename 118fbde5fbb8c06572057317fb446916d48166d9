@@ -16,6 +16,24 @@
       "message": "this failure seems to be persistent, attempting to repro locally",
       "revId": "118fbde5fbb8c06572057317fb446916d48166d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad1fb7d9_0ed46a3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-21T15:25:56Z",
+      "side": 1,
+      "message": "The test passes locally:\n\n```\nRunning Tests...\n\nx86_64 apex_targetprep_tests\n----------------------------\ncom.android.tests.apex.ApexTargetPrepTest (1 Test)\n[1/1] com.android.tests.apex.ApexTargetPrepTest#trivialTest: PASSED (197ms)\n\nSummary\n-------\nx86_64 apex_targetprep_tests: Passed: 1, Failed: 0, Ignored: 0, Assumption Failed: 0,    \n```\n\nLet me try again in presubmit?",
+      "parentUuid": "4d3ca261_63f4fa53",
+      "revId": "118fbde5fbb8c06572057317fb446916d48166d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
