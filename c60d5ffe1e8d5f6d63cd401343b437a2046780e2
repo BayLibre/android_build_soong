@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c8df1a2_4ea788e5",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-21T09:22:12Z",
+      "side": 1,
+      "message": "Indeed! Well, technically, there could always be a \"bp2build_all_srcs\" module, but that has a much lower probability.",
+      "parentUuid": "a5e2e158_1d444d86",
+      "range": {
+        "startLine": 242,
+        "startChar": 16,
+        "endLine": 242,
+        "endChar": 33
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6792ccca_36e1eebb",
@@ -191,6 +215,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "89305aaa_486fbbd6",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-21T09:22:12Z",
+      "side": 1,
+      "message": "The canonical approach is to filter targets you don\u0027t want later (BazelTarget contains all the information you need). I won\u0027t block this change, but consider doing that eventually as a followup.",
+      "parentUuid": "6a7f2739_8d157d1f",
+      "range": {
+        "startLine": 186,
+        "startChar": 59,
+        "endLine": 186,
+        "endChar": 64
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0e7e254_27e838c3",
         "filename": "tests/bp2build_bazel_test.sh",
         "patchSetId": 12
@@ -273,6 +321,30 @@
       "side": 1,
       "message": "It\u0027s kind of ugly...\n\nEither\n\n./out/bazel/output_user_root/7edc8d81e9422b0a81689154306039c3/execroot/__main__/bazel-out/k8-fastbuild/bin/foo/convertible_soong_module/the_answer.txt\n\nor\n\n./bazel-out/k8-fastbuild/bin/foo/convertible_soong_module/the_answer.txt\n\nI will update the test to hardcode bazel-out/k8-fastbuild/bin/foo/convertible_soong_module/the_answer.txt",
       "parentUuid": "f0e7e254_27e838c3",
+      "range": {
+        "startLine": 66,
+        "startChar": 27,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b021b0b_7eaa1b3f",
+        "filename": "tests/bp2build_bazel_test.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-21T09:22:12Z",
+      "side": 1,
+      "message": "Nevermind, I thought for some reason that Bazel is not run in this test, silly me.\n\nWhat does the path depend on? I thought that we hard-wire --output_base in bazel_handler.go:324 and bazel_handler.go:239 and soong.go:219. What am I missing here?",
+      "parentUuid": "0ade9ba2_70ee00d0",
       "range": {
         "startLine": 66,
         "startChar": 27,
