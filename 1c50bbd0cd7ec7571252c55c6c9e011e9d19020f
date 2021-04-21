@@ -52,6 +52,24 @@
       "parentUuid": "f264741d_327f710e",
       "revId": "1c50bbd0cd7ec7571252c55c6c9e011e9d19020f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abacd60a_ac0846fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-21T16:55:28Z",
+      "side": 1,
+      "message": "Presubmit runs against a base build, which is a row in the ab/aosp-master dashboard, so you\u0027ll have to wait until the CL you are waiting for is shown there.  You generally don\u0027t have to wait for the build to complete, just be assigned a build number.  You can also watch go/wimcl (or click the \"builds\" link on the CL page) for it to have a build number for aosp-master.  However, presubmit also runs against internal master (and the intermediates branches), so you\u0027ll also need to wait for the CL to be included in an internal master build.",
+      "parentUuid": "3fcd3f49_ab17141d",
+      "revId": "1c50bbd0cd7ec7571252c55c6c9e011e9d19020f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
