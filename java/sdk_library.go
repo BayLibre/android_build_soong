@@ -260,19 +260,6 @@ var (
 		sdkVersion:    "system_current",
 		annotation:    "android.annotation.SystemApi(client=android.annotation.SystemApi.Client.PRIVILEGED_APPS)",
 	})
-	apiScopeTest = initApiScope(&apiScope{
-		name:                "test",
-		extends:             apiScopeSystem,
-		legacyEnabledStatus: (*SdkLibrary).generateTestAndSystemScopesByDefault,
-		scopeSpecificProperties: func(module *SdkLibrary) *ApiScopeProperties {
-			return &module.sdkLibraryProperties.Test
-		},
-		apiFilePrefix: "test-",
-		moduleSuffix:  ".test",
-		sdkVersion:    "test_current",
-		annotation:    "android.annotation.TestApi",
-		unstable:      true,
-	})
 	apiScopeModuleLib = initApiScope(&apiScope{
 		name:    "module-lib",
 		extends: apiScopeSystem,
@@ -289,6 +276,19 @@ var (
 		moduleSuffix:  ".module_lib",
 		sdkVersion:    "module_current",
 		annotation:    "android.annotation.SystemApi(client=android.annotation.SystemApi.Client.MODULE_LIBRARIES)",
+	})
+    apiScopeTest = initApiScope(&apiScope{
+		name:                "test",
+		extends:             apiScopeModuleLib,
+		legacyEnabledStatus: (*SdkLibrary).generateTestAndSystemScopesByDefault,
+		scopeSpecificProperties: func(module *SdkLibrary) *ApiScopeProperties {
+			return &module.sdkLibraryProperties.Test
+		},
+		apiFilePrefix: "test-",
+		moduleSuffix:  ".test",
+		sdkVersion:    "test_current",
+		annotation:    "android.annotation.TestApi",
+		unstable:      true,
 	})
 	apiScopeSystemServer = initApiScope(&apiScope{
 		name:    "system-server",
