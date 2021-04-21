@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c70a2cd0_9081b6eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-21T18:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31e11a6d_0d59520b",
+      "range": {
+        "startLine": 16,
+        "startChar": 3,
+        "endLine": 16,
+        "endChar": 7
+      },
+      "revId": "fb96a85198065cace5ee0907d85ae4d6ef4f2704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28769a61_47a2f780",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-21T17:52:27Z",
       "side": 1,
       "message": "On the dependencies, right? I first thought this talked about blocking the renames of the bcp_fragment modules themselves to the source names in PrebuiltRenameMutator.",
+      "range": {
+        "startLine": 18,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 11
+      },
+      "revId": "fb96a85198065cace5ee0907d85ae4d6ef4f2704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d45d3a41_c22fa067",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-21T18:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28769a61_47a2f780",
       "range": {
         "startLine": 18,
         "startChar": 3,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "322f1d56_d8f9256f",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1927,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-21T18:08:38Z",
+      "side": 1,
+      "message": "I am going to do a global rename at some point. It is just finding a good time to do it. I want to check and make sure that Artur is not working on the boot_image.go file first.\n\nAs to mixing the renames and the code changes. It was a pragmatic decision as this change wasn\u0027t too big I didn\u0027t think that the rename made it much harder to understand. If you had a problem with it I would be happy to separate it out.",
+      "parentUuid": "f3d2a911_635b82af",
+      "range": {
+        "startLine": 1927,
+        "startChar": 21,
+        "endLine": 1927,
+        "endChar": 42
+      },
+      "revId": "fb96a85198065cace5ee0907d85ae4d6ef4f2704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77592eea_a6246002",
@@ -87,6 +159,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82ede9d7_78b6b449",
+        "filename": "apex/boot_image_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-21T18:08:38Z",
+      "side": 1,
+      "message": "Via the image_name. That causes the Contents property to be set from the configured ArtApexJars.",
+      "parentUuid": "77592eea_a6246002",
+      "revId": "fb96a85198065cace5ee0907d85ae4d6ef4f2704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8954f41a_505eabcc",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-04-21T17:52:27Z",
       "side": 1,
       "message": "Unfinished sentence.",
+      "range": {
+        "startLine": 212,
+        "startChar": 44,
+        "endLine": 212,
+        "endChar": 62
+      },
+      "revId": "fb96a85198065cace5ee0907d85ae4d6ef4f2704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "022292e5_981c1149",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-21T18:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8954f41a_505eabcc",
       "range": {
         "startLine": 212,
         "startChar": 44,
