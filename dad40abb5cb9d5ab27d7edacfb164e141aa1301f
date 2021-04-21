@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf16bd41_689e7fa3",
+        "filename": "bazel/properties.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-21T09:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4281859b_b1ebe47f",
+      "range": {
+        "startLine": 505,
+        "startChar": 3,
+        "endLine": 505,
+        "endChar": 17
+      },
+      "revId": "dad40abb5cb9d5ab27d7edacfb164e141aa1301f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa7d7361_c9c86f72",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46710526_41619d4a",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-21T09:57:48Z",
+      "side": 1,
+      "message": "\u0027twas an accident. Done.",
+      "parentUuid": "fa7d7361_c9c86f72",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 70
+      },
+      "revId": "dad40abb5cb9d5ab27d7edacfb164e141aa1301f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab119f77_ae23b4d1",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-04-21T09:36:12Z",
       "side": 1,
       "message": "nit: maybe add a comment that this is for when an attribute is unset (if I understand the comment at build_conversion.go:369 correctly)",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 13
+      },
+      "revId": "dad40abb5cb9d5ab27d7edacfb164e141aa1301f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4cffc1b_17ce4aa6",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-21T09:57:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab119f77_ae23b4d1",
       "range": {
         "startLine": 113,
         "startChar": 2,
