@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "073e0068_85136a38",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-21T09:35:11Z",
+      "side": 1,
+      "message": "Yep, cloned this cl at https://android-review.googlesource.com/c/platform/build/soong/+/1683013 to try presubmits with freshly synced source",
+      "parentUuid": "0fbe32c0_3e5adec0",
+      "range": {
+        "startLine": 52,
+        "startChar": 14,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ccf9541_3f6b6ec7",
         "filename": "bp2build/testing.go",
         "patchSetId": 12
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "The canonical approach is to filter targets you don\u0027t want later (BazelTarget contains all the information you need). I won\u0027t block this change, but consider doing that eventually as a followup.",
       "parentUuid": "6a7f2739_8d157d1f",
+      "range": {
+        "startLine": 186,
+        "startChar": 59,
+        "endLine": 186,
+        "endChar": 64
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "decd5f5a_1099212b",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-21T09:35:11Z",
+      "side": 1,
+      "message": "+1 to making GenerateBazelTargets() return the same regardless of callsite context, let\u0027s follow up with a TODO.",
+      "parentUuid": "89305aaa_486fbbd6",
       "range": {
         "startLine": 186,
         "startChar": 59,
