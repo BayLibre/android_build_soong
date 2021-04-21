@@ -190,6 +190,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b29844_52b1ad90",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T11:14:45Z",
+      "side": 1,
+      "message": "Done\n\nSeems like bp2build had deleted some external BUILD files locally and that was causing the failures",
+      "parentUuid": "073e0068_85136a38",
+      "range": {
+        "startLine": 52,
+        "startChar": 14,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ccf9541_3f6b6ec7",
@@ -441,6 +465,30 @@
       "side": 1,
       "message": "Yep, Soong has some magic about how Bazel is invoked, and how Bazel outputs get rearranged/symlinked afterwards. \n\nBut in this test I am invoking Bazel directly, because what is how Jin and I normally build things after running bp2build\n\nWe still have a little magic (in bazel.sh) that gets used here to rig the output base to be under out/\n\nBut I think we still need to hardcode \"k8-fastbuild/bin/foo\" in the test, or revert to using the find | grep trick, unless I am missing something...",
       "parentUuid": "6b021b0b_7eaa1b3f",
+      "range": {
+        "startLine": 66,
+        "startChar": 27,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efaa97fe_6a201642",
+        "filename": "tests/bp2build_bazel_test.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T11:14:45Z",
+      "side": 1,
+      "message": "(masking as resolved to submit)",
+      "parentUuid": "859c0204_cf0afc23",
       "range": {
         "startLine": 66,
         "startChar": 27,

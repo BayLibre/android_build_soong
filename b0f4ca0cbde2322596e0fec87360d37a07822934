@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3a28abd_424de2a2",
+        "filename": "android/bazel.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T11:14:45Z",
+      "side": 1,
+      "message": "Looks like this is the full list (for now)\n\nShould we keep this or remove it and rely on Lukacs\u0027s symlink change?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 20
+      },
+      "revId": "b0f4ca0cbde2322596e0fec87360d37a07822934",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
