@@ -16,6 +16,24 @@
       "message": "I discovered this because \"go test\" in build/soong/android was failing, even though our CI was green...",
       "revId": "20d471b5af1aa7657f6e7c4e0391b9cb22ab470e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0065f1eb_859fdacc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T15:04:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ecc6fd8a_8b9712a9",
+      "revId": "20d471b5af1aa7657f6e7c4e0391b9cb22ab470e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
