@@ -230,6 +230,24 @@
       "parentUuid": "833337bc_384a5db0",
       "revId": "d5769639e6709339da30b730169349665d55ad46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8304499_ca8b67fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-21T04:29:28Z",
+      "side": 1,
+      "message": "I think we can submit this now, since Chris has updated the CI scripts to avoid bp2build-sync in https://android-review.googlesource.com/c/platform/build/bazel/+/1681652",
+      "parentUuid": "187e1aca_6a057a6a",
+      "revId": "d5769639e6709339da30b730169349665d55ad46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
