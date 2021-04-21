@@ -34,6 +34,24 @@
       "parentUuid": "87f153e9_1022c5c7",
       "revId": "1c50bbd0cd7ec7571252c55c6c9e011e9d19020f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fcd3f49_ab17141d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T15:27:03Z",
+      "side": 1,
+      "message": "Liz says this is WAI for AOSP presubmits\n\nIn particular, AOSP presubmits don\u0027t use code from HEAD\n\nSo I guess this CL might need to be retried a few times until the presubmit bots have caught up...",
+      "parentUuid": "f264741d_327f710e",
+      "revId": "1c50bbd0cd7ec7571252c55c6c9e011e9d19020f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
