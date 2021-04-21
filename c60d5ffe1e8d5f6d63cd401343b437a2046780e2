@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fbe32c0_3e5adec0",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T09:21:28Z",
+      "side": 1,
+      "message": "Jin thinks the problem is that the incremental CI state is wrong\n\nI filed http://b/185973504 about that\n\nJin is going to try nuking the CI state somehow, maybe something like https://android-review.googlesource.com/c/platform/build/+/1669830 again",
+      "parentUuid": "80c14a09_abaffa0c",
+      "range": {
+        "startLine": 52,
+        "startChar": 14,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ccf9541_3f6b6ec7",
         "filename": "bp2build/testing.go",
         "patchSetId": 12
