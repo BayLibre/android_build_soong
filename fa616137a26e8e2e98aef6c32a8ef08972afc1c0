@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "720ca717_5344aa8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-21T04:57:02Z",
+      "side": 1,
+      "message": "Bypassing-presubmit as the build failures on build_test\u003cN\u003e in the master branch is a KI and is unrelated with this.",
+      "revId": "fa616137a26e8e2e98aef6c32a8ef08972afc1c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
