@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e15fb7b_9dae190c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-21T09:36:12Z",
+      "side": 1,
+      "message": "Since I\u0027m not very familiar with the code, I\u0027ll only +1 this",
+      "revId": "dad40abb5cb9d5ab27d7edacfb164e141aa1301f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4281859b_b1ebe47f",
+        "filename": "bazel/properties.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-21T09:36:12Z",
+      "side": 1,
+      "message": "nit: duplicate word",
+      "range": {
+        "startLine": 505,
+        "startChar": 3,
+        "endLine": 505,
+        "endChar": 17
+      },
+      "revId": "dad40abb5cb9d5ab27d7edacfb164e141aa1301f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab119f77_ae23b4d1",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-21T09:36:12Z",
+      "side": 1,
+      "message": "nit: maybe add a comment that this is for when an attribute is unset (if I understand the comment at build_conversion.go:369 correctly)",
+      "range": {
+        "startLine": 113,
+        "startChar": 2,
+        "endLine": 113,
+        "endChar": 13
+      },
+      "revId": "dad40abb5cb9d5ab27d7edacfb164e141aa1301f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
