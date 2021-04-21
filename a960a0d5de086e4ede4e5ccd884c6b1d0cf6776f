@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b64827e5_2295d181",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-04-21T21:30:12Z",
+      "side": 1,
+      "message": "(i explicitly tested the renderscript test manually, and that passes with this subset of changes.)",
+      "revId": "a960a0d5de086e4ede4e5ccd884c6b1d0cf6776f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
