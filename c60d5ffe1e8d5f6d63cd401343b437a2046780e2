@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "933681e6_380b3477",
+        "filename": "android/bazel.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-21T08:49:12Z",
+      "side": 1,
+      "message": "Ideally, one would put these in some sort of config file, but given that Soong and bp2build are both built on-demand, it would mostly be a cosmetic change, at least until people who are not us will start converting modules.",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 31
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7bcde41_27dea69c",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-21T08:49:12Z",
+      "side": 1,
+      "message": "nit: why encode the name of bp2build into this? \"all_srcs\" is perfectly fine, isn\u0027t it?",
+      "range": {
+        "startLine": 242,
+        "startChar": 16,
+        "endLine": 242,
+        "endChar": 33
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6792ccca_36e1eebb",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-21T08:49:12Z",
+      "side": 1,
+      "message": "Do I understand correctly that this will also prevent writing a BUILD file that contains targets with an explicity \"bp2build_available: true\" property?",
+      "range": {
+        "startLine": 52,
+        "startChar": 14,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ccf9541_3f6b6ec7",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-21T08:49:12Z",
+      "side": 1,
+      "message": "It\u0027s odd that you explicitly call GenerateBazelTargets() with a flag that\u0027s different from it\u0027s production value. Why? (especially that you then filter out the files that would be generated if the flag was \"true\" in the next line)",
+      "range": {
+        "startLine": 186,
+        "startChar": 59,
+        "endLine": 186,
+        "endChar": 64
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0e7e254_27e838c3",
+        "filename": "tests/bp2build_bazel_test.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-21T08:49:12Z",
+      "side": 1,
+      "message": "nit: isn\u0027t the path of this file predictable?",
+      "range": {
+        "startLine": 66,
+        "startChar": 27,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a879615e_c253c716",
+        "filename": "tests/bp2build_bazel_test.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-21T08:49:12Z",
+      "side": 1,
+      "message": "Why are you grepping for \"the_answer\" in the file names? I thought that should show up in the contents of the file not in their names. What am I missing here?",
+      "range": {
+        "startLine": 66,
+        "startChar": 36,
+        "endLine": 66,
+        "endChar": 40
+      },
+      "revId": "c60d5ffe1e8d5f6d63cd401343b437a2046780e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
