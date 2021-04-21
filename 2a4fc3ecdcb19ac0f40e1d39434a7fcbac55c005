@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a21adb3d_fbd3778f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T14:50:13Z",
+      "side": 1,
+      "message": "Presubmit has been running for over 3 hours with 1 target left seemingly making no progress. Going to force submit...",
+      "revId": "2a4fc3ecdcb19ac0f40e1d39434a7fcbac55c005",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
