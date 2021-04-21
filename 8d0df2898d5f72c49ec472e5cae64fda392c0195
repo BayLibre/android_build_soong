@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f727e06f_0e82ed66",
+        "filename": "bp2build/symlink_forest.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-21T10:15:04Z",
+      "side": 1,
+      "message": "I think the spam is okay. It is better than someone spending hours trying to debug what is going wrong. Could follow up later though.",
+      "parentUuid": "c0772e94_8ec777e7",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 58
+      },
+      "revId": "8d0df2898d5f72c49ec472e5cae64fda392c0195",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b5c6c4a_247d092b",
