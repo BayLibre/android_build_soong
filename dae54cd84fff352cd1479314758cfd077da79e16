@@ -46,6 +46,30 @@
       },
       "revId": "dae54cd84fff352cd1479314758cfd077da79e16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17f43f9d_0e766712",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1676,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-22T09:58:01Z",
+      "side": 1,
+      "message": "oh, ok! I will create a separate CL to add that to the verification here as well. I\u0027ve always been a bit confused about how these work.",
+      "parentUuid": "f7c6304c_612fd4f9",
+      "range": {
+        "startLine": 1675,
+        "startChar": 46,
+        "endLine": 1676,
+        "endChar": 50
+      },
+      "revId": "dae54cd84fff352cd1479314758cfd077da79e16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
