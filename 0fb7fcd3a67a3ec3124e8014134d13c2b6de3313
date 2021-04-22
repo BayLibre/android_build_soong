@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8515c9a4_bc5ea299",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2831,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-22T23:18:15Z",
+      "side": 1,
+      "message": "No, but I copied this from TestLlndkLibrary.",
+      "parentUuid": "9d54aff5_02058d07",
+      "range": {
+        "startLine": 2831,
+        "startChar": 2,
+        "endLine": 2831,
+        "endChar": 34
+      },
+      "revId": "0fb7fcd3a67a3ec3124e8014134d13c2b6de3313",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c086ffe_486652a4",
         "filename": "cc/cc_test.go",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-22T22:36:34Z",
       "side": 1,
       "message": "We don\u0027t need multiple sub versions under vendor.29. For a version, we need one stub and one impl library.",
+      "range": {
+        "startLine": 2888,
+        "startChar": 0,
+        "endLine": 2890,
+        "endChar": 51
+      },
+      "revId": "0fb7fcd3a67a3ec3124e8014134d13c2b6de3313",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f9a6ff_b3de36c4",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2890,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-22T23:18:15Z",
+      "side": 1,
+      "message": "This is also copied from TestLlndkLibrary.  I can look into that separately.",
+      "parentUuid": "1c086ffe_486652a4",
       "range": {
         "startLine": 2888,
         "startChar": 0,
