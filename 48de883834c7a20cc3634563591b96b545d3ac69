@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88b15cb0_bebb2019",
+        "filename": "java/lint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-04-22T15:39:37Z",
+      "side": 1,
+      "message": "Good point. I\u0027ll add it in a follow-up CL (along with fixing the typos).",
+      "parentUuid": "e991d5ce_08e5f986",
+      "revId": "48de883834c7a20cc3634563591b96b545d3ac69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4def6260_7c730c41",
