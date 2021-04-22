@@ -70,6 +70,30 @@
       },
       "revId": "9a4b5cfdd46ee737a28bb74c2a58aca316b0a0db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23bcade4_e36a9837",
+        "filename": "scripts/hiddenapi/generate_hiddenapi_lists.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-22T09:36:16Z",
+      "side": 1,
+      "message": "I didn\u0027t because \"it shall not be None\" is a property of the \"ordered_flags\" destination NOT a specific argument. Unfortunately, there is no way to directly define that the \"ordered_flags\" shall not be None, instead it has to be done through the arguments.\n\nSo, I either have to add it to one argument where \"ordered_flags\" is the dest, or add it to every argument where it is the dest. The latter is bad because it is just duplicating code. The former is bad because there is no one argument that \"rules them all\" and treating one argument differently to the others seems like a bad idea. e.g. If that argument is changed or removed then it affects the processing of the others.\n\nNone of those solutions seems cleaner than simply supplying a default after retrieving the list from args. I am not a Python expert but it seems \"possiblyNone or []\" is a common idiom for this sort of thing.",
+      "parentUuid": "1f648834_009793f5",
+      "range": {
+        "startLine": 307,
+        "startChar": 36,
+        "endLine": 307,
+        "endChar": 42
+      },
+      "revId": "9a4b5cfdd46ee737a28bb74c2a58aca316b0a0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
