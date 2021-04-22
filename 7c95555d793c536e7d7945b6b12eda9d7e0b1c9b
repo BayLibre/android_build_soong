@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2613c24_d000ca48",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-22T13:15:04Z",
+      "side": 1,
+      "message": "Unrelated to this change, just trying to understand the hidden-API stuff better:\n\nWill modules need to add a lot of these hidden-API files too BCP fragments? Why are there so many different files and why do each need to be set to a list of user controlled paths? I get the impression there is too much room for arbitrary configuration - it\u0027s not possible to be more opinionated, i.e. just stipulating that there has to be, say, a subdirectory with a fixed name \"hiddenapi\" containing text files with equally fixed names?",
+      "revId": "7c95555d793c536e7d7945b6b12eda9d7e0b1c9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
