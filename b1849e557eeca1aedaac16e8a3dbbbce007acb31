@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2211056_0990e622",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1688,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-22T09:20:31Z",
+      "side": 1,
+      "message": "agreed. I\u0027ve refactored the test entirely and added some new Assert.. utils to work better with testcase structs.",
+      "parentUuid": "e5200ab7_0e533d4a",
+      "revId": "b1849e557eeca1aedaac16e8a3dbbbce007acb31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18511d9a_1f31e256",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-21T15:42:19Z",
       "side": 1,
       "message": "Ditto with splitting these out into separate AssertStringDoes...Contain() calls.",
+      "revId": "b1849e557eeca1aedaac16e8a3dbbbce007acb31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa036c0_3a7de311",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1699,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-22T09:20:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "18511d9a_1f31e256",
       "revId": "b1849e557eeca1aedaac16e8a3dbbbce007acb31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
