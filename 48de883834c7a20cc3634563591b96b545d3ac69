@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4d7e525_8d37a0ca",
+        "filename": "java/lint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-04-22T13:28:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3e073a5a_f28f119a",
+      "revId": "48de883834c7a20cc3634563591b96b545d3ac69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ad6d548_6c8bef05",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "(probably answered with my comment above, see aosp/1681226 too for the disallowed_issues argument)",
       "parentUuid": "9ad6d548_6c8bef05",
+      "revId": "48de883834c7a20cc3634563591b96b545d3ac69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbee2193_d35fd466",
+        "filename": "java/lint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-04-22T13:28:49Z",
+      "side": 1,
+      "message": "After seeing that CL now I understand both issues I was raising in my comments.\n\nWe pass these for performing checks, not directly for linting purposes.\n\nThanks",
+      "parentUuid": "7cd66761_1c72edd8",
       "revId": "48de883834c7a20cc3634563591b96b545d3ac69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
