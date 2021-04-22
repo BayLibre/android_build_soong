@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b75c4592_77c53ad2",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-22T19:37:59Z",
+      "side": 1,
+      "message": "This is fine, but could also be worth an android.AssertMapEquals. That would require a bunch of messy reflection code though, so feel free to keep this for now.\n\nYou might also be able to use reflect.DeepEqual, although that wouldn\u0027t tell you about the differences.",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 2
+      },
+      "revId": "19ade8904241a9ba5ac7268239a720aa5877d177",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
