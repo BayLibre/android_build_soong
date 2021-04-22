@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd966a8_34ea2a77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-22T09:44:28Z",
+      "side": 1,
+      "message": "Can verify that this builds mixed_droid-clean. See Forrest run L04300000866330578.",
+      "revId": "ed9c17d03331f95ce5126a9d73788f294a9bb4f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
