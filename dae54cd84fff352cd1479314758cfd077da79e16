@@ -22,6 +22,30 @@
       },
       "revId": "dae54cd84fff352cd1479314758cfd077da79e16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7c6304c_612fd4f9",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1676,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-22T09:52:57Z",
+      "side": 1,
+      "message": "Impl_only_libs and Libs are not treated the same. Impl_only_libs only gets used to compile the implementation library. The Libs property gets used for compiling the implementation library AND is passed to droidstubs when generating the stub sources. The latter is needed so that metalava can resolve types from within implementation code.\n\nLibs isn\u0027t used to compile the stubs sources because Libs can contain non-public types and so by not supplying them we ensure that the compiler will detect if any non-public types leaks through metalava.",
+      "parentUuid": "12237ebe_1e5b6549",
+      "range": {
+        "startLine": 1675,
+        "startChar": 46,
+        "endLine": 1676,
+        "endChar": 50
+      },
+      "revId": "dae54cd84fff352cd1479314758cfd077da79e16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
