@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12237ebe_1e5b6549",
+        "filename": "java/java_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1676,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-22T09:40:16Z",
+      "side": 1,
+      "message": "one thing I noticed is that \"impl_only_libs\" appears to have the same functionality as \"libs\". I think it can be removed?\n\nNaively, given the \"only\" name, I\u0027d have thought libs/static_libs to percolate to all the child modules. \n\nWDYT?",
+      "range": {
+        "startLine": 1675,
+        "startChar": 46,
+        "endLine": 1676,
+        "endChar": 50
+      },
+      "revId": "dae54cd84fff352cd1479314758cfd077da79e16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
