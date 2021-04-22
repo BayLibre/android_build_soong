@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23fc8832_7110a6c4",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-22T12:26:53Z",
+      "side": 0,
+      "message": "don\u0027t you need this?",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 46
+      },
+      "revId": "d3c1513df94c1494aa84f3c4cdfb29bb6b9d8252",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
