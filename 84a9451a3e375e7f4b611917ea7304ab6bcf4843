@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "706ccf4d_11601e51",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-22T12:50:50Z",
+      "side": 1,
+      "message": "Following up on the other comment, how are the contents populated from the image names? Is it looking at PRODUCT_BOOT_JARS and ART_APEX_JARS?\n\nWhatever it does, I wonder if it\u0027s correct to redo that in the prebuilt, or if it should rather replace image_name with contents here, so that the contents are guaranteed fixed in the prebuilts. After all, we can\u0027t change the BCP libs in a prebuilt, can we?\n\nOr maybe keep both and verify that the contents inferred from image_name matches the contents that the prebuilt was built with?",
+      "range": {
+        "startLine": 334,
+        "startChar": 28,
+        "endLine": 334,
+        "endChar": 95
+      },
+      "revId": "84a9451a3e375e7f4b611917ea7304ab6bcf4843",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "546691f2_a9ba0e96",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-22T12:50:50Z",
+      "side": 1,
+      "message": "So in the source module either image_name or contents is to be set, but not both? If so, can you please extend the docs for bootImageProperties with this, and also describe how the image_name is used to create the contents? Not related to this CL though, so not setting blocking here.",
+      "range": {
+        "startLine": 332,
+        "startChar": 88,
+        "endLine": 334,
+        "endChar": 15
+      },
+      "revId": "84a9451a3e375e7f4b611917ea7304ab6bcf4843",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
