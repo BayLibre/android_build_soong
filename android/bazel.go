@@ -172,21 +172,21 @@ var (
 
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
 	bp2buildModuleDoNotConvertList = []string{
-		"libBionicBenchmarksUtils",      // ruperts@, cc_library_static, 'map' file not found
-		"libbionic_spawn_benchmark",     // ruperts@, cc_library_static, depends on //system/libbase
-		"libc_jemalloc_wrapper",         // ruperts@, cc_library_static, depends on //external/jemalloc_new
-		"libc_bootstrap",                // ruperts@, cc_library_static, 'private/bionic_auxv.h' file not found
-		"libc_init_static",              // ruperts@, cc_library_static, 'private/bionic_elf_tls.h' file not found
-		"libc_init_dynamic",             // ruperts@, cc_library_static, 'private/bionic_defs.h' file not found
-		"libc_tzcode",                   // ruperts@, cc_library_static, error: expected expression
-		"libc_netbsd",                   // ruperts@, cc_library_static, 'engine.c' file not found
-		"libc_openbsd_large_stack",      // ruperts@, cc_library_static, 'android/log.h' file not found
-		"libc_openbsd",                  // ruperts@, cc_library_static, 'android/log.h' file not found
-		"libc_fortify",                  // ruperts@, cc_library_static, 'private/bionic_fortify.h' file not found
-		"libc_bionic",                   // ruperts@, cc_library_static, 'private/bionic_asm.h' file not found
-		"libc_bionic_ndk",               // ruperts@, cc_library_static, depends on //bionic/libc/system_properties
-		"libc_bionic_systrace",          // ruperts@, cc_library_static, 'private/bionic_systrace.h' file not found
-		"libc_pthread",                  // ruperts@, cc_library_static, 'private/bionic_defs.h' file not found
+		"libBionicBenchmarksUtils",  // ruperts@, cc_library_static, 'map' file not found
+		"libbionic_spawn_benchmark", // ruperts@, cc_library_static, depends on //system/libbase
+		"libc_jemalloc_wrapper",     // ruperts@, cc_library_static, depends on //external/jemalloc_new
+		"libc_bootstrap",            // ruperts@, cc_library_static, 'private/bionic_auxv.h' file not found
+		"libc_init_static",          // ruperts@, cc_library_static, 'private/bionic_elf_tls.h' file not found
+		"libc_init_dynamic",         // ruperts@, cc_library_static, 'private/bionic_defs.h' file not found
+		"libc_tzcode",               // ruperts@, cc_library_static, error: expected expression
+		"libc_netbsd",               // ruperts@, cc_library_static, 'engine.c' file not found
+		"libc_openbsd_large_stack",  // ruperts@, cc_library_static, 'android/log.h' file not found
+		"libc_openbsd",              // ruperts@, cc_library_static, 'android/log.h' file not found
+		"libc_fortify",              // ruperts@, cc_library_static, 'private/bionic_fortify.h' file not found
+		"libc_bionic",               // ruperts@, cc_library_static, 'private/bionic_asm.h' file not found
+		"libc_bionic_ndk",           // ruperts@, cc_library_static, depends on //bionic/libc/system_properties
+		"libc_bionic_systrace",      // ruperts@, cc_library_static, 'private/bionic_systrace.h' file not found
+		// "libc_pthread",                  // ruperts@, cc_library_static, 'private/bionic_defs.h' file not found
 		"libc_syscalls",                 // ruperts@, cc_library_static, mutator panic cannot get direct dep syscalls-arm64.S of libc_syscalls
 		"libc_ndk",                      // ruperts@, cc_library_static, depends on //bionic/libm:libm
 		"libc_nopthread",                // ruperts@, cc_library_static, depends on //external/arm-optimized-routines
@@ -204,10 +204,6 @@ var (
 		"liblinker_debuggerd_stub",      // ruperts@, cc_library_static, depends on //system/libbase
 		"libbionic_tests_headers_posix", // ruperts@, cc_library_static, 'complex.h' file not found
 		"libc_dns",                      // ruperts@, cc_library_static, 'android/log.h' file not found
-		"libc_static_dispatch",          // eakammer@, cc_library_static, 'private/bionic_asm.h' file not found
-		"libc_dynamic_dispatch",         // eakammer@, cc_library_static, 'private/bionic_ifuncs.h' file not found
-		"note_memtag_heap_async",        // jingwen@, cc_library_static, 'private/bionic_asm.h' file not found (arm64)
-		"note_memtag_heap_sync",         // jingwen@, cc_library_static, 'private/bionic_asm.h' file not found (arm64)
 
 		// List of all full_cc_libraries in //bionic, with their immediate failures
 		"libc",              // jingwen@, cc_library, depends on //external/gwp_asan
