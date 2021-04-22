@@ -69,6 +69,30 @@
       },
       "revId": "84a9451a3e375e7f4b611917ea7304ab6bcf4843",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4df3f0cc_92272ae0",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-22T17:00:04Z",
+      "side": 1,
+      "message": "Ok, hopefully coming later then. Thanks.",
+      "parentUuid": "92973b06_3cd5a8e9",
+      "range": {
+        "startLine": 334,
+        "startChar": 28,
+        "endLine": 334,
+        "endChar": 95
+      },
+      "revId": "84a9451a3e375e7f4b611917ea7304ab6bcf4843",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
