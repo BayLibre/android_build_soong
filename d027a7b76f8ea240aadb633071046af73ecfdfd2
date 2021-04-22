@@ -16,6 +16,24 @@
       "message": "This is incorrect. Include_dirs are not module-dir-relative. I believe this is a regression on b/183742505\n\nPlease ensure we have test coverage for this case to prevent future regressions.",
       "revId": "d027a7b76f8ea240aadb633071046af73ecfdfd2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "056136ab_37030be2",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-22T08:35:04Z",
+      "side": 1,
+      "message": "Done! Thanks for the catch. Added a subpackage test that shows how different directories include_dirs, local_include_dirs and export_include_dirs are turned into the bazel equivalent.",
+      "parentUuid": "5c4508b4_d8907122",
+      "revId": "d027a7b76f8ea240aadb633071046af73ecfdfd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
