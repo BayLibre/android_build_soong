@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ed8da50_50b2ac91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-22T12:46:58Z",
+      "side": 1,
+      "message": "oops realized I didn\u0027t post these. They\u0027re on the same theme as Colin\u0027s comment on the other patch ;D",
+      "revId": "a110439b3c0f13b054a0309304f7d9da5cd5f82b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "345568c5_ddb8d287",
+        "filename": "scripts/lint-project-xml.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-22T12:46:58Z",
+      "side": 1,
+      "message": "disallowed",
+      "range": {
+        "startLine": 147,
+        "startChar": 2,
+        "endLine": 147,
+        "endChar": 11
+      },
+      "revId": "a110439b3c0f13b054a0309304f7d9da5cd5f82b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e739eda8_ea206a19",
+        "filename": "scripts/lint-project-xml.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-22T12:46:58Z",
+      "side": 1,
+      "message": "disallowed :)",
+      "range": {
+        "startLine": 161,
+        "startChar": 4,
+        "endLine": 161,
+        "endChar": 13
+      },
+      "revId": "a110439b3c0f13b054a0309304f7d9da5cd5f82b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
