@@ -45,6 +45,30 @@
       },
       "revId": "84a9451a3e375e7f4b611917ea7304ab6bcf4843",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92973b06_3cd5a8e9",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-22T13:45:52Z",
+      "side": 1,
+      "message": "\u003e Is it looking at PRODUCT_BOOT_JARS and ART_APEX_JARS?\n\nExactly. The boot image config (which includes paths to various files but not the rules to create those files) is constructed early from those configuration properties. That is used all over. Then later on the dexpreoptBootJars singleton will generate the rules to create those files.\n\n\u003e Whatever it does, I wonder if it\u0027s correct to redo that in the prebuilt, or if it should rather replace image_name with contents here, so that the contents are guaranteed fixed in the prebuilts. \n\nIt isn\u0027t strictly speaking. Ideally, the prebuilt should just use the contents and just be fixed but there are a few problems that need fixing first before we can get there. One is that we need to actually generate the boot image from the contents not the configuration. Another is that we need to handle instrument builds better.\n\n\u003e Or maybe keep both and verify that the contents inferred from image_name matches the contents that the prebuilt was built with?\n\nI\u0027ve actually got a change on a local git branch that outputs the contents AND image_name and checks to ensure that the configuration and contents are consistent but it breaks in various situations such as I\u0027ve outlined above.",
+      "parentUuid": "706ccf4d_11601e51",
+      "range": {
+        "startLine": 334,
+        "startChar": 28,
+        "endLine": 334,
+        "endChar": 95
+      },
+      "revId": "84a9451a3e375e7f4b611917ea7304ab6bcf4843",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
