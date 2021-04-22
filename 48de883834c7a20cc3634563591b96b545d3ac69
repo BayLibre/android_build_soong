@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e073a5a_f28f119a",
+        "filename": "java/lint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-22T12:48:32Z",
+      "side": 1,
+      "message": "I think this is the cmd to run the lint-project-xml.py script, not lint itself?",
+      "parentUuid": "4def6260_7c730c41",
+      "revId": "48de883834c7a20cc3634563591b96b545d3ac69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9ad6d548_6c8bef05",
         "filename": "java/lint.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-22T09:09:27Z",
       "side": 1,
       "message": "where is `--disallowed_issues` defined/handled? I called lint without parameters (prints help) and didn\u0027t find anything with this name.\n\n(I realise this is writing the project file)",
+      "revId": "48de883834c7a20cc3634563591b96b545d3ac69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cd66761_1c72edd8",
+        "filename": "java/lint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-22T12:48:32Z",
+      "side": 1,
+      "message": "(probably answered with my comment above, see aosp/1681226 too for the disallowed_issues argument)",
+      "parentUuid": "9ad6d548_6c8bef05",
       "revId": "48de883834c7a20cc3634563591b96b545d3ac69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
