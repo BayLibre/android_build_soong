@@ -32,6 +32,20 @@ func TestSnapshotWithBootclasspathFragment_ImageName(t *testing.T) {
 			"com.android.art.pem":                                nil,
 			"system/sepolicy/apex/com.android.art-file_contexts": nil,
 		}),
+
+		// platform_bootclasspath that depends on the fragment.
+		android.FixtureAddTextFile("frameworks/base/boot/Android.bp", `
+			platform_bootclasspath {
+				name: "platform-bootclasspath",
+				fragments: [
+					{
+						apex: "com.android.art",
+						module: "mybootclasspathfragment", 
+					},
+				],
+			}
+		`),
+
 		java.FixtureConfigureBootJars("com.android.art:mybootlib"),
 		android.FixtureWithRootAndroidBp(`
 			sdk {
@@ -71,6 +85,23 @@ func TestSnapshotWithBootclasspathFragment_ImageName(t *testing.T) {
 			}
 		`),
 	).RunTest(t)
+
+	// A preparer to add a prebuilt apex to the test fixture.
+	prepareWithPrebuiltApex := android.GroupFixturePreparers(
+		android.FixtureAddTextFile("prebuilts/apex/Android.bp", `
+				prebuilt_apex {
+					name: "com.android.art",
+					src: "art.apex",
+					exported_java_libs: [
+						"mybootlib",
+					],
+					exported_bootclasspath_fragments: [
+						"mybootclasspathfragment",
+					],
+				}
+			`),
+		android.FixtureAddFile("prebuilts/apex/art.apex", nil),
+	)
 
 	CheckSnapshot(t, result, "mysdk", "",
 		checkUnversionedAndroidBpContents(`
@@ -121,19 +152,9 @@ sdk_snapshot {
 		checkAllCopyRules(`
 .intermediates/mybootlib/android_common/javac/mybootlib.jar -> java/mybootlib.jar
 `),
-		snapshotTestPreparer(checkSnapshotPreferredWithSource, android.GroupFixturePreparers(
-			android.FixtureAddTextFile("prebuilts/apex/Android.bp", `
-				prebuilt_apex {
-					name: "com.android.art",
-					src: "art.apex",
-					exported_java_libs: [
-						"mybootlib",
-					],
-				}
-			`),
-			android.FixtureAddFile("prebuilts/apex/art.apex", nil),
-		),
-		),
+		snapshotTestPreparer(checkSnapshotWithoutSource, prepareWithPrebuiltApex),
+		snapshotTestPreparer(checkSnapshotWithSourcePreferred, prepareWithPrebuiltApex),
+		snapshotTestPreparer(checkSnapshotPreferredWithSource, prepareWithPrebuiltApex),
 	)
 }
 
