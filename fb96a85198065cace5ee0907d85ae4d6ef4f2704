@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfc2fefd_9fdc8f1f",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1927,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-22T13:19:03Z",
+      "side": 1,
+      "message": "\u003e make sure that Artur is not working on the boot_image.go file\n\nAh, I see.\n\nNo, I\u0027m fine with the renames here. My confusion was more around the other parts of the code that largely still use boot_image, but now I know why.",
+      "parentUuid": "322f1d56_d8f9256f",
+      "range": {
+        "startLine": 1927,
+        "startChar": 21,
+        "endLine": 1927,
+        "endChar": 42
+      },
+      "revId": "fb96a85198065cace5ee0907d85ae4d6ef4f2704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77592eea_a6246002",

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38e982c1_60be4863",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-22T13:19:03Z",
+      "side": 1,
+      "message": "This is just saying the same thing one more time?",
+      "range": {
+        "startLine": 19,
+        "startChar": 56,
+        "endLine": 21,
+        "endChar": 34
+      },
+      "revId": "6589805e2a6ce17cb468adad78052e24beeafb18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
