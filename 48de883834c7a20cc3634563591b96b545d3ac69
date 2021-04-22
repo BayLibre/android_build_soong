@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e991d5ce_08e5f986",
+        "filename": "java/lint.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-04-22T14:05:50Z",
+      "side": 1,
+      "message": "A comment like \"verify the module does not baseline issues that endanger safe updatability\" would be good",
+      "revId": "48de883834c7a20cc3634563591b96b545d3ac69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4def6260_7c730c41",
         "filename": "java/lint.go",
         "patchSetId": 2
