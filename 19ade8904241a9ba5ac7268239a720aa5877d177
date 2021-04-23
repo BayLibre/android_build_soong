@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ade46ee2_b07aeb11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-23T13:03:33Z",
+      "side": 1,
+      "message": "Thanks for catching this Jeongik!",
+      "revId": "19ade8904241a9ba5ac7268239a720aa5877d177",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b75c4592_77c53ad2",
