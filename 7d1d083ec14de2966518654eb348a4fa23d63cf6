@@ -16,6 +16,29 @@
       "message": "Retrying. The previous code treated ([]string)(nil) and []string{} as being different which broken the soong integration tests.\n\nThe breakage in art-com_android_runtime_host-linux_bionic on git_master-art-host is expected, that will be fixed by https://r.android.com/1684877",
       "revId": "7d1d083ec14de2966518654eb348a4fa23d63cf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d116f206_e309763f",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-23T11:54:25Z",
+      "side": 1,
+      "message": "The more I live, the more I learn about printf. :) \n\nIt turns out that C also has this (non-standard though):\n  printf(\"%1$s%1$s\\n\", \"hello\");",
+      "range": {
+        "startLine": 533,
+        "startChar": 45,
+        "endLine": 533,
+        "endChar": 50
+      },
+      "revId": "7d1d083ec14de2966518654eb348a4fa23d63cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
