@@ -175,12 +175,9 @@ var (
 		"libBionicBenchmarksUtils",      // ruperts@, cc_library_static, 'map' file not found
 		"libbionic_spawn_benchmark",     // ruperts@, cc_library_static, depends on //system/libbase
 		"libc_jemalloc_wrapper",         // ruperts@, cc_library_static, depends on //external/jemalloc_new
-		"libc_bootstrap",                // ruperts@, cc_library_static, 'private/bionic_auxv.h' file not found
-		"libc_init_static",              // ruperts@, cc_library_static, 'private/bionic_elf_tls.h' file not found
-		"libc_init_dynamic",             // ruperts@, cc_library_static, 'private/bionic_defs.h' file not found
 		"libc_tzcode",                   // ruperts@, cc_library_static, error: expected expression
 		"libc_netbsd",                   // ruperts@, cc_library_static, 'engine.c' file not found
-		"libc_fortify",                  // ruperts@, cc_library_static, 'private/bionic_fortify.h' file not found
+		"libc_fortify",                  // ruperts@, cc_library_static, 'memcpy_base.S' file not found on CI
 		"libc_bionic",                   // ruperts@, cc_library_static, 'private/bionic_asm.h' file not found
 		"libc_bionic_ndk",               // ruperts@, cc_library_static, depends on //bionic/libc/system_properties
 		"libc_bionic_systrace",          // ruperts@, cc_library_static, 'private/bionic_systrace.h' file not found
@@ -191,7 +188,6 @@ var (
 		"libc_common",                   // ruperts@, cc_library_static, depends on //bionic/libc:libc_nopthread
 		"libc_common_static",            // ruperts@, cc_library_static, depends on //bionic/libc:libc_common
 		"libc_common_shared",            // ruperts@, cc_library_static, depends on //bionic/libc:libc_common
-		"libc_unwind_static",            // ruperts@, cc_library_static, 'private/bionic_elf_tls.h' file not found
 		"libc_nomalloc",                 // ruperts@, cc_library_static, depends on //bionic/libc:libc_common
 		"libasync_safe",                 // ruperts@, cc_library_static, 'private/CachedProperty.h' file not found
 		"libc_malloc_debug_backtrace",   // ruperts@, cc_library_static, depends on //system/libbase
@@ -202,10 +198,6 @@ var (
 		"liblinker_debuggerd_stub",      // ruperts@, cc_library_static, depends on //system/libbase
 		"libbionic_tests_headers_posix", // ruperts@, cc_library_static, 'complex.h' file not found
 		"libc_dns",                      // ruperts@, cc_library_static, 'private/android_filesystem_config.h' file not found
-		"libc_static_dispatch",          // eakammer@, cc_library_static, 'private/bionic_asm.h' file not found
-		"libc_dynamic_dispatch",         // eakammer@, cc_library_static, 'private/bionic_ifuncs.h' file not found
-		"note_memtag_heap_async",        // jingwen@, cc_library_static, 'private/bionic_asm.h' file not found (arm64)
-		"note_memtag_heap_sync",         // jingwen@, cc_library_static, 'private/bionic_asm.h' file not found (arm64)
 
 		// List of all full_cc_libraries in //bionic, with their immediate failures
 		"libc",              // jingwen@, cc_library, depends on //external/gwp_asan
