@@ -16,6 +16,76 @@
       "message": "PTAL - fixed test failure.",
       "revId": "1672687414391058e6523a22294f0a7c852591ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f7fb462_20d76d90",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-23T09:36:28Z",
+      "side": 1,
+      "message": "Side issue, but I don\u0027t expect a function with this name to do an important state change like populating the contents property. Isn\u0027t that the main functionality, and the checks are just side functionality?",
+      "range": {
+        "startLine": 119,
+        "startChar": 5,
+        "endLine": 119,
+        "endChar": 30
+      },
+      "revId": "1672687414391058e6523a22294f0a7c852591ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d50feb99_69bef8bc",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-23T09:36:28Z",
+      "side": 1,
+      "message": "This sounds plain wrong for a versioned snapshot to even do at all. Doesn\u0027t it reinforce that expanding contents from image_name is necessary in prebuilts once we start doing versioned snapshots?\n\nIf so, there ought to be a TODO here pointing to a ticket for that work. I don\u0027t think there\u0027s a ticket for it yet, feel free to file one. And at that point there should be a ModuleErrorf in this \"if\" block.",
+      "range": {
+        "startLine": 133,
+        "startChar": 9,
+        "endLine": 133,
+        "endChar": 78
+      },
+      "revId": "1672687414391058e6523a22294f0a7c852591ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0feea91a_e36a57a5",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-23T09:36:28Z",
+      "side": 1,
+      "message": "\u003e Please remove the trailing whitespace.\n\nPlease fix.",
+      "parentUuid": "8c1e3696_317a595e",
+      "range": {
+        "startLine": 44,
+        "startChar": 40,
+        "endLine": 44,
+        "endChar": 41
+      },
+      "revId": "1672687414391058e6523a22294f0a7c852591ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
