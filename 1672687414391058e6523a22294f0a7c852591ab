@@ -112,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f63f827d_c8c69098",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-23T11:29:01Z",
+      "side": 1,
+      "message": "Ok, I was thinking of a ticket to track (fully) implementing versioned snapshot support, but I guess it can be attributed to that bug too.",
+      "parentUuid": "19553ff6_700dc828",
+      "range": {
+        "startLine": 133,
+        "startChar": 9,
+        "endLine": 133,
+        "endChar": 78
+      },
+      "revId": "1672687414391058e6523a22294f0a7c852591ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0feea91a_e36a57a5",
