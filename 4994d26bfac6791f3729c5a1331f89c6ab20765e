@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cab0a711_1527d885",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-23T14:33:56Z",
+      "side": 1,
+      "message": "do you want to verify that platform_bootclasspath always implements BootclasspathDepsMutator by assinging a nil to var _?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 100
+      },
+      "revId": "4994d26bfac6791f3729c5a1331f89c6ab20765e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
