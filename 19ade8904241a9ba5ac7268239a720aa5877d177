@@ -22,6 +22,30 @@
       },
       "revId": "19ade8904241a9ba5ac7268239a720aa5877d177",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d24bc399_1634c294",
+        "filename": "dexpreopt/class_loader_context_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-04-23T00:01:01Z",
+      "side": 1,
+      "message": "Yeah, I was considering reflect.DeepEqual, but it didn\u0027t work because ClassLoaderContext\u0027s value type is list of pointers, so it always fails because DeepEquals compares their pointers\u0027 address.\n\nWe might need DeepEqualsBasedOnValue?\n\nI think we\u0027d better keep this for now, and when the similar code is needed, we may write the util method.",
+      "parentUuid": "b75c4592_77c53ad2",
+      "range": {
+        "startLine": 167,
+        "startChar": 1,
+        "endLine": 178,
+        "endChar": 2
+      },
+      "revId": "19ade8904241a9ba5ac7268239a720aa5877d177",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
