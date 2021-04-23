@@ -90,11 +90,6 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 		return "-I" + filepath.Join(ctx.ModuleDir(), dir)
 	}
 
-	// Parse the list of srcs, excluding files from exclude_srcs.
-	parseSrcs := func(baseCompilerProps *BaseCompilerProperties) bazel.LabelList {
-		return android.BazelLabelForModuleSrcExcludes(ctx, baseCompilerProps.Srcs, baseCompilerProps.Exclude_srcs)
-	}
-
 	// Parse the list of module-relative include directories (-I).
 	parseLocalIncludeDirs := func(baseCompilerProps *BaseCompilerProperties) []string {
 		// include_dirs are root-relative, not module-relative.
@@ -111,10 +106,26 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 		return copts
 	}
 
+	var baseSrcs []string
+	var baseExcludeSrcs []string
+	// Parse the list of srcs, excluding files from exclude_srcs.
+	parseSrcs := func(baseCompilerProps *BaseCompilerProperties) bazel.LabelList {
+		// Combine the base srcs and arch-specific srcs
+		allSrcs := append(baseSrcs, baseCompilerProps.Srcs...)
+		// Combine the base exclude_srcs and arch-specific exclude_srcs
+		allExcludeSrcs := append(baseExcludeSrcs, baseCompilerProps.Exclude_srcs...)
+		// Subtract the current base or arch-specific srcs
+		return android.BazelLabelForModuleSrcExcludes(ctx, allSrcs, allExcludeSrcs)
+	}
+
 	for _, props := range module.compiler.compilerProps() {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
 			srcs.Value = parseSrcs(baseCompilerProps)
 			copts.Value = parseCopts(baseCompilerProps)
+
+			// Used for arch-specific srcs later.
+			baseSrcs = baseCompilerProps.Srcs
+			baseExcludeSrcs = baseCompilerProps.Exclude_srcs
 			break
 		}
 	}
@@ -130,7 +141,10 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 	for arch, props := range module.GetArchProperties(&BaseCompilerProperties{}) {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
 			srcsList := parseSrcs(baseCompilerProps)
-			srcs.SetValueForArch(arch.Name, bazel.SubtractBazelLabelList(srcsList, srcs.Value))
+			// The base srcs value should not contain any arch-specific excludes.
+			srcs.Value = bazel.SubtractBazelLabelList(srcs.Value, bazel.LabelList{Includes: srcsList.Excludes})
+
+			srcs.SetValueForArch(arch.Name, srcsList)
 			copts.SetValueForArch(arch.Name, parseCopts(baseCompilerProps))
 		}
 	}
@@ -138,9 +152,26 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 	for os, props := range module.GetTargetProperties(&BaseCompilerProperties{}) {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
 			srcsList := parseSrcs(baseCompilerProps)
+			// The base srcs value should not contain any arch-specific excludes.
+			srcs.Value = bazel.SubtractBazelLabelList(srcs.Value, bazel.LabelList{Includes: srcsList.Excludes})
+
 			srcs.SetValueForOS(os.Name, bazel.SubtractBazelLabelList(srcsList, srcs.Value))
 			copts.SetValueForOS(os.Name, parseCopts(baseCompilerProps))
 		}
+	}
+
+	// After ensuring that the base srcs.Value don't have arch-specific srcs, ensure that the arch-specific props
+	// don't contain duplicated srcs that are already in the base srcs.Value.
+	for arch, props := range module.GetArchProperties(&BaseCompilerProperties{}) {
+		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
+			srcsList := parseSrcs(baseCompilerProps)
+			if len(srcsList.Includes) > 0 {
+				srcs.SetValueForArch(arch.Name, bazel.SubtractBazelLabelList(srcs.GetValueForArch(arch.Name), srcs.Value))
+			}
+		}
+	}
+	for os, _ := range module.GetTargetProperties(&BaseCompilerProperties{}) {
+		srcs.SetValueForOS(os.Name, bazel.SubtractBazelLabelList(srcs.GetValueForOS(os.Name), srcs.Value))
 	}
 
 	// Combine local, non-exported hdrs into srcs
