@@ -99,10 +99,11 @@ func prettyPrintSelectMap(selectMap map[string]reflect.Value, defaultValue strin
 		return "", nil
 	}
 
+	addConditionsDefault := false
 	var selects string
 	for _, selectKey := range android.SortedStringKeys(selectMap) {
 		value := selectMap[selectKey]
-		if isZero(value) {
+		if selectKey != "//conditions:default" && isZero(value) {
 			// Ignore zero values to not generate empty lists.
 			continue
 		}
@@ -114,6 +115,9 @@ func prettyPrintSelectMap(selectMap map[string]reflect.Value, defaultValue strin
 		// length of 0.
 		if s != "" {
 			selects += s + ",\n"
+		} else if selectKey == "//conditions:default" && s == "" {
+			// Default value is not set, create the default entry later.
+			addConditionsDefault = true
 		}
 	}
 
@@ -125,8 +129,9 @@ func prettyPrintSelectMap(selectMap map[string]reflect.Value, defaultValue strin
 	// Create the map.
 	ret := "select({\n"
 	ret += selects
-	// default condition comes last.
-	ret += fmt.Sprintf("%s\"%s\": %s,\n", makeIndent(indent+1), "//conditions:default", defaultValue)
+	if addConditionsDefault {
+		ret += fmt.Sprintf("%s\"%s\": %s,\n", makeIndent(indent+1), "//conditions:default", defaultValue)
+	}
 	ret += makeIndent(indent)
 	ret += "})"
 

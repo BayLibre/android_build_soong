@@ -220,6 +220,8 @@ const (
 	OS_LINUX        = "linux_glibc"
 	OS_LINUX_BIONIC = "linux_bionic"
 	OS_WINDOWS      = "windows"
+
+	CONDITIONS_DEFAULT = "conditions_default"
 )
 
 var (
@@ -231,21 +233,23 @@ var (
 	// A map of architectures to the Bazel label of the constraint_value
 	// for the @platforms//cpu:cpu constraint_setting
 	PlatformArchMap = map[string]string{
-		ARCH_ARM:    "//build/bazel/platforms/arch:arm",
-		ARCH_ARM64:  "//build/bazel/platforms/arch:arm64",
-		ARCH_X86:    "//build/bazel/platforms/arch:x86",
-		ARCH_X86_64: "//build/bazel/platforms/arch:x86_64",
+		ARCH_ARM:           "//build/bazel/platforms/arch:arm",
+		ARCH_ARM64:         "//build/bazel/platforms/arch:arm64",
+		ARCH_X86:           "//build/bazel/platforms/arch:x86",
+		ARCH_X86_64:        "//build/bazel/platforms/arch:x86_64",
+		CONDITIONS_DEFAULT: "//conditions:default",
 	}
 
 	// A map of target operating systems to the Bazel label of the
 	// constraint_value for the @platforms//os:os constraint_setting
 	PlatformOsMap = map[string]string{
-		OS_ANDROID:      "//build/bazel/platforms/os:android",
-		OS_DARWIN:       "//build/bazel/platforms/os:darwin",
-		OS_FUCHSIA:      "//build/bazel/platforms/os:fuchsia",
-		OS_LINUX:        "//build/bazel/platforms/os:linux",
-		OS_LINUX_BIONIC: "//build/bazel/platforms/os:linux_bionic",
-		OS_WINDOWS:      "//build/bazel/platforms/os:windows",
+		OS_ANDROID:         "//build/bazel/platforms/os:android",
+		OS_DARWIN:          "//build/bazel/platforms/os:darwin",
+		OS_FUCHSIA:         "//build/bazel/platforms/os:fuchsia",
+		OS_LINUX:           "//build/bazel/platforms/os:linux",
+		OS_LINUX_BIONIC:    "//build/bazel/platforms/os:linux_bionic",
+		OS_WINDOWS:         "//build/bazel/platforms/os:windows",
+		CONDITIONS_DEFAULT: "//conditions:default",
 	}
 )
 
@@ -261,6 +265,8 @@ type labelListArchValues struct {
 	Arm    LabelList
 	Arm64  LabelList
 	Common LabelList
+
+	ConditionsDefault LabelList
 }
 
 type labelListOsValues struct {
@@ -270,6 +276,8 @@ type labelListOsValues struct {
 	Linux       LabelList
 	LinuxBionic LabelList
 	Windows     LabelList
+
+	ConditionsDefault LabelList
 }
 
 // LabelListAttribute is used to represent a list of Bazel labels as an
@@ -333,10 +341,11 @@ func (attrs LabelListAttribute) HasConfigurableValues() bool {
 
 func (attrs *LabelListAttribute) archValuePtrs() map[string]*LabelList {
 	return map[string]*LabelList{
-		ARCH_X86:    &attrs.ArchValues.X86,
-		ARCH_X86_64: &attrs.ArchValues.X86_64,
-		ARCH_ARM:    &attrs.ArchValues.Arm,
-		ARCH_ARM64:  &attrs.ArchValues.Arm64,
+		ARCH_X86:           &attrs.ArchValues.X86,
+		ARCH_X86_64:        &attrs.ArchValues.X86_64,
+		ARCH_ARM:           &attrs.ArchValues.Arm,
+		ARCH_ARM64:         &attrs.ArchValues.Arm64,
+		CONDITIONS_DEFAULT: &attrs.ArchValues.ConditionsDefault,
 	}
 }
 
@@ -360,12 +369,13 @@ func (attrs *LabelListAttribute) SetValueForArch(arch string, value LabelList) {
 
 func (attrs *LabelListAttribute) osValuePtrs() map[string]*LabelList {
 	return map[string]*LabelList{
-		OS_ANDROID:      &attrs.OsValues.Android,
-		OS_DARWIN:       &attrs.OsValues.Darwin,
-		OS_FUCHSIA:      &attrs.OsValues.Fuchsia,
-		OS_LINUX:        &attrs.OsValues.Linux,
-		OS_LINUX_BIONIC: &attrs.OsValues.LinuxBionic,
-		OS_WINDOWS:      &attrs.OsValues.Windows,
+		OS_ANDROID:         &attrs.OsValues.Android,
+		OS_DARWIN:          &attrs.OsValues.Darwin,
+		OS_FUCHSIA:         &attrs.OsValues.Fuchsia,
+		OS_LINUX:           &attrs.OsValues.Linux,
+		OS_LINUX_BIONIC:    &attrs.OsValues.LinuxBionic,
+		OS_WINDOWS:         &attrs.OsValues.Windows,
+		CONDITIONS_DEFAULT: &attrs.OsValues.ConditionsDefault,
 	}
 }
 
@@ -418,6 +428,8 @@ type stringListArchValues struct {
 	Arm    []string
 	Arm64  []string
 	Common []string
+
+	ConditionsDefault []string
 }
 
 type stringListOsValues struct {
@@ -427,6 +439,8 @@ type stringListOsValues struct {
 	Linux       []string
 	LinuxBionic []string
 	Windows     []string
+
+	ConditionsDefault []string
 }
 
 // HasConfigurableValues returns true if the attribute contains
@@ -448,10 +462,11 @@ func (attrs StringListAttribute) HasConfigurableValues() bool {
 
 func (attrs *StringListAttribute) archValuePtrs() map[string]*[]string {
 	return map[string]*[]string{
-		ARCH_X86:    &attrs.ArchValues.X86,
-		ARCH_X86_64: &attrs.ArchValues.X86_64,
-		ARCH_ARM:    &attrs.ArchValues.Arm,
-		ARCH_ARM64:  &attrs.ArchValues.Arm64,
+		ARCH_X86:           &attrs.ArchValues.X86,
+		ARCH_X86_64:        &attrs.ArchValues.X86_64,
+		ARCH_ARM:           &attrs.ArchValues.Arm,
+		ARCH_ARM64:         &attrs.ArchValues.Arm64,
+		CONDITIONS_DEFAULT: &attrs.ArchValues.ConditionsDefault,
 	}
 }
 
@@ -475,12 +490,13 @@ func (attrs *StringListAttribute) SetValueForArch(arch string, value []string) {
 
 func (attrs *StringListAttribute) osValuePtrs() map[string]*[]string {
 	return map[string]*[]string{
-		OS_ANDROID:      &attrs.OsValues.Android,
-		OS_DARWIN:       &attrs.OsValues.Darwin,
-		OS_FUCHSIA:      &attrs.OsValues.Fuchsia,
-		OS_LINUX:        &attrs.OsValues.Linux,
-		OS_LINUX_BIONIC: &attrs.OsValues.LinuxBionic,
-		OS_WINDOWS:      &attrs.OsValues.Windows,
+		OS_ANDROID:         &attrs.OsValues.Android,
+		OS_DARWIN:          &attrs.OsValues.Darwin,
+		OS_FUCHSIA:         &attrs.OsValues.Fuchsia,
+		OS_LINUX:           &attrs.OsValues.Linux,
+		OS_LINUX_BIONIC:    &attrs.OsValues.LinuxBionic,
+		OS_WINDOWS:         &attrs.OsValues.Windows,
+		CONDITIONS_DEFAULT: &attrs.OsValues.ConditionsDefault,
 	}
 }
 
