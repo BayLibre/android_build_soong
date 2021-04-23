@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b20190_3d0b89a6",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-23T11:26:30Z",
+      "side": 0,
+      "message": "Looks like this is failing for the android_arm build:\n\nhttps://android-build.googleplex.com/builds/pending/P22125000/bp2build-incremental/latest/view/logs/build_error.log",
+      "range": {
+        "startLine": 183,
+        "startChar": 3,
+        "endLine": 183,
+        "endChar": 15
+      },
+      "revId": "f8645b93b412f296a7907cfbac745557618d2fde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
