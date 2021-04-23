@@ -69,6 +69,23 @@
       "parentUuid": "e4c3d54c_25ffa594",
       "revId": "aeb6bad0730706b01df5222cdf1a7aecf7aceedd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc919110_e7e98dda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2021-04-23T09:42:36Z",
+      "side": 1,
+      "message": "+Anton for the owner vote\n\nThis is just to re-land the following revert, to fix CTS-on-GSI/VTS issue with debug ramdisk.\n\nhttps://android-review.googlesource.com/q/topic:revert_userdebug_plat_sepolicy.cil_Android.bp\n\n\nHowever, the above revert was reverted (revert^2) yesterday due to two CLs aren\u0027t submitted together (b/186134126#comment13).  Hence we have this revert^3. ",
+      "revId": "aeb6bad0730706b01df5222cdf1a7aecf7aceedd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
