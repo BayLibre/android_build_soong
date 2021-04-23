@@ -68,9 +68,31 @@ func registerJavaBuildComponents(ctx android.RegistrationContext) {
 func RegisterJavaSdkMemberTypes() {
 	// Register sdk member types.
 	android.RegisterSdkMemberType(javaHeaderLibsSdkMemberType)
+	android.RegisterSdkMemberType(javaLibsSdkMemberType)
+	android.RegisterSdkMemberType(javaBootLibsSdkMemberType)
+	android.RegisterSdkMemberType(javaTestSdkMemberType)
+}
+
+var (
+	javaHeaderLibsSdkMemberType android.SdkMemberType = &librarySdkMemberType{
+		android.SdkMemberTypeBase{
+			PropertyName: "java_header_libs",
+			SupportsSdk:  true,
+		},
+		func(_ android.SdkMemberContext, j *Library) android.Path {
+			headerJars := j.HeaderJars()
+			if len(headerJars) != 1 {
+				panic(fmt.Errorf("there must be only one header jar from %q", j.Name()))
+			}
+
+			return headerJars[0]
+		},
+		sdkSnapshotFilePathForJar,
+		copyEverythingToSnapshot,
+	}
 
 	// Export implementation classes jar as part of the sdk.
-	exportImplementationClassesJar := func(_ android.SdkMemberContext, j *Library) android.Path {
+	exportImplementationClassesJar = func(_ android.SdkMemberContext, j *Library) android.Path {
 		implementationJars := j.ImplementationAndResourcesJars()
 		if len(implementationJars) != 1 {
 			panic(fmt.Errorf("there must be only one implementation jar from %q", j.Name()))
@@ -79,14 +101,14 @@ func RegisterJavaSdkMemberTypes() {
 	}
 
 	// Register java implementation libraries for use only in module_exports (not sdk).
-	android.RegisterSdkMemberType(&librarySdkMemberType{
+	javaLibsSdkMemberType = &librarySdkMemberType{
 		android.SdkMemberTypeBase{
 			PropertyName: "java_libs",
 		},
 		exportImplementationClassesJar,
 		sdkSnapshotFilePathForJar,
 		copyEverythingToSnapshot,
-	})
+	}
 
 	// Register java boot libraries for use in sdk.
 	//
@@ -99,7 +121,7 @@ func RegisterJavaSdkMemberTypes() {
 	// either java_libs, or java_header_libs would end up exporting more information than was strictly
 	// necessary. The java_boot_libs property to allow those modules to be exported as part of the
 	// sdk/module_exports without exposing any unnecessary information.
-	android.RegisterSdkMemberType(&librarySdkMemberType{
+	javaBootLibsSdkMemberType = &librarySdkMemberType{
 		android.SdkMemberTypeBase{
 			PropertyName: "java_boot_libs",
 			SupportsSdk:  true,
@@ -110,16 +132,15 @@ func RegisterJavaSdkMemberTypes() {
 		exportImplementationClassesJar,
 		sdkSnapshotFilePathForJar,
 		onlyCopyJarToSnapshot,
-	})
+	}
 
 	// Register java test libraries for use only in module_exports (not sdk).
-	android.RegisterSdkMemberType(&testSdkMemberType{
+	javaTestSdkMemberType = &testSdkMemberType{
 		SdkMemberTypeBase: android.SdkMemberTypeBase{
 			PropertyName: "java_tests",
 		},
-	})
-
-}
+	}
+)
 
 // JavaInfo contains information about a java module for use by modules that depend on it.
 type JavaInfo struct {
@@ -604,23 +625,6 @@ func (p *librarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberConte
 
 		// TODO(b/151933053) - add aidl include dirs property
 	}
-}
-
-var javaHeaderLibsSdkMemberType android.SdkMemberType = &librarySdkMemberType{
-	android.SdkMemberTypeBase{
-		PropertyName: "java_header_libs",
-		SupportsSdk:  true,
-	},
-	func(_ android.SdkMemberContext, j *Library) android.Path {
-		headerJars := j.HeaderJars()
-		if len(headerJars) != 1 {
-			panic(fmt.Errorf("there must be only one header jar from %q", j.Name()))
-		}
-
-		return headerJars[0]
-	},
-	sdkSnapshotFilePathForJar,
-	copyEverythingToSnapshot,
 }
 
 // java_library builds and links sources into a `.jar` file for the device, and possibly for the host as well.
