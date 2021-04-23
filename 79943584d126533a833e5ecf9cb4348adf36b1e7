@@ -22,6 +22,30 @@
       },
       "revId": "79943584d126533a833e5ecf9cb4348adf36b1e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10914947_3f119bc2",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-23T08:02:59Z",
+      "side": 1,
+      "message": "Ahh, got confused that you are working on two different CLs to update the deny list\n\n(rediscovered https://android-review.googlesource.com/c/platform/build/soong/+/1684648)",
+      "parentUuid": "825cde55_c46a08f4",
+      "range": {
+        "startLine": 178,
+        "startChar": 67,
+        "endLine": 178,
+        "endChar": 86
+      },
+      "revId": "79943584d126533a833e5ecf9cb4348adf36b1e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
