@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "134adecf_eaec15da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-23T11:25:51Z",
+      "side": 1,
+      "message": "Retrying. The previous code treated ([]string)(nil) and []string{} as being different which broken the soong integration tests.\n\nThe breakage in art-com_android_runtime_host-linux_bionic on git_master-art-host is expected, that will be fixed by https://r.android.com/1684877",
+      "revId": "7d1d083ec14de2966518654eb348a4fa23d63cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
