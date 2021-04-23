@@ -69,36 +69,58 @@ func IsBootclasspathFragmentContentDepTag(tag blueprint.DependencyTag) bool {
 	return tag == bootclasspathFragmentContentDepTag
 }
 
+// Properties that can be different when coverage is enabled.
+type BootclasspathFragmentCoverageAffectedProperties struct {
+	// The contents of this bootclasspath_fragment, could be either java_library, or java_sdk_library.
+	//
+	// The order of this list matters as it is the order that is used in the bootclasspath.
+	Contents []string
+}
+
 type bootclasspathFragmentProperties struct {
 	// The name of the image this represents.
 	//
 	// If specified then it must be one of "art" or "boot".
 	Image_name *string
 
-	// The contents of this bootclasspath_fragment, could be either java_library, java_sdk_library, or boot_image.
-	//
-	// The order of this list matters as it is the order that is used in the bootclasspath.
-	Contents []string
+	BootclasspathFragmentCoverageAffectedProperties
 
 	Hidden_api HiddenAPIFlagFileProperties
+}
+
+// Coverage specific properties that will be appended to the corresponding property in the outer
+// set of properties if and only if EMMA_INSTRUMENT_FRAMEWORK=true
+type bootclasspathFragmentCoverageProperties struct {
+	Coverage BootclasspathFragmentCoverageAffectedProperties
 }
 
 type BootclasspathFragmentModule struct {
 	android.ModuleBase
 	android.ApexModuleBase
 	android.SdkBase
-	properties bootclasspathFragmentProperties
+	properties         bootclasspathFragmentProperties
+	coverageProperties bootclasspathFragmentCoverageProperties
 }
 
 func bootclasspathFragmentFactory() android.Module {
 	m := &BootclasspathFragmentModule{}
-	m.AddProperties(&m.properties)
+	m.AddProperties(&m.properties, &m.coverageProperties)
 	android.InitApexModule(m)
 	android.InitSdkAwareModule(m)
 	android.InitAndroidArchModule(m, android.HostAndDeviceSupported, android.MultilibCommon)
 
-	// Initialize the contents property from the image_name.
 	android.AddLoadHook(m, func(ctx android.LoadHookContext) {
+		// If code coverage has been enabled for the framework then append the properties with
+		// coverage specific properties.
+		if ctx.Config().IsEnvTrue("EMMA_INSTRUMENT_FRAMEWORK") {
+			err := proptools.AppendProperties(&m.properties.BootclasspathFragmentCoverageAffectedProperties, &m.coverageProperties.Coverage, nil)
+			if err != nil {
+				ctx.PropertyErrorf("coverage", "error trying to append coverage specific properties: %s", err)
+				return
+			}
+		}
+
+		// Initialize the contents property from the image_name.
 		bootclasspathFragmentInitContentsFromImage(ctx, m)
 	})
 	return m
