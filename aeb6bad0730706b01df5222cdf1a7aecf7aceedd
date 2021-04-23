@@ -51,6 +51,24 @@
       "parentUuid": "7336427a_4fffd147",
       "revId": "aeb6bad0730706b01df5222cdf1a7aecf7aceedd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18dbea61_deffe9ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2021-04-23T09:37:28Z",
+      "side": 1,
+      "message": "Chatted with Florian offline, it is b/186118219 that triggers the revert.\n\nI think we can probably re-land the changes as this is due to build infra didn\u0027t submit the CL within the same topic together: b/186134126#comment13",
+      "parentUuid": "e4c3d54c_25ffa594",
+      "revId": "aeb6bad0730706b01df5222cdf1a7aecf7aceedd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
