@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47a3b3cf_703acf6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394071
+      },
+      "writtenOn": "2021-04-23T16:58:11Z",
+      "side": 1,
+      "message": "David and Naveen, Please review this change. ",
+      "revId": "83ebf23a0dd4eb0c6fb87c41e08524f707eb8f90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
