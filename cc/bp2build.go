@@ -90,11 +90,6 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 		return "-I" + filepath.Join(ctx.ModuleDir(), dir)
 	}
 
-	// Parse the list of srcs, excluding files from exclude_srcs.
-	parseSrcs := func(baseCompilerProps *BaseCompilerProperties) bazel.LabelList {
-		return android.BazelLabelForModuleSrcExcludes(ctx, baseCompilerProps.Srcs, baseCompilerProps.Exclude_srcs)
-	}
-
 	// Parse the list of module-relative include directories (-I).
 	parseLocalIncludeDirs := func(baseCompilerProps *BaseCompilerProperties) []string {
 		// include_dirs are root-relative, not module-relative.
@@ -111,14 +106,40 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 		return copts
 	}
 
+	// baseSrcs contain the list of src files that are used for every configuration.
+	var baseSrcs []string
+	// baseExcludeSrcs contain the list of src files that are excluded for every configuration.
+	var baseExcludeSrcs []string
+	// baseSrcsLabelList is a clone of the base srcs LabelList, used for computing the
+	// arch or os specific srcs later.
+	var baseSrcsLabelList bazel.LabelList
+
+	// Parse srcs from an arch or OS's props value, taking the base srcs and
+	// exclude srcs into account.
+	parseSrcs := func(baseCompilerProps *BaseCompilerProperties) bazel.LabelList {
+		// Combine the base srcs and arch-specific srcs
+		allSrcs := append(baseSrcs, baseCompilerProps.Srcs...)
+		// Combine the base exclude_srcs and configuration-specific exclude_srcs
+		allExcludeSrcs := append(baseExcludeSrcs, baseCompilerProps.Exclude_srcs...)
+		return android.BazelLabelForModuleSrcExcludes(ctx, allSrcs, allExcludeSrcs)
+	}
+
 	for _, props := range module.compiler.compilerProps() {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
 			srcs.Value = parseSrcs(baseCompilerProps)
 			copts.Value = parseCopts(baseCompilerProps)
+
+			// Used for arch-specific srcs later.
+			baseSrcs = baseCompilerProps.Srcs
+			baseExcludeSrcs = baseCompilerProps.Exclude_srcs
+			baseSrcsLabelList = parseSrcs(baseCompilerProps)
 			break
 		}
 	}
 
+	// Handle include_build_directory prop. If the property is true, then the
+	// target has access to all headers recursively in the package, and has
+	// "-I<module-dir>" in its copts.
 	if c, ok := module.compiler.(*baseCompiler); ok && c.includeBuildDirectory() {
 		copts.Value = append(copts.Value, includeFlag("."))
 		localHdrs.Value = bp2BuildListHeadersInDir(ctx, ".")
@@ -129,17 +150,45 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 
 	for arch, props := range module.GetArchProperties(&BaseCompilerProperties{}) {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
-			srcsList := parseSrcs(baseCompilerProps)
-			srcs.SetValueForArch(arch.Name, bazel.SubtractBazelLabelList(srcsList, srcs.Value))
+			// The base srcs value should not contain any arch-specific excludes.
+			if len(baseCompilerProps.Srcs)+len(baseCompilerProps.Exclude_srcs) > 0 {
+				srcsList := parseSrcs(baseCompilerProps)
+				srcs.SetValueForArch(arch.Name, srcsList)
+				srcs.Value = bazel.SubtractBazelLabelList(srcs.Value, bazel.LabelList{Includes: srcsList.Excludes})
+			}
+
 			copts.SetValueForArch(arch.Name, parseCopts(baseCompilerProps))
 		}
 	}
 
 	for os, props := range module.GetTargetProperties(&BaseCompilerProperties{}) {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
-			srcsList := parseSrcs(baseCompilerProps)
-			srcs.SetValueForOS(os.Name, bazel.SubtractBazelLabelList(srcsList, srcs.Value))
+			if len(baseCompilerProps.Srcs)+len(baseCompilerProps.Exclude_srcs) > 0 {
+				srcsList := parseSrcs(baseCompilerProps)
+				srcs.SetValueForOS(os.Name, srcsList)
+				srcs.Value = bazel.SubtractBazelLabelList(srcs.Value, bazel.LabelList{Includes: srcsList.Excludes})
+			}
+
 			copts.SetValueForOS(os.Name, parseCopts(baseCompilerProps))
+		}
+	}
+
+	// These are the srcs that had to be removed from srcs.Value because they
+	// exist in the arch specific srcs.
+	//
+	// TODO(jingwen): handle the case with multiple variant types, e.g. when arch and os are both used.
+	defaultsSrcs := bazel.SubtractBazelLabelList(baseSrcsLabelList, srcs.Value)
+	srcs.SetValueForArch(bazel.CONDITIONS_DEFAULT, defaultsSrcs)
+	// srcs.SetValueForOS(bazel.CONDITIONS_DEFAULT, defaultsSrcs)
+
+	for arch, props := range module.GetArchProperties(&BaseCompilerProperties{}) {
+		if _, ok := props.(*BaseCompilerProperties); ok {
+			srcs.SetValueForArch(arch.Name, bazel.SubtractBazelLabelList(srcs.GetValueForArch(arch.Name), srcs.Value))
+		}
+	}
+	for os, props := range module.GetTargetProperties(&BaseCompilerProperties{}) {
+		if _, ok := props.(*BaseCompilerProperties); ok {
+			srcs.SetValueForOS(os.Name, bazel.SubtractBazelLabelList(srcs.GetValueForOS(os.Name), srcs.Value))
 		}
 	}
 
