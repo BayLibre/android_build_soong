@@ -16,6 +16,24 @@
       "message": "Do we also want to early exit in this case (and in the case below with the other module error)? Otherwise we may have later issues (ccInfo may be nil, for example)",
       "revId": "db3a5b3147978d4da031e4b0435fc2cd44bec0ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd9e3e9b_926f1f14",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-23T13:41:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78957904_51d453fc",
+      "revId": "db3a5b3147978d4da031e4b0435fc2cd44bec0ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
