@@ -16,6 +16,23 @@
       "message": "Note to self:\n\nRepro of breakage:\n\nGENERATE_BAZEL_FILES\u003d1 m nothing\nbazel build --config\u003dbp2build --platforms //build/bazel/platforms:android_arm64 -k //bionic/...",
       "revId": "7fabadc33acd41f5252e6f661cf488c9e412c657",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1566818e_bf69b15b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-23T15:35:13Z",
+      "side": 1,
+      "message": "Note to self: -Ibionic/libc/include is missing from the command line of note_memtag_heap_async.S",
+      "revId": "7fabadc33acd41f5252e6f661cf488c9e412c657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
