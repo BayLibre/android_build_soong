@@ -17,6 +17,7 @@ package dexpreopt
 import (
 	"encoding/json"
 	"fmt"
+	"reflect"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -522,7 +523,25 @@ func ParseGlobalSoongConfig(ctx android.PathContext, data []byte) (*GlobalSoongC
 	return config, nil
 }
 
+// checkBootJarsConfigConsistency checks the consistency of BootJars and UpdatableBootJars fields in
+// DexpreoptGlobalConfig and Config.productVariables.
+func checkBootJarsConfigConsistency(ctx android.SingletonContext, dexpreoptConfig *GlobalConfig, config android.Config) {
+	compareBootJars := func(property string, dexpreoptJars, variableJars android.ConfiguredJarList) {
+		if !reflect.DeepEqual(dexpreoptJars, variableJars) {
+			ctx.Errorf("Inconsistent configuration of %[1]s\n"+
+				"    dexpreopt.GlobalConfig.%[1]s = %[2]s\n"+
+				"    productVariables.%[1]s       = %[3]s",
+				property, dexpreoptJars.CopyOfApexJarPairs(), variableJars.CopyOfApexJarPairs())
+		}
+	}
+
+	compareBootJars("BootJars", dexpreoptConfig.BootJars, config.NonUpdatableBootJars())
+	compareBootJars("UpdatableBootJars", dexpreoptConfig.UpdatableBootJars, config.UpdatableBootJars())
+}
+
 func (s *globalSoongConfigSingleton) GenerateBuildActions(ctx android.SingletonContext) {
+	checkBootJarsConfigConsistency(ctx, GetGlobalConfig(ctx), ctx.Config())
+
 	if GetGlobalConfig(ctx).DisablePreopt {
 		return
 	}
