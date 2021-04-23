@@ -136,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4377bf18_b6fe66b6",
+        "filename": "java/boot_image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-23T11:43:43Z",
+      "side": 1,
+      "message": "Ok, this issue isn\u0027t specific to versioned modules. It is just an issue with prebuilts using image_name. It just so happens (through very convoluted process) that doing this with versioned modules breaks the build.\n\nI have created http://b/186201286 to track the general work on versioned modules.",
+      "parentUuid": "f63f827d_c8c69098",
+      "range": {
+        "startLine": 133,
+        "startChar": 9,
+        "endLine": 133,
+        "endChar": 78
+      },
+      "revId": "1672687414391058e6523a22294f0a7c852591ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0feea91a_e36a57a5",
