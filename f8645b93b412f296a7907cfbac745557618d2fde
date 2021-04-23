@@ -22,6 +22,30 @@
       },
       "revId": "f8645b93b412f296a7907cfbac745557618d2fde",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef8a8b10_1774185b",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-23T12:09:10Z",
+      "side": 0,
+      "message": "Couldn\u0027t reproduce locally, but am reverting this for the time being.",
+      "parentUuid": "a0b20190_3d0b89a6",
+      "range": {
+        "startLine": 183,
+        "startChar": 3,
+        "endLine": 183,
+        "endChar": 15
+      },
+      "revId": "f8645b93b412f296a7907cfbac745557618d2fde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
