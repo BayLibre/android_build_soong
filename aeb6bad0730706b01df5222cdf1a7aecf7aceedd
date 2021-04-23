@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7336427a_4fffd147",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-04-23T00:16:21Z",
+      "side": 1,
+      "message": "The first revert CLs shouldn\u0027t break anything. I can\u0027t find any such targets. But I\u0027ll wait until Florian provides some contexts.",
+      "revId": "aeb6bad0730706b01df5222cdf1a7aecf7aceedd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
