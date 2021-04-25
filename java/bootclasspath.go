@@ -161,3 +161,48 @@ var _ android.ExcludeFromVisibilityEnforcementTag = bootclasspathDependencyTag{}
 
 // The tag used for dependencies onto bootclasspath_fragments.
 var bootclasspathFragmentDepTag = bootclasspathDependencyTag{name: "fragment"}
+
+// BootclasspathNestedAPIProperties defines properties related to the API provided by parts of the
+// bootclasspath that are nested within the main BootclasspathAPIProperties.
+type BootclasspathNestedAPIProperties struct {
+	// java_library or preferably, java_sdk_library modules providing stub classes.
+	Stub_libs []string
+}
+
+// BootclasspathAPIProperties defines properties for defining the API provided by parts of the
+// bootclasspath.
+type BootclasspathAPIProperties struct {
+	// Api properties provide information about the APIs provided by parts the bootclasspath.
+	// Properties within the api scope specific subsections, e.g. public.stub_libs, only apply to that
+	// api scope whereas the corresponding properties in this section apply to public, system and test
+	// api scopes. They DO NOT apply to core_platform as that is a special, ART specific scope, that
+	// does not fit into the main structure. It is in the process of being deprecated and replaced by
+	// the system scope but this will remain for the foreseeable future to maintain backwards
+	// compatibility.
+	//
+	// These properties apply to public, system and test APIs.
+	Api BootclasspathNestedAPIProperties
+
+	// Properties related to the core platform API surface.
+	Core_platform_api BootclasspathNestedAPIProperties
+}
+
+// sdkKindToStubLibs calculates the stub library modules for each android.SdkKind from the
+// Stub_libs properties.
+func (p BootclasspathAPIProperties) sdkKindToStubLibs() map[android.SdkKind][]string {
+	m := map[android.SdkKind][]string{}
+	for _, kind := range []android.SdkKind{android.SdkPublic, android.SdkSystem, android.SdkTest} {
+		m[kind] = p.Api.Stub_libs
+	}
+	m[android.SdkCorePlatform] = p.Core_platform_api.Stub_libs
+	return m
+}
+
+// bootclasspathApiInfo contains paths resolved from BootclasspathAPIProperties
+type bootclasspathApiInfo struct {
+	// stubJarsByKind maps from the android.SdkKind to the paths containing dex stub jars for each
+	// kind.
+	stubJarsByKind map[android.SdkKind]android.Paths
+}
+
+var bootclasspathApiInfoProvider = blueprint.NewProvider(bootclasspathApiInfo{})
