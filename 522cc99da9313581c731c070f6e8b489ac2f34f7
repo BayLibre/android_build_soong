@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fd60027_456b4075",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-26T16:55:32Z",
+      "side": 1,
+      "message": "A little treat while you don\u0027t have your workstation -- with header files not being in the way anymore, the denylist can be shortened by \u003e10 entries.",
+      "revId": "522cc99da9313581c731c070f6e8b489ac2f34f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
