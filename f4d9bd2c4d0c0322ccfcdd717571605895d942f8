@@ -16,6 +16,29 @@
       "message": "Ping",
       "revId": "f4d9bd2c4d0c0322ccfcdd717571605895d942f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec02838f_73dc69b4",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-04-26T15:12:31Z",
+      "side": 1,
+      "message": "This change looks good, but the next two lines look somewhat baroque to me.",
+      "range": {
+        "startLine": 120,
+        "startChar": 36,
+        "endLine": 120,
+        "endChar": 37
+      },
+      "revId": "f4d9bd2c4d0c0322ccfcdd717571605895d942f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
