@@ -22,7 +22,6 @@ import (
 	"reflect"
 	"regexp"
 	"sort"
-	"strconv"
 	"strings"
 	"testing"
 
@@ -1297,102 +1296,6 @@ func TestRuntimeApexShouldInstallHwasanIfHwaddressSanitized(t *testing.T) {
 	ensureContains(t, symlink.Output.String(), "/system/lib64/libclang_rt.hwasan-aarch64-android.so")
 }
 
-func TestApexDependsOnLLNDKTransitively(t *testing.T) {
-	testcases := []struct {
-		name          string
-		minSdkVersion string
-		apexVariant   string
-		shouldLink    string
-		shouldNotLink []string
-	}{
-		{
-			name:          "unspecified version links to the latest",
-			minSdkVersion: "",
-			apexVariant:   "apex10000",
-			shouldLink:    "current",
-			shouldNotLink: []string{"29", "30"},
-		},
-		{
-			name:          "always use the latest",
-			minSdkVersion: "min_sdk_version: \"29\",",
-			apexVariant:   "apex29",
-			shouldLink:    "current",
-			shouldNotLink: []string{"29", "30"},
-		},
-	}
-	for _, tc := range testcases {
-		t.Run(tc.name, func(t *testing.T) {
-			ctx := testApex(t, `
-			apex {
-				name: "myapex",
-				key: "myapex.key",
-				use_vendor: true,
-				native_shared_libs: ["mylib"],
-				updatable: false,
-				`+tc.minSdkVersion+`
-			}
-
-			apex_key {
-				name: "myapex.key",
-				public_key: "testkey.avbpubkey",
-				private_key: "testkey.pem",
-			}
-
-			cc_library {
-				name: "mylib",
-				srcs: ["mylib.cpp"],
-				vendor_available: true,
-				shared_libs: ["libbar"],
-				system_shared_libs: [],
-				stl: "none",
-				apex_available: [ "myapex" ],
-				min_sdk_version: "29",
-			}
-
-			cc_library {
-				name: "libbar",
-				srcs: ["mylib.cpp"],
-				system_shared_libs: [],
-				stl: "none",
-				stubs: { versions: ["29","30"] },
-				llndk_stubs: "libbar.llndk",
-			}
-
-			llndk_library {
-				name: "libbar.llndk",
-				symbol_file: "",
-			}
-			`,
-				setUseVendorAllowListForTest([]string{"myapex"}),
-				withUnbundledBuild,
-			)
-
-			// Ensure that LLNDK dep is not included
-			ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
-				"lib64/mylib.so",
-			})
-
-			// Ensure that LLNDK dep is required
-			apexManifestRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexManifestRule")
-			ensureListEmpty(t, names(apexManifestRule.Args["provideNativeLibs"]))
-			ensureListContains(t, names(apexManifestRule.Args["requireNativeLibs"]), "libbar.so")
-
-			mylibLdFlags := ctx.ModuleForTests("mylib", "android_vendor.29_arm64_armv8-a_shared_"+tc.apexVariant).Rule("ld").Args["libFlags"]
-			ensureContains(t, mylibLdFlags, "libbar/android_vendor.29_arm64_armv8-a_shared_"+tc.shouldLink+"/libbar.so")
-			for _, ver := range tc.shouldNotLink {
-				ensureNotContains(t, mylibLdFlags, "libbar/android_vendor.29_arm64_armv8-a_shared_"+ver+"/libbar.so")
-			}
-
-			mylibCFlags := ctx.ModuleForTests("mylib", "android_vendor.29_arm64_armv8-a_static_"+tc.apexVariant).Rule("cc").Args["cFlags"]
-			ver := tc.shouldLink
-			if tc.shouldLink == "current" {
-				ver = strconv.Itoa(android.FutureApiLevelInt)
-			}
-			ensureContains(t, mylibCFlags, "__LIBBAR_API__="+ver)
-		})
-	}
-}
-
 func TestApexWithSystemLibsStubs(t *testing.T) {
 	ctx := testApex(t, `
 		apex {
@@ -2375,119 +2278,6 @@ func TestFilesInSubDirWhenNativeBridgeEnabled(t *testing.T) {
 	})
 }
 
-func TestUseVendor(t *testing.T) {
-	ctx := testApex(t, `
-		apex {
-			name: "myapex",
-			key: "myapex.key",
-			native_shared_libs: ["mylib"],
-			use_vendor: true,
-			updatable: false,
-		}
-
-		apex_key {
-			name: "myapex.key",
-			public_key: "testkey.avbpubkey",
-			private_key: "testkey.pem",
-		}
-
-		cc_library {
-			name: "mylib",
-			srcs: ["mylib.cpp"],
-			shared_libs: ["mylib2"],
-			system_shared_libs: [],
-			vendor_available: true,
-			stl: "none",
-			apex_available: [ "myapex" ],
-		}
-
-		cc_library {
-			name: "mylib2",
-			srcs: ["mylib.cpp"],
-			system_shared_libs: [],
-			vendor_available: true,
-			stl: "none",
-			apex_available: [ "myapex" ],
-		}
-	`,
-		setUseVendorAllowListForTest([]string{"myapex"}),
-	)
-
-	inputsList := []string{}
-	for _, i := range ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().BuildParamsForTests() {
-		for _, implicit := range i.Implicits {
-			inputsList = append(inputsList, implicit.String())
-		}
-	}
-	inputsString := strings.Join(inputsList, " ")
-
-	// ensure that the apex includes vendor variants of the direct and indirect deps
-	ensureContains(t, inputsString, "android_vendor.29_arm64_armv8-a_shared_apex10000/mylib.so")
-	ensureContains(t, inputsString, "android_vendor.29_arm64_armv8-a_shared_apex10000/mylib2.so")
-
-	// ensure that the apex does not include core variants
-	ensureNotContains(t, inputsString, "android_arm64_armv8-a_shared_apex10000/mylib.so")
-	ensureNotContains(t, inputsString, "android_arm64_armv8-a_shared_apex10000/mylib2.so")
-}
-
-func TestUseVendorNotAllowedForSystemApexes(t *testing.T) {
-	testApexError(t, `module "myapex" .*: use_vendor: not allowed`, `
-		apex {
-			name: "myapex",
-			key: "myapex.key",
-			use_vendor: true,
-		}
-		apex_key {
-			name: "myapex.key",
-			public_key: "testkey.avbpubkey",
-			private_key: "testkey.pem",
-		}
-	`,
-		setUseVendorAllowListForTest([]string{""}),
-	)
-	// no error with allow list
-	testApex(t, `
-		apex {
-			name: "myapex",
-			key: "myapex.key",
-			use_vendor: true,
-			updatable: false,
-		}
-		apex_key {
-			name: "myapex.key",
-			public_key: "testkey.avbpubkey",
-			private_key: "testkey.pem",
-		}
-	`,
-		setUseVendorAllowListForTest([]string{"myapex"}),
-	)
-}
-
-func TestUseVendorFailsIfNotVendorAvailable(t *testing.T) {
-	testApexError(t, `dependency "mylib" of "myapex" missing variant:\n.*image:vendor`, `
-		apex {
-			name: "myapex",
-			key: "myapex.key",
-			native_shared_libs: ["mylib"],
-			use_vendor: true,
-			updatable: false,
-		}
-
-		apex_key {
-			name: "myapex.key",
-			public_key: "testkey.avbpubkey",
-			private_key: "testkey.pem",
-		}
-
-		cc_library {
-			name: "mylib",
-			srcs: ["mylib.cpp"],
-			system_shared_libs: [],
-			stl: "none",
-		}
-	`)
-}
-
 func TestVendorApex(t *testing.T) {
 	ctx := testApex(t, `
 		apex {
@@ -2660,41 +2450,6 @@ func TestApex_withPrebuiltFirmware(t *testing.T) {
 			})
 		})
 	}
-}
-
-func TestAndroidMk_UseVendorRequired(t *testing.T) {
-	ctx := testApex(t, `
-		apex {
-			name: "myapex",
-			key: "myapex.key",
-			use_vendor: true,
-			native_shared_libs: ["mylib"],
-			updatable: false,
-		}
-
-		apex_key {
-			name: "myapex.key",
-			public_key: "testkey.avbpubkey",
-			private_key: "testkey.pem",
-		}
-
-		cc_library {
-			name: "mylib",
-			vendor_available: true,
-			apex_available: ["myapex"],
-		}
-	`,
-		setUseVendorAllowListForTest([]string{"myapex"}),
-	)
-
-	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
-	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
-	name := apexBundle.BaseModuleName()
-	prefix := "TARGET_"
-	var builder strings.Builder
-	data.Custom(&builder, name, prefix, "", data)
-	androidMk := builder.String()
-	ensureContains(t, androidMk, "LOCAL_REQUIRED_MODULES += libc libm libdl\n")
 }
 
 func TestAndroidMk_VendorApexRequired(t *testing.T) {
