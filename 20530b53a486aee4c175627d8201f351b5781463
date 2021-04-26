@@ -39,6 +39,30 @@
       },
       "revId": "20530b53a486aee4c175627d8201f351b5781463",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa1a7a0b_c694f67c",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-26T17:48:13Z",
+      "side": 1,
+      "message": "Core_platform is only for use by libcore, conscrypt and i18n. None of the other mainline modules will need to use this. So, I don\u0027t want to pollute their .bp files with a concept that they neither care about or understand.",
+      "parentUuid": "fd645db3_fc279e5e",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 34
+      },
+      "revId": "20530b53a486aee4c175627d8201f351b5781463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
