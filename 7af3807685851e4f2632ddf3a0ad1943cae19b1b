@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5ebd3c8_2bf698f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-26T17:28:35Z",
+      "side": 1,
+      "message": "Not in this change no.",
+      "parentUuid": "19bb2bc8_2f7b5816",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "7af3807685851e4f2632ddf3a0ad1943cae19b1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f292d0c0_a83ed5a0",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fcc489b_f2a21819",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-26T17:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f292d0c0_a83ed5a0",
+      "range": {
+        "startLine": 77,
+        "startChar": 29,
+        "endLine": 77,
+        "endChar": 50
+      },
+      "revId": "7af3807685851e4f2632ddf3a0ad1943cae19b1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9ba1e44_37058c0b",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-26T15:28:10Z",
       "side": 1,
       "message": "Nit: These no longer actually registers the sdk members.",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 12
+      },
+      "revId": "7af3807685851e4f2632ddf3a0ad1943cae19b1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46897521_12f7c4ef",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-26T17:28:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9ba1e44_37058c0b",
       "range": {
         "startLine": 103,
         "startChar": 4,
