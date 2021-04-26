@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49109bac_7ffa6f39",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-26T13:08:25Z",
+      "side": 1,
+      "message": "Why isn\u0027t this simply part of the bootclasspathFragmentProperties struct?",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 59
+      },
+      "revId": "0227687374e2e61f3bc8a96098506df72e54db6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
