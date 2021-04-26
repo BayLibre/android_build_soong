@@ -16,6 +16,8 @@ package java
 
 import (
 	"fmt"
+	"sort"
+	"strings"
 
 	"android/soong/android"
 	"android/soong/dexpreopt"
@@ -32,9 +34,9 @@ func registerPlatformBootclasspathBuildComponents(ctx android.RegistrationContex
 // The tags used for the dependencies between the platform bootclasspath and any configured boot
 // jars.
 var (
-	platformBootclasspathArtBootJarDepTag = bootclasspathDependencyTag{name: "art-boot-jar"}
+	platformBootclasspathArtBootJarDepTag          = bootclasspathDependencyTag{name: "art-boot-jar"}
 	platformBootclasspathNonUpdatableBootJarDepTag = bootclasspathDependencyTag{name: "non-updatable-boot-jar"}
-	platformBootclasspathUpdatableBootJarDepTag = bootclasspathDependencyTag{name: "updatable-boot-jar"}
+	platformBootclasspathUpdatableBootJarDepTag    = bootclasspathDependencyTag{name: "updatable-boot-jar"}
 )
 
 type platformBootclasspathModule struct {
@@ -187,7 +189,7 @@ func (b *platformBootclasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 		return
 	}
 
-	b.generateBootImageBuildActions(ctx)
+	b.generateBootImageBuildActions(ctx, updatableModules)
 }
 
 func (b *platformBootclasspathModule) getImageConfig(ctx android.EarlyModuleContext) *bootImageConfig {
@@ -316,7 +318,7 @@ func (b *platformBootclasspathModule) generatedHiddenAPIMetadataRules(ctx androi
 }
 
 // generateBootImageBuildActions generates ninja rules related to the boot image creation.
-func (b *platformBootclasspathModule) generateBootImageBuildActions(ctx android.ModuleContext) {
+func (b *platformBootclasspathModule) generateBootImageBuildActions(ctx android.ModuleContext, updatableModules []android.Module) {
 	// Force the GlobalSoongConfig to be created and cached for use by the dex_bootjars
 	// GenerateSingletonBuildActions method as it cannot create it for itself.
 	dexpreopt.GetGlobalSoongConfig(ctx)
@@ -328,6 +330,9 @@ func (b *platformBootclasspathModule) generateBootImageBuildActions(ctx android.
 
 	// Generate the framework profile rule
 	bootFrameworkProfileRule(ctx, imageConfig)
+
+	// Generate the updatable bootclasspath packages rule.
+	generateUpdatableBcpPackagesRule(ctx, imageConfig, updatableModules)
 }
 
 // bootFrameworkProfileRule generates the rule to create the boot framework profile and
@@ -360,4 +365,38 @@ func bootFrameworkProfileRule(ctx android.ModuleContext, image *bootImageConfig)
 	image.profileInstalls = append(image.profileInstalls, rule.Installs()...)
 
 	return profile
+}
+
+// generateUpdatableBcpPackagesRule generates the rule to create the updatable-bcp-packages.txt file
+// and returns a path to the generated file.
+func generateUpdatableBcpPackagesRule(ctx android.ModuleContext, image *bootImageConfig, updatableModules []android.Module) android.WritablePath {
+	// Collect `permitted_packages` for updatable boot jars.
+	var updatablePackages []string
+	for _, module := range updatableModules {
+		if j, ok := module.(PermittedPackagesForUpdatableBootJars); ok {
+			pp := j.PermittedPackagesForUpdatableBootJars()
+			if len(pp) > 0 {
+				updatablePackages = append(updatablePackages, pp...)
+			} else {
+				ctx.ModuleErrorf("Missing permitted_packages")
+			}
+		}
+	}
+
+	// Sort updatable packages to ensure deterministic ordering.
+	sort.Strings(updatablePackages)
+
+	updatableBcpPackagesName := "updatable-bcp-packages.txt"
+	updatableBcpPackages := image.dir.Join(ctx, updatableBcpPackagesName)
+
+	// WriteFileRule automatically adds the last end-of-line.
+	android.WriteFileRule(ctx, updatableBcpPackages, strings.Join(updatablePackages, "\n"))
+
+	rule := android.NewRuleBuilder(pctx, ctx)
+	rule.Install(updatableBcpPackages, "/system/etc/"+updatableBcpPackagesName)
+	// TODO: Rename `profileInstalls` to `extraInstalls`?
+	// Maybe even move the field out of the bootImageConfig into some higher level type?
+	image.profileInstalls = append(image.profileInstalls, rule.Installs()...)
+
+	return updatableBcpPackages
 }
