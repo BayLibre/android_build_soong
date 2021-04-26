@@ -46,6 +46,30 @@
       },
       "revId": "0227687374e2e61f3bc8a96098506df72e54db6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9345d006_1ad6e154",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-26T21:55:57Z",
+      "side": 0,
+      "message": "Discussed on https://r.android.com/1684807. Ok.",
+      "parentUuid": "2f43deb0_5c2c4c5f",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 118
+      },
+      "revId": "0227687374e2e61f3bc8a96098506df72e54db6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
