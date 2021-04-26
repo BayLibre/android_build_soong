@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19bb2bc8_2f7b5816",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-26T15:28:10Z",
+      "side": 1,
+      "message": "Do you actually use them anywhere? Can\u0027t see anything in the child CLs.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "7af3807685851e4f2632ddf3a0ad1943cae19b1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f292d0c0_a83ed5a0",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-26T15:28:10Z",
+      "side": 1,
+      "message": "Nit: The other assignments don\u0027t specify the type. I think it\u0027s not that necessary since the registration calls above will complain if it\u0027s wrong anyway.",
+      "range": {
+        "startLine": 77,
+        "startChar": 29,
+        "endLine": 77,
+        "endChar": 50
+      },
+      "revId": "7af3807685851e4f2632ddf3a0ad1943cae19b1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9ba1e44_37058c0b",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-26T15:28:10Z",
+      "side": 1,
+      "message": "Nit: These no longer actually registers the sdk members.",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 12
+      },
+      "revId": "7af3807685851e4f2632ddf3a0ad1943cae19b1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
