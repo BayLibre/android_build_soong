@@ -22,6 +22,30 @@
       },
       "revId": "49bff1f71dac671d2aa915111c3b98c5f3daca02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17ac3825_5a3fbeab",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-26T11:00:24Z",
+      "side": 1,
+      "message": "Good idea! TL;DR: b/186024507 (the system_shared_libraries thingy that also breaks note_memtag_heap_a?sync)",
+      "parentUuid": "b6ed081c_e5d508c4",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 26
+      },
+      "revId": "49bff1f71dac671d2aa915111c3b98c5f3daca02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
