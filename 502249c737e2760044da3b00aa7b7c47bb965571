@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ae135aa_42b0644e",
+        "filename": "rust/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-04-26T19:15:22Z",
+      "side": 1,
+      "message": "This target name collides with the `cc/fuzz.go` target name for the same purpose. You either need to converge the logic and generate a single unified target file, or change `fuzz-` to `fuzz-rust-`.",
+      "revId": "502249c737e2760044da3b00aa7b7c47bb965571",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
