@@ -63,6 +63,30 @@
       },
       "revId": "20530b53a486aee4c175627d8201f351b5781463",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d2de766_63df2df4",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-26T18:42:17Z",
+      "side": 1,
+      "message": "Maybe this then?\n\n  api {\n    stub_libs: ...\n  },\n  core_platform_api {\n    stub_libs: ...\n  },",
+      "parentUuid": "fa1a7a0b_c694f67c",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 34
+      },
+      "revId": "20530b53a486aee4c175627d8201f351b5781463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
