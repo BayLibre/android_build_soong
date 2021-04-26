@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6bf8b19_06cb5965",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-26T17:28:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f13044b7_b9ebc1b5",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 27
+      },
+      "revId": "ede4cf216ee132c479857c35970bc5064e34a865",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da12d69a_832178c2",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbd166b3_4dd574b6",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-26T17:28:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da12d69a_832178c2",
+      "range": {
+        "startLine": 343,
+        "startChar": 92,
+        "endLine": 344,
+        "endChar": 24
+      },
+      "revId": "ede4cf216ee132c479857c35970bc5064e34a865",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40bb6f7e_795e113a",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-26T15:17:37Z",
       "side": 1,
       "message": "Wouldn\u0027t the Contents property also be empty in this case?",
+      "range": {
+        "startLine": 217,
+        "startChar": 5,
+        "endLine": 218,
+        "endChar": 59
+      },
+      "revId": "ede4cf216ee132c479857c35970bc5064e34a865",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea862293_7e75835c",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-26T17:28:25Z",
+      "side": 1,
+      "message": "Not in the case of art-bootclasspath-fragment.",
+      "parentUuid": "40bb6f7e_795e113a",
       "range": {
         "startLine": 217,
         "startChar": 5,
