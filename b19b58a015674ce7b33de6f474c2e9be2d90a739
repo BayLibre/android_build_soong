@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a52672fa_369b7e26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-26T15:05:45Z",
+      "side": 1,
+      "message": "Thanks for spotting that this field is not used anymore!\n\nI think it became unused after aosp/1199957.",
+      "revId": "b19b58a015674ce7b33de6f474c2e9be2d90a739",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
