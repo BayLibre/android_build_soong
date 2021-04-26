@@ -168,9 +168,7 @@ func (b *platformBootclasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 		return
 	}
 
-	// Force the GlobalSoongConfig to be created and cached for use by the dex_bootjars
-	// GenerateSingletonBuildActions method as it cannot create it for itself.
-	dexpreopt.GetGlobalSoongConfig(ctx)
+	b.generateBootImageBuildActions(ctx)
 }
 
 func (b *platformBootclasspathModule) getImageConfig(ctx android.EarlyModuleContext) *bootImageConfig {
@@ -296,4 +294,63 @@ func (b *platformBootclasspathModule) generatedHiddenAPIMetadataRules(ctx androi
 		Inputs(metadataCSVFiles)
 
 	rule.Build("platform-bootclasspath-monolithic-hiddenapi-metadata", "monolithic hidden API metadata")
+}
+
+// generateBootImageBuildActions generates ninja rules related to the boot image creation.
+func (b *platformBootclasspathModule) generateBootImageBuildActions(ctx android.ModuleContext) {
+	// Force the GlobalSoongConfig to be created and cached for use by the dex_bootjars
+	// GenerateSingletonBuildActions method as it cannot create it for itself.
+	dexpreopt.GetGlobalSoongConfig(ctx)
+
+	imageConfig := b.getImageConfig(ctx)
+	if imageConfig == nil {
+		return
+	}
+
+	// Generate the framework profile rule
+	bootFrameworkProfileRule(ctx, imageConfig)
+}
+
+// bootFrameworkProfileRule generates the rule to create the boot framework profile and
+// returns a path to the generated file.
+func bootFrameworkProfileRule(ctx android.ModuleContext, image *bootImageConfig) android.WritablePath {
+	globalSoong := dexpreopt.GetGlobalSoongConfig(ctx)
+	global := dexpreopt.GetGlobalConfig(ctx)
+
+	if global.DisableGenerateProfile || ctx.Config().UnbundledBuild() {
+		return nil
+	}
+
+	// Some branches like master-art-host don't have frameworks/base, so manually
+	// handle the case that the default is missing.  Those branches won't attempt to build the profile rule,
+	// and if they do they'll get a missing deps error.
+	defaultProfile := "frameworks/base/config/boot-profile.txt"
+	path := android.ExistentPathForSource(ctx, defaultProfile)
+	var bootFrameworkProfile android.Path
+	var missingDeps []string
+	if path.Valid() {
+		bootFrameworkProfile = path.Path()
+	} else {
+		missingDeps = append(missingDeps, defaultProfile)
+		bootFrameworkProfile = android.PathForOutput(ctx, "missing", defaultProfile)
+	}
+
+	profile := image.dir.Join(ctx, "boot.bprof")
+
+	rule := android.NewRuleBuilder(pctx, ctx)
+	rule.MissingDeps(missingDeps)
+	rule.Command().
+		Text(`ANDROID_LOG_TAGS="*:e"`).
+		Tool(globalSoong.Profman).
+		Flag("--output-profile-type=bprof").
+		FlagWithInput("--create-profile-from=", bootFrameworkProfile).
+		FlagForEachInput("--apk=", image.dexPathsDeps.Paths()).
+		FlagForEachArg("--dex-location=", image.getAnyAndroidVariant().dexLocationsDeps).
+		FlagWithOutput("--reference-profile-file=", profile)
+
+	rule.Install(profile, "/system/etc/boot-image.bprof")
+	rule.Build("bootFrameworkProfile", "profile boot framework jars")
+	image.profileInstalls = append(image.profileInstalls, rule.Installs()...)
+
+	return profile
 }
