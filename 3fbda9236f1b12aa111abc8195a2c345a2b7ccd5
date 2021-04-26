@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a9f5ffa_6df8373d",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2760,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-04-26T22:51:38Z",
+      "side": 1,
+      "message": "Can you add some comments? Also, please consider rename it. To me it sounds like it\u0027d tell whether a dependency is source OR output. For example, what about sourceOrOutputDepType?",
+      "revId": "3fbda9236f1b12aa111abc8195a2c345a2b7ccd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28c3dff7_8d769c33",
+        "filename": "android/override_module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-04-26T22:51:38Z",
+      "side": 1,
+      "message": "Do you need a new mutator for this? Can it be done in overridableModuleDepsMutator instead?",
+      "revId": "3fbda9236f1b12aa111abc8195a2c345a2b7ccd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
