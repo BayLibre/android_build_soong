@@ -16,6 +16,24 @@
       "message": "Wait a bit, I have a question. Do these changes take into account that we\u0027ll need to move all boot image handling to Soong at some point? The platform image (framework boot image extension) is now installed by makefile rules, but that\u0027s not perfect. I would\u0027t want to specialize the code too much to make the future migration from makefiles to Soong harder.",
       "revId": "f13e07eee2b8ae5851823cfa87989483fadcced2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3028f329_2364ee5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-26T14:36:41Z",
+      "side": 1,
+      "message": "I\u0027ve not been thinking specifically about moving stuff from make to Soong. However, this code being present or not won\u0027t make that any easier as this code is unused.\n\nI have no idea what \"installing from Soong\" will look like. It will likely have some similarities with what is done for APEX (the set of files) and some differences (the actual copying).\n\nIt is also not 100% clear what the platform_bootclasspath and bootclasspath_fragment will look like once I am finished. I am finding ever more functionality that is done in Soong that needs to be moved into them.\n\nI do have a separate bootclasspath.go file into which stuff that is common to both bootclasspath_fragment and platform_bootclasspath lives but things only move there once I know that it will be used.\n\nI think it is a little premature to try and structure the code to make moving the installation into Soong easier. That should wait until we know more.\n\nWhat I am doing at the moment is focusing on getting the relationships between the various parts and responsibilities clearly defined and matching how these are used. That should make adding new functionality a lot easier.",
+      "parentUuid": "f3e6d69f_33fb726e",
+      "revId": "f13e07eee2b8ae5851823cfa87989483fadcced2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
