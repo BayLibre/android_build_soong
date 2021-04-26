@@ -167,7 +167,8 @@ var (
 		"bionic":                Bp2BuildDefaultTrueRecursively,
 		"external/gwp_asan":     Bp2BuildDefaultTrueRecursively,
 		"system/core/libcutils": Bp2BuildDefaultTrueRecursively,
-		"system/logging/liblog": Bp2BuildDefaultTrueRecursively,
+		"system/core/property_service/libpropertyinfoparser": Bp2BuildDefaultTrueRecursively,
+		"system/logging/liblog":                              Bp2BuildDefaultTrueRecursively,
 	}
 
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
@@ -221,10 +222,11 @@ var (
 	// Per-module denylist to opt modules out of mixed builds. Such modules will
 	// still be generated via bp2build.
 	mixedBuildsDisabledList = []string{
-		"libasync_safe", // lberki@, cc_library_static, 'async_safe/log.h not found' for out/combined-aosp_arm64.ninja out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/android_arm64_armv8-a_shared/obj/system/unwinding/libbacktrace/ThreadEntry.o
-		"libc_gdtoa",    // ruperts@, cc_library_static, OK for bp2build but undefined symbol: __strtorQ for mixed builds
-		"libc_netbsd",   // lberki@, cc_library_static, version script assignment of 'LIBC_PRIVATE' to symbol 'SHA1Final' failed: symbol not defined
-		"libc_openbsd",  // ruperts@, cc_library_static, OK for bp2build but error: duplicate symbol: strcpy for mixed builds
+		"libasync_safe",         // lberki@, cc_library_static, 'async_safe/log.h not found' for out/combined-aosp_arm64.ninja out/soong/.intermediates/system/unwinding/libbacktrace/libbacktrace/android_arm64_armv8-a_shared/obj/system/unwinding/libbacktrace/ThreadEntry.o
+		"libc_gdtoa",            // ruperts@, cc_library_static, OK for bp2build but undefined symbol: __strtorQ for mixed builds
+		"libc_netbsd",           // lberki@, cc_library_static, version script assignment of 'LIBC_PRIVATE' to symbol 'SHA1Final' failed: symbol not defined
+		"libc_openbsd",          // ruperts@, cc_library_static, OK for bp2build but error: duplicate symbol: strcpy for mixed builds
+		"libpropertyinfoparser", // cparsons@, cc_library_static, wrong include paths
 	}
 
 	// Used for quicker lookups
