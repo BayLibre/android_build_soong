@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32cb75db_3b846574",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-26T16:26:22Z",
+      "side": 1,
+      "message": "+satayev to review who should be more familiar than me with this.",
+      "revId": "20530b53a486aee4c175627d8201f351b5781463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd645db3_fc279e5e",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-26T16:26:22Z",
+      "side": 1,
+      "message": "Since this doesn\u0027t apply to core platform I think it\u0027d be preferable to have it in a property set parallel with core_platform{} rather than one level up. Maybe call it \"not_core_platform\" if we can\u0027t come up with a better name.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 34
+      },
+      "revId": "20530b53a486aee4c175627d8201f351b5781463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
