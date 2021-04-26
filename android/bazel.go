@@ -166,15 +166,16 @@ var (
 	bp2buildDefaultConfig = Bp2BuildConfig{
 		"bionic":                Bp2BuildDefaultTrueRecursively,
 		"external/gwp_asan":     Bp2BuildDefaultTrueRecursively,
+		"external/jemalloc_new": Bp2BuildDefaultTrueRecursively,
 		"system/core/libcutils": Bp2BuildDefaultTrueRecursively,
-		"system/logging/liblog": Bp2BuildDefaultTrueRecursively,
+		"system/core/property_service/libpropertyinfoparser": Bp2BuildDefaultTrueRecursively,
+		"system/logging/liblog":                              Bp2BuildDefaultTrueRecursively,
 	}
 
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
 	bp2buildModuleDoNotConvertList = []string{
 		"libBionicBenchmarksUtils",      // ruperts@, cc_library_static, 'map' file not found
 		"libbionic_spawn_benchmark",     // ruperts@, cc_library_static, depends on //system/libbase
-		"libc_jemalloc_wrapper",         // ruperts@, cc_library_static, depends on //external/jemalloc_new
 		"libc_bootstrap",                // ruperts@, cc_library_static, 'private/bionic_auxv.h' file not found
 		"libc_init_static",              // ruperts@, cc_library_static, 'private/bionic_elf_tls.h' file not found
 		"libc_init_dynamic",             // ruperts@, cc_library_static, 'private/bionic_defs.h' file not found
@@ -215,13 +216,21 @@ var (
 		"libm",              // lberki@, cc_library, compiler error: "Unexpected token in argument list"
 		"libseccomp_policy", // lberki@, cc_library, 'linux/filter.h' not found, caused by missing -isystem bionic/libc/kernel/uapi, dunno where it comes from in Soong
 		"libstdc++",         // jingwen@, cc_library, depends on //external/gwp_asan
+
+		// Collateral damage from allowlisting //external/jemalloc
+		"libjemalloc5_integrationtest", // lberki@, cc_library_static, bionic/libc/include missing from include paths
+		"libjemalloc5_jet",             // lberki@, cc_library_static, bionic/libc/include missing from include paths
+		"libjemalloc5_stresstestlib",   // depends on libjemalloc5_jet
+		"libjemalloc5_unittest",        // lberki@, cc_library_static, depends on libjemalloc5_jet
 	}
 
 	// Per-module denylist to opt modules out of mixed builds. Such modules will
 	// still be generated via bp2build.
 	mixedBuildsDisabledList = []string{
-		"libc_gdtoa",   // ruperts@, cc_library_static, OK for bp2build but undefined symbol: __strtorQ for mixed builds
-		"libc_openbsd", // ruperts@, cc_library_static, OK for bp2build but error: duplicate symbol: strcpy for mixed builds
+		"libc_gdtoa",            // ruperts@, cc_library_static, OK for bp2build but undefined symbol: __strtorQ for mixed builds
+		"libc_jemalloc_wrapper", // cparsons@, cc_library_static, "received action with no command"
+		"libc_openbsd",          // ruperts@, cc_library_static, OK for bp2build but error: duplicate symbol: strcpy for mixed builds
+		"libpropertyinfoparser", // cparsons@, cc_library_static, wrong include paths
 	}
 
 	// Used for quicker lookups
