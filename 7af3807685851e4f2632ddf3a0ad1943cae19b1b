@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b64c4f_c52ec421",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-26T17:37:22Z",
+      "side": 1,
+      "message": "So I noticed. Still thought there would be a reason for this somewhere, but nvm then - it doesn\u0027t hurt anyway.",
+      "parentUuid": "e5ebd3c8_2bf698f8",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "7af3807685851e4f2632ddf3a0ad1943cae19b1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f292d0c0_a83ed5a0",
