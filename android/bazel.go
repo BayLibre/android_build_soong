@@ -166,8 +166,10 @@ var (
 	bp2buildDefaultConfig = Bp2BuildConfig{
 		"bionic":                Bp2BuildDefaultTrueRecursively,
 		"external/gwp_asan":     Bp2BuildDefaultTrueRecursively,
+		"external/jemalloc_new": Bp2BuildDefaultTrueRecursively,
 		"system/core/libcutils": Bp2BuildDefaultTrueRecursively,
-		"system/logging/liblog": Bp2BuildDefaultTrueRecursively,
+		"system/core/property_service/libpropertyinfoparser": Bp2BuildDefaultTrueRecursively,
+		"system/logging/liblog":                              Bp2BuildDefaultTrueRecursively,
 	}
 
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
@@ -215,6 +217,12 @@ var (
 		"libm",              // lberki@, cc_library, compiler error: "Unexpected token in argument list"
 		"libseccomp_policy", // lberki@, cc_library, 'linux/filter.h' not found, caused by missing -isystem bionic/libc/kernel/uapi, dunno where it comes from in Soong
 		"libstdc++",         // jingwen@, cc_library, depends on //external/gwp_asan
+
+		// Collateral damage from allowlisting //external/jemalloc
+		"libjemalloc5_integrationtest",
+		"libjemalloc5_jet",
+		"libjemalloc5_stresstestlib",
+		"libjemalloc5_unittest",
 	}
 
 	// Per-module denylist to opt modules out of mixed builds. Such modules will
