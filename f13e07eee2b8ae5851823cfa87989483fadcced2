@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3e6d69f_33fb726e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-26T13:35:13Z",
+      "side": 1,
+      "message": "Wait a bit, I have a question. Do these changes take into account that we\u0027ll need to move all boot image handling to Soong at some point? The platform image (framework boot image extension) is now installed by makefile rules, but that\u0027s not perfect. I would\u0027t want to specialize the code too much to make the future migration from makefiles to Soong harder.",
+      "revId": "f13e07eee2b8ae5851823cfa87989483fadcced2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
