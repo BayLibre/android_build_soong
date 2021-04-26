@@ -444,8 +444,6 @@ func (d *dexpreoptBootJars) GenerateSingletonBuildActions(ctx android.SingletonC
 	d.otherImages = append(d.otherImages, buildBootImage(ctx, artBootImageConfig(ctx), profile))
 
 	copyUpdatableBootJars(ctx)
-
-	dumpOatRules(ctx, d.defaultBootImage)
 }
 
 // Inspect this module to see if it contains a bootclasspath dex jar.
@@ -844,50 +842,6 @@ func bootImageProfileRule(ctx android.SingletonContext, image *bootImageConfig) 
 	image.profileInstalls = rule.Installs()
 
 	return profile
-}
-
-func dumpOatRules(ctx android.SingletonContext, image *bootImageConfig) {
-	var allPhonies android.Paths
-	for _, image := range image.variants {
-		arch := image.target.Arch.ArchType
-		suffix := arch.String()
-		// Host and target might both use x86 arch. We need to ensure the names are unique.
-		if image.target.Os.Class == android.Host {
-			suffix = "host-" + suffix
-		}
-		// Create a rule to call oatdump.
-		output := android.PathForOutput(ctx, "boot."+suffix+".oatdump.txt")
-		rule := android.NewRuleBuilder(pctx, ctx)
-		rule.Command().
-			// TODO: for now, use the debug version for better error reporting
-			BuiltTool("oatdumpd").
-			FlagWithInputList("--runtime-arg -Xbootclasspath:", image.dexPathsDeps.Paths(), ":").
-			FlagWithList("--runtime-arg -Xbootclasspath-locations:", image.dexLocationsDeps, ":").
-			FlagWithArg("--image=", strings.Join(image.imageLocations(), ":")).Implicits(image.imagesDeps.Paths()).
-			FlagWithOutput("--output=", output).
-			FlagWithArg("--instruction-set=", arch.String())
-		rule.Build("dump-oat-boot-"+suffix, "dump oat boot "+arch.String())
-
-		// Create a phony rule that depends on the output file and prints the path.
-		phony := android.PathForPhony(ctx, "dump-oat-boot-"+suffix)
-		rule = android.NewRuleBuilder(pctx, ctx)
-		rule.Command().
-			Implicit(output).
-			ImplicitOutput(phony).
-			Text("echo").FlagWithArg("Output in ", output.String())
-		rule.Build("phony-dump-oat-boot-"+suffix, "dump oat boot "+arch.String())
-
-		allPhonies = append(allPhonies, phony)
-	}
-
-	phony := android.PathForPhony(ctx, "dump-oat-boot")
-	ctx.Build(pctx, android.BuildParams{
-		Rule:        android.Phony,
-		Output:      phony,
-		Inputs:      allPhonies,
-		Description: "dump-oat-boot",
-	})
-
 }
 
 func writeGlobalConfigForMake(ctx android.SingletonContext, path android.WritablePath) {
