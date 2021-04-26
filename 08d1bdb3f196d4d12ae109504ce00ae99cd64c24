@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ba2720_11c1003e",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-26T17:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c795fee1_ba5c2626",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 34
+      },
+      "revId": "08d1bdb3f196d4d12ae109504ce00ae99cd64c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9dd4c83_53eac838",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-26T15:55:30Z",
       "side": 1,
       "message": "Dito.",
+      "range": {
+        "startLine": 290,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 34
+      },
+      "revId": "08d1bdb3f196d4d12ae109504ce00ae99cd64c24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f76e720f_517f0dec",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-26T17:28:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9dd4c83_53eac838",
       "range": {
         "startLine": 290,
         "startChar": 0,
