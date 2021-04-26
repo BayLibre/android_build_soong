@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "203877dd_cbe520b0",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-26T15:17:37Z",
+      "side": 0,
+      "message": "Shouldn\u0027t this still be the case for source BCP fragments? When is it applicable to specify both for them?",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 118
+      },
+      "revId": "0227687374e2e61f3bc8a96098506df72e54db6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
