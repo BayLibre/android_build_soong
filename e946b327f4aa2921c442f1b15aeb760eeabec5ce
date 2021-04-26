@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4401f1f_553a3207",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1702,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-26T14:54:40Z",
+      "side": 1,
+      "message": "I\u0027d use \u0027bcp\u0027 instead of \u0027bootclasspath\u0027 to keep names shorter (if used consistently, it would be easy to decipher), but I guess you find \u0027bootclasspath\u0027 easier to read.",
+      "range": {
+        "startLine": 1702,
+        "startChar": 5,
+        "endLine": 1702,
+        "endChar": 30
+      },
+      "revId": "e946b327f4aa2921c442f1b15aeb760eeabec5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
