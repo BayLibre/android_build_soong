@@ -438,9 +438,6 @@ func (d *dexpreoptBootJars) GenerateSingletonBuildActions(ctx android.SingletonC
 	defaultImageConfig := defaultBootImageConfig(ctx)
 	profile := bootImageProfileRule(ctx, defaultImageConfig)
 
-	// Generate the framework profile rule
-	bootFrameworkProfileRule(ctx, defaultImageConfig)
-
 	// Generate the updatable bootclasspath packages rule.
 	updatableBcpPackagesRule(ctx, defaultImageConfig)
 
@@ -849,48 +846,6 @@ func bootImageProfileRule(ctx android.SingletonContext, image *bootImageConfig) 
 	rule.Build("bootJarsProfile", "profile boot jars")
 
 	image.profileInstalls = rule.Installs()
-
-	return profile
-}
-
-func bootFrameworkProfileRule(ctx android.SingletonContext, image *bootImageConfig) android.WritablePath {
-	globalSoong := dexpreopt.GetCachedGlobalSoongConfig(ctx)
-	global := dexpreopt.GetGlobalConfig(ctx)
-
-	if global.DisableGenerateProfile || ctx.Config().UnbundledBuild() {
-		return nil
-	}
-
-	// Some branches like master-art-host don't have frameworks/base, so manually
-	// handle the case that the default is missing.  Those branches won't attempt to build the profile rule,
-	// and if they do they'll get a missing deps error.
-	defaultProfile := "frameworks/base/config/boot-profile.txt"
-	path := android.ExistentPathForSource(ctx, defaultProfile)
-	var bootFrameworkProfile android.Path
-	var missingDeps []string
-	if path.Valid() {
-		bootFrameworkProfile = path.Path()
-	} else {
-		missingDeps = append(missingDeps, defaultProfile)
-		bootFrameworkProfile = android.PathForOutput(ctx, "missing", defaultProfile)
-	}
-
-	profile := image.dir.Join(ctx, "boot.bprof")
-
-	rule := android.NewRuleBuilder(pctx, ctx)
-	rule.MissingDeps(missingDeps)
-	rule.Command().
-		Text(`ANDROID_LOG_TAGS="*:e"`).
-		Tool(globalSoong.Profman).
-		Flag("--output-profile-type=bprof").
-		FlagWithInput("--create-profile-from=", bootFrameworkProfile).
-		FlagForEachInput("--apk=", image.dexPathsDeps.Paths()).
-		FlagForEachArg("--dex-location=", image.getAnyAndroidVariant().dexLocationsDeps).
-		FlagWithOutput("--reference-profile-file=", profile)
-
-	rule.Install(profile, "/system/etc/boot-image.bprof")
-	rule.Build("bootFrameworkProfile", "profile boot framework jars")
-	image.profileInstalls = append(image.profileInstalls, rule.Installs()...)
 
 	return profile
 }
