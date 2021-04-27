@@ -46,6 +46,30 @@
       },
       "revId": "aef7fcfa7ec298ee8a8bcb4fd8b622bd2edf8828",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b70153d_a636f50f",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-27T15:39:39Z",
+      "side": 0,
+      "message": "Since you added these checks very recently, it\u0027s up to you to decide if it\u0027s ok to remove them, so +2.\n\nBut I don\u0027t understand this. Some analysis of how it may have happened:\n\n- As far as I know generally dependency-adding methods are supposed to return a list with nil entries when it fails to find modules.\n\n- AddFarVariationDependencies appends a module only if mctx.pause() returns true: https://source.corp.google.com/aosp-master/build/blueprint/module_ctx.go;l\u003d1154-1156, pause() condition was added in https://github.com/google/blueprint/commit/cfa2e91dc44b904fd39d6c57ce4b91b73c8d7180\n\n- pause() may decide to return true or false based on some factors: https://source.corp.google.com/aosp-master/build/blueprint/module_ctx.go;l\u003d1209-1213, but the the relevant case seems to be \"If the dependency is nil it returns true if pausing is supported or false if it is not\", because I\u0027d expect the missing dependency to be nil. Then why would it return false? What does it mean that pause() is not supported?",
+      "parentUuid": "74ba56ce_669ed939",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "aef7fcfa7ec298ee8a8bcb4fd8b622bd2edf8828",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
