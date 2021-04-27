@@ -402,11 +402,18 @@ func (f *flagExporter) addExportedGeneratedHeaders(headers ...android.Path) {
 
 func (f *flagExporter) setProvider(ctx android.ModuleContext) {
 	ctx.SetProvider(FlagExporterInfoProvider, FlagExporterInfo{
-		IncludeDirs:       android.FirstUniquePaths(f.dirs),
+		// Comes from Export_include_dirs property, and those of exported transitive deps
+		IncludeDirs: android.FirstUniquePaths(f.dirs),
+		// Comes from Export_system_include_dirs property, and those of exported transitive deps
 		SystemIncludeDirs: android.FirstUniquePaths(f.systemDirs),
-		Flags:             f.flags,
-		Deps:              f.deps,
-		GeneratedHeaders:  f.headers,
+		// Used in very few places as a one-off way of adding extra defines.
+		Flags: f.flags,
+		// Used sparingly, for extra files that need to be explicitly exported to dependers,
+		// or for phony files to minimize ninja.
+		Deps: f.deps,
+		// For exported generated headers, such as exported aidl headers, proto headers, or
+		// sysprop headers.
+		GeneratedHeaders: f.headers,
 	})
 }
 
@@ -523,6 +530,20 @@ func (handler *staticLibraryBazelHandler) generateBazelBuildActions(ctx android.
 		TransitiveStaticLibrariesForOrdering: android.NewDepSetBuilder(android.TOPOLOGICAL).
 			Direct(outputFilePath).
 			Build(),
+	})
+
+	includes := make(android.Paths, len(ccInfo.Includes))
+	for i, includePath := range ccInfo.Includes {
+		includes[i] = android.PathForBazelOut(ctx, includePath)
+	}
+	systemIncludes := make(android.Paths, len(ccInfo.SystemIncludes))
+	for i, includePath := range ccInfo.SystemIncludes {
+		systemIncludes[i] = android.PathForBazelOut(ctx, includePath)
+	}
+
+	ctx.SetProvider(FlagExporterInfoProvider, FlagExporterInfo{
+		IncludeDirs:       android.FirstUniquePaths(includes),
+		SystemIncludeDirs: android.FirstUniquePaths(systemIncludes),
 	})
 	if i, ok := handler.module.linker.(snapshotLibraryInterface); ok {
 		// Dependencies on this library will expect collectedSnapshotHeaders to
