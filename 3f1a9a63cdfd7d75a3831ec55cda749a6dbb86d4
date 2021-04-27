@@ -115,6 +115,30 @@
       },
       "revId": "3f1a9a63cdfd7d75a3831ec55cda749a6dbb86d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b741c68d_ee5a799a",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-27T13:01:11Z",
+      "side": 1,
+      "message": "I\u0027ll just remove this comment (I don\u0027t mind either an alphabetic or an age-based order)",
+      "parentUuid": "ee3454e7_493bb33a",
+      "range": {
+        "startLine": 174,
+        "startChar": 16,
+        "endLine": 174,
+        "endChar": 23
+      },
+      "revId": "3f1a9a63cdfd7d75a3831ec55cda749a6dbb86d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
