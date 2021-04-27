@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c74fc9e_28344e0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-27T09:56:11Z",
+      "side": 1,
+      "message": "Is https://android-review.googlesource.com/c/platform/build/soong/+/1683881 abandoned ?",
+      "revId": "3f1a9a63cdfd7d75a3831ec55cda749a6dbb86d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "532e06e8_82cc12a0",
         "filename": "android/bazel.go",
         "patchSetId": 1
