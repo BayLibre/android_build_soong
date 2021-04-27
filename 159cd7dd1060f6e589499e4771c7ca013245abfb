@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffb8c21b_843a0bde",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2293,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-27T19:54:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb05df04_c066817e",
+      "revId": "159cd7dd1060f6e589499e4771c7ca013245abfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e67e2e50_a7cac1c7",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-27T19:00:54Z",
       "side": 1,
       "message": "nit: extra space between \"the\" and \"direct\"",
+      "revId": "159cd7dd1060f6e589499e4771c7ca013245abfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92a3c1d0_416f25ce",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2316,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-27T19:54:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e67e2e50_a7cac1c7",
       "revId": "159cd7dd1060f6e589499e4771c7ca013245abfb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
