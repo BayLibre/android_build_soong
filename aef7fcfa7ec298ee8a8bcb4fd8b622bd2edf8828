@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12962a16_4e755157",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-27T14:33:21Z",
+      "side": 0,
+      "message": "Which of the two cases was hit by adding an unknown boot jar, and why?",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "aef7fcfa7ec298ee8a8bcb4fd8b622bd2edf8828",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
