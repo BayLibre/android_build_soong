@@ -22,6 +22,30 @@
       },
       "revId": "a0fd0241b02843d40c7a7145ed084ab1b04cb152",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10d99315_d0b9cfc9",
+        "filename": "bazel/properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-27T03:47:31Z",
+      "side": 1,
+      "message": "Done. \n\nconditions_default actually appears in Android.bp files (https://cs.android.com/search?q\u003dconditions_default%20f:Android.bp\u0026sq\u003d), which Liz added.\n\nIt\u0027s also not purely for resolving issues with exclude_srcs, although that\u0027s its only use case today.",
+      "parentUuid": "4fb39e4d_1780ad31",
+      "range": {
+        "startLine": 224,
+        "startChar": 1,
+        "endLine": 224,
+        "endChar": 42
+      },
+      "revId": "a0fd0241b02843d40c7a7145ed084ab1b04cb152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
