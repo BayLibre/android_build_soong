@@ -37,6 +37,8 @@ var (
 	globalConfigPath      = flag.String("global", "", "path to global configuration file")
 	moduleConfigPath      = flag.String("module", "", "path to module configuration file")
 	outDir                = flag.String("out_dir", "", "path to output directory")
+	usesTargetFiles       = flag.Bool("uses_target_files", false, "whether or not dexpreopt is running on target_files")
+	basePath              = flag.String("base_path", ".", "base path where images and tools are extracted")
 )
 
 type builderContext struct {
@@ -134,32 +136,27 @@ func main() {
 			}
 		}
 	}()
-
+	if *usesTargetFiles {
+		moduleConfig.ManifestPath = android.OptionalPath{}
+		moduleConfig.BuildPath = android.PathForOutput(ctx, "result"+moduleConfig.DexLocation)
+		for i, location := range moduleConfig.PreoptBootClassPathDexLocations {
+			moduleConfig.PreoptBootClassPathDexFiles[i] = android.PathForSource(ctx, *basePath+location)
+		}
+		for i := range moduleConfig.ClassLoaderContexts {
+			for _, v := range moduleConfig.ClassLoaderContexts[i] {
+				v.Host = android.PathForSource(ctx, *basePath+v.Device)
+			}
+		}
+		moduleConfig.EnforceUsesLibraries = false
+		for i, location := range moduleConfig.DexPreoptImageLocationsOnDevice {
+			moduleConfig.DexPreoptImageLocations[i] = *basePath + location
+		}
+	}
 	writeScripts(ctx, globalSoongConfig, globalConfig, moduleConfig, *dexpreoptScriptPath)
 }
 
 func writeScripts(ctx android.BuilderContext, globalSoong *dexpreopt.GlobalSoongConfig,
 	global *dexpreopt.GlobalConfig, module *dexpreopt.ModuleConfig, dexpreoptScriptPath string) {
-	dexpreoptRule, err := dexpreopt.GenerateDexpreoptRule(ctx, globalSoong, global, module)
-	if err != nil {
-		panic(err)
-	}
-
-	installDir := module.BuildPath.InSameDir(ctx, "dexpreopt_install")
-
-	dexpreoptRule.Command().FlagWithArg("rm -rf ", installDir.String())
-	dexpreoptRule.Command().FlagWithArg("mkdir -p ", installDir.String())
-
-	for _, install := range dexpreoptRule.Installs() {
-		installPath := installDir.Join(ctx, strings.TrimPrefix(install.To, "/"))
-		dexpreoptRule.Command().Text("mkdir -p").Flag(filepath.Dir(installPath.String()))
-		dexpreoptRule.Command().Text("cp -f").Input(install.From).Output(installPath)
-	}
-	dexpreoptRule.Command().Tool(globalSoong.SoongZip).
-		FlagWithArg("-o ", "$2").
-		FlagWithArg("-C ", installDir.String()).
-		FlagWithArg("-D ", installDir.String())
-
 	write := func(rule *android.RuleBuilder, file string) {
 		script := &bytes.Buffer{}
 		script.WriteString(scriptHeader)
@@ -195,6 +192,28 @@ func writeScripts(ctx android.BuilderContext, globalSoong *dexpreopt.GlobalSoong
 			panic(err)
 		}
 	}
+	dexpreoptRule, err := dexpreopt.GenerateDexpreoptRule(ctx, globalSoong, global, module)
+	if err != nil {
+		panic(err)
+	}
+	if *usesTargetFiles {
+		write(dexpreoptRule, dexpreoptScriptPath)
+		return
+	}
+	installDir := module.BuildPath.InSameDir(ctx, "dexpreopt_install")
+
+	dexpreoptRule.Command().FlagWithArg("rm -rf ", installDir.String())
+	dexpreoptRule.Command().FlagWithArg("mkdir -p ", installDir.String())
+
+	for _, install := range dexpreoptRule.Installs() {
+		installPath := installDir.Join(ctx, strings.TrimPrefix(install.To, "/"))
+		dexpreoptRule.Command().Text("mkdir -p").Flag(filepath.Dir(installPath.String()))
+		dexpreoptRule.Command().Text("cp -f").Input(install.From).Output(installPath)
+	}
+	dexpreoptRule.Command().Tool(globalSoong.SoongZip).
+		FlagWithArg("-o ", "$2").
+		FlagWithArg("-C ", installDir.String()).
+		FlagWithArg("-D ", installDir.String())
 
 	// The written scripts will assume the input is $1 and the output is $2
 	if module.DexPath.String() != "$1" {

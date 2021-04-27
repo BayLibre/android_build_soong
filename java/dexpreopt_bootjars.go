@@ -244,6 +244,9 @@ type bootImageConfig struct {
 	// Subdirectory where the image files are installed.
 	installDirOnHost string
 
+	// Subdirectory where the image files on device are installed.
+	installDirOnDevice string
+
 	// A list of (location, jar) pairs for the Java modules in this image.
 	modules android.ConfiguredJarList
 
@@ -273,8 +276,9 @@ type bootImageVariant struct {
 	dexLocationsDeps []string // for the dependency images and in this image
 
 	// Paths to image files.
-	imagePathOnHost android.OutputPath  // first image file
-	imagesDeps      android.OutputPaths // all files
+	imagePathOnHost       android.OutputPath  // first image file
+	imagesDeps            android.OutputPaths // all files
+	imageLocationOnDevice string
 
 	// Only for extensions, paths to the primary boot images.
 	primaryImages android.OutputPath
@@ -366,6 +370,13 @@ func (image *bootImageVariant) imageLocations() (imageLocations []string) {
 		imageLocations = image.extends.getVariant(image.target).imageLocations()
 	}
 	return append(imageLocations, dexpreopt.PathToLocation(image.imagePathOnHost, image.target.Arch.ArchType))
+}
+
+func (image *bootImageVariant) deviceLocations() (deviceLocations []string) {
+	if image.extends != nil {
+		deviceLocations = image.extends.getVariant(image.target).deviceLocations()
+	}
+	return append(deviceLocations, image.imageLocationOnDevice)
 }
 
 func dexpreoptBootJarsFactory() android.SingletonModule {
