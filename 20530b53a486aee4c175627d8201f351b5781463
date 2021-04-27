@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b124d631_92416632",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-27T11:53:41Z",
+      "side": 1,
+      "message": "this means that not everything is using java_sdk_library yet, right? Is it a lot of work to convert?",
+      "range": {
+        "startLine": 177,
+        "startChar": 4,
+        "endLine": 177,
+        "endChar": 31
+      },
+      "revId": "20530b53a486aee4c175627d8201f351b5781463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4141faa1_3db6dc9b",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-27T11:53:41Z",
+      "side": 1,
+      "message": "What backwards compatibility? Why is it not okay to just pretend it\u0027s already replaced?",
+      "range": {
+        "startLine": 188,
+        "startChar": 42,
+        "endLine": 190,
+        "endChar": 18
+      },
+      "revId": "20530b53a486aee4c175627d8201f351b5781463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd645db3_fc279e5e",
         "filename": "java/bootclasspath.go",
         "patchSetId": 2
@@ -84,6 +130,29 @@
         "startChar": 0,
         "endLine": 193,
         "endChar": 34
+      },
+      "revId": "20530b53a486aee4c175627d8201f351b5781463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3faac99_aa856072",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-27T11:53:41Z",
+      "side": 1,
+      "message": "the stubs provided here not necessarily map 1 to 1 with the contents above, right? What would tell devs they are doing something wrong if they include wrong stubs?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 27
       },
       "revId": "20530b53a486aee4c175627d8201f351b5781463",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
