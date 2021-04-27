@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19688615_ba31864a",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-27T11:05:04Z",
+      "side": 1,
+      "message": "In the latest patch set, I went with a slightly different approach by checking the pretty printed string of the value associated with the default key. If it\u0027s an empty list / not set, print the empty list. Else, print the custom value.",
+      "parentUuid": "b1a9c15d_91687d75",
+      "range": {
+        "startLine": 97,
+        "startChar": 26,
+        "endLine": 97,
+        "endChar": 60
+      },
+      "revId": "9e36902d5971fcaab9b97359cc5c70266b5afa59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a95fd4d9_dc0ba8da",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-27T08:37:21Z",
       "side": 1,
       "message": "Why do you generate an empty list for //conditions:default? So that there are no completely empty select() statements?",
+      "range": {
+        "startLine": 107,
+        "startChar": 19,
+        "endLine": 107,
+        "endChar": 55
+      },
+      "revId": "9e36902d5971fcaab9b97359cc5c70266b5afa59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0cae3a5_2f652e66",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-27T11:05:04Z",
+      "side": 1,
+      "message": "Yep, avoiding errors like:\n\n  ERROR: Analysis of target \u0027//bionic/libc:libc_freebsd_mainlib\u0027 failed; build aborted: Configurable attribute \"srcs\" doesn\u0027t match this configuration (would a default condition help?).\n  Conditions checked:\n   //build/bazel/platforms/arch:arm64\n   //build/bazel/platforms/arch:x86",
+      "parentUuid": "a95fd4d9_dc0ba8da",
       "range": {
         "startLine": 107,
         "startChar": 19,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c131fa3_bd6c6136",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-27T11:05:04Z",
+      "side": 1,
+      "message": "Removed the bool, but went with a slightly different approach by deferring the default condition entry computation later.",
+      "parentUuid": "8f083362_3d1beeb6",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 26
+      },
+      "revId": "9e36902d5971fcaab9b97359cc5c70266b5afa59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e094ffd9_4a27d18d",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0c4807b_fbb3b32b",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-27T11:05:04Z",
+      "side": 1,
+      "message": "I don\u0027t really follow here. These are assigning the variables outside of the function closure scope, which can\u0027t be inlined where they are used.",
+      "parentUuid": "e094ffd9_4a27d18d",
+      "range": {
+        "startLine": 133,
+        "startChar": 3,
+        "endLine": 133,
+        "endChar": 11
+      },
+      "revId": "9e36902d5971fcaab9b97359cc5c70266b5afa59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a3c9546_0af9ab7b",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-04-27T08:37:21Z",
       "side": 1,
       "message": "opt: consider using len() \u003e 0 || len() \u003e 0 instead. It\u0027s a little more straightforward.",
+      "range": {
+        "startLine": 155,
+        "startChar": 33,
+        "endLine": 155,
+        "endChar": 34
+      },
+      "revId": "9e36902d5971fcaab9b97359cc5c70266b5afa59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d83d7eb_06ba8ab2",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-27T11:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a3c9546_0af9ab7b",
       "range": {
         "startLine": 155,
         "startChar": 33,
