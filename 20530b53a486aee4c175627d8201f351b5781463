@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be08f0b3_f9cec34c",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-27T13:36:45Z",
+      "side": 1,
+      "message": "It would be a huge effort to convert as we are talking about things like android_system_stubs_current.",
+      "parentUuid": "b124d631_92416632",
+      "range": {
+        "startLine": 177,
+        "startChar": 4,
+        "endLine": 177,
+        "endChar": 31
+      },
+      "revId": "20530b53a486aee4c175627d8201f351b5781463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4141faa1_3db6dc9b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-27T11:53:41Z",
       "side": 1,
       "message": "What backwards compatibility? Why is it not okay to just pretend it\u0027s already replaced?",
+      "range": {
+        "startLine": 188,
+        "startChar": 42,
+        "endLine": 190,
+        "endChar": 18
+      },
+      "revId": "20530b53a486aee4c175627d8201f351b5781463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3cef0ca_c3d60c2d",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-27T13:36:45Z",
+      "side": 1,
+      "message": "Core platform API has special handling within the ART runtime. It is not clear what the impact will be in S (or in R when S built APEXes are installed in R) if we switch from treating core_platform API as system. That change needs to be done separately from this work.",
+      "parentUuid": "4141faa1_3db6dc9b",
       "range": {
         "startLine": 188,
         "startChar": 42,
@@ -148,6 +196,30 @@
       "writtenOn": "2021-04-27T11:53:41Z",
       "side": 1,
       "message": "the stubs provided here not necessarily map 1 to 1 with the contents above, right? What would tell devs they are doing something wrong if they include wrong stubs?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 27
+      },
+      "revId": "20530b53a486aee4c175627d8201f351b5781463",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f588627b_85a85a9a",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-27T13:36:45Z",
+      "side": 1,
+      "message": "Right now? Nothing as these are being added to allow the prebuilts to be updated and aren\u0027t actually used for anything just yet.\n\nEventually, it will depend on what the \"wrong\" stubs were. If the stubs did not cover all the contents of the bootclasspath_fragment then they will find any attempt to access the code for which no stubs were provided will fail at runtime. Which at the latest should be when they try and run their CTS/MTS tests.\n\nI have raised http://b/186511038 to try and detect at build time if the stubs covered other dex files, e.g. if say framework-wifi passed android_stubs_current.",
+      "parentUuid": "b3faac99_aa856072",
       "range": {
         "startLine": 79,
         "startChar": 0,
