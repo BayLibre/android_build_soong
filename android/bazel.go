@@ -196,7 +196,6 @@ var (
 		"libasync_safe",                 // ruperts@, cc_library_static, 'private/CachedProperty.h' file not found
 		"libc_malloc_debug_backtrace",   // ruperts@, cc_library_static, depends on //system/libbase
 		"libsystemproperties",           // ruperts@, cc_library_static, depends on //system/core/property_service/libpropertyinfoparser
-		"libdl_static",                  // ruperts@, cc_library_static, 'private/CFIShadow.h' file not found
 		"liblinker_main",                // ruperts@, cc_library_static, depends on //system/libbase
 		"liblinker_malloc",              // ruperts@, cc_library_static, depends on //system/logging/liblog:liblog
 		"liblinker_debuggerd_stub",      // ruperts@, cc_library_static, depends on //system/libbase
@@ -211,7 +210,6 @@ var (
 		"libc",              // jingwen@, cc_library, depends on //external/gwp_asan
 		"libc_malloc_debug", // jingwen@, cc_library, fatal error: 'assert.h' file not found
 		"libc_malloc_hooks", // jingwen@, cc_library, fatal error: 'errno.h' file not found
-		"libdl",             // jingwen@, cc_library, ld.lld: error: no input files
 		"libm",              // lberki@, cc_library, compiler error: "Unexpected token in argument list"
 		"libseccomp_policy", // lberki@, cc_library, 'linux/filter.h' not found, caused by missing -isystem bionic/libc/kernel/uapi, dunno where it comes from in Soong
 		"libstdc++",         // jingwen@, cc_library, depends on //external/gwp_asan
