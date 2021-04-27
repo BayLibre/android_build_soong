@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48f8032f_f01ac6f3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-27T14:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2ece0ee_87b51728",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 12
+      },
+      "revId": "178445f3a76f518624763b52b43c5348c4387a7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab45299c_b2e74da4",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-04-27T14:41:23Z",
       "side": 1,
       "message": "Can you add what was the outcome -- a build error?",
+      "revId": "178445f3a76f518624763b52b43c5348c4387a7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bb782c7_31d929f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-27T14:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab45299c_b2e74da4",
       "revId": "178445f3a76f518624763b52b43c5348c4387a7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -71,6 +113,30 @@
       "writtenOn": "2021-04-27T14:41:23Z",
       "side": 1,
       "message": "Remove?",
+      "range": {
+        "startLine": 583,
+        "startChar": 68,
+        "endLine": 583,
+        "endChar": 78
+      },
+      "revId": "178445f3a76f518624763b52b43c5348c4387a7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a661c39_5a57db97",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 583,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-27T14:57:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0be5935a_2a047227",
       "range": {
         "startLine": 583,
         "startChar": 68,
