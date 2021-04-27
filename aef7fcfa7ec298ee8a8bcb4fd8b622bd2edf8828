@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2202cccb_574a88f2",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-27T02:36:31Z",
+      "side": 0,
+      "message": "couldn\u0027t help but to delete the comments:\n- name of lists are now self-documenting\n- \u0027path\u0027 addition seems obvious to me\n- this is virtually a DSL, so I didn\u0027t see the need to have it explained\n\noverall love what you have done with this code. Hope you can accept my disdain for comments :)",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 7
+      },
+      "revId": "aef7fcfa7ec298ee8a8bcb4fd8b622bd2edf8828",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
