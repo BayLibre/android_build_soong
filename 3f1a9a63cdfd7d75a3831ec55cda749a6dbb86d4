@@ -91,6 +91,30 @@
       },
       "revId": "3f1a9a63cdfd7d75a3831ec55cda749a6dbb86d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee3454e7_493bb33a",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-27T12:55:42Z",
+      "side": 1,
+      "message": "One thing I like about adding stuff chronologically (instead of alphabetically) is that it is easy to know what the oldest blockers are (in case they unblock later things)",
+      "parentUuid": "532e06e8_82cc12a0",
+      "range": {
+        "startLine": 174,
+        "startChar": 16,
+        "endLine": 174,
+        "endChar": 23
+      },
+      "revId": "3f1a9a63cdfd7d75a3831ec55cda749a6dbb86d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
