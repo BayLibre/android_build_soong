@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "414444bd_bb102a73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-27T13:00:32Z",
+      "side": 1,
+      "message": "Hopefully sorting won\u0027t be necessary again, but the mix of sort+removal made it a bit difficult to id what was removed vs just sorted when droid started failing",
+      "revId": "acfff0ca01cdde1d1013d9e207c619517c2dc93f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
