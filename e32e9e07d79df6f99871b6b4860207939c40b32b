@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c23037d_af63c4ba",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-27T12:30:58Z",
+      "side": 1,
+      "message": "You probably want to remove this comment eventually",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 33
+      },
+      "revId": "e32e9e07d79df6f99871b6b4860207939c40b32b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46cc4f24_a1ba8ce5",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-27T12:30:58Z",
+      "side": 1,
+      "message": "that works, too",
+      "parentUuid": "3c131fa3_bd6c6136",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 26
+      },
+      "revId": "9e36902d5971fcaab9b97359cc5c70266b5afa59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e094ffd9_4a27d18d",
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "I don\u0027t really follow here. These are assigning the variables outside of the function closure scope, which can\u0027t be inlined where they are used.",
       "parentUuid": "e094ffd9_4a27d18d",
+      "range": {
+        "startLine": 133,
+        "startChar": 3,
+        "endLine": 133,
+        "endChar": 11
+      },
+      "revId": "9e36902d5971fcaab9b97359cc5c70266b5afa59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9b2cac0_0eba46e3",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-27T12:30:58Z",
+      "side": 1,
+      "message": "I don\u0027t know what I was thinking",
+      "parentUuid": "f0c4807b_fbb3b32b",
       "range": {
         "startLine": 133,
         "startChar": 3,
