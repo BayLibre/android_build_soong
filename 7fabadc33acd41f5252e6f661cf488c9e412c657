@@ -50,6 +50,24 @@
       "message": "What\u0027s the status on this one? Can we submit it?",
       "revId": "7fabadc33acd41f5252e6f661cf488c9e412c657",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a14e22a1_36cd4ee9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-27T12:47:36Z",
+      "side": 1,
+      "message": "Not as such, because this removes note_memtag_heap_*, which shouldn\u0027t be removed.\n\nThis is superseded by aosp/1687871, which is itself held up by Jin\u0027s exclude_srcs fixes (I think, I\u0027m in the process of verifying it)\n\nI\u0027ll abandon this and submit that one as soon as Jin\u0027s change is in.",
+      "parentUuid": "63c6ddeb_ef275937",
+      "revId": "7fabadc33acd41f5252e6f661cf488c9e412c657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
