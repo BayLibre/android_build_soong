@@ -94,6 +94,7 @@ func TestBootclasspathFragments(t *testing.T) {
 		bootclasspath_fragment {
 			name: "art-bootclasspath-fragment",
 			image_name: "art",
+			contents: ["baz", "quuz"],
 			apex_available: [
 				"com.android.art",
 			],
@@ -405,6 +406,7 @@ func TestBootclasspathFragmentInPrebuiltArtApex(t *testing.T) {
 		prebuilt_bootclasspath_fragment {
 			name: "mybootclasspathfragment",
 			image_name: "art",
+			contents: ["foo", "bar"],
 			apex_available: [
 				"com.android.art",
 			],
