@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cda2ade_7b41b5c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-27T07:22:20Z",
+      "side": 1,
+      "message": "Is glob handling in expandSrcsForBazel() still necessary? I guess yes, because Blueprint files do contain globs?",
+      "revId": "882bcc1c1cf4af1c3712c7d9c4fea315a8a8d08d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
