@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb05df04_c066817e",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2293,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-27T19:00:54Z",
+      "side": 1,
+      "message": "I find this a bit confusing; this is if there\u0027s two different modules with the same module name as part of the dependencies of the current module? When does this typically happen? (Is there no other validation to prevent this from happening earlier?\n\nPerhaps leave an explanatory comment here?",
+      "revId": "159cd7dd1060f6e589499e4771c7ca013245abfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e67e2e50_a7cac1c7",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2316,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-27T19:00:54Z",
+      "side": 1,
+      "message": "nit: extra space between \"the\" and \"direct\"",
+      "revId": "159cd7dd1060f6e589499e4771c7ca013245abfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
