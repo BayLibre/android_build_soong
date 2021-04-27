@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cc24fcf_ca95c05c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-27T12:47:06Z",
+      "side": 1,
+      "message": "Update: aosp/1684590 is confirmed to fix droid and dist so submitting this as soon as that one gets submitted.",
+      "revId": "3f1a9a63cdfd7d75a3831ec55cda749a6dbb86d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "532e06e8_82cc12a0",
