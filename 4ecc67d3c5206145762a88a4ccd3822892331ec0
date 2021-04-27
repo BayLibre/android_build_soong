@@ -51,6 +51,24 @@
       "message": "Liz should probably review this",
       "revId": "4ecc67d3c5206145762a88a4ccd3822892331ec0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7e331a5_de4167b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-27T11:14:54Z",
+      "side": 1,
+      "message": "Sure! Liz, please feel free to submit this if it gets a +2 from you.",
+      "parentUuid": "efcf4d75_3bb8867c",
+      "revId": "4ecc67d3c5206145762a88a4ccd3822892331ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
