@@ -130,9 +130,10 @@ type ModuleConfig struct {
 	ProvidesUsesLibrary            string       // library name (usually the same as module name)
 	ClassLoaderContexts            ClassLoaderContextMap
 
-	Archs                   []android.ArchType
-	DexPreoptImagesDeps     []android.OutputPaths
-	DexPreoptImageLocations []string
+	Archs                         []android.ArchType
+	DexPreoptImagesDeps           []android.OutputPaths
+	DexPreoptImageLocations       []string
+	DexPreoptImageDeviceLocations []string // virtual location of boot image path on the device without arch
 
 	PreoptBootClassPathDexFiles     android.Paths // file paths of boot class path files
 	PreoptBootClassPathDexLocations []string      // virtual locations of boot class path files

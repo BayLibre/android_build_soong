@@ -85,6 +85,7 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 		frameworkModules := global.BootJars.RemoveList(artModules)
 
 		artSubdir := "apex/art_boot_images/javalib"
+		artDeviceSubDir := "apex/com.android.art/javalib"
 		frameworkSubdir := "system/framework"
 
 		// ART config for the primary boot image in the ART apex.
@@ -93,6 +94,7 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 			name:          artBootImageName,
 			stem:          "boot",
 			installSubdir: artSubdir,
+			deviceSubdir:  artDeviceSubDir,
 			modules:       artModules,
 		}
 
@@ -103,6 +105,7 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 			name:          frameworkBootImageName,
 			stem:          "boot",
 			installSubdir: frameworkSubdir,
+			deviceSubdir:  frameworkSubdir,
 			modules:       frameworkModules,
 		}
 
@@ -137,6 +140,7 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 					images:          imageDir.Join(ctx, imageName),
 					imagesDeps:      c.moduleFiles(ctx, imageDir, ".art", ".oat", ".vdex"),
 					dexLocations:    c.modules.DevicePaths(ctx.Config(), target.Os),
+					deviceLocation:  "/" + c.deviceSubdir + "/" + imageName,
 				}
 				variant.dexLocationsDeps = variant.dexLocations
 				c.variants = append(c.variants, variant)
