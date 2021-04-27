@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47b92873_b0e5329b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-27T12:48:05Z",
+      "side": 1,
+      "message": "Yep, it\u0027s a subset of this (and I managed not to send out the reply to your question on that review thread, sorrry)",
+      "parentUuid": "6c74fc9e_28344e0e",
+      "revId": "3f1a9a63cdfd7d75a3831ec55cda749a6dbb86d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "532e06e8_82cc12a0",
