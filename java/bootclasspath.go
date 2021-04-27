@@ -75,7 +75,7 @@ func addDependencyOntoApexVariants(ctx android.BottomUpMutatorContext, propertyN
 // source and prebuilt modules are available.
 func addDependencyOntoApexModulePair(ctx android.BottomUpMutatorContext, apex string, name string, tag blueprint.DependencyTag) {
 	var variations []blueprint.Variation
-	if apex != "platform" {
+	if apex != "platform" && apex != "system_ext" {
 		// Pick the correct apex variant.
 		variations = []blueprint.Variation{
 			{Mutator: "apex", Variation: apex},
@@ -124,6 +124,9 @@ type ApexVariantReference struct {
 	//
 	// If this is not specified then it defaults to "platform" which will cause a dependency to be
 	// added to the module's platform variant.
+	//
+	// A value of system_ext should be used for any module that will be part of the system_ext
+	// partition.
 	Apex *string
 
 	// The name of the module.
