@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b32b458_39151d0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-27T09:50:28Z",
+      "side": 1,
+      "message": "Update: there is a second breakage in the full build that is triggered by:\n\nTARGET_PRODUCT\u003daosp_arm64 TARGET_BUILD_VARIANT\u003duserdebug USE_BAZEL_ANALYSIS\u003d1 m nothing\nprebuilts/build-tools/linux-x86/bin/ninja -f out/combined-aosp_arm64.ninja  out/target/product/generic_arm64/obj/EXECUTABLES/init_first_stage_intermediates/LINKED/init\n\nInvestigating. I thought running the full build to completion is overkill, but apparently, that\u0027s not the case.",
+      "revId": "3f1a9a63cdfd7d75a3831ec55cda749a6dbb86d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "532e06e8_82cc12a0",
