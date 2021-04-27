@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fae57edd_e0c10aeb",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-27T18:56:33Z",
+      "side": 1,
+      "message": "optional: could use flagExporterInfoFromCcInfo (https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/linkable.go;l\u003d280;drc\u003d1f3f130e29a37898b8fbd279d6a334bb7933b129) here instead, though it may need the FirstUniquePaths bit",
+      "range": {
+        "startLine": 535,
+        "startChar": 0,
+        "endLine": 547,
+        "endChar": 3
+      },
+      "revId": "92201687b8b63e6e80cc9beaa343f3d5574b1195",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
