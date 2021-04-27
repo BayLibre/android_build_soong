@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1a9c15d_91687d75",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-27T08:37:21Z",
+      "side": 1,
+      "message": "WDYT about either:\n\n1. Mandating the default key in the select map so that you don\u0027t have to handle the two cases of having the default key or not\n2. Passing in a (default value, select map) tuple instead\n\nThat way, you could avoid thinking about whether the map contains a default value or not.",
+      "range": {
+        "startLine": 97,
+        "startChar": 26,
+        "endLine": 97,
+        "endChar": 60
+      },
+      "revId": "9e36902d5971fcaab9b97359cc5c70266b5afa59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a95fd4d9_dc0ba8da",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-27T08:37:21Z",
+      "side": 1,
+      "message": "Why do you generate an empty list for //conditions:default? So that there are no completely empty select() statements?",
+      "range": {
+        "startLine": 107,
+        "startChar": 19,
+        "endLine": 107,
+        "endChar": 55
+      },
+      "revId": "9e36902d5971fcaab9b97359cc5c70266b5afa59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f083362_3d1beeb6",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-27T08:37:21Z",
+      "side": 1,
+      "message": "nit: why not check the existence of the map key here instead of using an auxiliary Boolean variable? That looks a bit more intuitive, i.e.\n\nif _, ok :\u003d map[conditionsDefaultKey]; !ok {\n  ...\n}",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 26
+      },
+      "revId": "9e36902d5971fcaab9b97359cc5c70266b5afa59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e094ffd9_4a27d18d",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-27T08:37:21Z",
+      "side": 1,
+      "message": "nit: inline these variables",
+      "range": {
+        "startLine": 133,
+        "startChar": 3,
+        "endLine": 133,
+        "endChar": 11
+      },
+      "revId": "9e36902d5971fcaab9b97359cc5c70266b5afa59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a3c9546_0af9ab7b",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-27T08:37:21Z",
+      "side": 1,
+      "message": "opt: consider using len() \u003e 0 || len() \u003e 0 instead. It\u0027s a little more straightforward.",
+      "range": {
+        "startLine": 155,
+        "startChar": 33,
+        "endLine": 155,
+        "endChar": 34
+      },
+      "revId": "9e36902d5971fcaab9b97359cc5c70266b5afa59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
