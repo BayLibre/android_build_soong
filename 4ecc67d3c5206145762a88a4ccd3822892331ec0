@@ -16,6 +16,24 @@
       "message": "Wow, this was the cause of the ld.lld issue? The mind boggles.",
       "revId": "4ecc67d3c5206145762a88a4ccd3822892331ec0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12661961_f1958609",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-27T09:54:19Z",
+      "side": 1,
+      "message": "This is a partial fix, which is why I didn\u0027t make any denylist changes yet.",
+      "parentUuid": "796d0de7_a758d1e7",
+      "revId": "4ecc67d3c5206145762a88a4ccd3822892331ec0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
