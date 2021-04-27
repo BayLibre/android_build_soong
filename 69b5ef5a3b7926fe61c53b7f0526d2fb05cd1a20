@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f79b4a3a_9c2a3d78",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-27T15:47:40Z",
+      "side": 1,
+      "message": "It may be worth factoring out to a function (together with the comment), and leaving just `if ... { return }` here and in the other place.",
+      "range": {
+        "startLine": 311,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 2
+      },
+      "revId": "69b5ef5a3b7926fe61c53b7f0526d2fb05cd1a20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
