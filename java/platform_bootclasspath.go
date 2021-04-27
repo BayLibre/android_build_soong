@@ -196,7 +196,7 @@ func (b *platformBootclasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 		return
 	}
 
-	b.generateBootImageBuildActions(ctx, updatableModules)
+	b.generateBootImageBuildActions(ctx, nonUpdatableModules, updatableModules)
 }
 
 // checkNonUpdatableModules ensures that the non-updatable modules supplied are not part of an
@@ -410,7 +410,7 @@ func (b *platformBootclasspathModule) generateHiddenApiMakeVars(ctx android.Make
 }
 
 // generateBootImageBuildActions generates ninja rules related to the boot image creation.
-func (b *platformBootclasspathModule) generateBootImageBuildActions(ctx android.ModuleContext, updatableModules []android.Module) {
+func (b *platformBootclasspathModule) generateBootImageBuildActions(ctx android.ModuleContext, nonUpdatableModules, updatableModules []android.Module) {
 	// Force the GlobalSoongConfig to be created and cached for use by the dex_bootjars
 	// GenerateSingletonBuildActions method as it cannot create it for itself.
 	dexpreopt.GetGlobalSoongConfig(ctx)
@@ -431,5 +431,17 @@ func (b *platformBootclasspathModule) generateBootImageBuildActions(ctx android.
 	// Generate the updatable bootclasspath packages rule.
 	generateUpdatableBcpPackagesRule(ctx, imageConfig, updatableModules)
 
+	// Copy non-updatable module dex jars to their predefined locations..
+	copyBootJarsToPredefinedLocations(ctx, nonUpdatableModules, imageConfig.modules, imageConfig.dexPaths)
+
+	// Copy updatable module dex jars to their predefined locations..
+	copyUpdatableBootJars(ctx, updatableModules)
+
 	dumpOatRules(ctx, imageConfig)
+}
+
+// Generate commands that will copy updatable boot jars to predefined paths in the global config.
+func copyUpdatableBootJars(ctx android.ModuleContext, bootModules []android.Module) {
+	config := GetUpdatableBootConfig(ctx)
+	copyBootJarsToPredefinedLocations(ctx, bootModules, config.modules, config.dexPaths)
 }

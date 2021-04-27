@@ -340,6 +340,15 @@ func (b *BootclasspathFragmentModule) GenerateAndroidBuildActions(ctx android.Mo
 		b.bootclasspathImageNameContentsConsistencyCheck(ctx)
 	}
 
+	// Gather the bootclasspath fragment's contents.
+	var contents []android.Module
+	ctx.VisitDirectDeps(func(module android.Module) {
+		tag := ctx.OtherModuleDependencyTag(module)
+		if IsBootclasspathFragmentContentDepTag(tag) {
+			contents = append(contents, module)
+		}
+	})
+
 	// Perform hidden API processing.
 	b.generateHiddenAPIBuildActions(ctx)
 
@@ -347,6 +356,8 @@ func (b *BootclasspathFragmentModule) GenerateAndroidBuildActions(ctx android.Mo
 	if SkipDexpreoptBootJars(ctx) {
 		return
 	}
+
+	b.generateBootImageBuildActions(ctx, contents)
 
 	// Force the GlobalSoongConfig to be created and cached for use by the dex_bootjars
 	// GenerateSingletonBuildActions method as it cannot create it for itself.
@@ -397,6 +408,40 @@ func (b *BootclasspathFragmentModule) generateHiddenAPIBuildActions(ctx android.
 	// Store the information for use by other modules.
 	bootclasspathApiInfo := bootclasspathApiInfo{stubJarsByKind: stubJarsByKind}
 	ctx.SetProvider(bootclasspathApiInfoProvider, bootclasspathApiInfo)
+}
+
+// generateBootImageBuildActions generates ninja rules to create the boot image if required for this
+// module.
+func (b *BootclasspathFragmentModule) generateBootImageBuildActions(ctx android.ModuleContext, contents []android.Module) {
+	global := dexpreopt.GetGlobalConfig(ctx)
+	if !shouldBuildBootImages(ctx.Config(), global) {
+		return
+	}
+
+	// Bootclasspath fragment modules that are not preferred do not produce a boot image.
+	if !isActiveModule(b) {
+		return
+	}
+
+	// Bootclasspath fragment modules that have no image_name property do not produce a boot image.
+	imageConfig := b.getImageConfig(ctx)
+	if imageConfig == nil {
+		return
+	}
+
+	// Bootclasspath fragment modules that are for the platform do not produce a boot image.
+	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+	if apexInfo.IsForPlatform() {
+		return
+	}
+
+	// Bootclasspath fragment modules that are versioned do not produce a boot image.
+	if android.IsModuleInVersionedSdk(b) {
+		return
+	}
+
+	// Copy content module dex jars to their predefined locations.
+	copyBootJarsToPredefinedLocations(ctx, contents, imageConfig.modules, imageConfig.dexPaths)
 }
 
 type bootclasspathFragmentMemberType struct {
