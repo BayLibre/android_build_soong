@@ -22,6 +22,30 @@
       },
       "revId": "44d15940818185ff796227193a72b0a108c2d439",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d5b12c1_28c3027c",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-28T10:40:00Z",
+      "side": 1,
+      "message": "Ack. I would usually agree but a following CL just removes this code altogether so I don\u0027t think it is worth cleaning this up now.",
+      "parentUuid": "1b2cf4db_6281b38f",
+      "range": {
+        "startLine": 904,
+        "startChar": 0,
+        "endLine": 906,
+        "endChar": 77
+      },
+      "revId": "44d15940818185ff796227193a72b0a108c2d439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
