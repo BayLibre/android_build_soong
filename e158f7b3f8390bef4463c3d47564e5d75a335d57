@@ -1,0 +1,314 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fb0308c_070d568f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-28T14:39:37Z",
+      "side": 1,
+      "message": "Can you make it into a more formal test? I mean some reproducible sequence of commands. It will be useful to test the future CLs as well.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c9046f2_4bfe5ca2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-28T14:39:37Z",
+      "side": 1,
+      "message": "Hi, sorry again for the slow review!\n\nI\u0027m a bit nit-picky on the naming in my comments, but this is because I have seen this code evolve and deteriorate into really confusing naming after a series of rewrites (most of which I did myself). It\u0027s not your fault, but I suggest that you do a few CLs preceding this one to do some renaming and prepare the code to the introduction of on-device paths. There is symmetry between on-host and on-device paths, so there should be symmetry in the names as well.\n\nSo, I suggest:\n- first prepare a few CLs that rename various image paths to have the word \"OnHost\" in them (see the comments below that spot particular names that should be changed)\n- then do this CL that introduces symmetric \"OnDevice\" paths\n\nThe other general request is, as you add more logic to handle dexpreopt of unbundled partition, please add extended comments that explain it. You can have one long comment some place and refer to it in other places to avoid duplication. It is also fine to do in a follow-up CL.\n\nFinally, there is a need for some reproducible way to test your work: either a sequence of shell commands or a script that you would mention in the \u0027Test:\u0027 field. I\u0027m assuming here that you\u0027ll want to test the same thing in many commits (like the logcat grepping command that I run to see rejected dexpreopt at boot).\n",
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e07e8b47_772728e6",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-28T14:39:37Z",
+      "side": 1,
+      "message": "Can you comment the other field as well (DexPreoptImageLocations) with an example of both paths in a comment?\n\nActually, can you rename DexPreoptImageLocations to DexPreoptImageHostLocations for symmetry?",
+      "range": {
+        "startLine": 136,
+        "startChar": 39,
+        "endLine": 136,
+        "endChar": 105
+      },
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "229b3459_03f93c86",
+        "filename": "dexpreopt/dexpreopt_gen/dexpreopt_gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-28T14:39:37Z",
+      "side": 1,
+      "message": "Please add a comment what \"target files\" and \"base path\" are and in which case they are used, with some explanation about dexpreopt of an unbundled partition and so on. (You can add one long comment and reference it from other places if needed.)",
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7184f8e_dadaddf8",
+        "filename": "dexpreopt/dexpreopt_gen/dexpreopt_gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-28T14:39:37Z",
+      "side": 1,
+      "message": "Add a comment what this case is doing/not doing.",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 200,
+        "endChar": 43
+      },
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb1a0e35_83738272",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-28T14:39:37Z",
+      "side": 1,
+      "message": "Can you rename this to deviceImageLocations, and the other var to hostImageLocations?",
+      "range": {
+        "startLine": 188,
+        "startChar": 1,
+        "endLine": 188,
+        "endChar": 16
+      },
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f14d0236_ecd7fb65",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-28T14:39:37Z",
+      "side": 1,
+      "message": "Can you rename it to \u0027installDirOnHost\u0027, and \u0027deviceSubdir\u0027 as \u0027installDirOnDevice\u0027?",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 245,
+        "endChar": 14
+      },
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0262d090_6565c1ba",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-28T14:39:37Z",
+      "side": 1,
+      "message": "on",
+      "range": {
+        "startLine": 247,
+        "startChar": 39,
+        "endLine": 247,
+        "endChar": 41
+      },
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d187df0_5430ab58",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-28T14:39:37Z",
+      "side": 1,
+      "message": "Is this named incorrectly? Should it be \u0027imagePathOnHost\u0027? Can you rename it please (in a separate CL preceding this one)?",
+      "range": {
+        "startLine": 279,
+        "startChar": 1,
+        "endLine": 279,
+        "endChar": 7
+      },
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcd6cbdf_e2b78515",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-28T14:39:37Z",
+      "side": 1,
+      "message": "And then this one should be named \u0027imagePathOnDevice\u0027. It should be a real path with the arch subdirectory to match \u0027imagePathOnHost\u0027.",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 15
+      },
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8254d947_ae32cc30",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-28T14:39:37Z",
+      "side": 1,
+      "message": "Instead of adding a new function with very similar structure, can you make imageLocations() return two values? AFAICT they are always used together.",
+      "range": {
+        "startLine": 376,
+        "startChar": 31,
+        "endLine": 376,
+        "endChar": 46
+      },
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "023b2345_84c6cbed",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-28T14:39:37Z",
+      "side": 1,
+      "message": "Once you rename this to \u0027imagePathOnDevice\u0027 and make a real path rather than location, use dexpreopt.PathToLocation() to get the location from it.",
+      "range": {
+        "startLine": 380,
+        "startChar": 32,
+        "endLine": 380,
+        "endChar": 52
+      },
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb760a60_7b213175",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-28T14:39:37Z",
+      "side": 1,
+      "message": "Can you rename this to \u0027artDirOnHost\u0027, and the new var to \u0027artDirOnDevice\u0027?",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 11
+      },
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "687c7195_6d7b1732",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-28T14:39:37Z",
+      "side": 1,
+      "message": "Please make it a real on-device path with subdirectory.\nUse filepath.Join to concatenate path components.",
+      "range": {
+        "startLine": 143,
+        "startChar": 22,
+        "endLine": 143,
+        "endChar": 61
+      },
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
