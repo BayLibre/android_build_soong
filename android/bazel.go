@@ -205,7 +205,6 @@ var (
 
 		// Includes not found
 		"libbionic_tests_headers_posix", // ruperts@, cc_library_static, 'dirent.h' not found
-		"libseccomp_policy",             // jingwen@, cc_library, 'linux/filter.h' not found, missing -isystem bionic/libc/kernel/uapi/asm-arm, probably due to us not handling arch { ... { export_system_include_dirs } } correctly
 		"note_memtag_heap_async",        // lberki@, cc_library_static, error: feature.h not found, missing -isystem bionic/libc/include through the libc/libm/libdl default dependencies if system_shared_libs unset
 		"note_memtag_heap_sync",         // lberki@, cc_library_static, error: feature.h not found, missing -isystem bionic/libc/include through the libc/libm/libdl default dependencies if system_shared_libs unset
 
