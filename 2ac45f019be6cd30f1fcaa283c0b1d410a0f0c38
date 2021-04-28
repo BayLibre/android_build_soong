@@ -52,6 +52,24 @@
       "parentUuid": "a05dd674_1662f1c8",
       "revId": "2ac45f019be6cd30f1fcaa283c0b1d410a0f0c38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf30e434_82d9372d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-28T11:24:56Z",
+      "side": 1,
+      "message": "An interesting article. Thanks for the link.",
+      "parentUuid": "75c01475_bc5edd0c",
+      "revId": "2ac45f019be6cd30f1fcaa283c0b1d410a0f0c38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
