@@ -16,6 +16,23 @@
       "message": "David and Naveen, Please review this change. ",
       "revId": "83ebf23a0dd4eb0c6fb87c41e08524f707eb8f90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33ef1c6_54a621a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1013003
+      },
+      "writtenOn": "2021-04-28T23:23:02Z",
+      "side": 1,
+      "message": "Sorry for the delay.  I don\u0027t mind it - but do you really want to have such for a specific vendor\u0027s module class?",
+      "revId": "83ebf23a0dd4eb0c6fb87c41e08524f707eb8f90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
