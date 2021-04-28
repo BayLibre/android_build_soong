@@ -2029,7 +2029,8 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// the same library in the system partition, thus effectively sharing the same libraries
 	// across the APEX boundary. For unbundled APEX, all the gathered files are actually placed
 	// in the APEX.
-	a.linkToSystemLib = !ctx.Config().UnbundledBuild() && a.installable() && !proptools.Bool(a.properties.Use_vendor)
+	unbundled := ctx.Config().UnbundledBuild() || ctx.Config().UnbundledBuildApps()
+	a.linkToSystemLib = !unbundled && a.installable() && !proptools.Bool(a.properties.Use_vendor)
 
 	// APEXes targeting other than system/system_ext partitions use vendor/product variants.
 	// So we can't link them to /system/lib libs which are core variants.
