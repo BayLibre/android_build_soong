@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a08b3358_bbb09037",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-28T10:09:42Z",
+      "side": 1,
+      "message": "mixed_libc failure looks legit, can repro locally.\n\nFigured that `asflags` aren\u0027t handled properly as compile opts for mixed builds to work. Filed b/186615213",
+      "revId": "4dd77e0ec62a01cdecd75b8999fc8d3987519c12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
