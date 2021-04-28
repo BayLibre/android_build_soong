@@ -33,6 +33,23 @@
       "message": "yay!",
       "revId": "667bb27363d2e85f5b3a1f428601037247d9baa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "035281bd_9c649277",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-04-28T12:41:27Z",
+      "side": 1,
+      "message": "thanks!! I was hoping to do this yesterday when i got distracted by sheriff-ing duties",
+      "revId": "667bb27363d2e85f5b3a1f428601037247d9baa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
