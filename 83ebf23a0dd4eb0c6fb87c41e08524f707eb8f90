@@ -33,6 +33,24 @@
       "message": "Sorry for the delay.  I don\u0027t mind it - but do you really want to have such for a specific vendor\u0027s module class?",
       "revId": "83ebf23a0dd4eb0c6fb87c41e08524f707eb8f90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2592e82_9b2b2798",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-28T23:36:42Z",
+      "side": 1,
+      "message": "For something as widely used as these modules are and for such a tiny implementation I have no problem with a vendor specific module type.",
+      "parentUuid": "d33ef1c6_54a621a0",
+      "revId": "83ebf23a0dd4eb0c6fb87c41e08524f707eb8f90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
