@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d75f599_095c81cf",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-28T21:15:18Z",
+      "side": 1,
+      "message": "Thank you! Explicitly calling out that at least one stubs_lib must be specified to cover provided APIs is what I alluded to.. sorry should\u0027ve been more clear.",
+      "parentUuid": "472de7fc_0c261681",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 59
+      },
+      "revId": "02c6b3b1161c8d1e51818cc0cbe48ef27d9c85fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31b04122_e90e3fd2",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "It is really just a way to group properties relating to the normal apis, just like core_platform_api is a way to group properties relating to the core platform api. If I did add just Stub_libs then I would be unable to reuse the structure for use with core_platform_api. Instead I would have to add Core_platform_stub_libs.\n\nPast experience, e.g. with java_sdk_library, shows that this pattern does not extend well and you end up with a whole set of different prefixes, e.g. stub_..., impl_... which makes it hard to be consistent and reuse code.\n\nWhile I don\u0027t know that I will need additional properties in here I have designed it so that it will be easy to add them in if and when we need to do so.",
       "parentUuid": "31b04122_e90e3fd2",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 4
+      },
+      "revId": "02c6b3b1161c8d1e51818cc0cbe48ef27d9c85fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbdc5efa_b6c75da9",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-28T21:15:18Z",
+      "side": 1,
+      "message": "I guess once we remove core_platform_api we could then inline the properties, and reading bootclasspath_fragment{} definitions would be more straightforward with just \"stub_libs\".",
+      "parentUuid": "3ac4421a_895e712b",
       "range": {
         "startLine": 184,
         "startChar": 1,
