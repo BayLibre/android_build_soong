@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cfa1323_76f09b2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-28T10:12:21Z",
+      "side": 1,
+      "message": "Wow, a problem disappearing just like that. :D ",
+      "revId": "2ac45f019be6cd30f1fcaa283c0b1d410a0f0c38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
