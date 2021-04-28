@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1080cc5f_3501bb91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-28T08:50:25Z",
+      "side": 1,
+      "message": "PTAL. I had to add the stub properties to coverage as when coverage is enabled we need to add \"jacocoagent\" and \"jacoco-stubs\" to the art-bootclasspath-fragment.",
+      "revId": "b07ae74b1475d804334d4eac75100e08bcf5c4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
