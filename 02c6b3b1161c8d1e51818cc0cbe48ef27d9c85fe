@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "472de7fc_0c261681",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-28T21:06:21Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure what you are expecting but have updated it to try and address this.",
+      "parentUuid": "4439493b_eae316d9",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 59
+      },
+      "revId": "02c6b3b1161c8d1e51818cc0cbe48ef27d9c85fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31b04122_e90e3fd2",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ac4421a_895e712b",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-28T21:06:21Z",
+      "side": 1,
+      "message": "It is really just a way to group properties relating to the normal apis, just like core_platform_api is a way to group properties relating to the core platform api. If I did add just Stub_libs then I would be unable to reuse the structure for use with core_platform_api. Instead I would have to add Core_platform_stub_libs.\n\nPast experience, e.g. with java_sdk_library, shows that this pattern does not extend well and you end up with a whole set of different prefixes, e.g. stub_..., impl_... which makes it hard to be consistent and reuse code.\n\nWhile I don\u0027t know that I will need additional properties in here I have designed it so that it will be easy to add them in if and when we need to do so.",
+      "parentUuid": "31b04122_e90e3fd2",
+      "range": {
+        "startLine": 184,
+        "startChar": 1,
+        "endLine": 184,
+        "endChar": 4
+      },
+      "revId": "02c6b3b1161c8d1e51818cc0cbe48ef27d9c85fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e84c32c_30874ef7",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-04-28T16:42:24Z",
       "side": 1,
       "message": "nit: for each *relevant* SdkKind\n\nThe code below doesn\u0027t and not expected to go through all SdkKinds.",
+      "range": {
+        "startLine": 190,
+        "startChar": 57,
+        "endLine": 190,
+        "endChar": 81
+      },
+      "revId": "02c6b3b1161c8d1e51818cc0cbe48ef27d9c85fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b52cc91_a3eab59a",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-28T21:06:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e84c32c_30874ef7",
       "range": {
         "startLine": 190,
         "startChar": 57,
