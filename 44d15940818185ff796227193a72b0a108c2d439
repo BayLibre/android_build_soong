@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b2cf4db_6281b38f",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-28T10:37:15Z",
+      "side": 1,
+      "message": "It\u0027s a bit difficult to understand that this code is using updatableModules as a set and shrinks the set on each iteration, propagating feedback into loop header.\n\nI\u0027d rather rewrite it in a way similar to getBootJar() to populate a preallocated array of len(updatableModules) and if the entry is non-nil (already set), just don\u0027t do anything (to preserve current behavior), or maybe give an error.\n\nBut this is for a follow-up CL anyway.\n\nFor this CL, can you rename updatableModules to updatableBootJars (as otherwise the naming is confusing as it suggests both slices are module lists) and use the same name for modules here and updatableModules in generateUpdatableBcpPackagesRule?",
+      "range": {
+        "startLine": 904,
+        "startChar": 0,
+        "endLine": 906,
+        "endChar": 77
+      },
+      "revId": "44d15940818185ff796227193a72b0a108c2d439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
