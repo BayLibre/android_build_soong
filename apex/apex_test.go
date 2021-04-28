@@ -703,9 +703,13 @@ func TestApexManifest(t *testing.T) {
 	`)
 
 	module := ctx.ModuleForTests("myapex", "android_common_myapex_image")
-	args := module.Rule("apexRule").Args
-	if manifest := args["manifest"]; manifest != module.Output("apex_manifest.pb").Output.String() {
-		t.Error("manifest should be apex_manifest.pb, but " + manifest)
+	// Make sure fingerprint is calculated for APEX
+	apexWithoutFingerprintRule := module.Rule("apexWithoutFingerprintRule")
+	ensureContains(t, apexWithoutFingerprintRule.Output.String(), "unsigned.without_fingerprint")
+	appendFingerprint := module.Rule("appendFingerprint")
+	ensureContains(t, appendFingerprint.Output.String(), "apex_manifest_with_fingerprint.pb")
+	if manifest := module.Rule("apexRule").Args["manifest"]; manifest != module.Output("apex_manifest_with_fingerprint.pb").Output.String() {
+		t.Error("manifest should be apex_manifest_with_fingerprint.pb, but " + manifest)
 	}
 }
 
@@ -7294,14 +7298,15 @@ func TestCompressedApex(t *testing.T) {
 		}),
 	)
 
-	compressRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("compressRule")
+	module := ctx.ModuleForTests("myapex", "android_common_myapex_image")
+	compressRule := module.Rule("compressRule")
 	ensureContains(t, compressRule.Output.String(), "myapex.capex.unsigned")
 
-	signApkRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Description("sign compressedApex")
+	signApkRule := module.Description("sign compressedApex")
 	ensureEquals(t, signApkRule.Input.String(), compressRule.Output.String())
 
 	// Make sure output of bundle is .capex
-	ab := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
+	ab := module.Module().(*apexBundle)
 	ensureContains(t, ab.outputFile.String(), "myapex.capex")
 
 	// Verify android.mk rules
@@ -7310,6 +7315,15 @@ func TestCompressedApex(t *testing.T) {
 	data.Custom(&builder, ab.BaseModuleName(), "TARGET_", "", data)
 	androidMk := builder.String()
 	ensureContains(t, androidMk, "LOCAL_MODULE_STEM := myapex.capex\n")
+
+	// Make sure fingerprint is calculated for CAPEX
+	apexWithoutFingerprintRule := module.Rule("apexWithoutFingerprintRule")
+	ensureContains(t, apexWithoutFingerprintRule.Output.String(), "unsigned.without_fingerprint")
+	appendFingerprint := module.Rule("appendFingerprint")
+	ensureContains(t, appendFingerprint.Output.String(), "apex_manifest_with_fingerprint.pb")
+	apexRule := module.Rule("apexRule")
+	manifest := apexRule.Args["manifest"]
+	ensureContains(t, manifest, "apex_manifest_with_fingerprint.pb")
 }
 
 func TestPreferredPrebuiltSharedLibDep(t *testing.T) {

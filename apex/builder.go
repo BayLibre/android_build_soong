@@ -110,7 +110,7 @@ var (
 	// against the binary policy using sefcontext_compiler -p <policy>.
 
 	// TODO(b/114327326): automate the generation of file_contexts
-	apexRule = pctx.StaticRule("apexRule", blueprint.RuleParams{
+	apexRuleParams = blueprint.RuleParams{
 		Command: `rm -rf ${image_dir} && mkdir -p ${image_dir} && ` +
 			`(. ${out}.copy_commands) && ` +
 			`APEXER_TOOL_PATH=${tool_path} ` +
@@ -126,7 +126,10 @@ var (
 		Rspfile:        "${out}.copy_commands",
 		RspfileContent: "${copy_commands}",
 		Description:    "APEX ${image_dir} => ${out}",
-	}, "tool_path", "image_dir", "copy_commands", "file_contexts", "canned_fs_config", "key", "opt_flags", "manifest", "payload_fs_type")
+	}
+	apexRuleArgs               = []string{"tool_path", "image_dir", "copy_commands", "file_contexts", "canned_fs_config", "key", "opt_flags", "manifest", "payload_fs_type"}
+	apexWithoutFingerprintRule = pctx.StaticRule("apexWithoutFingerprintRule", apexRuleParams, apexRuleArgs...)
+	apexRule                   = pctx.StaticRule("apexRule", apexRuleParams, apexRuleArgs...)
 
 	zipApexRule = pctx.StaticRule("zipApexRule", blueprint.RuleParams{
 		Command: `rm -rf ${image_dir} && mkdir -p ${image_dir} && ` +
@@ -657,6 +660,36 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 
 		optFlags = append(optFlags, "--payload_fs_type "+a.payloadFsType.string())
 
+		// Build the APEX once to calculate its hash
+		unsignedWithoutFingerprint := android.PathForModuleOut(ctx, a.Name()+suffix+".unsigned.without_fingerprint")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:        apexWithoutFingerprintRule,
+			Implicits:   implicitInputs,
+			Output:      unsignedWithoutFingerprint,
+			Description: "apex (" + apexType.name() + ")",
+			Args: map[string]string{
+				"tool_path":        outHostBinDir + ":" + prebuiltSdkToolsBinDir,
+				"image_dir":        imageDir.String(),
+				"copy_commands":    strings.Join(copyCommands, " && "),
+				"manifest":         a.manifestPbOut.String(),
+				"file_contexts":    fileContexts.String(),
+				"canned_fs_config": cannedFsConfig.String(),
+				"key":              a.privateKeyFile.String(),
+				"opt_flags":        strings.Join(optFlags, " "),
+			},
+		})
+
+		// Generate and append the fingerprint of the APEX in its manifest.pb
+		manifestWithFingerprint := android.PathForModuleOut(ctx, "apex_manifest_with_fingerprint.pb")
+		appendFingerprint := android.NewRuleBuilder(pctx, ctx)
+		appendFingerprint.Command().Text("cp").Flag("-f").Input(a.manifestPbOut).Output(manifestWithFingerprint)
+		appendFingerprint.Command().BuiltTool("conv_apex_manifest").Text("setprop fingerprint").
+			Text("$(sha512sum -b").Input(unsignedWithoutFingerprint).Text(" | cut -d' ' -f1)").
+			Output(manifestWithFingerprint)
+		appendFingerprint.Build("appendFingerprint", "Append fingerprint to apex manifest")
+		implicitInputs = append(implicitInputs, manifestWithFingerprint)
+
+		// Rebuild the apex with updated manifest.pb
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        apexRule,
 			Implicits:   implicitInputs,
@@ -666,7 +699,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 				"tool_path":        outHostBinDir + ":" + prebuiltSdkToolsBinDir,
 				"image_dir":        imageDir.String(),
 				"copy_commands":    strings.Join(copyCommands, " && "),
-				"manifest":         a.manifestPbOut.String(),
+				"manifest":         manifestWithFingerprint.String(),
 				"file_contexts":    fileContexts.String(),
 				"canned_fs_config": cannedFsConfig.String(),
 				"key":              a.privateKeyFile.String(),
