@@ -46,6 +46,30 @@
       },
       "revId": "44d15940818185ff796227193a72b0a108c2d439",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7c9a305_bb3f9946",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-28T10:40:38Z",
+      "side": 1,
+      "message": "FTR the change that deletes this code is https://r.android.com/1686154",
+      "parentUuid": "2d5b12c1_28c3027c",
+      "range": {
+        "startLine": 904,
+        "startChar": 0,
+        "endLine": 906,
+        "endChar": 77
+      },
+      "revId": "44d15940818185ff796227193a72b0a108c2d439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
