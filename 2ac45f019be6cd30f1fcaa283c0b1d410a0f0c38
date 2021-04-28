@@ -16,6 +16,24 @@
       "message": "Wow, a problem disappearing just like that. :D ",
       "revId": "2ac45f019be6cd30f1fcaa283c0b1d410a0f0c38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a05dd674_1662f1c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-28T10:22:38Z",
+      "side": 1,
+      "message": "Removing \u0027workarounds\u0027 like that is one of the things I most enjoy about doing this sort of cleanup. If you can find the correct \u0027model\u0027 with the correct divisions of responsibilities things just work.",
+      "parentUuid": "1cfa1323_76f09b2c",
+      "revId": "2ac45f019be6cd30f1fcaa283c0b1d410a0f0c38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
