@@ -22,6 +22,30 @@
       },
       "revId": "e3ecce67c14e0edda22938648cb3a797ca2409ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb61d1c1_3157f5b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-29T14:56:51Z",
+      "side": 1,
+      "message": "It is not a step backwards, more like a side-step to avoid having to make extensive changes to the make side which we cannot realistically do due to the impact on OEMs.\n\nIt is only for MakeVars. I have tried to make that crystal clear in the documentation of the GenerateSingletonBuildAction method.\n1) I have removed what vars I can but the ones that are left cannot be removed. Not without lots of changes in make files which are not a priority.\n2) I don\u0027t see the purpose of doing that, all it would do is allow us to replace the couple of uses of SingletonModule with Module. It would not have any significant benefit.\n3) I don\u0027t want to leave the vars declarations where they are because I want to remove that singleton entirely. Also, the platform_bootclasspath is the right place to provide those files.",
+      "parentUuid": "50b4fd0e_33e85b88",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "e3ecce67c14e0edda22938648cb3a797ca2409ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
