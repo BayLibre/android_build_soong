@@ -134,6 +134,30 @@
       },
       "revId": "6b304b43195c9c2112e9088cd64a74ebb7824b29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1a56f0d_343eac39",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-29T09:31:05Z",
+      "side": 1,
+      "message": "Maybe I\u0027m missing something.. I could make the `srcs` attribute clearer by calling it srcs_for_static or something, since it\u0027s only used as input to the underlying static lib?",
+      "parentUuid": "04a6e723_d67780f7",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 30
+      },
+      "revId": "6b304b43195c9c2112e9088cd64a74ebb7824b29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
