@@ -33,6 +33,24 @@
       "message": "line length",
       "revId": "8f7ab710cc25013ecd27c223805e2806710583b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfdc4b1f_7e510b87",
+        "filename": "rust/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2021-04-29T20:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a97d8340_58e52da7",
+      "revId": "8f7ab710cc25013ecd27c223805e2806710583b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
