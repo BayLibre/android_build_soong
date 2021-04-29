@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50b4fd0e_33e85b88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-29T14:32:49Z",
+      "side": 1,
+      "message": "Isn\u0027t this generally a step backwards? Is it only for MakeVars? If so, could we either (1) remove the var, it seems it\u0027s only used to pass a file to make; or (2) make it possible for normal modules to expose vars; or (3) maybe just leave the vars declarations in the existing singleton?",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "e3ecce67c14e0edda22938648cb3a797ca2409ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
