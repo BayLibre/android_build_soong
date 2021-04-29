@@ -1013,6 +1013,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
@@ -1020,6 +1021,7 @@ java_sdk_library_import {
     system: {
         jars: ["sdk_library/system/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/system/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/system/myjavalib_docstub_sources"],
         current_api: "sdk_library/system/myjavalib.txt",
         removed_api: "sdk_library/system/myjavalib-removed.txt",
         sdk_version: "system_current",
@@ -1027,6 +1029,7 @@ java_sdk_library_import {
     test: {
         jars: ["sdk_library/test/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/test/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/test/myjavalib_docstub_sources"],
         current_api: "sdk_library/test/myjavalib.txt",
         removed_api: "sdk_library/test/myjavalib-removed.txt",
         sdk_version: "test_current",
@@ -1045,6 +1048,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
@@ -1052,6 +1056,7 @@ java_sdk_library_import {
     system: {
         jars: ["sdk_library/system/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/system/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/system/myjavalib_docstub_sources"],
         current_api: "sdk_library/system/myjavalib.txt",
         removed_api: "sdk_library/system/myjavalib-removed.txt",
         sdk_version: "system_current",
@@ -1059,6 +1064,7 @@ java_sdk_library_import {
     test: {
         jars: ["sdk_library/test/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/test/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/test/myjavalib_docstub_sources"],
         current_api: "sdk_library/test/myjavalib.txt",
         removed_api: "sdk_library/test/myjavalib-removed.txt",
         sdk_version: "test_current",
@@ -1084,8 +1090,11 @@ sdk_snapshot {
 `),
 		checkMergeZips(
 			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_docstub_sources.zip",
 			".intermediates/mysdk/common_os/tmp/sdk_library/system/myjavalib_stub_sources.zip",
-			".intermediates/mysdk/common_os/tmp/sdk_library/test/myjavalib_stub_sources.zip"),
+			".intermediates/mysdk/common_os/tmp/sdk_library/system/myjavalib_docstub_sources.zip",
+			".intermediates/mysdk/common_os/tmp/sdk_library/test/myjavalib_stub_sources.zip",
+			".intermediates/mysdk/common_os/tmp/sdk_library/test/myjavalib_docstub_sources.zip"),
 	)
 }
 
@@ -1125,6 +1134,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
@@ -1132,6 +1142,7 @@ java_sdk_library_import {
     system: {
         jars: ["sdk_library/system/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/system/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/system/myjavalib_docstub_sources"],
         current_api: "sdk_library/system/myjavalib.txt",
         removed_api: "sdk_library/system/myjavalib-removed.txt",
         sdk_version: "system_current",
@@ -1191,6 +1202,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "none",
@@ -1209,6 +1221,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "none",
@@ -1228,6 +1241,7 @@ sdk_snapshot {
 `),
 		checkMergeZips(
 			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_docstub_sources.zip",
 		),
 	)
 }
@@ -1263,6 +1277,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "module_current",
@@ -1281,6 +1296,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "module_current",
@@ -1300,6 +1316,7 @@ sdk_snapshot {
 `),
 		checkMergeZips(
 			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_docstub_sources.zip",
 		),
 	)
 }
@@ -1338,6 +1355,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
@@ -1345,6 +1363,7 @@ java_sdk_library_import {
     system: {
         jars: ["sdk_library/system/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/system/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/system/myjavalib_docstub_sources"],
         current_api: "sdk_library/system/myjavalib.txt",
         removed_api: "sdk_library/system/myjavalib-removed.txt",
         sdk_version: "system_current",
@@ -1363,6 +1382,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
@@ -1370,6 +1390,7 @@ java_sdk_library_import {
     system: {
         jars: ["sdk_library/system/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/system/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/system/myjavalib_docstub_sources"],
         current_api: "sdk_library/system/myjavalib.txt",
         removed_api: "sdk_library/system/myjavalib-removed.txt",
         sdk_version: "system_current",
@@ -1392,7 +1413,9 @@ sdk_snapshot {
 `),
 		checkMergeZips(
 			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_docstub_sources.zip",
 			".intermediates/mysdk/common_os/tmp/sdk_library/system/myjavalib_stub_sources.zip",
+			".intermediates/mysdk/common_os/tmp/sdk_library/system/myjavalib_docstub_sources.zip",
 		),
 	)
 }
@@ -1434,6 +1457,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
@@ -1441,6 +1465,7 @@ java_sdk_library_import {
     system: {
         jars: ["sdk_library/system/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/system/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/system/myjavalib_docstub_sources"],
         current_api: "sdk_library/system/myjavalib.txt",
         removed_api: "sdk_library/system/myjavalib-removed.txt",
         sdk_version: "system_current",
@@ -1448,6 +1473,7 @@ java_sdk_library_import {
     module_lib: {
         jars: ["sdk_library/module-lib/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/module-lib/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/module-lib/myjavalib_docstub_sources"],
         current_api: "sdk_library/module-lib/myjavalib.txt",
         removed_api: "sdk_library/module-lib/myjavalib-removed.txt",
         sdk_version: "module_current",
@@ -1466,6 +1492,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
@@ -1473,6 +1500,7 @@ java_sdk_library_import {
     system: {
         jars: ["sdk_library/system/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/system/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/system/myjavalib_docstub_sources"],
         current_api: "sdk_library/system/myjavalib.txt",
         removed_api: "sdk_library/system/myjavalib-removed.txt",
         sdk_version: "system_current",
@@ -1480,6 +1508,7 @@ java_sdk_library_import {
     module_lib: {
         jars: ["sdk_library/module-lib/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/module-lib/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/module-lib/myjavalib_docstub_sources"],
         current_api: "sdk_library/module-lib/myjavalib.txt",
         removed_api: "sdk_library/module-lib/myjavalib-removed.txt",
         sdk_version: "module_current",
@@ -1505,8 +1534,11 @@ sdk_snapshot {
 `),
 		checkMergeZips(
 			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_docstub_sources.zip",
 			".intermediates/mysdk/common_os/tmp/sdk_library/system/myjavalib_stub_sources.zip",
+			".intermediates/mysdk/common_os/tmp/sdk_library/system/myjavalib_docstub_sources.zip",
 			".intermediates/mysdk/common_os/tmp/sdk_library/module-lib/myjavalib_stub_sources.zip",
+			".intermediates/mysdk/common_os/tmp/sdk_library/module-lib/myjavalib_docstub_sources.zip",
 		),
 	)
 }
@@ -1545,6 +1577,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
@@ -1552,6 +1585,7 @@ java_sdk_library_import {
     system_server: {
         jars: ["sdk_library/system-server/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/system-server/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/system-server/myjavalib_docstub_sources"],
         current_api: "sdk_library/system-server/myjavalib.txt",
         removed_api: "sdk_library/system-server/myjavalib-removed.txt",
         sdk_version: "system_server_current",
@@ -1570,6 +1604,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
@@ -1577,6 +1612,7 @@ java_sdk_library_import {
     system_server: {
         jars: ["sdk_library/system-server/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/system-server/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/system-server/myjavalib_docstub_sources"],
         current_api: "sdk_library/system-server/myjavalib.txt",
         removed_api: "sdk_library/system-server/myjavalib-removed.txt",
         sdk_version: "system_server_current",
@@ -1599,7 +1635,9 @@ sdk_snapshot {
 `),
 		checkMergeZips(
 			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_docstub_sources.zip",
 			".intermediates/mysdk/common_os/tmp/sdk_library/system-server/myjavalib_stub_sources.zip",
+			".intermediates/mysdk/common_os/tmp/sdk_library/system-server/myjavalib_docstub_sources.zip",
 		),
 	)
 }
@@ -1637,6 +1675,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
@@ -1656,6 +1695,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
@@ -1675,6 +1715,7 @@ sdk_snapshot {
 `),
 		checkMergeZips(
 			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_stub_sources.zip",
+			".intermediates/mysdk/common_os/tmp/sdk_library/public/myjavalib_docstub_sources.zip",
 		),
 	)
 }
@@ -1719,6 +1760,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
@@ -1738,6 +1780,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/myjavalib-stubs.jar"],
         stub_srcs: ["sdk_library/public/myjavalib_stub_sources"],
+        docstub_srcs: ["sdk_library/public/myjavalib_docstub_sources"],
         current_api: "sdk_library/public/myjavalib.txt",
         removed_api: "sdk_library/public/myjavalib-removed.txt",
         sdk_version: "current",
