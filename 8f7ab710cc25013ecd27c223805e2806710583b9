@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4369bf9a_39780581",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2021-04-29T20:13:33Z",
+      "side": 1,
+      "message": "Looks reasonable to me, over to Colin.",
+      "revId": "8f7ab710cc25013ecd27c223805e2806710583b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a97d8340_58e52da7",
+        "filename": "rust/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1453063
+      },
+      "writtenOn": "2021-04-29T20:13:33Z",
+      "side": 1,
+      "message": "line length",
+      "revId": "8f7ab710cc25013ecd27c223805e2806710583b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
