@@ -61,6 +61,21 @@ type platformBootclasspathModule struct {
 
 	// Path to the monolithic hiddenapi-unsupported.csv file.
 	hiddenAPIMetadataCSV android.OutputPath
+
+	// Default boot image config (currently always the Framework boot image extension). It should be
+	// noted that JIT-Zygote builds use ART APEX image instead of the Framework boot image extension,
+	// but the switch is handled not here, but in the makefiles (triggered with
+	// DEXPREOPT_USE_ART_IMAGE=true).
+	defaultBootImage *bootImageConfig
+
+	// Other boot image configs (currently the list contains only the primary ART APEX image. It
+	// used to contain an experimental JIT-Zygote image (now replaced with the ART APEX image). In
+	// the future other boot image extensions may be added.
+	otherImages []*bootImageConfig
+
+	// Build path to a config file that Soong writes for Make (to be used in makefiles that install
+	// the default boot image).
+	dexpreoptConfigForMake android.WritablePath
 }
 
 type platformBootclasspathProperties struct {
@@ -164,6 +179,8 @@ func (b *platformBootclasspathModule) GenerateSingletonBuildActions(android.Sing
 
 func (d *platformBootclasspathModule) MakeVars(ctx android.MakeVarsContext) {
 	d.generateHiddenApiMakeVars(ctx)
+	generateMakeVarsForDexpreoptConfig(ctx, d.dexpreoptConfigForMake)
+	generateMakeVarsForDefaultBootImage(ctx, d.defaultBootImage, d.otherImages)
 }
 
 func (b *platformBootclasspathModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -191,12 +208,19 @@ func (b *platformBootclasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 
 	b.generateHiddenAPIBuildActions(ctx, b.configuredModules, b.fragments)
 
+	// Write the dexpreopt config file for use by make and save the path to use in MakeVars.
+	b.dexpreoptConfigForMake = writeGlobalConfigForMake(ctx)
+
 	// Nothing to do if skipping the dexpreopt of boot image jars.
 	if SkipDexpreoptBootJars(ctx) {
 		return
 	}
 
 	b.generateBootImageBuildActions(ctx, nonUpdatableModules, updatableModules)
+
+	// Save the *bootImageConfig values for use in MakeVars.
+	b.defaultBootImage = b.getImageConfig(ctx)
+	b.otherImages = []*bootImageConfig{artBootImageConfig(ctx)}
 }
 
 // Generate classpaths.proto config
