@@ -385,21 +385,6 @@ func SkipDexpreoptBootJars(ctx android.PathContext) bool {
 // Singleton module for generating boot image build rules.
 type dexpreoptBootJars struct {
 	android.SingletonModuleBase
-
-	// Default boot image config (currently always the Framework boot image extension). It should be
-	// noted that JIT-Zygote builds use ART APEX image instead of the Framework boot image extension,
-	// but the switch is handled not here, but in the makefiles (triggered with
-	// DEXPREOPT_USE_ART_IMAGE=true).
-	defaultBootImage *bootImageConfig
-
-	// Other boot image configs (currently the list contains only the primary ART APEX image. It
-	// used to contain an experimental JIT-Zygote image (now replaced with the ART APEX image). In
-	// the future other boot image extensions may be added.
-	otherImages []*bootImageConfig
-
-	// Build path to a config file that Soong writes for Make (to be used in makefiles that install
-	// the default boot image).
-	dexpreoptConfigForMake android.WritablePath
 }
 
 // Provide paths to boot images for use by modules that depend upon them.
@@ -419,9 +404,6 @@ func (d *dexpreoptBootJars) GenerateSingletonBuildActions(ctx android.SingletonC
 		return
 	}
 
-	d.dexpreoptConfigForMake = android.PathForOutput(ctx, ctx.Config().DeviceName(), "dexpreopt.config")
-	writeGlobalConfigForMake(ctx, d.dexpreoptConfigForMake)
-
 	global := dexpreopt.GetGlobalConfig(ctx)
 	if !shouldBuildBootImages(ctx.Config(), global) {
 		return
@@ -430,10 +412,7 @@ func (d *dexpreoptBootJars) GenerateSingletonBuildActions(ctx android.SingletonC
 	// Generate the profile rule from the default boot image.
 	defaultImageConfig := defaultBootImageConfig(ctx)
 	profile := bootImageProfileRule(ctx, defaultImageConfig)
-
-	d.defaultBootImage = defaultImageConfig
 	artBootImageConfig := artBootImageConfig(ctx)
-	d.otherImages = []*bootImageConfig{artBootImageConfig}
 
 	// Create the default boot image (build artifacts are accessed via the global boot image config).
 	buildBootImage(ctx, defaultImageConfig, profile)
@@ -836,22 +815,22 @@ func dumpOatRules(ctx android.ModuleContext, image *bootImageConfig) {
 	})
 }
 
-func writeGlobalConfigForMake(ctx android.SingletonContext, path android.WritablePath) {
+func writeGlobalConfigForMake(ctx android.BuilderContext) android.WritablePath {
+	path := android.PathForOutput(ctx, ctx.Config().DeviceName(), "dexpreopt.config")
 	data := dexpreopt.GetGlobalConfigRawData(ctx)
 
 	android.WriteFileRule(ctx, path, string(data))
+	return path
 }
 
-// Define Make variables for boot image names, paths, etc. These variables are used in makefiles
-// (make/core/dex_preopt_libart.mk) to generate install rules that copy boot image files to the
-// correct output directories.
-func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
-	if d.dexpreoptConfigForMake != nil {
-		ctx.Strict("DEX_PREOPT_CONFIG_FOR_MAKE", d.dexpreoptConfigForMake.String())
+func generateMakeVarsForDexpreoptConfig(ctx android.MakeVarsContext, dexpreoptConfigForMake android.WritablePath) {
+	if dexpreoptConfigForMake != nil {
+		ctx.Strict("DEX_PREOPT_CONFIG_FOR_MAKE", dexpreoptConfigForMake.String())
 		ctx.Strict("DEX_PREOPT_SOONG_CONFIG_FOR_MAKE", android.PathForOutput(ctx, "dexpreopt_soong.config").String())
 	}
+}
 
-	image := d.defaultBootImage
+func generateMakeVarsForDefaultBootImage(ctx android.MakeVarsContext, image *bootImageConfig, otherImages []*bootImageConfig) {
 	if image != nil {
 		ctx.Strict("DEXPREOPT_IMAGE_PROFILE_BUILT_INSTALLED", image.profileInstalls.String())
 
@@ -866,7 +845,7 @@ func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 		// configuration which uses the primary ART image instead of the Framework boot image
 		// extension, and it relies on the ART image being exposed to Make. To fix this, it is
 		// necessary to rework the logic in makefiles.
-		for _, current := range append(d.otherImages, image) {
+		for _, current := range append(otherImages, image) {
 			imageNames = append(imageNames, current.name)
 			for _, variant := range current.variants {
 				suffix := ""
