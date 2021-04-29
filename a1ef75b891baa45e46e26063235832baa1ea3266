@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000010344583",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1686153?revision\u003d7",
+      "fixSuggestions": [
+        {
+          "fixId": "8f1fa4b0_7a0a117e",
+          "description": "Change to \"java/platform_bootclasspath.go\"",
+          "replacements": [
+            {
+              "path": "java/platform_bootclasspath.go",
+              "range": {
+                "startLine": 165,
+                "startChar": 4,
+                "endLine": 165,
+                "endChar": 15
+              },
+              "replacement": "Concatenate"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "27106748_eab308fb",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-04-29T10:36:12Z",
+      "side": 1,
+      "message": "Common typo found: \"Concatanate\" -- should it be \"Concatenate\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 15
+      },
+      "revId": "a1ef75b891baa45e46e26063235832baa1ea3266",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
