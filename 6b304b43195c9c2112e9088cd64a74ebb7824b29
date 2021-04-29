@@ -110,6 +110,30 @@
       },
       "revId": "6b304b43195c9c2112e9088cd64a74ebb7824b29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a6e723_d67780f7",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-29T09:06:15Z",
+      "side": 1,
+      "message": "Good enough for now, but won\u0027t this be a problem in the future? I suppose Soong does make it possible for static/shared deps to be different.",
+      "parentUuid": "1f0b117f_82486417",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 30
+      },
+      "revId": "6b304b43195c9c2112e9088cd64a74ebb7824b29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
