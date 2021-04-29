@@ -22,6 +22,53 @@
       },
       "revId": "b3006f02b1528bf40abb53992d6bb10efb38086c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f863fdfa_b9d250d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2021-04-29T23:46:54Z",
+      "side": 1,
+      "message": "Bonus point if we can have an end-to-end like test to verify that if we pass same input, the resulting apexes will have the same fingerprint",
+      "parentUuid": "7b4e6e13_5ab3ded8",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 7
+      },
+      "revId": "b3006f02b1528bf40abb53992d6bb10efb38086c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8ea1076_06677b61",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2021-04-29T23:46:54Z",
+      "side": 1,
+      "message": "After thinking a little bit, now I\u0027m not so sure that putting this into soong is the right approach...\n\nThe reason why I suggested soong is that we are also creating base splits for bundletool in soong (apexBundleRule below), but now I think that proper way would be to move splits-related logic outside of the soong.\n\nHaving said that, it will be a much bigger task and I don\u0027t want to block you on it, so I propose we go ahead with this approach, and file a bug to move this and apexBundleRule outside of soong.\n\nJiyong, Samiul, WDYT?",
+      "range": {
+        "startLine": 663,
+        "startChar": 0,
+        "endLine": 663,
+        "endChar": 46
+      },
+      "revId": "b3006f02b1528bf40abb53992d6bb10efb38086c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
