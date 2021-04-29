@@ -50,6 +50,7 @@ func TestCcLibraryBp2Build(t *testing.T) {
 		expectedBazelTargets               []string
 		filesystem                         map[string]string
 		dir                                string
+		depsMutators                       []android.RegisterMutatorFunc
 	}{
 		{
 			description:                        "cc_library - simple example",
@@ -248,6 +249,96 @@ cc_library {
     srcs = ["math/cosf.c"],
 )`},
 		},
+		{
+			description:                        "cc_library shared/static props - trimmed example of //bionic/libdl:libdl",
+			moduleTypeUnderTest:                "cc_library",
+			moduleTypeUnderTestFactory:         cc.LibraryFactory,
+			moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
+			depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
+			dir:                                "bionic/libdl",
+			filesystem: map[string]string{
+				"bionic/libdl/libdl_static.cpp": "",
+				"bionic/libdl/Android.bp": `
+cc_library {
+    name: "fake-libdl",
+
+    defaults: ["linux_bionic_supported"],
+
+    ldflags: [
+        "-Wl,--exclude-libs=libgcc.a",
+        "-Wl,--exclude-libs=libgcc_stripped.a",
+        "-Wl,--exclude-libs=libclang_rt.builtins-arm-android.a",
+        "-Wl,--exclude-libs=libclang_rt.builtins-aarch64-android.a",
+        "-Wl,--exclude-libs=libclang_rt.builtins-i686-android.a",
+        "-Wl,--exclude-libs=libclang_rt.builtins-x86_64-android.a",
+    ],
+
+    // for x86, exclude libgcc_eh.a for the same reasons as above
+    arch: {
+        arm: {
+            ldflags: ["-Wl,--hash-style=both"],
+        },
+        x86: {
+            ldflags: [
+                "-Wl,--exclude-libs=libgcc_eh.a",
+                "-Wl,--hash-style=both",
+            ],
+        },
+        x86_64: {
+            ldflags: ["-Wl,--exclude-libs=libgcc_eh.a"],
+        },
+    },
+    shared: {
+        whole_static_libs: ["fake-libdl_static"],
+    },
+    static: {
+        srcs: ["libdl_static.cpp"],
+    },
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Wunused",
+        "-Werror",
+    ],
+
+    bazel_module: { bp2build_available: true },
+}
+
+cc_library_static {
+    name: "fake-libdl_static",
+}
+`,
+			},
+			bp: soongCcLibraryPreamble,
+			expectedBazelTargets: []string{`cc_library(
+    name = "fake-libdl",
+    copts = [
+        "-Wall",
+        "-Wextra",
+        "-Wunused",
+        "-Werror",
+        "-Ibionic/libdl",
+    ],
+    linkopts = [
+        "-Wl,--exclude-libs=libgcc.a",
+        "-Wl,--exclude-libs=libgcc_stripped.a",
+        "-Wl,--exclude-libs=libclang_rt.builtins-arm-android.a",
+        "-Wl,--exclude-libs=libclang_rt.builtins-aarch64-android.a",
+        "-Wl,--exclude-libs=libclang_rt.builtins-i686-android.a",
+        "-Wl,--exclude-libs=libclang_rt.builtins-x86_64-android.a",
+    ] + select({
+        "//build/bazel/platforms/arch:arm": ["-Wl,--hash-style=both"],
+        "//build/bazel/platforms/arch:x86": [
+            "-Wl,--exclude-libs=libgcc_eh.a",
+            "-Wl,--hash-style=both",
+        ],
+        "//build/bazel/platforms/arch:x86_64": ["-Wl,--exclude-libs=libgcc_eh.a"],
+        "//conditions:default": [],
+    }),
+    srcs = ["libdl_static.cpp"],
+    static_deps_for_shared = [":fake-libdl_static"],
+)`},
+		},
 	}
 
 	dir := "."
@@ -266,11 +357,15 @@ cc_library {
 		ctx := android.NewTestContext(config)
 
 		cc.RegisterCCBuildComponents(ctx)
+		ctx.RegisterModuleType("cc_library_static", cc.LibraryStaticFactory)
 		ctx.RegisterModuleType("toolchain_library", cc.ToolchainLibraryFactory)
 		ctx.RegisterModuleType("cc_library_headers", cc.LibraryHeaderFactory)
 		ctx.RegisterModuleType(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestFactory)
 		ctx.RegisterBp2BuildMutator(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestBp2BuildMutator)
 		ctx.RegisterBp2BuildConfig(bp2buildConfig) // TODO(jingwen): make this the default for all tests
+		for _, m := range testCase.depsMutators {
+			ctx.DepsBp2BuildMutators(m)
+		}
 		ctx.RegisterForBazelConversion()
 
 		_, errs := ctx.ParseFileList(dir, toParse)
