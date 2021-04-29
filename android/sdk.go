@@ -38,6 +38,25 @@ type RequiredSdks interface {
 type sdkAwareWithoutModule interface {
 	RequiredSdks
 
+	// SdkMemberComponentName will return the name to use for a component of this module based on the
+	// name of this module. It will correctly handle unversioned, internal to the sdk and versioned
+	// component names.
+	//
+	// The baseName is the name returned by ModuleBase.BaseModuleName().
+	//
+	// The componentNameCreator is a function for creating the component name from the name of the
+	// creating module, e.g. it could just append ".component" to the name passed in.
+	//
+	// e.g. Assuming the the componentNameCreator func simply appends ".component" to the name passed
+	// in then this will work as follows:
+	// * An unversioned name of "foo" will return "foo.component".
+	// * An internal to the sdk name of "sdk_foo" will return "sdk_foo.component".
+	// * A versioned name of "sdk_foo@current" will return "sdk_foo.component@current".
+	//
+	// Note that in the latter case the ".component" suffix is added before the version. Adding it
+	// after would change the version.
+	SdkMemberComponentName(baseName string, componentNameCreator func(string) string) string
+
 	sdkBase() *SdkBase
 	MakeMemberOf(sdk SdkRef)
 	IsInAnySdk() bool
@@ -133,6 +152,18 @@ type SdkBase struct {
 
 func (s *SdkBase) sdkBase() *SdkBase {
 	return s
+}
+
+func (s *SdkBase) SdkMemberComponentName(baseName string, componentNameCreator func(string) string) string {
+	if s.MemberName() == "" {
+		return componentNameCreator(baseName)
+	} else {
+		index := strings.LastIndex(baseName, "@")
+		unversionedName := baseName[:index]
+		unversionedComponentName := componentNameCreator(unversionedName)
+		versionSuffix := baseName[index:]
+		return unversionedComponentName + versionSuffix
+	}
 }
 
 // MakeMemberOf sets this module to be a member of a specific SDK
