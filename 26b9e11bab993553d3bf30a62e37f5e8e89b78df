@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbff573f_154cc997",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-29T10:36:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e20184a4_0f3b7146",
+      "range": {
+        "startLine": 123,
+        "startChar": 68,
+        "endLine": 123,
+        "endChar": 69
+      },
+      "revId": "26b9e11bab993553d3bf30a62e37f5e8e89b78df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7abddb1_958c2225",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-29T10:29:11Z",
       "side": 1,
       "message": "Nit: VisitDirectDepsWithTag with a check on isActiveModule could be a bit shorter.",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 22
+      },
+      "revId": "26b9e11bab993553d3bf30a62e37f5e8e89b78df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6447020b_8c89c057",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-29T10:36:47Z",
+      "side": 1,
+      "message": "This will be refactored in a follow up change (not yet uploaded) to improve error reporting so I\u0027ll leave it as it is for now.",
+      "parentUuid": "a7abddb1_958c2225",
       "range": {
         "startLine": 127,
         "startChar": 5,
