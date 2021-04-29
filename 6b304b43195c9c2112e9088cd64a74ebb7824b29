@@ -158,6 +158,30 @@
       },
       "revId": "6b304b43195c9c2112e9088cd64a74ebb7824b29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "444ee21f_85baf1b2",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-29T10:12:59Z",
+      "side": 1,
+      "message": "(resolving, discussed offline, will handle the underlying shared/static library split later)",
+      "parentUuid": "d1a56f0d_343eac39",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 30
+      },
+      "revId": "6b304b43195c9c2112e9088cd64a74ebb7824b29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
