@@ -634,6 +634,7 @@ type commonToSdkLibraryAndImportProperties struct {
 // Common code between sdk library and sdk library import
 type commonToSdkLibraryAndImport struct {
 	moduleBase *android.ModuleBase
+	sdkAware   android.SdkAware
 
 	scopePaths map[*apiScope]*scopePaths
 
@@ -648,8 +649,9 @@ type commonToSdkLibraryAndImport struct {
 	EmbeddableSdkLibraryComponent
 }
 
-func (c *commonToSdkLibraryAndImport) initCommon(moduleBase *android.ModuleBase) {
+func (c *commonToSdkLibraryAndImport) initCommon(moduleBase *android.ModuleBase, sdkAware android.SdkAware) {
 	c.moduleBase = moduleBase
+	c.sdkAware = sdkAware
 
 	moduleBase.AddProperties(&c.commonSdkLibraryProperties)
 
@@ -692,13 +694,19 @@ func (c *commonToSdkLibraryAndImport) xmlPermissionsModuleName() string {
 
 // Name of the java_library module that compiles the stubs source.
 func (c *commonToSdkLibraryAndImport) stubsLibraryModuleName(apiScope *apiScope) string {
-	return c.namingScheme.stubsLibraryModuleName(apiScope, c.moduleBase.BaseModuleName())
+	baseName := c.moduleBase.BaseModuleName()
+	return c.sdkAware.SdkMemberComponentName(baseName, func(name string) string {
+		return c.namingScheme.stubsLibraryModuleName(apiScope, name)
+	})
 }
 
 // Name of the droidstubs module that generates the stubs source and may also
 // generate/check the API.
 func (c *commonToSdkLibraryAndImport) stubsSourceModuleName(apiScope *apiScope) string {
-	return c.namingScheme.stubsSourceModuleName(apiScope, c.moduleBase.BaseModuleName())
+	baseName := c.moduleBase.BaseModuleName()
+	return c.sdkAware.SdkMemberComponentName(baseName, func(name string) string {
+		return c.namingScheme.stubsSourceModuleName(apiScope, name)
+	})
 }
 
 // The component names for different outputs of the java_sdk_library.
@@ -1005,6 +1013,15 @@ type SdkLibraryDependency interface {
 	sharedLibrary() bool
 }
 
+// ExportedComponentsInfo contains information about the components that this module exports to an
+// sdk snapshot.
+type ExportedComponentsInfo struct {
+	// The names of the exported components.
+	Components []string
+}
+
+var ExportedComponentsInfoProvider = blueprint.NewProvider(ExportedComponentsInfo{})
+
 type SdkLibrary struct {
 	Library
 
@@ -1162,6 +1179,10 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		module.Library.GenerateAndroidBuildActions(ctx)
 	}
 
+	// Collate the components exported by this module. All scope specific modules are exported but
+	// the impl and xml component modules are not.
+	exportedComponents := map[string]struct{}{}
+
 	// Record the paths to the header jars of the library (stubs and impl).
 	// When this java_sdk_library is depended upon from others via "libs" property,
 	// the recorded paths will be returned depending on the link type of the caller.
@@ -1176,8 +1197,15 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 			// Extract information from the dependency. The exact information extracted
 			// is determined by the nature of the dependency which is determined by the tag.
 			scopeTag.extractDepInfo(ctx, to, scopePaths)
+
+			// Add the component name to the exported components.
+			exportedComponents[ctx.OtherModuleName(to)] = struct{}{}
 		}
 	})
+
+	// Make the set of components exported by this module available for use elsewhere.
+	exportedComponentInfo := ExportedComponentsInfo{Components: android.SortedStringKeys(exportedComponents)}
+	ctx.SetProvider(ExportedComponentsInfoProvider, exportedComponentInfo)
 }
 
 func (module *SdkLibrary) AndroidMkEntries() []android.AndroidMkEntries {
@@ -1772,7 +1800,7 @@ func SdkLibraryFactory() android.Module {
 	module := &SdkLibrary{}
 
 	// Initialize information common between source and prebuilt.
-	module.initCommon(&module.ModuleBase)
+	module.initCommon(&module.ModuleBase, module)
 
 	module.InitSdkLibraryProperties()
 	android.InitApexModule(module)
@@ -1920,7 +1948,7 @@ func sdkLibraryImportFactory() android.Module {
 	module.AddProperties(&module.properties, allScopeProperties)
 
 	// Initialize information common between source and prebuilt.
-	module.initCommon(&module.ModuleBase)
+	module.initCommon(&module.ModuleBase, module)
 
 	android.InitPrebuiltModule(module, &[]string{""})
 	android.InitApexModule(module)
