@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "142ce362_28b5f0bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-29T23:56:14Z",
+      "side": 1,
+      "message": "Why do we expect to find the hash from manifest? APEX is a signed zip. The signing block [1] has the digest of the zip file.\n\n\n[1] https://source.android.com/security/apksigning/v3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "b3006f02b1528bf40abb53992d6bb10efb38086c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b4e6e13_5ab3ded8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -61,6 +84,30 @@
       "writtenOn": "2021-04-29T23:46:54Z",
       "side": 1,
       "message": "After thinking a little bit, now I\u0027m not so sure that putting this into soong is the right approach...\n\nThe reason why I suggested soong is that we are also creating base splits for bundletool in soong (apexBundleRule below), but now I think that proper way would be to move splits-related logic outside of the soong.\n\nHaving said that, it will be a much bigger task and I don\u0027t want to block you on it, so I propose we go ahead with this approach, and file a bug to move this and apexBundleRule outside of soong.\n\nJiyong, Samiul, WDYT?",
+      "range": {
+        "startLine": 663,
+        "startChar": 0,
+        "endLine": 663,
+        "endChar": 46
+      },
+      "revId": "b3006f02b1528bf40abb53992d6bb10efb38086c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8f0a9a3_03e182c1",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-04-29T23:56:14Z",
+      "side": 1,
+      "message": "I have a more fundamental question. Please see my comment on the commit message.",
+      "parentUuid": "e8ea1076_06677b61",
       "range": {
         "startLine": 663,
         "startChar": 0,
