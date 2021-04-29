@@ -94,6 +94,30 @@
       },
       "revId": "e3ecce67c14e0edda22938648cb3a797ca2409ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17bb76d3_1f272724",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-29T16:28:20Z",
+      "side": 1,
+      "message": "1. Yeah, if there are a dozen of vars, then obviously it is not okay to hardcode the paths. This changes the context a lot.\n\n2. I think you are alluding to the fact that supporting MakeVars for normal modules is hard? That wasn\u0027t obvious in the first reply. (Sorry, if I sounded condescending or something, didn\u0027t mean to.) If you think it is not achievable, and not \"no purpose in doing so\", then I can understand.\n\n3. I\u0027d still argue that leaving some code in the old location to declare it\u0027s a technical debt is better than \"hiding\" (for the lack of a better word) it (and risking adding more technical debt in the future because we added capabilities that \"should never be used\"). The old code in this context would only exist to set the make vars -- which clearly means that there is no other way to do that from a normal module, and should be cleaned up if there is a planned support for it ~tomorrow.\n\nI am not an owner, and I don\u0027t see myself being involved in evolution of soong much; as I mentioned I don\u0027t have very strong opinions. I just wanted to clarify where we are going with this and express some of the not-so-strong opinions. Sorry, it turned out to sound otherwise. :-)",
+      "parentUuid": "2c12749e_982e9c1b",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "e3ecce67c14e0edda22938648cb3a797ca2409ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
