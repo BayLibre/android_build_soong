@@ -134,7 +134,8 @@ func profileCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, glo
 	profileInstalledPath := module.DexLocation + ".prof"
 
 	if !module.ProfileIsTextListing {
-		rule.Command().FlagWithOutput("touch ", profilePath)
+		rule.Command().Text("rm -f").Output(profilePath)
+		rule.Command().Text("touch").Output(profilePath)
 	}
 
 	cmd := rule.Command().
