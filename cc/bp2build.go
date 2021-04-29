@@ -14,9 +14,10 @@
 package cc
 
 import (
+	"path/filepath"
+
 	"android/soong/android"
 	"android/soong/bazel"
-	"path/filepath"
 )
 
 // bp2build functions and helpers for converting cc_* modules to Bazel.
@@ -212,6 +213,11 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 			copts.SetValueForArch(arch.Name, parseCopts(baseCompilerProps))
 		}
 	}
+
+	//if (module.Name() == "libc_gdtoa") {
+	//	fmt.Println("@@@@@@")
+	//	fmt.Println(module.GetMultilibProperties(&BaseCompilerProperties{}))
+	//}
 
 	// After going through all archs, delete the duplicate files in the arch
 	// values that are already in the base srcs.Value.
