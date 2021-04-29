@@ -67,8 +67,8 @@ type platformBootclasspathProperties struct {
 func platformBootclasspathFactory() android.Module {
 	m := &platformBootclasspathModule{}
 	m.AddProperties(&m.properties)
-	// TODO(satayev): split systemserver and apex jars into separate configs.
-	initClasspathFragment(m)
+	// TODO(satayev): split apex jars into separate configs.
+	initClasspathFragment(m, BOOTCLASSPATH)
 	android.InitAndroidArchModule(m, android.DeviceSupported, android.MultilibCommon)
 	return m
 }

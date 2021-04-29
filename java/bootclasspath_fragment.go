@@ -110,6 +110,8 @@ type BootclasspathFragmentModule struct {
 	android.ModuleBase
 	android.ApexModuleBase
 	android.SdkBase
+	ClasspathFragmentBase
+
 	properties bootclasspathFragmentProperties
 }
 
@@ -118,6 +120,8 @@ func bootclasspathFragmentFactory() android.Module {
 	m.AddProperties(&m.properties)
 	android.InitApexModule(m)
 	android.InitSdkAwareModule(m)
+	// TODO(satayev): split apex jars into separate configs.
+	initClasspathFragment(m, BOOTCLASSPATH)
 	android.InitAndroidArchModule(m, android.HostAndDeviceSupported, android.MultilibCommon)
 
 	android.AddLoadHook(m, func(ctx android.LoadHookContext) {
@@ -340,6 +344,9 @@ func (b *BootclasspathFragmentModule) GenerateAndroidBuildActions(ctx android.Mo
 		b.bootclasspathImageNameContentsConsistencyCheck(ctx)
 	}
 
+	// Generate classpaths.proto config
+	b.classpathFragmentBase().generateAndroidBuildActions(ctx)
+
 	// Perform hidden API processing.
 	b.generateHiddenAPIBuildActions(ctx)
 
@@ -397,6 +404,10 @@ func (b *BootclasspathFragmentModule) generateHiddenAPIBuildActions(ctx android.
 	// Store the information for use by other modules.
 	bootclasspathApiInfo := bootclasspathApiInfo{stubJarsByKind: stubJarsByKind}
 	ctx.SetProvider(bootclasspathApiInfoProvider, bootclasspathApiInfo)
+}
+
+func (b *BootclasspathFragmentModule) AndroidMkEntries() (entries []android.AndroidMkEntries) {
+	return
 }
 
 type bootclasspathFragmentMemberType struct {
