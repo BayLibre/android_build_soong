@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "902b29aa_16b9ca38",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-29T10:41:00Z",
+      "side": 1,
+      "message": "\u003e Common typo found: \"Concatanate\" -- should it be \"Concatenate\"?\n\u003e Note: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.\n\nPlease fix.",
+      "parentUuid": "27106748_eab308fb",
+      "range": {
+        "startLine": 165,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 15
+      },
+      "revId": "a1ef75b891baa45e46e26063235832baa1ea3266",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
