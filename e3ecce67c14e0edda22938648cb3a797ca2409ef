@@ -70,6 +70,30 @@
       },
       "revId": "e3ecce67c14e0edda22938648cb3a797ca2409ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c12749e_982e9c1b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-29T15:52:51Z",
+      "side": 1,
+      "message": "1. The location is only fixed and independent of the module at the minute because that is the only way to make it work inside a singleton. However, once it has moved into platform_bootclasspath then it will be possible to generate the file within its output directory which is where it should be and will need to be for future work.\n\nHard coding the path in make would replace an explicit dependency with an implicit dependency that relied on them having the same path. Changing the path in Soong would break the build without any clear indication why.\n\nThat is the only hidden API one. There are ~13 set by dexpreopt_bootjars which will also need to be moved over.\n\n2. We cannot fix everything now. Some things are higher priority than others. Some things are achievable now, whereas others are not. Sure, this is not perfect but it is better.\n\n3. I\u0027m not \"just moving bad bits from one place to another\" I am moving the bad bits to the place where they belong. The code that creates the file should be the code that sets the variable as it is the only one that knows its location. Leaving it behind would require that either the old code and the new code share some fixed data (which is what we are trying to avoid) or they talk to each other (which just couples them together).",
+      "parentUuid": "8ad38f1f_af8cdf08",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "e3ecce67c14e0edda22938648cb3a797ca2409ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
