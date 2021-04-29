@@ -399,6 +399,9 @@ type sdkLibraryProperties struct {
 	// List of Java libraries that will be in the classpath when building stubs
 	Stub_only_libs []string `android:"arch_variant"`
 
+	// List of annotations to exclude from generated stubs.
+	Exclude_annotations []string
+
 	// list of package names that will be documented and publicized as API.
 	// This allows the API to be restricted to a subset of the source files provided.
 	// If this is unspecified then all the source files will be treated as being part
@@ -1342,6 +1345,7 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 		Annotations_enabled              *bool
 		Merge_annotations_dirs           []string
 		Merge_inclusion_annotations_dirs []string
+		Exclude_annotations              []string
 		Generate_stubs                   *bool
 		Previous_api                     *string
 		Check_api                        struct {
@@ -1384,6 +1388,7 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 	props.Annotations_enabled = module.sdkLibraryProperties.Annotations_enabled
 	props.Merge_annotations_dirs = module.sdkLibraryProperties.Merge_annotations_dirs
 	props.Merge_inclusion_annotations_dirs = module.sdkLibraryProperties.Merge_inclusion_annotations_dirs
+	props.Exclude_annotations = module.sdkLibraryProperties.Exclude_annotations
 
 	droidstubsArgs := []string{}
 	if len(module.sdkLibraryProperties.Api_packages) != 0 {

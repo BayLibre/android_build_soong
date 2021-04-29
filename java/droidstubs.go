@@ -119,6 +119,9 @@ type DroidstubsProperties struct {
 	// if set to true, allow Metalava to generate doc_stubs source files. Defaults to false.
 	Create_doc_stubs *bool
 
+	// a list of annotations to exclude from generated stubs.
+	Exclude_annotations []string
+
 	// if set to true, cause Metalava to output Javadoc comments in the stubs source files. Defaults to false.
 	// Has no effect if create_doc_stubs: true.
 	Output_javadoc_comments *bool
@@ -282,6 +285,10 @@ func (d *Droidstubs) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBuil
 func (d *Droidstubs) annotationsFlags(ctx android.ModuleContext, cmd *android.RuleBuilderCommand) {
 	if Bool(d.properties.Annotations_enabled) {
 		cmd.Flag("--include-annotations")
+
+		if len(d.properties.Exclude_annotations) > 0 {
+			cmd.FlagWithList("--exclude-annotation ", d.properties.Exclude_annotations, ",")
+		}
 
 		validatingNullability :=
 			strings.Contains(String(d.Javadoc.properties.Args), "--validate-nullability-from-merged-stubs") ||
