@@ -141,6 +141,12 @@ type DroidstubsProperties struct {
 	// the filename which Metalava extracts API levels annotations from. Defaults to android.jar.
 	Api_levels_jar_filename *string
 
+	// the folder where Metalava searches for the jar file (Api_levels_jar_filename). Defaults to public.
+	Api_levels_jar_folder *string
+
+	// the file to write the database of APIs. Defaults to api-versions.xml
+	Api_levels_db_filename *string
+
 	// if set to true, collect the values used by the Dev tools and
 	// write them in files packaged with the SDK. Defaults to false.
 	Write_sdk_values *bool
@@ -343,7 +349,8 @@ func (d *Droidstubs) apiLevelsAnnotationsFlags(ctx android.ModuleContext, cmd *a
 		return
 	}
 
-	d.apiVersionsXml = android.PathForModuleOut(ctx, "metalava", "api-versions.xml")
+	apiVersionFileName := proptools.StringDefault(d.properties.Api_levels_db_filename, "api-versions.xml")
+	d.apiVersionsXml = android.PathForModuleOut(ctx, "metalava", apiVersionFileName)
 
 	if len(d.properties.Api_levels_annotations_dirs) == 0 {
 		ctx.PropertyErrorf("api_levels_annotations_dirs",
@@ -357,6 +364,7 @@ func (d *Droidstubs) apiLevelsAnnotationsFlags(ctx android.ModuleContext, cmd *a
 
 	filename := proptools.StringDefault(d.properties.Api_levels_jar_filename, "android.jar")
 
+	jarFolder := proptools.StringDefault(d.properties.Api_levels_jar_folder, "public")
 	ctx.VisitDirectDepsWithTag(metalavaAPILevelsAnnotationsDirTag, func(m android.Module) {
 		if t, ok := m.(*ExportedDroiddocDir); ok {
 			for _, dep := range t.deps {
@@ -373,7 +381,7 @@ func (d *Droidstubs) apiLevelsAnnotationsFlags(ctx android.ModuleContext, cmd *a
 					cmd.Implicit(dep)
 				}
 			}
-			cmd.FlagWithArg("--android-jar-pattern ", t.dir.String()+"/%/public/"+filename)
+			cmd.FlagWithArg("--android-jar-pattern ", t.dir.String()+"/%/"+jarFolder+"/"+filename)
 		} else {
 			ctx.PropertyErrorf("api_levels_annotations_dirs",
 				"module %q is not a metalava api-levels-annotations dir", ctx.OtherModuleName(m))

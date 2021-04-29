@@ -485,7 +485,7 @@ func (l *lintSingleton) copyLintDependencies(ctx android.SingletonContext) {
 
 	var frameworkDocStubs android.Module
 	ctx.VisitAllModules(func(m android.Module) {
-		if ctx.ModuleName(m) == "framework-doc-stubs" {
+		if ctx.ModuleName(m) == "framework-doc-system-module-stubs" {
 			if frameworkDocStubs == nil {
 				frameworkDocStubs = m
 			} else {
