@@ -3,6 +3,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ba7ea84_48106cc7",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-29T21:40:28Z",
+      "side": 1,
+      "message": "Add here:\n\n  _ \u003d pctx.HostBinToolVariable(\"createMiniDebugInfo\", \"create_minidebuginfo\")",
+      "revId": "b1496da93aa38adf70c9818605b3f7c97ec18e23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa6f54c4_032bd1cc",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-29T21:40:28Z",
+      "side": 1,
+      "message": "Add here:\n\n  CREATE_MINIDEBUGINFO\u003d$createMiniDebugInfo",
+      "range": {
+        "startLine": 135,
+        "startChar": 26,
+        "endLine": 135,
+        "endChar": 27
+      },
+      "revId": "b1496da93aa38adf70c9818605b3f7c97ec18e23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78d366f3_ba1bfe8b",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-29T21:40:28Z",
+      "side": 1,
+      "message": "Add here:\n\n  \"$createMiniDebugInfo\"",
+      "range": {
+        "startLine": 136,
+        "startChar": 47,
+        "endLine": 136,
+        "endChar": 48
+      },
+      "revId": "b1496da93aa38adf70c9818605b3f7c97ec18e23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7b5d32f_e985d1d4",
         "filename": "scripts/strip.sh",
         "patchSetId": 1
