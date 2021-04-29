@@ -16,6 +16,52 @@
       "message": "(building mixed-droid locally now)",
       "revId": "6b304b43195c9c2112e9088cd64a74ebb7824b29",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c759c9d9_0ca42568",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-29T08:46:46Z",
+      "side": 1,
+      "message": "nit: mind making this not \"domain-specific\" so that it\u0027s easier to see the actual functionality being (instead of this test being a mirror of some example of the actual production use case?). Can happen in a followup change.\n\nFor example:\n\ncc_library {\n  name: \"a\"\n  shared: {\n    whole_static_libs: [\"static_dep\"],\n  },\n  static: {\n    whole_shared_libs: [\"shared_dep\"],\n  }\n}\n\ncc_library {\n  name: \"shared\",\n}\n\n...\n\nThis would make the test clearer because e.g. AFAIU the \"ldflags:\" and \"arch:\" are red herrings: it\u0027s not what the change does, those flags are just \"along for the ride\".",
+      "range": {
+        "startLine": 258,
+        "startChar": 40,
+        "endLine": 258,
+        "endChar": 52
+      },
+      "revId": "6b304b43195c9c2112e9088cd64a74ebb7824b29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89a6942f_41ca1e93",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-29T08:46:46Z",
+      "side": 1,
+      "message": "If you do this, wouldn\u0027t the shared version be built with the wrong sources?",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 30
+      },
+      "revId": "6b304b43195c9c2112e9088cd64a74ebb7824b29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
