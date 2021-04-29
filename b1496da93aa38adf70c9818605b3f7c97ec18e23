@@ -22,6 +22,30 @@
       },
       "revId": "b1496da93aa38adf70c9818605b3f7c97ec18e23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcfdf275_35020ebf",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-29T21:14:49Z",
+      "side": 1,
+      "message": "Soong and make should pass in a new environment variable, and also add a dependency on the tool.",
+      "parentUuid": "b7b5d32f_e985d1d4",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 101,
+        "endChar": 21
+      },
+      "revId": "b1496da93aa38adf70c9818605b3f7c97ec18e23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
