@@ -246,6 +246,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/mysdklibrary-stubs.jar"],
         stub_srcs: ["sdk_library/public/mysdklibrary_stub_sources"],
+        docstub_srcs: ["sdk_library/public/mysdklibrary_docstub_sources"],
         current_api: "sdk_library/public/mysdklibrary.txt",
         removed_api: "sdk_library/public/mysdklibrary-removed.txt",
         sdk_version: "current",
@@ -262,6 +263,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/mycoreplatform-stubs.jar"],
         stub_srcs: ["sdk_library/public/mycoreplatform_stub_sources"],
+        docstub_srcs: ["sdk_library/public/mycoreplatform_docstub_sources"],
         current_api: "sdk_library/public/mycoreplatform.txt",
         removed_api: "sdk_library/public/mycoreplatform-removed.txt",
         sdk_version: "current",
@@ -303,6 +305,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/mysdklibrary-stubs.jar"],
         stub_srcs: ["sdk_library/public/mysdklibrary_stub_sources"],
+        docstub_srcs: ["sdk_library/public/mysdklibrary_docstub_sources"],
         current_api: "sdk_library/public/mysdklibrary.txt",
         removed_api: "sdk_library/public/mysdklibrary-removed.txt",
         sdk_version: "current",
@@ -319,6 +322,7 @@ java_sdk_library_import {
     public: {
         jars: ["sdk_library/public/mycoreplatform-stubs.jar"],
         stub_srcs: ["sdk_library/public/mycoreplatform_stub_sources"],
+        docstub_srcs: ["sdk_library/public/mycoreplatform_docstub_sources"],
         current_api: "sdk_library/public/mycoreplatform.txt",
         removed_api: "sdk_library/public/mycoreplatform-removed.txt",
         sdk_version: "current",
