@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e20184a4_0f3b7146",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-29T10:29:11Z",
+      "side": 1,
+      "message": "Nit: double space.",
+      "range": {
+        "startLine": 123,
+        "startChar": 68,
+        "endLine": 123,
+        "endChar": 69
+      },
+      "revId": "26b9e11bab993553d3bf30a62e37f5e8e89b78df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7abddb1_958c2225",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-29T10:29:11Z",
+      "side": 1,
+      "message": "Nit: VisitDirectDepsWithTag with a check on isActiveModule could be a bit shorter.",
+      "range": {
+        "startLine": 127,
+        "startChar": 5,
+        "endLine": 127,
+        "endChar": 22
+      },
+      "revId": "26b9e11bab993553d3bf30a62e37f5e8e89b78df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
