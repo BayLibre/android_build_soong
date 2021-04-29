@@ -46,6 +46,30 @@
       },
       "revId": "e3ecce67c14e0edda22938648cb3a797ca2409ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ad38f1f_af8cdf08",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-04-29T15:20:07Z",
+      "side": 1,
+      "message": "Still feels like a tech debt... If you feel strongly, I am not going to object too much, but this is a code smell: why is this a singleton? can we hide declarations behind some singleton magic? why not generate more build actions? some of these questions will be asked in the future by someone.\n\n1. It seems the only one remaining is INTERNAL_PLATFORM_HIDDENAPI_FLAGS? Is it really a lot of changes? If it has a known output location, can make use $(OUT_DIR)/path?\n2. With that argument soong will continue to have lots of \"small and insignificant\" technical debts. I may as well reuse bootclasspath_fragments for systemserver_classpath_fragments. Having a separate type would just replace the couple of uses.. :-)\n3. You are just moving bad bits from one place to another, at least leaving it in existing singleton clearly signifies it\u0027s a tech debt, compared to a comment that says don\u0027t generate any build actions..",
+      "parentUuid": "bb61d1c1_3157f5b2",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "e3ecce67c14e0edda22938648cb3a797ca2409ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
