@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bc2b85b_63a9e9eb",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-29T09:01:38Z",
+      "side": 1,
+      "message": "good point, done.",
+      "parentUuid": "c759c9d9_0ca42568",
+      "range": {
+        "startLine": 258,
+        "startChar": 40,
+        "endLine": 258,
+        "endChar": 52
+      },
+      "revId": "6b304b43195c9c2112e9088cd64a74ebb7824b29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89a6942f_41ca1e93",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-29T08:46:46Z",
       "side": 1,
       "message": "If you do this, wouldn\u0027t the shared version be built with the wrong sources?",
+      "range": {
+        "startLine": 266,
+        "startChar": 1,
+        "endLine": 266,
+        "endChar": 30
+      },
+      "revId": "6b304b43195c9c2112e9088cd64a74ebb7824b29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f0b117f_82486417",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-29T09:01:38Z",
+      "side": 1,
+      "message": "`srcs` only goes into the static/_mainlib root, which seems WAI? There is no `srcs` attribute on cc_shared_library.",
+      "parentUuid": "89a6942f_41ca1e93",
       "range": {
         "startLine": 266,
         "startChar": 1,
