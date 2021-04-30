@@ -343,6 +343,30 @@
       },
       "revId": "b1496da93aa38adf70c9818605b3f7c97ec18e23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c388669_3c395a7c",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-30T20:31:28Z",
+      "side": 1,
+      "message": "Use:\n ifneq ($(HOST_OS),darwin)\n   $(strip_output): $(CREATE_MINIDEBUGINFO)\n endif",
+      "parentUuid": "78f551d3_6ffba2bc",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 101,
+        "endChar": 21
+      },
+      "revId": "b1496da93aa38adf70c9818605b3f7c97ec18e23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
