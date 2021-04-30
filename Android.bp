@@ -111,8 +111,3 @@ cc_genrule {
     srcs: [":linker"],
     out: ["linker.flags"],
 }
-
-// Instantiate the dex_bootjars singleton module.
-dex_bootjars {
-    name: "dex_bootjars",
-}

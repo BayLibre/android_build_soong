@@ -234,7 +234,6 @@ func registerRequiredBuildComponentsForTest(ctx android.RegistrationContext) {
 	RegisterAppSetBuildComponents(ctx)
 	registerBootclasspathBuildComponents(ctx)
 	registerBootclasspathFragmentBuildComponents(ctx)
-	RegisterDexpreoptBootJarsComponents(ctx)
 	RegisterDocsBuildComponents(ctx)
 	RegisterGenRuleBuildComponents(ctx)
 	registerJavaBuildComponents(ctx)
@@ -321,13 +320,6 @@ func gatherRequiredDepsForTest() string {
 			}
 		`, extra)
 	}
-
-	// Make sure that the dex_bootjars singleton module is instantiated for the tests.
-	bp += `
-		dex_bootjars {
-			name: "dex_bootjars",
-		}
-`
 
 	return bp
 }
