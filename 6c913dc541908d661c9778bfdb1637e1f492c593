@@ -51,6 +51,24 @@
       "parentUuid": "c8b47ccd_8b71843d",
       "revId": "6c913dc541908d661c9778bfdb1637e1f492c593",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65a0ae02_104d5444",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-30T23:22:02Z",
+      "side": 1,
+      "message": "Oh, then its fine.",
+      "parentUuid": "c46e2810_b31e3e91",
+      "revId": "6c913dc541908d661c9778bfdb1637e1f492c593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
