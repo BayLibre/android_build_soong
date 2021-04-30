@@ -170,6 +170,7 @@ var (
 		"system/core/property_service/libpropertyinfoparser": Bp2BuildDefaultTrueRecursively,
 		"system/libbase":                  Bp2BuildDefaultTrueRecursively,
 		"system/logging/liblog":           Bp2BuildDefaultTrueRecursively,
+		"external/jemalloc_new":           Bp2BuildDefaultTrueRecursively,
 		"external/arm-optimized-routines": Bp2BuildDefaultTrueRecursively,
 	}
 
@@ -195,32 +196,61 @@ var (
 		"liblinker_main",              // ruperts@, cc_library_static, depends on libbase, libz, libziparchive
 		"liblinker_malloc",            // ruperts@, cc_library_static, depends on libziparchive, libz, libbase
 
-		// Requires non-libc targets, but otherwise works
-		"libc_jemalloc_wrapper", // ruperts@, cc_library_static, depends on //external/jemalloc_new
+		// Compilation or linker error from command line and toolchain inconsistencies.
+		// b/186388670: Make Bazel/Ninja command lines more similar.
+		// b/186628704: Incorporate Soong's Clang flags into Bazel's toolchains.
+		//
+		"libc_tzcode",  // cc_library_static, error: expected expression
+		"libjemalloc5", // cc_library, ld.lld: error: undefined symbol: memset, __stack_chk_fail, pthread_mutex_trylock..
+		// libc_bionic_ndk, cc_library_static, error: ISO C++ requires field designators...
+		// Also b/186576099: multilib props support
+		// Also b/183595873: product_variables support
+		"libc_bionic_ndk",
+		// libc_malloc_hooks, cc_library, undefined symbol: __malloc_hook, __realloc_hook, __free_hook, __memalign_hook, memset, __errno
+		// These symbols are defined in https://cs.android.com/android/platform/superproject/+/master:bionic/libc/bionic/malloc_common.cpp;l=57-60;drc=9cad8424ff7b0fa63b53cb9919eae31539b8561a
+		// Also b/186650430: version_script prop support
+		"libc_malloc_hooks",
+		// libstdc++: cc_library, undefined symbol: __errno, syscall, async_safe_fatal_no_abort, abort, malloc, free
+		// Also b/186651708: depends on libc through system_shared_libraries.
+		// Also b/186650430: version_script prop support
+		// Also b/186651708: pack_relocations prop support
+		"libstdc++",
+		// libm, b/183064661:
+		// cc_library, error: "expected register here" (and many others)
+		// Also b/186651708: depends on libc through system_shared_libraries.
+		// Also b/186650430: version_script prop support
+		// Also b/186651708: pack_relocations prop support
+		// Also b/186576099: multilib props support
+		"libm",
 
-		// Compilation error, seems to be fixable by changing the toolchain definition
-		"libc_bionic_ndk", // ruperts@, cc_library_static, error: ISO C++ requires field designators...
-		"libc_tzcode",     // ruperts@, cc_library_static, error: expected expression
-		"libm",            // jingwen@, cc_library, error: "expected register here" (and many others)
+		// b/186823769: Needs C++ STL support, includes from unconverted libstdc++ standard library
+		"libBionicBenchmarksUtils", // cc_library_static, 'map' file not found
 
-		// Linker error
-		"libc_malloc_hooks", // jingwen@, cc_library, undefined symbol: __malloc_hook, etc.
-		"libstdc++",         // jingwen@, cc_library, undefined symbol: free
+		// b/186024507: Includes errors because of the system_shared_libs default value.
+		// Missing -isystem bionic/libc/include through the libc/libm/libdl
+		// default dependencies if system_shared_libs is unset.
+		"liblog",                        // cc_library, 'sys/cdefs.h' file not found
+		"libjemalloc5_jet",              // cc_library, 'sys/cdefs.h' file not found
+		"libseccomp_policy",             // b/186476753, cc_library, 'linux/filter.h' not found
+		"note_memtag_heap_async",        // b/185127353, cc_library_static, error: feature.h not found
+		"note_memtag_heap_sync",         // b/185127353, cc_library_static, error: feature.h not found
+		"libbionic_tests_headers_posix", // cc_library_static, sched.h, time.h not found (and others)
 
-		// Includes not found
-		"libbionic_tests_headers_posix", // ruperts@, cc_library_static, 'dirent.h' not found
+		// Depends on other unconverted modules before we can make progress.
+		"libc_jemalloc_wrapper", // cc_library_static, depends on //external/jemalloc_new:libjemalloc5
+		"libc_ndk",              // cc_library_static, depends on libc_bionic_ndk, libc_jemalloc_wrapper, libc_tzcode, libstdc++
+		// libc: b/183064430
+		// cc_library, depends on libc_jemalloc_wrapper (and possibly many others)
+		// Also b/186816506: Handle static and shared props
+		// Also b/186650430: version_script prop support
+		// Also b/186651708: pack_relocations prop support
+		// Also b/186576099: multilib props support
+		"libc",
 
-		// b/186024507, missing -isystem bionic/libc/include through the libc/libm/libdl default dependencies if system_shared_libs unset
-		"liblog",                 // cc_library, 'sys/cdefs.h' file not found
-		"libseccomp_policy",      // cc_library, 'linux/filter.h' not found
-		"note_memtag_heap_async", // cc_library_static, error: feature.h not found
-		"note_memtag_heap_sync",  // cc_library_static, error: feature.h not found
-
-		// Other
-		"libBionicBenchmarksUtils", // ruperts@, cc_library_static, 'map' file not found
-		"libc_ndk",                 // ruperts@, cc_library_static, depends on libc_bionic_ndk, libc_jemalloc_wrapper, libc_tzcode, libstdc++
-
-		"libc", // jingwen@, cc_library, depends on //external/gwp_asan
+		// Other tests. Handle later.
+		"libjemalloc5_integrationtest",
+		"libjemalloc5_stresstestlib",
+		"libjemalloc5_unittest",
 	}
 
 	// Per-module denylist to opt modules out of mixed builds. Such modules will
