@@ -16,6 +16,24 @@
       "message": "Is this necessary when not building the product config?  Should it go inside runMakeProductConfig?",
       "revId": "90b0061b2a04718b90c8622e2b6746f26da4083b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfcabbe5_025c0d48",
+        "filename": "ui/build/build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-04-30T20:18:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0f733e6_eb58e585",
+      "revId": "90b0061b2a04718b90c8622e2b6746f26da4083b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
