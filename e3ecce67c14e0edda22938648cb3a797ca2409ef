@@ -118,6 +118,30 @@
       },
       "revId": "e3ecce67c14e0edda22938648cb3a797ca2409ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f12ab1c0_e0c231c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-30T11:21:08Z",
+      "side": 1,
+      "message": "My late 5 cents. 😊\n\n2. AFAICT the problem with supporting MakeVars for modules (as opposed to singletons) is as follows. For a module, MakeVars is instance-specific (each module instance has its own vars). And these module-specific variables are included much later in the main makefile than singleton-generated MakeVars. \"Much later\" means that it probably too late --- after the inclusion on dexpreopt stuff (I looked into the problem a while ago so may be mistaken). The perspective of reordering makefile include order is generally scary. Adding another mechnism for \"early instance-specific vars\" is also scary, it\u0027s enough that we have one Android-*.mk file to include.\n\n3. My view on this is that moving MakeVars to the singleton-module is a good thing. Everything should be moved to the singleton-module, and the old singleton should be removed. It should have been a singleton-module in the first place, but there was no such thing at the time it was created.\n\nA radical and most important win of having a singleton-module is that we can depend on it and avoid the inefficient VisitAllModules loop that finds boot jar modules --- this is really the worst part of the old singleton. And this anti-pattern started to spread to hidden API.\n\nWhile it would be good to move from singleton-module to a module, it will be a less practical goal for now. So, this CL is not a regression, it is a small step forward.\n\nIIRC all this (or some of it) was discussed in an email thread a while ago between Paul, Colin, Nicolas and myself, unfortunately Artur you were not on that thread, but I\u0027ll try to find it and CC you for context.",
+      "parentUuid": "17bb76d3_1f272724",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "e3ecce67c14e0edda22938648cb3a797ca2409ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
