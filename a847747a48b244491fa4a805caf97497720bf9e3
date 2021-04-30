@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "382db9e9_33184d80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-30T13:43:45Z",
+      "side": 1,
+      "message": "This is the first time I touch bp2build, so don\u0027t assume that I know what I\u0027m doing.\n\nIn particular, I was somewhat surprised about the fact that we use pass around reflect.Value() in prettyPrintAttribute(). I thought the values passed in are under our control so interface{} would work as well (I\u0027m bringing this up because I spent quite a bit of time trying to understand why and failing)",
+      "revId": "a847747a48b244491fa4a805caf97497720bf9e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5001e1f7_4349d13f",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-30T13:43:45Z",
+      "side": 1,
+      "message": "CanSet apparently returns False for Label.Label in this case. I don\u0027t understand why how come it works in any other case. The symptom is that isZero() returns true and thus the version_script attribute does not get printed.",
+      "range": {
+        "startLine": 522,
+        "startChar": 3,
+        "endLine": 522,
+        "endChar": 54
+      },
+      "revId": "a847747a48b244491fa4a805caf97497720bf9e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
