@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b51d5315_695620d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-30T10:05:34Z",
+      "side": 1,
+      "message": "(this CL is functionally OK, please feel free to self-stamp +2 and submit after resolving!)",
+      "revId": "b733976d9ea837d2823bb5af150577821e616de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3598846_c2d36080",
