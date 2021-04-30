@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0625d2e8_935ebf64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-30T10:30:24Z",
+      "side": 1,
+      "message": "non-empty?",
+      "range": {
+        "startLine": 17,
+        "startChar": 50,
+        "endLine": 17,
+        "endChar": 58
+      },
+      "revId": "ea4ab63f77020948234c126776198b90b8e1d978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82507de2_03caf1c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-30T10:30:24Z",
+      "side": 1,
+      "message": "I ?",
+      "range": {
+        "startLine": 23,
+        "startChar": 36,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "ea4ab63f77020948234c126776198b90b8e1d978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7067635c_287a53c4",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 6705,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-30T10:30:24Z",
+      "side": 1,
+      "message": "Does it have to end in a newline?",
+      "range": {
+        "startLine": 6704,
+        "startChar": 60,
+        "endLine": 6705,
+        "endChar": 3
+      },
+      "revId": "ea4ab63f77020948234c126776198b90b8e1d978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdc16fb1_d8a7c638",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-30T10:30:24Z",
+      "side": 1,
+      "message": "Why is this needed? And if needed, why two jars and not just \"bar\"? I can see the logic below that checks for empty contents, but I don\u0027t see any other place in the test that checks \"bar\" and \"quuz\".",
+      "range": {
+        "startLine": 97,
+        "startChar": 14,
+        "endLine": 97,
+        "endChar": 27
+      },
+      "revId": "ea4ab63f77020948234c126776198b90b8e1d978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a04dc0f_5295963c",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-30T10:30:24Z",
+      "side": 1,
+      "message": "Same question.",
+      "range": {
+        "startLine": 409,
+        "startChar": 3,
+        "endLine": 409,
+        "endChar": 28
+      },
+      "revId": "ea4ab63f77020948234c126776198b90b8e1d978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32d7003a_680c3cc6",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-30T10:30:24Z",
+      "side": 1,
+      "message": "This is a bit difficult to parse, mainly because it\u0027s unclear what \"this\" refers to (maybe \"this boot image\"?).",
+      "range": {
+        "startLine": 190,
+        "startChar": 36,
+        "endLine": 190,
+        "endChar": 87
+      },
+      "revId": "ea4ab63f77020948234c126776198b90b8e1d978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0302a6fd_45aa792a",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-30T10:30:24Z",
+      "side": 1,
+      "message": "Same.",
+      "range": {
+        "startLine": 205,
+        "startChar": 33,
+        "endLine": 205,
+        "endChar": 80
+      },
+      "revId": "ea4ab63f77020948234c126776198b90b8e1d978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
