@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4ea099_d80474e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-30T14:47:53Z",
+      "side": 1,
+      "message": "I\u0027ll bypass the remaining presubmits so that I can submit this before EOW. I also ran a mixed build locally just to be sure and it seems to work.",
+      "revId": "a847747a48b244491fa4a805caf97497720bf9e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05e16333_71b2a4b1",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-04-30T13:54:12Z",
       "side": 1,
       "message": "godocs?",
+      "range": {
+        "startLine": 230,
+        "startChar": 5,
+        "endLine": 230,
+        "endChar": 19
+      },
+      "revId": "a847747a48b244491fa4a805caf97497720bf9e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0096bfe5_78f03ca3",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-04-30T14:47:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05e16333_71b2a4b1",
       "range": {
         "startLine": 230,
         "startChar": 5,
