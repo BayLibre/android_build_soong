@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a7ef115_3112e6ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-30T22:42:18Z",
+      "side": 1,
+      "message": "FAILED: ninja: dependency cycle: out/soong/host/linux-x86/bin/create_minidebuginfo -\u003e out/soong/.intermediates/art/tools/create_minidebuginfo/create_minidebuginfo/linux_glibc_x86_64/create_minidebuginfo -\u003e out/soong/.intermediates/external/libcxx/libc++/linux_glibc_x86_64_shared/libc++.so.toc -\u003e out/soong/.intermediates/external/libcxx/libc++/linux_glibc_x86_64_shared/libc++.so -\u003e out/soong/host/linux-x86/bin/create_minidebuginfo\n\nThat sounds like legitimate complaint :-|  \nWe somehow need to make sure that the crete_minidebuginfo module does not depend on strip",
+      "revId": "6c913dc541908d661c9778bfdb1637e1f492c593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
