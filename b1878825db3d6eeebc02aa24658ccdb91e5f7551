@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea09d940_89bec67a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-30T12:35:17Z",
+      "side": 1,
+      "message": "Just some nits.",
+      "revId": "b1878825db3d6eeebc02aa24658ccdb91e5f7551",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86151a1f_c7c13cad",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-30T12:35:17Z",
+      "side": 1,
+      "message": "Nit: It\u0027s not an interface any more.",
+      "range": {
+        "startLine": 201,
+        "startChar": 36,
+        "endLine": 201,
+        "endChar": 45
+      },
+      "revId": "b1878825db3d6eeebc02aa24658ccdb91e5f7551",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5e07ae2_1c8acd56",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-30T12:35:17Z",
+      "side": 1,
+      "message": "Is an \"or\" missing here?",
+      "range": {
+        "startLine": 235,
+        "startChar": 19,
+        "endLine": 235,
+        "endChar": 20
+      },
+      "revId": "b1878825db3d6eeebc02aa24658ccdb91e5f7551",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fecad478_aa0f059a",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-04-30T12:35:17Z",
+      "side": 1,
+      "message": "Grammar: Missing \",\"",
+      "range": {
+        "startLine": 235,
+        "startChar": 79,
+        "endLine": 235,
+        "endChar": 80
+      },
+      "revId": "b1878825db3d6eeebc02aa24658ccdb91e5f7551",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
