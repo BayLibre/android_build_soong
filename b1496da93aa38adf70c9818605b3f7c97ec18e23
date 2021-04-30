@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2ac3968_4e6f4a80",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-30T17:59:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ba7ea84_48106cc7",
+      "revId": "b1496da93aa38adf70c9818605b3f7c97ec18e23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa6f54c4_032bd1cc",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a7cb3a_f0e8158b",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-30T17:59:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa6f54c4_032bd1cc",
+      "range": {
+        "startLine": 135,
+        "startChar": 26,
+        "endLine": 135,
+        "endChar": 27
+      },
+      "revId": "b1496da93aa38adf70c9818605b3f7c97ec18e23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78d366f3_ba1bfe8b",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-04-29T21:40:28Z",
       "side": 1,
       "message": "Add here:\n\n  \"$createMiniDebugInfo\"",
+      "range": {
+        "startLine": 136,
+        "startChar": 47,
+        "endLine": 136,
+        "endChar": 48
+      },
+      "revId": "b1496da93aa38adf70c9818605b3f7c97ec18e23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca80f566_66fc96b1",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-30T17:59:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78d366f3_ba1bfe8b",
       "range": {
         "startLine": 136,
         "startChar": 47,
@@ -125,6 +191,30 @@
       "side": 1,
       "message": "Can you help me with that please?  I tried to follow XZ for inspiration before, but could not find my around.",
       "parentUuid": "dcfdf275_35020ebf",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 101,
+        "endChar": 21
+      },
+      "revId": "b1496da93aa38adf70c9818605b3f7c97ec18e23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b41a9fad_3d9fae97",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-30T17:59:46Z",
+      "side": 1,
+      "message": "Thanks!  It still does not seem to work though.  Somehow the env var still ins\u0027t propagated to the bash script:\n\nFAILED: out/target/product/sargo/obj/EXECUTABLES/init_first_stage_intermediates/init\n/bin/bash -c \"CLANG_BIN\u003dprebuilts/clang/host/linux-x86/clang-r416183b/bin       CROSS_COMPILE\u003dprebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-         XZ\u003dprebuilts/build-tools/linux-x86/bin/xz       build/soong/scripts/strip.sh -i out/target/product/sargo/symbols/init -o out/target/product/sargo/obj/EXECUTABLES/init_first_stage_intermediates/init -d out/target/product/sargo/obj/EXECUTABLES/init_first_stage_intermediates/init.strip.d  --keep-mini-debug-info\"\nbuild/soong/scripts/strip.sh: line 101: : command not found",
+      "parentUuid": "961a28bf_22952b85",
       "range": {
         "startLine": 101,
         "startChar": 8,
