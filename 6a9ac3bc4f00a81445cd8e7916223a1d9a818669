@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65086e4d_ee78477b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-30T10:47:32Z",
+      "side": 1,
+      "message": "missing semicolon (or new sentence)",
+      "range": {
+        "startLine": 10,
+        "startChar": 67,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "6a9ac3bc4f00a81445cd8e7916223a1d9a818669",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80e186ca_643dbb20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-30T10:47:32Z",
+      "side": 1,
+      "message": "module?",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "6a9ac3bc4f00a81445cd8e7916223a1d9a818669",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64416121_bb1475ad",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-04-30T10:47:32Z",
+      "side": 1,
+      "message": "Sometimes android.BuilderContext is ok to use as a common subset, maybe it would do in this case as well to avoid duplication?",
+      "range": {
+        "startLine": 458,
+        "startChar": 42,
+        "endLine": 458,
+        "endChar": 70
+      },
+      "revId": "6a9ac3bc4f00a81445cd8e7916223a1d9a818669",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
