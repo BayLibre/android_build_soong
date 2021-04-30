@@ -223,6 +223,30 @@
       },
       "revId": "b1496da93aa38adf70c9818605b3f7c97ec18e23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "091c1226_015230ee",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-30T18:30:59Z",
+      "side": 1,
+      "message": "That\u0027s where the script is called from Make.\nAdd dependencies here (XZ is missing too) https://cs.android.com/android/platform/superproject/+/master:build/make/core/dynamic_binary.mk;l\u003d135;drc\u003ddb98001be16d59f31a4573c563b8cf3accc9cf74:\n\n ${XZ} ${CREATE_MINIDEBUGINFO}\n\nAdd here https://cs.android.com/android/platform/superproject/+/master:build/make/core/dynamic_binary.mk;l\u003d139;drc\u003ddb98001be16d59f31a4573c563b8cf3accc9cf74:\n CREATE_MINIDEBUGINFO\u003d${CREATE_MINIDEBUGINFO}",
+      "parentUuid": "b41a9fad_3d9fae97",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 101,
+        "endChar": 21
+      },
+      "revId": "b1496da93aa38adf70c9818605b3f7c97ec18e23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

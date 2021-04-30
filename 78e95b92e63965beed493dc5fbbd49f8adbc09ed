@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e8528fa_cbcf3c25",
+        "filename": "cc/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-30T18:30:59Z",
+      "side": 1,
+      "message": "Add here:\n\n  ctx.Strict(\"CREATE_MINIDEBUGINFO\", \"${createMiniDebugInfo}\")",
+      "revId": "78e95b92e63965beed493dc5fbbd49f8adbc09ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
