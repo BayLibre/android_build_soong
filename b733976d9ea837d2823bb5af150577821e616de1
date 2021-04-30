@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "475150cb_c039621b",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1829,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-30T03:08:56Z",
+      "side": 1,
+      "message": "Yeah, this is potentially problematic but we can uniquify them later.",
+      "parentUuid": "41a7c54e_828f3f86",
+      "range": {
+        "startLine": 1829,
+        "startChar": 2,
+        "endLine": 1829,
+        "endChar": 124
+      },
+      "revId": "b733976d9ea837d2823bb5af150577821e616de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0fef9cc_2b31113f",
         "filename": "android/arch.go",
         "patchSetId": 4
@@ -83,6 +107,30 @@
       "writtenOn": "2021-04-30T02:59:59Z",
       "side": 1,
       "message": "Maybe there should be another function which combines arch and multi-lib? It is a bit surprising that GetArchProperties really returns GetArchAndMultiLibProperties, as it were. Or we could rename this function?",
+      "range": {
+        "startLine": 1836,
+        "startChar": 2,
+        "endLine": 1836,
+        "endChar": 36
+      },
+      "revId": "b733976d9ea837d2823bb5af150577821e616de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d066958c_31c905d9",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-30T03:08:56Z",
+      "side": 1,
+      "message": "Renaming the function sound goods to me too, or update the function doc to reflect that it returns multilib props now as well.",
+      "parentUuid": "b0fef9cc_2b31113f",
       "range": {
         "startLine": 1836,
         "startChar": 2,
