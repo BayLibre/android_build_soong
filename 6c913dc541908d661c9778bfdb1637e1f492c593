@@ -33,6 +33,24 @@
       "message": "I forgot you were going to check this in as a prebuilt in prebuilts/build-tools.  Change this to:\n\n\t_ \u003d pctx.SourcePathVariable(\"createMiniDebugInfo\", \"prebuilts/build-tools/${config.HostPrebuiltTag}/bin/create_minidebuginfo\")\n\nThat will solve your circular dependency problems, but then you\u0027ll have a different problem that the prebuilt needs to exist for the first aosp-build-tools build to work.  One option would be to only add the dependency on create_minidebuginfo when stripping device modules, because I don\u0027t think we ever use it for host modules.  That isn\u0027t particularly easy (the dependency would have to be moved out of CommandDeps and manually added to Implicits on the ctx.Build() call that uses the rule).  Maybe just check in a locally-built create_minidebuginfo first, and then immediately replace it with one from aosp-build-tools?  Or run presubmit with a locally built one, then take create_minidebuginfo from the aosp-build-tools presubmit build to check in.",
       "revId": "6c913dc541908d661c9778bfdb1637e1f492c593",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c46e2810_b31e3e91",
+        "filename": "cc/builder.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-30T23:13:07Z",
+      "side": 1,
+      "message": "Ah, thanks!\n\nI am not sure I follow the second part.  Note that the binary already exists in the prebuilts. We sumbitted the aosp-build-tools CLs already, and it seem @enh has updated the prebuilt binaries since then. So maybe it is ok?",
+      "parentUuid": "c8b47ccd_8b71843d",
+      "revId": "6c913dc541908d661c9778bfdb1637e1f492c593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
