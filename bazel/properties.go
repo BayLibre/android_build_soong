@@ -227,6 +227,14 @@ type Attribute interface {
 	HasConfigurableValues() bool
 }
 
+type LabelAttribute struct {
+	Value Label
+}
+
+func (LabelAttribute) HasConfigurableValues() bool {
+	return false
+}
+
 // Arch-specific label_list typed Bazel attribute values. This should correspond
 // to the types of architectures supported for compilation in arch.go.
 type labelListArchValues struct {
