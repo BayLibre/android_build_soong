@@ -16,6 +16,24 @@
       "message": "Add here:\n\n  ctx.Strict(\"CREATE_MINIDEBUGINFO\", \"${createMiniDebugInfo}\")",
       "revId": "78e95b92e63965beed493dc5fbbd49f8adbc09ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7727255_5c306dee",
+        "filename": "cc/makevars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-30T19:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e8528fa_cbcf3c25",
+      "revId": "78e95b92e63965beed493dc5fbbd49f8adbc09ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
