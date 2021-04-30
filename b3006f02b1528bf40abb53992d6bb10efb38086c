@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b72871d8_a0dc73fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2021-04-30T00:10:15Z",
+      "side": 1,
+      "message": "Till now apexd didn\u0027t actually care about the fact that outer .apex  has same properties as apk. But I see your point here. I wonder if we instead of using apk signature scheme, we can check that root digest of apex_payload.img. We might still need to propagate it to the apex_manifest.pb/separate file on /system to make sure that check doesn\u0027t introduce boot time regression.",
+      "parentUuid": "142ce362_28b5f0bd",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "b3006f02b1528bf40abb53992d6bb10efb38086c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b4e6e13_5ab3ded8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
