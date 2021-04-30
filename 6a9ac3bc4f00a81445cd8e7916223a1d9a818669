@@ -71,6 +71,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b61e60c_72853093",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-30T11:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e54e276c_e812160a",
+      "range": {
+        "startLine": 10,
+        "startChar": 23,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "6a9ac3bc4f00a81445cd8e7916223a1d9a818669",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db2c1b76_6b43cca8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-30T11:14:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65086e4d_ee78477b",
+      "range": {
+        "startLine": 10,
+        "startChar": 67,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "6a9ac3bc4f00a81445cd8e7916223a1d9a818669",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64416121_bb1475ad",
@@ -84,6 +132,30 @@
       "writtenOn": "2021-04-30T10:47:32Z",
       "side": 1,
       "message": "Sometimes android.BuilderContext is ok to use as a common subset, maybe it would do in this case as well to avoid duplication?",
+      "range": {
+        "startLine": 458,
+        "startChar": 42,
+        "endLine": 458,
+        "endChar": 70
+      },
+      "revId": "6a9ac3bc4f00a81445cd8e7916223a1d9a818669",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f578f02_6329b8d0",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-04-30T11:14:50Z",
+      "side": 1,
+      "message": "Unfortunately, that does not work as it does not support ModuleName(module) or equivalent functionality. A follow up change will remove this so I promise it won\u0027t be around for very long.",
+      "parentUuid": "64416121_bb1475ad",
       "range": {
         "startLine": 458,
         "startChar": 42,
