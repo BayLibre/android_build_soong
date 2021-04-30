@@ -220,10 +220,6 @@ var artApexNames = []string{
 	"com.google.android.art.testing",
 }
 
-func init() {
-	RegisterDexpreoptBootJarsComponents(android.InitRegistrationContext)
-}
-
 // Target-independent description of a boot image.
 type bootImageConfig struct {
 	// If this image is an extension, the image that it extends.
@@ -368,46 +364,8 @@ func (image *bootImageVariant) imageLocations() (imageLocations []string) {
 	return append(imageLocations, dexpreopt.PathToLocation(image.images, image.target.Arch.ArchType))
 }
 
-func dexpreoptBootJarsFactory() android.SingletonModule {
-	m := &dexpreoptBootJars{}
-	android.InitAndroidModule(m)
-	return m
-}
-
-func RegisterDexpreoptBootJarsComponents(ctx android.RegistrationContext) {
-	ctx.RegisterSingletonModuleType("dex_bootjars", dexpreoptBootJarsFactory)
-}
-
 func SkipDexpreoptBootJars(ctx android.PathContext) bool {
 	return dexpreopt.GetGlobalConfig(ctx).DisablePreoptBootImages
-}
-
-// Singleton module for generating boot image build rules.
-type dexpreoptBootJars struct {
-	android.SingletonModuleBase
-}
-
-// Provide paths to boot images for use by modules that depend upon them.
-//
-// The build rules are created in GenerateSingletonBuildActions().
-func (d *dexpreoptBootJars) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	// Placeholder for now.
-}
-
-// Generate build rules for boot images.
-func (d *dexpreoptBootJars) GenerateSingletonBuildActions(ctx android.SingletonContext) {
-	if SkipDexpreoptBootJars(ctx) {
-		return
-	}
-	if dexpreopt.GetCachedGlobalSoongConfig(ctx) == nil {
-		// No module has enabled dexpreopting, so we assume there will be no boot image to make.
-		return
-	}
-
-	global := dexpreopt.GetGlobalConfig(ctx)
-	if !shouldBuildBootImages(ctx.Config(), global) {
-		return
-	}
 }
 
 // shouldBuildBootImages determines whether boot images should be built.
