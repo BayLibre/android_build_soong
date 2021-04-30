@@ -16,6 +16,24 @@
       "message": "This looks like a copy of a significant amount of code from cc/fuzz.go.  Can you reuse the code in cc/fuzz.go by making it query a provider set by ctx.SetProvider in both rust and cc if possible, or an interface that rust and cc both satisfy if converting to a provider is too much work?",
       "revId": "28e7a3b098144b00ebb9b077881fedeaa3c96396",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07d0aa57_10add686",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2021-04-30T01:45:44Z",
+      "side": 1,
+      "message": "Your suggestion totally makes sense. However refactoring cc and rust fuzz will put a risk on delivering the end to end rust pipeline as planned in May. I have created a bug to do the refactor work right after the pipeline work.",
+      "parentUuid": "7b1d7bd5_abdbbc10",
+      "revId": "28e7a3b098144b00ebb9b077881fedeaa3c96396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
