@@ -345,6 +345,8 @@ func (b *platformBootclasspathModule) generateHiddenAPIBuildActions(ctx android.
 			}
 
 			hiddenAPISupportingModules = append(hiddenAPISupportingModules, hiddenAPISupportingModule)
+		} else if _, ok := module.(*DexImport); ok {
+			// Ignore this for the purposes of hidden APi processing
 		} else {
 			ctx.ModuleErrorf("module %s of type %s does not support hidden API processing", module, ctx.OtherModuleType(module))
 		}
