@@ -91,6 +91,52 @@
       },
       "revId": "b733976d9ea837d2823bb5af150577821e616de1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8485af00_93f06367",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-30T03:06:54Z",
+      "side": 1,
+      "message": "Stale code?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "b733976d9ea837d2823bb5af150577821e616de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45d02513_40a6906d",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-04-30T03:06:54Z",
+      "side": 1,
+      "message": "Stale code?",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 4
+      },
+      "revId": "b733976d9ea837d2823bb5af150577821e616de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
