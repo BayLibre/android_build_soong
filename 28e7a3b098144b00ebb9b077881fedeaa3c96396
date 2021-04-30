@@ -34,6 +34,41 @@
       "parentUuid": "7b1d7bd5_abdbbc10",
       "revId": "28e7a3b098144b00ebb9b077881fedeaa3c96396",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "985044b4_f236d4d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-30T16:49:19Z",
+      "side": 1,
+      "message": "The presubmit failure looks like a real issue:\n\n internal error: panic in VisitAllModules(android/soong/android.visitAdaptor.func1) for module module \"example_rust_fuzzer\" variant \"android_arm64_armv8-a_fuzzer_cov\" in GenerateBuildActions for singleton rust_fuzz_packaging\n panic in VisitAllModules(github.com/google/blueprint.(*singletonContext).VisitAllModules.func2) for module \"example_rust_fuzzer\" variant \"android_arm64_armv8-a_fuzzer_cov\"\n rule \"create-out_multiproduct_blueline_coverage_soong_.intermediates_fuzz_target_arm64_example_rust_fuzzer.zip\" is already defined in this scope\n goroutine 1 [running]:\n github.com/google/blueprint.newPanicErrorf(0xd3f540, 0xc7297f00e0, 0xea4c97, 0x1a, 0xc5099e31c8, 0x2, 0x2, 0xd66760, 0x0)\n \t/usr/local/google/buildbot/src/googleplex-android/master/build/blueprint/context.go:4138 +0x7b\ngithub.com/google/blueprint.(*Context).visitAllModules.func1(0xc35096b340, 0xc5099e4f38)\n\t/usr/local/google/buildbot/src/googleplex-android/master/build/blueprint/context.go:3116 +0x13a\npanic(0xd3f540, 0xc7297f00e0)\n\tprebuilts/go/linux-x86/src/runtime/panic.go:969 +0x1b9\ngithub.com/google/blueprint.(*singletonContext).Rule(0xc36a502b00, 0xfde140, 0xc00010c320, 0xc4e5859e30, 0x68, 0xc2f9bda800, 0x3ab, 0x0, 0x0, 0x0, ...)\n\t/usr/local/google/buildbot/src/googleplex-android/master/build/blueprint/singleton_ctx.go:253 +0x1e5\nandroid/soong/android.(*singletonContextAdaptor).Rule(0xc7296e6660, 0xfde140, 0xc00010c320, 0xc4e5859e30, 0x68, 0xc2f9bda800, 0x3ab, 0x0, 0x0, 0x0, ...)\n\t/usr/local/google/buildbot/src/googleplex-android/master/build/soong/android/singleton.go:159 +0x145\nandroid/soong/android.(*RuleBuilder).Build(0xc36a502c60, 0xc4e5859e30, 0x68, 0xc431c57410, 0x2c)\n\t/usr/local/google/buildbot/src/googleplex-android/master/build/soong/android/rule_builder.go:721 +0x28ec\nandroid/soong/rust.(*rustFuzzPackager).GenerateBuildActions.func1(0xffb940, 0xc0189d4900)\n\t/usr/local/google/buildbot/src/googleplex-android/master/build/soong/rust/fuzz.go:213 +0xc75\nandroid/soong/android.visitAdaptor.func1(0xfccda0, 0xc0189d4900)\n ...",
+      "revId": "28e7a3b098144b00ebb9b077881fedeaa3c96396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e4e1176_e7f17116",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-04-30T16:49:19Z",
+      "side": 1,
+      "message": "I\u0027d still prefer to fix it up front, its much easier to refactor to support a new use case than it is to later figure out what the differences are between two not-quite-identical copies, but reluctantly +1.",
+      "parentUuid": "07d0aa57_10add686",
+      "revId": "28e7a3b098144b00ebb9b077881fedeaa3c96396",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
