@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be13a2dc_a7e49fa3",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1697,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-30T17:18:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3598846_c2d36080",
+      "range": {
+        "startLine": 1697,
+        "startChar": 5,
+        "endLine": 1697,
+        "endChar": 28
+      },
+      "revId": "b733976d9ea837d2823bb5af150577821e616de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3df72c10_6913f5a5",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-30T02:59:59Z",
       "side": 1,
       "message": "This seems like a comment for getArchPropertySet?",
+      "range": {
+        "startLine": 1740,
+        "startChar": 0,
+        "endLine": 1743,
+        "endChar": 37
+      },
+      "revId": "b733976d9ea837d2823bb5af150577821e616de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54512402_e5d80907",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1743,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-30T17:18:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3df72c10_6913f5a5",
       "range": {
         "startLine": 1740,
         "startChar": 0,
@@ -111,6 +159,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f24a87e_2191d220",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1829,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-30T17:18:58Z",
+      "side": 1,
+      "message": "Possibly. I don\u0027t actually know how this works in Soong (are they deduped or duplicated?)\n\nRegardless, deserves a followup.",
+      "parentUuid": "475150cb_c039621b",
+      "range": {
+        "startLine": 1829,
+        "startChar": 2,
+        "endLine": 1829,
+        "endChar": 124
+      },
+      "revId": "b733976d9ea837d2823bb5af150577821e616de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b0fef9cc_2b31113f",
@@ -158,6 +230,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b7f5a60_d502d08b",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-30T17:18:58Z",
+      "side": 1,
+      "message": "I could make the argument that multilib is an implementation detail -- what we\u0027re returning is, for each architecture, the property set that pertains to that architecture (effectively in a select statement). Multilib is just another way to select architecture, effectively.\n\nI\u0027m not sure what a good alternative name is, so for now, I\u0027ll just update the docs. Feel free to follow up.",
+      "parentUuid": "d066958c_31c905d9",
+      "range": {
+        "startLine": 1836,
+        "startChar": 2,
+        "endLine": 1836,
+        "endChar": 36
+      },
+      "revId": "b733976d9ea837d2823bb5af150577821e616de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8485af00_93f06367",
@@ -171,6 +267,30 @@
       "writtenOn": "2021-04-30T03:06:54Z",
       "side": 1,
       "message": "Stale code?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "b733976d9ea837d2823bb5af150577821e616de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f8ecf67_36a235bd",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-04-30T17:18:58Z",
+      "side": 1,
+      "message": "Eh; technically, yes, but now that this file was part of my commit, `repo` is becoming a little insistent given that this file wasn\u0027t correctly gofmt\u0027ed when changed last time. Lets just run gofmt on it and move on?",
+      "parentUuid": "8485af00_93f06367",
       "range": {
         "startLine": 17,
         "startChar": 0,
