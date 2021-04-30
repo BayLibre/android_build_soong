@@ -319,6 +319,30 @@
       },
       "revId": "b1496da93aa38adf70c9818605b3f7c97ec18e23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78f551d3_6ffba2bc",
+        "filename": "scripts/strip.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1065473
+      },
+      "writtenOn": "2021-04-30T19:55:30Z",
+      "side": 1,
+      "message": "The part in strip.sh should already be sufficiently conditional right?\n\nHow do you make things conditional on linux/mac in Make?  \nGoogle search suggests $(wildcard $(dep)) to make it optional.",
+      "parentUuid": "b29c3649_a372db93",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 101,
+        "endChar": 21
+      },
+      "revId": "b1496da93aa38adf70c9818605b3f7c97ec18e23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
