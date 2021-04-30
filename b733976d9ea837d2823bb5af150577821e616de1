@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3598846_c2d36080",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1697,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-30T02:59:59Z",
+      "side": 1,
+      "message": "Comment seems unnecessary?",
+      "range": {
+        "startLine": 1697,
+        "startChar": 5,
+        "endLine": 1697,
+        "endChar": 28
+      },
+      "revId": "b733976d9ea837d2823bb5af150577821e616de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3df72c10_6913f5a5",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1743,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-30T02:59:59Z",
+      "side": 1,
+      "message": "This seems like a comment for getArchPropertySet?",
+      "range": {
+        "startLine": 1740,
+        "startChar": 0,
+        "endLine": 1743,
+        "endChar": 37
+      },
+      "revId": "b733976d9ea837d2823bb5af150577821e616de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41a7c54e_828f3f86",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1829,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-30T02:59:59Z",
+      "side": 1,
+      "message": "Once these are combined, is it possible that we need to uniquify them? I guess we could worry about that later?",
+      "range": {
+        "startLine": 1829,
+        "startChar": 2,
+        "endLine": 1829,
+        "endChar": 124
+      },
+      "revId": "b733976d9ea837d2823bb5af150577821e616de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0fef9cc_2b31113f",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1836,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-04-30T02:59:59Z",
+      "side": 1,
+      "message": "Maybe there should be another function which combines arch and multi-lib? It is a bit surprising that GetArchProperties really returns GetArchAndMultiLibProperties, as it were. Or we could rename this function?",
+      "range": {
+        "startLine": 1836,
+        "startChar": 2,
+        "endLine": 1836,
+        "endChar": 36
+      },
+      "revId": "b733976d9ea837d2823bb5af150577821e616de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
