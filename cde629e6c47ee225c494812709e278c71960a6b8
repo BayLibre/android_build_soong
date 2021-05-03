@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b823189_531db1a2",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-03T06:46:32Z",
+      "side": 1,
+      "message": "The `fmt.Errorf` call does nothing without a `panic`.",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 8
+      },
+      "revId": "cde629e6c47ee225c494812709e278c71960a6b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
