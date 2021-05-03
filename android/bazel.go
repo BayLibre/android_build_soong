@@ -230,12 +230,6 @@ var (
 		// These symbols are defined in https://cs.android.com/android/platform/superproject/+/master:bionic/libc/bionic/malloc_common.cpp;l=57-60;drc=9cad8424ff7b0fa63b53cb9919eae31539b8561a
 		// Also http://b/186650430: version_script prop support
 		"libc_malloc_hooks",
-		// http://b/186822597, libstdc++, cc_library
-		// Error: undefined symbol: __errno, syscall, async_safe_fatal_no_abort, abort, malloc, free
-		// Also http://b/186024507: depends on libc through system_shared_libraries.
-		// Also http://b/186650430: version_script prop support
-		// Also http://b/186651708: pack_relocations prop support
-		"libstdc++",
 		// http://b/183064661, libm:
 		// cc_library, error: "expected register here" (and many others)
 		// Also http://b/186024507: depends on libc through system_shared_libraries.
@@ -269,6 +263,17 @@ var (
 		"libjemalloc5_unittest",
 	}
 
+	// Per-module denylist of cc_library modules to only generate the static
+	// variant if their shared variant isn't ready or buildable by Bazel.
+	bp2buildCcLibraries_StaticOnlyList = []string{
+		// http://b/186822597, libstdc++, shared variant of cc_library
+		// Error: undefined symbol: __errno, syscall, async_safe_fatal_no_abort, abort, malloc, free
+		// Also http://b/186024507: depends on libc through system_shared_libraries.
+		// Also http://b/186650430: version_script prop support
+		// Also http://b/186651708: pack_relocations prop support
+		"libstdc++",
+	}
+
 	// Per-module denylist to opt modules out of mixed builds. Such modules will
 	// still be generated via bp2build.
 	mixedBuildsDisabledList = []string{
@@ -280,9 +285,10 @@ var (
 	}
 
 	// Used for quicker lookups
-	bp2buildDoNotWriteBuildFile = map[string]bool{}
-	bp2buildModuleDoNotConvert  = map[string]bool{}
-	mixedBuildsDisabled         = map[string]bool{}
+	bp2buildDoNotWriteBuildFile    = map[string]bool{}
+	bp2buildModuleDoNotConvert     = map[string]bool{}
+	bp2buildCcLibraries_StaticOnly = map[string]bool{}
+	mixedBuildsDisabled            = map[string]bool{}
 )
 
 func init() {
@@ -294,9 +300,17 @@ func init() {
 		bp2buildModuleDoNotConvert[moduleName] = true
 	}
 
+	for _, moduleName := range bp2buildCcLibraries_StaticOnlyList {
+		bp2buildCcLibraries_StaticOnly[moduleName] = true
+	}
+
 	for _, moduleName := range mixedBuildsDisabledList {
 		mixedBuildsDisabled[moduleName] = true
 	}
+}
+
+func GenerateCcLibraryStaticOnly(ctx BazelConversionPathContext) bool {
+	return bp2buildCcLibraries_StaticOnly[ctx.Module().Name()]
 }
 
 func ShouldWriteBuildFileForDir(dir string) bool {
@@ -314,6 +328,12 @@ func (b *BazelModuleBase) MixedBuildsEnabled(ctx BazelConversionPathContext) boo
 		return false
 	}
 	if len(b.GetBazelLabel(ctx, ctx.Module())) == 0 {
+		return false
+	}
+	if GenerateCcLibraryStaticOnly(ctx) {
+		// Don't use partially-converted cc_library targets in mixed builds,
+		// since mixed builds would generally rely on both static and shared
+		// variants of a cc_library.
 		return false
 	}
 	return !mixedBuildsDisabled[ctx.Module().Name()]

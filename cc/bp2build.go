@@ -246,9 +246,10 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 
 // Convenience struct to hold all attributes parsed from linker properties.
 type linkerAttributes struct {
-	deps          bazel.LabelListAttribute
-	linkopts      bazel.StringListAttribute
-	versionScript bazel.LabelAttribute
+	deps             bazel.LabelListAttribute
+	linkopts         bazel.StringListAttribute
+	versionScript    bazel.LabelAttribute
+	systemSharedLibs bazel.LabelListAttribute
 }
 
 // bp2BuildParseLinkerProps parses the linker properties of a module, including
