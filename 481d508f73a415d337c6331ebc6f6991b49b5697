@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "160fb46b_b47a4f08",
+        "filename": "android/bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-03T22:06:42Z",
+      "side": 1,
+      "message": "agh, rebase failure. It should be removed above.",
+      "parentUuid": "d1d00d4a_b5945423",
+      "range": {
+        "startLine": 248,
+        "startChar": 2,
+        "endLine": 248,
+        "endChar": 14
+      },
+      "revId": "481d508f73a415d337c6331ebc6f6991b49b5697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36a4c972_3e994222",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "I think this fine as-is (one module), but we may want to consider something a bit more generic and generalizable if this grows.",
       "parentUuid": "36a4c972_3e994222",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 51
+      },
+      "revId": "481d508f73a415d337c6331ebc6f6991b49b5697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c7f02bc_9296c9d6",
+        "filename": "android/bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-03T22:06:42Z",
+      "side": 1,
+      "message": "Yep, I think denylists are our primary knobs now. I could hardcode this module in the bp2build mutator, but surfacing it in bazel.go seems more consistent to me.",
+      "parentUuid": "9f6246c6_0a21b982",
       "range": {
         "startLine": 264,
         "startChar": 1,
