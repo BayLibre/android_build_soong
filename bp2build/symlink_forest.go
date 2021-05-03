@@ -5,7 +5,9 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"strings"
 
+	"android/soong/android"
 	"android/soong/shared"
 )
 
@@ -143,6 +145,17 @@ func plantSymlinkForestRecursive(topdir string, forestDir string, buildFilesDir 
 
 		if excluded {
 			continue
+		}
+
+		// Ignore most existing BUILD files in the source tree.
+		// We generally prefer to generate new BUILD files from Android.bp files.
+		if sExists && (strings.HasSuffix(f, "BUILD") || strings.HasSuffix(f, "BUILD.bazel")) {
+			if !android.ShouldWriteBuildFileForDir(srcDir) {
+				fmt.Fprintf(os.Stderr, "Ignoring existing '%s' file in dir: '%s'\n", f, srcDir)
+				continue
+			} else {
+				fmt.Fprintf(os.Stderr, "Found existing '%s' file in dir: '%s'\n", f, srcDir)
+			}
 		}
 
 		if !sExists {

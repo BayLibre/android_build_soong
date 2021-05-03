@@ -126,12 +126,10 @@ const (
 )
 
 var (
-	// Do not write BUILD files for these directories
-	// NOTE: this is not recursive
-	bp2buildDoNotWriteBuildFileList = []string{
-		// Don't generate these BUILD files - because external BUILD files already exist
+	// Keep any existing BUILD files (and do not generate new BUILD files) for these directories
+	// NOTE: This list is not recursive.
+	bp2buildKeepExistingBuildFileList = []string{
 		"external/boringssl",
-		"external/brotli",
 		"external/dagger2",
 		"external/flatbuffers",
 		"external/gflags",
@@ -173,6 +171,11 @@ var (
 		"external/jemalloc_new":           Bp2BuildDefaultTrueRecursively,
 		"external/fmtlib":                 Bp2BuildDefaultTrueRecursively,
 		"external/arm-optimized-routines": Bp2BuildDefaultTrueRecursively,
+		"system/libziparchive":            Bp2BuildDefaultTrueRecursively,
+		"external/googletest":             Bp2BuildDefaultTrueRecursively,
+		"external/brotli/js":              Bp2BuildDefaultTrueRecursively,
+		"external/abseil-cpp":             Bp2BuildDefaultTrueRecursively,
+		"external/zlib":                   Bp2BuildDefaultTrueRecursively,
 	}
 
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
@@ -196,13 +199,13 @@ var (
 		"libcutils_sockets", // http://b/186826853, cc_library, depends on //system/libbase:libbase (http://b/186826479)
 
 		"liblinker_debuggerd_stub", // http://b/186824327, cc_library_static, depends on //external/zlib:libz (http://b/186823782)
-		//                                                               also depends on //system/libziparchive:libziparchive (http://b/186823656)
+		//                                                               also depends on //system/libbase:libbase (http://b/186823646)
 		//                                                               also depends on //system/logging/liblog:liblog (http://b/186822772)
 		"liblinker_main", // http://b/186825989, cc_library_static, depends on //external/zlib:libz (http://b/186823782)
-		//                                                     also depends on //system/libziparchive:libziparchive (http://b/186823656)
-		//                                                     also depends on//system/logging/liblog:liblog (http://b/186822772)
+		//                                                     also depends on //system/libbase:libbase (http://b/186823646)
+		//                                                     also depends on //system/logging/liblog:liblog (http://b/186822772)
 		"liblinker_malloc", // http://b/186826466, cc_library_static, depends on //external/zlib:libz (http://b/186823782)
-		//                                                       also depends on //system/libziparchive:libziparchive (http://b/186823656)
+		//                                                       also depends on //system/libbase:libbase (http://b/186823646)
 		//                                                       also depends on //system/logging/liblog:liblog (http://b/186822772)
 		"libc_jemalloc_wrapper", // http://b/187012490, cc_library_static, depends on //external/jemalloc_new:libjemalloc5 (http://b/186828626)
 		"libc_ndk",              // http://b/187013218, cc_library_static, depends on //bionic/libm:libm (http://b/183064661)
@@ -254,15 +257,15 @@ var (
 	}
 
 	// Used for quicker lookups
-	bp2buildDoNotWriteBuildFile = map[string]bool{}
-	bp2buildModuleDoNotConvert  = map[string]bool{}
-	bp2buildCcLibraryStaticOnly = map[string]bool{}
-	mixedBuildsDisabled         = map[string]bool{}
+	bp2buildKeepExistingBuildFile = map[string]bool{}
+	bp2buildModuleDoNotConvert    = map[string]bool{}
+	bp2buildCcLibraryStaticOnly   = map[string]bool{}
+	mixedBuildsDisabled           = map[string]bool{}
 )
 
 func init() {
-	for _, moduleName := range bp2buildDoNotWriteBuildFileList {
-		bp2buildDoNotWriteBuildFile[moduleName] = true
+	for _, moduleName := range bp2buildKeepExistingBuildFileList {
+		bp2buildKeepExistingBuildFile[moduleName] = true
 	}
 
 	for _, moduleName := range bp2buildModuleDoNotConvertList {
@@ -283,7 +286,7 @@ func GenerateCcLibraryStaticOnly(ctx BazelConversionPathContext) bool {
 }
 
 func ShouldWriteBuildFileForDir(dir string) bool {
-	if _, ok := bp2buildDoNotWriteBuildFile[dir]; ok {
+	if _, ok := bp2buildKeepExistingBuildFile[dir]; ok {
 		return false
 	} else {
 		return true
