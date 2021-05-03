@@ -173,6 +173,7 @@ var (
 		"external/jemalloc_new":           Bp2BuildDefaultTrueRecursively,
 		"external/fmtlib":                 Bp2BuildDefaultTrueRecursively,
 		"external/arm-optimized-routines": Bp2BuildDefaultTrueRecursively,
+		"system/libziparchive":            Bp2BuildDefaultTrueRecursively,
 	}
 
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
@@ -196,13 +197,13 @@ var (
 		"libcutils_sockets", // http://b/186826853, cc_library, depends on //system/libbase:libbase (http://b/186826479)
 
 		"liblinker_debuggerd_stub", // http://b/186824327, cc_library_static, depends on //external/zlib:libz (http://b/186823782)
-		//                                                               also depends on //system/libziparchive:libziparchive (http://b/186823656)
+		//                                                               also depends on //system/libbase:libbase (http://b/186823646)
 		//                                                               also depends on //system/logging/liblog:liblog (http://b/186822772)
 		"liblinker_main", // http://b/186825989, cc_library_static, depends on //external/zlib:libz (http://b/186823782)
-		//                                                     also depends on //system/libziparchive:libziparchive (http://b/186823656)
-		//                                                     also depends on//system/logging/liblog:liblog (http://b/186822772)
+		//                                                     also depends on //system/libbase:libbase (http://b/186823646)
+		//                                                     also depends on //system/logging/liblog:liblog (http://b/186822772)
 		"liblinker_malloc", // http://b/186826466, cc_library_static, depends on //external/zlib:libz (http://b/186823782)
-		//                                                       also depends on //system/libziparchive:libziparchive (http://b/186823656)
+		//                                                       also depends on //system/libbase:libbase (http://b/186823646)
 		//                                                       also depends on //system/logging/liblog:liblog (http://b/186822772)
 		"libc_jemalloc_wrapper", // http://b/187012490, cc_library_static, depends on //external/jemalloc_new:libjemalloc5 (http://b/186828626)
 		"libc_ndk",              // http://b/187013218, cc_library_static, depends on //bionic/libm:libm (http://b/183064661)
