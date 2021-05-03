@@ -211,18 +211,17 @@ var (
 		// Also http://b/186816506: Handle static and shared props
 		// Also http://b/186650430: version_script prop support
 		// Also http://b/186651708: pack_relocations prop support
-		// Also http://b/186576099: multilib props support
 		"libc",
 
 		// Compilation or linker error from command line and toolchain inconsistencies.
 		// http://b/186388670: Make Bazel/Ninja command lines more similar.
 		// http://b/186628704: Incorporate Soong's Clang flags into Bazel's toolchains.
-		//
 		"libc_tzcode",  // http://b/186822591: cc_library_static, error: expected expression
 		"libjemalloc5", // http://b/186828626: cc_library, ld.lld: error: undefined symbol: memset, __stack_chk_fail, pthread_mutex_trylock..
 		// libc_bionic_ndk, cc_library_static
-		// Error: ISO C++ requires field designators...
-		// Also http://b/186576099: multilib props support
+		// Error: ISO C++ requires field designators to be specified in
+		// declaration order; field '' will be initialized after field
+		// 'sa_flags' [-Werror,-Wreorder-init-list]
 		// Also http://b/183595873: product_variables support
 		"libc_bionic_ndk",
 		// libc_malloc_hooks, cc_library
@@ -236,12 +235,11 @@ var (
 		// Also http://b/186650430: version_script prop support
 		// Also http://b/186651708: pack_relocations prop support
 		"libstdc++",
-		// http://b/183064661, libm:
+		// libm: http://b/183064661
 		// cc_library, error: "expected register here" (and many others)
 		// Also http://b/186024507: depends on libc through system_shared_libraries.
 		// Also http://b/186650430: version_script prop support
 		// Also http://b/186651708: pack_relocations prop support
-		// Also http://b/186576099: multilib props support
 		"libm",
 
 		// http://b/186823769: Needs C++ STL support, includes from unconverted standard libraries in //external/libcxx
