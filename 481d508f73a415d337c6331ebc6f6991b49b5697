@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1d00d4a_b5945423",
+        "filename": "android/bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-03T14:26:28Z",
+      "side": 1,
+      "message": "Should we remove libstdc++ from the original bp2build deny list above then?",
+      "range": {
+        "startLine": 248,
+        "startChar": 2,
+        "endLine": 248,
+        "endChar": 14
+      },
+      "revId": "481d508f73a415d337c6331ebc6f6991b49b5697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36a4c972_3e994222",
+        "filename": "android/bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-03T14:26:28Z",
+      "side": 1,
+      "message": "This new deny list seems so specific. Do we really need another deny list? Just double checking...",
+      "range": {
+        "startLine": 264,
+        "startChar": 1,
+        "endLine": 264,
+        "endChar": 51
+      },
+      "revId": "481d508f73a415d337c6331ebc6f6991b49b5697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
