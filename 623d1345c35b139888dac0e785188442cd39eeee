@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58fc564d_59093d3d",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-03T22:56:23Z",
+      "side": 1,
+      "message": "Use the new comment format? (being deleted above)\n\n// http://b/186822597, cc_library, ld.lld: error: undefined symbol: __errno",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 14
+      },
+      "revId": "623d1345c35b139888dac0e785188442cd39eeee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "523724ef_63a8538e",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-03T22:56:23Z",
+      "side": 1,
+      "message": "Can we drop the _ for consistency with the others and with GenerateCcLibraryStaticOnly ?",
+      "range": {
+        "startLine": 263,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 31
+      },
+      "revId": "623d1345c35b139888dac0e785188442cd39eeee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
