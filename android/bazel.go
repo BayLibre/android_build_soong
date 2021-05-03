@@ -210,7 +210,6 @@ var (
 		"libc_tzcode",           // http://b/186822591, cc_library_static, localtime.c:84:46: error: expected expression
 		"libc_bionic_ndk",       // http://b/186822256, cc_library_static, signal.cpp:186:52: error: ISO C++ requires field designators to be specified in declaration order
 		"libc_malloc_hooks",     // http://b/187016307, cc_library, ld.lld: error: undefined symbol: __malloc_hook
-		"libstdc++",             // http://b/186822597, cc_library, ld.lld: error: undefined symbol: __errno
 		"libm",                  // http://b/183064661, cc_library, math.h:25:16: error: unexpected token in argument list
 
 		// http://b/186823769: Needs C++ STL support, includes from unconverted standard libraries in //external/libcxx
@@ -237,6 +236,17 @@ var (
 		"libjemalloc5_unittest",
 	}
 
+	// Per-module denylist of cc_library modules to only generate the static
+	// variant if their shared variant isn't ready or buildable by Bazel.
+	bp2buildCcLibraries_StaticOnlyList = []string{
+		// http://b/186822597, libstdc++, shared variant of cc_library
+		// Error: undefined symbol: __errno, syscall, async_safe_fatal_no_abort, abort, malloc, free
+		// Also http://b/186024507: depends on libc through system_shared_libraries.
+		// Also http://b/186650430: version_script prop support
+		// Also http://b/186651708: pack_relocations prop support
+		"libstdc++",
+	}
+
 	// Per-module denylist to opt modules out of mixed builds. Such modules will
 	// still be generated via bp2build.
 	mixedBuildsDisabledList = []string{
@@ -248,9 +258,10 @@ var (
 	}
 
 	// Used for quicker lookups
-	bp2buildDoNotWriteBuildFile = map[string]bool{}
-	bp2buildModuleDoNotConvert  = map[string]bool{}
-	mixedBuildsDisabled         = map[string]bool{}
+	bp2buildDoNotWriteBuildFile    = map[string]bool{}
+	bp2buildModuleDoNotConvert     = map[string]bool{}
+	bp2buildCcLibraries_StaticOnly = map[string]bool{}
+	mixedBuildsDisabled            = map[string]bool{}
 )
 
 func init() {
@@ -262,9 +273,17 @@ func init() {
 		bp2buildModuleDoNotConvert[moduleName] = true
 	}
 
+	for _, moduleName := range bp2buildCcLibraries_StaticOnlyList {
+		bp2buildCcLibraries_StaticOnly[moduleName] = true
+	}
+
 	for _, moduleName := range mixedBuildsDisabledList {
 		mixedBuildsDisabled[moduleName] = true
 	}
+}
+
+func GenerateCcLibraryStaticOnly(ctx BazelConversionPathContext) bool {
+	return bp2buildCcLibraries_StaticOnly[ctx.Module().Name()]
 }
 
 func ShouldWriteBuildFileForDir(dir string) bool {
@@ -282,6 +301,12 @@ func (b *BazelModuleBase) MixedBuildsEnabled(ctx BazelConversionPathContext) boo
 		return false
 	}
 	if len(b.GetBazelLabel(ctx, ctx.Module())) == 0 {
+		return false
+	}
+	if GenerateCcLibraryStaticOnly(ctx) {
+		// Don't use partially-converted cc_library targets in mixed builds,
+		// since mixed builds would generally rely on both static and shared
+		// variants of a cc_library.
 		return false
 	}
 	return !mixedBuildsDisabled[ctx.Module().Name()]
