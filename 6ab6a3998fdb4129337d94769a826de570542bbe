@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e12d457e_4553f149",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-03T15:15:05Z",
+      "side": 1,
+      "message": "Note: not reviewable/submittable yet because bazel build //external/... currently fails, see http://b/186823656.",
+      "revId": "6ab6a3998fdb4129337d94769a826de570542bbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
