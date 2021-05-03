@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10c5b0ab_dd668b27",
+        "filename": "tradefed/autogen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2021-05-03T15:51:58Z",
+      "side": 1,
+      "message": "this doesn\u0027t look correct.\n\nIt\u0027s either name\u003d\"\" value\u003d\"\"\nor name\u003d\"\" key\u003d\"\" and value\u003d\"\"  if the option is a map.",
+      "range": {
+        "startLine": 130,
+        "startChar": 67,
+        "endLine": 130,
+        "endChar": 91
+      },
+      "revId": "46cb1083171b304169e6cff372fc04b652648b74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
