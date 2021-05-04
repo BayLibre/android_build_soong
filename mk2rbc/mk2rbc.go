@@ -306,12 +306,14 @@ func (pcv knownVariables) NewVariable(name string, varClass varClass, valueType 
 var KnownVariables = make(knownVariables)
 
 func init() {
-	// Kernel-related variables that we know are lists.
 	for _, kv := range []string{
+		// Kernel-related variables that we know are lists.
 		"BOARD_VENDOR_KERNEL_MODULES",
 		"BOARD_VENDOR_RAMDISK_KERNEL_MODULES",
 		"BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD",
 		"BOARD_RECOVERY_KERNEL_MODULES",
+		// Other variables we knwo are lists
+		"ART_APEX_JARS",
 	} {
 		KnownVariables.NewVariable(kv, VarClassSoong, starlarkTypeList)
 	}
