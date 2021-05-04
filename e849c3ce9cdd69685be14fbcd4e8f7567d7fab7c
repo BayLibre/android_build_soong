@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "779c22b8_07204935",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-05-04T13:00:16Z",
+      "side": 1,
+      "message": "Drop? I\u0027m not sure what the phrase \"content module dex jars\" means.",
+      "range": {
+        "startLine": 443,
+        "startChar": 9,
+        "endLine": 443,
+        "endChar": 24
+      },
+      "revId": "e849c3ce9cdd69685be14fbcd4e8f7567d7fab7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14dcb6da_7ca1fdc5",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-05-04T13:00:16Z",
+      "side": 1,
+      "message": "Extra period.",
+      "range": {
+        "startLine": 434,
+        "startChar": 69,
+        "endLine": 434,
+        "endChar": 70
+      },
+      "revId": "e849c3ce9cdd69685be14fbcd4e8f7567d7fab7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38d486be_6f010f0a",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-05-04T13:00:16Z",
+      "side": 1,
+      "message": "Extra period.",
+      "range": {
+        "startLine": 437,
+        "startChar": 65,
+        "endLine": 437,
+        "endChar": 66
+      },
+      "revId": "e849c3ce9cdd69685be14fbcd4e8f7567d7fab7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5242b606_06403ffa",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-05-04T13:00:16Z",
+      "side": 1,
+      "message": "Why is there a separate function copyUpdatableBootJars for updatable jars, but not for non-updatable (copyBootJarsToPredefinedLocations is used directly), shouldn\u0027t it be symmetric?",
+      "revId": "e849c3ce9cdd69685be14fbcd4e8f7567d7fab7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
