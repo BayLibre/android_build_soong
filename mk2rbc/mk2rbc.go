@@ -1304,3 +1304,7 @@ func Launcher(path, name string) string {
 	fmt.Fprintf(&buf, "%s(g, config)\n", cfnPrintVars)
 	return buf.String()
 }
+
+func MakePath2ModuleName(mkPath string) string {
+	return strings.TrimSuffix(mkPath, filepath.Ext(mkPath))
+}

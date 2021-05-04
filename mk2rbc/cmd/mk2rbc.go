@@ -155,7 +155,8 @@ func main() {
 				product))
 		}
 		ok = convertOne(path) && ok
-		if err := writeGenerated(*launcher, mk2rbc.Launcher(outputFilePath(path))); err != nil {
+		err := writeGenerated(*launcher, mk2rbc.Launcher(outputFilePath(path), mk2rbc.MakePath2ModuleName(path)))
+		if err != nil {
 			fmt.Fprintf(os.Stderr, "%s:%s", path, err)
 			ok = false
 		}

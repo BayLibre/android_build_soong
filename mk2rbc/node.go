@@ -16,7 +16,6 @@ package mk2rbc
 
 import (
 	"fmt"
-	"path/filepath"
 	"strings"
 
 	mkparser "android/soong/androidmk/parser"
@@ -51,12 +50,12 @@ type inheritedModule struct {
 	loadAlways      bool
 }
 
-func (ln inheritedModule) name() string {
-	return strings.TrimSuffix(ln.originalPath, filepath.Ext(ln.originalPath))
+func (im inheritedModule) name() string {
+	return MakePath2ModuleName(im.originalPath)
 }
 
-func (ln inheritedModule) entryName() string {
-	return ln.moduleLocalName + "_init"
+func (im inheritedModule) entryName() string {
+	return im.moduleLocalName + "_init"
 }
 
 type inheritNode struct {
