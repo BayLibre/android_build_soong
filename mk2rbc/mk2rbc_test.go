@@ -699,6 +699,20 @@ def init(g, handle):
   cfg["PRODUCT_LIST1"] += (g.get("FOO", "")).split()
 `,
 	},
+	{
+		desc:   "apex_jars",
+		mkname: "product.mk",
+		in: `
+PRODUCT_BOOT_JARS := $(ART_APEX_JARS) framework-minus-apex
+`,
+		expected: `load("//build/make/core:product_config.rbc", "rblf")
+
+def init(g, handle):
+  cfg = rblf.cfg(handle)
+  cfg["PRODUCT_BOOT_JARS"] = (g.get("ART_APEX_JARS", []) +
+      ["framework-minus-apex"])
+`,
+	},
 }
 
 var known_variables = []struct {
@@ -709,6 +723,7 @@ var known_variables = []struct {
 	{"PRODUCT_NAME", VarClassConfig, starlarkTypeString},
 	{"PRODUCT_MODEL", VarClassConfig, starlarkTypeString},
 	{"PRODUCT_PACKAGES", VarClassConfig, starlarkTypeList},
+	{"PRODUCT_BOOT_JARS", VarClassConfig, starlarkTypeList},
 	{"PRODUCT_COPY_FILES", VarClassConfig, starlarkTypeList},
 	{"PRODUCT_IS_64BIT", VarClassConfig, starlarkTypeString},
 	{"PRODUCT_LIST1", VarClassConfig, starlarkTypeList},
