@@ -593,7 +593,7 @@ func TestPrebuilts(t *testing.T) {
 		[]string{"a.java"}, fooLibrary.compiledJavaSrcs.Strings())
 
 	assertDeepEquals(t, "foo java source jars incorrect",
-		[]string{".intermediates/stubs-source/android_common/stubs-source-stubs.srcjar"},
+		[]string{".intermediates/stubs-source/android_common/stubs.srcjar"},
 		android.NormalizePathsForTesting(fooLibrary.compiledSrcJars))
 
 	if !strings.Contains(javac.Args["classpath"], barJar.String()) {

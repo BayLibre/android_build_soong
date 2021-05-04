@@ -253,7 +253,7 @@ func (d *Droidstubs) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBuil
 	if apiCheckEnabled(ctx, d.properties.Check_api.Current, "current") ||
 		apiCheckEnabled(ctx, d.properties.Check_api.Last_released, "last_released") ||
 		String(d.properties.Api_filename) != "" {
-		filename := proptools.StringDefault(d.properties.Api_filename, ctx.ModuleName()+"_api.txt")
+		filename := proptools.StringDefault(d.properties.Api_filename, "api.txt")
 		d.apiFile = android.PathForModuleOut(ctx, "metalava", filename)
 		cmd.FlagWithOutput("--api ", d.apiFile)
 		d.apiFilePath = d.apiFile
@@ -265,7 +265,7 @@ func (d *Droidstubs) stubsFlags(ctx android.ModuleContext, cmd *android.RuleBuil
 	if apiCheckEnabled(ctx, d.properties.Check_api.Current, "current") ||
 		apiCheckEnabled(ctx, d.properties.Check_api.Last_released, "last_released") ||
 		String(d.properties.Removed_api_filename) != "" {
-		filename := proptools.StringDefault(d.properties.Removed_api_filename, ctx.ModuleName()+"_removed.txt")
+		filename := proptools.StringDefault(d.properties.Removed_api_filename, "removed.txt")
 		d.removedApiFile = android.PathForModuleOut(ctx, "metalava", filename)
 		cmd.FlagWithOutput("--removed-api ", d.removedApiFile)
 		d.removedApiFilePath = d.removedApiFile
@@ -317,11 +317,11 @@ func (d *Droidstubs) annotationsFlags(ctx android.ModuleContext, cmd *android.Ru
 		}
 
 		if validatingNullability {
-			d.nullabilityWarningsFile = android.PathForModuleOut(ctx, "metalava", ctx.ModuleName()+"_nullability_warnings.txt")
+			d.nullabilityWarningsFile = android.PathForModuleOut(ctx, "metalava", "nullability_warnings.txt")
 			cmd.FlagWithOutput("--nullability-warnings-txt ", d.nullabilityWarningsFile)
 		}
 
-		d.annotationsZip = android.PathForModuleOut(ctx, "metalava", ctx.ModuleName()+"_annotations.zip")
+		d.annotationsZip = android.PathForModuleOut(ctx, "metalava", "annotations.zip")
 		cmd.FlagWithOutput("--extract-annotations ", d.annotationsZip)
 
 		if len(d.properties.Merge_annotations_dirs) != 0 {
@@ -478,7 +478,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	generateStubs := BoolDefault(d.properties.Generate_stubs, true)
 	var stubsDir android.OptionalPath
 	if generateStubs {
-		d.Javadoc.stubsSrcJar = android.PathForModuleOut(ctx, "metalava", ctx.ModuleName()+"-"+"stubs.srcjar")
+		d.Javadoc.stubsSrcJar = android.PathForModuleOut(ctx, "metalava", "stubs.srcjar")
 		stubsDir = android.OptionalPathForPath(android.PathForModuleOut(ctx, "metalava", "stubsDir"))
 		rule.Command().Text("rm -rf").Text(stubsDir.String())
 		rule.Command().Text("mkdir -p").Text(stubsDir.String())
@@ -615,7 +615,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	if Bool(d.properties.Write_sdk_values) {
-		d.metadataZip = android.PathForModuleOut(ctx, "metalava", ctx.ModuleName()+"-metadata.zip")
+		d.metadataZip = android.PathForModuleOut(ctx, "metalava", "metadata.zip")
 		rule.Command().
 			BuiltTool("soong_zip").
 			Flag("-write_if_changed").
@@ -800,7 +800,7 @@ func (d *PrebuiltStubsSources) StubsSrcJar() android.Path {
 }
 
 func (p *PrebuiltStubsSources) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	p.stubsSrcJar = android.PathForModuleOut(ctx, ctx.ModuleName()+"-"+"stubs.srcjar")
+	p.stubsSrcJar = android.PathForModuleOut(ctx, "stubs.srcjar")
 
 	if len(p.properties.Srcs) != 1 {
 		ctx.PropertyErrorf("srcs", "must only specify one directory path, contains %d paths", len(p.properties.Srcs))

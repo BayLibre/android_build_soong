@@ -340,11 +340,11 @@ sdk_snapshot {
 		checkAllCopyRules(`
 .intermediates/mybootlib/android_common/javac/mybootlib.jar -> java/mybootlib.jar
 .intermediates/mysdklibrary.stubs/android_common/javac/mysdklibrary.stubs.jar -> sdk_library/public/mysdklibrary-stubs.jar
-.intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_api.txt -> sdk_library/public/mysdklibrary.txt
-.intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_removed.txt -> sdk_library/public/mysdklibrary-removed.txt
+.intermediates/mysdklibrary.stubs.source/android_common/metalava/api.txt -> sdk_library/public/mysdklibrary.txt
+.intermediates/mysdklibrary.stubs.source/android_common/metalava/removed.txt -> sdk_library/public/mysdklibrary-removed.txt
 .intermediates/mycoreplatform.stubs/android_common/javac/mycoreplatform.stubs.jar -> sdk_library/public/mycoreplatform-stubs.jar
-.intermediates/mycoreplatform.stubs.source/android_common/metalava/mycoreplatform.stubs.source_api.txt -> sdk_library/public/mycoreplatform.txt
-.intermediates/mycoreplatform.stubs.source/android_common/metalava/mycoreplatform.stubs.source_removed.txt -> sdk_library/public/mycoreplatform-removed.txt
+.intermediates/mycoreplatform.stubs.source/android_common/metalava/api.txt -> sdk_library/public/mycoreplatform.txt
+.intermediates/mycoreplatform.stubs.source/android_common/metalava/removed.txt -> sdk_library/public/mycoreplatform-removed.txt
 `))
 }
 
