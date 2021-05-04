@@ -1296,11 +1296,15 @@ func Convert(req Request) (*StarlarkScript, error) {
 	return starScript, nil
 }
 
-func Launcher(path string) string {
+func Launcher(path, name string) string {
 	var buf bytes.Buffer
 	fmt.Fprintf(&buf, "load(%q, %q)\n", baseUri, baseName)
 	fmt.Fprintf(&buf, "load(%q, \"init\")\n", path)
-	fmt.Fprintf(&buf, "g, config = %s(%q, init)\n", cfnMain, path)
+	fmt.Fprintf(&buf, "g, config = %s(%q, init)\n", cfnMain, name)
 	fmt.Fprintf(&buf, "%s(g, config)\n", cfnPrintVars)
 	return buf.String()
+}
+
+func MakePath2ModuleName(mkPath string) string {
+	return strings.TrimSuffix(mkPath, filepath.Ext(mkPath))
 }
