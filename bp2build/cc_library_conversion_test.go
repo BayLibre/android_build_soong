@@ -40,6 +40,78 @@ toolchain_library {
 }`
 )
 
+func TestMy(t *testing.T) {
+	testCases := []struct {
+		description                        string
+		moduleTypeUnderTest                string
+		moduleTypeUnderTestFactory         android.ModuleFactory
+		moduleTypeUnderTestBp2BuildMutator func(android.TopDownMutatorContext)
+		bp                                 string
+		expectedBazelTargets               []string
+		filesystem                         map[string]string
+		dir                                string
+		depsMutators                       []android.RegisterMutatorFunc
+	}{}
+
+	dir := "."
+	for _, testCase := range testCases {
+		filesystem := make(map[string][]byte)
+		toParse := []string{
+			"Android.bp",
+		}
+		for f, content := range testCase.filesystem {
+			if strings.HasSuffix(f, "Android.bp") {
+				toParse = append(toParse, f)
+			}
+			filesystem[f] = []byte(content)
+		}
+		config := android.TestConfig(buildDir, nil, testCase.bp, filesystem)
+		ctx := android.NewTestContext(config)
+
+		cc.RegisterCCBuildComponents(ctx)
+		ctx.RegisterModuleType("cc_library_static", cc.LibraryStaticFactory)
+		ctx.RegisterModuleType("toolchain_library", cc.ToolchainLibraryFactory)
+		ctx.RegisterModuleType("cc_library_headers", cc.LibraryHeaderFactory)
+		ctx.RegisterModuleType(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestFactory)
+		ctx.RegisterBp2BuildMutator(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestBp2BuildMutator)
+		ctx.RegisterBp2BuildConfig(bp2buildConfig) // TODO(jingwen): make this the default for all tests
+		for _, m := range testCase.depsMutators {
+			ctx.DepsBp2BuildMutators(m)
+		}
+		ctx.RegisterForBazelConversion()
+
+		_, errs := ctx.ParseFileList(dir, toParse)
+		if Errored(t, testCase.description, errs) {
+			continue
+		}
+		_, errs = ctx.ResolveDependencies(config)
+		if Errored(t, testCase.description, errs) {
+			continue
+		}
+
+		checkDir := dir
+		if testCase.dir != "" {
+			checkDir = testCase.dir
+		}
+		codegenCtx := NewCodegenContext(config, *ctx.Context, Bp2Build)
+		bazelTargets := generateBazelTargetsForDir(codegenCtx, checkDir)
+		if actualCount, expectedCount := len(bazelTargets), len(testCase.expectedBazelTargets); actualCount != expectedCount {
+			t.Errorf("%s: Expected %d bazel target, got %d", testCase.description, expectedCount, actualCount)
+		} else {
+			for i, target := range bazelTargets {
+				if w, g := testCase.expectedBazelTargets[i], target.content; w != g {
+					t.Errorf(
+						"%s: Expected generated Bazel target to be '%s', got '%s'",
+						testCase.description,
+						w,
+						g,
+					)
+				}
+			}
+		}
+	}
+}
+
 func TestCcLibraryBp2Build(t *testing.T) {
 	testCases := []struct {
 		description                        string
@@ -300,6 +372,43 @@ cc_library {
     copts = ["-Ifoo/bar"],
     srcs = ["a.cpp"],
     version_script = "v.map",
+)`},
+		},
+		{
+			description:                        "cc_library non-configured version script",
+			moduleTypeUnderTest:                "cc_library",
+			moduleTypeUnderTestFactory:         cc.LibraryFactory,
+			moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
+			depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
+			dir:                                "foo/bar",
+			filesystem: map[string]string{
+				"foo/bar/Android.bp": `
+cc_library {
+    name: "a",
+    srcs: ["a.cpp"],
+    arch: {
+      arm: {
+        version_script: "arm.map",
+      },
+      arm64: {
+        version_script: "arm64.map",
+      },
+    },
+
+    bazel_module: { bp2build_available: true },
+}
+`,
+			},
+			bp: soongCcLibraryPreamble,
+			expectedBazelTargets: []string{`cc_library(
+    name = "a",
+    copts = ["-Ifoo/bar"],
+    srcs = ["a.cpp"],
+    version_script = select({
+        "//build/bazel/platforms/arch:arm": "arm.map",
+        "//build/bazel/platforms/arch:arm64": "arm64.map",
+        "//conditions:default": [],
+    }),
 )`},
 		},
 	}

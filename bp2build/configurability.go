@@ -31,8 +31,19 @@ func getStringListValues(list bazel.StringListAttribute) (reflect.Value, selects
 }
 
 func getLabelValue(label bazel.LabelAttribute) (reflect.Value, selects, selects) {
-	value := reflect.ValueOf(label.Value)
-	return value, nil, nil
+	var value reflect.Value
+	var archSelects selects
+
+	if label.HasConfigurableValues() {
+		archSelects = map[string]reflect.Value{}
+		for arch, selectKey := range bazel.PlatformArchMap {
+			archSelects[selectKey] = reflect.ValueOf(label.GetValueForArch(arch))
+		}
+	} else {
+		value = reflect.ValueOf(label.Value)
+	}
+
+	return value, archSelects, nil
 }
 
 func getLabelListValues(list bazel.LabelListAttribute) (reflect.Value, selects, selects) {
@@ -70,11 +81,15 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 		return "", fmt.Errorf("Not a supported Bazel attribute type: %s", v)
 	}
 
-	ret, err := prettyPrint(value, indent)
-	if err != nil {
-		return ret, err
-	}
+	ret := ""
+	if value.Kind() != reflect.Invalid {
+		s, err := prettyPrint(value, indent)
+		if err != nil {
+			return ret, err
+		}
 
+		ret += s
+	}
 	// Convenience function to append selects components to an attribute value.
 	appendSelects := func(selectsData selects, defaultValue, s string) (string, error) {
 		selectMap, err := prettyPrintSelectMap(selectsData, defaultValue, indent)
@@ -89,7 +104,7 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 		return s, nil
 	}
 
-	ret, err = appendSelects(archSelects, "[]", ret)
+	ret, err := appendSelects(archSelects, "[]", ret)
 	if err != nil {
 		return "", err
 	}
