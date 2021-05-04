@@ -114,13 +114,13 @@ cc_library {
         "-Wall",
         "-I.",
     ],
-    deps = [":some-headers"],
     includes = ["foo-dir"],
     linkopts = ["-Wl,--exclude-libs=bar.a"] + select({
         "//build/bazel/platforms/arch:x86": ["-Wl,--exclude-libs=baz.a"],
         "//build/bazel/platforms/arch:x86_64": ["-Wl,--exclude-libs=qux.a"],
         "//conditions:default": [],
     }),
+    private_deps = [":some-headers"],
     srcs = ["impl.cpp"] + select({
         "//build/bazel/platforms/arch:x86": ["x86.cpp"],
         "//build/bazel/platforms/arch:x86_64": ["x86_64.cpp"],
@@ -184,7 +184,6 @@ cc_library {
         "-Werror",
         "-I.",
     ],
-    deps = [":libc_headers"],
     linkopts = [
         "-Wl,--exclude-libs=libgcc.a",
         "-Wl,--exclude-libs=libgcc_stripped.a",
@@ -197,6 +196,7 @@ cc_library {
         "//build/bazel/platforms/arch:x86_64": ["-Wl,--exclude-libs=libgcc_eh.a"],
         "//conditions:default": [],
     }),
+    private_deps = [":libc_headers"],
     srcs = ["ld_android.cpp"],
 )`},
 		},

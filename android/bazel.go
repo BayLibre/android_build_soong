@@ -223,9 +223,9 @@ var (
 		// http://b/186024507: Includes errors because of the system_shared_libs default value.
 		// Missing -isystem bionic/libc/include through the libc/libm/libdl
 		// default dependencies if system_shared_libs is unset.
-		"liblog",                 // http://b/186822772: cc_library, 'sys/cdefs.h' file not found
-		"libjemalloc5_jet",       // cc_library, 'sys/cdefs.h' file not found
-		"libseccomp_policy",      // http://b/186476753: cc_library, 'linux/filter.h' not found
+		"liblog",           // http://b/186822772: cc_library, 'sys/cdefs.h' file not found
+		"libjemalloc5_jet", // cc_library, 'sys/cdefs.h' file not found
+		//"libseccomp_policy",      // http://b/186476753: cc_library, 'linux/filter.h' not found
 		"note_memtag_heap_async", // http://b/185127353: cc_library_static, error: feature.h not found
 		"note_memtag_heap_sync",  // http://b/185127353: cc_library_static, error: feature.h not found
 
@@ -245,10 +245,10 @@ var (
 	// Per-module denylist to opt modules out of mixed builds. Such modules will
 	// still be generated via bp2build.
 	mixedBuildsDisabledList = []string{
-		"libc_netbsd",                      // lberki@, cc_library_static, version script assignment of 'LIBC_PRIVATE' to symbol 'SHA1Final' failed: symbol not defined
-		"libc_openbsd",                     // ruperts@, cc_library_static, OK for bp2build but error: duplicate symbol: strcpy for mixed builds
-		"libsystemproperties",              // cparsons@, cc_library_static, wrong include paths
-		"libpropertyinfoparser",            // cparsons@, cc_library_static, wrong include paths
+		"libc_netbsd",  // lberki@, cc_library_static, version script assignment of 'LIBC_PRIVATE' to symbol 'SHA1Final' failed: symbol not defined
+		"libc_openbsd", // ruperts@, cc_library_static, OK for bp2build but error: duplicate symbol: strcpy for mixed builds
+		//"libsystemproperties",              // cparsons@, cc_library_static, wrong include paths
+		//"libpropertyinfoparser",            // cparsons@, cc_library_static, wrong include paths
 		"libarm-optimized-routines-string", // jingwen@, cc_library_static, OK for bp2build but b/186615213 (asflags not handled in  bp2build), version script assignment of 'LIBC' to symbol 'memcmp' failed: symbol not defined (also for memrchr, strnlen)
 		"fmtlib_ndk",                       // http://b/187040371, cc_library_static, OK for bp2build but format-inl.h:11:10: fatal error: 'cassert' file not found for mixed builds
 	}

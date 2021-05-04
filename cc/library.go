@@ -225,6 +225,7 @@ type bazelCcLibraryAttributes struct {
 	Copts                  bazel.StringListAttribute
 	Linkopts               bazel.StringListAttribute
 	Deps                   bazel.LabelListAttribute
+	Private_deps           bazel.LabelListAttribute
 	User_link_flags        bazel.StringListAttribute
 	Includes               bazel.StringListAttribute
 	Static_deps_for_shared bazel.LabelListAttribute
@@ -283,6 +284,7 @@ func CcLibraryBp2Build(ctx android.TopDownMutatorContext) {
 		Linkopts:               linkerAttrs.linkopts,
 		Deps:                   linkerAttrs.deps,
 		Version_script:         linkerAttrs.versionScript,
+		Private_deps:           linkerAttrs.privateDeps,
 		Static_deps_for_shared: sharedAttrs.staticDeps,
 		Includes:               exportedIncludes,
 	}
@@ -2192,13 +2194,14 @@ func maybeInjectBoringSSLHash(ctx android.ModuleContext, outputFile android.Modu
 }
 
 type bazelCcLibraryStaticAttributes struct {
-	Copts      bazel.StringListAttribute
-	Srcs       bazel.LabelListAttribute
-	Deps       bazel.LabelListAttribute
-	Linkopts   bazel.StringListAttribute
-	Linkstatic bool
-	Includes   bazel.StringListAttribute
-	Hdrs       bazel.LabelListAttribute
+	Copts        bazel.StringListAttribute
+	Srcs         bazel.LabelListAttribute
+	Deps         bazel.LabelListAttribute
+	Private_deps bazel.LabelListAttribute
+	Linkopts     bazel.StringListAttribute
+	Linkstatic   bool
+	Includes     bazel.StringListAttribute
+	Hdrs         bazel.LabelListAttribute
 }
 
 type bazelCcLibraryStatic struct {
@@ -2219,12 +2222,13 @@ func ccLibraryStaticBp2BuildInternal(ctx android.TopDownMutatorContext, module *
 	exportedIncludes := bp2BuildParseExportedIncludes(ctx, module)
 
 	attrs := &bazelCcLibraryStaticAttributes{
-		Copts:      compilerAttrs.copts,
-		Srcs:       compilerAttrs.srcs,
-		Deps:       linkerAttrs.deps,
-		Linkopts:   linkerAttrs.linkopts,
-		Linkstatic: true,
-		Includes:   exportedIncludes,
+		Copts:        compilerAttrs.copts,
+		Srcs:         compilerAttrs.srcs,
+		Deps:         linkerAttrs.deps,
+		Private_deps: linkerAttrs.privateDeps,
+		Linkopts:     linkerAttrs.linkopts,
+		Linkstatic:   true,
+		Includes:     exportedIncludes,
 	}
 
 	props := bazel.BazelTargetModuleProperties{

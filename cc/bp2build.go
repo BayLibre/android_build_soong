@@ -248,6 +248,7 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 type linkerAttributes struct {
 	deps          bazel.LabelListAttribute
 	linkopts      bazel.StringListAttribute
+	privateDeps   bazel.LabelListAttribute
 	versionScript bazel.LabelAttribute
 }
 
@@ -255,17 +256,19 @@ type linkerAttributes struct {
 // configurable attribute values.
 func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module) linkerAttributes {
 	var deps bazel.LabelListAttribute
+	var privateDeps bazel.LabelListAttribute
 	var linkopts bazel.StringListAttribute
 	var versionScript bazel.LabelAttribute
 
 	for _, linkerProps := range module.linker.linkerProps() {
 		if baseLinkerProps, ok := linkerProps.(*BaseLinkerProperties); ok {
-			libs := baseLinkerProps.Header_libs
-			libs = append(libs, baseLinkerProps.Export_header_lib_headers...)
-			libs = append(libs, baseLinkerProps.Static_libs...)
-			libs = append(libs, baseLinkerProps.Whole_static_libs...)
-			libs = android.SortedUniqueStrings(libs)
-			deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, libs))
+			privateLibs := android.SortedUniqueStrings(baseLinkerProps.Header_libs)
+			depLibs := baseLinkerProps.Export_header_lib_headers
+			depLibs = append(depLibs, baseLinkerProps.Static_libs...)
+			depLibs = append(depLibs, baseLinkerProps.Whole_static_libs...)
+			depLibs = android.SortedUniqueStrings(depLibs)
+			deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, depLibs))
+			privateDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, privateLibs))
 			linkopts.Value = baseLinkerProps.Ldflags
 
 			if baseLinkerProps.Version_script != nil {
@@ -279,24 +282,26 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 
 	for arch, p := range module.GetArchProperties(&BaseLinkerProperties{}) {
 		if baseLinkerProps, ok := p.(*BaseLinkerProperties); ok {
-			libs := baseLinkerProps.Header_libs
-			libs = append(libs, baseLinkerProps.Export_header_lib_headers...)
-			libs = append(libs, baseLinkerProps.Static_libs...)
-			libs = append(libs, baseLinkerProps.Whole_static_libs...)
-			libs = android.SortedUniqueStrings(libs)
-			deps.SetValueForArch(arch.Name, android.BazelLabelForModuleDeps(ctx, libs))
+			privateLibs := android.SortedUniqueStrings(baseLinkerProps.Header_libs)
+			depLibs := baseLinkerProps.Export_header_lib_headers
+			depLibs = append(depLibs, baseLinkerProps.Static_libs...)
+			depLibs = append(depLibs, baseLinkerProps.Whole_static_libs...)
+			depLibs = android.SortedUniqueStrings(depLibs)
+			deps.SetValueForArch(arch.Name, android.BazelLabelForModuleDeps(ctx, depLibs))
+			privateDeps.SetValueForArch(arch.Name, android.BazelLabelForModuleDeps(ctx, privateLibs))
 			linkopts.SetValueForArch(arch.Name, baseLinkerProps.Ldflags)
 		}
 	}
 
 	for os, p := range module.GetTargetProperties(&BaseLinkerProperties{}) {
 		if baseLinkerProps, ok := p.(*BaseLinkerProperties); ok {
-			libs := baseLinkerProps.Header_libs
-			libs = append(libs, baseLinkerProps.Export_header_lib_headers...)
-			libs = append(libs, baseLinkerProps.Static_libs...)
-			libs = append(libs, baseLinkerProps.Whole_static_libs...)
-			libs = android.SortedUniqueStrings(libs)
-			deps.SetValueForOS(os.Name, android.BazelLabelForModuleDeps(ctx, libs))
+			privateLibs := android.SortedUniqueStrings(baseLinkerProps.Header_libs)
+			depLibs := baseLinkerProps.Export_header_lib_headers
+			depLibs = append(depLibs, baseLinkerProps.Static_libs...)
+			depLibs = append(depLibs, baseLinkerProps.Whole_static_libs...)
+			depLibs = android.SortedUniqueStrings(depLibs)
+			deps.SetValueForOS(os.Name, android.BazelLabelForModuleDeps(ctx, depLibs))
+			privateDeps.SetValueForOS(os.Name, android.BazelLabelForModuleDeps(ctx, privateLibs))
 			linkopts.SetValueForOS(os.Name, baseLinkerProps.Ldflags)
 		}
 	}
@@ -304,6 +309,7 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 	return linkerAttributes{
 		deps:          deps,
 		linkopts:      linkopts,
+		privateDeps:   privateDeps,
 		versionScript: versionScript,
 	}
 }

@@ -185,8 +185,6 @@ cc_library_static {
         "-I.",
     ],
     deps = [
-        ":header_lib_1",
-        ":header_lib_2",
         ":static_lib_1",
         ":static_lib_2",
         ":whole_static_lib_1",
@@ -197,6 +195,10 @@ cc_library_static {
         "export_include_dir_2",
     ],
     linkstatic = True,
+    private_deps = [
+        ":header_lib_1",
+        ":header_lib_2",
+    ],
     srcs = [
         "foo_static1.cc",
         "foo_static2.cc",

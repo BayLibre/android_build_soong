@@ -132,10 +132,6 @@ cc_library_headers {
 			expectedBazelTargets: []string{`cc_library_headers(
     name = "foo_headers",
     copts = ["-I."],
-    deps = [
-        ":lib-1",
-        ":lib-2",
-    ],
     includes = [
         "dir-1",
         "dir-2",
@@ -145,6 +141,10 @@ cc_library_headers {
         "//build/bazel/platforms/arch:x86_64": ["arch_x86_64_exported_include_dir"],
         "//conditions:default": [],
     }),
+    private_deps = [
+        ":lib-1",
+        ":lib-2",
+    ],
 )`, `cc_library_headers(
     name = "lib-1",
     copts = ["-I."],
@@ -195,7 +195,7 @@ cc_library_headers {
 )`, `cc_library_headers(
     name = "foo_headers",
     copts = ["-I."],
-    deps = [":base-lib"] + select({
+    private_deps = [":base-lib"] + select({
         "//build/bazel/platforms/os:android": [":android-lib"],
         "//build/bazel/platforms/os:darwin": [":darwin-lib"],
         "//build/bazel/platforms/os:fuchsia": [":fuchsia-lib"],
@@ -244,10 +244,11 @@ cc_library_headers {
     name = "foo_headers",
     copts = ["-I."],
     deps = select({
-        "//build/bazel/platforms/os:android": [
-            ":android-lib",
-            ":exported-lib",
-        ],
+        "//build/bazel/platforms/os:android": [":exported-lib"],
+        "//conditions:default": [],
+    }),
+    private_deps = select({
+        "//build/bazel/platforms/os:android": [":android-lib"],
         "//conditions:default": [],
     }),
 )`},
