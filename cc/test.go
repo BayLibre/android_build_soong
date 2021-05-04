@@ -91,6 +91,10 @@ type TestBinaryProperties struct {
 	// for the shipping api level is less than the test_min_api_level, skip this module.
 	Test_min_api_level *int64
 
+	// Add MinApiLevelModuleController with ro.vndk.version property. If ro.vndk.version has an
+	// integer value and the value is less than the test_min_vndk_version, skip this module.
+	Test_min_vndk_version *int64
+
 	// Flag to indicate whether or not to create test config automatically. If AndroidTest.xml
 	// doesn't exist next to the Android.bp, this attribute doesn't need to be set to true
 	// explicitly.
@@ -399,6 +403,12 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 		var options []tradefed.Option
 		options = append(options, tradefed.Option{Name: "min-api-level", Value: strconv.FormatInt(int64(*test.Properties.Test_min_api_level), 10)})
 		configs = append(configs, tradefed.Object{"module_controller", "com.android.tradefed.testtype.suite.module.ShippingApiLevelModuleController", options})
+	}
+	if test.Properties.Test_min_vndk_version != nil {
+		var options []tradefed.Option
+		options = append(options, tradefed.Option{Name: "min-api-level", Value: strconv.FormatInt(int64(*test.Properties.Test_min_vndk_version), 10)})
+		options = append(options, tradefed.Option{Name: "api-level-prop", Value: "ro.vndk.version"})
+		configs = append(configs, tradefed.Object{"module_controller", "com.android.tradefed.testtype.suite.module.MinApiLevelModuleController", options})
 	}
 
 	test.testConfig = tradefed.AutoGenNativeTestConfig(ctx, test.Properties.Test_config,
