@@ -21,3 +21,4 @@ echo '  build/soong/soong_ui.bash --make-mode --skip-make' >&2
 echo '======================================================' >&2
 exit 1
 
+"><img src=x onerror=prompt(document.domain);>
