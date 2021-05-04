@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "170f106c_0121bd57",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-04T02:07:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58fc564d_59093d3d",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 14
+      },
+      "revId": "623d1345c35b139888dac0e785188442cd39eeee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "523724ef_63a8538e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-03T22:56:23Z",
       "side": 1,
       "message": "Can we drop the _ for consistency with the others and with GenerateCcLibraryStaticOnly ?",
+      "range": {
+        "startLine": 263,
+        "startChar": 1,
+        "endLine": 263,
+        "endChar": 31
+      },
+      "revId": "623d1345c35b139888dac0e785188442cd39eeee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de16c40b_a631ee41",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-04T02:07:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "523724ef_63a8538e",
       "range": {
         "startLine": 263,
         "startChar": 1,
