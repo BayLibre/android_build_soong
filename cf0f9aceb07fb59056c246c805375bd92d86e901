@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e27541_ccd1d46f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-04T14:46:06Z",
+      "side": 1,
+      "message": "This doesn\u0027t work yet because I haven\u0027t figured out what to do on the Bazel side. I\u0027ll start a mailing list thread.",
+      "revId": "cf0f9aceb07fb59056c246c805375bd92d86e901",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
