@@ -2711,3 +2711,46 @@ arm64/include/Arm64Test.h -> arm64/include/arm64/include/Arm64Test.h
 		snapshotTestErrorHandler(checkSnapshotPreferredWithSource, snapshotWithSourceErrorHandler),
 	)
 }
+
+func TestSdkVersionInSnapshot(t *testing.T) {
+	result := testSdkWithCc(t, `
+		sdk {
+			name: "mysdk",
+			host_supported: false,
+			native_shared_libs: ["mynativelib"],
+		}
+
+		cc_library_shared {
+			name: "mynativelib",
+			srcs: ["Test.cpp"],
+			stl: "none",
+			sdk_version: "current",
+		}
+	`)
+
+	CheckSnapshot(t, result, "mysdk", "",
+		checkUnversionedAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+cc_prebuilt_library_shared {
+    name: "mynativelib",
+    prefer: false,
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    sdk_version: "current",
+    stl: "none",
+    compile_multilib: "both",
+    sanitize: {
+        never: true,
+    },
+    arch: {
+        arm64: {
+            srcs: ["arm64/lib/mynativelib.so"],
+        },
+        arm: {
+            srcs: ["arm/lib/mynativelib.so"],
+        },
+    },
+}
+`))
+}

@@ -65,6 +65,7 @@ func sdkMutator(ctx android.BottomUpMutatorContext) {
 			}
 			ctx.CreateVariations("")
 			ctx.AliasVariation("")
+			ctx.CreateAliasVariation("sdk", "")
 		}
 	case *genrule.Module:
 		if p, ok := m.Extra.(*GenruleExtraProperties); ok {
