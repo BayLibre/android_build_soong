@@ -40,6 +40,30 @@
       },
       "revId": "23dee2a61fa40d8923179c777497247a54d0d5c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "009025b8_f8860c4c",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-05T09:16:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c094e43_b8e32859",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 2
+      },
+      "revId": "23dee2a61fa40d8923179c777497247a54d0d5c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e5ad6d2_b86af1d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-05T09:16:01Z",
+      "side": 1,
+      "message": "Update: I rebased this now that the GetArchProperties() refactoring is submitted. I\u0027ll only submit this when I understand why this breaks libdl; as per b/186650430#comment16, there is something odd going on with the set of source files for libdl and libdl_static.",
+      "revId": "b939a9c54f5f7737e8354ca76105de9d53f2faf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
