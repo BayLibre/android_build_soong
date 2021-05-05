@@ -105,8 +105,16 @@ func (mt *librarySdkMemberType) AddDependencies(mctx android.BottomUpMutatorCont
 				}
 			}
 
+			// For inclusion in the SDK snapshot we want the sdk variant if there is
+			// one. Specifically, we need to propagate sdk_version, and sdkMutator
+			// clears that property in the default platform variant.
 			for _, variations := range variations_list {
-				mctx.AddFarVariationDependencies(variations, dependencyTag, name)
+				sdkVariations := append([]blueprint.Variation{{Mutator: "sdk", Variation: "sdk"}}, variations...)
+				if mctx.OtherModuleFarDependencyVariantExists(sdkVariations, name) {
+					mctx.AddFarVariationDependencies(sdkVariations, dependencyTag, name)
+				} else {
+					mctx.AddFarVariationDependencies(variations, dependencyTag, name)
+				}
 			}
 		}
 	}
