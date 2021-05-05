@@ -16,6 +16,24 @@
       "message": "Have you verified that this new method is needed? What happens if you use the existing non-far method?",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc4b642e_fdd6d8cb",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-05T22:51:08Z",
+      "side": 1,
+      "message": "No, I haven\u0027t tested if OtherModuleDependencyVariantExists works, and even if it does in the few cases I have now, I wouldn\u0027t be confident about it. It wouldn\u0027t apply the same logic as AddFarVariationDependencies itself, so we\u0027d have to ensure that the discrepancy cannot matter. That would imo be error prone and raise the cognitive load more than this does.\n\nBtw, I considered breaking out the conditions for deciding to create both variants from sdkMutator, but I didn\u0027t like how that would turn out, and I\u0027m not keen on just duplicating the relevant bits of them here either.",
+      "parentUuid": "95cd1036_c872e8e2",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
