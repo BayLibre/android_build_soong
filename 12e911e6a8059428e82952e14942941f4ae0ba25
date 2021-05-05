@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4fe1a60_8a0ab790",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-05-05T12:28:05Z",
+      "side": 1,
+      "message": "Or /apex --- Soong assumes /system/framework path at the point where I wanted to add a TODO. It\u0027s easier to say that it supports only /system/framework.",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "12e911e6a8059428e82952e14942941f4ae0ba25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
