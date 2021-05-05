@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a06f3e_12bc7e21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-05T09:10:31Z",
+      "side": 1,
+      "message": "Chris, Liz: I\u0027m submitting this since you seem to be okay with it (it\u0027s really the \"meat\" of aosp/1695706 without actually changing the emitted BUILD files so that the build doesn\u0027t break)",
+      "revId": "598dd002367e2e21c89647d5d2e067bf1654ffdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
