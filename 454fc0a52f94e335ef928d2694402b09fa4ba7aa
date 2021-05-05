@@ -34,6 +34,24 @@
       "parentUuid": "95cd1036_c872e8e2",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1874bfed_7c756d89",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-05T22:57:48Z",
+      "side": 1,
+      "message": "Is the check needed at all?  What if you always use sdkVariations?  Shipping platform prebuilts in an SDK snapshot doesn\u0027t seem like a good idea.",
+      "parentUuid": "dc4b642e_fdd6d8cb",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
