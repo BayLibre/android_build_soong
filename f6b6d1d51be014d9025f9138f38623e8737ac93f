@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e6029ae_af17bb0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-05-05T10:57:45Z",
+      "side": 1,
+      "message": "If you go with the suggestion on aosp/1695660 to support only /system jars for now, can you add a note about this limitaiton in the commit message?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "f6b6d1d51be014d9025f9138f38623e8737ac93f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df569961_0ccff165",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-05-05T10:57:45Z",
+      "side": 1,
+      "message": "I didn\u0027t know it\u0027s ok to list many bugs in one Tag, I usually do:\n\n  Bug: 180105615\n  Bug: 155630745\n\nIf you know that\u0027s ok, just ignore the comment.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "f6b6d1d51be014d9025f9138f38623e8737ac93f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f49a22a4_8ac96152",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-05-05T10:57:45Z",
+      "side": 1,
+      "message": "If you go with the suggestion on aosp/1695660 to support only /system jars for now, can you add a TODO before this line? E.g.:\n\n    TODO(b/155630745): support jars in /apex, /system_ext, etc.",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 80
+      },
+      "revId": "f6b6d1d51be014d9025f9138f38623e8737ac93f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
