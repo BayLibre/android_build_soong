@@ -274,7 +274,10 @@ func (s *sdk) buildSnapshot(ctx android.ModuleContext, sdkVariants []*sdk) andro
 
 	// Create a transformer that will transform an unversioned module by replacing any references
 	// to internal members with a unique module name and setting prefer: false.
-	unversionedTransformer := unversionedTransformation{builder: builder}
+	unversionedTransformer := unversionedTransformation{
+		builder: builder,
+		prefer:  ctx.Config().IsEnvTrue("SOONG_SDK_SNAPSHOT_PREFER"),
+	}
 
 	for _, unversioned := range builder.prebuiltOrder {
 		// Prune any empty property sets.
@@ -614,6 +617,7 @@ func (t unversionedToVersionedTransformation) transformProperty(name string, val
 type unversionedTransformation struct {
 	identityTransformation
 	builder *snapshotBuilder
+	prefer  bool
 }
 
 func (t unversionedTransformation) transformModule(module *bpModule) *bpModule {
@@ -622,7 +626,7 @@ func (t unversionedTransformation) transformModule(module *bpModule) *bpModule {
 	module.setProperty("name", t.builder.unversionedSdkMemberName(name, true))
 
 	// Set prefer: false - this is not strictly required as that is the default.
-	module.insertAfter("name", "prefer", false)
+	module.insertAfter("name", "prefer", t.prefer)
 
 	return module
 }
