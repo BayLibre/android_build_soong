@@ -52,6 +52,24 @@
       "parentUuid": "dc4b642e_fdd6d8cb",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0018c788_6443eceb",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-05T23:09:40Z",
+      "side": 1,
+      "message": "It\u0027s not always the sdk mutator kicks in, e.g. on host. One of many failures if I try that:\n\n  --- FAIL: TestUniqueHostSoname (0.05s)\n    cc_sdk_test.go:2550: Android.bp:2:3: dependency \"mylib\" of \"mysdk\" missing variant:\n          os:linux_glibc,arch:x86_64,sdk:sdk,link:shared\n        available variants:\n          os:linux_glibc,arch:x86_64 (alias to os:linux_glibc,arch:x86_64,link:shared)\n          os:linux_glibc,arch:x86_64,link:static\n          os:linux_glibc,arch:x86_64,link:shared\n          os:linux_glibc,arch:x86 (alias to os:linux_glibc,arch:x86,link:shared)\n          os:linux_glibc,arch:x86,link:static\n          os:linux_glibc,arch:x86,link:shared\n          os:windows,arch:x86_64 (alias to os:windows,arch:x86_64,link:shared)\n          os:windows,arch:x86_64,link:static\n          os:windows,arch:x86_64,link:shared\n          os:android,image:,arch:arm64_armv8-a (alias to os:android,image:,arch:arm64_armv8-a,sdk:,link:shared,version:)\n          os:android,image:,arch:arm64_armv8-a,sdk: (alias to os:android,image:,arch:arm64_armv8-a,sdk:,link:shared,version:)\n          os:android,image:,arch:arm64_armv8-a,sdk:,link:static\n          os:android,image:,arch:arm64_armv8-a,sdk:,link:shared (alias to os:android,image:,arch:arm64_armv8-a,sdk:,link:shared,version:)\n          os:android,image:,arch:arm64_armv8-a,sdk:,link:shared,version:\n          os:android,image:,arch:arm64_armv8-a,sdk:,link:shared,version:latest (alias to os:android,image:,arch:arm64_armv8-a,sdk:,link:shared,version:)\n          os:android,image:,arch:arm_armv7-a-neon (alias to os:android,image:,arch:arm_armv7-a-neon,sdk:,link:shared,version:)\n          os:android,image:,arch:arm_armv7-a-neon,sdk: (alias to os:android,image:,arch:arm_armv7-a-neon,sdk:,link:shared,version:)\n          os:android,image:,arch:arm_armv7-a-neon,sdk:,link:static\n          os:android,image:,arch:arm_armv7-a-neon,sdk:,link:shared (alias to os:android,image:,arch:arm_armv7-a-neon,sdk:,link:shared,version:)\n          os:android,image:,arch:arm_armv7-a-neon,sdk:,link:shared,version:\n          os:android,image:,arch:arm_armv7-a-neon,sdk:,link:shared,version:latest (alias to os:android,image:,arch:arm_armv7-a-neon,sdk:,link:shared,version:)\n\nIt may be possible to add conditions to exclude host etc, but that means more or less duplicating the logic in sdkMutator. It\u0027s cleaner to check if the sdk variant actually happened, and pick it then.\n\n(The iffy aspect here is that it\u0027s exploiting the order between the mutators, but that seems hard to avoid regardless of the above.)",
+      "parentUuid": "1874bfed_7c756d89",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
