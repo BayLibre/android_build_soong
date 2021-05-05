@@ -88,6 +88,24 @@
       "parentUuid": "0018c788_6443eceb",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "524b00b1_09c8fb40",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-05T23:51:06Z",
+      "side": 1,
+      "message": "Are you saying mutators (or their Bazel counterpart) will be unordered in that case? The existing OtherModule*Exists need to be removed completely?",
+      "parentUuid": "57758f6c_f21c52e4",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
