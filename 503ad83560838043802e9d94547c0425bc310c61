@@ -22,6 +22,30 @@
       },
       "revId": "503ad83560838043802e9d94547c0425bc310c61",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a92500_bc209866",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2745,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-05T22:20:15Z",
+      "side": 1,
+      "message": "It is ok: When sdk_version is set we build against a released NDK, where the runtime won\u0027t support many of the sanitizers.",
+      "parentUuid": "a91f6103_56f612c9",
+      "range": {
+        "startLine": 2743,
+        "startChar": 0,
+        "endLine": 2745,
+        "endChar": 6
+      },
+      "revId": "503ad83560838043802e9d94547c0425bc310c61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
