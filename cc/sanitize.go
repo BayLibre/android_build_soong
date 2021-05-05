@@ -252,7 +252,8 @@ func (sanitize *sanitize) props() []interface{} {
 func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 	s := &sanitize.Properties.Sanitize
 
-	// Don't apply sanitizers to NDK code.
+	// Don't apply sanitizers to code that build against the NDK, because many
+	// sanitizers require special runtime support.
 	if ctx.useSdk() {
 		s.Never = BoolPtr(true)
 	}
