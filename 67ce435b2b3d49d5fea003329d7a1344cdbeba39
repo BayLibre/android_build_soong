@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f75b67ed_d94796f2",
+        "filename": "cc/config/vndk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1576846
+      },
+      "writtenOn": "2021-05-05T16:52:41Z",
+      "side": 1,
+      "message": "Why do we need the 3 references here. I would think only one version is generated",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 67,
+        "endChar": 45
+      },
+      "revId": "67ce435b2b3d49d5fea003329d7a1344cdbeba39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
