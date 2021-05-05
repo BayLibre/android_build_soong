@@ -70,6 +70,24 @@
       "parentUuid": "1874bfed_7c756d89",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57758f6c_f21c52e4",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-05T23:45:43Z",
+      "side": 1,
+      "message": "Checking if it exists isn\u0027t going to work with go/soong-incremental-analysis or Bazel, both of which need to be able to start at any point in the build graph and walk down the dependencies, creating them as needed.",
+      "parentUuid": "0018c788_6443eceb",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
