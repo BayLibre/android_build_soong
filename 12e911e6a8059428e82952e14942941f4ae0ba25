@@ -22,6 +22,30 @@
       },
       "revId": "12e911e6a8059428e82952e14942941f4ae0ba25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22847b05_d66982fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-05T13:25:59Z",
+      "side": 1,
+      "message": "Right, sorry, I should pay more attention.",
+      "parentUuid": "f4fe1a60_8a0ab790",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 9,
+        "endChar": 63
+      },
+      "revId": "12e911e6a8059428e82952e14942941f4ae0ba25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
