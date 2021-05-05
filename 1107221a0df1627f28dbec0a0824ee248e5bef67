@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92d0ac42_94d0ec21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-05T15:38:41Z",
+      "side": 1,
+      "message": "This will, with the previous changes, allow exported_java_libs to be removed from art-bootclasspath-fragment.",
+      "revId": "1107221a0df1627f28dbec0a0824ee248e5bef67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
