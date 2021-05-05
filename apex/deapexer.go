@@ -40,17 +40,19 @@ import (
 // This is intentionally not registered by name as it is not intended to be used from within an
 // `Android.bp` file.
 
+type DeapexerExportedFile struct {
+	Tag  string
+	Path string
+}
+
 // Properties that are specific to `deapexer` but which need to be provided on the `prebuilt_apex`
 // module.`
 type DeapexerProperties struct {
-	// List of java libraries that are embedded inside this prebuilt APEX bundle and for which this
-	// APEX bundle will create an APEX variant and provide dex implementation jars for use by
-	// dexpreopt and boot jars package check.
-	Exported_java_libs []string
+	// List of java modules that may need access to files exported by this module.
+	Java_modules []string
 
-	// List of bootclasspath fragments inside this prebuiltd APEX bundle and for which this APEX
-	// bundle will create an APEX variant.
-	Exported_bootclasspath_fragments []string
+	// List of files exported from the .apex file by this module
+	Exported_files []DeapexerExportedFile
 }
 
 type SelectedApexProperties struct {
@@ -81,7 +83,7 @@ func privateDeapexerFactory() android.Module {
 func (p *Deapexer) DepsMutator(ctx android.BottomUpMutatorContext) {
 	// Add dependencies from the java modules to which this exports files from the `.apex` file onto
 	// this module so that they can access the `DeapexerInfo` object that this provides.
-	for _, lib := range p.properties.Exported_java_libs {
+	for _, lib := range p.properties.Java_modules {
 		dep := prebuiltApexExportedModuleName(ctx, lib)
 		ctx.AddReverseDependency(ctx.Module(), android.DeapexerTag, dep)
 	}
@@ -96,10 +98,13 @@ func (p *Deapexer) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	exports := make(map[string]android.Path)
 
 	// Create mappings from name+tag to all the required exported paths.
-	for _, l := range p.properties.Exported_java_libs {
+	for _, e := range p.properties.Exported_files {
+		tag := e.Tag
+		path := e.Path
+
 		// Populate the exports that this makes available. The path here must match the path of the
 		// file in the APEX created by apexFileForJavaModule(...).
-		exports[l+"{.dexjar}"] = deapexerOutput.Join(ctx, "javalib", l+".jar")
+		exports[tag] = deapexerOutput.Join(ctx, path)
 	}
 
 	// If the prebuilt_apex exports any files then create a build rule that unpacks the apex using
