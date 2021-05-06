@@ -257,24 +257,62 @@ cc_library {
 			depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
 			dir:                                "foo/bar",
 			filesystem: map[string]string{
-				"foo/bar/a.cpp": "",
+				"foo/bar/both.cpp":       "",
+				"foo/bar/sharedonly.cpp": "",
+				"foo/bar/staticonly.cpp": "",
 				"foo/bar/Android.bp": `
 cc_library {
     name: "a",
-    shared: { whole_static_libs: ["b"] },
-    static: { srcs: ["a.cpp"] },
+    srcs: ["both.cpp"],
+    cflags: ["bothflag"],
+    static_libs: ["static_dep_for_both"],
+    whole_static_libs: ["whole_static_lib_for_both"],
+    static: {
+        srcs: ["staticonly.cpp"],
+        cflags: ["staticflag"],
+        static_libs: ["static_dep_for_static"],
+        whole_static_libs: ["whole_static_lib_for_static"],
+    },
+    shared: {
+        srcs: ["sharedonly.cpp"],
+        cflags: ["sharedflag"],
+        static_libs: ["static_dep_for_shared"],
+        whole_static_libs: ["whole_static_lib_for_shared"],
+    },
     bazel_module: { bp2build_available: true },
 }
 
-cc_library_static { name: "b" }
+cc_library_static { name: "static_dep_for_shared" }
+
+cc_library_static { name: "static_dep_for_static" }
+
+cc_library_static { name: "static_dep_for_both" }
+
+cc_library_static { name: "whole_static_lib_for_shared" }
+
+cc_library_static { name: "whole_static_lib_for_static" }
+
+cc_library_static { name: "whole_static_lib_for_both" }
 `,
 			},
 			bp: soongCcLibraryPreamble,
 			expectedBazelTargets: []string{`cc_library(
     name = "a",
-    copts = ["-Ifoo/bar"],
-    srcs = ["a.cpp"],
-    static_deps_for_shared = [":b"],
+    copts = [
+        "bothflag",
+        "-Ifoo/bar",
+    ],
+    deps = [":static_dep_for_both"],
+    shared_copts = ["sharedflag"],
+    shared_srcs = ["sharedonly.cpp"],
+    srcs = ["both.cpp"],
+    static_copts = ["staticflag"],
+    static_deps_for_shared = [":static_dep_for_shared"],
+    static_deps_for_static = [":static_dep_for_static"],
+    static_srcs = ["staticonly.cpp"],
+    whole_archive_deps = [":whole_static_lib_for_both"],
+    whole_archive_deps_for_shared = [":whole_static_lib_for_shared"],
+    whole_archive_deps_for_static = [":whole_static_lib_for_static"],
 )`},
 		},
 		{
