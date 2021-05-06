@@ -33,6 +33,69 @@
       "message": "Retrying, the test failure doesn\u0027t look related to this change.",
       "revId": "1107221a0df1627f28dbec0a0824ee248e5bef67",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b70fb36_8f33e119",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-06T22:38:04Z",
+      "side": 1,
+      "message": "I gather this is different because it\u0027s before the arch mutator now. The new code presumably split these dependencies between the same arch variants, which iiuc would correspond to adding non-far dependencies before the change. Yet it used far dependencies on AndroidCommonTarget then. Iow, it doesn\u0027t look like the old and new code do the same thing. Is that the case? If so, why?",
+      "revId": "1107221a0df1627f28dbec0a0824ee248e5bef67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f2fd56e_04a4d4d6",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-06T22:38:04Z",
+      "side": 1,
+      "message": "It considers java libs through exported_bootclasspath_fragments as well now.",
+      "range": {
+        "startLine": 402,
+        "startChar": 69,
+        "endLine": 403,
+        "endChar": 11
+      },
+      "revId": "1107221a0df1627f28dbec0a0824ee248e5bef67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc9b7b12_39f45008",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-06T22:38:04Z",
+      "side": 1,
+      "message": "Are BCP fragments guaranteed to have nonempty contents? Otherwise this may be empty, in which case by the previous logic no deapexer is needed?",
+      "range": {
+        "startLine": 430,
+        "startChar": 41,
+        "endLine": 430,
+        "endChar": 106
+      },
+      "revId": "1107221a0df1627f28dbec0a0824ee248e5bef67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
