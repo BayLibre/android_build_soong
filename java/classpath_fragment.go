@@ -67,6 +67,14 @@ type ClasspathFragmentBase struct {
 	installDirPath android.InstallPath
 }
 
+func (c *ClasspathFragmentBase) ClasspathProtoOutput() android.OutputPath {
+	return c.outputFilepath
+}
+
+func (c *ClasspathFragmentBase) ClasspathProtoInstallDir() string {
+	return c.installDirPath.Rel()
+}
+
 func (c *ClasspathFragmentBase) classpathFragmentBase() *ClasspathFragmentBase {
 	return c
 }
@@ -142,6 +150,8 @@ func writeClasspathsJson(ctx android.ModuleContext, output android.WritablePath,
 	android.WriteFileRule(ctx, output, content.String())
 }
 
+// Returns AndroidMkEntries objects to install generated classpath.proto.
+// Do not use this to install into APEXes as the injection of the generated files happen separately for APEXes.
 func (c *ClasspathFragmentBase) androidMkEntries() []android.AndroidMkEntries {
 	return []android.AndroidMkEntries{{
 		Class:      "ETC",
