@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da528a2_7ebeaa7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-06T22:05:00Z",
+      "side": 1,
+      "message": "A minor refactoring. I found it confusing that the licenseModule\u0027s GenerateAndroidBuildActions was empty but some processing was done on licenseModule. It took me a little while to track down so I thought that this would make it more consistent with the rest of Soong.",
+      "revId": "a1df0162ba56890ef0f5d84fd66ea19e9261cc25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
