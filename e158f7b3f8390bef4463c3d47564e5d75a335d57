@@ -41,6 +41,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a91c5eb4_84fb96f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-05-06T14:41:34Z",
+      "side": 1,
+      "message": "Sorry for the radio silence, I\u0027ve been OOO. Yeah, I\u0027ll split the CL, rename and explain variables as you suggested.\nRegarding the test, I think it would be available when the other script(extract images and run dexpreopt_gen --usesTargetFiles and then run scripts) is ready",
+      "parentUuid": "8c9046f2_4bfe5ca2",
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e07e8b47_772728e6",
