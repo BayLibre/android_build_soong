@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dfdca24_36163e8e",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-05-06T18:30:23Z",
+      "side": 1,
+      "message": "This can be removed too",
+      "range": {
+        "startLine": 146,
+        "startChar": 8,
+        "endLine": 146,
+        "endChar": 24
+      },
+      "revId": "beee177a7db0c23dbf04d92efd8a6cf982477cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
