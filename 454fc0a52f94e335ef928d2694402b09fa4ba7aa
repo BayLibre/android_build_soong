@@ -106,6 +106,24 @@
       "parentUuid": "57758f6c_f21c52e4",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "960ab6e9_93c600f6",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-06T01:09:38Z",
+      "side": 1,
+      "message": "They will be ordered on a single module and on dependencies, but not on other arbitrary modules.  Modules will be parsed and caught up to the current mutator at the point they are first added as a dependency.  They also won\u0027t have a full list of variants, just the variants required by the modules that depend on them that have been parsed.",
+      "parentUuid": "524b00b1_09c8fb40",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
