@@ -72,4 +72,27 @@ EOF
   fi
 }
 
-test_bp2build_generates_all_buildfiles
+function test_bp2build_cc_aquery {
+  setup
+  create_mock_bazel
+
+  mkdir -p foo/
+  cat > foo/Android.bp <<'EOF'
+cc_library_static {
+    name: "mylib",
+    srcs: ["main.cc"],
+    bazel_module: { bp2build_available: true },
+}
+EOF
+
+  cat > foo/main.cc <<'EOF'
+int main(){}
+EOF
+
+  run_bp2build
+
+  run_bazel aquery --package_path=out/soong/workspace //foo:mylib_mainlib
+}
+
+# test_bp2build_generates_all_buildfiles
+test_bp2build_cc_aquery
