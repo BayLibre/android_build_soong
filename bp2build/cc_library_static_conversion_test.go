@@ -912,6 +912,45 @@ cc_library_static {
     }),
 )`},
 		},
+		{
+			description:                        "cc_library_static product variable selects",
+			moduleTypeUnderTest:                "cc_library_static",
+			moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+			moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+			depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
+			filesystem:                         map[string]string{},
+			bp: soongCcLibraryStaticPreamble + `
+cc_library_static {
+    name: "foo_static",
+    srcs: ["common.c"],
+    product_variables: {
+      malloc_not_svelte: {
+        cflags: ["-Wmalloc_not_svelte"],
+      },
+      malloc_zero_contents: {
+        cflags: ["-Wmalloc_zero_contents"],
+      },
+      binder32bit: {
+        cflags: ["-Wbinder32bit"],
+      },
+    },
+} `,
+			expectedBazelTargets: []string{`cc_library_static(
+    name = "foo_static",
+    copts = ["-I."] + select({
+        "//build/bazel/product_variables:Malloc_not_svelte": ["-Wmalloc_not_svelte"],
+        "//conditions:default": [],
+    }) + select({
+        "//build/bazel/product_variables:Malloc_zero_contents": ["-Wmalloc_zero_contents"],
+        "//conditions:default": [],
+    }) + select({
+        "//build/bazel/product_variables:Binder32bit": ["-Wbinder32bit"],
+        "//conditions:default": [],
+    }),
+    linkstatic = True,
+    srcs = ["common.c"],
+)`},
+		},
 	}
 
 	dir := "."

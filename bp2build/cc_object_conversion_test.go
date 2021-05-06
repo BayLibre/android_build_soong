@@ -192,7 +192,10 @@ cc_object {
 `,
 			expectedBazelTargets: []string{`cc_object(
     name = "foo",
-    asflags = ["-DPLATFORM_SDK_VERSION={Platform_sdk_version}"],
+    asflags = select({
+        "//build/bazel/product_variables:Platform_sdk_version": ["-DPLATFORM_SDK_VERSION={Platform_sdk_version}"],
+        "//conditions:default": [],
+    }),
     copts = ["-fno-addrsig"],
 )`,
 			},
