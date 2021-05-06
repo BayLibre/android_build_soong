@@ -46,6 +46,30 @@
       },
       "revId": "f16f8ab76bc8348b20e8f32a57b8dc30e2756046",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "263d9ca0_378d4106",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-06T12:58:16Z",
+      "side": 1,
+      "message": "You seem to have forgotten to upload the fix.",
+      "parentUuid": "957e436f_4faf37e1",
+      "range": {
+        "startLine": 302,
+        "startChar": 66,
+        "endLine": 302,
+        "endChar": 89
+      },
+      "revId": "f16f8ab76bc8348b20e8f32a57b8dc30e2756046",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
