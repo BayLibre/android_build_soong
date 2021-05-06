@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b1b0372_68db579e",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-06T12:13:14Z",
+      "side": 1,
+      "message": "Can you change this to p.Base(). Change https://r.android.com/1697675 will make the suffix of the file dependent on the version that is specified and using p.Base() will ensure that the installed file also matches.\n\nIt will default to current so won\u0027t change the behavior of this and will avoid generating the file with a confusing name.",
+      "range": {
+        "startLine": 302,
+        "startChar": 66,
+        "endLine": 302,
+        "endChar": 89
+      },
+      "revId": "f16f8ab76bc8348b20e8f32a57b8dc30e2756046",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
