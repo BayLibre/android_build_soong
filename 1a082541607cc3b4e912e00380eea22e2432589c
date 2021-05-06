@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dc6a59a_228955a2",
+        "filename": "cc/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-06T18:19:04Z",
+      "side": 1,
+      "message": "This isn\u0027t really equivalent, the old values were something like prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-, but most of the tools in ClangBin have an \"llvm\"- prefix.  If this is still used then maybe \"${config.ClangBin}/llvm-\" would work better?  That should would work for everything except ld.",
+      "revId": "1a082541607cc3b4e912e00380eea22e2432589c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
