@@ -206,15 +206,22 @@ func (b *platformBootclasspathModule) generateClasspathProtoBuildActions(ctx and
 
 	// TODO(satayev): remove updatable boot jars once each apex has its own fragment
 	global := dexpreopt.GetGlobalConfig(ctx)
-	classpathJars = append(classpathJars, configuredJarListToClasspathJars(ctx, global.UpdatableBootJars, BOOTCLASSPATH)...)
+	remainingUpdatableJars := global.UpdatableBootJars
+	for _, fragment := range b.fragments {
+		if classpathFragment, ok := fragment.(classpathFragment); ok {
+			fragmentJars := classpathFragment.ClasspathFragmentToConfiguredJarList(ctx)
+			remainingUpdatableJars = remainingUpdatableJars.RemoveList(fragmentJars)
+		} else {
+			panic(fmt.Errorf("fragment %v is not a classpathFragment", fragment.Name()))
+		}
+	}
+	classpathJars = append(classpathJars, configuredJarListToClasspathJars(ctx, remainingUpdatableJars, BOOTCLASSPATH)...)
 
 	b.classpathFragmentBase().generateClasspathProtoBuildActions(ctx, classpathJars)
 }
 
 func (b *platformBootclasspathModule) ClasspathFragmentToConfiguredJarList(ctx android.ModuleContext) android.ConfiguredJarList {
-	global := dexpreopt.GetGlobalConfig(ctx)
-	// TODO(satayev): split ART apex jars into their own classpathFragment
-	return global.BootJars
+	return b.getImageConfig(ctx).modules
 }
 
 // checkNonUpdatableModules ensures that the non-updatable modules supplied are not part of an

@@ -375,16 +375,33 @@ func (b *BootclasspathFragmentModule) generateClasspathProtoBuildActions(ctx and
 	var classpathJars []classpathJar
 	if "art" == proptools.String(b.properties.Image_name) {
 		// ART and platform boot jars must have a corresponding entry in DEX2OATBOOTCLASSPATH
-		classpathJars = configuredJarListToClasspathJars(ctx, b.ConfiguredJarList(ctx), BOOTCLASSPATH, DEX2OATBOOTCLASSPATH)
+		classpathJars = configuredJarListToClasspathJars(ctx, b.ClasspathFragmentToConfiguredJarList(ctx), BOOTCLASSPATH, DEX2OATBOOTCLASSPATH)
 	} else {
-		classpathJars = configuredJarListToClasspathJars(ctx, b.ConfiguredJarList(ctx), b.classpathType)
+		classpathJars = configuredJarListToClasspathJars(ctx, b.ClasspathFragmentToConfiguredJarList(ctx), b.classpathType)
 	}
 	b.classpathFragmentBase().generateClasspathProtoBuildActions(ctx, classpathJars)
 }
 
-func (b *BootclasspathFragmentModule) ConfiguredJarList(ctx android.ModuleContext) android.ConfiguredJarList {
-	// TODO(satayev): populate with actual content
-	return android.EmptyConfiguredJarList()
+func (b *BootclasspathFragmentModule) ClasspathFragmentToConfiguredJarList(ctx android.ModuleContext) android.ConfiguredJarList {
+	if "art" == proptools.String(b.properties.Image_name) {
+		return b.getImageConfig(ctx).modules
+	}
+
+	global := dexpreopt.GetGlobalConfig(ctx)
+
+	// Only create configs for updatable boot jars. Non-updatable boot jars must be part of the
+	// platform_bootclasspath's classpath proto config to guarantee that they come before any
+	// updatable jars at runtime.
+	configuredJars := global.UpdatableBootJars
+
+	list := android.EmptyConfiguredJarList()
+	for _, name := range b.properties.Contents {
+		if configuredJars.ContainsJar(name) {
+			list = list.Append(configuredJars.ApexOfJar(name), name)
+		}
+	}
+
+	return list
 }
 
 func (b *BootclasspathFragmentModule) getImageConfig(ctx android.EarlyModuleContext) *bootImageConfig {
