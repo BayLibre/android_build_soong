@@ -2,6 +2,7 @@ package bp2build
 
 import (
 	"android/soong/android"
+	"android/soong/cc/config"
 	"fmt"
 	"reflect"
 	"sort"
@@ -39,6 +40,13 @@ func CreateBazelFiles(
 			files = append(files, newFile(bazelRulesSubDir, bzlFileName+".bzl", ruleShim.content))
 		}
 		files = append(files, newFile(bazelRulesSubDir, "soong_module.bzl", generateSoongModuleBzl(ruleShims)))
+	}
+
+	if mode == Bp2Build {
+		files = append(files,
+			newFile("__generated_by_bp2build__", "BUILD", config.BazelCcToolchainVars()))
+		files = append(files,
+			newFile("__generated_by_bp2build__", "cc_toolchain_vars.bzl", config.BazelCcToolchainVars()))
 	}
 
 	files = append(files, createBuildFiles(buildToTargets, mode)...)
