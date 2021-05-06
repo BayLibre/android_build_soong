@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfff683c_24c20843",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-06T23:04:07Z",
+      "side": 1,
+      "message": "\u003e I gather this is different because it\u0027s before the arch mutator now.\nExactly.\n\nThe difference between AddDependency, AddVariationDependencies and AddFarVariationDependencies is how it matches the variants. At the time this is called there are no variants so if the latter provide nil variations then they are all equivalent.",
+      "parentUuid": "7b70fb36_8f33e119",
+      "revId": "1107221a0df1627f28dbec0a0824ee248e5bef67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f2fd56e_04a4d4d6",
@@ -75,6 +93,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7530324_e90440d0",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-06T23:04:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f2fd56e_04a4d4d6",
+      "range": {
+        "startLine": 402,
+        "startChar": 69,
+        "endLine": 403,
+        "endChar": 11
+      },
+      "revId": "1107221a0df1627f28dbec0a0824ee248e5bef67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc9b7b12_39f45008",
@@ -88,6 +130,30 @@
       "writtenOn": "2021-05-06T22:38:04Z",
       "side": 1,
       "message": "Are BCP fragments guaranteed to have nonempty contents? Otherwise this may be empty, in which case by the previous logic no deapexer is needed?",
+      "range": {
+        "startLine": 430,
+        "startChar": 41,
+        "endLine": 430,
+        "endChar": 106
+      },
+      "revId": "1107221a0df1627f28dbec0a0824ee248e5bef67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b520822a_2b51142f",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-06T23:04:07Z",
+      "side": 1,
+      "message": "Yes, they are but it is not checked yet. I had a change to verify that contents is always specified and non-empty but could not submit it because the prebuilts still had a prebuilt_bootclasspath_fragment with no contents property. I will resurrect that change.",
+      "parentUuid": "bc9b7b12_39f45008",
       "range": {
         "startLine": 430,
         "startChar": 41,
