@@ -15,6 +15,7 @@
 package config
 
 import (
+	"fmt"
 	"strings"
 
 	"android/soong/android"
@@ -156,6 +157,9 @@ var (
 
 	// Directories with warnings from Android.mk files.
 	WarningAllowedOldProjects = []string{}
+
+	// Exported for bp2build for generating a cc_toolchain.
+	exportedVars = map[string]map[string]string{}
 )
 
 var pctx = android.NewPackageContext("android/soong/cc/config")
@@ -165,51 +169,74 @@ func init() {
 		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-prefix-map=/proc/self/cwd=")
 	}
 
-	pctx.StaticVariable("CommonGlobalConlyflags", strings.Join(commonGlobalConlyflags, " "))
-	pctx.StaticVariable("DeviceGlobalCppflags", strings.Join(deviceGlobalCppflags, " "))
-	pctx.StaticVariable("DeviceGlobalLdflags", strings.Join(deviceGlobalLdflags, " "))
-	pctx.StaticVariable("DeviceGlobalLldflags", strings.Join(deviceGlobalLldflags, " "))
-	pctx.StaticVariable("HostGlobalCppflags", strings.Join(hostGlobalCppflags, " "))
-	pctx.StaticVariable("HostGlobalLdflags", strings.Join(hostGlobalLdflags, " "))
-	pctx.StaticVariable("HostGlobalLldflags", strings.Join(hostGlobalLldflags, " "))
+	staticVariable("CommonGlobalConlyflags", strings.Join(commonGlobalConlyflags, " "))
+	staticVariable("DeviceGlobalCppflags", strings.Join(deviceGlobalCppflags, " "))
+	staticVariable("DeviceGlobalLdflags", strings.Join(deviceGlobalLdflags, " "))
+	staticVariable("DeviceGlobalLldflags", strings.Join(deviceGlobalLldflags, " "))
+	staticVariable("HostGlobalCppflags", strings.Join(hostGlobalCppflags, " "))
+	staticVariable("HostGlobalLdflags", strings.Join(hostGlobalLdflags, " "))
+	staticVariable("HostGlobalLldflags", strings.Join(hostGlobalLldflags, " "))
+
+	// CommonClangGlobalCflags
+	commonClangGlobalCflags := ClangFilterUnknownCflags(commonGlobalCflags)
+	commonClangGlobalCflags = append(commonClangGlobalCflags, "${ClangExtraCflags}")
+
+	autoZeroInitializeFlags := strings.Join(
+		append(
+			commonClangGlobalCflags,
+			"-ftrivial-auto-var-init=zero -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang"), " ")
+	setBazelCcEnvDependentVariable(exportedVars, "CommonClangGlobalCflags", autoZeroInitializeFlags, "AUTO_ZERO_INITIALIZE")
+
+	autoPatternInitializeFlags := strings.Join(append(commonClangGlobalCflags, "-ftrivial-auto-var-init=pattern"), " ")
+	setBazelCcEnvDependentVariable(exportedVars, "CommonClangGlobalCflags", autoPatternInitializeFlags, "AUTO_PATTERN_INITIALIZE")
+
+	autoUninitializeFlags := strings.Join(append(commonClangGlobalCflags, "-ftrivial-auto-var-init=uninitialized"), " ")
+	setBazelCcEnvDependentVariable(exportedVars, "CommonClangGlobalCflags", autoUninitializeFlags, "AUTO_UNINITIALIZE")
+
+	zeroInitializationFlags := strings.Join(
+		append(
+			commonClangGlobalCflags,
+			"-ftrivial-auto-var-init=zero -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang"), " ")
+	setBazelCcVariable(exportedVars, "CommonClangGlobalCflags", zeroInitializationFlags)
 
 	pctx.VariableFunc("CommonClangGlobalCflags", func(ctx android.PackageVarContext) string {
-		flags := ClangFilterUnknownCflags(commonGlobalCflags)
-		flags = append(flags, "${ClangExtraCflags}")
-
 		// http://b/131390872
 		// Automatically initialize any uninitialized stack variables.
 		// Prefer zero-init if multiple options are set.
 		if ctx.Config().IsEnvTrue("AUTO_ZERO_INITIALIZE") {
-			flags = append(flags, "-ftrivial-auto-var-init=zero -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang")
+			return autoZeroInitializeFlags
 		} else if ctx.Config().IsEnvTrue("AUTO_PATTERN_INITIALIZE") {
-			flags = append(flags, "-ftrivial-auto-var-init=pattern")
+			return autoPatternInitializeFlags
 		} else if ctx.Config().IsEnvTrue("AUTO_UNINITIALIZE") {
-			flags = append(flags, "-ftrivial-auto-var-init=uninitialized")
+			return autoUninitializeFlags
 		} else {
 			// Default to zero initialization.
-			flags = append(flags, "-ftrivial-auto-var-init=zero -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang")
+			return zeroInitializationFlags
 		}
-
-		return strings.Join(flags, " ")
 	})
 
+	// DeviceClangGlobalCflags
+	deviceClangGlobalCflagsFuschia := strings.Join(ClangFilterUnknownCflags(deviceGlobalCflags), " ")
+	// Fuschia flags aren't being exported since it's not needed yet.
+	deviceClangGlobalCflags := strings.Join(append(ClangFilterUnknownCflags(deviceGlobalCflags), "${ClangExtraTargetCflags}"), " ")
+	setBazelCcVariable(exportedVars, "DeviceClangGlobalCflags", deviceClangGlobalCflags)
 	pctx.VariableFunc("DeviceClangGlobalCflags", func(ctx android.PackageVarContext) string {
 		if ctx.Config().Fuchsia() {
-			return strings.Join(ClangFilterUnknownCflags(deviceGlobalCflags), " ")
+			return deviceClangGlobalCflagsFuschia
 		} else {
-			return strings.Join(append(ClangFilterUnknownCflags(deviceGlobalCflags), "${ClangExtraTargetCflags}"), " ")
+			return deviceClangGlobalCflags
 		}
 	})
-	pctx.StaticVariable("HostClangGlobalCflags",
+
+	staticVariable("HostClangGlobalCflags",
 		strings.Join(ClangFilterUnknownCflags(hostGlobalCflags), " "))
-	pctx.StaticVariable("NoOverrideClangGlobalCflags",
+	staticVariable("NoOverrideClangGlobalCflags",
 		strings.Join(append(ClangFilterUnknownCflags(noOverrideGlobalCflags), "${ClangExtraNoOverrideCflags}"), " "))
 
-	pctx.StaticVariable("CommonClangGlobalCppflags",
+	staticVariable("CommonClangGlobalCppflags",
 		strings.Join(append(ClangFilterUnknownCflags(commonGlobalCppflags), "${ClangExtraCppflags}"), " "))
 
-	pctx.StaticVariable("ClangExternalCflags", "${ClangExtraExternalCflags}")
+	staticVariable("ClangExternalCflags", "${ClangExtraExternalCflags}")
 
 	// Everything in these lists is a crime against abstraction and dependency tracking.
 	// Do not add anything to this list.
@@ -289,4 +316,75 @@ func envOverrideFunc(envVar, defaultVal string) func(ctx android.PackageVarConte
 		}
 		return defaultVal
 	}
+}
+
+// Convenience function to declare a static variable and export it to Bazel's cc_toolchain.
+func staticVariable(name, value string) {
+	pctx.StaticVariable(name, value)
+	setBazelCcVariable(exportedVars, name, value)
+}
+
+func setBazelCcVariable(store map[string]map[string]string, key, value string) {
+	setBazelCcEnvDependentVariable(store, key, value, "__default__")
+}
+
+func setBazelCcEnvDependentVariable(store map[string]map[string]string, key, value, envVar string) {
+	if store[key] == nil {
+		store[key] = map[string]string{}
+	}
+	store[key][envVar] = value
+}
+
+// BazelCcToolchainVars generates a list of string/dict variables containing
+// configuration for Bazel's cc_toolchain configuration.
+func BazelCcToolchainVars() string {
+	// Replace with a regex?
+	findOnlyVar := func(s string) string {
+		i := strings.Index(s, "{")
+		if i >= 0 {
+			j := strings.Index(s, "}")
+			if j >= 0 {
+				return s[i+1 : j]
+
+			}
+		}
+		return ""
+	}
+	ret := "# GENERATED FOR BAZEL FROM SOONG. DO NOT EDIT.\n\n"
+	for _, k := range android.SortedStringKeys(exportedVars) {
+		vs := exportedVars[k]
+		if len(vs) > 1 {
+			ret += fmt.Sprintf("_%s = {}\n", k)
+		}
+		for envVar, v := range vs {
+			// Assume that there is only _at most 1_ interpolated variable.
+			if strings.Contains(v, "${") {
+				interpolatedVar := findOnlyVar(v)
+				v = strings.Replace(
+					v,
+					fmt.Sprintf("${%s}", interpolatedVar),
+					exportedVars[interpolatedVar]["__default__"], 1)
+			}
+			list := "["
+			for _, flag := range strings.Split(v, " ") {
+				if flag != "" {
+					list += "\n    \"" + flag + "\","
+				}
+			}
+			list += "\n]"
+			if len(vs) == 1 {
+				ret += fmt.Sprintf("_%s = %s\n", k, list)
+			} else {
+				ret += fmt.Sprintf("_%s[\"%s\"] = %s\n", k, envVar, list)
+			}
+			ret += "\n"
+		}
+	}
+
+	ret += "constants = struct(\n"
+	for _, k := range android.SortedStringKeys(exportedVars) {
+		ret += fmt.Sprintf("    %s = _%s,\n", k, k)
+	}
+	ret += ")"
+	return ret
 }
