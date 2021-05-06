@@ -16,6 +16,24 @@
       "message": "This isn\u0027t really equivalent, the old values were something like prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/bin/arm-linux-androideabi-, but most of the tools in ClangBin have an \"llvm\"- prefix.  If this is still used then maybe \"${config.ClangBin}/llvm-\" would work better?  That should would work for everything except ld.",
       "revId": "1a082541607cc3b4e912e00380eea22e2432589c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bd512e6_43bee71c",
+        "filename": "cc/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-05-06T18:26:06Z",
+      "side": 1,
+      "message": "i struggled to find any _users_ for this to understand what it should look like...\n\nhttps://source.corp.google.com/search?q\u003d%5Cb(HOST%7CTARGET)_%5CS*TOOLS_PREFIX%20case:yes%20file:%5C.mk$\u0026sq\u003dpackage:%5Eandroid$ makes me think it\u0027s actually unused except for one device? (though i\u0027m not certain that\u0027s the right search.)\n\nand i actually didn\u0027t even understand those uses... it seems like TARGET_TOOLS_PREFIX is only used if a variable that\u0027s unconditionally assigned to (on line 3) isn\u0027t set (on line 24)? [or in the other file, lines 5 and 12.]\n\nof course, this might be an argument for \"let\u0027s just remove this\", but i wasn\u0027t brave enough to do that on my own. if that looks right to you, should i remove it? or do you think that trying \"/llvm-\" is a better choice because we don\u0027t know what we don\u0027t know, and that might be closer to working for code we can\u0027t see?",
+      "parentUuid": "7dc6a59a_228955a2",
+      "revId": "1a082541607cc3b4e912e00380eea22e2432589c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
