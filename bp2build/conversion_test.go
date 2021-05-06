@@ -79,9 +79,29 @@ func TestCreateBazelFiles_QueryView_AddsTopLevelFiles(t *testing.T) {
 	}
 }
 
-func TestCreateBazelFiles_Bp2Build_CreatesNoFilesWithNoTargets(t *testing.T) {
+func TestCreateBazelFiles_Bp2Build_CreatesDefaultFiles(t *testing.T) {
 	files := CreateBazelFiles(map[string]RuleShim{}, map[string]BazelTargets{}, Bp2Build)
-	if len(files) != 0 {
-		t.Errorf("Expected no files, got %d", len(files))
+
+	expectedFilePaths := []bazelFilepath{
+		{
+			dir:      "prebuilts/clang/host/linux-x86",
+			basename: "generated_cc_vars.bzl",
+		},
+	}
+
+	if len(files) != len(expectedFilePaths) {
+		t.Errorf("Expected %d file, got %d", len(expectedFilePaths), len(files))
+	}
+
+	for i := range files {
+		actualFile, expectedFile := files[i], expectedFilePaths[i]
+
+		if actualFile.Dir != expectedFile.dir || actualFile.Basename != expectedFile.basename {
+			t.Errorf("Did not find expected file %s/%s", actualFile.Dir, actualFile.Basename)
+		}
+
+		if actualFile.Contents == "" {
+			t.Errorf("Contents of %s unexpected empty.", actualFile)
+		}
 	}
 }
