@@ -98,7 +98,7 @@ var ClangTidyDisableChecks = []string{
 }
 
 func init() {
-	pctx.StaticVariable("ClangExtraCflags", strings.Join([]string{
+	staticVariable("ClangExtraCflags", strings.Join([]string{
 		"-D__compiler_offsetof=__builtin_offsetof",
 
 		// Emit address-significance table which allows linker to perform safe ICF. Clang does
@@ -153,7 +153,7 @@ func init() {
 		"-D__ANDROID_UNAVAILABLE_SYMBOLS_ARE_WEAK__",
 	}, " "))
 
-	pctx.StaticVariable("ClangExtraCppflags", strings.Join([]string{
+	staticVariable("ClangExtraCppflags", strings.Join([]string{
 		// -Wimplicit-fallthrough is not enabled by -Wall.
 		"-Wimplicit-fallthrough",
 
@@ -164,11 +164,11 @@ func init() {
 		"-Wno-gnu-include-next",
 	}, " "))
 
-	pctx.StaticVariable("ClangExtraTargetCflags", strings.Join([]string{
+	staticVariable("ClangExtraTargetCflags", strings.Join([]string{
 		"-nostdlibinc",
 	}, " "))
 
-	pctx.StaticVariable("ClangExtraNoOverrideCflags", strings.Join([]string{
+	staticVariable("ClangExtraNoOverrideCflags", strings.Join([]string{
 		"-Werror=address-of-temporary",
 		// Bug: http://b/29823425 Disable -Wnull-dereference until the
 		// new cases detected by this warning in Clang r271374 are
@@ -207,7 +207,7 @@ func init() {
 
 	// Extra cflags for external third-party projects to disable warnings that
 	// are infeasible to fix in all the external projects and their upstream repos.
-	pctx.StaticVariable("ClangExtraExternalCflags", strings.Join([]string{
+	staticVariable("ClangExtraExternalCflags", strings.Join([]string{
 		"-Wno-enum-compare",
 		"-Wno-enum-compare-switch",
 
