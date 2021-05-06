@@ -1564,6 +1564,12 @@ func (l *ConfiguredJarList) containsApexJarPair(apex, jar string) bool {
 	return false
 }
 
+// ApexOfJar returns the apex component of the first pair with the given jar name on the list, or -1
+// if not found.
+func (l *ConfiguredJarList) ApexOfJar(jar string) string {
+	return l.Apex(IndexList(jar, l.jars))
+}
+
 // IndexOfJar returns the first pair with the given jar name on the list, or -1
 // if not found.
 func (l *ConfiguredJarList) IndexOfJar(jar string) int {
