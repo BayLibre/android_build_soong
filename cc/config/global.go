@@ -15,6 +15,8 @@
 package config
 
 import (
+	"fmt"
+	"regexp"
 	"strings"
 
 	"android/soong/android"
@@ -165,13 +167,25 @@ func init() {
 		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-prefix-map=/proc/self/cwd=")
 	}
 
-	pctx.StaticVariable("CommonGlobalConlyflags", strings.Join(commonGlobalConlyflags, " "))
-	pctx.StaticVariable("DeviceGlobalCppflags", strings.Join(deviceGlobalCppflags, " "))
-	pctx.StaticVariable("DeviceGlobalLdflags", strings.Join(deviceGlobalLdflags, " "))
-	pctx.StaticVariable("DeviceGlobalLldflags", strings.Join(deviceGlobalLldflags, " "))
-	pctx.StaticVariable("HostGlobalCppflags", strings.Join(hostGlobalCppflags, " "))
-	pctx.StaticVariable("HostGlobalLdflags", strings.Join(hostGlobalLdflags, " "))
-	pctx.StaticVariable("HostGlobalLldflags", strings.Join(hostGlobalLldflags, " "))
+	staticVariableExportedToBazel("CommonGlobalConlyflags", commonGlobalConlyflags)
+	staticVariableExportedToBazel("DeviceGlobalCppflags", deviceGlobalCppflags)
+	staticVariableExportedToBazel("DeviceGlobalLdflags", deviceGlobalLdflags)
+	staticVariableExportedToBazel("DeviceGlobalLldflags", deviceGlobalLldflags)
+	staticVariableExportedToBazel("HostGlobalCppflags", hostGlobalCppflags)
+	staticVariableExportedToBazel("HostGlobalLdflags", hostGlobalLdflags)
+	staticVariableExportedToBazel("HostGlobalLldflags", hostGlobalLldflags)
+
+	// Export the static default CommonClangGlobalCflags to Bazel.
+	// TODO(187086342): handle cflags that are set in VariableFuncs.
+	commonClangGlobalCFlags := append(
+		ClangFilterUnknownCflags(commonGlobalCflags),
+		[]string{
+			"${ClangExtraCflags}",
+			// Default to zero initialization.
+			"-ftrivial-auto-var-init=zero",
+			"-enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang",
+		}...)
+	exportedVars.Set("CommonClangGlobalCflags", variableValue(commonClangGlobalCFlags))
 
 	pctx.VariableFunc("CommonClangGlobalCflags", func(ctx android.PackageVarContext) string {
 		flags := ClangFilterUnknownCflags(commonGlobalCflags)
@@ -190,26 +204,26 @@ func init() {
 			// Default to zero initialization.
 			flags = append(flags, "-ftrivial-auto-var-init=zero -enable-trivial-auto-var-init-zero-knowing-it-will-be-removed-from-clang")
 		}
-
 		return strings.Join(flags, " ")
 	})
+
+	// Export the static default DeviceClangGlobalCflags to Bazel.
+	// TODO(187086342): handle cflags that are set in VariableFuncs.
+	deviceClangGlobalCflags := append(ClangFilterUnknownCflags(deviceGlobalCflags), "${ClangExtraTargetCflags}")
+	exportedVars.Set("DeviceClangGlobalCflags", variableValue(deviceClangGlobalCflags))
 
 	pctx.VariableFunc("DeviceClangGlobalCflags", func(ctx android.PackageVarContext) string {
 		if ctx.Config().Fuchsia() {
 			return strings.Join(ClangFilterUnknownCflags(deviceGlobalCflags), " ")
 		} else {
-			return strings.Join(append(ClangFilterUnknownCflags(deviceGlobalCflags), "${ClangExtraTargetCflags}"), " ")
+			return strings.Join(deviceClangGlobalCflags, " ")
 		}
 	})
-	pctx.StaticVariable("HostClangGlobalCflags",
-		strings.Join(ClangFilterUnknownCflags(hostGlobalCflags), " "))
-	pctx.StaticVariable("NoOverrideClangGlobalCflags",
-		strings.Join(append(ClangFilterUnknownCflags(noOverrideGlobalCflags), "${ClangExtraNoOverrideCflags}"), " "))
 
-	pctx.StaticVariable("CommonClangGlobalCppflags",
-		strings.Join(append(ClangFilterUnknownCflags(commonGlobalCppflags), "${ClangExtraCppflags}"), " "))
-
-	pctx.StaticVariable("ClangExternalCflags", "${ClangExtraExternalCflags}")
+	staticVariableExportedToBazel("HostClangGlobalCflags", ClangFilterUnknownCflags(hostGlobalCflags))
+	staticVariableExportedToBazel("NoOverrideClangGlobalCflags", append(ClangFilterUnknownCflags(noOverrideGlobalCflags), "${ClangExtraNoOverrideCflags}"))
+	staticVariableExportedToBazel("CommonClangGlobalCppflags", append(ClangFilterUnknownCflags(commonGlobalCppflags), "${ClangExtraCppflags}"))
+	staticVariableExportedToBazel("ClangExternalCflags", []string{"${ClangExtraExternalCflags}"})
 
 	// Everything in these lists is a crime against abstraction and dependency tracking.
 	// Do not add anything to this list.
@@ -289,4 +303,103 @@ func envOverrideFunc(envVar, defaultVal string) func(ctx android.PackageVarConte
 		}
 		return defaultVal
 	}
+}
+
+var (
+	// Map containing toolchain variables that are independent on the environment variables of the build.
+	exportedVars = exportedVariablesMap{}
+)
+
+type envVar string
+type variableValue []string
+
+// envDependentVariable is a toolchain variable computed based on an environment variable.
+type exportedVariablesMap map[string]variableValue
+
+func (m exportedVariablesMap) Set(k string, v variableValue) {
+	m[k] = v
+}
+
+// Convenience function to declare a static variable and export it to Bazel's cc_toolchain.
+func staticVariableExportedToBazel(name string, value []string) {
+	pctx.StaticVariable(name, strings.Join(value, " "))
+	exportedVars.Set(name, variableValue(value))
+}
+
+// BazelCcToolchainVars generates bzl file content containing variables for
+// Bazel's cc_toolchain configuration.
+func BazelCcToolchainVars() string {
+	// e.g. "${ClangExternalCflags}"
+	r := regexp.MustCompile(`\${(.+)}`)
+
+	ret := "# GENERATED FOR BAZEL FROM SOONG. DO NOT EDIT.\n\n"
+
+	// Recursively expand interpolated variables in the exportedVars scope.
+	// We're using a string slice to track the seen variables to avoid
+	// stackoverflow errors with infinite recursion. it's simpler to use a
+	// string slice than to handle a pass-by-referenced map, which would make it
+	// quite complex to track depth-first interpolations. It's also unlikely the
+	// interpolation stacks are deep (n > 1).
+	var expandVar func(string, []string) []string
+	expandVar = func(toExpand string, seenVars []string) []string {
+		var ret []string
+		if r.MatchString(toExpand) {
+			variable := r.ReplaceAllString(toExpand, "$1")
+			for _, seenVar := range seenVars {
+				if seenVar == variable {
+					panic(fmt.Errorf(
+						"Unbounded recursive interpolation: seen %s before in %q",
+						seenVar,
+						seenVars))
+				}
+			}
+			unexpandedVars := exportedVars[variable]
+			for _, unexpandedVar := range unexpandedVars {
+				ret = append(ret, expandVar(unexpandedVar, append(seenVars, variable))...)
+			}
+		} else {
+			ret = append(ret, toExpand)
+		}
+		return ret
+	}
+
+	// Ensure that string s has no invalid characters to be generated into the bzl file.
+	validateCharacters := func(s string) string {
+		for _, c := range []string{`\n`, `"`, `\`} {
+			if strings.Contains(s, c) {
+				panic(fmt.Errorf("%s contains illegal character %s", s, c))
+			}
+		}
+		return s
+	}
+
+	// For each exported variable, recursively expand elements in the variableValue
+	// list to ensure that interpolated variables are expanded according to their values
+	// in the exportedVars scope.
+	for _, k := range android.SortedStringKeys(exportedVars) {
+		variableValue := exportedVars[k]
+		var expandedVars []string
+		for _, v := range variableValue {
+			expandedVars = append(expandedVars, expandVar(v, []string{})...)
+		}
+
+		// Build the list for this variable.
+		list := "["
+		for _, flag := range expandedVars {
+			list += fmt.Sprintf("\n    \"%s\",", validateCharacters(flag))
+		}
+		list += "\n]"
+		// Assign the list as a bzl-private variable; this variable will be exported
+		// out through a constants struct later.
+		ret += fmt.Sprintf("_%s = %s\n", k, list)
+		ret += "\n"
+	}
+
+	// Build the exported constants struct.
+	ret += "constants = struct(\n"
+	for _, k := range android.SortedStringKeys(exportedVars) {
+		ret += fmt.Sprintf("    %s = _%s,\n", k, k)
+	}
+	ret += ")"
+	return ret
 }
