@@ -47,24 +47,19 @@ func (p *platformSystemServerClasspathModule) AndroidMkEntries() (entries []andr
 }
 
 func (p *platformSystemServerClasspathModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	configuredJars := configuredJarListToClasspathJars(ctx, p.ClasspathFragmentToConfiguredJarList(ctx), p.classpathType)
-	p.classpathFragmentBase().generateClasspathProtoBuildActions(ctx, configuredJars)
+	classpathJars := configuredJarListToClasspathJars(ctx, p.ClasspathFragmentToConfiguredJarList(ctx), p.classpathType)
+	p.classpathFragmentBase().generateClasspathProtoBuildActions(ctx, classpathJars)
 }
 
-var platformSystemServerClasspathKey = android.NewOnceKey("platform_systemserverclasspath")
-
 func (p *platformSystemServerClasspathModule) ClasspathFragmentToConfiguredJarList(ctx android.ModuleContext) android.ConfiguredJarList {
-	return ctx.Config().Once(platformSystemServerClasspathKey, func() interface{} {
-		global := dexpreopt.GetGlobalConfig(ctx)
+	global := dexpreopt.GetGlobalConfig(ctx)
 
-		jars := global.SystemServerJars
-
-		// TODO(satayev): split apex jars into separate configs.
-		for i := 0; i < global.UpdatableSystemServerJars.Len(); i++ {
-			jars = jars.Append(global.UpdatableSystemServerJars.Apex(i), global.UpdatableSystemServerJars.Jar(i))
-		}
-		return jars
-	}).(android.ConfiguredJarList)
+	jars := global.SystemServerJars
+	// TODO(satayev): split apex jars into separate configs.
+	for i := 0; i < global.UpdatableSystemServerJars.Len(); i++ {
+		jars = jars.Append(global.UpdatableSystemServerJars.Apex(i), global.UpdatableSystemServerJars.Jar(i))
+	}
+	return jars
 }
 
 type SystemServerClasspathModule struct {
@@ -101,12 +96,17 @@ func (s *SystemServerClasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 		ctx.PropertyErrorf("contents", "empty contents are not allowed")
 	}
 
-	s.classpathFragmentBase().generateClasspathProtoBuildActions(ctx, configuredJarListToClasspathJars(ctx, s.ClasspathFragmentToConfiguredJarList(ctx)))
+	classpathJars := configuredJarListToClasspathJars(ctx, s.ClasspathFragmentToConfiguredJarList(ctx), s.classpathType)
+	s.classpathFragmentBase().generateClasspathProtoBuildActions(ctx, classpathJars)
 }
 
 func (s *SystemServerClasspathModule) ClasspathFragmentToConfiguredJarList(ctx android.ModuleContext) android.ConfiguredJarList {
-	// TODO(satayev): populate with actual content
-	return android.EmptyConfiguredJarList()
+	global := dexpreopt.GetGlobalConfig(ctx)
+
+	// Only create configs for updatable boot jars. Non-updatable system server jars must be part of the
+	// platform_systemserverclasspath's classpath proto config to guarantee that they come before any
+	// updatable jars at runtime.
+	return global.UpdatableSystemServerJars.Filter(s.properties.Contents)
 }
 
 type systemServerClasspathFragmentContentDependencyTag struct {
