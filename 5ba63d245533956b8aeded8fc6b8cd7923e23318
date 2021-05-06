@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a19dd1d_cc78294f",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-06T06:59:47Z",
+      "side": 1,
+      "message": "This makes it such that `mylib` is in the underlying cc_library_static\u0027s `deps` attr, but should it also thread `mylib` to a dynamic_dep for the underlying cc_shared_library within full_cc_shared_library?\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/bazel/rules_cc/examples/experimental_cc_shared_library.bzl;l\u003d460;drc\u003d59fbac2654e35c2aef79aa985df969a01683c3cb\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/bazel/rules_cc/examples/experimental_cc_shared_library.bzl;l\u003d36;drc\u003d59fbac2654e35c2aef79aa985df969a01683c3cb",
+      "range": {
+        "startLine": 330,
+        "startChar": 4,
+        "endLine": 330,
+        "endChar": 22
+      },
+      "revId": "5ba63d245533956b8aeded8fc6b8cd7923e23318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
