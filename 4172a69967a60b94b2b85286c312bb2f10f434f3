@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd5cb946_5dbfa6d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-06T14:54:06Z",
+      "side": 1,
+      "message": "https://r.android.com/1698386 should fix it.",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 59
+      },
+      "revId": "4172a69967a60b94b2b85286c312bb2f10f434f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "596fcfe1_0b30f6b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-06T14:54:06Z",
+      "side": 1,
+      "message": "First time I took a look at the prebuilt APEX code with deapexer etc, so it took a while.",
+      "revId": "4172a69967a60b94b2b85286c312bb2f10f434f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f1cad2b_d83c64d1",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-06T14:54:06Z",
+      "side": 1,
+      "message": "Can\u0027t this just go into the \"prebuilt\" interface above? It has the same scope, hasn\u0027t it?",
+      "revId": "4172a69967a60b94b2b85286c312bb2f10f434f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ca4e610_7806eba9",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-06T14:54:06Z",
+      "side": 1,
+      "message": "Which dependencies?",
+      "range": {
+        "startLine": 107,
+        "startChar": 23,
+        "endLine": 107,
+        "endChar": 35
+      },
+      "revId": "4172a69967a60b94b2b85286c312bb2f10f434f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f7dcff7_c2f622e9",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-06T14:54:06Z",
+      "side": 1,
+      "message": "createPrebuiltApexModules?",
+      "range": {
+        "startLine": 471,
+        "startChar": 3,
+        "endLine": 471,
+        "endChar": 24
+      },
+      "revId": "4172a69967a60b94b2b85286c312bb2f10f434f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30e855de_0e9c1920",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-06T14:54:06Z",
+      "side": 1,
+      "message": "Nit: Shouldn\u0027t this be \"V\" too?",
+      "range": {
+        "startLine": 497,
+        "startChar": 29,
+        "endLine": 497,
+        "endChar": 30
+      },
+      "revId": "4172a69967a60b94b2b85286c312bb2f10f434f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de85c6d1_81954ba4",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-06T14:54:06Z",
+      "side": 1,
+      "message": "Is it intentional that this long comment duplicates the one above, with just s/selector/extractor/? If so, can the comment be moved to a common location and explain that difference in one place?",
+      "range": {
+        "startLine": 781,
+        "startChar": 8,
+        "endLine": 781,
+        "endChar": 17
+      },
+      "revId": "4172a69967a60b94b2b85286c312bb2f10f434f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
