@@ -16,6 +16,52 @@
       "message": "Ping.",
       "revId": "288528c77383ef9b63bef3c6d39ff4007f3e70e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f144c9cb_a7df4ea9",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-06T23:43:54Z",
+      "side": 1,
+      "message": "This has the problem that it\u0027s global. E.g. building the ART SDKs with it enabled would break them. Postprocessing like in update_art_module_prebuilts.py is a bit ugly but has the benefit of scoping the change properly.\n\nHence I\u0027d prefer such an approach, but I won\u0027t block this if it\u0027s what you prefer to do to keep moving. However, please add a TODO comment here explaining that this environment variable should be considered a temporary hack. You can pin it on b/174997203.",
+      "range": {
+        "startLine": 279,
+        "startChar": 35,
+        "endLine": 279,
+        "endChar": 60
+      },
+      "revId": "288528c77383ef9b63bef3c6d39ff4007f3e70e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "853fb9d5_64838c16",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-06T23:43:54Z",
+      "side": 1,
+      "message": "Stale.",
+      "range": {
+        "startLine": 628,
+        "startChar": 4,
+        "endLine": 628,
+        "endChar": 21
+      },
+      "revId": "288528c77383ef9b63bef3c6d39ff4007f3e70e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
