@@ -34,6 +34,24 @@
       "parentUuid": "7dc6a59a_228955a2",
       "revId": "1a082541607cc3b4e912e00380eea22e2432589c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f8a0684_a9e47e0e",
+        "filename": "cc/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-05-06T18:30:25Z",
+      "side": 1,
+      "message": "I think whichever way we go, we probably also need to send a heads-up about this to partners...\n\nPersonally, I think we should just remove it and replace it with the \"llvm-\" version if needed later (if someone complains).",
+      "parentUuid": "4bd512e6_43bee71c",
+      "revId": "1a082541607cc3b4e912e00380eea22e2432589c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
