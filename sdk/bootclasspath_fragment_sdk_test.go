@@ -243,7 +243,7 @@ java_sdk_library_import {
     compile_dex: true,
     public: {
         jars: ["sdk_library/public/mysdklibrary-stubs.jar"],
-        stub_srcs: ["sdk_library/public/mysdklibrary_stub_sources"],
+        stub_srcs: ["sdk_library/public/mysdklibrary.srcjar"],
         current_api: "sdk_library/public/mysdklibrary.txt",
         removed_api: "sdk_library/public/mysdklibrary-removed.txt",
         sdk_version: "current",
@@ -259,7 +259,7 @@ java_sdk_library_import {
     compile_dex: true,
     public: {
         jars: ["sdk_library/public/mycoreplatform-stubs.jar"],
-        stub_srcs: ["sdk_library/public/mycoreplatform_stub_sources"],
+        stub_srcs: ["sdk_library/public/mycoreplatform.srcjar"],
         current_api: "sdk_library/public/mycoreplatform.txt",
         removed_api: "sdk_library/public/mycoreplatform-removed.txt",
         sdk_version: "current",
@@ -300,7 +300,7 @@ java_sdk_library_import {
     compile_dex: true,
     public: {
         jars: ["sdk_library/public/mysdklibrary-stubs.jar"],
-        stub_srcs: ["sdk_library/public/mysdklibrary_stub_sources"],
+        stub_srcs: ["sdk_library/public/mysdklibrary.srcjar"],
         current_api: "sdk_library/public/mysdklibrary.txt",
         removed_api: "sdk_library/public/mysdklibrary-removed.txt",
         sdk_version: "current",
@@ -316,7 +316,7 @@ java_sdk_library_import {
     compile_dex: true,
     public: {
         jars: ["sdk_library/public/mycoreplatform-stubs.jar"],
-        stub_srcs: ["sdk_library/public/mycoreplatform_stub_sources"],
+        stub_srcs: ["sdk_library/public/mycoreplatform.srcjar"],
         current_api: "sdk_library/public/mycoreplatform.txt",
         removed_api: "sdk_library/public/mycoreplatform-removed.txt",
         sdk_version: "current",
@@ -337,9 +337,11 @@ sdk_snapshot {
 		checkAllCopyRules(`
 .intermediates/mybootlib/android_common/javac/mybootlib.jar -> java/mybootlib.jar
 .intermediates/mysdklibrary.stubs/android_common/javac/mysdklibrary.stubs.jar -> sdk_library/public/mysdklibrary-stubs.jar
+.intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source-stubs.srcjar -> sdk_library/public/mysdklibrary.srcjar
 .intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_api.txt -> sdk_library/public/mysdklibrary.txt
 .intermediates/mysdklibrary.stubs.source/android_common/metalava/mysdklibrary.stubs.source_removed.txt -> sdk_library/public/mysdklibrary-removed.txt
 .intermediates/mycoreplatform.stubs/android_common/javac/mycoreplatform.stubs.jar -> sdk_library/public/mycoreplatform-stubs.jar
+.intermediates/mycoreplatform.stubs.source/android_common/metalava/mycoreplatform.stubs.source-stubs.srcjar -> sdk_library/public/mycoreplatform.srcjar
 .intermediates/mycoreplatform.stubs.source/android_common/metalava/mycoreplatform.stubs.source_api.txt -> sdk_library/public/mycoreplatform.txt
 .intermediates/mycoreplatform.stubs.source/android_common/metalava/mycoreplatform.stubs.source_removed.txt -> sdk_library/public/mycoreplatform-removed.txt
 `))

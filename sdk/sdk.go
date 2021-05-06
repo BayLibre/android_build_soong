@@ -93,6 +93,8 @@ type sdkProperties struct {
 	//   dropped. Adding a rule to members that have //visibility:private will
 	//   cause the //visibility:private to be discarded.
 	Prebuilt_visibility []string
+
+	Java_stubs_in_srcjar *bool // default: true
 }
 
 // Contains information about the sdk properties that list sdk members, e.g.
@@ -290,6 +292,10 @@ func (s *sdk) memberListProperty(memberType android.SdkMemberType) *sdkMemberLis
 
 func (s *sdk) snapshot() bool {
 	return s.properties.Snapshot
+}
+
+func (s *sdk) JavaStubsInSrcJar() bool {
+	return proptools.BoolDefault(s.properties.Java_stubs_in_srcjar, true)
 }
 
 func (s *sdk) GenerateAndroidBuildActions(ctx android.ModuleContext) {

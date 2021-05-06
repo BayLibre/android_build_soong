@@ -2425,6 +2425,10 @@ type scopeProperties struct {
 	SdkVersion     string
 }
 
+type SdkModule interface {
+	JavaStubsInSrcJar() bool
+}
+
 func (s *sdkLibrarySdkMemberProperties) PopulateFromVariant(ctx android.SdkMemberContext, variant android.Module) {
 	sdk := variant.(*SdkLibrary)
 
@@ -2482,11 +2486,17 @@ func (s *sdkLibrarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberCo
 			}
 			scopeSet.AddProperty("jars", jars)
 
-			// Merge the stubs source jar into the snapshot zip so that when it is unpacked
-			// the source files are also unpacked.
-			snapshotRelativeDir := filepath.Join(scopeDir, ctx.Name()+"_stub_sources")
-			ctx.SnapshotBuilder().UnzipToSnapshot(properties.StubsSrcJar, snapshotRelativeDir)
-			scopeSet.AddProperty("stub_srcs", []string{snapshotRelativeDir})
+			if sdk, ok := (ctx.SdkModuleContext().Module()).(SdkModule); ok && sdk.JavaStubsInSrcJar() {
+				srcJarSnapshotPath := filepath.Join(scopeDir, ctx.Name()+".srcjar")
+				ctx.SnapshotBuilder().CopyToSnapshot(properties.StubsSrcJar, srcJarSnapshotPath)
+				scopeSet.AddProperty("stub_srcs", []string{srcJarSnapshotPath})
+			} else {
+				// Merge the stubs source jar into the snapshot zip so that when it is unpacked
+				// the source files are also unpacked.
+				snapshotRelativeDir := filepath.Join(scopeDir, ctx.Name()+"_stub_sources")
+				ctx.SnapshotBuilder().UnzipToSnapshot(properties.StubsSrcJar, snapshotRelativeDir)
+				scopeSet.AddProperty("stub_srcs", []string{snapshotRelativeDir})
+			}
 
 			if properties.CurrentApiFile != nil {
 				currentApiSnapshotPath := filepath.Join(scopeDir, ctx.Name()+".txt")
