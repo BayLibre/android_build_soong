@@ -110,6 +110,8 @@ type BootclasspathFragmentModule struct {
 	android.ModuleBase
 	android.ApexModuleBase
 	android.SdkBase
+	ClasspathFragmentBase
+
 	properties bootclasspathFragmentProperties
 }
 
@@ -118,6 +120,7 @@ func bootclasspathFragmentFactory() android.Module {
 	m.AddProperties(&m.properties)
 	android.InitApexModule(m)
 	android.InitSdkAwareModule(m)
+	initClasspathFragment(m, BOOTCLASSPATH)
 	android.InitAndroidArchModule(m, android.HostAndDeviceSupported, android.MultilibCommon)
 
 	android.AddLoadHook(m, func(ctx android.LoadHookContext) {
@@ -243,11 +246,21 @@ var BootclasspathFragmentApexContentInfoProvider = blueprint.NewProvider(Bootcla
 // BootclasspathFragmentApexContentInfo contains the bootclasspath_fragments contributions to the
 // apex contents.
 type BootclasspathFragmentApexContentInfo struct {
+	classpathFragmentBase *ClasspathFragmentBase
+
 	// The image config, internal to this module (and the dex_bootjars singleton).
 	//
 	// Will be nil if the BootclasspathFragmentApexContentInfo has not been provided for a specific module. That can occur
 	// when SkipDexpreoptBootJars(ctx) returns true.
 	imageConfig *bootImageConfig
+}
+
+func (i BootclasspathFragmentApexContentInfo) ClasspathProtoOutput() android.OutputPath {
+	return i.classpathFragmentBase.ClasspathProtoOutput()
+}
+
+func (i BootclasspathFragmentApexContentInfo) ClasspathProtoInstallDir() string {
+	return i.classpathFragmentBase.ClasspathProtoInstallDir()
 }
 
 func (i BootclasspathFragmentApexContentInfo) Modules() android.ConfiguredJarList {
@@ -340,6 +353,8 @@ func (b *BootclasspathFragmentModule) GenerateAndroidBuildActions(ctx android.Mo
 		b.bootclasspathImageNameContentsConsistencyCheck(ctx)
 	}
 
+	b.generateClasspathProtoBuildActions(ctx)
+
 	// Perform hidden API processing.
 	b.generateHiddenAPIBuildActions(ctx)
 
@@ -353,15 +368,31 @@ func (b *BootclasspathFragmentModule) GenerateAndroidBuildActions(ctx android.Mo
 	dexpreopt.GetGlobalSoongConfig(ctx)
 
 	imageConfig := b.getImageConfig(ctx)
-	if imageConfig == nil {
-		return
-	}
 
 	// Construct the boot image info from the config.
-	info := BootclasspathFragmentApexContentInfo{imageConfig: imageConfig}
+	info := BootclasspathFragmentApexContentInfo{
+		classpathFragmentBase: b.classpathFragmentBase(),
+		imageConfig:           imageConfig,
+	}
 
 	// Make it available for other modules.
 	ctx.SetProvider(BootclasspathFragmentApexContentInfoProvider, info)
+}
+
+func (b *BootclasspathFragmentModule) generateClasspathProtoBuildActions(ctx android.ModuleContext) {
+	var classpathJars []classpathJar
+	if "art" == proptools.String(b.properties.Image_name) {
+		// ART and platform boot jars must have a corresponding entry in DEX2OATBOOTCLASSPATH
+		classpathJars = configuredJarListToClasspathJars(ctx, b.ConfiguredJarList(ctx), BOOTCLASSPATH, DEX2OATBOOTCLASSPATH)
+	} else {
+		classpathJars = configuredJarListToClasspathJars(ctx, b.ConfiguredJarList(ctx), b.classpathType)
+	}
+	b.classpathFragmentBase().generateClasspathProtoBuildActions(ctx, classpathJars)
+}
+
+func (b *BootclasspathFragmentModule) ConfiguredJarList(ctx android.ModuleContext) android.ConfiguredJarList {
+	// TODO(satayev): populate with actual content
+	return android.EmptyConfiguredJarList()
 }
 
 func (b *BootclasspathFragmentModule) getImageConfig(ctx android.EarlyModuleContext) *bootImageConfig {
