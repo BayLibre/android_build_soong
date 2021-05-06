@@ -46,6 +46,10 @@ type licenseProperties struct {
 	Package_name *string
 	// Specifies where this license can be used
 	Visibility []string
+
+	// TODO(b/181569894): Allow SdkMemberType to add source modules to the snapshot so that it knows
+	//  not to automatically add a prefer property to the module so this can be removed.
+	Prefer bool
 }
 
 type licenseModule struct {
