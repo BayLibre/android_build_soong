@@ -112,9 +112,17 @@ function create_mock_bazel() {
 
   symlink_directory prebuilts/bazel
   symlink_directory prebuilts/jdk
+  symlink_directory external/bazelbuild-rules_android
 
   symlink_file WORKSPACE
+  symlink_file BUILD
   symlink_file tools/bazel
+
+  symlink_file prebuilts/clang/host/linux-x86/cc_toolchain_config.bzl
+  symlink_file prebuilts/clang/host/linux-x86/clang_version.bzl
+  symlink_file prebuilts/clang/host/linux-x86/BUILD.bazel
+
+  symlink_file prebuilts/sdk/BUILD.bazel
 }
 
 run_bazel() {
