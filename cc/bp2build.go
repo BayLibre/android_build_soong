@@ -247,6 +247,7 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 // Convenience struct to hold all attributes parsed from linker properties.
 type linkerAttributes struct {
 	deps          bazel.LabelListAttribute
+	dynamic_deps  bazel.LabelListAttribute
 	linkopts      bazel.StringListAttribute
 	versionScript bazel.LabelAttribute
 }
@@ -255,6 +256,7 @@ type linkerAttributes struct {
 // configurable attribute values.
 func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module) linkerAttributes {
 	var deps bazel.LabelListAttribute
+	var dynamic_deps bazel.LabelListAttribute
 	var linkopts bazel.StringListAttribute
 	var versionScript bazel.LabelAttribute
 
@@ -266,11 +268,16 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 			libs = append(libs, baseLinkerProps.Whole_static_libs...)
 			libs = android.SortedUniqueStrings(libs)
 			deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, libs))
+
 			linkopts.Value = baseLinkerProps.Ldflags
 
 			if baseLinkerProps.Version_script != nil {
 				versionScript.Value = android.BazelLabelForModuleSrcSingle(ctx, *baseLinkerProps.Version_script)
 			}
+
+			shared_libs := baseLinkerProps.Shared_libs
+			dynamic_deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, shared_libs))
+
 			break
 		}
 	}
@@ -283,10 +290,15 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 			libs = append(libs, baseLinkerProps.Whole_static_libs...)
 			libs = android.SortedUniqueStrings(libs)
 			deps.SetValueForArch(arch.Name, android.BazelLabelForModuleDeps(ctx, libs))
+
 			linkopts.SetValueForArch(arch.Name, baseLinkerProps.Ldflags)
+
 			if baseLinkerProps.Version_script != nil {
 				versionScript.SetValueForArch(arch.Name,
 					android.BazelLabelForModuleSrcSingle(ctx, *baseLinkerProps.Version_script))
+
+				shared_libs := baseLinkerProps.Shared_libs
+				dynamic_deps.SetValueForArch(arch.Name, android.BazelLabelForModuleDeps(ctx, shared_libs))
 			}
 		}
 	}
@@ -299,12 +311,17 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 			libs = append(libs, baseLinkerProps.Whole_static_libs...)
 			libs = android.SortedUniqueStrings(libs)
 			deps.SetValueForOS(os.Name, android.BazelLabelForModuleDeps(ctx, libs))
+
 			linkopts.SetValueForOS(os.Name, baseLinkerProps.Ldflags)
+
+			shared_libs := baseLinkerProps.Shared_libs
+			dynamic_deps.SetValueForOS(os.Name, android.BazelLabelForModuleDeps(ctx, shared_libs))
 		}
 	}
 
 	return linkerAttributes{
 		deps:          deps,
+		dynamic_deps:  dynamic_deps,
 		linkopts:      linkopts,
 		versionScript: versionScript,
 	}
