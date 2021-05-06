@@ -85,6 +85,8 @@ func depsBp2BuildMutator(ctx android.BottomUpMutatorContext) {
 }
 
 type sharedAttributes struct {
+	copts      bazel.StringListAttribute
+	srcs       bazel.LabelListAttribute
 	staticDeps bazel.LabelListAttribute
 }
 
@@ -95,17 +97,28 @@ func bp2BuildParseSharedProps(ctx android.TopDownMutatorContext, module *Module)
 		return sharedAttributes{}
 	}
 
-	var staticDeps bazel.LabelListAttribute
+	copts := bazel.StringListAttribute{Value: lib.SharedProperties.Shared.Cflags}
 
-	staticDeps.Value = android.BazelLabelForModuleDeps(ctx, lib.SharedProperties.Shared.Whole_static_libs)
+	srcs := bazel.LabelListAttribute{
+		Value: android.BazelLabelForModuleSrc(ctx, lib.SharedProperties.Shared.Srcs)}
+
+	var staticDepsStrings []string
+	staticDepsStrings = append(staticDepsStrings, lib.SharedProperties.Shared.Whole_static_libs...)
+	staticDepsStrings = append(staticDepsStrings, lib.SharedProperties.Shared.Static_libs...)
+
+	staticDeps := bazel.LabelListAttribute{Value: android.BazelLabelForModuleDeps(ctx, staticDepsStrings)}
 
 	return sharedAttributes{
+		copts:      copts,
+		srcs:       srcs,
 		staticDeps: staticDeps,
 	}
 }
 
 type staticAttributes struct {
-	srcs bazel.LabelListAttribute
+	copts      bazel.StringListAttribute
+	srcs       bazel.LabelListAttribute
+	staticDeps bazel.LabelListAttribute
 }
 
 // bp2buildParseStaticProps returns the attributes for the static variant of a cc_library.
@@ -115,11 +128,21 @@ func bp2BuildParseStaticProps(ctx android.TopDownMutatorContext, module *Module)
 		return staticAttributes{}
 	}
 
-	var srcs bazel.LabelListAttribute
-	srcs.Value = android.BazelLabelForModuleSrc(ctx, lib.StaticProperties.Static.Srcs)
+	copts := bazel.StringListAttribute{Value: lib.StaticProperties.Static.Cflags}
+
+	srcs := bazel.LabelListAttribute{
+		Value: android.BazelLabelForModuleSrc(ctx, lib.StaticProperties.Static.Srcs)}
+
+	var staticDepsStrings []string
+	staticDepsStrings = append(staticDepsStrings, lib.StaticProperties.Static.Whole_static_libs...)
+	staticDepsStrings = append(staticDepsStrings, lib.StaticProperties.Static.Static_libs...)
+
+	staticDeps := bazel.LabelListAttribute{Value: android.BazelLabelForModuleDeps(ctx, staticDepsStrings)}
 
 	return staticAttributes{
-		srcs: srcs,
+		copts:      copts,
+		srcs:       srcs,
+		staticDeps: staticDeps,
 	}
 }
 

@@ -220,15 +220,23 @@ func RegisterLibraryBuildComponents(ctx android.RegistrationContext) {
 
 // For bp2build conversion.
 type bazelCcLibraryAttributes struct {
-	Srcs                   bazel.LabelListAttribute
-	Hdrs                   bazel.LabelListAttribute
-	Copts                  bazel.StringListAttribute
-	Linkopts               bazel.StringListAttribute
-	Deps                   bazel.LabelListAttribute
-	User_link_flags        bazel.StringListAttribute
-	Includes               bazel.StringListAttribute
+	// Attributes pertaining to both static and shared variants.
+	Srcs     bazel.LabelListAttribute
+	Hdrs     bazel.LabelListAttribute
+	Deps     bazel.LabelListAttribute
+	Copts    bazel.StringListAttribute
+	Includes bazel.StringListAttribute
+	Linkopts bazel.StringListAttribute
+	// Attributes pertaining to shared variant.
+	Shared_copts           bazel.StringListAttribute
+	Shared_srcs            bazel.LabelListAttribute
 	Static_deps_for_shared bazel.LabelListAttribute
+	User_link_flags        bazel.StringListAttribute
 	Version_script         bazel.LabelAttribute
+	// Attributes pertaining to static variant.
+	Static_copts           bazel.StringListAttribute
+	Static_srcs            bazel.LabelListAttribute
+	Static_deps_for_static bazel.LabelListAttribute
 }
 
 type bazelCcLibrary struct {
@@ -275,16 +283,20 @@ func CcLibraryBp2Build(ctx android.TopDownMutatorContext) {
 
 	var srcs bazel.LabelListAttribute
 	srcs.Append(compilerAttrs.srcs)
-	srcs.Append(staticAttrs.srcs)
 
 	attrs := &bazelCcLibraryAttributes{
 		Srcs:                   srcs,
-		Copts:                  compilerAttrs.copts,
-		Linkopts:               linkerAttrs.linkopts,
 		Deps:                   linkerAttrs.deps,
-		Version_script:         linkerAttrs.versionScript,
-		Static_deps_for_shared: sharedAttrs.staticDeps,
+		Copts:                  compilerAttrs.copts,
 		Includes:               exportedIncludes,
+		Linkopts:               linkerAttrs.linkopts,
+		Shared_copts:           sharedAttrs.copts,
+		Shared_srcs:            sharedAttrs.srcs,
+		Static_deps_for_shared: sharedAttrs.staticDeps,
+		Version_script:         linkerAttrs.versionScript,
+		Static_copts:           staticAttrs.copts,
+		Static_srcs:            staticAttrs.srcs,
+		Static_deps_for_static: staticAttrs.staticDeps,
 	}
 
 	props := bazel.BazelTargetModuleProperties{
