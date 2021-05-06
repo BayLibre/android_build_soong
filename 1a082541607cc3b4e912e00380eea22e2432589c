@@ -52,6 +52,24 @@
       "parentUuid": "4bd512e6_43bee71c",
       "revId": "1a082541607cc3b4e912e00380eea22e2432589c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06700618_a96d2b85",
+        "filename": "cc/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-05-06T18:41:44Z",
+      "side": 1,
+      "message": "okay, for now i\u0027ll back out that part of this change and just make the OBJCOPY/LD changes, which we _thought_ we\u0027d already made for S (and had, on the soong side).\n\ni\u0027ll come back for TOOLS_PREFIX after sc-dev forks, and i\u0027ll ask the keystone list about it first too.",
+      "parentUuid": "2f8a0684_a9e47e0e",
+      "revId": "1a082541607cc3b4e912e00380eea22e2432589c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
