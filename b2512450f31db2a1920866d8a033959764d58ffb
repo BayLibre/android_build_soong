@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "138a301e_925b706c",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-05-07T11:34:42Z",
+      "side": 1,
+      "message": "on host\n\n(Sorry, my bad suggesting \"on device\" in the previous review.)",
+      "range": {
+        "startLine": 135,
+        "startChar": 63,
+        "endLine": 135,
+        "endChar": 73
+      },
+      "revId": "b2512450f31db2a1920866d8a033959764d58ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
