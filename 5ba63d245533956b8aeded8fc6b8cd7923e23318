@@ -22,6 +22,30 @@
       },
       "revId": "5ba63d245533956b8aeded8fc6b8cd7923e23318",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77b7336e_ae868933",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-07T18:01:03Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you are asking. My impression is that dynamic_deps is calculated dynamically and is not intended to be set in BUILD files. \n\nAt least I can\u0027t find any instance \"in the wild\" where someone is setting dynamic_deps in a BUILD file. \n\nWhat do you suggest?",
+      "parentUuid": "9a19dd1d_cc78294f",
+      "range": {
+        "startLine": 330,
+        "startChar": 4,
+        "endLine": 330,
+        "endChar": 22
+      },
+      "revId": "5ba63d245533956b8aeded8fc6b8cd7923e23318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
