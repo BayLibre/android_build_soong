@@ -16,6 +16,24 @@
       "message": "Sample of the exported .bzl: https://gist.github.com/jin/80a482afdd4afe05b2da771ba69143ea",
       "revId": "05f9aec65da8535486642d7697c86cdc4236ebae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cd914cf_26f66c30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-07T16:46:13Z",
+      "side": 1,
+      "message": "this is super helpful, thanks! we probably don\u0027t need a test that covers exactly that, but some test that covers the logic of building it would be nice.",
+      "parentUuid": "673b6f75_4d99e5c5",
+      "revId": "05f9aec65da8535486642d7697c86cdc4236ebae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

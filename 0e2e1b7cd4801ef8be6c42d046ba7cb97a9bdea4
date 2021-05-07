@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "69478120_719e9e1d",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-07T16:46:13Z",
+      "side": 1,
+      "message": "+1 -- or a typedef (or two) to add clarity?",
+      "parentUuid": "35fd6154_0852fa7e",
+      "range": {
+        "startLine": 162,
+        "startChar": 16,
+        "endLine": 162,
+        "endChar": 46
+      },
+      "revId": "0e2e1b7cd4801ef8be6c42d046ba7cb97a9bdea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "87cb8dbf_5e292fab",
         "filename": "cc/config/global.go",
         "patchSetId": 3
