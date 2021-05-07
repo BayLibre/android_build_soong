@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "673b6f75_4d99e5c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-07T10:28:54Z",
+      "side": 1,
+      "message": "Sample of the exported .bzl: https://gist.github.com/jin/80a482afdd4afe05b2da771ba69143ea",
+      "revId": "05f9aec65da8535486642d7697c86cdc4236ebae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
