@@ -266,11 +266,31 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 			libs = append(libs, baseLinkerProps.Whole_static_libs...)
 			libs = android.SortedUniqueStrings(libs)
 			deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, libs))
-			linkopts.Value = baseLinkerProps.Ldflags
+
+			// FIXME what are the right flags to start with?
+			flags := Flags{
+				Toolchain: module.toolchain(ctx),
+				EmitXrefs: ctx.Config().EmitXrefRules(),
+			}
+
+			// linkerFlags() wants a ModuleContext, so let's pretend we have one
+			// Doesn't work - "missing method Build"
+			fakeBaseModuleContext := ctx.(ModuleContext)
+
+			// FIXME how can we tell linkerFlags() about the current baseLinkerProps we are using?
+			flags = module.linker.linkerFlags(fakeBaseModuleContext, flags)
+
+			// TODO double check flag application order here
+			ldflags := baseLinkerProps.Ldflags
+			ldflags = append(ldflags, flags.Global.LdFlags...)
+			ldflags = append(ldflags, flags.Local.LdFlags...)
+
+			linkopts.Value = ldflags
 
 			if baseLinkerProps.Version_script != nil {
 				versionScript.Value = android.BazelLabelForModuleSrcSingle(ctx, *baseLinkerProps.Version_script)
 			}
+
 			break
 		}
 	}
@@ -283,7 +303,27 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 			libs = append(libs, baseLinkerProps.Whole_static_libs...)
 			libs = android.SortedUniqueStrings(libs)
 			deps.SetValueForArch(arch.Name, android.BazelLabelForModuleDeps(ctx, libs))
-			linkopts.SetValueForArch(arch.Name, baseLinkerProps.Ldflags)
+
+			// FIXME what are the right flags to start with?
+			flags := Flags{
+				Toolchain: module.toolchain(ctx),
+				EmitXrefs: ctx.Config().EmitXrefRules(),
+			}
+
+			// linkerFlags() wants a ModuleContext, so let's pretend we have one
+			// Doesn't work - "missing method Build"
+			fakeBaseModuleContext := ctx.(ModuleContext)
+
+			// FIXME how can we tell linkerFlags() about the current baseLinkerProps / arch we are using?
+			flags = module.linker.linkerFlags(fakeBaseModuleContext, flags)
+
+			// TODO double check flag application order here
+			ldflags := baseLinkerProps.Ldflags
+			ldflags = append(ldflags, flags.Global.LdFlags...)
+			ldflags = append(ldflags, flags.Local.LdFlags...)
+
+			linkopts.SetValueForArch(arch.Name, ldflags)
+
 			if baseLinkerProps.Version_script != nil {
 				versionScript.SetValueForArch(arch.Name,
 					android.BazelLabelForModuleSrcSingle(ctx, *baseLinkerProps.Version_script))
@@ -298,8 +338,28 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 			libs = append(libs, baseLinkerProps.Static_libs...)
 			libs = append(libs, baseLinkerProps.Whole_static_libs...)
 			libs = android.SortedUniqueStrings(libs)
+
+			// FIXME what are the right flags to start with?
+			flags := Flags{
+				Toolchain: module.toolchain(ctx),
+				EmitXrefs: ctx.Config().EmitXrefRules(),
+			}
+
+			// linkerFlags() wants a ModuleContext, so let's pretend we have one
+			// Doesn't work - "missing method Build"
+			fakeBaseModuleContext := ctx.(ModuleContext)
+
+			// FIXME how can we tell linkerFlags() about the current baseLinkerProps / os we are using?
+			flags = module.linker.linkerFlags(fakeBaseModuleContext, flags)
+
+			// TODO double check flag application order here
+			ldflags := baseLinkerProps.Ldflags
+			ldflags = append(ldflags, flags.Global.LdFlags...)
+			ldflags = append(ldflags, flags.Local.LdFlags...)
+
+			linkopts.SetValueForOS(os.Name, ldflags)
+
 			deps.SetValueForOS(os.Name, android.BazelLabelForModuleDeps(ctx, libs))
-			linkopts.SetValueForOS(os.Name, baseLinkerProps.Ldflags)
 		}
 	}
 
