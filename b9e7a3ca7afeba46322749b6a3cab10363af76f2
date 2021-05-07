@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3305b304_7467eee9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-07T10:16:27Z",
+      "side": 1,
+      "message": "Martin, would you mind +2ing the Open-Source-Licensing to override the lint check.",
+      "revId": "b9e7a3ca7afeba46322749b6a3cab10363af76f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
