@@ -631,6 +631,7 @@ PRODUCT_LIST2 += b
 PRODUCT_LIST3 ?= a
 PRODUCT_LIST1 = c
 PLATFORM_LIST += x
+PRODUCT_PACKAGES := $(PLATFORM_LIST)
 `,
 		expected: `load("//build/make/core:product_config.rbc", "rblf")
 
@@ -646,6 +647,7 @@ def init(g, handle):
   cfg["PRODUCT_LIST1"] = ["c"]
   g.setdefault("PLATFORM_LIST", [])
   g["PLATFORM_LIST"] += ["x"]
+  cfg["PRODUCT_PACKAGES"] = g.get("PLATFORM_LIST", [])[:]
 `,
 	},
 	{
