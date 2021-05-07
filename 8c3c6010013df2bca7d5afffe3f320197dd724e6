@@ -16,6 +16,24 @@
       "message": "Why does some other module need to know the directory into which this installs its files?\n\nPassing directories around concerns me as Paths in these structures are usually used to create ninja level dependencies and directories don\u0027t play well as dependencies in ninja.",
       "revId": "8c3c6010013df2bca7d5afffe3f320197dd724e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbe47c66_639a4256",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-07T16:19:30Z",
+      "side": 1,
+      "message": "See apex.go. It manually bundles the files, and needs to know the structure of subdirectories. I could hard-code etc/classpaths/ in there but I thought it\u0027s better to keep classpath_fragment.go as a source of truth.",
+      "parentUuid": "0df0f711_17e6bb40",
+      "revId": "8c3c6010013df2bca7d5afffe3f320197dd724e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
