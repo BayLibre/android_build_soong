@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6df33ef_c2db4273",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-07T06:06:25Z",
+      "side": 1,
+      "message": "Let me see if I can figure out the presubmit failure while you are asleep.",
+      "revId": "c91578130e3b099b4ca03d52aec4a2c16b7633fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "183fc600_11267c7a",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-07T06:06:25Z",
+      "side": 1,
+      "message": "nit: this is probably not for this change, but I assume we\u0027ll need to treat whole_static_libs and static_libs differently eventually?",
+      "range": {
+        "startLine": 106,
+        "startChar": 75,
+        "endLine": 106,
+        "endChar": 92
+      },
+      "revId": "c91578130e3b099b4ca03d52aec4a2c16b7633fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f4eed1_5fab2251",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-07T06:06:25Z",
+      "side": 1,
+      "message": "nit: does it make sense to have separate sharedAttributes and staticAttributes structures and bp2BuildParse{Shared,Static}Props functions?\n\nIt looks like the underlying structures both inherit from StaticOrSharedProperties and add nothing else.",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 21
+      },
+      "revId": "c91578130e3b099b4ca03d52aec4a2c16b7633fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
