@@ -142,6 +142,16 @@ func writeDocs(ctx *android.Context, config interface{}, filename string) error 
 			return err
 		}
 	}
+
+	// Also produce a list of keywords.
+	keywordsTmpl := template.Must(template.New("file").Parse(keywordsTemplate))
+	keywordsBuf := &bytes.Buffer{}
+	err = keywordsTmpl.Execute(keywordsBuf, packages)
+	if err == nil {
+		keywordsFilename := filepath.Join(filepath.Dir(filename), "keywords.txt")
+		err = ioutil.WriteFile(keywordsFilename, keywordsBuf.Bytes(), 0666)
+	}
+
 	return err
 }
 
@@ -411,6 +421,14 @@ window.addEventListener('message', (e) => {
   }
 });
 </script>
+{{end}}
+`
+
+	keywordsTemplate = `
+{{range $pkg := .}}
+{{range $moduleType := .ModuleTypes}}
+{{$moduleType.Name}}:{{range $property := $moduleType.Properties}}{{$property.Name}},{{end}}
+{{end}}
 {{end}}
 `
 )
