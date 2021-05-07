@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f38d3919_d7ef86c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-07T06:40:15Z",
+      "side": 1,
+      "message": "Repro:\n\nGENERATE_BAZEL_FILES\u003d1 m nothing\nbazel build --config\u003dbp2build //bionic/libdl:libdl_bp2build_cc_library_shared --platforms //build/bazel/platforms:android_arm",
+      "parentUuid": "b6df33ef_c2db4273",
+      "revId": "c91578130e3b099b4ca03d52aec4a2c16b7633fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "183fc600_11267c7a",
