@@ -34,6 +34,24 @@
       "parentUuid": "0df0f711_17e6bb40",
       "revId": "8c3c6010013df2bca7d5afffe3f320197dd724e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bb75acb_1a280e02",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-07T16:24:29Z",
+      "side": 1,
+      "message": "Understood. Good call. It is definitely better for the classpath to provide the information to apex rather than duplicating it in two places. That will be useful information to include the doc for the field.\n\nIdeally, the apex.go member type specific handling would be delegated out to all the different module types using a plugin mechanism similar to that used by the sdk snapshot mechanism so the apex would not have any module type specific logic.",
+      "parentUuid": "bbe47c66_639a4256",
+      "revId": "8c3c6010013df2bca7d5afffe3f320197dd724e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
