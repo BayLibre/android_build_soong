@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61c28c9a_86a9c130",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-07T17:35:05Z",
+      "side": 1,
+      "message": "Oh, art branches are failing because they don\u0027t see classpaths.proto which is in packages/modules/SdkExtensions. Paul, do you have an opinion on this? Should we add the package to those manifests or move the proto to soong?",
+      "revId": "4ab87b51d85e898c00f2fba4d1f238ffb4b27dc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
