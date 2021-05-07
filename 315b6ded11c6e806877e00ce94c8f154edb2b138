@@ -70,6 +70,24 @@
       "parentUuid": "57d133cc_43d5ff85",
       "revId": "315b6ded11c6e806877e00ce94c8f154edb2b138",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96aae2da_337e2144",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-05-07T23:15:21Z",
+      "side": 1,
+      "message": "dunno what happened with the editing there. here\u0027s the missing command:\n```\n/system/bin/ld.mc -shared -nostdlib /system/lib64/libcompiler_rt.so -mtriple\u003dx86_64-unknown-linux --library-path\u003d/system/vendor/lib64  --library-path\u003d/system/lib64 -lRSDriver -lm -lc /data/user_de/0/android.rscpp.cts/code_cache/com.android.renderscript.cache/verify.o -o /data/user_de/0/android.rscpp.cts/code_cache/com.android.renderscript.cache/librs.verify.so\n```",
+      "parentUuid": "5f9a8005_5491cd93",
+      "revId": "315b6ded11c6e806877e00ce94c8f154edb2b138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
