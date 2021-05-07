@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9bf0274_4f53c3bb",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-07T14:47:27Z",
+      "side": 1,
+      "message": "The standard way of documenting a method in go is to do:\n// \u003cmethod name\u003e ....\n\nThis method name is too general, and confusing as it is the name of a type. Could you use something a little more specific, e.g. ClasspathFragmentContents.",
+      "revId": "b44d6d055d7f8f2414421b0ee545d282bbf32232",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf29dc62_092ce46f",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-07T14:47:27Z",
+      "side": 1,
+      "message": "They already are. It is called art-bootclasspath-fragment and is in the \"fragments\" field of the platformBootclasspathModule.\n\nThat probably doesn\u0027t help at the moment as it does not implement classpath_fragment.",
+      "revId": "b44d6d055d7f8f2414421b0ee545d282bbf32232",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
