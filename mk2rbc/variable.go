@@ -72,7 +72,7 @@ func (pcv productConfigVariable) emitSet(gctx *generationContext, asgn *assignme
 	emitAssignment := func() {
 		pcv.emitGet(gctx, true)
 		gctx.write(" = ")
-		asgn.value.emit(gctx)
+		asgn.value.emitCopy(gctx)
 	}
 	emitAppend := func() {
 		pcv.emitGet(gctx, true)
@@ -126,7 +126,7 @@ func (scv otherGlobalVariable) emitSet(gctx *generationContext, asgn *assignment
 	emitAssignment := func() {
 		scv.emitGet(gctx, true)
 		gctx.write(" = ")
-		asgn.value.emit(gctx)
+		asgn.value.emitCopy(gctx)
 	}
 
 	emitAppend := func() {
@@ -185,7 +185,7 @@ func (lv localVariable) emitSet(gctx *generationContext, asgn *assignmentNode) {
 	switch asgn.flavor {
 	case asgnSet:
 		gctx.writef("%s = ", lv)
-		asgn.value.emit(gctx)
+		asgn.value.emitCopy(gctx)
 	case asgnAppend:
 		lv.emitGet(gctx, false)
 		gctx.write(" += ")
