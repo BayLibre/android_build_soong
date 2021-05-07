@@ -52,6 +52,24 @@
       "parentUuid": "bbe47c66_639a4256",
       "revId": "8c3c6010013df2bca7d5afffe3f320197dd724e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a839c6_3823a759",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-07T17:13:38Z",
+      "side": 1,
+      "message": "Yeah, I imagine it just grew organically, and would benefit from some refactoring. If I find myself touching that in the future, I\u0027ll try to fix it.. but welp, not today. :-)",
+      "parentUuid": "2bb75acb_1a280e02",
+      "revId": "8c3c6010013df2bca7d5afffe3f320197dd724e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
