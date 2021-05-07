@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d0ef327_37b4cc06",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-07T14:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f144c9cb_a7df4ea9",
+      "range": {
+        "startLine": 279,
+        "startChar": 35,
+        "endLine": 279,
+        "endChar": 60
+      },
+      "revId": "288528c77383ef9b63bef3c6d39ff4007f3e70e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "853fb9d5_64838c16",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-05-06T23:43:54Z",
       "side": 1,
       "message": "Stale.",
+      "range": {
+        "startLine": 628,
+        "startChar": 4,
+        "endLine": 628,
+        "endChar": 21
+      },
+      "revId": "288528c77383ef9b63bef3c6d39ff4007f3e70e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0ffe0c6_3a4f74d8",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-07T14:28:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "853fb9d5_64838c16",
       "range": {
         "startLine": 628,
         "startChar": 4,
