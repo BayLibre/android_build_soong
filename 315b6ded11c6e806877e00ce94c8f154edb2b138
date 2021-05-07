@@ -52,6 +52,24 @@
       "parentUuid": "af35904a_c80cd5ac",
       "revId": "315b6ded11c6e806877e00ce94c8f154edb2b138",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9a8005_5491cd93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-05-07T23:14:50Z",
+      "side": 1,
+      "message": "i don\u0027t understand why presubmit is passing, because that same CTS as before is failing for me locally, as you\u0027d expect...\n\nhacking a sleep into the relevant code:\n```\ndiff --git a/cpu_ref/rsCpuExecutable.cpp b/cpu_ref/rsCpuExecutable.cpp\nindex cc7f7a55..d8128f37 100644\n--- a/cpu_ref/rsCpuExecutable.cpp\n+++ b/cpu_ref/rsCpuExecutable.cpp\n@@ -169,7 +169,13 @@ bool SharedLibraryUtils::createSharedLibrary(const char *driverName,\n         nullptr\n     };\n \n-    return rsuExecuteCommand(LD_EXE_PATH, args.size()-1, args.data());\n+    bool result \u003d rsuExecuteCommand(LD_EXE_PATH, args.size()-1, args.data());\n+    if (!result) {\n+      ALOGE(\"mclinker call failed; sleeping ....\");\n+      sleep(666666);\n+      ALOGE(\"... finished sleep!\");\n+    }\n+    return result;\n \n }\n \n```\n\nand then manually running the command output to logcat by the hung test:\n\n```\n\n\n```\nFatal: unsupported section `.relr.dyn\u0027 (type 19)\n```\n\nso, yeah, it\u0027s failing for the reason you\u0027d expect too...",
+      "parentUuid": "57d133cc_43d5ff85",
+      "revId": "315b6ded11c6e806877e00ce94c8f154edb2b138",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
