@@ -33,6 +33,24 @@
       "message": "Can you inline the data here as exported fields as that is the general way this is handled?\n\nThe only reason this stores a *bootImageConfig is legacy reasons. Once the boot image processing has been fully migrated to bootclasspath_fragment/platform_bootclasspath then this will be removed.\n\nThere is no reason to store pointers for new data.",
       "revId": "2da81ca18ec2370a5f8067d3fb6e5909fc7a759e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdfee9ed_5bd319dd",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-07T15:44:21Z",
+      "side": 1,
+      "message": "Added two fields: one for outputfile and another for installdir.",
+      "parentUuid": "dd3df376_3b788516",
+      "revId": "2da81ca18ec2370a5f8067d3fb6e5909fc7a759e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
