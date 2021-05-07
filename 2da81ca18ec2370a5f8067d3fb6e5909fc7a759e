@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b93a6bb5_35617b38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-07T14:28:38Z",
+      "side": 1,
+      "message": "Build fails on master-art branches with:\n\n\"error: vendor/google/products/emulator/TetheringOverlay/Android.bp:23:9: module \"EmulatorTetheringGoogleConfigOverlay\" variant \"android_common\": base: \"//device/generic/goldfish:EmulatorTetheringConfigOverlay\" is not a valid module name\"\n\nNot sure how this CL breaks it yet.. but please take a look at this change still.",
+      "revId": "2da81ca18ec2370a5f8067d3fb6e5909fc7a759e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
