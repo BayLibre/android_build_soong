@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1072655_3cc06d85",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-07T14:59:06Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to match the behavior you\u0027re adding -- it\u0027s only adding ART_APEX_JARS as a known list variable -- should PRODUCT_BOOT_JARS also be being added or is it only an implication of ART_APEX_JARS?",
+      "range": {
+        "startLine": 7,
+        "startChar": 15,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "9427c9dedb5299780e4d7c477fce62d171b61621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
