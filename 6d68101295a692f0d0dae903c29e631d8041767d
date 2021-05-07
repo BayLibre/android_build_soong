@@ -22,6 +22,30 @@
       },
       "revId": "6d68101295a692f0d0dae903c29e631d8041767d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc9ce754_36924c46",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-07T21:20:25Z",
+      "side": 1,
+      "message": "Thanks for raising the concern.\nThe unfortunate caveat, though, is that buildifier (if and when we run it) is going to push rule attributes to be alphabetized (except for special-case attributes like srcs, deps, and name), which is going to make actual targets look exactly like this.\n\n\nI\u0027m reluctant to bake in a difference between bp2build output and buildifier. As far as the tests go, though, I\u0027m indifferent :)",
+      "parentUuid": "ded70319_de3cb6be",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 69
+      },
+      "revId": "6d68101295a692f0d0dae903c29e631d8041767d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

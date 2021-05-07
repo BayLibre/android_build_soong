@@ -122,6 +122,30 @@
       },
       "revId": "c91578130e3b099b4ca03d52aec4a2c16b7633fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b6f4d94_4dd45c26",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-07T21:20:25Z",
+      "side": 1,
+      "message": "You bring up a good point; it\u0027s quite possible these two structs diverge, but they don\u0027t yet.\n\nWould prefer a refactor followup, as this CL is already quite large :)",
+      "parentUuid": "8e370adc_1b2eed6d",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 21
+      },
+      "revId": "c91578130e3b099b4ca03d52aec4a2c16b7633fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
