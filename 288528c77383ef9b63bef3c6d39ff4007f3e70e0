@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d74c14f7_1c0236a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-05-07T13:01:21Z",
+      "side": 1,
+      "message": "As Martin says, unlikely to be the right long-term fix for the prefer flag/config, but I think this will probably allow us to delete the current bash script that generates .bp files\n\n+jungjw FYI",
+      "revId": "288528c77383ef9b63bef3c6d39ff4007f3e70e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f144c9cb_a7df4ea9",
