@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ded70319_de3cb6be",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-07T20:56:21Z",
+      "side": 1,
+      "message": "definitely not for this cl, but it may be nice eventually to be able to order things based on the specification in the bp2build properties rather than always sorting alphabetically -- like here it\u0027d be nice to be able to group the shared/static bits",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 315,
+        "endChar": 69
+      },
+      "revId": "6d68101295a692f0d0dae903c29e631d8041767d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

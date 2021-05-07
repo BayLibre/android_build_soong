@@ -98,6 +98,30 @@
       },
       "revId": "c91578130e3b099b4ca03d52aec4a2c16b7633fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e370adc_1b2eed6d",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-07T20:56:21Z",
+      "side": 1,
+      "message": "+1, but since you\u0027re just expanding an existing pattern, we could refactor in a follow-up",
+      "parentUuid": "a2f4eed1_5fab2251",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 118,
+        "endChar": 21
+      },
+      "revId": "c91578130e3b099b4ca03d52aec4a2c16b7633fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
