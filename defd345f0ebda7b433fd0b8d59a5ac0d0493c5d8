@@ -72,6 +72,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa8f900d_333511d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-05-07T13:08:29Z",
+      "side": 1,
+      "message": "Is this meant to be used to get modules that override their source equivalent? Meaning `java_sdk_library_import { name: \"framework-sdkextensions\" }` for example?\n\nIsn\u0027t that what current is? Do we need both? (maybe \"current\" should not have a -current suffix?)",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "defd345f0ebda7b433fd0b8d59a5ac0d0493c5d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2380f734_3677ebfe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-05-07T13:08:29Z",
+      "side": 1,
+      "message": "Do we have any way to know what the last frozen sdk snapshot is? For the non-module SDK, we have the prebuilt_sdk module type which looks at all the versions and creates some meta modules like foo-last-frozen based on the contents of the dirs.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "defd345f0ebda7b433fd0b8d59a5ac0d0493c5d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6feed57_976e4998",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
