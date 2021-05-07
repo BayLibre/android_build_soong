@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f312069_b322aecd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-05-07T11:30:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c0e0e26_a3308317",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 5
+      },
+      "revId": "fb83caa91b093b96325d78dd3b9ab38d77ed4635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7265d2c3_705b4f6b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-07T11:15:44Z",
       "side": 1,
       "message": "Is this a command? If no, don\u0027t make it look like a real command.",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "fb83caa91b093b96325d78dd3b9ab38d77ed4635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5a931f2_6a469057",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-05-07T11:30:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7265d2c3_705b4f6b",
       "range": {
         "startLine": 13,
         "startChar": 11,
@@ -100,6 +148,54 @@
       "writtenOn": "2021-05-07T11:15:44Z",
       "side": 1,
       "message": "boot image location on device (file path without the arch subdirectory)\n\n(I suggest using the \"location\" word because its how we call it in ART.)",
+      "range": {
+        "startLine": 135,
+        "startChar": 41,
+        "endLine": 135,
+        "endChar": 92
+      },
+      "revId": "fb83caa91b093b96325d78dd3b9ab38d77ed4635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "776359a7_100556d5",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-05-07T11:30:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "136acdc7_fa01aa2a",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 28
+      },
+      "revId": "fb83caa91b093b96325d78dd3b9ab38d77ed4635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8388577d_1bf1b27a",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-05-07T11:30:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4f19094_9ab93452",
       "range": {
         "startLine": 135,
         "startChar": 41,
