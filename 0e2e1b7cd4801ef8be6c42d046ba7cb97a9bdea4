@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35fd6154_0852fa7e",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-07T11:04:04Z",
+      "side": 1,
+      "message": "Well that\u0027s an unusual type. Mind adding a comment as to what it means?",
+      "range": {
+        "startLine": 162,
+        "startChar": 16,
+        "endLine": 162,
+        "endChar": 46
+      },
+      "revId": "0e2e1b7cd4801ef8be6c42d046ba7cb97a9bdea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87cb8dbf_5e292fab",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-07T11:04:04Z",
+      "side": 1,
+      "message": "nit: fuCHSia (the s is in the wrong place)",
+      "range": {
+        "startLine": 219,
+        "startChar": 24,
+        "endLine": 219,
+        "endChar": 31
+      },
+      "revId": "0e2e1b7cd4801ef8be6c42d046ba7cb97a9bdea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0353cb2_5d6d2f81",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-07T11:04:04Z",
+      "side": 1,
+      "message": "nit: mind calling this \"staticVariableExportedToBazel\" (I\u0027m still uncertain in my knowledge of the code base and I find it useful to have that extra crutch so that remember that this is not \"just\" a Ninja static variable declaration)",
+      "range": {
+        "startLine": 322,
+        "startChar": 5,
+        "endLine": 322,
+        "endChar": 19
+      },
+      "revId": "0e2e1b7cd4801ef8be6c42d046ba7cb97a9bdea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75b23dfd_834e4375",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-07T11:04:04Z",
+      "side": 1,
+      "message": "Instead of using this trick, why split exportedVars into two variables, one for env-dependent variables and the other for ones that are not env-dependent?",
+      "range": {
+        "startLine": 328,
+        "startChar": 51,
+        "endLine": 328,
+        "endChar": 64
+      },
+      "revId": "0e2e1b7cd4801ef8be6c42d046ba7cb97a9bdea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0341606e_dde8a3c2",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-07T11:04:04Z",
+      "side": 1,
+      "message": "Mind adding godoc about what is an \"env-dependent variable?\" \n\nIn particular, I don\u0027t quite understand the \"exports all possible combinations of that variable in a starlark dict instead of regular string\" part of the commit message.\n\nMaybe it\u0027s easier to also export the pertinent environment variables somewhere (for now, maybe even in this very file)",
+      "range": {
+        "startLine": 331,
+        "startChar": 15,
+        "endLine": 331,
+        "endChar": 35
+      },
+      "revId": "0e2e1b7cd4801ef8be6c42d046ba7cb97a9bdea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cedf023_29367349",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-07T11:04:04Z",
+      "side": 1,
+      "message": "Please do? :)",
+      "range": {
+        "startLine": 341,
+        "startChar": 1,
+        "endLine": 341,
+        "endChar": 25
+      },
+      "revId": "0e2e1b7cd4801ef8be6c42d046ba7cb97a9bdea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "addc3452_794eff4a",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-07T11:04:04Z",
+      "side": 1,
+      "message": "Mind adding a panic that fires when there is another level of interpolation? Even better, how about implementing this properly? It doesn\u0027t look very difficult to write a recursive function that does the right thing (although you\u0027ll have to be a bit careful to avoid stack overflow errors in cases like Foo :\u003d ${Bar}, Bar :\u003d ${Foo})",
+      "range": {
+        "startLine": 360,
+        "startChar": 3,
+        "endLine": 360,
+        "endChar": 66
+      },
+      "revId": "0e2e1b7cd4801ef8be6c42d046ba7cb97a9bdea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "479e5980_720d8094",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-07T11:04:04Z",
+      "side": 1,
+      "message": "suggestion: instead of splitting a string on space that was generated by joining an array of strings by spaces in the first place, consider changing staticVariable to take a list of strings as an argument instead of a single string. That way, it\u0027s easier to understand what\u0027s going on, with the added benefit that it will be easier to implement escaping of spaces in arguments (if that ever happens)",
+      "range": {
+        "startLine": 369,
+        "startChar": 24,
+        "endLine": 369,
+        "endChar": 44
+      },
+      "revId": "0e2e1b7cd4801ef8be6c42d046ba7cb97a9bdea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57de91b4_2a32c10a",
+        "filename": "cc/config/global.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-07T11:04:04Z",
+      "side": 1,
+      "message": "What if there is a \" in the string? (I think it\u0027s fine to just panic if it contains a backslash or a double quote or a newline, but let\u0027s not silently do the wrong thing)",
+      "range": {
+        "startLine": 371,
+        "startChar": 26,
+        "endLine": 371,
+        "endChar": 30
+      },
+      "revId": "0e2e1b7cd4801ef8be6c42d046ba7cb97a9bdea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
