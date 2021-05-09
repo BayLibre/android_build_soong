@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f66af298_6e1f5902",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-09T23:35:24Z",
+      "side": 1,
+      "message": "And the failures on git_master-art should be gone now with ag/14467313.",
+      "parentUuid": "c79f937f_51c52e55",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 59
+      },
+      "revId": "4172a69967a60b94b2b85286c312bb2f10f434f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "596fcfe1_0b30f6b6",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -96,6 +120,24 @@
       "side": 1,
       "message": "It is but it is used for different purposes. I think it is cleaner to keep them separate.",
       "parentUuid": "6f1cad2b_d83c64d1",
+      "revId": "4172a69967a60b94b2b85286c312bb2f10f434f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "923b49fc_92fe2ed7",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-09T23:35:24Z",
+      "side": 1,
+      "message": "I figure \"prebuilt\" is a catch-all, not a single purpose interface. I\u0027m not sure it\u0027s preferable to introduce a new interface for each purpose, at least not when they\u0027re only for local use within a package like this - the function itself carries the purpose too. But whatever.",
+      "parentUuid": "1939dbf0_746660e7",
       "revId": "4172a69967a60b94b2b85286c312bb2f10f434f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -184,6 +226,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "5f7dcff7_c2f622e9",
+      "range": {
+        "startLine": 471,
+        "startChar": 3,
+        "endLine": 471,
+        "endChar": 24
+      },
+      "revId": "4172a69967a60b94b2b85286c312bb2f10f434f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d487db3_538bb4ad",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-09T23:35:24Z",
+      "side": 1,
+      "message": "Sorry, can\u0027t see that.",
+      "parentUuid": "b437f72b_02d1a986",
       "range": {
         "startLine": 471,
         "startChar": 3,
