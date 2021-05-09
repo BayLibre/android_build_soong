@@ -72,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c693ebd1_d63e64de",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-09T23:36:02Z",
+      "side": 1,
+      "message": "I know that, but my point is that a split in a later mutator corresponds to AddVariationDependencies, while AddFarVariationDependencies can add dependencies on arbitrary variants. Was the previous AddFarVariationDependencies call with AndroidCommonTarget.Variations() actually equivalent to AddVariationDependencies?",
+      "parentUuid": "cfff683c_24c20843",
+      "revId": "1107221a0df1627f28dbec0a0824ee248e5bef67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f2fd56e_04a4d4d6",
         "filename": "apex/prebuilt.go",
         "patchSetId": 1
@@ -107,6 +125,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "5f2fd56e_04a4d4d6",
+      "range": {
+        "startLine": 402,
+        "startChar": 69,
+        "endLine": 403,
+        "endChar": 11
+      },
+      "revId": "1107221a0df1627f28dbec0a0824ee248e5bef67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3f9fc2c_bb574134",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-09T23:36:02Z",
+      "side": 1,
+      "message": "Happened in the parent https://r.android.com/1697057 instead, which is strictly speaking premature, but nvm.",
+      "parentUuid": "c7530324_e90440d0",
       "range": {
         "startLine": 402,
         "startChar": 69,
