@@ -97,6 +97,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1958a553_174ff58f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-10T15:21:41Z",
+      "side": 1,
+      "message": "I didn\u0027t suggest encoding the value of this variable in the sdk{} module. Rather I meant that the Soong step would produce build rules for all versions as well as current and unversioned, so that what actually gets built is determined by the target to \"m\" instead (which then would be something like my-module-sdk-current, my-module-sdk-17, etc).\n\nI did however suggest that all the versions produced by an sdk module should be listed in it (so trying to produce any other would be an error). I think that\u0027s a good idea regardless of this issue, because it should be explicitly stated in a git source file which supported versions there are, not just as an effect of past build and drop actions. Adding and retiring SDK versions are significant events that should be controlled by the SDK owners.",
+      "parentUuid": "c3c79cbb_a7b7f8fe",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "defd345f0ebda7b433fd0b8d59a5ac0d0493c5d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4cb36f2_12af5fa6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-10T15:21:41Z",
+      "side": 1,
+      "message": "What about SOONG_* variables would disqualify them from being in there? If it\u0027s sufficiently useful to know then I think it\u0027s warranted, and I argue that\u0027s the case. Note that it won\u0027t add a line if it isn\u0027t set, so it wouldn\u0027t add clutter to most ordinary builds.",
+      "parentUuid": "0ca5822e_b3e8459e",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "defd345f0ebda7b433fd0b8d59a5ac0d0493c5d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1070a4fb_5824db4a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -191,6 +239,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f900196d_e3841bba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-10T15:21:41Z",
+      "side": 1,
+      "message": "The plan in go/android-module-sdk is to set uses_sdks in apex{} modules to pick the SDK to use, and then with \"current\" we\u0027d use the @current modules rather than the unversioned ones, and at that point we wouldn\u0027t need the latter anymore.\n\n(We wouldn\u0027t be able to use the \"prefer\" flag to flip between source and @current prebuilts then either, so USE_ANDROID_MODULE_PREBUILTS in go/module-sdk-prefer-prebuilts would need to control the source vs @current selection.)",
+      "parentUuid": "68e85c3c_1eef60b3",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "defd345f0ebda7b433fd0b8d59a5ac0d0493c5d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3c7eeae_17e89cec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-10T15:21:41Z",
+      "side": 1,
+      "message": "\"none\" only works in the context of this variable, elsewhere it\u0027s more ambiguous and \"unversioned\" is preferable. I think it\u0027s better to use \"unversioned\" everywhere for consistency.\n\nAs for disabling the snapshots altogether, I think that if we go for this environment variable, then disabled should be the default if it isn\u0027t set. When there are different kinds of snapshots that can be produced and we have to pick one, it makes sense to have to always specify it explicitly.",
+      "parentUuid": "3c6253dd_9c4ba6ab",
+      "range": {
+        "startLine": 14,
+        "startChar": 27,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "defd345f0ebda7b433fd0b8d59a5ac0d0493c5d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2380f734_3677ebfe",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -226,6 +322,30 @@
       "side": 1,
       "message": "Not yet. Given that we don\u0027t actually have any modules that have been versioned (other then the unused @current) we haven\u0027t needed it. That is a hole that definitely needs fixing.",
       "parentUuid": "2380f734_3677ebfe",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "defd345f0ebda7b433fd0b8d59a5ac0d0493c5d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac7fa81c_1cb222ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-10T15:21:41Z",
+      "side": 1,
+      "message": "I wonder if it\u0027d be correct implicitly pick a \"last frozen\" version from the directories in prebuilts/module_sdks. With unbundled modules on their own independent branches, that directory will also be unbundled and hence shared between platform versions. That means each platform (SDK extension) version needs to specify which versions of the modules it contains, doesn\u0027t it?",
+      "parentUuid": "5c70ac53_28a1858f",
       "range": {
         "startLine": 18,
         "startChar": 0,
