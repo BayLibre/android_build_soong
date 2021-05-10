@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f5bfe30_ad107e13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2021-05-10T11:22:22Z",
+      "side": 1,
+      "message": "This is useful for configuring syntax highlighting, e.g. in http://cl/372550728.",
+      "revId": "45cac55403e5e716ed8e398b487511ea48ba34c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
