@@ -39,6 +39,30 @@
       },
       "revId": "086483101936b520044ef8cfa1a0035ea9481181",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f8045a2_9ef0716a",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-10T22:03:21Z",
+      "side": 1,
+      "message": "The point of these _for_shared and _for_static properties is to handle static{} and shared{} stanzas respectively. \n\nPlease see cc_library_conversion_test.go for a more complete demonstration of this, but I\u0027ll point out specifically why we need Dynamic_deps and Dynamic_deps_for_shared:\n\n```\ncc_library {\n    name: \"a\",\n    shared_libs: [\"shared_dep_for_both\"], \n    static: {\n        shared_libs: [\"shared_dep_for_static\"],\n    },\n    shared: {\n        shared_libs: [\"shared_dep_for_shared\"],\n    },\n}\n```\n\ndynamic_deps that should be passed to cc_shared_library:\n`[\":shared_dep_for_both\", \":shared_dep_for_shared\"]`\n\nWhereas \"shared_dep_for_static\" are shared deps of the static library but *not* the shared library variant.",
+      "parentUuid": "b899de09_c519c7ea",
+      "range": {
+        "startLine": 296,
+        "startChar": 2,
+        "endLine": 296,
+        "endChar": 57
+      },
+      "revId": "086483101936b520044ef8cfa1a0035ea9481181",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
