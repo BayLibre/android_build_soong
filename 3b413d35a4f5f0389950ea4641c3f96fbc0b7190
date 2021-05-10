@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca4a3281_9ad15417",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-10T22:44:50Z",
+      "side": 1,
+      "message": "We don\u0027t do this for the OS case below. I thought that was maybe another git merge error, but it seems intentional. I asked on https://android-review.googlesource.com/c/platform/build/soong/+/1697045\n\ncc lberki@",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 4
+      },
+      "revId": "3b413d35a4f5f0389950ea4641c3f96fbc0b7190",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
