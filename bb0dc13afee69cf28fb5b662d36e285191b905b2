@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6f4ad35_37144676",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-10T11:15:58Z",
+      "side": 1,
+      "message": "PTAL. Lost +2 after rebasing and fixing some issues in parent commits.",
+      "revId": "bb0dc13afee69cf28fb5b662d36e285191b905b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
