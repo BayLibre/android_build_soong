@@ -34,6 +34,24 @@
       "parentUuid": "61c28c9a_86a9c130",
       "revId": "4ab87b51d85e898c00f2fba4d1f238ffb4b27dc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a276332f_aedfc3d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-10T17:15:12Z",
+      "side": 1,
+      "message": "Moved the proto to packages/modules/common/",
+      "parentUuid": "8fef9bc6_e574a8cb",
+      "revId": "4ab87b51d85e898c00f2fba4d1f238ffb4b27dc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
