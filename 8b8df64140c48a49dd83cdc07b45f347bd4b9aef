@@ -16,6 +16,24 @@
       "message": "Is this really necessary? Is it not identical to commonProperties.Effective_license_text ?",
       "revId": "8b8df64140c48a49dd83cdc07b45f347bd4b9aef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b91edf1_32f45eb6",
+        "filename": "android/license.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-10T18:04:44Z",
+      "side": 1,
+      "message": "AIUI Effective_license_text includes transitive dependencies of license modules but the sdk mechanism will automatically add the transitive dependencies of the license modules to the sdk so using the transitive paths here would result in duplicate references to the license text files.",
+      "parentUuid": "497999f6_1a3571b6",
+      "revId": "8b8df64140c48a49dd83cdc07b45f347bd4b9aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
