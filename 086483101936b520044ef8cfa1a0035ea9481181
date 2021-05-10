@@ -63,6 +63,30 @@
       },
       "revId": "086483101936b520044ef8cfa1a0035ea9481181",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4efe0f1c_f00244ec",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-10T22:22:19Z",
+      "side": 1,
+      "message": "Aha, thanks.\n\nRe: \n\nDynamic_deps:                  linkerAttrs.dynamicDeps,\nDynamic_deps_for_shared:       sharedAttrs.dynamicDeps,\n\nI introduced Dynamic_deps just for cc_shared_library, and they are currently only used for cc_shared_library. \n\nSo I still find the names a little confusing\n\nMaybe we should rename Dynamic_deps to Dynamic_deps_common ?\n\nPS. Do you expect that Dynamic_deps/Dynamic_deps_common will be used for cc_library_static as well? I saw http://b/187746106 but it is not clear what the intention is",
+      "parentUuid": "6f8045a2_9ef0716a",
+      "range": {
+        "startLine": 296,
+        "startChar": 2,
+        "endLine": 296,
+        "endChar": 57
+      },
+      "revId": "086483101936b520044ef8cfa1a0035ea9481181",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
