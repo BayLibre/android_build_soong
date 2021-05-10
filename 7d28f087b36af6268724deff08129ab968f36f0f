@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1075528b_bab42f11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-10T18:15:27Z",
+      "side": 1,
+      "message": "This change ensures that for every module which is included as part of the sdk snapshot the sdk snapshot also includes a snapshot of the license modules that it references.",
+      "parentUuid": "716e04b2_a231a604",
+      "revId": "7d28f087b36af6268724deff08129ab968f36f0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "297902b0_132c76f4",
         "filename": "sdk/update.go",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2021-05-10T18:07:30Z",
       "side": 1,
       "message": "Not sure what this has to do with licenses, and it looks wrong given the `if !deviceSupported ...` on the next line.",
+      "revId": "7d28f087b36af6268724deff08129ab968f36f0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d55099a1_8ee7f815",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-10T18:15:27Z",
+      "side": 1,
+      "message": "This is needed because license properties are different to all the other modules being added to the sdk as they don\u0027t support different variants for host and device. By default every module that supports host and device variants supports device but not host variants. So, as the license module supports neither the sdk automatically adds a \"device_supported: false\" property to the snapshot it creates for the license module which breaks because license does not support that property.\n\nAs every variant that supports host and device variants must support at least one of them this logic assumes that when a module does not support either host or device variants that it does not support the properties either.",
+      "parentUuid": "297902b0_132c76f4",
       "revId": "7d28f087b36af6268724deff08129ab968f36f0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
