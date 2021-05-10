@@ -477,7 +477,28 @@ func ProductVariableProperties(ctx ProductConfigContext) ProductConfigProperties
 		return productConfigProperties
 	}
 
-	variableValues := reflect.ValueOf(moduleBase.variableProperties).Elem().FieldByName("Product_variables")
+	productConfigProperties = productVariableValues(moduleBase.variableProperties, "", productConfigProperties)
+
+	for os, targetProps := range moduleBase.GetArchProperties(&variableProperties{}) {
+		if p, ok := targetProps.(*variableProperties); ok {
+			productConfigProperties = productVariableValues(p, os.Name, productConfigProperties)
+		}
+	}
+
+	for os, targetProps := range moduleBase.GetTargetProperties(&variableProperties{}) {
+		if p, ok := targetProps.(*variableProperties); ok {
+			productConfigProperties = productVariableValues(p, os.Name, productConfigProperties)
+		}
+	}
+
+	return productConfigProperties
+}
+
+func productVariableValues(variableProps interface{}, suffix string, productConfigProperties ProductConfigProperties) ProductConfigProperties {
+	if suffix != "" {
+		suffix = "-" + suffix
+	}
+	variableValues := reflect.ValueOf(variableProps).Elem().FieldByName("Product_variables")
 	for i := 0; i < variableValues.NumField(); i++ {
 		variableValue := variableValues.Field(i)
 		// Check if any properties were set for the module
@@ -497,7 +518,7 @@ func ProductVariableProperties(ctx ProductConfigContext) ProductConfigProperties
 			propertyName := variableValue.Type().Field(j).Name
 			productConfigProperties[propertyName] = append(productConfigProperties[propertyName],
 				ProductConfigProperty{
-					ProductConfigVariable: productVariableName,
+					ProductConfigVariable: productVariableName + suffix,
 					Property:              property.Interface(),
 				})
 		}
