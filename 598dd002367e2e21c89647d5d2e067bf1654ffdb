@@ -16,6 +16,29 @@
       "message": "Chris, Liz: I\u0027m submitting this since you seem to be okay with it (it\u0027s really the \"meat\" of aosp/1695706 without actually changing the emitted BUILD files so that the build doesn\u0027t break)",
       "revId": "598dd002367e2e21c89647d5d2e067bf1654ffdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d954ce2_25fe50e2",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-10T22:39:09Z",
+      "side": 1,
+      "message": "Should we also add this to the OS (vs Arch) loop below?",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 290,
+        "endChar": 4
+      },
+      "revId": "598dd002367e2e21c89647d5d2e067bf1654ffdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
