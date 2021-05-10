@@ -88,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d11f0fe1_dfb31dce",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-10T11:15:17Z",
+      "side": 1,
+      "message": "I think it probably was as the apex, despite containing arch specific code, is not itself arch specific.",
+      "parentUuid": "c693ebd1_d63e64de",
+      "revId": "1107221a0df1627f28dbec0a0824ee248e5bef67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f2fd56e_04a4d4d6",
@@ -149,6 +167,30 @@
       "side": 1,
       "message": "Happened in the parent https://r.android.com/1697057 instead, which is strictly speaking premature, but nvm.",
       "parentUuid": "c7530324_e90440d0",
+      "range": {
+        "startLine": 402,
+        "startChar": 69,
+        "endLine": 403,
+        "endChar": 11
+      },
+      "revId": "1107221a0df1627f28dbec0a0824ee248e5bef67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "189d3a8c_e8cc8b85",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-10T11:15:17Z",
+      "side": 1,
+      "message": "Fixed.",
+      "parentUuid": "b3f9fc2c_bb574134",
       "range": {
         "startLine": 402,
         "startChar": 69,
