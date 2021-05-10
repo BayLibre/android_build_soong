@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba3ff5ea_adfd7b04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-10T22:32:08Z",
+      "side": 1,
+      "message": "Not sure what this means.",
+      "range": {
+        "startLine": 9,
+        "startChar": 53,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "6fbdd7353ae21d387794ce25b6ef728539c3a821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "488439a8_0b94c0c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-10T22:32:08Z",
+      "side": 1,
+      "message": "The commit message needs updating, the other are areas of concern but I don\u0027t expect you to fix them in this change.",
+      "revId": "6fbdd7353ae21d387794ce25b6ef728539c3a821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e8376c1_f8a23283",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-10T22:32:08Z",
+      "side": 1,
+      "message": "I understand why you are doing this. It is because i18n is an APEX, and has a bootclasspath_fragment but is not updatable. I think it would be much cleaner if you supported allowing the i18n APEX to provide its own classpath proto file and made the code on the device able to insert it between ext and the rest of the non-updatable modules. Or changed the order and moved i18n before ext.\n\nThat way we can keep the bootclasspath fragment\u0027s exposure to configuration to a minimum, to the art image only during verification to ensure that it is consistent.\n\nAll the configuration related code could then be pushed into the platform_bootclasspath.",
+      "revId": "6fbdd7353ae21d387794ce25b6ef728539c3a821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "917370f8_7b129af8",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-10T22:32:08Z",
+      "side": 1,
+      "message": "Ideally this should be retrieving an object from the module using Provider rather than accessing the module directly.",
+      "revId": "6fbdd7353ae21d387794ce25b6ef728539c3a821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
