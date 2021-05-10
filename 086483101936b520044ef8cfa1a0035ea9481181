@@ -87,6 +87,30 @@
       },
       "revId": "086483101936b520044ef8cfa1a0035ea9481181",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "157ff34f_da6b9637",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-10T22:32:27Z",
+      "side": 1,
+      "message": "Spoke offline. Takeaways:\n\n- I\u0027m against calling it Dynamic_deps_common. Most users, if they\u0027re handcrafting full_cc_library macro invocations, won\u0027t want to call it \"Dynamic_deps_common\", they\u0027ll just call it \"Dynamic_Deps\", the strange case for handcrafted targets is variant-specific properties, which mostly just exist for backward compatibility\n\n\u003e Do you expect that Dynamic_deps/Dynamic_deps_common will be used for cc_library_static as well? \n\nFor the full_cc_library implementation? yes.",
+      "parentUuid": "4efe0f1c_f00244ec",
+      "range": {
+        "startLine": 296,
+        "startChar": 2,
+        "endLine": 296,
+        "endChar": 57
+      },
+      "revId": "086483101936b520044ef8cfa1a0035ea9481181",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
