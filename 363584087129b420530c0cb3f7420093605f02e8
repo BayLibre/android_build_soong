@@ -34,6 +34,23 @@
       "parentUuid": "02dda2da_302dbd31",
       "revId": "363584087129b420530c0cb3f7420093605f02e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56145abb_747a2ae8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-10T06:07:08Z",
+      "side": 1,
+      "message": "Wow, that\u0027s all what \"pack_relocations: true\" does?",
+      "revId": "363584087129b420530c0cb3f7420093605f02e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
