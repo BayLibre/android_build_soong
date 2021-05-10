@@ -251,6 +251,15 @@ type linkerAttributes struct {
 	versionScript bazel.LabelAttribute
 }
 
+// FIXME(b/187655838): Use the existing linkerFlags() function instead of duplicating logic here
+func getBp2BuildLinkerFlags(linkerProperties *BaseLinkerProperties) []string {
+	flags := linkerProperties.Ldflags
+	if !BoolDefault(linkerProperties.Pack_relocations, true) {
+		flags = append(flags, "-Wl,--pack-dyn-relocs=none")
+	}
+	return flags
+}
+
 // bp2BuildParseLinkerProps parses the linker properties of a module, including
 // configurable attribute values.
 func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module) linkerAttributes {
@@ -266,7 +275,7 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 			libs = append(libs, baseLinkerProps.Whole_static_libs...)
 			libs = android.SortedUniqueStrings(libs)
 			deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, libs))
-			linkopts.Value = baseLinkerProps.Ldflags
+			linkopts.Value = getBp2BuildLinkerFlags(baseLinkerProps)
 
 			if baseLinkerProps.Version_script != nil {
 				versionScript.Value = android.BazelLabelForModuleSrcSingle(ctx, *baseLinkerProps.Version_script)
@@ -283,7 +292,7 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 			libs = append(libs, baseLinkerProps.Whole_static_libs...)
 			libs = android.SortedUniqueStrings(libs)
 			deps.SetValueForArch(arch.Name, android.BazelLabelForModuleDeps(ctx, libs))
-			linkopts.SetValueForArch(arch.Name, baseLinkerProps.Ldflags)
+			linkopts.SetValueForArch(arch.Name, getBp2BuildLinkerFlags(baseLinkerProps))
 			if baseLinkerProps.Version_script != nil {
 				versionScript.SetValueForArch(arch.Name,
 					android.BazelLabelForModuleSrcSingle(ctx, *baseLinkerProps.Version_script))
@@ -299,7 +308,7 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 			libs = append(libs, baseLinkerProps.Whole_static_libs...)
 			libs = android.SortedUniqueStrings(libs)
 			deps.SetValueForOS(os.Name, android.BazelLabelForModuleDeps(ctx, libs))
-			linkopts.SetValueForOS(os.Name, baseLinkerProps.Ldflags)
+			linkopts.SetValueForOS(os.Name, getBp2BuildLinkerFlags(baseLinkerProps))
 		}
 	}
 
