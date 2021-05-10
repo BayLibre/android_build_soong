@@ -16,6 +16,23 @@
       "message": "PTAL. Lost +2 after rebasing and fixing some issues in parent commits.",
       "revId": "bb0dc13afee69cf28fb5b662d36e285191b905b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfe97aa3_f099dd78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-10T14:34:29Z",
+      "side": 1,
+      "message": "Forgot to update the attention set.",
+      "revId": "bb0dc13afee69cf28fb5b662d36e285191b905b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
