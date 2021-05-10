@@ -16,6 +16,29 @@
       "message": "PTAL. Synced and merged.",
       "revId": "086483101936b520044ef8cfa1a0035ea9481181",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b899de09_c519c7ea",
+        "filename": "cc/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-10T21:50:24Z",
+      "side": 1,
+      "message": "Re:\n\nDynamic_deps:                  linkerAttrs.dynamicDeps,\nDynamic_deps_for_shared:       sharedAttrs.dynamicDeps,\n\nI added Dynamic_deps yesterday specifically for cc_shared_library\n\nhttps://android-review.googlesource.com/c/platform/build/bazel/+/1700765\nhttps://android-review.googlesource.com/c/platform/build/soong/+/1697794\n\nSo should we remove Dynamic_deps and just keep Dynamic_deps_for_shared?\n\n(Not sure if I am misunderstanding a use case)",
+      "range": {
+        "startLine": 296,
+        "startChar": 2,
+        "endLine": 296,
+        "endChar": 57
+      },
+      "revId": "086483101936b520044ef8cfa1a0035ea9481181",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
