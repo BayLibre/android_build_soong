@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "716e04b2_a231a604",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-05-10T18:07:30Z",
+      "side": 1,
+      "message": "I am not sure what you are trying to accomplish here. Does the sdk module not already have licenses via the commonProperties?",
+      "revId": "7d28f087b36af6268724deff08129ab968f36f0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "297902b0_132c76f4",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-05-10T18:07:30Z",
+      "side": 1,
+      "message": "Not sure what this has to do with licenses, and it looks wrong given the `if !deviceSupported ...` on the next line.",
+      "revId": "7d28f087b36af6268724deff08129ab968f36f0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
