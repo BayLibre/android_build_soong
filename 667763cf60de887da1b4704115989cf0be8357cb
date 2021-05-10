@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3af8e02f_f99c8475",
+        "filename": "android/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1568,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-10T22:21:16Z",
+      "side": 1,
+      "message": "Documentation is wrong. I presume it will panic if it cannot find the APEX.",
+      "range": {
+        "startLine": 1567,
+        "startChar": 97,
+        "endLine": 1568,
+        "endChar": 16
+      },
+      "revId": "667763cf60de887da1b4704115989cf0be8357cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
