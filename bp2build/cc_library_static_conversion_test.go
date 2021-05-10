@@ -952,63 +952,131 @@ cc_library_static {
     srcs = ["common.c"],
 )`},
 		},
+		{
+			description:                        "cc_library_static arch-specific product variable selects",
+			moduleTypeUnderTest:                "cc_library_static",
+			moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+			moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+			depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
+			filesystem:                         map[string]string{},
+			bp: soongCcLibraryStaticPreamble + `
+cc_library_static {
+    name: "foo_static",
+    srcs: ["common.c"],
+    product_variables: {
+      malloc_not_svelte: {
+        cflags: ["-Wmalloc_not_svelte"],
+      },
+    },
+		arch: {
+				arm64: {
+						product_variables: {
+								malloc_not_svelte: {
+										cflags: ["-Warm64_malloc_not_svelte"],
+								},
+						},
+				},
+		},
+		multilib: {
+				lib32: {
+						product_variables: {
+								malloc_not_svelte: {
+										cflags: ["-Wlib32_malloc_not_svelte"],
+								},
+						},
+				},
+		},
+		target: {
+				android: {
+						product_variables: {
+								malloc_not_svelte: {
+										cflags: ["-Wandroid_malloc_not_svelte"],
+								},
+						},
+				}
+		},
+} `,
+			expectedBazelTargets: []string{`cc_library_static(
+    name = "foo_static",
+    copts = ["-I."] + select({
+        "//build/bazel/product_variables:Malloc_not_svelte": ["-Wmalloc_not_svelte"],
+        "//conditions:default": [],
+    }) + select({
+        "//build/bazel/product_variables:Malloc_not_svelte-android": ["-Wandroid_malloc_not_svelte"],
+        "//conditions:default": [],
+    }) + select({
+        "//build/bazel/product_variables:Malloc_not_svelte-arm": ["-Wlib32_malloc_not_svelte"],
+        "//conditions:default": [],
+    }) + select({
+        "//build/bazel/product_variables:Malloc_not_svelte-arm64": ["-Warm64_malloc_not_svelte"],
+        "//conditions:default": [],
+    }) + select({
+        "//build/bazel/product_variables:Malloc_not_svelte-x86": ["-Wlib32_malloc_not_svelte"],
+        "//conditions:default": [],
+    }),
+    linkstatic = True,
+    srcs = ["common.c"],
+)`},
+		},
 	}
 
 	dir := "."
 	for _, testCase := range testCases {
-		filesystem := make(map[string][]byte)
-		toParse := []string{
-			"Android.bp",
-		}
-		for f, content := range testCase.filesystem {
-			if strings.HasSuffix(f, "Android.bp") {
-				toParse = append(toParse, f)
+		t.Run(testCase.description, func(t *testing.T) {
+			filesystem := make(map[string][]byte)
+			toParse := []string{
+				"Android.bp",
 			}
-			filesystem[f] = []byte(content)
-		}
-		config := android.TestConfig(buildDir, nil, testCase.bp, filesystem)
-		ctx := android.NewTestContext(config)
+			for f, content := range testCase.filesystem {
+				if strings.HasSuffix(f, "Android.bp") {
+					toParse = append(toParse, f)
+				}
+				filesystem[f] = []byte(content)
+			}
+			config := android.TestConfig(buildDir, nil, testCase.bp, filesystem)
+			ctx := android.NewTestContext(config)
 
-		cc.RegisterCCBuildComponents(ctx)
-		ctx.RegisterModuleType("toolchain_library", cc.ToolchainLibraryFactory)
-		ctx.RegisterModuleType("cc_library_headers", cc.LibraryHeaderFactory)
+			cc.RegisterCCBuildComponents(ctx)
+			ctx.RegisterModuleType("toolchain_library", cc.ToolchainLibraryFactory)
+			ctx.RegisterModuleType("cc_library_headers", cc.LibraryHeaderFactory)
 
-		ctx.RegisterModuleType(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestFactory)
-		for _, m := range testCase.depsMutators {
-			ctx.DepsBp2BuildMutators(m)
-		}
-		ctx.RegisterBp2BuildMutator(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestBp2BuildMutator)
-		ctx.RegisterBp2BuildConfig(bp2buildConfig)
-		ctx.RegisterForBazelConversion()
+			ctx.RegisterModuleType(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestFactory)
+			for _, m := range testCase.depsMutators {
+				ctx.DepsBp2BuildMutators(m)
+			}
+			ctx.RegisterBp2BuildMutator(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestBp2BuildMutator)
+			ctx.RegisterBp2BuildConfig(bp2buildConfig)
+			ctx.RegisterForBazelConversion()
 
-		_, errs := ctx.ParseFileList(dir, toParse)
-		if Errored(t, testCase.description, errs) {
-			continue
-		}
-		_, errs = ctx.ResolveDependencies(config)
-		if Errored(t, testCase.description, errs) {
-			continue
-		}
+			_, errs := ctx.ParseFileList(dir, toParse)
+			if len(errs) > 0 {
+				t.Fatalf("%s: %s", testCase.description, errs)
+			}
+			_, errs = ctx.ResolveDependencies(config)
+			if len(errs) > 0 {
+				t.Fatalf("%s: %s", testCase.description, errs)
+			}
 
-		checkDir := dir
-		if testCase.dir != "" {
-			checkDir = testCase.dir
-		}
-		codegenCtx := NewCodegenContext(config, *ctx.Context, Bp2Build)
-		bazelTargets := generateBazelTargetsForDir(codegenCtx, checkDir)
-		if actualCount, expectedCount := len(bazelTargets), len(testCase.expectedBazelTargets); actualCount != expectedCount {
-			t.Errorf("%s: Expected %d bazel target, got %d", testCase.description, expectedCount, actualCount)
-		} else {
-			for i, target := range bazelTargets {
-				if w, g := testCase.expectedBazelTargets[i], target.content; w != g {
-					t.Errorf(
-						"%s: Expected generated Bazel target to be '%s', got '%s'",
-						testCase.description,
-						w,
-						g,
-					)
+			checkDir := dir
+			if testCase.dir != "" {
+				checkDir = testCase.dir
+			}
+			codegenCtx := NewCodegenContext(config, *ctx.Context, Bp2Build)
+			bazelTargets := generateBazelTargetsForDir(codegenCtx, checkDir)
+			if actualCount, expectedCount := len(bazelTargets), len(testCase.expectedBazelTargets); actualCount != expectedCount {
+				t.Errorf("%s: Expected %d bazel target, got %d", testCase.description, expectedCount, actualCount)
+			} else {
+				for i, target := range bazelTargets {
+					if w, g := testCase.expectedBazelTargets[i], target.content; w != g {
+						t.Errorf(
+							"%s: Expected generated Bazel target to be '%s', got '%s'",
+							testCase.description,
+							w,
+							g,
+						)
+					}
 				}
 			}
-		}
+		})
 	}
 }
