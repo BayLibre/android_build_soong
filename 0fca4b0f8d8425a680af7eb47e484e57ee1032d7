@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5993203e_2ced83a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-10T06:56:16Z",
+      "side": 1,
+      "message": "LGTM based on my understanding of the cc libraries document. Please also get a +2 from Chris.",
+      "revId": "0fca4b0f8d8425a680af7eb47e484e57ee1032d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ac8f0db_17ea23aa",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-10T06:56:16Z",
+      "side": 1,
+      "message": "Camel case here please.",
+      "range": {
+        "startLine": 250,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 13
+      },
+      "revId": "0fca4b0f8d8425a680af7eb47e484e57ee1032d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "460462b6_fcdb147c",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-10T06:56:16Z",
+      "side": 1,
+      "message": "Camel case here please.",
+      "range": {
+        "startLine": 278,
+        "startChar": 3,
+        "endLine": 278,
+        "endChar": 14
+      },
+      "revId": "0fca4b0f8d8425a680af7eb47e484e57ee1032d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
