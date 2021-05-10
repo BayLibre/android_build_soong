@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5094417_145f61ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-10T09:19:19Z",
+      "side": 1,
+      "message": "Nothing has changed here other than I had to resolve a painful merge conflict with my previous CL",
+      "revId": "143be940163e56be9cc96f268085235061ebe3e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
