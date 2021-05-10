@@ -16,6 +16,23 @@
       "message": "This is useful for configuring syntax highlighting, e.g. in http://cl/372550728.",
       "revId": "45cac55403e5e716ed8e398b487511ea48ba34c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc192435_3ed34ca6",
+        "filename": "cmd/soong_build/writedocs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-05-10T18:30:04Z",
+      "side": 1,
+      "message": "Please add some comments on what this file is for so that the team knows how to deal with it when needed.",
+      "revId": "45cac55403e5e716ed8e398b487511ea48ba34c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
