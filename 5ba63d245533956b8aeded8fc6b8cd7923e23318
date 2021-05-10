@@ -46,6 +46,30 @@
       },
       "revId": "5ba63d245533956b8aeded8fc6b8cd7923e23318",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f512870_9d149cec",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-10T04:51:41Z",
+      "side": 1,
+      "message": "Jin pointed me at https://docs.google.com/document/d/1TUYb-8ietrRI0HTCxJbdJ3oxPmxHAmxs3TXjhKD8NRw/edit (\"Roboleaf: Cc Libraries\")\n\nAnd I later discovered https://docs.google.com/document/d/13nolQXvXDsJ4yjWP1FRd-WscP2-rHZcR3Zb__js6mLA/edit (\"cc_shared_library proposal\") from plf@\n\nCode Search says that ~nothing is setting the dynamic_deps property yet, but Pedro\u0027s doc implies that it is supposed to be set manually, so we could try it. \n\nI will add some plumbing in soong/cc/library.go and bazel/rules/full_cc_library.bzl ...",
+      "parentUuid": "77b7336e_ae868933",
+      "range": {
+        "startLine": 330,
+        "startChar": 4,
+        "endLine": 330,
+        "endChar": 22
+      },
+      "revId": "5ba63d245533956b8aeded8fc6b8cd7923e23318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
