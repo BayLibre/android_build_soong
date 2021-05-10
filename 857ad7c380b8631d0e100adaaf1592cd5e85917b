@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fa8e8b3_05f036be",
+        "filename": "android/testing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-05-10T17:54:30Z",
+      "side": 1,
+      "message": "\u003e Please remove the trailing whitespace.\n\nPlease fix. Please run gofmt on your change.",
+      "parentUuid": "e1b6e171_cab956ae",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 2
+      },
+      "revId": "857ad7c380b8631d0e100adaaf1592cd5e85917b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
