@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "497999f6_1a3571b6",
+        "filename": "android/license.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-05-10T17:41:49Z",
+      "side": 1,
+      "message": "Is this really necessary? Is it not identical to commonProperties.Effective_license_text ?",
+      "revId": "8b8df64140c48a49dd83cdc07b45f347bd4b9aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
