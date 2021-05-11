@@ -34,6 +34,24 @@
       "parentUuid": "497999f6_1a3571b6",
       "revId": "8b8df64140c48a49dd83cdc07b45f347bd4b9aef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1661d29_19da12f1",
+        "filename": "android/license.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-11T07:39:53Z",
+      "side": 1,
+      "message": "Turns out that Effective_license_text is what is needed but it first needs to be converted to Paths which I will do in a follow up change.",
+      "parentUuid": "5b91edf1_32f45eb6",
+      "revId": "8b8df64140c48a49dd83cdc07b45f347bd4b9aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
