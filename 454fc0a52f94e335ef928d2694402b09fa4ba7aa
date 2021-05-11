@@ -214,6 +214,24 @@
       "parentUuid": "907f9360_92dae06a",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "967565a8_4789e7bf",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-11T01:27:50Z",
+      "side": 1,
+      "message": "There shouldn\u0027t be an alias from \"sdk\" to \"\", the \"sdk\" variant is compiled for portability, and anything requesting the portable variant shouldn\u0027t be given a non-portable variant.  If a module does not have a portable variant isn\u0027t it not suitable for distributing in the SDK, and the right fix is to add sdk_version to the modules with errors?",
+      "parentUuid": "9f61df3c_91a89f0c",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
