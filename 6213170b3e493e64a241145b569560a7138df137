@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "774e8882_edb5f0cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-11T07:45:46Z",
+      "side": 1,
+      "message": "Assuming you +2 this could you also +2 the OSL part. That way I can +2 it as well to override the -1.",
+      "revId": "6213170b3e493e64a241145b569560a7138df137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
