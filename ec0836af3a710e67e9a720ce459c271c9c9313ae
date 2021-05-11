@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fba1e34_f913cf3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-11T07:41:42Z",
+      "side": 1,
+      "message": "Bob, I hope you don\u0027t mind but I renamed mergeProps and implemented it (and the path implementation) using the existing SortUnique... functions.",
+      "revId": "ec0836af3a710e67e9a720ce459c271c9c9313ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
