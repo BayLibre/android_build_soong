@@ -5634,7 +5634,7 @@ func TestOverrideApex(t *testing.T) {
 	`, withManifestPackageNameOverrides([]string{"myapex:com.android.myapex"}))
 
 	originalVariant := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(android.OverridableModule)
-	overriddenVariant := ctx.ModuleForTests("myapex", "android_common_override_myapex_myapex_image").Module().(android.OverridableModule)
+	overriddenVariant := ctx.ModuleForTests("myapex", "android_common_override_myapex_override_myapex_image").Module().(android.OverridableModule)
 	if originalVariant.GetOverriddenBy() != "" {
 		t.Errorf("GetOverriddenBy should be empty, but was %q", originalVariant.GetOverriddenBy())
 	}
@@ -5642,7 +5642,7 @@ func TestOverrideApex(t *testing.T) {
 		t.Errorf("GetOverriddenBy should be \"override_myapex\", but was %q", overriddenVariant.GetOverriddenBy())
 	}
 
-	module := ctx.ModuleForTests("myapex", "android_common_override_myapex_myapex_image")
+	module := ctx.ModuleForTests("myapex", "android_common_override_myapex_override_myapex_image")
 	apexRule := module.Rule("apexRule")
 	copyCmds := apexRule.Args["copy_commands"]
 
@@ -7242,7 +7242,7 @@ func TestAllowedFiles(t *testing.T) {
 		t.Errorf("allowed_files_file: expected %q but got %q", expected, actual)
 	}
 
-	rule2 := ctx.ModuleForTests("myapex", "android_common_override_myapex_myapex_image").Rule("diffApexContentRule")
+	rule2 := ctx.ModuleForTests("myapex", "android_common_override_myapex_override_myapex_image").Rule("diffApexContentRule")
 	if expected, actual := "sub/allowed.txt", rule2.Args["allowed_files_file"]; expected != actual {
 		t.Errorf("allowed_files_file: expected %q but got %q", expected, actual)
 	}

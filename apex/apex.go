@@ -900,11 +900,11 @@ func (a *apexBundle) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 	// This is the main part of this mutator. Mark the collected dependencies that they need to
 	// be built for this apexBundle.
 	apexInfo := android.ApexInfo{
-		ApexVariationName: mctx.ModuleName(),
+		ApexVariationName: a.Name(),
 		MinSdkVersion:     minSdkVersion,
 		RequiredSdks:      a.RequiredSdks(),
 		Updatable:         a.Updatable(),
-		InApexes:          []string{mctx.ModuleName()},
+		InApexes:          []string{a.Name()},
 		ApexContents:      []*android.ApexContents{apexContents},
 	}
 	mctx.WalkDeps(func(child, parent android.Module) bool {
@@ -1044,8 +1044,8 @@ func apexMutator(mctx android.BottomUpMutatorContext) {
 
 	// apexBundle itself is mutated so that it and its dependencies have the same apex variant.
 	// TODO(jiyong): document the reason why the VNDK APEX is an exception here.
+	apexBundleName := mctx.Module().Name()
 	if a, ok := mctx.Module().(*apexBundle); ok && !a.vndkApex {
-		apexBundleName := mctx.ModuleName()
 		mctx.CreateVariations(apexBundleName)
 		if strings.HasPrefix(apexBundleName, "com.android.art") {
 			// Create an alias from the platform variant. This is done to make
@@ -1057,12 +1057,7 @@ func apexMutator(mctx android.BottomUpMutatorContext) {
 			// refactored to depend on the proper APEX variants instead of platform.
 			mctx.CreateAliasVariation("", apexBundleName)
 		}
-	} else if o, ok := mctx.Module().(*OverrideApex); ok {
-		apexBundleName := o.GetOverriddenModuleName()
-		if apexBundleName == "" {
-			mctx.ModuleErrorf("base property is not set")
-			return
-		}
+	} else if _, ok := mctx.Module().(*OverrideApex); ok {
 		mctx.CreateVariations(apexBundleName)
 		if strings.HasPrefix(apexBundleName, "com.android.art") {
 			// TODO(b/183882457): See note for CreateAliasVariation above.
