@@ -196,6 +196,24 @@
       "parentUuid": "c31fcd96_fd3c4e59",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f61df3c_91a89f0c",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-11T01:22:04Z",
+      "side": 1,
+      "message": "I vaguely remember that aliases got lost after a subsequent mutator created more variants of the module unless that mutator also created aliases.",
+      "parentUuid": "907f9360_92dae06a",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
