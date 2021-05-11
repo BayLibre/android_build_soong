@@ -160,6 +160,24 @@
       "parentUuid": "2e09a4ae_625ba3e0",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c31fcd96_fd3c4e59",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-11T00:36:08Z",
+      "side": 1,
+      "message": "I vaguely remember that when I tried this (a few months ago) there were a number of modules that did not have an sdk variant and adding an sdk variant caused other issues. It is probably worth trying again as there has been lots of cleanup in the build since then.",
+      "parentUuid": "a8b96e6e_9137c4b9",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
