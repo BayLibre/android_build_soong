@@ -178,6 +178,24 @@
       "parentUuid": "a8b96e6e_9137c4b9",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "907f9360_92dae06a",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-11T01:11:19Z",
+      "side": 1,
+      "message": "Yes, I think Paul is correct. It\u0027s not enough to check for ctx.Host(), because it\u0027s not always an sdk variant is created (since the \"m.UseSdk() || m.SplitPerApiLevel()\" condition).\n\nAdding an alias from \"sdk\" to \"\" in that case would seem like the right thing to do, which I try here in PS5. However the alias does not let us depend on specific variants in later mutators. See one of many failing tests below - in this case I think the alias only works if we depend on the subvariant with \"version:\", but not \"version:latest\".\n\n  --- FAIL: TestUniqueHostSoname (0.05s)\n    cc_sdk_test.go:2550: Android.bp:2:3: dependency \"mylib\" of \"mysdk\" missing variant:\n          os:android,image:,arch:arm64_armv8-a,sdk:sdk,link:shared,version:latest\n        available variants:\n          os:linux_glibc,arch:x86_64 (alias to os:linux_glibc,arch:x86_64,link:shared)\n          os:linux_glibc,arch:x86_64,link:static\n          os:linux_glibc,arch:x86_64,link:shared\n          os:linux_glibc,arch:x86 (alias to os:linux_glibc,arch:x86,link:shared)\n          os:linux_glibc,arch:x86,link:static\n          os:linux_glibc,arch:x86,link:shared\n          os:windows,arch:x86_64 (alias to os:windows,arch:x86_64,link:shared)\n          os:windows,arch:x86_64,link:static\n          os:windows,arch:x86_64,link:shared\n          os:android,image:,arch:arm64_armv8-a (alias to os:android,image:,arch:arm64_armv8-a,sdk:,link:shared,version:)\n          os:android,image:,arch:arm64_armv8-a,sdk: (alias to os:android,image:,arch:arm64_armv8-a,sdk:,link:shared,version:)\n          os:android,image:,arch:arm64_armv8-a,sdk:,link:static\n          os:android,image:,arch:arm64_armv8-a,sdk:,link:shared (alias to os:android,image:,arch:arm64_armv8-a,sdk:,link:shared,version:)\n          os:android,image:,arch:arm64_armv8-a,sdk:,link:shared,version:\n          os:android,image:,arch:arm64_armv8-a,sdk:,link:shared,version:latest (alias to os:android,image:,arch:arm64_armv8-a,sdk:,link:shared,version:)\n          os:android,image:,arch:arm64_armv8-a,sdk:sdk (alias to os:android,image:,arch:arm64_armv8-a,sdk:,link:shared,version:)\n          os:android,image:,arch:arm_armv7-a-neon (alias to os:android,image:,arch:arm_armv7-a-neon,sdk:,link:shared,version:)\n          os:android,image:,arch:arm_armv7-a-neon,sdk: (alias to os:android,image:,arch:arm_armv7-a-neon,sdk:,link:shared,version:)\n          os:android,image:,arch:arm_armv7-a-neon,sdk:,link:static\n          os:android,image:,arch:arm_armv7-a-neon,sdk:,link:shared (alias to os:android,image:,arch:arm_armv7-a-neon,sdk:,link:shared,version:)\n          os:android,image:,arch:arm_armv7-a-neon,sdk:,link:shared,version:\n          os:android,image:,arch:arm_armv7-a-neon,sdk:,link:shared,version:latest (alias to os:android,image:,arch:arm_armv7-a-neon,sdk:,link:shared,version:)\n          os:android,image:,arch:arm_armv7-a-neon,sdk:sdk (alias to os:android,image:,arch:arm_armv7-a-neon,sdk:,link:shared,version:)",
+      "parentUuid": "c31fcd96_fd3c4e59",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
