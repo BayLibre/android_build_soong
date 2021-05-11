@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2baab01f_bae12194",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-11T00:43:39Z",
+      "side": 1,
+      "message": "Tried to clarify.",
+      "parentUuid": "779c22b8_07204935",
+      "range": {
+        "startLine": 443,
+        "startChar": 9,
+        "endLine": 443,
+        "endChar": 24
+      },
+      "revId": "e849c3ce9cdd69685be14fbcd4e8f7567d7fab7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14dcb6da_7ca1fdc5",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-04T13:00:16Z",
       "side": 1,
       "message": "Extra period.",
+      "range": {
+        "startLine": 434,
+        "startChar": 69,
+        "endLine": 434,
+        "endChar": 70
+      },
+      "revId": "e849c3ce9cdd69685be14fbcd4e8f7567d7fab7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0374e175_807b81bb",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-11T00:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14dcb6da_7ca1fdc5",
       "range": {
         "startLine": 434,
         "startChar": 69,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe127efe_bd7936ce",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-11T00:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38d486be_6f010f0a",
+      "range": {
+        "startLine": 437,
+        "startChar": 65,
+        "endLine": 437,
+        "endChar": 66
+      },
+      "revId": "e849c3ce9cdd69685be14fbcd4e8f7567d7fab7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5242b606_06403ffa",
@@ -83,6 +155,24 @@
       "writtenOn": "2021-05-04T13:00:16Z",
       "side": 1,
       "message": "Why is there a separate function copyUpdatableBootJars for updatable jars, but not for non-updatable (copyBootJarsToPredefinedLocations is used directly), shouldn\u0027t it be symmetric?",
+      "revId": "e849c3ce9cdd69685be14fbcd4e8f7567d7fab7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32dee03d_9cedc503",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-11T00:43:39Z",
+      "side": 1,
+      "message": "It was like this because the previous code had a special method for updatable modules because they were not part of a boot image. Inlined this functionality to make it consistent.",
+      "parentUuid": "5242b606_06403ffa",
       "revId": "e849c3ce9cdd69685be14fbcd4e8f7567d7fab7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
