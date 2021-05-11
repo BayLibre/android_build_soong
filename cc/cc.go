@@ -712,6 +712,20 @@ type installDependencyTag struct {
 	name string
 }
 
+// installOnlyDependencyTag is similar to installDependencyTag but used for dependency types
+// that do not needed to be packaged together.
+type installOnlyDependencyTag struct {
+	blueprint.BaseDependencyTag
+	android.InstallAlwaysNeededDependencyTag
+	name string
+}
+
+func (d installOnlyDependencyTag) PackageDepNeeded() bool {
+	return false
+}
+
+var _ android.PackageNeededDependencyTag = installOnlyDependencyTag{}
+
 var (
 	genSourceDepTag       = dependencyTag{name: "gen source"}
 	genHeaderDepTag       = dependencyTag{name: "gen header"}
@@ -723,7 +737,7 @@ var (
 	staticVariantTag      = dependencyTag{name: "static variant"}
 	vndkExtDepTag         = dependencyTag{name: "vndk extends"}
 	dataLibDepTag         = dependencyTag{name: "data lib"}
-	runtimeDepTag         = installDependencyTag{name: "runtime lib"}
+	runtimeDepTag         = installOnlyDependencyTag{name: "runtime lib"}
 	testPerSrcDepTag      = dependencyTag{name: "test_per_src"}
 	stubImplDepTag        = dependencyTag{name: "stub_impl"}
 	llndkStubDepTag       = dependencyTag{name: "llndk stub"}

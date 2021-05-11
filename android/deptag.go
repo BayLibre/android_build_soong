@@ -24,6 +24,17 @@ type InstallNeededDependencyTag interface {
 	InstallDepNeeded() bool
 }
 
+// Dependency tags can implement this interface and return true from PackageDepNeeded to annotate
+// that the packaged files of the parent should depend on the packaged files of the child.
+// Because IsPackageDepNeeded() falls back to InstallNeededDependencyTag, in most cases,
+// it's sufficient to implement InstallNeededDependencyTag alone.  But if one needs to fine control
+// over what to install and what to package, implement PackageNeededDependencyTag as well.
+type PackageNeededDependencyTag interface {
+	// If PackageDepNeeded returns true then the packaged files of the parent will depend on the
+	// packaged files of the child.
+	PackageDepNeeded() bool
+}
+
 // Dependency tags can embed this struct to annotate that the installed files of the parent should
 // depend on the installed files of the child.
 type InstallAlwaysNeededDependencyTag struct{}
@@ -42,4 +53,15 @@ func IsInstallDepNeeded(tag blueprint.DependencyTag) bool {
 		return i.InstallDepNeeded()
 	}
 	return false
+}
+
+// IsPackageDepNeeded returns true if the dependency tag implements the PackageNeededDependencyTag
+// interface and the PackageDepNeeded returns true, meaning that the packaged files of the parent
+// should depend on the packaged files of the child. Note that when the tag does not implement
+// PackageNeededDependencyTag it falls back to IsInstallDepNeeded().
+func IsPackageDepNeeded(tag blueprint.DependencyTag) bool {
+	if i, ok := tag.(PackageNeededDependencyTag); ok {
+		return i.PackageDepNeeded()
+	}
+	return IsInstallDepNeeded(tag)
 }

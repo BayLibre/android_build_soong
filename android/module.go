@@ -381,9 +381,9 @@ type ModuleContext interface {
 	// the rule to copy the file.  This is useful to define how a module would be packaged
 	// without installing it into the global installation directories.
 	//
-	// The created PackagingSpec for the will be returned by PackagingSpecs() on this module or by
+	// The created PackagingSpec will be returned by PackagingSpecs() on this module or by
 	// TransitivePackagingSpecs() on modules that depend on this module through dependency tags
-	// for which IsInstallDepNeeded returns true.
+	// for which IsPackageDepNeeded returns true.
 	PackageFile(installPath InstallPath, name string, srcPath Path) PackagingSpec
 
 	CheckbuildFile(srcPath Path)
@@ -491,7 +491,7 @@ type Module interface {
 	PackagingSpecs() []PackagingSpec
 
 	// TransitivePackagingSpecs returns the PackagingSpecs for this module and any transitive
-	// dependencies with dependency tags for which IsInstallDepNeeded() returns true.
+	// dependencies with dependency tags for which IsPackageDepNeeded() returns true.
 	TransitivePackagingSpecs() []PackagingSpec
 }
 
@@ -1502,6 +1502,8 @@ func (m *ModuleBase) computeInstallDeps(ctx ModuleContext) ([]*installPathsDepSe
 	ctx.VisitDirectDeps(func(dep Module) {
 		if IsInstallDepNeeded(ctx.OtherModuleDependencyTag(dep)) {
 			installDeps = append(installDeps, dep.base().installFilesDepSet)
+		}
+		if IsPackageDepNeeded(ctx.OtherModuleDependencyTag(dep)) {
 			packagingSpecs = append(packagingSpecs, dep.base().packagingSpecsDepSet)
 		}
 	})
