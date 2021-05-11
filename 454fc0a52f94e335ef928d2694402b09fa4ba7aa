@@ -268,6 +268,24 @@
       "parentUuid": "fa5657dc_088093f8",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11efe5a4_78322b5c",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-11T11:50:55Z",
+      "side": 1,
+      "message": "Besides host, we also need to exclude stubs. How do we do that before registering the dependency?\n\nSee http://go/paste/6539082046898176?raw for the remaining non-stub modules. I see crt objects from Bionic that are special cases, a bunch of test exports, but also many \"real\" libraries.\n\nBut overall I wonder how sdk_version restrictions map to an APEX module - we don\u0027t really build against the NDK there, rather we build against the Runtime APEX SDK, platform mainline module SDK, etc. It\u0027s min_sdk_version and (eventually) uses_sdks that control the versions we use of them, isn\u0027t it? What we need to do is somehow map those to a baseline NDK version, which should be anything but \"current\", right?",
+      "parentUuid": "75255999_a1281aab",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
