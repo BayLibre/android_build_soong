@@ -70,6 +70,30 @@
       },
       "revId": "3b413d35a4f5f0389950ea4641c3f96fbc0b7190",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b618043b_011e4359",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-11T06:18:37Z",
+      "side": 1,
+      "message": "What I meant was, I wonder if there are actually two issues\n\nObviously the sharedLibs thing is a merge typo\n\nBut when staring at this code, I noticed that in your CL https://android-review.googlesource.com/c/platform/build/soong/+/1697045, we are missing an os case for the Version_script part\n\nSo should we add an os case for the Version_script part, to match the arch case?\n\nSorry if this is not clear, I will just send another CL",
+      "parentUuid": "354e28ff_f5da93e5",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 4
+      },
+      "revId": "3b413d35a4f5f0389950ea4641c3f96fbc0b7190",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
