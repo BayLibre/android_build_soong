@@ -22,6 +22,30 @@
       },
       "revId": "667763cf60de887da1b4704115989cf0be8357cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23227609_58bb6db8",
+        "filename": "android/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1568,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-11T09:46:45Z",
+      "side": 1,
+      "message": "Done. Thanks for catching! Copy-pasted and didn\u0027t update.",
+      "parentUuid": "3af8e02f_f99c8475",
+      "range": {
+        "startLine": 1567,
+        "startChar": 97,
+        "endLine": 1568,
+        "endChar": 16
+      },
+      "revId": "667763cf60de887da1b4704115989cf0be8357cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
