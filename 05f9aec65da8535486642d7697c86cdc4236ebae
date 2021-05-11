@@ -34,6 +34,24 @@
       "parentUuid": "673b6f75_4d99e5c5",
       "revId": "05f9aec65da8535486642d7697c86cdc4236ebae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b4ca462_b8cca87b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-11T15:44:03Z",
+      "side": 1,
+      "message": "I\u0027m not sure how to exactly test that the generated flag sets are used in a build. Do you have ideas?",
+      "parentUuid": "4cd914cf_26f66c30",
+      "revId": "05f9aec65da8535486642d7697c86cdc4236ebae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
