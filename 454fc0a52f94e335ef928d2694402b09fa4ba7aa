@@ -142,6 +142,24 @@
       "parentUuid": "960ab6e9_93c600f6",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8b96e6e_9137c4b9",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-11T00:28:44Z",
+      "side": 1,
+      "message": "I think the only sdkMutator condition that you would have to check is ctx.Host(), which you should already know.  For anything on the device side, you should always use the SDK variant, and it should be an error to try to use something that doesn\u0027t have an SDK variant.",
+      "parentUuid": "2e09a4ae_625ba3e0",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
