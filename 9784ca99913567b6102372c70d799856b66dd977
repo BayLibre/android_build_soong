@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "576560d4_b784f704",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-05-11T12:08:05Z",
+      "side": 1,
+      "message": "For now, this works fine, but I don\u0027t thinks this is ideal. Mainly because making cc.runtimeDep as IsInstallDepNeeded but not IsPackageDepNeeded seems to be very arbitrary.\n\nColin, how can we make it clear? I hope we can do better than this. For example, making CopyDepsToZip(or GatherPackagingSpecs in the parent change) more controllable by PackagingBase-derived module. In this case, \"filesystem\" wants to avoid to packaging cc libraries which provide \"stubs\" (just like how \"apex\" does).",
+      "parentUuid": "1069f750_3eeb5b6b",
+      "revId": "9784ca99913567b6102372c70d799856b66dd977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "19520adf_3c13c8ae",
         "filename": "android/deptag.go",
         "patchSetId": 1
