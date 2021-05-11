@@ -541,23 +541,50 @@ func CreateApexVariations(mctx BottomUpMutatorContext, module ApexModule) []Modu
 	base.ApexProperties.DirectlyInAnyApex = inApex == directlyInApex
 
 	defaultVariation := ""
+
+	// Check to see whether to create a default variant or use an alias.
+	var variations []string
+	if len(apexInfos) == 1 && !mctx.Host() && !base.AvailableFor(AvailableToPlatform) {
+		// There is only a single apex variant required and no platform variation so create a single
+		// apex variant (no default variation) and instead add an alias from the default variation to
+		// the apex variant.
+		//
+		// This path is not taken for host variants so that they can generate AndroidMk entries to
+		// make them available to Make. e.g. this is needed for tools used by make like dex2oat.
+
+		// No additional variations needed.
+		variations = []string{}
+
+		soleApexVariation := apexInfos[0].ApexVariationName
+		aliases = append(aliases, [2]string{"", soleApexVariation})
+	} else {
+		// Either there are multiple different APEX variants required so there is no way to select one
+		// to use as the default or the module requires a platform variant. In either case create a
+		// default variation.
+		variations = []string{defaultVariation}
+	}
+
+	// If dependencies of this module don't have the same apex variation as this module then use its
+	// default variation.
 	mctx.SetDefaultDependencyVariation(&defaultVariation)
 
-	variations := []string{defaultVariation}
 	for _, a := range apexInfos {
 		variations = append(variations, a.ApexVariationName)
 	}
 	modules := mctx.CreateVariations(variations...)
+	apexInfoIndex := 0
 	for i, mod := range modules {
-		platformVariation := i == 0
+		platformVariation := variations[i] == defaultVariation
 		if platformVariation && !mctx.Host() && !mod.(ApexModule).AvailableFor(AvailableToPlatform) {
-			// Do not install the module for platform, but still allow it to output
-			// uninstallable AndroidMk entries in certain cases when they have side
-			// effects.  TODO(jiyong): move this routine to somewhere else
+			// Do not install the module for platform, but still allow it to output uninstallable
+			// AndroidMk entries in certain cases when they have side effects. e.g. making tools like
+			// dex2oat available for use in make.
+			// TODO(jiyong): move this routine to somewhere else
 			mod.MakeUninstallable()
 		}
 		if !platformVariation {
-			mctx.SetVariationProvider(mod, ApexInfoProvider, apexInfos[i-1])
+			mctx.SetVariationProvider(mod, ApexInfoProvider, apexInfos[apexInfoIndex])
+			apexInfoIndex += 1
 		}
 	}
 

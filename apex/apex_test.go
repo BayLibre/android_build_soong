@@ -5569,11 +5569,11 @@ func TestApexAvailable_CreatedForApex(t *testing.T) {
 		},
 	}`)
 
-	libfooShared := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_shared").Module().(*cc.Module)
+	libfooShared := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_shared_apex10000").Module().(*cc.Module)
 	if libfooShared.NotAvailableForPlatform() != true {
 		t.Errorf("%q shouldn't be available to platform", libfooShared.String())
 	}
-	libfooStatic := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_static").Module().(*cc.Module)
+	libfooStatic := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_static_apex10000").Module().(*cc.Module)
 	if libfooStatic.NotAvailableForPlatform() != false {
 		t.Errorf("%q should be available to platform", libfooStatic.String())
 	}
