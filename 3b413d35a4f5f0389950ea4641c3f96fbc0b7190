@@ -46,6 +46,30 @@
       },
       "revId": "3b413d35a4f5f0389950ea4641c3f96fbc0b7190",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "354e28ff_f5da93e5",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-11T06:01:15Z",
+      "side": 1,
+      "message": "This is 100% a merging mistake as far as I can tell; why would sharedLibs/dynamicDeps depend on whether there is a version script or not?",
+      "parentUuid": "d7a70006_2cf25189",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 4
+      },
+      "revId": "3b413d35a4f5f0389950ea4641c3f96fbc0b7190",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
