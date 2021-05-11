@@ -94,6 +94,30 @@
       },
       "revId": "3b413d35a4f5f0389950ea4641c3f96fbc0b7190",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ab17050_0c72ddc1",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-11T06:26:04Z",
+      "side": 1,
+      "message": "The reason why I didn\u0027t do that is that:\n\n- we don\u0027t have that under bionic/\n- I haven\u0027t refactored GetTargetProperties() just like I did with GetArchProperties()\n\nSo I thought I\u0027d not put in speculative, probably wrong code.\n\nI should probably have done GetTargetProperties(), too, but I was pressed for time, so I decided to do the bare minimum. In addition, I was not that sure if the GetArchProperties() refactoring was correct, but it did stand the test of time so it probably was.",
+      "parentUuid": "b618043b_011e4359",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 308,
+        "endChar": 4
+      },
+      "revId": "3b413d35a4f5f0389950ea4641c3f96fbc0b7190",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
