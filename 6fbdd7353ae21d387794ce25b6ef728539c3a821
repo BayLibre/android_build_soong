@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4032a3f3_45001dd9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-11T09:46:53Z",
+      "side": 1,
+      "message": "Clarified.",
+      "parentUuid": "ba3ff5ea_adfd7b04",
+      "range": {
+        "startLine": 9,
+        "startChar": 53,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "6fbdd7353ae21d387794ce25b6ef728539c3a821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "488439a8_0b94c0c4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 10
@@ -60,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74dd40f3_db205a25",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-11T09:46:53Z",
+      "side": 1,
+      "message": "That would complicate code on the device, which I think takes priority when it comes to simplification -- less chances to break devices.\n\nWe could make apex\u0027es know whether they are updatable, but that requires on device changes. (Or, provide a template of jars as you previously suggested, which again complicates the logic.) Also, splitting the PRODUCT_BOOT_JARS in make.\n\nBtw, i18n comes after all /system/ and /system_ext/ jars now (not in between ext.jar and telephony.jar). Honestly, it would simplify this a lot, if we made i18n part of PRODUCT_UPDATABLE_BOOT_JARS, which I was going to start a conversation on about later.\n\nI don\u0027t fully follow last two points. What configuration are we talking about here?",
+      "parentUuid": "0e8376c1_f8a23283",
+      "revId": "6fbdd7353ae21d387794ce25b6ef728539c3a821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "917370f8_7b129af8",
         "filename": "java/platform_bootclasspath.go",
         "patchSetId": 10
@@ -71,6 +113,24 @@
       "writtenOn": "2021-05-10T22:32:08Z",
       "side": 1,
       "message": "Ideally this should be retrieving an object from the module using Provider rather than accessing the module directly.",
+      "revId": "6fbdd7353ae21d387794ce25b6ef728539c3a821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10b5a957_2f4779c6",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-11T09:46:53Z",
+      "side": 1,
+      "message": "Ah, sorry, not used to the fact that providers exist in Soong.. keep forgetting about them (although I used one in the previous change).\n\nFWIW, this loop is going away soon, once each apex has its own bootclasspath_Fragment.",
+      "parentUuid": "917370f8_7b129af8",
       "revId": "6fbdd7353ae21d387794ce25b6ef728539c3a821",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
