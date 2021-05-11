@@ -322,6 +322,24 @@
       "parentUuid": "11efe5a4_78322b5c",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e585102b_09e88105",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-11T21:57:00Z",
+      "side": 1,
+      "message": "No, S is not finalized yet.  Jiyong has been trying to allow \"S\" to mean both in-progress or released S for native code, which conflicts with the java definition where \"S\" means in-progress S, but maybe that will work here.  Otherwise \"current\" is the only way to select S.",
+      "parentUuid": "16f54a25_f0ab58b1",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
