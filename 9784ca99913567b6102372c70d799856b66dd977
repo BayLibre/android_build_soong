@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1069f750_3eeb5b6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-11T08:43:40Z",
+      "side": 1,
+      "message": "LGTM, but I would like to give Colin a chance to look into.",
+      "revId": "9784ca99913567b6102372c70d799856b66dd977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19520adf_3c13c8ae",
+        "filename": "android/deptag.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-11T08:43:40Z",
+      "side": 1,
+      "message": "Ha, this is clever.",
+      "revId": "9784ca99913567b6102372c70d799856b66dd977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
