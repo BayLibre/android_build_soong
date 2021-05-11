@@ -304,6 +304,24 @@
       "parentUuid": "11efe5a4_78322b5c",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16f54a25_f0ab58b1",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-11T21:40:43Z",
+      "side": 1,
+      "message": "I thought it wouldn\u0027t be that much of a lie to create an sdk variant for stubs too, but when I tried it I found that sdkMutator runs before we know whether it\u0027s a stub or not.\n\nSo yes, this may need a rearrangement. Probably less painful to let the variants depend on each other as you suggest, rather than trying to change the mutator order.\n\nOr do we need to tell sdk and platform apart even for stubs? I figured they don\u0027t have dependencies themselves, and that the implementation lib version dependencies are covered by min_sdk_version etc.\n\n\u003e I don\u0027t actually know whether you want the SDK variant here or not /.../\n\nIiuc, internally in our ART module this sdk_version is a redundant way of expressing version dependencies we already track other ways, but in the prebuilt output it may make sense, e.g. for dependencies from CTS, which is where this problem popped up.\n\nAt first I thought we should use some logic to determine the appropriate sdk_version in the exported prebuilts from the other version properties, but on second thought that sounds a bit too magic. It may be better to just decide on a baseline sdk_version and then switch to it everywhere in ART and its dependencies. The problem is that as long as we still build from source in platform I\u0027m wary that it\u0027ll be hard to keep the sdk_version settings contained. But I think I\u0027ll give it a go and see where it ends up.\n\nDo we have an SDK version determined for S?",
+      "parentUuid": "11efe5a4_78322b5c",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
