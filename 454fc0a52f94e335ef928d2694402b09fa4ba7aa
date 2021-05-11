@@ -250,6 +250,24 @@
       "parentUuid": "967565a8_4789e7bf",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75255999_a1281aab",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-11T08:58:32Z",
+      "side": 1,
+      "message": "Martin, I think the best approach is to resurrect your original changes, and print out which of the modules do not have an sdk variant. At least that way we will have some idea of the scale of the problem and maybe be able to identify those libraries that will have issues building against the sdk.",
+      "parentUuid": "fa5657dc_088093f8",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
