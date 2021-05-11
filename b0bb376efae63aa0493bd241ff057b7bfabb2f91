@@ -16,6 +16,23 @@
       "message": "PTAL. I fixed the TODOs that I had previously added to this as I managed to make the changes I needed in the sdk logic so this is a bit cleaner.",
       "revId": "b0bb376efae63aa0493bd241ff057b7bfabb2f91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8267f5d4_d1c479e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-11T07:45:39Z",
+      "side": 1,
+      "message": "Assuming you +2 this could you also +2 the OSL part. That way I can +2 it as well to override the -1.",
+      "revId": "b0bb376efae63aa0493bd241ff057b7bfabb2f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
