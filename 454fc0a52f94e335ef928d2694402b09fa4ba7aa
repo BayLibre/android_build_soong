@@ -286,6 +286,24 @@
       "parentUuid": "75255999_a1281aab",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f987c610_beb14908",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-11T19:52:35Z",
+      "side": 1,
+      "message": "You can\u0027t exclude stubs before making a dependency, unless you make a dependency first on the non-SDK and query it for information.  If this gets too complicated then maybe I need to rearrange the SDK dependencies to match the way we do LLNDK - have the regular variant depend on the SDK variant and collect its providers, and then have everything else (regular or SDK) depend on the regular variant, where it can get either the regular providers or the SDK providers as desired.\n\nI don\u0027t actually know whether you want the SDK variant here or not - the SDK variant is the build system\u0027s idea of \"something that might run outside the platform that is currently being compiled\".  Since you\u0027re doing your own portability layer here I\u0027m not sure how it interacts.",
+      "parentUuid": "11efe5a4_78322b5c",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
