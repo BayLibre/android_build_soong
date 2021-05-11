@@ -124,6 +124,24 @@
       "parentUuid": "524b00b1_09c8fb40",
       "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e09a4ae_625ba3e0",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-11T00:19:06Z",
+      "side": 1,
+      "message": "It\u0027d be possible to handle with a variant-less module to use for the variant existence queries. No idea if something similar can be done in Bazel though. The only other option is to eliminate all OtherModule*Exists calls, then. Is that the plan?\n\nI don\u0027t have any good ideas what to do here. Even if I extract the logic that decides the variants from sdkMutator I can\u0027t call it from a different module here, and I don\u0027t see any way to test a predicate (e.g. through a provider interface) on all variants. What do you suggest?",
+      "parentUuid": "960ab6e9_93c600f6",
+      "revId": "454fc0a52f94e335ef928d2694402b09fa4ba7aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
