@@ -5569,11 +5569,11 @@ func TestApexAvailable_CreatedForApex(t *testing.T) {
 		},
 	}`)
 
-	libfooShared := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_shared").Module().(*cc.Module)
+	libfooShared := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_shared_apex10000").Module().(*cc.Module)
 	if libfooShared.NotAvailableForPlatform() != true {
 		t.Errorf("%q shouldn't be available to platform", libfooShared.String())
 	}
-	libfooStatic := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_static").Module().(*cc.Module)
+	libfooStatic := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_static_apex10000").Module().(*cc.Module)
 	if libfooStatic.NotAvailableForPlatform() != false {
 		t.Errorf("%q should be available to platform", libfooStatic.String())
 	}
@@ -5700,7 +5700,10 @@ func TestLegacyAndroid10Support(t *testing.T) {
 			srcs: ["mylib.cpp"],
 			stl: "libc++",
 			system_shared_libs: [],
-			apex_available: [ "myapex" ],
+			apex_available: [
+				"//apex_available:platform",
+				"myapex",
+			],
 			min_sdk_version: "29",
 		}
 	`, withUnbundledBuild)
@@ -6943,6 +6946,7 @@ func TestTestFor(t *testing.T) {
 	`)
 
 	ensureLinkedLibIs := func(mod, variant, linkedLib, expectedVariant string) {
+		t.Helper()
 		ldFlags := strings.Split(ctx.ModuleForTests(mod, variant).Rule("ld").Args["libFlags"], " ")
 		mylibLdFlags := android.FilterListPred(ldFlags, func(s string) bool { return strings.HasPrefix(s, linkedLib) })
 		android.AssertArrayString(t, "unexpected "+linkedLib+" link library for "+mod, []string{linkedLib + expectedVariant}, mylibLdFlags)
@@ -6950,9 +6954,9 @@ func TestTestFor(t *testing.T) {
 
 	// These modules are tests for the apex, therefore are linked to the
 	// actual implementation of mylib instead of its stub.
-	ensureLinkedLibIs("mytest", "android_arm64_armv8-a", "out/soong/.intermediates/mylib/", "android_arm64_armv8-a_shared/mylib.so")
-	ensureLinkedLibIs("mytestlib", "android_arm64_armv8-a_shared", "out/soong/.intermediates/mylib/", "android_arm64_armv8-a_shared/mylib.so")
-	ensureLinkedLibIs("mybench", "android_arm64_armv8-a", "out/soong/.intermediates/mylib/", "android_arm64_armv8-a_shared/mylib.so")
+	ensureLinkedLibIs("mytest", "android_arm64_armv8-a", "out/soong/.intermediates/mylib/", "android_arm64_armv8-a_shared_apex10000/mylib.so")
+	ensureLinkedLibIs("mytestlib", "android_arm64_armv8-a_shared", "out/soong/.intermediates/mylib/", "android_arm64_armv8-a_shared_apex10000/mylib.so")
+	ensureLinkedLibIs("mybench", "android_arm64_armv8-a", "out/soong/.intermediates/mylib/", "android_arm64_armv8-a_shared_apex10000/mylib.so")
 }
 
 func TestIndirectTestFor(t *testing.T) {
@@ -6978,7 +6982,9 @@ func TestIndirectTestFor(t *testing.T) {
 			stubs: {
 				versions: ["1"],
 			},
-			apex_available: ["myapex"],
+			apex_available: [
+				"myapex",
+			],
 		}
 
 		cc_library {
@@ -6987,7 +6993,9 @@ func TestIndirectTestFor(t *testing.T) {
 			system_shared_libs: [],
 			stl: "none",
 			shared_libs: ["mylib"],
-			apex_available: ["myapex"],
+			apex_available: [
+				"myapex",
+			],
 		}
 
 		cc_library {
@@ -7001,18 +7009,17 @@ func TestIndirectTestFor(t *testing.T) {
 	`)
 
 	ensureLinkedLibIs := func(mod, variant, linkedLib, expectedVariant string) {
+		t.Helper()
 		ldFlags := strings.Split(ctx.ModuleForTests(mod, variant).Rule("ld").Args["libFlags"], " ")
 		mylibLdFlags := android.FilterListPred(ldFlags, func(s string) bool { return strings.HasPrefix(s, linkedLib) })
 		android.AssertArrayString(t, "unexpected "+linkedLib+" link library for "+mod, []string{linkedLib + expectedVariant}, mylibLdFlags)
 	}
 
-	// The platform variant of mytestlib links to the platform variant of the
-	// internal myprivlib.
-	ensureLinkedLibIs("mytestlib", "android_arm64_armv8-a_shared", "out/soong/.intermediates/myprivlib/", "android_arm64_armv8-a_shared/myprivlib.so")
+	// The platform variant of mytestlib links to the APEX variant of the internal myprivlib.
+	ensureLinkedLibIs("mytestlib", "android_arm64_armv8-a_shared", "out/soong/.intermediates/myprivlib/", "android_arm64_armv8-a_shared_apex10000/myprivlib.so")
 
-	// The platform variant of myprivlib links to the platform variant of mylib
-	// and bypasses its stubs.
-	ensureLinkedLibIs("myprivlib", "android_arm64_armv8-a_shared", "out/soong/.intermediates/mylib/", "android_arm64_armv8-a_shared/mylib.so")
+	// The APEX variant of myprivlib links to the APEX variant of mylib and bypasses its stubs.
+	ensureLinkedLibIs("myprivlib", "android_arm64_armv8-a_shared_apex10000", "out/soong/.intermediates/mylib/", "android_arm64_armv8-a_shared_apex10000/mylib.so")
 }
 
 func TestTestForForLibInOtherApex(t *testing.T) {
@@ -7393,7 +7400,10 @@ func TestExcludeDependency(t *testing.T) {
 			srcs: ["mylib.cpp"],
 			system_shared_libs: [],
 			stl: "none",
-			apex_available: ["myapex"],
+			apex_available: [
+				"//apex_available:platform",
+				"myapex",
+			],
 			shared_libs: ["mylib2"],
 			target: {
 				apex: {
@@ -7418,7 +7428,7 @@ func TestExcludeDependency(t *testing.T) {
 	ldFlags = ctx.ModuleForTests("mylib", "android_arm64_armv8-a_shared_apex10000").Rule("ld").Args["libFlags"]
 	ensureNotContains(t, ldFlags, "mylib2/android_arm64_armv8-a_shared_apex10000/mylib2.so")
 
-	// It shouldn't appear in the copy cmd as well.
+	// It shouldn't appear in the copy cmd either.
 	copyCmds := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexRule").Args["copy_commands"]
 	ensureNotContains(t, copyCmds, "image.apex/lib64/mylib2.so")
 }

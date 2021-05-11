@@ -152,7 +152,7 @@ sdk_snapshot {
 }
 `),
 		checkAllCopyRules(`
-.intermediates/mybootlib/android_common/javac/mybootlib.jar -> java/mybootlib.jar
+.intermediates/mybootlib/android_common_apex10000/javac/mybootlib.jar -> java/mybootlib.jar
 `),
 		snapshotTestPreparer(checkSnapshotWithoutSource, prepareWithPrebuiltApex),
 		snapshotTestPreparer(checkSnapshotWithSourcePreferred, prepareWithPrebuiltApex),

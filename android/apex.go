@@ -515,6 +515,32 @@ func mergeApexVariations(ctx PathContext, apexInfos []ApexInfo) (merged []ApexIn
 	return merged, aliases
 }
 
+// requiresDefaultPlatformApexVariant determines whether the module needs a default/platform APEX
+// variant.
+func requiresDefaultPlatformApexVariant(mctx BaseModuleContext, apexInfos []ApexInfo, module ApexModule) bool {
+	// If there is more than one APEX variant then a default variation is needed as there is no way
+	// to determine which of the variants should be the default.
+	if len(apexInfos) > 1 {
+		return true
+	}
+
+	// If the module is a host variant then a default variant is needed so that it can generate
+	// AndroidMk entries to make them available to Make. e.g. this is needed for tools used by make
+	// like dex2oat.
+	if mctx.Host() {
+		return true
+	}
+
+	// If the module explicitly requests a platform variant then it is obviously needed.
+	// The value returned from NotAvailableForPlatform() does also take this into account but
+	if module.AvailableFor(AvailableToPlatform) {
+		return true
+	}
+
+	// Otherwise, do not create one if it is not needed.
+	return !module.NotAvailableForPlatform()
+}
+
 // CreateApexVariations mutates a given module into multiple apex variants each of which is for an
 // apexBundle (and/or the platform) where the module is part of.
 func CreateApexVariations(mctx BottomUpMutatorContext, module ApexModule) []Module {
@@ -552,23 +578,42 @@ func CreateApexVariations(mctx BottomUpMutatorContext, module ApexModule) []Modu
 	base.ApexProperties.DirectlyInAnyApex = inApex == directlyInApex
 
 	defaultVariation := ""
+
+	// Check to see whether to create a default variant or use an alias.
+	var variations []string
+	if requiresDefaultPlatformApexVariant(mctx, apexInfos, module) {
+		// Add the default variation to the start of the list of variations.
+		variations = []string{defaultVariation}
+	} else {
+		// No additional variations needed.
+		variations = []string{}
+
+		// Add an alias from the default variation to the sole apex variation.
+		soleApexVariation := apexInfos[0].ApexVariationName
+		aliases = append(aliases, [2]string{"", soleApexVariation})
+	}
+
+	// If dependencies of this module don't have the same apex variation as this module then use its
+	// default variation.
 	mctx.SetDefaultDependencyVariation(&defaultVariation)
 
-	variations := []string{defaultVariation}
 	for _, a := range apexInfos {
 		variations = append(variations, a.ApexVariationName)
 	}
 	modules := mctx.CreateVariations(variations...)
+	apexInfoIndex := 0
 	for i, mod := range modules {
-		platformVariation := i == 0
+		platformVariation := variations[i] == defaultVariation
 		if platformVariation && !mctx.Host() && !mod.(ApexModule).AvailableFor(AvailableToPlatform) {
-			// Do not install the module for platform, but still allow it to output
-			// uninstallable AndroidMk entries in certain cases when they have side
-			// effects.  TODO(jiyong): move this routine to somewhere else
+			// Do not install the module for platform, but still allow it to output uninstallable
+			// AndroidMk entries in certain cases when they have side effects. e.g. making tools like
+			// dex2oat available for use in make.
+			// TODO(jiyong): move this routine to somewhere else
 			mod.MakeUninstallable()
 		}
 		if !platformVariation {
-			mctx.SetVariationProvider(mod, ApexInfoProvider, apexInfos[i-1])
+			mctx.SetVariationProvider(mod, ApexInfoProvider, apexInfos[apexInfoIndex])
+			apexInfoIndex += 1
 		}
 	}
 
