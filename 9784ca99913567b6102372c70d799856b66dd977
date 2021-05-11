@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "00075116_456f885e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-11T18:07:35Z",
+      "side": 1,
+      "message": "Stubs libraries are generally marked as not installable, would checking for that work here?",
+      "parentUuid": "576560d4_b784f704",
+      "revId": "9784ca99913567b6102372c70d799856b66dd977",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "19520adf_3c13c8ae",
         "filename": "android/deptag.go",
         "patchSetId": 1
