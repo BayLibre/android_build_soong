@@ -94,6 +94,12 @@ func dumpMakeVars(ctx Context, config Config, goals, vars []string, write_soong_
 	cmd.Environment.Set("CALLED_FROM_SETUP", "true")
 	if write_soong_vars {
 		cmd.Environment.Set("WRITE_SOONG_VARIABLES", "true")
+		if config.integratedBp2build() {
+			cmd.Environment.Set("WRITE_BAZEL_VARIABLES", "true")
+			fmt.Println("WRITE_BAZEL_VARIABLES")
+		} else {
+			fmt.Println("do _NOT_ WRITE_BAZEL_VARIABLES")
+		}
 	}
 	cmd.Environment.Set("DUMP_MANY_VARS", strings.Join(vars, " "))
 	if tmpDir != "" {

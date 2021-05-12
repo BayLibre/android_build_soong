@@ -922,6 +922,11 @@ func (c *configImpl) bazelBuildMode() bazelBuildMode {
 	}
 }
 
+func (c *configImpl) integratedBp2build() bool {
+	buildMode := c.bazelBuildMode()
+	return (buildMode == mixedBuild) || (buildMode == generateBuildFiles)
+}
+
 func (c *configImpl) StartRBE() bool {
 	if !c.UseRBE() {
 		return false
