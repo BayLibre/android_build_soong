@@ -16,6 +16,24 @@
       "message": "Not sure if you\u0027re going ahead with this one?",
       "revId": "5bcdb297a9bb1f8eefa706f83138f988bdfb9228",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ae697a4_18079feb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-05-12T15:04:53Z",
+      "side": 1,
+      "message": "Still want to; given the discussion earlier this week, I think it\u0027s the most pragmatic option at this point",
+      "parentUuid": "fb18a3b3_07bafabd",
+      "revId": "5bcdb297a9bb1f8eefa706f83138f988bdfb9228",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
