@@ -536,7 +536,13 @@ func isZero(value reflect.Value) bool {
 }
 
 func escapeString(s string) string {
-	s = strings.ReplaceAll(s, "\\", "\\\\")
+	// Replace all backslashes with escaped backslashes.
+	s = strings.ReplaceAll(s, `\`, `\\`)
+
+	// Replace all quotes in the string with an escaped quote, and escape the backslash itself.
+	// This ensures that the actual quote character is passed through 2 levels of quoting,
+	// which is in the case for copts.
+	s = strings.ReplaceAll(s, `"`, `\\\"`)
 
 	// b/184026959: Reverse the application of some common control sequences.
 	// These must be generated literally in the BUILD file.
@@ -544,7 +550,7 @@ func escapeString(s string) string {
 	s = strings.ReplaceAll(s, "\n", "\\n")
 	s = strings.ReplaceAll(s, "\r", "\\r")
 
-	return strings.ReplaceAll(s, "\"", "\\\"")
+	return s
 }
 
 func makeIndent(indent int) string {
