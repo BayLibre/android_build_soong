@@ -16,6 +16,24 @@
       "message": "The platform variant was required for this case:\n\nlibfoo is included in the APEX com.android.foo. It is only available to the APEX, however the platform has dependencies to libfoo, because libfoo has a stable C interface.\n\nThen the platform variant of libfoo is mutated (by the version mutator) to provide the stub variant.\n\nIf mutation by the version mutator is done only for the platform variant, we need to fix there too, because we won\u0027t have the platform variant (alias doesn\u0027t change the identity of the module; i.e. IsForPlatform() will return false). If not, I think this is fine.",
       "revId": "a3378371dcb4d0e146116534b31152441fe7a16d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f1863fc_f615c71f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-12T16:06:53Z",
+      "side": 1,
+      "message": "I realized that I broke some tests. I forgot that when a test panics that it aborts processing of all tests in that package so I just fixed what I thought was the only test failure and uploaded but there were other failures.\n\nSome of those other failing tests seem related to this issue. Although I can\u0027t quite see how the lack of a platform variant is changing the behavior of the version mutators.\n\nIt seems to me that we are overloading \"platform variant\" to mean a number of different things:\n1. An actual different variant of the module that becomes part of the platform.\n2. The stubs for a module that is part of an APEX and is used by the platform but is not itself part of the platform.\n3. To make a module usable from within make.\n\nSo, a module that is part of an APEX and provides stubs cannot also be part of the platform. Which is probably a good thing but it is a little confusing.\n\nI will take a look and see if I can fix this.",
+      "parentUuid": "400d3419_53740af7",
+      "revId": "a3378371dcb4d0e146116534b31152441fe7a16d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
