@@ -16,6 +16,24 @@
       "message": "(I also updated the commit message to quite libc_tzcode\u0027s module in Android.bp better)\n\nLet me see if I understand it correctly: the macro WILDABBR is supposed to be replaced with \"\", which in Blueprint requires one level of quoting, so it\u0027s \"-DWILDABBR\u003d\\\"\\\"\",\n\nWhy is that different in Starlark?",
       "revId": "22af8d6df804903e52608fb92d7b69e6d3879c94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1405bb0d_0e14b75a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-12T09:07:46Z",
+      "side": 1,
+      "message": "Your understanding is correct. Before this change, the copt is\n\n  \"-DWILDABBR\u003d\\\"\\\"\",\n\nin Starlark, which becomes:\n\n  \u0027-DWILDABBR\u003d\u0027\n\non the command line.\n\nAfter this change, it becomes\n\n  \"-DWILDABBR\u003d\\\\\\\"\\\\\\\"\" \n\nin Starlark becomes:\n\n  \u0027-DWILDABBR\u003d\"\"\u0027 \n\non the command line.\n\nI suppose it undergoes a second level of quoting when being constructed for the command line, which is significant here, at least for copts.\n\nI\u0027m still trying to figure out if this is something true for all string attrs, or should it be special cased when generating copts/linkopts in BUILD files.",
+      "parentUuid": "1dfbcdfc_e80c2766",
+      "revId": "22af8d6df804903e52608fb92d7b69e6d3879c94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77caf57e_4c36a9ca",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-12T09:07:46Z",
+      "side": 1,
+      "message": "Yes - making it a string literal so it\u0027s clearer.",
+      "parentUuid": "ea1ea7ea_9211aa95",
+      "range": {
+        "startLine": 547,
+        "startChar": 34,
+        "endLine": 547,
+        "endChar": 38
+      },
+      "revId": "bb1c8e795dd59012e63a711f41ab3ed2d8edf756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b0d8a53_5f1a8786",
         "filename": "bp2build/build_conversion.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-12T07:02:08Z",
       "side": 1,
       "message": "nit: mind adding a comment as to why one needs seven (if I count correctly) backslashes?",
+      "range": {
+        "startLine": 548,
+        "startChar": 36,
+        "endLine": 548,
+        "endChar": 46
+      },
+      "revId": "bb1c8e795dd59012e63a711f41ab3ed2d8edf756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4516506_db1e23af",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-12T09:07:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b0d8a53_5f1a8786",
       "range": {
         "startLine": 548,
         "startChar": 36,
