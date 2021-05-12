@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b2820d1_525342a0",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T06:53:44Z",
+      "side": 1,
+      "message": "nit: typo (\"independent *of* the\", if my English grammar is not failing me)",
+      "range": {
+        "startLine": 309,
+        "startChar": 60,
+        "endLine": 309,
+        "endChar": 62
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42a6de3b_3c8c1e3d",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T06:53:44Z",
+      "side": 1,
+      "message": "nit: maybe add a comment as to why this is a []string as opposed to just a simple string?",
+      "range": {
+        "startLine": 314,
+        "startChar": 19,
+        "endLine": 314,
+        "endChar": 27
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "578f97d0_2e2e3a23",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T06:53:44Z",
+      "side": 1,
+      "message": "this is greedy and thus when given input like\n\n${out ${in} }\n\n$1 will be \"out ${in}\"\n\nand with ${one} ${two}, it will be \"one} ${two\".\n\nEither use the non-greedy version .+? or exclude closing braces with [^}]+ or even just allow alphanumeric characters with [a-zA-Z0-9_]+ .",
+      "range": {
+        "startLine": 333,
+        "startChar": 30,
+        "endLine": 333,
+        "endChar": 31
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5d5469f_df6cd275",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T06:53:44Z",
+      "side": 1,
+      "message": "Not that I have a problem with the slice-based approach, but I don\u0027t understand why the map would be more complex. It thought all you need is something like\n\nvariable :\u003d \u003cfind the name of the variable\u003e\nif _, ok :\u003d seenMap[variable]; ok {\n  panic(\"stack overflow\")\n}\nseenMap[variable] \u003d true\nvariableValue :\u003d expand(exportedVars[variable], seenMap)\ndelete(seenMap, variable)\n\nand that would be simpler (at least you wouldn\u0027t need to implement linear search yourself...)",
+      "range": {
+        "startLine": 340,
+        "startChar": 34,
+        "endLine": 340,
+        "endChar": 56
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9142c695_e0e90e7e",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T06:53:44Z",
+      "side": 1,
+      "message": "nit: why not expandVar :\u003d instead of var ?\n\n(also, since the logic is somewhat elaborate, you probably want to extract it into a top-level function for better testability? After all, AFAIU you theoretically need to be able to expand everything Ninja does...)",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 4
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd9828d5_76238dee",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T06:53:44Z",
+      "side": 1,
+      "message": "nit: if you use r.FindStringSubmatch() instead, you get the name of the variable \"for free\" instead of having to call ReplaceAllString()",
+      "range": {
+        "startLine": 346,
+        "startChar": 7,
+        "endLine": 346,
+        "endChar": 18
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e96019b3_33b81bed",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T06:53:44Z",
+      "side": 1,
+      "message": "nit:\n\nif !r.MatchString(toExpand) {\n  return []string{toExpand}\n}\n\nlets you avoid a level of indentation",
+      "range": {
+        "startLine": 346,
+        "startChar": 2,
+        "endLine": 346,
+        "endChar": 4
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89296334_251c3cb7",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T06:53:44Z",
+      "side": 1,
+      "message": "Does this work if the input is like \"${foo} ${bar}\"? It looks like this function does at most one expansion. I kinda expected to see something like this:\n\nfunc expand(in string) string {\n  if !r.MatchString() {\n    return in\n  }\n\n  return expand(substituteFirstMatch(in))\n}\n\nwhich is the easiest way to do a full expansion",
+      "range": {
+        "startLine": 363,
+        "startChar": 2,
+        "endLine": 363,
+        "endChar": 12
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
