@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "044a3e11_b5747267",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-12T14:53:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b2820d1_525342a0",
+      "range": {
+        "startLine": 309,
+        "startChar": 60,
+        "endLine": 309,
+        "endChar": 62
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42a6de3b_3c8c1e3d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-12T06:53:44Z",
       "side": 1,
       "message": "nit: maybe add a comment as to why this is a []string as opposed to just a simple string?",
+      "range": {
+        "startLine": 314,
+        "startChar": 19,
+        "endLine": 314,
+        "endChar": 27
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85b2b8f1_5c99ea32",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-12T14:53:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42a6de3b_3c8c1e3d",
       "range": {
         "startLine": 314,
         "startChar": 19,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c15ca7c_31bfbde2",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-12T14:53:24Z",
+      "side": 1,
+      "message": "nice catch, I switched it to the alphanumeric regex.",
+      "parentUuid": "578f97d0_2e2e3a23",
+      "range": {
+        "startLine": 333,
+        "startChar": 30,
+        "endLine": 333,
+        "endChar": 31
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5d5469f_df6cd275",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ac452b0_056e185a",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-12T14:53:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5d5469f_df6cd275",
+      "range": {
+        "startLine": 340,
+        "startChar": 34,
+        "endLine": 340,
+        "endChar": 56
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9142c695_e0e90e7e",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-05-12T06:53:44Z",
       "side": 1,
       "message": "nit: why not expandVar :\u003d instead of var ?\n\n(also, since the logic is somewhat elaborate, you probably want to extract it into a top-level function for better testability? After all, AFAIU you theoretically need to be able to expand everything Ninja does...)",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 4
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b3ade77_21b590dd",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-12T14:53:24Z",
+      "side": 1,
+      "message": "`expandVar :\u003d` doesn\u0027t work because it\u0027s a recursive function, so it needs to be declared with `var` first. I refactored this to a top level function with an internal recursive function for better testing.",
+      "parentUuid": "9142c695_e0e90e7e",
       "range": {
         "startLine": 343,
         "startChar": 1,
@@ -162,6 +282,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cef0f09_47af308e",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-12T14:53:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e96019b3_33b81bed",
+      "range": {
+        "startLine": 346,
+        "startChar": 2,
+        "endLine": 346,
+        "endChar": 4
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5f91bfc_73170c6e",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-12T14:53:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd9828d5_76238dee",
+      "range": {
+        "startLine": 346,
+        "startChar": 7,
+        "endLine": 346,
+        "endChar": 18
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89296334_251c3cb7",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-05-12T06:53:44Z",
       "side": 1,
       "message": "Does this work if the input is like \"${foo} ${bar}\"? It looks like this function does at most one expansion. I kinda expected to see something like this:\n\nfunc expand(in string) string {\n  if !r.MatchString() {\n    return in\n  }\n\n  return expand(substituteFirstMatch(in))\n}\n\nwhich is the easiest way to do a full expansion",
+      "range": {
+        "startLine": 363,
+        "startChar": 2,
+        "endLine": 363,
+        "endChar": 12
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "484a420f_4cf1bc1d",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-12T14:53:24Z",
+      "side": 1,
+      "message": "Just added some logic and a test to support that, it works now.",
+      "parentUuid": "89296334_251c3cb7",
       "range": {
         "startLine": 363,
         "startChar": 2,

@@ -70,6 +70,24 @@
       "parentUuid": "2b4ca462_b8cca87b",
       "revId": "05f9aec65da8535486642d7697c86cdc4236ebae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3898506d_c2deb401",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-12T14:53:24Z",
+      "side": 1,
+      "message": "Yep, added a test for expandVar. I\u0027ll leave the aquery/toolchain test as a follow up.",
+      "parentUuid": "ab2088fc_c5f8f980",
+      "revId": "05f9aec65da8535486642d7697c86cdc4236ebae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
