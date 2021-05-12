@@ -75,6 +75,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e4f89f4_2e273965",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-05-12T17:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfbe30f7_f6e7865c",
+      "range": {
+        "startLine": 831,
+        "startChar": 6,
+        "endLine": 831,
+        "endChar": 9
+      },
+      "revId": "65aa000b264a4c548da17d458a39d05c29ec8dd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59fbd237_f1a8ab9e",
@@ -98,6 +122,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66486f5e_80ba07bf",
+        "filename": "cc/snapshot_utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-05-12T17:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59fbd237_f1a8ab9e",
+      "range": {
+        "startLine": 26,
+        "startChar": 17,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "65aa000b264a4c548da17d458a39d05c29ec8dd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4004e610_0e6929eb",
@@ -111,6 +159,30 @@
       "writtenOn": "2021-04-23T02:59:44Z",
       "side": 1,
       "message": "Consider using above function for readability",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 54
+      },
+      "revId": "65aa000b264a4c548da17d458a39d05c29ec8dd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "497e410e_972da8e0",
+        "filename": "cc/snapshot_utils.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-05-12T17:14:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4004e610_0e6929eb",
       "range": {
         "startLine": 34,
         "startChar": 1,
