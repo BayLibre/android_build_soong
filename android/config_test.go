@@ -36,7 +36,7 @@ func validateConfigAnnotations(configurable jsonConfigurable) (err error) {
 					"Did you mean to use an annotation of %q?\n"+
 					"(Alternatively, to change the json name of the field, rename the field in source instead.)",
 					reflectType.Name(), field.Name, field.Tag, jsonTag, ","+jsonTag)
-			} else {
+			} else if jsonTag != "-" {
 				// Although this rename was probably intentional,
 				// a json annotation is still more confusing than renaming the source variable
 				requestedName := strings.Split(jsonTag, ",")[0]
