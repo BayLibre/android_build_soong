@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca4ba18c_aac1130d",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-12T16:59:28Z",
+      "side": 1,
+      "message": "can you add a comment (in a followup is ok) about why we\u0027re putting the same content in both BUILD and constants.bzl?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 95
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "642ce48e_4743eb01",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-12T16:59:28Z",
+      "side": 1,
+      "message": "are these obsolete with CreateSoongInjectionFiles?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 96
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e988ed9_99c6a4a1",
         "filename": "cc/config/bp2build.go",
         "patchSetId": 14
@@ -151,6 +197,29 @@
         "startChar": 1,
         "endLine": 22,
         "endChar": 10
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae2b307a_89bbbc75",
+        "filename": "cc/config/bp2build_test.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-12T16:59:28Z",
+      "side": 1,
+      "message": "nit: appears to be the same for all the test cases -- a more specific name would make it easier to see which one is failing or specify which case to run.",
+      "range": {
+        "startLine": 72,
+        "startChar": 8,
+        "endLine": 72,
+        "endChar": 25
       },
       "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
