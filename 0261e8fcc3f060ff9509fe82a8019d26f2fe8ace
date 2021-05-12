@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6472b0bd_1ab110e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T15:42:13Z",
+      "side": 1,
+      "message": "Thanks for your patience!",
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e988ed9_99c6a4a1",
+        "filename": "cc/config/bp2build.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T15:42:13Z",
+      "side": 1,
+      "message": "nit: this condition tests the regex engine, if I understand correctly so it\u0027s probably not necessary",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 23
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c49f60f_6d611683",
+        "filename": "cc/config/bp2build.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T15:42:13Z",
+      "side": 1,
+      "message": "This can happen in response to malformed used input. Is panicking appropriate in that case? (I don\u0027t know, maybe, but it look weird)",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 9
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b86c2cfa_157b85c7",
+        "filename": "cc/config/bp2build.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T15:42:13Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 129,
+        "startChar": 26,
+        "endLine": 129,
+        "endChar": 38
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78f9b37c_05d0c177",
+        "filename": "cc/config/bp2build.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T15:42:13Z",
+      "side": 1,
+      "message": "opt: alternatively, just remove the new value at the end (map copying can be expensive, although probably not for the \u003c2 elements that are expected here)",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 14
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86bd56b7_94a965c0",
+        "filename": "cc/config/bp2build.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T15:42:13Z",
+      "side": 1,
+      "message": "nit: true?",
+      "range": {
+        "startLine": 136,
+        "startChar": 21,
+        "endLine": 136,
+        "endChar": 32
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddb913d8_f6732e46",
+        "filename": "cc/config/bp2build_test.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T15:42:13Z",
+      "side": 1,
+      "message": "nit: maybe add some more creative cases testing e.g. the recursive variable check, things like ${${foo}}, etc.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 10
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

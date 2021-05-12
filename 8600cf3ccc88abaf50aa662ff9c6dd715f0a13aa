@@ -236,6 +236,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c66fa851_c3f49622",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T15:42:13Z",
+      "side": 1,
+      "message": "TIL that recursive functions need to be declared with var",
+      "parentUuid": "4b3ade77_21b590dd",
+      "range": {
+        "startLine": 343,
+        "startChar": 1,
+        "endLine": 343,
+        "endChar": 4
+      },
+      "revId": "8600cf3ccc88abaf50aa662ff9c6dd715f0a13aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd9828d5_76238dee",
