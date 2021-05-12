@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea1ea7ea_9211aa95",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T07:02:08Z",
+      "side": 1,
+      "message": "Is this replacement intended to be replaced again in the next line? (I don\u0027t quite understand what\u0027s happening here...)",
+      "range": {
+        "startLine": 547,
+        "startChar": 34,
+        "endLine": 547,
+        "endChar": 38
+      },
+      "revId": "bb1c8e795dd59012e63a711f41ab3ed2d8edf756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b0d8a53_5f1a8786",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T07:02:08Z",
+      "side": 1,
+      "message": "nit: mind adding a comment as to why one needs seven (if I count correctly) backslashes?",
+      "range": {
+        "startLine": 548,
+        "startChar": 36,
+        "endLine": 548,
+        "endChar": 46
+      },
+      "revId": "bb1c8e795dd59012e63a711f41ab3ed2d8edf756",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
