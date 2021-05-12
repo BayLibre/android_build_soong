@@ -16,6 +16,23 @@
       "message": "Colin, please take a look.",
       "revId": "df09d173cad6bf652dc949698e48824248d59373",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "204fe11e_7bdb7d33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-05-12T02:41:31Z",
+      "side": 1,
+      "message": "+Jaewoong for owner+1.",
+      "revId": "df09d173cad6bf652dc949698e48824248d59373",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
