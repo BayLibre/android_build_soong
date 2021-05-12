@@ -189,6 +189,7 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 	// Parse the list of copts.
 	parseCopts := func(baseCompilerProps *BaseCompilerProperties) []string {
 		copts := append([]string{}, baseCompilerProps.Cflags...)
+		copts = append(copts, baseCompilerProps.Cppflags...)
 		for _, dir := range parseLocalIncludeDirs(baseCompilerProps) {
 			copts = append(copts, includeFlag(dir))
 		}
