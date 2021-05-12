@@ -544,7 +544,9 @@ func escapeString(s string) string {
 	s = strings.ReplaceAll(s, "\n", "\\n")
 	s = strings.ReplaceAll(s, "\r", "\\r")
 
-	return strings.ReplaceAll(s, "\"", "\\\"")
+	s = strings.ReplaceAll(s, "\"", "\\\"")
+	s = strings.ReplaceAll(s, "\\\"", "\\\\\\\"")
+	return s
 }
 
 func makeIndent(indent int) string {

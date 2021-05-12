@@ -67,7 +67,23 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
     soong_module_variant = "",
     soong_module_deps = [
     ],
-    owner = "a_string_with\"quotes\"_and_\\backslashes\\\\",
+    owner = "a_string_with\\\"quotes\\\"_and_\\backslashes\\\\",
+)`,
+		},
+		{
+			bp: `custom {
+	name: "foo",
+	owner: "-DFOO=\"\"",
+}
+		`,
+			expectedBazelTarget: `soong_module(
+    name = "foo",
+    soong_module_name = "foo",
+    soong_module_type = "custom",
+    soong_module_variant = "",
+    soong_module_deps = [
+    ],
+    owner = "-DFOO=\\\"\\\"",
 )`,
 		},
 		{
