@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40fc89ac_57ed7836",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-12T11:32:09Z",
+      "side": 1,
+      "message": "Actually, let\u0027s hold on to this change. It makes introducing bootclasspath_fragments to other apexes a bit more difficult and error-prone (with internal master having extra entries).\n\nI\u0027ll finish introducing new bootclasspath_Fragments, and then we can submit a revised version of this.",
+      "revId": "5a09cd9323054ae55792d876fa0ebdeb183e3f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
