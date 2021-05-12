@@ -16,6 +16,23 @@
       "message": "Update: I rebased this now that the GetArchProperties() refactoring is submitted. I\u0027ll only submit this when I understand why this breaks libdl; as per b/186650430#comment16, there is something odd going on with the set of source files for libdl and libdl_static.",
       "revId": "b939a9c54f5f7737e8354ca76105de9d53f2faf3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71a2d379_551a0793",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T10:39:09Z",
+      "side": 1,
+      "message": "Whoops, I somehow lost the local git branch and this is a merge conflict anyway. I uploaded this again as aosp/1705465 .",
+      "revId": "b939a9c54f5f7737e8354ca76105de9d53f2faf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
