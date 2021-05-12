@@ -16,6 +16,23 @@
       "message": "Do you have evidence that this change causes the breakage?",
       "revId": "41470867a6a00d558becdb159a4fc33cdc3637d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b7ed95_361ea94b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T14:27:29Z",
+      "side": 1,
+      "message": "Please do not submit this. It will not fix the underlying issue.",
+      "revId": "41470867a6a00d558becdb159a4fc33cdc3637d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
