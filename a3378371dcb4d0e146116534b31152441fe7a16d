@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "400d3419_53740af7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-12T13:10:06Z",
+      "side": 1,
+      "message": "The platform variant was required for this case:\n\nlibfoo is included in the APEX com.android.foo. It is only available to the APEX, however the platform has dependencies to libfoo, because libfoo has a stable C interface.\n\nThen the platform variant of libfoo is mutated (by the version mutator) to provide the stub variant.\n\nIf mutation by the version mutator is done only for the platform variant, we need to fix there too, because we won\u0027t have the platform variant (alias doesn\u0027t change the identity of the module; i.e. IsForPlatform() will return false). If not, I think this is fine.",
+      "revId": "a3378371dcb4d0e146116534b31152441fe7a16d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
