@@ -34,6 +34,24 @@
       "parentUuid": "1dfbcdfc_e80c2766",
       "revId": "22af8d6df804903e52608fb92d7b69e6d3879c94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47990d4e_ece54ac8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-12T09:32:27Z",
+      "side": 1,
+      "message": "Hehe. I should have known this. Here is why:\n\nhttps://github.com/bazelbuild/bazel/blob/c679d56c89931f14d7ff84b3e197922f3facac85/src/main/java/com/google/devtools/build/lib/rules/cpp/CppHelper.java#L136\n\nSo it looks like it\u0027s a better idea to add --features no_copts_tokenization to the global blazerc instead of trying to shell-escape copts (and yes, I tried, that fixes the quoting issue, although I only tried it in a little test project)",
+      "parentUuid": "1405bb0d_0e14b75a",
+      "revId": "22af8d6df804903e52608fb92d7b69e6d3879c94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
