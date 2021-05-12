@@ -16,6 +16,47 @@
       "message": "This change is needed to allow the replacement of a java_sdk_libs property on the sdk with a bootclasspath_fragments in a similar way to how you can with the apex.",
       "revId": "c9819edb682aa3872e98e73e4c9dc620ab5760fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dff44f4e_b4370e90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-12T15:33:39Z",
+      "side": 1,
+      "message": "I don\u0027t think I have enough context around sdk snapshots / sdk modules; but the change overall looks okay. Should this be reviewed by Martin?",
+      "revId": "c9819edb682aa3872e98e73e4c9dc620ab5760fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f40c6ada_96dc2e0b",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-12T15:33:39Z",
+      "side": 1,
+      "message": "\u003e Please remove the trailing whitespace.\n\nPlease fix.",
+      "parentUuid": "f1d1c093_2ac0f064",
+      "range": {
+        "startLine": 178,
+        "startChar": 20,
+        "endLine": 178,
+        "endChar": 21
+      },
+      "revId": "c9819edb682aa3872e98e73e4c9dc620ab5760fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
