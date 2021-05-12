@@ -34,6 +34,24 @@
       "parentUuid": "400d3419_53740af7",
       "revId": "a3378371dcb4d0e146116534b31152441fe7a16d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "295111be_3e2ae2d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-12T17:03:33Z",
+      "side": 1,
+      "message": "Ok, I managed to make use of the output from markPlatformAvailability to more correctly determine whether a platform variant is required. That addressed the issue with version stubs as well as bionic installs.",
+      "parentUuid": "5f1863fc_f615c71f",
+      "revId": "a3378371dcb4d0e146116534b31152441fe7a16d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
