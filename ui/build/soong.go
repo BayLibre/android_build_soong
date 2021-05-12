@@ -21,9 +21,11 @@ import (
 	"strconv"
 
 	"android/soong/shared"
+
 	"github.com/google/blueprint/deptools"
 
 	soong_metrics_proto "android/soong/ui/metrics/metrics_proto"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
 
@@ -206,8 +208,7 @@ func runSoong(ctx Context, config Config) {
 		}
 	}
 
-	buildMode := config.bazelBuildMode()
-	integratedBp2Build := (buildMode == mixedBuild) || (buildMode == generateBuildFiles)
+	integratedBp2Build := config.integratedBp2build()
 
 	// This is done unconditionally, but does not take a measurable amount of time
 	bootstrapBlueprint(ctx, config, integratedBp2Build)
