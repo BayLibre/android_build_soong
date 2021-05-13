@@ -126,40 +126,46 @@ const (
 )
 
 var (
-	// Do not write BUILD files for these directories
-	// NOTE: this is not recursive
-	bp2buildDoNotWriteBuildFileList = []string{
-		// Don't generate these BUILD files - because external BUILD files already exist
-		"external/boringssl",
-		"external/brotli",
-		"external/dagger2",
-		"external/flatbuffers",
-		"external/gflags",
-		"external/google-fruit",
-		"external/grpc-grpc",
-		"external/grpc-grpc/test/core/util",
-		"external/grpc-grpc/test/cpp/common",
-		"external/grpc-grpc/third_party/address_sorting",
-		"external/nanopb-c",
-		"external/nos/host/generic",
-		"external/nos/host/generic/libnos",
-		"external/nos/host/generic/libnos/generator",
-		"external/nos/host/generic/libnos_datagram",
-		"external/nos/host/generic/libnos_transport",
-		"external/nos/host/generic/nugget/proto",
-		"external/perfetto",
-		"external/protobuf",
-		"external/rust/cxx",
-		"external/rust/cxx/demo",
-		"external/ruy",
-		"external/tensorflow",
-		"external/tensorflow/tensorflow/lite",
-		"external/tensorflow/tensorflow/lite/java",
-		"external/tensorflow/tensorflow/lite/kernels",
-		"external/tflite-support",
-		"external/tinyalsa_new",
-		"external/wycheproof",
-		"external/libyuv",
+	// Keep any existing BUILD files (and do not generate new BUILD files) for these directories
+	// NOTE: This list is not recursive.
+	bp2buildKeepExistingBuildFileList = []string{
+		// This is actually build/bazel/build.BAZEL symlinked to ./BUILD
+		".",
+
+		"build/bazel/bazel_skylib",
+		"build/bazel/bazel_skylib/rules",
+		"build/bazel/examples/android_app/java/com/app",
+		"build/bazel/platforms",
+		"build/bazel/platforms/arch",
+		"build/bazel/platforms/os",
+		"build/bazel/product_variables",
+		"build/bazel/rules",
+		"build/bazel/rules_cc/cc",
+		"build/bazel/rules_cc/examples",
+		"build/bazel/tests/bionic",
+		"build/pesto/experiments/prepare_bazel_test_env",
+
+		// external/bazelbuild-rules_android/... is needed by mixed builds, otherwise mixed builds analysis fails
+		// e.g. ERROR: Analysis of target '@soong_injection//mixed_builds:buildroot' failed
+		"external/bazelbuild-rules_android/rules",
+		"external/bazelbuild-rules_android/rules/aar_import",
+		"external/bazelbuild-rules_android/rules/acls",
+		"external/bazelbuild-rules_android/rules/android_library",
+		"external/bazelbuild-rules_android/rules/android_packaged_resources",
+		"external/bazelbuild-rules_android/rules/flags",
+		"external/bazelbuild-rules_android/rules/platforms",
+		"external/bazelbuild-rules_android/rules/toolchains/emulator",
+		"external/bazelbuild-rules_android/test/rules/resources",
+		"external/bazelbuild-rules_android/toolchains/android",
+		"external/bazelbuild-rules_android/toolchains/android_sdk",
+		"external/bazelbuild-rules_android/toolchains/emulator",
+		"external/bazelbuild-rules_android/tools/android",
+		"external/bazelbuild-rules_android/tools/android/xslt",
+		"external/bazelbuild-rules_android/tools/jdk",
+
+		"prebuilts/clang/host/linux-x86",
+		"prebuilts/sdk",
+		"prebuilts/sdk/tools",
 	}
 
 	// Configure modules in these directories to enable bp2build_available: true or false by default.
@@ -218,6 +224,7 @@ var (
 		// libcxx
 		"libBionicBenchmarksUtils", // cc_library_static, fatal error: 'map' file not found, from libcxx
 		"fmtlib",                   // cc_library_static, fatal error: 'cassert' file not found, from libcxx
+		"fmtlib_ndk",               // cc_library_static, fatal error: 'cassert' file not found
 		"libbase",                  // http://b/186826479, cc_library, fatal error: 'memory' file not found, from libcxx
 
 		// http://b/186024507: Includes errors because of the system_shared_libs default value.
@@ -228,6 +235,9 @@ var (
 		"libseccomp_policy",      // http://b/186476753: cc_library, 'linux/filter.h' not found
 		"note_memtag_heap_async", // http://b/185127353: cc_library_static, error: feature.h not found
 		"note_memtag_heap_sync",  // http://b/185127353: cc_library_static, error: feature.h not found
+
+		"libjemalloc5",           // cc_library, ld.lld: error: undefined symbol: memset
+		"gwp_asan_crash_handler", // cc_library, ld.lld: error: undefined symbol: memset
 
 		// Tests. Handle later.
 		"libbionic_tests_headers_posix", // http://b/186024507, cc_library_static, sched.h, time.h not found
@@ -254,15 +264,16 @@ var (
 	}
 
 	// Used for quicker lookups
-	bp2buildDoNotWriteBuildFile = map[string]bool{}
-	bp2buildModuleDoNotConvert  = map[string]bool{}
-	bp2buildCcLibraryStaticOnly = map[string]bool{}
-	mixedBuildsDisabled         = map[string]bool{}
+	bp2buildKeepExistingBuildFile = map[string]bool{}
+	bp2buildModuleDoNotConvert    = map[string]bool{}
+	bp2buildCcLibraryStaticOnly   = map[string]bool{}
+	mixedBuildsDisabled           = map[string]bool{}
 )
 
 func init() {
-	for _, moduleName := range bp2buildDoNotWriteBuildFileList {
-		bp2buildDoNotWriteBuildFile[moduleName] = true
+
+	for _, moduleName := range bp2buildKeepExistingBuildFileList {
+		bp2buildKeepExistingBuildFile[moduleName] = true
 	}
 
 	for _, moduleName := range bp2buildModuleDoNotConvertList {
@@ -282,12 +293,8 @@ func GenerateCcLibraryStaticOnly(ctx BazelConversionPathContext) bool {
 	return bp2buildCcLibraryStaticOnly[ctx.Module().Name()]
 }
 
-func ShouldWriteBuildFileForDir(dir string) bool {
-	if _, ok := bp2buildDoNotWriteBuildFile[dir]; ok {
-		return false
-	} else {
-		return true
-	}
+func ShouldKeepExistingBuildFileForDir(dir string) bool {
+	return bp2buildKeepExistingBuildFile[dir]
 }
 
 // MixedBuildsEnabled checks that a module is ready to be replaced by a
