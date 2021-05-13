@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0151c5fa_9ff3df15",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-13T22:04:15Z",
+      "side": 1,
+      "message": "Uhh, I don\u0027t think any of our conversion tests deal with separate directories. That\u0027s probably an oversight...\n\nAnd it\u0027s also a good catch, because we\u0027re not doing the right thing in this CL -- I thought label conversion logic would identify that this was a label and thus resolve it as such, but I was mistaken.\n\nI\u0027ll need to fix this tomorrow; sorry about that.",
+      "parentUuid": "e865be1a_36b684fb",
+      "range": {
+        "startLine": 1017,
+        "startChar": 3,
+        "endLine": 1017,
+        "endChar": 14
+      },
+      "revId": "533130bbf8360c80769c372526fd1c938b834f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1a9e8ce_ffe1b388",
         "filename": "cc/bp2build.go",
         "patchSetId": 4
