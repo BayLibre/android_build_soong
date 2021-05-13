@@ -173,11 +173,18 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 	var srcs bazel.LabelListAttribute
 	var copts bazel.StringListAttribute
 
-	// Creates the -I flag for a directory, while making the directory relative
+	// Creates the -I flags for a directory, while making the directory relative
 	// to the exec root for Bazel to work.
-	includeFlag := func(dir string) string {
+	includeFlags := func(dir string) []string {
 		// filepath.Join canonicalizes the path, i.e. it takes care of . or .. elements.
-		return "-I" + filepath.Join(ctx.ModuleDir(), dir)
+		moduleDirRootedPath := filepath.Join(ctx.ModuleDir(), dir)
+		return []string{
+			"-I" + moduleDirRootedPath,
+			// Include the bindir-rooted path (using make variable substitution). This most
+			// closely matches Bazel's native include path handling, which allows for depedency
+			// on generated headers in these directories.
+			"-I$(BINDIR)/" + moduleDirRootedPath,
+		}
 	}
 
 	// Parse the list of module-relative include directories (-I).
@@ -197,7 +204,7 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 			copts = append(copts, strings.Split(flag, " ")...)
 		}
 		for _, dir := range parseLocalIncludeDirs(baseCompilerProps) {
-			copts = append(copts, includeFlag(dir))
+			copts = append(copts, includeFlags(dir)...)
 		}
 		return copts
 	}
@@ -215,6 +222,9 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 	parseSrcs := func(baseCompilerProps *BaseCompilerProperties) bazel.LabelList {
 		// Combine the base srcs and arch-specific srcs
 		allSrcs := append(baseSrcs, baseCompilerProps.Srcs...)
+		// Add srcs-like dependencies such as generated files.
+		allSrcs = append(allSrcs, baseCompilerProps.Generated_headers...)
+		allSrcs = append(allSrcs, baseCompilerProps.Generated_sources...)
 		// Combine the base exclude_srcs and configuration-specific exclude_srcs
 		allExcludeSrcs := append(baseExcludeSrcs, baseCompilerProps.Exclude_srcs...)
 		return android.BazelLabelForModuleSrcExcludes(ctx, allSrcs, allExcludeSrcs)
@@ -227,6 +237,8 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 
 			// Used for arch-specific srcs later.
 			baseSrcs = baseCompilerProps.Srcs
+			baseSrcs = append(baseSrcs, baseCompilerProps.Generated_sources...)
+			baseSrcs = append(baseSrcs, baseCompilerProps.Generated_headers...)
 			baseExcludeSrcs = baseCompilerProps.Exclude_srcs
 			baseSrcsLabelList = parseSrcs(baseCompilerProps)
 			break
@@ -237,9 +249,9 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 	// target has access to all headers recursively in the package, and has
 	// "-I<module-dir>" in its copts.
 	if c, ok := module.compiler.(*baseCompiler); ok && c.includeBuildDirectory() {
-		copts.Value = append(copts.Value, includeFlag("."))
+		copts.Value = append(copts.Value, includeFlags(".")...)
 	} else if c, ok := module.compiler.(*libraryDecorator); ok && c.includeBuildDirectory() {
-		copts.Value = append(copts.Value, includeFlag("."))
+		copts.Value = append(copts.Value, includeFlags(".")...)
 	}
 
 	for arch, props := range module.GetArchProperties(ctx, &BaseCompilerProperties{}) {

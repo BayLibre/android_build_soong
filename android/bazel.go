@@ -180,7 +180,6 @@ var (
 	bp2buildModuleDoNotConvertList = []string{
 		// Things that transitively depend on unconverted libc_* modules.
 		"libc_nopthread", // http://b/186821550, cc_library_static, depends on //bionic/libc:libc_bionic_ndk (http://b/186822256)
-		//                                                     also depends on //bionic/libc:libc_tzcode (http://b/186822591)
 		//                                                     also depends on //bionic/libc:libstdc++ (http://b/186822597)
 		"libc_common",        // http://b/186821517, cc_library_static, depends on //bionic/libc:libc_nopthread (http://b/186821550)
 		"libc_common_static", // http://b/186824119, cc_library_static, depends on //bionic/libc:libc_common (http://b/186821517)
@@ -245,6 +244,7 @@ var (
 	// Per-module denylist to opt modules out of mixed builds. Such modules will
 	// still be generated via bp2build.
 	mixedBuildsDisabledList = []string{
+		"libc_bionic_ndk",                  // cparsons@, http://b/183213331, Handle generated headers in mixed builds.
 		"libc_netbsd",                      // lberki@, cc_library_static, version script assignment of 'LIBC_PRIVATE' to symbol 'SHA1Final' failed: symbol not defined
 		"libc_openbsd",                     // ruperts@, cc_library_static, OK for bp2build but error: duplicate symbol: strcpy for mixed builds
 		"libsystemproperties",              // cparsons@, cc_library_static, wrong include paths
