@@ -476,6 +476,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a03a41de_25510c2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-05-13T10:33:08Z",
+      "side": 1,
+      "message": "When an SDK extension version is finalized, all the modules will be finalized to that version.",
+      "parentUuid": "daa5b426_76c2d69a",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "defd345f0ebda7b433fd0b8d59a5ac0d0493c5d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6feed57_976e4998",
