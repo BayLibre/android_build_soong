@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15321b2f_78af0086",
+        "filename": "cc/test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2021-05-13T04:54:45Z",
+      "side": 1,
+      "message": "We might need a check to make sure Test_min_shipping_api_level is not set if Test_vsr_min_shipping_api_level is set.",
+      "revId": "b63836ed3dfea722b617abbe3458f8d658c47c6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
