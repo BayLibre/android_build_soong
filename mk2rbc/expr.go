@@ -231,7 +231,7 @@ func (eq *eqExpr) eval(valueMap map[string]starlarkExpr) (res starlarkExpr, same
 }
 
 func (eq *eqExpr) emit(gctx *generationContext) {
-	// Special case: one operand empty, the other is variable reference
+	// Are we checking that a variable is empty?
 	var v variable
 	if s, ok := maybeString(eq.left); ok && s == "" {
 		if vref, ok := eq.right.(*variableRefExpr); ok {
@@ -243,13 +243,15 @@ func (eq *eqExpr) emit(gctx *generationContext) {
 		}
 	}
 	if v != nil {
+		// Yes.
 		if eq.isEq {
 			gctx.write(" not ")
 		}
-		v.emitDefined(gctx)
-		// TODO(asmundak): should we also check that the value is the default value?
+		v.emitGet(gctx, v.isPreset())
 		return
 	}
+
+	// General case
 	eq.left.emit(gctx)
 	if eq.isEq {
 		gctx.write(" == ")

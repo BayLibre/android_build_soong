@@ -401,7 +401,7 @@ def init(g, handle):
   cfg = rblf.cfg(handle)
   if "aosp" == g["TARGET_PRODUCT"]:
     pass
-  elif g.get("TARGET_PRODUCT") != None:
+  elif g["TARGET_PRODUCT"]:
     pass
 `,
 	},
@@ -438,7 +438,7 @@ def init(g, handle):
     else:
       cfg["PRODUCT_PACKAGES"] = ["pack-if-else"]
     cfg["PRODUCT_PACKAGES"] = ["pack-if"]
-  elif g.get("TARGET_PRODUCT") != None:
+  elif g["TARGET_PRODUCT"]:
     cfg["PRODUCT_PACKAGES"] = ["pack-elif"]
   else:
     cfg["PRODUCT_PACKAGES"] = ["pack-else"]
