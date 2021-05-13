@@ -93,6 +93,30 @@
       },
       "revId": "533130bbf8360c80769c372526fd1c938b834f12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c73b0951_d0ccdaba",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-13T21:37:35Z",
+      "side": 1,
+      "message": "What about a cc_toolchain_feature using iterate_over? https://docs.bazel.build/versions/master/cc-toolchain-config-reference.html#flag-groups",
+      "parentUuid": "5d2a3f9a_f673ebf8",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 40
+      },
+      "revId": "533130bbf8360c80769c372526fd1c938b834f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
