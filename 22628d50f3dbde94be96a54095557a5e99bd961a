@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c89951a_3c8d51e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-05-13T13:58:00Z",
+      "side": 1,
+      "message": "Ok, I\u0027m not sure keen on using env vars for this but it\u0027s pragmatic as you say.\n\nFWIW I updated aosp/1697682 to make it optional per sdk target, but I don\u0027t think that\u0027s the right solution (we want srcjars in art too for the prebuilt drop automation)\n\nLet\u0027s get this in.",
+      "revId": "22628d50f3dbde94be96a54095557a5e99bd961a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
