@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c1ef0be_eba42bb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-13T20:11:25Z",
+      "side": 1,
+      "message": "For my part I\u0027m a bit hazy on the differences between java_boot_libs and java_sdk_libs, but from an SDK snapshot perspective it looks fine.",
+      "parentUuid": "dff44f4e_b4370e90",
+      "revId": "c9819edb682aa3872e98e73e4c9dc620ab5760fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f40c6ada_96dc2e0b",
