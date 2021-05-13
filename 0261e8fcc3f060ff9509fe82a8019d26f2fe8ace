@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9713c304_7d565fb4",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-13T06:16:16Z",
+      "side": 1,
+      "message": "This can just be an empty string. Fixed.",
+      "parentUuid": "ca4ba18c_aac1130d",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 95
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "642ce48e_4743eb01",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-12T16:59:28Z",
       "side": 1,
       "message": "are these obsolete with CreateSoongInjectionFiles?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 96
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "125b0381_0522138b",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-13T06:16:16Z",
+      "side": 1,
+      "message": "Oops, no, deleted.",
+      "parentUuid": "642ce48e_4743eb01",
       "range": {
         "startLine": 55,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdd64a0f_28674006",
+        "filename": "cc/config/bp2build.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-13T06:16:16Z",
+      "side": 1,
+      "message": "I\u0027ll keep this for now, instead of something else happening that may cause an index-out-of-bounds error.",
+      "parentUuid": "9e988ed9_99c6a4a1",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 116,
+        "endChar": 23
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c49f60f_6d611683",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-05-12T15:42:13Z",
       "side": 1,
       "message": "This can happen in response to malformed used input. Is panicking appropriate in that case? (I don\u0027t know, maybe, but it look weird)",
+      "range": {
+        "startLine": 128,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 9
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e7c867c_b191bfc5",
+        "filename": "cc/config/bp2build.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-13T06:16:16Z",
+      "side": 1,
+      "message": "To be honest, I\u0027m not sure, but panicking and printing a stack trace is better than not doing so, at least at this point?",
+      "parentUuid": "7c49f60f_6d611683",
       "range": {
         "startLine": 128,
         "startChar": 4,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76bb52bc_d69cbfba",
+        "filename": "cc/config/bp2build.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-13T06:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b86c2cfa_157b85c7",
+      "range": {
+        "startLine": 129,
+        "startChar": 26,
+        "endLine": 129,
+        "endChar": 38
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78f9b37c_05d0c177",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-05-12T15:42:13Z",
       "side": 1,
       "message": "opt: alternatively, just remove the new value at the end (map copying can be expensive, although probably not for the \u003c2 elements that are expected here)",
+      "range": {
+        "startLine": 134,
+        "startChar": 3,
+        "endLine": 134,
+        "endChar": 14
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69954911_70505482",
+        "filename": "cc/config/bp2build.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-13T06:16:16Z",
+      "side": 1,
+      "message": "I\u0027ll go with map copying for now, it\u0027s very unlikely we\u0027ll have deep trees based on existing variables.",
+      "parentUuid": "78f9b37c_05d0c177",
       "range": {
         "startLine": 134,
         "startChar": 3,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "847dfe92_d54a0a2f",
+        "filename": "cc/config/bp2build.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-13T06:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86bd56b7_94a965c0",
+      "range": {
+        "startLine": 136,
+        "startChar": 21,
+        "endLine": 136,
+        "endChar": 32
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddb913d8_f6732e46",
@@ -202,6 +370,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e043308_e00f7394",
+        "filename": "cc/config/bp2build_test.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-13T06:16:16Z",
+      "side": 1,
+      "message": "Will handle in a follow up.",
+      "parentUuid": "ddb913d8_f6732e46",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 10
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae2b307a_89bbbc75",
@@ -215,6 +407,30 @@
       "writtenOn": "2021-05-12T16:59:28Z",
       "side": 1,
       "message": "nit: appears to be the same for all the test cases -- a more specific name would make it easier to see which one is failing or specify which case to run.",
+      "range": {
+        "startLine": 72,
+        "startChar": 8,
+        "endLine": 72,
+        "endChar": 25
+      },
+      "revId": "0261e8fcc3f060ff9509fe82a8019d26f2fe8ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58a46e94_3998780c",
+        "filename": "cc/config/bp2build_test.go",
+        "patchSetId": 14
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-13T06:16:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae2b307a_89bbbc75",
       "range": {
         "startLine": 72,
         "startChar": 8,
