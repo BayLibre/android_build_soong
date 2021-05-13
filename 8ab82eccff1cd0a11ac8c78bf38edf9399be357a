@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b733641_faa3ca99",
+        "filename": "android/bazel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-13T12:50:52Z",
+      "side": 1,
+      "message": "This seems potentially brittle and tedious towards external changes. Could you do something similar here like in bp2buildDefaultConfig, and use a toggle between recursively allowing everything below it vs just that directory? That would shorten this list to:\n\nNon-recursive:\n.\nprebuilts/clang/host/linux-x86\nprebuilts/sdk\nprebuilts/sdk/tools\n\nRecursive:\nbuild/bazel\nbuild/pesto\nexternal/bazelbuild-rules_android\n\nAre there cases where that wouldn\u0027t be feasible?",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 146,
+        "endChar": 49
+      },
+      "revId": "8ab82eccff1cd0a11ac8c78bf38edf9399be357a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ccd107_24ff63c0",
+        "filename": "android/bazel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-13T12:50:52Z",
+      "side": 1,
+      "message": "Just return this?",
+      "range": {
+        "startLine": 296,
+        "startChar": 13,
+        "endLine": 296,
+        "endChar": 47
+      },
+      "revId": "8ab82eccff1cd0a11ac8c78bf38edf9399be357a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
