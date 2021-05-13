@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e865be1a_36b684fb",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-13T21:04:29Z",
+      "side": 1,
+      "message": "can we also add a test where the genrule is in a separate directory?",
+      "range": {
+        "startLine": 1017,
+        "startChar": 3,
+        "endLine": 1017,
+        "endChar": 14
+      },
+      "revId": "533130bbf8360c80769c372526fd1c938b834f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a9e8ce_ffe1b388",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-13T21:04:29Z",
+      "side": 1,
+      "message": "Are we going to expect all developers to add this to their BUILD files?",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 40
+      },
+      "revId": "533130bbf8360c80769c372526fd1c938b834f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
