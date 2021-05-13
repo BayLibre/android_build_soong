@@ -16,6 +16,24 @@
       "message": "My local mixed_droid-clean build is failing:\n\n[  8% 1172/13735] target SharedLib: libjni_jpegutil (out/target/product/generic/obj/SHARED_LIBRARIES/li\nFAILED: out/target/product/generic/obj/SHARED_LIBRARIES/libjni_jpegutil_intermediates/LINKED/libjni_jpegutil.so\n/bin/bash -c \"prebuilts/clang/host/linux-x86/clang-r416183b/bin/clang++ -nostdlib -Wl,-soname,libjni_jpegutil.so -Wl,--gc-sections -shared out/bazel/output/execroot/__main__/bazel-out/k8-fastbuild-ST-a23e66259245/bin/bionic/libc/crtbegin_so.o out/target/product/generic/obj/SHARED_LIBRARIES/libjni_jpegutil_intermediates/jpegutil.o out/target/product/generic/obj/SHARED_LIBRARIES/libjni_jpegutil_intermediates/jpegutilnative.o -Wl,--whole-archive  -Wl,--no-whole-archive   out/target/product/generic/obj/STATIC_LIBRARIES/libjpeg_static_ndk.sdk_intermediates/libjpeg_static_ndk.sdk.a prebuilts/ndk/current/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a/libc++_static.a prebuilts/ndk/current/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a/libc++abi.a prebuilts/ndk/current/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a/libandroid_support.a prebuilts/ndk/current/sources/cxx-stl/llvm-libc++/libs/armeabi-v7a/libunwind.a   prebuilts/clang/host/linux-x86/clang-r416183b/lib64/clang/12.0.5/lib/linux//libclang_rt.builtins-arm-android.a -Wl,-z,noexecstack -Wl,-z,relro -Wl,-z,now -Wl,--build-id\u003dmd5 -Wl,--warn-shared-textrel -Wl,--fatal-warnings -Wl,--no-undefined-version -Wl,--exclude-libs,libgcc.a -Wl,--exclude-libs,libgcc_stripped.a -Wl,--exclude-libs,libunwind_llvm.a -Wl,--exclude-libs,libunwind.a -Wl,--icf\u003dsafe -fuse-ld\u003dlld -Wl,--hash-style\u003dgnu -Wl,-m,armelf   -Bprebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.9/arm-linux-androideabi/bin -Wl,--pack-dyn-relocs\u003dnone -Wl,--hash-style\u003dboth -Wl,--no-undefined -target armv7a-linux-androideabi17    out/soong/ndk/platforms/android-17/arch-arm/usr/lib/liblog.so   out/soong/ndk/platforms/android-17/arch-arm/usr/lib/libdl.so   out/soong/ndk/platforms/android-17/arch-arm/usr/lib/libjnigraphics.so   out/soong/ndk/platforms/android-17/arch-arm/usr/lib/libdl.so   out/soong/ndk/platforms/android-17/arch-arm/usr/lib/libc.so   out/soong/ndk/platforms/android-17/arch-arm/usr/lib/libm.so   out/soong/ndk/platforms/android-17/arch-arm/usr/lib/libdl.so    -o out/target/product/generic/obj/SHARED_LIBRARIES/libjni_jpegutil_intermediates/LINKED/libjni_jpegutil.so out/bazel/output/execroot/__main__/bazel-out/k8-fastbuild-ST-a23e66259245/bin/bionic/libc/_objs/crtend_so/crtend_so.o\"\nld.lld: error: undefined symbol: __register_atfork\n\u003e\u003e\u003e referenced by pthread_atfork.h:33 (bionic/libc/arch-common/bionic/pthread_atfork.h:33)\n\u003e\u003e\u003e               out/bazel/output/execroot/__main__/bazel-out/k8-fastbuild-ST-a23e66259245/bin/bionic/libc/crtbegin_so.o:(pthread_atfork)\nclang-12: error: linker command failed with exit code 1 (use -v to see invocation)",
       "revId": "bf61afb7f77eb605dca583d0f6e02a1bc6ccc6cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee061c39_42039d1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-13T08:16:40Z",
+      "side": 1,
+      "message": "Found the problem.\n\ntl;dr: https://android-review.googlesource.com/c/platform/prebuilts/clang/host/linux-x86/+/1699527/10..11/cc_toolchain_config.bzl\n\nUsing target_platform_has_constraint in the cc_toolchain rule implementation is always in the host configuration. Before the above patchset, the toolchain was always building for the host, and wasn\u0027t adding global device compile and ldflags. The function only works as expected in regular cc_* rule implementations. A simple fix, for now, would be to create separate toolchain identifiers and check if the identifier is for host or device.",
+      "parentUuid": "1f9630f3_c777c92a",
+      "revId": "bf61afb7f77eb605dca583d0f6e02a1bc6ccc6cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
