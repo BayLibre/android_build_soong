@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9943b06_c1fdc233",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-05-14T21:04:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53e80387_6b6136e7",
+      "range": {
+        "startLine": 392,
+        "startChar": 58,
+        "endLine": 392,
+        "endChar": 64
+      },
+      "revId": "339f99f79abf376708b0f5b55cff401958eaf2c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a1912a4_28d3c52c",
