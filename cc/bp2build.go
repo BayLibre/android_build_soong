@@ -178,6 +178,35 @@ func bp2BuildParseStaticProps(ctx android.TopDownMutatorContext, module *Module)
 	}
 }
 
+// Convenience struct to hold all attributes parsed from prebuilt properties.
+type prebuiltAttributes struct {
+	Srcs bazel.LabelListAttribute
+}
+
+func Bp2BuildParsePrebuiltLibraryProps(ctx android.TopDownMutatorContext, module *Module) prebuiltAttributes {
+	prebuiltLibraryLinker := module.linker.(*prebuiltLibraryLinker)
+	prebuiltLinker := prebuiltLibraryLinker.prebuiltLinker
+
+	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, prebuiltLinker.properties.Srcs))
+
+	for arch, props := range module.GetArchProperties(ctx, &prebuiltLinkerProperties{}) {
+		if prebuiltLinkerProperties, ok := props.(*prebuiltLinkerProperties); ok {
+			srcs.SetValueForArch(arch.Name, android.BazelLabelForModuleSrc(ctx, prebuiltLinkerProperties.Srcs))
+		}
+	}
+
+	// FIXME: Fix GetTargetProperties and/or work out why no sources are being returned for targets like 'android_arm'
+	for os, props := range module.GetTargetProperties(&prebuiltLinkerProperties{}) {
+		if prebuiltLinkerProperties, ok := props.(*prebuiltLinkerProperties); ok {
+			srcs.SetValueForOS(os.Name, android.BazelLabelForModuleSrc(ctx, prebuiltLinkerProperties.Srcs))
+		}
+	}
+
+	return prebuiltAttributes{
+		Srcs: srcs,
+	}
+}
+
 // Convenience struct to hold all attributes parsed from compiler properties.
 type compilerAttributes struct {
 	copts    bazel.StringListAttribute
@@ -440,11 +469,20 @@ func bp2BuildMakePathsRelativeToModule(ctx android.BazelConversionPathContext, p
 	return relativePaths
 }
 
-// bp2BuildParseExportedIncludes creates a string list attribute contains the
-// exported included directories of a module.
 func bp2BuildParseExportedIncludes(ctx android.TopDownMutatorContext, module *Module) bazel.StringListAttribute {
 	libraryDecorator := module.linker.(*libraryDecorator)
+	return bp2BuildParseExportedIncludesHelper(ctx, module, libraryDecorator)
+}
 
+func Bp2BuildParseExportedIncludesForPrebuiltLibrary(ctx android.TopDownMutatorContext, module *Module) bazel.StringListAttribute {
+	prebuiltLibraryLinker := module.linker.(*prebuiltLibraryLinker)
+	libraryDecorator := prebuiltLibraryLinker.libraryDecorator
+	return bp2BuildParseExportedIncludesHelper(ctx, module, libraryDecorator)
+}
+
+// bp2BuildParseExportedIncludes creates a string list attribute contains the
+// exported included directories of a module.
+func bp2BuildParseExportedIncludesHelper(ctx android.TopDownMutatorContext, module *Module, libraryDecorator *libraryDecorator) bazel.StringListAttribute {
 	// Export_system_include_dirs and export_include_dirs are already module dir
 	// relative, so they don't need to be relativized like include_dirs, which
 	// are root-relative.

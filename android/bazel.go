@@ -155,6 +155,7 @@ var (
 		"external/fmtlib":                 Bp2BuildDefaultTrueRecursively,
 		"external/arm-optimized-routines": Bp2BuildDefaultTrueRecursively,
 		"external/scudo":                  Bp2BuildDefaultTrueRecursively,
+		"prebuilts/clang/host/linux-x86":  Bp2BuildDefaultTrueRecursively,
 	}
 
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
