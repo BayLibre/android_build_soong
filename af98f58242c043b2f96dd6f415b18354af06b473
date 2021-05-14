@@ -34,6 +34,24 @@
       "parentUuid": "8732458d_1fcc099b",
       "revId": "af98f58242c043b2f96dd6f415b18354af06b473",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b973982a_d49d4463",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2021-05-14T22:36:45Z",
+      "side": 1,
+      "message": "Oh right, I completely forgot how ASan requires double build in the same build dir to install both variants. What a nightmare.",
+      "parentUuid": "f65b77e4_dc0b48ce",
+      "revId": "af98f58242c043b2f96dd6f415b18354af06b473",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
