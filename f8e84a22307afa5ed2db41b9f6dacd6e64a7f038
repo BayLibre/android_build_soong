@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6674a1ea_b5bcdc51",
+        "filename": "cc/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-14T01:25:10Z",
+      "side": 1,
+      "message": "Is the Test_ prefix useful here, since it is already inside a test_options clause?",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 6
+      },
+      "revId": "f8e84a22307afa5ed2db41b9f6dacd6e64a7f038",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
