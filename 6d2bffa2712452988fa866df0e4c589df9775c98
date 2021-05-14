@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0ca3a75_590056d1",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-14T13:50:34Z",
+      "side": 1,
+      "message": "nit: can inline just like above?",
+      "range": {
+        "startLine": 528,
+        "startChar": 1,
+        "endLine": 528,
+        "endChar": 34
+      },
+      "revId": "6d2bffa2712452988fa866df0e4c589df9775c98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
