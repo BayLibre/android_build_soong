@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8732458d_1fcc099b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2021-05-14T21:20:19Z",
+      "side": 1,
+      "message": "It might make sense to do this only on host.\nDevice ASan targets have a different install path (see SetInSanitizerDir), so it should be fine to create more of those variants whenever we think they might be useful.",
+      "revId": "af98f58242c043b2f96dd6f415b18354af06b473",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
