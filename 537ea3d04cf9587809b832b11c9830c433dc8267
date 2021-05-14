@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f452768_67861e51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-14T15:00:00Z",
+      "side": 1,
+      "message": "Artur, would you mind taking another look. I forgot to include some local refactorings in this.",
+      "revId": "537ea3d04cf9587809b832b11c9830c433dc8267",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
