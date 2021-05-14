@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52e62be4_0fa320a8",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-05-14T20:16:25Z",
+      "side": 1,
+      "message": "The API intentionally makes that hard since most contexts need to work with codenames as well as ints.\n\nFor these cases you can create constants in the android package: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/api_levels.go;l\u003d159;drc\u003df1691d2a2c23631c25291bc653d25a8f906b9c5d\n\nEither way is generally okay, but I suppose the constant would let you remove the panic case from L402 so might as well.",
+      "parentUuid": "705bfacf_b8d2ea90",
+      "range": {
+        "startLine": 392,
+        "startChar": 58,
+        "endLine": 392,
+        "endChar": 64
+      },
+      "revId": "339f99f79abf376708b0f5b55cff401958eaf2c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a1912a4_28d3c52c",
         "filename": "cc/linker.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-14T20:10:18Z",
       "side": 1,
       "message": "i had to do this because otherwise ART was using \"S\" which broke the build.",
+      "range": {
+        "startLine": 396,
+        "startChar": 34,
+        "endLine": 396,
+        "endChar": 50
+      },
+      "revId": "339f99f79abf376708b0f5b55cff401958eaf2c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba1e1b03_1d38fab1",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-05-14T20:16:25Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "4a1912a4_28d3c52c",
       "range": {
         "startLine": 396,
         "startChar": 34,
