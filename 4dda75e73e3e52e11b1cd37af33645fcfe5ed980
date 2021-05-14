@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a001d530_c8028c0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-05-14T15:36:53Z",
+      "side": 1,
+      "message": "LGTM, thanks for addressing PathToLocation() issue!",
+      "revId": "4dda75e73e3e52e11b1cd37af33645fcfe5ed980",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
