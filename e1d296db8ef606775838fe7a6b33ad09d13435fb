@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19d23524_e4a4e201",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-14T10:17:27Z",
+      "side": 1,
+      "message": "Please don\u0027t submit this. I have a fix that I am trying to upload.",
+      "revId": "e1d296db8ef606775838fe7a6b33ad09d13435fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
