@@ -900,15 +900,9 @@ func (c *commonToSdkLibraryAndImport) sdkComponentPropertiesForChildLibrary() in
 	return componentProps
 }
 
+// Check if this can be used as a shared library.
 func (c *commonToSdkLibraryAndImport) sharedLibrary() bool {
 	return proptools.BoolDefault(c.commonSdkLibraryProperties.Shared_library, true)
-}
-
-// Check if the stub libraries should be compiled for dex
-func (c *commonToSdkLibraryAndImport) stubLibrariesCompiledForDex() bool {
-	// Always compile the dex file files for the stub libraries if they will be used on the
-	// bootclasspath.
-	return !c.sharedLibrary()
 }
 
 // Properties related to the use of a module as an component of a java_sdk_library.
@@ -984,9 +978,6 @@ type SdkLibraryDependency interface {
 	// SdkApiStubDexJar returns the dex jar for the stubs. It is needed by the hiddenapi processing
 	// tool which processes dex files.
 	SdkApiStubDexJar(ctx android.BaseModuleContext, kind android.SdkKind) android.Path
-
-	// sharedLibrary returns true if this can be used as a shared library.
-	sharedLibrary() bool
 }
 
 type SdkLibrary struct {
@@ -1318,13 +1309,9 @@ func (module *SdkLibrary) createStubsLibrary(mctx android.DefaultableHookContext
 	// We compile the stubs for 1.8 in line with the main android.jar stubs, and potential
 	// interop with older developer tools that don't support 1.9.
 	props.Java_version = proptools.StringPtr("1.8")
-
-	// The imports need to be compiled to dex if the java_sdk_library requests it.
-	compileDex := module.dexProperties.Compile_dex
-	if module.stubLibrariesCompiledForDex() {
-		compileDex = proptools.BoolPtr(true)
+	if module.dexProperties.Compile_dex != nil {
+		props.Compile_dex = module.dexProperties.Compile_dex
 	}
-	props.Compile_dex = compileDex
 
 	// Dist the class jar artifact for sdk builds.
 	if !Bool(module.sdkLibraryProperties.No_dist) {
@@ -1982,11 +1969,7 @@ func (module *SdkLibraryImport) createJavaImportForStubs(mctx android.Defaultabl
 	props.Prefer = proptools.BoolPtr(module.prebuilt.Prefer())
 
 	// The imports need to be compiled to dex if the java_sdk_library_import requests it.
-	compileDex := module.properties.Compile_dex
-	if module.stubLibrariesCompiledForDex() {
-		compileDex = proptools.BoolPtr(true)
-	}
-	props.Compile_dex = compileDex
+	props.Compile_dex = module.properties.Compile_dex
 
 	mctx.CreateModule(ImportFactory, &props, module.sdkComponentPropertiesForChildLibrary())
 }
