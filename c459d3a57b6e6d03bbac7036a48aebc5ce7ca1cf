@@ -22,6 +22,30 @@
       },
       "revId": "c459d3a57b6e6d03bbac7036a48aebc5ce7ca1cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da43656b_8e4ede6f",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-14T14:08:28Z",
+      "side": 1,
+      "message": "What confuses me is that the Class2NonSdkList generated files without them and then the final file was created by calling merge_csv.py which added them in.",
+      "parentUuid": "4c8b64fc_398fefd6",
+      "range": {
+        "startLine": 315,
+        "startChar": 1,
+        "endLine": 317,
+        "endChar": 91
+      },
+      "revId": "c459d3a57b6e6d03bbac7036a48aebc5ce7ca1cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

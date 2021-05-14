@@ -16,6 +16,41 @@
       "message": "Woah, nice! Thanks for checking that the final .csv files are unchanged, as that what ultimately matters here for now.",
       "revId": "6c28f2c5a305f41adc84c820c0099f8bb5abc196",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2755a218_3d984d12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-14T14:08:28Z",
+      "side": 1,
+      "message": "Having them is REALLY helpful to make sure that I haven\u0027t changed anything.",
+      "parentUuid": "7615c356_3a1c859b",
+      "revId": "6c28f2c5a305f41adc84c820c0099f8bb5abc196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae6378bc_ba7754a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-14T14:08:28Z",
+      "side": 1,
+      "message": "Andrei, would you be able to comment on the need for quotes in the out/soong/hiddenapi/hiddenapi-unsupported.csv file?",
+      "revId": "6c28f2c5a305f41adc84c820c0099f8bb5abc196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
