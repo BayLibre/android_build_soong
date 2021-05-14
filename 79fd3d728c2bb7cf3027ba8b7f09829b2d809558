@@ -16,6 +16,24 @@
       "message": "Cool, thanks!\n\nI imagine we could see this type of changes more often in the future, if we can update bootclasspath via mainline, we could move things in/out of there into/out of shared libs.",
       "revId": "79fd3d728c2bb7cf3027ba8b7f09829b2d809558",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5db7b26_f6614ef1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-14T16:13:54Z",
+      "side": 1,
+      "message": "Moving a library from a shared library to/from the bootclasspath is not a trivial task. There are runtime and app compat issues. It took me 2 or maybe 3 releases to move android.test.base from the bootclasspath to a shared library.\n\nI think the issues in moving it the other way are probably a lot simpler. e.g. While it should be avoided it probably doesn\u0027t matter too much if you have a library on the bootclasspath and the same library on the app classpath.",
+      "parentUuid": "2a2d0bf4_a743f374",
+      "revId": "79fd3d728c2bb7cf3027ba8b7f09829b2d809558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
