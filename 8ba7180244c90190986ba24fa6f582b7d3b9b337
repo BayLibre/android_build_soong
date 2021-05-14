@@ -22,6 +22,30 @@
       },
       "revId": "8ba7180244c90190986ba24fa6f582b7d3b9b337",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f740f3_4fd28905",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-14T04:55:45Z",
+      "side": 1,
+      "message": "I tried that originally but it failed because plantSymlinkForestRecursive is not actually walking the entire tree.\n\nInstead plantSymlinkForestRecursive tries to create higher level symlinks to folders in the source tree and tries to avoid walking the entire tree.\n\nFor example given\n\na\na/b\na/b/c\na/b/c/BUILD\n\nplantSymlinkForestRecursive may just create a single symlink to a in the source dir, and never consider what to do about the other items.\n\nIt seems that the way to get plantSymlinkForestRecursive to walk more of the tree is by setting excludes, so that\u0027s what I did here...",
+      "parentUuid": "2a120869_cbd77d9d",
+      "range": {
+        "startLine": 371,
+        "startChar": 8,
+        "endLine": 371,
+        "endChar": 21
+      },
+      "revId": "8ba7180244c90190986ba24fa6f582b7d3b9b337",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
