@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53e80387_6b6136e7",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-05-14T20:29:27Z",
+      "side": 1,
+      "message": "Yup.",
+      "parentUuid": "8b0a7ed4_c5576a7f",
+      "range": {
+        "startLine": 392,
+        "startChar": 58,
+        "endLine": 392,
+        "endChar": 64
+      },
+      "revId": "339f99f79abf376708b0f5b55cff401958eaf2c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a1912a4_28d3c52c",
         "filename": "cc/linker.go",
         "patchSetId": 1
