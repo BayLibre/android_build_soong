@@ -34,6 +34,23 @@
       "parentUuid": "19d23524_e4a4e201",
       "revId": "e1d296db8ef606775838fe7a6b33ad09d13435fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a63e5a_b382d665",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-14T10:18:54Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/build/soong/+/1707571 should fix the issue.\n",
+      "revId": "e1d296db8ef606775838fe7a6b33ad09d13435fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
