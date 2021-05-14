@@ -188,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e13b703f_8c6c29ac",
+        "filename": "dexpreopt/dexpreopt_gen/dexpreopt_gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-05-14T15:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7184f8e_dadaddf8",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 200,
+        "endChar": 43
+      },
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb1a0e35_83738272",
@@ -447,6 +471,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e60765b_26a64fa2",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-05-14T15:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9be91dee_111a4f07",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 15
+      },
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8254d947_ae32cc30",
@@ -565,6 +613,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1119754_d3d22035",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-05-14T15:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fe1c694_25ee3feb",
+      "range": {
+        "startLine": 380,
+        "startChar": 32,
+        "endLine": 380,
+        "endChar": 52
+      },
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb760a60_7b213175",
@@ -673,6 +745,30 @@
       "side": 1,
       "message": "(See the comment at line 282.)",
       "parentUuid": "1b0a5aff_9b86ed8c",
+      "range": {
+        "startLine": 143,
+        "startChar": 22,
+        "endLine": 143,
+        "endChar": 61
+      },
+      "revId": "e158f7b3f8390bef4463c3d47564e5d75a335d57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29671fea_d93e9d4a",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-05-14T15:30:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63a5a4ae_316d17c1",
       "range": {
         "startLine": 143,
         "startChar": 22,

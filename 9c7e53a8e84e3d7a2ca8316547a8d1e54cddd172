@@ -33,6 +33,23 @@
       "message": "Ugh, sorry again for the slow review. Next time please ping me on chat, because I sometimes miss review emails among other emails!",
       "revId": "9c7e53a8e84e3d7a2ca8316547a8d1e54cddd172",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f653453_16e8bd09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-05-14T15:30:17Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "9c7e53a8e84e3d7a2ca8316547a8d1e54cddd172",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
