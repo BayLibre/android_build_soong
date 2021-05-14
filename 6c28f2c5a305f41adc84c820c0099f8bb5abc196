@@ -51,6 +51,41 @@
       "message": "Andrei, would you be able to comment on the need for quotes in the out/soong/hiddenapi/hiddenapi-unsupported.csv file?",
       "revId": "6c28f2c5a305f41adc84c820c0099f8bb5abc196",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0121e5a_003778b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2021-05-14T14:32:07Z",
+      "side": 1,
+      "message": "IIRC, it has to do with the escaping characters that are likely to appear in the public alternatives column.",
+      "parentUuid": "ae6378bc_ba7754a1",
+      "revId": "6c28f2c5a305f41adc84c820c0099f8bb5abc196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3535504_9bf6690d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2021-05-14T14:32:07Z",
+      "side": 1,
+      "message": "I\u0027m a bit hazy on the exact details, but the TL;dr is that only some of the .csv files contain the full metadata in the @UnsupportedAppUsage annotation, and the ones that have public alternative info need extra escaping.",
+      "revId": "6c28f2c5a305f41adc84c820c0099f8bb5abc196",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
