@@ -191,6 +191,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dd4aecc_d2b466ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-14T18:49:20Z",
+      "side": 1,
+      "message": "Adding a property to list the versions is out of scope here, yes. However that wasn\u0027t the main point, it\u0027s rather about creating ninja rules for all versions instead of this variable.\n\nThe reason I brought it up here is that we\u0027re picking a direction on it with this CL. This approach is a bit ugly for the reason I explained initially, but it is perhaps the pragmatic one.",
+      "parentUuid": "4d99556a_6a8d9dae",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "defd345f0ebda7b433fd0b8d59a5ac0d0493c5d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1070a4fb_5824db4a",
@@ -381,6 +405,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc41a760_e11807d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-14T18:49:20Z",
+      "side": 1,
+      "message": "Fixing the Soong tests is just a matter of adding a preparer, isn\u0027t it? I think there are two or three build scripts that would need patching, so I wouldn\u0027t say it\u0027s \"a lot of work\". But I can agree it\u0027s out of scope here.",
+      "parentUuid": "4b0837f6_423615b0",
+      "range": {
+        "startLine": 14,
+        "startChar": 27,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "defd345f0ebda7b433fd0b8d59a5ac0d0493c5d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e55e2da4_49e17138",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-14T18:49:20Z",
+      "side": 1,
+      "message": "\u003e The unversioned ones would still be needed for those dependencies that are not part of an APEX\n\nYou mean platform dependencies? If so, I think for the purposes of this system it\u0027s more consistent and easier to treat platform as another APEX, i.e. use uses_sdks there too to control its dependencies on APEXes.\n\n\u003e I can\u0027t see anything in that document that requires the APEX to use @current.\n\nThe question is rather if there\u0027s a reason to _not_ control it through uses_libs and @current - we\u0027ll need that method and should avoid another method if we can.\n\n\u003e There are some comments that indicate it may not be a good idea.\n\nThat\u0027s interesting. There are a lot of comments on that doc; can you link to the ones you\u0027re referring to?",
+      "parentUuid": "c5896b95_d22989e9",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "defd345f0ebda7b433fd0b8d59a5ac0d0493c5d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2380f734_3677ebfe",
@@ -490,6 +562,30 @@
       "side": 1,
       "message": "When an SDK extension version is finalized, all the modules will be finalized to that version.",
       "parentUuid": "daa5b426_76c2d69a",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 35
+      },
+      "revId": "defd345f0ebda7b433fd0b8d59a5ac0d0493c5d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f041c46e_43d9df64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-14T18:49:20Z",
+      "side": 1,
+      "message": "Ok, but my point is that the last version upon finalization won\u0027t necessarily remain the last version present in the tree.",
+      "parentUuid": "a03a41de_25510c2b",
       "range": {
         "startLine": 18,
         "startChar": 0,
