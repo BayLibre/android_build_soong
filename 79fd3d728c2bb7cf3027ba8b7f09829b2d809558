@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a2d0bf4_a743f374",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-14T15:18:52Z",
+      "side": 1,
+      "message": "Cool, thanks!\n\nI imagine we could see this type of changes more often in the future, if we can update bootclasspath via mainline, we could move things in/out of there into/out of shared libs.",
+      "revId": "79fd3d728c2bb7cf3027ba8b7f09829b2d809558",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
