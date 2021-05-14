@@ -16,6 +16,24 @@
       "message": "It might make sense to do this only on host.\nDevice ASan targets have a different install path (see SetInSanitizerDir), so it should be fine to create more of those variants whenever we think they might be useful.",
       "revId": "af98f58242c043b2f96dd6f415b18354af06b473",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f65b77e4_dc0b48ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-14T22:08:47Z",
+      "side": 1,
+      "message": "That\u0027s what I did at first, but it turns out that SetInSanitizerDir is not enough, since only one variant (the non-asan variant, when a library is enabled for asan as a dependency) is set as installable.\n\nBefore my change, I\u0027m pretty sure SetInSanitizerDir was completely broken - it\u0027s only used in the unsplit shared library case, but the \"|| t \u003d\u003d Asan\" meant that shared libraries were always split.\n\nAfter my change, SetInSanitizerDir could get called again, but only if isSanitizerEnabled, meaning asan was explicitly requested on the library.  That would happen for a SANITIZE_TARGET\u003daddress build using the two-pass build, but it would also happen if you added sanitize: { address: true } to a cc_library_shared.  That would actually break things by moving a necessary library to /data, where it is generally not flashed.",
+      "parentUuid": "8732458d_1fcc099b",
+      "revId": "af98f58242c043b2f96dd6f415b18354af06b473",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
