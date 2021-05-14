@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9daa420_e5dbdac0",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-14T22:13:35Z",
+      "side": 1,
+      "message": "Cool :) Actually is pretty easy to just add to filesystem, since we don\u0027t care about the specific bazel output targets of the genrules.\n\nBug fixed, tests updated. PTAL.",
+      "parentUuid": "1b29a411_86f10bb9",
+      "range": {
+        "startLine": 1017,
+        "startChar": 3,
+        "endLine": 1017,
+        "endChar": 14
+      },
+      "revId": "533130bbf8360c80769c372526fd1c938b834f12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1a9e8ce_ffe1b388",
