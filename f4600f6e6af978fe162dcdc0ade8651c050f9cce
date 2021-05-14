@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1093cc83_0d41252f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-14T13:07:32Z",
+      "side": 1,
+      "message": "Paul, why submit a change without a code review?\n\nThis breaks com.android.ipsec use case which has:\n\njava_sdk_library {\n    name: \"android.net.ipsec.ike\",\n    // ike is used as a shared library.\n    shared_library: true,\n}\n\nCan I revert this? Do you have a quick fix forward?",
+      "revId": "f4600f6e6af978fe162dcdc0ade8651c050f9cce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
