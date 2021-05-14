@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "705bfacf_b8d2ea90",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-05-14T20:10:18Z",
+      "side": 1,
+      "message": "i couldn\u0027t work out how to deal in ints, so i switched this to a string. let me know if there\u0027s a better way to do this.",
+      "range": {
+        "startLine": 392,
+        "startChar": 58,
+        "endLine": 392,
+        "endChar": 64
+      },
+      "revId": "339f99f79abf376708b0f5b55cff401958eaf2c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a1912a4_28d3c52c",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-05-14T20:10:18Z",
+      "side": 1,
+      "message": "i had to do this because otherwise ART was using \"S\" which broke the build.",
+      "range": {
+        "startLine": 396,
+        "startChar": 34,
+        "endLine": 396,
+        "endChar": 50
+      },
+      "revId": "339f99f79abf376708b0f5b55cff401958eaf2c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
