@@ -127,6 +127,13 @@ type apexBundleProperties struct {
 	// symlinking to the system libs. Default is true.
 	Updatable *bool
 
+	// Disalbes the size optimization of symlinking transitive libs to the system libs.
+	// This can be useful when the apex is not ready to make it "updatable: true", but it supposed
+	// to be self-contained in case, for example, being passed to microdroid.
+	// Default is false.
+	// Note that ForceApexSymlinkOptimization overrides this and enables optimization globally.
+	Disable_symlink_optimization *bool
+
 	// Whether this APEX is installable to one of the partitions like system, vendor, etc.
 	// Default: true.
 	Installable *bool
@@ -2042,6 +2049,10 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	forced := ctx.Config().ForceApexSymlinkOptimization()
 
+	if !forced && proptools.Bool(a.properties.Disable_symlink_optimization) {
+		a.linkToSystemLib = false
+	}
+
 	// We don't need the optimization for updatable APEXes, as it might give false signal
 	// to the system health when the APEXes are still bundled (b/149805758).
 	if !forced && a.Updatable() && a.properties.ApexType == imageApex {
@@ -2296,6 +2307,9 @@ func (a *apexBundle) checkUpdatable(ctx android.ModuleContext) {
 	if a.Updatable() {
 		if String(a.properties.Min_sdk_version) == "" {
 			ctx.PropertyErrorf("updatable", "updatable APEXes should set min_sdk_version as well")
+		}
+		if proptools.BoolDefault(a.properties.Disable_symlink_optimization, false) {
+			ctx.PropertyErrorf("updatable", "updatable APEXes should not set disable_symlink_optimization")
 		}
 		a.checkJavaStableSdkVersion(ctx)
 	}
