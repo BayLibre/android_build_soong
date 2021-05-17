@@ -456,6 +456,9 @@ func (p *baseSnapshotDecorator) snapshotAndroidMkSuffix() string {
 func (p *baseSnapshotDecorator) setSnapshotAndroidMkSuffix(ctx android.ModuleContext) {
 	if ctx.OtherModuleDependencyVariantExists([]blueprint.Variation{
 		{Mutator: "image", Variation: android.CoreVariation},
+	}, ctx.Module().(*Module).BaseModuleName()) || ctx.OtherModuleDependencyVariantExists([]blueprint.Variation{
+		{Mutator: "image", Variation: android.CoreVariation},
+		{Mutator: "cfi", Variation: "__remove__"},
 	}, ctx.Module().(*Module).BaseModuleName()) {
 		p.baseProperties.Androidmk_suffix = p.image.moduleNameSuffix()
 	} else {
