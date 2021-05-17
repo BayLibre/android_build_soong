@@ -65,6 +65,8 @@ var _ android.SdkMemberTypeDependencyTag = hiddenAPIStubsDependencyTag{}
 
 // hiddenAPIRelevantSdkKinds lists all the android.SdkKind instances that are needed by the hidden
 // API processing.
+//
+// These are in order from narrowest API surface to widest.
 var hiddenAPIRelevantSdkKinds = []android.SdkKind{
 	android.SdkPublic,
 	android.SdkSystem,
@@ -192,7 +194,7 @@ var sdkKindToHiddenapiListOption = map[android.SdkKind]string{
 //
 // The rule is initialized but not built so that the caller can modify it and select an appropriate
 // name.
-func ruleToGenerateHiddenAPIStubFlagsFile(ctx android.BuilderContext, outputPath android.WritablePath, bootDexJars android.Paths, sdkKindToPathList map[android.SdkKind]android.Paths) *android.RuleBuilder {
+func ruleToGenerateHiddenAPIStubFlagsFile(ctx android.BuilderContext, outputPath android.WritablePath, dependencyStubDexJars android.Paths, bootDexJars android.Paths, sdkKindToPathList map[android.SdkKind]android.Paths) *android.RuleBuilder {
 	// Singleton rule which applies hiddenapi on all boot class path dex files.
 	rule := android.NewRuleBuilder(pctx, ctx)
 
@@ -201,6 +203,7 @@ func ruleToGenerateHiddenAPIStubFlagsFile(ctx android.BuilderContext, outputPath
 	command := rule.Command().
 		Tool(ctx.Config().HostToolPath(ctx, "hiddenapi")).
 		Text("list").
+		FlagForEachInput("--dependency-stub-dex=", dependencyStubDexJars).
 		FlagForEachInput("--boot-dex=", bootDexJars)
 
 	// Iterate over the sdk kinds in a fixed order.
@@ -377,6 +380,11 @@ type HiddenAPIInfo struct {
 	// category.
 	categoryToPaths map[*hiddenAPIFlagFileCategory]android.Paths
 
+	// The paths to the dex jars for the widest set of stubs. This is needed by dependent fragments
+	// when they perform hidden APi processing. to resolve dependencies on classes they use from this
+	// fragment
+	WidestApiStubDexJars android.Paths
+
 	// The paths to the generated stub-flags.csv files.
 	StubFlagsPaths android.Paths
 
@@ -397,6 +405,7 @@ func (i *HiddenAPIInfo) append(other HiddenAPIInfo) {
 	for _, category := range hiddenAPIFlagFileCategories {
 		i.categoryToPaths[category] = append(i.categoryToPaths[category], other.categoryToPaths[category]...)
 	}
+	i.WidestApiStubDexJars = append(i.WidestApiStubDexJars, other.WidestApiStubDexJars...)
 	i.StubFlagsPaths = append(i.StubFlagsPaths, other.StubFlagsPaths...)
 	i.AnnotationFlagsPaths = append(i.AnnotationFlagsPaths, other.AnnotationFlagsPaths...)
 	i.MetadataPaths = append(i.MetadataPaths, other.MetadataPaths...)
@@ -497,13 +506,32 @@ func buildRuleToGenerateHiddenApiFlags(ctx android.BuilderContext, name, desc st
 // * metadata.csv
 // * index.csv
 // * all-flags.csv
-func hiddenAPIGenerateAllFlagsForBootclasspathFragment(ctx android.ModuleContext, contents []hiddenAPIModule, stubJarsByKind map[android.SdkKind]android.Paths, flagFileInfo *HiddenAPIInfo) {
+func hiddenAPIGenerateAllFlagsForBootclasspathFragment(ctx android.ModuleContext, contents []hiddenAPIModule, stubJarsByKind map[android.SdkKind]android.Paths, fragments []android.Module, flagFileInfo *HiddenAPIInfo) {
 	hiddenApiSubDir := "modular-hiddenapi"
 
-	// Generate the stub-flags.csv.
+	// Gather the dex files for the stub APIs provided by the fragments, if any, on which this
+	// depends.
+	var dependencyStubDexJars android.Paths
+	for _, fragment := range fragments {
+		info := ctx.OtherModuleProvider(fragment, HiddenAPIInfoProvider).(HiddenAPIInfo)
+		widestApiStubDexJars := info.WidestApiStubDexJars
+
+		// Add the stub dex jars for the widest API provided by the fragment to the base dex jars so
+		// that they are available to resolve dependencies from this fragment.
+		dependencyStubDexJars = append(dependencyStubDexJars, widestApiStubDexJars...)
+
+		// Do the same for each sdk kind, i.e. API surface.
+		for k, v := range stubJarsByKind {
+			stubJarsByKind[k] = append(v, widestApiStubDexJars...)
+		}
+	}
+
+	// Gather the dex files for the boot libraries provided by this fragment.
 	bootDexJars := extractBootDexJarsFromHiddenAPIModules(ctx, contents)
+
+	// Generate the stub-flags.csv.
 	stubFlagsCSV := android.PathForModuleOut(ctx, hiddenApiSubDir, "stub-flags.csv")
-	rule := ruleToGenerateHiddenAPIStubFlagsFile(ctx, stubFlagsCSV, bootDexJars, stubJarsByKind)
+	rule := ruleToGenerateHiddenAPIStubFlagsFile(ctx, stubFlagsCSV, dependencyStubDexJars, bootDexJars, stubJarsByKind)
 	rule.Build("modularHiddenAPIStubFlagsFile", "modular hiddenapi stub flags")
 
 	// Extract the classes jars from the contents.
@@ -532,6 +560,21 @@ func hiddenAPIGenerateAllFlagsForBootclasspathFragment(ctx android.ModuleContext
 	// files.
 	outputPath := android.PathForModuleOut(ctx, hiddenApiSubDir, "all-flags.csv")
 	buildRuleToGenerateHiddenApiFlags(ctx, "modularHiddenApiAllFlags", "modular hiddenapi all flags", outputPath, stubFlagsCSV, annotationFlagsCSV, flagFileInfo)
+
+	// Add the widest API stub dex jar provided by this fragment to those provided by the fragments
+	// that this depends upon.
+	widestApiStubDexJars := dependencyStubDexJars
+	for i := len(hiddenAPIRelevantSdkKinds) - 1; i >= 0; i-- {
+		kind := hiddenAPIRelevantSdkKinds[i]
+		stubsForKind := stubJarsByKind[kind]
+		if len(stubsForKind) != 0 {
+			widestApiStubDexJars = append(widestApiStubDexJars, stubsForKind...)
+			break
+		}
+	}
+
+	// Store the transitive set of API stub dex jars for use by other modules.
+	flagFileInfo.WidestApiStubDexJars = android.FirstUniquePaths(widestApiStubDexJars)
 
 	// Store the paths in the info for use by other modules and sdk snapshot generation.
 	flagFileInfo.StubFlagsPaths = android.Paths{stubFlagsCSV}
