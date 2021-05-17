@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c472d7_929a4083",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-17T07:45:04Z",
+      "side": 1,
+      "message": "This CL also un",
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91f3dba3_72e5b323",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-17T07:45:04Z",
+      "side": 1,
+      "message": "This CL also unblock libc_nopthread.\n\nTarget //bionic/libc:libc_nopthread up-to-date:\n  bazel-bin/bionic/libc/liblibc_nopthread_mainlib.a\nINFO: Elapsed time: 3.859s, Critical Path: 0.57s\nINFO: 17 processes: 1 internal, 1 linux-sandbox, 15 local.\nINFO: Build completed successfully, 17 total actions",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 182,
+        "endChar": 19
+      },
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad0a9698_a6a25def",
