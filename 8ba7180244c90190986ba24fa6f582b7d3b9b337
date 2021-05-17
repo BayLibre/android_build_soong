@@ -46,6 +46,30 @@
       },
       "revId": "8ba7180244c90190986ba24fa6f582b7d3b9b337",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd426b61_d362df07",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-17T05:33:07Z",
+      "side": 1,
+      "message": "The bp2build + synthetic workspace generation action `out/soong/.bootstrap/bin/soong_build out/soong/.bootstrap/bp2build_workspace_marker` increased from ~21 seconds to more than 7 minutes (and counting, as I\u0027m writing this).\n\nI don\u0027t think a full tree traversal to find excluded files is an option, especially for systems with bad IO like cloudtops. \u003e7 mins for synthetic forest generation isn\u0027t usable as it\u0027s implemented right now.\n\nAdding lberki to reviewers to see if he has any ideas.",
+      "parentUuid": "07f740f3_4fd28905",
+      "range": {
+        "startLine": 371,
+        "startChar": 8,
+        "endLine": 371,
+        "endChar": 21
+      },
+      "revId": "8ba7180244c90190986ba24fa6f582b7d3b9b337",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
