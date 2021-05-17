@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec975862_7d366d96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-17T17:21:08Z",
+      "side": 1,
+      "message": "nice catch!",
+      "revId": "8d9d716afadd440215ea1438be4a995ffb676867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1e50c6a_6326cde0",
+        "filename": "java/hiddenapi_singleton_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-17T17:21:08Z",
+      "side": 1,
+      "message": "actualUnencdoedDexJar?",
+      "range": {
+        "startLine": 303,
+        "startChar": 2,
+        "endLine": 303,
+        "endChar": 16
+      },
+      "revId": "8d9d716afadd440215ea1438be4a995ffb676867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
