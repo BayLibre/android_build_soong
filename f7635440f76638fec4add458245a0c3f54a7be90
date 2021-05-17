@@ -88,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fc54e93_48e6768f",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-17T16:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad0a9698_a6a25def",
+      "range": {
+        "startLine": 164,
+        "startChar": 5,
+        "endLine": 164,
+        "endChar": 10
+      },
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "907c3d20_a2a9ccae",
@@ -101,6 +125,30 @@
       "writtenOn": "2021-05-17T04:16:48Z",
       "side": 1,
       "message": "This file doesn\u0027t exist in filesystem?",
+      "range": {
+        "startLine": 1067,
+        "startChar": 19,
+        "endLine": 1067,
+        "endChar": 39
+      },
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b06b4549_750e344e",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-17T16:03:10Z",
+      "side": 1,
+      "message": "Whoops.",
+      "parentUuid": "907c3d20_a2a9ccae",
       "range": {
         "startLine": 1067,
         "startChar": 19,
@@ -136,6 +184,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4c0ee134_40e6a7b7",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-17T16:03:10Z",
+      "side": 1,
+      "message": "Huh, I don\u0027t understand how this happened. Maybe a bad merge? :(",
+      "parentUuid": "2afb4369_5e7fead7",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "420c9b43_b1b299af",
         "filename": "cc/bp2build.go",
         "patchSetId": 5
@@ -147,6 +219,30 @@
       "writtenOn": "2021-05-17T07:10:06Z",
       "side": 1,
       "message": "It looks like every -I argument needs to be duplicated in order to handle generated headers?\n\nSince the end goal is to generate submittable BUILD files, we may want to do the \"-Ifoo -\u003e -Ifoo -I$(BINDIR)/foo\" translation in a Starlark macro. In the future, though, this change is good as it is.",
+      "range": {
+        "startLine": 205,
+        "startChar": 3,
+        "endLine": 205,
+        "endChar": 40
+      },
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62b051c2_bdbe85e8",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-17T16:03:10Z",
+      "side": 1,
+      "message": "We can\u0027t do this automatically if copts are configurable, right? As these would be under selects and therefore the strings cannot be evaluated. b/188084383\n\n\nOr did you mean something like offering a starlark function `includesForPath(path)` which returns `[\"-Ipath\", \"-I$(BINDIR)/path\"]`, and then calling that in the BUILD file under the selects?",
+      "parentUuid": "420c9b43_b1b299af",
       "range": {
         "startLine": 205,
         "startChar": 3,
@@ -203,6 +299,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28c63146_e201889f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-17T16:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d8b2978_7153590e",
+      "range": {
+        "startLine": 268,
+        "startChar": 47,
+        "endLine": 268,
+        "endChar": 60
+      },
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d734bbee_9b67647e",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-17T16:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b8a06cf_5acd5f22",
+      "range": {
+        "startLine": 268,
+        "startChar": 21,
+        "endLine": 268,
+        "endChar": 29
+      },
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "862f24fe_dbde665b",
@@ -216,6 +360,30 @@
       "writtenOn": "2021-05-17T04:16:48Z",
       "side": 1,
       "message": "nit: call this generatedHdrsAndSrcs?",
+      "range": {
+        "startLine": 269,
+        "startChar": 3,
+        "endLine": 269,
+        "endChar": 22
+      },
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50296f07_ccea773f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-17T16:03:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "862f24fe_dbde665b",
       "range": {
         "startLine": 269,
         "startChar": 3,
