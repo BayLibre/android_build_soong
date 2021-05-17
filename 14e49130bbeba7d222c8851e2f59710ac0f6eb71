@@ -34,6 +34,24 @@
       "parentUuid": "700faa0f_f2035d73",
       "revId": "14e49130bbeba7d222c8851e2f59710ac0f6eb71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0573c0b4_74b6331e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-17T21:15:41Z",
+      "side": 1,
+      "message": "I\u0027ve just submitted them. I had to bypass pre-submit for a couple of them because one build/test target (out of 130) was still running after nearly 4 hours. The changes were minor build refactorings that shouldn\u0027t have changed behavior. If they were going to cause any problems then they would have affected a lot more builds and failed early. The changes also built fine when combined with later builds.\n\nI don\u0027t know how quick Gerrit is to check for merge conflicts but this doesn\u0027t seem to have conflicted with any of the changes that I have submitted.\n\nI\u0027ll check to see if this conflicts with any of my local changes. I\u0027m happy to rebase my changes on top of this if they do. As these should be submitted before mine.",
+      "parentUuid": "5e5e1d6a_5a2c7502",
+      "revId": "14e49130bbeba7d222c8851e2f59710ac0f6eb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
