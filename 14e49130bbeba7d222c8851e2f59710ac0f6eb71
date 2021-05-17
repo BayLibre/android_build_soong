@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "700faa0f_f2035d73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-17T21:03:00Z",
+      "side": 1,
+      "message": "We need to be very careful as this is going to cause conflicts. Can we wait until my changes you have reviewed today have been submitted before submitting this one.",
+      "revId": "14e49130bbeba7d222c8851e2f59710ac0f6eb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
