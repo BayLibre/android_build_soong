@@ -70,6 +70,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "420c9b43_b1b299af",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-17T07:10:06Z",
+      "side": 1,
+      "message": "It looks like every -I argument needs to be duplicated in order to handle generated headers?\n\nSince the end goal is to generate submittable BUILD files, we may want to do the \"-Ifoo -\u003e -Ifoo -I$(BINDIR)/foo\" translation in a Starlark macro. In the future, though, this change is good as it is.",
+      "range": {
+        "startLine": 205,
+        "startChar": 3,
+        "endLine": 205,
+        "endChar": 40
+      },
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d8b2978_7153590e",
