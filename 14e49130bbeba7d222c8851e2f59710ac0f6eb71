@@ -52,6 +52,24 @@
       "parentUuid": "5e5e1d6a_5a2c7502",
       "revId": "14e49130bbeba7d222c8851e2f59710ac0f6eb71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b71d85fb_302531c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-17T21:19:54Z",
+      "side": 1,
+      "message": "Cheers!\n\nGerrit is actually pretty quick for conflict detection on the same host (since there is no automerger involved), AFAICT.\n\nJust to make it completely clear, do you want me to submit this nowish or wait until tomorrow? I will definitely not be cherry-picking these into sc-dev just yet, since I don\u0027t have any Dr.No approvers locally (or maybe I should ask Colin to stamp).",
+      "parentUuid": "0573c0b4_74b6331e",
+      "revId": "14e49130bbeba7d222c8851e2f59710ac0f6eb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
