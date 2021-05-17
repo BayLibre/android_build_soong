@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4ffc582_3d357b2c",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-17T17:29:23Z",
+      "side": 1,
+      "message": "has",
+      "range": {
+        "startLine": 48,
+        "startChar": 13,
+        "endLine": 48,
+        "endChar": 15
+      },
+      "revId": "27509a063aea3824af6e3c95c70969b7ae2541a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c3f618d_593c90a1",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-17T17:29:23Z",
+      "side": 1,
+      "message": "this feels error-prone. Maybe it requires its own flag or separate flow?",
+      "range": {
+        "startLine": 80,
+        "startChar": 3,
+        "endLine": 81,
+        "endChar": 16
+      },
+      "revId": "27509a063aea3824af6e3c95c70969b7ae2541a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
