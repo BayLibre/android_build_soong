@@ -94,6 +94,30 @@
       },
       "revId": "8ba7180244c90190986ba24fa6f582b7d3b9b337",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b2dbea8_eb465315",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-17T07:44:42Z",
+      "side": 1,
+      "message": "21 seconds sounds okay for Cloudtops, but hopefully most people are using something with better I/O, like using SSDs.\n\nWe might be able to make this faster if we upgrade to go 1.16, which apparently has a faster Walk() function, called WalkDir()\n\nIt looks like Colin has completed the upgrade now (http://b/188000195), so I have updated this CL to use WalkDir() instead",
+      "parentUuid": "5ab5e5e9_9199d4b3",
+      "range": {
+        "startLine": 371,
+        "startChar": 8,
+        "endLine": 371,
+        "endChar": 21
+      },
+      "revId": "8ba7180244c90190986ba24fa6f582b7d3b9b337",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

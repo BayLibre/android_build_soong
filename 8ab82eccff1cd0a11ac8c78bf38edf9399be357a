@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17c5379b_1d338390",
+        "filename": "android/bazel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-17T07:44:42Z",
+      "side": 1,
+      "message": "This is an allow list, so we don\u0027t have to update this list if any external repo changes\n\nOnly if a new directory with a new BUILD file (that we want to use) is added to these 5 places:\n\nbuild/bazel/...\nbuild/pesto/...\nexternal/bazelbuild-rules_android/...\nprebuilts/sdk/...\nprebuilts/clang/...\n\nSince adding new directories with new BUILD files (that we want to use) is a fairly rare event at the moment, I would prefer to revisit this later. \n\nIf we switch to prefix/recursive matching now, we would probably also need a way for child directories to opt out, because of \".\" being on the allow list (for $TOP/BUILD). Adding the opt out logic and then opting out every directory under . (and also maintaining that opt out list over time) seems as bad or worse than just keeping the current approach, IMO?",
+      "parentUuid": "044fa3f5_3e17ecc7",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 146,
+        "endChar": 49
+      },
+      "revId": "8ab82eccff1cd0a11ac8c78bf38edf9399be357a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05ccd107_24ff63c0",
         "filename": "android/bazel.go",
         "patchSetId": 9
