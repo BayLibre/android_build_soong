@@ -14,6 +14,12 @@
 #   TARGET_PRODUCT        target device name, e.g., 'aosp_blueline'
 #   XREF_CORPUS           source code repository URI, e.g., 'android.googlesource.com/platform/superproject'
 
+# If the SUPERPROJECT_REVISION is defined as a sha, use this as the default value if no
+# SUPERPROJECT_SHA is specified.
+if [[ $SUPERPROJECT_REVISION =~ [0-9a-f]{40} ]]; then
+  : ${SUPERPROJECT_SHA:=$SUPERPROJECT_REVISION}
+fi
+
 : ${BUILD_NUMBER:=$(uuidgen)}
 : ${SUPERPROJECT_SHA:=$BUILD_NUMBER}
 : ${KYTHE_JAVA_SOURCE_BATCH_SIZE:=500}
