@@ -22,6 +22,30 @@
       },
       "revId": "2933f4be995cf5872a0fc422e9d06f9b92f4423b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02a6cb01_c3d4aee0",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-17T18:30:20Z",
+      "side": 1,
+      "message": "You\u0027re absolutely right. Thanks. This was an artifact from when I was tracking these two lists separately.",
+      "parentUuid": "6d744433_fb486d42",
+      "range": {
+        "startLine": 268,
+        "startChar": 3,
+        "endLine": 272,
+        "endChar": 100
+      },
+      "revId": "2933f4be995cf5872a0fc422e9d06f9b92f4423b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
