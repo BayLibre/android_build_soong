@@ -70,6 +70,24 @@
       "parentUuid": "0573c0b4_74b6331e",
       "revId": "14e49130bbeba7d222c8851e2f59710ac0f6eb71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd6c25a9_c256829b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-17T21:40:47Z",
+      "side": 1,
+      "message": "If you could submit them ASAP in AOSP then that will make it easier for me to upload my changes.\n\nI believe that ngeoffray@ has DrNo power. Does mathewi@?",
+      "parentUuid": "b71d85fb_302531c7",
+      "revId": "14e49130bbeba7d222c8851e2f59710ac0f6eb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
