@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e927c61_50df6f59",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-17T10:35:39Z",
+      "side": 1,
+      "message": "Done for AOSP/.repo (and AOSP/out)\n\nBut AOSP/.git doesn\u0027t seem to exist",
+      "parentUuid": "e5ee78c3_796e01ec",
+      "range": {
+        "startLine": 378,
+        "startChar": 5,
+        "endLine": 378,
+        "endChar": 23
+      },
+      "revId": "461d8a94576963a3871734e582c6139fc55c6b08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17c92d13_9075d708",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-17T08:35:48Z",
       "side": 1,
       "message": "nit: why not check whether this is $OUT_DIR instead? (AFAIU it\u0027s available as Config.NinjaBuildDir(), quite an unintuitive name)\n\nAnd I suppose this would also take care of the generatedRoot check because that\u0027s always under NinjaBuildDir.",
+      "range": {
+        "startLine": 391,
+        "startChar": 4,
+        "endLine": 391,
+        "endChar": 34
+      },
+      "revId": "461d8a94576963a3871734e582c6139fc55c6b08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a47e7089_1e241a59",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-17T10:35:39Z",
+      "side": 1,
+      "message": "NinjaBuildDir seems to return the same as BuildDir in this case, i.e. out/soong instead of returning out. Can\u0027t see a nice way to find the real out dir from that file, going to keep hardcoding \"out\" for now\n\nI also think we should keep the generatedRoot check in case that folder ever moves",
+      "parentUuid": "17c92d13_9075d708",
       "range": {
         "startLine": 391,
         "startChar": 4,
