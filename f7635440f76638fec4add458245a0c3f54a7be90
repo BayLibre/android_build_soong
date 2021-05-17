@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad0a9698_a6a25def",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-17T04:16:48Z",
+      "side": 1,
+      "message": "nit: \"union\" suggests that the duplicates will be removed, but the implementation suggests otherwise. Call it append?",
+      "range": {
+        "startLine": 164,
+        "startChar": 5,
+        "endLine": 164,
+        "endChar": 10
+      },
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "907c3d20_a2a9ccae",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-17T04:16:48Z",
+      "side": 1,
+      "message": "This file doesn\u0027t exist in filesystem?",
+      "range": {
+        "startLine": 1067,
+        "startChar": 19,
+        "endLine": 1067,
+        "endChar": 39
+      },
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2afb4369_5e7fead7",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-17T04:16:48Z",
+      "side": 1,
+      "message": "Duplicated with the previous line.",
+      "range": {
+        "startLine": 94,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 0
+      },
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d8b2978_7153590e",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-17T04:16:48Z",
+      "side": 1,
+      "message": "dependencies",
+      "range": {
+        "startLine": 268,
+        "startChar": 47,
+        "endLine": 268,
+        "endChar": 60
+      },
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b8a06cf_5acd5f22",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-17T04:16:48Z",
+      "side": 1,
+      "message": "LabelList",
+      "range": {
+        "startLine": 268,
+        "startChar": 21,
+        "endLine": 268,
+        "endChar": 29
+      },
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "862f24fe_dbde665b",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-17T04:16:48Z",
+      "side": 1,
+      "message": "nit: call this generatedHdrsAndSrcs?",
+      "range": {
+        "startLine": 269,
+        "startChar": 3,
+        "endLine": 269,
+        "endChar": 22
+      },
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
