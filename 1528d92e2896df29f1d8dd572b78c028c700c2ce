@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d69d1554_59ef1c0c",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1256,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-17T10:22:36Z",
+      "side": 1,
+      "message": "nit: I think the style is:\n\n  if props, ok :\u003d getChildPropertyStruct(ctx, archStruct, v, prefix); \nok {\n    result \u003d append(result, props)\n  }",
+      "range": {
+        "startLine": 1253,
+        "startChar": 4,
+        "endLine": 1256,
+        "endChar": 5
+      },
+      "revId": "1528d92e2896df29f1d8dd572b78c028c700c2ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65a78988_838a2da4",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1911,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-17T10:22:36Z",
+      "side": 1,
+      "message": "GetTargetProperties?",
+      "range": {
+        "startLine": 1911,
+        "startChar": 40,
+        "endLine": 1911,
+        "endChar": 57
+      },
+      "revId": "1528d92e2896df29f1d8dd572b78c028c700c2ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
