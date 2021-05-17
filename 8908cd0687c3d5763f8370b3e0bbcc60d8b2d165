@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8db7efba_13b3c39b",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-17T17:31:44Z",
+      "side": 1,
+      "message": "it seems a bit confusing to have the function called emitCopy and not emit a copy here also? Since the copy seems limited to variable references, please update the name to better describe the narrow scope it has",
+      "range": {
+        "startLine": 349,
+        "startChar": 1,
+        "endLine": 349,
+        "endChar": 13
+      },
+      "revId": "8908cd0687c3d5763f8370b3e0bbcc60d8b2d165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
