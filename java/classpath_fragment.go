@@ -18,6 +18,7 @@ package java
 
 import (
 	"fmt"
+	"github.com/google/blueprint"
 	"strings"
 
 	"android/soong/android"
@@ -156,4 +157,24 @@ func (c *ClasspathFragmentBase) androidMkEntries() []android.AndroidMkEntries {
 			},
 		},
 	}}
+}
+
+var ClasspathFragmentProtoContentInfoProvider = blueprint.NewProvider(ClasspathFragmentProtoContentInfo{})
+
+type ClasspathFragmentProtoContentInfo struct {
+	// ClasspathFragmentProtoOutput is an output path for the generated classpaths.proto config of this module.
+	//
+	// The file should be copied to a relevant place on device, see ClasspathFragmentProtoInstallDir
+	// for more details.
+	ClasspathFragmentProtoOutput android.OutputPath
+
+	// ClasspathFragmentProtoInstallDir contains information about on device location for the generated classpaths.proto file.
+	//
+	// The path encodes expected sub-location within partitions, i.e. etc/classpaths/<proto-file>,
+	// for ClasspathFragmentProtoOutput. To get sub-location, instead of the full output / make path
+	// use android.InstallPath#Rel().
+	//
+	// This is only relevant for APEX modules as they perform their own installation; while regular
+	// system files are installed via ClasspathFragmentBase#androidMkEntries().
+	ClasspathFragmentProtoInstallDir android.InstallPath
 }

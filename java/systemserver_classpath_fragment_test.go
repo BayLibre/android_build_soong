@@ -20,13 +20,13 @@ import (
 	"android/soong/android"
 )
 
-var prepareForTestWithSystemserverClasspath = android.GroupFixturePreparers(
+var prepareForTestWithSystemServerClasspath = android.GroupFixturePreparers(
 	PrepareForTestWithJavaDefaultModules,
 )
 
-func TestSystemserverClasspathVariant(t *testing.T) {
+func TestPlatformSystemserverClasspathVariant(t *testing.T) {
 	result := android.GroupFixturePreparers(
-		prepareForTestWithSystemserverClasspath,
+		prepareForTestWithSystemServerClasspath,
 		android.FixtureWithRootAndroidBp(`
 			platform_systemserverclasspath {
 				name: "platform-systemserverclasspath",
@@ -36,11 +36,12 @@ func TestSystemserverClasspathVariant(t *testing.T) {
 
 	variants := result.ModuleVariantsForTests("platform-systemserverclasspath")
 	android.AssertIntEquals(t, "expect 1 variant", 1, len(variants))
+	android.AssertStringEquals(t, "expected variant", "android_common", variants[0])
 }
 
-func TestSystemserverClasspath_ClasspathFragmentPaths(t *testing.T) {
+func TestPlatformSystemserverClasspath_ClasspathFragmentPaths(t *testing.T) {
 	result := android.GroupFixturePreparers(
-		prepareForTestWithSystemserverClasspath,
+		prepareForTestWithSystemServerClasspath,
 		android.FixtureWithRootAndroidBp(`
 			platform_systemserverclasspath {
 				name: "platform-systemserverclasspath",
@@ -53,9 +54,9 @@ func TestSystemserverClasspath_ClasspathFragmentPaths(t *testing.T) {
 	android.AssertPathRelativeToTopEquals(t, "install filepath", "out/soong/target/product/test_device/system/etc/classpaths", p.ClasspathFragmentBase.installDirPath)
 }
 
-func TestSystemserverClasspathModule_AndroidMkEntries(t *testing.T) {
+func TestPlatformSystemserverClasspathModule_AndroidMkEntries(t *testing.T) {
 	preparer := android.GroupFixturePreparers(
-		prepareForTestWithSystemserverClasspath,
+		prepareForTestWithSystemServerClasspath,
 		android.FixtureWithRootAndroidBp(`
 			platform_systemserverclasspath {
 				name: "platform-systemserverclasspath",
@@ -94,4 +95,15 @@ func TestSystemserverClasspathModule_AndroidMkEntries(t *testing.T) {
 			}
 		}
 	})
+}
+
+func TestSystemserverclasspathFragmentWithoutContents(t *testing.T) {
+	prepareForTestWithSystemServerClasspath.
+		ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
+			`\Qempty contents are not allowed\E`)).
+		RunTestWithBp(t, `
+			systemserverclasspath_fragment {
+				name: "systemserverclasspath-fragment",
+			}
+		`)
 }
