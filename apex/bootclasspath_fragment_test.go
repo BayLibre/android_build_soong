@@ -141,6 +141,114 @@ test_device/dex_artjars/android/apex/art_boot_images/javalib/arm64/boot-quuz.vde
 `)
 }
 
+func TestBootclasspathFragments_FragmentDependency(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForTestWithBootclasspathFragment,
+		// Configure some libraries in the art bootclasspath_fragment and platform_bootclasspath.
+		java.FixtureConfigureBootJars("com.android.art:baz", "com.android.art:quuz", "platform:foo", "platform:bar"),
+		prepareForTestWithArtApex,
+
+		java.PrepareForTestWithJavaSdkLibraryFiles,
+		java.FixtureWithLastReleaseApis("foo", "baz"),
+	).RunTestWithBp(t, `
+		java_sdk_library {
+			name: "foo",
+			srcs: ["b.java"],
+			shared_library: false,
+			public: {
+				enabled: true,
+			},
+			system: {
+				enabled: true,
+			},
+		}
+
+		java_library {
+			name: "bar",
+			srcs: ["b.java"],
+			installable: true,
+		}
+
+		apex {
+			name: "com.android.art",
+			key: "com.android.art.key",
+			bootclasspath_fragments: ["art-bootclasspath-fragment"],
+			updatable: false,
+		}
+
+		apex_key {
+			name: "com.android.art.key",
+			public_key: "com.android.art.avbpubkey",
+			private_key: "com.android.art.pem",
+		}
+
+		java_sdk_library {
+			name: "baz",
+			apex_available: [
+				"com.android.art",
+			],
+			srcs: ["b.java"],
+			shared_library: false,
+			public: {
+				enabled: true,
+			},
+			system: {
+				enabled: true,
+			},
+			test: {
+				enabled: true,
+			},
+		}
+
+		java_library {
+			name: "quuz",
+			apex_available: [
+				"com.android.art",
+			],
+			srcs: ["b.java"],
+			compile_dex: true,
+		}
+
+		bootclasspath_fragment {
+			name: "art-bootclasspath-fragment",
+			image_name: "art",
+			// Must match the "com.android.art:" entries passed to FixtureConfigureBootJars above.
+			contents: ["baz", "quuz"],
+			apex_available: [
+				"com.android.art",
+			],
+		}
+
+		bootclasspath_fragment {
+			name: "other-bootclasspath-fragment",
+			contents: ["foo", "bar"],
+			fragments: [
+					{
+							apex: "com.android.art",
+							module: "art-bootclasspath-fragment",
+					},
+			],
+		}
+`,
+	)
+
+	artFragment := result.Module("art-bootclasspath-fragment", "android_common")
+	artInfo := result.ModuleProvider(artFragment, java.HiddenAPIInfoProvider).(java.HiddenAPIInfo)
+
+	// The widest API stubs provided by the contents of art-bootclasspath-fragment are baz's test
+	// stubs.
+	bazTestStubsDexJar := "out/soong/.intermediates/baz.stubs.test/android_common/dex/baz.stubs.test.jar"
+	android.AssertPathsRelativeToTopEquals(t, "art exports", []string{bazTestStubsDexJar}, artInfo.WidestApiStubDexJars)
+
+	otherFragment := result.Module("other-bootclasspath-fragment", "android_common")
+	otherInfo := result.ModuleProvider(otherFragment, java.HiddenAPIInfoProvider).(java.HiddenAPIInfo)
+
+	// The widest API stubs provided by the contents of other-bootclasspath-fragment are foo's system
+	// stubs.
+	fooSystemStubsDexJar := "out/soong/.intermediates/foo.stubs.system/android_common/dex/foo.stubs.system.jar"
+	android.AssertPathsRelativeToTopEquals(t, "other exports", []string{bazTestStubsDexJar, fooSystemStubsDexJar}, otherInfo.WidestApiStubDexJars)
+}
+
 func checkBootclasspathFragment(t *testing.T, result *android.TestResult, moduleName string, expectedConfiguredModules string, expectedBootclasspathFragmentFiles string) {
 	t.Helper()
 
