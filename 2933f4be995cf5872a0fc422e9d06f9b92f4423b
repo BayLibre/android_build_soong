@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d744433_fb486d42",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-17T18:00:22Z",
+      "side": 1,
+      "message": "isn\u0027t this already handled in parseSrcs?",
+      "range": {
+        "startLine": 268,
+        "startChar": 3,
+        "endLine": 272,
+        "endChar": 100
+      },
+      "revId": "2933f4be995cf5872a0fc422e9d06f9b92f4423b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
