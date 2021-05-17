@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aec1a523_c619c83f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-17T17:12:00Z",
+      "side": 1,
+      "message": "oops, sorry about that. I thought about it, but figured it wasn\u0027t a problem, or it wouldn\u0027t fail.",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 23
+      },
+      "revId": "70cfdff3da2ea07cd5cb7f7b91474f6fa0c248e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2c8b87_f913a4b0",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-17T17:12:00Z",
+      "side": 1,
+      "message": "makes sense.",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 499,
+        "endChar": 19
+      },
+      "revId": "70cfdff3da2ea07cd5cb7f7b91474f6fa0c248e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
