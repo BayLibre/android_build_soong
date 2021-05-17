@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a301dae5_4d9d013d",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-17T07:54:38Z",
+      "side": 1,
+      "message": "Also libc_common, libc_common_static and libc_common_shared: \n\n$ bazel build --config\u003dbp2build //bionic/libc:libc_common_static //bionic/libc:libc_common_shared //bionic/libc:libc_common\nINFO: Analyzed 3 targets (0 packages loaded, 0 targets configured).\nINFO: Found 3 targets...\nINFO: Elapsed time: 0.277s, Critical Path: 0.00s\nINFO: 1 process: 1 internal.\nINFO: Build completed successfully, 1 total action",
+      "parentUuid": "91f3dba3_72e5b323",
+      "range": {
+        "startLine": 182,
+        "startChar": 2,
+        "endLine": 182,
+        "endChar": 19
+      },
+      "revId": "f7635440f76638fec4add458245a0c3f54a7be90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad0a9698_a6a25def",
         "filename": "bazel/properties.go",
         "patchSetId": 5
