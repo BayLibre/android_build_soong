@@ -824,30 +824,54 @@ func outputUnnamedValue(contents *generatedContents, value reflect.Value) {
 	case reflect.String:
 		contents.UnindentedPrintf("%q", value)
 
+	case reflect.Ptr:
+		outputUnnamedValue(contents, value.Elem())
+
 	case reflect.Slice:
 		length := value.Len()
 		if length == 0 {
 			contents.UnindentedPrintf("[]")
-		} else if length == 1 {
-			contents.UnindentedPrintf("[")
-			outputUnnamedValue(contents, value.Index(0))
-			contents.UnindentedPrintf("]")
 		} else {
-			contents.UnindentedPrintf("[\n")
-			contents.Indent()
-			for i := 0; i < length; i++ {
-				itemValue := value.Index(i)
-				contents.IndentedPrintf("")
-				outputUnnamedValue(contents, itemValue)
-				contents.UnindentedPrintf(",\n")
+			firstValue := value.Index(0)
+			if length == 1 && singleLineValue(firstValue) {
+				contents.UnindentedPrintf("[")
+				outputUnnamedValue(contents, firstValue)
+				contents.UnindentedPrintf("]")
+			} else {
+				contents.UnindentedPrintf("[\n")
+				contents.Indent()
+				for i := 0; i < length; i++ {
+					itemValue := value.Index(i)
+					contents.IndentedPrintf("")
+					outputUnnamedValue(contents, itemValue)
+					contents.UnindentedPrintf(",\n")
+				}
+				contents.Dedent()
+				contents.IndentedPrintf("]")
 			}
-			contents.Dedent()
-			contents.IndentedPrintf("]")
 		}
+
+	case reflect.Struct:
+		contents.UnindentedPrintf("{\n")
+		contents.Indent()
+		for f := 0; f < valueType.NumField(); f++ {
+			fieldValue := value.Field(f)
+			fieldName := valueType.Field(f).Name
+			propertyName := proptools.PropertyNameForField(fieldName)
+			outputNamedValue(contents, propertyName, fieldValue)
+		}
+		contents.Dedent()
+		contents.IndentedPrintf("}")
 
 	default:
 		panic(fmt.Errorf("Unknown type: %T of value %#v", value, value))
 	}
+}
+
+// singleLineValue returns true if the supplied value can be output on a single line, false
+// otherwise.
+func singleLineValue(value reflect.Value) bool {
+	return value.Kind() == reflect.String
 }
 
 func (s *sdk) GetAndroidBpContentsForTests() string {
