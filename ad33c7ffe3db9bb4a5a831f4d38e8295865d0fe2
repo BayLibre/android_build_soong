@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63a4381d_f9a9a0c9",
+        "filename": "java/app_import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-05-18T21:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33461238_39712cbf",
+      "revId": "ad33c7ffe3db9bb4a5a831f4d38e8295865d0fe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1a7cf81_33919633",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-05-18T20:41:11Z",
       "side": 1,
       "message": "android.PathForModuleInstall uses filepath.Join, which ignores empty elements. You don\u0027t need to check empty strings here.",
+      "revId": "ad33c7ffe3db9bb4a5a831f4d38e8295865d0fe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "069f28bc_d709e232",
+        "filename": "java/app_import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-05-18T21:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1a7cf81_33919633",
       "revId": "ad33c7ffe3db9bb4a5a831f4d38e8295865d0fe2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f96651a_c5d1de21",
+        "filename": "java/app_import_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-05-18T21:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e6252ba_46ef72e7",
+      "revId": "ad33c7ffe3db9bb4a5a831f4d38e8295865d0fe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3a94b84_99ddf13d",
@@ -65,6 +119,30 @@
       "writtenOn": "2021-05-18T20:41:11Z",
       "side": 1,
       "message": "You can probably check mod.installPath instead.",
+      "range": {
+        "startLine": 557,
+        "startChar": 96,
+        "endLine": 557,
+        "endChar": 123
+      },
+      "revId": "ad33c7ffe3db9bb4a5a831f4d38e8295865d0fe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a320742_f7cff900",
+        "filename": "java/app_import_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-05-18T21:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3a94b84_99ddf13d",
       "range": {
         "startLine": 557,
         "startChar": 96,
