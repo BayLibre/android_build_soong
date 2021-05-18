@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dbc3fed_3019a1d9",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-18T17:53:36Z",
+      "side": 1,
+      "message": "Minor nit: Context feels so overloaded in this codebase -- it seems like this may parse as well as aqueryArtifacts. If there are other changes, a rename of some sort would be nice.",
+      "range": {
+        "startLine": 86,
+        "startChar": 19,
+        "endLine": 86,
+        "endChar": 26
+      },
+      "revId": "74f81763d9c0cfc0c10adaa643c4eb77c93799ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6ca9523_c5134a03",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-18T17:53:36Z",
+      "side": 1,
+      "message": "go style guide recommends short receiver names: go/go-style/decisions#receiver-names",
+      "range": {
+        "startLine": 139,
+        "startChar": 6,
+        "endLine": 139,
+        "endChar": 15
+      },
+      "revId": "74f81763d9c0cfc0c10adaa643c4eb77c93799ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1751193_2c4d8caf",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-18T17:53:36Z",
+      "side": 1,
+      "message": "again optional, but since this is now a receiver function, may be nice to group it with the other receiver functions.",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 1
+      },
+      "revId": "74f81763d9c0cfc0c10adaa643c4eb77c93799ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e008ee7_7756ff35",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-18T17:53:36Z",
+      "side": 1,
+      "message": "did we also want to assert on the OutputPaths?",
+      "range": {
+        "startLine": 798,
+        "startChar": 26,
+        "endLine": 798,
+        "endChar": 36
+      },
+      "revId": "74f81763d9c0cfc0c10adaa643c4eb77c93799ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
