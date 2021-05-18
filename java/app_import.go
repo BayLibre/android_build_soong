@@ -99,6 +99,9 @@ type AndroidAppImportProperties struct {
 	// If set, create package-export.apk, which other packages can
 	// use to get PRODUCT-agnostic resource data like IDs and type definitions.
 	Export_package_resources *bool
+
+	// Optional. Install to a subdirectory of the default install path for the module
+	Relative_install_path *string
 }
 
 func (a *AndroidAppImport) IsInstallable() bool {
@@ -263,20 +266,27 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 	jnisUncompressed := android.PathForModuleOut(ctx, "jnis-uncompressed", ctx.ModuleName()+".apk")
 	a.uncompressEmbeddedJniLibs(ctx, srcApk, jnisUncompressed.OutputPath)
 
-	var installDir android.InstallPath
+	pathFragments := []string{}
+
+	// Add relative_install_path if non empty
+	if String(a.properties.Relative_install_path) != "" {
+		pathFragments = append(pathFragments, String(a.properties.Relative_install_path))
+	}
 
 	if a.isPrebuiltFrameworkRes() {
 		// framework-res.apk is installed as system/framework/framework-res.apk
-		installDir = android.PathForModuleInstall(ctx, "framework")
+		pathFragments = append(pathFragments, "framework")
 		a.preprocessed = true
 	} else if Bool(a.properties.Privileged) {
-		installDir = android.PathForModuleInstall(ctx, "priv-app", a.BaseModuleName())
+		pathFragments = append(pathFragments, "priv-app", a.BaseModuleName())
 	} else if ctx.InstallInTestcases() {
-		installDir = android.PathForModuleInstall(ctx, a.BaseModuleName(), ctx.DeviceConfig().DeviceArch())
+		pathFragments = append(pathFragments, a.BaseModuleName(), ctx.DeviceConfig().DeviceArch())
 	} else {
-		installDir = android.PathForModuleInstall(ctx, "app", a.BaseModuleName())
+		pathFragments = append(pathFragments, "app", a.BaseModuleName())
 	}
 
+	var installDir android.InstallPath
+	installDir = android.PathForModuleInstall(ctx, pathFragments...)
 	a.dexpreopter.isApp = true
 	a.dexpreopter.installPath = installDir.Join(ctx, a.BaseModuleName()+".apk")
 	a.dexpreopter.isPresignedPrebuilt = Bool(a.properties.Presigned)
