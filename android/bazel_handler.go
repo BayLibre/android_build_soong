@@ -26,12 +26,12 @@ import (
 	"strings"
 	"sync"
 
-	"android/soong/bazel/cquery"
-
 	"github.com/google/blueprint/bootstrap"
 
 	"android/soong/bazel"
+	"android/soong/bazel/cquery"
 	"android/soong/shared"
+	"android/soong/ui/build"
 )
 
 type cqueryRequest interface {
@@ -715,15 +715,14 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 
 	// Add ninja file dependencies for files which all bazel invocations require.
 	bazelBuildList := absolutePath(filepath.Join(
-		filepath.Dir(bootstrap.CmdlineArgs.ModuleListFile), "bazel.list"))
+		filepath.Dir(bootstrap.CmdlineArgs.ModuleListFile), build.FINDER_BAZEL_FILES_FILENAME))
 	ctx.AddNinjaFileDeps(bazelBuildList)
-
 	data, err := ioutil.ReadFile(bazelBuildList)
 	if err != nil {
 		ctx.Errorf(err.Error())
 	}
-	files := strings.Split(strings.TrimSpace(string(data)), "\n")
-	for _, file := range files {
+	bazelFiles := strings.Split(strings.TrimSpace(string(data)), "\n")
+	for _, file := range bazelFiles {
 		ctx.AddNinjaFileDeps(file)
 	}
 

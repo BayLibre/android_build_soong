@@ -27,6 +27,8 @@ import (
 	"android/soong/ui/metrics"
 )
 
+const FINDER_BAZEL_FILES_FILENAME string = "bazel.list"
+
 // This file provides an interface to the Finder type for soong_ui. Finder is
 // used to recursively traverse the source tree to gather paths of files, such
 // as Android.bp or Android.mk, and store the lists/database of paths in files
@@ -76,6 +78,8 @@ func NewSourceFinder(ctx Context, config Config) (f *finder.Finder) {
 			"Blueprints",
 			// Bazel build definitions.
 			"BUILD.bazel",
+			// Bazel build definitions.
+			"BUILD",
 			// Kati clean definitions.
 			"CleanSpec.mk",
 			// Ownership definition.
@@ -102,7 +106,7 @@ func NewSourceFinder(ctx Context, config Config) (f *finder.Finder) {
 func findBazelFiles(entries finder.DirEntries) (dirNames []string, fileNames []string) {
 	matches := []string{}
 	for _, foundName := range entries.FileNames {
-		if foundName == "BUILD.bazel" || foundName == "WORKSPACE" || strings.HasSuffix(foundName, ".bzl") {
+		if foundName == "BUILD.bazel" || foundName == "BUILD" || foundName == "WORKSPACE" || strings.HasSuffix(foundName, ".bzl") {
 			matches = append(matches, foundName)
 		}
 	}
@@ -142,7 +146,7 @@ func FindSources(ctx Context, config Config, f *finder.Finder) {
 
 	// Recursively look for all Bazel related files.
 	bazelFiles := f.FindMatching(".", findBazelFiles)
-	err = dumpListToFile(ctx, config, bazelFiles, filepath.Join(dumpDir, "bazel.list"))
+	err = dumpListToFile(ctx, config, bazelFiles, filepath.Join(dumpDir, FINDER_BAZEL_FILES_FILENAME))
 	if err != nil {
 		ctx.Fatalf("Could not export bazel BUILD list: %v", err)
 	}
