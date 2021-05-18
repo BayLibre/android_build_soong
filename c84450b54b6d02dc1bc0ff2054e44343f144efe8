@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7847c86f_8ef14288",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-18T12:35:18Z",
+      "side": 1,
+      "message": "The presubmit results are kind of bizarre here. Something going wrong with the metrics code? Did not expect that... maybe soong-ui-build has an implicit dependency on something else...\n\ne.g.\n\nhttps://android-build.googleplex.com/builds/pending/P22857459/aosp_arm64-userdebug/latest/view/logs/build_error.log\n\n--- FAIL: TestUploadMetrics (0.00s)\n    --- FAIL: TestUploadMetrics/trigger_upload (0.00s)\n        upload_test.go:101: got unexpected error: Failed to run upload metrics: exec: \"echo\": executable file not found in $PATH\nFAIL",
+      "revId": "c84450b54b6d02dc1bc0ff2054e44343f144efe8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
