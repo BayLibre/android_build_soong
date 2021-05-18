@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c48f6b2a_c5abbe55",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-18T22:36:31Z",
+      "side": 1,
+      "message": "yep, just copy pasted originally.",
+      "parentUuid": "3d342fb7_e55a563b",
+      "range": {
+        "startLine": 927,
+        "startChar": 32,
+        "endLine": 927,
+        "endChar": 33
+      },
+      "revId": "04ea62aefeaad32458ef843446f3abcb64727725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4396f3a_076c5d36",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "935ead5a_4d56026d",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-18T22:36:31Z",
+      "side": 1,
+      "message": "a bit of extra io, an extraneous file? what advantage do we gain by always writing this file?",
+      "parentUuid": "e4396f3a_076c5d36",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 55
+      },
+      "revId": "04ea62aefeaad32458ef843446f3abcb64727725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c102aa18_66fc0668",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-05-18T02:51:17Z",
       "side": 1,
       "message": "Remove debug prints, here and below?",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 39
+      },
+      "revId": "04ea62aefeaad32458ef843446f3abcb64727725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcdc921b_74730da9",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-18T22:36:31Z",
+      "side": 1,
+      "message": "thanks, I thought I\u0027d uploaded one without these, but clearly did not (:",
+      "parentUuid": "c102aa18_66fc0668",
       "range": {
         "startLine": 99,
         "startChar": 3,
