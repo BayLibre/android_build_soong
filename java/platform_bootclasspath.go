@@ -281,14 +281,14 @@ func (b *platformBootclasspathModule) generateHiddenAPIBuildActions(ctx android.
 
 	flagFileInfo := b.properties.Hidden_api.hiddenAPIFlagFileInfo(ctx)
 	for _, fragment := range fragments {
-		if ctx.OtherModuleHasProvider(fragment, hiddenAPIFlagFileInfoProvider) {
-			info := ctx.OtherModuleProvider(fragment, hiddenAPIFlagFileInfoProvider).(hiddenAPIFlagFileInfo)
+		if ctx.OtherModuleHasProvider(fragment, HiddenAPIInfoProvider) {
+			info := ctx.OtherModuleProvider(fragment, HiddenAPIInfoProvider).(HiddenAPIInfo)
 			flagFileInfo.append(info)
 		}
 	}
 
 	// Store the information for testing.
-	ctx.SetProvider(hiddenAPIFlagFileInfoProvider, flagFileInfo)
+	ctx.SetProvider(HiddenAPIInfoProvider, flagFileInfo)
 
 	hiddenAPIModules := gatherHiddenAPIModuleFromContents(ctx, modules)
 
