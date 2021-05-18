@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "547e9c63_8be2cd73",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-18T16:31:05Z",
+      "side": 1,
+      "message": "Could this use android.ApiLevel?",
+      "range": {
+        "startLine": 435,
+        "startChar": 32,
+        "endLine": 435,
+        "endChar": 62
+      },
+      "revId": "a43b396410c62fce6b410f3f7cf5398d9a23976b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
