@@ -19,6 +19,7 @@ package cc
 import (
 	"fmt"
 	"reflect"
+	"strconv"
 	"strings"
 
 	"android/soong/android"
@@ -430,6 +431,11 @@ func MutateImage(mctx android.BaseModuleContext, m ImageMutatableModule) {
 	recoverySnapshotVersion := mctx.DeviceConfig().RecoverySnapshotVersion()
 	usingRecoverySnapshot := recoverySnapshotVersion != "current" &&
 		recoverySnapshotVersion != ""
+	usingVndkSnapshotForLlndk := false
+	if boardVndkVersionInt, err := strconv.Atoi(boardVndkVersion); err == nil {
+		// VNDK snapshot newer than v30 has LLNDK stub libraries
+		usingVndkSnapshotForLlndk = boardVndkVersionInt > 30
+	}
 	if boardVndkVersion == "current" {
 		boardVndkVersion = platformVndkVersion
 	}
@@ -446,7 +452,9 @@ func MutateImage(mctx android.BaseModuleContext, m ImageMutatableModule) {
 			vendorVariants = append(vendorVariants, platformVndkVersion)
 			productVariants = append(productVariants, platformVndkVersion)
 		}
-		if boardVndkVersion != "" {
+		// Generate vendor variants for boardVndkVersion only if the VNDK snapshot does not
+		// provide the LLNDK stub libraries.
+		if boardVndkVersion != "" && !usingVndkSnapshotForLlndk {
 			vendorVariants = append(vendorVariants, boardVndkVersion)
 		}
 		if productVndkVersion != "" {
