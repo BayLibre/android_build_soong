@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33461238_39712cbf",
+        "filename": "java/app_import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-05-18T20:41:11Z",
+      "side": 1,
+      "message": "relative_install_path should come last, not first.\n\ne.g. a regular app with \"rel/path\" relative_install_path should be installed under\n\"/system/app/rel/path/\"",
+      "revId": "ad33c7ffe3db9bb4a5a831f4d38e8295865d0fe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1a7cf81_33919633",
+        "filename": "java/app_import.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-05-18T20:41:11Z",
+      "side": 1,
+      "message": "android.PathForModuleInstall uses filepath.Join, which ignores empty elements. You don\u0027t need to check empty strings here.",
+      "revId": "ad33c7ffe3db9bb4a5a831f4d38e8295865d0fe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e6252ba_46ef72e7",
+        "filename": "java/app_import_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-05-18T20:41:11Z",
+      "side": 1,
+      "message": "Move this back where it was.\n\nWe order import groups in the \u003cgo imports\u003e -\u003e \u003cblueprint imports\u003e -\u003e \u003csoong imports\u003e order.",
+      "revId": "ad33c7ffe3db9bb4a5a831f4d38e8295865d0fe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3a94b84_99ddf13d",
+        "filename": "java/app_import_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-05-18T20:41:11Z",
+      "side": 1,
+      "message": "You can probably check mod.installPath instead.",
+      "range": {
+        "startLine": 557,
+        "startChar": 96,
+        "endLine": 557,
+        "endChar": 123
+      },
+      "revId": "ad33c7ffe3db9bb4a5a831f4d38e8295865d0fe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
