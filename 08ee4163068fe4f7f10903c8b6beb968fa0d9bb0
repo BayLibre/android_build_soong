@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c2e0e4_2bce633e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-18T17:26:52Z",
+      "side": 1,
+      "message": "what does this mean?",
+      "range": {
+        "startLine": 14,
+        "startChar": 38,
+        "endLine": 14,
+        "endChar": 58
+      },
+      "revId": "08ee4163068fe4f7f10903c8b6beb968fa0d9bb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03ff09f7_37541209",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-18T17:26:52Z",
+      "side": 1,
+      "message": "are they byte-for-byte same?",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 71
+      },
+      "revId": "08ee4163068fe4f7f10903c8b6beb968fa0d9bb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a4cf99a_6743f607",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-18T17:26:52Z",
+      "side": 1,
+      "message": "SdkCorePlatform is wider than SdkTest?",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 25
+      },
+      "revId": "08ee4163068fe4f7f10903c8b6beb968fa0d9bb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1398b677_df9f210c",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-18T17:26:52Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 384,
+        "startChar": 43,
+        "endLine": 384,
+        "endChar": 44
+      },
+      "revId": "08ee4163068fe4f7f10903c8b6beb968fa0d9bb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0437ff14_8446da01",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-18T17:26:52Z",
+      "side": 1,
+      "message": "I am not sure I follow why this is needed / correct?",
+      "range": {
+        "startLine": 523,
+        "startChar": 2,
+        "endLine": 526,
+        "endChar": 3
+      },
+      "revId": "08ee4163068fe4f7f10903c8b6beb968fa0d9bb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
