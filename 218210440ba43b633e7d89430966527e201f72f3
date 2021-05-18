@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffde204e_05a1327a",
+        "filename": "bp2build/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-18T12:04:12Z",
+      "side": 1,
+      "message": "..for now, I presume? The only handcrafted targets are in prebuilts/clang/host/linux-x86, and once we start converting llvm_prebuilt_static_library and other modules in that package, we\u0027ll run into conflicts.",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 61
+      },
+      "revId": "218210440ba43b633e7d89430966527e201f72f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9ba8cbe_869d787f",
+        "filename": "bp2build/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-18T12:04:12Z",
+      "side": 1,
+      "message": "In this morning\u0027s sync, \"Android.bazel\" and \"BUILD.android\" were various options. I also like \"Android.build\"",
+      "range": {
+        "startLine": 26,
+        "startChar": 125,
+        "endLine": 26,
+        "endChar": 142
+      },
+      "revId": "218210440ba43b633e7d89430966527e201f72f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
