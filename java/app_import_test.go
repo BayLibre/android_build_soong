@@ -15,12 +15,11 @@
 package java
 
 import (
+	"github.com/google/blueprint/proptools"
 	"reflect"
 	"regexp"
 	"strings"
 	"testing"
-
-	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
 )
@@ -490,6 +489,72 @@ func TestAndroidAppImport_frameworkRes(t *testing.T) {
 		t.Errorf("LOCAL_SOONG_RESOURCE_EXPORT_PACKAGE incorrect len %d", len(actualSoongResourceExportPackage))
 	} else if actualSoongResourceExportPackage[0] != expectedSoongResourceExportPackage {
 		t.Errorf("LOCAL_SOONG_RESOURCE_EXPORT_PACKAGE mismatch, actual: %s, expected: %s", actualSoongResourceExportPackage[0], expectedSoongResourceExportPackage)
+	}
+}
+
+func TestAndroidAppImport_relativeInstallPath(t *testing.T) {
+	bp := `
+		android_app_import {
+			name: "no_relative_install_path",
+			apk: "prebuilts/apk/app.apk",
+			presigned: true,
+		}
+
+		android_app_import {
+			name: "relative_install_path",
+			apk: "prebuilts/apk/app.apk",
+			presigned: true,
+			relative_install_path: "my/path",
+		}
+
+		android_app_import {
+			name: "framework-res",
+			apk: "prebuilts/apk/app.apk",
+			presigned: true,
+			prefer: true,
+			relative_install_path: "my/path"
+		}
+
+		android_app_import {
+			name: "privileged_relative_install_path",
+			apk: "prebuilts/apk/app.apk",
+			presigned: true,
+			privileged: true,
+			relative_install_path: "my/path"
+		}
+
+
+		`
+	testCases := []struct {
+		name                string
+		expectedInstallPath string
+		errorMessage        string
+	}{
+		{
+			name:                "no_relative_install_path",
+			expectedInstallPath: "out/soong/target/product/test_device/system/app/no_relative_install_path/no_relative_install_path.apk",
+			errorMessage:        "Install path is not correct when relative_install_path is missing",
+		},
+		{
+			name:                "relative_install_path",
+			expectedInstallPath: "out/soong/target/product/test_device/system/my/path/app/relative_install_path/relative_install_path.apk",
+			errorMessage:        "Install path is not correct for app when relative_install_path is present",
+		},
+		{
+			name:                "prebuilt_framework-res",
+			expectedInstallPath: "out/soong/target/product/test_device/system/my/path/framework/framework-res.apk",
+			errorMessage:        "Install path is not correct for framework when relative_install_path is present",
+		},
+		{
+			name:                "privileged_relative_install_path",
+			expectedInstallPath: "out/soong/target/product/test_device/system/my/path/priv-app/privileged_relative_install_path/privileged_relative_install_path.apk",
+			errorMessage:        "Install path is not correct for privileged app when relative_install_path is present",
+		},
+	}
+	for _, testCase := range testCases {
+		ctx, _ := testJava(t, bp)
+		mod := ctx.ModuleForTests(testCase.name, "android_common").Module().(*AndroidAppImport)
+		android.AssertPathRelativeToTopEquals(t, testCase.errorMessage, testCase.expectedInstallPath, mod.dexpreopter.installPath)
 	}
 }
 
