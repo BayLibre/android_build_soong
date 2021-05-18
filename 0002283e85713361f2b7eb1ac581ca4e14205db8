@@ -34,6 +34,24 @@
       "parentUuid": "7700fac9_893067f5",
       "revId": "0002283e85713361f2b7eb1ac581ca4e14205db8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a14bbb9c_2488423d",
+        "filename": "build_kzip.bash",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1133649
+      },
+      "writtenOn": "2021-05-18T21:58:23Z",
+      "side": 1,
+      "message": "Got it, thanks for the explanation.\n\nI still wonder if it would be use to say what\u0027s happening here, but if no one looks at STDERR then that has little value.",
+      "parentUuid": "4e46ac32_e4850c5c",
+      "revId": "0002283e85713361f2b7eb1ac581ca4e14205db8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
