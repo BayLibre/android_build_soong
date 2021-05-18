@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2eea78fc_f4ed34ce",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-18T17:09:01Z",
+      "side": 1,
+      "message": "Yeap, I think we are roughly on the same page. However, I need ConfiguredJarList for now at least to get on device path correctly. I plan to replace the path with relative path within /apex, so I wouldn\u0027t need an apex name but that would come as a follow up if you don\u0027t mind.",
+      "parentUuid": "d4cfa532_57b1ae98",
+      "revId": "6fbdd7353ae21d387794ce25b6ef728539c3a821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "917370f8_7b129af8",
         "filename": "java/platform_bootclasspath.go",
         "patchSetId": 10

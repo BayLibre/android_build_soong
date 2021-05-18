@@ -16,6 +16,24 @@
       "message": "Is there any reason why you can\u0027t iterate over the list of content modules, use ApexInfoProvider to get an ApexInfo and then check ApexInfo.Updatable?",
       "revId": "dfcffc948ee9ebb6de2441760088df857b34eaf1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe11799d_fb55ad31",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-18T17:09:01Z",
+      "side": 1,
+      "message": "Ideally we should do that, but I am not sure if AOSP has all updatable bits set correctly. (If I find time, I want to fix this for S...)",
+      "parentUuid": "20e23c6c_9d2e13b6",
+      "revId": "dfcffc948ee9ebb6de2441760088df857b34eaf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
