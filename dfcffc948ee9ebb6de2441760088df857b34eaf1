@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11cc67f6_9d6f5c98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-18T17:09:57Z",
+      "side": 1,
+      "message": "Oh, by the way, I didn\u0027t mean to check for presubmit yet. We need to finish creating all bootclasspath_Fragments, and then populating platform-bootclasspath (probably) in the same topic with this change.",
+      "revId": "dfcffc948ee9ebb6de2441760088df857b34eaf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20e23c6c_9d2e13b6",
