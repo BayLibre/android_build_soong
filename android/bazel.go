@@ -204,7 +204,6 @@ var (
 		"note_memtag_heap_async", // http://b/185127353: cc_library_static, error: feature.h not found
 		"note_memtag_heap_sync",  // http://b/185127353: cc_library_static, error: feature.h not found
 
-		"libjemalloc5",           // cc_library, ld.lld: error: undefined symbol: memset
 		"gwp_asan_crash_handler", // cc_library, ld.lld: error: undefined symbol: memset
 
 		// Tests. Handle later.
@@ -217,7 +216,8 @@ var (
 	// Per-module denylist of cc_library modules to only generate the static
 	// variant if their shared variant isn't ready or buildable by Bazel.
 	bp2buildCcLibraryStaticOnlyList = []string{
-		"libstdc++", // http://b/186822597, cc_library, ld.lld: error: undefined symbol: __errno
+		"libstdc++",    // http://b/186822597, cc_library, ld.lld: error: undefined symbol: __errno
+		"libjemalloc5", // http://b/188503688, cc_library, `target: { android: { enabled: false } }` for android targets.
 	}
 
 	// Per-module denylist to opt modules out of mixed builds. Such modules will
