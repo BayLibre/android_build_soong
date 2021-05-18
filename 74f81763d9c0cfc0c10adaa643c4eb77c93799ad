@@ -187,6 +187,30 @@
       },
       "revId": "74f81763d9c0cfc0c10adaa643c4eb77c93799ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8382be3_359b29c6",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-18T18:11:09Z",
+      "side": 1,
+      "message": "it shouldn\u0027t but we don\u0027t want the middleman action output to ever leak through. Though I guess checking the # of build statements is doing that... sorry.",
+      "parentUuid": "102a0aaf_39ba23b8",
+      "range": {
+        "startLine": 798,
+        "startChar": 26,
+        "endLine": 798,
+        "endChar": 36
+      },
+      "revId": "74f81763d9c0cfc0c10adaa643c4eb77c93799ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
