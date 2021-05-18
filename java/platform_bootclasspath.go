@@ -292,12 +292,12 @@ func (b *platformBootclasspathModule) generateHiddenAPIBuildActions(ctx android.
 
 	hiddenAPIModules := gatherHiddenAPIModuleFromContents(ctx, modules)
 
-	sdkKindToStubPaths := hiddenAPIGatherStubLibDexJarPaths(ctx, nil)
+	stubLibInfo := hiddenAPIGatherStubLibInfo(ctx, nil)
 
 	// Generate the monolithic stub-flags.csv file.
 	bootDexJars := extractBootDexJarsFromHiddenAPIModules(ctx, hiddenAPIModules)
 	stubFlags := hiddenAPISingletonPaths(ctx).stubFlags
-	rule := ruleToGenerateHiddenAPIStubFlagsFile(ctx, stubFlags, nil, bootDexJars, sdkKindToStubPaths)
+	rule := ruleToGenerateHiddenAPIStubFlagsFile(ctx, stubFlags, nil, bootDexJars, stubLibInfo.stubJarsByKind)
 	rule.Build("platform-bootclasspath-monolithic-hiddenapi-stub-flags", "monolithic hidden API stub flags")
 
 	// Extract the classes jars from the contents.
@@ -309,7 +309,7 @@ func (b *platformBootclasspathModule) generateHiddenAPIBuildActions(ctx android.
 
 	// Generate the monotlithic hiddenapi-flags.csv file.
 	allFlags := hiddenAPISingletonPaths(ctx).flags
-	buildRuleToGenerateHiddenApiFlags(ctx, "hiddenAPIFlagsFile", "hiddenapi flags", allFlags, stubFlags, annotationFlags, &hiddenAPIInfo)
+	buildRuleToGenerateHiddenApiFlags(ctx, "hiddenAPIFlagsFile", "hiddenapi flags", allFlags, stubFlags, annotationFlags, &hiddenAPIInfo, android.OptionalPath{})
 
 	// Generate an intermediate monolithic hiddenapi-metadata.csv file directly from the annotations
 	// in the source code.
