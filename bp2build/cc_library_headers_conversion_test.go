@@ -286,10 +286,11 @@ cc_library_headers {
         "-I$(BINDIR)/.",
     ],
     deps = select({
-        "//build/bazel/platforms/os:android": [
-            ":android-lib",
-            ":exported-lib",
-        ],
+        "//build/bazel/platforms/os:android": [":android-lib"],
+        "//conditions:default": [],
+    }),
+    implementation_deps = select({
+        "//build/bazel/platforms/os:android": [":exported-lib"],
         "//conditions:default": [],
     }),
 )`},
