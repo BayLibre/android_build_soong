@@ -69,6 +69,30 @@
       },
       "revId": "218210440ba43b633e7d89430966527e201f72f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1403596_410493c0",
+        "filename": "bp2build/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-18T12:46:55Z",
+      "side": 1,
+      "message": "I think it should be BUILD.something to be consistent with the other names and easy to find\n\nBUILD.android sounds good?",
+      "parentUuid": "e9ba8cbe_869d787f",
+      "range": {
+        "startLine": 26,
+        "startChar": 125,
+        "endLine": 26,
+        "endChar": 142
+      },
+      "revId": "218210440ba43b633e7d89430966527e201f72f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
