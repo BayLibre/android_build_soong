@@ -245,7 +245,7 @@ func TestPlatformBootclasspath_Fragments(t *testing.T) {
 	).RunTest(t)
 
 	pbcp := result.Module("platform-bootclasspath", "android_common")
-	info := result.ModuleProvider(pbcp, hiddenAPIFlagFileInfoProvider).(hiddenAPIFlagFileInfo)
+	info := result.ModuleProvider(pbcp, HiddenAPIInfoProvider).(HiddenAPIInfo)
 
 	for _, category := range hiddenAPIFlagFileCategories {
 		name := category.propertyName
