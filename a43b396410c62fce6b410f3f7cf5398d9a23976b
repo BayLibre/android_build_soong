@@ -22,6 +22,30 @@
       },
       "revId": "a43b396410c62fce6b410f3f7cf5398d9a23976b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1198f342_30a72e10",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-05-18T23:20:00Z",
+      "side": 1,
+      "message": "Even for the latest API level, if the BOARD_VNDK_VERSION is 30 or older, LLNDK must generate the vendor variants for that version.\nTo avoid using Atoi, I have uploaded PS1 that uses the variable from the makefile. It requires a new build variable on Make. The version check must be done in Make in this case. But I uploaded PS2 because the new build variable is not required for the manual setting.\nThis must not be too expensive. When I tested with the unittest code, the build time slightly reduced with this patch for the specific case (BOARD_VNDK_VERSION\u003d30). I think skipping additional variant creation must improve the build time.",
+      "parentUuid": "547e9c63_8be2cd73",
+      "range": {
+        "startLine": 435,
+        "startChar": 32,
+        "endLine": 435,
+        "endChar": 62
+      },
+      "revId": "a43b396410c62fce6b410f3f7cf5398d9a23976b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
