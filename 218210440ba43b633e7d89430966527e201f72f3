@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f4b1e02d_afe8b520",
+        "filename": "bp2build/constants.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-18T12:05:27Z",
+      "side": 1,
+      "message": "Ah, nm, now that we have synthetic workspace filtering logic, this isn\u0027t a problem anymore.",
+      "parentUuid": "ffde204e_05a1327a",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 61
+      },
+      "revId": "218210440ba43b633e7d89430966527e201f72f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e9ba8cbe_869d787f",
         "filename": "bp2build/constants.go",
         "patchSetId": 2
