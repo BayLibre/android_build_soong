@@ -309,6 +309,13 @@ func TestVendorSnapshotUse(t *testing.T) {
 		compile_multilib: "64",
 	}
 
+	cc_library {
+		name: "libllndk",
+		llndk: {
+			symbol_file: "libllndk.map.txt",
+		},
+	}
+
 	cc_binary {
 		name: "bin",
 		vendor: true,
@@ -390,6 +397,22 @@ func TestVendorSnapshotUse(t *testing.T) {
 			},
 		},
 	}
+
+	vndk_prebuilt_shared {
+		name: "libllndk",
+		version: "30",
+		target_arch: "arm64",
+		vendor_available: true,
+		product_available: true,
+		arch: {
+			arm64: {
+				srcs: ["libllndk.so"],
+			},
+			arm: {
+				srcs: ["libllndk.so"],
+			},
+		},
+	}
 `
 
 	vendorProprietaryBp := `
@@ -409,7 +432,7 @@ func TestVendorSnapshotUse(t *testing.T) {
 		no_libcrt: true,
 		stl: "none",
 		system_shared_libs: [],
-		shared_libs: ["libvndk", "libvendor_available"],
+		shared_libs: ["libvndk", "libvendor_available", "libllndk"],
 		static_libs: ["libvendor", "libvendor_without_snapshot"],
 		arch: {
 			arm64: {
@@ -454,6 +477,7 @@ func TestVendorSnapshotUse(t *testing.T) {
 			arm64: {
 				vndk_libs: [
 					"libvndk",
+					"libllndk",
 				],
 				static_libs: [
 					"libc++_static",
@@ -476,6 +500,7 @@ func TestVendorSnapshotUse(t *testing.T) {
 			arm: {
 				vndk_libs: [
 					"libvndk",
+					"libllndk",
 				],
 				static_libs: [
 					"libvendor",
@@ -771,11 +796,13 @@ func TestVendorSnapshotUse(t *testing.T) {
 		"vndk/Android.bp":                  []byte(vndkBp),
 		"vndk/include/libvndk/a.h":         nil,
 		"vndk/libvndk.so":                  nil,
+		"vndk/libllndk.so":                 nil,
 	}
 
 	config := TestConfig(t.TempDir(), android.Android, nil, "", mockFS)
 	config.TestProductVariables.DeviceVndkVersion = StringPtr("30")
 	config.TestProductVariables.Platform_vndk_version = StringPtr("31")
+	config.TestProductVariables.LlndkUseVndkSnapshot = BoolPtr(true)
 	ctx := CreateTestContext(config)
 	ctx.Register()
 
@@ -809,6 +836,7 @@ func TestVendorSnapshotUse(t *testing.T) {
 	libclientLdFlags := ctx.ModuleForTests("libclient", sharedVariant).Rule("ld").Args["libFlags"]
 	for _, input := range [][]string{
 		[]string{sharedVariant, "libvndk.vndk.30.arm64"},
+		[]string{sharedVariant, "libllndk.vndk.30.arm64"},
 		[]string{staticVariant, "libvendor.vendor_static.30.arm64"},
 		[]string{staticVariant, "libvendor_without_snapshot"},
 	} {
@@ -819,7 +847,7 @@ func TestVendorSnapshotUse(t *testing.T) {
 	}
 
 	libclientAndroidMkSharedLibs := ctx.ModuleForTests("libclient", sharedVariant).Module().(*Module).Properties.AndroidMkSharedLibs
-	if g, w := libclientAndroidMkSharedLibs, []string{"libvndk.vendor", "libvendor_available.vendor", "lib64"}; !reflect.DeepEqual(g, w) {
+	if g, w := libclientAndroidMkSharedLibs, []string{"libvndk.vendor", "libvendor_available.vendor", "libllndk.vendor", "lib64"}; !reflect.DeepEqual(g, w) {
 		t.Errorf("wanted libclient AndroidMkSharedLibs %q, got %q", w, g)
 	}
 
@@ -829,7 +857,7 @@ func TestVendorSnapshotUse(t *testing.T) {
 	}
 
 	libclient32AndroidMkSharedLibs := ctx.ModuleForTests("libclient", shared32Variant).Module().(*Module).Properties.AndroidMkSharedLibs
-	if g, w := libclient32AndroidMkSharedLibs, []string{"libvndk.vendor", "libvendor_available.vendor", "lib32"}; !reflect.DeepEqual(g, w) {
+	if g, w := libclient32AndroidMkSharedLibs, []string{"libvndk.vendor", "libvendor_available.vendor", "libllndk.vendor", "lib32"}; !reflect.DeepEqual(g, w) {
 		t.Errorf("wanted libclient32 AndroidMkSharedLibs %q, got %q", w, g)
 	}
 
