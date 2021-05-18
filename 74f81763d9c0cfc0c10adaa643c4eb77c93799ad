@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9772cabb_88d90c9a",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-18T18:08:13Z",
+      "side": 1,
+      "message": "how about aqueryArtifactHandler?",
+      "parentUuid": "0dbc3fed_3019a1d9",
+      "range": {
+        "startLine": 86,
+        "startChar": 19,
+        "endLine": 86,
+        "endChar": 26
+      },
+      "revId": "74f81763d9c0cfc0c10adaa643c4eb77c93799ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e6ca9523_c5134a03",
         "filename": "bazel/aquery.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-18T17:53:36Z",
       "side": 1,
       "message": "go style guide recommends short receiver names: go/go-style/decisions#receiver-names",
+      "range": {
+        "startLine": 139,
+        "startChar": 6,
+        "endLine": 139,
+        "endChar": 15
+      },
+      "revId": "74f81763d9c0cfc0c10adaa643c4eb77c93799ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18d76477_2b32dcc5",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-18T18:08:13Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "e6ca9523_c5134a03",
       "range": {
         "startLine": 139,
         "startChar": 6,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c79b5f34_9f107629",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-18T18:08:13Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "d1751193_2c4d8caf",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 1
+      },
+      "revId": "74f81763d9c0cfc0c10adaa643c4eb77c93799ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e008ee7_7756ff35",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-05-18T17:53:36Z",
       "side": 1,
       "message": "did we also want to assert on the OutputPaths?",
+      "range": {
+        "startLine": 798,
+        "startChar": 26,
+        "endLine": 798,
+        "endChar": 36
+      },
+      "revId": "74f81763d9c0cfc0c10adaa643c4eb77c93799ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "102a0aaf_39ba23b8",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-18T18:08:13Z",
+      "side": 1,
+      "message": "Might as well, though middleman action shouldn\u0027t affect that :)",
+      "parentUuid": "8e008ee7_7756ff35",
       "range": {
         "startLine": 798,
         "startChar": 26,
