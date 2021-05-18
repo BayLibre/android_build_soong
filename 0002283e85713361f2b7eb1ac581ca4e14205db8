@@ -16,6 +16,24 @@
       "message": "Are there cases when the REVISION is not a SHA? Why not just use it always? \n\nAnd if you do make a choice here, maybe be chatty about it?",
       "revId": "0002283e85713361f2b7eb1ac581ca4e14205db8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e46ac32_e4850c5c",
+        "filename": "build_kzip.bash",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1310923
+      },
+      "writtenOn": "2021-05-18T21:55:07Z",
+      "side": 1,
+      "message": "Since we aren\u0027t using superprojects everywhere yet, the referenced revision might not be pinned to a sha for older build branches (ie. for aosp-master-throttled SUPERPROJECT_REVISION would point to `master` and we wouldn\u0027t want to use that as the file name in that case).\n\nSUPERPROJECT_REVISION is the only provided env from the builder for superprojects, so we want to use this value when it is pointing at a pinned sha.\n\nI know having an \"is sha\" check is not the optimum solution here, but after all of the build targets are migrated to always pin the revision then this can change.",
+      "parentUuid": "7700fac9_893067f5",
+      "revId": "0002283e85713361f2b7eb1ac581ca4e14205db8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
