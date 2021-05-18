@@ -160,13 +160,7 @@ var (
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
 	bp2buildModuleDoNotConvertList = []string{
 		// Things that transitively depend on unconverted libc_* modules.
-		"libc_nopthread", // http://b/186821550, cc_library_static, depends on //bionic/libc:libc_bionic_ndk (http://b/186822256)
-		//                                                     also depends on //bionic/libc:libc_tzcode (http://b/186822591)
-		//                                                     also depends on //bionic/libc:libstdc++ (http://b/186822597)
-		"libc_common",        // http://b/186821517, cc_library_static, depends on //bionic/libc:libc_nopthread (http://b/186821550)
-		"libc_common_static", // http://b/186824119, cc_library_static, depends on //bionic/libc:libc_common (http://b/186821517)
-		"libc_common_shared", // http://b/186824118, cc_library_static, depends on //bionic/libc:libc_common (http://b/186821517)
-		"libc_nomalloc",      // http://b/186825031, cc_library_static, depends on //bionic/libc:libc_common (http://b/186821517)
+		"libc_nomalloc", // http://b/186825031, cc_library_static, depends on //bionic/libc:libc_common (http://b/186821517)
 
 		"libbionic_spawn_benchmark", // http://b/186824595, cc_library_static, depends on //external/google-benchmark (http://b/186822740)
 		//                                                                also depends on //system/logging/liblog:liblog (http://b/186822772)
@@ -230,6 +224,10 @@ var (
 	// Per-module denylist to opt modules out of mixed builds. Such modules will
 	// still be generated via bp2build.
 	mixedBuildsDisabledList = []string{
+		"libc_bionic_ndk",                  // cparsons@ cc_library_static, depends on //bionic/libc:libsystemproperties
+		"libc_common",                      // cparsons@ cc_library_static, depends on //bionic/libc:libc_nopthread
+		"libc_common_static",               // cparsons@ cc_library_static, depends on //bionic/libc:libc_common
+		"libc_common_shared",               // cparsons@ cc_library_static, depends on //bionic/libc:libc_common
 		"libc_netbsd",                      // lberki@, cc_library_static, version script assignment of 'LIBC_PRIVATE' to symbol 'SHA1Final' failed: symbol not defined
 		"libc_openbsd",                     // ruperts@, cc_library_static, OK for bp2build but error: duplicate symbol: strcpy for mixed builds
 		"libsystemproperties",              // cparsons@, cc_library_static, wrong include paths
