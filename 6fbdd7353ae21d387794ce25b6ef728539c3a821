@@ -102,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4cfa532_57b1ae98",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-18T16:41:51Z",
+      "side": 1,
+      "message": "When I am talking about configuration I am talking about things like global.UpdatableBootJars. The main reason for bootclasspath_fragment was to replace the need for the configuration and move towards having proper dependencies between the different objects.",
+      "parentUuid": "74dd40f3_db205a25",
+      "revId": "6fbdd7353ae21d387794ce25b6ef728539c3a821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "917370f8_7b129af8",
         "filename": "java/platform_bootclasspath.go",
         "patchSetId": 10
