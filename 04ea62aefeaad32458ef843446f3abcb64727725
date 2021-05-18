@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d342fb7_e55a563b",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-18T12:50:16Z",
+      "side": 1,
+      "message": "nit: these parens are probably useless, aren\u0027t they?",
+      "range": {
+        "startLine": 927,
+        "startChar": 32,
+        "endLine": 927,
+        "endChar": 33
+      },
+      "revId": "04ea62aefeaad32458ef843446f3abcb64727725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4396f3a_076c5d36",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-18T12:50:16Z",
+      "side": 1,
+      "message": "What is the downside of always writing this file regardless of whether Bazel is used or not?",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 55
+      },
+      "revId": "04ea62aefeaad32458ef843446f3abcb64727725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c102aa18_66fc0668",
         "filename": "ui/build/dumpvars.go",
         "patchSetId": 2
