@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33abba26_13ef281d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-19T11:32:25Z",
+      "side": 1,
+      "message": "I was largely ignoring this for now, but do we need to extend classpaths.proto generation to these as well?",
+      "range": {
+        "startLine": 38,
+        "startChar": 6,
+        "endLine": 38,
+        "endChar": 37
+      },
+      "revId": "9408fcd3968bbf9181e762d93c6bd7a55467a4fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41c7ac44_8acad1f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-19T11:32:25Z",
+      "side": 1,
+      "message": "Interesting \"hack\". Why not update internal modules instead of submitting this one though? I am generally okay though as long as we don\u0027t forget to remove this later.",
+      "revId": "9408fcd3968bbf9181e762d93c6bd7a55467a4fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
