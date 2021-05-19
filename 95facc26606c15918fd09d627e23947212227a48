@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1c1f010_8f05c83a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-19T10:26:08Z",
+      "side": 1,
+      "message": "Artur, this is a workaround for b/188505921. It breaks anyone trying to use TARGET_BUILD_APPS internally so is quite urgent. I will test it internally to make sure that it actually fixes the issues reported.",
+      "revId": "95facc26606c15918fd09d627e23947212227a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
