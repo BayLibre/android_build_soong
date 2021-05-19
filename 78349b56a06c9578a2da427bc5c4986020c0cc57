@@ -16,6 +16,24 @@
       "message": "PTAL. Moved from internal.",
       "revId": "78349b56a06c9578a2da427bc5c4986020c0cc57",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92c3ce97_88cbce4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-19T18:42:41Z",
+      "side": 1,
+      "message": "Thanks. I think we\u0027ll need this in sc-dev as well, but I can take care of that if you like.",
+      "parentUuid": "7cbaebe4_c98ba299",
+      "revId": "78349b56a06c9578a2da427bc5c4986020c0cc57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
