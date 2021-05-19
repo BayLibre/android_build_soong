@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea613b31_8d1132c2",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-19T14:39:42Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 277,
+        "startChar": 65,
+        "endLine": 277,
+        "endChar": 77
+      },
+      "revId": "d0362921c461990b66621575728fc094fec37499",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a89ca3a_2821e9c0",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-19T14:39:42Z",
+      "side": 1,
+      "message": "of the",
+      "range": {
+        "startLine": 277,
+        "startChar": 22,
+        "endLine": 277,
+        "endChar": 25
+      },
+      "revId": "d0362921c461990b66621575728fc094fec37499",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
