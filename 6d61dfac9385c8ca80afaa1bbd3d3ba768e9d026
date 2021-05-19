@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb83b8aa_a0cf6e68",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-19T10:22:05Z",
+      "side": 1,
+      "message": "Done\n\nIMO android.absolutePath() should be public instead of duplicating this filepath.Join() logic everywhere\n\nThe previous patchset was only a bit long because absolutePath() hadn\u0027t been public to start with and lots of things had to change.\n\nBut I changed absolutePath() back to being private for now...",
+      "parentUuid": "e09844f0_1bfb150e",
+      "range": {
+        "startLine": 371,
+        "startChar": 37,
+        "endLine": 371,
+        "endChar": 49
+      },
+      "revId": "6d61dfac9385c8ca80afaa1bbd3d3ba768e9d026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac1663cd_af94a78b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-19T05:34:21Z",
       "side": 1,
       "message": "Same as above, use topDir and shared.JoinPath.",
+      "range": {
+        "startLine": 424,
+        "startChar": 28,
+        "endLine": 424,
+        "endChar": 40
+      },
+      "revId": "6d61dfac9385c8ca80afaa1bbd3d3ba768e9d026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f3c073_47366e57",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-19T10:22:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac1663cd_af94a78b",
       "range": {
         "startLine": 424,
         "startChar": 28,
