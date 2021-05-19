@@ -46,6 +46,30 @@
       },
       "revId": "a43b396410c62fce6b410f3f7cf5398d9a23976b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9456dbd4_41002ba8",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-19T00:07:51Z",
+      "side": 1,
+      "message": "There are convenience functions in android/api_level.go for parsing and comparing api levels.",
+      "parentUuid": "1198f342_30a72e10",
+      "range": {
+        "startLine": 435,
+        "startChar": 32,
+        "endLine": 435,
+        "endChar": 62
+      },
+      "revId": "a43b396410c62fce6b410f3f7cf5398d9a23976b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
