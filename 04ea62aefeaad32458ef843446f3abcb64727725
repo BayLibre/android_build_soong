@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "988a74c3_013a85ee",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-19T07:42:37Z",
+      "side": 1,
+      "message": "One fewer knob. Simplicity is important!\n\n(feel free to submit this change as it is if you feel strongly, but I\u0027d rather not have the WRITE_BAZEL_VARIABLES knob if at all possible)",
+      "parentUuid": "935ead5a_4d56026d",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 55
+      },
+      "revId": "04ea62aefeaad32458ef843446f3abcb64727725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c102aa18_66fc0668",
         "filename": "ui/build/dumpvars.go",
         "patchSetId": 2
