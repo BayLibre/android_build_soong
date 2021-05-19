@@ -16,6 +16,52 @@
       "message": "Build failure is expected until https://android-review.googlesource.com/c/platform/external/angle/+/1711050 is submitted",
       "revId": "6d61dfac9385c8ca80afaa1bbd3d3ba768e9d026",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e09844f0_1bfb150e",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-19T05:34:21Z",
+      "side": 1,
+      "message": "Why not use topDir and shared.JoinPath (like in line 391) instead of exporting this function?",
+      "range": {
+        "startLine": 371,
+        "startChar": 37,
+        "endLine": 371,
+        "endChar": 49
+      },
+      "revId": "6d61dfac9385c8ca80afaa1bbd3d3ba768e9d026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac1663cd_af94a78b",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-19T05:34:21Z",
+      "side": 1,
+      "message": "Same as above, use topDir and shared.JoinPath.",
+      "range": {
+        "startLine": 424,
+        "startChar": 28,
+        "endLine": 424,
+        "endChar": 40
+      },
+      "revId": "6d61dfac9385c8ca80afaa1bbd3d3ba768e9d026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
