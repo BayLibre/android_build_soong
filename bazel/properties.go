@@ -185,12 +185,18 @@ const (
 	ARCH_X86_64 = "x86_64"
 
 	// OsType names in arch.go
-	OS_ANDROID      = "android"
-	OS_DARWIN       = "darwin"
-	OS_FUCHSIA      = "fuchsia"
-	OS_LINUX        = "linux_glibc"
-	OS_LINUX_BIONIC = "linux_bionic"
-	OS_WINDOWS      = "windows"
+	OS_ANDROID             = "android"
+	OS_ANDROID_ARM         = "android_arm"
+	OS_ANDROID_ARM64       = "android_arm64"
+	OS_ANDROID_X86         = "android_x86"
+	OS_ANDROID_X86_64      = "android_x86_64"
+	OS_DARWIN              = "darwin"
+	OS_FUCHSIA             = "fuchsia"
+	OS_LINUX               = "linux_glibc"
+	OS_LINUX_BIONIC        = "linux_bionic"
+	OS_LINUX_BIONIC_ARM64  = "linux_bionic_arm64"
+	OS_LINUX_BIONIC_X86_64 = "linux_bionic_x86_64"
+	OS_WINDOWS             = "windows"
 
 	// This is the string representation of the default condition wherever a
 	// configurable attribute is used in a select statement, i.e.
@@ -221,13 +227,19 @@ var (
 	// A map of target operating systems to the Bazel label of the
 	// constraint_value for the @platforms//os:os constraint_setting
 	PlatformOsMap = map[string]string{
-		OS_ANDROID:         "//build/bazel/platforms/os:android",
-		OS_DARWIN:          "//build/bazel/platforms/os:darwin",
-		OS_FUCHSIA:         "//build/bazel/platforms/os:fuchsia",
-		OS_LINUX:           "//build/bazel/platforms/os:linux",
-		OS_LINUX_BIONIC:    "//build/bazel/platforms/os:linux_bionic",
-		OS_WINDOWS:         "//build/bazel/platforms/os:windows",
-		CONDITIONS_DEFAULT: "//conditions:default", // The default condition of an os select map.
+		OS_ANDROID:             "//build/bazel/platforms/os:android",
+		OS_ANDROID_ARM:         "//build/bazel/platforms/os:android_arm",
+		OS_ANDROID_ARM64:       "//build/bazel/platforms/os:android_arm64",
+		OS_ANDROID_X86:         "//build/bazel/platforms/os:android_x86",
+		OS_ANDROID_X86_64:      "//build/bazel/platforms/os:android_x86_64",
+		OS_DARWIN:              "//build/bazel/platforms/os:darwin",
+		OS_FUCHSIA:             "//build/bazel/platforms/os:fuchsia",
+		OS_LINUX:               "//build/bazel/platforms/os:linux",
+		OS_LINUX_BIONIC:        "//build/bazel/platforms/os:linux_bionic",
+		OS_LINUX_BIONIC_ARM64:  "//build/bazel/platforms/os:linux_bionic_arm64",
+		OS_LINUX_BIONIC_X86_64: "//build/bazel/platforms/os:linux_bionic_x86_64",
+		OS_WINDOWS:             "//build/bazel/platforms/os:windows",
+		CONDITIONS_DEFAULT:     "//conditions:default", // The default condition of an os select map.
 	}
 )
 
@@ -293,12 +305,18 @@ type labelListArchValues struct {
 }
 
 type labelListOsValues struct {
-	Android     LabelList
-	Darwin      LabelList
-	Fuchsia     LabelList
-	Linux       LabelList
-	LinuxBionic LabelList
-	Windows     LabelList
+	Android           LabelList
+	AndroidArm        LabelList
+	AndroidArm64      LabelList
+	AndroidX86        LabelList
+	AndroidX86_64     LabelList
+	Darwin            LabelList
+	Fuchsia           LabelList
+	Linux             LabelList
+	LinuxBionic       LabelList
+	LinuxBionicArm64  LabelList
+	LinuxBionicX86_64 LabelList
+	Windows           LabelList
 
 	ConditionsDefault LabelList
 }
@@ -392,13 +410,19 @@ func (attrs *LabelListAttribute) SetValueForArch(arch string, value LabelList) {
 
 func (attrs *LabelListAttribute) osValuePtrs() map[string]*LabelList {
 	return map[string]*LabelList{
-		OS_ANDROID:         &attrs.OsValues.Android,
-		OS_DARWIN:          &attrs.OsValues.Darwin,
-		OS_FUCHSIA:         &attrs.OsValues.Fuchsia,
-		OS_LINUX:           &attrs.OsValues.Linux,
-		OS_LINUX_BIONIC:    &attrs.OsValues.LinuxBionic,
-		OS_WINDOWS:         &attrs.OsValues.Windows,
-		CONDITIONS_DEFAULT: &attrs.OsValues.ConditionsDefault,
+		OS_ANDROID:             &attrs.OsValues.Android,
+		OS_ANDROID_ARM:         &attrs.OsValues.AndroidArm,
+		OS_ANDROID_ARM64:       &attrs.OsValues.AndroidArm64,
+		OS_ANDROID_X86:         &attrs.OsValues.AndroidX86,
+		OS_ANDROID_X86_64:      &attrs.OsValues.AndroidX86_64,
+		OS_DARWIN:              &attrs.OsValues.Darwin,
+		OS_FUCHSIA:             &attrs.OsValues.Fuchsia,
+		OS_LINUX:               &attrs.OsValues.Linux,
+		OS_LINUX_BIONIC:        &attrs.OsValues.LinuxBionic,
+		OS_LINUX_BIONIC_ARM64:  &attrs.OsValues.LinuxBionicArm64,
+		OS_LINUX_BIONIC_X86_64: &attrs.OsValues.LinuxBionicX86_64,
+		OS_WINDOWS:             &attrs.OsValues.Windows,
+		CONDITIONS_DEFAULT:     &attrs.OsValues.ConditionsDefault,
 	}
 }
 
@@ -456,12 +480,18 @@ type stringListArchValues struct {
 }
 
 type stringListOsValues struct {
-	Android     []string
-	Darwin      []string
-	Fuchsia     []string
-	Linux       []string
-	LinuxBionic []string
-	Windows     []string
+	Android           []string
+	AndroidArm        []string
+	AndroidArm64      []string
+	AndroidX86        []string
+	AndroidX86_64     []string
+	Darwin            []string
+	Fuchsia           []string
+	Linux             []string
+	LinuxBionic       []string
+	LinuxBionicArm64  []string
+	LinuxBionicX86_64 []string
+	Windows           []string
 
 	ConditionsDefault []string
 }
@@ -513,13 +543,19 @@ func (attrs *StringListAttribute) SetValueForArch(arch string, value []string) {
 
 func (attrs *StringListAttribute) osValuePtrs() map[string]*[]string {
 	return map[string]*[]string{
-		OS_ANDROID:         &attrs.OsValues.Android,
-		OS_DARWIN:          &attrs.OsValues.Darwin,
-		OS_FUCHSIA:         &attrs.OsValues.Fuchsia,
-		OS_LINUX:           &attrs.OsValues.Linux,
-		OS_LINUX_BIONIC:    &attrs.OsValues.LinuxBionic,
-		OS_WINDOWS:         &attrs.OsValues.Windows,
-		CONDITIONS_DEFAULT: &attrs.OsValues.ConditionsDefault,
+		OS_ANDROID:             &attrs.OsValues.Android,
+		OS_ANDROID_ARM:         &attrs.OsValues.AndroidArm,
+		OS_ANDROID_ARM64:       &attrs.OsValues.AndroidArm64,
+		OS_ANDROID_X86:         &attrs.OsValues.AndroidX86,
+		OS_ANDROID_X86_64:      &attrs.OsValues.AndroidX86_64,
+		OS_DARWIN:              &attrs.OsValues.Darwin,
+		OS_FUCHSIA:             &attrs.OsValues.Fuchsia,
+		OS_LINUX:               &attrs.OsValues.Linux,
+		OS_LINUX_BIONIC:        &attrs.OsValues.LinuxBionic,
+		OS_LINUX_BIONIC_ARM64:  &attrs.OsValues.LinuxBionicArm64,
+		OS_LINUX_BIONIC_X86_64: &attrs.OsValues.LinuxBionicX86_64,
+		OS_WINDOWS:             &attrs.OsValues.Windows,
+		CONDITIONS_DEFAULT:     &attrs.OsValues.ConditionsDefault,
 	}
 }
 
