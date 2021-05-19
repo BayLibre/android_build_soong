@@ -22,6 +22,30 @@
       },
       "revId": "f2fa0b5e8ee57369ac920969071eee2b56cc04db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90b5b127_2575ad7e",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-19T14:59:16Z",
+      "side": 1,
+      "message": "You needed to add compile_dex to them because they are shared and at the moment shared libraries don\u0027t automatically pass compile_dex:true to their stub libraries. Stub libraries need to provide dex files for hidden API processing as it consumes dex files.\n\nApart from the compile_dex:true effect the behavior of the bootclasspath_fragment is not affected by whether a library is shared or not so a test for shared would be unnecessary duplication.\n\nI will try and see whether I can always set compile_dex: true on stub libraries in separate change at which point I can clean all this stuff up.",
+      "parentUuid": "907c7026_c5829bae",
+      "range": {
+        "startLine": 463,
+        "startChar": 3,
+        "endLine": 463,
+        "endChar": 25
+      },
+      "revId": "f2fa0b5e8ee57369ac920969071eee2b56cc04db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
