@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4758584e_1f6050d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-19T14:02:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39c2e0e4_2bce633e",
+      "range": {
+        "startLine": 14,
+        "startChar": 38,
+        "endLine": 14,
+        "endChar": 58
+      },
+      "revId": "08ee4163068fe4f7f10903c8b6beb968fa0d9bb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03ff09f7_37541209",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-18T17:26:52Z",
       "side": 1,
       "message": "are they byte-for-byte same?",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 71
+      },
+      "revId": "08ee4163068fe4f7f10903c8b6beb968fa0d9bb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5262b9d1_19b565d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-19T14:02:18Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "03ff09f7_37541209",
       "range": {
         "startLine": 28,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d1e298_f898620c",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-19T14:02:18Z",
+      "side": 1,
+      "message": "Yes. Updated comment to make it clear why that is the case.",
+      "parentUuid": "8a4cf99a_6743f607",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 25
+      },
+      "revId": "08ee4163068fe4f7f10903c8b6beb968fa0d9bb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1398b677_df9f210c",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad11a814_f7aeff45",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-19T14:02:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1398b677_df9f210c",
+      "range": {
+        "startLine": 384,
+        "startChar": 43,
+        "endLine": 384,
+        "endChar": 44
+      },
+      "revId": "08ee4163068fe4f7f10903c8b6beb968fa0d9bb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0437ff14_8446da01",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-05-18T17:26:52Z",
       "side": 1,
       "message": "I am not sure I follow why this is needed / correct?",
+      "range": {
+        "startLine": 523,
+        "startChar": 2,
+        "endLine": 526,
+        "endChar": 3
+      },
+      "revId": "08ee4163068fe4f7f10903c8b6beb968fa0d9bb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a0f784f_c1f31419",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-19T14:02:18Z",
+      "side": 1,
+      "message": "Updated comment to clarify.",
+      "parentUuid": "0437ff14_8446da01",
       "range": {
         "startLine": 523,
         "startChar": 2,
