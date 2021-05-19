@@ -1068,7 +1068,6 @@ func getChildPropertyStruct(ctx ArchVariantContext,
 	// Find the requested field in the src struct.
 	child := src.FieldByName(proptools.FieldNameForProperty(field))
 	if !child.IsValid() {
-		ctx.ModuleErrorf("field %q does not exist", userFriendlyField)
 		return reflect.Value{}, false
 	}
 
@@ -1950,19 +1949,47 @@ func (m *ModuleBase) GetArchProperties(ctx ArchVariantContext, propertySet inter
 	return archToProp
 }
 
-// Returns the struct containing the properties specific to the given
-// architecture type. These look like this in Blueprint files:
-// target: {
-//     android: {
-//         key: value,
-//     },
-// },
-// This struct will also contain sub-structs containing to the architecture/CPU
-// variants and features that themselves contain properties specific to those.
-func getTargetStruct(ctx ArchVariantContext, archProperties interface{}, os OsType) (reflect.Value, bool) {
-	archPropValues := reflect.ValueOf(archProperties).Elem()
-	targetProp := archPropValues.FieldByName("Target").Elem()
-	return getChildPropertyStruct(ctx, targetProp, os.Field, os.Field)
+// Returns a struct matching the propertySet interface, containing properties specific to the targetName
+// For example, given these arguments:
+//    propertySet = BaseCompilerProperties
+//    targetName = "android_arm"
+// And given this Android.bp fragment:
+//    target:
+//       android_arm: {
+//          srcs: ["foo.c"],
+//       }
+//       android_arm64: {
+//          srcs: ["bar.c"],
+//      }
+//    }
+// This would return a BaseCompilerProperties with BaseCompilerProperties.Srcs = ["foo.c"]
+func getTargetStruct(ctx ArchVariantContext, propertySet interface{}, archProperties []interface{}, targetName string) interface{} {
+	propertyStructs := make([]reflect.Value, 0)
+	for _, archProperty := range archProperties {
+		archPropValues := reflect.ValueOf(archProperty).Elem()
+		targetProp := archPropValues.FieldByName("Target").Elem()
+		targetStruct, ok := getChildPropertyStruct(ctx, targetProp, targetName, targetName)
+		if ok {
+			propertyStructs = append(propertyStructs, targetStruct)
+		}
+	}
+
+	// Create a new instance of the requested property set
+	value := reflect.New(reflect.ValueOf(propertySet).Elem().Type()).Interface()
+
+	// Merge all the structs together
+	for _, propertyStruct := range propertyStructs {
+		mergePropertyStruct(ctx, value, propertyStruct)
+	}
+
+	return value
+}
+
+// Properties corresponds to e.g. Target: android: {...}
+// ArchProperties corresponds to e.g. Target: android_arm: {...}, android_arm64: {...}, ...
+type TargetProperties struct {
+	Properties     interface{}
+	ArchProperties map[ArchType]interface{}
 }
 
 // GetTargetProperties returns a map of OS target (e.g. android, windows) to the
@@ -1974,13 +2001,15 @@ func getTargetStruct(ctx ArchVariantContext, archProperties interface{}, os OsTy
 // the os-specific property value specified by the module if defined.
 //
 // Implemented in a way very similar to GetArchProperties().
-func (m *ModuleBase) GetTargetProperties(ctx ArchVariantContext, propertySet interface{}) map[OsType]interface{} {
-	// Return value of the arch types to the prop values for that arch.
-	osToProp := map[OsType]interface{}{}
+//
+// NOTE: "Target" == OS
+func (m *ModuleBase) GetTargetProperties(ctx ArchVariantContext, propertySet interface{}) map[OsType]TargetProperties {
+	// Return value of the target types to the prop values for that target.
+	targetToProp := map[OsType]TargetProperties{}
 
-	// Nothing to do for non-OS/arch-specific modules.
+	// Nothing to do for non-target-specific modules.
 	if !m.ArchSpecific() {
-		return osToProp
+		return targetToProp
 	}
 
 	dstType := reflect.ValueOf(propertySet).Type()
@@ -1998,33 +2027,25 @@ func (m *ModuleBase) GetTargetProperties(ctx ArchVariantContext, propertySet int
 
 	if archProperties == nil {
 		// This module does not have the property set requested
-		return osToProp
+		return targetToProp
 	}
 
+	// For android, linux, ...
 	for _, os := range osTypeList {
 		if os == CommonOS {
 			// It looks like this OS value is not used in Blueprint files
 			continue
 		}
-
-		propertyStructs := make([]reflect.Value, 0)
-		for _, archProperty := range archProperties {
-			targetStruct, ok := getTargetStruct(ctx, archProperty, os)
-			if ok {
-				propertyStructs = append(propertyStructs, targetStruct)
-			}
+		targetProperties := TargetProperties{
+			Properties:     getTargetStruct(ctx, propertySet, archProperties, os.Name),
+			ArchProperties: make(map[ArchType]interface{}),
 		}
-
-		// Create a new instance of the requested property set
-		value := reflect.New(reflect.ValueOf(propertySet).Elem().Type()).Interface()
-
-		// Merge all the structs together
-		for _, propertyStruct := range propertyStructs {
-			mergePropertyStruct(ctx, value, propertyStruct)
+		// For arm, x86, ...
+		for _, arch := range osArchTypeMap[os] {
+			targetProperties.ArchProperties[arch] = getTargetStruct(ctx, propertySet, archProperties, os.Name+"_"+arch.Name)
 		}
-
-		osToProp[os] = value
+		targetToProp[os] = targetProperties
 	}
 
-	return osToProp
+	return targetToProp
 }
