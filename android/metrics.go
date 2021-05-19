@@ -78,7 +78,7 @@ func WriteMetrics(config Config, metricsFile string) error {
 	if err != nil {
 		return err
 	}
-	err = ioutil.WriteFile(absolutePath(metricsFile), buf, 0666)
+	err = ioutil.WriteFile(AbsolutePath(metricsFile), buf, 0666)
 	if err != nil {
 		return err
 	}

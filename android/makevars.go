@@ -216,10 +216,10 @@ func (s *makeVarsSingleton) GenerateBuildActions(ctx SingletonContext) {
 		return
 	}
 
-	outFile := absolutePath(PathForOutput(ctx,
+	outFile := AbsolutePath(PathForOutput(ctx,
 		"make_vars"+proptools.String(ctx.Config().productVariables.Make_suffix)+".mk").String())
 
-	lateOutFile := absolutePath(PathForOutput(ctx,
+	lateOutFile := AbsolutePath(PathForOutput(ctx,
 		"late"+proptools.String(ctx.Config().productVariables.Make_suffix)+".mk").String())
 
 	if ctx.Failed() {
