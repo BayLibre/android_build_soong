@@ -51,6 +51,24 @@
       "parentUuid": "390831bd_e12a8c4a",
       "revId": "95facc26606c15918fd09d627e23947212227a48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c40e61a9_e0ab01be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-19T11:02:40Z",
+      "side": 1,
+      "message": "PTAL. This does fix the Soong side of the problem internally.",
+      "parentUuid": "d893d8de_78639760",
+      "revId": "95facc26606c15918fd09d627e23947212227a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
