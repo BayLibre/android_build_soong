@@ -234,6 +234,30 @@
       },
       "revId": "08ee4163068fe4f7f10903c8b6beb968fa0d9bb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfa37aee_41be9ac4",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-19T15:21:05Z",
+      "side": 1,
+      "message": "Should this be \"byKind\" as well? I know art only has one kind, but for the general case, is it okay to always include the widest api stubs?\n\nOn a second thought this makes sense, especially once coreplatform becomes systemapi, then there is only a linear relationship among the sdk kinds.",
+      "parentUuid": "2a0f784f_c1f31419",
+      "range": {
+        "startLine": 523,
+        "startChar": 2,
+        "endLine": 526,
+        "endChar": 3
+      },
+      "revId": "08ee4163068fe4f7f10903c8b6beb968fa0d9bb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
