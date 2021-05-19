@@ -5,16 +5,17 @@ import (
 	"android/soong/bazel"
 	"fmt"
 	"reflect"
+	"sort"
 )
 
 // Configurability support for bp2build.
 
 type selects map[string]reflect.Value
 
-func getStringListValues(list bazel.StringListAttribute) (reflect.Value, selects, selects) {
+func getStringListValues(list bazel.StringListAttribute) (reflect.Value, selects, selects, []selects) {
 	value := reflect.ValueOf(list.Value)
 	if !list.HasConfigurableValues() {
-		return value, nil, nil
+		return value, nil, nil, nil
 	}
 
 	archSelects := map[string]reflect.Value{}
@@ -22,15 +23,30 @@ func getStringListValues(list bazel.StringListAttribute) (reflect.Value, selects
 		archSelects[selectKey] = reflect.ValueOf(list.GetValueForArch(arch))
 	}
 
+	// Need to iterate over the map keys in a sorted, deterministic order in order to write tests
+	var oses []string
+	for os, _ := range bazel.PlatformOsMap {
+		oses = append(oses, os)
+	}
+	sort.Strings(oses)
+
 	osSelects := map[string]reflect.Value{}
-	for os, selectKey := range bazel.PlatformOsMap {
-		osSelects[selectKey] = reflect.ValueOf(list.GetValueForOS(os))
+	osArchSelects := make([]selects, 0)
+	for _, os := range oses {
+		selectKey :=
+			bazel.PlatformOsMap[os]
+		osSelects[selectKey] = reflect.ValueOf(list.GetOsValueForTarget(os))
+		archSelects := make(map[string]reflect.Value)
+		for _, arch := range bazel.ALL_ARCHES {
+			archSelects[os+"_"+arch] = reflect.ValueOf(list.GetOsArchValueForTarget(os, arch))
+		}
+		osArchSelects = append(osArchSelects, archSelects)
 	}
 
-	return value, archSelects, osSelects
+	return value, archSelects, osSelects, osArchSelects
 }
 
-func getLabelValue(label bazel.LabelAttribute) (reflect.Value, selects, selects) {
+func getLabelValue(label bazel.LabelAttribute) (reflect.Value, selects, selects, []selects) {
 	var value reflect.Value
 	var archSelects selects
 
@@ -43,13 +59,13 @@ func getLabelValue(label bazel.LabelAttribute) (reflect.Value, selects, selects)
 		value = reflect.ValueOf(label.Value)
 	}
 
-	return value, archSelects, nil
+	return value, archSelects, nil, nil
 }
 
-func getLabelListValues(list bazel.LabelListAttribute) (reflect.Value, selects, selects) {
+func getLabelListValues(list bazel.LabelListAttribute) (reflect.Value, selects, selects, []selects) {
 	value := reflect.ValueOf(list.Value.Includes)
 	if !list.HasConfigurableValues() {
-		return value, nil, nil
+		return value, nil, nil, nil
 	}
 
 	archSelects := map[string]reflect.Value{}
@@ -57,12 +73,26 @@ func getLabelListValues(list bazel.LabelListAttribute) (reflect.Value, selects, 
 		archSelects[selectKey] = reflect.ValueOf(list.GetValueForArch(arch).Includes)
 	}
 
+	// Need to iterate over the map keys in a sorted, deterministic order in order to write tests
+	var oses []string
+	for os, _ := range bazel.PlatformOsMap {
+		oses = append(oses, os)
+	}
+	sort.Strings(oses)
+
 	osSelects := map[string]reflect.Value{}
-	for os, selectKey := range bazel.PlatformOsMap {
-		osSelects[selectKey] = reflect.ValueOf(list.GetValueForOS(os).Includes)
+	osArchSelects := make([]selects, 0)
+	for _, os := range oses {
+		selectKey := bazel.PlatformOsMap[os]
+		osSelects[selectKey] = reflect.ValueOf(list.GetOsValueForTarget(os).Includes)
+		archSelects := make(map[string]reflect.Value)
+		for _, arch := range bazel.ALL_ARCHES {
+			archSelects[os+"_"+arch] = reflect.ValueOf(list.GetOsArchValueForTarget(os, arch))
+		}
+		osArchSelects = append(osArchSelects, archSelects)
 	}
 
-	return value, archSelects, osSelects
+	return value, archSelects, osSelects, osArchSelects
 }
 
 // prettyPrintAttribute converts an Attribute to its Bazel syntax. May contain
@@ -70,16 +100,17 @@ func getLabelListValues(list bazel.LabelListAttribute) (reflect.Value, selects, 
 func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 	var value reflect.Value
 	var archSelects, osSelects selects
+	var osArchSelects []selects
 	var defaultSelectValue string
 	switch list := v.(type) {
 	case bazel.StringListAttribute:
-		value, archSelects, osSelects = getStringListValues(list)
+		value, archSelects, osSelects, osArchSelects = getStringListValues(list)
 		defaultSelectValue = "[]"
 	case bazel.LabelListAttribute:
-		value, archSelects, osSelects = getLabelListValues(list)
+		value, archSelects, osSelects, osArchSelects = getLabelListValues(list)
 		defaultSelectValue = "[]"
 	case bazel.LabelAttribute:
-		value, archSelects, osSelects = getLabelValue(list)
+		value, archSelects, osSelects, osArchSelects = getLabelValue(list)
 		defaultSelectValue = "None"
 	default:
 		return "", fmt.Errorf("Not a supported Bazel attribute type: %s", v)
@@ -114,7 +145,18 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 	}
 
 	ret, err = appendSelects(osSelects, defaultSelectValue, ret)
-	return ret, err
+	if err != nil {
+		return "", err
+	}
+
+	for _, osArchSelect := range osArchSelects {
+		ret, err = appendSelects(osArchSelect, defaultSelectValue, ret)
+		if err != nil {
+			return "", err
+		}
+	}
+
+	return ret, nil
 }
 
 // prettyPrintSelectMap converts a map of select keys to reflected Values as a generic way

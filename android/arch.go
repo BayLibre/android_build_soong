@@ -1068,7 +1068,6 @@ func getChildPropertyStruct(ctx ArchVariantContext,
 	// Find the requested field in the src struct.
 	child := src.FieldByName(proptools.FieldNameForProperty(field))
 	if !child.IsValid() {
-		ctx.ModuleErrorf("field %q does not exist", userFriendlyField)
 		return reflect.Value{}, false
 	}
 
@@ -1950,6 +1949,11 @@ func (m *ModuleBase) GetArchProperties(ctx ArchVariantContext, propertySet inter
 	return archToProp
 }
 
+type targetProperties struct {
+	Properties     interface{}
+	ArchProperties map[ArchType]interface{}
+}
+
 // Returns the struct containing the properties specific to the given
 // architecture type. These look like this in Blueprint files:
 // target: {
@@ -1959,10 +1963,30 @@ func (m *ModuleBase) GetArchProperties(ctx ArchVariantContext, propertySet inter
 // },
 // This struct will also contain sub-structs containing to the architecture/CPU
 // variants and features that themselves contain properties specific to those.
-func getTargetStruct(ctx ArchVariantContext, archProperties interface{}, os OsType) (reflect.Value, bool) {
+func getTargetStruct(ctx ArchVariantContext, archProperties interface{}, field string) (reflect.Value, bool) {
 	archPropValues := reflect.ValueOf(archProperties).Elem()
 	targetProp := archPropValues.FieldByName("Target").Elem()
-	return getChildPropertyStruct(ctx, targetProp, os.Field, os.Field)
+	return getChildPropertyStruct(ctx, targetProp, field, field)
+}
+
+func getMergedTargetStructs(ctx ArchVariantContext, propertySet interface{}, archProperties []interface{}, field string) interface{} {
+	propertyStructs := make([]reflect.Value, 0)
+	for _, archProperty := range archProperties {
+		targetStruct, ok := getTargetStruct(ctx, archProperty, field)
+		if ok {
+			propertyStructs = append(propertyStructs, targetStruct)
+		}
+	}
+
+	// Create a new instance of the requested property set
+	value := reflect.New(reflect.ValueOf(propertySet).Elem().Type()).Interface()
+
+	// Merge all the structs together
+	for _, propertyStruct := range propertyStructs {
+		mergePropertyStruct(ctx, value, propertyStruct)
+	}
+
+	return value
 }
 
 // GetTargetProperties returns a map of OS target (e.g. android, windows) to the
@@ -1974,13 +1998,15 @@ func getTargetStruct(ctx ArchVariantContext, archProperties interface{}, os OsTy
 // the os-specific property value specified by the module if defined.
 //
 // Implemented in a way very similar to GetArchProperties().
-func (m *ModuleBase) GetTargetProperties(ctx ArchVariantContext, propertySet interface{}) map[OsType]interface{} {
-	// Return value of the arch types to the prop values for that arch.
-	osToProp := map[OsType]interface{}{}
+//
+// NOTE: "Target" == OS
+func (m *ModuleBase) GetTargetProperties(ctx ArchVariantContext, propertySet interface{}) map[OsType]targetProperties {
+	// Return value of the target types to the prop values for that target.
+	targetToProp := map[OsType]targetProperties{}
 
-	// Nothing to do for non-OS/arch-specific modules.
+	// Nothing to do for non-target-specific modules.
 	if !m.ArchSpecific() {
-		return osToProp
+		return targetToProp
 	}
 
 	dstType := reflect.ValueOf(propertySet).Type()
@@ -1998,33 +2024,25 @@ func (m *ModuleBase) GetTargetProperties(ctx ArchVariantContext, propertySet int
 
 	if archProperties == nil {
 		// This module does not have the property set requested
-		return osToProp
+		return targetToProp
 	}
 
+	// For android, linux, ...
 	for _, os := range osTypeList {
 		if os == CommonOS {
 			// It looks like this OS value is not used in Blueprint files
 			continue
 		}
-
-		propertyStructs := make([]reflect.Value, 0)
-		for _, archProperty := range archProperties {
-			targetStruct, ok := getTargetStruct(ctx, archProperty, os)
-			if ok {
-				propertyStructs = append(propertyStructs, targetStruct)
-			}
+		targetProperties := targetProperties{
+			Properties:     getMergedTargetStructs(ctx, propertySet, archProperties, os.Name),
+			ArchProperties: make(map[ArchType]interface{}),
 		}
-
-		// Create a new instance of the requested property set
-		value := reflect.New(reflect.ValueOf(propertySet).Elem().Type()).Interface()
-
-		// Merge all the structs together
-		for _, propertyStruct := range propertyStructs {
-			mergePropertyStruct(ctx, value, propertyStruct)
+		// For arm, x86, ...
+		for _, arch := range osArchTypeMap[os] {
+			targetProperties.ArchProperties[arch] = getMergedTargetStructs(ctx, propertySet, archProperties, os.Name+"_"+arch.Name)
 		}
-
-		osToProp[os] = value
+		targetToProp[os] = targetProperties
 	}
 
-	return osToProp
+	return targetToProp
 }
