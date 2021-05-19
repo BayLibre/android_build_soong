@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76652ed3_76b82ca3",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-19T21:39:21Z",
+      "side": 1,
+      "message": "well, the simplest way to make the integration test was to dump the file from Soong instead, so I did that and removed the knob",
+      "parentUuid": "988a74c3_013a85ee",
+      "range": {
+        "startLine": 98,
+        "startChar": 3,
+        "endLine": 98,
+        "endChar": 55
+      },
+      "revId": "04ea62aefeaad32458ef843446f3abcb64727725",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c102aa18_66fc0668",
