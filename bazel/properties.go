@@ -193,6 +193,21 @@ const (
 	OS_LINUX_BIONIC = "linux_bionic"
 	OS_WINDOWS      = "windows"
 
+	// Targets in arch.go
+	TARGET_ANDROID_ARM         = "android_arm"
+	TARGET_ANDROID_ARM64       = "android_arm64"
+	TARGET_ANDROID_X86         = "android_x86"
+	TARGET_ANDROID_X86_64      = "android_x86_64"
+	TARGET_DARWIN_X86_64       = "darwin_x86_64"
+	TARGET_FUCHSIA_ARM64       = "fuchsia_arm64"
+	TARGET_FUCHSIA_X86_64      = "fuchsia_x86_64"
+	TARGET_LINUX_X86           = "linux_glibc_x86"
+	TARGET_LINUX_x86_64        = "linux_glibc_x86_64"
+	TARGET_LINUX_BIONIC_ARM64  = "linux_bionic_arm64"
+	TARGET_LINUX_BIONIC_X86_64 = "linux_bionic_x86_64"
+	TARGET_WINDOWS_X86         = "windows_x86"
+	TARGET_WINDOWS_X86_64      = "windows_x86_64"
+
 	// This is the string representation of the default condition wherever a
 	// configurable attribute is used in a select statement, i.e.
 	// //conditions:default for Bazel.
@@ -234,6 +249,26 @@ var (
 		OS_WINDOWS:         "//build/bazel/platforms/os:windows",
 		CONDITIONS_DEFAULT: ConditionsDefaultSelectKey, // The default condition of an os select map.
 	}
+
+	PlatformTargetMap = map[string]string{
+		TARGET_ANDROID_ARM:         "//build/bazel/platforms:android_arm",
+		TARGET_ANDROID_ARM64:       "//build/bazel/platforms:android_arm64",
+		TARGET_ANDROID_X86:         "//build/bazel/platforms:android_x86",
+		TARGET_ANDROID_X86_64:      "//build/bazel/platforms:android_x86_64",
+		TARGET_DARWIN_X86_64:       "//build/bazel/platforms:darwin_x86_64",
+		TARGET_FUCHSIA_ARM64:       "//build/bazel/platforms:fuchsia_arm64",
+		TARGET_FUCHSIA_X86_64:      "//build/bazel/platforms:fuchsia_x86_64",
+		TARGET_LINUX_X86:           "//build/bazel/platforms:linux_glibc_x86",
+		TARGET_LINUX_x86_64:        "//build/bazel/platforms:linux_glibc_x86_64",
+		TARGET_LINUX_BIONIC_ARM64:  "//build/bazel/platforms:linux_bionic_arm64",
+		TARGET_LINUX_BIONIC_X86_64: "//build/bazel/platforms:linux_bionic_x86_64",
+		TARGET_WINDOWS_X86:         "//build/bazel/platforms:windows_x86",
+		TARGET_WINDOWS_X86_64:      "//build/bazel/platforms:windows_x86_64",
+		CONDITIONS_DEFAULT:         ConditionsDefaultSelectKey, // The default condition of an os select map.
+	}
+
+	// FIXME: Should we add CONDITIONS_DEFAULT here?
+	AllArches = []string{ARCH_ARM, ARCH_ARM64, ARCH_X86, ARCH_X86_64}
 )
 
 type Attribute interface {
@@ -297,15 +332,32 @@ type labelListArchValues struct {
 	ConditionsDefault LabelList
 }
 
-type labelListOsValues struct {
-	Android     LabelList
-	Darwin      LabelList
-	Fuchsia     LabelList
-	Linux       LabelList
-	LinuxBionic LabelList
-	Windows     LabelList
+type labelListTargetValue struct {
+	// E.g. for android
+	OsValue LabelList
 
-	ConditionsDefault LabelList
+	// E.g. for android_arm, android_arm64, ...
+	ArchValues labelListArchValues
+}
+
+func (target *labelListTargetValue) Append(other labelListTargetValue) {
+	target.OsValue.Append(other.OsValue)
+	target.ArchValues.X86.Append(other.ArchValues.X86)
+	target.ArchValues.X86_64.Append(other.ArchValues.X86_64)
+	target.ArchValues.Arm.Append(other.ArchValues.Arm)
+	target.ArchValues.Arm64.Append(other.ArchValues.Arm64)
+	target.ArchValues.ConditionsDefault.Append(other.ArchValues.ConditionsDefault)
+}
+
+type labelListTargetValues struct {
+	Android     labelListTargetValue
+	Darwin      labelListTargetValue
+	Fuchsia     labelListTargetValue
+	Linux       labelListTargetValue
+	LinuxBionic labelListTargetValue
+	Windows     labelListTargetValue
+
+	ConditionsDefault labelListTargetValue
 }
 
 // LabelListAttribute is used to represent a list of Bazel labels as an
@@ -322,7 +374,7 @@ type LabelListAttribute struct {
 	// The os-specific attribute label list values. Optional. If used, these
 	// are generated in a select statement and appended to the non-os specific
 	// label list Value.
-	OsValues labelListOsValues
+	TargetValues labelListTargetValues
 }
 
 // MakeLabelListAttribute initializes a LabelListAttribute with the non-arch specific value.
@@ -341,10 +393,10 @@ func (attrs *LabelListAttribute) Append(other LabelListAttribute) {
 	}
 
 	for os := range PlatformOsMap {
-		this := attrs.GetValueForOS(os)
-		that := other.GetValueForOS(os)
+		this := attrs.getValueForTarget(os)
+		that := other.getValueForTarget(os)
 		this.Append(that)
-		attrs.SetValueForOS(os, this)
+		attrs.setValueForTarget(os, this)
 	}
 
 	attrs.Value.Append(other.Value)
@@ -360,8 +412,14 @@ func (attrs LabelListAttribute) HasConfigurableValues() bool {
 	}
 
 	for os := range PlatformOsMap {
-		if len(attrs.GetValueForOS(os).Includes) > 0 {
+		if len(attrs.GetOsValueForTarget(os).Includes) > 0 {
 			return true
+		}
+		// FIXME: Should we also check arch=CONDITIONS_DEFAULT (not in AllArches)
+		for _, arch := range AllArches {
+			if len(attrs.GetOsArchValueForTarget(os, arch).Includes) > 0 {
+				return true
+			}
 		}
 	}
 	return false
@@ -395,34 +453,91 @@ func (attrs *LabelListAttribute) SetValueForArch(arch string, value LabelList) {
 	*v = value
 }
 
-func (attrs *LabelListAttribute) osValuePtrs() map[string]*LabelList {
-	return map[string]*LabelList{
-		OS_ANDROID:         &attrs.OsValues.Android,
-		OS_DARWIN:          &attrs.OsValues.Darwin,
-		OS_FUCHSIA:         &attrs.OsValues.Fuchsia,
-		OS_LINUX:           &attrs.OsValues.Linux,
-		OS_LINUX_BIONIC:    &attrs.OsValues.LinuxBionic,
-		OS_WINDOWS:         &attrs.OsValues.Windows,
-		CONDITIONS_DEFAULT: &attrs.OsValues.ConditionsDefault,
+func (attrs *LabelListAttribute) targetValuePtrs() map[string]*labelListTargetValue {
+	return map[string]*labelListTargetValue{
+		OS_ANDROID:         &attrs.TargetValues.Android,
+		OS_DARWIN:          &attrs.TargetValues.Darwin,
+		OS_FUCHSIA:         &attrs.TargetValues.Fuchsia,
+		OS_LINUX:           &attrs.TargetValues.Linux,
+		OS_LINUX_BIONIC:    &attrs.TargetValues.LinuxBionic,
+		OS_WINDOWS:         &attrs.TargetValues.Windows,
+		CONDITIONS_DEFAULT: &attrs.TargetValues.ConditionsDefault,
 	}
 }
 
 // GetValueForOS returns the label_list attribute value for an OS target.
-func (attrs *LabelListAttribute) GetValueForOS(os string) LabelList {
-	var v *LabelList
-	if v = attrs.osValuePtrs()[os]; v == nil {
+func (attrs *LabelListAttribute) getValueForTarget(os string) labelListTargetValue {
+	var v *labelListTargetValue
+	if v = attrs.targetValuePtrs()[os]; v == nil {
 		panic(fmt.Errorf("Unknown os: %s", os))
 	}
 	return *v
 }
 
-// SetValueForArch sets the label_list attribute value for an OS target.
-func (attrs *LabelListAttribute) SetValueForOS(os string, value LabelList) {
-	var v *LabelList
-	if v = attrs.osValuePtrs()[os]; v == nil {
+func (attrs *LabelListAttribute) GetOsValueForTarget(os string) LabelList {
+	var v *labelListTargetValue
+	if v = attrs.targetValuePtrs()[os]; v == nil {
+		panic(fmt.Errorf("Unknown os: %s", os))
+	}
+	return v.OsValue
+}
+
+func (attrs *LabelListAttribute) GetOsArchValueForTarget(os string, arch string) LabelList {
+	var v *labelListTargetValue
+	if v = attrs.targetValuePtrs()[os]; v == nil {
+		panic(fmt.Errorf("Unknown os: %s", os))
+	}
+	switch arch {
+	case ARCH_X86:
+		return v.ArchValues.X86
+	case ARCH_X86_64:
+		return v.ArchValues.X86_64
+	case ARCH_ARM:
+		return v.ArchValues.Arm
+	case ARCH_ARM64:
+		return v.ArchValues.Arm64
+	case CONDITIONS_DEFAULT:
+		return v.ArchValues.ConditionsDefault
+	default:
+		panic(fmt.Errorf("Unknown arch: %s\n", arch))
+	}
+}
+
+func (attrs *LabelListAttribute) setValueForTarget(os string, value labelListTargetValue) {
+	var v *labelListTargetValue
+	if v = attrs.targetValuePtrs()[os]; v == nil {
 		panic(fmt.Errorf("Unknown os: %s", os))
 	}
 	*v = value
+}
+
+func (attrs *LabelListAttribute) SetOsValueForTarget(os string, value LabelList) {
+	var v *labelListTargetValue
+	if v = attrs.targetValuePtrs()[os]; v == nil {
+		panic(fmt.Errorf("Unknown os: %s", os))
+	}
+	v.OsValue = value
+}
+
+func (attrs *LabelListAttribute) SetOsArchValueForTarget(os string, arch string, value LabelList) {
+	var v *labelListTargetValue
+	if v = attrs.targetValuePtrs()[os]; v == nil {
+		panic(fmt.Errorf("Unknown os: %s", os))
+	}
+	switch arch {
+	case ARCH_X86:
+		v.ArchValues.X86 = value
+	case ARCH_X86_64:
+		v.ArchValues.X86_64 = value
+	case ARCH_ARM:
+		v.ArchValues.Arm = value
+	case ARCH_ARM64:
+		v.ArchValues.Arm64 = value
+	case CONDITIONS_DEFAULT:
+		v.ArchValues.ConditionsDefault = value
+	default:
+		panic(fmt.Errorf("Unknown arch: %s\n", arch))
+	}
 }
 
 // StringListAttribute corresponds to the string_list Bazel attribute type with
@@ -439,7 +554,7 @@ type StringListAttribute struct {
 	// The os-specific attribute string list values. Optional. If used, these
 	// are generated in a select statement and appended to the non-os specific
 	// label list Value.
-	OsValues stringListOsValues
+	TargetValues stringListTargetValues
 
 	// list of product-variable string list values. Optional. if used, each will generate a select
 	// statement appended to the label list Value.
@@ -464,15 +579,32 @@ type stringListArchValues struct {
 	ConditionsDefault []string
 }
 
-type stringListOsValues struct {
-	Android     []string
-	Darwin      []string
-	Fuchsia     []string
-	Linux       []string
-	LinuxBionic []string
-	Windows     []string
+type stringListTargetValue struct {
+	// E.g. for android
+	OsValue []string
 
-	ConditionsDefault []string
+	// E.g. for android_arm, android_arm64, ...
+	ArchValues stringListArchValues
+}
+
+func (target *stringListTargetValue) Append(other stringListTargetValue) {
+	target.OsValue = append(target.OsValue, other.OsValue...)
+	target.ArchValues.X86 = append(target.ArchValues.X86, other.ArchValues.X86...)
+	target.ArchValues.X86_64 = append(target.ArchValues.X86_64, other.ArchValues.X86_64...)
+	target.ArchValues.Arm = append(target.ArchValues.Arm, other.ArchValues.Arm...)
+	target.ArchValues.Arm64 = append(target.ArchValues.Arm64, other.ArchValues.Arm64...)
+	target.ArchValues.ConditionsDefault = append(target.ArchValues.ConditionsDefault, other.ArchValues.ConditionsDefault...)
+}
+
+type stringListTargetValues struct {
+	Android     stringListTargetValue
+	Darwin      stringListTargetValue
+	Fuchsia     stringListTargetValue
+	Linux       stringListTargetValue
+	LinuxBionic stringListTargetValue
+	Windows     stringListTargetValue
+
+	ConditionsDefault stringListTargetValue
 }
 
 // Product Variable values for StringListAttribute
@@ -497,8 +629,15 @@ func (attrs StringListAttribute) HasConfigurableValues() bool {
 	}
 
 	for os := range PlatformOsMap {
-		if len(attrs.GetValueForOS(os)) > 0 {
+		if len(attrs.GetOsValueForTarget(os)) > 0 {
 			return true
+		}
+		// FIXME: Should we also check arch=CONDITIONS_DEFAULT? (Not in AllArches)
+		for _, arch := range AllArches {
+			if len(attrs.GetOsArchValueForTarget(os, arch)) > 0 {
+				return true
+			}
+
 		}
 	}
 
@@ -533,31 +672,58 @@ func (attrs *StringListAttribute) SetValueForArch(arch string, value []string) {
 	*v = value
 }
 
-func (attrs *StringListAttribute) osValuePtrs() map[string]*[]string {
-	return map[string]*[]string{
-		OS_ANDROID:         &attrs.OsValues.Android,
-		OS_DARWIN:          &attrs.OsValues.Darwin,
-		OS_FUCHSIA:         &attrs.OsValues.Fuchsia,
-		OS_LINUX:           &attrs.OsValues.Linux,
-		OS_LINUX_BIONIC:    &attrs.OsValues.LinuxBionic,
-		OS_WINDOWS:         &attrs.OsValues.Windows,
-		CONDITIONS_DEFAULT: &attrs.OsValues.ConditionsDefault,
+func (attrs *StringListAttribute) targetValuePtrs() map[string]*stringListTargetValue {
+	return map[string]*stringListTargetValue{
+		OS_ANDROID:         &attrs.TargetValues.Android,
+		OS_DARWIN:          &attrs.TargetValues.Darwin,
+		OS_FUCHSIA:         &attrs.TargetValues.Fuchsia,
+		OS_LINUX:           &attrs.TargetValues.Linux,
+		OS_LINUX_BIONIC:    &attrs.TargetValues.LinuxBionic,
+		OS_WINDOWS:         &attrs.TargetValues.Windows,
+		CONDITIONS_DEFAULT: &attrs.TargetValues.ConditionsDefault,
 	}
 }
 
-// GetValueForOS returns the string_list attribute value for an OS target.
-func (attrs *StringListAttribute) GetValueForOS(os string) []string {
-	var v *[]string
-	if v = attrs.osValuePtrs()[os]; v == nil {
+func (attrs *StringListAttribute) getValueForTarget(os string) stringListTargetValue {
+	var v *stringListTargetValue
+	if v = attrs.targetValuePtrs()[os]; v == nil {
 		panic(fmt.Errorf("Unknown os: %s", os))
 	}
 	return *v
 }
 
-// SetValueForArch sets the string_list attribute value for an OS target.
-func (attrs *StringListAttribute) SetValueForOS(os string, value []string) {
-	var v *[]string
-	if v = attrs.osValuePtrs()[os]; v == nil {
+func (attrs *StringListAttribute) GetOsValueForTarget(os string) []string {
+	var v *stringListTargetValue
+	if v = attrs.targetValuePtrs()[os]; v == nil {
+		panic(fmt.Errorf("Unknown os: %s", os))
+	}
+	return v.OsValue
+}
+
+func (attrs *StringListAttribute) GetOsArchValueForTarget(os string, arch string) []string {
+	var v *stringListTargetValue
+	if v = attrs.targetValuePtrs()[os]; v == nil {
+		panic(fmt.Errorf("Unknown os: %s", os))
+	}
+	switch arch {
+	case ARCH_X86:
+		return v.ArchValues.X86
+	case ARCH_X86_64:
+		return v.ArchValues.X86_64
+	case ARCH_ARM:
+		return v.ArchValues.Arm
+	case ARCH_ARM64:
+		return v.ArchValues.Arm64
+	case CONDITIONS_DEFAULT:
+		return v.ArchValues.ConditionsDefault
+	default:
+		panic(fmt.Errorf("Unknown arch: %s\n", arch))
+	}
+}
+
+func (attrs *StringListAttribute) setValueForTarget(os string, value stringListTargetValue) {
+	var v *stringListTargetValue
+	if v = attrs.targetValuePtrs()[os]; v == nil {
 		panic(fmt.Errorf("Unknown os: %s", os))
 	}
 	*v = value
@@ -567,6 +733,35 @@ func (attrs *StringListAttribute) SortedProductVariables() []ProductVariableValu
 	vals := attrs.ProductValues[:]
 	sort.Slice(vals, func(i, j int) bool { return vals[i].ProductVariable < vals[j].ProductVariable })
 	return vals
+}
+
+func (attrs *StringListAttribute) SetOsValueForTarget(os string, value []string) {
+	var v *stringListTargetValue
+	if v = attrs.targetValuePtrs()[os]; v == nil {
+		panic(fmt.Errorf("Unknown os: %s", os))
+	}
+	v.OsValue = value
+}
+
+func (attrs *StringListAttribute) SetOsArchValueForTarget(os string, arch string, value []string) {
+	var v *stringListTargetValue
+	if v = attrs.targetValuePtrs()[os]; v == nil {
+		panic(fmt.Errorf("Unknown os: %s", os))
+	}
+	switch arch {
+	case ARCH_X86:
+		v.ArchValues.X86 = value
+	case ARCH_X86_64:
+		v.ArchValues.X86_64 = value
+	case ARCH_ARM:
+		v.ArchValues.Arm = value
+	case ARCH_ARM64:
+		v.ArchValues.Arm64 = value
+	case CONDITIONS_DEFAULT:
+		v.ArchValues.ConditionsDefault = value
+	default:
+		panic(fmt.Errorf("Unknown arch: %s\n", arch))
+	}
 }
 
 // Append appends all values, including os and arch specific ones, from another
@@ -580,10 +775,10 @@ func (attrs *StringListAttribute) Append(other StringListAttribute) {
 	}
 
 	for os := range PlatformOsMap {
-		this := attrs.GetValueForOS(os)
-		that := other.GetValueForOS(os)
-		this = append(this, that...)
-		attrs.SetValueForOS(os, this)
+		this := attrs.getValueForTarget(os)
+		that := other.getValueForTarget(os)
+		this.Append(that)
+		attrs.setValueForTarget(os, this)
 	}
 
 	productValues := make(map[string][]string, 0)
