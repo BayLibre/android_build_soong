@@ -34,8 +34,8 @@ func DocsSingleton() Singleton {
 type docsSingleton struct{}
 
 func primaryBuilderPath(ctx SingletonContext) Path {
-	buildDir := absolutePath(ctx.Config().BuildDir())
-	binary := absolutePath(os.Args[0])
+	buildDir := AbsolutePath(ctx.Config().BuildDir())
+	binary := AbsolutePath(os.Args[0])
 	primaryBuilder, err := filepath.Rel(buildDir, binary)
 	if err != nil {
 		ctx.Errorf("path to primary builder %q is not in build dir %q (%q)",

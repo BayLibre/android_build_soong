@@ -1981,15 +1981,15 @@ func maybeRelErr(basePath string, targetPath string) (string, bool, error) {
 // Writes a file to the output directory.  Attempting to write directly to the output directory
 // will fail due to the sandbox of the soong_build process.
 func WriteFileToOutputDir(path WritablePath, data []byte, perm os.FileMode) error {
-	return ioutil.WriteFile(absolutePath(path.String()), data, perm)
+	return ioutil.WriteFile(AbsolutePath(path.String()), data, perm)
 }
 
 func RemoveAllOutputDir(path WritablePath) error {
-	return os.RemoveAll(absolutePath(path.String()))
+	return os.RemoveAll(AbsolutePath(path.String()))
 }
 
 func CreateOutputDirIfNonexistent(path WritablePath, perm os.FileMode) error {
-	dir := absolutePath(path.String())
+	dir := AbsolutePath(path.String())
 	if _, err := os.Stat(dir); os.IsNotExist(err) {
 		return os.MkdirAll(dir, os.ModePerm)
 	} else {
@@ -1997,7 +1997,7 @@ func CreateOutputDirIfNonexistent(path WritablePath, perm os.FileMode) error {
 	}
 }
 
-func absolutePath(path string) string {
+func AbsolutePath(path string) string {
 	if filepath.IsAbs(path) {
 		return path
 	}
