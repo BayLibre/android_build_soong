@@ -70,6 +70,30 @@
       },
       "revId": "f2fa0b5e8ee57369ac920969071eee2b56cc04db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96bd1dd5_77db5efe",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-19T16:53:38Z",
+      "side": 1,
+      "message": "It is because shared_library defaults to true. If it is not intended to be a shared library then it should set it to false. The default is definitely the wrong way around but it is that way for legacy reasons. Inverting the default is something that Anton and I have wanted to do for a while but it is painful to do that. The sdk snapshot of a java_sdk_library always output shared_library even if it matches the default so that we don\u0027t have to change them when we invert it.",
+      "parentUuid": "6e1f7d7c_5a2c08db",
+      "range": {
+        "startLine": 463,
+        "startChar": 3,
+        "endLine": 463,
+        "endChar": 25
+      },
+      "revId": "f2fa0b5e8ee57369ac920969071eee2b56cc04db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
