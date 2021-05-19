@@ -50,25 +50,26 @@ func depsBp2BuildMutator(ctx android.BottomUpMutatorContext) {
 
 	var allDeps []string
 
-	for _, p := range module.GetTargetProperties(ctx, &BaseCompilerProperties{}) {
+	for _, props := range module.GetTargetProperties(ctx, &BaseCompilerProperties{}) {
 		// base compiler props
-		if baseCompilerProps, ok := p.(*BaseCompilerProperties); ok {
+		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
 			allDeps = append(allDeps, baseCompilerProps.Generated_headers...)
 			allDeps = append(allDeps, baseCompilerProps.Generated_sources...)
 		}
 	}
 
-	for _, p := range module.GetArchProperties(ctx, &BaseCompilerProperties{}) {
+	for _, props := range module.GetArchProperties(ctx, &BaseCompilerProperties{}) {
 		// arch specific compiler props
-		if baseCompilerProps, ok := p.(*BaseCompilerProperties); ok {
+		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
 			allDeps = append(allDeps, baseCompilerProps.Generated_headers...)
 			allDeps = append(allDeps, baseCompilerProps.Generated_sources...)
 		}
 	}
 
-	for _, p := range module.GetTargetProperties(ctx, &BaseLinkerProperties{}) {
+	// NOTE: The target os/arch is being dropped here
+	for _, props := range module.GetTargetProperties(ctx, &BaseLinkerProperties{}) {
 		// arch specific linker props
-		if baseLinkerProps, ok := p.(*BaseLinkerProperties); ok {
+		if baseLinkerProps, ok := props.(*BaseLinkerProperties); ok {
 			allDeps = append(allDeps, baseLinkerProps.Header_libs...)
 			allDeps = append(allDeps, baseLinkerProps.Export_header_lib_headers...)
 			allDeps = append(allDeps, baseLinkerProps.Static_libs...)
@@ -76,9 +77,9 @@ func depsBp2BuildMutator(ctx android.BottomUpMutatorContext) {
 		}
 	}
 
-	for _, p := range module.GetArchProperties(ctx, &BaseLinkerProperties{}) {
+	for _, props := range module.GetArchProperties(ctx, &BaseLinkerProperties{}) {
 		// arch specific linker props
-		if baseLinkerProps, ok := p.(*BaseLinkerProperties); ok {
+		if baseLinkerProps, ok := props.(*BaseLinkerProperties); ok {
 			allDeps = append(allDeps, baseLinkerProps.Header_libs...)
 			allDeps = append(allDeps, baseLinkerProps.Export_header_lib_headers...)
 			allDeps = append(allDeps, baseLinkerProps.Static_libs...)
@@ -308,13 +309,13 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 	// TODO(b/186153868): handle the case with multiple variant types, e.g. when arch and os are both used.
 	srcs.SetValueForArch(bazel.CONDITIONS_DEFAULT, defaultsSrcs)
 
-	// Handle OS specific props.
-	for os, props := range module.GetTargetProperties(ctx, &BaseCompilerProperties{}) {
+	// Handle target specific properties.
+	for target, props := range module.GetTargetProperties(ctx, &BaseCompilerProperties{}) {
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
 			srcsList := parseSrcs(baseCompilerProps)
 			// TODO(b/186153868): add support for os-specific srcs and exclude_srcs
-			srcs.SetValueForOS(os.Name, bazel.SubtractBazelLabelList(srcsList, baseSrcsLabelList))
-			copts.SetValueForOS(os.Name, parseCopts(baseCompilerProps))
+			srcs.SetValueForOS(target.Name(), bazel.SubtractBazelLabelList(srcsList, baseSrcsLabelList))
+			copts.SetValueForOS(target.Name(), parseCopts(baseCompilerProps))
 		}
 	}
 
@@ -373,8 +374,8 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 		}
 	}
 
-	for arch, p := range module.GetArchProperties(ctx, &BaseLinkerProperties{}) {
-		if baseLinkerProps, ok := p.(*BaseLinkerProperties); ok {
+	for arch, props := range module.GetArchProperties(ctx, &BaseLinkerProperties{}) {
+		if baseLinkerProps, ok := props.(*BaseLinkerProperties); ok {
 			libs := baseLinkerProps.Header_libs
 			libs = append(libs, baseLinkerProps.Export_header_lib_headers...)
 			libs = append(libs, baseLinkerProps.Static_libs...)
@@ -394,20 +395,21 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 		}
 	}
 
-	for os, p := range module.GetTargetProperties(ctx, &BaseLinkerProperties{}) {
-		if baseLinkerProps, ok := p.(*BaseLinkerProperties); ok {
+	for target, props := range module.GetTargetProperties(ctx, &BaseLinkerProperties{}) {
+		if baseLinkerProps, ok := props.(*BaseLinkerProperties); ok {
 			libs := baseLinkerProps.Header_libs
 			libs = append(libs, baseLinkerProps.Export_header_lib_headers...)
 			libs = append(libs, baseLinkerProps.Static_libs...)
 			wholeArchiveLibs := baseLinkerProps.Whole_static_libs
 			libs = android.SortedUniqueStrings(libs)
-			wholeArchiveDeps.SetValueForOS(os.Name, android.BazelLabelForModuleDeps(ctx, wholeArchiveLibs))
-			deps.SetValueForOS(os.Name, android.BazelLabelForModuleDeps(ctx, libs))
 
-			linkopts.SetValueForOS(os.Name, getBp2BuildLinkerFlags(baseLinkerProps))
+			wholeArchiveDeps.SetValueForOS(target.Name(), android.BazelLabelForModuleDeps(ctx, wholeArchiveLibs))
+			deps.SetValueForOS(target.Name(), android.BazelLabelForModuleDeps(ctx, libs))
+
+			linkopts.SetValueForOS(target.Name(), getBp2BuildLinkerFlags(baseLinkerProps))
 
 			sharedLibs := baseLinkerProps.Shared_libs
-			dynamicDeps.SetValueForOS(os.Name, android.BazelLabelForModuleDeps(ctx, sharedLibs))
+			dynamicDeps.SetValueForOS(target.Name(), android.BazelLabelForModuleDeps(ctx, sharedLibs))
 		}
 	}
 
@@ -470,17 +472,17 @@ func bp2BuildParseExportedIncludes(ctx android.TopDownMutatorContext, module *Mo
 		}
 	}
 
-	for os, props := range module.GetTargetProperties(ctx, &FlagExporterProperties{}) {
+	for target, props := range module.GetTargetProperties(ctx, &FlagExporterProperties{}) {
 		if flagExporterProperties, ok := props.(*FlagExporterProperties); ok {
-			osIncludeDirs := flagExporterProperties.Export_system_include_dirs
-			osIncludeDirs = append(osIncludeDirs, flagExporterProperties.Export_include_dirs...)
+			targetIncludeDirs := flagExporterProperties.Export_system_include_dirs
+			targetIncludeDirs = append(targetIncludeDirs, flagExporterProperties.Export_include_dirs...)
 
-			// To avoid duplicate includes when base includes + os includes are combined
-			// FIXME: This doesn't take conflicts between arch and os includes into account
-			osIncludeDirs = bazel.SubtractStrings(osIncludeDirs, includeDirs)
+			// To avoid duplicate includes when base includes + target includes are combined
+			// FIXME: This doesn't take conflicts between arch and target includes into account
+			targetIncludeDirs = bazel.SubtractStrings(targetIncludeDirs, includeDirs)
 
-			if len(osIncludeDirs) > 0 {
-				includeDirsAttribute.SetValueForOS(os.Name, osIncludeDirs)
+			if len(targetIncludeDirs) > 0 {
+				includeDirsAttribute.SetValueForOS(target.Name(), targetIncludeDirs)
 			}
 		}
 	}
