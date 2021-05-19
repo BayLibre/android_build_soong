@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "132b8681_40bd7bc4",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-19T13:43:06Z",
+      "side": 1,
+      "message": "I thought you\u0027d add another member to StringListAttribute instead of putting these in OsValues: if you do it this way, what will happen is that exactly one branch of the select() will be taken so in the Android/arm64 configuration you\u0027ll have either android_src.c or android_arm64_src.c, but if I read arch.go correctly, the correct solution is to include both:\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/arch.go;l\u003d1329\n\nand result is used here:\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/arch.go;l\u003d1390\n\nIOW, the desired output here is \n\nselect({\n  \":android\":\n  \":linux_bionic\":\n  \":default\":\n}) + select({\n  \":android_arm\":\n  \":android_arm64\":\n  \":linux_bionic_arm64\":\n  \":default\":\n})",
+      "range": {
+        "startLine": 1149,
+        "startChar": 11,
+        "endLine": 1149,
+        "endChar": 17
+      },
+      "revId": "40268fff0c85732ee4a54d5621ba3e2dbbc1d009",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03b9a4fb_79779f4e",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1156,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-19T13:43:06Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 1156,
+        "startChar": 60,
+        "endLine": 1156,
+        "endChar": 83
+      },
+      "revId": "40268fff0c85732ee4a54d5621ba3e2dbbc1d009",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
