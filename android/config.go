@@ -164,7 +164,7 @@ type jsonConfigurable interface {
 }
 
 func loadConfig(config *config) error {
-	return loadFromConfigFile(&config.productVariables, absolutePath(config.ProductVariablesFileName))
+	return loadFromConfigFile(&config.productVariables, AbsolutePath(config.ProductVariablesFileName))
 }
 
 // loadFromConfigFile loads and decodes configuration options from a JSON file
@@ -398,7 +398,7 @@ func NewConfig(srcDir, buildDir string, moduleListFile string, availableEnv map[
 	}
 
 	KatiEnabledMarkerFile := filepath.Join(buildDir, ".soong.kati_enabled")
-	if _, err := os.Stat(absolutePath(KatiEnabledMarkerFile)); err == nil {
+	if _, err := os.Stat(AbsolutePath(KatiEnabledMarkerFile)); err == nil {
 		config.katiEnabled = true
 	}
 
@@ -1009,7 +1009,7 @@ func (c *config) DexpreoptGlobalConfig(ctx PathContext) ([]byte, error) {
 		return nil, nil
 	}
 	ctx.AddNinjaFileDeps(path.String())
-	return ioutil.ReadFile(absolutePath(path.String()))
+	return ioutil.ReadFile(AbsolutePath(path.String()))
 }
 
 func (c *deviceConfig) WithDexpreopt() bool {

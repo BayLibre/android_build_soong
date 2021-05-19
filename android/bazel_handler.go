@@ -321,7 +321,7 @@ type builtinBazelRunner struct{}
 // the invocation returned an error code.
 func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.RunName, command bazelCommand,
 	extraFlags ...string) (string, string, error) {
-	cmdFlags := []string{"--output_base=" + absolutePath(paths.outputBase), command.command}
+	cmdFlags := []string{"--output_base=" + AbsolutePath(paths.outputBase), command.command}
 	cmdFlags = append(cmdFlags, command.expression)
 	cmdFlags = append(cmdFlags, "--profile="+shared.BazelMetricsFilename(paths, runName))
 
@@ -346,11 +346,11 @@ func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.
 	cmdFlags = append(cmdFlags, extraFlags...)
 
 	bazelCmd := exec.Command(paths.bazelPath, cmdFlags...)
-	bazelCmd.Dir = absolutePath(paths.syntheticWorkspaceDir())
+	bazelCmd.Dir = AbsolutePath(paths.syntheticWorkspaceDir())
 	bazelCmd.Env = append(os.Environ(),
 		"HOME="+paths.homeDir,
 		pwdPrefix(),
-		"BUILD_DIR="+absolutePath(paths.buildDir),
+		"BUILD_DIR="+AbsolutePath(paths.buildDir),
 		// Disables local host detection of gcc; toolchain information is defined
 		// explicitly in BUILD files.
 		"BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1")
@@ -585,7 +585,7 @@ func (context *bazelContext) InvokeBazel() error {
 	var cqueryErr string
 	var err error
 
-	soongInjectionPath := absolutePath(context.paths.injectedFilesDir())
+	soongInjectionPath := AbsolutePath(context.paths.injectedFilesDir())
 	mixedBuildsPath := filepath.Join(soongInjectionPath, "mixed_builds")
 	if _, err := os.Stat(mixedBuildsPath); os.IsNotExist(err) {
 		err = os.MkdirAll(mixedBuildsPath, 0777)
@@ -614,7 +614,7 @@ func (context *bazelContext) InvokeBazel() error {
 	}
 	cqueryFileRelpath := filepath.Join(context.paths.injectedFilesDir(), "buildroot.cquery")
 	err = ioutil.WriteFile(
-		absolutePath(cqueryFileRelpath),
+		AbsolutePath(cqueryFileRelpath),
 		context.cqueryStarlarkFileContents(), 0666)
 	if err != nil {
 		return err
@@ -625,7 +625,7 @@ func (context *bazelContext) InvokeBazel() error {
 		bazel.CqueryBuildRootRunName,
 		bazelCommand{"cquery", fmt.Sprintf("kind(rule, deps(%s))", buildrootLabel)},
 		"--output=starlark",
-		"--starlark:file="+absolutePath(cqueryFileRelpath))
+		"--starlark:file="+AbsolutePath(cqueryFileRelpath))
 	err = ioutil.WriteFile(filepath.Join(soongInjectionPath, "cquery.out"),
 		[]byte(cqueryOutput), 0666)
 	if err != nil {
@@ -714,7 +714,7 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 	}
 
 	// Add ninja file dependencies for files which all bazel invocations require.
-	bazelBuildList := absolutePath(filepath.Join(
+	bazelBuildList := AbsolutePath(filepath.Join(
 		filepath.Dir(bootstrap.CmdlineArgs.ModuleListFile), "bazel.list"))
 	ctx.AddNinjaFileDeps(bazelBuildList)
 
