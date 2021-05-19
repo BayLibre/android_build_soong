@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "907c7026_c5829bae",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-19T14:25:08Z",
+      "side": 1,
+      "message": "should we have a test for shared_library: true as well?\n\nAlso, I don\u0027t know why but I needed to add compile_dex to geotz and ike for build not to crash. Maybe worth adding an explicit check with a proper error message.",
+      "range": {
+        "startLine": 463,
+        "startChar": 3,
+        "endLine": 463,
+        "endChar": 25
+      },
+      "revId": "f2fa0b5e8ee57369ac920969071eee2b56cc04db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
