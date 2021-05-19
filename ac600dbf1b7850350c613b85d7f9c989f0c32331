@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "111e0a48_1f0fc3bf",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-19T16:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b369be91_82ffa34e",
+      "range": {
+        "startLine": 69,
+        "startChar": 66,
+        "endLine": 69,
+        "endChar": 67
+      },
+      "revId": "ac600dbf1b7850350c613b85d7f9c989f0c32331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efdbeff9_0f160a5c",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-19T15:21:05Z",
       "side": 1,
       "message": "nit: maybe put SdkCorePlatform before SdkTest then? doesn\u0027t really matter though..",
+      "range": {
+        "startLine": 72,
+        "startChar": 53,
+        "endLine": 73,
+        "endChar": 69
+      },
+      "revId": "ac600dbf1b7850350c613b85d7f9c989f0c32331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b75806e4_fa603f2d",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-19T16:54:56Z",
+      "side": 1,
+      "message": "I\u0027ll leave it where it is because this is more accurate. For those modules that provide core platform APIs, the public, test (the same as system) and system are all subsets of the core platform API.",
+      "parentUuid": "efdbeff9_0f160a5c",
       "range": {
         "startLine": 72,
         "startChar": 53,
@@ -78,6 +126,30 @@
       "side": 1,
       "message": "\u003e Common typo found: \"dependecy\" -- should it be \"dependency\"?\n\u003e Note: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.\n\nPlease fix.",
       "parentUuid": "33585fe2_24c22287",
+      "range": {
+        "startLine": 523,
+        "startChar": 78,
+        "endLine": 523,
+        "endChar": 87
+      },
+      "revId": "ac600dbf1b7850350c613b85d7f9c989f0c32331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe45bf18_a2853600",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-19T16:54:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cf86278_0bf03dd1",
       "range": {
         "startLine": 523,
         "startChar": 78,
