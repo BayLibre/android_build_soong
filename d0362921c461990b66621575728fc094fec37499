@@ -45,6 +45,54 @@
       },
       "revId": "d0362921c461990b66621575728fc094fec37499",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a68858e4_fb5ce5fa",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-19T15:18:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a89ca3a_2821e9c0",
+      "range": {
+        "startLine": 277,
+        "startChar": 22,
+        "endLine": 277,
+        "endChar": 25
+      },
+      "revId": "d0362921c461990b66621575728fc094fec37499",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7aa4f37_910b5f13",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-19T15:18:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea613b31_8d1132c2",
+      "range": {
+        "startLine": 277,
+        "startChar": 65,
+        "endLine": 277,
+        "endChar": 77
+      },
+      "revId": "d0362921c461990b66621575728fc094fec37499",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
