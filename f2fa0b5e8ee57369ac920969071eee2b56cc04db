@@ -46,6 +46,30 @@
       },
       "revId": "f2fa0b5e8ee57369ac920969071eee2b56cc04db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e1f7d7c_5a2c08db",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-19T15:30:47Z",
+      "side": 1,
+      "message": "geotz isn\u0027t a shared library though, see ag/14608035.",
+      "parentUuid": "90b5b127_2575ad7e",
+      "range": {
+        "startLine": 463,
+        "startChar": 3,
+        "endLine": 463,
+        "endChar": 25
+      },
+      "revId": "f2fa0b5e8ee57369ac920969071eee2b56cc04db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
