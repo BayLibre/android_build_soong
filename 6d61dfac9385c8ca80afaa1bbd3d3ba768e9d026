@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "427062e8_ed14124c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-19T03:33:33Z",
+      "side": 1,
+      "message": "Build failure is expected until https://android-review.googlesource.com/c/platform/external/angle/+/1711050 is submitted",
+      "revId": "6d61dfac9385c8ca80afaa1bbd3d3ba768e9d026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
