@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a92937a_4f3cd151",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-19T11:41:54Z",
+      "side": 1,
+      "message": "The prebuilt_bootclasspath_fragment/bootclasspath_fragment share 99% of the code so if you have done it for the latter it probably works for the former too.\n\nIt might make sense for the prebuilt to use an already generated protos file instead. If so then that would need to be added to the snapshot.",
+      "parentUuid": "33abba26_13ef281d",
+      "range": {
+        "startLine": 38,
+        "startChar": 6,
+        "endLine": 38,
+        "endChar": 37
+      },
+      "revId": "9408fcd3968bbf9181e762d93c6bd7a55467a4fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41c7ac44_8acad1f9",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-05-19T11:32:25Z",
       "side": 1,
       "message": "Interesting \"hack\". Why not update internal modules instead of submitting this one though? I am generally okay though as long as we don\u0027t forget to remove this later.",
+      "revId": "9408fcd3968bbf9181e762d93c6bd7a55467a4fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b62b6699_8ae9e45a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-19T11:41:54Z",
+      "side": 1,
+      "message": "Because it will take too long.\n\nIn order to update the internal modules I need to:\n1. Add bootclasspath_fragments for all the modules.\n2. Add them to the module\u0027s sdk, adding an sdk where necessary.\n3. Ideally, but not strictly necessary, add hidden API support to them all.\n4. Update the prebuilts to use the sdk snapshot so there are prebuilt_bootclasspath_fragment modules.\n5. Update the prebuilt_apex/apex_set modules for all the modules that contribute to the bootclasspath to add exported_bootclasspath_fragments to make the dex implementation jars available to the build.\n\nThat will take a couple of weeks.",
+      "parentUuid": "41c7ac44_8acad1f9",
       "revId": "9408fcd3968bbf9181e762d93c6bd7a55467a4fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
