@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c85c36ea_3c63b088",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-19T00:29:00Z",
+      "side": 1,
+      "message": "The new naming is confusing to me, it sounds like the list of variants of the apex that the module is in.  For example, in the override case the apex will have the initial variant and the override variant, so I\u0027d expect to have both listed in InApexVariants, but IIUC this is the opposite.",
+      "revId": "ab50b0795ac0ef5b4b6062b9d91fafbc9dda8645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
