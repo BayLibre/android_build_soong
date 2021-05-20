@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "162dfff2_1c66661c",
+        "filename": "java/app_import.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-05-20T17:00:02Z",
+      "side": 1,
+      "message": "framework-res.apk shouldn\u0027t probably have relative_install_path.",
+      "revId": "ca8422bd6c675ac1df158eddf6f83a6574ebe3a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee34212e_db6a7172",
+        "filename": "java/app_import.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-05-20T17:00:02Z",
+      "side": 1,
+      "message": "It\u0027s totally fine for a test app to have relative_install_path.",
+      "revId": "ca8422bd6c675ac1df158eddf6f83a6574ebe3a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7469b5f_6ca81b40",
+        "filename": "java/app_import_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-05-20T17:00:02Z",
+      "side": 1,
+      "message": "Remove these two empty lines?",
+      "revId": "ca8422bd6c675ac1df158eddf6f83a6574ebe3a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
