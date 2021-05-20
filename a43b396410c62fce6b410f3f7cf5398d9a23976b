@@ -70,6 +70,30 @@
       },
       "revId": "a43b396410c62fce6b410f3f7cf5398d9a23976b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de915868_dc55a961",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-05-20T04:09:21Z",
+      "side": 1,
+      "message": "Thanks for the suggestion.\nThe logic of android.ApiLevel is different from what we want to use here.\nWe want to use LLNDK stub libraries for BOARD_VNDK_VERSION \u003e 30, but it is not true for BOARD_VNDK_VERSION\u003d\"current\" or some other non-numeric strings because VNDK snapshot do not provide the snapshots for the non-integer versions.\nChecking if the version is number or not is an important part in this code.",
+      "parentUuid": "9456dbd4_41002ba8",
+      "range": {
+        "startLine": 435,
+        "startChar": 32,
+        "endLine": 435,
+        "endChar": 62
+      },
+      "revId": "a43b396410c62fce6b410f3f7cf5398d9a23976b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
