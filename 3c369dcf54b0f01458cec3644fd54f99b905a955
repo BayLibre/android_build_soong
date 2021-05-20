@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9766a98d_a209418b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-20T13:02:06Z",
+      "side": 1,
+      "message": "When does this happen?",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "3c369dcf54b0f01458cec3644fd54f99b905a955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0e3b772_89ef1636",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-20T13:02:06Z",
+      "side": 1,
+      "message": "I didn\u0027t know you could build multiple targets... TIL",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 85
+      },
+      "revId": "3c369dcf54b0f01458cec3644fd54f99b905a955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b141d130_aede3972",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-20T13:02:06Z",
+      "side": 1,
+      "message": "would this cause conflicts? not sure I fully follow on when this is okay..",
+      "range": {
+        "startLine": 245,
+        "startChar": 22,
+        "endLine": 245,
+        "endChar": 45
+      },
+      "revId": "3c369dcf54b0f01458cec3644fd54f99b905a955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
