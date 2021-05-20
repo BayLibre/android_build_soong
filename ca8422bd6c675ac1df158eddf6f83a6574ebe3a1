@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c88320be_cee6ee52",
+        "filename": "java/app_import.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-05-20T21:10:06Z",
+      "side": 1,
+      "message": "I don\u0027t think we just didn\u0027t consider the framework-res.apk case when we wrote it. Its install location is always fixed, and so should not be affected by relative_install_path. I\u0027d even say we should throw an error here if relative_install_path is not empty.",
+      "parentUuid": "f07e0179_e105cc1c",
+      "revId": "ca8422bd6c675ac1df158eddf6f83a6574ebe3a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee34212e_db6a7172",
         "filename": "java/app_import.go",
         "patchSetId": 4
