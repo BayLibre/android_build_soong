@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a41a4457_b442b89c",
+        "filename": "build_kzip.bash",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-05-20T22:36:14Z",
+      "side": 1,
+      "message": "I am now having doubts this one is needed at all. It\u0027s up to you.",
+      "range": {
+        "startLine": 8,
+        "startChar": 20,
+        "endLine": 8,
+        "endChar": 26
+      },
+      "revId": "4aa056eb9e9dd5b79321fd2d3664cd73254fcc01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

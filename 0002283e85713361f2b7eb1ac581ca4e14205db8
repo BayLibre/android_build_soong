@@ -139,6 +139,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b41af94c_b77f043b",
+        "filename": "build_kzip.bash",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-05-20T22:36:14Z",
+      "side": 1,
+      "message": "When SHA is not available, why not just avoid setting SUPERPROJECT_REVISION at all?",
+      "parentUuid": "7067b400_070c45b3",
+      "revId": "0002283e85713361f2b7eb1ac581ca4e14205db8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d5e8bfe_424f417d",
         "filename": "build_kzip.bash",
         "patchSetId": 3
