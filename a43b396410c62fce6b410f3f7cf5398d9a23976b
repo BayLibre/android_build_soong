@@ -118,6 +118,30 @@
       },
       "revId": "a43b396410c62fce6b410f3f7cf5398d9a23976b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc6c07f4_72193999",
+        "filename": "cc/image.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-05-20T12:12:03Z",
+      "side": 1,
+      "message": "Thanks, Inseob. Patch set updated with android.ApiLevel.\nApiLevel.IsPreview() returns true for the \"current\" and the API levels before release that do not have VNDK snapshots.",
+      "parentUuid": "e4c63d0d_a2711e9a",
+      "range": {
+        "startLine": 435,
+        "startChar": 32,
+        "endLine": 435,
+        "endChar": 62
+      },
+      "revId": "a43b396410c62fce6b410f3f7cf5398d9a23976b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
