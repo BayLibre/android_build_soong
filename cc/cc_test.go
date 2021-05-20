@@ -138,7 +138,6 @@ func testCcErrorProductVndk(t *testing.T, pattern string, bp string) {
 
 const (
 	coreVariant     = "android_arm64_armv8-a_shared"
-	vendorVariant   = "android_vendor.29_arm64_armv8-a_shared"
 	productVariant  = "android_product.29_arm64_armv8-a_shared"
 	recoveryVariant = "android_recovery_arm64_armv8-a_shared"
 )
@@ -234,7 +233,7 @@ func TestVendorSrc(t *testing.T) {
 		}
 	`)
 
-	ld := ctx.ModuleForTests("libTest", vendorVariant).Rule("ld")
+	ld := ctx.ModuleForTests("libTest", testVendorVariant).Rule("ld")
 	var objs []string
 	for _, o := range ld.Inputs {
 		objs = append(objs, o.Base())
@@ -336,26 +335,26 @@ func TestInstallPartition(t *testing.T) {
 	checkInstallPartition(t, ctx, "libsystem", coreVariant, "system")
 	checkInstallPartition(t, ctx, "libsystem_ext", coreVariant, "system_ext")
 	checkInstallPartition(t, ctx, "libproduct", productVariant, "product")
-	checkInstallPartition(t, ctx, "libvendor", vendorVariant, "vendor")
-	checkInstallPartition(t, ctx, "libodm", vendorVariant, "odm")
+	checkInstallPartition(t, ctx, "libvendor", testVendorVariant, "vendor")
+	checkInstallPartition(t, ctx, "libodm", testVendorVariant, "odm")
 
 	checkInstallPartition(t, ctx, "liball_available", coreVariant, "system")
 	checkInstallPartition(t, ctx, "liball_available", productVariant, "product")
-	checkInstallPartition(t, ctx, "liball_available", vendorVariant, "vendor")
+	checkInstallPartition(t, ctx, "liball_available", testVendorVariant, "vendor")
 
 	checkInstallPartition(t, ctx, "libsystem_ext_all_available", coreVariant, "system_ext")
 	checkInstallPartition(t, ctx, "libsystem_ext_all_available", productVariant, "product")
-	checkInstallPartition(t, ctx, "libsystem_ext_all_available", vendorVariant, "vendor")
+	checkInstallPartition(t, ctx, "libsystem_ext_all_available", testVendorVariant, "vendor")
 
 	checkInstallPartition(t, ctx, "liball_available_odm", coreVariant, "system")
 	checkInstallPartition(t, ctx, "liball_available_odm", productVariant, "product")
-	checkInstallPartition(t, ctx, "liball_available_odm", vendorVariant, "odm")
+	checkInstallPartition(t, ctx, "liball_available_odm", testVendorVariant, "odm")
 
 	checkInstallPartition(t, ctx, "libproduct_vendoravailable", productVariant, "product")
-	checkInstallPartition(t, ctx, "libproduct_vendoravailable", vendorVariant, "vendor")
+	checkInstallPartition(t, ctx, "libproduct_vendoravailable", testVendorVariant, "vendor")
 
 	checkInstallPartition(t, ctx, "libproduct_odmavailable", productVariant, "product")
-	checkInstallPartition(t, ctx, "libproduct_odmavailable", vendorVariant, "odm")
+	checkInstallPartition(t, ctx, "libproduct_odmavailable", testVendorVariant, "odm")
 }
 
 func checkVndkModule(t *testing.T, ctx *android.TestContext, name, subDir string,
@@ -394,50 +393,6 @@ func checkVndkModule(t *testing.T, ctx *android.TestContext, name, subDir string
 	if actualExtends := mod.getVndkExtendsModuleName(); actualExtends != extends {
 		t.Errorf("%q must extend from %q but get %q", name, extends, actualExtends)
 	}
-}
-
-func checkSnapshotIncludeExclude(t *testing.T, ctx *android.TestContext, singleton android.TestingSingleton, moduleName, snapshotFilename, subDir, variant string, include bool, fake bool) {
-	t.Helper()
-	mod := ctx.ModuleForTests(moduleName, variant)
-	outputFiles := mod.OutputFiles(t, "")
-	if len(outputFiles) != 1 {
-		t.Errorf("%q must have single output\n", moduleName)
-		return
-	}
-	snapshotPath := filepath.Join(subDir, snapshotFilename)
-
-	if include {
-		out := singleton.Output(snapshotPath)
-		if fake {
-			if out.Rule == nil {
-				t.Errorf("Missing rule for module %q output file %q", moduleName, outputFiles[0])
-			}
-		} else {
-			if out.Input.String() != outputFiles[0].String() {
-				t.Errorf("The input of snapshot %q must be %q, but %q", moduleName, out.Input.String(), outputFiles[0])
-			}
-		}
-	} else {
-		out := singleton.MaybeOutput(snapshotPath)
-		if out.Rule != nil {
-			t.Errorf("There must be no rule for module %q output file %q", moduleName, outputFiles[0])
-		}
-	}
-}
-
-func checkSnapshot(t *testing.T, ctx *android.TestContext, singleton android.TestingSingleton, moduleName, snapshotFilename, subDir, variant string) {
-	t.Helper()
-	checkSnapshotIncludeExclude(t, ctx, singleton, moduleName, snapshotFilename, subDir, variant, true, false)
-}
-
-func checkSnapshotExclude(t *testing.T, ctx *android.TestContext, singleton android.TestingSingleton, moduleName, snapshotFilename, subDir, variant string) {
-	t.Helper()
-	checkSnapshotIncludeExclude(t, ctx, singleton, moduleName, snapshotFilename, subDir, variant, false, false)
-}
-
-func checkSnapshotRule(t *testing.T, ctx *android.TestContext, singleton android.TestingSingleton, moduleName, snapshotFilename, subDir, variant string) {
-	t.Helper()
-	checkSnapshotIncludeExclude(t, ctx, singleton, moduleName, snapshotFilename, subDir, variant, true, true)
 }
 
 func checkWriteFileOutput(t *testing.T, params android.TestingBuildParams, expected []string) {
@@ -592,12 +547,12 @@ func TestVndk(t *testing.T) {
 
 	// subdir == "" because VNDK libs are not supposed to be installed separately.
 	// They are installed as part of VNDK APEX instead.
-	checkVndkModule(t, ctx, "libvndk", "", false, "", vendorVariant)
-	checkVndkModule(t, ctx, "libvndk_private", "", false, "", vendorVariant)
-	checkVndkModule(t, ctx, "libvndk_product", "", false, "", vendorVariant)
-	checkVndkModule(t, ctx, "libvndk_sp", "", true, "", vendorVariant)
-	checkVndkModule(t, ctx, "libvndk_sp_private", "", true, "", vendorVariant)
-	checkVndkModule(t, ctx, "libvndk_sp_product_private", "", true, "", vendorVariant)
+	checkVndkModule(t, ctx, "libvndk", "", false, "", testVendorVariant)
+	checkVndkModule(t, ctx, "libvndk_private", "", false, "", testVendorVariant)
+	checkVndkModule(t, ctx, "libvndk_product", "", false, "", testVendorVariant)
+	checkVndkModule(t, ctx, "libvndk_sp", "", true, "", testVendorVariant)
+	checkVndkModule(t, ctx, "libvndk_sp_private", "", true, "", testVendorVariant)
+	checkVndkModule(t, ctx, "libvndk_sp_product_private", "", true, "", testVendorVariant)
 
 	checkVndkModule(t, ctx, "libvndk_product", "", false, "", productVariant)
 	checkVndkModule(t, ctx, "libvndk_sp_product_private", "", true, "", productVariant)
@@ -624,21 +579,21 @@ func TestVndk(t *testing.T) {
 
 	snapshotSingleton := ctx.SingletonForTests("vndk-snapshot")
 
-	checkSnapshot(t, ctx, snapshotSingleton, "libvndk", "libvndk.so", vndkCoreLibPath, variant)
-	checkSnapshot(t, ctx, snapshotSingleton, "libvndk", "libvndk.so", vndkCoreLib2ndPath, variant2nd)
-	checkSnapshot(t, ctx, snapshotSingleton, "libvndk_product", "libvndk_product.so", vndkCoreLibPath, variant)
-	checkSnapshot(t, ctx, snapshotSingleton, "libvndk_product", "libvndk_product.so", vndkCoreLib2ndPath, variant2nd)
-	checkSnapshot(t, ctx, snapshotSingleton, "libvndk_sp", "libvndk_sp-x.so", vndkSpLibPath, variant)
-	checkSnapshot(t, ctx, snapshotSingleton, "libvndk_sp", "libvndk_sp-x.so", vndkSpLib2ndPath, variant2nd)
-	checkSnapshot(t, ctx, snapshotSingleton, "libllndk", "libllndk.so", llndkLibPath, variant)
-	checkSnapshot(t, ctx, snapshotSingleton, "libllndk", "libllndk.so", llndkLib2ndPath, variant2nd)
+	CheckSnapshot(t, ctx, snapshotSingleton, "libvndk", "libvndk.so", vndkCoreLibPath, variant)
+	CheckSnapshot(t, ctx, snapshotSingleton, "libvndk", "libvndk.so", vndkCoreLib2ndPath, variant2nd)
+	CheckSnapshot(t, ctx, snapshotSingleton, "libvndk_product", "libvndk_product.so", vndkCoreLibPath, variant)
+	CheckSnapshot(t, ctx, snapshotSingleton, "libvndk_product", "libvndk_product.so", vndkCoreLib2ndPath, variant2nd)
+	CheckSnapshot(t, ctx, snapshotSingleton, "libvndk_sp", "libvndk_sp-x.so", vndkSpLibPath, variant)
+	CheckSnapshot(t, ctx, snapshotSingleton, "libvndk_sp", "libvndk_sp-x.so", vndkSpLib2ndPath, variant2nd)
+	CheckSnapshot(t, ctx, snapshotSingleton, "libllndk", "libllndk.so", llndkLibPath, variant)
+	CheckSnapshot(t, ctx, snapshotSingleton, "libllndk", "libllndk.so", llndkLib2ndPath, variant2nd)
 
 	snapshotConfigsPath := filepath.Join(snapshotVariantPath, "configs")
-	checkSnapshot(t, ctx, snapshotSingleton, "llndk.libraries.txt", "llndk.libraries.txt", snapshotConfigsPath, "")
-	checkSnapshot(t, ctx, snapshotSingleton, "vndkcore.libraries.txt", "vndkcore.libraries.txt", snapshotConfigsPath, "")
-	checkSnapshot(t, ctx, snapshotSingleton, "vndksp.libraries.txt", "vndksp.libraries.txt", snapshotConfigsPath, "")
-	checkSnapshot(t, ctx, snapshotSingleton, "vndkprivate.libraries.txt", "vndkprivate.libraries.txt", snapshotConfigsPath, "")
-	checkSnapshot(t, ctx, snapshotSingleton, "vndkproduct.libraries.txt", "vndkproduct.libraries.txt", snapshotConfigsPath, "")
+	CheckSnapshot(t, ctx, snapshotSingleton, "llndk.libraries.txt", "llndk.libraries.txt", snapshotConfigsPath, "")
+	CheckSnapshot(t, ctx, snapshotSingleton, "vndkcore.libraries.txt", "vndkcore.libraries.txt", snapshotConfigsPath, "")
+	CheckSnapshot(t, ctx, snapshotSingleton, "vndksp.libraries.txt", "vndksp.libraries.txt", snapshotConfigsPath, "")
+	CheckSnapshot(t, ctx, snapshotSingleton, "vndkprivate.libraries.txt", "vndkprivate.libraries.txt", snapshotConfigsPath, "")
+	CheckSnapshot(t, ctx, snapshotSingleton, "vndkproduct.libraries.txt", "vndkproduct.libraries.txt", snapshotConfigsPath, "")
 
 	checkVndkOutput(t, ctx, "vndk/vndk.libraries.txt", []string{
 		"LLNDK: libc.so",
@@ -1446,10 +1401,10 @@ func TestVndkExt(t *testing.T) {
 
 	ctx := testCcWithConfig(t, config)
 
-	checkVndkModule(t, ctx, "libvndk_ext", "vndk", false, "libvndk", vendorVariant)
+	checkVndkModule(t, ctx, "libvndk_ext", "vndk", false, "libvndk", testVendorVariant)
 	checkVndkModule(t, ctx, "libvndk_ext_product", "vndk", false, "libvndk", productVariant)
 
-	mod_vendor := ctx.ModuleForTests("libvndk2_ext", vendorVariant).Module().(*Module)
+	mod_vendor := ctx.ModuleForTests("libvndk2_ext", testVendorVariant).Module().(*Module)
 	assertString(t, mod_vendor.outputFile.Path().Base(), "libvndk2-suffix.so")
 
 	mod_product := ctx.ModuleForTests("libvndk2_ext_product", productVariant).Module().(*Module)
@@ -2214,7 +2169,7 @@ func TestEnforceProductVndkVersion(t *testing.T) {
 	checkVndkModule(t, ctx, "libvndk", "", false, "", productVariant)
 	checkVndkModule(t, ctx, "libvndk_sp", "", true, "", productVariant)
 
-	mod_vendor := ctx.ModuleForTests("libboth_available", vendorVariant).Module().(*Module)
+	mod_vendor := ctx.ModuleForTests("libboth_available", testVendorVariant).Module().(*Module)
 	assertString(t, mod_vendor.outputFile.Path().Base(), "libboth_available-vendor.so")
 
 	mod_product := ctx.ModuleForTests("libboth_available", productVariant).Module().(*Module)
@@ -2234,7 +2189,7 @@ func TestEnforceProductVndkVersion(t *testing.T) {
 	}
 
 	// _static variant is used since _shared reuses *.o from the static variant
-	vendor_static := ctx.ModuleForTests("libboth_available", strings.Replace(vendorVariant, "_shared", "_static", 1))
+	vendor_static := ctx.ModuleForTests("libboth_available", strings.Replace(testVendorVariant, "_shared", "_static", 1))
 	product_static := ctx.ModuleForTests("libboth_available", strings.Replace(productVariant, "_shared", "_static", 1))
 
 	vendor_cflags := vendor_static.Rule("cc").Args["cFlags"]
@@ -2455,12 +2410,12 @@ func TestMakeLinkType(t *testing.T) {
 		name     string
 		expected string
 	}{
-		{vendorVariant, "libvndk", "native:vndk"},
-		{vendorVariant, "libvndksp", "native:vndk"},
-		{vendorVariant, "libvndkprivate", "native:vndk_private"},
-		{vendorVariant, "libvendor", "native:vendor"},
-		{vendorVariant, "libvndkext", "native:vendor"},
-		{vendorVariant, "libllndk", "native:vndk"},
+		{testVendorVariant, "libvndk", "native:vndk"},
+		{testVendorVariant, "libvndksp", "native:vndk"},
+		{testVendorVariant, "libvndkprivate", "native:vndk_private"},
+		{testVendorVariant, "libvendor", "native:vendor"},
+		{testVendorVariant, "libvndkext", "native:vendor"},
+		{testVendorVariant, "libllndk", "native:vndk"},
 		{vendorVariant27, "prevndk.vndk.27.arm.binder32", "native:vndk"},
 		{coreVariant, "libvndk", "native:platform"},
 		{coreVariant, "libvndkprivate", "native:platform"},
@@ -2636,15 +2591,6 @@ func parseModuleDeps(text string) (modulesInOrder []android.Path, allDeps map[an
 	return modulesInOrder, allDeps
 }
 
-func getOutputPaths(ctx *android.TestContext, variant string, moduleNames []string) (paths android.Paths) {
-	for _, moduleName := range moduleNames {
-		module := ctx.ModuleForTests(moduleName, variant).Module().(*Module)
-		output := module.outputFile.Path().RelativeToTop()
-		paths = append(paths, output)
-	}
-	return paths
-}
-
 func TestStaticLibDepReordering(t *testing.T) {
 	ctx := testCc(t, `
 	cc_library {
@@ -2672,7 +2618,7 @@ func TestStaticLibDepReordering(t *testing.T) {
 	moduleA := ctx.ModuleForTests("a", variant).Module().(*Module)
 	actual := ctx.ModuleProvider(moduleA, StaticLibraryInfoProvider).(StaticLibraryInfo).
 		TransitiveStaticLibrariesForOrdering.ToList().RelativeToTop()
-	expected := getOutputPaths(ctx, variant, []string{"a", "c", "b", "d"})
+	expected := GetOutputPaths(ctx, variant, []string{"a", "c", "b", "d"})
 
 	if !reflect.DeepEqual(actual, expected) {
 		t.Errorf("staticDeps orderings were not propagated correctly"+
@@ -2707,7 +2653,7 @@ func TestStaticLibDepReorderingWithShared(t *testing.T) {
 	moduleA := ctx.ModuleForTests("a", variant).Module().(*Module)
 	actual := ctx.ModuleProvider(moduleA, StaticLibraryInfoProvider).(StaticLibraryInfo).
 		TransitiveStaticLibrariesForOrdering.ToList().RelativeToTop()
-	expected := getOutputPaths(ctx, variant, []string{"a", "c", "b"})
+	expected := GetOutputPaths(ctx, variant, []string{"a", "c", "b"})
 
 	if !reflect.DeepEqual(actual, expected) {
 		t.Errorf("staticDeps orderings did not account for shared libs"+
@@ -3357,7 +3303,7 @@ func TestStaticDepsOrderWithStubs(t *testing.T) {
 
 	mybin := ctx.ModuleForTests("mybin", "android_arm64_armv8-a").Rule("ld")
 	actual := mybin.Implicits[:2]
-	expected := getOutputPaths(ctx, "android_arm64_armv8-a_static", []string{"libfooB", "libfooC"})
+	expected := GetOutputPaths(ctx, "android_arm64_armv8-a_static", []string{"libfooB", "libfooC"})
 
 	if !reflect.DeepEqual(actual, expected) {
 		t.Errorf("staticDeps orderings were not propagated correctly"+

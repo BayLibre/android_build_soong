@@ -591,20 +591,14 @@ func (handler *staticLibraryBazelHandler) generateBazelBuildActions(ctx android.
 	return ok
 }
 
-// collectHeadersForSnapshot collects all exported headers from library.
-// It globs header files in the source tree for exported include directories,
-// and tracks generated header files separately.
-//
-// This is to be called from GenerateAndroidBuildActions, and then collected
-// header files can be retrieved by snapshotHeaders().
-func (l *libraryDecorator) collectHeadersForSnapshot(ctx android.ModuleContext) {
+func GlobHeadersForSnapshot(ctx android.ModuleContext, paths android.Paths) android.Paths {
 	ret := android.Paths{}
 
 	// Headers in the source tree should be globbed. On the contrast, generated headers
 	// can't be globbed, and they should be manually collected.
 	// So, we first filter out intermediate directories (which contains generated headers)
 	// from exported directories, and then glob headers under remaining directories.
-	for _, path := range append(android.CopyOfPaths(l.flagExporter.dirs), l.flagExporter.systemDirs...) {
+	for _, path := range paths {
 		dir := path.String()
 		// Skip if dir is for generated headers
 		if strings.HasPrefix(dir, android.PathForOutput(ctx).String()) {
@@ -620,7 +614,7 @@ func (l *libraryDecorator) collectHeadersForSnapshot(ctx android.ModuleContext) 
 				glob, err := ctx.GlobWithDeps("external/eigen/"+subdir+"/**/*", nil)
 				if err != nil {
 					ctx.ModuleErrorf("glob failed: %#v", err)
-					return
+					return android.Paths{}
 				}
 				for _, header := range glob {
 					if strings.HasSuffix(header, "/") {
@@ -638,7 +632,7 @@ func (l *libraryDecorator) collectHeadersForSnapshot(ctx android.ModuleContext) 
 		glob, err := ctx.GlobWithDeps(dir+"/**/*", nil)
 		if err != nil {
 			ctx.ModuleErrorf("glob failed: %#v", err)
-			return
+			return android.Paths{}
 		}
 		isLibcxx := strings.HasPrefix(dir, "external/libcxx/include")
 		for _, header := range glob {
@@ -651,7 +645,7 @@ func (l *libraryDecorator) collectHeadersForSnapshot(ctx android.ModuleContext) 
 			} else {
 				// Filter out only the files with extensions that are headers.
 				found := false
-				for _, ext := range headerExts {
+				for _, ext := range HeaderExts {
 					if strings.HasSuffix(header, ext) {
 						found = true
 						break
@@ -664,15 +658,38 @@ func (l *libraryDecorator) collectHeadersForSnapshot(ctx android.ModuleContext) 
 			ret = append(ret, android.PathForSource(ctx, header))
 		}
 	}
+	return ret
+}
 
-	// Collect generated headers
-	for _, header := range append(android.CopyOfPaths(l.flagExporter.headers), l.flagExporter.deps...) {
+func GlobGeneratedHeadersForSnapshot(ctx android.ModuleContext, paths android.Paths) android.Paths {
+	ret := android.Paths{}
+	for _, header := range paths {
 		// TODO(b/148123511): remove exportedDeps after cleaning up genrule
 		if strings.HasSuffix(header.Base(), "-phony") {
 			continue
 		}
 		ret = append(ret, header)
 	}
+	return ret
+}
+
+// collectHeadersForSnapshot collects all exported headers from library.
+// It globs header files in the source tree for exported include directories,
+// and tracks generated header files separately.
+//
+// This is to be called from GenerateAndroidBuildActions, and then collected
+// header files can be retrieved by snapshotHeaders().
+func (l *libraryDecorator) collectHeadersForSnapshot(ctx android.ModuleContext) {
+	ret := android.Paths{}
+
+	// Headers in the source tree should be globbed. On the contrast, generated headers
+	// can't be globbed, and they should be manually collected.
+	// So, we first filter out intermediate directories (which contains generated headers)
+	// from exported directories, and then glob headers under remaining directories.
+	ret = append(ret, GlobHeadersForSnapshot(ctx, append(android.CopyOfPaths(l.flagExporter.dirs), l.flagExporter.systemDirs...))...)
+
+	// Collect generated headers
+	ret = append(ret, GlobGeneratedHeadersForSnapshot(ctx, append(android.CopyOfPaths(l.flagExporter.headers), l.flagExporter.deps...))...)
 
 	l.collectedSnapshotHeaders = ret
 }
