@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fd8fac31_07f9febc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-05-20T11:02:26Z",
+      "side": 1,
+      "message": "clearly didn\u0027t read the whole commit message (nor tune in for the \"per module\" bit), I thought we\u0027d do it for all modules, but maybe that won\u0027t work for ART.\n\nIt\u0027s just that it\u0027s so cumbersome having to make duplicated CLs for all SDKs when we want most to behave the same. Not sure I have a great suggestion, so not objection from me. One alternative would be to have the \"default\" prefer flag for all sdk {} be controlled by the environment variable, and only if the flag is set explicitly is that used instead? WDYT?",
+      "parentUuid": "1efc5d07_428e264d",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "eee3e6b7468e7cfc2c31819b0b30dff532991920",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "8ddd0b97_a71d4bb3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
