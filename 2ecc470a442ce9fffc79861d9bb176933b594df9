@@ -22,6 +22,30 @@
       },
       "revId": "2ecc470a442ce9fffc79861d9bb176933b594df9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cb7f46e_5865260c",
+        "filename": "bp2build/cc_library_headers_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-20T16:06:05Z",
+      "side": 1,
+      "message": "Ugh. Yep. My implementation was off. I indeed think this didn\u0027t get us into trouble because the library is listed in both places.",
+      "parentUuid": "5dfdf739_436c184a",
+      "range": {
+        "startLine": 288,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 7
+      },
+      "revId": "2ecc470a442ce9fffc79861d9bb176933b594df9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
