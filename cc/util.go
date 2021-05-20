@@ -174,3 +174,12 @@ func installMapListFileRule(ctx android.SingletonContext, m map[string]string, p
 	}
 	return writeStringToFileRule(ctx, txtBuilder.String(), path)
 }
+
+func GetOutputPaths(ctx *android.TestContext, variant string, moduleNames []string) (paths android.Paths) {
+	for _, moduleName := range moduleNames {
+		module := ctx.ModuleForTests(moduleName, variant).Module().(*Module)
+		output := module.outputFile.Path().RelativeToTop()
+		paths = append(paths, output)
+	}
+	return paths
+}
