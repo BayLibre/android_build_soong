@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b759275_631f551f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-05-20T11:24:56Z",
+      "side": 1,
+      "message": "Yes, I guess having the default taken from the env var might be better. Thinking about it, we only need this CL for the transition period.",
+      "parentUuid": "fd8fac31_07f9febc",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 15
+      },
+      "revId": "eee3e6b7468e7cfc2c31819b0b30dff532991920",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8ddd0b97_a71d4bb3",
