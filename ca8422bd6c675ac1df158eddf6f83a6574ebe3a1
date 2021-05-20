@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e4ce92c_a8125b44",
+        "filename": "java/app_import.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-05-20T22:34:41Z",
+      "side": 1,
+      "message": "Thanks for the clarification. I have updated the implementation as per your suggestion.",
+      "parentUuid": "74ea1cae_3de351b3",
+      "revId": "ca8422bd6c675ac1df158eddf6f83a6574ebe3a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee34212e_db6a7172",
