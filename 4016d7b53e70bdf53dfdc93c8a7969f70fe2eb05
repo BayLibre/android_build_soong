@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b223eba7_b24220b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2021-05-20T19:01:44Z",
+      "side": 1,
+      "message": "This change build\u0027s on Martin\u0027s work to use OtherModuleFarDependencyVariantExists to find core and product modules that necessitate addition of an androidmk suffix to a snapshot prebuilt.",
+      "revId": "4016d7b53e70bdf53dfdc93c8a7969f70fe2eb05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
