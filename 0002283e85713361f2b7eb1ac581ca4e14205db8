@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37236b0a_85bb402b",
+        "filename": "build_kzip.bash",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1310923
+      },
+      "writtenOn": "2021-05-20T19:38:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f4cc173_09d2c52b",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 105
+      },
+      "revId": "0002283e85713361f2b7eb1ac581ca4e14205db8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7700fac9_893067f5",
@@ -95,6 +119,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7067b400_070c45b3",
+        "filename": "build_kzip.bash",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1310923
+      },
+      "writtenOn": "2021-05-20T19:38:35Z",
+      "side": 1,
+      "message": "This works the same as projects revision, if it\u0027s pinned it will be a sha but if not it will be a branch name ie. master. So it\u0027s always usable, but for our case we only want to use it if it\u0027s pinned (which it should always be for our build branches).",
+      "parentUuid": "db2ed2d6_2d6f0f0b",
+      "revId": "0002283e85713361f2b7eb1ac581ca4e14205db8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d5e8bfe_424f417d",
@@ -108,6 +150,24 @@
       "writtenOn": "2021-05-20T00:23:21Z",
       "side": 1,
       "message": "These two variables have little sense now. Ultimately we need to determine the name of the kzip file, so we need a variable called KZIP_NAME. In the order of priority from highest to lowest it can be:\n* explicitly set as environment variable\n* set from SUPERPROJECT_SHA enviroment variable if present\n* set from BUILD_NUMBER if present\n* assigned by uudgen\nWhich is something like\n: ${KZIP_NAME:\u003d${SUPERPROJECT_SHA:-}}\n: ${KZIP_NAME:\u003d${BUILD_NUMBER:-}}\n: ${KZIP_NAME:\u003d$(uuidgen}}\n\n(and then on line 59 s/SUPERPROJECT_SHA/KZIP_NAME/)",
+      "revId": "0002283e85713361f2b7eb1ac581ca4e14205db8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ad3959b_b04110d3",
+        "filename": "build_kzip.bash",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1310923
+      },
+      "writtenOn": "2021-05-20T19:38:35Z",
+      "side": 1,
+      "message": "Done. This is a good idea. I\u0027ve updated to use KZIP_NAME so this makes a little more sense.",
+      "parentUuid": "9d5e8bfe_424f417d",
       "revId": "0002283e85713361f2b7eb1ac581ca4e14205db8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
