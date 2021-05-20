@@ -533,9 +533,7 @@ sdk_snapshot {
 				"SOONG_SDK_SNAPSHOT_PREFER": "true",
 			}),
 		).RunTest(t)
-
 		checkZipFile(t, result, "out/soong/.intermediates/mysdk/common_os/mysdk-current.zip")
-
 		CheckSnapshot(t, result, "mysdk", "",
 			checkAndroidBpContents(`
 // This is auto-generated. DO NOT EDIT.
@@ -659,6 +657,71 @@ sdk_snapshot {
 			`),
 			// A versioned snapshot cannot be used on its own so add the source back in.
 			snapshotTestPreparer(checkSnapshotWithoutSource, android.FixtureWithRootAndroidBp(bp)),
+		)
+	})
+}
+
+// Ensure that sdk prebuilt_prefer works correctly.
+func TestSnapshot_PrebuiltPreferTrue(t *testing.T) {
+	bp := `
+		sdk {
+			name: "mysdk",
+			java_header_libs: ["myjavalib"],
+			prebuilts_prefer: true,
+		}
+
+		java_library {
+			name: "myjavalib",
+			srcs: ["Test.java"],
+			system_modules: "none",
+			sdk_version: "none",
+			compile_dex: true,
+			host_supported: true,
+		}
+	`
+	preparer := android.GroupFixturePreparers(
+		prepareForSdkTestWithJava,
+		android.FixtureWithRootAndroidBp(bp),
+	)
+
+	checkZipFile := func(t *testing.T, result *android.TestResult, expected string) {
+		zipRule := result.ModuleForTests("mysdk", "common_os").Rule("SnapshotZipFiles")
+		android.AssertStringEquals(t, "snapshot zip file", expected, zipRule.Output.String())
+	}
+
+	t.Run("prefer=true", func(t *testing.T) {
+		result := android.GroupFixturePreparers(
+			preparer,
+		).RunTest(t)
+
+		checkZipFile(t, result, "out/soong/.intermediates/mysdk/common_os/mysdk-current.zip")
+
+		CheckSnapshot(t, result, "mysdk", "",
+			checkAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+java_import {
+    name: "mysdk_myjavalib@current",
+    sdk_member_name: "myjavalib",
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    jars: ["java/myjavalib.jar"],
+}
+
+java_import {
+    name: "myjavalib",
+    prefer: true,
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    jars: ["java/myjavalib.jar"],
+}
+
+sdk_snapshot {
+    name: "mysdk@current",
+    visibility: ["//visibility:public"],
+    java_header_libs: ["mysdk_myjavalib@current"],
+}
+			`),
 		)
 	})
 }
