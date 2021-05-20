@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f07e0179_e105cc1c",
+        "filename": "java/app_import.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-05-20T17:30:23Z",
+      "side": 1,
+      "message": "Will that be a deviation from the current implementation? I am looking at this file https://cs.android.com/android/platform/superproject/+/master:build/make/core/base_rules.mk;l\u003d305?q\u003df:base_rules.mk and it looks like we add relInstallPath for frameworks as well?",
+      "parentUuid": "162dfff2_1c66661c",
+      "revId": "ca8422bd6c675ac1df158eddf6f83a6574ebe3a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee34212e_db6a7172",
         "filename": "java/app_import.go",
         "patchSetId": 4
@@ -31,6 +49,24 @@
       "writtenOn": "2021-05-20T17:00:02Z",
       "side": 1,
       "message": "It\u0027s totally fine for a test app to have relative_install_path.",
+      "revId": "ca8422bd6c675ac1df158eddf6f83a6574ebe3a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "251304da_6982a655",
+        "filename": "java/app_import.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-05-20T17:30:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee34212e_db6a7172",
       "revId": "ca8422bd6c675ac1df158eddf6f83a6574ebe3a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2021-05-20T17:00:02Z",
       "side": 1,
       "message": "Remove these two empty lines?",
+      "revId": "ca8422bd6c675ac1df158eddf6f83a6574ebe3a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e8a6fd9_7a7081b7",
+        "filename": "java/app_import_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-05-20T17:30:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b7469b5f_6ca81b40",
       "revId": "ca8422bd6c675ac1df158eddf6f83a6574ebe3a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
