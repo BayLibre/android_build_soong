@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f4cc173_09d2c52b",
+        "filename": "build_kzip.bash",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-05-20T00:23:21Z",
+      "side": 1,
+      "message": "Please add the line for SUPERPROJECT_REVISION",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 105
+      },
+      "revId": "0002283e85713361f2b7eb1ac581ca4e14205db8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7700fac9_893067f5",
         "filename": "build_kzip.bash",
         "patchSetId": 3
@@ -50,6 +73,41 @@
       "side": 1,
       "message": "Got it, thanks for the explanation.\n\nI still wonder if it would be use to say what\u0027s happening here, but if no one looks at STDERR then that has little value.",
       "parentUuid": "4e46ac32_e4850c5c",
+      "revId": "0002283e85713361f2b7eb1ac581ca4e14205db8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db2ed2d6_2d6f0f0b",
+        "filename": "build_kzip.bash",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-05-20T00:23:21Z",
+      "side": 1,
+      "message": "Why is SUPERPROJECT_REVISION provided at all when its value is not usable?",
+      "parentUuid": "a14bbb9c_2488423d",
+      "revId": "0002283e85713361f2b7eb1ac581ca4e14205db8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d5e8bfe_424f417d",
+        "filename": "build_kzip.bash",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-05-20T00:23:21Z",
+      "side": 1,
+      "message": "These two variables have little sense now. Ultimately we need to determine the name of the kzip file, so we need a variable called KZIP_NAME. In the order of priority from highest to lowest it can be:\n* explicitly set as environment variable\n* set from SUPERPROJECT_SHA enviroment variable if present\n* set from BUILD_NUMBER if present\n* assigned by uudgen\nWhich is something like\n: ${KZIP_NAME:\u003d${SUPERPROJECT_SHA:-}}\n: ${KZIP_NAME:\u003d${BUILD_NUMBER:-}}\n: ${KZIP_NAME:\u003d$(uuidgen}}\n\n(and then on line 59 s/SUPERPROJECT_SHA/KZIP_NAME/)",
       "revId": "0002283e85713361f2b7eb1ac581ca4e14205db8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
