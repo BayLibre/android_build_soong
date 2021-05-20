@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b68ace06_90b28bcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-20T13:08:13Z",
+      "side": 1,
+      "message": "Nice!",
+      "revId": "ab8debd27f676ff7622a7ac4b2ddc0fc5f61e94e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75b1f78a_7b1df651",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-20T13:08:13Z",
+      "side": 1,
+      "message": "a comment here for when this happens?",
+      "range": {
+        "startLine": 437,
+        "startChar": 3,
+        "endLine": 439,
+        "endChar": 4
+      },
+      "revId": "ab8debd27f676ff7622a7ac4b2ddc0fc5f61e94e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0986736d_dddd6b82",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-20T13:08:13Z",
+      "side": 1,
+      "message": "nit: inline?",
+      "revId": "ab8debd27f676ff7622a7ac4b2ddc0fc5f61e94e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4dbdb59_40b1cdfb",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-20T13:08:13Z",
+      "side": 1,
+      "message": "can we do ctx.ModuleError() here?",
+      "revId": "ab8debd27f676ff7622a7ac4b2ddc0fc5f61e94e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
