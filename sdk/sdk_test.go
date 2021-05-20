@@ -525,13 +525,39 @@ sdk_snapshot {
 			`),
 		)
 	})
+}
 
-	t.Run("SOONG_SDK_SNAPSHOT_PREFER=true", func(t *testing.T) {
+// Ensure that sdk snapshot related environment variables work correctly.
+func TestSnapshot_PreferTrue(t *testing.T) {
+	bp := `
+		sdk {
+			name: "mysdk",
+			java_header_libs: ["myjavalib"],
+			prebuilts_prefer: true,
+		}
+
+		java_library {
+			name: "myjavalib",
+			srcs: ["Test.java"],
+			system_modules: "none",
+			sdk_version: "none",
+			compile_dex: true,
+			host_supported: true,
+		}
+	`
+	preparer := android.GroupFixturePreparers(
+		prepareForSdkTestWithJava,
+		android.FixtureWithRootAndroidBp(bp),
+	)
+
+	checkZipFile := func(t *testing.T, result *android.TestResult, expected string) {
+		zipRule := result.ModuleForTests("mysdk", "common_os").Rule("SnapshotZipFiles")
+		android.AssertStringEquals(t, "snapshot zip file", expected, zipRule.Output.String())
+	}
+
+	t.Run("prefer=true", func(t *testing.T) {
 		result := android.GroupFixturePreparers(
 			preparer,
-			android.FixtureMergeEnv(map[string]string{
-				"SOONG_SDK_SNAPSHOT_PREFER": "true",
-			}),
 		).RunTest(t)
 
 		checkZipFile(t, result, "out/soong/.intermediates/mysdk/common_os/mysdk-current.zip")

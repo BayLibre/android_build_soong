@@ -29,14 +29,6 @@ import (
 	"android/soong/android"
 )
 
-// Environment variables that affect the generated snapshot
-// ========================================================
-//
-// SOONG_SDK_SNAPSHOT_PREFER
-//     By default every unversioned module in the generated snapshot has prefer: false. Building it
-//     with SOONG_SDK_SNAPSHOT_PREFER=true will force them to use prefer: true.
-//
-
 var pctx = android.NewPackageContext("android/soong/sdk")
 
 var (
@@ -1436,7 +1428,7 @@ func (s *sdk) createMemberSnapshot(ctx *memberContext, member *sdkMember, bpModu
 		// snapshot to be created that sets prefer: true.
 		// TODO(b/174997203): Remove once the ability to select the modules to prefer can be done
 		//  dynamically at build time not at snapshot generation time.
-		prefer := ctx.sdkMemberContext.Config().IsEnvTrue("SOONG_SDK_SNAPSHOT_PREFER")
+		prefer := s.PreferPrebuilts()
 
 		// Set prefer. Setting this to false is not strictly required as that is the default but it does
 		// provide a convenient hook to post-process the generated Android.bp file, e.g. in tests to
