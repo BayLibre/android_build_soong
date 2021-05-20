@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "564b81ef_a9e8ca91",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-20T14:31:38Z",
+      "side": 1,
+      "message": "It will happen when a bootclasspath_fragment that contains multiple libraries does the encoding of hidden API flags.",
+      "parentUuid": "9766a98d_a209418b",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "3c369dcf54b0f01458cec3644fd54f99b905a955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d0e3b772_89ef1636",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -60,6 +84,30 @@
       "writtenOn": "2021-05-20T13:02:06Z",
       "side": 1,
       "message": "would this cause conflicts? not sure I fully follow on when this is okay..",
+      "range": {
+        "startLine": 245,
+        "startChar": 22,
+        "endLine": 245,
+        "endChar": 45
+      },
+      "revId": "3c369dcf54b0f01458cec3644fd54f99b905a955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d47b768c_317ac083",
+        "filename": "java/hiddenapi.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-20T14:31:38Z",
+      "side": 1,
+      "message": "The output directory is different to the input directory. They use the name of the input file rather than a fixed file name to prevent conflicts when multiple files have to be encoded by the same bootclasspath_fragment.",
+      "parentUuid": "b141d130_aede3972",
       "range": {
         "startLine": 245,
         "startChar": 22,
