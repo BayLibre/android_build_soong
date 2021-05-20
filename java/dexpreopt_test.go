@@ -206,8 +206,17 @@ func TestDex2oatToolDeps(t *testing.T) {
 		})
 	}
 
-	sourceDex2oatPath := "host/linux-x86/bin/dex2oatd"
-	prebuiltDex2oatPath := ".intermediates/prebuilt_dex2oatd/linux_glibc_x86_64/dex2oatd"
+	var sourceDex2oatPath, prebuiltDex2oatPath string
+	switch android.BuildOs {
+	case android.Linux:
+		sourceDex2oatPath = "host/linux-x86/bin/dex2oatd"
+		prebuiltDex2oatPath = ".intermediates/prebuilt_dex2oatd/linux_glibc_x86_64/dex2oatd"
+	case android.Darwin:
+		sourceDex2oatPath = "host/darwin-x86/bin/dex2oatd"
+		prebuiltDex2oatPath = ".intermediates/prebuilt_dex2oatd/darwin_x86_64/dex2oatd"
+	default:
+		t.Skipf("Unsupported build OS %s", android.BuildOs)
+	}
 
 	testDex2oatToolDep(true, false, false, sourceDex2oatPath)
 	testDex2oatToolDep(true, true, false, sourceDex2oatPath)
