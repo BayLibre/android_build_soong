@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b505c892_d7110be7",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-20T15:20:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75b1f78a_7b1df651",
+      "range": {
+        "startLine": 437,
+        "startChar": 3,
+        "endLine": 439,
+        "endChar": 4
+      },
+      "revId": "ab8debd27f676ff7622a7ac4b2ddc0fc5f61e94e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0986736d_dddd6b82",
@@ -58,6 +82,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8db22a4_21fe766b",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-20T15:20:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0986736d_dddd6b82",
+      "revId": "ab8debd27f676ff7622a7ac4b2ddc0fc5f61e94e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4dbdb59_40b1cdfb",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-05-20T13:08:13Z",
       "side": 1,
       "message": "can we do ctx.ModuleError() here?",
+      "revId": "ab8debd27f676ff7622a7ac4b2ddc0fc5f61e94e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebccbabb_2b0da054",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-20T15:20:17Z",
+      "side": 1,
+      "message": "Eventually. Yes. I don\u0027t want to do it right now as it breaks lots of tests and could potentially break sc-dev.\n\nOnce we have migrated all APEXes that contribute to the bootclasspath over to using bootclasspath_fragment and have enabled hidden API processing in each of them then we can look at removing this and the canPerformHiddenAPIProcessing().",
+      "parentUuid": "c4dbdb59_40b1cdfb",
       "revId": "ab8debd27f676ff7622a7ac4b2ddc0fc5f61e94e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
