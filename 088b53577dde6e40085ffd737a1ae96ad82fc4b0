@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38c42713_e217a742",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-20T02:12:53Z",
+      "side": 1,
+      "message": "Fine to unblock the mainline builds, but this will mean we\u0027ll be using the old relocations on libraries that are installed on the system image, which isn\u0027t necessary.",
+      "revId": "088b53577dde6e40085ffd737a1ae96ad82fc4b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
