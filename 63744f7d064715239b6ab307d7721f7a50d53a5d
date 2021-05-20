@@ -16,6 +16,24 @@
       "message": "Use ctx.PropertyErrorf instead.",
       "revId": "63744f7d064715239b6ab307d7721f7a50d53a5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad4024a1_3afcbe44",
+        "filename": "java/app_import.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-05-20T22:57:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3d78ef7_29299e87",
+      "revId": "63744f7d064715239b6ab307d7721f7a50d53a5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
