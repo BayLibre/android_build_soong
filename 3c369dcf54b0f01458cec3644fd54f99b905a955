@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7c45b3cc_ce57c125",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-20T15:07:58Z",
+      "side": 1,
+      "message": "Right, of course..",
+      "parentUuid": "564b81ef_a9e8ca91",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "3c369dcf54b0f01458cec3644fd54f99b905a955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d0e3b772_89ef1636",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
