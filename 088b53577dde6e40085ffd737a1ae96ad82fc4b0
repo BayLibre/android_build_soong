@@ -16,6 +16,24 @@
       "message": "Fine to unblock the mainline builds, but this will mean we\u0027ll be using the old relocations on libraries that are installed on the system image, which isn\u0027t necessary.",
       "revId": "088b53577dde6e40085ffd737a1ae96ad82fc4b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18cb1308_25966ab5",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1337176
+      },
+      "writtenOn": "2021-05-20T09:28:56Z",
+      "side": 1,
+      "message": "Ah, I never thought about that. Could you give me some examples?\nI thought that the libraries that are installed on the system image would keep both their sdk_version and min_sdk_version empty, which should match the first condition group in l.427.",
+      "parentUuid": "38c42713_e217a742",
+      "revId": "088b53577dde6e40085ffd737a1ae96ad82fc4b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
