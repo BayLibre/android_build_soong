@@ -138,6 +138,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fce47626_804c153b",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-20T12:33:25Z",
+      "side": 1,
+      "message": "Scratch the last bit, I will be keeping absolute paths, so there is still a need for ConfiguredJarList.DevicePaths functionality to be available.",
+      "parentUuid": "2eea78fc_f4ed34ce",
+      "revId": "6fbdd7353ae21d387794ce25b6ef728539c3a821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "917370f8_7b129af8",
         "filename": "java/platform_bootclasspath.go",
         "patchSetId": 10
