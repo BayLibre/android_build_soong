@@ -51,6 +51,24 @@
       "parentUuid": "04052bca_0380f5a4",
       "revId": "ab50b0795ac0ef5b4b6062b9d91fafbc9dda8645",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faf1d99d_e204c1ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-20T02:19:49Z",
+      "side": 1,
+      "message": "Martin, \n\nPackage name can be overridden via the `package_name` property. And the property does NOT affect the variant name here. So I think that\u0027s also incorrect.\n\nColin,\n\nThe variant we are talking here is the \u0027apex\u0027 variant, not the \u0027perform_override` variant. The name of the override_apex will be recorded in the `InApexes` field in the next CL.",
+      "parentUuid": "25c48d0c_77d66909",
+      "revId": "ab50b0795ac0ef5b4b6062b9d91fafbc9dda8645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
