@@ -34,6 +34,24 @@
       "parentUuid": "38c42713_e217a742",
       "revId": "088b53577dde6e40085ffd737a1ae96ad82fc4b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccd6ecbe_0d59593c",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-05-20T21:06:59Z",
+      "side": 1,
+      "message": "`readelf -dW out/target/product/vsoc_x86_64/system/lib64/libui.so` (where you can replace the product with whatever you\u0027re using) after this CL shows:\n```\n 0x0000000060000011 (Operating System specific: 60000011)                0x184e0\n 0x0000000060000012 (Operating System specific: 60000012)                0x9dc\n 0x0000000000000009 (RELAENT)            24 (bytes)\n 0x000000006fffe000 (Operating System specific: 6fffe000)                0x18ec0\n 0x000000006fffe001 (Operating System specific: 6fffe001)                0x60\n 0x000000006fffe003 (Operating System specific: 6fffe003)                0x8\n```\nwhich is the \"FirstAndroidRelrVersion\" variant (the next entry in the if-else chain).",
+      "parentUuid": "18cb1308_25966ab5",
+      "revId": "088b53577dde6e40085ffd737a1ae96ad82fc4b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
