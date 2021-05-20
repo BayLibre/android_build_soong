@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3d78ef7_29299e87",
+        "filename": "java/app_import.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1060667
+      },
+      "writtenOn": "2021-05-20T22:47:51Z",
+      "side": 1,
+      "message": "Use ctx.PropertyErrorf instead.",
+      "revId": "63744f7d064715239b6ab307d7721f7a50d53a5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
