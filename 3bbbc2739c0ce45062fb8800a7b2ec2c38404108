@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1869a6b_41a3f822",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-20T14:40:14Z",
+      "side": 1,
+      "message": "You could ",
+      "revId": "3bbbc2739c0ce45062fb8800a7b2ec2c38404108",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "700e387b_0fe0dcb0",
+        "filename": "java/dexpreopt_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-20T14:40:14Z",
+      "side": 1,
+      "message": "You could also use t.Skip() on Darwin, since dex2oatd won\u0027t exist on Darwin anyways.",
+      "revId": "3bbbc2739c0ce45062fb8800a7b2ec2c38404108",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
