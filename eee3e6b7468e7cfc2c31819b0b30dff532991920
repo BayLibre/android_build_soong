@@ -16,6 +16,23 @@
       "message": "As discussed in the build mtg this morning",
       "revId": "eee3e6b7468e7cfc2c31819b0b30dff532991920",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b512721d_95fba9ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-20T10:08:41Z",
+      "side": 1,
+      "message": "Martin, what do you think about this?\n\nMathew, this will allow the prefer true to be controlled per SDK but not per build. What is the use case where we want some module\u0027s sdk snapshots to always be preferred and some not?",
+      "revId": "eee3e6b7468e7cfc2c31819b0b30dff532991920",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
