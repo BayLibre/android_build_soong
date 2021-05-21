@@ -31,6 +31,13 @@ func RegisterDepsBp2Build(ctx android.RegisterMutatorsContext) {
 	ctx.BottomUp("cc_bp2build_deps", depsBp2BuildMutator)
 }
 
+var productVariableDepFields = []string{
+	"Shared_libs",
+	"Whole_static_libs",
+	"Exclude_static_libs",
+	"Static_libs",
+}
+
 // A naive deps mutator to add deps on all modules across all combinations of
 // target props for cc modules. This is needed to make module -> bazel label
 // resolution work in the bp2build mutator later. This is probably
@@ -72,7 +79,10 @@ func depsBp2BuildMutator(ctx android.BottomUpMutatorContext) {
 			allDeps = append(allDeps, baseLinkerProps.Header_libs...)
 			allDeps = append(allDeps, baseLinkerProps.Export_header_lib_headers...)
 			allDeps = append(allDeps, baseLinkerProps.Static_libs...)
+			allDeps = append(allDeps, baseLinkerProps.Exclude_static_libs...)
 			allDeps = append(allDeps, baseLinkerProps.Whole_static_libs...)
+			allDeps = append(allDeps, baseLinkerProps.Shared_libs...)
+			allDeps = append(allDeps, baseLinkerProps.Exclude_shared_libs...)
 		}
 	}
 
@@ -82,7 +92,25 @@ func depsBp2BuildMutator(ctx android.BottomUpMutatorContext) {
 			allDeps = append(allDeps, baseLinkerProps.Header_libs...)
 			allDeps = append(allDeps, baseLinkerProps.Export_header_lib_headers...)
 			allDeps = append(allDeps, baseLinkerProps.Static_libs...)
+			allDeps = append(allDeps, baseLinkerProps.Exclude_static_libs...)
 			allDeps = append(allDeps, baseLinkerProps.Whole_static_libs...)
+			allDeps = append(allDeps, baseLinkerProps.Shared_libs...)
+			allDeps = append(allDeps, baseLinkerProps.Exclude_shared_libs...)
+		}
+	}
+
+	productVariableProps := android.ProductVariableProperties(ctx)
+	for _, name := range productVariableDepFields {
+		props, exists := productVariableProps[name]
+		if !exists {
+			continue
+		}
+		for _, prop := range props {
+			if p, ok := prop.Property.([]string); !ok {
+				ctx.ModuleErrorf("Could not convert product variable %s property", name)
+			} else {
+				allDeps = append(allDeps, p...)
+			}
 		}
 	}
 
@@ -319,24 +347,40 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 	}
 
 	productVariableProps := android.ProductVariableProperties(ctx)
-	if props, exists := productVariableProps["Cflags"]; exists {
-		for _, prop := range props {
-			flags, ok := prop.Property.([]string)
-			if !ok {
-				ctx.ModuleErrorf("Could not convert product variable cflag property")
-			}
-			newFlags, _ := bazel.TryVariableSubstitutions(flags, prop.ProductConfigVariable)
-			copts.ProductValues = append(copts.ProductValues, bazel.ProductVariableValues{
-				ProductVariable: prop.ProductConfigVariable,
-				Values:          newFlags,
-			})
-		}
-	}
+	copts.ProductValues = productVariableCopts(ctx, productVariableProps)
 
 	return compilerAttributes{
 		srcs:  srcs,
 		copts: copts,
 	}
+}
+
+var productVariableCoptPropNames = []string{
+	"Asflags",
+	"Cflags",
+	"Cppflags",
+}
+
+type errorContext interface {
+	ModuleErrorf(fmt string, args ...interface{})
+}
+
+func productVariableCopts(ctx errorContext, productVariableProps android.ProductConfigProperties) bazel.ProductValues {
+	productVariables := bazel.ProductValues{}
+	for _, propName := range productVariableCoptPropNames {
+		if props, exists := productVariableProps[propName]; exists {
+			for _, prop := range props {
+				flags, ok := prop.Property.([]string)
+				if !ok {
+					ctx.ModuleErrorf("Could not convert product variable %s property", propName)
+				}
+				newFlags, _ := bazel.TryVariableSubstitutions(flags, prop.ProductConfigVariable)
+				productVariables.Append(bazel.ProductVariableValues{prop.ProductConfigVariable, newFlags})
+			}
+		}
+	}
+
+	return productVariables
 }
 
 // Convenience struct to hold all attributes parsed from linker properties.

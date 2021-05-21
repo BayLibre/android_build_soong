@@ -1170,8 +1170,9 @@ cc_library_static {
     name: "foo_static",
     srcs: ["common.c"],
     product_variables: {
-      malloc_not_svelte: {
-        cflags: ["-Wmalloc_not_svelte"],
+      debuggable: {
+        cflags: ["-Wdebug_cflag"],
+        cppflags: ["-Wdebug_cppflag"],
       },
       malloc_zero_contents: {
         cflags: ["-Wmalloc_zero_contents"],
@@ -1190,7 +1191,10 @@ cc_library_static {
         "//build/bazel/product_variables:binder32bit": ["-Wbinder32bit"],
         "//conditions:default": [],
     }) + select({
-        "//build/bazel/product_variables:malloc_not_svelte": ["-Wmalloc_not_svelte"],
+        "//build/bazel/product_variables:debuggable": [
+            "-Wdebug_cflag",
+            "-Wdebug_cppflag",
+        ],
         "//conditions:default": [],
     }) + select({
         "//build/bazel/product_variables:malloc_zero_contents": ["-Wmalloc_zero_contents"],

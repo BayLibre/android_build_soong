@@ -112,11 +112,10 @@ func ObjectFactory() android.Module {
 
 // For bp2build conversion.
 type bazelObjectAttributes struct {
-	Srcs    bazel.LabelListAttribute
-	Hdrs    bazel.LabelListAttribute
-	Deps    bazel.LabelListAttribute
-	Copts   bazel.StringListAttribute
-	Asflags bazel.StringListAttribute
+	Srcs  bazel.LabelListAttribute
+	Hdrs  bazel.LabelListAttribute
+	Deps  bazel.LabelListAttribute
+	Copts bazel.StringListAttribute
 }
 
 type bazelObject struct {
@@ -157,7 +156,6 @@ func ObjectBp2Build(ctx android.TopDownMutatorContext) {
 
 	// Set arch-specific configurable attributes
 	compilerAttrs := bp2BuildParseCompilerProps(ctx, m)
-	var asFlags bazel.StringListAttribute
 
 	var deps bazel.LabelListAttribute
 	for _, props := range m.linker.linkerProps() {
@@ -167,29 +165,10 @@ func ObjectBp2Build(ctx android.TopDownMutatorContext) {
 		}
 	}
 
-	productVariableProps := android.ProductVariableProperties(ctx)
-	if props, exists := productVariableProps["Asflags"]; exists {
-		// TODO(b/183595873): consider deduplicating handling of product variable properties
-		for _, prop := range props {
-			flags, ok := prop.Property.([]string)
-			if !ok {
-				ctx.ModuleErrorf("Could not convert product variable asflag property")
-				return
-			}
-			newFlags, _ := bazel.TryVariableSubstitutions(flags, prop.ProductConfigVariable)
-			asFlags.ProductValues = append(asFlags.ProductValues, bazel.ProductVariableValues{
-				ProductVariable: prop.ProductConfigVariable,
-				Values:          newFlags,
-			})
-		}
-	}
-	// TODO(b/183595872) warn/error if we're not handling product variables
-
 	attrs := &bazelObjectAttributes{
-		Srcs:    compilerAttrs.srcs,
-		Deps:    deps,
-		Copts:   compilerAttrs.copts,
-		Asflags: asFlags,
+		Srcs:  compilerAttrs.srcs,
+		Deps:  deps,
+		Copts: compilerAttrs.copts,
 	}
 
 	props := bazel.BazelTargetModuleProperties{

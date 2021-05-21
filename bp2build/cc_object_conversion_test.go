@@ -208,11 +208,10 @@ func TestCcObjectProductVariable(t *testing.T) {
 `,
 		expectedBazelTargets: []string{`cc_object(
     name = "foo",
-    asflags = select({
+    copts = ["-fno-addrsig"] + select({
         "//build/bazel/product_variables:platform_sdk_version": ["-DPLATFORM_SDK_VERSION={Platform_sdk_version}"],
         "//conditions:default": [],
     }),
-    copts = ["-fno-addrsig"],
 )`,
 		},
 	})

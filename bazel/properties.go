@@ -443,7 +443,7 @@ type StringListAttribute struct {
 
 	// list of product-variable string list values. Optional. if used, each will generate a select
 	// statement appended to the label list Value.
-	ProductValues []ProductVariableValues
+	ProductValues ProductValues
 }
 
 // MakeStringListAttribute initializes a StringListAttribute with the non-arch specific value.
@@ -473,6 +473,19 @@ type stringListOsValues struct {
 	Windows     []string
 
 	ConditionsDefault []string
+}
+
+type ProductValues map[string]ProductVariableValues
+
+func (p ProductValues) Append(vals ProductVariableValues) {
+	productVar := vals.ProductVariable
+	if c, ok := p[productVar]; ok {
+		c.Values = append(c.Values, vals.Values...)
+		p[productVar] = c
+	} else {
+		p[productVar] = vals
+	}
+
 }
 
 // Product Variable values for StringListAttribute
@@ -564,7 +577,10 @@ func (attrs *StringListAttribute) SetValueForOS(os string, value []string) {
 }
 
 func (attrs *StringListAttribute) SortedProductVariables() []ProductVariableValues {
-	vals := attrs.ProductValues[:]
+	vals := make([]ProductVariableValues, 0, len(attrs.ProductValues))
+	for _, v := range attrs.ProductValues {
+		vals = append(vals, v)
+	}
 	sort.Slice(vals, func(i, j int) bool { return vals[i].ProductVariable < vals[j].ProductVariable })
 	return vals
 }
@@ -586,19 +602,8 @@ func (attrs *StringListAttribute) Append(other StringListAttribute) {
 		attrs.SetValueForOS(os, this)
 	}
 
-	productValues := make(map[string][]string, 0)
-	for _, pv := range attrs.ProductValues {
-		productValues[pv.ProductVariable] = pv.Values
-	}
-	for _, pv := range other.ProductValues {
-		productValues[pv.ProductVariable] = append(productValues[pv.ProductVariable], pv.Values...)
-	}
-	attrs.ProductValues = make([]ProductVariableValues, 0, len(productValues))
-	for pv, vals := range productValues {
-		attrs.ProductValues = append(attrs.ProductValues, ProductVariableValues{
-			ProductVariable: pv,
-			Values:          vals,
-		})
+	for _, vals := range other.ProductValues {
+		attrs.ProductValues.Append(vals)
 	}
 
 	attrs.Value = append(attrs.Value, other.Value...)
