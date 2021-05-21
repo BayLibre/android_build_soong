@@ -622,7 +622,7 @@ cc_library_static {
         "-I$(BINDIR)/.",
     ],
     linkstatic = True,
-    srcs = [
+    srcs_c = [
         "common.c",
         "foo-a.c",
     ],
@@ -651,7 +651,7 @@ cc_library_static {
         "-I$(BINDIR)/.",
     ],
     linkstatic = True,
-    srcs = ["common.c"] + select({
+    srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": ["foo-arm.c"],
         "//conditions:default": [],
     }),
@@ -685,7 +685,7 @@ cc_library_static {
         "-I$(BINDIR)/.",
     ],
     linkstatic = True,
-    srcs = ["common.c"] + select({
+    srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": ["for-arm.c"],
         "//conditions:default": ["not-for-arm.c"],
     }),
@@ -721,7 +721,7 @@ cc_library_static {
         "-I$(BINDIR)/.",
     ],
     linkstatic = True,
-    srcs = ["common.c"] + select({
+    srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": [
             "for-arm.c",
             "not-for-x86.c",
@@ -774,7 +774,7 @@ cc_library_static {
         "-I$(BINDIR)/.",
     ],
     linkstatic = True,
-    srcs = ["common.c"] + select({
+    srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": [
             "for-arm.c",
             "not-for-arm64.c",
@@ -864,7 +864,7 @@ cc_library_static {
         "-I$(BINDIR)/.",
     ],
     linkstatic = True,
-    srcs = ["common.c"] + select({
+    srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": ["for-lib32.c"],
         "//build/bazel/platforms/arch:x86": ["for-lib32.c"],
         "//conditions:default": ["not-for-lib32.c"],
@@ -900,7 +900,7 @@ cc_library_static {
         "-I$(BINDIR)/.",
     ],
     linkstatic = True,
-    srcs = ["common.c"] + select({
+    srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": [
             "for-lib32.c",
             "not-for-lib64.c",
@@ -969,7 +969,7 @@ cc_library_static {
         "-I$(BINDIR)/.",
     ],
     linkstatic = True,
-    srcs = ["common.c"] + select({
+    srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": [
             "for-arm.c",
             "for-lib32.c",
@@ -1020,10 +1020,10 @@ cc_library_static {
 			moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
 			depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
 			filesystem: map[string]string{
-				"common.c":             "",
-				"for-x86.c":            "",
-				"not-for-x86.c":        "",
-				"not-for-everything.c": "",
+				"common.cpp":             "",
+				"for-x86.cpp":            "",
+				"not-for-x86.cpp":        "",
+				"not-for-everything.cpp": "",
 				"dep/Android.bp": `
 genrule {
 	name: "generated_src_other_pkg",
@@ -1064,14 +1064,14 @@ genrule {
 
 cc_library_static {
    name: "foo_static3",
-   srcs: ["common.c", "not-for-*.c"],
-   exclude_srcs: ["not-for-everything.c"],
+   srcs: ["common.cpp", "not-for-*.cpp"],
+   exclude_srcs: ["not-for-everything.cpp"],
    generated_sources: ["generated_src", "generated_src_other_pkg"],
    generated_headers: ["generated_hdr", "generated_hdr_other_pkg"],
    arch: {
        x86: {
-           srcs: ["for-x86.c"],
-           exclude_srcs: ["not-for-x86.c"],
+           srcs: ["for-x86.cpp"],
+           exclude_srcs: ["not-for-x86.cpp"],
            generated_sources: ["generated_src_x86"],
            generated_headers: ["generated_hdr_other_pkg_x86"],
        },
@@ -1090,14 +1090,14 @@ cc_library_static {
         "//dep:generated_src_other_pkg",
         ":generated_hdr",
         ":generated_src",
-        "common.c",
+        "common.cpp",
     ] + select({
         "//build/bazel/platforms/arch:x86": [
             "//dep:generated_hdr_other_pkg_x86",
             ":generated_src_x86",
-            "for-x86.c",
+            "for-x86.cpp",
         ],
-        "//conditions:default": ["not-for-x86.c"],
+        "//conditions:default": ["not-for-x86.cpp"],
     }),
 )`},
 		},
