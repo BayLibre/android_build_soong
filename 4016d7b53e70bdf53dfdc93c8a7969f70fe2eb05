@@ -105,6 +105,24 @@
       "parentUuid": "1ab57a62_2ba9b3e6",
       "revId": "4016d7b53e70bdf53dfdc93c8a7969f70fe2eb05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40d4bf81_5b76fb9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-05-21T03:45:26Z",
+      "side": 1,
+      "message": "Thanks for the reference. That must be the same case of poduct_specific: true + vendor_available: true. In this case the product variant is a base module and it does not generate a core variant.\nThe correct way to solve this problem must be to find any other image variants than the image variant of the current snapshot.\nAnyway we don\u0027t have such cases for now and this code covers 100% cases of the current source tree. But as you commented we may need additional fix to handle all possible cases.",
+      "parentUuid": "592e6b8d_83ed4c19",
+      "revId": "4016d7b53e70bdf53dfdc93c8a7969f70fe2eb05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
