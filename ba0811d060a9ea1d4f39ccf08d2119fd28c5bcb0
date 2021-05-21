@@ -70,6 +70,24 @@
       "parentUuid": "44c485d8_ca7af9e4",
       "revId": "ba0811d060a9ea1d4f39ccf08d2119fd28c5bcb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3801e1c1_2d238715",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-21T08:19:28Z",
+      "side": 1,
+      "message": "test table \u003d\u003d that big []struct{...} ?\n\nThe reason why I thought that\u0027s not great is that it doesn\u0027t allow one to run each test case individually, which is what is needed for debugging.",
+      "parentUuid": "f88289d6_81cbb499",
+      "revId": "ba0811d060a9ea1d4f39ccf08d2119fd28c5bcb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
