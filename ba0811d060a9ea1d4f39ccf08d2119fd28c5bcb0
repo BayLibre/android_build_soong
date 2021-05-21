@@ -213,6 +213,24 @@
       "parentUuid": "1762813f_4fbe626d",
       "revId": "ba0811d060a9ea1d4f39ccf08d2119fd28c5bcb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b327356_f1dded11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-21T15:33:08Z",
+      "side": 1,
+      "message": "I have a light vote for identifying tests via function instead of by testCase.description. I\u0027ve found in cases where our description is incomplete / too generic, I have a hard time identifying which test failed.\n\nAnd the line number of the failure is even less helpful\n\nSo, a +1 vote to continue with this CL :)",
+      "parentUuid": "510f3387_37cd78dd",
+      "revId": "ba0811d060a9ea1d4f39ccf08d2119fd28c5bcb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
