@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "784251d9_63196ba7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-21T07:43:33Z",
+      "side": 1,
+      "message": "Context: I spent enough time slicing and dicing the large array of structs in order to be able to run individual test cases that this looks like a good idea. If you like it, I\u0027ll do the same for the test of the conversion test cases.\n\nI was thinking about turning the individual fields of testCase into arguments of runTestCase(), but at the end, I decided that I quite like the \"named argument\" style possible this way.\n\nAnother thing I was thinking about is to turn the filesystem map into a simple list of empty files because it appears that we only ever have empty files there.",
+      "revId": "ba0811d060a9ea1d4f39ccf08d2119fd28c5bcb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
