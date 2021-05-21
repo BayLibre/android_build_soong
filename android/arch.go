@@ -15,6 +15,7 @@
 package android
 
 import (
+	"android/soong/bazel"
 	"encoding"
 	"fmt"
 	"reflect"
@@ -897,7 +898,7 @@ func createArchPropTypeDesc(props reflect.Type) []archPropTypeDesc {
 
 			// Add the OS/Arch combinations, e.g. "android_arm64".
 			for _, archType := range osArchTypeMap[os] {
-				targets = append(targets, GetCompoundTargetName(os, archType))
+				targets = append(targets, GetCompoundTargetField(os, archType))
 
 				// Also add the special "linux_<arch>" and "bionic_<arch>" property structs.
 				if os.Linux() {
@@ -1217,7 +1218,7 @@ func getMultilibStruct(ctx ArchVariantContext, archProperties interface{}, archT
 	return getChildPropertyStruct(ctx, multilibProp, archType.Multilib, "multilib."+archType.Multilib)
 }
 
-func GetCompoundTargetName(os OsType, arch ArchType) string {
+func GetCompoundTargetField(os OsType, arch ArchType) string {
 	return os.Field + "_" + arch.Name
 }
 
@@ -1327,7 +1328,7 @@ func getArchProperties(ctx BaseMutatorContext, archProperties interface{}, arch 
 		//         key: value,
 		//     },
 		// },
-		field := GetCompoundTargetName(os, archType)
+		field := GetCompoundTargetField(os, archType)
 		userFriendlyField := "target." + os.Name + "_" + archType.Name
 		if osArchProperties, ok := getChildPropertyStruct(ctx, targetProp, field, userFriendlyField); ok {
 			result = append(result, osArchProperties)
@@ -1882,6 +1883,9 @@ type ArchVariantContext interface {
 	PropertyErrorf(property, fmt string, args ...interface{})
 }
 
+type ConfigToProperties map[string]interface{}
+type ConfigurationAxisToArchVariantProperties map[bazel.ConfigurationAxis]ConfigToProperties
+
 // GetArchProperties returns a map of architectures to the values of the
 // properties of the 'propertySet' struct that are specific to that architecture.
 //
@@ -1896,13 +1900,13 @@ type ArchVariantContext interface {
 // propertyset contains `Foo []string`.
 //
 // Implemented in a way very similar to GetTargetProperties().
-func (m *ModuleBase) GetArchProperties(ctx ArchVariantContext, propertySet interface{}) map[ArchType]interface{} {
+func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySet interface{}) ConfigurationAxisToArchVariantProperties {
 	// Return value of the arch types to the prop values for that arch.
-	archToProp := map[ArchType]interface{}{}
+	axisToProps := ConfigurationAxisToArchVariantProperties{}
 
 	// Nothing to do for non-arch-specific modules.
 	if !m.ArchSpecific() {
-		return archToProp
+		return axisToProps
 	}
 
 	dstType := reflect.ValueOf(propertySet).Type()
@@ -1920,9 +1924,10 @@ func (m *ModuleBase) GetArchProperties(ctx ArchVariantContext, propertySet inter
 
 	if archProperties == nil {
 		// This module does not have the property set requested
-		return archToProp
+		return axisToProps
 	}
 
+	archToProp := ConfigToProperties{}
 	// For each arch type (x86, arm64, etc.)
 	for _, arch := range ArchTypeList() {
 		// Arch properties are sometimes sharded (see createArchPropTypeDesc() ).
@@ -1948,10 +1953,30 @@ func (m *ModuleBase) GetArchProperties(ctx ArchVariantContext, propertySet inter
 			mergePropertyStruct(ctx, value, propertyStruct)
 		}
 
-		archToProp[arch] = value
+		archToProp[arch.Name] = value
 	}
+	axisToProps[bazel.ArchConfigurationAxis] = archToProp
 
-	return archToProp
+	osToProp := ConfigToProperties{}
+	archOsToProp := ConfigToProperties{}
+	// For android, linux, ...
+	for _, os := range osTypeList {
+		if os == CommonOS {
+			// It looks like this OS value is not used in Blueprint files
+			continue
+		}
+		osToProp[os.Name] = getTargetStruct(ctx, propertySet, archProperties, os.Field)
+		// For arm, x86, ...
+		for _, arch := range osArchTypeMap[os] {
+			targetField := GetCompoundTargetField(os, arch)
+			targetName := fmt.Sprintf("%s_%s", os.Name, arch.Name)
+			archOsToProp[targetName] = getTargetStruct(ctx, propertySet, archProperties, targetField)
+		}
+	}
+	axisToProps[bazel.OsConfigurationAxis] = osToProp
+	axisToProps[bazel.ArchOsConfigurationAxis] = archOsToProp
+
+	return axisToProps
 }
 
 // Returns a struct matching the propertySet interface, containing properties specific to the targetName
@@ -2033,24 +2058,6 @@ func (m *ModuleBase) GetTargetProperties(ctx ArchVariantContext, propertySet int
 	if archProperties == nil {
 		// This module does not have the property set requested
 		return targetToProp
-	}
-
-	// For android, linux, ...
-	for _, os := range osTypeList {
-		if os == CommonOS {
-			// It looks like this OS value is not used in Blueprint files
-			continue
-		}
-		targetProperties := TargetProperties{
-			Properties:     getTargetStruct(ctx, propertySet, archProperties, os.Field),
-			ArchProperties: make(map[ArchType]interface{}),
-		}
-		// For arm, x86, ...
-		for _, arch := range osArchTypeMap[os] {
-			targetName := GetCompoundTargetName(os, arch)
-			targetProperties.ArchProperties[arch] = getTargetStruct(ctx, propertySet, archProperties, targetName)
-		}
-		targetToProp[os] = targetProperties
 	}
 
 	return targetToProp
