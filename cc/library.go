@@ -2217,14 +2217,21 @@ func maybeInjectBoringSSLHash(ctx android.ModuleContext, outputFile android.Modu
 }
 
 type bazelCcLibraryStaticAttributes struct {
-	Copts              bazel.StringListAttribute
-	Srcs               bazel.LabelListAttribute
-	Deps               bazel.LabelListAttribute
-	Whole_archive_deps bazel.LabelListAttribute
-	Linkopts           bazel.StringListAttribute
-	Linkstatic         bool
-	Includes           bazel.StringListAttribute
-	Hdrs               bazel.LabelListAttribute
+	Copts               bazel.StringListAttribute
+	Srcs                bazel.LabelListAttribute
+	Implementation_deps bazel.LabelListAttribute
+	Deps                bazel.LabelListAttribute
+	Whole_archive_deps  bazel.LabelListAttribute
+	Linkopts            bazel.StringListAttribute
+	Linkstatic          bool
+	Includes            bazel.StringListAttribute
+	Hdrs                bazel.LabelListAttribute
+
+	Cppflags   bazel.StringListAttribute
+	Srcs_c     bazel.LabelListAttribute
+	Conlyflags bazel.StringListAttribute
+	Srcs_as    bazel.LabelListAttribute
+	Asflags    bazel.StringListAttribute
 }
 
 type bazelCcLibraryStatic struct {
@@ -2253,6 +2260,12 @@ func ccLibraryStaticBp2BuildInternal(ctx android.TopDownMutatorContext, module *
 		Linkopts:   linkerAttrs.linkopts,
 		Linkstatic: true,
 		Includes:   exportedIncludes,
+
+		Cppflags:   compilerAttrs.cppFlags,
+		Srcs_c:     compilerAttrs.cSrcs,
+		Conlyflags: compilerAttrs.conlyFlags,
+		Srcs_as:    compilerAttrs.asSrcs,
+		Asflags:    compilerAttrs.asFlags,
 	}
 
 	props := bazel.BazelTargetModuleProperties{
