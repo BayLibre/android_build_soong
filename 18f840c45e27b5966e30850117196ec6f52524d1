@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bae55249_c65de66d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-21T08:40:22Z",
+      "side": 1,
+      "message": "Yes. That\u0027s what it does. If a dependency is missing for a module then Soong will create error rules in ninja instead of the normal rules the module will build. Any attempt by ninja to build outputs from the module will run those error rules and ninja will fail. As long as those outputs aren\u0027t built then barring any other issues ninja will succeed.",
+      "parentUuid": "74299cf7_a81739ab",
+      "range": {
+        "startLine": 11,
+        "startChar": 48,
+        "endLine": 11,
+        "endChar": 55
+      },
+      "revId": "18f840c45e27b5966e30850117196ec6f52524d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5aa02f97_3806655b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
