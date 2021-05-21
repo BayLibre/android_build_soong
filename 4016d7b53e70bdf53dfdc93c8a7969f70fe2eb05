@@ -87,6 +87,24 @@
       "parentUuid": "1ef8a131_96a0b74f",
       "revId": "4016d7b53e70bdf53dfdc93c8a7969f70fe2eb05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "592e6b8d_83ed4c19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-05-21T03:00:38Z",
+      "side": 1,
+      "message": "Take a look at here: http://cs/android/build/soong/cc/image.go?l\u003d575\u0026rcl\u003dbffc973365505a29efc5ee99e196946398ed9e47\n\nIf any of ramdisk / vendor_ramdisk / recovery is set, core variant is disabled.",
+      "parentUuid": "1ab57a62_2ba9b3e6",
+      "revId": "4016d7b53e70bdf53dfdc93c8a7969f70fe2eb05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
