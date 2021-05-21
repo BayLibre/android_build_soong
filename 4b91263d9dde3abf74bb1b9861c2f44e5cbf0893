@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12c000dc_fa09a177",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-21T13:25:11Z",
+      "side": 1,
+      "message": "This does preclude us from ever adding more than one *classpath_fragment to a single APEX. I\u0027m not sure that is a problem but I think it would be worth adding an explicit check for that in the APEX as otherwise the problem may be hard to debug. e.g. APEX dedups files based on destination so it will probably just ignore whichever one comes second.\n\nIt is fine to do that in a separate change.",
+      "revId": "4b91263d9dde3abf74bb1b9861c2f44e5cbf0893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
