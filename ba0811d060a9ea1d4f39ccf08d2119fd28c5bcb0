@@ -124,6 +124,24 @@
       "parentUuid": "07b31dc1_8a143f76",
       "revId": "ba0811d060a9ea1d4f39ccf08d2119fd28c5bcb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2723209c_5d4352c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-21T08:31:19Z",
+      "side": 1,
+      "message": "I think it makes some amount of sense if the specification of each sub-test is short like in the example, but here, each table entry is tens of lines long, so you end up with a big slice hundreds of lines long, which is hard to navigate.",
+      "parentUuid": "46b49370_634dfcce",
+      "revId": "ba0811d060a9ea1d4f39ccf08d2119fd28c5bcb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
