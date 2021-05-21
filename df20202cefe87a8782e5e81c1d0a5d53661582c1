@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96eeda7e_3ebecaaf",
+        "filename": "android/variable.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-21T06:28:06Z",
+      "side": 1,
+      "message": "nit: why does this have a return value if all it does is to modify the productConfigProperties argument?",
+      "range": {
+        "startLine": 497,
+        "startChar": 118,
+        "endLine": 497,
+        "endChar": 141
+      },
+      "revId": "df20202cefe87a8782e5e81c1d0a5d53661582c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
