@@ -106,6 +106,24 @@
       "parentUuid": "3801e1c1_2d238715",
       "revId": "ba0811d060a9ea1d4f39ccf08d2119fd28c5bcb0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b49370_634dfcce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-21T08:27:59Z",
+      "side": 1,
+      "message": "What\u0027s the benefit of this extra layer of abstraction? The article says to avoid duplication, but I think that\u0027s totally wrong because that\u0027s what helper functions are for.\n\nIOW: we already have a way to separate test cases from one another, why introduce another?\n\nAlso, the proposed way of running sub-tests doesn\u0027t let IntelliJ run one subtest at a time, does it?",
+      "parentUuid": "07b31dc1_8a143f76",
+      "revId": "ba0811d060a9ea1d4f39ccf08d2119fd28c5bcb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
