@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77257181_19ddd4a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-21T13:41:29Z",
+      "side": 1,
+      "message": "Let me know when the two-select thing is implemented.",
+      "revId": "bdd16d97d3c9846e817beebfb64a8c701d596448",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dbb8a87_c3164f73",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1952,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-21T13:41:29Z",
+      "side": 1,
+      "message": "See below -- I thought separating the concept of \"OS\" and \"OS/Arch pair\" makes the code a bit easier to read.",
+      "range": {
+        "startLine": 1952,
+        "startChar": 0,
+        "endLine": 1952,
+        "endChar": 53
+      },
+      "revId": "bdd16d97d3c9846e817beebfb64a8c701d596448",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d6cdc9e_1f348d61",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1982,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-21T13:41:29Z",
+      "side": 1,
+      "message": "nit: the name is confusing since it actually returns only one struct. Maybe \"getMergedTargetStruct()?\"",
+      "range": {
+        "startLine": 1982,
+        "startChar": 5,
+        "endLine": 1982,
+        "endChar": 21
+      },
+      "revId": "bdd16d97d3c9846e817beebfb64a8c701d596448",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee8c036a_70dbdb58",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2013,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-21T13:41:29Z",
+      "side": 1,
+      "message": "I would have implemented this as another Get*Properties method because as it is, you are using the new Target type for two things: OS and (OS, ArchType) pairs. So you\u0027ll probably have to separate them later, which means that smushing them together here just causes extra work then.\n\n(that said, this code works, too)",
+      "range": {
+        "startLine": 2013,
+        "startChar": 21,
+        "endLine": 2013,
+        "endChar": 40
+      },
+      "revId": "bdd16d97d3c9846e817beebfb64a8c701d596448",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
