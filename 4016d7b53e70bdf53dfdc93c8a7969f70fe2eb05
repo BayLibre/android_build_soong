@@ -69,6 +69,24 @@
       "parentUuid": "6d8d3a6e_16a6d0a5",
       "revId": "4016d7b53e70bdf53dfdc93c8a7969f70fe2eb05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ab57a62_2ba9b3e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-05-21T02:49:53Z",
+      "side": 1,
+      "message": "vendor_available:true always generates core variant regardless of installing it or not. \"m \u003cmodule_name\u003e\" will install the core variant of the vendor_available module. Am I missing something here?",
+      "parentUuid": "1ef8a131_96a0b74f",
+      "revId": "4016d7b53e70bdf53dfdc93c8a7969f70fe2eb05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
