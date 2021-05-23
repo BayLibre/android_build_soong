@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24de0cf9_6e677d9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-23T18:48:47Z",
+      "side": 1,
+      "message": "I migrated every test file and I\u0027m more convinced now that this should be submitted because the de-duplication of the logic to run the tests (that was at the end of Test\u003cModule Name\u003eBp2Build) is quite compelling.\n\nPTAL! I\u0027m OOO on Monday (bank holiday here), but I\u0027ll set this to autosubmit and I might even peek at my e-mail to submit this because it has a high likelihood of conflicting with any change.",
+      "revId": "c1cc3b96789f144ce17efc3e0add1e25e74ccb28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
