@@ -16,6 +16,24 @@
       "message": "https://chromium-review.googlesource.com/c/angle/angle/+/2906252 has been submitted now, but need to wait for it to be merged into AOSP",
       "revId": "e5832e27933ba51270a0eb2f9707366e93c109b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "708cb54c_2f2e6fe9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-23T00:04:17Z",
+      "side": 1,
+      "message": "It\u0027s been a few days and this change hasn\u0027t appeared in AOSP, I\u0027m not sure if we have to kick off a manual process. I replied on https://chromium-review.googlesource.com/c/angle/angle/+/2906252",
+      "parentUuid": "90b01524_893f4f4a",
+      "revId": "e5832e27933ba51270a0eb2f9707366e93c109b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
