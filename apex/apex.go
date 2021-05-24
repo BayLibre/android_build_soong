@@ -2024,6 +2024,9 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			if e, ok := encountered[dest]; !ok {
 				encountered[dest] = f
 			} else {
+				if ctx.OtherModuleName(f.module) != ctx.OtherModuleName(encountered[dest].module) {
+					ctx.ModuleErrorf("apex file %v is provided by two different modules %v and %v", dest, encountered[dest].module, f.module)
+				}
 				// If a module is directly included and also transitively depended on
 				// consider it as directly included.
 				e.transitiveDep = e.transitiveDep && f.transitiveDep
