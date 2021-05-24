@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66429ada_e52f16b0",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-24T12:12:50Z",
+      "side": 1,
+      "message": "nit: I liked the more specific name here. \"output\" in the context / scope of GenerateAndroidBuildActions doesn\u0027t really make sense / too generic?",
+      "range": {
+        "startLine": 391,
+        "startChar": 1,
+        "endLine": 391,
+        "endChar": 7
+      },
+      "revId": "eb198f97fd9db15b33e4dd6c094cca5de7cdd264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
