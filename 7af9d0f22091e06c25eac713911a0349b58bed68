@@ -16,6 +16,190 @@
       "message": "This CL is quite long and probably needs some cleanup/simplification. But I think it is functionally correct, finally...",
       "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3feb5314_a1e26264",
+        "filename": "android/arch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1952,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-24T17:47:42Z",
+      "side": 1,
+      "message": "As this is a return type, we should be exporting this.",
+      "range": {
+        "startLine": 1952,
+        "startChar": 5,
+        "endLine": 1952,
+        "endChar": 21
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06047afb_436c48c3",
+        "filename": "android/arch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1972,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-24T17:47:42Z",
+      "side": 1,
+      "message": "can you add a docstring for this?",
+      "range": {
+        "startLine": 1972,
+        "startChar": 5,
+        "endLine": 1972,
+        "endChar": 27
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68509b50_be5c9268",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-24T17:47:42Z",
+      "side": 1,
+      "message": "nit: we\u0027ve been somewhat inconsistent in this file, but golang style is to have camel-case constants.\n\noptional: if you merge this into the () the above or below, you can skip specifying var",
+      "range": {
+        "startLine": 205,
+        "startChar": 4,
+        "endLine": 205,
+        "endChar": 14
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bac5fb7_26dafc44",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-24T17:47:42Z",
+      "side": 1,
+      "message": "looks like this doesn\u0027t need to be exported any longer",
+      "range": {
+        "startLine": 431,
+        "startChar": 33,
+        "endLine": 431,
+        "endChar": 50
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "742d41fe_a2c0024b",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-24T17:47:42Z",
+      "side": 1,
+      "message": "this appears to only be used internally -- and takes a non-exported type as parameter, looks like we can stop exporting it",
+      "range": {
+        "startLine": 468,
+        "startChar": 33,
+        "endLine": 468,
+        "endChar": 50
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce867291_9f73e011",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-24T17:47:42Z",
+      "side": 1,
+      "message": "similarly, I don\u0027t think we need to export this anymore",
+      "range": {
+        "startLine": 630,
+        "startChar": 34,
+        "endLine": 630,
+        "endChar": 51
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc154ce7_10ae2d2c",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-24T17:47:42Z",
+      "side": 1,
+      "message": "and this one looks like it shouldn\u0027t be exported anymore either",
+      "range": {
+        "startLine": 667,
+        "startChar": 34,
+        "endLine": 667,
+        "endChar": 51
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76c83194_55c5f85a",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-24T17:47:42Z",
+      "side": 1,
+      "message": "These selects seem unnecessary/incorrect as not-for-anything.c appears to be excluded in all cases, not based on target",
+      "range": {
+        "startLine": 725,
+        "startChar": 6,
+        "endLine": 776,
+        "endChar": 7
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
