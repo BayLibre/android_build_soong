@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2b9c41a0_e00efeee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-24T12:34:46Z",
+      "side": 1,
+      "message": "There are three ways to reference a change, git SHA, Change-Id and gerrit URL. I chose the first because it is the most direct. e.g. anyone can type \"git show \u003cSHA\u003e\" to see its contents (even in downstream branches). The others either require searching through git or access to gerrit.",
+      "parentUuid": "1a32e875_99accc39",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "a90adec049f14eac8271ec3308402690a4007771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "458f0f1f_4fe71ef2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
