@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de8020e0_f55d3ba5",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-24T13:18:24Z",
+      "side": 1,
+      "message": "is this sufficient? What about regular java_library that contribute to bootclasspath_fragment; their removed txt is tracked in frameworks/base?",
+      "range": {
+        "startLine": 504,
+        "startChar": 31,
+        "endLine": 504,
+        "endChar": 51
+      },
+      "revId": "b4b4ee37bd808f789439d3ab787bf7be41fea994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bf1604d_b151fd11",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-24T13:18:24Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 698,
+        "startChar": 0,
+        "endLine": 699,
+        "endChar": 8
+      },
+      "revId": "b4b4ee37bd808f789439d3ab787bf7be41fea994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
