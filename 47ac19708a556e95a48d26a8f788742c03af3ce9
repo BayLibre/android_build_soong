@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f08718f9_096a6421",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-24T08:44:33Z",
+      "side": 1,
+      "message": "I think this can be abandoned now as the build has already been modified to do this via an environment variable.",
+      "revId": "47ac19708a556e95a48d26a8f788742c03af3ce9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
