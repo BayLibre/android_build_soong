@@ -21,14 +21,16 @@ import (
 	"strconv"
 
 	"android/soong/shared"
+
 	"github.com/google/blueprint/deptools"
 
 	soong_metrics_proto "android/soong/ui/metrics/metrics_proto"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
 
-	"github.com/golang/protobuf/proto"
 	"github.com/google/blueprint/microfactory"
+	"google.golang.org/protobuf/proto"
 
 	"android/soong/ui/metrics"
 	"android/soong/ui/status"
