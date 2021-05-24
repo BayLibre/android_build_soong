@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93dbbf35_5efaa516",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-24T17:27:07Z",
+      "side": 1,
+      "message": "PTAL. Had to resolve merge conflict.",
+      "revId": "58e0e769c9b1f4dbad95acfd1792dd91e716e456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
