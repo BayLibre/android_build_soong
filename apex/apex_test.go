@@ -3708,7 +3708,7 @@ func TestVndkApexWithBinder32(t *testing.T) {
 		}),
 		withBinder32bit,
 		withTargets(map[android.OsType][]android.Target{
-			android.Android: []android.Target{
+			android.Android: {
 				{Os: android.Android, Arch: android.Arch{ArchType: android.Arm, ArchVariant: "armv7-a-neon", Abi: []string{"armeabi-v7a"}},
 					NativeBridge: android.NativeBridgeDisabled, NativeBridgeHostArchName: "", NativeBridgeRelativePath: ""},
 			},
@@ -6172,6 +6172,42 @@ func TestCompatConfig(t *testing.T) {
 	})
 }
 
+func TestNoDupeApexFiles(t *testing.T) {
+	android.GroupFixturePreparers(
+		android.PrepareForTestWithAndroidBuildComponents,
+		PrepareForTestWithApexBuildComponents,
+		prepareForTestWithMyapex,
+		prebuilt_etc.PrepareForTestWithPrebuiltEtc,
+	).
+		ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern("is provided by two different modules")).
+		RunTestWithBp(t, `
+			apex {
+				name: "myapex",
+				key: "myapex.key",
+				prebuilts: ["foo", "bar"],
+				updatable: false,
+			}
+
+			apex_key {
+				name: "myapex.key",
+				public_key: "testkey.avbpubkey",
+				private_key: "testkey.pem",
+			}
+
+			prebuilt_etc {
+				name: "foo",
+				src: "myprebuilt",
+				filename_from_src: true,
+			}
+
+			prebuilt_etc {
+				name: "bar",
+				src: "myprebuilt",
+				filename_from_src: true,
+			}
+		`)
+}
+
 func TestRejectNonInstallableJavaLibrary(t *testing.T) {
 	testApexError(t, `"myjar" is not configured to be compiled into dex`, `
 		apex {
@@ -7017,7 +7053,7 @@ func TestApexPermittedPackagesRules(t *testing.T) {
 				}`,
 			bootJars: []string{"bcp_lib1"},
 			modulesPackages: map[string][]string{
-				"myapex": []string{
+				"myapex": {
 					"foo.bar",
 				},
 			},
@@ -7051,7 +7087,7 @@ func TestApexPermittedPackagesRules(t *testing.T) {
 			`,
 			bootJars: []string{"bcp_lib1", "bcp_lib2"},
 			modulesPackages: map[string][]string{
-				"myapex": []string{
+				"myapex": {
 					"foo.bar",
 				},
 			},

@@ -2024,6 +2024,9 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			if e, ok := encountered[dest]; !ok {
 				encountered[dest] = f
 			} else {
+				if f.builtFile.String() != encountered[dest].builtFile.String() {
+					ctx.ModuleErrorf("apex file %v is overridden by two different files %v and %v", dest, encountered[dest].builtFile, f.builtFile)
+				}
 				// If a module is directly included and also transitively depended on
 				// consider it as directly included.
 				e.transitiveDep = e.transitiveDep && f.transitiveDep
