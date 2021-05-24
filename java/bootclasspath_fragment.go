@@ -367,11 +367,6 @@ func (b *BootclasspathFragmentModule) DepsMutator(ctx android.BottomUpMutatorCon
 	dexpreopt.RegisterToolDeps(ctx)
 }
 
-func (b *BootclasspathFragmentModule) BootclasspathDepsMutator(ctx android.BottomUpMutatorContext) {
-	// Add dependencies on all the fragments.
-	b.properties.BootclasspathFragmentsDepsProperties.addDependenciesOntoFragments(ctx)
-}
-
 func (b *BootclasspathFragmentModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// Only perform a consistency check if this module is the active module. That will prevent an
 	// unused prebuilt that was created without instrumentation from breaking an instrumentation
@@ -392,10 +387,8 @@ func (b *BootclasspathFragmentModule) GenerateAndroidBuildActions(ctx android.Mo
 		}
 	})
 
-	fragments := gatherApexModulePairDepsWithTag(ctx, bootclasspathFragmentDepTag)
-
 	// Perform hidden API processing.
-	hiddenAPIFlagOutput := b.generateHiddenAPIBuildActions(ctx, contents, fragments)
+	hiddenAPIFlagOutput := b.generateHiddenAPIBuildActions(ctx, contents)
 
 	// Verify that the image_name specified on a bootclasspath_fragment is valid even if this is a
 	// prebuilt which will not use the image config.
@@ -509,10 +502,10 @@ func (b *BootclasspathFragmentModule) getImageConfig(ctx android.EarlyModuleCont
 }
 
 // generateHiddenAPIBuildActions generates all the hidden API related build rules.
-func (b *BootclasspathFragmentModule) generateHiddenAPIBuildActions(ctx android.ModuleContext, contents []android.Module, fragments []android.Module) *HiddenAPIFlagOutput {
+func (b *BootclasspathFragmentModule) generateHiddenAPIBuildActions(ctx android.ModuleContext, contents []android.Module) *HiddenAPIFlagOutput {
 
 	// Create hidden API input structure.
-	input := b.createHiddenAPIFlagInput(ctx, contents, fragments)
+	input := b.createHiddenAPIFlagInput(ctx, contents)
 
 	var output *HiddenAPIFlagOutput
 
@@ -538,10 +531,8 @@ func (b *BootclasspathFragmentModule) generateHiddenAPIBuildActions(ctx android.
 		// perform its own flag generation.
 		FlagFilesByCategory: input.FlagFilesByCategory,
 
-		// Other bootclasspath_fragments that depend on this need the transitive set of stub dex jars
-		// from this to resolve any references from their code to classes provided by this fragment
-		// and the fragments this depends upon.
-		TransitiveStubDexJarsByKind: input.transitiveStubDexJarsByKind(),
+		// Make these available for tests.
+		StubDexJarsByKind: input.StubDexJarsByKind,
 	}
 
 	if output != nil {
@@ -558,13 +549,7 @@ func (b *BootclasspathFragmentModule) generateHiddenAPIBuildActions(ctx android.
 
 // createHiddenAPIFlagInput creates a HiddenAPIFlagInput struct and initializes it with information derived
 // from the properties on this module and its dependencies.
-func (b *BootclasspathFragmentModule) createHiddenAPIFlagInput(ctx android.ModuleContext, contents []android.Module, fragments []android.Module) HiddenAPIFlagInput {
-
-	// Merge the HiddenAPIInfo from all the fragment dependencies.
-	dependencyHiddenApiInfo := newHiddenAPIInfo()
-	dependencyHiddenApiInfo.mergeFromFragmentDeps(ctx, fragments)
-
-	// Create hidden API flag input structure.
+func (b *BootclasspathFragmentModule) createHiddenAPIFlagInput(ctx android.ModuleContext, contents []android.Module) HiddenAPIFlagInput {
 	input := newHiddenAPIFlagInput()
 
 	// Update the input structure with information obtained from the stub libraries.
@@ -572,9 +557,6 @@ func (b *BootclasspathFragmentModule) createHiddenAPIFlagInput(ctx android.Modul
 
 	// Populate with flag file paths from the properties.
 	input.extractFlagFilesFromProperties(ctx, &b.properties.Hidden_api)
-
-	// Store the stub dex jars from this module's fragment dependencies.
-	input.DependencyStubDexJarsByKind = dependencyHiddenApiInfo.TransitiveStubDexJarsByKind
 
 	return input
 }
