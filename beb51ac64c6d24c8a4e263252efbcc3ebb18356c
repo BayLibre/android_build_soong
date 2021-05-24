@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "382456a0_f69a7139",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-05-24T23:07:59Z",
+      "side": 1,
+      "message": "I used this for two modules so far, and it seems to be usable:\n\nhttps://android-review.googlesource.com/c/platform/external/golang-protobuf/+/1716977/-1..1/Android.gen.bp\n\nhttps://android-review.googlesource.com/c/platform/external/go-cmp/+/1716978",
+      "revId": "beb51ac64c6d24c8a4e263252efbcc3ebb18356c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
