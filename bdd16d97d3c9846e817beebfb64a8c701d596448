@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d6c0847_a308c8f9",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1952,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-24T15:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dbb8a87_c3164f73",
+      "range": {
+        "startLine": 1952,
+        "startChar": 0,
+        "endLine": 1952,
+        "endChar": 53
+      },
+      "revId": "bdd16d97d3c9846e817beebfb64a8c701d596448",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d6cdc9e_1f348d61",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aefcdcb5_e4630a35",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1982,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-24T15:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d6cdc9e_1f348d61",
+      "range": {
+        "startLine": 1982,
+        "startChar": 5,
+        "endLine": 1982,
+        "endChar": 21
+      },
+      "revId": "bdd16d97d3c9846e817beebfb64a8c701d596448",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee8c036a_70dbdb58",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-05-21T13:41:29Z",
       "side": 1,
       "message": "I would have implemented this as another Get*Properties method because as it is, you are using the new Target type for two things: OS and (OS, ArchType) pairs. So you\u0027ll probably have to separate them later, which means that smushing them together here just causes extra work then.\n\n(that said, this code works, too)",
+      "range": {
+        "startLine": 2013,
+        "startChar": 21,
+        "endLine": 2013,
+        "endChar": 40
+      },
+      "revId": "bdd16d97d3c9846e817beebfb64a8c701d596448",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd364428_74c336f4",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2013,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-24T15:34:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee8c036a_70dbdb58",
       "range": {
         "startLine": 2013,
         "startChar": 21,
