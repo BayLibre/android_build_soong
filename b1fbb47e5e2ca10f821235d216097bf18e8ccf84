@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7791218_bb5cd7a6",
+        "filename": "cc/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-05-24T09:38:51Z",
+      "side": 1,
+      "message": "filterOutFromMakeVar",
+      "range": {
+        "startLine": 434,
+        "startChar": 1,
+        "endLine": 434,
+        "endChar": 18
+      },
+      "revId": "b1fbb47e5e2ca10f821235d216097bf18e8ccf84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
