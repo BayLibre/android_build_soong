@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b642a0e_2f280920",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-24T12:57:16Z",
+      "side": 1,
+      "message": "Fundamentally, it changed because this change will only provide the boot image files (art/oat/vdex) if the rules to create them are produced and the latter are only produced for the APEX specific variants.\n\nWith that change this test failed because the actual set of files provided was empty.\n\nPreviously, the test was checking the wrong variant, the platform/default APEX variant instead of the APEX specific variant. The latter was not created because the art-bootclasspath-fragment was not added to the apex.\n\nSo, in order to fix this test the fragment had to be added to the APEX and the variant changed to use APEX specific variant.",
+      "parentUuid": "c4f444fd_02ec063b",
+      "range": {
+        "startLine": 108,
+        "startChar": 70,
+        "endLine": 108,
+        "endChar": 94
+      },
+      "revId": "a20ef77b89e5bc5a37226daf7cc65409c41f5cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf107578_a647da88",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2af370a6_702963aa",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-24T12:57:16Z",
+      "side": 1,
+      "message": "I am not sure that it will be needed longer term. If it is then maybe it will be set for non-art modules as well. I just wanted to remove the *bootImageConfig field as it caused nil panics and I didn\u0027t want to change the existing tests that rely on this.\n\nI have a lot more work to do in this area so will revisit this in a follow up CL,",
+      "parentUuid": "bf107578_a647da88",
+      "range": {
+        "startLine": 273,
+        "startChar": 1,
+        "endLine": 273,
+        "endChar": 8
+      },
+      "revId": "a20ef77b89e5bc5a37226daf7cc65409c41f5cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d53b64b_4e615c12",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-05-24T12:31:58Z",
       "side": 1,
       "message": "do we actually need a map here if android.Android is the only option?",
+      "range": {
+        "startLine": 417,
+        "startChar": 5,
+        "endLine": 418,
+        "endChar": 41
+      },
+      "revId": "a20ef77b89e5bc5a37226daf7cc65409c41f5cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe0efc14_b3111d2c",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-24T12:57:16Z",
+      "side": 1,
+      "message": "Yes as the arch types cover arm/arm64/x86/x86_64 not just the OS type.",
+      "parentUuid": "2d53b64b_4e615c12",
       "range": {
         "startLine": 417,
         "startChar": 5,
