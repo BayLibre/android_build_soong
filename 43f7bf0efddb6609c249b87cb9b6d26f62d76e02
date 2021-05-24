@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fbfc06c_7fe78885",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-24T15:13:45Z",
+      "side": 1,
+      "message": "I forgot about it. Have addressed Martin\u0027s comments so hopefully we can submit it soon.",
+      "parentUuid": "2aa02c7e_0afb8d35",
+      "revId": "43f7bf0efddb6609c249b87cb9b6d26f62d76e02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dca42025_d466983e",
@@ -54,6 +72,47 @@
         "endLine": 443,
         "endChar": 31
       },
+      "revId": "43f7bf0efddb6609c249b87cb9b6d26f62d76e02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cee1a7f_aea68476",
+        "filename": "sdk/testing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-24T15:13:45Z",
+      "side": 1,
+      "message": "I have added docs for that field in this change. I\u0027ve added a comment to make it easy for you to find.",
+      "parentUuid": "dca42025_d466983e",
+      "range": {
+        "startLine": 443,
+        "startChar": 8,
+        "endLine": 443,
+        "endChar": 31
+      },
+      "revId": "43f7bf0efddb6609c249b87cb9b6d26f62d76e02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16265027_8a66f3bb",
+        "filename": "sdk/update.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-24T15:13:45Z",
+      "side": 1,
+      "message": "The comment is added here.",
       "revId": "43f7bf0efddb6609c249b87cb9b6d26f62d76e02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
