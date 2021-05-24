@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a32e875_99accc39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-24T12:20:21Z",
+      "side": 1,
+      "message": "Is change-id Ifbb362f8fcfb2c06595fbd5ae39421b536e329ef more appropriate for any code archaeologists of the future?",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "a90adec049f14eac8271ec3308402690a4007771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "458f0f1f_4fe71ef2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-24T12:20:21Z",
+      "side": 1,
+      "message": "Nice!",
+      "revId": "a90adec049f14eac8271ec3308402690a4007771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
