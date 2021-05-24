@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4f444fd_02ec063b",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-24T12:31:58Z",
+      "side": 1,
+      "message": "why did the variant change?",
+      "range": {
+        "startLine": 108,
+        "startChar": 70,
+        "endLine": 108,
+        "endChar": 94
+      },
+      "revId": "a20ef77b89e5bc5a37226daf7cc65409c41f5cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf107578_a647da88",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-24T12:31:58Z",
+      "side": 1,
+      "message": "why not just name this art_modules or something, or even move it out of this struct?",
+      "range": {
+        "startLine": 273,
+        "startChar": 1,
+        "endLine": 273,
+        "endChar": 8
+      },
+      "revId": "a20ef77b89e5bc5a37226daf7cc65409c41f5cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d53b64b_4e615c12",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-05-24T12:31:58Z",
+      "side": 1,
+      "message": "do we actually need a map here if android.Android is the only option?",
+      "range": {
+        "startLine": 417,
+        "startChar": 5,
+        "endLine": 418,
+        "endChar": 41
+      },
+      "revId": "a20ef77b89e5bc5a37226daf7cc65409c41f5cbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
