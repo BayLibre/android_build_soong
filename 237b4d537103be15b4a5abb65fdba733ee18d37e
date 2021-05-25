@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca802382_4c27f863",
+        "filename": "android/arch.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2045,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T23:42:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dffa6518_a7c68d09",
+      "range": {
+        "startLine": 2045,
+        "startChar": 93,
+        "endLine": 2045,
+        "endChar": 114
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d135e2ad_f89e0bfd",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-25T18:38:30Z",
       "side": 1,
       "message": "have we defined config_settings or something in bazel for these?",
+      "range": {
+        "startLine": 197,
+        "startChar": 31,
+        "endLine": 197,
+        "endChar": 42
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9a40395_f7a983bf",
+        "filename": "bazel/properties.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T23:42:59Z",
+      "side": 1,
+      "message": "Some appear in build/bazel/platforms/BUILD.bazel already\n\ne.g. for the one you highlighted\n\n# Android is the OS for target devices that run all of Android, including the Linux kernel\n# and the Bionic libc runtime.\nandroid_platform(\n    name \u003d \"android_arm\",\n    constraint_values \u003d [\n        \"//build/bazel/platforms/arch:arm\",\n        \"//build/bazel/platforms/os:android\",\n    ],\n    product \u003d \":android_target\",\n)\n\nWe might have to add some more to BUILD.bazel, but not in this CL since that file is in a different repo",
+      "parentUuid": "d135e2ad_f89e0bfd",
       "range": {
         "startLine": 197,
         "startChar": 31,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6102b6c1_d677d8e7",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T23:42:59Z",
+      "side": 1,
+      "message": "Removed one of the new checks, but we need at least this part\n\n                if !value.IsValid() {\n                        return true\n                }\n\nOtherwise \"go test\" triggers errors like\n\n--- FAIL: TestCcLibraryStaticGetTargetProperties (0.01s)\npanic: reflect: call of reflect.Value.Type on zero Value [recovered]\n\tpanic: panic in VisitAllModules(android/soong/bp2build.GenerateBazelTargets.func1) for module \"__bp2build__foo_static\" (created by module \"foo_static\")\nreflect: call of reflect.Value.Type on zero Value\ngoroutine 2814 [running]:\ngithub.com/google/blueprint.newPanicErrorf(0xb3bf40, 0xc000904360, 0xc0f17b, 0x1a, 0xc000d46fc0, 0x2, 0x2, 0x10, 0x0)",
+      "parentUuid": "33fdd923_6d6ceca9",
+      "range": {
+        "startLine": 532,
+        "startChar": 5,
+        "endLine": 532,
+        "endChar": 21
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f2aab00_41925a20",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-05-25T18:28:01Z",
       "side": 1,
       "message": "This does not seem to be referenced",
+      "range": {
+        "startLine": 1171,
+        "startChar": 3,
+        "endLine": 1171,
+        "endChar": 24
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5755657_b4ee9aa3",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T23:42:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f2aab00_41925a20",
       "range": {
         "startLine": 1171,
         "startChar": 3,
@@ -207,6 +303,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "164895fc_b813eab5",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T23:42:59Z",
+      "side": 1,
+      "message": "I\u0027m assuming this specific set of selects is okay, as it is the one Liz suggested at at http://b/187530594\n\nBut in general, yes, we have a single select for the os (android, linux, darwin, windows, ...) and then additional selects for each os+arch set (e.g. darwin+arch has a select, windows+arch has a select, ...). I think this is reasonable?",
+      "parentUuid": "3a72776c_308d3ed8",
+      "range": {
+        "startLine": 1215,
+        "startChar": 0,
+        "endLine": 1216,
+        "endChar": 17
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f401b52e_03abb0d7",
         "filename": "bp2build/cc_library_static_conversion_test.go",
         "patchSetId": 9
@@ -241,6 +361,30 @@
       "writtenOn": "2021-05-25T18:28:01Z",
       "side": 1,
       "message": "Is \"FIXME\" the local custom (as opposed to TODO($USERNAME))?",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03bf0cb8_bf3d4854",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T23:42:59Z",
+      "side": 1,
+      "message": "Soong isn\u0027t famous for consistency but I changed this to a TODO.",
+      "parentUuid": "4bb88b8b_82b17de0",
       "range": {
         "startLine": 35,
         "startChar": 5,

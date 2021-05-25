@@ -22,6 +22,30 @@
       },
       "revId": "c1ae9243a4e85d397a3724a3a90b537a2f0e9575",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40727c43_d8daf462",
+        "filename": "android/arch.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T23:42:59Z",
+      "side": 0,
+      "message": "It was very spammy and appeared to be an expected error (since we return false on the next line). \n\nBut I added it back and it appears less spammy now, so we can keep it.",
+      "parentUuid": "fbe73901_451173f9",
+      "range": {
+        "startLine": 1071,
+        "startChar": 2,
+        "endLine": 1071,
+        "endChar": 64
+      },
+      "revId": "c1ae9243a4e85d397a3724a3a90b537a2f0e9575",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
