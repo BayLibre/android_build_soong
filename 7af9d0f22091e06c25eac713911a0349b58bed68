@@ -501,6 +501,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7883757a_7fc1e6da",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:57:30Z",
+      "side": 1,
+      "message": "This was a typo\n\nlist.GetOsArchValueForTarget(os, arch) vs list.GetOsArchValueForTarget(os, arch).Includes",
+      "parentUuid": "f1b3a258_0f3539a0",
+      "range": {
+        "startLine": 725,
+        "startChar": 6,
+        "endLine": 776,
+        "endChar": 7
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27e72210_d1a0dcf2",
