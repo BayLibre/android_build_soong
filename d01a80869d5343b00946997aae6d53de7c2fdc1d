@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07c1aa97_a07232e5",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2023,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-05-25T09:23:13Z",
+      "side": 0,
+      "message": "FTR, this condition originates from https://r.android.com/829968.",
+      "range": {
+        "startLine": 2023,
+        "startChar": 55,
+        "endLine": 2023,
+        "endChar": 92
+      },
+      "revId": "d01a80869d5343b00946997aae6d53de7c2fdc1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
