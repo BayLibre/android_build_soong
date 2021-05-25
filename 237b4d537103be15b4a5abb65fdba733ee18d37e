@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baacfce1_0deed272",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-25T18:28:01Z",
+      "side": 1,
+      "message": "\\o/ It\u0027s getting late so I only +1 this; it can be that I managed to skim over something.",
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33fdd923_6d6ceca9",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-25T18:28:01Z",
+      "side": 1,
+      "message": "Why did this need to be changed now?",
+      "range": {
+        "startLine": 532,
+        "startChar": 5,
+        "endLine": 532,
+        "endChar": 21
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f2aab00_41925a20",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-25T18:28:01Z",
+      "side": 1,
+      "message": "This does not seem to be referenced",
+      "range": {
+        "startLine": 1171,
+        "startChar": 3,
+        "endLine": 1171,
+        "endChar": 24
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f401b52e_03abb0d7",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-25T18:28:01Z",
+      "side": 1,
+      "message": "this is delightful",
+      "range": {
+        "startLine": 1207,
+        "startChar": 11,
+        "endLine": 1220,
+        "endChar": 6
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bb88b8b_82b17de0",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-25T18:28:01Z",
+      "side": 1,
+      "message": "Is \"FIXME\" the local custom (as opposed to TODO($USERNAME))?",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 10
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
