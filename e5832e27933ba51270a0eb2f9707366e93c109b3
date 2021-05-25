@@ -34,6 +34,24 @@
       "parentUuid": "90b01524_893f4f4a",
       "revId": "e5832e27933ba51270a0eb2f9707366e93c109b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f39a2f81_fa762ce2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120043
+      },
+      "writtenOn": "2021-05-25T15:49:55Z",
+      "side": 1,
+      "message": "Sorry, our autoroller had an infrastructure issue and has been stuck for a couple days. If this is a blocker, we can unabadnon the aosp patch and land it. It\u0027ll just be overwritten by the roller later.",
+      "parentUuid": "708cb54c_2f2e6fe9",
+      "revId": "e5832e27933ba51270a0eb2f9707366e93c109b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
