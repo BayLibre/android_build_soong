@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a00e6e0_6278f54c",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-25T06:15:16Z",
+      "side": 1,
+      "message": "Thanks!",
+      "range": {
+        "startLine": 329,
+        "startChar": 62,
+        "endLine": 329,
+        "endChar": 66
+      },
+      "revId": "4fabaf52b0c457b154017d678d1fc56f476b4087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dde2f6a3_5a32bc8c",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-25T06:15:16Z",
+      "side": 1,
+      "message": "I mean, it would be better if it wrote a different file so that flipping back and forth between \"GENERATE_BAZEL_FILES\u003d1 m nothing\" and \"m nothing\" would have null builds, but that requires some re-shuffling of soong_ui (I was planning to do that, but I haven\u0027t found the time :( ), but for the time being, this is an improvement.",
+      "range": {
+        "startLine": 525,
+        "startChar": 1,
+        "endLine": 527,
+        "endChar": 37
+      },
+      "revId": "4fabaf52b0c457b154017d678d1fc56f476b4087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
