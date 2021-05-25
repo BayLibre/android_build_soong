@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a9ddfe5_00147113",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e0927eb_b2cfdd42",
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3feb5314_a1e26264",
@@ -82,6 +100,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c8f6a8f_d7079d5b",
+        "filename": "android/arch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1952,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:24:10Z",
+      "side": 1,
+      "message": "Maybe this works unexported because we don\u0027t create new instances of the type from outside of the file...?\n\nI\u0027ll export it anyway though.",
+      "parentUuid": "a0482c0d_e0c3622d",
+      "range": {
+        "startLine": 1952,
+        "startChar": 5,
+        "endLine": 1952,
+        "endChar": 21
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06047afb_436c48c3",
@@ -95,6 +137,30 @@
       "writtenOn": "2021-05-24T17:47:42Z",
       "side": 1,
       "message": "can you add a docstring for this?",
+      "range": {
+        "startLine": 1972,
+        "startChar": 5,
+        "endLine": 1972,
+        "endChar": 27
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd68dd98_a8e8d44d",
+        "filename": "android/arch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1972,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06047afb_436c48c3",
       "range": {
         "startLine": 1972,
         "startChar": 5,
@@ -128,6 +194,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f44f673f_cf4783ae",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68509b50_be5c9268",
+      "range": {
+        "startLine": 205,
+        "startChar": 4,
+        "endLine": 205,
+        "endChar": 14
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bac5fb7_26dafc44",
@@ -141,6 +231,30 @@
       "writtenOn": "2021-05-24T17:47:42Z",
       "side": 1,
       "message": "looks like this doesn\u0027t need to be exported any longer",
+      "range": {
+        "startLine": 431,
+        "startChar": 33,
+        "endLine": 431,
+        "endChar": 50
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54a0c6d9_46274113",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bac5fb7_26dafc44",
       "range": {
         "startLine": 431,
         "startChar": 33,
@@ -174,6 +288,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd1c1c86_c2ebe03e",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "742d41fe_a2c0024b",
+      "range": {
+        "startLine": 468,
+        "startChar": 33,
+        "endLine": 468,
+        "endChar": 50
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce867291_9f73e011",
@@ -197,6 +335,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf67be6d_1db6f5bb",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce867291_9f73e011",
+      "range": {
+        "startLine": 630,
+        "startChar": 34,
+        "endLine": 630,
+        "endChar": 51
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc154ce7_10ae2d2c",
@@ -210,6 +372,30 @@
       "writtenOn": "2021-05-24T17:47:42Z",
       "side": 1,
       "message": "and this one looks like it shouldn\u0027t be exported anymore either",
+      "range": {
+        "startLine": 667,
+        "startChar": 34,
+        "endLine": 667,
+        "endChar": 51
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a28c1e0e_d10cd111",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc154ce7_10ae2d2c",
       "range": {
         "startLine": 667,
         "startChar": 34,
@@ -269,6 +455,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7faddf33_7a82e523",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:24:10Z",
+      "side": 1,
+      "message": "This output also looks wrong for two other reasons\n\n1. not-for-anything.c didn\u0027t appear at all in the original expected output. Presumably it shouldn\u0027t appear in the new output either?\n\n2. Using \"excludes\": in BUILD file srcs. This doesn\u0027t seem like valid Bazel syntax? The values should probably just be source files here, like [\"for-arm.c\"]",
+      "parentUuid": "08eb0e86_4305c737",
+      "range": {
+        "startLine": 725,
+        "startChar": 6,
+        "endLine": 776,
+        "endChar": 7
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27e72210_d1a0dcf2",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1467,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:24:10Z",
+      "side": 1,
+      "message": "This should probably just say [\"android_arm_src.c\"], not sure why it has an \"includes\": prefix",
+      "range": {
+        "startLine": 1467,
+        "startChar": 12,
+        "endLine": 1467,
+        "endChar": 46
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59386b9d_fbc65457",
         "filename": "bp2build/configurability.go",
         "patchSetId": 5
@@ -280,6 +513,30 @@
       "writtenOn": "2021-05-25T05:49:55Z",
       "side": 1,
       "message": "You can use android.SortedStringKeys here. https://cs.android.com/android/platform/superproject/+/master:build/soong/android/util.go;l\u003d85;drc\u003d1461c4dbcaca93880bf326346f74c5ff4e3b6376",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b095b8a_0b116e72",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:24:10Z",
+      "side": 1,
+      "message": "Done\n\nThanks!",
+      "parentUuid": "59386b9d_fbc65457",
       "range": {
         "startLine": 27,
         "startChar": 1,
@@ -313,6 +570,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32e8ac14_fb23e99b",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93aefc35_8089375f",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39d600c3_b5bfb6b0",
@@ -336,6 +617,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7ec031_bad38c84",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:24:10Z",
+      "side": 1,
+      "message": "Done (partially)",
+      "parentUuid": "39d600c3_b5bfb6b0",
+      "range": {
+        "startLine": 443,
+        "startChar": 4,
+        "endLine": 447,
+        "endChar": 44
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74e97638_49bdc604",
@@ -349,6 +654,30 @@
       "writtenOn": "2021-05-25T05:49:55Z",
       "side": 1,
       "message": "Extract this and above into a function.",
+      "range": {
+        "startLine": 535,
+        "startChar": 4,
+        "endLine": 541,
+        "endChar": 0
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0614ff0_288cc440",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:24:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74e97638_49bdc604",
       "range": {
         "startLine": 535,
         "startChar": 4,
