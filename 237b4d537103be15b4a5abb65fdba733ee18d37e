@@ -159,6 +159,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "35bd8646_88024bd8",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-25T18:51:11Z",
+      "side": 1,
+      "message": "Right, I totally understand how we need separate selects for:\nArch-specific selects\nOS-specific selects\narch+OS-specific selects\n\nBut these are currently further grouped into each OS having a select with that OS+each arch it supports...\n\nHere, there is a separate select for Android+arch and linux+arch. Afaik, we won\u0027t be building a target configured for both ARM+android and ARM+bionic for a single output.",
+      "parentUuid": "e091ad43_894304e5",
+      "range": {
+        "startLine": 1215,
+        "startChar": 0,
+        "endLine": 1216,
+        "endChar": 17
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f401b52e_03abb0d7",
         "filename": "bp2build/cc_library_static_conversion_test.go",
         "patchSetId": 9
