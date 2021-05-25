@@ -135,6 +135,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e091ad43_894304e5",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-25T18:40:22Z",
+      "side": 1,
+      "message": "They actually do because only one arm of each select() statement can be taken, so if they were a single select(), we couldn\u0027t say \"if ARM, this file, if ARM+Bionic, then also that other file\".",
+      "parentUuid": "1e0bac9b_58b9e4ad",
+      "range": {
+        "startLine": 1215,
+        "startChar": 0,
+        "endLine": 1216,
+        "endChar": 17
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f401b52e_03abb0d7",
         "filename": "bp2build/cc_library_static_conversion_test.go",
         "patchSetId": 9
