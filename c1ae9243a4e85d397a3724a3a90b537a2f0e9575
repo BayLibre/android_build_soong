@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbe73901_451173f9",
+        "filename": "android/arch.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-25T18:38:30Z",
+      "side": 0,
+      "message": "why are we removing this error check?",
+      "range": {
+        "startLine": 1071,
+        "startChar": 2,
+        "endLine": 1071,
+        "endChar": 64
+      },
+      "revId": "c1ae9243a4e85d397a3724a3a90b537a2f0e9575",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

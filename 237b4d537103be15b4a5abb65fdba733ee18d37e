@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dffa6518_a7c68d09",
+        "filename": "android/arch.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2045,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-25T18:38:30Z",
+      "side": 1,
+      "message": "it looks like we repeat this in a number of places, could we add a helper or something? (can be in a followup)",
+      "range": {
+        "startLine": 2045,
+        "startChar": 93,
+        "endLine": 2045,
+        "endChar": 114
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d135e2ad_f89e0bfd",
+        "filename": "bazel/properties.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-25T18:38:30Z",
+      "side": 1,
+      "message": "have we defined config_settings or something in bazel for these?",
+      "range": {
+        "startLine": 197,
+        "startChar": 31,
+        "endLine": 197,
+        "endChar": 42
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33fdd923_6d6ceca9",
         "filename": "bp2build/build_conversion.go",
         "patchSetId": 9
@@ -59,6 +105,29 @@
         "startChar": 3,
         "endLine": 1171,
         "endChar": 24
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e0bac9b_58b9e4ad",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-25T18:38:30Z",
+      "side": 1,
+      "message": "it\u0027s unclear to me whether these need to be separate selects, but I also don\u0027t think there\u0027s any harm in them being separate.",
+      "range": {
+        "startLine": 1215,
+        "startChar": 0,
+        "endLine": 1216,
+        "endChar": 17
       },
       "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
