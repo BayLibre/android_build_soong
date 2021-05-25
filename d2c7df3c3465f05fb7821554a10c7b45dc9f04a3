@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000011157525",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1715719?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "53d25b9b_f05aaaf4",
+          "description": "Change to \"cc/bp2build.go\"",
+          "replacements": [
+            {
+              "path": "cc/bp2build.go",
+              "range": {
+                "startLine": 108,
+                "startChar": 74,
+                "endLine": 108,
+                "endChar": 84
+              },
+              "replacement": "Properties"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "21de9270_e82d2aec",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-05-25T12:26:00Z",
+      "side": 1,
+      "message": "Common typo found: \"Properites\" -- should it be \"Properties\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 108,
+        "startChar": 74,
+        "endLine": 108,
+        "endChar": 84
+      },
+      "revId": "d2c7df3c3465f05fb7821554a10c7b45dc9f04a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
