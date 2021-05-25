@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "916b6e1e_ca47da85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-25T06:05:33Z",
+      "side": 1,
+      "message": "Otherwise, looks reasonable; since Liz and Jin have reviewed this, I only skimmed over it.",
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3feb5314_a1e26264",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-05-24T17:47:42Z",
       "side": 1,
       "message": "As this is a return type, we should be exporting this.",
+      "range": {
+        "startLine": 1952,
+        "startChar": 5,
+        "endLine": 1952,
+        "endChar": 21
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0482c0d_e0c3622d",
+        "filename": "android/arch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1952,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-25T06:05:33Z",
+      "side": 1,
+      "message": "+1. How does this even compile?",
+      "parentUuid": "3feb5314_a1e26264",
       "range": {
         "startLine": 1952,
         "startChar": 5,
