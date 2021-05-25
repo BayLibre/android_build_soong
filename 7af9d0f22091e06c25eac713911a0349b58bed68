@@ -477,6 +477,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b3a258_0f3539a0",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:49:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7faddf33_7a82e523",
+      "range": {
+        "startLine": 725,
+        "startChar": 6,
+        "endLine": 776,
+        "endChar": 7
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27e72210_d1a0dcf2",
@@ -490,6 +514,30 @@
       "writtenOn": "2021-05-25T13:24:10Z",
       "side": 1,
       "message": "This should probably just say [\"android_arm_src.c\"], not sure why it has an \"includes\": prefix",
+      "range": {
+        "startLine": 1467,
+        "startChar": 12,
+        "endLine": 1467,
+        "endChar": 46
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16d6ca8a_dadb2360",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1467,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T13:49:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27e72210_d1a0dcf2",
       "range": {
         "startLine": 1467,
         "startChar": 12,
