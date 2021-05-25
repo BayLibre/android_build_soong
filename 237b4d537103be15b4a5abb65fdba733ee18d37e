@@ -183,6 +183,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3a72776c_308d3ed8",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-25T18:52:42Z",
+      "side": 1,
+      "message": "ah, you\u0027re indeed right, maybe I should not do any more code reviewing today",
+      "parentUuid": "35bd8646_88024bd8",
+      "range": {
+        "startLine": 1215,
+        "startChar": 0,
+        "endLine": 1216,
+        "endChar": 17
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f401b52e_03abb0d7",
         "filename": "bp2build/cc_library_static_conversion_test.go",
         "patchSetId": 9
