@@ -22,6 +22,30 @@
       },
       "revId": "718fbad55437e8155b33874e8f7b38ae5edb3931",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a91dab6_9b6227b0",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-25T07:02:23Z",
+      "side": 1,
+      "message": "Good call, done.",
+      "parentUuid": "e0293acb_14b53211",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 31
+      },
+      "revId": "718fbad55437e8155b33874e8f7b38ae5edb3931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
