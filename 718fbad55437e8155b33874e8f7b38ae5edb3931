@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0293acb_14b53211",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-25T06:23:09Z",
+      "side": 1,
+      "message": "nit: it\u0027s usually better to put the thing first that is more important for sorting, i.e. here you sort first by hand-craftedness and second by name, so it\u0027s probably more readable to do this:\n\nif targets[i].handcrafted !\u003d targets[j].handcrafted {\n  return targets[j].handcrafted\n}\n\nreturn targets[i].name \u003c targets[j].name",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 31
+      },
+      "revId": "718fbad55437e8155b33874e8f7b38ae5edb3931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
