@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e92276e1_b4c0e542",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-25T18:44:19Z",
+      "side": 1,
+      "message": "I assume the breakages already exist at HEAD?",
+      "revId": "990c4f4fc3981ff3de4d4abba60e8e0f3fdd63b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
