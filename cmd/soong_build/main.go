@@ -327,13 +327,13 @@ func writeFakeNinjaFile(extraNinjaDeps []string, buildDir string) {
 
 	ninjaFileName := "build.ninja"
 	ninjaFile := shared.JoinPath(topDir, buildDir, ninjaFileName)
-	ninjaFileD := shared.JoinPath(topDir, buildDir, ninjaFileName)
+	ninjaFileD := shared.JoinPath(topDir, buildDir, ninjaFileName+".d")
 	// A workaround to create the 'nothing' ninja target so `m nothing` works,
 	// since bp2build runs without Kati, and the 'nothing' target is declared in
 	// a Makefile.
 	ioutil.WriteFile(ninjaFile, []byte("build nothing: phony\n  phony_output = true\n"), 0666)
 	ioutil.WriteFile(ninjaFileD,
-		[]byte(fmt.Sprintf("%s: \\\n %s\n", ninjaFileName, extraNinjaDepsString)),
+		[]byte(fmt.Sprintf("%s: \\\n %s\n", ninjaFile, extraNinjaDepsString)),
 		0666)
 }
 
@@ -468,8 +468,6 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 	ninjaDeps := bootstrap.RunBlueprint(blueprintArgs, bp2buildCtx.Context, configuration)
 	ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
 
-	ninjaDeps = append(ninjaDeps, bootstrap.GlobFileListFiles(configuration)...)
-
 	// Run the code-generation phase to convert BazelTargetModules to BUILD files
 	// and print conversion metrics to the user.
 	codegenContext := bp2build.NewCodegenContext(configuration, *bp2buildCtx, bp2build.Bp2Build)
@@ -520,9 +518,6 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 		os.Exit(1)
 	}
 
-	if bp2buildMarker != "" {
-		touch(shared.JoinPath(topDir, bp2buildMarker))
-	} else {
-		writeFakeNinjaFile(extraNinjaDeps, codegenContext.Config().BuildDir())
-	}
+	touch(shared.JoinPath(topDir, bp2buildMarker))
+	writeFakeNinjaFile(extraNinjaDeps, codegenContext.Config().BuildDir())
 }
