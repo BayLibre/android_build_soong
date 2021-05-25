@@ -16,6 +16,24 @@
       "message": "Filed http://b/189203460 about linux_glibc",
       "revId": "adfebd8e8125ad573d2d01bb9113a39545811a8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5987cfe_6c92f3bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-25T14:01:45Z",
+      "side": 1,
+      "message": "(Not a blocker for this, but very confusing)",
+      "parentUuid": "bbc57191_9611cae3",
+      "revId": "adfebd8e8125ad573d2d01bb9113a39545811a8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
