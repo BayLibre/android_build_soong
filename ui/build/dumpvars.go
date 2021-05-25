@@ -210,6 +210,10 @@ func runMakeProductConfig(ctx Context, config Config) {
 		"NINJA_GOALS",
 		"KATI_GOALS",
 
+		// Used to restrict write access to source tree
+		"PRODUCT_SRC_DIR_IS_RO",
+		"PRODUCT_SRC_DIR_RW_ALLOWLIST",
+
 		// To find target/product/<DEVICE>
 		"TARGET_DEVICE",
 
@@ -280,6 +284,8 @@ func runMakeProductConfig(ctx Context, config Config) {
 	config.SetNinjaArgs(strings.Fields(makeVars["NINJA_GOALS"]))
 	config.SetTargetDevice(makeVars["TARGET_DEVICE"])
 	config.SetTargetDeviceDir(makeVars["TARGET_DEVICE_DIR"])
+	config.sandboxConfig.SetSrcDirIsRO(makeVars["PRODUCT_SRC_DIR_IS_RO"] == "true")
+	config.sandboxConfig.SetSrcDirRWAllowlist(strings.Fields(makeVars["PRODUCT_SRC_DIR_RW_ALLOWLIST"]))
 
 	config.SetBuildBrokenDupRules(makeVars["BUILD_BROKEN_DUP_RULES"] == "true")
 	config.SetBuildBrokenUsesNetwork(makeVars["BUILD_BROKEN_USES_NETWORK"] == "true")
