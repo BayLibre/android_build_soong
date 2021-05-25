@@ -200,6 +200,122 @@
       },
       "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08eb0e86_4305c737",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-25T05:49:55Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "76c83194_55c5f85a",
+      "range": {
+        "startLine": 725,
+        "startChar": 6,
+        "endLine": 776,
+        "endChar": 7
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59386b9d_fbc65457",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-25T05:49:55Z",
+      "side": 1,
+      "message": "You can use android.SortedStringKeys here. https://cs.android.com/android/platform/superproject/+/master:build/soong/android/util.go;l\u003d85;drc\u003d1461c4dbcaca93880bf326346f74c5ff4e3b6376",
+      "range": {
+        "startLine": 27,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93aefc35_8089375f",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-25T05:49:55Z",
+      "side": 1,
+      "message": "Same as above, use https://cs.android.com/android/platform/superproject/+/master:build/soong/android/util.go;l\u003d85;drc\u003d1461c4dbcaca93880bf326346f74c5ff4e3b6376",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 19
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d600c3_b5bfb6b0",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-25T05:49:55Z",
+      "side": 1,
+      "message": "This is duplicated here and above, extract into a helper function with baseLinkerProps as a parameter?\n\nSame for sharedLibs below.",
+      "range": {
+        "startLine": 443,
+        "startChar": 4,
+        "endLine": 447,
+        "endChar": 44
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e97638_49bdc604",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-25T05:49:55Z",
+      "side": 1,
+      "message": "Extract this and above into a function.",
+      "range": {
+        "startLine": 535,
+        "startChar": 4,
+        "endLine": 541,
+        "endChar": 0
+      },
+      "revId": "7af9d0f22091e06c25eac713911a0349b58bed68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
