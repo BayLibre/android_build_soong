@@ -178,6 +178,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f54caf3_c17aad79",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-26T10:41:59Z",
+      "side": 1,
+      "message": "Also, this is actually arch specific (SetValueForArch).",
+      "parentUuid": "a6a4409b_118e9aee",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 13
+      },
+      "revId": "a599885c0f600ea09c998dcc6bad9bc215c71737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7cdcfa2_699c36aa",
