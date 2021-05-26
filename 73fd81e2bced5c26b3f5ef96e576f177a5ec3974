@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "950dbd18_c15fd3e3",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-26T20:23:39Z",
+      "side": 1,
+      "message": "Hmmm... Is this only necessary to preserve nil vs. empty list ?\nPerhaps we should also leave a comment to this effect.",
+      "revId": "73fd81e2bced5c26b3f5ef96e576f177a5ec3974",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bdd1dc0_82f4d2bb",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-26T20:23:39Z",
+      "side": 1,
+      "message": "Where do we use arrays?",
+      "revId": "73fd81e2bced5c26b3f5ef96e576f177a5ec3974",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "255aba35_5b17da23",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 870,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-26T20:23:39Z",
+      "side": 1,
+      "message": "Would you also mind adding an additional test case which has one arch with an arch-specific value, one arch with no value, and a default condition?\n\nI have some other ideas for test cases, if you wouldn\u0027t mind (can also be done as a followup, since this desperately fixes our build:\n\n- In the select, arm is empty, x86 has an item, default has an item\n- Try arch.arm: {exclude_srcs:[\"doesntexist.cpp\"]}, where doesntexist isn\u0027t actually in srcs.\n- Try arch.x86: {exclude_srcs:[\"foo.cpp\"]} and target.linux_glibc: {exclude_srcs:[\"foo.cpp\"]} for foo.cpp in general srcs.\n- Try arch.x86: {exclude_srcs:[\"foo.cpp\"]} and target.linux_glibc: {exclude_srcs:[\"bar.cpp\"]} for foo.cpp and bar.cpp in general srcs.",
+      "revId": "73fd81e2bced5c26b3f5ef96e576f177a5ec3974",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
