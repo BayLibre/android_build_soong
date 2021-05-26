@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb57f776_05cb135d",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 7671,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-26T07:23:11Z",
+      "side": 1,
+      "message": "Use FixtureMergeEnv instead.",
+      "revId": "e2e26fcea48d1da99c549cfe4716b9e647835dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
