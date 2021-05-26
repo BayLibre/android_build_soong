@@ -16,6 +16,23 @@
       "message": "Hi @dwillemsen, @ccross,\nCould you review this for supporting uppercase in Soong variables?",
       "revId": "2b30e547215ee142c9f8e33899f0f3c9c3e34857",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6520106b_d8f0a429",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-26T01:45:03Z",
+      "side": 1,
+      "message": "What prevents you from setting the variable to something uppercase?",
+      "revId": "2b30e547215ee142c9f8e33899f0f3c9c3e34857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
