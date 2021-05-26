@@ -52,6 +52,24 @@
       "parentUuid": "708cb54c_2f2e6fe9",
       "revId": "e5832e27933ba51270a0eb2f9707366e93c109b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfe34ae4_6b89d327",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-26T20:17:51Z",
+      "side": 1,
+      "message": "No worries. Since http://b/187850319 is now a P2, I\u0027ll unabandon https://android-review.googlesource.com/c/platform/external/angle/+/1711050",
+      "parentUuid": "f39a2f81_fa762ce2",
+      "revId": "e5832e27933ba51270a0eb2f9707366e93c109b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
