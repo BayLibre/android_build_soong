@@ -737,8 +737,12 @@ func CheckSnapshotRule(t *testing.T, ctx *android.TestContext, singleton android
 }
 
 func AssertExcludeFromVendorSnapshotIs(t *testing.T, ctx *android.TestContext, name string, expected bool) {
+	AssertExcludeFromVendorSnapshotVariantIs(t, ctx, name, expected, testVendorVariant)
+}
+
+func AssertExcludeFromVendorSnapshotVariantIs(t *testing.T, ctx *android.TestContext, name string, expected bool, variant string) {
 	t.Helper()
-	m := ctx.ModuleForTests(name, testVendorVariant).Module().(LinkableInterface)
+	m := ctx.ModuleForTests(name, variant).Module().(LinkableInterface)
 	if m.ExcludeFromVendorSnapshot() != expected {
 		t.Errorf("expected %q ExcludeFromVendorSnapshot to be %t", m.String(), expected)
 	}

@@ -59,6 +59,7 @@ var rustMockedFiles = android.MockFS{
 	"liby.so":                      nil,
 	"libz.so":                      nil,
 	"data.txt":                     nil,
+	"liblog.map.txt":               nil,
 }
 
 // testRust returns a TestContext in which a basic environment has been setup.
@@ -78,15 +79,19 @@ func testRustVndk(t *testing.T, bp string) *android.TestContext {
 }
 
 func testRustVndkFs(t *testing.T, bp string, fs android.MockFS) *android.TestContext {
+	return testRustVndkFsVersions(t, bp, fs, "current", "current", "29")
+}
+
+func testRustVndkFsVersions(t *testing.T, bp string, fs android.MockFS, device_version, product_version, vndk_version string) *android.TestContext {
 	skipTestIfOsNotSupported(t)
 	result := android.GroupFixturePreparers(
 		prepareForRustTest,
 		fs.AddToFixture(),
 		android.FixtureModifyProductVariables(
 			func(variables android.FixtureProductVariables) {
-				variables.DeviceVndkVersion = StringPtr("current")
-				variables.ProductVndkVersion = StringPtr("current")
-				variables.Platform_vndk_version = StringPtr("29")
+				variables.DeviceVndkVersion = StringPtr(device_version)
+				variables.ProductVndkVersion = StringPtr(product_version)
+				variables.Platform_vndk_version = StringPtr(vndk_version)
 			},
 		),
 	).RunTestWithBp(t, bp)
