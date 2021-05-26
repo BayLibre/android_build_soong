@@ -241,7 +241,7 @@ func transformSubpackagePaths(ctx BazelConversionPathContext, paths bazel.LabelL
 // `android:"path"` so that dependencies on other modules will have already been handled by the
 // path_deps mutator.
 func expandSrcsForBazel(ctx BazelConversionPathContext, paths, expandedExcludes []string) bazel.LabelList {
-	if paths == nil {
+	if paths == nil && len(expandedExcludes) == 0 {
 		return bazel.LabelList{}
 	}
 	labels := bazel.LabelList{

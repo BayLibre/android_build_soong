@@ -139,8 +139,11 @@ func SubtractStrings(haystack []string, needle []string) []string {
 
 // Return all needles in a given haystack, where needleFn is true for needles.
 func FilterLabelList(haystack LabelList, needleFn func(string) bool) LabelList {
-	var includes []Label
+	if len(haystack.Includes) == 0 {
+		return haystack
+	}
 
+	var includes []Label
 	for _, inc := range haystack.Includes {
 		if needleFn(inc.Label) {
 			includes = append(includes, inc)
@@ -187,8 +190,12 @@ func SubtractBazelLabelListAttribute(haystack LabelListAttribute, needle LabelLi
 
 // Subtract needle from haystack
 func SubtractBazelLabels(haystack []Label, needle []Label) []Label {
+	var labels []Label
+	if len(haystack) == 0 {
+		return labels
+	}
 	// This is really a set
-	remainder := make(map[Label]bool)
+	remainder := make(map[Label]bool, len(haystack))
 
 	for _, label := range haystack {
 		remainder[label] = true
@@ -197,7 +204,7 @@ func SubtractBazelLabels(haystack []Label, needle []Label) []Label {
 		delete(remainder, label)
 	}
 
-	var labels []Label
+	labels = make([]Label, 0, len(haystack))
 	for label, _ := range remainder {
 		labels = append(labels, label)
 	}

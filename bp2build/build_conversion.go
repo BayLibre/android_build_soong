@@ -445,7 +445,7 @@ func prettyPrint(propertyValue reflect.Value, indent int) (string, error) {
 		return prettyPrint(propertyValue.Elem(), indent)
 	case reflect.Slice:
 		if propertyValue.Len() == 0 {
-			return "", nil
+			return "[]", nil
 		}
 
 		if propertyValue.Len() == 1 {
@@ -550,11 +550,12 @@ func isZero(value reflect.Value) bool {
 	case reflect.Func, reflect.Map, reflect.Slice:
 		return value.IsNil()
 	case reflect.Array:
-		valueIsZero := true
-		for i := 0; i < value.Len(); i++ {
-			valueIsZero = valueIsZero && isZero(value.Index(i))
-		}
-		return valueIsZero
+		return value.IsNil()
+		// valueIsZero := true
+		// for i := 0; i < value.Len(); i++ {
+		// valueIsZero = valueIsZero && isZero(value.Index(i))
+		// }
+		// return valueIsZero
 	case reflect.Struct:
 		valueIsZero := true
 		for i := 0; i < value.NumField(); i++ {

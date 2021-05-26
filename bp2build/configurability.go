@@ -67,18 +67,35 @@ func getLabelListValues(list bazel.LabelListAttribute) (reflect.Value, []selects
 	if !list.HasConfigurableValues() {
 		return value, []selects{}
 	}
+	var ret []selects
 
 	archSelects := map[string]reflect.Value{}
 	for arch, selectKey := range bazel.PlatformArchMap {
-		archSelects[selectKey] = reflect.ValueOf(list.GetValueForArch(arch).Includes)
+		v := list.GetValueForArch(arch)
+		if selectKey == bazel.ConditionsDefaultSelectKey || len(v.Includes) > 0 {
+			archSelects[selectKey] = reflect.ValueOf(v.Includes)
+		} else if len(v.Excludes) > 0 {
+			archSelects[selectKey] = reflect.ValueOf([]string{})
+		}
+	}
+	if len(archSelects) > 0 {
+		ret = append(ret, archSelects)
 	}
 
 	osSelects := map[string]reflect.Value{}
 	for os, selectKey := range bazel.PlatformOsMap {
-		osSelects[selectKey] = reflect.ValueOf(list.GetValueForOS(os).Includes)
+		v := list.GetValueForOS(os)
+		if selectKey == bazel.ConditionsDefaultSelectKey || len(v.Includes) > 0 {
+			osSelects[selectKey] = reflect.ValueOf(v.Includes)
+		} else if len(v.Excludes) > 0 {
+			osSelects[selectKey] = reflect.ValueOf([]string{})
+		}
+	}
+	if len(osSelects) > 0 {
+		ret = append(ret, osSelects)
 	}
 
-	return value, []selects{archSelects, osSelects}
+	return value, ret
 }
 
 // prettyPrintAttribute converts an Attribute to its Bazel syntax. May contain

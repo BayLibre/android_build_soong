@@ -314,7 +314,9 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 		if baseCompilerProps, ok := props.(*BaseCompilerProperties); ok {
 			srcsList := parseSrcs(baseCompilerProps)
 			// TODO(b/186153868): add support for os-specific srcs and exclude_srcs
-			srcs.SetValueForOS(os.Name, bazel.SubtractBazelLabelList(srcsList, baseSrcsLabelList))
+			if len(baseCompilerProps.Srcs) > 0 || len(baseCompilerProps.Exclude_srcs) > 0 {
+				srcs.SetValueForOS(os.Name, bazel.SubtractBazelLabelList(srcsList, baseSrcsLabelList))
+			}
 			copts.SetValueForOS(os.Name, parseCopts(baseCompilerProps))
 			asFlags.SetValueForOS(os.Name, parseCommandLineFlags(baseCompilerProps.Asflags))
 			conlyFlags.SetValueForOS(os.Name, parseCommandLineFlags(baseCompilerProps.Conlyflags))
