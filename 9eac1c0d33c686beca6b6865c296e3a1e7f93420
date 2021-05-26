@@ -16,6 +16,24 @@
       "message": "You can already modify the environment using FixtureMergeEnv/FixtureModifyEnv.",
       "revId": "9eac1c0d33c686beca6b6865c296e3a1e7f93420",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "996d1003_3e440b52",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-26T07:23:34Z",
+      "side": 1,
+      "message": "Clearing resolved flag.",
+      "parentUuid": "45789393_8607afe4",
+      "revId": "9eac1c0d33c686beca6b6865c296e3a1e7f93420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
