@@ -52,6 +52,24 @@
       "parentUuid": "25487d36_ec9587ca",
       "revId": "f30031661497695c3d7b67ebca7c73ae6e8aedf0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9102ed0_b9b3d613",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-26T18:40:36Z",
+      "side": 1,
+      "message": "Because the vast majority of changes to Soong will not affect sdk extensions so running the sdk extension tests will just be a waste of time. Changes to Soong already trigger a large number (\u003e 100) build/tests across a range of branches and configuration.",
+      "parentUuid": "25487d36_ec9587ca",
+      "revId": "f30031661497695c3d7b67ebca7c73ae6e8aedf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
