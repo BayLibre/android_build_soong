@@ -159,7 +159,7 @@ func customBp2BuildMutator(ctx android.TopDownMutatorContext) {
 
 		for arch, props := range m.GetArchProperties(ctx, &customProps{}) {
 			if archProps, ok := props.(*customProps); ok && archProps.Arch_paths != nil {
-				paths.SetValueForArch(arch.Name, android.BazelLabelForModuleSrc(ctx, archProps.Arch_paths))
+				paths.SetConfigurableValue("", arch.Name, android.BazelLabelForModuleSrc(ctx, archProps.Arch_paths))
 			}
 		}
 
