@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbbef945_070f258b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-26T18:32:24Z",
+      "side": 1,
+      "message": "Pretty much any module could be broken by a Soong change. So, why do we need to treat SdkExtensions as special and cause it to be rerun for every single change to Soong?",
+      "revId": "f30031661497695c3d7b67ebca7c73ae6e8aedf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
