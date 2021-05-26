@@ -16,6 +16,24 @@
       "message": "Sorry that I\u0027m not familiar with Rust, but do Rust modules need to capture headers, like C++?",
       "revId": "290afe38add0839e26fcf3a32f0ca3f65a5d6306",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4af00c8_bf92604c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-05-26T12:31:19Z",
+      "side": 1,
+      "message": "No problem! Rust libraries don\u0027t need to provide headers when used to compile/link against other Rust code. However, the Rust library sharedlib/staticlib variants, which are used by CC modules, can define include paths to headers for CC modules to use. This is what I\u0027m capturing at lines 712-735 in rust/library.go in collectHeadersForSnapshot.",
+      "parentUuid": "307f13f6_1bfd6107",
+      "revId": "290afe38add0839e26fcf3a32f0ca3f65a5d6306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
