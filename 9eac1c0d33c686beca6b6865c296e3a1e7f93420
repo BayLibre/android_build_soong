@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45789393_8607afe4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-05-26T07:21:58Z",
+      "side": 1,
+      "message": "You can already modify the environment using FixtureMergeEnv/FixtureModifyEnv.",
+      "revId": "9eac1c0d33c686beca6b6865c296e3a1e7f93420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
