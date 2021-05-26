@@ -660,6 +660,14 @@ func printfIntoProperty(propertyValue reflect.Value, variableValue interface{}) 
 		default:
 			return fmt.Errorf("unsupported type %T for %%s", variableValue)
 		}
+	} else if strings.Contains(s, "%S") {
+		switch variableValue.(type) {
+		case string:
+			variableValue = strings.ToUpper(variableValue.(string))
+			s = strings.ReplaceAll(s, "%S", "%s")
+		default:
+			return fmt.Errorf("unsupported type %T for %%S", variableValue)
+		}
 	} else {
 		return fmt.Errorf("unsupported %% in product variable property")
 	}

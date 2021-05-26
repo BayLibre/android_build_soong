@@ -716,6 +716,11 @@ func printfIntoProperty(propertyValue reflect.Value, configValue string) error {
 		return fmt.Errorf("value variable properties only support a single '%%'")
 	}
 
+	if strings.Contains(s, "%S") {
+		configValue = strings.ToUpper(configValue)
+		s = strings.ReplaceAll(s, "%S", "%s")
+	}
+
 	if !strings.Contains(s, "%s") {
 		return fmt.Errorf("unsupported %% in value variable property")
 	}
