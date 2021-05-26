@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83882513_5a60b09c",
+        "filename": "bazel/properties.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-26T00:02:15Z",
+      "side": 1,
+      "message": "WDYT about these cases? \n\n(there are a few of them - every AllArches reference in this CL)\n\nAs in\n\nselect(\n  android\n  darwin\n  ...\n  default \u003c-- already handled previously\n)\n\n+\n\nselect(\n  android_arm\n  android_arm64\n  ... \n  default \u003c-- new and mostly ignored\n)",
+      "range": {
+        "startLine": 165,
+        "startChar": 2,
+        "endLine": 165,
+        "endChar": 90
+      },
+      "revId": "c194ffbcf39db04af3800c9240b400e6c2bac0b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0175ca3a_d94a1d30",
+        "filename": "bazel/properties.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-26T00:02:15Z",
+      "side": 1,
+      "message": "(related to the comment about AllArches)\n\nTis means we also have a os+arch ConditionsDefault property (because we are using labelListArchValues from above)\n\nBut we mostly ignore it. Is that okay for now? It\u0027s not clear to me what we would use this for.",
+      "range": {
+        "startLine": 397,
+        "startChar": 12,
+        "endLine": 397,
+        "endChar": 31
+      },
+      "revId": "c194ffbcf39db04af3800c9240b400e6c2bac0b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
