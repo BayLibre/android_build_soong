@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ce53a7c_99fa609f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-26T09:31:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "097a3413_dd433a1b",
+      "revId": "a599885c0f600ea09c998dcc6bad9bc215c71737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b649e4a_c59c3932",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba101f9c_89f37fe3",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-26T09:31:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b649e4a_c59c3932",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 4
+      },
+      "revId": "a599885c0f600ea09c998dcc6bad9bc215c71737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7cdcfa2_699c36aa",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-05-26T08:25:15Z",
       "side": 1,
       "message": "Should we be calling SetOsArchValueForTarget as well?",
+      "range": {
+        "startLine": 213,
+        "startChar": 2,
+        "endLine": 213,
+        "endChar": 55
+      },
+      "revId": "a599885c0f600ea09c998dcc6bad9bc215c71737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28574a3a_0b04092b",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-26T09:31:22Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "d7cdcfa2_699c36aa",
       "range": {
         "startLine": 213,
         "startChar": 2,

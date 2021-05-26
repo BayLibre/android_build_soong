@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ab5120e_723f7614",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-26T09:31:22Z",
+      "side": 1,
+      "message": "I\u0027m also working on a refactoring in https://android-review.googlesource.com/c/platform/build/soong/+/1719031, which hopefully makes bazel.properties.go and its callers cleaner.",
+      "revId": "bcf5304eaba149419905b2c8b5e21f2c168bdbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
