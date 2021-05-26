@@ -101,6 +101,7 @@ type config struct {
 
 	// Only available on configs created by TestConfig
 	TestProductVariables *productVariables
+	TestEnv              map[string]string
 
 	// A specialized context object for Bazel/Soong mixed builds and migration
 	// purposes.
@@ -318,6 +319,7 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 		config: config,
 	}
 	config.TestProductVariables = &config.productVariables
+	config.TestEnv = config.env
 
 	config.mockFileSystem(bp, fs)
 
