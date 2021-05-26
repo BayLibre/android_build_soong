@@ -33,6 +33,24 @@
       "message": "What prevents you from setting the variable to something uppercase?",
       "revId": "2b30e547215ee142c9f8e33899f0f3c9c3e34857",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cf5c11b_05b3b676",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1217797
+      },
+      "writtenOn": "2021-05-26T01:53:48Z",
+      "side": 1,
+      "message": "We\u0027re currently using Soong config variables for supporting multiple products in one master branch, and sometimes we have no choice but to split build configuration by product/device, whose names are in lowercase.",
+      "parentUuid": "6520106b_d8f0a429",
+      "revId": "2b30e547215ee142c9f8e33899f0f3c9c3e34857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
