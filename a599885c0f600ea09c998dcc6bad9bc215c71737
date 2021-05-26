@@ -85,6 +85,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb4daf45_8bab6164",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-26T09:48:55Z",
+      "side": 1,
+      "message": "Merging issue? (Jin seems to have started this change before your submitted yours)",
+      "parentUuid": "1b649e4a_c59c3932",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 127,
+        "endChar": 4
+      },
+      "revId": "a599885c0f600ea09c998dcc6bad9bc215c71737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5d55a93_d2df1046",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-26T09:48:55Z",
+      "side": 1,
+      "message": "nit: this is not arch-specific so probably should be called \"setConfigurableAttrs\" or something similar",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 13
+      },
+      "revId": "a599885c0f600ea09c998dcc6bad9bc215c71737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7cdcfa2_699c36aa",
         "filename": "cc/bp2build.go",
         "patchSetId": 4
