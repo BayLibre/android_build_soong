@@ -155,15 +155,15 @@ func FilterLabelListAttribute(haystack LabelListAttribute, needleFn func(string)
 	result.Value = FilterLabelList(haystack.Value, needleFn)
 
 	for arch := range PlatformArchMap {
-		result.SetValueForArch(arch, FilterLabelList(haystack.GetValueForArch(arch), needleFn))
+		result.SetConfigurableValue("", arch, FilterLabelList(haystack.GetValueForArch(arch), needleFn))
 	}
 
 	for os := range PlatformOsMap {
-		result.SetOsValueForTarget(os, FilterLabelList(haystack.GetOsValueForTarget(os), needleFn))
+		result.SetConfigurableValue(os, "", FilterLabelList(haystack.GetOsValueForTarget(os), needleFn))
 
 		// TODO(b/187530594): Should we handle arch=CONDITIONS_DEFAULT here? (not in ArchValues)
 		for _, arch := range AllArches {
-			result.SetOsArchValueForTarget(os, arch, FilterLabelList(haystack.GetOsArchValueForTarget(os, arch), needleFn))
+			result.SetConfigurableValue(os, arch, FilterLabelList(haystack.GetOsArchValueForTarget(os, arch), needleFn))
 		}
 	}
 
@@ -175,16 +175,16 @@ func SubtractBazelLabelListAttribute(haystack LabelListAttribute, needle LabelLi
 	var result LabelListAttribute
 
 	for arch := range PlatformArchMap {
-		result.SetValueForArch(arch,
+		result.SetConfigurableValue("", arch,
 			SubtractBazelLabelList(haystack.GetValueForArch(arch), needle.GetValueForArch(arch)))
 	}
 
 	for os := range PlatformOsMap {
-		result.SetOsValueForTarget(os, SubtractBazelLabelList(haystack.GetOsValueForTarget(os), needle.GetOsValueForTarget(os)))
+		result.SetConfigurableValue(os, "", SubtractBazelLabelList(haystack.GetOsValueForTarget(os), needle.GetOsValueForTarget(os)))
 
 		// TODO(b/187530594): Should we handle arch=CONDITIONS_DEFAULT here? (not in ArchValues)
 		for _, arch := range AllArches {
-			result.SetOsArchValueForTarget(os, arch, SubtractBazelLabelList(haystack.GetOsArchValueForTarget(os, arch), needle.GetOsArchValueForTarget(os, arch)))
+			result.SetConfigurableValue(os, arch, SubtractBazelLabelList(haystack.GetOsArchValueForTarget(os, arch), needle.GetOsArchValueForTarget(os, arch)))
 		}
 	}
 
@@ -569,14 +569,14 @@ func (attrs *LabelListAttribute) Append(other LabelListAttribute) {
 		this := attrs.GetValueForArch(arch)
 		that := other.GetValueForArch(arch)
 		this.Append(that)
-		attrs.SetValueForArch(arch, this)
+		attrs.SetConfigurableValue("", arch, this)
 	}
 
 	for os := range PlatformOsMap {
 		this := attrs.getValueForTarget(os)
 		that := other.getValueForTarget(os)
 		this.Append(that)
-		attrs.setValueForTarget(os, this)
+		attrs.SetConfigurableValue(os, "", this.OsValue) // FIXME(jingwen)
 	}
 
 	attrs.Value.Append(other.Value)
@@ -622,15 +622,6 @@ func (attrs *LabelListAttribute) GetValueForArch(arch string) LabelList {
 		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
 	return *v
-}
-
-// SetValueForArch sets the label_list attribute value for an architecture.
-func (attrs *LabelListAttribute) SetValueForArch(arch string, value LabelList) {
-	var v *LabelList
-	if v = attrs.archValuePtrs()[arch]; v == nil {
-		panic(fmt.Errorf("Unknown arch: %s", arch))
-	}
-	*v = value
 }
 
 func (attrs *LabelListAttribute) targetValuePtrs() map[string]*labelListTargetValue {
@@ -682,40 +673,43 @@ func (attrs *LabelListAttribute) GetOsArchValueForTarget(os string, arch string)
 	}
 }
 
-func (attrs *LabelListAttribute) setValueForTarget(os string, value labelListTargetValue) {
-	var v *labelListTargetValue
-	if v = attrs.targetValuePtrs()[os]; v == nil {
-		panic(fmt.Errorf("Unknown os: %s", os))
-	}
-	*v = value
-}
-
-func (attrs *LabelListAttribute) SetOsValueForTarget(os string, value LabelList) {
-	var v *labelListTargetValue
-	if v = attrs.targetValuePtrs()[os]; v == nil {
-		panic(fmt.Errorf("Unknown os: %s", os))
-	}
-	v.OsValue = value
-}
-
-func (attrs *LabelListAttribute) SetOsArchValueForTarget(os string, arch string, value LabelList) {
-	var v *labelListTargetValue
-	if v = attrs.targetValuePtrs()[os]; v == nil {
-		panic(fmt.Errorf("Unknown os: %s", os))
-	}
-	switch arch {
-	case ARCH_X86:
-		v.ArchValues.X86 = value
-	case ARCH_X86_64:
-		v.ArchValues.X86_64 = value
-	case ARCH_ARM:
-		v.ArchValues.Arm = value
-	case ARCH_ARM64:
-		v.ArchValues.Arm64 = value
-	case CONDITIONS_DEFAULT:
-		v.ArchValues.ConditionsDefault = value
-	default:
-		panic(fmt.Errorf("Unknown arch: %s\n", arch))
+func (attrs *LabelListAttribute) SetConfigurableValue(os string, arch string, value LabelList) {
+	if os == "" && arch == "" {
+		attrs.Value = value
+	} else if os == "" {
+		// Set arch value
+		if v, ok := attrs.archValuePtrs()[arch]; ok {
+			*v = value
+		} else {
+			panic(fmt.Errorf("Unknown arch: %s", arch))
+		}
+	} else if arch == "" {
+		// Set os value
+		if v, ok := attrs.targetValuePtrs()[os]; ok {
+			v.OsValue = value
+		} else {
+			panic(fmt.Errorf("Unknown os: %s", os))
+		}
+	} else {
+		// Set os+arch value
+		if v, ok := attrs.targetValuePtrs()[os]; ok {
+			switch arch {
+			case ARCH_X86:
+				v.ArchValues.X86 = value
+			case ARCH_X86_64:
+				v.ArchValues.X86_64 = value
+			case ARCH_ARM:
+				v.ArchValues.Arm = value
+			case ARCH_ARM64:
+				v.ArchValues.Arm64 = value
+			case CONDITIONS_DEFAULT:
+				v.ArchValues.ConditionsDefault = value
+			default:
+				panic(fmt.Errorf("Unknown arch: %s\n", arch))
+			}
+		} else {
+			panic(fmt.Errorf("Unknown os: %s\n", os))
+		}
 	}
 }
 
@@ -841,15 +835,6 @@ func (attrs *StringListAttribute) GetValueForArch(arch string) []string {
 	return *v
 }
 
-// SetValueForArch sets the string_list attribute value for an architecture.
-func (attrs *StringListAttribute) SetValueForArch(arch string, value []string) {
-	var v *[]string
-	if v = attrs.archValuePtrs()[arch]; v == nil {
-		panic(fmt.Errorf("Unknown arch: %s", arch))
-	}
-	*v = value
-}
-
 func (attrs *StringListAttribute) targetValuePtrs() map[string]*stringListTargetValue {
 	return map[string]*stringListTargetValue{
 		OS_ANDROID:         &attrs.TargetValues.Android,
@@ -899,46 +884,49 @@ func (attrs *StringListAttribute) GetOsArchValueForTarget(os string, arch string
 	}
 }
 
-func (attrs *StringListAttribute) setValueForTarget(os string, value stringListTargetValue) {
-	var v *stringListTargetValue
-	if v = attrs.targetValuePtrs()[os]; v == nil {
-		panic(fmt.Errorf("Unknown os: %s", os))
-	}
-	*v = value
-}
-
 func (attrs *StringListAttribute) SortedProductVariables() []ProductVariableValues {
 	vals := attrs.ProductValues[:]
 	sort.Slice(vals, func(i, j int) bool { return vals[i].ProductVariable < vals[j].ProductVariable })
 	return vals
 }
 
-func (attrs *StringListAttribute) SetOsValueForTarget(os string, value []string) {
-	var v *stringListTargetValue
-	if v = attrs.targetValuePtrs()[os]; v == nil {
-		panic(fmt.Errorf("Unknown os: %s", os))
-	}
-	v.OsValue = value
-}
-
-func (attrs *StringListAttribute) SetOsArchValueForTarget(os string, arch string, value []string) {
-	var v *stringListTargetValue
-	if v = attrs.targetValuePtrs()[os]; v == nil {
-		panic(fmt.Errorf("Unknown os: %s", os))
-	}
-	switch arch {
-	case ARCH_X86:
-		v.ArchValues.X86 = value
-	case ARCH_X86_64:
-		v.ArchValues.X86_64 = value
-	case ARCH_ARM:
-		v.ArchValues.Arm = value
-	case ARCH_ARM64:
-		v.ArchValues.Arm64 = value
-	case CONDITIONS_DEFAULT:
-		v.ArchValues.ConditionsDefault = value
-	default:
-		panic(fmt.Errorf("Unknown arch: %s\n", arch))
+func (attrs *StringListAttribute) SetConfigurableValue(os string, arch string, value []string) {
+	if os == "" && arch == "" {
+		attrs.Value = value
+	} else if os == "" {
+		// Set arch value
+		if v, ok := attrs.archValuePtrs()[arch]; ok {
+			*v = value
+		} else {
+			panic(fmt.Errorf("Unknown arch: %s", arch))
+		}
+	} else if arch == "" {
+		// Set os value
+		if v, ok := attrs.targetValuePtrs()[os]; ok {
+			v.OsValue = value
+		} else {
+			panic(fmt.Errorf("Unknown os: %s", os))
+		}
+	} else {
+		// Set os+arch value
+		if v, ok := attrs.targetValuePtrs()[os]; ok {
+			switch arch {
+			case ARCH_X86:
+				v.ArchValues.X86 = value
+			case ARCH_X86_64:
+				v.ArchValues.X86_64 = value
+			case ARCH_ARM:
+				v.ArchValues.Arm = value
+			case ARCH_ARM64:
+				v.ArchValues.Arm64 = value
+			case CONDITIONS_DEFAULT:
+				v.ArchValues.ConditionsDefault = value
+			default:
+				panic(fmt.Errorf("Unknown arch: %s\n", arch))
+			}
+		} else {
+			panic(fmt.Errorf("Unknown os: %s\n", os))
+		}
 	}
 }
 
@@ -949,14 +937,14 @@ func (attrs *StringListAttribute) Append(other StringListAttribute) {
 		this := attrs.GetValueForArch(arch)
 		that := other.GetValueForArch(arch)
 		this = append(this, that...)
-		attrs.SetValueForArch(arch, this)
+		attrs.SetConfigurableValue("", arch, this)
 	}
 
 	for os := range PlatformOsMap {
 		this := attrs.getValueForTarget(os)
 		that := other.getValueForTarget(os)
 		this.Append(that)
-		attrs.setValueForTarget(os, this)
+		attrs.SetConfigurableValue(os, "", this.OsValue) // FIXME(jingwen)
 	}
 
 	productValues := make(map[string][]string, 0)
