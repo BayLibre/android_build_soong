@@ -442,6 +442,11 @@ cc_library {
                 static_libs: ["android_dep_for_shared"],
             },
         },
+        android_arm: {
+            shared: {
+                cflags: ["-DANDROID_ARM_SHARED"],
+            },
+        },
     },
     srcs: ["both.cpp"],
     cflags: ["bothflag"],
@@ -490,6 +495,9 @@ cc_library_static { name: "android_dep_for_shared" }
         "//conditions:default": [],
     }) + select({
         "//build/bazel/platforms/os:android": ["-DANDROID_SHARED"],
+        "//conditions:default": [],
+    }) + select({
+        "//build/bazel/platforms:android_arm": ["-DANDROID_ARM_SHARED"],
         "//conditions:default": [],
     }),
     shared_srcs = ["sharedonly.cpp"] + select({
