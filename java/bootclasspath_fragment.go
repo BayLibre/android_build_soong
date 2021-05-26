@@ -124,6 +124,10 @@ type bootclasspathFragmentProperties struct {
 	// Hidden API related properties.
 	Hidden_api HiddenAPIFlagFileProperties
 
+	// Indicates that the contents of this module uses platform APIs, i.e. APIs provided modules that
+	// are not part of an APEX.
+	Uses_platform_apis *bool
+
 	// Properties that allow a fragment to depend on other fragments. This is needed for hidden API
 	// processing as it needs access to all the classes used by a fragment including those provided
 	// by other fragments.
@@ -380,6 +384,16 @@ func (b *BootclasspathFragmentModule) DepsMutator(ctx android.BottomUpMutatorCon
 	// Add dependencies onto all the modules that provide the API stubs for classes on this
 	// bootclasspath fragment.
 	hiddenAPIAddStubLibDependencies(ctx, b.properties.apiScopeToStubLibs())
+
+	if Bool(b.properties.Uses_platform_apis) {
+		for _, apiScope := range hiddenAPISdkLibrarySupportedScopes {
+			// Add a dependency onto the libraries that provide API scope specific stubs for the
+			// non-updatable parts of the platform.
+			nonUpdatableDeps := apiScope.platformBootJarModules(ctx)
+			tag := hiddenAPIStubsDependencyTag{apiScope: apiScope, fromAdditionalDependency: true}
+			ctx.AddVariationDependencies(nil, tag, nonUpdatableDeps...)
+		}
+	}
 
 	if SkipDexpreoptBootJars(ctx) {
 		return
@@ -640,8 +654,8 @@ func (b *BootclasspathFragmentModule) createHiddenAPIFlagInput(ctx android.Modul
 	// Populate with flag file paths from the properties.
 	input.extractFlagFilesFromProperties(ctx, &b.properties.Hidden_api)
 
-	// Store the stub dex jars from this module's fragment dependencies.
-	input.DependencyStubDexJarsByScope = dependencyHiddenApiInfo.TransitiveStubDexJarsByScope
+	// Add the stub dex jars from this module's fragment dependencies.
+	input.DependencyStubDexJarsByScope.append(dependencyHiddenApiInfo.TransitiveStubDexJarsByScope)
 
 	return input
 }
