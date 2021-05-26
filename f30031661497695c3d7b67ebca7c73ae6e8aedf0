@@ -70,6 +70,24 @@
       "parentUuid": "25487d36_ec9587ca",
       "revId": "f30031661497695c3d7b67ebca7c73ae6e8aedf0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a8cac3c_66df80ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-05-26T18:59:27Z",
+      "side": 1,
+      "message": "I think the same argument could be made for anything that it triggers currently, for example the build of the ART module in master-art which is definitely going to be a lot more work than running a few small tests in already-built branches. If you find yourself blocked by SdkExtensions tests, let me know.",
+      "parentUuid": "e9102ed0_b9b3d613",
+      "revId": "f30031661497695c3d7b67ebca7c73ae6e8aedf0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
