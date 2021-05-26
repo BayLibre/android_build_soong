@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8d0c595_da5ba708",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1217797
+      },
+      "writtenOn": "2021-05-26T01:43:44Z",
+      "side": 1,
+      "message": "Hi @dwillemsen, @ccross,\nCould you review this for supporting uppercase in Soong variables?",
+      "revId": "2b30e547215ee142c9f8e33899f0f3c9c3e34857",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
