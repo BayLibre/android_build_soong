@@ -37,11 +37,53 @@ type HiddenAPILevel struct {
 
 	// The option needed to passed to "hiddenapi list".
 	hiddenAPIListOption string
+
+	// The name sof the source stub library modules that contain the API provided by the platform,
+	// i.e. by modules that are not in an APEX.
+	platformAPISourceStubsModules []string
+
+	// The names of the prebuilt stub library modules that contain the API provided by the platform,
+	// i.e. by modules that are not in an APEX.
+	platformAPIPrebuiltStubsModules []string
 }
 
 // initHiddenAPILevel initializes the level.
 func initHiddenAPILevel(apiLevel *HiddenAPILevel) *HiddenAPILevel {
+	sdkKind := apiLevel.sdkKind
+	// The platform does not provide a core platform API.
+	if sdkKind != android.SdkCorePlatform {
+		kindAsString := sdkKind.String()
+		var insert string
+		if sdkKind == android.SdkPublic {
+			insert = ""
+		} else {
+			insert = "." + strings.ReplaceAll(kindAsString, "-", "_")
+		}
+		apiLevel.platformAPISourceStubsModules = []string{
+			fmt.Sprintf("android-non-updatable.stubs%s", insert),
+		}
+
+		prebuiltModuleName := func(name string, kind string) string {
+			return fmt.Sprintf("sdk_%s_current_%s", kind, name)
+		}
+
+		// Construct the list of prebuilt modules.
+		apiLevel.platformAPIPrebuiltStubsModules = []string{
+			prebuiltModuleName("android-non-updatable", kindAsString),
+		}
+	}
+
 	return apiLevel
+}
+
+// platformBootJarModules returns the names of the modules that provide the platform API, i.e. the
+// API provided by modules that are not part of an APEX.
+func (l *HiddenAPILevel) platformBootJarModules(ctx android.BaseModuleContext) []string {
+	if ctx.Config().AlwaysUsePrebuiltSdks() {
+		return l.platformAPIPrebuiltStubsModules
+	} else {
+		return l.platformAPISourceStubsModules
+	}
 }
 
 func (l *HiddenAPILevel) String() string {
@@ -122,6 +164,11 @@ type hiddenAPIStubsDependencyTag struct {
 
 	// The api level for which this dependency was added.
 	apiLevel *HiddenAPILevel
+
+	// Indicates that the dependency is not for an API provided by the current bootclasspath fragment
+	// but is an additional API provided by a module that is not part of the current bootclasspath
+	// fragment.
+	fromAdditionalDependency bool
 }
 
 func (b hiddenAPIStubsDependencyTag) ExcludeFromApexContents() {
@@ -132,6 +179,11 @@ func (b hiddenAPIStubsDependencyTag) ReplaceSourceWithPrebuilt() bool {
 }
 
 func (b hiddenAPIStubsDependencyTag) SdkMemberType(child android.Module) android.SdkMemberType {
+	// Do not add additional dependencies to the sdk.
+	if b.fromAdditionalDependency {
+		return nil
+	}
+
 	// If the module is a java_sdk_library then treat it as if it was specific in the java_sdk_libs
 	// property, otherwise treat if it was specified in the java_header_libs property.
 	if javaSdkLibrarySdkMemberType.IsInstance(child) {
@@ -243,15 +295,10 @@ func ruleToGenerateHiddenAPIStubFlagsFile(ctx android.BuilderContext, outputPath
 	tempPath := tempPathForRestat(ctx, outputPath)
 
 	// Find the widest API stubs provided by the fragments on which this depends, if any.
-	var dependencyStubDexJars android.Paths
-	for i := len(hiddenAPILevels) - 1; i >= 0; i-- {
-		apiLevel := hiddenAPILevels[i]
-		stubsForAPILevel := input.DependencyStubDexJarsByLevel[apiLevel]
-		if len(stubsForAPILevel) != 0 {
-			dependencyStubDexJars = stubsForAPILevel
-			break
-		}
-	}
+	dependencyStubDexJars := input.DependencyStubDexJarsByLevel.stubDexJarsForWidestAPILevel()
+
+	// Add widest API stubs from the additional dependencies of this, if any.
+	dependencyStubDexJars = append(dependencyStubDexJars, input.AdditionalStubDexJarsByLevel.stubDexJarsForWidestAPILevel()...)
 
 	command := rule.Command().
 		Tool(ctx.Config().HostToolPath(ctx, "hiddenapi")).
@@ -266,6 +313,7 @@ func ruleToGenerateHiddenAPIStubFlagsFile(ctx android.BuilderContext, outputPath
 		// other fragment's APIs.
 		var paths android.Paths
 		paths = append(paths, input.DependencyStubDexJarsByLevel[apiLevel]...)
+		paths = append(paths, input.AdditionalStubDexJarsByLevel[apiLevel]...)
 		paths = append(paths, input.StubDexJarsByLevel[apiLevel]...)
 		if len(paths) > 0 {
 			option := apiLevel.hiddenAPIListOption
@@ -501,6 +549,20 @@ func (s StubDexJarsByLevel) dedupAndSort() {
 	}
 }
 
+// stubDexJarsForWidestAPILevel returns the stub dex jars for the widest API level provided by this
+// map. The relative width of APIs is determined by their order in hiddenAPILevels.
+func (s StubDexJarsByLevel) stubDexJarsForWidestAPILevel() android.Paths {
+	for i := len(hiddenAPILevels) - 1; i >= 0; i-- {
+		apiLevel := hiddenAPILevels[i]
+		stubsForAPILevel := s[apiLevel]
+		if len(stubsForAPILevel) != 0 {
+			return stubsForAPILevel
+		}
+	}
+
+	return nil
+}
+
 // HiddenAPIFlagInput encapsulates information obtained from a module and its dependencies that are
 // needed for hidden API flag generation.
 type HiddenAPIFlagInput struct {
@@ -517,6 +579,13 @@ type HiddenAPIFlagInput struct {
 	// fragment on which this depends.
 	DependencyStubDexJarsByLevel StubDexJarsByLevel
 
+	// AdditionalStubDexJarsByLevel contains stub dex jars provided by other modules in addition to
+	// the ones that are obtained from fragments on which this depends.
+	//
+	// These are kept separate from stub dex jars in HiddenAPIFlagInput.DependencyStubDexJarsByLevel
+	// as there are not propagated transitively to other fragments that depend on this.
+	AdditionalStubDexJarsByLevel StubDexJarsByLevel
+
 	// RemovedTxtFiles is the list of removed.txt files provided by java_sdk_library modules that are
 	// specified in the bootclasspath_fragment's stub_libs and contents properties.
 	RemovedTxtFiles android.Paths
@@ -528,6 +597,7 @@ func newHiddenAPIFlagInput() HiddenAPIFlagInput {
 		FlagFilesByCategory:          FlagFilesByCategory{},
 		StubDexJarsByLevel:           StubDexJarsByLevel{},
 		DependencyStubDexJarsByLevel: StubDexJarsByLevel{},
+		AdditionalStubDexJarsByLevel: StubDexJarsByLevel{},
 	}
 
 	return input
@@ -601,7 +671,14 @@ func (i *HiddenAPIFlagInput) gatherStubLibInfo(ctx android.ModuleContext, conten
 		tag := ctx.OtherModuleDependencyTag(module)
 		if hiddenAPIStubsTag, ok := tag.(hiddenAPIStubsDependencyTag); ok {
 			apiLevel := hiddenAPIStubsTag.apiLevel
-			addFromModule(ctx, module, apiLevel)
+			if hiddenAPIStubsTag.fromAdditionalDependency {
+				dexJar := hiddenAPIRetrieveDexJarBuildPath(ctx, module, apiLevel.sdkKind)
+				if dexJar != nil {
+					i.AdditionalStubDexJarsByLevel[apiLevel] = append(i.AdditionalStubDexJarsByLevel[apiLevel], dexJar)
+				}
+			} else {
+				addFromModule(ctx, module, apiLevel)
+			}
 		}
 	})
 
