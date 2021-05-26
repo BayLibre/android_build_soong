@@ -69,6 +69,30 @@
       },
       "revId": "c194ffbcf39db04af3800c9240b400e6c2bac0b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "071829f1_802f1262",
+        "filename": "bazel/properties.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-26T04:37:51Z",
+      "side": 1,
+      "message": "(Chatted offline, gonna try to submit)",
+      "parentUuid": "0175ca3a_d94a1d30",
+      "range": {
+        "startLine": 397,
+        "startChar": 12,
+        "endLine": 397,
+        "endChar": 31
+      },
+      "revId": "c194ffbcf39db04af3800c9240b400e6c2bac0b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
