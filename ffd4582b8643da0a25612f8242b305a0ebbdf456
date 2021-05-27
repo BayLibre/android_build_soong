@@ -22,6 +22,30 @@
       },
       "revId": "ffd4582b8643da0a25612f8242b305a0ebbdf456",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bde9f702_4dfa3cf0",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-27T13:59:22Z",
+      "side": 1,
+      "message": "It is tricky because they are all subtly different e.g. calling SetValueForArch, SetOsValueForTarget, SetOsArchValueForTarget, etc. \n\nOne idea: \n\n\tmaybeParse :\u003d func(src []string, f func(src string)) {\n\t\tif len(src) \u003e 1 {\n\t\t\tctx.ModuleErrorf(\"Bp2BuildParsePrebuiltLibraryProps: Expected at most once source file\\n\")\n\t\t}\n\t\tif len(src) \u003d\u003d 1 {\n\t\t\tf(src[0])\n\t\t}\n\t}\n\n\tmaybeParse(prebuiltLinker.properties.Srcs, func(src string) {\n\t\tsrcLabelAttribute.Value \u003d android.BazelLabelForModuleSrcSingle(ctx, src)\n\t\tfor arch, props :\u003d range module.GetArchProperties(ctx, \u0026prebuiltLinkerProperties{}) {\n\t\t\tif prebuiltLinkerProperties, ok :\u003d props.(*prebuiltLinkerProperties); ok {\n\t\t\t\tmaybeParse(prebuiltLinkerProperties.Srcs, func(src string) {\n\t\t\t\t\tsrcLabelAttribute.SetValueForArch(arch.Name, android.BazelLabelForModuleSrcSingle(ctx, src))\n\t\t\t\t})\n\t\t\t}\n\t\t}\n\t})\n\n\tfor os, targetProperties :\u003d range module.GetTargetProperties(ctx, \u0026prebuiltLinkerProperties{}) {\n\t\tif prebuiltLinkerProperties, ok :\u003d targetProperties.Properties.(*prebuiltLinkerProperties); ok {\n\t\t\tmaybeParse(prebuiltLinkerProperties.Srcs, func(src string) {\n\t\t\t\tsrcLabelAttribute.SetOsValueForTarget(os.Name, android.BazelLabelForModuleSrcSingle(ctx, src))\n\t\t\t})\n\t\t}\n\t\tfor arch, archProperties :\u003d range targetProperties.ArchProperties {\n\t\t\tif prebuiltLinkerProperties, ok :\u003d archProperties.(*prebuiltLinkerProperties); ok {\n\t\t\t\tmaybeParse(prebuiltLinkerProperties.Srcs, func(src string) {\n\t\t\t\t\tsrcLabelAttribute.SetOsArchValueForTarget(os.Name, arch.Name, android.BazelLabelForModuleSrcSingle(ctx, src))\n\t\t\t\t})\n\t\t\t}\n\n\t\t}\n\t}\n\n... but I find this more confusing to read than the current version...",
+      "parentUuid": "07a058f3_c09c5c9e",
+      "range": {
+        "startLine": 298,
+        "startChar": 42,
+        "endLine": 298,
+        "endChar": 61
+      },
+      "revId": "ffd4582b8643da0a25612f8242b305a0ebbdf456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
