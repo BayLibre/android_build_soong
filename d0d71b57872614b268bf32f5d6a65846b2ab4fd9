@@ -247,6 +247,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3934eb6_33f4fbdd",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-27T07:52:36Z",
+      "side": 1,
+      "message": "Yeah. I think we can leave it as-is for now, but having a single entry point that just returns the values based on os and arch could be simpler.",
+      "parentUuid": "6820a50f_923ba105",
+      "range": {
+        "startLine": 435,
+        "startChar": 28,
+        "endLine": 435,
+        "endChar": 51
+      },
+      "revId": "d0d71b57872614b268bf32f5d6a65846b2ab4fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36ff9e2b_2fc84267",
@@ -379,6 +403,30 @@
       "side": 1,
       "message": "Adding error handling (or warnings) sounds good to me, but I\u0027m also tempted to wait and see whether this becomes a problem.",
       "parentUuid": "c117c5cf_c656d51a",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "d0d71b57872614b268bf32f5d6a65846b2ab4fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4206ca16_8efa42be",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-27T07:52:36Z",
+      "side": 1,
+      "message": "I think we should make it an error, so that we know when this undefined behavior actually happens and doesn\u0027t silently pick one value or the other.",
+      "parentUuid": "ac00f99d_047e4ddb",
       "range": {
         "startLine": 96,
         "startChar": 1,
