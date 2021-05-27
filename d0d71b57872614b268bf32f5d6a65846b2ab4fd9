@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "049b422f_9e07c288",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-27T07:01:39Z",
+      "side": 1,
+      "message": "I split this off from the llvm_prebuilt_library_static CL since this is a fairly standalone change.",
+      "revId": "d0d71b57872614b268bf32f5d6a65846b2ab4fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
