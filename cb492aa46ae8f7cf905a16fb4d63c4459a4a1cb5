@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "769476ea_487e17f5",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-05-27T23:10:52Z",
+      "side": 1,
+      "message": "Any reason to use these product variables and not the BUILD_BROKEN_* style below?  Those can integrate with the https://cs.android.com/android/platform/superproject/+/master:build/soong/scripts/build_broken_logs.go tool to help manage the process of setting it on the appropriate products using the output of the build_test* targets.",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 0
+      },
+      "revId": "cb492aa46ae8f7cf905a16fb4d63c4459a4a1cb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
