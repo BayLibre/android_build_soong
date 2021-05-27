@@ -1613,7 +1613,7 @@ func (c *Module) getNameSuffixWithVndkVersion(ctx android.ModuleContext) string 
 			return ""
 		}
 		vndkVersion = ctx.DeviceConfig().ProductVndkVersion()
-		nameSuffix = productSuffix
+		nameSuffix = ProductSuffix
 	} else {
 		vndkVersion = ctx.DeviceConfig().VndkVersion()
 		nameSuffix = VendorSuffix
