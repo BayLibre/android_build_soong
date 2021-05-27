@@ -108,6 +108,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "10449da3_bd6115db",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-27T07:47:59Z",
+      "side": 1,
+      "message": "Okay, will remove it in a separate CL to avoid resetting the presubmit for this one",
+      "parentUuid": "6dfe7456_81bfc9f5",
+      "range": {
+        "startLine": 339,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 6
+      },
+      "revId": "d0d71b57872614b268bf32f5d6a65846b2ab4fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "da66a952_02a2babd",
         "filename": "bazel/properties.go",
         "patchSetId": 2
@@ -152,6 +176,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7918a86_49f43381",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-27T07:47:59Z",
+      "side": 1,
+      "message": "It is an analog of the same function for LabelListAttribute. Not used yet but I added it for completeness",
+      "parentUuid": "3e8cea8a_14fad5ca",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 425,
+        "endChar": 1
+      },
+      "revId": "d0d71b57872614b268bf32f5d6a65846b2ab4fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6769e04_0bcebf47",
@@ -177,6 +225,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6820a50f_923ba105",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-27T07:47:59Z",
+      "side": 1,
+      "message": "We have\n\nGetValueForArch(arch)\nGetOsValueForTarget(os)\nGetOsArchValueForTarget(os, arch)\n\nWhich all do different things, corresponding to\n\nArch: {...}\nTarget: { os: {...}}\nTarget: { os_arch: {...}}\n\nIt is a little confusing that Soong uses arch in these two different ways, but I kind of like having three separate functions, to mirror the separate use cases in Soong... ?",
+      "parentUuid": "b6769e04_0bcebf47",
+      "range": {
+        "startLine": 435,
+        "startChar": 28,
+        "endLine": 435,
+        "endChar": 51
+      },
+      "revId": "d0d71b57872614b268bf32f5d6a65846b2ab4fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "36ff9e2b_2fc84267",
         "filename": "bazel/properties.go",
         "patchSetId": 2
@@ -188,6 +260,30 @@
       "writtenOn": "2021-05-27T07:32:58Z",
       "side": 1,
       "message": "Where is this used?",
+      "range": {
+        "startLine": 455,
+        "startChar": 0,
+        "endLine": 462,
+        "endChar": 1
+      },
+      "revId": "d0d71b57872614b268bf32f5d6a65846b2ab4fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b68440_d66ee62a",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-27T07:47:59Z",
+      "side": 1,
+      "message": "See previous comment, this is an analog of the same function for LabelListAttribute. I think for consistency we should keep it, even if it isn\u0027t used yet.",
+      "parentUuid": "36ff9e2b_2fc84267",
       "range": {
         "startLine": 455,
         "startChar": 0,
@@ -259,6 +355,30 @@
       "side": 1,
       "message": "I wonder if it should be an error to have android_arm \u0026\u0026 (android || arm)? Seems like an undefined behavior since it cannot traverse multiple paths.",
       "parentUuid": "ffb75550_e4c92d1b",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "d0d71b57872614b268bf32f5d6a65846b2ab4fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac00f99d_047e4ddb",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-27T07:47:59Z",
+      "side": 1,
+      "message": "Adding error handling (or warnings) sounds good to me, but I\u0027m also tempted to wait and see whether this becomes a problem.",
+      "parentUuid": "c117c5cf_c656d51a",
       "range": {
         "startLine": 96,
         "startChar": 1,
