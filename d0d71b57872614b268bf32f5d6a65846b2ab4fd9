@@ -459,6 +459,30 @@
       },
       "revId": "d0d71b57872614b268bf32f5d6a65846b2ab4fd9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25646f7c_8de083e3",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-05-27T08:35:14Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "b11a4aeb_e830b966",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "d0d71b57872614b268bf32f5d6a65846b2ab4fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
