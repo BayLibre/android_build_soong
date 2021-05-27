@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0668c29_4e85f07d",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-05-27T14:49:43Z",
+      "side": 1,
+      "message": "update this with the propName instead of \"cflag\"",
+      "revId": "f7c8ae42bb7d333f9b80d8266168826d5f0c912e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
