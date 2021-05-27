@@ -78,6 +78,9 @@ type snapshotImage interface {
 	// The variant suffix for snapshot modules. For example, vendor snapshot modules will have
 	// ".vendor" as their suffix.
 	moduleNameSuffix() string
+
+	// Returns the full variation name in the snapshot.
+	snapshotName(baseName string, variant string, version string, arch string) string
 }
 
 type vendorSnapshotImage struct{}
@@ -190,6 +193,10 @@ func (vendorSnapshotImage) moduleNameSuffix() string {
 	return VendorSuffix
 }
 
+func (vendorSnapshotImage) snapshotName(baseName string, variant string, version string, arch string) string {
+	return baseName + ".vendor_" + variant + "." + version + "." + arch
+}
+
 func (recoverySnapshotImage) init(ctx android.RegistrationContext) {
 	ctx.RegisterSingletonType("recovery-snapshot", RecoverySnapshotSingleton)
 	ctx.RegisterModuleType("recovery_snapshot", recoverySnapshotFactory)
@@ -252,6 +259,10 @@ func (recoverySnapshotImage) imageVariantName(cfg android.DeviceConfig) string {
 
 func (recoverySnapshotImage) moduleNameSuffix() string {
 	return recoverySuffix
+}
+
+func (recoverySnapshotImage) snapshotName(baseName string, variant string, version string, arch string) string {
+	return baseName + ".recovery_" + variant + "." + version + "." + arch
 }
 
 var vendorSnapshotImageSingleton vendorSnapshotImage
@@ -453,28 +464,47 @@ func (p *baseSnapshotDecorator) snapshotAndroidMkSuffix() string {
 	return p.baseProperties.Androidmk_suffix
 }
 
-func (p *baseSnapshotDecorator) setSnapshotAndroidMkSuffix(ctx android.ModuleContext) {
-	coreVariations := append(ctx.Target().Variations(), blueprint.Variation{
+func (p *baseSnapshotDecorator) setSnapshotAndroidMkSuffix(ctx android.ModuleContext, variant string) {
+	// If there are any 2 or more variations among {core, product, vendor, recovery}
+	// we have to add the androidmk suffix to avoid duplicate modules with the same
+	// name.
+	variations := append(ctx.Target().Variations(), blueprint.Variation{
 		Mutator:   "image",
 		Variation: android.CoreVariation})
 
-	if ctx.OtherModuleFarDependencyVariantExists(coreVariations, ctx.Module().(*Module).BaseModuleName()) {
+	if ctx.OtherModuleFarDependencyVariantExists(variations, ctx.Module().(*Module).BaseModuleName()) {
 		p.baseProperties.Androidmk_suffix = p.image.moduleNameSuffix()
 		return
 	}
 
-	// If there is no matching core variation, there could still be a
-	// product variation, for example if a module is product specific and
-	// vendor available. In that case, we also want to add the androidmk
-	// suffix.
-
-	productVariations := append(ctx.Target().Variations(), blueprint.Variation{
+	variations = append(ctx.Target().Variations(), blueprint.Variation{
 		Mutator:   "image",
 		Variation: ProductVariationPrefix + ctx.DeviceConfig().PlatformVndkVersion()})
 
-	if ctx.OtherModuleFarDependencyVariantExists(productVariations, ctx.Module().(*Module).BaseModuleName()) {
+	if ctx.OtherModuleFarDependencyVariantExists(variations, ctx.Module().(*Module).BaseModuleName()) {
 		p.baseProperties.Androidmk_suffix = p.image.moduleNameSuffix()
 		return
+	}
+
+	images := []snapshotImage{vendorSnapshotImageSingleton, recoverySnapshotImageSingleton}
+
+	for _, image := range images {
+		if p.image == image {
+			continue
+		}
+		variations = append(ctx.Target().Variations(), blueprint.Variation{
+			Mutator:   "image",
+			Variation: image.imageVariantName(ctx.DeviceConfig())})
+
+		if ctx.OtherModuleFarDependencyVariantExists(variations,
+			p.image.snapshotName(
+				ctx.Module().(*Module).BaseModuleName(),
+				variant,
+				p.image.targetSnapshotVersion(ctx.DeviceConfig()),
+				ctx.DeviceConfig().DeviceArch())) {
+			p.baseProperties.Androidmk_suffix = p.image.moduleNameSuffix()
+			return
+		}
 	}
 
 	p.baseProperties.Androidmk_suffix = ""
@@ -566,7 +596,16 @@ func (p *snapshotLibraryDecorator) matchesWithDevice(config android.DeviceConfig
 // As snapshots are prebuilts, this just returns the prebuilt binary after doing things which are
 // done by normal library decorator, e.g. exporting flags.
 func (p *snapshotLibraryDecorator) link(ctx ModuleContext, flags Flags, deps PathDeps, objs Objects) android.Path {
-	p.setSnapshotAndroidMkSuffix(ctx)
+	var variant string
+	if p.shared() {
+		variant = "shared"
+	} else if p.static() {
+		variant = "static"
+	} else {
+		variant = "header"
+	}
+
+	p.setSnapshotAndroidMkSuffix(ctx, variant)
 
 	if p.header() {
 		return p.libraryDecorator.link(ctx, flags, deps, objs)
@@ -784,7 +823,7 @@ func (p *snapshotBinaryDecorator) matchesWithDevice(config android.DeviceConfig)
 // cc modules' link functions are to link compiled objects into final binaries.
 // As snapshots are prebuilts, this just returns the prebuilt binary
 func (p *snapshotBinaryDecorator) link(ctx ModuleContext, flags Flags, deps PathDeps, objs Objects) android.Path {
-	p.setSnapshotAndroidMkSuffix(ctx)
+	p.setSnapshotAndroidMkSuffix(ctx, "binary")
 
 	if !p.matchesWithDevice(ctx.DeviceConfig()) {
 		return nil
@@ -879,7 +918,7 @@ func (p *snapshotObjectLinker) matchesWithDevice(config android.DeviceConfig) bo
 // cc modules' link functions are to link compiled objects into final binaries.
 // As snapshots are prebuilts, this just returns the prebuilt binary
 func (p *snapshotObjectLinker) link(ctx ModuleContext, flags Flags, deps PathDeps, objs Objects) android.Path {
-	p.setSnapshotAndroidMkSuffix(ctx)
+	p.setSnapshotAndroidMkSuffix(ctx, "object")
 
 	if !p.matchesWithDevice(ctx.DeviceConfig()) {
 		return nil
