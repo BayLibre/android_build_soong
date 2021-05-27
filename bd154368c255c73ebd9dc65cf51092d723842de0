@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d0192b2_0eab4be0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2021-05-27T06:39:10Z",
+      "side": 1,
+      "message": "Thanks! PTAL",
+      "revId": "bd154368c255c73ebd9dc65cf51092d723842de0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f84005a_ba3ab238",
@@ -24,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37c5e94a_d89beb2e",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2021-05-27T06:39:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0f84005a_ba3ab238",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 1
+      },
+      "revId": "bd154368c255c73ebd9dc65cf51092d723842de0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fda9ed2f_b87332d3",
@@ -37,6 +78,30 @@
       "writtenOn": "2021-05-27T06:34:12Z",
       "side": 1,
       "message": "This should depend on the image.",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 503,
+        "endChar": 45
+      },
+      "revId": "bd154368c255c73ebd9dc65cf51092d723842de0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d52b13_c11f2112",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2021-05-27T06:39:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fda9ed2f_b87332d3",
       "range": {
         "startLine": 503,
         "startChar": 0,
