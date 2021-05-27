@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "01ac57eb_0214da22",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-27T07:31:43Z",
+      "side": 1,
+      "message": "Not sure. This was originally added in https://android-review.googlesource.com/c/platform/build/soong/+/1720610. \n\nThere wasn\u0027t a ConditionsDefault label, so I added one, but I didn\u0027t add a Common label.\n\nIt looks like the labelListArchValues Common label isn\u0027t actually used for anything? Maybe we can remove that one instead of adding a new Common label here?\n\ncc jingwen@",
+      "parentUuid": "4e666dea_87fd8ded",
+      "range": {
+        "startLine": 339,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 6
+      },
+      "revId": "d0d71b57872614b268bf32f5d6a65846b2ab4fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "da66a952_02a2babd",
@@ -94,6 +118,30 @@
       "writtenOn": "2021-05-27T07:12:36Z",
       "side": 1,
       "message": "AFAIU Bazel takes the first matching select branch in case more than one matches, so put osArchSelects first because those are more specific.",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "d0d71b57872614b268bf32f5d6a65846b2ab4fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fe90a1c_ec791513",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-27T07:31:43Z",
+      "side": 1,
+      "message": "This is building a single map. When printing the map (elsewhere in the pretty printer?) we would have to iterate over the map keys in a special order in order to print the os_arch stuff first. My vote is to postpone... ?",
+      "parentUuid": "ffb75550_e4c92d1b",
       "range": {
         "startLine": 96,
         "startChar": 1,
