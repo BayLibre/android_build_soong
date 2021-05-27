@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a241582_45a9fa02",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-05-27T10:09:27Z",
+      "side": 0,
+      "message": "vendor and product variants have their own version suffix. These versions have dependency on the `Platform_vndk_version` above that has \"29\".\nI think these must be in the same test script to see which version is set.\n\nInstead of moving a part of these constant to testing.go, could you duplicate `vendorVariant` to rust/vendor_snapshot_test.go?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 60
+      },
+      "revId": "3078f3bddce04e9d39dc900eb8139533764e78ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
