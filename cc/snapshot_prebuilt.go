@@ -454,25 +454,28 @@ func (p *baseSnapshotDecorator) snapshotAndroidMkSuffix() string {
 }
 
 func (p *baseSnapshotDecorator) setSnapshotAndroidMkSuffix(ctx android.ModuleContext) {
-	coreVariations := append(ctx.Target().Variations(), blueprint.Variation{
+	// If there are any 2 or more variations among {core, product, vendor, recovery}
+	// we have to add the androidmk suffix to avoid duplicate modules with the same
+	// name.
+	variations := append(ctx.Target().Variations(), blueprint.Variation{
 		Mutator:   "image",
 		Variation: android.CoreVariation})
-
-	if ctx.OtherModuleFarDependencyVariantExists(coreVariations, ctx.Module().(*Module).BaseModuleName()) {
-		p.baseProperties.Androidmk_suffix = p.image.moduleNameSuffix()
-		return
-	}
-
-	// If there is no matching core variation, there could still be a
-	// product variation, for example if a module is product specific and
-	// vendor available. In that case, we also want to add the androidmk
-	// suffix.
-
-	productVariations := append(ctx.Target().Variations(), blueprint.Variation{
+	variations = append(variations, blueprint.Variation{
 		Mutator:   "image",
 		Variation: ProductVariationPrefix + ctx.DeviceConfig().PlatformVndkVersion()})
 
-	if ctx.OtherModuleFarDependencyVariantExists(productVariations, ctx.Module().(*Module).BaseModuleName()) {
+	images := []snapshotImage{vendorSnapshotImageSingleton, recoverySnapshotImageSingleton}
+
+	for _, image := range images {
+		if p.image == image {
+			continue
+		}
+		variations = append(variations, blueprint.Variation{
+			Mutator:   "image",
+			Variation: image.imageVariantName(ctx.DeviceConfig())})
+	}
+
+	if ctx.OtherModuleFarDependencyVariantExists(variations, ctx.Module().(*Module).BaseModuleName()) {
 		p.baseProperties.Androidmk_suffix = p.image.moduleNameSuffix()
 		return
 	}
