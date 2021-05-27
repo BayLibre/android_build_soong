@@ -132,6 +132,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "36a2fb55_795d119b",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-27T08:49:51Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/build/soong/+/1720650",
+      "parentUuid": "10449da3_bd6115db",
+      "range": {
+        "startLine": 339,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 6
+      },
+      "revId": "d0d71b57872614b268bf32f5d6a65846b2ab4fd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "da66a952_02a2babd",
         "filename": "bazel/properties.go",
         "patchSetId": 2
