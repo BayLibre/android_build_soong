@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6621b3f_50ad8e5e",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-05-27T04:39:10Z",
+      "side": 1,
+      "message": "How about:\n\n    variations :\u003d append(ctx.Target().Variations(),\n        blueprint.Variation{Mutator: \"image\", Variation: android.CoreVariation},\n        blueprint.Variation{Mutator: \"image\", Variation: ProductVariationPrefix + ctx.DeviceConfig().PlatformVndkVersion()},\n    )",
+      "range": {
+        "startLine": 457,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 0
+      },
+      "revId": "620eaa8fae7de37df39faaf4a5f635d58431190a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a355cf87_1fed9982",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-05-27T04:39:10Z",
+      "side": 1,
+      "message": "We can use ctx.Module().(*Module).BaseModuleName() for core and product variant, but not the snapshots. For the snapshots, we have to use the decorated name.\n\ne.g. if this module is libfoo\u0027s vendor snapshot (libfoo.vendor_shared.31.arm64), we have to find \"libfoo\" for core/product variant, \"libfoo.recovery_shared.31.arm64\" for recovery variant, etc.",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 0
+      },
+      "revId": "620eaa8fae7de37df39faaf4a5f635d58431190a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
