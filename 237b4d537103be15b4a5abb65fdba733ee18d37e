@@ -112,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ea3f0c6_a33e0a13",
+        "filename": "bazel/properties.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-27T11:47:38Z",
+      "side": 1,
+      "message": "Following up on this, I had to define a bunch of new config_settings\n\nhttps://android-review.googlesource.com/q/topic:bp2build-llvm_prebuilt_library_static",
+      "parentUuid": "a9a40395_f7a983bf",
+      "range": {
+        "startLine": 197,
+        "startChar": 31,
+        "endLine": 197,
+        "endChar": 42
+      },
+      "revId": "237b4d537103be15b4a5abb65fdba733ee18d37e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33fdd923_6d6ceca9",
