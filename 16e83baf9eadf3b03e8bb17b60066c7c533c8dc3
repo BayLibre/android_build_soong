@@ -16,6 +16,24 @@
       "message": "It looks like mixed builds are failing because they expect the names to be\n\ne.g. \n\n//prebuilts/clang/host/linux-x86:libunwind\n\ninstead of\n\n//prebuilts/clang/host/linux-x86:prebuilt_libunwind\n\nNot sure what to do about this. It seems like a Soong convention to add the prebuilt_ prefix? (I am not explicitly adding prebuilt_ anywhere in these CLs).",
       "revId": "16e83baf9eadf3b03e8bb17b60066c7c533c8dc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a8d7654_c4a26b27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-05-27T13:09:46Z",
+      "side": 1,
+      "message": "Added a call to RemoveOptionalPrebuiltPrefix, will see if presubmits pass...",
+      "parentUuid": "45760324_9f79178e",
+      "revId": "16e83baf9eadf3b03e8bb17b60066c7c533c8dc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
