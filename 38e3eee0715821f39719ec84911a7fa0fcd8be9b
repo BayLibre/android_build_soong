@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8c8e253_790376f9",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-05-27T11:01:35Z",
+      "side": 1,
+      "message": "This requires updating `development/vendor_snapshot/update.py` that parses the json file to fill this value automatically.",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 46
+      },
+      "revId": "38e3eee0715821f39719ec84911a7fa0fcd8be9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
