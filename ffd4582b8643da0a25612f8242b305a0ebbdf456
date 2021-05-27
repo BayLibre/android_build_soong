@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a058f3_c09c5c9e",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-27T13:26:57Z",
+      "side": 1,
+      "message": "At some point in time, we should totally de-duplicate these \n\nfor os, tp : range getTargetProperties() {\n  setOsValueForTarget(os, tp.stuff.(*props))\n  for arch, ap :\u003d rangetp.ArchProperties {\n    setOsArchValueForTarget(os, arch, ap.stuff.(*props))\n  }\n}\n\nthingies. Not necessarily in this change, though.",
+      "range": {
+        "startLine": 298,
+        "startChar": 42,
+        "endLine": 298,
+        "endChar": 61
+      },
+      "revId": "ffd4582b8643da0a25612f8242b305a0ebbdf456",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
