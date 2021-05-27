@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f84005a_ba3ab238",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-05-27T06:33:09Z",
+      "side": 1,
+      "message": "As a follow-up task, can we use this, instead of constant strings for the variants?",
+      "range": {
+        "startLine": 264,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 1
+      },
+      "revId": "bd154368c255c73ebd9dc65cf51092d723842de0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
