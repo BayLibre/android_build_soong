@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29b4eb89_2864b5fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-05-27T12:56:23Z",
+      "side": 1,
+      "message": "confirmed this fixed mixed droid.",
+      "revId": "2b07ec7b3bbf101d770dacdc46ebf1f1268c78f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
