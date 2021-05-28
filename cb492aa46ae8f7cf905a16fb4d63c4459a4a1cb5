@@ -22,6 +22,30 @@
       },
       "revId": "cb492aa46ae8f7cf905a16fb4d63c4459a4a1cb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c91c2dd_06447a6c",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-05-28T00:20:57Z",
+      "side": 1,
+      "message": "Thanks for pointing this out, I was not familiar with this functionality.\n\nI have updated the names to the BUILD_BROKEN_* naming convention.",
+      "parentUuid": "769476ea_487e17f5",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 0
+      },
+      "revId": "cb492aa46ae8f7cf905a16fb4d63c4459a4a1cb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
