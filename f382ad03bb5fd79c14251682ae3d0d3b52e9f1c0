@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "831a4bff_b93d014a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-05-31T10:43:28Z",
+      "side": 1,
+      "message": "Liz, WDYT?\n\nI had a bit of time so I thought I\u0027d try reducing the copy-paste logic of\n\n\u003ccode to move code from properties to attributes\u003e\nfor \u003cevery arch\u003e {\n  \u003csame code\u003e\n}\n\nfor \u003cevery target\u003e {\n  \u003csame code\u003e\n  for \u003cevery arch\u003e {\n    \u003csame code\u003e\n  }\n}\n\nBut as time went on, the required number of interface{} went up, so this change is at best a minor improvement. But maybe it\u0027s worth it?",
+      "revId": "f382ad03bb5fd79c14251682ae3d0d3b52e9f1c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
