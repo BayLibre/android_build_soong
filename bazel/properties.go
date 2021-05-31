@@ -331,6 +331,13 @@ type Attribute interface {
 	HasConfigurableValues() bool
 }
 
+type SettableAttribute interface {
+	SetValue(value interface{})
+	SetValueForArch(arch string, value interface{})
+	SetOsValueForTarget(os string, value interface{})
+	SetOsArchValueForTarget(os string, arch string, value interface{})
+}
+
 type labelArchValues struct {
 	X86    Label
 	X86_64 Label
@@ -376,12 +383,12 @@ func (attr *LabelAttribute) GetValueForArch(arch string) Label {
 	return *v
 }
 
-func (attr *LabelAttribute) SetValueForArch(arch string, value Label) {
+func (attr *LabelAttribute) SetValueForArch(arch string, value interface{}) {
 	var v *Label
 	if v = attr.archValuePtrs()[arch]; v == nil {
 		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
-	*v = value
+	*v = value.(Label)
 }
 
 func (attr *LabelAttribute) archValuePtrs() map[string]*Label {
@@ -458,6 +465,22 @@ func (attr *LabelAttribute) setValueForTarget(os string, value labelTargetValue)
 		panic(fmt.Errorf("Unknown os: %s", os))
 	}
 	*v = value
+}
+
+func (attr *LabelAttribute) Set(os, arch string, value Label) {
+	if os == "" && arch == "" {
+		attr.SetValue(value)
+	} else if os == "" {
+		attr.SetValueForArch(arch, value)
+	} else if arch == "" {
+		attr.SetOsValueForTarget(os, value)
+	} else {
+		attr.SetOsArchValueForTarget(os, arch, value)
+	}
+}
+
+func (attr *LabelAttribute) SetValue(value Label) {
+	attr.Value = value
 }
 
 func (attr *LabelAttribute) SetOsValueForTarget(os string, value Label) {
@@ -562,6 +585,10 @@ func MakeLabelListAttribute(value LabelList) LabelListAttribute {
 	return LabelListAttribute{Value: UniqueBazelLabelList(value)}
 }
 
+func MakeLabelListAttributeEmpty() LabelListAttribute {
+	return LabelListAttribute{}
+}
+
 // Append all values, including os and arch specific ones, from another
 // LabelListAttribute to this LabelListAttribute.
 func (attrs *LabelListAttribute) Append(other LabelListAttribute) {
@@ -624,13 +651,29 @@ func (attrs *LabelListAttribute) GetValueForArch(arch string) LabelList {
 	return *v
 }
 
+func (attr *LabelListAttribute) Set(os, arch string, value LabelList) {
+	if os == "" && arch == "" {
+		attr.SetValue(value)
+	} else if os == "" {
+		attr.SetValueForArch(arch, value)
+	} else if arch == "" {
+		attr.SetOsValueForTarget(os, value)
+	} else {
+		attr.SetOsArchValueForTarget(os, arch, value)
+	}
+}
+
+func (attrs *LabelListAttribute) SetValue(value interface{}) {
+	attrs.Value = value.(LabelList)
+}
+
 // SetValueForArch sets the label_list attribute value for an architecture.
-func (attrs *LabelListAttribute) SetValueForArch(arch string, value LabelList) {
+func (attrs *LabelListAttribute) SetValueForArch(arch string, value interface{}) {
 	var v *LabelList
 	if v = attrs.archValuePtrs()[arch]; v == nil {
 		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
-	*v = value
+	*v = value.(LabelList)
 }
 
 func (attrs *LabelListAttribute) targetValuePtrs() map[string]*labelListTargetValue {
@@ -690,12 +733,12 @@ func (attrs *LabelListAttribute) setValueForTarget(os string, value labelListTar
 	*v = value
 }
 
-func (attrs *LabelListAttribute) SetOsValueForTarget(os string, value LabelList) {
+func (attrs *LabelListAttribute) SetOsValueForTarget(os string, value interface{}) {
 	var v *labelListTargetValue
 	if v = attrs.targetValuePtrs()[os]; v == nil {
 		panic(fmt.Errorf("Unknown os: %s", os))
 	}
-	v.OsValue = value
+	v.OsValue = value.(LabelList)
 }
 
 func (attrs *LabelListAttribute) SetOsArchValueForTarget(os string, arch string, value LabelList) {
@@ -744,6 +787,10 @@ type StringListAttribute struct {
 func MakeStringListAttribute(value []string) StringListAttribute {
 	// NOTE: These strings are not necessarily unique or sorted.
 	return StringListAttribute{Value: value}
+}
+
+func MakeStringListAttributeEmpty() StringListAttribute {
+	return StringListAttribute{}
 }
 
 // Arch-specific string_list typed Bazel attribute values. This should correspond
@@ -839,6 +886,22 @@ func (attrs *StringListAttribute) GetValueForArch(arch string) []string {
 		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
 	return *v
+}
+
+func (attr *StringListAttribute) Set(os, arch string, value []string) {
+	if os == "" && arch == "" {
+		attr.SetValue(value)
+	} else if os == "" {
+		attr.SetValueForArch(arch, value)
+	} else if arch == "" {
+		attr.SetOsValueForTarget(os, value)
+	} else {
+		attr.SetOsArchValueForTarget(os, arch, value)
+	}
+}
+
+func (attrs *StringListAttribute) SetValue(value []string) {
+	attrs.Value = value
 }
 
 // SetValueForArch sets the string_list attribute value for an architecture.
