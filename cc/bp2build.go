@@ -15,6 +15,7 @@ package cc
 
 import (
 	"path/filepath"
+	"reflect"
 	"strings"
 
 	"android/soong/android"
@@ -273,59 +274,34 @@ type prebuiltAttributes struct {
 	Src bazel.LabelAttribute
 }
 
+func prebuiltAttributesExtractor(output interface{}, props interface{}, ctx android.TopDownMutatorContext, os, arch string) {
+	attrs := output.(*prebuiltAttributes)
+	plp := props.(*prebuiltLinkerProperties)
+
+	if len(plp.Srcs) > 1 {
+		var suffix string
+		if os == "" && arch == "" {
+			suffix = ""
+		} else if os == "" {
+			suffix = "for arch " + arch
+		} else if arch == "" {
+			suffix = "for os " + os
+		} else {
+			suffix = "for os_arch" + os + "_" + arch
+		}
+
+		ctx.ModuleErrorf("Bp2BuildParsePrebuiltLibraryProps: Expected at most once source file %s\n", suffix)
+	}
+
+	if len(plp.Srcs) == 1 {
+		attrs.Src.Set(os, arch, android.BazelLabelForModuleSrcSingle(ctx, plp.Srcs[0]))
+	}
+}
+
 func Bp2BuildParsePrebuiltLibraryProps(ctx android.TopDownMutatorContext, module *Module) prebuiltAttributes {
-	prebuiltLibraryLinker := module.linker.(*prebuiltLibraryLinker)
-	prebuiltLinker := prebuiltLibraryLinker.prebuiltLinker
-
-	var srcLabelAttribute bazel.LabelAttribute
-
-	if len(prebuiltLinker.properties.Srcs) > 1 {
-		ctx.ModuleErrorf("Bp2BuildParsePrebuiltLibraryProps: Expected at most once source file\n")
-	}
-
-	if len(prebuiltLinker.properties.Srcs) == 1 {
-		srcLabelAttribute.Value = android.BazelLabelForModuleSrcSingle(ctx, prebuiltLinker.properties.Srcs[0])
-		for arch, props := range module.GetArchProperties(ctx, &prebuiltLinkerProperties{}) {
-			if prebuiltLinkerProperties, ok := props.(*prebuiltLinkerProperties); ok {
-				if len(prebuiltLinkerProperties.Srcs) > 1 {
-					ctx.ModuleErrorf("Bp2BuildParsePrebuiltLibraryProps: Expected at most once source file for arch %s\n", arch.Name)
-				}
-				if len(prebuiltLinkerProperties.Srcs) == 1 {
-					srcLabelAttribute.SetValueForArch(arch.Name, android.BazelLabelForModuleSrcSingle(ctx, prebuiltLinkerProperties.Srcs[0]))
-				}
-			}
-		}
-	}
-
-	for os, targetProperties := range module.GetTargetProperties(ctx, &prebuiltLinkerProperties{}) {
-		if prebuiltLinkerProperties, ok := targetProperties.Properties.(*prebuiltLinkerProperties); ok {
-			if len(prebuiltLinkerProperties.Srcs) > 1 {
-				ctx.ModuleErrorf("Bp2BuildParsePrebuiltLibraryProps: Expected at most once source file for os %s\n", os.Name)
-
-			}
-
-			if len(prebuiltLinkerProperties.Srcs) == 1 {
-				srcLabelAttribute.SetOsValueForTarget(os.Name, android.BazelLabelForModuleSrcSingle(ctx, prebuiltLinkerProperties.Srcs[0]))
-			}
-		}
-		for arch, archProperties := range targetProperties.ArchProperties {
-			if prebuiltLinkerProperties, ok := archProperties.(*prebuiltLinkerProperties); ok {
-				if len(prebuiltLinkerProperties.Srcs) > 1 {
-					ctx.ModuleErrorf("Bp2BuildParsePrebuiltLibraryProps: Expected at most once source file for os_arch %s_%s\n", os.Name, arch.Name)
-
-				}
-
-				if len(prebuiltLinkerProperties.Srcs) == 1 {
-					srcLabelAttribute.SetOsArchValueForTarget(os.Name, arch.Name, android.BazelLabelForModuleSrcSingle(ctx, prebuiltLinkerProperties.Srcs[0]))
-				}
-			}
-
-		}
-	}
-
-	return prebuiltAttributes{
-		Src: srcLabelAttribute,
-	}
+	var result prebuiltAttributes
+	parsePropertySets(&result, ctx, module, &BaseLinkerProperties{}, module.linker.linkerProps(), prebuiltAttributesExtractor)
+	return result
 }
 
 // Convenience struct to hold all attributes parsed from compiler properties.
@@ -572,111 +548,57 @@ func getBp2BuildLinkerFlags(linkerProperties *BaseLinkerProperties) []string {
 	return flags
 }
 
+type attributeExtractor func(output interface{}, input interface{}, ctx android.TopDownMutatorContext, os, arch string)
+
+func parsePropertySets(output interface{}, ctx android.TopDownMutatorContext, module *Module, propertySet interface{}, nonconfProps []interface{}, extractor attributeExtractor) {
+	dstType := reflect.ValueOf(propertySet).Type()
+	for _, nonconfProperties := range nonconfProps {
+		srcType := reflect.ValueOf(nonconfProperties).Type()
+		if srcType == dstType {
+			extractor(output, nonconfProperties, ctx, "", "")
+		}
+	}
+
+	for arch, archProperties := range module.GetArchProperties(ctx, propertySet) {
+		extractor(output, archProperties, ctx, "", arch.Name)
+	}
+
+	for os, targetProperties := range module.GetTargetProperties(ctx, propertySet) {
+		extractor(output, targetProperties.Properties, ctx, os.Name, "")
+		for arch, osArchProperties := range targetProperties.ArchProperties {
+			extractor(output, osArchProperties, ctx, os.Name, arch.Name)
+		}
+	}
+}
+
+func getHeaderAndStaticLibs(baseLinkerProps *BaseLinkerProperties) []string {
+	libs := baseLinkerProps.Header_libs
+	libs = append(libs, baseLinkerProps.Static_libs...)
+	libs = android.SortedUniqueStrings(libs)
+	return libs
+}
+
+func baseLinkerPropertiesExtractor(output interface{}, props interface{}, ctx android.TopDownMutatorContext, os, arch string) {
+	attrs := output.(*linkerAttributes)
+	blp := props.(*BaseLinkerProperties)
+
+	attrs.deps.Set(os, arch, android.BazelLabelForModuleDeps(ctx, getHeaderAndStaticLibs(blp)))
+	attrs.exportedDeps.Set(os, arch, android.BazelLabelForModuleDeps(ctx, blp.Export_header_lib_headers))
+	attrs.wholeArchiveDeps.Set(os, arch, android.BazelLabelForModuleDeps(ctx, blp.Whole_static_libs))
+	attrs.dynamicDeps.Set(os, arch, android.BazelLabelForModuleDeps(ctx, blp.Shared_libs))
+	attrs.linkopts.Set(os, arch, getBp2BuildLinkerFlags(blp))
+
+	if blp.Version_script != nil {
+		attrs.versionScript.Set(os, arch, android.BazelLabelForModuleSrcSingle(ctx, *blp.Version_script))
+	}
+}
+
 // bp2BuildParseLinkerProps parses the linker properties of a module, including
 // configurable attribute values.
 func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module) linkerAttributes {
-	var deps bazel.LabelListAttribute
-	var exportedDeps bazel.LabelListAttribute
-	var dynamicDeps bazel.LabelListAttribute
-	var wholeArchiveDeps bazel.LabelListAttribute
-	var linkopts bazel.StringListAttribute
-	var versionScript bazel.LabelAttribute
-
-	getLibs := func(baseLinkerProps *BaseLinkerProperties) []string {
-		libs := baseLinkerProps.Header_libs
-		libs = append(libs, baseLinkerProps.Static_libs...)
-		libs = android.SortedUniqueStrings(libs)
-		return libs
-	}
-
-	for _, linkerProps := range module.linker.linkerProps() {
-		if baseLinkerProps, ok := linkerProps.(*BaseLinkerProperties); ok {
-			libs := getLibs(baseLinkerProps)
-			exportedLibs := baseLinkerProps.Export_header_lib_headers
-			wholeArchiveLibs := baseLinkerProps.Whole_static_libs
-			deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, libs))
-			exportedDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, exportedLibs))
-			linkopts.Value = getBp2BuildLinkerFlags(baseLinkerProps)
-			wholeArchiveDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, wholeArchiveLibs))
-
-			if baseLinkerProps.Version_script != nil {
-				versionScript.Value = android.BazelLabelForModuleSrcSingle(ctx, *baseLinkerProps.Version_script)
-			}
-
-			sharedLibs := baseLinkerProps.Shared_libs
-			dynamicDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, sharedLibs))
-
-			break
-		}
-	}
-
-	for arch, props := range module.GetArchProperties(ctx, &BaseLinkerProperties{}) {
-		if baseLinkerProps, ok := props.(*BaseLinkerProperties); ok {
-			libs := getLibs(baseLinkerProps)
-			exportedLibs := baseLinkerProps.Export_header_lib_headers
-			wholeArchiveLibs := baseLinkerProps.Whole_static_libs
-			deps.SetValueForArch(arch.Name, android.BazelLabelForModuleDeps(ctx, libs))
-			exportedDeps.SetValueForArch(arch.Name, android.BazelLabelForModuleDeps(ctx, exportedLibs))
-			linkopts.SetValueForArch(arch.Name, getBp2BuildLinkerFlags(baseLinkerProps))
-			wholeArchiveDeps.SetValueForArch(arch.Name, android.BazelLabelForModuleDeps(ctx, wholeArchiveLibs))
-
-			if baseLinkerProps.Version_script != nil {
-				versionScript.SetValueForArch(arch.Name,
-					android.BazelLabelForModuleSrcSingle(ctx, *baseLinkerProps.Version_script))
-			}
-
-			sharedLibs := baseLinkerProps.Shared_libs
-			dynamicDeps.SetValueForArch(arch.Name, android.BazelLabelForModuleDeps(ctx, sharedLibs))
-		}
-	}
-
-	for os, targetProperties := range module.GetTargetProperties(ctx, &BaseLinkerProperties{}) {
-		if baseLinkerProps, ok := targetProperties.Properties.(*BaseLinkerProperties); ok {
-			libs := getLibs(baseLinkerProps)
-			exportedLibs := baseLinkerProps.Export_header_lib_headers
-			wholeArchiveLibs := baseLinkerProps.Whole_static_libs
-			wholeArchiveDeps.SetOsValueForTarget(os.Name, android.BazelLabelForModuleDeps(ctx, wholeArchiveLibs))
-			deps.SetOsValueForTarget(os.Name, android.BazelLabelForModuleDeps(ctx, libs))
-			exportedDeps.SetOsValueForTarget(os.Name, android.BazelLabelForModuleDeps(ctx, exportedLibs))
-
-			linkopts.SetOsValueForTarget(os.Name, getBp2BuildLinkerFlags(baseLinkerProps))
-
-			if baseLinkerProps.Version_script != nil {
-				versionScript.SetOsValueForTarget(os.Name, android.BazelLabelForModuleSrcSingle(ctx, *baseLinkerProps.Version_script))
-			}
-
-			sharedLibs := baseLinkerProps.Shared_libs
-			dynamicDeps.SetOsValueForTarget(os.Name, android.BazelLabelForModuleDeps(ctx, sharedLibs))
-		}
-		for arch, archProperties := range targetProperties.ArchProperties {
-			if baseLinkerProps, ok := archProperties.(*BaseLinkerProperties); ok {
-				libs := getLibs(baseLinkerProps)
-				exportedLibs := baseLinkerProps.Export_header_lib_headers
-				wholeArchiveLibs := baseLinkerProps.Whole_static_libs
-				wholeArchiveDeps.SetOsArchValueForTarget(os.Name, arch.Name, android.BazelLabelForModuleDeps(ctx, wholeArchiveLibs))
-				deps.SetOsArchValueForTarget(os.Name, arch.Name, android.BazelLabelForModuleDeps(ctx, libs))
-				exportedDeps.SetOsArchValueForTarget(os.Name, arch.Name, android.BazelLabelForModuleDeps(ctx, exportedLibs))
-
-				linkopts.SetOsArchValueForTarget(os.Name, arch.Name, getBp2BuildLinkerFlags(baseLinkerProps))
-
-				if baseLinkerProps.Version_script != nil {
-					versionScript.SetOsArchValueForTarget(os.Name, arch.Name, android.BazelLabelForModuleSrcSingle(ctx, *baseLinkerProps.Version_script))
-				}
-
-				sharedLibs := baseLinkerProps.Shared_libs
-				dynamicDeps.SetOsArchValueForTarget(os.Name, arch.Name, android.BazelLabelForModuleDeps(ctx, sharedLibs))
-			}
-		}
-	}
-
-	return linkerAttributes{
-		deps:             deps,
-		exportedDeps:     exportedDeps,
-		dynamicDeps:      dynamicDeps,
-		wholeArchiveDeps: wholeArchiveDeps,
-		linkopts:         linkopts,
-		versionScript:    versionScript,
-	}
+	var result linkerAttributes
+	parsePropertySets(&result, ctx, module, &BaseLinkerProperties{}, module.linker.linkerProps(), baseLinkerPropertiesExtractor)
+	return result
 }
 
 // Relativize a list of root-relative paths with respect to the module's

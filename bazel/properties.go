@@ -460,6 +460,22 @@ func (attr *LabelAttribute) setValueForTarget(os string, value labelTargetValue)
 	*v = value
 }
 
+func (attr *LabelAttribute) Set(os, arch string, value Label) {
+	if os == "" && arch == "" {
+		attr.SetValue(value)
+	} else if os == "" {
+		attr.SetValueForArch(arch, value)
+	} else if arch == "" {
+		attr.SetOsValueForTarget(os, value)
+	} else {
+		attr.SetOsArchValueForTarget(os, arch, value)
+	}
+}
+
+func (attr *LabelAttribute) SetValue(value Label) {
+	attr.Value = value
+}
+
 func (attr *LabelAttribute) SetOsValueForTarget(os string, value Label) {
 	var v *labelTargetValue
 	if v = attr.targetValuePtrs()[os]; v == nil {
@@ -622,6 +638,22 @@ func (attrs *LabelListAttribute) GetValueForArch(arch string) LabelList {
 		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
 	return *v
+}
+
+func (attr *LabelListAttribute) Set(os, arch string, value LabelList) {
+	if os == "" && arch == "" {
+		attr.SetValue(value)
+	} else if os == "" {
+		attr.SetValueForArch(arch, value)
+	} else if arch == "" {
+		attr.SetOsValueForTarget(os, value)
+	} else {
+		attr.SetOsArchValueForTarget(os, arch, value)
+	}
+}
+
+func (attrs *LabelListAttribute) SetValue(value interface{}) {
+	attrs.Value = value.(LabelList)
 }
 
 // SetValueForArch sets the label_list attribute value for an architecture.
@@ -839,6 +871,22 @@ func (attrs *StringListAttribute) GetValueForArch(arch string) []string {
 		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
 	return *v
+}
+
+func (attr *StringListAttribute) Set(os, arch string, value []string) {
+	if os == "" && arch == "" {
+		attr.SetValue(value)
+	} else if os == "" {
+		attr.SetValueForArch(arch, value)
+	} else if arch == "" {
+		attr.SetOsValueForTarget(os, value)
+	} else {
+		attr.SetOsArchValueForTarget(os, arch, value)
+	}
+}
+
+func (attrs *StringListAttribute) SetValue(value []string) {
+	attrs.Value = value
 }
 
 // SetValueForArch sets the string_list attribute value for an architecture.
