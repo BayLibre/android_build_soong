@@ -331,6 +331,13 @@ type Attribute interface {
 	HasConfigurableValues() bool
 }
 
+type SettableAttribute interface {
+	SetValue(value interface{})
+	SetValueForArch(arch string, value interface{})
+	SetOsValueForTarget(os string, value interface{})
+	SetOsArchValueForTarget(os string, arch string, value interface{})
+}
+
 type labelArchValues struct {
 	X86    Label
 	X86_64 Label
@@ -376,12 +383,12 @@ func (attr *LabelAttribute) GetValueForArch(arch string) Label {
 	return *v
 }
 
-func (attr *LabelAttribute) SetValueForArch(arch string, value Label) {
+func (attr *LabelAttribute) SetValueForArch(arch string, value interface{}) {
 	var v *Label
 	if v = attr.archValuePtrs()[arch]; v == nil {
 		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
-	*v = value
+	*v = value.(Label)
 }
 
 func (attr *LabelAttribute) archValuePtrs() map[string]*Label {
@@ -460,30 +467,34 @@ func (attr *LabelAttribute) setValueForTarget(os string, value labelTargetValue)
 	*v = value
 }
 
-func (attr *LabelAttribute) SetOsValueForTarget(os string, value Label) {
+func (attr *LabelAttribute) SetValue(value interface{}) {
+	attr.Value = value.(Label)
+}
+
+func (attr *LabelAttribute) SetOsValueForTarget(os string, value interface{}) {
 	var v *labelTargetValue
 	if v = attr.targetValuePtrs()[os]; v == nil {
 		panic(fmt.Errorf("Unknown os: %s", os))
 	}
-	v.OsValue = value
+	v.OsValue = value.(Label)
 }
 
-func (attr *LabelAttribute) SetOsArchValueForTarget(os string, arch string, value Label) {
+func (attr *LabelAttribute) SetOsArchValueForTarget(os string, arch string, value interface{}) {
 	var v *labelTargetValue
 	if v = attr.targetValuePtrs()[os]; v == nil {
 		panic(fmt.Errorf("Unknown os: %s", os))
 	}
 	switch arch {
 	case ARCH_X86:
-		v.ArchValues.X86 = value
+		v.ArchValues.X86 = value.(Label)
 	case ARCH_X86_64:
-		v.ArchValues.X86_64 = value
+		v.ArchValues.X86_64 = value.(Label)
 	case ARCH_ARM:
-		v.ArchValues.Arm = value
+		v.ArchValues.Arm = value.(Label)
 	case ARCH_ARM64:
-		v.ArchValues.Arm64 = value
+		v.ArchValues.Arm64 = value.(Label)
 	case CONDITIONS_DEFAULT:
-		v.ArchValues.ConditionsDefault = value
+		v.ArchValues.ConditionsDefault = value.(Label)
 	default:
 		panic(fmt.Errorf("Unknown arch: %s\n", arch))
 	}
@@ -562,6 +573,10 @@ func MakeLabelListAttribute(value LabelList) LabelListAttribute {
 	return LabelListAttribute{Value: UniqueBazelLabelList(value)}
 }
 
+func MakeLabelListAttributeEmpty() LabelListAttribute {
+	return LabelListAttribute{}
+}
+
 // Append all values, including os and arch specific ones, from another
 // LabelListAttribute to this LabelListAttribute.
 func (attrs *LabelListAttribute) Append(other LabelListAttribute) {
@@ -624,13 +639,17 @@ func (attrs *LabelListAttribute) GetValueForArch(arch string) LabelList {
 	return *v
 }
 
+func (attrs *LabelListAttribute) SetValue(value interface{}) {
+	attrs.Value = value.(LabelList)
+}
+
 // SetValueForArch sets the label_list attribute value for an architecture.
-func (attrs *LabelListAttribute) SetValueForArch(arch string, value LabelList) {
+func (attrs *LabelListAttribute) SetValueForArch(arch string, value interface{}) {
 	var v *LabelList
 	if v = attrs.archValuePtrs()[arch]; v == nil {
 		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
-	*v = value
+	*v = value.(LabelList)
 }
 
 func (attrs *LabelListAttribute) targetValuePtrs() map[string]*labelListTargetValue {
@@ -690,30 +709,31 @@ func (attrs *LabelListAttribute) setValueForTarget(os string, value labelListTar
 	*v = value
 }
 
-func (attrs *LabelListAttribute) SetOsValueForTarget(os string, value LabelList) {
+func (attrs *LabelListAttribute) SetOsValueForTarget(os string, value interface{}) {
 	var v *labelListTargetValue
 	if v = attrs.targetValuePtrs()[os]; v == nil {
 		panic(fmt.Errorf("Unknown os: %s", os))
 	}
-	v.OsValue = value
+	v.OsValue = value.(LabelList)
 }
 
-func (attrs *LabelListAttribute) SetOsArchValueForTarget(os string, arch string, value LabelList) {
+func (attrs *LabelListAttribute) SetOsArchValueForTarget(os string, arch string, value interface{}) {
+	labelListValue := value.(LabelList)
 	var v *labelListTargetValue
 	if v = attrs.targetValuePtrs()[os]; v == nil {
 		panic(fmt.Errorf("Unknown os: %s", os))
 	}
 	switch arch {
 	case ARCH_X86:
-		v.ArchValues.X86 = value
+		v.ArchValues.X86 = labelListValue
 	case ARCH_X86_64:
-		v.ArchValues.X86_64 = value
+		v.ArchValues.X86_64 = labelListValue
 	case ARCH_ARM:
-		v.ArchValues.Arm = value
+		v.ArchValues.Arm = labelListValue
 	case ARCH_ARM64:
-		v.ArchValues.Arm64 = value
+		v.ArchValues.Arm64 = labelListValue
 	case CONDITIONS_DEFAULT:
-		v.ArchValues.ConditionsDefault = value
+		v.ArchValues.ConditionsDefault = labelListValue
 	default:
 		panic(fmt.Errorf("Unknown arch: %s\n", arch))
 	}
@@ -744,6 +764,10 @@ type StringListAttribute struct {
 func MakeStringListAttribute(value []string) StringListAttribute {
 	// NOTE: These strings are not necessarily unique or sorted.
 	return StringListAttribute{Value: value}
+}
+
+func MakeStringListAttributeEmpty() StringListAttribute {
+	return StringListAttribute{}
 }
 
 // Arch-specific string_list typed Bazel attribute values. This should correspond
@@ -841,13 +865,17 @@ func (attrs *StringListAttribute) GetValueForArch(arch string) []string {
 	return *v
 }
 
+func (attrs *StringListAttribute) SetValue(value interface{}) {
+	attrs.Value = value.([]string)
+}
+
 // SetValueForArch sets the string_list attribute value for an architecture.
-func (attrs *StringListAttribute) SetValueForArch(arch string, value []string) {
+func (attrs *StringListAttribute) SetValueForArch(arch string, value interface{}) {
 	var v *[]string
 	if v = attrs.archValuePtrs()[arch]; v == nil {
 		panic(fmt.Errorf("Unknown arch: %s", arch))
 	}
-	*v = value
+	*v = value.([]string)
 }
 
 func (attrs *StringListAttribute) targetValuePtrs() map[string]*stringListTargetValue {
@@ -913,30 +941,30 @@ func (attrs *StringListAttribute) SortedProductVariables() []ProductVariableValu
 	return vals
 }
 
-func (attrs *StringListAttribute) SetOsValueForTarget(os string, value []string) {
+func (attrs *StringListAttribute) SetOsValueForTarget(os string, value interface{}) {
 	var v *stringListTargetValue
 	if v = attrs.targetValuePtrs()[os]; v == nil {
 		panic(fmt.Errorf("Unknown os: %s", os))
 	}
-	v.OsValue = value
+	v.OsValue = value.([]string)
 }
 
-func (attrs *StringListAttribute) SetOsArchValueForTarget(os string, arch string, value []string) {
+func (attrs *StringListAttribute) SetOsArchValueForTarget(os string, arch string, value interface{}) {
 	var v *stringListTargetValue
 	if v = attrs.targetValuePtrs()[os]; v == nil {
 		panic(fmt.Errorf("Unknown os: %s", os))
 	}
 	switch arch {
 	case ARCH_X86:
-		v.ArchValues.X86 = value
+		v.ArchValues.X86 = value.([]string)
 	case ARCH_X86_64:
-		v.ArchValues.X86_64 = value
+		v.ArchValues.X86_64 = value.([]string)
 	case ARCH_ARM:
-		v.ArchValues.Arm = value
+		v.ArchValues.Arm = value.([]string)
 	case ARCH_ARM64:
-		v.ArchValues.Arm64 = value
+		v.ArchValues.Arm64 = value.([]string)
 	case CONDITIONS_DEFAULT:
-		v.ArchValues.ConditionsDefault = value
+		v.ArchValues.ConditionsDefault = value.([]string)
 	default:
 		panic(fmt.Errorf("Unknown arch: %s\n", arch))
 	}
