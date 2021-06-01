@@ -46,6 +46,30 @@
       },
       "revId": "fdc2f256c44aa637952c4e6d3752d18a7bc8ec2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43d32539_690bc97d",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-01T21:02:32Z",
+      "side": 1,
+      "message": "Long term I think you want the falsy behavior of BUILD_BROKEN_SRC_DIR_IS_WRITABLE.  It\u0027s only during the transition from default writable to default read-only that you need the default state to be true.  Also, BUILD_BROKEN_SRC_DIR_IS_RO doesn\u0027t make sense, because a read only source directory is not broken, it is the desired state.",
+      "parentUuid": "9604144e_06ea4ce9",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 29
+      },
+      "revId": "fdc2f256c44aa637952c4e6d3752d18a7bc8ec2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
