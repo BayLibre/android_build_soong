@@ -16,6 +16,23 @@
       "message": "Verified on partner device.",
       "revId": "7fdc336b9fb47ba6f740bc9108a180d9808b4cdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3528e3c_8dddc047",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-01T16:44:05Z",
+      "side": 1,
+      "message": "If you can change the name in make arbitrarily based on the existence of other variations, why not always use the suffixed names for consistency?  Won\u0027t it cause problems if creating a new variant of a module suddenly causes the names in make to shift around?",
+      "revId": "7fdc336b9fb47ba6f740bc9108a180d9808b4cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
