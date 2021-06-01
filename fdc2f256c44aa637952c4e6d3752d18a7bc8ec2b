@@ -22,6 +22,30 @@
       },
       "revId": "fdc2f256c44aa637952c4e6d3752d18a7bc8ec2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9604144e_06ea4ce9",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-06-01T20:28:29Z",
+      "side": 1,
+      "message": "IIUC, this workflow can be realized using the current implementation as well, albeit the mirror opposite (i.e. we can set BUILD_BROKEN_SRC_DIR_IS_RO :\u003d true on some products to catch generic issues)\n\nMy reasoning for preferring BUILD_BROKEN_SRC_DIR_IS_RO over BUILD_BROKEN_SRC_DIR_IS_WRITABLE is\n```\nBy default, this boolean env var will be missing in all of our product_configs. Unset booleans are considered \"falsy\" in many languages. Defaulting missing BUILD_BROKEN_SRC_DIR_IS_RO to false ensures that this CL would not change the existing RW nature of the source tree\n```\n\nWill inverting it to BUILD_BROKEN_SRC_DIR_IS_WRITABLE align it how we use BUILD_BROKEN_* flags during builds? I am a Noogler so it is likely that I might be missing some nuances",
+      "parentUuid": "3d1dac45_d8c9d758",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 29
+      },
+      "revId": "fdc2f256c44aa637952c4e6d3752d18a7bc8ec2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
