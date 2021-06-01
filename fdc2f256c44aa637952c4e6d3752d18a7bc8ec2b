@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d1dac45_d8c9d758",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-01T19:21:14Z",
+      "side": 1,
+      "message": "I think you would normally invert this logic, so BUILD_BROKEN_SRC_DIR_IS_WRITABLE, then start with \u003d\u003d \"false\" below.  You could then set BUILD_BROKEN_SRC_DIR_IS_WRITABLE :\u003d false on a few of our products to catch generic issues.  Then once you\u0027ve fixed all the broken partner products to set BUILD_BROKEN_SRC_DIR_IS_WRITABLE :\u003d true you can switch the logic here to \u003d\u003d \"true\".",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 29
+      },
+      "revId": "fdc2f256c44aa637952c4e6d3752d18a7bc8ec2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
