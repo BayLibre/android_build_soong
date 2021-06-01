@@ -1236,10 +1236,6 @@ func (module *SdkLibrary) distGroup() string {
 	if group := proptools.String(module.sdkLibraryProperties.Dist_group); group != "" {
 		return group
 	}
-	// TODO(b/186723288): Remove this once everything uses dist_group.
-	if owner := module.ModuleBase.Owner(); owner != "" {
-		return owner
-	}
 	return "unknown"
 }
 
