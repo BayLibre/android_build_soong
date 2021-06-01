@@ -70,6 +70,30 @@
       },
       "revId": "fdc2f256c44aa637952c4e6d3752d18a7bc8ec2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5144382b_2fcecc21",
+        "filename": "ui/build/dumpvars.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-06-01T21:47:24Z",
+      "side": 1,
+      "message": "This makes sense to me now, thanks for clarifying.\nI have updated it to BUILD_BROKEN_SRC_DIR_IS_WRITABLE",
+      "parentUuid": "43d32539_690bc97d",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 29
+      },
+      "revId": "fdc2f256c44aa637952c4e6d3752d18a7bc8ec2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
