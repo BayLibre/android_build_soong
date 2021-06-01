@@ -33,6 +33,41 @@
       "message": "If you can change the name in make arbitrarily based on the existence of other variations, why not always use the suffixed names for consistency?  Won\u0027t it cause problems if creating a new variant of a module suddenly causes the names in make to shift around?",
       "revId": "7fdc336b9fb47ba6f740bc9108a180d9808b4cdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1029cb77_63004d2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2021-06-01T16:53:03Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "7fdc336b9fb47ba6f740bc9108a180d9808b4cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c300913_b8f99d38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380269
+      },
+      "writtenOn": "2021-06-01T16:53:03Z",
+      "side": 1,
+      "message": "The problem was that if say, a vendor variation and a recovery variation but no core variation was present, then the core variation was used, then the core variation was use, causing a duplicate module, as shown in http://b/188717568#comment10.\n\nA similar problem was solved when there was a vendor and a product variation but\nno core variation, in https://r.android.com/1714569.",
+      "parentUuid": "d3528e3c_8dddc047",
+      "revId": "7fdc336b9fb47ba6f740bc9108a180d9808b4cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
