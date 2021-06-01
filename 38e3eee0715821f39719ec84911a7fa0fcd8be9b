@@ -22,6 +22,30 @@
       },
       "revId": "38e3eee0715821f39719ec84911a7fa0fcd8be9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dfd4c6b_88aaaf0c",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-06-01T19:27:59Z",
+      "side": 1,
+      "message": "Ack, thanks! I\u0027ll put together a CL for the update script and create a topic to associate this one with it.",
+      "parentUuid": "c8c8e253_790376f9",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 46
+      },
+      "revId": "38e3eee0715821f39719ec84911a7fa0fcd8be9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
