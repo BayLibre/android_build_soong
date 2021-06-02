@@ -1690,6 +1690,15 @@ func (l *ConfiguredJarList) BuildPaths(ctx PathContext, dir OutputPath) Writable
 	return paths
 }
 
+// BuildPaths returns a list of build paths based on the given directory prefix.
+func (l *ConfiguredJarList) BuildPathsByModule(ctx PathContext, dir OutputPath) map[string]WritablePath {
+	paths := map[string]WritablePath{}
+	for _, jar := range l.jars {
+		paths[jar] = dir.Join(ctx, ModuleStem(jar)+".jar")
+	}
+	return paths
+}
+
 // UnmarshalJSON converts JSON configuration from raw bytes into a
 // ConfiguredJarList structure.
 func (l *ConfiguredJarList) UnmarshalJSON(b []byte) error {
