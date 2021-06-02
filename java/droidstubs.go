@@ -430,11 +430,7 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 		cmd.FlagWithInputList("-classpath ", classpath.Paths(), ":")
 	}
 
-	if len(sourcepaths) > 0 {
-		cmd.FlagWithList("-sourcepath ", sourcepaths.Strings(), ":")
-	} else {
-		cmd.FlagWithArg("-sourcepath ", `""`)
-	}
+	cmd.FlagWithArg("-sourcepath ", `""`)
 
 	cmd.Flag("--no-banner").
 		Flag("--color").
