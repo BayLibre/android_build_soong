@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4dbab73_373cf789",
+        "filename": "bazel/properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1881820
+      },
+      "writtenOn": "2021-06-02T20:17:49Z",
+      "side": 1,
+      "message": "I\u0027m guessing these were all imported from Java/Android or similar.  The names don\u0027t match Go style which are always camelcase.  \n\nSeparately I have no idea what a good way of writing x86_64 as a Go variable name.  x8664 is what I think the style guide states but that isn\u0027t readable. \n\n(You can also access the enums from a proto if you already have one instead of defining one in Go.  )",
+      "range": {
+        "startLine": 239,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 20
+      },
+      "revId": "caacdbfb7441a2a618f43d60f22e873c2d3d1730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b952562e_2345ba44",
+        "filename": "bazel/properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1881820
+      },
+      "writtenOn": "2021-06-02T20:17:49Z",
+      "side": 1,
+      "message": "Instead of having a field per target (and similar for os/arch) what about something like:\n\ntype OSTarget int\n\nconst (\n\tOSTargetDefault OSTarget \u003d iota\n\tAndroid \n\tDarwin\n\tFuchsia\n\tLinux\n\tLinuxBionic\n\tWindows\n\t\n\tInvalidOSTarget\n)\n\ntype ArchTarget int \n\nconst (\n\tArchTargetDefault ArchTarget \u003d iota\n\tX86\n\tX86_64\n\tArm\n\tArm64\n\t\n\tInvalidArchTarget\n)\n\ntype labelTargetValues map[OSTarget]labelTargetValue\n\ntype labelArchValues map[Arch]Label\n\n\nfunc (attr *LabelAttribute) SetOsArchValueForTarget(os OSTarget, arch ArchTarget, value Label) {\n\tif !attr.validTarget(os,arch) {\n\t\tpanic(fmt.Errorf(\"no target for os %q and arch %q\", os, arch))\n\t}\n\tattr.TargetValues[os].ArchValues[arch] \u003d value\n}\n\nfunc validTarget(os OSTarget, arch ArchTarget) bool {\n\tif os \u003c OSTargetDefault || os \u003e\u003dInvalidOSTarget {\n\t\treturn false\n\t}\n\tif arch \u003c ArchTargetDefault || arch \u003e\u003d InvalidArchTarget {\n\t\treturn false\n\t}\n\t// The next nil checks could be done once in an init routine somewhere.\n\t// I wouldn\u0027t expect the performance cost to be too high, but I don\u0027t\n\t// know your workload.\n\tif attr.TargetValues \u003d\u003d nil {\n\t\tattr.TargetValues \u003d make(labelTargetValues)\n\t}\n\tif attr.TargetValues[os] \u003d\u003d nil {\n\t\tattr.TargetValues[os] \u003d make(labelArchValues)\n\t}\n\treturn true\n}\n\n\nYou can also make some helper functions to go from a string to the enum values for each entry.  \n\nAnd can do:\n\nfunc (a ArchTarget) String() {\n\tswitch a {\n\tcase ArchTargetDefault: return \"conditions_default\"\n\tcase X86: return \"x86\"\n\tcase X86_64: return \"x86_64\"\n\tcase Arm: return \"Arm\"\n\tcase Arm64: return \"Arm64\"\n\t}\n\treturn fmt.Sprintf(\"unknown value %d\", a)\n}\n\nfor easy output.\n\nNames you\u0027ll likely want to tweak and adjust - I used existing type names to help link to existing code but if you like this approach we can find better names for this layout.\n\nWith this approach, adding a new arch type/os is updating the enum constant mapping functions.\n\nAnother advantage to this approach that I like is the boilerplate code is more obviously now in support functions rather than part of the main code path.  Reading this code understanding how \tif v \u003d attr.targetValuePtrs()[os]; v \u003d\u003d nil {\nworked tooke me some time.",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 29
+      },
+      "revId": "caacdbfb7441a2a618f43d60f22e873c2d3d1730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdaebb18_3e579ab2",
+        "filename": "bazel/properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1881820
+      },
+      "writtenOn": "2021-06-02T20:17:49Z",
+      "side": 1,
+      "message": "As a future cleanup, SetOSValueForTarget would be the proper name.  Os should be OS as its an acronym.\n\nSee go/go-style/decisions#initialisms",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 37
+      },
+      "revId": "caacdbfb7441a2a618f43d60f22e873c2d3d1730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88ce534e_ce273214",
+        "filename": "bazel/properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1881820
+      },
+      "writtenOn": "2021-06-02T20:17:49Z",
+      "side": 1,
+      "message": "Is this only called from Set?  \n\nKeeping it around for symmetry with the other Set functions is ok, but in general inlining the assignment would be more idiomatic.",
+      "range": {
+        "startLine": 475,
+        "startChar": 0,
+        "endLine": 475,
+        "endChar": 51
+      },
+      "revId": "caacdbfb7441a2a618f43d60f22e873c2d3d1730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5b272f1_1d63e334",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1881820
+      },
+      "writtenOn": "2021-06-02T20:17:49Z",
+      "side": 1,
+      "message": "ctx should probably be first.  For consistency with other methods.",
+      "range": {
+        "startLine": 195,
+        "startChar": 98,
+        "endLine": 195,
+        "endChar": 101
+      },
+      "revId": "caacdbfb7441a2a618f43d60f22e873c2d3d1730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3179d81e_95ea4d6f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1881820
+      },
+      "writtenOn": "2021-06-02T20:17:49Z",
+      "side": 1,
+      "message": "Can this return a statisOrSharedAttributes instead?  If it\u0027s setting all the fields, then its more natural to make this a return value rather than an output parameter.",
+      "range": {
+        "startLine": 195,
+        "startChar": 33,
+        "endLine": 195,
+        "endChar": 64
+      },
+      "revId": "caacdbfb7441a2a618f43d60f22e873c2d3d1730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93cc39d8_0c7ef9a9",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1881820
+      },
+      "writtenOn": "2021-06-02T20:17:49Z",
+      "side": 1,
+      "message": "Looking at the StaticProperties and SharedProperties type, I\u0027m not sure why they\u0027re needed.\n\nIt feels like you can always just pass StaticOrSharedProperties everywhere instead. And the comment on that type didn\u0027t help me understand why it\u0027s needed.\n\nIf you really need the separate types, then do:\n\ntype StaticProperties struct {\n  static StaticOrSharedProperties\n}\n\nfunc (p StaticProperties) Properties() StaticOrSharedProperties {\n  return p.static\n}\n\ntype SharedProperties struct {\n  shared StaticOrSharedProperties\n}\n\nfunc (p SharredProperties) Properties() StaticOrSharedProperties {\n  return p.shared\n}\n\nThen in the code here you\u0027d have:\n\ntype propertyAccessor interface {\n  func Properties() StaticOrSharedProperties\n}\n\nfunc bp2buildParseStaticOrSharedProps(...) staticOrSharedAttributes {\n  var nonconf []propertyAccessor\n  if isStatic {\n    nonconf \u003d []propertyFetcher{lib.StaticProperties.GetProperties()}\n  } else {\n    nonconf \u003d []propertyFetcher{lib.SharedProperties.GetProperties()}\n  }\n  \n  attrs :\u003d staticOrSharedAttributes{}\n  extractor :\u003d func(_ interface{}, input interface{}, ctx ..., arch string) {\n    setStaticOrSharedAttributes(\u0026attrs, input.(propertyFetcher).GetProperties(), ctx, os, arch)\n  }    \n   \n  var template interface{}\n  if isStatic {\n    template \u003d \u0026StaticProperties{}\n  } else {\n    template \u003d \u0026SharedProperties{}\n  }\n  parsePropertySets(\u0026attrs, ctx, module, template, nonconf, extractor)\n  return attrs\n}\n\nYou can also modify the extractor to always capture the variable too:\ntype attributeExtractor func(input interface{}, ctx android.TopDownMutatorContext, os, arch string)\n\nfunc extractorForPrebuiltAttributes(attr *prebuiltAttributes) {\n\treturn func(input interface{}, ctx ..., os, arch string) {\n\t\tplp :\u003d props.(*prebuiltLinkerProperties)\n\n\t\tif len(plp.Srcs) \u003e 1 {\n\t\t\tvar suffix string\n\t// rest of function as existing prebuiltAttributesExtractor\n\nI\u0027m not 100% sure this is better, but given 1 out of 3 uses you\u0027re already doing this (here - you capture attrs instead of typecasting) I think it simplifies things.\n\nCasting the input is probably unavoidable since there are tons of different fields and such cared about.  But I think that\u0027s ok.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 26
+      },
+      "revId": "caacdbfb7441a2a618f43d60f22e873c2d3d1730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02ce8bc_59114fbd",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1881820
+      },
+      "writtenOn": "2021-06-02T20:17:49Z",
+      "side": 1,
+      "message": "Nit - I\u0027d flip this and do \"if len(plp.Srcs) \u003d\u003d 0 { return}\".  Possibly before the other length check.",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 24
+      },
+      "revId": "caacdbfb7441a2a618f43d60f22e873c2d3d1730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
