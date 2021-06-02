@@ -64,6 +64,13 @@ type LabelList struct {
 	Excludes []Label
 }
 
+func (ll *LabelList) deepCopy() LabelList {
+	return LabelList{
+		Includes: ll.Includes[:],
+		Excludes: ll.Excludes[:],
+	}
+}
+
 // uniqueParentDirectories returns a list of the unique parent directories for
 // all files in ll.Includes.
 func (ll *LabelList) uniqueParentDirectories() []string {
@@ -494,6 +501,30 @@ func (lla *LabelListAttribute) Append(other LabelListAttribute) {
 // architecture-specific label_list values.
 func (lla LabelListAttribute) HasConfigurableValues() bool {
 	return len(lla.ConfigurableValues) > 0
+}
+
+func (lla *LabelListAttribute) ResolveExcludes() {
+	for axis, configToLabels := range lla.ConfigurableValues {
+		baseLabels := lla.Value.deepCopy()
+		for config, val := range configToLabels {
+			allLabels := baseLabels.deepCopy()
+			allLabels.Append(val)
+			lla.Value = SubtractBazelLabelList(lla.Value, LabelList{Includes: val.Excludes})
+			allLabels = SubtractBazelLabelList(allLabels, LabelList{Includes: allLabels.Excludes})
+			lla.ConfigurableValues[axis][config] = allLabels
+		}
+
+		// After going through all configs, delete the duplicate files for the config
+		// values that are already in the base srcs.Value.
+		for config, val := range configToLabels {
+			lla.ConfigurableValues[axis][config] = SubtractBazelLabelList(val, lla.Value)
+		}
+
+		// Now that the Value list is finalized for this axis, compare it with the original
+		// list, and put the difference into the default condition for the arch
+		// select.
+		lla.ConfigurableValues[axis][CONDITIONS_DEFAULT] = SubtractBazelLabelList(baseLabels, lla.Value)
+	}
 }
 
 // StringListAttribute corresponds to the string_list Bazel attribute type with
