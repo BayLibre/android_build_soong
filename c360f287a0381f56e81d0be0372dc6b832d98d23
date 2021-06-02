@@ -16,6 +16,92 @@
       "message": "The Treehugger failure seems unrelated (I\u0027m able to reproduce without this patch set).",
       "revId": "c360f287a0381f56e81d0be0372dc6b832d98d23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74a720af_b61d6b16",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1994,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-02T22:19:09Z",
+      "side": 1,
+      "message": "This should probably be a panic, since its not something an end user could act on.  It\u0027s also useful to use %T to print the type of the tag for debugging.",
+      "range": {
+        "startLine": 1994,
+        "startChar": 3,
+        "endLine": 1994,
+        "endChar": 48
+      },
+      "revId": "c360f287a0381f56e81d0be0372dc6b832d98d23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4df59eb3_59d87eef",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-02T22:19:09Z",
+      "side": 1,
+      "message": "prefer nil over an empty list",
+      "range": {
+        "startLine": 632,
+        "startChar": 12,
+        "endLine": 632,
+        "endChar": 27
+      },
+      "revId": "c360f287a0381f56e81d0be0372dc6b832d98d23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de180e51_c214fcfa",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-02T22:19:09Z",
+      "side": 1,
+      "message": "prefer nil over an empty list",
+      "revId": "c360f287a0381f56e81d0be0372dc6b832d98d23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f09df13e_cbbac5d2",
+        "filename": "cc/util.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-02T22:19:09Z",
+      "side": 1,
+      "message": "This seems better suited for testing.go",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 1
+      },
+      "revId": "c360f287a0381f56e81d0be0372dc6b832d98d23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
