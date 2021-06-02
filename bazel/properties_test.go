@@ -163,3 +163,88 @@ func TestUniqueBazelLabelList(t *testing.T) {
 		}
 	}
 }
+
+func makeLabelList(includes, excludes []string) LabelList {
+	var includeLabels []Label
+	var excludeLabels []Label
+	for _, i := range includes {
+		includeLabels = append(includeLabels, Label{Label: i})
+	}
+	for _, i := range excludes {
+		excludeLabels = append(includeLabels, Label{Label: i})
+	}
+	return LabelList{
+		Includes: includeLabels,
+		Excludes: excludeLabels,
+	}
+}
+
+func TestResolveExcludes(t *testing.T) {
+	attr := LabelListAttribute{
+		Value: makeLabelList(
+			[]string{
+				"all_include",
+				"arm_exclude",
+				"android_exclude",
+			},
+			[]string{"all_exclude"},
+		),
+		ConfigurableValues: configurableLabelLists{
+			ArchConfigurationAxis: labelListSelectValues{
+				"arm": makeLabelList([]string{}, []string{"arm_exclude"}),
+				"x86": makeLabelList([]string{"x86_include"}, []string{}),
+			},
+			OsConfigurationAxis: labelListSelectValues{
+				"android": makeLabelList([]string{}, []string{"android_exclude"}),
+				"linux":   makeLabelList([]string{"linux_include"}, []string{}),
+			},
+			ArchOsConfigurationAxis: labelListSelectValues{
+				"linux_x86": makeLabelList([]string{"linux_x86_include"}, []string{}),
+			},
+		},
+	}
+
+	attr.ResolveExcludes()
+
+	expectedBaseIncludes := []Label{Label{Label: "all_include"}}
+	if !reflect.DeepEqual(expectedBaseIncludes, attr.Value.Includes) {
+		t.Errorf("Expected Value includes %q, got %q", attr.Value.Includes, expectedBaseIncludes)
+	}
+	var nilLabels []Label
+	expectedConfiguredIncludes := map[ConfigurationAxis]map[string][]Label{
+		ArchConfigurationAxis: map[string][]Label{
+			"arm":                nilLabels,
+			"x86":                []Label{Label{Label: "arm_exclude"}, Label{Label: "x86_include"}},
+			"conditions_default": []Label{Label{Label: "arm_exclude"}},
+		},
+		OsConfigurationAxis: map[string][]Label{
+			"android":            nilLabels,
+			"linux":              []Label{Label{Label: "android_exclude"}, Label{Label: "linux_include"}},
+			"conditions_default": []Label{Label{Label: "android_exclude"}},
+		},
+		ArchOsConfigurationAxis: map[string][]Label{
+			"linux_x86":          []Label{Label{Label: "linux_x86_include"}},
+			"conditions_default": nilLabels,
+		},
+	}
+	for _, axis := range attr.SortedConfigurationAxes() {
+		if _, ok := expectedConfiguredIncludes[axis]; !ok {
+			t.Errorf("Found unexpected axis %s", axis)
+			continue
+		}
+		expectedForAxis := expectedConfiguredIncludes[axis]
+		gotForAxis := attr.ConfigurableValues[axis]
+		if len(expectedForAxis) != len(gotForAxis) {
+			t.Errorf("Expected %d configs for %s, got %d: %s", len(expectedForAxis), axis, len(gotForAxis), gotForAxis)
+		}
+		for config, value := range gotForAxis {
+			if expected, ok := expectedForAxis[config]; ok {
+				if !reflect.DeepEqual(expected, value.Includes) {
+					t.Errorf("For %s, expected: %#v, got %#v", axis, expected, value.Includes)
+				}
+			} else {
+				t.Errorf("Got unexpected config %q for %s", config, axis)
+			}
+		}
+	}
+}
