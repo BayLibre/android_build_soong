@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3fd78d4_9f548390",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-02T06:09:54Z",
+      "side": 1,
+      "message": "Thanks for the fix! I was wondering if my refactoring was the cause but from the change description, it appears that it was 😞",
+      "revId": "f3bdbcbea3fb07d41ff7cf554e0f4db645890944",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
