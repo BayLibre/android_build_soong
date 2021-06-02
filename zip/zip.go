@@ -656,9 +656,9 @@ func (z *ZipWriter) addFile(dest, src string, method uint16, emulateJar, srcJar 
 			UncompressedSize64: uint64(fileSize),
 		}
 
-		mode := os.FileMode(0600)
+		mode := os.FileMode(0666)
 		if executable {
-			mode = 0700
+			mode = 0777
 		}
 		header.SetMode(mode)
 
