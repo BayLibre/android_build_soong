@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62d1e102_1aec04e5",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-02T09:09:36Z",
+      "side": 1,
+      "message": "A minor improvement would be to add FixtureWithLastReleaseApis(\"sdklib_no_owner\", \"sdklib_owner_foo\", ...) here and remove the \"unsafe_ignore_missing_latest_api\" property in the tests.\n\nThe latter is not recommended to be used.",
+      "revId": "30c491b885c3dbd9094146b1e8054f3d62e2f55a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
