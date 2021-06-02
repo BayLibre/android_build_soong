@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "611baf2d_79bdba14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-02T08:21:48Z",
+      "side": 1,
+      "message": "doesn\u0027t this need to be in a topic with a bunch of Android.bp updates?",
+      "revId": "93a557e941cade38e8c0b1dc719aafbeb1a55958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
