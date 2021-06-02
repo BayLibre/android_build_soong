@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "325ff178_9d72d597",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-02T21:31:31Z",
+      "side": 1,
+      "message": "Can you add a description here on why this is useful?",
+      "revId": "b944337e05b437a944a7442fb383205754b5cd0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d8543c3_a2cc060f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-02T21:31:31Z",
+      "side": 1,
+      "message": "Add Bug: 189919409",
+      "revId": "b944337e05b437a944a7442fb383205754b5cd0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85006918_fddb4670",
+        "filename": "jar/jar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-02T21:31:31Z",
+      "side": 1,
+      "message": "Make this 0755",
+      "range": {
+        "startLine": 80,
+        "startChar": 19,
+        "endLine": 80,
+        "endChar": 23
+      },
+      "revId": "b944337e05b437a944a7442fb383205754b5cd0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89116177_548394ba",
+        "filename": "jar/jar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-02T21:31:31Z",
+      "side": 1,
+      "message": "Make this 0644",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 16
+      },
+      "revId": "b944337e05b437a944a7442fb383205754b5cd0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f210df_25dd5db9",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-02T21:31:31Z",
+      "side": 1,
+      "message": "I think you\u0027re right, this should be 0644 not 0666, since this is the permission in the zip not on disk so umask won\u0027t apply.",
+      "range": {
+        "startLine": 659,
+        "startChar": 22,
+        "endLine": 659,
+        "endChar": 26
+      },
+      "revId": "b944337e05b437a944a7442fb383205754b5cd0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db054a72_6a086a6e",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-02T21:31:31Z",
+      "side": 1,
+      "message": "0755 here",
+      "range": {
+        "startLine": 661,
+        "startChar": 10,
+        "endLine": 661,
+        "endChar": 14
+      },
+      "revId": "b944337e05b437a944a7442fb383205754b5cd0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc94f45f_74992b0e",
+        "filename": "zip/zip.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 958,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-02T21:31:31Z",
+      "side": 1,
+      "message": "Make this 0755",
+      "range": {
+        "startLine": 958,
+        "startChar": 22,
+        "endLine": 958,
+        "endChar": 26
+      },
+      "revId": "b944337e05b437a944a7442fb383205754b5cd0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
