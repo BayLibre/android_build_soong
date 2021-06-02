@@ -68,6 +68,24 @@
       "parentUuid": "d3528e3c_8dddc047",
       "revId": "7fdc336b9fb47ba6f740bc9108a180d9808b4cdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35aa86c0_4f19f07d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-02T03:27:53Z",
+      "side": 1,
+      "message": "+2 to unblock, but I think a future improvement would be to use the Vendor, Vendor_available, etc. properties to know what variants were created instead of using OtherModuleFarVariationDependencyExists, or to store the list of variants in a property in the image mutator.",
+      "parentUuid": "9c300913_b8f99d38",
+      "revId": "7fdc336b9fb47ba6f740bc9108a180d9808b4cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
