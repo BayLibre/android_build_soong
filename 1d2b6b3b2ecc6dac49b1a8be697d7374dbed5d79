@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b18d8883_88e6af69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-02T09:12:31Z",
+      "side": 1,
+      "message": "Is the plan to cherry pick this to sc-dev? Moving files in one branch but not another would create a huge potential for conflicts.",
+      "revId": "1d2b6b3b2ecc6dac49b1a8be697d7374dbed5d79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
