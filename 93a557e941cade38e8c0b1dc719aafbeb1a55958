@@ -34,6 +34,24 @@
       "parentUuid": "611baf2d_79bdba14",
       "revId": "93a557e941cade38e8c0b1dc719aafbeb1a55958",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30bc4277_abc5bf9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-02T14:36:32Z",
+      "side": 1,
+      "message": "The Android.bp updates span AOSP and internal vendor projects, so a topic won\u0027t work, but yes, submitting this will have to wait for Android.bp changes.",
+      "parentUuid": "28a2110e_7a346a1e",
+      "revId": "93a557e941cade38e8c0b1dc719aafbeb1a55958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
