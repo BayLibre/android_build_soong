@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ca8566_1916af04",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-02T09:20:22Z",
+      "side": 1,
+      "message": "Based on comments below it seems as though you will be switching the default to \"unknown\" once you have migrated everything to set this explicitly. I think it would be worth mentioning in this comment that the default will change.\n\nI\u0027ve just noticed the follow up change that changes the default. If you can do it quickly then there is no need to update this comment. However, if it is going to take a while to make the updates (I suspect that it will) then I think it would still be worth updating the comment.",
+      "revId": "986b69aa51062309f58923eee8571e824d1896d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dabbb4c_800ca17d",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-02T09:20:22Z",
+      "side": 1,
+      "message": "AFAICT the core_lib property is never specified in .bp files so you could remove it and simplify this even further. Maybe in a follow up change.",
+      "revId": "986b69aa51062309f58923eee8571e824d1896d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
