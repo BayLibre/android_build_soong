@@ -16,6 +16,24 @@
       "message": "A minor improvement would be to add FixtureWithLastReleaseApis(\"sdklib_no_owner\", \"sdklib_owner_foo\", ...) here and remove the \"unsafe_ignore_missing_latest_api\" property in the tests.\n\nThe latter is not recommended to be used.",
       "revId": "30c491b885c3dbd9094146b1e8054f3d62e2f55a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "858f7150_e6ed4b63",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-02T14:31:30Z",
+      "side": 1,
+      "message": "Thanks, in the interest of getting this in to allow submitting the dist_group changes spread around the tree I\u0027ll fix this in a follow-up CL.",
+      "parentUuid": "62d1e102_1aec04e5",
+      "revId": "30c491b885c3dbd9094146b1e8054f3d62e2f55a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
