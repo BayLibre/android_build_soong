@@ -164,11 +164,68 @@ func depsBp2BuildMutator(ctx android.BottomUpMutatorContext) {
 // staticOrSharedAttributes are the Bazel-ified versions of StaticOrSharedProperties --
 // properties which apply to either the shared or static version of a cc_library module.
 type staticOrSharedAttributes struct {
-	copts            bazel.StringListAttribute
-	srcs             bazel.LabelListAttribute
+	srcs    bazel.LabelListAttribute
+	srcs_c  bazel.LabelListAttribute
+	srcs_as bazel.LabelListAttribute
+
+	copts bazel.StringListAttribute
+
 	staticDeps       bazel.LabelListAttribute
 	dynamicDeps      bazel.LabelListAttribute
 	wholeArchiveDeps bazel.LabelListAttribute
+}
+
+func groupSrcsByExtension(ctx android.TopDownMutatorContext, srcs bazel.LabelListAttribute) (cppSrcs, cSrcs, asSrcs bazel.LabelListAttribute) {
+	// Branch srcs into three language-specific groups.
+	// C++ is the "catch-all" group, and comprises generated sources because we don't
+	// know the language of these sources until the genrule is executed.
+	// TODO(b/): Handle language detection of sources in a Bazel rule.
+	isCSrc := func(s string) bool {
+		return strings.HasSuffix(s, ".c") || strings.HasSuffix(s, "_c_srcs")
+	}
+
+	isAsmSrc := func(s string) bool {
+		return strings.HasSuffix(s, ".S") || strings.HasSuffix(s, ".s") || strings.HasSuffix(s, "_as_srcs")
+	}
+
+	cppFilegroup := func(s string) string {
+		ctx.VisitDirectDeps(func(m android.Module) {
+			if strings.Contains(s, m.Name()) && !strings.HasSuffix(s, "_cpp_srcs") && ctx.OtherModuleType(m) == "filegroup" {
+				s = s + "_cpp_srcs"
+				return
+			}
+		})
+		return s
+	}
+	cFilegroup := func(s string) string {
+		ctx.VisitDirectDeps(func(m android.Module) {
+			if strings.Contains(s, m.Name()) && !strings.HasSuffix(s, "_c_srcs") && ctx.OtherModuleType(m) == "filegroup" {
+				s = s + "_c_srcs"
+				return
+			}
+		})
+		return s
+	}
+	asFilegroup := func(s string) string {
+		ctx.VisitDirectDeps(func(m android.Module) {
+			if strings.Contains(s, m.Name()) && !strings.HasSuffix(s, "_as_srcs") && ctx.OtherModuleType(m) == "filegroup" {
+				s = s + "_as_srcs"
+				return
+			}
+		})
+		return s
+	}
+
+	cSrcs = bazel.MapLabelListAttribute(srcs, cFilegroup)
+	cSrcs = bazel.FilterLabelListAttribute(cSrcs, isCSrc)
+
+	asSrcs = bazel.MapLabelListAttribute(srcs, asFilegroup)
+	asSrcs = bazel.FilterLabelListAttribute(asSrcs, isAsmSrc)
+
+	cppSrcs = bazel.MapLabelListAttribute(srcs, cppFilegroup)
+	cppSrcs = bazel.SubtractBazelLabelListAttribute(cppSrcs, cSrcs)
+	cppSrcs = bazel.SubtractBazelLabelListAttribute(cppSrcs, asSrcs)
+	return
 }
 
 // bp2buildParseSharedProps returns the attributes for the shared variant of a cc_library.
@@ -264,6 +321,11 @@ func bp2buildParseStaticOrSharedProps(ctx android.TopDownMutatorContext, module 
 			}
 		}
 	}
+
+	cppSrcs, cSrcs, asSrcs := groupSrcsByExtension(ctx, attrs.srcs)
+	attrs.srcs = cppSrcs
+	attrs.srcs_c = cSrcs
+	attrs.srcs_as = asSrcs
 
 	return attrs
 }
@@ -528,20 +590,8 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 		}
 	}
 
-	// Branch srcs into three language-specific groups.
-	// C++ is the "catch-all" group, and comprises generated sources because we don't
-	// know the language of these sources until the genrule is executed.
-	// TODO(b/): Handle language detection of sources in a Bazel rule.
-	isCSrc := func(s string) bool {
-		return strings.HasSuffix(s, ".c")
-	}
-	isAsmSrc := func(s string) bool {
-		return strings.HasSuffix(s, ".S") || strings.HasSuffix(s, ".s")
-	}
-	cSrcs := bazel.FilterLabelListAttribute(srcs, isCSrc)
-	asSrcs := bazel.FilterLabelListAttribute(srcs, isAsmSrc)
-	srcs = bazel.SubtractBazelLabelListAttribute(srcs, cSrcs)
-	srcs = bazel.SubtractBazelLabelListAttribute(srcs, asSrcs)
+	srcs, cSrcs, asSrcs := groupSrcsByExtension(ctx, srcs)
+
 	return compilerAttributes{
 		copts:      copts,
 		srcs:       srcs,
