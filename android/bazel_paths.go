@@ -100,6 +100,21 @@ func BazelLabelForModuleDeps(ctx BazelConversionPathContext, modules []string) b
 	return labels
 }
 
+// BazelLabelForModuleDeps expects two lists, one to include, one to exclude, of reference to other
+// modules, ("<module>" or ":<module>") and returns a Bazel-compatible label which corresponds to
+// dependencies on the module within the given ctx.
+func BazelLabelForModuleDepsExcludes(ctx BazelConversionPathContext, modules, excludes []string) bazel.LabelList {
+	moduleLabels := BazelLabelForModuleDeps(ctx, RemoveListFromList(modules, excludes))
+	if len(excludes) == 0 {
+		return moduleLabels
+	}
+	excludeLabels := BazelLabelForModuleDeps(ctx, excludes)
+	return bazel.LabelList{
+		Includes: moduleLabels.Includes,
+		Excludes: excludeLabels.Includes,
+	}
+}
+
 func BazelLabelForModuleSrcSingle(ctx BazelConversionPathContext, path string) bazel.Label {
 	return BazelLabelForModuleSrcExcludes(ctx, []string{path}, []string(nil)).Includes[0]
 }
