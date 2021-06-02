@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80d7ad93_1abdad57",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-02T17:27:59Z",
+      "side": 1,
+      "message": "I chatted a bit with ioffe@ about compressed APEXes, and it appears to be an open question whether the APEXes going into git repos for prebuilts are to be compressed or not. If they are, I think this script and the other stuff handling prebuilts need to be updated. I\u0027ll bring that up with the modularization team tomorrow.\n\nIn any case, this will keep things running as they are for now.",
+      "revId": "d365449fae7fa4518d06236cc4ce794d2ec5b909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
