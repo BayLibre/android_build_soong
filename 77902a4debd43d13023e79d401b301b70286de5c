@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d792eca0_66b68c94",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1236,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-02T08:24:06Z",
+      "side": 1,
+      "message": "could this be StringDefault now? (and if it\u0027s only used in one place, maybe inline it?)",
+      "range": {
+        "startLine": 1236,
+        "startChar": 23,
+        "endLine": 1236,
+        "endChar": 29
+      },
+      "revId": "77902a4debd43d13023e79d401b301b70286de5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
