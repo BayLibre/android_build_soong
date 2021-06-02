@@ -22,6 +22,30 @@
       },
       "revId": "77902a4debd43d13023e79d401b301b70286de5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "631a2b13_bedef3ee",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1236,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-02T09:21:50Z",
+      "side": 1,
+      "message": "+1 to StringDefault but I think having it as a separate method is better.",
+      "parentUuid": "d792eca0_66b68c94",
+      "range": {
+        "startLine": 1236,
+        "startChar": 23,
+        "endLine": 1236,
+        "endChar": 29
+      },
+      "revId": "77902a4debd43d13023e79d401b301b70286de5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
