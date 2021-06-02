@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05a3a415_446ae32b",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-02T14:33:41Z",
+      "side": 1,
+      "message": "I\u0027m planning to submit these very quickly, I already have the AOSP CLs queued, then I\u0027ll do the internal ones, then submit the CL to change the default.",
+      "parentUuid": "e7ca8566_1916af04",
+      "revId": "986b69aa51062309f58923eee8571e824d1896d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3dabbb4c_800ca17d",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-02T09:20:22Z",
       "side": 1,
       "message": "AFAICT the core_lib property is never specified in .bp files so you could remove it and simplify this even further. Maybe in a follow up change.",
+      "revId": "986b69aa51062309f58923eee8571e824d1896d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60cd496e_1852bf87",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1206,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-02T14:33:41Z",
+      "side": 1,
+      "message": "I\u0027ll do this in a follow up change.",
+      "parentUuid": "3dabbb4c_800ca17d",
       "revId": "986b69aa51062309f58923eee8571e824d1896d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
