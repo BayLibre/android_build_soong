@@ -16,6 +16,24 @@
       "message": "... though we again have merge conflicts",
       "revId": "40b94944b2c612c9b2f98005eb2e1046375ce111",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "effc2c69_86302fcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-06-02T13:26:04Z",
+      "side": 1,
+      "message": "Resolved the conflicts, thanks for the heads up!",
+      "parentUuid": "17af2b0b_e1fb2eec",
+      "revId": "40b94944b2c612c9b2f98005eb2e1046375ce111",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
