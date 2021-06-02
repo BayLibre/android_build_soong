@@ -106,14 +106,23 @@ func (xi *interpolateExpr) emit(gctx *generationContext) {
 		format += "%s" + strings.ReplaceAll(chunk, "%", "%%")
 	}
 	gctx.writef("%q %% ", format)
+	emitarg := func(arg starlarkExpr) {
+		if arg.typ() == starlarkTypeList {
+			gctx.write(`" ".join(`)
+			arg.emit(gctx)
+			gctx.write(`)`)
+		} else {
+			arg.emit(gctx)
+		}
+	}
 	if len(xi.args) == 1 {
-		xi.args[0].emit(gctx)
+		emitarg(xi.args[0])
 	} else {
 		sep := "("
 		for _, arg := range xi.args {
 			gctx.write(sep)
+			emitarg(arg)
 			sep = ", "
-			arg.emit(gctx)
 		}
 		gctx.write(")")
 	}

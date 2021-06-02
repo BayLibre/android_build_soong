@@ -715,6 +715,22 @@ def init(g, handle):
       ["framework-minus-apex"])
 `,
 	},
+	{
+		desc:   "strip function",
+		mkname: "product.mk",
+		in: `
+ifeq ($(filter hwaddress,$(PRODUCT_PACKAGES)),)
+   PRODUCT_PACKAGES := $(strip $(PRODUCT_PACKAGES) hwaddress)
+endif
+`,
+		expected: `load("//build/make/core:product_config.rbc", "rblf")
+
+def init(g, handle):
+  cfg = rblf.cfg(handle)
+  if "hwaddress" not in cfg.get("PRODUCT_PACKAGES", []):
+    cfg["PRODUCT_PACKAGES"] = (rblf.mkstrip("%s hwaddress" % " ".join(cfg.get("PRODUCT_PACKAGES", [])))).split()
+`,
+	},
 }
 
 var known_variables = []struct {
