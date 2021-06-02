@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b0353bd_8e001eac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-02T10:19:46Z",
+      "side": 1,
+      "message": "PTAL! I quite like this new approach:\n\n- It factors out the \"default, then arch, then OS, then os/arch\" logic into one place\n- It factors out the logic to parse Bazel attributes out from BaseLinkerProperties into one place\n- Doesn\u0027t require too much use of interface{}\n- It potentially simplifies attributes by merging the Set* methods\n- It goes in the same direction as Jin\u0027s aosp/1719031\n\nIf y\u0027all agree that this is a good approach, I\u0027ll refactor the rest of the places and submit this for real review.",
+      "revId": "abe0055e2356150479b6f5201a69a55d48002bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
