@@ -293,29 +293,15 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 		return copts
 	}
 
-	// baseSrcs contain the list of src files that are used for every configuration.
-	var baseSrcs []string
-	// baseExcludeSrcs contain the list of src files that are excluded for every configuration.
-	var baseExcludeSrcs []string
-	// baseSrcsLabelList is a clone of the base srcs LabelList, used for computing the
-	// arch or os specific srcs later.
-	var baseSrcsLabelList bazel.LabelList
-
-	// Parse srcs from an arch or OS's props value, taking the base srcs and
-	// exclude srcs into account.
+	// Parse srcs from an arch or OS's props value.
 	parseSrcs := func(baseCompilerProps *BaseCompilerProperties) bazel.LabelList {
-		// Combine the base srcs and arch-specific srcs
-		allSrcs := append(baseSrcs, baseCompilerProps.Srcs...)
 		// Add srcs-like dependencies such as generated files.
 		// First create a LabelList containing these dependencies, then merge the values with srcs.
 		generatedHdrsAndSrcs := baseCompilerProps.Generated_headers
 		generatedHdrsAndSrcs = append(generatedHdrsAndSrcs, baseCompilerProps.Generated_sources...)
-
 		generatedHdrsAndSrcsLabelList := android.BazelLabelForModuleDeps(ctx, generatedHdrsAndSrcs)
 
-		// Combine the base exclude_srcs and configuration-specific exclude_srcs
-		allExcludeSrcs := append(baseExcludeSrcs, baseCompilerProps.Exclude_srcs...)
-		allSrcsLabelList := android.BazelLabelForModuleSrcExcludes(ctx, allSrcs, allExcludeSrcs)
+		allSrcsLabelList := android.BazelLabelForModuleSrcExcludes(ctx, baseCompilerProps.Srcs, baseCompilerProps.Exclude_srcs)
 		return bazel.AppendBazelLabelLists(allSrcsLabelList, generatedHdrsAndSrcsLabelList)
 	}
 
@@ -327,10 +313,6 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 			conlyFlags.Value = parseCommandLineFlags(baseCompilerProps.Conlyflags)
 			cppFlags.Value = parseCommandLineFlags(baseCompilerProps.Cppflags)
 
-			// Used for arch-specific srcs later.
-			baseSrcs = baseCompilerProps.Srcs
-			baseSrcsLabelList = parseSrcs(baseCompilerProps)
-			baseExcludeSrcs = baseCompilerProps.Exclude_srcs
 			break
 		}
 	}
@@ -354,8 +336,6 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 				if len(baseCompilerProps.Srcs) > 0 || len(baseCompilerProps.Exclude_srcs) > 0 {
 					srcsList := parseSrcs(baseCompilerProps)
 					srcs.SetSelectValue(axis, config, srcsList)
-					// The base srcs value should not contain any arch-specific excludes.
-					srcs.SetValue(bazel.SubtractBazelLabelList(srcs.Value, bazel.LabelList{Includes: srcsList.Excludes}))
 				}
 
 				copts.SetSelectValue(axis, config, parseCopts(baseCompilerProps))
@@ -366,24 +346,7 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 		}
 	}
 
-	// After going through all archs, delete the duplicate files in the arch
-	// values that are already in the base srcs.Value.
-	for axis, configToProps := range archVariantCompilerProps {
-		for config, props := range configToProps {
-			if _, ok := props.(*BaseCompilerProperties); ok {
-				// TODO: handle non-arch
-				srcs.SetSelectValue(axis, config, bazel.SubtractBazelLabelList(srcs.SelectValue(axis, config), srcs.Value))
-			}
-		}
-	}
-
-	// Now that the srcs.Value list is finalized, compare it with the original
-	// list, and put the difference into the default condition for the arch
-	// select.
-	for axis := range archVariantCompilerProps {
-		defaultsSrcs := bazel.SubtractBazelLabelList(baseSrcsLabelList, srcs.Value)
-		srcs.SetSelectValue(axis, bazel.ConditionsDefault, defaultsSrcs)
-	}
+	srcs.ResolveExcludes()
 
 	productVarPropNameToAttribute := map[string]*bazel.StringListAttribute{
 		"Cflags":   &copts,
