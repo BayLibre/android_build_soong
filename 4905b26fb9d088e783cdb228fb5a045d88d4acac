@@ -22,6 +22,30 @@
       },
       "revId": "4905b26fb9d088e783cdb228fb5a045d88d4acac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08d44f5f_17f6f52f",
+        "filename": "rust/rust.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1236,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-06-02T13:25:13Z",
+      "side": 1,
+      "message": "Whoops, thanks! I normally grep for these to remove them :)",
+      "parentUuid": "32d642e6_bfa92606",
+      "range": {
+        "startLine": 1234,
+        "startChar": 0,
+        "endLine": 1236,
+        "endChar": 5
+      },
+      "revId": "4905b26fb9d088e783cdb228fb5a045d88d4acac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
