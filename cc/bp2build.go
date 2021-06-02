@@ -384,7 +384,7 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 					ctx.ModuleErrorf("Could not convert product variable %s property", proptools.PropertyNameForField(propName))
 				}
 				newFlags, _ := bazel.TryVariableSubstitutions(flags, prop.ProductConfigVariable)
-				attr.SetSelectValue(bazel.ProductVariableConfigurationAxis(prop.ProductConfigVariable), prop.ProductConfigVariable, newFlags)
+				attr.SetSelectValue(bazel.ProductVariableConfigurationAxis(prop.FullConfig), prop.FullConfig, newFlags)
 			}
 		}
 	}
@@ -440,37 +440,32 @@ func getBp2BuildLinkerFlags(linkerProperties *BaseLinkerProperties) []string {
 // bp2BuildParseLinkerProps parses the linker properties of a module, including
 // configurable attribute values.
 func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module) linkerAttributes {
-	var deps bazel.LabelListAttribute
+	var headerDeps bazel.LabelListAttribute
+	var staticDeps bazel.LabelListAttribute
 	var exportedDeps bazel.LabelListAttribute
 	var dynamicDeps bazel.LabelListAttribute
 	var wholeArchiveDeps bazel.LabelListAttribute
 	var linkopts bazel.StringListAttribute
 	var versionScript bazel.LabelAttribute
 
-	getLibs := func(baseLinkerProps *BaseLinkerProperties) []string {
-		libs := baseLinkerProps.Header_libs
-		libs = append(libs, baseLinkerProps.Static_libs...)
-		libs = android.SortedUniqueStrings(libs)
-		return libs
-	}
-
 	for _, linkerProps := range module.linker.linkerProps() {
 		if baseLinkerProps, ok := linkerProps.(*BaseLinkerProperties); ok {
-			libs := getLibs(baseLinkerProps)
+			headerDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, baseLinkerProps.Header_libs))
+			staticDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDepsExcludes(ctx, baseLinkerProps.Static_libs, baseLinkerProps.Exclude_static_libs))
+			// TODO: also handle export_static_lib_headers, export_sahred_lib_headers,
+			// export_generated-headers
 			exportedLibs := baseLinkerProps.Export_header_lib_headers
-			wholeArchiveLibs := baseLinkerProps.Whole_static_libs
-			deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, libs))
 			exportedDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, exportedLibs))
 			linkopts.Value = getBp2BuildLinkerFlags(baseLinkerProps)
-			wholeArchiveDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, wholeArchiveLibs))
+			wholeArchiveLibs := baseLinkerProps.Whole_static_libs
+			wholeArchiveDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDepsExcludes(ctx, wholeArchiveLibs, baseLinkerProps.Exclude_static_libs))
 
 			if baseLinkerProps.Version_script != nil {
 				versionScript.SetValue(android.BazelLabelForModuleSrcSingle(ctx, *baseLinkerProps.Version_script))
 			}
 
 			sharedLibs := baseLinkerProps.Shared_libs
-			dynamicDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, sharedLibs))
-
+			dynamicDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDepsExcludes(ctx, sharedLibs, baseLinkerProps.Exclude_shared_libs))
 			break
 		}
 	}
@@ -478,26 +473,76 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 	for axis, configToProps := range module.GetArchVariantProperties(ctx, &BaseLinkerProperties{}) {
 		for config, props := range configToProps {
 			if baseLinkerProps, ok := props.(*BaseLinkerProperties); ok {
-				libs := getLibs(baseLinkerProps)
+				headerDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, baseLinkerProps.Header_libs))
+				staticDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDepsExcludes(ctx, baseLinkerProps.Static_libs, baseLinkerProps.Exclude_static_libs))
 				exportedLibs := baseLinkerProps.Export_header_lib_headers
-				wholeArchiveLibs := baseLinkerProps.Whole_static_libs
-				deps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, libs))
 				exportedDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, exportedLibs))
 				linkopts.SetSelectValue(axis, config, getBp2BuildLinkerFlags(baseLinkerProps))
-				wholeArchiveDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, wholeArchiveLibs))
+				wholeArchiveLibs := baseLinkerProps.Whole_static_libs
+				wholeArchiveDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDepsExcludes(ctx, wholeArchiveLibs, baseLinkerProps.Exclude_static_libs))
 
 				if baseLinkerProps.Version_script != nil {
 					versionScript.SetSelectValue(axis, config, android.BazelLabelForModuleSrcSingle(ctx, *baseLinkerProps.Version_script))
 				}
 
 				sharedLibs := baseLinkerProps.Shared_libs
-				dynamicDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, sharedLibs))
+				dynamicDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDepsExcludes(ctx, sharedLibs, baseLinkerProps.Exclude_shared_libs))
 			}
 		}
 	}
 
+	type productVarDep struct {
+		excludesField string
+		attribute     *bazel.LabelListAttribute
+	}
+
+	productVarToDepFields := map[string]productVarDep{
+		"Shared_libs":       productVarDep{attribute: &dynamicDeps},
+		"Static_libs":       productVarDep{"Exclude_static_libs", &staticDeps},
+		"Whole_static_libs": productVarDep{"Exclude_static_libs", &wholeArchiveDeps},
+	}
+
+	productVariableProps := android.ProductVariableProperties(ctx)
+	for name, dep := range productVarToDepFields {
+		props, exists := productVariableProps[name]
+		excludeProps, excludesExists := productVariableProps[dep.excludesField]
+		if !exists && !excludesExists {
+			continue
+		}
+		configs := make([]string, 0, len(props)+len(excludeProps))
+		for config := range props {
+			configs = append(configs, config)
+		}
+		for config := range excludeProps {
+			configs = append(configs, config)
+		}
+
+		for _, config := range configs {
+			prop, includesExists := props[config]
+			excludesProp := excludeProps[config]
+			var includes, excludes []string
+			var ok bool
+			if includes, ok = prop.Property.([]string); includesExists && !ok {
+				ctx.ModuleErrorf("Could not convert product variable %s property", name)
+			}
+			if excludesExists {
+				if excludes, ok = excludesProp.Property.([]string); !ok {
+					ctx.ModuleErrorf("Could not convert product variable %s property", dep.excludesField)
+				}
+			}
+			val := android.BazelLabelForModuleDepsExcludes(ctx, includes, excludes)
+			dep.attribute.SetSelectValue(bazel.ProductVariableConfigurationAxis(config), config, val)
+		}
+	}
+
+	staticDeps.ResolveExcludes()
+	dynamicDeps.ResolveExcludes()
+	wholeArchiveDeps.ResolveExcludes()
+
+	headerDeps.Append(staticDeps)
+
 	return linkerAttributes{
-		deps:             deps,
+		deps:             headerDeps,
 		exportedDeps:     exportedDeps,
 		dynamicDeps:      dynamicDeps,
 		wholeArchiveDeps: wholeArchiveDeps,

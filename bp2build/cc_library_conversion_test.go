@@ -851,3 +851,160 @@ func TestCcLibraryLabelAttributeGetTargetProperties(t *testing.T) {
 )`},
 	})
 }
+
+func TestCcLibraryExcludeLibs(t *testing.T) {
+	runCcLibraryTestCase(t, bp2buildTestCase{
+		moduleTypeUnderTest:                "cc_library",
+		moduleTypeUnderTestFactory:         cc.LibraryFactory,
+		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
+		depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
+		filesystem:                         map[string]string{},
+		blueprint: soongCcLibraryStaticPreamble + `
+cc_library {
+    name: "foo_static",
+    srcs: ["common.c"],
+    whole_static_libs: [
+        "arm_whole_static_lib_excludes",
+        "malloc_not_svelte_whole_static_lib_excludes"
+    ],
+    static_libs: [
+        "arm_static_lib_excludes",
+        "malloc_not_svelte_static_lib_excludes"
+    ],
+    shared_libs: [
+        "arm_shared_lib_excludes",
+    ],
+    arch: {
+        arm: {
+            exclude_shared_libs: [
+                 "arm_shared_lib_excludes",
+            ],
+            exclude_static_libs: [
+                "arm_static_lib_excludes",
+                "arm_whole_static_lib_excludes",
+            ],
+        },
+    },
+    product_variables: {
+        malloc_not_svelte: {
+            shared_libs: ["malloc_not_svelte_shared_lib"],
+            whole_static_libs: ["malloc_not_svelte_whole_static_lib"],
+            exclude_static_libs: [
+                "malloc_not_svelte_static_lib_excludes",
+                "malloc_not_svelte_whole_static_lib_excludes",
+            ],
+        },
+    },
+}
+
+cc_library {
+    name: "arm_whole_static_lib_excludes",
+}
+
+cc_library {
+    name: "malloc_not_svelte_whole_static_lib",
+}
+
+cc_library {
+    name: "malloc_not_svelte_whole_static_lib_excludes",
+}
+
+
+cc_library {
+    name: "arm_static_lib_excludes",
+}
+
+cc_library {
+    name: "malloc_not_svelte_static_lib_excludes",
+}
+
+cc_library {
+    name: "arm_shared_lib_excludes",
+}
+
+cc_library {
+    name: "malloc_not_svelte_shared_lib",
+}
+`,
+		expectedBazelTargets: []string{
+			`cc_library(
+    name = "arm_shared_lib_excludes",
+    copts = [
+        "-I.",
+        "-I$(BINDIR)/.",
+    ],
+)`,
+			`cc_library(
+    name = "arm_static_lib_excludes",
+    copts = [
+        "-I.",
+        "-I$(BINDIR)/.",
+    ],
+)`,
+			`cc_library(
+    name = "arm_whole_static_lib_excludes",
+    copts = [
+        "-I.",
+        "-I$(BINDIR)/.",
+    ],
+)`,
+			`cc_library(
+    name = "foo_static",
+    copts = [
+        "-I.",
+        "-I$(BINDIR)/.",
+    ],
+    dynamic_deps = select({
+        "//build/bazel/platforms/arch:arm": [],
+        "//conditions:default": [":arm_shared_lib_excludes"],
+    }) + select({
+        "//build/bazel/product_variables:malloc_not_svelte": [":malloc_not_svelte_shared_lib"],
+        "//conditions:default": [],
+    }),
+    implementation_deps = select({
+        "//build/bazel/platforms/arch:arm": [],
+        "//conditions:default": [":arm_static_lib_excludes"],
+    }) + select({
+        "//build/bazel/product_variables:malloc_not_svelte": [],
+        "//conditions:default": [":malloc_not_svelte_static_lib_excludes"],
+    }),
+    srcs_c = ["common.c"],
+    whole_archive_deps = select({
+        "//build/bazel/platforms/arch:arm": [],
+        "//conditions:default": [":arm_whole_static_lib_excludes"],
+    }) + select({
+        "//build/bazel/product_variables:malloc_not_svelte": [":malloc_not_svelte_whole_static_lib"],
+        "//conditions:default": [":malloc_not_svelte_whole_static_lib_excludes"],
+    }),
+)`,
+			`cc_library(
+    name = "malloc_not_svelte_shared_lib",
+    copts = [
+        "-I.",
+        "-I$(BINDIR)/.",
+    ],
+)`,
+			`cc_library(
+    name = "malloc_not_svelte_static_lib_excludes",
+    copts = [
+        "-I.",
+        "-I$(BINDIR)/.",
+    ],
+)`,
+			`cc_library(
+    name = "malloc_not_svelte_whole_static_lib",
+    copts = [
+        "-I.",
+        "-I$(BINDIR)/.",
+    ],
+)`,
+			`cc_library(
+    name = "malloc_not_svelte_whole_static_lib_excludes",
+    copts = [
+        "-I.",
+        "-I$(BINDIR)/.",
+    ],
+)`,
+		},
+	})
+}
