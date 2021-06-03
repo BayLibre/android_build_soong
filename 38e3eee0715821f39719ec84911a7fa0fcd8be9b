@@ -70,6 +70,30 @@
       },
       "revId": "38e3eee0715821f39719ec84911a7fa0fcd8be9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6f7c57a_96e1a925",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-06-03T04:32:33Z",
+      "side": 1,
+      "message": "Thanks, Ivan. This does not need to be in the same topic.",
+      "parentUuid": "62cdec83_e4ccb963",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 46
+      },
+      "revId": "38e3eee0715821f39719ec84911a7fa0fcd8be9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
