@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b115ced6_eec10723",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-03T08:20:55Z",
+      "side": 1,
+      "message": "Simplification FTW. Thanks!",
+      "revId": "3efcc80fd64bbac5a6bdd777ab58bf54684993a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee49dff_49ef623d",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-03T08:20:55Z",
+      "side": 1,
+      "message": "nit: Should this be OsArch, since the Soong keys all take the form of \u003cos\u003e_\u003carch\u003e, like android_arm?",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 8
+      },
+      "revId": "3efcc80fd64bbac5a6bdd777ab58bf54684993a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ecc1428_a1b5efe1",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-03T08:20:55Z",
+      "side": 1,
+      "message": "Add godoc for exported functions, here and below.",
+      "range": {
+        "startLine": 67,
+        "startChar": 28,
+        "endLine": 67,
+        "endChar": 37
+      },
+      "revId": "3efcc80fd64bbac5a6bdd777ab58bf54684993a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b0a5515_a3c166a5",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-03T08:20:55Z",
+      "side": 1,
+      "message": "I think Platform{Arch,Os,Target}Map can be moved into this file and made package-private, since they are no longer referenced from the bp2build package.",
+      "range": {
+        "startLine": 73,
+        "startChar": 9,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "3efcc80fd64bbac5a6bdd777ab58bf54684993a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45fc5af4_5917ec26",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-03T08:20:55Z",
+      "side": 1,
+      "message": "Add some documentation here please?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 15
+      },
+      "revId": "3efcc80fd64bbac5a6bdd777ab58bf54684993a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57586285_4c134583",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-03T08:20:55Z",
+      "side": 1,
+      "message": "Do you expect to use this elsewhere? If not, inline?",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 28
+      },
+      "revId": "3efcc80fd64bbac5a6bdd777ab58bf54684993a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24c468c9_1c4f6270",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-03T08:20:55Z",
+      "side": 1,
+      "message": "I don\u0027t see errorContext used anywhere.",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 1
+      },
+      "revId": "3efcc80fd64bbac5a6bdd777ab58bf54684993a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
