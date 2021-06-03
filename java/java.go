@@ -667,6 +667,7 @@ func LibraryHostFactory() android.Module {
 
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 
+	android.InitBazelModule(module)
 	android.InitApexModule(module)
 	android.InitSdkAwareModule(module)
 	InitJavaModule(module, android.HostSupported)
@@ -975,6 +976,9 @@ func JavaTestImportFactory() android.Module {
 func TestHostFactory() android.Module {
 	module := &TestHost{}
 
+	android.InitBazelModule(module)
+	module.BazelModuleBase.SetSyntheticTargetStrategy(android.GenerationStrategyTest)
+
 	module.addHostProperties()
 	module.AddProperties(&module.testProperties)
 	module.AddProperties(&module.testHostProperties)
@@ -1105,6 +1109,7 @@ func BinaryHostFactory() android.Module {
 
 	module.Module.properties.Installable = proptools.BoolPtr(true)
 
+	android.InitBazelModule(module)
 	android.InitAndroidArchModule(module, android.HostSupported, android.MultilibCommonFirst)
 	android.InitDefaultableModule(module)
 	return module

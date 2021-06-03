@@ -127,6 +127,10 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 					entries.SetString("SOONG_SDK_VARIANT_MODULES",
 						"$(SOONG_SDK_VARIANT_MODULES) $(patsubst %.sdk,%,$(LOCAL_MODULE))")
 				}
+
+				if c.BazelModuleBase.GenerateSyntheticTarget() {
+					entries.SetBool("LOCAL_GENERATE_SYNTHETIC_BAZEL_TARGET", true)
+				}
 			},
 		},
 		ExtraFooters: []android.AndroidMkExtraFootersFunc{

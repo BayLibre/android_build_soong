@@ -474,6 +474,7 @@ func NewTest(hod android.HostOrDeviceSupported) *Module {
 	module.compiler = test
 	module.linker = test
 	module.installer = test
+	module.BazelModuleBase.SetSyntheticTargetStrategy(android.GenerationStrategyTest)
 	return module
 }
 
