@@ -237,6 +237,7 @@ type bazelCcLibraryAttributes struct {
 	Whole_archive_deps  bazel.LabelListAttribute
 	Includes            bazel.StringListAttribute
 	Linkopts            bazel.StringListAttribute
+	Libcrt              bazel.BoolAttribute
 
 	// Attributes pertaining to shared variant.
 	Shared_srcs    bazel.LabelListAttribute
@@ -323,6 +324,7 @@ func CcLibraryBp2Build(ctx android.TopDownMutatorContext) {
 		Whole_archive_deps:  linkerAttrs.wholeArchiveDeps,
 		Includes:            exportedIncludes,
 		Linkopts:            linkerAttrs.linkopts,
+		Libcrt:              linkerAttrs.libcrt,
 
 		Shared_srcs:                   sharedAttrs.srcs,
 		Shared_srcs_c:                 sharedAttrs.srcs_c,
@@ -2267,6 +2269,7 @@ type bazelCcLibraryStaticAttributes struct {
 	Whole_archive_deps  bazel.LabelListAttribute
 	Linkopts            bazel.StringListAttribute
 	Linkstatic          bool
+	Libcrt              bazel.BoolAttribute
 	Includes            bazel.StringListAttribute
 	Hdrs                bazel.LabelListAttribute
 
@@ -2303,6 +2306,7 @@ func ccLibraryStaticBp2BuildInternal(ctx android.TopDownMutatorContext, module *
 
 		Linkopts:   linkerAttrs.linkopts,
 		Linkstatic: true,
+		Libcrt:     linkerAttrs.libcrt,
 		Includes:   exportedIncludes,
 
 		Cppflags:   compilerAttrs.cppFlags,
