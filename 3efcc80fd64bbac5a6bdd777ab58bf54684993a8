@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02e39dff_bda55f06",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-03T14:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ee49dff_49ef623d",
+      "range": {
+        "startLine": 37,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 8
+      },
+      "revId": "3efcc80fd64bbac5a6bdd777ab58bf54684993a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7ecc1428_a1b5efe1",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-03T08:20:55Z",
       "side": 1,
       "message": "Add godoc for exported functions, here and below.",
+      "range": {
+        "startLine": 67,
+        "startChar": 28,
+        "endLine": 67,
+        "endChar": 37
+      },
+      "revId": "3efcc80fd64bbac5a6bdd777ab58bf54684993a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbde8969_456ab2e6",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-03T14:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ecc1428_a1b5efe1",
       "range": {
         "startLine": 67,
         "startChar": 28,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75c2707c_573b5031",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-03T14:29:30Z",
+      "side": 1,
+      "message": "Done and unexported a bunch of things no longer referenced elsewhere",
+      "parentUuid": "1b0a5515_a3c166a5",
+      "range": {
+        "startLine": 73,
+        "startChar": 9,
+        "endLine": 73,
+        "endChar": 24
+      },
+      "revId": "3efcc80fd64bbac5a6bdd777ab58bf54684993a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45fc5af4_5917ec26",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-06-03T08:20:55Z",
       "side": 1,
       "message": "Add some documentation here please?",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 15
+      },
+      "revId": "3efcc80fd64bbac5a6bdd777ab58bf54684993a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe73fe55_ba8c3103",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-03T14:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45fc5af4_5917ec26",
       "range": {
         "startLine": 103,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "634977f8_9fd85ecf",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-03T14:29:30Z",
+      "side": 1,
+      "message": "good point -- but I think this belongs in a later cl, so fixing there.",
+      "parentUuid": "57586285_4c134583",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 28
+      },
+      "revId": "3efcc80fd64bbac5a6bdd777ab58bf54684993a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24c468c9_1c4f6270",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-06-03T08:20:55Z",
       "side": 1,
       "message": "I don\u0027t see errorContext used anywhere.",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 1
+      },
+      "revId": "3efcc80fd64bbac5a6bdd777ab58bf54684993a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4edb95a_624ab548",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-03T14:29:30Z",
+      "side": 1,
+      "message": "thanks, leftover some earlier changes.",
+      "parentUuid": "24c468c9_1c4f6270",
       "range": {
         "startLine": 454,
         "startChar": 0,
