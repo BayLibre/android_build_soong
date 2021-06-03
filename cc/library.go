@@ -230,6 +230,7 @@ type bazelCcLibraryAttributes struct {
 	Copts               bazel.StringListAttribute
 	Includes            bazel.StringListAttribute
 	Linkopts            bazel.StringListAttribute
+	Libcrt              bazel.BoolAttribute
 
 	Cppflags   bazel.StringListAttribute
 	Srcs_c     bazel.LabelListAttribute
@@ -309,6 +310,7 @@ func CcLibraryBp2Build(ctx android.TopDownMutatorContext) {
 		Copts:               compilerAttrs.copts,
 		Includes:            exportedIncludes,
 		Linkopts:            linkerAttrs.linkopts,
+		Libcrt:              linkerAttrs.libcrt,
 		Cppflags:            compilerAttrs.cppFlags,
 		Srcs_c:              compilerAttrs.cSrcs,
 		Conlyflags:          compilerAttrs.conlyFlags,
@@ -2237,6 +2239,7 @@ type bazelCcLibraryStaticAttributes struct {
 	Whole_archive_deps  bazel.LabelListAttribute
 	Linkopts            bazel.StringListAttribute
 	Linkstatic          bool
+	Libcrt              bazel.BoolAttribute
 	Includes            bazel.StringListAttribute
 	Hdrs                bazel.LabelListAttribute
 
@@ -2273,6 +2276,7 @@ func ccLibraryStaticBp2BuildInternal(ctx android.TopDownMutatorContext, module *
 
 		Linkopts:   linkerAttrs.linkopts,
 		Linkstatic: true,
+		Libcrt:     linkerAttrs.libcrt,
 		Includes:   exportedIncludes,
 
 		Cppflags:   compilerAttrs.cppFlags,
