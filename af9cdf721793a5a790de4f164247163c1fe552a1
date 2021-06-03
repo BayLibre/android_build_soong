@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80194db5_eeaa26aa",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-03T15:15:47Z",
+      "side": 1,
+      "message": "thaaaaaaank you. I was wanting to be able to ignore a bunch of these last night, but totally blanked on that property existing...",
+      "parentUuid": "8d847656_2212a223",
+      "range": {
+        "startLine": 980,
+        "startChar": 0,
+        "endLine": 1007,
+        "endChar": 3
+      },
+      "revId": "af9cdf721793a5a790de4f164247163c1fe552a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9ce7eaf_9dbffc02",
@@ -70,6 +94,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6287dd5_4158e1c1",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-03T15:15:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4769443e_7b9323ce",
+      "range": {
+        "startLine": 455,
+        "startChar": 51,
+        "endLine": 455,
+        "endChar": 76
+      },
+      "revId": "af9cdf721793a5a790de4f164247163c1fe552a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8335b400_71f82ca9",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-03T15:15:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9ce7eaf_9dbffc02",
+      "range": {
+        "startLine": 455,
+        "startChar": 6,
+        "endLine": 455,
+        "endChar": 10
+      },
+      "revId": "af9cdf721793a5a790de4f164247163c1fe552a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fba045ed_fb7b7b66",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-03T07:03:42Z",
       "side": 1,
       "message": "Should we have a separate Exclude_whole_static_libs?",
+      "range": {
+        "startLine": 461,
+        "startChar": 130,
+        "endLine": 461,
+        "endChar": 149
+      },
+      "revId": "af9cdf721793a5a790de4f164247163c1fe552a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "581258d2_5a86216f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-03T15:15:47Z",
+      "side": 1,
+      "message": "weirdly, no. put a link to the behavior in soong that we\u0027re paralleling above",
+      "parentUuid": "fba045ed_fb7b7b66",
       "range": {
         "startLine": 461,
         "startChar": 130,
