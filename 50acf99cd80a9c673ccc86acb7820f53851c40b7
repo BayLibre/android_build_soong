@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af05f091_718b85ff",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-06-03T15:37:07Z",
+      "side": 1,
+      "message": "I found this a little difficult to parse, around \"of reference\", perhaps use a full sentence \"`includes` and `excludes` are comprised of other module names in either `\u003cmodule\u003e` or `:\u003cmodule\u003e` form)\" ?",
+      "revId": "50acf99cd80a9c673ccc86acb7820f53851c40b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8705e1ce_3af99397",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-06-03T15:37:07Z",
+      "side": 1,
+      "message": "Leave a comment as to what this signifiies? Will make it a little more obvious about what belongs in this list.  (Is this *all* dep fields? why aren\u0027t header libs included ?)",
+      "revId": "50acf99cd80a9c673ccc86acb7820f53851c40b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8d89f87_8552f51f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-06-03T15:37:07Z",
+      "side": 1,
+      "message": "Brief comments to improve readability?",
+      "revId": "50acf99cd80a9c673ccc86acb7820f53851c40b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
