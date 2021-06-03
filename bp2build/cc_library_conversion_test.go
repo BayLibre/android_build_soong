@@ -965,3 +965,59 @@ cc_library {
 		},
 	})
 }
+
+func TestCCLibraryNoCrtTrue(t *testing.T) {
+	runCcLibraryTestCase(t, bp2buildTestCase{
+		description:                        "cc_library - simple example",
+		moduleTypeUnderTest:                "cc_library",
+		moduleTypeUnderTestFactory:         cc.LibraryFactory,
+		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
+		filesystem: map[string]string{
+			"impl.cpp": "",
+		},
+		blueprint: soongCcLibraryPreamble + `
+cc_library_headers { name: "some-headers" }
+cc_library {
+    name: "foo-lib",
+    srcs: ["impl.cpp"],
+    no_libcrt: true,
+}
+`,
+		expectedBazelTargets: []string{`cc_library(
+    name = "foo-lib",
+    copts = [
+        "-I.",
+        "-I$(BINDIR)/.",
+    ],
+    libcrt = False,
+    srcs = ["impl.cpp"],
+)`}})
+}
+
+func TestCCLibraryNoCrtFalse(t *testing.T) {
+	runCcLibraryTestCase(t, bp2buildTestCase{
+		description:                        "cc_library - simple example",
+		moduleTypeUnderTest:                "cc_library",
+		moduleTypeUnderTestFactory:         cc.LibraryFactory,
+		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
+		filesystem: map[string]string{
+			"impl.cpp": "",
+		},
+		blueprint: soongCcLibraryPreamble + `
+cc_library_headers { name: "some-headers" }
+cc_library {
+    name: "foo-lib",
+    srcs: ["impl.cpp"],
+    no_libcrt: false,
+}
+`,
+		expectedBazelTargets: []string{`cc_library(
+    name = "foo-lib",
+    copts = [
+        "-I.",
+        "-I$(BINDIR)/.",
+    ],
+    libcrt = True,
+    srcs = ["impl.cpp"],
+)`}})
+}

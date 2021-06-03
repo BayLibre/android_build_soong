@@ -51,6 +51,23 @@ func getLabelValue(label bazel.LabelAttribute) (reflect.Value, []selects) {
 	return value, []selects{ret}
 }
 
+func getBoolValue(bool bazel.BoolAttribute) (reflect.Value, []selects) {
+	value := reflect.ValueOf(bool.Value)
+	if !bool.HasConfigurableValues() {
+		return value, []selects{}
+	}
+
+	ret := selects{}
+	for _, axis := range bool.SortedConfigurationAxes() {
+		configToBools := bool.ConfigurableValues[axis]
+		for config, bools := range configToBools {
+			selectKey := axis.SelectKey(config)
+			ret[selectKey] = reflect.ValueOf(bools)
+		}
+	}
+
+	return value, []selects{ret}
+}
 func getLabelListValues(list bazel.LabelListAttribute) (reflect.Value, []selects) {
 	value := reflect.ValueOf(list.Value.Includes)
 	var ret []selects
@@ -100,6 +117,9 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 		defaultSelectValue = "[]"
 	case bazel.LabelAttribute:
 		value, configurableAttrs = getLabelValue(list)
+		defaultSelectValue = "None"
+	case bazel.BoolAttribute:
+		value, configurableAttrs = getBoolValue(list)
 		defaultSelectValue = "None"
 	default:
 		return "", fmt.Errorf("Not a supported Bazel attribute type: %s", v)
