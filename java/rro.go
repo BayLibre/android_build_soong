@@ -90,6 +90,20 @@ type RuntimeResourceOverlayModule interface {
 	Theme() string
 }
 
+func rroPartition(ctx android.ModuleContext) string {
+	var partition string
+	if ctx.DeviceSpecific() {
+		partition = ctx.DeviceConfig().OdmPath()
+	} else if ctx.SocSpecific() {
+		partition = ctx.DeviceConfig().VendorPath()
+	} else if ctx.SystemExtSpecific() {
+		partition = ctx.DeviceConfig().SystemExtPath()
+	} else {
+		partition = ctx.DeviceConfig().ProductPath()
+	}
+	return partition
+}
+
 func (r *RuntimeResourceOverlay) DepsMutator(ctx android.BottomUpMutatorContext) {
 	sdkDep := decodeSdkDep(ctx, android.SdkContext(r))
 	if sdkDep.hasFrameworkLibs() {
@@ -137,7 +151,8 @@ func (r *RuntimeResourceOverlay) GenerateAndroidBuildActions(ctx android.ModuleC
 	r.certificate = certificates[0]
 
 	r.outputFile = signed
-	r.installDir = android.PathForModuleInstall(ctx, "overlay", String(r.properties.Theme))
+	partition := rroPartition(ctx)
+	r.installDir = android.PathForModuleInPartitionInstall(ctx, partition, "overlay", String(r.properties.Theme))
 	ctx.InstallFile(r.installDir, r.outputFile.Base(), r.outputFile)
 }
 
