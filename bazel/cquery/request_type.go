@@ -16,6 +16,8 @@ type CcInfo struct {
 	CcStaticLibraryFiles []string
 	Includes             []string
 	SystemIncludes       []string
+	// Archives owned by the current target, not by its dependencies
+	RootStaticArchives []string
 }
 
 type getOutputFilesRequestType struct{}
@@ -70,6 +72,7 @@ system_includes = providers(target)["CcInfo"].compilation_context.system_include
 
 ccObjectFiles = []
 staticLibraries = []
+rootStaticArchives = []
 linker_inputs = providers(target)["CcInfo"].linking_context.linker_inputs.to_list()
 
 for linker_input in linker_inputs:
@@ -78,6 +81,8 @@ for linker_input in linker_inputs:
       ccObjectFiles += [object.path]
     if library.static_library:
       staticLibraries.append(library.static_library.path)
+      if linker_input.owner == target.label:
+        rootStaticArchives.append(library.static_library.path)
 
 returns = [
   outputFiles,
@@ -85,6 +90,7 @@ returns = [
   ccObjectFiles,
   includes,
   system_includes,
+  rootStaticArchives
 ]
 
 return "|".join([", ".join(r) for r in returns])`
@@ -98,7 +104,7 @@ func (g getCcInfoType) ParseResult(rawString string) (CcInfo, error) {
 	var ccObjects []string
 
 	splitString := strings.Split(rawString, "|")
-	if expectedLen := 5; len(splitString) != expectedLen {
+	if expectedLen := 6; len(splitString) != expectedLen {
 		return CcInfo{}, fmt.Errorf("Expected %d items, got %q", expectedLen, splitString)
 	}
 	outputFilesString := splitString[0]
@@ -109,12 +115,14 @@ func (g getCcInfoType) ParseResult(rawString string) (CcInfo, error) {
 	ccObjects = splitOrEmpty(ccObjectsString, ", ")
 	includes := splitOrEmpty(splitString[3], ", ")
 	systemIncludes := splitOrEmpty(splitString[4], ", ")
+	rootStaticArchives := splitOrEmpty(splitString[5], ", ")
 	return CcInfo{
 		OutputFiles:          outputFiles,
 		CcObjectFiles:        ccObjects,
 		CcStaticLibraryFiles: ccStaticLibraries,
 		Includes:             includes,
 		SystemIncludes:       systemIncludes,
+		RootStaticArchives:   rootStaticArchives,
 	}, nil
 }
 
