@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e742d171_9624dd0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-03T12:58:02Z",
+      "side": 1,
+      "message": "INFO: Elapsed time: 39.668s, Critical Path: 2.49s\nINFO: 887 processes: 12 internal, 204 linux-sandbox, 671 local.\nINFO: Build completed successfully, 887 total actions\nINFO: Build completed successfully, 887 total actions\n\nthe x86 build worked, but the 64 bit build didn\u0027t. I outlined the problem in the No_libcrt bp2build support bug: https://b.corp.google.com/issues/187928307",
+      "revId": "a9aaea3dac79acf04a27df03d3cc3a12e9eb239b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
