@@ -46,6 +46,30 @@
       },
       "revId": "00b3c87f70669b1291e7856bfe6af0032538ad13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fb97813_fa84c4f9",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-03T21:18:43Z",
+      "side": 1,
+      "message": "I think it the verbosity works :shruggie: but if you feel super strongly, perhaps just putting a similar but less verbose comment in cc/library.go?",
+      "parentUuid": "cf7a4184_8b4f678f",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "00b3c87f70669b1291e7856bfe6af0032538ad13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
