@@ -22,6 +22,30 @@
       },
       "revId": "00b3c87f70669b1291e7856bfe6af0032538ad13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf7a4184_8b4f678f",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-06-03T20:53:23Z",
+      "side": 1,
+      "message": "That\u0027s indeed the case; this is a specific output file. I\u0027m a little bit wary of being verbose here; I\u0027m less fond of the new verbosity. WDYT?",
+      "parentUuid": "ba438fb9_975cd480",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "00b3c87f70669b1291e7856bfe6af0032538ad13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
