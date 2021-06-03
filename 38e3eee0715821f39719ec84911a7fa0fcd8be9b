@@ -94,6 +94,30 @@
       },
       "revId": "38e3eee0715821f39719ec84911a7fa0fcd8be9b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f05b45b_a6863507",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-06-03T12:52:17Z",
+      "side": 1,
+      "message": "Sounds good, I\u0027ll add you to the CL when it\u0027s ready, thanks!",
+      "parentUuid": "f6f7c57a_96e1a925",
+      "range": {
+        "startLine": 282,
+        "startChar": 1,
+        "endLine": 282,
+        "endChar": 46
+      },
+      "revId": "38e3eee0715821f39719ec84911a7fa0fcd8be9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
