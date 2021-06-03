@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d847656_2212a223",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-03T07:03:42Z",
+      "side": 1,
+      "message": "Is this stuff important for the test? Maybe set bp2build_available \u003d false for these to cut down the expected output?",
+      "range": {
+        "startLine": 980,
+        "startChar": 0,
+        "endLine": 1007,
+        "endChar": 3
+      },
+      "revId": "af9cdf721793a5a790de4f164247163c1fe552a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9ce7eaf_9dbffc02",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-03T07:03:42Z",
+      "side": 1,
+      "message": "Add a bug number?",
+      "range": {
+        "startLine": 455,
+        "startChar": 6,
+        "endLine": 455,
+        "endChar": 10
+      },
+      "revId": "af9cdf721793a5a790de4f164247163c1fe552a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4769443e_7b9323ce",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-03T07:03:42Z",
+      "side": 1,
+      "message": "shared",
+      "range": {
+        "startLine": 455,
+        "startChar": 51,
+        "endLine": 455,
+        "endChar": 76
+      },
+      "revId": "af9cdf721793a5a790de4f164247163c1fe552a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba045ed_fb7b7b66",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-03T07:03:42Z",
+      "side": 1,
+      "message": "Should we have a separate Exclude_whole_static_libs?",
+      "range": {
+        "startLine": 461,
+        "startChar": 130,
+        "endLine": 461,
+        "endChar": 149
+      },
+      "revId": "af9cdf721793a5a790de4f164247163c1fe552a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
