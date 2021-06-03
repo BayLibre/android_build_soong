@@ -280,6 +280,7 @@ func (e *embeddableInModuleAndImport) depIsInSameApex(ctx android.BaseModuleCont
 type Module struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
+	android.BazelModuleBase
 	android.ApexModuleBase
 	android.SdkBase
 
