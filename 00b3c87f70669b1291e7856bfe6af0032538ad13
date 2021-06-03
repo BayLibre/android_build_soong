@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba438fb9_975cd480",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-03T20:02:10Z",
+      "side": 1,
+      "message": "Is this primarily to the cc_library having both a shared and static output to distinguish the two? Can we add a bit more detail in the comments either here or in the handler?",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "00b3c87f70669b1291e7856bfe6af0032538ad13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
