@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000011430243",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1726896?revision\u003d4",
+      "fixSuggestions": [
+        {
+          "fixId": "7ca863aa_19aa7142",
+          "description": "Change to \"bazel/properties.go\"",
+          "replacements": [
+            {
+              "path": "bazel/properties.go",
+              "range": {
+                "startLine": 374,
+                "startChar": 17,
+                "endLine": 374,
+                "endChar": 25
+              },
+              "replacement": "attribute"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "deb498aa_632c007c",
+        "filename": "bazel/properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-06-03T22:06:46Z",
+      "side": 1,
+      "message": "Common typo found: \"attribue\" -- should it be \"attribute\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 374,
+        "startChar": 17,
+        "endLine": 374,
+        "endChar": 25
+      },
+      "revId": "2a85bb3d91fd1808a2e9210b8b54cc435f84bcb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
