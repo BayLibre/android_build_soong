@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b59346_df873620",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-03T22:49:16Z",
+      "side": 1,
+      "message": "Thanks for the epic refactoring here - wish maps had existed earlier... ",
+      "revId": "9abd62d13348fd8beba87e953551913a70bbb730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60e45a55_0996de76",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-03T22:49:16Z",
+      "side": 1,
+      "message": "I was confused earlier between linux vs linux_glibc vs linux_bionic \n\n(and I\u0027m still wondering whether we should rename osLinux to osLinuxGlibc, and also rename //build/bazel/platforms/os:linux to //build/bazel/platforms/os:linux_glibc)\n\ncc-ing ccross@ because of his comment at http://b/189203460\n\n\u003e Those are different at least in the target properties. linux covers linux_glibc, linux_bionic or android, and is used for the common case where you have cflags, etc. that apply to everything based on a Linux kernel, but not darwin or windows.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 63
+      },
+      "revId": "9abd62d13348fd8beba87e953551913a70bbb730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
