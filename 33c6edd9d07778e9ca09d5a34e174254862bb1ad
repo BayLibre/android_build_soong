@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20b0157e_274289e0",
+        "filename": "bazel/properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-03T05:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d20aa0b_7ec2443a",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 24
+      },
+      "revId": "33c6edd9d07778e9ca09d5a34e174254862bb1ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c236abe_c2c58c51",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4dd9834_ef1a702a",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-03T05:00:59Z",
+      "side": 1,
+      "message": "Filed b/190006308",
+      "parentUuid": "0c236abe_c2c58c51",
+      "range": {
+        "startLine": 182,
+        "startChar": 4,
+        "endLine": 182,
+        "endChar": 13
+      },
+      "revId": "33c6edd9d07778e9ca09d5a34e174254862bb1ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8331e3be_67ca54bb",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-02T15:06:54Z",
       "side": 1,
       "message": "I don\u0027t understand this logic:\n\n1. A strings.Contains() check is prone to the Scunthorpe problem (\"it can confuse e.g. libc_ndk and libc) \n\n2. Why does one need to exclude the _cpp_srcs suffix? How can such a suffix end up on the input if it is added in groupSrcsByExtension()?",
+      "range": {
+        "startLine": 193,
+        "startChar": 6,
+        "endLine": 193,
+        "endChar": 73
+      },
+      "revId": "33c6edd9d07778e9ca09d5a34e174254862bb1ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9271e82d_59499b10",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-03T05:00:59Z",
+      "side": 1,
+      "message": "1. Fixed it with a direct equality check.\n2. That was a dev bug workaround - removed, it doesn\u0027t show up anymore.",
+      "parentUuid": "8331e3be_67ca54bb",
       "range": {
         "startLine": 193,
         "startChar": 6,
