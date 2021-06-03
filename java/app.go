@@ -1048,6 +1048,9 @@ func AndroidTestFactory() android.Module {
 		&module.overridableAppProperties,
 		&module.testProperties)
 
+	android.InitBazelModule(module)
+	module.BazelModuleBase.SetSyntheticTargetStrategy(android.GenerationStrategyTest)
+
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 	android.InitOverridableModule(module, &module.appProperties.Overrides)
