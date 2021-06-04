@@ -39,6 +39,30 @@
       },
       "revId": "9abd62d13348fd8beba87e953551913a70bbb730",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1251679d_0e2e1452",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-04T13:46:01Z",
+      "side": 1,
+      "message": "good point, yeah, I think it makes sense to rename both -- let\u0027s do it in a separate cl? or perhaps when we implement the rest of the target properties?",
+      "parentUuid": "60e45a55_0996de76",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 63
+      },
+      "revId": "9abd62d13348fd8beba87e953551913a70bbb730",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
