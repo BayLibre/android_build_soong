@@ -238,6 +238,9 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 	if library.static() {
 		entries.Class = "STATIC_LIBRARIES"
 	} else if library.shared() {
+		if "libdl" == ctx.BaseModuleName() {
+			fmt.Printf("@@@@@ %s %s SHARED_LIBRARIES\n", ctx.BaseModuleName())
+		}
 		entries.Class = "SHARED_LIBRARIES"
 		entries.ExtraEntries = append(entries.ExtraEntries, func(_ android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 			entries.SetString("LOCAL_SOONG_TOC", library.toc().String())
