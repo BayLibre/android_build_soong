@@ -1673,10 +1673,6 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 
 	c.makeLinkType = GetMakeLinkType(actx, c)
 
-	if c.maybeGenerateBazelActions(actx) {
-		return
-	}
-
 	ctx := &moduleContext{
 		ModuleContext: actx,
 		moduleContextImpl: moduleContextImpl{
@@ -1684,6 +1680,11 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		},
 	}
 	ctx.ctx = ctx
+
+	if c.maybeGenerateBazelActions(actx) {
+		c.maybeInstall(ctx, apexInfo)
+		return
+	}
 
 	deps := c.depsToPaths(ctx)
 	if ctx.Failed() {
@@ -1795,6 +1796,10 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		}
 	}
 
+	c.maybeInstall(ctx, apexInfo)
+}
+
+func (c *Module) maybeInstall(ctx ModuleContext, apexInfo android.ApexInfo) {
 	if !proptools.BoolDefault(c.Properties.Installable, true) {
 		// If the module has been specifically configure to not be installed then
 		// hide from make as otherwise it will break when running inside make
