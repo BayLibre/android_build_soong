@@ -236,6 +236,9 @@ func isValidSharedDependency(dependency android.Module) bool {
 
 func sharedLibraryInstallLocation(
 	libraryPath android.Path, isHost bool, archString string) string {
+	if libraryPath == nil {
+		panic("libraryPath is nil")
+	}
 	installLocation := "$(PRODUCT_OUT)/data"
 	if isHost {
 		installLocation = "$(HOST_OUT)"
