@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000011462023",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1728213?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "f2d5d100_086d3d30",
+          "description": "Change to \"cc/symbolfile/__init__.py\"",
+          "replacements": [
+            {
+              "path": "cc/symbolfile/__init__.py",
+              "range": {
+                "startLine": 199,
+                "startChar": 23,
+                "endLine": 199,
+                "endChar": 30
+              },
+              "replacement": "the"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "be6b9cf3_fc7b4cfe",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-06-04T21:36:03Z",
+      "side": 1,
+      "message": "Common typo found: \"the the\" -- should it be \"the\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 199,
+        "startChar": 23,
+        "endLine": 199,
+        "endChar": 30
+      },
+      "revId": "e63d820820caf92fb0c3b9d35714a4b8129e182e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
