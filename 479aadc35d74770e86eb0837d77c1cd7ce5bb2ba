@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b889a3a_93c4d953",
+        "filename": "bazel/properties_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-04T03:24:27Z",
+      "side": 1,
+      "message": "nit: Use makeLabelList here, too?\n\nmakeLabelList([]string{\"arm_exclude\", \"x86_include\"})",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 90
+      },
+      "revId": "479aadc35d74770e86eb0837d77c1cd7ce5bb2ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
