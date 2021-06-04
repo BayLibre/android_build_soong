@@ -562,11 +562,7 @@ type ccLibraryBazelHandler struct {
 	module *Module
 }
 
-func (handler *ccLibraryBazelHandler) generateBazelBuildActions(ctx android.ModuleContext, label string) bool {
-	if !handler.module.static() {
-		// TODO(cparsons): Support shared libraries.
-		return false
-	}
+func (handler *ccLibraryBazelHandler) generateStaticBazelBuildActions(ctx android.ModuleContext, label string) bool {
 	bazelCtx := ctx.Config().BazelContext
 	ccInfo, ok, err := bazelCtx.GetCcInfo(label, ctx.Arch().ArchType)
 	if err != nil {
@@ -616,6 +612,56 @@ func (handler *ccLibraryBazelHandler) generateBazelBuildActions(ctx android.Modu
 	}
 
 	return ok
+}
+
+func (handler *ccLibraryBazelHandler) generateSharedBazelBuildActions(ctx android.ModuleContext, label string) bool {
+	bazelCtx := ctx.Config().BazelContext
+	ccInfo, ok, err := bazelCtx.GetCcInfo(label, ctx.Arch().ArchType)
+	if err != nil {
+		ctx.ModuleErrorf("Error getting Bazel CcInfo: %s", err)
+		return false
+	}
+	if !ok {
+		return ok
+	}
+	rootDynamicLibraries := ccInfo.RootDynamicLibraries
+
+	if len(rootDynamicLibraries) != 1 {
+		ctx.ModuleErrorf("expected exactly one root dynamic library file for '%s', but got %s", label, rootDynamicLibraries)
+		return false
+	}
+	outputFilePath := android.PathForBazelOut(ctx, rootDynamicLibraries[0])
+	handler.module.outputFile = android.OptionalPathForPath(outputFilePath)
+
+	handler.module.linker.(*libraryDecorator).unstrippedOutputFile = outputFilePath
+
+	ctx.SetProvider(SharedLibraryInfoProvider, SharedLibraryInfo{
+		//TableOfContents:         android.OptionalPathForPath(tocFile),
+		SharedLibrary:           outputFilePath,
+		UnstrippedSharedLibrary: outputFilePath,
+		//CoverageSharedLibrary:   library.coverageOutputFile,
+		//StaticAnalogue:          staticAnalogue,
+		Target: ctx.Target(),
+	})
+
+	ctx.SetProvider(FlagExporterInfoProvider, flagExporterInfoFromCcInfo(ctx, ccInfo))
+	if i, ok := handler.module.linker.(snapshotLibraryInterface); ok {
+		// Dependencies on this library will expect collectedSnapshotHeaders to
+		// be set, otherwise validation will fail. For now, set this to an empty
+		// list.
+		// TODO(cparsons): More closely mirror the collectHeadersForSnapshot
+		// implementation.
+		i.(*libraryDecorator).collectedSnapshotHeaders = android.Paths{}
+	}
+	return true
+}
+
+func (handler *ccLibraryBazelHandler) generateBazelBuildActions(ctx android.ModuleContext, label string) bool {
+	if handler.module.static() {
+		return handler.generateStaticBazelBuildActions(ctx, label)
+	} else {
+		return handler.generateSharedBazelBuildActions(ctx, label)
+	}
 }
 
 func GlobHeadersForSnapshot(ctx android.ModuleContext, paths android.Paths) android.Paths {
