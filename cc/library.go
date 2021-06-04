@@ -28,6 +28,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/bazel"
+	"android/soong/bazel/cquery"
 	"android/soong/cc/config"
 )
 
@@ -579,22 +580,8 @@ type ccLibraryBazelHandler struct {
 	module *Module
 }
 
-func (handler *ccLibraryBazelHandler) generateBazelBuildActions(ctx android.ModuleContext, label string) bool {
-	if !handler.module.static() {
-		// TODO(cparsons): Support shared libraries.
-		return false
-	}
-	bazelCtx := ctx.Config().BazelContext
-	ccInfo, ok, err := bazelCtx.GetCcInfo(label, ctx.Arch().ArchType)
-	if err != nil {
-		ctx.ModuleErrorf("Error getting Bazel CcInfo: %s", err)
-		return false
-	}
-	if !ok {
-		return ok
-	}
+func (handler *ccLibraryBazelHandler) generateStaticBazelBuildActions(ctx android.ModuleContext, label string, ccInfo cquery.CcInfo) bool {
 	rootStaticArchives := ccInfo.RootStaticArchives
-	objPaths := ccInfo.CcObjectFiles
 	if len(rootStaticArchives) != 1 {
 		ctx.ModuleErrorf("expected exactly one root archive file for '%s', but got %s", label, rootStaticArchives)
 		return false
@@ -602,6 +589,7 @@ func (handler *ccLibraryBazelHandler) generateBazelBuildActions(ctx android.Modu
 	outputFilePath := android.PathForBazelOut(ctx, rootStaticArchives[0])
 	handler.module.outputFile = android.OptionalPathForPath(outputFilePath)
 
+	objPaths := ccInfo.CcObjectFiles
 	objFiles := make(android.Paths, len(objPaths))
 	for i, objPath := range objPaths {
 		objFiles[i] = android.PathForBazelOut(ctx, objPath)
@@ -615,24 +603,86 @@ func (handler *ccLibraryBazelHandler) generateBazelBuildActions(ctx android.Modu
 		ReuseObjects:  objects,
 		Objects:       objects,
 
-		// TODO(cparsons): Include transitive static libraries in this provider to support
+		// TODO(b/190524881): Include transitive static libraries in this provider to support
 		// static libraries with deps.
 		TransitiveStaticLibrariesForOrdering: android.NewDepSetBuilder(android.TOPOLOGICAL).
 			Direct(outputFilePath).
 			Build(),
 	})
 
-	ctx.SetProvider(FlagExporterInfoProvider, flagExporterInfoFromCcInfo(ctx, ccInfo))
+	return true
+}
+
+func (handler *ccLibraryBazelHandler) generateSharedBazelBuildActions(ctx android.ModuleContext, label string, ccInfo cquery.CcInfo) bool {
+	rootDynamicLibraries := ccInfo.RootDynamicLibraries
+
+	if len(rootDynamicLibraries) != 1 {
+		ctx.ModuleErrorf("expected exactly one root dynamic library file for '%s', but got %s", label, rootDynamicLibraries)
+		return false
+	}
+	outputFilePath := android.PathForBazelOut(ctx, rootDynamicLibraries[0])
+	handler.module.outputFile = android.OptionalPathForPath(outputFilePath)
+
+	handler.module.linker.(*libraryDecorator).unstrippedOutputFile = outputFilePath
+
+	ctx.SetProvider(SharedLibraryInfoProvider, SharedLibraryInfo{
+		// TODO(b/190524879): support toc optimization to skip relinking against shared libraries whose
+		// interface hasn't changed.
+		//TableOfContents:         android.OptionalPathForPath(tocFile),
+		SharedLibrary: outputFilePath,
+		// TODO(b/190524881): Include transitive static libraries in this provider to support
+		// static libraries with deps.
+		//TransitiveStaticLibrariesForOrdering
+		Target: ctx.Target(),
+	})
+	return true
+}
+
+func (handler *ccLibraryBazelHandler) generateBazelBuildActions(ctx android.ModuleContext, label string) bool {
+	bazelCtx := ctx.Config().BazelContext
+	ccInfo, ok, err := bazelCtx.GetCcInfo(label, ctx.Arch().ArchType)
+	if err != nil {
+		ctx.ModuleErrorf("Error getting Bazel CcInfo: %s", err)
+		return false
+	}
+	if !ok {
+		return ok
+	}
+
+	if handler.module.static() {
+		if ok := handler.generateStaticBazelBuildActions(ctx, label, ccInfo); !ok {
+			return false
+		}
+	} else if handler.module.Shared() {
+		if ok := handler.generateSharedBazelBuildActions(ctx, label, ccInfo); !ok {
+			return false
+		}
+	} else {
+		return false
+	}
+
+	handler.module.linker.(*libraryDecorator).setFlagExporterInfoFromCcInfo(ctx, ccInfo)
+	handler.module.maybeUnhideFromMake()
+
 	if i, ok := handler.module.linker.(snapshotLibraryInterface); ok {
 		// Dependencies on this library will expect collectedSnapshotHeaders to
 		// be set, otherwise validation will fail. For now, set this to an empty
 		// list.
-		// TODO(cparsons): More closely mirror the collectHeadersForSnapshot
+		// TODO(b/190533363): More closely mirror the collectHeadersForSnapshot
 		// implementation.
 		i.(*libraryDecorator).collectedSnapshotHeaders = android.Paths{}
 	}
-
 	return ok
+}
+
+func (library *libraryDecorator) setFlagExporterInfoFromCcInfo(ctx android.ModuleContext, ccInfo cquery.CcInfo) {
+	flagExporterInfo := flagExporterInfoFromCcInfo(ctx, ccInfo)
+	// flag exporters consolidates properties like includes, flags, dependencies that should be
+	// exported from this module to other modules
+	ctx.SetProvider(FlagExporterInfoProvider, flagExporterInfo)
+	// Store flag info to be passed along to androidmk
+	// TODO(b/184387147): Androidmk should be done in Bazel, not Soong.
+	library.flagExporterInfo = &flagExporterInfo
 }
 
 func GlobHeadersForSnapshot(ctx android.ModuleContext, paths android.Paths) android.Paths {
