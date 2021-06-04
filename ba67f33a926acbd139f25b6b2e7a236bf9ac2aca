@@ -22,6 +22,30 @@
       },
       "revId": "ba67f33a926acbd139f25b6b2e7a236bf9ac2aca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f01ba966_f2feaac9",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-04T14:28:22Z",
+      "side": 1,
+      "message": "that would add more complexity to Soong, which seems best to avoid?",
+      "parentUuid": "a30757c3_6ab2baff",
+      "range": {
+        "startLine": 522,
+        "startChar": 130,
+        "endLine": 522,
+        "endChar": 149
+      },
+      "revId": "ba67f33a926acbd139f25b6b2e7a236bf9ac2aca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
