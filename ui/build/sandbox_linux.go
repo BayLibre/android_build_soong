@@ -194,9 +194,6 @@ func (c *Cmd) wrapSandbox() {
 		// Mount source
 		srcDirMountFlag, sandboxConfig.srcDir,
 
-		//Mount out dir as read-write
-		"-B", sandboxConfig.outDir,
-
 		// Disable newcgroup for now, since it may require newer kernels
 		// TODO: try out cgroups
 		"--disable_clone_newcgroup",
@@ -216,6 +213,13 @@ func (c *Cmd) wrapSandbox() {
 	for _, srcDirChild := range c.config.sandboxConfig.SrcDirRWAllowlist() {
 		sandboxArgs = append(sandboxArgs, "-B", srcDirChild)
 	}
+
+	//Mount out dir as read-write
+	//Mount after RW allowlist, otherwise nsjail will throw an error for certain configs
+
+	// -B /src/android/master -B /src/android/master/out #OK
+	// -B /src/android/master/out -B /src/android/master #NOT OK
+	sandboxArgs = append(sandboxArgs, "-B", sandboxConfig.outDir)
 
 	if _, err := os.Stat(sandboxConfig.distDir); !os.IsNotExist(err) {
 		//Mount dist dir as read-write if it already exists
