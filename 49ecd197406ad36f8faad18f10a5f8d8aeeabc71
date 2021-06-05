@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcfd591b_38a52ff6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-05T11:29:22Z",
+      "side": 1,
+      "message": "I understand and agree on the intent of the change. But I don\u0027t have a good python readability, so +1.\n\n",
+      "revId": "49ecd197406ad36f8faad18f10a5f8d8aeeabc71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe6c3fd_843678ce",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-05T11:29:22Z",
+      "side": 1,
+      "message": "Is the support for this guaranteed on regular Android build machines (not just within Google)?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "49ecd197406ad36f8faad18f10a5f8d8aeeabc71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b56adad_804551a4",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-05T11:29:22Z",
+      "side": 1,
+      "message": "Can we have `has_platform_only_tags` in the `Tags` class, like the other `has_*_tags`?",
+      "range": {
+        "startLine": 231,
+        "startChar": 7,
+        "endLine": 231,
+        "endChar": 43
+      },
+      "revId": "49ecd197406ad36f8faad18f10a5f8d8aeeabc71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
