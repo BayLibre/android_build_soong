@@ -37,20 +37,26 @@ func Codegen(ctx *CodegenContext) CodegenMetrics {
 
 	buildToTargets, metrics, compatLayer := GenerateBazelTargets(ctx, true)
 	bp2buildFiles := CreateBazelFiles(nil, buildToTargets, ctx.mode)
+	if ctx.Mode() == Bp2Build {
+		bp2buildFiles = append(bp2buildFiles, GenerateWorkspaceFileWithSyntheticWorkspaceReference(ctx))
+	}
 	writeFiles(ctx, bp2buildDir, bp2buildFiles)
 
 	// Generate and write the synthetic workspace.
-	syntheticWorkspaceFiles := GenerateSyntheticWorkspaceBaseFiles(ctx)
-	syntheticBuildToTargets, syntheticMetrics := GenerateSyntheticBazelTargets(ctx)
-	syntheticWorkspaceFiles = append(syntheticWorkspaceFiles, CreateBazelFiles(nil, syntheticBuildToTargets, ctx.mode)...)
-	writeFiles(ctx, prebuiltsWorkspace, syntheticWorkspaceFiles)
+	if ctx.Mode() == Bp2Build {
+		syntheticWorkspaceFiles := GenerateSyntheticWorkspaceBaseFiles(ctx)
+		syntheticBuildToTargets, syntheticMetrics := GenerateSyntheticBazelTargets(ctx)
+		syntheticWorkspaceFiles = append(syntheticWorkspaceFiles, CreateBazelFiles(nil, syntheticBuildToTargets, ctx.mode)...)
 
-	// Merge the synthetic metrics with the Bazel-converted metrics, since
-	// the synthetic target rules should never be used in the regular BUILD
-	// files we can just add the values from the synthetic map to the bp2build
-	// one.
-	for k, v := range syntheticMetrics.RuleClassCount {
-		metrics.RuleClassCount[k] = v
+		writeFiles(ctx, prebuiltsWorkspace, syntheticWorkspaceFiles)
+
+		// Merge the synthetic metrics with the Bazel-converted metrics, since
+		// the synthetic target rules should never be used in the regular BUILD
+		// files we can just add the values from the synthetic map to the bp2build
+		// one.
+		for k, v := range syntheticMetrics.RuleClassCount {
+			metrics.RuleClassCount[k] = v
+		}
 	}
 
 	soongInjectionDir := android.PathForOutput(ctx, bazel.SoongInjectionDirName)

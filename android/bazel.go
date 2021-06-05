@@ -378,16 +378,8 @@ func bp2buildDefaultTrueRecursively(packagePath string, config Bp2BuildConfig) b
 	return ret
 }
 
-// GetBazelBuildFileContents returns the file contents of a hand-crafted BUILD file if available or
-// an error if there are errors reading the file.
-// TODO(b/181575318): currently we append the whole BUILD file, let's change that to do
-// something more targeted based on the rule type and target.
-func (b *BazelModuleBase) GetBazelBuildFileContents(c Config, path, name string) (string, error) {
-	if !strings.Contains(b.HandcraftedLabel(), path) {
-		return "", fmt.Errorf("%q not found in bazel_module.label %q", path, b.HandcraftedLabel())
-	}
-	name = filepath.Join(path, name)
-	f, err := c.fs.Open(name)
+func readFileFromConfigFs(c Config, path string) (string, error) {
+	f, err := c.fs.Open(path)
 	if err != nil {
 		return "", err
 	}
@@ -398,6 +390,18 @@ func (b *BazelModuleBase) GetBazelBuildFileContents(c Config, path, name string)
 		return "", err
 	}
 	return string(data[:]), nil
+}
+
+// GetBazelBuildFileContents returns the file contents of a hand-crafted BUILD file if available or
+// an error if there are errors reading the file.
+// TODO(b/181575318): currently we append the whole BUILD file, let's change that to do
+// something more targeted based on the rule type and target.
+func (b *BazelModuleBase) GetBazelBuildFileContents(c Config, path, name string) (string, error) {
+	if !strings.Contains(b.HandcraftedLabel(), path) {
+		return "", fmt.Errorf("%q not found in bazel_module.label %q", path, b.HandcraftedLabel())
+	}
+	name = filepath.Join(path, name)
+	return readFileFromConfigFs(c, name)
 }
 
 // ConvertedToBazel returns whether this module has been converted to Bazel, whether automatically
@@ -418,17 +422,13 @@ func LoadBazelRuleDefinition(c Config, name string) (string, error) {
 	}
 
 	fp := fmt.Sprintf("build/bazel/rules/%s.bzl", name)
+	return readFileFromConfigFs(c, fp)
+}
 
-	f, err := c.fs.Open(fp)
-	if err != nil {
-		return "", err
-	}
-	defer f.Close()
-
-	data, err := ioutil.ReadAll(f)
-	if err != nil {
-		return "", err
-	}
-
-	return string(data[:]), nil
+// Loads the repository WORKSPACE file.
+//
+// This is used by the bp2build process so that modifications can be made
+// for the symlink forest workspace.
+func LoadBazelWorkspaceFile(c Config) (string, error) {
+	return readFileFromConfigFs(c, "build/bazel/bazel.WORKSPACE")
 }
