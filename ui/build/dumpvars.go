@@ -25,6 +25,17 @@ import (
 	"android/soong/ui/status"
 )
 
+func addIfExists(allowlist []string, dir string) []string {
+	_, err := os.Stat("/buildbot/src/android")
+	if os.IsNotExist(err) {
+		fmt.Printf("%s does not exist, skipping", dir)
+	} else {
+		fmt.Printf("%s exists, adding to RW allowlist", dir)
+		return append(allowlist, dir)
+	}
+	return allowlist
+}
+
 // DumpMakeVars can be used to extract the values of Make variables after the
 // product configurations are loaded. This is roughly equivalent to the
 // `get_build_var` bash function.
@@ -181,6 +192,9 @@ func Banner(make_vars map[string]string) string {
 }
 
 func runMakeProductConfig(ctx Context, config Config) {
+	var rwAllowlist []string
+	rwAllowlist = addIfExists(rwAllowlist, "/buildbot/src/android/master-art")
+
 	// Variables to export into the environment of Kati/Ninja
 	exportEnvVars := []string{
 		// So that we can use the correct TARGET_PRODUCT if it's been
@@ -284,8 +298,10 @@ func runMakeProductConfig(ctx Context, config Config) {
 	config.SetNinjaArgs(strings.Fields(makeVars["NINJA_GOALS"]))
 	config.SetTargetDevice(makeVars["TARGET_DEVICE"])
 	config.SetTargetDeviceDir(makeVars["TARGET_DEVICE_DIR"])
-	config.sandboxConfig.SetSrcDirIsRO(makeVars["BUILD_BROKEN_SRC_DIR_IS_WRITABLE"] == "false")
-	config.sandboxConfig.SetSrcDirRWAllowlist(strings.Fields(makeVars["BUILD_BROKEN_SRC_DIR_RW_ALLOWLIST"]))
+	config.sandboxConfig.SetSrcDirIsRO(true)
+	// TODO: make allowlist agnostic to host (aka buildbot)
+	//rwAllowlist := []string{}
+	config.sandboxConfig.SetSrcDirRWAllowlist(rwAllowlist)
 
 	config.SetBuildBrokenDupRules(makeVars["BUILD_BROKEN_DUP_RULES"] == "true")
 	config.SetBuildBrokenUsesNetwork(makeVars["BUILD_BROKEN_USES_NETWORK"] == "true")
