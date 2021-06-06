@@ -282,6 +282,10 @@ func (binary *Binary) AndroidMkEntries() []android.AndroidMkEntries {
 					if len(binary.dexpreopter.builtInstalled) > 0 {
 						entries.SetString("LOCAL_SOONG_BUILT_INSTALLED", binary.dexpreopter.builtInstalled)
 					}
+
+					if binary.BazelModuleBase.GenerateSyntheticTarget() {
+						entries.SetBool("LOCAL_GENERATE_SYNTHETIC_BAZEL_TARGET", true)
+					}
 				},
 			},
 			ExtraFooters: []android.AndroidMkExtraFootersFunc{
@@ -304,6 +308,10 @@ func (binary *Binary) AndroidMkEntries() []android.AndroidMkEntries {
 			ExtraEntries: []android.AndroidMkExtraEntriesFunc{
 				func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 					entries.SetBool("LOCAL_STRIP_MODULE", false)
+
+					if binary.BazelModuleBase.GenerateSyntheticTarget() {
+						entries.SetBool("LOCAL_GENERATE_SYNTHETIC_BAZEL_TARGET", true)
+					}
 				},
 			},
 			ExtraFooters: []android.AndroidMkExtraFootersFunc{

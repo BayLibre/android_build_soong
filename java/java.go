@@ -27,6 +27,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/bazel"
 	"android/soong/cc"
 	"android/soong/dexpreopt"
 	"android/soong/java/config"
@@ -35,6 +36,8 @@ import (
 
 func init() {
 	registerJavaBuildComponents(android.InitRegistrationContext)
+
+	android.RegisterBp2BuildMutator("java_test_host", JavaTestHostBp2Build)
 
 	RegisterJavaSdkMemberTypes()
 }
@@ -281,6 +284,66 @@ var (
 	usesLibCompat29Tag      = makeUsesLibraryDependencyTag(29)
 	usesLibCompat30Tag      = makeUsesLibraryDependencyTag(30)
 )
+
+type bazelJavaTestHostAttributes struct {
+	Deps bazel.LabelListAttribute
+	// Bazel also supports the attributes below, but (so far) these are not required for Bionic
+	// srcs
+	// data
+	// args
+	// compatible_with
+	// deprecation
+	// distribs
+	// env
+	// exec_compatible_with
+	// exec_properties
+	// features
+	// licenses
+	// output_licenses
+	// restricted_to
+	// tags
+	// target_compatible_with
+	// testonly
+	// toolchains
+	// visibility
+}
+
+type bazelJavaTestHost struct {
+	android.BazelTargetModuleBase
+	bazelJavaTestHostAttributes
+}
+
+func BazelJavaTestHostFactory() android.Module {
+	module := &bazelJavaTestHost{}
+	module.AddProperties(&module.bazelJavaTestHostAttributes)
+	android.InitBazelTargetModule(module)
+	return module
+}
+
+func JavaTestHostBp2Build(ctx android.TopDownMutatorContext) {
+	m, ok := ctx.Module().(*TestHost)
+	if !ok || !m.ConvertWithBp2build(ctx) {
+		return
+	}
+
+	deps := bazel.MakeLabelListAttribute(android.BazelLabelForSyntheticTarget(ctx))
+	attrs := &bazelJavaTestHostAttributes{
+		Deps: deps,
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "java_test",
+		Bzl_load_location: "//build/bazel/rules:java_test.bzl",
+	}
+
+	ctx.CreateBazelTargetModule(BazelJavaTestHostFactory, m.Name(), props, attrs)
+}
+
+func (j *bazelJavaTestHost) Name() string {
+	return j.BaseModuleName()
+}
+
+func (j *bazelJavaTestHost) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
 
 func IsLibDepTag(depTag blueprint.DependencyTag) bool {
 	return depTag == libTag
