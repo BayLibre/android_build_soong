@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc0ea967_fc564d8c",
+        "filename": "bazel/properties.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-07T14:26:44Z",
+      "side": 1,
+      "message": "this is beautiful (even though it took me a bit of time to understand)",
+      "range": {
+        "startLine": 482,
+        "startChar": 1,
+        "endLine": 482,
+        "endChar": 59
+      },
+      "revId": "74deed445b15ab4c1dd0456ed7a3307149d35bbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
