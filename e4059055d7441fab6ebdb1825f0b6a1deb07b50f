@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "216cd6da_372cfa7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-06-07T18:08:01Z",
+      "side": 1,
+      "message": "Cleanup: removing myself, please add me back if you still expect a code review.",
+      "revId": "e4059055d7441fab6ebdb1825f0b6a1deb07b50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
