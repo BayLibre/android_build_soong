@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b46209d_64d22d03",
+        "filename": "bazel/properties.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-07T17:27:02Z",
+      "side": 1,
+      "message": "GetSelectValue ?\n\nSelectValue sounds like a verb",
+      "range": {
+        "startLine": 403,
+        "startChar": 24,
+        "endLine": 403,
+        "endChar": 35
+      },
+      "revId": "b9a67d3ab96e758749b9dfdf692b8866e5936c03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a49823f1_b25f12ff",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-07T17:27:02Z",
+      "side": 1,
+      "message": "For consistency, should this be noLibcrt to match the existing Soong and Android.bp name?",
+      "range": {
+        "startLine": 492,
+        "startChar": 1,
+        "endLine": 492,
+        "endChar": 10
+      },
+      "revId": "b9a67d3ab96e758749b9dfdf692b8866e5936c03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
