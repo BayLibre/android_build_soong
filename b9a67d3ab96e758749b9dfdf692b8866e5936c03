@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13376b9d_33696c20",
+        "filename": "bazel/properties.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-07T17:40:48Z",
+      "side": 1,
+      "message": "The other *Attribute types have a similar SelectValue. http://go/go-style/decisions#getters recommends not naming getters with Get. But I see your point, if you have suggestions happy to do a followup to rename all?",
+      "parentUuid": "4b46209d_64d22d03",
+      "range": {
+        "startLine": 403,
+        "startChar": 24,
+        "endLine": 403,
+        "endChar": 35
+      },
+      "revId": "b9a67d3ab96e758749b9dfdf692b8866e5936c03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a49823f1_b25f12ff",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-07T17:27:02Z",
       "side": 1,
       "message": "For consistency, should this be noLibcrt to match the existing Soong and Android.bp name?",
+      "range": {
+        "startLine": 492,
+        "startChar": 1,
+        "endLine": 492,
+        "endChar": 10
+      },
+      "revId": "b9a67d3ab96e758749b9dfdf692b8866e5936c03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "794b50b0_c81b79b4",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-07T17:40:48Z",
+      "side": 1,
+      "message": "I intentionally inverted it as positive booleans are easier to understand -- didn\u0027t rename in Soong as it can take multiple releases to actually rename property since we don\u0027t know whether anyone downstream is using it.",
+      "parentUuid": "a49823f1_b25f12ff",
       "range": {
         "startLine": 492,
         "startChar": 1,
