@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bfe6206_980daaf1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-07T08:21:42Z",
+      "side": 1,
+      "message": "This is submitted together with another change called \"DO NOT SUBMIT\" so I won\u0027t review this until that one is ready for review.",
+      "revId": "cc221119540613beefe5f6113b38356f61265816",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
