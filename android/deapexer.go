@@ -15,9 +15,6 @@
 package android
 
 import (
-	"fmt"
-	"strings"
-
 	"github.com/google/blueprint"
 )
 
@@ -34,12 +31,6 @@ type DeapexerInfo struct {
 	exports map[string]Path
 }
 
-// The set of supported prebuilt export tags. Used to verify the tag parameter for
-// `PrebuiltExportPath`.
-var supportedPrebuiltExportTags = map[string]struct{}{
-	".dexjar": {},
-}
-
 // PrebuiltExportPath provides the path, or nil if not available, of a file exported from the
 // prebuilt_apex that created this ApexInfo.
 //
@@ -51,12 +42,6 @@ var supportedPrebuiltExportTags = map[string]struct{}{
 //
 // See apex/deapexer.go for more information.
 func (i DeapexerInfo) PrebuiltExportPath(name, tag string) Path {
-
-	if _, ok := supportedPrebuiltExportTags[tag]; !ok {
-		panic(fmt.Errorf("unsupported prebuilt export tag %q, expected one of %s",
-			tag, strings.Join(SortedStringKeys(supportedPrebuiltExportTags), ", ")))
-	}
-
 	path := i.exports[name+"{"+tag+"}"]
 	return path
 }
@@ -78,6 +63,11 @@ func NewDeapexerInfo(exports map[string]Path) DeapexerInfo {
 type deapexerTagStruct struct {
 	blueprint.BaseDependencyTag
 }
+
+// Mark this tag so dependencies that use it are excluded from APEX contents.
+func (t deapexerTagStruct) ExcludeFromApexContents() {}
+
+var _ ExcludeFromApexContentsTag = DeapexerTag
 
 // A tag that is used for dependencies on the `deapexer` module.
 var DeapexerTag = deapexerTagStruct{}
