@@ -235,3 +235,15 @@ func (p BootclasspathAPIProperties) sdkKindToStubLibs() map[android.SdkKind][]st
 	m[android.SdkCorePlatform] = p.Core_platform_api.Stub_libs
 	return m
 }
+
+// RequiredFilesFromPrebuiltApex must be implemented by modules that require files to be exported
+// from a prebuilt_apex/apex_set.
+type RequiredFilesFromPrebuiltApex interface {
+	// RequiredFilesFromPrebuiltApex returns a map from the key (module name plus tag) to the required
+	// path of the file within the prebuilt .apex file.
+	//
+	// For each key/file pair this will cause the file to be extracted out of the prebuilt .apex file,
+	// and the path to the extracted file will be stored in the DeapexerInfo using that key, The path
+	// can then be retrieved using the PrebuiltExportPath(name, tag) method.
+	RequiredFilesFromPrebuiltApex(ctx android.BaseModuleContext) map[string]string
+}
