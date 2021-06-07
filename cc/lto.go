@@ -101,17 +101,14 @@ func (lto *lto) flags(ctx BaseModuleContext, flags Flags) Flags {
 	if lto.LTO() {
 		var ltoFlag string
 		if lto.ThinLTO() {
-			ltoFlag = "-flto=thin -fsplit-lto-unit"
+			// Enable whole-program devirtualization with ThinLTO.
+			ltoFlag = "-flto=thin -fwhole-program-vtables"
 		} else {
 			ltoFlag = "-flto"
 		}
 
 		flags.Local.CFlags = append(flags.Local.CFlags, ltoFlag)
 		flags.Local.LdFlags = append(flags.Local.LdFlags, ltoFlag)
-
-		if Bool(lto.Properties.Whole_program_vtables) {
-			flags.Local.CFlags = append(flags.Local.CFlags, "-fwhole-program-vtables")
-		}
 
 		if lto.ThinLTO() && ctx.Config().IsEnvTrue("USE_THINLTO_CACHE") && lto.useClangLld(ctx) {
 			// Set appropriate ThinLTO cache policy
