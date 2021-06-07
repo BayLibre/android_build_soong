@@ -221,6 +221,8 @@ var (
 	// still be generated via bp2build.
 	mixedBuildsDisabledList = []string{
 		// Currently empty, though should remain present to facilitate granular bp2build migration.
+		"libdl",
+		"libdl_android",
 	}
 
 	// Used for quicker lookups
