@@ -514,6 +514,25 @@ func (l *lintSingleton) copyLintDependencies(ctx android.SingletonContext) {
 		return
 	}
 
+	var trimmedApiDb android.Module
+	ctx.VisitAllModules(func(m android.Module) {
+		if ctx.ModuleName(m) == "filter-api-versions" {
+			if trimmedApiDb == nil {
+				trimmedApiDb = m
+			} else {
+				ctx.Errorf("lint: multiple filter-api-versions modules found: %s and %s",
+					ctx.ModuleSubDir(m), ctx.ModuleSubDir(trimmedApiDb))
+			}
+		}
+	})
+
+	if trimmedApiDb == nil {
+		if !ctx.Config().AllowMissingDependencies() {
+			ctx.Errorf("lint: missing filter-api-versions")
+		}
+		return
+	}
+
 	ctx.Build(pctx, android.BuildParams{
 		Rule:   android.CpIfChanged,
 		Input:  android.OutputFileForModule(ctx, frameworkDocStubs, ".annotations.zip"),
@@ -521,8 +540,9 @@ func (l *lintSingleton) copyLintDependencies(ctx android.SingletonContext) {
 	})
 
 	ctx.Build(pctx, android.BuildParams{
-		Rule:   android.CpIfChanged,
-		Input:  android.OutputFileForModule(ctx, frameworkDocStubs, ".api_versions.xml"),
+		Rule: android.CpIfChanged,
+		//Input:  android.OutputFileForModule(ctx, frameworkDocStubs, ".api_versions.xml"),
+		Input:  android.OutputFileForModule(ctx, trimmedApiDb, ""), //"api-versions-filtered"),
 		Output: copiedAPIVersionsXmlPath(ctx),
 	})
 }
