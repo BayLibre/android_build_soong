@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "256c2d16_6bed033d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-08T16:55:36Z",
+      "side": 1,
+      "message": "Ulya should look at this too.",
+      "revId": "9d49a1359a06acd52808f072d8c5db44054d2640",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8499b410_8fe4d281",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-08T16:55:36Z",
+      "side": 1,
+      "message": "update this comment?",
+      "range": {
+        "startLine": 144,
+        "startChar": 13,
+        "endLine": 144,
+        "endChar": 24
+      },
+      "revId": "9d49a1359a06acd52808f072d8c5db44054d2640",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
