@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b353f4b_32b3e5f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-06-08T04:17:55Z",
+      "side": 1,
+      "message": "What failure are you trying to fix? If the mac one, it\u0027s already fixed and you just need to sync.\n\nIf something else, we have a feature flag that can be disabled rather than reverting the whole thing.",
+      "revId": "c4140e13cd823f50b31d0c0643a345a38389bcbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
