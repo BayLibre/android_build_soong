@@ -50,6 +50,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c46fd785_1bc9f196",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1190,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-08T05:55:58Z",
+      "side": 1,
+      "message": "If there is no default branch, Bazel will complain if the build is for an architecture other than arm and x86, which is not what Soong does.",
+      "range": {
+        "startLine": 1190,
+        "startChar": 8,
+        "endLine": 1190,
+        "endChar": 50
+      },
+      "revId": "b9a67d3ab96e758749b9dfdf692b8866e5936c03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a49823f1_b25f12ff",
         "filename": "cc/bp2build.go",
         "patchSetId": 8
