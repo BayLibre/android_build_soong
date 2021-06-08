@@ -153,6 +153,9 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 			coverage := ctx.GetDirectDepWithTag(getClangProfileLibraryName(ctx), CoverageDepTag).(*Module)
 			deps.WholeStaticLibs = append(deps.WholeStaticLibs, coverage.OutputFile().Path())
 			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--wrap,open")
+
+			coverageVersionScript := "build/soong/cc/coverage_section_align.lds"
+			flags.Local.LdFlags = append(flags.Local.LdFlags, coverageVersionScript)
 		}
 	}
 
