@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba04d6aa_697bee84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-06-08T00:57:42Z",
+      "side": 1,
+      "message": "This assumes that we have corresponding API mapping in getFinalCodenamesMap() in api_levels.go.",
+      "revId": "94a76ee86883d2f11a064ce8bd2da226136c6bd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
