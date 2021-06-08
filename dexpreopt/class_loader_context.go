@@ -545,6 +545,10 @@ func toJsonClassLoaderContext(clcMap ClassLoaderContextMap) jsonClassLoaderConte
 func toJsonClassLoaderContextRec(clcs []*ClassLoaderContext) []*jsonClassLoaderContext {
 	jClcs := make([]*jsonClassLoaderContext, len(clcs))
 	for i, clc := range clcs {
+		// Omit an invalid clc of lib which is replaced with prebuilt one.
+		if clc.Host == nil {
+			continue
+		}
 		jClcs[i] = &jsonClassLoaderContext{
 			Name:        clc.Name,
 			Host:        clc.Host.String(),
