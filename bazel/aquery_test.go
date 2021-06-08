@@ -805,6 +805,80 @@ func TestMiddlemenAction(t *testing.T) {
 	}
 }
 
+func TestSymlink(t *testing.T) {
+	const inputString = `
+{
+  "artifacts": [{
+    "id": 1,
+    "pathFragmentId": 3
+  }, {
+    "id": 2,
+    "pathFragmentId": 5
+  }],
+  "actions": [{
+    "targetId": 1,
+    "actionKey": "x",
+    "mnemonic": "Symlink",
+    "inputDepSetIds": [1],
+    "outputIds": [2],
+    "primaryOutputId": 2
+  }],
+  "depSetOfFiles": [{
+    "id": 1,
+    "directArtifactIds": [1]
+  }],
+  "pathFragments": [{
+    "id": 1,
+    "label": "one"
+  }, {
+    "id": 2,
+    "label": "file_subdir",
+    "parentId": 1
+  }, {
+    "id": 3,
+    "label": "file",
+    "parentId": 2
+  }, {
+    "id": 4,
+    "label": "symlink_subdir",
+    "parentId": 1
+  }, {
+    "id": 5,
+    "label": "symlink",
+    "parentId": 4
+  }]
+}`
+
+	actual, err := AqueryBuildStatements([]byte(inputString))
+	if err != nil {
+		t.Errorf("Unexpected error %q", err)
+	}
+	if expected := 1; len(actual) != expected {
+		t.Fatalf("Expected %d build statements, got %d", expected, len(actual))
+	}
+
+	bs := actual[0]
+	expectedSymlink := "one/symlink_subdir/symlink"
+	if len(bs.SymlinkPaths) != 1 {
+		t.Errorf("Expected symlink %q, but got %q", expectedSymlink, bs.SymlinkPaths)
+	} else if got := bs.SymlinkPaths[0]; got != expectedSymlink {
+		t.Errorf("Expected symlink %q, but got %q", expectedSymlink, got)
+	}
+	expectedBuildStatements := []BuildStatement{
+		BuildStatement{
+			Command: "mkdir -p one/symlink_subdir && " +
+				"rm -f one/symlink_subdir/symlink && " +
+				"ln -rsf one/file_subdir/file one/symlink_subdir/symlink",
+			InputPaths:   []string{"one/file_subdir/file"},
+			OutputPaths:  []string{"one/symlink_subdir/symlink"},
+			SymlinkPaths: []string{"one/symlink_subdir/symlink"},
+			Mnemonic:     "Symlink",
+		},
+	}
+
+	assertBuildStatements(t, actual, expectedBuildStatements)
+}
+
 func assertError(t *testing.T, err error, expected string) {
 	if err == nil {
 		t.Errorf("expected error '%s', but got no error", expected)
@@ -816,6 +890,7 @@ func assertError(t *testing.T, err error, expected string) {
 // Asserts that the given actual build statements match the given expected build statements.
 // Build statement equivalence is determined using buildStatementEquals.
 func assertBuildStatements(t *testing.T, expected []BuildStatement, actual []BuildStatement) {
+	t.Helper()
 	if len(expected) != len(actual) {
 		t.Errorf("expected %d build statements, but got %d,\n expected: %v,\n actual: %v",
 			len(expected), len(actual), expected, actual)
