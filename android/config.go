@@ -821,6 +821,11 @@ func (c *config) UnbundledBuildApps() bool {
 	return Bool(c.productVariables.Unbundled_build_apps)
 }
 
+// Returns true if building image that aren't bundled with the platform.
+func (c *config) UnbundledBuildImage() bool {
+	return Bool(c.productVariables.Unbundled_build_image)
+}
+
 // Returns true if building modules against prebuilt SDKs.
 func (c *config) AlwaysUsePrebuiltSdks() bool {
 	return Bool(c.productVariables.Always_use_prebuilt_sdks)
