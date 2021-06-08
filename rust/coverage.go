@@ -22,7 +22,7 @@ import (
 
 var CovLibraryName = "libprofile-clang-extras"
 
-const profileInstrFlag = "-fprofile-instr-generate=/data/misc/trace/clang-%p-%m.profraw"
+const profileInstrFlag = "-fprofile-instr-generate=/data/misc/trace/clang%c-%p-%m.profraw"
 
 type coverage struct {
 	Properties cc.CoverageProperties
@@ -70,6 +70,10 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 			"-Wl,-z,nostart-stop-gc",
 		)
 		deps.StaticLibs = append(deps.StaticLibs, coverage.OutputFile().Path())
+		if cc.EnableContinuousCoverage(ctx) {
+			flags.RustFlags = append(flags.RustFlags, "-C llvm-args=--runtime-counter-relocation")
+			flags.LinkFlags = append(flags.LinkFlags, "-Wl,-mllvm,-runtime-counter-relocation")
+		}
 	}
 
 	return flags, deps
