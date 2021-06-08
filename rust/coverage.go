@@ -22,7 +22,7 @@ import (
 
 var CovLibraryName = "libprofile-clang-extras"
 
-const profileInstrFlag = "-fprofile-instr-generate=/data/misc/trace/clang-%p-%m.profraw"
+const profileInstrFlag = "-fprofile-instr-generate=/data/misc/trace/clang%c-%p-%m.profraw"
 
 type coverage struct {
 	Properties cc.CoverageProperties
@@ -55,9 +55,11 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 		flags.Coverage = true
 		coverage := ctx.GetDirectDepWithTag(CovLibraryName, cc.CoverageDepTag).(cc.LinkableInterface)
 		flags.RustFlags = append(flags.RustFlags,
-			"-Z instrument-coverage", "-g")
+			"-Z instrument-coverage", "-g",
+			"-C llvm-args=--runtime-counter-relocation")
 		flags.LinkFlags = append(flags.LinkFlags,
 			profileInstrFlag, "-g", coverage.OutputFile().Path().String(), "-Wl,--wrap,open",
+			"-Wl,-mllvm,-runtime-counter-relocation",
 			// Upstream LLVM change 6d2d3bd0a6 made
 			// -z,start-stop-gc the default.  It drops metadata
 			// sections like __llvm_prf_data unless they are marked
