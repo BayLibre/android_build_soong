@@ -2599,80 +2599,6 @@ func parseModuleDeps(text string) (modulesInOrder []android.Path, allDeps map[an
 	return modulesInOrder, allDeps
 }
 
-func TestStaticLibDepReordering(t *testing.T) {
-	ctx := testCc(t, `
-	cc_library {
-		name: "a",
-		static_libs: ["b", "c", "d"],
-		stl: "none",
-	}
-	cc_library {
-		name: "b",
-		stl: "none",
-	}
-	cc_library {
-		name: "c",
-		static_libs: ["b"],
-		stl: "none",
-	}
-	cc_library {
-		name: "d",
-		stl: "none",
-	}
-
-	`)
-
-	variant := "android_arm64_armv8-a_static"
-	moduleA := ctx.ModuleForTests("a", variant).Module().(*Module)
-	actual := ctx.ModuleProvider(moduleA, StaticLibraryInfoProvider).(StaticLibraryInfo).
-		TransitiveStaticLibrariesForOrdering.ToList().RelativeToTop()
-	expected := GetOutputPaths(ctx, variant, []string{"a", "c", "b", "d"})
-
-	if !reflect.DeepEqual(actual, expected) {
-		t.Errorf("staticDeps orderings were not propagated correctly"+
-			"\nactual:   %v"+
-			"\nexpected: %v",
-			actual,
-			expected,
-		)
-	}
-}
-
-func TestStaticLibDepReorderingWithShared(t *testing.T) {
-	ctx := testCc(t, `
-	cc_library {
-		name: "a",
-		static_libs: ["b", "c"],
-		stl: "none",
-	}
-	cc_library {
-		name: "b",
-		stl: "none",
-	}
-	cc_library {
-		name: "c",
-		shared_libs: ["b"],
-		stl: "none",
-	}
-
-	`)
-
-	variant := "android_arm64_armv8-a_static"
-	moduleA := ctx.ModuleForTests("a", variant).Module().(*Module)
-	actual := ctx.ModuleProvider(moduleA, StaticLibraryInfoProvider).(StaticLibraryInfo).
-		TransitiveStaticLibrariesForOrdering.ToList().RelativeToTop()
-	expected := GetOutputPaths(ctx, variant, []string{"a", "c", "b"})
-
-	if !reflect.DeepEqual(actual, expected) {
-		t.Errorf("staticDeps orderings did not account for shared libs"+
-			"\nactual:   %v"+
-			"\nexpected: %v",
-			actual,
-			expected,
-		)
-	}
-}
-
 func checkEquals(t *testing.T, message string, expected, actual interface{}) {
 	t.Helper()
 	if !reflect.DeepEqual(actual, expected) {
@@ -3273,46 +3199,6 @@ func TestStaticExecutable(t *testing.T) {
 		if strings.Contains(libFlags, lib) {
 			t.Errorf("Shared lib %q was found in %q", lib, libFlags)
 		}
-	}
-}
-
-func TestStaticDepsOrderWithStubs(t *testing.T) {
-	ctx := testCc(t, `
-		cc_binary {
-			name: "mybin",
-			srcs: ["foo.c"],
-			static_libs: ["libfooC", "libfooB"],
-			static_executable: true,
-			stl: "none",
-		}
-
-		cc_library {
-			name: "libfooB",
-			srcs: ["foo.c"],
-			shared_libs: ["libfooC"],
-			stl: "none",
-		}
-
-		cc_library {
-			name: "libfooC",
-			srcs: ["foo.c"],
-			stl: "none",
-			stubs: {
-				versions: ["1"],
-			},
-		}`)
-
-	mybin := ctx.ModuleForTests("mybin", "android_arm64_armv8-a").Rule("ld")
-	actual := mybin.Implicits[:2]
-	expected := GetOutputPaths(ctx, "android_arm64_armv8-a_static", []string{"libfooB", "libfooC"})
-
-	if !reflect.DeepEqual(actual, expected) {
-		t.Errorf("staticDeps orderings were not propagated correctly"+
-			"\nactual:   %v"+
-			"\nexpected: %v",
-			actual,
-			expected,
-		)
 	}
 }
 

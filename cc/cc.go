@@ -2915,27 +2915,27 @@ func orderStaticModuleDeps(staticDeps []StaticLibraryInfo, sharedDeps []SharedLi
 	var staticPaths android.Paths
 	for _, staticDep := range staticDeps {
 		staticPaths = append(staticPaths, staticDep.StaticLibrary)
-		transitiveStaticLibsBuilder.Transitive(staticDep.TransitiveStaticLibrariesForOrdering)
+		// transitiveStaticLibsBuilder.Transitive(staticDep.TransitiveStaticLibrariesForOrdering)
 	}
 	for _, sharedDep := range sharedDeps {
 		if sharedDep.StaticAnalogue != nil {
-			transitiveStaticLibsBuilder.Transitive(sharedDep.StaticAnalogue.TransitiveStaticLibrariesForOrdering)
+			// transitiveStaticLibsBuilder.Transitive(sharedDep.StaticAnalogue.TransitiveStaticLibrariesForOrdering)
 		}
 	}
 	transitiveStaticLibs := transitiveStaticLibsBuilder.Build()
 
-	orderedTransitiveStaticLibs := transitiveStaticLibs.ToList()
+	// orderedTransitiveStaticLibs := transitiveStaticLibs.ToList()
 
 	// reorder the dependencies based on transitive dependencies
 	staticPaths = android.FirstUniquePaths(staticPaths)
-	_, orderedStaticPaths := android.FilterPathList(orderedTransitiveStaticLibs, staticPaths)
+	// _, orderedStaticPaths := android.FilterPathList(orderedTransitiveStaticLibs, staticPaths)
 
-	if len(orderedStaticPaths) != len(staticPaths) {
-		missing, _ := android.FilterPathList(staticPaths, orderedStaticPaths)
-		panic(fmt.Errorf("expected %d ordered static paths , got %d, missing %q %q %q", len(staticPaths), len(orderedStaticPaths), missing, orderedStaticPaths, staticPaths))
-	}
+	// if len(orderedStaticPaths) != len(staticPaths) {
+	// missing, _ := android.FilterPathList(staticPaths, orderedStaticPaths)
+	// panic(fmt.Errorf("expected %d ordered static paths , got %d, missing %q %q %q", len(staticPaths), len(orderedStaticPaths), missing, orderedStaticPaths, staticPaths))
+	// }
 
-	return orderedStaticPaths, transitiveStaticLibs
+	return staticPaths, transitiveStaticLibs
 }
 
 // BaseLibName trims known prefixes and suffixes
