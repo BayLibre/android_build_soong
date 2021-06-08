@@ -52,6 +52,24 @@
       "parentUuid": "28a2110e_7a346a1e",
       "revId": "93a557e941cade38e8c0b1dc719aafbeb1a55958",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d8ded50_73af1017",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-08T17:02:50Z",
+      "side": 1,
+      "message": "Confirmed no changes to build.ninja in AOSP or internal master with this change after the dist_group changes were submitted.",
+      "parentUuid": "30bc4277_abc5bf9b",
+      "revId": "93a557e941cade38e8c0b1dc719aafbeb1a55958",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
