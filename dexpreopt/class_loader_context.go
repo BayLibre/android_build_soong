@@ -545,6 +545,13 @@ func toJsonClassLoaderContext(clcMap ClassLoaderContextMap) jsonClassLoaderConte
 func toJsonClassLoaderContextRec(clcs []*ClassLoaderContext) []*jsonClassLoaderContext {
 	jClcs := make([]*jsonClassLoaderContext, len(clcs))
 	for i, clc := range clcs {
+		// For some stub libraries the only known thing is the name of their implementation
+		// library, but the library itself is unavailable (missing or part of a prebuilt). In
+		// such cases we still need to add the library to <uses-library> tags in the manifest,
+		// but we cannot use it for dexpreopt.
+		if clc.Host == nil {
+			continue
+		}
 		jClcs[i] = &jsonClassLoaderContext{
 			Name:        clc.Name,
 			Host:        clc.Host.String(),
