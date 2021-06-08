@@ -490,26 +490,38 @@ func (l *lintSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 	l.copyLintDependencies(ctx)
 }
 
+func findModuleOrErr(ctx android.SingletonContext, moduleName string) android.Module {
+	var res android.Module
+	ctx.VisitAllModules(func(m android.Module) {
+		if ctx.ModuleName(m) == moduleName {
+			if res == nil {
+				res = m
+			} else {
+				ctx.Errorf("lint: multiple %s modules found: %s and %s", moduleName,
+					ctx.ModuleSubDir(m), ctx.ModuleSubDir(res))
+			}
+		}
+	})
+	return res
+}
+
 func (l *lintSingleton) copyLintDependencies(ctx android.SingletonContext) {
 	if ctx.Config().AlwaysUsePrebuiltSdks() {
 		return
 	}
 
-	var frameworkDocStubs android.Module
-	ctx.VisitAllModules(func(m android.Module) {
-		if ctx.ModuleName(m) == "framework-doc-stubs" {
-			if frameworkDocStubs == nil {
-				frameworkDocStubs = m
-			} else {
-				ctx.Errorf("lint: multiple framework-doc-stubs modules found: %s and %s",
-					ctx.ModuleSubDir(m), ctx.ModuleSubDir(frameworkDocStubs))
-			}
-		}
-	})
-
+	frameworkDocStubs := findModuleOrErr(ctx, "framework-doc-stubs")
 	if frameworkDocStubs == nil {
 		if !ctx.Config().AllowMissingDependencies() {
 			ctx.Errorf("lint: missing framework-doc-stubs")
+		}
+		return
+	}
+
+	trimmedApiDb := findModuleOrErr(ctx, "filter-api-versions")
+	if trimmedApiDb == nil {
+		if !ctx.Config().AllowMissingDependencies() {
+			ctx.Errorf("lint: missing filter-api-versions")
 		}
 		return
 	}
@@ -521,8 +533,9 @@ func (l *lintSingleton) copyLintDependencies(ctx android.SingletonContext) {
 	})
 
 	ctx.Build(pctx, android.BuildParams{
-		Rule:   android.CpIfChanged,
-		Input:  android.OutputFileForModule(ctx, frameworkDocStubs, ".api_versions.xml"),
+		Rule: android.CpIfChanged,
+		//Input:  android.OutputFileForModule(ctx, frameworkDocStubs, ".api_versions.xml"),
+		Input:  android.OutputFileForModule(ctx, trimmedApiDb, ""),
 		Output: copiedAPIVersionsXmlPath(ctx),
 	})
 }
