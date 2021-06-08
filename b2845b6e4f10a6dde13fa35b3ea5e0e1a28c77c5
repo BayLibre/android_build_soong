@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4f5aa45_04adb1de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-08T08:13:55Z",
+      "side": 1,
+      "message": "The --skip-kati flag has some issues. Anton fixed/avoided them in http://ag/q/topic:soongonly but I don\u0027t think they have been cherry picked to AOSP.\n\nThe basic problem was that --skip-kati does not generate all the ninja files that the combined ninja file includes. You can test it by removing all *.ninja file and then running your script. If your script is affected then ninja will fail because it cannot find a file to include.\n\nThis was discovered when an incremental build that changed some environment variable from the previous invocation did not work properly as it included a stale ninja file.\n\nI don\u0027t know if the issues it has affects your use of them or whether you need to/can use the new --soong-only option.",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "b2845b6e4f10a6dde13fa35b3ea5e0e1a28c77c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
