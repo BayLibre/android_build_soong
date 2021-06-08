@@ -16,6 +16,23 @@
       "message": "I\u0027ll leave this to Paul, I don\u0027t really know how this works",
       "revId": "1b75a3ce623357020ec6f1446edff974a0dc283a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86fadb5_0846cc7e",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-08T11:47:46Z",
+      "side": 1,
+      "message": "We can definitely do better than this but this is ok for now.",
+      "revId": "1b75a3ce623357020ec6f1446edff974a0dc283a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
