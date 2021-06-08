@@ -23,6 +23,7 @@ import (
 )
 
 const profileInstrFlag = "-fprofile-instr-generate=/data/misc/trace/clang-%p-%m.profraw"
+const coverageVersionScript = "build/soong/cc/coverage_section_align.lds"
 
 type CoverageProperties struct {
 	Native_coverage *bool
@@ -152,7 +153,7 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 
 			coverage := ctx.GetDirectDepWithTag(getClangProfileLibraryName(ctx), CoverageDepTag).(*Module)
 			deps.WholeStaticLibs = append(deps.WholeStaticLibs, coverage.OutputFile().Path())
-			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--wrap,open")
+			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,--wrap,open", coverageVersionScript)
 		}
 	}
 

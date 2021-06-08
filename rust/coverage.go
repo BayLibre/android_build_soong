@@ -23,6 +23,7 @@ import (
 var CovLibraryName = "libprofile-clang-extras"
 
 const profileInstrFlag = "-fprofile-instr-generate=/data/misc/trace/clang-%p-%m.profraw"
+const coverageVersionScript = "build/soong/cc/coverage_section_align.lds"
 
 type coverage struct {
 	Properties cc.CoverageProperties
@@ -57,7 +58,8 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 		flags.RustFlags = append(flags.RustFlags,
 			"-Z instrument-coverage", "-g")
 		flags.LinkFlags = append(flags.LinkFlags,
-			profileInstrFlag, "-g", coverage.OutputFile().Path().String(), "-Wl,--wrap,open")
+			profileInstrFlag, "-g", coverage.OutputFile().Path().String(), "-Wl,--wrap,open",
+			coverageVersionScript)
 		deps.StaticLibs = append(deps.StaticLibs, coverage.OutputFile().Path())
 	}
 
