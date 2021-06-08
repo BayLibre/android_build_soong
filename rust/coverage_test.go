@@ -75,7 +75,7 @@ func TestCoverageFlags(t *testing.T) {
 		}
 	}
 
-	linkCoverageFlags := []string{"-fprofile-instr-generate=/data/misc/trace/clang-%p-%m.profraw", " -g "}
+	linkCoverageFlags := []string{"-fprofile-instr-generate=/data/misc/trace/clang%c-%p-%m.profraw", " -g "}
 	for _, flag := range linkCoverageFlags {
 		missingErrorStr := "missing rust linker flag '%s' for '%s' module with coverage enabled; rustcFlags: %#v"
 		containsErrorStr := "contains rust linker flag '%s' for '%s' module with coverage disabled; rustcFlags: %#v"
