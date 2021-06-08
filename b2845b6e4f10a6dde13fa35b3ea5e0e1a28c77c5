@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5509f0a6_31481a3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-08T10:57:05Z",
+      "side": 1,
+      "message": "The ninja files are created if they don\u0027t exist, but are not re-created if they do exist, in which case it is possible they refer to the wrong underlying product. It\u0027s a bit obscure, but --soong-only fixes this.",
+      "parentUuid": "beadfec8_d480083d",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "b2845b6e4f10a6dde13fa35b3ea5e0e1a28c77c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea6fd4be_7c8b9a16",
@@ -103,6 +127,24 @@
       "side": 1,
       "message": "Yes. The existence of .soong.kati_enabled causes Soong to not generate the necessary install targets for a Soong-only build. I think what needs to happen is that .soong.kati_enabled is removed, and Soong instead produces .ninja files with different names depending on the Soong-only mode. That\u0027d mean the combined ninja files need to be different as well (or else the combined file is bypassed completely in Soong-only mode).",
       "parentUuid": "ea6fd4be_7c8b9a16",
+      "revId": "b2845b6e4f10a6dde13fa35b3ea5e0e1a28c77c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53573e6b_817a8b92",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-08T10:57:05Z",
+      "side": 1,
+      "message": "or perhaps soong_ui should just remove the .soong.kati_enabled file if it\u0027s passed --soonly-only? Less good, but probably quite easy",
+      "parentUuid": "c950c741_0c2f52d8",
       "revId": "b2845b6e4f10a6dde13fa35b3ea5e0e1a28c77c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
