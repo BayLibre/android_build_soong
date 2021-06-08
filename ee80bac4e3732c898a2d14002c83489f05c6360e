@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "299e996e_6a234ac6",
+        "filename": "java/rro.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-08T16:52:59Z",
+      "side": 1,
+      "message": "Can you add a comment here explaining why this needs a custom implementation?",
+      "revId": "ee80bac4e3732c898a2d14002c83489f05c6360e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
