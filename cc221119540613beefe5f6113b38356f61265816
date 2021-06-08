@@ -16,6 +16,24 @@
       "message": "This is submitted together with another change called \"DO NOT SUBMIT\" so I won\u0027t review this until that one is ready for review.",
       "revId": "cc221119540613beefe5f6113b38356f61265816",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f32b49aa_ad4a800a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-08T01:45:04Z",
+      "side": 1,
+      "message": "Yes, this is a FYI CL, not meant for review.",
+      "parentUuid": "8bfe6206_980daaf1",
+      "revId": "cc221119540613beefe5f6113b38356f61265816",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
