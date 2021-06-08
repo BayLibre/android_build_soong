@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "beadfec8_d480083d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-08T10:44:01Z",
+      "side": 1,
+      "message": "I tried removing the .ninja files, and they were recreated properly (with both --skip-kati and --soong-only). Could be a reason this script has been using out/aml to separate it from normal with-make builds.\n\nAnyway, I\u0027ve switched to --soong-only.",
+      "parentUuid": "80e00689_d9a50460",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "b2845b6e4f10a6dde13fa35b3ea5e0e1a28c77c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea6fd4be_7c8b9a16",
@@ -65,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c950c741_0c2f52d8",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-08T10:44:01Z",
+      "side": 1,
+      "message": "Yes. The existence of .soong.kati_enabled causes Soong to not generate the necessary install targets for a Soong-only build. I think what needs to happen is that .soong.kati_enabled is removed, and Soong instead produces .ninja files with different names depending on the Soong-only mode. That\u0027d mean the combined ninja files need to be different as well (or else the combined file is bypassed completely in Soong-only mode).",
+      "parentUuid": "ea6fd4be_7c8b9a16",
+      "revId": "b2845b6e4f10a6dde13fa35b3ea5e0e1a28c77c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a616878_01bc7d03",
@@ -78,6 +120,30 @@
       "writtenOn": "2021-06-08T08:49:50Z",
       "side": 1,
       "message": "this stuff seems like something --soong-only should do, likely by making sure the config step writes this file correctly?",
+      "range": {
+        "startLine": 36,
+        "startChar": 25,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "b2845b6e4f10a6dde13fa35b3ea5e0e1a28c77c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1209f85_044c21d1",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-08T10:44:01Z",
+      "side": 1,
+      "message": "Yes, it should, and then I think this script can basically go away entirely again. There\u0027s a TODO about it above.",
+      "parentUuid": "7a616878_01bc7d03",
       "range": {
         "startLine": 36,
         "startChar": 25,
