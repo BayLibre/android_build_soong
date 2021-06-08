@@ -16,6 +16,23 @@
       "message": "This assumes that we have corresponding API mapping in getFinalCodenamesMap() in api_levels.go.",
       "revId": "94a76ee86883d2f11a064ce8bd2da226136c6bd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60cd3aac_73d5e7d9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-08T09:02:27Z",
+      "side": 1,
+      "message": "Thank you!",
+      "revId": "94a76ee86883d2f11a064ce8bd2da226136c6bd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
