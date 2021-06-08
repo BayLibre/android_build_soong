@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4f0b4cc_85690f16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-08T17:12:45Z",
+      "side": 1,
+      "message": "But you had some cases when there was a library with nil host path, right? Do you mean that the subset of dexpreopt.config files that existed previously are the same? Please clarify how you checked in the commit message.",
+      "range": {
+        "startLine": 11,
+        "startChar": 55,
+        "endLine": 12,
+        "endChar": 14
+      },
+      "revId": "9d49a1359a06acd52808f072d8c5db44054d2640",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "256c2d16_6bed033d",
@@ -14,6 +37,75 @@
       "writtenOn": "2021-06-08T16:55:36Z",
       "side": 1,
       "message": "Ulya should look at this too.",
+      "revId": "9d49a1359a06acd52808f072d8c5db44054d2640",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "124d27fd_afa7c137",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-08T17:12:45Z",
+      "side": 1,
+      "message": "CLC (capitals) as it\u0027s not a very common abbreviation",
+      "range": {
+        "startLine": 548,
+        "startChar": 21,
+        "endLine": 548,
+        "endChar": 24
+      },
+      "revId": "9d49a1359a06acd52808f072d8c5db44054d2640",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5ce984b_2ec41087",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-08T17:12:45Z",
+      "side": 1,
+      "message": "How will the lib be replaced, can you give an example?\n\nHow will the class loader context be restored back to what it should be? If there is some sort of postprocessing, then maybe generate an explicit invalid CLC entry with a nonexistent jar name that suggests it will be replaced. It\u0027s not good to silently drop one of the CLC libraries.",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 3
+      },
+      "revId": "9d49a1359a06acd52808f072d8c5db44054d2640",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17b2ea6b_bf3fd55e",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-08T17:12:45Z",
+      "side": 1,
+      "message": "Nit: \"unbundled image is built\".",
+      "range": {
+        "startLine": 1253,
+        "startChar": 83,
+        "endLine": 1253,
+        "endChar": 110
+      },
       "revId": "9d49a1359a06acd52808f072d8c5db44054d2640",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
