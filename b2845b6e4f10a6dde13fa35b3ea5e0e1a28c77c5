@@ -22,6 +22,70 @@
       },
       "revId": "b2845b6e4f10a6dde13fa35b3ea5e0e1a28c77c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80e00689_d9a50460",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-08T08:49:50Z",
+      "side": 1,
+      "message": "Yeah, I think this CL looks fine if we just replace --skip-kati with --soong-only. I\u0027ve CP\u0027d to AOSP now",
+      "parentUuid": "d4f5aa45_04adb1de",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "b2845b6e4f10a6dde13fa35b3ea5e0e1a28c77c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea6fd4be_7c8b9a16",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-08T08:49:50Z",
+      "side": 1,
+      "message": "Is this comment still true with --soong-only ? I would not be surprised at all if it was somehow related to not running config as was the case before this CL",
+      "revId": "b2845b6e4f10a6dde13fa35b3ea5e0e1a28c77c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a616878_01bc7d03",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-08T08:49:50Z",
+      "side": 1,
+      "message": "this stuff seems like something --soong-only should do, likely by making sure the config step writes this file correctly?",
+      "range": {
+        "startLine": 36,
+        "startChar": 25,
+        "endLine": 49,
+        "endChar": 0
+      },
+      "revId": "b2845b6e4f10a6dde13fa35b3ea5e0e1a28c77c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
