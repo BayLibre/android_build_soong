@@ -312,7 +312,8 @@ type SharedLibraryInfo struct {
 	TableOfContents       android.OptionalPath
 	CoverageSharedLibrary android.OptionalPath
 
-	StaticAnalogue *StaticLibraryInfo
+	// snould be obtained from static analogue
+	TransitiveStaticLibrariesForOrdering *android.DepSet
 }
 
 var SharedLibraryInfoProvider = blueprint.NewProvider(SharedLibraryInfo{})
