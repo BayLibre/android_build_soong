@@ -94,6 +94,30 @@
       },
       "revId": "bc5a517ac9364794d2ccd646c807e491c0ad543f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93433d27_6ee35235",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-09T14:51:09Z",
+      "side": 1,
+      "message": "I suspect that it isn\u0027t being done here because we\u0027d end up with a circular dependency as soong-android currently depends on soong-bazel, so we can\u0027t use anything in soong/android within this file. At some point it may be worth detangling both packages a bit so we can do the verification here...",
+      "parentUuid": "4f05ffdd_b28a73b4",
+      "range": {
+        "startLine": 248,
+        "startChar": 3,
+        "endLine": 248,
+        "endChar": 112
+      },
+      "revId": "bc5a517ac9364794d2ccd646c807e491c0ad543f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
