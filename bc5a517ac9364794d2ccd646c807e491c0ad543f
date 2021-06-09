@@ -46,6 +46,30 @@
       },
       "revId": "bc5a517ac9364794d2ccd646c807e491c0ad543f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64ddad96_b214f9c9",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-09T14:41:56Z",
+      "side": 1,
+      "message": "1. yes, to make incremental builds work.\n\nre: validation, the input and output paths are being validated in bazel_handler via PathForBazelOut: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_handler.go;l\u003d748-757;drc\u003d8c52358ad7812634c04e12a6a136c1cd275cc68c, which checks for things like \"..\", so that should be sufficient, happy to add more if we feel it\u0027s necessary though. Added shell escaping for the files/dir.",
+      "parentUuid": "126d74c5_a4581685",
+      "range": {
+        "startLine": 248,
+        "startChar": 3,
+        "endLine": 248,
+        "endChar": 112
+      },
+      "revId": "bc5a517ac9364794d2ccd646c807e491c0ad543f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
