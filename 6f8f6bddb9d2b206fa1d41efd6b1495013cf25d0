@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bfee6828_9d1154e8",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-06-09T16:37:14Z",
+      "side": 1,
+      "message": "It wasn\u0027t there in the original impl but I can do that",
+      "parentUuid": "4de88018_07df7057",
+      "revId": "6f8f6bddb9d2b206fa1d41efd6b1495013cf25d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28c3c976_ac6bff55",
         "filename": "java/lint.go",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-09T16:05:06Z",
       "side": 1,
       "message": "I think we want to keep the old copy rule as well right? And then conditionally use the filtered one if the target specifies sdk_version:\"module_current\" -- Colin, any tips for Pedro (not sure how these deps are used).",
+      "range": {
+        "startLine": 534,
+        "startChar": 0,
+        "endLine": 540,
+        "endChar": 3
+      },
+      "revId": "6f8f6bddb9d2b206fa1d41efd6b1495013cf25d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8c044aa_e3b8af41",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-06-09T16:37:14Z",
+      "side": 1,
+      "message": "The complicated part is that we also want to use the filtered db when linting transitive dependencies, right?",
+      "parentUuid": "28c3c976_ac6bff55",
       "range": {
         "startLine": 534,
         "startChar": 0,
