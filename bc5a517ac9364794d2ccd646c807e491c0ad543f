@@ -22,6 +22,30 @@
       },
       "revId": "bc5a517ac9364794d2ccd646c807e491c0ad543f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "126d74c5_a4581685",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-09T05:43:54Z",
+      "side": 1,
+      "message": "re: (2): Bazel just deleted output files of actions, so I wouldn\u0027t worry about checking what it is. Maybe it\u0027s useful to add some sanity check to the path, though, so that one doesn\u0027t end up with $PATH\u003d\"-r .../../../../../../../\" and thus invoking \"rm -r -f ../../../../../../\".",
+      "parentUuid": "5b92d358_4af0bfb6",
+      "range": {
+        "startLine": 248,
+        "startChar": 3,
+        "endLine": 248,
+        "endChar": 112
+      },
+      "revId": "bc5a517ac9364794d2ccd646c807e491c0ad543f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
