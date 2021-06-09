@@ -16,6 +16,29 @@
       "message": "Please help review and verify this CL.",
       "revId": "937b5322c936d897129c0f8976d83f540b7a9522",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fc6c326_cc43caad",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2424,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2021-06-09T15:19:25Z",
+      "side": 1,
+      "message": "nit: can we use the info from a.properties to filter a.filesInfo and to retrieve the necessary data from apexFile?",
+      "range": {
+        "startLine": 2422,
+        "startChar": 1,
+        "endLine": 2424,
+        "endChar": 83
+      },
+      "revId": "937b5322c936d897129c0f8976d83f540b7a9522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
