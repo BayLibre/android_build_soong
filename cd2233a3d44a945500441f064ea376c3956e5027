@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f657923_6419a94e",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-09T07:44:02Z",
+      "side": 1,
+      "message": "Bug?",
+      "range": {
+        "startLine": 527,
+        "startChar": 4,
+        "endLine": 527,
+        "endChar": 48
+      },
+      "revId": "cd2233a3d44a945500441f064ea376c3956e5027",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
