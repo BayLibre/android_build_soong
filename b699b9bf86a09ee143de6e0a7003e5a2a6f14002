@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4a08403_22d1c3ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-09T21:14:30Z",
+      "side": 1,
+      "message": "Thanks for the quick fix\n\n(some tests need updating it seems)",
+      "revId": "b699b9bf86a09ee143de6e0a7003e5a2a6f14002",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
