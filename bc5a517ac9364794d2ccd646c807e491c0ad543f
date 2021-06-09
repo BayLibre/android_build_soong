@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b92d358_4af0bfb6",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-09T05:38:17Z",
+      "side": 1,
+      "message": "Few questions...\n\n1 - Is the \u0027rm\u0027 here to make incremental builds work, or some other reason?\n\n2 - Should we check what we are removing (e.g. do you expect it to be a symlink?) before removing the existing file?",
+      "range": {
+        "startLine": 248,
+        "startChar": 3,
+        "endLine": 248,
+        "endChar": 112
+      },
+      "revId": "bc5a517ac9364794d2ccd646c807e491c0ad543f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
