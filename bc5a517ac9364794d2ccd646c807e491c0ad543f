@@ -70,6 +70,30 @@
       },
       "revId": "bc5a517ac9364794d2ccd646c807e491c0ad543f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f05ffdd_b28a73b4",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-09T14:46:16Z",
+      "side": 1,
+      "message": "Thanks! It\u0027s better to err on the side of safety. It\u0027s at most a minor issue, but who knows how this code will look like five years from today.\n\n(in fact, I\u0027d be more comfortable if the full verification of the paths including uplevel references was done here, but that sounds like overkill)",
+      "parentUuid": "64ddad96_b214f9c9",
+      "range": {
+        "startLine": 248,
+        "startChar": 3,
+        "endLine": 248,
+        "endChar": 112
+      },
+      "revId": "bc5a517ac9364794d2ccd646c807e491c0ad543f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
