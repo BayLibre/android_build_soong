@@ -89,6 +89,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cdf91115_e9a8c945",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-06-09T14:30:34Z",
+      "side": 1,
+      "message": "The case which I had a problem with is `android.net.ipsec.ike.stubs.system`.\nIt is replaced with prebuilt one, but there are both variants in ClassLoaderContexts(one for `android.net.ipsec.ike.stubs.system` of which the path is invalid, the other for prebuilt one of which the path is the same as `android.net.ipsec.ike.stubs.system` in bundled build)\n\nI also think the invalid one shouldn\u0027t be added from the beginning. I\u0027ll fix it in the next PS.\n\nAnd also there is some missing case as well, I should supplement it.",
+      "parentUuid": "e5ce984b_2ec41087",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 3
+      },
+      "revId": "9d49a1359a06acd52808f072d8c5db44054d2640",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17b2ea6b_bf3fd55e",
         "filename": "java/app.go",
         "patchSetId": 2
