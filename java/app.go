@@ -169,6 +169,10 @@ type AndroidApp struct {
 	android.ApexBundleDepsInfo
 }
 
+func (a *AndroidApp) DexPreoptBuiltInstalled() string {
+	return a.dexpreopter.builtInstalled
+}
+
 func (a *AndroidApp) IsInstallable() bool {
 	return Bool(a.properties.Installable)
 }
@@ -452,6 +456,13 @@ func (a *AndroidApp) installPath(ctx android.ModuleContext) android.InstallPath 
 		installDir = filepath.Join("priv-app", a.installApkName)
 	} else {
 		installDir = filepath.Join("app", a.installApkName)
+	}
+	if apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo); !apexInfo.IsForPlatform() {
+		apexName := apexInfo.InApexVariants[0]
+		// !IsForPlatform() ensures that len(InApexVariants) > 0.
+		// len(InApexVariants) can't be > 1 unless the same APK is included in more than two
+		// APEXes
+		return android.PathForModuleInstall(ctx, "apex", apexName, installDir, a.installApkName+".apk")
 	}
 
 	return android.PathForModuleInstall(ctx, installDir, a.installApkName+".apk")

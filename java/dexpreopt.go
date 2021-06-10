@@ -103,7 +103,10 @@ func (d *dexpreopter) dexpreoptDisabled(ctx android.BaseModuleContext) bool {
 
 	// Don't preopt APEX variant module
 	if apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo); !apexInfo.IsForPlatform() {
-		return true
+		// ... but do dexpreopt when flattened APEXes are used
+		if !ctx.Config().FlattenApex() {
+			return true
+		}
 	}
 
 	// TODO: contains no java code

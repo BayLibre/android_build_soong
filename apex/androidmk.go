@@ -251,6 +251,9 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 				if jniLibSymbols := app.JNISymbolsInstalls(modulePath); len(jniLibSymbols) > 0 {
 					fmt.Fprintln(w, "LOCAL_SOONG_JNI_LIBS_SYMBOLS :=", jniLibSymbols.String())
 				}
+				if dexpreoptBuiltInstalled := app.DexPreoptBuiltInstalled(); len(dexpreoptBuiltInstalled) > 0 {
+					fmt.Fprintln(w, "LOCAL_SOONG_BUILT_INSTALLED :=", dexpreoptBuiltInstalled)
+				}
 			}
 			fmt.Fprintln(w, "include $(BUILD_SYSTEM)/soong_app_prebuilt.mk")
 		case appSet:
