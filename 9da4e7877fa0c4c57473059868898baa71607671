@@ -51,6 +51,24 @@
       "message": "TIL the struct itself doesn\u0027t need to be exported.",
       "revId": "9da4e7877fa0c4c57473059868898baa71607671",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c13cd85f_34a7cc5b",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-10T14:45:56Z",
+      "side": 1,
+      "message": "I didn\u0027t notice that.",
+      "parentUuid": "c49935e8_8fb0ac19",
+      "revId": "9da4e7877fa0c4c57473059868898baa71607671",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
