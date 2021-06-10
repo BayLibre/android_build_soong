@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c93edb9a_5dbc8bed",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-10T11:58:25Z",
+      "side": 1,
+      "message": "Nit: the field is confusingly named \u0027imagesDeps\u0027.",
+      "range": {
+        "startLine": 291,
+        "startChar": 45,
+        "endLine": 291,
+        "endChar": 54
+      },
+      "revId": "fd31cb5098a86dab65c27bef2b731e669ce71ff1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
