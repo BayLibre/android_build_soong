@@ -16,6 +16,29 @@
       "message": "Still needs more comments, but wanted to get feedback on the general approach",
       "revId": "e511102300f13418bb59cf0b3ef461851d0069e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a093804e_63d7438e",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-10T23:46:25Z",
+      "side": 1,
+      "message": "BazelLabelForModuleDepsExcludes ?",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "e511102300f13418bb59cf0b3ef461851d0069e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
