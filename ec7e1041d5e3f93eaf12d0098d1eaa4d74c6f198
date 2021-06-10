@@ -281,6 +281,30 @@
       },
       "revId": "ec7e1041d5e3f93eaf12d0098d1eaa4d74c6f198",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3690b9c_ee71a1e9",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-10T14:44:26Z",
+      "side": 1,
+      "message": "Thanks for documenting all the cases!",
+      "parentUuid": "5af4f0b6_dec39754",
+      "range": {
+        "startLine": 815,
+        "startChar": 1,
+        "endLine": 815,
+        "endChar": 324
+      },
+      "revId": "ec7e1041d5e3f93eaf12d0098d1eaa4d74c6f198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
