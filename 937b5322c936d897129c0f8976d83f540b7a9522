@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2aa5120_4173a6f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2021-06-10T11:23:15Z",
+      "side": 1,
+      "message": "The dependency graph shows it is workable to provide the result to let IDE\u0027s [Project structure] to include the service-appsearch as source directory.",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "937b5322c936d897129c0f8976d83f540b7a9522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8038ef03_17a3f5d6",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-06-07T14:51:54Z",
       "side": 1,
       "message": "Please help review and verify this CL.",
+      "revId": "937b5322c936d897129c0f8976d83f540b7a9522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f626b53d_e0087fc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2021-06-10T11:23:15Z",
+      "side": 1,
+      "message": "The dependency graph shows it is workable to let IDE\u0027s [Project structure] to include the relevant module as source directory.",
       "revId": "937b5322c936d897129c0f8976d83f540b7a9522",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
