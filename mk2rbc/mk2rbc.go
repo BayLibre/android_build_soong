@@ -500,6 +500,25 @@ func (ctx *parseContext) handleAssignment(a *mkparser.Assignment) {
 	}
 	_, isTraced := ctx.tracedVariables[name]
 	asgn := &assignmentNode{lhs: lhs, mkValue: a.Value, isTraced: isTraced}
+	if lhs.valueType() == starlarkTypeUnknown {
+		// Try to divine variabnle type from the RHS
+		asgn.value = ctx.parseMakeString(a, a.Value)
+		if xBad, ok := asgn.value.(*badExpr); ok {
+			ctx.wrapBadExpr(xBad)
+			return
+		}
+		inferred_type := asgn.value.typ()
+		if inferred_type == starlarkTypeUnknown {
+			inferred_type = starlarkTypeString
+		}
+		if ogv, ok := lhs.(*otherGlobalVariable); ok {
+			ogv.typ = inferred_type
+		} else if pcv, ok := lhs.(*productConfigVariable); ok {
+			pcv.typ = inferred_type
+		} else {
+			panic(fmt.Errorf("cannot assign new type to a variable %s, its flavor is %T", lhs.name(), lhs))
+		}
+	}
 	if lhs.valueType() == starlarkTypeList {
 		xConcat := ctx.buildConcatExpr(a)
 		if xConcat == nil {
