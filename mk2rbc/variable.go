@@ -49,7 +49,7 @@ func (v baseVariable) isPreset() bool {
 }
 
 var defaultValuesByType = map[starlarkType]string{
-	starlarkTypeUnknown: "None",
+	starlarkTypeUnknown: `""`,
 	starlarkTypeList:    "[]",
 	starlarkTypeString:  `""`,
 	starlarkTypeInt:     "0",
@@ -281,7 +281,7 @@ func (ctx *parseContext) addVariable(name string) variable {
 			// string variable.
 			v = &localVariable{baseVariable{nam: name, typ: starlarkTypeString}}
 		} else {
-			vt := starlarkTypeString
+			vt := starlarkTypeUnknown
 			if strings.HasPrefix(name, "LOCAL_") {
 				// Heuristics: local variables that contribute to corresponding config variables
 				if cfgVarName, found := localProductConfigVariables[name]; found {

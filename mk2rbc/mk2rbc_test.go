@@ -549,6 +549,22 @@ def init(g, handle):
 `,
 	},
 	{
+		desc:   "inferred type",
+		mkname: "product.mk",
+		in: `
+HIKEY_MODS := $(wildcard foo/*.ko)
+BOARD_VENDOR_KERNEL_MODULES += $(HIKEY_MODS)
+`,
+		expected: `load("//build/make/core:product_config.rbc", "rblf")
+
+def init(g, handle):
+  cfg = rblf.cfg(handle)
+  g["HIKEY_MODS"] = rblf.expand_wildcard("foo/*.ko")
+  g.setdefault("BOARD_VENDOR_KERNEL_MODULES", [])
+  g["BOARD_VENDOR_KERNEL_MODULES"] += g.get("HIKEY_MODS", [])
+`,
+	},
+	{
 		desc:   "list with vars",
 		mkname: "product.mk",
 		in: `
