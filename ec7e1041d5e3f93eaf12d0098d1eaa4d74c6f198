@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52ed18f1_bf21fd57",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1693,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-10T12:22:01Z",
+      "side": 1,
+      "message": "Nit: a map",
+      "range": {
+        "startLine": 1693,
+        "startChar": 22,
+        "endLine": 1693,
+        "endChar": 28
+      },
+      "revId": "ec7e1041d5e3f93eaf12d0098d1eaa4d74c6f198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a5b1f99_f4a1717a",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4772,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-10T12:22:01Z",
+      "side": 1,
+      "message": "Why has foo changed to bar?",
+      "range": {
+        "startLine": 4772,
+        "startChar": 41,
+        "endLine": 4772,
+        "endChar": 47
+      },
+      "revId": "ec7e1041d5e3f93eaf12d0098d1eaa4d74c6f198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3605f896_39a702a5",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-10T12:22:01Z",
+      "side": 1,
+      "message": "Can this type be unified with bootDexJarByModule? I see that there is a difference in path type (WritablePath vs Path), but maybe it\u0027s possible to use WritablePath everywhere?",
+      "range": {
+        "startLine": 257,
+        "startChar": 18,
+        "endLine": 257,
+        "endChar": 49
+      },
+      "revId": "ec7e1041d5e3f93eaf12d0098d1eaa4d74c6f198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82273181_3e3c20c8",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-10T12:22:01Z",
+      "side": 1,
+      "message": "Why do you need to sort them if they are sorted in SortedUniqueStrings anyway? (I guess because there is no helper to get unsorted keys.)",
+      "range": {
+        "startLine": 471,
+        "startChar": 31,
+        "endLine": 471,
+        "endChar": 47
+      },
+      "revId": "ec7e1041d5e3f93eaf12d0098d1eaa4d74c6f198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d5ffac6_957c1485",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-10T12:22:01Z",
+      "side": 1,
+      "message": "Nit: is the space ok here? I\u0027m not a native speaker, but surprised to see it there.",
+      "range": {
+        "startLine": 808,
+        "startChar": 35,
+        "endLine": 808,
+        "endChar": 46
+      },
+      "revId": "ec7e1041d5e3f93eaf12d0098d1eaa4d74c6f198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28af47c1_f93d27ca",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-06-10T12:22:01Z",
+      "side": 1,
+      "message": "Looks like some text got inserted in the middle of the line by accident.",
+      "range": {
+        "startLine": 815,
+        "startChar": 1,
+        "endLine": 815,
+        "endChar": 324
+      },
+      "revId": "ec7e1041d5e3f93eaf12d0098d1eaa4d74c6f198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
