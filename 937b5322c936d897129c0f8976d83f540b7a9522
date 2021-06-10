@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5ad7659_c251a39c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2021-06-10T11:32:51Z",
+      "side": 1,
+      "message": "Removed the sentence and rephrase as `Collect dependencies info from APEX module.",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "937b5322c936d897129c0f8976d83f540b7a9522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2aa5120_4173a6f5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -54,6 +77,23 @@
       "writtenOn": "2021-06-10T11:23:15Z",
       "side": 1,
       "message": "The dependency graph shows it is workable to let IDE\u0027s [Project structure] to include the relevant module as source directory.",
+      "revId": "937b5322c936d897129c0f8976d83f540b7a9522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc37f22c_aa2da474",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1348646
+      },
+      "writtenOn": "2021-06-10T11:32:51Z",
+      "side": 1,
+      "message": "Great work, Brandon.",
       "revId": "937b5322c936d897129c0f8976d83f540b7a9522",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
