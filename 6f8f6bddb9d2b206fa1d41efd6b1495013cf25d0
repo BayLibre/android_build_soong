@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ec1be39_5a976983",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-06-11T13:40:18Z",
+      "side": 1,
+      "message": "I tried and this wasn\u0027t possible. Maybe there\u0027s some golang syntax for that but basically it was interpreting it as returning from the closure which is not what we want to do. I couldn\u0027t easily search for this as I\u0027m not sure about the right terms to use and couldn\u0027t find a solution in a reasonable amount of time.",
+      "parentUuid": "bfee6828_9d1154e8",
+      "revId": "6f8f6bddb9d2b206fa1d41efd6b1495013cf25d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28c3c976_ac6bff55",
         "filename": "java/lint.go",
         "patchSetId": 1
