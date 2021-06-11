@@ -99,6 +99,21 @@ func environmentArgs(config Config, suffix string) []string {
 		"--used_env", shared.JoinPath(config.SoongOutDir(), usedEnvFile+suffix),
 	}
 }
+
+func writeEmptyGlobFile(ctx Context, path string) {
+	err := os.MkdirAll(filepath.Dir(path), 0777)
+	if err != nil {
+		ctx.Fatalf("Failed to create parent directories of empty ninja glob file '%s': %s", path, err)
+	}
+
+	if _, err := os.Stat(path); os.IsNotExist(err) {
+		err = ioutil.WriteFile(path, nil, 0666)
+		if err != nil {
+			ctx.Fatalf("Failed to create empty ninja glob file '%s': %s", path, err)
+		}
+	}
+}
+
 func bootstrapBlueprint(ctx Context, config Config, integratedBp2Build bool) {
 	ctx.BeginTrace(metrics.RunSoong, "blueprint bootstrap")
 	defer ctx.EndTrace()
@@ -106,8 +121,10 @@ func bootstrapBlueprint(ctx Context, config Config, integratedBp2Build bool) {
 	var args bootstrap.Args
 
 	mainNinjaFile := shared.JoinPath(config.SoongOutDir(), "build.ninja")
-	globFile := shared.JoinPath(config.SoongOutDir(), ".bootstrap/soong-build-globs.ninja")
 	bootstrapGlobFile := shared.JoinPath(config.SoongOutDir(), ".bootstrap/build-globs.ninja")
+	// .bootstrap/build.ninja "includes" .bootstrap/build-globs.ninja for incremental builds
+	// generate an empty glob before running any rule in .bootstrap/build.ninja
+	writeEmptyGlobFile(ctx, bootstrapGlobFile)
 	bootstrapDepFile := shared.JoinPath(config.SoongOutDir(), ".bootstrap/build.ninja.d")
 
 	args.RunGoTests = !config.skipSoongTests
@@ -117,7 +134,7 @@ func bootstrapBlueprint(ctx Context, config Config, integratedBp2Build bool) {
 	args.TopFile = "Android.bp"
 	args.ModuleListFile = filepath.Join(config.FileListDir(), "Android.bp.list")
 	args.OutFile = shared.JoinPath(config.SoongOutDir(), ".bootstrap/build.ninja")
-	args.GlobFile = globFile
+	args.GlobFile = "" //unused
 	args.GeneratingPrimaryBuilder = true
 	args.EmptyNinjaFile = config.EmptyNinjaFile()
 
