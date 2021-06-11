@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ade6c62_b9b70e72",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-11T14:46:03Z",
+      "side": 1,
+      "message": "nit: variable",
+      "range": {
+        "startLine": 504,
+        "startChar": 19,
+        "endLine": 504,
+        "endChar": 28
+      },
+      "revId": "26419e1fdc9fa84231b4a117501f028642771713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "335ba981_7f82686b",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-11T14:46:03Z",
+      "side": 1,
+      "message": "can you add a comment as to why we treat unknown as a string?",
+      "range": {
+        "startLine": 512,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 37
+      },
+      "revId": "26419e1fdc9fa84231b4a117501f028642771713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91877b88_57214fb6",
+        "filename": "mk2rbc/mk2rbc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-11T14:46:03Z",
+      "side": 1,
+      "message": "\u003e Please remove the trailing whitespace.\n\nPlease fix.",
+      "parentUuid": "a9fc5f4b_1b55d76f",
+      "range": {
+        "startLine": 554,
+        "startChar": 7,
+        "endLine": 554,
+        "endChar": 9
+      },
+      "revId": "26419e1fdc9fa84231b4a117501f028642771713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
