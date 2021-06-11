@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ac786c_c884a952",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-11T18:00:15Z",
+      "side": 1,
+      "message": "You can\u0027t directly return from the outer function here, the best you could do is set an error flag that would make the outer function return nil once ctx.VisitAllModules finishes.",
+      "parentUuid": "9fb550de_33ac29c7",
+      "revId": "6f8f6bddb9d2b206fa1d41efd6b1495013cf25d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28c3c976_ac6bff55",
