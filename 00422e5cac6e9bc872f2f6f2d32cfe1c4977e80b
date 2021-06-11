@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1ee3481_5b268ebd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-11T12:44:19Z",
+      "side": 1,
+      "message": "Depends on https://r.android.com/q/topic:alwayslink-cc-prebuilts to be submitted first.",
+      "revId": "00422e5cac6e9bc872f2f6f2d32cfe1c4977e80b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
