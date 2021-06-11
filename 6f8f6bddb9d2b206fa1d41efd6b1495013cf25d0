@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fb550de_33ac29c7",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-11T15:34:25Z",
+      "side": 1,
+      "message": "no worries, I think it\u0027s fine as-is too",
+      "parentUuid": "8ec1be39_5a976983",
+      "revId": "6f8f6bddb9d2b206fa1d41efd6b1495013cf25d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28c3c976_ac6bff55",
