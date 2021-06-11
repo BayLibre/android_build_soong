@@ -39,6 +39,30 @@
       },
       "revId": "9c3e564200d68626b02b17a1b6e29fb9b71ca4c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e18a8da_908add00",
+        "filename": "OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-11T11:56:50Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "9f076068_91138c2f",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "9c3e564200d68626b02b17a1b6e29fb9b71ca4c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
