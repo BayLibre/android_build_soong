@@ -53,6 +53,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "497c781a_959782d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-11T21:35:17Z",
+      "side": 1,
+      "message": "locally, i\u0027m getting some duplicate symbol errors building the unstripped version of libdl _only_ in in mixed builds, not in bp2build... apparently there shall be more investigation 😞",
+      "revId": "00422e5cac6e9bc872f2f6f2d32cfe1c4977e80b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1e635060_bce21fd0",
