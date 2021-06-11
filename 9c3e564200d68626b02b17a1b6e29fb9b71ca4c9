@@ -16,6 +16,29 @@
       "message": "Joe, Igor: feel free to click submit when this gets LGTM from both of you.",
       "revId": "9c3e564200d68626b02b17a1b6e29fb9b71ca4c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f076068_91138c2f",
+        "filename": "OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-11T11:49:51Z",
+      "side": 1,
+      "message": "should we also remove jaewoong?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "9c3e564200d68626b02b17a1b6e29fb9b71ca4c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
