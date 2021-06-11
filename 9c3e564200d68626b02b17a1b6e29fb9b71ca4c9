@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a38f7f4_364eb350",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-11T11:20:12Z",
+      "side": 1,
+      "message": "Joe, Igor: feel free to click submit when this gets LGTM from both of you.",
+      "revId": "9c3e564200d68626b02b17a1b6e29fb9b71ca4c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
