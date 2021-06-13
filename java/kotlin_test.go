@@ -185,9 +185,7 @@ func TestKapt(t *testing.T) {
 		buildOS := android.BuildOs.String()
 
 		kapt := result.ModuleForTests("foo", "android_common").Rule("kapt")
-		//kotlinc := ctx.ModuleForTests("foo", "android_common").Rule("kotlinc")
 		javac := result.ModuleForTests("foo", "android_common").Description("javac")
-		errorprone := result.ModuleForTests("foo", "android_common").Description("errorprone")
 
 		bar := result.ModuleForTests("bar", buildOS+"_common").Description("javac").Output.String()
 		baz := result.ModuleForTests("baz", buildOS+"_common").Description("javac").Output.String()
@@ -204,21 +202,13 @@ func TestKapt(t *testing.T) {
 			t.Errorf("expected kaptProcessor %q, got %q", expectedProcessor, kapt.Args["kaptProcessor"])
 		}
 
-		// Test that the errorprone plugins are not passed to javac
-		if javac.Args["processorpath"] != "" {
-			t.Errorf("expected processorPath '', got %q", javac.Args["processorpath"])
+		// Test that the errorprone plugins are passed to javac
+		expectedProcessorPath = "-processorpath " + myCheck
+		if javac.Args["processorpath"] != expectedProcessorPath {
+			t.Errorf("expected processorpath %q, got %q", expectedProcessorPath, javac.Args["processorpath"])
 		}
 		if javac.Args["processor"] != "-proc:none" {
 			t.Errorf("expected processor '-proc:none', got %q", javac.Args["processor"])
-		}
-
-		// Test that the errorprone plugins are passed to errorprone
-		expectedProcessorPath = "-processorpath " + myCheck
-		if errorprone.Args["processorpath"] != expectedProcessorPath {
-			t.Errorf("expected processorpath %q, got %q", expectedProcessorPath, errorprone.Args["processorpath"])
-		}
-		if errorprone.Args["processor"] != "-proc:none" {
-			t.Errorf("expected processor '-proc:none', got %q", errorprone.Args["processor"])
 		}
 	})
 }

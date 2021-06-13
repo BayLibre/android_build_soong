@@ -1392,3 +1392,23 @@ func TestDefaultInstallable(t *testing.T) {
 	assertDeepEquals(t, "Default installable value should be true.", proptools.BoolPtr(true),
 		module.properties.Installable)
 }
+
+func TestErrorproneEnabled(t *testing.T) {
+	ctx, _ := testJava(t, `
+		java_library {
+			name: "foo",
+			srcs: ["a.java"],
+			errorprone: {
+				enabled: true,
+			},
+		}
+	`)
+
+	javac := ctx.ModuleForTests("foo", "android_common").Description("javac")
+
+	// Test that the errorprone plugins are passed to javac
+	expectedSubstring := "-Xplugin:ErrorProne"
+	if !strings.Contains(javac.Args["javacFlags"], expectedSubstring) {
+		t.Errorf("expected javacFlags to conain %q, got %q", expectedSubstring, javac.Args["javacFlags"])
+	}
+}

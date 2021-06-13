@@ -155,6 +155,11 @@ type CommonProperties struct {
 
 		// List of java_plugin modules that provide extra errorprone checks.
 		Extra_check_modules []string
+
+		// Whether to run errorprone or not. If this is false, errorprone will
+		// still be run if the RUN_ERROR_PRONE environment variable is true.
+		// Default false.
+		Enabled *bool
 	}
 
 	Proto struct {
@@ -701,7 +706,7 @@ func (j *Module) collectBuilderFlags(ctx android.ModuleContext, deps deps) javaB
 	// javaVersion flag.
 	flags.javaVersion = getJavaVersion(ctx, String(j.properties.Java_version), android.SdkContext(j))
 
-	if ctx.Config().RunErrorProne() {
+	if ctx.Config().RunErrorProne() || Bool(j.properties.Errorprone.Enabled) {
 		if config.ErrorProneClasspath == nil && ctx.Config().TestProductVariables == nil {
 			ctx.ModuleErrorf("cannot build with Error Prone, missing external/error_prone?")
 		}
@@ -972,15 +977,18 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 	}
 	if len(uniqueSrcFiles) > 0 || len(srcJars) > 0 {
 		var extraJarDeps android.Paths
-		if ctx.Config().RunErrorProne() {
-			// If error-prone is enabled, add an additional rule to compile the java files into
-			// a separate set of classes (so that they don't overwrite the normal ones and require
-			// a rebuild when error-prone is turned off).
-			// TODO(ccross): Once we always compile with javac9 we may be able to conditionally
-			//    enable error-prone without affecting the output class files.
-			errorprone := android.PathForModuleOut(ctx, "errorprone", jarName)
-			RunErrorProne(ctx, errorprone, uniqueSrcFiles, srcJars, flags)
-			extraJarDeps = append(extraJarDeps, errorprone)
+		if ctx.Config().RunErrorProne() || Bool(j.properties.Errorprone.Enabled) {
+			// If error-prone is enabled, copy its flags and processor to the main
+			// flags/processor variables.
+			flags.processorPath = append(flags.errorProneProcessorPath, flags.processorPath...)
+
+			if len(flags.errorProneExtraJavacFlags) > 0 {
+				if len(flags.javacFlags) > 0 {
+					flags.javacFlags += " " + flags.errorProneExtraJavacFlags
+				} else {
+					flags.javacFlags = flags.errorProneExtraJavacFlags
+				}
+			}
 		}
 
 		if enableSharding {
