@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "234fce59_5f67a6c8",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-06-13T22:36:12Z",
+      "side": 0,
+      "message": "Let me know if this TODO has any implications that I should be aware of, because I don\u0027t think we always compile with javac9. However, RunErrorProne simply called transformJavaToClasses() with different javac flags, which is what gets called during a regular build anyways, so I don\u0027t think it should be an issue.",
+      "revId": "5f16b3d03ef34494e3ac7ef581ab5797f824d0f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
