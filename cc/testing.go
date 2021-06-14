@@ -34,6 +34,7 @@ func RegisterRequiredBuildComponentsForTest(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_object", ObjectFactory)
 	ctx.RegisterModuleType("cc_genrule", genRuleFactory)
 	ctx.RegisterModuleType("ndk_prebuilt_shared_stl", NdkPrebuiltSharedStlFactory)
+	ctx.RegisterModuleType("ndk_prebuilt_static_stl", NdkPrebuiltStaticStlFactory)
 	ctx.RegisterModuleType("ndk_prebuilt_object", NdkPrebuiltObjectFactory)
 	ctx.RegisterModuleType("ndk_library", NdkLibraryFactory)
 }
@@ -403,7 +404,7 @@ func commonDefaultModules() string {
 
 		cc_library {
 			name: "ndk_libunwind",
-			sdk_version: "current",
+			sdk_version: "minimum",
 			stl: "none",
 			system_shared_libs: [],
 		}
@@ -428,6 +429,12 @@ func commonDefaultModules() string {
 
 		ndk_prebuilt_shared_stl {
 			name: "ndk_libc++_shared",
+			export_include_dirs: ["ndk_libc++_shared"],
+		}
+
+		ndk_prebuilt_static_stl {
+			name: "ndk_libandroid_support",
+			export_include_dirs: ["ndk_libandroid_support"],
 		}
 
 		cc_library_static {
