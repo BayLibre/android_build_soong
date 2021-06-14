@@ -22,6 +22,30 @@
       },
       "revId": "f1c1046c2a282bd96d58acc5ac9d3cd335beed73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa2e7def_52713c3d",
+        "filename": "mk2rbc/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-06-14T23:43:17Z",
+      "side": 1,
+      "message": "Commented variable type values, please see type.go",
+      "parentUuid": "f7b2d1d8_74344631",
+      "range": {
+        "startLine": 52,
+        "startChar": 23,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "f1c1046c2a282bd96d58acc5ac9d3cd335beed73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
