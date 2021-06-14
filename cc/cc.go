@@ -505,6 +505,7 @@ type ModuleContextIntf interface {
 	directlyInAnyApex() bool
 	isPreventInstall() bool
 	isCfiAssemblySupportEnabled() bool
+	installInPartitionRoot() bool
 }
 
 type ModuleContext interface {
@@ -1309,6 +1310,26 @@ func (c *Module) isCfiAssemblySupportEnabled() bool {
 		Bool(c.sanitize.Properties.Sanitize.Config.Cfi_assembly_support)
 }
 
+// Whether to install output in root, not in subdir "bin"
+func (c *Module) installInPartitionRoot() bool {
+	if bin, ok := c.linker.(interface {
+		installInPartitionRoot() bool
+	}); ok {
+		return bin.installInPartitionRoot()
+	}
+	return false
+}
+
+// Whether to install output in {partition}/, not {partition}/{mount_point}
+func (c *Module) InstallInRoot() bool {
+	if bin, ok := c.linker.(interface {
+		installInRoot() bool
+	}); ok {
+		return bin.installInRoot()
+	}
+	return false
+}
+
 type baseModuleContext struct {
 	android.BaseModuleContext
 	moduleContextImpl
@@ -1516,6 +1537,10 @@ func (ctx *moduleContextImpl) isPreventInstall() bool {
 
 func (ctx *moduleContextImpl) isCfiAssemblySupportEnabled() bool {
 	return ctx.mod.isCfiAssemblySupportEnabled()
+}
+
+func (ctx *moduleContextImpl) installInPartitionRoot() bool {
+	return ctx.mod.installInPartitionRoot()
 }
 
 func newBaseModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Module {

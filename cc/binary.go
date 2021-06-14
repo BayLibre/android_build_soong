@@ -54,6 +54,10 @@ type BinaryLinkerProperties struct {
 
 	// Inject boringssl hash into the shared library.  This is only intended for use by external/boringssl.
 	Inject_bssl_hash *bool `android:"arch_variant"`
+
+	// Install output in {partition}/, not {partition}/{mount_point}/bin.  This is only intended for
+	// use by init_first_stage.
+	Install_in_partition_root *bool `android:"arch_variant"`
 }
 
 func init() {
@@ -244,6 +248,14 @@ func (binary *binaryDecorator) staticBinary() bool {
 
 func (binary *binaryDecorator) binary() bool {
 	return true
+}
+
+func (binary *binaryDecorator) installInPartitionRoot() bool {
+	return Bool(binary.Properties.Install_in_partition_root)
+}
+
+func (binary *binaryDecorator) installInRoot() bool {
+	return Bool(binary.Properties.Install_in_partition_root)
 }
 
 // linkerFlags returns a Flags object containing linker flags that are defined
