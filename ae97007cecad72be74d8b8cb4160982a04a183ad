@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1898cef8_b006eef8",
+        "filename": "scripts/rbc-run",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-06-14T23:42:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5b3d068_3b295c8a",
+      "range": {
+        "startLine": 4,
+        "startChar": 36,
+        "endLine": 4,
+        "endChar": 55
+      },
+      "revId": "ae97007cecad72be74d8b8cb4160982a04a183ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f423debf_96f99f9b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-14T18:33:53Z",
       "side": 1,
       "message": "This definition was hard to spot, maybe put it on its own line?",
+      "range": {
+        "startLine": 7,
+        "startChar": 61,
+        "endLine": 7,
+        "endChar": 113
+      },
+      "revId": "ae97007cecad72be74d8b8cb4160982a04a183ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb0f3732_f6202cd5",
+        "filename": "scripts/rbc-run",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-06-14T23:42:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f423debf_96f99f9b",
       "range": {
         "startLine": 7,
         "startChar": 61,
