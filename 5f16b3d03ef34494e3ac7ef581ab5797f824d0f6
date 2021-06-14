@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e08f963c_1b8ecb3a",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-06-14T22:43:38Z",
+      "side": 0,
+      "message": "Ok, I could see why that\u0027s desirable. I made it generate errorprone classes to a separate jar only if enabled is false, so that you don\u0027t get duplicate errorprone messages.",
+      "parentUuid": "3ba0676a_49fe7dd1",
+      "revId": "5f16b3d03ef34494e3ac7ef581ab5797f824d0f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddd7c3d3_4be3ce6c",
