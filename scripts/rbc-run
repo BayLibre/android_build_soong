@@ -1,0 +1,14 @@
+#! /bin/bash
+# Convert and run one configuration
+# Args: <product> <variant>
+(($#==2)) || { echo Usage: ${0##*/} 'PRODUCT' 'VARIANT' >&2; exit 1; }
+set -eu
+declare -r output_root=${OUT_DIR:-out}
+declare -r runner="$output_root/soong/.bootstrap/bin/rbcrun" converter="$output_root/soong/.bootstrap/bin/mk2rbc"
+declare -r product=$1 variant=$2
+declare -r launcher=$output_root/launchers/run.rbc
+$converter -mode=write -r --outdir $output_root --launcher=$launcher $product
+printf "#TARGET_PRODUCT=$product TARGET_BUILD_VARIANT=$variant\n"
+env TARGET_PRODUCT=$product TARGET_BUILD_VARIANT=$variant \
+  $runner RBC_OUT="make,global" RBC_DEBUG="${RBC_DEBUG:-}" $launcher
+
