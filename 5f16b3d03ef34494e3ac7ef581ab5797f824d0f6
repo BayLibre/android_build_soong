@@ -51,6 +51,24 @@
       "message": "You\u0027ve removed the last caller to RunErrorProne, remove the method unless you go back to using it.",
       "revId": "5f16b3d03ef34494e3ac7ef581ab5797f824d0f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5b5071_0fd370c4",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-14T21:24:31Z",
+      "side": 0,
+      "message": "Nevermind, somehow missed the changes to builder.go.",
+      "parentUuid": "ddd7c3d3_4be3ce6c",
+      "revId": "5f16b3d03ef34494e3ac7ef581ab5797f824d0f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
