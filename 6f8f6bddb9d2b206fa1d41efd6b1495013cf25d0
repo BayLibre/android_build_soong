@@ -159,6 +159,30 @@
       },
       "revId": "6f8f6bddb9d2b206fa1d41efd6b1495013cf25d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4894d1e2_b3b9e979",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-06-14T15:59:06Z",
+      "side": 1,
+      "message": "I have implemented this (and added unit tests). See if you like the implementation.",
+      "parentUuid": "2fb16f64_0a09127e",
+      "range": {
+        "startLine": 534,
+        "startChar": 0,
+        "endLine": 540,
+        "endChar": 3
+      },
+      "revId": "6f8f6bddb9d2b206fa1d41efd6b1495013cf25d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
