@@ -1314,6 +1314,15 @@ func (c *Module) isCfiAssemblySupportEnabled() bool {
 		Bool(c.sanitize.Properties.Sanitize.Config.Cfi_assembly_support)
 }
 
+func (c *Module) InstallInRoot() bool {
+	if bin, ok := c.linker.(interface {
+		installInRoot() bool
+	}); ok {
+		return bin.installInRoot()
+	}
+	return false
+}
+
 type baseModuleContext struct {
 	android.BaseModuleContext
 	moduleContextImpl
