@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b83933f9_82fefaab",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-06-14T20:09:44Z",
+      "side": 1,
+      "message": "Who writes build-globs.ninja?\nI think this file is currently written during RunBlueprint, and this CL will move it to bootstrapBlueprint. bpglob does not write to this file, bpglob writes to the globs themselves (e.g. out/soong/.primary/globs/0)\n\nCan we remove it from Blueprint?\nsoong_ui invokes bootstrapBlueprint https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/soong.go;l\u003d214;bpv\u003d0;bpt\u003d1, which itself invokes RunBlueprint. By this stage, a .bootstrap/build.ninja is generated. We need to create a .bootstrap/build-globs.ninja before running the bootstrap rule https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/soong.go;l\u003d295;bpv\u003d0;bpt\u003d1\n\nDo we need to create a soong/build-globs.ninja?\nUnlike soong/.bootstrap/build.ninja, soong/build.ninja does not include a glob file using the subninja keyword. This is because it is generated during StageMain, and AddSubninja is skipped due to this if clause https://cs.android.com/android/platform/superproject/+/master:build/blueprint/bootstrap/bootstrap.go;l\u003d745?q\u003dAddSubninja%20f:build%2Fbluep\nSo we do not need to create soong/build-globs.ninja file",
+      "parentUuid": "e523fb39_343f6f27",
+      "range": {
+        "startLine": 125,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 76
+      },
+      "revId": "70a91986dde132fbc6ed5a25e4970067de9abf14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "10803307_527946e6",
         "filename": "ui/build/soong.go",
         "patchSetId": 2
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "How does it follow from the above code that bootstrap_go_binary does not support globs? (it might be obvious, but I don\u0027t have access to my IDE and I don\u0027t remember it by heart)\n\nIt would be awesome because then our lives are that much simpler and the simpler the bootstrapping is, the less we have to worry about it, but then:\n\n- What happens if one adds a glob pattern to bootstrap_go_binary?\n- Why do we then handle globs while building soong_build in the first place? It looks like we do quite a bit of work for something that is not actually used...",
       "parentUuid": "f8e993bc_a6d64be7",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "70a91986dde132fbc6ed5a25e4970067de9abf14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b6fdcc4_4539cc5b",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-06-14T20:09:44Z",
+      "side": 1,
+      "message": "I am still fairly new to this codebase, so I maybe mistaken but I have tried to summarize my understanding so far below\n\n\nI grepped for soong_build (a bootstrap_go_binary) in .bootstrap/build.ninja, and the definition looks something like\n```\nbuild ${g.bootstrap.buildDir}/.bootstrap/soong_build/obj/soong_build.a: $\n        g.bootstrap.compile ${g.bootstrap.srcDir}/build/soong/cmd/soong_build/main.go $\n        ${g.bootstrap.srcDir}/build/soong/cmd/soong_build/writedocs.go $\n        ${g.bootstrap.srcDir}/build/soong/cmd/soong_build/queryview.go $\n...\n(more rows)\n```\n\nWhat happens if one adds a glob pattern to bootstrap_go_binary?\nIf we add a glob pattern, the above will look like\n```\nbuild ${g.bootstrap.buildDir}/.bootstrap/soong_build/obj/soong_build.a: $\n        g.bootstrap.compile \n${g.bootstrap.srcDir}/build/soong/cmd/soong_build/*.go $\n...\n(more rows)\n```        \nand cause a compilation error. I think if we want to support globs, we have to dynamically create a list of source files somewhere around here https://cs.android.com/android/platform/superproject/+/master:build/blueprint/bootstrap/bootstrap.go;l\u003d480;drc\u003dmaster\n\n\nWhy do we then handle globs while building soong_build in the first place?\nI think globs is not used to build soong_build, but is used by soong_build itself to build soong/build.ninja (via primaryBuilderArgs)\n```\nbuild out/soong/build.ninja: g.bootstrap.build.ninja Android.bp | ${builder}\n    builder \u003d ${g.bootstrap.BinDir}/soong_build\n    extra \u003d -l out/.module_paths/Android.bp.list -globFile out/soong/.bootstrap/build-globs.ninja -o out/soong/build.ninja --available_env out/soong/soong.environment.available --used_env out/soong/soong.environment.used Android.bp\ndefault out/soong/build.ninja\n```",
+      "parentUuid": "836109ad_3c9ad0f3",
       "range": {
         "startLine": 137,
         "startChar": 1,
