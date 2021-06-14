@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000011749059",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1501163?revision\u003d41",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "cbf5b843_297c2fb1",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-06-14T18:15:31Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027they\u0027, \u0027them\u0027, or \u0027person\u0027; see https://developers.google.com/style/word-list#gender for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 59,
+        "startChar": 9,
+        "endLine": 59,
+        "endChar": 12
+      },
+      "revId": "5b4de18b7faae04017f19c47520d8d791b74078d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
