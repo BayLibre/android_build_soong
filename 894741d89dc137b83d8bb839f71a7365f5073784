@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1c35177_0813b8a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-06-14T15:58:04Z",
+      "side": 1,
+      "message": "Should be very close to final from my point of view. Adding one more question and after this will review all comments in case I missed something.",
+      "revId": "894741d89dc137b83d8bb839f71a7365f5073784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac6c0a20_13b63ca7",
+        "filename": "java/lint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-06-14T15:58:04Z",
+      "side": 1,
+      "message": "To confirm: it looks to me that even if we want to use prebuilt SDKs, I should not allow to use the `apiVersionsXMLPath` of the prebuilt otherwise there might be more lint errors when using prebuilts",
+      "revId": "894741d89dc137b83d8bb839f71a7365f5073784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
