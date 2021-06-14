@@ -62,12 +62,20 @@ func init() {
 
 func RegisterBinaryBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_binary", BinaryFactory)
+	ctx.RegisterModuleType("cc_binary_root", BinaryRootFactory)
 	ctx.RegisterModuleType("cc_binary_host", binaryHostFactory)
 }
 
 // cc_binary produces a binary that is runnable on a device.
 func BinaryFactory() android.Module {
 	module, _ := NewBinary(android.HostAndDeviceSupported)
+	return module.Init()
+}
+
+// cc_binary_root produces a binary that is runnable on a device, installed in root. cc_binary_root
+// is only intended for use by init_first_stage.
+func BinaryRootFactory() android.Module {
+	module, _ := NewBinaryRoot(android.HostAndDeviceSupported)
 	return module.Init()
 }
 
@@ -110,6 +118,9 @@ type binaryDecorator struct {
 	// Action command lines to run directly after the binary is installed. For example,
 	// may be used to symlink runtime dependencies (such as bionic) alongside installation.
 	postInstallCmds []string
+
+	// Whether this module should be installed in root or not.
+	installedInRoot bool
 }
 
 var _ linker = (*binaryDecorator)(nil)
@@ -215,6 +226,22 @@ func NewBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
 	return module, binary
 }
 
+// NewBinaryRoot is similar to NewBinary, except that it's installed in root, not in /bin.
+func NewBinaryRoot(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
+	module := newModule(hod, android.MultilibFirst)
+	binary := &binaryDecorator{
+		baseLinker:    NewBaseLinker(module.sanitize),
+		baseInstaller: NewBaseInstaller("", "", InstallInSystem),
+	}
+	module.compiler = NewBaseCompiler()
+	module.linker = binary
+	module.installer = binary
+
+	binary.installedInRoot = true
+
+	return module, binary
+}
+
 // linkerInit initializes dynamic properties of the linker (such as runpath) based
 // on properties of this binary.
 func (binary *binaryDecorator) linkerInit(ctx BaseModuleContext) {
@@ -244,6 +271,10 @@ func (binary *binaryDecorator) staticBinary() bool {
 
 func (binary *binaryDecorator) binary() bool {
 	return true
+}
+
+func (binary *binaryDecorator) installInRoot() bool {
+	return binary.installedInRoot
 }
 
 // linkerFlags returns a Flags object containing linker flags that are defined
