@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bcd1f5c_85ffa45f",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-14T20:38:08Z",
+      "side": 1,
+      "message": "Maybe \"Whether to always run errorprone or not\", or \"Whether to run errorprone in a normal build\"?",
+      "range": {
+        "startLine": 159,
+        "startChar": 5,
+        "endLine": 159,
+        "endChar": 37
+      },
+      "revId": "92d5480d64891b01f1183e3ed798debd187d3647",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

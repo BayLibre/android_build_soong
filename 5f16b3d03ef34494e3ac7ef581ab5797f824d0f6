@@ -16,6 +16,41 @@
       "message": "Let me know if this TODO has any implications that I should be aware of, because I don\u0027t think we always compile with javac9. However, RunErrorProne simply called transformJavaToClasses() with different javac flags, which is what gets called during a regular build anyways, so I don\u0027t think it should be an issue.",
       "revId": "5f16b3d03ef34494e3ac7ef581ab5797f824d0f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ba0676a_49fe7dd1",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-14T20:38:08Z",
+      "side": 0,
+      "message": "The TODO is somewhat obsolete in that we have long since switched to javac9+, although the final decision on what to do with the output files has not been made and probably needs to be considered with this patch.\n\nErrorProne is a javac plugin, and should theoretically not affect the final output .class files.  Right now, it is only enabled by RUN_ERROR_PRONE\u003dtrue.  One possible implementation of building with errorprone enableed is to replace the normal javac commands with javac+errorprone commands, writing to the same output files.  However, ninja considers rules whose command lines have changed to be dirty, so using two different commands to build the same output files would lead to rebuilding them every time you enable or disable errorprone.  The current implementation instead writes the errorprone outputs to a different path, so that RUN_ERROR_PRONE\u003dtrue doesn\u0027t clobber the non-errorprone outputs.\n\nFor your change, there is no non-errorprone case, so I think it makes sense to replace the main javac invocation with javac+errorprone when errorprone is enabled in normal builds, as you\u0027ve done.  That will be a ~10% slowdown on the main invocation instead of more than doubling the work.  But I think it still makes sense to keep the RUN_ERROR_PRONE\u003dtrue outputs separate to avoid the clobbering issue.\n\nAnother option would be to always enable errorprone, but I expect that to be too expensive.",
+      "parentUuid": "234fce59_5f67a6c8",
+      "revId": "5f16b3d03ef34494e3ac7ef581ab5797f824d0f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddd7c3d3_4be3ce6c",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-14T20:38:08Z",
+      "side": 0,
+      "message": "You\u0027ve removed the last caller to RunErrorProne, remove the method unless you go back to using it.",
+      "revId": "5f16b3d03ef34494e3ac7ef581ab5797f824d0f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
