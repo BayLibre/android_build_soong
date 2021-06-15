@@ -149,6 +149,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dddca437_1ebc22bd",
+        "filename": "scripts/build-aml-prebuilts.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-15T22:16:56Z",
+      "side": 1,
+      "message": "[A reply I forgot to send.]\n\nYes, that could be an option too. Maybe it\u0027s that easy, but I\u0027ll leave it for another day.\n\nBtw, nowadays I think the recreation of build.ninja is a significant time sink, so it\u0027s worth a bit of effort to avoid invalidating it.",
+      "parentUuid": "53573e6b_817a8b92",
+      "revId": "b2845b6e4f10a6dde13fa35b3ea5e0e1a28c77c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a616878_01bc7d03",
