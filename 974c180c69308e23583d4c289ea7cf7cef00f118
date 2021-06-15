@@ -46,6 +46,30 @@
       },
       "revId": "974c180c69308e23583d4c289ea7cf7cef00f118",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e94a633_49259068",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-15T13:50:29Z",
+      "side": 1,
+      "message": "ExtraVersionedImageVariations it is then! I won\u0027t rename ExtraImageVariations now because I\u0027ll need to check whether all other overrides conform to this rule, too (they don\u0027t need to)",
+      "parentUuid": "96e1f5df_b678d91b",
+      "range": {
+        "startLine": 332,
+        "startChar": 1,
+        "endLine": 332,
+        "endChar": 14
+      },
+      "revId": "974c180c69308e23583d4c289ea7cf7cef00f118",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
