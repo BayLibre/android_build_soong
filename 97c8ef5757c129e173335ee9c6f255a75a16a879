@@ -16,6 +16,46 @@
       "message": "PTAL.",
       "revId": "97c8ef5757c129e173335ee9c6f255a75a16a879",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a05880f8_de8390a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-15T22:15:02Z",
+      "side": 1,
+      "message": "LGTM, but I\u0027m not confident here so I\u0027ll leave +2 to Artur.",
+      "revId": "97c8ef5757c129e173335ee9c6f255a75a16a879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "981d189d_f4e6c1e7",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-15T22:15:02Z",
+      "side": 1,
+      "message": "I don\u0027t understand why, but then I\u0027m lacking context on BCP fragments in general, so maybe it\u0027s ok like this.",
+      "range": {
+        "startLine": 440,
+        "startChar": 4,
+        "endLine": 440,
+        "endChar": 95
+      },
+      "revId": "97c8ef5757c129e173335ee9c6f255a75a16a879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
