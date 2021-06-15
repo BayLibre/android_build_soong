@@ -22,6 +22,30 @@
       },
       "revId": "ffe38f4f75e1997180f8c538416d9f9668158f80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c603c856_5b62f807",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-15T15:38:59Z",
+      "side": 1,
+      "message": "Done. I moved a check from inside the call stack of this method to here so that method will always return a non-nil HiddenAPIOutput.",
+      "parentUuid": "60641c23_a07202d1",
+      "range": {
+        "startLine": 412,
+        "startChar": 73,
+        "endLine": 412,
+        "endChar": 79
+      },
+      "revId": "ffe38f4f75e1997180f8c538416d9f9668158f80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
