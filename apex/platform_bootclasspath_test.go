@@ -481,3 +481,59 @@ func CheckModuleDependencies(t *testing.T, ctx *android.TestContext, name, varia
 	pairs := java.ApexNamePairsFromModules(ctx, modules)
 	android.AssertDeepEquals(t, "module dependencies", expected, pairs)
 }
+
+func TestPlatformBootclasspath_IncludesRemainingApexJars(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		prepareForTestWithPlatformBootclasspath,
+		prepareForTestWithMyapex,
+		java.FixtureConfigureUpdatableBootJars("myapex:foo"),
+		android.FixtureWithRootAndroidBp(`
+			platform_bootclasspath {
+				name: "platform-bootclasspath",
+				fragments: [
+					{
+						apex: "myapex",
+						module:"foo-fragment",
+					},
+				],
+			}
+
+			apex {
+				name: "myapex",
+				key: "myapex.key",
+				bootclasspath_fragments: ["foo-fragment"],
+				updatable: false,
+			}
+
+			apex_key {
+				name: "myapex.key",
+				public_key: "testkey.avbpubkey",
+				private_key: "testkey.pem",
+			}
+
+			bootclasspath_fragment {
+				name: "foo-fragment",
+				generate_classpaths_proto: false,
+				contents: ["foo"],
+				apex_available: ["myapex"],
+			}
+
+			java_library {
+				name: "foo",
+				srcs: ["a.java"],
+				system_modules: "none",
+				sdk_version: "none",
+				compile_dex: true,
+				apex_available: ["myapex"],
+				permitted_packages: ["foo"],
+			}
+		`),
+	).RunTest(t)
+
+	java.CheckClasspathFragmentProtoContentInfoProvider(t, result,
+		true,         // proto should be generated
+		"myapex:foo", // apex doesn't generate its own config, so must be in platform_bootclasspath
+		"bootclasspath.pb",
+		"out/soong/target/product/test_device/system/etc/classpaths",
+	)
+}
