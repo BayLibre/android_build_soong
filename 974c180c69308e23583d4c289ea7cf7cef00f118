@@ -22,6 +22,30 @@
       },
       "revId": "974c180c69308e23583d4c289ea7cf7cef00f118",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96e1f5df_b678d91b",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-15T11:08:51Z",
+      "side": 1,
+      "message": "Yeah, that name makes sense too. But to outside of the cc package, this is returned via ExtraImageVariations",
+      "parentUuid": "93ad479a_6208c6d0",
+      "range": {
+        "startLine": 332,
+        "startChar": 1,
+        "endLine": 332,
+        "endChar": 14
+      },
+      "revId": "974c180c69308e23583d4c289ea7cf7cef00f118",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
