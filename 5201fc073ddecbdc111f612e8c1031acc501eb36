@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63340307_36eed876",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-15T10:05:48Z",
+      "side": 1,
+      "message": "looks good!",
+      "revId": "5201fc073ddecbdc111f612e8c1031acc501eb36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b96ab519_3eb08df1",
+        "filename": "java/lint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-15T10:05:48Z",
+      "side": 1,
+      "message": "Do we need the \u0026\u0026 IsCurrent? I don\u0027t think anyone is using module_N, but if  they did, wouldn\u0027t the same DB work anyway? it\u0027s better  than api_versions.xml anyhow I  would  think.",
+      "range": {
+        "startLine": 397,
+        "startChar": 67,
+        "endLine": 397,
+        "endChar": 85
+      },
+      "revId": "5201fc073ddecbdc111f612e8c1031acc501eb36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -33,6 +33,24 @@
       "message": "To confirm: it looks to me that even if we want to use prebuilt SDKs, I should not allow to use the `apiVersionsXMLPath` of the prebuilt otherwise there might be more lint errors when using prebuilts",
       "revId": "894741d89dc137b83d8bb839f71a7365f5073784",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6413020_4f86b794",
+        "filename": "java/lint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-15T10:05:48Z",
+      "side": 1,
+      "message": "True. We need to import a prebuilt filtered db once it exists.\n\nCan you check in the CL to generate  the  filtered db first and follow up with  the soong change?",
+      "parentUuid": "ac6c0a20_13b63ca7",
+      "revId": "894741d89dc137b83d8bb839f71a7365f5073784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
