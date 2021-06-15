@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db192b2e_59cea9e7",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-15T15:48:32Z",
+      "side": 1,
+      "message": "I am intrigued to know this.. :-)",
+      "range": {
+        "startLine": 414,
+        "startChar": 68,
+        "endLine": 414,
+        "endChar": 73
+      },
+      "revId": "37134eb70b3f4e49e2c00f1ac9402dee67f8e212",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
