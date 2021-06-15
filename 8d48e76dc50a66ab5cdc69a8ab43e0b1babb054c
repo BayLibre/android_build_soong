@@ -46,6 +46,30 @@
       },
       "revId": "8d48e76dc50a66ab5cdc69a8ab43e0b1babb054c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef5908a6_4ad19b62",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-06-15T21:32:19Z",
+      "side": 1,
+      "message": "Seems I accidentally borrowed one from --all.",
+      "parentUuid": "d70081c4_37d2e2a5",
+      "range": {
+        "startLine": 56,
+        "startChar": 14,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "8d48e76dc50a66ab5cdc69a8ab43e0b1babb054c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
