@@ -206,6 +206,30 @@
       },
       "revId": "70a91986dde132fbc6ed5a25e4970067de9abf14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ec31d55_bf7baaa1",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-06-15T17:55:25Z",
+      "side": 1,
+      "message": "I have been using a combination of\n1. (doc in code) https://cs.android.com/android/platform/superproject/+/master:build/blueprint/bootstrap/doc.go\n2. (doc in drive) go/simplifying-soong-bootstrap \nto understand the workflow\n\nAlthough neither are as detailed as your comment regarding why an emptyBootstrap file is necessary",
+      "parentUuid": "aa72489a_7393c360",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "70a91986dde132fbc6ed5a25e4970067de9abf14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
