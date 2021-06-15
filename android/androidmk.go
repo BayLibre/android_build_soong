@@ -97,6 +97,11 @@ type AndroidMkEntriesProvider interface {
 
 // The core data struct that modules use to provide their Android.mk data.
 type AndroidMkEntries struct {
+	// The module that produced (or at least should be considered to have produced) these entries and
+	// which will be used as the source of information for filling up the shared entries. If it is nil
+	// then the module that implements AndroidMkEntriesProvider will be used instead. This allows a
+	// single module to produce make entries for other modules.
+	Module blueprint.Module
 	// Android.mk class string, e.g EXECUTABLES, JAVA_LIBRARIES, ETC
 	Class string
 	// Optional suffix to append to the module name. Useful when a module wants to return multiple
@@ -476,6 +481,9 @@ type fillInEntriesContext interface {
 }
 
 func (a *AndroidMkEntries) fillInEntries(ctx fillInEntriesContext, mod blueprint.Module) {
+	if a.Module != nil {
+		mod = a.Module
+	}
 	a.EntryMap = make(map[string][]string)
 	amod := mod.(Module).base()
 	name := amod.BaseModuleName()
