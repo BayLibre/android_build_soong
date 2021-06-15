@@ -129,6 +129,7 @@ func (c *ClasspathFragmentBase) generateClasspathProtoBuildActions(ctx android.M
 
 	classpathProtoInfo := ClasspathFragmentProtoContentInfo{
 		ClasspathFragmentProtoGenerated:  generateProto,
+		ClasspathFragmentProtoContents:   configuredJars,
 		ClasspathFragmentProtoInstallDir: c.installDirPath,
 		ClasspathFragmentProtoOutput:     c.outputFilepath,
 	}
@@ -176,6 +177,8 @@ var ClasspathFragmentProtoContentInfoProvider = blueprint.NewProvider(ClasspathF
 type ClasspathFragmentProtoContentInfo struct {
 	// Whether the classpaths.proto config is generated for the fragment.
 	ClasspathFragmentProtoGenerated bool
+
+	ClasspathFragmentProtoContents android.ConfiguredJarList
 
 	// ClasspathFragmentProtoOutput is an output path for the generated classpaths.proto config of this module.
 	//

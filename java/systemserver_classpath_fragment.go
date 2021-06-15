@@ -48,8 +48,9 @@ func (p *platformSystemServerClasspathModule) AndroidMkEntries() (entries []andr
 }
 
 func (p *platformSystemServerClasspathModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	classpathJars := configuredJarListToClasspathJars(ctx, p.configuredJars(ctx), p.classpathType)
-	p.classpathFragmentBase().generateClasspathProtoBuildActions(ctx, classpathJars)
+	configuredJars := p.configuredJars(ctx)
+	classpathJars := configuredJarListToClasspathJars(ctx, configuredJars, p.classpathType)
+	p.classpathFragmentBase().generateClasspathProtoBuildActions(ctx, configuredJars, classpathJars)
 }
 
 func (p *platformSystemServerClasspathModule) configuredJars(ctx android.ModuleContext) android.ConfiguredJarList {
@@ -91,8 +92,9 @@ func (s *SystemServerClasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 		ctx.PropertyErrorf("contents", "empty contents are not allowed")
 	}
 
-	classpathJars := configuredJarListToClasspathJars(ctx, s.configuredJars(ctx), s.classpathType)
-	s.classpathFragmentBase().generateClasspathProtoBuildActions(ctx, classpathJars)
+	configuredJars := s.configuredJars(ctx)
+	classpathJars := configuredJarListToClasspathJars(ctx, configuredJars, s.classpathType)
+	s.classpathFragmentBase().generateClasspathProtoBuildActions(ctx, configuredJars, classpathJars)
 }
 
 func (s *SystemServerClasspathModule) configuredJars(ctx android.ModuleContext) android.ConfiguredJarList {

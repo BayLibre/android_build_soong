@@ -44,13 +44,9 @@ type platformBootclasspathModule struct {
 	properties platformBootclasspathProperties
 
 	// The apex:module pairs obtained from the configured modules.
-	//
-	// Currently only for testing.
 	configuredModules []android.Module
 
 	// The apex:module pairs obtained from the fragments.
-	//
-	// Currently only for testing.
 	fragments []android.Module
 
 	// Path to the monolithic hiddenapi-flags.csv file.
@@ -201,13 +197,29 @@ func (b *platformBootclasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 
 // Generate classpaths.proto config
 func (b *platformBootclasspathModule) generateClasspathProtoBuildActions(ctx android.ModuleContext) {
+	configuredJars := b.configuredJars(ctx)
 	// ART and platform boot jars must have a corresponding entry in DEX2OATBOOTCLASSPATH
-	classpathJars := configuredJarListToClasspathJars(ctx, b.configuredJars(ctx), BOOTCLASSPATH, DEX2OATBOOTCLASSPATH)
-	b.classpathFragmentBase().generateClasspathProtoBuildActions(ctx, classpathJars)
+	classpathJars := configuredJarListToClasspathJars(ctx, configuredJars, BOOTCLASSPATH, DEX2OATBOOTCLASSPATH)
+	b.classpathFragmentBase().generateClasspathProtoBuildActions(ctx, configuredJars, classpathJars)
 }
 
 func (b *platformBootclasspathModule) configuredJars(ctx android.ModuleContext) android.ConfiguredJarList {
-	return b.getImageConfig(ctx).modules
+	// Include all non APEX jars
+	jars := b.getImageConfig(ctx).modules
+
+	// Include boot jars from APEXes that don't populate their classpath proto config.
+	remainingJars := dexpreopt.GetGlobalConfig(ctx).UpdatableBootJars
+	for _, fragment := range b.fragments {
+		info := ctx.OtherModuleProvider(fragment, ClasspathFragmentProtoContentInfoProvider).(ClasspathFragmentProtoContentInfo)
+		if info.ClasspathFragmentProtoGenerated {
+			remainingJars = remainingJars.RemoveList(info.ClasspathFragmentProtoContents)
+		}
+	}
+	for i := 0; i < remainingJars.Len(); i++ {
+		jars = jars.Append(remainingJars.Apex(i), remainingJars.Jar(i))
+	}
+
+	return jars
 }
 
 // checkNonUpdatableModules ensures that the non-updatable modules supplied are not part of an
