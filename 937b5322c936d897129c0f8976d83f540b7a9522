@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d42fcdfb_85dba3b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2021-06-15T00:38:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5ad7659_c251a39c",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "937b5322c936d897129c0f8976d83f540b7a9522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2aa5120_4173a6f5",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-10T11:23:15Z",
       "side": 1,
       "message": "The dependency graph shows it is workable to provide the result to let IDE\u0027s [Project structure] to include the service-appsearch as source directory.",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 33
+      },
+      "revId": "937b5322c936d897129c0f8976d83f540b7a9522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0af77ef5_8b782a13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1342378
+      },
+      "writtenOn": "2021-06-15T00:38:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2aa5120_4173a6f5",
       "range": {
         "startLine": 13,
         "startChar": 9,
