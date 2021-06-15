@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93ad479a_6208c6d0",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-15T09:47:15Z",
+      "side": 1,
+      "message": "I wonder if this should be renamed to ExtraVersionedVariants, since it appears to be only used for VNDK versioned variants?",
+      "range": {
+        "startLine": 332,
+        "startChar": 1,
+        "endLine": 332,
+        "endChar": 14
+      },
+      "revId": "974c180c69308e23583d4c289ea7cf7cef00f118",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
