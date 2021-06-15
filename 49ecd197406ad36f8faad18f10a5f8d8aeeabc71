@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e8748ba_bc98a2a1",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-06-15T20:00:23Z",
+      "side": 1,
+      "message": "These use the Python from the tree, not the Python from the system. This has been available since 3.7 and the tree uses 3.9, so not a problem (in a few months we\u0027ll have 3.10 where this import becomes obsolete, but not quite there yet)",
+      "parentUuid": "dbe6c3fd_843678ce",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "49ecd197406ad36f8faad18f10a5f8d8aeeabc71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b56adad_804551a4",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-05T11:29:22Z",
       "side": 1,
       "message": "Can we have `has_platform_only_tags` in the `Tags` class, like the other `has_*_tags`?",
+      "range": {
+        "startLine": 231,
+        "startChar": 7,
+        "endLine": 231,
+        "endChar": 43
+      },
+      "revId": "49ecd197406ad36f8faad18f10a5f8d8aeeabc71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c11c1e9f_4330540b",
+        "filename": "cc/symbolfile/__init__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-06-15T20:00:23Z",
+      "side": 1,
+      "message": "Done. Could continue this cleanup for quite a while by hoisting more of the free functions into these classes, but probably best for me to not go down that rabbit hole 😊",
+      "parentUuid": "2b56adad_804551a4",
       "range": {
         "startLine": 231,
         "startChar": 7,
