@@ -16,6 +16,24 @@
       "message": "Can you show the use of this?  We generally try to avoid storing the Module, although it is probably late enough to do here.  For the bazel conversion we also need to stop affecting modules from their parents, which this seems to be effectively doing by outputting the AndroidMkEntries for the child from the parent.\n\nWould it be possible precompute whatever data will be needed from the Module and store that in AndroidMkEntries instead?",
       "revId": "1f12e1db9c0c57e60146c48cd7a7debccaa1fbfb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01df9aff_423b1367",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-15T23:07:03Z",
+      "side": 1,
+      "message": "I added it for use in https://r.android.com/c/1738035/ but I forgot to use it and it seems as though I can fix the issues without it. However, I am not 100% sure that there won\u0027t be other issues that would need this.\n\nThe storage of Module is not an issue as it would only be initialized in AndroidMkEntries() method, and used in AndroidMkEntries.fillInEntries() which is called immediately after AndroidMkEntries() returns. One approach to avoid storing Module even for that short length of time would be to export fillInEntries() so it could be called from AndroidMkEntries() methods and just make sure it does nothing if called again.\n\nThe reason I added it was because I needed to do something similar to apexBundle.androidMkForFiles. That creates make entries for the files that an apex module includes. At the moment it uses the deprecated AndroidMkDataProvider at least in part so it can provide entries from multiple modules. However, it is pretty nasty and duplicates some of the functionality provided by fillInEntries(). I did envisage that this would be a good way to transition that to AndroidMkEntries which is cleaner, would allow duplicate code to be removed and would be easier to reuse.",
+      "parentUuid": "12fa5dd5_30c1027a",
+      "revId": "1f12e1db9c0c57e60146c48cd7a7debccaa1fbfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
