@@ -1057,8 +1057,8 @@ func apexMutator(mctx android.BottomUpMutatorContext) {
 
 	// apexBundle itself is mutated so that it and its dependencies have the same apex variant.
 	// TODO(jiyong): document the reason why the VNDK APEX is an exception here.
-	if a, ok := mctx.Module().(*apexBundle); ok && !a.vndkApex {
-		apexBundleName := mctx.ModuleName()
+	if apexModuleTypeRequiresVariant(mctx.Module()) {
+		apexBundleName := android.RemoveOptionalPrebuiltPrefix(mctx.ModuleName())
 		mctx.CreateVariations(apexBundleName)
 		if strings.HasPrefix(apexBundleName, "com.android.art") {
 			// Create an alias from the platform variant. This is done to make
@@ -1082,6 +1082,22 @@ func apexMutator(mctx android.BottomUpMutatorContext) {
 			mctx.CreateAliasVariation("", apexBundleName)
 		}
 	}
+}
+
+// apexModuleTypeRequiresVariant determines whether the module supplied requires an apex specific
+// variant.
+func apexModuleTypeRequiresVariant(module android.Module) bool {
+	if a, ok := module.(*apexBundle); ok {
+		return !a.vndkApex
+	}
+
+	// Match apex_set and prebuilt_apex. Would also match apexBundle but that is handled specially
+	// above.
+	if _, ok := module.(ApexInfoMutator); ok {
+		return true
+	}
+
+	return false
 }
 
 // See android.UpdateDirectlyInAnyApex
