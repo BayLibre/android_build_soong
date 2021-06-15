@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7477bf22_b1050966",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-15T14:47:46Z",
+      "side": 0,
+      "message": "Is this is being dropped?",
+      "range": {
+        "startLine": 892,
+        "startChar": 2,
+        "endLine": 892,
+        "endChar": 32
+      },
+      "revId": "cc1bd8364ae7d835fd5d882316e1236f33e59f8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06636e13_0453f8b6",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 899,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-15T14:47:46Z",
+      "side": 0,
+      "message": "This as well.",
+      "range": {
+        "startLine": 899,
+        "startChar": 46,
+        "endLine": 899,
+        "endChar": 67
+      },
+      "revId": "cc1bd8364ae7d835fd5d882316e1236f33e59f8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
