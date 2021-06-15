@@ -53,7 +53,7 @@ var (
 		blueprint.RuleParams{
 			Command: "$abidw --type-id-style hash --no-corpus-path " +
 				"--no-show-locs --no-comp-dir-path -w $symbolList $in | " +
-				"$abitidy --all -o $out",
+				"$abitidy --abort-on-untyped-symbols --all -o $out",
 			CommandDeps: []string{"$abitidy", "$abidw"},
 		}, "symbolList")
 
