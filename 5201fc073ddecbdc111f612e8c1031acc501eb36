@@ -39,6 +39,30 @@
       },
       "revId": "5201fc073ddecbdc111f612e8c1031acc501eb36",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c0eeead_871fd97e",
+        "filename": "java/lint.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-06-15T10:09:44Z",
+      "side": 1,
+      "message": "I put this because I understood you specifically wanted module_current and not the others. Easy to remove.",
+      "parentUuid": "b96ab519_3eb08df1",
+      "range": {
+        "startLine": 397,
+        "startChar": 67,
+        "endLine": 397,
+        "endChar": 85
+      },
+      "revId": "5201fc073ddecbdc111f612e8c1031acc501eb36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
