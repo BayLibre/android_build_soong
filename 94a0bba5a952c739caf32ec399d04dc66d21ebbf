@@ -93,6 +93,30 @@
       },
       "revId": "94a0bba5a952c739caf32ec399d04dc66d21ebbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ff913a_0a1d0017",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-15T13:12:29Z",
+      "side": 1,
+      "message": "Ack, will address in a follow up.",
+      "parentUuid": "0874f415_4167d7ba",
+      "range": {
+        "startLine": 640,
+        "startChar": 2,
+        "endLine": 640,
+        "endChar": 40
+      },
+      "revId": "94a0bba5a952c739caf32ec399d04dc66d21ebbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
