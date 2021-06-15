@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8517e5b6_7dfa5022",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-15T15:40:10Z",
+      "side": 1,
+      "message": "This checks direct dependencies. Foo is not a direct dependency of the apex, the apex depends on foo indirectly via mybootclasspathfragment.",
+      "parentUuid": "71d18a52_fdb6a8a3",
+      "revId": "06dffc57090cb187bb86bc694aef21984f932bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1223398b_49f7cb4b",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "100814f8_9a19a4c3",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-15T15:40:10Z",
+      "side": 1,
+      "message": "I\u0027m following the existing pattern.",
+      "parentUuid": "1223398b_49f7cb4b",
+      "range": {
+        "startLine": 420,
+        "startChar": 3,
+        "endLine": 420,
+        "endChar": 4
+      },
+      "revId": "06dffc57090cb187bb86bc694aef21984f932bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e368e0b1_b0e1d828",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-06-15T09:00:37Z",
       "side": 1,
       "message": "Is this logic necessary? All copyBootJarsToPredefinedLocations does is create some extra ninja rules, right? Would they conflict?",
+      "range": {
+        "startLine": 435,
+        "startChar": 0,
+        "endLine": 444,
+        "endChar": 2
+      },
+      "revId": "06dffc57090cb187bb86bc694aef21984f932bf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4fcea5b_505b04fd",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-15T15:40:10Z",
+      "side": 1,
+      "message": "Yes they would conflict. The output files are determined by the bootImageConfig. So, if two or more variants are called with the same bootImageConfig then they will all generate rules to create the same output files. Those rules would conflict because Ninja would have no way to know which rule to use.\n\nI moved one of these checks higher up in the call stack.",
+      "parentUuid": "e368e0b1_b0e1d828",
       "range": {
         "startLine": 435,
         "startChar": 0,
