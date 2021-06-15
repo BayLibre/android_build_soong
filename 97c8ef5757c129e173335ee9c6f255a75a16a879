@@ -56,6 +56,30 @@
       },
       "revId": "97c8ef5757c129e173335ee9c6f255a75a16a879",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d89379b_416cfee8",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-15T23:10:10Z",
+      "side": 1,
+      "message": "BCP fragments are supposed to be part of an APEX. Boot related files are produced for inclusion in the APEX. When building from prebuilts the boot related files are (or at least once I have finished with the changes will be) provided from the prebuilt apex.\n\nThey should not even have a platform variant. They only do because of what I consider to be a bug in the apex creation code, see http://b/187910671.",
+      "parentUuid": "981d189d_f4e6c1e7",
+      "range": {
+        "startLine": 440,
+        "startChar": 4,
+        "endLine": 440,
+        "endChar": 95
+      },
+      "revId": "97c8ef5757c129e173335ee9c6f255a75a16a879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
