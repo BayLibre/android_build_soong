@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14d3a26b_05e8bbd2",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2343,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-16T17:08:21Z",
+      "side": 1,
+      "message": "nit: method/func comments should start // \u003cmethod/func\u003e \u003cverb\u003e ....\n\nand below.",
+      "revId": "56f90451a1d27c7577bdfab17bc0a1da63a83300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cf90804_ef0cf22d",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-16T17:08:21Z",
+      "side": 1,
+      "message": "I\u0027m not sure if I have asked this before but why can you not just check ApexInfo.Updatable?",
+      "range": {
+        "startLine": 50,
+        "startChar": 58,
+        "endLine": 50,
+        "endChar": 71
+      },
+      "revId": "56f90451a1d27c7577bdfab17bc0a1da63a83300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
