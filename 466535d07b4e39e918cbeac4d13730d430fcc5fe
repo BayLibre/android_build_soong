@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80142953_e30f1b0b",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1360,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-16T23:57:42Z",
+      "side": 1,
+      "message": "Ack. It seemed that CanUseSdk was only used in one place (SplitPerApiLevel) so I was wondering whether we could just delete CanUseSdk and have SplitApiPerLevel call UseSdk instead (with the extra version check). That would avoid the new duplication. But maybe incorrect logic somehow. No worries...",
+      "parentUuid": "c39c55d2_1d8faf43",
+      "range": {
+        "startLine": 1360,
+        "startChar": 30,
+        "endLine": 1360,
+        "endChar": 36
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bde81283_f4756910",
