@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df3cef09_8f183669",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2219,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-16T16:26:22Z",
+      "side": 0,
+      "message": "c.MinSdkVersion() will return the wrong value if this is not set.  That gets propagated to the clang triple (https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/compiler.go;l\u003d421;drc\u003d10906f5cc64d181d211932d42dfa8cccdc1f0d80), which could the change the way the crt.o file is compiled and make it incompatible with the platform versions it is supposed to support.",
+      "revId": "c4dc9b4f08226ff66830fcd8ec644ab82b66ca02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

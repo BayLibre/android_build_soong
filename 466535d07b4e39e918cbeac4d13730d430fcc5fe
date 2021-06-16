@@ -261,6 +261,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46c56c09_7939565b",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2276,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-16T16:26:22Z",
+      "side": 1,
+      "message": "Sdk_version is set in the Android.bp file for modules that need to compile against stable APIs.  It then gets cleared (sorry) in the sdkMutator when modules with Sdk_version are split in the \"sdk\" variant that continues to compile against stable APIs, and the \"\" platform variant that compiles against the platform.  This is done to let modules that are sometimes used in unbundled contexts (like APKs in the play store, or updatable apexes) and sometimes used on a system image use the latest and greatest platform features when they are used on a system image.",
+      "parentUuid": "cc36dbb8_b306f9c5",
+      "range": {
+        "startLine": 2276,
+        "startChar": 5,
+        "endLine": 2276,
+        "endChar": 18
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9b7b8aa_dfcfdc82",
@@ -301,6 +325,29 @@
       "range": {
         "startLine": 186,
         "startChar": 4,
+        "endLine": 186,
+        "endChar": 54
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d19e875_762b6250",
+        "filename": "cc/linkable.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-16T16:26:22Z",
+      "side": 1,
+      "message": "This is a little confusing, I\u0027d expect the C runtime to include libc, but this is specifically for the CRT objects like crtbegin/crtend.  That confusion extends to the name IsCrt, but I only ever see \"crt\" used in the context of crtbegin/crtend, despite being an abbreviation for \"c runtime\" that has a larger meaning.  Maybe rename to IsCRTObject?  Or just clarify the comment to refer to CRT objects.",
+      "range": {
+        "startLine": 186,
+        "startChar": 39,
         "endLine": 186,
         "endChar": 54
       },
