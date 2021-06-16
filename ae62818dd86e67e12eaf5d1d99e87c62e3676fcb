@@ -16,6 +16,24 @@
       "message": "May I ask why do you change this? to match the `first_version` in the `ndk_library`? Then whey previously it is not needed?",
       "revId": "ae62818dd86e67e12eaf5d1d99e87c62e3676fcb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4894b8b8_85506b34",
+        "filename": "cc/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-16T18:36:49Z",
+      "side": 1,
+      "message": "I added a test with a library sdk_version: \"20\" that depends on ndk_libunwind.  Previously all the tests that depended on ndk_libunwind used \"current\".  A module with a lower sdk_version can\u0027t depend on a module with a higher sdk_version.",
+      "parentUuid": "b870721c_bc349475",
+      "revId": "ae62818dd86e67e12eaf5d1d99e87c62e3676fcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
