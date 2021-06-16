@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93eb9750_36dcd4d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1625880
+      },
+      "writtenOn": "2021-06-16T07:31:43Z",
+      "side": 1,
+      "message": "The code change as such looks fine, but I\u0027d hesitate to commit as-is due to all the build failures.\n\nI think it\u0027s worth spending more time on the bug first.\n\nAlso, while untyped symbols are not fully monitored, additions and removals of untyped symbols are still picked up and reported by libabigail.\n\nWhere symbols directly correspond to a syscall, modification is not really a concern as very loud problems would occur elsewhere if this happened. If you get to the point where these are the only things not covered, you might want to consider a different way of handling the exceptions.\n",
+      "revId": "9c40b7db9747b264dfd1e3783cd65b27d895e480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
