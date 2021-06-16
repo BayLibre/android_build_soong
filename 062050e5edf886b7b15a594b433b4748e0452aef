@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da1e879b_825f39bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-16T13:05:29Z",
+      "side": 1,
+      "message": "PTAL I lost the +2 when I rebased and then I added a missing comment.",
+      "revId": "062050e5edf886b7b15a594b433b4748e0452aef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
