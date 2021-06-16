@@ -2215,7 +2215,6 @@ func createPerApiVersionVariations(mctx android.BottomUpMutatorContext, minSdkVe
 
 	for i, module := range modules {
 		module.(*Module).Properties.Sdk_version = StringPtr(versionStrs[i])
-		module.(*Module).Properties.Min_sdk_version = StringPtr(versionStrs[i])
 	}
 }
 
@@ -2273,7 +2272,7 @@ func versionMutator(mctx android.BottomUpMutatorContext) {
 	}
 
 	if m, ok := mctx.Module().(*Module); ok {
-		if m.SplitPerApiLevel() && m.IsSdkVariant() {
+		if m.CanUseSdk() && m.IsCrt() && m.IsSdkVariant() {
 			if mctx.Os() != android.Android {
 				return
 			}

@@ -137,8 +137,6 @@ type LinkableInterface interface {
 
 	InVendor() bool
 
-	UseSdk() bool
-
 	// IsLlndk returns true for both LLNDK (public) and LLNDK-private libs.
 	IsLlndk() bool
 
@@ -185,7 +183,10 @@ type LinkableInterface interface {
 	AlwaysSdk() bool
 	IsSdkVariant() bool
 
-	SplitPerApiLevel() bool
+	// Whether this module is part of the C runtime (CRT)
+	IsCrt() bool
+
+	CanUseSdk() bool
 
 	// SetPreventInstall sets the PreventInstall property to 'true' for this module.
 	SetPreventInstall()
