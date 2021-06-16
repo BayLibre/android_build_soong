@@ -52,6 +52,24 @@
       "parentUuid": "6fd74513_03a40c1f",
       "revId": "c4dc9b4f08226ff66830fcd8ec644ab82b66ca02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5ae03bc_ec55007b",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2219,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-16T20:27:16Z",
+      "side": 0,
+      "message": "How does this work at runtime? There are two things I don\u0027t understand:\n\n- How does -target influence code generation? The Clang documentation for \"-target\" says \"generate code for the given target\" which isn\u0027t that helpful.\n\n- If Sdk_version influences the NDK stub library you link against, how can it work with versions between Min_sdk_version and Sdk_version? Presumably, that stub library has symbols that exist at Sdk_Version but not at Min_sdk_version, but then if you try to load the resulting library at Min_sdk_version, it will fail because the missing symbols are... well missing.\n\nI suppose this could work with weak linking, but the comment at cc.go:253 insinuates that that\u0027s not how it works.\n\nAnother way it could work is by pinkie promising that one only references the symbols in between by dlsym() but given that Sdk_version and apparently Min_sdk_version are mutated during the execution of Soong, that must not be the case since they are not under the control of the author of the .cc code (and then why would one need to link with the NDK stubs at Sdk_version then?)",
+      "parentUuid": "95a8c635_68069030",
+      "revId": "c4dc9b4f08226ff66830fcd8ec644ab82b66ca02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

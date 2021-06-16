@@ -405,6 +405,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1750729_6a890d49",
+        "filename": "cc/linkable.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-16T20:27:16Z",
+      "side": 1,
+      "message": "I thought that this special-casing mirrors the special-casing in GetCrtVariations() in cc/cc.go, isn\u0027t that the case? (but really, I put that off to later because I thought understanding the not-special-case is more important)",
+      "parentUuid": "62d6b43b_11322bc8",
+      "range": {
+        "startLine": 186,
+        "startChar": 39,
+        "endLine": 186,
+        "endChar": 54
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c4a95a0_05adc66b",
         "filename": "cc/sdk.go",
         "patchSetId": 7
