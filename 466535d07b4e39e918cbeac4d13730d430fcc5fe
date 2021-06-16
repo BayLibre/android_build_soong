@@ -381,6 +381,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "62d6b43b_11322bc8",
+        "filename": "cc/linkable.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-16T19:39:16Z",
+      "side": 1,
+      "message": "These are object files that are linked into shared libraries and binaries.  They provide the glue that connects how the kernel starts a process to calling the main() function that C expects, and for running static constructors and destructors.  In most cases they would be distributed by the sysroot and handled by the compiler driver and you wouldn\u0027t pass them on the command line, but since we build them from source we have to manage them manually to get correct dependencies.\n\nI don\u0027t remember why they are special cased in sdkMutator, maybe because they only have min_sdk_version set and not sdk_version?",
+      "parentUuid": "3a6d9087_519f7016",
+      "range": {
+        "startLine": 186,
+        "startChar": 39,
+        "endLine": 186,
+        "endChar": 54
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c4a95a0_05adc66b",
         "filename": "cc/sdk.go",
         "patchSetId": 7
