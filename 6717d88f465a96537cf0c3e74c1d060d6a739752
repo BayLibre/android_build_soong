@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be5c0c50_c709e4e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-16T17:55:43Z",
+      "side": 1,
+      "message": "PTAL - had to workaround issue described in b/191269918.",
+      "revId": "6717d88f465a96537cf0c3e74c1d060d6a739752",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
