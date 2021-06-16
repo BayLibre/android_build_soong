@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "592a736e_58ac49a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-16T18:04:11Z",
+      "side": 1,
+      "message": "PTAL. I moved some code around to try and avoid conflict downstream.",
+      "revId": "a35f8db1271a924b6c0c1d0ee8fd46a36aa1bcd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
