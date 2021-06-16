@@ -34,6 +34,24 @@
       "parentUuid": "7b62c1a3_92ab3aec",
       "revId": "cc1bd8364ae7d835fd5d882316e1236f33e59f8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf6d87e4_18dd47d3",
+        "filename": "cc/config/x86_windows_host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1060907
+      },
+      "writtenOn": "2021-06-16T16:32:25Z",
+      "side": 0,
+      "message": "I\u0027d been assuming that if this was needed then removing it would cause a build to fail, but maybe I\u0027m not building the right targets to see the failure?",
+      "parentUuid": "ba559287_82dbdaf0",
+      "revId": "cc1bd8364ae7d835fd5d882316e1236f33e59f8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
