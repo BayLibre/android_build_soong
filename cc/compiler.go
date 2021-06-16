@@ -414,7 +414,12 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 
 	target := "-target " + tc.ClangTriple()
 	if ctx.Os().Class == android.Device {
-		version := ctx.minSdkVersion()
+		var version string
+		if ctx.isCrt() {
+			version = ctx.sdkVersion()
+		} else {
+			version = ctx.minSdkVersion()
+		}
 		if version == "" || version == "current" {
 			target += strconv.Itoa(android.FutureApiLevelInt)
 		} else {
