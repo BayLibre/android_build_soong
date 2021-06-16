@@ -70,6 +70,24 @@
       "parentUuid": "95a8c635_68069030",
       "revId": "c4dc9b4f08226ff66830fcd8ec644ab82b66ca02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc6952ae_37398ef7",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2219,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-16T21:29:10Z",
+      "side": 0,
+      "message": "* The \"how\" is all implementation details.  For an example of the types of things that can change between API levels see http://cs/android/bionic/libc/arch-common/bionic/crtbegin.c?l\u003d68\u0026rcl\u003d552e97af2072089c7cc03bb82d6193a15961f8a0.  That is in crtbegin.c, but similar types of things may be done in clang - section alignments, new relocation types, etc.  Often these are new features that are more optimal in new platforms, but can\u0027t be used if your min_sdk_version is set below where they were added.\n\n* What you described is the old way, only symbols from your Sdk_version existed and you would have to use dlsym to access anything newer.  The new way involves clang automatically turning the symbols added between Min_sdk_version and Sdk_version into weak symbols, with static analysis to ensure proper runtime availability checks.  See go/android-future-symbols",
+      "parentUuid": "a5ae03bc_ec55007b",
+      "revId": "c4dc9b4f08226ff66830fcd8ec644ab82b66ca02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
