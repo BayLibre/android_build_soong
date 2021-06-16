@@ -537,7 +537,7 @@ func TestBootclasspathFragmentContentsNoName(t *testing.T) {
 		prepareForTestWithBootclasspathFragment,
 		prepareForTestWithMyapex,
 		// Configure bootclasspath jars to ensure that hidden API encoding is performed on them.
-		java.FixtureConfigureBootJars("myapex:foo", "myapex:bar"),
+		java.FixtureConfigureUpdatableBootJars("myapex:foo", "myapex:bar"),
 		// Make sure that the frameworks/base/Android.bp file exists as otherwise hidden API encoding
 		// is disabled.
 		android.FixtureAddTextFile("frameworks/base/Android.bp", ""),

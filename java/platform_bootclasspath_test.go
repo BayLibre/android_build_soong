@@ -167,9 +167,18 @@ func TestPlatformBootclasspathVariant(t *testing.T) {
 func TestPlatformBootclasspath_ClasspathFragmentPaths(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForTestWithPlatformBootclasspath,
+		FixtureConfigureBootJars("platform:foo"),
 		android.FixtureWithRootAndroidBp(`
 			platform_bootclasspath {
 				name: "platform-bootclasspath",
+			}
+
+			java_library {
+				name: "foo",
+				srcs: ["a.java"],
+				system_modules: "none",
+				sdk_version: "none",
+				compile_dex: true,
 			}
 		`),
 	).RunTest(t)
@@ -182,9 +191,18 @@ func TestPlatformBootclasspath_ClasspathFragmentPaths(t *testing.T) {
 func TestPlatformBootclasspathModule_AndroidMkEntries(t *testing.T) {
 	preparer := android.GroupFixturePreparers(
 		prepareForTestWithPlatformBootclasspath,
+		FixtureConfigureBootJars("platform:foo"),
 		android.FixtureWithRootAndroidBp(`
 			platform_bootclasspath {
 				name: "platform-bootclasspath",
+			}
+
+			java_library {
+				name: "foo",
+				srcs: ["a.java"],
+				system_modules: "none",
+				sdk_version: "none",
+				compile_dex: true,
 			}
 		`),
 	)
