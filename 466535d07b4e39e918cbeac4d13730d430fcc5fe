@@ -357,6 +357,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a6d9087_519f7016",
+        "filename": "cc/linkable.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-16T19:12:25Z",
+      "side": 1,
+      "message": "I realized it all by myself that it\u0027s only for crtbegin/crtend and that\u0027s how I understood the term \"crt\", whether that\u0027s the standard term in the industry or not. \n\nWhy are they special-cased?",
+      "parentUuid": "5d19e875_762b6250",
+      "range": {
+        "startLine": 186,
+        "startChar": 39,
+        "endLine": 186,
+        "endChar": 54
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5c4a95a0_05adc66b",
         "filename": "cc/sdk.go",
         "patchSetId": 7

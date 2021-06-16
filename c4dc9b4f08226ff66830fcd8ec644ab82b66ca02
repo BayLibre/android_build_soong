@@ -16,6 +16,24 @@
       "message": "c.MinSdkVersion() will return the wrong value if this is not set.  That gets propagated to the clang triple (https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/compiler.go;l\u003d421;drc\u003d10906f5cc64d181d211932d42dfa8cccdc1f0d80), which could the change the way the crt.o file is compiled and make it incompatible with the platform versions it is supposed to support.",
       "revId": "c4dc9b4f08226ff66830fcd8ec644ab82b66ca02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd74513_03a40c1f",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2219,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-16T19:12:25Z",
+      "side": 0,
+      "message": "Why does compiler.go:421 use MinSdkVersion instead of SdkVersion? Naively, I would think that it should be the latter because, well, the target of that variant is SdkVersion.",
+      "parentUuid": "df3cef09_8f183669",
+      "revId": "c4dc9b4f08226ff66830fcd8ec644ab82b66ca02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
