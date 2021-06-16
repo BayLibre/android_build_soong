@@ -832,6 +832,7 @@ func (b *bootclasspathFragmentSdkMemberProperties) AddToPropertySet(ctx android.
 }
 
 var _ android.SdkMemberType = (*bootclasspathFragmentMemberType)(nil)
+var _ android.SdkMemberType = (*bootclasspathFragmentMemberType)(nil)
 
 // prebuiltBootclasspathFragmentProperties contains additional prebuilt_bootclasspath_fragment
 // specific properties.
