@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba8c42eb_9a89f8fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-16T13:00:26Z",
+      "side": 1,
+      "message": "I\u0027m not quite sure why I lost your +2 but would you mind adding it again.",
+      "revId": "f4dd137385bce7d34229be95d6664b10d651e4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
