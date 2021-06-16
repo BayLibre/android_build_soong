@@ -357,7 +357,11 @@ func (mod *Module) IsSdkVariant() bool {
 	return false
 }
 
-func (mod *Module) SplitPerApiLevel() bool {
+func (mod *Module) IsCrt() bool {
+	return false
+}
+
+func (mod *Module) CanUseSdk() bool {
 	return false
 }
 

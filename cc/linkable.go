@@ -185,7 +185,8 @@ type LinkableInterface interface {
 	AlwaysSdk() bool
 	IsSdkVariant() bool
 
-	SplitPerApiLevel() bool
+	IsCrt() bool
+	CanUseSdk() bool
 
 	// SetPreventInstall sets the PreventInstall property to 'true' for this module.
 	SetPreventInstall()

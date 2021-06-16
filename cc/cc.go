@@ -275,6 +275,8 @@ type BaseProperties struct {
 	// is not built for an APEX, "apex_inherit" defaults to sdk_version.
 	Min_sdk_version *string
 
+	Crt_sdk_version string `blueprint:"mutated"`
+
 	// If true, always create an sdk variant and don't create a platform variant.
 	Sdk_variant_only *bool
 
@@ -919,13 +921,11 @@ func (c *Module) MinSdkVersion() string {
 	return String(c.Properties.Min_sdk_version)
 }
 
-func (c *Module) SplitPerApiLevel() bool {
-	if !c.canUseSdk() {
-		return false
-	}
+func (c *Module) IsCrt() bool {
 	if linker, ok := c.linker.(*objectLinker); ok {
 		return linker.isCrt()
 	}
+
 	return false
 }
 
@@ -1098,13 +1098,13 @@ func (c *Module) UseVndk() bool {
 	return c.Properties.VndkVersion != ""
 }
 
-func (c *Module) canUseSdk() bool {
+func (c *Module) CanUseSdk() bool {
 	return c.Os() == android.Android && c.Target().NativeBridge == android.NativeBridgeDisabled &&
 		!c.UseVndk() && !c.InRamdisk() && !c.InRecovery() && !c.InVendorRamdisk()
 }
 
 func (c *Module) UseSdk() bool {
-	if c.canUseSdk() {
+	if c.CanUseSdk() {
 		return String(c.Properties.Sdk_version) != ""
 	}
 	return false
@@ -1363,7 +1363,7 @@ func (ctx *moduleContextImpl) object() bool {
 }
 
 func (ctx *moduleContextImpl) canUseSdk() bool {
-	return ctx.mod.canUseSdk()
+	return ctx.mod.CanUseSdk()
 }
 
 func (ctx *moduleContextImpl) useSdk() bool {
@@ -1401,8 +1401,12 @@ func (ctx *moduleContextImpl) minSdkVersion() string {
 	// min_sdk_version: 16 doesn't actually mean that the platform variant has to support such
 	// an old version. Since the variant is for the platform, it's preferred to target the
 	// latest version.
-	if ctx.mod.SplitPerApiLevel() && !ctx.isSdkVariant() {
-		ver = strconv.Itoa(android.FutureApiLevelInt)
+	if ctx.mod.CanUseSdk() && ctx.mod.IsCrt() {
+		if ctx.isSdkVariant() {
+			ver = ctx.mod.SdkVersion()
+		} else {
+			ver = strconv.Itoa(android.FutureApiLevelInt)
+		}
 	}
 
 	// Also make sure that minSdkVersion is not greater than sdkVersion, if they are both numbers
@@ -1625,6 +1629,7 @@ func (c *Module) setSubnameProperty(actx android.ModuleContext) {
 	}
 
 	llndk := c.IsLlndk()
+	splitCrt := c.CanUseSdk() && c.IsCrt()
 	if llndk || (c.UseVndk() && c.HasNonSystemVariants()) {
 		// .vendor.{version} suffix is added for vendor variant or .product.{version} suffix is
 		// added for product variant only when we have vendor and product variants with core
@@ -1642,9 +1647,9 @@ func (c *Module) setSubnameProperty(actx android.ModuleContext) {
 		c.Properties.SubName += VendorRamdiskSuffix
 	} else if c.InRecovery() && !c.OnlyInRecovery() {
 		c.Properties.SubName += recoverySuffix
-	} else if c.IsSdkVariant() && (c.Properties.SdkAndPlatformVariantVisibleToMake || c.SplitPerApiLevel()) {
+	} else if c.IsSdkVariant() && (c.Properties.SdkAndPlatformVariantVisibleToMake || splitCrt) {
 		c.Properties.SubName += sdkSuffix
-		if c.SplitPerApiLevel() {
+		if splitCrt {
 			c.Properties.SubName += "." + c.SdkVersion()
 		}
 	}
@@ -1984,11 +1989,18 @@ func GetCrtVariations(ctx android.BottomUpMutatorContext,
 	}
 	if m.UseSdk() {
 		// Choose the CRT that best satisfies the min_sdk_version requirement of this module
-		minSdkVersion := m.MinSdkVersion()
-		if minSdkVersion == "" || minSdkVersion == "apex_inherit" {
-			minSdkVersion = m.SdkVersion()
+		var version string
+		if m.IsCrt() {
+			// If the module is already a CRT one, choose the corresponding version for
+			// its dependencies also because they are also CRT
+			version = m.SdkVersion()
+		} else {
+			version = m.MinSdkVersion()
 		}
-		apiLevel, err := android.ApiLevelFromUser(ctx, minSdkVersion)
+		if version == "" || version == "apex_inherit" {
+			version = m.SdkVersion()
+		}
+		apiLevel, err := android.ApiLevelFromUser(ctx, version)
 		if err != nil {
 			ctx.PropertyErrorf("min_sdk_version", err.Error())
 		}

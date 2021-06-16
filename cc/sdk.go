@@ -32,11 +32,11 @@ func sdkMutator(ctx android.BottomUpMutatorContext) {
 	switch m := ctx.Module().(type) {
 	case LinkableInterface:
 		if m.AlwaysSdk() {
-			if !m.UseSdk() && !m.SplitPerApiLevel() {
+			if !m.UseSdk() && (!m.CanUseSdk() || !m.IsCrt()) {
 				ctx.ModuleErrorf("UseSdk() must return true when AlwaysSdk is set, did the factory forget to set Sdk_version?")
 			}
 			ctx.CreateVariations("sdk")
-		} else if m.UseSdk() || m.SplitPerApiLevel() {
+		} else if m.UseSdk() || (m.CanUseSdk() && m.IsCrt()) {
 			modules := ctx.CreateVariations("", "sdk")
 
 			// Clear the sdk_version property for the platform (non-SDK) variant so later code
