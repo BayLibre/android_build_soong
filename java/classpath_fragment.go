@@ -107,7 +107,7 @@ func configuredJarListToClasspathJars(ctx android.ModuleContext, configuredJars 
 }
 
 func (c *ClasspathFragmentBase) generateClasspathProtoBuildActions(ctx android.ModuleContext, configuredJars android.ConfiguredJarList, jars []classpathJar) {
-	generateProto := proptools.BoolDefault(c.properties.Generate_classpaths_proto, true)
+	generateProto := len(jars) > 0 && proptools.BoolDefault(c.properties.Generate_classpaths_proto, true)
 	if generateProto {
 		outputFilename := strings.ToLower(c.classpathType.String()) + ".pb"
 		c.outputFilepath = android.PathForModuleOut(ctx, outputFilename).OutputPath

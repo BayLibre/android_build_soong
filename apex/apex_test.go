@@ -6676,6 +6676,7 @@ func testNoUpdatableJarsInBootImage(t *testing.T, errmsg string, preparer androi
 				"some-non-updatable-apex",
 			],
 			compile_dex: true,
+            permitted_packages: ["some.non.updatable.apex.lib"],
 		}
 
 		bootclasspath_fragment {
@@ -6702,6 +6703,7 @@ func testNoUpdatableJarsInBootImage(t *testing.T, errmsg string, preparer androi
 			],
 			hostdex: true,
 			compile_dex: true,
+			permitted_packages: ["some.art.lib"],
 		}
 
 		apex {
@@ -6952,12 +6954,21 @@ func TestNoUpdatableJarsInBootImage(t *testing.T) {
 	})
 
 	t.Run("non-updatable jar from some other apex in the framework boot image => ok", func(t *testing.T) {
-		preparer := java.FixtureConfigureBootJars("some-non-updatable-apex:some-non-updatable-apex-lib")
-		fragment := java.ApexVariantReference{
-			Apex:   proptools.StringPtr("some-non-updatable-apex"),
-			Module: proptools.StringPtr("some-non-updatable-fragment"),
+		preparer := android.GroupFixturePreparers(
+			java.FixtureConfigureBootJars("com.android.art.debug:some-art-lib"),
+			java.FixtureConfigureUpdatableBootJars("some-non-updatable-apex:some-non-updatable-apex-lib"),
+		)
+		fragments := []java.ApexVariantReference{
+			{
+				Apex:   proptools.StringPtr("com.android.art.debug"),
+				Module: proptools.StringPtr("art-bootclasspath-fragment"),
+			},
+			{
+				Apex:   proptools.StringPtr("some-non-updatable-apex"),
+				Module: proptools.StringPtr("some-non-updatable-fragment"),
+			},
 		}
-		testNoUpdatableJarsInBootImage(t, "", preparer, fragment)
+		testNoUpdatableJarsInBootImage(t, "", preparer, fragments...)
 	})
 
 	t.Run("nonexistent jar in the ART boot image => error", func(t *testing.T) {
@@ -6980,8 +6991,21 @@ func TestNoUpdatableJarsInBootImage(t *testing.T) {
 	})
 
 	t.Run("platform jar in the framework boot image => ok", func(t *testing.T) {
-		preparer := java.FixtureConfigureBootJars("platform:some-platform-lib")
-		testNoUpdatableJarsInBootImage(t, "", preparer)
+		preparer := android.GroupFixturePreparers(
+			java.FixtureConfigureBootJars("platform:some-platform-lib"),
+			java.FixtureConfigureBootJars("com.android.art.debug:some-art-lib"),
+		)
+		fragments := []java.ApexVariantReference{
+			{
+				Apex:   proptools.StringPtr("com.android.art.debug"),
+				Module: proptools.StringPtr("art-bootclasspath-fragment"),
+			},
+			{
+				Apex:   proptools.StringPtr("some-non-updatable-apex"),
+				Module: proptools.StringPtr("some-non-updatable-fragment"),
+			},
+		}
+		testNoUpdatableJarsInBootImage(t, "", preparer, fragments...)
 	})
 }
 

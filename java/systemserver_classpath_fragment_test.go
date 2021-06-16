@@ -15,6 +15,7 @@
 package java
 
 import (
+	"android/soong/dexpreopt"
 	"testing"
 
 	"android/soong/android"
@@ -41,6 +42,7 @@ func TestPlatformSystemServerClasspathVariant(t *testing.T) {
 func TestPlatformSystemServerClasspath_ClasspathFragmentPaths(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForTestWithSystemServerClasspath,
+		dexpreopt.FixtureSetSystemServerJars("platform:foo"),
 		android.FixtureWithRootAndroidBp(`
 			platform_systemserverclasspath {
 				name: "platform-systemserverclasspath",
@@ -56,6 +58,7 @@ func TestPlatformSystemServerClasspath_ClasspathFragmentPaths(t *testing.T) {
 func TestPlatformSystemServerClasspathModule_AndroidMkEntries(t *testing.T) {
 	preparer := android.GroupFixturePreparers(
 		prepareForTestWithSystemServerClasspath,
+		dexpreopt.FixtureSetSystemServerJars("platform:foo"),
 		android.FixtureWithRootAndroidBp(`
 			platform_systemserverclasspath {
 				name: "platform-systemserverclasspath",
