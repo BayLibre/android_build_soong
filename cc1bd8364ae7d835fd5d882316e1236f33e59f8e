@@ -52,6 +52,24 @@
       "parentUuid": "ba559287_82dbdaf0",
       "revId": "cc1bd8364ae7d835fd5d882316e1236f33e59f8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fff1d00_b80dddeb",
+        "filename": "cc/config/x86_windows_host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-16T16:33:44Z",
+      "side": 0,
+      "message": "no, it\u0027ll cause _runtime_ failures with large files.",
+      "parentUuid": "bf6d87e4_18dd47d3",
+      "revId": "cc1bd8364ae7d835fd5d882316e1236f33e59f8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
