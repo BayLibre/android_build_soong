@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5815c551_65d0a974",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-16T08:47:20Z",
+      "side": 1,
+      "message": "Given the \"len(contents) \u003d\u003d 0\" error check above, we\u0027ll always get here. Iow, what this function does is some validation of global.ArtApexJars, but it doesn\u0027t actually use that value. Is there still any purpose with that validation? Should it be refactored to check m.properties.Contents instead?",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 8
+      },
+      "revId": "8018e50ddb141dea7891918c4178a7a394a788d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
