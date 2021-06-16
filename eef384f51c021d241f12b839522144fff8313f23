@@ -16,6 +16,40 @@
       "message": "Removed the Windows change entirely, PTAL!",
       "revId": "eef384f51c021d241f12b839522144fff8313f23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63ac317a_82eb8108",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-16T23:50:59Z",
+      "side": 1,
+      "message": "only ccross\u0027 vote matters here, but in case we\u0027re deadlocked with him waiting for me...",
+      "revId": "eef384f51c021d241f12b839522144fff8313f23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ba0b3ce_9db77768",
+        "filename": "cc/config/x86_linux_host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-16T23:50:59Z",
+      "side": 1,
+      "message": "fwiw, i\u0027m assuming this isn\u0027t needed any more either...",
+      "revId": "eef384f51c021d241f12b839522144fff8313f23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
