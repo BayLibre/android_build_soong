@@ -22,6 +22,30 @@
       },
       "revId": "8018e50ddb141dea7891918c4178a7a394a788d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91c9ff14_3be5d67f",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-16T09:46:46Z",
+      "side": 1,
+      "message": "This is left over from some previous work. I have a local change to clean this up.\n\nI think it is important that the APEX specified is checked. However, I think if it was done in the ...ConsistencyCheck... method instead then it could check that the the apex specified in the ART_APEX_JARS is in the new ApexInfo.InApexModules which Jiyong added which should \"just work\" with overrides. That would avoid a hack.\n\nWould you be able to work on that?",
+      "parentUuid": "5815c551_65d0a974",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 8
+      },
+      "revId": "8018e50ddb141dea7891918c4178a7a394a788d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
