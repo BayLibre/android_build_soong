@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80afed23_a9215428",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-16T05:18:06Z",
+      "side": 1,
+      "message": "nit: remove this?",
+      "revId": "f1a56929528ce2a1a09ef987ec3f7a8fb25a8640",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
