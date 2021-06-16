@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "190fae00_aa10e160",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1360,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-16T13:48:54Z",
+      "side": 1,
+      "message": "Maybe you can tell that my brain has not fully recovered from the flu :-)\n\nWell, I am not a fan of the new duplication, and would be tempted to merge CanUseSdk and UseSdk into one function if you aren\u0027t happy keeping both around\n\ncc ccross@ for reasons why that is not possible...",
+      "parentUuid": "f90070d1_0368eb33",
+      "range": {
+        "startLine": 1360,
+        "startChar": 30,
+        "endLine": 1360,
+        "endChar": 36
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bde81283_f4756910",
         "filename": "cc/cc.go",
         "patchSetId": 7
