@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc0764b0_002dc0d7",
+        "filename": "cc/cc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1109,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-16T12:11:03Z",
+      "side": 1,
+      "message": "These two functions are still named quite similarly. Mind renaming either one to something else?",
+      "range": {
+        "startLine": 1098,
+        "startChar": 0,
+        "endLine": 1109,
+        "endChar": 1
+      },
+      "revId": "6dabf9edfe0459d8082cc45057cac67cd723de35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cebe7a64_244b4b21",
+        "filename": "cc/linkable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-16T12:11:03Z",
+      "side": 1,
+      "message": "C runtime (CRT)",
+      "range": {
+        "startLine": 186,
+        "startChar": 39,
+        "endLine": 186,
+        "endChar": 42
+      },
+      "revId": "6dabf9edfe0459d8082cc45057cac67cd723de35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57c47e27_d94f460e",
+        "filename": "cc/linkable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-16T12:11:03Z",
+      "side": 1,
+      "message": "Which SDK is this?",
+      "range": {
+        "startLine": 189,
+        "startChar": 44,
+        "endLine": 189,
+        "endChar": 47
+      },
+      "revId": "6dabf9edfe0459d8082cc45057cac67cd723de35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
