@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e714f44_16cb61f6",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1360,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-16T14:42:35Z",
+      "side": 1,
+      "message": "That, I know -- it appears that there are a number of places where the two parts of UseSdk (whether it\u0027s the right variant (CanUseSdk()) and whether Sdk_version is set (Sdk_version !\u003d \"\")) are used separately.\n\nThis is mostly because CRT libraries are treated differently than regular ones. It may be possible to disentangle these two, but not with my current knowledge. I know because I wanted to eliminate CanUseSdk() first but that didn\u0027t work out.\n\nI could have kept UseSdk() but it code looked more straightforward this way.",
+      "parentUuid": "190fae00_aa10e160",
+      "range": {
+        "startLine": 1360,
+        "startChar": 30,
+        "endLine": 1360,
+        "endChar": 36
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bde81283_f4756910",
         "filename": "cc/cc.go",
         "patchSetId": 7
