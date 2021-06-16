@@ -4643,7 +4643,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 		t.Helper()
 		platformBootclasspath := ctx.ModuleForTests("platform-bootclasspath", "android_common")
 		indexRule := platformBootclasspath.Rule("monolithic_hidden_API_index")
-		java.CheckHiddenAPIRuleInputs(t, expectedInputs, indexRule)
+		java.CheckHiddenAPIRuleInputs(t, "index", expectedInputs, indexRule)
 	}
 
 	t.Run("prebuilt only", func(t *testing.T) {
@@ -4682,9 +4682,9 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 
 		// Verify the correct module jars contribute to the hiddenapi index file.
 		checkHiddenAPIIndexInputs(t, ctx, `
-.intermediates/libbar.stubs/android_common/combined/libbar.stubs.jar
-.intermediates/libfoo/android_common_myapex/combined/libfoo.jar
-`)
+			out/soong/.intermediates/libbar.stubs/android_common/combined/libbar.stubs.jar
+			out/soong/.intermediates/libfoo/android_common_myapex/combined/libfoo.jar
+		`)
 	})
 
 	t.Run("apex_set only", func(t *testing.T) {
@@ -4716,9 +4716,9 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 
 		// Verify the correct module jars contribute to the hiddenapi index file.
 		checkHiddenAPIIndexInputs(t, ctx, `
-.intermediates/libbar.stubs/android_common/combined/libbar.stubs.jar
-.intermediates/libfoo/android_common_myapex/combined/libfoo.jar
-`)
+			out/soong/.intermediates/libbar.stubs/android_common/combined/libbar.stubs.jar
+			out/soong/.intermediates/libfoo/android_common_myapex/combined/libfoo.jar
+		`)
 	})
 
 	t.Run("prebuilt with source library preferred", func(t *testing.T) {
@@ -4823,9 +4823,9 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 
 		// Verify the correct module jars contribute to the hiddenapi index file.
 		checkHiddenAPIIndexInputs(t, ctx, `
-.intermediates/prebuilt_libbar.stubs/android_common/combined/libbar.stubs.jar
-.intermediates/prebuilt_libfoo/android_common_myapex/combined/libfoo.jar
-`)
+			out/soong/.intermediates/prebuilt_libbar.stubs/android_common/combined/libbar.stubs.jar
+			out/soong/.intermediates/prebuilt_libfoo/android_common_myapex/combined/libfoo.jar
+		`)
 	})
 
 	t.Run("prebuilt with source apex preferred", func(t *testing.T) {
@@ -4890,9 +4890,9 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 
 		// Verify the correct module jars contribute to the hiddenapi index file.
 		checkHiddenAPIIndexInputs(t, ctx, `
-.intermediates/libbar/android_common_myapex/javac/libbar.jar
-.intermediates/libfoo/android_common_apex10000/javac/libfoo.jar
-`)
+			out/soong/.intermediates/libbar/android_common_myapex/javac/libbar.jar
+			out/soong/.intermediates/libfoo/android_common_apex10000/javac/libfoo.jar
+		`)
 	})
 
 	t.Run("prebuilt preferred with source apex disabled", func(t *testing.T) {
@@ -4959,9 +4959,9 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 
 		// Verify the correct module jars contribute to the hiddenapi index file.
 		checkHiddenAPIIndexInputs(t, ctx, `
-.intermediates/prebuilt_libbar.stubs/android_common/combined/libbar.stubs.jar
-.intermediates/prebuilt_libfoo/android_common_myapex/combined/libfoo.jar
-`)
+			out/soong/.intermediates/prebuilt_libbar.stubs/android_common/combined/libbar.stubs.jar
+			out/soong/.intermediates/prebuilt_libfoo/android_common_myapex/combined/libfoo.jar
+		`)
 	})
 }
 
