@@ -70,6 +70,24 @@
       "parentUuid": "bf6d87e4_18dd47d3",
       "revId": "cc1bd8364ae7d835fd5d882316e1236f33e59f8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb1b5332_75b12e15",
+        "filename": "cc/config/x86_windows_host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1060907
+      },
+      "writtenOn": "2021-06-16T18:54:32Z",
+      "side": 0,
+      "message": "It turns out that Windows isn\u0027t affected by this glibc bug, so we don\u0027t need the Windows portion of this change at all I think. Certainly I\u0027m able to do a local build without it.",
+      "parentUuid": "9fff1d00_b80dddeb",
+      "revId": "cc1bd8364ae7d835fd5d882316e1236f33e59f8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
