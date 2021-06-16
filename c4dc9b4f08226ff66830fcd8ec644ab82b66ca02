@@ -34,6 +34,24 @@
       "parentUuid": "df3cef09_8f183669",
       "revId": "c4dc9b4f08226ff66830fcd8ec644ab82b66ca02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95a8c635_68069030",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2219,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-16T19:29:23Z",
+      "side": 0,
+      "message": "See the comments in the Sdk_version and Min_sdk_Version properties.  Sdk_version is for what APIs it should be built against, Min_sdk_version is the minimum version it needs to run on.  Any use of APIs that were added between Min_sdk_version and Sdk_version need to be guarded by runtime checks.  The Min_sdk_version becomes part of the clang triple, which is passed to clang using the -target option.  The Sdk_version is used to select which version of the NDK stub libraries to link against.",
+      "parentUuid": "6fd74513_03a40c1f",
+      "revId": "c4dc9b4f08226ff66830fcd8ec644ab82b66ca02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
