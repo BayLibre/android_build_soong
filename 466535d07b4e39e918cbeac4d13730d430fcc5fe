@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d57cda28_3805fe40",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1360,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-16T13:05:36Z",
+      "side": 1,
+      "message": "Can you add a UseSdk() function to the Module and call that instead?",
+      "range": {
+        "startLine": 1360,
+        "startChar": 30,
+        "endLine": 1360,
+        "endChar": 36
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde81283_f4756910",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1982,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-16T13:05:36Z",
+      "side": 1,
+      "message": "Could call m.UseSdk() if we added that",
+      "range": {
+        "startLine": 1982,
+        "startChar": 4,
+        "endLine": 1982,
+        "endChar": 42
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6eb837d_2f8016f6",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2088,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-16T13:05:36Z",
+      "side": 1,
+      "message": "Could also use c.UseSdk() here",
+      "range": {
+        "startLine": 2088,
+        "startChar": 9,
+        "endLine": 2088,
+        "endChar": 43
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66a86f2c_eeb87218",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2276,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-16T13:05:36Z",
+      "side": 1,
+      "message": "Do we also need to check that the m.SdkVersion is set?",
+      "range": {
+        "startLine": 2276,
+        "startChar": 5,
+        "endLine": 2276,
+        "endChar": 18
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9b7b8aa_dfcfdc82",
+        "filename": "cc/linkable.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-16T13:05:36Z",
+      "side": 1,
+      "message": "Does this also imply that SdkVersion is set?",
+      "range": {
+        "startLine": 186,
+        "startChar": 4,
+        "endLine": 186,
+        "endChar": 54
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c4a95a0_05adc66b",
+        "filename": "cc/sdk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-16T13:05:36Z",
+      "side": 1,
+      "message": "Could probably call m.UseSdk here too?\n\n(Should the m.IsCrt fallback check be added to m.UseSdk?)",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 64
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
