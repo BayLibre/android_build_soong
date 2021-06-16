@@ -273,10 +273,6 @@ func (mod *Module) Toc() android.OptionalPath {
 	panic(fmt.Errorf("Toc() called on non-library module: %q", mod.BaseModuleName()))
 }
 
-func (mod *Module) UseSdk() bool {
-	return false
-}
-
 func (mod *Module) RelativeInstallPath() string {
 	if mod.compiler != nil {
 		return mod.compiler.relativeInstallPath()
@@ -357,7 +353,11 @@ func (mod *Module) IsSdkVariant() bool {
 	return false
 }
 
-func (mod *Module) SplitPerApiLevel() bool {
+func (mod *Module) IsCrt() bool {
+	return false
+}
+
+func (mod *Module) CanUseSdk() bool {
 	return false
 }
 
