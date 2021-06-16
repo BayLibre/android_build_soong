@@ -39,6 +39,30 @@
       },
       "revId": "56f90451a1d27c7577bdfab17bc0a1da63a83300",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "894c5f32_c9e74901",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-16T17:21:01Z",
+      "side": 1,
+      "message": "I think this is mostly about how we want Updatable to work. Ideally, it shouldn\u0027t change any build behaviour on its own, but just enforce individual properties that matter. So, toggling updatable property is simple, and devs can work on individual issues step-by-step when they make it updatable.\n\nThis specific case is less important, but I\u0027d still like to follow sentiment above. WDYT?\n\nAlso, this makes it a property of the fragment itself, instead of a variant, which is good? I\u0027d think we want to minimize differences between variances?",
+      "parentUuid": "3cf90804_ef0cf22d",
+      "range": {
+        "startLine": 50,
+        "startChar": 58,
+        "endLine": 50,
+        "endChar": 71
+      },
+      "revId": "56f90451a1d27c7577bdfab17bc0a1da63a83300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
