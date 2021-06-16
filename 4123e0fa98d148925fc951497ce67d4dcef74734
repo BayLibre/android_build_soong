@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e32c4888_a8816d6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-16T09:57:03Z",
+      "side": 1,
+      "message": "Nice!",
+      "revId": "4123e0fa98d148925fc951497ce67d4dcef74734",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5279a0e_b2b0afe1",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-16T09:57:03Z",
+      "side": 1,
+      "message": "nit: generateBootJarsPackageCheckBuildActions for conssitency?",
+      "range": {
+        "startLine": 193,
+        "startChar": 1,
+        "endLine": 193,
+        "endChar": 33
+      },
+      "revId": "4123e0fa98d148925fc951497ce67d4dcef74734",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
