@@ -16,6 +16,24 @@
       "message": "This may still be needed on windows",
       "revId": "cc1bd8364ae7d835fd5d882316e1236f33e59f8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba559287_82dbdaf0",
+        "filename": "cc/config/x86_windows_host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-06-16T16:27:45Z",
+      "side": 0,
+      "message": "we\u0027re still shipping 32-bit binaries on Windows, right? adb.exe seems to be:\n```\nadb.exe: PE32 executable (console) Intel 80386 (stripped to external PDB), for MS Windows\n```\n\nand it looks like mingw defaults to a 32-bit off_t? https://source.corp.google.com/android/prebuilts/gcc/linux-x86/host/x86_64-w64-mingw32-4.8/x86_64-w64-mingw32/include/_mingw_off_t.h;l\u003d23?q\u003d_FILE_OFFSET_BITS%20file:mingw\u0026sq\u003dpackage:%5Eandroid$",
+      "parentUuid": "7b62c1a3_92ab3aec",
+      "revId": "cc1bd8364ae7d835fd5d882316e1236f33e59f8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
