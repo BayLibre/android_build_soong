@@ -6871,12 +6871,19 @@ func TestNoUpdatableJarsInBootImage(t *testing.T) {
 	})
 
 	t.Run("non-updatable jar from some other apex in the framework boot image => ok", func(t *testing.T) {
-		preparer := java.FixtureConfigureBootJars("some-non-updatable-apex:some-non-updatable-apex-lib")
-		fragment := java.ApexVariantReference{
+		preparer := android.GroupFixturePreparers(
+			java.FixtureConfigureBootJars("some-non-updatable-apex:some-non-updatable-apex-lib"),
+			dexpreopt.FixtureSetArtBootJars("com.android.art.debug:some-art-lib"),
+		)
+		nonUpdatableFragment := java.ApexVariantReference{
 			Apex:   proptools.StringPtr("some-non-updatable-apex"),
 			Module: proptools.StringPtr("some-non-updatable-fragment"),
 		}
-		testNoUpdatableJarsInBootImage(t, "", preparer, fragment)
+		artFragment := java.ApexVariantReference{
+			Apex:   proptools.StringPtr("com.android.art.debug"),
+			Module: proptools.StringPtr("art-bootclasspath-fragment"),
+		}
+		testNoUpdatableJarsInBootImage(t, "", preparer, nonUpdatableFragment, artFragment)
 	})
 
 	t.Run("nonexistent jar in the ART boot image => error", func(t *testing.T) {
@@ -6899,8 +6906,15 @@ func TestNoUpdatableJarsInBootImage(t *testing.T) {
 	})
 
 	t.Run("platform jar in the framework boot image => ok", func(t *testing.T) {
-		preparer := java.FixtureConfigureBootJars("platform:some-platform-lib")
-		testNoUpdatableJarsInBootImage(t, "", preparer)
+		preparer := android.GroupFixturePreparers(
+			java.FixtureConfigureBootJars("platform:some-platform-lib"),
+			dexpreopt.FixtureSetArtBootJars("com.android.art.debug:some-art-lib"),
+		)
+		artFragment := java.ApexVariantReference{
+			Apex:   proptools.StringPtr("com.android.art.debug"),
+			Module: proptools.StringPtr("art-bootclasspath-fragment"),
+		}
+		testNoUpdatableJarsInBootImage(t, "", preparer, artFragment)
 	})
 }
 
