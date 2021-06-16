@@ -36,8 +36,6 @@ var (
 		// Admit to using >= Windows 7. Both are needed because of <_mingw.h>.
 		"-D_WIN32_WINNT=0x0601",
 		"-DWINVER=0x0601",
-		// Get 64-bit off_t and related functions.
-		"-D_FILE_OFFSET_BITS=64",
 
 		// Don't adjust the layout of bitfields like msvc does.
 		"-mno-ms-bitfields",
