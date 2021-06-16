@@ -15,6 +15,7 @@
 package apex
 
 import (
+	"android/soong/dexpreopt"
 	"testing"
 
 	"android/soong/android"
@@ -30,6 +31,7 @@ func TestSystemserverclasspathFragmentContents(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForTestWithSystemserverclasspathFragment,
 		prepareForTestWithMyapex,
+		dexpreopt.FixtureSetUpdatableSystemServerJars("myapex:foo"),
 	).RunTestWithBp(t, `
 		apex {
 			name: "myapex",
@@ -67,7 +69,7 @@ func TestSystemserverclasspathFragmentContents(t *testing.T) {
 	`)
 
 	ensureExactContents(t, result.TestContext, "myapex", "android_common_myapex_image", []string{
-		"etc/classpaths/systemserverclasspath.pb",
+		`etc/classpaths/systemserverclasspath.pb`,
 		"javalib/foo.jar",
 	})
 
