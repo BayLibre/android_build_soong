@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21b8e778_176aec58",
+        "filename": "cc/stl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-06-16T18:15:24Z",
+      "side": 1,
+      "message": "Doesn\u0027t it also change the link order? It should be linked before libc++_shared.so",
+      "revId": "c113e3cbe741bc6a70a6624dfb1597434e2f4642",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
