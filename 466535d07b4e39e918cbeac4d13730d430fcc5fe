@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f90070d1_0368eb33",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1360,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-16T13:13:30Z",
+      "side": 1,
+      "message": "I actually *removed* that method in this change; reason being, I found that not having that abstraction is better for understanding all these little similar-but-not-quite-the-same methods.",
+      "parentUuid": "d57cda28_3805fe40",
+      "range": {
+        "startLine": 1360,
+        "startChar": 30,
+        "endLine": 1360,
+        "endChar": 36
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bde81283_f4756910",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-16T13:05:36Z",
       "side": 1,
       "message": "Could call m.UseSdk() if we added that",
+      "range": {
+        "startLine": 1982,
+        "startChar": 4,
+        "endLine": 1982,
+        "endChar": 42
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7189c14_ad7c4ea9",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1982,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-16T13:13:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bde81283_f4756910",
       "range": {
         "startLine": 1982,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d813d88b_b7b38788",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2088,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-16T13:13:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a6eb837d_2f8016f6",
+      "range": {
+        "startLine": 2088,
+        "startChar": 9,
+        "endLine": 2088,
+        "endChar": 43
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66a86f2c_eeb87218",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-16T13:05:36Z",
       "side": 1,
       "message": "Do we also need to check that the m.SdkVersion is set?",
+      "range": {
+        "startLine": 2276,
+        "startChar": 5,
+        "endLine": 2276,
+        "endChar": 18
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc36dbb8_b306f9c5",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2276,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-16T13:13:30Z",
+      "side": 1,
+      "message": "The jury is still out on that one; I don\u0027t know yet what SdkVersion actually means: it\u0027s a property, it\u0027s changed in various mutators, etc. But yes, that\u0027s exactly what I\u0027m trying to grok in this very moment :) (it probably won\u0027t work today, though; my brain is full)",
+      "parentUuid": "66a86f2c_eeb87218",
       "range": {
         "startLine": 2276,
         "startChar": 5,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7866f510_858529e9",
+        "filename": "cc/linkable.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-16T13:13:30Z",
+      "side": 1,
+      "message": "I think the answer to this is \"after version mutator is run\". What I will probably do is to split Sdk_version into at least two fields (one for what\u0027s in the Blueprint file and one for what\u0027s computed during all these mutators) once I figure out what\u0027s going on.",
+      "parentUuid": "c9b7b8aa_dfcfdc82",
+      "range": {
+        "startLine": 186,
+        "startChar": 4,
+        "endLine": 186,
+        "endChar": 54
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c4a95a0_05adc66b",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-06-16T13:05:36Z",
       "side": 1,
       "message": "Could probably call m.UseSdk here too?\n\n(Should the m.IsCrt fallback check be added to m.UseSdk?)",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 64
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd3fcbf7_ba2001bd",
+        "filename": "cc/sdk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-16T13:13:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5c4a95a0_05adc66b",
       "range": {
         "startLine": 34,
         "startChar": 2,
