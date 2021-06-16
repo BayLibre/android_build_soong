@@ -16,6 +16,24 @@
       "message": "So the current libs order is: StaticLibs, SharedLibs, LateStaticLibs, and LateSharedLibs?",
       "revId": "fe9acfecb307e69963cf5447bd50e203593cb219",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44a7763b_57d86c8d",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2208,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-16T18:37:12Z",
+      "side": 1,
+      "message": "Yep.",
+      "parentUuid": "27c61301_ec8246a4",
+      "revId": "fe9acfecb307e69963cf5447bd50e203593cb219",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
