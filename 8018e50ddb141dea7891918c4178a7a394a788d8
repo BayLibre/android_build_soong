@@ -46,6 +46,30 @@
       },
       "revId": "8018e50ddb141dea7891918c4178a7a394a788d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "555fa786_abfa9f50",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-16T10:08:39Z",
+      "side": 1,
+      "message": "Sure can do.\n\n(It\u0027d only get checked if there is a BCP fragment module with image_name:\"art\", but that\u0027s no different from here. That seems like a theoretical issue only - I don\u0027t know in what sort of build there wouldn\u0027t be such a BCP fragment module and where the value of ART_APEX_JARS still matters.)",
+      "parentUuid": "91c9ff14_3be5d67f",
+      "range": {
+        "startLine": 230,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 8
+      },
+      "revId": "8018e50ddb141dea7891918c4178a7a394a788d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
