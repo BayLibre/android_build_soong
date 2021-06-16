@@ -34,6 +34,24 @@
       "parentUuid": "21b8e778_176aec58",
       "revId": "c113e3cbe741bc6a70a6624dfb1597434e2f4642",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f4ab2ef_8a5d4386",
+        "filename": "cc/stl.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-06-16T18:47:07Z",
+      "side": 1,
+      "message": "It does if the shared library has a public symbol that is defined by the static library because the thing being linked will end up with an undefined ref to the shared lib instead of getting the symbol from the static lib. It looks like we were smart enough to build libandroid_support with hidden visibility though, so not a problem in this case.",
+      "parentUuid": "0d49eebf_5d9a0799",
+      "revId": "c113e3cbe741bc6a70a6624dfb1597434e2f4642",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
