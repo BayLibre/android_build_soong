@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c39c55d2_1d8faf43",
+        "filename": "cc/cc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1360,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-16T14:44:49Z",
+      "side": 1,
+      "message": "See e.g cc.go:1395. Logic like that makes me either duplicate CanUseSdk or have both UseSdk and CanUseSdk() or inline UseSdk() everywhere. I thought the last solution is the best, but I don\u0027t have that strong feelings about it\n\n(I do have strong feelings about not mutating Min_sdk_version)",
+      "parentUuid": "5e714f44_16cb61f6",
+      "range": {
+        "startLine": 1360,
+        "startChar": 30,
+        "endLine": 1360,
+        "endChar": 36
+      },
+      "revId": "466535d07b4e39e918cbeac4d13730d430fcc5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bde81283_f4756910",
         "filename": "cc/cc.go",
         "patchSetId": 7
