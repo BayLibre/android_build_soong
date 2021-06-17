@@ -177,6 +177,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2354815_56ff4b66",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-17T11:19:44Z",
+      "side": 1,
+      "message": "Yes, but isn\u0027t it generally better to use the most specialised/restrictive type we can? [I don\u0027t consider this blocking anyhow.]",
+      "parentUuid": "1b1c31b5_62ccb0a1",
+      "range": {
+        "startLine": 161,
+        "startChar": 47,
+        "endLine": 161,
+        "endChar": 60
+      },
+      "revId": "6eecbf3fe6005510177d6be9937b01fa5c239e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ae5ef69_4af8886e",

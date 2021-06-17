@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3387837_bbeacaff",
+        "filename": "android/deapexer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-17T11:19:44Z",
+      "side": 1,
+      "message": "Thanks for the clarifications.\n\nMaybe there\u0027s some use keeping track of the exported files, but I agree it would be much clearer if the tag was replaced by simply the relative paths in the APEX.",
+      "parentUuid": "5447bcb8_66d97643",
+      "range": {
+        "startLine": 27,
+        "startChar": 47,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "c1a0b2c771a4d53503768249eb038a4f119b5de2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e29478d1_5bb487ae",
