@@ -164,6 +164,7 @@ func TestBootclasspathFragment_Coverage(t *testing.T) {
 		prepareForTestWithBootclasspathFragment,
 		PrepareForTestWithJavaSdkLibraryFiles,
 		FixtureWithLastReleaseApis("mysdklibrary", "mycoveragestubs"),
+		FixtureConfigureUpdatableBootJars("someapex:mybootlib"),
 		prepareWithBp,
 	)
 
@@ -186,6 +187,7 @@ func TestBootclasspathFragment_StubLibs(t *testing.T) {
 		prepareForTestWithBootclasspathFragment,
 		PrepareForTestWithJavaSdkLibraryFiles,
 		FixtureWithLastReleaseApis("mysdklibrary", "myothersdklibrary", "mycoreplatform"),
+		FixtureConfigureUpdatableBootJars("someapex:mysdklibrary"),
 	).RunTestWithBp(t, `
 		bootclasspath_fragment {
 			name: "myfragment",
