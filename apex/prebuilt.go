@@ -545,8 +545,7 @@ func createDeapexerModuleIfNeeded(ctx android.TopDownMutatorContext, deapexerNam
 
 	// Compute the deapexer properties from the transitive dependencies of this module.
 	commonModules := []string{}
-	exportedFilesByKey := map[string]string{}
-	requiringModulesByKey := map[string]android.Module{}
+	exportedFiles := []string{}
 	ctx.WalkDeps(func(child, parent android.Module) bool {
 		tag := ctx.OtherModuleDependencyTag(child)
 
@@ -555,16 +554,7 @@ func createDeapexerModuleIfNeeded(ctx android.TopDownMutatorContext, deapexerNam
 			commonModules = append(commonModules, name)
 
 			requiredFiles := child.(android.RequiredFilesFromPrebuiltApex).RequiredFilesFromPrebuiltApex(ctx)
-			for k, v := range requiredFiles {
-				if f, ok := exportedFilesByKey[k]; ok && f != v {
-					otherModule := requiringModulesByKey[k]
-					ctx.ModuleErrorf("inconsistent paths have been requested for key %q, %s requires path %s while %s requires path %s",
-						k, child, v, otherModule, f)
-					continue
-				}
-				exportedFilesByKey[k] = v
-				requiringModulesByKey[k] = child
-			}
+			exportedFiles = append(exportedFiles, requiredFiles...)
 
 			// Make sure to visit the children of the bootclasspath_fragment.
 			return true
@@ -581,12 +571,7 @@ func createDeapexerModuleIfNeeded(ctx android.TopDownMutatorContext, deapexerNam
 	}
 
 	// Populate the exported files property in a fixed order.
-	for _, tag := range android.SortedStringKeys(exportedFilesByKey) {
-		deapexerProperties.ExportedFiles = append(deapexerProperties.ExportedFiles, DeapexerExportedFile{
-			Tag:  tag,
-			Path: exportedFilesByKey[tag],
-		})
-	}
+	deapexerProperties.ExportedFiles = android.SortedUniqueStrings(exportedFiles)
 
 	props := struct {
 		Name          *string
