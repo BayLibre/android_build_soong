@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3c235bd_f61c0f98",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-06-17T10:51:32Z",
+      "side": 1,
+      "message": "Looks good but can you expand on the CL description? It is a little ambiguous",
+      "revId": "9731a87e909e2b5c5f0e11c6c1f428378ec82e75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
