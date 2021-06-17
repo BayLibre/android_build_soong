@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1df3429_99f34be9",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-17T13:38:39Z",
+      "side": 1,
+      "message": "Maybe for OutputFiles but not here - the whole thing is used in the field DeapexerExportedFile.Tag on line 589 below.\n\nAlso \"ByKey\" seems pointless - every map has a key.\n\nBut whatever, it doesn\u0027t matter much.",
+      "parentUuid": "19b9424f_aacd9cdb",
+      "range": {
+        "startLine": 544,
+        "startChar": 14,
+        "endLine": 544,
+        "endChar": 19
+      },
+      "revId": "5302ded8e850d239aec01290fdf120375f3102f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14919829_b1be031b",
