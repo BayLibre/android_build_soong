@@ -70,6 +70,30 @@
       },
       "revId": "2c891873d64171ed93b86e81b703ed913068a0fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "835f9e0c_c81648cd",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3386,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-17T10:17:17Z",
+      "side": 0,
+      "message": "This is consistent! What happens here is that the ndk_* modules set AlwaysSdk to true, and then sdkMutator comes and in cc/sdk.go:39, only creates the \"sdk\" variation.\n\nSo in effect, what this change does is that it makes it so that a module is considered to be an SDK variant when IsSdkVariant is set and not when IsSdkVariant is set OR AlwaysSdk is true and it does that by setting IsSdkVariant to true in the AlwaysSdk/\"sdk\" variant case.",
+      "parentUuid": "3f6cda2d_f49f0408",
+      "range": {
+        "startLine": 3386,
+        "startChar": 33,
+        "endLine": 3386,
+        "endChar": 50
+      },
+      "revId": "2c891873d64171ed93b86e81b703ed913068a0fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
