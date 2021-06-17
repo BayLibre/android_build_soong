@@ -128,3 +128,13 @@ type RequiredFilesFromPrebuiltApex interface {
 	// can then be retrieved using the PrebuiltExportPath(name, tag) method.
 	RequiredFilesFromPrebuiltApex(ctx BaseModuleContext) map[string]string
 }
+
+// Marker interface that identifies dependencies on modules that may require files from a prebuilt
+// apex.
+type RequiresFilesFromPrebuiltApexTag interface {
+	blueprint.DependencyTag
+
+	// RequiresFilesFromPrebuiltApex returns true if the dependency requires files from a prebuilt
+	// apex, false otherwise.
+	RequiresFilesFromPrebuiltApex() bool
+}
