@@ -110,6 +110,30 @@
       },
       "revId": "fee0f5739e8196e9b01b215e5c8f32a2af8a8ff4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dcb7896_a852d5e8",
+        "filename": "cc/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-17T18:20:20Z",
+      "side": 1,
+      "message": "I think that\u0027s fine, and preferable to creating a new module type.",
+      "parentUuid": "e7b1a005_5fa34162",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 59
+      },
+      "revId": "fee0f5739e8196e9b01b215e5c8f32a2af8a8ff4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
