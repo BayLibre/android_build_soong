@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3d490b1_2c0d53bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-17T07:33:45Z",
+      "side": 1,
+      "message": "I broke this out from aosp/1738334 since that one is based on a change that\u0027s more complicated than I expected.",
+      "revId": "2063a0d7b8b7e7da495ea50d3998d11480a2d3b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
