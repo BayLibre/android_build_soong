@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25941012_43e64b4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T22:13:55Z",
+      "side": 1,
+      "message": "After fixing the issues you raised in the previous change I also had to fix a lot of tests in this change as it now enforces that every library that is configured in the bootclasspath and belongs to an apex must now have a matching bootclasspath_fragment. As you can see by the number of tests that I have to change this catches issues (in the tests at least) which https://r.android.com/1740314 does not.",
+      "revId": "fd52e4f2538c11c2f317e881fec05b6cd91cc834",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
