@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8915383_6a21eaee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T09:21:58Z",
+      "side": 1,
+      "message": "PTAL. Had to fix issue in downstream branch.",
+      "revId": "e521881bd45de0306bc2e80d5c746ae361d6ffe2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
