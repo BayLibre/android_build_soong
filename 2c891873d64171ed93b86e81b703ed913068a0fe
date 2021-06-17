@@ -46,6 +46,30 @@
       },
       "revId": "2c891873d64171ed93b86e81b703ed913068a0fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f6cda2d_f49f0408",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3386,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-17T09:45:58Z",
+      "side": 0,
+      "message": "I\u0027m trying to figure out if there\u0027s a case where IsSdkVariant is false, but c.AlwaysSdk() is true, and so this change will expose an inconsistency. So far, ndk_* module factories do set this to true.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cc/ndk_prebuilt.go;l\u003d78;drc\u003dmaster\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cc/ndk_prebuilt.go;l\u003d130;drc\u003dmaster\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cc/ndk_prebuilt.go;l\u003d149;drc\u003dmaster\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cc/ndk_prebuilt.go;l\u003d130;drc\u003dmaster\n\nand these module factories don\u0027t seem to be mark their modules as IsSdkVariant either.",
+      "parentUuid": "8e1fda0d_aa345cc5",
+      "range": {
+        "startLine": 3386,
+        "startChar": 33,
+        "endLine": 3386,
+        "endChar": 50
+      },
+      "revId": "2c891873d64171ed93b86e81b703ed913068a0fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

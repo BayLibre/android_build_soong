@@ -63,6 +63,30 @@
       },
       "revId": "2063a0d7b8b7e7da495ea50d3998d11480a2d3b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49274bcb_962fb982",
+        "filename": "cc/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-17T09:45:58Z",
+      "side": 1,
+      "message": "Ok, this looks consistent based on lines 41 and 48. But I do wonder why it hadn\u0027t caused issues before.",
+      "parentUuid": "dc2109b8_b1a3bb2e",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 54
+      },
+      "revId": "2063a0d7b8b7e7da495ea50d3998d11480a2d3b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
