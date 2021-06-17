@@ -129,10 +129,9 @@ test_device/dex_artjars/android/apex/art_boot_images/javalib/arm64/boot-quuz.vde
 func TestBootclasspathFragments_FragmentDependency(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForTestWithBootclasspathFragment,
-		// Configure some libraries in the art bootclasspath_fragment and platform_bootclasspath.
-		java.FixtureConfigureBootJars("com.android.art:baz", "com.android.art:quuz", "platform:foo", "platform:bar"),
+		java.FixtureConfigureBootJars("com.android.art:baz", "com.android.art:quuz"),
+		java.FixtureConfigureUpdatableBootJars("platform:foo", "platform:bar"),
 		prepareForTestWithArtApex,
-
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		java.FixtureWithLastReleaseApis("foo", "baz"),
 	).RunTestWithBp(t, `
@@ -628,7 +627,7 @@ func TestBootclasspathFragmentContentsNoName(t *testing.T) {
 		prepareForTestWithBootclasspathFragment,
 		prepareForTestWithMyapex,
 		// Configure bootclasspath jars to ensure that hidden API encoding is performed on them.
-		java.FixtureConfigureBootJars("myapex:foo", "myapex:bar"),
+		java.FixtureConfigureUpdatableBootJars("myapex:foo", "myapex:bar"),
 		// Make sure that the frameworks/base/Android.bp file exists as otherwise hidden API encoding
 		// is disabled.
 		android.FixtureAddTextFile("frameworks/base/Android.bp", ""),
@@ -879,7 +878,8 @@ func TestBootclasspathFragment_AndroidNonUpdatable(t *testing.T) {
 		prepareForTestWithArtApex,
 		prepareForTestWithMyapex,
 		// Configure bootclasspath jars to ensure that hidden API encoding is performed on them.
-		java.FixtureConfigureBootJars("com.android.art:baz", "com.android.art:quuz", "myapex:foo", "myapex:bar"),
+		java.FixtureConfigureBootJars("com.android.art:baz", "com.android.art:quuz"),
+		java.FixtureConfigureUpdatableBootJars("myapex:foo", "myapex:bar"),
 		// Make sure that the frameworks/base/Android.bp file exists as otherwise hidden API encoding
 		// is disabled.
 		android.FixtureAddTextFile("frameworks/base/Android.bp", ""),
@@ -1048,7 +1048,8 @@ func TestBootclasspathFragment_AndroidNonUpdatable_AlwaysUsePrebuiltSdks(t *test
 		prepareForTestWithArtApex,
 		prepareForTestWithMyapex,
 		// Configure bootclasspath jars to ensure that hidden API encoding is performed on them.
-		java.FixtureConfigureBootJars("com.android.art:baz", "com.android.art:quuz", "myapex:foo", "myapex:bar"),
+		java.FixtureConfigureBootJars("com.android.art:baz", "com.android.art:quuz"),
+		java.FixtureConfigureUpdatableBootJars("myapex:foo", "myapex:bar"),
 		// Make sure that the frameworks/base/Android.bp file exists as otherwise hidden API encoding
 		// is disabled.
 		android.FixtureAddTextFile("frameworks/base/Android.bp", ""),

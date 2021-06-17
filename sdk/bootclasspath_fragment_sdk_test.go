@@ -551,6 +551,7 @@ func TestSnapshotWithBootClasspathFragment_Fragments(t *testing.T) {
 		prepareForSdkTestWithJava,
 		java.PrepareForTestWithJavaDefaultModules,
 		java.PrepareForTestWithJavaSdkLibraryFiles,
+		java.FixtureConfigureUpdatableBootJars("someapex:mysdklibrary", "myotherapex:myotherlib"),
 		java.FixtureWithLastReleaseApis("mysdklibrary", "myothersdklibrary"),
 		prepareForSdkTestWithApex,
 

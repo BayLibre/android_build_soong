@@ -39,7 +39,7 @@ func TestPlatformBootclasspath_Fragments(t *testing.T) {
 		prepareForTestWithMyapex,
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		java.FixtureWithLastReleaseApis("foo"),
-		java.FixtureConfigureBootJars("myapex:bar"),
+		java.FixtureConfigureUpdatableBootJars("myapex:bar"),
 		android.FixtureWithRootAndroidBp(`
 			platform_bootclasspath {
 				name: "platform-bootclasspath",
@@ -172,7 +172,7 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 		prepareForTestWithArtApex,
 		prepareForTestWithMyapex,
 		// Configure some libraries in the art and framework boot images.
-		java.FixtureConfigureBootJars("com.android.art:baz", "com.android.art:quuz", "platform:foo"),
+		java.FixtureConfigureBootJars("platform:foo", "com.android.art:baz", "com.android.art:quuz"),
 		java.FixtureConfigureUpdatableBootJars("myapex:bar"),
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		java.FixtureWithLastReleaseApis("foo"),
@@ -194,6 +194,7 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 
 		bootclasspath_fragment {
 			name: "art-bootclasspath-fragment",
+			image_name: "art",
 			apex_available: [
 				"com.android.art",
 			],
@@ -210,6 +211,7 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 			],
 			srcs: ["b.java"],
 			installable: true,
+			permitted_packages: ["baz"],
 		}
 
 		// Add a java_import that is not preferred and so won't have an appropriate apex variant created
@@ -229,6 +231,7 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 			],
 			srcs: ["b.java"],
 			installable: true,
+			permitted_packages: ["quuz"],
 		}
 
 		apex {
@@ -283,9 +286,10 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 	)
 
 	java.CheckPlatformBootclasspathModules(t, result, "myplatform-bootclasspath", []string{
-		// The configured contents of BootJars.
 		"com.android.art:baz",
 		"com.android.art:quuz",
+
+		// The configured contents of BootJars.
 		"platform:foo",
 
 		// The configured contents of UpdatableBootJars.
@@ -308,9 +312,10 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 		// Needed for generating the boot image.
 		`platform:dex2oatd`,
 
-		// The configured contents of BootJars.
 		`com.android.art:baz`,
 		`com.android.art:quuz`,
+
+		// The configured contents of BootJars.
 		`platform:foo`,
 
 		// The configured contents of UpdatableBootJars.

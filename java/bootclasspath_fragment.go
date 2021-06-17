@@ -542,7 +542,7 @@ func (b *BootclasspathFragmentModule) configuredJars(ctx android.ModuleContext) 
 	// Only create configs for updatable boot jars. Non-updatable boot jars must be part of the
 	// platform_bootclasspath's classpath proto config to guarantee that they come before any
 	// updatable jars at runtime.
-	jars := global.UpdatableBootJars.Filter(possibleUpdatableModules)
+	jars, unknown := global.UpdatableBootJars.Filter(b.properties.Contents)
 
 	// TODO(satayev): for apex_test we want to include all contents unconditionally to classpaths
 	// config. However, any test specific jars would not be present in UpdatableBootJars. Instead,
@@ -550,6 +550,15 @@ func (b *BootclasspathFragmentModule) configuredJars(ctx android.ModuleContext) 
 	// This is an exception to support end-to-end test for SdkExtensions, until such support exists.
 	if android.InList("test_framework-sdkextensions", possibleUpdatableModules) {
 		jars = jars.Append("com.android.sdkext", "test_framework-sdkextensions")
+	} else {
+		unknown = android.RemoveListFromList(unknown, b.properties.Coverage.Contents)
+		_, unknown = android.RemoveFromList("core-icu4j", unknown)
+		if !android.IsModuleInVersionedSdk(ctx.Module()) {
+			// Make sure that all contents are actually declared in make.
+			if len(unknown) > 0 {
+				ctx.ModuleErrorf("%s in contents must also be declared in PRODUCT_UPDATABLE_BOOT_JARS", unknown)
+			}
+		}
 	}
 	return jars
 }
