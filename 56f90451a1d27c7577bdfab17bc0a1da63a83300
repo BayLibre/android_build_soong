@@ -129,6 +129,30 @@
       },
       "revId": "56f90451a1d27c7577bdfab17bc0a1da63a83300",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa6a4df9_e895545e",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T13:17:41Z",
+      "side": 1,
+      "message": "Sorry, I missed the enforcement in apex.go.\n\nSo, setting generate_classpaths_proto to true might be useful for development but it seems as though it will cause problems at runtime, because AIUI you are adding this so you can set it to false for the i18n fragment.\n\nWhat would the consequence be if you did not set \"generate_classpaths_proto\u003dfalse\" on the i18n fragment?",
+      "parentUuid": "36966f2a_3e2a462f",
+      "range": {
+        "startLine": 50,
+        "startChar": 58,
+        "endLine": 50,
+        "endChar": 71
+      },
+      "revId": "56f90451a1d27c7577bdfab17bc0a1da63a83300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
