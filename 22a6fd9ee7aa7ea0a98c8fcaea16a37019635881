@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8be598d_ab6af179",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-17T06:53:41Z",
+      "side": 1,
+      "message": "nit: comment copy-paste, please update",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 48
+      },
+      "revId": "22a6fd9ee7aa7ea0a98c8fcaea16a37019635881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "139d32b6_47f657cf",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-17T06:53:41Z",
+      "side": 1,
+      "message": "Why do you call this \"bp2build\"? It looks like it\u0027s more like a generic module-name-to-label map, which is useful in its own right.",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 40
+      },
+      "revId": "22a6fd9ee7aa7ea0a98c8fcaea16a37019635881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d33eb29_e491cfd5",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-17T06:53:41Z",
+      "side": 1,
+      "message": "This doesn\u0027t look like a metric, does it? \n\nWhich means: either rename the struct to something that actually represents what\u0027s happening or create a new struct. Which one is better depends on where the struct is plumbed, which I don\u0027t know.",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 33
+      },
+      "revId": "22a6fd9ee7aa7ea0a98c8fcaea16a37019635881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1946725_3b669668",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-17T06:53:41Z",
+      "side": 1,
+      "message": "You probably want to delete this? :)",
+      "range": {
+        "startLine": 396,
+        "startChar": 2,
+        "endLine": 396,
+        "endChar": 5
+      },
+      "revId": "22a6fd9ee7aa7ea0a98c8fcaea16a37019635881",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
