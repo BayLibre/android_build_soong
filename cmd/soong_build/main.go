@@ -393,7 +393,7 @@ func getPathsToIgnoredBuildFiles(topDir string, generatedRoot string, srcDirBaze
 			// BUILD file clash resolution happens later in the symlink forest creation
 			continue
 		}
-		fmt.Fprintf(os.Stderr, "Ignoring existing BUILD file: %s\n", srcDirBazelFileRelativePath)
+		// fmt.Fprintf(os.Stderr, "Ignoring existing BUILD file: %s\n", srcDirBazelFileRelativePath)
 		paths = append(paths, srcDirBazelFileRelativePath)
 	}
 

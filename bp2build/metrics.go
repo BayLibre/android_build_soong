@@ -2,6 +2,7 @@ package bp2build
 
 import (
 	"android/soong/android"
+	"android/soong/bazel"
 	"fmt"
 )
 
@@ -16,6 +17,25 @@ type CodegenMetrics struct {
 
 	// Total number of handcrafted targets
 	handCraftedTargetCount int
+
+	// A map from the original module name to the generated/handcrafted Bazel label.
+	NameToLabelMap map[string]string
+}
+
+// Log an entry of module name -> Bazel target label.
+func (metrics CodegenMetrics) AddNameToLabelEntry(name, label string) {
+	// The module name may be prefixed with bazel.BazelTargetModuleNamePrefix if
+	// generated from bp2build.
+	name = bazel.StripNamePrefix(name)
+	if existingLabel, ok := metrics.NameToLabelMap[name]; ok {
+		panic(fmt.Errorf(
+			"Module '%s' maps to more than one Bazel target label: %s, %s. "+
+				"This shouldn't happen. It probably indicates a bug with the bp2build internals.",
+			name,
+			existingLabel,
+			label))
+	}
+	metrics.NameToLabelMap[name] = label
 }
 
 // Print the codegen metrics to stdout.
