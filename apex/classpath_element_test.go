@@ -58,6 +58,7 @@ func TestCreateClasspathElements(t *testing.T) {
 		}),
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		java.FixtureWithLastReleaseApis("foo", "othersdklibrary"),
+		java.FixtureConfigureUpdatableBootJars("com.android.art:baz", "com.android.art:quuz", "myapex:bar", "myapex:othersdklibrary"),
 		android.FixtureWithRootAndroidBp(`
 		apex {
 			name: "com.android.art",
@@ -95,6 +96,7 @@ func TestCreateClasspathElements(t *testing.T) {
 			],
 			srcs: ["b.java"],
 			installable: true,
+			permitted_packages: ["baz"],
 		}
 
 		java_library {
@@ -104,6 +106,7 @@ func TestCreateClasspathElements(t *testing.T) {
 			],
 			srcs: ["b.java"],
 			installable: true,
+			permitted_packages: ["quuz"],
 		}
 
 		apex {
@@ -151,10 +154,12 @@ func TestCreateClasspathElements(t *testing.T) {
 			name: "othersdklibrary",
 			srcs: ["b.java"],
 			shared_library: false,
+			compile_dex: true,
 			apex_available: [
 				"com.android.art",
 				"myapex",
 			],
+			permitted_packages: ["other.sdk.library"],
 		}
 
 		bootclasspath_fragment {

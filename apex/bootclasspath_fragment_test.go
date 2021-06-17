@@ -129,9 +129,9 @@ func TestBootclasspathFragments_FragmentDependency(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForTestWithBootclasspathFragment,
 		// Configure some libraries in the art bootclasspath_fragment and platform_bootclasspath.
-		java.FixtureConfigureBootJars("com.android.art:baz", "com.android.art:quuz", "platform:foo", "platform:bar"),
+		java.FixtureConfigureBootJars("com.android.art:baz", "com.android.art:quuz"),
+		java.FixtureConfigureUpdatableBootJars("otherapex:foo", "otherapex:bar"),
 		prepareForTestWithArtApex,
-
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		java.FixtureWithLastReleaseApis("foo", "baz"),
 	).RunTestWithBp(t, `
