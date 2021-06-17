@@ -166,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80a5f38e_c17cbb68",
+        "filename": "apex/classpath_element_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T20:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e62cf57d_3a09fcda",
+      "range": {
+        "startLine": 190,
+        "startChar": 5,
+        "endLine": 192,
+        "endChar": 58
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5a75dc3_a931d99c",
@@ -179,6 +203,30 @@
       "writtenOn": "2021-06-17T15:36:22Z",
       "side": 1,
       "message": "android.AssertDeepEquals?",
+      "range": {
+        "startLine": 194,
+        "startChar": 1,
+        "endLine": 198,
+        "endChar": 2
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5479e6bc_3ed9e169",
+        "filename": "apex/classpath_element_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T20:28:03Z",
+      "side": 1,
+      "message": "AssertDeepEquals uses %#v to format the values which does not work well for this.",
+      "parentUuid": "c5a75dc3_a931d99c",
       "range": {
         "startLine": 194,
         "startChar": 1,
@@ -212,6 +260,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18ebeea6_ff4d0e24",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T20:28:03Z",
+      "side": 1,
+      "message": "Currently it is only needed for bootclasspath but there is nothing preventing it being used for other classpaths.",
+      "parentUuid": "05229362_37321b80",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a68d5ade_f0a8324c",
@@ -225,6 +297,30 @@
       "writtenOn": "2021-06-17T15:36:22Z",
       "side": 1,
       "message": "is there a need for a new context interface?",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 28
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fb62ea1_92897657",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T20:28:03Z",
+      "side": 1,
+      "message": "Yes. I need this for testing. There is no way currently to create a BaseModuleContext for testing.",
+      "parentUuid": "a68d5ade_f0a8324c",
       "range": {
         "startLine": 74,
         "startChar": 5,
@@ -258,6 +354,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "025301d9_689eac28",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T20:28:03Z",
+      "side": 1,
+      "message": "It is determined by whether you provide it with a list of all the libraries in the classpath or not.",
+      "parentUuid": "0bdd7cda_cd4b6d3f",
+      "range": {
+        "startLine": 80,
+        "startChar": 75,
+        "endLine": 81,
+        "endChar": 23
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "833a4ce2_d1637d5f",
@@ -271,6 +391,30 @@
       "writtenOn": "2021-06-17T15:36:22Z",
       "side": 1,
       "message": "or",
+      "range": {
+        "startLine": 89,
+        "startChar": 38,
+        "endLine": 89,
+        "endChar": 40
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d8f77fe_9e7f77ca",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T20:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "833a4ce2_d1637d5f",
       "range": {
         "startLine": 89,
         "startChar": 38,
@@ -327,6 +471,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c31f565f_f4bed187",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T20:28:03Z",
+      "side": 1,
+      "message": "If it is provided to this function then it is assumed to be in the classpath. I\u0027ve tried to clarify that here.",
+      "parentUuid": "d8d524a5_d2b8078b",
+      "range": {
+        "startLine": 90,
+        "startChar": 20,
+        "endLine": 90,
+        "endChar": 73
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2855d4d_405c6ce0",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T20:28:03Z",
+      "side": 1,
+      "message": "This is within the context of the fragments provided to this function. Tried to clarify that.",
+      "parentUuid": "fc85dc9f_eb023cc3",
+      "range": {
+        "startLine": 90,
+        "startChar": 3,
+        "endLine": 90,
+        "endChar": 18
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c210b302_2d5821e3",
@@ -350,6 +542,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a68b54e_a7206d4b",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T20:28:03Z",
+      "side": 1,
+      "message": "Legacy. Before you made your changes.",
+      "parentUuid": "c210b302_2d5821e3",
+      "range": {
+        "startLine": 91,
+        "startChar": 26,
+        "endLine": 91,
+        "endChar": 69
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a477b18_6b52c507",
@@ -363,6 +579,30 @@
       "writtenOn": "2021-06-17T15:36:22Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 102,
+        "startChar": 4,
+        "endLine": 102,
+        "endChar": 23
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc358168_74e03c28",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T20:28:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a477b18_6b52c507",
       "range": {
         "startLine": 102,
         "startChar": 4,
@@ -398,6 +638,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed2cd83a_da9c82c2",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T20:28:03Z",
+      "side": 1,
+      "message": "Order matters for consistency. For each library in a fragment we have are least two separate places where it is mentioned, the bootclasspath_fragment and the configuration (three if you include the prebuilt_bootclasspath_fragment). If the libraries are in different orders in each of those places then it becomes difficult to reason about them. You have to find out which order actually matters. It also could cause problems if the libraries are processed in different orders in each place.\n\nI\u0027ve added some more documentation and an example to try and explain it better.",
+      "parentUuid": "20d9de47_ec07b905",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 10
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d75232c3_5c4a1a96",
         "filename": "java/classpath_element.go",
         "patchSetId": 1
@@ -409,6 +673,30 @@
       "writtenOn": "2021-06-17T15:36:22Z",
       "side": 1,
       "message": "Does this hold actual apex name, e.g. com.android.art, or merged variant name?",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 15
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c8377d3_00e77f58",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T20:28:03Z",
+      "side": 1,
+      "message": "The actual apex name.",
+      "parentUuid": "d75232c3_5c4a1a96",
       "range": {
         "startLine": 109,
         "startChar": 1,
@@ -436,6 +724,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4a1de93_66c69bb1",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T20:28:03Z",
+      "side": 1,
+      "message": "I\u0027m not sure that moving it into a method will help improve readability much as this block of code has two exits, back to skipLibrary (or return) and fall through to the following code. That will complicate the method, require two return values and would I think make it harder to follow.",
+      "parentUuid": "a2eedd87_d90ed79e",
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ff5826e_8de376bc",
@@ -459,6 +765,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b9d8afc_20e66c29",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T20:28:03Z",
+      "side": 1,
+      "message": "Stopping immediately on the first error means that if you have multiple errors then you have to run, fix, repeat. Carrying on and reporting additional errors can make it easier to fix issues. The downside is that additional errors may only arise because of this error.\n\nI think in this case carrying on is better. It helped me while testing.",
+      "parentUuid": "1ff5826e_8de376bc",
+      "range": {
+        "startLine": 147,
+        "startChar": 98,
+        "endLine": 150,
+        "endChar": 26
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f27fe0b7_cf8f9904",
@@ -472,6 +802,30 @@
       "writtenOn": "2021-06-17T15:36:22Z",
       "side": 1,
       "message": "which ones are missing?",
+      "range": {
+        "startLine": 153,
+        "startChar": 5,
+        "endLine": 154,
+        "endChar": 62
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a4f435c_4e3d4ace",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T20:28:03Z",
+      "side": 1,
+      "message": "Legacy and misleading comment, removed and replaced with proper error.",
+      "parentUuid": "f27fe0b7_cf8f9904",
       "range": {
         "startLine": 153,
         "startChar": 5,
