@@ -129,11 +129,12 @@ func TestBootclasspathFragments_FragmentDependency(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForTestWithBootclasspathFragment,
 		// Configure some libraries in the art bootclasspath_fragment and platform_bootclasspath.
-		java.FixtureConfigureBootJars("com.android.art:baz", "com.android.art:quuz", "platform:foo", "platform:bar"),
+		java.FixtureConfigureBootJars("com.android.art:baz", "com.android.art:quuz"),
 		prepareForTestWithArtApex,
 
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		java.FixtureWithLastReleaseApis("foo", "baz"),
+		java.FixtureConfigureUpdatableBootJars("otherapex:foo", "otherapex:bar"),
 	).RunTestWithBp(t, `
 		java_sdk_library {
 			name: "foo",
@@ -626,7 +627,7 @@ func TestBootclasspathFragmentContentsNoName(t *testing.T) {
 		prepareForTestWithBootclasspathFragment,
 		prepareForTestWithMyapex,
 		// Configure bootclasspath jars to ensure that hidden API encoding is performed on them.
-		java.FixtureConfigureBootJars("myapex:foo", "myapex:bar"),
+		java.FixtureConfigureUpdatableBootJars("myapex:foo", "myapex:bar"),
 		// Make sure that the frameworks/base/Android.bp file exists as otherwise hidden API encoding
 		// is disabled.
 		android.FixtureAddTextFile("frameworks/base/Android.bp", ""),
@@ -716,6 +717,50 @@ func TestBootclasspathFragmentContentsNoName(t *testing.T) {
 
 	checkFragmentExportedDexJar("foo", "out/soong/.intermediates/mybootclasspathfragment/android_common_apex10000/hiddenapi-modular/encoded/foo.jar")
 	checkFragmentExportedDexJar("bar", "out/soong/.intermediates/mybootclasspathfragment/android_common_apex10000/hiddenapi-modular/encoded/bar.jar")
+}
+
+func TestBootClasspathFragmentWithContentNotInMake(t *testing.T) {
+	android.GroupFixturePreparers(
+		prepareForTestWithBootclasspathFragment,
+		prepareForTestWithMyapex,
+	).
+		ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
+			`in contents must also be declared in PRODUCT_UPDATABLE_BOOT_JARS`)).
+		RunTestWithBp(t, `
+			apex {
+				name: "myapex",
+				key: "myapex.key",
+				bootclasspath_fragments: [
+					"mybootclasspathfragment",
+				],
+				updatable: false,
+			}
+
+			apex_key {
+				name: "myapex.key",
+				public_key: "testkey.avbpubkey",
+				private_key: "testkey.pem",
+			}
+
+			java_library {
+				name: "foo",
+				srcs: ["b.java"],
+				installable: true,
+				apex_available: [
+					"myapex",
+				],
+			}
+
+			bootclasspath_fragment {
+				name: "mybootclasspathfragment",
+				contents: [
+					"foo",
+				],
+				apex_available: [
+					"myapex",
+				],
+			}
+		`)
 }
 
 // TODO(b/177892522) - add test for host apex.
