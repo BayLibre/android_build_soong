@@ -22,6 +22,30 @@
       },
       "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e89377fb_1e40cd6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T13:20:04Z",
+      "side": 1,
+      "message": "The rename won\u0027t affect this as I have to look at the whole bootclasspath irrespective of what variable are. However, making a significant change in AOSP but not in sc-dev within the next couple of weeks will cause me problems.",
+      "parentUuid": "036e4cba_9f08242a",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
