@@ -117,7 +117,7 @@ def init(g, handle):
 		in: `
 ifdef PRODUCT_NAME
 $(call inherit-product, part.mk)
-else
+else # Comment
 $(call inherit-product, $(LOCAL_PATH)/part.mk)
 endif
 `,
@@ -129,6 +129,7 @@ def init(g, handle):
   if g.get("PRODUCT_NAME") != None:
     rblf.inherit(handle, "part", _part_init)
   else:
+    # Comment
     rblf.inherit(handle, "./part", _part_init)
 `,
 	},
@@ -288,10 +289,10 @@ def init(g, handle):
 		desc:   "else if",
 		mkname: "product.mk",
 		in: `
-	ifdef  PRODUCT_NAME
-	  PRODUCT_NAME = gizmo
-	else ifndef PRODUCT_PACKAGES
-	endif
+ifdef  PRODUCT_NAME
+  PRODUCT_NAME = gizmo
+else ifndef PRODUCT_PACKAGES   # Comment
+endif
 	`,
 		expected: `load("//build/make/core:product_config.rbc", "rblf")
 
@@ -300,6 +301,7 @@ def init(g, handle):
   if g.get("PRODUCT_NAME") != None:
     cfg["PRODUCT_NAME"] = "gizmo"
   elif not g.get("PRODUCT_PACKAGES") != None:
+    # Comment
     pass
 `,
 	},
@@ -391,7 +393,7 @@ def init(g, handle):
 		desc:   "ifeq",
 		mkname: "product.mk",
 		in: `
-ifeq (aosp, $(TARGET_PRODUCT))
+ifeq (aosp, $(TARGET_PRODUCT)) # Comment
 else ifneq (, $(TARGET_PRODUCT))
 endif
 `,
@@ -400,6 +402,7 @@ endif
 def init(g, handle):
   cfg = rblf.cfg(handle)
   if "aosp" == g["TARGET_PRODUCT"]:
+    # Comment
     pass
   elif g["TARGET_PRODUCT"]:
     pass
