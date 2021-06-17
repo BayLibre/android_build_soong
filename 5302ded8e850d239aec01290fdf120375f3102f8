@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c13a47_c7def6cc",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T13:45:54Z",
+      "side": 1,
+      "message": "The DeapexerExportedFile.Tag is also the key. ByKey is a little pointless. I\u0027ll clean it up in a follow up CL.",
+      "parentUuid": "f1df3429_99f34be9",
+      "range": {
+        "startLine": 544,
+        "startChar": 14,
+        "endLine": 544,
+        "endChar": 19
+      },
+      "revId": "5302ded8e850d239aec01290fdf120375f3102f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14919829_b1be031b",
