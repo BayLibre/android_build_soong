@@ -237,10 +237,18 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 		apex {
 			name: "myapex",
 			key: "myapex.key",
-			java_libs: [
+			bootclasspath_fragments: ["myapex-bootclasspath-fragment"],
+			updatable: false,
+		}
+
+		bootclasspath_fragment {
+			name: "myapex-bootclasspath-fragment",
+			apex_available: [
+				"myapex",
+			],
+			contents: [
 				"bar",
 			],
-			updatable: false,
 		}
 
 		apex_key {
@@ -267,6 +275,10 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 
 			fragments: [
 				{
+					apex: "myapex",
+					module: "myapex-bootclasspath-fragment",
+				},
+				{
 					apex: "otherapex",
 					module: "other-bootclasspath-fragment",
 				},
@@ -286,6 +298,7 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 	})
 
 	java.CheckPlatformBootclasspathFragments(t, result, "myplatform-bootclasspath", []string{
+		`myapex:myapex-bootclasspath-fragment`,
 		`otherapex:other-bootclasspath-fragment`,
 	})
 
@@ -309,6 +322,7 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 		`otherapex:quuz`,
 
 		// The fragments.
+		`myapex:myapex-bootclasspath-fragment`,
 		`otherapex:other-bootclasspath-fragment`,
 	})
 }
@@ -413,6 +427,12 @@ func TestPlatformBootclasspath_AlwaysUsePrebuiltSdks(t *testing.T) {
 
 		platform_bootclasspath {
 			name: "myplatform-bootclasspath",
+			fragments: [
+				{
+					apex: "myapex",
+					module:"mybootclasspath-fragment",
+				},
+			],
 		}
 `,
 	)
@@ -434,7 +454,7 @@ func TestPlatformBootclasspath_AlwaysUsePrebuiltSdks(t *testing.T) {
 		"platform:legacy.core.platform.api.stubs",
 
 		// Needed for generating the boot image.
-		`platform:dex2oatd`,
+		"platform:dex2oatd",
 
 		// The platform_bootclasspath intentionally adds dependencies on both source and prebuilt
 		// modules when available as it does not know which one will be preferred.
@@ -445,6 +465,9 @@ func TestPlatformBootclasspath_AlwaysUsePrebuiltSdks(t *testing.T) {
 
 		// Only a source module exists.
 		"myapex:bar",
+
+		// The fragments.
+		"myapex:mybootclasspath-fragment",
 	})
 }
 

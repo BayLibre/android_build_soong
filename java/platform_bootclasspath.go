@@ -208,17 +208,21 @@ func (b *platformBootclasspathModule) configuredJars(ctx android.ModuleContext) 
 	jars := b.getImageConfig(ctx).modules
 
 	// Include jars from APEXes that don't populate their classpath proto config.
+	var jarsInFragments []string
 	remainingJars := dexpreopt.GetGlobalConfig(ctx).UpdatableBootJars
 	for _, fragment := range b.fragments {
 		info := ctx.OtherModuleProvider(fragment, ClasspathFragmentProtoContentInfoProvider).(ClasspathFragmentProtoContentInfo)
 		if info.ClasspathFragmentProtoGenerated {
 			remainingJars = remainingJars.RemoveList(info.ClasspathFragmentProtoContents)
 		}
+		jarsInFragments = append(jarsInFragments, info.ClasspathFragmentProtoContents.CopyOfJars()...)
 	}
 	for i := 0; i < remainingJars.Len(); i++ {
 		jars = jars.Append(remainingJars.Apex(i), remainingJars.Jar(i))
 	}
-
+	if notInFragments := android.RemoveListFromList(dexpreopt.GetGlobalConfig(ctx).UpdatableBootJars.CopyOfJars(), jarsInFragments); len(notInFragments) > 0 {
+		ctx.ModuleErrorf("%v updatable boot jars are not listed in any platform_bootclasspath's fragments", notInFragments)
+	}
 	return jars
 }
 

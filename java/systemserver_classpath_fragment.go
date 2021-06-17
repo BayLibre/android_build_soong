@@ -55,6 +55,7 @@ func (p *platformSystemServerClasspathModule) GenerateAndroidBuildActions(ctx an
 
 func (p *platformSystemServerClasspathModule) configuredJars(ctx android.ModuleContext) android.ConfiguredJarList {
 	// TODO(satayev): include any apex jars that don't populate their classpath proto config.
+	// TODO(b/191369843): check that all UpdatableSystemServerJars are covered by fragments.
 	return dexpreopt.GetGlobalConfig(ctx).SystemServerJars
 }
 
