@@ -70,6 +70,24 @@
       "parentUuid": "d3c68acf_67a8f296",
       "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "982f2a29_c90b466d",
+        "filename": "cc/compiler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-17T19:56:02Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t understand the \"breaking anything else that uses ctx.minSdkVersion()\" argument: it doesn\u0027t, because this change only affects the CRT libraries? (or maybe I misunderstand what you mean by \"it\" in this sentence?)\n\nBy \"breaking anything else\" I meant anything else in the CRT rules generation that depends on Min_sdk_version.  As a hypothetical example, there could be somewhere that adds \"-D__ANDROID_API__\u003d\" + Min_sdk_version.  You could carefully audit every usage of Min_sdk_version/ctx.minSdkVersion() and prove that there are no current uses, but if someone else adds another cflag that depends on ctx.minSdkVersion() they will have to know to propagate the special casing.\n\n\u003e What this particular line does is that it embodies the \"For a given Sdk_version / Min_sdk_version pair, every library needs -target to be the Min_sdk_Version *except* CRT which has to be built with Sdk_version\".\n\nI\u0027m not sure that accurately describes the situation.  CRT conceptually needs -target to be minimum sdk version that the CRT object will support, same as any other module.  The only difference between CRT and any random cc_library with sdk_version set is that CRT is built for _every_ supported minSdkVersion individually.  For a cc_library with sdk_version/min_sdk_version set we build it once with that combo, and everything uses that same version (ignoring the apex variant, I think those override min_sdk_version to match the apex).  CRT is different, the code in the CRT object ends up embedded in _every_ cc_library or cc_binary, and using the lowest supported minSdkVersion would turn off every new feature in the CRT objects.  So we build it once for each minSdkVersion and let each cc_library use the one that matches.\n\nThe only reason you have to use sdkVersion for CRT here is because you\u0027ve stopped setting the minSdkVersion for CRT objects, even though conceptually they need it.",
+      "parentUuid": "de45f350_7c43795d",
+      "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
