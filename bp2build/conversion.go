@@ -16,13 +16,29 @@ type BazelFile struct {
 	Contents string
 }
 
-func CreateSoongInjectionFiles() []BazelFile {
+func CreateSoongInjectionFiles(compatLayer CodegenCompatLayer) []BazelFile {
 	var files []BazelFile
 
 	files = append(files, newFile("cc_toolchain", "BUILD", "")) // Creates a //cc_toolchain package.
 	files = append(files, newFile("cc_toolchain", "constants.bzl", config.BazelCcToolchainVars()))
 
+	files = append(files, newFile("targets", "BUILD", nameToLabelAliases(compatLayer.NameToLabelMap)))
+
 	return files
+}
+
+func nameToLabelAliases(nameToLabelMap map[string]string) string {
+	var ret string
+	for k, v := range nameToLabelMap {
+		// v is the fully qualified label rooted at '//'
+		ret += fmt.Sprintf(
+			`alias(
+    name = "%s",
+    actual = "@%s",
+)`, k, v)
+		ret += "\n\n"
+	}
+	return ret
 }
 
 func CreateBazelFiles(
