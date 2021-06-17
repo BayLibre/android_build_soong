@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f00b3d_aa1134ce",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-17T00:34:44Z",
+      "side": 1,
+      "message": "This can be replaced with the RequiredFilesFromPrebuiltApex interface, can\u0027t it? Is that for a later cleanup?",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 554,
+        "endChar": 74
+      },
+      "revId": "6eecbf3fe6005510177d6be9937b01fa5c239e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccbc0538_1e1ac288",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-17T00:34:44Z",
+      "side": 1,
+      "message": "No error message?",
+      "range": {
+        "startLine": 562,
+        "startChar": 22,
+        "endLine": 562,
+        "endChar": 24
+      },
+      "revId": "6eecbf3fe6005510177d6be9937b01fa5c239e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ab2d9ea_ce6d694b",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-17T00:34:44Z",
+      "side": 1,
+      "message": "Doesn\u0027t this belong better in android/apex.go?",
+      "revId": "6eecbf3fe6005510177d6be9937b01fa5c239e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb76c6e7_5b8f3d3a",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-17T00:34:44Z",
+      "side": 1,
+      "message": "Why is this no longer android.OutputPaths?",
+      "range": {
+        "startLine": 161,
+        "startChar": 47,
+        "endLine": 161,
+        "endChar": 60
+      },
+      "revId": "6eecbf3fe6005510177d6be9937b01fa5c239e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ae5ef69_4af8886e",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-17T00:34:44Z",
+      "side": 1,
+      "message": "Use ctx.GetDirectDepWithTag?",
+      "range": {
+        "startLine": 913,
+        "startChar": 0,
+        "endLine": 919,
+        "endChar": 3
+      },
+      "revId": "6eecbf3fe6005510177d6be9937b01fa5c239e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e73b249_63c8ce1c",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-17T00:34:44Z",
+      "side": 1,
+      "message": "Please fix.",
+      "range": {
+        "startLine": 925,
+        "startChar": 18,
+        "endLine": 925,
+        "endChar": 24
+      },
+      "revId": "6eecbf3fe6005510177d6be9937b01fa5c239e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

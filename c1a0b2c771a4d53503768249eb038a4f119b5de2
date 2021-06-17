@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18f9abb3_0ca36feb",
+        "filename": "android/deapexer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-17T00:34:44Z",
+      "side": 1,
+      "message": "According to the comment on DeapexerExportedFile.Tag in apex/deapexer.go, these tags are intended to work with the OutputFileProducer interface. However I can\u0027t find it in use in the deapexer module. Where is it?\n\nI\u0027m trying to pick my way through this code, but I find it confusing. My current understanding is as follows:\n\nThe interface between deapexer and the modules depending on it is actually this DeapexerInfo provider interface, not OutputFileProducer (and hence the use of its tag syntax isn\u0027t really necessary, but then again, provided a map of the files is necessary, the keys have to have _some_ syntax).\n\nDeapexer cannot produce the list of output files/tags itself because that\u0027d require us to encode that list in the prebuilt_apex/apex_set modules. Hence there\u0027s the RequiredFilesFromPrebuiltApex interface that delegates it to the BCP fragment modules. So those modules must know the paths in the prebuilt APEX (in the RequiredFilesFromPrebuiltApex implementation), pass it over to Deapexer and construe a tag syntax for them, only to convert those tags back to the paths in produceBootImageFiles.\n\nSo provided I\u0027m not missing something here, then what\u0027s the point with that elaborate passing back and forth through tags? Can\u0027t produceBootImageFiles just construct the relative path under \"javalib\" directly into fromPath? It obviously knows it better than the Deapexer module does, and those files don\u0027t even need to go into the exports map below at all.\n\n[I don\u0027t want to hold this up so I\u0027m fine with submitting this approach regardless - I just like to understand better what\u0027s going on here.]",
+      "range": {
+        "startLine": 27,
+        "startChar": 47,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "c1a0b2c771a4d53503768249eb038a4f119b5de2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e29478d1_5bb487ae",
+        "filename": "android/deapexer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-17T00:34:44Z",
+      "side": 1,
+      "message": "This is stale now?",
+      "range": {
+        "startLine": 26,
+        "startChar": 89,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "c1a0b2c771a4d53503768249eb038a4f119b5de2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
