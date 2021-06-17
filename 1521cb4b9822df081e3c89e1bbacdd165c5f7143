@@ -52,6 +52,24 @@
       "parentUuid": "7a134f5e_4323a95a",
       "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de45f350_7c43795d",
+        "filename": "cc/compiler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-17T19:42:40Z",
+      "side": 1,
+      "message": "Am I spreading the \"CRT-ness\" wider? This change only replaces the mysterious \"split by API levels\" concept with the less-mysterious \"is CRT\" one, which I thought was an improvement.\n\nI don\u0027t understand the \"breaking anything else that uses ctx.minSdkVersion()\" argument: it doesn\u0027t, because this change only affects the CRT libraries? (or maybe I misunderstand what you mean by \"it\" in this sentence?)\n\nWhat this particular line does is that it embodies the \"For a given Sdk_version / Min_sdk_version pair, every library needs -target to be the Min_sdk_Version *except* CRT which has to be built with Sdk_version\". And it makes some sense to have that logic where the command line is put together instead of somewhere far away?",
+      "parentUuid": "d3c68acf_67a8f296",
+      "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
