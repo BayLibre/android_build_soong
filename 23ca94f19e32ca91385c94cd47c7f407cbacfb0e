@@ -70,6 +70,30 @@
       },
       "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7475599a_57241ddc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-17T13:30:10Z",
+      "side": 1,
+      "message": "If it helps your work, I can still cherry-pick the changes to sc-dev.",
+      "parentUuid": "1c93f4df_634386bc",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
