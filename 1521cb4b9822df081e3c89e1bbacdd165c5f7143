@@ -16,6 +16,24 @@
       "message": "This doesn\u0027t seem like an improvement, it is spreading the special casing of isCrt around even more.  It also doesn\u0027t fix any other callers of ctx.minSdkVersion that may be using it with similar expectations.  Would it work to do it somewhere inside ctx.minSdkVersion?",
       "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a134f5e_4323a95a",
+        "filename": "cc/compiler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-17T18:57:56Z",
+      "side": 1,
+      "message": "My mental model is that minSdkVersion is one concept and thus the field and the method shouldn\u0027t do different things. \n\nThe reason why I thought this is slightly better is that it puts the decision about -target closer to the module that is being compiled and makes it easier to understand what the Min_sdk_version / Sdk_version fields mean.\n\nMy medium-term plan is to simplify the way the \"sdk\"/\"version\" mutators work so that the dependency graph is slightly simpler (I sent you the document alreadY) and then I hope that CRT modules won\u0027t need to be special-cased; that will make this a bigger win. WDYT?",
+      "parentUuid": "ed813a58_3c727623",
+      "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
