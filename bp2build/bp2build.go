@@ -34,7 +34,7 @@ func Codegen(ctx *CodegenContext) CodegenMetrics {
 	writeFiles(ctx, bp2buildDir, bp2buildFiles)
 
 	soongInjectionDir := android.PathForOutput(ctx, bazel.SoongInjectionDirName)
-	writeFiles(ctx, soongInjectionDir, CreateSoongInjectionFiles())
+	writeFiles(ctx, soongInjectionDir, CreateSoongInjectionFiles(metrics))
 
 	return metrics
 }
