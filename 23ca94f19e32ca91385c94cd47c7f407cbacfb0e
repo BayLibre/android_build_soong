@@ -143,6 +143,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e02d187_bf440035",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T22:10:35Z",
+      "side": 1,
+      "message": "Resolved. Reopen if you want.",
+      "parentUuid": "85d95938_d1a2eaad",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e62cf57d_3a09fcda",
@@ -650,6 +674,30 @@
       "side": 1,
       "message": "Order matters for consistency. For each library in a fragment we have are least two separate places where it is mentioned, the bootclasspath_fragment and the configuration (three if you include the prebuilt_bootclasspath_fragment). If the libraries are in different orders in each of those places then it becomes difficult to reason about them. You have to find out which order actually matters. It also could cause problems if the libraries are processed in different orders in each place.\n\nI\u0027ve added some more documentation and an example to try and explain it better.",
       "parentUuid": "20d9de47_ec07b905",
+      "range": {
+        "startLine": 103,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 10
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5535d786_50e8df8e",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T22:10:35Z",
+      "side": 1,
+      "message": "Resolved. Reopen if you want.",
+      "parentUuid": "ed2cd83a_da9c82c2",
       "range": {
         "startLine": 103,
         "startChar": 5,
