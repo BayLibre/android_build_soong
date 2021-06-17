@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31a23fc0_cd08841d",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T08:35:14Z",
+      "side": 1,
+      "message": "Yes to both.",
+      "parentUuid": "e6f00b3d_aa1134ce",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 554,
+        "endChar": 74
+      },
+      "revId": "6eecbf3fe6005510177d6be9937b01fa5c239e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccbc0538_1e1ac288",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-17T00:34:44Z",
       "side": 1,
       "message": "No error message?",
+      "range": {
+        "startLine": 562,
+        "startChar": 22,
+        "endLine": 562,
+        "endChar": 24
+      },
+      "revId": "6eecbf3fe6005510177d6be9937b01fa5c239e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35d5cefa_21e223ba",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T08:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccbc0538_1e1ac288",
       "range": {
         "startLine": 562,
         "startChar": 22,
@@ -64,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e405ae7_d06f4f33",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T08:35:14Z",
+      "side": 1,
+      "message": "ATM the only files that use this are java files which is why it is here but there is no reason why this will not be needed for other files in other non-java packages. As this is tightly coupled with deapexer functionality I will move it to the android/deapexer.go file.",
+      "parentUuid": "5ab2d9ea_ce6d694b",
+      "revId": "6eecbf3fe6005510177d6be9937b01fa5c239e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb76c6e7_5b8f3d3a",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-06-17T00:34:44Z",
       "side": 1,
       "message": "Why is this no longer android.OutputPaths?",
+      "range": {
+        "startLine": 161,
+        "startChar": 47,
+        "endLine": 161,
+        "endChar": 60
+      },
+      "revId": "6eecbf3fe6005510177d6be9937b01fa5c239e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b1c31b5_62ccb0a1",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T08:35:14Z",
+      "side": 1,
+      "message": "Because it doesn\u0027t need to be. Paths is more flexible.",
+      "parentUuid": "eb76c6e7_5b8f3d3a",
       "range": {
         "startLine": 161,
         "startChar": 47,
@@ -110,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5030941_4c3eabaa",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T08:35:14Z",
+      "side": 1,
+      "message": "That would require that I passed the name to the dependency here. There are other places that also need to do this so I will extract a method that they can reuse in a follow up change.",
+      "parentUuid": "9ae5ef69_4af8886e",
+      "range": {
+        "startLine": 913,
+        "startChar": 0,
+        "endLine": 919,
+        "endChar": 3
+      },
+      "revId": "6eecbf3fe6005510177d6be9937b01fa5c239e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e73b249_63c8ce1c",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-06-17T00:34:44Z",
       "side": 1,
       "message": "Please fix.",
+      "range": {
+        "startLine": 925,
+        "startChar": 18,
+        "endLine": 925,
+        "endChar": 24
+      },
+      "revId": "6eecbf3fe6005510177d6be9937b01fa5c239e5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d166c18_bbfe1517",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 925,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T08:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e73b249_63c8ce1c",
       "range": {
         "startLine": 925,
         "startChar": 18,

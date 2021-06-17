@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5447bcb8_66d97643",
+        "filename": "android/deapexer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T08:35:14Z",
+      "side": 1,
+      "message": "The OutputFileProducer is not used by deapexer. It did not work. Hence why I added DeapexerInfo. I kept the same tag concept though. There is room for improvements and clarity there. e.g. Instead of using a separate tag it could just use the APEX relative path, e.g. instead of `core-libart{.dexjar}` it could use javalib/core-libart.jar.\n\nYour understanding of how and why the information is passed back and forth is broadly correct.\n\nWhat the BCPF and java prebuilt modules pass to deapexer (indirectly) is a map from ID to a string path of a file in the APEX, e.g. core-libart{.dexjar}-\u003ejavalib/core-libart.jar, what it gets back is a map from the same ID to an android.Path of a file in the file system, e.g. core-libart{.dexjar}-\u003eout/soong/.....deapexer.../javalib/core-libart.jar.\n\nThe part that the prebuilt_apex does not know is the \"out/soong/.....deapexer...\" path. We could avoid using maps at all and just make that path available in DeapexerInfo and then have PrebuiltExportPath() just prepend that. However, I think a map of exported files is safer as it allows Soong to detect an attempt to use a file that is not exported.\n\nWill look at simplifying all of this in a follow up CL.",
+      "parentUuid": "18f9abb3_0ca36feb",
+      "range": {
+        "startLine": 27,
+        "startChar": 47,
+        "endLine": 27,
+        "endChar": 52
+      },
+      "revId": "c1a0b2c771a4d53503768249eb038a4f119b5de2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e29478d1_5bb487ae",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-17T00:34:44Z",
       "side": 1,
       "message": "This is stale now?",
+      "range": {
+        "startLine": 26,
+        "startChar": 89,
+        "endLine": 28,
+        "endChar": 14
+      },
+      "revId": "c1a0b2c771a4d53503768249eb038a4f119b5de2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2fcb8df_211cda1f",
+        "filename": "android/deapexer.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T08:35:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e29478d1_5bb487ae",
       "range": {
         "startLine": 26,
         "startChar": 89,
