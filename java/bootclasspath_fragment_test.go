@@ -163,6 +163,7 @@ func TestBootclasspathFragment_Coverage(t *testing.T) {
 	preparer := android.GroupFixturePreparers(
 		prepareForTestWithBootclasspathFragment,
 		PrepareForTestWithJavaSdkLibraryFiles,
+		dexpreopt.FixtureSetUpdatableBootJars("foo:mybootlib"),
 		FixtureWithLastReleaseApis("mysdklibrary", "mycoveragestubs"),
 		prepareWithBp,
 	)
@@ -185,6 +186,7 @@ func TestBootclasspathFragment_StubLibs(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForTestWithBootclasspathFragment,
 		PrepareForTestWithJavaSdkLibraryFiles,
+		dexpreopt.FixtureSetUpdatableBootJars("foo:mysdklibrary"),
 		FixtureWithLastReleaseApis("mysdklibrary", "myothersdklibrary", "mycoreplatform"),
 	).RunTestWithBp(t, `
 		bootclasspath_fragment {
