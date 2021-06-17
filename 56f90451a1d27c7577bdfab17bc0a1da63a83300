@@ -87,6 +87,30 @@
       },
       "revId": "56f90451a1d27c7577bdfab17bc0a1da63a83300",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36966f2a_3e2a462f",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-17T11:18:41Z",
+      "side": 1,
+      "message": "It doesn\u0027t have to strictly match updatable property. Yes, for updatable apexes it should always be true. But for wip apexes it makes sense for devs to set it to true before marking updatable true; this would allow them to do any SH impact measurements for example, and allow soaking the change to BCP before they finish all other work to make apex updatable.\n\nIt is enforced in apex.go that updatble true implies generate_classpaths_proto to be true too.",
+      "parentUuid": "b20f1b9e_60269711",
+      "range": {
+        "startLine": 50,
+        "startChar": 58,
+        "endLine": 50,
+        "endChar": 71
+      },
+      "revId": "56f90451a1d27c7577bdfab17bc0a1da63a83300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
