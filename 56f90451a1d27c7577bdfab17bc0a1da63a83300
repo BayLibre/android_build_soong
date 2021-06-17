@@ -153,6 +153,30 @@
       },
       "revId": "56f90451a1d27c7577bdfab17bc0a1da63a83300",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ae9be1_78692b16",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-17T13:26:05Z",
+      "side": 1,
+      "message": "No worries. :-)\n\ni18n is really special due to it historically being in boot image. Based on discussions with Ulya and Nic (b/191127295#comment6), it should be the only apex jar in boot image. (And in T+ it likely won\u0027t matter if we support on device signing and dexopt would just use the whole BCP).\n\nFor i18n, I would follow up with manually adding it to boot image separately.\n\nThe consequence with not setting the property to false would be SH / performance regression (in system server process specifically).\n\nSo... once we remove DEX2OATBOOTCLASSPATH (requires on device signing which should happen in T), we can remove this property. (But we would still need to manually inject i18n into boot image.)",
+      "parentUuid": "aa6a4df9_e895545e",
+      "range": {
+        "startLine": 50,
+        "startChar": 58,
+        "endLine": 50,
+        "endChar": 71
+      },
+      "revId": "56f90451a1d27c7577bdfab17bc0a1da63a83300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
