@@ -111,7 +111,14 @@ func (s *SystemServerClasspathModule) configuredJars(ctx android.ModuleContext) 
 	// Only create configs for updatable boot jars. Non-updatable system server jars must be part of the
 	// platform_systemserverclasspath's classpath proto config to guarantee that they come before any
 	// updatable jars at runtime.
-	return global.UpdatableSystemServerJars.Filter(possibleUpdatableModules)
+	jars, unknown := global.UpdatableSystemServerJars.Filter(possibleUpdatableModules)
+
+	// For non test apexes, make sure that all contents are actually declared in make.
+	if len(unknown) > 0 {
+		ctx.ModuleErrorf("%s in contents must also be declared in PRODUCT_UPDATABLE_SYSTEM_SERVER_JARS", unknown)
+	}
+
+	return jars
 }
 
 type systemServerClasspathFragmentContentDependencyTag struct {
