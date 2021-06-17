@@ -80,7 +80,7 @@ func TestCreateBazelFiles_QueryView_AddsTopLevelFiles(t *testing.T) {
 }
 
 func TestCreateBazelFiles_Bp2Build_CreatesDefaultFiles(t *testing.T) {
-	files := CreateSoongInjectionFiles()
+	files := CreateSoongInjectionFiles(CodegenCompatLayer{})
 
 	expectedFilePaths := []bazelFilepath{
 		{
@@ -90,6 +90,10 @@ func TestCreateBazelFiles_Bp2Build_CreatesDefaultFiles(t *testing.T) {
 		{
 			dir:      "cc_toolchain",
 			basename: "constants.bzl",
+		},
+		{
+			dir:      "targets",
+			basename: "BUILD",
 		},
 	}
 
