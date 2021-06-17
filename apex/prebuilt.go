@@ -17,7 +17,6 @@ package apex
 import (
 	"fmt"
 	"io"
-	"path/filepath"
 	"strconv"
 	"strings"
 
@@ -552,14 +551,7 @@ func createDeapexerModuleIfNeeded(ctx android.TopDownMutatorContext, deapexerNam
 		tag := ctx.OtherModuleDependencyTag(child)
 
 		name := android.RemoveOptionalPrebuiltPrefix(ctx.OtherModuleName(child))
-		if java.IsBootclasspathFragmentContentDepTag(tag) || tag == exportedJavaLibTag {
-			commonModules = append(commonModules, name)
-
-			// Add the dex implementation jar to the set of exported files. The path here must match the
-			// path of the file in the APEX created by apexFileForJavaModule(...).
-			exportedFilesByKey[name+"{.dexjar}"] = filepath.Join("javalib", name+".jar")
-
-		} else if tag == exportedBootclasspathFragmentTag {
+		if java.IsBootclasspathFragmentContentDepTag(tag) || tag == exportedJavaLibTag || tag == exportedBootclasspathFragmentTag {
 			commonModules = append(commonModules, name)
 
 			requiredFiles := child.(android.RequiredFilesFromPrebuiltApex).RequiredFilesFromPrebuiltApex(ctx)
