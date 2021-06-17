@@ -83,6 +83,7 @@ func TestSystemserverclasspathFragmentNoGeneratedProto(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForTestWithSystemserverclasspathFragment,
 		prepareForTestWithMyapex,
+		dexpreopt.FixtureSetUpdatableSystemServerJars("myapex:foo"),
 	).RunTestWithBp(t, `
 		apex {
 			name: "myapex",

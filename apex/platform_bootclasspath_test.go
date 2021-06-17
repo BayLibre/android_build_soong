@@ -39,7 +39,7 @@ func TestPlatformBootclasspath_Fragments(t *testing.T) {
 		prepareForTestWithMyapex,
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		java.FixtureWithLastReleaseApis("foo"),
-		java.FixtureConfigureBootJars("myapex:bar"),
+		java.FixtureConfigureUpdatableBootJars("myapex:bar"),
 		android.FixtureWithRootAndroidBp(`
 			platform_bootclasspath {
 				name: "platform-bootclasspath",
@@ -169,33 +169,34 @@ func TestPlatformBootclasspath_Fragments(t *testing.T) {
 func TestPlatformBootclasspathDependencies(t *testing.T) {
 	result := android.GroupFixturePreparers(
 		prepareForTestWithPlatformBootclasspath,
-		prepareForTestWithArtApex,
 		prepareForTestWithMyapex,
-		// Configure some libraries in the art and framework boot images.
-		java.FixtureConfigureBootJars("com.android.art:baz", "com.android.art:quuz", "platform:foo"),
-		java.FixtureConfigureUpdatableBootJars("myapex:bar"),
+		java.FixtureConfigureBootJars("platform:foo"),
+		java.FixtureConfigureUpdatableBootJars("myapex:bar", "otherapex:baz", "otherapex:quuz"),
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		java.FixtureWithLastReleaseApis("foo"),
+		android.FixtureMergeMockFs(android.MockFS{
+			"system/sepolicy/apex/otherapex-file_contexts": nil,
+		}),
 	).RunTestWithBp(t, `
 		apex {
-			name: "com.android.art",
-			key: "com.android.art.key",
+			name: "otherapex",
+			key: "otherapex.key",
  			bootclasspath_fragments: [
-				"art-bootclasspath-fragment",
+				"other-bootclasspath-fragment",
 			],
 			updatable: false,
 		}
 
 		apex_key {
-			name: "com.android.art.key",
-			public_key: "com.android.art.avbpubkey",
-			private_key: "com.android.art.pem",
+			name: "otherapex.key",
+			public_key: "otherapex.avbpubkey",
+			private_key: "otherapex.pem",
 		}
 
 		bootclasspath_fragment {
-			name: "art-bootclasspath-fragment",
+			name: "other-bootclasspath-fragment",
 			apex_available: [
-				"com.android.art",
+				"otherapex",
 			],
 			contents: [
 				"baz",
@@ -206,10 +207,11 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 		java_library {
 			name: "baz",
 			apex_available: [
-				"com.android.art",
+				"otherapex",
 			],
 			srcs: ["b.java"],
 			installable: true,
+			permitted_packages: ["baz"],
 		}
 
 		// Add a java_import that is not preferred and so won't have an appropriate apex variant created
@@ -217,7 +219,7 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 		java_import {
 			name: "baz",
 			apex_available: [
-				"com.android.art",
+				"otherapex",
 			],
 			jars: ["b.jar"],
 		}
@@ -225,10 +227,11 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 		java_library {
 			name: "quuz",
 			apex_available: [
-				"com.android.art",
+				"otherapex",
 			],
 			srcs: ["b.java"],
 			installable: true,
+			permitted_packages: ["quuz"],
 		}
 
 		apex {
@@ -264,8 +267,8 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 
 			fragments: [
 				{
-					apex: "com.android.art",
-					module: "art-bootclasspath-fragment",
+					apex: "otherapex",
+					module: "other-bootclasspath-fragment",
 				},
 			],
 		}
@@ -274,16 +277,16 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 
 	java.CheckPlatformBootclasspathModules(t, result, "myplatform-bootclasspath", []string{
 		// The configured contents of BootJars.
-		"com.android.art:baz",
-		"com.android.art:quuz",
 		"platform:foo",
 
 		// The configured contents of UpdatableBootJars.
 		"myapex:bar",
+		"otherapex:baz",
+		"otherapex:quuz",
 	})
 
 	java.CheckPlatformBootclasspathFragments(t, result, "myplatform-bootclasspath", []string{
-		`com.android.art:art-bootclasspath-fragment`,
+		`otherapex:other-bootclasspath-fragment`,
 	})
 
 	// Make sure that the myplatform-bootclasspath has the correct dependencies.
@@ -298,15 +301,15 @@ func TestPlatformBootclasspathDependencies(t *testing.T) {
 		`platform:dex2oatd`,
 
 		// The configured contents of BootJars.
-		`com.android.art:baz`,
-		`com.android.art:quuz`,
 		`platform:foo`,
 
 		// The configured contents of UpdatableBootJars.
 		`myapex:bar`,
+		`otherapex:baz`,
+		`otherapex:quuz`,
 
 		// The fragments.
-		`com.android.art:art-bootclasspath-fragment`,
+		`otherapex:other-bootclasspath-fragment`,
 	})
 }
 
