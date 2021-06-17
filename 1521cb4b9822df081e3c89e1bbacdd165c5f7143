@@ -34,6 +34,24 @@
       "parentUuid": "ed813a58_3c727623",
       "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c68acf_67a8f296",
+        "filename": "cc/compiler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-17T19:11:07Z",
+      "side": 1,
+      "message": "But it breaks anything else that uses ctx.minSdkVersion().  Currently minSdkVersion isn\u0027t a single concept - the Min_sdk_version property is the user\u0027s input to the equation, but there are lots of other variables to determine the actual minSdkVersion to be used in any individual context.  That\u0027s even more true if you don\u0027t modify the Min_sdk_version property in mutators.",
+      "parentUuid": "7a134f5e_4323a95a",
+      "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
