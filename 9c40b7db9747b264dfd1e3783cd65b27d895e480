@@ -34,6 +34,24 @@
       "parentUuid": "93eb9750_36dcd4d7",
       "revId": "9c40b7db9747b264dfd1e3783cd65b27d895e480",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd1e7aa2_53e3795f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1625880
+      },
+      "writtenOn": "2021-06-17T11:04:45Z",
+      "side": 1,
+      "message": "That was an oblique reference to b/190554910#comment28:\n\n\u003e One thing we could consider is to allow the supply of a symbol list for which we either expect or allow there to be no types in the ABI.",
+      "parentUuid": "88376821_0be03a9f",
+      "revId": "9c40b7db9747b264dfd1e3783cd65b27d895e480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
