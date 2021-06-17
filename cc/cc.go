@@ -364,6 +364,27 @@ type BaseProperties struct {
 	// can depend on libraries that are not exported by the APEXes and use private symbols
 	// from the exported libraries.
 	Test_for []string `android:"arch_variant"`
+
+	Target struct {
+		Recovery, Platform struct {
+			Required         []string
+			Exclude_required []string
+		}
+	}
+}
+
+func (c *Module) RequiredModuleNames() []string {
+	required := c.ModuleBase.RequiredModuleNames()
+	if c.InRecovery() {
+		required = append(required, c.Properties.Target.Recovery.Required...)
+		required = removeListFromList(required, c.Properties.Target.Recovery.Exclude_required)
+	}
+	if c.ImageVariation().Variation == android.CoreVariation {
+		required = append(required, c.Properties.Target.Platform.Required...)
+		required = removeListFromList(required, c.Properties.Target.Platform.Exclude_required)
+	}
+	required = android.FirstUniqueStrings(required)
+	return required
 }
 
 type VendorProperties struct {

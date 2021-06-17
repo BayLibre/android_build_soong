@@ -74,13 +74,7 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 
 	entries := android.AndroidMkEntries{
 		OutputFile: c.outputFile,
-		// TODO(jiyong): add the APEXes providing shared libs to the required
-		// modules Currently, adding c.Properties.ApexesProvidingSharedLibs is
-		// causing multiple ART APEXes (com.android.art and com.android.art.debug)
-		// to be installed. And this is breaking some older devices (like marlin)
-		// where system.img is small.
-		Required: c.Properties.AndroidMkRuntimeLibs,
-		Include:  "$(BUILD_SYSTEM)/soong_cc_prebuilt.mk",
+		Include:    "$(BUILD_SYSTEM)/soong_cc_prebuilt.mk",
 
 		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
 			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
@@ -127,6 +121,13 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 					entries.SetString("SOONG_SDK_VARIANT_MODULES",
 						"$(SOONG_SDK_VARIANT_MODULES) $(patsubst %.sdk,%,$(LOCAL_MODULE))")
 				}
+				entries.SetStrings("LOCAL_REQUIRED_MODULES", c.RequiredModuleNames()...)
+				// TODO(jiyong): add the APEXes providing shared libs to the required
+				// modules Currently, adding c.Properties.ApexesProvidingSharedLibs is
+				// causing multiple ART APEXes (com.android.art and com.android.art.debug)
+				// to be installed. And this is breaking some older devices (like marlin)
+				// where system.img is small.
+				entries.AddStrings("LOCAL_REQUIRED_MODULES", c.Properties.AndroidMkRuntimeLibs...)
 			},
 		},
 		ExtraFooters: []android.AndroidMkExtraFootersFunc{
