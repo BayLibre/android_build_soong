@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e6369b6_8d3d1346",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3386,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-17T07:42:32Z",
+      "side": 0,
+      "message": "Why is this removed?",
+      "range": {
+        "startLine": 3386,
+        "startChar": 33,
+        "endLine": 3386,
+        "endChar": 50
+      },
+      "revId": "2c891873d64171ed93b86e81b703ed913068a0fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
