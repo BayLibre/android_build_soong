@@ -88,6 +88,24 @@
       "parentUuid": "a5ae03bc_ec55007b",
       "revId": "c4dc9b4f08226ff66830fcd8ec644ab82b66ca02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fc60186_4db141b7",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2219,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-17T07:50:20Z",
+      "side": 0,
+      "message": "Before I go on a wild goose chase after the code, is the \"new version\" implemented?",
+      "parentUuid": "bc6952ae_37398ef7",
+      "revId": "c4dc9b4f08226ff66830fcd8ec644ab82b66ca02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
