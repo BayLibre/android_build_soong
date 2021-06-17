@@ -94,6 +94,30 @@
       },
       "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85d95938_d1a2eaad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T13:44:25Z",
+      "side": 1,
+      "message": "Sorry, I probably confused you by just mentioning PRODUCT_BOOT_JARS in the commit message. That was just an example of a config property that affected the bootclasspath. I was really referring to the entirety of the bootclasspath.\n\nI\u0027ll update the commit message when I fix any issues that you find during review.\n\nIt depends on how extensive your changes will be whether I\u0027ll need them cherry picked to sc-dev.",
+      "parentUuid": "7475599a_57241ddc",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
