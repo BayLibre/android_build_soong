@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "036e4cba_9f08242a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-17T13:01:05Z",
+      "side": 1,
+      "message": "Note I am changing this in AOSP (not in sc-dev). I will be remaining PRODUCT_UPDATABLE_BOOT_JARS to PRODUCT_APEX_BOOT_JARS.\n\nWould that simplify things?",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "23ca94f19e32ca91385c94cd47c7f407cbacfb0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
