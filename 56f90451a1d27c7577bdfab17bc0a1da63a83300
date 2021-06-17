@@ -63,6 +63,30 @@
       },
       "revId": "56f90451a1d27c7577bdfab17bc0a1da63a83300",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b20f1b9e_60269711",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-17T07:11:19Z",
+      "side": 1,
+      "message": "It seems as though the generate_classpaths_proto property must always be the same as its updatable state. A developer must set this to false if the APEX is not updatable and must set this to true if the APEX is updatable. In which case a developer making an apex updatable has to set both the updatable property and this property in the same change. Also, they have to set this as false when creating the bootclasspath_fragment if it is done before they mark the apex as updatable.\n\nAll in all that is more work needed for the developer when toggling the updatable property which would make it less simple than it could be.\n\nYes, we should minimize unnecessary differences between variances but if as I mention above the generate_classpaths_proto must always be equal to updatable then it is implicitly a property of the APEX not the bootclasspath_fragment and so should differ between APEX variants.\n\nAll of this hinges on whether generate_classpaths_proto must always be equal to updatable or not. If it must then you should just use the updatable property directly as that is simpler for the developer, if it does not then like min_sdk_version/sdk_version it should be a separate property. In the latter case if updatable places some constraints on the allowable value of generate_classpaths_proto then that should be enforced.",
+      "parentUuid": "894c5f32_c9e74901",
+      "range": {
+        "startLine": 50,
+        "startChar": 58,
+        "endLine": 50,
+        "endChar": 71
+      },
+      "revId": "56f90451a1d27c7577bdfab17bc0a1da63a83300",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
