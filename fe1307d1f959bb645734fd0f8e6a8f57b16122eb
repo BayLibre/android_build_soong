@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14bcbd39_d6698b7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-06-17T18:54:40Z",
+      "side": 1,
+      "message": "Actually, Paul said that we should not revert this CL, as other changes depend on it, and this might break other things.",
+      "revId": "fe1307d1f959bb645734fd0f8e6a8f57b16122eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
