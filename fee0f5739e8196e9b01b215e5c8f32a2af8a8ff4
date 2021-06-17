@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "25f18676_29708326",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-17T04:43:57Z",
+      "side": 1,
+      "message": "I still am not sure if introducing a new module type is preferred to adding a new property. Over to Colin.",
+      "revId": "fee0f5739e8196e9b01b215e5c8f32a2af8a8ff4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1adaadb6_31fd864e",
         "filename": "cc/binary.go",
         "patchSetId": 2
@@ -14,6 +31,30 @@
       "writtenOn": "2021-06-17T03:27:31Z",
       "side": 1,
       "message": "This is why I added a new module. Properties are not yet available here.",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 59
+      },
+      "revId": "fee0f5739e8196e9b01b215e5c8f32a2af8a8ff4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9236e8_f22b5e6b",
+        "filename": "cc/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-17T04:43:57Z",
+      "side": 1,
+      "message": "Can we modify the installDir method of baseInstaller so that `dir` is set to \"\" when the property is set?\n\nfunc (installer *baseInstaller) installDir(ctx ModuleContext) ... {\n  dir :\u003d installer.dir\n  if ctx.toolchain().Is64Bit() \u0026\u0026 installer.dir64 !\u003d \"\" {\n    dir \u003d installer.dir64\n  }\n  if ctx.InstallDirectlyUnderPartitionRoot() {\n    dir \u003d \"\"\n  }\n  ...\n}",
+      "parentUuid": "1adaadb6_31fd864e",
       "range": {
         "startLine": 234,
         "startChar": 0,
