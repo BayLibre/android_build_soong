@@ -227,13 +227,13 @@ type BootclasspathAPIProperties struct {
 	Core_platform_api BootclasspathNestedAPIProperties
 }
 
-// sdkKindToStubLibs calculates the stub library modules for each relevant android.SdkKind from the
+// apiLevelToStubLibs calculates the stub library modules for each relevant *HiddenAPILevel from the
 // Stub_libs properties.
-func (p BootclasspathAPIProperties) sdkKindToStubLibs() map[android.SdkKind][]string {
-	m := map[android.SdkKind][]string{}
-	for _, kind := range []android.SdkKind{android.SdkPublic, android.SdkSystem, android.SdkTest} {
-		m[kind] = p.Api.Stub_libs
+func (p BootclasspathAPIProperties) apiLevelToStubLibs() map[*HiddenAPILevel][]string {
+	m := map[*HiddenAPILevel][]string{}
+	for _, apiLevel := range hiddenAPISdkLibrarySupportedLevels {
+		m[apiLevel] = p.Api.Stub_libs
 	}
-	m[android.SdkCorePlatform] = p.Core_platform_api.Stub_libs
+	m[CorePlatformHiddenAPILevel] = p.Core_platform_api.Stub_libs
 	return m
 }
