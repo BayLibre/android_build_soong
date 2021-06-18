@@ -142,6 +142,24 @@
       "parentUuid": "ce375f42_3c09555b",
       "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15f2c971_573633e6",
+        "filename": "cc/compiler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-18T08:24:27Z",
+      "side": 1,
+      "message": "I think sdk_verison shouldn\u0027t be used here. In my mental model,\n\n* sdk_version: specifies what you would like to link against (determines include header path and link objects)\n* min_sdk_version: specifies the minimum version that you think your code should support\n\nSince this clang triple is for the compiler (which doesn\u0027t do anything about \"linking against\"), passing any information from sdk_version seems wrong.\n\nThe version suffix in the clang triple is not only used to emit __ANDROID_API__ but also to guarantee that the code being compiled uses APIs which are newer than the specified min sdk version using the proper runtime guard(__builtin_available macro). So, for example, if an API foo() is introduced with SDK level 30, and your code has min_sdk_version:29, then compiler enforces you to call foo() as follows:\n\nif(__builtin_available(android 30, *)) { foo(); }\n\nOmitting the guard is a compilation error.\n\ncrt objects are not different from other cc_* modules in this context.\n\nWhat\u0027s special with crt objects is that they are split into multiple variants each of which is targeted for a version. Once the split is done, each variant can/should be treated the same as others.\n\nIn other words, the meaning of the \u0027min_sdk_version\u0027 \"property\" is different from other modules. Perhaps we might want to introduce a new property (e.g. oldest_sdk_version_supported) that is exclusive to crt_object type and disallow the use of min_sdk_version there.",
+      "parentUuid": "ce375f42_3c09555b",
+      "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
