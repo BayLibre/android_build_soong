@@ -33,6 +33,24 @@
       "message": "I am sorry... I am trying to wrap my head around this change, but I am too tired now.. :-(\n\nAlso, it\u0027s amazing how much more structured the whole flow is thanks to your work, but just the nature of hiddenapis itself.. makes everything complicated and makes my head hurt.. :-(\n\n",
       "revId": "6997bcef05a9e37dc2ddd291b317825ab294c828",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f90fa4c_1fe4eb28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-18T18:13:50Z",
+      "side": 1,
+      "message": "Ack. I think working on hidden API has rewired my brain.",
+      "parentUuid": "e9ed0717_26b1c6f7",
+      "revId": "6997bcef05a9e37dc2ddd291b317825ab294c828",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
