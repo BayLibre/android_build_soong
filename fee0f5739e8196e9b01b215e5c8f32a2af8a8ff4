@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ac1e03a6_b480499d",
+        "filename": "cc/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-06-18T01:35:11Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "cad4cbf0_1c6c5516",
+      "range": {
+        "startLine": 75,
+        "startChar": 85,
+        "endLine": 76,
+        "endChar": 48
+      },
+      "revId": "fee0f5739e8196e9b01b215e5c8f32a2af8a8ff4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1adaadb6_31fd864e",
         "filename": "cc/binary.go",
         "patchSetId": 2
@@ -126,6 +150,30 @@
       "side": 1,
       "message": "I think that\u0027s fine, and preferable to creating a new module type.",
       "parentUuid": "e7b1a005_5fa34162",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 59
+      },
+      "revId": "fee0f5739e8196e9b01b215e5c8f32a2af8a8ff4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d539356a_cf8a1892",
+        "filename": "cc/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-06-18T01:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dcb7896_a852d5e8",
       "range": {
         "startLine": 234,
         "startChar": 0,
