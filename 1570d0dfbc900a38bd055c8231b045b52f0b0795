@@ -16,6 +16,29 @@
       "message": "Ping.",
       "revId": "1570d0dfbc900a38bd055c8231b045b52f0b0795",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba112dd8_5827933b",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-18T15:03:02Z",
+      "side": 1,
+      "message": "This looks ad-hoc. What about introducing an interface-based matching condition for the tag?",
+      "range": {
+        "startLine": 558,
+        "startChar": 5,
+        "endLine": 558,
+        "endChar": 123
+      },
+      "revId": "1570d0dfbc900a38bd055c8231b045b52f0b0795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
