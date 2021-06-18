@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "4b4054f458126629021213f8e3b9f646a9b4036d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0daae7b_fbb0d2a8",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-18T20:23:08Z",
+      "side": 1,
+      "message": "Isn\u0027t this overkill, considering no implementation actually needs to decide true or false at runtime? What about just a phony function like this https://cs.android.com/android/platform/superproject/+/master:build/soong/android/apex.go;l\u003d293-294;drc\u003d664b2cf89a011479955ca7df7916105c344e25ee to make the type assertion work?",
+      "range": {
+        "startLine": 563,
+        "startChar": 68,
+        "endLine": 563,
+        "endChar": 101
+      },
+      "revId": "4b4054f458126629021213f8e3b9f646a9b4036d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
