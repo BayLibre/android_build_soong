@@ -28,7 +28,8 @@ import (
 func SetupOutDir(ctx Context, config Config) {
 	ensureEmptyFileExists(ctx, filepath.Join(config.OutDir(), "Android.mk"))
 	ensureEmptyFileExists(ctx, filepath.Join(config.OutDir(), "CleanSpec.mk"))
-	if !config.SkipKati() {
+	katiEnabledMarker := filepath.Join(config.SoongOutDir(), ".soong.kati_enabled")
+	if !(config.SkipKati() || config.SkipKatiNinja()) {
 		// Run soong_build with Kati for a hybrid build, e.g. running the
 		// AndroidMk singleton and postinstall commands. Communicate this to
 		// soong_build by writing an empty .soong.kati_enabled marker file in the
@@ -36,7 +37,14 @@ func SetupOutDir(ctx Context, config Config) {
 		// know if the user wants to run Kati after.
 		//
 		// This does not preclude running Kati for *product configuration purposes*.
-		ensureEmptyFileExists(ctx, filepath.Join(config.SoongOutDir(), ".soong.kati_enabled"))
+		ensureEmptyFileExists(ctx, katiEnabledMarker)
+	} else {
+		// This conditional should not be required, but certain (broken) users of --skip-make depend
+		// on it. --skip-make disables re-generation of the kati ninja file but still includes it,
+		// and there can be clashes of rules between the soong-only ninja and kati-ninja.
+		if config.SkipKatiNinja() {
+			os.Remove(katiEnabledMarker)
+		}
 	}
 	// The ninja_build file is used by our buildbots to understand that the output
 	// can be parsed as ninja output.
