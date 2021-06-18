@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f041c23a_f00c6f54",
+        "filename": "android/deapexer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-18T20:00:48Z",
+      "side": 1,
+      "message": "This CL is a good improvement, but I cannot help thinking this data structure still is overcomplicated: The only info that is strictly necessary in this struct is the path to the deapexer directory, so that clients of the provider can convert a relative path within the APEX to an input path in a build rule.\n\nThen, if it\u0027s of any use, there could be a map[string]bool to enumerate the valid APEX relative paths. However, I can\u0027t really see enough benefit with that to motivate the cost with the RequiredFilesFromPrebuiltApex interface: Iiuc its purpose is to verify that DeapexerInfoProvider users specify correct paths, but the paths only come from those same users, so it\u0027s not much more than a verification that you get what you get. It\u0027d be a bit different if the modules constructing the paths in RequiredFilesFromPrebuiltApex weren\u0027t the same ones that consume them through DeapexerInfoProvider, but that\u0027s not the case.\n\nA much more important source of error is that some parameters to e.g. bootclasspath_fragment are incorrect so that the wrong paths are constructed, but that won\u0027t be caught here - it\u0027d still be an error first when ninja executes the commands.\n\nBottom line, I think the cleanup could go further, but this is still an improvement so I\u0027m not blocking it.",
+      "revId": "20ca2fcb0b3ba6132194fbc3b36bdb35daa78543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "210a8c35_56f4e853",
+        "filename": "apex/deapexer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-18T20:00:48Z",
+      "side": 1,
+      "message": "Could you please mention here how these paths are rooted, just for clarity?\n\n(Maybe it\u0027d be implied by `android:\"path\"` - see next comment - but I\u0027m actually not sure.)",
+      "revId": "20ca2fcb0b3ba6132194fbc3b36bdb35daa78543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86dfeb0f_2158c86d",
+        "filename": "apex/deapexer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-18T20:00:48Z",
+      "side": 1,
+      "message": "Doesn\u0027t `android:\"path\"` work here?",
+      "revId": "20ca2fcb0b3ba6132194fbc3b36bdb35daa78543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
