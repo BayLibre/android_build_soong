@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab1dcaf3_47f20110",
+        "filename": "cc/binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-06-18T02:16:25Z",
+      "side": 1,
+      "message": "Or maybe we could just leave installInPartitionRoot, and then redirect both ModuleContextIntf.installInPartitionRoot and Module.InstallInRoot to installInPartitionRoot?",
+      "parentUuid": "d478e88b_f681e627",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 0
+      },
+      "revId": "10100fda8950f9b802ebe9c91e6206544d6e7448",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f565c281_52051e8b",
         "filename": "cc/cc.go",
         "patchSetId": 3
