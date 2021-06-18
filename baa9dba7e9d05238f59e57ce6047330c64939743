@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "200203ad_b74790af",
+        "filename": "apex/classpath_element_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-18T10:31:26Z",
+      "side": 1,
+      "message": "I don\u0027t get this.. an apex can still java a normal java_lib dependency, for example a shared library bundled there which would not go into a fragment?",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 306,
+        "endChar": 42
+      },
+      "revId": "baa9dba7e9d05238f59e57ce6047330c64939743",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6476ee33_fc7ae8d8",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-18T10:31:26Z",
+      "side": 1,
+      "message": "this goes against the comment above. Does this imply that it should always provide the full list? THen \"part of a classpath\" is never true.",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 15
+      },
+      "revId": "baa9dba7e9d05238f59e57ce6047330c64939743",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23606476_3000a905",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-18T10:31:26Z",
+      "side": 1,
+      "message": "nit: surround in []? it was slightly confusing to read the error message otherwise.",
+      "range": {
+        "startLine": 175,
+        "startChar": 47,
+        "endLine": 175,
+        "endChar": 51
+      },
+      "revId": "baa9dba7e9d05238f59e57ce6047330c64939743",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
