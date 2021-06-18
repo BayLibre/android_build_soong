@@ -160,6 +160,24 @@
       "parentUuid": "ce375f42_3c09555b",
       "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5876d9a2_bf2da0c8",
+        "filename": "cc/compiler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-18T15:16:20Z",
+      "side": 1,
+      "message": "@Jiyong: I actually started out with introducing a separate property exclusively used by CRT libraries. Then I realized that:\n\n1. CRT libraries do not have their own module types so adding a property to them would mean adding them to every other cc_object, too\n2. This new property would always have the same value as Sdk_Version for the CRT cc_object files since they are set together in createPerApiVersionVariations()\n\nSo I decided to re-use Sdk_Version there. Another approach would be to separate the many meanings of \"Sdk_version\" and \"Min_sdk_version\" listed in this thread above into separate properties. Arguably, \"link against this version of the SDK\" is not applicable for the CRT cc_objects anyway.",
+      "parentUuid": "15f2c971_573633e6",
+      "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
