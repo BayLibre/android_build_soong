@@ -106,6 +106,24 @@
       "parentUuid": "982f2a29_c90b466d",
       "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce375f42_3c09555b",
+        "filename": "cc/compiler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-18T06:19:14Z",
+      "side": 1,
+      "message": "Why do you think CRT libraries need __ANDROID_API__ to be set to Sdk_version?  I think CRT libraries need __ANDROID_API__ to be set to Min_sdk_version, and we update Min_sdk_version in the version mutator because that\u0027s what we want the minimum supported sdk version of that variant of the CRT library to be.",
+      "parentUuid": "2e87e441_a6b41e55",
+      "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
