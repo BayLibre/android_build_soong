@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc4ddd63_82b61fcf",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-18T14:15:50Z",
+      "side": 1,
+      "message": "nit: wdyt about using the constant `GeneratedBuildFileName` instead of hardcoding BUILD here?",
+      "range": {
+        "startLine": 25,
+        "startChar": 43,
+        "endLine": 25,
+        "endChar": 48
+      },
+      "revId": "3e9e89bc61b54fdb09c9be9d14992daa32947dcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d70f0553_74dd2ef3",
+        "filename": "bp2build/conversion.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-18T14:15:50Z",
+      "side": 1,
+      "message": "nit: may be more efficient to pre-allocate a slice of strings based on the map size and join at the end or to use strings.Builder",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 2
+      },
+      "revId": "3e9e89bc61b54fdb09c9be9d14992daa32947dcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
