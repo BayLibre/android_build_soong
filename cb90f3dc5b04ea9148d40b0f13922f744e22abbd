@@ -16,6 +16,98 @@
       "message": "Ping.",
       "revId": "cb90f3dc5b04ea9148d40b0f13922f744e22abbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbfa8b33_b4309973",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 4687,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-18T16:07:38Z",
+      "side": 1,
+      "message": "should we add a test with shared_library: true? we have a real use case with ike?",
+      "range": {
+        "startLine": 4687,
+        "startChar": 0,
+        "endLine": 4687,
+        "endChar": 25
+      },
+      "revId": "cb90f3dc5b04ea9148d40b0f13922f744e22abbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62ec7a8d_051ba712",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-18T16:07:38Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 835,
+        "startChar": 0,
+        "endLine": 835,
+        "endChar": 69
+      },
+      "revId": "cb90f3dc5b04ea9148d40b0f13922f744e22abbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b57d0e14_f6ea5a0f",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-18T16:07:38Z",
+      "side": 1,
+      "message": "nit: not true anymore",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 31
+      },
+      "revId": "cb90f3dc5b04ea9148d40b0f13922f744e22abbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39db54e1_60186d37",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-18T16:07:38Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "cb90f3dc5b04ea9148d40b0f13922f744e22abbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
