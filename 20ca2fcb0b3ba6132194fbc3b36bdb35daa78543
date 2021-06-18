@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "784f4528_f6dfe151",
+        "filename": "android/deapexer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-18T20:53:09Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "f041c23a_f00c6f54",
+      "revId": "20ca2fcb0b3ba6132194fbc3b36bdb35daa78543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "210a8c35_56f4e853",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa09ceb1_22eeac27",
+        "filename": "apex/deapexer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-18T20:53:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "210a8c35_56f4e853",
+      "revId": "20ca2fcb0b3ba6132194fbc3b36bdb35daa78543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86dfeb0f_2158c86d",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-06-18T20:00:48Z",
       "side": 1,
       "message": "Doesn\u0027t `android:\"path\"` work here?",
+      "revId": "20ca2fcb0b3ba6132194fbc3b36bdb35daa78543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e3a93e_fe141a34",
+        "filename": "apex/deapexer.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-18T20:53:09Z",
+      "side": 1,
+      "message": "No, because `android:\"path\"` is for source files and these are not source files.",
+      "parentUuid": "86dfeb0f_2158c86d",
       "revId": "20ca2fcb0b3ba6132194fbc3b36bdb35daa78543",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
