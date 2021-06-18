@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ff6a03e_cdb33241",
+        "filename": "android/neverallow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-18T01:45:41Z",
+      "side": 1,
+      "message": "Good, but someday we might need to loosen this.",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 1
+      },
+      "revId": "10100fda8950f9b802ebe9c91e6206544d6e7448",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75964807_c75cce6a",
+        "filename": "cc/binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-18T01:45:41Z",
+      "side": 1,
+      "message": "How are these different?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 0
+      },
+      "revId": "10100fda8950f9b802ebe9c91e6206544d6e7448",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f565c281_52051e8b",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1316,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-18T01:45:41Z",
+      "side": 1,
+      "message": "I think this is anti-pattern. Add the method to the existing \u0027linker\u0027 interface or create a new named interface for this purpose.",
+      "range": {
+        "startLine": 1315,
+        "startChar": 15,
+        "endLine": 1316,
+        "endChar": 31
+      },
+      "revId": "10100fda8950f9b802ebe9c91e6206544d6e7448",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
