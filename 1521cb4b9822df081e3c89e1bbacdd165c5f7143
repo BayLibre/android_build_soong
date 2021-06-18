@@ -88,6 +88,24 @@
       "parentUuid": "de45f350_7c43795d",
       "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e87e441_a6b41e55",
+        "filename": "cc/compiler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-18T06:14:53Z",
+      "side": 1,
+      "message": "What I\u0027m hearing is: your mental model is that Min_sdk_version is the value __ANDROID_API__ should be set to, CRT libraries (unlike every other library) need __ANDROID_API__ to be set to Sdk_version, therefore, their Min_sdk_version should be updated in the version mutator when it\u0027s acting on CRT libraries.\n\nMy confusion stems from the fact that there are multiple overlapping things that \"minimum SDK version\" means:\n\n1. What the user tells Soong to set __ANDROID_API__ to when compiling a particular module.\n2. The first version that should be available when compiling the CRT libraries.\n3. What Soong thinks __ANDROID_API__ should be set to when compiling a particular module.\n\nOut of these, neither maps cleanly to a concept in the code. In particular:\n\n- Properties.Min_sdk_version is (1) or (2) depending on the type of the module. In addition, it\u0027s also used as temporary storage for computing (3)\n- cc.moduleContextImpl.minSdkVersion() seems to be (3). In particular, it doesn\u0027t seem to be true that by the time GenerateBuildActions() comes along, Min_sdk_version is set to (3).\n\nThis change is an attempt to separate (3) from Properties.Min_sdk_version. An alternative is to add another field, but it looked like (3) is computable from the \"CRT-ness\" of a module and its Sdk_version so I thought this approach is better.\n\nYes, I *did* audit the code for all the uses of Min_sdk_version :) This change is safe, except maybe CheckMinSdkVersion, which is APEX so I didn\u0027t want to burden my brain with it (figuring out all this was painful enough) and the presubmits pass.\n\n\nIt can be that there is a better approach which I haven\u0027t found yet. Another layer of complexity is that there are two other concepts which *also* don\u0027t map very cleanly to the code:\n\n1. The SDK version this module should be compiled against\n2. The value if the \"version\" variation (which in itself can mean a number of different things)\n\nProperties.Sdk_version seems to be both at the moment. Let me dig a bit more in the code to see if there is a better approach.",
+      "parentUuid": "982f2a29_c90b466d",
+      "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
