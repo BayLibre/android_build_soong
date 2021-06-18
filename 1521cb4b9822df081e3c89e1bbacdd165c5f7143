@@ -196,6 +196,24 @@
       "parentUuid": "5876d9a2_bf2da0c8",
       "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4cf3e06_e186b520",
+        "filename": "cc/compiler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-18T23:58:53Z",
+      "side": 1,
+      "message": "Lukács, my point here is that neither sdk_version nor min_sdk_version property makes a sense for a crt object. Min_sdk_version starts to make a sense \"after\" it is split. Sdk_version doesn\u0027t make sense at all even after the split as you also pointed out.\n\nSuggestion:\n1) make it a build error if either sdk_version or min_sdk_version is set to cc_object that corresponds to crt object\n2) have a new module-level property or a global config value that specifies the oldest sdk version the crt objects should support\n3) in case we choose the module-level property, it is also a build error if that is used for non-crt objects.",
+      "parentUuid": "2a7899af_1149efa7",
+      "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
