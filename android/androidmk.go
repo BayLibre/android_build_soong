@@ -265,6 +265,14 @@ func (a *AndroidMkEntries) AddStrings(name string, value ...string) {
 	a.EntryMap[name] = append(a.EntryMap[name], value...)
 }
 
+// SetStrings sets the given strings to a Make variable with the given name.
+func (a *AndroidMkEntries) SetStrings(name string, value ...string) {
+	if _, ok := a.EntryMap[name]; !ok {
+		a.entryOrder = append(a.entryOrder, name)
+	}
+	a.EntryMap[name] = value
+}
+
 // AddCompatibilityTestSuites adds the supplied test suites to the EntryMap, with special handling
 // for partial MTS test suites.
 func (a *AndroidMkEntries) AddCompatibilityTestSuites(suites ...string) {
