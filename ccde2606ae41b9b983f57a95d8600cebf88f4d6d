@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fad47b2_627e6ad5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-18T16:33:24Z",
+      "side": 1,
+      "message": "    DIST_DIR\u003d/buildbot/dist_dirs/git_master-art-host-linux-art-linux-bionic-zipapex/P23866073 TARGET_PRODUCT\u003darmv8 TARGET_BUILD_VARIANT\u003deng ./art/test/testrunner/run_build_test_target.py -j80 art-linux-bionic-x64-zipapex\n    FAILED: ninja: out/soong/build.ninja:752457: multiple rules generate out/soong/ndk/platforms/android-31/arch-arm64/usr/lib/libnativehelper.so [-w dupbuild\u003derr]\n",
+      "revId": "ccde2606ae41b9b983f57a95d8600cebf88f4d6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
