@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a17f04c6_88525eec",
+        "filename": "cc/binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-18T02:04:31Z",
+      "side": 1,
+      "message": "What we need is installInPartitionRoot. Why do we need installInRoot?",
+      "parentUuid": "eba4491f_2fd4c848",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 0
+      },
+      "revId": "10100fda8950f9b802ebe9c91e6206544d6e7448",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f565c281_52051e8b",
         "filename": "cc/cc.go",
         "patchSetId": 3
