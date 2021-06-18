@@ -510,11 +510,11 @@ endif
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
-  if g["TARGET_BOARD_PLATFORM"] in ["msm8998"]:
+  if g.get("TARGET_BOARD_PLATFORM", "") in ["msm8998"]:
     pass
-  elif g["TARGET_BOARD_PLATFORM"] != "copper":
+  elif g.get("TARGET_BOARD_PLATFORM", "") != "copper":
     pass
-  elif g["TARGET_BOARD_PLATFORM"] not in g["QCOM_BOARD_PLATFORMS"]:
+  elif g.get("TARGET_BOARD_PLATFORM", "") not in g["QCOM_BOARD_PLATFORMS"]:
     pass
   elif g["TARGET_PRODUCT"] in g.get("PLATFORM_LIST", []):
     pass

@@ -878,7 +878,7 @@ func (ctx *parseContext) parseCheckFunctionCallResult(directive *mkparser.Direct
 				return xBad, true
 			}
 			return &eqExpr{
-				left:  &variableRefExpr{ctx.addVariable("TARGET_BOARD_PLATFORM"), true},
+				left:  &variableRefExpr{ctx.addVariable("TARGET_BOARD_PLATFORM"), false},
 				right: x.args[0],
 				isEq:  !negate,
 			}, true
@@ -887,7 +887,7 @@ func (ctx *parseContext) parseCheckFunctionCallResult(directive *mkparser.Direct
 				return xBad, true
 			}
 			return &inExpr{
-				expr:  &variableRefExpr{ctx.addVariable("TARGET_BOARD_PLATFORM"), true},
+				expr:  &variableRefExpr{ctx.addVariable("TARGET_BOARD_PLATFORM"), false},
 				list:  maybeConvertToStringList(x.args[0]),
 				isNot: negate,
 			}, true
@@ -909,7 +909,7 @@ func (ctx *parseContext) parseCheckFunctionCallResult(directive *mkparser.Direct
 				return ctx.newBadExpr(directive, "cannot handle non-constant argument to is-vendor-board-platform"), true
 			}
 			return &inExpr{
-				expr:  &variableRefExpr{ctx.addVariable("TARGET_BOARD_PLATFORM"), true},
+				expr:  &variableRefExpr{ctx.addVariable("TARGET_BOARD_PLATFORM"), false},
 				list:  &variableRefExpr{ctx.addVariable(s + "_BOARD_PLATFORMS"), true},
 				isNot: negate,
 			}, true
