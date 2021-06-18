@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cfec69d_00299e87",
+        "filename": "apex/classpath_element_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-18T10:47:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "200203ad_b74790af",
+      "range": {
+        "startLine": 305,
+        "startChar": 1,
+        "endLine": 306,
+        "endChar": 42
+      },
+      "revId": "baa9dba7e9d05238f59e57ce6047330c64939743",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6476ee33_fc7ae8d8",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d334c5d_fb3b2417",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-18T10:47:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6476ee33_fc7ae8d8",
+      "range": {
+        "startLine": 83,
+        "startChar": 3,
+        "endLine": 84,
+        "endChar": 15
+      },
+      "revId": "baa9dba7e9d05238f59e57ce6047330c64939743",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23606476_3000a905",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-18T10:31:26Z",
       "side": 1,
       "message": "nit: surround in []? it was slightly confusing to read the error message otherwise.",
+      "range": {
+        "startLine": 175,
+        "startChar": 47,
+        "endLine": 175,
+        "endChar": 51
+      },
+      "revId": "baa9dba7e9d05238f59e57ce6047330c64939743",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3acd694_2596cd45",
+        "filename": "java/classpath_element.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-18T10:47:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23606476_3000a905",
       "range": {
         "startLine": 175,
         "startChar": 47,
