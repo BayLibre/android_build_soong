@@ -124,6 +124,24 @@
       "parentUuid": "2e87e441_a6b41e55",
       "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b9473ed_2227595f",
+        "filename": "cc/compiler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-06-18T07:58:49Z",
+      "side": 1,
+      "message": "If a library sets minimum SDK version X and SDK version Y, how its dependencies are compiled:\n\n- Non-CRT dependencies are compiled with __ANDROID_API__\u003dX\n- CRT dependencies are compiled with __ANDROID_API__\u003dY (that\u0027s what the version mutator does at HEAD and that\u0027s what this if statement does in this change)\n\nIs this correct? (in the above sentence, Sdk_version was imprecise because, well, it means many things...)",
+      "parentUuid": "ce375f42_3c09555b",
+      "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
