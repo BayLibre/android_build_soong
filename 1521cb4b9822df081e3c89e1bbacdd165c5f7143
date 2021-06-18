@@ -178,6 +178,24 @@
       "parentUuid": "15f2c971_573633e6",
       "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a7899af_1149efa7",
+        "filename": "cc/compiler.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-18T15:37:05Z",
+      "side": 1,
+      "message": "\u003e If a library sets minimum SDK version X and SDK version Y, how its dependencies are compiled:\n\u003e \n\u003e Non-CRT dependencies are compiled with __ANDROID_API__\u003dX\n\u003e CRT dependencies are compiled with __ANDROID_API__\u003dY (that\u0027s what the version mutator does at HEAD and that\u0027s what this if statement does in this change)\n\u003e Is this correct? (in the above sentence, Sdk_version was imprecise because, well, it means many things...)\n\nA minor difference, but non-CRT dependencies are compiled with __ANDROID_API__\u003dZ, the minimum sdk version of the dependency, where Z \u003c\u003d X.\n\nAlso, the CRT dependency must be compiled with __ANDROID_API__\u003dX, not Y.\n\nI would also describe it differently and model it differently in the code.  A library doesn\u0027t set the __ANDROID_API__ of its dependencies, it selects which of the versions of the dependency to use. \n\nIf a library sets minimum SDK version X and SDK version Y:\nIt will depend on Non-CRT dependencies that have a min sdk version \u003c\u003d X\nIt will depend on CRT dependencies that have a min sdk version \u003d\u003d X\n\nI also wouldn\u0027t worry too much about cc_objects that are not CRT.  There are a few of them, usually weird modules that want to call clang -s to write assembly code to feed into a genrule, but having an extra property on those isn\u0027t the end of the world.\n\nPerhaps some of the confusion is understanding what the version mutator is doing.  It\u0027s tempting to think of the version mutator as creating variants with different sdk versions or min sdk versions, but it\u0027s more generic than that.  It is creating numbered variations, and exactly how that number maps to behavioral differences and which numbered variation should be used for any particular dependency type varies for the different kinds of numbered modules (CRT objects, NDK libraries, LLNDK libraries, stubs libraries).",
+      "parentUuid": "5876d9a2_bf2da0c8",
+      "revId": "1521cb4b9822df081e3c89e1bbacdd165c5f7143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
