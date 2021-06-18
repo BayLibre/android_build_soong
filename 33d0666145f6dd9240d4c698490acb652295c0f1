@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8da4a9c2_df31c058",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-18T16:00:32Z",
+      "side": 1,
+      "message": "internal error: panic in GenerateBuildActions for singleton makevars\nruntime error: index out of range [0] with length 0\ngoroutine 1 [running]:\ngithub.com/google/blueprint.newPanicErrorf(0xd57b40, 0xc0043c8600, 0xc006a1d830, 0x2b, 0x0, 0x0, 0x0, 0x40403a, 0xca3d00)\n\t/buildbot/src/android/build-tools/build/blueprint/context.go:4142 +0x7b\ngithub.com/google/blueprint.(*Context).generateSingletonBuildActions.func1.1(0xc005dc7458, 0xc0187002c0)\n\t/buildbot/src/android/build-tools/build/blueprint/context.go:2901 +0x3b4\npanic(0xd57b40, 0xc0043c8600)\n\tprebuilts/go/linux-x86/src/runtime/panic.go:965 +0x1b9\nandroid/soong/cc.makeVarsProvider(0xf6cfa8, 0xc001530380)\n\t/buildbot/src/android/build-tools/build/soong/cc/makevars.go:175 +0x1985\n",
+      "revId": "33d0666145f6dd9240d4c698490acb652295c0f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
