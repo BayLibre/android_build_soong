@@ -25,9 +25,97 @@ import (
 
 // Contains support for processing hiddenAPI in a modular fashion.
 
+// HiddenAPILevel encapsulates all the information that the hidden API processing needs about API
+// levels, i.e. what is called android.SdkKind and apiScope. It does not just use those as they do
+// not provide the information needed by hidden API processing.
+type HiddenAPILevel struct {
+	// The name of the level, used for debug purposes.
+	name string
+
+	// The corresponding android.SdkKind, used for retrieving paths from java_sdk_library* modules.
+	sdkKind android.SdkKind
+
+	// The option needed to passed to "hiddenapi list".
+	hiddenAPIListOption string
+}
+
+// initHiddenAPILevel initializes the level.
+func initHiddenAPILevel(apiLevel *HiddenAPILevel) *HiddenAPILevel {
+	return apiLevel
+}
+
+func (l *HiddenAPILevel) String() string {
+	return fmt.Sprintf("HiddenAPILevel{%s}", l.name)
+}
+
+var (
+	PublicHiddenAPILevel = initHiddenAPILevel(&HiddenAPILevel{
+		name:                "public",
+		sdkKind:             android.SdkPublic,
+		hiddenAPIListOption: "--public-stub-classpath",
+	})
+	SystemHiddenAPILevel = initHiddenAPILevel(&HiddenAPILevel{
+		name:                "system",
+		sdkKind:             android.SdkSystem,
+		hiddenAPIListOption: "--system-stub-classpath",
+	})
+	TestHiddenAPILevel = initHiddenAPILevel(&HiddenAPILevel{
+		name:                "test",
+		sdkKind:             android.SdkTest,
+		hiddenAPIListOption: "--test-stub-classpath",
+	})
+	CorePlatformHiddenAPILevel = initHiddenAPILevel(&HiddenAPILevel{
+		name:                "core-platform",
+		sdkKind:             android.SdkCorePlatform,
+		hiddenAPIListOption: "--core-platform-stub-classpath",
+	})
+
+	// hiddenAPIRelevantSdkKinds lists all the android.SdkKind instances that are needed by the hidden
+	// API processing.
+	//
+	// These are roughly in order from narrowest API surface to widest. Widest means the API stubs
+	// with the biggest API surface, e.g. test is wider than system is wider than public.
+	//
+	// Core platform is considered wider than system because those modules that provide core platform
+	// APIs either do not have any system APIs at all, or if they do it is because the core platform
+	// API is being converted to system APIs. In either case the system API is a subset of core
+	// platform API.
+	//
+	// This is not strictly in order from narrowest to widest as the Test API is wider than system but
+	// is neither wider or narrower than the core platform API. However, this works well enough at the
+	// moment.
+	// TODO(b/191644675): Correctly reflect the sub/superset relationships between APIs.
+	hiddenAPILevels = []*HiddenAPILevel{
+		PublicHiddenAPILevel,
+		SystemHiddenAPILevel,
+		TestHiddenAPILevel,
+		CorePlatformHiddenAPILevel,
+	}
+
+	// The HiddenAPILevel instances that are supported by a java_sdk_library.
+	//
+	// CorePlatformHiddenAPILevel is not used as the java_sdk_library does not have special support
+	// for core_platform API, instead it is implemented as a customized form of PublicHiddenAPILevel.
+	hiddenAPISdkLibrarySupportedLevels = []*HiddenAPILevel{
+		PublicHiddenAPILevel,
+		SystemHiddenAPILevel,
+		TestHiddenAPILevel,
+	}
+
+	// The HiddenAPILevel instances that are supported by the `hiddenapi list`.
+	hiddenAPIFlagLevels = []*HiddenAPILevel{
+		PublicHiddenAPILevel,
+		SystemHiddenAPILevel,
+		TestHiddenAPILevel,
+		CorePlatformHiddenAPILevel,
+	}
+)
+
 type hiddenAPIStubsDependencyTag struct {
 	blueprint.BaseDependencyTag
-	sdkKind android.SdkKind
+
+	// The api level for which this dependency was added.
+	apiLevel *HiddenAPILevel
 }
 
 func (b hiddenAPIStubsDependencyTag) ExcludeFromApexContents() {
@@ -65,24 +153,9 @@ var _ android.ReplaceSourceWithPrebuilt = hiddenAPIStubsDependencyTag{}
 var _ android.ExcludeFromApexContentsTag = hiddenAPIStubsDependencyTag{}
 var _ android.SdkMemberTypeDependencyTag = hiddenAPIStubsDependencyTag{}
 
-// hiddenAPIRelevantSdkKinds lists all the android.SdkKind instances that are needed by the hidden
-// API processing.
-//
-// These are in order from narrowest API surface to widest. Widest means the API stubs with the
-// biggest API surface, e.g. test is wider than system is wider than public. Core platform is
-// considered wider than test even though it has no relationship with test because the libraries
-// that provide core platform API don't provide test. While the core platform API is being converted
-// to a system API the system API is still a subset of core platform.
-var hiddenAPIRelevantSdkKinds = []android.SdkKind{
-	android.SdkPublic,
-	android.SdkSystem,
-	android.SdkTest,
-	android.SdkCorePlatform,
-}
-
 // hiddenAPIComputeMonolithicStubLibModules computes the set of module names that provide stubs
 // needed to produce the hidden API monolithic stub flags file.
-func hiddenAPIComputeMonolithicStubLibModules(config android.Config) map[android.SdkKind][]string {
+func hiddenAPIComputeMonolithicStubLibModules(config android.Config) map[*HiddenAPILevel][]string {
 	var publicStubModules []string
 	var systemStubModules []string
 	var testStubModules []string
@@ -115,22 +188,22 @@ func hiddenAPIComputeMonolithicStubLibModules(config android.Config) map[android
 		testStubModules = append(testStubModules, "jacoco-stubs")
 	}
 
-	m := map[android.SdkKind][]string{}
-	m[android.SdkPublic] = publicStubModules
-	m[android.SdkSystem] = systemStubModules
-	m[android.SdkTest] = testStubModules
-	m[android.SdkCorePlatform] = corePlatformStubModules
+	m := map[*HiddenAPILevel][]string{}
+	m[PublicHiddenAPILevel] = publicStubModules
+	m[SystemHiddenAPILevel] = systemStubModules
+	m[TestHiddenAPILevel] = testStubModules
+	m[CorePlatformHiddenAPILevel] = corePlatformStubModules
 	return m
 }
 
 // hiddenAPIAddStubLibDependencies adds dependencies onto the modules specified in
-// sdkKindToStubLibModules. It adds them in a well known order and uses an SdkKind specific tag to
-// identify the source of the dependency.
-func hiddenAPIAddStubLibDependencies(ctx android.BottomUpMutatorContext, sdkKindToStubLibModules map[android.SdkKind][]string) {
+// apiLevelToStubLibModules. It adds them in a well known order and uses a HiddenAPILevel specific
+// tag to identify the source of the dependency.
+func hiddenAPIAddStubLibDependencies(ctx android.BottomUpMutatorContext, apiLevelToStubLibModules map[*HiddenAPILevel][]string) {
 	module := ctx.Module()
-	for _, sdkKind := range hiddenAPIRelevantSdkKinds {
-		modules := sdkKindToStubLibModules[sdkKind]
-		ctx.AddDependency(module, hiddenAPIStubsDependencyTag{sdkKind: sdkKind}, modules...)
+	for _, apiLevel := range hiddenAPILevels {
+		modules := apiLevelToStubLibModules[apiLevel]
+		ctx.AddDependency(module, hiddenAPIStubsDependencyTag{apiLevel: apiLevel}, modules...)
 	}
 }
 
@@ -153,13 +226,6 @@ func hiddenAPIRetrieveDexJarBuildPath(ctx android.ModuleContext, module android.
 	return dexJar
 }
 
-var sdkKindToHiddenapiListOption = map[android.SdkKind]string{
-	android.SdkPublic:       "public-stub-classpath",
-	android.SdkSystem:       "system-stub-classpath",
-	android.SdkTest:         "test-stub-classpath",
-	android.SdkCorePlatform: "core-platform-stub-classpath",
-}
-
 // ruleToGenerateHiddenAPIStubFlagsFile creates a rule to create a hidden API stub flags file.
 //
 // The rule is initialized but not built so that the caller can modify it and select an appropriate
@@ -172,11 +238,11 @@ func ruleToGenerateHiddenAPIStubFlagsFile(ctx android.BuilderContext, outputPath
 
 	// Find the widest API stubs provided by the fragments on which this depends, if any.
 	var dependencyStubDexJars android.Paths
-	for i := len(hiddenAPIRelevantSdkKinds) - 1; i >= 0; i-- {
-		kind := hiddenAPIRelevantSdkKinds[i]
-		stubsForKind := input.DependencyStubDexJarsByKind[kind]
-		if len(stubsForKind) != 0 {
-			dependencyStubDexJars = stubsForKind
+	for i := len(hiddenAPILevels) - 1; i >= 0; i-- {
+		apiLevel := hiddenAPILevels[i]
+		stubsForAPILevel := input.DependencyStubDexJarsByLevel[apiLevel]
+		if len(stubsForAPILevel) != 0 {
+			dependencyStubDexJars = stubsForAPILevel
 			break
 		}
 	}
@@ -187,16 +253,17 @@ func ruleToGenerateHiddenAPIStubFlagsFile(ctx android.BuilderContext, outputPath
 		FlagForEachInput("--dependency-stub-dex=", dependencyStubDexJars).
 		FlagForEachInput("--boot-dex=", bootDexJars)
 
-	// Iterate over the sdk kinds in a fixed order.
-	for _, sdkKind := range hiddenAPIRelevantSdkKinds {
-		// Merge in the stub dex jar paths for this kind from the fragments on which it depends. They
-		// will be needed to resolve dependencies from this fragment's stubs to classes in the other
-		// fragment's APIs.
-		dependencyPaths := input.DependencyStubDexJarsByKind[sdkKind]
-		paths := append(dependencyPaths, input.StubDexJarsByKind[sdkKind]...)
+	// Iterate over the api levels in a fixed order.
+	for _, apiLevel := range hiddenAPIFlagLevels {
+		// Merge in the stub dex jar paths for this api level from the fragments on which it depends.
+		// They will be needed to resolve dependencies from this fragment's stubs to classes in the
+		// other fragment's APIs.
+		var paths android.Paths
+		paths = append(paths, input.DependencyStubDexJarsByLevel[apiLevel]...)
+		paths = append(paths, input.StubDexJarsByLevel[apiLevel]...)
 		if len(paths) > 0 {
-			option := sdkKindToHiddenapiListOption[sdkKind]
-			command.FlagWithInputList("--"+option+"=", paths, ":")
+			option := apiLevel.hiddenAPIListOption
+			command.FlagWithInputList(option+"=", paths, ":")
 		}
 	}
 
@@ -377,8 +444,8 @@ type HiddenAPIInfo struct {
 	// that category.
 	FlagFilesByCategory FlagFilesByCategory
 
-	// The paths to the stub dex jars for each of the android.SdkKind in hiddenAPIRelevantSdkKinds.
-	TransitiveStubDexJarsByKind StubDexJarsByKind
+	// The paths to the stub dex jars for each of the *HiddenAPILevel in hiddenAPILevels.
+	TransitiveStubDexJarsByLevel StubDexJarsByLevel
 
 	// The output from the hidden API processing needs to be made available to other modules.
 	HiddenAPIFlagOutput
@@ -386,8 +453,8 @@ type HiddenAPIInfo struct {
 
 func newHiddenAPIInfo() *HiddenAPIInfo {
 	info := HiddenAPIInfo{
-		FlagFilesByCategory:         FlagFilesByCategory{},
-		TransitiveStubDexJarsByKind: StubDexJarsByKind{},
+		FlagFilesByCategory:          FlagFilesByCategory{},
+		TransitiveStubDexJarsByLevel: StubDexJarsByLevel{},
 	}
 	return &info
 }
@@ -398,33 +465,33 @@ func (i *HiddenAPIInfo) mergeFromFragmentDeps(ctx android.ModuleContext, fragmen
 	for _, fragment := range fragments {
 		if ctx.OtherModuleHasProvider(fragment, HiddenAPIInfoProvider) {
 			info := ctx.OtherModuleProvider(fragment, HiddenAPIInfoProvider).(HiddenAPIInfo)
-			i.TransitiveStubDexJarsByKind.append(info.TransitiveStubDexJarsByKind)
+			i.TransitiveStubDexJarsByLevel.append(info.TransitiveStubDexJarsByLevel)
 		}
 	}
 
 	// Dedup and sort paths.
-	i.TransitiveStubDexJarsByKind.dedupAndSort()
+	i.TransitiveStubDexJarsByLevel.dedupAndSort()
 }
 
 var HiddenAPIInfoProvider = blueprint.NewProvider(HiddenAPIInfo{})
 
-// StubDexJarsByKind maps an android.SdkKind to the paths to stub dex jars appropriate for that
-// level. See hiddenAPIRelevantSdkKinds for a list of the acceptable android.SdkKind values.
-type StubDexJarsByKind map[android.SdkKind]android.Paths
+// StubDexJarsByLevel maps a *HiddenAPILevel to the paths to stub dex jars appropriate for that
+// level. See hiddenAPILevels for a list of the acceptable *HiddenAPILevel values.
+type StubDexJarsByLevel map[*HiddenAPILevel]android.Paths
 
-// append appends the supplied kind specific stub dex jar pargs to the corresponding kind in this
+// append appends the API level specific stub dex jar args to the corresponding level in this
 // map.
-func (s StubDexJarsByKind) append(other StubDexJarsByKind) {
-	for _, kind := range hiddenAPIRelevantSdkKinds {
-		s[kind] = append(s[kind], other[kind]...)
+func (s StubDexJarsByLevel) append(other StubDexJarsByLevel) {
+	for _, level := range hiddenAPILevels {
+		s[level] = append(s[level], other[level]...)
 	}
 }
 
 // dedupAndSort removes duplicates in the stub dex jar paths and sorts them into a consistent and
 // deterministic order.
-func (s StubDexJarsByKind) dedupAndSort() {
-	for kind, paths := range s {
-		s[kind] = android.SortedUniquePaths(paths)
+func (s StubDexJarsByLevel) dedupAndSort() {
+	for apiLevel, paths := range s {
+		s[apiLevel] = android.SortedUniquePaths(paths)
 	}
 }
 
@@ -435,14 +502,14 @@ type HiddenAPIFlagInput struct {
 	// from the stub dex files.
 	FlagFilesByCategory FlagFilesByCategory
 
-	// StubDexJarsByKind contains the stub dex jars for different android.SdkKind and which determine
+	// StubDexJarsByLevel contains the stub dex jars for different *HiddenAPILevel and which determine
 	// the initial flags for each dex member.
-	StubDexJarsByKind StubDexJarsByKind
+	StubDexJarsByLevel StubDexJarsByLevel
 
-	// DependencyStubDexJarsByKind contains the stub dex jars provided by the fragments on which this
-	// depends. It is the result of merging HiddenAPIInfo.TransitiveStubDexJarsByKind from each
+	// DependencyStubDexJarsByLevel contains the stub dex jars provided by the fragments on which this
+	// depends. It is the result of merging HiddenAPIInfo.TransitiveStubDexJarsByLevel from each
 	// fragment on which this depends.
-	DependencyStubDexJarsByKind StubDexJarsByKind
+	DependencyStubDexJarsByLevel StubDexJarsByLevel
 
 	// RemovedTxtFiles is the list of removed.txt files provided by java_sdk_library modules that are
 	// specified in the bootclasspath_fragment's stub_libs and contents properties.
@@ -452,8 +519,9 @@ type HiddenAPIFlagInput struct {
 // newHiddenAPIFlagInput creates a new initialize HiddenAPIFlagInput struct.
 func newHiddenAPIFlagInput() HiddenAPIFlagInput {
 	input := HiddenAPIFlagInput{
-		FlagFilesByCategory: FlagFilesByCategory{},
-		StubDexJarsByKind:   StubDexJarsByKind{},
+		FlagFilesByCategory:          FlagFilesByCategory{},
+		StubDexJarsByLevel:           StubDexJarsByLevel{},
+		DependencyStubDexJarsByLevel: StubDexJarsByLevel{},
 	}
 
 	return input
@@ -469,7 +537,7 @@ func (i *HiddenAPIFlagInput) canPerformHiddenAPIProcessing(ctx android.ModuleCon
 	// required as the whole point of adding something to the bootclasspath fragment is to add it to
 	// the bootclasspath in order to be used by something else in the system. Without any stubs it
 	// cannot do that.
-	if len(i.StubDexJarsByKind) == 0 {
+	if len(i.StubDexJarsByLevel) == 0 {
 		return false
 	}
 
@@ -500,14 +568,15 @@ func (i *HiddenAPIFlagInput) canPerformHiddenAPIProcessing(ctx android.ModuleCon
 //
 // That includes paths to the stub dex jars as well as paths to the *removed.txt files.
 func (i *HiddenAPIFlagInput) gatherStubLibInfo(ctx android.ModuleContext, contents []android.Module) {
-	addFromModule := func(ctx android.ModuleContext, module android.Module, kind android.SdkKind) {
-		dexJar := hiddenAPIRetrieveDexJarBuildPath(ctx, module, kind)
+	addFromModule := func(ctx android.ModuleContext, module android.Module, apiLevel *HiddenAPILevel) {
+		sdkKind := apiLevel.sdkKind
+		dexJar := hiddenAPIRetrieveDexJarBuildPath(ctx, module, sdkKind)
 		if dexJar != nil {
-			i.StubDexJarsByKind[kind] = append(i.StubDexJarsByKind[kind], dexJar)
+			i.StubDexJarsByLevel[apiLevel] = append(i.StubDexJarsByLevel[apiLevel], dexJar)
 		}
 
 		if sdkLibrary, ok := module.(SdkLibraryDependency); ok {
-			removedTxtFile := sdkLibrary.SdkRemovedTxtFile(ctx, kind)
+			removedTxtFile := sdkLibrary.SdkRemovedTxtFile(ctx, sdkKind)
 			i.RemovedTxtFiles = append(i.RemovedTxtFiles, removedTxtFile.AsPaths()...)
 		}
 	}
@@ -515,11 +584,9 @@ func (i *HiddenAPIFlagInput) gatherStubLibInfo(ctx android.ModuleContext, conten
 	// If the contents includes any java_sdk_library modules then add them to the stubs.
 	for _, module := range contents {
 		if _, ok := module.(SdkLibraryDependency); ok {
-			// Add information for every possible kind needed by hidden API. SdkCorePlatform is not used
-			// as the java_sdk_library does not have special support for core_platform API, instead it is
-			// implemented as a customized form of SdkPublic.
-			for _, kind := range []android.SdkKind{android.SdkPublic, android.SdkSystem, android.SdkTest} {
-				addFromModule(ctx, module, kind)
+			// Add information for every possible API level needed by hidden API.
+			for _, apiLevel := range hiddenAPISdkLibrarySupportedLevels {
+				addFromModule(ctx, module, apiLevel)
 			}
 		}
 	}
@@ -527,13 +594,14 @@ func (i *HiddenAPIFlagInput) gatherStubLibInfo(ctx android.ModuleContext, conten
 	ctx.VisitDirectDeps(func(module android.Module) {
 		tag := ctx.OtherModuleDependencyTag(module)
 		if hiddenAPIStubsTag, ok := tag.(hiddenAPIStubsDependencyTag); ok {
-			kind := hiddenAPIStubsTag.sdkKind
-			addFromModule(ctx, module, kind)
+			apiLevel := hiddenAPIStubsTag.apiLevel
+			addFromModule(ctx, module, apiLevel)
 		}
 	})
 
 	// Normalize the paths, i.e. remove duplicates and sort.
-	i.StubDexJarsByKind.dedupAndSort()
+	i.StubDexJarsByLevel.dedupAndSort()
+	i.DependencyStubDexJarsByLevel.dedupAndSort()
 	i.RemovedTxtFiles = android.SortedUniquePaths(i.RemovedTxtFiles)
 }
 
@@ -546,9 +614,9 @@ func (i *HiddenAPIFlagInput) extractFlagFilesFromProperties(ctx android.ModuleCo
 	}
 }
 
-func (i *HiddenAPIFlagInput) transitiveStubDexJarsByKind() StubDexJarsByKind {
-	transitive := i.DependencyStubDexJarsByKind
-	transitive.append(i.StubDexJarsByKind)
+func (i *HiddenAPIFlagInput) transitiveStubDexJarsByLevel() StubDexJarsByLevel {
+	transitive := i.DependencyStubDexJarsByLevel
+	transitive.append(i.StubDexJarsByLevel)
 	return transitive
 }
 
