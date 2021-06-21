@@ -77,6 +77,7 @@ var (
 		"-Werror=address",
 		"-Werror=sequence-point",
 		"-Werror=format-security",
+		"-Werror=format-insufficient-args",
 	}
 
 	deviceGlobalCppflags = []string{
