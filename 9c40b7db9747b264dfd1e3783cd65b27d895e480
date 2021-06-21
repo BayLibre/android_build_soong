@@ -52,6 +52,24 @@
       "parentUuid": "88376821_0be03a9f",
       "revId": "9c40b7db9747b264dfd1e3783cd65b27d895e480",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21ade358_7dc77284",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-06-21T19:41:20Z",
+      "side": 1,
+      "message": "If it\u0027s not practical for us to fix the type info for these symbols that\u0027d work.",
+      "parentUuid": "fd1e7aa2_53e3795f",
+      "revId": "9c40b7db9747b264dfd1e3783cd65b27d895e480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
