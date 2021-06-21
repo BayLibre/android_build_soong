@@ -34,6 +34,23 @@
       "parentUuid": "dd0f643d_54511e5f",
       "revId": "d061d40eb6ffbc9d7cece2945b7276fe2f6759d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "803ecb09_cdf24d1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-21T13:45:56Z",
+      "side": 1,
+      "message": "This looks sane to me now..",
+      "revId": "d061d40eb6ffbc9d7cece2945b7276fe2f6759d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

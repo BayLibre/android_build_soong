@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d5c5784_5a1e9d5a",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-21T13:45:56Z",
+      "side": 0,
+      "message": "Is this actually okay? Are there other edge cases where this would cause issues?",
+      "range": {
+        "startLine": 527,
+        "startChar": 20,
+        "endLine": 527,
+        "endChar": 38
+      },
+      "revId": "51d7da2c4e62eccc5f0fe11cfa8cdf1cf67aa7c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
