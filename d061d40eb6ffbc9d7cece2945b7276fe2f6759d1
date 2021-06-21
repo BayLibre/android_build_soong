@@ -16,6 +16,24 @@
       "message": "Artur, I\u0027m not sure what I should do with this bug. Are you ok to review it with fresh eyes or would you like me to find someone else to review it?",
       "revId": "d061d40eb6ffbc9d7cece2945b7276fe2f6759d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cae7b18_20d1536e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-21T12:06:18Z",
+      "side": 1,
+      "message": "Yeah, I\u0027ll review this shortly.",
+      "parentUuid": "dd0f643d_54511e5f",
+      "revId": "d061d40eb6ffbc9d7cece2945b7276fe2f6759d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
