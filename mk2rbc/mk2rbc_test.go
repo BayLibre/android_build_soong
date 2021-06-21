@@ -750,6 +750,21 @@ def init(g, handle):
     cfg["PRODUCT_PACKAGES"] = (rblf.mkstrip("%s hwaddress" % " ".join(cfg.get("PRODUCT_PACKAGES", [])))).split()
 `,
 	},
+	{
+		desc:   "strip func in condition",
+		mkname: "product.mk",
+		in: `
+ifneq ($(strip $(TARGET_VENDOR)),)
+endif
+`,
+		expected: `load("//build/make/core:product_config.rbc", "rblf")
+
+def init(g, handle):
+  cfg = rblf.cfg(handle)
+  if rblf.mkstrip(g.get("TARGET_VENDOR", "")) != "":
+    pass
+`,
+	},
 }
 
 var known_variables = []struct {
