@@ -873,6 +873,8 @@ func (ctx *parseContext) parseCheckFunctionCallResult(directive *mkparser.Direct
 			return ctx.parseCompareWildcardFuncResult(directive, x, xValue, negate), true
 		case "findstring":
 			return ctx.parseCheckFindstringFuncResult(directive, x, xValue, negate), true
+		case "strip":
+			return ctx.parseCompareStripFuncResult(directive, x, xValue, negate), true
 		case "is-board-platform":
 			if xBad := checkIsSomethingFunction(x); xBad != nil {
 				return xBad, true
@@ -1007,6 +1009,20 @@ func (ctx *parseContext) parseCheckFindstringFuncResult(directive *mkparser.Dire
 		right: &intLiteralExpr{-1},
 		isEq:  !negate,
 	}
+}
+
+func (ctx *parseContext) parseCompareStripFuncResult(directive *mkparser.Directive,
+	xCall *callExpr, xValue starlarkExpr, negate bool) starlarkExpr {
+	if _, ok := xValue.(*stringLiteralExpr); !ok {
+		return ctx.newBadExpr(directive, "strip result can be compared only to string: %s", xValue)
+	}
+	return &eqExpr{
+		left: &callExpr{
+			name:       "strip",
+			args:       xCall.args,
+			returnType: starlarkTypeString,
+		},
+		right: xValue, isEq: !negate}
 }
 
 // parses $(...), returning an expression
