@@ -22,6 +22,30 @@
       },
       "revId": "51d7da2c4e62eccc5f0fe11cfa8cdf1cf67aa7c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5731eef0_5529cf65",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-21T18:05:33Z",
+      "side": 0,
+      "message": "The current (before this change) handling of stub dependencies is not strictly correct as it can end up with a prebuilt_bootclasspath_fragment ending up depending on a source module. However, fixing that is a little complicated.\n\nRestricting this to just use active modules prevents a prebuilt_bootclasspath_fragment working at all when it is preferred as it ends up depending on a source module which is not active so it gets ignored and the build breaks.\n\nThis is a step in the right direction but fixing it is a little more involved and I\u0027d like to submit this as it does make things slightly better. I will fix it in a follow up.",
+      "parentUuid": "2d5c5784_5a1e9d5a",
+      "range": {
+        "startLine": 527,
+        "startChar": 20,
+        "endLine": 527,
+        "endChar": 38
+      },
+      "revId": "51d7da2c4e62eccc5f0fe11cfa8cdf1cf67aa7c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
