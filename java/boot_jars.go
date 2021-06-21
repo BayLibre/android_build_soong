@@ -31,6 +31,11 @@ func isActiveModule(module android.Module) bool {
 // buildRuleForBootJarsPackageCheck generates the build rule to perform the boot jars package
 // check.
 func buildRuleForBootJarsPackageCheck(ctx android.ModuleContext, bootDexJarByModule bootDexJarByModule) {
+	config := ctx.Config()
+	if config.SkipBootJarsCheck() {
+		return
+	}
+
 	timestamp := android.PathForOutput(ctx, "boot-jars-package-check/stamp")
 
 	rule := android.NewRuleBuilder(pctx, ctx)
