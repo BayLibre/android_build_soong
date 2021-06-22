@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a080b49a_0495f197",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-22T20:57:59Z",
+      "side": 1,
+      "message": "Is this the source module?",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3d3f8e6_fb7b11c2",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-22T20:57:59Z",
+      "side": 1,
+      "message": "Can\u0027t these be replaced with a single *java.Module? The benefit is mainly to retain the restriction that they are (subobjects within) the same object.",
+      "range": {
+        "startLine": 636,
+        "startChar": 0,
+        "endLine": 637,
+        "endChar": 28
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98915cf0_b9debe76",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-22T20:57:59Z",
+      "side": 1,
+      "message": "It\u0027s worth pointing out that this will be used to dedupe top level SDK members in favour of these component modules.\n\nI also think it could be useful to add a brief explanation what \"components\" mean in this context; as it is it\u0027s not even clear that components are (names of) Soong modules.",
+      "range": {
+        "startLine": 1016,
+        "startChar": 0,
+        "endLine": 1017,
+        "endChar": 16
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b225e463_d2cf44ae",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-22T20:57:59Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this provider be in android/sdk.go?",
+      "range": {
+        "startLine": 1016,
+        "startChar": 0,
+        "endLine": 1023,
+        "endChar": 84
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47aa6031_5c0db584",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1201,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-22T20:57:59Z",
+      "side": 1,
+      "message": "Nit: This doesn\u0027t add anything that the code itself doesn\u0027t express.",
+      "range": {
+        "startLine": 1201,
+        "startChar": 6,
+        "endLine": 1201,
+        "endChar": 56
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bdf4246_d42368e7",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-22T20:57:59Z",
+      "side": 1,
+      "message": "Nit: Ditto.",
+      "range": {
+        "startLine": 283,
+        "startChar": 5,
+        "endLine": 283,
+        "endChar": 20
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9402e83b_3ec7f594",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-22T20:57:59Z",
+      "side": 1,
+      "message": "It\u0027s not obvious to me that this is desirable. Can you please elaborate on it? Should it perhaps be an error instead if the owner isn\u0027t exported itself?",
+      "range": {
+        "startLine": 474,
+        "startChar": 6,
+        "endLine": 474,
+        "endChar": 85
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3858253_7f646a33",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-22T20:57:59Z",
+      "side": 1,
+      "message": "Suggest \"components ExportedComponentsInfo\" instead, mainly for better typing - that way it\u0027s easy to find out what \"component modules\" means to here, without more docs.",
+      "range": {
+        "startLine": 1160,
+        "startChar": 1,
+        "endLine": 1160,
+        "endChar": 20
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
