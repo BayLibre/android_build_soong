@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc0bd8a6_47364b78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-22T16:01:53Z",
+      "side": 1,
+      "message": "I don\u0027t know what fvp_mini is, but it is present in AOSP, see https://cs.android.com/android/platform/superproject/+/master:device/generic/goldfish/fvp_mini.mk;l\u003d40\n\nGenerally, they\u0027re configurations that don\u0027t create a system image, e.g. builds that create sdk modules, etc.",
+      "parentUuid": "2b613119_6886c5ea",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "9ffbecc2c8e8a3705d922517b17c98db13d6cfcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "04d5abf5_5ae5449c",
