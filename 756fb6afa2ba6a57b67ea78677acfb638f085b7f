@@ -33,6 +33,24 @@
       "message": "Is comparing source modules the best comparison here? Why not just compare builtFile?\n\nHaving module names is useful in the error but I think it might be helpful to have the names of the source files as well.",
       "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "695501ee_adb2a783",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2027,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-22T19:42:02Z",
+      "side": 1,
+      "message": "I am not entirely sure if comparing modules is the best option here. If not, why not?\n\nBuiltFiles aren\u0027t really stable, and can represent the same file but in different locations, e.g.\nout/soong/.intermediates/external/libcxx/libc++/linux_glibc_x86_shared_apex10000/libc++.so\nand\nout/soong/.intermediates/external/libcxx/libc++/linux_glibc_x86_shared/libc++.so",
+      "parentUuid": "cca31663_fa955053",
+      "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
