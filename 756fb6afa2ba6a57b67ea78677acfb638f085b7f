@@ -51,6 +51,24 @@
       "parentUuid": "cca31663_fa955053",
       "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6375ea5_a5d33f3f",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2027,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-22T20:33:46Z",
+      "side": 1,
+      "message": "I can imagine a situation where two modules share the same file.\n\nI think in the case when you have an apex variant and a platform variant there is no guarantee that the .so files are the same. They could be built with different headers and so have different content.\n\nAlso, as this is in the apex.go file I suspect that it would never be given a platform variant of the file anyway.",
+      "parentUuid": "695501ee_adb2a783",
+      "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
