@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c8409b_ee3f354d",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-22T17:39:29Z",
+      "side": 1,
+      "message": "Paul, the build still fails for some targets with:\n\nprebuilts/runtime/mainline/i18n/sdk/Android.bp:32:1: module \"prebuilt_i18n-bootclasspath-fragment\" variant \"android_common\": [core-icu4j] in contents must also be declared in PRODUCT_UPDATABLE_BOOT_JARS\n\nAny thoughts?",
+      "range": {
+        "startLine": 538,
+        "startChar": 14,
+        "endLine": 538,
+        "endChar": 36
+      },
+      "revId": "71fec5051bac119a643f9f1e44f5e65c0e9a0a58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
