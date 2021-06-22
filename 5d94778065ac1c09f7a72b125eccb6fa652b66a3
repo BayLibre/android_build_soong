@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61bcd18f_e28de6e9",
+        "filename": "apex/platform_bootclasspath_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-22T19:06:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf1a59fb_b7223835",
+      "range": {
+        "startLine": 464,
+        "startChar": 5,
+        "endLine": 464,
+        "endChar": 56
+      },
+      "revId": "5d94778065ac1c09f7a72b125eccb6fa652b66a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16bed421_e7c37513",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-22T18:35:14Z",
       "side": 1,
       "message": "Presumably it is this and/or the configuration above that sets java.FixtureConfigureUpdatableBootJars(\"myapex:foo\") which determines whether the APEX generates its own config. It would be useful to add a comment here and/or there to explain that.",
+      "range": {
+        "startLine": 484,
+        "startChar": 4,
+        "endLine": 484,
+        "endChar": 21
+      },
+      "revId": "5d94778065ac1c09f7a72b125eccb6fa652b66a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82dce747_c33e9aca",
+        "filename": "apex/platform_bootclasspath_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-22T19:06:10Z",
+      "side": 1,
+      "message": "Added comment to the test func. It\u0027s the generate_classpaths_proto on the classpath fragment below.",
+      "parentUuid": "16bed421_e7c37513",
       "range": {
         "startLine": 484,
         "startChar": 4,
