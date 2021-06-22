@@ -22,6 +22,30 @@
       },
       "revId": "3302871b7d64ea1cfd5c56b7ac76f5c74db4e7fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0e310d6_ae455f36",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-22T16:10:50Z",
+      "side": 1,
+      "message": "We might be talking about two different duplicates.\n\n\u003e Is the dup really in fudging the \"art-module-sdk_\" prefix?\n\nWhat I mean by duplicate is that the art-module-sdk_art.module.public.api.stubs module is basically identical to the art.module.public.api.stubs module which was created by art.module.public.api. There are differences, e.g. the name and they each reference separate .jar files whose contents are identical.\n\n\u003e Isn\u0027t it rather a dup between a blahblah.api java_sdk_library_import that makes a blahblah.api.stubs, and a standalone blahblah.api.stubs?\n\nIn that case the duplicate would be obvious because the build would detect that two modules were created with the exact same name. This is what happens if the prebuilts/module_sdk/art module is not updated to remove the java_import module for art-module-sdk_art.module.public.api.stubs.",
+      "parentUuid": "c1339a3e_e10afef2",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 51
+      },
+      "revId": "3302871b7d64ea1cfd5c56b7ac76f5c74db4e7fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
