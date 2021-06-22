@@ -70,6 +70,30 @@
       },
       "revId": "3302871b7d64ea1cfd5c56b7ac76f5c74db4e7fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3705a04a_7cc3518c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-22T17:06:06Z",
+      "side": 1,
+      "message": "In this case it is also occurring with unversioned modules. art-module-sdk_art.module.public.api.stubs is an unversioned module that is internal to the sdk snaphot (that is why it has the \"art-module-sdk_\" prefix). An internal module is one that is only referenced from within other modules within the snapshot.",
+      "parentUuid": "8d43a2c4_cbd670f6",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 51
+      },
+      "revId": "3302871b7d64ea1cfd5c56b7ac76f5c74db4e7fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
