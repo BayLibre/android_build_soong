@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf1a59fb_b7223835",
+        "filename": "apex/platform_bootclasspath_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-22T18:35:14Z",
+      "side": 1,
+      "message": "I find a comment on the test and what it is trying to do is really helpful when reviewing a test.",
+      "range": {
+        "startLine": 464,
+        "startChar": 5,
+        "endLine": 464,
+        "endChar": 56
+      },
+      "revId": "5d94778065ac1c09f7a72b125eccb6fa652b66a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16bed421_e7c37513",
+        "filename": "apex/platform_bootclasspath_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-22T18:35:14Z",
+      "side": 1,
+      "message": "Presumably it is this and/or the configuration above that sets java.FixtureConfigureUpdatableBootJars(\"myapex:foo\") which determines whether the APEX generates its own config. It would be useful to add a comment here and/or there to explain that.",
+      "range": {
+        "startLine": 484,
+        "startChar": 4,
+        "endLine": 484,
+        "endChar": 21
+      },
+      "revId": "5d94778065ac1c09f7a72b125eccb6fa652b66a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

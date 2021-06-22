@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "420dc375_85dff88c",
+        "filename": "java/platform_bootclasspath_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-22T18:35:14Z",
+      "side": 0,
+      "message": "Why has this test been deleted? Presumably it cannot work in java package any more because it needs to create apexes. If so, why did you not just copy it to apex package and fix it? Is its functionality already tested in the apex package, if so what test covers that?",
+      "revId": "c04429a90bf8f6165f8438c7f77d071c209539cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
