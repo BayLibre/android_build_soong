@@ -33,6 +33,23 @@
       "message": "I am trying to avoid different builds having to manually exclude things like this and instead have Soong just do the correct thing. It makes it easier and simpler for build owners like yourself.\n\nWhat is the error that you get?",
       "revId": "eb17abfde15024f9d0abbee9c6b85e75e5bad180",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c0ed608_794b5fcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-22T09:35:44Z",
+      "side": 1,
+      "message": "AFAICT if there are no boot jars configured in a build then the check boot jars is essentially a no-op.",
+      "revId": "eb17abfde15024f9d0abbee9c6b85e75e5bad180",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
