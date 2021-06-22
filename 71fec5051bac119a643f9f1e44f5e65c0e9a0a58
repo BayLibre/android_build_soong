@@ -22,6 +22,30 @@
       },
       "revId": "71fec5051bac119a643f9f1e44f5e65c0e9a0a58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb1d3bb8_8fbfd4f7",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-22T18:38:07Z",
+      "side": 1,
+      "message": "I think that you need to restrict it to modules for which ApexInfoProvider returns an ApexInfo for which IsForPlatform() returns false.\n\nWe should not be creating a platform APEX for these modules but unfortunately we are, see http://b/187910671.",
+      "parentUuid": "c7c8409b_ee3f354d",
+      "range": {
+        "startLine": 538,
+        "startChar": 14,
+        "endLine": 538,
+        "endChar": 36
+      },
+      "revId": "71fec5051bac119a643f9f1e44f5e65c0e9a0a58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
