@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98e87620_1a68b46d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-22T14:28:16Z",
+      "side": 1,
+      "message": "No idea what this does, but I\u0027m fine rubber stamping unused code cleanup.",
+      "revId": "86fe8f851414d3e1ac6c19f3d16114fe318c8d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
