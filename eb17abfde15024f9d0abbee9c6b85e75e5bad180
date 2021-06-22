@@ -16,6 +16,23 @@
       "message": "Please review this small change.",
       "revId": "eb17abfde15024f9d0abbee9c6b85e75e5bad180",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17d29578_2f5ad850",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-22T09:34:40Z",
+      "side": 1,
+      "message": "I am trying to avoid different builds having to manually exclude things like this and instead have Soong just do the correct thing. It makes it easier and simpler for build owners like yourself.\n\nWhat is the error that you get?",
+      "revId": "eb17abfde15024f9d0abbee9c6b85e75e5bad180",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
