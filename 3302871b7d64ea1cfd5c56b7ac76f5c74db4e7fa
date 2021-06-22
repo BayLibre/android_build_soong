@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1339a3e_e10afef2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-22T15:25:39Z",
+      "side": 1,
+      "message": "Is the dup really in fudging the \"art-module-sdk_\" prefix? Isn\u0027t it rather a dup between a blahblah.api java_sdk_library_import that makes a blahblah.api.stubs, and a standalone blahblah.api.stubs?",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 51
+      },
+      "revId": "3302871b7d64ea1cfd5c56b7ac76f5c74db4e7fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
