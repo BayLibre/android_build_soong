@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6fbb608_6d4ac018",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-22T21:23:04Z",
+      "side": 1,
+      "message": "I suggest adding a check here that the struct implements some interface, say sdk.SnapshotPrintable, so that we more easily catch mistakes if structs end up being unintentionally serialised due the the recursion.",
+      "revId": "e7c5754cb83f66ea65fcc1f780a2e597fc76bf2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96358eb4_5c5ef0ae",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-22T21:23:04Z",
+      "side": 1,
+      "message": "What about bool?",
+      "revId": "e7c5754cb83f66ea65fcc1f780a2e597fc76bf2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
