@@ -39,6 +39,24 @@
       "message": "Verified that this works for our case.",
       "revId": "9ffbecc2c8e8a3705d922517b17c98db13d6cfcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e731acb3_dc8e06fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-22T15:37:19Z",
+      "side": 1,
+      "message": "Brilliant. Thanks for the quick feedback.",
+      "parentUuid": "04d5abf5_5ae5449c",
+      "revId": "9ffbecc2c8e8a3705d922517b17c98db13d6cfcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
