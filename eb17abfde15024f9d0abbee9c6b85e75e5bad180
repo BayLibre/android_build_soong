@@ -86,6 +86,24 @@
       "parentUuid": "00de1025_33946c54",
       "revId": "eb17abfde15024f9d0abbee9c6b85e75e5bad180",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62e7c034_68284c0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268141
+      },
+      "writtenOn": "2021-06-22T14:04:35Z",
+      "side": 1,
+      "message": "Thank you for the change, I\u0027ll test it and let you know if it fixes the issue (it should, as far as I can tell). I back removing these various extra options, it makes config easier.\n\nI am not aware of other options we would need to consider.",
+      "parentUuid": "91f928b7_66a40535",
+      "revId": "eb17abfde15024f9d0abbee9c6b85e75e5bad180",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
