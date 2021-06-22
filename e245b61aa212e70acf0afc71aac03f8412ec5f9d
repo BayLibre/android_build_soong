@@ -33,6 +33,24 @@
       "message": "Paul, I am confused why this works without mybootclasspath-fragment decalred here? Sorry, didn\u0027t see that during code review.",
       "revId": "e245b61aa212e70acf0afc71aac03f8412ec5f9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8a601bf_caee2412",
+        "filename": "apex/classpath_element_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-22T18:25:06Z",
+      "side": 1,
+      "message": "It works because this test does not care about what happens in myplatform-bootclasspath.\n\nThe modules exist only to provide the inputs to CreateClasspathElements() in the various tests.\n\nIs there some specific way you think that this should be failing?",
+      "parentUuid": "97598091_2ec2aa9b",
+      "revId": "e245b61aa212e70acf0afc71aac03f8412ec5f9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
