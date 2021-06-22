@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13798e37_677a88e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-22T21:13:51Z",
+      "side": 1,
+      "message": "Nit: Imo a more natural separation would be to add the generic struct support here and limit the next CL to the Fragments-specific code (and punt the testing of the struct formatting to that CL). But nvm, it doesn\u0027t matter much.",
+      "range": {
+        "startLine": 11,
+        "startChar": 57,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "a08e4dcfefb8c506e860f1774eee0bf5739cfd70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
