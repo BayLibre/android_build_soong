@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b08fd22_066daf58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-06-22T23:30:04Z",
+      "side": 1,
+      "message": "Hadrien, Karl: this is the CL that introduced the module name to label map in the @soong_inection repo.",
+      "revId": "c63677b3c98d48b59a03075317bce4551d63aa5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
