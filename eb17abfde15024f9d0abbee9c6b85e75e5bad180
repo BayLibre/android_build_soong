@@ -50,6 +50,24 @@
       "message": "AFAICT if there are no boot jars configured in a build then the check boot jars is essentially a no-op.",
       "revId": "eb17abfde15024f9d0abbee9c6b85e75e5bad180",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00de1025_33946c54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268141
+      },
+      "writtenOn": "2021-06-22T12:24:28Z",
+      "side": 1,
+      "message": "Hi Paul,\n\nfvp_mini sets this envvar:\nhttps://android.googlesource.com/device/generic/goldfish/+/refs/heads/master/fvp_mini.mk#41\n\nLines 63-66 got removed recently in\nhttps://android-review.googlesource.com/c/platform/build/soong/+/1737753/10/java/boot_jars.go\n\nThe error we see it the following:\n\n----------\nFAILED: out/soong/boot-jars-package-check/stamp\nout/soong/host/linux-x86/bin/check_boot_jars out/soong/host/linux-x86/bin/dexdump build/soong/scripts/check_boot_jars/package_allowed_list.txt \u0026\u0026 touch out/soong/boot-jars-package-check/stamp # ...\n\nCheck boot jars.\n\nUsage: check_boot_jars.py \u003cdexdump_path\u003e \u003cpackage_allow_list_file\u003e \u003cjar1\u003e \u003cjar2\u003e ...\n----------\n\nIn short, check_boot_jars.py seems to be invoked with no jar files and so it complains.",
+      "parentUuid": "17d29578_2f5ad850",
+      "revId": "eb17abfde15024f9d0abbee9c6b85e75e5bad180",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
