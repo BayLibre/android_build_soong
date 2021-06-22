@@ -147,11 +147,12 @@ type StaticOrSharedProperties struct {
 
 	Cflags []string `android:"arch_variant"`
 
-	Enabled            *bool    `android:"arch_variant"`
-	Whole_static_libs  []string `android:"arch_variant"`
-	Static_libs        []string `android:"arch_variant"`
-	Shared_libs        []string `android:"arch_variant"`
-	System_shared_libs []string `android:"arch_variant"`
+	Enabled             *bool    `android:"arch_variant"`
+	Whole_static_libs   []string `android:"arch_variant"`
+	Static_libs         []string `android:"arch_variant"`
+	Shared_libs         []string `android:"arch_variant"`
+	System_shared_libs  []string `android:"arch_variant"`
+	Default_shared_libs []string `android:"arch_variant"`
 
 	Export_shared_lib_headers []string `android:"arch_variant"`
 	Export_static_lib_headers []string `android:"arch_variant"`
@@ -1156,10 +1157,16 @@ func (library *libraryDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
 		if library.StaticProperties.Static.System_shared_libs != nil {
 			library.baseLinker.Properties.System_shared_libs = library.StaticProperties.Static.System_shared_libs
 		}
+		if library.StaticProperties.Static.Default_shared_libs != nil {
+			library.baseLinker.Properties.Default_shared_libs = library.StaticProperties.Static.Default_shared_libs
+		}
 	} else if library.shared() {
 		// Compare with nil because an empty list needs to be propagated.
 		if library.SharedProperties.Shared.System_shared_libs != nil {
 			library.baseLinker.Properties.System_shared_libs = library.SharedProperties.Shared.System_shared_libs
+		}
+		if library.SharedProperties.Shared.Default_shared_libs != nil {
+			library.baseLinker.Properties.Default_shared_libs = library.SharedProperties.Shared.Default_shared_libs
 		}
 	}
 
@@ -1241,6 +1248,11 @@ func (library *libraryDecorator) linkerSpecifiedDeps(specifiedDeps specifiedDeps
 		specifiedDeps.systemSharedLibs = properties.System_shared_libs
 	} else {
 		specifiedDeps.systemSharedLibs = append(specifiedDeps.systemSharedLibs, properties.System_shared_libs...)
+	}
+	if specifiedDeps.systemSharedLibs == nil {
+		specifiedDeps.systemSharedLibs = properties.Default_shared_libs
+	} else {
+		specifiedDeps.systemSharedLibs = append(specifiedDeps.systemSharedLibs, properties.Default_shared_libs...)
 	}
 
 	specifiedDeps.sharedLibs = android.FirstUniqueStrings(specifiedDeps.sharedLibs)
