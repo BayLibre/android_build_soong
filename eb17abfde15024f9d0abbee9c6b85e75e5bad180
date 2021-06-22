@@ -68,6 +68,24 @@
       "parentUuid": "17d29578_2f5ad850",
       "revId": "eb17abfde15024f9d0abbee9c6b85e75e5bad180",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91f928b7_66a40535",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-22T14:01:23Z",
+      "side": 1,
+      "message": "Thanks for the feedback. I have uploaded https://r.android.com/1742164 as an alternate solution that does not require you to configure SKIP_BOOT_JARS_CHECK. Would you mind cherry picking that and verifying that it fixes your issue?\n\nAre there other build configuration options you provide for similar reasons?",
+      "parentUuid": "00de1025_33946c54",
+      "revId": "eb17abfde15024f9d0abbee9c6b85e75e5bad180",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
