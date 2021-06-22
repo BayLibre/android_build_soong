@@ -16,6 +16,23 @@
       "message": "Any idea if \"error: packages/modules/vndk/apex/Android.bp:19:1: module \"com.android.vndk.current\" variant \"android_common_image\": apex file lib64/libutils.so is provided by two different modules libutils{os:android,image:,arch:arm64_armv8-a-branchprot,sdk:,link:shared,version:,fuzzer:,apex:} and libutils_product{os:android,image:,arch:arm64_armv8-a-branchprot,sdk:,link:shared,version:}\" is expected?",
       "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cca31663_fa955053",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2027,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-22T18:43:16Z",
+      "side": 1,
+      "message": "Is comparing source modules the best comparison here? Why not just compare builtFile?\n\nHaving module names is useful in the error but I think it might be helpful to have the names of the source files as well.",
+      "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
