@@ -346,3 +346,40 @@ func TestPrebuiltRFSADirPath(t *testing.T) {
 		})
 	}
 }
+
+func TestPrebuiltFstabDirPath(t *testing.T) {
+	targetPath := "out/soong/target/product/test_device"
+	tests := []struct {
+		description  string
+		config       string
+		expectedPath string
+		variant      string
+	}{{
+		description: "prebuilt: vendor fstab",
+		config: `
+			prebuilt_fstab {
+				name: "foo.conf",
+				src: "foo.conf",
+				vendor: true,
+			}`,
+		expectedPath: filepath.Join(targetPath, "vendor/etc"),
+		variant:      "android_arm64_armv8-a",
+	}, {
+		description: "prebuilt: vendor_ramdisk fstab",
+		config: `
+			prebuilt_fstab {
+				name: "foo.conf",
+				src: "foo.conf",
+				vendor_ramdisk_available: true,
+			}`,
+		expectedPath: filepath.Join(targetPath, "vendor_ramdisk"),
+		variant:      "android_vendor_ramdisk_arm64_armv8-a",
+	}}
+	for _, tt := range tests {
+		t.Run(tt.description, func(t *testing.T) {
+			result := prepareForPrebuiltEtcTest.RunTestWithBp(t, tt.config)
+			p := result.Module("foo.conf", tt.variant).(*PrebuiltEtc)
+			android.AssertPathRelativeToTopEquals(t, "install dir", tt.expectedPath, p.installDirPath)
+		})
+	}
+}

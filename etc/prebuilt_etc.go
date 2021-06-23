@@ -55,6 +55,7 @@ func RegisterPrebuiltEtcBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("prebuilt_firmware", PrebuiltFirmwareFactory)
 	ctx.RegisterModuleType("prebuilt_dsp", PrebuiltDSPFactory)
 	ctx.RegisterModuleType("prebuilt_rfsa", PrebuiltRFSAFactory)
+	ctx.RegisterModuleType("prebuilt_fstab", PrebuiltFstabFactory)
 
 	ctx.RegisterModuleType("prebuilt_defaults", defaultsFactory)
 }
@@ -140,6 +141,7 @@ type PrebuiltEtc struct {
 	socInstallDirBase      string
 	installDirPath         android.InstallPath
 	additionalDependencies *android.Paths
+	isFstab                bool
 }
 
 type Defaults struct {
@@ -193,6 +195,10 @@ func (p *PrebuiltEtc) onlyInRecovery() bool {
 
 func (p *PrebuiltEtc) InstallInRecovery() bool {
 	return p.inRecovery()
+}
+
+func (p *PrebuiltEtc) InstallInRoot() bool {
+	return p.inVendorRamdisk() && p.isFstab
 }
 
 var _ android.ImageInterface = (*PrebuiltEtc)(nil)
@@ -264,6 +270,9 @@ func (p *PrebuiltEtc) SubDir() string {
 }
 
 func (p *PrebuiltEtc) BaseDir() string {
+	if p.InstallInRoot() {
+		return "."
+	}
 	return p.installDirBase
 }
 
@@ -308,7 +317,7 @@ func (p *PrebuiltEtc) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	// If soc install dir was specified and SOC specific is set, set the installDirPath to the
 	// specified socInstallDirBase.
-	installBaseDir := p.installDirBase
+	installBaseDir := p.BaseDir()
 	if p.SocSpecific() && p.socInstallDirBase != "" {
 		installBaseDir = p.socInstallDirBase
 	}
@@ -490,6 +499,17 @@ func PrebuiltRFSAFactory() android.Module {
 	// many places outside of the application processor.  They could be moved to /vendor/dsp once
 	// that is cleaned up.
 	InitPrebuiltEtcModule(module, "lib/rfsa")
+	// This module is device-only
+	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
+	return module
+}
+
+// prebuilt_fstab installs a fstab file into <partition>/etc/, or into the root
+// of the vendor ramdisk in the case of the vendor ramdisk variant.
+func PrebuiltFstabFactory() android.Module {
+	module := &PrebuiltEtc{}
+	InitPrebuiltEtcModule(module, "etc")
+	module.isFstab = true
 	// This module is device-only
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
 	return module
