@@ -55,6 +55,12 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 
 		artModules := global.ArtApexJars
 		frameworkModules := global.BootJars.RemoveList(artModules)
+		// b/191127295 force core-icu4j into boot image, even if it is not on PRODUCT_BOOT_JARS
+		if global.UpdatableBootJars.ContainsJar("core-icu4j") {
+			if !frameworkModules.ContainsJar("core-icu4j") {
+				frameworkModules = frameworkModules.Append("com.android.i18n", "core-icu4j")
+			}
+		}
 
 		artDirOnHost := "apex/art_boot_images/javalib"
 		artDirOnDevice := "apex/com.android.art/javalib"
