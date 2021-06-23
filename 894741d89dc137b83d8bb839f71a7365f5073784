@@ -69,6 +69,24 @@
       "parentUuid": "f6413020_4f86b794",
       "revId": "894741d89dc137b83d8bb839f71a7365f5073784",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f43aed58_82cfff42",
+        "filename": "java/lint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-06-23T16:59:07Z",
+      "side": 1,
+      "message": "\u003e Can you check in the CL to generate  the  filtered db first and follow up with  the soong change?\n\nThis step has been done.\n\nHow do I import the prebuilt / where do I find it ? (I guess I could create one locally, but I don\u0027t think that\u0027s the way... and I need to do different prebuilts for aosp and sc-dev)",
+      "parentUuid": "5c48851e_9d7bc581",
+      "revId": "894741d89dc137b83d8bb839f71a7365f5073784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
