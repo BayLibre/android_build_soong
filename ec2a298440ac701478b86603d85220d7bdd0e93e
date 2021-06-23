@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7650f887_f599b34a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-23T16:16:37Z",
+      "side": 1,
+      "message": "PTAL. Once you\u0027ve +2\u0027d it I\u0027ll cherry pick this to sc-dev and submit there first.",
+      "revId": "ec2a298440ac701478b86603d85220d7bdd0e93e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
