@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a10c3581_51fc667c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-23T14:32:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef1f1e62_d1b62611",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66ab2408_876b7aa0",
@@ -126,6 +150,24 @@
       "side": 1,
       "message": "I can imagine a situation where two modules share the same file.\n\nI think in the case when you have an apex variant and a platform variant there is no guarantee that the .so files are the same. They could be built with different headers and so have different content.\n\nAlso, as this is in the apex.go file I suspect that it would never be given a platform variant of the file anyway.",
       "parentUuid": "695501ee_adb2a783",
+      "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b03bb3ca_1a0e3278",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2027,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-23T14:32:27Z",
+      "side": 1,
+      "message": "Right, to different modules generating the \"same\" file is imaginable, especially with different variants, platform, system, product, etc... However, having two different modules contributing the same file to an apex should always be an error?\n\nBottom line, we cannot check for equality of builtFile,right? The above two builtFiles is what an error gives me if I change this if condition. Is that a bug?",
+      "parentUuid": "c6375ea5_a5d33f3f",
       "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
