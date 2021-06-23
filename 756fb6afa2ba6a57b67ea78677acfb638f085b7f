@@ -103,6 +103,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8e01df1_742772c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-06-23T17:04:45Z",
+      "side": 1,
+      "message": "It was a bug. aosp/1744554 would fix it.\n\nThe check to discard VNDK-ext was missing in legacy mode.\n\nThank you, Artur.",
+      "parentUuid": "bf30da21_785eb64e",
+      "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cca31663_fa955053",
         "filename": "apex/apex.go",
         "patchSetId": 1
