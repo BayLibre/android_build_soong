@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40cd2055_59894d0f",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-23T13:36:38Z",
+      "side": 1,
+      "message": "I don\u0027t see why this can\u0027t be added to the android.Module interface instead, but that\u0027s maybe a different discussion.",
+      "range": {
+        "startLine": 639,
+        "startChar": 1,
+        "endLine": 639,
+        "endChar": 24
+      },
+      "revId": "71b33cca9d3a589badc714063e47a28b94df31a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
