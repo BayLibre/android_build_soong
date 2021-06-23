@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6670a1b2_aad3fe42",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-23T15:56:30Z",
+      "side": 1,
+      "message": "Still there, but no big deal.",
+      "parentUuid": "33393cbf_5d3f63a6",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3d3f8e6_fb7b11c2",
