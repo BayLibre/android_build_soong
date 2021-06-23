@@ -34,6 +34,24 @@
       "parentUuid": "f4205f6e_64328932",
       "revId": "00a6f65ca97a0e7197d9032d04384e7fe1f8f7bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "671eb383_5100e250",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-23T20:12:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "667b2cca_5505e11d",
+      "revId": "00a6f65ca97a0e7197d9032d04384e7fe1f8f7bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
