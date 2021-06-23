@@ -485,6 +485,9 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 	if Bool(s.Hwaddress) {
 		s.Address = nil
 		s.Thread = nil
+		s.Diag.Undefined = nil
+		s.Diag.Integer_overflow = nil
+		s.Diag.Misc_undefined = nil
 	}
 
 	// TODO(b/131771163): CFI transiently depends on LTO, and thus Fuzzer is
