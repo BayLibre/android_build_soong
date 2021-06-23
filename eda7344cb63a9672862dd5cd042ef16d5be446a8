@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9289778_aabdaf55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-23T15:47:56Z",
+      "side": 1,
+      "message": "PTAL",
+      "revId": "eda7344cb63a9672862dd5cd042ef16d5be446a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "927ed4e8_b509c65d",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-06-23T13:36:12Z",
       "side": 1,
       "message": "This can be dropped now, I think.",
+      "range": {
+        "startLine": 645,
+        "startChar": 1,
+        "endLine": 645,
+        "endChar": 26
+      },
+      "revId": "eda7344cb63a9672862dd5cd042ef16d5be446a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef96afca_0397d7c6",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-23T15:47:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "927ed4e8_b509c65d",
       "range": {
         "startLine": 645,
         "startChar": 1,
