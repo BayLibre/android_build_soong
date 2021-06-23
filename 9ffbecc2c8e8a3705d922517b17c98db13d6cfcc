@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bacc0ff9_36b17550",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1268141
+      },
+      "writtenOn": "2021-06-23T07:28:20Z",
+      "side": 1,
+      "message": "fvp_mini is a stripped-down Android: provides a console and minimal set of services.\nhttps://android.googlesource.com/device/generic/goldfish/+/refs/heads/master/fvpbase/README.md#building-userspace\n\n\u003e The fvp-* lunch targets will build a full Android with UI support, while fvp_mini-* will build a small subset needed to boot to shell and support command line executables.",
+      "parentUuid": "f2b6700f_512e8304",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "9ffbecc2c8e8a3705d922517b17c98db13d6cfcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "04d5abf5_5ae5449c",
