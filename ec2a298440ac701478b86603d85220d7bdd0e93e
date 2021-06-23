@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef3c9057_3aa1c905",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-23T17:36:31Z",
+      "side": 1,
+      "message": "Since this goes into sc-dev first, remember the Merged-In tags in this topic.",
+      "revId": "ec2a298440ac701478b86603d85220d7bdd0e93e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7650f887_f599b34a",
