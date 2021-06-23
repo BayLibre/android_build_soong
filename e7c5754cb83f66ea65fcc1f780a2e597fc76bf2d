@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "643256ab_823bd185",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-23T10:58:33Z",
+      "side": 1,
+      "message": "Well, everything that isn\u0027t explicitly intended to get written out this way. The idea is to require every printable struct to implement an interface (with perhaps just a phony function), so that it\u0027s necessary to be explicit in the struct definitions that they get formatted like this. Besides the catching-mistakes aspect it also helps with awareness, in case someone looks to extend them etc.",
+      "parentUuid": "7adad6ea_7f2502fb",
+      "revId": "e7c5754cb83f66ea65fcc1f780a2e597fc76bf2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96358eb4_5c5ef0ae",
         "filename": "sdk/update.go",
         "patchSetId": 1
