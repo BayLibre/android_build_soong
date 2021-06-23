@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "27dd3c1e_15fd1b04",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1268141
+      },
+      "writtenOn": "2021-06-23T07:31:30Z",
+      "side": 1,
+      "message": "Thank you for this change.",
+      "parentUuid": "bacc0ff9_36b17550",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "9ffbecc2c8e8a3705d922517b17c98db13d6cfcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "04d5abf5_5ae5449c",
