@@ -367,6 +367,11 @@ func (d *Droidstubs) apiLevelsAnnotationsFlags(ctx android.ModuleContext, cmd *a
 
 	filename := proptools.StringDefault(d.properties.Api_levels_jar_filename, "android.jar")
 
+	systemStubs :=
+		strings.Contains(String(d.Javadoc.properties.Args), "--show-annotation android.annotation.SystemApi\\(client=android.annotation.SystemApi.Client.PRIVILEGED_APPS\\)")
+
+	var systemJarPatterns []string
+	var publicJarPatterns []string
 	ctx.VisitDirectDepsWithTag(metalavaAPILevelsAnnotationsDirTag, func(m android.Module) {
 		if t, ok := m.(*ExportedDroiddocDir); ok {
 			for _, dep := range t.deps {
@@ -383,12 +388,25 @@ func (d *Droidstubs) apiLevelsAnnotationsFlags(ctx android.ModuleContext, cmd *a
 					cmd.Implicit(dep)
 				}
 			}
-			cmd.FlagWithArg("--android-jar-pattern ", t.dir.String()+"/%/public/"+filename)
+
+			systemJarPatterns = append(systemJarPatterns, t.dir.String()+"/%/system/"+filename)
+			publicJarPatterns = append(publicJarPatterns, t.dir.String()+"/%/public/"+filename)
 		} else {
 			ctx.PropertyErrorf("api_levels_annotations_dirs",
 				"module %q is not a metalava api-levels-annotations dir", ctx.OtherModuleName(m))
 		}
 	})
+
+	// Order matters here: system stubs should be before public stubs if compiling with system APIs
+	// for metalava to prefer any existing system stubs over public ones.
+	var patterns []string
+	if systemStubs {
+		patterns = systemJarPatterns
+	}
+	patterns = append(patterns, publicJarPatterns...)
+	for _, pattern := range patterns {
+		cmd.FlagWithArg("--android-jar-pattern ", pattern)
+	}
 }
 
 func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersion javaVersion, srcs android.Paths,
