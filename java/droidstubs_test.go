@@ -81,6 +81,35 @@ func TestDroidstubs(t *testing.T) {
 	}
 }
 
+func TestSystemDroidstubs(t *testing.T) {
+	ctx, _ := testJavaWithFS(t, `
+		droiddoc_exported_dir {
+			name: "droiddoc-templates-sdk",
+			path: ".",
+		}
+
+		droidstubs {
+			name: "bar-stubs",
+			srcs: ["bar-doc/a.java"],
+			api_levels_annotations_dirs: ["droiddoc-templates-sdk"],
+			api_levels_annotations_enabled: true,
+			args: " --show-annotation android.annotation.SystemApi\\(client=android.annotation.SystemApi.Client.PRIVILEGED_APPS\\) ",
+		}
+		`,
+		map[string][]byte{
+			"bar-doc/a.java": nil,
+		})
+
+	m := ctx.ModuleForTests("bar-stubs", "android_common")
+	manifest := m.Output("metalava.sbox.textproto")
+	sboxProto := android.RuleBuilderSboxProtoForTests(t, manifest)
+	t.Errorf("SATAYEV error %v", String(sboxProto.Commands[0].Command))
+	expected := "--android-jar-pattern ./%/system/" + "android.jar"
+	if actual := String(sboxProto.Commands[0].Command); !strings.Contains(actual, expected) {
+		t.Errorf("For \"bar-stubs\", expected metalava argument %q, but was not found %q", expected, actual)
+	}
+}
+
 func TestDroidstubsSandbox(t *testing.T) {
 	ctx, _ := testJavaWithFS(t, `
 		genrule {

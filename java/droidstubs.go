@@ -367,6 +367,9 @@ func (d *Droidstubs) apiLevelsAnnotationsFlags(ctx android.ModuleContext, cmd *a
 
 	filename := proptools.StringDefault(d.properties.Api_levels_jar_filename, "android.jar")
 
+	systemStubs :=
+		strings.Contains(String(d.Javadoc.properties.Args), "--show-annotation android.annotation.SystemApi\\(client=android.annotation.SystemApi.Client.PRIVILEGED_APPS\\)")
+
 	ctx.VisitDirectDepsWithTag(metalavaAPILevelsAnnotationsDirTag, func(m android.Module) {
 		if t, ok := m.(*ExportedDroiddocDir); ok {
 			for _, dep := range t.deps {
@@ -383,7 +386,11 @@ func (d *Droidstubs) apiLevelsAnnotationsFlags(ctx android.ModuleContext, cmd *a
 					cmd.Implicit(dep)
 				}
 			}
-			cmd.FlagWithArg("--android-jar-pattern ", t.dir.String()+"/%/public/"+filename)
+			if systemStubs {
+				cmd.FlagWithArg("--android-jar-pattern ", t.dir.String()+"/%/system/"+filename)
+			} else {
+				cmd.FlagWithArg("--android-jar-pattern ", t.dir.String()+"/%/public/"+filename)
+			}
 		} else {
 			ctx.PropertyErrorf("api_levels_annotations_dirs",
 				"module %q is not a metalava api-levels-annotations dir", ctx.OtherModuleName(m))
