@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5bdfb53_a2e83874",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-23T11:15:19Z",
+      "side": 1,
+      "message": "PTAL. I extracted a separate change to clean up the use of *ModuleBase.",
+      "revId": "eda7344cb63a9672862dd5cd042ef16d5be446a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

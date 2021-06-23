@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "feea5fe1_22b18fa8",
+        "filename": "android/sdk.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-23T11:15:19Z",
+      "side": 1,
+      "message": "This method can be called by both source and prebuilt modules but is intended for use by the prebuilt modules. I have clarified that this takes the base name, i.e. without the prebuilt_ prefix.",
+      "parentUuid": "a080b49a_0495f197",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 19
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3d3f8e6_fb7b11c2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-22T20:57:59Z",
       "side": 1,
       "message": "Can\u0027t these be replaced with a single *java.Module? The benefit is mainly to retain the restriction that they are (subobjects within) the same object.",
+      "range": {
+        "startLine": 636,
+        "startChar": 0,
+        "endLine": 637,
+        "endChar": 28
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8d8234b_eb4b96dd",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-23T11:15:19Z",
+      "side": 1,
+      "message": "It is not possible to obtain a *ModuleBase via the java.Module interface.\n\nI could potentially add BaseModuleName() method to SdkAware and remove *ModuleBase but I don\u0027t think that makes sense in terms of what SdkAware is for. I think it will be better to create a custom interface for use here that includes everything that is needed.",
+      "parentUuid": "a3d3f8e6_fb7b11c2",
       "range": {
         "startLine": 636,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af78387b_3dcdcfe9",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1017,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-23T11:15:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98915cf0_b9debe76",
+      "range": {
+        "startLine": 1016,
+        "startChar": 0,
+        "endLine": 1017,
+        "endChar": 16
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b225e463_d2cf44ae",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-22T20:57:59Z",
       "side": 1,
       "message": "Shouldn\u0027t this provider be in android/sdk.go?",
+      "range": {
+        "startLine": 1016,
+        "startChar": 0,
+        "endLine": 1023,
+        "endChar": 84
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "006c417c_487325b2",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-23T11:15:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b225e463_d2cf44ae",
       "range": {
         "startLine": 1016,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e402ddad_eac86ded",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1201,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-23T11:15:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47aa6031_5c0db584",
+      "range": {
+        "startLine": 1201,
+        "startChar": 6,
+        "endLine": 1201,
+        "endChar": 56
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bdf4246_d42368e7",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-06-22T20:57:59Z",
       "side": 1,
       "message": "Nit: Ditto.",
+      "range": {
+        "startLine": 283,
+        "startChar": 5,
+        "endLine": 283,
+        "endChar": 20
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d22e95f_7071f68e",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-23T11:15:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bdf4246_d42368e7",
       "range": {
         "startLine": 283,
         "startChar": 5,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91027c1a_ca283ee9",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-23T11:15:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9402e83b_3ec7f594",
+      "range": {
+        "startLine": 474,
+        "startChar": 6,
+        "endLine": 474,
+        "endChar": 85
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3858253_7f646a33",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-06-22T20:57:59Z",
       "side": 1,
       "message": "Suggest \"components ExportedComponentsInfo\" instead, mainly for better typing - that way it\u0027s easy to find out what \"component modules\" means to here, without more docs.",
+      "range": {
+        "startLine": 1160,
+        "startChar": 1,
+        "endLine": 1160,
+        "endChar": 20
+      },
+      "revId": "bbd389916eace79ca8b38eb8f08ee8d322f687c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6526d704_9ad4f43e",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1160,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-23T11:15:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3858253_7f646a33",
       "range": {
         "startLine": 1160,
         "startChar": 1,
