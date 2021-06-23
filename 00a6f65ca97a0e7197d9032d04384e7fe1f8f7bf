@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4205f6e_64328932",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-23T19:48:37Z",
+      "side": 1,
+      "message": "Add a comment here on why these are disabled and a TODO to reenable them?",
+      "revId": "00a6f65ca97a0e7197d9032d04384e7fe1f8f7bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
