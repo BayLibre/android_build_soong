@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef1f1e62_d1b62611",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-23T11:14:49Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 37,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66ab2408_876b7aa0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -32,6 +55,24 @@
       "side": 1,
       "message": "That does not look good to me. It might be that those files are identical but there are no guarantees that they will be. I can\u0027t see how they would end up in the apex.",
       "parentUuid": "66ab2408_876b7aa0",
+      "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf30da21_785eb64e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-23T11:14:49Z",
+      "side": 1,
+      "message": "I think this reveals a bug in the VNDK libs gathering routine. libutils_product is a testing-purpose VNDK-EXT library. It should never be included in the VNDK APEX.\n\nI see that such a VNDK-EXT library is explicitly filtered-out [1]. So I don\u0027t understand how it appears with this change. Jooyung made that part, so he might have a clue. Adding him.\n\n\n[1] https://source.corp.google.com/android/build/soong/cc/vndk.go;rcl\u003dHEAD;l\u003d379",
+      "parentUuid": "00cf7c1d_2ea98ffe",
       "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
