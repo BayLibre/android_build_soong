@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90a670b2_2641f64b",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-23T16:36:02Z",
+      "side": 1,
+      "message": "Appending to the value returned by RequiredModuleNames() is dangerous, if there is room in the backing array it will reuse the backing array, which could cause the value to change later.  I don\u0027t think there is currently an issue here, but it is safer to copy slices you don\u0027t own when appending to them.",
+      "revId": "4a89522f8d58d1c34f89a6d2b6dd9677a5219b59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
