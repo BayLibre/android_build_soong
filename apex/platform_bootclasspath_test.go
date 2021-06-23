@@ -540,3 +540,81 @@ func TestPlatformBootclasspath_IncludesRemainingApexJars(t *testing.T) {
 		"out/soong/target/product/test_device/system/etc/classpaths",
 	)
 }
+
+// TestPlatformBootclasspathModule_RuntimeI18nJar verifies that core-icu4j, if present, is always
+// in boot image and in platform's classpaths.proto config.
+func TestPlatformBootclasspathModule_RuntimeI18nJar(t *testing.T) {
+	preparer := android.GroupFixturePreparers(
+		prepareForTestWithPlatformBootclasspath,
+		android.FixtureMergeMockFs(android.MockFS{
+			"system/sepolicy/apex/com.android.i18n-file_contexts": nil,
+		}),
+		android.FixtureWithRootAndroidBp(`
+			platform_bootclasspath {
+				name: "platform-bootclasspath",
+				fragments: [
+					{
+						apex: "com.android.i18n",
+						module:"com.android.i18n-fragment",
+					},
+				],
+			}
+
+			apex {
+				name: "com.android.i18n",
+				key: "com.android.i18n.key",
+				bootclasspath_fragments: ["com.android.i18n-fragment"],
+				updatable: false,
+			}
+
+			apex_key {
+				name: "com.android.i18n.key",
+				public_key: "testkey.avbpubkey",
+				private_key: "testkey.pem",
+			}
+
+			bootclasspath_fragment {
+				name: "com.android.i18n-fragment",
+				generate_classpaths_proto: false,
+				contents: ["core-icu4j"],
+				apex_available: ["com.android.i18n"],
+			}
+
+			java_library {
+				name: "core-icu4j",
+				srcs: ["a.java"],
+				system_modules: "none",
+				sdk_version: "none",
+				compile_dex: true,
+				apex_available: ["com.android.i18n"],
+				permitted_packages: ["core.icu4j"],
+			}
+		`),
+	)
+
+	t.Run("core-icu4j is a boot jar", func(t *testing.T) {
+		result := android.GroupFixturePreparers(
+			preparer,
+			java.FixtureConfigureBootJars("com.android.i18n:core-icu4j"),
+		).RunTest(t)
+
+		java.CheckClasspathFragmentProtoContentInfoProvider(t, result, true, "com.android.i18n:core-icu4j", "bootclasspath.pb", "out/soong/target/product/test_device/system/etc/classpaths")
+	})
+
+	t.Run("core-icu4j is not a boot jar", func(t *testing.T) {
+		result := android.GroupFixturePreparers(
+			preparer,
+		).RunTest(t)
+
+		java.CheckClasspathFragmentProtoContentInfoProvider(t, result, true, "", "bootclasspath.pb", "out/soong/target/product/test_device/system/etc/classpaths")
+	})
+
+	t.Run("core-icu4j is an updatable boot jar", func(t *testing.T) {
+		result := android.GroupFixturePreparers(
+			preparer,
+			java.FixtureConfigureUpdatableBootJars("com.android.i18n:core-icu4j"),
+		).RunTest(t)
+
+		java.CheckClasspathFragmentProtoContentInfoProvider(t, result, true, "com.android.i18n:core-icu4j", "bootclasspath.pb", "out/soong/target/product/test_device/system/etc/classpaths")
+	})
+}

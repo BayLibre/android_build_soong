@@ -15,10 +15,9 @@
 package java
 
 import (
-	"fmt"
-
 	"android/soong/android"
 	"android/soong/dexpreopt"
+	"fmt"
 )
 
 func init() {
@@ -125,13 +124,11 @@ func (b *platformBootclasspathModule) hiddenAPIDepsMutator(ctx android.BottomUpM
 
 func (b *platformBootclasspathModule) BootclasspathDepsMutator(ctx android.BottomUpMutatorContext) {
 	// Add dependencies on all the modules configured in the "art" boot image.
-	artImageConfig := genBootImageConfigs(ctx)[artBootImageName]
-	addDependenciesOntoBootImageModules(ctx, artImageConfig.modules, platformBootclasspathArtBootJarDepTag)
+	addDependenciesOntoBootImageModules(ctx, artBootImageConfig(ctx).modules, platformBootclasspathArtBootJarDepTag)
 
 	// Add dependencies on all the non-updatable module configured in the "boot" boot image. That does
 	// not include modules configured in the "art" boot image.
-	bootImageConfig := b.getImageConfig(ctx)
-	addDependenciesOntoBootImageModules(ctx, bootImageConfig.modules, platformBootclasspathNonUpdatableBootJarDepTag)
+	addDependenciesOntoBootImageModules(ctx, b.getImageConfig(ctx).modules, platformBootclasspathNonUpdatableBootJarDepTag)
 
 	// Add dependencies on all the updatable modules.
 	updatableModules := dexpreopt.GetGlobalConfig(ctx).UpdatableBootJars
@@ -217,7 +214,9 @@ func (b *platformBootclasspathModule) configuredJars(ctx android.ModuleContext) 
 		}
 	}
 	for i := 0; i < remainingJars.Len(); i++ {
-		jars = jars.Append(remainingJars.Apex(i), remainingJars.Jar(i))
+		if !jars.ContainsJar(remainingJars.Jar(i)) {
+			jars = jars.Append(remainingJars.Apex(i), remainingJars.Jar(i))
+		}
 	}
 
 	return jars
