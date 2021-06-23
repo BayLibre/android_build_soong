@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "162ea0e4_8c4e8a7a",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-23T16:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "643256ab_823bd185",
+      "revId": "e7c5754cb83f66ea65fcc1f780a2e597fc76bf2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96358eb4_5c5ef0ae",
