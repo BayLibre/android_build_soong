@@ -311,7 +311,7 @@ func (gctx *generationContext) newLine() {
 }
 
 func (gctx *generationContext) emitConversionError(el ErrorLocation, message string) {
-	gctx.writef(`rblf.mkconversion("%s", %q)`, el, message)
+	gctx.writef(`rblf.mk2rbc_error("%s", %q)`, el, message)
 }
 
 type knownVariable struct {
