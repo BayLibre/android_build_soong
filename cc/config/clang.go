@@ -201,6 +201,8 @@ func init() {
 		"-Wno-non-c-typedef-for-linkage", // http://b/161304145
 		// New warnings to be fixed after clang-r407598
 		"-Wno-string-concatenation", // http://b/175068488
+		// New warnings to be fixed after clang-r428724
+		"-Wno-align-mismatch", // http://b/193679946
 	})
 
 	// Extra cflags for external third-party projects to disable warnings that
