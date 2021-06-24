@@ -265,3 +265,23 @@ python_binary_host {
         "linker_config_proto",
     ],
 }
+
+python_test_host {
+    name: "get_clang_version_test",
+    main: "get_clang_version_test.py",
+    srcs: [
+        "get_clang_version_test.py",
+        "get_clang_version.py",
+    ],
+    version: {
+        py2: {
+            enabled: true,
+        },
+        py3: {
+            enabled: true,
+        },
+    },
+    test_options: {
+        unit_test: true,
+    },
+}
