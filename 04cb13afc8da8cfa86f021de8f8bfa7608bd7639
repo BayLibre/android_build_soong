@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "662762ea_48c4e7d5",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-24T09:41:39Z",
+      "side": 1,
+      "message": "nit: keep this at the bottom of the file, it\u0027s more visible there.",
+      "range": {
+        "startLine": 721,
+        "startChar": 0,
+        "endLine": 721,
+        "endChar": 46
+      },
+      "revId": "04cb13afc8da8cfa86f021de8f8bfa7608bd7639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "142dc240_f6272669",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-24T09:41:39Z",
+      "side": 1,
+      "message": "You want UpdatableBootJars for myapex jars. THis isn\u0027t a problem now, but it would block submission of my other change.",
+      "range": {
+        "startLine": 736,
+        "startChar": 7,
+        "endLine": 736,
+        "endChar": 31
+      },
+      "revId": "04cb13afc8da8cfa86f021de8f8bfa7608bd7639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52ea2237_d4aaca71",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-24T09:41:39Z",
+      "side": 1,
+      "message": "is it okay not to use art in this test case? In prod it uses art image only, without setting java_libs property for extra content, the test doesn\u0027t really match reality.",
+      "revId": "04cb13afc8da8cfa86f021de8f8bfa7608bd7639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
