@@ -109,6 +109,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b15f540_16769e7b",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T14:36:15Z",
+      "side": 1,
+      "message": "When this content is written out to a file that ends up being checked into the git repository then no, you\u0027re not meant to edit it. Here in a test you can do what you like with it.",
+      "parentUuid": "abb9be00_94ce4455",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 39
+      },
+      "revId": "ea8f808580824fb1c0828ca9bc3644da274e8297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2717b824_d8770c14",
         "filename": "sdk/bootclasspath_fragment_sdk_test.go",
         "patchSetId": 1
@@ -168,6 +192,30 @@
       "side": 1,
       "message": "But the java_sdk_library itself isn\u0027t marked as shared_library:true, right?",
       "parentUuid": "f9956512_4649a97c",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 338,
+        "endChar": 22
+      },
+      "revId": "ea8f808580824fb1c0828ca9bc3644da274e8297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38b32268_f9e9c1cd",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T14:36:15Z",
+      "side": 1,
+      "message": "That\u0027s the default.",
+      "parentUuid": "f8baa201_06a87ab6",
       "range": {
         "startLine": 337,
         "startChar": 1,
