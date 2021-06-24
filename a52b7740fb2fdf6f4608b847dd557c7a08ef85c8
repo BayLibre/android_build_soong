@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d54ec18c_8b5d2aad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-24T19:22:39Z",
+      "side": 1,
+      "message": "Can you add a description of the motivation and contents of this change?",
+      "revId": "a52b7740fb2fdf6f4608b847dd557c7a08ef85c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5aff6820_d5c3fa09",
@@ -14,6 +31,23 @@
       "writtenOn": "2021-06-24T15:20:30Z",
       "side": 1,
       "message": "LGTM. Colin can you PTAL too?\n\n(it won\u0027t pass presubmit until I submit r.android.com/1745265)",
+      "revId": "a52b7740fb2fdf6f4608b847dd557c7a08ef85c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2fdfa0a_805f98c2",
+        "filename": "java/lint.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-24T19:22:39Z",
+      "side": 1,
+      "message": "Can you add a comment here on the difference betwen the filtered and unfiltered files and why one would be used over the other?",
       "revId": "a52b7740fb2fdf6f4608b847dd557c7a08ef85c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
