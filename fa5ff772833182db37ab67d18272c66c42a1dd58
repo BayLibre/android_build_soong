@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf28d0cd_a0d11fd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-24T18:17:05Z",
+      "side": 1,
+      "message": "can you add a test case for this?",
+      "revId": "fa5ff772833182db37ab67d18272c66c42a1dd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2798a41f_34f98627",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-24T18:17:05Z",
+      "side": 1,
+      "message": "this seems a bit unexpected -- if we get an error other than IsNotExist, should we raise it? or should we at least log the errors that are not IsNotExist?",
+      "range": {
+        "startLine": 328,
+        "startChar": 30,
+        "endLine": 328,
+        "endChar": 40
+      },
+      "revId": "fa5ff772833182db37ab67d18272c66c42a1dd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
