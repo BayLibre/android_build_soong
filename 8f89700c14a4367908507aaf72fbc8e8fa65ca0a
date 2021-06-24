@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbec878b_a4a58cde",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T20:34:26Z",
+      "side": 1,
+      "message": "Kind is usually used in go as a simply numeric enum. As this is similar to the apiScope structure from sdk_library.go, both inf form andd function do you mind if I rename it to HiddenAPIScope",
+      "parentUuid": "3386319a_348e23eb",
+      "range": {
+        "startLine": 9,
+        "startChar": 67,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "8f89700c14a4367908507aaf72fbc8e8fa65ca0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b0965525_af6baae2",
