@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a60c6dfd_e5e026be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T14:23:05Z",
+      "side": 1,
+      "message": "Anton, this does fix your repro case.",
+      "parentUuid": "5c0e4476_de93f256",
+      "revId": "ea8f808580824fb1c0828ca9bc3644da274e8297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9afbb7e4_dfddc173",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "631d925b_bf6643da",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T14:23:05Z",
+      "side": 1,
+      "message": "I manually edited it.",
+      "parentUuid": "9afbb7e4_dfddc173",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 39
+      },
+      "revId": "ea8f808580824fb1c0828ca9bc3644da274e8297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2717b824_d8770c14",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-06-24T14:04:31Z",
       "side": 1,
       "message": "Not sure why you are changing existing test case, instead of adding a new one? Are you losing any coverage?\n\nAlso, myothersdklibrary itself is not a shared_library, but a prebuilt is in this case. Do you also want to test the other way around? (not that it matters today)",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 338,
+        "endChar": 22
+      },
+      "revId": "ea8f808580824fb1c0828ca9bc3644da274e8297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9956512_4649a97c",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T14:23:05Z",
+      "side": 1,
+      "message": "I am changing an existing test case because you mentioned a while back that we should test with shared and not shared libraries. You were right because when I changed them I got the same error as the bug. I didn\u0027t actually set out to fix the bug.\n\nSwitching a couple of the libraries to be shared still leaves some unshared ones so coverage is unaffected.\n\nThe java_sdk_library_import needs to know that it is a shared library because that information is used for ensuring that an App\u0027s AndroidManifest.xml contains all the necessary \u0027\u003cuses-library\u003e\u0027 entries. The source and prebuilt need to behave the same way.",
+      "parentUuid": "2717b824_d8770c14",
       "range": {
         "startLine": 337,
         "startChar": 1,
