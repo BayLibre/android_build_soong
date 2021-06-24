@@ -109,8 +109,8 @@ PRODUCT_NAME := $(call foo0)
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
-  rblf.mkconversion("product.mk:2", "cannot handle invoking foo1")
-  rblf.mkconversion("product.mk:3", "cannot handle invoking foo0")
+  rblf.mk2rbc_error("product.mk:2", "cannot handle invoking foo1")
+  rblf.mk2rbc_error("product.mk:3", "cannot handle invoking foo0")
 `,
 	},
 	{
@@ -208,7 +208,7 @@ endef
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
-  rblf.mkconversion("product.mk:2", "define is not supported: some-macro")
+  rblf.mk2rbc_error("product.mk:2", "define is not supported: some-macro")
 `,
 	},
 	{
@@ -275,7 +275,7 @@ def init(g, handle):
     # Comment
     pass
   else:
-    rblf.mkconversion("product.mk:5", "cannot set predefined variable TARGET_COPY_OUT_RECOVERY to \"foo\", its value should be \"recovery\"")
+    rblf.mk2rbc_error("product.mk:5", "cannot set predefined variable TARGET_COPY_OUT_RECOVERY to \"foo\", its value should be \"recovery\"")
 `,
 	},
 	{
@@ -850,7 +850,7 @@ def init(g, handle):
   rblf.soong_config_namespace(g, "cvd")
   rblf.soong_config_set(g, "cvd", "launch_configs", "cvd_config_auto.json")
   rblf.soong_config_append(g, "cvd", "grub_config", "grub.cfg")
-  rblf.mkconversion("product.mk:7", "SOONG_CONFIG_ variables cannot be referenced, use soong_config_get instead: SOONG_CONFIG_cvd_grub_config")
+  rblf.mk2rbc_error("product.mk:7", "SOONG_CONFIG_ variables cannot be referenced, use soong_config_get instead: SOONG_CONFIG_cvd_grub_config")
 `,
 	}, {
 		desc:   "soong namespace accesses",
@@ -1041,7 +1041,7 @@ foo: foo.c
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
-  rblf.mkconversion("product.mk:2", "unsupported line rule:       foo: foo.c\n#gcc -o $@ $*")
+  rblf.mk2rbc_error("product.mk:2", "unsupported line rule:       foo: foo.c\n#gcc -o $@ $*")
 `,
 	},
 	{
@@ -1053,7 +1053,7 @@ override FOO:=`,
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
-  rblf.mkconversion("product.mk:2", "cannot handle override directive")
+  rblf.mk2rbc_error("product.mk:2", "cannot handle override directive")
   g["override FOO"] = ""
 `,
 	},
@@ -1068,7 +1068,7 @@ endif
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
-  if rblf.mkconversion("build/product.mk:2", "cannot handle invoking foobar"):
+  if rblf.mk2rbc_error("build/product.mk:2", "cannot handle invoking foobar"):
     pass
 `,
 	},
