@@ -16,6 +16,52 @@
       "message": "I\u0027ll make sure that this fixes your repro case.",
       "revId": "ea8f808580824fb1c0828ca9bc3644da274e8297",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9afbb7e4_dfddc173",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-24T14:04:31Z",
+      "side": 1,
+      "message": "did you regenerate this content?",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 39
+      },
+      "revId": "ea8f808580824fb1c0828ca9bc3644da274e8297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2717b824_d8770c14",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-24T14:04:31Z",
+      "side": 1,
+      "message": "Not sure why you are changing existing test case, instead of adding a new one? Are you losing any coverage?\n\nAlso, myothersdklibrary itself is not a shared_library, but a prebuilt is in this case. Do you also want to test the other way around? (not that it matters today)",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 338,
+        "endChar": 22
+      },
+      "revId": "ea8f808580824fb1c0828ca9bc3644da274e8297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
