@@ -4521,6 +4521,59 @@ func TestPrebuiltOverrides(t *testing.T) {
 	}
 }
 
+func TestPrebuiltApexName(t *testing.T) {
+	testApex(t, `
+		prebuilt_apex {
+			name: "com.company.android.myapex",
+			apex_name: "com.android.myapex",
+			src: "company-myapex-arm.apex",
+		}
+	`).ModuleForTests("com.company.android.myapex", "android_common_com.android.myapex")
+
+	testApex(t, `
+		apex_set {
+			name: "com.company.android.myapex",
+			apex_name: "com.android.myapex",
+			set: "company-myapex.apks",
+		}
+	`).ModuleForTests("com.company.android.myapex", "android_common_com.android.myapex")
+}
+
+func TestPrebuiltApexNameWithPlatformBootclasspath(t *testing.T) {
+	_ = android.GroupFixturePreparers(
+		java.PrepareForTestWithJavaDefaultModules,
+		PrepareForTestWithApexBuildComponents,
+		android.FixtureWithRootAndroidBp(`
+			platform_bootclasspath {
+				name: "platform-bootclasspath",
+				fragments: [
+					{
+						apex: "com.android.art",
+						module: "art-bootclasspath-fragment",
+					},
+				],
+			}
+
+			prebuilt_apex {
+				name: "com.company.android.art",
+				apex_name: "com.android.art",
+				src: "com.company.android.art-arm.apex",
+				exported_bootclasspath_fragments: ["art-bootclasspath-fragment"],
+			}
+
+			prebuilt_bootclasspath_fragment {
+				name: "art-bootclasspath-fragment",
+				contents: ["core-oj"],
+			}
+
+			java_import {
+				name: "core-oj",
+				jars: ["prebuilt.jar"],
+			}
+		`),
+	).RunTest(t)
+}
+
 // These tests verify that the prebuilt_apex/deapexer to java_import wiring allows for the
 // propagation of paths to dex implementation jars from the former to the latter.
 func TestPrebuiltExportDexImplementationJars(t *testing.T) {
