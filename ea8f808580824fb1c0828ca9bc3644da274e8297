@@ -155,6 +155,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07b0adb6_19695d18",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-24T14:48:34Z",
+      "side": 1,
+      "message": "separate CL in any case, but I think the \"DO NOT EDIT\" part can go away. Better to just document what generates it and what the more practical way of changing things are. It isn\u0027t unreasonable to edit if you know what you\u0027re doing ;)",
+      "parentUuid": "2895b1ab_bc17b090",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 39
+      },
+      "revId": "ea8f808580824fb1c0828ca9bc3644da274e8297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2717b824_d8770c14",
@@ -264,6 +288,30 @@
       "side": 1,
       "message": "Oh, the property defaults to \"true\" as a value. Didn\u0027t know that.",
       "parentUuid": "38b32268_f9e9c1cd",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 338,
+        "endChar": 22
+      },
+      "revId": "ea8f808580824fb1c0828ca9bc3644da274e8297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5b520c9_457ffccf",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-24T14:48:34Z",
+      "side": 1,
+      "message": "java_sdk_library was developed to clean up shared libraries around the platform as a convenient way to get api tracking set up correctly and all that sort of stuff... from a module PoV \"true\" being the default is weird, but the module usecase came later",
+      "parentUuid": "724cfcba_bb853470",
       "range": {
         "startLine": 337,
         "startChar": 1,
