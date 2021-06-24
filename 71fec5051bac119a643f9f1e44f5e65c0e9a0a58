@@ -94,6 +94,30 @@
       },
       "revId": "71fec5051bac119a643f9f1e44f5e65c0e9a0a58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d425f72_2dc0ca53",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-24T14:47:23Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t like it either.. but I wasted about an hour total on this, and didn\u0027t make any progress.. I assumme once I move icu4j to PRODUCT_UPDATABLE_BOOT_JARS things will change again, so I\u0027ll revisit after that is done.",
+      "parentUuid": "ee3b1de3_d7cb4a82",
+      "range": {
+        "startLine": 538,
+        "startChar": 14,
+        "endLine": 538,
+        "endChar": 36
+      },
+      "revId": "71fec5051bac119a643f9f1e44f5e65c0e9a0a58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
