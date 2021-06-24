@@ -794,11 +794,13 @@ LOCAL_MODULE_PATH := $(TARGET_OUT_DATA_APPS)
 include $(BUILD_CTS_SUPPORT_PACKAGE)
 `,
 		expected: `
-android_test {
+android_test_helper_app {
     name: "FooTest",
     defaults: ["cts_support_defaults"],
     test_suites: ["cts"],
-
+    local_module_path: {
+	var: "TARGET_OUT_DATA_APPS",
+    },
 }
 `,
 	},

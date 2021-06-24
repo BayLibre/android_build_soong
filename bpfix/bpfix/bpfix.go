@@ -319,7 +319,7 @@ func rewriteCtsModuleTypes(f *Fixer) error {
 		var defStr string
 		switch mod.Type {
 		case "cts_support_package":
-			mod.Type = "android_test"
+			mod.Type = "android_test_helper_app"
 			defStr = "cts_support_defaults"
 		case "cts_package":
 			mod.Type = "android_test"
