@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5ad6cc_e94c2c6b",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T21:09:39Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "662762ea_48c4e7d5",
+      "range": {
+        "startLine": 721,
+        "startChar": 0,
+        "endLine": 721,
+        "endChar": 46
+      },
+      "revId": "04cb13afc8da8cfa86f021de8f8bfa7608bd7639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "142dc240_f6272669",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b764a96f_b70f6f9f",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T21:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "142dc240_f6272669",
+      "range": {
+        "startLine": 736,
+        "startChar": 7,
+        "endLine": 736,
+        "endChar": 31
+      },
+      "revId": "04cb13afc8da8cfa86f021de8f8bfa7608bd7639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52ea2237_d4aaca71",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-06-24T09:41:39Z",
       "side": 1,
       "message": "is it okay not to use art in this test case? In prod it uses art image only, without setting java_libs property for extra content, the test doesn\u0027t really match reality.",
+      "revId": "04cb13afc8da8cfa86f021de8f8bfa7608bd7639",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60e39feb_11f1212e",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 744,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T21:09:39Z",
+      "side": 1,
+      "message": "Removed java_libs property.",
+      "parentUuid": "52ea2237_d4aaca71",
       "revId": "04cb13afc8da8cfa86f021de8f8bfa7608bd7639",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
