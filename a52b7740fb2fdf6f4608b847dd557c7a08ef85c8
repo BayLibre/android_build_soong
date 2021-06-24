@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5aff6820_d5c3fa09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-24T15:20:30Z",
+      "side": 1,
+      "message": "LGTM. Colin can you PTAL too?\n\n(it won\u0027t pass presubmit until I submit r.android.com/1745265)",
+      "revId": "a52b7740fb2fdf6f4608b847dd557c7a08ef85c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
