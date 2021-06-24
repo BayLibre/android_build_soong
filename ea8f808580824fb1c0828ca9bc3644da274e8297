@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c0e4476_de93f256",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T12:34:26Z",
+      "side": 1,
+      "message": "I\u0027ll make sure that this fixes your repro case.",
+      "revId": "ea8f808580824fb1c0828ca9bc3644da274e8297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
