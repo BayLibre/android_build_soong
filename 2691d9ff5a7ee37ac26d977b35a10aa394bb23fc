@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "698b45fd_faba35ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T08:11:05Z",
+      "side": 1,
+      "message": "Sorry, I seem to have missed this one and now it is conflicting, most likely with my stuff. I\u0027ll review once you have resolved the conflict.",
+      "revId": "2691d9ff5a7ee37ac26d977b35a10aa394bb23fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
