@@ -70,6 +70,30 @@
       },
       "revId": "71fec5051bac119a643f9f1e44f5e65c0e9a0a58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee3b1de3_d7cb4a82",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T14:38:46Z",
+      "side": 1,
+      "message": "That is very nasty but there is a todo so it\u0027s ok for now.",
+      "parentUuid": "cc7c3218_858fafd9",
+      "range": {
+        "startLine": 538,
+        "startChar": 14,
+        "endLine": 538,
+        "endChar": 36
+      },
+      "revId": "71fec5051bac119a643f9f1e44f5e65c0e9a0a58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
