@@ -224,6 +224,24 @@
       "parentUuid": "b03bb3ca_1a0e3278",
       "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aca9d844_8c4e6355",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2027,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-24T12:39:45Z",
+      "side": 1,
+      "message": "Right, I am with you on this now. I wasn\u0027t sure that linux_blic_x86_shared (without _apex suffix) was meant for the platform, or okay to be shared / it was common.\n\nOn a retry, I noticed that this is a problem with art host apex:\nerror: art/build/apex/Android.bp:384:1: module \"com.android.art.host\" variant \"linux_glibc_common_com.android.art.host_zip\": apex file lib64/libc++.so is provided by two different modules libc++{os:linux_glibc,arch:x86_64,link:shared,fuzzer:,apex:} and libc++{os:linux_glibc,arch:x86_64,link:shared,fuzzer:,apex:apex10000}\n\nIs that a bug? Should this be allowed?",
+      "parentUuid": "f164d63e_f9ce44de",
+      "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
