@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "08c95ed5_2912ca95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T20:46:11Z",
+      "side": 1,
+      "message": "FTR I did notice that we already had an android.ApiLevel type.",
+      "parentUuid": "d8604c36_dbe0618b",
+      "range": {
+        "startLine": 9,
+        "startChar": 67,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "8f89700c14a4367908507aaf72fbc8e8fa65ca0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b0965525_af6baae2",
