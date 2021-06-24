@@ -87,6 +87,24 @@
       "parentUuid": "5c48851e_9d7bc581",
       "revId": "894741d89dc137b83d8bb839f71a7365f5073784",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b377040_7e022fcd",
+        "filename": "java/lint.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-06-24T13:56:31Z",
+      "side": 1,
+      "message": "This is now done.",
+      "parentUuid": "f43aed58_82cfff42",
+      "revId": "894741d89dc137b83d8bb839f71a7365f5073784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
