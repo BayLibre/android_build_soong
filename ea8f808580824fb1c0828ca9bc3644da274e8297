@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abb9be00_94ce4455",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-24T14:30:57Z",
+      "side": 1,
+      "message": "This line is confusing.. Are you meant to edit this or not? :-)",
+      "parentUuid": "631d925b_bf6643da",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 39
+      },
+      "revId": "ea8f808580824fb1c0828ca9bc3644da274e8297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2717b824_d8770c14",
         "filename": "sdk/bootclasspath_fragment_sdk_test.go",
         "patchSetId": 1
@@ -120,6 +144,30 @@
       "side": 1,
       "message": "I am changing an existing test case because you mentioned a while back that we should test with shared and not shared libraries. You were right because when I changed them I got the same error as the bug. I didn\u0027t actually set out to fix the bug.\n\nSwitching a couple of the libraries to be shared still leaves some unshared ones so coverage is unaffected.\n\nThe java_sdk_library_import needs to know that it is a shared library because that information is used for ensuring that an App\u0027s AndroidManifest.xml contains all the necessary \u0027\u003cuses-library\u003e\u0027 entries. The source and prebuilt need to behave the same way.",
       "parentUuid": "2717b824_d8770c14",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 338,
+        "endChar": 22
+      },
+      "revId": "ea8f808580824fb1c0828ca9bc3644da274e8297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8baa201_06a87ab6",
+        "filename": "sdk/bootclasspath_fragment_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-24T14:30:57Z",
+      "side": 1,
+      "message": "But the java_sdk_library itself isn\u0027t marked as shared_library:true, right?",
+      "parentUuid": "f9956512_4649a97c",
       "range": {
         "startLine": 337,
         "startChar": 1,
