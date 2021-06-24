@@ -318,6 +318,12 @@ type apexBundle struct {
 	android.OverridableModuleBase
 	android.SdkBase
 
+	// Canonical name of this APEX bundle. Used to determine the path to the
+	// activated APEX on device (i.e. /apex/<apexVariationName>), and used for the
+	// apex mutator variations. For override_apex modules, this is the name of the
+	// overridden base module.
+	apexVariationName string
+
 	// Properties
 	properties            apexBundleProperties
 	targetProperties      apexTargetBundleProperties
@@ -824,6 +830,10 @@ var ApexBundleInfoProvider = blueprint.NewMutatorProvider(ApexBundleInfo{}, "ape
 
 var _ ApexInfoMutator = (*apexBundle)(nil)
 
+func (a *apexBundle) ApexVariationName() string {
+	return a.apexVariationName
+}
+
 // ApexInfoMutator is responsible for collecting modules that need to have apex variants. They are
 // identified by doing a graph walk starting from an apexBundle. Basically, all the (direct and
 // indirect) dependencies are collected. But a few types of modules that shouldn't be included in
@@ -912,15 +922,15 @@ func (a *apexBundle) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 	// This is the main part of this mutator. Mark the collected dependencies that they need to
 	// be built for this apexBundle.
 
-	// Note that there are many different names.
-	// ApexVariationName: this is the name of the apex variation
+	a.apexVariationName = // could be com.android.foo
+		proptools.StringDefault(a.properties.Apex_name, mctx.ModuleName())
 	apexInfo := android.ApexInfo{
-		ApexVariationName: mctx.ModuleName(), // could be com.android.foo
+		ApexVariationName: a.apexVariationName,
 		MinSdkVersion:     minSdkVersion,
 		RequiredSdks:      a.RequiredSdks(),
 		Updatable:         a.Updatable(),
-		InApexVariants:    []string{mctx.ModuleName()}, // could be com.android.foo
-		InApexModules:     []string{a.Name()},          // could be com.mycompany.android.foo
+		InApexVariants:    []string{a.apexVariationName},
+		InApexModules:     []string{a.Name()}, // could be com.mycompany.android.foo
 		ApexContents:      []*android.ApexContents{apexContents},
 	}
 	mctx.WalkDeps(func(child, parent android.Module) bool {
@@ -933,6 +943,10 @@ func (a *apexBundle) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 }
 
 type ApexInfoMutator interface {
+	// ApexVariationName returns the name of the APEX variation to use in the apex
+	// mutator etc. It is the same name as ApexInfo.ApexVariationName.
+	ApexVariationName() string
+
 	// ApexInfoMutator implementations must call BuildForApex(ApexInfo) on any modules that are
 	// depended upon by an apex and which require an apex specific variant.
 	ApexInfoMutator(android.TopDownMutatorContext)
@@ -1058,10 +1072,8 @@ func apexMutator(mctx android.BottomUpMutatorContext) {
 	}
 
 	// apexBundle itself is mutated so that it and its dependencies have the same apex variant.
-	// TODO(jiyong): document the reason why the VNDK APEX is an exception here.
-	unprefixedModuleName := android.RemoveOptionalPrebuiltPrefix(mctx.ModuleName())
-	if apexModuleTypeRequiresVariant(mctx.Module()) {
-		apexBundleName := unprefixedModuleName
+	if ai, ok := mctx.Module().(ApexInfoMutator); ok && apexModuleTypeRequiresVariant(ai) {
+		apexBundleName := ai.ApexVariationName()
 		mctx.CreateVariations(apexBundleName)
 		if strings.HasPrefix(apexBundleName, "com.android.art") {
 			// Create an alias from the platform variant. This is done to make
@@ -1084,6 +1096,7 @@ func apexMutator(mctx android.BottomUpMutatorContext) {
 		// apex variant name. This name matches the name used to create the variations of modules for
 		// which apexModuleTypeRequiresVariant return true.
 		// TODO(b/191269918): Remove this workaround.
+		unprefixedModuleName := android.RemoveOptionalPrebuiltPrefix(mctx.ModuleName())
 		mctx.SetDefaultDependencyVariation(&unprefixedModuleName)
 		mctx.CreateVariations(apexBundleName)
 		if strings.HasPrefix(apexBundleName, "com.android.art") {
@@ -1095,18 +1108,13 @@ func apexMutator(mctx android.BottomUpMutatorContext) {
 
 // apexModuleTypeRequiresVariant determines whether the module supplied requires an apex specific
 // variant.
-func apexModuleTypeRequiresVariant(module android.Module) bool {
+func apexModuleTypeRequiresVariant(module ApexInfoMutator) bool {
 	if a, ok := module.(*apexBundle); ok {
+		// TODO(jiyong): document the reason why the VNDK APEX is an exception here.
 		return !a.vndkApex
 	}
 
-	// Match apex_set and prebuilt_apex. Would also match apexBundle but that is handled specially
-	// above.
-	if _, ok := module.(ApexInfoMutator); ok {
-		return true
-	}
-
-	return false
+	return true
 }
 
 // See android.UpdateDirectlyInAnyApex
