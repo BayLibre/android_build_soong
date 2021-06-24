@@ -95,6 +95,10 @@ func (p *Prebuilt) ForcePrefer() {
 	p.properties.Prefer = proptools.BoolPtr(true)
 }
 
+func (p *Prebuilt) ForceNotPrefer() {
+	p.properties.Prefer = proptools.BoolPtr(false)
+}
+
 func (p *Prebuilt) Prefer() bool {
 	return proptools.Bool(p.properties.Prefer)
 }

@@ -108,6 +108,14 @@ func (p *prebuiltCommon) initPrebuiltCommon(module android.Module, properties *P
 	p.prebuiltCommonProperties = properties
 	android.InitSingleSourcePrebuiltModule(module.(android.PrebuiltInterface), properties, "Selected_apex")
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
+	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
+		// Building these prebuilts in unbundled builds doesn't make sense; we use unbundled
+		// build to make the prebuilts themselves. Force unset 'prefer' setting so that
+		// prebuilts are not preferred over source.
+		if p, ok := ctx.Module().(android.PrebuiltInterface); ok && ctx.Config().UnbundledBuild() {
+			p.Prebuilt().ForceNotPrefer()
+		}
+	})
 }
 
 func (p *prebuiltCommon) Prebuilt() *android.Prebuilt {
