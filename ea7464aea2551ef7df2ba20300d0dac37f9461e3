@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ca72686_b8d02d56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2021-06-24T04:21:12Z",
+      "side": 1,
+      "message": "\u003e Can we fix the limitation\n\nDo you mean make Android start looking for the fstab in /etc/ and /first_stage_ramdisk/etc/, in addition to / and /first_stage_ramdisk/?  That would be possible, but it would increase the number of places that Android looks for the fstab from 4 to 6 (and actually 12 to 18 since there are 3 suffixes tried for each directory).  On one hand there is clearly a precedent of looking for the fstab in a lot of different places, but on the other it seems preferable to avoid making the problem worse.\n\n\u003e or use prebuilt_root module type for vendor ramdisk?\n\nDo you mean that for each fstab, a prebuilt_etc module would be used to install it to vendor/etc/, and a prebuilt_root module would be used to install it to vendor_ramdisk/first_stage_ramdisk/?  That might work, although I was hoping there would be an easier way to do it.  Keep in mind that fstabs are a per-device thing, so whatever the canonical way to install them is / will be, it has to be duplicated in every device directory.  What solution do you think should be used going forwards?",
+      "parentUuid": "59ae03e6_d2fff146",
+      "range": {
+        "startLine": 19,
+        "startChar": 28,
+        "endLine": 20,
+        "endChar": 47
+      },
+      "revId": "ea7464aea2551ef7df2ba20300d0dac37f9461e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3637a8a9_2dd26847",
