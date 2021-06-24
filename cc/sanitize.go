@@ -61,7 +61,11 @@ var (
 	// used, but have no effect on assembly files
 	cfiAsflags = []string{"-flto", "-fvisibility=default"}
 	cfiLdflags = []string{"-flto", "-fsanitize-cfi-cross-dso", "-fsanitize=cfi",
-		"-Wl,-plugin-opt,O1"}
+		"-Wl,-plugin-opt,O1",
+		// TODO(b/194136530): Experimental PM when linking breaks CFI.
+		"-fno-experimental-new-pass-manager",
+	}
+
 	cfiExportsMapPath = "build/soong/cc/config/cfi_exports.map"
 
 	intOverflowCflags = []string{"-fsanitize-blacklist=build/soong/cc/config/integer_overflow_blocklist.txt"}
