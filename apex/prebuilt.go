@@ -102,12 +102,28 @@ type PrebuiltCommonProperties struct {
 	Exported_bootclasspath_fragments []string
 }
 
+// needsDeapexer returns true if the properties requires a deapexer module to be created.
+func (p *PrebuiltCommonProperties) needsDeapexer() bool {
+	return len(p.Exported_bootclasspath_fragments)+len(p.Exported_java_libs) > 0
+}
+
 // initPrebuiltCommon initializes the prebuiltCommon structure and performs initialization of the
 // module that is common to Prebuilt and ApexSet.
 func (p *prebuiltCommon) initPrebuiltCommon(module android.Module, properties *PrebuiltCommonProperties) {
 	p.prebuiltCommonProperties = properties
 	android.InitSingleSourcePrebuiltModule(module.(android.PrebuiltInterface), properties, "Selected_apex")
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
+
+	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
+		// If the module is not in the product packages and needs to extract files for use by the build
+		// then disable it as its files should not be used.
+		name := android.RemoveOptionalPrebuiltPrefix(module.Name())
+		if !ctx.Config().IsProductPackage(name) {
+			if properties.needsDeapexer() {
+				module.Disable()
+			}
+		}
+	})
 }
 
 func (p *prebuiltCommon) Prebuilt() *android.Prebuilt {
@@ -548,7 +564,7 @@ func createApexSelectorModule(ctx android.TopDownMutatorContext, name string, ap
 // the listed modules need access to files from within the prebuilt .apex file.
 func createDeapexerModuleIfNeeded(ctx android.TopDownMutatorContext, deapexerName string, apexFileSource string, properties *PrebuiltCommonProperties) {
 	// Only create the deapexer module if it is needed.
-	if len(properties.Exported_java_libs)+len(properties.Exported_bootclasspath_fragments) == 0 {
+	if !properties.needsDeapexer() {
 		return
 	}
 

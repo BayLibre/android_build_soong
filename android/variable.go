@@ -342,6 +342,8 @@ type productVariables struct {
 
 	WithDexpreopt bool `json:",omitempty"`
 
+	ProductPackages []string `json:",omitempty"`
+
 	ManifestPackageNameOverrides []string `json:",omitempty"`
 	CertificateOverrides         []string `json:",omitempty"`
 	PackageNameOverrides         []string `json:",omitempty"`

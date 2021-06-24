@@ -758,6 +758,11 @@ func (c *config) PlatformVersionActiveCodenames() []string {
 	return c.productVariables.Platform_version_active_codenames
 }
 
+// IsProductPackage returns true if the name is one of the packages defined in PRODUCT_PACKAGES.
+func (c *config) IsProductPackage(name string) bool {
+	return InList(name, c.productVariables.ProductPackages)
+}
+
 func (c *config) ProductAAPTConfig() []string {
 	return c.productVariables.AAPTConfig
 }
