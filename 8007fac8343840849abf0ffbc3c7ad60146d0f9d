@@ -16,6 +16,29 @@
       "message": "Please review when you have time, thanks!",
       "revId": "8007fac8343840849abf0ffbc3c7ad60146d0f9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb8859d_54621250",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-24T19:58:03Z",
+      "side": 1,
+      "message": "This would be simpler if you broke it up into multiple checks:\n\n if !ok {\n     // The definition is not a module.\n     continue\n }\n \n if mod.Type !\u003d \"android_test\" \u0026\u0026 mod.Type !\u003d \"android_test_helper_app\" {\n     // The module is not an android_test or android_test_helper_app.\n     continue\n }",
+      "range": {
+        "startLine": 628,
+        "startChar": 5,
+        "endLine": 628,
+        "endChar": 85
+      },
+      "revId": "8007fac8343840849abf0ffbc3c7ad60146d0f9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
