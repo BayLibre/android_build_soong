@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8604c36_dbe0618b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T20:40:56Z",
+      "side": 1,
+      "message": "I replaced it because I need to associate more HiddenAPI specific information to each level. Adding it in map[SdkKind]... is a bit adhoc and spreads the data about. I reused the approach that I used with apiScope in sdk_library as that worked well and allowed the removal of lots of boilerplate code.",
+      "parentUuid": "dbec878b_a4a58cde",
+      "range": {
+        "startLine": 9,
+        "startChar": 67,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "8f89700c14a4367908507aaf72fbc8e8fa65ca0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b0965525_af6baae2",
@@ -84,6 +108,30 @@
       "writtenOn": "2021-06-24T09:34:34Z",
       "side": 1,
       "message": "examples?",
+      "range": {
+        "startLine": 13,
+        "startChar": 38,
+        "endLine": 14,
+        "endChar": 65
+      },
+      "revId": "8f89700c14a4367908507aaf72fbc8e8fa65ca0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4dc311b_b692abee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T20:40:56Z",
+      "side": 1,
+      "message": "Firstly, there is the name of the option passed to \"hiddenapi list\". That is moved in here from the existing map. Following changes will add:\n1. A list of modules that provide stubs for libraries on bootclasspath that are not provided by an APEX, e.g. android-non-updatable.stubs.\n2. A better representation of the subset/superset relationship between the levels.\n\nIf we can remove the core platform support from hidden API processing then it would be possible to merge the HiddenAPIScope with the current apiScope.",
+      "parentUuid": "0272a6e4_4f2c8ecc",
       "range": {
         "startLine": 13,
         "startChar": 38,
