@@ -325,7 +325,7 @@ func convertOne(mkFile string) (ok bool) {
 	if *recurse {
 		for _, sub := range ss.SubConfigFiles() {
 			// File may be absent if it is a conditional load
-			if _, err := os.Stat(sub); os.IsNotExist(err) {
+			if _, err := os.Stat(sub); err != nil {
 				continue
 			}
 			ok = convertOne(sub) && ok
