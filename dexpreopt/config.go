@@ -186,7 +186,17 @@ func constructWritablePath(ctx android.PathContext, path string) android.Writabl
 
 // ParseGlobalConfig parses the given data assumed to be read from the global
 // dexpreopt.config file into a GlobalConfig struct.
-func ParseGlobalConfig(ctx android.PathContext, data []byte) (*GlobalConfig, error) {
+func ParseGlobalConfig(ctx android.PathContext, data []byte) (global *GlobalConfig, err error) {
+	defer func() {
+		// b/191127295 force core-icu4j into boot image, even if it is not on PRODUCT_BOOT_JARS
+		if global.UpdatableBootJars.ContainsJar("core-icu4j") {
+			if !global.BootJars.ContainsJar("core-icu4j") {
+				global.BootJars = global.BootJars.Append("com.android.i18n", "core-icu4j")
+			}
+			global.UpdatableBootJars = global.UpdatableBootJars.Remove("com.android.i18n", "core-icu4j")
+		}
+	}()
+
 	type GlobalJSONConfig struct {
 		*GlobalConfig
 
@@ -196,7 +206,7 @@ func ParseGlobalConfig(ctx android.PathContext, data []byte) (*GlobalConfig, err
 	}
 
 	config := GlobalJSONConfig{}
-	err := json.Unmarshal(data, &config)
+	err = json.Unmarshal(data, &config)
 	if err != nil {
 		return config.GlobalConfig, err
 	}

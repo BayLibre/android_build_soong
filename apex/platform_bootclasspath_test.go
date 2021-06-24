@@ -542,7 +542,7 @@ func TestPlatformBootclasspath_IncludesRemainingApexJars(t *testing.T) {
 }
 
 // TestPlatformBootclasspathModule_RuntimeI18nJar verifies that core-icu4j, if present, is always
-// in boot image and in platform's classpaths.proto config.
+// in the platform's classpaths.proto config.
 func TestPlatformBootclasspathModule_RuntimeI18nJar(t *testing.T) {
 	preparer := android.GroupFixturePreparers(
 		prepareForTestWithPlatformBootclasspath,
