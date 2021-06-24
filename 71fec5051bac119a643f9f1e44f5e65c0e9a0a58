@@ -142,6 +142,30 @@
       },
       "revId": "71fec5051bac119a643f9f1e44f5e65c0e9a0a58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b2930ee_898c41ce",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T20:19:21Z",
+      "side": 1,
+      "message": "I\u0027ve added a comment with a suggestion as to how to handle this.",
+      "parentUuid": "5d4cec97_521b7f64",
+      "range": {
+        "startLine": 538,
+        "startChar": 14,
+        "endLine": 538,
+        "endChar": 36
+      },
+      "revId": "71fec5051bac119a643f9f1e44f5e65c0e9a0a58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

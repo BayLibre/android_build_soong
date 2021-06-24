@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da8808eb_67a0f8d5",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 498,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T20:19:21Z",
+      "side": 1,
+      "message": "I think you need something like this here:\n\n\t// Bootclasspath fragment modules that are for the platform do not produce boot related files.\n\t// TODO(b/187910671): Remove when a platform APEX of this is no longer created \n\tapexInfo :\u003d ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)\n\tif apexInfo.IsForPlatform() {\n\t\treturn\n\t}",
+      "revId": "69a4d2f05212df819eea4b42624726d1cfefaff6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
