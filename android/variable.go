@@ -101,6 +101,9 @@ type variableProperties struct {
 				Keep_symbols                 *bool
 				Keep_symbols_and_debug_frame *bool
 			}
+			Static_libs       []string `android:"arch_variant"`
+			Whole_static_libs []string `android:"arch_variant"`
+			Shared_libs       []string `android:"arch_variant"`
 		}
 
 		// eng is true for -eng builds, and can be used to turn on additionaly heavyweight debugging
