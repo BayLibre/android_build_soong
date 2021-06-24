@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3386319a_348e23eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-24T09:34:34Z",
+      "side": 1,
+      "message": "I am slightly bothered with this naming. It\u0027s not a \"level\" per se, that\u0027s what api_levels.go do -- match 21 to L. This is a \"kind\" similarly how it was called SdkKind before. Not sure why you decided to replace it with ApiLevel? Note that hidden api still cares about api levels as well, since they have max-target-sdk-X concept. Can I ask you to rename this?",
+      "range": {
+        "startLine": 9,
+        "startChar": 67,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "8f89700c14a4367908507aaf72fbc8e8fa65ca0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0965525_af6baae2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-24T09:34:34Z",
+      "side": 1,
+      "message": "This is because at the time we didn\u0027t have enough resources to change the runtime. We are essentially granting access to private apis, because we assume the platform code can rely on build time safety -- compiling against right stubs. It was a pragmatic decision at the time, but perhaps worth revisiting in the future.",
+      "range": {
+        "startLine": 12,
+        "startChar": 40,
+        "endLine": 13,
+        "endChar": 34
+      },
+      "revId": "8f89700c14a4367908507aaf72fbc8e8fa65ca0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0272a6e4_4f2c8ecc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-24T09:34:34Z",
+      "side": 1,
+      "message": "examples?",
+      "range": {
+        "startLine": 13,
+        "startChar": 38,
+        "endLine": 14,
+        "endChar": 65
+      },
+      "revId": "8f89700c14a4367908507aaf72fbc8e8fa65ca0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
