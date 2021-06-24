@@ -689,6 +689,8 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 		if !inList("-fvisibility=hidden", flags.Local.CFlags) {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-fvisibility=default")
 		}
+		// TODO(b/194136530): Experimental PM when linking breaks CFI.
+		flags.Local.LdFlags = append(flags.Local.LdFlags, "-fno-experimental-new-pass-manager")
 		flags.Local.LdFlags = append(flags.Local.LdFlags, cfiLdflags...)
 
 		if ctx.staticBinary() {
