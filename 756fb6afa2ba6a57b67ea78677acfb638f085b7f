@@ -119,6 +119,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "279249f1_3e4cf85a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T08:08:14Z",
+      "side": 1,
+      "message": "It was worth adding this check just to find this bug.",
+      "parentUuid": "d8e01df1_742772c1",
+      "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cca31663_fa955053",
@@ -186,6 +204,24 @@
       "side": 1,
       "message": "Right, to different modules generating the \"same\" file is imaginable, especially with different variants, platform, system, product, etc... However, having two different modules contributing the same file to an apex should always be an error?\n\nBottom line, we cannot check for equality of builtFile,right? The above two builtFiles is what an error gives me if I change this if condition. Is that a bug?",
       "parentUuid": "c6375ea5_a5d33f3f",
+      "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f164d63e_f9ce44de",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2027,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-24T08:08:14Z",
+      "side": 1,
+      "message": "I am a little confused. If you change this check to compare builtFile instead of module you get an error because the platform and APEX variants of libc++.so want to get copied to the APEX. Copying a platform variant to an APEX is wrong. That needs investigating.\n\nI think that if you have multiple attempts to copy the same source file to the same destination file in the APEX that is generally ok. At least the contents of the APEX will be consistent. It may be that if two modules are copying the same file (rather than the same module attempting to copy it twice) then that may be indicative of a problem elsewhere that deserves investigation.\n\ne.g. The SDK snapshot code copies files from the build into a structure. It dedups matching source-\u003edest pairs.\n\nConversely, I think that if you attempt to copy separate source files to the same destination file in the APEX that is almost certainly wrong. They may be identical but you really have to assume that if they\u0027re different paths then their contents are different. Currently, one will be picked, either the first or last. There are no guarantees that will be the correct one, or that changes elsewhere, e.g. changing the order of dependencies, won\u0027t cause a different version to be copied which could cause runtime issues.",
+      "parentUuid": "b03bb3ca_1a0e3278",
       "revId": "756fb6afa2ba6a57b67ea78677acfb638f085b7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
