@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cdab94b_e8021aec",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-25T16:09:19Z",
+      "side": 1,
+      "message": "did you mean to upload a change to the tool as well?",
+      "range": {
+        "startLine": 266,
+        "startChar": 18,
+        "endLine": 266,
+        "endChar": 26
+      },
+      "revId": "a2f8051d6ad00437bd01b86e355094d5ff9b68ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
