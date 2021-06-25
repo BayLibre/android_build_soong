@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4ce8d5b8_a4d59331",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-25T15:44:36Z",
+      "side": 1,
+      "message": "Aha, thanks. For my purposes it apparently didn\u0027t matter that it\u0027s gone after the apex mutator, but good point anyway.\n\n\u003e or this can be implemented similar to the prebuilt case:\n\nNo, ModuleBase.BaseModuleName() doesn\u0027t work here - see description.",
+      "parentUuid": "c1e3a9be_d2abab6e",
+      "range": {
+        "startLine": 837,
+        "startChar": 0,
+        "endLine": 839,
+        "endChar": 1
+      },
+      "revId": "9b4d29a497d900d57e14a2a632a4bd06d65593fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b9a32a86_49aeb922",
         "filename": "apex/apex.go",
         "patchSetId": 3
