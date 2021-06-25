@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "31fad800a7a44ef2edda5d4051335f28d514139a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b372220f_1346c690",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-25T10:44:28Z",
+      "side": 1,
+      "message": "nit: hiddenApiScoptToStubLibs; fine as is as well, if you don\u0027t want to change current patch.",
+      "range": {
+        "startLine": 232,
+        "startChar": 36,
+        "endLine": 232,
+        "endChar": 54
+      },
+      "revId": "31fad800a7a44ef2edda5d4051335f28d514139a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
