@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3ac2f81_4542105f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-25T17:49:09Z",
+      "side": 1,
+      "message": "We don\u0027t generally support running tests during the build.  The closest you could get is to use it in a genrule, which will get run during checkbuild.",
+      "parentUuid": "a78ff865_bb08008f",
+      "revId": "15af7b36a61074a25b2f016436cbda076ad7c090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24e5bb87_5ecf12c8",
         "filename": "scripts/Android.bp",
         "patchSetId": 1
