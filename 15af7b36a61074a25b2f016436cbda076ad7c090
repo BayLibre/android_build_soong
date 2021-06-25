@@ -16,6 +16,23 @@
       "message": "\u003e with open(THIS_DIR + \u0027/../cc/config/global.go\u0027) as infile:\nIOError: [Errno 2] No such file or directory: \u0027/tmp/Soong.python_spJSU3/../cc/config/global.go\u0027\n\nIt seems like I added the test incorrectly.  I should add it to run during build but not on test hosts.  Any idea how to do that?",
       "revId": "15af7b36a61074a25b2f016436cbda076ad7c090",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24e5bb87_5ecf12c8",
+        "filename": "scripts/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-25T17:38:00Z",
+      "side": 1,
+      "message": "Any reason not to use python 3?",
+      "revId": "15af7b36a61074a25b2f016436cbda076ad7c090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
