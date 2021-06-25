@@ -18,8 +18,19 @@
 package status
 
 import (
+	"regexp"
 	"sync"
 )
+
+// ERROR_HINTS: key is pattern in stdout/stderr
+// value is error hint
+var errorHints = map[string]string{
+	"Read-only file system": `Write to a read-only file system detected. Possible fixes include
+1. Generate file directly to out/ which is ReadWrite, #recommend solution
+2. BUILD_BROKEN_SRC_DIR_RW_ALLOWLIST := <my/path/1> <my/path/2> #discouraged, subset of source tree will be RW
+3. BUILD_BROKEN_SRC_DIR_IS_WRITABLE := true #highly discouraged, entire source tree will be RW
+`,
+}
 
 // Action describes an action taken (or as Ninja calls them, Edges).
 type Action struct {
@@ -49,13 +60,44 @@ type ActionResult struct {
 
 	// Output is the output produced by the command (usually stdout&stderr
 	// for Actions that run commands)
+	// Output will also contain errorHint if available
 	Output string
 
 	// Error is nil if the Action succeeded, or set to an error if it
 	// failed.
 	Error error
 
+	//ErrorHint is nil if Action suceeded, or if no hints could be found
+	ErrorHint *string
+
+	//ErrorHintSet is true if a previous attempt was made to set errorhint
+	errorHintSet bool
+
 	Stats ActionResultStats
+}
+
+func (actionResult *ActionResult) AddErrorHint() {
+	if actionResult.Error == nil || actionResult.errorHintSet {
+		return
+	}
+	errorHint := actionResult.getErrorHint()
+	if errorHint != nil {
+		actionResult.ErrorHint = errorHint
+		actionResult.Output += *errorHint
+	}
+	actionResult.errorHintSet = true
+}
+
+func (actionResult *ActionResult) getErrorHint() *string {
+	if actionResult.Error == nil {
+		return nil
+	}
+	for pattern, errorHint := range errorHints {
+		if match, _ := regexp.MatchString(pattern, actionResult.Output); match {
+			return &errorHint
+		}
+	}
+	return nil
 }
 
 type ActionResultStats struct {

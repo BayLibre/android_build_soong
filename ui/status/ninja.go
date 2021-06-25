@@ -158,7 +158,7 @@ func (n *NinjaReader) run() {
 					err = fmt.Errorf("exited with code: %d", exitCode)
 				}
 
-				n.status.FinishAction(ActionResult{
+				actionResult := ActionResult{
 					Action: started,
 					Output: msg.EdgeFinished.GetOutput(),
 					Error:  err,
@@ -173,7 +173,9 @@ func (n *NinjaReader) run() {
 						VoluntaryContextSwitches:   msg.EdgeFinished.GetVoluntaryContextSwitches(),
 						InvoluntaryContextSwitches: msg.EdgeFinished.GetInvoluntaryContextSwitches(),
 					},
-				})
+				}
+				actionResult.AddErrorHint()
+				n.status.FinishAction(actionResult)
 			}
 		}
 		if msg.Message != nil {
