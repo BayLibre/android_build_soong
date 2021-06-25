@@ -33,6 +33,23 @@
       "message": "PTAL - this is causing merge conflicts for me on https://r.android.com/1748294.",
       "revId": "9477c26f6c7f9bb8cfe804ecbbc864cc25c3f8ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14af433a_26b18884",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-25T14:37:25Z",
+      "side": 1,
+      "message": "Adding Paul and Anton who can vote for Owner +1.",
+      "revId": "9477c26f6c7f9bb8cfe804ecbbc864cc25c3f8ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
