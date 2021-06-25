@@ -68,6 +68,23 @@
       "parentUuid": "f9e9f47c_af699313",
       "revId": "9477c26f6c7f9bb8cfe804ecbbc864cc25c3f8ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b08dc09_50a6b225",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-25T15:41:00Z",
+      "side": 1,
+      "message": "Is this going into sc-dev too?",
+      "revId": "9477c26f6c7f9bb8cfe804ecbbc864cc25c3f8ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
