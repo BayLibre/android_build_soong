@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f537502_92374cd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-25T22:49:52Z",
+      "side": 1,
+      "message": "Thanks Jiyong. Submitting asap since I have a bunch of changes depending on this.",
+      "revId": "bfffae7becaffba6d384e1c57bf013578224fb71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
