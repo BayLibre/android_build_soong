@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "5cca7c44e51d0d08a5ea842d0f9870a772529dec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aa369d7_89d39221",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-25T15:56:43Z",
+      "side": 1,
+      "message": "I don\u0027t get this bit. If this is possible, why not provide explicit stub jars for android-non-updatable as well?\n\nSorry, I feel like this is a silly question, but I am honestly not 100% sure.",
+      "range": {
+        "startLine": 92,
+        "startChar": 77,
+        "endLine": 93,
+        "endChar": 38
+      },
+      "revId": "5cca7c44e51d0d08a5ea842d0f9870a772529dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
