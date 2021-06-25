@@ -63,6 +63,30 @@
       },
       "revId": "5cca7c44e51d0d08a5ea842d0f9870a772529dec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d86147af_8b3f6ae3",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-25T18:25:36Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "79119ba3_33d96fca",
+      "range": {
+        "startLine": 92,
+        "startChar": 77,
+        "endLine": 93,
+        "endChar": 38
+      },
+      "revId": "5cca7c44e51d0d08a5ea842d0f9870a772529dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
