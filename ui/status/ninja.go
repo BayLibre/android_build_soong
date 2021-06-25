@@ -19,6 +19,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"regexp"
+	"strings"
 	"syscall"
 	"time"
 
@@ -158,9 +160,10 @@ func (n *NinjaReader) run() {
 					err = fmt.Errorf("exited with code: %d", exitCode)
 				}
 
+				outputWithErrorHint := getOutputWithErrorHint(msg.EdgeFinished.GetOutput(), exitCode, allErrorHints)
 				n.status.FinishAction(ActionResult{
 					Action: started,
-					Output: msg.EdgeFinished.GetOutput(),
+					Output: outputWithErrorHint,
 					Error:  err,
 					Stats: ActionResultStats{
 						UserTime:                   msg.EdgeFinished.GetUserTime(),
@@ -218,4 +221,41 @@ func readVarInt(r *bufio.Reader) (int, error) {
 	}
 
 	return ret, nil
+}
+
+// key is pattern in stdout/stderr
+// value is error hint
+var allErrorHints = map[string]string{
+	"Read-only file system": `\nWrite to a read-only file system detected. Possible fixes include
+1. Generate file directly to out/ which is ReadWrite, #recommend solution
+2. BUILD_BROKEN_SRC_DIR_RW_ALLOWLIST := <my/path/1> <my/path/2> #discouraged, subset of source tree will be RW
+3. BUILD_BROKEN_SRC_DIR_IS_WRITABLE := true #highly discouraged, entire source tree will be RW
+`,
+}
+
+func getOutputWithErrorHint(rawOutput string, buildExitCode int, allErrorHints map[string]string) string {
+	if buildExitCode == 0 {
+		return rawOutput
+	}
+	errorHint := getErrorHint(rawOutput, allErrorHints)
+	if errorHint == nil {
+		return rawOutput
+	}
+	return rawOutput + *errorHint
+}
+
+// Returns the error hint corresponding to the FIRST match in raw output
+func getErrorHint(rawOutput string, allErrorHints map[string]string) *string {
+	var allErrorHintPatterns []string
+	for errorHintPattern, _ := range allErrorHints {
+		allErrorHintPatterns = append(allErrorHintPatterns, errorHintPattern)
+	}
+	allErrorHintPatternsRegex := strings.Join(allErrorHintPatterns[:], "|")
+	re := regexp.MustCompile(allErrorHintPatternsRegex)
+	firstMatch := re.FindString(rawOutput)
+	if _, found := allErrorHints[firstMatch]; found {
+		errorHint := allErrorHints[firstMatch]
+		return &errorHint
+	}
+	return nil
 }
