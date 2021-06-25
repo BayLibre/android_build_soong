@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa8204ed_e2f7c74f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-25T10:57:04Z",
+      "side": 1,
+      "message": "Can you please clarify this line a bit more? Does this mean that statsd is using APIs from non updatable framework jar, for example?\n\nP.S. why don\u0027t we create a bootclasspath_fragment for nonupdatable framework jars?",
+      "range": {
+        "startLine": 12,
+        "startChar": 64,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "7d5300104defd53969fb4ecc282e541f63f562e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610b5753_80d690d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-25T10:57:04Z",
+      "side": 1,
+      "message": "for java_library platform_apis: property means:\n\n\"\"\"\nplatform_apis bool, Whether to compile against the platform APIs instead of an SDK. If true, then sdk_version must be empty. The value of this field is ignored when module\u0027s type isn\u0027t android_app.\n\"\"\"\n\nDevs are probably more used to this definition of \"platform_apis\". Maybe worth renaming the new property to uses_android_non_updatable_apis or something like that?\n\nBut again, sounds like if we added a bootclasspath_fragment for android-non-updtaable stuff, it would make it more consistent?",
+      "range": {
+        "startLine": 18,
+        "startChar": 23,
+        "endLine": 18,
+        "endChar": 41
+      },
+      "revId": "7d5300104defd53969fb4ecc282e541f63f562e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
