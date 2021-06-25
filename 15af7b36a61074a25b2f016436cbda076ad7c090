@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a78ff865_bb08008f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-06-25T17:44:51Z",
+      "side": 1,
+      "message": "Any idea about this?\n\n[I marked this as \"resolved\" by mistake]",
+      "parentUuid": "839596a9_8dccdc3f",
+      "revId": "15af7b36a61074a25b2f016436cbda076ad7c090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24e5bb87_5ecf12c8",
         "filename": "scripts/Android.bp",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-25T17:38:00Z",
       "side": 1,
       "message": "Any reason not to use python 3?",
+      "revId": "15af7b36a61074a25b2f016436cbda076ad7c090",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e461dff_95f38e67",
+        "filename": "scripts/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-06-25T17:44:51Z",
+      "side": 1,
+      "message": "AAh, just copy-paste error.  Now enabled for python3 as well.",
+      "parentUuid": "24e5bb87_5ecf12c8",
       "revId": "15af7b36a61074a25b2f016436cbda076ad7c090",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
