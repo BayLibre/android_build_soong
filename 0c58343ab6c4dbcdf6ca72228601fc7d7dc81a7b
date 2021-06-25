@@ -16,6 +16,29 @@
       "message": "Here is the PoC.",
       "revId": "0c58343ab6c4dbcdf6ca72228601fc7d7dc81a7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "919d60c0_a0574c50",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-25T16:38:54Z",
+      "side": 1,
+      "message": "Isn\u0027t it better to just skip the deapexer module in this situation?",
+      "range": {
+        "startLine": 123,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 20
+      },
+      "revId": "0c58343ab6c4dbcdf6ca72228601fc7d7dc81a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
