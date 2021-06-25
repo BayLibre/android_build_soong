@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000012277291",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1747594?revision\u003d7",
+      "fixSuggestions": [
+        {
+          "fixId": "3750eed3_207d106b",
+          "description": "Change to \"ui/status/status.go\"",
+          "replacements": [
+            {
+              "path": "ui/status/status.go",
+              "range": {
+                "startLine": 70,
+                "startChar": 30,
+                "endLine": 70,
+                "endChar": 38
+              },
+              "replacement": "succeeded"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "84728f95_33849a6d",
+        "filename": "ui/status/status.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-06-25T22:07:47Z",
+      "side": 1,
+      "message": "Common typo found: \"suceeded\" -- should it be \"succeeded\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 70,
+        "startChar": 30,
+        "endLine": 70,
+        "endChar": 38
+      },
+      "revId": "1c36f03cf43bff8497a3aca398c1d7451e41136e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
