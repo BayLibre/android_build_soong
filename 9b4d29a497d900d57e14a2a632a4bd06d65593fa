@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "74fcb7f3_627be37b",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-25T15:51:11Z",
+      "side": 1,
+      "message": "? BaseModuleName() reads the \u0027name\u0027 property. Why doesn\u0027t it work?",
+      "parentUuid": "4ce8d5b8_a4d59331",
+      "range": {
+        "startLine": 837,
+        "startChar": 0,
+        "endLine": 839,
+        "endChar": 1
+      },
+      "revId": "9b4d29a497d900d57e14a2a632a4bd06d65593fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b9a32a86_49aeb922",
