@@ -97,8 +97,11 @@ func (c *Cmd) sandboxSupported() bool {
 			"-u", "nobody",
 			"-g", sandboxConfig.group,
 			"-R", "/",
-			"-B", sandboxConfig.srcDir,
+			// Mount tmp before srcDir
+			// srcDir is /tmp/.* in integration tests, which is a child dir of /tmp
+			// nsjail throws an error if a child dir is mounted before its parent
 			"-B", "/tmp",
+			"-B", sandboxConfig.srcDir,
 			"-B", sandboxConfig.outDir,
 		}
 
@@ -123,7 +126,6 @@ func (c *Cmd) sandboxSupported() bool {
 			sandboxConfig.working = true
 			return
 		}
-
 		c.ctx.Println("Build sandboxing disabled due to nsjail error.")
 
 		for _, line := range strings.Split(strings.TrimSpace(string(data)), "\n") {

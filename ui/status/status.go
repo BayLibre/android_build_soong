@@ -18,6 +18,7 @@
 package status
 
 import (
+	"regexp"
 	"sync"
 )
 
@@ -56,6 +57,29 @@ type ActionResult struct {
 	Error error
 
 	Stats ActionResultStats
+}
+
+// Provide hints to the user when an error is found, based on patterns in stdout/stderr
+// ErrorHints is nil if the Action ran without errors OR no hints could be found
+func (actionResult *ActionResult) ErrorHints() *string {
+	if actionResult.Error == nil {
+		return nil
+	}
+	// key is pattern in stdout/stderr
+	// value is error hint
+	errorHints := make(map[string]string)
+	errorHints["Read-only file system"] =
+		`Write to a read-only file system detected. Possible fixes include
+	1. Generate file directly to out/ which is ReadWrite, #recommend solution
+	2. BUILD_BROKEN_SRC_DIR_RW_ALLOWLIST := <my/path/1> <my/path/2> #discouraged, subset of source tree will be RW
+	3. BUILD_BROKEN_SRC_DIR_IS_WRITABLE := true #highly discouraged, entire source tree will be RW
+	`
+	for pattern, errorHint := range errorHints {
+		if match, _ := regexp.MatchString(pattern, actionResult.Output); match {
+			return &errorHint
+		}
+	}
+	return nil
 }
 
 type ActionResultStats struct {
