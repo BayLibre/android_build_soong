@@ -7,6 +7,7 @@ import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	math "math"
+	regexp "regexp"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -41,6 +42,16 @@ var Status_Message_Level_value = map[string]int32{
 	"WARNING": 1,
 	"ERROR":   2,
 	"DEBUG":   3,
+}
+
+// ERROR_HINTS: key is pattern in stdout/stderr
+// value is error hint
+var errorHints = map[string]string{
+	"Read-only file system": `Write to a read-only file system detected. Possible fixes include
+1. Generate file directly to out/ which is ReadWrite, #recommend solution
+2. BUILD_BROKEN_SRC_DIR_RW_ALLOWLIST := <my/path/1> <my/path/2> #discouraged, subset of source tree will be RW
+3. BUILD_BROKEN_SRC_DIR_IS_WRITABLE := true #highly discouraged, entire source tree will be RW
+`,
 }
 
 func (x Status_Message_Level) Enum() *Status_Message_Level {
@@ -440,6 +451,30 @@ func (m *Status_EdgeFinished) GetStatus() int32 {
 func (m *Status_EdgeFinished) GetOutput() string {
 	if m != nil && m.Output != nil {
 		return *m.Output
+	}
+	return ""
+}
+
+func (m *Status_EdgeFinished) GetErrorHint() *string {
+	if m == nil || m.GetStatus() == 0 {
+		return nil
+	}
+	for pattern, errorHint := range errorHints {
+		if match, _ := regexp.MatchString(pattern, m.GetOutput()); match {
+			return &errorHint
+		}
+	}
+	return nil
+}
+
+func (m *Status_EdgeFinished) GetOutputWithErrorHint() string {
+	if m != nil {
+		ret := m.GetOutput()
+		errorHint := m.GetErrorHint()
+		if errorHint != nil {
+			ret += *errorHint
+		}
+		return ret
 	}
 	return ""
 }

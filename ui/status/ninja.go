@@ -160,7 +160,7 @@ func (n *NinjaReader) run() {
 
 				n.status.FinishAction(ActionResult{
 					Action: started,
-					Output: msg.EdgeFinished.GetOutput(),
+					Output: msg.EdgeFinished.GetOutputWithErrorHint(),
 					Error:  err,
 					Stats: ActionResultStats{
 						UserTime:                   msg.EdgeFinished.GetUserTime(),
