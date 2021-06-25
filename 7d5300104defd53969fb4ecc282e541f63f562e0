@@ -141,6 +141,30 @@
       },
       "revId": "7d5300104defd53969fb4ecc282e541f63f562e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15e20d8f_e6fe63bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-25T13:38:38Z",
+      "side": 1,
+      "message": "Ok, so what I am going to do is pretend that \"android-non-updatable\" is a java_sdk_library. It is not but it creates stub libraries as if they were. So, a bootclasspath_fragment would add the following instead of the uses.... property.\n\nadditional_stubs: [\n    \"android-non-updatable\",\n],\n\nI will map that to the correct libraries under the covers.\n\nLonger term, we will probably need a java_sdk_library_merge module type which can create a single java_sdk_library from multiple libraries and sources. To replace all the repetitive boiler plate in http://cs/android/frameworks/base/StubLibraries.bp?l\u003d238. That can be used to create an android-non-updatable java_sdk_library which will allow the Soong code to be simplified and won\u0027t require modifications to the existing usages.\n\nWDYT of the \"additional_stubs\" property name?",
+      "parentUuid": "53b8bc33_a117b7d3",
+      "range": {
+        "startLine": 18,
+        "startChar": 23,
+        "endLine": 18,
+        "endChar": 41
+      },
+      "revId": "7d5300104defd53969fb4ecc282e541f63f562e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
