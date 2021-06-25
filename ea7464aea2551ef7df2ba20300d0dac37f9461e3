@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a2622d8_6fb67917",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1290458
+      },
+      "writtenOn": "2021-06-25T21:00:21Z",
+      "side": 1,
+      "message": "If we move it, we add another quirk to carry forward in fs_mgr. If there\u0027s a technical benefit, like simplifying the microdroid use case - let\u0027s do it. If there\u0027s no technical benefit then I\u0027m not sure it\u0027s worth it.",
+      "parentUuid": "c43c890a_01738366",
+      "range": {
+        "startLine": 19,
+        "startChar": 28,
+        "endLine": 20,
+        "endChar": 47
+      },
+      "revId": "ea7464aea2551ef7df2ba20300d0dac37f9461e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3637a8a9_2dd26847",
