@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c43c890a_01738366",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-25T10:34:55Z",
+      "side": 1,
+      "message": "The init ramdisk is, AFAIK, is the only place where fstab is read from root. We can\u0027t deprecate the existing behavior easily, but I really think we should try to avoid putting things directly under root.\n\n/first_stage_ramdisk and / are actually the same directory. The only difference is whether the function is called before or after the chroot. So the order between the two doesn\u0027t really matter; both can\u0027t match at the same time. Therefore, I think it\u0027d be fine as long as we search [/first_stage_ramdisk]/etc directories after [/first_stage_ramdisk]/, for the compatibility with the legacy devices.\n\nAs a good side effect, this will help stop doing a trick like https://source.corp.google.com/android/packages/modules/Virtualization/microdroid/Android.bp;rcl\u003dc9f6277d4cf29af64e890470b5f6fb860d8647ff;l\u003d274\n\n\u003e duplicated in every device directory\n\nIf you are going to replace PRODUCT_COPY_FILES with soong modules in every device, my second suggestion wouldn\u0027t be appealing. But if defining a canonical way is part of the (bigger) plan, I think it\u0027d be better to use this as a chance to fix the weirdness in fstab paths.\n\nLet me add Bowgo (who added /vendor/etc/fstab) and David who\u0027s owning init to hear their opinion about allowing \"\u003cpartition\u003e/etc/fstab.*\" also in the init ramdisk.",
+      "parentUuid": "8ca72686_b8d02d56",
+      "range": {
+        "startLine": 19,
+        "startChar": 28,
+        "endLine": 20,
+        "endChar": 47
+      },
+      "revId": "ea7464aea2551ef7df2ba20300d0dac37f9461e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3637a8a9_2dd26847",
