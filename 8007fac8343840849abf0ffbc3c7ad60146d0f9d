@@ -63,6 +63,30 @@
       },
       "revId": "8007fac8343840849abf0ffbc3c7ad60146d0f9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed571e07_7523f68c",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-06-25T15:48:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10c0e45c_534709e7",
+      "range": {
+        "startLine": 628,
+        "startChar": 5,
+        "endLine": 628,
+        "endChar": 85
+      },
+      "revId": "8007fac8343840849abf0ffbc3c7ad60146d0f9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
