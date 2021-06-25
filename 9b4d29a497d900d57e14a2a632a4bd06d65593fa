@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1e3a9be_d2abab6e",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-06-25T15:17:56Z",
+      "side": 1,
+      "message": "Calling this will return empty string after the apex is mutated.\n\napexVariationName should be a mutated property instead or this can be implemented similar to the prebuilt case:\n\nproptools.StringDefault(a.properties.Apex_name, a.ModuleBase.BaseModuleName())",
+      "range": {
+        "startLine": 837,
+        "startChar": 0,
+        "endLine": 839,
+        "endChar": 1
+      },
+      "revId": "9b4d29a497d900d57e14a2a632a4bd06d65593fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b9a32a86_49aeb922",
