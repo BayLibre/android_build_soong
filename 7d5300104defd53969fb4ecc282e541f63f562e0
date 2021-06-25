@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30ef6df1_2e86f6e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-25T12:39:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "23c86ebe_e1684b4a",
+      "range": {
+        "startLine": 12,
+        "startChar": 64,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "7d5300104defd53969fb4ecc282e541f63f562e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "610b5753_80d690d5",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Using a bcpf won\u0027t work as outlined in my other comment.\n\nFinding a good name for that property is tricky. It actually adds dependencies on android-non-updatable stubs. However, that name is not quite accurate, e.g. it does not include i18n which is not updatable. It is actually the \"not-provided-by-an-apex\" library.\n\nHow about uses_apis_not_provided_by_an_apex?\nOr a little more succinct uses_non_apex_apis?",
       "parentUuid": "610b5753_80d690d5",
+      "range": {
+        "startLine": 18,
+        "startChar": 23,
+        "endLine": 18,
+        "endChar": 41
+      },
+      "revId": "7d5300104defd53969fb4ecc282e541f63f562e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53b8bc33_a117b7d3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-25T12:39:14Z",
+      "side": 1,
+      "message": "Naming is tricky... It doesn\u0027t help that \"updatable\" is overloaded: it may mean actually updatable apexes, or just being part of the mainline program.\n\n- uses_non_apex_apis -- doesn\u0027t read right to me on the first glance. Does APEX provide apis? Are there APIs meant for APEXes? etc.\n- uses_apis_not_provided_by_an_apex - is technically correct (especially if you add _boot_jar suffix), but not succinct.. and I imagine we would want devs to use this flag themselves (not just us setting the values on this once in a while).\n\nI would personally still prefer being consistent with naming in StubLibraries.bp that generate the stubs. It\u0027s unfortunate that its ambiguous there too, but that\u0027s a separate problem. And this property you are adding is meant to signify whether those stubs are included or not, so it\u0027s easier to explain and codesearch I think. So, something like uses_android-non-updatable-stub-sources is fine by me.",
+      "parentUuid": "4d59e49a_125b6d81",
       "range": {
         "startLine": 18,
         "startChar": 23,
