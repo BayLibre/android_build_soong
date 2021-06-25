@@ -39,6 +39,30 @@
       },
       "revId": "5cca7c44e51d0d08a5ea842d0f9870a772529dec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79119ba3_33d96fca",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-25T17:39:31Z",
+      "side": 1,
+      "message": "\"android-non-updatable\" is NOT a java_sdk_library. In fact it is not a module at all. However, there are \"android-non-updatable.stubs\" and \"android-non-updatable.system.stubs\", etc. which is what an \"android-non-updatable\" java_sdk_library would create.\n\nSo, instead of having nearly every mainline module specify the following in their bootclasspath_fragment {\n  ...\n  public: {\n    additional_stubs: [\"android-non-updatable.stubs\"],\n  }\n  system: {\n    additional_stubs: [\"android-non-updatable.system.stubs\"],\n  }\n  test: {\n    additional_stubs: [\"android-non-updatable.test.stubs\"],\n  }\n  module_lib: {\n    additional_stubs: [\"android-non-updatable.module_lib.stubs\"],\n  }\n  ...\n}\n\nThey can just specify:\n  \nbootclasspath_fragment {\n  ...\n  additional_stubs: [\"android-non-updatable\"],\n  ...\n}\n\nAnd have it behave as if they had done the first (if it actually worked).\n\nNow, if http://b/192067200 is possible then we can replace all those separate java_library modules with a single java_sdk_library compatible module called \"android-non-updatable\". We can just remove the special treatment from Soong and it will all work fine.",
+      "parentUuid": "4aa369d7_89d39221",
+      "range": {
+        "startLine": 92,
+        "startChar": 77,
+        "endLine": 93,
+        "endChar": 38
+      },
+      "revId": "5cca7c44e51d0d08a5ea842d0f9870a772529dec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
