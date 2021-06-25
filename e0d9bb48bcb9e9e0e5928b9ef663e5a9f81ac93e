@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fa9b767_9be87731",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-25T16:27:33Z",
+      "side": 1,
+      "message": "This is constantly in conflict with other changes Paul and I are doing. I\u0027ll punt on this change for now, given that it\u0027s late for sc-dev.",
+      "revId": "e0d9bb48bcb9e9e0e5928b9ef663e5a9f81ac93e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
