@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bfbf0528_8e183f18",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-25T15:54:53Z",
+      "side": 1,
+      "message": "It gets overridden by the \"name\" property in the override_apex module.",
+      "parentUuid": "74fcb7f3_627be37b",
+      "range": {
+        "startLine": 837,
+        "startChar": 0,
+        "endLine": 839,
+        "endChar": 1
+      },
+      "revId": "9b4d29a497d900d57e14a2a632a4bd06d65593fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b9a32a86_49aeb922",
         "filename": "apex/apex.go",
         "patchSetId": 3
