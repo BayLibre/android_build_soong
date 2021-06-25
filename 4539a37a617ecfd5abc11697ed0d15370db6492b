@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "981a7e85_1f097011",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-25T13:50:43Z",
+      "side": 1,
+      "message": "Artur, I have separated this stack of changes from the other one which will take a little longer to fix. Would you mind reviewing these?",
+      "revId": "4539a37a617ecfd5abc11697ed0d15370db6492b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
