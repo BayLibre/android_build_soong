@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23c86ebe_e1684b4a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-25T11:50:20Z",
+      "side": 1,
+      "message": "It\u0027s an interesting idea but it wouldn\u0027t work, at least not at the moment. There are a number of problems:\n1. It is not designed to support that use case, so would be a lot of work to make that happen. ATM bcpf assumes that it is in an APEX, and has a non-empty set of contents.\n2. We could not make it work just like another bcpf (e.g. perform hidden API processing) because it would create a cycle between bcpfs.",
+      "parentUuid": "fa8204ed_e2f7c74f",
+      "range": {
+        "startLine": 12,
+        "startChar": 64,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "7d5300104defd53969fb4ecc282e541f63f562e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "610b5753_80d690d5",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-25T10:57:04Z",
       "side": 1,
       "message": "for java_library platform_apis: property means:\n\n\"\"\"\nplatform_apis bool, Whether to compile against the platform APIs instead of an SDK. If true, then sdk_version must be empty. The value of this field is ignored when module\u0027s type isn\u0027t android_app.\n\"\"\"\n\nDevs are probably more used to this definition of \"platform_apis\". Maybe worth renaming the new property to uses_android_non_updatable_apis or something like that?\n\nBut again, sounds like if we added a bootclasspath_fragment for android-non-updtaable stuff, it would make it more consistent?",
+      "range": {
+        "startLine": 18,
+        "startChar": 23,
+        "endLine": 18,
+        "endChar": 41
+      },
+      "revId": "7d5300104defd53969fb4ecc282e541f63f562e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d59e49a_125b6d81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-25T11:50:20Z",
+      "side": 1,
+      "message": "Using a bcpf won\u0027t work as outlined in my other comment.\n\nFinding a good name for that property is tricky. It actually adds dependencies on android-non-updatable stubs. However, that name is not quite accurate, e.g. it does not include i18n which is not updatable. It is actually the \"not-provided-by-an-apex\" library.\n\nHow about uses_apis_not_provided_by_an_apex?\nOr a little more succinct uses_non_apex_apis?",
+      "parentUuid": "610b5753_80d690d5",
       "range": {
         "startLine": 18,
         "startChar": 23,
