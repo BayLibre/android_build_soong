@@ -831,6 +831,22 @@ type Module struct {
 	hideApexVariantFromMake bool
 }
 
+func (c *Module) AddJSONData(d *map[string]interface{}) {
+	c.AndroidModuleBase().AddJSONData(d)
+	(*d)["Cc"] = map[string]interface{}{
+		"IsVndk":                c.IsVndk(),
+		"IsVndkExt":             c.IsVndkExt(),
+		"IsVndkPrivate":         c.IsVndkPrivate(),
+		"IsVndkSp":              c.IsVndkSp(),
+		"IsLlndk":               c.IsLlndk(),
+		"IsLlndkPublic":         c.IsLlndkPublic(),
+		"IsSnapshotLibrary":     c.IsSnapshotLibrary(),
+		"IsSnapshotPrebuilt":    c.IsSnapshotPrebuilt(),
+		"IsVendorPublicLibrary": c.IsVendorPublicLibrary(),
+		"ApexSdkVersion":        c.apexSdkVersion,
+	}
+}
+
 func (c *Module) SetPreventInstall() {
 	c.Properties.PreventInstall = true
 }
