@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a32a86_49aeb922",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 930,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-25T15:05:11Z",
+      "side": 1,
+      "message": "I don\u0027t strictly need this to make apex_name work for prebuilts, but I think it makes sense given that the docs for both this property and ApexInfo.ApexVariationName cite the /apex mount point.\n\nHowever, this (and the similar apex_name in prebuilts) means we\u0027ll have more APEX bundles sharing the same variant. The full implications of that aren\u0027t clear to me, but worth mentioning that the plan is to prohibit installation of more than one APEX with a particular variation name (http://b/192006406).",
+      "range": {
+        "startLine": 930,
+        "startChar": 26,
+        "endLine": 930,
+        "endChar": 48
+      },
+      "revId": "9b4d29a497d900d57e14a2a632a4bd06d65593fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
