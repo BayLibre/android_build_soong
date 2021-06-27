@@ -1342,6 +1342,10 @@ func (c *config) AmlAbis() bool {
 	return Bool(c.productVariables.Aml_abis)
 }
 
+func (c *config) InstallApexes() []string {
+	return c.productVariables.InstallApexes
+}
+
 func (c *config) FlattenApex() bool {
 	return Bool(c.productVariables.Flatten_apex)
 }

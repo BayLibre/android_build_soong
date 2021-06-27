@@ -57,6 +57,7 @@ func fixtureAddPrebuiltApexForBootclasspathFragment(apex, fragment string) andro
 				exported_bootclasspath_fragments: [
 					"%s",
 				],
+				installable: true,
 			}
 		`, apex, apexFile, fragment)),
 		android.FixtureAddFile(filepath.Join(dir, apexFile), nil),
@@ -251,6 +252,7 @@ func TestSnapshotWithBootClasspathFragment_Contents(t *testing.T) {
 				key: "myapex.key",
 				min_sdk_version: "2",
 				bootclasspath_fragments: ["mybootclasspathfragment"],
+				installable: true,
 			}
 
 			bootclasspath_fragment {
@@ -771,6 +773,7 @@ func TestSnapshotWithBootclasspathFragment_HiddenAPI(t *testing.T) {
 				key: "myapex.key",
 				min_sdk_version: "1",
 				bootclasspath_fragments: ["mybootclasspathfragment"],
+				installable: true,
 			}
 
 			bootclasspath_fragment {

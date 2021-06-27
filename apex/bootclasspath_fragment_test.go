@@ -22,6 +22,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/java"
+
 	"github.com/google/blueprint/proptools"
 )
 
@@ -365,6 +366,7 @@ func TestBootclasspathFragmentInArtApex(t *testing.T) {
 		text := fmt.Sprintf(`
 			prebuilt_apex {
 				name: "com.android.art",
+				installable: true,
 				arch: {
 					arm64: {
 						src: "com.android.art-arm64.apex",
@@ -555,6 +557,7 @@ func TestBootclasspathFragmentInPrebuiltArtApex(t *testing.T) {
 	).RunTestWithBp(t, `
 		prebuilt_apex {
 			name: "com.android.art",
+			installable: true,
 			arch: {
 				arm64: {
 					src: "com.android.art-arm64.apex",

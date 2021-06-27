@@ -319,6 +319,7 @@ func TestBasicApex(t *testing.T) {
 				"myjar",
 				"myjar_dex",
 			],
+			installable: true,
 			updatable: false,
 		}
 
@@ -4051,6 +4052,7 @@ func TestApexName(t *testing.T) {
 			key: "myapex.key",
 			apex_name: "com.android.myapex",
 			native_shared_libs: ["mylib"],
+			installable: true,
 			updatable: false,
 		}
 
@@ -4718,6 +4720,7 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 		bp := `
 		prebuilt_apex {
 			name: "myapex",
+			installable: true,
 			arch: {
 				arm64: {
 					src: "myapex-arm64.apex",
@@ -5341,6 +5344,7 @@ func TestApexWithTests(t *testing.T) {
 		apex_test {
 			name: "myapex",
 			key: "myapex.key",
+			installable: true,
 			updatable: false,
 			tests: [
 				"mytest",
@@ -6035,6 +6039,7 @@ func TestOverrideApex(t *testing.T) {
 			key: "myapex.key",
 			apps: ["app"],
 			overrides: ["oldapex"],
+			installable: true,
 			updatable: false,
 		}
 
@@ -6566,6 +6571,7 @@ func TestSymlinksFromApexToSystem(t *testing.T) {
 			key: "myapex.key",
 			native_shared_libs: ["mylib"],
 			java_libs: ["myjar"],
+			installable: true,
 			updatable: false,
 		}
 
@@ -6695,6 +6701,7 @@ func TestSymlinksFromApexToSystemRequiredModuleNames(t *testing.T) {
 			name: "myapex",
 			key: "myapex.key",
 			native_shared_libs: ["mylib"],
+			installable: true,
 			updatable: false,
 		}
 
@@ -7068,11 +7075,12 @@ func TestDuplicateDeapexeresFromPrebuiltApexes(t *testing.T) {
 		PrepareForTestWithApexBuildComponents,
 	).
 		ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
-			`Ambiguous duplicate deapexer module dependencies "com.android.myapex.deapexer" and "com.mycompany.android.myapex.deapexer"`))
+			`Prebuilt APEXes "com.android.myapex.deapexer" and "com.mycompany.android.myapex.deapexer" are both installable and provide ambiguous deapexer dependencies`))
 
 	bpBase := `
 		apex_set {
 			name: "com.android.myapex",
+			installable: true,
 			exported_bootclasspath_fragments: ["my-bootclasspath-fragment"],
 			set: "myapex.apks",
 		}
@@ -7080,6 +7088,7 @@ func TestDuplicateDeapexeresFromPrebuiltApexes(t *testing.T) {
 		apex_set {
 			name: "com.mycompany.android.myapex",
 			apex_name: "com.android.myapex",
+			installable: true,
 			exported_bootclasspath_fragments: ["my-bootclasspath-fragment"],
 			set: "company-myapex.apks",
 		}
@@ -7333,7 +7342,8 @@ func TestDexpreoptAccessDexFilesFromPrebuiltApex(t *testing.T) {
 
 		testDexpreoptWithApexes(t, `
 			prebuilt_apex {
-				name: "myapex" ,
+				name: "myapex",
+				installable: true,
 				arch: {
 					arm64: {
 						src: "myapex-arm64.apex",
@@ -7780,6 +7790,7 @@ func TestApexKeysTxt(t *testing.T) {
 		prebuilt_apex {
 			name: "myapex",
 			prefer: true,
+			installable: true,
 			arch: {
 				arm64: {
 					src: "myapex-arm64.apex",
@@ -7792,6 +7803,7 @@ func TestApexKeysTxt(t *testing.T) {
 
 		apex_set {
 			name: "myapex_set",
+			installable: true,
 			set: "myapex.apks",
 			filename: "myapex_set.apex",
 			overrides: ["myapex"],
