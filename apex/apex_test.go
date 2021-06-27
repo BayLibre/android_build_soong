@@ -301,6 +301,7 @@ func TestBasicApex(t *testing.T) {
 	ctx := testApex(t, `
 		apex_defaults {
 			name: "myapex-defaults",
+			installable: true,
 			manifest: ":myapex.manifest",
 			androidManifest: ":myapex.androidmanifest",
 			key: "myapex.key",
@@ -684,6 +685,127 @@ func TestDefaults(t *testing.T) {
 		"etc/bpf/bpf.o",
 		"etc/bpf/bpf2.o",
 	})
+}
+
+func TestApexInstallable(t *testing.T) {
+	bp := `
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			min_sdk_version: "17",
+		}
+
+		prebuilt_apex {
+			name: "myapex",
+			src: "myapex.apex",
+		}
+
+		override_apex {
+			name: "override_myapex",
+			base: "myapex",
+		}
+
+		prebuilt_apex {
+			name: "override_myapex",
+			apex_name: "myapex",
+			src: "myapex.apex",
+		}
+
+		apex {
+			name: "otherapex",
+			key: "myapex.key",
+			min_sdk_version: "17",
+		}
+
+		prebuilt_apex {
+			name: "prebuilt_only",
+			src: "myapex.apex",
+		}
+
+		apex {
+			name: "always_installable",
+			installable: true,
+			key: "myapex.key",
+			min_sdk_version: "17",
+		}
+
+		apex {
+			name: "always_uninstallable",
+			installable: false,
+			key: "myapex.key",
+			min_sdk_version: "17",
+		}
+
+		override_apex {
+			name: "override_always_uninstallable",
+			base: "myapex",
+			installable: false,
+		}
+	`
+
+	assertInstallableForApex := func(t *testing.T, ctx *android.TestContext, moduleName, apexVariant string, expectedInstallable bool) {
+		matchName := moduleName
+		override := ""
+		if strings.HasPrefix(moduleName, "override_") {
+			// Assume every override_apex overrides myapex.
+			override = moduleName
+			matchName = "myapex"
+		}
+		tm := ctx.ModuleVariantForTests(matchName, map[string]string{
+			"perform_override": override,
+			"apex":             apexVariant,
+			"apex_flattened":   "image",
+		})
+		a := tm.Module().(interface{ installable() bool })
+		android.AssertBoolEquals(t, tm.Module().String()+" installable",
+			expectedInstallable, a.installable())
+	}
+
+	testInstallableFlags := func(installApexes []string, expectedInstallable map[string]bool) {
+		t.Run(strings.Join(installApexes, ":"), func(t *testing.T) {
+			ctx := testApex(t, bp,
+				android.FixtureMergeMockFs(android.MockFS{
+					"system/sepolicy/apex/always_installable-file_contexts":   nil,
+					"system/sepolicy/apex/always_uninstallable-file_contexts": nil,
+				}),
+				android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+					variables.InstallApexes = installApexes
+				}))
+
+			assertInstallableForApex(t, ctx, "myapex", "myapex", expectedInstallable["myapex"])
+			assertInstallableForApex(t, ctx, "prebuilt_myapex", "myapex", expectedInstallable["prebuilt_myapex"])
+			assertInstallableForApex(t, ctx, "override_myapex", "myapex", expectedInstallable["override_myapex"])
+			assertInstallableForApex(t, ctx, "prebuilt_override_myapex", "myapex", expectedInstallable["prebuilt_override_myapex"])
+			assertInstallableForApex(t, ctx, "otherapex", "otherapex", expectedInstallable["otherapex"])
+			assertInstallableForApex(t, ctx, "prebuilt_only", "prebuilt_only", expectedInstallable["prebuilt_only"])
+			assertInstallableForApex(t, ctx, "always_installable", "always_installable", true)
+			assertInstallableForApex(t, ctx, "always_uninstallable", "always_uninstallable", false)
+			assertInstallableForApex(t, ctx, "override_always_uninstallable", "myapex", false)
+		})
+	}
+
+	// Both prebuilt and source APEXes are enabled with the same InstallApexes
+	// setting - it's the prebuilt prefer logic that selects between them instead.
+	testInstallableFlags([]string{"myapex"},
+		map[string]bool{"myapex": true, "prebuilt_myapex": true})
+	testInstallableFlags([]string{"override_myapex"},
+		map[string]bool{"override_myapex": true, "prebuilt_override_myapex": true})
+	testInstallableFlags([]string{"otherapex"},
+		map[string]bool{"otherapex": true})
+	testInstallableFlags([]string{"myapex", "otherapex"},
+		map[string]bool{"myapex": true, "prebuilt_myapex": true, "otherapex": true})
+	testInstallableFlags([]string{"prebuilt_only"},
+		map[string]bool{"prebuilt_only": true})
+	testInstallableFlags([]string{"always_uninstallable_apex"},
+		map[string]bool{})
+	testInstallableFlags([]string{"always_uninstallable_override_apex"},
+		map[string]bool{})
 }
 
 func TestApexManifest(t *testing.T) {
@@ -4087,6 +4209,7 @@ func TestApexName(t *testing.T) {
 	ctx := testApex(t, `
 		apex {
 			name: "myapex",
+			installable: true,
 			key: "myapex.key",
 			apex_name: "com.android.myapex",
 			native_shared_libs: ["mylib"],
@@ -4596,6 +4719,7 @@ func TestPrebuilt(t *testing.T) {
 	ctx := testApex(t, `
 		prebuilt_apex {
 			name: "myapex",
+			installable: true,
 			arch: {
 				arm64: {
 					src: "myapex-arm64.apex",
@@ -4619,6 +4743,7 @@ func TestPrebuiltMissingSrc(t *testing.T) {
 	testApexError(t, `module "myapex" variant "android_common_myapex".*: prebuilt_apex does not support "arm64_armv8-a"`, `
 		prebuilt_apex {
 			name: "myapex",
+			installable: true,
 		}
 	`)
 }
@@ -4725,6 +4850,7 @@ func TestPrebuiltApexNameWithPlatformBootclasspath(t *testing.T) {
 			prebuilt_apex {
 				name: "com.company.android.art",
 				apex_name: "com.android.art",
+				installable: true,
 				src: "com.company.android.art-arm.apex",
 				exported_bootclasspath_fragments: ["art-bootclasspath-fragment"],
 			}
@@ -4789,6 +4915,7 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 		bp := `
 		prebuilt_apex {
 			name: "myapex",
+			installable: true,
 			arch: {
 				arm64: {
 					src: "myapex-arm64.apex",
@@ -4842,6 +4969,7 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 		bp := `
 		prebuilt_apex {
 			name: "myapex",
+			installable: true,
 			arch: {
 				arm64: {
 					src: "myapex-arm64.apex",
@@ -4892,6 +5020,7 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 		bp := `
 		prebuilt_apex {
 			name: "myapex",
+			installable: true,
 			arch: {
 				arm64: {
 					src: "myapex-arm64.apex",
@@ -4993,6 +5122,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 		bp := `
 		prebuilt_apex {
 			name: "myapex",
+			installable: true,
 			arch: {
 				arm64: {
 					src: "myapex-arm64.apex",
@@ -5051,6 +5181,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 		bp := `
 		apex_set {
 			name: "myapex",
+			installable: true,
 			set: "myapex.apks",
 			exported_bootclasspath_fragments: ["my-bootclasspath-fragment"],
 		}
@@ -5102,6 +5233,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 		bp := `
 		prebuilt_apex {
 			name: "myapex",
+			installable: true,
 			arch: {
 				arm64: {
 					src: "myapex-arm64.apex",
@@ -5173,6 +5305,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 		bp := `
 		prebuilt_apex {
 			name: "myapex",
+			installable: true,
 			arch: {
 				arm64: {
 					src: "myapex-arm64.apex",
@@ -5259,6 +5392,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 
 		prebuilt_apex {
 			name: "myapex",
+			installable: true,
 			arch: {
 				arm64: {
 					src: "myapex-arm64.apex",
@@ -5343,6 +5477,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 
 		prebuilt_apex {
 			name: "myapex",
+			installable: true,
 			arch: {
 				arm64: {
 					src: "myapex-arm64.apex",
@@ -5418,6 +5553,7 @@ func TestApexWithTests(t *testing.T) {
 		apex_test {
 			name: "myapex",
 			key: "myapex.key",
+			installable: true,
 			updatable: false,
 			tests: [
 				"mytest",
@@ -6109,6 +6245,7 @@ func TestOverrideApex(t *testing.T) {
 	ctx := testApex(t, `
 		apex {
 			name: "myapex",
+			installable: true,
 			key: "myapex.key",
 			apps: ["app"],
 			bpfs: ["bpf"],
@@ -6672,6 +6809,7 @@ func TestSymlinksFromApexToSystem(t *testing.T) {
 	bp := `
 		apex {
 			name: "myapex",
+			installable: true,
 			key: "myapex.key",
 			native_shared_libs: ["mylib"],
 			java_libs: ["myjar"],
@@ -6802,6 +6940,7 @@ func TestSymlinksFromApexToSystemRequiredModuleNames(t *testing.T) {
 	ctx := testApex(t, `
 		apex {
 			name: "myapex",
+			installable: true,
 			key: "myapex.key",
 			native_shared_libs: ["mylib"],
 			updatable: false,
@@ -6984,6 +7123,7 @@ func TestAppSetBundlePrebuilt(t *testing.T) {
 	bp := `
 		apex_set {
 			name: "myapex",
+			installable: true,
 			filename: "foo_v2.apex",
 			sanitized: {
 				none: { set: "myapex.apks", },
@@ -7375,7 +7515,8 @@ func TestDexpreoptAccessDexFilesFromPrebuiltApex(t *testing.T) {
 
 		testDexpreoptWithApexes(t, `
 			prebuilt_apex {
-				name: "myapex" ,
+				name: "myapex",
+				installable: true,
 				arch: {
 					arm64: {
 						src: "myapex-arm64.apex",
@@ -7728,6 +7869,7 @@ func TestApexSet(t *testing.T) {
 	ctx := testApex(t, `
 		apex_set {
 			name: "myapex",
+			installable: true,
 			set: "myapex.apks",
 			filename: "foo_v2.apex",
 			overrides: ["foo"],
@@ -7821,6 +7963,7 @@ func TestApexKeysTxt(t *testing.T) {
 
 		prebuilt_apex {
 			name: "myapex",
+			installable: true,
 			prefer: true,
 			arch: {
 				arm64: {
@@ -7834,6 +7977,7 @@ func TestApexKeysTxt(t *testing.T) {
 
 		apex_set {
 			name: "myapex_set",
+			installable: true,
 			set: "myapex.apks",
 			filename: "myapex_set.apex",
 			overrides: ["myapex"],

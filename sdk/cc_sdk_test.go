@@ -247,6 +247,7 @@ func TestBasicSdkWithCc(t *testing.T) {
 
 		apex {
 			name: "myapex",
+			installable: true,
 			native_shared_libs: ["mycpplib"],
 			uses_sdks: ["mysdk@1"],
 			key: "myapex.key",
@@ -256,6 +257,7 @@ func TestBasicSdkWithCc(t *testing.T) {
 
 		apex {
 			name: "myapex2",
+			installable: true,
 			native_shared_libs: ["mycpplib"],
 			uses_sdks: ["mysdk@2"],
 			key: "myapex.key",
@@ -265,6 +267,7 @@ func TestBasicSdkWithCc(t *testing.T) {
 
 		apex {
 			name: "mysdkapex",
+			installable: true,
 			native_shared_libs: ["sdkmember"],
 			key: "myapex.key",
 			certificate: ":myapex.cert",

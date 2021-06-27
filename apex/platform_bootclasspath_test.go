@@ -347,6 +347,7 @@ func TestPlatformBootclasspath_AlwaysUsePrebuiltSdks(t *testing.T) {
 	).RunTestWithBp(t, `
 		apex {
 			name: "myapex",
+			installable: true,
 			key: "myapex.key",
 			bootclasspath_fragments: [
 				"mybootclasspath-fragment",
@@ -381,6 +382,7 @@ func TestPlatformBootclasspath_AlwaysUsePrebuiltSdks(t *testing.T) {
 
 		prebuilt_apex {
 			name: "myapex",
+			installable: true,
 			src: "myapex.apex",
 			exported_bootclasspath_fragments: ["mybootclasspath-fragment"],
 		}

@@ -86,6 +86,7 @@ func TestDepNotInRequiredSdks(t *testing.T) {
 
 		apex {
 			name: "myapex",
+			installable: true,
 			java_libs: ["myjavalib"],
 			uses_sdks: ["mysdk@1"],
 			key: "myapex.key",

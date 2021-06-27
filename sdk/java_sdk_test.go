@@ -127,6 +127,7 @@ func TestBasicSdkWithJavaLibrary(t *testing.T) {
 
 		apex {
 			name: "myapex",
+			installable: true,
 			java_libs: ["myjavalib"],
 			uses_sdks: ["mysdk@1"],
 			key: "myapex.key",
@@ -136,6 +137,7 @@ func TestBasicSdkWithJavaLibrary(t *testing.T) {
 
 		apex {
 			name: "myapex2",
+			installable: true,
 			java_libs: ["myjavalib"],
 			uses_sdks: ["mysdk@2"],
 			key: "myapex.key",

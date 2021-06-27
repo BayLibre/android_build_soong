@@ -75,13 +75,17 @@ type sanitizedPrebuilt interface {
 type PrebuiltCommonProperties struct {
 	SelectedApexProperties
 
-	// Canonical name of this APEX. Used to determine the path to the activated APEX on
-	// device (/apex/<apex_name>). If unspecified, follows the name property.
+	// Canonical name of this APEX bundle. Used to determine the path to the activated APEX on
+	// device (/apex/<apex_name>). It follows that only one APEX module with this name may be
+	// active on device at any time, and only one APEX module with this name may be installed
+	// into the system image. If unspecified, follows the name property.
 	Apex_name *string
 
-	ForceDisable bool `blueprint:"mutated"`
-
-	// whether the extracted apex file is installable.
+	// Whether this APEX is installable to one of the partitions like system, vendor, etc.
+	// Defaults to true for modules present in PRODUCT_INSTALL_APEXES, false otherwise. No more
+	// than one APEX module with a certain apex_name may be installable, and it is also assumed
+	// to be installed in the system image. This allows Soong to assume the installable APEX
+	// should be used to e.g. extract dex jars for dexpreopting other files in the system image.
 	Installable *bool
 
 	// optional name for the installed apex. If unspecified, name of the
@@ -103,12 +107,21 @@ type PrebuiltCommonProperties struct {
 	// List of bootclasspath fragments inside this prebuilt APEX bundle and for which this APEX
 	// bundle will create an APEX variant.
 	Exported_bootclasspath_fragments []string
+
+	ForceDisable bool `blueprint:"mutated"`
+
+	// Whether this APEX is present in PRODUCT_INSTALL_APEXES.
+	InInstallApexes bool `blueprint:"mutated"`
 }
 
 // initPrebuiltCommon initializes the prebuiltCommon structure and performs initialization of the
 // module that is common to Prebuilt and ApexSet.
 func (p *prebuiltCommon) initPrebuiltCommon(module android.Module, properties *PrebuiltCommonProperties) {
 	p.prebuiltCommonProperties = properties
+
+	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
+		properties.InInstallApexes = android.InList(p.ModuleBase.BaseModuleName(), ctx.Config().InstallApexes())
+	})
 
 	// Avoid panic in InitSingleSourcePrebuiltModule lambda if the module gets
 	// skipped in prebuiltApexModuleCreatorMutator.
@@ -168,7 +181,10 @@ func (p *prebuiltCommon) Overrides() []string {
 }
 
 func (p *prebuiltCommon) installable() bool {
-	return proptools.BoolDefault(p.prebuiltCommonProperties.Installable, true)
+	if p.prebuiltCommonProperties.Installable != nil {
+		return *p.prebuiltCommonProperties.Installable
+	}
+	return p.prebuiltCommonProperties.InInstallApexes
 }
 
 // initApexFilesForAndroidMk initializes the prebuiltCommon.apexFilesForAndroidMk field from the
@@ -209,6 +225,7 @@ func (p *prebuiltCommon) AndroidMkEntries() []android.AndroidMkEntries {
 			Host_required: p.hostRequired,
 			ExtraEntries: []android.AndroidMkExtraEntriesFunc{
 				func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
+					entries.SetBool("LOCAL_IS_APEX", true)
 					entries.SetString("LOCAL_MODULE_PATH", p.installDir.ToMakePath().String())
 					entries.SetString("LOCAL_MODULE_STEM", p.installFilename)
 					entries.SetBoolIfTrue("LOCAL_UNINSTALLABLE_MODULE", !p.installable())
@@ -282,6 +299,9 @@ func (p *prebuiltCommon) createEntriesForApexFile(fi apexFile, apexName string) 
 // prebuiltApexModuleCreator defines the methods that need to be implemented by prebuilt_apex and
 // apex_set in order to create the modules needed to provide access to the prebuilt .apex file.
 type prebuiltApexModuleCreator interface {
+	installable() bool
+
+	// This method is only called for installable APEX modules.
 	createPrebuiltApexModules(ctx android.TopDownMutatorContext)
 }
 
@@ -300,7 +320,7 @@ func prebuiltApexModuleCreatorMutator(ctx android.TopDownMutatorContext) {
 		return
 	}
 	module := ctx.Module()
-	if creator, ok := module.(prebuiltApexModuleCreator); ok {
+	if creator, ok := module.(prebuiltApexModuleCreator); ok && creator.installable() {
 		creator.createPrebuiltApexModules(ctx)
 	}
 }
