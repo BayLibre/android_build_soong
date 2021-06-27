@@ -20,6 +20,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/java"
+
 	"github.com/google/blueprint"
 )
 
@@ -62,6 +63,7 @@ func TestCreateClasspathElements(t *testing.T) {
 		android.FixtureWithRootAndroidBp(`
 		apex {
 			name: "com.android.art",
+			installable: true,
 			key: "com.android.art.key",
  			bootclasspath_fragments: [
 				"art-bootclasspath-fragment",
@@ -110,6 +112,7 @@ func TestCreateClasspathElements(t *testing.T) {
 
 		apex {
 			name: "myapex",
+			installable: true,
 			key: "myapex.key",
  			bootclasspath_fragments: [
 				"mybootclasspath-fragment",
@@ -161,6 +164,7 @@ func TestCreateClasspathElements(t *testing.T) {
 
 		apex {
 			name: "otherapex",
+			installable: true,
 			key: "otherapex.key",
 			java_libs: [
 				"otherapexlibrary",
