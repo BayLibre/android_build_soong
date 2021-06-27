@@ -138,7 +138,7 @@ type apexBundleProperties struct {
 	Platform_apis *bool
 
 	// Whether this APEX is installable to one of the partitions like system, vendor, etc.
-	// Default: true.
+	// Defaults to true for modules present in PRODUCT_INSTALL_APEXES, false otherwise.
 	Installable *bool
 
 	// Whether this APEX can be compressed or not. Setting this property to false means this
@@ -322,6 +322,9 @@ type overridableProperties struct {
 	// certificate and the private key are provided from the android_app_certificate module
 	// named "module".
 	Certificate *string
+
+	// Whether this APEX is present in PRODUCT_INSTALL_APEXES.
+	InInstallApexes bool `blueprint:"mutated"`
 }
 
 type apexBundle struct {
@@ -1359,9 +1362,14 @@ func (a *apexBundle) getCertString(ctx android.BaseModuleContext) string {
 	return String(a.overridableProperties.Certificate)
 }
 
-// See the installable property
 func (a *apexBundle) installable() bool {
-	return !a.properties.PreventInstall && (a.properties.Installable == nil || proptools.Bool(a.properties.Installable))
+	if a.properties.PreventInstall {
+		return false
+	}
+	if a.properties.Installable != nil {
+		return *a.properties.Installable
+	}
+	return a.overridableProperties.InInstallApexes
 }
 
 // See the generate_hashtree property
@@ -2239,6 +2247,11 @@ func newApexBundle() *apexBundle {
 	module.AddProperties(&module.archProperties)
 	module.AddProperties(&module.overridableProperties)
 
+	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
+		module.overridableProperties.InInstallApexes =
+			android.InList(module.BaseModuleName(), ctx.Config().InstallApexes())
+	})
+
 	android.InitAndroidMultiTargetsArchModule(module, android.HostAndDeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 	android.InitSdkAwareModule(module)
@@ -2295,6 +2308,8 @@ func DefaultsFactory(props ...interface{}) android.Module {
 type OverrideApex struct {
 	android.ModuleBase
 	android.OverrideModuleBase
+
+	properties overridableProperties
 }
 
 func (o *OverrideApex) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -2306,7 +2321,12 @@ func (o *OverrideApex) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 func overrideApexFactory() android.Module {
 	m := &OverrideApex{}
 
-	m.AddProperties(&overridableProperties{})
+	m.AddProperties(&m.properties)
+
+	android.AddLoadHook(m, func(ctx android.LoadHookContext) {
+		// TODO: Test that this is properly reflected in apexBundle.installable()
+		m.properties.InInstallApexes = android.InList(m.BaseModuleName(), ctx.Config().InstallApexes())
+	})
 
 	android.InitAndroidMultiTargetsArchModule(m, android.DeviceSupported, android.MultilibCommon)
 	android.InitOverrideModule(m)

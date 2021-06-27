@@ -954,7 +954,7 @@ func (module *prebuiltBootclasspathFragmentModule) produceBootImageFiles(ctx and
 		// Save away the `deapexer` module on which this depends, if any.
 		if tag == android.DeapexerTag {
 			if deapexerModule != nil {
-				ctx.ModuleErrorf("Ambiguous duplicate deapexer module dependencies %q and %q",
+				ctx.ModuleErrorf("Prebuilt APEXes %q and %q are both installable and provide ambiguous deapexer dependencies to the bootclasspath_fragment module",
 					deapexerModule.Name(), to.Name())
 			}
 			deapexerModule = to
@@ -962,9 +962,9 @@ func (module *prebuiltBootclasspathFragmentModule) produceBootImageFiles(ctx and
 	})
 
 	if deapexerModule == nil {
-		// This should never happen as a variant for a prebuilt_apex is only created if the
-		// deapexer module has been configured to export the dex implementation jar for this module.
-		ctx.ModuleErrorf("internal error: module does not depend on a `deapexer` module")
+		ai := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+		ctx.ModuleErrorf("An installable prebuilt APEX with variant name %q not found for the bootclasspath_fragment module to register a deapexer dependency on",
+			ai.ApexVariationName)
 		return nil
 	}
 
