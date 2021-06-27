@@ -35,6 +35,7 @@ func TestSystemserverclasspathFragmentContents(t *testing.T) {
 	).RunTestWithBp(t, `
 		apex {
 			name: "myapex",
+			installable: true,
 			key: "myapex.key",
 			systemserverclasspath_fragments: [
 				"mysystemserverclasspathfragment",
@@ -87,6 +88,7 @@ func TestSystemserverclasspathFragmentNoGeneratedProto(t *testing.T) {
 	).RunTestWithBp(t, `
 		apex {
 			name: "myapex",
+			installable: true,
 			key: "myapex.key",
 			systemserverclasspath_fragments: [
 				"mysystemserverclasspathfragment",
@@ -142,6 +144,7 @@ func TestSystemServerClasspathFragmentWithContentNotInMake(t *testing.T) {
 		RunTestWithBp(t, `
 			apex {
 				name: "myapex",
+				installable: true,
 				key: "myapex.key",
 				systemserverclasspath_fragments: [
 					"mysystemserverclasspathfragment",
