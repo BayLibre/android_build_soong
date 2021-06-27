@@ -64,6 +64,7 @@ func TestBootclasspathFragments(t *testing.T) {
 
 		apex {
 			name: "com.android.art",
+			installable: true,
 			key: "com.android.art.key",
 			bootclasspath_fragments: ["art-bootclasspath-fragment"],
  			java_libs: [
@@ -158,6 +159,7 @@ func TestBootclasspathFragments_FragmentDependency(t *testing.T) {
 
 		apex {
 			name: "com.android.art",
+			installable: true,
 			key: "com.android.art.key",
 			bootclasspath_fragments: ["art-bootclasspath-fragment"],
 			updatable: false,
@@ -278,10 +280,14 @@ func TestBootclasspathFragmentInArtApex(t *testing.T) {
 	commonPreparer := android.GroupFixturePreparers(
 		prepareForTestWithBootclasspathFragment,
 		prepareForTestWithArtApex,
+		android.FixtureMergeMockFs(android.MockFS{
+			"system/sepolicy/apex/com.mycompany.android.art-file_contexts": nil,
+		}),
 
 		android.FixtureWithRootAndroidBp(`
 		apex {
 			name: "com.android.art",
+			installable: true,
 			key: "com.android.art.key",
 			bootclasspath_fragments: [
 				"mybootclasspathfragment",
@@ -366,6 +372,7 @@ func TestBootclasspathFragmentInArtApex(t *testing.T) {
 		text := fmt.Sprintf(`
 			prebuilt_apex {
 				name: "com.android.art",
+				installable: true,
 				arch: {
 					arm64: {
 						src: "com.android.art-arm64.apex",
@@ -392,6 +399,15 @@ func TestBootclasspathFragmentInArtApex(t *testing.T) {
 					stub_flags: "mybootclasspathfragment/stub-flags.csv",
 					all_flags: "mybootclasspathfragment/all-flags.csv",
 				},
+			}
+
+			// An uninstallable prebuilt apex with the same apex_name that shouldn't interfere.
+			prebuilt_apex {
+				name: "com.mycompany.android.art",
+				apex_name: "com.android.art",
+				installable: false,
+				src: "com.mycompany.android.art.apex",
+				exported_bootclasspath_fragments: ["mybootclasspathfragment"],
 			}
 		`, contentsInsert(contents), prefer)
 		return android.FixtureAddTextFile("prebuilts/module_sdk/art/Android.bp", text)
@@ -475,10 +491,24 @@ func TestBootclasspathFragmentInArtApex(t *testing.T) {
 			`prebuilt_com.android.art`,
 		})
 
+		java.CheckModuleDependencies(t, result.TestContext, "prebuilt_foo", "android_common", []string{
+			"com.android.art.deapexer",
+			"com.mycompany.android.art.deapexer",
+			"core-lambda-stubs",
+			"ext",
+			"framework",
+			"stable-core-platform-api-stubs-system-modules",
+			"stable.core.platform.api.stubs",
+		})
+
 		// Make sure that the prebuilt bootclasspath_fragment copies its dex files to the predefined
 		// locations for the art image.
 		module := result.ModuleForTests("prebuilt_mybootclasspathfragment", "android_common_com.android.art")
 		checkCopiesToPredefinedLocationForArt(t, result.Config, module, "bar", "foo")
+
+		// Check that the right deapexer module was chosen for a boot image.
+		param := module.Output("out/soong/test_device/dex_artjars/android/apex/art_boot_images/javalib/arm64/boot.art")
+		android.AssertStringDoesContain(t, "didn't find the expected deapexer in the input path", param.Input.String(), "/com.android.art.deapexer")
 	})
 
 	t.Run("source with inconsistency between config and contents", func(t *testing.T) {
@@ -556,6 +586,7 @@ func TestBootclasspathFragmentInPrebuiltArtApex(t *testing.T) {
 	).RunTestWithBp(t, `
 		prebuilt_apex {
 			name: "com.android.art",
+			installable: true,
 			arch: {
 				arm64: {
 					src: "com.android.art-arm64.apex",
@@ -599,6 +630,15 @@ func TestBootclasspathFragmentInPrebuiltArtApex(t *testing.T) {
 				all_flags: "mybootclasspathfragment/all-flags.csv",
 			},
 		}
+
+		// An uninstallable prebuilt apex with the same apex_name that shouldn't interfere.
+		prebuilt_apex {
+			name: "com.mycompany.android.art",
+			apex_name: "com.android.art",
+			installable: false,
+			src: "com.mycompany.android.art.apex",
+			exported_bootclasspath_fragments: ["mybootclasspathfragment"],
+		}
 	`)
 
 	java.CheckModuleDependencies(t, result.TestContext, "com.android.art", "android_common_com.android.art", []string{
@@ -608,6 +648,7 @@ func TestBootclasspathFragmentInPrebuiltArtApex(t *testing.T) {
 
 	java.CheckModuleDependencies(t, result.TestContext, "mybootclasspathfragment", "android_common_com.android.art", []string{
 		`com.android.art.deapexer`,
+		`com.mycompany.android.art.deapexer`,
 		`dex2oatd`,
 		`prebuilt_bar`,
 		`prebuilt_foo`,
@@ -615,6 +656,10 @@ func TestBootclasspathFragmentInPrebuiltArtApex(t *testing.T) {
 
 	module := result.ModuleForTests("mybootclasspathfragment", "android_common_com.android.art")
 	checkCopiesToPredefinedLocationForArt(t, result.Config, module, "bar", "foo")
+
+	// Check that the right deapexer module was chosen for a boot image.
+	param := module.Output("out/soong/test_device/dex_artjars/android/apex/art_boot_images/javalib/arm64/boot.art")
+	android.AssertStringDoesContain(t, "didn't find the expected deapexer in the input path", param.Input.String(), "/com.android.art.deapexer")
 }
 
 // checkCopiesToPredefinedLocationForArt checks that the supplied modules are copied to the
@@ -654,6 +699,7 @@ func TestBootclasspathFragmentContentsNoName(t *testing.T) {
 	).RunTestWithBp(t, `
 		apex {
 			name: "myapex",
+			installable: true,
 			key: "myapex.key",
 			bootclasspath_fragments: [
 				"mybootclasspathfragment",
@@ -760,6 +806,7 @@ func TestBootclasspathFragment_HiddenAPIList(t *testing.T) {
 	).RunTestWithBp(t, `
 		apex {
 			name: "com.android.art",
+			installable: true,
 			key: "com.android.art.key",
 			bootclasspath_fragments: ["art-bootclasspath-fragment"],
 			updatable: false,
@@ -805,6 +852,7 @@ func TestBootclasspathFragment_HiddenAPIList(t *testing.T) {
 
 		apex {
 			name: "myapex",
+			installable: true,
 			key: "myapex.key",
 			bootclasspath_fragments: [
 				"mybootclasspathfragment",
@@ -924,6 +972,7 @@ func TestBootclasspathFragment_AndroidNonUpdatable(t *testing.T) {
 
 		apex {
 			name: "com.android.art",
+			installable: true,
 			key: "com.android.art.key",
 			bootclasspath_fragments: ["art-bootclasspath-fragment"],
  			java_libs: [
@@ -969,6 +1018,7 @@ func TestBootclasspathFragment_AndroidNonUpdatable(t *testing.T) {
 
 		apex {
 			name: "myapex",
+			installable: true,
 			key: "myapex.key",
 			bootclasspath_fragments: [
 				"mybootclasspathfragment",
@@ -1083,6 +1133,7 @@ func TestBootclasspathFragment_AndroidNonUpdatable_AlwaysUsePrebuiltSdks(t *test
 	).RunTestWithBp(t, `
 		apex {
 			name: "com.android.art",
+			installable: true,
 			key: "com.android.art.key",
 			bootclasspath_fragments: ["art-bootclasspath-fragment"],
  			java_libs: [
@@ -1128,6 +1179,7 @@ func TestBootclasspathFragment_AndroidNonUpdatable_AlwaysUsePrebuiltSdks(t *test
 
 		apex {
 			name: "myapex",
+			installable: true,
 			key: "myapex.key",
 			bootclasspath_fragments: [
 				"mybootclasspathfragment",

@@ -347,6 +347,7 @@ func TestPlatformBootclasspath_AlwaysUsePrebuiltSdks(t *testing.T) {
 	).RunTestWithBp(t, `
 		apex {
 			name: "myapex",
+			installable: true,
 			key: "myapex.key",
 			bootclasspath_fragments: [
 				"mybootclasspath-fragment",
@@ -381,6 +382,7 @@ func TestPlatformBootclasspath_AlwaysUsePrebuiltSdks(t *testing.T) {
 
 		prebuilt_apex {
 			name: "myapex",
+			installable: true,
 			src: "myapex.apex",
 			exported_bootclasspath_fragments: ["mybootclasspath-fragment"],
 		}
@@ -477,21 +479,35 @@ func TestPlatformBootclasspath_AlwaysUsePrebuiltSdks(t *testing.T) {
 }
 
 func TestPlatformBootclasspathUnbundled(t *testing.T) {
-	android.GroupFixturePreparers(
+	preparers := android.GroupFixturePreparers(
 		prepareForTestWithPlatformBootclasspath,
+		java.FixtureConfigureApexBootJars("myapex:foo"),
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
 			variables.Unbundled_build = proptools.BoolPtr(true)
 			variables.Always_use_prebuilt_sdks = proptools.BoolPtr(true)
+			// What's in InstallApexes shouldn't matter in an unbundled build.
+			variables.InstallApexes = []string{"otherapex"}
 		}),
 		java.FixtureWithPrebuiltApis(map[string][]string{
 			"current": {},
 			"30":      {"foo"},
 		}),
-	).RunTestWithBp(t, `
+	)
+
+	bp := `
 		prebuilt_apex {
 			name: "myapex",
+			%s
 			src: "myapex.apex",
+			exported_bootclasspath_fragments: ["mybootclasspath-fragment"],
+		}
+
+		prebuilt_apex {
+			name: "otherapex",
+			%s
+			apex_name: "myapex",
+			src: "otherapex.apex",
 			exported_bootclasspath_fragments: ["mybootclasspath-fragment"],
 		}
 
@@ -531,7 +547,20 @@ func TestPlatformBootclasspathUnbundled(t *testing.T) {
 				},
 			],
 		}
-`)
+	`
+
+	t.Run("no installable prebuilt_apex", func(t *testing.T) {
+		preparers.ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
+			"APEX module myapex is invalid: cannot extract files from prebuilt APEXes in unbundled builds")).
+			RunTestWithBp(t, fmt.Sprintf(bp, "", ""))
+	})
+
+	t.Run("single installable prebuilt_apex", func(t *testing.T) {
+		result := preparers.RunTestWithBp(t, fmt.Sprintf(bp, "installable: true,", ""))
+		module := result.ModuleForTests("myplatform-bootclasspath", "android_common")
+		param := module.Output("out/soong/test_device/apex_bootjars/foo.jar")
+		android.AssertStringDoesContain(t, "didn't find the expected deapexer in the input path", param.Input.String(), "/myapex.deapexer")
+	})
 }
 
 // CheckModuleDependencies checks the dependencies of the selected module against the expected list.
