@@ -90,7 +90,9 @@ type apexBundleProperties struct {
 	AndroidManifest *string `android:"path"`
 
 	// Canonical name of this APEX bundle. Used to determine the path to the activated APEX on
-	// device (/apex/<apex_name>). If unspecified, follows the name property.
+	// device (/apex/<apex_name>). It follows that only one APEX module with this name may be
+	// active on device at any time, and only one APEX module with this name may be installed
+	// into the system image. If unspecified, follows the name property.
 	Apex_name *string
 
 	// Determines the file contexts file for setting the security contexts to files in this APEX
@@ -130,10 +132,6 @@ type apexBundleProperties struct {
 	// Whether this APEX can use platform APIs or not. Can be set to true only when `updatable:
 	// false`. Default is false.
 	Platform_apis *bool
-
-	// Whether this APEX is installable to one of the partitions like system, vendor, etc.
-	// Default: true.
-	Installable *bool
 
 	// Whether this APEX can be compressed or not. Setting this property to false means this
 	// APEX will never be compressed. When set to true, APEX will be compressed if other
@@ -193,6 +191,9 @@ type apexBundleProperties struct {
 
 	// List of sanitizer names that this APEX is enabled for
 	SanitizerNames []string `blueprint:"mutated"`
+
+	// Whether this APEX is present in PRODUCT_INSTALL_APEXES.
+	InInstallApexes *bool `blueprint:"mutated"`
 
 	PreventInstall bool `blueprint:"mutated"`
 
@@ -285,6 +286,14 @@ type apexArchBundleProperties struct {
 // These properties can be used in override_apex to override the corresponding properties in the
 // base apex.
 type overridableProperties struct {
+	// Whether this APEX is installable to one of the partitions like system, vendor, etc.
+	// Defaults to true for modules present in PRODUCT_INSTALL_APEXES, false otherwise. No more
+	// than one APEX module with a certain apex_name may be installable, and it is also assumed
+	// to be installed in the system image. This is for consistency with prebuilt APEXes, from
+	// which Soong may need to e.g. extract dex jars for dexpreopting other files in the system
+	// image.
+	Installable *bool
+
 	// List of APKs that are embedded inside this APEX.
 	Apps []string
 
@@ -788,6 +797,11 @@ func (a *apexBundle) DepsMutator(ctx android.BottomUpMutatorContext) {
 
 // DepsMutator for the overridden properties.
 func (a *apexBundle) OverridablePropertiesDepsMutator(ctx android.BottomUpMutatorContext) {
+	// At this point the override APEX variants have been created, and the module
+	// instance has its final name that we can check for in PRODUCT_INSTALL_APEXES.
+	a.properties.InInstallApexes =
+		proptools.BoolPtr(android.InList(ctx.Module().Name(), ctx.Config().InstallApexes()))
+
 	if a.overridableProperties.Allowed_files != nil {
 		android.ExtractSourceDeps(ctx, a.overridableProperties.Allowed_files)
 	}
@@ -1354,9 +1368,27 @@ func (a *apexBundle) getCertString(ctx android.BaseModuleContext) string {
 	return String(a.overridableProperties.Certificate)
 }
 
-// See the installable property
 func (a *apexBundle) installable() bool {
-	return !a.properties.PreventInstall && (a.properties.Installable == nil || proptools.Bool(a.properties.Installable))
+	if a.properties.PreventInstall {
+		return false
+	}
+	if a.overridableProperties.Installable != nil {
+		return *a.overridableProperties.Installable
+	}
+
+	if a.vndkApex {
+		// VNDK APEXes default to installable so they don't need to be tracked in
+		// PRODUCT_INSTALL_APEXES. They can get added through LOCAL_REQUIRED_MODULES
+		// logic, which is cumbersome to reflect into PRODUCT_INSTALL_APEXES. This
+		// is safe to do because they only contain VNDK libs and so won't require
+		// the deapexer logic that we need PRODUCT_INSTALL_APEXES for.
+		return true
+	}
+
+	// If this fails with a nil dereference error then installable() is called too
+	// early, before OverridablePropertiesDepsMutator where the module instance
+	// gets its final name.
+	return *a.properties.InInstallApexes
 }
 
 // See the generate_hashtree property
@@ -3302,8 +3334,8 @@ func apexBundleBp2BuildInternal(ctx android.TopDownMutatorContext, module *apexB
 	}
 
 	var installableAttribute bazel.BoolAttribute
-	if module.properties.Installable != nil {
-		installableAttribute.Value = module.properties.Installable
+	if module.overridableProperties.Installable != nil {
+		installableAttribute.Value = module.overridableProperties.Installable
 	}
 
 	attrs := &bazelApexBundleAttributes{

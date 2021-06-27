@@ -75,13 +75,17 @@ type sanitizedPrebuilt interface {
 type PrebuiltCommonProperties struct {
 	SelectedApexProperties
 
-	// Canonical name of this APEX. Used to determine the path to the activated APEX on
-	// device (/apex/<apex_name>). If unspecified, follows the name property.
+	// Canonical name of this APEX bundle. Used to determine the path to the activated APEX on
+	// device (/apex/<apex_name>). It follows that only one APEX module with this name may be
+	// active on device at any time, and only one APEX module with this name may be installed
+	// into the system image. If unspecified, follows the name property.
 	Apex_name *string
 
-	ForceDisable bool `blueprint:"mutated"`
-
-	// whether the extracted apex file is installable.
+	// Whether this APEX is installable to one of the partitions like system, vendor, etc.
+	// Defaults to true for modules present in PRODUCT_INSTALL_APEXES, false otherwise. No more
+	// than one APEX module with a certain apex_name may be installable, and it is also assumed
+	// to be installed in the system image. This allows Soong to assume the installable APEX
+	// should be used to e.g. extract dex jars for dexpreopting other files in the system image.
 	Installable *bool
 
 	// optional name for the installed apex. If unspecified, name of the
@@ -103,12 +107,26 @@ type PrebuiltCommonProperties struct {
 	// List of bootclasspath fragments inside this prebuilt APEX bundle and for which this APEX
 	// bundle will create an APEX variant.
 	Exported_bootclasspath_fragments []string
+
+	ForceDisable bool `blueprint:"mutated"`
+
+	// Whether this APEX is present in PRODUCT_INSTALL_APEXES.
+	InInstallApexes bool `blueprint:"mutated"`
 }
 
 // initPrebuiltCommon initializes the prebuiltCommon structure and performs initialization of the
 // module that is common to Prebuilt and ApexSet.
 func (p *prebuiltCommon) initPrebuiltCommon(module android.Module, properties *PrebuiltCommonProperties) {
 	p.prebuiltCommonProperties = properties
+
+	android.AddLoadHook(module, func(ctx android.LoadHookContext) {
+		properties.InInstallApexes = android.InList(p.ModuleBase.BaseModuleName(), ctx.Config().InstallApexes())
+	})
+
+	// Avoid panic in InitSingleSourcePrebuiltModule lambda if the module gets
+	// skipped in prebuiltApexModuleCreatorMutator.
+	properties.Selected_apex = proptools.StringPtr("")
+
 	android.InitSingleSourcePrebuiltModule(module.(android.PrebuiltInterface), properties, "Selected_apex")
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
 }
@@ -163,7 +181,10 @@ func (p *prebuiltCommon) Overrides() []string {
 }
 
 func (p *prebuiltCommon) installable() bool {
-	return proptools.BoolDefault(p.prebuiltCommonProperties.Installable, true)
+	if p.prebuiltCommonProperties.Installable != nil {
+		return *p.prebuiltCommonProperties.Installable
+	}
+	return p.prebuiltCommonProperties.InInstallApexes
 }
 
 // initApexFilesForAndroidMk initializes the prebuiltCommon.apexFilesForAndroidMk field from the
@@ -220,6 +241,7 @@ func (p *prebuiltCommon) AndroidMkEntries() []android.AndroidMkEntries {
 			Host_required: p.hostRequired,
 			ExtraEntries: []android.AndroidMkExtraEntriesFunc{
 				func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
+					entries.SetBool("LOCAL_IS_APEX", true)
 					entries.SetString("LOCAL_MODULE_PATH", p.installDir.ToMakePath().String())
 					entries.SetString("LOCAL_MODULE_STEM", p.installFilename)
 					entries.SetBoolIfTrue("LOCAL_UNINSTALLABLE_MODULE", !p.installable())
@@ -576,9 +598,10 @@ func createApexSelectorModule(ctx android.TopDownMutatorContext, name string, ap
 // A deapexer module is only needed when the prebuilt apex specifies one or more modules in either
 // the `exported_java_libs` or `exported_bootclasspath_fragments` properties as that indicates that
 // the listed modules need access to files from within the prebuilt .apex file.
-func createDeapexerModuleIfNeeded(ctx android.TopDownMutatorContext, deapexerName string, apexFileSource string, properties *PrebuiltCommonProperties) {
+func (p *prebuiltCommon) createDeapexerModuleIfNeeded(ctx android.TopDownMutatorContext, deapexerName string, apexFileSource string) {
 	// Only create the deapexer module if it is needed.
-	if len(properties.Exported_java_libs)+len(properties.Exported_bootclasspath_fragments) == 0 {
+	if len(p.prebuiltCommonProperties.Exported_java_libs)+
+		len(p.prebuiltCommonProperties.Exported_bootclasspath_fragments) == 0 {
 		return
 	}
 
@@ -619,11 +642,13 @@ func createDeapexerModuleIfNeeded(ctx android.TopDownMutatorContext, deapexerNam
 	deapexerProperties.ExportedFiles = android.SortedUniqueStrings(exportedFiles)
 
 	invalidReason := ""
-	if ctx.Config().UnbundledBuild() {
+	if ctx.Config().UnbundledBuild() && p.prebuiltCommonProperties.Installable == nil {
 		// We need to know which APEXes get installed in the system image to know which to extract from,
 		// in case there are several with the same variant name. In unbundled builds we may not know
-		// that accurately.
-		invalidReason = "cannot extract files from prebuilt APEXes in unbundled builds"
+		// that accurately. However, honor the installable flag if it's set explicitly.
+		invalidReason = "cannot extract files from prebuilt APEXes in unbundled builds unless they are installable"
+	} else if !p.installable() {
+		invalidReason = "cannot extract files from prebuilt APEX that isn't installable"
 	}
 
 	props := struct {
@@ -725,7 +750,7 @@ func (p *Prebuilt) createPrebuiltApexModules(ctx android.TopDownMutatorContext) 
 	createApexSelectorModule(ctx, apexSelectorModuleName, &p.properties.ApexFileProperties)
 
 	apexFileSource := ":" + apexSelectorModuleName
-	createDeapexerModuleIfNeeded(ctx, deapexerModuleName(baseModuleName), apexFileSource, p.prebuiltCommonProperties)
+	p.createDeapexerModuleIfNeeded(ctx, deapexerModuleName(baseModuleName), apexFileSource)
 
 	// Add a source reference to retrieve the selected apex from the selector module.
 	p.prebuiltCommonProperties.Selected_apex = proptools.StringPtr(apexFileSource)
@@ -928,7 +953,7 @@ func (a *ApexSet) createPrebuiltApexModules(ctx android.TopDownMutatorContext) {
 	createApexExtractorModule(ctx, apexExtractorModuleName, &a.properties.ApexExtractorProperties)
 
 	apexFileSource := ":" + apexExtractorModuleName
-	createDeapexerModuleIfNeeded(ctx, deapexerModuleName(baseModuleName), apexFileSource, a.prebuiltCommonProperties)
+	a.createDeapexerModuleIfNeeded(ctx, deapexerModuleName(baseModuleName), apexFileSource)
 
 	// After passing the arch specific src properties to the creating the apex selector module
 	a.prebuiltCommonProperties.Selected_apex = proptools.StringPtr(apexFileSource)
