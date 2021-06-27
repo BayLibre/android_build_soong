@@ -53,6 +53,7 @@ func fixtureAddPrebuiltApexForBootclasspathFragment(apex, fragment string) andro
 		android.FixtureAddTextFile(filepath.Join(dir, "Android.bp"), fmt.Sprintf(`
 			prebuilt_apex {
 				name: "%s",
+				installable: true,
 				src: "%s",
 				exported_bootclasspath_fragments: [
 					"%s",
@@ -88,6 +89,7 @@ func TestSnapshotWithBootclasspathFragment_ImageName(t *testing.T) {
 
 			apex {
 				name: "com.android.art",
+				installable: true,
 				key: "com.android.art.key",
 				bootclasspath_fragments: [
 					"mybootclasspathfragment",
@@ -248,6 +250,7 @@ func TestSnapshotWithBootClasspathFragment_Contents(t *testing.T) {
 
 			apex {
 				name: "myapex",
+				installable: true,
 				key: "myapex.key",
 				min_sdk_version: "2",
 				bootclasspath_fragments: ["mybootclasspathfragment"],
@@ -579,6 +582,7 @@ func TestSnapshotWithBootClasspathFragment_Fragments(t *testing.T) {
 		android.FixtureAddTextFile("myotherapex/Android.bp", `
 			apex {
 				name: "myotherapex",
+				installable: true,
 				key: "myapex.key",
 				min_sdk_version: "2",
 				bootclasspath_fragments: ["myotherbootclasspathfragment"],
@@ -768,6 +772,7 @@ func TestSnapshotWithBootclasspathFragment_HiddenAPI(t *testing.T) {
 
 			apex {
 				name: "myapex",
+				installable: true,
 				key: "myapex.key",
 				min_sdk_version: "1",
 				bootclasspath_fragments: ["mybootclasspathfragment"],
