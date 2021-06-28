@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2daf2c92_606912d5",
+        "filename": "ui/status/ninja.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-28T23:02:46Z",
+      "side": 1,
+      "message": "This could go in an init() function so that it only runs once, although that\u0027s not particularly necessary here since it will only run on outputs that failed.",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 254,
+        "endChar": 52
+      },
+      "revId": "5e31ab1f3b90c1b3f9791bb6fbf95acebcbcf47d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
