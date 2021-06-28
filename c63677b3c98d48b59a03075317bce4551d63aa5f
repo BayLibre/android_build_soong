@@ -16,6 +16,24 @@
       "message": "Hadrien, Karl: this is the CL that introduced the module name to label map in the @soong_inection repo.",
       "revId": "c63677b3c98d48b59a03075317bce4551d63aa5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aac61fbb_14a1c776",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2021-06-28T18:10:33Z",
+      "side": 1,
+      "message": "Thanks Jing.\n\nIIUC this adds a Bazel aliases/targets that point to the package aliases right? If so, would this help us eliminate an extra Bazel query command to speed things up?\n\nCurrent:\n----------\n1) Bazel query to map module name to package path\n2) Bazel query to find deps of package path\n3) Bazel test to run tests\n\nProposed:\n----------\n1) Bazel query to find deps of module name\n2) Bazel test to run tests",
+      "parentUuid": "2b08fd22_066daf58",
+      "revId": "c63677b3c98d48b59a03075317bce4551d63aa5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
