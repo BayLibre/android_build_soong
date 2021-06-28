@@ -70,6 +70,24 @@
       "parentUuid": "ff998bba_d7cc1de3",
       "revId": "280a31aac39697a069f2f2f2ee471ffafb52d2a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c646a0a_0015aef1",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-28T11:29:31Z",
+      "side": 1,
+      "message": "Yeah, I was mostly concerned about test vs module_lib apis. Ideally, we would allow usage of test apis in Mainline, and effectively make test stubs be superset of all @SystemApis, which I think would simplify many places, or maybe not.. not sure.",
+      "parentUuid": "81f7e341_54d148f9",
+      "revId": "280a31aac39697a069f2f2f2ee471ffafb52d2a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
