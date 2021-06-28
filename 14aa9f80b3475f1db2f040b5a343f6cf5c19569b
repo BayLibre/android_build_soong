@@ -16,6 +16,24 @@
       "message": "Can you avoid the dependency on prebuilt_etc by defining a tiny module type here that calls android.PathsForModuleSrc on a property with an `android:\"path\"` tag?",
       "revId": "14aa9f80b3475f1db2f040b5a343f6cf5c19569b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5018a4d5_342a49c0",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-06-28T17:08:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47953b87_0ccc5dc3",
+      "revId": "14aa9f80b3475f1db2f040b5a343f6cf5c19569b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
