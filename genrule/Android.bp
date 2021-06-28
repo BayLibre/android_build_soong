@@ -13,6 +13,7 @@ bootstrap_go_package {
         "soong-android",
         "soong-bazel",
         "soong-shared",
+        "soong-etc", // TODO(b/185542136) this is for testing
     ],
     srcs: [
         "genrule.go",

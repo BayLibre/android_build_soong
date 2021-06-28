@@ -20,6 +20,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/etc"
 
 	"github.com/google/blueprint/proptools"
 )
@@ -31,7 +32,7 @@ func TestMain(m *testing.M) {
 var prepareForGenRuleTest = android.GroupFixturePreparers(
 	android.PrepareForTestWithArchMutator,
 	android.PrepareForTestWithDefaults,
-
+	etc.PrepareForTestWithPrebuiltEtc,
 	android.PrepareForTestWithFilegroup,
 	PrepareForTestWithGenRuleBuildComponents,
 	android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
@@ -682,6 +683,34 @@ func TestGenruleAllowMissingDependencies(t *testing.T) {
 	if gen.Rule != android.ErrorRule {
 		t.Errorf("Expected missing dependency error rule for gen, got %q", gen.Rule.String())
 	}
+}
+
+func TestGenruleOutputFiles(t *testing.T) {
+	bp := `
+				genrule {
+					name: "gen",
+					out: ["foo", "sub/bar"],
+					cmd: "echo foo > $(location foo) && echo bar > $(location sub/bar)",
+				}
+				prebuilt_etc {
+					name: "gen_foo",
+					src: ":gen{foo}",
+				}
+				prebuilt_etc {
+					name: "gen_bar",
+					src: ":gen{sub/bar}",
+				}
+			`
+
+	result := prepareForGenRuleTest.RunTestWithBp(t, testGenruleBp()+bp)
+	android.AssertPathRelativeToTopEquals(t,
+		"genrule.tag with output",
+		"out/soong/.intermediates/gen/gen/foo",
+		result.ModuleForTests("gen_foo", "android_arm64_armv8-a").Output("gen_foo").Input)
+	android.AssertPathRelativeToTopEquals(t,
+		"genrule.tag with output in subdir",
+		"out/soong/.intermediates/gen/gen/sub/bar",
+		result.ModuleForTests("gen_bar", "android_arm64_armv8-a").Output("gen_bar").Input)
 }
 
 func TestGenruleWithBazel(t *testing.T) {
