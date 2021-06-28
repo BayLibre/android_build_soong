@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47953b87_0ccc5dc3",
+        "filename": "genrule/genrule_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-28T16:31:35Z",
+      "side": 1,
+      "message": "Can you avoid the dependency on prebuilt_etc by defining a tiny module type here that calls android.PathsForModuleSrc on a property with an `android:\"path\"` tag?",
+      "revId": "14aa9f80b3475f1db2f040b5a343f6cf5c19569b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
