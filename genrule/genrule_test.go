@@ -31,12 +31,12 @@ func TestMain(m *testing.M) {
 var prepareForGenRuleTest = android.GroupFixturePreparers(
 	android.PrepareForTestWithArchMutator,
 	android.PrepareForTestWithDefaults,
-
 	android.PrepareForTestWithFilegroup,
 	PrepareForTestWithGenRuleBuildComponents,
 	android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
 		ctx.RegisterModuleType("tool", toolFactory)
 		ctx.RegisterModuleType("output", outputProducerFactory)
+		ctx.RegisterModuleType("use_source", useSourceFactory)
 	}),
 	android.FixtureMergeMockFs(android.MockFS{
 		"tool":       nil,
@@ -684,6 +684,34 @@ func TestGenruleAllowMissingDependencies(t *testing.T) {
 	}
 }
 
+func TestGenruleOutputFiles(t *testing.T) {
+	bp := `
+				genrule {
+					name: "gen",
+					out: ["foo", "sub/bar"],
+					cmd: "echo foo > $(location foo) && echo bar > $(location sub/bar)",
+				}
+				use_source {
+					name: "gen_foo",
+					src: ":gen{foo}",
+				}
+				use_source {
+					name: "gen_bar",
+					src: ":gen{sub/bar}",
+				}
+			`
+
+	result := prepareForGenRuleTest.RunTestWithBp(t, testGenruleBp()+bp)
+	android.AssertPathRelativeToTopEquals(t,
+		"genrule.tag with output",
+		"out/soong/.intermediates/gen/gen/foo",
+		result.ModuleForTests("gen_foo", "").Module().(*useSource).src)
+	android.AssertPathRelativeToTopEquals(t,
+		"genrule.tag with output in subdir",
+		"out/soong/.intermediates/gen/gen/sub/bar",
+		result.ModuleForTests("gen_bar", "").Module().(*useSource).src)
+}
+
 func TestGenruleWithBazel(t *testing.T) {
 	bp := `
 		genrule {
@@ -750,3 +778,22 @@ func (t *testOutputProducer) OutputFiles(tag string) (android.Paths, error) {
 }
 
 var _ android.OutputFileProducer = (*testOutputProducer)(nil)
+
+type useSource struct {
+	android.ModuleBase
+	props struct {
+		Src *string `android:"path"`
+	}
+	src android.Path
+}
+
+func (s *useSource) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	s.src = android.PathForModuleSrc(ctx, *s.props.Src)
+}
+
+func useSourceFactory() android.Module {
+	module := &useSource{}
+	module.AddProperties(&module.props)
+	android.InitAndroidModule(module)
+	return module
+}
