@@ -34,6 +34,24 @@
       "parentUuid": "2f1af62b_3db876d4",
       "revId": "280a31aac39697a069f2f2f2ee471ffafb52d2a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff998bba_d7cc1de3",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-28T11:19:55Z",
+      "side": 1,
+      "message": "Sorry. I was confused by what you meant by \"similar issues\". You meant \"similar issues\" as to what this change is supposed to fix but mentioned \"test vs module_lib\" which is a related but slightly separate issue.\n\nThis just returns the widest stub dex jar for a specific module. The StubDexJarsForWidestAPIScope method below will return the widest stub dex jars for the set of modules.",
+      "parentUuid": "7257b1d0_33962017",
+      "revId": "280a31aac39697a069f2f2f2ee471ffafb52d2a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
