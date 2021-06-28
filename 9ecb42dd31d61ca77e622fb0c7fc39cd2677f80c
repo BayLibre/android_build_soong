@@ -22,6 +22,30 @@
       },
       "revId": "9ecb42dd31d61ca77e622fb0c7fc39cd2677f80c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afedf2ee_eb84fa93",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-28T22:03:28Z",
+      "side": 1,
+      "message": "Fixing this nicely in bpfix won\u0027t be easy.  For device-only modules, default_shared_libs is equivalent to system_shared_libs, and it should just be renamed.  For a host+device module, the default_shared_libs needs to go in a target.bionic clause.  bpfix doesn\u0027t know if a module is a device-only module, because it doesn\u0027t parse the semantics of the defaults modules that may set host_supported: true.  Any cleanup here is going to have to be manual.",
+      "parentUuid": "dce50598_8e26e8c2",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 75
+      },
+      "revId": "9ecb42dd31d61ca77e622fb0c7fc39cd2677f80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
