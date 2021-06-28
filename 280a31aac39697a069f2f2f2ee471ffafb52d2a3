@@ -88,6 +88,24 @@
       "parentUuid": "81f7e341_54d148f9",
       "revId": "280a31aac39697a069f2f2f2ee471ffafb52d2a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "000653cd_dc1ee1f7",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-28T11:55:02Z",
+      "side": 1,
+      "message": "We can use test APIs in mainline. What does not work is if you have @TestApi on say an interface method then it will not be propagated down to implementations of that method. That is because the @TestApi interface method cannot be resolved against the @SystemApi(MODULE_LIB) API. If it cannot be resolved then its implementations cannot be found.\n\nFortunately, @TestApi tends to be added to concrete methods that are not overridden.",
+      "parentUuid": "6c646a0a_0015aef1",
+      "revId": "280a31aac39697a069f2f2f2ee471ffafb52d2a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
