@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e268286c_2775d5ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1080813
+      },
+      "writtenOn": "2021-06-28T02:53:30Z",
+      "side": 1,
+      "message": "+1, I have similar thought as David. \n\nFeel free to clean it if there is a technical benefit.\n\nBtw, there is a symlink etc -\u003e system/etc in the root of system.img.\n\nIt might make the SwitchRoot(\"/system\"); fail if there is /etc/fstab.* in the ramdisk?\n\nhttp://cs/android/system/core/init/first_stage_mount.cpp?l\u003d528\u0026rcl\u003d1296b68869b3fc02daa9a8595846d312418bf4fc\n\nhttp://cs/android/system/core/init/switch_root.cpp?l\u003d80\u0026rcl\u003d1296b68869b3fc02daa9a8595846d312418bf4fc\n\nNote that a device also have a duplicated fstab file under /vendor/etc/fstab.*, because the ramdisk will be freed after init first stage. \n\nhttp://cs/android/system/core/init/first_stage_init.cpp?l\u003d60\u0026rcl\u003d1296b68869b3fc02daa9a8595846d312418bf4fc\n\nSome other mounts (e.g., /data) occurred in the second stage needs the /vendor/etc/fstab.* file for mounting.",
+      "parentUuid": "6a2622d8_6fb67917",
+      "range": {
+        "startLine": 19,
+        "startChar": 28,
+        "endLine": 20,
+        "endChar": 47
+      },
+      "revId": "ea7464aea2551ef7df2ba20300d0dac37f9461e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3637a8a9_2dd26847",
