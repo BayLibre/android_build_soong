@@ -16,6 +16,24 @@
       "message": "This seems like a separate change.",
       "revId": "68b850b13fa085884a16ee30c1e95198e7460b44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea5ae27c_0f5c162a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-06-28T12:54:14Z",
+      "side": 1,
+      "message": "Agreed. Done. (see relation chain, aosp/1749115)",
+      "parentUuid": "2d8beba6_c86b54b2",
+      "revId": "68b850b13fa085884a16ee30c1e95198e7460b44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
