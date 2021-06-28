@@ -119,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54edb668_cd21b076",
+        "filename": "ui/status/log.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-28T23:02:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2dd5bc2f_5e6425f9",
+      "range": {
+        "startLine": 67,
+        "startChar": 7,
+        "endLine": 67,
+        "endChar": 14
+      },
+      "revId": "8ada330891a43b24f317b4abea53bde89950d67a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "287f9dc5_7c1a1f26",
