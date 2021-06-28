@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce50598_8e26e8c2",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-28T15:03:58Z",
+      "side": 1,
+      "message": "Have two ~equivalent properties seems confusing, can we recommend default_shared_libs over this? Can we update bpfix to translate this into default_shared_libs stanza instead?",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 75
+      },
+      "revId": "9ecb42dd31d61ca77e622fb0c7fc39cd2677f80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
