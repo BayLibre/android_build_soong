@@ -16,6 +16,24 @@
       "message": "hiddenApiScopes are definied in this order:\n\t\tPublicHiddenAPIScope,\n\t\tSystemHiddenAPIScope,\n\t\tTestHiddenAPIScope,\n\t\tModuleLibHiddenAPIScope,\n\t\tCorePlatformHiddenAPIScope,\n\t\t\nMeaning, we would return module-libs before test apis. Wouldn\u0027t that cause the similar issues, since module-libs don\u0027t contain test apis?",
       "revId": "280a31aac39697a069f2f2f2ee471ffafb52d2a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7257b1d0_33962017",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-28T11:16:47Z",
+      "side": 1,
+      "message": "It does. It works at the moment. At least I\u0027ve not yet come across a bootclasspath_fragment module where this causes different flags to be generated than for the monolithic flags (which uses the implementation for the whole bootclasspath). I\u0027ve raised http://b/191644675 to track the problem. I think that the simplest fix is basically to process test separately from module_lib and merge them together at the same time as we merge in the flags from the hidden API flag files.",
+      "parentUuid": "2f1af62b_3db876d4",
+      "revId": "280a31aac39697a069f2f2f2ee471ffafb52d2a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
