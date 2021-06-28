@@ -52,6 +52,24 @@
       "parentUuid": "7257b1d0_33962017",
       "revId": "280a31aac39697a069f2f2f2ee471ffafb52d2a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81f7e341_54d148f9",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-28T11:20:38Z",
+      "side": 1,
+      "message": "It is that new StubDexJarsForWidestAPIScope method that fixes this issue.",
+      "parentUuid": "ff998bba_d7cc1de3",
+      "revId": "280a31aac39697a069f2f2f2ee471ffafb52d2a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
