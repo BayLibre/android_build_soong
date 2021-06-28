@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2dd5bc2f_5e6425f9",
+        "filename": "ui/status/log.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-06-28T04:50:16Z",
+      "side": 1,
+      "message": "These functions have been moved out of the proto files and into NinjaReader",
+      "parentUuid": "53c3a756_893e0fbb",
+      "range": {
+        "startLine": 67,
+        "startChar": 7,
+        "endLine": 67,
+        "endChar": 14
+      },
+      "revId": "8ada330891a43b24f317b4abea53bde89950d67a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "287f9dc5_7c1a1f26",
         "filename": "ui/status/status.go",
         "patchSetId": 5

@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1be221d2_6cc27b86",
+        "filename": "ui/status/status.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-06-28T04:50:16Z",
+      "side": 1,
+      "message": "Good idea, I have added some unit tests to test this functionality",
+      "parentUuid": "09e64b3d_824c7fe8",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 28,
+        "endChar": 24
+      },
+      "revId": "5ec2e1518a2c2245ead4460469a43d59603c761a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ad6aded_db57518c",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-06-25T23:51:48Z",
       "side": 1,
       "message": "This seems very specific to the actions that ninja runs, and not the generic actions handled here.  It\u0027s also only called by NinjaReader.  Can you move it into NinjaReader instead?",
+      "revId": "5ec2e1518a2c2245ead4460469a43d59603c761a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ea4b48b_178f76e1",
+        "filename": "ui/status/status.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-06-28T04:50:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ad6aded_db57518c",
       "revId": "5ec2e1518a2c2245ead4460469a43d59603c761a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
