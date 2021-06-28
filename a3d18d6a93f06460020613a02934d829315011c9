@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a744674_55e8705c",
+        "filename": "scripts/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-28T16:22:50Z",
+      "side": 1,
+      "message": "Can you put unit_test: false here?  I think the default will probably change to true in the future.",
+      "revId": "a3d18d6a93f06460020613a02934d829315011c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
