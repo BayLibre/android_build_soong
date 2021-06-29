@@ -108,6 +108,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00dc0470_b62b91a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-29T21:44:58Z",
+      "side": 1,
+      "message": "Done. Changed the property name slightly. WDYT?",
+      "parentUuid": "57a99244_939a7b5e",
+      "revId": "9b6246e5049758c58202a08ffa5307b7ba932301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8d4794b_67770673",
@@ -193,6 +211,30 @@
       "side": 1,
       "message": "I don\u0027t expect this to work well for module-libs, as the android.jar looks to be losing APIs in every release (since we prune new module APIs from it in every release). Maybe we need to create a  merged android.jar for module_libs just for metalava to make its mind up",
       "parentUuid": "0938bc24_b7b115fd",
+      "range": {
+        "startLine": 400,
+        "startChar": 4,
+        "endLine": 401,
+        "endChar": 70
+      },
+      "revId": "9b6246e5049758c58202a08ffa5307b7ba932301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b4e7be_dfc79b28",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-29T21:44:58Z",
+      "side": 1,
+      "message": "I see. Well, I explicitly added a check that only public and system apis are supported for now.",
+      "parentUuid": "17397851_47ac8013",
       "range": {
         "startLine": 400,
         "startChar": 4,
