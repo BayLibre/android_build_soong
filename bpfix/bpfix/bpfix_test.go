@@ -1124,3 +1124,225 @@ func TestRewriteRuntimeResourceOverlay(t *testing.T) {
 		})
 	}
 }
+
+func TestFormatFlagProperty(t *testing.T) {
+	tests := []struct {
+		name string
+		in   string
+		out  string
+	}{
+		{
+			name: "group options and values for apptflags, dxflags, javacflags, and kotlincflags",
+			in: `
+				android_test {
+					name: "foo",
+					aaptflags: [
+						"--flag1",
+						"1",
+						"--flag2",
+						"--flag3",
+						"3",
+					],
+					dxflags: [
+						"--flag1",
+						"1",
+						"--flag2",
+						"--flag3",
+						"3",
+					],
+					javacflags: [
+						"--flag1",
+						"1",
+						"--flag2",
+						"--flag3",
+						"3",
+					],
+					kotlincflags: [
+						"--flag1",
+						"1",
+						"--flag2",
+						"--flag3",
+						"3",
+					],
+				}
+			`,
+			out: `
+				android_test {
+					name: "foo",
+					aaptflags: [
+						"--flag1 1",
+						"--flag2",
+						"--flag3 3",
+
+					],
+					dxflags: [
+						"--flag1 1",
+						"--flag2",
+						"--flag3 3",
+
+					],
+					javacflags: [
+						"--flag1 1",
+						"--flag2",
+						"--flag3 3",
+
+					],
+					kotlincflags: [
+						"--flag1 1",
+						"--flag2",
+						"--flag3 3",
+
+					],
+				}
+			`,
+		},
+		{
+			name: "group options and values for asflags, cflags, clang_asflags, clang_cflags, conlyflags, cppflags, ldflags, and tidy_flags",
+			in: `
+                                cc_test {
+                                        name: "foo",
+                                        asflags: [
+                                                "--flag1",
+                                                "1",
+                                                "--flag2",
+                                                "2",
+                                                "--flag3",
+                                                "3",
+                                                "--flag4",
+                                        ],
+                                        cflags: [
+                                                "--flag1",
+                                                "1",
+                                                "--flag2",
+                                                "2",
+                                                "--flag3",
+                                                "3",
+                                                "--flag4",
+                                        ],
+                                        clang_asflags: [
+                                                "--flag1",
+                                                "1",
+                                                "--flag2",
+                                                "2",
+                                                "--flag3",
+                                                "3",
+                                                "--flag4",
+                                        ],
+                                        clang_cflags: [
+                                                "--flag1",
+                                                "1",
+                                                "--flag2",
+                                                "2",
+                                                "--flag3",
+                                                "3",
+                                                "--flag4",
+                                        ],
+                                        conlyflags: [
+                                                "--flag1",
+                                                "1",
+                                                "--flag2",
+                                                "2",
+                                                "--flag3",
+                                                "3",
+                                                "--flag4",
+                                        ],
+                                        cppflags: [
+                                                "--flag1",
+                                                "1",
+                                                "--flag2",
+                                                "2",
+                                                "--flag3",
+                                                "3",
+                                                "--flag4",
+                                        ],
+                                        ldflags: [
+                                                "--flag1",
+                                                "1",
+                                                "--flag2",
+                                                "2",
+                                                "--flag3",
+                                                "3",
+                                                "--flag4",
+                                        ],
+                                        tidy_flags: [
+                                                "--flag1",
+                                                "1",
+                                                "--flag2",
+                                                "2",
+                                                "--flag3",
+                                                "3",
+                                                "--flag4",
+                                        ],
+                                }
+                        `,
+			out: `
+                                cc_test {
+                                        name: "foo",
+                                        asflags: [
+                                                "--flag1 1",
+                                                "--flag2 2",
+                                                "--flag3 3",
+                                                "--flag4",
+
+                                        ],
+                                        cflags: [
+                                                "--flag1 1",
+                                                "--flag2 2",
+                                                "--flag3 3",
+                                                "--flag4",
+
+                                        ],
+                                        clang_asflags: [
+                                                "--flag1 1",
+                                                "--flag2 2",
+                                                "--flag3 3",
+                                                "--flag4",
+
+                                        ],
+                                        clang_cflags: [
+                                                "--flag1 1",
+                                                "--flag2 2",
+                                                "--flag3 3",
+                                                "--flag4",
+
+                                        ],
+                                        conlyflags: [
+                                                "--flag1 1",
+                                                "--flag2 2",
+                                                "--flag3 3",
+                                                "--flag4",
+
+                                        ],
+                                        cppflags: [
+                                                "--flag1 1",
+                                                "--flag2 2",
+                                                "--flag3 3",
+                                                "--flag4",
+
+                                        ],
+                                        ldflags: [
+                                                "--flag1 1",
+                                                "--flag2 2",
+                                                "--flag3 3",
+                                                "--flag4",
+
+                                        ],
+                                        tidy_flags: [
+                                                "--flag1 1",
+                                                "--flag2 2",
+                                                "--flag3 3",
+                                                "--flag4",
+
+                                        ],
+                                }
+                        `,
+		},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			runPass(t, test.in, test.out, func(fixer *Fixer) error {
+				return formatFlagProperty(fixer)
+			})
+		})
+	}
+}

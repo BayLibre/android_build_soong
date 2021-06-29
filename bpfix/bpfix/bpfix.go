@@ -132,6 +132,10 @@ var fixSteps = []FixStep{
 		Name: "removePdkProperty",
 		Fix:  runPatchListMod(removePdkProperty),
 	},
+	{
+		Name: "formatFlagProperty",
+		Fix:  formatFlagProperty,
+	},
 }
 
 func NewFixRequest() FixRequest {
@@ -1280,4 +1284,63 @@ func inList(s string, list []string) bool {
 		}
 	}
 	return false
+}
+
+func formatFlagProperty(f *Fixer) error {
+	relevantFields := []string{
+		// cc flags
+		"asflags",
+		"cflags",
+		"clang_asflags",
+		"clang_cflags",
+		"conlyflags",
+		"cppflags",
+		"ldflags",
+		"tidy_flags",
+		// java flags
+		"aaptflags",
+		"dxflags",
+		"javacflags",
+		"kotlincflags",
+	}
+	for _, def := range f.tree.Defs {
+		mod, ok := def.(*parser.Module)
+		if !ok {
+			continue
+		}
+		for _, field := range relevantFields {
+			listValue, ok := getLiteralListProperty(mod, field)
+			if !ok {
+				continue
+			}
+			newValues := []parser.Expression{}
+			// used to memorize the number of lines combined
+			offset := 0
+			for i := 0; i < len(listValue.Values); i++ {
+				curValue, ok := listValue.Values[i].(*parser.String)
+				if !ok {
+					return fmt.Errorf("Expecting string for %s.%s fields", mod.Type, field)
+				}
+				curValue.LiteralPos.Line -= offset
+				if !strings.HasPrefix(curValue.Value, "-") {
+					return fmt.Errorf("Expecting the string `%s` starting with '-'", curValue.Value)
+				}
+				if i+1 < len(listValue.Values) {
+					nextValue, ok := listValue.Values[i+1].(*parser.String)
+					if !ok {
+						return fmt.Errorf("Expecting string for %s.%s fields", mod.Type, field)
+					}
+					if !strings.HasPrefix(nextValue.Value, "-") {
+						valueSet := []string{curValue.Value, nextValue.Value}
+						curValue.Value = strings.Join(valueSet, " ")
+						i++
+						offset++
+					}
+				}
+				newValues = append(newValues, curValue)
+			}
+			listValue.Values = newValues
+		}
+	}
+	return nil
 }
