@@ -34,6 +34,24 @@
       "parentUuid": "effea6ee_2828c9b7",
       "revId": "9b6246e5049758c58202a08ffa5307b7ba932301",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3f5a505_0843e44e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-29T12:45:43Z",
+      "side": 1,
+      "message": "I liked the approach in aosp/1690845 better (make the rule specify which dir to use). String matching on the --show-annotations argument  seems extremely  fragile.",
+      "parentUuid": "e21b132a_78e5a511",
+      "revId": "9b6246e5049758c58202a08ffa5307b7ba932301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
