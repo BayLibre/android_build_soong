@@ -246,6 +246,7 @@ type snapshotJsonFlags struct {
 
 	// dependencies
 	SharedLibs  []string `json:",omitempty"`
+	StaticLibs  []string `json:",omitempty"`
 	RuntimeLibs []string `json:",omitempty"`
 	Required    []string `json:",omitempty"`
 
@@ -381,6 +382,8 @@ func (c *snapshotSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 			if m.Shared() {
 				prop.SharedLibs = m.SnapshotSharedLibs()
 			}
+			// static libs dependencies are required to collect the NOTICE files.
+			prop.StaticLibs = m.SnapshotStaticLibs()
 			if sanitizable, ok := m.(PlatformSanitizeable); ok {
 				if sanitizable.Static() && sanitizable.SanitizePropDefined() {
 					prop.SanitizeMinimalDep = sanitizable.MinimalRuntimeDep() || sanitizable.MinimalRuntimeNeeded()
@@ -427,7 +430,8 @@ func (c *snapshotSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 			// binary flags
 			prop.Symlinks = m.Symlinks()
 			prop.SharedLibs = m.SnapshotSharedLibs()
-
+			// static libs dependencies are required to collect the NOTICE files.
+			prop.StaticLibs = m.SnapshotStaticLibs()
 			// install bin
 			binPath := m.OutputFile().Path()
 			snapshotBinOut := filepath.Join(snapshotArchDir, targetArch, "binary", binPath.Base())
