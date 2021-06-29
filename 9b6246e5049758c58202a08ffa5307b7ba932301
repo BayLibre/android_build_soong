@@ -70,6 +70,24 @@
       "parentUuid": "b3f5a505_0843e44e",
       "revId": "9b6246e5049758c58202a08ffa5307b7ba932301",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc309281_1d3f27e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-29T12:50:15Z",
+      "side": 1,
+      "message": "Or, Pedro, if you want, I can introduce the property in this change and update Android.bp in a topic.",
+      "parentUuid": "3598787e_87f6e3a4",
+      "revId": "9b6246e5049758c58202a08ffa5307b7ba932301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
