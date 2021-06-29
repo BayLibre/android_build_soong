@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e29728a4_7be20fc3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-29T16:10:44Z",
+      "side": 1,
+      "message": "Sorry, it wasn\u0027t intended to fix your issue. I can see why you would think it was though. Apologies for the waste of time. This change is simply to allow the follow up CL to work properly in sc-dev where it is missing some `exported_bootclasspath_fragments` properties ATM.\n\nI will take a look and see if I can repro your problem.",
+      "parentUuid": "4517e5e1_09220ac7",
+      "revId": "ef083c9556c53738e5d7a3ab791c49ef00501f73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b2abff55_73281ad6",
