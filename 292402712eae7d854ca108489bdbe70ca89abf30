@@ -69,6 +69,24 @@
       "message": "I\u0027d say this is WAI for the don\u0027t-regenerate-kati-I-know-what-I\u0027m-doing use of --skip-make.  I\u0027d just move the conditional into an else if and comment why its there.",
       "revId": "292402712eae7d854ca108489bdbe70ca89abf30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "505f31fa_2c828833",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-29T14:19:22Z",
+      "side": 1,
+      "message": "re-wrote the comment and re-structured to code a little bit. Clarified that some --skip-make builds rely on kati-defined targets. ndk etc should get  the same treatment as buildtools.",
+      "parentUuid": "396fa6ea_9cc2602b",
+      "revId": "292402712eae7d854ca108489bdbe70ca89abf30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
