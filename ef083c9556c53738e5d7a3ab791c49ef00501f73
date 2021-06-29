@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4517e5e1_09220ac7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-29T14:13:07Z",
+      "side": 1,
+      "message": "If this was intended to help with the issue I encountered where missing prebuilt APEXes causes Soong to error out, it doesn\u0027t unfortunately. I tried with this CL and my patches for stricter deapexer module selection (http://ag/q/topic:product-install-apexes+author:mast), and I still get:\n\n  error: prebuilts/module_sdk/Media/current/Android.bp:44:1: module \"prebuilt_updatable-media\" variant \"android_common_com.android.media\": module does not depend on a `deapexer` module for prebuilt APEX variant name \"com.android.media\" (check PRODUCT_INSTALL_APEXES)\n\nThat\u0027s the error in java.Import.GenerateAndroidBuildActions in java.go (I\u0027ve modified the error message a bit in my WIP change).\n\nIf I try without my patches, I see that prebuilt_updatable-media{os:android,arch:common,apex:com.android.media} picks up com.google.android.media.deapexer{os:android,arch:common}, even when building with TARGET_PRODUCT\u003daosp_cf_x86_64_phone. In AOSP that prebuilt doesn\u0027t exist, so I think we\u0027d see a hard failure if it wasn\u0027t for that prebuilts/module_sdk/Media still is empty there.",
+      "revId": "ef083c9556c53738e5d7a3ab791c49ef00501f73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2abff55_73281ad6",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-29T14:13:07Z",
+      "side": 1,
+      "message": "Just curious, how does it do that?",
+      "range": {
+        "startLine": 1193,
+        "startChar": 8,
+        "endLine": 1193,
+        "endChar": 63
+      },
+      "revId": "ef083c9556c53738e5d7a3ab791c49ef00501f73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
