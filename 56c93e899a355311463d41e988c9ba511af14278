@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8bc225a_f8a5c071",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-29T23:43:19Z",
+      "side": 1,
+      "message": "Prior to your change to use stems for classpath_fragment the module names and stems were the same so it wasn\u0027t an issue. I think it should be module names. That is what we list in bootclasspath_fragment and it is expected to mirror and match those. Longer term I would like to get rid of the separate list of modules and instead list bootclasspath_fragments directly instead.\n\nI think that we need to stop querying PRODUCT_UPDATABLE_BOOT_JARS to see whether we should be generating bootclasspath.pb and similar files. That way the module name vs stem issue becomes irrelevant again.\n\nInstead we should be looking at the Updatable property of the ApexInfo structure. One of the main reasons for adding bootclasspath_fragment was to remove the duplicated and extremely fragile logic for finding modules using information in the configuration. We need to leverage that rather than start introducing that fragile logic back into the code.",
+      "parentUuid": "938f852d_29b3159a",
+      "revId": "56c93e899a355311463d41e988c9ba511af14278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c5d1619b_d873ab67",
