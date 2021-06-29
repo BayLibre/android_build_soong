@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57a99244_939a7b5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-06-29T13:21:52Z",
+      "side": 1,
+      "message": "Feel free to do that.\n\nAFAIK, my other CLs are a bit lower in my priorities ATM so I\u0027m not sure if/when these will be merged.",
+      "parentUuid": "bc309281_1d3f27e7",
+      "revId": "9b6246e5049758c58202a08ffa5307b7ba932301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e8d4794b_67770673",
         "filename": "java/droidstubs.go",
         "patchSetId": 3
