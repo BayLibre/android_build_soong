@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "938f852d_29b3159a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-29T23:02:53Z",
+      "side": 1,
+      "message": "I am fine with this change, and it would work for classpaths.proto generation.\n\nI just want to make sure we are okay with lib names in PRODUCT_UPDATABLE_BOOT_JARS versus actual names of the jars as they appear on device. What\u0027s less confusing for devs?",
+      "revId": "56c93e899a355311463d41e988c9ba511af14278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5d1619b_d873ab67",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-29T23:02:53Z",
+      "side": 1,
+      "message": "still baffled why golang doesn\u0027t have sets..",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "56c93e899a355311463d41e988c9ba511af14278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
