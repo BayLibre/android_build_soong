@@ -88,6 +88,29 @@
       "parentUuid": "3598787e_87f6e3a4",
       "revId": "9b6246e5049758c58202a08ffa5307b7ba932301",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d4794b_67770673",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-06-29T13:19:34Z",
+      "side": 1,
+      "message": "system is a superset of public. why  do we pass both for a given api level? Relying on the order also seems a bit implicit to me, perhaps metalava should know about how these API surfaces relate?\n\n..and we also want to support module-lib. How does that  fit into this?",
+      "range": {
+        "startLine": 400,
+        "startChar": 4,
+        "endLine": 401,
+        "endChar": 70
+      },
+      "revId": "9b6246e5049758c58202a08ffa5307b7ba932301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
