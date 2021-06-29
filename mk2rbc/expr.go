@@ -241,22 +241,18 @@ func (eq *eqExpr) eval(valueMap map[string]starlarkExpr) (res starlarkExpr, same
 
 func (eq *eqExpr) emit(gctx *generationContext) {
 	// Are we checking that a variable is empty?
-	var v variable
+	var varRef *variableRefExpr
 	if s, ok := maybeString(eq.left); ok && s == "" {
-		if vref, ok := eq.right.(*variableRefExpr); ok {
-			v = vref.ref
-		}
+		varRef, ok = eq.right.(*variableRefExpr)
 	} else if s, ok := maybeString(eq.right); ok && s == "" {
-		if vref, ok := eq.left.(*variableRefExpr); ok {
-			v = vref.ref
-		}
+		varRef, ok = eq.left.(*variableRefExpr)
 	}
-	if v != nil {
+	if varRef != nil {
 		// Yes.
 		if eq.isEq {
-			gctx.write(" not ")
+			gctx.write("not ")
 		}
-		v.emitGet(gctx, v.isPreset())
+		varRef.emit(gctx)
 		return
 	}
 

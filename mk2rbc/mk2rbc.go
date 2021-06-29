@@ -1048,7 +1048,7 @@ func (ctx *parseContext) parseReference(node mkparser.Node, ref *mkparser.MakeSt
 			}
 		}
 		if v := ctx.addVariable(refDump); v != nil {
-			return &variableRefExpr{v, false}
+			return &variableRefExpr{v, ctx.lastAssignment(v.name()) != nil}
 		}
 		return ctx.newBadExpr(node, "unknown variable %s", refDump)
 	}

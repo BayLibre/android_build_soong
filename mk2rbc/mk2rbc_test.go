@@ -564,7 +564,7 @@ def init(g, handle):
   cfg = rblf.cfg(handle)
   g["HIKEY_MODS"] = rblf.expand_wildcard("foo/*.ko")
   g.setdefault("BOARD_VENDOR_KERNEL_MODULES", [])
-  g["BOARD_VENDOR_KERNEL_MODULES"] += g.get("HIKEY_MODS", [])
+  g["BOARD_VENDOR_KERNEL_MODULES"] += g["HIKEY_MODS"]
 `,
 	},
 	{
@@ -666,7 +666,7 @@ def init(g, handle):
   cfg["PRODUCT_LIST1"] = ["c"]
   g.setdefault("PLATFORM_LIST", [])
   g["PLATFORM_LIST"] += ["x"]
-  cfg["PRODUCT_PACKAGES"] = g.get("PLATFORM_LIST", [])[:]
+  cfg["PRODUCT_PACKAGES"] = g["PLATFORM_LIST"][:]
 `,
 	},
 	{
@@ -717,7 +717,7 @@ def init(g, handle):
   g["FOO"] = "d"
   g["FOO"] += " " + "e"
   cfg["PRODUCT_LIST1"] += (_local).split()
-  cfg["PRODUCT_LIST1"] += (g.get("FOO", "")).split()
+  cfg["PRODUCT_LIST1"] += (g["FOO"]).split()
 `,
 	},
 	{
@@ -763,6 +763,46 @@ def init(g, handle):
   cfg = rblf.cfg(handle)
   if rblf.mkstrip(g.get("TARGET_VENDOR", "")) != "":
     pass
+`,
+	},
+	{
+		desc:   "ref after set",
+		mkname: "product.mk",
+		in: `
+PRODUCT_ADB_KEYS:=value
+FOO := $(PRODUCT_ADB_KEYS)
+ifneq (,$(PRODUCT_ADB_KEYS))
+endif
+`,
+		expected: `load("//build/make/core:product_config.rbc", "rblf")
+
+def init(g, handle):
+  cfg = rblf.cfg(handle)
+  g["PRODUCT_ADB_KEYS"] = "value"
+  g["FOO"] = g["PRODUCT_ADB_KEYS"]
+  if g["PRODUCT_ADB_KEYS"]:
+    pass
+`,
+	},
+	{
+		desc:   "ref before set",
+		mkname: "product.mk",
+		in: `
+V1 := $(PRODUCT_ADB_KEYS)
+ifeq (,$(PRODUCT_ADB_KEYS))
+  V2 := $(PRODUCT_ADB_KEYS)
+  PRODUCT_ADB_KEYS:=foo
+  V3 := $(PRODUCT_ADB_KEYS)
+endif`,
+		expected: `load("//build/make/core:product_config.rbc", "rblf")
+
+def init(g, handle):
+  cfg = rblf.cfg(handle)
+  g["V1"] = g.get("PRODUCT_ADB_KEYS", "")
+  if not g.get("PRODUCT_ADB_KEYS", ""):
+    g["V2"] = g.get("PRODUCT_ADB_KEYS", "")
+    g["PRODUCT_ADB_KEYS"] = "foo"
+    g["V3"] = g["PRODUCT_ADB_KEYS"]
 `,
 	},
 }
