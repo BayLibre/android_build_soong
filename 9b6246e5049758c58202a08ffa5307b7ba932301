@@ -129,6 +129,30 @@
       },
       "revId": "9b6246e5049758c58202a08ffa5307b7ba932301",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0938bc24_b7b115fd",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-06-29T13:27:13Z",
+      "side": 1,
+      "message": "I will update the comment, but glad you asked 😊\n\nNeither system nor module-lib apis exist since API level 1. SystemApis for apps are 21+ concept, and modulelibs are even later.\n\nThe order is important even outside of the mainline context, as some relevant files/stubs for older releases are in a different place.\n\nAt runtime metalava attempts to find the stubs for a certain release X by going through all the patterns we pass to it. So, if we are building framework-doc-system-stubs for example, it will use system stubs for 21+, and public stubs for 20-.\n\nThis only really matters if we care about older releases, e.g. 1p apps with mintargetsdk\u003d19. If not, metalava accepts --first-version arg to say that we only care about 29+ for example.",
+      "parentUuid": "e8d4794b_67770673",
+      "range": {
+        "startLine": 400,
+        "startChar": 4,
+        "endLine": 401,
+        "endChar": 70
+      },
+      "revId": "9b6246e5049758c58202a08ffa5307b7ba932301",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
