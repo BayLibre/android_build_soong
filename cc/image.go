@@ -710,3 +710,56 @@ func (c *Module) SetImageVariation(ctx android.BaseModuleContext, variant string
 		c.VendorProperties.IsVendorPublicLibrary = true
 	}
 }
+
+func (c *Module) SkipRequiredModuleVariationSingleton() bool {
+	// Skip if module is not exported to Make.
+	if c.HiddenFromMake() || c.hideApexVariantFromMake {
+		return true
+	}
+	// Skip uninstallable stubs.
+	if c.isNDKStubLibrary() || c.IsLlndk() || c.IsStubs() {
+		return true
+	}
+	// Skip native_bridge variants.
+	if c.Target().NativeBridge == android.NativeBridgeEnabled {
+		return true
+	}
+	// Skip sdk variants.
+	if c.IsSdkVariant() && c.Properties.SdkAndPlatformVariantVisibleToMake {
+		return true
+	}
+	// Skip uninstallable static and header libraries.
+	if c.CcLibraryInterface() && !c.Shared() {
+		return true
+	}
+	return false
+}
+
+func (c *Module) VariationForRequiredModule() string {
+	if c.InRecovery() {
+		return android.RequiredModuleRecoveryVariation
+	}
+	if c.InRamdisk() {
+		return android.RequiredModuleRamdiskVariation
+	}
+	if c.InVendorRamdisk() {
+		return android.RequiredModuleVendorRamdiskVariation
+	}
+	if c.ImageVariation().Variation == android.CoreVariation {
+		return android.RequiredModuleCoreVariation
+	}
+	if c.InProduct() {
+		return "product"
+	}
+	if c.InVendor() {
+		return "vendor"
+	}
+	return ""
+}
+
+func (c *Module) AndroidMkNameForRequiredModule() string {
+	if s, ok := c.linker.(SnapshotInterface); ok {
+		return c.BaseModuleName() + s.SnapshotAndroidMkSuffix()
+	}
+	return c.BaseModuleName() + c.SubName()
+}
