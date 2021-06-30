@@ -52,6 +52,23 @@
       "parentUuid": "166d4c8b_ac994192",
       "revId": "39784e18a35130d2ceb878087ed73e4cb2a0b349",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7215e33c_e3dbf9ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-06-30T18:13:59Z",
+      "side": 1,
+      "message": "Please don\u0027t blindly add more warnings unless there is a plan to track them and fix or silence them.  Is there a smaller subset of warnings you can turn on as errors?",
+      "revId": "39784e18a35130d2ceb878087ed73e4cb2a0b349",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
