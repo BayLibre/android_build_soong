@@ -34,6 +34,24 @@
       "parentUuid": "0dc74823_75c8a932",
       "revId": "39784e18a35130d2ceb878087ed73e4cb2a0b349",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "302fd065_3d64f05c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-06-30T17:09:39Z",
+      "side": 1,
+      "message": "It would probably be nicer if we had a list of warning-\u003e # of cases, and we only enable those that are mostly fix (if some of the warnings have a lot of noise, we should do cleanup first).\n\nFor instance, for the warning you added in b/192077108, these all should be fixed in T, and we want to track that. For some other things (mixed oneway/synchronous methods), we probably never need to turn it on for existing interfaces. It\u0027ll be a lot of noise.",
+      "parentUuid": "166d4c8b_ac994192",
+      "revId": "39784e18a35130d2ceb878087ed73e4cb2a0b349",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
