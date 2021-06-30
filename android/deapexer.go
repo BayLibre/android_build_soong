@@ -176,24 +176,27 @@ type RequiresFilesFromPrebuiltApexTag interface {
 }
 
 // FindDeapexerProviderForModule searches through the direct dependencies of the current context
-// module for a DeapexerTag dependency and returns its DeapexerInfo. If there is an error then it is
-// reported with ctx.ModuleErrorf and nil is returned.
+// module for a DeapexerTag dependency and returns its DeapexerInfo. If a single nonambiguous
+// deapexer module isn't found then errors are reported with ctx.ModuleErrorf and nil is returned.
 func FindDeapexerProviderForModule(ctx ModuleContext) *DeapexerInfo {
-	// Record the valid and invalid deapexers, so we can report errors with the invalids if no valid
-	// one is found.
-	var valids []*DeapexerInfo
+	// Record a single valid deapexer, but also all invalid ones so we can report errors for them if
+	// no valid one is found.
+	var valid *DeapexerInfo
 	var invalids []*DeapexerInfo
 	ctx.VisitDirectDepsWithTag(DeapexerTag, func(m Module) {
 		di := ctx.OtherModuleProvider(m, DeapexerProvider).(DeapexerInfo)
-		if di.invalidReason == "" {
-			valids = append(valids, &di)
-		} else {
+		if di.invalidReason != "" {
 			invalids = append(invalids, &di)
+		} else if valid != nil {
+			ctx.ModuleErrorf("Multiple installable prebuilt APEXes provide ambiguous deapexers: %s and %s",
+				valid.ApexModuleName(), di.ApexModuleName())
+		} else {
+			valid = &di
 		}
 	})
 
-	if len(valids) > 0 {
-		return valids[0]
+	if valid != nil {
+		return valid
 	}
 
 	ai := ctx.Provider(ApexInfoProvider).(ApexInfo)
