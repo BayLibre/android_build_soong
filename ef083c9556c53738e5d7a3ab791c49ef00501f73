@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d09865bf_0c570b33",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-06-30T10:21:05Z",
+      "side": 1,
+      "message": "Ok. I think we have exported_bootclasspath_fragments everywhere now in sc-dev, so maybe this and/or the child CL isn\u0027t necessary?",
+      "parentUuid": "e29728a4_7be20fc3",
+      "revId": "ef083c9556c53738e5d7a3ab791c49ef00501f73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b2abff55_73281ad6",
         "filename": "java/hiddenapi_modular.go",
         "patchSetId": 1
