@@ -668,6 +668,9 @@ func (j *Module) aidlFlags(ctx android.ModuleContext, aidlPreprocess android.Opt
 	var flags []string
 	var deps android.Paths
 
+	// Turning on every warning
+	flags = append(flags, "-Weverything")
+
 	flags = append(flags, j.deviceProperties.Aidl.Flags...)
 
 	if aidlPreprocess.Valid() {

@@ -534,6 +534,9 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 	}
 
 	if compiler.hasSrcExt(".aidl") {
+		// Turning on every warning
+		flags.aidlFlags = append(flags.aidlFlags, "-Weverything")
+
 		flags.aidlFlags = append(flags.aidlFlags, compiler.Properties.Aidl.Flags...)
 		if len(compiler.Properties.Aidl.Local_include_dirs) > 0 {
 			localAidlIncludeDirs := android.PathsForModuleSrc(ctx, compiler.Properties.Aidl.Local_include_dirs)
