@@ -46,6 +46,30 @@
       },
       "revId": "9ecb42dd31d61ca77e622fb0c7fc39cd2677f80c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c6afe0e_f6808ab5",
+        "filename": "cc/linker.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-30T14:12:10Z",
+      "side": 1,
+      "message": "Ack. Will see if we can automate this in this manner with bp2build.",
+      "parentUuid": "afedf2ee_eb84fa93",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 75
+      },
+      "revId": "9ecb42dd31d61ca77e622fb0c7fc39cd2677f80c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
