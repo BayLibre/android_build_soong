@@ -41,6 +41,8 @@ func init() {
 }
 
 func RegisterAndroidMkBuildComponents(ctx RegistrationContext) {
+	// The requiredModuleImageVariationSingleton must be run before the androidMkSingleton.
+	ctx.RegisterSingletonType("required_module_image_variation", requiredModuleImageVariationSingletonFactory)
 	ctx.RegisterSingletonType("androidmk", AndroidMkSingleton)
 }
 
@@ -486,9 +488,14 @@ func (a *AndroidMkEntries) fillInEntries(ctx fillInEntriesContext, mod blueprint
 	if a.Include == "" {
 		a.Include = "$(BUILD_PREBUILT)"
 	}
+
 	a.Required = append(a.Required, mod.(Module).RequiredModuleNames()...)
 	a.Host_required = append(a.Host_required, mod.(Module).HostRequiredModuleNames()...)
 	a.Target_required = append(a.Target_required, mod.(Module).TargetRequiredModuleNames()...)
+
+	if amod.Device() {
+		a.Required = rewriteRequiredModuleWithImageVariation(ctx.Config(), a.Required)
+	}
 
 	for _, distString := range a.GetDistForGoals(mod) {
 		fmt.Fprintf(&a.header, distString)
