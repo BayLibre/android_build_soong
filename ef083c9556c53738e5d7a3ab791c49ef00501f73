@@ -56,6 +56,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c3c27002_af415333",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-30T11:58:00Z",
+      "side": 1,
+      "message": "I\u0027ll try it and see if I can live without this. The child change is still needed as it removes a workaround that allowed bcpf modules to not do hidden API processing but that is something that they should all be doing by default.",
+      "parentUuid": "d09865bf_0c570b33",
+      "revId": "ef083c9556c53738e5d7a3ab791c49ef00501f73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b2abff55_73281ad6",
         "filename": "java/hiddenapi_modular.go",
         "patchSetId": 1
