@@ -105,6 +105,30 @@
       },
       "revId": "fa5ff772833182db37ab67d18272c66c42a1dd58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4830c1f_b3f0d4a5",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-06-30T22:24:09Z",
+      "side": 1,
+      "message": "If someone inadvertently creates foo as file, subsequent attempts to create foo/file will fail, so there is no danger that an existing file will be silently ignored, so there\u0027s no surprise. \nIMHO it\u0027s the current behavior that is surprising: I am trying to inherit a product config makefile only if it exists, and yet the build fails and complains that the file should exist (yes, a keen eye might notice that the message is not the usual \"No such file\" but rather \"Not a directory\", but I failed to do that).",
+      "parentUuid": "b99c012b_21ecc03b",
+      "range": {
+        "startLine": 328,
+        "startChar": 30,
+        "endLine": 328,
+        "endChar": 40
+      },
+      "revId": "fa5ff772833182db37ab67d18272c66c42a1dd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
