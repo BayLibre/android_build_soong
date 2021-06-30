@@ -579,6 +579,12 @@ func TestPlatformBootclasspathUnbundled(t *testing.T) {
 \s+APEX module otherapex is invalid: cannot extract files from prebuilt APEXes in unbundled builds unless they are installable`)).
 			RunTestWithBp(t, fmt.Sprintf(multiBp, "", ""))
 	})
+
+	t.Run("multiple installable prebuilt_apex", func(t *testing.T) {
+		preparers.ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
+			"Multiple installable prebuilt APEXes provide ambiguous deapexers: myapex and otherapex")).
+			RunTestWithBp(t, fmt.Sprintf(multiBp, "installable: true,", "installable: true,"))
+	})
 }
 
 // CheckModuleDependencies checks the dependencies of the selected module against the expected list.
