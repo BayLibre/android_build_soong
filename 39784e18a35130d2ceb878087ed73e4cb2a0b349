@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc74823_75c8a932",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-06-30T07:44:08Z",
+      "side": 1,
+      "message": "I don\u0027t know much about aidl so don\u0027t know what sort of warnings this will produce so my questions are more general.\n\nWhat is the point of producing warnings? They clutter the output and don\u0027t protect us against issues, at least not unless someone is explicitly looking for them.\n\nIf there are specific issues that this is trying to catch it would be better to produce an error?",
+      "revId": "39784e18a35130d2ceb878087ed73e4cb2a0b349",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
