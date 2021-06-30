@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9997ea49_a4e42d5e",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1324,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-06-30T00:27:46Z",
+      "side": 1,
+      "message": "Yeah, this part actually took most of the time for this CL, 😊 (I was going to leave a comment for your suggestions in the Buganizer since that I always see an empty line at the end when at least one line is combined with the previous line.). Thanks, I will check runPatchListMod style of fixer soon.",
+      "parentUuid": "d58ca14e_12085708",
+      "revId": "4bcead55d7f441bd49e28bcacf4e5414576561f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7fbd5ba0_fa34e542",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-30T00:18:34Z",
       "side": 1,
       "message": "strings.Join is overkill, might as well be curValue.Value +\u003d \" \" + nextValue.Value",
+      "range": {
+        "startLine": 1334,
+        "startChar": 6,
+        "endLine": 1335,
+        "endChar": 50
+      },
+      "revId": "4bcead55d7f441bd49e28bcacf4e5414576561f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cba7cbae_006aa76a",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1335,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-06-30T00:27:46Z",
+      "side": 1,
+      "message": "Okay, will update this part soon.",
+      "parentUuid": "7fbd5ba0_fa34e542",
       "range": {
         "startLine": 1334,
         "startChar": 6,
