@@ -81,6 +81,30 @@
       },
       "revId": "fa5ff772833182db37ab67d18272c66c42a1dd58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b99c012b_21ecc03b",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-06-30T20:01:46Z",
+      "side": 1,
+      "message": "fascinating, this seems like something we should log or warn about if it\u0027s not ENOENT -- I assume folks don\u0027t intend to treat a file like a directory and may be surprised that product config isn\u0027t set up as they expect.",
+      "parentUuid": "3b0d667c_80451e88",
+      "range": {
+        "startLine": 328,
+        "startChar": 30,
+        "endLine": 328,
+        "endChar": 40
+      },
+      "revId": "fa5ff772833182db37ab67d18272c66c42a1dd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
