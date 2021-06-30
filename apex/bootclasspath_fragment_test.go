@@ -572,7 +572,7 @@ func TestBootclasspathFragmentInArtApex(t *testing.T) {
 }
 
 func TestBootclasspathFragmentInPrebuiltArtApex(t *testing.T) {
-	result := android.GroupFixturePreparers(
+	preparers := android.GroupFixturePreparers(
 		prepareForTestWithBootclasspathFragment,
 		prepareForTestWithArtApex,
 
@@ -583,7 +583,9 @@ func TestBootclasspathFragmentInPrebuiltArtApex(t *testing.T) {
 
 		// Configure some libraries in the art bootclasspath_fragment.
 		java.FixtureConfigureBootJars("com.android.art:foo", "com.android.art:bar"),
-	).RunTestWithBp(t, `
+	)
+
+	bp := `
 		prebuilt_apex {
 			name: "com.android.art",
 			installable: true,
@@ -631,35 +633,45 @@ func TestBootclasspathFragmentInPrebuiltArtApex(t *testing.T) {
 			},
 		}
 
-		// An uninstallable prebuilt apex with the same apex_name that shouldn't interfere.
+		// A prebuilt apex with the same apex_name that shouldn't interfere when it isn't installable.
 		prebuilt_apex {
 			name: "com.mycompany.android.art",
 			apex_name: "com.android.art",
-			installable: false,
+			%s,
 			src: "com.mycompany.android.art.apex",
 			exported_bootclasspath_fragments: ["mybootclasspathfragment"],
 		}
-	`)
+	`
 
-	java.CheckModuleDependencies(t, result.TestContext, "com.android.art", "android_common_com.android.art", []string{
-		`com.android.art.apex.selector`,
-		`prebuilt_mybootclasspathfragment`,
+	t.Run("uninstallable alternative APEX", func(t *testing.T) {
+		result := preparers.RunTestWithBp(t, fmt.Sprintf(bp, "installable: false"))
+
+		java.CheckModuleDependencies(t, result.TestContext, "com.android.art", "android_common_com.android.art", []string{
+			`com.android.art.apex.selector`,
+			`prebuilt_mybootclasspathfragment`,
+		})
+
+		java.CheckModuleDependencies(t, result.TestContext, "mybootclasspathfragment", "android_common_com.android.art", []string{
+			`com.android.art.deapexer`,
+			`com.mycompany.android.art.deapexer`,
+			`dex2oatd`,
+			`prebuilt_bar`,
+			`prebuilt_foo`,
+		})
+
+		module := result.ModuleForTests("mybootclasspathfragment", "android_common_com.android.art")
+		checkCopiesToPredefinedLocationForArt(t, result.Config, module, "bar", "foo")
+
+		// Check that the right deapexer module was chosen for a boot image.
+		param := module.Output("out/soong/test_device/dex_artjars/android/apex/art_boot_images/javalib/arm64/boot.art")
+		android.AssertStringDoesContain(t, "didn't find the expected deapexer in the input path", param.Input.String(), "/com.android.art.deapexer")
 	})
 
-	java.CheckModuleDependencies(t, result.TestContext, "mybootclasspathfragment", "android_common_com.android.art", []string{
-		`com.android.art.deapexer`,
-		`com.mycompany.android.art.deapexer`,
-		`dex2oatd`,
-		`prebuilt_bar`,
-		`prebuilt_foo`,
+	t.Run("installable alternative APEX", func(t *testing.T) {
+		preparers.ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
+			"Multiple installable prebuilt APEXes provide ambiguous deapexers: com.android.art and com.mycompany.android.art")).
+			RunTestWithBp(t, fmt.Sprintf(bp, "installable: true"))
 	})
-
-	module := result.ModuleForTests("mybootclasspathfragment", "android_common_com.android.art")
-	checkCopiesToPredefinedLocationForArt(t, result.Config, module, "bar", "foo")
-
-	// Check that the right deapexer module was chosen for a boot image.
-	param := module.Output("out/soong/test_device/dex_artjars/android/apex/art_boot_images/javalib/arm64/boot.art")
-	android.AssertStringDoesContain(t, "didn't find the expected deapexer in the input path", param.Input.String(), "/com.android.art.deapexer")
 }
 
 // checkCopiesToPredefinedLocationForArt checks that the supplied modules are copied to the
