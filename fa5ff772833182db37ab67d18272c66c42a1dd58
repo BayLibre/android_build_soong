@@ -57,6 +57,30 @@
       },
       "revId": "fa5ff772833182db37ab67d18272c66c42a1dd58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b0d667c_80451e88",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-06-30T19:51:34Z",
+      "side": 1,
+      "message": "If foo is a file, calling stat on foo/bar returns ENOTDIR, not ENOENT:\n```\n$ stat foo; touch foo; stat foo/bar\nstat: cannot statx \u0027foo\u0027: No such file or directory\nstat: cannot statx \u0027foo/bar\u0027: Not a directory\n```\n(I stumbled upon this inadvertently).",
+      "parentUuid": "2798a41f_34f98627",
+      "range": {
+        "startLine": 328,
+        "startChar": 30,
+        "endLine": 328,
+        "endChar": 40
+      },
+      "revId": "fa5ff772833182db37ab67d18272c66c42a1dd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
