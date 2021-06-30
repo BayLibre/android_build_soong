@@ -561,6 +561,12 @@ func TestPlatformBootclasspathUnbundled(t *testing.T) {
 		param := module.Output("out/soong/test_device/apex_bootjars/foo.jar")
 		android.AssertStringDoesContain(t, "didn't find the expected deapexer in the input path", param.Input.String(), "/myapex.deapexer")
 	})
+
+	t.Run("multiple installable prebuilt_apex", func(t *testing.T) {
+		preparers.ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
+			"Multiple installable prebuilt APEXes provide ambiguous deapexers: myapex and otherapex")).
+			RunTestWithBp(t, fmt.Sprintf(bp, "installable: true,", "installable: true,"))
+	})
 }
 
 // CheckModuleDependencies checks the dependencies of the selected module against the expected list.
