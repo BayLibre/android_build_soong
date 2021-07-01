@@ -633,11 +633,13 @@ var PrepareForTestOnLinuxBionic = android.GroupFixturePreparers(
 // of tests so they are not included in the PrepareForIntegrationTestWithCc.
 var PrepareForTestWithCcIncludeVndk = android.GroupFixturePreparers(
 	PrepareForIntegrationTestWithCc,
+	android.PrepareForTestWithLicenses,
 	android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
 		snapshot.VendorSnapshotImageSingleton.Init(ctx)
 		snapshot.RecoverySnapshotImageSingleton.Init(ctx)
 		RegisterVendorSnapshotModules(ctx)
 		RegisterRecoverySnapshotModules(ctx)
+		registerHostSnapshotComponents(ctx)
 		ctx.RegisterSingletonType("vndk-snapshot", VndkSnapshotSingleton)
 	}),
 )

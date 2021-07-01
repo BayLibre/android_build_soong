@@ -1461,6 +1461,10 @@ func (c *deviceConfig) RecoverySnapshotModules() map[string]bool {
 	return c.config.productVariables.RecoverySnapshotModules
 }
 
+func (c *deviceConfig) HostSnapshotModules() []string {
+	return c.config.productVariables.HostSnapshotModules
+}
+
 func createDirsMap(previous map[string]bool, dirs []string) (map[string]bool, error) {
 	var ret = make(map[string]bool)
 	for _, dir := range dirs {
