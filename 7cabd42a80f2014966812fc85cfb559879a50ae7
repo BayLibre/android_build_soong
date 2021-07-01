@@ -16,6 +16,24 @@
       "message": "is this initial capitalized as intended?",
       "revId": "7cabd42a80f2014966812fc85cfb559879a50ae7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1c062b9_01cc79e2",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-01T20:53:16Z",
+      "side": 1,
+      "message": "Yes, that\u0027s what makes it exported for use outside this package.",
+      "parentUuid": "271599de_77c5fe9b",
+      "revId": "7cabd42a80f2014966812fc85cfb559879a50ae7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
