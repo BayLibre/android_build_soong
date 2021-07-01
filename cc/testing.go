@@ -637,9 +637,11 @@ var PrepareForTestOnFuchsia = android.GroupFixturePreparers(
 // of tests so they are not included in the PrepareForIntegrationTestWithCc.
 var PrepareForTestWithCcIncludeVndk = android.GroupFixturePreparers(
 	PrepareForIntegrationTestWithCc,
+	android.PrepareForTestWithLicenses,
 	android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
 		VendorSnapshotImageSingleton.Init(ctx)
 		recoverySnapshotImageSingleton.init(ctx)
+		registerHostSnapshotComponents(ctx)
 		ctx.RegisterSingletonType("vndk-snapshot", VndkSnapshotSingleton)
 	}),
 )
