@@ -130,6 +130,10 @@ type apexBundleProperties struct {
 	// symlinking to the system libs. Default is true.
 	Updatable *bool
 
+	// Whether this APEX can use platform APIs or not. Can be set to true only when `updatable:
+	// false`. Default is false.
+	Platform_apis *bool
+
 	// Whether this APEX is installable to one of the partitions like system, vendor, etc.
 	// Default: true.
 	Installable *bool
@@ -181,6 +185,12 @@ type apexBundleProperties struct {
 	// Whenever apex should be compressed, regardless of product flag used. Should be only
 	// used in tests.
 	Test_only_force_compression *bool
+
+	// Canonical name of this APEX bundle. Used to determine the path to the
+	// activated APEX on device (i.e. /apex/<apexVariationName>), and used for the
+	// apex mutator variations. For override_apex modules, this is the name of the
+	// overridden base module.
+	ApexVariationName string `blueprint:"mutated"`
 
 	IsCoverageVariant bool `blueprint:"mutated"`
 
@@ -824,6 +834,10 @@ var ApexBundleInfoProvider = blueprint.NewMutatorProvider(ApexBundleInfo{}, "ape
 
 var _ ApexInfoMutator = (*apexBundle)(nil)
 
+func (a *apexBundle) ApexVariationName() string {
+	return a.properties.ApexVariationName
+}
+
 // ApexInfoMutator is responsible for collecting modules that need to have apex variants. They are
 // identified by doing a graph walk starting from an apexBundle. Basically, all the (direct and
 // indirect) dependencies are collected. But a few types of modules that shouldn't be included in
@@ -912,15 +926,16 @@ func (a *apexBundle) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 	// This is the main part of this mutator. Mark the collected dependencies that they need to
 	// be built for this apexBundle.
 
-	// Note that there are many different names.
-	// ApexVariationName: this is the name of the apex variation
+	apexVariationName := proptools.StringDefault(a.properties.Apex_name, mctx.ModuleName()) // could be com.android.foo
+	a.properties.ApexVariationName = apexVariationName
 	apexInfo := android.ApexInfo{
-		ApexVariationName: mctx.ModuleName(), // could be com.android.foo
+		ApexVariationName: apexVariationName,
 		MinSdkVersion:     minSdkVersion,
 		RequiredSdks:      a.RequiredSdks(),
 		Updatable:         a.Updatable(),
-		InApexVariants:    []string{mctx.ModuleName()}, // could be com.android.foo
-		InApexModules:     []string{a.Name()},          // could be com.mycompany.android.foo
+		UsePlatformApis:   a.UsePlatformApis(),
+		InApexVariants:    []string{apexVariationName},
+		InApexModules:     []string{a.Name()}, // could be com.mycompany.android.foo
 		ApexContents:      []*android.ApexContents{apexContents},
 	}
 	mctx.WalkDeps(func(child, parent android.Module) bool {
@@ -933,6 +948,10 @@ func (a *apexBundle) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 }
 
 type ApexInfoMutator interface {
+	// ApexVariationName returns the name of the APEX variation to use in the apex
+	// mutator etc. It is the same name as ApexInfo.ApexVariationName.
+	ApexVariationName() string
+
 	// ApexInfoMutator implementations must call BuildForApex(ApexInfo) on any modules that are
 	// depended upon by an apex and which require an apex specific variant.
 	ApexInfoMutator(android.TopDownMutatorContext)
@@ -1058,10 +1077,8 @@ func apexMutator(mctx android.BottomUpMutatorContext) {
 	}
 
 	// apexBundle itself is mutated so that it and its dependencies have the same apex variant.
-	// TODO(jiyong): document the reason why the VNDK APEX is an exception here.
-	unprefixedModuleName := android.RemoveOptionalPrebuiltPrefix(mctx.ModuleName())
-	if apexModuleTypeRequiresVariant(mctx.Module()) {
-		apexBundleName := unprefixedModuleName
+	if ai, ok := mctx.Module().(ApexInfoMutator); ok && apexModuleTypeRequiresVariant(ai) {
+		apexBundleName := ai.ApexVariationName()
 		mctx.CreateVariations(apexBundleName)
 		if strings.HasPrefix(apexBundleName, "com.android.art") {
 			// Create an alias from the platform variant. This is done to make
@@ -1084,6 +1101,7 @@ func apexMutator(mctx android.BottomUpMutatorContext) {
 		// apex variant name. This name matches the name used to create the variations of modules for
 		// which apexModuleTypeRequiresVariant return true.
 		// TODO(b/191269918): Remove this workaround.
+		unprefixedModuleName := android.RemoveOptionalPrebuiltPrefix(mctx.ModuleName())
 		mctx.SetDefaultDependencyVariation(&unprefixedModuleName)
 		mctx.CreateVariations(apexBundleName)
 		if strings.HasPrefix(apexBundleName, "com.android.art") {
@@ -1095,18 +1113,13 @@ func apexMutator(mctx android.BottomUpMutatorContext) {
 
 // apexModuleTypeRequiresVariant determines whether the module supplied requires an apex specific
 // variant.
-func apexModuleTypeRequiresVariant(module android.Module) bool {
+func apexModuleTypeRequiresVariant(module ApexInfoMutator) bool {
 	if a, ok := module.(*apexBundle); ok {
+		// TODO(jiyong): document the reason why the VNDK APEX is an exception here.
 		return !a.vndkApex
 	}
 
-	// Match apex_set and prebuilt_apex. Would also match apexBundle but that is handled specially
-	// above.
-	if _, ok := module.(ApexInfoMutator); ok {
-		return true
-	}
-
-	return false
+	return true
 }
 
 // See android.UpdateDirectlyInAnyApex
@@ -1319,6 +1332,10 @@ var _ android.ApexBundleDepsInfoIntf = (*apexBundle)(nil)
 // Implements android.ApexBudleDepsInfoIntf
 func (a *apexBundle) Updatable() bool {
 	return proptools.BoolDefault(a.properties.Updatable, true)
+}
+
+func (a *apexBundle) UsePlatformApis() bool {
+	return proptools.BoolDefault(a.properties.Platform_apis, false)
 }
 
 // getCertString returns the name of the cert that should be used to sign this APEX. This is
@@ -2373,6 +2390,9 @@ func (a *apexBundle) checkUpdatable(ctx android.ModuleContext) {
 	if a.Updatable() {
 		if String(a.properties.Min_sdk_version) == "" {
 			ctx.PropertyErrorf("updatable", "updatable APEXes should set min_sdk_version as well")
+		}
+		if a.UsePlatformApis() {
+			ctx.PropertyErrorf("updatable", "updatable APEXes can't use platform APIs")
 		}
 		a.checkJavaStableSdkVersion(ctx)
 		a.checkClasspathFragments(ctx)
