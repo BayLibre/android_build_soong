@@ -642,6 +642,15 @@ var PrepareForTestWithCcIncludeVndk = android.GroupFixturePreparers(
 	}),
 )
 
+// Preparer to test CC modules along with licenses
+var PrepareForTestWithCcLicenses = android.GroupFixturePreparers(
+	PrepareForIntegrationTestWithCc,
+	android.PrepareForTestWithLicenses,
+	android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
+		registerHostSnapshotComponents(ctx)
+	}),
+)
+
 // TestConfig is the legacy way of creating a test Config for testing cc modules.
 //
 // See testCc for an explanation as to how to stop using this deprecated method.

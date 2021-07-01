@@ -155,3 +155,23 @@ func installMapListFileRule(ctx android.SingletonContext, m map[string]string, p
 	}
 	return snapshot.WriteStringToFileRule(ctx, txtBuilder.String(), path)
 }
+
+// zip snapshot
+func zipSnapshot(ctx android.SingletonContext, dir string, baseName string, snapshotOutputs android.Paths) android.OptionalPath {
+	zipPath := android.PathForOutput(
+		ctx, dir, baseName+".zip")
+
+	zipRule := android.NewRuleBuilder(pctx, ctx)
+	rspFile := android.PathForOutput(
+		ctx, dir, baseName+"_list"+".rsp")
+
+	zipRule.Command().
+		BuiltTool("soong_zip").
+		FlagWithOutput("-o ", zipPath).
+		FlagWithArg("-C ", android.PathForOutput(ctx, dir).String()).
+		FlagWithRspFileInputList("-r ", rspFile, snapshotOutputs)
+
+	zipRule.Build(zipPath.String(), baseName+" snapshot "+zipPath.String())
+	zipRule.DeleteTemporaryFiles()
+	return android.OptionalPathForPath(zipPath)
+}

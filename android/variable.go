@@ -317,6 +317,7 @@ type productVariables struct {
 	DirectedRecoverySnapshot bool            `json:",omitempty"`
 	RecoverySnapshotModules  map[string]bool `json:",omitempty"`
 
+	HostSnapshotModules          []string `json:",omitempty"`
 	VendorSnapshotDirsIncluded   []string `json:",omitempty"`
 	VendorSnapshotDirsExcluded   []string `json:",omitempty"`
 	RecoverySnapshotDirsExcluded []string `json:",omitempty"`
