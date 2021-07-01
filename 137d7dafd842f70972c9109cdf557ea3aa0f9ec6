@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f7cf765_c7cccb11",
+        "filename": "cc/object.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-01T17:36:38Z",
+      "side": 1,
+      "message": "it seems confusing to add shared/static libs but only use the headers, any reason we cannot support shared/static libraries in header_libs? Or is this to ensure we get the right variant for a cc_library?",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 0
+      },
+      "revId": "137d7dafd842f70972c9109cdf557ea3aa0f9ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
