@@ -22,6 +22,30 @@
       },
       "revId": "137d7dafd842f70972c9109cdf557ea3aa0f9ec6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "771ba24f_c678f09c",
+        "filename": "cc/object.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-01T17:38:21Z",
+      "side": 1,
+      "message": "Yeah, there\u0027s no guarantee that a static/shared/header variant of a library export identical headers, although it would be strange not to.\n\nThis is analogous to the way native static libraries work, they have static/shared dependencies but they only use them for headers.",
+      "parentUuid": "0f7cf765_c7cccb11",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 75,
+        "endChar": 0
+      },
+      "revId": "137d7dafd842f70972c9109cdf557ea3aa0f9ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
