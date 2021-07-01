@@ -33,6 +33,24 @@
       "message": "I\u0027m not sure why we need this on a per module basis. Particularly in AOSP but it doesn\u0027t really do any harm.",
       "revId": "d0b99cea0ac389e831dfddbd3cb10fa09a040d2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85c2b9f1_fcc1a329",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-07-01T13:49:37Z",
+      "side": 1,
+      "message": "Just so we don\u0027t need to switch them all at once, since we\u0027re having problems getting it to  work. This means we can keep dropping the generated Android.bp in the interim.",
+      "parentUuid": "71536f2b_f1b33c95",
+      "revId": "d0b99cea0ac389e831dfddbd3cb10fa09a040d2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
