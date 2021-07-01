@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2698d24_04da67b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-07-01T23:27:22Z",
+      "side": 1,
+      "message": "which update.py is this? (there are many in AOSP)\n\nI\u0027m partially asking because this looks fairly similar, though not identical to a number of other use cases (aosp-build-tools, sdk-repo build-tools/platform-tools)",
+      "range": {
+        "startLine": 16,
+        "startChar": 115,
+        "endLine": 16,
+        "endChar": 124
+      },
+      "revId": "c22d8d7ff845f5b6c2d73e7e87d7c531df514d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
