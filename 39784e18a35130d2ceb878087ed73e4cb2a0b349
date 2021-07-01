@@ -69,6 +69,23 @@
       "message": "Please don\u0027t blindly add more warnings unless there is a plan to track them and fix or silence them.  Is there a smaller subset of warnings you can turn on as errors?",
       "revId": "39784e18a35130d2ceb878087ed73e4cb2a0b349",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d832de8_09a7747b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-07-01T08:04:13Z",
+      "side": 1,
+      "message": "Thanks for the suggestion, all.\n\nI\u0027ll hold this for a while and fix the problem first (in this case, focusing on untyped List/Map usage), then I\u0027ll turn it on as an error.\n",
+      "revId": "39784e18a35130d2ceb878087ed73e4cb2a0b349",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
