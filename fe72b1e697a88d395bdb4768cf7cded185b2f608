@@ -16,6 +16,29 @@
       "message": "Crude and not elegant... but works",
       "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ea0d824_33082d56",
+        "filename": "android/required.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-01T15:05:01Z",
+      "side": 1,
+      "message": "Using config.Once() to store globals seems like a common pattern. What I don\u0027t understand is that, why can\u0027t I store globals directly in a field of the singleton object? For example,\n\ntype ssingleton struct{\n  globalMap map[string]string\n}\n\nvar s ssingleton \u003d ssingleton{}\n\nfunc ssingletonFactory Singleton { return \u0026s }\n\nand other mutator / singleton can just access the global as \"s.globalMap\".\n\nIs there some technical reason, or is it just \"convention\"?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 1
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
