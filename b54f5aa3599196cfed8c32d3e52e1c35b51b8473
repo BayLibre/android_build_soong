@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3812f962_4d11fc15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-01T09:23:33Z",
+      "side": 1,
+      "message": "Are these changes needed in sc-dev?",
+      "revId": "b54f5aa3599196cfed8c32d3e52e1c35b51b8473",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
