@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08757bb1_90b4e68d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-01T00:30:45Z",
+      "side": 1,
+      "message": "Can I get an ORV for the CLs?",
+      "revId": "c62c6aacf9e7dffc06df64e9b215b7f32501080d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
