@@ -22,6 +22,30 @@
       },
       "revId": "c22d8d7ff845f5b6c2d73e7e87d7c531df514d94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6166d1ef_17c9f52a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1395887
+      },
+      "writtenOn": "2021-07-02T00:40:25Z",
+      "side": 1,
+      "message": "It\u0027s the one in aosp/1754475.",
+      "parentUuid": "a2698d24_04da67b9",
+      "range": {
+        "startLine": 16,
+        "startChar": 115,
+        "endLine": 16,
+        "endChar": 124
+      },
+      "revId": "c22d8d7ff845f5b6c2d73e7e87d7c531df514d94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
