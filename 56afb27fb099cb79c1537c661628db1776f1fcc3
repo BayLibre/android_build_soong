@@ -45,6 +45,54 @@
       },
       "revId": "56afb27fb099cb79c1537c661628db1776f1fcc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eba796dd_71cadf6e",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-02T17:53:19Z",
+      "side": 1,
+      "message": "Previously, buildBootImageVariant returned the same paths as are in variant.imagesDeps but in a different order.\n\nThe imagesDeps field is initialized with c.moduleFiles(ctx, imageDir, \".art\", \".oat\", \".vdex\") - see https://cs.android.com/android/platform/superproject/+/master:build/soong/java/dexpreopt_config.go;l\u003d115?q\u003ddexpreopt_config.go\n\nThe buildBootImageVariant returned the list of c.moduleFiles(ctx, imageDir, \".art\", \".oat\") appended to c.moduleFiles(ctx, imageDir, \".vdex\")\n\nMoving them here simplifies the buildBootImageVariant, and avoids having to change a test that relies on them being returned in the order in imagesDeps.\n\nThere is a certain amount of duplication between the code that initializes the bootImageConfig and the code that uses it. Ideally they would be altogether but that is not possible as the paths are needed before the files can be created and adding dependencies causes cycles.",
+      "parentUuid": "2e3a351b_a2e91c8a",
+      "range": {
+        "startLine": 513,
+        "startChar": 55,
+        "endLine": 513,
+        "endChar": 73
+      },
+      "revId": "56afb27fb099cb79c1537c661628db1776f1fcc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf42c0bf_86e53f65",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-02T17:53:19Z",
+      "side": 1,
+      "message": "The bootImageConfig makes the assumption that the ArchType is unique per OsType. I think that is a reasonably safe assumption to make. I think everything would break if that was not true.\n\ne.g. the paths it creates only use OsType and ArchType to differentiate between the different image variants so if there was ever the case that multiple Android variants had the same ArchType then lots would break.\n\nSo, I don\u0027t think a panic here is particularly worth it.",
+      "parentUuid": "77fc8b27_5f39c6aa",
+      "range": {
+        "startLine": 513,
+        "startChar": 35,
+        "endLine": 513,
+        "endChar": 43
+      },
+      "revId": "56afb27fb099cb79c1537c661628db1776f1fcc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
