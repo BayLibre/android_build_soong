@@ -93,6 +93,54 @@
       },
       "revId": "56afb27fb099cb79c1537c661628db1776f1fcc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c40f87d_23e3c283",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-02T18:45:17Z",
+      "side": 1,
+      "message": "That\u0027s knowledge that isn\u0027t apparent in this code though. But if you think a reader of this code should have that familiarity (which I obviously lack), then very well.",
+      "parentUuid": "bf42c0bf_86e53f65",
+      "range": {
+        "startLine": 513,
+        "startChar": 35,
+        "endLine": 513,
+        "endChar": 43
+      },
+      "revId": "56afb27fb099cb79c1537c661628db1776f1fcc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f10dd0c_dfd33df5",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-02T18:45:17Z",
+      "side": 1,
+      "message": "Maybe consider removing bootImageVariant.imagesDeps altogether then? It looks possible to replace it with calls to moduleFiles since the bootImageConfig is available in the same object. Storing values like that adds cognitive load to figure out where they come from, and can be error prone by getting stale.\n\nThat\u0027d be a separate cleanup, though.",
+      "parentUuid": "eba796dd_71cadf6e",
+      "range": {
+        "startLine": 513,
+        "startChar": 55,
+        "endLine": 513,
+        "endChar": 73
+      },
+      "revId": "56afb27fb099cb79c1537c661628db1776f1fcc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
