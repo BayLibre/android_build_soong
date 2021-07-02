@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b37ff848_74022649",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-07-02T11:34:40Z",
+      "side": 1,
+      "message": "This is the same as https://android-review.googlesource.com/c/platform/build/soong/+/1733232 but with a lock added to soong/android.RegisterBp2BuildMutator \n\n(because of https://android-build.googleplex.com/builds/submitted/7512065/sdk_x86_64-sdk/latest/view/logs/build_error.log)\n\nUnresolved for visibility",
+      "revId": "1247e6e22fbb21c33c4b6f2b84738974262e2be7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
