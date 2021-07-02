@@ -129,6 +129,30 @@
       },
       "revId": "fa5ff772833182db37ab67d18272c66c42a1dd58",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbfcedf2_2c061662",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-02T19:20:23Z",
+      "side": 1,
+      "message": "I was thinking that due to other\u0027s changes over time or branches merging, that the effect on the product config may be unexpected.\n\nRegardless, we shouldn\u0027t simply ignore all errors -- can we limit only continue on errors: ENOTDIR, ENOENT and fail on other errors?",
+      "parentUuid": "d4830c1f_b3f0d4a5",
+      "range": {
+        "startLine": 328,
+        "startChar": 30,
+        "endLine": 328,
+        "endChar": 40
+      },
+      "revId": "fa5ff772833182db37ab67d18272c66c42a1dd58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
