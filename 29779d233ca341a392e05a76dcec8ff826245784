@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7b01609_d0fef0c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-02T12:22:03Z",
+      "side": 1,
+      "message": "I think you meant lunch aosp_cf_x86_64_phone-userdebug",
+      "revId": "29779d233ca341a392e05a76dcec8ff826245784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "674507a9_e1579fda",
+        "filename": "java/hiddenapi_singleton.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-02T12:22:03Z",
+      "side": 1,
+      "message": "This is in a legacy function that should not affect the hidden API flag generation of an APEX contents. Any library in an APEX that requires hidden API flags must be part of a bootclasspath_fragment as that is what is responsible for performing hidden API processing now.\n\nOnce the platform_bootclasspath module has been switched to also perform hidden API processing and becomes responsible for installing the encoded files then all this code will be removed.\n\nSo, if an APEX built for host dex is not having hidden API encoding done then there is a problem with the bootclasspath_fragment and should be fixed there.\n\nHaving said that I don\u0027t understand why your fix seems to fix the problem but that may just be because I don\u0027t understand the problem well enough yet.",
+      "revId": "29779d233ca341a392e05a76dcec8ff826245784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
