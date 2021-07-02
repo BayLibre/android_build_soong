@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "124abe34_12a595c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-02T13:46:54Z",
+      "side": 1,
+      "message": "That\u0027s where the predecessor change (aosp/1739833) comes in for the rescue:\n\ncc_library {\n  name: \"libfoo\",\n  recovery_available: true,\n  vendor_available: true,\n  target: {\n    recovery: {\n      required: [\n        \"bar{.recovery}\"\n      ],\n    },\n    vendor: {\n      required: [\n        \"bar{.vendor}\"\n      ],\n    },\n  },\n}",
+      "parentUuid": "57ded96b_83235e6c",
+      "range": {
+        "startLine": 14,
+        "startChar": 10,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "16499b4b_dfd63ab3",
