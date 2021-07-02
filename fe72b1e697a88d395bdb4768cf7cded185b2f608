@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcced29a_a1919c53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-02T01:22:22Z",
+      "side": 1,
+      "message": "I am still not sure if this can cover the cases for multi-available modules.",
+      "range": {
+        "startLine": 14,
+        "startChar": 10,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "16499b4b_dfd63ab3",
@@ -14,6 +37,29 @@
       "writtenOn": "2021-07-01T14:58:08Z",
       "side": 1,
       "message": "Crude and not elegant... but works",
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c01aa8d5_b8a5eb5c",
+        "filename": "android/required.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-02T01:22:22Z",
+      "side": 1,
+      "message": "These are cc specific variants.\nCan we use the variant names from build/soong/android/image.go?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 55
+      },
       "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -36,6 +82,76 @@
         "startChar": 0,
         "endLine": 68,
         "endChar": 1
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e954098a_22909337",
+        "filename": "android/required.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-02T01:22:22Z",
+      "side": 1,
+      "message": "I am not sure if this make another global state problem described here: https://docs.google.com/document/d/1CrogPUm7x6yOO149Cp35tlqAB3ZdeGzApLpWBh6PXO0/edit#heading\u003dh.3vcjg2dig6rs",
+      "parentUuid": "8ea0d824_33082d56",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 1
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57f21651_d68ae8ba",
+        "filename": "android/required.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-02T01:22:22Z",
+      "side": 1,
+      "message": "This must use ctx.ModuleErrorf because this is a module error not the errors from soong.",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 9
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acc5c4f1_39624b94",
+        "filename": "android/required.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-02T01:22:22Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 9
       },
       "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
