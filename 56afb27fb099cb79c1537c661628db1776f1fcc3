@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77fc8b27_5f39c6aa",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-02T12:05:42Z",
+      "side": 1,
+      "message": "Is it certain that every variant has a unique ArchType? Either add a panic check here to confirm that filesByArch[variant.target.Arch.ArchType] doesn\u0027t already have a value, or change to append().",
+      "range": {
+        "startLine": 513,
+        "startChar": 35,
+        "endLine": 513,
+        "endChar": 43
+      },
+      "revId": "56afb27fb099cb79c1537c661628db1776f1fcc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e3a351b_a2e91c8a",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-02T12:05:42Z",
+      "side": 1,
+      "message": "It\u0027s not at all clear to me that these paths are the same as the paths previously returned by buildBootImageVariant. Why change it?",
+      "range": {
+        "startLine": 513,
+        "startChar": 55,
+        "endLine": 513,
+        "endChar": 73
+      },
+      "revId": "56afb27fb099cb79c1537c661628db1776f1fcc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
