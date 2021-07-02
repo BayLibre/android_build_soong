@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "57ded96b_83235e6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-02T11:32:24Z",
+      "side": 1,
+      "message": "I though a case like this:\n\ncc_library {\n  name: \"libfoo\",\n  recovery_available: true,\n  vendor_available: true,\n  required: [\n      \"bar{.recovery}{.vendor}\", // ????\n  ],\n}",
+      "parentUuid": "0ff0c70a_eae89d0c",
+      "range": {
+        "startLine": 14,
+        "startChar": 10,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "16499b4b_dfd63ab3",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "I think this is *not* a case of the global state issue.\nIt doesn\u0027t modify the build graph or module properties, because the module suffix information is collected by a Singleton.GenerateBuildActions() method, which is ran after all Module.GenerateBuildActions() all completed, and the collected information only affect the output of the AndroidMkSingleton.",
       "parentUuid": "e954098a_22909337",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 1
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fa90ef8_a87690cd",
+        "filename": "android/required.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-02T11:32:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b444a1c1_2acf8f6b",
       "range": {
         "startLine": 64,
         "startChar": 0,
