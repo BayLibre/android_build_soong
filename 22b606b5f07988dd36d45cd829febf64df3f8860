@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3125f09_68ad2ceb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-07-02T11:46:55Z",
+      "side": 1,
+      "message": "Followup: https://android-review.googlesource.com/c/platform/build/soong/+/1755109 (added a lock around a map write in android#RegisterBp2BuildMutator, otherwise unchanged)",
+      "revId": "22b606b5f07988dd36d45cd829febf64df3f8860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
