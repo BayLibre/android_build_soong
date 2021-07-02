@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71225d74_89888992",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-07-02T06:19:08Z",
+      "side": 1,
+      "message": "nit: 80col",
+      "range": {
+        "startLine": 232,
+        "startChar": 91,
+        "endLine": 232,
+        "endChar": 96
+      },
+      "revId": "5e4d9a5556d5ff2407981149d70fbf6602d12fb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
