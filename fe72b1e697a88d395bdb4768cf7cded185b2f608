@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7c568de_314d922e",
+        "filename": "android/required.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-02T15:10:06Z",
+      "side": 1,
+      "message": "Ack. Would change this in next revision.",
+      "parentUuid": "c01aa8d5_b8a5eb5c",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 55
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8ea0d824_33082d56",
         "filename": "android/required.go",
         "patchSetId": 3
@@ -221,6 +245,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "b444a1c1_2acf8f6b",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 1
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ce742e8_fcaa7929",
+        "filename": "android/required.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-02T15:10:06Z",
+      "side": 1,
+      "message": "I guess another angle to stab this issue is to use real dependencies. If \"foo\" required \"bar{.recovery}\", then \"foo\" would create a depTag to \"bar{image:recovery}\". Another mutator would then collect all these deps.\n\nThe problem with that approach is that cc module types have image variations of \"vendor.${VER}\", which is kind of hard to map from \"bar{.vendor}\". (we don\u0027t know \".vendor\" means \".vendor.S\" or \".vendor.30\"??)",
+      "parentUuid": "3fa90ef8_a87690cd",
       "range": {
         "startLine": 64,
         "startChar": 0,
