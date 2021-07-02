@@ -173,6 +173,10 @@ func isModuleInConfiguredList(ctx android.BaseModuleContext, module android.Modu
 		}
 	} else if !apexInfo.InApexVariant(requiredApex) {
 		// An apex variant for a specific apex is required but this is the wrong apex.
+		if j, ok := module.(*Library); ok && Bool(j.deviceProperties.Hostdex) {
+			// A "hostdex" variant of an apex module is a special case.
+			return true
+		}
 		return false
 	}
 
