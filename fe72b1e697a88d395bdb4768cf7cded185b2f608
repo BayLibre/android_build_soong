@@ -160,6 +160,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89fd4528_d080b8bd",
+        "filename": "android/required.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-03T11:24:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7c568de_314d922e",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 55
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ea0d824_33082d56",
@@ -302,6 +326,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4025466c_4c0f66f7",
+        "filename": "android/required.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-03T11:24:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57f21651_d68ae8ba",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 9
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acc5c4f1_39624b94",
@@ -315,6 +363,30 @@
       "writtenOn": "2021-07-02T01:22:22Z",
       "side": 1,
       "message": "Same here",
+      "range": {
+        "startLine": 147,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 9
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1a3f490_ae487f55",
+        "filename": "android/required.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-03T11:24:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acc5c4f1_39624b94",
       "range": {
         "startLine": 147,
         "startChar": 4,
