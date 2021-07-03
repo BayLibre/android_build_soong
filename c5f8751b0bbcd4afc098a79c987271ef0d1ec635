@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa88326d_991e5aaa",
+        "filename": "bp2build/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1714996
+      },
+      "writtenOn": "2021-07-03T01:10:06Z",
+      "side": 1,
+      "message": "In the updated design, this is separated into a separate function rather than in the Codegen function directly.",
+      "revId": "c5f8751b0bbcd4afc098a79c987271ef0d1ec635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f171e922_899602e1",
+        "filename": "bp2build/synthetic_workspace.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1714996
+      },
+      "writtenOn": "2021-07-03T01:10:06Z",
+      "side": 1,
+      "message": "This is a bug, this should only be appended to if we are generating a target, otherwise the function should return early.",
+      "revId": "c5f8751b0bbcd4afc098a79c987271ef0d1ec635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
