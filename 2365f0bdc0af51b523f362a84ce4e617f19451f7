@@ -1,6 +1,69 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11545c79_d2f05dc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-07-05T02:22:02Z",
+      "side": 1,
+      "message": "I think this is what `runtime_libs` does. Maybe we can deprecate `runtime_libs`.",
+      "revId": "2365f0bdc0af51b523f362a84ce4e617f19451f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aff6d16_df28b684",
+        "filename": "android/required.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-07-05T02:22:02Z",
+      "side": 1,
+      "message": "Rather than using a complex map, can you define a new type for this? e.g.\n\n    type requiredModuleVariationMap struct {\n      // some internal data..\n    }\n    \n    func (m *requiredModuleVariationMap) addMkNames(baseModuleName, variant string, androidMkNames ...string) { /* implementation */ }\n    \n    func (m *requiredModuleVariationMap) getMkNames(baseModuleName, variant string) []string { /* implementation */ }",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 62
+      },
+      "revId": "2365f0bdc0af51b523f362a84ce4e617f19451f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0af44ba_e4fa2f7b",
+        "filename": "android/required.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-07-05T02:22:02Z",
+      "side": 1,
+      "message": "nit, out of curiosity; do we have to parse manually? Or are there any utility functions?",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 64
+      },
+      "revId": "2365f0bdc0af51b523f362a84ce4e617f19451f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "531efdec_433ab736",
