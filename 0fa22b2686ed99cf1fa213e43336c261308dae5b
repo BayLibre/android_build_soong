@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48d5a378_3fe260a0",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-05T20:40:04Z",
+      "side": 1,
+      "message": "Martin: good comment, it would also help to give an example (e.g. the motivating example with the ART apex).",
+      "revId": "0fa22b2686ed99cf1fa213e43336c261308dae5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9081d6a4_6d90acff",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-05T20:40:04Z",
+      "side": 1,
+      "message": "Arthur: please update this comment (and the above on lines 157-159) to reflect aosp/1736332.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 61
+      },
+      "revId": "0fa22b2686ed99cf1fa213e43336c261308dae5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
