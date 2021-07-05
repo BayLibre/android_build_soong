@@ -151,6 +151,30 @@
       },
       "revId": "2365f0bdc0af51b523f362a84ce4e617f19451f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a114e6b1_ce96ec9d",
+        "filename": "cc/image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-05T12:45:23Z",
+      "side": 1,
+      "message": "Also, why are there product variants of both platformVndkVersion and productVndkVersion (https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/image.go;l\u003d508;drc\u003d2f5c340b49b63bae00b8cbe8eab325d5bd2653c5)?",
+      "parentUuid": "0c8f78a8_2b1957a7",
+      "range": {
+        "startLine": 751,
+        "startChar": 0,
+        "endLine": 756,
+        "endChar": 2
+      },
+      "revId": "2365f0bdc0af51b523f362a84ce4e617f19451f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
