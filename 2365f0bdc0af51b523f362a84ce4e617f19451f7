@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "531efdec_433ab736",
+        "filename": "cc/image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-05T00:47:02Z",
+      "side": 1,
+      "message": "If we are intended to use the same variation name for the \u0027required\u0027 modules with \u0027image\u0027 variations, you may use `vendorImageVariant` and `productImageVariant` here.\nOr define `requiredModuleProductVariation :\u003d productImageVariant` to avoid hard coded names.\n\nAlso, as you commented, vendor and product variants have version suffix for the variant name. `required: [\"a{.vendor}\"]` means `a.vendor.{VER}`, `{VER}` is from the VndkVersion property from this module.\n\n`android/required.go` does not know this information. Maybe we need some more interface for the version suffix?",
+      "range": {
+        "startLine": 751,
+        "startChar": 0,
+        "endLine": 756,
+        "endChar": 2
+      },
+      "revId": "2365f0bdc0af51b523f362a84ce4e617f19451f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

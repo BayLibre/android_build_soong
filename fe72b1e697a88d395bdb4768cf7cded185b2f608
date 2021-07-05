@@ -98,6 +98,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b5729dc8_7dcc26bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-05T00:47:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "124abe34_12a595c2",
+      "range": {
+        "startLine": 14,
+        "startChar": 10,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "16499b4b_dfd63ab3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -293,6 +317,30 @@
       "side": 1,
       "message": "I guess another angle to stab this issue is to use real dependencies. If \"foo\" required \"bar{.recovery}\", then \"foo\" would create a depTag to \"bar{image:recovery}\". Another mutator would then collect all these deps.\n\nThe problem with that approach is that cc module types have image variations of \"vendor.${VER}\", which is kind of hard to map from \"bar{.vendor}\". (we don\u0027t know \".vendor\" means \".vendor.S\" or \".vendor.30\"??)",
       "parentUuid": "3fa90ef8_a87690cd",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 1
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34043b5a_5e191672",
+        "filename": "android/required.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-05T00:47:02Z",
+      "side": 1,
+      "message": "cc modules have \"VndkVersion\" property. That is the version suffix for the vendor and product image variants.",
+      "parentUuid": "5ce742e8_fcaa7929",
       "range": {
         "startLine": 64,
         "startChar": 0,
