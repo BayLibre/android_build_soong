@@ -158,6 +158,11 @@ import (
 // name (if the library is a part of the Platform), or a colon-separated pair <apex, name> (if the
 // library is a part of a non-updatable APEX).
 //
+// In these variables APEXes are identified by their "variant names", i.e. the names they get
+// mounted as in /apex on device. In Soong modules that is the name set in the "apex_name"
+// properties, which default to the "name" values. See also android.ApexInfo.ApexVariationName and
+// apex.apexBundleProperties.Apex_name.
+//
 // A related variable PRODUCT_UPDATABLE_BOOT_JARS contains bootclasspath libraries that are in
 // updatable APEXes. They are not included in the boot image.
 //
