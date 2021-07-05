@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c22975a_9edd9720",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-05T11:46:41Z",
+      "side": 1,
+      "message": "runtime_libs is arch and cc-aware, so I think it\u0027s still better to use runtime_libs for cc-cc dependencies. \n\nAFAICT, most of the problems of \"required\" come from the fact that we don\u0027t know the module type of the required module, and soong is not designed to handle arbitrary module type dependency, and Android.mk doesn\u0027t have the concept of \"image\"... I feel like deprecating runtime_libs would be a setback.",
+      "parentUuid": "11545c79_d2f05dc6",
+      "revId": "2365f0bdc0af51b523f362a84ce4e617f19451f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7aff6d16_df28b684",
@@ -54,6 +72,30 @@
       "writtenOn": "2021-07-05T02:22:02Z",
       "side": 1,
       "message": "nit, out of curiosity; do we have to parse manually? Or are there any utility functions?",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 64
+      },
+      "revId": "2365f0bdc0af51b523f362a84ce4e617f19451f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3746f8f_ec997fb6",
+        "filename": "android/required.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-05T11:46:41Z",
+      "side": 1,
+      "message": "I can probably factor this out of SrcIsModuleWithTag() https://cs.android.com/android/platform/superproject/+/master:build/soong/android/module.go;l\u003d2811;drc\u003dd18d8cab73e67faf19d0857068282b15cef3e40b",
+      "parentUuid": "e0af44ba_e4fa2f7b",
       "range": {
         "startLine": 119,
         "startChar": 0,

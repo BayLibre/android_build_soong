@@ -353,6 +353,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d19a2818_69dcad9f",
+        "filename": "android/required.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-05T11:46:41Z",
+      "side": 1,
+      "message": "but this would leak cc-specific details into the android package... or I can make this (required-with-tag) a cc-module specific thing I guess...",
+      "parentUuid": "34043b5a_5e191672",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 1
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57f21651_d68ae8ba",
         "filename": "android/required.go",
         "patchSetId": 3
