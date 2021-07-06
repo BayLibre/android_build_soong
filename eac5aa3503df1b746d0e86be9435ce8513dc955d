@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "245ebdd1_7ba61ab2",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-06T12:26:12Z",
+      "side": 1,
+      "message": "Spello: \"These\"",
+      "range": {
+        "startLine": 706,
+        "startChar": 50,
+        "endLine": 706,
+        "endChar": 55
+      },
+      "revId": "eac5aa3503df1b746d0e86be9435ce8513dc955d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f403734_9537d2f1",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-06T12:26:12Z",
+      "side": 1,
+      "message": "Nit: Not just testing, we provide ART on host for prod jobs of various sorts, don\u0027t we?",
+      "range": {
+        "startLine": 517,
+        "startChar": 28,
+        "endLine": 517,
+        "endChar": 45
+      },
+      "revId": "eac5aa3503df1b746d0e86be9435ce8513dc955d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
