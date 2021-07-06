@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4be289f6_bf7dcab0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-06T11:35:47Z",
+      "side": 1,
+      "message": "Running the test command fails in aidl tests. I am investigating why.",
+      "revId": "22e67cdb6cc55570c40478010c6ff835b01c8770",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
