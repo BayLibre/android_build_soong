@@ -350,6 +350,15 @@ type BaseProperties struct {
 	// framework module from the recovery snapshot.
 	Exclude_from_recovery_snapshot *bool
 
+	// Indicates this module is supposed to be stable regarding APEX boundary. APEX packaging won't
+	// won't include this just because it is transtively used. Instead the dependency will be recorded
+	// as "required" in apex_manifest. Likewise, when this module is included directly in an APEX,
+	// it is recored as "provided" in apex_manifest.
+	// Be cautious when using this because C++ ABI stability is not guaranteed. It is recommended to
+	// make it a C-interface and use "versions".
+	// This is only available for "vendor" variant. Core variants can't use this.
+	Exclude_from_apex_and_use_as_stable *bool
+
 	// List of APEXes that this module has private access to for testing purpose. The module
 	// can depend on libraries that are not exported by the APEXes and use private symbols
 	// from the exported libraries.
@@ -1188,6 +1197,11 @@ func (c *Module) StubsVersion() string {
 		return lib.stubsVersion()
 	}
 	panic(fmt.Errorf("StubsVersion called on non-versioned module: %q", c.BaseModuleName()))
+}
+
+func (c *Module) IsExcludeFromApexAndUseAsStable() bool {
+	// Use this property only for vendor variant to avoid accidental use from system-side APEXes.
+	return c.UseVndk() && Bool(c.Properties.Exclude_from_apex_and_use_as_stable)
 }
 
 // isImplementationForLLNDKPublic returns true for any variant of a cc_library that has LLNDK stubs
@@ -3312,6 +3326,9 @@ func (c *Module) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Modu
 			}
 		}
 		if cc.IsLlndk() {
+			return false
+		}
+		if cc.IsExcludeFromApexAndUseAsStable() {
 			return false
 		}
 		if isLibDepTag && c.static() && libDepTag.shared() {

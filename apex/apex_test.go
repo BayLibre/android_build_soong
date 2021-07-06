@@ -8185,6 +8185,89 @@ func TestApexJavaCoverage(t *testing.T) {
 	}
 }
 
+func TestVendorApexUsesExternalCppDependencies(t *testing.T) {
+	bp := `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			native_shared_libs: ["libvendor"],
+			updatable: true,
+			min_sdk_version: "29",
+			vendor: true,
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		cc_library {
+			name: "libvendor",
+			srcs: ["mylib.cpp"],
+			shared_libs: ["libstable", "libunstable"],
+			vendor_available: true,
+			min_sdk_version: "29",
+		}
+
+		cc_library {
+			name: "libstable",
+			srcs: ["mylib.cpp"],
+			vendor_available: true,
+			exclude_from_apex_and_use_as_stable: true,
+			min_sdk_version: "29",
+		}
+
+		cc_library {
+			name: "libunstable",
+			srcs: ["mylib.cpp"],
+			vendor_available: true,
+			min_sdk_version: "29",
+		}
+	`
+
+	ctx := testApex(t, bp)
+
+	apexManifestRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexManifestRule")
+	ensureListEmpty(t, names(apexManifestRule.Args["provideNativeLibs"]))
+	ensureListContains(t, names(apexManifestRule.Args["requireNativeLibs"]), "libstable.so")
+
+	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
+		"lib64/libc++.so",
+		"lib64/libvendor.so",
+		"lib64/libunstable.so",
+	})
+}
+
+func TestUseAsStableModulesCantBeIncludedInApex(t *testing.T) {
+	bp := `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			native_shared_libs: ["libstable"],
+			updatable: true,
+			min_sdk_version: "29",
+			vendor: true,
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		cc_library {
+			name: "libstable",
+			srcs: ["mylib.cpp"],
+			vendor_available: true,
+			exclude_from_apex_and_use_as_stable: true,
+			min_sdk_version: "29",
+		}
+	`
+
+	testApexError(t, `exclude_from_apex_and_use_as_stable`, bp)
+}
+
 func TestProhibitStaticExecutable(t *testing.T) {
 	testApexError(t, `executable mybin is static`, `
 		apex {

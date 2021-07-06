@@ -896,6 +896,10 @@ func (a *apexBundle) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 				return false
 			}
 		}
+		if c, ok := child.(*cc.Module); ok && c.IsExcludeFromApexAndUseAsStable() {
+			mctx.ModuleErrorf(`can't include "exclude_from_apex_and_use_as_stable: true" module(%q)`, c.Name())
+			return false
+		}
 		// By default, all the transitive dependencies are collected, unless filtered out
 		// above.
 		return true
@@ -1916,7 +1920,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 						}
 
 						abInfo := ctx.Provider(ApexBundleInfoProvider).(ApexBundleInfo)
-						if !abInfo.Contents.DirectlyInApex(depName) && (cc.IsStubs() || cc.HasStubsVariants()) {
+						if !abInfo.Contents.DirectlyInApex(depName) && (cc.IsStubs() || cc.HasStubsVariants() || cc.IsExcludeFromApexAndUseAsStable()) {
 							// If the dependency is a stubs lib, don't include it in this APEX,
 							// but make sure that the lib is installed on the device.
 							// In case no APEX is having the lib, the lib is installed to the system
