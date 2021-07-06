@@ -223,6 +223,30 @@
       },
       "revId": "2365f0bdc0af51b523f362a84ce4e617f19451f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72cfba93_ecc86c4c",
+        "filename": "cc/image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-06T05:35:51Z",
+      "side": 1,
+      "message": "Yes. And we assume productVndkVersion \u003d\u003d \"current\" for the current implementation.",
+      "parentUuid": "5131f753_48fee3ab",
+      "range": {
+        "startLine": 751,
+        "startChar": 0,
+        "endLine": 756,
+        "endChar": 2
+      },
+      "revId": "2365f0bdc0af51b523f362a84ce4e617f19451f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
