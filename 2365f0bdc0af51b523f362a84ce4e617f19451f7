@@ -199,6 +199,30 @@
       },
       "revId": "2365f0bdc0af51b523f362a84ce4e617f19451f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5131f753_48fee3ab",
+        "filename": "cc/image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-06T05:31:10Z",
+      "side": 1,
+      "message": "So,\n\nProduct modules that are exported to Make should be productVndkVersion if productVndkVersion not \"current\", else platformVndkVersion.\n\nVendor modules that are exported to Make should be boardVndkVersion if boardVndkVersion not \"current\", else platformVndkVersion.\n\n?",
+      "parentUuid": "6dea0309_0f722ca7",
+      "range": {
+        "startLine": 751,
+        "startChar": 0,
+        "endLine": 756,
+        "endChar": 2
+      },
+      "revId": "2365f0bdc0af51b523f362a84ce4e617f19451f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
