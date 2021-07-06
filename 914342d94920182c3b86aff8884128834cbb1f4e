@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53f98c23_be401af1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-06T11:51:06Z",
+      "side": 1,
+      "message": "I was hoping the singletons were gone and the cache could be removed altogether, but unfortunately that\u0027s not the case.",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "914342d94920182c3b86aff8884128834cbb1f4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "886e2589_555f65d9",
