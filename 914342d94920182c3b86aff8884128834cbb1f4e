@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4e74647_2f25c110",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-06T11:52:52Z",
+      "side": 1,
+      "message": "Not yet. It will eventually though.",
+      "parentUuid": "53f98c23_be401af1",
+      "range": {
+        "startLine": 13,
+        "startChar": 31,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "914342d94920182c3b86aff8884128834cbb1f4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "886e2589_555f65d9",
