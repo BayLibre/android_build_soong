@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9723bfb_f1eefc04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-07-07T18:07:47Z",
+      "side": 1,
+      "message": "Sorry all for long long delay :(\n\nI think CLs are ready to be reviewed.",
+      "revId": "61f2958c6490274d33527eb924d950422112cdb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
