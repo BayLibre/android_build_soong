@@ -89,6 +89,12 @@ type SingletonContext interface {
 	// builder whenever a file matching the pattern as added or removed, without rerunning if a
 	// file that does not match the pattern is added to a searched directory.
 	GlobWithDeps(pattern string, excludes []string) ([]string, error)
+
+	// ModuleDependencyTag returns the dependency tag used to depend on a module, or nil if there is
+	// no dependency on the module.  When called inside a VisitDirectDeps* method with current module
+	// being visited, and there are multiple dependencies on the module being visited, it returns the
+	// dependency tag used for the current dependency.
+	ModuleDependencyTag(module, child Module) blueprint.DependencyTag
 }
 
 type singletonAdaptor struct {
@@ -250,4 +256,8 @@ func (s *singletonContextAdaptor) PrimaryModule(module Module) Module {
 
 func (s *singletonContextAdaptor) FinalModule(module Module) Module {
 	return s.SingletonContext.FinalModule(module).(Module)
+}
+
+func (s *singletonContextAdaptor) ModuleDependencyTag(module, child Module) blueprint.DependencyTag {
+	return s.SingletonContext.ModuleDependencyTag(module, child)
 }
