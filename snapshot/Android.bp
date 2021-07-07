@@ -1,0 +1,24 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+bootstrap_go_package {
+    name: "soong-snapshot",
+    pkgPath: "android/soong/snapshot",
+    deps: [
+        "blueprint",
+        "blueprint-pathtools",
+        "soong",
+        "soong-android",
+    ],
+    srcs: [
+        "snapshot.go",
+        "snapshot_image.go",
+        "snapshot_module.go",
+        "vendor_snapshot.go",
+        "vendor_snapshot_image.go",
+        "recovery_snapshot.go",
+        "recovery_snapshot_image.go",
+    ],
+    pluginFor: ["soong_build"],
+}
