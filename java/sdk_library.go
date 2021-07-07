@@ -1925,6 +1925,9 @@ type SdkLibraryImport struct {
 
 	// Path to the dex implementation jar obtained from the prebuilt_apex, if any.
 	dexJarFile android.Path
+
+	// InstallPath of the source module(sdk_library) if the source module exists.
+	sourceModuleInstallPath android.Path
 }
 
 var _ SdkLibraryDependency = (*SdkLibraryImport)(nil)
@@ -2151,6 +2154,7 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 		} else if tag == implLibraryTag {
 			if implLibrary, ok := to.(*Library); ok {
 				module.implLibraryModule = implLibrary
+				module.sourceModuleInstallPath = android.PathForModuleInstall(ctx, "framework", module.Stem()+".jar")
 			} else {
 				ctx.ModuleErrorf("implementation library must be of type *java.Library but was %T", to)
 			}
@@ -2249,6 +2253,9 @@ func (module *SdkLibraryImport) DexJarBuildPath() android.Path {
 
 // to satisfy UsesLibraryDependency interface
 func (module *SdkLibraryImport) DexJarInstallPath() android.Path {
+	if module.sourceModuleInstallPath != nil {
+		return module.sourceModuleInstallPath
+	}
 	if module.implLibraryModule == nil {
 		return nil
 	} else {
