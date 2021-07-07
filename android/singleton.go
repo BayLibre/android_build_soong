@@ -89,6 +89,8 @@ type SingletonContext interface {
 	// builder whenever a file matching the pattern as added or removed, without rerunning if a
 	// file that does not match the pattern is added to a searched directory.
 	GlobWithDeps(pattern string, excludes []string) ([]string, error)
+
+	OtherModuleDependencyTag(module, child Module) blueprint.DependencyTag
 }
 
 type singletonAdaptor struct {
@@ -250,4 +252,8 @@ func (s *singletonContextAdaptor) PrimaryModule(module Module) Module {
 
 func (s *singletonContextAdaptor) FinalModule(module Module) Module {
 	return s.SingletonContext.FinalModule(module).(Module)
+}
+
+func (s *singletonContextAdaptor) OtherModuleDependencyTag(module, child Module) blueprint.DependencyTag {
+	return s.SingletonContext.OtherModuleDependencyTag(module, child)
 }
