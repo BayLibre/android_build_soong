@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c084caa_e8e4a966",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-07-07T15:36:50Z",
+      "side": 1,
+      "message": "this isn\u0027t true anymore, we always prepend platform: now.",
+      "range": {
+        "startLine": 157,
+        "startChar": 84,
+        "endLine": 158,
+        "endChar": 50
+      },
+      "revId": "0fa22b2686ed99cf1fa213e43336c261308dae5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48d5a378_3fe260a0",
         "filename": "java/dexpreopt_bootjars.go",
         "patchSetId": 1
@@ -36,6 +59,29 @@
         "startChar": 0,
         "endLine": 167,
         "endChar": 61
+      },
+      "revId": "0fa22b2686ed99cf1fa213e43336c261308dae5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecde180c_9652d8ee",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-07-07T15:36:50Z",
+      "side": 1,
+      "message": "This isn\u0027t true, we have non-updatable apexes in PRODUCT_UPDATABLE_BOOT_JARS in internal branches already.",
+      "range": {
+        "startLine": 166,
+        "startChar": 83,
+        "endLine": 167,
+        "endChar": 19
       },
       "revId": "0fa22b2686ed99cf1fa213e43336c261308dae5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
