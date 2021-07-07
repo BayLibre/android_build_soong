@@ -373,6 +373,10 @@ func (mod *Module) SplitPerApiLevel() bool {
 	return false
 }
 
+func (m *Module) IsPrivate() bool {
+	return false
+}
+
 type Deps struct {
 	Dylibs          []string
 	Rlibs           []string
