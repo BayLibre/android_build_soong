@@ -17,6 +17,8 @@ package rust
 import (
 	"android/soong/android"
 	"android/soong/cc"
+	"android/soong/snapshot"
+
 	"github.com/google/blueprint/proptools"
 )
 
@@ -41,11 +43,11 @@ func init() {
 }
 
 func registerRustSnapshotModules(ctx android.RegistrationContext) {
-	cc.VendorSnapshotImageSingleton.RegisterAdditionalModule(ctx,
+	snapshot.VendorSnapshotImageSingleton.RegisterAdditionalModule(ctx,
 		"vendor_snapshot_rlib", VendorSnapshotRlibFactory)
 }
 
-func snapshotLibraryFactory(image cc.SnapshotImage, moduleSuffix string) (*Module, *snapshotLibraryDecorator) {
+func snapshotLibraryFactory(image snapshot.SnapshotImage, moduleSuffix string) (*Module, *snapshotLibraryDecorator) {
 	module, library := NewRustLibrary(android.DeviceSupported)
 
 	module.sanitize = nil
@@ -97,7 +99,7 @@ func (library *snapshotLibraryDecorator) rustdoc(ctx ModuleContext, flags Flags,
 // overrides the vendor variant of the rust rlib library with the same name, if BOARD_VNDK_VERSION
 // is set.
 func VendorSnapshotRlibFactory() android.Module {
-	module, prebuilt := snapshotLibraryFactory(cc.VendorSnapshotImageSingleton, cc.SnapshotRlibSuffix)
+	module, prebuilt := snapshotLibraryFactory(snapshot.VendorSnapshotImageSingleton, cc.SnapshotRlibSuffix)
 	prebuilt.libraryDecorator.BuildOnlyRlib()
 	prebuilt.libraryDecorator.setNoStdlibs()
 	return module.Init()

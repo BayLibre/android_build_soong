@@ -17,6 +17,7 @@ package cc
 
 import (
 	"android/soong/android"
+	"android/soong/snapshot"
 )
 
 var (
@@ -113,8 +114,8 @@ func ShouldCollectHeadersForSnapshot(ctx android.ModuleContext, m LinkableInterf
 		return ctx.Config().VndkSnapshotBuildArtifacts()
 	}
 
-	for _, image := range []SnapshotImage{VendorSnapshotImageSingleton, recoverySnapshotImageSingleton} {
-		if isSnapshotAware(ctx.DeviceConfig(), m, image.isProprietaryPath(ctx.ModuleDir(), ctx.DeviceConfig()), apexInfo, image) {
+	for _, image := range []snapshot.SnapshotImage{snapshot.VendorSnapshotImageSingleton, snapshot.RecoverySnapshotImageSingleton} {
+		if isSnapshotAware(ctx.DeviceConfig(), m, image.IsProprietaryPath(ctx.ModuleDir(), ctx.DeviceConfig()), apexInfo, image) {
 			return true
 		}
 	}

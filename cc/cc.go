@@ -3452,6 +3452,10 @@ func (c *Module) IsSdkVariant() bool {
 	return c.Properties.IsSdkVariant
 }
 
+func (c *Module) IsPrivate() bool {
+	return c.IsVndkPrivate()
+}
+
 func kytheExtractAllFactory() android.Singleton {
 	return &kytheExtractAllSingleton{}
 }
