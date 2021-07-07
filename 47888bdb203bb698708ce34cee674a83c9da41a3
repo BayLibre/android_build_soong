@@ -16,6 +16,24 @@
       "message": "I assume the breakage is not related to this change?",
       "revId": "47888bdb203bb698708ce34cee674a83c9da41a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78e91ff2_a0373692",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-07T20:51:36Z",
+      "side": 1,
+      "message": "unfortunately, it was... but only required a small change to fix. but made me realize that we could run into issues with bp2build being changed by cli args, gonna file a bug for us to resolve",
+      "parentUuid": "bcec7b85_cd05fcc2",
+      "revId": "47888bdb203bb698708ce34cee674a83c9da41a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
