@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d9adbc0_7ea78de8",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-07T17:58:47Z",
+      "side": 1,
+      "message": "Consider moving this file under soong/sdk instead of of soong/cc",
+      "revId": "a67fb09324a4f96e1db525ff5604ce6af9a38061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
