@@ -22,6 +22,30 @@
       },
       "revId": "5e4d9a5556d5ff2407981149d70fbf6602d12fb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88c18a12_dd8faeaf",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-07T20:55:30Z",
+      "side": 1,
+      "message": "golang doesn\u0027t generally require a column limit -- afaik, Soong uses ~100col?",
+      "parentUuid": "71225d74_89888992",
+      "range": {
+        "startLine": 232,
+        "startChar": 91,
+        "endLine": 232,
+        "endChar": 96
+      },
+      "revId": "5e4d9a5556d5ff2407981149d70fbf6602d12fb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
