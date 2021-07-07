@@ -118,11 +118,7 @@ type BaseProperties struct {
 }
 
 type Module struct {
-	android.ModuleBase
-	android.DefaultableModuleBase
-	android.ApexModuleBase
-
-	VendorProperties cc.VendorProperties
+	cc.FuzzModule
 
 	Properties BaseProperties
 

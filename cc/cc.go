@@ -767,14 +767,12 @@ func IsTestPerSrcDepTag(depTag blueprint.DependencyTag) bool {
 // members of the cc.Module to this decorator. Thus, a cc_binary module has custom linker and
 // installer logic.
 type Module struct {
-	android.ModuleBase
-	android.DefaultableModuleBase
-	android.ApexModuleBase
+	FuzzModule
+
+	Properties BaseProperties
+
 	android.SdkBase
 	android.BazelModuleBase
-
-	Properties       BaseProperties
-	VendorProperties VendorProperties
 
 	// initialize before calling Init
 	hod      android.HostOrDeviceSupported
