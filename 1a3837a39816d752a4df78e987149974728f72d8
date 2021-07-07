@@ -16,6 +16,23 @@
       "message": "Ulyana, it looks like SdkLibraryImport\u0027s DexJarInstallPath returns wrong path. PTAL.",
       "revId": "1a3837a39816d752a4df78e987149974728f72d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15d7ac74_2775708c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-07T23:18:43Z",
+      "side": 1,
+      "message": "Paul should take a look at this. I don\u0027t understand why we need to use the path from source module. Does that mean that the path in the prebuilt module is incorrect? If so, that sounds like a bug and we need to fix it rather than working around.",
+      "revId": "1a3837a39816d752a4df78e987149974728f72d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
