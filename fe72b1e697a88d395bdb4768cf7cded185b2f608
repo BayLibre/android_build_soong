@@ -375,6 +375,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf31194_50bb1e9e",
+        "filename": "android/required.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-07T15:30:10Z",
+      "side": 1,
+      "message": "Uploaded alternative approach aosp/1758351 that uses newly-added RequiredDepTag to collect \"required\" info. Let\u0027s see if it works out better.",
+      "parentUuid": "d19a2818_69dcad9f",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 1
+      },
+      "revId": "fe72b1e697a88d395bdb4768cf7cded185b2f608",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57f21651_d68ae8ba",
