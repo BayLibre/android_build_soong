@@ -87,6 +87,23 @@
       "parentUuid": "2c571669_af5ae3ec",
       "revId": "1a3837a39816d752a4df78e987149974728f72d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2e451f1_bbbfdb14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-08T08:31:02Z",
+      "side": 1,
+      "message": "If the install path only depends on the module stem then this code can be simplified a lot more. Simply add an \"installFile\" field, and always set that in SdkLibraryImport.GenerateAndroidBuildActions and then return that.",
+      "revId": "1a3837a39816d752a4df78e987149974728f72d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
