@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b95d1111_787a470e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-08T06:02:51Z",
+      "side": 1,
+      "message": "Upload for initial review. As a first step this only supports \u0027.recovery\u0027, \u0027.ramdisk\u0027, \u0027.vendor_ramdisk\u0027, \u0027.debug_ramdisk\u0027 and \u0027.\u0027 (core). ",
+      "revId": "5ad6a44f865d734b411ad293e279b0d0f58162d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
