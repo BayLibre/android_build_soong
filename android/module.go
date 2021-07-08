@@ -794,6 +794,10 @@ type commonProperties struct {
 	// names of other modules to install on target if this module is installed
 	Target_required []string `android:"arch_variant"`
 
+	// Android.mk names of required modules.
+	// Set by requiredModuleSingleton; used by androidMkSingleton.
+	ResolvedRequired []string `blueprint:"mutated"`
+
 	// relative path to a file to include in the list of notices for the device
 	Notice *string `android:"path"`
 
