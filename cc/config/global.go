@@ -227,7 +227,9 @@ func init() {
 	// Everything in these lists is a crime against abstraction and dependency tracking.
 	// Do not add anything to this list.
 	commonGlobalIncludes := []string{
-		"system/core/include",
+		"system/core/libcutils/include",
+		"system/core/libsystem/include",
+		"system/core/libutils/include",
 		"system/logging/liblog/include",
 		"system/media/audio/include",
 		"hardware/libhardware/include",
