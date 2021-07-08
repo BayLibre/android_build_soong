@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a511941b_d7d42e53",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-08T22:01:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c084caa_e8e4a966",
+      "range": {
+        "startLine": 157,
+        "startChar": 84,
+        "endLine": 158,
+        "endChar": 50
+      },
+      "revId": "0fa22b2686ed99cf1fa213e43336c261308dae5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48d5a378_3fe260a0",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-07-05T20:40:04Z",
       "side": 1,
       "message": "Martin: good comment, it would also help to give an example (e.g. the motivating example with the ART apex).",
+      "revId": "0fa22b2686ed99cf1fa213e43336c261308dae5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8063d985_a7ad165d",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-08T22:01:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48d5a378_3fe260a0",
       "revId": "0fa22b2686ed99cf1fa213e43336c261308dae5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -77,6 +119,30 @@
       "writtenOn": "2021-07-07T15:36:50Z",
       "side": 1,
       "message": "This isn\u0027t true, we have non-updatable apexes in PRODUCT_UPDATABLE_BOOT_JARS in internal branches already.",
+      "range": {
+        "startLine": 166,
+        "startChar": 83,
+        "endLine": 167,
+        "endChar": 19
+      },
+      "revId": "0fa22b2686ed99cf1fa213e43336c261308dae5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efeab636_4130a291",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-08T22:01:14Z",
+      "side": 1,
+      "message": "Huh, ok. Well, I don\u0027t know what to write here to bring clarity on that, so I leave it out of this CL.",
+      "parentUuid": "ecde180c_9652d8ee",
       "range": {
         "startLine": 166,
         "startChar": 83,
