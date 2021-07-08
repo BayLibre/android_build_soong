@@ -41,6 +41,8 @@ func init() {
 }
 
 func RegisterAndroidMkBuildComponents(ctx RegistrationContext) {
+	// The requiredModuleSingleton must be run before the androidMkSingleton.
+	ctx.RegisterSingletonType("required", requiredModuleSingletonFactory)
 	ctx.RegisterSingletonType("androidmk", AndroidMkSingleton)
 }
 
@@ -486,7 +488,16 @@ func (a *AndroidMkEntries) fillInEntries(ctx fillInEntriesContext, mod blueprint
 	if a.Include == "" {
 		a.Include = "$(BUILD_PREBUILT)"
 	}
-	a.Required = append(a.Required, mod.(Module).RequiredModuleNames()...)
+
+	// If ResolvedRequired is nil, then it means requiredModuleSingleton wasn't run on this module,
+	// either because this is not a device module, or this method is being called from a test fixture
+	// for which requiredModuleSingleton wasn't registered. In either case we fallback to use the
+	// value of RequiredModuleNames().
+	if amod.commonProperties.ResolvedRequired != nil {
+		a.Required = append(a.Required, amod.commonProperties.ResolvedRequired...)
+	} else {
+		a.Required = append(a.Required, mod.(Module).RequiredModuleNames()...)
+	}
 	a.Host_required = append(a.Host_required, mod.(Module).HostRequiredModuleNames()...)
 	a.Target_required = append(a.Target_required, mod.(Module).TargetRequiredModuleNames()...)
 
