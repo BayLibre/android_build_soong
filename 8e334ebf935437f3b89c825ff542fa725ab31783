@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "546e8c21_b6bfb984",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-08T18:12:44Z",
+      "side": 1,
+      "message": "Unfinished sentence. The connection between native_bridge_supported and image agnosticness isn\u0027t clear, so I hope it was intended to explain that.",
+      "range": {
+        "startLine": 131,
+        "startChar": 45,
+        "endLine": 131,
+        "endChar": 46
+      },
+      "revId": "8e334ebf935437f3b89c825ff542fa725ab31783",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
