@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "682f5de0_9461906e",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-08T15:20:02Z",
+      "side": 1,
+      "message": "Oh, good to know. It looks like it still exists in some Android.bp files, could probably do some cleanup and then delete.",
+      "parentUuid": "1a0906e6_85a7417a",
+      "revId": "3617ff616860a8fc56f09cf490685d5a3e82472a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6153246d_9ce6d228",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-07-07T21:34:46Z",
       "side": 1,
       "message": "It\u0027s -fsanitize-recover, without the dash after f.",
+      "revId": "3617ff616860a8fc56f09cf490685d5a3e82472a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "886bbc44_97efc143",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-08T15:20:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6153246d_9ce6d228",
       "revId": "3617ff616860a8fc56f09cf490685d5a3e82472a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
