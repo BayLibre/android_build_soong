@@ -133,6 +133,10 @@ func (mt *librarySdkMemberType) AddPrebuiltModule(ctx android.SdkMemberContext, 
 		if ccModule.IsNativeBridgeSupported() {
 			pbm.AddProperty("native_bridge_supported", true)
 		}
+
+		if proptools.Bool(ccModule.Properties.Ramdisk_available) {
+			pbm.AddProperty("ramdisk_available", true)
+		}
 	}
 
 	if proptools.Bool(ccModule.Properties.Recovery_available) {
