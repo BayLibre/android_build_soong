@@ -47,9 +47,6 @@ type SnapshotImage interface {
 	// will be built from sources.
 	IsProprietaryPath(dir string, deviceConfig android.DeviceConfig) bool
 
-	// Whether to include VNDK in the snapshot for this image.
-	IncludeVndk() bool
-
 	// Whether a given module has been explicitly excluded from the
 	// snapshot, e.g., using the exclude_from_vendor_snapshot or
 	// exclude_from_recovery_snapshot properties.
@@ -66,15 +63,6 @@ type SnapshotImage interface {
 	// If the makefile variable DIRECTED_{IMAGE}_SNAPSHOT is true, directed snapshot is turned on,
 	// and only modules listed in {IMAGE}_SNAPSHOT_MODULES will be captured.
 	ExcludeFromDirectedSnapshot(cfg android.DeviceConfig, name string) bool
-
-	// The image variant name for this snapshot image.
-	// For example, recovery snapshot image will return "recovery", and vendor snapshot image will
-	// return "vendor." + version.
-	ImageVariantName(cfg android.DeviceConfig) string
-
-	// The variant suffix for snapshot modules. For example, vendor snapshot modules will have
-	// ".vendor" as their suffix.
-	ModuleNameSuffix() string
 }
 
 type directoryMap map[string]bool

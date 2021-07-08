@@ -15,50 +15,45 @@ package snapshot
 
 import "android/soong/android"
 
-type recoverySnapshotImage struct{}
+type RecoverySnapshotImage struct{}
 
-func (recoverySnapshotImage) Init(ctx android.RegistrationContext) {
+func (RecoverySnapshotImage) Init(ctx android.RegistrationContext) {
 	ctx.RegisterSingletonType("recovery-snapshot", RecoverySnapshotSingleton)
 }
 
-func (recoverySnapshotImage) shouldGenerateSnapshot(ctx android.SingletonContext) bool {
+func (RecoverySnapshotImage) shouldGenerateSnapshot(ctx android.SingletonContext) bool {
 	// RECOVERY_SNAPSHOT_VERSION must be set to 'current' in order to generate a
 	// snapshot.
 	return ctx.DeviceConfig().RecoverySnapshotVersion() == "current"
 }
 
-func (recoverySnapshotImage) InImage(m SnapshotModuleInterface) func() bool {
+func (RecoverySnapshotImage) InImage(m SnapshotModuleInterface) func() bool {
 	return m.InRecovery
 }
 
 // recovery snapshot does not have private libraries.
-func (recoverySnapshotImage) Private(m SnapshotModuleInterface) bool {
+func (RecoverySnapshotImage) Private(m SnapshotModuleInterface) bool {
 	return false
 }
 
-func (recoverySnapshotImage) IsProprietaryPath(dir string, deviceConfig android.DeviceConfig) bool {
+func (RecoverySnapshotImage) IsProprietaryPath(dir string, deviceConfig android.DeviceConfig) bool {
 	return isDirectoryExcluded(dir, deviceConfig.RecoverySnapshotDirsExcludedMap(), deviceConfig.RecoverySnapshotDirsIncludedMap())
 }
 
-// recovery snapshot does NOT treat vndk specially.
-func (recoverySnapshotImage) IncludeVndk() bool {
-	return false
-}
-
-func (recoverySnapshotImage) ExcludeFromSnapshot(m SnapshotModuleInterface) bool {
+func (RecoverySnapshotImage) ExcludeFromSnapshot(m SnapshotModuleInterface) bool {
 	return m.ExcludeFromRecoverySnapshot()
 }
 
-func (recoverySnapshotImage) IsUsingSnapshot(cfg android.DeviceConfig) bool {
+func (RecoverySnapshotImage) IsUsingSnapshot(cfg android.DeviceConfig) bool {
 	recoverySnapshotVersion := cfg.RecoverySnapshotVersion()
 	return recoverySnapshotVersion != "current" && recoverySnapshotVersion != ""
 }
 
-func (recoverySnapshotImage) TargetSnapshotVersion(cfg android.DeviceConfig) string {
+func (RecoverySnapshotImage) TargetSnapshotVersion(cfg android.DeviceConfig) string {
 	return cfg.RecoverySnapshotVersion()
 }
 
-func (recoverySnapshotImage) ExcludeFromDirectedSnapshot(cfg android.DeviceConfig, name string) bool {
+func (RecoverySnapshotImage) ExcludeFromDirectedSnapshot(cfg android.DeviceConfig, name string) bool {
 	// If we're using full snapshot, not directed snapshot, capture every module
 	if !cfg.DirectedRecoverySnapshot() {
 		return false
@@ -67,15 +62,7 @@ func (recoverySnapshotImage) ExcludeFromDirectedSnapshot(cfg android.DeviceConfi
 	return !cfg.RecoverySnapshotModules()[name]
 }
 
-func (recoverySnapshotImage) ImageVariantName(cfg android.DeviceConfig) string {
-	return android.RecoveryVariation
-}
-
-func (recoverySnapshotImage) ModuleNameSuffix() string {
-	return ".recovery"
-}
-
-var RecoverySnapshotImageSingleton recoverySnapshotImage
+var RecoverySnapshotImageSingleton RecoverySnapshotImage
 
 func init() {
 	RecoverySnapshotImageSingleton.Init(android.InitRegistrationContext)

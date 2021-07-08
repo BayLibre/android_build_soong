@@ -26,6 +26,14 @@ import (
 	"android/soong/snapshot"
 )
 
+func includeVndk(image snapshot.SnapshotImage) bool {
+	if image == snapshot.VendorSnapshotImageSingleton {
+		return true
+	}
+
+	return false
+}
+
 // Determines if the module is a candidate for snapshot.
 func isSnapshotAware(cfg android.DeviceConfig, m LinkableInterface, inProprietaryPath bool, apexInfo android.ApexInfo, image snapshot.SnapshotImage) bool {
 	if !m.Enabled() || m.HiddenFromMake() {
@@ -38,7 +46,7 @@ func isSnapshotAware(cfg android.DeviceConfig, m LinkableInterface, inProprietar
 	}
 	// skip proprietary modules, but (for the vendor snapshot only)
 	// include all VNDK (static)
-	if inProprietaryPath && (!image.IncludeVndk() || !m.IsVndk()) {
+	if inProprietaryPath && (!includeVndk(image) || !m.IsVndk()) {
 		return false
 	}
 	// If the module would be included based on its path, check to see if
@@ -89,7 +97,7 @@ func isSnapshotAware(cfg android.DeviceConfig, m LinkableInterface, inProprietar
 			if !sanitizable.OutputFile().Valid() {
 				return false
 			}
-			if image.IncludeVndk() {
+			if includeVndk(image) {
 				if !sanitizable.IsVndk() {
 					return true
 				}
