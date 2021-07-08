@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b7c3dcc_42304c63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-07-08T10:14:48Z",
+      "side": 1,
+      "message": "Overall LGTM.",
+      "revId": "00dea5ceeb20a3b85d1b10905e6d2844f441fda7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c7033a3_0dba2e42",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-07-08T10:14:48Z",
+      "side": 1,
+      "message": "We normally don\u0027t use underscore. Let\u0027s use snapshotInfo instead",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "00dea5ceeb20a3b85d1b10905e6d2844f441fda7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
