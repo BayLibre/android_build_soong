@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb4d8f2_5d654f60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-08T08:40:22Z",
+      "side": 1,
+      "message": "This should mention b/193082464.",
+      "revId": "1a3837a39816d752a4df78e987149974728f72d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cbc40df6_1c997946",
@@ -102,6 +119,24 @@
       "writtenOn": "2021-07-08T08:31:02Z",
       "side": 1,
       "message": "If the install path only depends on the module stem then this code can be simplified a lot more. Simply add an \"installFile\" field, and always set that in SdkLibraryImport.GenerateAndroidBuildActions and then return that.",
+      "revId": "1a3837a39816d752a4df78e987149974728f72d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de37bc18_bddc2ae9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-08T08:40:22Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t notice this thread. It needs to be simpler and stop deferring to the source module.",
+      "parentUuid": "74f82367_ed1c658e",
       "revId": "1a3837a39816d752a4df78e987149974728f72d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
