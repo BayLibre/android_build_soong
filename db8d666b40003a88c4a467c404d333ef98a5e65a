@@ -16,6 +16,29 @@
       "message": "Please review when you have time, thanks!",
       "revId": "db8d666b40003a88c4a467c404d333ef98a5e65a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecc0540b_b549facf",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-08T18:45:50Z",
+      "side": 1,
+      "message": "Optional: wdyt of instead incorporating this transofmration into this existing rewrite step since the rewrite you\u0027re adding more focused on transforming a cc_binary to a cc_test? most of the rewrite\u003cModuleType\u003e seem to be about transforming the properties of \u003cModuleType\u003e -- this would also make it easier to add later rewrites specific to cc_binary or cc_test",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "db8d666b40003a88c4a467c404d333ef98a5e65a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
