@@ -193,6 +193,7 @@ func registerArchMutator(ctx RegisterMutatorsContext) {
 	ctx.BottomUpBlueprint("os", osMutator).Parallel()
 	ctx.BottomUp("image", imageMutator).Parallel()
 	ctx.BottomUpBlueprint("arch", archMutator).Parallel()
+	ctx.BottomUp("required", requiredModuleMutator).Parallel()
 }
 
 var preDeps = []RegisterMutatorFunc{
