@@ -1632,6 +1632,36 @@ func (c *Module) DataPaths() []android.DataPath {
 	return nil
 }
 
+var _ android.AndroidMkNamesInterface = (*Module)(nil)
+
+func (c *Module) AndroidMkNames() []string {
+	// Skip if module is not exported to Make.
+	if c.HiddenFromMake() || c.hideApexVariantFromMake {
+		return nil
+	}
+	// Skip uninstallable stubs.
+	if c.isNDKStubLibrary() || c.IsLlndk() || c.IsStubs() {
+		return nil
+	}
+	// Skip native_bridge variants.
+	if c.Target().NativeBridge == android.NativeBridgeEnabled {
+		return nil
+	}
+	// Skip sdk variants.
+	if c.IsSdkVariant() && c.Properties.SdkAndPlatformVariantVisibleToMake {
+		return nil
+	}
+	// Skip uninstallable static and header libraries.
+	if c.CcLibraryInterface() && !c.Shared() {
+		return nil
+	}
+
+	if s, ok := c.linker.(SnapshotInterface); ok {
+		return []string{c.BaseModuleName() + s.SnapshotAndroidMkSuffix()}
+	}
+	return []string{c.BaseModuleName() + c.SubName()}
+}
+
 func (c *Module) getNameSuffixWithVndkVersion(ctx android.ModuleContext) string {
 	// Returns the name suffix for product and vendor variants. If the VNDK version is not
 	// "current", it will append the VNDK version to the name suffix.
