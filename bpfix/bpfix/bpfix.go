@@ -132,6 +132,10 @@ var fixSteps = []FixStep{
 		Name: "removePdkProperty",
 		Fix:  runPatchListMod(removePdkProperty),
 	},
+	{
+		Name: "rewriteCcBinaryModuleType",
+		Fix:  rewriteCcBinaryModuleType,
+	},
 }
 
 func NewFixRequest() FixRequest {
@@ -1288,4 +1292,21 @@ func inList(s string, list []string) bool {
 		}
 	}
 	return false
+}
+
+func rewriteCcBinaryModuleType(f *Fixer) error {
+	for _, def := range f.tree.Defs {
+		mod, ok := def.(*parser.Module)
+		if !(ok && mod.Type == "cc_binary") {
+			continue
+		}
+		if testSuiteStrs, ok := getLiteralListPropertyValue(mod, "test_suites"); ok {
+			if len(testSuiteStrs) == 0 {
+				return fmt.Errorf("Expecting nonempty for the test_suites field")
+			} else {
+				mod.Type = "cc_test"
+			}
+		}
+	}
+	return nil
 }
