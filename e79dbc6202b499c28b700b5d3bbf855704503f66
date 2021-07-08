@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e285c9c1_160b3c89",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-08T18:25:44Z",
+      "side": 1,
+      "message": "What makes ramdisk_available different from recovery_available and vendor_available in this regard?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "e79dbc6202b499c28b700b5d3bbf855704503f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2273a70_9d27ba47",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1746,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-08T18:25:44Z",
+      "side": 1,
+      "message": "Please test ramdisk_available the same way.",
+      "range": {
+        "startLine": 1745,
+        "startChar": 0,
+        "endLine": 1746,
+        "endChar": 33
+      },
+      "revId": "e79dbc6202b499c28b700b5d3bbf855704503f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
