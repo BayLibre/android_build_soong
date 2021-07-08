@@ -51,6 +51,24 @@
       "parentUuid": "15d7ac74_2775708c",
       "revId": "1a3837a39816d752a4df78e987149974728f72d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c571669_af5ae3ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-08T00:41:48Z",
+      "side": 1,
+      "message": "\u003e But for SdkLibraryImport \u0027org.apache.http.legacy\u0027, DexJarInstallPath returns \"../system/framework/org.apache.http.legacy.impl.jar\" \n\nThat exactly sounds like a bug. This should work correctly even when there\u0027s no source module.",
+      "parentUuid": "dae41af8_e90326ae",
+      "revId": "1a3837a39816d752a4df78e987149974728f72d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
