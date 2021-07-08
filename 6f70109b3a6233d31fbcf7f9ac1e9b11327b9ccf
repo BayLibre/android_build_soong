@@ -16,6 +16,29 @@
       "message": "Had tried NOT to modify the previously existing logic and just added the new one: when cc_binary type module has a non-empty field test_suites, change it to cc_test.\nThanks again for review!",
       "revId": "6f70109b3a6233d31fbcf7f9ac1e9b11327b9ccf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da20308f_d30d4281",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-08T21:45:21Z",
+      "side": 1,
+      "message": "if you\u0027re trying to limit the scope to only those with \"test_suites\", can delete this, but there\u0027s no harm in leaving it either.",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 0
+      },
+      "revId": "6f70109b3a6233d31fbcf7f9ac1e9b11327b9ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
