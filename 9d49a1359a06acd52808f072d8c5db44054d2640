@@ -185,6 +185,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4869f95c_004f0295",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-08T11:10:05Z",
+      "side": 1,
+      "message": "This still doesn\u0027t look right to me.\n\nThe comment you linked is different: is happens at the time when a library is added to CLC. At that time it is unclear what the CLC will be used for: only manifest_fixer, or perhaps also dexpreopt. If it gets used for dexpreopt, then having a valid install path is mandatory. In your case the function `toJsonClassLoaderContextRec` is needed only when generating dexpreopt.config files, so this is the case when dexpreopt is happening and the install path must be valid. The comment from line 266 should not be copy-pasted here.\n\nIn the case of `android.net.ipsec.ike.stubs.system`, ideally it should not be in CLC at all --- we always need the implementation library. However, as I understand in your case it is impossible: the build that generates dexpreopt.config doesn\u0027t have the implementation library, but the post-processing build that uses  dexpreopt.config does have a prebuilt implementation library.\n\nIf so, then we need a placeholder for this library in CLC. Otherwise, if you simply skip the stubs library when generating dexpreopt.config, you will not know that the prebuilt one should be in CLC when you read the generated dexpreopt.config during post-processing.\n\nSo, instead of skipping the stubs library, you should generate a placeholder for the non-existent install path, e.g. \"/nonexistent/path/to/android.net.ipsec.ike/prebuilt\" or some such. Then you should change the readers of dexpreopt.config files to handle such paths: either replace them with paths to prebuilt libraries (if that happens during your post-processing step), or to fail the build (if that happens in a normal setting).\n\nJust skipping any library with nonexistent install path is dangerous, it can mask dexpreopt errors and result in invalid CLC with missing libraries. For example, if due to some future build system bug dexpreopt would fail to find install paths to valid libraries that it can find now, we may not notice (and we will have a silent preformance regression on first boot).",
+      "parentUuid": "d25d4068_974f9b02",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 3
+      },
+      "revId": "9d49a1359a06acd52808f072d8c5db44054d2640",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17b2ea6b_bf3fd55e",
         "filename": "java/app.go",
         "patchSetId": 2
