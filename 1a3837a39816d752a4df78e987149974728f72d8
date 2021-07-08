@@ -33,6 +33,24 @@
       "message": "Paul should take a look at this. I don\u0027t understand why we need to use the path from source module. Does that mean that the path in the prebuilt module is incorrect? If so, that sounds like a bug and we need to fix it rather than working around.",
       "revId": "1a3837a39816d752a4df78e987149974728f72d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae41af8_e90326ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-07-08T00:35:13Z",
+      "side": 1,
+      "message": "For SdkLibrary \u0027org.apache.http.legacy\u0027 which is source module, its DexJarInstallPath is \"../system/framework/org.apache.http.legacy.jar\". But for SdkLibraryImport \u0027org.apache.http.legacy\u0027, DexJarInstallPath returns \"../system/framework/org.apache.http.legacy.impl.jar\" which is the same as \u0027org.apache.http.legacy.impl\u0027 module, and isn\u0027t actual install path.",
+      "parentUuid": "15d7ac74_2775708c",
+      "revId": "1a3837a39816d752a4df78e987149974728f72d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
