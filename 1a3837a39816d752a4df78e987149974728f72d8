@@ -18,6 +18,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dc90a11_1943a1da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-08T12:00:22Z",
+      "side": 1,
+      "message": "Please check that your change doesn\u0027t break dexpreopt for the platform AOSP build. (As I commented before on CL aosp/1699427, this check should be done for all changes that can potentially break dexpreopt, as we do not have a test for that yet).",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "1a3837a39816d752a4df78e987149974728f72d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cbc40df6_1c997946",
@@ -137,6 +160,29 @@
       "side": 1,
       "message": "Sorry, I didn\u0027t notice this thread. It needs to be simpler and stop deferring to the source module.",
       "parentUuid": "74f82367_ed1c658e",
+      "revId": "1a3837a39816d752a4df78e987149974728f72d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "555a40a2_1f63e43c",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2157,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-08T12:00:22Z",
+      "side": 1,
+      "message": "/system/framework/... is a hard-coded special case which works for org.apache.http.legacy but not necessarily for other libraries.\n\nThe I read the code, it will set /system/framework/... source path for any SdkLibraryImport that has an implementation library, making the code on line 2262 unreachable. It will break valid cases when the implementation install path is correct (not affected by b/193082464) and force the install path to be on /system/framework.\n\nI\u0027d prefer if b/193082464 could be fixed first, but if you absolutely need this change to get in before that, then please limit this workaround to what we call \"compatibility libraries\" (see https://source.corp.google.com/aosp-master/build/soong/dexpreopt/class_loader_context.go;l\u003d223-246). It covers the case of org.apache.http.legacy and the paths to such libraries are in /system/framework/... for now.\n\nIn that case also please add a comment here mentioning the bug number.",
+      "range": {
+        "startLine": 2157,
+        "startChar": 0,
+        "endLine": 2157,
+        "endChar": 105
+      },
       "revId": "1a3837a39816d752a4df78e987149974728f72d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
