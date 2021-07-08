@@ -1112,6 +1112,7 @@ func TestSnapshotWithCcSharedLibrary(t *testing.T) {
 				export_aidl_headers: true,
 			},
 			stl: "none",
+			sdk_version: "current",
 		}
 	`)
 
