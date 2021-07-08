@@ -783,6 +783,10 @@ type commonProperties struct {
 	// names of other modules to install on target if this module is installed
 	Target_required []string `android:"arch_variant"`
 
+	// Android.mk names of required modules.
+	// Set by requiredModuleSingleton; used by androidMkSingleton.
+	ResolvedRequired []string `blueprint:"mutated"`
+
 	// relative path to a file to include in the list of notices for the device
 	Notice *string `android:"path"`
 
@@ -2811,14 +2815,23 @@ func SrcIsModule(s string) (module string) {
 func SrcIsModuleWithTag(s string) (module, tag string) {
 	if len(s) > 1 && s[0] == ':' {
 		module = s[1:]
-		if tagStart := strings.IndexByte(module, '{'); tagStart > 0 {
-			if module[len(module)-1] == '}' {
-				tag = module[tagStart+1 : len(module)-1]
-				module = module[:tagStart]
-				return module, tag
-			}
+		if name, tag := parseNameWithTag(module); name != "" {
+			return name, tag
 		}
 		return module, ""
+	}
+	return "", ""
+}
+
+// If module reference is in the format of "name{.tag}" then return the name and tag, otherwise
+// return empty strings.
+func parseNameWithTag(module string) (name, tag string) {
+	if tagBegin := strings.IndexByte(module, '{'); tagBegin > 0 {
+		if tagEnd := len(module) - 1; module[tagEnd] == '}' {
+			name = module[:tagBegin]
+			tag = module[tagBegin+1 : tagEnd]
+			return name, tag
+		}
 	}
 	return "", ""
 }
