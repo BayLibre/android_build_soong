@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c7ae0a6_7bc812cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-07-08T21:34:06Z",
+      "side": 1,
+      "message": "Had tried NOT to modify the previously existing logic and just added the new one: when cc_binary type module has a non-empty field test_suites, change it to cc_test.\nThanks again for review!",
+      "revId": "6f70109b3a6233d31fbcf7f9ac1e9b11327b9ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
