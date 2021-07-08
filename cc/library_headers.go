@@ -36,6 +36,9 @@ var headersLibrarySdkMemberType = &librarySdkMemberType{
 	},
 	prebuiltModuleType: "cc_prebuilt_library_headers",
 	noOutputFiles:      true,
+
+	// Header file contents do not vary by image, e.g. ramdisk, etc.
+	imageAgnostic: true,
 }
 
 func RegisterLibraryHeadersBuildComponents(ctx android.RegistrationContext) {

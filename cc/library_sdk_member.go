@@ -69,6 +69,10 @@ type librarySdkMemberType struct {
 
 	noOutputFiles bool // True if there are no srcs files.
 
+	// True if the prebuilt module type's input/output does not depend on the
+	// image, e.g. ramdisk, etc.
+	imageAgnostic bool
+
 	// The set of link types supported. A set of "static", "shared", or nil to
 	// skip link type variations.
 	linkTypes []string
@@ -121,6 +125,15 @@ func (mt *librarySdkMemberType) AddPrebuiltModule(ctx android.SdkMemberContext, 
 	pbm := ctx.SnapshotBuilder().AddPrebuiltModule(member, mt.prebuiltModuleType)
 
 	ccModule := member.Variants()[0].(*Module)
+
+	// Prebuilts do not currently handle different image types, e.g. ramdisk, or
+	// differentiate between native bridge architectures. So, it is only safe to
+	// output the properties of modules that have
+	if mt.imageAgnostic {
+		if ccModule.IsNativeBridgeSupported() {
+			pbm.AddProperty("native_bridge_supported", true)
+		}
+	}
 
 	if proptools.Bool(ccModule.Properties.Recovery_available) {
 		pbm.AddProperty("recovery_available", true)

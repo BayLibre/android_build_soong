@@ -1742,6 +1742,8 @@ func TestSnapshotWithCcLibrary(t *testing.T) {
 			stl: "none",
 			recovery_available: true,
 			vendor_available: true,
+			// This should not appear in the generated sdk snapshot.
+			native_bridge_supported: true,
 		}
 	`)
 
@@ -1956,6 +1958,10 @@ func TestSnapshotWithCcHeadersLibrary(t *testing.T) {
 			name: "mynativeheaders",
 			export_include_dirs: ["myinclude"],
 			stl: "none",
+			native_bridge_supported: true,
+			recovery_available: true,
+			vendor_available: true,
+			product_available: true,
 		}
 	`)
 
@@ -1968,6 +1974,10 @@ cc_prebuilt_library_headers {
     prefer: false,
     visibility: ["//visibility:public"],
     apex_available: ["//apex_available:platform"],
+    native_bridge_supported: true,
+    recovery_available: true,
+    vendor_available: true,
+    product_available: true,
     stl: "none",
     compile_multilib: "both",
     export_include_dirs: ["include/myinclude"],
