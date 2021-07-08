@@ -33,6 +33,24 @@
       "message": "Don\u0027t we need to update android.ModuleContext.RequiredModuleNames()?",
       "revId": "5ad6a44f865d734b411ad293e279b0d0f58162d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3964f1de_0bfd33f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-08T11:08:41Z",
+      "side": 1,
+      "message": "I update the result in ModuleBase.commonProperties.ResolvedRequired because RequiredModuleNames() could be overridden by individual Module types.",
+      "parentUuid": "cf53bdc0_2fa1266a",
+      "revId": "5ad6a44f865d734b411ad293e279b0d0f58162d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
