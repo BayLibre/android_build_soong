@@ -39,6 +39,30 @@
       },
       "revId": "6f70109b3a6233d31fbcf7f9ac1e9b11327b9ccf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5134aaaa_168778b6",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-07-08T22:16:04Z",
+      "side": 1,
+      "message": "Yeah, you are right. I forgot to delete these two lines. Done. Thanks.",
+      "parentUuid": "da20308f_d30d4281",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 424,
+        "endChar": 0
+      },
+      "revId": "6f70109b3a6233d31fbcf7f9ac1e9b11327b9ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
