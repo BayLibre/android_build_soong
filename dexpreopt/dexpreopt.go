@@ -45,6 +45,7 @@ import (
 )
 
 const SystemPartition = "/system/"
+const SystemExtPartition = "/system_ext/"
 const SystemOtherPartition = "/system_other/"
 
 var DexpreoptRunningInSoong = false
@@ -486,6 +487,9 @@ func OdexOnSystemOtherByName(name string, dexLocation string, global *GlobalConf
 
 	for _, f := range global.PatternsOnSystemOther {
 		if makefileMatch(filepath.Join(SystemPartition, f), dexLocation) {
+			return true
+		}
+		if makefileMatch(filepath.Join(SystemExtPartition, f), dexLocation) {
 			return true
 		}
 	}
