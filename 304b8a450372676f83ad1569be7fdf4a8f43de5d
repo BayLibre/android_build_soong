@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86b0035f_f7ed990b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-09T22:58:39Z",
+      "side": 1,
+      "message": "This only propagates the `sdk_version` through to the SDK snapshot for those modules that have both `sdk:` and `sdk:sdk` variants created. I think it achieves what you suggested in the bug. Except that it does not differentiate between native stub libs and other forms of native libs.",
+      "revId": "304b8a450372676f83ad1569be7fdf4a8f43de5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
