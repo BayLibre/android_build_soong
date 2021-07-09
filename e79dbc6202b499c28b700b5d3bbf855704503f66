@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c3b4b26_86cc4f86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-09T22:50:01Z",
+      "side": 1,
+      "message": "\u003e They\u0027re not actual variants, right?\n\nThey are. So, you have image:ramdisk, image:recovery etc.\n\n\u003e Iow they cannot be built differently\n\nI don\u0027t see why they can\u0027t. In order to make sure that there were no differences then you would have to make sure that any information derived from the *_available property had no impact on the compiler command line and linker command line.\n\nAFAICT we do not prevent that so for safety\u0027s sake we have to assume that they are different.",
+      "parentUuid": "f5938e14_3f16ef66",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "e79dbc6202b499c28b700b5d3bbf855704503f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2273a70_9d27ba47",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 1
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "I don\u0027t follow. Do you mean there\u0027s a difference in the test fixtures so that ramdisk_available is available for cc_library_headers but not cc_library?",
       "parentUuid": "4afab626_c1aa436c",
+      "range": {
+        "startLine": 1745,
+        "startChar": 0,
+        "endLine": 1746,
+        "endChar": 33
+      },
+      "revId": "e79dbc6202b499c28b700b5d3bbf855704503f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb2edcdc_a72a3e5b",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1746,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-09T22:50:01Z",
+      "side": 1,
+      "message": "You\u0027ll notice that in the TestSnapshotWithCcHeadersLibrary below I added \"system_shared_libs: [],\" that is because the image:ramdisk\" variant is not available for some of the default system shared libraries. It seemed safe to disable that for the headers library. I didn\u0027t want to do the same for the library test.",
+      "parentUuid": "5f5062b9_c405b5bf",
       "range": {
         "startLine": 1745,
         "startChar": 0,
