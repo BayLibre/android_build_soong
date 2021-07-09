@@ -39,6 +39,30 @@
       },
       "revId": "00dea5ceeb20a3b85d1b10905e6d2844f441fda7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "642419e0_5c3e5d4a",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-07-09T01:03:25Z",
+      "side": 1,
+      "message": "Done. Thanks for the catch 😊",
+      "parentUuid": "1c7033a3_0dba2e42",
+      "range": {
+        "startLine": 112,
+        "startChar": 5,
+        "endLine": 112,
+        "endChar": 18
+      },
+      "revId": "00dea5ceeb20a3b85d1b10905e6d2844f441fda7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
