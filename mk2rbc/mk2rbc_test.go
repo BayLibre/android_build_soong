@@ -390,6 +390,21 @@ def init(g, handle):
 `,
 	},
 	{
+		desc:   "filter $(V1), $(V2)",
+		mkname: "product.mk",
+		in: `
+ifneq (, $(filter $(PRODUCT_LIST), $(TARGET_PRODUCT)))
+endif
+`,
+		expected: `load("//build/make/core:product_config.rbc", "rblf")
+
+def init(g, handle):
+  cfg = rblf.cfg(handle)
+  if rblf.filter(g.get("PRODUCT_LIST", ""), g["TARGET_PRODUCT"]):
+    pass
+`,
+	},
+	{
 		desc:   "ifeq",
 		mkname: "product.mk",
 		in: `
@@ -761,7 +776,7 @@ endif
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
-  if rblf.mkstrip(g.get("TARGET_VENDOR", "")) != "":
+  if rblf.mkstrip(g.get("TARGET_VENDOR", "")):
     pass
 `,
 	},
