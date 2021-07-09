@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce47c603_845d9049",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-09T02:09:49Z",
+      "side": 1,
+      "message": "`soong/snapshot` has the generic codes for snapshot generation. The image specific codes are in the soong/snapshot/(vendor|recovery)_snapshot_image.go. The implementation for the snapshot generation for each module type can be extended from each module (soong/cc/vendor_snapshot.go).\n\nOn the other hands, each snapshot modules for use (ex. vendor_snapshot_shared) are defined only within each module (ex. `soong/cc`) not in soong/snapshot.\n\nIs my understanding correct?\nIt would be better to clarify these concept by the naming of files or modules.",
+      "revId": "7e3fcb047a793f62c14b9f7e584503c8c7d95c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6353c7a5_c6a1b82b",
+        "filename": "snapshot/snapshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-09T02:09:49Z",
+      "side": 1,
+      "message": "I think the interface name is too ambiguous to be a module interface.\nI didn\u0027t understand why cc.(*Module).IsPrivate() returned IsVndkPrivate().\n\nOriginally this was required to find `vendor_available: true` modules but `private`. This term is understandable only with the VNDK context.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 12
+      },
+      "revId": "7e3fcb047a793f62c14b9f7e584503c8c7d95c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c67196a_3631c54d",
+        "filename": "snapshot/snapshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-09T02:09:49Z",
+      "side": 1,
+      "message": "These are not generic. Can we put these outside of this file? (ex. vendor_snapshot_image.go, recovery_snapshot_image.go)\n\nSo that, a module want to create vendor snapshot, it must implement the vendor snapshot interface. Or recovery snapshot interface for the recovery snapshot and so on.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 1
+      },
+      "revId": "7e3fcb047a793f62c14b9f7e584503c8c7d95c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
