@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5938e14_3f16ef66",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-09T15:40:20Z",
+      "side": 1,
+      "message": "They\u0027re not actual variants, right? Iow they cannot be built differently - all the *_available just make up a dependency control mechanism for what can go into different images? If so I think it\u0027s correct to just propagate them.\n\nThe risk with this defensive approach is that future work might be hampered by a perceived requirement to keep it working this way. If we can dispense with imageAgnostic altogether I think it\u0027d be a good thing.",
+      "parentUuid": "1eb9272e_b3cd31bf",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "e79dbc6202b499c28b700b5d3bbf855704503f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2273a70_9d27ba47",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "| couldn\u0027t because default dependencies available in tests don\u0027t provide a ramdisk variant. I wasn\u0027t sure if that was intentional or not.",
       "parentUuid": "d2273a70_9d27ba47",
+      "range": {
+        "startLine": 1745,
+        "startChar": 0,
+        "endLine": 1746,
+        "endChar": 33
+      },
+      "revId": "e79dbc6202b499c28b700b5d3bbf855704503f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f5062b9_c405b5bf",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1746,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-09T15:40:20Z",
+      "side": 1,
+      "message": "I don\u0027t follow. Do you mean there\u0027s a difference in the test fixtures so that ramdisk_available is available for cc_library_headers but not cc_library?",
+      "parentUuid": "4afab626_c1aa436c",
       "range": {
         "startLine": 1745,
         "startChar": 0,
