@@ -16,6 +16,24 @@
       "message": "since apparently there\u0027s all sorts of extra bullshit with merge conflicts and other projects with explicit references to system/core/include even in rvc-qpr-dev-plus-aosp, i may as well check what you think of this first... symlinks are bad, and having stuff in this global list is bad, but ... which is worse? do we want to remove these symlinks?",
       "revId": "98a02ad11da472d1e9a53246fa80bb5fd20b73a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6352cd79_9e7446d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-07-09T00:15:55Z",
+      "side": 1,
+      "message": "This makes it easier to reduce this list in the future, so even though it\u0027s technically longer, I\u0027m good with it. IIRC, this list only applies to non-vendor modules, so that at least limits the blast radius when we shrink it.",
+      "parentUuid": "8b2b943d_da44c424",
+      "revId": "98a02ad11da472d1e9a53246fa80bb5fd20b73a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
