@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1eb9272e_b3cd31bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-09T15:17:11Z",
+      "side": 1,
+      "message": "History. We already support recovery_available and vendor_available and so they are present in both the runtime and ART prebuilts, on headers, objects and libraries. I don\u0027t know if those are needed or safe but I didn\u0027t want to make things worse by adding ramdisk_available to all of them when they didn\u0027t need it.\n\nI have been thinking that we need more fine grained control over these traits of the modules that apply to shared and static libraries and not just pass them through to the SDK snapshot just because they are specified on the source module.",
+      "parentUuid": "e285c9c1_160b3c89",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "e79dbc6202b499c28b700b5d3bbf855704503f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2273a70_9d27ba47",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-08T18:25:44Z",
       "side": 1,
       "message": "Please test ramdisk_available the same way.",
+      "range": {
+        "startLine": 1745,
+        "startChar": 0,
+        "endLine": 1746,
+        "endChar": 33
+      },
+      "revId": "e79dbc6202b499c28b700b5d3bbf855704503f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4afab626_c1aa436c",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1746,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-09T15:17:11Z",
+      "side": 1,
+      "message": "| couldn\u0027t because default dependencies available in tests don\u0027t provide a ramdisk variant. I wasn\u0027t sure if that was intentional or not.",
+      "parentUuid": "d2273a70_9d27ba47",
       "range": {
         "startLine": 1745,
         "startChar": 0,
