@@ -974,13 +974,20 @@ func (ctx *parseContext) parseCompareFilterFuncResult(cond *mkparser.Directive,
 			}
 			return &inExpr{isNot: negate, list: newStringListExpr(strings.Fields(xInList.literal)), expr: xVar}
 		}
+	} else if isEmptyString(xValue) {
+		return &callExpr{
+			object:     nil,
+			name:       filterFuncCall.name,
+			args:       filterFuncCall.args,
+			returnType: starlarkTypeBool,
+		}
 	}
 	return ctx.newBadExpr(cond, "filter arguments are too complex: %s", cond.Dump())
 }
 
 func (ctx *parseContext) parseCompareWildcardFuncResult(directive *mkparser.Directive,
 	xCall *callExpr, xValue starlarkExpr, negate bool) starlarkExpr {
-	if x, ok := xValue.(*stringLiteralExpr); !ok || x.literal != "" {
+	if !isEmptyString(xValue) {
 		return ctx.newBadExpr(directive, "wildcard result can be compared only to empty: %s", xValue)
 	}
 	callFunc := wildcardExistsPhony
@@ -996,19 +1003,19 @@ func (ctx *parseContext) parseCompareWildcardFuncResult(directive *mkparser.Dire
 
 func (ctx *parseContext) parseCheckFindstringFuncResult(directive *mkparser.Directive,
 	xCall *callExpr, xValue starlarkExpr, negate bool) starlarkExpr {
-	if x, ok := xValue.(*stringLiteralExpr); !ok || x.literal != "" {
-		return ctx.newBadExpr(directive, "findstring result can be compared only to empty: %s", xValue)
+	if isEmptyString(xValue) {
+		return &eqExpr{
+			left: &callExpr{
+				object:     xCall.args[1],
+				name:       "find",
+				args:       []starlarkExpr{xCall.args[0]},
+				returnType: starlarkTypeInt,
+			},
+			right: &intLiteralExpr{-1},
+			isEq:  !negate,
+		}
 	}
-	return &eqExpr{
-		left: &callExpr{
-			object:     xCall.args[1],
-			name:       "find",
-			args:       []starlarkExpr{xCall.args[0]},
-			returnType: starlarkTypeInt,
-		},
-		right: &intLiteralExpr{-1},
-		isEq:  !negate,
-	}
+	return ctx.newBadExpr(directive, "findstring result can be compared only to empty: %s", xValue)
 }
 
 func (ctx *parseContext) parseCompareStripFuncResult(directive *mkparser.Directive,
