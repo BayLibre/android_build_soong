@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "327a7ae8_12a2c705",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-07-09T05:25:08Z",
+      "side": 1,
+      "message": "Yes. That is the plan so far.\n\nGeneric interfaces and logics will locate under snapshot module, which includes\n* Interface for modules which can be captured in the snapshot\n* Snapshot target image e.g. vendor, recovery\n* Snapshot main logic with GenerateBuildAction which would call for each registered callbacks.\n* Callback(?) function interface to generate snapshot for each module\n\nAnd each module should define\n* Implement snapshot module interface\n* type for modules in the snapshot e.g. vendor_snapshot_shared\n* Logic to capture snapshot for each module\n\nI tried to keep name in the cc module, but any suggestion is welcome 😊",
+      "parentUuid": "ce47c603_845d9049",
+      "revId": "7e3fcb047a793f62c14b9f7e584503c8c7d95c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6353c7a5_c6a1b82b",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "087fc2a9_618c2aae",
+        "filename": "snapshot/snapshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-07-09T05:25:08Z",
+      "side": 1,
+      "message": "I removed IsPrivate() and Private function, and updated cc to check with image name and module itself, similar with includeVndk function.",
+      "parentUuid": "6353c7a5_c6a1b82b",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 12
+      },
+      "revId": "7e3fcb047a793f62c14b9f7e584503c8c7d95c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9c67196a_3631c54d",
         "filename": "snapshot/snapshot.go",
         "patchSetId": 3
@@ -54,6 +96,30 @@
       "writtenOn": "2021-07-09T02:09:49Z",
       "side": 1,
       "message": "These are not generic. Can we put these outside of this file? (ex. vendor_snapshot_image.go, recovery_snapshot_image.go)\n\nSo that, a module want to create vendor snapshot, it must implement the vendor snapshot interface. Or recovery snapshot interface for the recovery snapshot and so on.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 1
+      },
+      "revId": "7e3fcb047a793f62c14b9f7e584503c8c7d95c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "229ab25b_a671aaa5",
+        "filename": "snapshot/snapshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-07-09T05:25:08Z",
+      "side": 1,
+      "message": "I splitted these into several files. PTAL.",
+      "parentUuid": "9c67196a_3631c54d",
       "range": {
         "startLine": 29,
         "startChar": 0,
