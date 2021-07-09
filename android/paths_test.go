@@ -1369,6 +1369,10 @@ func TestPathForModuleSrc(t *testing.T) {
 				src: "://other:b",
 				srcs: ["://other:c"],
 			}`,
+			src:  "out/soong/.intermediates/other/b/gen/b",
+			rel:  "gen/b",
+			srcs: []string{"out/soong/.intermediates/other/c/gen/c"},
+			rels: []string{"gen/c"},
 			preparer: FixtureAddTextFile("other/Android.bp", `
 				soong_namespace {}
 
@@ -1382,12 +1386,6 @@ func TestPathForModuleSrc(t *testing.T) {
 					outs: ["gen/c"],
 				}
 			`),
-			// This is failing because retrieval of module in getPathsFromModuleDep does not work with
-			// fully qualified names.
-			errorHandler: FixtureExpectsAllErrorsToMatchAPattern([]string{
-				`"foo": missing dependencies: //other:b, is the property annotated with android:"path"`,
-				`"foo": missing dependency on "//other:c", is the property annotated with android:"path"`,
-			}),
 		},
 	}
 
