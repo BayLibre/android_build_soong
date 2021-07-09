@@ -651,7 +651,23 @@ def init(g, handle):
   cfg = rblf.cfg(handle)
   cfg["PRODUCT_COPY_FILES"] = rblf.addprefix("pfx-", "a b c")
   cfg["PRODUCT_COPY_FILES"] = rblf.addsuffix(".sff", "a b c")
-  cfg["PRODUCT_NAME"] = ((g.get("TARGET_BOARD_PLATFORM", "")).replace(".", " ")).split()[0]
+  cfg["PRODUCT_NAME"] = (rblf.mksubst(".", " ", g.get("TARGET_BOARD_PLATFORM", ""))).split()[0]
+`,
+	},
+	{
+		desc:   "subst in list",
+		mkname: "product.mk",
+		in: `
+files = $(call find-copy-subdir-files,*,from,to)
+PRODUCT_COPY_FILES += $(subst foo,bar,$(files))
+`,
+		expected: `load("//build/make/core:product_config.rbc", "rblf")
+
+def init(g, handle):
+  cfg = rblf.cfg(handle)
+  _files = rblf.find_and_copy("*", "from", "to")
+  rblf.setdefault(handle, "PRODUCT_COPY_FILES")
+  cfg["PRODUCT_COPY_FILES"] += rblf.mksubst("foo", "bar", _files)
 `,
 	},
 	{
