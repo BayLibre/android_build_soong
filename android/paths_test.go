@@ -1385,8 +1385,7 @@ func TestPathForModuleSrc(t *testing.T) {
 			// This is failing because retrieval of module in getPathsFromModuleDep does not work with
 			// fully qualified names.
 			errorHandler: FixtureExpectsAllErrorsToMatchAPattern([]string{
-				// The message is broken because PathForModuleSrc corrupts the name during validation.
-				`"foo": missing dependencies: /other:b, is the property annotated with android:"path"`,
+				`"foo": missing dependencies: //other:b, is the property annotated with android:"path"`,
 				`"foo": missing dependency on "//other:c", is the property annotated with android:"path"`,
 			}),
 		},
