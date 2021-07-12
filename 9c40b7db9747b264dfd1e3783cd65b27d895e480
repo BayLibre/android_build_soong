@@ -70,6 +70,24 @@
       "parentUuid": "fd1e7aa2_53e3795f",
       "revId": "9c40b7db9747b264dfd1e3783cd65b27d895e480",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "158b4717_f5a713ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1625880
+      },
+      "writtenOn": "2021-07-12T14:39:23Z",
+      "side": 1,
+      "message": "Any update here?\n\nI can go and work on the changes suggested in the comments on aosp/1692406.\n\nIt should then be very little extra work to add an option to suppress warnings about a given list of untyped symbols.",
+      "parentUuid": "21ade358_7dc77284",
+      "revId": "9c40b7db9747b264dfd1e3783cd65b27d895e480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
