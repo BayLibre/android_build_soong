@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ffc668e_457d1401",
+        "filename": "rust/rust.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-12T17:38:40Z",
+      "side": 1,
+      "message": "Ack, seems like it\u0027s probably an unfortunate pre-existing bug.",
+      "parentUuid": "0e459fab_2683f299",
+      "range": {
+        "startLine": 995,
+        "startChar": 14,
+        "endLine": 995,
+        "endChar": 41
+      },
+      "revId": "d5cf92e29874c29a65e99ab14a41af40a092a1a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73bcf7dc_ec7f4925",
