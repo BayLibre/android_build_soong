@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61dea38c_d7e58f7d",
+        "filename": "android/paths_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1357,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-12T13:41:36Z",
+      "side": 1,
+      "message": "this is an unexpected syntax, I would\u0027ve expected it without the leading `:`, e.g.\n\n```\nsrc: \"//other:b\",\nsrcs: [\"//other:c\"],\n```",
+      "range": {
+        "startLine": 1356,
+        "startChar": 0,
+        "endLine": 1357,
+        "endChar": 25
+      },
+      "revId": "bf70fd788938f3fa4a9159fe6c6a70d64f089e44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
