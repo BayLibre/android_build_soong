@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "912a49ef_db28f4e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-07-12T07:48:58Z",
+      "side": 1,
+      "message": "Can you add an OWNERS files with ART/i18n/conscrypt folks in it?",
+      "revId": "6c316a1257bc186ad4c617fc444e2e20db0ed118",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
