@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e459fab_2683f299",
+        "filename": "rust/rust.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-12T14:34:07Z",
+      "side": 1,
+      "message": "The previous code was effectively doing \"android.SourceDepTag \u003d\u003d depTag\". Since SourceDepTag \u003d `sourceOrOutputDependencyTag{tag:\"\"}` it would only match depTag if no output tag was specified.",
+      "parentUuid": "1a071ecf_bfa5f7dc",
+      "range": {
+        "startLine": 995,
+        "startChar": 14,
+        "endLine": 995,
+        "endChar": 41
+      },
+      "revId": "d5cf92e29874c29a65e99ab14a41af40a092a1a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73bcf7dc_ec7f4925",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-12T13:41:06Z",
       "side": 1,
       "message": "here also?",
+      "range": {
+        "startLine": 1125,
+        "startChar": 14,
+        "endLine": 1125,
+        "endChar": 41
+      },
+      "revId": "d5cf92e29874c29a65e99ab14a41af40a092a1a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb2ba3db_fc138d3d",
+        "filename": "rust/rust.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-12T14:34:07Z",
+      "side": 1,
+      "message": "Ditto.",
+      "parentUuid": "73bcf7dc_ec7f4925",
       "range": {
         "startLine": 1125,
         "startChar": 14,
