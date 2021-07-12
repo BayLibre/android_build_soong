@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef36a469_1c976baa",
+        "filename": "cc/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-12T22:05:20Z",
+      "side": 1,
+      "message": "Is it worth putting this into a separate fuzz package?",
+      "revId": "658dc34f695424aecd3796f18921303d988f9bba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "739e0e01_c7ac17cc",
+        "filename": "cc/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-12T22:05:20Z",
+      "side": 1,
+      "message": "It\u0027s a little odd to get these through FuzzModule, as they have nothing to do with fuzzing.  They also don\u0027t seem to be referenced by anything in this file.",
+      "revId": "658dc34f695424aecd3796f18921303d988f9bba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69983d8a_fc55a632",
+        "filename": "cc/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-12T22:05:20Z",
+      "side": 1,
+      "message": "What does parent mean in this context?  Is there a more specific name you could use?\n\nProperties refers to the properties in Android.bp files, but that doesn\u0027t seem to be what this is used for, as they don\u0027t support types like android.Path.",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 11
+      },
+      "revId": "658dc34f695424aecd3796f18921303d988f9bba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
