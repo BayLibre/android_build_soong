@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f7654d3_79c7a3dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-07-12T15:31:05Z",
+      "side": 1,
+      "message": "@ccross can you review/approve this CP of a change from sc-dev?",
+      "revId": "ffb643fc18a2b8931d90024b91d90bded910c709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
