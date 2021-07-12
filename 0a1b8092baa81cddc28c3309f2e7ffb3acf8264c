@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c73546a7_fc0409bc",
+        "filename": "bpfix/bpfix/bpfix_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1137,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-12T21:54:58Z",
+      "side": 1,
+      "message": "Mixing tab and space indentation",
+      "range": {
+        "startLine": 1137,
+        "startChar": 0,
+        "endLine": 1137,
+        "endChar": 32
+      },
+      "revId": "0a1b8092baa81cddc28c3309f2e7ffb3acf8264c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
