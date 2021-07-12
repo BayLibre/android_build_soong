@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56b3dae5_629eb0ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-12T22:57:38Z",
+      "side": 1,
+      "message": "For reference, this is a continuation of http://ag/15216500.",
+      "revId": "623f6968b07d1aec0cff2749d7d74db5139ec4c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31ee5e97_360bf019",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-12T22:57:38Z",
+      "side": 1,
+      "message": "Unfinished sentence.",
+      "range": {
+        "startLine": 81,
+        "startChar": 27,
+        "endLine": 81,
+        "endChar": 28
+      },
+      "revId": "623f6968b07d1aec0cff2749d7d74db5139ec4c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d122d73_d0cb362b",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-12T22:57:38Z",
+      "side": 1,
+      "message": "Instead of this struct can\u0027t we just encode the variable reference with something like \u003cnamespace\u003e:\u003cvar_name\u003e in a plain string?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 31
+      },
+      "revId": "623f6968b07d1aec0cff2749d7d74db5139ec4c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
