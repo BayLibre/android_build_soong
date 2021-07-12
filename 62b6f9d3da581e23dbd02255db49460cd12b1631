@@ -234,6 +234,30 @@
       },
       "revId": "62b6f9d3da581e23dbd02255db49460cd12b1631",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2326cb8_b33a4185",
+        "filename": "snapshot/snapshot_base.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-12T09:10:00Z",
+      "side": 1,
+      "message": "Defining \u0027VendorSnapshotModuleInterface\u0027, \u0027RecoverySnapshotModuleInterface\u0027, in snapshot/vendor_snapshot.go and snapshot/recovery_snapshot.go looks better to me.\n\nIf a module type is available to both snapshots, for example cc modules, it will explicitly have `snapshot.VendorSnapshotModuleInterface` and `snapshot.RecoverySnapshotModuleInterface`.\n\nWe may have snapshot/ramdisk_snapshot.go or snapshot/host_snapshot.go. I think python or java modules will have host_snapshots but don\u0027t know if we need the other snapshots for these modules.\n\nThis snapshot/snapshot_base.go must have the common interfaces for all those snapshot modules that is essential for generating the snapshots.",
+      "parentUuid": "52ed5bb8_0b31f286",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "62b6f9d3da581e23dbd02255db49460cd12b1631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
