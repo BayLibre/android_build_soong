@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f5a1a7e_1e334e69",
+        "filename": "rust/rust.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-12T17:44:57Z",
+      "side": 1,
+      "message": "It might be but if it is then it hasn\u0027t caused any problems so far and will be easy to fix in future. I didn\u0027t change the behavior as I didn\u0027t want to risk that it was intentional to ignore deps with a tag specified.",
+      "parentUuid": "0ffc668e_457d1401",
+      "range": {
+        "startLine": 995,
+        "startChar": 14,
+        "endLine": 995,
+        "endChar": 41
+      },
+      "revId": "d5cf92e29874c29a65e99ab14a41af40a092a1a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73bcf7dc_ec7f4925",
