@@ -16,6 +16,24 @@
       "message": "This will enable CFI on x86 emulators on all of these:\nhttps://cs.android.com/android/platform/superproject/+/master:build/make/target/product/cfi-common.mk\n\nIt is true that Android.mk does that already, but blueprints cover a lot more code.\n\nI don\u0027t see why it would not work, and presubmit should test it, so +1, just saying its a big change, take care.\n",
       "revId": "c92675cc0bcb31cb4a93d0b859dce771405e0c7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06958e7e_d332df6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-12T21:40:34Z",
+      "side": 1,
+      "message": "There are some presubmit failures in internal projects.",
+      "parentUuid": "fc5aec9a_6fb8eb45",
+      "revId": "c92675cc0bcb31cb4a93d0b859dce771405e0c7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
