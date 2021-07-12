@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ca2008b_95911fe5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-12T19:42:43Z",
+      "side": 1,
+      "message": "PS2 is a rebase for a merge conflict.",
+      "revId": "fd3b93b45ab43a499e3c5134fb9da5d0e491ab6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
