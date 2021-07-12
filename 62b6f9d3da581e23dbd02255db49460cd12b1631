@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df92e125_50fd1d9d",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-12T05:20:42Z",
+      "side": 1,
+      "message": "Why not using `ProductVariationPrefix`?",
+      "range": {
+        "startLine": 303,
+        "startChar": 13,
+        "endLine": 303,
+        "endChar": 23
+      },
+      "revId": "62b6f9d3da581e23dbd02255db49460cd12b1631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa332ee5_5680539c",
+        "filename": "snapshot/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-12T05:20:42Z",
+      "side": 1,
+      "message": "Alphabetical order?",
+      "range": {
+        "startLine": 18,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "62b6f9d3da581e23dbd02255db49460cd12b1631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28451636_8809c2c5",
+        "filename": "snapshot/snapshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-12T05:20:42Z",
+      "side": 1,
+      "message": "The comment needs to be updated to describe the snapshot.go and the SnapshotSingleton.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "62b6f9d3da581e23dbd02255db49460cd12b1631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b91feb18_b33e9c7c",
+        "filename": "snapshot/snapshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-12T05:20:42Z",
+      "side": 1,
+      "message": "Sorry, I found this so late. It\u0027s also a cc_specific property and can be excluded from here.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "62b6f9d3da581e23dbd02255db49460cd12b1631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa3c961e_44156fbf",
+        "filename": "snapshot/snapshot_base.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-12T05:20:42Z",
+      "side": 1,
+      "message": "Can we move these to snapshot/vendor_snapshot.go, and the others to snapshot/recovery_snapshot.go?\n\nOr should all snapshots must include all SnapshotModuleInterface?\nIf so, when we add more snapshots, that requires updating all existing snapshots.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "62b6f9d3da581e23dbd02255db49460cd12b1631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
