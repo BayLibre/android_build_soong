@@ -63,6 +63,30 @@
       },
       "revId": "bf70fd788938f3fa4a9159fe6c6a70d64f089e44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fe0769e_c866f916",
+        "filename": "android/paths_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1357,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-12T15:47:12Z",
+      "side": 1,
+      "message": "I presume that when you say \"you would\u0027ve expected it without the leading `:`\" you were basing that expectation on how Bazel behaves.",
+      "parentUuid": "2d490c2e_58f3a2d1",
+      "range": {
+        "startLine": 1356,
+        "startChar": 0,
+        "endLine": 1357,
+        "endChar": 25
+      },
+      "revId": "bf70fd788938f3fa4a9159fe6c6a70d64f089e44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
