@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bda929d7_b5f63f01",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-07-12T20:01:20Z",
+      "side": 1,
+      "message": "Oh, I see. I did not see at line 1050 this var is declared as the propertyProvider type, and thought it was initialized as \u0027mod\u0027 (then may be re-assigned with `propMap`).",
+      "parentUuid": "8395f863_0afde02b",
+      "revId": "c2a8490c7c50b4119b2f19c0c19713a0d2e41b0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23188649_fc87ce26",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "reworded, hopefully it\u0027s easier to read?",
       "parentUuid": "23188649_fc87ce26",
+      "revId": "c2a8490c7c50b4119b2f19c0c19713a0d2e41b0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d983c7_3d13ba68",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-07-12T20:01:20Z",
+      "side": 1,
+      "message": "Yes, now it\u0027s clear to me. Thanks!",
+      "parentUuid": "c96cb902_ecc7d356",
       "revId": "c2a8490c7c50b4119b2f19c0c19713a0d2e41b0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
