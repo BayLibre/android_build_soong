@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "172bf2c3_cbcf33ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-12T21:17:31Z",
+      "side": 1,
+      "message": "Is sanitize.scudo still meaningful on low-memory devices where scudo is not the default?",
+      "revId": "fbf51b67c91e3a7238b2884cba984d9de1dc958c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
