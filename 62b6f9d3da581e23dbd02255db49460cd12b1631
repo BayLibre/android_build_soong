@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c13055ec_31e36c32",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-07-12T08:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df92e125_50fd1d9d",
+      "range": {
+        "startLine": 303,
+        "startChar": 13,
+        "endLine": 303,
+        "endChar": 23
+      },
+      "revId": "62b6f9d3da581e23dbd02255db49460cd12b1631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa332ee5_5680539c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-12T05:20:42Z",
       "side": 1,
       "message": "Alphabetical order?",
+      "range": {
+        "startLine": 18,
+        "startChar": 9,
+        "endLine": 18,
+        "endChar": 29
+      },
+      "revId": "62b6f9d3da581e23dbd02255db49460cd12b1631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f2e5a59_49998e55",
+        "filename": "snapshot/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-07-12T08:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa332ee5_5680539c",
       "range": {
         "startLine": 18,
         "startChar": 9,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1aa6cf2_0cd70d96",
+        "filename": "snapshot/snapshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-07-12T08:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28451636_8809c2c5",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 15
+      },
+      "revId": "62b6f9d3da581e23dbd02255db49460cd12b1631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b91feb18_b33e9c7c",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a29adb04_769c0251",
+        "filename": "snapshot/snapshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-07-12T08:22:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b91feb18_b33e9c7c",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "62b6f9d3da581e23dbd02255db49460cd12b1631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa3c961e_44156fbf",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-07-12T05:20:42Z",
       "side": 1,
       "message": "Can we move these to snapshot/vendor_snapshot.go, and the others to snapshot/recovery_snapshot.go?\n\nOr should all snapshots must include all SnapshotModuleInterface?\nIf so, when we add more snapshots, that requires updating all existing snapshots.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 33
+      },
+      "revId": "62b6f9d3da581e23dbd02255db49460cd12b1631",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52ed5bb8_0b31f286",
+        "filename": "snapshot/snapshot_base.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-07-12T08:22:31Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this can be separated. If we want to do so, we should have stuffs like \u0027VendorSnapshotModuleInterface\u0027, \u0027RecoverySnapshotModuleInterface\u0027, which would be per snapshot image.\n\nThis interface is for module (such as cc_library_shared) which can be included in the snapshot. If we extend images, we should define extra interface and implement them from each module anyway.\n\nIf we have any module which can be included only into specific image snapshot (e.g. vendor snapshot only), then separating the interface would be useful, but otherwise I\u0027m not sure if separating interface would be helpful.",
+      "parentUuid": "fa3c961e_44156fbf",
       "range": {
         "startLine": 24,
         "startChar": 0,
