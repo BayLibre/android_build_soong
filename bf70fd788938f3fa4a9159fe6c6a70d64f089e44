@@ -87,6 +87,30 @@
       },
       "revId": "bf70fd788938f3fa4a9159fe6c6a70d64f089e44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d1da02e_152a1ec7",
+        "filename": "android/paths_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1357,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-12T17:39:12Z",
+      "side": 1,
+      "message": "Yes, based on the Bazel behavior, which since we\u0027re transitioning to it, a similar syntax would be advantageous.\n\nBut I also so that because the `:` within a fully qualified reference serves the same purpose as a leading `:`  as it indicates which module name we are referring to.\n\nAs far as I know, all references about this refer to :module-name, which doesn\u0027t mention fully-qualified names, and fully-qualified names have never worked, so it\u0027s  a new feature, we don\u0027t have to shoe-horn it in.\n\nIt should just be a small matter of updating SrcIsModule and SrcIsModuleWithTag to handle a fully-qualified path",
+      "parentUuid": "3fe0769e_c866f916",
+      "range": {
+        "startLine": 1356,
+        "startChar": 0,
+        "endLine": 1357,
+        "endChar": 25
+      },
+      "revId": "bf70fd788938f3fa4a9159fe6c6a70d64f089e44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
