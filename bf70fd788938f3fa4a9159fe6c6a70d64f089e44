@@ -111,6 +111,30 @@
       },
       "revId": "bf70fd788938f3fa4a9159fe6c6a70d64f089e44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e18ed77f_e6c26093",
+        "filename": "android/paths_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1357,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-12T19:18:42Z",
+      "side": 1,
+      "message": "\u003e Yes, based on the Bazel behavior, which since we\u0027re transitioning to it, a similar syntax would be advantageous.\n\n100% agree.\n\n\u003e As far as I know, all references about this refer to :module-name, which doesn\u0027t mention fully-qualified names, and fully-qualified names have never worked so it\u0027s  a new feature, we don\u0027t have to shoe-horn it in.\n\nOk. I\u0027ll take a look.",
+      "parentUuid": "1d1da02e_152a1ec7",
+      "range": {
+        "startLine": 1356,
+        "startChar": 0,
+        "endLine": 1357,
+        "endChar": 25
+      },
+      "revId": "bf70fd788938f3fa4a9159fe6c6a70d64f089e44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
