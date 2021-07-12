@@ -83,6 +83,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b65a3223_603c7d58",
+        "filename": "snapshot/snapshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-12T23:10:00Z",
+      "side": 1,
+      "message": "Great!",
+      "parentUuid": "087fc2a9_618c2aae",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 12
+      },
+      "revId": "7e3fcb047a793f62c14b9f7e584503c8c7d95c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c67196a_3631c54d",
@@ -120,6 +144,30 @@
       "side": 1,
       "message": "I splitted these into several files. PTAL.",
       "parentUuid": "9c67196a_3631c54d",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 1
+      },
+      "revId": "7e3fcb047a793f62c14b9f7e584503c8c7d95c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ed2543d_15351790",
+        "filename": "snapshot/snapshot.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-12T23:10:00Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "229ab25b_a671aaa5",
       "range": {
         "startLine": 29,
         "startChar": 0,
