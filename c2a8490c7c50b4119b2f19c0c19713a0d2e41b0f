@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8395f863_0afde02b",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-12T19:39:55Z",
+      "side": 1,
+      "message": "used at line 1055",
+      "parentUuid": "d96a456f_80434994",
+      "revId": "c2a8490c7c50b4119b2f19c0c19713a0d2e41b0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23188649_fc87ce26",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-12T18:41:31Z",
       "side": 1,
       "message": "the first \u0027this\u0027 is \u0027that\u0027? I read this lien several times, but still not very clear to me.",
+      "revId": "c2a8490c7c50b4119b2f19c0c19713a0d2e41b0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c96cb902_ecc7d356",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1062,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-12T19:39:55Z",
+      "side": 1,
+      "message": "reworded, hopefully it\u0027s easier to read?",
+      "parentUuid": "23188649_fc87ce26",
       "revId": "c2a8490c7c50b4119b2f19c0c19713a0d2e41b0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
