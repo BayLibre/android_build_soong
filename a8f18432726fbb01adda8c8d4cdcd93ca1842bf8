@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c37408d8_6c13ffbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-13T13:36:24Z",
+      "side": 1,
+      "message": "This is a temporary solution to allow all the mainline modules to be treated in the same way. At the moment ART has its own solution, and the other mainline modules have their own, sc-dev only solution. This provides a way for them both to use the same solution.\n\nThis is not a long term solution for selecting between prebuilts and sources. The intent is that solution will use namespaces (or something similar) that fits in better with Bazel.",
+      "revId": "a8f18432726fbb01adda8c8d4cdcd93ca1842bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
