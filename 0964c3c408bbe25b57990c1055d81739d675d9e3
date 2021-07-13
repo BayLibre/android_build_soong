@@ -22,6 +22,30 @@
       },
       "revId": "0964c3c408bbe25b57990c1055d81739d675d9e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90881879_e1546ec3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-13T10:29:01Z",
+      "side": 1,
+      "message": "It is slightly iffy. However, it is less iffy than producing an SDK snapshot containing .so and .a files that are built directly against the platform which is what we currently do.\n\nAt least this way there will be less (or maybe even no) snapshot files that depend on unstable platform APIs.\n\n\u003e There\u0027s no other kludge that we can use short term?\n\nIf you are ok with a \u0027kludge\u0027 then what is wrong with this? It requires no changes to Android.bp files, highlights build issues that you will need to address when fixing it properly and would not make your proposed solution any harder.\n\n\u003e What goal is being blocked here?\n\nThis was precipitated by my investigation of the namespace mechanism but since working on this I have become worried that this could become an issue with sc-dev generated snapshots that are sent to OEMs.",
+      "parentUuid": "b3015617_39d2eb46",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 49
+      },
+      "revId": "0964c3c408bbe25b57990c1055d81739d675d9e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
