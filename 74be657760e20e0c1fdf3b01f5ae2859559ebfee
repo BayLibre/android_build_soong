@@ -37,6 +37,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7509da0_30a9bedb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-13T10:40:14Z",
+      "side": 1,
+      "message": "It looks good but it seems as though it could be simpler in SdkLibraryImport. Instead of having two separate fields, i.e. \"installFile\" for the default path and \"dexJarInstallFile\" for the path for something that is part of an APEX why not just override the default path with the APEX path if available?\n\nI can\u0027t see any logic that requires having separate fields. Access to the default \"installFile\" only happens if \"dexJarInstallFile\" is not set.",
+      "revId": "74be657760e20e0c1fdf3b01f5ae2859559ebfee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eb783ee9_4f859ab9",
         "filename": "apex/apex_test.go",
         "patchSetId": 2
