@@ -109,6 +109,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ebf9dbb9_b30003ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-07-13T13:44:35Z",
+      "side": 1,
+      "message": "Yes, it is. Specify test target device(cuttlefish), and result in detail.",
+      "parentUuid": "92e5a016_da691fd1",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "1a3837a39816d752a4df78e987149974728f72d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cbc40df6_1c997946",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -226,6 +250,24 @@
       "side": 1,
       "message": "Sorry, I didn\u0027t notice this thread. It needs to be simpler and stop deferring to the source module.",
       "parentUuid": "74f82367_ed1c658e",
+      "revId": "1a3837a39816d752a4df78e987149974728f72d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3764f6e4_698bd637",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-07-13T13:44:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de37bc18_bddc2ae9",
       "revId": "1a3837a39816d752a4df78e987149974728f72d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
