@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aad8d735_ff406855",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2818,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-13T13:15:43Z",
+      "side": 1,
+      "message": "should we panic instead so there\u0027s a more useful error message?",
+      "range": {
+        "startLine": 2818,
+        "startChar": 4,
+        "endLine": 2818,
+        "endChar": 15
+      },
+      "revId": "e6ba0723b18a0e60724fce8726809856b130a568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
