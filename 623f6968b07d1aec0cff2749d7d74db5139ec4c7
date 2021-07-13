@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc4d724_9783dbe7",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-13T11:55:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31ee5e97_360bf019",
+      "range": {
+        "startLine": 81,
+        "startChar": 27,
+        "endLine": 81,
+        "endChar": 28
+      },
+      "revId": "623f6968b07d1aec0cff2749d7d74db5139ec4c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d122d73_d0cb362b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-12T22:57:38Z",
       "side": 1,
       "message": "Instead of this struct can\u0027t we just encode the variable reference with something like \u003cnamespace\u003e:\u003cvar_name\u003e in a plain string?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 31
+      },
+      "revId": "623f6968b07d1aec0cff2749d7d74db5139ec4c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3420a0c_f406be8b",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-13T11:55:57Z",
+      "side": 1,
+      "message": "We could but Soong tries to avoid having structured string values.",
+      "parentUuid": "3d122d73_d0cb362b",
       "range": {
         "startLine": 82,
         "startChar": 0,
