@@ -16,6 +16,24 @@
       "message": "Is sanitize.scudo still meaningful on low-memory devices where scudo is not the default?",
       "revId": "fbf51b67c91e3a7238b2884cba984d9de1dc958c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "242d9ac0_3dc70433",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-13T20:52:10Z",
+      "side": 1,
+      "message": "Based on https://android-review.googlesource.com/c/platform/build/soong/+/1749406/comments/1a0906e6_85a7417a, it seems so, but +eugenis@google.com may be able to answer more fully.",
+      "parentUuid": "172bf2c3_cbcf33ca",
+      "revId": "fbf51b67c91e3a7238b2884cba984d9de1dc958c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
