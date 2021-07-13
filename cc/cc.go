@@ -1650,7 +1650,7 @@ func (c *Module) setSubnameProperty(actx android.ModuleContext) {
 		// such suffixes are already hard-coded in prebuilts/vndk/.../Android.bp.
 		c.Properties.SubName += VendorSuffix
 	} else if c.InRamdisk() && !c.OnlyInRamdisk() {
-		c.Properties.SubName += ramdiskSuffix
+		c.Properties.SubName += RamdiskSuffix
 	} else if c.InVendorRamdisk() && !c.OnlyInVendorRamdisk() {
 		c.Properties.SubName += VendorRamdiskSuffix
 	} else if c.InRecovery() && !c.OnlyInRecovery() {
@@ -3011,7 +3011,7 @@ func MakeLibName(ctx android.ModuleContext, c LinkableInterface, ccDep LinkableI
 		// core module, so update the dependency name here accordingly.
 		return libName + ccDep.SubName()
 	} else if ccDep.InRamdisk() && !ccDep.OnlyInRamdisk() {
-		return libName + ramdiskSuffix
+		return libName + RamdiskSuffix
 	} else if ccDep.InVendorRamdisk() && !ccDep.OnlyInVendorRamdisk() {
 		return libName + VendorRamdiskSuffix
 	} else if ccDep.InRecovery() && !ccDep.OnlyInRecovery() {
