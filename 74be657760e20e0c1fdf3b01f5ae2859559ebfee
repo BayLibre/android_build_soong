@@ -16,6 +16,46 @@
       "message": "It can be merged solely.",
       "revId": "74be657760e20e0c1fdf3b01f5ae2859559ebfee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a4b902f_3b96575d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-13T10:21:01Z",
+      "side": 1,
+      "message": "The general approach LGTM, I have only a few minor comments.",
+      "revId": "74be657760e20e0c1fdf3b01f5ae2859559ebfee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb783ee9_4f859ab9",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 4702,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-13T10:21:01Z",
+      "side": 1,
+      "message": "Can you use `AssertStringEquals` or some suitable function from android/test_asserts.go? And while at it, convert the check on lines 4690 and 4707 as well.\n\nThanks for adding a test!",
+      "range": {
+        "startLine": 4700,
+        "startChar": 2,
+        "endLine": 4702,
+        "endChar": 3
+      },
+      "revId": "74be657760e20e0c1fdf3b01f5ae2859559ebfee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
