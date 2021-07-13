@@ -1093,6 +1093,60 @@ module_exports_snapshot {
 	)
 }
 
+func TestSnapshotWithCcStubLibrary(t *testing.T) {
+	result := testSdkWithCc(t, `
+		sdk {
+			name: "mysdk",
+			native_stub_libs: ["mynativelib"],
+		}
+
+		cc_library_shared {
+			name: "mynativelib",
+			srcs: [
+				"Test.cpp",
+			],
+			stl: "none",
+			stubs: {
+				symbol_file: "some/where/stubslib.map.txt",
+				versions: ["29"],
+			},
+		}
+	`)
+
+	CheckSnapshot(t, result, "mysdk", "",
+		checkUnversionedAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+cc_prebuilt_library_shared {
+    name: "mynativelib",
+    prefer: false,
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    stl: "none",
+    compile_multilib: "both",
+    stubs: {
+        versions: [
+            "29",
+            "current",
+        ],
+    },
+    arch: {
+        arm64: {
+            srcs: ["arm64/lib/mynativelib.so"],
+        },
+        arm: {
+            srcs: ["arm/lib/mynativelib.so"],
+        },
+    },
+}
+`),
+		checkAllCopyRules(`
+.intermediates/mynativelib/android_arm64_armv8-a_shared_current/mynativelib.so -> arm64/lib/mynativelib.so
+.intermediates/mynativelib/android_arm_armv7-a-neon_shared_current/mynativelib.so -> arm/lib/mynativelib.so
+`),
+	)
+}
+
 func TestSnapshotWithCcSharedLibrary(t *testing.T) {
 	result := testSdkWithCc(t, `
 		sdk {

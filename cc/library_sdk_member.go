@@ -35,6 +35,17 @@ var sharedLibrarySdkMemberType = &librarySdkMemberType{
 	linkTypes:          []string{"shared"},
 }
 
+var stubsLibrarySdkMemberType = &librarySdkMemberType{
+	SdkMemberTypeBase: android.SdkMemberTypeBase{
+		PropertyName:    "native_stub_libs",
+		SupportsSdk:     true,
+		HostOsDependent: true,
+	},
+	prebuiltModuleType: "cc_prebuilt_library_shared",
+	linkTypes:          []string{"shared"},
+	isStubs:            true,
+}
+
 var staticLibrarySdkMemberType = &librarySdkMemberType{
 	SdkMemberTypeBase: android.SdkMemberTypeBase{
 		PropertyName:    "native_static_libs",
@@ -58,6 +69,7 @@ var staticAndSharedLibrarySdkMemberType = &librarySdkMemberType{
 func init() {
 	// Register sdk member types.
 	android.RegisterSdkMemberType(sharedLibrarySdkMemberType)
+	android.RegisterSdkMemberType(stubsLibrarySdkMemberType)
 	android.RegisterSdkMemberType(staticLibrarySdkMemberType)
 	android.RegisterSdkMemberType(staticAndSharedLibrarySdkMemberType)
 }
@@ -72,6 +84,9 @@ type librarySdkMemberType struct {
 	// The set of link types supported. A set of "static", "shared", or nil to
 	// skip link type variations.
 	linkTypes []string
+
+	// True if the library is expected to be a stubs library.
+	isStubs bool
 }
 
 func (mt *librarySdkMemberType) AddDependencies(mctx android.BottomUpMutatorContext, dependencyTag blueprint.DependencyTag, names []string) {
@@ -109,6 +124,9 @@ func (mt *librarySdkMemberType) IsInstance(module android.Module) bool {
 	if m, ok := module.(*Module); ok {
 		for _, allowableMemberType := range m.sdkMemberTypes {
 			if allowableMemberType == mt {
+				if mt.isStubs {
+					return m.IsStubs()
+				}
 				return true
 			}
 		}

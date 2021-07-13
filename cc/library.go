@@ -350,6 +350,7 @@ func LibraryFactory() android.Module {
 	// Can be used as both a static and a shared library.
 	module.sdkMemberTypes = []android.SdkMemberType{
 		sharedLibrarySdkMemberType,
+		stubsLibrarySdkMemberType,
 		staticLibrarySdkMemberType,
 		staticAndSharedLibrarySdkMemberType,
 	}
@@ -370,7 +371,10 @@ func LibraryStaticFactory() android.Module {
 func LibrarySharedFactory() android.Module {
 	module, library := NewLibrary(android.HostAndDeviceSupported)
 	library.BuildOnlyShared()
-	module.sdkMemberTypes = []android.SdkMemberType{sharedLibrarySdkMemberType}
+	module.sdkMemberTypes = []android.SdkMemberType{
+		sharedLibrarySdkMemberType,
+		stubsLibrarySdkMemberType,
+	}
 	return module.Init()
 }
 
@@ -387,7 +391,10 @@ func LibraryHostStaticFactory() android.Module {
 func LibraryHostSharedFactory() android.Module {
 	module, library := NewLibrary(android.HostSupported)
 	library.BuildOnlyShared()
-	module.sdkMemberTypes = []android.SdkMemberType{sharedLibrarySdkMemberType}
+	module.sdkMemberTypes = []android.SdkMemberType{
+		sharedLibrarySdkMemberType,
+		stubsLibrarySdkMemberType,
+	}
 	return module.Init()
 }
 
