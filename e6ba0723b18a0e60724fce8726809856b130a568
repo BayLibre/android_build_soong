@@ -22,6 +22,30 @@
       },
       "revId": "e6ba0723b18a0e60724fce8726809856b130a568",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "806e55b8_e53556dd",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2818,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-13T13:30:33Z",
+      "side": 1,
+      "message": "I didn\u0027t add any error reporting in here because that is not something that this has previously done. I think that this method needs to be much stricter (to Bazel standards) to avoid adding references that would be invalid in Bazel. That is something that should be done separately to this and is what I was referring to in the commit message when I said:\n\n\"At the moment the checking is quite lax but some follow up changes will\nmake it much stricter.\"",
+      "parentUuid": "aad8d735_ff406855",
+      "range": {
+        "startLine": 2818,
+        "startChar": 4,
+        "endLine": 2818,
+        "endChar": 15
+      },
+      "revId": "e6ba0723b18a0e60724fce8726809856b130a568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
