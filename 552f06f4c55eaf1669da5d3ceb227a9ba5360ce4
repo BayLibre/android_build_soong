@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b29d8cf_a0919e0a",
+        "filename": "OWNERS",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-14T21:41:14Z",
+      "side": 1,
+      "message": "Should we also add the folks that have joined since you created this?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "552f06f4c55eaf1669da5d3ceb227a9ba5360ce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
