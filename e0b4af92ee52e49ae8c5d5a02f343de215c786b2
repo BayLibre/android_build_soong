@@ -22,6 +22,30 @@
       },
       "revId": "e0b4af92ee52e49ae8c5d5a02f343de215c786b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cd4eae9_0530690b",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-14T16:32:53Z",
+      "side": 1,
+      "message": "Yes. Definitely.",
+      "parentUuid": "bc05dcfc_4b3cdbce",
+      "range": {
+        "startLine": 1465,
+        "startChar": 1,
+        "endLine": 1465,
+        "endChar": 51
+      },
+      "revId": "e0b4af92ee52e49ae8c5d5a02f343de215c786b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
