@@ -37,26 +37,90 @@ func TestGetOutputFilesParseResults(t *testing.T) {
 	}
 }
 
-func TestGetPythonBinaryParseResults(t *testing.T) {
+func TestGetPyBinInfoParseResults(t *testing.T) {
+	const expectedSplits = 3
+	noResult := strings.Repeat("|", expectedSplits-1)
 	testCases := []struct {
-		description    string
-		input          string
-		expectedOutput string
+		description          string
+		input                string
+		expectedOutput       PyBinInfo
+		expectedErrorMessage string
 	}{
 		{
-			description:    "no result",
-			input:          "",
-			expectedOutput: "",
+			description:          "no splits",
+			input:                noResult,
+			expectedOutput:       PyBinInfo{},
+			expectedErrorMessage: "Expected 1 zip file; got: ",
 		},
 		{
-			description:    "one result",
-			input:          "test",
-			expectedOutput: "test",
+			description:    "only bin",
+			input:          "test" + noResult,
+			expectedOutput: PyBinInfo{
+				//Binary: "test",
+			},
+			expectedErrorMessage: "Expected 1 zip file; got: ",
+		},
+		{
+			description:    "only libs",
+			input:          "|test|",
+			expectedOutput: PyBinInfo{
+				//SharedLibs: []string{"test"},
+			},
+			expectedErrorMessage: "Expected 1 zip file; got: ",
+		},
+		{
+			description: "only zip",
+			input:       noResult + "test",
+			expectedOutput: PyBinInfo{
+				Binary:     "",
+				SharedLibs: []string{""},
+				SrcZip:     "test",
+			},
+			expectedErrorMessage: "",
+		},
+		{
+			description:    "only 2 libs",
+			input:          "|lib1, lib2|",
+			expectedOutput: PyBinInfo{
+				//SharedLibs: []string{"lib1", "lib2"},
+			},
+			expectedErrorMessage: "Expected 1 zip file; got: ",
+		},
+		{
+			description:          "only 2 zips",
+			input:                "||z1, z2",
+			expectedOutput:       PyBinInfo{},
+			expectedErrorMessage: "Expected 1 zip file; got: z1, z2",
+		},
+		{
+			description: "all fields",
+			input:       "bin|lib1, lib2|zip",
+			expectedOutput: PyBinInfo{
+				Binary:     "bin",
+				SharedLibs: []string{"lib1", "lib2"},
+				SrcZip:     "zip",
+			},
+			expectedErrorMessage: "",
+		},
+		{
+			description:          "too few splits",
+			input:                "|",
+			expectedOutput:       PyBinInfo{},
+			expectedErrorMessage: fmt.Sprintf("Expected %d items for PyBinInfo; got %d: %v", expectedSplits, 2, []string{"", ""}),
+		},
+		{
+			description:          "too many splits",
+			input:                strings.Repeat("|", expectedSplits), // 1 too many
+			expectedOutput:       PyBinInfo{},
+			expectedErrorMessage: fmt.Sprintf("Expected %d items for PyBinInfo; got %d: %v", expectedSplits, expectedSplits+1, make([]string, expectedSplits+1)),
 		},
 	}
 	for _, tc := range testCases {
-		actualOutput := GetPythonBinary.ParseResult(tc.input)
-		if !reflect.DeepEqual(tc.expectedOutput, actualOutput) {
+		actualOutput, err := GetPyBinInfo.ParseResult(tc.input)
+		if (err == nil && tc.expectedErrorMessage != "") ||
+			(err != nil && err.Error() != tc.expectedErrorMessage) {
+			t.Errorf("%q: expected Error `%s`\n, got `%s`", tc.description, tc.expectedErrorMessage, err)
+		} else if err == nil && !reflect.DeepEqual(tc.expectedOutput, actualOutput) {
 			t.Errorf("%q: expected %#v != actual %#v", tc.description, tc.expectedOutput, actualOutput)
 		}
 	}
