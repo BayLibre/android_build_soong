@@ -98,7 +98,7 @@ func (test *testDecorator) install(ctx android.ModuleContext, file android.Path)
 	}
 }
 
-func NewTest(hod android.HostOrDeviceSupported) *Module {
+func NewTest(hod android.HostOrDeviceSupported) *PythonBinary {
 	module, binary := NewBinary(hod)
 
 	binary.pythonInstaller = NewPythonInstaller("nativetest", "nativetest64")
