@@ -227,6 +227,7 @@ var (
 	// Configure modules in these directories to enable bp2build_available: true or false by default.
 	bp2buildDefaultConfig = Bp2BuildConfig{
 		"art/libdexfile":                        Bp2BuildDefaultTrueRecursively,
+		"art/tools":                             Bp2BuildDefaultTrue,
 		"bionic":                                Bp2BuildDefaultTrueRecursively,
 		"bootable/recovery/tools/recovery_l10n": Bp2BuildDefaultTrue,
 		"build/bazel/examples/soong_config_variables":        Bp2BuildDefaultTrueRecursively,
@@ -401,8 +402,7 @@ var (
 		"libprotobuf-internal-protos",      // we don't handle path property for fileegroups
 		"libprotobuf-internal-python-srcs", // we don't handle path property for fileegroups
 
-		"libseccomp_policy", // b/201094425: depends on func_to_syscall_nrs, which depends on py_binary, which is unsupported in mixed builds.
-		"libfdtrack",        // depends on unconverted module libunwindstack
+		"libfdtrack", // depends on unconverted module libunwindstack
 
 		"gwp_asan_crash_handler", // cc_library, ld.lld: error: undefined symbol: memset
 
@@ -442,6 +442,11 @@ var (
 
 		"acvp_modulewrapper", // disabled for android x86/x86_64
 		"CarHTMLViewer",      // depends on unconverted modules android.car-stubs, car-ui-lib
+
+		// art/tools/
+		"libchainagentss",
+		"libfieldnulls",
+		"libfieldcounts",
 	}
 
 	// Per-module denylist of cc_library modules to only generate the static
