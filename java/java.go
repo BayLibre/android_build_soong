@@ -1462,11 +1462,7 @@ func (j *Import) IDECustomizedModuleName() string {
 	// TODO(b/113562217): Extract the base module name from the Import name, often the Import name
 	// has a prefix "prebuilt_". Remove the prefix explicitly if needed until we find a better
 	// solution to get the Import name.
-	name := j.Name()
-	if strings.HasPrefix(name, removedPrefix) {
-		name = strings.TrimPrefix(name, removedPrefix)
-	}
-	return name
+	return strings.TrimPrefix(j.Name(), removedPrefix)
 }
 
 var _ android.PrebuiltInterface = (*Import)(nil)
