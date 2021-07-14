@@ -148,6 +148,9 @@ type Module struct {
 	// installer might be nil (e.g. Python library module).
 	installer installer
 
+	// interface for handling GenerateBazelBuildActions
+	bazelHandler android.BazelHandler
+
 	// the Python files of current module after expanding source dependencies.
 	// pathMapping: <dest: runfile_path, src: source_path>
 	srcsPathMappings []pathMapping
@@ -424,7 +427,20 @@ func (p *Module) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddVariationDependencies(javaDataVariation, javaDataTag, p.properties.Java_data...)
 }
 
+func (m *Module) maybeGenerateBazelBuildActions(ctx android.ModuleContext) bool {
+	if m.MixedBuildsEnabled(ctx) && m.bazelHandler != nil {
+		label := m.GetBazelLabel(ctx, m)
+		return m.bazelHandler.GenerateBazelBuildActions(ctx, label)
+	} else {
+		return false
+	}
+}
+
 func (p *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	if p.maybeGenerateBazelBuildActions(ctx) {
+		return
+	}
+
 	p.generatePythonBuildActions(ctx)
 
 	// Only Python binary and test modules have non-empty bootstrapper.
