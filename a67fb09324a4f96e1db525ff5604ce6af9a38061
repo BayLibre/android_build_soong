@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52b9abb5_bb2e8031",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-14T17:15:21Z",
+      "side": 1,
+      "message": "A separate effort is ongoing to move snapshots.",
+      "parentUuid": "2d9adbc0_7ea78de8",
+      "revId": "a67fb09324a4f96e1db525ff5604ce6af9a38061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d0046e6_31499602",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a06695d_a32baaa8",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-14T17:15:21Z",
+      "side": 1,
+      "message": "Thanks, I\u0027ve updated to effective license files",
+      "parentUuid": "8d0046e6_31499602",
+      "range": {
+        "startLine": 115,
+        "startChar": 12,
+        "endLine": 115,
+        "endChar": 23
+      },
+      "revId": "a67fb09324a4f96e1db525ff5604ce6af9a38061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2886ba67_f286ebbe",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-07-14T08:44:25Z",
       "side": 1,
       "message": "same here.",
+      "range": {
+        "startLine": 119,
+        "startChar": 69,
+        "endLine": 119,
+        "endChar": 80
+      },
+      "revId": "a67fb09324a4f96e1db525ff5604ce6af9a38061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0bece0c_9c3a8fd7",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-14T17:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2886ba67_f286ebbe",
       "range": {
         "startLine": 119,
         "startChar": 69,
