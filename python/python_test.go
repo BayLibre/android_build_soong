@@ -355,7 +355,93 @@ func TestPythonModule(t *testing.T) {
 	}
 }
 
-func expectModule(t *testing.T, ctx *android.TestContext, name, variant, expectedSrcsZip string, expectedPyRunfiles, expectedDepsSrcsZips []string) {
+var prepareForPythonBinaryHostWithBazelTest = android.GroupFixturePreparers(
+	PrepareForTestWithPythonBinaryHostComponents,
+)
+
+var pythonBinaryTestCases = []struct {
+	desc      string
+	mockFiles android.MockFS
+
+	expectedBinaries []pyModule
+}{
+	{
+		desc: "py3 version",
+		mockFiles: map[string][]byte{
+			filepath.Join("dir", bpFile): []byte(
+				`python_binary_host {
+							name: "foo",
+							pkg_path: "out/",
+							bazel_module: { label: "//foo/bar:bar" },
+							srcs: [ "foo.py" ],
+							version: { py3: {enabled: true} },
+						}`),
+			filepath.Join("dir", "foo.py"): nil,
+		},
+		expectedBinaries: []pyModule{
+			{
+				name:          "foo",
+				actualVersion: "PY3",
+			},
+		},
+	},
+	{
+		desc: "py2 version",
+		mockFiles: map[string][]byte{
+			filepath.Join("dir", bpFile): []byte(
+				`python_binary_host {
+							name: "foo",
+							pkg_path: "out/",
+							bazel_module: { label: "//foo/bar:bar" },
+							srcs: [ "foo.py" ],
+							version: {
+								py2: {enabled: true},
+								py3: {enabled: false}
+							},
+						}`),
+			filepath.Join("dir", "foo.py"): nil,
+		},
+		expectedBinaries: []pyModule{
+			{
+				name:          "foo",
+				actualVersion: "PY2",
+			},
+		},
+	},
+}
+
+func TestPythonBinaryModuleWithBazel(t *testing.T) {
+	for _, c := range pythonBinaryTestCases {
+
+		t.Run(c.desc, func(t *testing.T) {
+			result := android.GroupFixturePreparers(
+				android.PrepareForTestWithDefaults,
+				prepareForPythonBinaryHostWithBazelTest,
+				c.mockFiles.AddToFixture(),
+				android.FixtureModifyConfig(func(config android.Config) {
+					config.BazelContext = android.MockBazelContext{
+						OutputBaseDir: "out",
+						LabelToPythonBinary: map[string]string{
+							"//foo/bar:bar": "foo"},
+					}
+				})).RunTest(t)
+
+			if len(result.Errs) > 0 {
+				return
+			}
+
+			for _, e := range c.expectedBinaries {
+				t.Run(e.name, func(t *testing.T) {
+					expectModule(t, result.TestContext, e.name, e.actualVersion,
+						e.srcsZip, e.pyRunfiles, e.depsSrcsZips)
+				})
+			}
+		})
+	}
+}
+
+func expectModule(t *testing.T, ctx *android.TestContext, name, variant,
+	expectedSrcsZip string, expectedPyRunfiles, expectedDepsSrcsZips []string) {
 	module := ctx.ModuleForTests(name, variant)
 
 	base, baseOk := module.Module().(*Module)
@@ -368,11 +454,17 @@ func expectModule(t *testing.T, ctx *android.TestContext, name, variant, expecte
 		actualPyRunfiles = append(actualPyRunfiles, path.dest)
 	}
 
-	android.AssertDeepEquals(t, "pyRunfiles", expectedPyRunfiles, actualPyRunfiles)
+	if len(expectedPyRunfiles) > 0 {
+		android.AssertDeepEquals(t, "pyRunfiles", expectedPyRunfiles, actualPyRunfiles)
+	}
 
-	android.AssertPathRelativeToTopEquals(t, "srcsZip", expectedSrcsZip, base.srcsZip)
+	if len(expectedSrcsZip) > 0 {
+		android.AssertPathRelativeToTopEquals(t, "srcsZip", expectedSrcsZip, base.srcsZip)
+	}
 
-	android.AssertPathsRelativeToTopEquals(t, "depsSrcsZips", expectedDepsSrcsZips, base.depsSrcsZips)
+	if len(expectedDepsSrcsZips) > 0 {
+		android.AssertPathsRelativeToTopEquals(t, "depsSrcsZips", expectedDepsSrcsZips, base.depsSrcsZips)
+	}
 }
 
 func TestMain(m *testing.M) {
