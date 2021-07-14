@@ -6,9 +6,9 @@ import (
 )
 
 var (
-	GetOutputFiles  = &getOutputFilesRequestType{}
-	GetPythonBinary = &getPythonBinaryRequestType{}
-	GetCcInfo       = &getCcInfoType{}
+	GetOutputFiles = &getOutputFilesRequestType{}
+	GetPyBinInfo   = &getPyBinInfoRequestType{}
+	GetCcInfo      = &getCcInfoType{}
 )
 
 type CcInfo struct {
@@ -30,9 +30,13 @@ type CcInfo struct {
 	TocFile              string
 }
 
-type getOutputFilesRequestType struct{}
+type PyBinInfo struct {
+	Binary     string
+	SharedLibs []string
+	SrcZip     string
+}
 
-type getPythonBinaryRequestType struct{}
+type getOutputFilesRequestType struct{}
 
 // Name returns a string name for this request type. Such request type names must be unique,
 // and must only consist of alphanumeric characters.
@@ -59,10 +63,12 @@ func (g getOutputFilesRequestType) ParseResult(rawString string) []string {
 	return splitOrEmpty(rawString, ", ")
 }
 
+type getPyBinInfoRequestType struct{}
+
 // Name returns a string name for this request type. Such request type names must be unique,
 // and must only consist of alphanumeric characters.
-func (g getPythonBinaryRequestType) Name() string {
-	return "getPythonBinary"
+func (g getPyBinInfoRequestType) Name() string {
+	return "getPyBinInfo"
 }
 
 // StarlarkFunctionBody returns a starlark function body to process this request type.
@@ -73,15 +79,42 @@ func (g getPythonBinaryRequestType) Name() string {
 //   - `target` is the only parameter to this function (a configured target).
 //   - The return value must be a string.
 //   - The function body should not be indented outside of its own scope.
-func (g getPythonBinaryRequestType) StarlarkFunctionBody() string {
-	return "return providers(target)['FilesToRunProvider'].executable.path"
+func (g getPyBinInfoRequestType) StarlarkFunctionBody() string {
+	return `
+ps = providers(target)
+bin = ps['FilesToRunProvider'].executable.path
+info = ps['PyInfo']
+trans_srcs = [s.path for s in info.transitive_sources.to_list()]
+zips = [z.path for z in ps['OutputGroupInfo'].python_zip_file.to_list()]
+
+returns = [
+[bin],
+trans_srcs,
+zips,
+]
+return '|'.join([', '.join(r) for r in returns])`
 }
 
 // ParseResult returns a value obtained by parsing the result of the request's Starlark function.
 // The given rawString must correspond to the string output which was created by evaluating the
 // Starlark given in StarlarkFunctionBody.
-func (g getPythonBinaryRequestType) ParseResult(rawString string) string {
-	return rawString
+func (g getPyBinInfoRequestType) ParseResult(rawString string) (PyBinInfo, error) {
+	const expectedSplits = 3
+	splits := strings.Split(rawString, "|")
+	if len(splits) != expectedSplits {
+		return PyBinInfo{}, fmt.Errorf("Expected %d items for PyBinInfo; got %d: %v", expectedSplits, len(splits), splits)
+	}
+	bin := splits[0]
+	libs := strings.Split(splits[1], ", ")
+	zips := strings.Split(splits[2], ", ")
+	if len(zips) != 1 || len(zips[0]) == 0 {
+		return PyBinInfo{}, fmt.Errorf("Expected 1 zip file; got: %s", splits[2])
+	}
+	return PyBinInfo{
+		Binary:     bin,
+		SharedLibs: libs,
+		SrcZip:     zips[0],
+	}, nil
 }
 
 type getCcInfoType struct{}
