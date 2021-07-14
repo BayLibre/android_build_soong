@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ecfe223f_d8210fae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160213
+      },
+      "writtenOn": "2021-07-14T21:48:06Z",
+      "side": 1,
+      "message": "I defer to joeo@ on how he wants to structure ownership of the Soong code. This is related to improving the bug triage process which we\u0027ve been discussion, as I think just adding people without them actually being familiar with the code base is not all that great. So maybe ensuring that people actually get familiar with the codebase and then adding them would be better?\n\nJoe, what are your thoughts?",
+      "revId": "552f06f4c55eaf1669da5d3ceb227a9ba5360ce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab73ebab_9eaeac23",
+        "filename": "OWNERS",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1160213
+      },
+      "writtenOn": "2021-07-14T21:48:06Z",
+      "side": 1,
+      "message": "TBF I\u0027m not sure if I\u0027m a particuarly useful code owner as I can count on two hands the number of times I looked at Soong code. I\u0027d propose taking me out of here to avoid confusion.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "552f06f4c55eaf1669da5d3ceb227a9ba5360ce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8b29d8cf_a0919e0a",
         "filename": "OWNERS",
         "patchSetId": 5
