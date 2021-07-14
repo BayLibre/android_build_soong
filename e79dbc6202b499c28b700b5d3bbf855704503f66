@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f3eb5d2_485a6f12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-14T00:33:01Z",
+      "side": 1,
+      "message": "Ok, I was dead wrong. Then the problem is the opposite for the other *_available - we ought not propagate any of them without being certain their prebuilts are identical between the images, right? Or else we should split prebuilt srcs by image if any *_available is set.\n\nI guess that ought to have a ticket, but I doubt anyone will spend time on it before we have an actual problem, so not sure it\u0027s even worth filing one. Still, it\u0027d be useful to mention this unsafe behaviour next to the AddProperty calls for them, just below the mt.imageAgnostic if clause. The comment right now gives the impression there\u0027s something special with ramdisk_available wrt the others, but there\u0027s not.",
+      "parentUuid": "1c3b4b26_86cc4f86",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 39
+      },
+      "revId": "e79dbc6202b499c28b700b5d3bbf855704503f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2273a70_9d27ba47",
         "filename": "sdk/cc_sdk_test.go",
         "patchSetId": 1
@@ -181,6 +205,30 @@
       "side": 1,
       "message": "You\u0027ll notice that in the TestSnapshotWithCcHeadersLibrary below I added \"system_shared_libs: [],\" that is because the image:ramdisk\" variant is not available for some of the default system shared libraries. It seemed safe to disable that for the headers library. I didn\u0027t want to do the same for the library test.",
       "parentUuid": "5f5062b9_c405b5bf",
+      "range": {
+        "startLine": 1745,
+        "startChar": 0,
+        "endLine": 1746,
+        "endChar": 33
+      },
+      "revId": "e79dbc6202b499c28b700b5d3bbf855704503f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "781b0662_5a838b31",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1746,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-14T00:33:01Z",
+      "side": 1,
+      "message": "Aha, that\u0027s what you meant. It\u0027s still possible to create a separate test for it, of course. Not sure it\u0027s worth the trouble - I don\u0027t feel strongly either way.",
+      "parentUuid": "fb2edcdc_a72a3e5b",
       "range": {
         "startLine": 1745,
         "startChar": 0,
