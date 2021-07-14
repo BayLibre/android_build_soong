@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6122ef22_c8f889eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-14T21:33:15Z",
+      "side": 1,
+      "message": "Using the syntax\n\n```\nBug: 184873200\n```\n\nor\n\n```\nFixes: 184873200\n```\n\nwill hook in with existing systems to parse the bug number.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "933e408a_4d84f0af",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-14T21:33:15Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need to add any properties when incorporating mixed builds.\n\nThis will change the Soong-based module, adding additional properties to existing module types.\n\nFor mixed builds, we want to change what happens in the build _only_ when mixed builds are enabled, otherwise, we want the module\u0027s existing build to stay the same.",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 1
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f3ef75c_c5142807",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-14T21:33:15Z",
+      "side": 1,
+      "message": "For now, we\u0027ll also want to limit this to `python_binary_host` module types as that\u0027s the only type we want to support for conversion currently: https://cs.android.com/android/platform/superproject/+/master:build/soong/python/binary.go;l\u003d68;drc\u003d0702791a99d076f79f2971ff96cf0e4eb5308319.\n\nIf it has different type, we can short circuit without have to check whether mixed builds are enabled.",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 32
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5f7467f_c30bb33a",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-14T21:33:15Z",
+      "side": 1,
+      "message": "Are there any checks we should do about the number of expected output files?",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 2
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97510acf_43592c9f",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-14T21:33:15Z",
+      "side": 1,
+      "message": "Nice, in general, this is the sort of thing we\u0027ll need to do for mixed builds.",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 224,
+        "endChar": 1
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7935998c_3385370e",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-14T21:33:15Z",
+      "side": 1,
+      "message": "One option to test this path is to add a unit test taking advantage of MockBazelContext (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_handler.go;l\u003d123;drc\u003d442b1a4070376310dd7c0731b34c203e4581eb3e), some examples of unit tests for mixed builds:\n\n[cc object](https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/object_test.go;l\u003d87;drc\u003d25f369fdca0011b09823f1bcc03929c553d1005d)\n[cc library](https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/library_test.go;l\u003d245;drc\u003d94a0bba5a952c739caf32ec399d04dc66d21ebbf)",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 2
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d23a198b_0116798a",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-14T21:33:15Z",
+      "side": 1,
+      "message": "Either this function isn\u0027t running or we\u0027re breaking non-mixed builds as this changes the build actions for a non-mixed build.\n\nCurrently a Python binary will be built here: https://cs.android.com/android/platform/superproject/+/master:build/soong/python/python.go;l\u003d427;drc\u003d0e446159bcde2ced43e0bd602ae42f6eccb9c625. Rather than implementing something different, we should use the new generateBazelBuildActions you implemented when mixed builds are enabled and otherwise fall back to the existing build behavior for a python_binary_host.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 2
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "222ba6a6_dff62646",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-14T21:33:15Z",
+      "side": 1,
+      "message": "We generally don\u0027t want to add any new interfaces between modules when adding support for mixed builds. Instead, we want to make sure that any interface between the module type we\u0027re converting and modules that depend on it are fulfilled by our Bazel-built module.",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 1
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
