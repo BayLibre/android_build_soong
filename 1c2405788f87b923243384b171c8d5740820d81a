@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "014f6364_c7e3ef0e",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-14T21:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75efe786_cc083299",
+      "revId": "1c2405788f87b923243384b171c8d5740820d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d01e659_99211c1d",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-14T20:31:58Z",
       "side": 1,
       "message": "Comments to describe these modes?",
+      "revId": "1c2405788f87b923243384b171c8d5740820d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aed8ee36_bbc6d086",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-14T21:46:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d01e659_99211c1d",
       "revId": "1c2405788f87b923243384b171c8d5740820d81a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
