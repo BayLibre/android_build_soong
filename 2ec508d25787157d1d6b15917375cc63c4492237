@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e558824c_935bf7e5",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-14T16:45:04Z",
+      "side": 1,
+      "message": "This could get moved with the rest of the blueprint imports",
+      "revId": "2ec508d25787157d1d6b15917375cc63c4492237",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
