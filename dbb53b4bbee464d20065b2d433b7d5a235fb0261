@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c16ce18b_fcc130e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-14T10:09:11Z",
+      "side": 1,
+      "message": "Temporary -2 here to prevent accidental merge before the comments are resolved.",
+      "revId": "dbb53b4bbee464d20065b2d433b7d5a235fb0261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
