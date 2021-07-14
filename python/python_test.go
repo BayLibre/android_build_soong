@@ -355,7 +355,52 @@ func TestPythonModule(t *testing.T) {
 	}
 }
 
-func expectModule(t *testing.T, ctx *android.TestContext, name, variant, expectedSrcsZip string, expectedPyRunfiles, expectedDepsSrcsZips []string) {
+var prepareForPythonBinaryHostWithBazelTest = android.GroupFixturePreparers(
+	PrepareForTestWithPythonBinaryHostComponents,
+)
+
+func TestPythonBinaryModuleWithBazel(t *testing.T) {
+	/*bp := `
+			python_binary_host {
+				name: "foo",
+				pkg_path: "out/",
+				bazel_module: { label: "//foo/bar:bar" },
+				srcs: [ "foo.py" ],
+				libs: [ "bar" ],
+			}
+
+	    python_library {
+	      name: "bar",
+	      pkg_path: "out/",
+	      srcs: ["bar.py" ],
+	      bazel_module: { bp2build_available: true },
+	    }
+		`
+
+		result := android.GroupFixturePreparers(
+			prepareForPythonBinaryHostWithBazelTest,
+			android.FixtureModifyConfig(func(config android.Config) {
+				config.BazelContext = android.MockBazelContext{
+					OutputBaseDir: "out",
+					LabelToPyBinInfo: map[string]cquery.PyBinInfo {
+						"//foo/bar:bar": {"foo", []string{"foo.py"}, "foo.zip" }},
+			}})).RunTestWithBp(t, bp)
+
+		mod := result.Module("foo", "PY3").(*Module)
+		handler := mod.bazelHandler.(*pythonBinaryBazelHandler)
+		mod_ := handler.module
+
+		android.AssertStringEquals(t, "output binary",
+			"out/execroot/__main__/foo",
+			handler.srcs[0].String())
+		android.AssertArrayString(t, "binary shared dependencies",
+			//[]string{"bar.py"},
+			[]string{},
+			mod_.installer.(*binaryDecorator).androidMkSharedLibs)*/
+}
+
+func expectModule(t *testing.T, ctx *android.TestContext, name, variant,
+	expectedSrcsZip string, expectedPyRunfiles, expectedDepsSrcsZips []string) {
 	module := ctx.ModuleForTests(name, variant)
 
 	base, baseOk := module.Module().(*Module)
@@ -368,11 +413,17 @@ func expectModule(t *testing.T, ctx *android.TestContext, name, variant, expecte
 		actualPyRunfiles = append(actualPyRunfiles, path.dest)
 	}
 
-	android.AssertDeepEquals(t, "pyRunfiles", expectedPyRunfiles, actualPyRunfiles)
+	if len(expectedPyRunfiles) > 0 {
+		android.AssertDeepEquals(t, "pyRunfiles", expectedPyRunfiles, actualPyRunfiles)
+	}
 
-	android.AssertPathRelativeToTopEquals(t, "srcsZip", expectedSrcsZip, base.srcsZip)
+	if len(expectedSrcsZip) > 0 {
+		android.AssertPathRelativeToTopEquals(t, "srcsZip", expectedSrcsZip, base.srcsZip)
+	}
 
-	android.AssertPathsRelativeToTopEquals(t, "depsSrcsZips", expectedDepsSrcsZips, base.depsSrcsZips)
+	if len(expectedDepsSrcsZips) > 0 {
+		android.AssertPathsRelativeToTopEquals(t, "depsSrcsZips", expectedDepsSrcsZips, base.depsSrcsZips)
+	}
 }
 
 func TestMain(m *testing.M) {
