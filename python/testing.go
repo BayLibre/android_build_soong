@@ -17,8 +17,13 @@ package python
 import "android/soong/android"
 
 var PrepareForTestWithPythonBuildComponents = android.GroupFixturePreparers(
-	android.FixtureRegisterWithContext(registerPythonBinaryComponents),
+	android.FixtureRegisterWithContext(RegisterPythonBinaryComponents),
 	android.FixtureRegisterWithContext(registerPythonLibraryComponents),
 	android.FixtureRegisterWithContext(registerPythonTestComponents),
+	android.FixtureRegisterWithContext(registerPythonMutators),
+)
+
+var PrepareForTestWithPythonBinaryHostComponents = android.GroupFixturePreparers(
+	android.FixtureRegisterWithContext(RegisterPythonBinaryComponents),
 	android.FixtureRegisterWithContext(registerPythonMutators),
 )
