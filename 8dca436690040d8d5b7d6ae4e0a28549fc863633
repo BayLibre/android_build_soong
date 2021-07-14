@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b521b60_1c3bebc2",
+        "filename": "android/config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-14T16:47:09Z",
+      "side": 1,
+      "message": "Can you comment on how this relates to UnbundledBuild()?",
+      "revId": "8dca436690040d8d5b7d6ae4e0a28549fc863633",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
