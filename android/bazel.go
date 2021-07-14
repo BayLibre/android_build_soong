@@ -455,6 +455,10 @@ var (
 		"apex_build_info_proto", "apex_manifest_proto", // a python lib with proto sources
 		"linker_config_proto", // contains .proto sources
 
+		"libfdtrack", // depends on unconverted module libunwindstack
+
+		"gwp_asan_crash_handler", // cc_library, ld.lld: error: undefined symbol: memset
+
 		"brotli-fuzzer-corpus", // b/202015218: outputs are in location incompatible with bazel genrule handling.
 
 		// b/203369847: multiple genrules in the same package creating the same file
@@ -506,6 +510,13 @@ var (
 
 		"generated_android_icu4j_resources",      // depends on unconverted modules: android_icu4j_srcgen_binary, soong_zip
 		"generated_android_icu4j_test_resources", // depends on unconverted modules: android_icu4j_srcgen_binary, soong_zip
+
+		// art/tools/
+		"libchainagentss",
+		"libfieldnulls",
+		"libfieldcounts",
+
+		"art-run-test-checker",
 	}
 
 	// Per-module denylist of cc_library modules to only generate the static
