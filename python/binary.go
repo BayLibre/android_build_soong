@@ -18,6 +18,7 @@ package python
 
 import (
 	"fmt"
+	"strings"
 
 	"android/soong/android"
 	"android/soong/bazel"
@@ -157,10 +158,34 @@ var (
 	StubTemplateHost = "build/soong/python/scripts/stub_template_host.txt"
 )
 
-func NewBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
-	module := newModule(hod, android.MultilibFirst)
+type pythonBinaryProperties struct {
+	// srcs lists files that will be included in this filegroup
+	Srcs []string `android:"path"`
+
+	Exclude_srcs []string `android:"path"`
+
+	// The base path to the files.  May be used by other modules to determine which portion
+	// of the path to use.  For example, when a filegroup is used as data in a cc_test rule,
+	// the base path is stripped off the path and the remaining path is used as the
+	// installation directory.
+	Path *string
+
+	// Create a make variable with the specified name that contains the list of files in the
+	// filegroup, relative to the root of the source tree.
+	Export_to_make_var *string
+}
+
+type PythonBinary struct {
+	Module
+	properties pythonBinaryProperties
+	srcs       android.Paths
+}
+
+func NewBinary(hod android.HostOrDeviceSupported) (*PythonBinary, *binaryDecorator) {
+	module := &PythonBinary{Module: *newModule(hod, android.MultilibFirst)}
 	decorator := &binaryDecorator{pythonInstaller: NewPythonInstaller("bin", "")}
 
+	module.AddProperties(&module.properties)
 	module.bootstrapper = decorator
 	module.installer = decorator
 
@@ -170,9 +195,53 @@ func NewBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
 func PythonBinaryHostFactory() android.Module {
 	module, _ := NewBinary(android.HostSupported)
 
+	//android.InitAndroidModule(module)
 	android.InitBazelModule(module)
 
 	return module.init()
+}
+
+func (m *PythonBinary) generateBazelBuildActions(ctx android.ModuleContext) bool {
+	if !m.MixedBuildsEnabled(ctx) {
+		return false
+	}
+
+	bazelCtx := ctx.Config().BazelContext
+	filePaths, ok := bazelCtx.GetOutputFiles(m.GetBazelLabel(ctx, m), ctx.Arch().ArchType)
+	if !ok {
+		return false
+	}
+
+	bazelOuts := make(android.Paths, 0, len(filePaths))
+	for _, p := range filePaths {
+		src := android.PathForBazelOut(ctx, p)
+		bazelOuts = append(bazelOuts, src)
+	}
+
+	m.srcs = bazelOuts
+
+	return true
+}
+
+func (m *PythonBinary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	if m.generateBazelBuildActions(ctx) {
+		return
+	}
+
+	m.srcs = android.PathsForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs)
+	if m.properties.Path != nil {
+		m.srcs = android.PathsWithModuleSrcSubDir(ctx, m.srcs, String(m.properties.Path))
+	}
+}
+
+func (m *PythonBinary) Srcs() android.Paths {
+	return append(android.Paths{}, m.srcs...)
+}
+
+func (m *PythonBinary) MakeVars(ctx android.MakeVarsModuleContext) {
+	if makeVar := String(m.properties.Export_to_make_var); makeVar != "" {
+		ctx.StrictRaw(makeVar, strings.Join(m.srcs.Strings(), " "))
+	}
 }
 
 func (binary *binaryDecorator) autorun() bool {
