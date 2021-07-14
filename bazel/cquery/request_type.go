@@ -6,9 +6,10 @@ import (
 )
 
 var (
-	GetOutputFiles  = &getOutputFilesRequestType{}
-	GetPythonBinary = &getPythonBinaryRequestType{}
-	GetCcInfo       = &getCcInfoType{}
+	GetOutputFiles      = &getOutputFilesRequestType{}
+	GetPythonBinary     = &getPythonBinaryRequestType{}
+	GetPythonSharedLibs = &getPythonSharedLibsRequestType{}
+	GetCcInfo           = &getCcInfoType{}
 )
 
 type CcInfo struct {
@@ -28,8 +29,6 @@ type CcInfo struct {
 }
 
 type getOutputFilesRequestType struct{}
-
-type getPythonBinaryRequestType struct{}
 
 // Name returns a string name for this request type. Such request type names must be unique,
 // and must only consist of alphanumeric characters.
@@ -56,6 +55,8 @@ func (g getOutputFilesRequestType) ParseResult(rawString string) []string {
 	return splitOrEmpty(rawString, ", ")
 }
 
+type getPythonBinaryRequestType struct{}
+
 // Name returns a string name for this request type. Such request type names must be unique,
 // and must only consist of alphanumeric characters.
 func (g getPythonBinaryRequestType) Name() string {
@@ -79,6 +80,33 @@ func (g getPythonBinaryRequestType) StarlarkFunctionBody() string {
 // Starlark given in StarlarkFunctionBody.
 func (g getPythonBinaryRequestType) ParseResult(rawString string) string {
 	return rawString
+}
+
+type getPythonSharedLibsRequestType struct{}
+
+// Name returns a string name for this request type. Such request type names must be unique,
+// and must only consist of alphanumeric characters.
+func (g getPythonSharedLibsRequestType) Name() string {
+	return "getPythonSharedLibs"
+}
+
+// StarlarkFunctionBody returns a starlark function body to process this request type.
+// The returned string is the body of a Starlark function which obtains
+// all request-relevant information about a target and returns a string containing
+// this information.
+// The function should have the following properties:
+//   - `target` is the only parameter to this function (a configured target).
+//   - The return value must be a string.
+//   - The function body should not be indented outside of its own scope.
+func (g getPythonSharedLibsRequestType) StarlarkFunctionBody() string {
+	return "return ', '.join([f.path for f in providers(target)['PyInfo'].transitive_sources.to_list()])"
+}
+
+// ParseResult returns a value obtained by parsing the result of the request's Starlark function.
+// The given rawString must correspond to the string output which was created by evaluating the
+// Starlark given in StarlarkFunctionBody.
+func (g getPythonSharedLibsRequestType) ParseResult(rawString string) []string {
+	return splitOrEmpty(rawString, ", ")
 }
 
 type getCcInfoType struct{}

@@ -81,6 +81,9 @@ type BazelContext interface {
 	// Returns the executable binary resultant from building together the python sources
 	GetPythonBinary(label string, archType ArchType) (string, bool)
 
+	// Returns the transitive dependent python libraries according to the target, including itself
+	GetPythonSharedLibs(label string, archType ArchType) ([]string, bool)
+
 	// ** End cquery methods
 
 	// Issues commands to Bazel to receive results for all cquery requests
@@ -135,9 +138,10 @@ var _ BazelContext = noopBazelContext{}
 type MockBazelContext struct {
 	OutputBaseDir string
 
-	LabelToOutputFiles  map[string][]string
-	LabelToCcInfo       map[string]cquery.CcInfo
-	LabelToPythonBinary map[string]string
+	LabelToOutputFiles      map[string][]string
+	LabelToCcInfo           map[string]cquery.CcInfo
+	LabelToPythonBinary     map[string]string
+	LabelToPythonSharedLibs map[string][]string
 }
 
 func (m MockBazelContext) GetOutputFiles(label string, archType ArchType) ([]string, bool) {
@@ -152,6 +156,11 @@ func (m MockBazelContext) GetCcInfo(label string, archType ArchType) (cquery.CcI
 
 func (m MockBazelContext) GetPythonBinary(label string, archType ArchType) (string, bool) {
 	result, ok := m.LabelToPythonBinary[label]
+	return result, ok
+}
+
+func (m MockBazelContext) GetPythonSharedLibs(label string, archType ArchType) ([]string, bool) {
+	result, ok := m.LabelToPythonSharedLibs[label]
 	return result, ok
 }
 
@@ -202,6 +211,16 @@ func (bazelCtx *bazelContext) GetPythonBinary(label string, archType ArchType) (
 	return ret, ok
 }
 
+func (bazelCtx *bazelContext) GetPythonSharedLibs(label string, archType ArchType) ([]string, bool) {
+	rawString, ok := bazelCtx.cquery(label, cquery.GetPythonSharedLibs, archType)
+	var ret []string
+	if ok {
+		bazelOutput := strings.TrimSpace(rawString)
+		ret = cquery.GetPythonSharedLibs.ParseResult(bazelOutput)
+	}
+	return ret, ok
+}
+
 func (n noopBazelContext) GetOutputFiles(label string, archType ArchType) ([]string, bool) {
 	panic("unimplemented")
 }
@@ -211,6 +230,10 @@ func (n noopBazelContext) GetCcInfo(label string, archType ArchType) (cquery.CcI
 }
 
 func (n noopBazelContext) GetPythonBinary(label string, archType ArchType) (string, bool) {
+	panic("unimplemented")
+}
+
+func (n noopBazelContext) GetPythonSharedLibs(label string, archType ArchType) ([]string, bool) {
 	panic("unimplemented")
 }
 
