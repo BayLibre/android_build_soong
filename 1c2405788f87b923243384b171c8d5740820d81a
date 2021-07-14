@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75efe786_cc083299",
+        "filename": "ui/build/config_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-07-14T20:31:58Z",
+      "side": 1,
+      "message": "maybe overkill, but perhaps one test case of all being true?",
+      "revId": "1c2405788f87b923243384b171c8d5740820d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d01e659_99211c1d",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-07-14T20:31:58Z",
+      "side": 1,
+      "message": "Comments to describe these modes?",
+      "revId": "1c2405788f87b923243384b171c8d5740820d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
