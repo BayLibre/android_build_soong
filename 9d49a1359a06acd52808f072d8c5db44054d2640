@@ -207,6 +207,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4507224_93457b43",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-07-14T15:40:24Z",
+      "side": 1,
+      "message": "Sorry to make you confused, I tried to reproduce android.net.ipsec.ike problem, but it doesn\u0027t, instead the real problematic module is \u0027android.test.runner\u0027.\n\nActually, that module should be included in only test module, which doesn\u0027t generate dexpreopt config(and isn\u0027t dexpreopted as well). But it causes a problem because an android_app has it(and the module is supposed to be android_test).\n\nSo, it doesn\u0027t cause nil host problem anymore after ag/15243696 is merged.\n\n(BTW, \u0027host\u0027 path itself isn\u0027t important for postdexpreopting because host paths are replaced device-based paths with uses target files flag)",
+      "parentUuid": "4869f95c_004f0295",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 3
+      },
+      "revId": "9d49a1359a06acd52808f072d8c5db44054d2640",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17b2ea6b_bf3fd55e",
