@@ -40,6 +40,7 @@ type variableProperties struct {
 		Platform_sdk_version struct {
 			Asflags []string
 			Cflags  []string
+			Cmd     *string
 		}
 
 		Platform_sdk_version_or_codename struct {
