@@ -84,8 +84,9 @@ type BazelContext interface {
 	// Returns the results of GetOutputFiles and GetCcObjectFiles in a single query (in that order).
 	GetCcInfo(label string, cfgKey configKey) (cquery.CcInfo, bool, error)
 
-	// Returns the executable binary resultant from building together the python sources
-	GetPythonBinary(label string, cfgKey configKey) (string, bool)
+	// Returns the executable binary resultant from building together the python sources,
+	// the shared libraries upon which the binary depends, and its source zip file
+	GetPyBinInfo(label string, cfgKey configKey) (cquery.PyBinInfo, bool, error)
 
 	// ** End cquery methods
 
@@ -141,9 +142,9 @@ var _ BazelContext = noopBazelContext{}
 type MockBazelContext struct {
 	OutputBaseDir string
 
-	LabelToOutputFiles  map[string][]string
-	LabelToCcInfo       map[string]cquery.CcInfo
-	LabelToPythonBinary map[string]string
+	LabelToOutputFiles map[string][]string
+	LabelToCcInfo      map[string]cquery.CcInfo
+	LabelToPyBinInfo   map[string]cquery.PyBinInfo
 }
 
 func (m MockBazelContext) GetOutputFiles(label string, cfgKey configKey) ([]string, bool) {
@@ -156,9 +157,9 @@ func (m MockBazelContext) GetCcInfo(label string, cfgKey configKey) (cquery.CcIn
 	return result, ok, nil
 }
 
-func (m MockBazelContext) GetPythonBinary(label string, cfgKey configKey) (string, bool) {
-	result, ok := m.LabelToPythonBinary[label]
-	return result, ok
+func (m MockBazelContext) GetPyBinInfo(label string, cfgKey configKey) (cquery.PyBinInfo, bool, error) {
+	result, ok := m.LabelToPyBinInfo[label]
+	return result, ok, nil
 }
 
 func (m MockBazelContext) InvokeBazel() error {
@@ -198,14 +199,15 @@ func (bazelCtx *bazelContext) GetCcInfo(label string, cfgKey configKey) (cquery.
 	return ret, ok, err
 }
 
-func (bazelCtx *bazelContext) GetPythonBinary(label string, cfgKey configKey) (string, bool) {
-	rawString, ok := bazelCtx.cquery(label, cquery.GetPythonBinary, cfgKey)
-	var ret string
+func (bazelCtx *bazelContext) GetPyBinInfo(label string, cfgKey configKey) (cquery.PyBinInfo, bool, error) {
+	rawString, ok := bazelCtx.cquery(label, cquery.GetPyBinInfo, cfgKey)
+	var ret cquery.PyBinInfo
+	var err error
 	if ok {
 		bazelOutput := strings.TrimSpace(rawString)
-		ret = cquery.GetPythonBinary.ParseResult(bazelOutput)
+		ret, err = cquery.GetPyBinInfo.ParseResult(bazelOutput)
 	}
-	return ret, ok
+	return ret, ok, err
 }
 
 func (n noopBazelContext) GetOutputFiles(label string, cfgKey configKey) ([]string, bool) {
@@ -216,7 +218,11 @@ func (n noopBazelContext) GetCcInfo(label string, cfgKey configKey) (cquery.CcIn
 	panic("unimplemented")
 }
 
-func (n noopBazelContext) GetPythonBinary(label string, cfgKey configKey) (string, bool) {
+func (n noopBazelContext) GetPyBinInfo(label string, cfgKey configKey) (cquery.PyBinInfo, bool, error) {
+	panic("unimplemented")
+}
+
+func (n noopBazelContext) GetPrebuiltCcStaticLibraryFiles(label string, cfgKey configKey) ([]string, bool) {
 	panic("unimplemented")
 }
 

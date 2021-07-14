@@ -162,6 +162,9 @@ type Module struct {
 	// installer might be nil (e.g. Python library module).
 	installer installer
 
+	// interface for handling GenerateBazelBuildActions
+	bazelHandler android.BazelHandler
+
 	// the Python files of current module after expanding source dependencies.
 	// pathMapping: <dest: runfile_path, src: source_path>
 	srcsPathMappings []pathMapping
@@ -460,7 +463,20 @@ func (p *Module) DepsMutator(ctx android.BottomUpMutatorContext) {
 	ctx.AddVariationDependencies(javaDataVariation, javaDataTag, p.properties.Java_data...)
 }
 
+func (m *Module) maybeGenerateBazelBuildActions(ctx android.ModuleContext) bool {
+	if m.MixedBuildsEnabled(ctx) && m.bazelHandler != nil {
+		label := m.GetBazelLabel(ctx, m)
+		return m.bazelHandler.GenerateBazelBuildActions(ctx, label)
+	} else {
+		return false
+	}
+}
+
 func (p *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	if p.maybeGenerateBazelBuildActions(ctx) {
+		return
+	}
+
 	p.generatePythonBuildActions(ctx)
 
 	// Only Python binary and test modules have non-empty bootstrapper.
@@ -513,21 +529,9 @@ func (p *Module) generatePythonBuildActions(ctx android.ModuleContext) {
 	}
 
 	// Validate pkg_path property
-	pkgPath := String(p.properties.Pkg_path)
-	if pkgPath != "" {
-		// TODO: export validation from android/paths.go handling to replace this duplicated functionality
-		pkgPath = filepath.Clean(String(p.properties.Pkg_path))
-		if pkgPath == ".." || strings.HasPrefix(pkgPath, "../") ||
-			strings.HasPrefix(pkgPath, "/") {
-			ctx.PropertyErrorf("pkg_path",
-				"%q must be a relative path contained in par file.",
-				String(p.properties.Pkg_path))
-			return
-		}
-	}
-	// If property Is_internal is set, prepend pkgPath with internalPath
-	if proptools.BoolDefault(p.properties.Is_internal, false) {
-		pkgPath = filepath.Join(internalPath, pkgPath)
+	pkgPath, ok := p.validatePkgPath(ctx, p.properties.Pkg_path)
+	if !ok {
+		return
 	}
 
 	// generate src:destination path mappings for this module
@@ -549,6 +553,28 @@ func isValidPythonPath(path string) error {
 		}
 	}
 	return nil
+}
+
+// validatePkgPath validates the pkg_path property, and returns it cleaned and
+// internalized if necessary, and whether the path is valid
+func (m *Module) validatePkgPath(ctx android.ModuleContext, unvalidatedPkgPath *string) (string, bool) {
+	pkgPath := String(unvalidatedPkgPath)
+	if pkgPath != "" {
+		// TODO: export validation from android/paths.go handling to replace this duplicated functionality
+		pkgPath = filepath.Clean(pkgPath)
+		if pkgPath == ".." || strings.HasPrefix(pkgPath, "../") ||
+			strings.HasPrefix(pkgPath, "/") {
+			pkgPath = String(unvalidatedPkgPath)
+			ctx.PropertyErrorf("pkg_path",
+				"%q must be a relative path contained in par file.", pkgPath)
+			return pkgPath, false
+		}
+	}
+	// If property Is_internal is set, prepend pkgPath with internalPath
+	if proptools.BoolDefault(m.properties.Is_internal, false) {
+		pkgPath = filepath.Join(internalPath, pkgPath)
+	}
+	return pkgPath, true
 }
 
 // For this module, generate unique pathMappings: <dest: runfiles_path, src: source_path>
@@ -738,7 +764,7 @@ func (p *Module) collectPathsFromTransitiveDeps(ctx android.ModuleContext) {
 	})
 }
 
-// chckForDuplicateOutputPath checks whether outputPath has already been included in map m, which
+// checkForDuplicateOutputPath checks whether outputPath has already been included in map m, which
 // would result in two files being placed in the same location.
 // If there is a duplicate path, an error is thrown and true is returned
 // Otherwise, outputPath: srcPath is added to m and returns false

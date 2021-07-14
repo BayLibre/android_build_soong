@@ -236,6 +236,7 @@ var (
 	// Configure modules in these directories to enable bp2build_available: true or false by default.
 	bp2buildDefaultConfig = Bp2BuildConfig{
 		"art/libdexfile":                        Bp2BuildDefaultTrueRecursively,
+		"art/tools":                             Bp2BuildDefaultTrue,
 		"bionic":                                Bp2BuildDefaultTrueRecursively,
 		"bootable/recovery/tools/recovery_l10n": Bp2BuildDefaultTrue,
 		"build/bazel/examples/soong_config_variables":        Bp2BuildDefaultTrueRecursively,
@@ -420,6 +421,10 @@ var (
 
 		"conv_linker_config", // depends on linker_config_proto, a python lib with proto sources
 
+		"libfdtrack", // depends on unconverted module libunwindstack
+
+		"gwp_asan_crash_handler", // cc_library, ld.lld: error: undefined symbol: memset
+
 		"brotli-fuzzer-corpus", // b/202015218: outputs are in location incompatible with bazel genrule handling.
 
 		// b/203369847: multiple genrules in the same package creating the same file
@@ -446,6 +451,11 @@ var (
 
 		"libdexfile",  // depends on unconverted modules: dexfile_operator_srcs, libartbase, libartpalette,
 		"libdexfiled", // depends on unconverted modules: dexfile_operator_srcs, libartbased, libartpalette
+
+		// art/tools/
+		"libchainagentss",
+		"libfieldnulls",
+		"libfieldcounts",
 	}
 
 	// Per-module denylist of cc_library modules to only generate the static
