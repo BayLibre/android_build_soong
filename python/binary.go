@@ -18,6 +18,8 @@ package python
 
 import (
 	"fmt"
+	"os"
+	"strings"
 
 	"android/soong/android"
 	"android/soong/bazel"
@@ -130,26 +132,131 @@ var (
 	StubTemplateHost = "build/soong/python/scripts/stub_template_host.txt"
 )
 
+type pythonBinaryBazelHandler struct {
+	android.BazelHandler
+
+	module *Module
+}
+
 func NewBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
 	module := newModule(hod, android.MultilibFirst)
 	decorator := &binaryDecorator{pythonInstaller: NewPythonInstaller("bin", "")}
+	// NewPythonInstaller("bin", "bin")}
 
 	module.bootstrapper = decorator
 	module.installer = decorator
+	module.bazelHandler = &pythonBinaryBazelHandler{module: module}
 
 	return module, decorator
 }
 
 func PythonBinaryHostFactory() android.Module {
 	module, _ := NewBinary(android.HostSupported)
-
 	android.InitBazelModule(module)
-
 	return module.init()
 }
 
+func (h *pythonBinaryBazelHandler) GenerateBazelBuildActions(
+	ctx android.ModuleContext, label string) bool {
+	// Catch if this module doesn't correspond to python_binary_host
+	if ctx.ModuleType() != "python_binary_host" {
+		return false
+	}
+	bazelCtx := ctx.Config().BazelContext
+
+	info, ok, err := bazelCtx.GetPyBinInfo(label, android.GetConfigKey(ctx))
+	if !ok {
+		return false
+	}
+	if err != nil {
+		ctx.ModuleErrorf("Failed to GetPyBinInfo for %s: %s", label, err.Error())
+	}
+	fmt.Fprintf(os.Stderr, "\nGot PyBinInfo for %s: %+v\n", label, info)
+
+	//h.srcs = android.Paths{android.PathForBazelOut(ctx, info.Binary)}
+	mod := h.module
+	fmt.Fprintf(os.Stderr, "\n@PROPERTIES: %+v\n", mod.properties)
+	// Our Bazel-ized mock version of GenerateAndroidBuildActions
+	// TODO: Emulate the data property for java_data dependencies.
+
+	// TODO: get pkgPath thru Bazel (once we've analog), not Soong properties
+	pkgPath, ok := mod.validatePkgPath(ctx, mod.properties.Pkg_path)
+	if !ok {
+		return false
+	}
+	fmt.Fprintf(os.Stderr, "\n@pkgPath for %s: %s\n", label, pkgPath)
+
+	binPath := android.PathForBazelOut(ctx, info.Binary)
+	fmt.Fprintf(os.Stderr, "\n@binPath for %s: %s\n", label, binPath.String())
+
+	libPaths := android.PathsForBazelOut(ctx, info.SharedLibs)
+	fmt.Fprintf(os.Stderr, "\n@libPaths for %s: %+v\n", label, libPaths.Strings())
+
+	// TODO: finish recreating generatePythonBuildActions
+	// generate src:destination path mappings for this module
+	//mod.genModulePathMappings(ctx, pkgPath, libPaths, android.Paths{binPath})
+
+	// the zipfile of all source and data files
+	zipPath := android.PathForBazelOut(ctx, info.SrcZip)
+	fmt.Fprintf(os.Stderr, "\n@zipPath for %s: %s\n", label, zipPath.String())
+	mod.srcsZip = zipPath
+
+	// FIXME: libPaths doesn't give transitive deps, but e.g. FileProvider.files_to_build includes output files
+	//mod.depsSrcsZips = android.PathsForModuleSrc(ctx, append(libPaths, info.Binary))
+	mod.depsSrcsZips = android.Paths{zipPath} //append(libPaths, binPath)
+	//mod.collectPathsFromTransitiveDeps(ctx)
+	// TODO: recreate bootstrap
+	// bootstrap the module, including resolving main file, getting launcher path, and
+	// registering actions to build the par file
+	// bootstrap returns the binary output path
+	/*mod.installSource = mod.bootstrapper.bootstrap(ctx, mod.properties.Actual_version,
+	mod.isEmbeddedLauncherEnabled(), mod.srcsPathMappings, mod.srcsZip, mod.depsSrcsZips)*/
+	var launcherPath android.OptionalPath
+	if mod.isEmbeddedLauncherEnabled() {
+		fmt.Fprintf(os.Stderr, "@Embedded laucher enabled\n")
+		ctx.VisitDirectDepsWithTag(launcherTag, func(m android.Module) {
+			if provider, ok := m.(IntermPathProvider); ok {
+				if launcherPath.Valid() {
+					panic(fmt.Errorf("launcher path was found before: %q",
+						launcherPath))
+				}
+				launcherPath = provider.IntermPathForModuleOut()
+			}
+		})
+		fmt.Fprintf(os.Stderr, "\n@launcherPath for %s: %s\n", label, launcherPath.String())
+	}
+
+	d := mod.bootstrapper.(*binaryDecorator)
+	stem := d.getStem(ctx)
+	fmt.Fprintf(os.Stderr, "\n@stem for %s: %s\n", label, stem)
+	interp := d.getHostInterpreterName(ctx, mod.properties.Actual_version)
+	fmt.Fprintf(os.Stderr, "\n@interp for %s: %s\n", label, interp)
+	main := libPaths[0].String() //binPath.String(
+	d.binaryProperties.Main = &main
+	_installSource := registerBuildActionForParFile(ctx, mod.isEmbeddedLauncherEnabled(), launcherPath,
+		interp, main, stem, android.Paths{zipPath})
+	if _installSource.String() != binPath.String() {
+		// Capture what Soong would've thought the binPath was going to be
+		fmt.Fprintf(os.Stderr, "\n@_installSource: %s\n", _installSource)
+	}
+	// Recreate install
+	mod.installSource = android.OptionalPathForPath(binPath) //zipPath)
+	var sharedLibs []string
+	// if embedded launcher is enabled, we need to collect the shared library depenendencies of the
+	// launcher
+	for _, dep := range ctx.GetDirectDepsWithTag(launcherSharedLibTag) {
+		sharedLibs = append(sharedLibs, ctx.OtherModuleName(dep))
+	}
+	fmt.Fprintf(os.Stderr, "\n@_sharedLibs: %s\n", sharedLibs)
+	mod.installer.setAndroidMkSharedLibs(sharedLibs) //libPaths.Strings())
+	mod.installer.install(ctx, binPath)
+	//os.Exit(3)
+
+	return true
+}
+
 func (binary *binaryDecorator) autorun() bool {
-	return BoolDefault(binary.binaryProperties.Autorun, true)
+	return proptools.BoolDefault(binary.binaryProperties.Autorun, true)
 }
 
 func (binary *binaryDecorator) bootstrapperProps() []interface{} {
@@ -159,7 +266,6 @@ func (binary *binaryDecorator) bootstrapperProps() []interface{} {
 func (binary *binaryDecorator) bootstrap(ctx android.ModuleContext, actualVersion string,
 	embeddedLauncher bool, srcsPathMappings []pathMapping, srcsZip android.Path,
 	depsSrcsZips android.Paths) android.OptionalPath {
-
 	main := ""
 	if binary.autorun() {
 		main = binary.getPyMainFile(ctx, srcsPathMappings)
@@ -178,6 +284,7 @@ func (binary *binaryDecorator) bootstrap(ctx android.ModuleContext, actualVersio
 		})
 	}
 
+	fmt.Fprintf(os.Stderr, "@BOOTSTRAPPING: %s\n", main)
 	binFile := registerBuildActionForParFile(ctx, embeddedLauncher, launcherPath,
 		binary.getHostInterpreterName(ctx, actualVersion),
 		main, binary.getStem(ctx), append(android.Paths{srcsZip}, depsSrcsZips...))
@@ -206,27 +313,37 @@ func (binary *binaryDecorator) getHostInterpreterName(ctx android.ModuleContext,
 func (binary *binaryDecorator) getPyMainFile(ctx android.ModuleContext,
 	srcsPathMappings []pathMapping) string {
 	var main string
-	if String(binary.binaryProperties.Main) == "" {
+	_main := proptools.String(binary.binaryProperties.Main)
+	if _main == "" {
 		main = ctx.ModuleName() + pyExt
 	} else {
-		main = String(binary.binaryProperties.Main)
+		main = _main
 	}
+	fmt.Fprintf(os.Stderr, "\n@@MAIN: %s (%s)\n", main, _main)
+	fmt.Fprintf(os.Stderr, "\n@@MAPPINGS: %+ v\n", srcsPathMappings)
 
 	for _, path := range srcsPathMappings {
-		if main == path.src.Rel() {
+		rel := path.src.Rel()
+		//if main == path.src.Rel() {
+		if strings.HasSuffix(rel, "/"+main) || rel == main {
+			fmt.Fprintf(os.Stderr, "\n@@@SUCCESS:\nrel: %s\ndest:%+ v\n", rel, path.dest)
+			if main != rel {
+				fmt.Fprintf(os.Stderr, "@@@WOULDFAIL:\nsrc: %+ v\n", path.src)
+			}
 			return path.dest
 		}
 	}
-	ctx.PropertyErrorf("main", "%q is not listed in srcs.", main)
+	//ctx.PropertyErrorf("main", "%q is not listed in srcs.", main)
+	fmt.Fprintf(os.Stderr, "@@@FAIL: main %s not listed in srcs\n", main)
 
 	return ""
 }
 
 func (binary *binaryDecorator) getStem(ctx android.ModuleContext) string {
 	stem := ctx.ModuleName()
-	if String(binary.binaryProperties.Stem) != "" {
-		stem = String(binary.binaryProperties.Stem)
+	if proptools.String(binary.binaryProperties.Stem) != "" {
+		stem = proptools.String(binary.binaryProperties.Stem)
 	}
 
-	return stem + String(binary.binaryProperties.Suffix)
+	return stem + proptools.String(binary.binaryProperties.Suffix)
 }
