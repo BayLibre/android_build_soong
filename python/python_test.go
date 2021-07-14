@@ -355,7 +355,38 @@ func TestPythonModule(t *testing.T) {
 	}
 }
 
-func expectModule(t *testing.T, ctx *android.TestContext, name, variant, expectedSrcsZip string, expectedPyRunfiles, expectedDepsSrcsZips []string) {
+var prepareForPythonBinaryHostWithBazelTest = android.GroupFixturePreparers(
+	PrepareForTestWithPythonBinaryHostComponents,
+)
+
+func TestPythonBinaryModuleWithBazel(t *testing.T) {
+	bp := `
+		python_binary_host {
+			name: "foo",
+			pkg_path: "out/",
+			bazel_module: { label: "//foo/bar:bar" },
+			srcs: [ "foo.py" ],
+		}
+	`
+
+	result := android.GroupFixturePreparers(
+		prepareForPythonBinaryHostWithBazelTest,
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.BazelContext = android.MockBazelContext{
+				OutputBaseDir: "out",
+				LabelToPythonBinary: map[string]string{
+					"//foo/bar:bar": "foo"}}
+		})).RunTestWithBp(t, bp)
+
+	mod := result.Module("foo", "PY3").(*Module)
+
+	android.AssertStringEquals(t, "output binary",
+		"out/execroot/__main__/foo",
+		mod.bazelHandler.(*pythonBinaryBazelHandler).module.srcs[0].String())
+}
+
+func expectModule(t *testing.T, ctx *android.TestContext, name, variant,
+	expectedSrcsZip string, expectedPyRunfiles, expectedDepsSrcsZips []string) {
 	module := ctx.ModuleForTests(name, variant)
 
 	base, baseOk := module.Module().(*Module)
@@ -368,11 +399,17 @@ func expectModule(t *testing.T, ctx *android.TestContext, name, variant, expecte
 		actualPyRunfiles = append(actualPyRunfiles, path.dest)
 	}
 
-	android.AssertDeepEquals(t, "pyRunfiles", expectedPyRunfiles, actualPyRunfiles)
+	if len(expectedPyRunfiles) > 0 {
+		android.AssertDeepEquals(t, "pyRunfiles", expectedPyRunfiles, actualPyRunfiles)
+	}
 
-	android.AssertPathRelativeToTopEquals(t, "srcsZip", expectedSrcsZip, base.srcsZip)
+	if len(expectedSrcsZip) > 0 {
+		android.AssertPathRelativeToTopEquals(t, "srcsZip", expectedSrcsZip, base.srcsZip)
+	}
 
-	android.AssertPathsRelativeToTopEquals(t, "depsSrcsZips", expectedDepsSrcsZips, base.depsSrcsZips)
+	if len(expectedDepsSrcsZips) > 0 {
+		android.AssertPathsRelativeToTopEquals(t, "depsSrcsZips", expectedDepsSrcsZips, base.depsSrcsZips)
+	}
 }
 
 func TestMain(m *testing.M) {
