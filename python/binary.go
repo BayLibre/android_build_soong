@@ -27,11 +27,11 @@ import (
 
 func init() {
 	registerPythonBinaryComponents(android.InitRegistrationContext)
-	android.RegisterBp2BuildMutator("python_binary_host", PythonBinaryBp2Build)
 }
 
 func registerPythonBinaryComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("python_binary_host", PythonBinaryHostFactory)
+	android.RegisterBp2BuildMutator("python_binary_host", PythonBinaryBp2Build)
 }
 
 type bazelPythonBinaryAttributes struct {
@@ -141,26 +141,57 @@ var (
 	StubTemplateHost = "build/soong/python/scripts/stub_template_host.txt"
 )
 
+type pythonBinaryBazelHandler struct {
+	android.BazelHandler
+
+	module *Module
+	srcs   android.Paths
+}
+
 func NewBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
 	module := newModule(hod, android.MultilibFirst)
 	decorator := &binaryDecorator{pythonInstaller: NewPythonInstaller("bin", "")}
 
 	module.bootstrapper = decorator
 	module.installer = decorator
+	module.bazelHandler = &pythonBinaryBazelHandler{module: module}
 
 	return module, decorator
 }
 
 func PythonBinaryHostFactory() android.Module {
 	module, _ := NewBinary(android.HostSupported)
-
 	android.InitBazelModule(module)
-
 	return module.init()
 }
 
+func (h *pythonBinaryBazelHandler) GenerateBazelBuildActions(
+	ctx android.ModuleContext, label string) bool {
+	// Catch if this module doesn't correspond to python_binary_host
+	if ctx.ModuleType() != "python_binary_host" {
+		return false
+	}
+	bazelCtx := ctx.Config().BazelContext
+
+	binPath, ok := bazelCtx.GetPythonBinary(label, android.GetConfigKey(ctx))
+	if !ok {
+		return false
+	}
+	h.srcs = android.Paths{android.PathForBazelOut(ctx, binPath)}
+
+	libsPaths, ok := bazelCtx.GetPythonSharedLibs(label, android.GetConfigKey(ctx))
+	if !ok {
+		return false
+	}
+	h.module.installer.setAndroidMkSharedLibs(android.PathsForBazelOut(ctx, libsPaths).Strings())
+	// TODO(alexmarquez): recreate bootstrap
+	// TODO(alexmarquez): recreate generatePythonBuildActions
+
+	return true
+}
+
 func (binary *binaryDecorator) autorun() bool {
-	return BoolDefault(binary.binaryProperties.Autorun, true)
+	return proptools.BoolDefault(binary.binaryProperties.Autorun, true)
 }
 
 func (binary *binaryDecorator) bootstrapperProps() []interface{} {
@@ -170,7 +201,6 @@ func (binary *binaryDecorator) bootstrapperProps() []interface{} {
 func (binary *binaryDecorator) bootstrap(ctx android.ModuleContext, actualVersion string,
 	embeddedLauncher bool, srcsPathMappings []pathMapping, srcsZip android.Path,
 	depsSrcsZips android.Paths) android.OptionalPath {
-
 	main := ""
 	if binary.autorun() {
 		main = binary.getPyMainFile(ctx, srcsPathMappings)
@@ -217,10 +247,10 @@ func (binary *binaryDecorator) getHostInterpreterName(ctx android.ModuleContext,
 func (binary *binaryDecorator) getPyMainFile(ctx android.ModuleContext,
 	srcsPathMappings []pathMapping) string {
 	var main string
-	if String(binary.binaryProperties.Main) == "" {
+	if proptools.String(binary.binaryProperties.Main) == "" {
 		main = ctx.ModuleName() + pyExt
 	} else {
-		main = String(binary.binaryProperties.Main)
+		main = proptools.String(binary.binaryProperties.Main)
 	}
 
 	for _, path := range srcsPathMappings {
@@ -235,9 +265,9 @@ func (binary *binaryDecorator) getPyMainFile(ctx android.ModuleContext,
 
 func (binary *binaryDecorator) getStem(ctx android.ModuleContext) string {
 	stem := ctx.ModuleName()
-	if String(binary.binaryProperties.Stem) != "" {
-		stem = String(binary.binaryProperties.Stem)
+	if proptools.String(binary.binaryProperties.Stem) != "" {
+		stem = proptools.String(binary.binaryProperties.Stem)
 	}
 
-	return stem + String(binary.binaryProperties.Suffix)
+	return stem + proptools.String(binary.binaryProperties.Suffix)
 }
