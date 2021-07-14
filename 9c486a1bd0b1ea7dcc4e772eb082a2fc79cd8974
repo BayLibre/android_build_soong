@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e66b98de_9f919825",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-14T22:04:10Z",
+      "side": 1,
+      "message": "I don\u0027t think this is how we want it to work, and fixing the mentioned ticket would mean breaking this. Is that the intention here?",
+      "revId": "9c486a1bd0b1ea7dcc4e772eb082a2fc79cd8974",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
