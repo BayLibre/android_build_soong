@@ -437,6 +437,12 @@ func shouldSkipAction(a action) bool {
 	if a.Mnemonic == "FileWrite" {
 		return true
 	}
+
+	// FIXME(b/184873200): Skip to be able to test
+	if a.Mnemonic == "TemplateExpand" {
+		return true
+	}
+
 	return false
 }
 
