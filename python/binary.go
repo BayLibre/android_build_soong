@@ -157,8 +157,13 @@ var (
 	StubTemplateHost = "build/soong/python/scripts/stub_template_host.txt"
 )
 
-func NewBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
-	module := newModule(hod, android.MultilibFirst)
+type PythonBinary struct {
+	Module
+	srcs android.Paths
+}
+
+func NewBinary(hod android.HostOrDeviceSupported) (*PythonBinary, *binaryDecorator) {
+	module := &PythonBinary{Module: *newModule(hod, android.MultilibFirst)}
 	decorator := &binaryDecorator{pythonInstaller: NewPythonInstaller("bin", "")}
 
 	module.bootstrapper = decorator
@@ -170,9 +175,50 @@ func NewBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
 func PythonBinaryHostFactory() android.Module {
 	module, _ := NewBinary(android.HostSupported)
 
+	//android.InitAndroidModule(module)
 	android.InitBazelModule(module)
 
 	return module.init()
+}
+
+func (m *PythonBinary) generateBazelBuildActions(ctx android.ModuleContext) bool {
+	// Catch if this module doesn't correspond to python_binary_host
+	if ctx.ModuleType() != "python_binary_host" {
+		return false
+	}
+
+	if !m.MixedBuildsEnabled(ctx) {
+		return false
+	}
+
+	bazelCtx := ctx.Config().BazelContext
+	filePaths, ok := bazelCtx.GetOutputFiles(m.GetBazelLabel(ctx, m), ctx.Arch().ArchType)
+	if !ok {
+		return false
+	}
+
+	bazelOuts := make(android.Paths, 0, len(filePaths))
+	for _, p := range filePaths {
+		src := android.PathForBazelOut(ctx, p)
+		bazelOuts = append(bazelOuts, src)
+	}
+
+	m.srcs = bazelOuts
+
+	return true
+}
+
+func (m *PythonBinary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	if m.generateBazelBuildActions(ctx) {
+		return
+	}
+
+	// Otherwise, fall back to the standard `python` GenerateAndroidBuildActions
+	m.Module.GenerateAndroidBuildActions(ctx)
+}
+
+func (m *PythonBinary) Srcs() android.Paths {
+	return append(android.Paths{}, m.srcs...)
 }
 
 func (binary *binaryDecorator) autorun() bool {
