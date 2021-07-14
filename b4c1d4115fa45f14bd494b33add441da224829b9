@@ -16,6 +16,46 @@
       "message": "Ping.",
       "revId": "b4c1d4115fa45f14bd494b33add441da224829b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3ab217e_de7708f6",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-14T21:56:52Z",
+      "side": 1,
+      "message": "Some plumbing is required in the makefiles to get a variable like this interpreted as a Soong config variable, so this is misleading. For the concrete example of MODULE_BUILD_FROM_SOURCE it has to be \"MODULE_BUILD_FROM_SOURCE\u003dtrue\": https://cs.android.com/android/platform/superproject/+/master:build/make/core/android_soong_config_vars.mk;l\u003d83-85;drc\u003d75b8f0a469dc7f3941758b66d96b48976d83f18f",
+      "range": {
+        "startLine": 57,
+        "startChar": 11,
+        "endLine": 57,
+        "endChar": 53
+      },
+      "revId": "b4c1d4115fa45f14bd494b33add441da224829b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "946736bd_25f74ca6",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-14T21:56:52Z",
+      "side": 1,
+      "message": "This is a stop-gap measure to control \"prefer\" flags, and I think it\u0027s worth pointing that out. Please add a TODO(b/174997203) that it is slated to be removed in favour of a more maintainable solution.",
+      "revId": "b4c1d4115fa45f14bd494b33add441da224829b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
