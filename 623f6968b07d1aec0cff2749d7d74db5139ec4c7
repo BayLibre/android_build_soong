@@ -134,6 +134,30 @@
       },
       "revId": "623f6968b07d1aec0cff2749d7d74db5139ec4c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "338a431d_979c6a36",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-14T15:10:41Z",
+      "side": 1,
+      "message": "To my knowledge Soong consistently uses strings with separators in them for identifiers of different sorts: visibility references, fully qualified module names, :file references, paths, etc. I don\u0027t think this is any different - for these use cases strings with some syntax in them is way more convenient than completely structured types.\n\nBut if you see some aspect here that I don\u0027t then I shan\u0027t block it. It still gets the job done.",
+      "parentUuid": "322bd69d_4228ebbc",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 31
+      },
+      "revId": "623f6968b07d1aec0cff2749d7d74db5139ec4c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

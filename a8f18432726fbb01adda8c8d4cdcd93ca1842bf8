@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b6f7958_213ea474",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-14T15:10:41Z",
+      "side": 1,
+      "message": "This ticket is about solving various issues stemming from setting `prefer: true` on SDKs, afaict. I\u0027ve now opened b/193523070 to specifically track implementing a short-term method to control the prefer flags. Please tag it here.",
+      "revId": "a8f18432726fbb01adda8c8d4cdcd93ca1842bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c37408d8_6c13ffbe",
@@ -31,6 +48,24 @@
       "writtenOn": "2021-07-14T14:53:07Z",
       "side": 1,
       "message": "Ping.",
+      "revId": "a8f18432726fbb01adda8c8d4cdcd93ca1842bf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4636811c_5382a320",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-14T15:10:41Z",
+      "side": 1,
+      "message": "Meh, I missed clicking the \"send\" button yesterday. :\\",
+      "parentUuid": "ed0911c9_86652748",
       "revId": "a8f18432726fbb01adda8c8d4cdcd93ca1842bf8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
