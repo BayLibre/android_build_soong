@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000013231793",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1766626?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "dd53afab_8465ce96",
+          "description": "Change to \"ui/metrics/metrics_proto/metrics.pb.go\"",
+          "replacements": [
+            {
+              "path": "ui/metrics/metrics_proto/metrics.pb.go",
+              "range": {
+                "startLine": 441,
+                "startChar": 21,
+                "endLine": 441,
+                "endChar": 29
+              },
+              "replacement": "occurring"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "27ebe7a4_6ece1b41",
+        "filename": "ui/metrics/metrics_proto/metrics.pb.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-07-14T21:46:49Z",
+      "side": 1,
+      "message": "Common typo found: \"occuring\" -- should it be \"occurring\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 441,
+        "startChar": 21,
+        "endLine": 441,
+        "endChar": 29
+      },
+      "revId": "225e0a379a4cf2939a411fdaca79b7594468bfbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000013231793",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1766626?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "b3778634_e11c020f",
+          "description": "Change to \"ui/metrics/metrics_proto/metrics.proto\"",
+          "replacements": [
+            {
+              "path": "ui/metrics/metrics_proto/metrics.proto",
+              "range": {
+                "startLine": 123,
+                "startChar": 22,
+                "endLine": 123,
+                "endChar": 30
+              },
+              "replacement": "occurring"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "ef50543c_e6e5f246",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-07-14T21:46:49Z",
+      "side": 1,
+      "message": "Common typo found: \"occuring\" -- should it be \"occurring\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 123,
+        "startChar": 22,
+        "endLine": 123,
+        "endChar": 30
+      },
+      "revId": "225e0a379a4cf2939a411fdaca79b7594468bfbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
