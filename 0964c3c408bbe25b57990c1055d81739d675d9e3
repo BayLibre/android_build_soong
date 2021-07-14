@@ -46,6 +46,30 @@
       },
       "revId": "0964c3c408bbe25b57990c1055d81739d675d9e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd1a9f3f_1fc6700c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-14T22:42:45Z",
+      "side": 1,
+      "message": "Since OtherModuleFarDependencyVariantExists went in for other reasons (http://r.android.com/q/topic:far-dep-exists), we could use it to depend on the sdk variant if it exists, with the platform variant as fallback. I had that change in https://r.android.com/c/1697062/4.",
+      "parentUuid": "90881879_e1546ec3",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 49
+      },
+      "revId": "0964c3c408bbe25b57990c1055d81739d675d9e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
