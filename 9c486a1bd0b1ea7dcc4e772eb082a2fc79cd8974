@@ -16,6 +16,24 @@
       "message": "I don\u0027t think this is how we want it to work, and fixing the mentioned ticket would mean breaking this. Is that the intention here?",
       "revId": "9c486a1bd0b1ea7dcc4e772eb082a2fc79cd8974",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ba7cbba_c5883e34",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-14T22:37:50Z",
+      "side": 1,
+      "message": "Yes. This is showing the current behavior, which is broken. There\u0027s no point uploading this as is if the following change is not going to be submitted soon afterwards. Otherwise, this should be updated to make it clear that this is broken behavior.",
+      "parentUuid": "e66b98de_9f919825",
+      "revId": "9c486a1bd0b1ea7dcc4e772eb082a2fc79cd8974",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
