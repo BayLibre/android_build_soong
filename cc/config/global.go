@@ -419,3 +419,14 @@ func init() {
 }
 
 var HostPrebuiltTag = pctx.VariableConfigMethod("HostPrebuiltTag", android.Config.PrebuiltOS)
+
+func ClangTool(ctx android.PathContext, tool string) android.SourcePath {
+	type clangToolKey string
+
+	key := android.NewCustomOnceKey(clangToolKey(tool))
+
+	return ctx.Config().OnceSourcePath(key, func() android.SourcePath {
+		// TODO: Support env overrides
+		return android.PathForSource(ctx, ClangDefaultBase, ctx.Config().PrebuiltOS(), ClangDefaultVersion, "bin", tool)
+	})
+}
