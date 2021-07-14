@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c3d7f332_7e5ad6bb",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-14T21:23:14Z",
+      "side": 1,
+      "message": "Will drop the map, as it is only needed to resolve required modules.  \n\nThe createHostBin() module should only return ok\u003d\u003dtrue for a single module of a given name.  I will add an error condition in the reworked version.",
+      "parentUuid": "5f5733f5_0c980c28",
+      "range": {
+        "startLine": 92,
+        "startChar": 16,
+        "endLine": 92,
+        "endChar": 29
+      },
+      "revId": "a67fb09324a4f96e1db525ff5604ce6af9a38061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d0046e6_31499602",
         "filename": "cc/host_snapshot.go",
         "patchSetId": 5
@@ -189,6 +213,24 @@
       "writtenOn": "2021-07-14T17:19:31Z",
       "side": 1,
       "message": "Historically Soong has not resolved required modules, it has delegated that to Make.  Resolving them in Soong requires at least handling namespaces and prebuilts.  I think if you want to resolve them in Make we\u0027ll need to add them as proper dependencies and then see them in VisitDirectDeps.",
+      "revId": "a67fb09324a4f96e1db525ff5604ce6af9a38061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca506e31_8852a379",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-14T21:23:14Z",
+      "side": 1,
+      "message": "Thanks for the information on this.  I can drop the automatic support for resolving required modules, this will remove the need for the map of modules.\n\nThis functionality can be included where we determine which modules to include (HOST_SNAPSHOT_MODULES) in the snapshot (similar to other snapshots)",
+      "parentUuid": "4c08f8b2_671465b9",
       "revId": "a67fb09324a4f96e1db525ff5604ce6af9a38061",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },

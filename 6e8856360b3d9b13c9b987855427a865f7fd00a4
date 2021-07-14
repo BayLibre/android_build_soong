@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fba75ab_b1b5ccd5",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-14T21:23:14Z",
+      "side": 1,
+      "message": "check that ctx.PrimaryModule(module) \u003d\u003d module as part of validity check",
+      "revId": "6e8856360b3d9b13c9b987855427a865f7fd00a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
