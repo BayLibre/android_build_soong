@@ -574,10 +574,6 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		j.installFile = ctx.InstallFile(android.PathForModuleInstall(ctx, "framework"),
 			j.Stem()+".jar", j.outputFile, extraInstallDeps...)
 	}
-
-	if ctx.Windows() {
-		j.HideFromMake()
-	}
 }
 
 func (j *Library) DepsMutator(ctx android.BottomUpMutatorContext) {
@@ -1143,10 +1139,6 @@ func (j *Binary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		// libraries.  This is verified by TestBinary.
 		j.binaryFile = ctx.InstallExecutable(android.PathForModuleInstall(ctx, "bin"),
 			ctx.ModuleName()+ext, j.wrapperFile)
-	}
-
-	if ctx.Windows() {
-		j.HideFromMake()
 	}
 }
 
