@@ -174,7 +174,9 @@ func (d *DeviceHostConverter) AndroidMk() android.AndroidMkData {
 	return android.AndroidMkData{
 		Class:      "JAVA_LIBRARIES",
 		OutputFile: android.OptionalPathForPath(d.combinedImplementationJar),
-		Include:    "$(BUILD_SYSTEM)/soong_java_prebuilt.mk",
+		// Make does not support Windows Java modules
+		Disabled: d.Os() == android.Windows,
+		Include:  "$(BUILD_SYSTEM)/soong_java_prebuilt.mk",
 		Extra: []android.AndroidMkExtraFunc{
 			func(w io.Writer, outputFile android.Path) {
 				fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE := true")
