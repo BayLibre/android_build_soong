@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bcfcabb_5332850c",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1786,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-15T14:56:55Z",
+      "side": 1,
+      "message": "Why is this still needed?",
+      "revId": "9534b9e0be787236408d6191177487c7be29c498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
