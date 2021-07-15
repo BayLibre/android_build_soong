@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b794b40e_db94221b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-15T15:29:43Z",
+      "side": 1,
+      "message": "I took a quick look at the failure and it seems as though this is failing because it is missing https://r.android.com/1736332.",
+      "revId": "6d081c1c1c94d265c7ea50d69e455ca0eb1f5353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe7305eb_c4b7fd9c",
