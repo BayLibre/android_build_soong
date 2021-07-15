@@ -1766,6 +1766,8 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 		return
 	}
 
+	depName := android.RemoveOptionalPrebuiltPrefix(ctx.OtherModuleName(depModule))
+
 	// Find out if the dependency is either an SDK library or an ordinary library that is disguised
 	// as an SDK library by the means of `provides_uses_lib` property. If yes, the library is itself
 	// a <uses-library> and should be added as a node in the CLC tree, and its CLC should be added
@@ -1775,6 +1777,12 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 	var implicitSdkLib *string
 	comp, isComp := depModule.(SdkLibraryComponentDependency)
 	if isComp {
+		// Skip stub libraries. A dependency on the implementation library has been added earlier,
+		// so it will be added to CLC, but the stub shouldn't be. Stub libraries can be distingushed
+		// from implementation libraries by their name, which is different as it has a suffix.
+		if impl := comp.OptionalSdkLibraryImplementation(); impl != nil && *impl != depName {
+			return
+		}
 		implicitSdkLib = comp.OptionalImplicitSdkLibrary()
 		// OptionalImplicitSdkLibrary() may be nil so need to fall through to ProvidesUsesLib().
 	}
@@ -1803,7 +1811,6 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 		clcMap.AddContext(ctx, dexpreopt.AnySdkVersion, *implicitSdkLib,
 			dep.DexJarBuildPath(), dep.DexJarInstallPath(), dep.ClassLoaderContexts())
 	} else {
-		depName := ctx.OtherModuleName(depModule)
 		clcMap.AddContextMap(dep.ClassLoaderContexts(), depName)
 	}
 }
