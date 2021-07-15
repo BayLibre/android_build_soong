@@ -16,6 +16,23 @@
       "message": "PTAL. Fixed build test issues.",
       "revId": "f0940ebcfdde84d44cf315bd14dcee7014f70d64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff512f6d_19d5eaed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-15T13:00:43Z",
+      "side": 1,
+      "message": "This may break builds that build against prebuilts as it will detect at build time that the prebuilt libraries that are on the bootclasspath do not provide permitted_packages.",
+      "revId": "f0940ebcfdde84d44cf315bd14dcee7014f70d64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
