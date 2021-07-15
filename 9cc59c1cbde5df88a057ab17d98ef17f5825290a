@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "306e9dc7_02a08cdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-07-15T04:41:42Z",
+      "side": 1,
+      "message": "Unless I\u0027m missing something, this part of the commit message seems extraneous.  This change doesn\u0027t touch -fdebug-prefix-map at all.",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "9cc59c1cbde5df88a057ab17d98ef17f5825290a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d24c5d58_5ab081a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-07-15T04:41:42Z",
+      "side": 1,
+      "message": "+kousikk: related to b/192079387, this change will invalidate RBE cache.  We just have to make sure this doesn\u0027t merge at the same time as the next compiler update 😄",
+      "revId": "9cc59c1cbde5df88a057ab17d98ef17f5825290a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
