@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21f5007c_72bf947a",
+        "filename": "cc/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2021-07-15T05:40:34Z",
+      "side": 1,
+      "message": "I think that makes sense. I suggest doing this in a second round of refactoring (I started it and it requires pulling a bunch of structs from cc.go to avoid circular dependencies). I can start the second change as soon as this one is merged.",
+      "parentUuid": "ef36a469_1c976baa",
+      "revId": "658dc34f695424aecd3796f18921303d988f9bba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "739e0e01_c7ac17cc",
         "filename": "cc/fuzz_common.go",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-12T22:05:20Z",
       "side": 1,
       "message": "It\u0027s a little odd to get these through FuzzModule, as they have nothing to do with fuzzing.  They also don\u0027t seem to be referenced by anything in this file.",
+      "revId": "658dc34f695424aecd3796f18921303d988f9bba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cff1574_f8f6757d",
+        "filename": "cc/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2021-07-15T05:40:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "739e0e01_c7ac17cc",
       "revId": "658dc34f695424aecd3796f18921303d988f9bba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,30 @@
       "writtenOn": "2021-07-12T22:05:20Z",
       "side": 1,
       "message": "What does parent mean in this context?  Is there a more specific name you could use?\n\nProperties refers to the properties in Android.bp files, but that doesn\u0027t seem to be what this is used for, as they don\u0027t support types like android.Path.",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 11
+      },
+      "revId": "658dc34f695424aecd3796f18921303d988f9bba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2baa4733_ed397c49",
+        "filename": "cc/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2021-07-15T05:40:34Z",
+      "side": 1,
+      "message": "Used PackagingProperties instead.\nI didnt understand the second part of your comment.",
+      "parentUuid": "69983d8a_fc55a632",
       "range": {
         "startLine": 59,
         "startChar": 5,
