@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c50e732_af3d5fc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-15T11:24:05Z",
+      "side": 1,
+      "message": "FTR I am working on a change to create a much stricter version of that which will return errors when it detects an invalid module reference. At the moment you can pass anything you like to that and it will either treat it as a module (even though the name is completely invalid as a module name) or as a path.",
+      "revId": "ba9ea32f73100a91659381e0c12de2ddf8bd7982",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
