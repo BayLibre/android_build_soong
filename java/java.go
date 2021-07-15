@@ -1766,21 +1766,35 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 		return
 	}
 
+	depName := android.RemoveOptionalPrebuiltPrefix(ctx.OtherModuleName(depModule))
+
 	// Find out if the dependency is either an SDK library or an ordinary library that is disguised
 	// as an SDK library by the means of `provides_uses_lib` property. If yes, the library is itself
 	// a <uses-library> and should be added as a node in the CLC tree, and its CLC should be added
 	// as subtree of that node. Otherwise the library is not a <uses_library> and should not be
 	// added to CLC, but the transitive <uses-library> dependencies from its CLC should be added to
 	// the current CLC.
-	var implicitSdkLib *string
+	var sdkLib *string
 	comp, isComp := depModule.(SdkLibraryComponentDependency)
 	if isComp {
-		implicitSdkLib = comp.OptionalImplicitSdkLibrary()
-		// OptionalImplicitSdkLibrary() may be nil so need to fall through to ProvidesUsesLib().
+		if comp.OptionalImplicitSdkLibrary() == nil {
+			// Not a real SDK library, fall through to `ProvidesUsesLib()` below and give it a try.
+		} else if impl := comp.OptionalSdkLibraryImplementation(); impl != nil && *impl != depName {
+			// Skip stub library. A dependency on the implementation library has been added earlier,
+			// so it will be added to CLC, but the stub shouldn't be. Stub library can be
+			// distingushed from implementation by its name, which is different as it has a suffix.
+			return
+		} else {
+			// An SDK library. Make sure its name is consistent with `OptionalImplicitSdkLibrary()`.
+			sdkLib = &depName
+			if depName != *comp.OptionalImplicitSdkLibrary() {
+				ctx.ModuleErrorf("SDK library name doesn't match OptionalImplicitSdkLibrary()")
+			}
+		}
 	}
-	if implicitSdkLib == nil {
+	if sdkLib == nil {
 		if ulib, ok := depModule.(ProvidesUsesLib); ok {
-			implicitSdkLib = ulib.ProvidesUsesLib()
+			sdkLib = ulib.ProvidesUsesLib()
 		}
 	}
 
@@ -1791,7 +1805,7 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 		// Propagate <uses-library> through static library dependencies, unless it is a component
 		// library (such as stubs). Component libraries have a dependency on their SDK library,
 		// which should not be pulled just because of a static component library.
-		if implicitSdkLib != nil {
+		if sdkLib != nil {
 			return
 		}
 	} else {
@@ -1799,11 +1813,10 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 		return
 	}
 
-	if implicitSdkLib != nil {
-		clcMap.AddContext(ctx, dexpreopt.AnySdkVersion, *implicitSdkLib,
+	if sdkLib != nil {
+		clcMap.AddContext(ctx, dexpreopt.AnySdkVersion, *sdkLib,
 			dep.DexJarBuildPath(), dep.DexJarInstallPath(), dep.ClassLoaderContexts())
 	} else {
-		depName := ctx.OtherModuleName(depModule)
 		clcMap.AddContextMap(dep.ClassLoaderContexts(), depName)
 	}
 }
