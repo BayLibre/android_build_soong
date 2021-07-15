@@ -37,7 +37,7 @@ func sdkMutator(ctx android.BottomUpMutatorContext) {
 			}
 			modules := ctx.CreateVariations("sdk")
 			modules[0].(*Module).Properties.IsSdkVariant = true
-		} else if m.UseSdk() || m.SplitPerApiLevel() {
+		} else if m.UseSdk() || (m.SplitPerApiLevel() && !m.UseVndk()) {
 			modules := ctx.CreateVariations("", "sdk")
 
 			// Clear the sdk_version property for the platform (non-SDK) variant so later code

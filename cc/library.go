@@ -2279,7 +2279,7 @@ func versionMutator(mctx android.BottomUpMutatorContext) {
 	}
 
 	if m, ok := mctx.Module().(*Module); ok {
-		if m.SplitPerApiLevel() && m.IsSdkVariant() {
+		if m.SplitPerApiLevel() && (m.IsSdkVariant() || m.UseVndk()) {
 			if mctx.Os() != android.Android {
 				return
 			}

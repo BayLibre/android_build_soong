@@ -938,7 +938,7 @@ func (c *Module) MinSdkVersion() string {
 }
 
 func (c *Module) SplitPerApiLevel() bool {
-	if !c.canUseSdk() {
+	if !c.canUseSdk() && !c.UseVndk() {
 		return false
 	}
 	if linker, ok := c.linker.(*objectLinker); ok {
@@ -1383,7 +1383,7 @@ func (ctx *moduleContextImpl) useSdk() bool {
 
 func (ctx *moduleContextImpl) sdkVersion() string {
 	if ctx.ctx.Device() {
-		if ctx.useVndk() {
+		if ctx.useVndk() && !ctx.mod.SplitPerApiLevel() {
 			vndkVer := ctx.mod.VndkVersion()
 			if inList(vndkVer, ctx.ctx.Config().PlatformVersionActiveCodenames()) {
 				return "current"
@@ -1412,7 +1412,7 @@ func (ctx *moduleContextImpl) minSdkVersion() string {
 	// min_sdk_version: 16 doesn't actually mean that the platform variant has to support such
 	// an old version. Since the variant is for the platform, it's preferred to target the
 	// latest version.
-	if ctx.mod.SplitPerApiLevel() && !ctx.isSdkVariant() {
+	if ctx.mod.SplitPerApiLevel() && !ctx.isSdkVariant() && !ctx.useVndk() {
 		ver = strconv.Itoa(android.FutureApiLevelInt)
 	}
 
@@ -1969,15 +1969,24 @@ func GetCrtVariations(ctx android.BottomUpMutatorContext,
 	if ctx.Os() != android.Android {
 		return nil
 	}
-	if m.UseSdk() {
+	if m.UseSdk() || m.UseVndk() {
 		// Choose the CRT that best satisfies the min_sdk_version requirement of this module
 		minSdkVersion := m.MinSdkVersion()
 		if minSdkVersion == "" || minSdkVersion == "apex_inherit" {
 			minSdkVersion = m.SdkVersion()
 		}
+		if minSdkVersion == "" && m.UseVndk() {
+			minSdkVersion = m.VndkVersion()
+		}
 		apiLevel, err := android.ApiLevelFromUser(ctx, minSdkVersion)
 		if err != nil {
 			ctx.PropertyErrorf("min_sdk_version", err.Error())
+		}
+
+		if m.UseVndk() {
+			return []blueprint.Variation{
+				{Mutator: "version", Variation: apiLevel.String()},
+			}
 		}
 		return []blueprint.Variation{
 			{Mutator: "sdk", Variation: "sdk"},
