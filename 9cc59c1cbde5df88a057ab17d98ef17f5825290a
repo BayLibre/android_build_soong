@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ea19527f_336b7544",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-07-15T05:33:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f2ddf423_8ba6f2d7",
+      "range": {
+        "startLine": 10,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 41
+      },
+      "revId": "9cc59c1cbde5df88a057ab17d98ef17f5825290a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d24c5d58_5ab081a9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "That\u0027s one of the reasons I split this out, so it can be submitted separately at a good time.\n\nThe same time as the next compiler update would probably be a good time, since that will cause a single invalidation instead of two.",
       "parentUuid": "d24c5d58_5ab081a9",
+      "revId": "9cc59c1cbde5df88a057ab17d98ef17f5825290a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aef3193_306a7e0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-07-15T05:33:15Z",
+      "side": 1,
+      "message": "Actually, two invalidations back-to-back would cause a bigger spike when they are far (~day) apart.  The linked bug is about invalidations when a new compiler and the dwarfv5 switch merged close to each other.",
+      "parentUuid": "74973515_3923f79f",
       "revId": "9cc59c1cbde5df88a057ab17d98ef17f5825290a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
