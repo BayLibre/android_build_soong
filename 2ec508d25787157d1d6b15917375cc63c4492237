@@ -16,6 +16,24 @@
       "message": "This could get moved with the rest of the blueprint imports",
       "revId": "2ec508d25787157d1d6b15917375cc63c4492237",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa406e2f_8b5a336f",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-07-15T04:20:27Z",
+      "side": 1,
+      "message": "Done (and reordered the rest of these imports, since there were three sets of blueprint imports and two sets of soong/ui imports)",
+      "parentUuid": "e558824c_935bf7e5",
+      "revId": "2ec508d25787157d1d6b15917375cc63c4492237",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
