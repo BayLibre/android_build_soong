@@ -69,6 +69,24 @@
       "message": "Let\u0027s remember to watch the dashboards after this lands to make sure things work. \u003d)",
       "revId": "e519bbf2790d7fe0e8ce0ecc5a6167f62f5f051d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "566c05f9_4367587c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-07-15T22:56:53Z",
+      "side": 1,
+      "message": "Looks like the dashboards are only up for the S release.  Let\u0027s wait until we have a dashboard for the next release, which is on track for later this quarter.",
+      "parentUuid": "17c91dee_0cdc03ab",
+      "revId": "e519bbf2790d7fe0e8ce0ecc5a6167f62f5f051d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
