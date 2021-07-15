@@ -16,6 +16,24 @@
       "message": "To clarify, from looking at some documentation, I don\u0027t think it\u0027s needed for Clang coverage, but I wasn\u0027t sure.  But you verified that this still worked with it, right?  Can you add that to the test stanza?",
       "revId": "e519bbf2790d7fe0e8ce0ecc5a6167f62f5f051d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd2cad3f_ad5ddeec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-07-15T17:15:06Z",
+      "side": 1,
+      "message": "No I didn\u0027t verify if it works :)  What tests can we run on Forrest to validate this?",
+      "parentUuid": "3f2b745c_f561e70c",
+      "revId": "e519bbf2790d7fe0e8ce0ecc5a6167f62f5f051d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
