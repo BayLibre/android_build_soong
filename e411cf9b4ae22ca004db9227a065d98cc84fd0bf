@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb6c863a_9ee7cf43",
+        "filename": "android/required.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-15T07:37:03Z",
+      "side": 1,
+      "message": "The soundness of this type cast is promised by requiredModuleMutator().",
+      "range": {
+        "startLine": 104,
+        "startChar": 23,
+        "endLine": 104,
+        "endChar": 53
+      },
+      "revId": "e411cf9b4ae22ca004db9227a065d98cc84fd0bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
