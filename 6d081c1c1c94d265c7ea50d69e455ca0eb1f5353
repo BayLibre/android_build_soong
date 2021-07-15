@@ -37,6 +37,42 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d0e1ad1_e9320f51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-07-15T15:33:44Z",
+      "side": 1,
+      "message": "Its not. In a previous patch on this change I explicitly ignore core-icu4j, then the other fragment started failing.\n\nThere is some generally issue with prebuilts that I don\u0027t understand, thus I re-assigned the bug to you.",
+      "parentUuid": "b794b40e_db94221b",
+      "revId": "6d081c1c1c94d265c7ea50d69e455ca0eb1f5353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa91db1a_71e7898f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-07-15T15:33:44Z",
+      "side": 1,
+      "message": "Tests are just to make sure they follow the same requirements. Existing tests use BootJars when they really mean updatable ones. The change would break them otherwise.\n\nIt was hard to split them out before, since you were changing them every day a week ago. Are you done with the changes now?",
+      "parentUuid": "a43c2866_043d02c5",
+      "revId": "6d081c1c1c94d265c7ea50d69e455ca0eb1f5353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe7305eb_c4b7fd9c",
         "filename": "apex/platform_bootclasspath_test.go",
         "patchSetId": 10
@@ -48,6 +84,24 @@
       "writtenOn": "2021-07-15T15:21:48Z",
       "side": 1,
       "message": "Why have you changed this from `com.android.art`? If your code works differently for \"com.android.art\" than it does for \"otherapex\" then it makes sense to have tests for both. If it doesn\u0027t behave differently then I don\u0027t see the point in changing this test. The com.android.art is treated specially in some places so having a test for it is important.",
+      "revId": "6d081c1c1c94d265c7ea50d69e455ca0eb1f5353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87a148b2_f806ca4d",
+        "filename": "apex/platform_bootclasspath_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-07-15T15:33:44Z",
+      "side": 1,
+      "message": "Art apex assumes image_name to be set in fragment soong code. The tests don\u0027t reflect reality and art shouldn\u0027t be setting contents in its fragments.\n\nCan introduce a new test.",
+      "parentUuid": "fe7305eb_c4b7fd9c",
       "revId": "6d081c1c1c94d265c7ea50d69e455ca0eb1f5353",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
