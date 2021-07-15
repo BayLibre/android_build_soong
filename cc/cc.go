@@ -1418,6 +1418,12 @@ func (ctx *moduleContextImpl) minSdkVersion() string {
 		ver = strconv.Itoa(android.FutureApiLevelInt)
 	}
 
+	// VNDK modules don't need to run on anything older than the VNDK version, which is returned
+	// by ctx.sdkVersion().
+	if ctx.useVndk() {
+		ver = ctx.sdkVersion()
+	}
+
 	// Also make sure that minSdkVersion is not greater than sdkVersion, if they are both numbers
 	sdkVersionInt, err := strconv.Atoi(ctx.sdkVersion())
 	minSdkVersionInt, err2 := strconv.Atoi(ver)
