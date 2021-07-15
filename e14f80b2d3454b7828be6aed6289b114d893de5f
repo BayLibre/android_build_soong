@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "477d0712_545b140a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-15T14:52:17Z",
+      "side": 1,
+      "message": "Jeongik, I slightly modified your recent changes. Can you verify that this doesn\u0027t break post-dexpreopt please?",
+      "revId": "e14f80b2d3454b7828be6aed6289b114d893de5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
