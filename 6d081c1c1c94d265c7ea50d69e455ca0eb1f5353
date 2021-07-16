@@ -73,6 +73,59 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dca50d84_a1aa798a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-16T11:25:21Z",
+      "side": 1,
+      "message": "Ok. I\u0027ll take a look.",
+      "parentUuid": "3d0e1ad1_e9320f51",
+      "revId": "6d081c1c1c94d265c7ea50d69e455ca0eb1f5353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00ee11c7_a5a6f0a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-16T11:25:21Z",
+      "side": 1,
+      "message": "I forgot to send this yesterday.\n\nA recent change of mine to clean up permitted_packages handling has broken some of the tests. Sorry.",
+      "revId": "6d081c1c1c94d265c7ea50d69e455ca0eb1f5353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31566c16_9f7b6837",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-16T11:25:21Z",
+      "side": 1,
+      "message": "There are always more changes to come but there are less of them and they are less disruptive.",
+      "parentUuid": "aa91db1a_71e7898f",
+      "revId": "6d081c1c1c94d265c7ea50d69e455ca0eb1f5353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe7305eb_c4b7fd9c",
         "filename": "apex/platform_bootclasspath_test.go",
         "patchSetId": 10
@@ -102,6 +155,24 @@
       "side": 1,
       "message": "Art apex assumes image_name to be set in fragment soong code. The tests don\u0027t reflect reality and art shouldn\u0027t be setting contents in its fragments.\n\nCan introduce a new test.",
       "parentUuid": "fe7305eb_c4b7fd9c",
+      "revId": "6d081c1c1c94d265c7ea50d69e455ca0eb1f5353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbf35a03_5c606351",
+        "filename": "apex/platform_bootclasspath_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-16T11:25:21Z",
+      "side": 1,
+      "message": "Every bootclasspath_fragment has to specify its contents explicitly. Art just makes sure that its contents match the ART_APEX_JARS.\n\nbootclasspath_fragment {\n    name: \"art-bootclasspath-fragment\",\n    image_name: \"art\",\n    // Must match the ART_APEX_JARS set in build/make/core/envsetup.mk\n    contents: [\n        \"core-oj\",\n        \"core-libart\",\n        \"okhttp\",\n        \"bouncycastle\",\n        \"apache-xml\",\n    ],\n    ....\n\n\u003e Can introduce a new test.\nThanks.",
+      "parentUuid": "87a148b2_f806ca4d",
       "revId": "6d081c1c1c94d265c7ea50d69e455ca0eb1f5353",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
