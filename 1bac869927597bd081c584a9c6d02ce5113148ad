@@ -16,6 +16,47 @@
       "message": "We need a prebuilt update of all mainline modules in AOSP sooner rather than later.",
       "revId": "1bac869927597bd081c584a9c6d02ce5113148ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdb2474e_6445c3ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-16T14:15:08Z",
+      "side": 1,
+      "message": "We have a problem in that the mainline_modules target in git_master that we used for the internal drop no longer produces the artifacts we need. I suppose we can update the SDK, and just not expect SOONG_CONFIG_art_module_source_build\u003dfalse to work before we do a proper drop again. I\u0027m working on setting up a new build target for ART use.",
+      "parentUuid": "01ae7db0_3610dd85",
+      "revId": "1bac869927597bd081c584a9c6d02ce5113148ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b41f22_a23dd22b",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-16T14:15:08Z",
+      "side": 1,
+      "message": "Unfinished sentence.\n\nPlease mention here that this is temporary with a TODO pointing at a suitable ticket.",
+      "range": {
+        "startLine": 426,
+        "startChar": 32,
+        "endLine": 426,
+        "endChar": 33
+      },
+      "revId": "1bac869927597bd081c584a9c6d02ce5113148ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
