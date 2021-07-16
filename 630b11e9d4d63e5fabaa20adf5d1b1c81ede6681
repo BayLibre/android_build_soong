@@ -16,6 +16,24 @@
       "message": "It looks like it breaks unbundled build in the master branch, when are permitted_packages field of import modules expected to be filled?",
       "revId": "630b11e9d4d63e5fabaa20adf5d1b1c81ede6681",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "997ec52b_0c9b3161",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-16T12:59:01Z",
+      "side": 1,
+      "message": "I always forget that unbundled builds partially build against prebuilts. They cause java_sdk_library_imports to be used in preference to java_sdk_library(s) but don\u0027t do anything to all the other prebuilts provided by the same mainline module. So, you get a mixture. Using an unbundled build shouldn\u0027t be causing the updatable-bcp-packages.txt generation rule to use prebuilts, at least not for mainline modules.\n\nI\u0027ll do a quick hack to get you moving as I don\u0027t know when the prebuilts in AOSP will be updated.",
+      "parentUuid": "603de2e4_c4f6b7d1",
+      "revId": "630b11e9d4d63e5fabaa20adf5d1b1c81ede6681",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
