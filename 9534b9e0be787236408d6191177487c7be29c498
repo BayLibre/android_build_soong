@@ -106,6 +106,24 @@
       "parentUuid": "81e3682f_760e8280",
       "revId": "9534b9e0be787236408d6191177487c7be29c498",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f09dc024_07becc6f",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1786,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-16T15:45:10Z",
+      "side": 1,
+      "message": "Marking resolved before submission. If we find anything else, let\u0027s fix it in a follow-up.",
+      "parentUuid": "ef549691_712b5309",
+      "revId": "9534b9e0be787236408d6191177487c7be29c498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
