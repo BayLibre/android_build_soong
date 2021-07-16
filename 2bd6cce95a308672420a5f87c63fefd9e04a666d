@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2bb9eef_07b4d3e3",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 4045,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-16T16:06:17Z",
+      "side": 0,
+      "message": "Ideally this would test the ordering of the ExternalCflags too, can you move the bp file using android.FixtureAddTextFile into a directory that will still trigger ExternalCflags?",
+      "revId": "2bd6cce95a308672420a5f87c63fefd9e04a666d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
