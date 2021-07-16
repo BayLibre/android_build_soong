@@ -52,6 +52,24 @@
       "parentUuid": "35a131b5_0a2e9639",
       "revId": "9534b9e0be787236408d6191177487c7be29c498",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbea2575_24ad58f7",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1786,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-16T13:46:02Z",
+      "side": 1,
+      "message": "Done, with a couple of changes:\n- except for `SdkLibraryDependency` it should also be a shared library\n- immediate return for `SdkLibraryComponentDependency` doesn\u0027t work (it makes TestJavaSdkLibrary and other tests fail, because for \"qux\" the transitive SDK library dependencies \"foo\" and \"bar\" do not get added) Test: https://source.corp.google.com/aosp-master/build/soong/java/sdk_library_test.go;l\u003d86-91 I\u0027m not sure why \"foo\" is not added, it seems that it should be pulled from \"baz\" `libs` dependencies. For \"bar\" it makes sense, as \"baz\" depends on stubs.",
+      "parentUuid": "2c2af262_00ca0e48",
+      "revId": "9534b9e0be787236408d6191177487c7be29c498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
