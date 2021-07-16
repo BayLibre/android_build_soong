@@ -16,6 +16,23 @@
       "message": "Rebased onto other change to avoid downstream conflicts.",
       "revId": "5c2114591503d6b320f4a613619fb2e42c17d069",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3f760c0_7e66081b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-16T16:24:00Z",
+      "side": 1,
+      "message": "Artur, this stack of changes are the ones I was referring to that makes changes to sdk/bootclasspath_fragment_sdk_test.go.\n\nUnfortunately, the first change depends on the following topics:\n* https://r.android.com/q/topic:media-hiddenapi\n* https://r.android.com/q/topic:media-provider-hiddenapi\n* https://r.android.com/q/topic:wifi-hiddenapi\n",
+      "revId": "5c2114591503d6b320f4a613619fb2e42c17d069",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
