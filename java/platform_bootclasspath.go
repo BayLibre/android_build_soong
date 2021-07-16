@@ -423,8 +423,11 @@ func (b *platformBootclasspathModule) generateBootImageBuildActions(ctx android.
 	// Generate the framework profile rule
 	bootFrameworkProfileRule(ctx, imageConfig)
 
-	// Generate the updatable bootclasspath packages rule.
-	generateUpdatableBcpPackagesRule(ctx, imageConfig, updatableModules)
+	// If always using prebuilt sdks
+	if !ctx.Config().AlwaysUsePrebuiltSdks() {
+		// Generate the updatable bootclasspath packages rule.
+		generateUpdatableBcpPackagesRule(ctx, imageConfig, updatableModules)
+	}
 
 	// Copy non-updatable module dex jars to their predefined locations.
 	nonUpdatableBootDexJarsByModule := extractEncodedDexJarsFromModules(ctx, nonUpdatableModules)
