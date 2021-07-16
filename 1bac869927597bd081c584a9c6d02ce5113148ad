@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01ae7db0_3610dd85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-16T13:47:21Z",
+      "side": 1,
+      "message": "We need a prebuilt update of all mainline modules in AOSP sooner rather than later.",
+      "revId": "1bac869927597bd081c584a9c6d02ce5113148ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
