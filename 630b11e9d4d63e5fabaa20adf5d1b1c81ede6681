@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "603de2e4_c4f6b7d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386891
+      },
+      "writtenOn": "2021-07-16T12:02:08Z",
+      "side": 1,
+      "message": "It looks like it breaks unbundled build in the master branch, when are permitted_packages field of import modules expected to be filled?",
+      "revId": "630b11e9d4d63e5fabaa20adf5d1b1c81ede6681",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
