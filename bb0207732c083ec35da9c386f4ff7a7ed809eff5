@@ -52,6 +52,24 @@
       "parentUuid": "2ecb8d0c_09acf454",
       "revId": "bb0207732c083ec35da9c386f4ff7a7ed809eff5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab791701_c3fba045",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-16T18:08:16Z",
+      "side": 1,
+      "message": "I meant libcap itself. crtbegin_dynamic.so was 1000 for the core variant, and 16 for the vendor variant. The reason for 16 is aosp/1445696. After that change, SplitPerApiLevel returns false for the vendor variant of crt objects. I guess the difference in crtbegin_dynamic.so doesn\u0027t affect the core-vendor-diff check because the check is only for VNDK libraries and crtbegin_dynamic.so is not a VNDK library but a vendor-available library.",
+      "parentUuid": "b67caa14_7608fcea",
+      "revId": "bb0207732c083ec35da9c386f4ff7a7ed809eff5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
