@@ -34,6 +34,24 @@
       "parentUuid": "334100fd_a05e0021",
       "revId": "bb0207732c083ec35da9c386f4ff7a7ed809eff5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b67caa14_7608fcea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-16T17:54:26Z",
+      "side": 1,
+      "message": "The core and vendor variants of libpcap, or of the crtbegin_dynamic.o that is used by libpcap?\n\nThe reason for this change is that the android_vendor.T_arm64_armv8-a variant of crtbegin_dynamic.o is being built with -target aarch64-linux-android16.",
+      "parentUuid": "2ecb8d0c_09acf454",
+      "revId": "bb0207732c083ec35da9c386f4ff7a7ed809eff5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
