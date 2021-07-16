@@ -34,6 +34,24 @@
       "parentUuid": "9bcfcabb_5332850c",
       "revId": "9534b9e0be787236408d6191177487c7be29c498",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c2af262_00ca0e48",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1786,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-16T12:31:34Z",
+      "side": 1,
+      "message": "Given that you already add a dependency onto the actual java_sdk_library/java_sdk_library_import you no longer need to handle components here. So, you could just check whether the module implements SdkLibraryDependency and if it does then use the depName, if it doesn\u0027t drop through.\n\nIf it doesn\u0027t implement SdkLibraryDependency but does implement SdkLibraryComponentDependency then you know it is an SDK component and so can return immediately.\n\nThat should allow the removal of OptionalImplicitSdkLibrary() completely.",
+      "parentUuid": "35a131b5_0a2e9639",
+      "revId": "9534b9e0be787236408d6191177487c7be29c498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
