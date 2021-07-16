@@ -16,6 +16,24 @@
       "message": "FTR I am working on a change to create a much stricter version of that which will return errors when it detects an invalid module reference. At the moment you can pass anything you like to that and it will either treat it as a module (even though the name is completely invalid as a module name) or as a path.",
       "revId": "ba9ea32f73100a91659381e0c12de2ddf8bd7982",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfc25992_f11f848f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-16T08:39:51Z",
+      "side": 1,
+      "message": "Ack, SG. Actually the name SrcIsModule and SrcIsModuleWithTag always confuses me because what it does is more like \"SrcIsModuleOrPath\" and \"SrcIsModuleWithTagOrPath\", like you described here:\n\n\u003e it will either treat it as a module (even though the name is completely invalid as a module name) or as a path.\n\n\nPerhaps in your upcoming change, the \"is module\" and \"is path\" functionality can be separated? So we have \"SrcIsModule\" (which errors if not module without tag), \"SrcIsModuleWithTag\" (which errors if not module with tag) and \"SrcIsPath\" (which errors if *is* module)",
+      "parentUuid": "5c50e732_af3d5fc7",
+      "revId": "ba9ea32f73100a91659381e0c12de2ddf8bd7982",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
