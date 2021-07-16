@@ -33,6 +33,23 @@
       "message": "Artur, this stack of changes are the ones I was referring to that makes changes to sdk/bootclasspath_fragment_sdk_test.go.\n\nUnfortunately, the first change depends on the following topics:\n* https://r.android.com/q/topic:media-hiddenapi\n* https://r.android.com/q/topic:media-provider-hiddenapi\n* https://r.android.com/q/topic:wifi-hiddenapi\n",
       "revId": "5c2114591503d6b320f4a613619fb2e42c17d069",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79fc7a79_ca264451",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-07-16T16:29:34Z",
+      "side": 1,
+      "message": "I don\u0027t know much about snapshots unfortunately. But overall this change makes sense to me.",
+      "revId": "5c2114591503d6b320f4a613619fb2e42c17d069",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
