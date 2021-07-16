@@ -4042,7 +4042,6 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 		"${config.ArmCflags}",
 		"${config.CommonGlobalCflags}",
 		"${config.DeviceGlobalCflags}",
-		"${config.ExternalCflags}",
 		"${config.ArmToolchainCflags}",
 		"${config.ArmArmv7ANeonCflags}",
 		"${config.ArmGenericCflags}",
