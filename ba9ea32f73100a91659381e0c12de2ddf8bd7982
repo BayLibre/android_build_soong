@@ -34,6 +34,24 @@
       "parentUuid": "5c50e732_af3d5fc7",
       "revId": "ba9ea32f73100a91659381e0c12de2ddf8bd7982",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e368fe62_68125463",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-16T10:30:40Z",
+      "side": 1,
+      "message": "I\u0027ve cc\u0027d you on the bug I raised to cover this - http://b/193789504\n\nThe SrcIsModule... methods do two things, they check to see if the supplied string is a module reference and if it is then they return information extracted from it. I think that behavior needs to stay the same. SrcIsModuleWithTag cannot fail if it does not find a tag. However, its name could certainly be improved.",
+      "parentUuid": "cfc25992_f11f848f",
+      "revId": "ba9ea32f73100a91659381e0c12de2ddf8bd7982",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
