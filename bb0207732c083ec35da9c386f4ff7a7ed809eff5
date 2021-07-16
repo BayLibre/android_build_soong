@@ -70,6 +70,24 @@
       "parentUuid": "b67caa14_7608fcea",
       "revId": "bb0207732c083ec35da9c386f4ff7a7ed809eff5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12fea843_468766f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-16T19:31:02Z",
+      "side": 1,
+      "message": "OK, I think I understand where we are now.\n\nA crtbegin gets embedded into shared libraries and executables.  For shared libraries this is crtbegin_so.o, and for shared executables it is crtbegin_dynamic.o.  crtbegin_dynamic.o changes based on __ANDROID_API__, but crtbegin_so.o currently does not.\n\nAs you said, for core libraries we are linking against crtbegin_so.o that was compiled with __ANDROID_API__\u003d10000, and for vendor libraries we are linking against crtbegin_so.o that was compiled with __ANDROID_API__\u003d16.  That doesn\u0027t trip the \"different core and vendor variants\" because they happen to be identical.  Its quite possible the bionic team will make them different in some future version, which would cause all VNDK libraries to fail the check.\n\nThe cause for this CL is crtbegin_dynamic.o, which does vary with __ANDROID_API_, and produces incorrect vendor binaries when they link against one with __ANDROID_API__\u003d16.\n\nTo fix vendor executables I need to make vendor executables link against a crtbegin_dynamic.o that is least their VNDK version.  That would also affect crtbegin_so.o, but since that doesn\u0027t vary with __ANDROID_API__ it won\u0027t change anything.  Figuring out what to do with crtbegin_so.o if it starts to vary can be a separate bug.",
+      "parentUuid": "ab791701_c3fba045",
+      "revId": "bb0207732c083ec35da9c386f4ff7a7ed809eff5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
