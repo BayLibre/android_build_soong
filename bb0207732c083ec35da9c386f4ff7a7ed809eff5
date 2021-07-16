@@ -16,6 +16,24 @@
       "message": "This doesn\u0027t work because it trips the \"VNDK library libcap has different core and vendor variants!\" check by making the core and vendor variants use different crtbegin_dynamic.o files.  I\u0027m not sure why that\u0027s not already a problem though, because vendor modules are always using a crtbegin_dynamic.o that was compiled with __ANDROID_API__\u003d16.  Maybe platform modules are also using __ANDROID_API__\u003d16?  Fixing platform modules to use current and vendor modules to use the VNDK version is just going to trip all the \"different core and vendor variants\" checks again as soon as someone adds a new conditional to crtbegin_dynamic.o.\n\nJiyong, any ideas what to do here?",
       "revId": "bb0207732c083ec35da9c386f4ff7a7ed809eff5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ecb8d0c_09acf454",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-07-16T17:48:53Z",
+      "side": 1,
+      "message": "\u003e Maybe platform modules are also using __ANDROID_API__\u003d16?\n\nNo. I see that before this change, both core and vendor variants were built with aarch64-linux-android29 due to the min_sdk_version setting on libcap. With this change, min_sdk_version is ignored for the vendor variant.\n\nI think we need to choose min(min_sdk_version, vndk_version) for the vendor variants.",
+      "parentUuid": "334100fd_a05e0021",
+      "revId": "bb0207732c083ec35da9c386f4ff7a7ed809eff5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
