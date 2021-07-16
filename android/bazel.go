@@ -144,21 +144,28 @@ var (
 
 	// Configure modules in these directories to enable bp2build_available: true or false by default.
 	bp2buildDefaultConfig = Bp2BuildConfig{
-		"bionic":                Bp2BuildDefaultTrueRecursively,
-		"external/gwp_asan":     Bp2BuildDefaultTrueRecursively,
-		"system/core/libcutils": Bp2BuildDefaultTrueRecursively,
+		"bionic":                                             Bp2BuildDefaultTrueRecursively,
+		"external/gwp_asan":                                  Bp2BuildDefaultTrueRecursively,
+		"system/core/libcutils":                              Bp2BuildDefaultTrueRecursively,
+		"system/core/libprocessgroup":                        Bp2BuildDefaultTrueRecursively,
+		"system/core/libprocessgroup/cgrouprc":               Bp2BuildDefaultFalse,
+		"system/core/libprocessgroup/cgrouprc_format":        Bp2BuildDefaultFalse,
+		"system/core/libprocessgroup/profiles":               Bp2BuildDefaultFalse,
+		"system/core/libprocessgroup/setup":                  Bp2BuildDefaultFalse,
 		"system/core/property_service/libpropertyinfoparser": Bp2BuildDefaultTrueRecursively,
-		"system/libbase":                  Bp2BuildDefaultTrueRecursively,
-		"system/logging/liblog":           Bp2BuildDefaultTrueRecursively,
-		"external/jemalloc_new":           Bp2BuildDefaultTrueRecursively,
-		"external/fmtlib":                 Bp2BuildDefaultTrueRecursively,
-		"external/arm-optimized-routines": Bp2BuildDefaultTrueRecursively,
-		"external/scudo":                  Bp2BuildDefaultTrueRecursively,
-		"prebuilts/clang/host/linux-x86":  Bp2BuildDefaultTrueRecursively,
+		"system/libbase":                                     Bp2BuildDefaultTrueRecursively,
+		"system/logging/liblog":                              Bp2BuildDefaultTrueRecursively,
+		"external/jemalloc_new":                              Bp2BuildDefaultTrueRecursively,
+		"external/fmtlib":                                    Bp2BuildDefaultTrueRecursively,
+		"external/arm-optimized-routines":                    Bp2BuildDefaultTrueRecursively,
+		"external/scudo":                                     Bp2BuildDefaultTrueRecursively,
+		"prebuilts/clang/host/linux-x86":                     Bp2BuildDefaultTrueRecursively,
 	}
 
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
 	bp2buildModuleDoNotConvertList = []string{
+		"libprocessgroup",
+
 		// Things that transitively depend on unconverted libc_* modules.
 		"libbionic_spawn_benchmark", // http://b/186824595, cc_library_static, depends on //external/google-benchmark (http://b/186822740)
 		//                                                                also depends on //system/logging/liblog:liblog (http://b/186822772)
@@ -166,7 +173,8 @@ var (
 		"libc_malloc_debug",           // http://b/186824339, cc_library_static, depends on //system/libbase:libbase (http://b/186823646)
 		"libc_malloc_debug_backtrace", // http://b/186824112, cc_library_static, depends on //external/libcxxabi:libc++demangle (http://b/186823773)
 
-		"libcutils",         // http://b/186827426, cc_library, depends on //system/core/libprocessgroup:libprocessgroup_headers (http://b/186826841)
+		"libcutils", // http://b/186827426, cc_library, depends on //system/core/libprocessgroup:libprocessgroup_headers (http://b/186826841)
+		// Also depends on liblog.
 		"libcutils_sockets", // http://b/186826853, cc_library, depends on //system/libbase:libbase (http://b/186826479)
 
 		"liblinker_debuggerd_stub", // http://b/186824327, cc_library_static, depends on //external/zlib:libz (http://b/186823782)
