@@ -22,6 +22,30 @@
       },
       "revId": "f77332f0a198e8892bfdafffe9ad8da1e50e6ec3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7898e939_d0f63411",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-07-16T19:09:11Z",
+      "side": 1,
+      "message": "There is no specific error, just the fact that this depends on a number of other packages and I didn\u0027t want \n\nWDYT about the following options?:\n\n1. I mention some dependencies which aren\u0027t allowlisted\n2. I say that this contains dependencies which aren\u0027t allowlisted but am inspecific\n3. I try to allowlist all dependencies until I hit a snag\n\n?",
+      "parentUuid": "885dbc45_81b86d0a",
+      "range": {
+        "startLine": 167,
+        "startChar": 2,
+        "endLine": 167,
+        "endChar": 20
+      },
+      "revId": "f77332f0a198e8892bfdafffe9ad8da1e50e6ec3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
