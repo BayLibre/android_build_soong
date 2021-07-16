@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2b943a1_bc4a7698",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-16T17:45:59Z",
+      "side": 1,
+      "message": "This works in Soong, but fails in the bp2build builds, I assume because target.bionic.system_shared_libs is not supported.",
+      "revId": "72bf8e13102163a56279242b5b81ad069024681a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
