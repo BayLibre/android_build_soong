@@ -50,6 +50,40 @@
       "message": "I don\u0027t know much about snapshots unfortunately. But overall this change makes sense to me.",
       "revId": "5c2114591503d6b320f4a613619fb2e42c17d069",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6de88419_caff1453",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-16T17:03:13Z",
+      "side": 1,
+      "message": "Nice to see! Does this mean SDKs become less coupled to APEXes now? We don\u0027t need to drop the SDK separately internally to go with the internal com.google.android.art APEX?",
+      "revId": "5c2114591503d6b320f4a613619fb2e42c17d069",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faab8e66_8f951f2b",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-16T17:03:13Z",
+      "side": 1,
+      "message": "I suppose this could go back to being a lambda inside the librarySdkMemberType initialisation again, but I don\u0027t feel strongly either way.",
+      "revId": "5c2114591503d6b320f4a613619fb2e42c17d069",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
