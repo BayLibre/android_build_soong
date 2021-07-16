@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f45d7b1_ea1724fd",
+        "filename": "android/required.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-07-16T10:30:38Z",
+      "side": 1,
+      "message": "Why does this return a slice?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 26
+      },
+      "revId": "71886c4a352c0cc30393ca9075dd2bddf95fa1b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
