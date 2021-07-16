@@ -70,6 +70,24 @@
       "parentUuid": "2c2af262_00ca0e48",
       "revId": "9534b9e0be787236408d6191177487c7be29c498",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81e3682f_760e8280",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1786,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-16T14:04:28Z",
+      "side": 1,
+      "message": "I did wonder about the shared library stuff. So previously the shared library check was not needed here because the OptionalImplicitSdkLibrary() would return nil if it was not set.\n\nBut OptionalSdkLibraryImplementation() would also return nil in that case too so no dependency would be added.\n\nIs the shared library check needed for direct dependencies, e.g. when the library depends on \"android.test.base\" directly instead of on \"android.test.base.stubs\"?",
+      "parentUuid": "dbea2575_24ad58f7",
+      "revId": "9534b9e0be787236408d6191177487c7be29c498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
