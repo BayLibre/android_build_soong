@@ -16,6 +16,24 @@
       "message": "In a follow up CL could you remove the OptionalImplicitSdkLibrary() and maybe improve the documentation of the OptionalSdkLibraryImplementation() method. I get really confused trying to work out under what circumstances that could be non-nil.\n\nThat is mainly because java_sdk_library is a java_library so it embeds the EmbeddableSdkLibraryComponent from there but also uses the EmbeddableSdkLibraryComponent that is embedded in commonToSdkLibraryAndImport. So, java_sdk_library has two copied, java_sdk_library_import only has one and java_library has one.",
       "revId": "840efb666118ce15abbfaf49c11828d41ec38a80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a068571f_2a89a689",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-16T15:23:06Z",
+      "side": 1,
+      "message": "Done: aosp/1769648.\n\nI didn\u0027t do much on the way to improve the docs for `OptionalSdkLibraryImplementation()`, only explained a bit what I expect it to do.",
+      "parentUuid": "8f9c8271_6aa7ca0a",
+      "revId": "840efb666118ce15abbfaf49c11828d41ec38a80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

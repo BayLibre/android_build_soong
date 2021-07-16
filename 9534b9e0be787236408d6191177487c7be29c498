@@ -88,6 +88,24 @@
       "parentUuid": "dbea2575_24ad58f7",
       "revId": "9534b9e0be787236408d6191177487c7be29c498",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef549691_712b5309",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1786,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-16T15:23:06Z",
+      "side": 1,
+      "message": "\u003e But OptionalSdkLibraryImplementation() would also return nil in that case too so no dependency would be added.\n\nTransitive dependencies still were added in that case (as it is with the current version of the patch).\n\n\u003e Is the shared library check needed for direct dependencies, e.g. when the library depends on \"android.test.base\" directly instead of on \"android.test.base.stubs\"?\n\nI\u0027m not sure about real-world examples, but on the Soong tests it\u0027s needed to filter out direct `sdk_java_library` dependencies that set `api_only: true` and `shared_library: false`.",
+      "parentUuid": "81e3682f_760e8280",
+      "revId": "9534b9e0be787236408d6191177487c7be29c498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
