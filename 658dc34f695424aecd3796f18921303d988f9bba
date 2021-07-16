@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebc70d58_fd78c1c9",
+        "filename": "cc/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-16T21:23:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "21f5007c_72bf947a",
+      "revId": "658dc34f695424aecd3796f18921303d988f9bba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "739e0e01_c7ac17cc",
@@ -108,6 +126,30 @@
       "side": 1,
       "message": "Used PackagingProperties instead.\nI didnt understand the second part of your comment.",
       "parentUuid": "69983d8a_fc55a632",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 11
+      },
+      "revId": "658dc34f695424aecd3796f18921303d988f9bba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef142bee_ffecdd67",
+        "filename": "cc/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-16T21:23:31Z",
+      "side": 1,
+      "message": "When we say \"properties\" in Soong we generally mean a property that can be set in an Android.bp file.  For example, FuzzProperties contains fields that are set by an Android.bp file.  This struct does not, it has fields that are set by go code.  We would generally call that something else besides \"properties\".  Maybe make this FuzzPackagedModule and then embed it into cc.Module?",
+      "parentUuid": "2baa4733_ed397c49",
       "range": {
         "startLine": 59,
         "startChar": 5,

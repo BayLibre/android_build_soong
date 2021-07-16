@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b785cc2_c78d1c0c",
+        "filename": "cc/cc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-16T21:23:31Z",
+      "side": 0,
+      "message": "These should stay in Module, FuzzModule should only contain the add-ins specific to fuzzing.",
+      "range": {
+        "startLine": 759,
+        "startChar": 1,
+        "endLine": 761,
+        "endChar": 23
+      },
+      "revId": "e88944c51e2c0e7b5ae16930b3ace259f42341a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
