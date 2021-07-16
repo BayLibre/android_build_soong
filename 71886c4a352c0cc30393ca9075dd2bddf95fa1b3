@@ -22,6 +22,30 @@
       },
       "revId": "71886c4a352c0cc30393ca9075dd2bddf95fa1b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bc51f5d_87494fe3",
+        "filename": "android/required.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-16T10:38:17Z",
+      "side": 1,
+      "message": "For scalability. Because the AndroidMkEntriesProvider interface (http://cs/android/build/soong/android/androidmk.go?l\u003d90\u0026rcl\u003d51215797d482ba86dabdfb1725d95eff08c04026) returns a slice too. This means that it\u0027s possible some modules might want to export multiple Make names, so I retain the flexibility for modules to return a slice of arbitrary length.",
+      "parentUuid": "9f45d7b1_ea1724fd",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 26
+      },
+      "revId": "71886c4a352c0cc30393ca9075dd2bddf95fa1b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
