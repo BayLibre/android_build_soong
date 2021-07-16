@@ -414,6 +414,9 @@ func getTemporaryExcludes() []string {
 	// FIXME: 'frameworks/compile/slang' has a filegroup error due to an escaping issue
 	excludes = append(excludes, "frameworks/compile/slang")
 
+	// FIXME: 'tools/aadevtools/dev/resource/new_codebase/modified_sub_dir' causes an infinite symlink expansion error for Bazel
+	excludes = append(excludes, "tools/aadevtools/dev/resource/new_codebase")
+
 	return excludes
 }
 
