@@ -34,6 +34,24 @@
       "parentUuid": "e66b98de_9f919825",
       "revId": "9c486a1bd0b1ea7dcc4e772eb082a2fc79cd8974",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c86edcf_0d5b145b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-07-16T16:55:48Z",
+      "side": 1,
+      "message": "Yes, if it needs to go in I think a comment to that effect is in order, but why not just leave it untested?",
+      "parentUuid": "3ba7cbba_c5883e34",
+      "revId": "9c486a1bd0b1ea7dcc4e772eb082a2fc79cd8974",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
