@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb9b3c32_deb0e396",
+        "filename": "android/singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-16T21:26:06Z",
+      "side": 1,
+      "message": "Can you add godoc here too, since this is what most developers will be calling?",
+      "revId": "04ad1be07fc2e9e5dd7ab38f2d0b9a5fbc716957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
