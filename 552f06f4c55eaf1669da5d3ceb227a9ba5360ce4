@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "889ced5c_19b321f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-07-16T07:25:35Z",
+      "side": 1,
+      "message": "I\u0027d be happy to restructure this based on joeo\u0027s call -- my primary input is to add timezones to pick reviewers.",
+      "parentUuid": "ecfe223f_d8210fae",
+      "revId": "552f06f4c55eaf1669da5d3ceb227a9ba5360ce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab73ebab_9eaeac23",
         "filename": "OWNERS",
         "patchSetId": 5
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-14T21:48:06Z",
       "side": 1,
       "message": "TBF I\u0027m not sure if I\u0027m a particuarly useful code owner as I can count on two hands the number of times I looked at Soong code. I\u0027d propose taking me out of here to avoid confusion.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "552f06f4c55eaf1669da5d3ceb227a9ba5360ce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20a4d056_2dc460be",
+        "filename": "OWNERS",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-07-16T07:25:35Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "ab73ebab_9eaeac23",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -54,6 +96,30 @@
       "writtenOn": "2021-07-14T21:41:14Z",
       "side": 1,
       "message": "Should we also add the folks that have joined since you created this?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "552f06f4c55eaf1669da5d3ceb227a9ba5360ce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e445ce_7ae4259f",
+        "filename": "OWNERS",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-07-16T07:25:35Z",
+      "side": 1,
+      "message": "SGTM but Igor also suggested that we can add folks as they get familiar with the Soong codebase. I\u0027d defer to Joe O\u0027s call for that -- just wanted to primarily organize this list by timezones.",
+      "parentUuid": "8b29d8cf_a0919e0a",
       "range": {
         "startLine": 14,
         "startChar": 0,
