@@ -414,6 +414,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa34c971_c175b938",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-16T21:48:49Z",
+      "side": 1,
+      "message": "Try Module.FilesToInstall()",
+      "parentUuid": "1a8430e9_a8f877d4",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "a67fb09324a4f96e1db525ff5604ce6af9a38061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7ede092_0bf1dcf6",
         "filename": "cc/host_snapshot.go",
         "patchSetId": 5
