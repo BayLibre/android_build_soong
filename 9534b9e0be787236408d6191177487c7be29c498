@@ -16,6 +16,24 @@
       "message": "Why is this still needed?",
       "revId": "9534b9e0be787236408d6191177487c7be29c498",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35a131b5_0a2e9639",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1786,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-16T12:00:02Z",
+      "side": 1,
+      "message": "This was still needed due to the way the code was written (`implicitSdkLib` initialized to `nil`. So if it was a real SDK library, the line 1787 would set `implicitSdkLib` to the name of the SDK library. Simply removing that line would make even the Soong tests fail.\n\nI rewrote the code to explicitly use `depName` in that case and make sure that it\u0027s the same as the one returned by `OptionalImplicitSdkLibrary()`, just to be on the safe side.",
+      "parentUuid": "9bcfcabb_5332850c",
+      "revId": "9534b9e0be787236408d6191177487c7be29c498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
