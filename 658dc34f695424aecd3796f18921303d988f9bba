@@ -158,6 +158,30 @@
       },
       "revId": "658dc34f695424aecd3796f18921303d988f9bba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e9ae3a0_c5e614c5",
+        "filename": "cc/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2021-07-17T00:44:04Z",
+      "side": 1,
+      "message": "Got it. I renamed it accordingly.\nI am not sure about the embedding of FuzzPackagedModule into cc.Module. Shouldn\u0027t it stay in the fuzz specific code (e.g. cc/fuzz.go and rust/fuzz.go)?",
+      "parentUuid": "ef142bee_ffecdd67",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 11
+      },
+      "revId": "658dc34f695424aecd3796f18921303d988f9bba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
