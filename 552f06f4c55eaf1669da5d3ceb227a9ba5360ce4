@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "895650fb_c3292048",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-07-19T05:16:55Z",
+      "side": 1,
+      "message": "Resolving.",
+      "parentUuid": "889ced5c_19b321f0",
+      "revId": "552f06f4c55eaf1669da5d3ceb227a9ba5360ce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab73ebab_9eaeac23",
@@ -120,6 +138,30 @@
       "side": 1,
       "message": "SGTM but Igor also suggested that we can add folks as they get familiar with the Soong codebase. I\u0027d defer to Joe O\u0027s call for that -- just wanted to primarily organize this list by timezones.",
       "parentUuid": "8b29d8cf_a0919e0a",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "552f06f4c55eaf1669da5d3ceb227a9ba5360ce4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb35e6f9_cf21306f",
+        "filename": "OWNERS",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-07-19T05:16:55Z",
+      "side": 1,
+      "message": "Resolving.",
+      "parentUuid": "09e445ce_7ae4259f",
       "range": {
         "startLine": 14,
         "startChar": 0,
