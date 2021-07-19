@@ -16,6 +16,24 @@
       "message": "Can you add godoc here too, since this is what most developers will be calling?",
       "revId": "04ad1be07fc2e9e5dd7ab38f2d0b9a5fbc716957",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efd0d1b2_9fdc83a7",
+        "filename": "android/singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2021-07-19T11:19:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb9b3c32_deb0e396",
+      "revId": "04ad1be07fc2e9e5dd7ab38f2d0b9a5fbc716957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
