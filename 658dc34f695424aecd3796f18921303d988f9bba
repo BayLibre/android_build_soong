@@ -182,6 +182,30 @@
       },
       "revId": "658dc34f695424aecd3796f18921303d988f9bba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37340f06_50b40b3f",
+        "filename": "cc/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-19T17:19:34Z",
+      "side": 1,
+      "message": "Embedding in Go terminology means putting the FuzzPackagedModule struct directly into the cc.Module struct without giving it a field name, which makes the fields and methods on FuzzPackagedModule available directly on cc.Module.",
+      "parentUuid": "6e9ae3a0_c5e614c5",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 11
+      },
+      "revId": "658dc34f695424aecd3796f18921303d988f9bba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
