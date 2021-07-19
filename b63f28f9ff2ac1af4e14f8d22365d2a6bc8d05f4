@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff703c80_3fe49e3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-07-19T02:33:23Z",
+      "side": 1,
+      "message": "Could you elaborate somewhere (comment or description) on what this is used for?",
+      "revId": "b63f28f9ff2ac1af4e14f8d22365d2a6bc8d05f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
