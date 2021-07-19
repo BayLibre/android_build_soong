@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e417ece_8d01f72d",
+        "filename": "snapshot/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-07-19T05:31:20Z",
+      "side": 1,
+      "message": "(oops - should have read more carefully, please ignore above)",
+      "parentUuid": "a2e13ca0_0c773860",
+      "revId": "52e1e5b8703da14bdc231e25b4490fb6915904be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa4235de_6a3fca7b",
@@ -66,6 +84,24 @@
       "writtenOn": "2021-07-19T05:29:19Z",
       "side": 1,
       "message": "Instead of moving/creating new rules, reuse rules in https://cs.android.com/android/platform/superproject/+/master:build/soong/android/defs.go;l\u003d53;drc\u003d77cdcfdeafd383ef1f1214226c47eb20c902a28f?",
+      "revId": "52e1e5b8703da14bdc231e25b4490fb6915904be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "641a77d4_486bf9a4",
+        "filename": "snapshot/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-07-19T05:31:20Z",
+      "side": 1,
+      "message": "(please ignore above)",
+      "parentUuid": "aa4235de_6a3fca7b",
       "revId": "52e1e5b8703da14bdc231e25b4490fb6915904be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
