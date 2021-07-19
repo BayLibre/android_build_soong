@@ -24,6 +24,47 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "359ad9b6_2aeeb54a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-07-19T20:50:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6122ef22_c8f889eb",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f4628f_a1d16d64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-07-19T20:50:20Z",
+      "side": 1,
+      "message": "Thanks for taking the time to clear this up for me!",
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "933e408a_4d84f0af",
@@ -37,6 +78,30 @@
       "writtenOn": "2021-07-14T21:33:15Z",
       "side": 1,
       "message": "We shouldn\u0027t need to add any properties when incorporating mixed builds.\n\nThis will change the Soong-based module, adding additional properties to existing module types.\n\nFor mixed builds, we want to change what happens in the build _only_ when mixed builds are enabled, otherwise, we want the module\u0027s existing build to stay the same.",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 1
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d9c6b18_ef45d378",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-07-19T20:50:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "933e408a_4d84f0af",
       "range": {
         "startLine": 161,
         "startChar": 0,
@@ -70,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d44900ff_1eac3dbe",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-07-19T20:50:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f3ef75c_c5142807",
+      "range": {
+        "startLine": 205,
+        "startChar": 1,
+        "endLine": 205,
+        "endChar": 32
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5f7467f_c30bb33a",
@@ -83,6 +172,30 @@
       "writtenOn": "2021-07-14T21:33:15Z",
       "side": 1,
       "message": "Are there any checks we should do about the number of expected output files?",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 2
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ab4dda_50bb4648",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-07-19T20:50:20Z",
+      "side": 1,
+      "message": "The python_binary_host may not be used to produce files. It\u0027s just used that way for C++ as you\u0027d pointed out. Is there a way to query bazelCtx for such a condition?",
+      "parentUuid": "c5f7467f_c30bb33a",
       "range": {
         "startLine": 213,
         "startChar": 0,
@@ -141,6 +254,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86d853b8_9450c3ee",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-07-19T20:50:20Z",
+      "side": 1,
+      "message": "So I take it that the existing `soong/python/test.go` is only covering the Bazel side, I shouldn\u0027t add anything there, and instead make a separate unit test leveraging `MockBazelContext` to handle the Bazel side while checking the Soong side on a mixed build?",
+      "parentUuid": "7935998c_3385370e",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 2
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d23a198b_0116798a",
         "filename": "python/binary.go",
         "patchSetId": 1
@@ -152,6 +289,30 @@
       "writtenOn": "2021-07-14T21:33:15Z",
       "side": 1,
       "message": "Either this function isn\u0027t running or we\u0027re breaking non-mixed builds as this changes the build actions for a non-mixed build.\n\nCurrently a Python binary will be built here: https://cs.android.com/android/platform/superproject/+/master:build/soong/python/python.go;l\u003d427;drc\u003d0e446159bcde2ced43e0bd602ae42f6eccb9c625. Rather than implementing something different, we should use the new generateBazelBuildActions you implemented when mixed builds are enabled and otherwise fall back to the existing build behavior for a python_binary_host.",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 2
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5dd3434_d8e541a6",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-07-19T20:50:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d23a198b_0116798a",
       "range": {
         "startLine": 231,
         "startChar": 0,
@@ -175,6 +336,30 @@
       "writtenOn": "2021-07-14T21:33:15Z",
       "side": 1,
       "message": "We generally don\u0027t want to add any new interfaces between modules when adding support for mixed builds. Instead, we want to make sure that any interface between the module type we\u0027re converting and modules that depend on it are fulfilled by our Bazel-built module.",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 1
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a26a6aaa_948afc61",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-07-19T20:50:20Z",
+      "side": 1,
+      "message": "I could take out the Make-variable function, but don\u0027t we need Srcs() to satisfy the SourceProvider interface?",
+      "parentUuid": "222ba6a6_dff62646",
       "range": {
         "startLine": 237,
         "startChar": 0,
