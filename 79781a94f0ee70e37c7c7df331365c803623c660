@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fecab18_0cb10b33",
+        "filename": "cc/builder.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1130827
+      },
+      "writtenOn": "2021-07-19T06:13:30Z",
+      "side": 1,
+      "message": "When a developer sets $OUT_DIR to an absolute path, the ABI dumper should avoid writing the absolute path to the output dump. This argument makes the dumper replace $OUT_DIR with \"out\".",
+      "range": {
+        "startLine": 240,
+        "startChar": 78,
+        "endLine": 240,
+        "endChar": 91
+      },
+      "revId": "79781a94f0ee70e37c7c7df331365c803623c660",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
