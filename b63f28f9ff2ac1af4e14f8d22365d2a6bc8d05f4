@@ -16,6 +16,24 @@
       "message": "Could you elaborate somewhere (comment or description) on what this is used for?",
       "revId": "b63f28f9ff2ac1af4e14f8d22365d2a6bc8d05f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b57c659c_314d202d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-19T12:54:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff703c80_3fe49e3e",
+      "revId": "b63f28f9ff2ac1af4e14f8d22365d2a6bc8d05f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
