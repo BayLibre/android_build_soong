@@ -206,6 +206,30 @@
       },
       "revId": "658dc34f695424aecd3796f18921303d988f9bba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "982e2af2_9140b138",
+        "filename": "cc/fuzz_common.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2021-07-19T19:25:55Z",
+      "side": 1,
+      "message": "Gotcha. I will investigate this as part of the second round of refactoring.",
+      "parentUuid": "37340f06_50b40b3f",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 11
+      },
+      "revId": "658dc34f695424aecd3796f18921303d988f9bba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
