@@ -16,6 +16,58 @@
       "message": "changes LGTM, but can we add a soong test?",
       "revId": "52e1e5b8703da14bdc231e25b4490fb6915904be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b94964b5_590f1512",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-07-19T05:29:19Z",
+      "side": 1,
+      "message": "+1, or even better, an integration test to check for the creation of a snapshot and its contents? e.g. in https://cs.android.com/android/platform/superproject/+/master:build/soong/tests/run_integration_tests.sh\n\n(I\u0027m not familiar with snapshot code at all, just pointing out obvious things to me so far)",
+      "parentUuid": "4ef54887_7100175d",
+      "revId": "52e1e5b8703da14bdc231e25b4490fb6915904be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e13ca0_0c773860",
+        "filename": "snapshot/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-07-19T05:29:19Z",
+      "side": 1,
+      "message": "Use https://cs.android.com/android/platform/superproject/+/master:build/soong/android/defs.go;l\u003d108;drc\u003d77cdcfdeafd383ef1f1214226c47eb20c902a28f?",
+      "revId": "52e1e5b8703da14bdc231e25b4490fb6915904be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa4235de_6a3fca7b",
+        "filename": "snapshot/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-07-19T05:29:19Z",
+      "side": 1,
+      "message": "Instead of moving/creating new rules, reuse rules in https://cs.android.com/android/platform/superproject/+/master:build/soong/android/defs.go;l\u003d53;drc\u003d77cdcfdeafd383ef1f1214226c47eb20c902a28f?",
+      "revId": "52e1e5b8703da14bdc231e25b4490fb6915904be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
