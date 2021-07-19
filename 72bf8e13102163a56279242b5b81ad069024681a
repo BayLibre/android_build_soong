@@ -34,6 +34,24 @@
       "parentUuid": "d2b943a1_bc4a7698",
       "revId": "72bf8e13102163a56279242b5b81ad069024681a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00d99684_0174664a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-19T22:11:19Z",
+      "side": 1,
+      "message": "looks like we\u0027re not handling arch + static/shared correctly either, prepping another CL",
+      "parentUuid": "fff25089_0d26e0e5",
+      "revId": "72bf8e13102163a56279242b5b81ad069024681a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
