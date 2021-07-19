@@ -22,6 +22,10 @@ from verify_overlaps import *
 
 class TestDetectOverlaps(unittest.TestCase):
 
+    def read_flag_trie_from_string(self, csv):
+        with io.StringIO(csv) as f:
+            return read_flag_trie_from_stream(f)
+
     def read_signature_csv_from_string_as_dict(self, csv):
         with io.StringIO(csv) as f:
             return read_signature_csv_from_stream_as_dict(f)
@@ -33,13 +37,13 @@ class TestDetectOverlaps(unittest.TestCase):
     extractInput = '''
 Ljava/lang/Object;->hashCode()I,public-api,system-api,test-api
 Ljava/lang/Object;->toString()Ljava/lang/String;,blocked
+Ljava/util/zip/ZipFile;-><clinit>()V,blocked
+Ljava/lang/Character$UnicodeScript;->of(I)Ljava/lang/Character$UnicodeScript;,blocked
+Ljava/lang/Character;->serialVersionUID:J,sdk
 '''
 
-    def test_extract_subset(self):
-        monolithic = self.read_signature_csv_from_string_as_dict(TestDetectOverlaps.extractInput)
-        modular = self.read_signature_csv_from_string_as_dict('''
-Ljava/lang/Object;->hashCode()I,public-api,system-api,test-api
-''')
+    def test_extract_subset_signature(self):
+        monolithic = self.read_flag_trie_from_string(TestDetectOverlaps.extractInput)
 
         patterns = 'Ljava/lang/Object;->hashCode()I'
 
@@ -51,6 +55,136 @@ Ljava/lang/Object;->hashCode()I,public-api,system-api,test-api
             },
         }
         self.assertEqual(expected, subset)
+
+    def test_extract_subset_class(self):
+        monolithic = self.read_flag_trie_from_string(TestDetectOverlaps.extractInput)
+
+        patterns = 'java/lang/Object'
+
+        subset = self.extract_subset_from_monolithic_flags_as_dict_from_string(monolithic, patterns)
+        expected = {
+            'Ljava/lang/Object;->hashCode()I': {
+                None: ['public-api', 'system-api', 'test-api'],
+                'signature': 'Ljava/lang/Object;->hashCode()I',
+            },
+            'Ljava/lang/Object;->toString()Ljava/lang/String;': {
+                None: ['blocked'],
+                'signature': 'Ljava/lang/Object;->toString()Ljava/lang/String;',
+            },
+        }
+        self.assertEqual(expected, subset)
+
+    def test_extract_subset_outer_class(self):
+        monolithic = self.read_flag_trie_from_string(TestDetectOverlaps.extractInput)
+
+        patterns = 'java/lang/Character'
+
+        subset = self.extract_subset_from_monolithic_flags_as_dict_from_string(monolithic, patterns)
+        expected = {
+            'Ljava/lang/Character$UnicodeScript;->of(I)Ljava/lang/Character$UnicodeScript;': {
+                None: ['blocked'],
+                'signature': 'Ljava/lang/Character$UnicodeScript;->of(I)Ljava/lang/Character$UnicodeScript;',
+            },
+            'Ljava/lang/Character;->serialVersionUID:J': {
+                None: ['sdk'],
+                'signature': 'Ljava/lang/Character;->serialVersionUID:J',
+            },
+        }
+        self.assertEqual(expected, subset)
+
+    def test_extract_subset_nested_class(self):
+        monolithic = self.read_flag_trie_from_string(TestDetectOverlaps.extractInput)
+
+        patterns = 'java/lang/Character$UnicodeScript'
+
+        subset = self.extract_subset_from_monolithic_flags_as_dict_from_string(monolithic, patterns)
+        expected = {
+            'Ljava/lang/Character$UnicodeScript;->of(I)Ljava/lang/Character$UnicodeScript;': {
+                None: ['blocked'],
+                'signature': 'Ljava/lang/Character$UnicodeScript;->of(I)Ljava/lang/Character$UnicodeScript;',
+            },
+        }
+        self.assertEqual(expected, subset)
+
+    def test_extract_subset_package(self):
+        monolithic = self.read_flag_trie_from_string(TestDetectOverlaps.extractInput)
+
+        patterns = 'java/lang/*'
+
+        subset = self.extract_subset_from_monolithic_flags_as_dict_from_string(monolithic, patterns)
+        expected = {
+            'Ljava/lang/Character$UnicodeScript;->of(I)Ljava/lang/Character$UnicodeScript;': {
+                None: ['blocked'],
+                'signature': 'Ljava/lang/Character$UnicodeScript;->of(I)Ljava/lang/Character$UnicodeScript;',
+            },
+            'Ljava/lang/Character;->serialVersionUID:J': {
+                None: ['sdk'],
+                'signature': 'Ljava/lang/Character;->serialVersionUID:J',
+            },
+            'Ljava/lang/Object;->hashCode()I': {
+                None: ['public-api', 'system-api', 'test-api'],
+                'signature': 'Ljava/lang/Object;->hashCode()I',
+            },
+            'Ljava/lang/Object;->toString()Ljava/lang/String;': {
+                None: ['blocked'],
+                'signature': 'Ljava/lang/Object;->toString()Ljava/lang/String;',
+            },
+        }
+        self.assertEqual(expected, subset)
+
+    def test_extract_subset_recursive_package(self):
+        monolithic = self.read_flag_trie_from_string(TestDetectOverlaps.extractInput)
+
+        patterns = 'java/**'
+
+        subset = self.extract_subset_from_monolithic_flags_as_dict_from_string(monolithic, patterns)
+        expected = {
+            'Ljava/lang/Character$UnicodeScript;->of(I)Ljava/lang/Character$UnicodeScript;': {
+                None: ['blocked'],
+                'signature': 'Ljava/lang/Character$UnicodeScript;->of(I)Ljava/lang/Character$UnicodeScript;',
+            },
+            'Ljava/lang/Character;->serialVersionUID:J': {
+                None: ['sdk'],
+                'signature': 'Ljava/lang/Character;->serialVersionUID:J',
+            },
+            'Ljava/lang/Object;->hashCode()I': {
+                None: ['public-api', 'system-api', 'test-api'],
+                'signature': 'Ljava/lang/Object;->hashCode()I',
+            },
+            'Ljava/lang/Object;->toString()Ljava/lang/String;': {
+                None: ['blocked'],
+                'signature': 'Ljava/lang/Object;->toString()Ljava/lang/String;',
+            },
+            'Ljava/util/zip/ZipFile;-><clinit>()V': {
+                None: ['blocked'],
+                'signature': 'Ljava/util/zip/ZipFile;-><clinit>()V',
+            },
+        }
+        self.assertEqual(expected, subset)
+
+    def test_extract_subset_invalid_pattern_wildcard_and_member(self):
+        monolithic = self.read_flag_trie_from_string(TestDetectOverlaps.extractInput)
+
+        patterns = 'Ljava/lang/*;->hashCode()I'
+
+        with self.assertRaises(Exception) as context:
+            self.extract_subset_from_monolithic_flags_as_dict_from_string(monolithic, patterns)
+        self.assertTrue("contains wildcard * and member signature hashCode()I" in str(context.exception))
+
+    def test_read_trie_duplicate(self):
+        with self.assertRaises(Exception) as context:
+            self.read_flag_trie_from_string('''
+Ljava/lang/Object;->hashCode()I,public-api,system-api,test-api
+Ljava/lang/Object;->hashCode()I,blocked
+''')
+        self.assertTrue("Duplicate signature: Ljava/lang/Object;->hashCode()I" in str(context.exception))
+
+    def test_read_trie_missing_member(self):
+        with self.assertRaises(Exception) as context:
+            self.read_flag_trie_from_string('''
+Ljava/lang/Object,public-api,system-api,test-api
+''')
+        self.assertTrue("Invalid signature: Ljava/lang/Object, does not identify a specific member" in str(context.exception))
 
     def test_match(self):
         monolithic = self.read_signature_csv_from_string_as_dict('''
