@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8eeca116_623a259c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-07-19T13:09:30Z",
+      "side": 1,
+      "message": "Soong test added. Integration test sounds a good idea, but it sounds like a separated CL to work with. Let\u0027s keep it as a future work to test overall snapshot test as an integration test. WDYT?",
+      "parentUuid": "b94964b5_590f1512",
+      "revId": "52e1e5b8703da14bdc231e25b4490fb6915904be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a2e13ca0_0c773860",
         "filename": "snapshot/util.go",
         "patchSetId": 1
