@@ -16,6 +16,24 @@
       "message": "Where do we take the notice files?",
       "revId": "2d4f5698d67d7fde4bde1f70bf763d3ffeded1a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be809070_15621b58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-07-20T01:48:07Z",
+      "side": 1,
+      "message": "Thanks for the catch! I updated prebuilt_etc snapshot to also take notice files.",
+      "parentUuid": "86449891_517ec8c6",
+      "revId": "2d4f5698d67d7fde4bde1f70bf763d3ffeded1a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
