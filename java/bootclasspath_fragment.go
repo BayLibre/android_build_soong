@@ -883,6 +883,9 @@ type prebuiltBootclasspathFragmentProperties struct {
 
 		// The path to the all-flags.csv file created by the bootclasspath_fragment.
 		All_flags *string `android:"path"`
+
+		// The path to the filtered-flags.csv file created by the bootclasspath_fragment.
+		Filtered_flags *string `android:"path"`
 	}
 }
 
