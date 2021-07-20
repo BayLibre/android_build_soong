@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3c784d1_d921605a",
+        "filename": "scripts/hiddenapi/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-07-20T18:46:14Z",
+      "side": 1,
+      "message": "Do you want this in a TEST_MAPPING somewhere?",
+      "range": {
+        "startLine": 52,
+        "startChar": 11,
+        "endLine": 52,
+        "endChar": 40
+      },
+      "revId": "2cde5f43896d4f78caf98b3a86c9aa31c37a0298",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
