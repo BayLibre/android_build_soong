@@ -106,6 +106,24 @@
       "parentUuid": "158b4717_f5a713ae",
       "revId": "9c40b7db9747b264dfd1e3783cd65b27d895e480",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "778b1c14_d51d3f03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1625880
+      },
+      "writtenOn": "2021-07-20T08:09:47Z",
+      "side": 1,
+      "message": "I have implemented more general symbol list loading in abitidy. The same functionality could be used for controlling which symbols are required / allowed not to have type information.\n\nSee also: aosp/1764505.",
+      "parentUuid": "47cbdd44_098daa1d",
+      "revId": "9c40b7db9747b264dfd1e3783cd65b27d895e480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
