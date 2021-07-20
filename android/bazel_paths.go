@@ -80,6 +80,23 @@ type BazelConversionPathContext interface {
 	OtherModuleDir(m blueprint.Module) string
 }
 
+func BazelLabelForSyntheticTarget(ctx BazelConversionPathContext) bazel.LabelList {
+	var labels bazel.LabelList
+
+	// Grab the label for the current module, and add the @soong_prebuilts
+	// repository identifier. Transform it into a bazel.Label.
+	ls := "@soong_prebuilts" + bp2buildModuleLabel(ctx, ctx.Module())
+	l := bazel.Label{
+		Label:              ls,
+		OriginalModuleName: ctx.Module().Name(),
+	}
+
+	labels.Includes = append(labels.Includes, l)
+
+	return labels
+
+}
+
 // BazelLabelForModuleDeps expects a list of reference to other modules, ("<module>"
 // or ":<module>") and returns a Bazel-compatible label which corresponds to dependencies on the
 // module within the given ctx.

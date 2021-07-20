@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -39,6 +40,10 @@ type bazelModuleProperties struct {
 	// To opt-out a module, set bazel_module: { bp2build_available: false }
 	// To defer the default setting for the directory, do not set the value.
 	Bp2build_available *bool
+
+	// If true, bp2build will generate a synthetic target that can be referenced
+	// by pure Bazel builds. This is primarily used to enable testing via Bazel.
+	Generate_synthetic_target *bool
 }
 
 // Properties contains common module properties for Bazel migration purposes.
@@ -48,15 +53,28 @@ type properties struct {
 	Bazel_module bazelModuleProperties
 }
 
+// Type that defines how a Soong target should be imported synthetically into
+// a Bazel environment.
+
+type BazelSyntheticTargetGenerationStrategy int
+
+const (
+	GenerationStrategyImport BazelSyntheticTargetGenerationStrategy = iota
+	GenerationStrategyTest
+)
+
 // BazelModuleBase contains the property structs with metadata for modules which can be converted to
 // Bazel.
 type BazelModuleBase struct {
-	bazelProperties properties
+	bazelProperties         properties
+	syntheticTargetStrategy BazelSyntheticTargetGenerationStrategy
 }
 
 // Bazelable is specifies the interface for modules that can be converted to Bazel.
 type Bazelable interface {
 	bazelProps() *properties
+	GenerateSyntheticTarget() bool
+	GetSyntheticTargetRuleClass() string
 	HasHandcraftedLabel() bool
 	HandcraftedLabel() string
 	GetBazelLabel(ctx BazelConversionPathContext, module blueprint.Module) string
@@ -82,6 +100,19 @@ func (b *BazelModuleBase) bazelProps() *properties {
 	return &b.bazelProperties
 }
 
+func (b *BazelModuleBase) GenerateSyntheticTarget() bool {
+	return b.bazelProperties.Bazel_module.Generate_synthetic_target != nil && *b.bazelProperties.Bazel_module.Generate_synthetic_target
+}
+
+func (b *BazelModuleBase) GetSyntheticTargetRuleClass() string {
+	switch b.syntheticTargetStrategy {
+	case GenerationStrategyTest:
+		return "soong_test_import"
+	default:
+		return "soong_import"
+	}
+}
+
 // HasHandcraftedLabel returns whether this module has a handcrafted Bazel label.
 func (b *BazelModuleBase) HasHandcraftedLabel() bool {
 	return b.bazelProperties.Bazel_module.Label != nil
@@ -101,6 +132,10 @@ func (b *BazelModuleBase) GetBazelLabel(ctx BazelConversionPathContext, module b
 		return bp2buildModuleLabel(ctx, module)
 	}
 	return "" // no label for unconverted module
+}
+
+func (b *BazelModuleBase) SetSyntheticTargetStrategy(strategy BazelSyntheticTargetGenerationStrategy) {
+	b.syntheticTargetStrategy = strategy
 }
 
 // Configuration to decide if modules in a directory should default to true/false for bp2build_available
@@ -355,16 +390,8 @@ func bp2buildDefaultTrueRecursively(packagePath string, config Bp2BuildConfig) b
 	return ret
 }
 
-// GetBazelBuildFileContents returns the file contents of a hand-crafted BUILD file if available or
-// an error if there are errors reading the file.
-// TODO(b/181575318): currently we append the whole BUILD file, let's change that to do
-// something more targeted based on the rule type and target.
-func (b *BazelModuleBase) GetBazelBuildFileContents(c Config, path, name string) (string, error) {
-	if !strings.Contains(b.HandcraftedLabel(), path) {
-		return "", fmt.Errorf("%q not found in bazel_module.label %q", path, b.HandcraftedLabel())
-	}
-	name = filepath.Join(path, name)
-	f, err := c.fs.Open(name)
+func readFileFromConfigFs(c Config, path string) (string, error) {
+	f, err := c.fs.Open(path)
 	if err != nil {
 		return "", err
 	}
@@ -377,8 +404,43 @@ func (b *BazelModuleBase) GetBazelBuildFileContents(c Config, path, name string)
 	return string(data[:]), nil
 }
 
+// GetBazelBuildFileContents returns the file contents of a hand-crafted BUILD file if available or
+// an error if there are errors reading the file.
+// TODO(b/181575318): currently we append the whole BUILD file, let's change that to do
+// something more targeted based on the rule type and target.
+func (b *BazelModuleBase) GetBazelBuildFileContents(c Config, path, name string) (string, error) {
+	if !strings.Contains(b.HandcraftedLabel(), path) {
+		return "", fmt.Errorf("%q not found in bazel_module.label %q", path, b.HandcraftedLabel())
+	}
+	name = filepath.Join(path, name)
+	return readFileFromConfigFs(c, name)
+}
+
 // ConvertedToBazel returns whether this module has been converted to Bazel, whether automatically
 // or manually
 func (b *BazelModuleBase) ConvertedToBazel(ctx BazelConversionPathContext) bool {
 	return b.ConvertWithBp2build(ctx) || b.HasHandcraftedLabel()
+}
+
+// Loads the definition for a given Bazel rule if it exists.
+//
+// This enables the bp2build process to read a given rule file directly as
+// needed. Rules are expected to live in the build/bazel/rules/ directory.
+func LoadBazelRuleDefinition(c Config, name string) (string, error) {
+	match, _ := regexp.MatchString("(\\w)*", name)
+
+	if !match {
+		return "", fmt.Errorf("%s is not a valid Bazel rule identifier", name)
+	}
+
+	fp := fmt.Sprintf("build/bazel/rules/%s.bzl", name)
+	return readFileFromConfigFs(c, fp)
+}
+
+// Loads the repository WORKSPACE file.
+//
+// This is used by the bp2build process so that modifications can be made
+// for the symlink forest workspace.
+func LoadBazelWorkspaceFile(c Config) (string, error) {
+	return readFileFromConfigFs(c, "build/bazel/bazel.WORKSPACE")
 }

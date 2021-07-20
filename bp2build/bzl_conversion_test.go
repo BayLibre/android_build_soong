@@ -88,6 +88,7 @@ custom = rule(
         # bazel_module start
 #         "label": attr.string(),
 #         "bp2build_available": attr.bool(),
+#         "generate_synthetic_target": attr.bool(),
         # bazel_module end
         "bool_prop": attr.bool(),
         "bool_ptr_prop": attr.bool(),

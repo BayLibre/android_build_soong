@@ -22,6 +22,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/bazel"
 	"android/soong/tradefed"
 )
 
@@ -117,12 +118,43 @@ type TestBinaryProperties struct {
 	Test_mainline_modules []string
 }
 
+type bazelCcTestAttributes struct {
+	Deps bazel.LabelListAttribute
+	// Bazel also supports the attributes below, but (so far) these are not required for Bionic
+	// srcs
+	// data
+	// args
+	// compatible_with
+	// deprecation
+	// distribs
+	// env
+	// exec_compatible_with
+	// exec_properties
+	// features
+	// licenses
+	// output_licenses
+	// restricted_to
+	// tags
+	// target_compatible_with
+	// testonly
+	// toolchains
+	// visibility
+}
+
+type bazelCcTest struct {
+	android.BazelTargetModuleBase
+	bazelCcTestAttributes
+}
+
 func init() {
 	android.RegisterModuleType("cc_test", TestFactory)
 	android.RegisterModuleType("cc_test_library", TestLibraryFactory)
 	android.RegisterModuleType("cc_benchmark", BenchmarkFactory)
 	android.RegisterModuleType("cc_test_host", TestHostFactory)
 	android.RegisterModuleType("cc_benchmark_host", BenchmarkHostFactory)
+
+	android.RegisterBp2BuildMutator("cc_test", CcTestBp2Build)
+	android.RegisterBp2BuildMutator("cc_test_host", CcTestHostBp2Build)
 }
 
 // cc_test generates a test config file and an executable binary file to test
@@ -164,6 +196,81 @@ func BenchmarkHostFactory() android.Module {
 	module := NewBenchmark(android.HostSupported)
 	return module.Init()
 }
+
+func BazelCcTestFactory() android.Module {
+	module := &bazelCcTest{}
+	module.AddProperties(&module.bazelCcTestAttributes)
+	android.InitBazelTargetModule(module)
+	return module
+}
+
+func CcTestBp2Build(ctx android.TopDownMutatorContext) {
+	m, ok := ctx.Module().(*Module)
+	if !ok || !m.ConvertWithBp2build(ctx) {
+		return
+	}
+
+	// Only cover cc_test not cc_test_host in this mutator.
+	if m.hod != android.HostAndDeviceSupported {
+		return
+	}
+
+	// Verify that we are, in fact, dealing with a test and not some
+	// other module.
+	_, ok = m.linker.(*testBinary)
+	if !ok {
+		return
+	}
+
+	deps := bazel.MakeLabelListAttribute(android.BazelLabelForSyntheticTarget(ctx))
+	attrs := &bazelCcTestAttributes{
+		Deps: deps,
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "cc_test",
+		Bzl_load_location: "//build/bazel/rules:cc_test.bzl",
+	}
+
+	ctx.CreateBazelTargetModule(BazelCcTestFactory, m.Name(), props, attrs)
+}
+
+func CcTestHostBp2Build(ctx android.TopDownMutatorContext) {
+	m, ok := ctx.Module().(*Module)
+	if !ok || !m.ConvertWithBp2build(ctx) {
+		return
+	}
+
+	// Verify that we are, in fact, dealing with a test and not some
+	// other module.
+	_, ok = m.linker.(*testBinary)
+	if !ok {
+		return
+	}
+
+	// Only cover cc_test_host not cc_test in this mutator.
+	if m.hod != android.HostSupported {
+		return
+	}
+
+	deps := bazel.MakeLabelListAttribute(android.BazelLabelForSyntheticTarget(ctx))
+	attrs := &bazelCcTestAttributes{
+		Deps: deps,
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "cc_test",
+		Bzl_load_location: "//build/bazel/rules:cc_test.bzl",
+	}
+
+	ctx.CreateBazelTargetModule(BazelCcTestFactory, m.Name(), props, attrs)
+}
+
+func (m *bazelCcTest) Name() string {
+	return m.BaseModuleName()
+}
+
+func (m *bazelCcTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
 
 type testPerSrc interface {
 	testPerSrc() bool
@@ -474,6 +581,7 @@ func NewTest(hod android.HostOrDeviceSupported) *Module {
 	module.compiler = test
 	module.linker = test
 	module.installer = test
+	module.BazelModuleBase.SetSyntheticTargetStrategy(android.GenerationStrategyTest)
 	return module
 }
 

@@ -129,6 +129,10 @@ func (library *Library) AndroidMkEntries() []android.AndroidMkEntries {
 					if library.dexpreopter.configPath != nil {
 						entries.SetPath("LOCAL_SOONG_DEXPREOPT_CONFIG", library.dexpreopter.configPath)
 					}
+
+					if library.BazelModuleBase.GenerateSyntheticTarget() {
+						entries.SetBool("LOCAL_GENERATE_SYNTHETIC_BAZEL_TARGET", true)
+					}
 				},
 			},
 		})
@@ -278,6 +282,10 @@ func (binary *Binary) AndroidMkEntries() []android.AndroidMkEntries {
 					if len(binary.dexpreopter.builtInstalled) > 0 {
 						entries.SetString("LOCAL_SOONG_BUILT_INSTALLED", binary.dexpreopter.builtInstalled)
 					}
+
+					if binary.BazelModuleBase.GenerateSyntheticTarget() {
+						entries.SetBool("LOCAL_GENERATE_SYNTHETIC_BAZEL_TARGET", true)
+					}
 				},
 			},
 			ExtraFooters: []android.AndroidMkExtraFootersFunc{
@@ -300,6 +308,10 @@ func (binary *Binary) AndroidMkEntries() []android.AndroidMkEntries {
 			ExtraEntries: []android.AndroidMkExtraEntriesFunc{
 				func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 					entries.SetBool("LOCAL_STRIP_MODULE", false)
+
+					if binary.BazelModuleBase.GenerateSyntheticTarget() {
+						entries.SetBool("LOCAL_GENERATE_SYNTHETIC_BAZEL_TARGET", true)
+					}
 				},
 			},
 			ExtraFooters: []android.AndroidMkExtraFootersFunc{
@@ -407,6 +419,10 @@ func (app *AndroidApp) AndroidMkEntries() []android.AndroidMkEntries {
 				}
 
 				entries.SetOptionalPaths("LOCAL_SOONG_LINT_REPORTS", app.linter.reports)
+
+				if app.BazelModuleBase.GenerateSyntheticTarget() {
+					entries.SetBool("LOCAL_GENERATE_SYNTHETIC_BAZEL_TARGET", true)
+				}
 			},
 		},
 		ExtraFooters: []android.AndroidMkExtraFootersFunc{
