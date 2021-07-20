@@ -1,0 +1,12 @@
+{
+  "presubmit": [
+    {
+      "host": true,
+      "name": "generate_hiddenapi_lists_test",
+      "file_patterns": [
+        "generate_hiddenapi_lists.py",
+        "generate_hiddenapi_lists_test.py"
+      ]
+    }
+  ]
+}
