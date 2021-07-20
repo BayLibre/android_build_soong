@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebab81d3_d67791ae",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-07-20T01:55:09Z",
+      "side": 1,
+      "message": "nit; libbase is not a prebuilt_etc module ;)",
+      "range": {
+        "startLine": 589,
+        "startChar": 24,
+        "endLine": 589,
+        "endChar": 35
+      },
+      "revId": "43c29cae10b38cfafd93eb678af85adc0e736882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
