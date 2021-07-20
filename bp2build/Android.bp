@@ -16,6 +16,7 @@ bootstrap_go_package {
         "conversion.go",
         "metrics.go",
         "symlink_forest.go",
+        "synthetic_workspace.go",
     ],
     deps: [
         "soong-android",

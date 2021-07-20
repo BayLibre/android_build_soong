@@ -278,6 +278,10 @@ func (s *ShBinary) AndroidMkEntries() []android.AndroidMkEntries {
 			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 				s.customAndroidMkEntries(entries)
 				entries.SetString("LOCAL_MODULE_RELATIVE_PATH", proptools.String(s.properties.Sub_dir))
+
+				if s.BazelModuleBase.GenerateSyntheticTarget() {
+					entries.SetBool("LOCAL_GENERATE_SYNTHETIC_BAZEL_TARGET", true)
+				}
 			},
 		},
 	}}

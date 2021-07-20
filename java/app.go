@@ -26,6 +26,7 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
+	"android/soong/bazel"
 	"android/soong/cc"
 	"android/soong/dexpreopt"
 	"android/soong/tradefed"
@@ -33,6 +34,8 @@ import (
 
 func init() {
 	RegisterAppBuildComponents(android.InitRegistrationContext)
+
+	android.RegisterBp2BuildMutator("android_test", AndroidTestBp2Build)
 }
 
 func RegisterAppBuildComponents(ctx android.RegistrationContext) {
@@ -1048,6 +1051,9 @@ func AndroidTestFactory() android.Module {
 		&module.overridableAppProperties,
 		&module.testProperties)
 
+	android.InitBazelModule(module)
+	module.BazelModuleBase.SetSyntheticTargetStrategy(android.GenerationStrategyTest)
+
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	android.InitDefaultableModule(module)
 	android.InitOverridableModule(module, &module.appProperties.Overrides)
@@ -1074,6 +1080,67 @@ type AndroidTestHelperApp struct {
 func (a *AndroidTestHelperApp) InstallInTestcases() bool {
 	return true
 }
+
+type bazelAndroidTestAttributes struct {
+	Deps bazel.LabelListAttribute
+	// Bazel also supports the attributes below, but (so far) these are not required for Bionic
+	// srcs
+	// data
+	// args
+	// compatible_with
+	// deprecation
+	// distribs
+	// env
+	// exec_compatible_with
+	// exec_properties
+	// features
+	// licenses
+	// output_licenses
+	// restricted_to
+	// tags
+	// target_compatible_with
+	// testonly
+	// toolchains
+	// visibility
+}
+
+type bazelAndroidTest struct {
+	android.BazelTargetModuleBase
+	bazelAndroidTestAttributes
+}
+
+func BazelAndroidTestFactory() android.Module {
+	module := &bazelAndroidTest{}
+	module.AddProperties(&module.bazelAndroidTestAttributes)
+	android.InitBazelTargetModule(module)
+	return module
+}
+
+func AndroidTestBp2Build(ctx android.TopDownMutatorContext) {
+	m, ok := ctx.Module().(*AndroidTest)
+
+	if !ok || !m.ConvertWithBp2build(ctx) {
+		return
+	}
+
+	deps := bazel.MakeLabelListAttribute(android.BazelLabelForSyntheticTarget(ctx))
+	attrs := &bazelJavaTestHostAttributes{
+		Deps: deps,
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "android_test",
+		Bzl_load_location: "//build/bazel/rules:android_test.bzl",
+	}
+
+	ctx.CreateBazelTargetModule(BazelAndroidTestFactory, m.Name(), props, attrs)
+}
+
+func (a *bazelAndroidTest) Name() string {
+	return a.BaseModuleName()
+}
+
+func (a *bazelAndroidTest) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
 
 // android_test_helper_app compiles sources and Android resources into an Android application package `.apk` file that
 // will be used by tests, but does not produce an `AndroidTest.xml` file so the module will not be run directly as a
