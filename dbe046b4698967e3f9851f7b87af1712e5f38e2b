@@ -16,6 +16,24 @@
       "message": "Can we hide this from non-Bazel code somehow?",
       "revId": "dbe046b4698967e3f9851f7b87af1712e5f38e2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85c3f332_3785ebfb",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-07-21T18:58:13Z",
+      "side": 1,
+      "message": "I was hoping the strong-worded documentation and the eager panicking would dissuade other users.\n\nBlueprint has no knowledge of Bazel modes, so it might require nontrivial refactoring to make blueprint bazel-aware. I\u0027ll ponder how we might do this.",
+      "parentUuid": "f64cf5f6_482863a5",
+      "revId": "dbe046b4698967e3f9851f7b87af1712e5f38e2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
