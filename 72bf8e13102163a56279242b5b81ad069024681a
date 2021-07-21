@@ -52,6 +52,24 @@
       "parentUuid": "fff25089_0d26e0e5",
       "revId": "72bf8e13102163a56279242b5b81ad069024681a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0addb07d_8260fe5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-21T15:36:30Z",
+      "side": 1,
+      "message": "http://go/aogs/topic:system-shared-libs-target-bionic looks like it should work.",
+      "parentUuid": "00d99684_0174664a",
+      "revId": "72bf8e13102163a56279242b5b81ad069024681a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
