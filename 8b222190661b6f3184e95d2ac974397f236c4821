@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "530f0bed_05064c2e",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-21T09:13:42Z",
+      "side": 1,
+      "message": "This seems like it will become a maintenance and conflict nightmare as this list grows. Would it be possible to use some information within the BUILD file itself to determine whether to keep it or not, e.g. a special comment?",
+      "revId": "8b222190661b6f3184e95d2ac974397f236c4821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
