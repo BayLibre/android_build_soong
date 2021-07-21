@@ -145,7 +145,7 @@ func defaultBootImageConfig(ctx android.PathContext) *bootImageConfig {
 // Updatable boot config allows to access build/install paths of updatable boot jars without going
 // through the usual trouble of registering dependencies on those modules and extracting build paths
 // from those dependencies.
-type updatableBootConfig struct {
+type apexBootConfig struct {
 	// A list of updatable boot jars.
 	modules android.ConfiguredJarList
 
@@ -161,21 +161,21 @@ type updatableBootConfig struct {
 	dexLocations []string
 }
 
-var updatableBootConfigKey = android.NewOnceKey("updatableBootConfig")
+var updatableBootConfigKey = android.NewOnceKey("apexBootConfig")
 
-// Returns updatable boot config.
-func GetUpdatableBootConfig(ctx android.PathContext) updatableBootConfig {
+// Returns apex boot config.
+func GetApexBootConfig(ctx android.PathContext) apexBootConfig {
 	return ctx.Config().Once(updatableBootConfigKey, func() interface{} {
-		updatableBootJars := dexpreopt.GetGlobalConfig(ctx).UpdatableBootJars
+		apexBootJars := dexpreopt.GetGlobalConfig(ctx).ApexBootJars
 
-		dir := android.PathForOutput(ctx, ctx.Config().DeviceName(), "updatable_bootjars")
-		dexPaths := updatableBootJars.BuildPaths(ctx, dir)
-		dexPathsByModuleName := updatableBootJars.BuildPathsByModule(ctx, dir)
+		dir := android.PathForOutput(ctx, ctx.Config().DeviceName(), "apex_bootjars")
+		dexPaths := apexBootJars.BuildPaths(ctx, dir)
+		dexPathsByModuleName := apexBootJars.BuildPathsByModule(ctx, dir)
 
-		dexLocations := updatableBootJars.DevicePaths(ctx.Config(), android.Android)
+		dexLocations := apexBootJars.DevicePaths(ctx.Config(), android.Android)
 
-		return updatableBootConfig{updatableBootJars, dexPaths, dexPathsByModuleName, dexLocations}
-	}).(updatableBootConfig)
+		return apexBootConfig{apexBootJars, dexPaths, dexPathsByModuleName, dexLocations}
+	}).(apexBootConfig)
 }
 
 // Returns a list of paths and a list of locations for the boot jars used in dexpreopt (to be
@@ -189,7 +189,7 @@ func bcpForDexpreopt(ctx android.PathContext, withUpdatable bool) (android.Writa
 
 	if withUpdatable {
 		// Updatable boot jars (they are used only in dexpreopt, but not in the boot image).
-		updBootConfig := GetUpdatableBootConfig(ctx)
+		updBootConfig := GetApexBootConfig(ctx)
 		dexPaths = append(dexPaths, updBootConfig.dexPaths...)
 		dexLocations = append(dexLocations, updBootConfig.dexLocations...)
 	}
