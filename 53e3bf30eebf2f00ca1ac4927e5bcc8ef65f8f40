@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddfbf896_c29882da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-07-21T11:26:44Z",
+      "side": 1,
+      "message": "Apparently this is not needed. Setting \"unit_test: true\" will cause a host side test to be run on every presubmit anyway.\n\nThe test fails with this message:\n\"Target \u0027generate_hiddenapi_lists_test\u0027 is already running in host-unit-tests, it doesn\u0027t need the test mapping config: [build/soong/scripts/hiddenapi]\"",
+      "revId": "53e3bf30eebf2f00ca1ac4927e5bcc8ef65f8f40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
