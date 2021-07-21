@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68aaaae2_9774db64",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-07-21T20:41:24Z",
+      "side": 1,
+      "message": "Maybe default to \"default\" instead, so we can have those listed all in one place.  Code inside the build can the require that those variables exist.",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 12
+      },
+      "revId": "2104838ab3a441007fe0891d412f4c9420336ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f9fa7c6_d4beb03a",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-07-21T20:41:24Z",
+      "side": 1,
+      "message": "I think you should use a field inside of the outer json object (maybe \"env\") for future-proofing the config, like I suggested in the doc.",
+      "range": {
+        "startLine": 132,
+        "startChar": 39,
+        "endLine": 132,
+        "endChar": 47
+      },
+      "revId": "2104838ab3a441007fe0891d412f4c9420336ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91d489af_0efefe87",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-07-21T20:41:24Z",
+      "side": 1,
+      "message": "typo: config",
+      "range": {
+        "startLine": 206,
+        "startChar": 46,
+        "endLine": 206,
+        "endChar": 51
+      },
+      "revId": "2104838ab3a441007fe0891d412f4c9420336ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
