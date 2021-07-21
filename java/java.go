@@ -458,13 +458,13 @@ type Library struct {
 var _ android.ApexModule = (*Library)(nil)
 
 // Provides access to the list of permitted packages from updatable boot jars.
-type PermittedPackagesForUpdatableBootJars interface {
-	PermittedPackagesForUpdatableBootJars() []string
+type PermittedPackagesForApexBootJars interface {
+	PermittedPackagesForApexBootJars() []string
 }
 
-var _ PermittedPackagesForUpdatableBootJars = (*Library)(nil)
+var _ PermittedPackagesForApexBootJars = (*Library)(nil)
 
-func (j *Library) PermittedPackagesForUpdatableBootJars() []string {
+func (j *Library) PermittedPackagesForApexBootJars() []string {
 	return j.properties.Permitted_packages
 }
 
@@ -601,7 +601,7 @@ func (p *librarySdkMemberProperties) PopulateFromVariant(ctx android.SdkMemberCo
 
 	p.AidlIncludeDirs = j.AidlIncludeDirs()
 
-	p.PermittedPackages = j.PermittedPackagesForUpdatableBootJars()
+	p.PermittedPackages = j.PermittedPackagesForApexBootJars()
 }
 
 func (p *librarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberContext, propertySet android.BpPropertySet) {
@@ -1200,9 +1200,9 @@ type Import struct {
 	minSdkVersion android.SdkSpec
 }
 
-var _ PermittedPackagesForUpdatableBootJars = (*Import)(nil)
+var _ PermittedPackagesForApexBootJars = (*Import)(nil)
 
-func (j *Import) PermittedPackagesForUpdatableBootJars() []string {
+func (j *Import) PermittedPackagesForApexBootJars() []string {
 	return j.properties.Permitted_packages
 }
 

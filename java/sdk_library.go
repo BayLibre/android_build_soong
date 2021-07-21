@@ -1995,9 +1995,9 @@ func sdkLibraryImportFactory() android.Module {
 	return module
 }
 
-var _ PermittedPackagesForUpdatableBootJars = (*SdkLibraryImport)(nil)
+var _ PermittedPackagesForApexBootJars = (*SdkLibraryImport)(nil)
 
-func (module *SdkLibraryImport) PermittedPackagesForUpdatableBootJars() []string {
+func (module *SdkLibraryImport) PermittedPackagesForApexBootJars() []string {
 	return module.properties.Permitted_packages
 }
 
@@ -2558,7 +2558,7 @@ func (s *sdkLibrarySdkMemberProperties) PopulateFromVariant(ctx android.SdkMembe
 	s.Shared_library = proptools.BoolPtr(sdk.sharedLibrary())
 	s.Compile_dex = sdk.dexProperties.Compile_dex
 	s.Doctag_paths = sdk.doctagPaths
-	s.Permitted_packages = sdk.PermittedPackagesForUpdatableBootJars()
+	s.Permitted_packages = sdk.PermittedPackagesForApexBootJars()
 }
 
 func (s *sdkLibrarySdkMemberProperties) AddToPropertySet(ctx android.SdkMemberContext, propertySet android.BpPropertySet) {
