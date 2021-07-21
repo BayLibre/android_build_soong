@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f64cf5f6_482863a5",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-21T18:48:44Z",
+      "side": 1,
+      "message": "Can we hide this from non-Bazel code somehow?",
+      "revId": "dbe046b4698967e3f9851f7b87af1712e5f38e2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
