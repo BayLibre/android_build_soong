@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2133da0_639fc9bb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-21T20:04:16Z",
+      "side": 1,
+      "message": "We should also drop all other deps mutators: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/mutator.go;l\u003d56-60;drc\u003da9d76dd423d94aa99c56e72435eaf6de347ac20f",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "dbe046b4698967e3f9851f7b87af1712e5f38e2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f64cf5f6_482863a5",
         "filename": "android/module.go",
         "patchSetId": 2
@@ -32,6 +55,24 @@
       "side": 1,
       "message": "I was hoping the strong-worded documentation and the eager panicking would dissuade other users.\n\nBlueprint has no knowledge of Bazel modes, so it might require nontrivial refactoring to make blueprint bazel-aware. I\u0027ll ponder how we might do this.",
       "parentUuid": "f64cf5f6_482863a5",
+      "revId": "dbe046b4698967e3f9851f7b87af1712e5f38e2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "244503c9_749ffa52",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-21T20:04:16Z",
+      "side": 1,
+      "message": "Now that Blueprint is homed in asop, we could make that sort of change, but one way to limit it to Bazel within Soong could be to make sure the context calling it is a  BazelTargetModule or similar and panic otherwise.",
+      "parentUuid": "85c3f332_3785ebfb",
       "revId": "dbe046b4698967e3f9851f7b87af1712e5f38e2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
