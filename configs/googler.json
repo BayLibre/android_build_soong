@@ -1,0 +1,13 @@
+{
+    "env": {
+        "USE_RBE": "true",
+        "RBE_use_unified_cas_ops": "true",
+        "RBE_R8_EXEC_STRATEGY": "racing",
+        "RBE_CXX_EXEC_STRATEGY": "racing",
+        "RBE_D8_EXEC_STRATEGY": "racing",
+        "RBE_JAVAC_EXEC_STRATEGY": "racing",
+        "RBE_JAVAC": "1",
+        "RBE_R8": "1",
+        "RBE_D8": "1"
+    }
+}
