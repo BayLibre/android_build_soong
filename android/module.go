@@ -223,6 +223,8 @@ type BaseModuleContext interface {
 	// the first DependencyTag.
 	GetDirectDep(name string) (blueprint.Module, blueprint.DependencyTag)
 
+	ModuleFromName(name string) (blueprint.Module, bool)
+
 	// VisitDirectDepsBlueprint calls visit for each direct dependency.  If there are multiple
 	// direct dependencies on the same module visit will be called multiple times on that module
 	// and OtherModuleDependencyTag will return a different tag for each.
@@ -2371,6 +2373,10 @@ func (m *moduleContext) GetDirectDepWithTag(name string, tag blueprint.Dependenc
 // first DependencyTag.
 func (b *baseModuleContext) GetDirectDep(name string) (blueprint.Module, blueprint.DependencyTag) {
 	return b.getDirectDepFirstTag(name)
+}
+
+func (b *baseModuleContext) ModuleFromName(name string) (blueprint.Module, bool) {
+	return b.bp.ModuleFromName(name)
 }
 
 func (b *baseModuleContext) VisitDirectDepsBlueprint(visit func(blueprint.Module)) {
