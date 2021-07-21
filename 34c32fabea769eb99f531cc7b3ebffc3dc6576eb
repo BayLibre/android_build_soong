@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5a86d03_ea578d78",
+        "filename": "android/arch_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-21T19:07:04Z",
+      "side": 1,
+      "message": "should this be android32?",
+      "range": {
+        "startLine": 554,
+        "startChar": 63,
+        "endLine": 554,
+        "endChar": 72
+      },
+      "revId": "34c32fabea769eb99f531cc7b3ebffc3dc6576eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
