@@ -326,7 +326,6 @@ func TestCcLibrarySharedStaticProps(t *testing.T) {
 		moduleTypeUnderTest:                "cc_library",
 		moduleTypeUnderTestFactory:         cc.LibraryFactory,
 		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
-		depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
 		dir:                                "foo/bar",
 		filesystem: map[string]string{
 			"foo/bar/both.cpp":       "",
@@ -411,7 +410,6 @@ func TestCcLibraryWholeStaticLibsAlwaysLink(t *testing.T) {
 		moduleTypeUnderTest:                "cc_library",
 		moduleTypeUnderTestFactory:         cc.LibraryFactory,
 		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
-		depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
 		dir:                                "foo/bar",
 		filesystem: map[string]string{
 			"foo/bar/Android.bp": `
@@ -458,7 +456,6 @@ func TestCcLibrarySharedStaticPropsInArch(t *testing.T) {
 		moduleTypeUnderTest:                "cc_library",
 		moduleTypeUnderTestFactory:         cc.LibraryFactory,
 		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
-		depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
 		dir:                                "foo/bar",
 		filesystem: map[string]string{
 			"foo/bar/arm.cpp":        "",
@@ -597,7 +594,6 @@ func TestCcLibrarySharedStaticPropsWithMixedSources(t *testing.T) {
 		moduleTypeUnderTest:                "cc_library",
 		moduleTypeUnderTestFactory:         cc.LibraryFactory,
 		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
-		depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
 		dir:                                "foo/bar",
 		filesystem: map[string]string{
 			"foo/bar/both_source.cpp":   "",
@@ -738,7 +734,6 @@ func TestCcLibraryNonConfiguredVersionScript(t *testing.T) {
 		moduleTypeUnderTest:                "cc_library",
 		moduleTypeUnderTestFactory:         cc.LibraryFactory,
 		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
-		depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
 		dir:                                "foo/bar",
 		filesystem: map[string]string{
 			"foo/bar/Android.bp": `
@@ -769,7 +764,6 @@ func TestCcLibraryConfiguredVersionScript(t *testing.T) {
 		moduleTypeUnderTest:                "cc_library",
 		moduleTypeUnderTestFactory:         cc.LibraryFactory,
 		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
-		depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
 		dir:                                "foo/bar",
 		filesystem: map[string]string{
 			"foo/bar/Android.bp": `
@@ -812,7 +806,6 @@ func TestCcLibrarySharedLibs(t *testing.T) {
 		moduleTypeUnderTest:                "cc_library",
 		moduleTypeUnderTestFactory:         cc.LibraryFactory,
 		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
-		depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
 		dir:                                "foo/bar",
 		filesystem: map[string]string{
 			"foo/bar/Android.bp": `
@@ -852,7 +845,6 @@ func TestCcLibraryPackRelocations(t *testing.T) {
 		moduleTypeUnderTest:                "cc_library",
 		moduleTypeUnderTestFactory:         cc.LibraryFactory,
 		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
-		depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
 		dir:                                "foo/bar",
 		filesystem: map[string]string{
 			"foo/bar/Android.bp": `
@@ -926,7 +918,6 @@ func TestCcLibrarySpacesInCopts(t *testing.T) {
 		moduleTypeUnderTest:                "cc_library",
 		moduleTypeUnderTestFactory:         cc.LibraryFactory,
 		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
-		depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
 		dir:                                "foo/bar",
 		filesystem: map[string]string{
 			"foo/bar/Android.bp": `
@@ -956,7 +947,6 @@ func TestCcLibraryCppFlagsGoesIntoCopts(t *testing.T) {
 		moduleTypeUnderTest:                "cc_library",
 		moduleTypeUnderTestFactory:         cc.LibraryFactory,
 		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
-		depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
 		dir:                                "foo/bar",
 		filesystem: map[string]string{
 			"foo/bar/Android.bp": `cc_library {
@@ -1012,7 +1002,6 @@ func TestCcLibraryLabelAttributeGetTargetProperties(t *testing.T) {
 		moduleTypeUnderTest:                "cc_library",
 		moduleTypeUnderTestFactory:         cc.LibraryFactory,
 		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
-		depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
 		dir:                                "foo/bar",
 		filesystem: map[string]string{
 			"foo/bar/Android.bp": `
@@ -1054,7 +1043,6 @@ func TestCcLibraryExcludeLibs(t *testing.T) {
 		moduleTypeUnderTest:                "cc_library",
 		moduleTypeUnderTestFactory:         cc.LibraryFactory,
 		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
-		depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
 		filesystem:                         map[string]string{},
 		blueprint: soongCcLibraryStaticPreamble + `
 cc_library {
@@ -1301,7 +1289,6 @@ func TestCcLibraryStrip(t *testing.T) {
 		moduleTypeUnderTest:                "cc_library",
 		moduleTypeUnderTestFactory:         cc.LibraryFactory,
 		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
-		depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
 		dir:                                "foo/bar",
 		filesystem: map[string]string{
 			"foo/bar/Android.bp": `
@@ -1408,7 +1395,6 @@ func TestCcLibraryStripWithArch(t *testing.T) {
 		moduleTypeUnderTest:                "cc_library",
 		moduleTypeUnderTestFactory:         cc.LibraryFactory,
 		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
-		depsMutators:                       []android.RegisterMutatorFunc{cc.RegisterDepsBp2Build},
 		dir:                                "foo/bar",
 		filesystem: map[string]string{
 			"foo/bar/Android.bp": `
