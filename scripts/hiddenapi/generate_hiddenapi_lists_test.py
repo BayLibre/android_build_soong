@@ -99,6 +99,7 @@ class TestHiddenapiListGeneration(unittest.TestCase):
         signature = 'Lcom/foo_bar/baz/MyClass;->method3()V'
         expected_package = 'com.foo_bar.baz'
         self.assertEqual(extract_package(signature), expected_package)
+        self.fail("check to make sure presubmit runs this")
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)
