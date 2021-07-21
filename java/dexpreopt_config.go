@@ -163,18 +163,18 @@ type updatableBootConfig struct {
 
 var updatableBootConfigKey = android.NewOnceKey("updatableBootConfig")
 
-// Returns updatable boot config.
-func GetUpdatableBootConfig(ctx android.PathContext) updatableBootConfig {
+// Returns apex boot config.
+func GetApexBootConfig(ctx android.PathContext) updatableBootConfig {
 	return ctx.Config().Once(updatableBootConfigKey, func() interface{} {
-		updatableBootJars := dexpreopt.GetGlobalConfig(ctx).UpdatableBootJars
+		apexBootJars := dexpreopt.GetGlobalConfig(ctx).ApexBootJars
 
-		dir := android.PathForOutput(ctx, ctx.Config().DeviceName(), "updatable_bootjars")
-		dexPaths := updatableBootJars.BuildPaths(ctx, dir)
-		dexPathsByModuleName := updatableBootJars.BuildPathsByModule(ctx, dir)
+		dir := android.PathForOutput(ctx, ctx.Config().DeviceName(), "apex_bootjars")
+		dexPaths := apexBootJars.BuildPaths(ctx, dir)
+		dexPathsByModuleName := apexBootJars.BuildPathsByModule(ctx, dir)
 
-		dexLocations := updatableBootJars.DevicePaths(ctx.Config(), android.Android)
+		dexLocations := apexBootJars.DevicePaths(ctx.Config(), android.Android)
 
-		return updatableBootConfig{updatableBootJars, dexPaths, dexPathsByModuleName, dexLocations}
+		return updatableBootConfig{apexBootJars, dexPaths, dexPathsByModuleName, dexLocations}
 	}).(updatableBootConfig)
 }
 
@@ -189,7 +189,7 @@ func bcpForDexpreopt(ctx android.PathContext, withUpdatable bool) (android.Writa
 
 	if withUpdatable {
 		// Updatable boot jars (they are used only in dexpreopt, but not in the boot image).
-		updBootConfig := GetUpdatableBootConfig(ctx)
+		updBootConfig := GetApexBootConfig(ctx)
 		dexPaths = append(dexPaths, updBootConfig.dexPaths...)
 		dexLocations = append(dexLocations, updBootConfig.dexLocations...)
 	}
