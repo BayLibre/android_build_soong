@@ -814,8 +814,8 @@ func generateUpdatableBcpPackagesRule(ctx android.ModuleContext, image *bootImag
 	// Collect `permitted_packages` for updatable boot jars.
 	var updatablePackages []string
 	for _, module := range updatableModules {
-		if j, ok := module.(PermittedPackagesForUpdatableBootJars); ok {
-			pp := j.PermittedPackagesForUpdatableBootJars()
+		if j, ok := module.(PermittedPackagesForApexBootJars); ok {
+			pp := j.PermittedPackagesForApexBootJars()
 			if len(pp) > 0 {
 				updatablePackages = append(updatablePackages, pp...)
 			} else {

@@ -166,15 +166,15 @@ var updatableBootConfigKey = android.NewOnceKey("updatableBootConfig")
 // Returns updatable boot config.
 func GetUpdatableBootConfig(ctx android.PathContext) updatableBootConfig {
 	return ctx.Config().Once(updatableBootConfigKey, func() interface{} {
-		updatableBootJars := dexpreopt.GetGlobalConfig(ctx).UpdatableBootJars
+		ApexBootJars := dexpreopt.GetGlobalConfig(ctx).ApexBootJars
 
 		dir := android.PathForOutput(ctx, ctx.Config().DeviceName(), "updatable_bootjars")
-		dexPaths := updatableBootJars.BuildPaths(ctx, dir)
-		dexPathsByModuleName := updatableBootJars.BuildPathsByModule(ctx, dir)
+		dexPaths := ApexBootJars.BuildPaths(ctx, dir)
+		dexPathsByModuleName := ApexBootJars.BuildPathsByModule(ctx, dir)
 
-		dexLocations := updatableBootJars.DevicePaths(ctx.Config(), android.Android)
+		dexLocations := ApexBootJars.DevicePaths(ctx.Config(), android.Android)
 
-		return updatableBootConfig{updatableBootJars, dexPaths, dexPathsByModuleName, dexLocations}
+		return updatableBootConfig{ApexBootJars, dexPaths, dexPathsByModuleName, dexLocations}
 	}).(updatableBootConfig)
 }
 

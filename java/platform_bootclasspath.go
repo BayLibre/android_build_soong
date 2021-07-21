@@ -134,7 +134,7 @@ func (b *platformBootclasspathModule) BootclasspathDepsMutator(ctx android.Botto
 	addDependenciesOntoBootImageModules(ctx, bootImageConfig.modules, platformBootclasspathNonUpdatableBootJarDepTag)
 
 	// Add dependencies on all the updatable modules.
-	updatableModules := dexpreopt.GetGlobalConfig(ctx).UpdatableBootJars
+	updatableModules := dexpreopt.GetGlobalConfig(ctx).ApexBootJars
 	addDependenciesOntoBootImageModules(ctx, updatableModules, platformBootclasspathUpdatableBootJarDepTag)
 
 	// Add dependencies on all the fragments.
@@ -209,7 +209,7 @@ func (b *platformBootclasspathModule) configuredJars(ctx android.ModuleContext) 
 	jars := b.getImageConfig(ctx).modules
 
 	// Include jars from APEXes that don't populate their classpath proto config.
-	remainingJars := dexpreopt.GetGlobalConfig(ctx).UpdatableBootJars
+	remainingJars := dexpreopt.GetGlobalConfig(ctx).ApexBootJars
 	for _, fragment := range b.fragments {
 		info := ctx.OtherModuleProvider(fragment, ClasspathFragmentProtoContentInfoProvider).(ClasspathFragmentProtoContentInfo)
 		if info.ClasspathFragmentProtoGenerated {

@@ -7219,11 +7219,11 @@ func testApexPermittedPackagesRules(t *testing.T, errmsg, bp string, apexBootJar
 		PrepareForTestWithApexBuildComponents,
 		android.PrepareForTestWithNeverallowRules(rules),
 		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
-			updatableBootJars := make([]string, 0, len(apexBootJars))
+			ApexBootJars := make([]string, 0, len(apexBootJars))
 			for _, apexBootJar := range apexBootJars {
-				updatableBootJars = append(updatableBootJars, "myapex:"+apexBootJar)
+				ApexBootJars = append(ApexBootJars, "myapex:"+apexBootJar)
 			}
-			variables.UpdatableBootJars = android.CreateTestConfiguredJarList(updatableBootJars)
+			variables.ApexBootJars = android.CreateTestConfiguredJarList(ApexBootJars)
 		}),
 		fs.AddToFixture(),
 	).

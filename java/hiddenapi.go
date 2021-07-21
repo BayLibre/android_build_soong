@@ -119,10 +119,10 @@ func (h *hiddenAPI) initHiddenAPI(ctx android.ModuleContext, dexJar, classesJar 
 
 func isModuleInBootClassPath(ctx android.BaseModuleContext, module android.Module) bool {
 	// Get the configured non-updatable and updatable boot jars.
-	nonUpdatableBootJars := ctx.Config().NonUpdatableBootJars()
-	updatableBootJars := ctx.Config().UpdatableBootJars()
-	active := isModuleInConfiguredList(ctx, module, nonUpdatableBootJars) ||
-		isModuleInConfiguredList(ctx, module, updatableBootJars)
+	nonApexBootJars := ctx.Config().NonApexBootJars()
+	ApexBootJars := ctx.Config().ApexBootJars()
+	active := isModuleInConfiguredList(ctx, module, nonApexBootJars) ||
+		isModuleInConfiguredList(ctx, module, ApexBootJars)
 	return active
 }
 
