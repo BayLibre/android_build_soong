@@ -21,6 +21,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/fuzz"
 )
 
 var (
@@ -360,7 +361,7 @@ func (benchmark *benchmarkDecorator) AndroidMkEntries(ctx AndroidMkContext, entr
 			entries.SetString("LOCAL_FULL_TEST_CONFIG", benchmark.testConfig.String())
 		}
 		entries.SetBool("LOCAL_NATIVE_BENCHMARK", true)
-		if !BoolDefault(benchmark.Properties.Auto_gen_config, true) {
+		if !fuzz.BoolDefault(benchmark.Properties.Auto_gen_config, true) {
 			entries.SetBool("LOCAL_DISABLE_AUTO_GENERATE_TEST_CONFIG", true)
 		}
 	})
@@ -384,7 +385,7 @@ func (test *testBinary) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 		if test.testConfig != nil {
 			entries.SetString("LOCAL_FULL_TEST_CONFIG", test.testConfig.String())
 		}
-		if !BoolDefault(test.Properties.Auto_gen_config, true) {
+		if !fuzz.BoolDefault(test.Properties.Auto_gen_config, true) {
 			entries.SetBool("LOCAL_DISABLE_AUTO_GENERATE_TEST_CONFIG", true)
 		}
 		entries.AddStrings("LOCAL_TEST_MAINLINE_MODULES", test.Properties.Test_mainline_modules...)
