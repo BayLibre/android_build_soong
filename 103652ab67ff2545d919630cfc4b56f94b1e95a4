@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc803b70_7cad8617",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-07-22T17:43:52Z",
+      "side": 1,
+      "message": "I believe the linker needs a `64` suffix if we\u0027re building a 64 bit artifact?",
+      "revId": "103652ab67ff2545d919630cfc4b56f94b1e95a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
