@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0eb2ffbd_1bce3484",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-07-22T23:43:39Z",
+      "side": 1,
+      "message": "Also need to test with \"ANDROID_BUILD_ENVIRONMENT_CONFIG\u003d m\"",
+      "revId": "2104838ab3a441007fe0891d412f4c9420336ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "68aaaae2_9774db64",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 1
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "Sorry - are you suggesting a default file like \"default.json\" that would list these variables but set their values to an empty string? I think its simpler to just leave these variables unset and not do anything if \"ANDROID_BUILD_ENVIRONMENT_CONFIG\" variable is not set?",
       "parentUuid": "68aaaae2_9774db64",
+      "range": {
+        "startLine": 122,
+        "startChar": 2,
+        "endLine": 122,
+        "endChar": 12
+      },
+      "revId": "2104838ab3a441007fe0891d412f4c9420336ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4aa9586_b3f576fd",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-07-22T23:43:39Z",
+      "side": 1,
+      "message": "That is what I was suggesting, because it explicitly sets the defaults.  For example, down the road what if we want to have the default be not empty string. But it doesn\u0027t matter.  We can do that later.",
+      "parentUuid": "927348b9_956ef5dc",
       "range": {
         "startLine": 122,
         "startChar": 2,
