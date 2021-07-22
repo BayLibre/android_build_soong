@@ -526,6 +526,8 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 
 	library.flagExporter.setProvider(ctx)
 
+	ctx.Phony("rust", outputFile)
+
 	return outputFile
 }
 
