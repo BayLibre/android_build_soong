@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9f33d5b_321e44c8",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-07-22T16:36:50Z",
+      "side": 0,
+      "message": "It is kinda related, before the rename it was filtering UpdatableBootJars and the comment was explaining the specification of updatable boot jars. This comment is confusing now that we have ApexBootJars.",
+      "parentUuid": "01f53ca9_839db510",
+      "range": {
+        "startLine": 542,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 30
+      },
+      "revId": "ae86338676084cf5966adf99f34e7086f9687edc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa8421aa_2ef39a67",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-22T16:16:50Z",
       "side": 0,
       "message": "Why did you remove the comment? Can you update it instead?",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 30
+      },
+      "revId": "ae86338676084cf5966adf99f34e7086f9687edc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c79c46e4_374e92a1",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-07-22T16:36:50Z",
+      "side": 0,
+      "message": "See the other comment as well. Each apex should have classpaths.proto generated (except core-icu4j apex). This comment is outdated / incorrect now. The code is self-descriptive given it filters UpdatableSystemServerJars.",
+      "parentUuid": "fa8421aa_2ef39a67",
       "range": {
         "startLine": 111,
         "startChar": 0,

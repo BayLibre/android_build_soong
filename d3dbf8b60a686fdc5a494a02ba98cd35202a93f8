@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "20e132e5_99fc4aeb",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-07-22T16:36:50Z",
+      "side": 1,
+      "message": "All apex boot jars should be declared in PRODUCT_APEX_BOOT_JARS which is checked in a different method below.",
+      "parentUuid": "f8c01f00_2284a80c",
+      "revId": "d3dbf8b60a686fdc5a494a02ba98cd35202a93f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc0e7039_7bd049f2",
         "filename": "java/platform_bootclasspath.go",
         "patchSetId": 4
