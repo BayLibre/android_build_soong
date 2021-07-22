@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0752139_c3e2000e",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-07-22T13:05:27Z",
+      "side": 1,
+      "message": "Do we need to add support for Rust modules in this snapshot image in a follow-up CL?",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 56
+      },
+      "revId": "921804b029e25daede76d24c480e9a5d82e0874e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4b62071_372dd253",
+        "filename": "rust/image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-07-22T13:05:27Z",
+      "side": 1,
+      "message": "Add a test that this is enforced?",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 102
+      },
+      "revId": "921804b029e25daede76d24c480e9a5d82e0874e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
