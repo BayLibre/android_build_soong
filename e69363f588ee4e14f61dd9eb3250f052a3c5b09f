@@ -16,6 +16,24 @@
       "message": "Hmm.. with the latest couple patches soong test started to fail:\n\n--- FAIL: TestApexPermittedPackagesRules (0.01s)\n    --- FAIL: TestApexPermittedPackagesRules/Bootclasspath_apex_jar_not_satisfying_allowed_module_packages. (0.01s)\n        apex_test.go:7384: missing the expected error \"module \\\"bcp_lib2\\\" .* which is restricted because jars that are part of the myapex module may only allow these packages: foo.bar. Please jarjar or move code around.\" (checked 0 error(s))\n        \nAny ideas if I renamed something I shouldn\u0027t have?",
       "revId": "e69363f588ee4e14f61dd9eb3250f052a3c5b09f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eec984d_71e07229",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-07-22T12:57:35Z",
+      "side": 1,
+      "message": "Yeah, clashing variable names in apex_test.go. Fixed.",
+      "parentUuid": "45d9ede4_b9f6213e",
+      "revId": "e69363f588ee4e14f61dd9eb3250f052a3c5b09f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
