@@ -29,6 +29,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc/config"
+	"android/soong/fuzz"
 	"android/soong/genrule"
 )
 
@@ -756,7 +757,7 @@ func IsTestPerSrcDepTag(depTag blueprint.DependencyTag) bool {
 // members of the cc.Module to this decorator. Thus, a cc_binary module has custom linker and
 // installer logic.
 type Module struct {
-	FuzzModule
+	fuzz.FuzzModule
 
 	android.SdkBase
 	android.BazelModuleBase
@@ -3397,7 +3398,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&TestProperties{},
 		&TestBinaryProperties{},
 		&BenchmarkProperties{},
-		&FuzzProperties{},
+		&fuzz.FuzzProperties{},
 		&StlProperties{},
 		&SanitizeProperties{},
 		&StripProperties{},

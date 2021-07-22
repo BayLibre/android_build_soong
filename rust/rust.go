@@ -25,6 +25,7 @@ import (
 	"android/soong/bloaty"
 	"android/soong/cc"
 	cc_config "android/soong/cc/config"
+	"android/soong/fuzz"
 	"android/soong/rust/config"
 )
 
@@ -119,7 +120,7 @@ type BaseProperties struct {
 }
 
 type Module struct {
-	cc.FuzzModule
+	fuzz.FuzzModule
 
 	VendorProperties cc.VendorProperties
 
