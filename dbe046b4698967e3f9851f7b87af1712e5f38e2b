@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb3f584c_a66ec9c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-07-22T22:11:07Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "b2133da0_639fc9bb",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 28
+      },
+      "revId": "dbe046b4698967e3f9851f7b87af1712e5f38e2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f64cf5f6_482863a5",
@@ -73,6 +97,24 @@
       "side": 1,
       "message": "Now that Blueprint is homed in asop, we could make that sort of change, but one way to limit it to Bazel within Soong could be to make sure the context calling it is a  BazelTargetModule or similar and panic otherwise.",
       "parentUuid": "85c3f332_3785ebfb",
+      "revId": "dbe046b4698967e3f9851f7b87af1712e5f38e2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4438fa0_6c94226f",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-07-22T22:11:07Z",
+      "side": 1,
+      "message": "I\u0027ve wired bazelCoversionMode boolean to the soong topdown and bottomup mutators, but not all the way to blueprint. WDYT?",
+      "parentUuid": "244503c9_749ffa52",
       "revId": "dbe046b4698967e3f9851f7b87af1712e5f38e2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
