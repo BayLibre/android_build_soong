@@ -16,6 +16,24 @@
       "message": "I am not sure about this change. Native bridge is for apps running on different architecture (e.g. arm on x86). Do we have a plan to support rust in apps?",
       "revId": "b34706af58fd949e58192e19665defeaffbe81cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c135cc85_bdbc82bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-07-22T00:07:04Z",
+      "side": 1,
+      "message": "The dynamic loader has a native-bridge variant and calls __cxa_demangle in some cases. The goal of this and the related changes going up is to allow calls to __cxa_demangle to also attempt Rust demangling if it would be appropriate.\n\nI could look into flagging the call to the rust demangler off in the native-bridge variant of the dynamic loader to remove the dependency, but that\u0027s why this is here.",
+      "parentUuid": "82245efe_be9222b8",
+      "revId": "b34706af58fd949e58192e19665defeaffbe81cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
