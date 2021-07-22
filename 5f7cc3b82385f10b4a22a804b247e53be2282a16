@@ -16,6 +16,92 @@
       "message": "Already failing test.",
       "revId": "5f7cc3b82385f10b4a22a804b247e53be2282a16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcdc7826_ac08d962",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-22T16:16:50Z",
+      "side": 1,
+      "message": "Ugh, who could have thought that this renaming would be so much work!",
+      "revId": "5f7cc3b82385f10b4a22a804b247e53be2282a16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c8d5d64_5f46e917",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-22T16:16:50Z",
+      "side": 1,
+      "message": "I don\u0027t think this struct should be renamed. It\u0027s meaning is to handle updatable boot jars (adding them to dexpreopt).\n\nIf you want to keep the rename, please update the comment as well (here and in the struct).",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 98
+      },
+      "revId": "5f7cc3b82385f10b4a22a804b247e53be2282a16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f469ee_881f0aad",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-22T16:16:50Z",
+      "side": 1,
+      "message": "`updBootConfig` doesn\u0027t make much sense after the rename.",
+      "range": {
+        "startLine": 192,
+        "startChar": 2,
+        "endLine": 192,
+        "endChar": 15
+      },
+      "revId": "5f7cc3b82385f10b4a22a804b247e53be2282a16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a32d10c7_13ed5c22",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-22T16:16:50Z",
+      "side": 1,
+      "message": "You renamed the comment but not the function. Please make them consistent.",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 65
+      },
+      "revId": "5f7cc3b82385f10b4a22a804b247e53be2282a16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

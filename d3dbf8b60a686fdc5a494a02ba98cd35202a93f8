@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8c01f00_2284a80c",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-22T16:16:50Z",
+      "side": 1,
+      "message": "I also don\u0027t understand the added comment. Why should it \"only allow core-icu4j\" as opposed to what the check does now (look if the jar comes from an updatable apex)?",
+      "parentUuid": "dfd292d1_f7a68b0b",
+      "revId": "d3dbf8b60a686fdc5a494a02ba98cd35202a93f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc0e7039_7bd049f2",
         "filename": "java/platform_bootclasspath.go",
         "patchSetId": 4

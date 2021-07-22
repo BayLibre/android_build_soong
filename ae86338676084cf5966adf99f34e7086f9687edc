@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f53ca9_839db510",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-22T16:16:50Z",
+      "side": 0,
+      "message": "The removal of this comment is not related to the rename, right? I\u0027m not against removing it now if it\u0027s outdated, just making sure this is intentional.",
+      "range": {
+        "startLine": 542,
+        "startChar": 0,
+        "endLine": 544,
+        "endChar": 30
+      },
+      "revId": "ae86338676084cf5966adf99f34e7086f9687edc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa8421aa_2ef39a67",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-07-22T16:16:50Z",
+      "side": 0,
+      "message": "Why did you remove the comment? Can you update it instead?",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 30
+      },
+      "revId": "ae86338676084cf5966adf99f34e7086f9687edc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
