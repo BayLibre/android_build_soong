@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1006e3d8_432c8fb0",
+        "filename": "rust/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-22T23:56:50Z",
+      "side": 1,
+      "message": "If you want to check something in I\u0027d suggest making it handle all rust files, not just the tests.  We have `m java` and `m native`, so `m rust` makes sense.",
+      "revId": "c69d05904ddbb299f97184b1fac7cc137d7e6dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
