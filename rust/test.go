@@ -133,6 +133,7 @@ func (test *testDecorator) install(ctx ModuleContext) {
 		test.Properties.Test_options.Unit_test = proptools.BoolPtr(true)
 	}
 	test.binaryDecorator.install(ctx)
+	ctx.Phony("rust", ctx.RustModule().OutputFile().Path())
 }
 
 func (test *testDecorator) compilerFlags(ctx ModuleContext, flags Flags) Flags {

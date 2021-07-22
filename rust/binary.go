@@ -130,6 +130,8 @@ func (binary *binaryDecorator) compile(ctx ModuleContext, flags Flags, deps Path
 		binary.strippedOutputFile = android.OptionalPathForPath(strippedOutputFile)
 	}
 
+	ctx.Phony("rust", outputFile)
+
 	return outputFile
 }
 
