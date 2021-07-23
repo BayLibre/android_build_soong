@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "435c76c9_23822634",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2021-07-23T20:26:17Z",
+      "side": 1,
+      "message": "I\u0027ve removed the config file from this change and added it to vendor/google/tools/ repo as we discussed in the meeting yesterday.",
+      "revId": "9bb8eab9924817290cd9691f0aed44d77367469a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
