@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "340cbd7c_6e619c50",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-23T00:34:19Z",
+      "side": 1,
+      "message": "Mac forrest build passed at https://android-build.googleplex.com/builds/abtd/run/L93600000950408345",
+      "revId": "4e87990cf221ffeedfdc650a582d2753f7f55663",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
