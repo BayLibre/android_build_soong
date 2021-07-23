@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a02dd15_f740f849",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-07-23T10:57:20Z",
+      "side": 1,
+      "message": "I locally verified. The problem was:\n\n    if !ok || s.properties.Src !\u003d nil {\n        return []string{}\n    }\n    \nIt should be `s.properties.Src \u003d\u003d nil`.",
+      "revId": "58d8d55641311b98d9d5744b796f26be3ed692ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
