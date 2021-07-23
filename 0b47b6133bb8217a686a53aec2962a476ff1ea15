@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9abbacf_5ee4a2b1",
+        "filename": "cc/fuzz_common.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-07-23T14:00:07Z",
+      "side": 1,
+      "message": "Was this file meant to be included? Looks like it might now be a duplicate of fuzz/fuzz_common.go and it\u0027s no longer included in the Android.bp",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 12
+      },
+      "revId": "0b47b6133bb8217a686a53aec2962a476ff1ea15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
