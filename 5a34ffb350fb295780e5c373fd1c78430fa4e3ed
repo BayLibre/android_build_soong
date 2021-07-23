@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b477b4a8_14f5669d",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2387,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-07-23T14:55:07Z",
+      "side": 1,
+      "message": "It sort of is, it sort of isn\u0027t:\nThose two functions check those two cases as alternate branches...\n\nI don\u0027t think there\u0027s a good way to refactor this without doing redundant checks in SrcIsModule and SrcIsModuleWithTag...",
+      "parentUuid": "0cc13bc2_0e2292cd",
+      "range": {
+        "startLine": 2387,
+        "startChar": 0,
+        "endLine": 2387,
+        "endChar": 77
+      },
+      "revId": "5a34ffb350fb295780e5c373fd1c78430fa4e3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "def40f08_06b385a6",
         "filename": "cc/bp2build.go",
         "patchSetId": 3
