@@ -16,6 +16,52 @@
       "message": "PTAL, I had to add a few more things to remove the remainder of deps mutators (for example, removing all deps mutators required that we modify some of our logic around filegroup splits.",
       "revId": "5a34ffb350fb295780e5c373fd1c78430fa4e3ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cc13bc2_0e2292cd",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2387,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-23T12:58:45Z",
+      "side": 1,
+      "message": "This is the same check occurring in SrcIsModule / SrcIsModuleWithTag -- we should reuse one of those rather than re-creating it here.",
+      "range": {
+        "startLine": 2387,
+        "startChar": 0,
+        "endLine": 2387,
+        "endChar": 77
+      },
+      "revId": "5a34ffb350fb295780e5c373fd1c78430fa4e3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "def40f08_06b385a6",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-23T12:58:45Z",
+      "side": 1,
+      "message": "Something we can explore as a optimization later is to not repeat this lookup for each lang -- or to add some caching in the ModuleFromName lookup",
+      "range": {
+        "startLine": 70,
+        "startChar": 2,
+        "endLine": 70,
+        "endChar": 40
+      },
+      "revId": "5a34ffb350fb295780e5c373fd1c78430fa4e3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
