@@ -29,6 +29,7 @@ bootstrap_go_package {
         "android_products.go",
         "config_variables.go",
         "expr.go",
+        "find.go",
         "mk2rbc.go",
         "node.go",
         "soong_variables.go",
