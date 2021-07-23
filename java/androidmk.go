@@ -17,6 +17,7 @@ package java
 import (
 	"fmt"
 	"io"
+	"sync"
 
 	"android/soong/android"
 )
@@ -532,6 +533,13 @@ func (ddoc *Droiddoc) AndroidMkEntries() []android.AndroidMkEntries {
 	}}
 }
 
+var dstubsUpdateApiOnce sync.Once
+
+// Decorate warning with yellow
+var dstubsUpdateApiWarningMsg = `\\e[33mAPI has been updated and written to out/. Run this script to copy it to the source tree.\\e[0m`
+var dstubsUpdateApiRunCmd = `\\n\(cd \$$\(gettop\) \&\& $<\)\\n`
+var dstubsUpdateApiScript = "out/soong/.intermediates/update-api-script.sh"
+
 func (dstubs *Droidstubs) AndroidMkEntries() []android.AndroidMkEntries {
 	// If the stubsSrcJar is not generated (because generate_stubs is false) then
 	// use the api file as the output file to ensure the relevant phony targets
@@ -588,14 +596,20 @@ func (dstubs *Droidstubs) AndroidMkEntries() []android.AndroidMkEntries {
 					fmt.Fprintln(w, ".PHONY: droidcore")
 					fmt.Fprintln(w, "droidcore: checkapi")
 				}
-				if dstubs.updateCurrentApiTimestamp != nil {
-					fmt.Fprintln(w, ".PHONY:", dstubs.Name()+"-update-current-api")
-					fmt.Fprintln(w, dstubs.Name()+"-update-current-api:",
-						dstubs.updateCurrentApiTimestamp.String())
+				if dstubs.updateCurrentApiScript != nil {
+					dstubsUpdateApiOnce.Do(func() {
+						fmt.Fprintln(w, ".PHONY: update-api")
+						fmt.Fprintln(w, "update-api:", dstubsUpdateApiScript, "; echo -e", dstubsUpdateApiWarningMsg, dstubsUpdateApiRunCmd)
 
-					fmt.Fprintln(w, ".PHONY: update-api")
-					fmt.Fprintln(w, "update-api:",
-						dstubs.updateCurrentApiTimestamp.String())
+						// update-api-script.sh is a concat of all commands required to update API stubs
+						fmt.Fprintln(w, dstubsUpdateApiScript, ": ; rm -f $@ && cat $^ > $@ && chmod +x $@")
+					})
+
+					fmt.Fprintln(w, ".PHONY:", dstubs.Name()+"-update-current-api")
+					fmt.Fprintln(w, dstubs.Name()+"-update-current-api:", dstubs.updateCurrentApiScript.String(), "; echo -e", dstubsUpdateApiWarningMsg, dstubsUpdateApiRunCmd)
+
+					// the main update-api-script.sh depends on each individual module's update_current_api.sh
+					fmt.Fprintln(w, dstubsUpdateApiScript, ":", dstubs.updateCurrentApiScript.String())
 				}
 				if dstubs.checkLastReleasedApiTimestamp != nil {
 					fmt.Fprintln(w, ".PHONY:", dstubs.Name()+"-check-last-released-api")
