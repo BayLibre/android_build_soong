@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be602b43_239ae13e",
+        "filename": "rust/rust.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-23T16:03:16Z",
+      "side": 1,
+      "message": "If you put it here it would affect all rust modules.",
+      "revId": "21284e8f3e3bd239c0ee1f61215825b883dcf3d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
