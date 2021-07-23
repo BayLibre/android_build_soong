@@ -16,6 +16,24 @@
       "message": "If you want to check something in I\u0027d suggest making it handle all rust files, not just the tests.  We have `m java` and `m native`, so `m rust` makes sense.",
       "revId": "c69d05904ddbb299f97184b1fac7cc137d7e6dff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "267c6b22_6e3e97f3",
+        "filename": "rust/test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2021-07-23T00:16:29Z",
+      "side": 1,
+      "message": "I was thinking the exact same thing.  I will look into doing that.",
+      "parentUuid": "1006e3d8_432c8fb0",
+      "revId": "c69d05904ddbb299f97184b1fac7cc137d7e6dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
