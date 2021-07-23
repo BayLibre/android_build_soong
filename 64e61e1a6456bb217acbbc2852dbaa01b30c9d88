@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e92461e8_861d9d41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-07-23T15:37:23Z",
+      "side": 1,
+      "message": "Bypassing previously flaky device test (tombstone in a GL driver), as this change does not affect the device builds (it\u0027s a tool only used manually on the host)",
+      "revId": "64e61e1a6456bb217acbbc2852dbaa01b30c9d88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
