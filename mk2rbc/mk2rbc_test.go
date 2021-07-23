@@ -658,6 +658,12 @@ PRODUCT_COPY_FILES := $(addprefix pfx-,a b c)
 PRODUCT_COPY_FILES := $(addsuffix .sff, a b c)
 PRODUCT_NAME := $(word 1, $(subst ., ,$(TARGET_BOARD_PLATFORM)))
 $(info $(patsubst %.pub,%,$(PRODUCT_ADB_KEYS)))
+$(info $(dir foo/bar))
+$(info $(dir $(lastword $(MAKEFILE_LIST))))
+$(info $(dir $(lastword $(PRODUCT_COPY_FILES))))
+$(info $(dir $(lastword $(foobar))))
+$(info $(abspath foo/bar))
+$(info $(notdir foo/bar))
 
 `,
 		expected: `load("//build/make/core:product_config.rbc", "rblf")
@@ -668,6 +674,12 @@ def init(g, handle):
   cfg["PRODUCT_COPY_FILES"] = rblf.addsuffix(".sff", "a b c")
   cfg["PRODUCT_NAME"] = ((g.get("TARGET_BOARD_PLATFORM", "")).replace(".", " ")).split()[0]
   rblf.mkinfo("product.mk", rblf.mkpatsubst("%.pub", "%", g.get("PRODUCT_ADB_KEYS", "")))
+  rblf.mkinfo("product.mk", rblf.dir("foo/bar"))
+  rblf.mkinfo("product.mk", rblf.dir("product.mk"))
+  rblf.mkinfo("product.mk", rblf.dir(cfg["PRODUCT_COPY_FILES"][-1]))
+  rblf.mkinfo("product.mk", rblf.dir((_foobar).split()[-1]))
+  rblf.mkinfo("product.mk", rblf.abspath("foo/bar"))
+  rblf.mkinfo("product.mk", rblf.notdir("foo/bar"))
 `,
 	},
 	{

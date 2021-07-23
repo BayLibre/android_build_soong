@@ -76,11 +76,13 @@ var knownFunctions = map[string]struct {
 	runtimeName string
 	returnType  starlarkType
 }{
+	"abspath":                             {baseName + ".abspath", starlarkTypeString},
 	fileExistsPhony:                       {baseName + ".file_exists", starlarkTypeBool},
 	wildcardExistsPhony:                   {baseName + ".file_wildcard_exists", starlarkTypeBool},
 	"add-to-product-copy-files-if-exists": {baseName + ".copy_if_exists", starlarkTypeList},
 	"addprefix":                           {baseName + ".addprefix", starlarkTypeList},
 	"addsuffix":                           {baseName + ".addsuffix", starlarkTypeList},
+	"dir":                                 {baseName + ".dir", starlarkTypeList},
 	"enforce-product-packages-exist":      {baseName + ".enforce_product_packages_exist", starlarkTypeVoid},
 	"error":                               {baseName + ".mkerror", starlarkTypeVoid},
 	"findstring":                          {"!findstring", starlarkTypeInt},
@@ -102,9 +104,11 @@ var knownFunctions = map[string]struct {
 	"is-vendor-board-platform":            {"!is-vendor-board-platform", starlarkTypeBool},
 	callLoadAlways:                        {"!inherit-product", starlarkTypeVoid},
 	callLoadIf:                            {"!inherit-product-if-exists", starlarkTypeVoid},
+	"lastword":                            {"!lastword", starlarkTypeString},
 	"match-prefix":                        {"!match-prefix", starlarkTypeUnknown},       // internal macro
 	"match-word":                          {"!match-word", starlarkTypeUnknown},         // internal macro
 	"match-word-in-list":                  {"!match-word-in-list", starlarkTypeUnknown}, // internal macro
+	"notdir":                              {baseName + ".notdir", starlarkTypeString},
 	"my-dir":                              {"!my-dir", starlarkTypeString},
 	"patsubst":                            {baseName + ".mkpatsubst", starlarkTypeString},
 	"produce_copy_files":                  {baseName + ".produce_copy_files", starlarkTypeList},
@@ -1207,6 +1211,8 @@ func (ctx *parseContext) parseReference(node mkparser.Node, ref *mkparser.MakeSt
 	switch expr.name {
 	case "word":
 		return ctx.parseWordFunc(node, args)
+	case "lastword":
+		return ctx.parseLastwordFunc(node, args)
 	case "my-dir":
 		return &variableRefExpr{ctx.addVariable("LOCAL_PATH"), true}
 	case "subst", "patsubst":
@@ -1277,6 +1283,24 @@ func (ctx *parseContext) parseWordFunc(node mkparser.Node, args *mkparser.MakeSt
 		array = &callExpr{object: array, name: "split", returnType: starlarkTypeList}
 	}
 	return indexExpr{array, &intLiteralExpr{int(index - 1)}}
+}
+
+func (ctx *parseContext) parseLastwordFunc(node mkparser.Node, args *mkparser.MakeString) starlarkExpr {
+	words := args.Split(",")
+	if len(words) != 1 {
+		return ctx.newBadExpr(node, "lastword function should have 1 arguments")
+	}
+	arg := ctx.parseMakeString(node, words[0])
+	if bad, ok := arg.(*badExpr); ok {
+		return bad
+	}
+	if v, ok := arg.(*variableRefExpr); ok && v.ref.name() == "MAKEFILE_LIST" {
+		return &stringLiteralExpr{ctx.script.mkFile}
+	}
+	if arg.typ() == starlarkTypeList {
+		return &indexExpr{arg, &intLiteralExpr{-1}}
+	}
+	return &indexExpr{&callExpr{object: arg, name: "split", returnType: starlarkTypeList}, &intLiteralExpr{-1}}
 }
 
 func (ctx *parseContext) parseMakeString(node mkparser.Node, mk *mkparser.MakeString) starlarkExpr {
