@@ -100,10 +100,13 @@ def init(g, handle):
 		desc:   "Unknown function",
 		mkname: "product.mk",
 		in: `
-PRODUCT_NAME := $(call foo, bar)
+PRODUCT_NAME := $(call foo1, bar)
+PRODUCT_NAME := $(call foo0)
 `,
-		expected: `# MK2RBC TRANSLATION ERROR: cannot handle invoking foo
-# PRODUCT_NAME := $(call foo, bar)
+		expected: `# MK2RBC TRANSLATION ERROR: cannot handle invoking foo1
+# PRODUCT_NAME := $(call foo1, bar)
+# MK2RBC TRANSLATION ERROR: cannot handle invoking foo0
+# PRODUCT_NAME := $(call foo0)
 load("//build/make/core:product_config.rbc", "rblf")
 
 def init(g, handle):
@@ -130,7 +133,7 @@ def init(g, handle):
     rblf.inherit(handle, "part", _part_init)
   else:
     # Comment
-    rblf.inherit(handle, "./part", _part_init)
+    rblf.inherit(handle, "part", _part_init)
 `,
 	},
 	{
@@ -144,7 +147,7 @@ load(":part.star|init", _part_init = "init")
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
-  if _part_init != None:
+  if _part_init:
     rblf.inherit(handle, "part", _part_init)
 `,
 	},
@@ -160,7 +163,7 @@ else
 endif
 `,
 		expected: `load("//build/make/core:product_config.rbc", "rblf")
-load(":part.star", _part_init = "init")
+load(":part.star|init", _part_init = "init")
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
@@ -176,8 +179,7 @@ def init(g, handle):
 		desc:   "Synonymous inherited configurations",
 		mkname: "path/product.mk",
 		in: `
-$(call inherit-product, foo/font.mk)
-$(call inherit-product, bar/font.mk)
+$(call inherit-product, */font.mk)
 `,
 		expected: `load("//build/make/core:product_config.rbc", "rblf")
 load("//foo:font.star", _font_init = "init")
@@ -254,6 +256,8 @@ def init(g, handle):
 		in: `
 ifdef PRODUCT_NAME
 # Comment
+else
+  TARGET_COPY_OUT_VENDOR := foo
 endif
 `,
 		expected: `load("//build/make/core:product_config.rbc", "rblf")
@@ -263,6 +267,10 @@ def init(g, handle):
   if g.get("PRODUCT_NAME") != None:
     # Comment
     pass
+  else:
+    # MK2RBC TRANSLATION ERROR: cannot set predefined variable TARGET_COPY_OUT_VENDOR to "foo", its value should be "||VENDOR-PATH-PH||"
+    pass
+  rblf.warning("product.mk", "partially successful conversion")
 `,
 	},
 	{
@@ -823,6 +831,30 @@ def init(g, handle):
     g["V3"] = g["PRODUCT_ADB_KEYS"]
 `,
 	},
+	{
+		desc:   "Dynamic inherit path",
+		mkname: "product.mk",
+		in: `
+MY_PATH=foo
+$(call inherit-product,vendor/$(MY_PATH)/cfg.mk)
+`,
+		expected: `load("//build/make/core:product_config.rbc", "rblf")
+load("//vendor/foo1:cfg.star|init", _cfg_init = "init")
+load("//vendor/bar/baz:cfg.star|init", _cfg1_init = "init")
+
+def init(g, handle):
+  cfg = rblf.cfg(handle)
+  g["MY_PATH"] = "foo"
+  _entry = {
+    "vendor/foo1/cfg.mk": ("_cfg", _cfg_init),
+    "vendor/bar/baz/cfg.mk": ("_cfg1", _cfg1_init),
+  }.get("vendor/%s/cfg.mk" % g["MY_PATH"])
+  (_varmod, _varmod_init) = _entry if _entry else (None, None)
+  if not _varmod_init:
+    rblf.mkerror("cannot")
+  rblf.inherit(handle, "_varmod", _varmod_init)
+`,
+	},
 }
 
 var known_variables = []struct {
@@ -850,6 +882,13 @@ func TestGood(t *testing.T) {
 	for _, v := range known_variables {
 		KnownVariables.NewVariable(v.name, v.class, v.starlarkType)
 	}
+	fs := NewFindMockFS([]string{
+		"vendor/foo1/cfg.mk",
+		"vendor/bar/baz/cfg.mk",
+		"part.mk",
+		"foo/font.mk",
+		"bar/font.mk",
+	})
 	for _, test := range testCases {
 		t.Run(test.desc,
 			func(t *testing.T) {
@@ -859,6 +898,7 @@ func TestGood(t *testing.T) {
 					RootDir:            ".",
 					OutputSuffix:       ".star",
 					WarnPartialSuccess: true,
+					SourceFS:           fs,
 				})
 				if err != nil {
 					t.Error(err)
