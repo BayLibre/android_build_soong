@@ -16,6 +16,57 @@
       "message": "PTAL!",
       "revId": "09f442b24b5815d4dd84fbc23a75595f1409dfb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7da1c88f_9eb657ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-07-23T22:57:13Z",
+      "side": 1,
+      "message": "Did you test it without setting the flag?",
+      "revId": "09f442b24b5815d4dd84fbc23a75595f1409dfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db22721_4d527b6e",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-07-23T22:57:13Z",
+      "side": 1,
+      "message": "This really should be a search path, not just one directory, but I filed https://b.corp.google.com/issues/194532801 to fix that. This is good enough for your launch.",
+      "revId": "09f442b24b5815d4dd84fbc23a75595f1409dfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f6a3b2_a9a4da63",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-07-23T22:57:13Z",
+      "side": 1,
+      "message": "Should be removed. The inner function already prints enough.  And it definitely can\u0027t fail if you didn\u0027t set ANDROID_BUILD_ENVIRONMENT_CONFIG, which will also result in loadEnvConfig returning nil.",
+      "revId": "09f442b24b5815d4dd84fbc23a75595f1409dfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
