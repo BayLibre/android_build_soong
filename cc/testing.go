@@ -639,6 +639,7 @@ var PrepareForTestWithCcIncludeVndk = android.GroupFixturePreparers(
 		RegisterVendorSnapshotModules(ctx)
 		RegisterRecoverySnapshotModules(ctx)
 		ctx.RegisterSingletonType("vndk-snapshot", VndkSnapshotSingleton)
+		registerModuleAliasForRequiredSingleton(ctx)
 	}),
 )
 
