@@ -36,10 +36,6 @@ import (
 	"github.com/google/blueprint/bootstrap"
 )
 
-func init() {
-	RegisterAndroidMkBuildComponents(InitRegistrationContext)
-}
-
 func RegisterAndroidMkBuildComponents(ctx RegistrationContext) {
 	ctx.RegisterSingletonType("androidmk", AndroidMkSingleton)
 }

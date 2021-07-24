@@ -34,6 +34,7 @@ bootstrap_go_package {
         "pgo.go",
         "prebuilt.go",
         "proto.go",
+        "required.go",
         "rs.go",
         "sanitize.go",
         "sabi.go",
@@ -95,10 +96,15 @@ bootstrap_go_package {
         "object_test.go",
         "prebuilt_test.go",
         "proto_test.go",
+        "required_test.go",
         "sanitize_test.go",
         "test_data_test.go",
         "vendor_public_library_test.go",
         "vendor_snapshot_test.go",
     ],
     pluginFor: ["soong_build"],
+}
+
+cc_module_alias_for_required {
+    name: "cc_module_alias_for_required",
 }

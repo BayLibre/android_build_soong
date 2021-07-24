@@ -211,6 +211,10 @@ func (ctx *Context) Register() {
 func collateGloballyRegisteredSingletons() sortableComponents {
 	allSingletons := append(sortableComponents(nil), singletons...)
 	allSingletons = append(allSingletons,
+		// Register androidmk after other singletons so SingletonModule can export value through
+		// AndroidMkDataProvider or AndroidMkEntriesProvider.
+		singleton{false, "androidmk", AndroidMkSingleton},
+
 		singleton{false, "bazeldeps", BazelSingleton},
 
 		// Register phony just before makevars so it can write out its phony rules as Make rules
