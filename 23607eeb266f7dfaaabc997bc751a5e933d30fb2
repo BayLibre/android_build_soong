@@ -16,6 +16,24 @@
       "message": "Can you sort these?",
       "revId": "23607eeb266f7dfaaabc997bc751a5e933d30fb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ab12479_1b5a0e80",
+        "filename": "java/lint_defaults.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1004689
+      },
+      "writtenOn": "2021-07-24T14:50:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da10bdf1_0d20e59d",
+      "revId": "23607eeb266f7dfaaabc997bc751a5e933d30fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
