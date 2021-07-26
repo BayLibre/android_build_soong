@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18c8f5a3_59631a7e",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-26T18:18:25Z",
+      "side": 1,
+      "message": "Can you upload the changes you made? I don\u0027t see them.",
+      "parentUuid": "0d9c6b18_ef45d378",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 1
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f3ef75c_c5142807",
         "filename": "python/binary.go",
         "patchSetId": 1
@@ -206,6 +230,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "32fba787_bcbe79ac",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-26T18:18:25Z",
+      "side": 1,
+      "message": "do we expect the output of a python_binary_host to be a single file, multiple files, or is no files valid? For example, for a cc static library, we check for one archive: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/library.go;l\u003d565-568;drc\u003d2231f8a21c9d0c3e3c66356209bbfb527b773976",
+      "parentUuid": "53ab4dda_50bb4648",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 2
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "97510acf_43592c9f",
@@ -266,6 +314,30 @@
       "side": 1,
       "message": "So I take it that the existing `soong/python/test.go` is only covering the Bazel side, I shouldn\u0027t add anything there, and instead make a separate unit test leveraging `MockBazelContext` to handle the Bazel side while checking the Soong side on a mixed build?",
       "parentUuid": "7935998c_3385370e",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 2
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09f60a4b_7fac0140",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-26T18:18:25Z",
+      "side": 1,
+      "message": "the existing `soong/python/test.go` is the code to support Soong python tests.\n\n`soong/python/python_test.go` currently only has tests for handling the Soong-only build flow.\n\nAdding a separate unit test to `soong/python/python_test.go` that leverages a `MockBazelContext`, will allow the `MockBazelContext` to handle the Bazel side and make sure that it gets incorporated into Soong properly.",
+      "parentUuid": "86d853b8_9450c3ee",
       "range": {
         "startLine": 227,
         "startChar": 0,
@@ -360,6 +432,30 @@
       "side": 1,
       "message": "I could take out the Make-variable function, but don\u0027t we need Srcs() to satisfy the SourceProvider interface?",
       "parentUuid": "222ba6a6_dff62646",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 1
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5678cd1b_d21fdff7",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-26T18:18:25Z",
+      "side": 1,
+      "message": "We don\u0027t want to satisfy any additional interfaces when we\u0027re implementing something for mixed builds. We just want to make sure we forward the information that Bazel has about the target to the interfaces/providers that a type currently implements.\n\nIf python_binary_host does not currently satisfy the SourceProvider interface, then we don\u0027t want to support it for modules built with Bazel.\n\nIn https://r.android.com/1679689, we didn\u0027t implement `Srcs()`, instead we stored the output from Bazel in the same place that Soong-only builds store their \"output\" -- in srcs.\n\nSimilarly, in https://r.android.com/1625068, we didn\u0027t implement OutputFile or OutputFiles, instead we stored the output from Bazel in the same place that Soong-only builds store their output -- in outputFile.",
+      "parentUuid": "a26a6aaa_948afc61",
       "range": {
         "startLine": 237,
         "startChar": 0,
