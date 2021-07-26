@@ -16,6 +16,24 @@
       "message": "for the new macros, have we also implemented their functionality in starlark or are they only defined but not used within the product config?",
       "revId": "c90b1e3c4ad53c251bce037c64adecab55196484",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc7b3d7b_332cea4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-07-26T18:18:56Z",
+      "side": 1,
+      "message": "These are internal macros, that is, they are used by the other macros. They are not used in the product config makefiles.",
+      "parentUuid": "fef75d1f_5a2ad04a",
+      "revId": "c90b1e3c4ad53c251bce037c64adecab55196484",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
