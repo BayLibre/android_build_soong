@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "414fbcf6_325070b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-07-26T17:18:33Z",
+      "side": 1,
+      "message": "Oh, need to remove googler.json from this cl",
+      "revId": "d0efafac0d7b36c385c5f8be29a4c1ea8d457e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
