@@ -17,6 +17,8 @@ package bp2build
 import (
 	"android/soong/android"
 	"android/soong/apex"
+	"android/soong/cc"
+
 	"testing"
 )
 
@@ -26,6 +28,9 @@ func runApexTestCase(t *testing.T, tc bp2buildTestCase) {
 }
 
 func registerApexModuleTypes(ctx android.RegistrationContext) {
+	// CC module types needed as they can be APEX dependencies viathe  native_shared_libs property
+	cc.RegisterCCBuildComponents(ctx)
+	ctx.RegisterModuleType("cc_library", cc.LibraryFactory)
 }
 
 func TestApexBundleSimple(t *testing.T) {
@@ -36,14 +41,46 @@ func TestApexBundleSimple(t *testing.T) {
 		moduleTypeUnderTestBp2BuildMutator: apex.ApexBundleBp2Build,
 		filesystem:                         map[string]string{},
 		blueprint: `
+cc_library {
+        name: "native_shared_lib_1",
+	bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+        name: "native_shared_lib_2",
+	bazel_module: { bp2build_available: false },
+}
+
 apex {
-	name: "apogee",
+	name: "com.android.apogee",
 	manifest: "manifest.json",
+	key: "com.android.key",
+	updatable: false,
+	installable: false,
+	native_shared_libs: [
+	    "native_shared_lib_1",
+	    "native_shared_lib_2",
+	],
+	binaries: [
+            "binary_1",
+	    "binary_2",
+	],
 }
 `,
 		expectedBazelTargets: []string{`apex(
-    name = "apogee",
+    name = "com.android.apogee",
+    binaries = [
+        "binary_1",
+        "binary_2",
+    ],
+    installable = False,
+    key = "com.android.key",
     manifest = "manifest.json",
+    native_shared_libs = [
+        ":native_shared_lib_1",
+        ":native_shared_lib_2",
+    ],
+    updatable = False,
 )`}})
 }
 

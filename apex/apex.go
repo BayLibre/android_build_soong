@@ -3187,7 +3187,12 @@ func rModulesPackages() map[string][]string {
 // For Bazel / bp2build
 
 type bazelApexBundleAttributes struct {
-	Manifest bazel.LabelAttribute
+	Manifest           bazel.LabelAttribute
+	Key                bazel.LabelAttribute
+	Updatable          bazel.BoolAttribute
+	Installable        bazel.BoolAttribute
+	Native_shared_libs bazel.LabelListAttribute
+	Binaries           bazel.StringListAttribute
 }
 
 type bazelApexBundle struct {
@@ -3220,14 +3225,43 @@ func ApexBundleBp2Build(ctx android.TopDownMutatorContext) {
 
 func apexBundleBp2BuildInternal(ctx android.TopDownMutatorContext, module *apexBundle) {
 	var manifestLabelAttribute bazel.LabelAttribute
-
 	manifestStringPtr := module.properties.Manifest
-	if module.properties.Manifest != nil {
+	if manifestStringPtr != nil {
 		manifestLabelAttribute.SetValue(android.BazelLabelForModuleSrcSingle(ctx, *manifestStringPtr))
 	}
 
+	var keyLabelAttribute bazel.LabelAttribute
+	keyStringPtr := module.overridableProperties.Key
+	if keyStringPtr != nil {
+		keyLabelAttribute.SetValue(android.BazelLabelForModuleSrcSingle(ctx, *keyStringPtr))
+	}
+
+	nativeSharedLibs := module.properties.ApexNativeDependencies.Native_shared_libs
+	nativeSharedLibsLabelList := android.BazelLabelForModuleDeps(ctx, nativeSharedLibs)
+	nativeSharedLibsLabelListAttribute := bazel.MakeLabelListAttribute(nativeSharedLibsLabelList)
+
+	binaries := module.properties.ApexNativeDependencies.Binaries
+	binariesStringListAttribute := bazel.MakeStringListAttribute(binaries)
+
+	var updatableAttribute bazel.BoolAttribute
+	updatable := module.properties.Updatable
+	if updatable != nil {
+		updatableAttribute.Value = updatable
+	}
+
+	var installableAttribute bazel.BoolAttribute
+	installable := module.properties.Installable
+	if installable != nil {
+		installableAttribute.Value = installable
+	}
+
 	attrs := &bazelApexBundleAttributes{
-		Manifest: manifestLabelAttribute,
+		Manifest:           manifestLabelAttribute,
+		Key:                keyLabelAttribute,
+		Updatable:          updatableAttribute,
+		Installable:        installableAttribute,
+		Native_shared_libs: nativeSharedLibsLabelListAttribute,
+		Binaries:           binariesStringListAttribute,
 	}
 
 	props := bazel.BazelTargetModuleProperties{
