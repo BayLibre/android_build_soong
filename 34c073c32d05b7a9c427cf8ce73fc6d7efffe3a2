@@ -22,6 +22,30 @@
       },
       "revId": "34c073c32d05b7a9c427cf8ce73fc6d7efffe3a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7b5b1f5_366fdc53",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-07-26T05:53:43Z",
+      "side": 1,
+      "message": "There isn\u0027t a BUILD file in build/bazel though, so no need for a build/bazel entry. \n\nAdded the comment.",
+      "parentUuid": "58aced1a_f191b4ca",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 57
+      },
+      "revId": "34c073c32d05b7a9c427cf8ce73fc6d7efffe3a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
