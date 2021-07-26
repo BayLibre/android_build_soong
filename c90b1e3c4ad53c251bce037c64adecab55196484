@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fef75d1f_5a2ad04a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-26T18:01:57Z",
+      "side": 1,
+      "message": "for the new macros, have we also implemented their functionality in starlark or are they only defined but not used within the product config?",
+      "revId": "c90b1e3c4ad53c251bce037c64adecab55196484",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
