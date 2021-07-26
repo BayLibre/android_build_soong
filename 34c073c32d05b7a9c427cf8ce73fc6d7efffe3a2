@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58aced1a_f191b4ca",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-07-26T05:41:06Z",
+      "side": 1,
+      "message": "Maybe add back\n\n\"build/bazel\":/* recursive \u003d */ false,\n\nAnd also add a comment\n\n// We want bp2build to generate BUILD files for build/bazel/examples/...\n\nWDYT?",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 57
+      },
+      "revId": "34c073c32d05b7a9c427cf8ce73fc6d7efffe3a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
