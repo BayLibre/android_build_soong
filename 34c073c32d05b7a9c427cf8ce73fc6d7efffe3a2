@@ -46,6 +46,30 @@
       },
       "revId": "34c073c32d05b7a9c427cf8ce73fc6d7efffe3a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0abab51e_de2eb6e5",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-07-26T06:14:23Z",
+      "side": 1,
+      "message": "I think the general expectation is that anything under build/bazel will be used/kept though and not overwritten by bp2build or ignored in the overlay tree. So we are kind of planting a surprise for later by not adding \"build/bazel\":/* recursive \u003d */ false, back now. \n\nI guess what we really want is a way to say that \"build/bazel/examples/apex\" is an exception instead of having to list everything else as an exception. But since we do have to list all the directories right now, it would probably be better to be complete about it and include build/bazel itself (and maybe include docs and any other subdirs too). Just to avoid surprises...",
+      "parentUuid": "b7b5b1f5_366fdc53",
+      "range": {
+        "startLine": 134,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 57
+      },
+      "revId": "34c073c32d05b7a9c427cf8ce73fc6d7efffe3a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
