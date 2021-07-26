@@ -22,6 +22,30 @@
       },
       "revId": "055eb9976570a8614c02c53fa54f6c4272855ac5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bafbda5_c349bb99",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-07-26T06:09:16Z",
+      "side": 1,
+      "message": "Done.\n\nbuild/bazel/examples/android_app/... doesn\u0027t build with `b` though (filed b/194639753), so I changed the CI script to omit the android_app subpackage and build everything else in //build/bazel/....",
+      "parentUuid": "f5be27b6_6e3cad0a",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 39
+      },
+      "revId": "055eb9976570a8614c02c53fa54f6c4272855ac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
