@@ -121,6 +121,24 @@
       "parentUuid": "cfee423f_a6695cf3",
       "revId": "09f442b24b5815d4dd84fbc23a75595f1409dfb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1efba2e4_95bfa455",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-07-26T17:14:45Z",
+      "side": 1,
+      "message": "Ah, I read line 134 wrong. My bad. I thought it was printing it, not returning it. I don\u0027t like how to the warning is printed from within, and the error from without. But soong doesn\u0027t have a good warning printing mechanism. But let\u0027s get this CL in, and worry about that later.",
+      "parentUuid": "b7f80c3e_15723032",
+      "revId": "09f442b24b5815d4dd84fbc23a75595f1409dfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
