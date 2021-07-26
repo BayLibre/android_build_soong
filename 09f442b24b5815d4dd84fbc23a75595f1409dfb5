@@ -37,6 +37,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d4ae1647_b0c14371",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2021-07-26T14:08:28Z",
+      "side": 1,
+      "message": "Yes, for completeness attached the paste from my tests in the CL description.",
+      "parentUuid": "7da1c88f_9eb657ee",
+      "revId": "09f442b24b5815d4dd84fbc23a75595f1409dfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9db22721_4d527b6e",
         "filename": "cmd/soong_ui/main.go",
         "patchSetId": 5
@@ -65,6 +83,24 @@
       "writtenOn": "2021-07-23T22:57:13Z",
       "side": 1,
       "message": "Should be removed. The inner function already prints enough.  And it definitely can\u0027t fail if you didn\u0027t set ANDROID_BUILD_ENVIRONMENT_CONFIG, which will also result in loadEnvConfig returning nil.",
+      "revId": "09f442b24b5815d4dd84fbc23a75595f1409dfb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfee423f_a6695cf3",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2021-07-26T14:08:28Z",
+      "side": 1,
+      "message": "This load should be printed only when `loadEnvConfig()` returns an error, and that happens only when:\n1. `json.Unmarshal()` fails\n2. `os.Setenv()` fails\n\nIn both case, the function doesn\u0027t print anything but rather returns an error object which is printed here.\n\nI have a minor bias towards returning the error and printing it from the caller because it gives the caller choice in deciding what to do with the errors from this function.\n\n(As a side note, I realized `os.Setenv()` actually returns an error which I was ignoring. Fixed it.)",
+      "parentUuid": "d7f6a3b2_a9a4da63",
       "revId": "09f442b24b5815d4dd84fbc23a75595f1409dfb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
