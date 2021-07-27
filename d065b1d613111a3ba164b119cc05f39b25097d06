@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92caadab_3878b07d",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3192,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-07-27T07:03:33Z",
+      "side": 1,
+      "message": "I got confused by the comment in apex.go\n\n\t// Determines the file contexts file for setting the security contexts to files in this APEX\n\t// bundle. For platform APEXes, this should points to a file under /system/sepolicy Default:\n\t// /system/sepolicy/apex/\u003cmodule_name\u003e_file_contexts.\n\tFile_contexts *string `android:\"path\"`\n\t\nSwitch to a label",
+      "parentUuid": "7366fe58_2160b50c",
+      "range": {
+        "startLine": 3192,
+        "startChar": 20,
+        "endLine": 3192,
+        "endChar": 26
+      },
+      "revId": "d065b1d613111a3ba164b119cc05f39b25097d06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6fd7c76_2cf50b62",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-27T05:51:26Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 32,
+        "startChar": 60,
+        "endLine": 32,
+        "endChar": 66
+      },
+      "revId": "d065b1d613111a3ba164b119cc05f39b25097d06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c12600f_ca4b5b5e",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-07-27T07:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6fd7c76_2cf50b62",
       "range": {
         "startLine": 32,
         "startChar": 60,
