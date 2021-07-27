@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee9fc30_3f268199",
+        "filename": "etc/snapshot_etc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-07-27T01:37:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b241be0f_1a4ec11c",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 0
+      },
+      "revId": "94ed4a87aebc2e8751a60d87f2e967c81f45de18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "480109a1_0864460e",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59239352_93065c7d",
+        "filename": "etc/snapshot_etc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-07-27T01:37:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "480109a1_0864460e",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 0
+      },
+      "revId": "94ed4a87aebc2e8751a60d87f2e967c81f45de18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af380e6d_5d742b02",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-26T14:51:45Z",
       "side": 1,
       "message": "add this?\n\n    var _ android.OutputFileProducer \u003d (*SnapshotEtc)(nil)",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 50
+      },
+      "revId": "94ed4a87aebc2e8751a60d87f2e967c81f45de18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ee59439_75baa666",
+        "filename": "etc/snapshot_etc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-07-27T01:37:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af380e6d_5d742b02",
       "range": {
         "startLine": 174,
         "startChar": 0,
