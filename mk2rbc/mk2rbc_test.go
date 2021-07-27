@@ -660,7 +660,9 @@ $(info $(dir foo/bar))
 $(info $(dir $(lastword $(MAKEFILE_LIST))))
 $(info $(abspath foo/bar))
 $(info $(notdir foo/bar))
-
+$(call add_soong_config_namespace,snsconfig)
+$(call add_soong_config_var_value,snsconfig,imagetype,odm_image)
+PRODUCT_COPY_FILES := $(call copy-files,$(wildcard foo*.mk),etc)
 `,
 		expected: `load("//build/make/core:product_config.rbc", "rblf")
 
@@ -674,6 +676,9 @@ def init(g, handle):
   rblf.mkinfo("product.mk", rblf.dir("product.mk"))
   rblf.mkinfo("product.mk", rblf.abspath("foo/bar"))
   rblf.mkinfo("product.mk", rblf.notdir("foo/bar"))
+  rblf.add_soong_config_namespace("snsconfig")
+  rblf.add_soong_config_var_value("snsconfig", "imagetype", "odm_image")
+  cfg["PRODUCT_COPY_FILES"] = rblf.copy_files(rblf.expand_wildcard("foo*.mk"), "etc")
 `,
 	},
 	{
