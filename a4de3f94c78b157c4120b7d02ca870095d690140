@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee7ceba_41fb56cd",
+        "filename": "apex/key.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-07-27T22:20:05Z",
+      "side": 1,
+      "message": "Is this registered?",
+      "range": {
+        "startLine": 216,
+        "startChar": 5,
+        "endLine": 216,
+        "endChar": 20
+      },
+      "revId": "a4de3f94c78b157c4120b7d02ca870095d690140",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
