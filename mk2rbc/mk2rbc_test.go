@@ -657,10 +657,14 @@ PRODUCT_COPY_FILES := $(addsuffix .sff, a b c)
 PRODUCT_NAME := $(word 1, $(subst ., ,$(TARGET_BOARD_PLATFORM)))
 $(info $(patsubst %.pub,%,$(PRODUCT_ADB_KEYS)))
 $(info $(dir foo/bar))
+$(info $(firstword $(PRODUCT_COPY_FILES)))
+$(info $(lastword $(PRODUCT_COPY_FILES)))
 $(info $(dir $(lastword $(MAKEFILE_LIST))))
 $(info $(abspath foo/bar))
 $(info $(notdir foo/bar))
-
+$(call add_soong_config_namespace,snsconfig)
+$(call add_soong_config_var_value,snsconfig,imagetype,odm_image)
+PRODUCT_COPY_FILES := $(call copy-files,$(wildcard foo*.mk),etc)
 `,
 		expected: `load("//build/make/core:product_config.rbc", "rblf")
 
@@ -671,9 +675,14 @@ def init(g, handle):
   cfg["PRODUCT_NAME"] = ((g.get("TARGET_BOARD_PLATFORM", "")).replace(".", " ")).split()[0]
   rblf.mkinfo("product.mk", rblf.mkpatsubst("%.pub", "%", g.get("PRODUCT_ADB_KEYS", "")))
   rblf.mkinfo("product.mk", rblf.dir("foo/bar"))
+  rblf.mkinfo("product.mk", cfg["PRODUCT_COPY_FILES"][0])
+  rblf.mkinfo("product.mk", cfg["PRODUCT_COPY_FILES"][-1])
   rblf.mkinfo("product.mk", rblf.dir("product.mk"))
   rblf.mkinfo("product.mk", rblf.abspath("foo/bar"))
   rblf.mkinfo("product.mk", rblf.notdir("foo/bar"))
+  rblf.add_soong_config_namespace(g, "snsconfig")
+  rblf.add_soong_config_var_value(g, "snsconfig", "imagetype", "odm_image")
+  cfg["PRODUCT_COPY_FILES"] = rblf.copy_files(rblf.expand_wildcard("foo*.mk"), "etc")
 `,
 	},
 	{
@@ -746,6 +755,25 @@ def init(g, handle):
   cfg["PRODUCT_LIST1"] += ["c"]
   rblf.setdefault(handle, "PRODUCT_LIST2")
   cfg["PRODUCT_LIST2"] += ["c"]
+`,
+	},
+	{
+		desc:   "soong namespace assignments",
+		mkname: "product.mk",
+		in: `
+SOONG_CONFIG_NAMESPACES += cvd
+SOONG_CONFIG_cvd += launch_configs
+SOONG_CONFIG_cvd_launch_configs += cvd_config_auto.json
+SOONG_CONFIG_cvd += grub_config
+SOONG_CONFIG_cvd_grub_config += grub.cfg
+`,
+		expected: `load("//build/make/core:product_config.rbc", "rblf")
+
+def init(g, handle):
+  cfg = rblf.cfg(handle)
+  rblf.add_soong_config_namespace(g, "cvd")
+  rblf.add_soong_config_var_value(g, "cvd", "launch_configs", "cvd_config_auto.json")
+  rblf.add_soong_config_var_value(g, "cvd", "grub_config", "grub.cfg")
 `,
 	},
 	{
