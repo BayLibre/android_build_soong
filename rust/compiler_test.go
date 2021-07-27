@@ -208,3 +208,25 @@ func TestStdDeviceLinkage(t *testing.T) {
 		t.Errorf("libstd is not linked dynamically for dylibs")
 	}
 }
+
+// Ensure that manual link flags are disallowed.
+func TestManualLinkageRejection(t *testing.T) {
+	testRustError(t, "'-l' flags cannot be manually specified", `
+		rust_binary {
+			name: "foo",
+			srcs: [
+				"foo.rs",
+			],
+			flags: ["-lbar"],
+		}
+	`)
+	testRustError(t, "'-Wl,-l' flags cannot be manually specified", `
+		rust_binary {
+			name: "foo",
+			srcs: [
+				"foo.rs",
+			],
+			ld_flags: ["-Wl,-lbar"],
+		}
+	`)
+}

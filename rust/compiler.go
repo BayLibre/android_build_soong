@@ -235,6 +235,15 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags) Flag
 	if err != nil {
 		ctx.PropertyErrorf("lints", err.Error())
 	}
+
+	// Manually specified link flags are disallowed.
+	if android.PrefixInList(compiler.Properties.Ld_flags, "-Wl,-l") {
+		ctx.PropertyErrorf("ld_flags", "'-Wl,-l' flags cannot be manually specified")
+	}
+	if android.PrefixInList(compiler.Properties.Flags, "-l") {
+		ctx.PropertyErrorf("flags", "'-l' flags cannot be manually specified")
+	}
+
 	flags.RustFlags = append(flags.RustFlags, lintFlags)
 	flags.RustFlags = append(flags.RustFlags, compiler.Properties.Flags...)
 	flags.RustFlags = append(flags.RustFlags, compiler.cfgsToFlags()...)
