@@ -77,9 +77,19 @@ type configImpl struct {
 
 	// Set by multiproduct_kati
 	emptyNinjaFile bool
+
+	// Vendor specific config: we need to configure some vendor specific
+	// parameters such as the binary to upload build metrics or some rbe related
+	// configs. We haven't figured out the best way to specify those configs,
+	// but they could all be listed here.
+	metricsUploader string
 }
 
 const srcDirFileCheck = "build/soong/root.bp"
+
+const metricsUploaderDir = "vendor/google/misc/metrics_uploader_prebuilt"
+
+const metricsUploaderBinary = "metrics_uploader.sh"
 
 var buildFiles = []string{"Android.mk", "Android.bp"}
 
@@ -237,13 +247,16 @@ func NewConfig(ctx Context, args ...string) Config {
 	// Precondition: the current directory is the top of the source tree
 	checkTopDir(ctx)
 
-	if srcDir := absPath(ctx, "."); strings.ContainsRune(srcDir, ' ') {
+	srcDir := absPath(ctx, ".")
+	if strings.ContainsRune(srcDir, ' ') {
 		ctx.Println("You are building in a directory whose absolute path contains a space character:")
 		ctx.Println()
 		ctx.Printf("%q\n", srcDir)
 		ctx.Println()
 		ctx.Fatalln("Directory names containing spaces are not supported")
 	}
+
+	ret.metricsUploader = GetMetricsUploader(srcDir)
 
 	if outDir := ret.OutDir(); strings.ContainsRune(outDir, ' ') {
 		ctx.Println("The absolute path of your output directory ($OUT_DIR) contains a space character:")
@@ -1199,10 +1212,7 @@ func (c *configImpl) BuildDateTime() string {
 }
 
 func (c *configImpl) MetricsUploaderApp() string {
-	if p, ok := c.environ.Get("ANDROID_ENABLE_METRICS_UPLOAD"); ok {
-		return p
-	}
-	return ""
+	return c.metricsUploader
 }
 
 // LogsDir returns the logs directory where build log and metrics
@@ -1229,4 +1239,14 @@ func (c *configImpl) SetEmptyNinjaFile(v bool) {
 
 func (c *configImpl) EmptyNinjaFile() bool {
 	return c.emptyNinjaFile
+}
+
+func GetMetricsUploader(topDir string) string {
+	metricsUploader := filepath.Join(topDir, metricsUploaderDir, metricsUploaderBinary)
+
+	if _, err := os.Stat(metricsUploader); err == nil {
+		return metricsUploader
+	} else {
+		return ""
+	}
 }
