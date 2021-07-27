@@ -64,13 +64,12 @@ func main() {
 			continue
 		}
 
-		var progName string
-		progSection := progToFirstSection(prog, ef.Sections)
-		if progSection != nil {
-			progName = progSection.Name
-		} else {
-			progName = fmt.Sprintf(".sect%d", load)
+		progSection := progToFirstNamedSection(prog, ef.Sections)
+		if progSection == nil {
+			log.Fatalf("Failed to find name for PT_LOAD program header %d", load)
 		}
+		progName := progSection.Name
+
 		sectionName := ".linker" + progName
 		symName := "__dlwrap_linker" + strings.ReplaceAll(progName, ".", "_")
 
@@ -82,6 +81,12 @@ func main() {
 			flags += "x"
 		}
 		fmt.Fprintf(asm, ".section %s, \"a%s\"\n", sectionName, flags)
+
+		if load == 0 {
+			fmt.Fprintln(asm, ".globl __dlwrap_linker")
+			fmt.Fprintln(asm, "__dlwrap_linker:")
+			fmt.Fprintln(asm)
+		}
 
 		fmt.Fprintf(asm, ".globl %s\n%s:\n\n", symName, symName)
 
@@ -105,6 +110,10 @@ func main() {
 
 		load += 1
 	}
+
+	fmt.Fprintln(asm, ".globl __dlwrap_linker_end")
+	fmt.Fprintln(asm, "__dlwrap_linker_end:")
+	fmt.Fprintln(asm)
 
 	fmt.Fprintln(asm, `.section .note.android.embedded_linker,"a",%note`)
 
@@ -139,9 +148,9 @@ func bytesToAsm(asm io.Writer, buf []byte) {
 	fmt.Fprintln(asm)
 }
 
-func progToFirstSection(prog *elf.Prog, sections []*elf.Section) *elf.Section {
+func progToFirstNamedSection(prog *elf.Prog, sections []*elf.Section) *elf.Section {
 	for _, section := range sections {
-		if section.Addr == prog.Vaddr {
+		if section.Addr >= prog.Vaddr && section.Addr <= prog.Vaddr+prog.Memsz && section.Name != "" {
 			return section
 		}
 	}
