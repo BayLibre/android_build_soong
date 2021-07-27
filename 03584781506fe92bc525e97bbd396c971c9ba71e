@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02059a6c_ef503f9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-07-27T02:39:11Z",
+      "side": 1,
+      "message": "The CI error says:\n\nERROR: /buildbot/src/android/master/bionic/libc/BUILD:1295:18: no such package \u0027external/gwp_asan\u0027: BUILD file not found in any of the following directories. Add a BUILD file to a directory to mark it as a package.\n\nI am not convinced it is related to this CL. But because of the timing, happy to roll back just in case",
+      "revId": "03584781506fe92bc525e97bbd396c971c9ba71e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
