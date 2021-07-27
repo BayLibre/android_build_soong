@@ -163,6 +163,7 @@ var (
 		"system/core/property_service/libpropertyinfoparser": Bp2BuildDefaultTrueRecursively,
 		"system/libbase":                  Bp2BuildDefaultTrueRecursively,
 		"system/logging/liblog":           Bp2BuildDefaultTrueRecursively,
+		"system/sepolicy/apex":            Bp2BuildDefaultTrueRecursively,
 		"external/jemalloc_new":           Bp2BuildDefaultTrueRecursively,
 		"external/fmtlib":                 Bp2BuildDefaultTrueRecursively,
 		"external/arm-optimized-routines": Bp2BuildDefaultTrueRecursively,
@@ -219,6 +220,9 @@ var (
 		"libjemalloc5_integrationtest",
 		"libjemalloc5_stresstestlib",
 		"libjemalloc5_unittest",
+
+		// APEX support
+		"com.android.runtime", // http://b/194746715, apex, depends on 'libc_malloc_debug' and 'libc_malloc_hooks'
 	}
 
 	// Per-module denylist of cc_library modules to only generate the static
