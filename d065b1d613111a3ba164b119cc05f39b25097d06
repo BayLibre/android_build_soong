@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7366fe58_2160b50c",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3192,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-07-27T05:51:26Z",
+      "side": 1,
+      "message": "This is a label, right? file_contexts reference a module.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/apex/builder.go;l\u003d262;drc\u003d5d00f50f7596cee687939077e4799af7261829b0",
+      "range": {
+        "startLine": 3192,
+        "startChar": 20,
+        "endLine": 3192,
+        "endChar": 26
+      },
+      "revId": "d065b1d613111a3ba164b119cc05f39b25097d06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6fd7c76_2cf50b62",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-07-27T05:51:26Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 32,
+        "startChar": 60,
+        "endLine": 32,
+        "endChar": 66
+      },
+      "revId": "d065b1d613111a3ba164b119cc05f39b25097d06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
