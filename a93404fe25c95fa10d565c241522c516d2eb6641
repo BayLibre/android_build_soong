@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48bd109c_14d4139c",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-27T00:37:14Z",
+      "side": 1,
+      "message": "Will add relative install path support in a follow on change.",
+      "revId": "a93404fe25c95fa10d565c241522c516d2eb6641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

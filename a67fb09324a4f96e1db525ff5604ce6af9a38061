@@ -318,6 +318,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c91f5cfe_37552f5d",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-27T00:37:14Z",
+      "side": 1,
+      "message": "Thanks for the background on this, I\u0027ve added a commented out version until the above change lands.",
+      "parentUuid": "60b64813_f6c1cda2",
+      "revId": "a67fb09324a4f96e1db525ff5604ce6af9a38061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7562a36_d91307d5",
@@ -426,6 +444,30 @@
       "side": 1,
       "message": "Try Module.FilesToInstall()",
       "parentUuid": "1a8430e9_a8f877d4",
+      "range": {
+        "startLine": 227,
+        "startChar": 1,
+        "endLine": 230,
+        "endChar": 2
+      },
+      "revId": "a67fb09324a4f96e1db525ff5604ce6af9a38061",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5386d70b_210eea5e",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-27T00:37:14Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "aa34c971_c175b938",
       "range": {
         "startLine": 227,
         "startChar": 1,

@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd9793c_3d5e65df",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-27T00:37:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c5fc4da_c4ea7f5d",
+      "revId": "9bff482949920b48553969554166d20320eb4321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e3beb18_2c922fa3",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-07-16T21:48:49Z",
       "side": 1,
       "message": "There is no guarantee that the primary module is the host variant.  You could check if the os and architcture match android.BuildOsTarget.",
+      "revId": "9bff482949920b48553969554166d20320eb4321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a02e9d87_d92b0f5b",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-27T00:37:14Z",
+      "side": 1,
+      "message": "Added the arch check to go along with the os check, using primary module to filter out the apex variants.  \n\nExample:\nAdding tool aapt2{os:linux_glibc,arch:x86_64,apex:}\nDiscarding tool aapt2{os:linux_glibc,arch:x86_64,apex:apex10000}",
+      "parentUuid": "2e3beb18_2c922fa3",
       "revId": "9bff482949920b48553969554166d20320eb4321",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
