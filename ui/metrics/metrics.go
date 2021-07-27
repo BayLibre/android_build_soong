@@ -28,8 +28,8 @@ package metrics
 // raw protobuf file in the $OUT directory.
 //
 // There is one additional step that occurs after the raw protobuf file is written.
-// If the configuration environment variable ANDROID_ENABLE_METRICS_UPLOAD is
-// set with the path, the raw protobuf file is uploaded to the destination. See
+// If the configuration environment variable ANDROID_DISABLE_METRICS_UPLOAD is
+// not set with the path, the raw protobuf file is uploaded to the destination. See
 // ui/build/upload.go for more details. The filename of the raw protobuf file
 // and the list of files to be uploaded is defined in cmd/soong_ui/main.go.
 //
