@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acacf012_27fd79fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-07-27T19:06:55Z",
+      "side": 1,
+      "message": "Yea I think our goal here should mostly be to prevent folks from doing the wrong thing accidentally. Active evasion of any of these filters is out of scope and should ideally be caught in code review.",
+      "parentUuid": "9c1842e7_67254126",
+      "revId": "1e515435c8d7820aeb258472cfbfbc99bcdc17fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ce51d7f_5b1837eb",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-27T18:04:54Z",
       "side": 1,
       "message": "Do we want to stop `-C link-arg\u003d` too? What about `-L`? `--extern`?",
+      "revId": "1e515435c8d7820aeb258472cfbfbc99bcdc17fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b7089ad_cb5451c0",
+        "filename": "rust/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-07-27T19:06:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ce51d7f_5b1837eb",
       "revId": "1e515435c8d7820aeb258472cfbfbc99bcdc17fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
