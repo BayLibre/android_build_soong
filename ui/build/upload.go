@@ -70,19 +70,25 @@ func pruneMetricsFiles(paths []string) []string {
 	return metricsFiles
 }
 
-// UploadMetrics uploads a set of metrics files to a server for analysis. An
-// uploader full path is specified in ANDROID_ENABLE_METRICS_UPLOAD environment
-// variable in order to upload the set of metrics files. The metrics files are
-// first copied to a temporary directory and the uploader is then executed in
-// the background to allow the user/system to continue working. Soong communicates
-// to the uploader through the upload_proto raw protobuf file.
+// UploadMetrics uploads a set of metrics files to a server for analysis.
+// ANDROID_DISABLE_METRICS_UPLOAD environment variable can be used to turn this
+// off. If turn on, the metrics files are first copied to a temporary directory
+// and the uploader is then executed in the background to allow the user/system
+// to continue working. Soong communicates to the uploader through the
+// upload_proto raw protobuf file.
 func UploadMetrics(ctx Context, config Config, simpleOutput bool, buildStarted time.Time, paths ...string) {
 	ctx.BeginTrace(metrics.RunSetupTool, "upload_metrics")
 	defer ctx.EndTrace()
 
+	if config.Environment().IsEnvTrue("ANDROID_DISABLE_METRICS_UPLOAD") {
+		ctx.Verboseln("Metrics uploading is disabled")
+		return
+	}
+
 	uploader := config.MetricsUploaderApp()
 	if uploader == "" {
 		// If the uploader path was not specified, no metrics shall be uploaded.
+		ctx.Verboseln("No metrics uploader is specified")
 		return
 	}
 
