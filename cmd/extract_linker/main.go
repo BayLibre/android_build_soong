@@ -64,15 +64,14 @@ func main() {
 			continue
 		}
 
-		var progName string
+		progName := ""
 		progSection := progToFirstSection(prog, ef.Sections)
 		if progSection != nil {
 			progName = progSection.Name
-		} else {
-			progName = fmt.Sprintf(".sect%d", load)
 		}
+
 		sectionName := ".linker" + progName
-		symName := "__dlwrap_linker" + strings.ReplaceAll(progName, ".", "_")
+		symName := "__dlwrap_linker_section" + strings.ReplaceAll(progName, ".", "_")
 
 		flags := ""
 		if prog.Flags&elf.PF_W != 0 {
@@ -82,6 +81,12 @@ func main() {
 			flags += "x"
 		}
 		fmt.Fprintf(asm, ".section %s, \"a%s\"\n", sectionName, flags)
+
+		if load == 0 {
+			fmt.Fprintln(asm, ".globl __dlwrap_linker")
+			fmt.Fprintln(asm, "__dlwrap_linker:")
+			fmt.Fprintln(asm)
+		}
 
 		fmt.Fprintf(asm, ".globl %s\n%s:\n\n", symName, symName)
 
@@ -105,6 +110,10 @@ func main() {
 
 		load += 1
 	}
+
+	fmt.Fprintln(asm, ".globl __dlwrap_linker_end")
+	fmt.Fprintln(asm, "__dlwrap_linker_end:")
+	fmt.Fprintln(asm)
 
 	fmt.Fprintln(asm, `.section .note.android.embedded_linker,"a",%note`)
 
