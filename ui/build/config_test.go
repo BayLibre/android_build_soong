@@ -995,3 +995,48 @@ func TestGetConfigArgsBuildModulesInDirectories(t *testing.T) {
 		})
 	}
 }
+
+func TestGetMetricsUploaderApp(t *testing.T) {
+	tests := []struct {
+		description string
+		createFiles bool
+	}{{
+		description: "Uploader binary exist",
+		createFiles: true,
+	}, {
+		description: "Uploader binary not exist",
+		createFiles: false,
+	}}
+
+	for _, tt := range tests {
+		t.Run(tt.description, func(t *testing.T) {
+			defer logger.Recover(func(err error) {
+				t.Fatalf("got unexpected error: %v", err)
+			})
+
+			// Create the root source tree.
+			topDir, err := ioutil.TempDir("", "")
+			if err != nil {
+				t.Fatalf("failed to create temp dir: %v", err)
+			}
+			defer os.RemoveAll(topDir)
+
+			var expected = ""
+			if tt.createFiles {
+				if err := os.MkdirAll(filepath.Join(topDir, metricsUploaderDir), 0755); err != nil {
+					t.Errorf("failed to create %s directory: %v", metricsUploaderDir, err)
+				}
+				expected = filepath.Join(topDir, metricsUploaderDir, metricsUploaderBinary)
+				if err := ioutil.WriteFile(expected, []byte{}, 0644); err != nil {
+					t.Errorf("failed to create file %s: %v", expected, err)
+				}
+			}
+
+			actual := GetMetricsUploader(topDir)
+
+			if actual != expected {
+				t.Errorf("expecting: %s, actual: %s", expected, actual)
+			}
+		})
+	}
+}

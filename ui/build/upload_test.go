@@ -76,17 +76,19 @@ func TestUploadMetrics(t *testing.T) {
 	ctx := testContext()
 	tests := []struct {
 		description string
+		disable     string
 		uploader    string
 		createFiles bool
 		files       []string
 	}{{
-		description: "ANDROID_ENABLE_METRICS_UPLOAD not set",
+		description: "ANDROID_DISABLE_METRICS_UPLOAD is true",
+		disable:     "true",
+		uploader:    "echo",
 	}, {
-		description: "no metrics files to upload",
-		uploader:    "fake",
+		description: "no metrics uploader",
 	}, {
 		description: "non-existent metrics files no upload",
-		uploader:    "fake",
+		uploader:    "echo",
 		files:       []string{"metrics_file_1", "metrics_file_2", "metrics_file_3"},
 	}, {
 		description: "trigger upload",
@@ -137,9 +139,10 @@ func TestUploadMetrics(t *testing.T) {
 			config := Config{&configImpl{
 				environ: &Environment{
 					"OUT_DIR=" + outDir,
-					"ANDROID_ENABLE_METRICS_UPLOAD=" + tt.uploader,
+					"ANDROID_DISABLE_METRICS_UPLOAD=" + tt.disable,
 				},
-				buildDateTime: strconv.FormatInt(time.Now().UnixNano()/int64(time.Millisecond), 10),
+				buildDateTime:   strconv.FormatInt(time.Now().UnixNano()/int64(time.Millisecond), 10),
+				metricsUploader: tt.uploader,
 			}}
 
 			UploadMetrics(ctx, config, false, time.Now(), metricsFiles...)
@@ -192,9 +195,10 @@ func TestUploadMetricsErrors(t *testing.T) {
 
 			config := Config{&configImpl{
 				environ: &Environment{
-					"ANDROID_ENABLE_METRICS_UPLOAD=fake",
 					"OUT_DIR=/bad",
-				}}}
+				},
+				metricsUploader: "echo",
+			}}
 
 			UploadMetrics(ctx, config, true, time.Now(), metricsFile)
 			t.Errorf("got nil, expecting %q as a failure", tt.expectedErr)
