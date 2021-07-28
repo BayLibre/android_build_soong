@@ -69,6 +69,16 @@ cc_library {
 	bazel_module: { bp2build_available: false },
 }
 
+cc_library {
+        name: "pretend_prebuilt_1",
+        bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+        name: "pretend_prebuilt_2",
+        bazel_module: { bp2build_available: false },
+}
+
 filegroup {
 	name: "com.android.apogee-file_contexts",
         srcs: [
@@ -95,6 +105,10 @@ apex {
             "binary_1",
 	    "binary_2",
 	],
+	prebuilts: [
+	    "pretend_prebuilt_1",
+	    "pretend_prebuilt_2",
+	],
 }
 `,
 		expectedBazelTargets: []string{`apex(
@@ -113,6 +127,10 @@ apex {
     native_shared_libs = [
         ":native_shared_lib_1",
         ":native_shared_lib_2",
+    ],
+    prebuilts = [
+        ":pretend_prebuilt_1",
+        ":pretend_prebuilt_2",
     ],
     updatable = False,
 )`}})
