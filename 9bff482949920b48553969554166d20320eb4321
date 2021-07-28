@@ -86,6 +86,24 @@
       "parentUuid": "2e3beb18_2c922fa3",
       "revId": "9bff482949920b48553969554166d20320eb4321",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db8c9f7f_fb921865",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-28T17:45:28Z",
+      "side": 1,
+      "message": "Removed primary module check replaced with apex check similar to vendor snapshot.",
+      "parentUuid": "a02e9d87_d92b0f5b",
+      "revId": "9bff482949920b48553969554166d20320eb4321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
