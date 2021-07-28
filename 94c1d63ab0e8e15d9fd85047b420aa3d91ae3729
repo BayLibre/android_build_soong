@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a170381a_824c97a5",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-07-28T12:18:48Z",
+      "side": 1,
+      "message": "prebuilt_etc?",
+      "range": {
+        "startLine": 723,
+        "startChar": 36,
+        "endLine": 723,
+        "endChar": 62
+      },
+      "revId": "94c1d63ab0e8e15d9fd85047b420aa3d91ae3729",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
