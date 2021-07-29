@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000013975600",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1778796?revision\u003d3",
+      "fixSuggestions": [
+        {
+          "fixId": "afe91c87_4fd6a4c7",
+          "description": "Change to \"mk2rbc/mk2rbc.go\"",
+          "replacements": [
+            {
+              "path": "mk2rbc/mk2rbc.go",
+              "range": {
+                "startLine": 634,
+                "startChar": 26,
+                "endLine": 634,
+                "endChar": 34
+              },
+              "replacement": "ambiguous"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "62d9b441_624ebe6f",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 634,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-07-29T22:21:13Z",
+      "side": 1,
+      "message": "Common typo found: \"ambigous\" -- should it be \"ambiguous\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 634,
+        "startChar": 26,
+        "endLine": 634,
+        "endChar": 34
+      },
+      "revId": "e98fdec00bc95f4f7ff3429a2fb3f626de539562",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000013975600",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1778796?revision\u003d3",
+      "fixSuggestions": [
+        {
+          "fixId": "f01b391c_71b3ed44",
+          "description": "Change to \"mk2rbc/mk2rbc.go\"",
+          "replacements": [
+            {
+              "path": "mk2rbc/mk2rbc.go",
+              "range": {
+                "startLine": 646,
+                "startChar": 22,
+                "endLine": 646,
+                "endChar": 30
+              },
+              "replacement": "ambiguous"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "d446fe4b_7ea2b1bc",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-07-29T22:21:13Z",
+      "side": 1,
+      "message": "Common typo found: \"ambigous\" -- should it be \"ambiguous\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 646,
+        "startChar": 22,
+        "endLine": 646,
+        "endChar": 30
+      },
+      "revId": "e98fdec00bc95f4f7ff3429a2fb3f626de539562",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
