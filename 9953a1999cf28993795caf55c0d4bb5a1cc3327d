@@ -34,6 +34,24 @@
       "parentUuid": "b10206a5_bf916772",
       "revId": "9953a1999cf28993795caf55c0d4bb5a1cc3327d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9ef6a43_4990f3a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-07-29T19:02:32Z",
+      "side": 1,
+      "message": "It would look something like this, which is what we do for C/C++ flags for 3p code:\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cc/compiler.go;l\u003d453?q\u003disThirdParty\n\nSo there\u0027s some Soong work to be done to conditionally apply the flags in Rust.",
+      "parentUuid": "4657a995_b6d47827",
+      "revId": "9953a1999cf28993795caf55c0d4bb5a1cc3327d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
