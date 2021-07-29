@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5f370f9_7d9e1efc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-07-29T19:55:45Z",
+      "side": 1,
+      "message": "It looks like some things were deprecated between 10.10 and 10.13 and are now considered errors when you target 10.13 as a minimum, so this will need some cleanup.",
+      "revId": "3dc4326ce7907a77a62481a8de457652569c9672",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
