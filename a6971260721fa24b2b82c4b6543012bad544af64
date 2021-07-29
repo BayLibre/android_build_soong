@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "631e4771_36a6d3bf",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2021-07-29T23:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88a20ec4_3b1234f2",
+      "range": {
+        "startLine": 364,
+        "startChar": 6,
+        "endLine": 364,
+        "endChar": 22
+      },
+      "revId": "a6971260721fa24b2b82c4b6543012bad544af64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5de3c8ec_5d71088c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-29T20:47:06Z",
       "side": 1,
       "message": "same",
+      "range": {
+        "startLine": 388,
+        "startChar": 6,
+        "endLine": 388,
+        "endChar": 22
+      },
+      "revId": "a6971260721fa24b2b82c4b6543012bad544af64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c87c539_25ef366b",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2021-07-29T23:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5de3c8ec_5d71088c",
       "range": {
         "startLine": 388,
         "startChar": 6,
