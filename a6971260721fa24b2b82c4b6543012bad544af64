@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88a20ec4_3b1234f2",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-29T20:47:06Z",
+      "side": 1,
+      "message": "This can stay as BoolDefault, cc has its own alias to proptools.BoolDefault.",
+      "range": {
+        "startLine": 364,
+        "startChar": 6,
+        "endLine": 364,
+        "endChar": 22
+      },
+      "revId": "a6971260721fa24b2b82c4b6543012bad544af64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5de3c8ec_5d71088c",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-29T20:47:06Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 388,
+        "startChar": 6,
+        "endLine": 388,
+        "endChar": 22
+      },
+      "revId": "a6971260721fa24b2b82c4b6543012bad544af64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
