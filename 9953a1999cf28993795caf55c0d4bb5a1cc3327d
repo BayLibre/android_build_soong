@@ -16,6 +16,24 @@
       "message": "Long term, it may be good to move this to only affect rust repos in `external/`, similar to how we have the lints turned off there for clippy. That way, rustdoc will still alert us when our *own* code needs updating.",
       "revId": "9953a1999cf28993795caf55c0d4bb5a1cc3327d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4657a995_b6d47827",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2021-07-29T17:44:55Z",
+      "side": 1,
+      "message": "If you can tell me where to make that change I\u0027d be happy to do so.",
+      "parentUuid": "b10206a5_bf916772",
+      "revId": "9953a1999cf28993795caf55c0d4bb5a1cc3327d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
