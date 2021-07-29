@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "020869c0_1ea14d57",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-07-29T18:32:44Z",
+      "side": 1,
+      "message": "Can you make this come from the same config as Kousik added in aosp/1773209 and ag/15390649.\n\nIt can just be an environment variable like ANDROID_BUILD_METRICS_UPLOADER.",
+      "revId": "dc1a03885bd2fba32932d33dd1b906357f58727d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
