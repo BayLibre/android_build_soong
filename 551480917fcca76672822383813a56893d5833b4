@@ -70,6 +70,30 @@
       },
       "revId": "551480917fcca76672822383813a56893d5833b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aeb88cf_4f7ab43a",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-07-30T21:42:43Z",
+      "side": 1,
+      "message": "`build/soong/android/paths.go` seems like it might be a reasonable location, although @ccross would probably know best. https://tour.golang.org/basics/3 explains that you just need to capitalize the \u0027I\u0027 to export it from a module.",
+      "parentUuid": "8e00a4f1_3877232b",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 1
+      },
+      "revId": "551480917fcca76672822383813a56893d5833b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
