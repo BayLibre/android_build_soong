@@ -16,6 +16,8 @@ package cc
 
 import (
 	"testing"
+
+	"android/soong/android"
 )
 
 func TestIsThirdParty(t *testing.T) {
@@ -31,12 +33,12 @@ func TestIsThirdParty(t *testing.T) {
 		"hardware/ril/supa_ril",
 	}
 	for _, path := range shouldFail {
-		if !isThirdParty(path) {
+		if !android.IsThirdPartyPath(path) {
 			t.Errorf("Expected %s to be considered third party", path)
 		}
 	}
 	for _, path := range shouldPass {
-		if isThirdParty(path) {
+		if android.IsThirdPartyPath(path) {
 			t.Errorf("Expected %s to *not* be considered third party", path)
 		}
 	}
