@@ -16,6 +16,24 @@
       "message": "I\u0027d suggest using the `dep_fixer` tool if possible -- it\u0027s designed to read one or more depfiles and write out a single one that ninja supports. And that should be a lot more obvious about what\u0027s happening than this shell/awk combo.\n\nOtherwise something here needs to remove the depfile before appending to it, either explicitly, or by using \u0027\u003e\u0027 instead of \u0027\u003e\u003e\u0027 on line 39.",
       "revId": "f38e3ca85d04e486866b14a365d4d8790b8661a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dde78d0c_d009b41a",
+        "filename": "cc/rs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-07-30T16:26:35Z",
+      "side": 1,
+      "message": "Thanks Dan for your suggestions! I was confused last night since I can run the same builds locally which failed in the pre-submit. Now I have a better understanding about this. I think I will try your second suggestion first.",
+      "parentUuid": "63e53a4d_6b46a684",
+      "revId": "f38e3ca85d04e486866b14a365d4d8790b8661a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
