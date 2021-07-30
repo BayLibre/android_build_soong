@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e15d001b_db749100",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-30T16:36:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b224f366_e57bc749",
+      "range": {
+        "startLine": 40,
+        "startChar": 13,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "ab60d4196ce79324dff848a1bab539d569e4ff80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfe1ed5f_a70f1544",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-30T04:24:59Z",
       "side": 1,
       "message": "It will be better to add \"from HOST_SNAPSHOT_MODULES\" to understand the reason easily.",
+      "range": {
+        "startLine": 107,
+        "startChar": 17,
+        "endLine": 107,
+        "endChar": 59
+      },
+      "revId": "ab60d4196ce79324dff848a1bab539d569e4ff80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15c85e2e_870efb19",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-30T16:36:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfe1ed5f_a70f1544",
       "range": {
         "startLine": 107,
         "startChar": 17,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5491139_eaf873a8",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-30T16:36:32Z",
+      "side": 1,
+      "message": "Added to the comment, a module must provide a valid HostToolPath() which covers the binary host tools",
+      "parentUuid": "ba8bc8c2_91b4c5b8",
+      "range": {
+        "startLine": 206,
+        "startChar": 5,
+        "endLine": 206,
+        "endChar": 18
+      },
+      "revId": "ab60d4196ce79324dff848a1bab539d569e4ff80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e56959d_7ae4c5cb",
@@ -110,6 +182,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6dda292_84081e33",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-30T16:36:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e56959d_7ae4c5cb",
+      "range": {
+        "startLine": 212,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 2
+      },
+      "revId": "ab60d4196ce79324dff848a1bab539d569e4ff80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec6217a2_8fbd0424",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-07-30T04:24:59Z",
       "side": 1,
       "message": "`createHostSharedLib`?\n\nOr I think you may combine this with `createHostBin` and check the module types inside it.\nAs these are cc modules, you may use `LinkableInterface` to check if the module is binary or shared.",
+      "range": {
+        "startLine": 241,
+        "startChar": 5,
+        "endLine": 241,
+        "endChar": 21
+      },
+      "revId": "ab60d4196ce79324dff848a1bab539d569e4ff80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ac6959c_8a625f02",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-07-30T16:36:32Z",
+      "side": 1,
+      "message": "This acts as a factory to resolve any needed dependent modules within the snapshot currently only shared libraries are needed.  This isn\u0027t meant to be cc specific (LinkableInterface), add on change to refactor into soong/snapshot will obsolete this.",
+      "parentUuid": "ec6217a2_8fbd0424",
       "range": {
         "startLine": 241,
         "startChar": 5,
