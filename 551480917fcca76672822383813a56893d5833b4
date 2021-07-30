@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "883f5e07_2afeabc1",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2021-07-30T20:29:05Z",
+      "side": 1,
+      "message": "This code is copied from cc/compiler.go.  Ideally I\u0027d like to move that version of the function to somewhere reusable.  Does anyone have a suggestion on where that might be?",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 1
+      },
+      "revId": "551480917fcca76672822383813a56893d5833b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
