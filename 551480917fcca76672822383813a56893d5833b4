@@ -46,6 +46,30 @@
       },
       "revId": "551480917fcca76672822383813a56893d5833b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e00a4f1_3877232b",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2021-07-30T21:30:46Z",
+      "side": 1,
+      "message": "I think that #2 is probably the better solution, but also the more involve option.  I\u0027d like to discuss my thoughts on the subject with everyone before I start making changes there.\n\nUntil then, I think Option #1 would be cleaner than what\u0027s currently here.  I\u0027ve never written Go code before.  How do I export `isThirdParty`?",
+      "parentUuid": "a0d39f0f_73992536",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 1
+      },
+      "revId": "551480917fcca76672822383813a56893d5833b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
