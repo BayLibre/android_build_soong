@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4a51286_f67d8b4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-30T04:27:57Z",
+      "side": 1,
+      "message": "As kiyoungkim@ refactored the snapshot structure in aosp/1757472, it would be better to provide a follow up CL to define the host snapshot in soong/snapshot to extend the snapshot for different types.",
+      "revId": "ab60d4196ce79324dff848a1bab539d569e4ff80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b224f366_e57bc749",
