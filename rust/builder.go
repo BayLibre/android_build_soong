@@ -16,6 +16,7 @@ package rust
 
 import (
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -309,6 +310,27 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 	return output
 }
 
+var thirdPartyDirPrefixExceptions = []*regexp.Regexp{
+	regexp.MustCompile("^vendor/[^/]*google[^/]*/"),
+	regexp.MustCompile("^hardware/google/"),
+	regexp.MustCompile("^hardware/interfaces/"),
+	regexp.MustCompile("^hardware/libhardware[^/]*/"),
+	regexp.MustCompile("^hardware/ril/"),
+}
+
+func isThirdParty(path string) bool {
+	thirdPartyDirPrefixes := []string{"external/", "vendor/", "hardware/"}
+
+	if android.HasAnyPrefix(path, thirdPartyDirPrefixes) {
+		for _, prefix := range thirdPartyDirPrefixExceptions {
+			if prefix.MatchString(path) {
+				return false
+			}
+		}
+	}
+	return true
+}
+
 func Rustdoc(ctx ModuleContext, main android.Path, deps PathDeps,
 	flags Flags) android.ModuleOutPath {
 
@@ -332,8 +354,11 @@ func Rustdoc(ctx ModuleContext, main android.Path, deps PathDeps,
 	rustdocFlags = append(rustdocFlags, makeLibFlags(deps)...)
 	docTimestampFile := android.PathForModuleOut(ctx, "rustdoc.timestamp")
 
-	// Silence warnings about renamed lints
-	rustdocFlags = append(rustdocFlags, " -A renamed_and_removed_lints")
+	// Silence warnings about renamed lints for third-party crates
+	modulePath := android.PathForModuleSrc(ctx).String()
+	if isThirdParty(modulePath) {
+		rustdocFlags = append(rustdocFlags, " -A renamed_and_removed_lints")
+	}
 
 	// Yes, the same out directory is used simultaneously by all rustdoc builds.
 	// This is what cargo does. The docs for individual crates get generated to
