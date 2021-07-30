@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "784dcd30_4dc4ce43",
+        "filename": "mk2rbc/find.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-30T17:09:17Z",
+      "side": 1,
+      "message": "should this be a sub-package that only exports findMatchingPaths?",
+      "range": {
+        "startLine": 1,
+        "startChar": 8,
+        "endLine": 1,
+        "endChar": 14
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6f05bbf_d14aacb7",
+        "filename": "mk2rbc/find.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-30T17:09:17Z",
+      "side": 1,
+      "message": "nit: matchPath for consistency",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5798012e_a9a1b089",
+        "filename": "mk2rbc/find.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-30T17:09:17Z",
+      "side": 1,
+      "message": "this may be slightly more readable and efficient as:\n\npath \u003d\u003d chunks[0] || strings.HasSuffix(path, string(os.PathSeparator) + chunks[0])",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 15,
+        "endChar": 78
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f08209ff_0c161369",
+        "filename": "mk2rbc/find.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-30T17:09:17Z",
+      "side": 1,
+      "message": "this seems off, above, path index is used to index into path, whereas this is the index into path[index+1:]\n\nwe should either be shortening path (which seems prone to incorrect answers e.g. chunks \u003d[\"a\", \"b\"] and path \u003d \"aa/other/b\") or adding (index+1) to this.\n\ngiven that chunks need to start with os.PathSeparator if they are not at the beginning of path, should this start searching at/after the next path separator?",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 47
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57cf01b4_ab8ce4a5",
+        "filename": "mk2rbc/find.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-30T17:09:17Z",
+      "side": 1,
+      "message": "could chunks ever be empty?",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3a500e0_f62f2be9",
+        "filename": "mk2rbc/find_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-30T17:09:17Z",
+      "side": 1,
+      "message": "can you add some more test cases -- in particular ones that could encounter edge cases within the for-loop within the default case in match_path?",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 7
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d2b94ce_a3f521a7",
+        "filename": "mk2rbc/find_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-30T17:09:17Z",
+      "side": 1,
+      "message": "can a chunk contain a \u0027/\u0027? if so, can you add a test that uses it, if not, can we enforce that?",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 10
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "829032b4_7cdf60d8",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-30T17:09:17Z",
+      "side": 1,
+      "message": "should these be os.PathSeparator as you\u0027ve used elsewhere?",
+      "range": {
+        "startLine": 394,
+        "startChar": 43,
+        "endLine": 394,
+        "endChar": 53
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95e7898d_1859c32c",
+        "filename": "mk2rbc/mk2rbc_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-30T17:09:17Z",
+      "side": 1,
+      "message": "should this be _varmod? The \"\" around _varmod are unexpected.",
+      "range": {
+        "startLine": 855,
+        "startChar": 23,
+        "endLine": 855,
+        "endChar": 32
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
