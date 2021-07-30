@@ -39,6 +39,30 @@
       },
       "revId": "9885e3960d464eca7ab79728660a7861d58a7ea5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0bd2d76_3f02532e",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-07-30T00:45:33Z",
+      "side": 1,
+      "message": "Each line between 120-126 now ends with a period.",
+      "parentUuid": "292640a7_6b82e6fe",
+      "range": {
+        "startLine": 121,
+        "startChar": 92,
+        "endLine": 121,
+        "endChar": 93
+      },
+      "revId": "9885e3960d464eca7ab79728660a7861d58a7ea5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
