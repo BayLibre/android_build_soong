@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4e59729_3cb4c9be",
+        "filename": "mk2rbc/mk2rbc_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 641,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-07-30T17:13:37Z",
+      "side": 1,
+      "message": "the parsing for lastword has 2 other valid paths and two invalid paths that are not covered in any tests, can you add more?",
+      "range": {
+        "startLine": 641,
+        "startChar": 15,
+        "endLine": 641,
+        "endChar": 23
+      },
+      "revId": "9d3c69d9a713e4447a7dba030f21031173e9c68a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
