@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b224f366_e57bc749",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-30T04:24:59Z",
+      "side": 1,
+      "message": "You may define `type moduleType int` before `const ( modBinary ...` and use that type to indicate it is a moduleType.",
+      "range": {
+        "startLine": 40,
+        "startChar": 13,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "ab60d4196ce79324dff848a1bab539d569e4ff80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe1ed5f_a70f1544",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-30T04:24:59Z",
+      "side": 1,
+      "message": "It will be better to add \"from HOST_SNAPSHOT_MODULES\" to understand the reason easily.",
+      "range": {
+        "startLine": 107,
+        "startChar": 17,
+        "endLine": 107,
+        "endChar": 59
+      },
+      "revId": "ab60d4196ce79324dff848a1bab539d569e4ff80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba8bc8c2_91b4c5b8",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-30T04:24:59Z",
+      "side": 1,
+      "message": "Does it check if the module is binary type?",
+      "range": {
+        "startLine": 206,
+        "startChar": 5,
+        "endLine": 206,
+        "endChar": 18
+      },
+      "revId": "ab60d4196ce79324dff848a1bab539d569e4ff80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e56959d_7ae4c5cb",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-30T04:24:59Z",
+      "side": 1,
+      "message": "Any reason to return `out` instead of `nil` with `false`?",
+      "range": {
+        "startLine": 212,
+        "startChar": 1,
+        "endLine": 227,
+        "endChar": 2
+      },
+      "revId": "ab60d4196ce79324dff848a1bab539d569e4ff80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec6217a2_8fbd0424",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-30T04:24:59Z",
+      "side": 1,
+      "message": "`createHostSharedLib`?\n\nOr I think you may combine this with `createHostBin` and check the module types inside it.\nAs these are cc modules, you may use `LinkableInterface` to check if the module is binary or shared.",
+      "range": {
+        "startLine": 241,
+        "startChar": 5,
+        "endLine": 241,
+        "endChar": 21
+      },
+      "revId": "ab60d4196ce79324dff848a1bab539d569e4ff80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
