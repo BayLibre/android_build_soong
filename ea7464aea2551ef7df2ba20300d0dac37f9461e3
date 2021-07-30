@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ae14d45_042eb535",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1137063
+      },
+      "writtenOn": "2021-07-30T21:33:30Z",
+      "side": 1,
+      "message": "I\u0027ve uploaded and tested a change which makes init start looking for the fstab file in /system/etc in addition to /, which allows prebuilt_etc to be used to install fstabs: https://android-review.googlesource.com/c/platform/system/core/+/1783848.  Please review that change.\n\nIf people are happy with that change, I\u0027ll abandon this one.  Otherwise I think we\u0027ll need to return to this one.",
+      "parentUuid": "e268286c_2775d5ef",
+      "range": {
+        "startLine": 19,
+        "startChar": 28,
+        "endLine": 20,
+        "endChar": 47
+      },
+      "revId": "ea7464aea2551ef7df2ba20300d0dac37f9461e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3637a8a9_2dd26847",
