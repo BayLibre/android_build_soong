@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b814caf7_c2b7811a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1063563
+      },
+      "writtenOn": "2021-07-30T00:15:05Z",
+      "side": 1,
+      "message": "LGTM but please see suggestion.",
+      "revId": "9885e3960d464eca7ab79728660a7861d58a7ea5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "292640a7_6b82e6fe",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1063563
+      },
+      "writtenOn": "2021-07-30T00:15:05Z",
+      "side": 1,
+      "message": "Nit: IMO it looks strange to have a phrase, followed by a period, followed by a sentence that does not end in a period. Suggestion: Add a period to the end of each line 120..126.",
+      "range": {
+        "startLine": 121,
+        "startChar": 92,
+        "endLine": 121,
+        "endChar": 93
+      },
+      "revId": "9885e3960d464eca7ab79728660a7861d58a7ea5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
