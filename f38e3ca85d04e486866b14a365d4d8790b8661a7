@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e53a4d_6b46a684",
+        "filename": "cc/rs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-07-30T15:24:13Z",
+      "side": 1,
+      "message": "I\u0027d suggest using the `dep_fixer` tool if possible -- it\u0027s designed to read one or more depfiles and write out a single one that ninja supports. And that should be a lot more obvious about what\u0027s happening than this shell/awk combo.\n\nOtherwise something here needs to remove the depfile before appending to it, either explicitly, or by using \u0027\u003e\u0027 instead of \u0027\u003e\u003e\u0027 on line 39.",
+      "revId": "f38e3ca85d04e486866b14a365d4d8790b8661a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
