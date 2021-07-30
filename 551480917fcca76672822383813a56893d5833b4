@@ -22,6 +22,30 @@
       },
       "revId": "551480917fcca76672822383813a56893d5833b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0d39f0f_73992536",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-07-30T20:32:37Z",
+      "side": 1,
+      "message": "1. We have regularly been re-exporting functionality from cc/compiler.go to be public, then calling it from Rust. Simply adding IsThirdParty might be OK.\n2. `build/soong/rust/config/lints.go` already encodes similar logic. It is worth thinking about whether there\u0027s a way to unify them.",
+      "parentUuid": "883f5e07_2afeabc1",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 1
+      },
+      "revId": "551480917fcca76672822383813a56893d5833b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
