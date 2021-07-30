@@ -94,6 +94,30 @@
       },
       "revId": "551480917fcca76672822383813a56893d5833b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44b87f41_c7f3ea9d",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2021-07-30T23:10:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aeb88cf_4f7ab43a",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 1
+      },
+      "revId": "551480917fcca76672822383813a56893d5833b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
