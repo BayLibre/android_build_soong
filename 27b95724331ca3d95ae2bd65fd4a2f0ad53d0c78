@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "893a0da6_2a0f7883",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-07-30T10:51:34Z",
+      "side": 1,
+      "message": "Oops! Why rebasing removed +1\u0027s?\nSorry, Jingwen. It requires ORV again. 😞",
+      "revId": "27b95724331ca3d95ae2bd65fd4a2f0ad53d0c78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
