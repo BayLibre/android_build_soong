@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eebd115_43b531d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-31T02:07:08Z",
+      "side": 1,
+      "message": "There\u0027s a serious bug in isThirdParty for which Liz has a pending fix (aosp/1769705).  Please make sure rust still compiles with Liz\u0027s fix, and potentially wait for her fix to land before submitting this.",
+      "revId": "1f46a1754a97d496c195d78afd5d859ec8a2b207",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
