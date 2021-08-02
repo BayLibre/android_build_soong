@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c80f6ad3_108acea9",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-02T13:39:25Z",
+      "side": 1,
+      "message": "I get that it\u0027s not consistent but I think that their previous names are fine.",
+      "parentUuid": "80f22467_6e51c394",
+      "revId": "d3dbf8b60a686fdc5a494a02ba98cd35202a93f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ead8be6_64017bc1",
@@ -192,6 +210,24 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "ed8a8ce2_baa835e5",
+      "revId": "d3dbf8b60a686fdc5a494a02ba98cd35202a93f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d86369_2693effc",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-02T13:39:25Z",
+      "side": 1,
+      "message": "No, I mean libraries that are added to PRODUCT_BOOT_JARS directly. AFAIK OEMs can do that.",
+      "parentUuid": "dfd292d1_f7a68b0b",
       "revId": "d3dbf8b60a686fdc5a494a02ba98cd35202a93f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
