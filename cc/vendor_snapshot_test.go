@@ -1187,6 +1187,78 @@ func TestVendorSnapshotExcludeInVendorProprietaryPathErrors(t *testing.T) {
 	})
 }
 
+func TestSnapshotFilegroup(t *testing.T) {
+	systemBp := `
+	snapshot_filegroup {
+		name: "vendorheader",
+		snapshot: "vendor",
+		header: true,
+		srcs: ["include/test/header.h"],
+	}
+	snapshot_filegroup {
+		name: "vendorconfig",
+		snapshot: "vendor",
+		srcs: ["config.xml"],
+	}
+	snapshot_filegroup {
+		name: "recoveryheader",
+		snapshot: "recovery",
+		header: true,
+		srcs: ["include/test/header.h"],
+	}
+	`
+	snapshotBp := `
+	vendor_snapshot {
+		name: "vendor_snapshot",
+		version: "31",
+	}
+	`
+
+	mockFS := map[string][]byte{
+		"system/test/Android.bp":                                              []byte(systemBp),
+		"system/test/include/test/header.h":                                   nil,
+		"system/test/config.xml":                                              nil,
+		"prebuilts/vendor_snapshot/Android.bp":                                []byte(snapshotBp),
+		"prebuilts/vendor_snapshot/include/system/test/include/test/header.h": nil,
+		"prebuilts/vendor_snapshot/system/test/config.xml":                    nil,
+	}
+
+	runTest := func(config android.Config, ver string) *android.TestContext {
+		config.TestProductVariables.DeviceVndkVersion = StringPtr(ver)
+		config.TestProductVariables.Platform_vndk_version = StringPtr("32")
+		ctx := CreateTestContext(config)
+		ctx.Register()
+
+		_, errs := ctx.ParseFileList(".", []string{"system/test/Android.bp", "prebuilts/vendor_snapshot/Android.bp"})
+		android.FailIfErrored(t, errs)
+		_, errs = ctx.PrepareBuildActions(config)
+		android.FailIfErrored(t, errs)
+
+		return ctx
+	}
+
+	srcsForFilegroup := func(ctx *android.TestContext, name string) []string {
+		if module, ok := ctx.ModuleForTests(name, "").Module().(*snapshotFilegroup); ok {
+			return module.srcs.Strings()
+		}
+		t.Errorf("%q is not a snapshot_filegroup module", name)
+		return nil
+	}
+
+	config := TestConfig(t.TempDir(), android.Android, nil, "", mockFS)
+
+	// Vendor snapshot files are not used
+	ctx := runTest(config, "current")
+	assertArrayString(t, srcsForFilegroup(ctx, "vendorheader"), []string{"system/test/include/test/header.h"})
+	assertArrayString(t, srcsForFilegroup(ctx, "vendorconfig"), []string{"system/test/config.xml"})
+	assertArrayString(t, srcsForFilegroup(ctx, "recoveryheader"), []string{"system/test/include/test/header.h"})
+	// Use vendor snapshot files, but not recovery snapshot files.
+	ctx = runTest(config, "31")
+	assertArrayString(t, srcsForFilegroup(ctx, "vendorheader"), []string{"prebuilts/vendor_snapshot/include/system/test/include/test/header.h"})
+	assertArrayString(t, srcsForFilegroup(ctx, "vendorconfig"), []string{"prebuilts/vendor_snapshot/system/test/config.xml"})
+	assertArrayString(t, srcsForFilegroup(ctx, "recoveryheader"), []string{"system/test/include/test/header.h"})
+}
+
 func TestRecoverySnapshotCapture(t *testing.T) {
 	bp := `
 	cc_library {

@@ -18,6 +18,7 @@ package cc
 // snapshot mutators and snapshot information maps which are also defined in this file.
 
 import (
+	"path"
 	"strings"
 
 	"android/soong/android"
@@ -68,6 +69,13 @@ func (recoverySnapshotImage) moduleNameSuffix() string {
 var VendorSnapshotImageSingleton vendorSnapshotImage = vendorSnapshotImage{&snapshot.VendorSnapshotImageSingleton}
 var recoverySnapshotImageSingleton recoverySnapshotImage = recoverySnapshotImage{&snapshot.RecoverySnapshotImageSingleton}
 
+func RegisterCommonSnapshotModules(ctx android.RegistrationContext) {
+	// "snapshot_filegroup" is not specific to cc modules, but can be used for any files.
+	// But it is added here because it depends on "(vendor|recovery)_snapshot" modules.
+	// TODO(b/195484514): Move "snapshot_filegroup" to soong/snapshot along with the other snapshotModules.
+	ctx.RegisterModuleType("snapshot_filegroup", snapshotFilegroupFactory)
+}
+
 func RegisterVendorSnapshotModules(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("vendor_snapshot", vendorSnapshotFactory)
 	ctx.RegisterModuleType("vendor_snapshot_shared", VendorSnapshotSharedFactory)
@@ -87,6 +95,7 @@ func RegisterRecoverySnapshotModules(ctx android.RegistrationContext) {
 }
 
 func init() {
+	RegisterCommonSnapshotModules(android.InitRegistrationContext)
 	RegisterVendorSnapshotModules(android.InitRegistrationContext)
 	RegisterRecoverySnapshotModules(android.InitRegistrationContext)
 	android.RegisterMakeVarsProvider(pctx, snapshotMakeVarsProvider)
@@ -804,6 +813,96 @@ func RecoverySnapshotObjectFactory() android.Module {
 	prebuilt.Init(module, recoverySnapshotImageSingleton, snapshotObjectSuffix)
 	module.AddProperties(&prebuilt.properties)
 	return module.Init()
+}
+
+type snapshotFilegroupProperties struct {
+	// Name of the snapshot image (ex. "vendor", "recovery")
+	Snapshot *string
+
+	// True if the file is a header file. It uses the file from the "include" subdirectory of the
+	// snapshot path.
+	Header *bool
+
+	// List of files that will be included in this filegroup. If the image is built against a
+	// snapshot, the files in the snapshot will be used.
+	Srcs []string `android:"path"`
+
+	// Filled with the snapshot path if the source is read from the snapshot.
+	Prefix string `blueprint:"mutated"`
+}
+
+type snapshotFilegroup struct {
+	android.ModuleBase
+
+	properties snapshotFilegroupProperties
+
+	srcs android.Paths
+}
+
+var _ android.SourceFileProducer = (*snapshotFilegroup)(nil)
+
+func snapshotFilegroupFactory() android.Module {
+	module := &snapshotFilegroup{}
+	module.AddProperties(&module.properties)
+	android.InitAndroidModule(module)
+	return module
+}
+
+func (sfg *snapshotFilegroup) requiredSnapshotModuleName() string {
+	return String(sfg.properties.Snapshot) + "_snapshot"
+}
+
+func (sfg *snapshotFilegroup) DepsMutator(ctx android.BottomUpMutatorContext) {
+	images := []SnapshotImage{VendorSnapshotImageSingleton, recoverySnapshotImageSingleton}
+	var image SnapshotImage
+	for _, i := range images {
+		if i.ImageName() == String(sfg.properties.Snapshot) {
+			image = i
+			break
+		}
+	}
+	if image == nil {
+		ctx.PropertyErrorf("snapshot", "Unknown snapshot image: %q", String(sfg.properties.Snapshot))
+		return
+	}
+	if !image.IsUsingSnapshot(ctx.DeviceConfig()) {
+		return
+	}
+
+	snapshot := ctx.AddFarVariationDependencies([]blueprint.Variation{
+		{Mutator: "image", Variation: image.imageVariantName(ctx.DeviceConfig())},
+	}, nil, sfg.requiredSnapshotModuleName())
+	if len(snapshot) == 0 || snapshot[0] == nil {
+		// snapshot module not found
+		return
+	}
+	s, ok := snapshot[0].(*snapshotModule)
+	if !ok {
+		// Wrong snapshot module found
+		return
+	}
+	if image.TargetSnapshotVersion(ctx.DeviceConfig()) != s.baseSnapshot.Version() {
+		// Snapshot version mismatch
+		return
+	}
+
+	subdir := ""
+	if Bool(sfg.properties.Header) {
+		subdir = "include"
+	}
+	sfg.properties.Prefix = path.Join(ctx.OtherModuleDir(s), subdir)
+}
+
+func (sfg *snapshotFilegroup) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	srcs := android.PathsForModuleSrc(ctx, sfg.properties.Srcs).Strings()
+	for i, src := range srcs {
+		srcs[i] = path.Join(sfg.properties.Prefix, src)
+	}
+	sfg.srcs = android.PathsForSource(ctx, srcs)
+}
+
+func (sfg *snapshotFilegroup) Srcs() android.Paths {
+	return append(android.Paths{}, sfg.srcs...)
 }
 
 type SnapshotInterface interface {
