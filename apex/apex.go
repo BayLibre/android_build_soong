@@ -1941,6 +1941,13 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 									a.requiredDeps = append(a.requiredDeps, name)
 								}
 							}
+							// In unbundled build,  "exclude_from_apex_and_use_as_stable" modules should have ABI dumps.
+							// Note that we can'turn this on only for unbundled builds to avoid chicken-and-egg problem.
+							// (The fix command (*-update-abi) should be generated when there's an error.)
+							if ctx.Config().UnbundledBuildApps() && cc.IsExcludeFromApexAndUseAsStable() && !cc.HasAbiDiff() {
+								ctx.OtherModuleErrorf(cc, "%v should have ABI dump to be stable. Did you m %[1]v-update-abi?",
+									cc.BaseModuleName())
+							}
 							requireNativeLibs = append(requireNativeLibs, af.stem())
 							// Don't track further
 							return false

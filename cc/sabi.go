@@ -95,6 +95,9 @@ func classifySourceAbiDump(ctx android.BaseModuleContext) string {
 	if m.library.headerAbiCheckerEnabled() || m.library.hasStubsVariants() {
 		return "PLATFORM"
 	}
+	if m.IsExcludeFromApexAndUseAsStable() {
+		return "MODULE"
+	}
 	return ""
 }
 

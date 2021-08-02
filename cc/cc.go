@@ -1204,6 +1204,11 @@ func (c *Module) IsExcludeFromApexAndUseAsStable() bool {
 	return c.UseVndk() && Bool(c.Properties.Exclude_from_apex_and_use_as_stable)
 }
 
+func (c *Module) HasAbiDiff() bool {
+	lib, ok := c.linker.(*libraryDecorator)
+	return ok && lib.sAbiDiff.Valid()
+}
+
 // isImplementationForLLNDKPublic returns true for any variant of a cc_library that has LLNDK stubs
 // and does not set llndk.vendor_available: false.
 func (c *Module) isImplementationForLLNDKPublic() bool {

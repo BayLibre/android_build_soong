@@ -311,6 +311,14 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 			entries.SubName = ".bootstrap"
 		}
 	}
+
+	if library.sAbiUpdateTimestamp != nil {
+		entries.ExtraFooters = append(entries.ExtraFooters, func(w io.Writer, name, prefix, moduleDir string) {
+			targetName := name + "-update-abi"
+			fmt.Fprintln(w, ".PHONY:", targetName)
+			fmt.Fprintln(w, targetName+":", library.sAbiUpdateTimestamp.String())
+		})
+	}
 }
 
 func (object *objectLinker) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {

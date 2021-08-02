@@ -2372,6 +2372,21 @@ func TestMakeLinkType(t *testing.T) {
 	}
 }
 
+func TestExcludeFromApexAndUseAsStable(t *testing.T) {
+	bp := `
+		cc_library {
+			name: "libstable",
+			vendor_available: true,
+			exclude_from_apex_and_use_as_stable: true,
+		}
+	`
+	ctx := testCc(t, bp)
+	module := ctx.ModuleForTests("libstable", "android_vendor.29_arm64_armv8-a_shared").Module()
+	entries := android.AndroidMkEntriesForTest(t, ctx, module)[0]
+	footer := entries.FooterLinesForTests()
+	android.AssertStringListContains(t, "phony target to update ABI dumps", footer, ".PHONY: libstable-update-abi")
+}
+
 var staticLinkDepOrderTestCases = []struct {
 	// This is a string representation of a map[moduleName][]moduleDependency .
 	// It models the dependencies declared in an Android.bp file.

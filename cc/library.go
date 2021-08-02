@@ -17,6 +17,7 @@ package cc
 import (
 	"fmt"
 	"io"
+	"path"
 	"path/filepath"
 	"regexp"
 	"strconv"
@@ -522,6 +523,9 @@ type libraryDecorator struct {
 
 	// Source Abi Diff
 	sAbiDiff android.OptionalPath
+
+	// Timestamp to update Abi dump in the module dir
+	sAbiUpdateTimestamp android.WritablePath
 
 	// Location of the static library in the sysroot. Empty if the library is
 	// not included in the NDK.
@@ -1477,6 +1481,18 @@ func (library *libraryDecorator) coverageOutputFilePath() android.OptionalPath {
 	return library.coverageOutputFile
 }
 
+func getModuleAbiDumpFile(ctx android.ModuleContext, fileName string) android.Path {
+	moduleAbiDumpFile := android.ExistentPathForSource(ctx, getModuleAbiDumpsDir(ctx), fileName+".lsdump")
+	if moduleAbiDumpFile.Valid() {
+		return moduleAbiDumpFile.Path()
+	}
+	return nil
+}
+
+func getModuleAbiDumpsDir(ctx android.ModuleContext) string {
+	return path.Join(ctx.ModuleDir(), "abi-dumps", ctx.ModuleName(), ctx.ModuleSubDir())
+}
+
 func getRefAbiDumpFile(ctx ModuleContext, vndkVersion, fileName string) android.Path {
 	// The logic must be consistent with classifySourceAbiDump.
 	isNdk := ctx.isNdk(ctx.Config())
@@ -1498,6 +1514,18 @@ func getRefAbiDumpFile(ctx ModuleContext, vndkVersion, fileName string) android.
 		return unzipRefDump(ctx, refAbiDumpGzipFile.Path(), fileName)
 	}
 	return nil
+}
+
+// Copies ABI dump file from intermediates to <moduledir>/abi-dumps/<modulename>
+func updateAbiDump(ctx android.ModuleContext, abiDumpPath android.Path) android.WritablePath {
+	timestampFile := android.PathForModuleOut(ctx, "update-abi-timestamp")
+	abiDumpsDir := getModuleAbiDumpsDir(ctx)
+	rb := android.NewRuleBuilder(pctx, ctx)
+	rb.Command().Text("mkdir").Flag("-p").Text(abiDumpsDir)
+	rb.Command().Text("cp").Input(abiDumpPath).Text(abiDumpsDir)
+	rb.Command().Text("touch").Output(timestampFile)
+	rb.Build("update_abi_dump", "Update ABI dump for "+ctx.ModuleName())
+	return timestampFile
 }
 
 func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objects, fileName string, soFile android.Path) {
@@ -1526,14 +1554,23 @@ func (library *libraryDecorator) linkSAbiDumpFiles(ctx ModuleContext, objs Objec
 			library.Properties.Header_abi_checker.Exclude_symbol_versions,
 			library.Properties.Header_abi_checker.Exclude_symbol_tags)
 
-		addLsdumpPath(classifySourceAbiDump(ctx) + ":" + library.sAbiOutputFile.String())
-
-		refAbiDumpFile := getRefAbiDumpFile(ctx, vndkVersion, fileName)
-		if refAbiDumpFile != nil {
-			library.sAbiDiff = sourceAbiDiff(ctx, library.sAbiOutputFile.Path(),
-				refAbiDumpFile, fileName, exportedHeaderFlags,
-				Bool(library.Properties.Header_abi_checker.Check_all_apis),
-				ctx.IsLlndk(), ctx.isNdk(ctx.Config()), ctx.IsVndkExt())
+		abiClass := classifySourceAbiDump(ctx)
+		if abiClass == "MODULE" {
+			// abi dumps for MODULE class will be stored under ctx.ModuleDir()/abi-dumps/ctx.ModuleName()
+			// and don't need to be passed via MAKE_VARIABLE to vndk tools.
+			// Instead, use `m <modulename>-update-abi` to update ABI dump references.
+			library.sAbiUpdateTimestamp = updateAbiDump(ctx, library.sAbiOutputFile.Path())
+			refAbiDumpFile := getModuleAbiDumpFile(ctx, fileName)
+			library.sAbiDiff = moduleAbiDiff(ctx, fileName, library.sAbiOutputFile.Path(), refAbiDumpFile)
+		} else {
+			addLsdumpPath(abiClass + ":" + library.sAbiOutputFile.String())
+			refAbiDumpFile := getRefAbiDumpFile(ctx, vndkVersion, fileName)
+			if refAbiDumpFile != nil {
+				library.sAbiDiff = sourceAbiDiff(ctx, library.sAbiOutputFile.Path(),
+					refAbiDumpFile, fileName, exportedHeaderFlags,
+					Bool(library.Properties.Header_abi_checker.Check_all_apis),
+					ctx.IsLlndk(), ctx.isNdk(ctx.Config()), ctx.IsVndkExt())
+			}
 		}
 	}
 }

@@ -8226,7 +8226,10 @@ func TestVendorApexUsesExternalCppDependencies(t *testing.T) {
 		}
 	`
 
-	ctx := testApex(t, bp)
+	ctx := testApex(t, bp, withFiles(map[string][]byte{
+		"abi-dumps/libstable/android_vendor.29_arm_armv7-a-neon_shared/libstable.so.lsdump": nil,
+		"abi-dumps/libstable/android_vendor.29_arm64_armv8-a_shared/libstable.so.lsdump":    nil,
+	}))
 
 	apexManifestRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexManifestRule")
 	ensureListEmpty(t, names(apexManifestRule.Args["provideNativeLibs"]))
@@ -8237,6 +8240,47 @@ func TestVendorApexUsesExternalCppDependencies(t *testing.T) {
 		"lib64/libvendor.so",
 		"lib64/libunstable.so",
 	})
+}
+
+func TestUseAsStableModulesShouldBeStableWithAbiDumps(t *testing.T) {
+	bp := `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			native_shared_libs: ["libvendor"],
+			updatable: true,
+			min_sdk_version: "29",
+			vendor: true,
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		cc_library {
+			name: "libvendor",
+			srcs: ["mylib.cpp"],
+			shared_libs: ["libstable"],
+			vendor_available: true,
+			min_sdk_version: "29",
+		}
+
+		cc_library {
+			name: "libstable",
+			srcs: ["mylib.cpp"],
+			vendor_available: true,
+			exclude_from_apex_and_use_as_stable: true,
+			min_sdk_version: "29",
+		}
+	`
+
+	testApexError(t, `libstable should have ABI dump to be stable`, bp, android.FixtureModifyProductVariables(
+		func(variables android.FixtureProductVariables) {
+			variables.Unbundled_build_apps = proptools.BoolPtr(true)
+		},
+	))
 }
 
 func TestUseAsStableModulesCantBeIncludedInApex(t *testing.T) {

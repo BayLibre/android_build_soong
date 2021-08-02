@@ -275,7 +275,7 @@ var (
 	sAbiDiff = pctx.RuleFunc("sAbiDiff",
 		func(ctx android.PackageRuleContext) blueprint.RuleParams {
 			commandStr := "($sAbiDiffer ${extraFlags} -lib ${libName} -arch ${arch} -o ${out} -new ${in} -old ${referenceDump})"
-			commandStr += "|| (echo 'error: Please update ABI references with: $$ANDROID_BUILD_TOP/development/vndk/tools/header-checker/utils/create_reference_dumps.py ${createReferenceDumpFlags} -l ${libName}'"
+			commandStr += "|| (echo 'error: Please update ABI references with: $createReferenceDumpCmd'"
 			commandStr += " && (mkdir -p $$DIST_DIR/abidiffs && cp ${out} $$DIST_DIR/abidiffs/)"
 			commandStr += " && exit 1)"
 			return blueprint.RuleParams{
@@ -283,7 +283,7 @@ var (
 				CommandDeps: []string{"$sAbiDiffer"},
 			}
 		},
-		"extraFlags", "referenceDump", "libName", "arch", "createReferenceDumpFlags")
+		"extraFlags", "referenceDump", "libName", "arch", "createReferenceDumpCmd")
 
 	// Rule to unzip a reference abi dump.
 	unzipRefSAbiDump = pctx.AndroidStaticRule("unzipRefSAbiDump",
@@ -871,7 +871,33 @@ func unzipRefDump(ctx android.ModuleContext, zippedRefDump android.Path, baseNam
 	return outputFile
 }
 
-// sourceAbiDiff registers a build statement to compare linked sAbi dump files (.ldump).
+// moduleAbiDiff registers a build statement to compare linked sAbi dump files (.ldump)
+// for MODULE ABI class
+func moduleAbiDiff(ctx android.ModuleContext, baseName string, inputDump, referenceDump android.Path) android.OptionalPath {
+	if referenceDump == nil {
+		return android.OptionalPathForPath(nil)
+	}
+	outputFile := android.PathForModuleOut(ctx, baseName+".abidiff")
+	libName := strings.TrimSuffix(baseName, filepath.Ext(baseName))
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        sAbiDiff,
+		Description: "header-abi-diff " + outputFile.Base(),
+		Output:      outputFile,
+		Input:       inputDump,
+		Implicit:    referenceDump,
+		Args: map[string]string{
+			"referenceDump":          referenceDump.String(),
+			"libName":                libName,
+			"arch":                   ctx.Arch().ArchType.Name,
+			"extraFlags":             "-check-all-apis",
+			"createReferenceDumpCmd": "m " + ctx.ModuleName() + "-update-abi",
+		},
+	})
+	return android.OptionalPathForPath(outputFile)
+}
+
+// sourceAbiDiff registers a build statement to compare linked sAbi dump files (.ldump)
+// for LLNDK/NDK/VNDK*/PLATFORM ABI classes
 func sourceAbiDiff(ctx android.ModuleContext, inputDump android.Path, referenceDump android.Path,
 	baseName, exportedHeaderFlags string, checkAllApis, isLlndk, isNdk, isVndkExt bool) android.OptionalPath {
 
@@ -905,6 +931,9 @@ func sourceAbiDiff(ctx android.ModuleContext, inputDump android.Path, referenceD
 		extraFlags = append(extraFlags, "-allow-extensions")
 	}
 
+	createReferenceDumpCmd := "$$ANDROID_BUILD_TOP/development/vndk/tools/header-checker/utils/create_reference_dumps.py " +
+		createReferenceDumpFlags + " -l " + libName
+
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        sAbiDiff,
 		Description: "header-abi-diff " + outputFile.Base(),
@@ -912,11 +941,11 @@ func sourceAbiDiff(ctx android.ModuleContext, inputDump android.Path, referenceD
 		Input:       inputDump,
 		Implicit:    referenceDump,
 		Args: map[string]string{
-			"referenceDump":            referenceDump.String(),
-			"libName":                  libName,
-			"arch":                     ctx.Arch().ArchType.Name,
-			"extraFlags":               strings.Join(extraFlags, " "),
-			"createReferenceDumpFlags": createReferenceDumpFlags,
+			"referenceDump":          referenceDump.String(),
+			"libName":                libName,
+			"arch":                   ctx.Arch().ArchType.Name,
+			"extraFlags":             strings.Join(extraFlags, " "),
+			"createReferenceDumpCmd": createReferenceDumpCmd,
 		},
 	})
 	return android.OptionalPathForPath(outputFile)
