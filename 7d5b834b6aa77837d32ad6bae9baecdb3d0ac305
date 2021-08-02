@@ -136,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d108f415_fc22876a",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-02T19:17:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18c8f5a3_59631a7e",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 1
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f3ef75c_c5142807",
