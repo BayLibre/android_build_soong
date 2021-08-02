@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a85f2c33_6f95d43d",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-08-02T21:32:01Z",
+      "side": 1,
+      "message": "I think Linux is the only supported platform for the Android development nowadays.",
+      "parentUuid": "3111c54c_5677ec23",
+      "range": {
+        "startLine": 83,
+        "startChar": 22,
+        "endLine": 83,
+        "endChar": 41
+      },
+      "revId": "c27636ae7be08de4fc05ed5684cb06c32786cbb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6f54c273_725ff318",
         "filename": "mk2rbc/cmd/mk2rbc.go",
         "patchSetId": 7
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-02T19:27:06Z",
       "side": 1,
       "message": "we should re-examine this once we move to go 1.16: https://github.com/golang/go/issues/16399#issuecomment-776327385",
+      "range": {
+        "startLine": 527,
+        "startChar": 1,
+        "endLine": 528,
+        "endChar": 102
+      },
+      "revId": "c27636ae7be08de4fc05ed5684cb06c32786cbb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbabb2f4_0e117250",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-08-02T21:32:01Z",
+      "side": 1,
+      "message": "We are at go 1.16.5, and 14s mentioned in the comment is for WalkDir.",
+      "parentUuid": "6f54c273_725ff318",
       "range": {
         "startLine": 527,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80696c39_004090b0",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-08-02T21:32:01Z",
+      "side": 1,
+      "message": "The goal is to ensure that the directory path ends with \u0027/\u0027, or is empty.",
+      "parentUuid": "4fa72df7_29a4f326",
+      "range": {
+        "startLine": 393,
+        "startChar": 54,
+        "endLine": 393,
+        "endChar": 59
+      },
+      "revId": "c27636ae7be08de4fc05ed5684cb06c32786cbb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4cdea6d_da5d6bc7",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-08-02T19:27:06Z",
       "side": 1,
       "message": "can we include the pattern or some additional information about the pattern here?",
+      "range": {
+        "startLine": 716,
+        "startChar": 50,
+        "endLine": 716,
+        "endChar": 57
+      },
+      "revId": "c27636ae7be08de4fc05ed5684cb06c32786cbb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc4500b4_007ef1d2",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-08-02T21:32:01Z",
+      "side": 1,
+      "message": "This will be followed by the offending line, e.g., the output will be:\n # MK2RBC TRANSLATION ERROR: there are \u003e100 files matching the pattern, please rewrite it\n # -include device/$(TARGET_VENDOR)/$(target_base_product)/BoardConfig.mk",
+      "parentUuid": "f4cdea6d_da5d6bc7",
       "range": {
         "startLine": 716,
         "startChar": 50,
