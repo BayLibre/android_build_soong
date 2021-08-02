@@ -680,6 +680,7 @@ func CreateTestContext(config android.Config) *android.TestContext {
 
 	snapshot.VendorSnapshotImageSingleton.Init(ctx)
 	snapshot.RecoverySnapshotImageSingleton.Init(ctx)
+	RegisterCommonSnapshotModules(ctx)
 	RegisterVendorSnapshotModules(ctx)
 	RegisterRecoverySnapshotModules(ctx)
 	ctx.RegisterSingletonType("vndk-snapshot", VndkSnapshotSingleton)
