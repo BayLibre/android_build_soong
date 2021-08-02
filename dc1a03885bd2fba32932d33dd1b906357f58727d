@@ -16,6 +16,24 @@
       "message": "Can you make this come from the same config as Kousik added in aosp/1773209 and ag/15390649.\n\nIt can just be an environment variable like ANDROID_BUILD_METRICS_UPLOADER.",
       "revId": "dc1a03885bd2fba32932d33dd1b906357f58727d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ce808ba_6d6088ce",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2021-08-02T21:18:06Z",
+      "side": 1,
+      "message": "Any reason you want to have it as a env variable instead of hardcoding it here? There is a separate env var (in upload.go) to turn this feature off, otherwise it will just check if this binary exist and upload if it does. Making it another env var will still need to verify the existence of the binary.",
+      "parentUuid": "020869c0_1ea14d57",
+      "revId": "dc1a03885bd2fba32932d33dd1b906357f58727d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
