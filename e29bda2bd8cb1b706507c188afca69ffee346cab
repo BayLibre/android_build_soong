@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dc0613f_93687c47",
+        "filename": "mk2rbc/find.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-08-02T18:54:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "784dcd30_4dc4ce43",
+      "range": {
+        "startLine": 1,
+        "startChar": 8,
+        "endLine": 1,
+        "endChar": 14
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6f05bbf_d14aacb7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-30T17:09:17Z",
       "side": 1,
       "message": "nit: matchPath for consistency",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb12f4e4_705a8efb",
+        "filename": "mk2rbc/find.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-08-02T18:54:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a6f05bbf_d14aacb7",
       "range": {
         "startLine": 9,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ca2e8de_fd7a3479",
+        "filename": "mk2rbc/find.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-08-02T18:54:18Z",
+      "side": 1,
+      "message": "I have made it hopefully more readable. The efficiency wasn\u0027t my  concern, but I doubt that string concatenation, which might require memory allocation (and maybe garbage collection) is as efficient as obtaining a rune from a string.",
+      "parentUuid": "5798012e_a9a1b089",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 15,
+        "endChar": 78
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f08209ff_0c161369",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-30T17:09:17Z",
       "side": 1,
       "message": "this seems off, above, path index is used to index into path, whereas this is the index into path[index+1:]\n\nwe should either be shortening path (which seems prone to incorrect answers e.g. chunks \u003d[\"a\", \"b\"] and path \u003d \"aa/other/b\") or adding (index+1) to this.\n\ngiven that chunks need to start with os.PathSeparator if they are not at the beginning of path, should this start searching at/after the next path separator?",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 47
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18bba75e_3e76bb8e",
+        "filename": "mk2rbc/find.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-08-02T18:54:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f08209ff_0c161369",
       "range": {
         "startLine": 24,
         "startChar": 3,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba2b195d_b7551af6",
+        "filename": "mk2rbc/find.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-08-02T18:54:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "57cf01b4_ab8ce4a5",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 14
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3a500e0_f62f2be9",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-07-30T17:09:17Z",
       "side": 1,
       "message": "can you add some more test cases -- in particular ones that could encounter edge cases within the for-loop within the default case in match_path?",
+      "range": {
+        "startLine": 20,
+        "startChar": 3,
+        "endLine": 20,
+        "endChar": 7
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c0109e6_923fb285",
+        "filename": "mk2rbc/find_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-08-02T18:54:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b3a500e0_f62f2be9",
       "range": {
         "startLine": 20,
         "startChar": 3,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bf244d7_e93ca321",
+        "filename": "mk2rbc/find_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-08-02T18:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d2b94ce_a3f521a7",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 10
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "829032b4_7cdf60d8",
@@ -185,6 +353,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "280624c3_a00cbc72",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-08-02T18:54:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "829032b4_7cdf60d8",
+      "range": {
+        "startLine": 394,
+        "startChar": 43,
+        "endLine": 394,
+        "endChar": 53
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95e7898d_1859c32c",
@@ -198,6 +390,30 @@
       "writtenOn": "2021-07-30T17:09:17Z",
       "side": 1,
       "message": "should this be _varmod? The \"\" around _varmod are unexpected.",
+      "range": {
+        "startLine": 855,
+        "startChar": 23,
+        "endLine": 855,
+        "endChar": 32
+      },
+      "revId": "e29bda2bd8cb1b706507c188afca69ffee346cab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b29cb479_240de887",
+        "filename": "mk2rbc/mk2rbc_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 855,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-08-02T18:54:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95e7898d_1859c32c",
       "range": {
         "startLine": 855,
         "startChar": 23,
