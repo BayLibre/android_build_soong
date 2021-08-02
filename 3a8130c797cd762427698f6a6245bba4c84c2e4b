@@ -16,6 +16,23 @@
       "message": "Ping for review",
       "revId": "3a8130c797cd762427698f6a6245bba4c84c2e4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4987d484_f9310d38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305591
+      },
+      "writtenOn": "2021-08-02T10:08:22Z",
+      "side": 1,
+      "message": "LGTM, but I\u0027d like Oriol to confirm this is the behaviour he\u0027s after.",
+      "revId": "3a8130c797cd762427698f6a6245bba4c84c2e4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
