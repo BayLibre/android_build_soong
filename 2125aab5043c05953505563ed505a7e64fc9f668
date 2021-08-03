@@ -16,6 +16,24 @@
       "message": "Sorry for breaking. A forward fix is being made, but reverting it first is fine.",
       "revId": "2125aab5043c05953505563ed505a7e64fc9f668",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c73bd3f_eb1d121c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1871039
+      },
+      "writtenOn": "2021-08-03T04:54:35Z",
+      "side": 1,
+      "message": "Okay, I\u0027ll revert it first.\nI also assigned this bug to you b/195370450.",
+      "parentUuid": "3a718808_428136fc",
+      "revId": "2125aab5043c05953505563ed505a7e64fc9f668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
