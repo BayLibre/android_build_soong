@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da608858_c4853836",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-08-03T11:22:46Z",
+      "side": 1,
+      "message": "maybe \"owners approval\", for clarity. You still need a  +2 from your teammate",
+      "range": {
+        "startLine": 69,
+        "startChar": 26,
+        "endLine": 69,
+        "endChar": 34
+      },
+      "revId": "4490ca3a155e64437dc9cab99646e45c0e47df97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
