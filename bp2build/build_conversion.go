@@ -419,6 +419,9 @@ func ExtractModuleProperties(aModule android.Module) map[string]string {
 			structValue := propertiesValue.Elem()
 			for k, v := range extractStructProperties(structValue, 0) {
 				ret[k] = v
+				if k == "system_dynamic_deps" {
+					fmt.Printf("$$$$$ %s\n", v)
+				}
 			}
 		} else {
 			panic(fmt.Errorf(
@@ -542,9 +545,14 @@ func extractStructProperties(structValue reflect.Value, indent int) map[string]s
 		if shouldSkipStructField(field) {
 			continue
 		}
-
 		fieldValue := structValue.Field(i)
+		if proptools.PropertyNameForField(field.Name) == "system_dynamic_deps" {
+			fmt.Printf("@@@@@@@ %s %t\n", fieldValue, isZero(fieldValue))
+		}
 		if isZero(fieldValue) {
+			if proptools.PropertyNameForField(field.Name) == "system_dynamic_deps" {
+				fmt.Printf("Whaaat?\n")
+			}
 			// Ignore zero-valued fields
 			continue
 		}
@@ -560,6 +568,11 @@ func extractStructProperties(structValue reflect.Value, indent int) map[string]s
 		}
 		if prettyPrintedValue != "" {
 			ret[propertyName] = prettyPrintedValue
+		} else {
+			if proptools.PropertyNameForField(field.Name) == "system_dynamic_deps" {
+				one, two := prettyPrint(fieldValue, indent+1)
+				fmt.Printf("Grrrr %s %s \n", one, two)
+			}
 		}
 	}
 

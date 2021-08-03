@@ -73,6 +73,7 @@ func getBoolValue(boolAttr bazel.BoolAttribute) (reflect.Value, []selects) {
 
 	return value, []selects{ret}
 }
+
 func getLabelListValues(list bazel.LabelListAttribute) (reflect.Value, []selects) {
 	value := reflect.ValueOf(list.Value.Includes)
 	var ret []selects
@@ -118,6 +119,10 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 	var value reflect.Value
 	var configurableAttrs []selects
 	var defaultSelectValue *string
+
+	// If true, print the default attribute value, even if the attribute is zero.
+	shouldPrintDefault := false
+	useIselect := false
 	switch list := v.(type) {
 	case bazel.StringListAttribute:
 		value, configurableAttrs = getStringListValues(list)
@@ -125,6 +130,10 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 	case bazel.LabelListAttribute:
 		value, configurableAttrs = getLabelListValues(list)
 		defaultSelectValue = &emptyBazelList
+		useIselect = list.UseIselect
+		if list.UseIselect && !value.IsNil() {
+			shouldPrintDefault = true
+		}
 	case bazel.LabelAttribute:
 		value, configurableAttrs = getLabelValue(list)
 		defaultSelectValue = &bazelNone
@@ -147,7 +156,7 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 	}
 	// Convenience function to append selects components to an attribute value.
 	appendSelects := func(selectsData selects, defaultValue *string, s string) (string, error) {
-		selectMap, err := prettyPrintSelectMap(selectsData, defaultValue, indent)
+		selectMap, err := prettyPrintSelectMap(selectsData, defaultValue, indent, useIselect)
 		if err != nil {
 			return "", err
 		}
@@ -166,12 +175,15 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 		}
 	}
 
+	if ret == "" && shouldPrintDefault {
+		return *defaultSelectValue, nil
+	}
 	return ret, nil
 }
 
 // prettyPrintSelectMap converts a map of select keys to reflected Values as a generic way
 // to construct a select map for any kind of attribute type.
-func prettyPrintSelectMap(selectMap map[string]reflect.Value, defaultValue *string, indent int) (string, error) {
+func prettyPrintSelectMap(selectMap map[string]reflect.Value, defaultValue *string, indent int, useIselect bool) (string, error) {
 	if selectMap == nil {
 		return "", nil
 	}
@@ -204,7 +216,13 @@ func prettyPrintSelectMap(selectMap map[string]reflect.Value, defaultValue *stri
 	}
 
 	// Create the map.
-	ret := "select({\n"
+	var ret string
+	if useIselect {
+		ret = "iselect({\n"
+	} else {
+		ret = "select({\n"
+	}
+
 	ret += selects
 
 	// Handle the default condition
@@ -216,9 +234,11 @@ func prettyPrintSelectMap(selectMap map[string]reflect.Value, defaultValue *stri
 		// Print the custom default value.
 		ret += s
 		ret += ",\n"
-	} else if defaultValue != nil {
+	} else if !useIselect && defaultValue != nil {
 		// Print an explicit empty list (the default value) even if the value is
 		// empty, to avoid errors about not finding a configuration that matches.
+		// For iselects, the absence of a matching configuration is actually useful,
+		// so preserve that information.
 		ret += fmt.Sprintf("%s\"%s\": %s,\n", makeIndent(indent+1), bazel.ConditionsDefaultSelectKey, *defaultValue)
 	}
 

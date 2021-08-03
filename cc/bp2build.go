@@ -35,6 +35,8 @@ type staticOrSharedAttributes struct {
 	Static_deps        bazel.LabelListAttribute
 	Dynamic_deps       bazel.LabelListAttribute
 	Whole_archive_deps bazel.LabelListAttribute
+
+	System_dynamic_deps bazel.LabelListAttribute
 }
 
 func groupSrcsByExtension(ctx android.TopDownMutatorContext, srcs bazel.LabelListAttribute) (cppSrcs, cSrcs, asSrcs bazel.LabelListAttribute) {
@@ -138,11 +140,12 @@ func bp2buildParseStaticOrSharedProps(ctx android.TopDownMutatorContext, module 
 	}
 
 	attrs := staticOrSharedAttributes{
-		Copts:              bazel.StringListAttribute{Value: props.Cflags},
-		Srcs:               bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, props.Srcs)),
-		Static_deps:        bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, props.Static_libs)),
-		Dynamic_deps:       bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, append(props.Shared_libs, props.System_shared_libs...))),
-		Whole_archive_deps: bazel.MakeLabelListAttribute(android.BazelLabelForModuleWholeDeps(ctx, props.Whole_static_libs)),
+		Copts:               bazel.StringListAttribute{Value: props.Cflags},
+		Srcs:                bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, props.Srcs)),
+		Static_deps:         bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, props.Static_libs)),
+		Dynamic_deps:        bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, append(props.Shared_libs, props.System_shared_libs...))),
+		Whole_archive_deps:  bazel.MakeLabelListAttribute(android.BazelLabelForModuleWholeDeps(ctx, props.Whole_static_libs)),
+		System_dynamic_deps: bazel.MakeLabelListAttribute(android.BazelLabelForModuleWholeDeps(ctx, props.System_shared_libs)),
 	}
 
 	setAttrs := func(axis bazel.ConfigurationAxis, config string, props StaticOrSharedProperties) {
@@ -151,6 +154,7 @@ func bp2buildParseStaticOrSharedProps(ctx android.TopDownMutatorContext, module 
 		attrs.Static_deps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, props.Static_libs))
 		attrs.Dynamic_deps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, props.Shared_libs))
 		attrs.Whole_archive_deps.SetSelectValue(axis, config, android.BazelLabelForModuleWholeDeps(ctx, props.Whole_static_libs))
+		attrs.System_dynamic_deps.SetSelectValue(axis, config, android.BazelLabelForModuleWholeDeps(ctx, props.System_shared_libs))
 	}
 
 	if isStatic {
@@ -378,6 +382,7 @@ type linkerAttributes struct {
 	deps                          bazel.LabelListAttribute
 	dynamicDeps                   bazel.LabelListAttribute
 	wholeArchiveDeps              bazel.LabelListAttribute
+	systemDynamicDeps             bazel.LabelListAttribute
 	exportedDeps                  bazel.LabelListAttribute
 	useLibcrt                     bazel.BoolAttribute
 	linkopts                      bazel.StringListAttribute
@@ -406,6 +411,7 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 	var exportedDeps bazel.LabelListAttribute
 	var dynamicDeps bazel.LabelListAttribute
 	var wholeArchiveDeps bazel.LabelListAttribute
+	var systemSharedDeps bazel.LabelListAttribute
 	var linkopts bazel.StringListAttribute
 	var versionScript bazel.LabelAttribute
 	var useLibcrt bazel.BoolAttribute
@@ -447,7 +453,15 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 			wholeArchiveDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleWholeDepsExcludes(ctx, wholeArchiveLibs, baseLinkerProps.Exclude_static_libs))
 			// TODO(b/186024507): Handle system_shared_libs as its own attribute, so that the appropriate default
 			// may be supported.
-			sharedLibs := android.FirstUniqueStrings(append(baseLinkerProps.Shared_libs, baseLinkerProps.System_shared_libs...))
+
+			systemSharedLibs := android.FirstUniqueStrings(baseLinkerProps.System_shared_libs)
+			systemSharedDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, systemSharedLibs))
+			systemSharedDeps.UseIselect = true
+			if systemSharedDeps.Value.IsNil() && baseLinkerProps.System_shared_libs != nil {
+				systemSharedDeps.Value.Includes = []bazel.Label{}
+			}
+
+			sharedLibs := android.FirstUniqueStrings(baseLinkerProps.Shared_libs)
 			dynamicDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDepsExcludes(ctx, sharedLibs, baseLinkerProps.Exclude_shared_libs))
 
 			headerLibs := android.FirstUniqueStrings(baseLinkerProps.Header_libs)
@@ -474,7 +488,11 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 				staticDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDepsExcludes(ctx, staticLibs, baseLinkerProps.Exclude_static_libs))
 				wholeArchiveLibs := android.FirstUniqueStrings(baseLinkerProps.Whole_static_libs)
 				wholeArchiveDeps.SetSelectValue(axis, config, android.BazelLabelForModuleWholeDepsExcludes(ctx, wholeArchiveLibs, baseLinkerProps.Exclude_static_libs))
-				sharedLibs := android.FirstUniqueStrings(append(baseLinkerProps.Shared_libs, baseLinkerProps.System_shared_libs...))
+
+				systemSharedLibs := android.FirstUniqueStrings(baseLinkerProps.System_shared_libs)
+				systemSharedDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, systemSharedLibs))
+
+				sharedLibs := android.FirstUniqueStrings(baseLinkerProps.Shared_libs)
 				dynamicDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDepsExcludes(ctx, sharedLibs, baseLinkerProps.Exclude_shared_libs))
 
 				headerLibs := android.FirstUniqueStrings(baseLinkerProps.Header_libs)
@@ -550,13 +568,14 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 	headerDeps.Append(staticDeps)
 
 	return linkerAttributes{
-		deps:             headerDeps,
-		exportedDeps:     exportedDeps,
-		dynamicDeps:      dynamicDeps,
-		wholeArchiveDeps: wholeArchiveDeps,
-		linkopts:         linkopts,
-		useLibcrt:        useLibcrt,
-		versionScript:    versionScript,
+		deps:              headerDeps,
+		exportedDeps:      exportedDeps,
+		dynamicDeps:       dynamicDeps,
+		wholeArchiveDeps:  wholeArchiveDeps,
+		systemDynamicDeps: systemSharedDeps,
+		linkopts:          linkopts,
+		useLibcrt:         useLibcrt,
+		versionScript:     versionScript,
 
 		// Strip properties
 		stripKeepSymbols:              stripKeepSymbols,

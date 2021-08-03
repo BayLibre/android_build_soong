@@ -98,6 +98,8 @@ func createBuildFiles(buildToTargets map[string]BazelTargets, mode CodegenMode) 
 				content += "package(default_visibility = [\"//visibility:public\"])"
 			}
 			content += "\n"
+			// Common library load statement
+			content += "load(\"//build/bazel/rules:isls.bzl\", \"iselect\")\n"
 			content += targets.LoadStatements()
 		} else if mode == QueryView {
 			content = soongModuleLoad

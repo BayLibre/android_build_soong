@@ -2006,6 +2006,7 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 	}
 	axisToProps[bazel.ArchConfigurationAxis] = archToProp
 
+	osStructs := make([]reflect.Value, 0)
 	osToProp := ArchVariantProperties{}
 	archOsToProp := ArchVariantProperties{}
 	// For android, linux, ...
@@ -2014,7 +2015,11 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 			// It looks like this OS value is not used in Blueprint files
 			continue
 		}
+		osStructs = append(osStructs, getTargetStruct(ctx, propertySet, archProperties, os.Field))
 		osToProp[os.Name] = getTargetStruct(ctx, propertySet, archProperties, os.Field)
+		if os.Bionic() {
+			mergePropertyStruct(osToProp[os.Name], getTargetStruct(ctx, propertySet, archProperties, "Bionic"))
+		}
 		// For arm, x86, ...
 		for _, arch := range osArchTypeMap[os] {
 			targetField := GetCompoundTargetField(os, arch)

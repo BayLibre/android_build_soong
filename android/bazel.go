@@ -206,7 +206,7 @@ var (
 		// http://b/186024507: Includes errors because of the system_shared_libs default value.
 		// Missing -isystem bionic/libc/include through the libc/libm/libdl
 		// default dependencies if system_shared_libs is unset.
-		"liblog",                 // http://b/186822772: cc_library, 'sys/cdefs.h' file not found
+		//"liblog",                 // http://b/186822772: cc_library, 'sys/cdefs.h' file not found
 		"libjemalloc5_jet",       // cc_library, 'sys/cdefs.h' file not found
 		"libseccomp_policy",      // http://b/186476753: cc_library, 'linux/filter.h' not found
 		"note_memtag_heap_async", // http://b/185127353: cc_library_static, error: feature.h not found

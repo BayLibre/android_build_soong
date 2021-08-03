@@ -453,6 +453,16 @@ func (ll labelListSelectValues) HasConfigurableValues() bool {
 	return false
 }
 
+// Behaves like LabelListAttribute, except uses a starlark dictionary when printing
+// this value instead of using selects. Note this is not a true starlark
+// attribute type, but is useful when macros need to access the raw values of
+// selects. Due to limitations in Bazel macros, it is impossible to inspect the
+// contents of a configuration dictionary once it is wrapped in select(). Thus,
+// this type exists to provide raw values to such macros.
+type LabelListDictAttribute struct {
+	WrappedLabelList LabelListAttribute
+}
+
 // LabelListAttribute is used to represent a list of Bazel labels as an
 // attribute.
 type LabelListAttribute struct {
@@ -462,6 +472,8 @@ type LabelListAttribute struct {
 	// The configured attribute label list Values. Optional
 	// a map of independent configurability axes
 	ConfigurableValues configurableLabelLists
+
+	UseIselect bool
 }
 
 type configurableLabelLists map[ConfigurationAxis]labelListSelectValues
