@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5bfeac1_10d5985e",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-03T12:33:55Z",
+      "side": 1,
+      "message": "Soong still supports darwin for some builds.",
+      "parentUuid": "a85f2c33_6f95d43d",
+      "range": {
+        "startLine": 83,
+        "startChar": 22,
+        "endLine": 83,
+        "endChar": 41
+      },
+      "revId": "c27636ae7be08de4fc05ed5684cb06c32786cbb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6f54c273_725ff318",
