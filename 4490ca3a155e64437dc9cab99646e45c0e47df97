@@ -46,6 +46,30 @@
       },
       "revId": "4490ca3a155e64437dc9cab99646e45c0e47df97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99eae3c6_1a7ffaa3",
+        "filename": "apex/apex_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-08-03T13:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaca0de5_50a32d73",
+      "range": {
+        "startLine": 69,
+        "startChar": 26,
+        "endLine": 69,
+        "endChar": 34
+      },
+      "revId": "4490ca3a155e64437dc9cab99646e45c0e47df97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
