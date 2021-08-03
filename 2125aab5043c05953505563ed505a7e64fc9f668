@@ -34,6 +34,23 @@
       "parentUuid": "3a718808_428136fc",
       "revId": "2125aab5043c05953505563ed505a7e64fc9f668",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7dcb082_79e981b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-03T07:50:16Z",
+      "side": 1,
+      "message": "Let me bypass presubmit as it is taking (much) longer than expected while it is very obvious that this CL was the culprit of the breakage.",
+      "revId": "2125aab5043c05953505563ed505a7e64fc9f668",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
