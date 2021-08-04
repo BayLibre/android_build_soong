@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3d52e5e_678ed6d2",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-04T15:29:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "07fa6309_fa45b2cd",
+      "revId": "9fcacdbac89dad5cec0d4c35bbb7dc47fb6a38a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4123e16_1da3adbe",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-03T16:03:57Z",
       "side": 1,
       "message": "You might do better with PackagingSpecs() instead of FilesToInstall(), which will give you the from and to paths for each installation entry, which should let you support multiple installed files.\n\nYou may also want to look at TransitivePackagingSpecs(), which will return an executable and all of its transitive shared libraries, possibly replacing your deps visiting code.  You would need to de-dup them across executables that depend on the same shared library.",
+      "revId": "9fcacdbac89dad5cec0d4c35bbb7dc47fb6a38a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be395007_7e791899",
+        "filename": "cc/host_snapshot.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-04T15:29:18Z",
+      "side": 1,
+      "message": "Thanks for pointing these out. \n\nLooking at TransitivePackagingSpes it appears that PackagingBase can be used to create the host snapshot. This would require changing from a singleton to using a module based implementation.  The PackagingBase already handles de-dup in GatherPackagingSpecs, the host snapshot would only need to add the JSON description file.\n\nPlanning on addressing this as part of moving the host snapshot out of cc and into the new snapshot directory.",
+      "parentUuid": "e4123e16_1da3adbe",
       "revId": "9fcacdbac89dad5cec0d4c35bbb7dc47fb6a38a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -58,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38a9326f_8339210b",
+        "filename": "cc/host_snapshot_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-04T15:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52092139_e15da361",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 10
+      },
+      "revId": "9fcacdbac89dad5cec0d4c35bbb7dc47fb6a38a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8d2cc7e_90d172ea",
@@ -75,6 +135,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98a12c67_639284f3",
+        "filename": "cc/testing.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-04T15:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8d2cc7e_90d172ea",
+      "revId": "9fcacdbac89dad5cec0d4c35bbb7dc47fb6a38a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1f1c4bc_58d1b457",
@@ -88,6 +166,30 @@
       "writtenOn": "2021-08-03T16:03:57Z",
       "side": 1,
       "message": "These might as well go on the same line",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 18
+      },
+      "revId": "9fcacdbac89dad5cec0d4c35bbb7dc47fb6a38a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb249226_7651c8f2",
+        "filename": "cc/util.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-04T15:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1f1c4bc_58d1b457",
       "range": {
         "startLine": 162,
         "startChar": 0,
@@ -121,6 +223,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e5bd67e_f326fbb3",
+        "filename": "cc/util.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-04T15:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a80ac703_cb79aa58",
+      "range": {
+        "startLine": 168,
+        "startChar": 2,
+        "endLine": 171,
+        "endChar": 0
+      },
+      "revId": "9fcacdbac89dad5cec0d4c35bbb7dc47fb6a38a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "950af41d_e7d15971",
@@ -134,6 +260,30 @@
       "writtenOn": "2021-08-03T16:03:57Z",
       "side": 1,
       "message": "soong_zip can take an rsp file directly using the \"-r\" flag.",
+      "range": {
+        "startLine": 185,
+        "startChar": 16,
+        "endLine": 185,
+        "endChar": 21
+      },
+      "revId": "9fcacdbac89dad5cec0d4c35bbb7dc47fb6a38a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "777535cb_0c758726",
+        "filename": "cc/util.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-04T15:29:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "950af41d_e7d15971",
       "range": {
         "startLine": 185,
         "startChar": 16,
