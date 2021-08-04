@@ -118,6 +118,8 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 	var value reflect.Value
 	var configurableAttrs []selects
 	var defaultSelectValue *string
+	// If true, print the default attribute value, even if the attribute is zero.
+	shouldPrintDefault := false
 	switch list := v.(type) {
 	case bazel.StringListAttribute:
 		value, configurableAttrs = getStringListValues(list)
@@ -125,6 +127,9 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 	case bazel.LabelListAttribute:
 		value, configurableAttrs = getLabelListValues(list)
 		defaultSelectValue = &emptyBazelList
+		if list.ForceSpecifyEmptyList && !value.IsNil() {
+			shouldPrintDefault = true
+		}
 	case bazel.LabelAttribute:
 		value, configurableAttrs = getLabelValue(list)
 		defaultSelectValue = &bazelNone
@@ -166,6 +171,9 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 		}
 	}
 
+	if ret == "" && shouldPrintDefault {
+		return *defaultSelectValue, nil
+	}
 	return ret, nil
 }
 

@@ -233,6 +233,7 @@ type bazelCcLibraryAttributes struct {
 	Implementation_deps bazel.LabelListAttribute
 	Dynamic_deps        bazel.LabelListAttribute
 	Whole_archive_deps  bazel.LabelListAttribute
+	System_dynamic_deps bazel.LabelListAttribute
 	Includes            bazel.StringListAttribute
 	Linkopts            bazel.StringListAttribute
 	Use_libcrt          bazel.BoolAttribute
@@ -319,6 +320,7 @@ func CcLibraryBp2Build(ctx android.TopDownMutatorContext) {
 		Deps:                linkerAttrs.exportedDeps,
 		Dynamic_deps:        linkerAttrs.dynamicDeps,
 		Whole_archive_deps:  linkerAttrs.wholeArchiveDeps,
+		System_dynamic_deps: linkerAttrs.systemDynamicDeps,
 		Includes:            exportedIncludes,
 		Linkopts:            linkerAttrs.linkopts,
 		Use_libcrt:          linkerAttrs.useLibcrt,
@@ -2329,6 +2331,8 @@ type bazelCcLibraryStaticAttributes struct {
 	Implementation_deps bazel.LabelListAttribute
 	Deps                bazel.LabelListAttribute
 	Whole_archive_deps  bazel.LabelListAttribute
+	Dynamic_deps        bazel.LabelListAttribute
+	System_dynamic_deps bazel.LabelListAttribute
 	Linkopts            bazel.StringListAttribute
 	Linkstatic          bool
 	Use_libcrt          bazel.BoolAttribute
@@ -2340,6 +2344,8 @@ type bazelCcLibraryStaticAttributes struct {
 	Conlyflags bazel.StringListAttribute
 	Srcs_as    bazel.LabelListAttribute
 	Asflags    bazel.StringListAttribute
+
+	Static staticOrSharedAttributes
 }
 
 type bazelCcLibraryStatic struct {
@@ -2365,12 +2371,28 @@ func ccLibraryStaticBp2BuildInternal(ctx android.TopDownMutatorContext, module *
 		asFlags = bazel.MakeStringListAttribute(nil)
 	}
 
+	// Append static{} stanza properties. These won't be specified on
+	// cc_library_static itself, but may be specified in cc_defaults that this module
+	// depends on.
+	staticAttrs := bp2BuildParseStaticProps(ctx, module)
+
+	compilerAttrs.srcs.Append(staticAttrs.Srcs)
+	compilerAttrs.cSrcs.Append(staticAttrs.Srcs_c)
+	compilerAttrs.asSrcs.Append(staticAttrs.Srcs_as)
+	compilerAttrs.copts.Append(staticAttrs.Copts)
+	linkerAttrs.exportedDeps.Append(staticAttrs.Static_deps)
+	linkerAttrs.dynamicDeps.Append(staticAttrs.Dynamic_deps)
+	linkerAttrs.wholeArchiveDeps.Append(staticAttrs.Whole_archive_deps)
+	linkerAttrs.systemDynamicDeps.Append(staticAttrs.System_dynamic_deps)
+
 	attrs := &bazelCcLibraryStaticAttributes{
 		Copts:               compilerAttrs.copts,
 		Srcs:                compilerAttrs.srcs,
 		Implementation_deps: linkerAttrs.deps,
 		Deps:                linkerAttrs.exportedDeps,
 		Whole_archive_deps:  linkerAttrs.wholeArchiveDeps,
+		Dynamic_deps:        linkerAttrs.dynamicDeps,
+		System_dynamic_deps: linkerAttrs.systemDynamicDeps,
 
 		Linkopts:   linkerAttrs.linkopts,
 		Linkstatic: true,
