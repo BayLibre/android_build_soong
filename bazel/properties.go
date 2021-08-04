@@ -462,6 +462,13 @@ type LabelListAttribute struct {
 	// The configured attribute label list Values. Optional
 	// a map of independent configurability axes
 	ConfigurableValues configurableLabelLists
+
+	// If true, differentiate between "nil" and "empty" list. nil means that
+	// this attribute should not be specified at all, and "empty" means that
+	// the attribute should be explicitly specified as an empty list.
+	// This mode facilitates use of attribute defaults: an empty list should
+	// override the default.
+	ForceSpecifyEmptyList bool
 }
 
 type configurableLabelLists map[ConfigurationAxis]labelListSelectValues
@@ -546,6 +553,9 @@ func (lla *LabelListAttribute) SortedConfigurationAxes() []ConfigurationAxis {
 // Append all values, including os and arch specific ones, from another
 // LabelListAttribute to this LabelListAttribute.
 func (lla *LabelListAttribute) Append(other LabelListAttribute) {
+	if lla.ForceSpecifyEmptyList && !other.Value.IsNil() {
+		lla.Value.Includes = []Label{}
+	}
 	lla.Value.Append(other.Value)
 	if lla.ConfigurableValues == nil {
 		lla.ConfigurableValues = make(configurableLabelLists)
