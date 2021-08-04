@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f1fbe67_e5d8f29d",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-04T05:48:19Z",
+      "side": 1,
+      "message": "That could be a solution. Still we need more work on supporting any source files.\nLet\u0027s put this in a TODO list.",
+      "parentUuid": "0650b9f0_5ed2455b",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 0
+      },
+      "revId": "9c81073afd910a5b13daecbc103290b755ca1268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a02ad153_1f60e3d8",
@@ -85,6 +109,30 @@
       "writtenOn": "2021-08-04T00:51:48Z",
       "side": 1,
       "message": "Why not using (Vendor|Recovery)SnapshotImageSingleton?",
+      "range": {
+        "startLine": 855,
+        "startChar": 1,
+        "endLine": 858,
+        "endChar": 43
+      },
+      "revId": "9c81073afd910a5b13daecbc103290b755ca1268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "202cbe14_14045525",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-04T05:48:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a02ad153_1f60e3d8",
       "range": {
         "startLine": 855,
         "startChar": 1,
