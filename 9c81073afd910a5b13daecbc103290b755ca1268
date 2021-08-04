@@ -46,6 +46,29 @@
       },
       "revId": "9c81073afd910a5b13daecbc103290b755ca1268",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a02ad153_1f60e3d8",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-08-04T00:51:48Z",
+      "side": 1,
+      "message": "Why not using (Vendor|Recovery)SnapshotImageSingleton?",
+      "range": {
+        "startLine": 855,
+        "startChar": 1,
+        "endLine": 858,
+        "endChar": 43
+      },
+      "revId": "9c81073afd910a5b13daecbc103290b755ca1268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
