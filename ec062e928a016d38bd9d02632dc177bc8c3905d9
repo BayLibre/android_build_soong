@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c1e15a6_620ab8b6",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-08-04T06:32:40Z",
+      "side": 1,
+      "message": "Would it be weird to check if length of snapshot is bigger than expected?",
+      "range": {
+        "startLine": 875,
+        "startChar": 4,
+        "endLine": 875,
+        "endChar": 44
+      },
+      "revId": "ec062e928a016d38bd9d02632dc177bc8c3905d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
