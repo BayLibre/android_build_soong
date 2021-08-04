@@ -1327,6 +1327,38 @@ func TestRewriteTestModuleTypes(t *testing.T) {
 				}
 			`,
 		},
+		{
+			name: "java_library_host with test_suites",
+			in: `
+				java_library_host {
+					name: "foo",
+					srcs: ["srcs"],
+					test_suites: ["test_suite1"],
+				}
+			`,
+			out: `
+				java_test_host {
+					name: "foo",
+					srcs: ["srcs"],
+					test_suites: ["test_suite1"],
+				}
+			`,
+		},
+		{
+			name: "java_library_host without test_suites",
+			in: `
+				java_library_host {
+					name: "foo",
+					srcs: ["srcs"],
+				}
+			`,
+			out: `
+				java_library_host {
+					name: "foo",
+					srcs: ["srcs"],
+				}
+			`,
+		},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
