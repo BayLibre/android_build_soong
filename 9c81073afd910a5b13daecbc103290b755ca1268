@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f30587a_a26d7fe7",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-08-04T00:34:44Z",
+      "side": 1,
+      "message": "Can we move this to build/soong/snapshot? This doesn\u0027t seem to be directly related to cc.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 0
+      },
+      "revId": "9c81073afd910a5b13daecbc103290b755ca1268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
