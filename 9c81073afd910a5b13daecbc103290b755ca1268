@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0650b9f0_5ed2455b",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-08-04T00:55:03Z",
+      "side": 1,
+      "message": "When we need this in generic, probably we can just add new property \u0027subdir\u0027 or similar 😊",
+      "parentUuid": "a62bfdcf_e168261b",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 0
+      },
+      "revId": "9c81073afd910a5b13daecbc103290b755ca1268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a02ad153_1f60e3d8",
         "filename": "cc/snapshot_prebuilt.go",
         "patchSetId": 3
