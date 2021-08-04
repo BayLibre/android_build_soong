@@ -684,6 +684,28 @@ func TestRewriteCtsModuleTypes(t *testing.T) {
 				}
 			`,
 		},
+		{
+			name: "cts_host_java_library with the test_suites field",
+			in: `
+				cts_host_java_library {
+					name: "foo",
+					test_suites: [
+						"bar",
+						"baz",
+					],
+				}
+			`,
+			out: `
+				java_test_host {
+					name: "foo",
+					test_suites: [
+						"bar",
+						"baz",
+					],
+					defaults: ["cts_defaults"],
+				}
+			`,
+		},
 	}
 
 	for _, test := range tests {

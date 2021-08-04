@@ -337,6 +337,9 @@ func rewriteCtsModuleTypes(f *Fixer) error {
 			defStr = "cts_defaults"
 		case "cts_host_java_library":
 			mod.Type = "java_library_host"
+			if hasNonEmptyLiteralListProperty(mod, "test_suites") {
+				mod.Type = "java_test_host"
+			}
 			defStr = "cts_defaults"
 		}
 
