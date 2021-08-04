@@ -22,6 +22,30 @@
       },
       "revId": "ec062e928a016d38bd9d02632dc177bc8c3905d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2598ac3_348f450a",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-04T06:52:56Z",
+      "side": 1,
+      "message": "len(snapshot) must be 2 because of the arch variant. But this is a normal case.\nIt requires to know the path of the snapshots with this. So it is sufficient to check any single image variant from the slice.",
+      "parentUuid": "8c1e15a6_620ab8b6",
+      "range": {
+        "startLine": 875,
+        "startChar": 4,
+        "endLine": 875,
+        "endChar": 44
+      },
+      "revId": "ec062e928a016d38bd9d02632dc177bc8c3905d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
