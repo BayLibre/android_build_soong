@@ -16,6 +16,23 @@
       "message": "PTAL. This is a clean relanding of the original CL. The forward fix is at aosp/1784476",
       "revId": "192600a7d0c512315da01e93c677805e6c2d3b82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8355e14f_b5b13ae6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-04T02:57:03Z",
+      "side": 1,
+      "message": "ping for review",
+      "revId": "192600a7d0c512315da01e93c677805e6c2d3b82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
