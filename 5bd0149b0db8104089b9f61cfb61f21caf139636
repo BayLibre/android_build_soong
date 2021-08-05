@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff78916c_f2f6a888",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2021-08-05T21:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af573d94_3bedab1a",
+      "revId": "5bd0149b0db8104089b9f61cfb61f21caf139636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f10b187_df293413",
@@ -90,6 +108,30 @@
       "side": 1,
       "message": "I can remove this.",
       "parentUuid": "3f10b187_df293413",
+      "range": {
+        "startLine": 91,
+        "startChar": 6,
+        "endLine": 91,
+        "endChar": 15
+      },
+      "revId": "5bd0149b0db8104089b9f61cfb61f21caf139636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4c38f51_e68c0745",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2021-08-05T21:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d72771c_dfe225fd",
       "range": {
         "startLine": 91,
         "startChar": 6,

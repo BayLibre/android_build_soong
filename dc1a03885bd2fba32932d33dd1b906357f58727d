@@ -106,6 +106,24 @@
       "parentUuid": "faf141ef_1ac941f6",
       "revId": "dc1a03885bd2fba32932d33dd1b906357f58727d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d965ef6_db01ff17",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2021-08-05T21:09:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72c96fae_0edd47ff",
+      "revId": "dc1a03885bd2fba32932d33dd1b906357f58727d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
