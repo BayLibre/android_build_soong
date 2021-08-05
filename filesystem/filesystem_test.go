@@ -20,6 +20,8 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
+
+	"github.com/google/blueprint/proptools"
 )
 
 func TestMain(m *testing.M) {
@@ -45,11 +47,11 @@ func TestFileSystemDeps(t *testing.T) {
 
 func TestFileSystemFillsLinkerConfigWithStubLibs(t *testing.T) {
 	result := fixture.RunTestWithBp(t, `
-	        android_system_image {
+	  android_system_image {
 			name: "myfilesystem",
 			deps: [
 				"libfoo",
-                                "libbar",
+        "libbar",
 			],
 			linker_config_src: "linker.config.json",
 		}
@@ -73,4 +75,38 @@ func TestFileSystemFillsLinkerConfigWithStubLibs(t *testing.T) {
 		output.RuleParams.Command, "libfoo.so")
 	android.AssertStringDoesNotContain(t, "linker.config.pb should not have libbar",
 		output.RuleParams.Command, "libbar.so")
+}
+
+func TestFileSystemShouldInstallCoreVariantIfTargetBuildAppsIsSet(t *testing.T) {
+	context := android.GroupFixturePreparers(
+		fixture,
+		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+			variables.Unbundled_build_apps = proptools.BoolPtr(true)
+		}),
+	)
+	result := context.RunTestWithBp(t, `
+	  android_system_image {
+			name: "myfilesystem",
+			deps: [
+				"libfoo",
+			],
+			linker_config_src: "linker.config.json",
+		}
+
+		cc_library {
+			name: "libfoo",
+			shared_libs: [
+				"libbar",
+			],
+		}
+
+		cc_library {
+			name: "libbar",
+			sdk_version: "9",
+			stl: "none",
+		}
+	`)
+
+	inputs := result.ModuleForTests("myfilesystem", "android_common").Output("deps.zip").Implicits
+	android.AssertStringListContains(t, "", inputs.Strings(), "out/soong/.intermediates/libbar/android_arm64_armv8-a_shared/libbar.so")
 }
