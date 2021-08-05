@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fa6f086_e48b89d8",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-05T12:08:47Z",
+      "side": 1,
+      "message": "nit: if this is a file, then you can use type\u003dargparse.FileType(\u0027r\u0027) and args.all would then be an open file handle, so you wouldn\u0027t need read_signature_csv_from_file_as_dict method.",
+      "range": {
+        "startLine": 75,
+        "startChar": 30,
+        "endLine": 75,
+        "endChar": 33
+      },
+      "revId": "9e839f2359ed18cc87073c4cac55f695f61ed454",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5086535_330cd16c",
+        "filename": "scripts/hiddenapi/verify_overlaps_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-05T12:08:47Z",
+      "side": 1,
+      "message": "maybe another unittest where the lists are overlapping and not strictly separate, e.g. a signature with public-api,system-api in monolithic and only with public-api in modular.",
+      "range": {
+        "startLine": 23,
+        "startChar": 6,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "9e839f2359ed18cc87073c4cac55f695f61ed454",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
