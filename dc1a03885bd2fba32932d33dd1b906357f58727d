@@ -88,6 +88,24 @@
       "parentUuid": "30a3d59a_8f7b821c",
       "revId": "dc1a03885bd2fba32932d33dd1b906357f58727d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72c96fae_0edd47ff",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-08-05T19:57:00Z",
+      "side": 1,
+      "message": "\u003e I ended up using the env group in googler.json\nsgtm",
+      "parentUuid": "faf141ef_1ac941f6",
+      "revId": "dc1a03885bd2fba32932d33dd1b906357f58727d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

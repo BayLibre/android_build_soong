@@ -38,6 +38,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af573d94_3bedab1a",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-08-05T19:57:00Z",
+      "side": 1,
+      "message": "I think remove this too.",
+      "revId": "5bd0149b0db8104089b9f61cfb61f21caf139636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f10b187_df293413",
         "filename": "ui/build/upload.go",
         "patchSetId": 4
