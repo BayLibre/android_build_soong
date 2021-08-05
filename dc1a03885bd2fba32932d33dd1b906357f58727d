@@ -70,6 +70,24 @@
       "parentUuid": "0da87ac7_8e13ae1c",
       "revId": "dc1a03885bd2fba32932d33dd1b906357f58727d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faf141ef_1ac941f6",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2021-08-05T18:16:26Z",
+      "side": 1,
+      "message": "That was what Joe suggested as well, don\u0027t hardcode google specific stuff in the code. If we change these from env vars to some other forms this flag needs to be changed as well, I had questions about passing args as env vars as well, but deemed that should be a change of its own.",
+      "parentUuid": "30a3d59a_8f7b821c",
+      "revId": "dc1a03885bd2fba32932d33dd1b906357f58727d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

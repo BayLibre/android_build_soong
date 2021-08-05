@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b8c3e87_00c90e89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2021-08-05T18:16:26Z",
+      "side": 1,
+      "message": "now I am thinking maybe we don\u0027t need this flag at all since there is already a way to opt out. Thoughts?",
+      "parentUuid": "b3caad91_3eca3460",
+      "revId": "5bd0149b0db8104089b9f61cfb61f21caf139636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f10b187_df293413",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-08-05T14:34:32Z",
       "side": 1,
       "message": "Does Verboseln print to user-visible output? If so we shouldn\u0027t do it here since it will be printed for non-Google developers (and they also cannot take any action about it).",
+      "range": {
+        "startLine": 91,
+        "startChar": 6,
+        "endLine": 91,
+        "endChar": 15
+      },
+      "revId": "5bd0149b0db8104089b9f61cfb61f21caf139636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d72771c_dfe225fd",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2021-08-05T18:16:26Z",
+      "side": 1,
+      "message": "I can remove this.",
+      "parentUuid": "3f10b187_df293413",
       "range": {
         "startLine": 91,
         "startChar": 6,
