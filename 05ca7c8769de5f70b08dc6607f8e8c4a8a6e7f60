@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16e72b97_39dcdbd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-05T00:15:20Z",
+      "side": 1,
+      "message": "I had to add one more file to this CL to avoid passing dex files as resources to R8.",
+      "revId": "05ca7c8769de5f70b08dc6607f8e8c4a8a6e7f60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
