@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3caad91_3eca3460",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2021-08-05T14:24:15Z",
+      "side": 1,
+      "message": "FYI that you should also update go/android-metrics-collection with updated instructions on how to disable metrics collection.",
+      "revId": "5bd0149b0db8104089b9f61cfb61f21caf139636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
