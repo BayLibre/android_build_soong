@@ -34,6 +34,24 @@
       "parentUuid": "020869c0_1ea14d57",
       "revId": "dc1a03885bd2fba32932d33dd1b906357f58727d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da87ac7_8e13ae1c",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2021-08-05T00:06:19Z",
+      "side": 1,
+      "message": "I ended up using the env group in googler.json since I don\u0027t have a good idea about how to add a new group, given the fact that env variables have been using as the way to pass args it seems not very consistent to do it differently.",
+      "parentUuid": "1ce808ba_6d6088ce",
+      "revId": "dc1a03885bd2fba32932d33dd1b906357f58727d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
