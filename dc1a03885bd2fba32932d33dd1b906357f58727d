@@ -52,6 +52,24 @@
       "parentUuid": "1ce808ba_6d6088ce",
       "revId": "dc1a03885bd2fba32932d33dd1b906357f58727d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30a3d59a_8f7b821c",
+        "filename": "ui/build/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2021-08-05T14:34:32Z",
+      "side": 1,
+      "message": "\u003e Any reason you want to have it as a env variable instead of hardcoding it here?\n\nI think the fact that its an env variable is an implementation detail at this point (we could choose to treat whatever is in that config file as a config value and use it directly here for example instead of proxying it via environment). But one reason to have it in the file rather than hardcoding here is that it separates the configuration from code.",
+      "parentUuid": "0da87ac7_8e13ae1c",
+      "revId": "dc1a03885bd2fba32932d33dd1b906357f58727d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

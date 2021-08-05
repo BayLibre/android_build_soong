@@ -16,6 +16,29 @@
       "message": "FYI that you should also update go/android-metrics-collection with updated instructions on how to disable metrics collection.",
       "revId": "5bd0149b0db8104089b9f61cfb61f21caf139636",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f10b187_df293413",
+        "filename": "ui/build/upload.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2021-08-05T14:34:32Z",
+      "side": 1,
+      "message": "Does Verboseln print to user-visible output? If so we shouldn\u0027t do it here since it will be printed for non-Google developers (and they also cannot take any action about it).",
+      "range": {
+        "startLine": 91,
+        "startChar": 6,
+        "endLine": 91,
+        "endChar": 15
+      },
+      "revId": "5bd0149b0db8104089b9f61cfb61f21caf139636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
