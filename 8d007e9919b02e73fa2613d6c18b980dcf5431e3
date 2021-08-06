@@ -52,6 +52,24 @@
       "parentUuid": "66171cf1_2e795a50",
       "revId": "8d007e9919b02e73fa2613d6c18b980dcf5431e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54bf2cb2_ffd1678f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-06T16:32:21Z",
+      "side": 1,
+      "message": "Good question. There should be no need as older (i.e. versioned) prebuilt_bootclasspath_fragment modules, are not actually used to generate hidden API flags.",
+      "parentUuid": "a05a810a_c02017df",
+      "revId": "8d007e9919b02e73fa2613d6c18b980dcf5431e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
