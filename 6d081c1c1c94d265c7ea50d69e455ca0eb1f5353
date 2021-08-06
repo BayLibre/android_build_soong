@@ -177,6 +177,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3080717_ef608512",
+        "filename": "apex/platform_bootclasspath_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-06T16:54:45Z",
+      "side": 1,
+      "message": "Oh, sorry. For a while art bcp fragment didn\u0027t list contents and just copied modules from the boot image. I didn\u0027t notice it started doing so.",
+      "parentUuid": "bbf35a03_5c606351",
+      "revId": "6d081c1c1c94d265c7ea50d69e455ca0eb1f5353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4947a429_e39b88cd",
@@ -190,6 +208,30 @@
       "writtenOn": "2021-07-15T15:21:48Z",
       "side": 1,
       "message": "Disabling this check completely just because instrumentation is enabled is unnecessary. b.properties.Coverage.Contents lists the additional libraries that have been added into the contents for instrumentation purposes. You can just remove them from the b.properties.Contents above. Or save the original Contents property away, e.g. into ContentsWithoutCoverage, before the coverage specific ones are added and then use that here.",
+      "range": {
+        "startLine": 554,
+        "startChar": 55,
+        "endLine": 554,
+        "endChar": 106
+      },
+      "revId": "6d081c1c1c94d265c7ea50d69e455ca0eb1f5353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a1282eb_6f3ad18a",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-06T16:54:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4947a429_e39b88cd",
       "range": {
         "startLine": 554,
         "startChar": 55,
