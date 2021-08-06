@@ -52,12 +52,12 @@ func TestCreateClasspathElements(t *testing.T) {
 		prepareForTestWithPlatformBootclasspath,
 		prepareForTestWithArtApex,
 		prepareForTestWithMyapex,
-		// For otherapex.
 		android.FixtureMergeMockFs(android.MockFS{
 			"system/sepolicy/apex/otherapex-file_contexts": nil,
 		}),
 		java.PrepareForTestWithJavaSdkLibraryFiles,
 		java.FixtureWithLastReleaseApis("foo", "othersdklibrary"),
+		java.FixtureConfigureApexBootJars("myapex:bar"),
 		android.FixtureWithRootAndroidBp(`
 		apex {
 			name: "com.android.art",
@@ -79,6 +79,7 @@ func TestCreateClasspathElements(t *testing.T) {
 
 		bootclasspath_fragment {
 			name: "art-bootclasspath-fragment",
+			image_name: "art",
 			apex_available: [
 				"com.android.art",
 			],
@@ -157,11 +158,6 @@ func TestCreateClasspathElements(t *testing.T) {
 			],
 		}
 
-		bootclasspath_fragment {
-			name: "non-apex-fragment",
-			contents: ["othersdklibrary"],
-		}
-
 		apex {
 			name: "otherapex",
 			key: "otherapex.key",
@@ -193,6 +189,10 @@ func TestCreateClasspathElements(t *testing.T) {
 					apex: "com.android.art",
 					module: "art-bootclasspath-fragment",
 				},
+				{
+					apex: "myapex",
+					module: "mybootclasspath-fragment",
+				},
 			],
 		}
 	`),
@@ -207,7 +207,6 @@ func TestCreateClasspathElements(t *testing.T) {
 	myFragment := result.Module("mybootclasspath-fragment", "android_common_apex10000")
 	myBar := result.Module("bar", "android_common_apex10000")
 
-	nonApexFragment := result.Module("non-apex-fragment", "android_common")
 	other := result.Module("othersdklibrary", "android_common_apex10000")
 
 	otherApexLibrary := result.Module("otherapexlibrary", "android_common_apex10000")
@@ -244,15 +243,6 @@ func TestCreateClasspathElements(t *testing.T) {
 			expectFragmentElement(myFragment, myBar),
 			expectLibraryElement(platformFoo),
 		}
-		assertElementsEquals(t, "elements", expectedElements, elements)
-	})
-
-	// Verify that CreateClasspathElements detects when a fragment does not have an associated apex.
-	t.Run("non apex fragment", func(t *testing.T) {
-		ctx := newCtx()
-		elements := java.CreateClasspathElements(ctx, []android.Module{}, []android.Module{nonApexFragment})
-		android.FailIfNoMatchingErrors(t, "fragment non-apex-fragment{.*} is not part of an apex", ctx.errs)
-		expectedElements := java.ClasspathElements{}
 		assertElementsEquals(t, "elements", expectedElements, elements)
 	})
 
