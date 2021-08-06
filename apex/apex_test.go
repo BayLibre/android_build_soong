@@ -7208,12 +7208,6 @@ func TestNoUpdatableJarsInBootImage(t *testing.T) {
 		testNoUpdatableJarsInBootImage(t, err, preparer)
 	})
 
-	t.Run("updatable jar from some other apex in the framework boot image => error", func(t *testing.T) {
-		err := `module "some-updatable-apex-lib" from updatable apexes \["some-updatable-apex"\] is not allowed in the framework boot image`
-		preparer := java.FixtureConfigureApexBootJars("some-updatable-apex:some-updatable-apex-lib")
-		testNoUpdatableJarsInBootImage(t, err, preparer)
-	})
-
 	t.Run("non-updatable jar from some other apex in the framework boot image => ok", func(t *testing.T) {
 		preparer := java.FixtureConfigureApexBootJars("some-non-updatable-apex:some-non-updatable-apex-lib")
 		fragment := java.ApexVariantReference{
