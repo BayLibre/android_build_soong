@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c856b8f6_be0cae29",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-06T12:32:44Z",
+      "side": 1,
+      "message": "I spent a little time looking at trying to sort this out in a follow up. The pyformat command can be used to reformat the python files to make them adhere to the style guide. Unfortunately, there is no way to enforce that in the codebase, i.e. no equivalent to setting bpfmt\u003dtrue/gofmt\u003dtrue in the PREUPLOAD.cfg file.\n\nThe closest is setting pylint\u003dtrue but that does not have an option to fix the issues it finds and while running pyformat can fix some of the issues it had to be run with specific options to do so.\n\nIt is not just these .py files which are affected all Soong .py files would need fixing up.\n\nI\u0027ve raised http://b/195738175 to track this separately.",
+      "parentUuid": "a5f19c1e_543923cf",
+      "revId": "53a7607f7dab5be0ecf5398cbf02a98c975ce434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85d52cfb_692acb7a",
