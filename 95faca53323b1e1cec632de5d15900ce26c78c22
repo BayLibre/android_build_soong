@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "815dcff1_6233d192",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-06T21:46:46Z",
+      "side": 1,
+      "message": "Not necessary for here/now, but we could possibly clean up a bunch of tests by adding\n\n`include_build_directory: false`\n\nto a bunch of Soong definitions.",
+      "range": {
+        "startLine": 1472,
+        "startChar": 0,
+        "endLine": 1475,
+        "endChar": 6
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0e565f6_9ca9787c",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1538,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-06T21:46:46Z",
+      "side": 1,
+      "message": "do we have a bug for this?",
+      "range": {
+        "startLine": 1536,
+        "startChar": 0,
+        "endLine": 1538,
+        "endChar": 72
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a439f309_5af85468",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-06T21:46:46Z",
+      "side": 1,
+      "message": "should this should be bionic, looks ~identical to test below",
+      "range": {
+        "startLine": 1497,
+        "startChar": 8,
+        "endLine": 1497,
+        "endChar": 20
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "472b6c2c_a9b1c60b",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-06T21:46:46Z",
+      "side": 1,
+      "message": "probably don\u0027t need the Whole as these aren\u0027t whole_archive_deps on prebuilts",
+      "range": {
+        "startLine": 142,
+        "startChar": 80,
+        "endLine": 142,
+        "endChar": 85
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "965f0edb_d37b7d6c",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-06T21:46:46Z",
+      "side": 1,
+      "message": "do we need to distinguish between empty/not here as we did above?",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 163,
+        "endChar": 125
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01de8a34_5fdf0699",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2386,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-06T21:46:46Z",
+      "side": 1,
+      "message": "Rather than appending for each, _may_ be able to call proptools.AppendMatchingProperties: https://cs.android.com/android/platform/superproject/+/master:build/blueprint/proptools/extend.go;l\u003d74;drc\u003d1c3530ab58ba03eb210a5eecdee7fe9969eaa0ee",
+      "range": {
+        "startLine": 2379,
+        "startChar": 1,
+        "endLine": 2386,
+        "endChar": 70
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81db0466_86d8ac07",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-06T21:46:46Z",
+      "side": 1,
+      "message": "i think system_shared_library got added to cc objects also, but we can handle that separately",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 45
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
