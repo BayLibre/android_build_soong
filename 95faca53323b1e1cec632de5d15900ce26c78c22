@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf1c1b5_8ac5a1bc",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-06T23:36:07Z",
+      "side": 1,
+      "message": "Agreed. Good for a followup 😊\nThere\u0027s also so much repetition in these tests... we might want to consider an overhaul. But not for now.",
+      "parentUuid": "815dcff1_6233d192",
+      "range": {
+        "startLine": 1472,
+        "startChar": 0,
+        "endLine": 1475,
+        "endChar": 6
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0e565f6_9ca9787c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-06T21:46:46Z",
       "side": 1,
       "message": "do we have a bug for this?",
+      "range": {
+        "startLine": 1536,
+        "startChar": 0,
+        "endLine": 1538,
+        "endChar": 72
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1b6622f_e02934d3",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1538,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-06T23:36:07Z",
+      "side": 1,
+      "message": "We do now! b/195791252",
+      "parentUuid": "f0e565f6_9ca9787c",
       "range": {
         "startLine": 1536,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef60ae4_589f40d2",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-06T23:36:07Z",
+      "side": 1,
+      "message": "It\u0027s currently identical, except that one of these types of behavior is *correct*, and the other is not. (For target.bionic, we\u0027re doing the correct thing. For target.linux_bionic, we should actually still see the default for os.android). I thought it was worth calling out both cases.",
+      "parentUuid": "a439f309_5af85468",
+      "range": {
+        "startLine": 1497,
+        "startChar": 8,
+        "endLine": 1497,
+        "endChar": 20
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "472b6c2c_a9b1c60b",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-08-06T21:46:46Z",
       "side": 1,
       "message": "probably don\u0027t need the Whole as these aren\u0027t whole_archive_deps on prebuilts",
+      "range": {
+        "startLine": 142,
+        "startChar": 80,
+        "endLine": 142,
+        "endChar": 85
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "113713cf_d2365894",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-06T23:36:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "472b6c2c_a9b1c60b",
       "range": {
         "startLine": 142,
         "startChar": 80,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ad28ac8_651e42d5",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-06T23:36:07Z",
+      "side": 1,
+      "message": "Nope! This is handled by android.BazelLabelForModuleDeps. The only reason we need the adhoc check for the other one is because we\u0027re using android.firstUniqueStrings, which doesn\u0027t do this check.\n\nHmm, do you think we should just not bother with firstUniqueStrings, to simplify the code..?",
+      "parentUuid": "965f0edb_d37b7d6c",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 163,
+        "endChar": 125
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01de8a34_5fdf0699",
         "filename": "cc/library.go",
         "patchSetId": 5
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "07db087b_eecffd3f",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2386,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-06T23:36:07Z",
+      "side": 1,
+      "message": "Hmm, why isn\u0027t this used in many places? Also requires some error checking. Maybe as a followup?",
+      "parentUuid": "01de8a34_5fdf0699",
+      "range": {
+        "startLine": 2379,
+        "startChar": 1,
+        "endLine": 2386,
+        "endChar": 70
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81db0466_86d8ac07",
         "filename": "cc/library_headers.go",
         "patchSetId": 5
@@ -152,6 +296,30 @@
       "writtenOn": "2021-08-06T21:46:46Z",
       "side": 1,
       "message": "i think system_shared_library got added to cc objects also, but we can handle that separately",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 45
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0476865c_ce035696",
+        "filename": "cc/library_headers.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-06T23:36:07Z",
+      "side": 1,
+      "message": "Good call. b/195792795.",
+      "parentUuid": "81db0466_86d8ac07",
       "range": {
         "startLine": 111,
         "startChar": 0,
