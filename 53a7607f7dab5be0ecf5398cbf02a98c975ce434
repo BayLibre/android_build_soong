@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5f19c1e_543923cf",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-06T09:08:25Z",
+      "side": 1,
+      "message": "I\u0027ll fix it in a follow up.",
+      "parentUuid": "79496d1c_cea697ef",
+      "revId": "53a7607f7dab5be0ecf5398cbf02a98c975ce434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85d52cfb_692acb7a",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-08-05T15:17:26Z",
       "side": 1,
       "message": "why not just inline this in the single place of use?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "53a7607f7dab5be0ecf5398cbf02a98c975ce434",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea2bdae0_16d8171a",
+        "filename": "scripts/hiddenapi/verify_overlaps_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-06T09:08:25Z",
+      "side": 1,
+      "message": "In follow up CLs it is expanded and used in more tests.",
+      "parentUuid": "85d52cfb_692acb7a",
       "range": {
         "startLine": 29,
         "startChar": 0,
