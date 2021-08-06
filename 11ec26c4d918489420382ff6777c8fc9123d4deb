@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab988fee_10c3172b",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-06T11:16:57Z",
+      "side": 1,
+      "message": "replace with a descriptive name? It is not immediately clear what this file is.",
+      "range": {
+        "startLine": 551,
+        "startChar": 3,
+        "endLine": 551,
+        "endChar": 47
+      },
+      "revId": "11ec26c4d918489420382ff6777c8fc9123d4deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d827620_f6ab6f53",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-06T11:16:57Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 558,
+        "startChar": 3,
+        "endLine": 558,
+        "endChar": 43
+      },
+      "revId": "11ec26c4d918489420382ff6777c8fc9123d4deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a2f6e47_a18460b9",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-06T11:16:57Z",
+      "side": 1,
+      "message": "does it actually know how to parse : separate args?",
+      "range": {
+        "startLine": 965,
+        "startChar": 12,
+        "endLine": 965,
+        "endChar": 13
+      },
+      "revId": "11ec26c4d918489420382ff6777c8fc9123d4deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "935bfe39_57e932a9",
+        "filename": "scripts/hiddenapi/signature_patterns.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-06T11:16:57Z",
+      "side": 1,
+      "message": "Wrong description?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 63
+      },
+      "revId": "11ec26c4d918489420382ff6777c8fc9123d4deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2d67678_ecc98b78",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-06T11:16:57Z",
+      "side": 1,
+      "message": "wrong description",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 77
+      },
+      "revId": "11ec26c4d918489420382ff6777c8fc9123d4deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
