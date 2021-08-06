@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13a40a45_39d2fd28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2021-08-06T13:45:37Z",
+      "side": 1,
+      "message": "nit: this is not the case anymore, so remove?",
+      "range": {
+        "startLine": 9,
+        "startChar": 27,
+        "endLine": 9,
+        "endChar": 57
+      },
+      "revId": "ac2d7f6c20b8545b5dee8cb77dce1f47ee83ed78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a724020e_f7da3d9c",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1237,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2021-08-06T13:45:37Z",
+      "side": 1,
+      "message": "nit: remove empty line",
+      "range": {
+        "startLine": 1237,
+        "startChar": 0,
+        "endLine": 1237,
+        "endChar": 0
+      },
+      "revId": "ac2d7f6c20b8545b5dee8cb77dce1f47ee83ed78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
