@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea427e6_36ec2175",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-06T13:42:35Z",
+      "side": 1,
+      "message": "You\u0027ve already created this change, and I would normally be okay going forward, but I wonder if we want to maintain this going forward..\n\nWould just using string.contains() be faster than regex? IIRC python has linear substring search algorithm, instead of naive n^2. This should be faster than regex.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "9ded4f6c7fdec507a028f36ada73a5af3078e957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
