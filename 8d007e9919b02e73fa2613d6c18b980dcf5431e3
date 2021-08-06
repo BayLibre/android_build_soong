@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b333ec_0a6d05e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-06T13:26:22Z",
+      "side": 1,
+      "message": "Do you plan to update existing prebuilts?",
+      "revId": "8d007e9919b02e73fa2613d6c18b980dcf5431e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
