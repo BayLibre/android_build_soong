@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c6d830_d6a13d88",
+        "filename": "cc/config/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-06T22:22:25Z",
+      "side": 1,
+      "message": "think you could refactor this for consistent use in build_conversion.go ?\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/build_conversion.go;l\u003d617;drc\u003dc63677b3c98d48b59a03075317bce4551d63aa5f",
+      "revId": "82ad8ccca20631a7045b63fb9f235d49e37debf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93e35088_03117e49",
+        "filename": "cc/config/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-06T22:22:25Z",
+      "side": 1,
+      "message": "Same here, I wonder if we can use this formatter for build_conversion.go",
+      "revId": "82ad8ccca20631a7045b63fb9f235d49e37debf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
