@@ -70,6 +70,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aea6b88_38b70556",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-06T11:17:18Z",
+      "side": 1,
+      "message": "Yes, the changes are included in this change.",
+      "parentUuid": "8a2f6e47_a18460b9",
+      "range": {
+        "startLine": 965,
+        "startChar": 12,
+        "endLine": 965,
+        "endChar": 13
+      },
+      "revId": "11ec26c4d918489420382ff6777c8fc9123d4deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "935bfe39_57e932a9",
