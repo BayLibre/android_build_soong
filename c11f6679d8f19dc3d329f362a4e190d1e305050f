@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5340fc14_79e30c00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-09T19:00:44Z",
+      "side": 1,
+      "message": "PTAL. I have added some tests of the signatureToElements method.",
+      "revId": "c11f6679d8f19dc3d329f362a4e190d1e305050f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
