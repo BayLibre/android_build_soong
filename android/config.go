@@ -83,6 +83,21 @@ func (c Config) SrcDir() string {
 	return c.srcDir
 }
 
+// IntDefault takes a pointer to an int and returns the value pointed to by the pointer cast to int
+// if it is non-nil, or def if the pointer is nil.
+func IntDefault(i *int, def int) int {
+	if i != nil {
+		return int(*i)
+	}
+	return def
+}
+
+// Int takes a pointer to an int and returns the value pointed to by the pointer cast to int
+// if it is non-nil, or 0 if the pointer is nil.
+func Int(i *int) int {
+	return IntDefault(i, 0)
+}
+
 // A DeviceConfig object represents the configuration for a particular device
 // being built. For now there will only be one of these, but in the future there
 // may be multiple devices being built.
@@ -208,6 +223,16 @@ func loadFromConfigFile(configurable *productVariables, filename string) error {
 	configurable.Native_coverage = proptools.BoolPtr(
 		Bool(configurable.GcovCoverage) ||
 			Bool(configurable.ClangCoverage))
+
+	// when Platform_sdk_final is true (or PLATFORM_VERSION_CODENAME is REL), use Platform_sdk_version;
+	// if false (pre-released version, for example), use Platform_sdk_codename.
+	if Bool(configurable.Platform_sdk_final) {
+		configurable.Platform_sdk_version_or_codename =
+			proptools.StringPtr(strconv.Itoa((Int(configurable.Platform_sdk_version))))
+	} else {
+		configurable.Platform_sdk_version_or_codename =
+			proptools.StringPtr(String(configurable.Platform_sdk_codename))
+	}
 
 	return saveToBazelConfigFile(configurable, filepath.Dir(filename))
 }
