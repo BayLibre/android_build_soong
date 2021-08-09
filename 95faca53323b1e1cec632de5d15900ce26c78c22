@@ -166,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cd433db_2a295947",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-09T15:41:50Z",
+      "side": 1,
+      "message": "Ah; this was in error. I fixed this for cc_library tests, but not for cc_library_static :)\nSystemSharedLibsLinuxBionicEmpty is correct. SystemSharedLibsBionicEmpty was not. \nFixed!",
+      "parentUuid": "344f944f_94db64a6",
+      "range": {
+        "startLine": 1497,
+        "startChar": 8,
+        "endLine": 1497,
+        "endChar": 20
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "472b6c2c_a9b1c60b",
@@ -274,6 +298,30 @@
       "side": 1,
       "message": "Unfortunately, I think in general we need the firstUniqueStrings as there may be duplicates in the lists from bp, either in a single list or due to defaults or other merged values -- may be fine to omit for system_shared_libs as it is less used than other properties.",
       "parentUuid": "5ad28ac8_651e42d5",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 163,
+        "endChar": 125
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afb8ffe7_927af24d",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-09T15:41:50Z",
+      "side": 1,
+      "message": "Alright. Then I think this is resolved?\n(Or do you want me to add firstUniqueStrings for all items in the static stanza here?)",
+      "parentUuid": "32546a14_06996f8d",
       "range": {
         "startLine": 163,
         "startChar": 2,
