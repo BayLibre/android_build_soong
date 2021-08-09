@@ -28,12 +28,13 @@ class TestGeneratedPatterns(unittest.TestCase):
 
     def test_generate(self):
         patterns = self.produce_patterns_from_string('''
+Ljava/lang/Character$UnicodeScript;->of(I)Ljava/lang/Character$UnicodeScript;,public-api
 Ljava/lang/Object;->hashCode()I,public-api,system-api,test-api
 Ljava/lang/Object;->toString()Ljava/lang/String;,blocked
 ''')
         expected = [
-            "Ljava/lang/Object;->hashCode()I",
-            "Ljava/lang/Object;->toString()Ljava/lang/String;",
+            "java/lang/Character",
+            "java/lang/Object",
         ]
         self.assertEqual(expected, patterns)
 
