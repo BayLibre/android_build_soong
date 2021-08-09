@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b440d78a_0f93455a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-09T03:11:28Z",
+      "side": 1,
+      "message": "The change itself is fine. Over to Nikita for the addition of new file system type for APEX.",
+      "revId": "13cac63cc7be2256d691094c8b907fca1710ed48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
