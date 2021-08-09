@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e37f49e_d75901e1",
+        "filename": "cc/snapshot_prebuilt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 856,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-08-09T04:04:33Z",
+      "side": 1,
+      "message": "nit; Can we add a function returning all snapshot singletons in build/soong/snapshot?",
+      "range": {
+        "startLine": 856,
+        "startChar": 11,
+        "endLine": 856,
+        "endChar": 88
+      },
+      "revId": "ec062e928a016d38bd9d02632dc177bc8c3905d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c1e15a6_620ab8b6",
         "filename": "cc/snapshot_prebuilt.go",
         "patchSetId": 5
