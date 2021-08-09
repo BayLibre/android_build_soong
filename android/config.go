@@ -42,6 +42,9 @@ import (
 // Bool re-exports proptools.Bool for the android package.
 var Bool = proptools.Bool
 
+// Int32 re-exports proptools.Int32 for the android package.
+var Int32 = proptools.Int32
+
 // String re-exports proptools.String for the android package.
 var String = proptools.String
 
@@ -208,6 +211,16 @@ func loadFromConfigFile(configurable *productVariables, filename string) error {
 	configurable.Native_coverage = proptools.BoolPtr(
 		Bool(configurable.GcovCoverage) ||
 			Bool(configurable.ClangCoverage))
+
+	// when Platform_sdk_final is true (or PLATFORM_VERSION_CODENAME is REL), use Platform_sdk_version;
+	// if false (pre-released version, for example), use Platform_sdk_codename.
+	if Bool(configurable.Platform_sdk_final) {
+		configurable.Platform_sdk_version_or_codename =
+			proptools.StringPtr(strconv.Itoa((Int32(configurable.Platform_sdk_version))))
+	} else {
+		configurable.Platform_sdk_version_or_codename =
+			proptools.StringPtr(String(configurable.Platform_sdk_codename))
+	}
 
 	return saveToBazelConfigFile(configurable, filepath.Dir(filename))
 }
