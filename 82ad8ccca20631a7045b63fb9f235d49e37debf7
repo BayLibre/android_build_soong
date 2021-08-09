@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3aa6ea3b_b7907541",
+        "filename": "cc/config/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-09T14:15:15Z",
+      "side": 1,
+      "message": "sg, in a followup okay? I think it may require a new package or restructuring so we don\u0027t end up with a circular dependency.",
+      "parentUuid": "46c6d830_d6a13d88",
+      "revId": "82ad8ccca20631a7045b63fb9f235d49e37debf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93e35088_03117e49",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-06T22:22:25Z",
       "side": 1,
       "message": "Same here, I wonder if we can use this formatter for build_conversion.go",
+      "revId": "82ad8ccca20631a7045b63fb9f235d49e37debf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b4a645_75b110bb",
+        "filename": "cc/config/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-09T14:15:15Z",
+      "side": 1,
+      "message": "same as above?, a followup okay?",
+      "parentUuid": "93e35088_03117e49",
       "revId": "82ad8ccca20631a7045b63fb9f235d49e37debf7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
