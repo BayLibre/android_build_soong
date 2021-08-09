@@ -332,6 +332,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a706c650_0967379a",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-09T17:29:21Z",
+      "side": 1,
+      "message": "oh sorry, yeah, didn\u0027t mean this to be blocking, was just trying to understand. thanks for explaining.",
+      "parentUuid": "afb8ffe7_927af24d",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 163,
+        "endChar": 125
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01de8a34_5fdf0699",
