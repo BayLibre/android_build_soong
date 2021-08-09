@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a01a5e31_a757681a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-09T23:04:04Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this is the right approach.  It\u0027s pretty clear that the two BUILD_CTS_HOST_JAVA_LIBRARY modules in the tree are supposed to be tests, but there may be other BUILD_HOST_JAVA_LIBRARY modules that set LOCAL_TEST_SUITES incorrectly, maybe due copy and paste errors.\n\nI\u0027d suggest making BUILD_CTS_HOST_JAVA_LIBRARY convert to java_test_host instead of java_library_host, or just manually fixing the only two uses of BUILD_CTS_HOST_JAVA_LIBRARY when you convert them.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "b82b58899d04459b972ddc718e24347a10608df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "827180a6_35c2b5ab",
