@@ -63,6 +63,132 @@
       "message": "Ping.",
       "revId": "9ded4f6c7fdec507a028f36ada73a5af3078e957",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bd485a3_aca6e53a",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-09T16:10:40Z",
+      "side": 1,
+      "message": "what does [public] mean here?",
+      "range": {
+        "startLine": 33,
+        "startChar": 26,
+        "endLine": 33,
+        "endChar": 34
+      },
+      "revId": "9ded4f6c7fdec507a028f36ada73a5af3078e957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17f615ac_b226df7d",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-09T16:10:40Z",
+      "side": 1,
+      "message": "nit: maybe parse two different signatures in the example?\n\nIn general, a path from each node to the root of the trie represents a correct prefix of the signature, right?",
+      "range": {
+        "startLine": 35,
+        "startChar": 4,
+        "endLine": 35,
+        "endChar": 24
+      },
+      "revId": "9ded4f6c7fdec507a028f36ada73a5af3078e957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31a2266e_f2dbfbad",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-09T16:10:40Z",
+      "side": 1,
+      "message": "nit: maybe s/Pieces/Elements/g? That\u0027s how javac names these when parsing AST",
+      "range": {
+        "startLine": 49,
+        "startChar": 19,
+        "endLine": 49,
+        "endChar": 25
+      },
+      "revId": "9ded4f6c7fdec507a028f36ada73a5af3078e957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8accf18_89d04f9f",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-09T16:10:40Z",
+      "side": 1,
+      "message": "nit: long line",
+      "range": {
+        "startLine": 83,
+        "startChar": 16,
+        "endLine": 83,
+        "endChar": 136
+      },
+      "revId": "9ded4f6c7fdec507a028f36ada73a5af3078e957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f67029_2a768019",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-09T16:10:40Z",
+      "side": 1,
+      "message": "It\u0027s possible to have $$ in the signature, e.g. Ljava/lang/CharSequence$$ExternalSyntheticLambda0;-\u003e\u003cinit\u003e(Ljava/lang/CharSequence;)V,blocked",
+      "revId": "9ded4f6c7fdec507a028f36ada73a5af3078e957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a51adf1_f85be610",
+        "filename": "scripts/hiddenapi/verify_overlaps_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-09T16:10:40Z",
+      "side": 1,
+      "message": "maybe a case with multipole nested classes, e.g. Ljava/lang/ProcessBuilder$Redirect$1;-\u003e\u003cinit\u003e()V,blocked",
+      "revId": "9ded4f6c7fdec507a028f36ada73a5af3078e957",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
