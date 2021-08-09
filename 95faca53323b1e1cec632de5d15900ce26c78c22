@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "344f944f_94db64a6",
+        "filename": "bp2build/cc_library_static_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-09T13:15:37Z",
+      "side": 1,
+      "message": "but both of these tests are specifying target.linux_bionic? This test case is titled `SystemSharedLibsBionicEmpty` but sets \n\n`target.linux_bionic.system_shared_libs: []`\n\nand so does the one below titled `SystemSharedLibsLinuxBionicEmpty`",
+      "parentUuid": "6ef60ae4_589f40d2",
+      "range": {
+        "startLine": 1497,
+        "startChar": 8,
+        "endLine": 1497,
+        "endChar": 20
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "472b6c2c_a9b1c60b",
         "filename": "cc/bp2build.go",
         "patchSetId": 5
@@ -238,6 +262,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32546a14_06996f8d",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-09T13:15:37Z",
+      "side": 1,
+      "message": "Unfortunately, I think in general we need the firstUniqueStrings as there may be duplicates in the lists from bp, either in a single list or due to defaults or other merged values -- may be fine to omit for system_shared_libs as it is less used than other properties.",
+      "parentUuid": "5ad28ac8_651e42d5",
+      "range": {
+        "startLine": 163,
+        "startChar": 2,
+        "endLine": 163,
+        "endChar": 125
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01de8a34_5fdf0699",
         "filename": "cc/library.go",
         "patchSetId": 5
@@ -273,6 +321,30 @@
       "side": 1,
       "message": "Hmm, why isn\u0027t this used in many places? Also requires some error checking. Maybe as a followup?",
       "parentUuid": "01de8a34_5fdf0699",
+      "range": {
+        "startLine": 2379,
+        "startChar": 1,
+        "endLine": 2386,
+        "endChar": 70
+      },
+      "revId": "95faca53323b1e1cec632de5d15900ce26c78c22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84786484_0e754726",
+        "filename": "cc/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2386,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-09T13:15:37Z",
+      "side": 1,
+      "message": "it is generally implicitly called when creating a module or via a wrapper like https://cs.android.com/android/platform/superproject/+/master:build/soong/android/hooks.go;l\u003d68;drc\u003d07656410df1836a70bea3054e50bb410ecbf8e07 -- yeah, trying in a followup sounds good.",
+      "parentUuid": "07db087b_eecffd3f",
       "range": {
         "startLine": 2379,
         "startChar": 1,
