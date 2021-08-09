@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d15615b1_c58883b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-08-09T17:13:04Z",
+      "side": 1,
+      "message": "Moved to aosp due to merge conflicts.\n\nConcern about ABI change is handled in aosp/1790928 (the other change in this related chain).",
+      "revId": "b302cad3048670652c30d24bedee0ddd910cea0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
