@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe8b2e5_7b2d7fb9",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 7180,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-09T17:37:06Z",
+      "side": 0,
+      "message": "Why was this test removed?",
+      "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c17f60bf_13955464",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-09T17:37:06Z",
+      "side": 0,
+      "message": "This change looks as though we are losing testing of non-apex provided jars.",
+      "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe010d4d_f74f1753",
+        "filename": "apex/classpath_element_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-09T17:37:06Z",
+      "side": 0,
+      "message": "Any particular reason this comment was dropped?",
+      "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "670e1606_dce3568c",
+        "filename": "apex/classpath_element_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-09T17:37:06Z",
+      "side": 0,
+      "message": "Why was this removed?",
+      "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8461fb00_1206c904",
+        "filename": "apex/classpath_element_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-09T17:37:06Z",
+      "side": 0,
+      "message": "Why was this test dropped?",
+      "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
