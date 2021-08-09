@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8959d593_2b481c38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-08-09T23:12:31Z",
+      "side": 1,
+      "message": "Should we just delete these lines if they\u0027re truly unused?",
+      "revId": "353405d9fbea50ef6b314df8f08622a996a15774",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
