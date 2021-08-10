@@ -12,6 +12,8 @@ bootstrap_go_package {
         "soong-android",
     ],
     srcs: [
+        "host.go",
+        "host_fake.go",
         "recovery_snapshot.go",
         "snapshot.go",
         "snapshot_base.go",
