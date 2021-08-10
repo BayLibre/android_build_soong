@@ -324,6 +324,30 @@
       },
       "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76a45c44_727dd41a",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-10T15:37:34Z",
+      "side": 1,
+      "message": "Fair, i\u0027d been suggesting the change only for --config-only as it is a new flag.",
+      "parentUuid": "8fcb8321_1f9e7719",
+      "range": {
+        "startLine": 605,
+        "startChar": 0,
+        "endLine": 605,
+        "endChar": 21
+      },
+      "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
