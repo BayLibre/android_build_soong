@@ -16,6 +16,23 @@
       "message": "Moved to aosp due to merge conflicts.\n\nConcern about ABI change is handled in aosp/1790928 (the other change in this related chain).",
       "revId": "b302cad3048670652c30d24bedee0ddd910cea0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c3a22a4_ca2aedb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-10T00:11:38Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t seem to understand why libvendorgraphicbuffer and a few more can\u0027t be included in the APEX.\n\nAbove question from internal gerrit has not been answered.",
+      "revId": "b302cad3048670652c30d24bedee0ddd910cea0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
