@@ -22,6 +22,30 @@
       },
       "revId": "5bde244763a9763857a2058aa5e496a7552bf560",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b651654_31558e6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-10T11:13:44Z",
+      "side": 1,
+      "message": "It is only removing information from the signature-patterns.csv file which is used to select the subset of the monolithic flag files to compare the actual flags against.",
+      "parentUuid": "c2d1164c_8085714a",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "5bde244763a9763857a2058aa5e496a7552bf560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
