@@ -87,6 +87,24 @@
       "message": "another case with multiple nested classes?",
       "revId": "5bde244763a9763857a2058aa5e496a7552bf560",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10398744_dc4a029e",
+        "filename": "scripts/hiddenapi/signature_patterns_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-10T13:34:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06091abd_d7bd9a83",
+      "revId": "5bde244763a9763857a2058aa5e496a7552bf560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
