@@ -16,6 +16,98 @@
       "message": "This seems to work: build_test* presubmits are taking a long time, which is an indication that they will succeed and the only failures were due to an accidental rename of --soong-only to --only-soong.\n\nWDYT?\n\nI didn\u0027t replicate the std_full.log behavior because I don\u0027t understand what it is for (also because my brain stopped working and the logic is slightly delicate)\n",
       "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f5c1482_3a084f96",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-10T14:45:16Z",
+      "side": 1,
+      "message": "Why is this necessary over using config.OutDir() below?\n\nThis introduces the potential for inconsistencies when calling build.SetupOutDir below as it sets up the out directory based on config.OutDir().",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 2
+      },
+      "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "567617d4_ab5cd951",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-10T14:45:16Z",
+      "side": 1,
+      "message": "perhaps for another time, but its unclear to me why we need multiple mechanisms to set outdir -- particularly as the setup/creation only happens if it is not provided as a command line argument. this appears unused in the build_test file and doesn\u0027t show up in any search results internally either...",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 19
+      },
+      "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17ad16b0_dc3d700e",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-10T14:45:16Z",
+      "side": 1,
+      "message": "nit: since we\u0027re not allocating any space with this make call, could initialize with the 3 values below",
+      "range": {
+        "startLine": 438,
+        "startChar": 9,
+        "endLine": 438,
+        "endChar": 26
+      },
+      "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "820c075a_c710f5cc",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-10T14:45:16Z",
+      "side": 1,
+      "message": "somewhat redundant given that you pass --skip-ninja above, but for standalone applications it may make sense for this to all set c.skipNinja \u003d true",
+      "range": {
+        "startLine": 605,
+        "startChar": 0,
+        "endLine": 605,
+        "endChar": 21
+      },
+      "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
