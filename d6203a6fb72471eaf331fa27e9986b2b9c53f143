@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91809b31_85c1a7d8",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-08-10T23:27:02Z",
+      "side": 1,
+      "message": "Okay.",
+      "parentUuid": "1e4b9718_62dcfc0d",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "d6203a6fb72471eaf331fa27e9986b2b9c53f143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d52d3042_36391aa0",
         "filename": "android/config.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-10T23:14:25Z",
       "side": 1,
       "message": "Can you make this unexported so that it doesn\u0027t get confused with the proptools one?  int is a reserved name, so you\u0027d have name it something else.  Or just put what you need directly into loadFromConfigFile.",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 8
+      },
+      "revId": "d6203a6fb72471eaf331fa27e9986b2b9c53f143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ec5cb82_574c476c",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-08-10T23:27:02Z",
+      "side": 1,
+      "message": "I think what I need is to convert a *int to an int. In case it is a nullptr, convert it to 0 (if this case never happens, maybe a * would be enough?). Maybe I can remove the helper function, add this logic directly into the loadFromConfigFile.",
+      "parentUuid": "d52d3042_36391aa0",
       "range": {
         "startLine": 97,
         "startChar": 5,
