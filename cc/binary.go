@@ -20,6 +20,7 @@ import (
 	"github.com/google/blueprint"
 
 	"android/soong/android"
+	"android/soong/snapshot"
 )
 
 type BinaryLinkerProperties struct {
@@ -537,3 +538,5 @@ func (binary *binaryDecorator) verifyHostBionicLinker(ctx ModuleContext, in, lin
 		},
 	})
 }
+
+var _ snapshot.RelativeInstallPath = (*Module)(nil)
