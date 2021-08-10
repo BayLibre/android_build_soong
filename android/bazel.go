@@ -225,8 +225,9 @@ var (
 	// Per-module denylist of cc_library modules to only generate the static
 	// variant if their shared variant isn't ready or buildable by Bazel.
 	bp2buildCcLibraryStaticOnlyList = []string{
-		"libstdc++",    // http://b/186822597, cc_library, ld.lld: error: undefined symbol: __errno
-		"libjemalloc5", // http://b/188503688, cc_library, `target: { android: { enabled: false } }` for android targets.
+		// TODO(cparsons): Due to changes in name resolution, Soong expects that any cc_library
+		// modules will produce a static-named target (suffixed with _bp2build_cc_library_static).
+		// Thus, modules listed in this denylist will not function properly.
 	}
 
 	// Per-module denylist to opt modules out of mixed builds. Such modules will
