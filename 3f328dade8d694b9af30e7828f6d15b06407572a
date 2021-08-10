@@ -300,6 +300,30 @@
       },
       "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fcb8321_1f9e7719",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-10T15:36:04Z",
+      "side": 1,
+      "message": "Actually, I have to roll this change back: --soong-only is used in other places too and I suspect this is why the build-tools presubmit is broken.",
+      "parentUuid": "4f136dcb_47ac11e4",
+      "range": {
+        "startLine": 605,
+        "startChar": 0,
+        "endLine": 605,
+        "endChar": 21
+      },
+      "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
