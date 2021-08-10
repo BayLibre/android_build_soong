@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce2b67cb_7d20ed42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-10T13:52:24Z",
+      "side": 1,
+      "message": "This seems to work: build_test* presubmits are taking a long time, which is an indication that they will succeed and the only failures were due to an accidental rename of --soong-only to --only-soong.\n\nWDYT?\n\nI didn\u0027t replicate the std_full.log behavior because I don\u0027t understand what it is for (also because my brain stopped working and the logic is slightly delicate)\n",
+      "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
