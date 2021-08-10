@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6237a153_2044cb43",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-10T13:58:01Z",
+      "side": 0,
+      "message": "I didn\u0027t realize that the foo/bar were in a bootclasspath_fragment. I thought that they were standalone libraries. This change is fine.",
+      "parentUuid": "8fe20fc0_de20772d",
+      "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe010d4d_f74f1753",
@@ -137,6 +155,24 @@
       "side": 0,
       "message": "bootclasspath_fragments are meant to be used with apexes, having non-apex-fragment is not really supported. Follow up change breaks this test otherwise.",
       "parentUuid": "670e1606_dce3568c",
+      "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89f7e9e8_82d46478",
+        "filename": "apex/classpath_element_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-10T13:58:01Z",
+      "side": 0,
+      "message": "The purpose of this element was to allow the test removed below to verify that CreateClasspathElements handles the case when a bootclasspath_fragment is not in an apex. If there is some other check that detects that earlier so that CreateClasspathElements never detects that then we still need a test to cover that other check. The following change does not seem to add such a test.",
+      "parentUuid": "f4db95de_2d50e941",
       "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
