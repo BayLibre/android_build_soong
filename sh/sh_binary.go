@@ -194,7 +194,9 @@ func (s *ShBinary) OutputFile() android.OutputPath {
 func (s *ShBinary) SubDir() string {
 	return proptools.String(s.properties.Sub_dir)
 }
-
+func (s *ShBinary) RelativeInstallPath() string {
+	return s.SubDir()
+}
 func (s *ShBinary) Installable() bool {
 	return s.properties.Installable == nil || proptools.Bool(s.properties.Installable)
 }

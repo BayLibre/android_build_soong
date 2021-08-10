@@ -34,3 +34,58 @@ func CopyFileRule(pctx android.PackageContext, ctx android.SingletonContext, pat
 	})
 	return outPath
 }
+
+// This is to be saved as .json files, which is for development/vendor_snapshot/update.py.
+// These flags become Android.bp snapshot module properties.
+type SnapshotJsonFlags struct {
+	ModuleName          string `json:",omitempty"`
+	RelativeInstallPath string `json:",omitempty"`
+	Filename            string `json:",omitempty"`
+	ModuleStemName      string `json:",omitempty"`
+
+	// library flags
+	ExportedDirs       []string `json:",omitempty"`
+	ExportedSystemDirs []string `json:",omitempty"`
+	ExportedFlags      []string `json:",omitempty"`
+	Sanitize           string   `json:",omitempty"`
+	SanitizeMinimalDep bool     `json:",omitempty"`
+	SanitizeUbsanDep   bool     `json:",omitempty"`
+
+	// binary flags
+	Symlinks         []string `json:",omitempty"`
+	StaticExecutable bool     `json:",omitempty"`
+
+	// dependencies
+	SharedLibs  []string `json:",omitempty"`
+	StaticLibs  []string `json:",omitempty"`
+	RuntimeLibs []string `json:",omitempty"`
+	Required    []string `json:",omitempty"`
+
+	// extra config files
+	InitRc         []string `json:",omitempty"`
+	VintfFragments []string `json:",omitempty"`
+}
+
+// zip snapshot
+func zipSnapshot(ctx android.SingletonContext, dir string, baseName string, snapshotOutputs android.Paths) android.OptionalPath {
+	zipPath := android.PathForOutput(
+		ctx, dir, baseName+".zip")
+
+	zipRule := android.NewRuleBuilder(pctx, ctx)
+	rspFile := android.PathForOutput(
+		ctx, dir, baseName+"_list.rsp")
+
+	zipRule.Command().
+		BuiltTool("soong_zip").
+		FlagWithOutput("-o ", zipPath).
+		FlagWithArg("-C ", android.PathForOutput(ctx, dir).String()).
+		FlagWithRspFileInputList("-r ", rspFile, snapshotOutputs)
+
+	zipRule.Build(zipPath.String(), baseName+" snapshot "+zipPath.String())
+	return android.OptionalPathForPath(zipPath)
+}
+
+// Relative installation path
+type RelativeInstallPath interface {
+	RelativeInstallPath() string
+}
