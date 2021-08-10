@@ -20,6 +20,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/bazel"
+	"github.com/google/blueprint"
 
 	"github.com/google/blueprint/proptools"
 )
@@ -150,7 +151,7 @@ func bp2buildParseStaticOrSharedProps(ctx android.TopDownMutatorContext, module 
 		Srcs:                bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, props.Srcs)),
 		Static_deps:         bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, props.Static_libs)),
 		Dynamic_deps:        bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, props.Shared_libs)),
-		Whole_archive_deps:  bazel.MakeLabelListAttribute(android.BazelLabelForModuleWholeDeps(ctx, props.Whole_static_libs)),
+		Whole_archive_deps:  bazel.MakeLabelListAttribute(bazelLabelForWholeDeps(ctx, props.Whole_static_libs)),
 		System_dynamic_deps: system_dynamic_deps,
 	}
 
@@ -159,7 +160,7 @@ func bp2buildParseStaticOrSharedProps(ctx android.TopDownMutatorContext, module 
 		attrs.Srcs.SetSelectValue(axis, config, android.BazelLabelForModuleSrc(ctx, props.Srcs))
 		attrs.Static_deps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, props.Static_libs))
 		attrs.Dynamic_deps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, props.Shared_libs))
-		attrs.Whole_archive_deps.SetSelectValue(axis, config, android.BazelLabelForModuleWholeDeps(ctx, props.Whole_static_libs))
+		attrs.Whole_archive_deps.SetSelectValue(axis, config, bazelLabelForWholeDeps(ctx, props.Whole_static_libs))
 		attrs.System_dynamic_deps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, props.System_shared_libs))
 	}
 
@@ -454,12 +455,12 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 			// Excludes to parallel Soong:
 			// https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/linker.go;l=247-249;drc=088b53577dde6e40085ffd737a1ae96ad82fc4b0
 			staticLibs := android.FirstUniqueStrings(baseLinkerProps.Static_libs)
-			staticDeps.Value = android.BazelLabelForModuleDepsExcludes(ctx, staticLibs, baseLinkerProps.Exclude_static_libs)
+			staticDeps.Value = bazelLabelForStaticDepsExcludes(ctx, staticLibs, baseLinkerProps.Exclude_static_libs)
 			wholeArchiveLibs := android.FirstUniqueStrings(baseLinkerProps.Whole_static_libs)
-			wholeArchiveDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleWholeDepsExcludes(ctx, wholeArchiveLibs, baseLinkerProps.Exclude_static_libs))
+			wholeArchiveDeps = bazel.MakeLabelListAttribute(bazelLabelForWholeDepsExcludes(ctx, wholeArchiveLibs, baseLinkerProps.Exclude_static_libs))
 
 			systemSharedLibs := android.FirstUniqueStrings(baseLinkerProps.System_shared_libs)
-			systemSharedDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, systemSharedLibs))
+			systemSharedDeps = bazel.MakeLabelListAttribute(bazelLabelForSharedDeps(ctx, systemSharedLibs))
 			systemSharedDeps.ForceSpecifyEmptyList = true
 			if systemSharedDeps.Value.IsNil() && baseLinkerProps.System_shared_libs != nil {
 				systemSharedDeps.Value.Includes = []bazel.Label{}
@@ -467,14 +468,14 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 
 			sharedLibs := android.FirstUniqueStrings(baseLinkerProps.Shared_libs)
 
-			dynamicDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDepsExcludes(ctx, sharedLibs, baseLinkerProps.Exclude_shared_libs))
+			dynamicDeps = bazel.MakeLabelListAttribute(bazelLabelForSharedDepsExcludes(ctx, sharedLibs, baseLinkerProps.Exclude_shared_libs))
 
 			headerLibs := android.FirstUniqueStrings(baseLinkerProps.Header_libs)
-			headerDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, headerLibs))
+			headerDeps = bazel.MakeLabelListAttribute(bazelLabelForHeaderDeps(ctx, headerLibs))
 			// TODO(b/188796939): also handle export_static_lib_headers, export_shared_lib_headers,
 			// export_generated_headers
 			exportedLibs := android.FirstUniqueStrings(baseLinkerProps.Export_header_lib_headers)
-			exportedDeps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, exportedLibs))
+			exportedDeps = bazel.MakeLabelListAttribute(bazelLabelForHeaderDeps(ctx, exportedLibs))
 
 			linkopts.Value = getBp2BuildLinkerFlags(baseLinkerProps)
 			if baseLinkerProps.Version_script != nil {
@@ -490,23 +491,23 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 		for config, props := range configToProps {
 			if baseLinkerProps, ok := props.(*BaseLinkerProperties); ok {
 				staticLibs := android.FirstUniqueStrings(baseLinkerProps.Static_libs)
-				staticDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDepsExcludes(ctx, staticLibs, baseLinkerProps.Exclude_static_libs))
+				staticDeps.SetSelectValue(axis, config, bazelLabelForStaticDepsExcludes(ctx, staticLibs, baseLinkerProps.Exclude_static_libs))
 				wholeArchiveLibs := android.FirstUniqueStrings(baseLinkerProps.Whole_static_libs)
-				wholeArchiveDeps.SetSelectValue(axis, config, android.BazelLabelForModuleWholeDepsExcludes(ctx, wholeArchiveLibs, baseLinkerProps.Exclude_static_libs))
+				wholeArchiveDeps.SetSelectValue(axis, config, bazelLabelForWholeDepsExcludes(ctx, wholeArchiveLibs, baseLinkerProps.Exclude_static_libs))
 
 				systemSharedLibs := android.FirstUniqueStrings(baseLinkerProps.System_shared_libs)
 				if len(systemSharedLibs) == 0 && baseLinkerProps.System_shared_libs != nil {
 					systemSharedLibs = baseLinkerProps.System_shared_libs
 				}
-				systemSharedDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, systemSharedLibs))
+				systemSharedDeps.SetSelectValue(axis, config, bazelLabelForSharedDeps(ctx, systemSharedLibs))
 
 				sharedLibs := android.FirstUniqueStrings(baseLinkerProps.Shared_libs)
-				dynamicDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDepsExcludes(ctx, sharedLibs, baseLinkerProps.Exclude_shared_libs))
+				dynamicDeps.SetSelectValue(axis, config, bazelLabelForSharedDepsExcludes(ctx, sharedLibs, baseLinkerProps.Exclude_shared_libs))
 
 				headerLibs := android.FirstUniqueStrings(baseLinkerProps.Header_libs)
-				headerDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, headerLibs))
+				headerDeps.SetSelectValue(axis, config, bazelLabelForHeaderDeps(ctx, headerLibs))
 				exportedLibs := android.FirstUniqueStrings(baseLinkerProps.Export_header_lib_headers)
-				exportedDeps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, exportedLibs))
+				exportedDeps.SetSelectValue(axis, config, bazelLabelForHeaderDeps(ctx, exportedLibs))
 
 				linkopts.SetSelectValue(axis, config, getBp2BuildLinkerFlags(baseLinkerProps))
 				if baseLinkerProps.Version_script != nil {
@@ -523,14 +524,14 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 		// reference to the bazel attribute that should be set for the given product variable config
 		attribute *bazel.LabelListAttribute
 
-		depResolutionFunc func(ctx android.BazelConversionPathContext, modules, excludes []string) bazel.LabelList
+		depResolutionFunc func(ctx android.TopDownMutatorContext, modules, excludes []string) bazel.LabelList
 	}
 
 	productVarToDepFields := map[string]productVarDep{
 		// product variables do not support exclude_shared_libs
-		"Shared_libs":       productVarDep{attribute: &dynamicDeps, depResolutionFunc: android.BazelLabelForModuleDepsExcludes},
-		"Static_libs":       productVarDep{"Exclude_static_libs", &staticDeps, android.BazelLabelForModuleDepsExcludes},
-		"Whole_static_libs": productVarDep{"Exclude_static_libs", &wholeArchiveDeps, android.BazelLabelForModuleWholeDepsExcludes},
+		"Shared_libs":       productVarDep{attribute: &dynamicDeps, depResolutionFunc: bazelLabelForSharedDepsExcludes},
+		"Static_libs":       productVarDep{"Exclude_static_libs", &staticDeps, bazelLabelForStaticDepsExcludes},
+		"Whole_static_libs": productVarDep{"Exclude_static_libs", &wholeArchiveDeps, bazelLabelForWholeDepsExcludes},
 	}
 
 	productVariableProps := android.ProductVariableProperties(ctx)
@@ -660,4 +661,56 @@ func bp2BuildParseExportedIncludesHelper(ctx android.TopDownMutatorContext, modu
 	}
 
 	return includeDirsAttribute
+}
+
+func bazelLabelForStaticModule(ctx android.TopDownMutatorContext, m blueprint.Module) string {
+	label := android.BazelModuleLabel(ctx, m)
+	if aModule, ok := m.(android.Module); ok {
+		if ctx.OtherModuleType(aModule) == "cc_library" {
+			label += "_bp2build_cc_library_static"
+		}
+	}
+	return label
+}
+
+func bazelLabelForSharedModule(ctx android.TopDownMutatorContext, m blueprint.Module) string {
+	// cc_library, at it's root name, propagates the shared library, which depends on the static
+	// library.
+	return android.BazelModuleLabel(ctx, m)
+}
+
+func bazelLabelForStaticWholeModuleDeps(ctx android.TopDownMutatorContext, m blueprint.Module) string {
+	label := bazelLabelForStaticModule(ctx, m)
+	if aModule, ok := m.(android.Module); ok {
+		if android.IsModulePrebuilt(aModule) {
+			label += "_alwayslink"
+		}
+	}
+	return label
+}
+
+func bazelLabelForWholeDeps(ctx android.TopDownMutatorContext, modules []string) bazel.LabelList {
+	return android.BazelLabelForModuleDepsWithFn(ctx, modules, bazelLabelForStaticWholeModuleDeps)
+}
+
+func bazelLabelForWholeDepsExcludes(ctx android.TopDownMutatorContext, modules, excludes []string) bazel.LabelList {
+	return android.BazelLabelForModuleDepsExcludesWithFn(ctx, modules, excludes, bazelLabelForStaticWholeModuleDeps)
+}
+
+func bazelLabelForStaticDepsExcludes(ctx android.TopDownMutatorContext, modules, excludes []string) bazel.LabelList {
+	return android.BazelLabelForModuleDepsExcludesWithFn(ctx, modules, excludes, bazelLabelForStaticModule)
+}
+
+func bazelLabelForSharedDeps(ctx android.TopDownMutatorContext, modules []string) bazel.LabelList {
+	return android.BazelLabelForModuleDepsWithFn(ctx, modules, bazelLabelForSharedModule)
+}
+
+func bazelLabelForHeaderDeps(ctx android.TopDownMutatorContext, modules []string) bazel.LabelList {
+	// This is not elegant, but bp2build's shared library targets only propagate
+	// their header information as part of the normal C++ provider.
+	return bazelLabelForSharedDeps(ctx, modules)
+}
+
+func bazelLabelForSharedDepsExcludes(ctx android.TopDownMutatorContext, modules, excludes []string) bazel.LabelList {
+	return android.BazelLabelForModuleDepsExcludesWithFn(ctx, modules, excludes, bazelLabelForSharedModule)
 }
