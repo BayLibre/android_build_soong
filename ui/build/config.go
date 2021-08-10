@@ -49,6 +49,7 @@ type configImpl struct {
 	skipConfig     bool
 	skipKati       bool
 	skipKatiNinja  bool
+	skipSoong      bool
 	skipNinja      bool
 	skipSoongTests bool
 
@@ -582,6 +583,8 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 		arg := strings.TrimSpace(args[i])
 		if arg == "showcommands" {
 			c.verbose = true
+		} else if arg == "--empty-ninja-file" {
+			c.emptyNinjaFile = true
 		} else if arg == "--skip-ninja" {
 			c.skipNinja = true
 		} else if arg == "--skip-make" {
@@ -593,9 +596,13 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 		} else if arg == "--skip-kati" {
 			// TODO: remove --skip-kati once module builds have been migrated to --song-only
 			c.skipKati = true
-		} else if arg == "--soong-only" {
+		} else if arg == "--only-soong" {
 			c.skipKati = true
 			c.skipKatiNinja = true
+		} else if arg == "--only-config" {
+			c.skipKati = true
+			c.skipKatiNinja = true
+			c.skipSoong = true
 		} else if arg == "--skip-config" {
 			c.skipConfig = true
 		} else if arg == "--skip-soong-tests" {
@@ -815,6 +822,10 @@ func (c *configImpl) SkipKati() bool {
 
 func (c *configImpl) SkipKatiNinja() bool {
 	return c.skipKatiNinja
+}
+
+func (c *configImpl) SkipSoong() bool {
+	return c.skipSoong
 }
 
 func (c *configImpl) SkipNinja() bool {
