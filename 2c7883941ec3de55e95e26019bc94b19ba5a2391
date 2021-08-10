@@ -62,6 +62,30 @@
       },
       "revId": "2c7883941ec3de55e95e26019bc94b19ba5a2391",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "747c0e39_f9204473",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-10T18:28:40Z",
+      "side": 1,
+      "message": "Hah! Good to know. I\u0027m fine with either taking this or leaving it.",
+      "parentUuid": "ad273604_c6e93328",
+      "range": {
+        "startLine": 352,
+        "startChar": 4,
+        "endLine": 352,
+        "endChar": 61
+      },
+      "revId": "2c7883941ec3de55e95e26019bc94b19ba5a2391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
