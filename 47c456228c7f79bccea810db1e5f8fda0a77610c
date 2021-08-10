@@ -195,6 +195,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77088e0d_cb721072",
+        "filename": "apex/classpath_element_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-10T14:37:29Z",
+      "side": 0,
+      "message": "In prod, we don\u0027t really want to support standalone bcp_fragments, they don\u0027t make sense and aren\u0027t designed to be used without an apex. We should still want to test this though (that was the premise of b/191369843).\n\nI\u0027ll keep this test as is for now, as the change to that should probably be reviewed together with the follow up changes.",
+      "parentUuid": "9537ff3e_8a2eecd7",
+      "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8461fb00_1206c904",
