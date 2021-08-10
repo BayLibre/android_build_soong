@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8000a66_3ea1fd37",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-10T09:43:05Z",
+      "side": 1,
+      "message": "Reworded commit message.",
+      "parentUuid": "b79fef71_36db39c4",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 23
+      },
+      "revId": "556e1b8d74a18cdd1e8cd775f549542d1b6b6d56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07a0e67c_94a55638",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-08-09T17:37:06Z",
       "side": 1,
       "message": "Could you separate the inlining of testApexError from changes to the tests as it is not easy to see what is going on here.",
+      "revId": "556e1b8d74a18cdd1e8cd775f549542d1b6b6d56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a06148fb_e76545be",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 7097,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-10T09:43:05Z",
+      "side": 1,
+      "message": "Kept testApexError and just added another preparer at the end.",
+      "parentUuid": "07a0e67c_94a55638",
       "revId": "556e1b8d74a18cdd1e8cd775f549542d1b6b6d56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

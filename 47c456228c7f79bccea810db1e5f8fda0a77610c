@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b9b7b88_78bacb00",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 7180,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-10T09:43:05Z",
+      "side": 0,
+      "message": "It\u0027s back now. I had issues fixing it and forgot to bring it back, but it should be fine now.",
+      "parentUuid": "dbe8b2e5_7b2d7fb9",
+      "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c17f60bf_13955464",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fe20fc0_de20772d",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-10T09:43:05Z",
+      "side": 0,
+      "message": "Non-apex boot jars cannot be declared in bootclasspath_fragment, not sure what is meant to be tested here?",
+      "parentUuid": "c17f60bf_13955464",
+      "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe010d4d_f74f1753",
         "filename": "apex/classpath_element_test.go",
         "patchSetId": 2
@@ -48,6 +84,24 @@
       "writtenOn": "2021-08-09T17:37:06Z",
       "side": 0,
       "message": "Any particular reason this comment was dropped?",
+      "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39a21742_99a60d2b",
+        "filename": "apex/classpath_element_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-10T09:43:05Z",
+      "side": 0,
+      "message": "Done. No, not sure how it got removed.",
+      "parentUuid": "fe010d4d_f74f1753",
       "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4db95de_2d50e941",
+        "filename": "apex/classpath_element_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-10T09:43:05Z",
+      "side": 0,
+      "message": "bootclasspath_fragments are meant to be used with apexes, having non-apex-fragment is not really supported. Follow up change breaks this test otherwise.",
+      "parentUuid": "670e1606_dce3568c",
+      "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8461fb00_1206c904",
         "filename": "apex/classpath_element_test.go",
         "patchSetId": 2
@@ -82,6 +154,24 @@
       "writtenOn": "2021-08-09T17:37:06Z",
       "side": 0,
       "message": "Why was this test dropped?",
+      "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ca663d2_b68dd9a6",
+        "filename": "apex/classpath_element_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-10T09:43:05Z",
+      "side": 0,
+      "message": "ditto",
+      "parentUuid": "8461fb00_1206c904",
       "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
