@@ -16,6 +16,24 @@
       "message": "How long does this take to run?\n\nAsking because I\u0027m wondering if we should avoid having this run on presubmits...",
       "revId": "4e8f340d1a4b130e3ac1eb39faa323e336a491dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cba6e6a8_1758ad77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-10T14:03:05Z",
+      "side": 1,
+      "message": "Benchmarks only run when you go test with the `-bench` flag, so they won\u0027t run on presubmit.",
+      "parentUuid": "dda4cba0_08216b3f",
+      "revId": "4e8f340d1a4b130e3ac1eb39faa323e336a491dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
