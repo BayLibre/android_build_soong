@@ -46,6 +46,47 @@
       },
       "revId": "5bde244763a9763857a2058aa5e496a7552bf560",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea48b23f_36605cae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-10T11:31:32Z",
+      "side": 1,
+      "message": "Ack. Just wanted to make sure this is obvious to people looking into this.",
+      "parentUuid": "7b651654_31558e6f",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "5bde244763a9763857a2058aa5e496a7552bf560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06091abd_d7bd9a83",
+        "filename": "scripts/hiddenapi/signature_patterns_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-10T11:31:32Z",
+      "side": 1,
+      "message": "another case with multiple nested classes?",
+      "revId": "5bde244763a9763857a2058aa5e496a7552bf560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
