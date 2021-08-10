@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc9db2e0_2b2c00ba",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-10T15:09:10Z",
+      "side": 1,
+      "message": "I\u0027m aware! The reason why I did this is that I was planning to cut the multiproduct_kati -\u003e build dependency in the next change and that requires removing the reference to the Config object.\n\nI\u0027m not sure what I will do then (maybe just live with the duplication, maybe extract the code to some common place). I thought it\u0027s not *that* complicated a logic so duplicating it would be fine.",
+      "parentUuid": "7f5c1482_3a084f96",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 2
+      },
+      "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "567617d4_ab5cd951",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-10T14:45:16Z",
       "side": 1,
       "message": "perhaps for another time, but its unclear to me why we need multiple mechanisms to set outdir -- particularly as the setup/creation only happens if it is not provided as a command line argument. this appears unused in the build_test file and doesn\u0027t show up in any search results internally either...",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 19
+      },
+      "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ea5876_9cda2101",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-10T15:09:10Z",
+      "side": 1,
+      "message": "Yep, I was wondering about the same. I decided not to worry about while crafting this change and focus on the dependency cutting.",
+      "parentUuid": "567617d4_ab5cd951",
       "range": {
         "startLine": 222,
         "startChar": 0,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b7a6ed98_6bcf994f",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-10T15:09:10Z",
+      "side": 1,
+      "message": "Like this?",
+      "parentUuid": "17ad16b0_dc3d700e",
+      "range": {
+        "startLine": 438,
+        "startChar": 9,
+        "endLine": 438,
+        "endChar": 26
+      },
+      "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "820c075a_c710f5cc",
         "filename": "ui/build/config.go",
         "patchSetId": 2
@@ -100,6 +172,30 @@
       "writtenOn": "2021-08-10T14:45:16Z",
       "side": 1,
       "message": "somewhat redundant given that you pass --skip-ninja above, but for standalone applications it may make sense for this to all set c.skipNinja \u003d true",
+      "range": {
+        "startLine": 605,
+        "startChar": 0,
+        "endLine": 605,
+        "endChar": 21
+      },
+      "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f136dcb_47ac11e4",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-10T15:09:10Z",
+      "side": 1,
+      "message": "done. I mean, I don\u0027t really like all the odd ways this bitfield is initialized, but what you are suggesting is an improvement.",
+      "parentUuid": "820c075a_c710f5cc",
       "range": {
         "startLine": 605,
         "startChar": 0,

@@ -22,6 +22,30 @@
       },
       "revId": "01cad0cddc98d47576c1d14a017d4b6a46c66fcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bde0f6cf_047e2942",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-10T15:09:10Z",
+      "side": 0,
+      "message": "Yes! I mean, the logic has to move to multiproduct_kati, but that at least limits the accessibility of this code. I also deleted the unused Tapas() function.",
+      "parentUuid": "8a43dde0_f4dc63a4",
+      "range": {
+        "startLine": 439,
+        "startChar": 0,
+        "endLine": 439,
+        "endChar": 42
+      },
+      "revId": "01cad0cddc98d47576c1d14a017d4b6a46c66fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
