@@ -179,6 +179,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9537ff3e_8a2eecd7",
+        "filename": "apex/classpath_element_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-10T14:00:48Z",
+      "side": 0,
+      "message": "It seems as though the following change might make it really difficult to test the CreateClasspathElements method behavior in the situation when bootclasspath_fragment is not in an APEX.\n\nI\u0027m not sure what to do in that case.",
+      "parentUuid": "89f7e9e8_82d46478",
+      "revId": "47c456228c7f79bccea810db1e5f8fda0a77610c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8461fb00_1206c904",
         "filename": "apex/classpath_element_test.go",
         "patchSetId": 2
