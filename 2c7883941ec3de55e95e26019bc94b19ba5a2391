@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "983d2b39_19ed09f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-10T18:21:02Z",
+      "side": 1,
+      "message": "huh, i\u0027d assumed this part was done since we have it supported in the bzl files, but thanks for fixing this side of it!",
+      "revId": "2c7883941ec3de55e95e26019bc94b19ba5a2391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "999320f4_7a1e4bc2",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-10T18:21:02Z",
+      "side": 1,
+      "message": "ahhh external sorted is so nice",
+      "range": {
+        "startLine": 169,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 68
+      },
+      "revId": "2c7883941ec3de55e95e26019bc94b19ba5a2391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad273604_c6e93328",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-10T18:21:02Z",
+      "side": 1,
+      "message": "this isn\u0027t tagged with android:arch_variant, so it\u0027ll never be set here, but...also us not having to know about that implementation detail seems ideal.",
+      "range": {
+        "startLine": 352,
+        "startChar": 4,
+        "endLine": 352,
+        "endChar": 61
+      },
+      "revId": "2c7883941ec3de55e95e26019bc94b19ba5a2391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
