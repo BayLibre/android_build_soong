@@ -91,6 +91,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "75d09dae_ba6ec7e0",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-10T15:29:09Z",
+      "side": 1,
+      "message": "Well I haven\u0027t published it yet :)",
+      "parentUuid": "50bddafc_6a4403e5",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 2
+      },
+      "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "567617d4_ab5cd951",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 2
@@ -197,6 +221,30 @@
       "side": 1,
       "message": "sure, i\u0027d been thinking:\n\n```\nargs :\u003d []string{\n  \"--make-mode\",\n  \"--skip-soong-tests\",\n  \"--skip-ninja\",\n}\n```\n\nbut I don\u0027t have strong feelings about this.",
       "parentUuid": "b7a6ed98_6bcf994f",
+      "range": {
+        "startLine": 438,
+        "startChar": 9,
+        "endLine": 438,
+        "endChar": 26
+      },
+      "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23f64e36_189b2f2f",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-10T15:29:09Z",
+      "side": 1,
+      "message": "that\u0027s actually nicer. I guess it\u0027s better to attribute this to a brain glitch than to admit that I don\u0027t know how to Go...",
+      "parentUuid": "e69c7555_6b20f337",
       "range": {
         "startLine": 438,
         "startChar": 9,
