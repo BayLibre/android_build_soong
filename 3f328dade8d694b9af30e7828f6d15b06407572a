@@ -67,6 +67,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "50bddafc_6a4403e5",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-10T15:20:15Z",
+      "side": 1,
+      "message": "👍 hadn\u0027t realized there was another change in the chain coming.",
+      "parentUuid": "dc9db2e0_2b2c00ba",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 2
+      },
+      "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "567617d4_ab5cd951",
         "filename": "cmd/multiproduct_kati/main.go",
         "patchSetId": 2
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "Like this?",
       "parentUuid": "17ad16b0_dc3d700e",
+      "range": {
+        "startLine": 438,
+        "startChar": 9,
+        "endLine": 438,
+        "endChar": 26
+      },
+      "revId": "3f328dade8d694b9af30e7828f6d15b06407572a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e69c7555_6b20f337",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-10T15:20:15Z",
+      "side": 1,
+      "message": "sure, i\u0027d been thinking:\n\n```\nargs :\u003d []string{\n  \"--make-mode\",\n  \"--skip-soong-tests\",\n  \"--skip-ninja\",\n}\n```\n\nbut I don\u0027t have strong feelings about this.",
+      "parentUuid": "b7a6ed98_6bcf994f",
       "range": {
         "startLine": 438,
         "startChar": 9,
