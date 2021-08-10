@@ -151,6 +151,9 @@ var (
 		"external/bazelbuild-rules_android":/* recursive = */ true,
 
 		"prebuilts/jdk":/* recursive = */ true,
+
+		"external/bazel-skylib":/* recursive = */ true,
+
 		"prebuilts/sdk":/* recursive = */ false,
 		"prebuilts/sdk/tools":/* recursive = */ false,
 		"prebuilts/r8":/* recursive = */ false,
