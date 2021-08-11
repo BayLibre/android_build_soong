@@ -280,6 +280,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "835e22fd_b1ef2ff3",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-11T18:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32fba787_bcbe79ac",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 2
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "97510acf_43592c9f",
         "filename": "python/binary.go",
         "patchSetId": 1
@@ -362,6 +386,30 @@
       "side": 1,
       "message": "the existing `soong/python/test.go` is the code to support Soong python tests.\n\n`soong/python/python_test.go` currently only has tests for handling the Soong-only build flow.\n\nAdding a separate unit test to `soong/python/python_test.go` that leverages a `MockBazelContext`, will allow the `MockBazelContext` to handle the Bazel side and make sure that it gets incorporated into Soong properly.",
       "parentUuid": "86d853b8_9450c3ee",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 2
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5065c89_4b58ad23",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-11T18:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09f60a4b_7fac0140",
       "range": {
         "startLine": 227,
         "startChar": 0,
@@ -480,6 +528,30 @@
       "side": 1,
       "message": "We don\u0027t want to satisfy any additional interfaces when we\u0027re implementing something for mixed builds. We just want to make sure we forward the information that Bazel has about the target to the interfaces/providers that a type currently implements.\n\nIf python_binary_host does not currently satisfy the SourceProvider interface, then we don\u0027t want to support it for modules built with Bazel.\n\nIn https://r.android.com/1679689, we didn\u0027t implement `Srcs()`, instead we stored the output from Bazel in the same place that Soong-only builds store their \"output\" -- in srcs.\n\nSimilarly, in https://r.android.com/1625068, we didn\u0027t implement OutputFile or OutputFiles, instead we stored the output from Bazel in the same place that Soong-only builds store their output -- in outputFile.",
       "parentUuid": "a26a6aaa_948afc61",
+      "range": {
+        "startLine": 237,
+        "startChar": 0,
+        "endLine": 245,
+        "endChar": 1
+      },
+      "revId": "7d5b834b6aa77837d32ad6bae9baecdb3d0ac305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "179eec61_920da75b",
+        "filename": "python/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-11T18:21:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5678cd1b_d21fdff7",
       "range": {
         "startLine": 237,
         "startChar": 0,
