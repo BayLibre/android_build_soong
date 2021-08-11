@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06121418_da40e686",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-11T18:47:43Z",
+      "side": 1,
+      "message": "I think checking for nil and returning an error makes more sense here, \"0\" isn\u0027t going to be useful to callers.",
+      "range": {
+        "startLine": 219,
+        "startChar": 3,
+        "endLine": 219,
+        "endChar": 75
+      },
+      "revId": "aa67bfb631a5b0939464a9458ad4fe2239cf4136",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
