@@ -46,6 +46,30 @@
       },
       "revId": "dfc4681c723ab266debb758cadd7f18f939a862c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0c04d10_be91c9dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-11T17:29:00Z",
+      "side": 1,
+      "message": "It\u0027s there for debugging if you want to run Soong across all products and examine the results.  It\u0027s not something I generally use, but if we start doing LSCs it may become important to allow you to run queries across all products.",
+      "parentUuid": "8d4b1096_f1570778",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "dfc4681c723ab266debb758cadd7f18f939a862c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
