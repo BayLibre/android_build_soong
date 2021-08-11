@@ -15,11 +15,18 @@
 package main
 
 import (
+	"android/soong/ui/logger"
+	"android/soong/ui/signal"
+	"android/soong/ui/status"
+	"android/soong/ui/terminal"
+	"android/soong/ui/tracer"
+	zip "archive/zip"
 	"bufio"
 	"context"
 	"flag"
 	"fmt"
 	"io"
+	"io/fs"
 	"log"
 	"os"
 	"os/exec"
@@ -30,13 +37,6 @@ import (
 	"sync"
 	"syscall"
 	"time"
-
-	"android/soong/ui/logger"
-	"android/soong/ui/signal"
-	"android/soong/ui/status"
-	"android/soong/ui/terminal"
-	"android/soong/ui/tracer"
-	"android/soong/zip"
 )
 
 var numJobs = flag.Int("j", 0, "number of parallel jobs [0=autodetect]")
@@ -167,6 +167,64 @@ func ensureEmptyFileExists(file string, log logger.Logger) {
 		f.Close()
 	} else if err != nil {
 		log.Fatalf("Error checking %s: %q\n", file, err)
+	}
+}
+
+func zipTree(output, logsDir string) {
+	f, err := os.OpenFile(output, os.O_CREATE|os.O_WRONLY, 0644)
+	if err != nil {
+		log.Fatalf("Cannot create zip file: %v", err)
+	}
+
+	z := zip.NewWriter(f)
+	files := make([]string, 0)
+	err = filepath.WalkDir(logsDir, func(path string, d fs.DirEntry, err error) error {
+		if d.Type().IsRegular() {
+			files = append(files, path)
+		}
+
+		return err
+	})
+
+	if err != nil {
+		log.Fatalf("Cannot walk directory tree to be zipped: %v", err)
+	}
+
+	buf := make([]byte, 1024*1024)
+	for _, file := range files {
+		rel, err := filepath.Rel(logsDir, file)
+		if err != nil {
+			log.Fatalf("Cannot determine relpath for '%s' to zip: %v", file, err)
+		}
+		s, err := z.Create(rel)
+		if err != nil {
+			log.Fatalf("Cannot create file '%s' in zip file: %v", rel, err)
+		}
+
+		f, err := os.Open(file)
+		if err != nil {
+			log.Fatalf("Cannot open file '%s' for putting into zip: %v", file, err)
+		}
+
+		for {
+			n, err := f.Read(buf)
+			if n > 0 {
+				s.Write(buf[:n])
+			}
+
+			if err == io.EOF {
+				break
+			} else if err != nil {
+				log.Fatalf("Cannot write bytes of file '%s' to zip: %v", file, err)
+			}
+		}
+
+		f.Close()
+	}
+
+	err = z.Close()
+	if err != nil {
+		log.Fatalf("Cannot close zip file: %v", err)
 	}
 }
 
@@ -344,17 +402,7 @@ func main() {
 	wg.Wait()
 
 	if *alternateResultDir {
-		args := zip.ZipArgs{
-			FileArgs: []zip.FileArg{
-				{GlobDir: logsDir, SourcePrefixToStrip: logsDir},
-			},
-			OutputFilePath:   filepath.Join(outputDir, "dist/logs.zip"),
-			NumParallelJobs:  runtime.NumCPU(),
-			CompressionLevel: 5,
-		}
-		if err := zip.Zip(args); err != nil {
-			log.Fatalf("Error zipping logs: %v", err)
-		}
+		zipTree(filepath.Join(outputDir, "dist/logs.zip"), logsDir)
 	}
 
 	s.Finish()
@@ -370,20 +418,7 @@ func main() {
 
 func cleanupAfterProduct(outDir, productZip string) {
 	if *keepArtifacts {
-		args := zip.ZipArgs{
-			FileArgs: []zip.FileArg{
-				{
-					GlobDir:             outDir,
-					SourcePrefixToStrip: outDir,
-				},
-			},
-			OutputFilePath:   productZip,
-			NumParallelJobs:  runtime.NumCPU(),
-			CompressionLevel: 5,
-		}
-		if err := zip.Zip(args); err != nil {
-			log.Fatalf("Error zipping artifacts: %v", err)
-		}
+		zipTree(productZip, outDir)
 	}
 	if !*incremental {
 		os.RemoveAll(outDir)
