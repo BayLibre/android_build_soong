@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8b66314_d129e5f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1208973
+      },
+      "writtenOn": "2021-08-11T19:46:52Z",
+      "side": 1,
+      "message": "Super-nit: Typo",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "afbd08eb83e5c76922a950bdc011b681b4840d68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
