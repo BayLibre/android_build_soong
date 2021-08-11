@@ -22,6 +22,30 @@
       },
       "revId": "661c19fd4cb75cedcce1c1b1b4ab79539f21f8ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2637957c_251f41d0",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-11T13:12:31Z",
+      "side": 1,
+      "message": "I don\u0027t know. I wanted to keep what this binary does unchanged to the extent practicable. It\u0027s true that this dependency here is kinda strange but it would require some code archaeology to figure out why it\u0027s here and whether it\u0027s still used so that\u0027s a fight for another day.",
+      "parentUuid": "8117c3ab_6c1af780",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 25
+      },
+      "revId": "661c19fd4cb75cedcce1c1b1b4ab79539f21f8ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
