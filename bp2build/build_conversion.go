@@ -266,8 +266,8 @@ func GenerateBazelTargets(ctx *CodegenContext, generateFilegroups bool) (map[str
 				// TODO(b/181575318): currently we append the whole BUILD file, let's change that to do
 				// something more targeted based on the rule type and target
 				buildFileToAppend[pathToBuildFile] = true
-			} else if btm, ok := m.(android.BazelTargetModule); ok {
-				t = generateBazelTarget(bpCtx, m, btm)
+			} else if aModule, ok := m.(android.Module); ok && aModule.IsConvertedToBazel() { // btm, ok := m.(android.BazelTargetModule); ok {
+				t = generateBazelTarget(bpCtx, aModule)
 				metrics.RuleClassCount[t.ruleClass] += 1
 				compatLayer.AddNameToLabelEntry(m.Name(), t.Label())
 			} else {
@@ -326,12 +326,12 @@ func getHandcraftedBuildContent(ctx *CodegenContext, b android.Bazelable, pathTo
 	}, nil
 }
 
-func generateBazelTarget(ctx bpToBuildContext, m blueprint.Module, btm android.BazelTargetModule) BazelTarget {
-	ruleClass := btm.RuleClass()
-	bzlLoadLocation := btm.BzlLoadLocation()
+func generateBazelTarget(ctx bpToBuildContext, m android.Module) BazelTarget {
+	ruleClass := m.BazelRuleClass()
+	bzlLoadLocation := m.BazelLoadLocation()
 
 	// extract the bazel attributes from the module.
-	props := getBuildProperties(ctx, m)
+	props := extractModuleProperties([]interface{}{m.BazelAttributes()})
 
 	delete(props.Attrs, "bp2build_available")
 
@@ -391,24 +391,21 @@ func generateSoongModuleTarget(ctx bpToBuildContext, m blueprint.Module) BazelTa
 }
 
 func getBuildProperties(ctx bpToBuildContext, m blueprint.Module) BazelAttributes {
-	var allProps map[string]string
 	// TODO: this omits properties for blueprint modules (blueprint_go_binary,
 	// bootstrap_go_binary, bootstrap_go_package), which will have to be handled separately.
 	if aModule, ok := m.(android.Module); ok {
-		allProps = ExtractModuleProperties(aModule)
+		return extractModuleProperties(aModule.GetProperties())
 	}
 
-	return BazelAttributes{
-		Attrs: allProps,
-	}
+	return BazelAttributes{}
 }
 
 // Generically extract module properties and types into a map, keyed by the module property name.
-func ExtractModuleProperties(aModule android.Module) map[string]string {
+func extractModuleProperties(props []interface{}) BazelAttributes {
 	ret := map[string]string{}
 
 	// Iterate over this android.Module's property structs.
-	for _, properties := range aModule.GetProperties() {
+	for _, properties := range props {
 		propertiesValue := reflect.ValueOf(properties)
 		// Check that propertiesValue is a pointer to the Properties struct, like
 		// *cc.BaseLinkerProperties or *java.CompilerProperties.
@@ -427,7 +424,9 @@ func ExtractModuleProperties(aModule android.Module) map[string]string {
 		}
 	}
 
-	return ret
+	return BazelAttributes{
+		Attrs: ret,
+	}
 }
 
 func isStructPtr(t reflect.Type) bool {

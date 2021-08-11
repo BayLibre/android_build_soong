@@ -491,6 +491,11 @@ type Module interface {
 	AddProperties(props ...interface{})
 	GetProperties() []interface{}
 
+	IsConvertedToBazel() bool
+	BazelRuleClass() string
+	BazelLoadLocation() string
+	BazelAttributes() interface{}
+
 	BuildParamsForTests() []BuildParams
 	RuleParamsForTests() map[blueprint.Rule]blueprint.RuleParams
 	VariablesForTests() map[string]string
@@ -878,6 +883,8 @@ type commonProperties struct {
 	// for example "" for core or "recovery" for recovery.  It will often be set to one of the
 	// constants in image.go, but can also be set to a custom value by individual module types.
 	ImageVariation string `blueprint:"mutated"`
+
+	Bp2buildInfo *bp2buildInfo `blueprint:"mutated"`
 }
 
 type distProperties struct {
@@ -1194,6 +1201,7 @@ type ModuleBase struct {
 	hooks hooks
 
 	registerProps []interface{}
+	bp2buildInfo  *bp2buildInfo
 
 	// For tests
 	buildParams []BuildParams
@@ -1202,6 +1210,39 @@ type ModuleBase struct {
 
 	initRcPaths         Paths
 	vintfFragmentsPaths Paths
+}
+
+type bp2buildInfo struct {
+	BazelProps bazel.BazelTargetModuleProperties
+	Attrs      interface{}
+}
+
+func (m *ModuleBase) setBp2buildInfo(info bp2buildInfo) {
+	m.bp2buildInfo = &info
+	m.commonProperties.Bp2buildInfo = &info
+}
+
+func (m *ModuleBase) IsConvertedToBazel() bool {
+	return m.commonProperties.Bp2buildInfo != nil
+}
+
+func (m *ModuleBase) getBp2buildInfo() bp2buildInfo {
+	if info := m.commonProperties.Bp2buildInfo; info != nil {
+		return *info
+	}
+	return bp2buildInfo{}
+}
+
+func (m *ModuleBase) BazelRuleClass() string {
+	return m.getBp2buildInfo().BazelProps.Rule_class
+}
+
+func (m *ModuleBase) BazelLoadLocation() string {
+	return m.getBp2buildInfo().BazelProps.Bzl_load_location
+}
+
+func (m *ModuleBase) BazelAttributes() interface{} {
+	return m.getBp2buildInfo().Attrs
 }
 
 func (m *ModuleBase) AddJSONData(d *map[string]interface{}) {

@@ -270,7 +270,7 @@ type TopDownMutatorContext interface {
 	// factory method, just like in CreateModule, but also requires
 	// BazelTargetModuleProperties containing additional metadata for the
 	// bp2build codegenerator.
-	CreateBazelTargetModule(ModuleFactory, string, bazel.BazelTargetModuleProperties, interface{}) BazelTargetModule
+	CreateBazelTargetModule(ModuleFactory, string, bazel.BazelTargetModuleProperties, interface{})
 }
 
 type topDownMutatorContext struct {
@@ -519,23 +519,30 @@ func (t *topDownMutatorContext) CreateBazelTargetModule(
 	factory ModuleFactory,
 	name string,
 	bazelProps bazel.BazelTargetModuleProperties,
-	attrs interface{}) BazelTargetModule {
+	attrs interface{}) {
 	if strings.HasPrefix(name, bazel.BazelTargetModuleNamePrefix) {
 		panic(fmt.Errorf(
 			"The %s name prefix is added automatically, do not set it manually: %s",
 			bazel.BazelTargetModuleNamePrefix,
 			name))
 	}
-	name = bazel.BazelTargetModuleNamePrefix + name
-	nameProp := struct {
-		Name *string
-	}{
-		Name: &name,
+	// name = bazel.BazelTargetModuleNamePrefix + name
+	// nameProp := struct {
+	// Name *string
+	// }{
+	// Name: &name,
+	// }
+
+	info := bp2buildInfo{
+		BazelProps: bazelProps,
+		Attrs:      attrs,
 	}
 
-	b := t.createModuleWithoutInheritance(factory, &nameProp, attrs).(BazelTargetModule)
-	b.SetBazelTargetModuleProperties(bazelProps)
-	return b
+	t.Module().base().setBp2buildInfo(info)
+
+	// b := t.createModuleWithoutInheritance(factory, &nameProp, attrs).(BazelTargetModule)
+	// b.SetBazelTargetModuleProperties(bazelProps)
+	// return b
 }
 
 func (t *topDownMutatorContext) AppendProperties(props ...interface{}) {
