@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "372e099f_98688023",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-11T18:48:01Z",
+      "side": 1,
+      "message": "Thanks! I think this\u0027ll be helpful throughout mixed builds and we may be able to leverage it later for some interesting refactorings.",
+      "revId": "9527b97e704dc3001f65d73e1e46bdf807e100a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
