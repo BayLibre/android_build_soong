@@ -93,6 +93,30 @@
       },
       "revId": "4e8f340d1a4b130e3ac1eb39faa323e336a491dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5cc0709_09cd4ea3",
+        "filename": "bp2build/performance_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-11T19:38:17Z",
+      "side": 1,
+      "message": "good idea, done!",
+      "parentUuid": "b26df92e_f7303f8c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "4e8f340d1a4b130e3ac1eb39faa323e336a491dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
