@@ -22,6 +22,30 @@
       },
       "revId": "0f3422b4e1c28dac1ba2212f47733f2547c84a4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1082755e_0e5c295b",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-11T20:00:06Z",
+      "side": 1,
+      "message": "Wish -\u003e Command",
+      "parentUuid": "4a6d7bb9_5d8c254a",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 81,
+        "endChar": 17
+      },
+      "revId": "0f3422b4e1c28dac1ba2212f47733f2547c84a4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
