@@ -70,6 +70,29 @@
       "parentUuid": "9c28a91d_fefceb9e",
       "revId": "4e8f340d1a4b130e3ac1eb39faa323e336a491dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b26df92e_f7303f8c",
+        "filename": "bp2build/performance_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-08-11T16:16:51Z",
+      "side": 1,
+      "message": "Could you add a comment saying that these tests won\u0027t run unless you manually run with go test -bench etc ?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "4e8f340d1a4b130e3ac1eb39faa323e336a491dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
