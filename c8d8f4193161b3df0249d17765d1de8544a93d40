@@ -45,6 +45,30 @@
       },
       "revId": "c8d8f4193161b3df0249d17765d1de8544a93d40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fa6ccd4_2599e509",
+        "filename": "ui/build/cleanbuild.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-08-11T14:16:42Z",
+      "side": 1,
+      "message": "It is surprisingly complicated to write chmod -R u+w in Go. How about this?",
+      "parentUuid": "68619a41_3e6660e1",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 64
+      },
+      "revId": "c8d8f4193161b3df0249d17765d1de8544a93d40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
