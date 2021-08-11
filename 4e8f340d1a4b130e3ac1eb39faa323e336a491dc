@@ -52,6 +52,24 @@
       "parentUuid": "cba6e6a8_1758ad77",
       "revId": "4e8f340d1a4b130e3ac1eb39faa323e336a491dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "500afab1_3b009074",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-11T12:36:33Z",
+      "side": 1,
+      "message": "I don\u0027t think Soong benchmarks run on postsubmit. I was mostly thinking of this as a way to run before/after a change. And relying on the metrics from full builds as more of a tracking mechanism. But looking into running benchmarks on postsubmit is worth looking into.",
+      "parentUuid": "9c28a91d_fefceb9e",
+      "revId": "4e8f340d1a4b130e3ac1eb39faa323e336a491dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
