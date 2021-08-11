@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7756e59_98b0e928",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-11T15:40:11Z",
+      "side": 1,
+      "message": "What\u0027s the end goal here?  soong-zip and blueprint-pathtools don\u0027t seem like problematic dependencies to have in multieproduct_kati.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "dfc4681c723ab266debb758cadd7f18f939a862c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
