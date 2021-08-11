@@ -22,6 +22,30 @@
       },
       "revId": "661c19fd4cb75cedcce1c1b1b4ab79539f21f8ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cd1e018_46eece5c",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-11T13:13:35Z",
+      "side": 0,
+      "message": "Hehe. It was debugging code that I added in the other change. I\u0027ll remove it from both.",
+      "parentUuid": "a940b4f8_cbd4ca82",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 42
+      },
+      "revId": "661c19fd4cb75cedcce1c1b1b4ab79539f21f8ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
