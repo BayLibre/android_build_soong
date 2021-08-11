@@ -22,6 +22,30 @@
       },
       "revId": "dfc4681c723ab266debb758cadd7f18f939a862c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d4b1096_f1570778",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-11T16:05:05Z",
+      "side": 1,
+      "message": "It\u0027s just that I had some time on a long-ish meeting and decided to try this out. \n\nI wanted to cut all multiproduct_kati -\u003e Blueprint dependencies and it turns out that soong-zip depends on bluetooth-pathtools. However, This zip implementation ended up being *much* slower than the one in soong-zip, \n\nIt looks like --keep is not used anywhere in the source tree. So maybe we can just delete the functionality?",
+      "parentUuid": "e7756e59_98b0e928",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "dfc4681c723ab266debb758cadd7f18f939a862c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
