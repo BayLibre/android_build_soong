@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed81510f_07f3f84b",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-11T19:43:23Z",
+      "side": 1,
+      "message": "since this isn\u0027t used outside of this package, shouldn\u0027t need to export this",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9c56eb4_27cd3d67",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-11T19:43:23Z",
+      "side": 1,
+      "message": "I\u0027m surprised that you needed this.",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 76
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1967fe3_c2348352",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-11T19:43:23Z",
+      "side": 1,
+      "message": "I _think_ now that you\u0027re using the handler, this should be unnecessary.",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 1
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02125b09_a26cc1eb",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-11T19:43:23Z",
+      "side": 1,
+      "message": "nit: stray commented out line",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 36
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b720237_b9ea007f",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-11T19:43:23Z",
+      "side": 1,
+      "message": "label was passed in, can we use that instead?",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 200,
+        "endChar": 39
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5765db7_b981c097",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-11T19:43:23Z",
+      "side": 1,
+      "message": "This is a new field and it\u0027s not being exported anywhere, what we want to do is find the field that contains the equivalent soong output within Module and set that field with the value.",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 14
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c99e2317_ddbac25f",
+        "filename": "python/python_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-11T19:43:23Z",
+      "side": 1,
+      "message": "I think we may want to craft a different comparison for our test.... the expectModule function appears to be looking at more internals of how python modules are built than I prefer in a test.\n\nWhen running in mixed build mode, we want to make sure that we GetPythonBinary was run, so we want to verify that that output file is ending up in the right place,\n\nFor mixed builds, that should be somewhere under your OutputBaseDir, using the filename \"foo\". How this is done in genrule mixed build test: https://cs.android.com/android/platform/superproject/+/master:build/soong/genrule/genrule_test.go;l\u003d742-743;drc\u003d8c7e3ed7862d5593d230a8d6d48fa9b6a0a31556",
+      "range": {
+        "startLine": 435,
+        "startChar": 0,
+        "endLine": 436,
+        "endChar": 46
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
