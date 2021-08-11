@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -46,9 +47,27 @@ func removeGlobs(ctx Context, globs ...string) {
 	}
 }
 
+// Bazel can generate output directories where the write bit isn't set. This makes clean fail.
+func ensureBazelOutDirRemovable(ctx Context, config Config) {
+	_, err := os.Stat(config.BazelOutDir())
+	if err != nil && os.IsNotExist(err) {
+		// Bazel out dir doesn't exist? (e.g. missing out/soong/bazel)
+		return
+	}
+
+	// NOTE: We only need the write bit set on directories, but we are actually setting it on regular files too
+	cmd := exec.Command("chmod", "-R", "u+w", config.BazelOutDir())
+	_, err = cmd.Output()
+	if err != nil {
+		ctx.Println(err.Error())
+		// Don't abort, though
+	}
+}
+
 // Remove everything under the out directory. Don't remove the out directory
 // itself in case it's a symlink.
 func clean(ctx Context, config Config) {
+	ensureBazelOutDirRemovable(ctx, config)
 	removeGlobs(ctx, filepath.Join(config.OutDir(), "*"))
 	ctx.Println("Entire build directory removed.")
 }
