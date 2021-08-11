@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000014305043",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1793067?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "0e605013_de735321",
+          "description": "Change to \"snapshot/host.go\"",
+          "replacements": [
+            {
+              "path": "snapshot/host.go",
+              "range": {
+                "startLine": 68,
+                "startChar": 28,
+                "endLine": 68,
+                "endChar": 39
+              },
+              "replacement": "description"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "6300743f_f438ab88",
+        "filename": "snapshot/host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-08-11T00:31:27Z",
+      "side": 1,
+      "message": "Common typo found: \"descritpion\" -- should it be \"description\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 68,
+        "startChar": 28,
+        "endLine": 68,
+        "endChar": 39
+      },
+      "revId": "ac36ed76e02c95b3ed838dcb6aee92ca1703c845",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
