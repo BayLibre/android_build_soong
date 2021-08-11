@@ -16,6 +16,52 @@
       "message": "Ping.",
       "revId": "746e326ea0c461dbb992b9aa06783c95e56df68c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "690f4a89_0680dd35",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-11T10:12:50Z",
+      "side": 1,
+      "message": "why?",
+      "range": {
+        "startLine": 957,
+        "startChar": 84,
+        "endLine": 957,
+        "endChar": 100
+      },
+      "revId": "746e326ea0c461dbb992b9aa06783c95e56df68c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3dd8114_05077d3a",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-11T10:12:50Z",
+      "side": 1,
+      "message": "nit: pull this out so mutating mismatchingSignatures logic stays the same?\n\nif signature not in modularFlagsDict:\n  modularFlags \u003d [\"blocked\"]\n  \nif monolithicFlags !\u003d modularFlags:\n  ...",
+      "range": {
+        "startLine": 337,
+        "startChar": 12,
+        "endLine": 337,
+        "endChar": 45
+      },
+      "revId": "746e326ea0c461dbb992b9aa06783c95e56df68c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
