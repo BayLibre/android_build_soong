@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8117c3ab_6c1af780",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-11T12:54:50Z",
+      "side": 1,
+      "message": "do we still need to pass dist to soong invocation(s) or was nothing actually being dist-ed?",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 25
+      },
+      "revId": "661c19fd4cb75cedcce1c1b1b4ab79539f21f8ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
