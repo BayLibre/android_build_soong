@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4fec8ec_ebb00679",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-11T21:19:12Z",
+      "side": 1,
+      "message": "test.go uses it",
+      "parentUuid": "ed81510f_07f3f84b",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9c56eb4_27cd3d67",
         "filename": "python/binary.go",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-11T19:43:23Z",
       "side": 1,
       "message": "I\u0027m surprised that you needed this.",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 76
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c5cf9e_f83a6b55",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-11T21:19:12Z",
+      "side": 1,
+      "message": "You\u0027d pointed me to needing to `android.FixtureRegisterWithContext(registerPythonMutators)` in test.go:PrepareForTestWithPythonBinaryHostComponents . I believe this was part of that, but I don\u0027t really remember.",
+      "parentUuid": "e9c56eb4_27cd3d67",
       "range": {
         "startLine": 34,
         "startChar": 1,
@@ -93,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf6ce1ed_dca46fbc",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-11T21:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02125b09_a26cc1eb",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 36
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b720237_b9ea007f",
@@ -116,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d39760_8e4714b3",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-11T21:19:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b720237_b9ea007f",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 200,
+        "endChar": 39
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5765db7_b981c097",
@@ -129,6 +225,30 @@
       "writtenOn": "2021-08-11T19:43:23Z",
       "side": 1,
       "message": "This is a new field and it\u0027s not being exported anywhere, what we want to do is find the field that contains the equivalent soong output within Module and set that field with the value.",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 14
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b2d1eda_301234c6",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-11T21:19:12Z",
+      "side": 1,
+      "message": "Hrm. Module is just an interface. Do you mean ModuleBase? If so, I can\u0027t see a clear candidate in there. If I can get rid of `srcs` then I can also expel `PythonBinary`.",
+      "parentUuid": "f5765db7_b981c097",
       "range": {
         "startLine": 208,
         "startChar": 1,
