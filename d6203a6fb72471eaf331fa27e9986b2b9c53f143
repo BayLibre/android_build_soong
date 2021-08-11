@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "677ad4b7_beedf802",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-11T23:56:31Z",
+      "side": 1,
+      "message": "LGTM.",
+      "parentUuid": "91809b31_85c1a7d8",
+      "range": {
+        "startLine": 88,
+        "startChar": 5,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "d6203a6fb72471eaf331fa27e9986b2b9c53f143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d52d3042_36391aa0",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I think what I need is to convert a *int to an int. In case it is a nullptr, convert it to 0 (if this case never happens, maybe a * would be enough?). Maybe I can remove the helper function, add this logic directly into the loadFromConfigFile.",
       "parentUuid": "d52d3042_36391aa0",
+      "range": {
+        "startLine": 97,
+        "startChar": 5,
+        "endLine": 97,
+        "endChar": 8
+      },
+      "revId": "d6203a6fb72471eaf331fa27e9986b2b9c53f143",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0e4acfe_7d22ef8a",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-11T23:56:31Z",
+      "side": 1,
+      "message": "LGTM.",
+      "parentUuid": "9ec5cb82_574c476c",
       "range": {
         "startLine": 97,
         "startChar": 5,

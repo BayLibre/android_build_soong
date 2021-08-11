@@ -46,6 +46,30 @@
       },
       "revId": "aa67bfb631a5b0939464a9458ad4fe2239cf4136",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7973eb2_9f6b226a",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-11T23:56:31Z",
+      "side": 1,
+      "message": "LGTM.",
+      "parentUuid": "254ffd78_8ee7d36a",
+      "range": {
+        "startLine": 219,
+        "startChar": 3,
+        "endLine": 219,
+        "endChar": 75
+      },
+      "revId": "aa67bfb631a5b0939464a9458ad4fe2239cf4136",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
