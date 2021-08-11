@@ -127,6 +127,13 @@ def raise_min_sdk_version(doc, min_sdk_version, target_sdk_version, library):
     element.setAttributeNode(target_attr)
 
 
+def add_exported(doc):
+  """Add android:exported=true to <activity>, <service> and
+  <receiver> elements that have intent filters.
+  This is required by manifest merger and the platform for
+  apps that target 31."""
+
+
 def add_logging_parent(doc, logging_parent_value):
   """Add logging parent as an additional <meta-data> tag.
 
