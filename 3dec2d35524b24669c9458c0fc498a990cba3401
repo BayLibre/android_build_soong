@@ -63,6 +63,30 @@
       },
       "revId": "3dec2d35524b24669c9458c0fc498a990cba3401",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fdd14b6_9b5f6552",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-11T18:36:23Z",
+      "side": 1,
+      "message": "Finally managed to get something working.",
+      "parentUuid": "e4d32b8e_0bb09eec",
+      "range": {
+        "startLine": 963,
+        "startChar": 11,
+        "endLine": 963,
+        "endChar": 24
+      },
+      "revId": "3dec2d35524b24669c9458c0fc498a990cba3401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
