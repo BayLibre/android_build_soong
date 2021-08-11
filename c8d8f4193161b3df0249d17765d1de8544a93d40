@@ -22,6 +22,29 @@
       },
       "revId": "c8d8f4193161b3df0249d17765d1de8544a93d40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68619a41_3e6660e1",
+        "filename": "ui/build/cleanbuild.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-11T13:36:09Z",
+      "side": 1,
+      "message": "I\u0027m not in love with the idea of calling out to shell.\n\nMind trying to cook something up using os.WalkDir()? It\u0027s not that much code and then you can also do the \"only +w directories\" thing.",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 64
+      },
+      "revId": "c8d8f4193161b3df0249d17765d1de8544a93d40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
