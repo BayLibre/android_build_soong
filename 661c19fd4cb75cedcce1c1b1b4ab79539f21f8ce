@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a940b4f8_cbd4ca82",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-11T12:57:57Z",
+      "side": 0,
+      "message": "i don\u0027t have strong feelings about logging this, but it removing it seems a bit tangential",
+      "range": {
+        "startLine": 261,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 42
+      },
+      "revId": "661c19fd4cb75cedcce1c1b1b4ab79539f21f8ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
