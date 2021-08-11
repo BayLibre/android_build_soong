@@ -142,6 +142,7 @@ var (
 		"-Wl,--build-id=md5",
 		"-Wl,--warn-shared-textrel",
 		"-Wl,--fatal-warnings",
+		"-Wl,--no-rosegment",
 		"-Wl,--no-undefined-version",
 		// TODO: Eventually we should link against a libunwind.a with hidden symbols, and then these
 		// --exclude-libs arguments can be removed.
