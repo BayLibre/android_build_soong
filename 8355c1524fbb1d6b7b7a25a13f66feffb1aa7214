@@ -16,6 +16,23 @@
       "message": "Thanks for the quick fix. Would you please cherry pick this to sc-dev as well? Thanks.",
       "revId": "8355c1524fbb1d6b7b7a25a13f66feffb1aa7214",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de16b6b6_f9ee9df9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1644304
+      },
+      "writtenOn": "2021-08-11T06:20:53Z",
+      "side": 1,
+      "message": "Thanks for catching this fix!",
+      "revId": "8355c1524fbb1d6b7b7a25a13f66feffb1aa7214",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
