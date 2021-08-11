@@ -39,6 +39,30 @@
       },
       "revId": "3dec2d35524b24669c9458c0fc498a990cba3401",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4d32b8e_0bb09eec",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-11T11:40:28Z",
+      "side": 1,
+      "message": "So, I\u0027ve found. Am trying to use \"test $? \u003d\u003d 1\" instead.",
+      "parentUuid": "b0079326_ec87045c",
+      "range": {
+        "startLine": 963,
+        "startChar": 11,
+        "endLine": 963,
+        "endChar": 24
+      },
+      "revId": "3dec2d35524b24669c9458c0fc498a990cba3401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
