@@ -33,6 +33,24 @@
       "message": "\u003e I don\u0027t seem to understand why libvendorgraphicbuffer and a few more can\u0027t be included in the APEX.\n\nAbove question from internal gerrit has not been answered.",
       "revId": "b302cad3048670652c30d24bedee0ddd910cea0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e36875bb_ca5e7fe8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1277048
+      },
+      "writtenOn": "2021-08-11T23:14:55Z",
+      "side": 1,
+      "message": "The biggest reason is that the libraries interact with private layouts of Gralloc handles which are unstable.",
+      "parentUuid": "7c3a22a4_ca2aedb5",
+      "revId": "b302cad3048670652c30d24bedee0ddd910cea0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
