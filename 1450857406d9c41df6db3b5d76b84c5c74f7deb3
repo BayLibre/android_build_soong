@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b917871_2d5d831b",
+        "filename": "ui/build/cleanbuild.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-11T16:07:40Z",
+      "side": 1,
+      "message": "nit: ensureAllDirectoriesWritable() ? (it\u0027s not just Bazel that can have this problem)",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 31
+      },
+      "revId": "1450857406d9c41df6db3b5d76b84c5c74f7deb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30221477_af05e4cf",
+        "filename": "ui/build/cleanbuild.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-11T16:07:40Z",
+      "side": 1,
+      "message": "why not also +x while you are at it? (if the x bit is not present, you can\u0027t even list a directory)",
+      "range": {
+        "startLine": 70,
+        "startChar": 40,
+        "endLine": 70,
+        "endChar": 59
+      },
+      "revId": "1450857406d9c41df6db3b5d76b84c5c74f7deb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
