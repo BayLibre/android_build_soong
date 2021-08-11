@@ -17,6 +17,7 @@ package build
 import (
 	"bytes"
 	"fmt"
+	"io/fs"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -46,9 +47,44 @@ func removeGlobs(ctx Context, globs ...string) {
 	}
 }
 
+// Go doesn't provide a nice way to set bits on a filemode
+const (
+	FILEMODE_WRITE      = 02
+	FILEMODE_USER_SHIFT = 6
+	FILEMODE_USER_WRITE = FILEMODE_WRITE << FILEMODE_USER_SHIFT
+)
+
+// Bazel can generate output directories where the write bit isn't set, which makes 'm clean' fail.
+// Let's try to avoid that...
+func ensureBazelOutDirRemovable(ctx Context, config Config) {
+	err := filepath.WalkDir(config.BazelOutDir(), func(path string, d fs.DirEntry, err error) error {
+		if err != nil {
+			return err
+		}
+		if d.IsDir() {
+			info, err := d.Info()
+			if err != nil {
+				return err
+			}
+			// Equivalent to running chmod u+w on each directory
+			if err := os.Chmod(path, info.Mode()|FILEMODE_USER_WRITE); err != nil {
+				return err
+
+			}
+		}
+		// Continue walking the Bazel output dir...
+		return nil
+	})
+	if err != nil && !os.IsNotExist(err) {
+		// Display the error, but don't crash.
+		ctx.Println(err.Error())
+	}
+}
+
 // Remove everything under the out directory. Don't remove the out directory
 // itself in case it's a symlink.
 func clean(ctx Context, config Config) {
+	ensureBazelOutDirRemovable(ctx, config)
 	removeGlobs(ctx, filepath.Join(config.OutDir(), "*"))
 	ctx.Println("Entire build directory removed.")
 }
