@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4eb0d72_84724903",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-11T11:01:58Z",
+      "side": 1,
+      "message": "The presubmit failure happens at HEAD, too.\n\nOtherwise, I\u0027m quite satisfied with this change; the only weird issue that remains is that multiproduct_kati needs soong-zip which in turn needs (of all things) blueprint-pathtools, but that in turn doesn\u0027t have very onerous dependencies so it should be fine.",
+      "revId": "ee081bbc95f1c8bfa85a65bee8179b17e6fb39cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
