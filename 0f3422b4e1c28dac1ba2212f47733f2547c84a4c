@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a6d7bb9_5d8c254a",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-11T19:15:45Z",
+      "side": 1,
+      "message": "may be a bit silly at this point, but in case we want to add more information later, do you mind adding a test for this function in request_type_test.go?",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 81,
+        "endChar": 17
+      },
+      "revId": "0f3422b4e1c28dac1ba2212f47733f2547c84a4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
