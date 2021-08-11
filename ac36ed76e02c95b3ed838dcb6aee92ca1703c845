@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2e35b03_247e4b9d",
+        "filename": "snapshot/host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-11T00:50:34Z",
+      "side": 1,
+      "message": "This addressed the items from aosp/1754476:\n  - move snapshot out of soong/cc\n  - use TransitivePackagingSpecs\n  \nWill abandon aosp/1754476",
+      "revId": "ac36ed76e02c95b3ed838dcb6aee92ca1703c845",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c846a551_0cdd7f90",
+        "filename": "snapshot/host_fake.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-11T00:50:34Z",
+      "side": 1,
+      "message": "The fake snapshot will include all host tools found, when the actual host tool modules are determined the visibility may prevent the tool from being included. \n\nIf possible limit to only public visible tools here",
+      "revId": "ac36ed76e02c95b3ed838dcb6aee92ca1703c845",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
