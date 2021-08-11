@@ -96,7 +96,7 @@ func (prebuilt *prebuiltLibraryDecorator) compile(ctx ModuleContext, flags Flags
 	prebuilt.flagExporter.exportLinkDirs(android.PathsForModuleSrc(ctx, prebuilt.Properties.Link_dirs).Strings()...)
 	prebuilt.flagExporter.setProvider(ctx)
 
-	srcPath, paths := srcPathFromModuleSrcs(ctx, prebuilt.prebuiltSrcs())
+	srcPath, paths := srcPathFromModuleSrcs(prebuilt.prebuiltSrcs(), ctx, true)
 	if len(paths) > 0 {
 		ctx.PropertyErrorf("srcs", "prebuilt libraries can only have one entry in srcs (the prebuilt path)")
 	}

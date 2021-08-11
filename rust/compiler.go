@@ -65,7 +65,10 @@ const (
 )
 
 type BaseCompilerProperties struct {
-	// path to the source file that is the main entry point of the program (e.g. main.rs or lib.rs)
+	// path to the source file that is the main entry point of the program (e.g. main.rs or lib.rs).
+	// Only a single source file can be defined.
+	// Modules which generate source can be included by prefixing the module name with ":", for example ":libfoo_bindgen"
+	// If no source file is defined, a single generated source module can be defined to be used as the main source.
 	Srcs []string `android:"path,arch_variant"`
 
 	// name of the lint set that should be used to validate this module.
@@ -408,7 +411,7 @@ func (compiler *baseCompiler) relativeInstallPath() string {
 }
 
 // Returns the Path for the main source file along with Paths for generated source files from modules listed in srcs.
-func srcPathFromModuleSrcs(ctx ModuleContext, srcs []string) (android.Path, android.Paths) {
+func srcPathFromModuleSrcs(srcs []string, ctx ModuleContext, sourceRequired bool) (android.Path, android.Paths) {
 	// The srcs can contain strings with prefix ":".
 	// They are dependent modules of this module, with android.SourceDepTag.
 	// They are not the main source file compiled by rustc.
@@ -420,12 +423,19 @@ func srcPathFromModuleSrcs(ctx ModuleContext, srcs []string) (android.Path, andr
 			srcIndex = i
 		}
 	}
-	if numSrcs != 1 {
+	if numSrcs > 1 {
 		ctx.PropertyErrorf("srcs", incorrectSourcesError)
 	}
-	if srcIndex != 0 {
+
+	// If sourceRequired is true, then a main source must be provided.
+	// Otherwise, we expect only a single SourceProvider module to be defined within srcs,
+	// with the expectation that the first source it provides is the entry point.
+	if srcIndex != 0 && sourceRequired {
 		ctx.PropertyErrorf("srcs", "main source file must be the first in srcs")
+	} else if numSrcs > 1 {
+		ctx.PropertyErrorf("srcs", "only a single generated source module can be defined without a main source file.")
 	}
+
 	paths := android.PathsForModuleSrc(ctx, srcs)
 	return paths[srcIndex], paths[1:]
 }

@@ -534,7 +534,7 @@ func (library *libraryDecorator) srcPath(ctx ModuleContext, deps PathDeps) andro
 		// Assume the first source from the source provider is the library entry point.
 		return library.sourceProvider.Srcs()[0]
 	} else {
-		path, _ := srcPathFromModuleSrcs(ctx, library.baseCompiler.Properties.Srcs)
+		path, _ := srcPathFromModuleSrcs(library.baseCompiler.Properties.Srcs, ctx, true)
 		return path
 	}
 }

@@ -177,3 +177,10 @@ func (test *testDecorator) compilerDeps(ctx DepsContext, deps Deps) Deps {
 
 	return deps
 }
+
+func (test *testDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path {
+	// Allow tests to build without defining a main source file. This supports defining test modules
+	// for SourceProviders without boilerplate rs files.
+	srcPath, _ := srcPathFromModuleSrcs(test.baseCompiler.Properties.Srcs, ctx, false)
+	return test.compileBinary(ctx, flags, deps, srcPath)
+}

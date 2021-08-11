@@ -113,9 +113,8 @@ func (binary *binaryDecorator) preferRlib() bool {
 	return Bool(binary.baseCompiler.Properties.Prefer_rlib) || Bool(binary.Properties.Static_executable)
 }
 
-func (binary *binaryDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path {
+func (binary *binaryDecorator) compileBinary(ctx ModuleContext, flags Flags, deps PathDeps, srcPath android.Path) android.Path {
 	fileName := binary.getStem(ctx) + ctx.toolchain().ExecutableSuffix()
-	srcPath, _ := srcPathFromModuleSrcs(ctx, binary.baseCompiler.Properties.Srcs)
 	outputFile := android.PathForModuleOut(ctx, fileName)
 
 	flags.RustFlags = append(flags.RustFlags, deps.depFlags...)
@@ -131,6 +130,11 @@ func (binary *binaryDecorator) compile(ctx ModuleContext, flags Flags, deps Path
 	}
 
 	return outputFile
+}
+
+func (binary *binaryDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path {
+	srcPath, _ := srcPathFromModuleSrcs(binary.baseCompiler.Properties.Srcs, ctx, true)
+	return binary.compileBinary(ctx, flags, deps, srcPath)
 }
 
 func (binary *binaryDecorator) autoDep(ctx android.BottomUpMutatorContext) autoDep {
