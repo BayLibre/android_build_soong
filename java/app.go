@@ -1381,18 +1381,6 @@ type bazelAndroidAppCertificateAttributes struct {
 	Certificate string
 }
 
-type bazelAndroidAppCertificate struct {
-	android.BazelTargetModuleBase
-	bazelAndroidAppCertificateAttributes
-}
-
-func BazelAndroidAppCertificateFactory() android.Module {
-	module := &bazelAndroidAppCertificate{}
-	module.AddProperties(&module.bazelAndroidAppCertificateAttributes)
-	android.InitBazelTargetModule(module)
-	return module
-}
-
 func AndroidAppCertificateBp2Build(ctx android.TopDownMutatorContext) {
 	module, ok := ctx.Module().(*AndroidAppCertificate)
 	if !ok {
@@ -1424,11 +1412,5 @@ func androidAppCertificateBp2BuildInternal(ctx android.TopDownMutatorContext, mo
 		Bzl_load_location: "//build/bazel/rules:android_app_certificate.bzl",
 	}
 
-	ctx.CreateBazelTargetModule(BazelAndroidAppCertificateFactory, module.Name(), props, attrs)
+	ctx.CreateBazelTargetModule(module.Name(), props, attrs)
 }
-
-func (m *bazelAndroidAppCertificate) Name() string {
-	return m.BaseModuleName()
-}
-
-func (m *bazelAndroidAppCertificate) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
