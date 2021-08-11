@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "139a9b42_c938b6ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483218
+      },
+      "writtenOn": "2021-08-11T03:23:29Z",
+      "side": 1,
+      "message": "Thanks for the quick fix. Would you please cherry pick this to sc-dev as well? Thanks.",
+      "revId": "8355c1524fbb1d6b7b7a25a13f66feffb1aa7214",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
