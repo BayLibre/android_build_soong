@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "3dec2d35524b24669c9458c0fc498a990cba3401",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0079326_ec87045c",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 963,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-11T11:24:15Z",
+      "side": 1,
+      "message": "build bots don\u0027t like [[\n\n/bin/sh: 1: [[: not found",
+      "range": {
+        "startLine": 963,
+        "startChar": 11,
+        "endLine": 963,
+        "endChar": 24
+      },
+      "revId": "3dec2d35524b24669c9458c0fc498a990cba3401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
