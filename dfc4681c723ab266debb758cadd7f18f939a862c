@@ -94,6 +94,30 @@
       },
       "revId": "dfc4681c723ab266debb758cadd7f18f939a862c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c32ca44_64081d3d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-12T06:19:18Z",
+      "side": 1,
+      "message": "Actually,it looks like zip.go is only used in the standalone zip tool and multiproduct_kati. I bet I can cut the zip -\u003e blueprint-pathtools dependency!\n\n(not today, though; today is a meeting bonanza.)",
+      "parentUuid": "d57f32cd_1251fcf8",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "dfc4681c723ab266debb758cadd7f18f939a862c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
