@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "864b598c_f70a0c84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-08-12T08:15:44Z",
+      "side": 1,
+      "message": "Adding inseob as an snapshot expert reviewer 😊",
+      "revId": "fd256f99a11a33707d9939029a26d3fc1220d425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9498a4f3_ce77e357",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-08-12T08:15:44Z",
+      "side": 1,
+      "message": "Can you please check if ShBinary implements RelativeInstallPath interface properly?\nSomething like\n\nvar _ snapshot.RelativeInstallPath \u003d (*ShBinary)(nil)",
+      "range": {
+        "startLine": 197,
+        "startChar": 19,
+        "endLine": 197,
+        "endChar": 38
+      },
+      "revId": "fd256f99a11a33707d9939029a26d3fc1220d425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d206fa_eaccbf3e",
+        "filename": "snapshot/host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-08-12T08:15:44Z",
+      "side": 1,
+      "message": "Can you please add some comment what is this file for?",
+      "revId": "fd256f99a11a33707d9939029a26d3fc1220d425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66323d96_0b828d6c",
+        "filename": "snapshot/host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-08-12T08:15:44Z",
+      "side": 1,
+      "message": "I think it would be better to have host_tools unit tests to see how the module would work.",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 35
+      },
+      "revId": "fd256f99a11a33707d9939029a26d3fc1220d425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2745b78_0b330d36",
+        "filename": "snapshot/host_fake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-08-12T08:15:44Z",
+      "side": 1,
+      "message": "Can you please add brief comment what is this file for?",
+      "revId": "fd256f99a11a33707d9939029a26d3fc1220d425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4532537a_b9175845",
+        "filename": "snapshot/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-08-12T08:15:44Z",
+      "side": 1,
+      "message": "nit: I\u0027m not sure if this fits with \u0027util.go\u0027. What about \u0027snapshot_base.go\u0027?",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 29
+      },
+      "revId": "fd256f99a11a33707d9939029a26d3fc1220d425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cb899a6_fb12e059",
+        "filename": "snapshot/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-08-12T08:15:44Z",
+      "side": 1,
+      "message": "For now it seems better to locate in host.go",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 89,
+        "endChar": 24
+      },
+      "revId": "fd256f99a11a33707d9939029a26d3fc1220d425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
