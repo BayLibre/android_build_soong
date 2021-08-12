@@ -69,6 +69,24 @@
       "parentUuid": "e36875bb_ca5e7fe8",
       "revId": "b302cad3048670652c30d24bedee0ddd910cea0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea6983ff_166dd358",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-12T01:01:27Z",
+      "side": 1,
+      "message": "Sorry, but I don\u0027t get it. What this CL does is the same. The C++ interface is also unstable, but this CL makes it possible to treat it stable. Even worse, this CL makes a switch for it, which could be abused for other purposes in the future.\n\nHow unstable the gralloc layout is? Will it change during S timeframe? I guess not. Then given that we wouldn\u0027t update the camera HAL APEX across different Android releases, it\u0027s fine to have access to the private layouts, IMHO.",
+      "parentUuid": "85bfac58_c3045cfe",
+      "revId": "b302cad3048670652c30d24bedee0ddd910cea0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
