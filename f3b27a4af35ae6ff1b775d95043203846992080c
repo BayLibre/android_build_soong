@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c58b0b7a_ba53a15b",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-12T19:54:07Z",
+      "side": 1,
+      "message": "test.go is in the same package, so it can use unexported functions.",
+      "parentUuid": "a4fec8ec_ebb00679",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9c56eb4_27cd3d67",
         "filename": "python/binary.go",
         "patchSetId": 4
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "You\u0027d pointed me to needing to `android.FixtureRegisterWithContext(registerPythonMutators)` in test.go:PrepareForTestWithPythonBinaryHostComponents . I believe this was part of that, but I don\u0027t really remember.",
       "parentUuid": "e9c56eb4_27cd3d67",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 76
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29f7cc77_0b7f310e",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-12T19:54:07Z",
+      "side": 1,
+      "message": "perhaps? i think this should only be necessary for bp2build testing or bp2build runs. no harm really, just surprised.",
+      "parentUuid": "02c5cf9e_f83a6b55",
       "range": {
         "startLine": 34,
         "startChar": 1,
@@ -249,6 +297,30 @@
       "side": 1,
       "message": "Hrm. Module is just an interface. Do you mean ModuleBase? If so, I can\u0027t see a clear candidate in there. If I can get rid of `srcs` then I can also expel `PythonBinary`.",
       "parentUuid": "f5765db7_b981c097",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 14
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5464485_be324fcd",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-12T19:54:07Z",
+      "side": 1,
+      "message": "sorry, I meant python.Module: https://cs.android.com/android/platform/superproject/+/master:build/soong/python/python.go;l\u003d129;drc\u003d0e446159bcde2ced43e0bd602ae42f6eccb9c625\n\nPrior to your change, a python binary was only a python.Module. python.Module implements interface(s) to communicate to other modules about what it built.\n\nWe want to set the fields in python.Module that those interface(s) use to propagate information.",
+      "parentUuid": "2b2d1eda_301234c6",
       "range": {
         "startLine": 208,
         "startChar": 1,
