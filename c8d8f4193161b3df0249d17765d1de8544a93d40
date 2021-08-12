@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23ff0d96_d10843f4",
+        "filename": "ui/build/cleanbuild.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-08-12T09:04:06Z",
+      "side": 1,
+      "message": "Looks good",
+      "parentUuid": "3c97f03f_2d01476b",
+      "range": {
+        "startLine": 51,
+        "startChar": 5,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "c8d8f4193161b3df0249d17765d1de8544a93d40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68619a41_3e6660e1",
