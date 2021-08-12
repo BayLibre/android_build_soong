@@ -355,6 +355,9 @@ func init() {
 	exportedStringListVars.Set("CommonGlobalIncludes", commonGlobalIncludes)
 	pctx.PrefixedExistentPathsForSourcesVariable("CommonGlobalIncludes", "-I", commonGlobalIncludes)
 
+	exportStringStaticVariable("DEFAULT_VERSION", ClangDefaultVersion)
+	exportStringStaticVariable("DEFAULT_SHORT_VERSION", ClangDefaultShortVersion)
+
 	pctx.SourcePathVariable("ClangDefaultBase", ClangDefaultBase)
 	pctx.VariableFunc("ClangBase", func(ctx android.PackageVarContext) string {
 		if override := ctx.Config().Getenv("LLVM_PREBUILTS_BASE"); override != "" {
