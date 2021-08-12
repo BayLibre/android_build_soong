@@ -167,6 +167,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3d698950_29820c2d",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-12T19:35:46Z",
+      "side": 1,
+      "message": "The label, primarily so we can return an error rather than call this function if the module is not converted -- though, could also just move or repeat the check if something is converted sooner to return an error outside of the name conversion process.\n\nagain, wasn\u0027t suggesting you to change it, just wondering if you had opposition to me changing it later. there are some alternatives if you are, but since you\u0027ll be OOO before i make that change, just wanted your thoughts on me changing it up :)",
+      "parentUuid": "16d0a820_460ff786",
+      "range": {
+        "startLine": 102,
+        "startChar": 17,
+        "endLine": 102,
+        "endChar": 62
+      },
+      "revId": "0782e9caf0dcd5ee04441b91a2870a9807304a5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "241378f1_df7c6b7a",
         "filename": "cc/bp2build.go",
         "patchSetId": 2
