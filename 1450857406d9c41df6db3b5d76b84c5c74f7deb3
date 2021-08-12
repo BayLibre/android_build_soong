@@ -93,6 +93,30 @@
       },
       "revId": "1450857406d9c41df6db3b5d76b84c5c74f7deb3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ee6dc7f_8d5dd96c",
+        "filename": "ui/build/cleanbuild.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-12T06:26:00Z",
+      "side": 1,
+      "message": "Indeed, I misremembered! It\u0027s u+ only so it\u0027s not a security risk and you are going to delete them soon after anyway.",
+      "parentUuid": "a49b3e18_9d210935",
+      "range": {
+        "startLine": 70,
+        "startChar": 40,
+        "endLine": 70,
+        "endChar": 59
+      },
+      "revId": "1450857406d9c41df6db3b5d76b84c5c74f7deb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
