@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c8dd4ebd_e4fba093",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-12T19:18:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "113b8049_0416fab4",
+      "range": {
+        "startLine": 228,
+        "startChar": 2,
+        "endLine": 228,
+        "endChar": 89
+      },
+      "revId": "0782e9caf0dcd5ee04441b91a2870a9807304a5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "982791b9_ed27a4b0",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-12T19:18:14Z",
+      "side": 1,
+      "message": "Fixed. The fix was simple \u003e_\u003e",
+      "parentUuid": "aa83f525_7a3e3f0e",
+      "range": {
+        "startLine": 228,
+        "startChar": 2,
+        "endLine": 228,
+        "endChar": 89
+      },
+      "revId": "0782e9caf0dcd5ee04441b91a2870a9807304a5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "dd83ce68_063af984",
         "filename": "android/bazel.go",
         "patchSetId": 2
@@ -95,6 +143,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "16d0a820_460ff786",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-12T19:18:14Z",
+      "side": 1,
+      "message": "Would prefer we motivate that function signature change by its use in the same CL :) \n\nI\u0027m a little unclear on exactly what you need for that fix; do you truly need the label, or the soong module name?  We determine the former as part of the moduleToLabelFn, and we can easily determine the latter from module.Name().",
+      "parentUuid": "44930872_69291bc9",
+      "range": {
+        "startLine": 102,
+        "startChar": 17,
+        "endLine": 102,
+        "endChar": 62
+      },
+      "revId": "0782e9caf0dcd5ee04441b91a2870a9807304a5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "241378f1_df7c6b7a",
         "filename": "cc/bp2build.go",
         "patchSetId": 2
@@ -106,6 +178,30 @@
       "writtenOn": "2021-08-11T13:45:13Z",
       "side": 1,
       "message": "not a priority now, but we may have to export some/all of these once we start migrating rust.",
+      "range": {
+        "startLine": 666,
+        "startChar": 0,
+        "endLine": 674,
+        "endChar": 1
+      },
+      "revId": "0782e9caf0dcd5ee04441b91a2870a9807304a5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65c08652_fab36cc0",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-12T19:18:14Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "241378f1_df7c6b7a",
       "range": {
         "startLine": 666,
         "startChar": 0,
