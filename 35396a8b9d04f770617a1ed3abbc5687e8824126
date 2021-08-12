@@ -22,6 +22,30 @@
       },
       "revId": "35396a8b9d04f770617a1ed3abbc5687e8824126",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2674cb04_1da4c611",
+        "filename": "ui/build/cleanbuild.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-08-12T09:08:01Z",
+      "side": 1,
+      "message": "Good catch",
+      "parentUuid": "cd28931f_ef3a2038",
+      "range": {
+        "startLine": 74,
+        "startChar": 34,
+        "endLine": 74,
+        "endChar": 38
+      },
+      "revId": "35396a8b9d04f770617a1ed3abbc5687e8824126",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
