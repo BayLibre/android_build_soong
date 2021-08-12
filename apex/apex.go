@@ -3278,7 +3278,9 @@ func apexBundleBp2BuildInternal(ctx android.TopDownMutatorContext, module *apexB
 	}
 
 	var fileContextsLabelAttribute bazel.LabelAttribute
-	if module.properties.File_contexts != nil {
+	if module.properties.File_contexts == nil {
+		fileContextsLabelAttribute.SetValue(bazel.Label{Label: "//system/sepolicy/apex:" + ctx.ModuleName() + "-file_contexts"})
+	} else {
 		fileContextsLabelAttribute.SetValue(android.BazelLabelForModuleDepSingle(ctx, *module.properties.File_contexts))
 	}
 
