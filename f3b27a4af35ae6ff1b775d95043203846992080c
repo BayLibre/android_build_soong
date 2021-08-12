@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cb055c4_e1e3c373",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-12T20:01:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c58b0b7a_ba53a15b",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 6
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9c56eb4_27cd3d67",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "perhaps? i think this should only be necessary for bp2build testing or bp2build runs. no harm really, just surprised.",
       "parentUuid": "02c5cf9e_f83a6b55",
+      "range": {
+        "startLine": 34,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 76
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f31d33b7_2ab10d57",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-12T20:01:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "29f7cc77_0b7f310e",
       "range": {
         "startLine": 34,
         "startChar": 1,
