@@ -462,10 +462,17 @@ func TestBinary(t *testing.T) {
 	}
 }
 
-func TestTest(t *testing.T) {
+func TestTestJNI(t *testing.T) {
 	ctx, _ := testJava(t, `
 		java_test_host {
+			name: "foo_host",
+			srcs: ["a.java"],
+			jni_libs: ["libjni"],
+		}
+	
+		java_test {
 			name: "foo",
+			host_supported: true,
 			srcs: ["a.java"],
 			jni_libs: ["libjni"],
 		}
@@ -473,25 +480,58 @@ func TestTest(t *testing.T) {
 		cc_library_shared {
 			name: "libjni",
 			host_supported: true,
-			device_supported: false,
 			stl: "none",
+			system_shared_libs: [],
+			nocrt: true,
+			no_libcrt: true,
 		}
 	`)
 
-	buildOS := ctx.Config().BuildOS.String()
+	t.Run("host_only", func(t *testing.T) {
+		buildOS := ctx.Config().BuildOS.String()
 
-	foo := ctx.ModuleForTests("foo", buildOS+"_common").Module().(*TestHost)
+		foo := ctx.ModuleForTests("foo_host", buildOS+"_common").Module().(*TestHost)
 
-	expected := "lib64/libjni.so"
-	if runtime.GOOS == "darwin" {
-		expected = "lib64/libjni.dylib"
-	}
+		expected := "lib64/libjni.so"
+		if runtime.GOOS == "darwin" {
+			expected = "lib64/libjni.dylib"
+		}
 
-	fooTestData := foo.data
-	if len(fooTestData) != 1 || fooTestData[0].Rel() != expected {
-		t.Errorf(`expected foo test data relative path [%q], got %q`,
-			expected, fooTestData.Strings())
-	}
+		fooTestData := foo.data
+		if len(fooTestData) != 1 || fooTestData[0].Rel() != expected {
+			t.Errorf(`expected foo test data relative path [%q], got %q`,
+				expected, fooTestData.Strings())
+		}
+	})
+
+	t.Run("host", func(t *testing.T) {
+		buildOS := ctx.Config().BuildOS.String()
+
+		foo := ctx.ModuleForTests("foo", buildOS+"_common").Module().(*Test)
+
+		expected := "lib64/libjni.so"
+		if runtime.GOOS == "darwin" {
+			expected = "lib64/libjni.dylib"
+		}
+
+		fooTestData := foo.data
+		if len(fooTestData) != 1 || fooTestData[0].Rel() != expected {
+			t.Errorf(`expected foo test data relative path [%q], got %q`,
+				expected, fooTestData.Strings())
+		}
+	})
+
+	t.Run("device", func(t *testing.T) {
+		foo := ctx.ModuleForTests("foo", "android_common").Module().(*Test)
+
+		expected := "lib64/libjni.so"
+
+		fooTestData := foo.data
+		if len(fooTestData) != 1 || fooTestData[0].Rel() != expected {
+			t.Errorf(`expected foo test data relative path [%q], got %q`,
+				expected, fooTestData.Strings())
+		}
+	})
 }
 
 func TestHostBinaryNoJavaDebugInfoOverride(t *testing.T) {

@@ -794,7 +794,10 @@ func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
 			ctx.AddVariationDependencies(target.Variations(), dataNativeBinsTag, j.testHostProperties.Data_native_bins...)
 		}
 	}
+	j.Test.DepsMutator(ctx)
+}
 
+func (j *Test) DepsMutator(ctx android.BottomUpMutatorContext) {
 	if len(j.testProperties.Jni_libs) > 0 {
 		for _, target := range ctx.MultiTargets() {
 			sharedLibVariations := append(target.Variations(), blueprint.Variation{Mutator: "link", Variation: "shared"})
@@ -941,7 +944,7 @@ func TestFactory() android.Module {
 	module.Module.linter.test = true
 
 	android.InitSdkAwareModule(module)
-	InitJavaModule(module, android.HostAndDeviceSupported)
+	InitJavaModuleMultiTargets(module, android.HostAndDeviceSupported)
 	return module
 }
 
