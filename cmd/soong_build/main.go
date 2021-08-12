@@ -470,6 +470,10 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 	ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
 
 	ninjaDeps = append(ninjaDeps, bootstrap.GlobFileListFiles(configuration)...)
+	if blueprintArgs.GlobFile != "" {
+		bootstrapConfig := bootstrap.MakeBootstrapConfig(bootstrap.StageMain, blueprintArgs, blueprintArgs.GlobFile, blueprintArgs.PrimaryBuilderInvocations)
+		bootstrap.WriteBuildGlobsNinjaFile(bootstrapConfig, bp2buildCtx.Context, blueprintArgs, configuration)
+	}
 
 	// Run the code-generation phase to convert BazelTargetModules to BUILD files
 	// and print conversion metrics to the user.
