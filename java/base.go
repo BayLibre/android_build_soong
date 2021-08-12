@@ -605,7 +605,11 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 		if dep != nil {
 			if component, ok := dep.(SdkLibraryComponentDependency); ok {
 				if lib := component.OptionalSdkLibraryImplementation(); lib != nil {
-					ctx.AddVariationDependencies(nil, usesLibTag, *lib)
+					tag := usesLibReqTag
+					if android.InList(*lib, dexpreopt.OptionalCompatUsesLibs) {
+						tag = usesLibOptTag
+					}
+					ctx.AddVariationDependencies(nil, tag, *lib)
 				}
 			}
 		}
