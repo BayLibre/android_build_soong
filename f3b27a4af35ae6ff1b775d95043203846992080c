@@ -381,6 +381,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "28419e76_f1a15525",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-12T20:05:08Z",
+      "side": 1,
+      "message": "The closest I can find for `python.Module` is `.properties.Srcs`, but that\u0027s for the .py files, not the output executable (and I realize my naming of `srcs` is off here as well).",
+      "parentUuid": "c5464485_be324fcd",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 14
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c99e2317_ddbac25f",
         "filename": "python/python_test.go",
         "patchSetId": 4
