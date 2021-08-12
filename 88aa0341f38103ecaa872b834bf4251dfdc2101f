@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db13e56e_ce2783e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-12T14:58:49Z",
+      "side": 1,
+      "message": "@Jin: I deleted the test case you added because AFAIU it tests the exact condition I am removing: that bp2build/soong_build overwrite the same build-globs.ninja file .\n",
+      "revId": "88aa0341f38103ecaa872b834bf4251dfdc2101f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
