@@ -191,6 +191,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f4daa571_85a016c7",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-12T19:42:50Z",
+      "side": 1,
+      "message": "I think I\u0027m not exactly sure I follow :( I\u0027m slightly resistant to modifying the method signature in this fashion...\n\nIn short, based on method signature, \"original label\" has no meaning -- BazelLabelForModuleDepsWithFn just calls `moduleToLabelFn` to do the conversion.. there\u0027s no sense of \"original\"\n\nBut if this is a real pain to circumvent, another refactoring is fine :)",
+      "parentUuid": "3d698950_29820c2d",
+      "range": {
+        "startLine": 102,
+        "startChar": 17,
+        "endLine": 102,
+        "endChar": 62
+      },
+      "revId": "0782e9caf0dcd5ee04441b91a2870a9807304a5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "241378f1_df7c6b7a",
         "filename": "cc/bp2build.go",
         "patchSetId": 2
