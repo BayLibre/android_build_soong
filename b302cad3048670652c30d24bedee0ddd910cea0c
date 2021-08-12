@@ -51,6 +51,24 @@
       "parentUuid": "7c3a22a4_ca2aedb5",
       "revId": "b302cad3048670652c30d24bedee0ddd910cea0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85bfac58_c3045cfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-08-12T00:36:02Z",
+      "side": 1,
+      "message": "Thank you Sean.\n\nJiyong, I think Sean\u0027s answer makes sense.",
+      "parentUuid": "e36875bb_ca5e7fe8",
+      "revId": "b302cad3048670652c30d24bedee0ddd910cea0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
