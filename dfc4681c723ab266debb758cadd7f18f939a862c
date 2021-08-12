@@ -118,6 +118,30 @@
       },
       "revId": "dfc4681c723ab266debb758cadd7f18f939a862c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a4c90fe_1b57c877",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-12T19:28:25Z",
+      "side": 1,
+      "message": "But why do you want to cut multiproduct_kati -\u003e Blueprint dependencies?  It doesn\u0027t depend on any of the big parts of blueprint, just blueprint-pathtools (and transitively blueprint-deptools), which are tiny utility packages that are only in blueprint because they are useful to both blueprint and Soong.",
+      "parentUuid": "8c32ca44_64081d3d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "dfc4681c723ab266debb758cadd7f18f939a862c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
