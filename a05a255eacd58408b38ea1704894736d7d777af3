@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ab51614_2abda032",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-12T21:39:40Z",
+      "side": 1,
+      "message": "Bypassing presubmit because it keeps dying to an unrelated module error",
+      "revId": "a05a255eacd58408b38ea1704894736d7d777af3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
