@@ -469,6 +469,13 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 	ninjaDeps := bootstrap.RunBlueprint(blueprintArgs, bp2buildCtx.Context, configuration)
 	ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
 
+	// Generate out/soong/.bootstrap/build-globs.ninja with the actions to generate flattened globfiles
+	// containing the globs seen during bp2build conversion
+	if blueprintArgs.GlobFile != "" {
+		bootstrapConfig := bootstrap.MakeBootstrapConfig(bootstrap.StageMain, blueprintArgs, blueprintArgs.GlobFile, blueprintArgs.PrimaryBuilderInvocations)
+		bootstrap.WriteBuildGlobsNinjaFile(bootstrapConfig, bp2buildCtx.Context, blueprintArgs, configuration)
+	}
+	// Add the depfile on the expanded globs in out/soong/.primary/globs
 	ninjaDeps = append(ninjaDeps, bootstrap.GlobFileListFiles(configuration)...)
 
 	// Run the code-generation phase to convert BazelTargetModules to BUILD files
