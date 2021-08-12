@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8011c54f_6ceb8cdc",
+        "filename": "ui/build/cleanbuild.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-08-12T08:03:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5325816_07bf91b8",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 31
+      },
+      "revId": "1450857406d9c41df6db3b5d76b84c5c74f7deb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30221477_af05e4cf",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "Indeed, I misremembered! It\u0027s u+ only so it\u0027s not a security risk and you are going to delete them soon after anyway.",
       "parentUuid": "a49b3e18_9d210935",
+      "range": {
+        "startLine": 70,
+        "startChar": 40,
+        "endLine": 70,
+        "endChar": 59
+      },
+      "revId": "1450857406d9c41df6db3b5d76b84c5c74f7deb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f0a0b37_052e94a3",
+        "filename": "ui/build/cleanbuild.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-08-12T08:03:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ee6dc7f_8d5dd96c",
       "range": {
         "startLine": 70,
         "startChar": 40,
