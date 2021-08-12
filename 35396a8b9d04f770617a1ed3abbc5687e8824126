@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd28931f_ef3a2038",
+        "filename": "ui/build/cleanbuild.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-08-12T09:04:44Z",
+      "side": 1,
+      "message": "should this be u+rwx?",
+      "range": {
+        "startLine": 74,
+        "startChar": 34,
+        "endLine": 74,
+        "endChar": 38
+      },
+      "revId": "35396a8b9d04f770617a1ed3abbc5687e8824126",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
