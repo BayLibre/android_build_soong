@@ -144,7 +144,7 @@ EOF
   run_soong
   local ninja_mtime1=$(stat -c "%y" out/soong/build.ninja)
 
-  local glob_deps_file=out/soong/.primary/globs/0.d
+  local glob_deps_file=out/soong/.bootstrap/globs/0.d
 
   if [ -e "$glob_deps_file" ]; then
     fail "Glob deps file unexpectedly written on first build"
@@ -526,18 +526,14 @@ function test_bp2build_smoke {
   [[ -e out/soong/workspace ]] || fail "Bazel workspace not created"
 }
 
-function test_bp2build_generates_fake_ninja_file {
+function test_bp2build_generates_marker_file {
   setup
   create_mock_bazel
 
   run_bp2build
 
-  if [[ ! -f "./out/soong/build.ninja" ]]; then
-    fail "./out/soong/build.ninja was not generated"
-  fi
-
-  if ! grep "build nothing: phony" "./out/soong/build.ninja"; then
-    fail "missing phony nothing target in out/soong/build.ninja"
+  if [[ ! -f "./out/soong/.bootstrap/bp2build_workspace_marker" ]]; then
+    fail "Marker file was not generated"
   fi
 }
 
@@ -727,7 +723,7 @@ test_soong_build_rerun_iff_environment_changes
 test_dump_json_module_graph
 test_write_to_source_tree
 test_bp2build_smoke
-test_bp2build_generates_fake_ninja_file
+test_bp2build_generates_marker_file
 test_bp2build_null_build
 test_bp2build_add_android_bp
 test_bp2build_add_to_glob
