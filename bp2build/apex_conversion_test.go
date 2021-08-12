@@ -153,6 +153,7 @@ apex {
 `,
 		expectedBazelTargets: []string{`apex(
     name = "com.android.apogee",
+    file_contexts = "//system/sepolicy/apex:com.android.apogee-file_contexts",
     manifest = "apogee_manifest.json",
 )`}})
 }
@@ -173,6 +174,7 @@ apex {
 `,
 		expectedBazelTargets: []string{`apex(
     name = "apogee",
+    file_contexts = "//system/sepolicy/apex:apogee-file_contexts",
     manifest = "manifest.json",
 )`}})
 }
