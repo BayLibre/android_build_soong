@@ -87,6 +87,24 @@
       "parentUuid": "85bfac58_c3045cfe",
       "revId": "b302cad3048670652c30d24bedee0ddd910cea0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c163a53e_8912cf86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-08-12T02:07:22Z",
+      "side": 1,
+      "message": "\u003e Then given that we wouldn\u0027t update the camera HAL APEX across different Android releases, it\u0027s fine to have access to the private layouts, IMHO.\n\nSean, you might need to consider Jiyong\u0027s suggestion.\n\n\u003e The C++ interface is also unstable, but this CL makes it possible to treat it stable. \n\nfyi, the other CL in the chain checks that modules with this flag should have SABI checked.",
+      "parentUuid": "ea6983ff_166dd358",
+      "revId": "b302cad3048670652c30d24bedee0ddd910cea0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
