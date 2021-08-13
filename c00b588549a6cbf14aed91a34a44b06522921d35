@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6aa3b21a_174b752d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-13T19:10:41Z",
+      "side": 1,
+      "message": "I\u0027ve run `go test` and `build/bazel/ci/mixed_{libc,droid}.sh` . Could you suggest a decent E2E test?",
+      "parentUuid": "91f25eda_f4ee45c1",
+      "revId": "c00b588549a6cbf14aed91a34a44b06522921d35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06b3e97b_22672719",
         "filename": "python/binary.go",
         "patchSetId": 10
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ea01fc0_00125be7",
+        "filename": "python/binary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-13T19:10:41Z",
+      "side": 1,
+      "message": "I\u0027m unsure; just told it\u0027d be good to check.",
+      "parentUuid": "06b3e97b_22672719",
+      "revId": "c00b588549a6cbf14aed91a34a44b06522921d35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcf52777_9fac5340",
         "filename": "python/binary.go",
         "patchSetId": 10
@@ -48,6 +84,24 @@
       "writtenOn": "2021-08-13T18:32:41Z",
       "side": 1,
       "message": "Might just be faster to say `bazelOuts :\u003d []BazelOutPath{android.PathForBazelOut(ctx, filePath)}`",
+      "revId": "c00b588549a6cbf14aed91a34a44b06522921d35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ff21db4_2f3bd2bf",
+        "filename": "python/binary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-13T19:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcf52777_9fac5340",
       "revId": "c00b588549a6cbf14aed91a34a44b06522921d35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
