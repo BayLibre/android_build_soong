@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b0a0da8_da18833a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-08-13T17:35:34Z",
+      "side": 1,
+      "message": "Per offline discussion, there\u0027s no strong need to restrict this to just rust_test, and not doing so makes the property behave more uniformly across all module types.",
+      "revId": "4f72124397181b3c058077935759746208f2df36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
