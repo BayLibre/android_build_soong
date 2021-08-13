@@ -429,6 +429,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ddf29d45_5fc00678",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-13T18:32:41Z",
+      "side": 1,
+      "message": "The purpose of setting properties / fields in the handler is to emulate the behavior of the classic GenerateAndroidBuildActions function in a bazel-like fashion. \n\nWith your changes to GenerateAndroidBuildActions, we exit early (For example: we don\u0027t call `generatePythonBuildActions`, and therefore dont set `p.srcsZip`.)\n\nWe therefore need to make sure we are setting these fields appropriate in the bazel handler, but from bazel-obtained paths.",
+      "parentUuid": "28419e76_f1a15525",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 14
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c99e2317_ddbac25f",
         "filename": "python/python_test.go",
         "patchSetId": 4

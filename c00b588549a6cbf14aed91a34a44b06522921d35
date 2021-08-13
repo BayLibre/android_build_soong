@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91f25eda_f4ee45c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-13T18:32:41Z",
+      "side": 1,
+      "message": "How have you gone about testing this end to end? (Generally it\u0027s good to test mixed builds logic end to end by incorporating an existing module into a larger build, and ensuring that things continue to build successfully)",
+      "revId": "c00b588549a6cbf14aed91a34a44b06522921d35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06b3e97b_22672719",
+        "filename": "python/binary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-13T18:32:41Z",
+      "side": 1,
+      "message": "Under what conditions will this check trigger?",
+      "revId": "c00b588549a6cbf14aed91a34a44b06522921d35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcf52777_9fac5340",
+        "filename": "python/binary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-13T18:32:41Z",
+      "side": 1,
+      "message": "Might just be faster to say `bazelOuts :\u003d []BazelOutPath{android.PathForBazelOut(ctx, filePath)}`",
+      "revId": "c00b588549a6cbf14aed91a34a44b06522921d35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
