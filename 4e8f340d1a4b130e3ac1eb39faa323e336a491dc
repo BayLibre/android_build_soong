@@ -72,6 +72,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51c60b72_df361a70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-13T14:17:06Z",
+      "side": 1,
+      "message": "Resolved. Will File a bug for post-submit",
+      "parentUuid": "500afab1_3b009074",
+      "revId": "4e8f340d1a4b130e3ac1eb39faa323e336a491dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b26df92e_f7303f8c",
