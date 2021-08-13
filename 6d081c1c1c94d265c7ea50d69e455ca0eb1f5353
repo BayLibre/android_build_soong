@@ -124,6 +124,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fda97c4_3343bb0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-13T12:21:53Z",
+      "side": 1,
+      "message": "Ignoring geotz and core-icu4j in the latest patch.",
+      "parentUuid": "dca50d84_a1aa798a",
+      "revId": "6d081c1c1c94d265c7ea50d69e455ca0eb1f5353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47134597_f1b961fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-13T12:21:53Z",
+      "side": 1,
+      "message": "Moved most of the changes out of this change.",
+      "parentUuid": "31566c16_9f7b6837",
+      "revId": "6d081c1c1c94d265c7ea50d69e455ca0eb1f5353",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe7305eb_c4b7fd9c",
