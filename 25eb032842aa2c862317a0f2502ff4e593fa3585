@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f7d1aa3_c6ce8d6d",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-08-13T15:39:44Z",
+      "side": 1,
+      "message": "Maybe add a comment here describing this?\n\nAlso, why is this a slice? Do we expect that we might invoke CreateBazelTargetModule multiple times for a single module?",
+      "revId": "25eb032842aa2c862317a0f2502ff4e593fa3585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
