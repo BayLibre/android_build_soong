@@ -16,6 +16,24 @@
       "message": "Paul, PTAL. A fresh change without merge conflicts. Failing on aosp_art_module, ndk and build_test targets.",
       "revId": "e7358f7702271d6fae2e9d4dbe20e5fce0b23cb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faf18631_60693790",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-13T14:43:16Z",
+      "side": 1,
+      "message": "I don\u0027t know why the build_test target is failing but the others are failing because they don\u0027t configure PRODUCT_APEX_BOOT_JARS at all. There are lots of builds configured that way so you have to handle them. That is why there is code like http://cs/aosp-master/build/soong/java/bootclasspath_fragment.go?l\u003d294.",
+      "parentUuid": "5b034a9c_62cb7114",
+      "revId": "e7358f7702271d6fae2e9d4dbe20e5fce0b23cb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
