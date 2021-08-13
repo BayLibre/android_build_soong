@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac8a8e1e_981c0d9d",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-13T14:24:15Z",
+      "side": 1,
+      "message": "on reflection, should we include the word CLANG somewhere in both of these?",
+      "range": {
+        "startLine": 358,
+        "startChar": 29,
+        "endLine": 358,
+        "endChar": 44
+      },
+      "revId": "4ae524ca2fecfab6d29785ca232a5d09d87b8969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
