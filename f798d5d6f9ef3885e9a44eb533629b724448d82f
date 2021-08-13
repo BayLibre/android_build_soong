@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49adb93f_5d415d73",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-08-13T07:10:05Z",
+      "side": 0,
+      "message": "\\o/",
+      "range": {
+        "startLine": 532,
+        "startChar": 0,
+        "endLine": 538,
+        "endChar": 71
+      },
+      "revId": "f798d5d6f9ef3885e9a44eb533629b724448d82f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eac1cd93_69931622",
+        "filename": "tests/bp2build_bazel_test.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-08-13T07:10:05Z",
+      "side": 0,
+      "message": "How about repurposing this test to verify that after running soong, running bp2build, then soong again are null builds?",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 64
+      },
+      "revId": "f798d5d6f9ef3885e9a44eb533629b724448d82f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
