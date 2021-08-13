@@ -22,6 +22,30 @@
       },
       "revId": "564946a6a57f7c7ebb20d26f3fc3af3565eb4df2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fe25398_4ec13e37",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3282,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-08-13T04:59:07Z",
+      "side": 1,
+      "message": "Moving the logic into the macro, so no change needed in bp2build.",
+      "parentUuid": "87ac51d3_898320bc",
+      "range": {
+        "startLine": 3282,
+        "startChar": 0,
+        "endLine": 3282,
+        "endChar": 122
+      },
+      "revId": "564946a6a57f7c7ebb20d26f3fc3af3565eb4df2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
