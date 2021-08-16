@@ -142,6 +142,30 @@
       },
       "revId": "dfc4681c723ab266debb758cadd7f18f939a862c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3228e142_3fb2bf1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-16T06:46:30Z",
+      "side": 1,
+      "message": "My line of reasoning was that some code whose job is to zip up bytes should not have a dependency on anything Blueprint because, well, understanding Blueprint is not fundamentally required for zipping things up and it\u0027s thus a surprising dependency edge (cue \"a little bit of duplication is better than a little bit of dependency\")\n\nUnfortunately, it requires a bit more work than I\u0027m prepared to do so I\u0027ll abandon this change and *maybe* take a stab at the aforementioned cutting of the zip-\u003epathtools dependency in my copious free time.",
+      "parentUuid": "0a4c90fe_1b57c877",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 37
+      },
+      "revId": "dfc4681c723ab266debb758cadd7f18f939a862c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
