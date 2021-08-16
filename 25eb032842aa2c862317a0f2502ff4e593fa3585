@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18623347_1377ade2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-08-16T05:54:28Z",
+      "side": 1,
+      "message": "Thanks for simplifying! This is great.",
+      "revId": "25eb032842aa2c862317a0f2502ff4e593fa3585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f7d1aa3_c6ce8d6d",
@@ -14,6 +31,24 @@
       "writtenOn": "2021-08-13T15:39:44Z",
       "side": 1,
       "message": "Maybe add a comment here describing this?\n\nAlso, why is this a slice? Do we expect that we might invoke CreateBazelTargetModule multiple times for a single module?",
+      "revId": "25eb032842aa2c862317a0f2502ff4e593fa3585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0e35aff_b0e98577",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-08-16T05:54:28Z",
+      "side": 1,
+      "message": "The one use case is splitting a module that uses .proto sources into the target, lang_proto_library, and proto_library (see the test below), but one could argue that it should be done in a macro instead as well.\n\nI haven\u0027t found other use cases yet.",
+      "parentUuid": "8f7d1aa3_c6ce8d6d",
       "revId": "25eb032842aa2c862317a0f2502ff4e593fa3585",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
