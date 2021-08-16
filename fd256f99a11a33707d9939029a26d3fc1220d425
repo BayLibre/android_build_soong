@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "257223b4_c64d9ba5",
+        "filename": "sh/sh_binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-16T04:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9498a4f3_ce77e357",
+      "range": {
+        "startLine": 197,
+        "startChar": 19,
+        "endLine": 197,
+        "endChar": 38
+      },
+      "revId": "fd256f99a11a33707d9939029a26d3fc1220d425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8d206fa_eaccbf3e",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-08-12T08:15:44Z",
       "side": 1,
       "message": "Can you please add some comment what is this file for?",
+      "revId": "fd256f99a11a33707d9939029a26d3fc1220d425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63972b5a_3d93cbe2",
+        "filename": "snapshot/host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-16T04:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8d206fa_eaccbf3e",
       "revId": "fd256f99a11a33707d9939029a26d3fc1220d425",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -81,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef4ec2f_59d5e01c",
+        "filename": "snapshot/host.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-16T04:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66323d96_0b828d6c",
+      "range": {
+        "startLine": 34,
+        "startChar": 25,
+        "endLine": 34,
+        "endChar": 35
+      },
+      "revId": "fd256f99a11a33707d9939029a26d3fc1220d425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2745b78_0b330d36",
@@ -94,6 +160,24 @@
       "writtenOn": "2021-08-12T08:15:44Z",
       "side": 1,
       "message": "Can you please add brief comment what is this file for?",
+      "revId": "fd256f99a11a33707d9939029a26d3fc1220d425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49728731_ced82ba6",
+        "filename": "snapshot/host_fake.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-16T04:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2745b78_0b330d36",
       "revId": "fd256f99a11a33707d9939029a26d3fc1220d425",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -121,6 +205,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b16ccf46_dbd4bb37",
+        "filename": "snapshot/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-16T04:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4532537a_b9175845",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 29
+      },
+      "revId": "fd256f99a11a33707d9939029a26d3fc1220d425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cb899a6_fb12e059",
@@ -134,6 +242,30 @@
       "writtenOn": "2021-08-12T08:15:44Z",
       "side": 1,
       "message": "For now it seems better to locate in host.go",
+      "range": {
+        "startLine": 89,
+        "startChar": 5,
+        "endLine": 89,
+        "endChar": 24
+      },
+      "revId": "fd256f99a11a33707d9939029a26d3fc1220d425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8170de95_424a2587",
+        "filename": "snapshot/util.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-16T04:06:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cb899a6_fb12e059",
       "range": {
         "startLine": 89,
         "startChar": 5,
