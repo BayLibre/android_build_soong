@@ -21,24 +21,29 @@ import os
 import sys
 
 from xml.etree.ElementTree import Element, SubElement, tostring
-from symbolfile import ALL_ARCHITECTURES, FUTURE_API_LEVEL, MultiplyDefinedSymbolError, SymbolFileParser
+from symbolfile import (
+    ALL_ARCHITECTURES,
+    FUTURE_API_LEVEL,
+    MultiplyDefinedSymbolError,
+    SymbolFileParser,
+)
 
 
-ROOT_ELEMENT_TAG = 'ndk-library'
-SYMBOL_ELEMENT_TAG = 'symbol'
-ARCHITECTURE_ATTRIBUTE_KEY = 'arch'
-DEPRECATED_ATTRIBUTE_KEY = 'is_deprecated'
-PLATFORM_ATTRIBUTE_KEY = 'is_platform'
-NAME_ATTRIBUTE_KEY = 'name'
-VARIABLE_TAG = 'var'
+ROOT_ELEMENT_TAG = "ndk-library"
+SYMBOL_ELEMENT_TAG = "symbol"
+ARCHITECTURE_ATTRIBUTE_KEY = "arch"
+DEPRECATED_ATTRIBUTE_KEY = "is_deprecated"
+PLATFORM_ATTRIBUTE_KEY = "is_platform"
+NAME_ATTRIBUTE_KEY = "name"
+VARIABLE_TAG = "var"
 EXPOSED_TARGET_TAGS = (
-    'vndk',
-    'apex',
-    'llndk',
+    "vndk",
+    "apex",
+    "llndk",
 )
 API_LEVEL_TAG_PREFIXES = (
-    'introduced=',
-    'introduced-',
+    "introduced=",
+    "introduced-",
 )
 
 
@@ -51,18 +56,19 @@ def parse_tags(tags):
     arch = []
     for tag in tags:
         if tag.startswith(tuple(API_LEVEL_TAG_PREFIXES)):
-            key, _, value = tag.partition('=')
+            key, _, value = tag.partition("=")
             attributes.update({key: value})
         elif tag in ALL_ARCHITECTURES:
             arch.append(tag)
         elif tag in EXPOSED_TARGET_TAGS:
-            attributes.update({tag: 'True'})
-    attributes.update({ARCHITECTURE_ATTRIBUTE_KEY: ','.join(arch)})
+            attributes.update({tag: "True"})
+    attributes.update({ARCHITECTURE_ATTRIBUTE_KEY: ",".join(arch)})
     return attributes
 
 
 class XmlGenerator(object):
     """Output generator that writes parsed symbol file to a xml file."""
+
     def __init__(self, output_file):
         self.output_file = output_file
 
@@ -73,11 +79,15 @@ class XmlGenerator(object):
             if VARIABLE_TAG in version.tags:
                 continue
             version_attributes = parse_tags(version.tags)
-            _, _, postfix = version.name.partition('_')
-            is_platform = postfix == 'PRIVATE' or postfix == 'PLATFORM'
-            is_deprecated = postfix == 'DEPRECATED'
-            version_attributes.update({PLATFORM_ATTRIBUTE_KEY: str(is_platform)})
-            version_attributes.update({DEPRECATED_ATTRIBUTE_KEY: str(is_deprecated)})
+            _, _, postfix = version.name.partition("_")
+            is_platform = postfix in ("PRIVATE", "PLATFORM")
+            is_deprecated = postfix == "DEPRECATED"
+            version_attributes.update(
+                {PLATFORM_ATTRIBUTE_KEY: str(is_platform)}
+            )
+            version_attributes.update(
+                {DEPRECATED_ATTRIBUTE_KEY: str(is_deprecated)}
+            )
             for symbol in version.symbols:
                 if VARIABLE_TAG in symbol.tags:
                     continue
@@ -103,13 +113,20 @@ def parse_args():
     """Parses and returns command line arguments."""
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('symbol_file', type=os.path.realpath, help='Path to symbol file.')
     parser.add_argument(
-        'output_file', type=os.path.realpath,
-        help='The output parsed api coverage file.')
+        "symbol_file", type=os.path.realpath, help="Path to symbol file."
+    )
     parser.add_argument(
-        '--api-map', type=os.path.realpath, required=True,
-        help='Path to the API level map JSON file.')
+        "output_file",
+        type=os.path.realpath,
+        help="The output parsed api coverage file.",
+    )
+    parser.add_argument(
+        "--api-map",
+        type=os.path.realpath,
+        required=True,
+        help="Path to the API level map JSON file.",
+    )
     return parser.parse_args()
 
 
@@ -122,13 +139,15 @@ def main():
 
     with open(args.symbol_file) as symbol_file:
         try:
-            versions = SymbolFileParser(symbol_file, api_map, "", FUTURE_API_LEVEL,
-                                        True, True).parse()
+            versions = SymbolFileParser(
+                symbol_file, api_map, "", FUTURE_API_LEVEL, True, True
+            ).parse()
         except MultiplyDefinedSymbolError as ex:
-            sys.exit('{}: error: {}'.format(args.symbol_file, ex))
+            sys.exit("{}: error: {}".format(args.symbol_file, ex))
 
     generator = XmlGenerator(args.output_file)
     generator.write(versions)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
