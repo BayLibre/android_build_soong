@@ -45,6 +45,30 @@
       },
       "revId": "f798d5d6f9ef3885e9a44eb533629b724448d82f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e0781ba_0d4a7fcf",
+        "filename": "tests/bp2build_bazel_test.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-16T07:19:29Z",
+      "side": 0,
+      "message": "Added another test to bootstrap_test instead since that seems to be where the nullness of null builds is verified.",
+      "parentUuid": "eac1cd93_69931622",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 64
+      },
+      "revId": "f798d5d6f9ef3885e9a44eb533629b724448d82f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
