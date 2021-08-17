@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "49117ccf_e1be1bb4",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-17T17:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1252be13_abe699d9",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 64
+      },
+      "revId": "56e74d8ee33159513e94382f61281ba52e11638d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a95a3f7_29feb2a7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-13T04:03:30Z",
       "side": 1,
       "message": "?\n\nIs this comment about the line above? Or about something that was deleted?",
+      "range": {
+        "startLine": 411,
+        "startChar": 4,
+        "endLine": 411,
+        "endChar": 24
+      },
+      "revId": "56e74d8ee33159513e94382f61281ba52e11638d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f48386bb_0ded5cd6",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-17T17:08:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a95a3f7_29feb2a7",
       "range": {
         "startLine": 411,
         "startChar": 4,
