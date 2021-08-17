@@ -51,6 +51,24 @@
       "parentUuid": "8f7d1aa3_c6ce8d6d",
       "revId": "25eb032842aa2c862317a0f2502ff4e593fa3585",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6f48f4a_1699380b",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-17T20:01:11Z",
+      "side": 1,
+      "message": "Added docs.\n\nwe may choose to handle proto/renderscript/etc by generating multiple modules. In particular, I supported it because we support it now.\n\nI have a bug open to design how we want to handle things like protos/renderscript/etc, but if we don\u0027t need to support multiple at that point, can remove.",
+      "parentUuid": "f0e35aff_b0e98577",
+      "revId": "25eb032842aa2c862317a0f2502ff4e593fa3585",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
