@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "008cb266_5079e684",
+        "filename": "snapshot/host.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-08-17T15:26:22Z",
+      "side": 1,
+      "message": "Why is this needed?",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 88
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09a93022_dae80c39",
+        "filename": "snapshot/host.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2021-08-17T15:26:22Z",
+      "side": 1,
+      "message": "Rather than depending on the concrete type, can we use an interface or a provider for this?",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 2
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
