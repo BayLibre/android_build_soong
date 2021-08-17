@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25573b4a_e4e4a512",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-17T19:19:35Z",
+      "side": 1,
+      "message": "build/bazel/ci/mixed_{libc,droid}.sh are the E2E tests, it is common to mention them in a `Test:` line in a description.",
+      "parentUuid": "6aa3b21a_174b752d",
+      "revId": "c00b588549a6cbf14aed91a34a44b06522921d35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06b3e97b_22672719",
         "filename": "python/binary.go",
         "patchSetId": 10
@@ -73,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5721dfb_215f262b",
+        "filename": "python/binary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-17T19:19:35Z",
+      "side": 1,
+      "message": "NewBinary is also called by python test modules, which haven\u0027t been converted yet.",
+      "parentUuid": "8ea01fc0_00125be7",
+      "revId": "c00b588549a6cbf14aed91a34a44b06522921d35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcf52777_9fac5340",
         "filename": "python/binary.go",
         "patchSetId": 10
@@ -102,6 +138,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "dcf52777_9fac5340",
+      "revId": "c00b588549a6cbf14aed91a34a44b06522921d35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57fe2449_81d85c44",
+        "filename": "python/binary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-17T19:19:35Z",
+      "side": 1,
+      "message": "did you upload this change?",
+      "parentUuid": "1ff21db4_2f3bd2bf",
       "revId": "c00b588549a6cbf14aed91a34a44b06522921d35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

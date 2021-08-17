@@ -477,6 +477,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a2f91545_7ecf0df3",
+        "filename": "python/binary.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-17T19:19:35Z",
+      "side": 1,
+      "message": "Let\u0027s talk about this part in VC, I think it\u0027ll be easier to step through there.",
+      "parentUuid": "783d5288_5fcf74ad",
+      "range": {
+        "startLine": 208,
+        "startChar": 1,
+        "endLine": 208,
+        "endChar": 14
+      },
+      "revId": "f3b27a4af35ae6ff1b775d95043203846992080c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c99e2317_ddbac25f",
         "filename": "python/python_test.go",
         "patchSetId": 4
