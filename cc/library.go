@@ -550,6 +550,8 @@ type libraryDecorator struct {
 	*baseInstaller
 
 	collectedSnapshotHeaders android.Paths
+
+	apiListCoverageXmlPath android.ModuleOutPath
 }
 
 type ccLibraryBazelHandler struct {
@@ -959,12 +961,19 @@ func (library *libraryDecorator) compile(ctx ModuleContext, flags Flags, deps Pa
 			ctx.PropertyErrorf("symbol_file", "%q doesn't have .map.txt suffix", symbolFile)
 			return Objects{}
 		}
+		apiLevel := android.ApiLevelOrPanic(ctx, library.MutatedProperties.StubsVersion)
 		nativeAbiResult := parseNativeAbiDefinition(ctx, symbolFile,
-			android.ApiLevelOrPanic(ctx, library.MutatedProperties.StubsVersion),
+			apiLevel,
 			"--apex")
 		objs := compileStubLibrary(ctx, flags, nativeAbiResult.stubSrc)
 		library.versionScriptPath = android.OptionalPathForPath(
 			nativeAbiResult.versionScript)
+
+		// Parse symbol file to get API list for coverage
+		if apiLevel.IsCurrent() && ctx.PrimaryArch() {
+			library.apiListCoverageXmlPath = parseSymbolFileForAPICoverage(ctx, symbolFile)
+		}
+
 		return objs
 	}
 
