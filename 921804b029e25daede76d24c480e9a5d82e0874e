@@ -45,6 +45,30 @@
       },
       "revId": "921804b029e25daede76d24c480e9a5d82e0874e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de366e9a_ff070cbf",
+        "filename": "rust/image.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-08-17T23:21:16Z",
+      "side": 1,
+      "message": "No longer relevant.",
+      "parentUuid": "a4b62071_372dd253",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 102
+      },
+      "revId": "921804b029e25daede76d24c480e9a5d82e0874e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
