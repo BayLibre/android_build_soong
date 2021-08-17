@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ebb81c0_5cfb2f60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-08-17T18:35:28Z",
+      "side": 1,
+      "message": "+Jiyong as reviewer as Paul is OOO. This reverts a workaround added in https://r.android.com/1738034.",
+      "revId": "0e17c1a57e5b099fad23a5e3e4f629dabd492dc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
