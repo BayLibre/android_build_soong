@@ -77,10 +77,6 @@ var (
 		// TODO: can we remove this now?
 		"-Wno-reserved-id-macro",
 
-		// Workaround for ccache with clang.
-		// See http://petereisentraut.blogspot.com/2011/05/ccache-and-clang.html.
-		"-Wno-unused-command-line-argument",
-
 		// Force clang to always output color diagnostics. Ninja will strip the ANSI
 		// color codes if it is not running in a terminal.
 		"-fcolor-diagnostics",
