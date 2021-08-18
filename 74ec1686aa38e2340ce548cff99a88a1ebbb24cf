@@ -39,6 +39,30 @@
       },
       "revId": "74ec1686aa38e2340ce548cff99a88a1ebbb24cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25f0118f_4b482744",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-18T21:57:37Z",
+      "side": 1,
+      "message": "partially: i\u0027d rather write go than parse json, and i\u0027m going to do this in one of those places\n\npartially: we only have the src properties at this point, not the resolved sources as we haven\u0027t run build actions to resolve them and it would require a big overhaul of adding json data to be able to resolve them. as such, i struggle to justify dumping _only_ the srcs property (not all properties) for _only_ cc instead of dumping all properties but adding all properties would grow the file quite a bit and replicate much of what we\u0027re doing with queryview.\n\nLet me see if I can make do with just queryview for now.",
+      "parentUuid": "a16fbd4e_eadb75d5",
+      "range": {
+        "startLine": 826,
+        "startChar": 1,
+        "endLine": 826,
+        "endChar": 43
+      },
+      "revId": "74ec1686aa38e2340ce548cff99a88a1ebbb24cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
