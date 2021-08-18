@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10cb9be9_62e8bd29",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-18T14:30:49Z",
+      "side": 1,
+      "message": "wdyt about updating ninjaDeps in this function so that callers don\u0027t have to remember to update it themselves?",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 44
+      },
+      "revId": "c2433ed24da5ddf6da9e19616eadb4f9d8d582d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
