@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb26817a_7c04a1c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-18T12:33:36Z",
+      "side": 1,
+      "message": "I would probably have better not to base this on the glob-refactor topic, but if that proves to be controversial, I can always rebase this one.",
+      "revId": "d50557ceb5c3db4e8f76cd1148dd3b7efb64a69c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
