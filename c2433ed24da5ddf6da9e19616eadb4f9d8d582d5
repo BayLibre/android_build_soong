@@ -22,6 +22,30 @@
       },
       "revId": "c2433ed24da5ddf6da9e19616eadb4f9d8d582d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df2da2da_a790bb7d",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-18T18:27:18Z",
+      "side": 1,
+      "message": "How would that work? Updating ninjaDeps entails changing its value, i.e.\n\nninjaDeps \u003d append(ninjaDeps, \u003cstuff\u003e)\n\n, how can I do that in this function?",
+      "parentUuid": "10cb9be9_62e8bd29",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 44
+      },
+      "revId": "c2433ed24da5ddf6da9e19616eadb4f9d8d582d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
