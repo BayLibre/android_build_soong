@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95987aa1_f5329531",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-08-18T17:02:43Z",
+      "side": 1,
+      "message": "This will have to go in downstream branch first to avoid conflicts.",
+      "revId": "f14b4eaa2a57bd9508dc360ca40af4649dc6f0b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
