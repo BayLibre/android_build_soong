@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d26d3f26_109be8f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-18T10:13:13Z",
+      "side": 1,
+      "message": "*now* I know why you suddenly felt the urge to pretty-print the JSON files!",
+      "revId": "74ec1686aa38e2340ce548cff99a88a1ebbb24cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a16fbd4e_eadb75d5",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-18T10:13:13Z",
+      "side": 1,
+      "message": "Why not dump the list of sources here and process them when parsing the JSON data? Then you avoid hard-coding a long list of extensions here.",
+      "range": {
+        "startLine": 826,
+        "startChar": 1,
+        "endLine": 826,
+        "endChar": 43
+      },
+      "revId": "74ec1686aa38e2340ce548cff99a88a1ebbb24cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
