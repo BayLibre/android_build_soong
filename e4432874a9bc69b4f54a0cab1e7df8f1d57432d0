@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dda19400_82283a40",
+        "filename": "java/sdk_library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-08-18T17:00:29Z",
+      "side": 1,
+      "message": "This has changed because \"fred\" and \"quuz\" are added with a usesLibraryDependencyTag as SDK libs via their component libs, so now that I call classLoaderContextForUsesLibDeps they are picked earlier (previously they were picked as transitive SDK library deps). I don\u0027t think the order matters much here --- for libs that are added automatically it has always been whatever it happens to be computed by Soong. It\u0027s ok as long as it agrees with the manifest.",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 112
+      },
+      "revId": "e4432874a9bc69b4f54a0cab1e7df8f1d57432d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
