@@ -46,6 +46,30 @@
       },
       "revId": "c2433ed24da5ddf6da9e19616eadb4f9d8d582d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dec1b268_27979e98",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-18T21:48:53Z",
+      "side": 1,
+      "message": "ugh, go... I think the only option is to pass ninjaDeps, update ninjaDeps, and return ninjaDeps, it\u0027s still a bit non-ideal, but makes a bit more explicit there\u0027s an impact on ninjadeps... since its still non-ideal, up to you.",
+      "parentUuid": "df2da2da_a790bb7d",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 44
+      },
+      "revId": "c2433ed24da5ddf6da9e19616eadb4f9d8d582d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
