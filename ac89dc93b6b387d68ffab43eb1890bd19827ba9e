@@ -3,6 +3,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23c2c130_f00ed804",
+        "filename": "snapshot/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-18T02:54:48Z",
+      "side": 1,
+      "message": "Can we keep a convention to have \"_snapshot\" suffix for the sources that generate snapshot artifacts?",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f42a855_2204982b",
+        "filename": "snapshot/host.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-18T02:54:48Z",
+      "side": 1,
+      "message": "How can users fill the \u0027deps\u0027 property of the host_tools module? Should they list the host modules manually? Or development/vendor_snapshot/update.py collects the required list from the host_fake_snapshot as it does for vendor snapshot?",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 96
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be63dce0_600d89af",
+        "filename": "snapshot/host.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-18T02:54:48Z",
+      "side": 1,
+      "message": "Remove an extra space?",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 4
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fc337b9_325290b6",
+        "filename": "snapshot/host.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-18T02:54:48Z",
+      "side": 1,
+      "message": "I think this is the interface for generating a host snapshot.\nWe may have more interfaces for host snapshots with it. Can we rename it to something like \"HostSnapshotModuleInterface\"?",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "008cb266_5079e684",
         "filename": "snapshot/host.go",
         "patchSetId": 4
@@ -42,6 +134,121 @@
         "startChar": 0,
         "endLine": 191,
         "endChar": 2
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da7a127d_b2d3b2a9",
+        "filename": "snapshot/host_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-18T02:54:48Z",
+      "side": 1,
+      "message": "host_tools?",
+      "range": {
+        "startLine": 24,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5626df7a_5163d98d",
+        "filename": "snapshot/host_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-18T02:54:48Z",
+      "side": 1,
+      "message": "remove an empty line",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 2
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63c52ff5_e394767d",
+        "filename": "snapshot/host_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-18T02:54:48Z",
+      "side": 1,
+      "message": "remove one indentation for these lines.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 25
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b818f98_cf0ca976",
+        "filename": "snapshot/host_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-18T02:54:48Z",
+      "side": 1,
+      "message": "Use tab indentations",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 17
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8590ea01_a4920348",
+        "filename": "snapshot/snapshot_base.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-18T02:54:48Z",
+      "side": 1,
+      "message": "I don\u0027t think these flags can be used in common with all soong module types.\nWe defined these flags to each module because they may have their own configurations. It will be very complicated to collect all the different configuration in one place.\n\nWe may export commonly used variables from here, such as, ModuleName, Filename, Required and so on.. but some are not suitable here (ex. SharedLibs, StaticLibs ...).",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 1
       },
       "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
