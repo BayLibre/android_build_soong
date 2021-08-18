@@ -217,13 +217,6 @@ type ApexDependency interface {
 	ImplementationAndResourcesJars() android.Paths
 }
 
-// Provides build path and install path to DEX jars.
-type UsesLibraryDependency interface {
-	DexJarBuildPath() android.Path
-	DexJarInstallPath() android.Path
-	ClassLoaderContexts() dexpreopt.ClassLoaderContextMap
-}
-
 // TODO(jungjw): Move this to kythe.go once it's created.
 type xref interface {
 	XrefJavaFiles() android.Paths
