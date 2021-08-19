@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88ae020e_0454be4f",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-19T01:37:15Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure that StubsVersion is a different namespace than Android API levels.  For example, http://cs/android/art/sigchainlib/Android.bp?l\u003d63\u0026rcl\u003de35d6eabef3b56d7dc4b4ad78aaeeffcb1025cc4 has versions: [\"1\"], which would result in \"1\" here.  That\u0027s not the same as Android API level 1, that is specifically libsigchain version 1.  android.ApiLevelOrPanic is for parsing Android API levels.",
+      "range": {
+        "startLine": 964,
+        "startChar": 69,
+        "endLine": 964,
+        "endChar": 81
+      },
+      "revId": "c167fae6635e386637cd3d77852afc3686c63261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
