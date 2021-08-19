@@ -63,6 +63,30 @@
       },
       "revId": "74ec1686aa38e2340ce548cff99a88a1ebbb24cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2744ed8_4cff6eb9",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-19T05:55:30Z",
+      "side": 1,
+      "message": "I see. Move along!",
+      "parentUuid": "25f0118f_4b482744",
+      "range": {
+        "startLine": 826,
+        "startChar": 1,
+        "endLine": 826,
+        "endChar": 43
+      },
+      "revId": "74ec1686aa38e2340ce548cff99a88a1ebbb24cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
