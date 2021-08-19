@@ -1,4 +1,4 @@
-# Copyright 2018 Google Inc. All rights reserved.
+# Copyright 2021 Google Inc. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,16 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
-import sys
-from testpkg.util import assert_equal, failed
+_failed = False
 
-# This file checks the visible python state against expected values when run
-# via the py*-cmd prebuilts
+def assert_equal(what, a, b):
+    global _failed # pylint: disable=global-statement
+    if a != b:
+        print("Expected %s('%s') == '%s'" % (what, a, b))
+        _failed = True
 
-assert_equal("__name__", __name__, "testpkg.pycmd_test")
-assert_equal("basename(__file__)", os.path.basename(__file__), "pycmd_test.py")
-assert_equal("__package__", __package__, "testpkg")
-
-if failed():
-    sys.exit(1)
+def failed():
+    return _failed
