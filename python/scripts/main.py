@@ -9,4 +9,4 @@ sys.argv[0] = __loader__.archive
 # when people try to use it.
 sys.executable = None
 
-runpy._run_module_as_main("ENTRY_POINT", alter_argv=False)
+runpy._run_module_as_main("ENTRY_POINT", alter_argv=False) # pylint: disable=protected-access

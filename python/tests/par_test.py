@@ -16,18 +16,18 @@ import os
 import site
 import sys
 
+# This comment ensures that pylint does not raise a duplicate-code error
+# ignore-imports is "no" in the default rc file
+from distutils.util import strtobool
+from testpkg.util import assert_equal, failed
+
 # This file checks the visible python state against expected values when run
 # inside a hermetic par file.
 
-failed = False
-def assert_equal(what, a, b):
-    global failed
-    if a != b:
-        print("Expected %s('%s') == '%s'" % (what, a, b))
-        failed = True
-
 assert_equal("__name__", __name__, "__main__")
-assert_equal("os.path.basename(__file__)", os.path.basename(__file__), "par_test.py")
+assert_equal(
+    "os.path.basename(__file__)", os.path.basename(__file__), "par_test.py"
+)
 
 archive = os.path.dirname(__file__)
 
@@ -42,16 +42,18 @@ assert_equal("site.ENABLE_USER_SITE", site.ENABLE_USER_SITE, None)
 assert_equal("len(sys.path)", len(sys.path), 3)
 assert_equal("sys.path[0]", sys.path[0], archive)
 assert_equal("sys.path[1]", sys.path[1], os.path.join(archive, "internal"))
-assert_equal("sys.path[2]", sys.path[2], os.path.join(archive, "internal", "stdlib"))
+assert_equal(
+    "sys.path[2]", sys.path[2], os.path.join(archive, "internal", "stdlib")
+)
 
-if os.getenv('ARGTEST', False):
+if strtobool(os.getenv('ARGTEST', 'False')):
     assert_equal("len(sys.argv)", len(sys.argv), 3)
     assert_equal("sys.argv[1]", sys.argv[1], "--arg1")
     assert_equal("sys.argv[2]", sys.argv[2], "arg2")
 else:
     assert_equal("len(sys.argv)", len(sys.argv), 1)
 
-if failed:
+if failed():
     sys.exit(1)
 
-import testpkg.par_test
+import testpkg.par_test # pylint: disable=unused-import,wrong-import-position
