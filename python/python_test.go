@@ -355,6 +355,36 @@ func TestPythonModule(t *testing.T) {
 	}
 }
 
+var prepareForPythonBinaryHostWithBazelTest = android.GroupFixturePreparers(
+	PrepareForTestWithPythonLibraryComponents,
+)
+
+/*func TestPythonLibraryModuleWithBazel(t *testing.T) {
+	bp := `
+		python_binary_host {
+			name: "foo",
+			pkg_path: "out/",
+			bazel_module: { label: "//foo/bar:bar" },
+			srcs: [ "foo.py" ],
+		}
+	`
+
+	result := android.GroupFixturePreparers(
+		prepareForPythonBinaryHostWithBazelTest,
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.BazelContext = android.MockBazelContext{
+				OutputBaseDir: "out",
+				LabelToPythonBinary: map[string]string{
+					"//foo/bar:bar": "foo"}}
+		})).RunTestWithBp(t, bp)
+
+	mod := result.Module("foo", "PY3").(*Module)
+
+	android.AssertStringEquals(t, "output binary",
+		"out/execroot/__main__/foo",
+		mod.bazelHandler.(*pythonLibraryBazelHandler).module.srcs[0].String())
+}*/
+
 func expectModule(t *testing.T, ctx *android.TestContext, name, variant, expectedSrcsZip string, expectedPyRunfiles, expectedDepsSrcsZips []string) {
 	module := ctx.ModuleForTests(name, variant)
 
