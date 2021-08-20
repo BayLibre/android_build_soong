@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f577fd0_d66635c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-08-20T20:20:08Z",
+      "side": 1,
+      "message": "I was really hoping it wouldn\u0027t be necessary to fetch the artifacts and we could instead just serve the site out of go/ab... but I haven\u0027t had the time to look at any of this in a while 😞 This is definitely the right thing to do until we can take another pass at that 👍",
+      "revId": "ca68c49621d2653298e2ff4c53523cd904e744df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
