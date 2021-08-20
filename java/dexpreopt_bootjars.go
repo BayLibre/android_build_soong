@@ -499,7 +499,7 @@ func copyBootJarsToPredefinedLocations(ctx android.ModuleContext, srcBootDexJars
 		src := srcBootDexJarsByModule[name]
 		dst := dstBootJarsByModule[name]
 
-		if src == nil {
+		if src == nil && !ctx.Config().AllowMissingDependencies() {
 			ctx.ModuleErrorf("module %s does not provide a dex boot jar", name)
 		} else if dst == nil {
 			ctx.ModuleErrorf("module %s is not part of the boot configuration", name)
