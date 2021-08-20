@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a037da99_91f827af",
+        "filename": "android/variable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-20T20:22:05Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "360e9e8d_2214bb79",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 324,
+        "endChar": 0
+      },
+      "revId": "bf49705608a09c68a243de03dceefb4bff2c343f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b103d01_08335e06",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-18T02:54:48Z",
       "side": 0,
       "message": "The Json flags for vendor and prebuilt snapshots are very different. Can we keep those specific variables in each module?",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 29
+      },
+      "revId": "bf49705608a09c68a243de03dceefb4bff2c343f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4758a047_daff4e38",
+        "filename": "cc/vendor_snapshot.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-20T20:22:05Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "5b103d01_08335e06",
       "range": {
         "startLine": 137,
         "startChar": 0,
