@@ -34,6 +34,24 @@
       "parentUuid": "66e1ad7b_467d1d79",
       "revId": "2c40569db0fe26084e634753586bf5f6b18b36ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5bc0bcc_68f7336d",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-08-23T19:21:30Z",
+      "side": 1,
+      "message": "That it produces the same outputs would be a good start... I now have a P0 bug assigned to me that I have to reproduce locally in order to even see what\u0027s wrong.\n\nBefore: https://ci.android.com/builds/submitted/7632090/build_test/latest (logs.zip)\nAfter:  https://ci.android.com/builds/submitted/7632106/build_test/latest (no logs.zip)",
+      "parentUuid": "fb3365ae_d6d48cfb",
+      "revId": "2c40569db0fe26084e634753586bf5f6b18b36ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
