@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b70aa1_777f1af8",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-23T18:59:14Z",
+      "side": 1,
+      "message": "go style recommends leaving declaration on a single line: go/go-style/decisions#func-formatting",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 82
+      },
+      "revId": "b2259fe6b5e72b7d8b8d5bfddbcce9b3513ad186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
