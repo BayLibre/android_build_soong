@@ -70,6 +70,23 @@
       },
       "revId": "01cad0cddc98d47576c1d14a017d4b6a46c66fcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d597e483_c1fb8cda",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-08-23T18:27:37Z",
+      "side": 0,
+      "message": "The removal of this means that we lost the short error output, so we only get a single line in the failure instead of a snippet of the actual log:\n\n  [ 83% 108/129] aosp_arm\n  FAILED: aosp_arm\n\nvs\n\n  [ 83% 108/129] aosp_arm\n  FAILED: aosp_arm\n  \u003e log\n  \u003e error\n  \u003e log\n  \n(and combined with https://android-review.googlesource.com/c/platform/build/soong/+/1793387 we lost output completely)",
+      "revId": "01cad0cddc98d47576c1d14a017d4b6a46c66fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
