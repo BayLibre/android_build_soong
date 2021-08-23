@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0df4153c_15f82295",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-23T18:39:36Z",
+      "side": 1,
+      "message": "not sure the WithHelper adds any information here, can we remove?",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "26a88a31e4c1cc3cc172e5f5708940b8388aa946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
