@@ -94,6 +94,30 @@
       },
       "revId": "26a88a31e4c1cc3cc172e5f5708940b8388aa946",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30fa1afc_d1a39efb",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-23T19:22:17Z",
+      "side": 1,
+      "message": "This function isn\u0027t the one doing additional registration, my suggestion was to name the existing runBp2buildTestCase (on line 47) to runBp2buildTestCaseWithRegistration, which would allow this one to be named runBp2buildTestCase. Or to somehow indicate that this function is for simple bp2build test cases that don\u0027t require additional configuation?",
+      "parentUuid": "3047431e_7f5be246",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "26a88a31e4c1cc3cc172e5f5708940b8388aa946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
