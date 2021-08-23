@@ -22,6 +22,30 @@
       },
       "revId": "c167fae6635e386637cd3d77852afc3686c63261",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "480da2f2_f9978695",
+        "filename": "cc/library.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2021-08-23T21:27:44Z",
+      "side": 1,
+      "message": "Switch to use library.stubsVersion() \u003d\u003d \"current\"",
+      "parentUuid": "88ae020e_0454be4f",
+      "range": {
+        "startLine": 964,
+        "startChar": 69,
+        "endLine": 964,
+        "endChar": 81
+      },
+      "revId": "c167fae6635e386637cd3d77852afc3686c63261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
