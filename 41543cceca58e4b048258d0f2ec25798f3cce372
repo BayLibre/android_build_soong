@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0feefc4_e0f81d9d",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-23T18:37:51Z",
+      "side": 1,
+      "message": "this file isn\u0027t focused on testing, it is focused on conversion from soong-module to build files for queryview/bp2build. Testing uses some of it to test the results of converting to build files.",
+      "range": {
+        "startLine": 18,
+        "startChar": 35,
+        "endLine": 18,
+        "endChar": 79
+      },
+      "revId": "41543cceca58e4b048258d0f2ec25798f3cce372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deda2a0c_a171e834",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-23T18:37:51Z",
+      "side": 1,
+      "message": "testing",
+      "range": {
+        "startLine": 4,
+        "startChar": 29,
+        "endLine": 4,
+        "endChar": 30
+      },
+      "revId": "41543cceca58e4b048258d0f2ec25798f3cce372",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
