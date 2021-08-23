@@ -16,6 +16,24 @@
       "message": "This broke logs.zip output on the build servers, as the real dist directory is in alternateResultDir (--dist, from $DIST_DIR), not $OUT_DIR/dist. So we\u0027re never getting the full logs.zip file output.",
       "revId": "2c40569db0fe26084e634753586bf5f6b18b36ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb3365ae_d6d48cfb",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-23T19:07:14Z",
+      "side": 1,
+      "message": "How should this behave and how do I check if it does? I didn\u0027t find any specs or test cases and I didn\u0027t find an easy way to manually test failing builds either so I had no choice but to rely on presubmits...",
+      "parentUuid": "66e1ad7b_467d1d79",
+      "revId": "2c40569db0fe26084e634753586bf5f6b18b36ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
