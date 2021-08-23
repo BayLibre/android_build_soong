@@ -26,7 +26,7 @@ import (
 
 func init() {
 	registerPythonLibraryComponents(android.InitRegistrationContext)
-	//android.RegisterBp2BuildMutator("python_library_host", PythonLibraryHostBp2Build)
+	android.RegisterBp2BuildMutator("python_library_host", PythonLibraryHostBp2Build)
 	android.RegisterBp2BuildMutator("python_library", PythonLibraryBp2Build)
 }
 
@@ -36,9 +36,9 @@ func registerPythonLibraryComponents(ctx android.RegistrationContext) {
 }
 
 func PythonLibraryHostFactory() android.Module {
-	module, _ := NewLibrary(android.HostSupported)
+	module := newModule(android.HostSupported, android.MultilibFirst)
 
-	//android.InitBazelModule(module)
+	android.InitBazelModule(module)
 
 	return module.init()
 }
@@ -49,14 +49,22 @@ type bazelPythonLibraryAttributes struct {
 	Python_version string
 }
 
+func PythonLibraryHostBp2Build(ctx android.TopDownMutatorContext) {
+	pythonLibBp2Build(ctx, "python_library_host")
+}
+
 func PythonLibraryBp2Build(ctx android.TopDownMutatorContext) {
+	pythonLibBp2Build(ctx, "python_library")
+}
+
+func pythonLibBp2Build(ctx android.TopDownMutatorContext, modType string) {
 	m, ok := ctx.Module().(*Module)
 	if !ok || !m.ConvertWithBp2build(ctx) {
 		return
 	}
 
-	// a Module can be something other than a python_library
-	if ctx.ModuleType() != "python_library" {
+	// a Module can be something other than a `modType`
+	if ctx.ModuleType() != modType {
 		return
 	}
 
@@ -69,8 +77,8 @@ func PythonLibraryBp2Build(ctx android.TopDownMutatorContext) {
 	var python_version string
 	if py3Enabled && py2Enabled {
 		panic(fmt.Errorf(
-			"error for '%s' module: bp2build's python_library converter does not support "+
-					"converting a module that is enabled for both Python 2 and 3 at the same time.", m.Name()))
+			"error for '%s' module: bp2build's %s converter does not support "+
+				"converting a module that is enabled for both Python 2 and 3 at the same time.", m.Name(), modType))
 	} else if py2Enabled {
 		python_version = "PY2"
 	} else {
@@ -94,64 +102,10 @@ func PythonLibraryBp2Build(ctx android.TopDownMutatorContext) {
 	ctx.CreateBazelTargetModule(m.Name(), props, attrs)
 }
 
-type LibraryProperties struct {
-	// set the name of the output library.
-	Stem *string `android:"arch_variant"`
-
-	// append to the name of the output library.
-	Suffix *string `android:"arch_variant"`
-
-	// list of compatibility suites (for example "cts", "vts") that the module should be
-	// installed into.
-	Test_suites []string `android:"arch_variant"`
-
-	// Flag to indicate whether or not to create test config automatically. If AndroidTest.xml
-	// doesn't exist next to the Android.bp, this attribute doesn't need to be set to true
-	// explicitly.
-	Auto_gen_config *bool
-}
-
-// Currently superfluous, but for future expandability and modularity
-type libraryDecorator struct {
-	libraryProperties LibraryProperties
-}
-
-func NewLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) {
-	module := newModule(hod, android.MultilibFirst)
-	decorator := &libraryDecorator{}
-	return module, decorator
-}
-
 func PythonLibraryFactory() android.Module {
-	module, _ := NewLibrary(android.HostSupported)
+	module := newModule(android.HostAndDeviceSupported, android.MultilibBoth)
 
 	android.InitBazelModule(module)
 
 	return module.init()
 }
-
-// get host interpreter name.
-/*func (library *libraryDecorator) getHostInterpreterName(ctx android.ModuleContext,
-		actualVersion string) string {
-	var interp string
-	switch actualVersion {
-	case pyVersion2:
-		interp = "python2.7"
-	case pyVersion3:
-		interp = "python3"
-	default:
-		panic(fmt.Errorf("unknown Python actualVersion: %q for module: %q.",
-			actualVersion, ctx.ModuleName()))
-	}
-
-	return interp
-}*/
-
-/*func (library *libraryDecorator) getStem(ctx android.ModuleContext) string {
-	stem := ctx.ModuleName()
-	if String(library.libraryProperties.Stem) != "" {
-		stem = String(library.libraryProperties.Stem)
-	}
-
-	return stem + String(library.libraryProperties.Suffix)
-}*/
