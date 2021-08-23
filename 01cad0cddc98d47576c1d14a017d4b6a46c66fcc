@@ -105,6 +105,24 @@
       "parentUuid": "d597e483_c1fb8cda",
       "revId": "01cad0cddc98d47576c1d14a017d4b6a46c66fcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "793268c7_43a5fd1f",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-08-23T19:29:28Z",
+      "side": 0,
+      "message": "Working: https://ci.android.com/builds/pending/P25194722/build_test/latest/logs/build.log\nNon-working: https://ci.android.com/builds/pending/P25226830/build_test/latest/logs/build.log\n\nIt looks like a bunch of other artifacts changed too -- the build.trace.gz is no longer the top-level overview of the multiproduct_kati run, but a specific soong_ui run that was executed (I\u0027d guess the last one)",
+      "parentUuid": "c1c7ce43_b48976cc",
+      "revId": "01cad0cddc98d47576c1d14a017d4b6a46c66fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
