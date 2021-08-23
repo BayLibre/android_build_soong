@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13b3d025_9f5c2eb9",
+        "filename": "snapshot/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-23T01:44:00Z",
+      "side": 1,
+      "message": "I wanted to classify the snapshot generation codes from the base interface codes.\nI thought host snapshot could have the same structure with the other snapshots that have both fake and normal snapshots in one *_snapshot.go file. It is okay not to combine fake and normal snapshot files, but I think adding \u0027_snapshot\u0027 reads better.\nRemoving \u0027_snapshot\u0027 suffix for the other snapshots is also acceptable as you commented.",
+      "parentUuid": "555ee3d1_c3197e60",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f42a855_2204982b",
         "filename": "snapshot/host.go",
         "patchSetId": 4
@@ -142,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f76fc6bd_cacd4ccf",
+        "filename": "snapshot/host.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-23T01:44:00Z",
+      "side": 1,
+      "message": "Thanks!",
+      "parentUuid": "38b3be7d_a79208a8",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 96
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fc337b9_325290b6",
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "The host snapshot uses this interface to get the relative installation path but the modules implementing this are not host specific.",
       "parentUuid": "3fc337b9_325290b6",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf6460d4_0d216c12",
+        "filename": "snapshot/host.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-23T01:44:00Z",
+      "side": 1,
+      "message": "If the modules does not build the host snapshots, why they declare \u0027var _ snapshot.RelativeInstallPath \u003d (*SomeModule)(nil)\u0027?\nI guess this interface is not mandatory for generating host snapshots, but some host modules require this interface?",
+      "parentUuid": "352c40a5_af6d2402",
       "range": {
         "startLine": 46,
         "startChar": 5,
