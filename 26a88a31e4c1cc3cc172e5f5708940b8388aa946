@@ -118,6 +118,30 @@
       },
       "revId": "26a88a31e4c1cc3cc172e5f5708940b8388aa946",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bcfa937_e60dc967",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-23T21:47:58Z",
+      "side": 1,
+      "message": "Ahhh. It is empty registration. I\u0027m hesitant to rename the original runBp2BuildTestCase, but maybe this could be \"*WithoutConfig\"? Or \"*Simple\"? Along the lines of what you suggest.",
+      "parentUuid": "30fa1afc_d1a39efb",
+      "range": {
+        "startLine": 31,
+        "startChar": 24,
+        "endLine": 31,
+        "endChar": 34
+      },
+      "revId": "26a88a31e4c1cc3cc172e5f5708940b8388aa946",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
