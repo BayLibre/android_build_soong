@@ -14,13 +14,18 @@
 
 package bp2build
 
+/*
+For shareable/common functionality between bp2build conversion tests in package
+*/
+
 import (
-	"android/soong/android"
-	"android/soong/bazel"
 	"fmt"
 	"reflect"
 	"sort"
 	"strings"
+
+	"android/soong/android"
+	"android/soong/bazel"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
