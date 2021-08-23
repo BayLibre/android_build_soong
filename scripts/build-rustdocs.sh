@@ -27,5 +27,6 @@ m rustdoc
 
 if [ -n "${DIST_DIR}" ]; then
     mkdir -p ${DIST_DIR}
+    cp -r ${OUT_DIR}/soong/rustdoc $DIST_DIR/rustdoc
     cp ${OUT_DIR}/soong/rustdoc.zip $DIST_DIR
 fi
