@@ -309,6 +309,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e678438_9ff7424b",
+        "filename": "snapshot/host.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-24T02:26:48Z",
+      "side": 1,
+      "message": "Got it.\nI think it\u0027s all right to put the interface in host_snapshot.go because the interface is used only from this code.",
+      "parentUuid": "9d4ffd77_f17a8f6f",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "008cb266_5079e684",
