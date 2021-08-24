@@ -52,6 +52,24 @@
       "parentUuid": "fb3365ae_d6d48cfb",
       "revId": "2c40569db0fe26084e634753586bf5f6b18b36ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "808f5011_9dfb0d03",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-24T12:12:34Z",
+      "side": 1,
+      "message": "Erm, sorry about that breakage. See aosp/1807356 for the fix plus the e-mail thread I started. Unfortunately, the semantics of what to put where are kinda complicated 😞",
+      "parentUuid": "f5bc0bcc_68f7336d",
+      "revId": "2c40569db0fe26084e634753586bf5f6b18b36ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
