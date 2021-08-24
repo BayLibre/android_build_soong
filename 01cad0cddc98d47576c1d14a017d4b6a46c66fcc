@@ -141,6 +141,24 @@
       "parentUuid": "793268c7_43a5fd1f",
       "revId": "01cad0cddc98d47576c1d14a017d4b6a46c66fcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb35451c_0ad9b444",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-08-24T20:49:47Z",
+      "side": 0,
+      "message": "\u003e readable\n\nThe real links to use for readability are the ones directly surfaced to users, not the full build.log:\n\nWorking: https://ci.android.com/builds/pending/P25194722/build_test/latest/logs/build_error.log\nNon-working: https://ci.android.com/builds/pending/P25226830/build_test/latest/logs/build_error.log",
+      "parentUuid": "856e5604_525b7e41",
+      "revId": "01cad0cddc98d47576c1d14a017d4b6a46c66fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
