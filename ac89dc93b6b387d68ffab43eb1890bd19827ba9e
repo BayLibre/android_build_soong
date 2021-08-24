@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2abb2093_d793a1d1",
+        "filename": "snapshot/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-24T01:51:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13b3d025_9f5c2eb9",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f42a855_2204982b",
@@ -251,6 +275,30 @@
       "side": 1,
       "message": "If the modules does not build the host snapshots, why they declare \u0027var _ snapshot.RelativeInstallPath \u003d (*SomeModule)(nil)\u0027?\nI guess this interface is not mandatory for generating host snapshots, but some host modules require this interface?",
       "parentUuid": "352c40a5_af6d2402",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 24
+      },
+      "revId": "ac89dc93b6b387d68ffab43eb1890bd19827ba9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d4ffd77_f17a8f6f",
+        "filename": "snapshot/host.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-08-24T01:51:32Z",
+      "side": 1,
+      "message": "Modules only need to supply a RelativeInstallPath() if they support this option. The host snapshot uses this interface to build a prebuilt module that is capable of replacing the source definition (without the relative installation attribute the source module does not get replaced).  \n\nThe check is added where relative install paths are used to make sure that they are providing the needed interface.  \n\nThe data returned (relative install path) is not host specific and can be used for other use cases which is why I don\u0027t think we should include Host in the interface. \n\nPerhaps it would make more sense to move this interface (RelativeInstallPath) to soong/android/module.go instead of here?",
+      "parentUuid": "bf6460d4_0d216c12",
       "range": {
         "startLine": 46,
         "startChar": 5,
