@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81e901b6_248d081f",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-08-24T21:08:48Z",
+      "side": 1,
+      "message": "This is incomplete, you also need to handle OUT_DIR_COMMON_BASE if you\u0027re going to stop using the config code:\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/config.go;drc\u003d56ebaf35b3314fb2e00ae2b13f0dbb33c6a1ffea;l\u003d144",
+      "revId": "6eeb695fb2fc8eb125377f48758c005fb63de568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "582f2610_8afa2e66",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-08-24T21:08:48Z",
+      "side": 1,
+      "message": "We didn\u0027t use to pass `dist` down into the sub-builds, which meant we didn\u0027t need to modify the DIST_DIR.\n\nWe did pass flag.Args() down though, which I don\u0027t see here.",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 2
+      },
+      "revId": "6eeb695fb2fc8eb125377f48758c005fb63de568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
