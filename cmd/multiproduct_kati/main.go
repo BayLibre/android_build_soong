@@ -170,12 +170,35 @@ func ensureEmptyFileExists(file string, log logger.Logger) {
 	}
 }
 
+func outDirBase() string {
+	outDirBase := os.Getenv("OUT_DIR")
+	if outDirBase == "" {
+		return "out"
+	} else {
+		return outDirBase
+	}
+}
+
+func distDir(outDir string) string {
+	if distDir := os.Getenv("DIST_DIR"); distDir != "" {
+		return filepath.Clean(distDir)
+	} else {
+		return filepath.Join(outDir, "dist")
+	}
+}
+
 func main() {
 	stdio := terminal.StdioImpl{}
 
 	output := terminal.NewStatusOutput(stdio.Stdout(), "", false, false)
 	log := logger.New(output)
 	defer log.Cleanup()
+
+	for _, v := range os.Environ() {
+		log.Println("Environment: " + v)
+	}
+
+	log.Printf("Argv: %v\n", os.Args)
 
 	flag.Parse()
 
@@ -208,13 +231,7 @@ func main() {
 		if !*incremental {
 			name += "-" + time.Now().Format("20060102150405")
 		}
-
-		outDirBase := os.Getenv("OUT_DIR")
-		if outDirBase == "" {
-			outDirBase = "out"
-		}
-
-		outputDir = filepath.Join(outDirBase, name)
+		outputDir = filepath.Join(outDirBase(), name)
 	}
 
 	log.Println("Output directory:", outputDir)
@@ -231,10 +248,12 @@ func main() {
 
 	var configLogsDir string
 	if *alternateResultDir {
-		configLogsDir = filepath.Join(outputDir, "dist/logs")
+		configLogsDir = filepath.Join(distDir(outDirBase()), "logs")
 	} else {
 		configLogsDir = outputDir
 	}
+
+	log.Println("Logs dir: " + configLogsDir)
 
 	os.MkdirAll(configLogsDir, 0777)
 	log.SetOutput(filepath.Join(configLogsDir, "soong.log"))
@@ -348,10 +367,11 @@ func main() {
 			FileArgs: []zip.FileArg{
 				{GlobDir: logsDir, SourcePrefixToStrip: logsDir},
 			},
-			OutputFilePath:   filepath.Join(outputDir, "dist/logs.zip"),
+			OutputFilePath:   filepath.Join(distDir(outDirBase()), "logs.zip"),
 			NumParallelJobs:  runtime.NumCPU(),
 			CompressionLevel: 5,
 		}
+		log.Printf("Logs zip: %v\n", args.OutputFilePath)
 		if err := zip.Zip(args); err != nil {
 			log.Fatalf("Error zipping logs: %v", err)
 		}
@@ -438,6 +458,11 @@ func runSoongUiForProduct(mpctx *mpContext, product string) {
 		"TARGET_BUILD_TYPE=release",
 		"TARGET_BUILD_APPS=",
 		"TARGET_BUILD_UNBUNDLED=")
+
+	if *alternateResultDir {
+		cmd.Env = append(cmd.Env,
+			"DIST_DIR="+filepath.Join(distDir(outDirBase()), product))
+	}
 
 	action := &status.Action{
 		Description: product,
