@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a60c008c_4eb452e6",
+        "filename": "python/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-24T19:32:15Z",
+      "side": 1,
+      "message": "are there other properties we should be converting?",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 5
+      },
+      "revId": "0fbbc7c5868496844c7573fb09b5b1347375971b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc7752dd_e6230348",
+        "filename": "python/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-24T19:32:15Z",
+      "side": 1,
+      "message": "py2 and p3 have different defaults for enabled: https://cs.android.com/android/platform/superproject/+/master:build/soong/python/python.go;l\u003d284,288;drc\u003dd75507fff7f542753f2cc3b2c8b6d022c762650d",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 77
+      },
+      "revId": "0fbbc7c5868496844c7573fb09b5b1347375971b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abe4c342_a7bac39d",
+        "filename": "python/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-24T19:32:15Z",
+      "side": 1,
+      "message": "only binaries/tests are restricted from supporting both py2 and py3, for example: https://cs.android.com/android/platform/superproject/+/master:external/python/google-api-python-client/Android.bp;l\u003d47-69;drc\u003d2dd26090a5a1a37a6bf2aeb53a12c8a9f3a3be9f\n\nhttps://docs.bazel.build/versions/main/be/python.html#py_library has information on Bazel\u0027s defaults and the valid options.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 2
+      },
+      "revId": "0fbbc7c5868496844c7573fb09b5b1347375971b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
