@@ -177,6 +177,12 @@ func main() {
 	log := logger.New(output)
 	defer log.Cleanup()
 
+	for _, v := range os.Environ() {
+		log.Println("ENV: " + v)
+	}
+
+	log.Printf("ARGV: %v\n", os.Args)
+
 	flag.Parse()
 
 	_, cancel := context.WithCancel(context.Background())
