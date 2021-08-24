@@ -123,6 +123,24 @@
       "parentUuid": "c1c7ce43_b48976cc",
       "revId": "01cad0cddc98d47576c1d14a017d4b6a46c66fcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "856e5604_525b7e41",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-24T12:26:08Z",
+      "side": 0,
+      "message": "aosp/1807356 hopefully puts back the artifacts at a reasonable place and the error log as it used to be (although I\u0027d argue that the output of multiproduct_kati was more readable without the error messages)",
+      "parentUuid": "793268c7_43a5fd1f",
+      "revId": "01cad0cddc98d47576c1d14a017d4b6a46c66fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
