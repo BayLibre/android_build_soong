@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a71417c_ca548e5e",
+        "filename": "bp2build/python_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-25T17:50:04Z",
+      "side": 1,
+      "message": "I like that. Lemme draft something accordingly.",
+      "parentUuid": "f5bb0260_d38b0789",
+      "revId": "998391f57f860db6d80f7146f8b33a6ce54e7904",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "57fcca0d_0bcb7be8",
