@@ -16,6 +16,24 @@
       "message": "I\u0027d suggest naming this something consitent like ctx.ModuleName()+\".xml\" instead of making it vary based on the symbol file path name.  If you do want to get the path without the extension I\u0027d suggest:\n\n strings.TrimSuffix(symbolFilePath.Base(), filepath.Ext(symbolFilePath.Base()))",
       "revId": "d22af0c3f5d1528cbd4fd2c96247777640d04621",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e184635_cdae2334",
+        "filename": "cc/coverage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2021-08-25T00:40:50Z",
+      "side": 1,
+      "message": "Tried both. \n\nctx.ModuleName()+\".xml would have \".ndk\" when build ndk_library. For example \"libaaudio.ndk.xml\"\n\nstrings.TrimSuffix(symbolFilePath.Base(), filepath.Ext(symbolFilePath.Base())) would have \".map\" suffix after \".txt\" get trimmed.\n\nctx.baseModuleName()+\".xml\" seems to work well, is there any concerns if I use that?",
+      "parentUuid": "068ad71f_12ee3620",
+      "revId": "d22af0c3f5d1528cbd4fd2c96247777640d04621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
