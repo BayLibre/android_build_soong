@@ -16,10 +16,10 @@
 #
 """Unit tests for test_config_fixer.py."""
 
-import StringIO
 import sys
 import unittest
 from xml.dom import minidom
+import StringIO #pylint: disable=bad-python3-import,import-error
 
 import test_config_fixer
 
@@ -27,72 +27,69 @@ sys.dont_write_bytecode = True
 
 
 class OverwritePackageNameTest(unittest.TestCase):
-  """ Unit tests for overwrite_package_name function """
+    """ Unit tests for overwrite_package_name function """
 
-  manifest = (
-      '<?xml version="1.0" encoding="utf-8"?>\n'
-      '<manifest xmlns:android="http://schemas.android.com/apk/res/android"\n'
-      '    package="com.android.foo">\n'
-      '    <application>\n'
-      '    </application>\n'
-      '</manifest>\n')
+    manifest = (
+        '<?xml version="1.0" encoding="utf-8"?>\n'
+        '<manifest xmlns:android="http://schemas.android.com/apk/res/android"\n'
+        '    package="com.android.foo">\n'
+        '    <application>\n'
+        '    </application>\n'
+        '</manifest>\n')
 
-  test_config = (
-      '<?xml version="1.0" encoding="utf-8"?>\n'
-      '<configuration description="Runs some tests.">\n'
-      '    <option name="test-suite-tag" value="apct"/>\n'
-      '    <target_preparer class="com.android.tradefed.targetprep.suite.SuiteApkInstaller">\n'
-      '        <option name="package" value="%s"/>\n'
-      '    </target_preparer>\n'
-      '    <test class="com.android.tradefed.testtype.AndroidJUnitTest">\n'
-      '        <option name="package" value="%s"/>\n'
-      '        <option name="runtime-hint" value="20s"/>\n'
-      '    </test>\n'
-      '    <test class="com.android.tradefed.testtype.AndroidJUnitTest">\n'
-      '        <option name="package" value="%s"/>\n'
-      '        <option name="runtime-hint" value="15s"/>\n'
-      '    </test>\n'
-      '</configuration>\n')
+    test_config = (
+        '<?xml version="1.0" encoding="utf-8"?>\n<configuration '
+        'description="Runs some tests.">\n    <option name="test-suite-tag" '
+        'value="apct"/>\n    <target_preparer '
+        'class="com.android.tradefed.targetprep.suite.SuiteApkInstaller">\n'
+        '        <option name="package" value="%s"/>\n    </target_preparer>\n'
+        '    <test class="com.android.tradefed.testtype.AndroidJUnitTest">\n'
+        '        <option name="package" value="%s"/>\n        <option '
+        'name="runtime-hint" value="20s"/>\n    </test>\n    <test '
+        'class="com.android.tradefed.testtype.AndroidJUnitTest">\n        '
+        '<option name="package" value="%s"/>\n        <option '
+        'name="runtime-hint" value="15s"/>\n    </test>\n</configuration>\n')
 
-  def test_all(self):
-    doc = minidom.parseString(self.test_config % ("com.android.foo", "com.android.foo", "com.android.bar"))
-    manifest = minidom.parseString(self.manifest)
+    def test_all(self):
+        doc = minidom.parseString(
+            self.test_config %
+            ('com.android.foo', 'com.android.foo', 'com.android.bar'))
+        manifest = minidom.parseString(self.manifest)
 
-    test_config_fixer.overwrite_package_name(doc, manifest, "com.soong.foo")
-    output = StringIO.StringIO()
-    test_config_fixer.write_xml(output, doc)
+        test_config_fixer.overwrite_package_name(doc, manifest, 'com.soong.foo')
+        output = StringIO.StringIO()
+        test_config_fixer.write_xml(output, doc)
 
-    # Only the matching package name in a test node should be updated.
-    expected = self.test_config % ("com.android.foo", "com.soong.foo", "com.android.bar")
-    self.assertEqual(expected, output.getvalue())
+        # Only the matching package name in a test node should be updated.
+        expected = self.test_config % ('com.android.foo', 'com.soong.foo',
+                                       'com.android.bar')
+        self.assertEqual(expected, output.getvalue())
 
 
 class OverwriteTestFileNameTest(unittest.TestCase):
-  """ Unit tests for overwrite_test_file_name function """
+    """ Unit tests for overwrite_test_file_name function """
 
-  test_config = (
-      '<?xml version="1.0" encoding="utf-8"?>\n'
-      '<configuration description="Runs some tests.">\n'
-      '    <target_preparer class="com.android.tradefed.targetprep.TestAppInstallSetup">\n'
-      '        <option name="test-file-name" value="%s"/>\n'
-      '    </target_preparer>\n'
-      '    <test class="com.android.tradefed.testtype.AndroidJUnitTest">\n'
-      '        <option name="package" value="com.android.foo"/>\n'
-      '        <option name="runtime-hint" value="20s"/>\n'
-      '    </test>\n'
-      '</configuration>\n')
+    test_config = (
+        '<?xml version="1.0" encoding="utf-8"?>\n<configuration '
+        'description="Runs some tests.">\n    <target_preparer '
+        'class="com.android.tradefed.targetprep.TestAppInstallSetup">\n'
+        '        <option name="test-file-name" value="%s"/>\n    '
+        '</target_preparer>\n    <test '
+        'class="com.android.tradefed.testtype.AndroidJUnitTest">\n        '
+        '<option name="package" value="com.android.foo"/>\n        <option '
+        'name="runtime-hint" value="20s"/>\n    </test>\n</configuration>\n')
 
-  def test_all(self):
-    doc = minidom.parseString(self.test_config % ("foo.apk"))
+    def test_all(self):
+        doc = minidom.parseString(self.test_config % ('foo.apk'))
 
-    test_config_fixer.overwrite_test_file_name(doc, "bar.apk")
-    output = StringIO.StringIO()
-    test_config_fixer.write_xml(output, doc)
+        test_config_fixer.overwrite_test_file_name(doc, 'bar.apk')
+        output = StringIO.StringIO()
+        test_config_fixer.write_xml(output, doc)
 
-    # Only the matching package name in a test node should be updated.
-    expected = self.test_config % ("bar.apk")
-    self.assertEqual(expected, output.getvalue())
+        # Only the matching package name in a test node should be updated.
+        expected = self.test_config % ('bar.apk')
+        self.assertEqual(expected, output.getvalue())
 
 
 if __name__ == '__main__':
-  unittest.main(verbosity=2)
+    unittest.main(verbosity=2)
