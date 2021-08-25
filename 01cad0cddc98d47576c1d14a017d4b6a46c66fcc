@@ -159,6 +159,24 @@
       "parentUuid": "856e5604_525b7e41",
       "revId": "01cad0cddc98d47576c1d14a017d4b6a46c66fcc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73543a69_e95795fa",
+        "filename": "cmd/multiproduct_kati/main.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-25T12:28:37Z",
+      "side": 0,
+      "message": "Looks like this is fixed in aosp/1807356 ?",
+      "parentUuid": "eb35451c_0ad9b444",
+      "revId": "01cad0cddc98d47576c1d14a017d4b6a46c66fcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
