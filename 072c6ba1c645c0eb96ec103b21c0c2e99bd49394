@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82a1a830_f468e208",
+        "filename": "python/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-25T15:37:25Z",
+      "side": 1,
+      "message": "https://docs.bazel.build/versions/main/be/python.html#py_library as you note below defaults to `PY2ANDPY3` (which differs from py_binary default value), so we need to handle the conversion case where only py3 is enabled.",
+      "parentUuid": "8b23cc5f_2eed2552",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 62
+      },
+      "revId": "072c6ba1c645c0eb96ec103b21c0c2e99bd49394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5fb76b7_e134afae",
         "filename": "python/library.go",
         "patchSetId": 7
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "No, but they use `srcs_version` . Needs to be named the same?",
       "parentUuid": "e5fb76b7_e134afae",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 16
+      },
+      "revId": "072c6ba1c645c0eb96ec103b21c0c2e99bd49394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59f63311_3732952f",
+        "filename": "python/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-25T15:37:25Z",
+      "side": 1,
+      "message": "yes, the field names should correspond to attribute names used by the Bazel build rule.\n\nThe field names/values will be used in the build file, where the only change to the attribute\u0027s field name is performed here: https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/build_conversion.go;l\u003d579;drc\u003d0da7ce6f393c737b8439d209fa178bc6ec76fe8b",
+      "parentUuid": "0c8bba77_37ca110f",
       "range": {
         "startLine": 78,
         "startChar": 2,
