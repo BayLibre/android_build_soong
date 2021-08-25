@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05dfc6ab_342a9d12",
+        "filename": "python/library.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-25T17:31:56Z",
+      "side": 1,
+      "message": "optional: Soong supports module-specific errors that will auto-populate module name (can also populate property line #) and give the error at an appropriate line number\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/module.go;l\u003d92-96;drc\u003d8631cc7327919845c9d9037188cbd483d22ba077",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 45
+      },
+      "revId": "0fc781c7c296ed78c4214333eb17de4a22a8e2e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
