@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fcf45e2_2abb900b",
+        "filename": "bp2build/python_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-25T17:04:36Z",
+      "side": 1,
+      "message": "I\u0027d kinda like to abstract twixt the non-Host and Host cases, but everything in Go -- esp. wrt testing -- seems to prefer duplication, so... 🤷",
+      "revId": "998391f57f860db6d80f7146f8b33a6ce54e7904",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
