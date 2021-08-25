@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba546428_c37d956c",
+        "filename": "bp2build/python_library_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-25T18:17:31Z",
+      "side": 1,
+      "message": "you\u0027ll likely want to add t.Helper() so error messages trace to the right function.\n\nhttps://pkg.go.dev/testing#T.Helper",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 10
+      },
+      "revId": "67fea290de5e8054326a4cee061c1983929dde4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebf5d52b_d397f29f",
+        "filename": "python/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-25T18:17:31Z",
+      "side": 1,
+      "message": "go style prefers defining an interface where it is used to where it\u0027s defined go/go-style/decisions#interfaces",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 62
+      },
+      "revId": "67fea290de5e8054326a4cee061c1983929dde4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
