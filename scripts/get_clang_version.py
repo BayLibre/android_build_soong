@@ -19,32 +19,32 @@ import os
 import re
 import sys
 
+ANDROID_BUILD_TOP = os.environ.get('ANDROID_BUILD_TOP', '.')
+LLVM_PREBUILTS_VERSION = os.environ.get('LLVM_PREBUILTS_VERSION')
 
-ANDROID_BUILD_TOP = os.environ.get("ANDROID_BUILD_TOP", ".")
-LLVM_PREBUILTS_VERSION = os.environ.get("LLVM_PREBUILTS_VERSION")
 
 def get_clang_prebuilts_version(global_go):
-  if LLVM_PREBUILTS_VERSION:
-    return LLVM_PREBUILTS_VERSION
+    if LLVM_PREBUILTS_VERSION:
+        return LLVM_PREBUILTS_VERSION
 
-  # TODO(b/187231324): Get clang version from the json file once it is no longer
-  # hard-coded in global.go
-  if global_go is None:
-      global_go = ANDROID_BUILD_TOP + '/build/soong/cc/config/global.go'
-  with open(global_go) as infile:
-    contents = infile.read()
+    # TODO(b/187231324): Get clang version from the json file once it is no longer
+    # hard-coded in global.go
+    if global_go is None:
+        global_go = ANDROID_BUILD_TOP + '/build/soong/cc/config/global.go'
+    with open(global_go) as infile:
+        contents = infile.read()
 
-  regex_rev = r'\tClangDefaultVersion\s+= "(?P<rev>clang-r\d+[a-z]?\d?)"'
-  match_rev = re.search(regex_rev, contents)
-  if match_rev is None:
-    raise RuntimeError('Parsing clang info failed')
-  return match_rev.group('rev')
+        regex_rev = r'\tClangDefaultVersion\s+= "(?P<rev>clang-r\d+[a-z]?\d?)"'
+        match_rev = re.search(regex_rev, contents)
+        if match_rev is None:
+            raise RuntimeError('Parsing clang info failed')
+        return match_rev.group('rev')
 
 
 def main():
-  global_go = sys.argv[1] if len(sys.argv) > 1 else None
-  print(get_clang_prebuilts_version(global_go));
+    global_go = sys.argv[1] if len(sys.argv) > 1 else None
+    print(get_clang_prebuilts_version(global_go))
 
 
 if __name__ == '__main__':
-  main()
+    main()

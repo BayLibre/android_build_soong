@@ -20,13 +20,15 @@ import unittest
 
 import get_clang_version
 
-class GetClangVersionTest(unittest.TestCase):
-  """Unit tests for get_clang_version."""
 
-  def test_get_clang_version(self):
-    """Test parsing of clang prebuilts version."""
-    self.assertIsNotNone(get_clang_version.get_clang_prebuilts_version())
+class GetClangVersionTest(unittest.TestCase):
+    """Unit tests for get_clang_version."""
+
+    def test_get_clang_version(self):
+        """Test parsing of clang prebuilts version."""
+        self.assertIsNotNone(
+            get_clang_version.get_clang_prebuilts_version(None))
 
 
 if __name__ == '__main__':
-  unittest.main(verbosity=2)
+    unittest.main(verbosity=2)
