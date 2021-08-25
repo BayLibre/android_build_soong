@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bfc332f_33d49710",
+        "filename": "bp2build/python_library_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-25T18:27:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba546428_c37d956c",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 10
+      },
+      "revId": "67fea290de5e8054326a4cee061c1983929dde4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebf5d52b_d397f29f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-25T18:17:31Z",
       "side": 1,
       "message": "go style prefers defining an interface where it is used to where it\u0027s defined go/go-style/decisions#interfaces",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 62
+      },
+      "revId": "67fea290de5e8054326a4cee061c1983929dde4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4a3d143_827cff18",
+        "filename": "python/library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-25T18:27:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebf5d52b_d397f29f",
       "range": {
         "startLine": 53,
         "startChar": 0,
