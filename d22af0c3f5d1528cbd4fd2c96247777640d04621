@@ -34,6 +34,24 @@
       "parentUuid": "068ad71f_12ee3620",
       "revId": "d22af0c3f5d1528cbd4fd2c96247777640d04621",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b292d04_fb35b3df",
+        "filename": "cc/coverage.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-25T00:41:45Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "0e184635_cdae2334",
+      "revId": "d22af0c3f5d1528cbd4fd2c96247777640d04621",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
