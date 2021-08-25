@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b23cc5f_2eed2552",
+        "filename": "python/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-25T15:23:09Z",
+      "side": 1,
+      "message": "? python_binary also has this default, and this says py3 is enabled by default but py2 not:\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/python/python.go;l\u003d284,288;drc\u003dd75507fff7f542753f2cc3b2c8b6d022c762650d",
+      "parentUuid": "5efa9ffd_58255d1b",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 62
+      },
+      "revId": "072c6ba1c645c0eb96ec103b21c0c2e99bd49394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5fb76b7_e134afae",
         "filename": "python/library.go",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-25T15:13:21Z",
       "side": 1,
       "message": "Bazel\u0027s python libraries don\u0027t have an attribute python_version",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 16
+      },
+      "revId": "072c6ba1c645c0eb96ec103b21c0c2e99bd49394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c8bba77_37ca110f",
+        "filename": "python/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-25T15:23:09Z",
+      "side": 1,
+      "message": "No, but they use `srcs_version` . Needs to be named the same?",
+      "parentUuid": "e5fb76b7_e134afae",
       "range": {
         "startLine": 78,
         "startChar": 2,

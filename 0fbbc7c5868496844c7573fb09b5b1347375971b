@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "865e46aa_19f60855",
+        "filename": "python/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-25T15:23:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cd75508e_c66fc157",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 5
+      },
+      "revId": "0fbbc7c5868496844c7573fb09b5b1347375971b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc7752dd_e6230348",
