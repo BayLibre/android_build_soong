@@ -97,6 +97,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "808d09cb_53bbddb3",
+        "filename": "python/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-25T18:14:18Z",
+      "side": 1,
+      "message": "(sounds like the future plan will result in this cleanup)",
+      "parentUuid": "57fcca0d_0bcb7be8",
+      "range": {
+        "startLine": 29,
+        "startChar": 56,
+        "endLine": 29,
+        "endChar": 81
+      },
+      "revId": "998391f57f860db6d80f7146f8b33a6ce54e7904",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "ce187684_3bf46a0f",
         "filename": "python/library.go",
         "patchSetId": 2
