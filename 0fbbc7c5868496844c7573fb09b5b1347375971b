@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1793e58a_8e0fa173",
+        "filename": "python/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-25T15:08:49Z",
+      "side": 1,
+      "message": "(libs as `deps` for py_library) Also possibly `imports`, but our py_binary conversions currently don\u0027t use it either.",
+      "parentUuid": "13a3d598_0dda3dab",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 5
+      },
+      "revId": "0fbbc7c5868496844c7573fb09b5b1347375971b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc7752dd_e6230348",
         "filename": "python/library.go",
         "patchSetId": 5
