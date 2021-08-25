@@ -75,6 +75,29 @@
       },
       "revId": "998391f57f860db6d80f7146f8b33a6ce54e7904",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce187684_3bf46a0f",
+        "filename": "python/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-25T17:54:13Z",
+      "side": 1,
+      "message": "you\u0027d mentioned wanting to dedupe some of the InitBazelModule calls -- perhaps, in another CL, rather than library-specific, could introduce in module.init() such that can reuse for all the module types",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 66
+      },
+      "revId": "998391f57f860db6d80f7146f8b33a6ce54e7904",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
