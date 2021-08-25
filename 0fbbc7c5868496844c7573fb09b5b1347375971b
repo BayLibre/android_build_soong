@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd75508e_c66fc157",
+        "filename": "python/library.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-25T15:13:21Z",
+      "side": 1,
+      "message": "eventually we\u0027ll need to find conversions or migrations for everything, it\u0027s fine to start with a minimal set, but we should track what else needs to be done. Perhaps repurpose the dependent libs bug for binary to also include libraries?\n\nAnd a new bug for imports (or any others) would be fine for now",
+      "parentUuid": "1793e58a_8e0fa173",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 5
+      },
+      "revId": "0fbbc7c5868496844c7573fb09b5b1347375971b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bc7752dd_e6230348",
         "filename": "python/library.go",
         "patchSetId": 5

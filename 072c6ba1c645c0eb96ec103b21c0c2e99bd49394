@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5efa9ffd_58255d1b",
+        "filename": "python/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-25T15:13:21Z",
+      "side": 1,
+      "message": "default differs from binary here",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 62
+      },
+      "revId": "072c6ba1c645c0eb96ec103b21c0c2e99bd49394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5fb76b7_e134afae",
+        "filename": "python/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-25T15:13:21Z",
+      "side": 1,
+      "message": "Bazel\u0027s python libraries don\u0027t have an attribute python_version",
+      "range": {
+        "startLine": 78,
+        "startChar": 2,
+        "endLine": 78,
+        "endChar": 16
+      },
+      "revId": "072c6ba1c645c0eb96ec103b21c0c2e99bd49394",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
