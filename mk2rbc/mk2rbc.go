@@ -102,7 +102,9 @@ var knownFunctions = map[string]struct {
 	"is-android-codename":                 {"!is-android-codename", starlarkTypeBool, hiddenArgNone},         // unused by product config
 	"is-android-codename-in-list":         {"!is-android-codename-in-list", starlarkTypeBool, hiddenArgNone}, // unused by product config
 	"is-board-platform":                   {"!is-board-platform", starlarkTypeBool, hiddenArgNone},
+	"is-board-platform2":                  {"!is-board-platform2", starlarkTypeBool, hiddenArgNone},
 	"is-board-platform-in-list":           {"!is-board-platform-in-list", starlarkTypeBool, hiddenArgNone},
+	"is-board-platform-in-list2":          {"!is-board-latform-in-list2", starlarkTypeBool, hiddenArgNone},
 	"is-chipset-in-board-platform":        {"!is-chipset-in-board-platform", starlarkTypeUnknown, hiddenArgNone},     // unused by product config
 	"is-chipset-prefix-in-board-platform": {"!is-chipset-prefix-in-board-platform", starlarkTypeBool, hiddenArgNone}, // unused by product config
 	"is-not-board-platform":               {"!is-not-board-platform", starlarkTypeBool, hiddenArgNone},               // defined but never used
@@ -1075,6 +1077,18 @@ func (ctx *parseContext) parseCheckFunctionCallResult(directive *mkparser.Direct
 		}
 		return nil
 	}
+	checkIsSomething2Function := func(xCall *callExpr) starlarkExpr {
+		s, ok := maybeString(xValue)
+		if !ok || s != "" {
+			return ctx.newBadExpr(directive,
+				fmt.Sprintf("the result of %s can be compared only to 'true'", xCall.name))
+		}
+		if len(xCall.args) < 1 {
+			return ctx.newBadExpr(directive, "%s requires an argument", xCall.name)
+		}
+		return nil
+	}
+
 	switch x := expr.(type) {
 	case *callExpr:
 		switch x.name {
@@ -1097,6 +1111,15 @@ func (ctx *parseContext) parseCheckFunctionCallResult(directive *mkparser.Direct
 				right: x.args[0],
 				isEq:  !negate,
 			}, true
+		case "is-board-platform2":
+			if xBad := checkIsSomething2Function(x); xBad != nil {
+				return xBad, true
+			}
+			return &eqExpr{
+				left:  &variableRefExpr{ctx.addVariable("TARGET_BOARD_PLATFORM"), false},
+				right: x.args[0],
+				isEq:  negate,
+			}, true
 		case "is-board-platform-in-list":
 			if xBad := checkIsSomethingFunction(x); xBad != nil {
 				return xBad, true
@@ -1105,6 +1128,15 @@ func (ctx *parseContext) parseCheckFunctionCallResult(directive *mkparser.Direct
 				expr:  &variableRefExpr{ctx.addVariable("TARGET_BOARD_PLATFORM"), false},
 				list:  maybeConvertToStringList(x.args[0]),
 				isNot: negate,
+			}, true
+		case "is-board-platform-in-list2":
+			if xBad := checkIsSomething2Function(x); xBad != nil {
+				return xBad, true
+			}
+			return &inExpr{
+				expr:  &variableRefExpr{ctx.addVariable("TARGET_BOARD_PLATFORM"), false},
+				list:  maybeConvertToStringList(x.args[0]),
+				isNot: !negate,
 			}, true
 		case "is-product-in-list":
 			if xBad := checkIsSomethingFunction(x); xBad != nil {

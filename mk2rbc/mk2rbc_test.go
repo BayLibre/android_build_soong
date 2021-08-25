@@ -550,6 +550,24 @@ def init(g, handle):
 `,
 	},
 	{
+		desc:   "is-board2 calls",
+		mkname: "product.mk",
+		in: `
+ifneq (,$(call is-board-platform-in-list2,msm8998)
+else ifeq (,$(call is-board-platform2,copper)
+endif
+`,
+		expected: `load("//build/make/core:product_config.rbc", "rblf")
+
+def init(g, handle):
+  cfg = rblf.cfg(handle)
+  if g.get("TARGET_BOARD_PLATFORM", "") in ["msm8998"]:
+    pass
+  elif g.get("TARGET_BOARD_PLATFORM", "") != "copper":
+    pass
+`,
+	},
+	{
 		desc:   "findstring call",
 		mkname: "product.mk",
 		in: `
