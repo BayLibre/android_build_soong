@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45fbdd26_4c248662",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-26T20:58:40Z",
+      "side": 1,
+      "message": "These aren\u0027t hooked up yet cause i wanted to get opinions on the general direction/ which of these we want to support.",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
