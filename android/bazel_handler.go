@@ -27,9 +27,9 @@ import (
 	"sync"
 
 	"android/soong/bazel/cquery"
+	"android/soong/shared"
 
 	"android/soong/bazel"
-	"android/soong/shared"
 )
 
 type cqueryRequest interface {
@@ -353,7 +353,7 @@ type builtinBazelRunner struct{}
 // the invocation returned an error code.
 func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.RunName, command bazelCommand,
 	extraFlags ...string) (string, string, error) {
-	cmdFlags := []string{"--output_base=" + absolutePath(paths.outputBase), command.command}
+	cmdFlags := []string{"--noautodetect_server_javabase", "--output_base=" + absolutePath(paths.outputBase), command.command}
 	cmdFlags = append(cmdFlags, command.expression)
 	cmdFlags = append(cmdFlags, "--profile="+shared.BazelMetricsFilename(paths, runName))
 
