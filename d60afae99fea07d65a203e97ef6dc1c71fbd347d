@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a847e17_c4655a4c",
+        "filename": "bp2build/python_binary_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-26T22:06:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "454fce70_b1bf088b",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 3
+      },
+      "revId": "d60afae99fea07d65a203e97ef6dc1c71fbd347d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "988f0a68_17c2fefb",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-26T21:28:48Z",
       "side": 1,
       "message": "nit: inconsistent indentation",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 48
+      },
+      "revId": "d60afae99fea07d65a203e97ef6dc1c71fbd347d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f95cc0c7_7b6c8d2f",
+        "filename": "bp2build/python_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-08-26T22:06:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "988f0a68_17c2fefb",
       "range": {
         "startLine": 56,
         "startChar": 0,
