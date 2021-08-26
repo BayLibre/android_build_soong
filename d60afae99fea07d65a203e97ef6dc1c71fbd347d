@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "454fce70_b1bf088b",
+        "filename": "bp2build/python_binary_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-26T21:28:48Z",
+      "side": 1,
+      "message": "nit: inconsistent indentation",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 3
+      },
+      "revId": "d60afae99fea07d65a203e97ef6dc1c71fbd347d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "988f0a68_17c2fefb",
+        "filename": "bp2build/python_library_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-08-26T21:28:48Z",
+      "side": 1,
+      "message": "nit: inconsistent indentation",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 48
+      },
+      "revId": "d60afae99fea07d65a203e97ef6dc1c71fbd347d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
