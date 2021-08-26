@@ -15,6 +15,8 @@
 package java
 
 import (
+	"path/filepath"
+
 	"android/soong/android"
 	"android/soong/dexpreopt"
 )
@@ -74,6 +76,11 @@ func init() {
 	dexpreopt.DexpreoptRunningInSoong = true
 }
 
+func isApexVariant(ctx android.BaseModuleContext) bool {
+	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+	return !apexInfo.IsForPlatform()
+}
+
 func (d *dexpreopter) dexpreoptDisabled(ctx android.BaseModuleContext) bool {
 	global := dexpreopt.GetGlobalConfig(ctx)
 
@@ -101,8 +108,8 @@ func (d *dexpreopter) dexpreoptDisabled(ctx android.BaseModuleContext) bool {
 		return true
 	}
 
-	// Don't preopt APEX variant module
-	if apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo); !apexInfo.IsForPlatform() {
+	// Don't preopt APEX variant module for non-APEX jars, and vice versa.
+	if global.ApexSystemServerJars.ContainsJar(ctx.ModuleName()) != isApexVariant(ctx) {
 		return true
 	}
 
@@ -120,6 +127,18 @@ func dexpreoptToolDepsMutator(ctx android.BottomUpMutatorContext) {
 
 func odexOnSystemOther(ctx android.ModuleContext, installPath android.InstallPath) bool {
 	return dexpreopt.OdexOnSystemOtherByName(ctx.ModuleName(), android.InstallPathToOnDevicePath(ctx, installPath), dexpreopt.GetGlobalConfig(ctx))
+}
+
+type apexSystemServerJarDexpreoptContext struct {
+	android.ModuleContext
+}
+
+func (m *apexSystemServerJarDexpreoptContext) InstallBypassMake() bool {
+	return true
+}
+
+func (m *apexSystemServerJarDexpreoptContext) InstallAllowUnsafePath() bool {
+	return true
 }
 
 func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.WritablePath) {
@@ -149,7 +168,8 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Wr
 
 	global := dexpreopt.GetGlobalConfig(ctx)
 
-	isSystemServerJar := global.SystemServerJars.ContainsJar(ctx.ModuleName())
+	isSystemServerJar := global.SystemServerJars.ContainsJar(ctx.ModuleName()) ||
+		global.ApexSystemServerJars.ContainsJar(ctx.ModuleName())
 
 	bootImage := defaultBootImageConfig(ctx)
 	if global.UseArtImage {
@@ -256,5 +276,27 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Wr
 
 	dexpreoptRule.Build("dexpreopt", "dexpreopt")
 
-	d.builtInstalled = dexpreoptRule.Installs().String()
+	if global.ApexSystemServerJars.ContainsJar(ctx.ModuleName()) {
+		// APEX jars are hidden from make, so we have to manually install the
+		// artifacts in Soong.
+		for _, install := range dexpreoptRule.Installs() {
+			installDir := filepath.Dir(install.To)
+			installBase := filepath.Base(install.To)
+			// Temporarily wrap the original `ctx` into a
+			// `apexSystemServerJarDexpreoptContext` to have it reply true for
+			// `InstallBypassMake` and `InstallAllowUnsafePath`, which are called by
+			// `android.PathForModuleInPartitionInstall`.
+			actx := apexSystemServerJarDexpreoptContext{ctx}
+			installPath := android.PathForModuleInPartitionInstall(&actx, "", installDir)
+			actx.Build(pctx, android.BuildParams{
+				Rule:        android.Cp,
+				Description: "install " + installBase,
+				Output:      installPath.Join(actx, installBase),
+				Input:       install.From,
+			})
+		}
+	} else {
+		// The installs will be handled by make.
+		d.builtInstalled = dexpreoptRule.Installs().String()
+	}
 }
