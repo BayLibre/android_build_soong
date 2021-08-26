@@ -114,6 +114,7 @@ type ModuleInstallPathContext interface {
 	InstallInRoot() bool
 	InstallBypassMake() bool
 	InstallForceOS() (*OsType, *ArchType)
+	InstallAllowUnsafePath() bool
 }
 
 var _ ModuleInstallPathContext = ModuleContext(nil)
@@ -1602,14 +1603,18 @@ func (p InstallPath) PartitionDir() string {
 	}
 }
 
-// Join creates a new InstallPath with paths... joined with the current path. The
-// provided paths... may not use '..' to escape from the current path.
-func (p InstallPath) Join(ctx PathContext, paths ...string) InstallPath {
-	path, err := validatePath(paths...)
+func (p InstallPath) JoinWithOptions(ctx PathContext, allowUnsafePath bool, paths ...string) InstallPath {
+	path, err := validatePathWithOptions(allowUnsafePath, paths...)
 	if err != nil {
 		reportPathError(ctx, err)
 	}
 	return p.withRel(path)
+}
+
+// Join creates a new InstallPath with paths... joined with the current path. The
+// provided paths... may not use '..' to escape from the current path.
+func (p InstallPath) Join(ctx PathContext, paths ...string) InstallPath {
+	return p.JoinWithOptions(ctx, false, paths...)
 }
 
 func (p InstallPath) withRel(rel string) InstallPath {
@@ -1652,14 +1657,14 @@ func osAndArch(ctx ModuleInstallPathContext) (OsType, ArchType) {
 }
 
 func makePathForInstall(ctx ModuleInstallPathContext, os OsType, arch ArchType, partition string, debug bool, pathComponents ...string) InstallPath {
-	ret := pathForInstall(ctx, os, arch, partition, debug, pathComponents...)
+	ret := pathForInstall(ctx, os, arch, partition, debug, ctx.InstallAllowUnsafePath(), pathComponents...)
 	if ctx.InstallBypassMake() && ctx.Config().KatiEnabled() {
 		ret = ret.ToMakePath()
 	}
 	return ret
 }
 
-func pathForInstall(ctx PathContext, os OsType, arch ArchType, partition string, debug bool,
+func pathForInstall(ctx PathContext, os OsType, arch ArchType, partition string, debug bool, allowUnsafePath bool,
 	pathComponents ...string) InstallPath {
 
 	var partionPaths []string
@@ -1687,7 +1692,7 @@ func pathForInstall(ctx PathContext, os OsType, arch ArchType, partition string,
 		partionPaths = append([]string{"debug"}, partionPaths...)
 	}
 
-	partionPath, err := validatePath(partionPaths...)
+	partionPath, err := validatePathWithOptions(allowUnsafePath, partionPaths...)
 	if err != nil {
 		reportPathError(ctx, err)
 	}
@@ -1699,7 +1704,7 @@ func pathForInstall(ctx PathContext, os OsType, arch ArchType, partition string,
 		makePath:     false,
 	}
 
-	return base.Join(ctx, pathComponents...)
+	return base.JoinWithOptions(ctx, allowUnsafePath, pathComponents...)
 }
 
 func pathForNdkOrSdkInstall(ctx PathContext, prefix string, paths []string) InstallPath {
@@ -1826,16 +1831,23 @@ func validateSafePath(pathComponents ...string) (string, error) {
 	return filepath.Join(pathComponents...), nil
 }
 
-// validatePath validates that a path does not include ninja variables, and that
-// each path component does not attempt to leave its component. Returns a joined
-// version of each path component.
-func validatePath(pathComponents ...string) (string, error) {
+func validatePathWithOptions(allowUnsafePath bool, pathComponents ...string) (string, error) {
 	for _, path := range pathComponents {
 		if strings.Contains(path, "$") {
 			return "", fmt.Errorf("Path contains invalid character($): %s", path)
 		}
 	}
+	if allowUnsafePath {
+		return filepath.Join(pathComponents...), nil
+	}
 	return validateSafePath(pathComponents...)
+}
+
+// validatePath validates that a path does not include ninja variables, and that
+// each path component does not attempt to leave its component. Returns a joined
+// version of each path component.
+func validatePath(pathComponents ...string) (string, error) {
+	return validatePathWithOptions(false, pathComponents...)
 }
 
 func PathForPhony(ctx PathContext, phony string) WritablePath {
@@ -1979,6 +1991,10 @@ func (m testModuleInstallPathContext) InstallBypassMake() bool {
 
 func (m testModuleInstallPathContext) InstallForceOS() (*OsType, *ArchType) {
 	return m.forceOS, m.forceArch
+}
+
+func (m testModuleInstallPathContext) InstallAllowUnsafePath() bool {
+	return false
 }
 
 // Construct a minimal ModuleInstallPathContext for testing. Note that baseModuleContext is

@@ -61,8 +61,26 @@ func (library *Library) AndroidMkEntries() []android.AndroidMkEntries {
 	var entriesList []android.AndroidMkEntries
 
 	if library.hideApexVariantFromMake {
-		// For a java library built for an APEX we don't need Make module
-		entriesList = append(entriesList, android.AndroidMkEntries{Disabled: true})
+		// For a java library built for an APEX, we don't need a Make module for
+		// itself, in order to prevent conflicts. However, we need to add their
+		// dexpreopt outputs as sub-modules, if they are preopted.
+		for _, install := range library.dexpreopter.builtInstalledForApex {
+			install := install
+			entriesList = append(entriesList, android.AndroidMkEntries{
+				Class:      "ETC",
+				SubName:    "-dexpreopt-" + install.name,
+				OutputFile: android.OptionalPathForPath(install.outputFilepath),
+				ExtraEntries: []android.AndroidMkExtraEntriesFunc{
+					func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
+						entries.SetString("LOCAL_MODULE_PATH", install.installDirPath.ToMakePath().String())
+						entries.SetString("LOCAL_INSTALLED_MODULE_STEM", install.installBase)
+					},
+				},
+			})
+		}
+		if len(library.dexpreopter.builtInstalledForApex) == 0 {
+			entriesList = append(entriesList, android.AndroidMkEntries{Disabled: true})
+		}
 	} else if !library.ApexModuleBase.AvailableFor(android.AvailableToPlatform) {
 		// Platform variant.  If not available for the platform, we don't need Make module.
 		// May still need to add some additional dependencies.
