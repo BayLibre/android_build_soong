@@ -111,16 +111,16 @@ func dexpreoptDisabled(ctx android.PathContext, global *GlobalConfig, module *Mo
 	}
 
 	// Don't preopt system server jars that are updatable.
-	if global.ApexSystemServerJars.ContainsJar(module.Name) {
-		return true
-	}
+	// if global.ApexSystemServerJars.ContainsJar(module.Name) {
+	// 	return true
+	// }
 
 	// If OnlyPreoptBootImageAndSystemServer=true and module is not in boot class path skip
 	// Also preopt system server jars since selinux prevents system server from loading anything from
 	// /data. If we don't do this they will need to be extracted which is not favorable for RAM usage
 	// or performance. If PreoptExtractedApk is true, we ignore the only preopt boot image options.
 	if global.OnlyPreoptBootImageAndSystemServer && !global.BootJars.ContainsJar(module.Name) &&
-		!global.SystemServerJars.ContainsJar(module.Name) && !module.PreoptExtractedApk {
+		!android.InList(module.Name, AllSystemServerJars(ctx, global)) && !module.PreoptExtractedApk {
 		return true
 	}
 
@@ -205,6 +205,10 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 	module *ModuleConfig, rule *android.RuleBuilder, archIdx int, profile android.WritablePath,
 	appImage bool, generateDM bool) {
 
+	if module.Name == "service-art" || module.Name == "com.android.location.provider" {
+		fmt.Printf("jiakaiz1 dexpreoptCommand %v\n", module.Name)
+	}
+
 	arch := module.Archs[archIdx]
 
 	// HACK: make soname in Soong-generated .odex files match Make.
@@ -216,8 +220,13 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 	}
 
 	toOdexPath := func(path string) string {
+		pathPrefix := filepath.Dir(path)
+		if global.ApexSystemServerJars.ContainsJar(module.Name) {
+			pathPrefix = "/system/framework"
+		}
+
 		return filepath.Join(
-			filepath.Dir(path),
+			pathPrefix,
 			"oat",
 			arch.String(),
 			pathtools.ReplaceExtension(filepath.Base(path), "odex"))
@@ -234,10 +243,14 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 
 	invocationPath := odexPath.ReplaceExtension(ctx, "invocation")
 
-	systemServerJars := NonApexSystemServerJars(ctx, global)
+	systemServerJars := AllSystemServerJars(ctx, global)
 
 	rule.Command().FlagWithArg("mkdir -p ", filepath.Dir(odexPath.String()))
 	rule.Command().FlagWithOutput("rm -f ", odexPath)
+
+	if module.Name == "service-art" || module.Name == "com.android.location.provider" {
+		fmt.Printf("jiakaiz1 systemServerJars: %v\n", systemServerJars)
+	}
 
 	if jarIndex := android.IndexList(module.Name, systemServerJars); jarIndex >= 0 {
 		// System server jars should be dexpreopted together: class loader context of each jar
@@ -262,6 +275,9 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 			Implicits(clcHost).
 			Text("stored_class_loader_context_arg=--stored-class-loader-context=PCL[" + strings.Join(clcTarget, ":") + "]")
 
+		if module.Name == "service-art" || module.Name == "com.android.location.provider" {
+			fmt.Printf("jiakaiz1 %v module.DexPath: %v dexPathHost: %v\n", module.Name, module.DexPath, dexPathHost)
+		}
 	} else {
 		// There are three categories of Java modules handled here:
 		//
@@ -362,7 +378,7 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 
 	if !android.PrefixInList(preoptFlags, "--compiler-filter=") {
 		var compilerFilter string
-		if global.SystemServerJars.ContainsJar(module.Name) {
+		if android.InList(module.Name, systemServerJars) {
 			// Jars of system server, use the product option if it is set, speed otherwise.
 			if global.SystemServerCompilerFilter != "" {
 				compilerFilter = global.SystemServerCompilerFilter
@@ -416,7 +432,7 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 
 	// PRODUCT_SYSTEM_SERVER_DEBUG_INFO overrides WITH_DEXPREOPT_DEBUG_INFO.
 	// PRODUCT_OTHER_JAVA_DEBUG_INFO overrides WITH_DEXPREOPT_DEBUG_INFO.
-	if global.SystemServerJars.ContainsJar(module.Name) {
+	if android.InList(module.Name, systemServerJars) {
 		if global.AlwaysSystemServerDebugInfo {
 			debugInfo = true
 		} else if global.NeverSystemServerDebugInfo {
@@ -462,6 +478,9 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 
 	rule.Install(odexPath, odexInstallPath)
 	rule.Install(vdexPath, vdexInstallPath)
+	if module.Name == "service-art" || module.Name == "com.android.location.provider" || module.Name == "services" {
+		fmt.Printf("jiakaiz1 %v odexPath: %v odexInstallPath: %v\n", module.Name, odexPath, odexInstallPath)
+	}
 }
 
 func shouldGenerateDM(module *ModuleConfig, global *GlobalConfig) bool {
@@ -523,13 +542,13 @@ func makefileMatch(pattern, s string) bool {
 	}
 }
 
-var nonApexSystemServerJarsKey = android.NewOnceKey("nonApexSystemServerJars")
+var allSystemServerJarsKey = android.NewOnceKey("allSystemServerJars")
 
 // TODO: eliminate the superficial global config parameter by moving global config definition
 // from java subpackage to dexpreopt.
-func NonApexSystemServerJars(ctx android.PathContext, global *GlobalConfig) []string {
-	return ctx.Config().Once(nonApexSystemServerJarsKey, func() interface{} {
-		return android.RemoveListFromList(global.SystemServerJars.CopyOfJars(), global.ApexSystemServerJars.CopyOfJars())
+func AllSystemServerJars(ctx android.PathContext, global *GlobalConfig) []string {
+	return ctx.Config().Once(allSystemServerJarsKey, func() interface{} {
+		return append(global.SystemServerJars.CopyOfJars(), global.ApexSystemServerJars.CopyOfJars()...)
 	}).([]string)
 }
 
@@ -556,7 +575,7 @@ func checkSystemServerOrder(ctx android.PathContext, jarIndex int) {
 	mctx, isModule := ctx.(android.ModuleContext)
 	if isModule {
 		config := GetGlobalConfig(ctx)
-		jars := NonApexSystemServerJars(ctx, config)
+		jars := AllSystemServerJars(ctx, config)
 		mctx.WalkDeps(func(dep android.Module, parent android.Module) bool {
 			depIndex := android.IndexList(dep.Name(), jars)
 			if jarIndex < depIndex && !config.BrokenSuboptimalOrderOfSystemServerJars {

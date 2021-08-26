@@ -1907,6 +1907,7 @@ type SdkLibraryImport struct {
 	android.SdkBase
 
 	hiddenAPI
+	dexpreopter
 
 	properties sdkLibraryImportProperties
 
@@ -2142,6 +2143,7 @@ func (module *SdkLibraryImport) OutputFiles(tag string) (android.Paths, error) {
 }
 
 func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	fmt.Printf("jiakaiz1 module.Name(): %v\n", module.Name())
 	module.generateCommonBuildActions(ctx)
 
 	var deapexerModule android.Module
@@ -2196,6 +2198,9 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 		// If this is a variant created for a prebuilt_apex then use the dex implementation jar
 		// obtained from the associated deapexer module.
 		ai := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+		if module.Name() == "prebuilt_service-art" {
+			fmt.Printf("jiakaiz1 ai.ForPrebuiltApex: %v\n", ai.ForPrebuiltApex)
+		}
 		if ai.ForPrebuiltApex {
 			if deapexerModule == nil {
 				// This should never happen as a variant for a prebuilt_apex is only created if the
@@ -2206,10 +2211,19 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 
 			// Get the path of the dex implementation jar from the `deapexer` module.
 			di := ctx.OtherModuleProvider(deapexerModule, android.DeapexerProvider).(android.DeapexerInfo)
-			if dexOutputPath := di.PrebuiltExportPath(apexRootRelativePathToJavaLib(module.BaseModuleName())); dexOutputPath != nil {
+			dexOutputPath := di.PrebuiltExportPath(apexRootRelativePathToJavaLib(module.BaseModuleName()))
+			if module.Name() == "prebuilt_service-art" {
+				fmt.Printf("jiakaiz1 dexOutputPath: %v\n", dexOutputPath)
+			}
+			if dexOutputPath != nil {
 				module.dexJarFile = dexOutputPath
 				module.installFile = android.PathForModuleInPartitionInstall(ctx, "apex", ai.ApexVariationName, apexRootRelativePathToJavaLib(module.BaseModuleName()))
 				module.initHiddenAPI(ctx, dexOutputPath, module.findScopePaths(apiScopePublic).stubsImplPath[0], nil)
+
+				//dexpreoptGlobal := dexpreopt.GetGlobalConfig(ctx)
+				//if dexpreoptGlobal.ApexSystemServerJars.ContainsJar(RemoveOptionalPrebuiltPrefix(module.Name())) {
+					module.dexpreopt(ctx, dexOutputPath)
+				//}
 			} else {
 				// This should never happen as a variant for a prebuilt_apex is only created if the
 				// prebuilt_apex has been configured to export the java library dex file.
