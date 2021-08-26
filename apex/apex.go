@@ -297,6 +297,9 @@ type overridableProperties struct {
 	// List of runtime resource overlays (RROs) that are embedded inside this APEX.
 	Rros []string
 
+	// List of BPF programs inside this APEX bundle.
+	Bpfs []string
+
 	// Names of modules to be overridden. Listed modules can only be other binaries (in Make or
 	// Soong). This does not completely prevent installation of the overridden binaries, but if
 	// both binaries would be installed by default (in PRODUCT_PACKAGES) the other binary will
@@ -813,6 +816,7 @@ func (a *apexBundle) OverridablePropertiesDepsMutator(ctx android.BottomUpMutato
 
 	commonVariation := ctx.Config().AndroidCommonTarget.Variations()
 	ctx.AddFarVariationDependencies(commonVariation, androidAppTag, a.overridableProperties.Apps...)
+	ctx.AddFarVariationDependencies(commonVariation, bpfTag, a.overridableProperties.Bpfs...)
 	ctx.AddFarVariationDependencies(commonVariation, rroTag, a.overridableProperties.Rros...)
 
 	// Dependencies for signing
