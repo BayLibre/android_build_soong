@@ -1505,7 +1505,7 @@ func (j *Import) IsInstallable() bool {
 	return Bool(j.properties.Installable)
 }
 
-var _ dexpreopterInterface = (*Import)(nil)
+var _ DexpreopterInterface = (*Import)(nil)
 
 // java_import imports one or more `.jar` files into the build graph as if they were built by a java_library module.
 //

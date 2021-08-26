@@ -15,13 +15,47 @@
 package java
 
 import (
+	"path/filepath"
+
 	"android/soong/android"
 	"android/soong/dexpreopt"
 )
 
-type dexpreopterInterface interface {
+type DexpreopterInterface interface {
 	IsInstallable() bool // Structs that embed dexpreopter must implement this.
 	dexpreoptDisabled(ctx android.BaseModuleContext) bool
+	DexpreoptBuiltInstalledForApex() []dexpreopterInstall
+}
+
+type dexpreopterInstall struct {
+	// A unique name to distinguish an output from others for the same java
+	// library module. Usually in the form of
+	// `<arch>-<module-name>.odex/vdex/art`.
+	name string
+
+	// The name of the input java module.
+	javaModuleName string
+
+	// The output of the dexpreopter for Make to install.
+	outputFilepath android.Path
+
+	// The directory on the target for the output to install to.
+	installDirPath android.InstallPath
+
+	// The base file name (the last segment of the path) for the output to install
+	// as.
+	installBase string
+}
+
+// The full module name of the output in the Make file.
+func (install *dexpreopterInstall) FullModuleName() string {
+	return install.javaModuleName + install.SubModuleName()
+}
+
+// The sub-module name of the output in the Make file (the name excluding the
+// java module name).
+func (install *dexpreopterInstall) SubModuleName() string {
+	return "-dexpreopt-" + install.name
 }
 
 type dexpreopter struct {
@@ -39,7 +73,8 @@ type dexpreopter struct {
 	enforceUsesLibs     bool
 	classLoaderContexts dexpreopt.ClassLoaderContextMap
 
-	builtInstalled string
+	builtInstalled        string
+	builtInstalledForApex []dexpreopterInstall
 
 	// The config is used for two purposes:
 	// - Passing dexpreopt information about libraries from Soong to Make. This is needed when
@@ -74,6 +109,11 @@ func init() {
 	dexpreopt.DexpreoptRunningInSoong = true
 }
 
+func isApexVariant(ctx android.BaseModuleContext) bool {
+	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+	return !apexInfo.IsForPlatform()
+}
+
 func (d *dexpreopter) dexpreoptDisabled(ctx android.BaseModuleContext) bool {
 	global := dexpreopt.GetGlobalConfig(ctx)
 
@@ -93,7 +133,7 @@ func (d *dexpreopter) dexpreoptDisabled(ctx android.BaseModuleContext) bool {
 		return true
 	}
 
-	if !ctx.Module().(dexpreopterInterface).IsInstallable() {
+	if !ctx.Module().(DexpreopterInterface).IsInstallable() {
 		return true
 	}
 
@@ -101,8 +141,8 @@ func (d *dexpreopter) dexpreoptDisabled(ctx android.BaseModuleContext) bool {
 		return true
 	}
 
-	// Don't preopt APEX variant module
-	if apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo); !apexInfo.IsForPlatform() {
+	// Don't preopt APEX variant module for non-APEX jars, and vice versa.
+	if global.ApexSystemServerJars.ContainsJar(ctx.ModuleName()) != isApexVariant(ctx) {
 		return true
 	}
 
@@ -112,7 +152,7 @@ func (d *dexpreopter) dexpreoptDisabled(ctx android.BaseModuleContext) bool {
 }
 
 func dexpreoptToolDepsMutator(ctx android.BottomUpMutatorContext) {
-	if d, ok := ctx.Module().(dexpreopterInterface); !ok || d.dexpreoptDisabled(ctx) {
+	if d, ok := ctx.Module().(DexpreopterInterface); !ok || d.dexpreoptDisabled(ctx) {
 		return
 	}
 	dexpreopt.RegisterToolDeps(ctx)
@@ -120,6 +160,14 @@ func dexpreoptToolDepsMutator(ctx android.BottomUpMutatorContext) {
 
 func odexOnSystemOther(ctx android.ModuleContext, installPath android.InstallPath) bool {
 	return dexpreopt.OdexOnSystemOtherByName(ctx.ModuleName(), android.InstallPathToOnDevicePath(ctx, installPath), dexpreopt.GetGlobalConfig(ctx))
+}
+
+type apexSystemServerJarDexpreoptContext struct {
+	android.ModuleContext
+}
+
+func (m *apexSystemServerJarDexpreoptContext) InstallAllowUnsafePath() bool {
+	return true
 }
 
 func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.WritablePath) {
@@ -149,7 +197,8 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Wr
 
 	global := dexpreopt.GetGlobalConfig(ctx)
 
-	isSystemServerJar := global.SystemServerJars.ContainsJar(ctx.ModuleName())
+	isSystemServerJar := global.SystemServerJars.ContainsJar(ctx.ModuleName()) ||
+		global.ApexSystemServerJars.ContainsJar(ctx.ModuleName())
 
 	bootImage := defaultBootImageConfig(ctx)
 	if global.UseArtImage {
@@ -256,5 +305,42 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Wr
 
 	dexpreoptRule.Build("dexpreopt", "dexpreopt")
 
-	d.builtInstalled = dexpreoptRule.Installs().String()
+	if global.ApexSystemServerJars.ContainsJar(ctx.ModuleName()) {
+		// APEX variants of java libraries are hidden from Make, so their dexpreopt
+		// outputs need special handling. Currently, for APEX variants of java
+		// libraries, only those in the system server classpath are handled here.
+		// Preopting of boot classpath jars in the ART APEX are handled in a
+		// separate place, and other jars are not preopted.
+		for _, install := range dexpreoptRule.Installs() {
+			installDir := filepath.Dir(install.To)
+			installBase := filepath.Base(install.To)
+			arch := filepath.Base(installDir)
+			// Temporarily wrap the original `ctx` into a
+			// `apexSystemServerJarDexpreoptContext` to have it reply true for
+			// `InstallAllowUnsafePath`, which is called by
+			// `android.PathForModuleInPartitionInstall`.
+			actx := apexSystemServerJarDexpreoptContext{ctx}
+			installPath := android.PathForModuleInPartitionInstall(&actx,
+				"",
+				installDir)
+			// The installs will be handled by Make as sub-modules of the java
+			// library.
+			d.builtInstalledForApex = append(d.builtInstalledForApex,
+				dexpreopterInstall{
+					name:           arch + "-" + installBase,
+					javaModuleName: ctx.ModuleName(),
+					outputFilepath: install.From,
+					installDirPath: installPath,
+					installBase:    installBase,
+				})
+		}
+	} else {
+		// The installs will be handled by Make as LOCAL_SOONG_BUILT_INSTALLED of
+		// the java library module.
+		d.builtInstalled = dexpreoptRule.Installs().String()
+	}
+}
+
+func (d *dexpreopter) DexpreoptBuiltInstalledForApex() []dexpreopterInstall {
+	return d.builtInstalledForApex
 }
