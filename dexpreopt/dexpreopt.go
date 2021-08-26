@@ -110,17 +110,13 @@ func dexpreoptDisabled(ctx android.PathContext, global *GlobalConfig, module *Mo
 		return true
 	}
 
-	// Don't preopt system server jars that are updatable.
-	if global.ApexSystemServerJars.ContainsJar(module.Name) {
-		return true
-	}
-
 	// If OnlyPreoptBootImageAndSystemServer=true and module is not in boot class path skip
 	// Also preopt system server jars since selinux prevents system server from loading anything from
 	// /data. If we don't do this they will need to be extracted which is not favorable for RAM usage
 	// or performance. If PreoptExtractedApk is true, we ignore the only preopt boot image options.
 	if global.OnlyPreoptBootImageAndSystemServer && !global.BootJars.ContainsJar(module.Name) &&
-		!global.SystemServerJars.ContainsJar(module.Name) && !module.PreoptExtractedApk {
+			!android.InList(module.Name, AllSystemServerJars(ctx, global)) &&
+			!module.PreoptExtractedApk {
 		return true
 	}
 
@@ -216,8 +212,13 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 	}
 
 	toOdexPath := func(path string) string {
+		pathPrefix := filepath.Dir(path)
+		if global.ApexSystemServerJars.ContainsJar(module.Name) {
+			pathPrefix = "/system/framework"
+		}
+
 		return filepath.Join(
-			filepath.Dir(path),
+			pathPrefix,
 			"oat",
 			arch.String(),
 			pathtools.ReplaceExtension(filepath.Base(path), "odex"))
@@ -234,7 +235,7 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 
 	invocationPath := odexPath.ReplaceExtension(ctx, "invocation")
 
-	systemServerJars := NonApexSystemServerJars(ctx, global)
+	systemServerJars := AllSystemServerJars(ctx, global)
 
 	rule.Command().FlagWithArg("mkdir -p ", filepath.Dir(odexPath.String()))
 	rule.Command().FlagWithOutput("rm -f ", odexPath)
@@ -362,7 +363,7 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 
 	if !android.PrefixInList(preoptFlags, "--compiler-filter=") {
 		var compilerFilter string
-		if global.SystemServerJars.ContainsJar(module.Name) {
+		if android.InList(module.Name, systemServerJars) {
 			// Jars of system server, use the product option if it is set, speed otherwise.
 			if global.SystemServerCompilerFilter != "" {
 				compilerFilter = global.SystemServerCompilerFilter
@@ -416,7 +417,7 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 
 	// PRODUCT_SYSTEM_SERVER_DEBUG_INFO overrides WITH_DEXPREOPT_DEBUG_INFO.
 	// PRODUCT_OTHER_JAVA_DEBUG_INFO overrides WITH_DEXPREOPT_DEBUG_INFO.
-	if global.SystemServerJars.ContainsJar(module.Name) {
+	if android.InList(module.Name, systemServerJars) {
 		if global.AlwaysSystemServerDebugInfo {
 			debugInfo = true
 		} else if global.NeverSystemServerDebugInfo {
@@ -523,13 +524,14 @@ func makefileMatch(pattern, s string) bool {
 	}
 }
 
-var nonApexSystemServerJarsKey = android.NewOnceKey("nonApexSystemServerJars")
+var allSystemServerJarsKey = android.NewOnceKey("allSystemServerJars")
 
 // TODO: eliminate the superficial global config parameter by moving global config definition
 // from java subpackage to dexpreopt.
-func NonApexSystemServerJars(ctx android.PathContext, global *GlobalConfig) []string {
-	return ctx.Config().Once(nonApexSystemServerJarsKey, func() interface{} {
-		return android.RemoveListFromList(global.SystemServerJars.CopyOfJars(), global.ApexSystemServerJars.CopyOfJars())
+func AllSystemServerJars(ctx android.PathContext, global *GlobalConfig) []string {
+	return ctx.Config().Once(allSystemServerJarsKey, func() interface{} {
+		return append(global.SystemServerJars.CopyOfJars(),
+								  global.ApexSystemServerJars.CopyOfJars()...)
 	}).([]string)
 }
 
@@ -556,7 +558,7 @@ func checkSystemServerOrder(ctx android.PathContext, jarIndex int) {
 	mctx, isModule := ctx.(android.ModuleContext)
 	if isModule {
 		config := GetGlobalConfig(ctx)
-		jars := NonApexSystemServerJars(ctx, config)
+		jars := AllSystemServerJars(ctx, config)
 		mctx.WalkDeps(func(dep android.Module, parent android.Module) bool {
 			depIndex := android.IndexList(dep.Name(), jars)
 			if jarIndex < depIndex && !config.BrokenSuboptimalOrderOfSystemServerJars {

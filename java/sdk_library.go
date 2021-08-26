@@ -1907,6 +1907,7 @@ type SdkLibraryImport struct {
 	android.SdkBase
 
 	hiddenAPI
+	dexpreopter
 
 	properties sdkLibraryImportProperties
 
@@ -2206,10 +2207,12 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 
 			// Get the path of the dex implementation jar from the `deapexer` module.
 			di := ctx.OtherModuleProvider(deapexerModule, android.DeapexerProvider).(android.DeapexerInfo)
-			if dexOutputPath := di.PrebuiltExportPath(apexRootRelativePathToJavaLib(module.BaseModuleName())); dexOutputPath != nil {
+			dexOutputPath := di.PrebuiltExportPath(apexRootRelativePathToJavaLib(module.BaseModuleName()))
+			if dexOutputPath != nil {
 				module.dexJarFile = dexOutputPath
 				module.installFile = android.PathForModuleInPartitionInstall(ctx, "apex", ai.ApexVariationName, apexRootRelativePathToJavaLib(module.BaseModuleName()))
 				module.initHiddenAPI(ctx, dexOutputPath, module.findScopePaths(apiScopePublic).stubsImplPath[0], nil)
+				module.dexpreopt(ctx, dexOutputPath)
 			} else {
 				// This should never happen as a variant for a prebuilt_apex is only created if the
 				// prebuilt_apex has been configured to export the java library dex file.

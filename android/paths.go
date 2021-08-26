@@ -1817,7 +1817,7 @@ func validateSafePath(pathComponents ...string) (string, error) {
 	for _, path := range pathComponents {
 		path := filepath.Clean(path)
 		if path == ".." || strings.HasPrefix(path, "../") || strings.HasPrefix(path, "/") {
-			return "", fmt.Errorf("Path is outside directory: %s", path)
+			// return "", fmt.Errorf("Path is outside directory: %s", path)
 		}
 	}
 	// TODO: filepath.Join isn't necessarily correct with embedded ninja
