@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000014786241",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1809498?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "2367d87a_fcd357c5",
+          "description": "Change to \"scripts/conv_linker_config.py\"",
+          "replacements": [
+            {
+              "path": "scripts/conv_linker_config.py",
+              "range": {
+                "startLine": 182,
+                "startChar": 14,
+                "endLine": 182,
+                "endChar": 20
+              },
+              "replacement": "Output"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "9ef295cf_1df45b94",
+        "filename": "scripts/conv_linker_config.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-08-26T00:49:54Z",
+      "side": 1,
+      "message": "Common typo found: \"Ouptut\" -- should it be \"Output\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 182,
+        "startChar": 14,
+        "endLine": 182,
+        "endChar": 20
+      },
+      "revId": "d6d255f3909bf5a487b6408ad72fa32e6c62012e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
