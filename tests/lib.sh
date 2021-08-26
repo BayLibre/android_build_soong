@@ -114,6 +114,7 @@ function create_mock_bazel() {
   symlink_directory prebuilts/bazel
   symlink_directory prebuilts/jdk
   symlink_directory external/bazel-skylib
+  symlink_directory external/stardoc
 
   symlink_file WORKSPACE
   symlink_file BUILD
