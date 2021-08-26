@@ -417,6 +417,7 @@ type ModuleContext interface {
 	InstallInVendor() bool
 	InstallBypassMake() bool
 	InstallForceOS() (*OsType, *ArchType)
+	InstallAllowUnsafePath() bool
 
 	RequiredModuleNames() []string
 	HostRequiredModuleNames() []string
@@ -2720,6 +2721,10 @@ func (m *moduleContext) InstallBypassMake() bool {
 
 func (m *moduleContext) InstallForceOS() (*OsType, *ArchType) {
 	return m.module.InstallForceOS()
+}
+
+func (m *moduleContext) InstallAllowUnsafePath() bool {
+	return false
 }
 
 func (m *moduleContext) InstallInVendor() bool {
