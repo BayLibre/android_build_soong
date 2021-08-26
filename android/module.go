@@ -417,6 +417,7 @@ type ModuleContext interface {
 	InstallInVendor() bool
 	InstallBypassMake() bool
 	InstallForceOS() (*OsType, *ArchType)
+	InstallAllowUnsafePath() bool
 
 	RequiredModuleNames() []string
 	HostRequiredModuleNames() []string
@@ -987,12 +988,12 @@ const (
 	DeviceSupported = deviceSupported | deviceDefault
 
 	// By default, _only_ device variant is built. Device variant can be disabled with `device_supported: false`
-    // Host and HostCross are disabled by default and can be enabled with `host_supported: true`
+	// Host and HostCross are disabled by default and can be enabled with `host_supported: true`
 	HostAndDeviceSupported = hostSupported | hostCrossSupported | deviceSupported | deviceDefault
 
 	// Host, HostCross, and Device are built by default.
-    // Building Device can be disabled with `device_supported: false`
-    // Building Host and HostCross can be disabled with `host_supported: false`
+	// Building Device can be disabled with `device_supported: false`
+	// Building Host and HostCross can be disabled with `host_supported: false`
 	HostAndDeviceDefault = hostSupported | hostCrossSupported | hostDefault |
 		deviceSupported | deviceDefault
 
@@ -2723,6 +2724,10 @@ func (m *moduleContext) InstallBypassMake() bool {
 
 func (m *moduleContext) InstallForceOS() (*OsType, *ArchType) {
 	return m.module.InstallForceOS()
+}
+
+func (m *moduleContext) InstallAllowUnsafePath() bool {
+	return false
 }
 
 func (m *moduleContext) InstallInVendor() bool {
