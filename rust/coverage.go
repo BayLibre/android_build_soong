@@ -58,8 +58,9 @@ func (cov *coverage) flags(ctx ModuleContext, flags Flags, deps PathDeps) (Flags
 		flags.RustFlags = append(flags.RustFlags,
 			"-Z instrument-coverage", "-g")
 		flags.LinkFlags = append(flags.LinkFlags,
-			profileInstrFlag, "-g", coverage.OutputFile().Path().String(), "-Wl,--wrap,open",
-			coverageVersionScript)
+			profileInstrFlag, "-g",
+			"-Wl,--whole-archive", coverage.OutputFile().Path().String(), "-Wl,--no-whole-archive",
+			"-Wl,--wrap,open", coverageVersionScript)
 		deps.StaticLibs = append(deps.StaticLibs, coverage.OutputFile().Path())
 	}
 
