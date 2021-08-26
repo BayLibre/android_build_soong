@@ -61,8 +61,8 @@ type Bazelable interface {
 	HandcraftedLabel() string
 	GetBazelLabel(ctx BazelConversionPathContext, module blueprint.Module) string
 	ConvertWithBp2build(ctx BazelConversionPathContext) bool
+	convertWithBp2build(ctx BazelConversionPathContext, module blueprint.Module) bool
 	GetBazelBuildFileContents(c Config, path, name string) (string, error)
-	ConvertedToBazel(ctx BazelConversionPathContext) bool
 }
 
 // BazelModule is a lightweight wrapper interface around Module for Bazel-convertible modules.
@@ -184,8 +184,7 @@ var (
 		"libc_malloc_debug",           // http://b/186824339, cc_library_static, depends on //system/libbase:libbase (http://b/186823646)
 		"libc_malloc_debug_backtrace", // http://b/186824112, cc_library_static, depends on //external/libcxxabi:libc++demangle (http://b/186823773)
 
-		"libcutils",         // http://b/186827426, cc_library, depends on //system/core/libprocessgroup:libprocessgroup_headers (http://b/186826841)
-		"libcutils_sockets", // http://b/186826853, cc_library, depends on //system/libbase:libbase (http://b/186826479)
+		"libcutils", // http://b/186827426, cc_library, depends on //system/core/libprocessgroup:libprocessgroup_headers (http://b/186826841)
 
 		"liblinker_debuggerd_stub", // http://b/186824327, cc_library_static, depends on //external/zlib:libz (http://b/186823782)
 		//                                                               also depends on //system/libziparchive:libziparchive (http://b/186823656)
@@ -285,32 +284,62 @@ func (b *BazelModuleBase) MixedBuildsEnabled(ctx BazelConversionPathContext) boo
 	if !ctx.Config().BazelContext.BazelEnabled() {
 		return false
 	}
-	if len(b.GetBazelLabel(ctx, ctx.Module())) == 0 {
+	if !convertedToBazel(ctx, ctx.Module()) {
 		return false
 	}
+	m := ctx.Module()
+	bModule, ok := m.(Bazelable)
+	if !ok {
+		return false
+	}
+
+	if bModule.HasHandcraftedLabel() {
+		return true
+	}
+
+	name := m.Name()
+	dir := ctx.OtherModuleDir(m)
+	if _, ok = ctx.Config().bp2buildModuleConverted.Load(fmt.Sprintf("%s:%s", dir, name)); !ok {
+		return false
+	}
+
 	if GenerateCcLibraryStaticOnly(ctx) {
 		// Don't use partially-converted cc_library targets in mixed builds,
 		// since mixed builds would generally rely on both static and shared
 		// variants of a cc_library.
 		return false
 	}
-	return !mixedBuildsDisabled[ctx.Module().Name()]
+	return !mixedBuildsDisabled[name]
+}
+
+// ConvertedToBazel returns whether this module has been converted to Bazel, whether automatically
+// or manually
+func convertedToBazel(ctx BazelConversionPathContext, module blueprint.Module) bool {
+	b, ok := module.(Bazelable)
+	if !ok {
+		return false
+	}
+	return b.convertWithBp2build(ctx, module) || b.HasHandcraftedLabel()
 }
 
 // ConvertWithBp2build returns whether the given BazelModuleBase should be converted with bp2build.
 func (b *BazelModuleBase) ConvertWithBp2build(ctx BazelConversionPathContext) bool {
-	if bp2buildModuleDoNotConvert[ctx.Module().Name()] {
+	return b.convertWithBp2build(ctx, ctx.Module())
+}
+
+func (b *BazelModuleBase) convertWithBp2build(ctx BazelConversionPathContext, module blueprint.Module) bool {
+	if bp2buildModuleDoNotConvert[module.Name()] {
 		return false
 	}
 
 	// Ensure that the module type of this module has a bp2build converter. This
 	// prevents mixed builds from using auto-converted modules just by matching
 	// the package dir; it also has to have a bp2build mutator as well.
-	if ctx.Config().bp2buildModuleTypeConfig[ctx.ModuleType()] == false {
+	if ctx.Config().bp2buildModuleTypeConfig[ctx.OtherModuleType(module)] == false {
 		return false
 	}
 
-	packagePath := ctx.ModuleDir()
+	packagePath := ctx.OtherModuleDir(module)
 	config := ctx.Config().bp2buildPackageConfig
 
 	// This is a tristate value: true, false, or unset.
@@ -381,10 +410,4 @@ func (b *BazelModuleBase) GetBazelBuildFileContents(c Config, path, name string)
 		return "", err
 	}
 	return string(data[:]), nil
-}
-
-// ConvertedToBazel returns whether this module has been converted to Bazel, whether automatically
-// or manually
-func (b *BazelModuleBase) ConvertedToBazel(ctx BazelConversionPathContext) bool {
-	return b.ConvertWithBp2build(ctx) || b.HasHandcraftedLabel()
 }

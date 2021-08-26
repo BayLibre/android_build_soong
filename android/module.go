@@ -316,6 +316,9 @@ type BaseModuleContext interface {
 
 	AddMissingDependencies(missingDeps []string)
 
+	// AddUnconvertedBp2buildDep stores module name of a dependency that was not converted via bp2build
+	AddUnconvertedBp2buildDep(dep string)
+
 	Target() Target
 	TargetPrimary() bool
 
@@ -495,6 +498,7 @@ type Module interface {
 	IsConvertedByBp2build() bool
 	// Bp2buildTargets returns the target(s) generated for Bazel via bp2build for this module
 	Bp2buildTargets() []bp2buildInfo
+	GetUnconvertedBp2buildDeps() []string
 
 	BuildParamsForTests() []BuildParams
 	RuleParamsForTests() map[blueprint.Rule]blueprint.RuleParams
@@ -888,6 +892,9 @@ type commonProperties struct {
 	// supported as Soong handles some things within a single target that we may choose to split into
 	// multiple targets, e.g. renderscript, protos, yacc within a cc module.
 	Bp2buildInfo []bp2buildInfo `blueprint:"mutated"`
+
+	//
+	UnconvertedBp2buildDeps []string `blueprint:"mutated"`
 }
 
 type distProperties struct {
@@ -987,12 +994,12 @@ const (
 	DeviceSupported = deviceSupported | deviceDefault
 
 	// By default, _only_ device variant is built. Device variant can be disabled with `device_supported: false`
-    // Host and HostCross are disabled by default and can be enabled with `host_supported: true`
+	// Host and HostCross are disabled by default and can be enabled with `host_supported: true`
 	HostAndDeviceSupported = hostSupported | hostCrossSupported | deviceSupported | deviceDefault
 
 	// Host, HostCross, and Device are built by default.
-    // Building Device can be disabled with `device_supported: false`
-    // Building Host and HostCross can be disabled with `host_supported: false`
+	// Building Device can be disabled with `device_supported: false`
+	// Building Host and HostCross can be disabled with `host_supported: false`
 	HostAndDeviceDefault = hostSupported | hostCrossSupported | hostDefault |
 		deviceSupported | deviceDefault
 
@@ -1263,6 +1270,18 @@ func (m *ModuleBase) IsConvertedByBp2build() bool {
 // Bp2buildTargets returns the Bazel targets bp2build generated for this module.
 func (m *ModuleBase) Bp2buildTargets() []bp2buildInfo {
 	return m.commonProperties.Bp2buildInfo
+}
+
+// AddUnconvertedBp2buildDep stores module name of a dependency that was not converted via bp2build
+func (b *baseModuleContext) AddUnconvertedBp2buildDep(dep string) {
+	unconvertedDeps := &b.Module().base().commonProperties.UnconvertedBp2buildDeps
+	*unconvertedDeps = append(*unconvertedDeps, dep)
+}
+
+// GetUnconvertedBp2buildDeps returns the list of module names for dependencies of this module that
+// were not converted via bp2build
+func (m *ModuleBase) GetUnconvertedBp2buildDeps() []string {
+	return m.commonProperties.UnconvertedBp2buildDeps
 }
 
 func (m *ModuleBase) AddJSONData(d *map[string]interface{}) {

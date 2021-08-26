@@ -153,10 +153,11 @@ type bpToBuildContext interface {
 }
 
 type CodegenContext struct {
-	config         android.Config
-	context        android.Context
-	mode           CodegenMode
-	additionalDeps []string
+	config                  android.Config
+	context                 android.Context
+	mode                    CodegenMode
+	additionalDeps          []string
+	unconvertedDepsHandling unconvertedDepsMode
 }
 
 func (c *CodegenContext) Mode() CodegenMode {
@@ -179,6 +180,15 @@ const (
 	// This mode is used for discovering and introspecting the existing Soong
 	// module graph.
 	QueryView
+)
+
+type unconvertedDepsMode int
+
+const (
+	skipModulesUnconvertedDeps unconvertedDepsMode = iota
+	warnUnconvertedDeps
+	// TODO: is this a mode we want to support?
+	errorModulesUnconvertedDeps
 )
 
 func (mode CodegenMode) String() string {
@@ -273,6 +283,20 @@ func GenerateBazelTargets(ctx *CodegenContext, generateFilegroups bool) (map[str
 				// something more targeted based on the rule type and target
 				buildFileToAppend[pathToBuildFile] = true
 			} else if aModule, ok := m.(android.Module); ok && aModule.IsConvertedByBp2build() {
+				if unconvertedDeps := aModule.GetUnconvertedBp2buildDeps(); len(unconvertedDeps) > 0 {
+					msg := fmt.Sprintf("%q depends on unconverted modules: %s", m.Name(), strings.Join(unconvertedDeps, ", "))
+					if ctx.unconvertedDepsHandling == warnUnconvertedDeps {
+						fmt.Println(msg)
+					} else {
+						metrics.TotalModuleCount += 1
+						if ctx.unconvertedDepsHandling == errorModulesUnconvertedDeps {
+							panic(fmt.Errorf(msg))
+						} else {
+							fmt.Printf("Skipped due to: %s\n", msg)
+						}
+						return
+					}
+				}
 				targets = generateBazelTargets(bpCtx, aModule)
 				for _, t := range targets {
 					if t.name == m.Name() {

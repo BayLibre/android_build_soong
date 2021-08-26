@@ -533,6 +533,9 @@ func (t *topDownMutatorContext) CreateBazelTargetModule(
 		Attrs:      attrs,
 	}
 
+	if !t.Module().base().IsConvertedByBp2build() {
+		t.Config().bp2buildModuleConverted.Store(fmt.Sprintf("%s:%s", info.Dir, info.Name), true)
+	}
 	t.Module().base().addBp2buildInfo(info)
 }
 

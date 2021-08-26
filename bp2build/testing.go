@@ -99,6 +99,7 @@ func runBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.Regi
 		checkDir = tc.dir
 	}
 	codegenCtx := NewCodegenContext(config, *ctx.Context, Bp2Build)
+	codegenCtx.unconvertedDepsHandling = warnUnconvertedDeps
 	bazelTargets := generateBazelTargetsForDir(codegenCtx, checkDir)
 	if actualCount, expectedCount := len(bazelTargets), len(tc.expectedBazelTargets); actualCount != expectedCount {
 		t.Errorf("%s: Expected %d bazel target, got %d", tc.description, expectedCount, actualCount)

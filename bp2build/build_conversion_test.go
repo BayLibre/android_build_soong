@@ -539,12 +539,14 @@ func TestModuleTypeBp2Build(t *testing.T) {
     out: ["foo_tool.out"],
     srcs: ["foo_tool.in"],
     cmd: "cp $(in) $(out)",
+    bazel_module: { bp2build_available: true },
 }
 genrule {
     name: "other.tool",
     out: ["other_tool.out"],
     srcs: ["other_tool.in"],
     cmd: "cp $(in) $(out)",
+    bazel_module: { bp2build_available: true },
 }`,
 	}
 
@@ -705,6 +707,28 @@ genrule {
     ],
 )`,
 			},
+			fs: map[string]string{
+				"other/Android.bp": `filegroup {
+    name: "foo",
+    srcs: ["a", "b"],
+    bazel_module: { bp2build_available: true },
+}`,
+			},
+		},
+		{
+			description:                        "depends_on_other_unconverted_module_skipped",
+			moduleTypeUnderTest:                "filegroup",
+			moduleTypeUnderTestFactory:         android.FileGroupFactory,
+			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			bp: `filegroup {
+    name: "foobar",
+    srcs: [
+        ":foo",
+        "c",
+    ],
+    bazel_module: { bp2build_available: true },
+}`,
+			expectedBazelTargets: []string{},
 			fs: map[string]string{
 				"other/Android.bp": `filegroup {
     name: "foo",
@@ -910,52 +934,54 @@ genrule {
 
 	dir := "."
 	for _, testCase := range testCases {
-		fs := make(map[string][]byte)
-		toParse := []string{
-			"Android.bp",
-		}
-		for f, content := range testCase.fs {
-			if strings.HasSuffix(f, "Android.bp") {
-				toParse = append(toParse, f)
+		t.Run(testCase.description, func(t *testing.T) {
+			fs := make(map[string][]byte)
+			toParse := []string{
+				"Android.bp",
 			}
-			fs[f] = []byte(content)
-		}
-		config := android.TestConfig(buildDir, nil, testCase.bp, fs)
-		ctx := android.NewTestContext(config)
-		ctx.RegisterModuleType(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestFactory)
-		ctx.RegisterBp2BuildMutator(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestBp2BuildMutator)
-		ctx.RegisterForBazelConversion()
+			for f, content := range testCase.fs {
+				if strings.HasSuffix(f, "Android.bp") {
+					toParse = append(toParse, f)
+				}
+				fs[f] = []byte(content)
+			}
+			config := android.TestConfig(buildDir, nil, testCase.bp, fs)
+			ctx := android.NewTestContext(config)
+			ctx.RegisterModuleType(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestFactory)
+			ctx.RegisterBp2BuildMutator(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestBp2BuildMutator)
+			ctx.RegisterForBazelConversion()
 
-		_, errs := ctx.ParseFileList(dir, toParse)
-		if errored(t, testCase.description, errs) {
-			continue
-		}
-		_, errs = ctx.ResolveDependencies(config)
-		if errored(t, testCase.description, errs) {
-			continue
-		}
+			_, errs := ctx.ParseFileList(dir, toParse)
+			if errored(t, testCase.description, errs) {
+				return
+			}
+			_, errs = ctx.ResolveDependencies(config)
+			if errored(t, testCase.description, errs) {
+				return
+			}
 
-		checkDir := dir
-		if testCase.dir != "" {
-			checkDir = testCase.dir
-		}
+			checkDir := dir
+			if testCase.dir != "" {
+				checkDir = testCase.dir
+			}
 
-		codegenCtx := NewCodegenContext(config, *ctx.Context, Bp2Build)
-		bazelTargets := generateBazelTargetsForDir(codegenCtx, checkDir)
-		if actualCount, expectedCount := len(bazelTargets), len(testCase.expectedBazelTargets); actualCount != expectedCount {
-			t.Errorf("%s: Expected %d bazel target, got %d", testCase.description, expectedCount, actualCount)
-		} else {
-			for i, target := range bazelTargets {
-				if w, g := testCase.expectedBazelTargets[i], target.content; w != g {
-					t.Errorf(
-						"%s: Expected generated Bazel target to be '%s', got '%s'",
-						testCase.description,
-						w,
-						g,
-					)
+			codegenCtx := NewCodegenContext(config, *ctx.Context, Bp2Build)
+			bazelTargets := generateBazelTargetsForDir(codegenCtx, checkDir)
+			if actualCount, expectedCount := len(bazelTargets), len(testCase.expectedBazelTargets); actualCount != expectedCount {
+				t.Errorf("%s: Expected %d bazel target, got %d", testCase.description, expectedCount, actualCount)
+			} else {
+				for i, target := range bazelTargets {
+					if w, g := testCase.expectedBazelTargets[i], target.content; w != g {
+						t.Errorf(
+							"%s: Expected generated Bazel target to be '%s', got '%s'",
+							testCase.description,
+							w,
+							g,
+						)
+					}
 				}
 			}
-		}
+		})
 	}
 }
 

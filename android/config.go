@@ -144,6 +144,7 @@ type config struct {
 
 	bp2buildPackageConfig    Bp2BuildConfig
 	bp2buildModuleTypeConfig map[string]bool
+	bp2buildModuleConverted  sync.Map
 
 	// If testAllowNonExistentPaths is true then PathForSource and PathForModuleSrc won't error
 	// in tests when a path doesn't exist.
