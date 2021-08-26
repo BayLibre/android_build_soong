@@ -6034,6 +6034,7 @@ func TestOverrideApex(t *testing.T) {
 			name: "myapex",
 			key: "myapex.key",
 			apps: ["app"],
+			prebuilts: ["myetc"],
 			overrides: ["oldapex"],
 			updatable: false,
 		}
@@ -6042,6 +6043,7 @@ func TestOverrideApex(t *testing.T) {
 			name: "override_myapex",
 			base: "myapex",
 			apps: ["override_app"],
+			prebuilts: ["override_myetc"],
 			overrides: ["unknownapex"],
 			logging_parent: "com.foo.bar",
 			package_name: "test.overridden.package",
@@ -6064,6 +6066,16 @@ func TestOverrideApex(t *testing.T) {
 		android_app_certificate {
 			name: "myapex.certificate",
 			certificate: "testkey",
+		}
+
+		prebuilt_etc {
+			name: "myetc",
+			src: "myprebuilt",
+		}
+
+		prebuilt_etc {
+			name: "override_myetc",
+			src: "override_myprebuilt",
 		}
 
 		android_app {
@@ -6097,6 +6109,8 @@ func TestOverrideApex(t *testing.T) {
 
 	ensureNotContains(t, copyCmds, "image.apex/app/app/app.apk")
 	ensureContains(t, copyCmds, "image.apex/app/override_app/override_app.apk")
+	ensureNotContains(t, copyCmds, "image.apex/etc/myetc")
+	ensureContains(t, copyCmds, "image.apex/etc/override_myetc")
 
 	apexBundle := module.Module().(*apexBundle)
 	name := apexBundle.Name()
