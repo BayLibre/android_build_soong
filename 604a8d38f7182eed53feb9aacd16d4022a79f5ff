@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0191d286_cd70980b",
+        "filename": "cc/config/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-08-27T16:34:30Z",
+      "side": 1,
+      "message": "this will need \u0027ndk\u0027 too due to a temporary migration (also anywhere you currently reference ndk_platform in other build files should be \u0027ndk\u0027)",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "604a8d38f7182eed53feb9aacd16d4022a79f5ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
