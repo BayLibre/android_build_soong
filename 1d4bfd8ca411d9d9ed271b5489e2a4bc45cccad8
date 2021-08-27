@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76eaa276_1bb14b28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1413436
+      },
+      "writtenOn": "2021-08-27T01:17:36Z",
+      "side": 1,
+      "message": "go/pystyle#indentation\n\nDo we use 4 space tab in the Android codebase?",
+      "revId": "1d4bfd8ca411d9d9ed271b5489e2a4bc45cccad8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
