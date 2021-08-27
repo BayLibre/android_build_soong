@@ -22,6 +22,30 @@
       },
       "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf450c1a_8221bd39",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-08-27T05:00:04Z",
+      "side": 1,
+      "message": "Great idea!\n\nWill the warnUnconvertedDeps also skip the modules with unconverted deps? Or is it going to convert anyway with a warning?\n\nI feel that there\u0027s still some value in converting a module with unconverted deps, because the generated code is useful for experimenting and development, even if it\u0027s not buildable.\n\nEither way, I think we should always print a warning by default, whether modules or skipped or not. The default can be switched to error a little later to prevent backsliding.",
+      "parentUuid": "45fbdd26_4c248662",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
