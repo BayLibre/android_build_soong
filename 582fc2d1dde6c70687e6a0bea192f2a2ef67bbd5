@@ -33,6 +33,24 @@
       "message": "RBE queue looks relatively free and empty now and I generally haven\u0027t noticed it spike up over weekends either.",
       "revId": "582fc2d1dde6c70687e6a0bea192f2a2ef67bbd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d757e09b_b3a9aa9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2021-08-27T22:57:17Z",
+      "side": 1,
+      "message": "I would probably wait for an hour or two after https://android-review.googlesource.com/c/platform/prebuilts/clang/host/linux-x86/+/1810964 is submitted though (that is also a global invalidation change since we are adding a new file to all actions which changes the cache key).",
+      "parentUuid": "0d26c290_599514b8",
+      "revId": "582fc2d1dde6c70687e6a0bea192f2a2ef67bbd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
