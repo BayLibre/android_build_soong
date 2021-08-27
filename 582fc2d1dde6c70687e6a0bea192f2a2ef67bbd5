@@ -16,6 +16,23 @@
       "message": "This is not related to the current thread about missing *_ignorelist files.  We\u0027re just switching to the new flag since the old flag may be deprecated in the future.\n\n(This _will_ invalidate RBE cache entries though - so if everything looks ok, I\u0027ll submit it over the weekend).",
       "revId": "582fc2d1dde6c70687e6a0bea192f2a2ef67bbd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d26c290_599514b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2021-08-27T22:56:24Z",
+      "side": 1,
+      "message": "RBE queue looks relatively free and empty now and I generally haven\u0027t noticed it spike up over weekends either.",
+      "revId": "582fc2d1dde6c70687e6a0bea192f2a2ef67bbd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
