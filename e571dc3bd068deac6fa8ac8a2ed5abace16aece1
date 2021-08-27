@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "752bf85a_7ea81174",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-08-27T14:00:12Z",
+      "side": 1,
+      "message": "I looked into implementing queryview and soong_docs also a bit differently so that they are as \"easily\" provably correct as the module graph and bp2build, but it would probably a bit too much cleanup (not that I don\u0027t want to do it, but it\u0027s probably not the best investment of my time anymore...)",
+      "revId": "e571dc3bd068deac6fa8ac8a2ed5abace16aece1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
