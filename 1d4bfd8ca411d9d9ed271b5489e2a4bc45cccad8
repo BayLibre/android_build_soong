@@ -16,6 +16,24 @@
       "message": "go/pystyle#indentation\n\nDo we use 4 space tab in the Android codebase?",
       "revId": "1d4bfd8ca411d9d9ed271b5489e2a4bc45cccad8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5452962_a1c46c7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-08-27T02:31:36Z",
+      "side": 1,
+      "message": "This can be set on a per-directory basis using pylintrc files, but the default used by the linter is 4 https://cs.android.com/android/platform/superproject/+/master:tools/repohooks/tools/pylintrc;l\u003d308?q\u003dtools%2Frepohooks%2Ftools%2Fpylintrc",
+      "parentUuid": "76eaa276_1bb14b28",
+      "revId": "1d4bfd8ca411d9d9ed271b5489e2a4bc45cccad8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
