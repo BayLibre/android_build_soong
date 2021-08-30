@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aee136d_7ab37193",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-30T23:35:11Z",
+      "side": 1,
+      "message": "I knew the place, but thought that adding something there would affect all module types, which is not what I want. Looks like it isn\u0027t.\n\nMoved to the place.",
+      "parentUuid": "1ba0d83f_d8ae5b76",
+      "revId": "e8e43316efef195d98f956f824e9b83d06285230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "627ea354_aab97bf8",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-08-30T18:37:34Z",
       "side": 1,
       "message": "This tag only does anything when inside a struct that is also tagged.",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "e8e43316efef195d98f956f824e9b83d06285230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15ffa81d_38d95ec7",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-08-30T23:35:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "627ea354_aab97bf8",
       "range": {
         "startLine": 69,
         "startChar": 11,
