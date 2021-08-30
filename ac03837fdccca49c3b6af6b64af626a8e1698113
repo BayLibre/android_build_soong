@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a45c7252_fade0635",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-30T23:02:35Z",
+      "side": 1,
+      "message": "You can remove this",
+      "revId": "ac03837fdccca49c3b6af6b64af626a8e1698113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f58844_bfe0a560",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-30T23:02:35Z",
+      "side": 1,
+      "message": "You can remove this",
+      "revId": "ac03837fdccca49c3b6af6b64af626a8e1698113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c388d3b0_308350ce",
+        "filename": "cc/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-30T23:02:35Z",
+      "side": 1,
+      "message": "You can remove this",
+      "revId": "ac03837fdccca49c3b6af6b64af626a8e1698113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
