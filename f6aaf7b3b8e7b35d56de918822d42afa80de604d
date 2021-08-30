@@ -22,6 +22,30 @@
       },
       "revId": "f6aaf7b3b8e7b35d56de918822d42afa80de604d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10c802f7_ace4e7b2",
+        "filename": "cc/config/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-08-30T22:11:09Z",
+      "side": 1,
+      "message": "Done. Thanks.",
+      "parentUuid": "148821a2_fe7e800e",
+      "range": {
+        "startLine": 150,
+        "startChar": 30,
+        "endLine": 150,
+        "endChar": 54
+      },
+      "revId": "f6aaf7b3b8e7b35d56de918822d42afa80de604d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
