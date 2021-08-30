@@ -146,6 +146,7 @@ var (
 		"build/bazel/rules":/* recursive = */ true,
 		"build/bazel/rules_cc":/* recursive = */ true,
 		"build/bazel/scripts":/* recursive = */ true,
+		"build/bazel/json_module_graph":/* recursive = */ true,
 		"build/bazel/tests":/* recursive = */ true,
 		"build/bazel/platforms":/* recursive = */ true,
 		"build/bazel/product_variables":/* recursive = */ true,
