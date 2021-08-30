@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ba0d83f_d8ae5b76",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-30T18:37:34Z",
+      "side": 1,
+      "message": "Product variables are handled magically, all you need to do is add Cmdline to Debuggable in build/soong/android/variable.go",
+      "revId": "e8e43316efef195d98f956f824e9b83d06285230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "627ea354_aab97bf8",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-30T18:37:34Z",
+      "side": 1,
+      "message": "This tag only does anything when inside a struct that is also tagged.",
+      "range": {
+        "startLine": 69,
+        "startChar": 11,
+        "endLine": 69,
+        "endChar": 44
+      },
+      "revId": "e8e43316efef195d98f956f824e9b83d06285230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
