@@ -91,7 +91,8 @@ func flagsToBuilderFlags(in Flags) builderFlags {
 		systemIncludeFlags: strings.Join(in.SystemIncludeFlags, " "),
 
 		assemblerWithCpp: in.AssemblerWithCpp,
-		groupStaticLibs:  in.GroupStaticLibs,
+		// deprecated and ignored because lld makes it unnecessary. See b/189475744.
+		groupStaticLibs: in.GroupStaticLibs,
 
 		proto:            in.proto,
 		protoC:           in.protoC,

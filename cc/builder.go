@@ -384,7 +384,7 @@ type builderFlags struct {
 
 	systemIncludeFlags string
 
-	// True if static libraries should be grouped (using `-Wl,--start-group` and `-Wl,--end-group`).
+	// Deprecated and ignored because lld makes it unnecessary. See b/189475744.
 	groupStaticLibs bool
 
 	proto            android.ProtoFlags
@@ -752,13 +752,7 @@ func transformObjToDynamicBinary(ctx android.ModuleContext,
 		}
 	}
 
-	if flags.groupStaticLibs && !ctx.Darwin() && len(staticLibs) > 0 {
-		libFlagsList = append(libFlagsList, "-Wl,--start-group")
-	}
 	libFlagsList = append(libFlagsList, staticLibs.Strings()...)
-	if flags.groupStaticLibs && !ctx.Darwin() && len(staticLibs) > 0 {
-		libFlagsList = append(libFlagsList, "-Wl,--end-group")
-	}
 
 	if groupLate && !ctx.Darwin() && len(lateStaticLibs) > 0 {
 		libFlagsList = append(libFlagsList, "-Wl,--start-group")

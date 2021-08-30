@@ -217,7 +217,7 @@ type Flags struct {
 
 	// True if .s files should be processed with the c preprocessor.
 	AssemblerWithCpp bool
-	// True if static libraries should be grouped (using `-Wl,--start-group` and `-Wl,--end-group`).
+	// Deprecated and ignored because lld makes it unnecessary. See b/189475744.
 	GroupStaticLibs bool
 
 	proto            android.ProtoFlags
