@@ -15,10 +15,11 @@
 package bp2build
 
 import (
-	"android/soong/android"
 	"fmt"
 	"strings"
 	"testing"
+
+	"android/soong/android"
 )
 
 func TestGenerateSoongModuleTargets(t *testing.T) {
@@ -1214,4 +1215,67 @@ func TestGlobExcludeSrcs(t *testing.T) {
 			}
 		}
 	}
+}
+
+func TestFillCommonBp2BuildModuleAttrs(t *testing.T) {
+	testSingleCommonBp2BuildModuleAttrs(t, "filegroup",
+		android.FileGroupFactory, android.FilegroupBp2Build, map[string]string{})
+}
+
+func TestMultipleCommonBp2BuildModuleAttrs(t *testing.T) {
+	testSingleCommonBp2BuildModuleAttrs(t, "filegroup",
+		android.FileGroupFactory, android.FilegroupBp2Build, map[string]string{})
+	testSingleCommonBp2BuildModuleAttrs(t, "custom",
+		customModuleFactory, customBp2BuildMutatorFromStarlark, map[string]string{})
+}
+
+func testSingleCommonBp2BuildModuleAttrs(t *testing.T, modType string,
+	factory android.ModuleFactory, mutator func(android.TopDownMutatorContext), filesystem map[string]string) {
+	t.Helper()
+	bpTemplate := fmt.Sprintf(`%s {
+    name: "foo",
+%%s}`, modType)
+	bazelTemplate := fmt.Sprintf(`%s(
+    name = "foo",
+%%s)`, modType)
+	doTest := func(bp string, bazel string, desc string) {
+		t.Helper()
+		runBp2BuildTestCaseSimple(t, bp2buildTestCase{
+			description:                        fmt.Sprintf("fillCommonBp2BuildModuleAttrs: %s", desc),
+			moduleTypeUnderTest:                modType,
+			moduleTypeUnderTestFactory:         factory,
+			moduleTypeUnderTestBp2BuildMutator: mutator,
+			filesystem:                         filesystem,
+			blueprint:                          bp,
+			expectedBazelTargets:               []string{bazel},
+		})
+	}
+
+	// Nullary test
+	doTest(fmt.Sprintf(bpTemplate, ""), fmt.Sprintf(bazelTemplate, ""),
+		"Nullary test")
+
+	// Individual tests
+	var all_bp_builder, all_bazel_builder strings.Builder
+	bp_entry_template := "    %s: %v,\n"
+	bazel_entry_template := "    %s = %v,\n"
+	test := func(from, fromVal, to, toVal string) {
+		t.Helper()
+		bpLine := fmt.Sprintf(bp_entry_template, from, fromVal)
+		bazelLine := fmt.Sprintf(bazel_entry_template, to, toVal)
+		bp := fmt.Sprintf(bpTemplate, bpLine)
+		bazel := fmt.Sprintf(bazelTemplate, bazelLine)
+		desc := fmt.Sprintf("Individual test: %s -> %s; %s -> %s",
+			from, fromVal, to, toVal)
+		doTest(bp, bazel, desc)
+		all_bp_builder.WriteString(bpLine)
+	}
+	expectData := []string{"Required"}
+	test("required", "[\"Required\"]", "data", "[\"Required\"]")
+	all_bazel_builder.WriteString("[" + strings.Join(expectData, ", ") + "]")
+
+	// All-at-once test
+	doTest(fmt.Sprintf(bpTemplate, all_bp_builder.String()),
+		fmt.Sprintf(bazelTemplate, all_bazel_builder.String()),
+		"All-at-once test")
 }
