@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0016506_a9a245b4",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-31T16:38:16Z",
+      "side": 1,
+      "message": "It\u0027s not a dependency on a member type it is a dependency on members of a specific type. Type is in the name because it contains a reference to the associated member type.",
+      "parentUuid": "90fcaa83_a1c453bc",
+      "range": {
+        "startLine": 379,
+        "startChar": 14,
+        "endLine": 379,
+        "endChar": 18
+      },
+      "revId": "5b5573cb195f4a10c723b229bc21d38e5a8ef384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "797f1050_0b58262c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-31T13:44:33Z",
       "side": 1,
       "message": "This otoh ought to be \"memberType\", oughtn\u0027t it?",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 7
+      },
+      "revId": "5b5573cb195f4a10c723b229bc21d38e5a8ef384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94b7099a_cde1a3e4",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-31T16:38:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "797f1050_0b58262c",
       "range": {
         "startLine": 132,
         "startChar": 1,
