@@ -391,7 +391,7 @@ type bp2buildModule interface {
 	TargetPackage() string
 	BazelRuleClass() string
 	BazelRuleLoadLocation() string
-	BazelAttributes() interface{}
+	BazelAttributes() (android.CommonAttributes, interface{})
 }
 
 func generateBazelTarget(ctx bpToBuildContext, m bp2buildModule) BazelTarget {
@@ -399,7 +399,8 @@ func generateBazelTarget(ctx bpToBuildContext, m bp2buildModule) BazelTarget {
 	bzlLoadLocation := m.BazelRuleLoadLocation()
 
 	// extract the bazel attributes from the module.
-	props := extractModuleProperties([]interface{}{m.BazelAttributes()})
+	commons, attrs := m.BazelAttributes()
+	props := extractModuleProperties([]interface{}{&commons, attrs})
 
 	delete(props.Attrs, "bp2build_available")
 
@@ -483,6 +484,11 @@ func extractModuleProperties(props []interface{}) BazelAttributes {
 		if isStructPtr(propertiesValue.Type()) {
 			structValue := propertiesValue.Elem()
 			for k, v := range extractStructProperties(structValue, 0) {
+				if existing, exists := ret[k]; exists {
+					panic(fmt.Errorf(
+						"%s (%v) is present in properties whereas it should be consolidated into a commonAttributes",
+						k, existing))
+				}
 				ret[k] = v
 			}
 		} else {
