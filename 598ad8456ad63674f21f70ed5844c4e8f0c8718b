@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef8ac24e_1f42145d",
+        "filename": "sdk/member_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-08-31T13:45:19Z",
+      "side": 1,
+      "message": "Review note: I downloaded the patch and looked at it with \"git blame -C\" to see what lines actually change, and this is the only one (except for some intro lines). It would perhaps belong better in the parent CL, but that\u0027s a minor detail that doesn\u0027t matter.",
+      "range": {
+        "startLine": 86,
+        "startChar": 13,
+        "endLine": 86,
+        "endChar": 38
+      },
+      "revId": "598ad8456ad63674f21f70ed5844c4e8f0c8718b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
