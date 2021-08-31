@@ -15,9 +15,10 @@
 package android
 
 import (
-	"android/soong/bazel"
 	"reflect"
 	"sync"
+
+	"android/soong/bazel"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -518,13 +519,17 @@ func (t *topDownMutatorContext) CreateBazelTargetModule(
 	bazelProps bazel.BazelTargetModuleProperties,
 	attrs interface{}) {
 
+	commonAttrs := commonAttributes{Name: name}
+	fillCommonBp2BuildModuleAttrs(t, &commonAttrs)
+
+	mod := t.Module()
 	info := bp2buildInfo{
-		Name:       name,
-		Dir:        t.OtherModuleDir(t.Module()),
-		BazelProps: bazelProps,
-		Attrs:      attrs,
+		Dir:         t.OtherModuleDir(mod),
+		BazelProps:  bazelProps,
+		CommonAttrs: commonAttrs,
+		Attrs:       attrs,
 	}
-	t.Module().base().addBp2buildInfo(info)
+	mod.base().addBp2buildInfo(info)
 }
 
 func (t *topDownMutatorContext) AppendProperties(props ...interface{}) {
