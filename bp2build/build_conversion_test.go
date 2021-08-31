@@ -15,10 +15,11 @@
 package bp2build
 
 import (
-	"android/soong/android"
 	"fmt"
 	"strings"
 	"testing"
+
+	"android/soong/android"
 )
 
 func TestGenerateSoongModuleTargets(t *testing.T) {
@@ -1214,4 +1215,112 @@ func TestGlobExcludeSrcs(t *testing.T) {
 			}
 		}
 	}
+}
+
+func TestFilegroupCommonBp2BuildModuleAttrs(t *testing.T) {
+	testCommonBp2BuildModuleAttrs(t, "filegroup",
+		android.FileGroupFactory, android.FilegroupBp2Build, map[string]string{})
+}
+
+func testCommonBp2BuildModuleAttrs(t *testing.T, modType string,
+	factory android.ModuleFactory,
+	mutator func(android.TopDownMutatorContext),
+	filesystem map[string]string) {
+	t.Helper()
+	runTest := func(desc string, bp string, bazel string) {
+		t.Helper()
+		runBp2BuildTestCaseSimple(t, bp2buildTestCase{
+			description:                        fmt.Sprintf("fillCommonBp2BuildModuleAttrs: %s", desc),
+			moduleTypeUnderTest:                modType,
+			moduleTypeUnderTestFactory:         factory,
+			moduleTypeUnderTestBp2BuildMutator: mutator,
+			filesystem:                         filesystem,
+			blueprint:                          bp,
+			expectedBazelTargets:               []string{bazel},
+		})
+	}
+	bpTemplate := fmt.Sprintf(`filegroup { name:"reqd" }
+%s {
+    name: "foo",
+%%s}`, modType)
+	bazelTemplate := fmt.Sprintf(`filegroup(
+    name = "reqd",
+)
+%s(
+    name = "foo",
+%%s)`, modType)
+
+	//////////////////////////////////////////////////////////////////////////////
+	// Nullary individualTest
+	runTest("Nullary individual test",
+		fmt.Sprintf(bpTemplate, ""), fmt.Sprintf(bazelTemplate, ""))
+
+	//////////////////////////////////////////////////////////////////////////////
+	var allBpBuilder, allBazelBuilder strings.Builder
+	// Individual test infrastructure
+	bpEntryTemplate := "    %s: %s,\n"
+	bazelEntryTemplate := "    %s = %s,\n"
+	individualTest := func(from, fromVal, to, toVal string) string /*bazelLine*/ {
+		t.Helper()
+		bpLine := fmt.Sprintf(bpEntryTemplate, from, fromVal)
+		bazelLine := fmt.Sprintf(bazelEntryTemplate, to, toVal)
+		bp := fmt.Sprintf(bpTemplate, bpLine)
+		bazel := fmt.Sprintf(bazelTemplate, bazelLine)
+		desc := fmt.Sprintf("Individual test: %s -> `%s`; %s -> `%s`",
+			from, fromVal, to, toVal)
+		runTest(desc, bp, bazel)
+		allBpBuilder.WriteString(bpLine)
+		return bazelLine
+	}
+	/*singularTest := func(from, fromVal, to, toVal string) {
+		bazelLine := individualTest(from, fromVal, to, toVal)
+		allBazelBuilder.WriteString(bazelLine)
+	}*/
+
+	singleArrayTemplate := `["%s"]`
+	singleArray := func(str string) string { return fmt.Sprintf(singleArrayTemplate, str) }
+	joinArrayTemplate := `[
+    %s
+]`
+	joinNestedArray := func(strs []string) string {
+		var nestedStrs []string
+		for _, str := range strs {
+			nestedStrs = append(nestedStrs, "    "+str)
+		}
+		return fmt.Sprintf(joinArrayTemplate, strings.Join(nestedStrs, ",\n    "))
+	}
+
+	accumBazelBuilder := func(bazelAttr string, vals []string) {
+		var pluralVal string
+		if len(vals) > 1 {
+			pluralVal = joinNestedArray(vals)
+		} else {
+			pluralVal = singleArray(vals[0])
+		}
+		allBazelBuilder.WriteString(fmt.Sprintf(bazelEntryTemplate, bazelAttr, pluralVal))
+	}
+	type collectiveTest struct{ bpProp, val string }
+	collectivelyTest := func(bazelAttr string, tests ...collectiveTest) {
+		t.Helper()
+		var vals []string
+		for _, test := range tests {
+			singularVal := singleArray(test.val)
+			individualTest(test.bpProp, singularVal, bazelAttr, singularVal)
+			vals = append(vals, test.val)
+		}
+		accumBazelBuilder(bazelAttr, vals)
+	}
+
+	//////////////////////////////////////////////////////////////////////////////
+	// Individual tests
+	// Example: singularTest("foo", "bar", "foo", `["baz"]`)
+	collectivelyTest("data",
+		collectiveTest{"required", "reqd"},
+	)
+
+	//////////////////////////////////////////////////////////////////////////////
+	// All-at-once individual test
+	runTest("All-at-once individual test",
+		fmt.Sprintf(bpTemplate, allBpBuilder.String()),
+		fmt.Sprintf(bazelTemplate, allBazelBuilder.String()))
 }

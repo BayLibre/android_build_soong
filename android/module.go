@@ -15,7 +15,6 @@
 package android
 
 import (
-	"android/soong/bazel"
 	"fmt"
 	"os"
 	"path"
@@ -23,6 +22,8 @@ import (
 	"regexp"
 	"strings"
 	"text/scanner"
+
+	"android/soong/bazel"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -843,6 +844,15 @@ type commonProperties struct {
 	UnconvertedBp2buildDeps []string `blueprint:"mutated"`
 }
 
+// This represents the common Bazel attributes from which properties in
+// `commonProperties` are translated/mapped; such properties are annotated in
+// a list their corresponding attribute. It is embedded within `bp2buildInfo`.
+type commonAttributes struct {
+	Name string // Soong nameProperties -> Bazel name
+	// -> Required
+	Data bazel.LabelListAttribute
+}
+
 type distProperties struct {
 	// configuration to distribute output files from this module to the distribution
 	// directory (default: $OUT/dist, configurable with $DIST_DIR)
@@ -1063,6 +1073,24 @@ func InitCommonOSAndroidMultiTargetsArchModule(m Module, hod HostOrDeviceSupport
 	m.base().commonProperties.CreateCommonOSVariant = true
 }
 
+func fillCommonBp2BuildModuleAttrs(ctx *topDownMutatorContext, attrs *commonAttributes) {
+	// Assert passed-in attributes include Name
+	name := &attrs.Name
+	if len(*name) == 0 {
+		ctx.ModuleErrorf("commonAttributes in fillCommonBp2BuildModuleAttrs expects a `.Name`!")
+	}
+
+	mod := ctx.Module().base()
+	props := &mod.commonProperties
+
+	depsToLabelList := func(deps []string) bazel.LabelListAttribute {
+		return bazel.MakeLabelListAttribute(BazelLabelForModuleDeps(ctx, deps))
+	}
+
+	data := &attrs.Data
+	data.Append(depsToLabelList(props.Required))
+}
+
 // A ModuleBase object contains the properties that are common to all Android
 // modules.  It should be included as an anonymous field in every module
 // struct definition.  InitAndroidModule should then be called from the module's
@@ -1174,15 +1202,15 @@ type ModuleBase struct {
 
 // A struct containing all relevant information about a Bazel target converted via bp2build.
 type bp2buildInfo struct {
-	Name       string
-	Dir        string
-	BazelProps bazel.BazelTargetModuleProperties
-	Attrs      interface{}
+	Dir         string
+	BazelProps  bazel.BazelTargetModuleProperties
+	CommonAttrs commonAttributes
+	Attrs       interface{}
 }
 
 // TargetName returns the Bazel target name of a bp2build converted target.
 func (b bp2buildInfo) TargetName() string {
-	return b.Name
+	return b.CommonAttrs.Name
 }
 
 // TargetPackage returns the Bazel package of a bp2build converted target.
@@ -1202,8 +1230,8 @@ func (b bp2buildInfo) BazelRuleLoadLocation() string {
 }
 
 // BazelAttributes returns the Bazel attributes of a bp2build converted target.
-func (b bp2buildInfo) BazelAttributes() interface{} {
-	return b.Attrs
+func (b bp2buildInfo) BazelAttributes() (commonAttributes, interface{}) {
+	return b.CommonAttrs, b.Attrs
 }
 
 func (m *ModuleBase) addBp2buildInfo(info bp2buildInfo) {
