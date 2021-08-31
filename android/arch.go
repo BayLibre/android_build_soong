@@ -917,29 +917,6 @@ var variantReplacer = strings.NewReplacer("-", "_", ".", "_")
 // filterArchStruct returns true if the given field is an architecture specific property.
 func filterArchStruct(field reflect.StructField, prefix string) (bool, reflect.StructField) {
 	if proptools.HasTag(field, "android", "arch_variant") {
-		// The arch_variant field isn't necessary past this point
-		// Instead of wasting space, just remove it. Go also has a
-		// 16-bit limit on structure name length. The name is constructed
-		// based on the Go source representation of the structure, so
-		// the tag names count towards that length.
-
-		androidTag := field.Tag.Get("android")
-		values := strings.Split(androidTag, ",")
-
-		if string(field.Tag) != `android:"`+strings.Join(values, ",")+`"` {
-			panic(fmt.Errorf("unexpected tag format %q", field.Tag))
-		}
-		// don't delete path tag as it is needed for bp2build
-		// these tags don't need to be present in the runtime generated struct type.
-		values = RemoveListFromList(values, []string{"arch_variant", "variant_prepend"})
-		if len(values) > 0 && values[0] != "path" {
-			panic(fmt.Errorf("unknown tags %q in field %q", values, prefix+field.Name))
-		} else if len(values) == 1 {
-			field.Tag = reflect.StructTag(`android:"` + strings.Join(values, ",") + `"`)
-		} else {
-			field.Tag = ``
-		}
-
 		return true, field
 	}
 	return false, field
