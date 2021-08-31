@@ -169,6 +169,7 @@ var (
 		"build/bazel/examples/apex/minimal": Bp2BuildDefaultTrueRecursively,
 		"development/sdk":                   Bp2BuildDefaultTrueRecursively,
 		"external/gwp_asan":                 Bp2BuildDefaultTrueRecursively,
+		"external/brotli":                   Bp2BuildDefaultTrue,
 		"system/core/libcutils":             Bp2BuildDefaultTrueRecursively,
 		"system/core/libprocessgroup":       Bp2BuildDefaultTrue,
 		"system/core/property_service/libpropertyinfoparser": Bp2BuildDefaultTrueRecursively,
@@ -214,17 +215,21 @@ var (
 		"libbase_ndk", // http://b/186826477, cc_library, no such target '//build/bazel/platforms/os:darwin' when --platforms //build/bazel/platforms:android_x86 is added
 		// libcxx
 		"libBionicBenchmarksUtils", // cc_library_static, fatal error: 'map' file not found, from libcxx
-		// "fmtlib",                   // cc_library_static, fatal error: 'cassert' file not found, from libcxx
-		"fmtlib_ndk", // cc_library_static, fatal error: 'cassert' file not found
-		"liblog",     // http://b/186822772: cc_library, 'sys/cdefs.h' file not found
-		"libbase",    // Requires liblog. http://b/186826479, cc_library, fatal error: 'memory' file not found, from libcxx.
+		"fmtlib",                   // cc_library_static, fatal error: 'cassert' file not found, from libcxx
+		"fmtlib_ndk",               // cc_library_static, fatal error: 'cassert' file not found
+		"liblog",                   // http://b/186822772: cc_library, 'sys/cdefs.h' file not found
+		"libbase",                  // Requires liblog. http://b/186826479, cc_library, fatal error: 'memory' file not found, from libcxx.
 		// Also depends on fmtlib.
 
 		"libseccomp_policy", // depends on libbase
 
 		"gwp_asan_crash_handler", // cc_library, ld.lld: error: undefined symbol: memset
 
+		//system/core/libprocessgroup/...
 		"libprocessgroup", // depends on //system/core/libprocessgroup/cgrouprc:libcgrouprc
+
+		//external/brotli/...
+		"brotli-fuzzer-corpus", // "declared output 'external/brotli/c/fuzz/73231c6592f195ffd41100b8706d1138ff6893b9' was not created by genrule"
 
 		// Tests. Handle later.
 		"libbionic_tests_headers_posix", // http://b/186024507, cc_library_static, sched.h, time.h not found
