@@ -15,14 +15,17 @@
 package android
 
 import (
-	"android/soong/bazel"
 	"fmt"
 	"os"
 	"path"
 	"path/filepath"
+	"reflect"
 	"regexp"
 	"strings"
+	"sync"
 	"text/scanner"
+
+	"android/soong/bazel"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -794,7 +797,7 @@ type commonProperties struct {
 	Vintf_fragments []string `android:"path"`
 
 	// names of other modules to install if this module is installed
-	Required []string `android:"arch_variant"`
+	Required []string `android:"arch_variant" bp2build:"Data"`
 
 	// names of other modules to install on host if this module is installed
 	Host_required []string `android:"arch_variant"`
@@ -987,12 +990,12 @@ const (
 	DeviceSupported = deviceSupported | deviceDefault
 
 	// By default, _only_ device variant is built. Device variant can be disabled with `device_supported: false`
-    // Host and HostCross are disabled by default and can be enabled with `host_supported: true`
+	// Host and HostCross are disabled by default and can be enabled with `host_supported: true`
 	HostAndDeviceSupported = hostSupported | hostCrossSupported | deviceSupported | deviceDefault
 
 	// Host, HostCross, and Device are built by default.
-    // Building Device can be disabled with `device_supported: false`
-    // Building Host and HostCross can be disabled with `host_supported: false`
+	// Building Device can be disabled with `device_supported: false`
+	// Building Host and HostCross can be disabled with `host_supported: false`
 	HostAndDeviceDefault = hostSupported | hostCrossSupported | hostDefault |
 		deviceSupported | deviceDefault
 
@@ -1108,6 +1111,120 @@ func InitCommonOSAndroidMultiTargetsArchModule(m Module, hod HostOrDeviceSupport
 	InitAndroidArchModule(m, hod, defaultMultilib)
 	m.base().commonProperties.UseTargetVariants = false
 	m.base().commonProperties.CreateCommonOSVariant = true
+}
+
+var commonPropertiesType = reflect.TypeOf(commonProperties{})
+var commonBp2BuildProperties = make(map[string]string)
+var commonBp2BuildFields = make(map[string]reflect.StructField)
+var commonBp2BuildPropertiesOnce sync.Once
+
+// Initialize commonBp2BuildProperties and commonBp2BuildFields
+func mk_commonBp2BuildProperties() {
+	commonBp2BuildPropertiesOnce.Do(func() {
+		for i := 0; i < commonPropertiesType.NumField(); i++ {
+			f := commonPropertiesType.Field(i)
+			tag, ok := f.Tag.Lookup("bp2build")
+			if ok {
+				if len(tag) == 0 {
+					continue
+				}
+				commonBp2BuildProperties[f.Name] = tag
+				commonBp2BuildFields[f.Name] = f
+			}
+		}
+	})
+}
+
+// TODO(alexmarquez): memoize reflected info per concrete Module type iff helps benchmarks
+func InitBp2BuildModule(m Module, attrs interface{}) interface{} {
+	mk_commonBp2BuildProperties()
+
+	props := m.base().commonProperties
+	propsRefl := reflect.ValueOf(props)
+	attrsRefl := reflect.ValueOf(attrs)
+	t := attrsRefl.Type()
+	k := attrsRefl.Kind()
+	if k != reflect.Struct {
+		panic("Expected attrs to be a struct")
+	}
+
+	// Create interface{} return value components
+	// Map of propStr -> fields that will inhabit the generated struct
+	var fields = make(map[string]reflect.StructField)
+	// Map of propStr -> values corresponding to the above fields
+	// NOTE: We can't use a map because StructField isn't equality-enabled
+	var values = make(map[string]reflect.Value)
+
+	// Collect all common/base fields and merge existing values if need be
+	for _, commonField := range commonBp2BuildFields {
+		propRefl := propsRefl.FieldByIndex(commonField.Index)
+		commonVal := reflect.ValueOf(propRefl)
+		// Ignore setting or merging if the common value is unset
+		if commonVal.Interface() != nil {
+			name := commonField.Name
+			prop := commonBp2BuildProperties[name]
+
+			var new_f reflect.StructField
+			var new_v reflect.Value
+			if f, ok := t.FieldByName(name); ok && reflect.ValueOf(f).Interface() != nil {
+				ft := f.Type
+				fk := ft.Kind()
+				fv := reflect.ValueOf(f)
+				if fk == reflect.Ptr {
+					fk = ft.Elem().Kind()
+				}
+				// If dest kind is list, append
+				if fk == reflect.Array || fk == reflect.Slice {
+					// FIXME: handle ptr indirection?
+					existing := fv.Interface().([]interface{})
+					merged := append(existing, commonVal.Interface())
+					fv.Set(reflect.ValueOf(merged))
+				} else {
+					panic(fmt.Sprintf("Don't know how to merge existing %+v", f))
+				}
+				new_f = reflect.StructField{
+					Name: prop,
+					Type: ft,
+				}
+				new_v = fv
+			} else {
+				new_f = reflect.StructField{
+					Name: prop,
+					Type: commonField.Type,
+				}
+				new_v = commonVal
+			}
+			fields[prop] = new_f
+			values[prop] = new_v
+		}
+	}
+
+	// Add to fields/values all which attrs have that weren't common
+	for i := 0; i < attrsRefl.NumField(); i++ {
+		f := t.Field(i)
+		name := f.Name
+		if _, exists := fields[name]; exists {
+			// Skip since we handled it above
+			continue
+		}
+		fields[name] = f
+		values[name] = attrsRefl.FieldByName(name)
+	}
+
+	fields_list := make([]reflect.StructField, 0, len(fields))
+	for _, f := range fields {
+		fields_list = append(fields_list, f)
+	}
+
+	// Populate return value
+	ret_t := reflect.PtrTo(reflect.StructOf(fields_list))
+	retRefl := reflect.New(ret_t)
+	for prop, f := range fields {
+		val := values[prop]
+		retRefl.FieldByName(f.Name).Set(val)
+	}
+
+	return retRefl.Interface()
 }
 
 // A ModuleBase object contains the properties that are common to all Android
