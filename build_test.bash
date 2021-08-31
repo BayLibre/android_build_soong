@@ -50,11 +50,11 @@ esac
 
 echo
 echo "Free disk space:"
-df -h
+# df -h
 
 echo
 echo "Running Bazel smoke test..."
-STANDALONE_BAZEL=true "${TOP}/tools/bazel" --batch --max_idle_secs=1 info
+# STANDALONE_BAZEL=true "${TOP}/tools/bazel" --batch --max_idle_secs=1 info
 
 echo
 echo "Running Soong test..."
