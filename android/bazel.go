@@ -173,6 +173,7 @@ var (
 		"external/arm-optimized-routines": Bp2BuildDefaultTrueRecursively,
 		"external/fmtlib":                 Bp2BuildDefaultTrueRecursively,
 		"external/jemalloc_new":           Bp2BuildDefaultTrueRecursively,
+		"external/libcxx":                 Bp2BuildDefaultTrueRecursively,
 		"external/libcxxabi":              Bp2BuildDefaultTrueRecursively,
 		"external/scudo":                  Bp2BuildDefaultTrueRecursively,
 		"prebuilts/clang/host/linux-x86":  Bp2BuildDefaultTrueRecursively,
