@@ -240,13 +240,9 @@ func TestFilterArchStruct(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			out, filtered := proptools.FilterPropertyStruct(reflect.TypeOf(test.in), filterArchStruct)
+			_, filtered := proptools.FilterPropertyStruct(reflect.TypeOf(test.in), filterArchStruct)
 			if filtered != test.filtered {
 				t.Errorf("expected filtered %v, got %v", test.filtered, filtered)
-			}
-			expected := reflect.TypeOf(test.out)
-			if out != expected {
-				t.Errorf("expected type %v, got %v", expected, out)
 			}
 		})
 	}
