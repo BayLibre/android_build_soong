@@ -15,10 +15,11 @@
 package bp2build
 
 import (
-	"android/soong/android"
 	"fmt"
 	"strings"
 	"testing"
+
+	"android/soong/android"
 )
 
 func TestGenerateSoongModuleTargets(t *testing.T) {
@@ -1213,5 +1214,63 @@ func TestGlobExcludeSrcs(t *testing.T) {
 				}
 			}
 		}
+	}
+}
+
+func TestFilegroupCommonBp2BuildModuleAttrs(t *testing.T) {
+	testCases := []bp2buildTestCase{
+		{
+			description:                        "individual  Required test",
+			moduleTypeUnderTest:                "filegroup",
+			moduleTypeUnderTestFactory:         android.FileGroupFactory,
+			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			blueprint: `filegroup {
+    name: "reqd",
+}
+
+filegroup {
+    name: "fg_foo",
+    required: ["reqd"],
+    bazel_module: { bp2build_available: true },
+}`,
+			expectedBazelTargets: []string{
+				`filegroup(
+    name = "fg_foo",
+    data = [":reqd"],
+)`,
+				`filegroup(
+    name = "reqd",
+)`,
+			},
+			filesystem: map[string]string{},
+		},
+		{
+			description:                        "all-at-once test",
+			moduleTypeUnderTest:                "filegroup",
+			moduleTypeUnderTestFactory:         android.FileGroupFactory,
+			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			blueprint: `filegroup {
+    name: "reqd"
+}
+filegroup {
+    name: "fg_foo",
+    required: ["reqd"],
+    bazel_module: { bp2build_available: true },
+}`,
+			expectedBazelTargets: []string{
+				`filegroup(
+    name = "fg_foo",
+    data = [":reqd"],
+)`,
+				`filegroup(
+    name = "reqd",
+)`,
+			},
+			filesystem: map[string]string{},
+		},
+	}
+
+	for _, test := range testCases {
+		runBp2BuildTestCaseSimple(t, test)
 	}
 }
