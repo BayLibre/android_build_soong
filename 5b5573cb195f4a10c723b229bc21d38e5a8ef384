@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "54e023b5_29a6dd8b",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-08-31T18:24:44Z",
+      "side": 1,
+      "message": "Yes, the type is a property of the dependency. It\u0027s common to have properties without reflecting them in the name.\n\nI read SdkMemberTypeDependencyTag as \"dependency tag on an SDK member type\", but it isn\u0027t, it\u0027s is a dependency on an SDK member (instance). So I still think it\u0027s confusing and should be changed to drop \"Type\" instead.",
+      "parentUuid": "f0016506_a9a245b4",
+      "range": {
+        "startLine": 379,
+        "startChar": 14,
+        "endLine": 379,
+        "endChar": 18
+      },
+      "revId": "5b5573cb195f4a10c723b229bc21d38e5a8ef384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "797f1050_0b58262c",
         "filename": "sdk/sdk.go",
         "patchSetId": 1
