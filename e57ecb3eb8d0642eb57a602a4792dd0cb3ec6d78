@@ -16,6 +16,24 @@
       "message": "just double check: so now this line becomes `ninja (other commonArgs rather than checkbuild) -t targets rule`?",
       "revId": "e57ecb3eb8d0642eb57a602a4792dd0cb3ec6d78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "507e456c_28e6bd0b",
+        "filename": "ui/build/test_build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-31T01:43:50Z",
+      "side": 1,
+      "message": "Yes, ninja -f \u003cninja file\u003e -t targets rule",
+      "parentUuid": "f8e3254d_2ed17290",
+      "revId": "e57ecb3eb8d0642eb57a602a4792dd0cb3ec6d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
