@@ -134,17 +134,14 @@ func runBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.Regi
 		android.FailIfErrored(t, errs)
 	}
 	if actualCount, expectedCount := len(bazelTargets), len(tc.expectedBazelTargets); actualCount != expectedCount {
-		t.Errorf("%s: Expected %d bazel target, got %d; %v",
-			tc.description, expectedCount, actualCount, bazelTargets)
+		t.Errorf("%s: Expected %d bazel target, got `%d`; `%v`: `%s`",
+			tc.description, expectedCount, actualCount, bazelTargets, tc.blueprint)
 	} else {
 		for i, target := range bazelTargets {
 			if w, g := tc.expectedBazelTargets[i], target.content; w != g {
 				t.Errorf(
-					"%s: Expected generated Bazel target to be '%s', got '%s'",
-					tc.description,
-					w,
-					g,
-				)
+					"%s: Expected generated Bazel target to be `%s`, got `%s`: `%s`",
+					tc.description, w, g, tc.blueprint)
 			}
 		}
 	}
