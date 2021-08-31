@@ -97,7 +97,7 @@ func PythonBinaryBp2Build(ctx android.TopDownMutatorContext) {
 		Rule_class: "py_binary",
 	}
 
-	ctx.CreateBazelTargetModule(m.Name(), props, attrs)
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
 }
 
 type BinaryProperties struct {

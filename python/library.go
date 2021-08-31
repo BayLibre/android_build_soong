@@ -104,7 +104,7 @@ func pythonLibBp2Build(ctx android.TopDownMutatorContext, modType string) {
 		Rule_class: "py_library",
 	}
 
-	ctx.CreateBazelTargetModule(m.Name(), props, attrs)
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
 }
 
 func PythonLibraryFactory() android.Module {
