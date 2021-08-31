@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1c04e7_10086098",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-31T18:02:43Z",
+      "side": 1,
+      "message": "is it possible to keep this on a single line?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 49
+      },
+      "revId": "516e4aa73d4a7ca535a1562f1ae9f11d16c3a39c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "068631a7_900f9c7a",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-31T18:02:43Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 52
+      },
+      "revId": "516e4aa73d4a7ca535a1562f1ae9f11d16c3a39c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30a5a777_d8743642",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-31T18:02:43Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 54
+      },
+      "revId": "516e4aa73d4a7ca535a1562f1ae9f11d16c3a39c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82aae440_8c85f3e0",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-08-31T18:02:43Z",
+      "side": 1,
+      "message": "the previous new lines separated input for this function, can we keep each parameter on new line.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 53
+      },
+      "revId": "516e4aa73d4a7ca535a1562f1ae9f11d16c3a39c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
