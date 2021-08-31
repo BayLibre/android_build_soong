@@ -15,14 +15,17 @@
 package android
 
 import (
-	"android/soong/bazel"
 	"fmt"
 	"os"
 	"path"
 	"path/filepath"
+	"reflect"
 	"regexp"
 	"strings"
+	"sync"
 	"text/scanner"
+
+	"android/soong/bazel"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -739,7 +742,7 @@ type commonProperties struct {
 	Vintf_fragments []string `android:"path"`
 
 	// names of other modules to install if this module is installed
-	Required []string `android:"arch_variant"`
+	Required []string `android:"arch_variant" bp2build:"Data"`
 
 	// names of other modules to install on host if this module is installed
 	Host_required []string `android:"arch_variant"`
@@ -1053,6 +1056,175 @@ func InitCommonOSAndroidMultiTargetsArchModule(m Module, hod HostOrDeviceSupport
 	InitAndroidArchModule(m, hod, defaultMultilib)
 	m.base().commonProperties.UseTargetVariants = false
 	m.base().commonProperties.CreateCommonOSVariant = true
+}
+
+var commonPropertiesType = reflect.TypeOf(commonProperties{})
+var CommonBp2BuildProperties = make(map[string]string)
+var CommonBp2BuildFields = make(map[string]reflect.StructField)
+var commonBp2BuildPropertiesOnce sync.Once
+
+// Initialize CommonBp2BuildProperties and CommonBp2BuildFields
+func MkCommonBp2BuildProperties() {
+	commonBp2BuildPropertiesOnce.Do(func() {
+		for i := 0; i < commonPropertiesType.NumField(); i++ {
+			f := commonPropertiesType.Field(i)
+			tag, ok := f.Tag.Lookup("bp2build")
+			if ok {
+				if len(tag) == 0 {
+					continue
+				}
+				CommonBp2BuildProperties[f.Name] = tag
+				CommonBp2BuildFields[f.Name] = f
+			}
+		}
+	})
+}
+
+// TODO(alexmarquez): memoize reflected info per concrete Module type iff helps benchmarks
+func fillCommonBp2BuildModuleAttrs(m Module, attrs interface{}) interface{} {
+	MkCommonBp2BuildProperties()
+
+	props := m.base().commonProperties
+	propsRefl := reflect.ValueOf(props)
+	attrsRefl := reflect.ValueOf(attrs)
+	t := attrsRefl.Type()
+	k := attrsRefl.Kind()
+	if k == reflect.Ptr {
+		attrsRefl = attrsRefl.Elem()
+		t = t.Elem()
+		k = t.Kind()
+	}
+	if k != reflect.Struct {
+		panic(fmt.Errorf("Expected attrs to be a struct; got %+v::%+v", t, k))
+	}
+
+	// Create interface{} return value components
+	// Map of propStr -> fields that will inhabit the generated struct
+	var fields = make(map[string]reflect.StructField)
+	// Map of propStr -> values corresponding to the above fields
+	// NOTE: We can't key off of StructField because it isn't equality-enabled
+	var values = make(map[string]reflect.Value)
+
+	// Collect all common/base fields and merge existing values if need be
+	for _, commonField := range CommonBp2BuildFields {
+		commonVal := propsRefl.FieldByIndex(commonField.Index)
+		// Ignore setting or merging if the common value is unset
+		if commonVal.Interface() != nil {
+			name := commonField.Name
+			prop := CommonBp2BuildProperties[name]
+
+			var new_f reflect.StructField
+			var new_v reflect.Value
+			fv := attrsRefl.FieldByName(prop)
+			// Check the Type for the field, as `fv` could just be the Zero value
+			if f, ok := t.FieldByName(prop); ok && fv.Interface() != nil {
+				ft := f.Type
+				fk := ft.Kind()
+				var fvPtr reflect.Value
+				wasPtr := false
+				if fk == reflect.Ptr {
+					wasPtr = true
+					// Save off the pointer, and indirect everything else
+					fvPtr = fv
+					fv = fv.Elem()
+					ft = ft.Elem()
+					fk = ft.Kind()
+				}
+				// If dest kind is list, append
+				fmt.Printf("For %s -> %s; Maybe merging %+v : %+v::%+v::%+v ++ %+v : %+v::%+v::%+v",
+					name, prop, f, fv, ft, fk, commonField, commonVal, commonVal.Type(), commonVal.Kind())
+				if fk == reflect.Array || fk == reflect.Slice {
+					appendToListValue(fv, commonVal)
+				} else if ft == reflect.TypeOf(bazel.StringListAttribute{}) {
+					appendToStringListAttribute(fv, commonVal)
+				} else if ft == reflect.TypeOf(bazel.LabelListAttribute{}) {
+					appendToLabelListAttribute(fv, commonVal)
+				} else {
+					panic(fmt.Errorf(
+						"For %s -> %s; Don't know how to merge existing %+v : %+v::%+v::%+v with %+v : %+v::%+v::%+v",
+						name, prop, f, fv, ft, fk, commonField, commonVal, commonVal.Type(), commonVal.Kind()))
+				}
+				if wasPtr {
+					ft = reflect.PtrTo(ft)
+					fv = fvPtr
+				}
+				new_f = reflect.StructField{
+					Name: prop,
+					Type: ft,
+				}
+				new_v = fv
+			} else {
+				//fmt.Printf("Setting common: %s = %v\n", prop, commonVal)
+				new_f = reflect.StructField{
+					Name: prop,
+					Type: commonField.Type,
+				}
+				new_v = commonVal
+			}
+			fields[prop] = new_f
+			values[prop] = new_v
+		}
+	}
+
+	// Add to fields/values all which attrs have that weren't common
+	for i := 0; i < attrsRefl.NumField(); i++ {
+		f := t.Field(i)
+		name := f.Name
+		if _, exists := fields[name]; exists {
+			// Skip since we handled it above
+			continue
+		}
+		fields[name] = f
+		values[name] = attrsRefl.FieldByName(name)
+	}
+
+	fields_list := make([]reflect.StructField, 0, len(fields))
+	for _, f := range fields {
+		fields_list = append(fields_list, f)
+	}
+
+	// Populate return value
+	ret_t := reflect.StructOf(fields_list)
+	retReflPtr := reflect.New(ret_t)
+	retRefl := retReflPtr.Elem()
+	for prop, f := range fields {
+		val := values[prop]
+		fRefl := retRefl.FieldByName(f.Name)
+		/*fmt.Printf("fRefl: %v::%v; val: %v::%v::%v\n",
+		fRefl, fRefl.Type(), val, val.Type(), val.Kind())*/
+		fRefl.Set(val)
+	}
+
+	return retReflPtr.Interface()
+}
+
+func appendToListValue(list reflect.Value, elem reflect.Value) {
+	existing := list.Interface().([]interface{})
+	merged := append(existing, elem.Interface())
+	v := reflect.ValueOf(merged)
+	list.Set(v)
+}
+
+// TODO(alexmarquez): Does setting the underlying Interface() reflect into the reflect.Value?
+func appendToLabelListAttribute(list reflect.Value, elem reflect.Value) {
+	existing := list.Interface().(bazel.LabelListAttribute)
+	// FIXME(alexmarquez): Handle `elem` being a string list
+	lla := elem.Interface().(bazel.LabelListAttribute)
+	// TODO(alexmarquez): Make sure label appending is semantically correct
+	// cf. bazel_paths.go for functionality in resolving labels
+	existing.Value.Append(lla.Value)
+	existing.ConfigurableValues.Append(lla.ConfigurableValues)
+	// TODO(alexmarquez): How to merge?
+	existing.ForceSpecifyEmptyList = existing.ForceSpecifyEmptyList || lla.ForceSpecifyEmptyList
+}
+
+// TODO(alexmarquez): Does setting the underlying Interface() reflect into the reflect.Value?
+func appendToStringListAttribute(list reflect.Value, elem reflect.Value) {
+	existing := list.Interface().(bazel.StringListAttribute)
+	// FIXME(alexmarquez): Handle `elem` being a raw string list
+	sla := elem.Interface().(bazel.StringListAttribute)
+	existing.Value = append(existing.Value, sla.Value...)
+	existing.ConfigurableValues.Append(sla.ConfigurableValues)
 }
 
 // A ModuleBase object contains the properties that are common to all Android
