@@ -22,6 +22,30 @@
       },
       "revId": "5569d6eb47db29812e3d29661815704f7d703292",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d3d19aa_36463dd7",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2021-08-31T15:48:57Z",
+      "side": 1,
+      "message": "I\u0027ll look into that for a follow-on CL.",
+      "parentUuid": "fa8f86f0_08e32d9c",
+      "range": {
+        "startLine": 754,
+        "startChar": 0,
+        "endLine": 760,
+        "endChar": 2
+      },
+      "revId": "5569d6eb47db29812e3d29661815704f7d703292",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
