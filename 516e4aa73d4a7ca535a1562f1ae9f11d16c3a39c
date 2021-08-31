@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9824608f_eb204882",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-08-31T18:31:38Z",
+      "side": 1,
+      "message": "This is now in a single line. I could not figure out a good way to do an inline #pylint: disable to docstrings, so I am wrapping this between #pylint:disable, #pylint:enable",
+      "parentUuid": "3f1c04e7_10086098",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 49
+      },
+      "revId": "516e4aa73d4a7ca535a1562f1ae9f11d16c3a39c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "068631a7_900f9c7a",
         "filename": "scripts/hiddenapi/verify_overlaps.py",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-31T18:02:43Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 52
+      },
+      "revId": "516e4aa73d4a7ca535a1562f1ae9f11d16c3a39c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b206ec4_fcd8b8d8",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-08-31T18:31:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "068631a7_900f9c7a",
       "range": {
         "startLine": 67,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84599ae4_b06f23f4",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-08-31T18:31:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30a5a777_d8743642",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 54
+      },
+      "revId": "516e4aa73d4a7ca535a1562f1ae9f11d16c3a39c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82aae440_8c85f3e0",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-08-31T18:02:43Z",
       "side": 1,
       "message": "the previous new lines separated input for this function, can we keep each parameter on new line.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 53
+      },
+      "revId": "516e4aa73d4a7ca535a1562f1ae9f11d16c3a39c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa36333b_50708735",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-08-31T18:31:38Z",
+      "side": 1,
+      "message": "Thanks for catching this, not sure why pyformat removed the newline.\nEach param is now in a new line",
+      "parentUuid": "82aae440_8c85f3e0",
       "range": {
         "startLine": 129,
         "startChar": 0,
