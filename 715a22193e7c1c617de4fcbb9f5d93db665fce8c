@@ -16,6 +16,24 @@
       "message": "Maybe add a \"var _\" construct to ensure the type compatibility of this struct gets checked explicitly.",
       "revId": "715a22193e7c1c617de4fcbb9f5d93db665fce8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b27f3cf4_8ef49763",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-08-31T16:08:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85a00641_39859315",
+      "revId": "715a22193e7c1c617de4fcbb9f5d93db665fce8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
