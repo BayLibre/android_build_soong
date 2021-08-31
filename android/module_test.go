@@ -15,6 +15,7 @@
 package android
 
 import (
+	"strings"
 	"testing"
 )
 
@@ -319,4 +320,31 @@ func TestDistErrorChecking(t *testing.T) {
 	prepareForModuleTests.
 		ExtendWithErrorHandler(FixtureExpectsAllErrorsToMatchAPattern(expectedErrs)).
 		RunTestWithBp(t, bp)
+}
+
+func TestInitBp2BuildModule(t *testing.T) {
+	mk_commonBp2BuildProperties()
+	bp_null_template := `
+		dummy {
+			name: "foo",
+			%s
+		}
+	`
+	// Nullary test
+	prepareForModuleTests.RunTestWithBp(t, Sprintf(bp_null_template, ""))
+
+	// Individual tests
+	all_builder := strings.Builder
+	entry_template := "%s: %s,\n"
+	for from, to := range commonBp2BuildProperties {
+		f := commonBp2BuildFields[from]
+		// TODO: Make actually type-based
+		line := Sprintf(entry_template, from, to)
+		bp := Sprintf(bp_null_template, line)
+		prepareForModuleTests.RunTestWithBp(t, bp)
+		all_builder.WriteString(line)
+	}
+
+	// All-at-once test
+	prepareForModuleTests.RunTestWithBp(t, Sprintf(bp_null_template, all_builder.String()))
 }
