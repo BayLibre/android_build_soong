@@ -320,3 +320,13 @@ func TestDistErrorChecking(t *testing.T) {
 		ExtendWithErrorHandler(FixtureExpectsAllErrorsToMatchAPattern(expectedErrs)).
 		RunTestWithBp(t, bp)
 }
+
+func TestInitBp2BuildModule(t *testing.T) {
+	// TODO(alexmarquez): Try out each bp2build tag in commonBp2BuildProperties,
+	// individually and all-at-once (and the nullary case)
+	mk_commonBp2BuildProperties()
+	for from, to := range commonBp2BuildProperties {
+		f := commonBp2BuildFields[from]
+		// TODO
+	}
+}
