@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90fcaa83_a1c453bc",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-08-31T13:20:50Z",
+      "side": 1,
+      "message": "Isn\u0027t it better to drop \"Type\" here? These tags are used for dependencies from SDKs to their members, not their member types. (There\u0027s no such thing as a module for a member type I believe - there\u0027s a property in the SDK module for each member type, but the things listed in them, and depended upon, are the modules themselves, not their types.)",
+      "range": {
+        "startLine": 379,
+        "startChar": 14,
+        "endLine": 379,
+        "endChar": 18
+      },
+      "revId": "5b5573cb195f4a10c723b229bc21d38e5a8ef384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
