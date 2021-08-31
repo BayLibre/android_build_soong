@@ -923,11 +923,11 @@ func filterArchStruct(field reflect.StructField, prefix string) (bool, reflect.S
 		// based on the Go source representation of the structure, so
 		// the tag names count towards that length.
 
-		androidTag := field.Tag.Get("android")
+		/*androidTag := field.Tag.Get("android")
 		values := strings.Split(androidTag, ",")
 
 		if string(field.Tag) != `android:"`+strings.Join(values, ",")+`"` {
-			panic(fmt.Errorf("unexpected tag format %q", field.Tag))
+			panic(fmt.Errorf("unexpected tag format %q : %s", field.Tag, androidTag))
 		}
 		// don't delete path tag as it is needed for bp2build
 		// these tags don't need to be present in the runtime generated struct type.
@@ -938,7 +938,7 @@ func filterArchStruct(field reflect.StructField, prefix string) (bool, reflect.S
 			field.Tag = reflect.StructTag(`android:"` + strings.Join(values, ",") + `"`)
 		} else {
 			field.Tag = ``
-		}
+		}*/
 
 		return true, field
 	}
