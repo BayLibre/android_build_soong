@@ -15,9 +15,13 @@
 package bp2build
 
 import (
-	"android/soong/android"
+	"fmt"
+	"reflect"
 	"strings"
 	"testing"
+	"unicode"
+
+	"android/soong/android"
 )
 
 func TestGenerateSoongModuleTargets(t *testing.T) {
@@ -1201,4 +1205,66 @@ func TestGlobExcludeSrcs(t *testing.T) {
 			}
 		}
 	}
+}
+
+func TestFillCommonBp2BuildModuleAttrs(t *testing.T) {
+	android.MkCommonBp2BuildProperties()
+	modType := "filegroup"
+	factory := android.FileGroupFactory
+	mutator := android.FilegroupBp2Build
+	filesystem := map[string]string{}
+
+	bp_template := `filegroup {
+    name: "foo",
+  %s}`
+	bazel_template := `filegroup(
+    name = "foo",
+  %s)`
+	doTest := func(bp string, bazel string, desc string) {
+		runBp2BuildTestCaseSimple(t, bp2buildTestCase{
+			description:                        fmt.Sprintf("fillCommonBp2BuildModuleAttrs: %s", desc),
+			moduleTypeUnderTest:                modType,
+			moduleTypeUnderTestFactory:         factory,
+			moduleTypeUnderTestBp2BuildMutator: mutator,
+			filesystem:                         filesystem,
+			blueprint:                          bp,
+			expectedBazelTargets:               []string{bazel},
+		})
+	}
+	toLower := func(in string) string {
+		r := []rune(in)
+		r[0] = unicode.ToLower(r[0])
+		return string(r)
+	}
+
+	// Nullary test
+	doTest(fmt.Sprintf(bp_template, ""), fmt.Sprintf(bazel_template, ""),
+		"Nullary test")
+
+	// Individual tests
+	var all_bp_builder, all_bazel_builder strings.Builder
+	bp_entry_template := "%s: %v,\n"
+	bazel_entry_template := "%s = %v,\n"
+	for from, to := range android.CommonBp2BuildProperties {
+		f := android.CommonBp2BuildFields[from]
+		// TODO(alexmarquez): Maybe use significant values instead of Zero?
+		val := reflect.Zero(f.Type).Interface()
+
+		fromProp := toLower(from)
+		toProp := toLower(to)
+		bpLine := fmt.Sprintf(bp_entry_template, fromProp, val)
+		bazelLine := fmt.Sprintf(bazel_entry_template, toProp, val)
+		bp := fmt.Sprintf(bp_template, bpLine)
+		bazel := fmt.Sprintf(bazel_template, bazelLine)
+		desc := fmt.Sprintf("Individual test: %s -> %s; %+v", from, to, val)
+		doTest(bp, bazel, desc)
+
+		all_bp_builder.WriteString(bpLine)
+		all_bazel_builder.WriteString(bazelLine)
+	}
+
+	// All-at-once test
+	doTest(fmt.Sprintf(bp_template, all_bp_builder.String()),
+		fmt.Sprintf(bazel_template, all_bazel_builder.String()),
+		"All-at-once test")
 }
