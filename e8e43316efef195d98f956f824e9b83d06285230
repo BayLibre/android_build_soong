@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92015778_d6b3e808",
+        "filename": "filesystem/bootimg.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-08-31T01:45:59Z",
+      "side": 1,
+      "message": "It does affect all modules types, but it filters down to only the properties that actually exist in the module.  So adding Cmdline would allow using product_variables.debuggable.cmdline on any module that already had a cmdline property.",
+      "parentUuid": "6aee136d_7ab37193",
+      "revId": "e8e43316efef195d98f956f824e9b83d06285230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "627ea354_aab97bf8",
