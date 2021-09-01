@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8f57c08_59b6295f",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-01T14:56:58Z",
+      "side": 1,
+      "message": "Probably with e.g. `OncePer`",
+      "revId": "56b36e7c85c1686678f96777b7e252e352b89479",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53e45f11_ae5bd170",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-01T14:56:58Z",
+      "side": 1,
+      "message": "Unsure what is actually stored as a pointer vs. a direct reference or copy.",
+      "revId": "56b36e7c85c1686678f96777b7e252e352b89479",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b187276b_d4816f80",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1198,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-01T14:56:58Z",
+      "side": 1,
+      "message": "May be dubious. If so, we could look through all of `fields` for the name every time (`Alt:` below)",
+      "revId": "56b36e7c85c1686678f96777b7e252e352b89479",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12062dbf_e3a3bf7b",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-01T14:56:58Z",
+      "side": 1,
+      "message": "Unsure whether this just creates the shallow pointer, or also the struct.",
+      "revId": "56b36e7c85c1686678f96777b7e252e352b89479",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
