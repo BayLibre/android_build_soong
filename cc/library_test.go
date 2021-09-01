@@ -320,3 +320,6 @@ func TestLibraryDynamicList(t *testing.T) {
 		libfoo.Args["ldFlags"], "-Wl,--dynamic-list,foo.dynamic.txt")
 
 }
+
+// TODO: Static library tests
+// TODO(alexmarquez): Shared library tests
