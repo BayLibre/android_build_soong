@@ -208,7 +208,6 @@ cc_library_static {
         ":static_lib_1",
         ":static_lib_2",
     ],
-    linkstatic = True,
     srcs = [
         "foo_static1.cc",
         "foo_static2.cc",
@@ -258,7 +257,6 @@ cc_library_static {
         "-I.",
         "-I$(BINDIR)/.",
     ],
-    linkstatic = True,
 )`},
 	})
 }
@@ -284,7 +282,6 @@ cc_library_static {
 		expectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     export_includes = ["subpackage"],
-    linkstatic = True,
 )`},
 	})
 }
@@ -310,7 +307,6 @@ cc_library_static {
 		expectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     export_system_includes = ["subpackage"],
-    linkstatic = True,
 )`},
 	})
 }
@@ -360,7 +356,6 @@ cc_library_static {
         "-I$(BINDIR)/subpackage",
     ],
     export_includes = ["./exported_subsubpackage"],
-    linkstatic = True,
 )`},
 	})
 }
@@ -392,7 +387,6 @@ cc_library_static {
         "-Isubpackage2",
         "-I$(BINDIR)/subpackage2",
     ],
-    linkstatic = True,
 )`},
 	})
 }
@@ -428,7 +422,6 @@ cc_library_static {
         "-I.",
         "-I$(BINDIR)/.",
     ],
-    linkstatic = True,
 )`},
 	})
 }
@@ -460,7 +453,6 @@ cc_library_static {
         "//build/bazel/platforms/arch:arm64": [":static_dep"],
         "//conditions:default": [],
     }),
-    linkstatic = True,
     whole_archive_deps = select({
         "//build/bazel/platforms/arch:arm64": [":static_dep2"],
         "//conditions:default": [],
@@ -496,7 +488,6 @@ cc_library_static {
         "//build/bazel/platforms/os:android": [":static_dep"],
         "//conditions:default": [],
     }),
-    linkstatic = True,
     whole_archive_deps = select({
         "//build/bazel/platforms/os:android": [":static_dep2"],
         "//conditions:default": [],
@@ -546,7 +537,6 @@ cc_library_static {
         "//build/bazel/platforms/os:android": [":static_dep3"],
         "//conditions:default": [],
     }),
-    linkstatic = True,
     whole_archive_deps = [":static_dep2"],
 )`},
 	})
@@ -572,7 +562,6 @@ cc_library_static {
 }`,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
-    linkstatic = True,
     srcs_c = [
         "common.c",
         "foo-a.c",
@@ -600,7 +589,6 @@ cc_library_static {
 }`,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
-    linkstatic = True,
     srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": ["foo-arm.c"],
         "//conditions:default": [],
@@ -633,7 +621,6 @@ cc_library_static {
 }`,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
-    linkstatic = True,
     srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": ["for-arm.c"],
         "//conditions:default": ["not-for-arm.c"],
@@ -668,7 +655,6 @@ cc_library_static {
 } `,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
-    linkstatic = True,
     srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": [
             "for-arm.c",
@@ -719,7 +705,6 @@ cc_library_static {
 } `,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
-    linkstatic = True,
     srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": [
             "for-arm.c",
@@ -779,7 +764,6 @@ cc_library_static {
 }`,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
-    linkstatic = True,
     srcs = ["common.cc"] + select({
         "//build/bazel/platforms/arch:arm": [],
         "//conditions:default": ["foo-no-arm.cc"],
@@ -813,7 +797,6 @@ cc_library_static {
 }`,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
-    linkstatic = True,
     srcs = ["common.cc"] + select({
         "//build/bazel/platforms/arch:arm": [],
         "//build/bazel/platforms/arch:x86": [
@@ -846,7 +829,6 @@ cc_library_static {
 		expectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     implementation_deps = [":static_dep"],
-    linkstatic = True,
 )`},
 	})
 }
@@ -873,7 +855,6 @@ cc_library_static {
 } `,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
-    linkstatic = True,
     srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": ["for-lib32.c"],
         "//build/bazel/platforms/arch:x86": ["for-lib32.c"],
@@ -908,7 +889,6 @@ cc_library_static {
 } `,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "foo_static2",
-    linkstatic = True,
     srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": [
             "for-lib32.c",
@@ -976,7 +956,6 @@ cc_library_static {
 }`,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "foo_static3",
-    linkstatic = True,
     srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": [
             "for-arm.c",
@@ -1091,7 +1070,6 @@ cc_library_static {
 `,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "foo_static3",
-    linkstatic = True,
     srcs = [
         "//dep:generated_hdr_other_pkg",
         "//dep:generated_src_other_pkg",
@@ -1147,7 +1125,6 @@ cc_library_static {
 }`,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
-    linkstatic = True,
     srcs_c = select({
         "//build/bazel/platforms/os:android": ["android_src.c"],
         "//conditions:default": [],
@@ -1199,7 +1176,6 @@ cc_library_static {
         "//build/bazel/product_variables:malloc_zero_contents": ["-Wmalloc_zero_contents"],
         "//conditions:default": [],
     }),
-    linkstatic = True,
     srcs_c = ["common.c"],
 )`},
 	})
@@ -1268,7 +1244,6 @@ cc_library_static {
         "//build/bazel/product_variables:malloc_not_svelte-x86": ["-Wlib32_malloc_not_svelte"],
         "//conditions:default": [],
     }),
-    linkstatic = True,
     srcs_c = ["common.c"],
 )`},
 	})
@@ -1298,7 +1273,6 @@ cc_library_static {
         "//build/bazel/product_variables:platform_sdk_version": ["-DPLATFORM_SDK_VERSION=$(Platform_sdk_version)"],
         "//conditions:default": [],
     }),
-    linkstatic = True,
     srcs_as = ["common.S"],
 )`},
 	})
@@ -1319,7 +1293,6 @@ cc_library_static {
 `,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "root_empty",
-    linkstatic = True,
     system_dynamic_deps = [],
 )`},
 	})
@@ -1346,7 +1319,6 @@ cc_library_static {
 `,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "static_empty",
-    linkstatic = True,
     system_dynamic_deps = [],
 )`},
 	})
@@ -1371,7 +1343,6 @@ cc_library_static {
 `,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "target_bionic_empty",
-    linkstatic = True,
     system_dynamic_deps = [],
 )`},
 	})
@@ -1400,7 +1371,6 @@ cc_library_static {
 `,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "target_linux_bionic_empty",
-    linkstatic = True,
     system_dynamic_deps = [],
 )`},
 	})
@@ -1427,7 +1397,6 @@ cc_library_static {
 `,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "target_bionic",
-    linkstatic = True,
     system_dynamic_deps = select({
         "//build/bazel/platforms/os:bionic": [":libc"],
         "//conditions:default": [],
@@ -1459,7 +1428,6 @@ cc_library_static {
 `,
 		expectedBazelTargets: []string{`cc_library_static(
     name = "target_linux_bionic",
-    linkstatic = True,
     system_dynamic_deps = [":libc"] + select({
         "//build/bazel/platforms/os:linux_bionic": [":libm"],
         "//conditions:default": [],
