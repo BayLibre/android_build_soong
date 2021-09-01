@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "818ac87c_5fc59a37",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-01T12:18:02Z",
+      "side": 1,
+      "message": "All right. You could drop the changes that add \"Type\" to the corresponding struct here though, but up to you.",
+      "parentUuid": "baf8b66e_61d6add3",
+      "range": {
+        "startLine": 379,
+        "startChar": 14,
+        "endLine": 379,
+        "endChar": 18
+      },
+      "revId": "5b5573cb195f4a10c723b229bc21d38e5a8ef384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "797f1050_0b58262c",
         "filename": "sdk/sdk.go",
         "patchSetId": 1
