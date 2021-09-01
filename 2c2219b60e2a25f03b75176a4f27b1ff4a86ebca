@@ -16,6 +16,24 @@
       "message": "Presumably, you are going to enforce this in PREUPLOAD.cfg files?",
       "revId": "2c2219b60e2a25f03b75176a4f27b1ff4a86ebca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "818648c2_ef8948b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-09-01T14:40:19Z",
+      "side": 1,
+      "message": "Yes I think we will eventually enforce this via the PREUPLOAD.cfg file in build/soong. \nAs a first pass, I am iterating over the list of python scripts in this repo that will fail once this is enforced and updating them",
+      "parentUuid": "951c2f80_7a312ad4",
+      "revId": "2c2219b60e2a25f03b75176a4f27b1ff4a86ebca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
