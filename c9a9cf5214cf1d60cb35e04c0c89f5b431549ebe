@@ -46,6 +46,30 @@
       },
       "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14547b21_0f9b9b0e",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-01T21:13:00Z",
+      "side": 1,
+      "message": "skippedModulesUnconvertedDeps prints a warning + that the module was skipped\nwarnUnconvertedDeps prints a warning but still converts the module\nerrorModulesUnconvertedDeps panics with error message\n\nI currently have the default as skippedModulesUnconvertedDeps as it would let us reduce our denylist to modules that block other modules, but open to changing that I think we could probably delay erroring as we won\u0027t use it for a while, but... it\u0027s also easy to do now..",
+      "parentUuid": "cf450c1a_8221bd39",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
