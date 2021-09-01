@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f281f6de_bcb5c50d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-01T10:42:29Z",
+      "side": 1,
+      "message": "Reupload of \n\nhttps://android-review.googlesource.com/c/platform/build/soong/+/1814446/\nhttps://android-review.googlesource.com/c/platform/build/soong/+/1814445/\nhttps://android-review.googlesource.com/c/platform/build/soong/+/1814444/\n\nVerified that mixed_droid-clean builds successfully locally.",
+      "revId": "9eca5b951a305fb9c2754b510b585eb50a350ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
