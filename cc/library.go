@@ -205,131 +205,18 @@ func init() {
 	RegisterLibraryBuildComponents(android.InitRegistrationContext)
 
 	android.RegisterBp2BuildMutator("cc_library_static", CcLibraryStaticBp2Build)
+	// NOTE: cc_shared_library in Bazel
+	android.RegisterBp2BuildMutator("cc_library_shared", CcLibrarySharedBp2Build)
 	android.RegisterBp2BuildMutator("cc_library", CcLibraryBp2Build)
 }
 
 func RegisterLibraryBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_library_static", LibraryStaticFactory)
+	// NOTE: cc_shared_library in Bazel
 	ctx.RegisterModuleType("cc_library_shared", LibrarySharedFactory)
 	ctx.RegisterModuleType("cc_library", LibraryFactory)
 	ctx.RegisterModuleType("cc_library_host_static", LibraryHostStaticFactory)
 	ctx.RegisterModuleType("cc_library_host_shared", LibraryHostSharedFactory)
-}
-
-// For bp2build conversion.
-type bazelCcLibraryAttributes struct {
-	// Attributes pertaining to both static and shared variants.
-	Srcs    bazel.LabelListAttribute
-	Srcs_c  bazel.LabelListAttribute
-	Srcs_as bazel.LabelListAttribute
-
-	Copts      bazel.StringListAttribute
-	Cppflags   bazel.StringListAttribute
-	Conlyflags bazel.StringListAttribute
-	Asflags    bazel.StringListAttribute
-
-	Hdrs                bazel.LabelListAttribute
-	Deps                bazel.LabelListAttribute
-	Implementation_deps bazel.LabelListAttribute
-	Dynamic_deps        bazel.LabelListAttribute
-	Whole_archive_deps  bazel.LabelListAttribute
-	System_dynamic_deps bazel.LabelListAttribute
-	Includes            bazel.StringListAttribute
-	Linkopts            bazel.StringListAttribute
-	Use_libcrt          bazel.BoolAttribute
-	Rtti                bazel.BoolAttribute
-
-	// This is shared only.
-	Version_script bazel.LabelAttribute
-
-	// Common properties shared between both shared and static variants.
-	Shared staticOrSharedAttributes
-	Static staticOrSharedAttributes
-
-	Strip stripAttributes
-}
-
-type stripAttributes struct {
-	Keep_symbols                 bazel.BoolAttribute
-	Keep_symbols_and_debug_frame bazel.BoolAttribute
-	Keep_symbols_list            bazel.StringListAttribute
-	All                          bazel.BoolAttribute
-	None                         bazel.BoolAttribute
-}
-
-func CcLibraryBp2Build(ctx android.TopDownMutatorContext) {
-	m, ok := ctx.Module().(*Module)
-	if !ok || !m.ConvertWithBp2build(ctx) {
-		return
-	}
-
-	if ctx.ModuleType() != "cc_library" {
-		return
-	}
-
-	// For some cc_library modules, their static variants are ready to be
-	// converted, but not their shared variants. For these modules, delegate to
-	// the cc_library_static bp2build converter temporarily instead.
-	if android.GenerateCcLibraryStaticOnly(ctx) {
-		ccLibraryStaticBp2BuildInternal(ctx, m)
-		return
-	}
-
-	sharedAttrs := bp2BuildParseSharedProps(ctx, m)
-	staticAttrs := bp2BuildParseStaticProps(ctx, m)
-	compilerAttrs := bp2BuildParseCompilerProps(ctx, m)
-	linkerAttrs := bp2BuildParseLinkerProps(ctx, m)
-	exportedIncludes := bp2BuildParseExportedIncludes(ctx, m)
-
-	srcs := compilerAttrs.srcs
-
-	asFlags := compilerAttrs.asFlags
-	if compilerAttrs.asSrcs.IsEmpty() && sharedAttrs.Srcs_as.IsEmpty() && staticAttrs.Srcs_as.IsEmpty() {
-		// Skip asflags for BUILD file simplicity if there are no assembly sources.
-		asFlags = bazel.MakeStringListAttribute(nil)
-	}
-
-	attrs := &bazelCcLibraryAttributes{
-		Srcs:    srcs,
-		Srcs_c:  compilerAttrs.cSrcs,
-		Srcs_as: compilerAttrs.asSrcs,
-
-		Copts:      compilerAttrs.copts,
-		Cppflags:   compilerAttrs.cppFlags,
-		Conlyflags: compilerAttrs.conlyFlags,
-		Asflags:    asFlags,
-
-		Implementation_deps: linkerAttrs.deps,
-		Deps:                linkerAttrs.exportedDeps,
-		Dynamic_deps:        linkerAttrs.dynamicDeps,
-		Whole_archive_deps:  linkerAttrs.wholeArchiveDeps,
-		System_dynamic_deps: linkerAttrs.systemDynamicDeps,
-		Includes:            exportedIncludes,
-		Linkopts:            linkerAttrs.linkopts,
-		Use_libcrt:          linkerAttrs.useLibcrt,
-		Rtti:                compilerAttrs.rtti,
-
-		Version_script: linkerAttrs.versionScript,
-
-		Strip: stripAttributes{
-			Keep_symbols:                 linkerAttrs.stripKeepSymbols,
-			Keep_symbols_and_debug_frame: linkerAttrs.stripKeepSymbolsAndDebugFrame,
-			Keep_symbols_list:            linkerAttrs.stripKeepSymbolsList,
-			All:                          linkerAttrs.stripAll,
-			None:                         linkerAttrs.stripNone,
-		},
-
-		Shared: sharedAttrs,
-
-		Static: staticAttrs,
-	}
-
-	props := bazel.BazelTargetModuleProperties{
-		Rule_class:        "cc_library",
-		Bzl_load_location: "//build/bazel/rules:full_cc_library.bzl",
-	}
-
-	ctx.CreateBazelTargetModule(m.Name(), props, attrs)
 }
 
 // cc_library creates both static and/or shared libraries for a device and/or
@@ -362,6 +249,8 @@ func LibrarySharedFactory() android.Module {
 	module, library := NewLibrary(android.HostAndDeviceSupported)
 	library.BuildOnlyShared()
 	module.sdkMemberTypes = []android.SdkMemberType{sharedLibrarySdkMemberType}
+	// TODO(alexmarquez): Appropriate?
+	module.bazelHandler = &ccLibraryBazelHandler{module: module}
 	return module.Init()
 }
 
@@ -1165,26 +1054,28 @@ func (library *libraryDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
 
 	deps = library.baseLinker.linkerDeps(ctx, deps)
 
-	if library.static() {
-		deps.WholeStaticLibs = append(deps.WholeStaticLibs,
-			library.StaticProperties.Static.Whole_static_libs...)
-		deps.StaticLibs = append(deps.StaticLibs, library.StaticProperties.Static.Static_libs...)
-		deps.SharedLibs = append(deps.SharedLibs, library.StaticProperties.Static.Shared_libs...)
-
-		deps.ReexportSharedLibHeaders = append(deps.ReexportSharedLibHeaders, library.StaticProperties.Static.Export_shared_lib_headers...)
-		deps.ReexportStaticLibHeaders = append(deps.ReexportStaticLibHeaders, library.StaticProperties.Static.Export_static_lib_headers...)
-	} else if library.shared() {
-		if !Bool(library.baseLinker.Properties.Nocrt) {
+	// TODO: What if both? Prior code just did static in that case.
+	if library.static() || library.shared() {
+		if library.shared() && !Bool(library.baseLinker.Properties.Nocrt) {
 			deps.CrtBegin = append(deps.CrtBegin, ctx.toolchain().CrtBeginSharedLibrary()...)
 			deps.CrtEnd = append(deps.CrtEnd, ctx.toolchain().CrtEndSharedLibrary()...)
 		}
-		deps.WholeStaticLibs = append(deps.WholeStaticLibs, library.SharedProperties.Shared.Whole_static_libs...)
-		deps.StaticLibs = append(deps.StaticLibs, library.SharedProperties.Shared.Static_libs...)
-		deps.SharedLibs = append(deps.SharedLibs, library.SharedProperties.Shared.Shared_libs...)
 
-		deps.ReexportSharedLibHeaders = append(deps.ReexportSharedLibHeaders, library.SharedProperties.Shared.Export_shared_lib_headers...)
-		deps.ReexportStaticLibHeaders = append(deps.ReexportStaticLibHeaders, library.SharedProperties.Shared.Export_static_lib_headers...)
+		var props StaticOrSharedProperties
+		if library.static() {
+			props = library.StaticProperties.Static
+		} else {
+			props = library.SharedProperties.Shared
+		}
+
+		deps.WholeStaticLibs = append(deps.WholeStaticLibs, props.Whole_static_libs...)
+		deps.StaticLibs = append(deps.StaticLibs, props.Static_libs...)
+		deps.SharedLibs = append(deps.SharedLibs, props.Shared_libs...)
+
+		deps.ReexportSharedLibHeaders = append(deps.ReexportSharedLibHeaders, props.Export_shared_lib_headers...)
+		deps.ReexportStaticLibHeaders = append(deps.ReexportStaticLibHeaders, props.Export_static_lib_headers...)
 	}
+
 	if ctx.inVendor() {
 		deps.WholeStaticLibs = removeListFromList(deps.WholeStaticLibs, library.baseLinker.Properties.Target.Vendor.Exclude_static_libs)
 		deps.SharedLibs = removeListFromList(deps.SharedLibs, library.baseLinker.Properties.Target.Vendor.Exclude_shared_libs)
@@ -2317,6 +2208,236 @@ func maybeInjectBoringSSLHash(ctx android.ModuleContext, outputFile android.Modu
 	return outputFile
 }
 
+// For bp2build conversion.
+type bazelCcLibraryAttributes struct {
+	// Attributes pertaining to both static and shared variants.
+	Srcs    bazel.LabelListAttribute
+	Srcs_c  bazel.LabelListAttribute
+	Srcs_as bazel.LabelListAttribute
+
+	Copts      bazel.StringListAttribute
+	Cppflags   bazel.StringListAttribute
+	Conlyflags bazel.StringListAttribute
+	Asflags    bazel.StringListAttribute
+
+	Hdrs                bazel.LabelListAttribute
+	Deps                bazel.LabelListAttribute
+	Implementation_deps bazel.LabelListAttribute
+	Dynamic_deps        bazel.LabelListAttribute
+	Whole_archive_deps  bazel.LabelListAttribute
+	System_dynamic_deps bazel.LabelListAttribute
+	Includes            bazel.StringListAttribute
+	Linkopts            bazel.StringListAttribute
+	Use_libcrt          bazel.BoolAttribute
+	Rtti                bazel.BoolAttribute
+
+	// This is shared only.
+	Version_script bazel.LabelAttribute
+
+	// Common properties shared between both shared and static variants.
+	Shared staticOrSharedAttributes
+	Static staticOrSharedAttributes
+
+	Strip stripAttributes
+}
+
+type stripAttributes struct {
+	Keep_symbols                 bazel.BoolAttribute
+	Keep_symbols_and_debug_frame bazel.BoolAttribute
+	Keep_symbols_list            bazel.StringListAttribute
+	All                          bazel.BoolAttribute
+	None                         bazel.BoolAttribute
+}
+
+func CcLibraryBp2Build(ctx android.TopDownMutatorContext) {
+	m, ok := ctx.Module().(*Module)
+	if !ok || !m.ConvertWithBp2build(ctx) {
+		return
+	}
+
+	if ctx.ModuleType() != "cc_library" {
+		return
+	}
+
+	// For some cc_library modules, their static variants are ready to be
+	// converted, but not their shared variants. For these modules, delegate to
+	// the cc_library_static bp2build converter temporarily instead.
+	if android.GenerateCcLibraryStaticOnly(ctx) {
+		CcLibraryStaticBp2Build(ctx)
+		return
+	}
+
+	sharedAttrs := bp2BuildParseSharedProps(ctx, m)
+	staticAttrs := bp2BuildParseStaticProps(ctx, m)
+	compilerAttrs := bp2BuildParseCompilerProps(ctx, m)
+	linkerAttrs := bp2BuildParseLinkerProps(ctx, m)
+	exportedIncludes := bp2BuildParseExportedIncludes(ctx, m)
+
+	srcs := compilerAttrs.srcs
+
+	asFlags := compilerAttrs.asFlags
+	if compilerAttrs.asSrcs.IsEmpty() && sharedAttrs.Srcs_as.IsEmpty() && staticAttrs.Srcs_as.IsEmpty() {
+		// Skip asflags for BUILD file simplicity if there are no assembly sources.
+		asFlags = bazel.MakeStringListAttribute(nil)
+	}
+
+	attrs := &bazelCcLibraryAttributes{
+		Srcs:    srcs,
+		Srcs_c:  compilerAttrs.cSrcs,
+		Srcs_as: compilerAttrs.asSrcs,
+
+		Copts:      compilerAttrs.copts,
+		Cppflags:   compilerAttrs.cppFlags,
+		Conlyflags: compilerAttrs.conlyFlags,
+		Asflags:    asFlags,
+
+		Implementation_deps: linkerAttrs.deps,
+		Deps:                linkerAttrs.exportedDeps,
+		Dynamic_deps:        linkerAttrs.dynamicDeps,
+		Whole_archive_deps:  linkerAttrs.wholeArchiveDeps,
+		System_dynamic_deps: linkerAttrs.systemDynamicDeps,
+		Includes:            exportedIncludes,
+		Linkopts:            linkerAttrs.linkopts,
+		Use_libcrt:          linkerAttrs.useLibcrt,
+		Rtti:                compilerAttrs.rtti,
+
+		Version_script: linkerAttrs.versionScript,
+
+		Strip: stripAttributes{
+			Keep_symbols:                 linkerAttrs.stripKeepSymbols,
+			Keep_symbols_and_debug_frame: linkerAttrs.stripKeepSymbolsAndDebugFrame,
+			Keep_symbols_list:            linkerAttrs.stripKeepSymbolsList,
+			All:                          linkerAttrs.stripAll,
+			None:                         linkerAttrs.stripNone,
+		},
+
+		Shared: sharedAttrs,
+
+		Static: staticAttrs,
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "cc_library",
+		Bzl_load_location: "//build/bazel/rules:full_cc_library.bzl",
+	}
+
+	ctx.CreateBazelTargetModule(m.Name(), props, attrs)
+}
+
+// NOTE: Not named ccLibraryBp2Build so as not to confuse with cc_library
+func ccLibBp2Build(ctx android.TopDownMutatorContext, modType string) {
+	module, ok := ctx.Module().(*Module)
+	if !ok {
+		// Not a cc module
+		return
+	}
+	if !module.ConvertWithBp2build(ctx) {
+		return
+	}
+	if ctx.ModuleType() != modType {
+		return
+	}
+
+	_ccLibBp2Build(ctx, module, modType)
+}
+
+func _ccLibBp2Build(ctx android.TopDownMutatorContext, module *Module, modType string) {
+	if modType != "cc_library_static" && modType != "cc_library_shared" {
+		panic("_ccLibBp2Build only supports cc_library_{static,shared}")
+	}
+	isStatic := modType == "cc_library_static"
+
+	compilerAttrs := bp2BuildParseCompilerProps(ctx, module)
+	linkerAttrs := bp2BuildParseLinkerProps(ctx, module)
+	exportedIncludes := bp2BuildParseExportedIncludes(ctx, module)
+
+	asFlags := compilerAttrs.asFlags
+	if compilerAttrs.asSrcs.IsEmpty() {
+		// Skip asflags for BUILD file simplicity if there are no assembly sources.
+		asFlags = bazel.MakeStringListAttribute(nil)
+	}
+
+	// Append static{} stanza properties. These won't be specified on
+	// cc_library_* itself, but may be specified in cc_defaults that this module
+	// depends on.
+	libAttrs := bp2BuildParseLibProps(ctx, module, isStatic)
+
+	compilerAttrs.srcs.Append(libAttrs.Srcs)
+	compilerAttrs.cSrcs.Append(libAttrs.Srcs_c)
+	compilerAttrs.asSrcs.Append(libAttrs.Srcs_as)
+	compilerAttrs.copts.Append(libAttrs.Copts)
+	linkerAttrs.exportedDeps.Append(libAttrs.Static_deps)
+	linkerAttrs.dynamicDeps.Append(libAttrs.Dynamic_deps)
+	linkerAttrs.wholeArchiveDeps.Append(libAttrs.Whole_archive_deps)
+	linkerAttrs.systemDynamicDeps.Append(libAttrs.System_dynamic_deps)
+
+	var attrs interface{}
+	if isStatic {
+		attrs = &bazelCcLibraryStaticAttributes{
+			Copts:               compilerAttrs.copts,
+			Srcs:                compilerAttrs.srcs,
+			Implementation_deps: linkerAttrs.deps,
+			Deps:                linkerAttrs.exportedDeps,
+			Whole_archive_deps:  linkerAttrs.wholeArchiveDeps,
+			Dynamic_deps:        linkerAttrs.dynamicDeps,
+			System_dynamic_deps: linkerAttrs.systemDynamicDeps,
+
+			Linkopts:   linkerAttrs.linkopts,
+			Linkstatic: isStatic,
+			Use_libcrt: linkerAttrs.useLibcrt,
+			Rtti:       compilerAttrs.rtti,
+			Includes:   exportedIncludes,
+
+			Cppflags:   compilerAttrs.cppFlags,
+			Srcs_c:     compilerAttrs.cSrcs,
+			Conlyflags: compilerAttrs.conlyFlags,
+			Srcs_as:    compilerAttrs.asSrcs,
+			Asflags:    asFlags,
+		}
+	} else {
+		attrs = &bazelCcLibrarySharedAttributes{
+			Srcs:    compilerAttrs.srcs,
+			Srcs_c:  compilerAttrs.cSrcs,
+			Srcs_as: compilerAttrs.asSrcs,
+
+			Implementation_deps: linkerAttrs.deps,
+			Deps:                linkerAttrs.exportedDeps,
+			Whole_archive_deps:  linkerAttrs.wholeArchiveDeps,
+			Dynamic_deps:        linkerAttrs.dynamicDeps,
+			System_dynamic_deps: linkerAttrs.systemDynamicDeps,
+
+			Copts:      compilerAttrs.copts,
+			Cppflags:   compilerAttrs.cppFlags,
+			Conlyflags: compilerAttrs.conlyFlags,
+			Asflags:    asFlags,
+			Linkopts:   linkerAttrs.linkopts,
+
+			Linkstatic: false,
+			Use_libcrt: linkerAttrs.useLibcrt,
+			Rtti:       compilerAttrs.rtti,
+
+			Includes:       exportedIncludes,
+			Version_script: linkerAttrs.versionScript,
+
+			Strip: stripAttributes{
+				Keep_symbols:                 linkerAttrs.stripKeepSymbols,
+				Keep_symbols_and_debug_frame: linkerAttrs.stripKeepSymbolsAndDebugFrame,
+				Keep_symbols_list:            linkerAttrs.stripKeepSymbolsList,
+				All:                          linkerAttrs.stripAll,
+				None:                         linkerAttrs.stripNone,
+			},
+		}
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        modType,
+		Bzl_load_location: fmt.Sprintf("//build/bazel/rules:%s.bzl", modType),
+	}
+
+	ctx.CreateBazelTargetModule(module.Name(), props, attrs)
+}
+
+// TODO(alexmarquez): Can this be factored to share with Shared?
 type bazelCcLibraryStaticAttributes struct {
 	Copts               bazel.StringListAttribute
 	Srcs                bazel.LabelListAttribute
@@ -2337,8 +2458,10 @@ type bazelCcLibraryStaticAttributes struct {
 	Conlyflags bazel.StringListAttribute
 	Srcs_as    bazel.LabelListAttribute
 	Asflags    bazel.StringListAttribute
+}
 
-	Static staticOrSharedAttributes
+func CcLibraryStaticBp2Build(ctx android.TopDownMutatorContext) {
+	ccLibBp2Build(ctx, "cc_library_static")
 }
 
 type bazelCcLibraryStatic struct {
@@ -2346,6 +2469,7 @@ type bazelCcLibraryStatic struct {
 	bazelCcLibraryStaticAttributes
 }
 
+// NOTE: Used outside of Soong
 func BazelCcLibraryStaticFactory() android.Module {
 	module := &bazelCcLibraryStatic{}
 	module.AddProperties(&module.bazelCcLibraryStaticAttributes)
@@ -2353,79 +2477,59 @@ func BazelCcLibraryStaticFactory() android.Module {
 	return module
 }
 
-func ccLibraryStaticBp2BuildInternal(ctx android.TopDownMutatorContext, module *Module) {
-	compilerAttrs := bp2BuildParseCompilerProps(ctx, module)
-	linkerAttrs := bp2BuildParseLinkerProps(ctx, module)
-	exportedIncludes := bp2BuildParseExportedIncludes(ctx, module)
-
-	asFlags := compilerAttrs.asFlags
-	if compilerAttrs.asSrcs.IsEmpty() {
-		// Skip asflags for BUILD file simplicity if there are no assembly sources.
-		asFlags = bazel.MakeStringListAttribute(nil)
-	}
-
-	// Append static{} stanza properties. These won't be specified on
-	// cc_library_static itself, but may be specified in cc_defaults that this module
-	// depends on.
-	staticAttrs := bp2BuildParseStaticProps(ctx, module)
-
-	compilerAttrs.srcs.Append(staticAttrs.Srcs)
-	compilerAttrs.cSrcs.Append(staticAttrs.Srcs_c)
-	compilerAttrs.asSrcs.Append(staticAttrs.Srcs_as)
-	compilerAttrs.copts.Append(staticAttrs.Copts)
-	linkerAttrs.exportedDeps.Append(staticAttrs.Static_deps)
-	linkerAttrs.dynamicDeps.Append(staticAttrs.Dynamic_deps)
-	linkerAttrs.wholeArchiveDeps.Append(staticAttrs.Whole_archive_deps)
-	linkerAttrs.systemDynamicDeps.Append(staticAttrs.System_dynamic_deps)
-
-	attrs := &bazelCcLibraryStaticAttributes{
-		Copts:               compilerAttrs.copts,
-		Srcs:                compilerAttrs.srcs,
-		Implementation_deps: linkerAttrs.deps,
-		Deps:                linkerAttrs.exportedDeps,
-		Whole_archive_deps:  linkerAttrs.wholeArchiveDeps,
-		Dynamic_deps:        linkerAttrs.dynamicDeps,
-		System_dynamic_deps: linkerAttrs.systemDynamicDeps,
-
-		Linkopts:   linkerAttrs.linkopts,
-		Linkstatic: true,
-		Use_libcrt: linkerAttrs.useLibcrt,
-		Rtti:       compilerAttrs.rtti,
-		Includes:   exportedIncludes,
-
-		Cppflags:   compilerAttrs.cppFlags,
-		Srcs_c:     compilerAttrs.cSrcs,
-		Conlyflags: compilerAttrs.conlyFlags,
-		Srcs_as:    compilerAttrs.asSrcs,
-		Asflags:    asFlags,
-	}
-
-	props := bazel.BazelTargetModuleProperties{
-		Rule_class:        "cc_library_static",
-		Bzl_load_location: "//build/bazel/rules:cc_library_static.bzl",
-	}
-
-	ctx.CreateBazelTargetModule(module.Name(), props, attrs)
-}
-
-func CcLibraryStaticBp2Build(ctx android.TopDownMutatorContext) {
-	module, ok := ctx.Module().(*Module)
-	if !ok {
-		// Not a cc module
-		return
-	}
-	if !module.ConvertWithBp2build(ctx) {
-		return
-	}
-	if ctx.ModuleType() != "cc_library_static" {
-		return
-	}
-
-	ccLibraryStaticBp2BuildInternal(ctx, module)
-}
-
 func (m *bazelCcLibraryStatic) Name() string {
 	return m.BaseModuleName()
 }
 
 func (m *bazelCcLibraryStatic) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
+
+// TODO(alexmarquez): Adapt better to Shared-only case
+type bazelCcLibrarySharedAttributes struct {
+	Srcs    bazel.LabelListAttribute
+	Srcs_c  bazel.LabelListAttribute
+	Srcs_as bazel.LabelListAttribute
+
+	Implementation_deps bazel.LabelListAttribute
+	Deps                bazel.LabelListAttribute
+	Whole_archive_deps  bazel.LabelListAttribute
+	Dynamic_deps        bazel.LabelListAttribute
+	System_dynamic_deps bazel.LabelListAttribute
+
+	Linkopts   bazel.StringListAttribute
+	Linkstatic bool
+	Use_libcrt bazel.BoolAttribute
+	Rtti       bazel.BoolAttribute
+	Strip      stripAttributes
+
+	Includes       bazel.StringListAttribute
+	Hdrs           bazel.LabelListAttribute
+	Version_script bazel.LabelAttribute
+
+	Copts      bazel.StringListAttribute
+	Cppflags   bazel.StringListAttribute
+	Conlyflags bazel.StringListAttribute
+	Asflags    bazel.StringListAttribute
+}
+
+func CcLibrarySharedBp2Build(ctx android.TopDownMutatorContext) {
+	ccLibBp2Build(ctx, "cc_library_shared")
+}
+
+type bazelCcLibraryShared struct {
+	android.BazelTargetModuleBase
+	bazelCcLibrarySharedAttributes
+}
+
+// NOTE: Intended to be used outside of Soong
+func BazelCcLibrarySharedFactory() android.Module {
+	module := &bazelCcLibraryShared{}
+	module.AddProperties(&module.bazelCcLibrarySharedAttributes)
+	android.InitBazelTargetModule(module)
+	return module
+}
+
+func (m *bazelCcLibraryShared) Name() string {
+	return m.BaseModuleName()
+}
+
+func (m *bazelCcLibraryShared) GenerateAndroidBuildActions(ctx android.ModuleContext) {}
