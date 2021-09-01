@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3a17dd2_53417e7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-09-01T07:57:02Z",
+      "side": 1,
+      "message": "I also wanted to make Config.soongOutDir() not be a lie in soong_build, but I ran out of mental health coding time for today.",
+      "revId": "f06cff080e4e2abcddf149615be4d0e8a1f73ef9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
