@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Copyright (C) 2012 The Android Open Source Project
 #
@@ -41,9 +41,6 @@ HTML_ESCAPE_TABLE = {
     "<": "&lt;",
     }
 
-def hexify(s):
-    return ("%02x"*len(s)) % tuple(map(ord, s))
-
 def md5sum(filename):
     """Calculate an MD5 of the file given by FILENAME,
     and return hex digest as a string.
@@ -57,7 +54,7 @@ def md5sum(filename):
             break
         sum.update(block)
     f.close()
-    return hexify(sum.digest())
+    return sum.hexdigest()
 
 
 def html_escape(text):
@@ -88,15 +85,15 @@ def combine_notice_files_html(file_hash, input_dir, output_filename):
         id_count += 1
 
     # Open the output file, and output the header pieces
-    output_file = open(output_filename, "wb")
+    output_file = open(output_filename, "w")
 
-    print >> output_file, "<html><head>"
-    print >> output_file, HTML_OUTPUT_CSS
-    print >> output_file, '</head><body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0">'
+    print("<html><head>", file=output_file)
+    print(HTML_OUTPUT_CSS, file = output_file)
+    print('</head><body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0">', file=output_file)
 
     # Output our table of contents
-    print >> output_file, '<div class="toc">'
-    print >> output_file, "<ul>"
+    print('<div class="toc">', file=output_file)
+    print("<ul>", file=output_file)
 
     # Flatten the list of lists into a single list of filenames
     sorted_filenames = sorted(itertools.chain.from_iterable(file_hash))
@@ -104,46 +101,46 @@ def combine_notice_files_html(file_hash, input_dir, output_filename):
     # Print out a nice table of contents
     for filename in sorted_filenames:
         stripped_filename = SRC_DIR_STRIP_RE.sub(r"\1", filename)
-        print >> output_file, '<li><a href="#id%d">%s</a></li>' % (id_table.get(filename), stripped_filename)
+        print('<li><a href="#id%d">%s</a></li>' % (id_table.get(filename), stripped_filename), file=output_file)
 
-    print >> output_file, "</ul>"
-    print >> output_file, "</div><!-- table of contents -->"
+    print("</ul>", file=output_file)
+    print("</div><!-- table of contents -->", file=output_file)
     # Output the individual notice file lists
-    print >>output_file, '<table cellpadding="0" cellspacing="0" border="0">'
+    print('<table cellpadding="0" cellspacing="0" border="0">', file=output_file)
     for value in file_hash:
-        print >> output_file, '<tr id="id%d"><td class="same-license">' % id_table.get(value[0])
-        print >> output_file, '<div class="label">Notices for file(s):</div>'
-        print >> output_file, '<div class="file-list">'
+        print('<tr id="id%d"><td class="same-license">' % id_table.get(value[0]), file=output_file)
+        print('<div class="label">Notices for file(s):</div>', file=output_file)
+        print('<div class="file-list">', file=output_file)
         for filename in value:
-            print >> output_file, "%s <br/>" % (SRC_DIR_STRIP_RE.sub(r"\1", filename))
-        print >> output_file, "</div><!-- file-list -->"
-        print >> output_file
-        print >> output_file, '<pre class="license-text">'
-        print >> output_file, html_escape(open(value[0]).read())
-        print >> output_file, "</pre><!-- license-text -->"
-        print >> output_file, "</td></tr><!-- same-license -->"
-        print >> output_file
-        print >> output_file
-        print >> output_file
+            print("%s <br/>" % (SRC_DIR_STRIP_RE.sub(r"\1", filename)), file=output_file)
+        print("</div><!-- file-list -->", file=output_file)
+        print(file=output_file)
+        print('<pre class="license-text">', file=output_file)
+        print(html_escape(open(value[0]).read()), file=output_file)
+        print("</pre><!-- license-text -->", file=output_file)
+        print("</td></tr><!-- same-license -->", file=output_file)
+        print(file=output_file)
+        print(file=output_file)
+        print(file=output_file)
 
     # Finish off the file output
-    print >> output_file, "</table>"
-    print >> output_file, "</body></html>"
+    print("</table>", file=output_file)
+    print("</body></html>", file=output_file)
     output_file.close()
 
 def combine_notice_files_text(file_hash, input_dir, output_filename, file_title):
     """Combine notice files in FILE_HASH and output a text version to OUTPUT_FILENAME."""
 
     SRC_DIR_STRIP_RE = re.compile(input_dir + "(/.*).txt")
-    output_file = open(output_filename, "wb")
-    print >> output_file, file_title
+    output_file = open(output_filename, "w")
+    print(file_title, file=output_file)
     for value in file_hash:
-      print >> output_file, "============================================================"
-      print >> output_file, "Notices for file(s):"
+      print("============================================================", file=output_file)
+      print("Notices for file(s):", file=output_file)
       for filename in value:
-        print >> output_file, SRC_DIR_STRIP_RE.sub(r"\1", filename)
-      print >> output_file, "------------------------------------------------------------"
-      print >> output_file, open(value[0]).read()
+        print(SRC_DIR_STRIP_RE.sub(r"\1", filename), file=output_file)
+      print("------------------------------------------------------------", file=output_file)
+      print(open(value[0]).read(), file=output_file)
     output_file.close()
 
 def combine_notice_files_xml(files_with_same_hash, input_dir, output_filename):
@@ -154,26 +151,26 @@ def combine_notice_files_xml(files_with_same_hash, input_dir, output_filename):
     # Set up a filename to row id table (anchors inside tables don't work in
     # most browsers, but href's to table row ids do)
     id_table = {}
-    for file_key in files_with_same_hash.keys():
+    for file_key in list(files_with_same_hash):
         for filename in files_with_same_hash[file_key]:
              id_table[filename] = file_key
 
     # Open the output file, and output the header pieces
-    output_file = open(output_filename, "wb")
+    output_file = open(output_filename, "w")
 
-    print >> output_file, '<?xml version="1.0" encoding="utf-8"?>'
-    print >> output_file, "<licenses>"
+    print('<?xml version="1.0" encoding="utf-8"?>', file=output_file)
+    print("<licenses>", file=output_file)
 
     # Flatten the list of lists into a single list of filenames
-    sorted_filenames = sorted(id_table.keys())
+    sorted_filenames = sorted(list(id_table))
 
     # Print out a nice table of contents
     for filename in sorted_filenames:
         stripped_filename = SRC_DIR_STRIP_RE.sub(r"\1", filename)
-        print >> output_file, '<file-name contentId="%s">%s</file-name>' % (id_table.get(filename), stripped_filename)
+        print('<file-name contentId="%s">%s</file-name>' % (id_table.get(filename), stripped_filename), file=output_file)
 
-    print >> output_file
-    print >> output_file
+    print(file=output_file)
+    print(file=output_file)
 
     processed_file_keys = []
     # Output the individual notice file lists
@@ -183,11 +180,11 @@ def combine_notice_files_xml(files_with_same_hash, input_dir, output_filename):
             continue
         processed_file_keys.append(file_key)
 
-        print >> output_file, '<file-content contentId="%s"><![CDATA[%s]]></file-content>' % (file_key, html_escape(open(filename).read()))
-        print >> output_file
+        print('<file-content contentId="%s"><![CDATA[%s]]></file-content>' % (file_key, html_escape(open(filename).read())), file=output_file)
+        print(file=output_file)
 
     # Finish off the file output
-    print >> output_file, "</licenses>"
+    print("</licenses>", file=output_file)
     output_file.close()
 
 def get_args():
@@ -253,7 +250,7 @@ def main(argv):
                 file_md5sum = md5sum(filename)
                 files_with_same_hash[file_md5sum].append(filename)
 
-    filesets = [sorted(files_with_same_hash[md5]) for md5 in sorted(files_with_same_hash.keys())]
+    filesets = [sorted(files_with_same_hash[md5]) for md5 in sorted(list(files_with_same_hash))]
 
     combine_notice_files_text(filesets, input_dir, txt_output_file, file_title)
 
