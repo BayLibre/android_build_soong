@@ -46,6 +46,30 @@
       },
       "revId": "5569d6eb47db29812e3d29661815704f7d703292",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c1fbfb4_918426f5",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2021-09-01T15:53:47Z",
+      "side": 1,
+      "message": "I\u0027ve taken b/190383809 which addresses that issue.",
+      "parentUuid": "4d3d19aa_36463dd7",
+      "range": {
+        "startLine": 754,
+        "startChar": 0,
+        "endLine": 760,
+        "endChar": 2
+      },
+      "revId": "5569d6eb47db29812e3d29661815704f7d703292",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
