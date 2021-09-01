@@ -221,6 +221,8 @@ var (
 		"libbase",                  // Requires liblog. http://b/186826479, cc_library, fatal error: 'memory' file not found, from libcxx.
 		// Also depends on fmtlib.
 
+		"libfdtrack", // depends on STL
+
 		"libseccomp_policy", // depends on libbase
 
 		"gwp_asan_crash_handler", // cc_library, ld.lld: error: undefined symbol: memset
@@ -257,6 +259,12 @@ var (
 		"libc++_static",       // http://b/198403271, Missing symbols/members in the global namespace when referenced from headers in //external/libcxx/includes
 		"libc++abi",           // http://b/195970501, cc_library_static, duplicate symbols because it propagates libc objects.
 		"libc++demangle",      // http://b/195970501, cc_library_static, duplicate symbols because it propagates libc objects.
+		// There are unexported symbols that don't surface on a shared library build,
+		// from the source static archive
+		// e.g. _Unwind_{GetRegionStart,GetLanguageSpecificData,GetIP,Set{IP,GR},Resume,{Raise,Delete}Exception}, pthread_atfork
+		// ... from: cxa_{personality,exception}.o, system_error.o, wrappers_c_bionic.o
+		// cf. http://b/198403271
+		"libc++",
 	}
 
 	// Used for quicker lookups
