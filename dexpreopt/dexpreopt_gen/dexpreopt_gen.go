@@ -87,7 +87,7 @@ func main() {
 		usage("--module configuration file is required")
 	}
 
-	ctx := &builderContext{android.NullConfig(*outDir)}
+	ctx := &builderContext{android.NullConfig(*outDir, *outDir)}
 
 	globalSoongConfigData, err := ioutil.ReadFile(*globalSoongConfigPath)
 	if err != nil {
