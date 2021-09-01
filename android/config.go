@@ -72,7 +72,7 @@ func (c Config) SoongOutDir() string {
 }
 
 func (c Config) OutDir() string {
-	return c.soongOutDir
+	return c.outDir
 }
 
 func (c Config) DebugCompilation() bool {
@@ -122,7 +122,8 @@ type config struct {
 
 	deviceConfig *deviceConfig
 
-	soongOutDir    string // the path of the build output directory
+	outDir         string // The output directory (usually out/)
+	soongOutDir    string
 	moduleListFile string // the path to the file which lists blueprint files to parse.
 
 	env       map[string]string
@@ -283,9 +284,10 @@ func saveToBazelConfigFile(config *productVariables, outDir string) error {
 
 // NullConfig returns a mostly empty Config for use by standalone tools like dexpreopt_gen that
 // use the android package.
-func NullConfig(soongOutDir string) Config {
+func NullConfig(outDir, soongOutDir string) Config {
 	return Config{
 		config: &config{
+			outDir:      outDir,
 			soongOutDir: soongOutDir,
 			fs:          pathtools.OsFs,
 		},
@@ -319,6 +321,9 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 			ShippingApiLevel:                  stringPtr("30"),
 		},
 
+		outDir: buildDir,
+		// soongOutDir is inconsistent with production (it should be buildDir + "/soong")
+		// but a lot of tests assume this :(
 		soongOutDir:  buildDir,
 		captureBuild: true,
 		env:          envCopy,
@@ -397,7 +402,7 @@ func TestArchConfig(buildDir string, env map[string]string, bp string, fs map[st
 // multiple runs in the same program execution is carried over (such as Bazel
 // context or environment deps).
 func ConfigForAdditionalRun(c Config) (Config, error) {
-	newConfig, err := NewConfig(c.soongOutDir, c.moduleListFile, c.env)
+	newConfig, err := NewConfig(c.outDir, c.soongOutDir, c.moduleListFile, c.env)
 	if err != nil {
 		return Config{}, err
 	}
@@ -408,13 +413,14 @@ func ConfigForAdditionalRun(c Config) (Config, error) {
 
 // NewConfig creates a new Config object. The srcDir argument specifies the path
 // to the root source directory. It also loads the config file, if found.
-func NewConfig(soongOutDir string, moduleListFile string, availableEnv map[string]string) (Config, error) {
+func NewConfig(outDir, soongOutDir string, moduleListFile string, availableEnv map[string]string) (Config, error) {
 	// Make a config with default options.
 	config := &config{
 		ProductVariablesFileName: filepath.Join(soongOutDir, productVariablesFileName),
 
 		env: availableEnv,
 
+		outDir:            outDir,
 		soongOutDir:       soongOutDir,
 		multilibConflicts: make(map[ArchType]bool),
 
