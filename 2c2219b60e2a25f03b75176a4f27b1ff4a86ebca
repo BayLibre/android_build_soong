@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "951c2f80_7a312ad4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-01T12:19:31Z",
+      "side": 1,
+      "message": "Presumably, you are going to enforce this in PREUPLOAD.cfg files?",
+      "revId": "2c2219b60e2a25f03b75176a4f27b1ff4a86ebca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
