@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d18454a_07148402",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-09-01T13:04:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9824608f_eb204882",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 49
+      },
+      "revId": "516e4aa73d4a7ca535a1562f1ae9f11d16c3a39c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "068631a7_900f9c7a",
