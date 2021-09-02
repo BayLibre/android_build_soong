@@ -45,10 +45,16 @@ var (
 	abidw = pctx.AndroidStaticRule("abidw",
 		blueprint.RuleParams{
 			Command: "$abidw --type-id-style hash --no-corpus-path " +
-				"--no-show-locs --no-comp-dir-path -w $symbolList $in | " +
-				"$abitidy --all -o $out",
-			CommandDeps: []string{"$abitidy", "$abidw"},
+				"--no-show-locs --no-comp-dir-path -w $symbolList " +
+				"$in --out-file $out",
+			CommandDeps: []string{"$abidw"},
 		}, "symbolList")
+
+	abitidy = pctx.AndroidStaticRule("abitidy",
+		blueprint.RuleParams{
+			Command:     "$abitidy --all -i $in -o $out",
+			CommandDeps: []string{"$abitidy"},
+		})
 
 	abidiff = pctx.AndroidStaticRule("abidiff",
 		blueprint.RuleParams{
@@ -107,6 +113,7 @@ type stubDecorator struct {
 	versionScriptPath     android.ModuleGenPath
 	parsedCoverageXmlPath android.ModuleOutPath
 	installPath           android.Path
+	abiRawPath            android.OutputPath
 	abiDumpPath           android.OutputPath
 	abiDiffPaths          android.Paths
 
@@ -313,18 +320,27 @@ func canDiffAbi() bool {
 
 func (this *stubDecorator) dumpAbi(ctx ModuleContext, symbolList android.Path) {
 	implementationLibrary := this.findImplementationLibrary(ctx)
-	this.abiDumpPath = getNdkAbiDumpInstallBase(ctx).Join(ctx,
+	this.abiRawPath = getNdkAbiDumpInstallBase(ctx).Join(ctx,
 		this.apiLevel.String(), ctx.Arch().ArchType.String(),
-		this.libraryName(ctx), "abi.xml")
+		this.libraryName(ctx), "abi.raw.xml")
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        abidw,
 		Description: fmt.Sprintf("abidw %s", implementationLibrary),
-		Output:      this.abiDumpPath,
+		Output:      this.abiRawPath,
 		Input:       implementationLibrary,
 		Implicit:    symbolList,
 		Args: map[string]string{
 			"symbolList": symbolList.String(),
 		},
+	})
+	this.abiDumpPath = getNdkAbiDumpInstallBase(ctx).Join(ctx,
+		this.apiLevel.String(), ctx.Arch().ArchType.String(),
+		this.libraryName(ctx), "abi.xml")
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        abitidy,
+		Description: fmt.Sprintf("abitidy %s", implementationLibrary),
+		Output:      this.abiDumpPath,
+		Input:       this.abiRawPath,
 	})
 }
 
