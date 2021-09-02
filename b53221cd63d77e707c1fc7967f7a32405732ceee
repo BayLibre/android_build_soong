@@ -33,6 +33,24 @@
       "message": "There\u0027s also a copy of this script at build/make/tools/generate-notice-files.py",
       "revId": "b53221cd63d77e707c1fc7967f7a32405732ceee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb56e48c_2e7b4b60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2021-09-02T21:09:09Z",
+      "side": 1,
+      "message": "Oh, it looks like both scripts aren\u0027t the same to make things even crazier. I know that this script is used when trying to build. Is the other script used too?",
+      "parentUuid": "77440ef6_dc3b80da",
+      "revId": "b53221cd63d77e707c1fc7967f7a32405732ceee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
