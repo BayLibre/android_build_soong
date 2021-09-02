@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c408973_a0f3adba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-09-02T15:56:00Z",
+      "side": 1,
+      "message": "WDYT? This was motivated by the discussion on the team chat about possible \"dump per-module actions\" or \"per-module sources\" functionality; I thought that it we\u0027ll have more modes, we could as well do it properly and I learned a bit about soong_ui on the way.",
+      "revId": "98a00bb1f46bcedb6932c597988d39cf3bfd926c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
