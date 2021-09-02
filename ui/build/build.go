@@ -248,6 +248,11 @@ func Build(ctx Context, config Config) {
 		what = what &^ RunNinja
 	}
 
+	if !config.Dist() && len(config.Arguments()) == 0 {
+		what = what &^ RunNinja
+		what = what &^ RunKati
+	}
+
 	if config.StartGoma() {
 		startGoma(ctx, config)
 	}
@@ -278,16 +283,6 @@ func Build(ctx Context, config Config) {
 
 	if what&RunSoong != 0 {
 		runSoong(ctx, config)
-
-		if config.bazelBuildMode() == generateBuildFiles {
-			// Return early, if we're using Soong as solely the generator of BUILD files.
-			return
-		}
-
-		if config.bazelBuildMode() == generateJsonModuleGraph {
-			// Return early, if we're using Soong as solely the generator of the JSON module graph
-			return
-		}
 	}
 
 	if what&RunKati != 0 {
