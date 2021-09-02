@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d12be5a_297d43e6",
+        "filename": "scripts/check_boot_jars/check_boot_jars.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-02T18:58:05Z",
+      "side": 1,
+      "message": "Why is this necessary? Can it be put around a narrower range?",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "838bdc66b0da4630ec2ff5c9eaec40eeae3990b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
