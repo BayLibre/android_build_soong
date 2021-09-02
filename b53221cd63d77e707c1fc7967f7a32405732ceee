@@ -51,6 +51,24 @@
       "parentUuid": "77440ef6_dc3b80da",
       "revId": "b53221cd63d77e707c1fc7967f7a32405732ceee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29150c42_6dca3ef8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-09-02T21:31:03Z",
+      "side": 1,
+      "message": "I think this one is used when building notices files in soong (apex, etc?), and the other one in make (main images). But Bob would know for sure.",
+      "parentUuid": "bb56e48c_2e7b4b60",
+      "revId": "b53221cd63d77e707c1fc7967f7a32405732ceee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
