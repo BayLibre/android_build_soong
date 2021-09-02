@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89016ca2_a6cadcd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2021-09-02T21:02:44Z",
+      "side": 1,
+      "message": "Adding Dan too. I\u0027m trying to update a few of these scripts to be python3 since python is being removed.",
+      "revId": "b53221cd63d77e707c1fc7967f7a32405732ceee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
