@@ -16,6 +16,58 @@
       "message": "Dan can you verify I didn\u0027t screw up any of the new python3?",
       "revId": "dbfd2aedd22a6144118b68d91ae0579da17cffb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d62f0a3e_4352aa74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-09-02T19:40:03Z",
+      "side": 1,
+      "message": "Done. No python3 issues spotted, but did spot a thing that might need a comment.",
+      "parentUuid": "62c82bb4_174f7591",
+      "revId": "dbfd2aedd22a6144118b68d91ae0579da17cffb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fdb2c5f_57ae118c",
+        "filename": "scripts/generate-notice-files.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-09-02T19:40:03Z",
+      "side": 1,
+      "message": "Trivial formatting nit: no spaces around \u003d for kwarg. Non-blocking, of course. I\u0027m guessing this file isn\u0027t strictly following any style anyway.",
+      "revId": "dbfd2aedd22a6144118b68d91ae0579da17cffb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "820e4f6e_706236c3",
+        "filename": "scripts/generate-notice-files.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-09-02T19:40:03Z",
+      "side": 1,
+      "message": "Why does the list need to be made? Shouldn\u0027t just `for file_key in files_with_same_hash` work? Deserves a comment if there\u0027s actually a reason for the copy.\n\nOTOH, you don\u0027t actually care what the key is, so maybe:\n\n```\nfor files in files_with_same_hash.values():\n    for filename in files:\n        ...\n```",
+      "revId": "dbfd2aedd22a6144118b68d91ae0579da17cffb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
