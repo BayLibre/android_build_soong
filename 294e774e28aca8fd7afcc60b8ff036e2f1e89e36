@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b646a0dc_c9cf5221",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-02T13:17:36Z",
+      "side": 1,
+      "message": "ABTD/Forrest run of mixed_droid-clean succeeded: L30400000950998964",
+      "revId": "294e774e28aca8fd7afcc60b8ff036e2f1e89e36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
