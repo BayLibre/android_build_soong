@@ -70,6 +70,30 @@
       },
       "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49929d00_502479f3",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-02T04:55:17Z",
+      "side": 1,
+      "message": "I\u0027m a little concerned about skipping modules by default, because that could get confusing and is yet another conditional about how a BUILD target appears or not.. can we first try with just two options: warn with no skipping, and error?",
+      "parentUuid": "14547b21_0f9b9b0e",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
