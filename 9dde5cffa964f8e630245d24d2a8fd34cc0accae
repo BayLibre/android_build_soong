@@ -46,6 +46,30 @@
       },
       "revId": "9dde5cffa964f8e630245d24d2a8fd34cc0accae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14e10987_b3c95aec",
+        "filename": "cc/config/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-02T21:03:34Z",
+      "side": 1,
+      "message": "Interesting. Well - I do know for a fact that extra entries in this list don\u0027t hurt anything. Maybe it will save you something to add it.",
+      "parentUuid": "08651f4d_7f20d3eb",
+      "range": {
+        "startLine": 52,
+        "startChar": 37,
+        "endLine": 52,
+        "endChar": 38
+      },
+      "revId": "9dde5cffa964f8e630245d24d2a8fd34cc0accae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
