@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffa3a88b_7004ef2f",
+        "filename": "android/filegroup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-09-02T14:06:10Z",
+      "side": 1,
+      "message": "This is confusing to read, because this is the case we actually care about. Would expect to see \u003d\u003d here.\n\nMaybe rewrite as\n\n  if f.Label \u003d\u003d fg.Name() {\n     if len(srcs.Value.Includes) \u003e 1 {\n  \t\t\tctx.ModuleErrorf(\"filegroup \u0027%s\u0027 cannot contain a file with the same name\", fg.Name())\n     }\n     return\n  }",
+      "range": {
+        "startLine": 58,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 3
+      },
+      "revId": "68cf0668b3990673577d052ce3b17edbe50a95c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
