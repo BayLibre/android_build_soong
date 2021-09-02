@@ -22,6 +22,30 @@
       },
       "revId": "9dde5cffa964f8e630245d24d2a8fd34cc0accae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08651f4d_7f20d3eb",
+        "filename": "cc/config/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1542950
+      },
+      "writtenOn": "2021-09-02T21:00:10Z",
+      "side": 1,
+      "message": "It didn\u0027t throw a compiler error without it, but adding it to keep it consistent with the changes in build/make.",
+      "parentUuid": "26896ef6_fbf8964a",
+      "range": {
+        "startLine": 52,
+        "startChar": 37,
+        "endLine": 52,
+        "endChar": 38
+      },
+      "revId": "9dde5cffa964f8e630245d24d2a8fd34cc0accae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
