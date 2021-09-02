@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "186ab2d9_13f4ce7e",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-09-02T20:01:01Z",
+      "side": 1,
+      "message": "This is only ever used within dumpAbi, so can just be a local? Otherwise LGTM.",
+      "revId": "c2b706b99ad310b606bc352951744e513db349d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
