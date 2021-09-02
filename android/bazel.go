@@ -174,6 +174,7 @@ var (
 		"external/fmtlib":                 Bp2BuildDefaultTrueRecursively,
 		"external/jemalloc_new":           Bp2BuildDefaultTrueRecursively,
 		"external/libcxxabi":              Bp2BuildDefaultTrueRecursively,
+		"external/libcap":                 Bp2BuildDefaultTrueRecursively,
 		"external/scudo":                  Bp2BuildDefaultTrueRecursively,
 		"prebuilts/clang/host/linux-x86":  Bp2BuildDefaultTrueRecursively,
 	}
@@ -216,6 +217,10 @@ var (
 		"libseccomp_policy", // depends on libbase
 
 		"gwp_asan_crash_handler", // cc_library, ld.lld: error: undefined symbol: memset
+
+		// //external/libcap/...
+		"libcap",      // http://b/198595332, depends on _makenames, a cc_binary
+		"cap_names.h", // http://b/198596102, depends on _makenames, a cc_binary
 
 		// Tests. Handle later.
 		"libbionic_tests_headers_posix", // http://b/186024507, cc_library_static, sched.h, time.h not found
