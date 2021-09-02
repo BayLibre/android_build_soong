@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a61677e_250ab79b",
+        "filename": "tests/bootstrap_test.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-02T20:02:42Z",
+      "side": 1,
+      "message": "nit: the spacing is funny",
+      "range": {
+        "startLine": 611,
+        "startChar": 0,
+        "endLine": 614,
+        "endChar": 0
+      },
+      "revId": "683bc741bfeae1d1921cbe6eed29a39881b8167c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d13dead_3c1eaa35",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-02T20:02:42Z",
+      "side": 1,
+      "message": "integratedBp2build is only used here -- could we drop the variable?",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 3
+      },
+      "revId": "683bc741bfeae1d1921cbe6eed29a39881b8167c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
