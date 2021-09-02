@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26896ef6_fbf8964a",
+        "filename": "cc/config/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-09-02T20:29:51Z",
+      "side": 1,
+      "message": "it should need another line w/ \u0027-ndk\u0027 right? (there is a migration happening)",
+      "range": {
+        "startLine": 52,
+        "startChar": 37,
+        "endLine": 52,
+        "endChar": 38
+      },
+      "revId": "9dde5cffa964f8e630245d24d2a8fd34cc0accae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
