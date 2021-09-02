@@ -449,7 +449,7 @@ config_node = rule(
 mixed_build_root = rule(
     implementation = _passthrough_rule_impl,
     attrs = {
-        "deps" : attr.label_list(),
+        "deps" : attr.label_list(allow_files=True),
     },
 )
 
@@ -501,14 +501,22 @@ config_node(name = "%s",
 		labelsByArch[archString] = append(labelsByArch[archString], labelString)
 	}
 
-	configNodeLabels := []string{}
+	allLabels := []string{}
 	for archString, labels := range labelsByArch {
-		configNodeLabels = append(configNodeLabels, fmt.Sprintf("\":%s\"", archString))
-		labelsString := strings.Join(labels, ",\n            ")
-		configNodesSection += fmt.Sprintf(configNodeFormatString, archString, archString, labelsString)
+		if archString == "common" {
+			// arch-less labels (e.g. filegroups) don't need a config_node, so
+			// add them directly to allLabels
+			labelsString := strings.Join(labels, ",\n            ")
+			allLabels = append(allLabels, labelsString)
+		} else {
+			// Create a config_node, and add the config_node's label to allLabels
+			allLabels = append(allLabels, fmt.Sprintf("\":%s\"", archString))
+			labelsString := strings.Join(labels, ",\n            ")
+			configNodesSection += fmt.Sprintf(configNodeFormatString, archString, archString, labelsString)
+		}
 	}
 
-	return []byte(fmt.Sprintf(formatString, configNodesSection, strings.Join(configNodeLabels, ",\n            ")))
+	return []byte(fmt.Sprintf(formatString, configNodesSection, strings.Join(allLabels, ",\n            ")))
 }
 
 func indent(original string) string {

@@ -120,7 +120,7 @@ func (fg *fileGroup) GenerateBazelBuildActions(ctx ModuleContext) bool {
 	}
 
 	bazelCtx := ctx.Config().BazelContext
-	filePaths, ok := bazelCtx.GetOutputFiles(fg.GetBazelLabel(ctx, fg), ctx.Arch().ArchType)
+	filePaths, ok := bazelCtx.GetOutputFiles(fg.GetBazelLabel(ctx, fg), Common)
 	if !ok {
 		return false
 	}
