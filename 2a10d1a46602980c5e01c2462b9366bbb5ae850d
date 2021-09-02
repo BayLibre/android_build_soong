@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52aa493c_436172b4",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1583551
+      },
+      "writtenOn": "2021-09-02T20:14:44Z",
+      "side": 1,
+      "message": "Changing this line to use deps.StaticLibs instead results in test failures in cc_test.go:\n```\n        actual:   [out/soong/.intermediates/a/android_arm64_armv8-a_static/a.a out/soong/.intermediates/c/android_arm64_armv8-a_static/c.a out/soong/.intermediates/b/android_arm64_armv8-a_static/b.a .]\n        expected: [out/soong/.intermediates/a/android_arm64_armv8-a_static/a.a out/soong/.intermediates/c/android_arm64_armv8-a_static/c.a out/soong/.intermediates/b/android_arm64_armv8-a_static/b.a]\n```\n\nI\u0027m having difficulty figuring out where the \".\" is coming from, since it\u0027s not returned from config.BuiltinsRuntimeLibrary().",
+      "revId": "2a10d1a46602980c5e01c2462b9366bbb5ae850d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
