@@ -165,13 +165,6 @@ func (binary *binaryDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
 			if ctx.selectedStl() == "libc++_static" {
 				deps.StaticLibs = append(deps.StaticLibs, "libm", "libc")
 			}
-			// static libraries libcompiler_rt, libc and libc_nomalloc need to be linked with
-			// --start-group/--end-group along with libgcc.  If they are in deps.StaticLibs,
-			// move them to the beginning of deps.LateStaticLibs
-			var groupLibs []string
-			deps.StaticLibs, groupLibs = filterList(deps.StaticLibs,
-				[]string{"libc", "libc_nomalloc", "libcompiler_rt"})
-			deps.LateStaticLibs = append(groupLibs, deps.LateStaticLibs...)
 		}
 
 		if ctx.Os() == android.LinuxBionic && !binary.static() {

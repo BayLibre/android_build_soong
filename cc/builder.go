@@ -752,13 +752,8 @@ func transformObjToDynamicBinary(ctx android.ModuleContext,
 	}
 
 	libFlagsList = append(libFlagsList, staticLibs.Strings()...)
-
-	if groupLate && !ctx.Darwin() && len(lateStaticLibs) > 0 {
-		libFlagsList = append(libFlagsList, "-Wl,--start-group")
-	}
-	libFlagsList = append(libFlagsList, lateStaticLibs.Strings()...)
-	if groupLate && !ctx.Darwin() && len(lateStaticLibs) > 0 {
-		libFlagsList = append(libFlagsList, "-Wl,--end-group")
+	if len(lateStaticLibs) > 0 {
+		libFlagsList = append(libFlagsList, lateStaticLibs.Strings()...)
 	}
 
 	for _, lib := range sharedLibs {
@@ -770,7 +765,9 @@ func transformObjToDynamicBinary(ctx android.ModuleContext,
 	}
 
 	deps = append(deps, staticLibs...)
-	deps = append(deps, lateStaticLibs...)
+	if len(lateStaticLibs) > 0 {
+		deps = append(deps, lateStaticLibs...)
+	}
 	deps = append(deps, wholeStaticLibs...)
 	deps = append(deps, crtBegin...)
 	deps = append(deps, crtEnd...)

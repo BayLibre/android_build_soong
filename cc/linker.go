@@ -404,14 +404,14 @@ func (linker *baseLinker) linkerDeps(ctx DepsContext, deps Deps) Deps {
 		}
 	} else if ctx.toolchain().Musl() {
 		if !Bool(linker.Properties.No_libcrt) && !ctx.header() {
-			deps.LateStaticLibs = append(deps.LateStaticLibs, config.BuiltinsRuntimeLibrary(ctx.toolchain()))
+			deps.StaticLibs = append(deps.StaticLibs, config.BuiltinsRuntimeLibrary(ctx.toolchain()))
 		}
 	}
 
 	deps.LateSharedLibs = append(deps.LateSharedLibs, deps.SystemSharedLibs...)
 
 	if ctx.Windows() {
-		deps.LateStaticLibs = append(deps.LateStaticLibs, "libwinpthread")
+		deps.StaticLibs = append(deps.StaticLibs, "libwinpthread")
 	}
 
 	return deps
