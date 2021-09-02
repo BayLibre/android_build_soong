@@ -63,6 +63,30 @@
       },
       "revId": "c8beff8d675cccc7fd167b5cea7a8c1d9ce52355",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92dde611_4b514f9e",
+        "filename": "dexpreopt/dexpreopt_gen/dexpreopt_gen.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-09-02T07:15:26Z",
+      "side": 1,
+      "message": "...it says: \"mysterious failure\". So it has to stay this way, apparently, at least for the time being :(",
+      "parentUuid": "ad870379_91329909",
+      "range": {
+        "startLine": 90,
+        "startChar": 51,
+        "endLine": 90,
+        "endChar": 59
+      },
+      "revId": "c8beff8d675cccc7fd167b5cea7a8c1d9ce52355",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
