@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "485f00e6_bd6bc8dd",
+        "filename": "scripts/generate-notice-files.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2021-09-02T20:56:26Z",
+      "side": 1,
+      "message": "Oops, I don\u0027t know how this one slipped by.",
+      "parentUuid": "1fdb2c5f_57ae118c",
+      "revId": "dbfd2aedd22a6144118b68d91ae0579da17cffb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "820e4f6e_706236c3",
@@ -66,6 +84,24 @@
       "writtenOn": "2021-09-02T19:40:03Z",
       "side": 1,
       "message": "Why does the list need to be made? Shouldn\u0027t just `for file_key in files_with_same_hash` work? Deserves a comment if there\u0027s actually a reason for the copy.\n\nOTOH, you don\u0027t actually care what the key is, so maybe:\n\n```\nfor files in files_with_same_hash.values():\n    for filename in files:\n        ...\n```",
+      "revId": "dbfd2aedd22a6144118b68d91ae0579da17cffb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6369891e_0f916adf",
+        "filename": "scripts/generate-notice-files.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2021-09-02T20:56:26Z",
+      "side": 1,
+      "message": "The problem is the final loop needs the file_key. But I changed it slightly so it gets both the key and value at the same time rather than doing it in two steps.",
+      "parentUuid": "820e4f6e_706236c3",
       "revId": "dbfd2aedd22a6144118b68d91ae0579da17cffb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
