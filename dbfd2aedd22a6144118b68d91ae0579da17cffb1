@@ -104,6 +104,24 @@
       "parentUuid": "820e4f6e_706236c3",
       "revId": "dbfd2aedd22a6144118b68d91ae0579da17cffb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94dc7fe0_e7da31af",
+        "filename": "scripts/generate-notice-files.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-09-02T20:59:58Z",
+      "side": 1,
+      "message": "Ah, had missed that. Yeah, LGTM.",
+      "parentUuid": "6369891e_0f916adf",
+      "revId": "dbfd2aedd22a6144118b68d91ae0579da17cffb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
