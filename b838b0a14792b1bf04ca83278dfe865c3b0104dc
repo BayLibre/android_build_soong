@@ -16,6 +16,24 @@
       "message": "@Bob: Apparently, the submit is still blocked by OSS licensing despite your +2?",
       "revId": "b838b0a14792b1bf04ca83278dfe865c3b0104dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43d8ced4_45ea01fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-09-02T21:59:50Z",
+      "side": 1,
+      "message": "That too is WAI. It requires 2 +2 votes on Open-Source-Licensing. Any Google employee working on Android is supposed to be able to +2. I expect you can do the honors. If not, request to have your team added to the group if you will be doing a lot of Android development.\n\nThe 2 vote thing wasn\u0027t my choice, but it\u0027s what we have at the moment.",
+      "parentUuid": "9045ffee_4d8091da",
+      "revId": "b838b0a14792b1bf04ca83278dfe865c3b0104dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
