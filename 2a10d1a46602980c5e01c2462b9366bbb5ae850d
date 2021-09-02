@@ -16,6 +16,24 @@
       "message": "Changing this line to use deps.StaticLibs instead results in test failures in cc_test.go:\n```\n        actual:   [out/soong/.intermediates/a/android_arm64_armv8-a_static/a.a out/soong/.intermediates/c/android_arm64_armv8-a_static/c.a out/soong/.intermediates/b/android_arm64_armv8-a_static/b.a .]\n        expected: [out/soong/.intermediates/a/android_arm64_armv8-a_static/a.a out/soong/.intermediates/c/android_arm64_armv8-a_static/c.a out/soong/.intermediates/b/android_arm64_armv8-a_static/b.a]\n```\n\nI\u0027m having difficulty figuring out where the \".\" is coming from, since it\u0027s not returned from config.BuiltinsRuntimeLibrary().",
       "revId": "2a10d1a46602980c5e01c2462b9366bbb5ae850d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2041b69_9f900971",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-02T20:51:50Z",
+      "side": 1,
+      "message": "This is due to our not having specified srcs for toolchain libraries: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/testing.go;l\u003d75-93;drc\u003d7549d460f0bdd180f5fd4b314a140ce704254401\n\nThese tests are verifying the reordering of deps based on transitive deps. Given the description of efficient archive file handling, I wonder whether we could drop support for order of transitive static deps + those tests (probably a separate bug/issue), but  I\u0027d rather pirama@ weigh in on if that\u0027s reasonable.",
+      "parentUuid": "52aa493c_436172b4",
+      "revId": "2a10d1a46602980c5e01c2462b9366bbb5ae850d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
