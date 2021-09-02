@@ -41,17 +41,19 @@ type configImpl struct {
 	buildDateTime string
 
 	// From the arguments
-	parallel       int
-	keepGoing      int
-	verbose        bool
-	checkbuild     bool
-	dist           bool
-	skipConfig     bool
-	skipKati       bool
-	skipKatiNinja  bool
-	skipSoong      bool
-	skipNinja      bool
-	skipSoongTests bool
+	parallel        int
+	keepGoing       int
+	verbose         bool
+	checkbuild      bool
+	dist            bool
+	jsonModuleGraph bool
+	bp2build        bool
+	skipConfig      bool
+	skipKati        bool
+	skipKatiNinja   bool
+	skipSoong       bool
+	skipNinja       bool
+	skipSoongTests  bool
 
 	// From the product config
 	katiArgs        []string
@@ -108,9 +110,6 @@ const (
 
 	// Only generate build files (in a subdirectory of the out directory) and exit.
 	generateBuildFiles
-
-	// Only generate the Soong json module graph for use with jq, and exit.
-	generateJsonModuleGraph
 
 	// Generate synthetic build files and incorporate these files into a build which
 	// partially uses Bazel. Build metadata may come from Android.bp or BUILD files.
@@ -639,6 +638,10 @@ func (c *configImpl) parseArgs(ctx Context, args []string) {
 			c.environ.Set(k, v)
 		} else if arg == "dist" {
 			c.dist = true
+		} else if arg == "json-module-graph" {
+			c.jsonModuleGraph = true
+		} else if arg == "bp2build" {
+			c.bp2build = true
 		} else {
 			if arg == "checkbuild" {
 				c.checkbuild = true
@@ -703,6 +706,25 @@ func (c *configImpl) Environment() *Environment {
 
 func (c *configImpl) Arguments() []string {
 	return c.arguments
+}
+
+func (c *configImpl) SoongBuildInvocationNeeded() bool {
+	if c.Dist() {
+		return true
+	}
+
+	if len(c.Arguments()) > 0 {
+		// Explicit targets requested
+		return true
+	}
+
+	if !c.JsonModuleGraph() && !c.Bp2Build() {
+		// Command line was empty, the default Ninja target is built
+		return true
+	}
+
+	// build.ninja doesn't need to be generated
+	return false
 }
 
 func (c *configImpl) OutDir() string {
@@ -788,6 +810,14 @@ func (c *configImpl) Checkbuild() bool {
 
 func (c *configImpl) Dist() bool {
 	return c.dist
+}
+
+func (c *configImpl) JsonModuleGraph() bool {
+	return c.jsonModuleGraph
+}
+
+func (c *configImpl) Bp2Build() bool {
+	return c.bp2build
 }
 
 func (c *configImpl) IsVerbose() bool {
@@ -935,10 +965,6 @@ func (c *configImpl) UseBazel() bool {
 func (c *configImpl) bazelBuildMode() bazelBuildMode {
 	if c.Environment().IsEnvTrue("USE_BAZEL_ANALYSIS") {
 		return mixedBuild
-	} else if c.Environment().IsEnvTrue("GENERATE_BAZEL_FILES") {
-		return generateBuildFiles
-	} else if c.Environment().IsEnvTrue("GENERATE_JSON_MODULE_GRAPH") {
-		return generateJsonModuleGraph
 	} else {
 		return noBazel
 	}
