@@ -34,6 +34,23 @@
       "parentUuid": "9045ffee_4d8091da",
       "revId": "b838b0a14792b1bf04ca83278dfe865c3b0104dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74eba8d1_bb8b39a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-09-03T06:13:34Z",
+      "side": 1,
+      "message": "Oh, I see. I thought that your initial +2 was meant to unblock the change from the OSS licensing perspective.\n\nIt appears that I can only +1 it and I suppose Liz is in he same situation, too, so Spandan, Yuntao: can y\u0027all \"Open-Source-Licensing +2\" this change?",
+      "revId": "b838b0a14792b1bf04ca83278dfe865c3b0104dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
