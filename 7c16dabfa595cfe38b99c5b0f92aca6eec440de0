@@ -46,6 +46,30 @@
       },
       "revId": "7c16dabfa595cfe38b99c5b0f92aca6eec440de0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41e6c5ba_30cf92da",
+        "filename": "scripts/check_boot_jars/check_boot_jars.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-03T19:02:21Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "8e947592_5a7aba5d",
+      "range": {
+        "startLine": 6,
+        "startChar": 80,
+        "endLine": 6,
+        "endChar": 81
+      },
+      "revId": "7c16dabfa595cfe38b99c5b0f92aca6eec440de0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
