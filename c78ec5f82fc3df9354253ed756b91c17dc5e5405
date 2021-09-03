@@ -25,6 +25,32 @@
       },
       "revId": "c78ec5f82fc3df9354253ed756b91c17dc5e5405",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000015047834",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1818660?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "fb810210_80adf04b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-09-03T01:40:23Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nlicenses\n",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "c78ec5f82fc3df9354253ed756b91c17dc5e5405",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
