@@ -22,6 +22,30 @@
       },
       "revId": "7c16dabfa595cfe38b99c5b0f92aca6eec440de0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e947592_5a7aba5d",
+        "filename": "scripts/check_boot_jars/check_boot_jars.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-09-03T18:13:43Z",
+      "side": 0,
+      "message": "Thanks for catching this. I am now using \"\\\" to break the line in source code, but running help(\u003cmodule\u003e) should print this in a single line",
+      "parentUuid": "524b5be8_b235e793",
+      "range": {
+        "startLine": 6,
+        "startChar": 80,
+        "endLine": 6,
+        "endChar": 81
+      },
+      "revId": "7c16dabfa595cfe38b99c5b0f92aca6eec440de0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -22,6 +22,30 @@
       },
       "revId": "838bdc66b0da4630ec2ff5c9eaec40eeae3990b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaf77ce8_26048c5d",
+        "filename": "scripts/check_boot_jars/check_boot_jars.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-09-03T18:13:43Z",
+      "side": 1,
+      "message": "I think pylint was raising this for all `print \u003e\u003e` statements. I have changed this to a python2+3 compatible print (using __future__), which allows us to remove this",
+      "parentUuid": "2d12be5a_297d43e6",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 36
+      },
+      "revId": "838bdc66b0da4630ec2ff5c9eaec40eeae3990b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
