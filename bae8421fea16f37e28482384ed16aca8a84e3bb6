@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "bae8421fea16f37e28482384ed16aca8a84e3bb6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfba6bd4_ba8ec505",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-09-03T19:45:00Z",
+      "side": 1,
+      "message": "PTAL\n\nDan, I realized after-the-fact that Liz probably cannot +2 the Open-Source-Licensing label for the false-positive in the commit message.",
+      "revId": "bae8421fea16f37e28482384ed16aca8a84e3bb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
