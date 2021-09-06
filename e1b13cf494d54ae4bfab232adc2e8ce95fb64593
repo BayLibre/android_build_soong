@@ -141,6 +141,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3671b989_a2312df5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-09-06T13:15:37Z",
+      "side": 1,
+      "message": "Update: I tried to add some integration tests but then I realized that it\u0027s not very possible: multiproduct_kati requires being able to compute the list of products (soong_ui --dumpvars_mode --vars\u003dall_named_products), which itself requires a large amount of Make machinery.\n\nSo we can\u0027t, unless I mock out the whole product configuration machinery and even then, I\u0027m not sure \"all_named_products\" is part of it; doing that is arguably the right thing to do, but when I last tried, I had to realize that simply using an empty product configuration makes Soong crash 😞",
+      "parentUuid": "c8dc3490_0d17f8ab",
+      "revId": "e1b13cf494d54ae4bfab232adc2e8ce95fb64593",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1686dd1_5415ef5a",
