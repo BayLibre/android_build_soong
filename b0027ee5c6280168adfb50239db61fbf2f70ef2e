@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fd6bb5e_e7bc655e",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-09-06T14:04:56Z",
+      "side": 1,
+      "message": "Comment added. Also, it\u0027s now better to say SoongBuildInvocationNeeded().",
+      "parentUuid": "525937cf_45389dda",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 2
+      },
+      "revId": "b0027ee5c6280168adfb50239db61fbf2f70ef2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dddfd667_acdcb2c9",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-06T13:21:07Z",
       "side": 1,
       "message": "Why can\u0027t both be true together?\n\nCorollary: if one specifies `m bp2build json-module-graph`, what should be the defined behavior?",
+      "range": {
+        "startLine": 641,
+        "startChar": 2,
+        "endLine": 644,
+        "endChar": 20
+      },
+      "revId": "b0027ee5c6280168adfb50239db61fbf2f70ef2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa00ed2_8c5ad798",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-09-06T14:04:56Z",
+      "side": 1,
+      "message": "They can be, but this is checking one single argument which most certainly can\u0027t be both \"bp2build\" and \"json-module-graph\" 😊 (this if ladder is within a loop that iterates over the command line arguments)\n\nre: semantics, I think the best is to build both since that\u0027s what mimics the Make behavior. test_multiple_soong_build_modes tests this.",
+      "parentUuid": "dddfd667_acdcb2c9",
       "range": {
         "startLine": 641,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8f0dc3e_791cd5bd",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-09-06T14:04:56Z",
+      "side": 1,
+      "message": "added comments",
+      "parentUuid": "ff34391b_c62838a8",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 717,
+        "endChar": 31
+      },
+      "revId": "b0027ee5c6280168adfb50239db61fbf2f70ef2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0654690b_4b774483",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-06T13:21:07Z",
       "side": 1,
       "message": "As with above comment: the current arg parsing only supports at most one of bp2build or json module graph, not both",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 2
+      },
+      "revId": "b0027ee5c6280168adfb50239db61fbf2f70ef2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d93c094_071c4dc3",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-09-06T14:04:56Z",
+      "side": 1,
+      "message": "It does, see the test case.",
+      "parentUuid": "0654690b_4b774483",
       "range": {
         "startLine": 355,
         "startChar": 0,
