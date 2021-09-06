@@ -1771,7 +1771,6 @@ cc_prebuilt_library {
     prefer: false,
     visibility: ["//visibility:public"],
     apex_available: ["//apex_available:platform"],
-    recovery_available: true,
     vendor_available: true,
     stl: "none",
     compile_multilib: "both",
@@ -1806,7 +1805,6 @@ cc_prebuilt_library {
     visibility: ["//visibility:public"],
     apex_available: ["//apex_available:platform"],
     installable: false,
-    recovery_available: true,
     vendor_available: true,
     stl: "none",
     compile_multilib: "both",
@@ -2079,6 +2077,51 @@ func TestSnapshotWithCcHeadersLibrary_DetectsNativeBridgeSpecificProperties(t *t
 			},
 		}
 	`)
+}
+
+func TestSnapshotWithCcHeadersLibraryAndRecoveryRequired(t *testing.T) {
+	result := android.GroupFixturePreparers(
+		cc.PrepareForTestWithCcDefaultModules,
+		PrepareForTestWithSdkBuildComponents,
+		ccTestFs.AddToFixture(),
+	).RunTestWithBp(t, `
+		sdk {
+			name: "mysdk",
+			native_header_libs: ["mynativeheaders"],
+			traits: {
+				recovery_image_required: ["mynativeheaders"],
+			},
+		}
+
+		cc_library_headers {
+			name: "mynativeheaders",
+			export_include_dirs: ["myinclude"],
+			stl: "none",
+			system_shared_libs: [],
+			recovery_available: true,
+		}
+	`)
+
+	CheckSnapshot(t, result, "mysdk", "",
+		checkUnversionedAndroidBpContents(`
+// This is auto-generated. DO NOT EDIT.
+
+cc_prebuilt_library_headers {
+    name: "mynativeheaders",
+    prefer: false,
+    visibility: ["//visibility:public"],
+    apex_available: ["//apex_available:platform"],
+    recovery_available: true,
+    stl: "none",
+    compile_multilib: "both",
+    system_shared_libs: [],
+    export_include_dirs: ["include/myinclude"],
+}
+`),
+		checkAllCopyRules(`
+myinclude/Test.h -> include/myinclude/Test.h
+`),
+	)
 }
 
 func TestHostSnapshotWithCcHeadersLibrary(t *testing.T) {

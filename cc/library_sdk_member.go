@@ -127,6 +127,16 @@ func (mt *librarySdkMemberType) AddDependencies(ctx android.SdkDependencyContext
 				imageVariations: []blueprint.Variation{{Mutator: "image", Variation: android.CoreVariation}},
 				targets:         targets,
 			})
+
+			// If required add additional dependencies on the image:recovery variants.
+			if ctx.RequiresTrait(lib, recoveryImageRequiredSdkTrait) {
+				memberDependencies = append(memberDependencies, memberDependency{
+					imageVariations: []blueprint.Variation{{Mutator: "image", Variation: android.RecoveryVariation}},
+					// Only add a dependency on the first target as that is the only one which will have an
+					// image:recovery variant.
+					targets: targets[:1],
+				})
+			}
 		} else {
 			// Otherwise, add a dependency without any image variation.
 			memberDependencies = append(memberDependencies, memberDependency{
@@ -188,7 +198,7 @@ func (mt *librarySdkMemberType) AddPrebuiltModule(ctx android.SdkMemberContext, 
 		pbm.AddProperty("native_bridge_supported", true)
 	}
 
-	if proptools.Bool(ccModule.Properties.Recovery_available) {
+	if ctx.RequiresTrait(recoveryImageRequiredSdkTrait) {
 		pbm.AddProperty("recovery_available", true)
 	}
 
