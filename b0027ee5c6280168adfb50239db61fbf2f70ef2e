@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "525937cf_45389dda",
+        "filename": "ui/build/build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-06T13:21:07Z",
+      "side": 1,
+      "message": "Why is this new conditional needed now?",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 2
+      },
+      "revId": "b0027ee5c6280168adfb50239db61fbf2f70ef2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dddfd667_acdcb2c9",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-06T13:21:07Z",
+      "side": 1,
+      "message": "Why can\u0027t both be true together?\n\nCorollary: if one specifies `m bp2build json-module-graph`, what should be the defined behavior?",
+      "range": {
+        "startLine": 641,
+        "startChar": 2,
+        "endLine": 644,
+        "endChar": 20
+      },
+      "revId": "b0027ee5c6280168adfb50239db61fbf2f70ef2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff34391b_c62838a8",
+        "filename": "ui/build/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-06T13:21:07Z",
+      "side": 1,
+      "message": "May be useful to comment that this is the residue after parsing the special args",
+      "range": {
+        "startLine": 717,
+        "startChar": 0,
+        "endLine": 717,
+        "endChar": 31
+      },
+      "revId": "b0027ee5c6280168adfb50239db61fbf2f70ef2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0654690b_4b774483",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-06T13:21:07Z",
+      "side": 1,
+      "message": "As with above comment: the current arg parsing only supports at most one of bp2build or json module graph, not both",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 362,
+        "endChar": 2
+      },
+      "revId": "b0027ee5c6280168adfb50239db61fbf2f70ef2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
