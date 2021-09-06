@@ -824,6 +824,8 @@ function test_queryview_null_build() {
   fi
 }
 
+test_soong_build_rerun_iff_environment_changes
+
 test_smoke
 test_null_build
 test_soong_docs_smoke
