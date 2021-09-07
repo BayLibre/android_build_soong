@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e91f0fe4_d9e291bf",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-07T08:29:22Z",
+      "side": 1,
+      "message": "Why not make the globfile an input to this function as pass it in from bootstrapBlueprint?",
+      "range": {
+        "startLine": 142,
+        "startChar": 16,
+        "endLine": 142,
+        "endChar": 42
+      },
+      "revId": "550fe3bb8b454f60e226010ef51ca3b43410f509",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52c621b3_c62c5b76",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-07T08:29:22Z",
+      "side": 1,
+      "message": "Use config.NamedGlobFile here and below?",
+      "range": {
+        "startLine": 161,
+        "startChar": 38,
+        "endLine": 161,
+        "endChar": 96
+      },
+      "revId": "550fe3bb8b454f60e226010ef51ca3b43410f509",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
