@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e500cf4_fcd926e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-07T16:20:37Z",
+      "side": 1,
+      "message": "My understanding from previous discussion with Jiakai is that:\n\n- \"Unsafe\" path is one that doesn\u0027t fit `validateSafePath` (https://source.corp.google.com/android/build/soong/android/paths.go;l\u003d1816-1822?q\u003dvalidateSafePath).\n\n- It is needed because apex modules need to install paths outside their /apex (dexpreopt files for apex system server jars are installed in /system/framework). To avoid errors like this one:\n\n  art/libartservice/Android.bp:47:1: module \"service-art\" variant \n  \"android_common_apex10000\": Path is outside directory: /system/apex/oat/x86_64\n\n- Validation fails because the /system/framework path starts with /.\n\nThere is more context in a follow-up CL aosp/1814447 (around java/dexpreopt.go:360). Generally I think this patch is ok because we need to do a weird non-standard thing in this case (install apex files into platform locations), so it cannot be done in a clean way.",
+      "parentUuid": "a7954a5c_018bd829",
+      "revId": "6f7e3804ea3517b4d78475738ccc7a646ff50757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71f306a8_72add4f3",
         "filename": "android/module_test.go",
         "patchSetId": 2
