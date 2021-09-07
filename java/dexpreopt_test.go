@@ -24,11 +24,17 @@ import (
 	"android/soong/dexpreopt"
 )
 
+func init() {
+	RegisterFakeRuntimeApexMutator()
+}
+
 func TestDexpreoptEnabled(t *testing.T) {
 	tests := []struct {
-		name    string
-		bp      string
-		enabled bool
+		name        string
+		bp          string
+		moduleName  string
+		apexVariant bool
+		enabled     bool
 	}{
 		{
 			name: "app",
@@ -148,13 +154,69 @@ func TestDexpreoptEnabled(t *testing.T) {
 				}`,
 			enabled: true,
 		},
+		{
+			name: "apex variant",
+			bp: `
+				java_library {
+					name: "foo",
+					installable: true,
+					srcs: ["a.java"],
+					apex_available: ["com.android.apex1"],
+				}`,
+			apexVariant: true,
+			enabled:     false,
+		},
+		{
+			name: "apex variant of system server jar",
+			bp: `
+				java_library {
+					name: "service-foo",
+					installable: true,
+					srcs: ["a.java"],
+					apex_available: ["com.android.apex1"],
+				}`,
+			moduleName:  "service-foo",
+			apexVariant: true,
+			enabled:     true,
+		},
+		{
+			name: "platform variant of apex system server jar",
+			bp: `
+				java_library {
+					name: "service-foo",
+					installable: true,
+					srcs: ["a.java"],
+					apex_available: ["com.android.apex1"],
+				}`,
+			moduleName:  "service-foo",
+			apexVariant: false,
+			enabled:     false,
+		},
 	}
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			ctx, _ := testJava(t, test.bp)
+			preparers := android.GroupFixturePreparers(
+				PrepareForTestWithJavaDefaultModules,
+				PrepareForTestWithFakeApexMutator,
+				dexpreopt.FixtureSetApexSystemServerJars(
+					"com.android.apex1:service-foo"),
+			)
 
-			dexpreopt := ctx.ModuleForTests("foo", "android_common").MaybeRule("dexpreopt")
+			result := preparers.RunTestWithBp(t, test.bp)
+			ctx := result.TestContext
+
+			moduleName := "foo"
+			if test.moduleName != "" {
+				moduleName = test.moduleName
+			}
+
+			variant := "android_common"
+			if test.apexVariant {
+				variant += "_apex1000"
+			}
+
+			dexpreopt := ctx.ModuleForTests(moduleName, variant).MaybeRule("dexpreopt")
 			enabled := dexpreopt.Rule != nil
 
 			if enabled != test.enabled {
