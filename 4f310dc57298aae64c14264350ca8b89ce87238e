@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8029c742_879bd64a",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-07T11:17:24Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be c.useValidations?",
+      "range": {
+        "startLine": 445,
+        "startChar": 28,
+        "endLine": 445,
+        "endChar": 38
+      },
+      "revId": "4f310dc57298aae64c14264350ca8b89ce87238e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c349bb3_e0297114",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-07T11:17:24Z",
+      "side": 1,
+      "message": "nit: turn these strings into file constants",
+      "range": {
+        "startLine": 172,
+        "startChar": 48,
+        "endLine": 172,
+        "endChar": 55
+      },
+      "revId": "4f310dc57298aae64c14264350ca8b89ce87238e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d191d2dd_3ec92d74",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-07T11:17:24Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be useValidations?",
+      "range": {
+        "startLine": 248,
+        "startChar": 26,
+        "endLine": 248,
+        "endChar": 40
+      },
+      "revId": "4f310dc57298aae64c14264350ca8b89ce87238e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
