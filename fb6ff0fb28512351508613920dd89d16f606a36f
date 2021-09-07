@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4579d8a5_b83a4e35",
+        "filename": "android/bazel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-07T19:26:18Z",
+      "side": 1,
+      "message": "Unsure as I haven\u0027t been able to get through `bp2build.sh` for other reasons. I\u0027m erring on the side that it\u0027s mixed only, so I\u0027ll move it. libfdtrack as well?",
+      "parentUuid": "329cfda1_cb293ba7",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 11
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e3f92a9_871d11ec",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-07T17:39:01Z",
       "side": 1,
       "message": "can we keep the name StaticOrShared as this isn\u0027t all library properties?",
+      "range": {
+        "startLine": 115,
+        "startChar": 18,
+        "endLine": 115,
+        "endChar": 21
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdff207f_4907981a",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-07T19:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e3f92a9_871d11ec",
       "range": {
         "startLine": 115,
         "startChar": 18,
@@ -87,6 +135,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a00586d6_d7567117",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-07T19:26:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6313da2c_7c8ea95c",
+      "range": {
+        "startLine": 1055,
+        "startChar": 0,
+        "endLine": 1055,
+        "endChar": 64
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee25f77_93dc60b3",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-07T19:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11f4f6a5_7de87a12",
+      "range": {
+        "startLine": 1167,
+        "startChar": 0,
+        "endLine": 1188,
+        "endChar": 2
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1aa0477_27a3a173",
@@ -100,6 +196,30 @@
       "writtenOn": "2021-09-07T17:39:01Z",
       "side": 1,
       "message": "moving this is unrelated to adding bp2build support for cc_library_shared. if we want to move, let\u0027s pull it out to a separate CL",
+      "range": {
+        "startLine": 2209,
+        "startChar": 1,
+        "endLine": 2323,
+        "endChar": 1
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5633bc83_676500df",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2323,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-07T19:26:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f1aa0477_27a3a173",
       "range": {
         "startLine": 2209,
         "startChar": 1,
@@ -133,6 +253,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2afa7260_2f54e612",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2326,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-07T19:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c7885aa_78180759",
+      "range": {
+        "startLine": 2326,
+        "startChar": 5,
+        "endLine": 2326,
+        "endChar": 18
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c7bfabd_d34e10fd",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2344,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-07T19:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88e7a95b_e6912c09",
+      "range": {
+        "startLine": 2344,
+        "startChar": 5,
+        "endLine": 2344,
+        "endChar": 19
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd169b15_9b2182e0",
@@ -146,6 +314,30 @@
       "writtenOn": "2021-09-07T17:39:01Z",
       "side": 1,
       "message": "This was already a bug before your CL, but given that we merge static/shared Srcs_as below, we should move this check lower or also check the static/shared srcs_as here",
+      "range": {
+        "startLine": 2353,
+        "startChar": 1,
+        "endLine": 2353,
+        "endChar": 36
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a6e403b_0a7d701c",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2353,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-07T19:26:18Z",
+      "side": 1,
+      "message": "Both legs of the isStatic check use compilerAttrs.asSrcs as their sole source of assembly files, which was what the original code did. So there\u0027s nothing to add to this check, according to that logic... ^^; Unless you\u0027d like me to start adding in any Src_as provided through bp2buildParseStaticOrSharedProps. I *did* add those extra checks in CcLibraryBp2Build out of paranoia, but the original code didn\u0027t use them there either. So... one of the two cases should change. ^^;",
+      "parentUuid": "dd169b15_9b2182e0",
       "range": {
         "startLine": 2353,
         "startChar": 1,
@@ -179,6 +371,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae5ab1cc_203e059f",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2361,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-07T19:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "118a03ae_921d5d03",
+      "range": {
+        "startLine": 2361,
+        "startChar": 1,
+        "endLine": 2361,
+        "endChar": 9
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c5517e6_d733b7c9",
@@ -192,6 +408,30 @@
       "writtenOn": "2021-09-07T17:39:01Z",
       "side": 1,
       "message": "this part is no longer necessary for bp2build conversions after https://android-review.googlesource.com/c/platform/build/soong/+/1792714/",
+      "range": {
+        "startLine": 2521,
+        "startChar": 0,
+        "endLine": 2533,
+        "endChar": 88
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b46c24a2_7ba82dba",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2533,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-07T19:26:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c5517e6_d733b7c9",
       "range": {
         "startLine": 2521,
         "startChar": 0,
@@ -237,6 +477,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5996bff_bb81a6c0",
+        "filename": "cc/library_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-07T19:26:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f2707c28_7835f2a0",
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9b1973c_910163b6",
@@ -250,6 +508,30 @@
       "writtenOn": "2021-09-07T17:39:01Z",
       "side": 1,
       "message": "yes please, similar to other module types, please add a separate file with the unit tests.",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 42
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c144c5de_88858d7b",
+        "filename": "cc/library_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-07T19:26:18Z",
+      "side": 1,
+      "message": "Alright, I\u0027ll add it to soong/bp2build/ like the other conversion test. Makes sense that that\u0027s where these should be done. ^^;",
+      "parentUuid": "d9b1973c_910163b6",
       "range": {
         "startLine": 325,
         "startChar": 0,
