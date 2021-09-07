@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11f4f6a5_7de87a12",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1188,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-07T17:39:01Z",
+      "side": 1,
+      "message": "this is not bp2build functionality, let\u0027s keep this cl focused on bp2build for cc shared libraries. go/small-cls",
+      "range": {
+        "startLine": 1167,
+        "startChar": 0,
+        "endLine": 1188,
+        "endChar": 2
+      },
+      "revId": "1899865b4812fa24fad5a4e104606d2c90f9d5f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

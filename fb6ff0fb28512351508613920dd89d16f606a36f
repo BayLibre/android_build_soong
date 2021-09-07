@@ -20,6 +20,190 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "329cfda1_cb293ba7",
+        "filename": "android/bazel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-07T17:39:01Z",
+      "side": 1,
+      "message": "is this in bp2build or only in mixed build mode -- if the latter, can you group it with the items in the mixedBuildsDisabled list below?",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 11
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e3f92a9_871d11ec",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-07T17:39:01Z",
+      "side": 1,
+      "message": "can we keep the name StaticOrShared as this isn\u0027t all library properties?",
+      "range": {
+        "startLine": 115,
+        "startChar": 18,
+        "endLine": 115,
+        "endChar": 21
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6313da2c_7c8ea95c",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-07T17:39:01Z",
+      "side": 1,
+      "message": "it\u0027ll never be both -- setting a library\u0027s variant to static or shared will disable the other: https://cs.android.com/android/_/android/platform/build/soong/+/337b47b81c84792143e81425bd70ade073450ad2:cc/library.go;l\u003d1825-1835;drc\u003dd9287b6c35fa898450557561ca45dd80df98a8ec",
+      "range": {
+        "startLine": 1055,
+        "startChar": 0,
+        "endLine": 1055,
+        "endChar": 64
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1aa0477_27a3a173",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2323,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-07T17:39:01Z",
+      "side": 1,
+      "message": "moving this is unrelated to adding bp2build support for cc_library_shared. if we want to move, let\u0027s pull it out to a separate CL",
+      "range": {
+        "startLine": 2209,
+        "startChar": 1,
+        "endLine": 2323,
+        "endChar": 1
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c7885aa_78180759",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2326,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-07T17:39:01Z",
+      "side": 1,
+      "message": "to disambiguate further, could we include in the name that this is static or shared? to disambiguate with the following could include in this name something like \"maybe convert\" or \"mutator\"",
+      "range": {
+        "startLine": 2326,
+        "startChar": 5,
+        "endLine": 2326,
+        "endChar": 18
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd169b15_9b2182e0",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2353,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-07T17:39:01Z",
+      "side": 1,
+      "message": "This was already a bug before your CL, but given that we merge static/shared Srcs_as below, we should move this check lower or also check the static/shared srcs_as here",
+      "range": {
+        "startLine": 2353,
+        "startChar": 1,
+        "endLine": 2353,
+        "endChar": 36
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "118a03ae_921d5d03",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2361,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-07T17:39:01Z",
+      "side": 1,
+      "message": "static or shared? linkage-specific?",
+      "range": {
+        "startLine": 2361,
+        "startChar": 1,
+        "endLine": 2361,
+        "endChar": 9
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c5517e6_d733b7c9",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2533,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-07T17:39:01Z",
+      "side": 1,
+      "message": "this part is no longer necessary for bp2build conversions after https://android-review.googlesource.com/c/platform/build/soong/+/1792714/",
+      "range": {
+        "startLine": 2521,
+        "startChar": 0,
+        "endLine": 2533,
+        "endChar": 88
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c707c8b9_1dc49485",
         "filename": "cc/library_test.go",
         "patchSetId": 9
@@ -31,6 +215,47 @@
       "writtenOn": "2021-09-07T16:41:28Z",
       "side": 1,
       "message": "Should we have these too?",
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2707c28_7835f2a0",
+        "filename": "cc/library_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-07T17:39:01Z",
+      "side": 1,
+      "message": "http://go/aocs/android/platform/superproject/+/master:build/soong/bp2build/cc_library_static_conversion_test.go already covers the cc_library_static conversions tests.",
+      "parentUuid": "c707c8b9_1dc49485",
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9b1973c_910163b6",
+        "filename": "cc/library_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-07T17:39:01Z",
+      "side": 1,
+      "message": "yes please, similar to other module types, please add a separate file with the unit tests.",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 42
+      },
       "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

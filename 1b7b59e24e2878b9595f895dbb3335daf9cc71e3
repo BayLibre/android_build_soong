@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88e7a95b_e6912c09",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2344,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-07T17:39:01Z",
+      "side": 1,
+      "message": "_ in a name is not a common pattern in go ( go/go-style/decisions#underscores ) -- perhaps rename to clarify that this is contains the crux of the conversion?",
+      "range": {
+        "startLine": 2344,
+        "startChar": 5,
+        "endLine": 2344,
+        "endChar": 19
+      },
+      "revId": "1b7b59e24e2878b9595f895dbb3335daf9cc71e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
