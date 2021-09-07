@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fd72abd_f05c68cb",
+        "filename": "android/module_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-07T14:32:38Z",
+      "side": 1,
+      "message": "Need to determine most appropriate module to leverage to test the common properties.",
+      "revId": "f3196427ccc99bb6c0c000c0a40dc07654c38845",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
