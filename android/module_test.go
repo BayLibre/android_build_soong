@@ -195,11 +195,15 @@ func TestSrcIsModuleWithTag(t *testing.T) {
 type depsModule struct {
 	ModuleBase
 	props struct {
-		Deps []string
+		Deps        []string
+		Install_dir *string
 	}
 }
 
 func (m *depsModule) GenerateAndroidBuildActions(ctx ModuleContext) {
+	if m.props.Install_dir != nil {
+		PathForModuleInstall(ctx, *m.props.Install_dir)
+	}
 }
 
 func (m *depsModule) DepsMutator(ctx BottomUpMutatorContext) {
@@ -213,8 +217,24 @@ func depsModuleFactory() Module {
 	return m
 }
 
+type depsAllowingUnsafePathModule struct {
+	depsModule
+}
+
+func (m *depsAllowingUnsafePathModule) InstallAllowUnsafePath() bool {
+	return true
+}
+
+func depsAllowingUnsafePathModuleFactory() Module {
+	m := &depsAllowingUnsafePathModule{}
+	m.AddProperties(&m.props)
+	InitAndroidModule(m)
+	return m
+}
+
 var prepareForModuleTests = FixtureRegisterWithContext(func(ctx RegistrationContext) {
 	ctx.RegisterModuleType("deps", depsModuleFactory)
+	ctx.RegisterModuleType("deps_allowing_unsafe_path", depsAllowingUnsafePathModuleFactory)
 })
 
 func TestErrorDependsOnDisabledModule(t *testing.T) {
@@ -314,6 +334,27 @@ func TestDistErrorChecking(t *testing.T) {
 		"\\QAndroid.bp:16:15: module \"foo\": dists[1].dest: Path is outside directory: ../invalid-dest1\\E",
 		"\\QAndroid.bp:17:14: module \"foo\": dists[1].dir: Path is outside directory: ../invalid-dir1\\E",
 		"\\QAndroid.bp:18:17: module \"foo\": dists[1].suffix: Suffix may not contain a '/' character.\\E",
+	}
+
+	prepareForModuleTests.
+		ExtendWithErrorHandler(FixtureExpectsAllErrorsToMatchAPattern(expectedErrs)).
+		RunTestWithBp(t, bp)
+}
+
+func TestInstallAllowUnsafePathOption(t *testing.T) {
+	bp := `
+		deps {
+			name: "foo",
+			install_dir: "/outside",
+ 		}
+		deps_allowing_unsafe_path {
+			name: "bar",
+			install_dir: "/outside",
+ 		}
+	`
+
+	expectedErrs := []string{
+		"\\QAndroid.bp:2:3: module \"foo\": Path is outside directory: /outside\\E",
 	}
 
 	prepareForModuleTests.
