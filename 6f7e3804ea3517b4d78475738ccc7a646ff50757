@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7954a5c_018bd829",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-07T15:48:47Z",
+      "side": 1,
+      "message": "So, by unsafe you mean a path that includes say \"..\"?\n\nI don\u0027t understand why this is needed. Why do you need an unsafe path to install into those directories?",
+      "revId": "6f7e3804ea3517b4d78475738ccc7a646ff50757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71f306a8_72add4f3",
