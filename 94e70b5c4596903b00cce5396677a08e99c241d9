@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c18390d6_4bc3c5ce",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-07T17:05:16Z",
+      "side": 1,
+      "message": "Maybe append this to your new paragraph as something like:\nThe list of valid module types and their properties for the current version of Soong can be found at https://ci.android.com/builds/latest/branches/aosp-build-tools/targets/linux/view/soong_build.html.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 139
+      },
+      "revId": "94e70b5c4596903b00cce5396677a08e99c241d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7149db63_6a2c1f88",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-07T17:05:16Z",
+      "side": 1,
+      "message": "\"documentation\" is a little confusing because this README.md is a significant part of the documentation, and the generated docs are just for the properties and module types.",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "94e70b5c4596903b00cce5396677a08e99c241d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "070662e7_092be820",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-07T17:05:16Z",
+      "side": 1,
+      "message": "soong_docs?",
+      "range": {
+        "startLine": 39,
+        "startChar": 68,
+        "endLine": 39,
+        "endChar": 73
+      },
+      "revId": "94e70b5c4596903b00cce5396677a08e99c241d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
