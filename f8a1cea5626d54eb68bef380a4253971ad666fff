@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e06451fd_e1e59876",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-07T13:57:44Z",
+      "side": 1,
+      "message": "Nit: to me JoinUnsafe seems more conventional (but up to you). If you change this, then also update validatePathWithOptions accordingly.",
+      "range": {
+        "startLine": 1606,
+        "startChar": 21,
+        "endLine": 1606,
+        "endChar": 36
+      },
+      "revId": "f8a1cea5626d54eb68bef380a4253971ad666fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
