@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70803b48_75200d4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-07T16:42:30Z",
+      "side": 1,
+      "message": "Still needs a unit test, but passes mixed_{libc,droid}.sh and `go test` still works (really only testing cc_library).",
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c707c8b9_1dc49485",
