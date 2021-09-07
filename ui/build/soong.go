@@ -116,7 +116,7 @@ func (c BlueprintConfig) PrimaryBuilderInvocations() []bootstrap.PrimaryBuilderI
 func environmentArgs(config Config, suffix string) []string {
 	return []string{
 		"--available_env", shared.JoinPath(config.SoongOutDir(), availableEnvFile),
-		"--used_env", shared.JoinPath(config.SoongOutDir(), usedEnvFile+suffix),
+		"--used_env", shared.JoinPath(config.SoongOutDir(), usedEnvFile+"."+suffix),
 	}
 }
 
@@ -134,13 +134,31 @@ func writeEmptyGlobFile(ctx Context, path string) {
 	}
 }
 
+func primaryBuilderInvocation(config Config, commonArgs []string, name string, output string, specificArgs []string) bootstrap.PrimaryBuilderInvocation {
+	args := make([]string, 0, 0)
+	args = append(args, specificArgs...)
+	args = append(args,
+		"--globListDir", name,
+		"--globFile", config.NamedGlobFile(name))
+
+	args = append(args, commonArgs...)
+	args = append(args, environmentArgs(config, name)...)
+	args = append(args, "Android.bp")
+
+	return bootstrap.PrimaryBuilderInvocation{
+		Inputs:  []string{"Android.bp"},
+		Outputs: []string{output},
+		Args:    args,
+	}
+}
+
 func bootstrapBlueprint(ctx Context, config Config) {
 	ctx.BeginTrace(metrics.RunSoong, "blueprint bootstrap")
 	defer ctx.EndTrace()
 
 	var args bootstrap.Args
 
-	bootstrapGlobFile := shared.JoinPath(config.SoongOutDir(), ".bootstrap/build-globs.ninja")
+	bootstrapGlobFile := shared.JoinPath(config.SoongOutDir(), ".bootstrap/build-globs.build.ninja")
 	bp2buildGlobFile := shared.JoinPath(config.SoongOutDir(), ".bootstrap/build-globs.bp2build.ninja")
 	queryviewGlobFile := shared.JoinPath(config.SoongOutDir(), ".bootstrap/build-globs.queryview.ninja")
 	soongDocsGlobFile := shared.JoinPath(config.SoongOutDir(), ".bootstrap/build-globs.soong_docs.ninja")
@@ -175,94 +193,57 @@ func bootstrapBlueprint(ctx Context, config Config) {
 	}
 
 	commonArgs := bootstrap.PrimaryBuilderExtraFlags(args, config.MainNinjaFile())
-	mainSoongBuildInputs := []string{"Android.bp"}
+	mainSoongBuildInvocation := primaryBuilderInvocation(
+		config,
+		commonArgs,
+		"build",
+		config.MainNinjaFile(),
+		[]string{})
 
 	if config.bazelBuildMode() == mixedBuild {
-		mainSoongBuildInputs = append(mainSoongBuildInputs, config.Bp2BuildMarkerFile())
+		mainSoongBuildInvocation.Inputs = append(mainSoongBuildInvocation.Inputs,
+			config.Bp2BuildMarkerFile())
 	}
 
-	soongBuildArgs := []string{
-		"--globListDir", "build",
-		"--globFile", bootstrapGlobFile,
-	}
+	bp2buildInvocation := primaryBuilderInvocation(
+		config,
+		commonArgs,
+		"bp2build",
+		config.Bp2BuildMarkerFile(),
+		[]string{
+			"--bp2build_marker", config.Bp2BuildMarkerFile(),
+		})
 
-	soongBuildArgs = append(soongBuildArgs, commonArgs...)
-	soongBuildArgs = append(soongBuildArgs, environmentArgs(config, "")...)
-	soongBuildArgs = append(soongBuildArgs, "Android.bp")
+	queryviewInvocation := primaryBuilderInvocation(
+		config,
+		commonArgs,
+		"queryview",
+		config.QueryviewMarkerFile(),
+		[]string{
+			"--bazel_queryview_dir", filepath.Join(config.SoongOutDir(), "queryview"),
+		})
 
-	mainSoongBuildInvocation := bootstrap.PrimaryBuilderInvocation{
-		Inputs:  mainSoongBuildInputs,
-		Outputs: []string{config.MainNinjaFile()},
-		Args:    soongBuildArgs,
-	}
+	soongDocsInvocation := primaryBuilderInvocation(
+		config,
+		commonArgs,
+		"soong_docs",
+		config.SoongDocsHtml(),
+		[]string{
+			"--soong_docs", config.SoongDocsHtml(),
+		})
 
-	bp2buildArgs := []string{
-		"--bp2build_marker", config.Bp2BuildMarkerFile(),
-		"--globListDir", "bp2build",
-		"--globFile", bp2buildGlobFile,
-	}
-
-	bp2buildArgs = append(bp2buildArgs, commonArgs...)
-	bp2buildArgs = append(bp2buildArgs, environmentArgs(config, ".bp2build")...)
-	bp2buildArgs = append(bp2buildArgs, "Android.bp")
-
-	bp2buildInvocation := bootstrap.PrimaryBuilderInvocation{
-		Inputs:  []string{"Android.bp"},
-		Outputs: []string{config.Bp2BuildMarkerFile()},
-		Args:    bp2buildArgs,
-	}
-
-	queryviewArgs := []string{
-		"--bazel_queryview_dir", filepath.Join(config.SoongOutDir(), "queryview"),
-		"--globListDir", "queryview",
-		"--globFile", queryviewGlobFile,
-	}
-
-	queryviewArgs = append(queryviewArgs, commonArgs...)
-	queryviewArgs = append(queryviewArgs, environmentArgs(config, ".queryview")...)
-	queryviewArgs = append(queryviewArgs, "Android.bp")
-
-	queryviewInvocation := bootstrap.PrimaryBuilderInvocation{
-		Inputs:  []string{"Android.bp"},
-		Outputs: []string{config.QueryviewMarkerFile()},
-		Args:    queryviewArgs,
-	}
-
-	soongDocsArgs := []string{
-		"--soong_docs", config.SoongDocsHtml(),
-		"--globListDir", "soong_docs",
-		"--globFile", soongDocsGlobFile,
-	}
-
-	soongDocsArgs = append(soongDocsArgs, commonArgs...)
-	soongDocsArgs = append(soongDocsArgs, environmentArgs(config, ".soong_docs")...)
-	soongDocsArgs = append(soongDocsArgs, "Android.bp")
-
-	soongDocsInvocation := bootstrap.PrimaryBuilderInvocation{
-		Inputs:  []string{"Android.bp"},
-		Outputs: []string{config.SoongDocsHtml()},
-		Args:    soongDocsArgs,
-	}
-
-	moduleGraphArgs := []string{
-		"--module_graph_file", config.ModuleGraphFile(),
-		"--globListDir", "modulegraph",
-		"--globFile", moduleGraphGlobFile,
-	}
-
-	moduleGraphArgs = append(moduleGraphArgs, commonArgs...)
-	moduleGraphArgs = append(moduleGraphArgs, environmentArgs(config, ".modulegraph")...)
-	moduleGraphArgs = append(moduleGraphArgs, "Android.bp")
-
-	moduleGraphInvocation := bootstrap.PrimaryBuilderInvocation{
-		Inputs:  []string{"Android.bp"},
-		Outputs: []string{config.ModuleGraphFile()},
-		Args:    moduleGraphArgs,
-	}
+	moduleGraphInvocation := primaryBuilderInvocation(
+		config,
+		commonArgs,
+		"modulegraph",
+		config.ModuleGraphFile(),
+		[]string{
+			"--module_graph_file", config.ModuleGraphFile(),
+		})
 
 	args.PrimaryBuilderInvocations = []bootstrap.PrimaryBuilderInvocation{
-		bp2buildInvocation,
 		mainSoongBuildInvocation,
+		bp2buildInvocation,
 		moduleGraphInvocation,
 		queryviewInvocation,
 		soongDocsInvocation,
@@ -343,12 +324,22 @@ func runSoong(ctx Context, config Config) {
 		ctx.BeginTrace(metrics.RunSoong, "environment check")
 		defer ctx.EndTrace()
 
-		soongBuildEnvFile := filepath.Join(config.SoongOutDir(), usedEnvFile)
-		checkEnvironmentFile(soongBuildEnv, soongBuildEnvFile)
+		checkEnvironmentFile(soongBuildEnv, filepath.Join(config.SoongOutDir(), usedEnvFile+".build"))
 
-		if integratedBp2Build {
-			bp2buildEnvFile := filepath.Join(config.SoongOutDir(), usedEnvFile+".bp2build")
-			checkEnvironmentFile(soongBuildEnv, bp2buildEnvFile)
+		if integratedBp2Build || config.Bp2Build() {
+			checkEnvironmentFile(soongBuildEnv, filepath.Join(config.SoongOutDir(), usedEnvFile+".bp2build"))
+		}
+
+		if config.JsonModuleGraph() {
+			checkEnvironmentFile(soongBuildEnv, filepath.Join(config.SoongOutDir(), usedEnvFile+".modulegraph"))
+		}
+
+		if config.Queryview() {
+			checkEnvironmentFile(soongBuildEnv, filepath.Join(config.SoongOutDir(), usedEnvFile+".queryview"))
+		}
+
+		if config.SoongDocs() {
+			checkEnvironmentFile(soongBuildEnv, filepath.Join(config.SoongOutDir(), usedEnvFile+".soong_docs"))
 		}
 	}()
 

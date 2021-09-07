@@ -783,6 +783,10 @@ func (c *configImpl) HostToolDir() string {
 	return filepath.Join(c.SoongOutDir(), "host", c.PrebuiltOS(), "bin")
 }
 
+func (c *configImpl) NamedGlobFile(name string) string {
+	return shared.JoinPath(c.SoongOutDir(), ".bootstrap/build-globs."+name+".ninja")
+}
+
 func (c *configImpl) MainNinjaFile() string {
 	return shared.JoinPath(c.SoongOutDir(), "build.ninja")
 }
