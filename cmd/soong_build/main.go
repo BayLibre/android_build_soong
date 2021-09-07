@@ -35,9 +35,12 @@ import (
 
 var (
 	topDir           string
+	outDir           string
 	soongOutDir      string
 	availableEnvFile string
 	usedEnvFile      string
+
+	runGoTests bool
 
 	globFile    string
 	globListDir string
@@ -60,7 +63,7 @@ func init() {
 	flag.StringVar(&usedEnvFile, "used_env", "", "File containing used environment variables")
 	flag.StringVar(&globFile, "globFile", "build-globs.ninja", "the Ninja file of globs to output")
 	flag.StringVar(&globListDir, "globListDir", "", "the directory containing the glob list files")
-	flag.StringVar(&cmdlineArgs.OutDir, "out", "", "the ninja builddir directory")
+	flag.StringVar(&outDir, "out", "", "the ninja builddir directory")
 	flag.StringVar(&cmdlineArgs.ModuleListFile, "l", "", "file that lists filepaths to parse")
 
 	// Debug flags
@@ -81,8 +84,7 @@ func init() {
 
 	// Flags that probably shouldn't be flags of soong_build but we haven't found
 	// the time to remove them yet
-	flag.BoolVar(&cmdlineArgs.RunGoTests, "t", false, "build and run go tests during bootstrap")
-	flag.BoolVar(&cmdlineArgs.UseValidations, "use-validations", false, "use validations to depend on go tests")
+	flag.BoolVar(&runGoTests, "t", false, "build and run go tests during bootstrap")
 }
 
 func newNameResolver(config android.Config) *android.NameResolver {
@@ -113,7 +115,10 @@ func newContext(configuration android.Config, prepareBuildActions bool) *android
 }
 
 func newConfig(cmdlineArgs bootstrap.Args, outDir string, availableEnv map[string]string) android.Config {
-	configuration, err := android.NewConfig(cmdlineArgs, outDir, availableEnv)
+	// This is not a mistake: outDir is passed twice. The second should probably
+	// be soongOutDir, but it requires running some tests to see if that works or
+	// not.
+	configuration, err := android.NewConfig(cmdlineArgs, runGoTests, outDir, outDir, availableEnv)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%s", err)
 		os.Exit(1)
@@ -507,8 +512,8 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 		"bazel-" + filepath.Base(topDir),
 	}
 
-	if cmdlineArgs.OutDir[0] != '/' {
-		excludes = append(excludes, cmdlineArgs.OutDir)
+	if outDir[0] != '/' {
+		excludes = append(excludes, outDir)
 	}
 
 	existingBazelRelatedFiles, err := getExistingBazelRelatedFiles(topDir)
