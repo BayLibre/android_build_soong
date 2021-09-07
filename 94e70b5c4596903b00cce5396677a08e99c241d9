@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb7c6c4a_df89cd19",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-09-07T17:12:20Z",
+      "side": 1,
+      "message": "Like this?",
+      "parentUuid": "c18390d6_4bc3c5ce",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 139
+      },
+      "revId": "94e70b5c4596903b00cce5396677a08e99c241d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7149db63_6a2c1f88",
         "filename": "README.md",
         "patchSetId": 4
@@ -60,6 +84,78 @@
       "writtenOn": "2021-09-07T17:05:16Z",
       "side": 1,
       "message": "soong_docs?",
+      "range": {
+        "startLine": 39,
+        "startChar": 68,
+        "endLine": 39,
+        "endChar": 73
+      },
+      "revId": "94e70b5c4596903b00cce5396677a08e99c241d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5b03957_0d561133",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-09-07T17:12:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7149db63_6a2c1f88",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "94e70b5c4596903b00cce5396677a08e99c241d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd13bce4_23ca4e8b",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-09-07T17:12:20Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "7149db63_6a2c1f88",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "94e70b5c4596903b00cce5396677a08e99c241d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96991fb3_b60390dc",
+        "filename": "README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-09-07T17:12:20Z",
+      "side": 1,
+      "message": "Erm, of course :)",
+      "parentUuid": "070662e7_092be820",
       "range": {
         "startLine": 39,
         "startChar": 68,
