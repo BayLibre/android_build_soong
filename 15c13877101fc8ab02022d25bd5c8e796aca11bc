@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9d42ffe_71e8f8ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-07T13:39:25Z",
+      "side": 1,
+      "message": "I am slightly concerned that this will not work on earlier releases. There are some runtime checks performed by each release to ensure that the packages on the bootclasspath are allowed. I am not sure how they affect the ART module.",
+      "revId": "15c13877101fc8ab02022d25bd5c8e796aca11bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
