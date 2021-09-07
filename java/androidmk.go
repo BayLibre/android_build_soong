@@ -61,8 +61,15 @@ func (library *Library) AndroidMkEntries() []android.AndroidMkEntries {
 	var entriesList []android.AndroidMkEntries
 
 	if library.hideApexVariantFromMake {
-		// For a java library built for an APEX we don't need Make module
-		entriesList = append(entriesList, android.AndroidMkEntries{Disabled: true})
+		// For a java library built for an APEX, we don't need a Make module for
+		// itself, in order to prevent conflicts. However, we need to add its
+		// dexpreopt outputs as sub-modules, if it is preopted.
+		dexpreoptEntries := library.dexpreopter.AndroidMkEntriesForApex()
+		if len(dexpreoptEntries) > 0 {
+			entriesList = append(entriesList, dexpreoptEntries...)
+		} else {
+			entriesList = append(entriesList, android.AndroidMkEntries{Disabled: true})
+		}
 	} else if !library.ApexModuleBase.AvailableFor(android.AvailableToPlatform) {
 		// Platform variant.  If not available for the platform, we don't need Make module.
 		// May still need to add some additional dependencies.

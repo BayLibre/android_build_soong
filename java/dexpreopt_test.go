@@ -24,11 +24,17 @@ import (
 	"android/soong/dexpreopt"
 )
 
+func init() {
+	RegisterFakeRuntimeApexMutator()
+}
+
 func TestDexpreoptEnabled(t *testing.T) {
 	tests := []struct {
-		name    string
-		bp      string
-		enabled bool
+		name        string
+		bp          string
+		moduleName  string
+		apexVariant bool
+		enabled     bool
 	}{
 		{
 			name: "app",
@@ -148,13 +154,82 @@ func TestDexpreoptEnabled(t *testing.T) {
 				}`,
 			enabled: true,
 		},
+		{
+			name: "apex variant",
+			bp: `
+				java_library {
+					name: "foo",
+					installable: true,
+					srcs: ["a.java"],
+					apex_available: ["com.android.apex1"],
+				}`,
+			apexVariant: true,
+			enabled:     false,
+		},
+		{
+			name: "apex variant of apex system server jar",
+			bp: `
+				java_library {
+					name: "service-foo",
+					installable: true,
+					srcs: ["a.java"],
+					apex_available: ["com.android.apex1"],
+				}`,
+			moduleName:  "service-foo",
+			apexVariant: true,
+			enabled:     true,
+		},
+		{
+			name: "apex variant of prebuilt apex system server jar",
+			bp: `
+				java_library {
+					name: "prebuilt_service-foo",
+					installable: true,
+					srcs: ["a.java"],
+					apex_available: ["com.android.apex1"],
+				}`,
+			moduleName:  "prebuilt_service-foo",
+			apexVariant: true,
+			enabled:     true,
+		},
+		{
+			name: "platform variant of apex system server jar",
+			bp: `
+				java_library {
+					name: "service-foo",
+					installable: true,
+					srcs: ["a.java"],
+					apex_available: ["com.android.apex1"],
+				}`,
+			moduleName:  "service-foo",
+			apexVariant: false,
+			enabled:     false,
+		},
 	}
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			ctx, _ := testJava(t, test.bp)
+			preparers := android.GroupFixturePreparers(
+				PrepareForTestWithJavaDefaultModules,
+				PrepareForTestWithFakeApexMutator,
+				dexpreopt.FixtureSetApexSystemServerJars(
+					"com.android.apex1:service-foo"),
+			)
 
-			dexpreopt := ctx.ModuleForTests("foo", "android_common").MaybeRule("dexpreopt")
+			result := preparers.RunTestWithBp(t, test.bp)
+			ctx := result.TestContext
+
+			moduleName := "foo"
+			if test.moduleName != "" {
+				moduleName = test.moduleName
+			}
+
+			variant := "android_common"
+			if test.apexVariant {
+				variant += "_apex1000"
+			}
+
+			dexpreopt := ctx.ModuleForTests(moduleName, variant).MaybeRule("dexpreopt")
 			enabled := dexpreopt.Rule != nil
 
 			if enabled != test.enabled {
@@ -219,4 +294,89 @@ func TestDex2oatToolDeps(t *testing.T) {
 	testDex2oatToolDep(true, true, false, sourceDex2oatPath)
 	testDex2oatToolDep(true, true, true, prebuiltDex2oatPath)
 	testDex2oatToolDep(false, true, false, prebuiltDex2oatPath)
+}
+
+func assertInstallEquals(
+	t *testing.T,
+	message string,
+	expectedFullModuleName string,
+	expectedOutputPath string,
+	expectedInstallDirPath string,
+	expectedInstallBase string,
+	actual dexpreopterInstall) {
+	android.AssertStringEquals(t,
+		message+" FullModuleName",
+		expectedFullModuleName,
+		actual.FullModuleName())
+
+	android.AssertStringEquals(t,
+		message+" outputPath",
+		expectedOutputPath,
+		actual.outputFilepath.Rel())
+
+	android.AssertStringEquals(t,
+		message+" installDirPath",
+		expectedInstallDirPath,
+		actual.installDirPath.Rel())
+
+	android.AssertStringEquals(t,
+		message+" installBase",
+		expectedInstallBase,
+		actual.installBase)
+}
+
+func TestDexpreoptBuiltInstalledForApex(t *testing.T) {
+	preparers := android.GroupFixturePreparers(
+		PrepareForTestWithJavaDefaultModules,
+		PrepareForTestWithFakeApexMutator,
+		dexpreopt.FixtureSetApexSystemServerJars(
+			"com.android.apex1:service-foo"),
+	)
+
+	// An APEX system server jar.
+	result := preparers.RunTestWithBp(t, `
+		java_library {
+			name: "service-foo",
+			installable: true,
+			srcs: ["a.java"],
+			apex_available: ["com.android.apex1"],
+		}`)
+	ctx := result.TestContext
+	module := ctx.ModuleForTests("service-foo", "android_common_apex1000")
+	library := module.Module().(*Library)
+
+	installs := library.dexpreopter.DexpreoptBuiltInstalledForApex()
+
+	android.AssertIntEquals(t, "installs count", 2, len(installs))
+
+	assertInstallEquals(t,
+		"installs[0]",
+		"service-foo-dexpreopt-arm64-apex@com.android.apex1@javalib@service-foo.jar@classes.odex",
+		"dexpreopt/oat/arm64/javalib.odex",
+		"/system/apex/oat/arm64",
+		"apex@com.android.apex1@javalib@service-foo.jar@classes.odex",
+		installs[0])
+
+	assertInstallEquals(t,
+		"installs[1]",
+		"service-foo-dexpreopt-arm64-apex@com.android.apex1@javalib@service-foo.jar@classes.vdex",
+		"dexpreopt/oat/arm64/javalib.vdex",
+		"/system/apex/oat/arm64",
+		"apex@com.android.apex1@javalib@service-foo.jar@classes.vdex",
+		installs[1])
+
+	// Not an APEX system server jar.
+	result = preparers.RunTestWithBp(t, `
+		java_library {
+			name: "foo",
+			installable: true,
+			srcs: ["a.java"],
+		}`)
+	ctx = result.TestContext
+	module = ctx.ModuleForTests("foo", "android_common")
+	library = module.Module().(*Library)
+
+	installs = library.dexpreopter.DexpreoptBuiltInstalledForApex()
+
+	android.AssertIntEquals(t, "installs count", 0, len(installs))
 }
