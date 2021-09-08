@@ -1,0 +1,133 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000015168787",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1821192?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "c7409998_dfe5090b",
+          "description": "Change to \"scripts/manifest_fixer.py\"",
+          "replacements": [
+            {
+              "path": "scripts/manifest_fixer.py",
+              "range": {
+                "startLine": 68,
+                "startChar": 17,
+                "endLine": 68,
+                "endChar": 24
+              },
+              "replacement": "required"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "509aa329_38558bba",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-09-08T04:10:40Z",
+      "side": 1,
+      "message": "Common typo found: \"requred\" -- should it be \"required\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 68,
+        "startChar": 17,
+        "endLine": 68,
+        "endChar": 24
+      },
+      "revId": "7f04a4fe11d682818d7e7b2b975fac587d04333e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000015168787",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1821192?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "938d56e2_f2f7a9b5",
+          "description": "Change to \"scripts/manifest_fixer.py\"",
+          "replacements": [
+            {
+              "path": "scripts/manifest_fixer.py",
+              "range": {
+                "startLine": 75,
+                "startChar": 17,
+                "endLine": 75,
+                "endChar": 24
+              },
+              "replacement": "required"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "3ce4da45_049023cb",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-09-08T04:10:40Z",
+      "side": 1,
+      "message": "Common typo found: \"requred\" -- should it be \"required\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 75,
+        "startChar": 17,
+        "endLine": 75,
+        "endChar": 24
+      },
+      "revId": "7f04a4fe11d682818d7e7b2b975fac587d04333e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000015168787",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1821192?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "7c60f8d5_c559f713",
+          "description": "Change to \"scripts/manifest_fixer.py\"",
+          "replacements": [
+            {
+              "path": "scripts/manifest_fixer.py",
+              "range": {
+                "startLine": 179,
+                "startChar": 68,
+                "endLine": 179,
+                "endChar": 77
+              },
+              "replacement": "overridden"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "6bee30cc_207fb7cc",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-09-08T04:10:40Z",
+      "side": 1,
+      "message": "Common typo found: \"overriden\" -- should it be \"overridden\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 179,
+        "startChar": 68,
+        "endLine": 179,
+        "endChar": 77
+      },
+      "revId": "7f04a4fe11d682818d7e7b2b975fac587d04333e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
