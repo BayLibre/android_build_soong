@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000015176294",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1814447?revision\u003d15",
+      "fixSuggestions": [
+        {
+          "fixId": "392e0d3d_3e295d60",
+          "description": "Change to \"java/testing.go\"",
+          "replacements": [
+            {
+              "path": "java/testing.go",
+              "range": {
+                "startLine": 437,
+                "startChar": 28,
+                "endLine": 437,
+                "endChar": 35
+              },
+              "replacement": "the"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "848a7c29_efe69b50",
+        "filename": "java/testing.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-09-08T10:20:40Z",
+      "side": 1,
+      "message": "Common typo found: \"the the\" -- should it be \"the\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 437,
+        "startChar": 28,
+        "endLine": 437,
+        "endChar": 35
+      },
+      "revId": "e0b9aafeb51d8422ecbaba49b08e15c5d60a6024",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
