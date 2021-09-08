@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68c7aa1f_f3cbbce7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-08T12:22:39Z",
+      "side": 1,
+      "message": "I am still a little confused but then I don\u0027t know the install side very well at all. Don\u0027t we already install files into /system for lots of different (non-apex) reasons? Why are these new files any different/require a new mechanism to disable path checks?",
+      "parentUuid": "7d7206a3_7de75608",
+      "revId": "6f7e3804ea3517b4d78475738ccc7a646ff50757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71f306a8_72add4f3",
