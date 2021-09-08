@@ -22,6 +22,30 @@
       },
       "revId": "f8a1cea5626d54eb68bef380a4253971ad666fff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10b2fa7c_43275180",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-08T09:01:05Z",
+      "side": 1,
+      "message": "If we had `JoinUnsafe`, I think we would still have something like `JoinWithOptions` to hold some common logic, such as reporting the error. The same applies to `validatePath...` since we need a method to hold the common logic for verifying that there is no \"$\" in the path. Therefore, defining `JoinUnsafe` seems unnecessary to me as it will just be an additional wrapper, so I\u0027d like to omit it. WDYT?",
+      "parentUuid": "e06451fd_e1e59876",
+      "range": {
+        "startLine": 1606,
+        "startChar": 21,
+        "endLine": 1606,
+        "endChar": 36
+      },
+      "revId": "f8a1cea5626d54eb68bef380a4253971ad666fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

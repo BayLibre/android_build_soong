@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d7206a3_7de75608",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-08T09:01:05Z",
+      "side": 1,
+      "message": "Yes, exactly. We need to install the dexpreopt outputs in (/system/apex/oat), which is regarded as an unsafe path because it starts with \"/\" rather than a relative path inside \"/apex\".",
+      "parentUuid": "6e500cf4_fcd926e4",
+      "revId": "6f7e3804ea3517b4d78475738ccc7a646ff50757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71f306a8_72add4f3",
@@ -49,6 +67,30 @@
       "writtenOn": "2021-09-07T13:57:44Z",
       "side": 1,
       "message": "It would be better if the Soong test created a real module that overrides `InstallAllowUnsafePath` instead of adding these mock properties. I know you will only add such module type in subsequent CL, so the typical approach would be:\n\n- In this Cl, create two modules: system server jar \"foo\" and non-system server jar \"bar\". You can populate `ApexSystemServerJars` with \"foo\" using `FixtureModifyProductVariables` like this: https://source.corp.google.com/master-.arc-dev/build/soong/java/app_import_test.go;l\u003d694-698\n- In this CL, both modules cause an error, but one is marked with TODO.\n- In the follow-up CL one of the errors goes away and you remove the TODO.\n\nI don\u0027t know how much work that would be, and I don\u0027t mind if you do that as a follow-up CL, but it helps to make Soong tests as close to real world as possible.",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 27
+      },
+      "revId": "6f7e3804ea3517b4d78475738ccc7a646ff50757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "789e90da_8f6b1d9f",
+        "filename": "android/module_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-08T09:01:05Z",
+      "side": 1,
+      "message": "Thank you for the suggestion. I think it\u0027s better to keep module_test self-contained, so it should not know about `ApexSystemServerJars`. But you are right, it\u0027s good to make tests as close to real world as possible. Instead of using mock a mock property, I created a separate module in this file that overrides `InstallAllowUnsafePath`. PTAL, thanks.",
+      "parentUuid": "71f306a8_72add4f3",
       "range": {
         "startLine": 199,
         "startChar": 0,
