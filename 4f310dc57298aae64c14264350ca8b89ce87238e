@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "096fad1b_d9e2f514",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-08T11:16:49Z",
+      "side": 1,
+      "message": "It\u0027s gonna be confusing to the next person who reads this because it looks like a typo, mind adding a comment?",
+      "parentUuid": "46bb7ecc_e458b6df",
+      "range": {
+        "startLine": 445,
+        "startChar": 28,
+        "endLine": 445,
+        "endChar": 38
+      },
+      "revId": "4f310dc57298aae64c14264350ca8b89ce87238e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6c349bb3_e0297114",
         "filename": "ui/build/soong.go",
         "patchSetId": 4

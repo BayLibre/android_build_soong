@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53df4cf3_748cb8f8",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-08T11:16:49Z",
+      "side": 1,
+      "message": "You can use the new constant tags here.",
+      "range": {
+        "startLine": 331,
+        "startChar": 88,
+        "endLine": 331,
+        "endChar": 93
+      },
+      "revId": "89fcdcb78813836bb73d5bee45018ad6cfe78677",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
