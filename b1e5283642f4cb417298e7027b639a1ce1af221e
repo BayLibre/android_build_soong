@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "183c4266_a79dab0a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-09-08T07:59:49Z",
+      "side": 1,
+      "message": "Update: checked https://android-build.googleplex.com/builds/build-details/P25859150/targets/linux_musl, the produced documentation seems to be the same.",
+      "parentUuid": "381e1c86_8eb81bca",
+      "revId": "b1e5283642f4cb417298e7027b639a1ce1af221e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "455dd48e_c5770486",
