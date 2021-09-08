@@ -183,12 +183,6 @@ type apexBundleProperties struct {
 	// used in tests.
 	Test_only_force_compression *bool
 
-	// Canonical name of this APEX bundle. Used to determine the path to the
-	// activated APEX on device (i.e. /apex/<apexVariationName>), and used for the
-	// apex mutator variations. For override_apex modules, this is the name of the
-	// overridden base module.
-	ApexVariationName string `blueprint:"mutated"`
-
 	IsCoverageVariant bool `blueprint:"mutated"`
 
 	// List of sanitizer names that this APEX is enabled for
@@ -840,7 +834,7 @@ var ApexBundleInfoProvider = blueprint.NewMutatorProvider(ApexBundleInfo{}, "ape
 var _ ApexInfoMutator = (*apexBundle)(nil)
 
 func (a *apexBundle) ApexVariationName() string {
-	return a.properties.ApexVariationName
+	return proptools.StringDefault(a.properties.Apex_name, a.Name())
 }
 
 // ApexInfoMutator is responsible for collecting modules that need to have apex variants. They are
@@ -931,8 +925,7 @@ func (a *apexBundle) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 	// This is the main part of this mutator. Mark the collected dependencies that they need to
 	// be built for this apexBundle.
 
-	apexVariationName := proptools.StringDefault(a.properties.Apex_name, mctx.ModuleName()) // could be com.android.foo
-	a.properties.ApexVariationName = apexVariationName
+	apexVariationName := a.ApexVariationName() // could be com.android.foo
 	apexInfo := android.ApexInfo{
 		ApexVariationName: apexVariationName,
 		MinSdkVersion:     minSdkVersion,
