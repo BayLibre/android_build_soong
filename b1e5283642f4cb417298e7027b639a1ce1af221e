@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "381e1c86_8eb81bca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-09-08T07:34:14Z",
+      "side": 1,
+      "message": "Erm, PEBKAC. I looked at it and it indeed didn\u0027t work for... reasons, one of which being that I cleverly removed some error checking which would have warned me about it. Fixed and updated the integration test to reveal this bug in the future.",
+      "parentUuid": "2619991f_63477636",
+      "revId": "b1e5283642f4cb417298e7027b639a1ce1af221e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "455dd48e_c5770486",
