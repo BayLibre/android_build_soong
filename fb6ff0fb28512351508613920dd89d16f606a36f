@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2ecee28_89deb293",
+        "filename": "android/bazel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-08T13:54:15Z",
+      "side": 1,
+      "message": "I tried building as you recommend, but get told that the `libc++` target isn\u0027t declared in the `libcxx` package.",
+      "parentUuid": "6f2c0468_a03d21a7",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 11
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e3f92a9_871d11ec",
         "filename": "cc/bp2build.go",
         "patchSetId": 9
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "did you upload the changes? I don\u0027t see any",
       "parentUuid": "cdff207f_4907981a",
+      "range": {
+        "startLine": 115,
+        "startChar": 18,
+        "endLine": 115,
+        "endChar": 21
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bda50d6_cb6b620e",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-08T13:54:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2bf0092c_14b81105",
       "range": {
         "startLine": 115,
         "startChar": 18,
@@ -410,6 +458,30 @@
       "side": 1,
       "message": "\u003e Both legs of the isStatic check use compilerAttrs.asSrcs as their sole source of assembly files, which was what the original code did.\n\nOn line 2365 of this file in patch 9, we have:\n\n`\tcompilerAttrs.asSrcs.Append(libAttrs.Srcs_as)`\n\nAs stated, there is an existing bug on line 2353 in that we did ignored the value of `staticAttrs.Srcs_as`, which was appended below. We should fix this rather than also introduce this for cc_library_shared, there are two options:\n\n1. move this check below line 2365\n2. explicitly check that libAttrs.Srcs_as is empty in this check (this is what cc_library does; however, it doesn\u0027t merge values in its conversion)\n\n\u003e So there\u0027s nothing to add to this check, according to that logic... ^^; Unless you\u0027d like me to start adding in any Src_as provided through bp2buildParseStaticOrSharedProps. I *did* add those extra checks in CcLibraryBp2Build out of paranoia, but the original code didn\u0027t use them there either. So... one of the two cases should change. ^^;",
       "parentUuid": "3a6e403b_0a7d701c",
+      "range": {
+        "startLine": 2353,
+        "startChar": 1,
+        "endLine": 2353,
+        "endChar": 36
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5caea929_853d1370",
+        "filename": "cc/library.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2353,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-08T13:54:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80739de3_384127ce",
       "range": {
         "startLine": 2353,
         "startChar": 1,

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84717029_5cd8a689",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-08T13:54:15Z",
+      "side": 1,
+      "message": "So sorry about the bad notification order last time. The changes have been uploaded. ^_^",
+      "revId": "2fc7ac1f296e27612dcd5d4b9a5c06c33718d34b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
