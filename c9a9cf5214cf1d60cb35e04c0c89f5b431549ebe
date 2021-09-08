@@ -3,6 +3,97 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1c806cd_95f16cd4",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-08T17:40:33Z",
+      "side": 1,
+      "message": "how about \"whether automatically (with bp2build) or manually\", so that we\u0027re clear on what this means :)",
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb0a2ae_580fb835",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-08T17:40:33Z",
+      "side": 1,
+      "message": "This is unfortunately a little unusual given that this function isn\u0027t defined under bp2build.\n\nThere\u0027s thus no guarantee this is called from a bp2build context, though we *really* advise it should be.\n\nMaybe some relabeling / refactoring? :\\",
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd4761da_14049883",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-08T17:40:33Z",
+      "side": 1,
+      "message": "Comment?",
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bff0cb8_6f1574f2",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-08T17:40:33Z",
+      "side": 1,
+      "message": "direct* dependencies, correct?",
+      "range": {
+        "startLine": 1281,
+        "startChar": 67,
+        "endLine": 1281,
+        "endChar": 79
+      },
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e006b545_29ff1ced",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-08T17:40:33Z",
+      "side": 1,
+      "message": "Hmm, can we have a little more documentation around bp2buildModuleConverted as to its significance and expected format?",
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45fbdd26_4c248662",
         "filename": "bp2build/build_conversion.go",
         "patchSetId": 1
@@ -92,6 +183,47 @@
         "endLine": 193,
         "endChar": 0
       },
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29c1fb66_39338e75",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-08T17:40:33Z",
+      "side": 1,
+      "message": "I have the same hesitations; can you elaborate a bit on how skip-mode might help us iterate more quickly? I\u0027d be concerned to use this mode, myself, as I fear it would mask issues. I also am quite resistant to having it be the default.",
+      "parentUuid": "49929d00_502479f3",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6075b13_59a53203",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-08T17:40:33Z",
+      "side": 1,
+      "message": "This is for skip-mode, yes? I assume that this just for debugging, and we\u0027re going to be completely silent on the actual implementation?",
       "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
