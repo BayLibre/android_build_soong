@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73330848_2f667c31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-08T13:41:35Z",
+      "side": 1,
+      "message": "Normally we install platform files in /system, and apex files in /apex, so this case is different (we install apex files in /system).\n\nBut you are right that it would still be a problem to create an `android.InstallPath` path in /system/framework even for a platform jar, due to `validateSafePath` restrictions.  Normally we would just handle install paths that are written to makefiles as strings, not as `android.InstallPath`.\n\nSo perhaps it is better to use a string for install path instead of this CL.",
+      "parentUuid": "68c7aa1f_f3cbbce7",
+      "revId": "6f7e3804ea3517b4d78475738ccc7a646ff50757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71f306a8_72add4f3",
         "filename": "android/module_test.go",
         "patchSetId": 2
