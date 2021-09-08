@@ -46,6 +46,30 @@
       },
       "revId": "f8a1cea5626d54eb68bef380a4253971ad666fff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b90f981_970c7b2a",
+        "filename": "android/paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-08T10:29:43Z",
+      "side": 1,
+      "message": "I just meant renaming JoinWithOptions to JoinUnsafe (and the rest as before). It\u0027s only a naming preference, feel free to keep as is.",
+      "parentUuid": "10b2fa7c_43275180",
+      "range": {
+        "startLine": 1606,
+        "startChar": 21,
+        "endLine": 1606,
+        "endChar": 36
+      },
+      "revId": "f8a1cea5626d54eb68bef380a4253971ad666fff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

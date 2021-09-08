@@ -99,6 +99,30 @@
       },
       "revId": "6f7e3804ea3517b4d78475738ccc7a646ff50757",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "832f9ddc_ae70b5f0",
+        "filename": "android/module_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-08T10:29:43Z",
+      "side": 1,
+      "message": "It\u0027s fine for the current CL, but for the follow-up CLs I still think it\u0027s better to have a test based on the logic around `ApexSystemServerJars`. We have many such tests, and they are really useful. The logic that delegates InstallAllowUnsafePath in module types is trivial and doesn\u0027t need much testing. It is the logic that decided when to allow unsafe path that is really interesting, fragile and needs testing. The current test is clean and modular, but in my view it\u0027s better to have a messy and invasive test but one that tests real code.",
+      "parentUuid": "789e90da_8f6b1d9f",
+      "range": {
+        "startLine": 199,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 27
+      },
+      "revId": "6f7e3804ea3517b4d78475738ccc7a646ff50757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
