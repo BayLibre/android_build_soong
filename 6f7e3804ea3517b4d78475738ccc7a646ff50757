@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2fb1299_69e24c18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-08T15:34:53Z",
+      "side": 1,
+      "message": "Ah ok. So, this is needed because we are trying to represent an install path on the device as an InstallPath instead of a string. I think that if every other usage represents the install patha as a string then this should do the same.",
+      "parentUuid": "73330848_2f667c31",
+      "revId": "6f7e3804ea3517b4d78475738ccc7a646ff50757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71f306a8_72add4f3",
         "filename": "android/module_test.go",
         "patchSetId": 2
