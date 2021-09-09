@@ -161,6 +161,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "598bec97_8d8f1dcd",
+        "filename": "android/bazel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-09T22:22:04Z",
+      "side": 1,
+      "message": "Ah, yeah, `libc++` depends on `libc++_static`, which is broken due to the symbols issue (there\u0027s a cl out to fix it) and duplicate symbols (chris was working on), yeah, this denylist is probably the right place",
+      "parentUuid": "303be3ec_92b06f32",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 11
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e3f92a9_871d11ec",
