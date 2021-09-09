@@ -139,6 +139,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "303be3ec_92b06f32",
+        "filename": "android/bazel.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-09T14:55:18Z",
+      "side": 1,
+      "message": "I\u0027m going to have to move this back to `bp2buildModuleDoNotConvertList` as I get the aforementioned symbol non-exportations when running `b build //external/libcxx:libc++` or `mixed_libc.sh`. At least until the libcxx module bug gets resolved, just so I can build and test.\n(Granted, when building libc++ alone, even with the move to `bp2buildModuleDoNotConvertList` I still get the \"target isn\u0027t declared in `libcxx` error.)",
+      "parentUuid": "16208696_c3e971ac",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 11
+      },
+      "revId": "fb6ff0fb28512351508613920dd89d16f606a36f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e3f92a9_871d11ec",
         "filename": "cc/bp2build.go",
         "patchSetId": 9
