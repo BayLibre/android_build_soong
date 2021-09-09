@@ -976,7 +976,7 @@ func (module *prebuiltBootclasspathFragmentModule) produceBootImageFiles(ctx and
 		// Save away the `deapexer` module on which this depends, if any.
 		if tag == android.DeapexerTag {
 			if deapexerModule != nil {
-				ctx.ModuleErrorf("Ambiguous duplicate deapexer module dependencies %q and %q",
+				ctx.ModuleErrorf("Prebuilt APEXes %q and %q are both installable and provide ambiguous deapexer dependencies to the bootclasspath_fragment module",
 					deapexerModule.Name(), to.Name())
 			}
 			deapexerModule = to
