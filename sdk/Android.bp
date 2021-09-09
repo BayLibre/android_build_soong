@@ -32,6 +32,7 @@ bootstrap_go_package {
         "member_trait_test.go",
         "sdk_test.go",
         "testing.go",
+        "update_test.go",
     ],
     pluginFor: ["soong_build"],
 }
