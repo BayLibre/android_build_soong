@@ -2178,7 +2178,7 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 		// Save away the `deapexer` module on which this depends, if any.
 		if tag == android.DeapexerTag {
 			if deapexerModule != nil {
-				ctx.ModuleErrorf("Ambiguous duplicate deapexer module dependencies %q and %q",
+				ctx.ModuleErrorf("Prebuilt APEXes %q and %q are both installable and provide ambiguous deapexer dependencies to the java_sdk_library_import module",
 					deapexerModule.Name(), to.Name())
 			}
 			deapexerModule = to
@@ -2202,10 +2202,8 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 		ai := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
 		if ai.ForPrebuiltApex {
 			if deapexerModule == nil {
-				// This should never happen as a variant for a prebuilt_apex is only created if the
-				// deapxer module has been configured to export the dex implementation jar for this module.
-				ctx.ModuleErrorf("internal error: module %q does not depend on a `deapexer` module for prebuilt_apex %q",
-					module.Name(), ai.ApexVariationName)
+				ctx.ModuleErrorf("An installable prebuilt APEX with variant name %q not found for the java_sdk_library_import module to register a deapexer dependency on",
+					ai.ApexVariationName)
 			}
 
 			// Get the path of the dex implementation jar from the `deapexer` module.
@@ -2217,7 +2215,7 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 			} else {
 				// This should never happen as a variant for a prebuilt_apex is only created if the
 				// prebuilt_apex has been configured to export the java library dex file.
-				ctx.ModuleErrorf("internal error: no dex implementation jar available from prebuilt_apex %q", deapexerModule.Name())
+				ctx.ModuleErrorf("internal error: no dex implementation jar available from prebuilt APEX %q", deapexerModule.Name())
 			}
 		}
 	}

@@ -7314,7 +7314,7 @@ func TestDuplicateDeapexeresFromPrebuiltApexes(t *testing.T) {
 		PrepareForTestWithApexBuildComponents,
 	).
 		ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
-			`Ambiguous duplicate deapexer module dependencies "com.android.myapex.deapexer" and "com.mycompany.android.myapex.deapexer"`))
+			`Prebuilt APEXes "com.android.myapex.deapexer" and "com.mycompany.android.myapex.deapexer" are both installable and provide ambiguous deapexer dependencies`))
 
 	bpBase := `
 		apex_set {
