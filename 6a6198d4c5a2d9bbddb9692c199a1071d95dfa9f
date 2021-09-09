@@ -1,0 +1,435 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfdd6c38_233d1eb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "No need to list this as it is implied by `m com.androd.art`.\n\nBut this kind of change requires a boot test where you should make sure that the dexpreopt files for apex system server jars are used, and the jars are not dexopted. This can be done e.g. by grepping logcat on first boot making sure that there are no class loader context mismatch errors, something like this:\n\n Test: First boot uses dexpreopt for apex system server jars.\n  In one terminal:\n    $ lunch aosp_cf_x86_64_phone-userdebug \u0026\u0026 m \u0026\u0026 launch_cvd\n  In another terminal:\n    $ adb wait-for-device \u0026\u0026 adb root \u0026\u0026 adb logcat \\\n      | grep -E \u0027ClassLoaderContext [a-z ]+ mismatch\u0027\n      # empty grep output, no errors",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d2193e3_e44dd5be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "Presubmit errors are all for master-art manifest. It is a special repo manifest that uses a reduced set of projects that is needed to build ART only. It does not include framework, therefore it cannot find build target .../system/framework/arm64/boot-core-icu4j.art. The file out/soong/.intermediates/art/libartservice/service-art/android_common_apex10000/dexpreopt/oat/arm64/javalib.odex that depends on it looks strange, I don\u0027t see a module name in the path.\n\nI don\u0027t know off the top of my head where to fix it, but you should be able to reproduce if you check out a separate AOSP tree with `repo init ... -b master-art` (it is much smaller and faster than a full AOSP checkout). It is useful to have anyway as from time to time we hit master-art specific errors.",
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee336471_c6230cd2",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "Use `IndexOfJar` here (compare it against -1) and pass it to `Apex` method instead of `ApexOfJar` on line 204. This way you avoid traversing the list twice.",
+      "range": {
+        "startLine": 202,
+        "startChar": 32,
+        "endLine": 202,
+        "endChar": 43
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9037dad6_3d241d82",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "No need to put on a new line, in Soong code (or in Go generally) we usually put arguments on the same line up to 100 char limit (not strict). This applies to the rest of the code as well, e.g. lines 226-229.",
+      "range": {
+        "startLine": 205,
+        "startChar": 3,
+        "endLine": 205,
+        "endChar": 7
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d8a2a3e_5045d454",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "I\u0027d rather return `ConfiguredJarList` here and use `Contains` method.",
+      "range": {
+        "startLine": 538,
+        "startChar": 72,
+        "endLine": 538,
+        "endChar": 80
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbe1f43f_492a8e53",
+        "filename": "dexpreopt/dexpreopt_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "You can use `android.AssertStringEquals` or some other testing function from soong/android/test_asserts.go. They have been added not so long ago, and many old tests still exist, but new tests should prefer those functions.",
+      "range": {
+        "startLine": 181,
+        "startChar": 4,
+        "endLine": 181,
+        "endChar": 53
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a140a834_d7315cea",
+        "filename": "java/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "Can you expand the comment to explain which conflicts?",
+      "range": {
+        "startLine": 65,
+        "startChar": 13,
+        "endLine": 65,
+        "endChar": 42
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a3ae43a_da0e1eea",
+        "filename": "java/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "Can `library.dexpreopter.AndroidMkEntriesForApex()` on line 67 return a list with one element `android.AndroidMkEntries{Disabled: true}` instead of emply to avoid the `if` on lines 68-72?",
+      "range": {
+        "startLine": 71,
+        "startChar": 37,
+        "endLine": 71,
+        "endChar": 77
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91b43c3c_f8f54838",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "Go uses 100 character soft limit, no need to split comment on 3 lines. Here and in other places.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 41
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecf470fb_31f50aec",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "Just \"moduleName\"?",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c93544f_f5fe77b0",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "This is install path on host, right? Then maybe call it \"installPathOnHost\"?",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 15
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2027528a_731b0e52",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "Do you mean \"on-device install directory\"? Maybe call it \"installDirOnDevice\"?",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 61
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d2ef5c_1c0553e4",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "\"Basename\" word is normally used when talking about file paths. Maybe call it \"installFileOnDevice\"?",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 7
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b3716da_ebcb4b09",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "\"makefile\", here and in other places.",
+      "range": {
+        "startLine": 52,
+        "startChar": 45,
+        "endLine": 52,
+        "endChar": 55
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07ae248d_f5635677",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "Use `ctx.Config().UnbundledBuild()`?",
+      "range": {
+        "startLine": 157,
+        "startChar": 3,
+        "endLine": 157,
+        "endChar": 50
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52e403cf_7430b217",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "Can we make `d.installPath` be correct for apex system server jars rather than handle it in a special way?",
+      "range": {
+        "startLine": 186,
+        "startChar": 34,
+        "endLine": 186,
+        "endChar": 47
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d31809b0_553cc9bc",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "The cases that are not handled correctly should raise an explicit error.",
+      "range": {
+        "startLine": 193,
+        "startChar": 25,
+        "endLine": 193,
+        "endChar": 42
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bd495c4_2c49f54f",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "java/dexpreopt_bootjars.go? Paul reworked this so he may suggest a better reference.",
+      "range": {
+        "startLine": 343,
+        "startChar": 69,
+        "endLine": 344,
+        "endChar": 19
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aee1084_5823b9f2",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-09T11:42:01Z",
+      "side": 1,
+      "message": "Other _apex_ jars, right?",
+      "range": {
+        "startLine": 344,
+        "startChar": 25,
+        "endLine": 344,
+        "endChar": 35
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
