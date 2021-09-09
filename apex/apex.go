@@ -1543,6 +1543,7 @@ func apexFileForCompatConfig(ctx android.BaseModuleContext, config java.Platform
 // way.
 type javaModule interface {
 	android.Module
+	java.DexpreopterInterface
 	BaseModuleName() string
 	DexJarBuildPath() android.Path
 	JacocoReportClassesFile() android.Path
@@ -1568,6 +1569,9 @@ func apexFileForJavaModuleWithFile(ctx android.BaseModuleContext, module javaMod
 	af.jacocoReportClassesFile = module.JacocoReportClassesFile()
 	af.lintDepSets = module.LintDepSets()
 	af.customStem = module.Stem() + ".jar"
+	for _, install := range module.DexpreoptBuiltInstalledForApex() {
+		af.requiredModuleNames = append(af.requiredModuleNames, install.FullModuleName())
+	}
 	return af
 }
 
