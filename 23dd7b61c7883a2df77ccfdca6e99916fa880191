@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "267641a5_25d18cd7",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-09T19:14:58Z",
+      "side": 1,
+      "message": "Can you elaborate with an example? I find this comment difficult to grok",
+      "revId": "23dd7b61c7883a2df77ccfdca6e99916fa880191",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
