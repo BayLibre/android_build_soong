@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4fb269a_32056e8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2021-09-09T23:01:54Z",
+      "side": 1,
+      "message": "Turns out I had to allow the notice files to be binary, and then things got out of control. I had to redo the writing to the file to take bytes arrays and some other modifications. I retested using notice files that have non-ascii characters and everything seems to work.",
+      "revId": "fe0b78b47ce3ac8ef754c87fcff73c9c5fc371c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
