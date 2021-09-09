@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01803286_3183cf91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-09T05:22:57Z",
+      "side": 1,
+      "message": "I revisited the code and I found that I don\u0027t really need this change. There was no problem with creating an InstallPath to install a file into \"/system\". I just need to remove the \"/\" prefix because the path should be relative to \"out/target/product/\u003cdevice-name\u003e/\".\n\nThank you for raising the concern. I\u0027ll abandon this change.",
+      "parentUuid": "f2fb1299_69e24c18",
+      "revId": "6f7e3804ea3517b4d78475738ccc7a646ff50757",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71f306a8_72add4f3",
         "filename": "android/module_test.go",
         "patchSetId": 2
