@@ -743,6 +743,22 @@ func (sla *StringListAttribute) SortedConfigurationAxes() []ConfigurationAxis {
 	return keys
 }
 
+// DeduplicateAxesFromBase removes items found in the no-configuration value from
+// axis+config-specific values.
+func (sla *StringListAttribute) DeduplicateAxesFromBase() {
+	base := sla.Value
+	for axis, configToList := range sla.ConfigurableValues {
+		for config, list := range configToList {
+			remaining := SubtractStrings(list, base)
+			if len(remaining) == 0 {
+				delete(sla.ConfigurableValues[axis], config)
+			} else {
+				sla.ConfigurableValues[axis][config] = remaining
+			}
+		}
+	}
+}
+
 // TryVariableSubstitution, replace string substitution formatting within each string in slice with
 // Starlark string.format compatible tag for productVariable.
 func TryVariableSubstitutions(slice []string, productVariable string) ([]string, bool) {
