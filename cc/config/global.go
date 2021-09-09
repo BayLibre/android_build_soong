@@ -230,6 +230,11 @@ var (
 		"-Wno-string-concatenation", // http://b/175068488
 		// New warnings to be fixed after clang-r428724
 		"-Wno-align-mismatch", // http://b/193679946
+
+		"-Wno-null-pointer-subtraction",
+		"-Wno-ordered-compare-function-pointers",
+		"-Wno-unused-but-set-parameter",
+		"-Wno-unused-but-set-variable",
 	}
 
 	// Extra cflags for external third-party projects to disable warnings that
@@ -269,7 +274,7 @@ var (
 	// prebuilts/clang default settings.
 	ClangDefaultBase         = "prebuilts/clang/host"
 	ClangDefaultVersion      = "clang-r428724"
-	ClangDefaultShortVersion = "13.0.1"
+	ClangDefaultShortVersion = "13.0.2"
 
 	// Directories with warnings from Android.bp files.
 	WarningAllowedProjects = []string{
