@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6033729c_d42e6c82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-09-10T19:28:14Z",
+      "side": 1,
+      "message": "Bypass reason: failure is unrelated and passes in heavy-presubmit run https://android-build.googleplex.com/builds/build-details/P25949037/targets/bp2build-incremental.",
+      "revId": "1799f9d7b4c95ebe0e114dde4775dbc637691c10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
