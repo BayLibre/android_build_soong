@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "029f114e_7ee85e49",
+        "filename": "cc/tidy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-09-10T03:55:03Z",
+      "side": 1,
+      "message": "typo - remove \u0027r\u0027",
+      "range": {
+        "startLine": 152,
+        "startChar": 7,
+        "endLine": 152,
+        "endChar": 8
+      },
+      "revId": "4744d1ecfc36deb812445b16593bbbd041370e22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c882405_9a16e0c1",
+        "filename": "cc/tidy.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-09-10T03:55:03Z",
+      "side": 1,
+      "message": "missing a space",
+      "range": {
+        "startLine": 152,
+        "startChar": 56,
+        "endLine": 152,
+        "endChar": 65
+      },
+      "revId": "4744d1ecfc36deb812445b16593bbbd041370e22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
