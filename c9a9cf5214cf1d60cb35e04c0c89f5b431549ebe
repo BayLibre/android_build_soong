@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a4b0e47_e4329e05",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-10T21:33:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1c806cd_95f16cd4",
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cb0a2ae_580fb835",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2237756c_c1a3b5d2",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-10T21:33:11Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand your concern here?\n\nThe core conversion also relies on functions in the soong context and the functions in this directory are the only mechanism used to resolve references to another module.",
+      "parentUuid": "6cb0a2ae_580fb835",
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd4761da_14049883",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-09-08T17:40:33Z",
       "side": 1,
       "message": "Comment?",
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaf406a9_56cc0fd7",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-10T21:33:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd4761da_14049883",
       "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -75,6 +129,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37d4e51_1a3339b7",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-10T21:33:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bff0cb8_6f1574f2",
+      "range": {
+        "startLine": 1281,
+        "startChar": 67,
+        "endLine": 1281,
+        "endChar": 79
+      },
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e006b545_29ff1ced",
@@ -88,6 +166,24 @@
       "writtenOn": "2021-09-08T17:40:33Z",
       "side": 1,
       "message": "Hmm, can we have a little more documentation around bp2buildModuleConverted as to its significance and expected format?",
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9f3714_e543c711",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-10T21:33:11Z",
+      "side": 1,
+      "message": "Obsolete -- this was only used for the skipped mode.",
+      "parentUuid": "e006b545_29ff1ced",
       "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -211,6 +307,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d96ab59_e0800341",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-10T21:33:11Z",
+      "side": 1,
+      "message": "About half of bp2buildModuleDoNotConvertList is included because a dependency is not being converted.\n\nI\u0027d been thinking a mode that does not convert modules which have a dependency that has not been converted:\n* we could limit bp2buildModuleDoNotConvertList to the targets that are broken to shorten the list\n* when removing something from bp2buildModuleDoNotConvertList, we wouldn\u0027t have to check each item to determine whether the item we removed was also blocking other items\n\nbut because we aren\u0027t adding dependencies between modules in bp2build mode, there is no guarantee as to whether a dep will convert before a module is converted, so we can\u0027t address transitive deps -- removed this mode.\n\nMy concern with a \"warn\"-only mode was that we wouldn\u0027t see any of the warning messages due to the extensive warnings about BUILD files being skipped, but to address that, I\u0027ve moved this information to the metrics.",
+      "parentUuid": "29c1fb66_39338e75",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6075b13_59a53203",
@@ -224,6 +344,24 @@
       "writtenOn": "2021-09-08T17:40:33Z",
       "side": 1,
       "message": "This is for skip-mode, yes? I assume that this just for debugging, and we\u0027re going to be completely silent on the actual implementation?",
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a07b3127_14de61c5",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-10T21:33:11Z",
+      "side": 1,
+      "message": "obsolete.",
+      "parentUuid": "b6075b13_59a53203",
       "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
