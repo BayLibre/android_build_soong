@@ -21,6 +21,7 @@ package cc
 import (
 	"path/filepath"
 	"runtime"
+	"strconv"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -510,6 +511,31 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 	cppflags += " ${config.NoOverrideGlobalCflags}"
 	toolingCppflags += " ${config.NoOverrideGlobalCflags}"
 
+	// Multiple source files have build rules usually share the same cFlags or tidyFlags.
+	// Define only one version in this module and share it in multiple build rules.
+	// To simplify the code, the shared variables are all named as $flags<nnn>.
+	var numSharedFlags = 0
+	var flagsMap = make(map[string]string)
+
+	// Share flags only when there are multiple files or tidy rules.
+	var hasMultipleRules = len(srcFiles) > 1 || flags.tidy
+
+	var shareFlags = func(flags string) string {
+		if !hasMultipleRules || len(flags) < 60 {
+			// Modules have long names and so do the module variables.
+			// It does not save space by replacing a short name with a long one.
+			return flags
+		}
+		n, ok := flagsMap[flags]
+		if !ok {
+			numSharedFlags += 1
+			n = strconv.Itoa(numSharedFlags)
+			flagsMap[flags] = n
+			ctx.Variable(pctx, "flags"+n, flags)
+		}
+		return "$flags" + n
+	}
+
 	for i, srcFile := range srcFiles {
 		objFile := android.ObjPathWithExt(ctx, subdir, srcFile, "o")
 
@@ -526,7 +552,7 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 				Implicits:   cFlagsDeps,
 				OrderOnly:   pathDeps,
 				Args: map[string]string{
-					"asFlags": flags.globalYasmFlags + " " + flags.localYasmFlags,
+					"asFlags": shareFlags(flags.globalYasmFlags + " " + flags.localYasmFlags),
 				},
 			})
 			continue
@@ -540,7 +566,7 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 				OrderOnly:   pathDeps,
 				Args: map[string]string{
 					"windresCmd": mingwCmd(flags.toolchain, "windres"),
-					"flags":      flags.toolchain.WindresFlags(),
+					"flags":      shareFlags(flags.toolchain.WindresFlags()),
 				},
 			})
 			continue
@@ -608,8 +634,8 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 			Implicits:       cFlagsDeps,
 			OrderOnly:       pathDeps,
 			Args: map[string]string{
-				"cFlags": moduleFlags,
-				"ccCmd":  ccCmd,
+				"cFlags": shareFlags(moduleFlags),
+				"ccCmd":  ccCmd, // short and not shared
 			},
 		})
 
@@ -624,7 +650,7 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 				Implicits:   cFlagsDeps,
 				OrderOnly:   pathDeps,
 				Args: map[string]string{
-					"cFlags": moduleFlags,
+					"cFlags": shareFlags(moduleFlags),
 				},
 			})
 			kytheFiles = append(kytheFiles, kytheFile)
@@ -651,9 +677,9 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 				Implicits: cFlagsDeps,
 				OrderOnly: pathDeps,
 				Args: map[string]string{
-					"cFlags":    moduleToolingFlags,
-					"tidyFlags": config.TidyFlagsForSrcFile(srcFile, flags.tidyFlags),
-					"tidyVars":  tidyVars,
+					"cFlags":    shareFlags(moduleToolingFlags),
+					"tidyFlags": shareFlags(config.TidyFlagsForSrcFile(srcFile, flags.tidyFlags)),
+					"tidyVars":  tidyVars, // short and not shared
 				},
 			})
 		}
@@ -675,8 +701,8 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 				Implicits:   cFlagsDeps,
 				OrderOnly:   pathDeps,
 				Args: map[string]string{
-					"cFlags":     moduleToolingFlags,
-					"exportDirs": flags.sAbiFlags,
+					"cFlags":     shareFlags(moduleToolingFlags),
+					"exportDirs": shareFlags(flags.sAbiFlags),
 				},
 			})
 		}
