@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aadaa94_f5b373dc",
+        "filename": "cc/library.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 2445,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-10T15:40:08Z",
+      "side": 1,
+      "message": "I realize that taking Linkstatic out of the static attributes steps somewhat outside of the scope of just factoring out static/shared commonality, but I did it on the shared side to avoid generating the superfluous `linkstatic \u003d false` having to be dealt with on the Bazel side. The symmetric change to the `linkstatic \u003d true` case follows from that and doesn\u0027t seem to affect anything but what we ourselves generate in bp2build; thus only the tests needed to be adjusted.",
+      "revId": "d3b11ba77cda4a493ea7804c9e09a81c47544435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
