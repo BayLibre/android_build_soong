@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf35bbcf_50a753e5",
+        "filename": "android/config.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1522,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-10T23:09:24Z",
+      "side": 1,
+      "message": "Blank line between functions",
+      "revId": "3ab21e181131c694afea6c16093b4bd7db6df23f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c01de92f_ccce68c1",
+        "filename": "android/defs.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-10T23:09:24Z",
+      "side": 1,
+      "message": "Extra blank line",
+      "revId": "3ab21e181131c694afea6c16093b4bd7db6df23f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f208981_dd7a481c",
+        "filename": "cc/binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-10T23:09:24Z",
+      "side": 1,
+      "message": "This is an odd place for this assertion, can you put it next to *Module instead?",
+      "revId": "3ab21e181131c694afea6c16093b4bd7db6df23f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a0197f5_9e046238",
+        "filename": "snapshot/host_fake_snapshot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-10T23:09:24Z",
+      "side": 1,
+      "message": "Can you define what fake means in this context?",
+      "range": {
+        "startLine": 25,
+        "startChar": 33,
+        "endLine": 25,
+        "endChar": 37
+      },
+      "revId": "3ab21e181131c694afea6c16093b4bd7db6df23f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
