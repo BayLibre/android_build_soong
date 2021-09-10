@@ -39,6 +39,30 @@
       },
       "revId": "c5ad30ce16557b36debf514eff921247ef2e22bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6032391_91bc81f7",
+        "filename": "rust/coverage.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-09-10T17:01:01Z",
+      "side": 1,
+      "message": "LOL I fixed the commit message and forgot that it was actually copy-paste from the code comment.",
+      "parentUuid": "4ffdf025_5f1d85c4",
+      "range": {
+        "startLine": 66,
+        "startChar": 46,
+        "endLine": 66,
+        "endChar": 52
+      },
+      "revId": "c5ad30ce16557b36debf514eff921247ef2e22bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
