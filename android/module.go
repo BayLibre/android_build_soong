@@ -1229,6 +1229,26 @@ func (m *ModuleBase) GetProperties() []interface{} {
 }
 
 func (m *ModuleBase) BuildParamsForTests() []BuildParams {
+	// Expand the references to module variables like $flags[0-9]*,
+	// so we do not need to change many existing unit tests.
+	// This looks like undoing the shareFlags optimization in cc's
+	// transformSourceToObj, and should only affects unit tests.
+	vars := m.VariablesForTests()
+	for i, _ := range m.buildParams {
+		args := m.buildParams[i].Args
+		keys := make([]string, 0, len(args))
+		for k := range args {
+			keys = append(keys, k)
+		}
+		for _, k := range keys {
+			v := args[k]
+			if strings.HasPrefix(v, "$") {
+				if value, found := vars[v[1:]]; found {
+					args[k] = value
+				}
+			}
+		}
+	}
 	return m.buildParams
 }
 
