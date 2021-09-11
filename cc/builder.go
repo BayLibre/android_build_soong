@@ -199,8 +199,15 @@ var (
 	// Rule for invoking clang-tidy (a clang-based linter).
 	clangTidy, clangTidyRE = pctx.RemoteStaticRules("clangTidy",
 		blueprint.RuleParams{
-			Command:     "rm -f $out && $tidyVars $reTemplate${config.ClangBin}/clang-tidy $tidyFlags $in -- $cFlags && touch $out",
-			CommandDeps: []string{"${config.ClangBin}/clang-tidy"},
+			Depfile: "${out}.d",
+			Deps:    blueprint.DepsGCC,
+			Command: "SRCF=$in; TIDYF=$out; CLANGFLAGS=($cFlags); TIDYFLAGS=($tidyFlags); " +
+				"rm -f $$TIDYF $${TIDYF}.d && " +
+				"${config.CcWrapper}$ccCmd \"$${CLANGFLAGS[@]}\" -E -o /dev/null $$SRCF " +
+				"-MQ $$TIDYF -MD -MF $${TIDYF}.d && " +
+				"$tidyVars $reTemplate${config.ClangBin}/clang-tidy \"$${TIDYFLAGS[@]}\" $$SRCF " +
+				"-- \"$${CLANGFLAGS[@]}\" && touch $$TIDYF",
+			CommandDeps: []string{"${config.ClangBin}/clang-tidy", "$ccCmd"},
 		},
 		&remoteexec.REParams{
 			Labels:               map[string]string{"type": "lint", "tool": "clang-tidy", "lang": "cpp"},
@@ -214,7 +221,7 @@ var (
 			// (1) New timestamps trigger clang and clang-tidy compilations again.
 			// (2) Changing source files caused concurrent clang or clang-tidy jobs to crash.
 			Platform: map[string]string{remoteexec.PoolKey: "${config.REClangTidyPool}"},
-		}, []string{"cFlags", "tidyFlags", "tidyVars"}, []string{})
+		}, []string{"ccCmd", "cFlags", "tidyFlags", "tidyVars"}, []string{})
 
 	_ = pctx.SourcePathVariable("yasmCmd", "prebuilts/misc/${config.HostPrebuiltTag}/yasm/yasm")
 
@@ -671,12 +678,10 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 				Description: "clang-tidy " + srcFile.Rel(),
 				Output:      tidyFile,
 				Input:       srcFile,
-				// We must depend on objFile, since clang-tidy doesn't
-				// support exporting dependencies.
-				Implicit:  objFile,
-				Implicits: cFlagsDeps,
-				OrderOnly: pathDeps,
+				Implicits:   cFlagsDeps,
+				OrderOnly:   pathDeps,
 				Args: map[string]string{
+					"ccCmd":     ccCmd,
 					"cFlags":    shareFlags(moduleToolingFlags),
 					"tidyFlags": shareFlags(config.TidyFlagsForSrcFile(srcFile, flags.tidyFlags)),
 					"tidyVars":  tidyVars, // short and not shared
