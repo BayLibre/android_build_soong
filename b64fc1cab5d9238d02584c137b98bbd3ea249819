@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ece2bbca_5f7679a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1895980
+      },
+      "writtenOn": "2021-09-12T02:31:57Z",
+      "side": 1,
+      "message": "452598: Run the Finder and make its results available to Kati | https://android-review.googlesource.com/c/platform/build/soong/+/452598",
+      "revId": "b64fc1cab5d9238d02584c137b98bbd3ea249819",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
