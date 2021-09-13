@@ -110,6 +110,24 @@
       "message": "Should this TODO stay?",
       "revId": "bf49705608a09c68a243de03dceefb4bff2c343f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d734269_78e117d6",
+        "filename": "python/python.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-09-13T16:21:29Z",
+      "side": 0,
+      "message": "restored comment.",
+      "parentUuid": "74ae5a27_f804211e",
+      "revId": "bf49705608a09c68a243de03dceefb4bff2c343f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
