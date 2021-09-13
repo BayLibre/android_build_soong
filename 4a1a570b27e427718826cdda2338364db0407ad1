@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecae672b_9ce73fd0",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-09-13T10:31:16Z",
+      "side": 1,
+      "message": "Should this be called localIncludes?",
+      "range": {
+        "startLine": 220,
+        "startChar": 1,
+        "endLine": 220,
+        "endChar": 9
+      },
+      "revId": "4a1a570b27e427718826cdda2338364db0407ad1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
