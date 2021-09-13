@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eec2bf97_79b4d54b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-13T22:24:54Z",
+      "side": 1,
+      "message": "There\u0027s a new kind of dependencies in ninja called \"validation dependencies\".  You can use Validation: tidyfile on the .o file, which will cause the .tidy file to be added to the build graph whenever the .o file is in the build graph, but not block building the .o, .so or .a file on the completion of the .tidy file.  That means the .tidy file can still break the build, produce warnings, etc., just like it does now, but it doesn\u0027t slow down producing the .so file and moving on to other parts of the build, increasing build parallelism.",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 60
+      },
+      "revId": "91b95b540d6ea2f7638dc360ad372b8e489e558b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecec1c44_692153de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-13T22:24:54Z",
+      "side": 1,
+      "message": "This sounds dangerous, we don\u0027t have much control over what version of bash is available.  Macs especially may have old bash versions.",
+      "range": {
+        "startLine": 17,
+        "startChar": 56,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "91b95b540d6ea2f7638dc360ad372b8e489e558b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd6879ac_c86d73d6",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-13T22:24:54Z",
+      "side": 1,
+      "message": "Use proptools.ShellEscape",
+      "revId": "91b95b540d6ea2f7638dc360ad372b8e489e558b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
