@@ -16,6 +16,24 @@
       "message": "Sorry, I submitted an old version of that change. I\u0027m going to revert and cherry-pick a newer version.",
       "revId": "35fbfe29f0f22ac151090be0f56a4ede6ff6454c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0867770f_2ef41cff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2021-09-13T17:16:47Z",
+      "side": 1,
+      "message": "SGTM! I\u0027ll abandon this one then.",
+      "parentUuid": "6d8f4fb9_368788c6",
+      "revId": "35fbfe29f0f22ac151090be0f56a4ede6ff6454c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
