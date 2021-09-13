@@ -16,6 +16,23 @@
       "message": "Turns out I had to allow the notice files to be binary, and then things got out of control. I had to redo the writing to the file to take bytes arrays and some other modifications. I retested using notice files that have non-ascii characters and everything seems to work.",
       "revId": "fe0b78b47ce3ac8ef754c87fcff73c9c5fc371c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c13803f_f72580dc",
+        "filename": "scripts/generate-notice-files.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2021-09-13T21:18:09Z",
+      "side": 1,
+      "message": "Why the change in iteration method? Probably deserves a comment if this is needed for a python 3 change.",
+      "revId": "fe0b78b47ce3ac8ef754c87fcff73c9c5fc371c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
