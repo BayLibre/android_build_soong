@@ -33,6 +33,24 @@
       "message": "Why the change in iteration method? Probably deserves a comment if this is needed for a python 3 change.",
       "revId": "fe0b78b47ce3ac8ef754c87fcff73c9c5fc371c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "499f2671_9b437188",
+        "filename": "scripts/generate-notice-files.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2021-09-13T21:59:36Z",
+      "side": 1,
+      "message": "Because python3 didn\u0027t implement this in a way you would expect. The for i in text doesn\u0027t actually return a byte, it returns an int. It turns out this method causes the script to get about twice as slow. So I found a new method that makes the script run in the same time (maybe slightly faster) than the current version.\n\nI\u0027ve added a comment to explain what\u0027s going on.",
+      "parentUuid": "2c13803f_f72580dc",
+      "revId": "fe0b78b47ce3ac8ef754c87fcff73c9c5fc371c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
