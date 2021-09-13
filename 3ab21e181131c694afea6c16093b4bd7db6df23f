@@ -175,6 +175,30 @@
       },
       "revId": "3ab21e181131c694afea6c16093b4bd7db6df23f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d92eb61_91e0d70e",
+        "filename": "snapshot/host_fake_snapshot.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2021-09-13T22:22:10Z",
+      "side": 1,
+      "message": "Reworked the comments to add more context on the use case of the fake snapshot.",
+      "parentUuid": "194a0385_60fb72dd",
+      "range": {
+        "startLine": 25,
+        "startChar": 33,
+        "endLine": 25,
+        "endChar": 37
+      },
+      "revId": "3ab21e181131c694afea6c16093b4bd7db6df23f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
