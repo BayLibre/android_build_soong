@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd258f76_1ad0a645",
+        "filename": "android/arch.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-13T14:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad561d06_88f57013",
+      "range": {
+        "startLine": 926,
+        "startChar": 0,
+        "endLine": 941,
+        "endChar": 5
+      },
+      "revId": "5dd39917077bad697e449bd075a33940bdcda7b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f3bc1dc_ecf57680",
@@ -71,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "325f8a55_9236a0e5",
+        "filename": "android/module.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-13T14:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f3bc1dc_ecf57680",
+      "range": {
+        "startLine": 1091,
+        "startChar": 0,
+        "endLine": 1092,
+        "endChar": 22
+      },
+      "revId": "5dd39917077bad697e449bd075a33940bdcda7b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a4f84e6_9662f873",
@@ -84,6 +132,30 @@
       "writtenOn": "2021-09-13T10:38:51Z",
       "side": 1,
       "message": "This function is super long and easy to get lost in, maybe break it into smaller ones?",
+      "range": {
+        "startLine": 1198,
+        "startChar": 0,
+        "endLine": 1202,
+        "endChar": 0
+      },
+      "revId": "5dd39917077bad697e449bd075a33940bdcda7b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa0f2b0_5c90348a",
+        "filename": "android/module.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-13T14:09:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a4f84e6_9662f873",
       "range": {
         "startLine": 1198,
         "startChar": 0,
