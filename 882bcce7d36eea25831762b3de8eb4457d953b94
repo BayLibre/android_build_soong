@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65baa445_98349439",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-13T13:29:17Z",
+      "side": 1,
+      "message": "Nit: replace odex/vdex/art with {odex,vdex,art} to avoid confusion with path separators.",
+      "range": {
+        "startLine": 10,
+        "startChar": 56,
+        "endLine": 10,
+        "endChar": 68
+      },
+      "revId": "882bcce7d36eea25831762b3de8eb4457d953b94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04189f74_745170c4",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-13T13:29:17Z",
+      "side": 1,
+      "message": "This path is used in many places, maybe create a named string constant for it?",
+      "range": {
+        "startLine": 224,
+        "startChar": 4,
+        "endLine": 224,
+        "endChar": 27
+      },
+      "revId": "882bcce7d36eea25831762b3de8eb4457d953b94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5719424_26a202b1",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-13T13:29:17Z",
+      "side": 1,
+      "message": "This is rather inefficient: it calls `Append` in a loop, which may reallocate underlying arrays every time. Can you add `AppendList` method to `ConfiguredJarsList` that would reserve slice capacity in advance?",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 543,
+        "endChar": 0
+      },
+      "revId": "882bcce7d36eea25831762b3de8eb4457d953b94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af34917a_c42005c8",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-13T13:29:17Z",
+      "side": 1,
+      "message": "I\u0027d expect this condition to be:\n\n  } else if (!d.dexpreoptDisabled(ctx) \u0026\u0026 isApexVariant(ctx)) {\n\nso that it captures all non-system server apex jars. Why do we need extra checks on default filepath?",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 62
+      },
+      "revId": "882bcce7d36eea25831762b3de8eb4457d953b94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b02cf9f_5510bae9",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-13T13:29:17Z",
+      "side": 1,
+      "message": "No need for this `return`, a `ModuleError` will be fatal anyway and fallthrough to `defaultInstallPath` is ok.",
+      "range": {
+        "startLine": 196,
+        "startChar": 2,
+        "endLine": 196,
+        "endChar": 30
+      },
+      "revId": "882bcce7d36eea25831762b3de8eb4457d953b94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d8ea81_7229d6aa",
+        "filename": "java/dexpreopt_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-13T13:29:17Z",
+      "side": 1,
+      "message": "As far as I know it is more common to put as many arguments as possible on the first line and the remaining ones on the 2nd (looking at the other code). The 100 limit is not strict, so if you only need to exceed it by a few characters, it\u0027s better not to break the line.",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 82
+      },
+      "revId": "882bcce7d36eea25831762b3de8eb4457d953b94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

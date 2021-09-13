@@ -177,6 +177,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c82e3db0_004fd715",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-13T13:29:17Z",
+      "side": 1,
+      "message": "Now that I looked for a guide, I couldn\u0027t find one either (I learned what I told you from ccross@ on one of my first CLs). \"Effective Go\" says that \"Go has no line length limit. Don\u0027t worry about overflowing a punched card. If a line feels too long, wrap it and indent with an extra tab.\" (https://golang.org/doc/effective_go#formatting).",
+      "parentUuid": "41c2f374_acc21597",
+      "range": {
+        "startLine": 205,
+        "startChar": 3,
+        "endLine": 205,
+        "endChar": 7
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d8a2a3e_5045d454",
@@ -508,6 +532,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd40428e_3946a986",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-13T13:29:17Z",
+      "side": 1,
+      "message": "Hmm, maybe I misunderstood the purpose of this path. What does it look like? I thought it\u0027s something like out/target/product/vsoc_x86_64/apex/com.android.art/... If this is just an intermediate path that gets passed to Make (like out/soong/.intermediates/art/build/apex/com.android.art/...), then \"install\" is wrong here and `outputPathOnHost` is better. Sorry for confusion.",
+      "parentUuid": "8b429561_72638db0",
+      "range": {
+        "startLine": 42,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 15
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2027528a_731b0e52",
         "filename": "java/dexpreopt.go",
         "patchSetId": 2
@@ -543,6 +591,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "2027528a_731b0e52",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 61
+      },
+      "revId": "6a6198d4c5a2d9bbddb9692c199a1071d95dfa9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b0b93c6_8061b480",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-13T13:29:17Z",
+      "side": 1,
+      "message": "Can you rephrase the comment as well? \"on the target\" is a bit confusing, \"on host\"/\"on device\" seems more clear.",
+      "parentUuid": "654b4995_8a6b39a9",
       "range": {
         "startLine": 44,
         "startChar": 1,
