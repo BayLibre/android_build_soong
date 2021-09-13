@@ -34,6 +34,24 @@
       "parentUuid": "08560ce4_91c1f0e4",
       "revId": "5282ef354c17331d4bd1f482ea389072cf60241d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce7ea916_1800fda9",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-13T21:51:15Z",
+      "side": 1,
+      "message": "I was looking to avoid having to manually add to this test every time we tagged a new common `bp2build` field. But what I\u0027m understanding is that we\u0027d rather go the extra step so as to be explicit in our mappings.",
+      "parentUuid": "c5994d9a_ca2f6fed",
+      "revId": "5282ef354c17331d4bd1f482ea389072cf60241d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
