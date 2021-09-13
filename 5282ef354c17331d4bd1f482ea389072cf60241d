@@ -16,6 +16,24 @@
       "message": "Any suggestions as to how best to test e.g. LabelListAttribute contextual lookup functionality? The Zero values won\u0027t cut it for that and it\u0027s the only more involved transformation relative to the others.",
       "revId": "5282ef354c17331d4bd1f482ea389072cf60241d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5994d9a_ca2f6fed",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-13T21:42:07Z",
+      "side": 1,
+      "message": "Creating tests that explicitly state input/expected output for each property being migrated would remove the need to expose internals like MkCommonBp2BuildProperties and CommonBp2buildProperties to this test and make testing the LabelListAttribute transformation much easier.\n\nIt would also make the test much clearer, there\u0027s a lot of logic in this test  which is harder to validate ( go/tott/510 ).",
+      "parentUuid": "08560ce4_91c1f0e4",
+      "revId": "5282ef354c17331d4bd1f482ea389072cf60241d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

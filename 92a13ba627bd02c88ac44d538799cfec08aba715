@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03405b6e_701eff37",
+        "filename": "android/module.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-13T21:42:07Z",
+      "side": 1,
+      "message": "have you determined how you\u0027ll extend this to handle other arch/os/targets?",
+      "range": {
+        "startLine": 745,
+        "startChar": 19,
+        "endLine": 745,
+        "endChar": 42
+      },
+      "revId": "92a13ba627bd02c88ac44d538799cfec08aba715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fbb33d5_f4f37ce0",
+        "filename": "android/module.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-13T21:42:07Z",
+      "side": 1,
+      "message": "does this need to be exported? it seems more of an implementation detail",
+      "range": {
+        "startLine": 1067,
+        "startChar": 5,
+        "endLine": 1067,
+        "endChar": 31
+      },
+      "revId": "92a13ba627bd02c88ac44d538799cfec08aba715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cc6c417_b5bc77f4",
+        "filename": "android/module.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-13T21:42:07Z",
+      "side": 1,
+      "message": "In Soong, Mk tends to indicate .mk files, a different name would be more clear.",
+      "range": {
+        "startLine": 1067,
+        "startChar": 5,
+        "endLine": 1067,
+        "endChar": 7
+      },
+      "revId": "92a13ba627bd02c88ac44d538799cfec08aba715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62d830a5_ecf6f12d",
+        "filename": "android/module.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1158,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-13T21:42:07Z",
+      "side": 1,
+      "message": "This means we may handle values differently based on whether there is a property to merge into, but we should handle properties the same regardless.\n\nFor example, cc_binary does not support a `data` property, but the values in `required` should still be treated as other modules.",
+      "range": {
+        "startLine": 1158,
+        "startChar": 12,
+        "endLine": 1158,
+        "endChar": 66
+      },
+      "revId": "92a13ba627bd02c88ac44d538799cfec08aba715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
