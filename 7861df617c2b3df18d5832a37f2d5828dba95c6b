@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bc194f5_873bacf5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-13T14:01:42Z",
+      "side": 1,
+      "message": "FYI a change like this also needs a first boot test to confirm that the dexpreopted system server files are used and do not cause system server dexopt at boot time. I\u0027d grep logcat on the first boot for dexopt messages and the names of system server jars.\n\nOur testing infra would capture a major regression, but it\u0027s good to check manually in the logcat.\n\nNo need to change this CL.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "7861df617c2b3df18d5832a37f2d5828dba95c6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
