@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d8f4fb9_368788c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1044446
+      },
+      "writtenOn": "2021-09-13T17:12:04Z",
+      "side": 1,
+      "message": "Sorry, I submitted an old version of that change. I\u0027m going to revert and cherry-pick a newer version.",
+      "revId": "35fbfe29f0f22ac151090be0f56a4ede6ff6454c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
