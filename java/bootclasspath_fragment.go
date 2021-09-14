@@ -223,6 +223,12 @@ func bootclasspathFragmentInitContentsFromImage(ctx android.EarlyModuleContext, 
 		return
 	}
 
+	if ctx.Config().UnbundledBuild() {
+		// Not building a system image. There may not be installable APEXes around
+		// to register deapexer dependencies on.
+		return
+	}
+
 	// TODO(b/177892522): Prebuilts (versioned or not) should not use the image_name property.
 	if android.IsModuleInVersionedSdk(m) {
 		// The module is a versioned prebuilt so ignore it. This is done for a couple of reasons:
@@ -443,11 +449,21 @@ func (b *BootclasspathFragmentModule) GenerateAndroidBuildActions(ctx android.Mo
 	// prebuilt which will not use the image config.
 	imageConfig := b.getImageConfig(ctx)
 
-	// A versioned prebuilt_bootclasspath_fragment cannot and does not need to perform hidden API
-	// processing. It cannot do it because it is not part of a prebuilt_apex and so has no access to
-	// the correct dex implementation jar. It does not need to because the platform-bootclasspath
-	// always references the latest bootclasspath_fragments.
-	if !android.IsModuleInVersionedSdk(ctx.Module()) {
+	// Find out whether we should do hiddenapi processing. A versioned prebuilt_bootclasspath_fragment
+	// cannot and does not need to perform hidden API processing. It cannot do it because it is not
+	// part of a prebuilt_apex and so has no access to the correct dex implementation jar. It does not
+	// need to because the platform-bootclasspath always references the latest
+	// bootclasspath_fragments.
+	doHiddenApiProcessing := !android.IsModuleInVersionedSdk(ctx.Module())
+	// In unbundled builds we also need to exclude unversioned prebuilt_bootclasspath_fragments:
+	// Otherwise they need to extract dex jars from some prebuilt_apex, and when we don't build a
+	// system image we have no good idea of which one to use, in case there are several that provide
+	// the same APEX variant. It is safe to exclude them because it's only the platform-bootclasspath
+	// that needs the BCP fragment to provide stub lib info, and it's only used for the system image.
+	if doHiddenApiProcessing && ctx.Config().UnbundledBuild() {
+		doHiddenApiProcessing = !android.IsModulePrebuilt(ctx.Module())
+	}
+	if doHiddenApiProcessing {
 		// Perform hidden API processing.
 		hiddenAPIOutput := b.generateHiddenAPIBuildActions(ctx, contents, fragments)
 

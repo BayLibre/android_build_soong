@@ -109,6 +109,11 @@ type PrebuiltCommonProperties struct {
 // module that is common to Prebuilt and ApexSet.
 func (p *prebuiltCommon) initPrebuiltCommon(module android.Module, properties *PrebuiltCommonProperties) {
 	p.prebuiltCommonProperties = properties
+
+	// Avoid panic in InitSingleSourcePrebuiltModule lambda if the module gets
+	// skipped in prebuiltApexModuleCreatorMutator.
+	properties.Selected_apex = proptools.StringPtr("")
+
 	android.InitSingleSourcePrebuiltModule(module.(android.PrebuiltInterface), properties, "Selected_apex")
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
 }
@@ -288,6 +293,12 @@ type prebuiltApexModuleCreator interface {
 // DepsMutator so that the deapexer module it creates can add dependencies onto itself from the
 // exported modules.
 func prebuiltApexModuleCreatorMutator(ctx android.TopDownMutatorContext) {
+	// The prebuilt APEX modules are only applicable to installable APEXes that go
+	// into the system image. Skip them if we're not making one, i.e. it isn't a
+	// bundled build.
+	if ctx.Config().UnbundledBuild() {
+		return
+	}
 	module := ctx.Module()
 	if creator, ok := module.(prebuiltApexModuleCreator); ok {
 		creator.createPrebuiltApexModules(ctx)

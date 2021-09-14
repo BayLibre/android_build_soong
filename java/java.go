@@ -1295,6 +1295,27 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.combinedClasspathFile = outputFile
 	j.classLoaderContexts = make(dexpreopt.ClassLoaderContextMap)
 
+	if Bool(j.properties.Installable) {
+		ctx.InstallFile(android.PathForModuleInstall(ctx, "framework"),
+			jarName, outputFile)
+	}
+
+	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.properties.Aidl.Export_include_dirs)
+
+	ctx.SetProvider(JavaInfoProvider, JavaInfo{
+		HeaderJars:                     android.PathsIfNonNil(j.combinedClasspathFile),
+		ImplementationAndResourcesJars: android.PathsIfNonNil(j.combinedClasspathFile),
+		ImplementationJars:             android.PathsIfNonNil(j.combinedClasspathFile),
+		AidlIncludeDirs:                j.exportAidlIncludeDirs,
+	})
+
+	// Do hiddenapi and dexpreopt processing, which requires the implementation
+	// dexjars. This is only applicable when creating a system image, i.e. bundled
+	// device builds.
+	if ctx.Config().UnbundledBuild() || !ctx.Device() {
+		return
+	}
+
 	var flags javaBuilderFlags
 	var deapexerModule android.Module
 
@@ -1324,14 +1345,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 	})
 
-	if Bool(j.properties.Installable) {
-		ctx.InstallFile(android.PathForModuleInstall(ctx, "framework"),
-			jarName, outputFile)
-	}
-
-	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.properties.Aidl.Export_include_dirs)
-
-	if ctx.Device() {
+	if ctx.Device() { // FIXME: Remove.
 		// If this is a variant created for a prebuilt_apex then use the dex implementation jar
 		// obtained from the associated deapexer module.
 		ai := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
@@ -1395,13 +1409,6 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			j.dexJarInstallFile = android.PathForModuleInstall(ctx, "framework", jarName)
 		}
 	}
-
-	ctx.SetProvider(JavaInfoProvider, JavaInfo{
-		HeaderJars:                     android.PathsIfNonNil(j.combinedClasspathFile),
-		ImplementationAndResourcesJars: android.PathsIfNonNil(j.combinedClasspathFile),
-		ImplementationJars:             android.PathsIfNonNil(j.combinedClasspathFile),
-		AidlIncludeDirs:                j.exportAidlIncludeDirs,
-	})
 }
 
 func (j *Import) OutputFiles(tag string) (android.Paths, error) {

@@ -2147,10 +2147,10 @@ func (module *SdkLibraryImport) OutputFiles(tag string) (android.Paths, error) {
 func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	module.generateCommonBuildActions(ctx)
 
-	var deapexerModule android.Module
-
 	// Assume that source module(sdk_library) is installed in /<sdk_library partition>/framework
 	module.installFile = android.PathForModuleInstall(ctx, "framework", module.Stem()+".jar")
+
+	var deapexerModule android.Module
 
 	// Record the paths to the prebuilt stubs library and stubs source.
 	ctx.VisitDirectDeps(func(to android.Module) {
@@ -2195,7 +2195,14 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 		paths.removedApiFilePath = android.OptionalPathForModuleSrc(ctx, scopeProperties.Removed_api)
 	}
 
-	if ctx.Device() {
+	// Do hiddenapi and dexpreopt processing, which requires the implementation
+	// dexjars. This is only applicable when creating a system image, i.e. bundled
+	// device builds.
+	if ctx.Config().UnbundledBuild() || !ctx.Device() {
+		return
+	}
+
+	if ctx.Device() { // FIXME: Remove
 		// If this is a variant created for a prebuilt_apex then use the dex implementation jar
 		// obtained from the associated deapexer module.
 		ai := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
