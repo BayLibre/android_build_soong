@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8ce9288_49896874",
+        "filename": "android/module.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-14T18:19:22Z",
+      "side": 1,
+      "message": "this tag `android:\"arch_variant\"` indicates to Soong that this property can vary for arch/os/target. In the bp2build conversion of `Required`, and other properties tagged with `android:\"arch_variant\"`, we need to handle the case where there are arch(os,target) specific values.",
+      "parentUuid": "94070670_a76a573e",
+      "range": {
+        "startLine": 745,
+        "startChar": 19,
+        "endLine": 745,
+        "endChar": 42
+      },
+      "revId": "92a13ba627bd02c88ac44d538799cfec08aba715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5fbb33d5_f4f37ce0",
         "filename": "android/module.go",
         "patchSetId": 23
@@ -196,6 +220,30 @@
       "side": 1,
       "message": "How can we know in this generic context whether the target rule supports the target property?",
       "parentUuid": "62d830a5_ecf6f12d",
+      "range": {
+        "startLine": 1158,
+        "startChar": 12,
+        "endLine": 1158,
+        "endChar": 66
+      },
+      "revId": "92a13ba627bd02c88ac44d538799cfec08aba715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a934371_c9e7e996",
+        "filename": "android/module.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1158,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-14T18:19:22Z",
+      "side": 1,
+      "message": "As it is, we can\u0027t. We will handle the property differently for module types that have a Data property vs don\u0027t, but we should be consistent.\n\nRelated to some of the comments in your proposal, it is worth understanding how many of these properties are a straightforward use and how many that are going to need additional custom handling -- if the majority need custom handling, we may want to approach this differently.",
+      "parentUuid": "78d2b08d_8e59ae0e",
       "range": {
         "startLine": 1158,
         "startChar": 12,

@@ -52,6 +52,24 @@
       "parentUuid": "c5994d9a_ca2f6fed",
       "revId": "5282ef354c17331d4bd1f482ea389072cf60241d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "046f1256_fc111151",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 1250,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-14T18:19:22Z",
+      "side": 1,
+      "message": "Right now, the commonProperties and the functionality are inextricably linked, which makes unit testing difficult. We could likely limit our testing of commonProperties explicitly if we structure the test to be more amenable to unit tests. E.g.\n* separating the function that looks for bp2build tags and generates a map\n* a function that takes a topdowncontext, that map, properties, and attributes returns a new attributes\n\nWe could unit test those functions extensively within package to reduce the need to test each time we add a new common property.\n\nIt would still be nice to have _a_ test in bp2build to verify common properties was handled correctly, but we don\u0027t have to consider each edge case as carefully if the underlying functionality is well-tested.",
+      "parentUuid": "ce7ea916_1800fda9",
+      "revId": "5282ef354c17331d4bd1f482ea389072cf60241d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
