@@ -70,6 +70,24 @@
       "parentUuid": "846b3563_f0f96a80",
       "revId": "bf48fc49f14626cd46f62d6abe52523ae0c2c48d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31652a0f_f781f2e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-14T18:25:32Z",
+      "side": 1,
+      "message": "I believe linkstatic\u003dTrue was propagated to native.cc_library before via kwargs.",
+      "parentUuid": "461e3b4f_30d55530",
+      "revId": "bf48fc49f14626cd46f62d6abe52523ae0c2c48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
