@@ -148,7 +148,13 @@ type nestedProps struct {
 	Nested_prop string
 }
 
+type EmbeddedProps struct {
+	Embedded_prop string
+}
+
 type customProps struct {
+	EmbeddedProps
+
 	Bool_prop     bool
 	Bool_ptr_prop *bool
 	// Ensure that properties tagged `blueprint:mutated` are omitted
@@ -246,7 +252,12 @@ func customDefaultsModuleFactory() android.Module {
 	return m
 }
 
+type EmbeddedAttr struct {
+	Embedded_attr string
+}
+
 type customBazelModuleAttributes struct {
+	EmbeddedAttr
 	String_prop      string
 	String_list_prop []string
 	Arch_paths       bazel.LabelListAttribute
@@ -275,6 +286,7 @@ func customBp2BuildMutator(ctx android.TopDownMutatorContext) {
 			String_list_prop: m.props.String_list_prop,
 			Arch_paths:       paths,
 		}
+		attrs.Embedded_attr = m.props.Embedded_prop
 
 		props := bazel.BazelTargetModuleProperties{
 			Rule_class: "custom",
