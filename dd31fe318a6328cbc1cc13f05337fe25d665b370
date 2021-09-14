@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeaadd56_5b3c8727",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-14T14:20:21Z",
+      "side": 1,
+      "message": "In general, looks good, but let\u0027s split out the cc_library_static change.",
+      "revId": "dd31fe318a6328cbc1cc13f05337fe25d665b370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "919d05d8_1e910de1",
+        "filename": "android/bazel.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-14T14:20:21Z",
+      "side": 1,
+      "message": "nit: the particular failure may differ now, a shorter error with the bug + depends on libc++_static should be sufficient to know when it will be unblocked.",
+      "range": {
+        "startLine": 214,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 27
+      },
+      "revId": "dd31fe318a6328cbc1cc13f05337fe25d665b370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb281d6_e07bfe73",
+        "filename": "cc/library.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 2462,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-14T14:20:21Z",
+      "side": 1,
+      "message": "does anything else need to be done here?",
+      "range": {
+        "startLine": 2462,
+        "startChar": 0,
+        "endLine": 2462,
+        "endChar": 54
+      },
+      "revId": "dd31fe318a6328cbc1cc13f05337fe25d665b370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
