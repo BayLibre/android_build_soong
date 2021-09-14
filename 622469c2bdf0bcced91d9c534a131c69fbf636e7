@@ -33,6 +33,24 @@
       "message": "Might this be indirected via a pointer? Unsure about Go\u0027s semantics in this regard.",
       "revId": "622469c2bdf0bcced91d9c534a131c69fbf636e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d2689d9_6f738a6e",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-14T18:43:00Z",
+      "side": 1,
+      "message": "good point. done.",
+      "parentUuid": "5d53e8b2_966363ab",
+      "revId": "622469c2bdf0bcced91d9c534a131c69fbf636e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
