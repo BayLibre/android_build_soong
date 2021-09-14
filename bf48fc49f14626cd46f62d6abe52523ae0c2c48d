@@ -34,6 +34,24 @@
       "parentUuid": "28543b53_b630993f",
       "revId": "bf48fc49f14626cd46f62d6abe52523ae0c2c48d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "846b3563_f0f96a80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-14T18:05:19Z",
+      "side": 1,
+      "message": "By \"difference in build outputs\" I meant \"difference in the outputs of a bazel build\". That is, are there differences in the types of files, # of files, or contents of files (e.g. .a files or .o files) produced with and without linkstatic? \n\nCan we diff produced files for some examples in both cases?\n\nWhy was linkstatic originally added? (Can you find the CL that did this? What was the reasoning?)\n\nAlternatively, should we be modifying cc_library_static.bzl to automatically add linkstatic to the calls to native.cc_library? We can effectively add linkstatic to these libraries via this mechanism (and thus bp2build need not know of it). Is that necessary?",
+      "parentUuid": "ebff1162_bfb1a568",
+      "revId": "bf48fc49f14626cd46f62d6abe52523ae0c2c48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
