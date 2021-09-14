@@ -142,19 +142,21 @@ func (stl *stl) deps(ctx BaseModuleContext, deps Deps) Deps {
 	case "libstdc++":
 		// Nothing
 	case "libc++", "libc++_static":
-		if stl.Properties.SelectedStl == "libc++" {
-			deps.SharedLibs = append(deps.SharedLibs, stl.Properties.SelectedStl)
-		} else {
-			deps.StaticLibs = append(deps.StaticLibs, stl.Properties.SelectedStl)
-		}
-		if ctx.Device() && !ctx.useSdk() {
-			// __cxa_demangle is not a part of libc++.so on the device since
-			// it's large and most processes don't need it. Statically link
-			// libc++demangle into every process so that users still have it if
-			// needed, but the linker won't include this unless it is actually
-			// called.
-			// http://b/138245375
-			deps.StaticLibs = append(deps.StaticLibs, "libc++demangle")
+		if ctx.Device() {
+			if stl.Properties.SelectedStl == "libc++" {
+				deps.SharedLibs = append(deps.SharedLibs, stl.Properties.SelectedStl)
+			} else {
+				deps.StaticLibs = append(deps.StaticLibs, stl.Properties.SelectedStl)
+			}
+			if !ctx.useSdk() {
+				// __cxa_demangle is not a part of libc++.so on the device since
+				// it's large and most processes don't need it. Statically link
+				// libc++demangle into every process so that users still have it if
+				// needed, but the linker won't include this unless it is actually
+				// called.
+				// http://b/138245375
+				deps.StaticLibs = append(deps.StaticLibs, "libc++demangle")
+			}
 		}
 		if ctx.toolchain().Bionic() {
 			if ctx.staticBinary() {
@@ -208,8 +210,11 @@ func (stl *stl) flags(ctx ModuleContext, flags Flags) Flags {
 		}
 
 		if !ctx.toolchain().Bionic() {
-			flags.Local.CppFlags = append(flags.Local.CppFlags, "-nostdinc++")
-			flags.extraLibFlags = append(flags.extraLibFlags, "-nostdlib++")
+			flags.Local.CppFlags = append(flags.Local.CppFlags, "-stdlib=libc++")
+			flags.extraLibFlags = append(flags.extraLibFlags, "-stdlib=libc++")
+			if stl.Properties.SelectedStl == "libc++_static" {
+				flags.extraLibFlags = append(flags.extraLibFlags, "-static-libstdc++")
+			}
 			if ctx.Windows() {
 				flags.Local.CppFlags = append(flags.Local.CppFlags,
 					// Disable visiblity annotations since we're using static
