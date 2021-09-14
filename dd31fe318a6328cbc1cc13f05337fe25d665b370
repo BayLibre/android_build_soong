@@ -128,6 +128,30 @@
       },
       "revId": "dd31fe318a6328cbc1cc13f05337fe25d665b370",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5faeaa9a_694d54c6",
+        "filename": "cc/library.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 2462,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-14T17:21:26Z",
+      "side": 1,
+      "message": "Ah, yes. I should be clear with that. With your upcoming embedding change, this will tie nicely into a new, later CL for cleanup. Not high-priority, though. How about I leave a TODO and file a low-prio bug about deduping?",
+      "parentUuid": "9813e4cf_34668c47",
+      "range": {
+        "startLine": 2462,
+        "startChar": 0,
+        "endLine": 2462,
+        "endChar": 54
+      },
+      "revId": "dd31fe318a6328cbc1cc13f05337fe25d665b370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
