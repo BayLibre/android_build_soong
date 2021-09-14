@@ -16,6 +16,24 @@
       "message": "This is effectively a behavioral change for static libraries we build, correct?\n\n(Previously, we were setting this attribute to true:\nhttps://docs.bazel.build/versions/main/be/c-cpp.html#cc_library.linkstatic)\n\nAny insight into what differences this may in our build outputs? Why did we add linkstatic in the first place?",
       "revId": "bf48fc49f14626cd46f62d6abe52523ae0c2c48d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebff1162_bfb1a568",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-14T18:01:29Z",
+      "side": 1,
+      "message": "The difference in the build outputs is that linkstatic is no longer mentioned in blueprints or BUILDs, as reflected in the test changes. There doesn\u0027t seem to be a functional change in my testing... As you note, we were always just propagating this as true for static. It came up when doing the cc_library_shared work; there, I would\u0027ve likewise had to artificially plumb `linkstatic \u003d false` throughout the Go and .bzl. This was deemed undesirable.",
+      "parentUuid": "28543b53_b630993f",
+      "revId": "bf48fc49f14626cd46f62d6abe52523ae0c2c48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
