@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28543b53_b630993f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-14T17:50:45Z",
+      "side": 1,
+      "message": "This is effectively a behavioral change for static libraries we build, correct?\n\n(Previously, we were setting this attribute to true:\nhttps://docs.bazel.build/versions/main/be/c-cpp.html#cc_library.linkstatic)\n\nAny insight into what differences this may in our build outputs? Why did we add linkstatic in the first place?",
+      "revId": "bf48fc49f14626cd46f62d6abe52523ae0c2c48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
