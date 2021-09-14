@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "223209d3_2062d9bd",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-14T18:58:20Z",
+      "side": 1,
+      "message": "This should be classpathFile to match the previous behavior",
+      "range": {
+        "startLine": 497,
+        "startChar": 26,
+        "endLine": 497,
+        "endChar": 33
+      },
+      "revId": "28b9063456e885dd95499e8a3dd3dc76e1ae3d62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
