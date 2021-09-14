@@ -217,6 +217,7 @@ func RegisterLibraryBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_library_host_shared", LibraryHostSharedFactory)
 }
 
+// TODO(b/199902614): Can this be factored to share with the other Attributes?
 // For bp2build conversion.
 type bazelCcLibraryAttributes struct {
 	// Attributes pertaining to both static and shared variants.
@@ -2440,7 +2441,7 @@ func ccSharedOrStaticBp2BuildMutatorInternal(ctx android.TopDownMutatorContext, 
 	ctx.CreateBazelTargetModule(module.Name(), props, attrs)
 }
 
-// TODO(alexmarquez): Can this be factored to share with Shared?
+// TODO(b/199902614): Can this be factored to share with the other Attributes?
 type bazelCcLibraryStaticAttributes struct {
 	Copts                  bazel.StringListAttribute
 	Srcs                   bazel.LabelListAttribute
@@ -2450,7 +2451,6 @@ type bazelCcLibraryStaticAttributes struct {
 	Dynamic_deps           bazel.LabelListAttribute
 	System_dynamic_deps    bazel.LabelListAttribute
 	Linkopts               bazel.StringListAttribute
-	Linkstatic             bool
 	Use_libcrt             bazel.BoolAttribute
 	Rtti                   bazel.BoolAttribute
 	Export_includes        bazel.StringListAttribute
@@ -2470,7 +2470,7 @@ func CcLibraryStaticBp2Build(ctx android.TopDownMutatorContext) {
 	ccSharedOrStaticBp2BuildMutator(ctx, "cc_library_static")
 }
 
-// TODO(alexmarquez): Adapt better to Shared-only case
+// TODO(b/199902614): Can this be factored to share with the other Attributes?
 type bazelCcLibrarySharedAttributes struct {
 	Srcs    bazel.LabelListAttribute
 	Srcs_c  bazel.LabelListAttribute
