@@ -480,10 +480,25 @@ type AndroidLibrary struct {
 
 	androidLibraryProperties androidLibraryProperties
 
-	aarFile android.WritablePath
+	aarFile       android.WritablePath
+	classpathFile android.WritablePath
 
 	exportedProguardFlagFiles android.Paths
 	exportedStaticPackages    android.Paths
+}
+
+var _ android.OutputFileProducer = (*AndroidLibrary)(nil)
+
+// For OutputFileProducer interface
+func (a *AndroidLibrary) OutputFiles(tag string) (android.Paths, error) {
+	switch tag {
+	case ".aar":
+		return []android.Path{a.aarFile}, nil
+	case "":
+		return a.Library.OutputFiles(tag)
+	default:
+		return nil, fmt.Errorf("unsupported module reference tag %q", tag)
+	}
 }
 
 func (a *AndroidLibrary) ExportedProguardFlagFiles() android.Paths {
@@ -529,6 +544,7 @@ func (a *AndroidLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 	a.Module.compile(ctx, a.aaptSrcJar)
 
 	a.aarFile = android.PathForModuleOut(ctx, ctx.ModuleName()+".aar")
+	a.classpathFile = android.PathForModuleOut(ctx, ctx.ModuleName()+".jar")
 	var res android.Paths
 	if a.androidLibraryProperties.BuildAAR {
 		BuildAAR(ctx, a.aarFile, a.outputFile, a.manifestPath, a.rTxt, res)
