@@ -104,6 +104,30 @@
       },
       "revId": "dd31fe318a6328cbc1cc13f05337fe25d665b370",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9813e4cf_34668c47",
+        "filename": "cc/library.go",
+        "patchSetId": 22
+      },
+      "lineNbr": 2462,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-14T17:11:46Z",
+      "side": 1,
+      "message": "You have that as a TODO above the bazelCcLibraryStaticAttributes, the comment here seemed focused on the struct being adapated to the shared libraries specifically, i didn\u0027t realize the goal of this TODO was also to dedupe.",
+      "parentUuid": "21e0b7e8_84cb74df",
+      "range": {
+        "startLine": 2462,
+        "startChar": 0,
+        "endLine": 2462,
+        "endChar": 54
+      },
+      "revId": "dd31fe318a6328cbc1cc13f05337fe25d665b370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
