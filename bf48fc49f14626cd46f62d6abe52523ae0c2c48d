@@ -88,6 +88,24 @@
       "parentUuid": "461e3b4f_30d55530",
       "revId": "bf48fc49f14626cd46f62d6abe52523ae0c2c48d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d467656_ddfaefd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-14T18:30:07Z",
+      "side": 1,
+      "message": "Ah! Good catch. Apparently it didn\u0027t make a semantic difference because:\n\"For a C++ library, linkstatic\u003dTrue indicates that only static linking is allowed, so no .so will be produced. linkstatic\u003dFalse does not prevent static libraries from being created.\"\nI\u0027ll add it in explicitly to the .bzl, though.",
+      "parentUuid": "31652a0f_f781f2e0",
+      "revId": "bf48fc49f14626cd46f62d6abe52523ae0c2c48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
