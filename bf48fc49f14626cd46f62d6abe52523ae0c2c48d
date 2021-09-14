@@ -52,6 +52,24 @@
       "parentUuid": "ebff1162_bfb1a568",
       "revId": "bf48fc49f14626cd46f62d6abe52523ae0c2c48d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "461e3b4f_30d55530",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-14T18:20:47Z",
+      "side": 1,
+      "message": "Ah, no; I checked in terms of sorted files produced and there was no difference without linkstatic (when done for both static and shared). Didn\u0027t check static alone but figured that covered it.\n\nI don\u0027t know why it was added, but I\u0027ll do some digging.\n\nYeah, we could have it just added in the backend, but AFAICT our native cc_library calls in cc_library_static.bzl never made use of linkstatic. Neither does experimental_cc_shared_library.bzl, but that doesn\u0027t make use of native.cc_library.",
+      "parentUuid": "846b3563_f0f96a80",
+      "revId": "bf48fc49f14626cd46f62d6abe52523ae0c2c48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
