@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6462096b_a273b05d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-14T10:50:19Z",
+      "side": 1,
+      "message": "I realized that aosp/1813216 duplicates some metrics/data here, so I\u0027ll wait for your CL to go in before making changes in the other one, so we don\u0027t have multiple ways of producing the same data.",
+      "revId": "96ac361e9bd0a618177a8f373b7d9da022b2b86a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52dd0e85_38f033ba",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-14T10:50:19Z",
+      "side": 1,
+      "message": "file a bug?",
+      "range": {
+        "startLine": 189,
+        "startChar": 4,
+        "endLine": 189,
+        "endChar": 8
+      },
+      "revId": "96ac361e9bd0a618177a8f373b7d9da022b2b86a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5f94360_9707764a",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-14T10:50:19Z",
+      "side": 1,
+      "message": "nit: unconvertedDepsHandler?",
+      "range": {
+        "startLine": 231,
+        "startChar": 2,
+        "endLine": 231,
+        "endChar": 25
+      },
+      "revId": "96ac361e9bd0a618177a8f373b7d9da022b2b86a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

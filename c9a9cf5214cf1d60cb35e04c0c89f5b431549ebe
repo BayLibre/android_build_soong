@@ -331,6 +331,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73f69f9b_988c7407",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-14T10:50:19Z",
+      "side": 1,
+      "message": "SGTM - I\u0027m also keen on disting this information that we can publish on every postsubmit build.",
+      "parentUuid": "5d96ab59_e0800341",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6075b13_59a53203",
