@@ -169,6 +169,7 @@ var (
 		"build/bazel/examples/apex/minimal": Bp2BuildDefaultTrueRecursively,
 		"development/sdk":                   Bp2BuildDefaultTrueRecursively,
 		"external/gwp_asan":                 Bp2BuildDefaultTrueRecursively,
+		"external/boringssl":                Bp2BuildDefaultTrue,
 		"external/brotli":                   Bp2BuildDefaultTrue,
 		"system/core/libcutils":             Bp2BuildDefaultTrueRecursively,
 		"system/core/libprocessgroup":       Bp2BuildDefaultTrue,
@@ -232,9 +233,16 @@ var (
 		//external/brotli/...
 		"brotli-fuzzer-corpus", // "declared output 'external/brotli/c/fuzz/73231c6592f195ffd41100b8706d1138ff6893b9' was not created by genrule"
 
-		// //external/libcap/...
+		//external/libcap/...
 		"libcap",      // http://b/198595332, depends on _makenames, a cc_binary
 		"cap_names.h", // http://b/198596102, depends on _makenames, a cc_binary
+
+		//external/boringssl/...
+		"boringssl_test_support",
+		"libacvp_modulewrapper",
+		"libcrypto",
+		"libssl",
+		"bcm_object",
 
 		// Tests. Handle later.
 		"libbionic_tests_headers_posix", // http://b/186024507, cc_library_static, sched.h, time.h not found
