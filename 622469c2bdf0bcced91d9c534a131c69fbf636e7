@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "557ae016_308a7aa9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-14T15:35:17Z",
+      "side": 1,
+      "message": "LGTM\n\nThis would enable sharing between e.g. cc_library{,_{shared,static}} attributes.",
+      "revId": "622469c2bdf0bcced91d9c534a131c69fbf636e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d53e8b2_966363ab",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-14T15:35:17Z",
+      "side": 1,
+      "message": "Might this be indirected via a pointer? Unsure about Go\u0027s semantics in this regard.",
+      "revId": "622469c2bdf0bcced91d9c534a131c69fbf636e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
