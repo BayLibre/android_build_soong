@@ -3122,6 +3122,12 @@ func (c *Module) OutputFiles(tag string) (android.Paths, error) {
 			return android.Paths{c.outputFile.Path()}, nil
 		}
 		return android.Paths{}, nil
+	case "toc":
+		var paths android.Paths
+		if libDec, ok := c.linker.(*libraryDecorator); ok && libDec.tocFile.Valid() {
+			paths = android.Paths{libDec.tocFile.Path()}
+		}
+		return paths, nil
 	default:
 		return nil, fmt.Errorf("unsupported module reference tag %q", tag)
 	}
