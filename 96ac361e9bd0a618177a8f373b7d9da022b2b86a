@@ -18,6 +18,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07ad7843_6c6d136e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-14T13:13:29Z",
+      "side": 1,
+      "message": "fair, I think they\u0027re a bit different, this only handles on what is actively being converted and yours focuses on what we can convert next :)",
+      "parentUuid": "6462096b_a273b05d",
+      "revId": "96ac361e9bd0a618177a8f373b7d9da022b2b86a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bdd97b6_02a5edf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-14T13:13:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6462096b_a273b05d",
+      "revId": "96ac361e9bd0a618177a8f373b7d9da022b2b86a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52dd0e85_38f033ba",
@@ -41,6 +77,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c450c3_fad12ff4",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-14T13:13:29Z",
+      "side": 1,
+      "message": "Stale todo, added some documentation instead",
+      "parentUuid": "52dd0e85_38f033ba",
+      "range": {
+        "startLine": 189,
+        "startChar": 4,
+        "endLine": 189,
+        "endChar": 8
+      },
+      "revId": "96ac361e9bd0a618177a8f373b7d9da022b2b86a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5f94360_9707764a",
@@ -54,6 +114,30 @@
       "writtenOn": "2021-09-14T10:50:19Z",
       "side": 1,
       "message": "nit: unconvertedDepsHandler?",
+      "range": {
+        "startLine": 231,
+        "startChar": 2,
+        "endLine": 231,
+        "endChar": 25
+      },
+      "revId": "96ac361e9bd0a618177a8f373b7d9da022b2b86a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5904a3e9_f85d4c3a",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-14T13:13:29Z",
+      "side": 1,
+      "message": "id doesn\u0027t do the handling -- perhaps mode?",
+      "parentUuid": "d5f94360_9707764a",
       "range": {
         "startLine": 231,
         "startChar": 2,

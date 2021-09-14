@@ -355,6 +355,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3c4e1f2_adc79444",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-14T13:13:29Z",
+      "side": 1,
+      "message": "yeah, disting the whole metrics info would be great -- we could then create a dashboard to track the migration.",
+      "parentUuid": "73f69f9b_988c7407",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "c9a9cf5214cf1d60cb35e04c0c89f5b431549ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6075b13_59a53203",
