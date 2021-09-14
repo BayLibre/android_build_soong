@@ -106,6 +106,24 @@
       "parentUuid": "31652a0f_f781f2e0",
       "revId": "bf48fc49f14626cd46f62d6abe52523ae0c2c48d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff3067f_0abcf543",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-14T18:36:44Z",
+      "side": 1,
+      "message": "Let\u0027s not add it explicitly to the .bzl if we are not sure that it has any use.\n\nOr, if you\u0027d prefer, you can add it for now (so that we can be certain we have build parity) add a TODO and followup with that investigation, later.",
+      "parentUuid": "3d467656_ddfaefd4",
+      "revId": "bf48fc49f14626cd46f62d6abe52523ae0c2c48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
