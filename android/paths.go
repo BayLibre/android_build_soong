@@ -263,12 +263,19 @@ func ResPathWithName(ctx ModuleOutPathContext, p Path, name string) ModuleResPat
 
 // OptionalPath is a container that may or may not contain a valid Path.
 type OptionalPath struct {
-	path Path // nil if invalid.
+	path          Path   // nil if invalid.
+	invalidReason string // Not applicable if path != nil. "" if the reason is unknown.
 }
 
 // OptionalPathForPath returns an OptionalPath containing the path.
 func OptionalPathForPath(path Path) OptionalPath {
 	return OptionalPath{path: path}
+}
+
+// InvalidOptionalPath returns an OptionalPath that is invalid with the given reason.
+func InvalidOptionalPath(reason string) OptionalPath {
+
+	return OptionalPath{invalidReason: reason}
 }
 
 // Valid returns whether there is a valid path
@@ -280,9 +287,24 @@ func (p OptionalPath) Valid() bool {
 // there is a valid path, since this method will panic if there is not.
 func (p OptionalPath) Path() Path {
 	if p.path == nil {
-		panic("Requesting an invalid path")
+		msg := "Requesting an invalid path"
+		if p.invalidReason != "" {
+			msg += ": " + p.invalidReason
+		}
+		panic(msg)
 	}
 	return p.path
+}
+
+// InvalidReason returns the reason that the optional path is invalid, or "" if it is valid.
+func (p OptionalPath) InvalidReason() string {
+	if p.path != nil {
+		return ""
+	}
+	if p.invalidReason == "" {
+		return "unknown"
+	}
+	return p.invalidReason
 }
 
 // AsPaths converts the OptionalPath into Paths.
@@ -312,6 +334,25 @@ func (p OptionalPath) String() string {
 		return p.path.String()
 	} else {
 		return ""
+	}
+}
+
+// Format implements the fmt.Formatter interface for use in fmt.Sprintf etc.
+// With %s it formats either the path or "" if it is invalid, just like
+// String(). With %v it instead formats a message showing the reason if the path
+// is invalid.
+func (p OptionalPath) Format(f fmt.State, verb rune) {
+	switch verb {
+	case 'v':
+		if !p.Valid() {
+			f.Write([]byte("<invalid: " + p.InvalidReason() + ">"))
+			break
+		}
+		fallthrough
+	case 's':
+		f.Write([]byte(p.String()))
+	default:
+		panic(fmt.Errorf("Invalid verb %c for OptionalPath", verb))
 	}
 }
 
@@ -1073,6 +1114,7 @@ func ExistentPathForSource(ctx PathContext, pathComponents ...string) OptionalPa
 	path, err := pathForSource(ctx, pathComponents...)
 	if err != nil {
 		reportPathError(ctx, err)
+		// No need to put the error message into the returned path since it has been reported already.
 		return OptionalPath{}
 	}
 
@@ -1087,7 +1129,7 @@ func ExistentPathForSource(ctx PathContext, pathComponents ...string) OptionalPa
 		return OptionalPath{}
 	}
 	if !exists {
-		return OptionalPath{}
+		return InvalidOptionalPath(path.String() + " does not exist")
 	}
 	return OptionalPathForPath(path)
 }
@@ -1123,6 +1165,7 @@ func (p SourcePath) OverlayPath(ctx ModuleMissingDepsPathContext, path Path) Opt
 		relDir = srcPath.path
 	} else {
 		ReportPathErrorf(ctx, "Cannot find relative path for %s(%s)", reflect.TypeOf(path).Name(), path)
+		// No need to put the error message into the returned path since it has been reported already.
 		return OptionalPath{}
 	}
 	dir := filepath.Join(p.srcDir, p.path, relDir)
@@ -1136,7 +1179,7 @@ func (p SourcePath) OverlayPath(ctx ModuleMissingDepsPathContext, path Path) Opt
 		return OptionalPath{}
 	}
 	if len(paths) == 0 {
-		return OptionalPath{}
+		return InvalidOptionalPath(dir + " does not exist")
 	}
 	relPath := Rel(ctx, p.srcDir, paths[0])
 	return OptionalPathForPath(PathForSource(ctx, relPath))
