@@ -74,17 +74,35 @@ type DeapexerInfo struct {
 	//
 	// See Prebuilt.ApexInfoMutator for more information.
 	exports map[string]Path
+
+	// If the deapexer module cannot export file for some reason, this describes
+	// the reason. It's "" otherwise.
+	invalidReason string
 }
 
-// PrebuiltExportPath provides the path, or nil if not available, of a file exported from the
-// prebuilt_apex that created this ApexInfo.
+// PrebuiltExportPath provides the path of a file exported from the prebuilt_apex that created this
+// ApexInfo, or nil if it doesn't exist. Returns an invalid OptionalPath with a reason message if
+// the deapexer module isn't able to extract files from the prebuilt APEX, e.g. because it isn't
+// installable.
 //
 // The exported file is identified by the apex relative path, e.g. "javalib/core-libart.jar".
 //
 // See apex/deapexer.go for more information.
-func (i DeapexerInfo) PrebuiltExportPath(apexRelativePath string) Path {
-	path := i.exports[apexRelativePath]
-	return path
+func (i DeapexerInfo) PrebuiltExportPath(apexRelativePath string) *OptionalPath {
+	path, found := i.exports[apexRelativePath]
+	if !found {
+		// Let's return nil even if there's an invalidReason. That allows the caller
+		// to issue an error for invalid paths, which we typically know accurately
+		// even though the deapexer module cannot perform the deapexing operation.
+		return nil
+	}
+	var optionalPath OptionalPath
+	if i.invalidReason != "" {
+		optionalPath = InvalidOptionalPath(i.invalidReason)
+	} else {
+		optionalPath = OptionalPathForPath(path)
+	}
+	return &optionalPath
 }
 
 // Provider that can be used from within the `GenerateAndroidBuildActions` of a module that depends
@@ -95,9 +113,10 @@ var DeapexerProvider = blueprint.NewProvider(DeapexerInfo{})
 // for use with a prebuilt_apex module.
 //
 // See apex/deapexer.go for more information.
-func NewDeapexerInfo(exports map[string]Path) DeapexerInfo {
+func NewDeapexerInfo(exports map[string]Path, invalidReason string) DeapexerInfo {
 	return DeapexerInfo{
-		exports: exports,
+		exports:       exports,
+		invalidReason: invalidReason,
 	}
 }
 

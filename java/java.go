@@ -1347,12 +1347,11 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			// Get the path of the dex implementation jar from the `deapexer` module.
 			di := ctx.OtherModuleProvider(deapexerModule, android.DeapexerProvider).(android.DeapexerInfo)
 			if dexOutputPath := di.PrebuiltExportPath(apexRootRelativePathToJavaLib(j.BaseModuleName())); dexOutputPath != nil {
-				dexJarFile := android.OptionalPathForPath(dexOutputPath)
-				j.dexJarFile = &dexJarFile
+				j.dexJarFile = dexOutputPath
 				j.dexJarInstallFile = android.PathForModuleInPartitionInstall(ctx, "apex", ai.ApexVariationName, apexRootRelativePathToJavaLib(j.BaseModuleName()))
 
 				// Initialize the hiddenapi structure.
-				j.initHiddenAPI(ctx, &dexJarFile, outputFile, nil)
+				j.initHiddenAPI(ctx, dexOutputPath, outputFile, nil)
 			} else {
 				// This should never happen as a variant for a prebuilt_apex is only created if the
 				// prebuilt_apex has been configured to export the java library dex file.

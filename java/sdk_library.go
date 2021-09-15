@@ -2202,18 +2202,18 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 		if ai.ForPrebuiltApex {
 			if deapexerModule == nil {
 				// This should never happen as a variant for a prebuilt_apex is only created if the
-				// deapxer module has been configured to export the dex implementation jar for this module.
+				// deapexer module has been configured to export the dex implementation jar for this module.
 				ctx.ModuleErrorf("internal error: module %q does not depend on a `deapexer` module for prebuilt_apex %q",
 					module.Name(), ai.ApexVariationName)
+				return
 			}
 
 			// Get the path of the dex implementation jar from the `deapexer` module.
 			di := ctx.OtherModuleProvider(deapexerModule, android.DeapexerProvider).(android.DeapexerInfo)
 			if dexOutputPath := di.PrebuiltExportPath(apexRootRelativePathToJavaLib(module.BaseModuleName())); dexOutputPath != nil {
-				dexJarFile := android.OptionalPathForPath(dexOutputPath)
-				module.dexJarFile = &dexJarFile
+				module.dexJarFile = dexOutputPath
 				module.installFile = android.PathForModuleInPartitionInstall(ctx, "apex", ai.ApexVariationName, apexRootRelativePathToJavaLib(module.BaseModuleName()))
-				module.initHiddenAPI(ctx, &dexJarFile, module.findScopePaths(apiScopePublic).stubsImplPath[0], nil)
+				module.initHiddenAPI(ctx, dexOutputPath, module.findScopePaths(apiScopePublic).stubsImplPath[0], nil)
 			} else {
 				// This should never happen as a variant for a prebuilt_apex is only created if the
 				// prebuilt_apex has been configured to export the java library dex file.
