@@ -965,18 +965,24 @@ func (module *prebuiltBootclasspathFragmentModule) produceBootImageFiles(ctx and
 		for _, toPath := range variant.imagesDeps {
 			apexRelativePath := apexRootRelativePathToBootImageFile(arch, toPath.Base())
 			// Get the path to the file that the deapexer extracted from the prebuilt apex file.
-			fromPath := di.PrebuiltExportPath(apexRelativePath)
+			fromPath, found := di.PrebuiltExportPath(apexRelativePath)
 
-			// Return the toPath as the calling code expects the paths in the returned map to be the
-			// paths predefined in the bootImageConfig.
-			files[arch] = append(files[arch], toPath)
+			if !found {
+				ctx.ModuleErrorf("no dex implementation jar available from prebuilt APEX %s", di.ApexModuleName())
+			} else if !fromPath.Valid() {
+				ctx.ModuleErrorf("prebuilt APEX does not provide a dex jar: %s", fromPath.InvalidReason())
+			} else {
+				// Return the toPath as the calling code expects the paths in the returned map to be the
+				// paths predefined in the bootImageConfig.
+				files[arch] = append(files[arch], toPath)
 
-			// Copy the file to the predefined location.
-			ctx.Build(pctx, android.BuildParams{
-				Rule:   android.Cp,
-				Input:  fromPath,
-				Output: toPath,
-			})
+				// Copy the file to the predefined location.
+				ctx.Build(pctx, android.BuildParams{
+					Rule:   android.Cp,
+					Input:  fromPath.Path(),
+					Output: toPath,
+				})
+			}
 		}
 	}
 
