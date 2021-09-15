@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99119782_9d2d553b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-15T09:20:55Z",
+      "side": 1,
+      "message": "I\u0027ll leave it to Ulya to +2 it.",
+      "revId": "1e11b4ec10d3089f03d1ff2bed3a9694528a1b82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
