@@ -15,6 +15,9 @@
 package android
 
 import (
+	"fmt"
+	"strings"
+
 	"github.com/google/blueprint"
 )
 
@@ -71,6 +74,10 @@ import (
 type DeapexerInfo struct {
 	apexModuleName string
 
+	// If the deapexer module cannot export files for some reason, this describes it. It's ""
+	// otherwise.
+	invalidReason string
+
 	// map from the name of an exported file from a prebuilt_apex to the path to that file. The
 	// exported file name is the apex relative path, e.g. javalib/core-libart.jar.
 	//
@@ -83,15 +90,29 @@ func (i DeapexerInfo) ApexModuleName() string {
 	return i.apexModuleName
 }
 
-// PrebuiltExportPath provides the path, or nil if not available, of a file exported from the
-// prebuilt_apex that created this ApexInfo.
+// PrebuiltExportPath provides the path of a file exported from the prebuilt_apex that created this
+// ApexInfo, or nil if it doesn't exist. Returns an invalid OptionalPath with a reason message if
+// the deapexer module isn't able to extract files from the prebuilt APEX, e.g. because it isn't
+// installable.
 //
 // The exported file is identified by the apex relative path, e.g. "javalib/core-libart.jar".
 //
 // See apex/deapexer.go for more information.
-func (i DeapexerInfo) PrebuiltExportPath(apexRelativePath string) Path {
-	path := i.exports[apexRelativePath]
-	return path
+func (i DeapexerInfo) PrebuiltExportPath(apexRelativePath string) *OptionalPath {
+	path, found := i.exports[apexRelativePath]
+	if !found {
+		// Let's return nil even if there's an invalidReason. That allows the caller
+		// to issue an error for invalid paths, which we typically know accurately
+		// even though the deapexer module cannot perform the deapexing operation.
+		return nil
+	}
+	var optionalPath OptionalPath
+	if i.invalidReason != "" {
+		optionalPath = InvalidOptionalPath(i.invalidReason)
+	} else {
+		optionalPath = OptionalPathForPath(path)
+	}
+	return &optionalPath
 }
 
 // Provider that can be used from within the `GenerateAndroidBuildActions` of a module that depends
@@ -102,9 +123,10 @@ var DeapexerProvider = blueprint.NewProvider(DeapexerInfo{})
 // for use with a prebuilt_apex module.
 //
 // See apex/deapexer.go for more information.
-func NewDeapexerInfo(apexModuleName string, exports map[string]Path) DeapexerInfo {
+func NewDeapexerInfo(apexModuleName, invalidReason string, exports map[string]Path) DeapexerInfo {
 	return DeapexerInfo{
 		apexModuleName: apexModuleName,
+		invalidReason:  invalidReason,
 		exports:        exports,
 	}
 }
@@ -146,14 +168,34 @@ type RequiresFilesFromPrebuiltApexTag interface {
 // module for a DeapexerTag dependency and returns its DeapexerInfo. If a single nonambiguous
 // deapexer module isn't found then errors are raised with ctx.ModuleErrorf and nil is returned.
 func FindDeapexerDependencyForModule(ctx ModuleContext) *DeapexerInfo {
-	var di *DeapexerInfo
+	// Record a single valid deapexer, but also all invalid ones so we can report errors for them if
+	// no valid one is found.
+	var valid *DeapexerInfo
+	var invalids []*DeapexerInfo
 	ctx.VisitDirectDepsWithTag(DeapexerTag, func(m Module) {
-		p := ctx.OtherModuleProvider(m, DeapexerProvider).(DeapexerInfo)
-		di = &p
+		di := ctx.OtherModuleProvider(m, DeapexerProvider).(DeapexerInfo)
+		if di.invalidReason != "" {
+			invalids = append(invalids, &di)
+		} else {
+			valid = &di
+		}
 	})
-	if di == nil {
+
+	if valid == nil {
 		ai := ctx.Provider(ApexInfoProvider).(ApexInfo)
-		ctx.ModuleErrorf("No prebuilt APEX provides a deapexer module for APEX variant %s", ai.ApexVariationName)
+		if len(invalids) == 0 {
+			ctx.ModuleErrorf("No prebuilt APEX provides a deapexer module for APEX variant %s",
+				ai.ApexVariationName)
+		} else {
+			invalidReasons := []string{}
+			for _, di := range invalids {
+				invalidReasons = append(invalidReasons,
+					fmt.Sprintf("  APEX module %s is invalid: %s", di.apexModuleName, di.invalidReason))
+			}
+			ctx.ModuleErrorf("Only invalid deapexer modules for APEX variant %s found:\n  %s",
+				ai.ApexVariationName, strings.Join(invalidReasons, "\n  "))
+		}
 	}
-	return di
+
+	return valid
 }

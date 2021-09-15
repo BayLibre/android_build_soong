@@ -57,6 +57,10 @@ type DeapexerProperties struct {
 	//
 	// Each entry is a path from the apex root, e.g. javalib/core-libart.jar.
 	ExportedFiles []string
+
+	// If the deapexer module cannot export file for some reason, this describes
+	// the reason. It's "" otherwise.
+	InvalidReason string
 }
 
 type SelectedApexProperties struct {
@@ -85,8 +89,9 @@ func apexModuleName(deapexerModuleName string) string {
 	return strings.TrimSuffix(deapexerModuleName, ".deapexer")
 }
 
-func privateDeapexerFactory() android.Module {
+func privateDeapexerFactory(invalidReason string) android.Module {
 	module := &Deapexer{}
+	module.properties.InvalidReason = invalidReason
 	module.AddProperties(&module.properties, &module.selectedApexProperties)
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
 	return module
@@ -123,7 +128,7 @@ func (p *Deapexer) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// apex relative path to extracted file path available for other modules.
 	if len(exports) > 0 {
 		// Make the information available for other modules.
-		di := android.NewDeapexerInfo(apexModuleName(ctx.ModuleName()), exports)
+		di := android.NewDeapexerInfo(apexModuleName(ctx.ModuleName()), p.properties.InvalidReason, exports)
 		ctx.SetProvider(android.DeapexerProvider, di)
 
 		// Create a sorted list of the files that this exports.
