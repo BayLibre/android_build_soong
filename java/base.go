@@ -309,8 +309,11 @@ type Module struct {
 	// dependencies
 	implementationAndResourcesJar android.Path
 
-	// output file containing classes.dex and resources
-	dexJarFile android.Path
+	// Output file containing classes.dex and resources. nil if it's not
+	// applicable or provided by some other means. May be non-nil with a reason
+	// message if there is a prebuilt that should provide it, but cannot for some
+	// reason.
+	dexJarFile *android.OptionalPath
 
 	// output file containing uninstrumented classes that will be instrumented by jacoco
 	jacocoReportClassesFile android.Path
@@ -1254,12 +1257,14 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 			}
 
 			// Initialize the hiddenapi structure.
-			j.initHiddenAPI(ctx, dexOutputFile, j.implementationJarFile, j.dexProperties.Uncompress_dex)
+			hiddenApiDexJarFile := android.OptionalPathForPath(dexOutputFile)
+			j.initHiddenAPI(ctx, &hiddenApiDexJarFile, j.implementationJarFile, j.dexProperties.Uncompress_dex)
 
 			// Encode hidden API flags in dex file, if needed.
 			dexOutputFile = j.hiddenAPIEncodeDex(ctx, dexOutputFile)
 
-			j.dexJarFile = dexOutputFile
+			dexJarFile := android.OptionalPathForPath(dexOutputFile)
+			j.dexJarFile = &dexJarFile
 
 			// Dexpreopting
 			j.dexpreopt(ctx, dexOutputFile)
@@ -1269,7 +1274,12 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 			// There is no code to compile into a dex jar, make sure the resources are propagated
 			// to the APK if this is an app.
 			outputFile = implementationAndResourcesJar
-			j.dexJarFile = j.resourceJar
+			if j.resourceJar != nil {
+				dexJarFile := android.OptionalPathForPath(j.resourceJar)
+				j.dexJarFile = &dexJarFile
+			} else {
+				j.dexJarFile = nil
+			}
 		}
 
 		if ctx.Failed() {
@@ -1455,7 +1465,7 @@ func (j *Module) ImplementationJars() android.Paths {
 	return android.Paths{j.implementationJarFile}
 }
 
-func (j *Module) DexJarBuildPath() android.Path {
+func (j *Module) DexJarBuildPath() *android.OptionalPath {
 	return j.dexJarFile
 }
 
@@ -1817,3 +1827,15 @@ type ModuleWithStem interface {
 }
 
 var _ ModuleWithStem = (*Module)(nil)
+
+// OptionalPathToPathOrNil takes a pointer to an android.OptionalPath and
+// returns its android.Path if it's valid, nil otherwise (throwing away the
+// reason message, if any). This function is partially to work with code in the
+// java package that for legacy reasons pass around optional paths as
+// android.Path interfaces that may be nil.
+func OptionalPathToPathOrNil(optionalPath *android.OptionalPath) android.Path {
+	if optionalPath != nil && optionalPath.Valid() {
+		return optionalPath.Path()
+	}
+	return nil
+}
