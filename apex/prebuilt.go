@@ -180,7 +180,7 @@ func (p *prebuiltCommon) initApexFilesForAndroidMk(ctx android.ModuleContext) {
 			path := child.(interface {
 				DexJarBuildPath() java.OptionalDexJarPath
 			}).DexJarBuildPath()
-			if path.IsSet() {
+			if path.Valid() {
 				af := apexFile{
 					module:              child,
 					moduleDir:           ctx.OtherModuleDir(child),
@@ -623,6 +623,14 @@ func (p *prebuiltCommon) createDeapexerModuleIfNeeded(ctx android.TopDownMutator
 	// Populate the exported files property in a fixed order.
 	deapexerProperties.ExportedFiles = android.SortedUniqueStrings(exportedFiles)
 
+	invalidReason := ""
+	if ctx.Config().UnbundledBuild() {
+		// We need to know which APEXes get installed in the system image to know which to extract from,
+		// in case there are several with the same variant name. In unbundled builds we may not know
+		// that accurately.
+		invalidReason = "cannot extract files from prebuilt APEXes in unbundled builds"
+	}
+
 	props := struct {
 		Name          *string
 		Selected_apex *string
@@ -630,7 +638,8 @@ func (p *prebuiltCommon) createDeapexerModuleIfNeeded(ctx android.TopDownMutator
 		Name:          proptools.StringPtr(deapexerName),
 		Selected_apex: proptools.StringPtr(apexFileSource),
 	}
-	ctx.CreateModule(privateDeapexerFactory,
+	ctx.CreateModule(
+		func() android.Module { return privateDeapexerFactory(invalidReason) },
 		&props,
 		deapexerProperties,
 	)
