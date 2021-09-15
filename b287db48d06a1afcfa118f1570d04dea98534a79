@@ -22,6 +22,30 @@
       },
       "revId": "b287db48d06a1afcfa118f1570d04dea98534a79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32ef2094_fd7511e6",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1258,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-09-15T22:36:27Z",
+      "side": 1,
+      "message": "The two for loops should go through the old m.buildParams and create/update the new buildParams. For the first loop, index range of m.buildParams and buildParams are the same, right?",
+      "parentUuid": "fae8cbfa_5bfadac3",
+      "range": {
+        "startLine": 1258,
+        "startChar": 19,
+        "endLine": 1258,
+        "endChar": 32
+      },
+      "revId": "b287db48d06a1afcfa118f1570d04dea98534a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
