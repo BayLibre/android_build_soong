@@ -2220,8 +2220,8 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 			if di == nil {
 				return // An error has been reported by FindDeapexerProviderForModule.
 			}
-			if dexOutputPath := di.PrebuiltExportPath(apexRootRelativePathToJavaLib(module.BaseModuleName())); dexOutputPath != nil {
-				dexJarFile := makeDexJarPathFromPath(dexOutputPath)
+			if dexOutputPath, found := di.PrebuiltExportPath(apexRootRelativePathToJavaLib(module.BaseModuleName())); found {
+				dexJarFile := makeDexJarPathFromOptionalPath(dexOutputPath)
 				module.dexJarFile = dexJarFile
 				installPath := android.PathForModuleInPartitionInstall(
 					ctx, "apex", ai.ApexVariationName, apexRootRelativePathToJavaLib(module.BaseModuleName()))
@@ -2229,10 +2229,17 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 				module.initHiddenAPI(ctx, dexJarFile, module.findScopePaths(apiScopePublic).stubsImplPath[0], nil)
 
 				// Dexpreopting.
-				module.dexpreopter.installPath = module.dexpreopter.getInstallPath(ctx, installPath)
-				module.dexpreopter.isSDKLibrary = true
-				module.dexpreopter.uncompressedDex = shouldUncompressDex(ctx, &module.dexpreopter)
-				module.dexpreopt(ctx, dexOutputPath)
+				if !ctx.Config().UnbundledBuild() {
+					if !dexOutputPath.Valid() {
+						ctx.ModuleErrorf("dex jar not available from prebuilt APEX %s for dexpreopting: %s",
+							di.ApexModuleName(), dexOutputPath.InvalidReason())
+					} else {
+						module.dexpreopter.installPath = module.dexpreopter.getInstallPath(ctx, installPath)
+						module.dexpreopter.isSDKLibrary = true
+						module.dexpreopter.uncompressedDex = shouldUncompressDex(ctx, &module.dexpreopter)
+						module.dexpreopt(ctx, dexOutputPath.Path().(android.WritablePath))
+					}
+				}
 			} else {
 				// This should never happen as a variant for a prebuilt_apex is only created if the
 				// prebuilt_apex has been configured to export the java library dex file.
