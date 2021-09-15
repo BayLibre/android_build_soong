@@ -30,7 +30,7 @@ func (library *Library) AndroidMkEntriesHostDex() android.AndroidMkEntries {
 	if hostDexNeeded {
 		var output android.Path
 		if library.dexJarFile != nil {
-			output = library.dexJarFile
+			output = library.dexJarFile.Path()
 		} else {
 			output = library.implementationAndResourcesJar
 		}
@@ -45,7 +45,7 @@ func (library *Library) AndroidMkEntriesHostDex() android.AndroidMkEntries {
 					entries.SetBool("LOCAL_IS_HOST_MODULE", true)
 					entries.SetPath("LOCAL_PREBUILT_MODULE_FILE", output)
 					if library.dexJarFile != nil {
-						entries.SetPath("LOCAL_SOONG_DEX_JAR", library.dexJarFile)
+						entries.SetPath("LOCAL_SOONG_DEX_JAR", library.dexJarFile.Path())
 					}
 					entries.SetPath("LOCAL_SOONG_HEADER_JAR", library.headerJarFile)
 					entries.SetPath("LOCAL_SOONG_CLASSES_JAR", library.implementationAndResourcesJar)
@@ -101,7 +101,7 @@ func (library *Library) AndroidMkEntries() []android.AndroidMkEntries {
 						entries.SetBoolIfTrue("LOCAL_UNINSTALLABLE_MODULE", true)
 					}
 					if library.dexJarFile != nil {
-						entries.SetPath("LOCAL_SOONG_DEX_JAR", library.dexJarFile)
+						entries.SetPath("LOCAL_SOONG_DEX_JAR", library.dexJarFile.Path())
 					}
 					if len(library.dexpreopter.builtInstalled) > 0 {
 						entries.SetString("LOCAL_SOONG_BUILT_INSTALLED", library.dexpreopter.builtInstalled)
@@ -202,7 +202,7 @@ func (prebuilt *Import) AndroidMkEntries() []android.AndroidMkEntries {
 			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 				entries.SetBool("LOCAL_UNINSTALLABLE_MODULE", !Bool(prebuilt.properties.Installable))
 				if prebuilt.dexJarFile != nil {
-					entries.SetPath("LOCAL_SOONG_DEX_JAR", prebuilt.dexJarFile)
+					entries.SetPath("LOCAL_SOONG_DEX_JAR", prebuilt.dexJarFile.Path())
 				}
 				entries.SetPath("LOCAL_SOONG_HEADER_JAR", prebuilt.combinedClasspathFile)
 				entries.SetPath("LOCAL_SOONG_CLASSES_JAR", prebuilt.combinedClasspathFile)
@@ -221,12 +221,12 @@ func (prebuilt *DexImport) AndroidMkEntries() []android.AndroidMkEntries {
 	}
 	return []android.AndroidMkEntries{android.AndroidMkEntries{
 		Class:      "JAVA_LIBRARIES",
-		OutputFile: android.OptionalPathForPath(prebuilt.dexJarFile),
+		OutputFile: android.OptionalPathForPath(prebuilt.dexJarFile.Path()),
 		Include:    "$(BUILD_SYSTEM)/soong_java_prebuilt.mk",
 		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
 			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 				if prebuilt.dexJarFile != nil {
-					entries.SetPath("LOCAL_SOONG_DEX_JAR", prebuilt.dexJarFile)
+					entries.SetPath("LOCAL_SOONG_DEX_JAR", prebuilt.dexJarFile.Path())
 				}
 				if len(prebuilt.dexpreopter.builtInstalled) > 0 {
 					entries.SetString("LOCAL_SOONG_BUILT_INSTALLED", prebuilt.dexpreopter.builtInstalled)
@@ -274,7 +274,7 @@ func (binary *Binary) AndroidMkEntries() []android.AndroidMkEntries {
 					entries.SetPath("LOCAL_SOONG_HEADER_JAR", binary.headerJarFile)
 					entries.SetPath("LOCAL_SOONG_CLASSES_JAR", binary.implementationAndResourcesJar)
 					if binary.dexJarFile != nil {
-						entries.SetPath("LOCAL_SOONG_DEX_JAR", binary.dexJarFile)
+						entries.SetPath("LOCAL_SOONG_DEX_JAR", binary.dexJarFile.Path())
 					}
 					if len(binary.dexpreopter.builtInstalled) > 0 {
 						entries.SetString("LOCAL_SOONG_BUILT_INSTALLED", binary.dexpreopter.builtInstalled)
@@ -331,7 +331,7 @@ func (app *AndroidApp) AndroidMkEntries() []android.AndroidMkEntries {
 				entries.SetBoolIfTrue("LOCAL_UNINSTALLABLE_MODULE", app.appProperties.PreventInstall)
 				entries.SetPath("LOCAL_SOONG_RESOURCE_EXPORT_PACKAGE", app.exportPackage)
 				if app.dexJarFile != nil {
-					entries.SetPath("LOCAL_SOONG_DEX_JAR", app.dexJarFile)
+					entries.SetPath("LOCAL_SOONG_DEX_JAR", app.dexJarFile.Path())
 				}
 				if app.implementationAndResourcesJar != nil {
 					entries.SetPath("LOCAL_SOONG_CLASSES_JAR", app.implementationAndResourcesJar)

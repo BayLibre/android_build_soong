@@ -176,13 +176,13 @@ func (p *prebuiltCommon) initApexFilesForAndroidMk(ctx android.ModuleContext) {
 		name := android.RemoveOptionalPrebuiltPrefix(ctx.OtherModuleName(child))
 		if java.IsBootclasspathFragmentContentDepTag(tag) || tag == exportedJavaLibTag {
 			// If the exported java module provides a dex jar path then add it to the list of apexFiles.
-			path := child.(interface{ DexJarBuildPath() android.Path }).DexJarBuildPath()
+			path := child.(interface{ DexJarBuildPath() *android.OptionalPath }).DexJarBuildPath()
 			if path != nil {
 				p.apexFilesForAndroidMk = append(p.apexFilesForAndroidMk, apexFile{
 					module:              child,
 					moduleDir:           ctx.OtherModuleDir(child),
 					androidMkModuleName: name,
-					builtFile:           path,
+					builtFile:           path.Path(),
 					class:               javaSharedLib,
 				})
 			}
