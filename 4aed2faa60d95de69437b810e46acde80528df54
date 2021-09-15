@@ -24,6 +24,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdb73b61_200967a4",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-15T21:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b12e7b8c_a1608bf7",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 15
+      },
+      "revId": "4aed2faa60d95de69437b810e46acde80528df54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37fc3d10_5d7593db",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-15T21:22:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b12e7b8c_a1608bf7",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 15
+      },
+      "revId": "4aed2faa60d95de69437b810e46acde80528df54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29209265_b8115b81",
@@ -37,6 +85,30 @@
       "writtenOn": "2021-09-15T14:01:06Z",
       "side": 1,
       "message": "nit: this is unnecessary, the declaration above will create an empty OptionalPath struct",
+      "range": {
+        "startLine": 607,
+        "startChar": 2,
+        "endLine": 608,
+        "endChar": 9
+      },
+      "revId": "4aed2faa60d95de69437b810e46acde80528df54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b72a742_4dcf01ed",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-15T21:22:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29209265_b8115b81",
       "range": {
         "startLine": 607,
         "startChar": 2,
