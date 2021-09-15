@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "88a4f0c9_50d23a23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-09-15T22:39:10Z",
+      "side": 1,
+      "message": "Thanks. I will try that in the next step if we want to reduce the dependency of .o on .tidy. With this change, maybe in the future all we need are two use cases:\n(1) WITH_TIDY\u003d1, and build with only tidy-* targets or default for both .o and .tidy.\n(2) WITH_TIDY\u003d0, to build without tidy by default.",
+      "parentUuid": "eec2bf97_79b4d54b",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 60
+      },
+      "revId": "91b95b540d6ea2f7638dc360ad372b8e489e558b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecec1c44_692153de",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efb184dc_17f48790",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-09-15T22:39:10Z",
+      "side": 1,
+      "message": "The array syntax should be available in all bash. It\u0027s only not in old bourne shell. Do we still build on Mac?",
+      "parentUuid": "ecec1c44_692153de",
+      "range": {
+        "startLine": 17,
+        "startChar": 56,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "91b95b540d6ea2f7638dc360ad372b8e489e558b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd6879ac_c86d73d6",
         "filename": "cc/builder.go",
         "patchSetId": 2
@@ -60,6 +108,24 @@
       "writtenOn": "2021-09-13T22:24:54Z",
       "side": 1,
       "message": "Use proptools.ShellEscape",
+      "revId": "91b95b540d6ea2f7638dc360ad372b8e489e558b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e292f60_c1bda9b1",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-09-15T22:39:10Z",
+      "side": 1,
+      "message": "ShellEscape adds single quotes around given s, but here we should only escape the single quotes in s, to use it as part of flags in a single quoted command.\nI replaced the \u0027\"\u0027\"\u0027 pattern with the \u0027\\\u0027\u0027 now.\nIs there other similar code I can reuse here?\nOr do you want to put this function into proptools?",
+      "parentUuid": "bd6879ac_c86d73d6",
       "revId": "91b95b540d6ea2f7638dc360ad372b8e489e558b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
