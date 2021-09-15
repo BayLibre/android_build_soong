@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "095731a3_3a78b148",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1264,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-15T21:26:32Z",
+      "side": 1,
+      "message": "Unlikely to actually occur, but this will panic if v is \"${\".",
+      "range": {
+        "startLine": 1264,
+        "startChar": 32,
+        "endLine": 1264,
+        "endChar": 40
+      },
+      "revId": "b9bf424e2e70a29feb18727a461e892d43569012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c943d7a_4de6118c",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1275,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-15T21:26:32Z",
+      "side": 1,
+      "message": "You\u0027ve built it, you might as well always use it.",
+      "revId": "b9bf424e2e70a29feb18727a461e892d43569012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68357ed3_8c023dd7",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1276,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-15T21:26:32Z",
+      "side": 1,
+      "message": "Also make a copy of the slice with buildParams :\u003d append([]BuildParams(nil), m.buildParams...) at the beginning of the method so you\u0027re not modifying the saved state.",
+      "revId": "b9bf424e2e70a29feb18727a461e892d43569012",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
