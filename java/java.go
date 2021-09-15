@@ -1335,8 +1335,8 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			if di == nil {
 				return // An error has been reported by FindDeapexerProviderForModule.
 			}
-			if dexOutputPath := di.PrebuiltExportPath(apexRootRelativePathToJavaLib(j.BaseModuleName())); dexOutputPath != nil {
-				dexJarFile := makeDexJarPathFromPath(dexOutputPath)
+			if dexOutputPath, found := di.PrebuiltExportPath(apexRootRelativePathToJavaLib(j.BaseModuleName())); found {
+				dexJarFile := makeDexJarPathFromOptionalPath(dexOutputPath)
 				j.dexJarFile = dexJarFile
 				j.dexJarInstallFile = android.PathForModuleInPartitionInstall(ctx, "apex", ai.ApexVariationName, apexRootRelativePathToJavaLib(j.BaseModuleName()))
 
