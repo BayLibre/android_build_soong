@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afa862bf_171f3c62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-15T14:48:02Z",
+      "side": 1,
+      "message": "The following tests are failing on presubmit, PTAL:\n\n//build/bazel/tests/bionic:compare_libc_stripping\n//build/bazel/tests/bionic:verify_bionic_outputs \n",
+      "revId": "932889ace9395b77c770a85b44c0a93da1c4edc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "162c89ab_ef9dfecf",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-15T14:48:02Z",
+      "side": 1,
+      "message": "What does this mean?",
+      "range": {
+        "startLine": 180,
+        "startChar": 3,
+        "endLine": 180,
+        "endChar": 30
+      },
+      "revId": "932889ace9395b77c770a85b44c0a93da1c4edc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
