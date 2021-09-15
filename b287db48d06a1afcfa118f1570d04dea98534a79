@@ -46,6 +46,30 @@
       },
       "revId": "b287db48d06a1afcfa118f1570d04dea98534a79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7681c8dd_33f3ca4f",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1258,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-15T22:47:17Z",
+      "side": 1,
+      "message": "They are the same, but it is confusing to be operating on two different copies of the list when you could be copying the list and then only using the copy.",
+      "parentUuid": "32ef2094_fd7511e6",
+      "range": {
+        "startLine": 1258,
+        "startChar": 19,
+        "endLine": 1258,
+        "endChar": 32
+      },
+      "revId": "b287db48d06a1afcfa118f1570d04dea98534a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
