@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf2c5e3_75ef0d40",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-15T12:43:39Z",
+      "side": 1,
+      "message": "While you\u0027re here can you please replace this with \", since\"? That should make this sentence a bit easier to parse.",
+      "range": {
+        "startLine": 353,
+        "startChar": 22,
+        "endLine": 353,
+        "endChar": 25
+      },
+      "revId": "d96cc50258f892b53285176e40ec5b82ca691691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
