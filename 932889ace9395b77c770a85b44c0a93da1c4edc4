@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "55ac6957_d70f4bd7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 24
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-15T14:53:58Z",
+      "side": 1,
+      "message": "I saw. I\u0027m on it. 👍🏼",
+      "parentUuid": "afa862bf_171f3c62",
+      "revId": "932889ace9395b77c770a85b44c0a93da1c4edc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "162c89ab_ef9dfecf",
         "filename": "cc/bp2build.go",
         "patchSetId": 24
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-15T14:48:02Z",
       "side": 1,
       "message": "What does this mean?",
+      "range": {
+        "startLine": 180,
+        "startChar": 3,
+        "endLine": 180,
+        "endChar": 30
+      },
+      "revId": "932889ace9395b77c770a85b44c0a93da1c4edc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a29f9faa_4b4e5c4a",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-15T14:53:58Z",
+      "side": 1,
+      "message": "Appears as unused in the Soong project (incl. through IDE detection). So this is a reminder that it\u0027s not actually unused.",
+      "parentUuid": "162c89ab_ef9dfecf",
       "range": {
         "startLine": 180,
         "startChar": 3,
