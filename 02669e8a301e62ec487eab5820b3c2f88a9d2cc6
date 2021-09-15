@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70ba8f3f_eab6ffb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-15T10:36:41Z",
+      "side": 1,
+      "message": "Good to know, thanks for writing all the steps.",
+      "range": {
+        "startLine": 24,
+        "startChar": 10,
+        "endLine": 24,
+        "endChar": 44
+      },
+      "revId": "02669e8a301e62ec487eab5820b3c2f88a9d2cc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
