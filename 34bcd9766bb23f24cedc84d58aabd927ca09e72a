@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c448ed8b_69b55d69",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-15T20:17:17Z",
+      "side": 1,
+      "message": "android.BpPropertyTag is still an empty interface. Did you intend to add this there too?",
+      "range": {
+        "startLine": 768,
+        "startChar": 21,
+        "endLine": 768,
+        "endChar": 36
+      },
+      "revId": "34bcd9766bb23f24cedc84d58aabd927ca09e72a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
