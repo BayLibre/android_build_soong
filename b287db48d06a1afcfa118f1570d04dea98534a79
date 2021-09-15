@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fae8cbfa_5bfadac3",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1258,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-15T21:57:34Z",
+      "side": 1,
+      "message": "buildParams",
+      "range": {
+        "startLine": 1258,
+        "startChar": 19,
+        "endLine": 1258,
+        "endChar": 32
+      },
+      "revId": "b287db48d06a1afcfa118f1570d04dea98534a79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
