@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50c09272_c8e9b923",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-09-15T23:21:10Z",
+      "side": 1,
+      "message": "We do still build some of the host tools on Mac, so those would be using these build rules too.",
+      "parentUuid": "efb184dc_17f48790",
+      "range": {
+        "startLine": 17,
+        "startChar": 56,
+        "endLine": 18,
+        "endChar": 17
+      },
+      "revId": "91b95b540d6ea2f7638dc360ad372b8e489e558b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd6879ac_c86d73d6",
         "filename": "cc/builder.go",
         "patchSetId": 2
