@@ -177,7 +177,7 @@ func (p *prebuiltCommon) initApexFilesForAndroidMk(ctx android.ModuleContext) {
 		if java.IsBootclasspathFragmentContentDepTag(tag) || tag == exportedJavaLibTag {
 			// If the exported java module provides a dex jar path then add it to the list of apexFiles.
 			path := child.(interface{ DexJarBuildPath() *android.OptionalPath }).DexJarBuildPath()
-			if path != nil {
+			if path != nil && path.Valid() {
 				p.apexFilesForAndroidMk = append(p.apexFilesForAndroidMk, apexFile{
 					module:              child,
 					moduleDir:           ctx.OtherModuleDir(child),
@@ -601,6 +601,14 @@ func createDeapexerModuleIfNeeded(ctx android.TopDownMutatorContext, deapexerNam
 	// Populate the exported files property in a fixed order.
 	deapexerProperties.ExportedFiles = android.SortedUniqueStrings(exportedFiles)
 
+	invalidReason := ""
+	if ctx.Config().UnbundledBuild() {
+		// We need to know which APEXes get installed in the system image to know which to extract from,
+		// in case there are several with the same variant name. In unbundled builds we may not know
+		// that accurately.
+		invalidReason = "cannot extract files from prebuilt APEXes in unbundled builds"
+	}
+
 	props := struct {
 		Name          *string
 		Selected_apex *string
@@ -608,7 +616,8 @@ func createDeapexerModuleIfNeeded(ctx android.TopDownMutatorContext, deapexerNam
 		Name:          proptools.StringPtr(deapexerName),
 		Selected_apex: proptools.StringPtr(apexFileSource),
 	}
-	ctx.CreateModule(privateDeapexerFactory,
+	ctx.CreateModule(
+		func() android.Module { return privateDeapexerFactory(invalidReason) },
 		&props,
 		deapexerProperties,
 	)
