@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c66fb78_9d0d64a7",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-15T14:05:33Z",
+      "side": 1,
+      "message": "this is not equivalent to the Soong behavior. Soong accounts for not only the direct output but also the transitive static dependencies: \n\n* https://cs.android.com/android/_/android/platform/build/soong/+/83d07a4c419f55a487922e21d182574ebc77cbc1:cc/cc.go;l\u003d2996;drc\u003df6c37cc87d9452d6e51b6e53a5f0a8e81b8a489a\n* https://cs.android.com/android/_/android/platform/build/soong/+/83d07a4c419f55a487922e21d182574ebc77cbc1:cc/library.go;l\u003d1295-1298;drc\u003d35687bc77a6690e3ef27bb4d3fbf70bdc236cc1a",
+      "range": {
+        "startLine": 618,
+        "startChar": 2,
+        "endLine": 620,
+        "endChar": 11
+      },
+      "revId": "8b5f9f1ac909c566e15740d55df10680f183fbd9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
