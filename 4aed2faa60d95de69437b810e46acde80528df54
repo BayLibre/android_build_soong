@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12e7b8c_a1608bf7",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-15T14:01:06Z",
+      "side": 1,
+      "message": "This is effectively the same code we have today but in Starlark. Can we add a custom provider (https://docs.bazel.build/versions/main/skylark/rules.html#custom-providers) to our Starlark rule to make the ToC file explicit instead?",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 15
+      },
+      "revId": "4aed2faa60d95de69437b810e46acde80528df54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29209265_b8115b81",
+        "filename": "cc/library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-15T14:01:06Z",
+      "side": 1,
+      "message": "nit: this is unnecessary, the declaration above will create an empty OptionalPath struct",
+      "range": {
+        "startLine": 607,
+        "startChar": 2,
+        "endLine": 608,
+        "endChar": 9
+      },
+      "revId": "4aed2faa60d95de69437b810e46acde80528df54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
