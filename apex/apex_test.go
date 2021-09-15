@@ -4756,9 +4756,10 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 	transform := android.NullFixturePreparer
 
 	checkDexJarBuildPath := func(t *testing.T, ctx *android.TestContext, name string) {
+		t.Helper()
 		// Make sure the import has been given the correct path to the dex jar.
 		p := ctx.ModuleForTests(name, "android_common_myapex").Module().(java.UsesLibraryDependency)
-		dexJarBuildPath := p.DexJarBuildPath()
+		dexJarBuildPath := p.DexJarBuildPath().Path()
 		stem := android.RemoveOptionalPrebuiltPrefix(name)
 		android.AssertStringEquals(t, "DexJarBuildPath should be apex-related path.",
 			".intermediates/myapex.deapexer/android_common/deapexer/javalib/"+stem+".jar",
@@ -4766,6 +4767,7 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 	}
 
 	checkDexJarInstallPath := func(t *testing.T, ctx *android.TestContext, name string) {
+		t.Helper()
 		// Make sure the import has been given the correct path to the dex jar.
 		p := ctx.ModuleForTests(name, "android_common_myapex").Module().(java.UsesLibraryDependency)
 		dexJarBuildPath := p.DexJarInstallPath()
@@ -4776,6 +4778,7 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 	}
 
 	ensureNoSourceVariant := func(t *testing.T, ctx *android.TestContext, name string) {
+		t.Helper()
 		// Make sure that an apex variant is not created for the source module.
 		android.AssertArrayString(t, "Check if there is no source variant",
 			[]string{"android_common"},
