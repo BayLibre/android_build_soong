@@ -476,6 +476,77 @@ func TestPlatformBootclasspath_AlwaysUsePrebuiltSdks(t *testing.T) {
 	})
 }
 
+func TestPlatformBootclasspathUnbundled(t *testing.T) {
+	android.GroupFixturePreparers(
+		prepareForTestWithPlatformBootclasspath,
+		java.PrepareForTestWithJavaSdkLibraryFiles,
+		android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+			variables.Unbundled_build = proptools.BoolPtr(true)
+			variables.Always_use_prebuilt_sdks = proptools.BoolPtr(true)
+		}),
+		java.FixtureWithPrebuiltApis(map[string][]string{
+			"current": {},
+			"30":      {"foo"},
+		}),
+	).ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
+		`module prebuilt_foo.*: cannot extract files from prebuilt APEXes in unbundled builds`)).
+		RunTestWithBp(t, `
+		java_sdk_library {
+			name: "foo",
+			srcs: ["b.java"],
+			shared_library: false,
+			public: {
+				enabled: true,
+			},
+			apex_available: ["myapex"],
+			permitted_packages: ["foo"],
+		}
+
+		prebuilt_apex {
+			name: "myapex",
+			src: "myapex.apex",
+			exported_bootclasspath_fragments: ["mybootclasspath-fragment"],
+		}
+
+		java_sdk_library_import {
+			name: "foo",
+			shared_library: false,
+			permitted_packages: ["foo"],
+			public: {
+				jars: ["sdk_library/public/foo-stubs.jar"],
+				stub_srcs: ["sdk_library/public/foo_stub_sources"],
+				current_api: "sdk_library/public/foo.txt",
+				removed_api: "sdk_library/public/foo-removed.txt",
+				sdk_version: "current",
+			},
+			apex_available: ["myapex"],
+		}
+
+		prebuilt_bootclasspath_fragment {
+			name: "mybootclasspath-fragment",
+			apex_available: ["myapex"],
+			contents: ["foo"],
+			hidden_api: {
+				stub_flags: "",
+				annotation_flags: "",
+				metadata: "",
+				index: "",
+				all_flags: "",
+			},
+		}
+
+		platform_bootclasspath {
+			name: "myplatform-bootclasspath",
+			fragments: [
+				{
+					apex: "myapex",
+					module: "mybootclasspath-fragment",
+				},
+			],
+		}
+`)
+}
+
 // CheckModuleDependencies checks the dependencies of the selected module against the expected list.
 //
 // The expected list must be a list of strings of the form "<apex>:<module>", where <apex> is the
