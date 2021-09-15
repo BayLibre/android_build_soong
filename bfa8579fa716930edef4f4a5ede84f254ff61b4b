@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d068c86f_ad2ff639",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-09-15T20:23:12Z",
+      "side": 1,
+      "message": "It\u0027s to iterate through args and updating the key values at the same time.\nNow removed since we are creating a new map.",
+      "parentUuid": "820a3c36_dabb87c3",
+      "revId": "bfa8579fa716930edef4f4a5ede84f254ff61b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8eb240db_3274abfc",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-13T22:12:02Z",
       "side": 1,
       "message": "Variables can also be referenced as ${flags0}, can this support both syntaxes?  This is going to expand any arg that is a single variable, and it would be confusing for it to expand some and not others.",
+      "revId": "bfa8579fa716930edef4f4a5ede84f254ff61b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f786bca1_778db2d8",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1245,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-09-15T20:23:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8eb240db_3274abfc",
       "revId": "bfa8579fa716930edef4f4a5ede84f254ff61b4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdf7bb12_0f2d1ad3",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1247,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-09-15T20:23:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1353e3e7_8588bc82",
+      "revId": "bfa8579fa716930edef4f4a5ede84f254ff61b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "542d6611_bdce8672",
@@ -69,6 +123,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e35bea2_6ba448f8",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-09-15T20:23:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "542d6611_bdce8672",
+      "revId": "bfa8579fa716930edef4f4a5ede84f254ff61b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "410178c7_f55658db",
@@ -82,6 +154,30 @@
       "writtenOn": "2021-09-13T22:12:02Z",
       "side": 1,
       "message": "Can you pass in a human readable name for each of these?  You can use that as the map key too.",
+      "range": {
+        "startLine": 534,
+        "startChar": 22,
+        "endLine": 534,
+        "endChar": 31
+      },
+      "revId": "bfa8579fa716930edef4f4a5ede84f254ff61b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "743e040a_a07bccda",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-09-15T20:23:12Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "410178c7_f55658db",
       "range": {
         "startLine": 534,
         "startChar": 22,
