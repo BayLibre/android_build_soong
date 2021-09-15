@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe7c86c3_f07fc711",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-15T10:22:43Z",
+      "side": 1,
+      "message": "There are some bits of soong/android that are used everywhere and would be harder to change (e.g. you make a small change but it requires everyone to rebase their work with merge conflicts), but this one is used only for boot jars and system server jars, so it\u0027s ok.",
+      "parentUuid": "b81b4e46_b8cc05ff",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 543,
+        "endChar": 0
+      },
+      "revId": "882bcce7d36eea25831762b3de8eb4457d953b94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af34917a_c42005c8",
