@@ -537,7 +537,7 @@ type scopePaths struct {
 	// The dex jar for the stubs.
 	//
 	// This is not the implementation jar, it still only contains stubs.
-	stubsDexJarPath android.Path
+	stubsDexJarPath *android.OptionalPath
 
 	// The API specification file, e.g. system_current.txt.
 	currentApiFilePath android.OptionalPath
@@ -903,7 +903,7 @@ func sdkKindToApiScope(kind android.SdkKind) *apiScope {
 }
 
 // to satisfy SdkLibraryDependency interface
-func (c *commonToSdkLibraryAndImport) SdkApiStubDexJar(ctx android.BaseModuleContext, kind android.SdkKind) android.Path {
+func (c *commonToSdkLibraryAndImport) SdkApiStubDexJar(ctx android.BaseModuleContext, kind android.SdkKind) *android.OptionalPath {
 	paths := c.selectScopePaths(ctx, kind)
 	if paths == nil {
 		return nil
@@ -1032,7 +1032,7 @@ type SdkLibraryDependency interface {
 
 	// SdkApiStubDexJar returns the dex jar for the stubs. It is needed by the hiddenapi processing
 	// tool which processes dex files.
-	SdkApiStubDexJar(ctx android.BaseModuleContext, kind android.SdkKind) android.Path
+	SdkApiStubDexJar(ctx android.BaseModuleContext, kind android.SdkKind) *android.OptionalPath
 
 	// SdkRemovedTxtFile returns the optional path to the removed.txt file for the specified sdk kind.
 	SdkRemovedTxtFile(ctx android.BaseModuleContext, kind android.SdkKind) android.OptionalPath
@@ -1923,8 +1923,11 @@ type SdkLibraryImport struct {
 	// Is nil if the source module does not exist.
 	xmlPermissionsFileModule *sdkLibraryXml
 
-	// Build path to the dex implementation jar obtained from the prebuilt_apex, if any.
-	dexJarFile android.Path
+	// Build path to the dex implementation jar obtained from the prebuilt APEX,
+	// or nil if there is no prebuilt APEX to get it from. If a prebuilt APEX
+	// exist but cannot be used for some reason, the android.OptionalPath has the
+	// reason.
+	dexJarFile *android.OptionalPath
 
 	// Expected install file path of the source module(sdk_library)
 	// or dex implementation jar obtained from the prebuilt_apex, if any.
@@ -2207,9 +2210,10 @@ func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleCo
 			// Get the path of the dex implementation jar from the `deapexer` module.
 			di := ctx.OtherModuleProvider(deapexerModule, android.DeapexerProvider).(android.DeapexerInfo)
 			if dexOutputPath := di.PrebuiltExportPath(apexRootRelativePathToJavaLib(module.BaseModuleName())); dexOutputPath != nil {
-				module.dexJarFile = dexOutputPath
+				dexJarFile := android.OptionalPathForPath(dexOutputPath)
+				module.dexJarFile = &dexJarFile
 				module.installFile = android.PathForModuleInPartitionInstall(ctx, "apex", ai.ApexVariationName, apexRootRelativePathToJavaLib(module.BaseModuleName()))
-				module.initHiddenAPI(ctx, dexOutputPath, module.findScopePaths(apiScopePublic).stubsImplPath[0], nil)
+				module.initHiddenAPI(ctx, &dexJarFile, module.findScopePaths(apiScopePublic).stubsImplPath[0], nil)
 			} else {
 				// This should never happen as a variant for a prebuilt_apex is only created if the
 				// prebuilt_apex has been configured to export the java library dex file.
@@ -2248,7 +2252,7 @@ func (module *SdkLibraryImport) SdkImplementationJars(ctx android.BaseModuleCont
 }
 
 // to satisfy UsesLibraryDependency interface
-func (module *SdkLibraryImport) DexJarBuildPath() android.Path {
+func (module *SdkLibraryImport) DexJarBuildPath() *android.OptionalPath {
 	// The dex implementation jar extracted from the .apex file should be used in preference to the
 	// source.
 	if module.dexJarFile != nil {

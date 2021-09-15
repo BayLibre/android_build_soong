@@ -612,7 +612,7 @@ func TestPrebuilts(t *testing.T) {
 		t.Errorf("foo combineJar inputs %v does not contain %q", combineJar.Inputs, bazJar.String())
 	}
 
-	bazDexJar := bazModule.Module().(*Import).DexJarBuildPath()
+	bazDexJar := bazModule.Module().(*Import).DexJarBuildPath().Path()
 	expectedDexJar := "out/soong/.intermediates/baz/android_common/dex/baz.jar"
 	android.AssertPathRelativeToTopEquals(t, "baz dex jar build path", expectedDexJar, bazDexJar)
 

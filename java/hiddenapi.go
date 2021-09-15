@@ -35,9 +35,11 @@ type hiddenAPI struct {
 	// annotations for the <x> boot dex jar but which do not actually provide a boot dex jar
 	// themselves.
 	//
+	// It is an invalid path with a reason message if it should be provided by a prebuilt but cannot.
+	//
 	// This must be the path to the unencoded dex jar as the encoded dex jar indirectly depends on
 	// this file so using the encoded dex jar here would result in a cycle in the ninja rules.
-	bootDexJarPath android.Path
+	bootDexJarPath *android.OptionalPath
 
 	// The paths to the classes jars that contain classes and class members annotated with
 	// the UnsupportedAppUsage annotation that need to be extracted as part of the hidden API
@@ -49,7 +51,7 @@ type hiddenAPI struct {
 	uncompressDexState *bool
 }
 
-func (h *hiddenAPI) bootDexJar() android.Path {
+func (h *hiddenAPI) bootDexJar() *android.OptionalPath {
 	return h.bootDexJarPath
 }
 
@@ -68,7 +70,7 @@ type hiddenAPIModule interface {
 }
 
 type hiddenAPIIntf interface {
-	bootDexJar() android.Path
+	bootDexJar() *android.OptionalPath
 	classesJars() android.Paths
 	uncompressDex() *bool
 }
@@ -79,7 +81,7 @@ var _ hiddenAPIIntf = (*hiddenAPI)(nil)
 //
 // uncompressedDexState should be nil when the module is a prebuilt and so does not require hidden
 // API encoding.
-func (h *hiddenAPI) initHiddenAPI(ctx android.ModuleContext, dexJar, classesJar android.Path, uncompressedDexState *bool) {
+func (h *hiddenAPI) initHiddenAPI(ctx android.ModuleContext, dexJar *android.OptionalPath, classesJar android.Path, uncompressedDexState *bool) {
 
 	// Save the classes jars even if this is not active as they may be used by modular hidden API
 	// processing.
