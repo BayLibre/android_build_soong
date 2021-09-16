@@ -69,6 +69,7 @@ func RegisterGenruleBuildComponents(ctx android.RegistrationContext) {
 	})
 
 	android.RegisterBp2BuildMutator("genrule", GenruleBp2Build)
+	android.RegisterBp2BuildMutator("cc_genrule", CcGenruleBp2Build)
 }
 
 func RegisterGenruleBp2BuildDeps(ctx android.RegisterMutatorsContext) {
@@ -826,6 +827,22 @@ type bazelGenruleAttributes struct {
 	Cmd   string
 }
 
+// CcGenruleBp2Build is for cc_genrule.
+func CcGenruleBp2Build(ctx android.TopDownMutatorContext) {
+	m, ok := ctx.Module().(*Module)
+	if !ok || !m.ConvertWithBp2build(ctx) {
+		return
+	}
+
+	if ctx.ModuleType() != "cc_genrule" {
+		// Not a cc_genrule.
+		return
+	}
+
+	genruleBp2Build(ctx)
+}
+
+// GenruleBp2Build is used for genrule.
 func GenruleBp2Build(ctx android.TopDownMutatorContext) {
 	m, ok := ctx.Module().(*Module)
 	if !ok || !m.ConvertWithBp2build(ctx) {
@@ -833,10 +850,15 @@ func GenruleBp2Build(ctx android.TopDownMutatorContext) {
 	}
 
 	if ctx.ModuleType() != "genrule" {
-		// Not a regular genrule. Could be a cc_genrule or java_genrule.
+		// Not a regular genrule.
 		return
 	}
 
+	genruleBp2Build(ctx)
+}
+
+func genruleBp2Build(ctx android.TopDownMutatorContext) {
+	m, _ := ctx.Module().(*Module)
 	// Bazel only has the "tools" attribute.
 	tools_prop := android.BazelLabelForModuleDeps(ctx, m.properties.Tools)
 	tool_files_prop := android.BazelLabelForModuleSrc(ctx, m.properties.Tool_files)
