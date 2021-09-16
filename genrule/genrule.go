@@ -832,8 +832,8 @@ func GenruleBp2Build(ctx android.TopDownMutatorContext) {
 		return
 	}
 
-	if ctx.ModuleType() != "genrule" {
-		// Not a regular genrule. Could be a cc_genrule or java_genrule.
+	if ctx.ModuleType() != "genrule" && ctx.ModuleType() != "cc_genrule" {
+		// Not a regular genrule or cc_genrule. Could be a java_genrule.
 		return
 	}
 
