@@ -22,6 +22,30 @@
       },
       "revId": "8e09f2627d31f1bb0adcbab747d750a4a67cef8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd3d5d67_2cd034eb",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-09-16T20:04:52Z",
+      "side": 1,
+      "message": "Thanks. I didn\u0027t know that Forrest can run mac builds.\nI started a run and selected to post the result in this CL after the run.",
+      "parentUuid": "b78dcd57_c0b59833",
+      "range": {
+        "startLine": 207,
+        "startChar": 49,
+        "endLine": 207,
+        "endChar": 70
+      },
+      "revId": "8e09f2627d31f1bb0adcbab747d750a4a67cef8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
