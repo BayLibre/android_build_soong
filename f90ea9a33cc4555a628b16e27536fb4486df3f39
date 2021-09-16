@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e215a7ba_0c1927e4",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-16T14:32:21Z",
+      "side": 1,
+      "message": "This CL isn\u0027t ready for review. In fact, I thought I\u0027ve abandoned it because https://r.android.com/1826779 should solve the issue in a better way.\n\nFeel free to ignore the rest of this CL chain until I add you as reviewer.",
+      "parentUuid": "5a6da052_98a015f2",
+      "revId": "f90ea9a33cc4555a628b16e27536fb4486df3f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "df83af8a_c3baeded",
         "filename": "java/sdk_library.go",
         "patchSetId": 1
