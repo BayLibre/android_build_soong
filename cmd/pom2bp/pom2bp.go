@@ -24,6 +24,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -31,8 +32,6 @@ import (
 	"text/template"
 
 	"github.com/google/blueprint/proptools"
-
-	"android/soong/bpfix/bpfix"
 )
 
 type RewriteNames []RewriteName
@@ -162,7 +161,8 @@ func InList(s string, list []string) bool {
 type Dependency struct {
 	XMLName xml.Name `xml:"dependency"`
 
-	BpTarget string `xml:"-"`
+	BpTarget  string `xml:"-"`
+	BazelName string `xml:"-"`
 
 	GroupId    string `xml:"groupId"`
 	ArtifactId string `xml:"artifactId"`
@@ -185,6 +185,7 @@ type Pom struct {
 	ArtifactFile  string `xml:"-"`
 	BpTarget      string `xml:"-"`
 	MinSdkVersion string `xml:"-"`
+	PackageName   string `xml:"-"`
 
 	GroupId    string `xml:"groupId"`
 	ArtifactId string `xml:"artifactId"`
@@ -221,18 +222,14 @@ func (p Pom) IsHostOnly() bool {
 func (p Pom) ModuleType() string {
 	if p.IsAar() {
 		return "android_library"
-	} else if p.IsHostOnly() {
-		return "java_library_host"
 	} else {
-		return "java_library_static"
+		return "java_library"
 	}
 }
 
 func (p Pom) ImportModuleType() string {
 	if p.IsAar() {
-		return "android_library_import"
-	} else if p.IsHostOnly() {
-		return "java_import_host"
+		return "aar_import"
 	} else {
 		return "java_import"
 	}
@@ -240,7 +237,7 @@ func (p Pom) ImportModuleType() string {
 
 func (p Pom) ImportProperty() string {
 	if p.IsAar() {
-		return "aars"
+		return "aar"
 	} else {
 		return "jars"
 	}
@@ -277,7 +274,7 @@ func (p Pom) BpDeps(typeExt string, scopes []string) []string {
 		if d.Type != typeExt || !InList(d.Scope, scopes) {
 			continue
 		}
-		name := rewriteNames.MavenToBp(d.GroupId, d.ArtifactId)
+		name := d.BazelName
 		ret = append(ret, name)
 	}
 	return ret
@@ -295,13 +292,48 @@ func (p Pom) Jetifier() bool {
 	return jetifier
 }
 
-func (p *Pom) FixDeps(modules map[string]*Pom) {
+func (p *Pom) FixDeps(modules map[string]*Pom) error {
+	cmd := "/bin/bash"
+	androidTop := os.Getenv("ANDROID_BUILD_TOP")
+	envSetupSh := path.Join(androidTop, "build/envsetup.sh")
+	_, err := exec.Command(cmd, "-c", ". "+envSetupSh+" && pathmod "+p.BpName()).Output()
+	if exitErr, _ := err.(*exec.ExitError); exitErr != nil {
+		_, err := exec.Command(cmd, "-c", ". "+envSetupSh+" && refreshmod").Output()
+		if exitErr, _ := err.(*exec.ExitError); exitErr != nil {
+			return fmt.Errorf("failed to run %s\n%s", cmd, string(exitErr.Stderr))
+		} else if err != nil {
+			return err
+		}
+	}
+
 	for _, d := range p.Dependencies {
+		depPom, ok := modules[d.BpName()]
+		if ok {
+			// We've seen the POM for this dependency, it will be local to the output BUILD file
+			d.BazelName = ":" + d.BpName()
+		} else {
+			// we don't have the POM for this artifact, find and use the fully qualified target name.
+			output, err := exec.Command(cmd, "-c", ". "+envSetupSh+" && pathmod "+d.BpName()).Output()
+			if exitErr, _ := err.(*exec.ExitError); exitErr != nil {
+				return fmt.Errorf("failed to run %s %s\n%s", cmd, d.BpName(), string(exitErr.Stderr))
+			} else if err != nil {
+				return err
+			}
+			relPath := ""
+			for _, line := range strings.Fields(string(output)) {
+				if strings.Contains(line, androidTop) {
+					relPath = strings.TrimPrefix(line, androidTop)
+					relPath = strings.TrimLeft(relPath, "/")
+				}
+			}
+			d.BazelName = "//" + relPath + ":" + d.BpName()
+		}
 		if d.Type == "" {
-			if depPom, ok := modules[d.BpName()]; ok {
+			if ok {
 				// We've seen the POM for this dependency, use its packaging
 				// as the dependency type rather than Maven spec default.
 				d.Type = depPom.Packaging
+				d.BazelName = ":" + d.BpName()
 			} else {
 				// Dependency type was not specified and we don't have the POM
 				// for this artifact, use the default from Maven spec.
@@ -313,6 +345,7 @@ func (p *Pom) FixDeps(modules map[string]*Pom) {
 			d.Scope = "compile"
 		}
 	}
+	return nil
 }
 
 // ExtractMinSdkVersion extracts the minSdkVersion from the AndroidManifest.xml file inside an aar file, or sets it
@@ -364,26 +397,65 @@ func (p *Pom) ExtractMinSdkVersion() error {
 	return nil
 }
 
+func (p *Pom) ExtractPackageName() error {
+	aar, err := zip.OpenReader(p.ArtifactFile)
+	if err != nil {
+		return err
+	}
+	defer aar.Close()
+
+	var manifest *zip.File
+	for _, f := range aar.File {
+		if f.Name == "AndroidManifest.xml" {
+			manifest = f
+			break
+		}
+	}
+
+	if manifest == nil {
+		return fmt.Errorf("failed to find AndroidManifest.xml in %s", p.ArtifactFile)
+	}
+
+	r, err := manifest.Open()
+	if err != nil {
+		return err
+	}
+	defer r.Close()
+
+	decoder := xml.NewDecoder(r)
+
+	manifestData := struct {
+		XMLName     xml.Name `xml:"manifest"`
+		PackageName string   `xml:"package,attr"`
+		Uses_sdk    struct {
+			MinSdkVersion string `xml:"http://schemas.android.com/apk/res/android minSdkVersion,attr"`
+		} `xml:"uses-sdk"`
+	}{}
+
+	err = decoder.Decode(&manifestData)
+	if err != nil {
+		return err
+	}
+
+	p.PackageName = manifestData.PackageName
+	return nil
+}
+
 var bpTemplate = template.Must(template.New("bp").Parse(`
-{{.ImportModuleType}} {
-    name: "{{.BpName}}",
-    {{.ImportProperty}}: ["{{.ArtifactFile}}"],
-    sdk_version: "{{.SdkVersion}}",
+{{.ImportModuleType}} (
+    name = "{{.BpName}}",
+    {{.ImportProperty}}: {{- if not .IsAar}}[{{- end}}"{{.ArtifactFile}}"{{- if not .IsAar}}]{{- end}},
+    # sdk_version: "{{.SdkVersion}}",
     {{- if .Jetifier}}
-    jetifier: true,
+    # jetifier: true,
     {{- end}}
     {{- if .IsHostAndDeviceModule}}
-    host_supported: true,
+    # host_supported: true,
     {{- end}}
-    {{- if not .IsHostOnly}}
-    apex_available: [
-        "//apex_available:platform",
-        "//apex_available:anyapex",
-    ],
-    {{- end}}
+    visibility = ["//visibility:public"],
     {{- if .IsAar}}
-    min_sdk_version: "{{.MinSdkVersion}}",
-    static_libs: [
+    # min_sdk_version: "{{.MinSdkVersion}}",
+    deps = [
         {{- range .BpJarDeps}}
         "{{.}}",
         {{- end}}
@@ -393,40 +465,34 @@ var bpTemplate = template.Must(template.New("bp").Parse(`
         {{- range .BpExtraStaticLibs}}
         "{{.}}",
         {{- end}}
-    ],
     {{- if .BpExtraLibs}}
-    libs: [
         {{- range .BpExtraLibs}}
         "{{.}}",
         {{- end}}
+    {{- end}}
     ],
-    {{- end}}
     {{- else if not .IsHostOnly}}
-    min_sdk_version: "{{.DefaultMinSdkVersion}}",
+    # min_sdk_version: "{{.DefaultMinSdkVersion}}",
     {{- end}}
-}
+)
 `))
 
 var bpDepsTemplate = template.Must(template.New("bp").Parse(`
-{{.ImportModuleType}} {
-    name: "{{.BpName}}-nodeps",
-    {{.ImportProperty}}: ["{{.ArtifactFile}}"],
-    sdk_version: "{{.SdkVersion}}",
+{{- if .IsAar}}
+{{.ImportModuleType}} (
+    name = "{{.BpName}}-nodeps",
+    {{.ImportProperty}} = "{{.ArtifactFile}}",
+    # sdk_version: "{{.SdkVersion}}",
     {{- if .Jetifier}}
-    jetifier: true,
+    # jetifier: true,
     {{- end}}
     {{- if .IsHostAndDeviceModule}}
-    host_supported: true,
+    # host_supported: true,
     {{- end}}
-    {{- if not .IsHostOnly}}
-    apex_available: [
-        "//apex_available:platform",
-        "//apex_available:anyapex",
-    ],
-    {{- end}}
+    visibility = ["//visibility:public"],
     {{- if .IsAar}}
-    min_sdk_version: "{{.MinSdkVersion}}",
-    static_libs: [
+    # min_sdk_version: "{{.MinSdkVersion}}",
+    deps = [
         {{- range .BpJarDeps}}
         "{{.}}",
         {{- end}}
@@ -436,41 +502,35 @@ var bpDepsTemplate = template.Must(template.New("bp").Parse(`
         {{- range .BpExtraStaticLibs}}
         "{{.}}",
         {{- end}}
-    ],
     {{- if .BpExtraLibs}}
-    libs: [
         {{- range .BpExtraLibs}}
         "{{.}}",
         {{- end}}
+    {{- end}}
     ],
-    {{- end}}
     {{- else if not .IsHostOnly}}
-    min_sdk_version: "{{.DefaultMinSdkVersion}}",
+    # min_sdk_version: "{{.DefaultMinSdkVersion}}",
     {{- end}}
-}
+)
 
-{{.ModuleType}} {
-    name: "{{.BpName}}",
+{{.ModuleType}} (
+    name = "{{.BpName}}",
+    custom_package = "{{.PackageName}}",
     {{- if .IsDeviceModule}}
-    sdk_version: "{{.SdkVersion}}",
+    # sdk_version: "{{.SdkVersion}}",
     {{- if .IsHostAndDeviceModule}}
-    host_supported: true,
+    # host_supported: true,
     {{- end}}
-    {{- if not .IsHostOnly}}
-    apex_available: [
-        "//apex_available:platform",
-        "//apex_available:anyapex",
-    ],
-    {{- end}}
+    visibility = ["//visibility:public"],
     {{- if .IsAar}}
-    min_sdk_version: "{{.MinSdkVersion}}",
-    manifest: "manifests/{{.BpName}}/AndroidManifest.xml",
+    # min_sdk_version: "{{.MinSdkVersion}}",
+    manifest = "manifests/{{.BpName}}/AndroidManifest.xml",
     {{- else if not .IsHostOnly}}
-    min_sdk_version: "{{.DefaultMinSdkVersion}}",
+    # min_sdk_version: "{{.DefaultMinSdkVersion}}",
     {{- end}}
     {{- end}}
-    static_libs: [
-        "{{.BpName}}-nodeps",
+    deps = [
+        ":{{.BpName}}-nodeps",
         {{- range .BpJarDeps}}
         "{{.}}",
         {{- end}}
@@ -480,16 +540,45 @@ var bpDepsTemplate = template.Must(template.New("bp").Parse(`
         {{- range .BpExtraStaticLibs}}
         "{{.}}",
         {{- end}}
-    ],
     {{- if .BpExtraLibs}}
-    libs: [
         {{- range .BpExtraLibs}}
         "{{.}}",
         {{- end}}
-    ],
     {{- end}}
-    java_version: "1.7",
-}
+    ],
+    # java_version: "1.7",
+)
+{{- else}}
+{{.ImportModuleType}} (
+    name = "{{.BpName}}",
+    {{.ImportProperty}} = ["{{.ArtifactFile}}"],
+    # sdk_version: "{{.SdkVersion}}",
+    {{- if .Jetifier}}
+    # jetifier: true,
+    {{- end}}
+    {{- if .IsHostAndDeviceModule}}
+    # host_supported: true,
+    {{- end}}
+    visibility = ["//visibility:public"],
+    # min_sdk_version: "{{.MinSdkVersion}}",
+    deps = [
+        {{- range .BpJarDeps}}
+        "{{.}}",
+        {{- end}}
+        {{- range .BpAarDeps}}
+        "{{.}}",
+        {{- end}}
+        {{- range .BpExtraStaticLibs}}
+        "{{.}}",
+        {{- end}}
+    {{- if .BpExtraLibs}}
+        {{- range .BpExtraLibs}}
+        "{{.}}",
+        {{- end}}
+    {{- end}}
+    ],
+)
+{{- end}}
 `))
 
 func parse(filename string) (*Pom, error) {
@@ -577,7 +666,7 @@ func rerunForRegen(filename string) error {
 		filename = strings.TrimSuffix(filename, ".mk") + ".bp"
 	}
 
-	return ioutil.WriteFile(filename, output, 0666)
+	return ioutil.WriteFile("BUILD.bazel", output, 0666)
 }
 
 func main() {
@@ -739,14 +828,24 @@ Usage: %s [--rewrite <regex>=<replace>] [-exclude <module>] [--extra-static-libs
 				fmt.Fprintf(os.Stderr, "Error reading manifest for %s: %s", pom.ArtifactFile, err)
 				os.Exit(1)
 			}
+			err = pom.ExtractPackageName()
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "Error reading manifest for %s: %s", pom.ArtifactFile, err)
+				os.Exit(1)
+			}
+
 		}
-		pom.FixDeps(modules)
+		err := pom.FixDeps(modules)
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error fixing deps for %s: %s", pom.BpName(), err)
+			os.Exit(1)
+		}
 	}
 
 	buf := &bytes.Buffer{}
 
-	fmt.Fprintln(buf, "// Automatically generated with:")
-	fmt.Fprintln(buf, "// pom2bp", strings.Join(proptools.ShellEscapeList(os.Args[1:]), " "))
+	fmt.Fprintln(buf, "# Automatically generated with:")
+	fmt.Fprintln(buf, "# pom2bp", strings.Join(proptools.ShellEscapeList(os.Args[1:]), " "))
 
 	for _, pom := range poms {
 		var err error
@@ -761,11 +860,11 @@ Usage: %s [--rewrite <regex>=<replace>] [-exclude <module>] [--extra-static-libs
 		}
 	}
 
-	out, err := bpfix.Reformat(buf.String())
-	if err != nil {
-		fmt.Fprintln(os.Stderr, "Error formatting output", err)
-		os.Exit(1)
-	}
+	// out, err := bpfix.Reformat(buf.String())
+	// if err != nil {
+	// 	fmt.Fprintln(os.Stderr, "Error formatting output", err)
+	// 	os.Exit(1)
+	// }
 
-	os.Stdout.WriteString(out)
+	os.Stdout.WriteString(buf.String())
 }
