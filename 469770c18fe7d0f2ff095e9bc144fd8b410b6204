@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbc942b9_0ff0edf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-16T13:57:08Z",
+      "side": 1,
+      "message": "+1, will leave it to Colin to +2 it.",
+      "revId": "469770c18fe7d0f2ff095e9bc144fd8b410b6204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
