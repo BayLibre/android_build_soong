@@ -16,6 +16,23 @@
       "message": "Presumably, the reason for using a *OptionalPath is, as you say:\n\u003e To keep the refactoring limited it intentionally does not change any of\nthe existing logic for when dexJarFiles are nil or no.\n\nHowever, having a *OptionalPath is very confusing and complicated as while previously there were two possibilities for a caller to consider (nil/not-nil) now there are three (nil/invalid path/valid path).\n\nI could not see any follow up change to switch from *OptionalPath to OptionalPath. I suspect that if there was one it would overlap significantly with this refactoring which means separating it out probably has little benefit.\n\nI think that it would be better if this just switched to OptionalPath directly. The result would be simpler to understand and the compiler will flag any comparisons to nil as being invalid so while tedious, the changes should be comprehensive.\n\nFTR I think switching to OptionalPath is a really good idea as it is all too easy to assumed that the returned path is not-nil.",
       "revId": "aa612a459f59e033caa092177429c5402f761120",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3db87f65_d05a568e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-16T12:55:52Z",
+      "side": 1,
+      "message": "One other point to bear in mind. Jiakai is doing some work in this area so it highly likely that your changes will conflict with each other.",
+      "revId": "aa612a459f59e033caa092177429c5402f761120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
