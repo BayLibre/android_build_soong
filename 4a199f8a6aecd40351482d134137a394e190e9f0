@@ -46,6 +46,30 @@
       },
       "revId": "4a199f8a6aecd40351482d134137a394e190e9f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "493ebda4_f6ce6019",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-16T12:46:06Z",
+      "side": 1,
+      "message": "I have added a comment about that to 192868581 which is the post-S follow up work to 179354495.",
+      "parentUuid": "2b739b48_ed3683cb",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 14
+      },
+      "revId": "4a199f8a6aecd40351482d134137a394e190e9f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
