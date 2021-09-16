@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aba5d331_5a4a06bd",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-16T12:42:01Z",
+      "side": 1,
+      "message": "I would split this change into two parts. One to replace the valid check with path !\u003d nil check and the other to add the invalidReason field.",
+      "revId": "6dfd891afb39ef33c73af566e680a06592cab1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9ebb391_679d0fe6",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-16T12:42:01Z",
+      "side": 1,
+      "message": "Is there a need for a func that will take both a path and a string reason and will ensure that exactly one of path or reason is set to a non-zero value.",
+      "revId": "6dfd891afb39ef33c73af566e680a06592cab1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c21c54_3f9c26f9",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-16T12:42:01Z",
+      "side": 1,
+      "message": "Can this be set as the default when creating the OptionalPath?",
+      "revId": "6dfd891afb39ef33c73af566e680a06592cab1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
