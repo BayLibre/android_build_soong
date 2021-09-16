@@ -122,6 +122,24 @@
       "parentUuid": "03c21c54_3f9c26f9",
       "revId": "6dfd891afb39ef33c73af566e680a06592cab1f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4efdfaa_ce061d50",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-16T13:56:45Z",
+      "side": 1,
+      "message": "Ack. Also, there are fields with a type OptionalPath which would be initialized with an empty string.",
+      "parentUuid": "e9ca6ed0_2d23b770",
+      "revId": "6dfd891afb39ef33c73af566e680a06592cab1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
