@@ -22,6 +22,30 @@
       },
       "revId": "4a199f8a6aecd40351482d134137a394e190e9f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b739b48_ed3683cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-16T12:39:25Z",
+      "side": 1,
+      "message": "[This isn\u0027t blocking, but marking it unresolved so it doesn\u0027t disappear completely.]",
+      "parentUuid": "c9c2405f_833bacee",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 14
+      },
+      "revId": "4a199f8a6aecd40351482d134137a394e190e9f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
