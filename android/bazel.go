@@ -277,6 +277,10 @@ var (
 		"libc++_static",       // http://b/198403271, Missing symbols/members in the global namespace when referenced from headers in //external/libcxx/includes
 		"libc++abi",           // http://b/195970501, cc_library_static, duplicate symbols because it propagates libc objects.
 		"libc++demangle",      // http://b/195970501, cc_library_static, duplicate symbols because it propagates libc objects.
+		"func_to_syscall_nrs",
+		"libseccomp_policy_app_zygote_sources",
+		"libseccomp_policy_app_sources",
+		"libseccomp_policy_system_sources",
 	}
 
 	// Used for quicker lookups
