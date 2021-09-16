@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a500a8b2_2ff91b96",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-16T14:19:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b6ba6b0_907f28b8",
+      "revId": "3a1e2a54a0185571930fcc0eadf8e4c362277d7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53ce570b_e368dc2e",
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2c0643b_f465d75a",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-16T14:19:53Z",
+      "side": 1,
+      "message": "I\u0027d be happy to amend a test for ExistentPathForSource, but it doesn\u0027t have any.\n\nI regard this as a nice-to-have convenience that felt kind of reasonable since the motivation on line 1112 doesn\u0027t apply here. It would basically only be useful for debugging with fmt.Sprintf(\"%v\"). But I don\u0027t feel strongly about it, can get rid of it instead.",
+      "parentUuid": "53ce570b_e368dc2e",
+      "revId": "3a1e2a54a0185571930fcc0eadf8e4c362277d7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3548a119_2cc5838a",
@@ -65,6 +101,24 @@
       "writtenOn": "2021-09-16T14:00:18Z",
       "side": 1,
       "message": "Could you add a test for this?",
+      "revId": "3a1e2a54a0185571930fcc0eadf8e4c362277d7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92fef229_9c41f853",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-16T14:19:53Z",
+      "side": 1,
+      "message": "Same here - OverlayPath doesn\u0027t have any test either.",
+      "parentUuid": "3548a119_2cc5838a",
       "revId": "3a1e2a54a0185571930fcc0eadf8e4c362277d7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
