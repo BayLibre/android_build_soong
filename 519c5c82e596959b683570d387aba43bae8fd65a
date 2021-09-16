@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1843fe35_0b518a79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-16T10:49:40Z",
+      "side": 1,
+      "message": "It\u0027s a bit strange to see \"Code Owners\" Approved on this one as Paul didn\u0027t approve it yet. +1 to avoid accidentally merging before the blocking patch in clockwork, I will +2 after it gets merged.",
+      "revId": "519c5c82e596959b683570d387aba43bae8fd65a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
