@@ -105,6 +105,30 @@
       },
       "revId": "932889ace9395b77c770a85b44c0a93da1c4edc4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b4e793c_a3766b42",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-16T14:26:30Z",
+      "side": 1,
+      "message": "I meant that it\u0027s in a different `repo` project, not literally not part of Soong as a whole. Adding as recommended.",
+      "parentUuid": "a218325c_1d479026",
+      "range": {
+        "startLine": 180,
+        "startChar": 3,
+        "endLine": 180,
+        "endChar": 30
+      },
+      "revId": "932889ace9395b77c770a85b44c0a93da1c4edc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
