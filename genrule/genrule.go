@@ -119,7 +119,7 @@ type generatorProperties struct {
 	//  $(location): the path to the first entry in tools or tool_files.
 	//  $(location <label>): the path to the tool, tool_file, input or output with name <label>. Use $(location) if <label> refers to a rule that outputs exactly one file.
 	//  $(locations <label>): the paths to the tools, tool_files, inputs or outputs with name <label>. Use $(locations) if <label> refers to a rule that outputs two or more files.
-	//  $(in): one or more input files.
+	//  $(in): one or more input files.f
 	//  $(out): a single output file.
 	//  $(depfile): a file to which dependencies will be written, if the depfile property is set to true.
 	//  $(genDir): the sandbox directory for this tool; contains $(out).
@@ -832,8 +832,8 @@ func GenruleBp2Build(ctx android.TopDownMutatorContext) {
 		return
 	}
 
-	if ctx.ModuleType() != "genrule" {
-		// Not a regular genrule. Could be a cc_genrule or java_genrule.
+	if ctx.ModuleType() != "genrule" && ctx.ModuleType() != "cc_genrule" {
+		// Not a regular genrule or cc_genrule. Could be a java_genrule.
 		return
 	}
 
