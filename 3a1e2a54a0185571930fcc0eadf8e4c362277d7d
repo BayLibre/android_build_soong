@@ -16,6 +16,57 @@
       "message": "+1, will leave it to Colin to +2 it.",
       "revId": "3a1e2a54a0185571930fcc0eadf8e4c362277d7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b6ba6b0_907f28b8",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-16T14:00:18Z",
+      "side": 1,
+      "message": "Could you document this? It seems as though it integrates with fmt.Format() somehow but it is not clear what it is.",
+      "revId": "3a1e2a54a0185571930fcc0eadf8e4c362277d7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53ce570b_e368dc2e",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-16T14:00:18Z",
+      "side": 1,
+      "message": "Could you add a test for this?",
+      "revId": "3a1e2a54a0185571930fcc0eadf8e4c362277d7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3548a119_2cc5838a",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-16T14:00:18Z",
+      "side": 1,
+      "message": "Could you add a test for this?",
+      "revId": "3a1e2a54a0185571930fcc0eadf8e4c362277d7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
