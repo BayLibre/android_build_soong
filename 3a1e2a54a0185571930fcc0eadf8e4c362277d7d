@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6f863c1_a7ef5f4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-16T22:45:33Z",
+      "side": 1,
+      "message": "Colin, can you take a look at this one as well, please?",
+      "parentUuid": "a15805e8_6ed74fb3",
+      "revId": "3a1e2a54a0185571930fcc0eadf8e4c362277d7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b6ba6b0_907f28b8",
