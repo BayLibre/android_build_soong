@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "054d873a_cbc0d274",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-16T17:42:38Z",
+      "side": 1,
+      "message": "Tried that at first. Fails the `join` below because it\u0027s not a list. Instead of artificially making the type a list, I chose to manually encase it in one outside that `join`.",
+      "parentUuid": "574ecdb7_4b98f7a5",
+      "range": {
+        "startLine": 140,
+        "startChar": 22,
+        "endLine": 140,
+        "endChar": 23
+      },
+      "revId": "8aa48ee696f7e1d310adaa23a38bb4c8adaf0f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cfc397e_5e269fe1",
@@ -70,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4394e126_0c512689",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3130,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-16T17:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cfc397e_5e269fe1",
+      "range": {
+        "startLine": 3125,
+        "startChar": 0,
+        "endLine": 3130,
+        "endChar": 19
+      },
+      "revId": "8aa48ee696f7e1d310adaa23a38bb4c8adaf0f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cd001db_0416c847",
@@ -83,6 +131,30 @@
       "writtenOn": "2021-09-16T15:07:50Z",
       "side": 1,
       "message": "Can use existing ToC function on cc.Module rather than exposing a new tag: https://cs.android.com/android/_/android/platform/build/soong/+/79839d94c10f250374f59295c189601bc5ea1219:cc/cc.go;l\u003d905;drc\u003df6c37cc87d9452d6e51b6e53a5f0a8e81b8a489a",
+      "range": {
+        "startLine": 355,
+        "startChar": 18,
+        "endLine": 355,
+        "endChar": 45
+      },
+      "revId": "8aa48ee696f7e1d310adaa23a38bb4c8adaf0f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97967255_be31a78f",
+        "filename": "cc/library_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-16T17:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cd001db_0416c847",
       "range": {
         "startLine": 355,
         "startChar": 18,
