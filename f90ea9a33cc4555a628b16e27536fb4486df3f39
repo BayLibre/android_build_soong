@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "331ece8a_bbfe78ae",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1298,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-16T13:03:04Z",
+      "side": 1,
+      "message": "Personally, I would have done the move of the code as a separate refactoring.",
+      "revId": "f90ea9a33cc4555a628b16e27536fb4486df3f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a6da052_98a015f2",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-16T13:03:04Z",
+      "side": 1,
+      "message": "Can you either remove this or add a TODO?",
+      "revId": "f90ea9a33cc4555a628b16e27536fb4486df3f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df83af8a_c3baeded",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2205,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-16T13:03:04Z",
+      "side": 1,
+      "message": "Ditto.",
+      "revId": "f90ea9a33cc4555a628b16e27536fb4486df3f39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
