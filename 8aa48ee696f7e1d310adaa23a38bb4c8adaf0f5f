@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fa365fe_384d61da",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-16T15:07:50Z",
+      "side": 1,
+      "message": "🎉",
+      "range": {
+        "startLine": 131,
+        "startChar": 10,
+        "endLine": 131,
+        "endChar": 40
+      },
+      "revId": "8aa48ee696f7e1d310adaa23a38bb4c8adaf0f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "574ecdb7_4b98f7a5",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-16T15:07:50Z",
+      "side": 1,
+      "message": "nit: you could add tocFile here",
+      "range": {
+        "startLine": 140,
+        "startChar": 22,
+        "endLine": 140,
+        "endChar": 23
+      },
+      "revId": "8aa48ee696f7e1d310adaa23a38bb4c8adaf0f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cfc397e_5e269fe1",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3130,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-16T15:07:50Z",
+      "side": 1,
+      "message": "We shouldn\u0027t need to add this, tags in the context of OutputFiles are a mechanism to depend on a non-default output file in an Android.bp file",
+      "range": {
+        "startLine": 3125,
+        "startChar": 0,
+        "endLine": 3130,
+        "endChar": 19
+      },
+      "revId": "8aa48ee696f7e1d310adaa23a38bb4c8adaf0f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cd001db_0416c847",
+        "filename": "cc/library_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-16T15:07:50Z",
+      "side": 1,
+      "message": "Can use existing ToC function on cc.Module rather than exposing a new tag: https://cs.android.com/android/_/android/platform/build/soong/+/79839d94c10f250374f59295c189601bc5ea1219:cc/cc.go;l\u003d905;drc\u003df6c37cc87d9452d6e51b6e53a5f0a8e81b8a489a",
+      "range": {
+        "startLine": 355,
+        "startChar": 18,
+        "endLine": 355,
+        "endChar": 45
+      },
+      "revId": "8aa48ee696f7e1d310adaa23a38bb4c8adaf0f5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
