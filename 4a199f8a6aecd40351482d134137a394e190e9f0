@@ -70,6 +70,30 @@
       },
       "revId": "4a199f8a6aecd40351482d134137a394e190e9f0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a27de724_63cc822f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-16T13:15:30Z",
+      "side": 1,
+      "message": "FTR 179354495 was closed because that was for the S work and no more S work is being done for the hidden API processing.",
+      "parentUuid": "493ebda4_f6ce6019",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 14
+      },
+      "revId": "4a199f8a6aecd40351482d134137a394e190e9f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
