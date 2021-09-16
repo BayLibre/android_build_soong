@@ -33,6 +33,42 @@
       "message": "One other point to bear in mind. Jiakai is doing some work in this area so it highly likely that your changes will conflict with each other.",
       "revId": "aa612a459f59e033caa092177429c5402f761120",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15b6c8e2_4628bdc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-16T13:52:44Z",
+      "side": 1,
+      "message": "Indeed it is very intentional. I did start with just OptionalPath, but had to gradually switch to *OptionalPath in more and more places because of logic around dexJarFile being nil in the sense \"there\u0027s no prebuilt dex file, so do something else\" (e.g. build it from source instead), which is different from \"there\u0027s a prebuilt that could give a dex file, but it\u0027s not available here because of \u003creason\u003e\".\n\nHere\u0027s one example: https://cs.android.com/android/_/android/platform/build/soong/+/a66a9f1a1498c63526f782f10659189532e27e35:java/androidmk.go;l\u003d32-36;drc\u003d92346c483249726164f4bd140413d60391121763 If that was swapped to check implementationAndResourcesJar before dexJarFile then it\u0027d be easier to get rid of the nil state. However, that\u0027s a different cleanup to make, with its own regression risks, and there are a couple more of those required to be able to ditch the nil state. I\u0027m already a bit down a rabbit hole here, so I\u0027m not inclined to block on that; it\u0027ll have to wait for another time.\n\nI have at least tried to be clear in comments what the difference between nil and an invalid OptionalPath is.",
+      "parentUuid": "0da7856d_14562f1b",
+      "revId": "aa612a459f59e033caa092177429c5402f761120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65a4158f_e3f7f1c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-16T13:52:44Z",
+      "side": 1,
+      "message": "That\u0027s unfortunate, we\u0027ll see what goes in first then. FWIW this change is pretty much just a mechanical one.",
+      "parentUuid": "3db87f65_d05a568e",
+      "revId": "aa612a459f59e033caa092177429c5402f761120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
