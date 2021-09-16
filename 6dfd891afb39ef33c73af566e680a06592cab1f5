@@ -18,6 +18,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "499e0bb8_f1842d4a",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-16T13:48:37Z",
+      "side": 1,
+      "message": "Done: https://r.android.com/1827887",
+      "parentUuid": "aba5d331_5a4a06bd",
+      "revId": "6dfd891afb39ef33c73af566e680a06592cab1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee4e087d_07a9fbc9",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-16T13:48:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aba5d331_5a4a06bd",
+      "revId": "6dfd891afb39ef33c73af566e680a06592cab1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9ebb391_679d0fe6",
@@ -35,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "734deb7b_dd19a018",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-16T13:48:37Z",
+      "side": 1,
+      "message": "I doubt it. It\u0027d only be useful in code paths where either a valid or an invalid path is created at the same location, which seems unlikely.",
+      "parentUuid": "e9ebb391_679d0fe6",
+      "revId": "6dfd891afb39ef33c73af566e680a06592cab1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03c21c54_3f9c26f9",
@@ -48,6 +102,24 @@
       "writtenOn": "2021-09-16T12:42:01Z",
       "side": 1,
       "message": "Can this be set as the default when creating the OptionalPath?",
+      "revId": "6dfd891afb39ef33c73af566e680a06592cab1f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9ca6ed0_2d23b770",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-16T13:48:37Z",
+      "side": 1,
+      "message": "It\u0027s impractical, because there are plenty of cases where it\u0027s created directly with `OptionalPath{}` rather than a factory function, even outside the android package. (I also suspect \"\" is slightly more efficient in the common case where paths are invalid without an explicitly set reason.)",
+      "parentUuid": "03c21c54_3f9c26f9",
       "revId": "6dfd891afb39ef33c73af566e680a06592cab1f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
