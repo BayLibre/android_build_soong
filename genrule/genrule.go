@@ -69,6 +69,7 @@ func RegisterGenruleBuildComponents(ctx android.RegistrationContext) {
 	})
 
 	android.RegisterBp2BuildMutator("genrule", GenruleBp2Build)
+	android.RegisterBp2BuildMutator("cc_genrule", GenruleBp2Build)
 }
 
 func RegisterGenruleBp2BuildDeps(ctx android.RegisterMutatorsContext) {
@@ -826,14 +827,15 @@ type bazelGenruleAttributes struct {
 	Cmd   string
 }
 
+// GenruleBp2Build is used for genrule and cc_genrule.
 func GenruleBp2Build(ctx android.TopDownMutatorContext) {
 	m, ok := ctx.Module().(*Module)
 	if !ok || !m.ConvertWithBp2build(ctx) {
 		return
 	}
 
-	if ctx.ModuleType() != "genrule" {
-		// Not a regular genrule. Could be a cc_genrule or java_genrule.
+	if ctx.ModuleType() != "genrule" && ctx.ModuleType() != "cc_genrule" {
+		// Not a regular genrule or cc_genrule. Could be a java_genrule.
 		return
 	}
 
