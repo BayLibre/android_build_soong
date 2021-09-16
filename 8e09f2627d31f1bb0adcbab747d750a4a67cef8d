@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b78dcd57_c0b59833",
+        "filename": "cc/builder.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-16T18:47:01Z",
+      "side": 1,
+      "message": "Can you run a forrest build of tm-release sdk_phone_armv7-sdk_mac with this CL to make sure it works on mac?  If not, you could probably use an rsp file:\n\n    Rspfile: \"${out}.cflags\",\n    RspfileContents: \"$cFlags\",\n    \nThen replace cflags in your command lines with $$(cat ${out}.cflags)",
+      "range": {
+        "startLine": 207,
+        "startChar": 49,
+        "endLine": 207,
+        "endChar": 70
+      },
+      "revId": "8e09f2627d31f1bb0adcbab747d750a4a67cef8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
