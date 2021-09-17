@@ -63,6 +63,7 @@ func PythonBinaryBp2Build(ctx android.TopDownMutatorContext) {
 			}
 		}
 	}
+
 	// TODO(b/182306917): this doesn't fully handle all nested props versioned
 	// by the python version, which would have been handled by the version split
 	// mutator. This is sufficient for very simple python_binary_host modules
