@@ -364,3 +364,84 @@ cc_library_shared {
 )`},
 	})
 }
+
+func TestCcLibrarySharedNoCrtTrue(t *testing.T) {
+	runCcLibrarySharedTestCase(t, bp2buildTestCase{
+		description:                        "cc_library_shared - nocrt: true emits attribute",
+		moduleTypeUnderTest:                "cc_library_shared",
+		moduleTypeUnderTestFactory:         cc.LibrarySharedFactory,
+		moduleTypeUnderTestBp2BuildMutator: cc.CcLibrarySharedBp2Build,
+		filesystem: map[string]string{
+			"impl.cpp": "",
+		},
+		blueprint: soongCcLibraryPreamble + `
+cc_library_shared {
+    name: "foo_shared",
+    srcs: ["impl.cpp"],
+    nocrt: true,
+    include_build_directory: false,
+}
+`,
+		expectedBazelTargets: []string{`cc_library_shared(
+    name = "foo_shared",
+    srcs = ["impl.cpp"],
+    use_crt = False,
+)`}})
+}
+
+func TestCcLibrarySharedNoCrtFalse(t *testing.T) {
+	runCcLibrarySharedTestCase(t, bp2buildTestCase{
+		description:                        "cc_library_shared - nocrt: false doesn't emit attribute",
+		moduleTypeUnderTest:                "cc_library_shared",
+		moduleTypeUnderTestFactory:         cc.LibrarySharedFactory,
+		moduleTypeUnderTestBp2BuildMutator: cc.CcLibrarySharedBp2Build,
+		filesystem: map[string]string{
+			"impl.cpp": "",
+		},
+		blueprint: soongCcLibraryPreamble + `
+cc_library_shared {
+    name: "foo_shared",
+    srcs: ["impl.cpp"],
+    nocrt: false,
+    include_build_directory: false,
+}
+`,
+		expectedBazelTargets: []string{`cc_library_shared(
+    name = "foo_shared",
+    srcs = ["impl.cpp"],
+)`}})
+}
+
+func TestCcLibrarySharedNoCrtArchVariant(t *testing.T) {
+	runCcLibrarySharedTestCase(t, bp2buildTestCase{
+		description:                        "cc_library_shared - nocrt in select",
+		moduleTypeUnderTest:                "cc_library_shared",
+		moduleTypeUnderTestFactory:         cc.LibrarySharedFactory,
+		moduleTypeUnderTestBp2BuildMutator: cc.CcLibrarySharedBp2Build,
+		filesystem: map[string]string{
+			"impl.cpp": "",
+		},
+		blueprint: soongCcLibraryPreamble + `
+cc_library_shared {
+    name: "foo_shared",
+    srcs: ["impl.cpp"],
+    arch: {
+        arm: {
+            nocrt: true,
+        },
+        x86: {
+            nocrt: false,
+        },
+    },
+    include_build_directory: false,
+}
+`,
+		expectedBazelTargets: []string{`cc_library_shared(
+    name = "foo_shared",
+    srcs = ["impl.cpp"],
+    use_crt = select({
+        "//build/bazel/platforms/arch:arm": False,
+        "//conditions:default": None,
+    }),
+)`}})
+}
