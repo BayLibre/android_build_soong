@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7a3b56f_5b1a2ddd",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-17T02:11:06Z",
+      "side": 1,
+      "message": "This seems like an odd distinction, Go would normally use the the same String() result for %s and %v.  Is there a use case that requires the %s behavior?  Canyou use the %v behavior for both?",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 14
+      },
+      "revId": "80e9519545ddb9951501c6863cb39eb4a4011291",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
