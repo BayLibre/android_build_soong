@@ -87,6 +87,24 @@
       "parentUuid": "15b6c8e2_4628bdc2",
       "revId": "aa612a459f59e033caa092177429c5402f761120",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b23ebc5d_ad4d50c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-17T22:28:41Z",
+      "side": 1,
+      "message": "\u003e None of those apply in this case.\n\nPointers are also frequently used for stuff that are optional, as an alternative to a separate \"ok\" boolean. In any case the code was already using nil checks on the android.Path interface pointer heavily, I didn\u0027t introduce that here.\n\nThe tricky part is to tell the nil and invalid states apart, so what would be a real simplification is to get rid of the nil state altogether. However that requires changing other code like that I pointed to.\n\nSupporting the three states in OptionalPath would only spread the confusion to other code where it doesn\u0027t even matter, so that\u0027s not a good way to go.\n\nI don\u0027t think introducing another type simplifies this appreciably, because the three states are still there. It just rephrases the conditions to check for them. But done anyway. The new type gives a common place to put comments to try to clarify the mess, so there is that.",
+      "parentUuid": "93b2c1ae_45a554f4",
+      "revId": "aa612a459f59e033caa092177429c5402f761120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
