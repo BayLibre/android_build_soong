@@ -46,6 +46,30 @@
       },
       "revId": "80e9519545ddb9951501c6863cb39eb4a4011291",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "272c6856_4903c02f",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-17T22:54:22Z",
+      "side": 1,
+      "message": "I don\u0027t know of any explicit guidance, but https://golang.org/doc/effective_go#printing says \"If you just want the default conversion, such as decimal for integers, you can use the catchall format %v (for “value”); the result is exactly what Print and Println would produce.\".  Print is going to use Stringer, not Format(.., \u0027v).\n\nI usually view %v as a shortcut for not having to know which verb goes with your type.  If you don\u0027t want to make %s the same as %v I\u0027d suggest leaving both as-is and calling a different method manually if you want to print something more detailed.",
+      "parentUuid": "0ec1af90_c08f8ae1",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 14
+      },
+      "revId": "80e9519545ddb9951501c6863cb39eb4a4011291",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
