@@ -70,6 +70,30 @@
       },
       "revId": "80e9519545ddb9951501c6863cb39eb4a4011291",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b15bd90d_36b827cb",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-17T23:13:32Z",
+      "side": 1,
+      "message": "Yeah, I think that\u0027d be useful, but without any recognised pattern for such \"DebugString\" formatting functions I don\u0027t think a one-off here would be visible enough. A benefit with using %v is, as you say, that it\u0027ll pick up whatever is implemented, without one having to know the details of the type. Ditched.",
+      "parentUuid": "272c6856_4903c02f",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 14
+      },
+      "revId": "80e9519545ddb9951501c6863cb39eb4a4011291",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
