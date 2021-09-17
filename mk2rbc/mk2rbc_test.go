@@ -700,8 +700,8 @@ def init(g, handle):
   rblf.mkinfo("product.mk", rblf.dir((_foobar).split()[-1]))
   rblf.mkinfo("product.mk", rblf.abspath("foo/bar"))
   rblf.mkinfo("product.mk", rblf.notdir("foo/bar"))
-  rblf.add_soong_config_namespace(g, "snsconfig")
-  rblf.add_soong_config_var_value(g, "snsconfig", "imagetype", "odm_image")
+  rblf.soong_config_namespace(g, "snsconfig")
+  rblf.soong_config_var_assign(g, "snsconfig", "imagetype", "odm_image")
   cfg["PRODUCT_COPY_FILES"] = rblf.copy_files(rblf.expand_wildcard("foo*.mk"), "etc")
   cfg["PRODUCT_COPY_FILES"] = rblf.product_copy_files_by_pattern("from/%", "to/%", "a b c")
 `,
@@ -784,7 +784,7 @@ def init(g, handle):
 		in: `
 SOONG_CONFIG_NAMESPACES += cvd
 SOONG_CONFIG_cvd += launch_configs
-SOONG_CONFIG_cvd_launch_configs += cvd_config_auto.json
+SOONG_CONFIG_cvd_launch_configs = cvd_config_auto.json
 SOONG_CONFIG_cvd += grub_config
 SOONG_CONFIG_cvd_grub_config += grub.cfg
 `,
@@ -792,9 +792,9 @@ SOONG_CONFIG_cvd_grub_config += grub.cfg
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
-  rblf.add_soong_config_namespace(g, "cvd")
-  rblf.add_soong_config_var_value(g, "cvd", "launch_configs", "cvd_config_auto.json")
-  rblf.add_soong_config_var_value(g, "cvd", "grub_config", "grub.cfg")
+  rblf.soong_config_namespace(g, "cvd")
+  rblf.soong_config_var_assign(g, "cvd", "launch_configs", "cvd_config_auto.json")
+  rblf.soong_config_var_append(g, "cvd", "grub_config", "grub.cfg")
 `,
 	},
 	{
