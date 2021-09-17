@@ -69,6 +69,24 @@
       "parentUuid": "3db87f65_d05a568e",
       "revId": "aa612a459f59e033caa092177429c5402f761120",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93b2c1ae_45a554f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-17T10:53:31Z",
+      "side": 1,
+      "message": "Understood. I find the pointer confusing as it is generally used for objects that are mutable and/or objects that are large and expensive to copy and/or objects that require a unique identity. None of those apply in this case.\n\nCan you not replicate that 3 state in OptionalPath?\n\nPath is valid - path!\u003dnil, reason\u003d\"\"\nPath is not valid but not an error - path\u003dnil, reason\u003d\"\"\nPath is in error - path\u003dnil, reason!\u003d\"\"\n\nOr maybe create a new type (cannot think of a good name at the moment) which embeds an OptionalPath and adds the reason?",
+      "parentUuid": "15b6c8e2_4628bdc2",
+      "revId": "aa612a459f59e033caa092177429c5402f761120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
