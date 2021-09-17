@@ -60,10 +60,11 @@ const (
 const (
 	// Phony makefile functions, they are eventually rewritten
 	// according to knownFunctions map
-	addSoongNamespace      = "add_soong_config_namespace"
-	addSoongConfigVarValue = "add_soong_config_var_value"
-	fileExistsPhony        = "$file_exists"
-	wildcardExistsPhony    = "$wildcard_exists"
+	fileExistsPhony      = "$file_exists"
+	soongConfigNamespace = "add_soong_config_namespace"
+	soongConfigVarAssign = "add_soong_config_var_value"
+	soongConfigVarAppend = "append_soong_config_var_value" // this doe not exist yet
+	wildcardExistsPhony  = "$wildcard_exists"
 )
 
 const (
@@ -82,8 +83,9 @@ var knownFunctions = map[string]struct {
 	"abspath":                             {baseName + ".abspath", starlarkTypeString, hiddenArgNone},
 	fileExistsPhony:                       {baseName + ".file_exists", starlarkTypeBool, hiddenArgNone},
 	wildcardExistsPhony:                   {baseName + ".file_wildcard_exists", starlarkTypeBool, hiddenArgNone},
-	addSoongNamespace:                     {baseName + ".add_soong_config_namespace", starlarkTypeVoid, hiddenArgGlobal},
-	addSoongConfigVarValue:                {baseName + ".add_soong_config_var_value", starlarkTypeVoid, hiddenArgGlobal},
+	soongConfigNamespace:                  {baseName + ".soong_config_namespace", starlarkTypeVoid, hiddenArgGlobal},
+	soongConfigVarAssign:                  {baseName + ".soong_config_var_assign", starlarkTypeVoid, hiddenArgGlobal},
+	soongConfigVarAppend:                  {baseName + ".soong_config_var_append", starlarkTypeVoid, hiddenArgGlobal},
 	"add-to-product-copy-files-if-exists": {baseName + ".copy_if_exists", starlarkTypeList, hiddenArgNone},
 	"addprefix":                           {baseName + ".addprefix", starlarkTypeList, hiddenArgNone},
 	"addsuffix":                           {baseName + ".addsuffix", starlarkTypeList, hiddenArgNone},
@@ -615,7 +617,7 @@ func (ctx *parseContext) handleSoongNsAssignment(name string, asgn *mkparser.Ass
 		for _, ns := range strings.Fields(s) {
 			ctx.addSoongNamespace(ns)
 			ctx.receiver.newNode(&exprNode{&callExpr{
-				name:       addSoongNamespace,
+				name:       soongConfigNamespace,
 				args:       []starlarkExpr{&stringLiteralExpr{ns}},
 				returnType: starlarkTypeVoid,
 			}})
@@ -665,8 +667,12 @@ func (ctx *parseContext) handleSoongNsAssignment(name string, asgn *mkparser.Ass
 			ctx.errorf(asgn, "no %s variable in %s namespace, please use add_soong_config_var_value instead", varName, namespaceName)
 			return
 		}
+		fname := soongConfigVarAssign
+		if asgn.Type == "+=" {
+			fname = soongConfigVarAppend
+		}
 		ctx.receiver.newNode(&exprNode{&callExpr{
-			name:       addSoongConfigVarValue,
+			name:       fname,
 			args:       []starlarkExpr{&stringLiteralExpr{namespaceName}, &stringLiteralExpr{varName}, val},
 			returnType: starlarkTypeVoid,
 		}})
