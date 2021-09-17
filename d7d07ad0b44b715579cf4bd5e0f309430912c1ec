@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d7ef602_15b6f156",
+        "filename": "mk2rbc/version_defaults.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-17T20:12:58Z",
+      "side": 1,
+      "message": "would it be valid for these to take their default value?\n\ncould we populate this with only keys where the default value is valid?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 44
+      },
+      "revId": "d7d07ad0b44b715579cf4bd5e0f309430912c1ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
