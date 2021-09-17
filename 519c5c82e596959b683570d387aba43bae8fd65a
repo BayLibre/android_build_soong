@@ -16,6 +16,24 @@
       "message": "It\u0027s a bit strange to see \"Code Owners\" Approved on this one as Paul didn\u0027t approve it yet. +1 to avoid accidentally merging before the blocking patch in clockwork, I will +2 after it gets merged.",
       "revId": "519c5c82e596959b683570d387aba43bae8fd65a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeb8af3b_97e7f01e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-17T10:07:49Z",
+      "side": 1,
+      "message": "FYI, the blocking CL is submitted.",
+      "parentUuid": "1843fe35_0b518a79",
+      "revId": "519c5c82e596959b683570d387aba43bae8fd65a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
