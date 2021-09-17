@@ -1296,7 +1296,6 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.classLoaderContexts = make(dexpreopt.ClassLoaderContextMap)
 
 	var flags javaBuilderFlags
-	var deapexerModule android.Module
 
 	ctx.VisitDirectDeps(func(module android.Module) {
 		tag := ctx.OtherModuleDependencyTag(module)
@@ -1317,11 +1316,6 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 
 		addCLCFromDep(ctx, module, j.classLoaderContexts)
-
-		// Save away the `deapexer` module on which this depends, if any.
-		if tag == android.DeapexerTag {
-			deapexerModule = module
-		}
 	})
 
 	if Bool(j.properties.Installable) {
@@ -1336,16 +1330,11 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		// obtained from the associated deapexer module.
 		ai := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
 		if ai.ForPrebuiltApex {
-			if deapexerModule == nil {
-				// This should never happen as a variant for a prebuilt_apex is only created if the
-				// deapexer module has been configured to export the dex implementation jar for this module.
-				ctx.ModuleErrorf("internal error: module %q does not depend on a `deapexer` module for prebuilt_apex %q",
-					j.Name(), ai.ApexVariationName)
-				return
-			}
-
 			// Get the path of the dex implementation jar from the `deapexer` module.
-			di := ctx.OtherModuleProvider(deapexerModule, android.DeapexerProvider).(android.DeapexerInfo)
+			di := android.FindDeapexerProviderForModule(ctx)
+			if di == nil {
+				return // An error has been reported by FindDeapexerProviderForModule.
+			}
 			if dexOutputPath := di.PrebuiltExportPath(apexRootRelativePathToJavaLib(j.BaseModuleName())); dexOutputPath != nil {
 				dexJarFile := makeDexJarPathFromPath(dexOutputPath)
 				j.dexJarFile = dexJarFile
@@ -1356,7 +1345,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			} else {
 				// This should never happen as a variant for a prebuilt_apex is only created if the
 				// prebuilt_apex has been configured to export the java library dex file.
-				ctx.ModuleErrorf("internal error: no dex implementation jar available from prebuilt_apex %q", deapexerModule.Name())
+				ctx.ModuleErrorf("internal error: no dex implementation jar available from prebuilt APEX %s", di.ApexModuleName())
 			}
 		} else if Bool(j.dexProperties.Compile_dex) {
 			sdkDep := decodeSdkDep(ctx, android.SdkContext(j))
