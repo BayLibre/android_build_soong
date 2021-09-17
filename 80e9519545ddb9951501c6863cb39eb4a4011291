@@ -22,6 +22,30 @@
       },
       "revId": "80e9519545ddb9951501c6863cb39eb4a4011291",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec1af90_c08f8ae1",
+        "filename": "android/paths.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-17T02:52:30Z",
+      "side": 1,
+      "message": "Hmm, I expect %s to format the same way as String(), since that\u0027s what it does if there\u0027s no Format function. Admittedly the same can be said for %v, but its description to use \"a default format\" I think gives more leeway for ad-hoc special behaviour than %s\u0027s \"the uninterpreted bytes of the string\".\n\nIn any case I can\u0027t find much guidance from Go resources on how custom formatters ought to behave. Do you have a source?\n\nThe reason I added this was mainly for debug logging convenience; I use %v to show me any object in some hopefully helpful form. The reason for supporting %s is mostly compatibility - I think it\u0027s more likely existing code may use %s to get an implicit call to String(), rather than relying on %v for that.",
+      "parentUuid": "b7a3b56f_5b1a2ddd",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 14
+      },
+      "revId": "80e9519545ddb9951501c6863cb39eb4a4011291",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
