@@ -22,6 +22,7 @@ import (
 	"regexp"
 	"strings"
 
+	"android/soong/bazel"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -61,6 +62,14 @@ type VersionProperties struct {
 
 	// whether the binary is required to be built with embedded launcher for this version, defaults to false.
 	Embedded_launcher *bool // TODO(b/174041232): Remove this property
+}
+
+type versionAttributes struct {
+	Enabled bazel.BoolAttribute
+	// Combines Srcs and Exclude_srcs
+	Srcs              bazel.LabelListAttribute
+	Deps              bazel.LabelListAttribute
+	Embedded_launcher bazel.BoolAttribute
 }
 
 // properties that apply to all python modules
@@ -120,6 +129,21 @@ type BaseProperties struct {
 	Embedded_launcher *bool `blueprint:"mutated"`
 }
 
+type baseAttributes struct {
+	// TODO: Probably not translate b/c Bazel has no good equiv
+	//Pkg_path    bazel.StringAttribute
+	Is_internal bazel.BoolAttribute
+	// Combines Srcs and Exclude_srcs
+	Srcs bazel.LabelListAttribute
+	Deps bazel.LabelListAttribute
+	// Combines Data and Java_data (invariant)
+	Data    bazel.LabelListAttribute
+	Version struct {
+		Py2 versionAttributes
+		Py3 versionAttributes
+	}
+}
+
 // Used to store files of current module after expanding dependencies
 type pathMapping struct {
 	dest string
@@ -175,6 +199,46 @@ func newModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Mo
 		hod:      hod,
 		multilib: multilib,
 	}
+}
+
+func (m *Module) makeArchVariantBaseAttributes(ctx android.TopDownMutatorContext) baseAttributes {
+	makeArchVariantVerAttrs := func(properties VersionProperties) versionAttributes {
+		var attrs versionAttributes
+		archVariantVerProps := m.GetArchVariantProperties(ctx, &VersionProperties{})
+		for axis, configToProps := range archVariantVerProps {
+			for config, props := range configToProps {
+				if verProps, ok := props.(*VersionProperties); ok {
+					attrs.Enabled.SetSelectValue(axis, config, verProps.Enabled)
+					attrs.Srcs.SetSelectValue(axis, config,
+						android.BazelLabelForModuleSrcExcludes(ctx, verProps.Srcs, verProps.Exclude_srcs))
+					attrs.Deps.SetSelectValue(axis, config,
+						android.BazelLabelForModuleDeps(ctx, verProps.Libs))
+					attrs.Embedded_launcher.SetSelectValue(axis, config, verProps.Embedded_launcher)
+				}
+			}
+		}
+		return attrs
+	}
+
+	var attrs baseAttributes
+	archVariantBaseProps := m.GetArchVariantProperties(ctx, &BaseProperties{})
+	for axis, configToProps := range archVariantBaseProps {
+		for config, props := range configToProps {
+			if baseProps, ok := props.(*BaseProperties); ok {
+				attrs.Is_internal.SetSelectValue(axis, config, baseProps.Is_internal)
+				attrs.Srcs.SetSelectValue(axis, config,
+					android.BazelLabelForModuleSrcExcludes(ctx, baseProps.Srcs, baseProps.Exclude_srcs))
+				attrs.Deps.SetSelectValue(axis, config,
+					android.BazelLabelForModuleDeps(ctx, baseProps.Libs))
+				data := android.BazelLabelForModuleSrc(ctx, baseProps.Data)
+				data.Append(android.BazelLabelForModuleSrc(ctx, baseProps.Java_data))
+				attrs.Data.SetSelectValue(axis, config, data)
+				attrs.Version.Py2 = makeArchVariantVerAttrs(baseProps.Version.Py2)
+				attrs.Version.Py3 = makeArchVariantVerAttrs(baseProps.Version.Py3)
+			}
+		}
+	}
+	return attrs
 }
 
 // bootstrapper interface should be implemented for runnable modules, e.g. binary and test
