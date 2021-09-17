@@ -364,6 +364,7 @@ type linkerAttributes struct {
 	wholeArchiveDeps          bazel.LabelListAttribute
 	systemDynamicDeps         bazel.LabelListAttribute
 
+	useCrt                        bazel.BoolAttribute
 	useLibcrt                     bazel.BoolAttribute
 	linkopts                      bazel.StringListAttribute
 	versionScript                 bazel.LabelAttribute
@@ -398,6 +399,7 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 
 	var linkopts bazel.StringListAttribute
 	var versionScript bazel.LabelAttribute
+	var useCrt bazel.BoolAttribute
 	var useLibcrt bazel.BoolAttribute
 
 	var stripKeepSymbols bazel.BoolAttribute
@@ -456,6 +458,7 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 				if baseLinkerProps.Version_script != nil {
 					versionScript.SetSelectValue(axis, config, android.BazelLabelForModuleSrcSingle(ctx, *baseLinkerProps.Version_script))
 				}
+				useCrt.SetSelectValue(axis, config, baseLinkerProps.crt())
 				useLibcrt.SetSelectValue(axis, config, baseLinkerProps.libCrt())
 			}
 		}
@@ -530,6 +533,7 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 		wholeArchiveDeps:          wholeArchiveDeps,
 		systemDynamicDeps:         systemSharedDeps,
 
+		useCrt:        useCrt,
 		linkopts:      linkopts,
 		useLibcrt:     useLibcrt,
 		versionScript: versionScript,
