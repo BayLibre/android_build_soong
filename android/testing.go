@@ -759,7 +759,7 @@ func (b baseTestingComponent) maybeBuildParamsFromOutput(file string) (TestingBu
 			if f.String() == file || f.Rel() == file || PathRelativeToTop(f) == file {
 				return b.newTestingBuildParams(p), nil
 			}
-			searchedOutputs = append(searchedOutputs, f.Rel())
+			searchedOutputs = append(searchedOutputs, PathRelativeToTop(f))
 		}
 	}
 	return TestingBuildParams{}, searchedOutputs
