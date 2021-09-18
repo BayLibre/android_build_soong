@@ -455,14 +455,20 @@ func escapeSingleQuotes(s string) string {
 
 // Generate rules for compiling multiple .c, .cpp, or .S files to individual .o files
 func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles android.Paths,
-	flags builderFlags, pathDeps android.Paths, cFlagsDeps android.Paths) Objects {
+	noTidySrcs []string, flags builderFlags, pathDeps android.Paths, cFlagsDeps android.Paths) Objects {
 
 	// Source files are one-to-one with tidy, coverage, or kythe files, if enabled.
 	objFiles := make(android.Paths, len(srcFiles))
 	var tidyFiles android.Paths
+	noTidySrcsMap := make(map[string]bool)
 	var tidyVars string
 	if flags.tidy {
 		tidyFiles = make(android.Paths, 0, len(srcFiles))
+		if len(noTidySrcs) > 0 {
+			for _, path := range android.PathsForModuleSrc(ctx, noTidySrcs) {
+				noTidySrcsMap[path.String()] = true
+			}
+		}
 		tidyTimeout := ctx.Config().Getenv("TIDY_TIMEOUT")
 		if len(tidyTimeout) > 0 {
 			tidyVars += "TIDY_TIMEOUT=" + tidyTimeout
@@ -673,7 +679,8 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles and
 			kytheFiles = append(kytheFiles, kytheFile)
 		}
 
-		if tidy {
+		//  Even with tidy, some src file could be skipped by noTidySrcsMap.
+		if tidy && !noTidySrcsMap[srcFile.String()] {
 			tidyFile := android.ObjPathWithExt(ctx, subdir, srcFile, "tidy")
 			tidyFiles = append(tidyFiles, tidyFile)
 
