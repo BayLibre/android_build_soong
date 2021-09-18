@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "732c3f62_cc4b261f",
+        "filename": "bp2build/cc_genrule_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-09-18T00:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70391f90_e0257f8e",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "4c72ca45df9f10ff3c6f3eb8cc7859c50d2eae6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7e1d63a_dc6b2feb",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae65c8d_494cb63d",
+        "filename": "bp2build/cc_genrule_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-09-18T00:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7e1d63a_dc6b2feb",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 42
+      },
+      "revId": "4c72ca45df9f10ff3c6f3eb8cc7859c50d2eae6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21ef978d_0c60a800",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-17T07:14:00Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 122,
+        "startChar": 36,
+        "endLine": 122,
+        "endChar": 37
+      },
+      "revId": "4c72ca45df9f10ff3c6f3eb8cc7859c50d2eae6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6118a5f9_41ea79d0",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-09-18T00:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21ef978d_0c60a800",
       "range": {
         "startLine": 122,
         "startChar": 36,
