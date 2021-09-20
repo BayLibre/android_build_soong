@@ -70,6 +70,30 @@
       },
       "revId": "953b35623aaab438f738c20cf66b34abf54ab9e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef863cd_d34fa33a",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-20T23:03:11Z",
+      "side": 1,
+      "message": "It\u0027s on O(days) to fix :)",
+      "parentUuid": "9b0423bb_653980a2",
+      "range": {
+        "startLine": 611,
+        "startChar": 29,
+        "endLine": 612,
+        "endChar": 64
+      },
+      "revId": "953b35623aaab438f738c20cf66b34abf54ab9e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
