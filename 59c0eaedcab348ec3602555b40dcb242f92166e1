@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbc3469d_72291d94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-20T21:21:43Z",
+      "side": 1,
+      "message": "LGTM \u0026 SGTM ; will pull before continuing the arch-variant work",
+      "revId": "59c0eaedcab348ec3602555b40dcb242f92166e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
