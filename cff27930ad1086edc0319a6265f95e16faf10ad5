@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9bd31546_b357033b",
+        "filename": "bp2build/cc_genrule_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-09-20T06:20:43Z",
+      "side": 1,
+      "message": "In particular, we need to support someone using the existing rule names from Android.bp files in a BUILD file\n\nSo someone should be able to write a new BUILD file and declare a cc_genrule target\n\nSo we probably need to create a cc_genrule macro for that (in another CL)",
+      "parentUuid": "d24f60e7_a66c131a",
+      "range": {
+        "startLine": 107,
+        "startChar": 34,
+        "endLine": 107,
+        "endChar": 41
+      },
+      "revId": "cff27930ad1086edc0319a6265f95e16faf10ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2345916e_e9afead7",
         "filename": "genrule/genrule.go",
         "patchSetId": 5
