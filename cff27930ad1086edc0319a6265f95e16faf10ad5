@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d24f60e7_a66c131a",
+        "filename": "bp2build/cc_genrule_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-09-20T06:19:14Z",
+      "side": 1,
+      "message": "For consistency with the other converters, and in case we need to make changes in future, we might want the generated Bazel target to be called cc_genrule instead of genrule (and then write a macro for cc_genrule that which calls genrule?)",
+      "range": {
+        "startLine": 107,
+        "startChar": 34,
+        "endLine": 107,
+        "endChar": 41
+      },
+      "revId": "cff27930ad1086edc0319a6265f95e16faf10ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2345916e_e9afead7",
         "filename": "genrule/genrule.go",
         "patchSetId": 5
