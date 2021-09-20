@@ -22,6 +22,30 @@
       },
       "revId": "953b35623aaab438f738c20cf66b34abf54ab9e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58e6b57a_2994e2a1",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-20T20:45:37Z",
+      "side": 1,
+      "message": "You are correct. I haven\u0027t fixed this yet (b/195970501), but this is ultimately what we want to do.\n\nIs it OK if I leave this comment in and fix b/195970501 separately, as this would be a macro change? Or would you prefer I leave a TODO for this here and do a cross-repo fix (to fix in macros, and then also remove the TODO?)",
+      "parentUuid": "539aa1a6_482c9043",
+      "range": {
+        "startLine": 611,
+        "startChar": 29,
+        "endLine": 612,
+        "endChar": 64
+      },
+      "revId": "953b35623aaab438f738c20cf66b34abf54ab9e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

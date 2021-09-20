@@ -22,6 +22,30 @@
       },
       "revId": "dd6149122c09baf2d640767608541ffe831ce412",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f97e74d_0f87b385",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-20T20:45:37Z",
+      "side": 0,
+      "message": "I can\u0027t repro this failure locally. Ugh :(\nTime to sync and retry...",
+      "parentUuid": "0bc9f1b5_6d28ae32",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 93
+      },
+      "revId": "dd6149122c09baf2d640767608541ffe831ce412",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
