@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "539aa1a6_482c9043",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-20T20:16:46Z",
+      "side": 1,
+      "message": "is this true? I thought we had a bug with overpropagating because it wasn\u0027t...",
+      "range": {
+        "startLine": 611,
+        "startChar": 29,
+        "endLine": 612,
+        "endChar": 64
+      },
+      "revId": "953b35623aaab438f738c20cf66b34abf54ab9e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
