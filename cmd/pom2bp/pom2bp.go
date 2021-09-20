@@ -24,6 +24,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -164,7 +165,8 @@ func InList(s string, list []string) bool {
 type Dependency struct {
 	XMLName xml.Name `xml:"dependency"`
 
-	BpTarget string `xml:"-"`
+	BpTarget  string `xml:"-"`
+	BazelName string `xml:"-"`
 
 	GroupId    string `xml:"groupId"`
 	ArtifactId string `xml:"artifactId"`
@@ -187,6 +189,7 @@ type Pom struct {
 	ArtifactFile  string `xml:"-"`
 	BpTarget      string `xml:"-"`
 	MinSdkVersion string `xml:"-"`
+	PackageName   string `xml:"-"`
 
 	GroupId    string `xml:"groupId"`
 	ArtifactId string `xml:"artifactId"`
@@ -230,6 +233,14 @@ func (p Pom) ModuleType() string {
 	}
 }
 
+func (p Pom) BazelTargetType() string {
+	if p.IsAar() {
+		return "android_library"
+	} else {
+		return "java_library"
+	}
+}
+
 func (p Pom) ImportModuleType() string {
 	if p.IsAar() {
 		return "android_library_import"
@@ -240,9 +251,25 @@ func (p Pom) ImportModuleType() string {
 	}
 }
 
+func (p Pom) BazelImportTargetType() string {
+	if p.IsAar() {
+		return "aar_import"
+	} else {
+		return "java_import"
+	}
+}
+
 func (p Pom) ImportProperty() string {
 	if p.IsAar() {
 		return "aars"
+	} else {
+		return "jars"
+	}
+}
+
+func (p Pom) BazelImportProperty() string {
+	if p.IsAar() {
+		return "aar"
 	} else {
 		return "jars"
 	}
@@ -261,6 +288,14 @@ func (p Pom) BpJarDeps() []string {
 
 func (p Pom) BpAarDeps() []string {
 	return p.BpDeps("aar", []string{"compile", "runtime"})
+}
+
+func (p Pom) BazelJarDeps() []string {
+	return p.BazelDeps("jar", []string{"compile", "runtime"})
+}
+
+func (p Pom) BazelAarDeps() []string {
+	return p.BazelDeps("aar", []string{"compile", "runtime"})
 }
 
 func (p Pom) BpExtraStaticLibs() []string {
@@ -287,6 +322,91 @@ func (p Pom) BpDeps(typeExt string, scopes []string) []string {
 		ret = append(ret, name)
 	}
 	return ret
+}
+
+// BazelDeps obtains dependencies filtered by type and scope. The results of this
+// method are formatted as Bazel BUILD targets.
+func (p Pom) BazelDeps(typeExt string, scopes []string) []string {
+	var ret []string
+	for _, d := range p.Dependencies {
+		if d.Type != typeExt || !InList(d.Scope, scopes) {
+			continue
+		}
+		ret = append(ret, d.BazelName)
+	}
+	return ret
+}
+
+func PathModVars() (string, string, string) {
+	cmd := "/bin/bash"
+	androidTop := os.Getenv("ANDROID_BUILD_TOP")
+	envSetupSh := path.Join(androidTop, "build/envsetup.sh")
+	return cmd, androidTop, envSetupSh
+}
+
+func InitRefreshMod(poms []*Pom) error {
+	cmd, _, envSetupSh := PathModVars()
+	// refreshmod is expensive, so if pathmod is already working we can skip it.
+	_, err := exec.Command(cmd, "-c", ". "+envSetupSh+" && pathmod "+poms[0].BpName()).Output()
+	if exitErr, _ := err.(*exec.ExitError); exitErr != nil || err != nil {
+		_, err := exec.Command(cmd, "-c", ". "+envSetupSh+" && refreshmod").Output()
+		if exitErr, _ := err.(*exec.ExitError); exitErr != nil {
+			return fmt.Errorf("failed to run %s\n%s\ntry running lunch.", cmd, string(exitErr.Stderr))
+		} else if err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func BazelifyExtraDeps(extraDeps ExtraDeps, modules map[string]*Pom) error {
+	for _, deps := range extraDeps {
+		for _, dep := range deps {
+			bazelName, err := BpNameToBazelName(dep, modules)
+			if err != nil {
+				return err
+			}
+			dep = bazelName
+		}
+
+	}
+	return nil
+}
+
+func (p *Pom) GetBazelDepNames(modules map[string]*Pom) error {
+	for _, d := range p.Dependencies {
+		bazelName, err := BpNameToBazelName(d.BpName(), modules)
+		if err != nil {
+			return err
+		}
+		d.BazelName = bazelName
+	}
+	return nil
+}
+
+func BpNameToBazelName(bpName string, modules map[string]*Pom) (string, error) {
+	cmd, androidTop, envSetupSh := PathModVars()
+
+	if _, ok := modules[bpName]; ok {
+		// We've seen the POM for this dependency, it will be local to the output BUILD file
+		return ":" + bpName, nil
+	} else {
+		// we don't have the POM for this artifact, find and use the fully qualified target name.
+		output, err := exec.Command(cmd, "-c", ". "+envSetupSh+" && pathmod "+bpName).Output()
+		if exitErr, _ := err.(*exec.ExitError); exitErr != nil {
+			return "", fmt.Errorf("failed to run %s %s\n%s", cmd, bpName, string(exitErr.Stderr))
+		} else if err != nil {
+			return "", err
+		}
+		relPath := ""
+		for _, line := range strings.Fields(string(output)) {
+			if strings.Contains(line, androidTop) {
+				relPath = strings.TrimPrefix(line, androidTop)
+				relPath = strings.TrimLeft(relPath, "/")
+			}
+		}
+		return "//" + relPath + ":" + bpName, nil
+	}
 }
 
 func (p Pom) SdkVersion() string {
@@ -321,9 +441,9 @@ func (p *Pom) FixDeps(modules map[string]*Pom) {
 	}
 }
 
-// ExtractMinSdkVersion extracts the minSdkVersion from the AndroidManifest.xml file inside an aar file, or sets it
-// to "current" if it is not present.
-func (p *Pom) ExtractMinSdkVersion() error {
+// ExtractManifestInfo extracts the minSdkVersion and the package name from the AndroidManifest.xml
+// file inside an aar file. minSdkVersion is set to "current" if it is not present.
+func (p *Pom) ExtractManifestInfo() error {
 	aar, err := zip.OpenReader(p.ArtifactFile)
 	if err != nil {
 		return err
@@ -351,8 +471,9 @@ func (p *Pom) ExtractMinSdkVersion() error {
 	decoder := xml.NewDecoder(r)
 
 	manifestData := struct {
-		XMLName  xml.Name `xml:"manifest"`
-		Uses_sdk struct {
+		XMLName     xml.Name `xml:"manifest"`
+		PackageName string   `xml:"package,attr"`
+		Uses_sdk    struct {
 			MinSdkVersion string `xml:"http://schemas.android.com/apk/res/android minSdkVersion,attr"`
 		} `xml:"uses-sdk"`
 	}{}
@@ -366,6 +487,8 @@ func (p *Pom) ExtractMinSdkVersion() error {
 	if p.MinSdkVersion == "" {
 		p.MinSdkVersion = "current"
 	}
+
+	p.PackageName = manifestData.PackageName
 
 	return nil
 }
@@ -512,6 +635,104 @@ var bpDepsTemplate = template.Must(template.New("bp").Parse(`
 }
 `))
 
+var bazelTemplate = template.Must(template.New("bp").Parse(`
+{{.BazelImportTargetType}} (
+    name = "{{.BpName}}",
+    {{.BazelImportProperty}}: {{- if not .IsAar}}[{{- end}}"{{.ArtifactFile}}"{{- if not .IsAar}}]{{- end}},
+    visibility = ["//visibility:public"],
+    {{- if .IsAar}}
+    deps = [
+        {{- range .BazelJarDeps}}
+        "{{.}}",
+        {{- end}}
+        {{- range .BazelAarDeps}}
+        "{{.}}",
+        {{- end}}
+        {{- range .BpExtraStaticLibs}}
+        "{{.}}",
+        {{- end}}
+        {{- range .BpExtraLibs}}
+        "{{.}}",
+        {{- end}}
+        {{- range .BpOptionalUsesLibs}}
+        "{{.}}",
+        {{- end}}
+    ],
+    {{- end}}
+)
+`))
+
+var bazelDepsTemplate = template.Must(template.New("bp").Parse(`
+{{- if .IsAar}}
+{{.BazelImportTargetType}} (
+    name = "{{.BpName}}-nodeps",
+    {{.BazelImportProperty}} = "{{.ArtifactFile}}",
+    visibility = ["//visibility:public"],
+    deps = [
+        {{- range .BazelJarDeps}}
+        "{{.}}",
+        {{- end}}
+        {{- range .BazelAarDeps}}
+        "{{.}}",
+        {{- end}}
+        {{- range .BpExtraStaticLibs}}
+        "{{.}}",
+        {{- end}}
+        {{- range .BpExtraLibs}}
+        "{{.}}",
+        {{- end}}
+    ],
+)
+
+{{.BazelTargetType}} (
+    name = "{{.BpName}}",
+    custom_package = "{{.PackageName}}",
+    visibility = ["//visibility:public"],
+    {{- if .IsDeviceModule}}
+    manifest = "manifests/{{.BpName}}/AndroidManifest.xml",
+    {{- end}}
+    deps = [
+        ":{{.BpName}}-nodeps",
+        {{- range .BazelJarDeps}}
+        "{{.}}",
+        {{- end}}
+        {{- range .BazelAarDeps}}
+        "{{.}}",
+        {{- end}}
+        {{- range .BpExtraStaticLibs}}
+        "{{.}}",
+        {{- end}}
+        {{- range .BpExtraLibs}}
+        "{{.}}",
+        {{- end}}
+    ],
+)
+{{- else}}
+{{.BazelImportTargetType}} (
+    name = "{{.BpName}}",
+    {{.BazelImportProperty}} = ["{{.ArtifactFile}}"],
+    visibility = ["//visibility:public"],
+    deps = [
+        {{- range .BazelJarDeps}}
+        "{{.}}",
+        {{- end}}
+        {{- range .BazelAarDeps}}
+        "{{.}}",
+        {{- end}}
+        {{- range .BpExtraStaticLibs}}
+        "{{.}}",
+        {{- end}}
+        {{- range .BpExtraLibs}}
+        "{{.}}",
+        {{- end}}
+        {{- range .BpOptionalUsesLibs}}
+        "{{.}}",
+        {{- end}}
+    ],
+)
+{{- end}}
+`))
+
 func parse(filename string) (*Pom, error) {
 	data, err := ioutil.ReadFile(filename)
 	if err != nil {
@@ -565,6 +786,8 @@ func rerunForRegen(filename string) error {
 		line = strings.TrimPrefix(line, "// pom2mk ")
 	} else if strings.HasPrefix(line, "# pom2mk ") {
 		line = strings.TrimPrefix(line, "# pom2mk ")
+	} else if strings.HasPrefix(line, "# pom2bp ") {
+		line = strings.TrimPrefix(line, "# pom2bp ")
 	} else {
 		return fmt.Errorf("unexpected second line: %q", line)
 	}
@@ -650,6 +873,7 @@ Usage: %s [--rewrite <regex>=<replace>] [--exclude <module>] [--extra-static-lib
 	}
 
 	var regen string
+	var pom2build bool
 
 	flag.Var(&excludes, "exclude", "Exclude module")
 	flag.Var(&extraStaticLibs, "extra-static-libs", "Extra static dependencies needed when depending on a module")
@@ -664,6 +888,7 @@ Usage: %s [--rewrite <regex>=<replace>] [--exclude <module>] [--extra-static-lib
 	flag.BoolVar(&staticDeps, "static-deps", false, "Statically include direct dependencies")
 	flag.BoolVar(&jetifier, "jetifier", false, "Sets jetifier: true on all modules")
 	flag.StringVar(&regen, "regen", "", "Rewrite specified file")
+	flag.BoolVar(&pom2build, "pom2build", false, "If true, will generate a Bazel BUILD file *instead* of a .bp file")
 	flag.Parse()
 
 	if regen != "" {
@@ -758,28 +983,51 @@ Usage: %s [--rewrite <regex>=<replace>] [--exclude <module>] [--extra-static-lib
 		os.Exit(1)
 	}
 
+	if pom2build {
+		if err := InitRefreshMod(poms); err != nil {
+			fmt.Fprintf(os.Stderr, "Error in refreshmod: %s", err)
+			os.Exit(1)
+		}
+		BazelifyExtraDeps(extraStaticLibs, modules)
+		BazelifyExtraDeps(extraLibs, modules)
+		BazelifyExtraDeps(optionalUsesLibs, modules)
+	}
+
 	for _, pom := range poms {
 		if pom.IsAar() {
-			err := pom.ExtractMinSdkVersion()
+			err := pom.ExtractManifestInfo()
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "Error reading manifest for %s: %s", pom.ArtifactFile, err)
 				os.Exit(1)
 			}
 		}
 		pom.FixDeps(modules)
+		if pom2build {
+			pom.GetBazelDepNames(modules)
+		}
 	}
 
 	buf := &bytes.Buffer{}
+	commentString := "//"
+	if pom2build {
+		commentString = "#"
+	}
+	fmt.Fprintln(buf, commentString, "Automatically generated with:")
+	fmt.Fprintln(buf, commentString, "pom2bp", strings.Join(proptools.ShellEscapeList(os.Args[1:]), " "))
 
-	fmt.Fprintln(buf, "// Automatically generated with:")
-	fmt.Fprintln(buf, "// pom2bp", strings.Join(proptools.ShellEscapeList(os.Args[1:]), " "))
+	depsTemplate := bpDepsTemplate
+	template := bpTemplate
+	if pom2build {
+		depsTemplate = bazelDepsTemplate
+		template = bazelTemplate
+	}
 
 	for _, pom := range poms {
 		var err error
 		if staticDeps {
-			err = bpDepsTemplate.Execute(buf, pom)
+			err = depsTemplate.Execute(buf, pom)
 		} else {
-			err = bpTemplate.Execute(buf, pom)
+			err = template.Execute(buf, pom)
 		}
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "Error writing", pom.PomFile, pom.BpName(), err)
@@ -787,11 +1035,15 @@ Usage: %s [--rewrite <regex>=<replace>] [--exclude <module>] [--extra-static-lib
 		}
 	}
 
-	out, err := bpfix.Reformat(buf.String())
-	if err != nil {
-		fmt.Fprintln(os.Stderr, "Error formatting output", err)
-		os.Exit(1)
+	if !pom2build {
+		out, err := bpfix.Reformat(buf.String())
+		if err != nil {
+			fmt.Fprintln(os.Stderr, "Error formatting output", err)
+			os.Exit(1)
+		}
+		os.Stdout.WriteString(out)
+	} else {
+		os.Stdout.WriteString(buf.String())
 	}
 
-	os.Stdout.WriteString(out)
 }
