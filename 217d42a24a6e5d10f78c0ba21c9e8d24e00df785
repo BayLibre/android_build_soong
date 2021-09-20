@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92ed0022_83769815",
+        "filename": "android/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-20T09:31:30Z",
+      "side": 1,
+      "message": "What about outputting both?, e.g. something like:\n    fmt.Sprintf(\"%s (rel\u003d%s)\", PathRelativeToTop(f), f.Rel())\n\nThat way test developers have easy access to both ways to represent the file in calls to Output().\n\nUsing the full PathRelativeToTop() value makes tests more strict but at the expense of being sensitive to changes in the directory. Using the Rel() value makes tests more flexible at the expense of being less strict.",
+      "revId": "217d42a24a6e5d10f78c0ba21c9e8d24e00df785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
