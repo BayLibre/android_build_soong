@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e13c68e7_85660eaf",
+        "filename": "bp2build/cc_genrule_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-09-20T06:16:10Z",
+      "side": 1,
+      "message": "Are these tests the same as the existing genrule tests but with cc_genrule substituted for genrule? Are there other differences?",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 25
+      },
+      "revId": "cff27930ad1086edc0319a6265f95e16faf10ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fc645b0_307c8b15",
+        "filename": "bp2build/cc_genrule_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-09-20T06:16:10Z",
+      "side": 1,
+      "message": "I think setting bp2build_available in tests is only necessary if you want to set it to false (e.g. to make a module not be converted if you want to cut down the expected output)\n\nJin, and I missing something?",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 47
+      },
+      "revId": "cff27930ad1086edc0319a6265f95e16faf10ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2345916e_e9afead7",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-09-20T06:16:10Z",
+      "side": 1,
+      "message": "Add a comment above e.g.\n\n// Used for genrule and cc_genrule",
+      "range": {
+        "startLine": 829,
+        "startChar": 0,
+        "endLine": 829,
+        "endChar": 57
+      },
+      "revId": "cff27930ad1086edc0319a6265f95e16faf10ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
