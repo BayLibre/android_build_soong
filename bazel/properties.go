@@ -20,6 +20,8 @@ import (
 	"regexp"
 	"sort"
 	"strings"
+
+	"github.com/google/blueprint"
 )
 
 // BazelTargetModuleProperties contain properties and metadata used for
@@ -629,6 +631,106 @@ func (lla *LabelListAttribute) ResolveExcludes() {
 			delete(lla.ConfigurableValues, axis)
 		}
 	}
+}
+
+type OtherModuleContext interface {
+	ModuleFromName(name string) (blueprint.Module, bool)
+	OtherModuleType(m blueprint.Module) string
+	OtherModuleName(m blueprint.Module) string
+	OtherModuleDir(m blueprint.Module) string
+}
+
+type LabelMapper func(OtherModuleContext, string) (string, bool)
+
+type LabelFilter struct {
+	Partition      string
+	Extensions     []string
+	LabelMapper    LabelMapper
+	Keep_remainder bool
+}
+
+func (lf LabelFilter) filter(ctx OtherModuleContext, label Label) *Label {
+	if lf.LabelMapper != nil {
+		if newLabel, changed := lf.LabelMapper(ctx, label.Label); changed {
+			return &Label{newLabel, label.OriginalModuleName}
+		}
+	}
+	for _, ext := range lf.Extensions {
+		if strings.HasSuffix(label.Label, ext) {
+			return &label
+		}
+	}
+
+	return nil
+}
+
+type CategoryToLabelListAttribute map[string]LabelListAttribute
+
+func PartitionLabelListAttribute(ctx OtherModuleContext, lla *LabelListAttribute, labelFilters []LabelFilter) CategoryToLabelListAttribute {
+	ret := CategoryToLabelListAttribute{}
+	var partitions []string
+	var remainderPartition *string
+	for _, f := range labelFilters {
+		partitions = append(partitions, f.Partition)
+		if f.Keep_remainder {
+			if remainderPartition != nil {
+				panic("only one partition can store the remainder")
+			}
+			remainderPartition = &f.Partition
+		}
+	}
+
+	partitionLabelList := func(axis ConfigurationAxis, config string) {
+		value := lla.SelectValue(axis, config)
+		partitionToLabelList := make(map[string]LabelList)
+		for _, item := range value.Includes {
+			wasFiltered := false
+			for _, f := range labelFilters {
+				filtered := f.filter(ctx, item)
+				if filtered == nil {
+					continue
+				}
+				wasFiltered = true
+				v := partitionToLabelList[f.Partition]
+				v.Includes = append(v.Includes, *filtered)
+				partitionToLabelList[f.Partition] = v
+				// don't need to check other partitions if this filter used the item
+				if *filtered == item {
+					break
+				}
+			}
+
+			if !wasFiltered && remainderPartition != nil {
+				v := partitionToLabelList[*remainderPartition]
+				v.Includes = append(v.Includes, item)
+				partitionToLabelList[*remainderPartition] = v
+			}
+		}
+
+		if len(value.Includes) == 0 && value.Excludes != nil {
+			for _, partition := range partitions {
+				partitionToLabelList[partition] = LabelList{value.Includes, value.Excludes}
+			}
+		}
+
+		for partition, list := range partitionToLabelList {
+			list.Excludes = value.Excludes
+			if _, ok := ret[partition]; !ok {
+				ret[partition] = LabelListAttribute{}
+			}
+			val := ret[partition]
+			(&val).SetSelectValue(axis, config, list)
+			ret[partition] = val
+		}
+	}
+
+	partitionLabelList(NoConfigAxis, "")
+	for axis, configToList := range lla.ConfigurableValues {
+		for config, _ := range configToList {
+			partitionLabelList(axis, config)
+		}
+	}
+	return ret
 }
 
 // StringListAttribute corresponds to the string_list Bazel attribute type with

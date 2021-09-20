@@ -40,17 +40,7 @@ type staticOrSharedAttributes struct {
 }
 
 func groupSrcsByExtension(ctx android.TopDownMutatorContext, srcs bazel.LabelListAttribute) (cppSrcs, cSrcs, asSrcs bazel.LabelListAttribute) {
-	// Branch srcs into three language-specific groups.
-	// C++ is the "catch-all" group, and comprises generated sources because we don't
-	// know the language of these sources until the genrule is executed.
 	// TODO(b/190006308): Handle language detection of sources in a Bazel rule.
-	isCSrcOrFilegroup := func(s string) bool {
-		return strings.HasSuffix(s, ".c") || strings.HasSuffix(s, "_c_srcs")
-	}
-
-	isAsmSrcOrFilegroup := func(s string) bool {
-		return strings.HasSuffix(s, ".S") || strings.HasSuffix(s, ".s") || strings.HasSuffix(s, "_as_srcs")
-	}
 
 	// Check that a module is a filegroup type named <label>.
 	isFilegroupNamed := func(m android.Module, fullLabel string) bool {
@@ -66,48 +56,33 @@ func groupSrcsByExtension(ctx android.TopDownMutatorContext, srcs bazel.LabelLis
 		}
 	}
 
-	// Convert the filegroup dependencies into the extension-specific filegroups
-	// filtered in the filegroup.bzl macro.
-	cppFilegroup := func(label string) string {
-		m, exists := ctx.ModuleFromName(label)
-		if exists {
-			aModule, _ := m.(android.Module)
-			if isFilegroupNamed(aModule, label) {
-				label = label + "_cpp_srcs"
+	addSuffixForFilegroup := func(suffix string) bazel.LabelMapper {
+		return func(ctx bazel.OtherModuleContext, label string) (string, bool) {
+			m, exists := ctx.ModuleFromName(label)
+			if !exists {
+				return label, false
 			}
-		}
-		return label
-	}
-	cFilegroup := func(label string) string {
-		m, exists := ctx.ModuleFromName(label)
-		if exists {
 			aModule, _ := m.(android.Module)
-			if isFilegroupNamed(aModule, label) {
-				label = label + "_c_srcs"
+			if !isFilegroupNamed(aModule, label) {
+				return label, false
 			}
+			return label + suffix, true
 		}
-		return label
-	}
-	asFilegroup := func(label string) string {
-		m, exists := ctx.ModuleFromName(label)
-		if exists {
-			aModule, _ := m.(android.Module)
-			if isFilegroupNamed(aModule, label) {
-				label = label + "_as_srcs"
-			}
-		}
-		return label
 	}
 
-	cSrcs = bazel.MapLabelListAttribute(srcs, cFilegroup)
-	cSrcs = bazel.FilterLabelListAttribute(cSrcs, isCSrcOrFilegroup)
+	partitioned := bazel.PartitionLabelListAttribute(ctx, &srcs, []bazel.LabelFilter{
+		bazel.LabelFilter{
+			Partition:   "c",
+			Extensions:  []string{".c"},
+			LabelMapper: addSuffixForFilegroup("_c_srcs"),
+		},
+		bazel.LabelFilter{Partition: "as", Extensions: []string{".s", ".S"}, LabelMapper: addSuffixForFilegroup("_as_srcs")},
+		bazel.LabelFilter{Partition: "cpp", Extensions: []string{".cpp", ".cc", ".cxx", ".mm"}, LabelMapper: addSuffixForFilegroup("_cpp_srcs"), Keep_remainder: true},
+	})
 
-	asSrcs = bazel.MapLabelListAttribute(srcs, asFilegroup)
-	asSrcs = bazel.FilterLabelListAttribute(asSrcs, isAsmSrcOrFilegroup)
-
-	cppSrcs = bazel.MapLabelListAttribute(srcs, cppFilegroup)
-	cppSrcs = bazel.SubtractBazelLabelListAttribute(cppSrcs, cSrcs)
-	cppSrcs = bazel.SubtractBazelLabelListAttribute(cppSrcs, asSrcs)
+	cSrcs = partitioned["c"]
+	asSrcs = partitioned["as"]
+	cppSrcs = partitioned["cpp"]
 	return
 }
 
