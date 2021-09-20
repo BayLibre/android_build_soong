@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e222a9c_af1756f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-09-20T06:42:09Z",
+      "side": 1,
+      "message": "Dan - the implicit proposal here is for Soong\u0027s genrule and cc_genrule to both map to Bazel\u0027s genrule. Can you see a reason not to do that? \n\nAsking because I think you added cc_genrule to Soong and I\u0027m not sure why it was necessary",
+      "revId": "cff27930ad1086edc0319a6265f95e16faf10ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e13c68e7_85660eaf",
         "filename": "bp2build/cc_genrule_conversion_test.go",
         "patchSetId": 5
