@@ -914,6 +914,8 @@ func createArchPropTypeDesc(props reflect.Type) []archPropTypeDesc {
 var variantReplacer = strings.NewReplacer("-", "_", ".", "_")
 
 // filterArchStruct returns true if the given field is an architecture specific property.
+// FIXME (b/200678898): This assumes that the only tag type when there's
+// `android:"arch_variant"` is `android` itself and thus clobbers others
 func filterArchStruct(field reflect.StructField, prefix string) (bool, reflect.StructField) {
 	if proptools.HasTag(field, "android", "arch_variant") {
 		// The arch_variant field isn't necessary past this point
