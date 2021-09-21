@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a0533cb_26b3789d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41be387a_e68c81d5",
+      "range": {
+        "startLine": 19,
+        "startChar": 22,
+        "endLine": 19,
+        "endChar": 52
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12999bcc_d798a835",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-21T01:02:02Z",
       "side": 1,
       "message": "Typo: \"multiple\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 21
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e4db95f_6e5e819d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12999bcc_d798a835",
       "range": {
         "startLine": 22,
         "startChar": 13,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "352345f5_e118b8d1",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "Use \"sdk member\" and \"member\" instead.",
+      "parentUuid": "86e4df62_56a0d425",
+      "range": {
+        "startLine": 383,
+        "startChar": 41,
+        "endLine": 383,
+        "endChar": 51
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b17b06af_45bbe39a",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-21T01:02:02Z",
       "side": 1,
       "message": "I read this as \"(non-native) bridge\" which is something I don\u0027t know. I suspect the intention is \"non-(native bridge)\". I suggest rephrasing to drop \"non-\".",
+      "range": {
+        "startLine": 389,
+        "startChar": 41,
+        "endLine": 389,
+        "endChar": 58
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f1ee09e_43ec3d11",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b17b06af_45bbe39a",
       "range": {
         "startLine": 389,
         "startChar": 41,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b584f2c1_097aaeab",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c35e9d8_e8c77c54",
+      "range": {
+        "startLine": 390,
+        "startChar": 35,
+        "endLine": 390,
+        "endChar": 36
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1dc70ce2_6402aaba",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-09-21T01:02:02Z",
       "side": 1,
       "message": "To make this more concrete, can you use the specific traits from the examples above?",
+      "range": {
+        "startLine": 407,
+        "startChar": 9,
+        "endLine": 407,
+        "endChar": 15
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bac996a9_515af949",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dc70ce2_6402aaba",
       "range": {
         "startLine": 407,
         "startChar": 9,
@@ -164,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b4f4c2d_04de1016",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "I don\u0027t know, but I think it may be helpful. Experience with SdkMemberType shows that there are two reasons why the type needs to be extensible.\n1) When adding functionality to the sdk update mechanism, e.g. IsHostOsDependent().\n2) In order to embed client side behavior into the struct, e.g. librarySdkMemberType.linkTypes.\n\nI cannot think of any change to sdk update mechanism which would require changes to this type but I think that there might be some benefits to embedding client side behavior into the struct, e.g. for handling different image types.\n\nWe could add a helper func, e.g. RegisterBasicSdkMemberTrait(propertyName string)  SdkMemberTrait {..} to remove the need for boilerplate while keeping the ability to extend if it becomes needed.",
+      "parentUuid": "ac0fbef9_4f4e0580",
+      "range": {
+        "startLine": 414,
+        "startChar": 5,
+        "endLine": 414,
+        "endChar": 19
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bbb9614d_0af2a4ac",
         "filename": "android/sdk.go",
         "patchSetId": 2
@@ -175,6 +343,30 @@
       "writtenOn": "2021-09-21T01:02:02Z",
       "side": 1,
       "message": "Can\u0027t this just be the implementation type right away? It doesn\u0027t have other implementations afaics.",
+      "range": {
+        "startLine": 431,
+        "startChar": 23,
+        "endLine": 431,
+        "endChar": 32
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebeda360_2429a3a3",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "It could but the current implementation is simply a map and I don\u0027t want code that uses this to treat this as a map just in case it needs to be changed. So, the reason for using the interface is not to allow multiple implementations but just to insulate code that uses it from the implementation.",
+      "parentUuid": "bbb9614d_0af2a4ac",
       "range": {
         "startLine": 431,
         "startChar": 23,
@@ -208,6 +400,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea7b4a83_57fbb817",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "Coming up with a good name is difficult. I\u0027ve renamed it to Subtract as I think that has less of a mutator feel to it. If you can think of anything better then let me know.\n\nCreateANewSetThatContainsAllTheElementsOfThisExceptForThoseInTheOtherSet(other) is a little unwieldy!",
+      "parentUuid": "7f6e3f95_3aa66955",
+      "range": {
+        "startLine": 464,
+        "startChar": 27,
+        "endLine": 464,
+        "endChar": 36
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fccbdf7_8f3d193b",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-09-21T01:02:02Z",
       "side": 1,
       "message": "Consider creating the map in the returned set right away, to avoid these temporary arrays.",
+      "range": {
+        "startLine": 472,
+        "startChar": 3,
+        "endLine": 472,
+        "endChar": 39
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36f5c854_325bc474",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "The reason for using these arrays is to allow the NewSdkMemberTraitSet() method to be used to create the set so as to avoid duplicating creation code here.",
+      "parentUuid": "5fccbdf7_8f3d193b",
       "range": {
         "startLine": 472,
         "startChar": 3,
@@ -254,6 +494,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55ad70bb_64da1939",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a01391d3_36964b35",
+      "range": {
+        "startLine": 484,
+        "startChar": 49,
+        "endLine": 484,
+        "endChar": 50
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b15e50d_69e8e15d",
@@ -267,6 +531,30 @@
       "writtenOn": "2021-09-21T01:02:02Z",
       "side": 1,
       "message": "Is it necessary to support several independent registries?",
+      "range": {
+        "startLine": 488,
+        "startChar": 5,
+        "endLine": 488,
+        "endChar": 28
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fae3ae9_b9372155",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "For type safety yes. It might make sense to dedup the logic in SdkMemberTraitsRegistry and SdkMemberTypesRegistry but that should be done as a separate follow up change.",
+      "parentUuid": "0b15e50d_69e8e15d",
       "range": {
         "startLine": 488,
         "startChar": 5,
@@ -300,6 +588,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dae27eb_bfef76c7",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "This behavior matches what is currently done in SdkMemberTypesRegistry. So, any fixes made here should also be made there (or deduped). Either way that should be done as a separate change.",
+      "parentUuid": "0b4da4a3_136a0e3e",
+      "range": {
+        "startLine": 501,
+        "startChar": 21,
+        "endLine": 501,
+        "endChar": 26
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5398ff25_4c95a3ac",
@@ -313,6 +625,30 @@
       "writtenOn": "2021-09-21T01:02:02Z",
       "side": 1,
       "message": "Iow if two SdkMemberTraitsRegistry objects are created with the same set of traits, they won\u0027t get the same instance. Is that intentional? If so, please comment on the reasoning around it.",
+      "range": {
+        "startLine": 525,
+        "startChar": 4,
+        "endLine": 525,
+        "endChar": 54
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8e27615_7a5f6e53",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "This behavior matches what is currently done in SdkMemberTypesRegistry. So, any fixes made here should also be made there (or deduped). Either way that should be done as a separate change.",
+      "parentUuid": "5398ff25_4c95a3ac",
       "range": {
         "startLine": 525,
         "startChar": 4,
@@ -348,6 +684,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a494e252_e7e02299",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "This approach matches what is currently done in SdkMemberTypesRegistry. So, any fixes made here should also be made there (or deduped). Either way that should be done as a separate change.\n\nI\u0027m not sure that a global function is superior to a global variable in this case.",
+      "parentUuid": "c94c292d_4acfc709",
+      "range": {
+        "startLine": 529,
+        "startChar": 4,
+        "endLine": 529,
+        "endChar": 29
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2c9c98ea_eca6c63b",
         "filename": "android/sdk.go",
         "patchSetId": 2
@@ -359,6 +719,30 @@
       "writtenOn": "2021-09-21T01:02:02Z",
       "side": 1,
       "message": "Shouldn\u0027t this take a context to register the trait in? I noticed in member_trait_test.go that the test has to do global setup rather than using preparers as it ought to for hermeticity.\n\nOtoh this looks copied from the already existing RegisterSdkMemberType, which has the same problem. So I suppose it could be considered a separate refactoring, since storing traits in the context doesn\u0027t make much sense if the member types themselves aren\u0027t.",
+      "range": {
+        "startLine": 533,
+        "startChar": 5,
+        "endLine": 533,
+        "endChar": 27
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a17d7f44_eb52e0d0",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "The traits (like member types) cannot be registered in the Config or Context as they need to be retrieved by the SdkModuleFactory in order to create properties and factory funcs do not get given a context/config object.",
+      "parentUuid": "2c9c98ea_eca6c63b",
       "range": {
         "startLine": 533,
         "startChar": 5,
@@ -392,6 +776,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef5475bd_716b7e8b",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5453b508_49ef1996",
+      "range": {
+        "startLine": 716,
+        "startChar": 85,
+        "endLine": 716,
+        "endChar": 90
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbdadb22_7bcba8c5",
@@ -405,6 +813,30 @@
       "writtenOn": "2021-09-21T01:02:02Z",
       "side": 1,
       "message": "It\u0027s by trait here, isn\u0027t it?",
+      "range": {
+        "startLine": 24,
+        "startChar": 71,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc52f1ad_b6fc3556",
+        "filename": "sdk/member_trait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbdadb22_7bcba8c5",
       "range": {
         "startLine": 24,
         "startChar": 71,
@@ -432,6 +864,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f2934dd_39bc239a",
+        "filename": "sdk/member_trait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "It should read associated structure type, rename went awry. I\u0027ve added a reference to the func but didn\u0027t see a need to move its documentation here as the fields already contains the same information as that method.",
+      "parentUuid": "d8b1ff06_1ddb0618",
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "490e0e62_e3f17e3c",
@@ -445,6 +895,30 @@
       "writtenOn": "2021-09-21T01:02:02Z",
       "side": 1,
       "message": "sdkMemberTraitListProperty? Also a few more times in comments below.",
+      "range": {
+        "startLine": 73,
+        "startChar": 13,
+        "endLine": 73,
+        "endChar": 40
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36dc7143_c55c7281",
+        "filename": "sdk/member_trait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "490e0e62_e3f17e3c",
       "range": {
         "startLine": 73,
         "startChar": 13,
@@ -478,6 +952,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af82f56a_f9b4d965",
+        "filename": "sdk/member_trait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "845bd056_0bf5f238",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 80
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f641283_d5e16325",
@@ -491,6 +989,30 @@
       "writtenOn": "2021-09-21T01:02:02Z",
       "side": 1,
       "message": "Why not nextFieldIndex here instead?\n\nI\u0027d also just call it fieldIndex, because it\u0027s only \"next\" in a lesser part of the loop.",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 6
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e7680a7_959f665c",
+        "filename": "sdk/member_trait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "The reason this behavior is a little overcomplicated is because it is very similar to what is currently done in SdkMemberTypesRegistry but that has to handle member types (license) that do not have a corresponding property whereas this does not.\n\nEither the registry logic is deduped or they are cleaned up. Either way this is something that would be better done in a separate change.",
+      "parentUuid": "8f641283_d5e16325",
       "range": {
         "startLine": 86,
         "startChar": 5,
@@ -524,6 +1046,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21e00184_1e0744a6",
+        "filename": "sdk/member_trait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "I cannot foresee a need for having an arch or os specific trait. I removed this because supporting this is actually a little more involved than setting this tag.",
+      "parentUuid": "d8b15b44_9cef18f3",
+      "range": {
+        "startLine": 96,
+        "startChar": 9,
+        "endLine": 96,
+        "endChar": 33
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "effce79f_b0862436",
@@ -537,6 +1083,30 @@
       "writtenOn": "2021-09-21T01:02:02Z",
       "side": 1,
       "message": "Interesting, I didn\u0027t expect this to create one instance per loop any more than nextFieldIndex. I\u0027d create the getter in a nested lambda instead.\n\nPlease ensure there a test for this with more than one trait in the registry.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 30
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbda379d_f07dd94e",
+        "filename": "sdk/member_trait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "The reason this behavior is a little overcomplicated is because it is very similar to what is currently done in SdkMemberTypesRegistry but that has to handle member types (license) that do not have a corresponding property whereas this does not.\n\nEither the registry logic is deduped or they are cleaned up. Either way this is something that would be better done in a separate change.\n\nAdded a test for multiple traits in one registry.",
+      "parentUuid": "effce79f_b0862436",
       "range": {
         "startLine": 99,
         "startChar": 0,
@@ -570,6 +1140,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca89372d_3b7e0d9b",
+        "filename": "sdk/member_trait_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35fef7c4_f17ed71c",
+      "range": {
+        "startLine": 40,
+        "startChar": 58,
+        "endLine": 40,
+        "endChar": 63
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f94d508_27e75179",
@@ -583,6 +1177,30 @@
       "writtenOn": "2021-09-21T01:02:02Z",
       "side": 1,
       "message": "Please add a variant of this test that doesn\u0027t set the trait.",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3f5efb9_f2b24032",
+        "filename": "sdk/member_trait_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f94d508_27e75179",
       "range": {
         "startLine": 113,
         "startChar": 5,
@@ -610,6 +1228,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c81b5f4a_0bb7f197",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35ac9fac_6a300dd0",
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b4a1287_779c67a7",
@@ -633,6 +1269,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbbf4cfc_0af4762a",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "It isn\u0027t any more.",
+      "parentUuid": "4b4a1287_779c67a7",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 3
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79c3ad2e_332c82b3",
@@ -646,6 +1306,24 @@
       "writtenOn": "2021-09-21T01:02:02Z",
       "side": 1,
       "message": "Please add a description of the map here too.",
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4535d283_129e6ce3",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79c3ad2e_332c82b3",
       "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
