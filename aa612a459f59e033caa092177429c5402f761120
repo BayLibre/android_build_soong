@@ -105,6 +105,24 @@
       "parentUuid": "93b2c1ae_45a554f4",
       "revId": "aa612a459f59e033caa092177429c5402f761120",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc357c4d_8f711eca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T17:07:37Z",
+      "side": 1,
+      "message": "\u003e The tricky part is to tell the nil and invalid states apart, so what would be a real simplification is to get rid of the nil state altogether. However that requires changing other code like that I pointed to.\n\nIs that something that you think is feasible? Plan to do?\n\n\u003e Supporting the three states in OptionalPath would only spread the confusion to other code where it doesn\u0027t even matter, so that\u0027s not a good way to go.\n\nI think that you have sort of done that anyway by adding the reason field to OptionalPath. It now effectively supports three states, path present, path not present but ok and path not present but an error.",
+      "parentUuid": "b23ebc5d_ad4d50c8",
+      "revId": "aa612a459f59e033caa092177429c5402f761120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
