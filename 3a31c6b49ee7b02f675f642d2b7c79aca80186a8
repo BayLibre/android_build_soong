@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d1c27af_a1f877e4",
+        "filename": "cmd/pom2bp/pom2bp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2021-09-21T20:37:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c9d917f_12042c88",
+      "range": {
+        "startLine": 169,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 10
+      },
+      "revId": "3a31c6b49ee7b02f675f642d2b7c79aca80186a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8600d321_9db2e2ed",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-20T22:49:25Z",
       "side": 1,
       "message": "might add a comment that this is for Bazel BUILD file compatibility, and maybe the other if/else lines for completeness if you want",
+      "range": {
+        "startLine": 789,
+        "startChar": 35,
+        "endLine": 789,
+        "endChar": 46
+      },
+      "revId": "3a31c6b49ee7b02f675f642d2b7c79aca80186a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "707ea755_6911c5a4",
+        "filename": "cmd/pom2bp/pom2bp.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2021-09-21T20:37:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8600d321_9db2e2ed",
       "range": {
         "startLine": 789,
         "startChar": 35,
