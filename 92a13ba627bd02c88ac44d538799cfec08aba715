@@ -113,6 +113,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91178800_24844f5d",
+        "filename": "android/module.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-21T18:54:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1960b9f3_237bbfc4",
+      "range": {
+        "startLine": 745,
+        "startChar": 19,
+        "endLine": 745,
+        "endChar": 42
+      },
+      "revId": "92a13ba627bd02c88ac44d538799cfec08aba715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fbb33d5_f4f37ce0",
@@ -197,6 +221,30 @@
       "side": 1,
       "message": "As you later saw, it\u0027s used in the test as well, which is outside of this package. But if we\u0027re going to make that all explicit instead, I\u0027ll have no need of exporting here.",
       "parentUuid": "5fbb33d5_f4f37ce0",
+      "range": {
+        "startLine": 1067,
+        "startChar": 5,
+        "endLine": 1067,
+        "endChar": 31
+      },
+      "revId": "92a13ba627bd02c88ac44d538799cfec08aba715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2839aedf_a5d1b2f6",
+        "filename": "android/module.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1067,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-21T18:54:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96cae8b7_89e26572",
       "range": {
         "startLine": 1067,
         "startChar": 5,
@@ -315,6 +363,24 @@
       "writtenOn": "2021-09-14T20:10:30Z",
       "side": 1,
       "message": "Actually, this should check if we already have a value in `fields`, in which case we should perform our appending algo onto the existing value in `values` and not (bother to) clobber the entry in `fields`.",
+      "revId": "92a13ba627bd02c88ac44d538799cfec08aba715",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f41699a_977fed52",
+        "filename": "android/module.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-21T18:54:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "535365f9_82556d57",
       "revId": "92a13ba627bd02c88ac44d538799cfec08aba715",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
