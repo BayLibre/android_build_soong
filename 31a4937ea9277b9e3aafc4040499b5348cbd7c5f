@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46fed6ad_38fc906b",
+        "filename": "android/module.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-21T20:41:11Z",
+      "side": 1,
+      "message": "Do we need name to be a pointer?",
+      "range": {
+        "startLine": 1078,
+        "startChar": 9,
+        "endLine": 1078,
+        "endChar": 10
+      },
+      "revId": "31a4937ea9277b9e3aafc4040499b5348cbd7c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da08da90_59b3e298",
+        "filename": "android/module.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-21T20:41:11Z",
+      "side": 1,
+      "message": "Rather than panic-ing, you can use ctx.ModuleErrorf which should give an easier to debug error message",
+      "range": {
+        "startLine": 1080,
+        "startChar": 2,
+        "endLine": 1080,
+        "endChar": 7
+      },
+      "revId": "31a4937ea9277b9e3aafc4040499b5348cbd7c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09817303_fac64868",
+        "filename": "android/module.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-21T20:41:11Z",
+      "side": 1,
+      "message": "nit: I know we use 2 for bp2build, but in general, spelling out to is preferable",
+      "range": {
+        "startLine": 1086,
+        "startChar": 4,
+        "endLine": 1086,
+        "endChar": 5
+      },
+      "revId": "31a4937ea9277b9e3aafc4040499b5348cbd7c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73435a38_55bdbb02",
+        "filename": "android/module.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-21T20:41:11Z",
+      "side": 1,
+      "message": "we also need to handle that required is arch-variant",
+      "range": {
+        "startLine": 1091,
+        "startChar": 33,
+        "endLine": 1091,
+        "endChar": 41
+      },
+      "revId": "31a4937ea9277b9e3aafc4040499b5348cbd7c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a7bd7c3_1beaa6a3",
+        "filename": "android/module.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-21T20:41:11Z",
+      "side": 1,
+      "message": "is required a path or dep property?",
+      "range": {
+        "startLine": 1091,
+        "startChar": 13,
+        "endLine": 1091,
+        "endChar": 16
+      },
+      "revId": "31a4937ea9277b9e3aafc4040499b5348cbd7c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eecf211_94afbef7",
+        "filename": "android/module.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1233,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-21T20:41:11Z",
+      "side": 1,
+      "message": "You\u0027re only returning the existing attributes currently, we should update this to return a list with both Attrs and CommonAttrs",
+      "range": {
+        "startLine": 1233,
+        "startChar": 40,
+        "endLine": 1233,
+        "endChar": 51
+      },
+      "revId": "31a4937ea9277b9e3aafc4040499b5348cbd7c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57adfafa_d1449b50",
+        "filename": "android/mutator.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-21T20:41:11Z",
+      "side": 1,
+      "message": "we need to update the interface here to expect a commonAttributes param in order to dedupe Data fields, correct?",
+      "range": {
+        "startLine": 517,
+        "startChar": 32,
+        "endLine": 517,
+        "endChar": 55
+      },
+      "revId": "31a4937ea9277b9e3aafc4040499b5348cbd7c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
