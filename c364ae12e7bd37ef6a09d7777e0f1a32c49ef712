@@ -49,6 +49,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "69820552_c0f5af05",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b96b01b3_f3171e07",
+      "range": {
+        "startLine": 93,
+        "startChar": 40,
+        "endLine": 93,
+        "endChar": 63
+      },
+      "revId": "c364ae12e7bd37ef6a09d7777e0f1a32c49ef712",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7013f6c3_a1b6577f",
         "filename": "cc/library_sdk_member.go",
         "patchSetId": 2
@@ -100,6 +124,54 @@
       "writtenOn": "2021-09-21T02:27:27Z",
       "side": 1,
       "message": "Can you please match the property list from the message as well? (The property in the message in update_test.go from the previous CL doesn\u0027t make any sense to me, but then that test is complicated. Here it should list export_include_dirs, I hope.)",
+      "range": {
+        "startLine": 2037,
+        "startChar": 198,
+        "endLine": 2037,
+        "endChar": 199
+      },
+      "revId": "c364ae12e7bd37ef6a09d7777e0f1a32c49ef712",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "254622f1_15028e8d",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf8f2a82_e3f3b298",
+      "range": {
+        "startLine": 2037,
+        "startChar": 79,
+        "endLine": 2037,
+        "endChar": 80
+      },
+      "revId": "c364ae12e7bd37ef6a09d7777e0f1a32c49ef712",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87f1c1ad_67036a17",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2037,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8493714_bbeafb13",
       "range": {
         "startLine": 2037,
         "startChar": 198,
