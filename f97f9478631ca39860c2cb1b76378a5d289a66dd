@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "380f767a_75d7c46e",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-09-21T01:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04fe4af6_71fe6ae8",
+      "revId": "f97f9478631ca39860c2cb1b76378a5d289a66dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "af0e9546_c7300f64",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-20T22:47:20Z",
       "side": 1,
       "message": "Use android.PathsForModuleSrc to convert this to an android.Paths here instead of inside compileObjs.",
+      "range": {
+        "startLine": 670,
+        "startChar": 2,
+        "endLine": 670,
+        "endChar": 41
+      },
+      "revId": "f97f9478631ca39860c2cb1b76378a5d289a66dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5813d4e7_cb3abddd",
+        "filename": "cc/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-09-21T01:24:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af0e9546_c7300f64",
       "range": {
         "startLine": 670,
         "startChar": 2,
