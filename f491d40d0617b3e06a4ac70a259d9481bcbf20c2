@@ -1,0 +1,653 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41be387a_e68c81d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "I don\u0027t understand this. Should it be \"per module and per sdk/module_export\"?",
+      "range": {
+        "startLine": 19,
+        "startChar": 22,
+        "endLine": 19,
+        "endChar": 52
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12999bcc_d798a835",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "Typo: \"multiple\"",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 21
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e4df62_56a0d425",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "\"the member module\" since you talk about the SDK module just before.",
+      "range": {
+        "startLine": 383,
+        "startChar": 41,
+        "endLine": 383,
+        "endChar": 51
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b17b06af_45bbe39a",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "I read this as \"(non-native) bridge\" which is something I don\u0027t know. I suspect the intention is \"non-(native bridge)\". I suggest rephrasing to drop \"non-\".",
+      "range": {
+        "startLine": 389,
+        "startChar": 41,
+        "endLine": 389,
+        "endChar": 58
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c35e9d8_e8c77c54",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "\"provide\"?",
+      "range": {
+        "startLine": 390,
+        "startChar": 35,
+        "endLine": 390,
+        "endChar": 36
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dc70ce2_6402aaba",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "To make this more concrete, can you use the specific traits from the examples above?",
+      "range": {
+        "startLine": 407,
+        "startChar": 9,
+        "endLine": 407,
+        "endChar": 15
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac0fbef9_4f4e0580",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "Is it necessary that users are able to extend these with their own methods? If not, then a more controlled interface would be to let RegisterSdkMemberTrait take the property name as a string and return an SdkMemberTrait. That would ensure there aren\u0027t any created that don\u0027t get registered, and it\u0027d also reduce the boilerplate both here and in user code.",
+      "range": {
+        "startLine": 414,
+        "startChar": 5,
+        "endLine": 414,
+        "endChar": 19
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbb9614d_0af2a4ac",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "Can\u0027t this just be the implementation type right away? It doesn\u0027t have other implementations afaics.",
+      "range": {
+        "startLine": 431,
+        "startChar": 23,
+        "endLine": 431,
+        "endChar": 32
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f6e3f95_3aa66955",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "I suggest making this a non-method function, to make it more clear that it isn\u0027t destructive on the receiver. Or else clarify the name.",
+      "range": {
+        "startLine": 464,
+        "startChar": 27,
+        "endLine": 464,
+        "endChar": 36
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fccbdf7_8f3d193b",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "Consider creating the map in the returned set right away, to avoid these temporary arrays.",
+      "range": {
+        "startLine": 472,
+        "startChar": 3,
+        "endLine": 472,
+        "endChar": 39
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a01391d3_36964b35",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "For a \"shallow\" data type like this I suggest formatting without internal spaces, so that spaces are easier to spot around it instead.",
+      "range": {
+        "startLine": 484,
+        "startChar": 49,
+        "endLine": 484,
+        "endChar": 50
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b15e50d_69e8e15d",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "Is it necessary to support several independent registries?",
+      "range": {
+        "startLine": 488,
+        "startChar": 5,
+        "endLine": 488,
+        "endChar": 28
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b4da4a3_136a0e3e",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 501,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "What about duplicates (by property name)? If they aren\u0027t allowed (which makes most sense to me) it\u0027d be good to check for that and panic here.",
+      "range": {
+        "startLine": 501,
+        "startChar": 21,
+        "endLine": 501,
+        "endChar": 26
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5398ff25_4c95a3ac",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "Iow if two SdkMemberTraitsRegistry objects are created with the same set of traits, they won\u0027t get the same instance. Is that intentional? If so, please comment on the reasoning around it.",
+      "range": {
+        "startLine": 525,
+        "startChar": 4,
+        "endLine": 525,
+        "endChar": 54
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c94c292d_4acfc709",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "Since this is updated with a global function, it should also be retrieved by a getter so that the variable itself doesn\u0027t need to be exported.",
+      "range": {
+        "startLine": 529,
+        "startChar": 4,
+        "endLine": 529,
+        "endChar": 29
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c9c98ea_eca6c63b",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this take a context to register the trait in? I noticed in member_trait_test.go that the test has to do global setup rather than using preparers as it ought to for hermeticity.\n\nOtoh this looks copied from the already existing RegisterSdkMemberType, which has the same problem. So I suppose it could be considered a separate refactoring, since storing traits in the context doesn\u0027t make much sense if the member types themselves aren\u0027t.",
+      "range": {
+        "startLine": 533,
+        "startChar": 5,
+        "endLine": 533,
+        "endChar": 27
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5453b508_49ef1996",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "Grammar: drop.",
+      "range": {
+        "startLine": 716,
+        "startChar": 85,
+        "endLine": 716,
+        "endChar": 90
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbdadb22_7bcba8c5",
+        "filename": "sdk/member_trait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "It\u0027s by trait here, isn\u0027t it?",
+      "range": {
+        "startLine": 24,
+        "startChar": 71,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8b1ff06_1ddb0618",
+        "filename": "sdk/member_trait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "I didn\u0027t understand what this structure does from this description. What does \"associated structure trait\" mean? Can you please elaborate a bit?\n\nEdit: createDynamicSdkMemberTraits describes it a bit better. Maybe start with moving that doc up here.",
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "490e0e62_e3f17e3c",
+        "filename": "sdk/member_trait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "sdkMemberTraitListProperty? Also a few more times in comments below.",
+      "range": {
+        "startLine": 73,
+        "startChar": 13,
+        "endLine": 73,
+        "endChar": 40
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "845bd056_0bf5f238",
+        "filename": "sdk/member_trait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "I don\u0027t see this in sdkMemberTraitListProperty.",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 80
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f641283_d5e16325",
+        "filename": "sdk/member_trait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "Why not nextFieldIndex here instead?\n\nI\u0027d also just call it fieldIndex, because it\u0027s only \"next\" in a lesser part of the loop.",
+      "range": {
+        "startLine": 86,
+        "startChar": 5,
+        "endLine": 86,
+        "endChar": 6
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8b15b44_9cef18f3",
+        "filename": "sdk/member_trait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "Does this mean we can specify traits{} inside a target{} clause? If so, can you please add a test for that too?",
+      "range": {
+        "startLine": 96,
+        "startChar": 9,
+        "endLine": 96,
+        "endChar": 33
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "effce79f_b0862436",
+        "filename": "sdk/member_trait.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "Interesting, I didn\u0027t expect this to create one instance per loop any more than nextFieldIndex. I\u0027d create the getter in a nested lambda instead.\n\nPlease ensure there a test for this with more than one trait in the registry.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 30
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35fef7c4_f17ed71c",
+        "filename": "sdk/member_trait_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "\"test\" is a bit overloaded below, with java_test_imports etc. I suggest using something else for the dependency here.",
+      "range": {
+        "startLine": 40,
+        "startChar": 58,
+        "endLine": 40,
+        "endChar": 63
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f94d508_27e75179",
+        "filename": "sdk/member_trait_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "Please add a variant of this test that doesn\u0027t set the trait.",
+      "range": {
+        "startLine": 113,
+        "startChar": 5,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35ac9fac_6a300dd0",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "A sentence here describing the structure of the return value would be helpful.",
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b4a1287_779c67a7",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "Why is this necessary?",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 3
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79c3ad2e_332c82b3",
+        "filename": "sdk/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T01:02:02Z",
+      "side": 1,
+      "message": "Please add a description of the map here too.",
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
