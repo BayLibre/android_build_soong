@@ -123,6 +123,24 @@
       "parentUuid": "b23ebc5d_ad4d50c8",
       "revId": "aa612a459f59e033caa092177429c5402f761120",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6bf19dc_5d74d517",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T18:12:26Z",
+      "side": 1,
+      "message": "\u003e Is that something that you think is feasible? Plan to do?\n\nI don\u0027t know and no, respectively. I don\u0027t regard myself as an owner of this code. I\u0027m only trying to make it do what I need it to do, without making things too much worse (but not much better either).\n\n\u003e path not present but ok\n\nNo, it\u0027s intentionally not possible to query OptionalPath for a missing path and a \"\" message. Valid() returns true iff the path is present, and InvalidReason() returns \"\" iff Valid() is true.",
+      "parentUuid": "cc357c4d_8f711eca",
+      "revId": "aa612a459f59e033caa092177429c5402f761120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
