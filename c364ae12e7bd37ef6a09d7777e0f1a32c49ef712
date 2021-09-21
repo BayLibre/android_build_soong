@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68684469_e2f19df7",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T16:51:14Z",
+      "side": 1,
+      "message": "I presume by \"grafted-on native bridge variants\" you are talking about the fact that native bridge variants are nasty because we do not have a proper abstraction for them. i.e. We do not have a structure that incorporates two archTypes, one for the CPU side and one for the binary side, where they would usually be the same but they would be different for native bridge targets.\n\nInstead we have some extra fields in Target which leads and code that treats them as being part of arch variants in some places (e.g. in arch mutator) but in other places (e.g. Target) they are treated as different.\n\n\nIf so, then I agree.",
+      "parentUuid": "6a0e386f_f16f80f6",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 42
+      },
+      "revId": "c364ae12e7bd37ef6a09d7777e0f1a32c49ef712",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b96b01b3_f3171e07",
@@ -84,6 +108,24 @@
       "writtenOn": "2021-09-21T02:27:27Z",
       "side": 1,
       "message": "(Quite a bit of effort for this flag. I hope it\u0027s worth it.)",
+      "revId": "c364ae12e7bd37ef6a09d7777e0f1a32c49ef712",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfec4438_97bbd3bb",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T16:51:14Z",
+      "side": 1,
+      "message": "I could have done it for a lot cheaper but it would have been fragile and could have produced SDKs that were invalid, e.g. silently provided a non-\"native bridge\" variant of a file instead of a native bridge variant.\n\nI think it will be worth the effort.",
+      "parentUuid": "7013f6c3_a1b6577f",
       "revId": "c364ae12e7bd37ef6a09d7777e0f1a32c49ef712",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
