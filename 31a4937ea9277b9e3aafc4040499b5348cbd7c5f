@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9ce2b0a_97adce2e",
+        "filename": "android/module.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-21T23:27:48Z",
+      "side": 1,
+      "message": "If we pass it around later, it should refer to the exact attrs.Name as an alias, not as a copy.",
+      "parentUuid": "46fed6ad_38fc906b",
+      "range": {
+        "startLine": 1078,
+        "startChar": 9,
+        "endLine": 1078,
+        "endChar": 10
+      },
+      "revId": "31a4937ea9277b9e3aafc4040499b5348cbd7c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da08da90_59b3e298",
         "filename": "android/module.go",
         "patchSetId": 28
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-21T20:41:11Z",
       "side": 1,
       "message": "Rather than panic-ing, you can use ctx.ModuleErrorf which should give an easier to debug error message",
+      "range": {
+        "startLine": 1080,
+        "startChar": 2,
+        "endLine": 1080,
+        "endChar": 7
+      },
+      "revId": "31a4937ea9277b9e3aafc4040499b5348cbd7c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "757d6a9c_124d208c",
+        "filename": "android/module.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1080,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-21T23:27:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da08da90_59b3e298",
       "range": {
         "startLine": 1080,
         "startChar": 2,
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-21T20:41:11Z",
       "side": 1,
       "message": "nit: I know we use 2 for bp2build, but in general, spelling out to is preferable",
+      "range": {
+        "startLine": 1086,
+        "startChar": 4,
+        "endLine": 1086,
+        "endChar": 5
+      },
+      "revId": "31a4937ea9277b9e3aafc4040499b5348cbd7c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "630ba107_5bd4bb5a",
+        "filename": "android/module.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-21T23:27:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09817303_fac64868",
       "range": {
         "startLine": 1086,
         "startChar": 4,
@@ -116,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69a610a7_0b3153e7",
+        "filename": "android/module.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-21T23:27:48Z",
+      "side": 1,
+      "message": "As it\u0027s a \"module name\", I\u0027ll take it to mean a dep",
+      "parentUuid": "1a7bd7c3_1beaa6a3",
+      "range": {
+        "startLine": 1091,
+        "startChar": 13,
+        "endLine": 1091,
+        "endChar": 16
+      },
+      "revId": "31a4937ea9277b9e3aafc4040499b5348cbd7c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5eecf211_94afbef7",
@@ -152,6 +248,30 @@
       "writtenOn": "2021-09-21T20:41:11Z",
       "side": 1,
       "message": "we need to update the interface here to expect a commonAttributes param in order to dedupe Data fields, correct?",
+      "range": {
+        "startLine": 517,
+        "startChar": 32,
+        "endLine": 517,
+        "endChar": 55
+      },
+      "revId": "31a4937ea9277b9e3aafc4040499b5348cbd7c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff909421_4e7663a7",
+        "filename": "android/mutator.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-21T23:27:48Z",
+      "side": 1,
+      "message": "Ah, good point. I was trying to avoid requiring every caller to provide \"name\", but I can take it away from here as an explicit argument.",
+      "parentUuid": "57adfafa_d1449b50",
       "range": {
         "startLine": 517,
         "startChar": 32,
