@@ -16,6 +16,24 @@
       "message": "Out of curiosity, how did you spot this?",
       "revId": "3d5cd4d109c0998bdc7523056daac67e77d94e42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91fc1380_e2f5d4f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-21T09:29:42Z",
+      "side": 1,
+      "message": "Oh I see the explanation in commit message.",
+      "parentUuid": "c844532c_d94f0ade",
+      "revId": "3d5cd4d109c0998bdc7523056daac67e77d94e42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
