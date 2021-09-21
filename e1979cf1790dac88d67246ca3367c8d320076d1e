@@ -22,6 +22,30 @@
       },
       "revId": "e1979cf1790dac88d67246ca3367c8d320076d1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c17fcd31_bc163205",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T17:20:13Z",
+      "side": 1,
+      "message": "They are added here to make them available to Make in a \u003cmodule\u003e.apex\u003e Make module. I\u0027m not 100% sure where they are used just that building against prebuilts fails in make without it.",
+      "parentUuid": "5dc99806_58377d70",
+      "range": {
+        "startLine": 182,
+        "startChar": 11,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "e1979cf1790dac88d67246ca3367c8d320076d1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

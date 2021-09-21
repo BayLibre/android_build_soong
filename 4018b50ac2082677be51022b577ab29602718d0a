@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3290d07f_bca739e2",
+        "filename": "android/deapexer.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T17:20:13Z",
+      "side": 1,
+      "message": "Could you add a generic reason of \"\u003cpath\u003e is not exported by ...\" where ... gives some helpful information for a Soong developer?",
+      "revId": "4018b50ac2082677be51022b577ab29602718d0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33746e25_8b45bfda",
+        "filename": "android/deapexer.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T17:20:13Z",
+      "side": 1,
+      "message": "What if there is more than one valid DeapexerInfo? What would that mean?",
+      "revId": "4018b50ac2082677be51022b577ab29602718d0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9716e5d4_5c8290f5",
+        "filename": "android/deapexer.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T17:20:13Z",
+      "side": 1,
+      "message": "Is this going to trigger on unbundled builds at all? If so maybe this should cause a fake DeapexerInfo to be created.",
+      "revId": "4018b50ac2082677be51022b577ab29602718d0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9a8969_9dec7635",
+        "filename": "android/deapexer.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T17:20:13Z",
+      "side": 1,
+      "message": "What if there is more than one invalid DeapexerInfo? What would that mean?",
+      "revId": "4018b50ac2082677be51022b577ab29602718d0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
