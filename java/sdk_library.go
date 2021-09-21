@@ -106,14 +106,8 @@ type apiScope struct {
 	// The tag to use to depend on the stubs library module.
 	stubsTag scopeDependencyTag
 
-	// The tag to use to depend on the stubs source module (if separate from the API module).
-	stubsSourceTag scopeDependencyTag
-
-	// The tag to use to depend on the API file generating module (if separate from the stubs source module).
-	apiFileTag scopeDependencyTag
-
 	// The tag to use to depend on the stubs source and API module.
-	stubsSourceAndApiTag scopeDependencyTag
+	droidstubsTag scopeDependencyTag
 
 	// The scope specific prefix to add to the api file base of "current.txt" or "removed.txt".
 	apiFilePrefix string
@@ -161,20 +155,10 @@ func initApiScope(scope *apiScope) *apiScope {
 		apiScope:         scope,
 		depInfoExtractor: (*scopePaths).extractStubsLibraryInfoFromDependency,
 	}
-	scope.stubsSourceTag = scopeDependencyTag{
-		name:             name + "-stubs-source",
-		apiScope:         scope,
-		depInfoExtractor: (*scopePaths).extractStubsSourceInfoFromDep,
-	}
-	scope.apiFileTag = scopeDependencyTag{
-		name:             name + "-api",
+	scope.droidstubsTag = scopeDependencyTag{
+		name:             name + "-droidstubs",
 		apiScope:         scope,
 		depInfoExtractor: (*scopePaths).extractApiInfoFromDep,
-	}
-	scope.stubsSourceAndApiTag = scopeDependencyTag{
-		name:             name + "-stubs-source-and-api",
-		apiScope:         scope,
-		depInfoExtractor: (*scopePaths).extractStubsSourceAndApiInfoFromApiStubsProvider,
 	}
 
 	// To get the args needed to generate the stubs source append all the args from
@@ -572,40 +556,15 @@ func (paths *scopePaths) treatDepAsApiStubsProvider(dep android.Module, action f
 	}
 }
 
-func (paths *scopePaths) treatDepAsApiStubsSrcProvider(dep android.Module, action func(provider ApiStubsSrcProvider)) error {
-	if apiStubsProvider, ok := dep.(ApiStubsSrcProvider); ok {
-		action(apiStubsProvider)
-		return nil
-	} else {
-		return fmt.Errorf("expected module that implements ApiStubsSrcProvider, e.g. droidstubs")
-	}
-}
-
 func (paths *scopePaths) extractApiInfoFromApiStubsProvider(provider ApiStubsProvider) {
 	paths.currentApiFilePath = android.OptionalPathForPath(provider.ApiFilePath())
 	paths.removedApiFilePath = android.OptionalPathForPath(provider.RemovedApiFilePath())
+	paths.stubsSrcJar = android.OptionalPathForPath(provider.StubsSrcJar())
 }
 
 func (paths *scopePaths) extractApiInfoFromDep(ctx android.ModuleContext, dep android.Module) error {
 	return paths.treatDepAsApiStubsProvider(dep, func(provider ApiStubsProvider) {
 		paths.extractApiInfoFromApiStubsProvider(provider)
-	})
-}
-
-func (paths *scopePaths) extractStubsSourceInfoFromApiStubsProviders(provider ApiStubsSrcProvider) {
-	paths.stubsSrcJar = android.OptionalPathForPath(provider.StubsSrcJar())
-}
-
-func (paths *scopePaths) extractStubsSourceInfoFromDep(ctx android.ModuleContext, dep android.Module) error {
-	return paths.treatDepAsApiStubsSrcProvider(dep, func(provider ApiStubsSrcProvider) {
-		paths.extractStubsSourceInfoFromApiStubsProviders(provider)
-	})
-}
-
-func (paths *scopePaths) extractStubsSourceAndApiInfoFromApiStubsProvider(ctx android.ModuleContext, dep android.Module) error {
-	return paths.treatDepAsApiStubsProvider(dep, func(provider ApiStubsProvider) {
-		paths.extractApiInfoFromApiStubsProvider(provider)
-		paths.extractStubsSourceInfoFromApiStubsProviders(provider)
 	})
 }
 
@@ -1131,8 +1090,8 @@ func (module *SdkLibrary) ComponentDepsMutator(ctx android.BottomUpMutatorContex
 		// Add dependencies to the stubs library
 		ctx.AddVariationDependencies(nil, apiScope.stubsTag, module.stubsLibraryModuleName(apiScope))
 
-		// Add a dependency on the stubs source in order to access both stubs source and api information.
-		ctx.AddVariationDependencies(nil, apiScope.stubsSourceAndApiTag, module.stubsSourceModuleName(apiScope))
+		// Add a dependency on the droidstubs module in order to access stubs source and api information.
+		ctx.AddVariationDependencies(nil, apiScope.droidstubsTag, module.stubsSourceModuleName(apiScope))
 	}
 
 	if module.requiresRuntimeImplementationLibrary() {
@@ -2090,9 +2049,9 @@ func (module *SdkLibraryImport) ComponentDepsMutator(ctx android.BottomUpMutator
 		// Add dependencies to the prebuilt stubs library
 		ctx.AddVariationDependencies(nil, apiScope.stubsTag, android.PrebuiltNameFromSource(module.stubsLibraryModuleName(apiScope)))
 
-		if len(scopeProperties.Stub_srcs) > 0 {
+		if len(scopeProperties.Stub_srcs) > 0 || scopeProperties.Current_api != nil || scopeProperties.Removed_api != nil {
 			// Add dependencies to the prebuilt stubs source library
-			ctx.AddVariationDependencies(nil, apiScope.stubsSourceTag, android.PrebuiltNameFromSource(module.stubsSourceModuleName(apiScope)))
+			ctx.AddVariationDependencies(nil, apiScope.droidstubsTag, android.PrebuiltNameFromSource(module.stubsSourceModuleName(apiScope)))
 		}
 	}
 }

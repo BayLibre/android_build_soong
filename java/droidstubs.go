@@ -150,16 +150,12 @@ type ApiFilePath interface {
 	ApiFilePath() android.Path
 }
 
-type ApiStubsSrcProvider interface {
-	StubsSrcJar() android.Path
-}
-
 // Provider of information about API stubs, used by java_sdk_library.
 type ApiStubsProvider interface {
 	ApiFilePath
 	RemovedApiFilePath() android.Path
 
-	ApiStubsSrcProvider
+	StubsSrcJar() android.Path
 }
 
 // droidstubs passes sources files through Metalava to generate stub .java files that only contain the API to be
