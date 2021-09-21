@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c40ee619_a59ddf64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1549634
+      },
+      "writtenOn": "2021-09-21T04:50:14Z",
+      "side": 1,
+      "message": "This was what I had in mind on the bug, but I\u0027ll let Jim +2 when he sees if this works for him.",
+      "revId": "1ae140da4d4391d50832dbf0ed2d18f6e251958b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
