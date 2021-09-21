@@ -16,6 +16,24 @@
       "message": "This test is quite complicated. Considering it\u0027s tested through the SDK snapshot just in the next CL, why do all this?\n\nDoes it provide any testing value over the test in the next CL when that is in? If not, I\u0027d actually rather avoid it - sooner or later it\u0027ll break and someone will need to spend time understanding it.",
       "revId": "3f17b63f796f6ee0f5e1661239d185e6939a6736",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f974b05_61c63f93",
+        "filename": "sdk/update_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-21T14:36:45Z",
+      "side": 1,
+      "message": "I wanted to test it without having to do all the sdk integration work.\n\nNo, it does not provide better testing than the following CL. Removed.",
+      "parentUuid": "51b40a1c_00c53c6e",
+      "revId": "3f17b63f796f6ee0f5e1661239d185e6939a6736",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
