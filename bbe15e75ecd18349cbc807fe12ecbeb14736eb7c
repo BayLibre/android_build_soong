@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f47fe4f_cbcc3d6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-21T09:29:24Z",
+      "side": 1,
+      "message": "It looks like the tests are failing. You can try to run the `build/bazel/scripts/run_presubmits.sh` script to reproduce the errors locally.",
+      "revId": "bbe15e75ecd18349cbc807fe12ecbeb14736eb7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
