@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc99806_58377d70",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-21T13:19:20Z",
+      "side": 1,
+      "message": "Had to do this to avoid an error when building unbundled on master-art where com.android.conscrypt only exists as a prebuilt_apex:\n\n  internal error: panic in WalkDeps(module \"com.android.conscrypt\" variant \n\"android_common_com.android.conscrypt\", github.com/google/blueprint.(*baseModuleContext).WalkDeps.func1, ) for dependency module \"conscrypt\" variant \"android_common_com.android.conscrypt\" in GenerateBuildActions for module \"com.android.conscrypt\" variant \"android_common_com.android.conscrypt\"\n  Requesting an invalid path: cannot extract files from prebuilt APEXes in unbundled builds\n\nIs it correct to just check Valid here, or should we look at UnbundledBuild instead? Why are deapexed dex jars added here?",
+      "range": {
+        "startLine": 182,
+        "startChar": 11,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "e1979cf1790dac88d67246ca3367c8d320076d1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
