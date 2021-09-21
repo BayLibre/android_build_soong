@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e54dd93_e0d69afc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-21T15:20:46Z",
+      "side": 1,
+      "message": "Noting the issue with `filterArchStruct`, in case it comes up again from us adding tags. (The change to it in https://android-review.googlesource.com/c/platform/build/soong/+/1815376 will go away as part of the new approach.)",
+      "revId": "d30e90c3dfdf2dd4b0f027eed7bd2a39811ab254",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
