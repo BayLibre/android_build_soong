@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c543ea99_1edba8a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-09-21T03:43:38Z",
+      "side": 1,
+      "message": "`genrule` in Soong is not architecture specific, so it generally would only run once during a build (though some of the VNDK/etc logic that used to be only in CC is now global, and genrule may participate in some of it now, I\u0027m not sure). In Soong terms, there is only one variation for the module (or maybe a small number).\n\n`cc_genrule` creates nearly all of the variations that other CC modules do. So it can take other CC module\u0027s outputs as inputs, and create outputs that can be used as inputs to the corresponding variations of other CC modules.\n\nMy understanding is that Bazel doesn\u0027t have a built-in singular concept similar to Soong\u0027s `genrule`, but that it would be a combination of `genrule` + configuration transition (though likely the only harm with omitting the configuration transition is a [potentially much] larger build graph). And that `cc_genrule` would be much more similar to Bazel\u0027s `genrule` without any configuration transitions.\n\nSoong also encodes whether certain configurations are allowed (by not creating a module with certain variations), that\u0027s also a feature that may be used by `cc_genrule` more than many `genrule`s, I don\u0027t know how Bazel plans on handling that concept in general.",
+      "parentUuid": "2e222a9c_af1756f0",
+      "revId": "cff27930ad1086edc0319a6265f95e16faf10ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e13c68e7_85660eaf",
         "filename": "bp2build/cc_genrule_conversion_test.go",
         "patchSetId": 5
