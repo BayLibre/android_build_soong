@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f55b98_9e0a372f",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-22T18:18:16Z",
+      "side": 1,
+      "message": "Maybe mention rebuilds are triggered by soong_build generating command lines to echo textprotos into files?",
+      "revId": "83ac69301da675844a8682c84224d5808ea0713c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
