@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b0df9b4_714e878f",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-22T00:32:02Z",
+      "side": 1,
+      "message": "These are constantly changing implementation details and must not be hardcoded here.",
+      "revId": "a8700043d67cc71722b7891cbe5dc54c47888a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2612380a_f9336f94",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3241,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-22T00:32:02Z",
+      "side": 1,
+      "message": "var topDirs Paths",
+      "revId": "a8700043d67cc71722b7891cbe5dc54c47888a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b118f82c_fe9f669b",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3247,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-22T00:32:02Z",
+      "side": 1,
+      "message": "addAncestors is already doing this check, can it return the top level directories too?",
+      "revId": "a8700043d67cc71722b7891cbe5dc54c47888a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
