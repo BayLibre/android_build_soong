@@ -16,6 +16,24 @@
       "message": "How did you figure that this is required?",
       "revId": "05d0d24fdc118198505c314923b4cbe9d1bea93c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b13097c_7eb3ae8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-22T13:54:18Z",
+      "side": 1,
+      "message": "Alex was try to get performance data for a Soong change and ran into failures running this. Soong failed unable to find environment variable files that I could see on disk, tracked it down to TOP not being set.",
+      "parentUuid": "facf5329_3d954fdf",
+      "revId": "05d0d24fdc118198505c314923b4cbe9d1bea93c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
