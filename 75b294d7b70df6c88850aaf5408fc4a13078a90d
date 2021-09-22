@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6277bf4_2b81e1a6",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T16:48:24Z",
+      "side": 1,
+      "message": "Also, this sort of thing is why I take a reference to the actual `attrs.Data` so I can keep `.Append`ing. That\u0027s the style I expect for all multiply-used, list-based attrs.",
+      "parentUuid": "4d806a4e_dd988278",
+      "range": {
+        "startLine": 403,
+        "startChar": 10,
+        "endLine": 403,
+        "endChar": 33
+      },
+      "revId": "75b294d7b70df6c88850aaf5408fc4a13078a90d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "350bf477_a774fc3d",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "1271bc89_f6eebdf5",
+      "range": {
+        "startLine": 1261,
+        "startChar": 1,
+        "endLine": 1315,
+        "endChar": 0
+      },
+      "revId": "75b294d7b70df6c88850aaf5408fc4a13078a90d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e996664b_d12331b3",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T16:48:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41153d97_97097c42",
       "range": {
         "startLine": 1261,
         "startChar": 1,
@@ -156,6 +204,30 @@
       "side": 1,
       "message": "Good catch. I\u0027ll look out for this in general. It\u0027s something that will need a look-over for every Bazel target attribute we newly commonly handle.",
       "parentUuid": "2d2f4b30_fc2da2e0",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 53
+      },
+      "revId": "75b294d7b70df6c88850aaf5408fc4a13078a90d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e91c02d0_08ac0417",
+        "filename": "python/binary.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T16:48:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3889066_60dca7a6",
       "range": {
         "startLine": 90,
         "startChar": 0,
