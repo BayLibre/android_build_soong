@@ -16,6 +16,24 @@
       "message": "Are we expecting other use cases? If not, it\u0027s a simpler fix to rename the function to something clearer, that to keep a bug open.",
       "revId": "c54ec05dcb1bae6d6faa09ae004517008ab9cb30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31705cd9_62ee45c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T15:20:48Z",
+      "side": 1,
+      "message": "I think it\u0027s quite possible we\u0027ll want to add some other type of tag which would be orthogonal to `arch_variant`. But more to the point, should this really be named e.g. `filterArchStructAndClobberTags`? It can\u0027t just be `filterArchStructAndRemoveTags` because it doesn\u0027t remove from the set of tags; it outright clobbers it.",
+      "parentUuid": "aba65438_0715ff57",
+      "revId": "c54ec05dcb1bae6d6faa09ae004517008ab9cb30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
