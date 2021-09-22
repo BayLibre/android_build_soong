@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dadbf771_bdbd2e6b",
+        "filename": "bazel/properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T20:49:03Z",
+      "side": 1,
+      "message": "¿\"contains describes\" or \"describes\" or \"contains descriptions of\"?",
+      "revId": "0dee867a0816bb6859fb7eddf443fdaf8ca6df33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
