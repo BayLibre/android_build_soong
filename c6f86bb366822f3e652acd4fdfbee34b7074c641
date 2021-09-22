@@ -214,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85ab1c4e_d2bcafe8",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T15:08:39Z",
+      "side": 1,
+      "message": "Was left as context for the intent of the block below listing all the individual tests. Will be removed before submission.",
+      "parentUuid": "f2d8c367_9e99d225",
+      "range": {
+        "startLine": 1276,
+        "startChar": 0,
+        "endLine": 1280,
+        "endChar": 0
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f9db4d1f_93f766be",
         "filename": "bp2build/build_conversion_test.go",
         "patchSetId": 31
@@ -284,6 +308,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6fdd7479_73a3e4ab",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T15:08:39Z",
+      "side": 1,
+      "message": "Just for debugging. Context as to the case that comes up, to make sense of the error messages I share. Will be reverted before submission.",
+      "parentUuid": "c0bbfca9_7295ac96",
+      "range": {
+        "startLine": 138,
+        "startChar": 59,
+        "endLine": 138,
+        "endChar": 73
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2fad885_5b9765d3",
         "filename": "bp2build/testing.go",
         "patchSetId": 31
@@ -295,6 +343,30 @@
       "writtenOn": "2021-09-22T03:46:23Z",
       "side": 1,
       "message": "Same above - I don\u0027t think this is as useful as just reading the test case itself for debugging",
+      "range": {
+        "startLine": 144,
+        "startChar": 27,
+        "endLine": 144,
+        "endChar": 39
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91547a7a_52a29049",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T15:08:39Z",
+      "side": 1,
+      "message": "Same response; will be reverted before submission.",
+      "parentUuid": "d2fad885_5b9765d3",
       "range": {
         "startLine": 144,
         "startChar": 27,
