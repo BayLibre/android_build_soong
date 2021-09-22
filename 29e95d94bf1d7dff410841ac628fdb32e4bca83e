@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a69c997_9d086cac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-22T04:28:17Z",
+      "side": 1,
+      "message": "Thank you for the investigation and the fix!",
+      "revId": "29e95d94bf1d7dff410841ac628fdb32e4bca83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ec3b632_3d818173",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-22T04:28:17Z",
+      "side": 1,
+      "message": "More specifically, dex_preopt_odex_install.mk?",
+      "range": {
+        "startLine": 270,
+        "startChar": 57,
+        "endLine": 270,
+        "endChar": 66
+      },
+      "revId": "29e95d94bf1d7dff410841ac628fdb32e4bca83e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
