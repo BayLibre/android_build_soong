@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f293921_7d7b50c9",
+        "filename": "java/robolectric.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-22T15:30:42Z",
+      "side": 1,
+      "message": "You can replace all of this with the code from ag/15339785, and preserve the author and change-id, and add merged-in.",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 13
+      },
+      "revId": "cac03bf608ef0d22c9564211ad9e8ff41a667510",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
