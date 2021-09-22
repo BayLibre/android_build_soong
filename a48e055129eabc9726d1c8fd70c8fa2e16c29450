@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60589583_7ffcc106",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-22T20:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "845b693c_68061ef3",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "a48e055129eabc9726d1c8fd70c8fa2e16c29450",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9115af2_5d8e45ee",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-22T09:34:13Z",
       "side": 1,
       "message": "This does not apply any more.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 51
+      },
+      "revId": "a48e055129eabc9726d1c8fd70c8fa2e16c29450",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6450ec54_3901b905",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-22T20:41:20Z",
+      "side": 1,
+      "message": "Why not? As discussed I haven\u0027t done anything about the logic, just changed the type and the way unset checks are written.",
+      "parentUuid": "d9115af2_5d8e45ee",
       "range": {
         "startLine": 15,
         "startChar": 0,
