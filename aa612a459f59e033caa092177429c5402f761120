@@ -141,6 +141,24 @@
       "parentUuid": "cc357c4d_8f711eca",
       "revId": "aa612a459f59e033caa092177429c5402f761120",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11fe6618_34357ac9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-22T09:34:13Z",
+      "side": 1,
+      "message": "I just realised that you\u0027ve switched from *OptionalPath to OptionalDexJarPath. I missed that.",
+      "parentUuid": "b6bf19dc_5d74d517",
+      "revId": "aa612a459f59e033caa092177429c5402f761120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
