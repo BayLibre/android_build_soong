@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e137ddc_1072d99e",
+        "filename": "android/module.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-22T03:46:23Z",
+      "side": 1,
+      "message": "godoc style: start the sentence with the struct name instead, e.g.\n\n\"CommonAttributes represents the common Bazel attributes..\"",
+      "range": {
+        "startLine": 847,
+        "startChar": 3,
+        "endLine": 847,
+        "endChar": 18
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b43517e_8e18ed30",
+        "filename": "android/module.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-22T03:46:23Z",
+      "side": 1,
+      "message": "to keep formatting consistent, place this comment above the Name field",
+      "range": {
+        "startLine": 851,
+        "startChar": 13,
+        "endLine": 851,
+        "endChar": 50
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "796babc0_4d763614",
+        "filename": "android/module.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-22T03:46:23Z",
+      "side": 1,
+      "message": "nit: prefer more verbose comments, like \"Data is inherited from the \u0027required\u0027 property\"",
+      "range": {
+        "startLine": 852,
+        "startChar": 1,
+        "endLine": 852,
+        "endChar": 15
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ab1ab4_8b3a9907",
+        "filename": "android/module.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-22T03:46:23Z",
+      "side": 1,
+      "message": "This should be a method with CommonAttributes as the receiver, since it\u0027s being modified. i.e.\n\n  func (attrs *CommonAttributes) setBp2buildAttrs(ctx *topDownMutatorContext) {\n  ...\n  }",
+      "range": {
+        "startLine": 1076,
+        "startChar": 5,
+        "endLine": 1076,
+        "endChar": 87
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2d8c367_9e99d225",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-22T03:46:23Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 1276,
+        "startChar": 0,
+        "endLine": 1280,
+        "endChar": 0
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9db4d1f_93f766be",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-22T03:46:23Z",
+      "side": 1,
+      "message": "It\u0027s difficult to trace through this code to understand what exactly is being tested (expected and actual data). It\u0027s totally fine to have some duplication for readability. \n\nPlease split this up into individual test functions with explicit test data (like the other tests in this directory), and avoid relying on complex internal test infrastructure to dynamically construct test data like this.",
+      "range": {
+        "startLine": 1261,
+        "startChar": 1,
+        "endLine": 1315,
+        "endChar": 0
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0bbfca9_7295ac96",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-22T03:46:23Z",
+      "side": 1,
+      "message": "Was this intentional or just for debugging? This test case only compares expected/actual counts, and emitting the blueprint code may be too noisy (and doesn\u0027t show the full picture of the test case, too, since some tests use more than 1 blueprint file with `filesystems)",
+      "range": {
+        "startLine": 138,
+        "startChar": 59,
+        "endLine": 138,
+        "endChar": 73
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2fad885_5b9765d3",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-22T03:46:23Z",
+      "side": 1,
+      "message": "Same above - I don\u0027t think this is as useful as just reading the test case itself for debugging",
+      "range": {
+        "startLine": 144,
+        "startChar": 27,
+        "endLine": 144,
+        "endChar": 39
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
