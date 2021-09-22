@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f91f025_2d884dae",
+        "filename": "android/module.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T15:29:29Z",
+      "side": 1,
+      "message": "I was following the feedback Jin gave. Which approach should I follow?",
+      "parentUuid": "a97621e9_a7e5356c",
+      "range": {
+        "startLine": 1234,
+        "startChar": 40,
+        "endLine": 1234,
+        "endChar": 71
+      },
+      "revId": "75b294d7b70df6c88850aaf5408fc4a13078a90d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bde1bfa0_1f999c07",
         "filename": "bp2build/build_conversion.go",
         "patchSetId": 32
@@ -49,6 +73,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d806a4e_dd988278",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T15:29:29Z",
+      "side": 1,
+      "message": "I could do so, but that would require reflection, which I thought we were trying to entirely avoid. Or do you mean inside of `extractModuleProperties` we should dedupe and merge existing values (or just error-out)? In the former case, I\u0027d carry over some of the old reflection logic I had.",
+      "parentUuid": "bde1bfa0_1f999c07",
+      "range": {
+        "startLine": 403,
+        "startChar": 10,
+        "endLine": 403,
+        "endChar": 33
+      },
+      "revId": "75b294d7b70df6c88850aaf5408fc4a13078a90d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "350bf477_a774fc3d",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T15:29:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1271bc89_f6eebdf5",
+      "range": {
+        "startLine": 1261,
+        "startChar": 1,
+        "endLine": 1315,
+        "endChar": 0
+      },
+      "revId": "75b294d7b70df6c88850aaf5408fc4a13078a90d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d2f4b30_fc2da2e0",
         "filename": "python/binary.go",
         "patchSetId": 32
@@ -60,6 +132,30 @@
       "writtenOn": "2021-09-22T15:22:51Z",
       "side": 1,
       "message": "shouldn\u0027t Data be moved to CommonAttributes? (likely also for sh_binary bp2build)",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 53
+      },
+      "revId": "75b294d7b70df6c88850aaf5408fc4a13078a90d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3889066_60dca7a6",
+        "filename": "python/binary.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T15:29:29Z",
+      "side": 1,
+      "message": "Good catch. I\u0027ll look out for this in general. It\u0027s something that will need a look-over for every Bazel target attribute we newly commonly handle.",
+      "parentUuid": "2d2f4b30_fc2da2e0",
       "range": {
         "startLine": 90,
         "startChar": 0,

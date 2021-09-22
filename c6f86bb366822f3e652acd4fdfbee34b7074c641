@@ -189,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc293381_1709812b",
+        "filename": "android/module.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T15:29:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b08ecc8e_15409c7b",
+      "range": {
+        "startLine": 1078,
+        "startChar": 9,
+        "endLine": 1078,
+        "endChar": 10
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2d8c367_9e99d225",
@@ -321,6 +345,30 @@
       "side": 1,
       "message": "In general, DRY isn\u0027t what we\u0027re aiming for with tests. https://testing.googleblog.com/2019/12/testing-on-toilet-tests-too-dry-make.html\n\nIt is preferable to minimize logic in tests and it should be quite clear what the inputs/expected outputs are:\nhttps://testing.googleblog.com/2014/07/testing-on-toilet-dont-put-logic-in.html",
       "parentUuid": "8fff8db1_52a5a443",
+      "range": {
+        "startLine": 1261,
+        "startChar": 1,
+        "endLine": 1315,
+        "endChar": 0
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41153d97_97097c42",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T15:29:29Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1271bc89_f6eebdf5",
       "range": {
         "startLine": 1261,
         "startChar": 1,
