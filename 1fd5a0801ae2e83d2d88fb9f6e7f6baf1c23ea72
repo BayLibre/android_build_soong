@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65dbd54d_39b638e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-22T14:58:47Z",
+      "side": 1,
+      "message": "I\u0027ve addressed the outstanding issues in follow up changes.",
+      "revId": "1fd5a0801ae2e83d2d88fb9f6e7f6baf1c23ea72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
