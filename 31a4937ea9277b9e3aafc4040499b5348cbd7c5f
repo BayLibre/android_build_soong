@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b08ecc8e_15409c7b",
+        "filename": "android/module.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1078,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-22T15:22:51Z",
+      "side": 1,
+      "message": "but all we\u0027re doing is a validity check that name is set and we have no plans to manipulate the name. we don\u0027t need to handle every eventuality of how code may change over time.\n\nwe could just check len(attrs.Name) directly below.",
+      "parentUuid": "e9ce2b0a_97adce2e",
+      "range": {
+        "startLine": 1078,
+        "startChar": 9,
+        "endLine": 1078,
+        "endChar": 10
+      },
+      "revId": "31a4937ea9277b9e3aafc4040499b5348cbd7c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da08da90_59b3e298",
         "filename": "android/module.go",
         "patchSetId": 28

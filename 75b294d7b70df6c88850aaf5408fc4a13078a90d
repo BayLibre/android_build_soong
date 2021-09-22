@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a97621e9_a7e5356c",
+        "filename": "android/module.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-22T15:22:51Z",
+      "side": 1,
+      "message": "can we just make this a list of interface{} as that is what GetProperties() returns. For the purposes of bp2build, it shouldn\u0027t care if one of these is CommonAttributes and the other is non-common properties.",
+      "range": {
+        "startLine": 1234,
+        "startChar": 40,
+        "endLine": 1234,
+        "endChar": 71
+      },
+      "revId": "75b294d7b70df6c88850aaf5408fc4a13078a90d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde1bfa0_1f999c07",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-22T15:22:51Z",
+      "side": 1,
+      "message": "Should we add a check for bp2build that we can\u0027t have multiple attributes with the same name so that we don\u0027t end up with `data` attrs coming from multiple places? (e.g. as is occurring in python/sh currently)",
+      "range": {
+        "startLine": 403,
+        "startChar": 10,
+        "endLine": 403,
+        "endChar": 33
+      },
+      "revId": "75b294d7b70df6c88850aaf5408fc4a13078a90d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d2f4b30_fc2da2e0",
+        "filename": "python/binary.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-22T15:22:51Z",
+      "side": 1,
+      "message": "shouldn\u0027t Data be moved to CommonAttributes? (likely also for sh_binary bp2build)",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 53
+      },
+      "revId": "75b294d7b70df6c88850aaf5408fc4a13078a90d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
