@@ -236,6 +236,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcff5e7e_cddd8de0",
+        "filename": "android/module.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T18:25:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73435a38_55bdbb02",
+      "range": {
+        "startLine": 1091,
+        "startChar": 33,
+        "endLine": 1091,
+        "endChar": 41
+      },
+      "revId": "31a4937ea9277b9e3aafc4040499b5348cbd7c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5eecf211_94afbef7",
@@ -325,6 +349,30 @@
         "startChar": 32,
         "endLine": 517,
         "endChar": 55
+      },
+      "revId": "31a4937ea9277b9e3aafc4040499b5348cbd7c5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eee8d3a_5837b836",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T18:25:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3551da22_68a13cd1",
+      "range": {
+        "startLine": 403,
+        "startChar": 10,
+        "endLine": 403,
+        "endChar": 33
       },
       "revId": "31a4937ea9277b9e3aafc4040499b5348cbd7c5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
