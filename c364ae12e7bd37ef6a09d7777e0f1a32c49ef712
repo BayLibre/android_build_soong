@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "518ffc52_9968a7fd",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-22T18:12:55Z",
+      "side": 1,
+      "message": "Yes, that\u0027s what I mean.",
+      "parentUuid": "68684469_e2f19df7",
+      "range": {
+        "startLine": 90,
+        "startChar": 2,
+        "endLine": 90,
+        "endChar": 42
+      },
+      "revId": "c364ae12e7bd37ef6a09d7777e0f1a32c49ef712",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b96b01b3_f3171e07",
