@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc98be48_7c2c349d",
+        "filename": "android/module.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T14:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e137ddc_1072d99e",
+      "range": {
+        "startLine": 847,
+        "startChar": 3,
+        "endLine": 847,
+        "endChar": 18
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b43517e_8e18ed30",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-22T03:46:23Z",
       "side": 1,
       "message": "to keep formatting consistent, place this comment above the Name field",
+      "range": {
+        "startLine": 851,
+        "startChar": 13,
+        "endLine": 851,
+        "endChar": 50
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bc787a5_26481e6f",
+        "filename": "android/module.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T14:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b43517e_8e18ed30",
       "range": {
         "startLine": 851,
         "startChar": 13,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "854aa347_818be9ac",
+        "filename": "android/module.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T14:50:26Z",
+      "side": 1,
+      "message": "I can rephrase, but it\u0027s oriented towards `// {prefix statement} Required, OtherPropToData, YetAnother, {...}`",
+      "parentUuid": "796babc0_4d763614",
+      "range": {
+        "startLine": 852,
+        "startChar": 1,
+        "endLine": 852,
+        "endChar": 15
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9ab1ab4_8b3a9907",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-22T03:46:23Z",
       "side": 1,
       "message": "This should be a method with CommonAttributes as the receiver, since it\u0027s being modified. i.e.\n\n  func (attrs *CommonAttributes) setBp2buildAttrs(ctx *topDownMutatorContext) {\n  ...\n  }",
+      "range": {
+        "startLine": 1076,
+        "startChar": 5,
+        "endLine": 1076,
+        "endChar": 87
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "599148c8_2d06b971",
+        "filename": "android/module.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T14:50:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9ab1ab4_8b3a9907",
       "range": {
         "startLine": 1076,
         "startChar": 5,
