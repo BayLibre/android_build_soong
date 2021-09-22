@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "797173f5_8c5c3e0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-22T12:34:51Z",
+      "side": 1,
+      "message": "You also need a test in sdk/java_sdk_test.go to make sure that the generated sdk snapshot is valid. YMMV but I often split this sort of change into two, one to add the basic capability to source/prebuilt and then a follow up to export it as part of the sdk as it makes it easier to see which parts have been tested and which have not. Feel free to add the sdk test in this change if you want.",
+      "revId": "2b56243f3a84d9beedf680aba761e1680ef407b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b2e8300_b1f4e397",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-22T12:34:51Z",
+      "side": 1,
+      "message": "Please add the annotations.zip to this comment.",
+      "revId": "2b56243f3a84d9beedf680aba761e1680ef407b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e61a9dfa_542760fc",
+        "filename": "java/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-22T12:34:51Z",
+      "side": 1,
+      "message": "Presumably this is needed because of the \"annotations_enabled: true\" setting.",
+      "revId": "2b56243f3a84d9beedf680aba761e1680ef407b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
