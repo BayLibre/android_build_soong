@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dcbea760_aa9b5a30",
+        "filename": "android/module.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-22T17:17:32Z",
+      "side": 1,
+      "message": "I don\u0027t see a comment from Jin to this extent. In general, that this is CommonAttributes and an interface{} seems more like an implementation detail, and eventually in bp2build will cast is to a list of interface.\n\nI\u0027d lean toward the return type here being []interface{} but if you can share Jin\u0027s feedback that\u0027d help me understand why we may want a different return.",
+      "parentUuid": "6f91f025_2d884dae",
+      "range": {
+        "startLine": 1234,
+        "startChar": 40,
+        "endLine": 1234,
+        "endChar": 71
+      },
+      "revId": "75b294d7b70df6c88850aaf5408fc4a13078a90d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bde1bfa0_1f999c07",
         "filename": "bp2build/build_conversion.go",
         "patchSetId": 32
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "Also, this sort of thing is why I take a reference to the actual `attrs.Data` so I can keep `.Append`ing. That\u0027s the style I expect for all multiply-used, list-based attrs.",
       "parentUuid": "4d806a4e_dd988278",
+      "range": {
+        "startLine": 403,
+        "startChar": 10,
+        "endLine": 403,
+        "endChar": 33
+      },
+      "revId": "75b294d7b70df6c88850aaf5408fc4a13078a90d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3551da22_68a13cd1",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-22T17:17:32Z",
+      "side": 1,
+      "message": "By check, I meant do a validation check for duplicate attribute names and error out if duplicate attribute names are found. A check like this would enforce specifying common attributes in CommonAttributes.\n\nIf we do add this check, a natural place to do this would be within extractModuleProperties itself as implementing it there  wouldn\u0027t require additional reflection. extractModuleProperties is populating a map of attribute name : attribute BUILD-ified string, so the check should be straightforward when populating that map. It may be incompatible with queryview, so we may need a parameter, e.g. allowDuplicateProperties, to know whether to error/not.",
+      "parentUuid": "b6277bf4_2b81e1a6",
       "range": {
         "startLine": 403,
         "startChar": 10,

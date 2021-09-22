@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00204526_12504716",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-22T17:17:32Z",
+      "side": 1,
+      "message": "can we add a test case that merges a data from the bp2build mutator and data from required?",
+      "range": {
+        "startLine": 1220,
+        "startChar": 5,
+        "endLine": 1220,
+        "endChar": 43
+      },
+      "revId": "4dff950cad401af2a04271478b7bf111d3fa78f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52802308_e7f27ee8",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-22T17:17:32Z",
+      "side": 1,
+      "message": "can we have more descriptive names here? e.g. required_converted_to_data",
+      "range": {
+        "startLine": 1223,
+        "startChar": 40,
+        "endLine": 1223,
+        "endChar": 66
+      },
+      "revId": "4dff950cad401af2a04271478b7bf111d3fa78f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0322ab02_837d67c9",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 1248,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-22T17:17:32Z",
+      "side": 1,
+      "message": "I\u0027m not sure what this description is implying?",
+      "range": {
+        "startLine": 1248,
+        "startChar": 40,
+        "endLine": 1248,
+        "endChar": 56
+      },
+      "revId": "4dff950cad401af2a04271478b7bf111d3fa78f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
