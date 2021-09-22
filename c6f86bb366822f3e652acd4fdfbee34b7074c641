@@ -237,6 +237,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8fff8db1_52a5a443",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 31
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-22T15:04:25Z",
+      "side": 1,
+      "message": "So the syntax I\u0027m aiming for with this is:\n```\ncollectivelyTest(commonBazelAttributeMultiplyUsed,\n    collectiveTest{oneSoongProp, itsValue, itsBazelValue},\n    collectiveTest{anotherSoongProp, alsoItsValue, alsoItsBazelValue},\n    ...\n)\n...\nsingularTest(commonBazelAttributeUsedOnce, itsSoongProp, itsValue, itsBazelValue)\n...\n// Run the auto-collected set of all the prop-\u003eattr assignments, with the multiply-used attrs having their values collected into an array for them, and the once-used attrs simply having their own entry\n```\n\nI\u0027m trying to avoid the case where when adding a new property we have to keep 2+ test cases in sync, along different semantics: one mapping individually for the attribute, potentially other mixes, and another collecting all the properties per multiply-used attribute.\n\nIs splitting all that out into replicated tests to keep in sync preferable?",
+      "parentUuid": "f9db4d1f_93f766be",
+      "range": {
+        "startLine": 1261,
+        "startChar": 1,
+        "endLine": 1315,
+        "endChar": 0
+      },
+      "revId": "c6f86bb366822f3e652acd4fdfbee34b7074c641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c0bbfca9_7295ac96",
         "filename": "bp2build/testing.go",
         "patchSetId": 31
