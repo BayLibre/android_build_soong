@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aba65438_0715ff57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-22T01:36:34Z",
+      "side": 1,
+      "message": "Are we expecting other use cases? If not, it\u0027s a simpler fix to rename the function to something clearer, that to keep a bug open.",
+      "revId": "c54ec05dcb1bae6d6faa09ae004517008ab9cb30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
