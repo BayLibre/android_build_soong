@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1ac9249_e5d1d902",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-22T14:51:43Z",
+      "side": 1,
+      "message": "Feel free to clean it up! If there is some test preparation that can be shared you can easily extract that into a separate FixturePreparer object that can be used by multiple tests. The problem with removing duplication in tests by refactoring is you can make them harder to understand.",
+      "parentUuid": "c9052922_e7aa3223",
+      "revId": "2b56243f3a84d9beedf680aba761e1680ef407b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b2e8300_b1f4e397",
