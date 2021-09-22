@@ -330,6 +330,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8a0c4b_9acd3c1f",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-22T17:59:03Z",
+      "side": 1,
+      "message": "Yes, I think it\u0027s clear it\u0027s the right choice for SdkMemberType, but that\u0027s a different thing. The traits are effectively just identifiers, nothing more. So I thought it\u0027d be better to start simple, i.e. just typed strings, and extend to something like this only when proven necessary. And as mentioned, a nice thing with that is that it\u0027s easy to ensure there are no trait instances that aren\u0027t registered.\n\n\u003e We could add a helper func, e.g. RegisterBasicSdkMemberTrait(propertyName string)\n\nSure, that\u0027d help reduce the boilerplate in the \"user\" code, but there\u0027s still the interface and the ...Base struct etc here.\n\nAnyway, now with it all in place I don\u0027t feel like blocking on this.",
+      "parentUuid": "6b4f4c2d_04de1016",
+      "range": {
+        "startLine": 414,
+        "startChar": 5,
+        "endLine": 414,
+        "endChar": 19
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bbb9614d_0af2a4ac",
@@ -367,6 +391,30 @@
       "side": 1,
       "message": "It could but the current implementation is simply a map and I don\u0027t want code that uses this to treat this as a map just in case it needs to be changed. So, the reason for using the interface is not to allow multiple implementations but just to insulate code that uses it from the implementation.",
       "parentUuid": "bbb9614d_0af2a4ac",
+      "range": {
+        "startLine": 431,
+        "startChar": 23,
+        "endLine": 431,
+        "endChar": 32
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cff2f1c_c8e5a2e7",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-22T17:59:03Z",
+      "side": 1,
+      "message": "You could wrap the map in a struct. I don\u0027t think there\u0027s any runtime cost to that, as long as you don\u0027t pass around pointers to the struct. I\u0027d prefer it to avoid repeating the functions, but consider it optional.",
+      "parentUuid": "ebeda360_2429a3a3",
       "range": {
         "startLine": 431,
         "startChar": 23,
@@ -424,6 +472,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6047c69_0c033c42",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-22T17:59:03Z",
+      "side": 1,
+      "message": "I was thinking CopyAndRemoveAll (or a global function taking it as an argument instead), but \"Subtract\" is ok.",
+      "parentUuid": "ea7b4a83_57fbb817",
+      "range": {
+        "startLine": 464,
+        "startChar": 27,
+        "endLine": 464,
+        "endChar": 36
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5fccbdf7_8f3d193b",
@@ -461,6 +533,30 @@
       "side": 1,
       "message": "The reason for using these arrays is to allow the NewSdkMemberTraitSet() method to be used to create the set so as to avoid duplicating creation code here.",
       "parentUuid": "5fccbdf7_8f3d193b",
+      "range": {
+        "startLine": 472,
+        "startChar": 3,
+        "endLine": 472,
+        "endChar": 39
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f18a81a0_1aa3ec30",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-22T17:59:03Z",
+      "side": 1,
+      "message": "Understood, but a) there\u0027s no significant amount of code in NewSdkMemberTraitSet (and no custom logic at all), and b) this function is bound to the implementation already. Hence the benefit is negligible, and it\u0027s one paper cut less adding to the slow Soong runs.",
+      "parentUuid": "36f5c854_325bc474",
       "range": {
         "startLine": 472,
         "startChar": 3,
@@ -579,6 +675,30 @@
       "side": 1,
       "message": "Change to dedup -\u003e https://r.android.com/c/1832258/",
       "parentUuid": "4fae3ae9_b9372155",
+      "range": {
+        "startLine": 488,
+        "startChar": 5,
+        "endLine": 488,
+        "endChar": 28
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee38a70d_38d384c8",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-22T17:59:03Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t mean independent wrt SdkMemberTypesRegistry, but supporting several instances of traits registries: The registry is an exported type here, and below there\u0027s code that passes registry instances around. That leads to the impression that there may be several registries in play, and then what does that mean, especially wrt caches and Once keys? But I see that\u0027s getting addressed in https://r.android.com/1832257, so that\u0027s good.",
+      "parentUuid": "dd114d96_663ec74e",
       "range": {
         "startLine": 488,
         "startChar": 5,
@@ -839,6 +959,30 @@
       "side": 1,
       "message": "The traits (like member types) cannot be registered in the Config or Context as they need to be retrieved by the SdkModuleFactory in order to create properties and factory funcs do not get given a context/config object.",
       "parentUuid": "2c9c98ea_eca6c63b",
+      "range": {
+        "startLine": 533,
+        "startChar": 5,
+        "endLine": 533,
+        "endChar": 27
+      },
+      "revId": "f491d40d0617b3e06a4ac70a259d9481bcbf20c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d55cc1d_e6a6c657",
+        "filename": "android/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-22T17:59:03Z",
+      "side": 1,
+      "message": "I see. Do you know if there\u0027s a deeper reason for that? For testing it\u0027d clearly be preferable to avoid this global state. Not that it\u0027s in scope to revamp that here, just wondering.",
+      "parentUuid": "a17d7f44_eb52e0d0",
       "range": {
         "startLine": 533,
         "startChar": 5,
