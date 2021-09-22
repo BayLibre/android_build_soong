@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a41ba175_26b10b27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-09-22T12:48:17Z",
+      "side": 1,
+      "message": "done, thanks for noticing that.\n\nThere\u0027s an awful lot of duplication in that file. I noticed that in my experimental change to (unconditionally) add docstubs to sdk output for java_sdk_libs. Updating that test file (and then finding the typos) was a bit of a nightmare",
+      "parentUuid": "797173f5_8c5c3e0b",
+      "revId": "2b56243f3a84d9beedf680aba761e1680ef407b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b2e8300_b1f4e397",
@@ -37,6 +55,42 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5aa43f4b_cdd5ae0c",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-09-22T12:48:17Z",
+      "side": 1,
+      "message": "Done, I made the comment more generic.",
+      "parentUuid": "1b2e8300_b1f4e397",
+      "revId": "2b56243f3a84d9beedf680aba761e1680ef407b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e0877ea_8c45af5e",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-09-22T12:48:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b2e8300_b1f4e397",
+      "revId": "2b56243f3a84d9beedf680aba761e1680ef407b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e61a9dfa_542760fc",
         "filename": "java/testing.go",
         "patchSetId": 1
@@ -48,6 +102,24 @@
       "writtenOn": "2021-09-22T12:34:51Z",
       "side": 1,
       "message": "Presumably this is needed because of the \"annotations_enabled: true\" setting.",
+      "revId": "2b56243f3a84d9beedf680aba761e1680ef407b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d7b75fa_ee63cb1a",
+        "filename": "java/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-09-22T12:48:17Z",
+      "side": 1,
+      "message": "Yeah, java_sdk_library adds that dep when annotations_enabled: true. Didn\u0027t feel like it warranted a comment since the other modules here do not have one.",
+      "parentUuid": "e61a9dfa_542760fc",
       "revId": "2b56243f3a84d9beedf680aba761e1680ef407b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
