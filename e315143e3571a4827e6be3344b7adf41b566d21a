@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a42c491_e6fe29af",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-23T21:24:22Z",
+      "side": 1,
+      "message": "whoops, i should remove the fmt.Sprintf here. doing that...",
+      "revId": "e315143e3571a4827e6be3344b7adf41b566d21a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
