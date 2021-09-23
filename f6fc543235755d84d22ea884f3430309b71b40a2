@@ -22,6 +22,30 @@
       },
       "revId": "f6fc543235755d84d22ea884f3430309b71b40a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "050007e6_2c7cb9be",
+        "filename": "android/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-23T09:40:17Z",
+      "side": 0,
+      "message": "Renamed to include the \"s\".",
+      "parentUuid": "086bbb5d_eff52067",
+      "range": {
+        "startLine": 816,
+        "startChar": 16,
+        "endLine": 816,
+        "endChar": 17
+      },
+      "revId": "f6fc543235755d84d22ea884f3430309b71b40a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
