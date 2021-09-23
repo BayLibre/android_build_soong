@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5f17618_0c6ce1dd",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2021-09-23T08:06:38Z",
+      "side": 1,
+      "message": "Adding Anton - is permitted_packages used for anything else than ART?",
+      "revId": "d5cf9e45f834834f23cf76a41aca59f5becde2e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
