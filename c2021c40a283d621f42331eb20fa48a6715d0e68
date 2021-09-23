@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49b82a24_75a881d0",
+        "filename": "android/bazel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-23T00:52:40Z",
+      "side": 1,
+      "message": "Do you mind filing a bug for this, with the error message that you\u0027re seeing? Ideally, each module in the denylist should have an associated bug.",
+      "range": {
+        "startLine": 280,
+        "startChar": 2,
+        "endLine": 280,
+        "endChar": 24
+      },
+      "revId": "c2021c40a283d621f42331eb20fa48a6715d0e68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1769a381_2f29c0d0",
         "filename": "genrule/genrule.go",
         "patchSetId": 10
@@ -38,6 +61,30 @@
       "side": 1,
       "message": "I tried it locally, and there were some presubmit errors if both use RULEDIR.",
       "parentUuid": "1769a381_2f29c0d0",
+      "range": {
+        "startLine": 842,
+        "startChar": 21,
+        "endLine": 842,
+        "endChar": 34
+      },
+      "revId": "c2021c40a283d621f42331eb20fa48a6715d0e68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fc32cda_70b19275",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-23T00:52:40Z",
+      "side": 1,
+      "message": "I see -- I think it\u0027s more readable to pass the module type as the parameter here, and switch between RULEDIR and GENDIR right before the strings.Replace calls.",
+      "parentUuid": "d0cd57a0_adec517d",
       "range": {
         "startLine": 842,
         "startChar": 21,
