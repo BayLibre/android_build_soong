@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6eaf716_9947abfd",
+        "filename": "java/base.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-09-23T16:46:47Z",
+      "side": 1,
+      "message": "I don\u0027t think this comment is really necessary as documentation of the attribute, and isn\u0027t really understandable for people that have no context on what \"module\" here even refers to (in soong, you define \"modules\" too, but they\u0027re not mainline modules). I\u0027d probably suggest just dropping it.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 60
+      },
+      "revId": "f95abba9fbdd76886d72276609d48552f2ffbd99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4d34dcc_78a2ebf1",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-09-23T16:46:47Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1175,
+        "startChar": 0,
+        "endLine": 1177,
+        "endChar": 60
+      },
+      "revId": "f95abba9fbdd76886d72276609d48552f2ffbd99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6801e6e7_2c204ebf",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1902,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-09-23T16:46:47Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "f95abba9fbdd76886d72276609d48552f2ffbd99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
