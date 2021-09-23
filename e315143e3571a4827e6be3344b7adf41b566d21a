@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "6d440e28_7eac16a2",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-23T21:26:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a42c491_e6fe29af",
+      "revId": "e315143e3571a4827e6be3344b7adf41b566d21a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "830b0d10_9a087d14",
         "filename": "android/bazel_handler.go",
         "patchSetId": 2
