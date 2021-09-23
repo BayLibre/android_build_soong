@@ -97,6 +97,8 @@ type CommonProperties struct {
 
 	// If not empty, classes are restricted to the specified packages and their sub-packages.
 	// This restriction is checked after applying jarjar rules and including static libs.
+	// Deprecated. This is used for checking module compatibility with Q and R. DO NOT add new entries
+	// to the list. APEX Modules added since S do not need this property.
 	Permitted_packages []string
 
 	// List of modules to use as annotation processors

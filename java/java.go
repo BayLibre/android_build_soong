@@ -1173,7 +1173,8 @@ type ImportProperties struct {
 	Installable *bool
 
 	// If not empty, classes are restricted to the specified packages and their sub-packages.
-	// This information is used to generate the updatable-bcp-packages.txt file.
+	// Deprecated. This is used for checking module compatibility with Q and R. DO NOT add new entries
+	// to the list. APEX Modules added since S do not need this property.
 	Permitted_packages []string
 
 	// List of shared java libs that this module has dependencies to
