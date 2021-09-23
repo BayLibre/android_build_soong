@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b76b65f0_1e902a55",
+        "filename": "sdk/member_trait.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-23T09:39:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3419ebb0_8bbf8e18",
+      "range": {
+        "startLine": 25,
+        "startChar": 3,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "1fd5a0801ae2e83d2d88fb9f6e7f6baf1c23ea72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "817eb314_c7e5be08",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-22T17:59:03Z",
       "side": 1,
       "message": "These should have different module lists to test the dynamic property handling well. It\u0027s probably useful to still have a member that occurs in both, though.",
+      "range": {
+        "startLine": 176,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 28
+      },
+      "revId": "1fd5a0801ae2e83d2d88fb9f6e7f6baf1c23ea72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21f2b5b2_c0092c05",
+        "filename": "sdk/member_trait_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-23T09:39:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "817eb314_c7e5be08",
       "range": {
         "startLine": 176,
         "startChar": 5,
