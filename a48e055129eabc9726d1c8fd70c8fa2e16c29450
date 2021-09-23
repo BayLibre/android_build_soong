@@ -97,6 +97,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "5d5fa881_7446ea6a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-23T09:44:23Z",
+      "side": 1,
+      "message": "Ok. I was confused because it said it didn\u0027t change any of the existing logic and then I noticed that it changed all nil checks with IsSet() checks. I didn\u0027t read the part in (...).",
+      "parentUuid": "6450ec54_3901b905",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 51
+      },
+      "revId": "a48e055129eabc9726d1c8fd70c8fa2e16c29450",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "40b28cab_320264ff",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 10
