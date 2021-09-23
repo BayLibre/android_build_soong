@@ -16,6 +16,42 @@
       "message": "¿\"contains describes\" or \"describes\" or \"contains descriptions of\"?",
       "revId": "0dee867a0816bb6859fb7eddf443fdaf8ca6df33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba75e02f_422b0a33",
+        "filename": "bazel/properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-23T22:29:04Z",
+      "side": 1,
+      "message": "ooof. yeah idk what was going on there. Done",
+      "parentUuid": "dadbf771_bdbd2e6b",
+      "revId": "0dee867a0816bb6859fb7eddf443fdaf8ca6df33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab8a853f_372160d1",
+        "filename": "bazel/properties.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-23T22:29:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dadbf771_bdbd2e6b",
+      "revId": "0dee867a0816bb6859fb7eddf443fdaf8ca6df33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
