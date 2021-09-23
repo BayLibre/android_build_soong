@@ -46,6 +46,30 @@
       },
       "revId": "e1979cf1790dac88d67246ca3367c8d320076d1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23655481_76798a78",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-23T16:37:06Z",
+      "side": 1,
+      "message": "Do you have an example where it fails? I deleted everything in this if clause and tried `m droid SOONG_CONFIG_art_module_source_build\u003dfalse` on aosp_cf_x86_64_phone, and didn\u0027t get any errors.",
+      "parentUuid": "c17fcd31_bc163205",
+      "range": {
+        "startLine": 182,
+        "startChar": 11,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "e1979cf1790dac88d67246ca3367c8d320076d1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
