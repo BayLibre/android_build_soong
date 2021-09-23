@@ -33,6 +33,24 @@
       "message": "nit: separate (and welcome) cleanup. Probably not worth making its own commit, however.",
       "revId": "cec64f61984022a4e0c9fbd5689ddc16e6b3e529",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f472d06_35f91b06",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-23T14:56:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0d45000d_15c9b834",
+      "revId": "cec64f61984022a4e0c9fbd5689ddc16e6b3e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
