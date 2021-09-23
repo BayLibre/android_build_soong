@@ -258,6 +258,17 @@ var localProductConfigVariables = map[string]string{
 	"LOCAL_SENSOR_PRODUCT_PACKAGE":        "PRODUCT_PACKAGES",
 	"LOCAL_KEYMASTER_PRODUCT_PACKAGE":     "PRODUCT_PACKAGES",
 	"LOCAL_KEYMINT_PRODUCT_PACKAGE":       "PRODUCT_PACKAGES",
+	// From frameworks/libs/native_bridge_support/naetive_bridge_support.mk
+	"NATIVE_BRIDGE_PRODUCT_PACKAGES":    "PRODUCT_PACKAGES",
+	"NATIVE_BRIDGE_ORIG_GUEST_LIBS":     "PRODUCT_PACKAGES",
+	"NATIVE_BRIDGE_MODIFIED_GUEST_LIBS": "PRODUCT_PACKAGES",
+	// From vendor/unbundled_google/libs/ndk_translation/ndk_translation_config.mk
+	"NDK_TRANSLATION_PRODUCT_PACKAGES":           "PRODUCT_PACKAGES",
+	"NDK_TRANSLATION_PRODUCT_PACKAGES_ARM":       "PRODUCT_PACKAGES",
+	"NDK_TRANSLATION_PRODUCT_PACKAGES_ARM64":     "PRODUCT_PACKAGES",
+	"NDK_TRANSLATION_DEV_PRODUCT_PACKAGES":       "PRODUCT_PACKAGES",
+	"NDK_TRANSLATION_DEV_PRODUCT_PACKAGES_ARM":   "PRODUCT_PACKAGES",
+	"NDK_TRANSLATION_DEV_PRODUCT_PACKAGES_ARM64": "PRODUCT_PACKAGES",
 }
 
 var presetVariables = map[string]bool{
@@ -294,7 +305,8 @@ func (ctx *parseContext) addVariable(name string) variable {
 			v = &localVariable{baseVariable{nam: name, typ: starlarkTypeUnknown}}
 		} else {
 			vt := starlarkTypeUnknown
-			if strings.HasPrefix(name, "LOCAL_") {
+			if strings.HasPrefix(name, "LOCAL_") || strings.HasPrefix(name, "NATIVE_BRIDGE_") ||
+				strings.HasPrefix(name, "NDK_TRANSLATION_") {
 				// Heuristics: local variables that contribute to corresponding config variables
 				if cfgVarName, found := localProductConfigVariables[name]; found {
 					vi, found2 := KnownVariables[cfgVarName]
