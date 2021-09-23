@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a97cd23_a0881932",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-09-23T05:42:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c543ea99_1edba8a1",
+      "revId": "cff27930ad1086edc0319a6265f95e16faf10ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e13c68e7_85660eaf",
@@ -138,6 +156,30 @@
       "side": 1,
       "message": "I think there\u0027s a bug in the bp2build package allowlist for tests such that top level modules (i.e. $TOP/Android.bp) needs to be explicitly allowlisted with the prop",
       "parentUuid": "0fc645b0_307c8b15",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 47
+      },
+      "revId": "cff27930ad1086edc0319a6265f95e16faf10ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49a7674c_ec4ea396",
+        "filename": "bp2build/cc_genrule_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-09-23T05:42:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0c466c70_842dfcaf",
       "range": {
         "startLine": 56,
         "startChar": 4,
@@ -320,6 +362,30 @@
         "startChar": 0,
         "endLine": 829,
         "endChar": 57
+      },
+      "revId": "cff27930ad1086edc0319a6265f95e16faf10ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52a57a38_18e78def",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-09-23T05:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fc32cda_70b19275",
+      "range": {
+        "startLine": 842,
+        "startChar": 21,
+        "endLine": 842,
+        "endChar": 34
       },
       "revId": "cff27930ad1086edc0319a6265f95e16faf10ad5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
