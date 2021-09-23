@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33c7d43d_5fdd02e0",
+        "filename": "android/module.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-23T15:01:24Z",
+      "side": 1,
+      "message": "That\u0027s a literal FIXME for myself. I don\u0027t intend to submit without having implemented that, as undoubtedly other common attributes could also be arch-variant and so having the infra in-place with an example, it\u0027ll be easier to properly handle those as well.",
+      "parentUuid": "73a09aac_cdf4fdf1",
+      "range": {
+        "startLine": 1092,
+        "startChar": 1,
+        "endLine": 1092,
+        "endChar": 24
+      },
+      "revId": "255b7656450680a4cbc50fc9a54e6fb30e7c4521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "76210f90_fc4dfbff",
         "filename": "bp2build/build_conversion_test.go",
         "patchSetId": 36
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-23T00:39:59Z",
       "side": 1,
       "message": "It\u0027s still not clear what this means, or what this test case is testing that the others aren\u0027t.",
+      "range": {
+        "startLine": 1283,
+        "startChar": 40,
+        "endLine": 1283,
+        "endChar": 66
+      },
+      "revId": "255b7656450680a4cbc50fc9a54e6fb30e7c4521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ff795d6_4df6947b",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-23T15:01:24Z",
+      "side": 1,
+      "message": "When we\u0027ve more than one attribute handled; which is guaranteed once this CL goes in; then this is the case where **every** prop we handle is tested in concert, so we can be sure none interfere with the others (e.g. correct Data merging).",
+      "parentUuid": "76210f90_fc4dfbff",
       "range": {
         "startLine": 1283,
         "startChar": 40,
