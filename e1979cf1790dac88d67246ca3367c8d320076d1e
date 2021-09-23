@@ -70,6 +70,30 @@
       },
       "revId": "e1979cf1790dac88d67246ca3367c8d320076d1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8cec1c5_5ae6efc6",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-23T17:13:51Z",
+      "side": 1,
+      "message": "I don\u0027t remember exactly how it failed but I think it was in a downstream branch. Search for \"framework-permission.com.android.permission\" and you will see that there are explicit dependencies on those targets.",
+      "parentUuid": "23655481_76798a78",
+      "range": {
+        "startLine": 182,
+        "startChar": 11,
+        "endLine": 182,
+        "endChar": 16
+      },
+      "revId": "e1979cf1790dac88d67246ca3367c8d320076d1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
