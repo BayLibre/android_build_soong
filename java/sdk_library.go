@@ -1899,7 +1899,8 @@ type sdkLibraryImportProperties struct {
 	Compile_dex *bool
 
 	// If not empty, classes are restricted to the specified packages and their sub-packages.
-	// This information is used to generate the updatable-bcp-packages.txt file.
+	// This is used for checking module compatibility with Q and R and for making sure that package
+	// names in different APEXes don't collide with each other.
 	Permitted_packages []string
 }
 
