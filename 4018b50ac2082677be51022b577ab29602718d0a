@@ -139,6 +139,24 @@
       "parentUuid": "cb9a8969_9dec7635",
       "revId": "4018b50ac2082677be51022b577ab29602718d0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43ca64bb_12d41c79",
+        "filename": "android/deapexer.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-23T09:55:02Z",
+      "side": 1,
+      "message": "Doh!",
+      "parentUuid": "6a3b74a5_e90239f0",
+      "revId": "4018b50ac2082677be51022b577ab29602718d0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
