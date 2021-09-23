@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db3a9cdb_d7cafae3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-23T07:19:31Z",
+      "side": 1,
+      "message": "Nice work.",
+      "revId": "101294a2621344e6f54b59800b5cf2317ca8415b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa8cbbd9_e430cef0",
+        "filename": "bazel/properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-23T07:19:31Z",
+      "side": 1,
+      "message": "This is self referential. How about \"Whether to store files not included in any other partition in a group of LabelPartitions\"? Also: \"Only one LabelPartition in a group of LabelPartitions can enable Keep_remainder\"",
+      "range": {
+        "startLine": 579,
+        "startChar": 25,
+        "endLine": 579,
+        "endChar": 35
+      },
+      "revId": "101294a2621344e6f54b59800b5cf2317ca8415b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3737c1b7_8c2b2fb0",
+        "filename": "bazel/properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-23T07:19:31Z",
+      "side": 1,
+      "message": "Might want to comment that that this is a pointer because it can be nil (no partitions with Keep_remainder)",
+      "range": {
+        "startLine": 627,
+        "startChar": 24,
+        "endLine": 627,
+        "endChar": 31
+      },
+      "revId": "101294a2621344e6f54b59800b5cf2317ca8415b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a91424ba_c48bbe6a",
+        "filename": "bazel/properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-23T07:19:31Z",
+      "side": 1,
+      "message": "Should it be made an error if multiple partitions uses the same filter? Or relax it such that an item can be in multiple partitions?",
+      "range": {
+        "startLine": 654,
+        "startChar": 4,
+        "endLine": 655,
+        "endChar": 50
+      },
+      "revId": "101294a2621344e6f54b59800b5cf2317ca8415b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c1d272_6e5416e4",
+        "filename": "bazel/testing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-23T07:19:31Z",
+      "side": 1,
+      "message": "Call this testModuleInfo to prevent confusion with the real moduleInfo? https://cs.android.com/android/_/android/platform/build/blueprint/+/87fd4b11af19a17a72bff7f04408c154262822c1:context.go;l\u003d241;drc\u003dmaster?",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 15
+      },
+      "revId": "101294a2621344e6f54b59800b5cf2317ca8415b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b518f94_4f75db90",
+        "filename": "bazel/testing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-23T07:19:31Z",
+      "side": 1,
+      "message": "Likewise, otherModuleTestContext",
+      "range": {
+        "startLine": 45,
+        "startChar": 5,
+        "endLine": 45,
+        "endChar": 23
+      },
+      "revId": "101294a2621344e6f54b59800b5cf2317ca8415b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5804073_edd65f08",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-23T07:19:31Z",
+      "side": 1,
+      "message": "Elegant!",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 29
+      },
+      "revId": "101294a2621344e6f54b59800b5cf2317ca8415b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
