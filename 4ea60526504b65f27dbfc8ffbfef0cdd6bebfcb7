@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7baa4daa_e81fbe91",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-23T20:53:29Z",
+      "side": 0,
+      "message": "Thank you~",
+      "revId": "4ea60526504b65f27dbfc8ffbfef0cdd6bebfcb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
