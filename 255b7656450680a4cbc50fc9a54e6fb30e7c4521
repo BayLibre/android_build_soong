@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "161be499_e19c57de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 36
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-23T00:39:59Z",
+      "side": 1,
+      "message": "LGTM module couple of comments, thank you!",
+      "revId": "255b7656450680a4cbc50fc9a54e6fb30e7c4521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73a09aac_cdf4fdf1",
+        "filename": "android/module.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-23T00:39:59Z",
+      "side": 1,
+      "message": "Please accompany FIXMEs and TODOs with bug numbers, and also elaborate on the summary",
+      "range": {
+        "startLine": 1092,
+        "startChar": 1,
+        "endLine": 1092,
+        "endChar": 24
+      },
+      "revId": "255b7656450680a4cbc50fc9a54e6fb30e7c4521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76210f90_fc4dfbff",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-23T00:39:59Z",
+      "side": 1,
+      "message": "It\u0027s still not clear what this means, or what this test case is testing that the others aren\u0027t.",
+      "range": {
+        "startLine": 1283,
+        "startChar": 40,
+        "endLine": 1283,
+        "endChar": 66
+      },
+      "revId": "255b7656450680a4cbc50fc9a54e6fb30e7c4521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

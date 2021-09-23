@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "392869a1_29a489d5",
+        "filename": "android/module.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 1234,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-23T00:39:59Z",
+      "side": 1,
+      "message": "In the design doc, I said:\n\n```\nNot sure if we need to use the embed stuff, since common attrs could also a new field in bp2buildInfo, alongside the \"Attrs\" interface{} field.\n\nThen we can call another extractModuleProperties on the common attrs next to https://cs.android.com/android/_/android/platform/build/soong/+/1b15345ac932793054a5d8e65cf4862ae7c12e49:bp2build/build_conversion.go;l\u003d402;drc\u003dmaster, and merge the props together\n```\n\nI think internally we can keep the CommonAttributes type on the field, but cast this to []interface{} as the return type on this getter function.",
+      "parentUuid": "dcbea760_aa9b5a30",
+      "range": {
+        "startLine": 1234,
+        "startChar": 40,
+        "endLine": 1234,
+        "endChar": 71
+      },
+      "revId": "75b294d7b70df6c88850aaf5408fc4a13078a90d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bde1bfa0_1f999c07",
         "filename": "bp2build/build_conversion.go",
         "patchSetId": 32
