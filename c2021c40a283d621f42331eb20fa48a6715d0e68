@@ -22,6 +22,30 @@
       },
       "revId": "c2021c40a283d621f42331eb20fa48a6715d0e68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0cd57a0_adec517d",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-09-23T00:47:15Z",
+      "side": 1,
+      "message": "I tried it locally, and there were some presubmit errors if both use RULEDIR.",
+      "parentUuid": "1769a381_2f29c0d0",
+      "range": {
+        "startLine": 842,
+        "startChar": 21,
+        "endLine": 842,
+        "endChar": 34
+      },
+      "revId": "c2021c40a283d621f42331eb20fa48a6715d0e68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
