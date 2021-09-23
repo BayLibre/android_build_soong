@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d42561bd_81134387",
+        "filename": "java/base.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-23T14:32:17Z",
+      "side": 1,
+      "message": "I think you could avoid wrapping `android.OptionalPath` in a new struct with boolean flag and encode the third state in the message. E.g. invalid optional path with an empty message seems pointless, so it could represent the state when `isSet` is false. The interface can remain the same as now.\n\nNot a huge win, so feel free to ignore this idea.",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 1
+      },
+      "revId": "bc0a7d995bdc8016690fcf8e2b68a2de59b8b82a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91bc5e46_e1c54d28",
+        "filename": "java/base.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-23T14:32:17Z",
+      "side": 1,
+      "message": "It",
+      "range": {
+        "startLine": 351,
+        "startChar": 21,
+        "endLine": 351,
+        "endChar": 23
+      },
+      "revId": "bc0a7d995bdc8016690fcf8e2b68a2de59b8b82a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
