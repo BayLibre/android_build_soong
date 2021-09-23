@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "79e149f3_aab78914",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-09-23T14:25:19Z",
+      "side": 1,
+      "message": "Friendly ping for owners review",
+      "revId": "ba2226164c9479afd1a0dae290fb2b0535aa8e97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "616119cd_d06d384b",
         "filename": "rust/test.go",
         "patchSetId": 1
