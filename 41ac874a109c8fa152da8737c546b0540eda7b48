@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "784a1a9a_83d23bca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-23T15:03:17Z",
+      "side": 1,
+      "message": "I\u0027ve created a couple of image traits and it looks as though you are correct about the unnecessary boilerplate so I will look at creating a helper method to create a basic trait.",
+      "revId": "41ac874a109c8fa152da8737c546b0540eda7b48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
