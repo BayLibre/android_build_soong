@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa9f35a9_63ae5920",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-23T14:51:34Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "cec64f61984022a4e0c9fbd5689ddc16e6b3e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d45000d_15c9b834",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-23T14:51:34Z",
+      "side": 1,
+      "message": "nit: separate (and welcome) cleanup. Probably not worth making its own commit, however.",
+      "revId": "cec64f61984022a4e0c9fbd5689ddc16e6b3e529",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
