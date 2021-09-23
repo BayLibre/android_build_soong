@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16c85530_d4684520",
+        "filename": "android/module.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-23T15:14:24Z",
+      "side": 1,
+      "message": "Oh, I hadn\u0027t realize that you also plan to tackle that in this CL, and not a follow up.",
+      "parentUuid": "33c7d43d_5fdd02e0",
+      "range": {
+        "startLine": 1092,
+        "startChar": 1,
+        "endLine": 1092,
+        "endChar": 24
+      },
+      "revId": "255b7656450680a4cbc50fc9a54e6fb30e7c4521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76210f90_fc4dfbff",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "When we\u0027ve more than one attribute handled; which is guaranteed once this CL goes in; then this is the case where **every** prop we handle is tested in concert, so we can be sure none interfere with the others (e.g. correct Data merging).",
       "parentUuid": "76210f90_fc4dfbff",
+      "range": {
+        "startLine": 1283,
+        "startChar": 40,
+        "endLine": 1283,
+        "endChar": 66
+      },
+      "revId": "255b7656450680a4cbc50fc9a54e6fb30e7c4521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f85325d_84beb61a",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-23T15:14:24Z",
+      "side": 1,
+      "message": "Ack - I\u0027m not sure what the dashes mean here, though",
+      "parentUuid": "9ff795d6_4df6947b",
       "range": {
         "startLine": 1283,
         "startChar": 40,
