@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c1b41d_24f7a5f6",
+        "filename": "java/base.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-23T16:22:28Z",
+      "side": 1,
+      "message": "I constructed the invalid message in OptionalPath to not allow that state - the message \"\" is returned as \"unknown\". That was intentional since in most cases (except here) it would be meaningless and confusing. There\u0027s another comment thread about this.",
+      "parentUuid": "d42561bd_81134387",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 1
+      },
+      "revId": "bc0a7d995bdc8016690fcf8e2b68a2de59b8b82a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91bc5e46_e1c54d28",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-23T14:32:17Z",
       "side": 1,
       "message": "It",
+      "range": {
+        "startLine": 351,
+        "startChar": 21,
+        "endLine": 351,
+        "endChar": 23
+      },
+      "revId": "bc0a7d995bdc8016690fcf8e2b68a2de59b8b82a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1855a58_ac38c52f",
+        "filename": "java/base.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-23T16:22:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91bc5e46_e1c54d28",
       "range": {
         "startLine": 351,
         "startChar": 21,
