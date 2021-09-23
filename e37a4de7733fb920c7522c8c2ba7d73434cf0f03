@@ -16,6 +16,24 @@
       "message": "Are these guaranteed to be regular files and thus not require -r?",
       "revId": "e37a4de7733fb920c7522c8c2ba7d73434cf0f03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82bca8ec_400ea0dd",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-23T21:43:29Z",
+      "side": 1,
+      "message": "I believe this to be the case, yes. :)",
+      "parentUuid": "f0480726_b057845f",
+      "revId": "e37a4de7733fb920c7522c8c2ba7d73434cf0f03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
