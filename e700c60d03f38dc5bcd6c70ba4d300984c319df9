@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ccf2447_51f8114d",
+        "filename": "android/variable.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-24T16:26:28Z",
+      "side": 1,
+      "message": "We try to avoid include_dirs properties, can you do this with header_libs instead?",
+      "revId": "e700c60d03f38dc5bcd6c70ba4d300984c319df9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
