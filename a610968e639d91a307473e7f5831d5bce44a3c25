@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba15301d_e1fe1d62",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-24T16:50:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63e22e35_cbbc201e",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 5
+      },
+      "revId": "a610968e639d91a307473e7f5831d5bce44a3c25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4914d89d_3749db7b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-24T15:04:10Z",
       "side": 1,
       "message": "Typo: \"then\"",
+      "range": {
+        "startLine": 155,
+        "startChar": 58,
+        "endLine": 155,
+        "endChar": 62
+      },
+      "revId": "a610968e639d91a307473e7f5831d5bce44a3c25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "729a16e9_58e955d3",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-24T16:50:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4914d89d_3749db7b",
       "range": {
         "startLine": 155,
         "startChar": 58,
