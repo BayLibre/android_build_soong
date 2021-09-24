@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eefc875_e6b4873e",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-24T17:33:18Z",
+      "side": 1,
+      "message": "can you add a comment here similar to the description?",
+      "range": {
+        "startLine": 756,
+        "startChar": 2,
+        "endLine": 756,
+        "endChar": 57
+      },
+      "revId": "0b3633ca6cf214cdf8ef006ec98d3f3bbb3a0c12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
