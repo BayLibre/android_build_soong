@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3365dcab_7ade80f5",
+        "filename": "java/base.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-24T03:20:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6eaf716_9947abfd",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 60
+      },
+      "revId": "f95abba9fbdd76886d72276609d48552f2ffbd99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4d34dcc_78a2ebf1",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2ed6204_c0be442c",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1177,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-24T03:20:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4d34dcc_78a2ebf1",
+      "range": {
+        "startLine": 1175,
+        "startChar": 0,
+        "endLine": 1177,
+        "endChar": 60
+      },
+      "revId": "f95abba9fbdd76886d72276609d48552f2ffbd99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6801e6e7_2c204ebf",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-09-23T16:46:47Z",
       "side": 1,
       "message": "ditto",
+      "revId": "f95abba9fbdd76886d72276609d48552f2ffbd99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d041fda_b439dec1",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1902,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-24T03:20:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6801e6e7_2c204ebf",
       "revId": "f95abba9fbdd76886d72276609d48552f2ffbd99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
