@@ -16,6 +16,52 @@
       "message": "LGTM~ Hooray for more targets getting through~",
       "revId": "e87da826bb00ace4c2b8afe40807dd93d21aae0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccee11b3_275da998",
+        "filename": "android/bazel.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-24T17:44:04Z",
+      "side": 1,
+      "message": "🎉",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 37
+      },
+      "revId": "e87da826bb00ace4c2b8afe40807dd93d21aae0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae0f0dcd_9503dc64",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-24T17:44:04Z",
+      "side": 1,
+      "message": "given how we\u0027re handling this in the bzl files, would it make sense to be a bool ptr? defaults to true on the bzl side, only false if the property is set to \"none\"?",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 13
+      },
+      "revId": "e87da826bb00ace4c2b8afe40807dd93d21aae0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
