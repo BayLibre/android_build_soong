@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa21d5c5_5a3fee81",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1602,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-24T15:04:19Z",
+      "side": 1,
+      "message": "Nit: `variantsByImage :\u003d` is more idiomatic.",
+      "range": {
+        "startLine": 1602,
+        "startChar": 2,
+        "endLine": 1602,
+        "endChar": 23
+      },
+      "revId": "50c19461de699c8af66794c30e8249a9fb1fd435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70f078a1_ab8881ff",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1605,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-24T15:04:19Z",
+      "side": 1,
+      "message": "When is this false? Isn\u0027t it better to add ImageVariation to the android.Module interface?",
+      "range": {
+        "startLine": 1605,
+        "startChar": 6,
+        "endLine": 1605,
+        "endChar": 75
+      },
+      "revId": "50c19461de699c8af66794c30e8249a9fb1fd435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
