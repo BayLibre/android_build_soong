@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e22e35_cbbc201e",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-24T15:04:10Z",
+      "side": 1,
+      "message": "Nit: This branch is going to be much shorter than the device one, so I suggest putting it first to make the flow easier to follow.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 5
+      },
+      "revId": "a610968e639d91a307473e7f5831d5bce44a3c25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4914d89d_3749db7b",
+        "filename": "cc/library_sdk_member.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-24T15:04:10Z",
+      "side": 1,
+      "message": "Typo: \"then\"",
+      "range": {
+        "startLine": 155,
+        "startChar": 58,
+        "endLine": 155,
+        "endChar": 62
+      },
+      "revId": "a610968e639d91a307473e7f5831d5bce44a3c25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
