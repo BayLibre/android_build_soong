@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7baea77c_4afa4472",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1602,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-24T16:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa21d5c5_5a3fee81",
+      "range": {
+        "startLine": 1602,
+        "startChar": 2,
+        "endLine": 1602,
+        "endChar": 23
+      },
+      "revId": "50c19461de699c8af66794c30e8249a9fb1fd435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70f078a1_ab8881ff",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-24T15:04:19Z",
       "side": 1,
       "message": "When is this false? Isn\u0027t it better to add ImageVariation to the android.Module interface?",
+      "range": {
+        "startLine": 1605,
+        "startChar": 6,
+        "endLine": 1605,
+        "endChar": 75
+      },
+      "revId": "50c19461de699c8af66794c30e8249a9fb1fd435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bf0177c_98831604",
+        "filename": "sdk/update.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1605,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-24T16:50:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70f078a1_ab8881ff",
       "range": {
         "startLine": 1605,
         "startChar": 6,
