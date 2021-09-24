@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acfb7342_f098ee6d",
+        "filename": "sdk/cc_sdk_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2127,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-24T15:04:40Z",
+      "side": 1,
+      "message": "The ramdisk test is almost identical to this one. I suggest using a few %s formats in the bp strings here to reuse this code instead. (If there was one more of these image traits coming I\u0027d suggest better code reuse elsewhere too.)",
+      "revId": "d9e99ae004a99af5b3e81e6f6f023869368eec73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
