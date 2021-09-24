@@ -62,6 +62,30 @@
       },
       "revId": "e87da826bb00ace4c2b8afe40807dd93d21aae0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a92f920_d1a1c3a4",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-24T17:59:18Z",
+      "side": 1,
+      "message": "Interesting thought, but I have some fears that\u0027s doing too much. I have some concerns about subtleties when we open this up to different platforms, and we might also find there are some cases where the actual resolution logic makes a difference. Would prefer we keep bp2build pure and handle these intricacies in macros, when possible.\n\nMaybe worth a followup?",
+      "parentUuid": "ae0f0dcd_9503dc64",
+      "range": {
+        "startLine": 257,
+        "startChar": 0,
+        "endLine": 257,
+        "endChar": 13
+      },
+      "revId": "e87da826bb00ace4c2b8afe40807dd93d21aae0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
