@@ -28,6 +28,7 @@ func init() {
 func registerSystemserverClasspathBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("platform_systemserverclasspath", platformSystemServerClasspathFactory)
 	ctx.RegisterModuleType("systemserverclasspath_fragment", systemServerClasspathFactory)
+	ctx.RegisterModuleType("prebuilt_systemserverclasspath_fragment", prebuiltSystemServerClasspathModuleFactory)
 }
 
 type platformSystemServerClasspathModule struct {
@@ -132,8 +133,12 @@ func (systemServerClasspathFragmentContentDependencyTag) ReplaceSourceWithPrebui
 // they were listed in java_libs.
 func (systemServerClasspathFragmentContentDependencyTag) CopyDirectlyInAnyApex() {}
 
+// Contents of system server fragments require files from prebuilt apex files.
+func (systemServerClasspathFragmentContentDependencyTag) RequiresFilesFromPrebuiltApex() {}
+
 var _ android.ReplaceSourceWithPrebuilt = systemServerClasspathFragmentContentDepTag
 var _ android.CopyDirectlyInAnyApexTag = systemServerClasspathFragmentContentDepTag
+var _ android.RequiresFilesFromPrebuiltApexTag = systemServerClasspathFragmentContentDepTag
 
 // The tag used for the dependency between the systemserverclasspath_fragment module and its contents.
 var systemServerClasspathFragmentContentDepTag = systemServerClasspathFragmentContentDependencyTag{}
@@ -144,8 +149,16 @@ func IsSystemServerClasspathFragmentContentDepTag(tag blueprint.DependencyTag) b
 
 func (s *SystemServerClasspathModule) ComponentDepsMutator(ctx android.BottomUpMutatorContext) {
 	module := ctx.Module()
+	_, isSourceModule := module.(*SystemServerClasspathModule)
 
 	for _, name := range s.properties.Contents {
+		// A systemserverclasspath_fragment must depend only on other source modules, while the
+		// prebuilt_systemserverclasspath_fragment_fragment must only depend on other prebuilt modules.
+		//
+		// TODO(b/177892522) - avoid special handling of jacocoagent.
+		if !isSourceModule && name != "jacocoagent" {
+			name = android.PrebuiltNameFromSource(name)
+		}
 		ctx.AddDependency(module, systemServerClasspathFragmentContentDepTag, name)
 	}
 }
@@ -154,4 +167,35 @@ func (s *SystemServerClasspathModule) ComponentDepsMutator(ctx android.BottomUpM
 func (s *SystemServerClasspathModule) IDEInfo(dpInfo *android.IdeInfo) {
 	dpInfo.Deps = append(dpInfo.Deps, s.properties.Contents...)
 	dpInfo.Paths = append(dpInfo.Paths, s.modulePaths...)
+}
+
+// A prebuilt version of the systemserverclasspath_fragment module.
+type prebuiltSystemServerClasspathModule struct {
+	SystemServerClasspathModule
+	prebuilt android.Prebuilt
+}
+
+func (module *prebuiltSystemServerClasspathModule) Prebuilt() *android.Prebuilt {
+	return &module.prebuilt
+}
+
+func (module *prebuiltSystemServerClasspathModule) Name() string {
+	return module.prebuilt.Name(module.ModuleBase.Name())
+}
+
+func (module *prebuiltSystemServerClasspathModule) RequiredFilesFromPrebuiltApex(ctx android.BaseModuleContext) []string {
+	return nil
+}
+
+var _ android.RequiredFilesFromPrebuiltApex = (*prebuiltSystemServerClasspathModule)(nil)
+
+func prebuiltSystemServerClasspathModuleFactory() android.Module {
+	m := &prebuiltSystemServerClasspathModule{}
+	m.AddProperties(&m.properties)
+	// This doesn't actually have any prebuilt files of its own so pass a placeholder for the srcs
+	// array.
+	android.InitPrebuiltModule(m, &[]string{"placeholder"})
+	android.InitApexModule(m)
+	android.InitAndroidArchModule(m, android.DeviceSupported, android.MultilibCommon)
+	return m
 }
