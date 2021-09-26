@@ -16,6 +16,24 @@
       "message": "I think it would be better to split this change into a number of separate changes:\n1. Add prebuilt_systemserverclasspath_fragments.\n2. Support for adding systemserverclasspath_fragment to the sdk snapshot and generating a prebuilt_systemserverclasspath_fragment from it.\n3. Finally, supporting exported_systemserverclasspath_fragments.\n\nSplitting it up makes it easier to review and easier to verify that each change is properly tested.",
       "revId": "76daf936959501b46bdf06ad6c17a27cb5039441",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d7599d2_d8e1636e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-26T04:17:14Z",
+      "side": 1,
+      "message": "Done. I created aosp/1835086 for #1. This CL is for #3. I haven\u0027t finished #2 and will send out a CL once I have finished it.",
+      "parentUuid": "e7ffe37a_df7ade7a",
+      "revId": "76daf936959501b46bdf06ad6c17a27cb5039441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
