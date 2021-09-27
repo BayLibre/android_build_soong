@@ -16,6 +16,29 @@
       "message": "Thank you for the review!",
       "revId": "204356f3b54be5936e152815a96d1e917022d077",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42e18b58_78c4c793",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-27T12:37:29Z",
+      "side": 1,
+      "message": "Following up on a comment thread on https://r.android.com/1826779, can you please tell me what this is for?",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 5
+      },
+      "revId": "204356f3b54be5936e152815a96d1e917022d077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
