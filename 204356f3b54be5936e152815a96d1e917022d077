@@ -159,6 +159,30 @@
       },
       "revId": "204356f3b54be5936e152815a96d1e917022d077",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ecd862_ecc2f0b5",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-27T13:22:12Z",
+      "side": 1,
+      "message": "So I reckon it\u0027s a (device) product decision whether this preopting should be active or not. If it\u0027s activated in the product mk file, it ought to be a build failure if the preopted files cannot be created for any reason, no?",
+      "parentUuid": "f70e1b5c_198cefd1",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 5
+      },
+      "revId": "204356f3b54be5936e152815a96d1e917022d077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
