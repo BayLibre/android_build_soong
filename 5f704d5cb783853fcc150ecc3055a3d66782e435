@@ -52,6 +52,23 @@
       "parentUuid": "70d2bfd3_f4bf2b62",
       "revId": "5f704d5cb783853fcc150ecc3055a3d66782e435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e25f9334_a5729857",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-09-27T12:31:21Z",
+      "side": 1,
+      "message": "Hey Jingwen, the same build keeps failing. It looks like something in this topic has triggered it, but I think that bazel should handle that gracefully rather than crashing like this.",
+      "revId": "5f704d5cb783853fcc150ecc3055a3d66782e435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
