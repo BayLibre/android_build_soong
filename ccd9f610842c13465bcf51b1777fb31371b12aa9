@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000015719690",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1838373?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "e6dbe2be_86c07ecd",
+          "description": "Change to \"cc/genrule.go\"",
+          "replacements": [
+            {
+              "path": "cc/genrule.go",
+              "range": {
+                "startLine": 46,
+                "startChar": 51,
+                "endLine": 46,
+                "endChar": 55
+              },
+              "replacement": "the "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "53d2651f_7aefb343",
+        "filename": "cc/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-09-27T22:54:22Z",
+      "side": 1,
+      "message": "Common typo found: \"teh \" -- should it be \"the \"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 46,
+        "startChar": 51,
+        "endLine": 46,
+        "endChar": 55
+      },
+      "revId": "ccd9f610842c13465bcf51b1777fb31371b12aa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
