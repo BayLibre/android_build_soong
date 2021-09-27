@@ -207,6 +207,30 @@
       },
       "revId": "204356f3b54be5936e152815a96d1e917022d077",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e45ce1b1_f9b1a433",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-27T13:47:53Z",
+      "side": 1,
+      "message": "Aren\u0027t the dex2oat commands with all their inputs and outputs known in Soong? At least it knows about the deapexed jars, but I\u0027m not well versed in all the rest.",
+      "parentUuid": "f2c40351_fa661c8c",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 5
+      },
+      "revId": "204356f3b54be5936e152815a96d1e917022d077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
