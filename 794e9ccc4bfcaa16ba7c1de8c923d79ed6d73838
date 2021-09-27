@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82d219c1_f792b809",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-27T15:21:59Z",
+      "side": 1,
+      "message": "Why is this needed as part of this change?",
+      "revId": "794e9ccc4bfcaa16ba7c1de8c923d79ed6d73838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
