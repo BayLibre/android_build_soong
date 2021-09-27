@@ -105,6 +105,24 @@
       "parentUuid": "49a46e55_c8e35845",
       "revId": "5f704d5cb783853fcc150ecc3055a3d66782e435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bedc0de_3055e43f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-27T23:43:20Z",
+      "side": 1,
+      "message": "We submitted a temporary fix (r.android.com/1837393), please rebase and retry.",
+      "parentUuid": "eae38bde_7ee8f208",
+      "revId": "5f704d5cb783853fcc150ecc3055a3d66782e435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
