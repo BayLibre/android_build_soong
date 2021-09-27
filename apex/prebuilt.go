@@ -650,16 +650,7 @@ func (p *prebuiltCommon) createDeapexerModuleIfNeeded(ctx android.TopDownMutator
 	deapexerProperties.ExportedFiles = android.SortedUniqueStrings(exportedFiles)
 
 	invalidReason := ""
-	if ctx.Config().UnbundledBuild() && p.prebuiltCommonProperties.Installable == nil {
-		// We need to know which APEXes get installed in the system image to know
-		// which to extract from, in case there are several with the same variant
-		// name. In unbundled builds there's no system image so requiring an
-		// accurate PRODUCT_INSTALL_APEXES doesn't make sense. APEX modules are
-		// installable by default then, but to avoid ambiguity we refuse deapexing
-		// from any of them. However, honor the installable flag if it's set
-		// explicitly.
-		invalidReason = "cannot extract files from prebuilt APEXes in unbundled builds unless they are installable"
-	} else if !p.installable() {
+	if !p.installable() {
 		invalidReason = "cannot extract files from prebuilt APEX that isn't installable"
 	}
 
