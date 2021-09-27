@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f6eae13_0672d4d4",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-09-27T15:26:22Z",
+      "side": 1,
+      "message": "Why do you need to remove duplicates here? Where are the duplicates coming from?",
+      "revId": "5c586252e2af5114184588fc192e41efd59e1b86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
