@@ -69,6 +69,24 @@
       "message": "Hey Jingwen, the same build keeps failing. It looks like something in this topic has triggered it, but I think that bazel should handle that gracefully rather than crashing like this.",
       "revId": "5f704d5cb783853fcc150ecc3055a3d66782e435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49a46e55_c8e35845",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-27T12:50:25Z",
+      "side": 1,
+      "message": "We\u0027re seeing this in other CLs too (r.android.com/1834928), so it\u0027s definitely not this CL. I\u0027m working on identifying the build target that\u0027s trying to download this particular dependency on the buildbot, and cutting that dependency. For now, please ignore the failure.",
+      "parentUuid": "e25f9334_a5729857",
+      "revId": "5f704d5cb783853fcc150ecc3055a3d66782e435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
