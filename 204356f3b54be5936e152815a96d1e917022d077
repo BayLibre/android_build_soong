@@ -255,6 +255,30 @@
       },
       "revId": "204356f3b54be5936e152815a96d1e917022d077",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40cdee15_7a769909",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-27T14:26:24Z",
+      "side": 1,
+      "message": "Well, this was only about it being a build failure, not necessarily a Soong failure. What I\u0027d expect to happen if I were to delete this if statement is that some make targets would be missing so ninja would complain about missing dependencies. I didn\u0027t expect it to just silently continue without dexpreopting, that\u0027s not how ninja usually operates.\n\nIf it\u0027s dexpreopt_gen or its output script that puts the last dependencies in place then isn\u0027t it a matter of error checks there? Maybe we can add a flag to make them more strict?",
+      "parentUuid": "f76120df_4ab4b50d",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 5
+      },
+      "revId": "204356f3b54be5936e152815a96d1e917022d077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
