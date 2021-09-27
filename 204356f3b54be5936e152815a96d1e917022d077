@@ -39,6 +39,30 @@
       },
       "revId": "204356f3b54be5936e152815a96d1e917022d077",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7784847_1112c399",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-27T12:42:27Z",
+      "side": 1,
+      "message": "This is for having the APEX depend on the dexpreopt artifacts, so that the artifacts will be installed along with the APEX.\n\nThis shouldn\u0027t have any effect on unbundled builds because `DexpreoptBuiltInstalledForApex` is only set for APEX system server jars (https://cs.android.com/android/_/android/platform/build/soong/+/208d2962f062d8c9d852e0d8ffae3dd8a90ffe57:java/dexpreopt.go;l\u003d338-358;drc\u003d02669e8a301e62ec487eab5820b3c2f88a9d2cc6), and dexpreopting for APEX system server jars is disabled on unbundled builds (https://cs.android.com/android/_/android/platform/build/soong/+/208d2962f062d8c9d852e0d8ffae3dd8a90ffe57:java/dexpreopt.go;l\u003d153;drc\u003d02669e8a301e62ec487eab5820b3c2f88a9d2cc6).",
+      "parentUuid": "42e18b58_78c4c793",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 5
+      },
+      "revId": "204356f3b54be5936e152815a96d1e917022d077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
