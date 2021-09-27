@@ -183,6 +183,30 @@
       },
       "revId": "204356f3b54be5936e152815a96d1e917022d077",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2c40351_fa661c8c",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-27T13:28:22Z",
+      "side": 1,
+      "message": "Ideally, yes. But it will be tricky to implement this because the files are built by ninja, and Soong does not know about them. Is there an elegant way to check file existence after ninja runs? Please advice.",
+      "parentUuid": "b7ecd862_ecc2f0b5",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 5
+      },
+      "revId": "204356f3b54be5936e152815a96d1e917022d077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
