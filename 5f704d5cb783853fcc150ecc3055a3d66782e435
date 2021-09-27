@@ -16,6 +16,24 @@
       "message": "Hi Jingwen and Lukacs, \n\nThis topic causes the following error in the aosp-master-bazel branch and I don\u0027t know what that means. Could you help me to identify the cause?\n\nhttps://android-build.googleplex.com/builds/pending/P26333842/bp2build-incremental/latest/view/logs/build_error.log\n",
       "revId": "5f704d5cb783853fcc150ecc3055a3d66782e435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70d2bfd3_f4bf2b62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-27T05:42:11Z",
+      "side": 1,
+      "message": "That\u0027s an internal Bazel crash that seems unrelated to this CL. I filed https://b.corp.google.com/issues/201242197\n\nCould you please try the presubmit again?",
+      "parentUuid": "4110a00c_8bd87b7f",
+      "revId": "5f704d5cb783853fcc150ecc3055a3d66782e435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
