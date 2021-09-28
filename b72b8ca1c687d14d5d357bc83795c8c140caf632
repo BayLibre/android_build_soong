@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2adae57_221a8869",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 38
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-28T19:01:37Z",
+      "side": 1,
+      "message": "aside from the outstanding fixme and test error, lgtm",
+      "revId": "b72b8ca1c687d14d5d357bc83795c8c140caf632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a132f339_7a668b2d",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-28T19:01:37Z",
+      "side": 1,
+      "message": "It looks like this is causing the soong_integration-clean failures for queryview",
+      "range": {
+        "startLine": 507,
+        "startChar": 4,
+        "endLine": 507,
+        "endChar": 43
+      },
+      "revId": "b72b8ca1c687d14d5d357bc83795c8c140caf632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
