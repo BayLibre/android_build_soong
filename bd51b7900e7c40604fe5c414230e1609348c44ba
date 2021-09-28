@@ -16,6 +16,24 @@
       "message": "This seems like an unnecessary piece of duplication but I don\u0027t really see how it can be avoided.",
       "revId": "bd51b7900e7c40604fe5c414230e1609348c44ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e82b399_358183cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-28T09:54:58Z",
+      "side": 1,
+      "message": "Right. I hope java_boot_libs was something more general, but it\u0027s not, and I can\u0027t change it to something more general because it\u0027s already being used.",
+      "parentUuid": "3859864d_e7d7d6f8",
+      "revId": "bd51b7900e7c40604fe5c414230e1609348c44ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
