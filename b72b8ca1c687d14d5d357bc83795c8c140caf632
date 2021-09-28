@@ -39,6 +39,30 @@
       },
       "revId": "b72b8ca1c687d14d5d357bc83795c8c140caf632",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3423f361_78fabc05",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 38
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-09-28T22:06:17Z",
+      "side": 1,
+      "message": "Which do you mean? I have the CFI sym one and https://android-build.googleplex.com/builds/pending/P26381990/soong_integration-clean/latest/view/logs/build_error.log .",
+      "parentUuid": "a132f339_7a668b2d",
+      "range": {
+        "startLine": 507,
+        "startChar": 4,
+        "endLine": 507,
+        "endChar": 43
+      },
+      "revId": "b72b8ca1c687d14d5d357bc83795c8c140caf632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
