@@ -336,9 +336,8 @@ var (
 		"host_bionic_linker_asm",    // depends on extract_linker, a go binary.
 		"host_bionic_linker_script", // depends on extract_linker, a go binary.
 
-		"pbtombstone",                                  // depends on libprotobuf-cpp-lite, libtombstone_proto
-		"crash_dump",                                   // depends on unconverted module libprotobuf-cpp-lite
-		"libprotobuf-cpp-full", "libprotobuf-cpp-lite", // Unsupported product&vendor suffix. b/204811222 and b/204810610.
+		"pbtombstone", // depends on libprotobuf-cpp-lite, libtombstone_proto
+		"crash_dump",  // depends on unconverted module libprotobuf-cpp-lite
 
 		"libunwindstack_local", "libunwindstack_utils", // depends on unconverted module libunwindstack
 		"libunwindstack",    // depends on libdexfile_support, of unsupported module type art_cc_library_static
@@ -373,20 +372,6 @@ var (
 		// APEX support
 		"com.android.runtime", // http://b/194746715, apex, depends on 'libc_malloc_debug'
 
-		"libadb_crypto",                    // Depends on libadb_protos
-		"libadb_crypto_static",             // Depends on libadb_protos_static
-		"libadb_pairing_connection",        // Depends on libadb_protos
-		"libadb_pairing_connection_static", // Depends on libadb_protos_static
-		"libadb_pairing_server",            // Depends on libadb_protos
-		"libadb_pairing_server_static",     // Depends on libadb_protos_static
-		"libadbd",                          // Depends on libadbd_core
-		"libadbd_core",                     // Depends on libadb_protos
-		"libadbd_services",                 // Depends on libadb_protos
-
-		"libadb_protos_static",         // b/200601772: Requires cc_library proto support
-		"libadb_protos",                // b/200601772: Requires cc_library proto support
-		"libapp_processes_protos_lite", // b/200601772: Requires cc_library proto support
-
 		"libgtest_ndk_c++",      // b/201816222: Requires sdk_version support.
 		"libgtest_main_ndk_c++", // b/201816222: Requires sdk_version support.
 
@@ -417,6 +402,8 @@ var (
 
 		"cap_names.h", // TODO(b/204913827) runfiles need to be handled in mixed builds
 		"libcap",      // TODO(b/204913827) runfiles need to be handled in mixed builds
+
+		"libprotobuf-cpp-full", "libprotobuf-cpp-lite", // Unsupported product&vendor suffix. b/204811222 and b/204810610.
 	}
 
 	// Used for quicker lookups
