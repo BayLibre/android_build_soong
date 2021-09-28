@@ -122,14 +122,17 @@ func ObjectFactory() android.Module {
 
 // For bp2build conversion.
 type bazelObjectAttributes struct {
-	Srcs              bazel.LabelListAttribute
-	Srcs_as           bazel.LabelListAttribute
-	Hdrs              bazel.LabelListAttribute
-	Deps              bazel.LabelListAttribute
-	Copts             bazel.StringListAttribute
-	Asflags           bazel.StringListAttribute
-	Local_includes    bazel.StringListAttribute
-	Absolute_includes bazel.StringListAttribute
+	Srcs                bazel.LabelListAttribute
+	Srcs_as             bazel.LabelListAttribute
+	Hdrs                bazel.LabelListAttribute
+	Deps                bazel.LabelListAttribute
+	System_dynamic_deps bazel.LabelListAttribute
+	Copts               bazel.StringListAttribute
+	Asflags             bazel.StringListAttribute
+	Local_includes      bazel.StringListAttribute
+	Absolute_includes   bazel.StringListAttribute
+	Stl                 *string
+	Linker_script       bazel.LabelAttribute
 }
 
 // ObjectBp2Build is the bp2build converter from cc_object modules to the
@@ -153,10 +156,23 @@ func ObjectBp2Build(ctx android.TopDownMutatorContext) {
 	// Set arch-specific configurable attributes
 	compilerAttrs := bp2BuildParseCompilerProps(ctx, m)
 	var deps bazel.LabelListAttribute
-	for _, props := range m.linker.linkerProps() {
-		if objectLinkerProps, ok := props.(*ObjectLinkerProperties); ok {
-			deps = bazel.MakeLabelListAttribute(
-				android.BazelLabelForModuleDeps(ctx, objectLinkerProps.Objs))
+	systemDynamicDeps := bazel.LabelListAttribute{ForceSpecifyEmptyList: true}
+
+	var linkerScript bazel.LabelAttribute
+
+	for axis, configToProps := range m.GetArchVariantProperties(ctx, &ObjectLinkerProperties{}) {
+		for config, props := range configToProps {
+			if objectLinkerProps, ok := props.(*ObjectLinkerProperties); ok {
+				if objectLinkerProps.Linker_script != nil {
+					linkerScript.SetSelectValue(axis, config, android.BazelLabelForModuleSrcSingle(ctx, *objectLinkerProps.Linker_script))
+				}
+				deps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, objectLinkerProps.Objs))
+				systemSharedLibs := objectLinkerProps.System_shared_libs
+				if len(systemSharedLibs) > 0 {
+					systemSharedLibs = android.FirstUniqueStrings(systemSharedLibs)
+				}
+				systemDynamicDeps.SetSelectValue(axis, config, bazelLabelForSharedDeps(ctx, systemSharedLibs))
+			}
 		}
 	}
 
@@ -172,13 +188,16 @@ func ObjectBp2Build(ctx android.TopDownMutatorContext) {
 	}
 
 	attrs := &bazelObjectAttributes{
-		Srcs:              srcs,
-		Srcs_as:           compilerAttrs.asSrcs,
-		Deps:              deps,
-		Copts:             compilerAttrs.copts,
-		Asflags:           asFlags,
-		Local_includes:    compilerAttrs.localIncludes,
-		Absolute_includes: compilerAttrs.absoluteIncludes,
+		Srcs:                srcs,
+		Srcs_as:             compilerAttrs.asSrcs,
+		Deps:                deps,
+		System_dynamic_deps: systemDynamicDeps,
+		Copts:               compilerAttrs.copts,
+		Asflags:             asFlags,
+		Local_includes:      compilerAttrs.localIncludes,
+		Absolute_includes:   compilerAttrs.absoluteIncludes,
+		Stl:                 compilerAttrs.stl,
+		Linker_script:       linkerScript,
 	}
 
 	props := bazel.BazelTargetModuleProperties{
