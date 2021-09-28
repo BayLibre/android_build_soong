@@ -182,7 +182,10 @@ var (
 		"external/libcap":                   Bp2BuildDefaultTrueRecursively,
 		"external/libcxx":                   Bp2BuildDefaultTrueRecursively,
 		"external/libcxxabi":                Bp2BuildDefaultTrueRecursively,
+		"external/protobuf":                 Bp2BuildDefaultTrueRecursively,
+		"external/python/six":               Bp2BuildDefaultTrueRecursively,
 		"external/scudo":                    Bp2BuildDefaultTrueRecursively,
+		"external/zlib":                     Bp2BuildDefaultTrueRecursively,
 		"prebuilts/clang/host/linux-x86":    Bp2BuildDefaultTrueRecursively,
 		"system/core/libcutils":             Bp2BuildDefaultTrueRecursively,
 		"system/core/libprocessgroup":       Bp2BuildDefaultTrue,
@@ -227,6 +230,10 @@ var (
 
 		"libfdtrack", // depends on liblzma and libbase
 
+		"libprotobuf-python",               // contains .proto sources
+		"libprotobuf-internal-protos",      // we don't handle path property for fileegroups
+		"libprotobuf-internal-python-srcs", // we don't handle path property for fileegroups
+
 		"libseccomp_policy", // depends on libbase
 
 		"gwp_asan_crash_handler", // cc_library, ld.lld: error: undefined symbol: memset
@@ -265,6 +272,7 @@ var (
 		"libseccomp_policy_app_zygote_sources", // http://b/200899432, bazel-built cc_genrule does not work in mixed build when it is a dependency of another soong module.
 		"libseccomp_policy_app_sources",        // http://b/200899432, bazel-built cc_genrule does not work in mixed build when it is a dependency of another soong module.
 		"libseccomp_policy_system_sources",     // http://b/200899432, bazel-built cc_genrule does not work in mixed build when it is a dependency of another soong module.
+
 	}
 
 	// Used for quicker lookups
