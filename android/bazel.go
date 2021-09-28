@@ -256,7 +256,7 @@ var (
 
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
 	bp2buildModuleDoNotConvertList = []string{
-		"libprotobuf-cpp-full", "libprotobuf-cpp-lite", // Unsupported product&vendor suffix. b/204811222 and b/204810610.
+		// "libprotobuf-cpp-full", "libprotobuf-cpp-lite", // Unsupported product&vendor suffix. b/204811222 and b/204810610.
 
 		"libc_malloc_debug", // depends on libunwindstack, which depends on unsupported module art_cc_library_statics
 
@@ -301,8 +301,8 @@ var (
 		"libadbd_core",                     // Depends on libadb_protos
 		"libadbd_services",                 // Depends on libadb_protos
 
-		"libadb_protos_static",         // b/200601772: Requires cc_library proto support
-		"libadb_protos",                // b/200601772: Requires cc_library proto support
+		// "libadb_protos_static",         // b/200601772: Requires cc_library proto support
+		// "libadb_protos",                // b/200601772: Requires cc_library proto support
 		"libapp_processes_protos_lite", // b/200601772: Requires cc_library proto support
 
 		"libgtest_ndk_c++",      // b/201816222: Requires sdk_version support.
