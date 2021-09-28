@@ -279,6 +279,30 @@
       },
       "revId": "204356f3b54be5936e152815a96d1e917022d077",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dc4a5de_06d3436c",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-28T06:42:21Z",
+      "side": 1,
+      "message": "I got your point. It\u0027s better to fail the build rather than allowing it to continue with problems silently. I filed b/201371822 to track this.\n\nThis should be easier to implement than a boot test and should catch most of the problems that a boot test would catch.\n\nThe benefit of having the build-time test when compared to the boot test is that it can be easily controlled. For example, it can be controlled by the same flag that dexpreopting uses, so it won\u0027t fail the build if dexpreopting is turned off for a device.",
+      "parentUuid": "40cdee15_7a769909",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 5
+      },
+      "revId": "204356f3b54be5936e152815a96d1e917022d077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
