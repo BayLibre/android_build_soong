@@ -82,6 +82,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c972c4_b57eab1a",
+        "filename": "android/bazel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-09-28T21:38:04Z",
+      "side": 1,
+      "message": "don\u0027t have super strong feelings, but if you\u0027re making other changes, it\u0027d be nice.",
+      "parentUuid": "68e1aa5b_32cdcfe3",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 12
+      },
+      "revId": "9fc288d28ceadf505d5cc65530e43dea09519ed2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c31ccdc9_1906baa0",
