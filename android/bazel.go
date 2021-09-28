@@ -180,6 +180,7 @@ var (
 		"development/sdk":                   Bp2BuildDefaultTrueRecursively,
 		"external/gwp_asan":                 Bp2BuildDefaultTrueRecursively,
 		"external/brotli":                   Bp2BuildDefaultTrue,
+		"system/core/libcrypto_utils":       Bp2BuildDefaultTrueRecursively,
 		"system/core/libcutils":             Bp2BuildDefaultTrueRecursively,
 		"system/core/libprocessgroup":       Bp2BuildDefaultTrue,
 		"system/core/property_service/libpropertyinfoparser": Bp2BuildDefaultTrueRecursively,
@@ -189,12 +190,14 @@ var (
 		"system/timezone/apex":            Bp2BuildDefaultTrueRecursively,
 		"system/timezone/output_data":     Bp2BuildDefaultTrueRecursively,
 		"external/arm-optimized-routines": Bp2BuildDefaultTrueRecursively,
+		"external/boringssl":              Bp2BuildDefaultTrueRecursively,
 		"external/fmtlib":                 Bp2BuildDefaultTrueRecursively,
 		"external/jemalloc_new":           Bp2BuildDefaultTrueRecursively,
 		"external/libcxx":                 Bp2BuildDefaultTrueRecursively,
 		"external/libcxxabi":              Bp2BuildDefaultTrueRecursively,
 		"external/libcap":                 Bp2BuildDefaultTrueRecursively,
 		"external/scudo":                  Bp2BuildDefaultTrueRecursively,
+		"packages/modules/adb":            Bp2BuildDefaultTrue,
 		"prebuilts/clang/host/linux-x86":  Bp2BuildDefaultTrueRecursively,
 	}
 
@@ -227,11 +230,9 @@ var (
 		"libbase_ndk", // http://b/186826477, cc_library, no such target '//build/bazel/platforms/os:darwin' when --platforms //build/bazel/platforms:android_x86 is added
 		// libcxx
 		"libBionicBenchmarksUtils", // cc_library_static, fatal error: 'map' file not found, from libcxx
-		"libbase",                  // Depends on fmtlib via static_libs and also whole_static_libs, which results in bazel errors.
 
-		"libfdtrack", // depends on liblzma and libbase
-
-		"libseccomp_policy", // depends on libbase
+		"libseccomp_policy", // b/201094425: depends on func_to_syscall_nrs, which depends on py_binary, which is unsupported in mixed builds.
+		"libfdtrack",        // depends on libunwindstack, which depends on unsupported module art_cc_library_statics
 
 		"gwp_asan_crash_handler", // cc_library, ld.lld: error: undefined symbol: memset
 
@@ -253,6 +254,11 @@ var (
 
 		// APEX support
 		"com.android.runtime", // http://b/194746715, apex, depends on 'libc_malloc_debug' and 'libc_malloc_hooks'
+
+		// TODO(cparsons): Investigate enabling these.
+		"libadbd",
+		"libadbd_core",
+		"libadbd_services",
 	}
 
 	// Per-module denylist of cc_library modules to only generate the static

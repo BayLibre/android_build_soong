@@ -71,6 +71,7 @@ func TestCcObjectSimple(t *testing.T) {
         ".",
     ],
     srcs = ["a/b/c.c"],
+    system_dynamic_deps = [],
 )`,
 		},
 	})
@@ -116,6 +117,7 @@ cc_defaults {
     ],
     local_includes = ["."],
     srcs = ["a/b/c.c"],
+    system_dynamic_deps = [],
 )`,
 		}})
 }
@@ -149,11 +151,13 @@ cc_object {
     name = "bar",
     copts = ["-fno-addrsig"],
     srcs = ["x/y/z.c"],
+    system_dynamic_deps = [],
 )`, `cc_object(
     name = "foo",
     copts = ["-fno-addrsig"],
     deps = [":bar"],
     srcs = ["a/b/c.c"],
+    system_dynamic_deps = [],
 )`,
 		},
 	})
@@ -180,6 +184,7 @@ func TestCcObjectIncludeBuildDirFalse(t *testing.T) {
     name = "foo",
     copts = ["-fno-addrsig"],
     srcs = ["a/b/c.c"],
+    system_dynamic_deps = [],
 )`,
 		},
 	})
@@ -211,6 +216,7 @@ func TestCcObjectProductVariable(t *testing.T) {
     }),
     copts = ["-fno-addrsig"],
     srcs_as = ["src.S"],
+    system_dynamic_deps = [],
 )`,
 		},
 	})
@@ -248,6 +254,7 @@ func TestCcObjectCflagsOneArch(t *testing.T) {
         "//build/bazel/platforms/arch:arm": ["arch/arm/file.cpp"],
         "//conditions:default": [],
     }),
+    system_dynamic_deps = [],
 )`,
 		},
 	})
@@ -301,45 +308,115 @@ func TestCcObjectCflagsFourArch(t *testing.T) {
         "//build/bazel/platforms/arch:x86_64": ["x86_64.cpp"],
         "//conditions:default": [],
     }),
+    system_dynamic_deps = [],
 )`,
 		},
 	})
 }
 
-func TestCcObjectCflagsMultiOs(t *testing.T) {
+func TestCcObjectLinkerScript(t *testing.T) {
 	runCcObjectTestCase(t, bp2buildTestCase{
-		description:                        "cc_object setting cflags for multiple OSes",
+		description:                        "cc_object setting linker_script",
 		moduleTypeUnderTest:                "cc_object",
 		moduleTypeUnderTestFactory:         cc.ObjectFactory,
 		moduleTypeUnderTestBp2BuildMutator: cc.ObjectBp2Build,
 		blueprint: `cc_object {
     name: "foo",
-    system_shared_libs: [],
     srcs: ["base.cpp"],
-    target: {
-        android: {
-            cflags: ["-fPIC"],
-        },
-        windows: {
-            cflags: ["-fPIC"],
-        },
-        darwin: {
-            cflags: ["-Wall"],
-        },
-    },
+    linker_script: "bunny.lds",
     include_build_directory: false,
 }
 `,
 		expectedBazelTargets: []string{
 			`cc_object(
     name = "foo",
-    copts = ["-fno-addrsig"] + select({
-        "//build/bazel/platforms/os:android": ["-fPIC"],
-        "//build/bazel/platforms/os:darwin": ["-Wall"],
-        "//build/bazel/platforms/os:windows": ["-fPIC"],
+    copts = ["-fno-addrsig"],
+    linker_script = "bunny.lds",
+    srcs = ["base.cpp"],
+)`,
+		},
+	})
+}
+
+func TestCcObjectDepsAndLinkerScriptSelects(t *testing.T) {
+	runCcObjectTestCase(t, bp2buildTestCase{
+		description:                        "cc_object setting deps and linker_script across archs",
+		moduleTypeUnderTest:                "cc_object",
+		moduleTypeUnderTestFactory:         cc.ObjectFactory,
+		moduleTypeUnderTestBp2BuildMutator: cc.ObjectBp2Build,
+		blueprint: `cc_object {
+    name: "foo",
+    srcs: ["base.cpp"],
+    arch: {
+        x86: {
+            objs: ["x86_obj"],
+            linker_script: "x86.lds",
+        },
+        x86_64: {
+            objs: ["x86_64_obj"],
+            linker_script: "x86_64.lds",
+        },
+        arm: {
+            objs: ["arm_obj"],
+            linker_script: "arm.lds",
+        },
+    },
+    include_build_directory: false,
+}
+
+cc_object {
+    name: "x86_obj",
+    system_shared_libs: [],
+    srcs: ["x86.cpp"],
+    include_build_directory: false,
+}
+
+cc_object {
+    name: "x86_64_obj",
+    system_shared_libs: [],
+    srcs: ["x86_64.cpp"],
+    include_build_directory: false,
+}
+
+cc_object {
+    name: "arm_obj",
+    system_shared_libs: [],
+    srcs: ["arm.cpp"],
+    include_build_directory: false,
+}
+`,
+		expectedBazelTargets: []string{
+			`cc_object(
+    name = "arm_obj",
+    copts = ["-fno-addrsig"],
+    srcs = ["arm.cpp"],
+    system_dynamic_deps = [],
+)`, `cc_object(
+    name = "foo",
+    copts = ["-fno-addrsig"],
+    deps = select({
+        "//build/bazel/platforms/arch:arm": [":arm_obj"],
+        "//build/bazel/platforms/arch:x86": [":x86_obj"],
+        "//build/bazel/platforms/arch:x86_64": [":x86_64_obj"],
         "//conditions:default": [],
     }),
+    linker_script = select({
+        "//build/bazel/platforms/arch:arm": "arm.lds",
+        "//build/bazel/platforms/arch:x86": "x86.lds",
+        "//build/bazel/platforms/arch:x86_64": "x86_64.lds",
+        "//conditions:default": None,
+    }),
     srcs = ["base.cpp"],
+)`, `cc_object(
+    name = "x86_64_obj",
+    copts = ["-fno-addrsig"],
+    srcs = ["x86_64.cpp"],
+    system_dynamic_deps = [],
+)`, `cc_object(
+    name = "x86_obj",
+    copts = ["-fno-addrsig"],
+    srcs = ["x86.cpp"],
+    system_dynamic_deps = [],
 )`,
 		},
 	})
