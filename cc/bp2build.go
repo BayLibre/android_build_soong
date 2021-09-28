@@ -25,6 +25,13 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
+const (
+	protoPartition = "proto"
+	cPartition     = "c"
+	asPartition    = "as"
+	cppPartition   = "cpp"
+)
+
 // staticOrSharedAttributes are the Bazel-ified versions of StaticOrSharedProperties --
 // properties which apply to either the shared or static version of a cc_library module.
 type staticOrSharedAttributes struct {
@@ -42,49 +49,46 @@ type staticOrSharedAttributes struct {
 	System_dynamic_deps bazel.LabelListAttribute
 }
 
-func groupSrcsByExtension(ctx android.TopDownMutatorContext, srcs bazel.LabelListAttribute) (cppSrcs, cSrcs, asSrcs bazel.LabelListAttribute) {
-	// Check that a module is a filegroup type named <label>.
-	isFilegroupNamed := func(m android.Module, fullLabel string) bool {
-		if ctx.OtherModuleType(m) != "filegroup" {
-			return false
-		}
-		labelParts := strings.Split(fullLabel, ":")
-		if len(labelParts) > 2 {
-			// There should not be more than one colon in a label.
-			ctx.ModuleErrorf("%s is not a valid Bazel label for a filegroup", fullLabel)
-		}
-		return m.Name() == labelParts[len(labelParts)-1]
+func groupSrcsByExtension(ctx android.TopDownMutatorContext, srcs bazel.LabelListAttribute) bazel.PartitionToLabelListAttribute {
+	// Check that a module is a filegroup type
+	isFilegroup := func(m blueprint.Module) bool {
+		return ctx.OtherModuleType(m) == "filegroup"
 	}
 
 	// Convert filegroup dependencies into extension-specific filegroups filtered in the filegroup.bzl
 	// macro.
 	addSuffixForFilegroup := func(suffix string) bazel.LabelMapper {
-		return func(ctx bazel.OtherModuleContext, label string) (string, bool) {
-			m, exists := ctx.ModuleFromName(label)
-			if !exists {
-				return label, false
+		return func(ctx bazel.OtherModuleContext, label bazel.Label) (string, bool) {
+			m, exists := ctx.ModuleFromName(label.OriginalModuleName)
+			labelStr := label.Label
+			if !exists || !isFilegroup(m) {
+				return labelStr, false
 			}
-			aModule, _ := m.(android.Module)
-			if !isFilegroupNamed(aModule, label) {
-				return label, false
-			}
-			return label + suffix, true
+			return labelStr + suffix, true
 		}
+	}
+
+	isProtoFilegroup := func(ctx bazel.OtherModuleContext, label bazel.Label) (string, bool) {
+		m, exists := ctx.ModuleFromName(label.OriginalModuleName)
+		labelStr := label.Label
+		if !exists || !isFilegroup(m) {
+			return labelStr, false
+		}
+		likelyProtos := strings.HasSuffix(labelStr, "proto") || strings.HasSuffix(labelStr, "protos")
+		return labelStr, likelyProtos
 	}
 
 	// TODO(b/190006308): Handle language detection of sources in a Bazel rule.
 	partitioned := bazel.PartitionLabelListAttribute(ctx, &srcs, bazel.LabelPartitions{
-		"c":  bazel.LabelPartition{Extensions: []string{".c"}, LabelMapper: addSuffixForFilegroup("_c_srcs")},
-		"as": bazel.LabelPartition{Extensions: []string{".s", ".S"}, LabelMapper: addSuffixForFilegroup("_as_srcs")},
+		protoPartition: bazel.LabelPartition{Extensions: []string{".proto"}, LabelMapper: isProtoFilegroup},
+		cPartition:     bazel.LabelPartition{Extensions: []string{".c"}, LabelMapper: addSuffixForFilegroup("_c_srcs")},
+		asPartition:    bazel.LabelPartition{Extensions: []string{".s", ".S"}, LabelMapper: addSuffixForFilegroup("_as_srcs")},
 		// C++ is the "catch-all" group, and comprises generated sources because we don't
 		// know the language of these sources until the genrule is executed.
-		"cpp": bazel.LabelPartition{Extensions: []string{".cpp", ".cc", ".cxx", ".mm"}, LabelMapper: addSuffixForFilegroup("_cpp_srcs"), Keep_remainder: true},
+		cppPartition: bazel.LabelPartition{Extensions: []string{".cpp", ".cc", ".cxx", ".mm"}, LabelMapper: addSuffixForFilegroup("_cpp_srcs"), Keep_remainder: true},
 	})
 
-	cSrcs = partitioned["c"]
-	asSrcs = partitioned["as"]
-	cppSrcs = partitioned["cpp"]
-	return
+	return partitioned
 }
 
 // bp2BuildParseLibProps returns the attributes for a variant of a cc_library.
@@ -174,10 +178,14 @@ func bp2buildParseStaticOrSharedProps(ctx android.TopDownMutatorContext, module 
 		}
 	}
 
-	cppSrcs, cSrcs, asSrcs := groupSrcsByExtension(ctx, attrs.Srcs)
-	attrs.Srcs = cppSrcs
-	attrs.Srcs_c = cSrcs
-	attrs.Srcs_as = asSrcs
+	partitionedSrcs := groupSrcsByExtension(ctx, attrs.Srcs)
+	attrs.Srcs = partitionedSrcs[cppPartition]
+	attrs.Srcs_c = partitionedSrcs[cPartition]
+	attrs.Srcs_as = partitionedSrcs[asPartition]
+
+	if !partitionedSrcs[protoPartition].IsEmpty() {
+		ctx.ModuleErrorf("Migrating static/shared only proto srcs is not currently supported")
+	}
 
 	return attrs
 }
@@ -230,6 +238,8 @@ type compilerAttributes struct {
 
 	localIncludes    bazel.StringListAttribute
 	absoluteIncludes bazel.StringListAttribute
+
+	protoSrcs bazel.LabelListAttribute
 }
 
 // bp2BuildParseCompilerProps returns copts, srcs and hdrs and other attributes.
@@ -320,7 +330,11 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 		}
 	}
 
-	srcs, cSrcs, asSrcs := groupSrcsByExtension(ctx, srcs)
+	partitionedSrcs := groupSrcsByExtension(ctx, srcs)
+
+	if !partitionedSrcs[protoPartition].IsEmpty() {
+		ctx.ModuleErrorf("Migrating proto srcs is not currently supported")
+	}
 
 	var stl *string = nil
 	stlPropsByArch := module.GetArchVariantProperties(ctx, &StlProperties{})
@@ -342,16 +356,17 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 
 	return compilerAttributes{
 		copts:            copts,
-		srcs:             srcs,
+		srcs:             partitionedSrcs[cppPartition],
 		asFlags:          asFlags,
-		asSrcs:           asSrcs,
-		cSrcs:            cSrcs,
+		asSrcs:           partitionedSrcs[asPartition],
+		cSrcs:            partitionedSrcs[cPartition],
 		conlyFlags:       conlyFlags,
 		cppFlags:         cppFlags,
 		rtti:             rtti,
 		stl:              stl,
 		localIncludes:    localIncludes,
 		absoluteIncludes: absoluteIncludes,
+		protoSrcs:        partitionedSrcs[protoPartition],
 	}
 }
 

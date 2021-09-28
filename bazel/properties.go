@@ -568,7 +568,7 @@ type OtherModuleContext interface {
 
 // LabelMapper is a function that takes a OtherModuleContext and returns a (potentially changed)
 // label and whether it was changed.
-type LabelMapper func(OtherModuleContext, string) (string, bool)
+type LabelMapper func(OtherModuleContext, Label) (string, bool)
 
 // LabelPartition contains descriptions of a partition for labels
 type LabelPartition struct {
@@ -590,7 +590,7 @@ type LabelPartitions map[string]LabelPartition
 // not.
 func (lf LabelPartition) filter(ctx OtherModuleContext, label Label) *Label {
 	if lf.LabelMapper != nil {
-		if newLabel, changed := lf.LabelMapper(ctx, label.Label); changed {
+		if newLabel, changed := lf.LabelMapper(ctx, label); changed {
 			return &Label{newLabel, label.OriginalModuleName}
 		}
 	}

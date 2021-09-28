@@ -21,6 +21,10 @@ import (
 	"github.com/google/blueprint/proptools"
 )
 
+const (
+	canonicalPathFromRootDefault = true
+)
+
 // TODO(ccross): protos are often used to communicate between multiple modules.  If the only
 // way to convert a proto to source is to reference it as a source file, and external modules cannot
 // reference source files in other modules, then every module that owns a proto file will need to
@@ -90,7 +94,7 @@ func GetProtoFlags(ctx ModuleContext, p *ProtoProperties) ProtoFlags {
 		Flags:                 flags,
 		Deps:                  deps,
 		OutTypeFlag:           protoOutFlag,
-		CanonicalPathFromRoot: proptools.BoolDefault(p.Proto.Canonical_path_from_root, true),
+		CanonicalPathFromRoot: proptools.BoolDefault(p.Proto.Canonical_path_from_root, canonicalPathFromRootDefault),
 		Dir:                   PathForModuleGen(ctx, "proto"),
 		SubDir:                PathForModuleGen(ctx, "proto", ctx.ModuleDir()),
 	}
@@ -120,6 +124,25 @@ type ProtoProperties struct {
 		// false in the future.
 		Canonical_path_from_root *bool
 	} `android:"arch_variant"`
+}
+
+type BazelProtos struct {
+	Type              *string
+	StripImportPrefix *string
+}
+
+func (pp *ProtoProperties) ConvertProtosWithBp2build(ctx TopDownMutatorContext) BazelProtos {
+
+	// TODO(b/201289728): handle arch-variant protos
+	p := BazelProtos{
+		Type: pp.Proto.Type,
+	}
+	if proptools.BoolDefault(pp.Proto.Canonical_path_from_root, canonicalPathFromRootDefault) {
+		path := "//" + ctx.ModuleDir()
+		p.StripImportPrefix = &path
+		// TODO: includes
+	}
+	return p
 }
 
 func ProtoRule(rule *RuleBuilder, protoFile Path, flags ProtoFlags, deps Paths,
