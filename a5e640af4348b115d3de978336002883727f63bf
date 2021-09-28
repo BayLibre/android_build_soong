@@ -16,6 +16,23 @@
       "message": "Counts Good To Me",
       "revId": "a5e640af4348b115d3de978336002883727f63bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a260f0f3_e9df81cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-28T23:32:54Z",
+      "side": 1,
+      "message": "This is going to conflict with my aosp/1839353\n\nBut is fine, I can always re-alphabetize :)",
+      "revId": "a5e640af4348b115d3de978336002883727f63bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
