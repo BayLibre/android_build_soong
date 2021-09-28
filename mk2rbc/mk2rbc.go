@@ -818,7 +818,9 @@ func (ctx *parseContext) handleSubConfig(
 			pathPattern[0] = "vendor/google_devices"
 			matchingPaths = ctx.findMatchingPaths(pathPattern)
 		} else {
-			for _, t := range []string{"vendor/qcom", "vendor/google_devices"} {
+			for _, t := range []string{"vendor/qcom", "vendor/google_devices", "vendor/mediatek/k61v1_basic_ref",
+				"vendor/mediatek/system", "vendor/mediatek/common",
+				"vendor/panasonic/hawk/proprietary/common/config"} {
 				pathPattern[0] = t
 				matchingPaths = append(matchingPaths, ctx.findMatchingPaths(pathPattern)...)
 			}
