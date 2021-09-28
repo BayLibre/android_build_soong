@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90c1d320_121ea2dc",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-09-28T22:45:47Z",
+      "side": 1,
+      "message": "I moved this to the top of this file with other var declarations,\nand changed some comments.\nIs there a better file to place this constant?\nWill it work or better to import from cc/config to this file?",
+      "parentUuid": "0b0df9b4_714e878f",
+      "revId": "a8700043d67cc71722b7891cbe5dc54c47888a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2612380a_f9336f94",
         "filename": "android/module.go",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-22T00:32:02Z",
       "side": 1,
       "message": "var topDirs Paths",
+      "revId": "a8700043d67cc71722b7891cbe5dc54c47888a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "382d35bf_bab29460",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3241,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-09-28T22:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2612380a_f9336f94",
       "revId": "a8700043d67cc71722b7891cbe5dc54c47888a8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2021-09-22T00:32:02Z",
       "side": 1,
       "message": "addAncestors is already doing this check, can it return the top level directories too?",
+      "revId": "a8700043d67cc71722b7891cbe5dc54c47888a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "461591a8_57e8f180",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3247,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-09-28T22:45:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b118f82c_fe9f669b",
       "revId": "a8700043d67cc71722b7891cbe5dc54c47888a8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
