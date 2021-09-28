@@ -16,6 +16,24 @@
       "message": "Why is this needed as part of this change?",
       "revId": "794e9ccc4bfcaa16ba7c1de8c923d79ed6d73838",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42f9000e_e45507eb",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-28T10:00:29Z",
+      "side": 1,
+      "message": "Good catch. This is not needed. Moved to the next CL.",
+      "parentUuid": "82d219c1_f792b809",
+      "revId": "794e9ccc4bfcaa16ba7c1de8c923d79ed6d73838",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
