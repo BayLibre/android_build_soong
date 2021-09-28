@@ -303,6 +303,30 @@
       },
       "revId": "204356f3b54be5936e152815a96d1e917022d077",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6627c434_fb376e42",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-28T11:02:49Z",
+      "side": 1,
+      "message": "As we discussed in the standup, I think there\u0027s good reason for both:\n\nAn error at build is useful to give a clear early signal if we fail to build the dexpreopted files when the product is configured to use them. The  build_test\u003cn\u003e CI builds essentially does `m nothing` (i.e. Soong, Kati, and Ninja to check the build graph) on every available product, so any error detected at those stages we get covered even if there isn\u0027t a build that creates an image and flashes it to a test device.\n\nA test at boot is still useful to ensure that the dexpreopted files are successfully used by the runtime. Ideally we should have a test that gets activated automatically for all devices that are configured to do dexpreopting; if there are /system/framework/oat files then they also are mapped by the zygote and system server. I think you said that the odrefresh end-to-end test does this, so maybe it\u0027s just a matter of adapting it to work for the OAT files in the system image. Or perhaps such a test already exists? This is after all something that was already in place before the modularization effort started.",
+      "parentUuid": "7dc4a5de_06d3436c",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 5
+      },
+      "revId": "204356f3b54be5936e152815a96d1e917022d077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
