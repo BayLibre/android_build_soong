@@ -108,6 +108,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bc2969a1_43dd9ff2",
+        "filename": "android/bazel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-28T23:26:24Z",
+      "side": 1,
+      "message": "Done, with more clarity around exactly which modules depend on protos.\n\nHope this paves the way for a lot of denylist removal when we support protos :)",
+      "parentUuid": "03c972c4_b57eab1a",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 12
+      },
+      "revId": "9fc288d28ceadf505d5cc65530e43dea09519ed2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "c31ccdc9_1906baa0",
         "filename": "bp2build/cc_object_conversion_test.go",
         "patchSetId": 3
@@ -119,6 +143,30 @@
       "writtenOn": "2021-09-28T21:26:26Z",
       "side": 1,
       "message": "🐰",
+      "range": {
+        "startLine": 326,
+        "startChar": 20,
+        "endLine": 326,
+        "endChar": 25
+      },
+      "revId": "9fc288d28ceadf505d5cc65530e43dea09519ed2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b62eb89c_82bd55eb",
+        "filename": "bp2build/cc_object_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-28T23:26:24Z",
+      "side": 1,
+      "message": "its time I bring cute animals into our test cases",
+      "parentUuid": "c31ccdc9_1906baa0",
       "range": {
         "startLine": 326,
         "startChar": 20,
@@ -152,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "019938fc_1e474149",
+        "filename": "bp2build/cc_object_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-28T23:26:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2979126_4acae6a0",
+      "range": {
+        "startLine": 341,
+        "startChar": 5,
+        "endLine": 341,
+        "endChar": 43
+      },
+      "revId": "9fc288d28ceadf505d5cc65530e43dea09519ed2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "462e3e77_a0398653",
@@ -175,6 +247,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "642f6023_4f0b40f6",
+        "filename": "bp2build/cc_object_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-28T23:26:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "462e3e77_a0398653",
+      "range": {
+        "startLine": 371,
+        "startChar": 35,
+        "endLine": 372,
+        "endChar": 1
+      },
+      "revId": "9fc288d28ceadf505d5cc65530e43dea09519ed2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "149081e1_4b8fa5ae",
@@ -188,6 +284,30 @@
       "writtenOn": "2021-09-28T21:26:26Z",
       "side": 1,
       "message": "nit: we likely need to call ResolveExcludes() for deps...\n\nat some point, we may want to make it just part of bp2build so we can\u0027t forget it",
+      "range": {
+        "startLine": 169,
+        "startChar": 4,
+        "endLine": 169,
+        "endChar": 8
+      },
+      "revId": "9fc288d28ceadf505d5cc65530e43dea09519ed2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59401f32_47262c4f",
+        "filename": "cc/object.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-28T23:26:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "149081e1_4b8fa5ae",
       "range": {
         "startLine": 169,
         "startChar": 4,
