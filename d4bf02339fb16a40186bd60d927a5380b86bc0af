@@ -16,6 +16,23 @@
       "message": "LGTM",
       "revId": "d4bf02339fb16a40186bd60d927a5380b86bc0af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b4780f5_0dc8279e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-28T23:32:01Z",
+      "side": 1,
+      "message": "This is going to conflict with my current copy of aosp/1839353, but I\u0027m happy to eat the merge conflict on my side.",
+      "revId": "d4bf02339fb16a40186bd60d927a5380b86bc0af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
