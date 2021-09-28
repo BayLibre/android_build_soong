@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "68e1aa5b_32cdcfe3",
+        "filename": "android/bazel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-09-28T21:33:43Z",
+      "side": 1,
+      "message": "I was hoping to follow up in a future CL and more-explicitly name which targets are broken via these bugs, hence the TODO.\nIs this OK, or would you like me to block this CL on it?",
+      "parentUuid": "4cd2e350_77e87dc0",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 12
+      },
+      "revId": "9fc288d28ceadf505d5cc65530e43dea09519ed2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c31ccdc9_1906baa0",
