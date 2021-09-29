@@ -327,6 +327,30 @@
       },
       "revId": "204356f3b54be5936e152815a96d1e917022d077",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e9e3d33_6aaf6991",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-29T06:48:45Z",
+      "side": 1,
+      "message": "Makes sense to me. There can be cases where the dexpreopted files exist but cannot be used (because of checksum mismatch, for example). I can see the necessity of having a boot test. We have a similar test in odsign_e2e_tests (https://cs.android.com/android/_/android/platform/art/+/2007f8591ca475abfbd1026f72bf8618b562e0f6:test/odsign/test-src/com/android/tests/odsign/OnDeviceSigningHostTest.java;l\u003d80;drc\u003d59064ebccc2e4b78d8f0dfa5e058c3d4de1fb36f), so it isn\u0027t hard to add another one. Thank you for the suggestion. I created b/201491591.\n\nOne thing we should consider is that the test may trigger a false alarm on devices with dexpreopting disabled on purpose. Therefore, we should do checks only if /system/framework/oat contains dexpreopted files, so that we won\u0027t get into trouble. This essentially makes the build test and the boot test orthogonal: the build test verifies that the dexpreopted files are generated, while the boot test verifies that they are used if they are generated.",
+      "parentUuid": "6627c434_fb376e42",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 5
+      },
+      "revId": "204356f3b54be5936e152815a96d1e917022d077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
