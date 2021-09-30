@@ -22,6 +22,30 @@
       },
       "revId": "cc2001990ad29d7c9e55ce093cf56f9602349a54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a59f3a44_50e49d3e",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-09-30T12:49:13Z",
+      "side": 1,
+      "message": "To be clear: are you saying that you tried the avenue I am deleting here and it works? (then I keep it; I was under the impression that it hasn\u0027t been exercised since forever)",
+      "parentUuid": "08e80efa_f8caa7c3",
+      "range": {
+        "startLine": 564,
+        "startChar": 29,
+        "endLine": 564,
+        "endChar": 37
+      },
+      "revId": "cc2001990ad29d7c9e55ce093cf56f9602349a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
