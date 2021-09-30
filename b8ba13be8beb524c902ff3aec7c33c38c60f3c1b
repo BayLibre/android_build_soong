@@ -16,6 +16,24 @@
       "message": "I believe this can be removed too.",
       "revId": "b8ba13be8beb524c902ff3aec7c33c38c60f3c1b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c640106b_83ccf83f",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-30T01:30:53Z",
+      "side": 1,
+      "message": "This is needed in the next CL. Although this module itself does not require files to be exported, it has children that require files to be exported. In the next CL, I implemented `RequiresFilesFromPrebuiltApexTag` for `systemServerClasspathFragmentContentDependencyTag` so that its children can be traversed.\n\nThe code in deapexer.go assumes that the  module implements `RequiredFilesFromPrebuiltApex` without type checking when the tag implements `RequiresFilesFromPrebuiltApexTag` (https://cs.android.com/android/_/android/platform/build/soong/+/1cd6d8e25e940ae9cdc55c9eba54536279d9c0fa:apex/prebuilt.go;l\u003d600;drc\u003d4482560cc73f16f09eecda42751cf2f8dc72e7de), so I need to add this no-op function to avoid panic.",
+      "parentUuid": "39340f53_566e6792",
+      "revId": "b8ba13be8beb524c902ff3aec7c33c38c60f3c1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
