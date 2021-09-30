@@ -51,6 +51,24 @@
       "message": "I tested and could see the new entries in out/soong_metrics, I did m nothing and the duration is about 3s\n\n  build_steps: {        # (soong_build_metrics.BuildSteps) size\u003d17B\n    starting_main_ninja_ns: 0x00000029e2dae172  # 179_899_654_514; [as nanoseconds]: 2 minutes 59 seconds\n    finished_ns: 0x0000002a60d2e0c8     # 182_013_059_272; [as nanoseconds]: 3 minutes 2 seconds\n  }  ",
       "revId": "38c2a1dc651cf47ccd58a47d7c145f1021da85ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23a2d4f0_35a1053c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2021-09-30T21:50:56Z",
+      "side": 1,
+      "message": "If you were asking the go tests here, I normally do: go test .",
+      "parentUuid": "dda85051_a2626722",
+      "revId": "38c2a1dc651cf47ccd58a47d7c145f1021da85ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
