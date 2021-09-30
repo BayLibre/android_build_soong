@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e4db67c_6b0c1c46",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-30T11:58:46Z",
+      "side": 1,
+      "message": "Is it just `Test: m` ? What is manual about it?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05249508_0dcb33b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-30T11:58:46Z",
+      "side": 1,
+      "message": "Nit: I\u0027d say just \"in build/make/core/product_config.mk\", as the link to code search may get out of date.",
+      "range": {
+        "startLine": 19,
+        "startChar": 61,
+        "endLine": 19,
+        "endChar": 185
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11c689c7_d39090fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-30T11:58:46Z",
+      "side": 1,
+      "message": "Can you post the error here (if it\u0027s a lot of text, you can trim it to show the important bits).",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 21,
+        "endChar": 18
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c45650_a9111c66",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-30T11:58:46Z",
+      "side": 1,
+      "message": "Can you put the arguments on one line up to 100 char limit? Here and below.",
+      "range": {
+        "startLine": 209,
+        "startChar": 22,
+        "endLine": 212,
+        "endChar": 58
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c9852d9_17575a70",
+        "filename": "java/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-30T11:58:46Z",
+      "side": 1,
+      "message": "dexpreopt_systemserver_check.go?",
+      "range": {
+        "startLine": 43,
+        "startChar": 28,
+        "endLine": 44,
+        "endChar": 8
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "016f1dad_e7d30c06",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-30T11:58:46Z",
+      "side": 1,
+      "message": "Lowercase \"jars\" is everywhere, I think it\u0027s better to use the same naming. Here and below.",
+      "range": {
+        "startLine": 53,
+        "startChar": 87,
+        "endLine": 53,
+        "endChar": 91
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "411edb97_44bc1b0c",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-30T11:58:46Z",
+      "side": 1,
+      "message": "which?",
+      "range": {
+        "startLine": 53,
+        "startChar": 93,
+        "endLine": 53,
+        "endChar": 97
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d174c16_4c40d729",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-30T11:58:46Z",
+      "side": 1,
+      "message": "Should this be an early return (with an inverted condition)? The code on lines 75-79 doesn\u0027t make much sense if the condition is false.",
+      "range": {
+        "startLine": 64,
+        "startChar": 1,
+        "endLine": 64,
+        "endChar": 47
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cddfc41b_d2bd8978",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-30T11:58:46Z",
+      "side": 1,
+      "message": "Can we avoid installing the file on device? I don\u0027t think it\u0027s a good idea to install unused build-time artifacts for tests on device. What we need here is a build rule that will execute on `m` (when building the system image). I\u0027m not sure how to best hook it into the build, but it should be possible without installing the file on device.",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
