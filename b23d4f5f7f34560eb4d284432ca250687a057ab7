@@ -230,6 +230,30 @@
       },
       "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9f6b4a1_16e5f092",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-30T16:20:36Z",
+      "side": 1,
+      "message": "This global list of all dexpreopted files looks weird to me. Usually Soong doesn\u0027t know what goes into the system image because it\u0027s decided in the install stage in make. Is that different for the dexpreopted class paths?\n\nIsn\u0027t the \"real\" dependency chain something along these lines?\n\n1. system.img\n2. platform-bootclasspath and platform-systemserverclasspath\n3. A bunch of boot(systemserver?)classpath_fragment modules.\n4. A bunch of libs in the classpaths that should be dexpreopted.\n5. The paths to their dexpreopted outputs.\n\nI\u0027d expect #5 to become part of #1 through AndroidMk modules and the module dependency machinery in make. Apparently that\u0027s not the case, but can we make it closer to this path, to avoid fragility?\n\n+Paul who is the architect of the bootclasspath fragments.",
+      "parentUuid": "f603bc0b_2bce10fd",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

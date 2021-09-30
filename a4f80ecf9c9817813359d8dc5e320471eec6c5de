@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc7261a_94b4c70d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-30T16:20:36Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we have a similar test for the boot class path? +skvadrik, is there one already? Or else can this be extended to cover that as well?",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "a4f80ecf9c9817813359d8dc5e320471eec6c5de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaad6a3b_a5facc32",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-30T16:20:36Z",
+      "side": 1,
+      "message": "Please document this function.",
+      "revId": "a4f80ecf9c9817813359d8dc5e320471eec6c5de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
