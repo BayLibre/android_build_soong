@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa568f38_7af2140f",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8444,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-30T11:58:54Z",
+      "side": 1,
+      "message": "Nit: put on one line, it\u0027s short.",
+      "range": {
+        "startLine": 8442,
+        "startChar": 14,
+        "endLine": 8444,
+        "endChar": 7
+      },
+      "revId": "0dac924c78ce95a81f78e77dae73e9980889c8be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e3e3122_072ec6d8",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8464,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-30T11:58:54Z",
+      "side": 1,
+      "message": "It\u0027s a bit confusing that you have to use AndroidMkDataForTest here but AndroidMkEntriesForTest in the test for prebuilts. Is there a reason to not use the same thing for both tests?",
+      "range": {
+        "startLine": 8464,
+        "startChar": 9,
+        "endLine": 8464,
+        "endChar": 38
+      },
+      "revId": "0dac924c78ce95a81f78e77dae73e9980889c8be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
