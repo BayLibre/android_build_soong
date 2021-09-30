@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed4e11ae_0dbe39d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-30T11:59:10Z",
+      "side": 1,
+      "message": "It is better to first add a test, and then the fix. This allows to spot the effect of the fix on the test. Also, \"next CL\" exists purely in Gerrit (git history can be different).\n\nOk as is for this CL, this is just a note for the future.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "b87d7330e441c424b4215ff707ba314647753ec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43b08228_6be6ee97",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1374,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-09-30T11:59:10Z",
+      "side": 1,
+      "message": "This code is now duplicated in multiple places, can you factor out a separate function to reduce duplication? Possibly as a follow-up CL.",
+      "range": {
+        "startLine": 1370,
+        "startChar": 4,
+        "endLine": 1374,
+        "endChar": 67
+      },
+      "revId": "b87d7330e441c424b4215ff707ba314647753ec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
