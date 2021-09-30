@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08e80efa_f8caa7c3",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-30T11:34:04Z",
+      "side": 1,
+      "message": "Please retain a section for non-IntelliJ environments, like vim, emacs or VS Code. I think having a section that says that as long as the environment supports Go LSP for Go modules, it\u0027s sufficient without running setup_go_workspace_for_soong. (tested from my experience).",
+      "range": {
+        "startLine": 564,
+        "startChar": 29,
+        "endLine": 564,
+        "endChar": 37
+      },
+      "revId": "cc2001990ad29d7c9e55ce093cf56f9602349a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
