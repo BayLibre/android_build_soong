@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79c5aad2_7c084ae3",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-30T20:36:19Z",
+      "side": 1,
+      "message": "The bindfs stuff shouldn\u0027t be necessary for any modern Go-aware IDE.  The content root stuff is specific to IntelliJ, but I expect other editors should get a largely working project from the build/soong/go.mod file.",
+      "parentUuid": "ff10394c_09a81418",
+      "range": {
+        "startLine": 564,
+        "startChar": 29,
+        "endLine": 564,
+        "endChar": 37
+      },
+      "revId": "cc2001990ad29d7c9e55ce093cf56f9602349a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9decd246_a1e714cc",
         "filename": "README.md",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "writtenOn": "2021-09-30T17:01:11Z",
       "side": 1,
       "message": "Where does this number come from? If it\u0027s relatively easy to find, it might be good to let readers know how to find it in case it changes.",
+      "range": {
+        "startLine": 610,
+        "startChar": 40,
+        "endLine": 610,
+        "endChar": 50
+      },
+      "revId": "cc2001990ad29d7c9e55ce093cf56f9602349a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "271904a0_a8fe6970",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-30T20:36:19Z",
+      "side": 1,
+      "message": "This is a mis-paste of bug number after the 0",
+      "parentUuid": "9decd246_a1e714cc",
       "range": {
         "startLine": 610,
         "startChar": 40,
