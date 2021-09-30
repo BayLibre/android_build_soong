@@ -8433,6 +8433,88 @@ func TestProhibitStaticExecutable(t *testing.T) {
 	`)
 }
 
+func TestAndroidMk_DexpreoptBuiltInstalledForApex(t *testing.T) {
+	ctx := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			updatable: false,
+			java_libs: [
+        "foo",
+    	],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		java_library {
+			name: "foo",
+			srcs: ["foo.java"],
+			apex_available: ["myapex"],
+			installable: true,
+		}
+	`,
+		dexpreopt.FixtureSetApexSystemServerJars("myapex:foo"),
+	)
+
+	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
+	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
+	name := apexBundle.BaseModuleName()
+	prefix := "TARGET_"
+	var builder strings.Builder
+	data.Custom(&builder, name, prefix, "", data)
+	androidMk := builder.String()
+	ensureContains(t, androidMk, "LOCAL_REQUIRED_MODULES += foo-dexpreopt-arm64-apex@myapex@javalib@foo.jar@classes.odex foo-dexpreopt-arm64-apex@myapex@javalib@foo.jar@classes.vdex")
+}
+
+func TestAndroidMk_DexpreoptBuiltInstalledForApex_Prebuilt(t *testing.T) {
+	ctx := testApex(t, `
+		prebuilt_apex {
+			name: "myapex",
+			arch: {
+				arm64: {
+					src: "myapex-arm64.apex",
+				},
+				arm: {
+					src: "myapex-arm.apex",
+				},
+			},
+			exported_java_libs: ["foo"],
+		}
+
+		java_import {
+			name: "foo",
+			jars: ["foo.jar"],
+			installable: true,
+		}
+	`,
+		dexpreopt.FixtureSetApexSystemServerJars("myapex:foo"),
+	)
+
+	prebuilt := ctx.ModuleForTests("myapex", "android_common_myapex").Module().(*Prebuilt)
+	entriesList := android.AndroidMkEntriesForTest(t, ctx, prebuilt)
+	found := false
+	for _, entries := range entriesList {
+		if entries.EntryMap["LOCAL_MODULE"][0] == prebuilt.BaseModuleName() {
+			android.AssertArrayString(t,
+				"LOCAL_REQUIRED_MODULES",
+				entries.EntryMap["LOCAL_REQUIRED_MODULES"],
+				[]string{
+					"foo-dexpreopt-arm64-apex@myapex@javalib@foo.jar@classes.odex",
+					"foo-dexpreopt-arm64-apex@myapex@javalib@foo.jar@classes.vdex",
+				})
+			found = true
+			break
+		}
+		if !found {
+			t.Errorf("Prebuilt module %s not found", prebuilt.BaseModuleName())
+		}
+	}
+}
+
 func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
