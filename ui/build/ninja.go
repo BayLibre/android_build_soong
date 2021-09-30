@@ -203,6 +203,7 @@ func runNinjaForBuild(ctx Context, config Config) {
 	}()
 
 	ctx.Status.Status("Starting ninja...")
+	ctx.Metrics.LogBuildStep("StartingMainNinjaNs")
 	cmd.RunAndStreamOrFatal()
 }
 
