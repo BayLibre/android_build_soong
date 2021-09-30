@@ -31,6 +31,7 @@ bootstrap_go_package {
     ],
     testSrcs: [
         "event_test.go",
+        "metrics_test.go",
     ],
 }
 
