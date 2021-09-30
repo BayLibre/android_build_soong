@@ -260,15 +260,21 @@ func main() {
 		defer build.DumpRBEMetrics(buildCtx, config, rbeMetricsFile)
 	}
 
+	// If we don't get a successful TRACE_BEGIN_SOONG, we'll use Now() as the starting point for
+	// metrics logging.  This will introduce some bias in the data, but full builds are only really
+	// supported on Linux anyway, where this works.
+	baseTime := time.Now()
+
 	// Read the time at the starting point.
 	if start, ok := os.LookupEnv("TRACE_BEGIN_SOONG"); ok {
 		// soong_ui.bash uses the date command's %N (nanosec) flag when getting the start time,
 		// which Darwin doesn't support. Check if it was executed properly before parsing the value.
 		if !strings.HasSuffix(start, "N") {
 			if start_time, err := strconv.ParseUint(start, 10, 64); err == nil {
-				log.Verbosef("Took %dms to start up.",
-					time.Since(time.Unix(0, int64(start_time))).Nanoseconds()/time.Millisecond.Nanoseconds())
+				startup_delta := time.Since(time.Unix(0, int64(start_time)))
+				log.Verbosef("Took %dms to start up.", startup_delta.Nanoseconds()/time.Millisecond.Nanoseconds())
 				buildCtx.CompleteTrace(metrics.RunSetupTool, "startup", start_time, uint64(time.Now().UnixNano()))
+				baseTime = baseTime.Add(-startup_delta)
 			}
 		}
 
@@ -276,6 +282,8 @@ func main() {
 			trace.ImportMicrofactoryLog(filepath.Join(filepath.Dir(executable), "."+filepath.Base(executable)+".trace"))
 		}
 	}
+
+	met.SetBaseTime(baseTime)
 
 	// Fix up the source tree due to a repo bug where it doesn't remove
 	// linkfiles that have been removed

@@ -108,6 +108,9 @@ message MetricsBase {
 
   // The metrics for calling Bazel.
   repeated PerfInfo bazel_runs = 27;
+
+  // Timestamp checkpoints for major points in the build
+  optional BuildSteps build_steps = 28;
 }
 
 message BuildConfig {
@@ -232,3 +235,15 @@ message SoongBuildMetrics {
   // The approximate maximum size of the heap in soong_build in bytes.
   optional uint64 max_heap_size = 5;
 }
+
+// Timestamps for the major steps along the way in the build, in nanoseconds since
+// the start of the build. Keep these fields in order.
+message BuildSteps {
+    // About to launch ninja to do the main build.
+    optional uint64 starting_main_ninja_ns = 500;
+
+    // Finished the build (exiting build.Build()).
+    optional uint64 finished_ns = 10000;
+
+}
+

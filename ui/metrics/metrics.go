@@ -37,8 +37,10 @@ package metrics
 // the metrics system is a stack based system.
 
 import (
+	"fmt"
 	"io/ioutil"
 	"os"
+	"reflect"
 	"runtime"
 	"strings"
 	"time"
@@ -72,6 +74,9 @@ const (
 // See ui/metrics/metrics_proto/metrics.proto for further details
 // on what information is collected.
 type Metrics struct {
+	// Timestamp for the base time of the build steps.
+	baseTime time.Time
+
 	// The protobuf message that is later written to the file.
 	metrics soong_metrics_proto.MetricsBase
 
@@ -82,7 +87,7 @@ type Metrics struct {
 // New returns a pointer of Metrics to store a set of metrics.
 func New() (metrics *Metrics) {
 	m := &Metrics{
-		metrics:     soong_metrics_proto.MetricsBase{},
+		metrics:     soong_metrics_proto.MetricsBase{BuildSteps: &soong_metrics_proto.BuildSteps{}},
 		EventTracer: &EventTracer{},
 	}
 	return m
@@ -189,6 +194,32 @@ func (m *Metrics) SetBuildDateTime(buildTimestamp time.Time) {
 // list of collected metrics.
 func (m *Metrics) SetBuildCommand(cmd []string) {
 	m.metrics.BuildCommand = proto.String(strings.Join(cmd, " "))
+}
+
+// Set the time (in monotonic time) that the build started. This is before
+// soong_ui ran. BuildStep timestamps are relative to this time.
+func (m *Metrics) SetBaseTime(baseTime time.Time) {
+	if !m.baseTime.IsZero() {
+		panic("Metrics.SetBaseTime() called twice")
+	}
+	m.baseTime = baseTime
+}
+
+// Log one of the named build steps happening at the current time.
+// The checkpoint passed in should be the CamelCase name of one of
+// the fields on BuildSteps in build/soong/ui/metrics/metrics_proto/metrics.proto.
+//
+// e.g. The field BuildSteps.starting_main_ninja_ns is set by calling
+//        ctx.Metrics.LogBuildStep("StartingMainNinjaNs")
+func (m *Metrics) LogBuildStep(checkpoint string) {
+	if m.baseTime.IsZero() {
+		panic("Metrics.LogBuildStep() not allowed before SetBaseTime is called")
+	}
+	v := reflect.ValueOf(m.metrics.BuildSteps).Elem().FieldByName(checkpoint)
+	if !v.IsValid() {
+		panic(fmt.Errorf("No field in BuildSteps called '%s'", checkpoint))
+	}
+	v.Set(reflect.ValueOf(proto.Uint64(uint64(time.Now().Sub(m.baseTime).Nanoseconds()))))
 }
 
 // Dump exports the collected metrics from the executed build to the file at

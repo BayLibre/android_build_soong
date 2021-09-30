@@ -190,6 +190,7 @@ func Build(ctx Context, config Config) {
 
 	ctx.BeginTrace(metrics.Total, "total")
 	defer ctx.EndTrace()
+	defer ctx.Metrics.LogBuildStep("FinishedNs")
 
 	if inList("help", config.Arguments()) {
 		help(ctx, config)
