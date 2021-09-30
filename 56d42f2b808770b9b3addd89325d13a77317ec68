@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d7fd955_555c5e67",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 8464,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-09-30T19:17:12Z",
+      "side": 1,
+      "message": "Nit: Inline these?",
+      "range": {
+        "startLine": 8463,
+        "startChar": 0,
+        "endLine": 8464,
+        "endChar": 20
+      },
+      "revId": "56d42f2b808770b9b3addd89325d13a77317ec68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
