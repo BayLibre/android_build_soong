@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44a53641_4a88410e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-30T13:26:52Z",
+      "side": 1,
+      "message": "Got it. Thanks.",
+      "parentUuid": "ed4e11ae_0dbe39d4",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 22
+      },
+      "revId": "b87d7330e441c424b4215ff707ba314647753ec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "43b08228_6be6ee97",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-30T11:59:10Z",
       "side": 1,
       "message": "This code is now duplicated in multiple places, can you factor out a separate function to reduce duplication? Possibly as a follow-up CL.",
+      "range": {
+        "startLine": 1370,
+        "startChar": 4,
+        "endLine": 1374,
+        "endChar": 67
+      },
+      "revId": "b87d7330e441c424b4215ff707ba314647753ec1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9927052f_baf2e1c8",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1374,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-30T13:26:52Z",
+      "side": 1,
+      "message": "Sure, I\u0027ll do it in a follow-up CL.",
+      "parentUuid": "43b08228_6be6ee97",
       "range": {
         "startLine": 1370,
         "startChar": 4,
