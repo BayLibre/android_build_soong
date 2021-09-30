@@ -206,6 +206,30 @@
       },
       "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f603bc0b_2bce10fd",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-09-30T13:53:01Z",
+      "side": 1,
+      "message": "Thank you for the prompt code review! I will resolve other comments when I\u0027m back from holiday. For now, I want to discuss this with you to see if you can give me any suggestion (or inspiration).\n\nYes, I wanted to avoid installing a file on device. This doesn\u0027t look elegant to me. However, I don\u0027t see a way to avoid it. Basically, what I want is a rule that will execute *when a system image is built*. A rule that will execute on `m` does not meet my need because:\n1. `m` can mean different things in different cases. For example, in an unbundled build, `m` means building an APEX, rather than building the entire system, in which case, we don\u0027t want to execute this rule.\n2. I want to ensure that the rule is always executed when `system.img` is built. For example, it\u0027s possible that a partner runs `m $ANDROID_PRODUCT_OUT/system.img` rather than `m` (you\u0027ll never know), and I want the rule to be executed in this case.\n\nIt will be ideal if there is a way to make this rule an implicit input of `system.img` so that the file does not actually go into the image. However, I don\u0027t see `system.img` having any implicit input now, so I guess this is just not possible, or it requires a lot of work.\n\nPlease advice. Thanks.",
+      "parentUuid": "cddfc41b_d2bd8978",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
