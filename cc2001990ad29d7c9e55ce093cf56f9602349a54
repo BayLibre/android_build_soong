@@ -46,6 +46,30 @@
       },
       "revId": "cc2001990ad29d7c9e55ce093cf56f9602349a54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff10394c_09a81418",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-09-30T13:01:47Z",
+      "side": 1,
+      "message": "It was previously \"To load Soong code in a Go-aware IDE,\", but your change only has instructions for IntelliJ. What I\u0027m suggesting is to have 2 sub-sections: one for IntelliJ, and one for other editors. Feel free to also leave it, and I can write up a short section after you submit this.",
+      "parentUuid": "a59f3a44_50e49d3e",
+      "range": {
+        "startLine": 564,
+        "startChar": 29,
+        "endLine": 564,
+        "endChar": 37
+      },
+      "revId": "cc2001990ad29d7c9e55ce093cf56f9602349a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
