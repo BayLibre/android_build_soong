@@ -101,10 +101,17 @@ func initFilesystemModule(module *filesystem) {
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
 }
 
-var dependencyTag = struct {
+type depTag struct {
 	blueprint.BaseDependencyTag
 	android.PackagingItemAlwaysDepTag
-}{}
+}
+
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (t depTag) PropagateLicenses() bool {
+	return false
+}
+
+var dependencyTag = depTag{}
 
 func (f *filesystem) DepsMutator(ctx android.BottomUpMutatorContext) {
 	f.AddDeps(ctx, dependencyTag)

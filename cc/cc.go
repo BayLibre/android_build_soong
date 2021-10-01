@@ -690,6 +690,14 @@ func (d libraryDependencyTag) InstallDepNeeded() bool {
 
 var _ android.InstallNeededDependencyTag = libraryDependencyTag{}
 
+// PropagateLicenses returns true for static libraries, so that their licenses will
+// be included to our license information, as their code will be incorporated into our
+// output.
+func (d libraryDependencyTag) PropagateLicenses() bool {
+	// TODO(b/201696252): Evaluate when licenses should be propagated through this dependency.
+	return d.static()
+}
+
 // dependencyTag is used for tagging miscellaneous dependency types that don't fit into
 // libraryDependencyTag.  Each tag object is created globally and reused for multiple
 // dependencies (although since the object contains no references, assigning a tag to a
@@ -700,6 +708,11 @@ type dependencyTag struct {
 	name string
 }
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (t dependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 // installDependencyTag is used for tagging miscellaneous dependency types that don't fit into
 // libraryDependencyTag, but where the dependency needs to be installed when the parent is
 // installed.
@@ -707,6 +720,12 @@ type installDependencyTag struct {
 	blueprint.BaseDependencyTag
 	android.InstallAlwaysNeededDependencyTag
 	name string
+}
+
+// PropagateLicenses returns false, as install-only dependencies don't need to propagate
+// license information (the dependencies will have their own).
+func (d installDependencyTag) PropagateLicenses() bool {
+	return false
 }
 
 var (

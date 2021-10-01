@@ -25,6 +25,13 @@ type defaultsDependencyTag struct {
 	blueprint.BaseDependencyTag
 }
 
+// Defaults do not directly contribute licenses to modules. They're just a way
+// to propagate build properties (including the `licenses` property, and other
+// properties that may add extra dependencies that propagate licenses).
+func (d defaultsDependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 var DefaultsDepTag defaultsDependencyTag
 
 type defaultsProperties struct {

@@ -270,12 +270,25 @@ type dependencyTag struct {
 	name string
 }
 
+// PropagateLicenses returns false for static libraries, so that their licenses will
+// be included to our license information, as their code will be incorporated into our
+// output.
+func (d dependencyTag) PropagateLicenses() bool {
+	// TODO(b/201696252): Evaluate when licenses should be propagated through this dependency.
+	return IsStaticLibDepTag(d)
+}
+
 // installDependencyTag is a dependency tag that is annotated to cause the installed files of the
 // dependency to be installed when the parent module is installed.
 type installDependencyTag struct {
 	blueprint.BaseDependencyTag
 	android.InstallAlwaysNeededDependencyTag
 	name string
+}
+
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (d installDependencyTag) PropagateLicenses() bool {
+	return false
 }
 
 type usesLibraryDependencyTag struct {

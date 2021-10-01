@@ -43,6 +43,10 @@ func (l licensesDependencyTag) ExportMember() bool {
 	return false
 }
 
+func (l licensesDependencyTag) PropagateLicenses() bool {
+	return true
+}
+
 var (
 	licensesTag = licensesDependencyTag{}
 
@@ -206,25 +210,36 @@ func licensesPropertyFlattener(ctx ModuleContext) {
 	}
 
 	var licenses []string
-	for _, module := range ctx.GetDirectDepsWithTag(licensesTag) {
-		if l, ok := module.(*licenseModule); ok {
-			licenses = append(licenses, ctx.OtherModuleName(module))
-			if m.base().commonProperties.Effective_package_name == nil && l.properties.Package_name != nil {
-				m.base().commonProperties.Effective_package_name = l.properties.Package_name
+	ctx.VisitDirectDepsBlueprint(func(mod blueprint.Module) {
+		module, ok := mod.(Module)
+		if !ok {
+			return
+		}
+
+		tag := ctx.OtherModuleDependencyTag(module)
+		if tag == licensesTag {
+			if l, ok := module.(*licenseModule); ok {
+				licenses = append(licenses, ctx.OtherModuleName(module))
+				if m.base().commonProperties.Effective_package_name == nil && l.properties.Package_name != nil {
+					m.base().commonProperties.Effective_package_name = l.properties.Package_name
+				}
+			} else {
+				propertyName := "licenses"
+				primaryProperty := m.base().primaryLicensesProperty
+				if primaryProperty != nil {
+					propertyName = primaryProperty.getName()
+				}
+				ctx.ModuleErrorf("%s property %q is not a license module", propertyName, ctx.OtherModuleName(module))
 			}
+		}
+
+		if tag != nil && tag.PropagateLicenses() {
 			mergeStringProps(&m.base().commonProperties.Effective_licenses, module.base().commonProperties.Effective_licenses...)
 			mergePathProps(&m.base().commonProperties.Effective_license_text, module.base().commonProperties.Effective_license_text...)
 			mergeStringProps(&m.base().commonProperties.Effective_license_kinds, module.base().commonProperties.Effective_license_kinds...)
 			mergeStringProps(&m.base().commonProperties.Effective_license_conditions, module.base().commonProperties.Effective_license_conditions...)
-		} else {
-			propertyName := "licenses"
-			primaryProperty := m.base().primaryLicensesProperty
-			if primaryProperty != nil {
-				propertyName = primaryProperty.getName()
-			}
-			ctx.ModuleErrorf("%s property %q is not a license module", propertyName, ctx.OtherModuleName(module))
 		}
-	}
+	})
 
 	// Make the license information available for other modules.
 	licenseInfo := LicenseInfo{

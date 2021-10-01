@@ -133,6 +133,10 @@ type licensekindTag struct {
 	blueprint.BaseDependencyTag
 }
 
+func (t licensekindTag) PropagateLicenses() bool {
+	return false
+}
+
 func (j *mockLicenseModule) DepsMutator(ctx BottomUpMutatorContext) {
 	m, ok := ctx.Module().(Module)
 	if !ok {

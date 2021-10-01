@@ -45,6 +45,11 @@ type prebuiltDependencyTag struct {
 	blueprint.BaseDependencyTag
 }
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (d prebuiltDependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 var PrebuiltDepTag prebuiltDependencyTag
 
 // Mark this tag so dependencies that use it are excluded from visibility enforcement.

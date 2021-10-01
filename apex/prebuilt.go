@@ -689,6 +689,11 @@ func (t exportedDependencyTag) RequiresFilesFromPrebuiltApex() {}
 
 var _ android.RequiresFilesFromPrebuiltApexTag = exportedDependencyTag{}
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (t exportedDependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 var (
 	exportedJavaLibTag                       = exportedDependencyTag{name: "exported_java_libs"}
 	exportedBootclasspathFragmentTag         = exportedDependencyTag{name: "exported_bootclasspath_fragments"}

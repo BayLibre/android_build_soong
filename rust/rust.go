@@ -948,6 +948,12 @@ func (d dependencyTag) InstallDepNeeded() bool {
 	return d.library || d.procMacro
 }
 
+// PropagateLicenses returns true for rlibs, as they're partially or fully included in our output.
+func (d dependencyTag) PropagateLicenses() bool {
+	// TODO(b/201696252): Evaluate when licenses should be propagated through this dependency.
+	return IsRlibDepTag(d)
+}
+
 var _ android.InstallNeededDependencyTag = dependencyTag{}
 
 var (

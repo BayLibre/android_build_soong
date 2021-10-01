@@ -23,6 +23,7 @@ import (
 	"strings"
 
 	"android/soong/bazel"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -276,6 +277,11 @@ type dependencyTag struct {
 	name string
 }
 
+// PropagateLicenses returns true, since all of these dependencies will be embedded within our output
+func (d dependencyTag) PropagateLicenses() bool {
+	return true
+}
+
 // Python-specific tag that indicates that installed files of this module should depend on installed
 // files of the dependency
 type installDependencyTag struct {
@@ -283,6 +289,12 @@ type installDependencyTag struct {
 	// embedding this struct provides the installation dependency requirement
 	android.InstallAlwaysNeededDependencyTag
 	name string
+}
+
+// PropagateLicenses returns false, since install-only dependencies do not need to propagate license
+// information
+func (d installDependencyTag) PropagateLicenses() bool {
+	return false
 }
 
 var (

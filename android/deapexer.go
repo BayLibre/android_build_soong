@@ -118,6 +118,11 @@ func (t deapexerTagStruct) ExcludeFromApexContents() {}
 
 var _ ExcludeFromApexContentsTag = DeapexerTag
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (d deapexerTagStruct) PropagateLicenses() bool {
+	return false
+}
+
 // A tag that is used for dependencies on the `deapexer` module.
 var DeapexerTag = deapexerTagStruct{}
 

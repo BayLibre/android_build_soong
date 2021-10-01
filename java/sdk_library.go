@@ -63,6 +63,11 @@ type scopeDependencyTag struct {
 	depInfoExtractor func(paths *scopePaths, ctx android.ModuleContext, dep android.Module) error
 }
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (tag scopeDependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 // Extract tag specific information from the dependency.
 func (tag scopeDependencyTag) extractDepInfo(ctx android.ModuleContext, dep android.Module, paths *scopePaths) {
 	err := tag.depInfoExtractor(paths, ctx, dep)
@@ -1121,6 +1126,11 @@ func (module *SdkLibrary) getGeneratedApiScopes(ctx android.EarlyModuleContext) 
 type sdkLibraryComponentTag struct {
 	blueprint.BaseDependencyTag
 	name string
+}
+
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (t sdkLibraryComponentTag) PropagateLicenses() bool {
+	return false
 }
 
 // Mark this tag so dependencies that use it are excluded from visibility enforcement.

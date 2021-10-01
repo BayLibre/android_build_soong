@@ -1203,6 +1203,10 @@ type dependencyTag struct {
 	name string
 }
 
+func (t dependencyTag) PropagateLicenses() bool {
+	return true
+}
+
 func (j *mockLibraryModule) DepsMutator(ctx BottomUpMutatorContext) {
 	ctx.AddVariationDependencies(nil, dependencyTag{name: "mockdeps"}, j.properties.Deps...)
 }
