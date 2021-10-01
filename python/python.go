@@ -51,7 +51,7 @@ type VersionProperties struct {
 	// list of source files specific to this Python version.
 	// Using the syntax ":module", srcs may reference the outputs of other modules that produce source files,
 	// e.g. genrule or filegroup.
-	Srcs []string `android:"path,arch_variant"`
+	Srcs []string `android:"path,arch_variant,include_licenses"`
 
 	// list of source files that should not be used to build the Python module for this version.
 	// This is most useful to remove files that are not common to all Python versions.
@@ -81,7 +81,7 @@ type BaseProperties struct {
 	// srcs may reference the outputs of other modules that produce source files like genrule
 	// or filegroup using the syntax ":module".
 	// Srcs has to be non-empty.
-	Srcs []string `android:"path,arch_variant"`
+	Srcs []string `android:"path,arch_variant,include_licenses"`
 
 	// list of source files that should not be used to build the C/C++ module.
 	// This is most useful in the arch/multilib variants to remove non-common files
@@ -89,7 +89,7 @@ type BaseProperties struct {
 
 	// list of files or filegroup modules that provide data that should be installed alongside
 	// the test. the file extension can be arbitrary except for (.py).
-	Data []string `android:"path,arch_variant"`
+	Data []string `android:"path,arch_variant,include_licenses"`
 
 	// list of java modules that provide data that should be installed alongside the test.
 	Java_data []string

@@ -41,11 +41,11 @@ var _ SourceProvider = (*protobufDecorator)(nil)
 type ProtobufProperties struct {
 	// List of relative paths to proto files that will be used to generate the source.
 	// Either this or grpc_protos must be defined.
-	Protos []string `android:"path,arch_variant"`
+	Protos []string `android:"path,arch_variant,include_licenses"`
 
 	// List of relative paths to GRPC-containing proto files that will be used to generate the source.
 	// Either this or protos must be defined.
-	Grpc_protos []string `android:"path,arch_variant"`
+	Grpc_protos []string `android:"path,arch_variant,include_licenses"`
 
 	// List of additional flags to pass to aprotoc
 	Proto_flags []string `android:"arch_variant"`

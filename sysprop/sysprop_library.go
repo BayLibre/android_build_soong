@@ -37,7 +37,7 @@ type dependencyTag struct {
 }
 
 type syspropGenProperties struct {
-	Srcs      []string `android:"path"`
+	Srcs      []string `android:"path,include_licenses"`
 	Scope     string
 	Name      *string
 	Check_api *string
@@ -158,7 +158,7 @@ type syspropLibraryProperties struct {
 	Product_available *bool
 
 	// list of .sysprop files which defines the properties.
-	Srcs []string `android:"path"`
+	Srcs []string `android:"path,include_licenses"`
 
 	// If set to true, build a variant of the module for the host.  Defaults to false.
 	Host_supported *bool

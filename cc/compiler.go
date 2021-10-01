@@ -37,7 +37,7 @@ type BaseCompilerProperties struct {
 	// list of source files used to compile the C/C++ module.  May be .c, .cpp, or .S files.
 	// srcs may reference the outputs of other modules that produce source files like genrule
 	// or filegroup using the syntax ":module".
-	Srcs []string `android:"path,arch_variant"`
+	Srcs []string `android:"path,arch_variant,include_licenses"`
 
 	// list of source files that should not be compiled with clang-tidy.
 	Tidy_disabled_srcs []string `android:"path,arch_variant"`
@@ -152,7 +152,7 @@ type BaseCompilerProperties struct {
 		Vendor, Product struct {
 			// list of source files that should only be used in vendor or
 			// product variant of the C/C++ module.
-			Srcs []string `android:"path"`
+			Srcs []string `android:"path,include_licenses"`
 
 			// list of source files that should not be used to build vendor
 			// or product variant of the C/C++ module.
@@ -169,7 +169,7 @@ type BaseCompilerProperties struct {
 		Recovery struct {
 			// list of source files that should only be used in the
 			// recovery variant of the C/C++ module.
-			Srcs []string `android:"path"`
+			Srcs []string `android:"path,include_licenses"`
 
 			// list of source files that should not be used to
 			// build the recovery variant of the C/C++ module.

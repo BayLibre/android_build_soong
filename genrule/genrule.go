@@ -141,7 +141,7 @@ type generatorProperties struct {
 	Export_include_dirs []string
 
 	// list of input files
-	Srcs []string `android:"path,arch_variant"`
+	Srcs []string `android:"path,arch_variant,include_licenses"`
 
 	// input files to exclude
 	Exclude_srcs []string `android:"path,arch_variant"`

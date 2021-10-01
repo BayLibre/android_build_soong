@@ -1077,7 +1077,7 @@ func InitTestHost(th *TestHost, installable *bool, testSuites []string, autoGenC
 
 type binaryProperties struct {
 	// installable script to execute the resulting jar
-	Wrapper *string `android:"path,arch_variant"`
+	Wrapper *string `android:"path,arch_variant,include_licenses"`
 
 	// Name of the class containing main to be inserted into the manifest as Main-Class.
 	Main_class *string
@@ -1199,7 +1199,7 @@ func BinaryHostFactory() android.Module {
 //
 
 type ImportProperties struct {
-	Jars []string `android:"path,arch_variant"`
+	Jars []string `android:"path,arch_variant,include_licenses"`
 
 	// The version of the SDK that the source prebuilt file was built against. Defaults to the
 	// current version if not specified.
@@ -1618,7 +1618,7 @@ func ImportFactoryHost() android.Module {
 // dex_import module
 
 type DexImportProperties struct {
-	Jars []string `android:"path"`
+	Jars []string `android:"path,include_licenses"`
 
 	// set the name of the output
 	Stem *string
