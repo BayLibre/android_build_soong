@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb04bc23_94b15900",
+        "filename": "python/python.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-01T19:07:54Z",
+      "side": 1,
+      "message": "lol. hmmmm...now I\u0027m curious if Bazel can handle emoji-named attrs....\n\nthe way Soong handles is_internal property is quite related to pkg_path, probably just mention this there and omit for now",
+      "parentUuid": "eda6062a_f0dc9310",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "29573d5aef8e2eb33371e2fa788c062c8e09b8dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8109b431_69e6a040",
         "filename": "python/python.go",
         "patchSetId": 5

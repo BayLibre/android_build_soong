@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "882e8683_649335b4",
+        "filename": "bp2build/python_library_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-01T19:07:54Z",
+      "side": 1,
+      "message": "why is this necessary?",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 72
+      },
+      "revId": "e0f2edfa143fab77e05288f250f55be32d0bb566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7fc904a_658227ee",
+        "filename": "python/binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-01T19:07:54Z",
+      "side": 1,
+      "message": "optional: but if you want to slightly reduce duplication, you could embed baseAttrs",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 32
+      },
+      "revId": "e0f2edfa143fab77e05288f250f55be32d0bb566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
