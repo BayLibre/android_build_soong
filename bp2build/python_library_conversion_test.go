@@ -205,3 +205,58 @@ func testPythonArchVariance(t *testing.T, modType, bazelTarget string,
 		},
 	})
 }
+
+func TestPythonLibraryVersionVariance(t *testing.T) {
+	testPythonVersionVariance(t, "python_library", "py_library",
+		python.PythonLibraryFactory, python.PythonLibraryBp2Build,
+		func(ctx android.RegistrationContext) {})
+}
+
+func TestPythonLibraryHostVersionVariance(t *testing.T) {
+	testPythonVersionVariance(t, "python_library_host", "py_library",
+		python.PythonLibraryHostFactory, python.PythonLibraryHostBp2Build,
+		func(ctx android.RegistrationContext) {
+			ctx.RegisterModuleType("python_library", python.PythonLibraryFactory)
+		})
+}
+
+// TODO: refactor python_binary_conversion_test to use this
+func testPythonVersionVariance(t *testing.T, modType, bazelTarget string,
+	factory android.ModuleFactory, mutator PythonLibBp2Build,
+	registration func(ctx android.RegistrationContext)) {
+	t.Helper()
+	runBp2BuildTestCase(t, registration, bp2buildTestCase{
+		description:                        fmt.Sprintf("test %s version variants", modType),
+		moduleTypeUnderTest:                modType,
+		moduleTypeUnderTestFactory:         factory,
+		moduleTypeUnderTestBp2BuildMutator: mutator,
+		filesystem: map[string]string{
+			"dir/py3.py": "",
+			"dir/py2.py": "",
+		},
+		blueprint: fmt.Sprintf(`%s {
+					 name: "foo",
+					 version: {
+						 py2: {
+							enabled: false,
+							srcs: ["py2.py"],
+						 },
+						 py3: {
+							enabled: true,
+							srcs: ["py3.py"],
+						 },
+					},
+				 }`, modType),
+		expectedBazelTargets: []string{
+			fmt.Sprintf(`%s(
+    name = "foo",
+    srcs = select({
+        "//python:python_version:PY3": ["py3.py"],
+        "//python:python_version:PY2": ["py2.py"],
+        "//conditions:default": [],
+    }),
+    srcs_version = "PY3",
+)`, bazelTarget),
+		},
+	})
+}

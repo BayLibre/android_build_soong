@@ -64,6 +64,14 @@ type VersionProperties struct {
 	Embedded_launcher *bool // TODO(b/174041232): Remove this property
 }
 
+type versionAttributes struct {
+	Enabled bazel.BoolAttribute
+	// Combines Srcs and Exclude_srcs
+	Srcs              bazel.LabelListAttribute
+	Deps              bazel.LabelListAttribute
+	Embedded_launcher bazel.BoolAttribute
+}
+
 // properties that apply to all python modules
 type BaseProperties struct {
 	// the package path prefix within the output artifact at which to place the source/data
@@ -130,7 +138,11 @@ type baseAttributes struct {
 	Srcs bazel.LabelListAttribute
 	Deps bazel.LabelListAttribute
 	// Combines Data and Java_data (invariant)
-	Data bazel.LabelListAttribute
+	Data    bazel.LabelListAttribute
+	Version struct {
+		Py2 versionAttributes
+		Py3 versionAttributes
+	}
 }
 
 // Used to store files of current module after expanding dependencies
@@ -191,6 +203,24 @@ func newModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Mo
 }
 
 func (m *Module) makeArchVariantBaseAttributes(ctx android.TopDownMutatorContext) baseAttributes {
+	makeArchVariantVerAttrs := func(properties VersionProperties) versionAttributes {
+		var attrs versionAttributes
+		archVariantVerProps := m.GetArchVariantProperties(ctx, &VersionProperties{})
+		for axis, configToProps := range archVariantVerProps {
+			for config, props := range configToProps {
+				if verProps, ok := props.(*VersionProperties); ok {
+					attrs.Enabled.SetSelectValue(axis, config, verProps.Enabled)
+					attrs.Srcs.SetSelectValue(axis, config,
+						android.BazelLabelForModuleSrcExcludes(ctx, verProps.Srcs, verProps.Exclude_srcs))
+					attrs.Deps.SetSelectValue(axis, config,
+						android.BazelLabelForModuleDeps(ctx, verProps.Libs))
+					attrs.Embedded_launcher.SetSelectValue(axis, config, verProps.Embedded_launcher)
+				}
+			}
+		}
+		return attrs
+	}
+
 	var attrs baseAttributes
 	archVariantBaseProps := m.GetArchVariantProperties(ctx, &BaseProperties{})
 	for axis, configToProps := range archVariantBaseProps {
@@ -203,6 +233,8 @@ func (m *Module) makeArchVariantBaseAttributes(ctx android.TopDownMutatorContext
 				data := android.BazelLabelForModuleSrc(ctx, baseProps.Data)
 				data.Append(android.BazelLabelForModuleSrc(ctx, baseProps.Java_data))
 				attrs.Data.SetSelectValue(axis, config, data)
+				attrs.Version.Py2 = makeArchVariantVerAttrs(baseProps.Version.Py2)
+				attrs.Version.Py3 = makeArchVariantVerAttrs(baseProps.Version.Py3)
 			}
 		}
 	}

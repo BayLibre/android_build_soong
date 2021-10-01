@@ -150,3 +150,40 @@ func TestPythonBinaryHostArchVariance(t *testing.T) {
 		},
 	})
 }
+
+func TestPythonBinaryHostVersionVariance(t *testing.T) {
+	runBp2BuildTestCaseSimple(t, bp2buildTestCase{
+		description:                        "test version variants",
+		moduleTypeUnderTest:                "python_binary_host",
+		moduleTypeUnderTestFactory:         python.PythonBinaryHostFactory,
+		moduleTypeUnderTestBp2BuildMutator: python.PythonBinaryBp2Build,
+		filesystem: map[string]string{
+			"dir/py3.py": "",
+			"dir/py2.py": "",
+		},
+		blueprint: `python_binary_host {
+							 name: "foo",
+							 version: {
+								 py2: {
+									enabled: false,
+									srcs: ["py2.py"],
+								 },
+								 py3: {
+									enabled: true,
+									srcs: ["py3.py"],
+								 },
+							},
+						 }`,
+		expectedBazelTargets: []string{
+			`py_binary(
+				name = "foo",
+				srcs = select({
+						"//build/bazel/platforms/arch:py3": ["py3.py"],
+						"//build/bazel/platforms/arch:py2": ["py2.py"],
+						"//conditions:default": [],
+				}),
+				srcs_version = "PY3",
+		)`,
+		},
+	})
+}
