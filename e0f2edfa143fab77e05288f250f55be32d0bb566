@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0b255a5b_1c0a7b80",
+        "filename": "bp2build/python_library_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-01T19:25:03Z",
+      "side": 1,
+      "message": "Apparently no longer.",
+      "parentUuid": "882e8683_649335b4",
+      "range": {
+        "startLine": 168,
+        "startChar": 3,
+        "endLine": 168,
+        "endChar": 72
+      },
+      "revId": "e0f2edfa143fab77e05288f250f55be32d0bb566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f7fc904a_658227ee",
         "filename": "python/binary.go",
         "patchSetId": 7
