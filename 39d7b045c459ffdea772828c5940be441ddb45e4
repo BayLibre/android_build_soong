@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "681d967b_828d4fa4",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 41
+      },
+      "lineNbr": 1257,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-01T18:53:51Z",
+      "side": 1,
+      "message": "optional: to reduce verifying this simple transformations, you can set bp2build_available: false here\n\nor use this function to simplify that: https://cs.android.com/android/_/android/platform/build/soong/+/d7d5b72e4e3cb702f1bd328e632f81d61e836e7a:bp2build/testing.go;l\u003d363;drc\u003d7a210ac23390696c492316fa9cc6ca1cc2cd6654",
+      "range": {
+        "startLine": 1251,
+        "startChar": 15,
+        "endLine": 1257,
+        "endChar": 1
+      },
+      "revId": "39d7b045c459ffdea772828c5940be441ddb45e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daa73f30_08763768",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 44
+      },
+      "lineNbr": 1276,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-01T18:53:51Z",
+      "side": 1,
+      "message": "🎉",
+      "range": {
+        "startLine": 1273,
+        "startChar": 0,
+        "endLine": 1276,
+        "endChar": 35
+      },
+      "revId": "a29e31d9bf2c303c4f43008809ce89f501f7a6ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
