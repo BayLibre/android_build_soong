@@ -42,7 +42,7 @@ type TestOptions struct {
 	Test_suite_tag []string
 
 	// a list of extra test configuration files that should be installed with the module.
-	Extra_test_configs []string `android:"path,arch_variant"`
+	Extra_test_configs []string `android:"path,arch_variant,include_licenses"`
 
 	// If the test is a hostside(no device required) unittest that shall be run during presubmit check.
 	Unit_test *bool
@@ -75,7 +75,7 @@ type TestBinaryProperties struct {
 
 	// list of files or filegroup modules that provide data that should be installed alongside
 	// the test
-	Data []string `android:"path,arch_variant"`
+	Data []string `android:"path,arch_variant,include_licenses"`
 
 	// list of shared library modules that should be installed alongside the test
 	Data_libs []string `android:"arch_variant"`
@@ -89,11 +89,11 @@ type TestBinaryProperties struct {
 
 	// the name of the test configuration (for example "AndroidTest.xml") that should be
 	// installed with the module.
-	Test_config *string `android:"path,arch_variant"`
+	Test_config *string `android:"path,arch_variant,include_licenses"`
 
 	// the name of the test configuration template (for example "AndroidTestTemplate.xml") that
 	// should be installed with the module.
-	Test_config_template *string `android:"path,arch_variant"`
+	Test_config_template *string `android:"path,arch_variant,include_licenses"`
 
 	// Test options.
 	Test_options TestOptions

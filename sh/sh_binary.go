@@ -69,7 +69,7 @@ var PrepareForTestWithShBuildComponents = android.GroupFixturePreparers(
 
 type shBinaryProperties struct {
 	// Source file of this prebuilt.
-	Src *string `android:"path,arch_variant"`
+	Src *string `android:"path,arch_variant,include_licenses"`
 
 	// optional subdirectory under which this file is installed into
 	Sub_dir *string `android:"arch_variant"`

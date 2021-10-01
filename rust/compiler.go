@@ -70,7 +70,7 @@ type BaseCompilerProperties struct {
 	// the module name with ":", for example ":libfoo_bindgen"
 	//
 	// If no source file is defined, a single generated source module can be defined to be used as the main source.
-	Srcs []string `android:"path,arch_variant"`
+	Srcs []string `android:"path,arch_variant,include_licenses"`
 
 	// name of the lint set that should be used to validate this module.
 	//

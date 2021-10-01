@@ -77,13 +77,13 @@ type aaptProperties struct {
 	Resource_dirs []string
 
 	// list of zip files containing Android resources.
-	Resource_zips []string `android:"path"`
+	Resource_zips []string `android:"path,include_licenses"`
 
 	// path to AndroidManifest.xml.  If unset, defaults to "AndroidManifest.xml".
-	Manifest *string `android:"path"`
+	Manifest *string `android:"path,include_licenses"`
 
 	// paths to additional manifest files to merge with main manifest.
-	Additional_manifests []string `android:"path"`
+	Additional_manifests []string `android:"path,include_licenses"`
 
 	// do not include AndroidManifest from dependent libraries
 	Dont_merge_manifests *bool
@@ -588,7 +588,7 @@ func AndroidLibraryFactory() android.Module {
 //
 
 type AARImportProperties struct {
-	Aars []string `android:"path"`
+	Aars []string `android:"path,include_licenses"`
 
 	Sdk_version     *string
 	Min_sdk_version *string
