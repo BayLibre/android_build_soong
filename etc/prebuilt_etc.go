@@ -70,7 +70,7 @@ var PrepareForTestWithPrebuiltEtc = android.FixtureRegisterWithContext(RegisterP
 
 type prebuiltEtcProperties struct {
 	// Source file of this prebuilt. Can reference a genrule type module with the ":module" syntax.
-	Src *string `android:"path,arch_variant"`
+	Src *string `android:"path,arch_variant,include_licenses"`
 
 	// Optional name for the installed file. If unspecified, name of the module is used as the file
 	// name.

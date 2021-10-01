@@ -41,7 +41,7 @@ func registerLinkerConfigBuildComponent(ctx android.RegistrationContext) {
 
 type linkerConfigProperties struct {
 	// source linker configuration property file
-	Src *string `android:"path"`
+	Src *string `android:"path,include_licenses"`
 
 	// If set to true, allow module to be installed to one of the partitions.
 	// Default value is true.

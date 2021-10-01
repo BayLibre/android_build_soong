@@ -746,10 +746,10 @@ type commonProperties struct {
 	Native_bridge_supported *bool `android:"arch_variant"`
 
 	// init.rc files to be installed if this module is installed
-	Init_rc []string `android:"arch_variant,path"`
+	Init_rc []string `android:"arch_variant,path,include_licenses"`
 
 	// VINTF manifest fragments to be installed if this module is installed
-	Vintf_fragments []string `android:"path"`
+	Vintf_fragments []string `android:"path,include_licenses"`
 
 	// names of other modules to install if this module is installed
 	Required []string `android:"arch_variant"`
@@ -3023,11 +3023,21 @@ type sourceOrOutputDependencyTag struct {
 
 	// The tag that will be passed to the module's OutputFileProducer.OutputFiles(tag) method.
 	tag string
+
+	// Whether the license of this dependency should be added to our license list.
+	// This is normally set when "include_licenses" is in the struct tag.
+	includeLicense bool
 }
 
-func sourceOrOutputDepTag(moduleName, tag string) blueprint.DependencyTag {
-	return sourceOrOutputDependencyTag{moduleName: moduleName, tag: tag}
+func sourceOrOutputDepTag(moduleName, tag string, includeLicense bool) blueprint.DependencyTag {
+	return sourceOrOutputDependencyTag{moduleName: moduleName, tag: tag, includeLicense: includeLicense}
 }
+
+func (t sourceOrOutputDependencyTag) ShouldIncludeLicenses() bool {
+	return t.includeLicense
+}
+
+var _ ShouldIncludeLicensesDependencyTag = sourceOrOutputDependencyTag{}
 
 // IsSourceDepTag returns true if the supplied blueprint.DependencyTag is one that was used to add
 // dependencies by either ExtractSourceDeps, ExtractSourcesDeps or automatically for properties
@@ -3059,7 +3069,7 @@ func ExtractSourcesDeps(ctx BottomUpMutatorContext, srcFiles []string) {
 				ctx.ModuleErrorf("found source dependency duplicate: %q!", s)
 			} else {
 				set[s] = true
-				ctx.AddDependency(ctx.Module(), sourceOrOutputDepTag(m, t), m)
+				ctx.AddDependency(ctx.Module(), sourceOrOutputDepTag(m, t, false /* TODO */), m)
 			}
 		}
 	}
@@ -3072,7 +3082,7 @@ func ExtractSourcesDeps(ctx BottomUpMutatorContext, srcFiles []string) {
 func ExtractSourceDeps(ctx BottomUpMutatorContext, s *string) {
 	if s != nil {
 		if m, t := SrcIsModuleWithTag(*s); m != "" {
-			ctx.AddDependency(ctx.Module(), sourceOrOutputDepTag(m, t), m)
+			ctx.AddDependency(ctx.Module(), sourceOrOutputDepTag(m, t, false /* TODO */), m)
 		}
 	}
 }

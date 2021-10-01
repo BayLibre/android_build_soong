@@ -46,7 +46,7 @@ func init() {
 
 type VariantLibraryProperties struct {
 	Enabled *bool    `android:"arch_variant"`
-	Srcs    []string `android:"path,arch_variant"`
+	Srcs    []string `android:"path,arch_variant,include_licenses"`
 }
 
 type LibraryCompilerProperties struct {

@@ -45,7 +45,7 @@ type prebuiltKernelModules struct {
 
 type prebuiltKernelModulesProperties struct {
 	// List or filegroup of prebuilt kernel module files. Should have .ko suffix.
-	Srcs []string `android:"path,arch_variant"`
+	Srcs []string `android:"path,arch_variant,include_licenses"`
 
 	// Kernel version that these modules are for. Kernel modules are installed to
 	// /lib/modules/<kernel_version> directory in the corresponding partition. Default is "".

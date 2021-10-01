@@ -37,21 +37,42 @@ func pathDepsMutator(ctx BottomUpMutatorContext) {
 	addPathDepsForProps(ctx, props)
 }
 
+type pathPropertyValue struct {
+	path           string
+	includeLicense bool
+}
+
+func firstUniquePathProperties(list []pathPropertyValue) []pathPropertyValue {
+	k := 0
+outer:
+	for i := 0; i < len(list); i++ {
+		for j := 0; j < k; j++ {
+			if list[i].path == list[j].path {
+				list[j].includeLicense = list[j].includeLicense || list[i].includeLicense
+				continue outer
+			}
+		}
+		list[k] = list[i]
+		k++
+	}
+	return list[:k]
+}
+
 func addPathDepsForProps(ctx BottomUpMutatorContext, props []interface{}) {
 	// Iterate through each property struct of the module extracting the contents of all properties
 	// tagged with `android:"path"`.
-	var pathProperties []string
+	var pathProperties []pathPropertyValue
 	for _, ps := range props {
 		pathProperties = append(pathProperties, pathPropertiesForPropertyStruct(ps)...)
 	}
 
 	// Remove duplicates to avoid multiple dependencies.
-	pathProperties = FirstUniqueStrings(pathProperties)
+	pathProperties = firstUniquePathProperties(pathProperties)
 
 	// Add dependencies to anything that is a module reference.
 	for _, s := range pathProperties {
-		if m, t := SrcIsModuleWithTag(s); m != "" {
-			ctx.AddDependency(ctx.Module(), sourceOrOutputDepTag(m, t), m)
+		if m, t := SrcIsModuleWithTag(s.path); m != "" {
+			ctx.AddDependency(ctx.Module(), sourceOrOutputDepTag(m, t, s.includeLicense), m)
 		}
 	}
 }
@@ -59,7 +80,7 @@ func addPathDepsForProps(ctx BottomUpMutatorContext, props []interface{}) {
 // pathPropertiesForPropertyStruct uses the indexes of properties that are tagged with
 // android:"path" to extract all their values from a property struct, returning them as a single
 // slice of strings.
-func pathPropertiesForPropertyStruct(ps interface{}) []string {
+func pathPropertiesForPropertyStruct(ps interface{}) []pathPropertyValue {
 	v := reflect.ValueOf(ps)
 	if v.Kind() != reflect.Ptr || v.Elem().Kind() != reflect.Struct {
 		panic(fmt.Errorf("type %s is not a pointer to a struct", v.Type()))
@@ -76,9 +97,10 @@ func pathPropertiesForPropertyStruct(ps interface{}) []string {
 	// Get or create the list of indexes of properties that are tagged with `android:"path"`.
 	pathPropertyIndexes := pathPropertyIndexesForPropertyStruct(ps)
 
-	var ret []string
+	var ret []pathPropertyValue
 
-	for _, i := range pathPropertyIndexes {
+	for _, prop := range pathPropertyIndexes {
+		i := prop.index
 		var values []reflect.Value
 		fieldsByIndex(v, i, &values)
 		for _, sv := range values {
@@ -98,9 +120,20 @@ func pathPropertiesForPropertyStruct(ps interface{}) []string {
 			// Collect paths from all strings and slices of strings.
 			switch sv.Kind() {
 			case reflect.String:
-				ret = append(ret, sv.String())
+				ret = append(ret, pathPropertyValue{
+					path:           sv.String(),
+					includeLicense: prop.includeLicense,
+				})
 			case reflect.Slice:
-				ret = append(ret, sv.Interface().([]string)...)
+				strs := sv.Interface().([]string)
+				paths := make([]pathPropertyValue, len(strs))
+				for j, str := range strs {
+					paths[j] = pathPropertyValue{
+						path:           str,
+						includeLicense: prop.includeLicense,
+					}
+				}
+				ret = append(ret, paths...)
 			default:
 				panic(fmt.Errorf(`field %s in type %s has tag android:"path" but is not a string or slice of strings, it is a %s`,
 					v.Type().FieldByIndex(i).Name, v.Type(), sv.Type()))
@@ -157,12 +190,65 @@ func isSliceOfStruct(v reflect.Value) bool {
 
 var pathPropertyIndexesCache OncePer
 
+type pathProperty struct {
+	index          []int
+	includeLicense bool
+}
+
 // pathPropertyIndexesForPropertyStruct returns a list of all of the indexes of properties in
 // property struct type that are tagged with `android:"path"`.  Each index is a []int suitable for
 // passing to reflect.Value.FieldByIndex.  The value is cached in a global cache by type.
-func pathPropertyIndexesForPropertyStruct(ps interface{}) [][]int {
+func pathPropertyIndexesForPropertyStruct(ps interface{}) []pathProperty {
 	key := NewCustomOnceKey(reflect.TypeOf(ps))
 	return pathPropertyIndexesCache.Once(key, func() interface{} {
-		return proptools.PropertyIndexesWithTag(ps, "android", "path")
-	}).([][]int)
+		t := reflect.TypeOf(ps)
+		if !isStructPtr(t) {
+			panic(fmt.Errorf("type %s is not a pointer to a struct", t))
+		}
+		t = t.Elem()
+
+		return propertyIndexesWithTag(t)
+	}).([]pathProperty)
+}
+
+func propertyIndexesWithTag(t reflect.Type) []pathProperty {
+	var indexes []pathProperty
+
+	for i := 0; i < t.NumField(); i++ {
+		field := t.Field(i)
+		ft := field.Type
+		if isStruct(ft) || isStructPtr(ft) || isSliceOfStructType(ft) {
+			if ft.Kind() == reflect.Ptr || ft.Kind() == reflect.Slice || ft.Kind() == reflect.Map {
+				ft = ft.Elem()
+			}
+			subIndexes := propertyIndexesWithTag(ft)
+			for _, sub := range subIndexes {
+				sub.index = append([]int{i}, sub.index...)
+				indexes = append(indexes, sub)
+			}
+		} else if proptools.HasTag(field, "android", "path") {
+			indexes = append(indexes, pathProperty{
+				index:          field.Index,
+				includeLicense: proptools.HasTag(field, "android", "include_licenses"),
+			})
+		}
+	}
+
+	return indexes
+}
+
+func isStruct(t reflect.Type) bool {
+	return t.Kind() == reflect.Struct
+}
+
+func isStructPtr(t reflect.Type) bool {
+	return t.Kind() == reflect.Ptr && t.Elem().Kind() == reflect.Struct
+}
+
+func isSlice(t reflect.Type) bool {
+	return t.Kind() == reflect.Slice
+}
+
+func isSliceOfStructType(t reflect.Type) bool {
+	return isSlice(t) && isStruct(t.Elem())
 }

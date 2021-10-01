@@ -517,10 +517,9 @@ func GetModuleFromPathDep(ctx ModuleWithDepsPathContext, moduleName, tag string)
 	// dependency is a prebuilt module. All that matters is the same information is supplied to
 	// create the tag here as was supplied to create the tag when the dependency was added so that
 	// this finds the matching dependency module.
-	expectedTag := sourceOrOutputDepTag(moduleName, tag)
 	ctx.VisitDirectDepsBlueprint(func(module blueprint.Module) {
 		depTag := ctx.OtherModuleDependencyTag(module)
-		if depTag == expectedTag {
+		if depTag, ok := depTag.(sourceOrOutputDependencyTag); ok && depTag.moduleName == moduleName && depTag.tag == tag {
 			found = module
 		}
 	})

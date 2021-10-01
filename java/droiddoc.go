@@ -42,7 +42,7 @@ func RegisterDocsBuildComponents(ctx android.RegistrationContext) {
 type JavadocProperties struct {
 	// list of source files used to compile the Java module.  May be .java, .logtags, .proto,
 	// or .aidl files.
-	Srcs []string `android:"path,arch_variant"`
+	Srcs []string `android:"path,arch_variant,include_licenses"`
 
 	// list of source files that should not be used to build the Java module.
 	// This is most useful in the arch/multilib variants to remove non-common files
