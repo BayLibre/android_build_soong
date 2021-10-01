@@ -16,6 +16,24 @@
       "message": "There\u0027s no significant time to gain by leaving out the generation of this and all-flags.csv below unless S is targeted?",
       "revId": "a2cc95d8e04d05a2df1fbf6a758e753620f2833e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86851a90_99080d2d",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-01T16:32:24Z",
+      "side": 1,
+      "message": "Although these files do not need to be in the sdk snapshot unless targeting S they are still needed for generating hidden API flags. Stub flags are used to generate all-flags.csv and all-flags.csv is needed to encode hidden API flags into the dex file.",
+      "parentUuid": "b1016e17_42c59fe4",
+      "revId": "a2cc95d8e04d05a2df1fbf6a758e753620f2833e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
