@@ -93,6 +93,30 @@
       },
       "revId": "0dac924c78ce95a81f78e77dae73e9980889c8be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c181873_53da9759",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8464,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-01T13:48:27Z",
+      "side": 1,
+      "message": "Optional, but it wouldn\u0027t be difficult to add a tool function in testing.go that encapsulates this, would it? I think it\u0027d be a good thing to have, considering the prevalence of the clunky code to do this in lots of places.",
+      "parentUuid": "d05c9823_b6208755",
+      "range": {
+        "startLine": 8464,
+        "startChar": 9,
+        "endLine": 8464,
+        "endChar": 38
+      },
+      "revId": "0dac924c78ce95a81f78e77dae73e9980889c8be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
