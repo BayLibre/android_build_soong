@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e780b47_772fddbf",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-01T16:50:12Z",
+      "side": 1,
+      "message": "on the bazel side, we\u0027re only checking for a False in a macro -- seems unlikely for nocrt to be archvariant, perhaps for now we can error out if there are arch-variant values?",
+      "range": {
+        "startLine": 1215,
+        "startChar": 0,
+        "endLine": 1218,
+        "endChar": 7
+      },
+      "revId": "b031798ab8c9874051a535842b3da5cbf883e8a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2f88640a_b92f9193",
         "filename": "cc/linker.go",
         "patchSetId": 12
