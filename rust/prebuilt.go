@@ -26,7 +26,7 @@ func init() {
 
 type PrebuiltProperties struct {
 	// path to the prebuilt file
-	Srcs []string `android:"path,arch_variant"`
+	Srcs []string `android:"path,arch_variant,include_licenses"`
 	// directories containing associated rlib dependencies
 	Link_dirs []string `android:"path,arch_variant"`
 }

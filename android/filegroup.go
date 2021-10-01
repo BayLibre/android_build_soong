@@ -77,7 +77,7 @@ func FilegroupBp2Build(ctx TopDownMutatorContext) {
 
 type fileGroupProperties struct {
 	// srcs lists files that will be included in this filegroup
-	Srcs []string `android:"path"`
+	Srcs []string `android:"path,include_licenses"`
 
 	Exclude_srcs []string `android:"path"`
 
