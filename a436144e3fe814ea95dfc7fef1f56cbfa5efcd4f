@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e5d11be_9b2bf882",
+        "filename": "sdk/build_release.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-01T16:31:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "160fe8a9_c6eb4af4",
+      "range": {
+        "startLine": 45,
+        "startChar": 14,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "a436144e3fe814ea95dfc7fef1f56cbfa5efcd4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1746811d_2148ef1b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-01T00:52:27Z",
       "side": 1,
       "message": "These predate SDK snapshots. Is it necessary to support them? (For testing I suggest adding some more fake future releases below.)",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 38
+      },
+      "revId": "a436144e3fe814ea95dfc7fef1f56cbfa5efcd4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c05bf8c_4c496acc",
+        "filename": "sdk/build_release.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-01T16:31:59Z",
+      "side": 1,
+      "message": "Not initially as they are supported using custom scripts. However, it is possible that we may want to support them through this mechanism in future, e.g. if we want to make the pipelines for creating partner.zip files more consistent. Will remove for now though.",
+      "parentUuid": "1746811d_2148ef1b",
       "range": {
         "startLine": 84,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aafb63a_aa2cc9af",
+        "filename": "sdk/build_release.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-01T16:31:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a669c4a8_121113ff",
+      "range": {
+        "startLine": 115,
+        "startChar": 45,
+        "endLine": 115,
+        "endChar": 67
+      },
+      "revId": "a436144e3fe814ea95dfc7fef1f56cbfa5efcd4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "daa54497_e125825c",
@@ -87,6 +159,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f1030c6_2993e8c4",
+        "filename": "sdk/build_release_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-01T16:31:59Z",
+      "side": 1,
+      "message": "Done. Some of the tests still use the actual releases as it is important to ensure that they work properly.",
+      "parentUuid": "daa54497_e125825c",
+      "revId": "a436144e3fe814ea95dfc7fef1f56cbfa5efcd4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbddabdc_ac716421",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-10-01T00:52:27Z",
       "side": 1,
       "message": "Maybe use a regexp to match the fake releases here, to check better that the list is complete. It\u0027d also avoid this truncated list which is a bit confusing.",
+      "range": {
+        "startLine": 50,
+        "startChar": 102,
+        "endLine": 50,
+        "endChar": 103
+      },
+      "revId": "a436144e3fe814ea95dfc7fef1f56cbfa5efcd4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8f08506_0d86b2d4",
+        "filename": "sdk/build_release_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-01T16:31:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbddabdc_ac716421",
       "range": {
         "startLine": 50,
         "startChar": 102,
