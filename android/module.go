@@ -3023,6 +3023,11 @@ type sourceOrOutputDependencyTag struct {
 	tag string
 }
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (d sourceOrOutputDependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 func sourceOrOutputDepTag(moduleName, tag string) blueprint.DependencyTag {
 	return sourceOrOutputDependencyTag{moduleName: moduleName, tag: tag}
 }

@@ -136,7 +136,12 @@ func (p *SnapshotEtc) AndroidMkEntries() []android.AndroidMkEntries {
 }
 
 type snapshotEtcDependencyTag struct {
-	blueprint.DependencyTag
+	blueprint.BaseDependencyTag
+}
+
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (t snapshotEtcDependencyTag) PropagateLicenses() bool {
+	return false
 }
 
 var tag = snapshotEtcDependencyTag{}

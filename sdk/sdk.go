@@ -296,6 +296,11 @@ type dependencyTag struct {
 	blueprint.BaseDependencyTag
 }
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (t dependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 // Mark this tag so dependencies that use it are excluded from APEX contents.
 func (t dependencyTag) ExcludeFromApexContents() {}
 

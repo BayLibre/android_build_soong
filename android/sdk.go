@@ -656,6 +656,11 @@ func (t *sdkMemberDependencyTag) ReplaceSourceWithPrebuilt() bool {
 	return false
 }
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (t sdkMemberDependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 // DependencyTagForSdkMemberType creates an SdkMemberDependencyTag that will cause any
 // dependencies added by the tag to be added to the sdk as the specified SdkMemberType and exported
 // (or not) as specified by the export parameter.

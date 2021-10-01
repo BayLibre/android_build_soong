@@ -367,6 +367,10 @@ type neverallowTestDependencyTag struct {
 	name string
 }
 
+func (t neverallowTestDependencyTag) PropagateLicenses() bool {
+	return true
+}
+
 var staticDepTag = neverallowTestDependencyTag{name: "static"}
 
 func (c *mockCcLibraryModule) DepsMutator(ctx BottomUpMutatorContext) {

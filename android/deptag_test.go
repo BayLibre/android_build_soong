@@ -37,13 +37,21 @@ func (t *testInstallDependencyTagModule) GenerateAndroidBuildActions(ctx ModuleC
 	ctx.InstallFile(PathForModuleInstall(ctx), ctx.ModuleName(), outputFile)
 }
 
+type testBaseDepTag struct {
+	blueprint.BaseDependencyTag
+}
+
+func (t testBaseDepTag) PropagateLicenses() bool {
+	return false
+}
+
 var testInstallDependencyTagAlwaysDepTag = struct {
-	blueprint.DependencyTag
+	testBaseDepTag
 	InstallAlwaysNeededDependencyTag
 }{}
 
 var testInstallDependencyTagNeverDepTag = struct {
-	blueprint.DependencyTag
+	testBaseDepTag
 }{}
 
 func (t *testInstallDependencyTagModule) DepsMutator(ctx BottomUpMutatorContext) {

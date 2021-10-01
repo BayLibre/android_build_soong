@@ -452,6 +452,74 @@ var licensesTests = []struct {
 			"other":  []string{"prebuilt", "top_sources"},
 		},
 	},
+	{
+		name: "verify dependency propagation",
+		fs: map[string][]byte{
+			"top/Android.bp": []byte(`
+				license_kind {
+					name: "notice",
+					conditions: ["shownotice"],
+				}
+
+				license {
+					name: "top_Apache2",
+					license_kinds: ["notice"],
+					package_name: "topDog",
+					license_text: ["LICENSE", "NOTICE_Apache2"],
+				}
+
+				license {
+					name: "top_BSD",
+					license_kinds: ["notice"],
+					package_name: "topDog",
+					license_text: ["LICENSE", "NOTICE_BSD"],
+				}
+
+				license {
+					name: "top_MIT",
+					license_kinds: ["notice"],
+					package_name: "topDog",
+					license_text: ["LICENSE", "NOTICE_MIT"],
+				}
+
+				mock_library {
+					name: "libexample1",
+					licenses: ["top_Apache2"],
+				}
+
+				mock_library {
+					name: "libexample2",
+					licenses: ["top_BSD"],
+				}
+
+				mock_library {
+					name: "libexample3",
+					licenses: ["top_MIT"],
+					deps: ["libexample1"],
+					propagated_deps: ["libexample2"],
+				}`),
+		},
+		effectiveLicenses: map[string][]string{
+			"libexample1": {"top_Apache2"},
+			"libexample2": {"top_BSD"},
+			"libexample3": {"top_BSD", "top_MIT"},
+		},
+		effectiveKinds: map[string][]string{
+			"libexample1": {"notice"},
+			"libexample2": {"notice"},
+			"libexample3": {"notice"},
+		},
+		effectiveConditions: map[string][]string{
+			"libexample1": {"shownotice"},
+			"libexample2": {"shownotice"},
+			"libexample3": {"shownotice"},
+		},
+		effectiveNotices: map[string][]string{
+			"libexample1": {"top/LICENSE", "top/NOTICE_Apache2"},
+			"libexample2": {"top/LICENSE", "top/NOTICE_BSD"},
+			"libexample3": {"top/LICENSE", "top/NOTICE_BSD", "top/NOTICE_MIT"},
+		},
+	},
 }
 
 func TestLicenses(t *testing.T) {
@@ -796,7 +864,8 @@ func (m *mockLicensesBadModule) GenerateAndroidBuildActions(ModuleContext) {
 }
 
 type mockLicensesLibraryProperties struct {
-	Deps []string
+	Deps            []string
+	Propagated_deps []string
 }
 
 type mockLicensesLibraryModule struct {
@@ -818,8 +887,13 @@ type dependencyLicensesTag struct {
 	name string
 }
 
+func (t dependencyLicensesTag) PropagateLicenses() bool {
+	return t.name == "propagated_deps"
+}
+
 func (j *mockLicensesLibraryModule) DepsMutator(ctx BottomUpMutatorContext) {
 	ctx.AddVariationDependencies(nil, dependencyLicensesTag{name: "mockdeps"}, j.properties.Deps...)
+	ctx.AddVariationDependencies(nil, dependencyLicensesTag{name: "propagated_deps"}, j.properties.Propagated_deps...)
 }
 
 func (p *mockLicensesLibraryModule) GenerateAndroidBuildActions(ModuleContext) {

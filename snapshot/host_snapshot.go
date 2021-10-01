@@ -72,11 +72,18 @@ func initHostToolsModule(module *hostSnapshot) {
 	android.InitAndroidMultiTargetsArchModule(module, android.HostSupported, android.MultilibCommon)
 }
 
-var dependencyTag = struct {
+type depTag struct {
 	blueprint.BaseDependencyTag
 	android.InstallAlwaysNeededDependencyTag
 	android.PackagingItemAlwaysDepTag
-}{}
+}
+
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (t depTag) PropagateLicenses() bool {
+	return false
+}
+
+var dependencyTag = depTag{}
 
 func (f *hostSnapshot) DepsMutator(ctx android.BottomUpMutatorContext) {
 	f.AddDeps(ctx, dependencyTag)

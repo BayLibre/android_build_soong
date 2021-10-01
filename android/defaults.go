@@ -25,6 +25,12 @@ type defaultsDependencyTag struct {
 	blueprint.BaseDependencyTag
 }
 
+// Licenses and other properties already copied into dependent targets by mutator.
+// No need to propagate a 2nd time.
+func (d defaultsDependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 var DefaultsDepTag defaultsDependencyTag
 
 type defaultsProperties struct {

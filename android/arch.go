@@ -545,6 +545,11 @@ type archDepTag struct {
 	name string
 }
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (d archDepTag) PropagateLicenses() bool {
+	return false
+}
+
 // Identifies the dependency from CommonOS variant to the os specific variants.
 var commonOsToOsSpecificVariantTag = archDepTag{name: "common os to os specific"}
 

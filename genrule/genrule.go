@@ -112,6 +112,12 @@ type hostToolDependencyTag struct {
 	blueprint.BaseDependencyTag
 	label string
 }
+
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (t hostToolDependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 type generatorProperties struct {
 	// The command to run on one or more input files. Cmd supports substitution of a few variables.
 	//
