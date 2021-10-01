@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b26793d5_ba2ba67c",
+        "filename": "python/python.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-01T15:58:54Z",
+      "side": 1,
+      "message": "That\u0027s coming out of this version, to go to the version-variant bug.",
+      "parentUuid": "9bcffeb6_b90f6b31",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 28
+      },
+      "revId": "29573d5aef8e2eb33371e2fa788c062c8e09b8dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17f97c7f_a36cac4a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-01T15:25:32Z",
       "side": 1,
       "message": "Can you file a bug for this TODO, we\u0027ll need to translate but need to determine a path for doing so.",
+      "range": {
+        "startLine": 133,
+        "startChar": 10,
+        "endLine": 133,
+        "endChar": 60
+      },
+      "revId": "29573d5aef8e2eb33371e2fa788c062c8e09b8dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "750ddcdb_1a07cffb",
+        "filename": "python/python.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-01T15:58:54Z",
+      "side": 1,
+      "message": "I had: https://buganizer.corp.google.com/u/0/issues/200311466\nJust hadn\u0027t marked it.",
+      "parentUuid": "17f97c7f_a36cac4a",
       "range": {
         "startLine": 133,
         "startChar": 10,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eda6062a_f0dc9310",
+        "filename": "python/python.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-01T15:58:54Z",
+      "side": 1,
+      "message": "We have a field called 🤷, right? 😅 Not that I could find, really. It marks whether the Python module is considered internal (e.g. std lib) or not.",
+      "parentUuid": "1edef576_c071ba43",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "29573d5aef8e2eb33371e2fa788c062c8e09b8dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8109b431_69e6a040",
         "filename": "python/python.go",
         "patchSetId": 5
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-01T15:25:32Z",
       "side": 1,
       "message": "let\u0027s defer version properties until https://b.corp.google.com/issues/182306917",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 2
+      },
+      "revId": "29573d5aef8e2eb33371e2fa788c062c8e09b8dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "319023bc_36fe7c09",
+        "filename": "python/python.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-01T15:58:54Z",
+      "side": 1,
+      "message": "`g stash`\n\nBut what should I do about translating Versions in this iteration before the next CL?",
+      "parentUuid": "8109b431_69e6a040",
       "range": {
         "startLine": 205,
         "startChar": 0,
