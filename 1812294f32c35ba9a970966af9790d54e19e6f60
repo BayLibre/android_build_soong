@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32caaf8d_503088a4",
+        "filename": "sdk/build_release_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-01T21:08:07Z",
+      "side": 1,
+      "message": "This will break when more releases are added. (No big deal if ignored though.)",
+      "range": {
+        "startLine": 62,
+        "startChar": 41,
+        "endLine": 62,
+        "endChar": 47
+      },
+      "revId": "1812294f32c35ba9a970966af9790d54e19e6f60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
