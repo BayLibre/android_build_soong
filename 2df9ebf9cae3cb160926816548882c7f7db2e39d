@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e94e70fc_94f063cf",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-01T19:02:16Z",
+      "side": 0,
+      "message": "we should clean this up too probably.",
+      "range": {
+        "startLine": 95,
+        "startChar": 29,
+        "endLine": 95,
+        "endChar": 66
+      },
+      "revId": "2df9ebf9cae3cb160926816548882c7f7db2e39d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
