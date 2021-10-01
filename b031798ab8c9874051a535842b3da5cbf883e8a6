@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f88640a_b92f9193",
+        "filename": "cc/linker.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-01T15:11:24Z",
+      "side": 1,
+      "message": "nit: I\u0027m confused why this is necessary. `nocrt: false` should be rare but not harmful to migrate.",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 38
+      },
+      "revId": "b031798ab8c9874051a535842b3da5cbf883e8a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
