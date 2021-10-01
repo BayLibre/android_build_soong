@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe43d7a6_bc72e271",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-01T00:54:06Z",
+      "side": 1,
+      "message": "This is probably the first time most readers encounter this term, so it\u0027s useful to explain it a bit here.",
+      "range": {
+        "startLine": 85,
+        "startChar": 30,
+        "endLine": 85,
+        "endChar": 43
+      },
+      "revId": "504ea2c7d843ed5b3181a610cd1a9c655d664935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d756ff0f_6d8391d1",
+        "filename": "sdk/update.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-01T00:54:06Z",
+      "side": 1,
+      "message": "May be worth pointing out that only the current build release is checked in any way.",
+      "revId": "504ea2c7d843ed5b3181a610cd1a9c655d664935",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
