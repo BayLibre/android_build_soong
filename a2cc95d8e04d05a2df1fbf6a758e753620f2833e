@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1016e17_42c59fe4",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-01T00:54:24Z",
+      "side": 1,
+      "message": "There\u0027s no significant time to gain by leaving out the generation of this and all-flags.csv below unless S is targeted?",
+      "revId": "a2cc95d8e04d05a2df1fbf6a758e753620f2833e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
