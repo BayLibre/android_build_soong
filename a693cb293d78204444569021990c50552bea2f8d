@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edf69acb_3b68336f",
+        "filename": "sdk/build_release.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-01T21:14:09Z",
+      "side": 1,
+      "message": "\u003e We don\u0027t have any SdkMemberProperties structures that contain pointers to structs\n\nOk. Are the getStructValue calls above necessary then?",
+      "parentUuid": "f0af8062_941233f1",
+      "range": {
+        "startLine": 265,
+        "startChar": 33,
+        "endLine": 265,
+        "endChar": 47
+      },
+      "revId": "a693cb293d78204444569021990c50552bea2f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b96d043_0538a635",
