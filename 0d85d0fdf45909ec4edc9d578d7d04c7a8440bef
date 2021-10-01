@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecce52d2_e07e4960",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 40
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-01T15:26:41Z",
+      "side": 1,
+      "message": "Needing the python_* arch-variance CL to go through to be able to use latest test. Unless you think I should use a different module.",
+      "revId": "0d85d0fdf45909ec4edc9d578d7d04c7a8440bef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
