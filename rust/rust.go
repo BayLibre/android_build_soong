@@ -948,7 +948,13 @@ func (d dependencyTag) InstallDepNeeded() bool {
 	return d.library || d.procMacro
 }
 
+// ShouldIncludeLicenses returns true for rlibs, as they're partially or fully included in our output.
+func (d dependencyTag) ShouldIncludeLicenses() bool {
+	return IsRlibDepTag(d)
+}
+
 var _ android.InstallNeededDependencyTag = dependencyTag{}
+var _ android.ShouldIncludeLicensesDependencyTag = dependencyTag{}
 
 var (
 	customBindgenDepTag = dependencyTag{name: "customBindgenTag"}

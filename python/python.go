@@ -276,6 +276,13 @@ type dependencyTag struct {
 	name string
 }
 
+// All python dependency tags require including licenses, as they'll all end up in the final output.
+func (dependencyTag) ShouldIncludeLicenses() bool {
+	return true
+}
+
+var _ android.ShouldIncludeLicensesDependencyTag = dependencyTag{}
+
 // Python-specific tag that indicates that installed files of this module should depend on installed
 // files of the dependency
 type installDependencyTag struct {

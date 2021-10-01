@@ -337,6 +337,15 @@ func IsStaticLibDepTag(depTag blueprint.DependencyTag) bool {
 	return depTag == staticLibTag
 }
 
+// ShouldIncludeLicenses returns true for static libraries, so that their licenses will
+// be included to our license information, as their code will be incorporated into our
+// output.
+func (d dependencyTag) ShouldIncludeLicenses() bool {
+	return IsStaticLibDepTag(d)
+}
+
+var _ android.ShouldIncludeLicensesDependencyTag = dependencyTag{}
+
 type sdkDep struct {
 	useModule, useFiles, invalidVersion bool
 

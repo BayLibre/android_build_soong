@@ -688,7 +688,15 @@ func (d libraryDependencyTag) InstallDepNeeded() bool {
 	return d.shared()
 }
 
+// ShouldIncludeLicenses returns true for static libraries, so that their licenses will
+// be included to our license information, as their code will be incorporated into our
+// output.
+func (d libraryDependencyTag) ShouldIncludeLicenses() bool {
+	return d.static()
+}
+
 var _ android.InstallNeededDependencyTag = libraryDependencyTag{}
+var _ android.ShouldIncludeLicensesDependencyTag = libraryDependencyTag{}
 
 // dependencyTag is used for tagging miscellaneous dependency types that don't fit into
 // libraryDependencyTag.  Each tag object is created globally and reused for multiple
