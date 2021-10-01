@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e1007b6_f9e2d319",
+        "filename": "sdk/build_release.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-01T00:53:36Z",
+      "side": 1,
+      "message": "Will this used to set anything except the zero value? Can\u0027t it just do that right away without taking it as an argument?",
+      "range": {
+        "startLine": 176,
+        "startChar": 1,
+        "endLine": 176,
+        "endChar": 7
+      },
+      "revId": "a693cb293d78204444569021990c50552bea2f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3c9482d_dc8d66f4",
+        "filename": "sdk/build_release.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-01T00:53:36Z",
+      "side": 1,
+      "message": "Zero?",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 6
+      },
+      "revId": "a693cb293d78204444569021990c50552bea2f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56a456b9_d17f430f",
+        "filename": "sdk/build_release.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-01T00:53:36Z",
+      "side": 1,
+      "message": "What about dereferencing pointers? And can\u0027t it be useful to prune recursively in structs in arrays too?",
+      "range": {
+        "startLine": 265,
+        "startChar": 33,
+        "endLine": 265,
+        "endChar": 47
+      },
+      "revId": "a693cb293d78204444569021990c50552bea2f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b96d043_0538a635",
+        "filename": "sdk/build_release.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-01T00:53:36Z",
+      "side": 1,
+      "message": "It\u0027d be helpful to include the field name here.",
+      "range": {
+        "startLine": 313,
+        "startChar": 10,
+        "endLine": 313,
+        "endChar": 13
+      },
+      "revId": "a693cb293d78204444569021990c50552bea2f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
