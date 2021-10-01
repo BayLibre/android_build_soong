@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7963e24f_6406e63a",
+        "filename": "android/module.go",
+        "patchSetId": 39
+      },
+      "lineNbr": 1112,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-01T14:45:22Z",
+      "side": 1,
+      "message": "can you add a test for an arch or os variant?",
+      "range": {
+        "startLine": 1104,
+        "startChar": 0,
+        "endLine": 1112,
+        "endChar": 2
+      },
+      "revId": "f77f3f63a48ce98b97a34ce187ff9c736e592b26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "021c2bed_ffde45da",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 39
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-01T14:45:22Z",
+      "side": 1,
+      "message": "This may be inverted, this is the bp2build codepath.",
+      "range": {
+        "startLine": 423,
+        "startChar": 41,
+        "endLine": 423,
+        "endChar": 46
+      },
+      "revId": "f77f3f63a48ce98b97a34ce187ff9c736e592b26",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
