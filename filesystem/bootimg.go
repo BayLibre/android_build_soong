@@ -94,6 +94,11 @@ type bootimgDep struct {
 	kind string
 }
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (t bootimgDep) PropagateLicenses() bool {
+	return false
+}
+
 var bootimgRamdiskDep = bootimgDep{kind: "ramdisk"}
 
 func (b *bootimg) DepsMutator(ctx android.BottomUpMutatorContext) {

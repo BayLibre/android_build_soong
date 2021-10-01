@@ -48,6 +48,11 @@ type bootclasspathFragmentContentDependencyTag struct {
 	blueprint.BaseDependencyTag
 }
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (t bootclasspathFragmentContentDependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 // Avoid having to make bootclasspath_fragment content visible to the bootclasspath_fragment.
 //
 // This is a temporary workaround to make it easier to migrate to bootclasspath_fragment modules

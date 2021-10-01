@@ -381,6 +381,11 @@ func (d dex2oatDependencyTag) AllowDisabledModuleDependency(target android.Modul
 	return target.IsReplacedByPrebuilt()
 }
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (t dex2oatDependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 // Dex2oatDepTag represents the dependency onto the dex2oatd module. It is added to any module that
 // needs dexpreopting and so it makes no sense for it to be checked for visibility or included in
 // the apex.

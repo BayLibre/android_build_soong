@@ -588,6 +588,11 @@ func (d dependencyTag) ReplaceSourceWithPrebuilt() bool {
 
 var _ android.ReplaceSourceWithPrebuilt = &dependencyTag{}
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (d dependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 var (
 	androidAppTag   = dependencyTag{name: "androidApp", payload: true}
 	bpfTag          = dependencyTag{name: "bpf", payload: true}

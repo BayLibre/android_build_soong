@@ -229,6 +229,11 @@ type overrideBaseDependencyTag struct {
 	blueprint.BaseDependencyTag
 }
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (d overrideBaseDependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 var overrideBaseDepTag overrideBaseDependencyTag
 
 // Adds dependency on the base module to the overriding module so that they can be visited in the

@@ -133,6 +133,11 @@ type systemServerClasspathFragmentContentDependencyTag struct {
 	blueprint.BaseDependencyTag
 }
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (b systemServerClasspathFragmentContentDependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 // The systemserverclasspath_fragment contents must never depend on prebuilts.
 func (systemServerClasspathFragmentContentDependencyTag) ReplaceSourceWithPrebuilt() bool {
 	return false

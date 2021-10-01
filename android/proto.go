@@ -44,6 +44,11 @@ type protoDependencyTag struct {
 	name string
 }
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (d protoDependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 var ProtoPluginDepTag = protoDependencyTag{name: "plugin"}
 
 func ProtoDeps(ctx BottomUpMutatorContext, p *ProtoProperties) {

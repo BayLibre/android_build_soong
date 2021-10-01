@@ -181,6 +181,11 @@ type hiddenAPIStubsDependencyTag struct {
 	fromAdditionalDependency bool
 }
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (b hiddenAPIStubsDependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 func (b hiddenAPIStubsDependencyTag) ExcludeFromApexContents() {
 }
 

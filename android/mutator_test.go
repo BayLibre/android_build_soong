@@ -172,6 +172,22 @@ func TestModuleString(t *testing.T) {
 	AssertDeepEquals(t, "module String() values", want, moduleStrings)
 }
 
+type tag1 struct {
+	blueprint.BaseDependencyTag
+}
+
+func (t tag1) PropagateLicenses() bool {
+	return false
+}
+
+type tag2 struct {
+	blueprint.BaseDependencyTag
+}
+
+func (t tag2) PropagateLicenses() bool {
+	return false
+}
+
 func TestFinalDepsPhase(t *testing.T) {
 	bp := `
 		test {
@@ -189,12 +205,8 @@ func TestFinalDepsPhase(t *testing.T) {
 
 	GroupFixturePreparers(
 		FixtureRegisterWithContext(func(ctx RegistrationContext) {
-			dep1Tag := struct {
-				blueprint.BaseDependencyTag
-			}{}
-			dep2Tag := struct {
-				blueprint.BaseDependencyTag
-			}{}
+			dep1Tag := tag1{}
+			dep2Tag := tag2{}
 
 			ctx.PostDepsMutators(func(ctx RegisterMutatorsContext) {
 				ctx.BottomUp("far_deps_1", func(ctx BottomUpMutatorContext) {

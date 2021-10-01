@@ -171,6 +171,11 @@ type bootclasspathDependencyTag struct {
 	name string
 }
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (t bootclasspathDependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 func (t bootclasspathDependencyTag) ExcludeFromVisibilityEnforcement() {
 }
 

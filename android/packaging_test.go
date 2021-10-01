@@ -36,6 +36,10 @@ type installDepTag struct {
 	InstallAlwaysNeededDependencyTag
 }
 
+func (t installDepTag) PropagateLicenses() bool {
+	return false
+}
+
 func componentTestModuleFactory() Module {
 	m := &componentTestModule{}
 	m.AddProperties(&m.props)
@@ -86,6 +90,10 @@ func packageTestModuleFactory() Module {
 type packagingDepTag struct {
 	blueprint.BaseDependencyTag
 	PackagingItemAlwaysDepTag
+}
+
+func (t packagingDepTag) PropagateLicenses() bool {
+	return true
 }
 
 func (m *packageTestModule) DepsMutator(ctx BottomUpMutatorContext) {

@@ -96,6 +96,11 @@ type vbmetaDep struct {
 	kind string
 }
 
+// TODO(b/201696252): Evaluate whether licenses should be propagated through this dependency.
+func (t vbmetaDep) PropagateLicenses() bool {
+	return false
+}
+
 var vbmetaPartitionDep = vbmetaDep{kind: "partition"}
 
 func (v *vbmeta) DepsMutator(ctx android.BottomUpMutatorContext) {

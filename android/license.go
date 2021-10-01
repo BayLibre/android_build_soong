@@ -22,6 +22,11 @@ type licenseKindDependencyTag struct {
 	blueprint.BaseDependencyTag
 }
 
+// It doesn't make sense to propagate licenses through license kind dependencies.
+func (d licenseKindDependencyTag) PropagateLicenses() bool {
+	return false
+}
+
 var (
 	licenseKindTag = licenseKindDependencyTag{}
 )
