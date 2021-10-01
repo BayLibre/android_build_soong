@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bcffeb6_b90f6b31",
+        "filename": "python/python.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-01T15:25:32Z",
+      "side": 1,
+      "message": "this is already being migrated?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 28
+      },
+      "revId": "29573d5aef8e2eb33371e2fa788c062c8e09b8dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17f97c7f_a36cac4a",
+        "filename": "python/python.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-01T15:25:32Z",
+      "side": 1,
+      "message": "Can you file a bug for this TODO, we\u0027ll need to translate but need to determine a path for doing so.",
+      "range": {
+        "startLine": 133,
+        "startChar": 10,
+        "endLine": 133,
+        "endChar": 60
+      },
+      "revId": "29573d5aef8e2eb33371e2fa788c062c8e09b8dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1edef576_c071ba43",
+        "filename": "python/python.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-01T15:25:32Z",
+      "side": 1,
+      "message": "What Bazel attribute does this map to?",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "29573d5aef8e2eb33371e2fa788c062c8e09b8dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8109b431_69e6a040",
+        "filename": "python/python.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-01T15:25:32Z",
+      "side": 1,
+      "message": "let\u0027s defer version properties until https://b.corp.google.com/issues/182306917",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 2
+      },
+      "revId": "29573d5aef8e2eb33371e2fa788c062c8e09b8dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
