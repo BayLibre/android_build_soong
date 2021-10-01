@@ -44,12 +44,12 @@ import (
 type CommonProperties struct {
 	// list of source files used to compile the Java module.  May be .java, .kt, .logtags, .proto,
 	// or .aidl files.
-	Srcs []string `android:"path,arch_variant"`
+	Srcs []string `android:"path,arch_variant,include_licenses"`
 
 	// list Kotlin of source files containing Kotlin code that should be treated as common code in
 	// a codebase that supports Kotlin multiplatform.  See
 	// https://kotlinlang.org/docs/reference/multiplatform.html.  May be only be .kt files.
-	Common_srcs []string `android:"path,arch_variant"`
+	Common_srcs []string `android:"path,arch_variant,include_licenses"`
 
 	// list of source files that should not be used to build the Java module.
 	// This is most useful in the arch/multilib variants to remove non-common files
@@ -62,7 +62,7 @@ type CommonProperties struct {
 	Exclude_java_resource_dirs []string `android:"arch_variant"`
 
 	// list of files to use as Java resources
-	Java_resources []string `android:"path,arch_variant"`
+	Java_resources []string `android:"path,arch_variant,include_licenses"`
 
 	// list of files that should be excluded from java_resources and java_resource_dirs
 	Exclude_java_resources []string `android:"path,arch_variant"`
@@ -80,7 +80,7 @@ type CommonProperties struct {
 	Static_libs []string `android:"arch_variant"`
 
 	// manifest file to be included in resulting jar
-	Manifest *string `android:"path"`
+	Manifest *string `android:"path,include_licenses"`
 
 	// if not blank, run jarjar using the specified rules file
 	Jarjar_rules *string `android:"path,arch_variant"`
@@ -116,7 +116,7 @@ type CommonProperties struct {
 
 	Openjdk9 struct {
 		// List of source files that should only be used when passing -source 1.9 or higher
-		Srcs []string `android:"path"`
+		Srcs []string `android:"path,include_licenses"`
 
 		// List of javac flags that should only be used when passing -source 1.9 or higher
 		Javacflags []string
@@ -172,7 +172,7 @@ type CommonProperties struct {
 	Instrument bool `blueprint:"mutated"`
 
 	// List of files to include in the META-INF/services folder of the resulting jar.
-	Services []string `android:"path,arch_variant"`
+	Services []string `android:"path,arch_variant,include_licenses"`
 
 	// If true, package the kotlin stdlib into the jar.  Defaults to true.
 	Static_kotlin_stdlib *bool `android:"arch_variant"`

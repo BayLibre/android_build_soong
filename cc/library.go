@@ -141,7 +141,7 @@ type SharedProperties struct {
 // Use `StaticProperties` or `SharedProperties`, depending on which variant is needed.
 // `StaticOrSharedProperties` exists only to avoid duplication.
 type StaticOrSharedProperties struct {
-	Srcs []string `android:"path,arch_variant"`
+	Srcs []string `android:"path,arch_variant,include_licenses"`
 
 	Tidy_disabled_srcs []string `android:"path,arch_variant"`
 

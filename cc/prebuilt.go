@@ -41,7 +41,7 @@ type prebuiltLinkerInterface interface {
 
 type prebuiltLinkerProperties struct {
 	// a prebuilt library or binary. Can reference a genrule module that generates an executable file.
-	Srcs []string `android:"path,arch_variant"`
+	Srcs []string `android:"path,arch_variant,include_licenses"`
 
 	Sanitized Sanitized `android:"arch_variant"`
 
@@ -311,7 +311,7 @@ func NewPrebuiltStaticLibrary(hod android.HostOrDeviceSupported) (*Module, *libr
 }
 
 type prebuiltObjectProperties struct {
-	Srcs []string `android:"path,arch_variant"`
+	Srcs []string `android:"path,arch_variant,include_licenses"`
 }
 
 type prebuiltObjectLinker struct {
@@ -514,13 +514,13 @@ func NewPrebuiltBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecor
 
 type Sanitized struct {
 	None struct {
-		Srcs []string `android:"path,arch_variant"`
+		Srcs []string `android:"path,arch_variant,include_licenses"`
 	} `android:"arch_variant"`
 	Address struct {
-		Srcs []string `android:"path,arch_variant"`
+		Srcs []string `android:"path,arch_variant,include_licenses"`
 	} `android:"arch_variant"`
 	Hwaddress struct {
-		Srcs []string `android:"path,arch_variant"`
+		Srcs []string `android:"path,arch_variant,include_licenses"`
 	} `android:"arch_variant"`
 }
 

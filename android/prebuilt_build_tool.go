@@ -22,10 +22,10 @@ func init() {
 
 type prebuiltBuildToolProperties struct {
 	// Source file to be executed for this build tool
-	Src *string `android:"path,arch_variant"`
+	Src *string `android:"path,arch_variant,include_licenses"`
 
 	// Extra files that should trigger rules using this tool to rebuild
-	Deps []string `android:"path,arch_variant"`
+	Deps []string `android:"path,arch_variant,include_licenses"`
 
 	// Create a make variable with the specified name that contains the path to
 	// this prebuilt built tool, relative to the root of the source tree.

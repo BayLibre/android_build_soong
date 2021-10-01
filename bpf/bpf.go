@@ -57,7 +57,7 @@ type BpfModule interface {
 }
 
 type BpfProperties struct {
-	Srcs         []string `android:"path"`
+	Srcs         []string `android:"path,include_licenses"`
 	Cflags       []string
 	Include_dirs []string
 }
