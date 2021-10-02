@@ -22,6 +22,30 @@
       },
       "revId": "1812294f32c35ba9a970966af9790d54e19e6f60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45bcd337_87cbbab0",
+        "filename": "sdk/build_release_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-02T11:21:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "32caaf8d_503088a4",
+      "range": {
+        "startLine": 62,
+        "startChar": 41,
+        "endLine": 62,
+        "endChar": 47
+      },
+      "revId": "1812294f32c35ba9a970966af9790d54e19e6f60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
