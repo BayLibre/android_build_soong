@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab3e68c7_3ba9e61b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-10-03T09:09:05Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "ac0acd3f1bbd4f0838e9edc00a2187d6180f6ec8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31de5fd0_52e4f469",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-10-03T09:09:05Z",
+      "side": 1,
+      "message": "This part of the comment might not make sense anymore? Not entirely sure, I don\u0027t know why a `Disabled: true` entry is used for.",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 56
+      },
+      "revId": "ac0acd3f1bbd4f0838e9edc00a2187d6180f6ec8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
