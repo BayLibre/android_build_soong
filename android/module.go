@@ -1488,6 +1488,12 @@ func (m *ModuleBase) RequiresStableAPIs(ctx BaseModuleContext) bool {
 		(m.ProductSpecific() && ctx.Config().EnforceProductPartitionInterface())
 }
 
+// Returns true if the module does not require a sdk variant for its jni dependency
+// If skipped, check that min_sdk_version of the jni library is lower than the containing module
+func (m *ModuleBase) SkipJniLibsSdkVariantCreation(ctx BaseModuleContext) bool {
+	return false
+}
+
 func (m *ModuleBase) PartitionTag(config DeviceConfig) string {
 	partition := "system"
 	if m.SocSpecific() {

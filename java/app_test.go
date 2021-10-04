@@ -1481,6 +1481,23 @@ func TestJNISDK(t *testing.T) {
 		`)
 	})
 
+	t.Run("jni_min_sdk_version_is_higher", func(t *testing.T) {
+		testJavaError(t, `sdk_version\(\) is higher than min_sdk_version\(29\) of the containing android_app`, cc.GatherRequiredDepsForTest(android.Android)+`
+			android_app {
+				name: "app_with_jni",
+				sdk_version: "module_current",
+				min_sdk_version: "29",
+				jni_libs: ["libjni"],
+			}
+
+			cc_library {
+				name: "libjni",
+				min_sdk_version: "30",
+			}
+
+		`)
+	})
+
 }
 
 func TestCertificates(t *testing.T) {
