@@ -56,6 +56,30 @@
       },
       "revId": "3a0c54a79d6d8ec5db9df2f342e4ffe4e3c3cbd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc1ccafe_9d65a586",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-04T17:01:18Z",
+      "side": 1,
+      "message": "It\u0027s the prebuilts for other mainline modules too. They all need updating not just ART.\n\nIt is also a catch-22 as I would need to upload this change in order to generate the prebuilts correctly and without the correct prebuilts this change (without the fix) would be broken.",
+      "parentUuid": "865d779e_1e2e1d5d",
+      "range": {
+        "startLine": 969,
+        "startChar": 66,
+        "endLine": 969,
+        "endChar": 99
+      },
+      "revId": "3a0c54a79d6d8ec5db9df2f342e4ffe4e3c3cbd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
