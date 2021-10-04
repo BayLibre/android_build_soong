@@ -244,6 +244,7 @@ func (a *AndroidApp) DepsMutator(ctx android.BottomUpMutatorContext) {
 		// Don't require the SDK variant for apps that are shipped on vendor, etc., as they already
 		// have stable APIs through the VNDK.
 		if (usesSDK && !a.RequiresStableAPIs(ctx) &&
+			!a.SkipJniLibsSdkVariantCreation(ctx) &&
 			!Bool(a.appProperties.Jni_uses_platform_apis)) ||
 			Bool(a.appProperties.Jni_uses_sdk_apis) {
 			variation = append(variation, blueprint.Variation{Mutator: "sdk", Variation: "sdk"})
@@ -290,13 +291,16 @@ func (a *AndroidApp) checkAppSdkVersions(ctx android.ModuleContext) {
 		}
 
 		if minSdkVersion, err := a.MinSdkVersion(ctx).EffectiveVersion(ctx); err == nil {
-			a.checkJniLibsSdkVersion(ctx, minSdkVersion)
+			a.checkJniLibsSdkVersion(ctx)
 			android.CheckMinSdkVersion(a, ctx, minSdkVersion)
 		} else {
 			ctx.PropertyErrorf("min_sdk_version", "%s", err.Error())
 		}
 	}
 
+	if a.SkipJniLibsSdkVariantCreation(ctx) {
+		a.checkJniLibsSdkVersion(ctx)
+	}
 	a.checkPlatformAPI(ctx)
 	a.checkSdkVersions(ctx)
 }
@@ -307,7 +311,12 @@ func (a *AndroidApp) checkAppSdkVersions(ctx android.ModuleContext) {
 // because, sdk_version is overridden by min_sdk_version (if set as smaller)
 // and sdkLinkType is checked with dependencies so we can be sure that the whole dependency tree
 // will meet the requirements.
-func (a *AndroidApp) checkJniLibsSdkVersion(ctx android.ModuleContext, minSdkVersion android.ApiLevel) {
+func (a *AndroidApp) checkJniLibsSdkVersion(ctx android.ModuleContext) {
+	minSdkVersion, err := a.MinSdkVersion(ctx).EffectiveVersion(ctx)
+	if err != nil {
+		ctx.PropertyErrorf("min_sdk_version", "%s", err.Error())
+		return
+	}
 	// It's enough to check direct JNI deps' sdk_version because all transitive deps from JNI deps are checked in cc.checkLinkType()
 	ctx.VisitDirectDeps(func(m android.Module) {
 		if !IsJniDepTag(ctx.OtherModuleDependencyTag(m)) {
@@ -317,7 +326,12 @@ func (a *AndroidApp) checkJniLibsSdkVersion(ctx android.ModuleContext, minSdkVer
 		// The domain of cc.sdk_version is "current" and <number>
 		// We can rely on android.SdkSpec to convert it to <number> so that "current" is
 		// handled properly regardless of sdk finalization.
-		jniSdkVersion, err := android.SdkSpecFrom(ctx, dep.SdkVersion()).EffectiveVersion(ctx)
+		// compare against min_sdk_version, but use sdk_version if the former is not set
+		depMinSdkVersion := dep.MinSdkVersion()
+		if depMinSdkVersion == "" {
+			depMinSdkVersion = dep.SdkVersion()
+		}
+		jniSdkVersion, err := android.SdkSpecFrom(ctx, depMinSdkVersion).EffectiveVersion(ctx)
 		if err != nil || minSdkVersion.LessThan(jniSdkVersion) {
 			ctx.OtherModuleErrorf(dep, "sdk_version(%v) is higher than min_sdk_version(%v) of the containing android_app(%v)",
 				dep.SdkVersion(), minSdkVersion, ctx.ModuleName())
@@ -734,6 +748,12 @@ type appDepsInterface interface {
 	SdkVersion(ctx android.EarlyModuleContext) android.SdkSpec
 	MinSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec
 	RequiresStableAPIs(ctx android.BaseModuleContext) bool
+	SkipJniLibsSdkVariantCreation(ctx android.BaseModuleContext) bool
+}
+
+// Allow sdk_version: "module_current" to use non sdk flavored JNI
+func (a *AndroidApp) SkipJniLibsSdkVariantCreation(ctx android.BaseModuleContext) bool {
+	return a.SdkVersion(ctx).Specified() && a.SdkVersion(ctx).Kind == android.SdkModule
 }
 
 func collectAppDeps(ctx android.ModuleContext, app appDepsInterface,
@@ -746,7 +766,9 @@ func collectAppDeps(ctx android.ModuleContext, app appDepsInterface,
 
 	if checkNativeSdkVersion {
 		checkNativeSdkVersion = app.SdkVersion(ctx).Specified() &&
-			app.SdkVersion(ctx).Kind != android.SdkCorePlatform && !app.RequiresStableAPIs(ctx)
+			app.SdkVersion(ctx).Kind != android.SdkCorePlatform &&
+			!app.RequiresStableAPIs(ctx) &&
+			!app.SkipJniLibsSdkVariantCreation(ctx)
 	}
 
 	ctx.WalkDeps(func(module android.Module, parent android.Module) bool {
