@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18740b1b_d9819eef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-04T09:51:19Z",
+      "side": 1,
+      "message": "I think the breakage was caused by the follow up change not this one. Just to be sure I am testing this change on git_sc-qpr1-dev-plus-aosp, build_test3 which is what broke and caused this to be reverted. ",
+      "revId": "39abf8f387b92b454a0fd856af43a197ceabbd85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
