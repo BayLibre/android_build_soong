@@ -278,6 +278,30 @@
       },
       "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1b5392e_e43bc995",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-04T18:09:48Z",
+      "side": 1,
+      "message": "So the Soong dependencies begets the make module dependencies that begets the ninja dependencies (except exceptions). The items #1-#5 is my understanding of how this chain is implemented with a combo of Soong and make logic. It\u0027s not how the dependencies are represented, which is as you describe.\n\nMy point is that I expect this to be more aligned with that existing chain of implementation logic, rather than what to me looks like a completely different way. I hope that would also avoid a new singleton.",
+      "parentUuid": "f3b9c064_51ecd48d",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "910ada74_55061b15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-04T18:09:48Z",
+      "side": 1,
+      "message": "\u003e In the case of BCP it would be much more obvious, as the whole boot image would be invalid, so all dexpreopt would be rejected\n\nDoes that manifest in a more obvious way than a slow boot? If not I think a test would be useful for it too, and if this solution can be extended to cover it in the same way that\u0027d be great. It may be out of scope for this CL though.",
+      "parentUuid": "c9aa6f3d_cd358d4e",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "a4f80ecf9c9817813359d8dc5e320471eec6c5de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eaad6a3b_a5facc32",
         "filename": "dexpreopt/dexpreopt.go",
         "patchSetId": 2
