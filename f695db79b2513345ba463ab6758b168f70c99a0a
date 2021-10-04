@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd753fa_3a381e8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-10-04T17:59:46Z",
+      "side": 1,
+      "message": "Hi there, one small step towards adding SystemAPIs to the lint databases.\n\nI will separately do the rest of the work that involves actually using the system apis. I fear I might need to visit a lot of baselines again. ",
+      "revId": "f695db79b2513345ba463ab6758b168f70c99a0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
