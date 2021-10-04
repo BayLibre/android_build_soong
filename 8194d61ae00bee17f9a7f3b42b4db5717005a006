@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c3ad1b3_f59526d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391677
+      },
+      "writtenOn": "2021-10-04T07:50:39Z",
+      "side": 1,
+      "message": "Forrest build passed as revert.\n\nhttps://android-build.googleplex.com/builds/abtd/run/L71700000951394159",
+      "revId": "8194d61ae00bee17f9a7f3b42b4db5717005a006",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
