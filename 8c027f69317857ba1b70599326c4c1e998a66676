@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77688080_500c5190",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-10-04T16:08:36Z",
+      "side": 1,
+      "message": "Nitpick: s/it\u0027s/its/",
+      "revId": "8c027f69317857ba1b70599326c4c1e998a66676",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84ca7680_03761599",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-10-04T16:08:36Z",
+      "side": 1,
+      "message": "Once this round of changes is in, I think the next change should be to have the converter accept only a file name. It was expedient at the beginning to have it accept the target name, but it makes the interface very confusing.",
+      "revId": "8c027f69317857ba1b70599326c4c1e998a66676",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
