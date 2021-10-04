@@ -45,6 +45,54 @@
       },
       "revId": "bbd37a64cd1f7d7e5e7cde769512cc34830aaf19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92058e09_e2150d23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-04T17:12:00Z",
+      "side": 1,
+      "message": "\u003e This sounds so brittle to me...\n\nWe can probably add extra checks into the build to explicitly detect issues like split packages (and verify that these settings are correct) but it would have to be done at the level of the whole bootclasspath, not at the individual module level.\n\n\u003e How would module owners know if the package is split?\n\nIf module M adds package \"A.B.C\" thinking it was only provided by their module and it happened to be split and also provided by module Y and the package contained APIs then the build would fail because it would expect the hidden API flags provided by module M to include ALL the flags related to A.B.C but some of them would come from module Y and vice versa. So, both module M and module Y would fail.\n\n\u003e How would the know if someone else broken than contract in a different part of the codebase?\n\nA build failure, see above. I do need to improve the error messages provided when the flag checking code to give developers more help in debugging what is wrong.",
+      "parentUuid": "b9426ff7_d7075942",
+      "range": {
+        "startLine": 13,
+        "startChar": 43,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "bbd37a64cd1f7d7e5e7cde769512cc34830aaf19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10c83f73_0ecdc591",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-04T17:12:00Z",
+      "side": 1,
+      "message": "It does benefit both them and their users because it allows them to remove implementation details from the sdk snapshot which means that they can decouple sdk snapshot updates from APEX updates.",
+      "parentUuid": "d734dc4d_7fde10ba",
+      "range": {
+        "startLine": 15,
+        "startChar": 21,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "bbd37a64cd1f7d7e5e7cde769512cc34830aaf19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
