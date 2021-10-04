@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4d1dd9b_09e308c7",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-04T16:29:18Z",
+      "side": 1,
+      "message": "Good idea. Done.",
+      "parentUuid": "2e780b47_772fddbf",
+      "range": {
+        "startLine": 1215,
+        "startChar": 0,
+        "endLine": 1218,
+        "endChar": 7
+      },
+      "revId": "b031798ab8c9874051a535842b3da5cbf883e8a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f88640a_b92f9193",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-01T15:11:24Z",
       "side": 1,
       "message": "nit: I\u0027m confused why this is necessary. `nocrt: false` should be rare but not harmful to migrate.",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 38
+      },
+      "revId": "b031798ab8c9874051a535842b3da5cbf883e8a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "439e06d4_928b5bb3",
+        "filename": "cc/linker.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-04T16:29:18Z",
+      "side": 1,
+      "message": "This prevents `link_crt \u003d true` or `link_crt \u003d None` to be unnecessarily generated in the BUILD files, which will affect almost all modules.",
+      "parentUuid": "2f88640a_b92f9193",
       "range": {
         "startLine": 244,
         "startChar": 0,
