@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9aa6f3d_cd358d4e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-04T14:29:09Z",
+      "side": 1,
+      "message": "I don\u0027t think we have a check like this for boot jars. We have http://cs/aosp-master/build/soong/java/boot_jars.go?l\u003d33 but it\u0027s different (it gathers boot jars via platform_bootclasspath dependencies and validates that they use only allowed classes).\n\nA check is needed for SS jars (b/201371822) because it\u0027s not so obvious that SS dexpreopt is missing: we might accidentally remove the code that generated dexpreopt for SS and notice it only later when some performance metric fails. In the case of BCP it would be much more obvious, as the whole boot image would be invalid, so all dexpreopt would be rejected. This is my understanding, Jiakai may have other reasons.\n\nI can imagine a similar test for BCP, but I\u0027m not sure it\u0027s worth the effort.",
+      "parentUuid": "1bc7261a_94b4c70d",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "a4f80ecf9c9817813359d8dc5e320471eec6c5de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eaad6a3b_a5facc32",
         "filename": "dexpreopt/dexpreopt.go",
         "patchSetId": 2

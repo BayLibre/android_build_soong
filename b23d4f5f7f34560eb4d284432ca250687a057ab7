@@ -254,6 +254,30 @@
       },
       "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b9c064_51ecd48d",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-04T14:29:09Z",
+      "side": 1,
+      "message": "Martin:\n\nThere are two dependency chains at different levels:\n\na) Soong-level module dependencies. Not interesting here, as they affect the order of generation of build rules, but not the actual build order or the set of things to be built. Nothing on this level depends on SS dexpreopt, it is just a piece Soong logic that runs when an SS jar is processed and generates Ninja build rules.\n\nb) Ninja-level file dependencies. On this level there _should_ be something that depends on SS dexpreopt files, but it\u0027s not necessarily the case now because we might have a dependency system.img -\u003e X, and the build rule for X might generate SS dexpreopt files as a byproduct. (I think this is the current situation and X is the .jar file, at least I couldn\u0027t track any other dependency in the Ninja files.)\n\nThe #5 you mentioned is on my level #b, #4 exists on both levels and #3 is purely on level #a, so I can\u0027t think about #1-#5 as one dependency chain.\n\nAFAIU Jiakai wants to add dependency system.img -\u003e SS dexpreopt to secure the implicit dependency that we have now. The test adds dependencies on dexpreopt for all PRODUCT_SYSTEM_SERVER_JARS + PRODUCT_APEX_SYSTEM_SERVER_JARS in a very easy-to-see-that-it-is-correct way and ensures that the complex logic in dexpreopt does the right thing.\n\nJiakai:\n\nI think this is not really a test, it should be a SingletonModule that generates makefile module that depends on dexpreopt files for all system server jars, and that makefile module should be added to dependencies of system.img (presumably via PRODUCT_PACKAGES). Then if we accidentally modify dexpreopt logic in Soong to omit some SS jar, this extra rule will fail the build.",
+      "parentUuid": "f9f6b4a1_16e5f092",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
