@@ -39,6 +39,30 @@
       },
       "revId": "ac0acd3f1bbd4f0838e9edc00a2187d6180f6ec8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29758def_7bc106c3",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-04T09:43:50Z",
+      "side": 1,
+      "message": "Done.\n\nI am not 100% sure why we add a Disabled entries instead of just not bothering to add anything at all. Disabled entries don\u0027t produce any Make output at all, which is the same as if the entry was not added. However, there are some slight differences:\n1. Disable entries do have their fillInEntries() method called. I don\u0027t see that doing anything other than setting properties on the entries which are simply ignored.\n2. Some Java modules that embed java.Library do override the AndroidMkEntries(), call the java.Library.AndroidMkEntries() and assume that the returned list contains at least one entries entry.\n\nSo, it appears that only the latter would break if no entries were added.",
+      "parentUuid": "31de5fd0_52e4f469",
+      "range": {
+        "startLine": 74,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 56
+      },
+      "revId": "ac0acd3f1bbd4f0838e9edc00a2187d6180f6ec8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
