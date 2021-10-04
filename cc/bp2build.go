@@ -14,6 +14,7 @@
 package cc
 
 import (
+	"fmt"
 	"path/filepath"
 	"strings"
 
@@ -366,7 +367,7 @@ type linkerAttributes struct {
 
 	useLibcrt                     bazel.BoolAttribute
 	linkopts                      bazel.StringListAttribute
-	versionScript                 bazel.LabelAttribute
+	additionalLinkerInputs        bazel.LabelListAttribute
 	stripKeepSymbols              bazel.BoolAttribute
 	stripKeepSymbolsAndDebugFrame bazel.BoolAttribute
 	stripKeepSymbolsList          bazel.StringListAttribute
@@ -397,7 +398,7 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 	systemSharedDeps := bazel.LabelListAttribute{ForceSpecifyEmptyList: true}
 
 	var linkopts bazel.StringListAttribute
-	var versionScript bazel.LabelAttribute
+	var additionalLinkerInputs bazel.LabelListAttribute
 	var useLibcrt bazel.BoolAttribute
 
 	var stripKeepSymbols bazel.BoolAttribute
@@ -452,10 +453,13 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 				headerDeps.SetSelectValue(axis, config, hDeps.export)
 				implementationHeaderDeps.SetSelectValue(axis, config, hDeps.implementation)
 
-				linkopts.SetSelectValue(axis, config, getBp2BuildLinkerFlags(baseLinkerProps))
+				linkerFlags := getBp2BuildLinkerFlags(baseLinkerProps)
 				if baseLinkerProps.Version_script != nil {
-					versionScript.SetSelectValue(axis, config, android.BazelLabelForModuleSrcSingle(ctx, *baseLinkerProps.Version_script))
+					label := android.BazelLabelForModuleSrcSingle(ctx, *baseLinkerProps.Version_script)
+					additionalLinkerInputs.SetSelectValue(axis, config, bazel.LabelList{Includes: []bazel.Label{label}})
+					linkerFlags = append(linkerFlags, fmt.Sprintf("-Wl,--version-script,$(location %s)", label.Label))
 				}
+				linkopts.SetSelectValue(axis, config, linkerFlags)
 				useLibcrt.SetSelectValue(axis, config, baseLinkerProps.libCrt())
 			}
 		}
@@ -530,9 +534,9 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 		wholeArchiveDeps:          wholeArchiveDeps,
 		systemDynamicDeps:         systemSharedDeps,
 
-		linkopts:      linkopts,
-		useLibcrt:     useLibcrt,
-		versionScript: versionScript,
+		linkopts:               linkopts,
+		useLibcrt:              useLibcrt,
+		additionalLinkerInputs: additionalLinkerInputs,
 
 		// Strip properties
 		stripKeepSymbols:              stripKeepSymbols,
