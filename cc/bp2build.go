@@ -494,6 +494,10 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 				var linkerFlags []string
 				if len(baseLinkerProps.Ldflags) > 0 {
 					linkerFlags = append(linkerFlags, baseLinkerProps.Ldflags...)
+					// binaries remove static flag if -shared is in the linker flags
+					if module.Binary() && android.InList("-shared", linkerFlags) {
+						axisFeatures = append(axisFeatures, "-static_flag")
+					}
 				}
 				if baseLinkerProps.Version_script != nil {
 					label := android.BazelLabelForModuleSrcSingle(ctx, *baseLinkerProps.Version_script)
@@ -727,4 +731,30 @@ func bazelLabelForHeaderDeps(ctx android.TopDownMutatorContext, modules []string
 
 func bazelLabelForSharedDepsExcludes(ctx android.TopDownMutatorContext, modules, excludes []string) bazel.LabelList {
 	return android.BazelLabelForModuleDepsExcludesWithFn(ctx, modules, excludes, bazelLabelForSharedModule)
+}
+
+type binaryLinkerAttrs struct {
+	Linkshared *bool
+}
+
+func bp2buildBinaryLinkerProps(ctx android.TopDownMutatorContext, m *Module) binaryLinkerAttrs {
+	attrs := binaryLinkerAttrs{}
+	archVariantProps := m.GetArchVariantProperties(ctx, &BinaryLinkerProperties{})
+	for axis, configToProps := range archVariantProps {
+		for _, p := range configToProps {
+			props := p.(*BinaryLinkerProperties)
+			staticExecutable := props.Static_executable
+			if axis == bazel.NoConfigAxis {
+				if linkBinaryShared := !proptools.Bool(staticExecutable); !linkBinaryShared {
+					attrs.Linkshared = &linkBinaryShared
+				}
+			} else if staticExecutable != nil {
+				// TODO(b/202876379): Static_executable is arch-variant; however, linkshared is a
+				// nonconfigurable attribute. Only 4 AOSP modules use this feature, defer handling
+				ctx.ModuleErrorf("bp2build cannot migrate a module with arch/target-specific static_executable values")
+			}
+		}
+	}
+
+	return attrs
 }
