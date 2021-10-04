@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9426ff7_d7075942",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-10-04T13:56:01Z",
+      "side": 1,
+      "message": "This sounds so brittle to me... How would module owners know if the package is split? How would the know if someone else broken than contract in a different part of the codebase?",
+      "range": {
+        "startLine": 13,
+        "startChar": 43,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "bbd37a64cd1f7d7e5e7cde769512cc34830aaf19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d734dc4d_7fde10ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-10-04T13:56:01Z",
+      "side": 1,
+      "message": "We are putting some extra work / cost on module owners to do something that doesn\u0027t directly benefit them / users. Why?",
+      "range": {
+        "startLine": 15,
+        "startChar": 21,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "bbd37a64cd1f7d7e5e7cde769512cc34830aaf19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
