@@ -16,6 +16,23 @@
       "message": "Added a test to reproduce the issue, that made it easy to debug the problem (a minor bug in the previous version of this change) and fix it.",
       "revId": "3a0c54a79d6d8ec5db9df2f342e4ffe4e3c3cbd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea0f5d8d_b9dc520e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-04T13:50:50Z",
+      "side": 1,
+      "message": "The heavy presubmit (without the test/fix) failed. Now running it again with the test/fix.",
+      "revId": "3a0c54a79d6d8ec5db9df2f342e4ffe4e3c3cbd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
