@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a71abe5_8bc65d1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1391677
+      },
+      "writtenOn": "2021-10-04T07:50:07Z",
+      "side": 1,
+      "message": "Forrest build passed as reverted.",
+      "revId": "203ec0139b9256ab6e9de86dcaea81408f4916dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
