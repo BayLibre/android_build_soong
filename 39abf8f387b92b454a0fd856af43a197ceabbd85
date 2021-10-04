@@ -16,6 +16,23 @@
       "message": "I think the breakage was caused by the follow up change not this one. Just to be sure I am testing this change on git_sc-qpr1-dev-plus-aosp, build_test3 which is what broke and caused this to be reverted. ",
       "revId": "39abf8f387b92b454a0fd856af43a197ceabbd85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "119f202a_f42aaa36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-04T13:01:31Z",
+      "side": 1,
+      "message": "LGTM given the heavy presubmit passes.",
+      "revId": "39abf8f387b92b454a0fd856af43a197ceabbd85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
