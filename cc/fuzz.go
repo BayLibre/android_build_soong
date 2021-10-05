@@ -218,6 +218,7 @@ func (fuzz *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 		seen[child.Name()] = true
 
 		if IsValidSharedDependency(child) {
+			// TODO(b/214600441): We don't yet strip prebuilt shared libraries
 			sharedLibraries = append(sharedLibraries, child.(*Module).UnstrippedOutputFile())
 			return true
 		}
