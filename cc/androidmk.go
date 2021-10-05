@@ -17,6 +17,7 @@ package cc
 import (
 	"fmt"
 	"io"
+	"log"
 	"path/filepath"
 	"strings"
 
@@ -242,7 +243,12 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 		entries.ExtraEntries = append(entries.ExtraEntries, func(_ android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 			entries.SetString("LOCAL_SOONG_TOC", library.toc().String())
 			if !library.buildStubs() {
-				entries.SetString("LOCAL_SOONG_UNSTRIPPED_BINARY", library.unstrippedOutputFile.String())
+				out := library.unstrippedOutputFile
+				if out == nil || len(out.String()) == 0 {
+					log.Printf("out: %+v\n", out)
+				} else {
+					entries.SetString("LOCAL_SOONG_UNSTRIPPED_BINARY", out.String())
+				}
 			}
 			if len(library.Properties.Overrides) > 0 {
 				entries.SetString("LOCAL_OVERRIDES_MODULES", strings.Join(makeOverrideModuleNames(ctx, library.Properties.Overrides), " "))

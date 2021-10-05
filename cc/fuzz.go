@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"log"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -146,6 +147,9 @@ func IsValidSharedDependency(dependency android.Module) bool {
 
 func sharedLibraryInstallLocation(
 	libraryPath android.Path, isHost bool, archString string) string {
+	if archString == "" || libraryPath == nil || libraryPath.Base() == "" {
+		log.Panicf("arch: %s\nlibPath: %+v\n", archString, libraryPath)
+	}
 	installLocation := "$(PRODUCT_OUT)/data"
 	if isHost {
 		installLocation = "$(HOST_OUT)"
@@ -214,13 +218,22 @@ func (fuzz *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 		seen[child.Name()] = true
 
 		if IsValidSharedDependency(child) {
-			sharedLibraries = append(sharedLibraries, child.(*Module).UnstrippedOutputFile())
+			out := child.(*Module).UnstrippedOutputFile()
+			if out == nil {
+				//panic("NIL!")
+				return false
+			}
+			sharedLibraries = append(sharedLibraries, out)
 			return true
 		}
 		return false
 	})
+	log.Printf("sharedLibraries: %+v\n", sharedLibraries)
 
 	for _, lib := range sharedLibraries {
+		if lib == nil || ctx.Arch().ArchType.String() == "" {
+			log.Panicf("arch: %s\nlib: %+v\n", ctx.Arch().ArchType.String(), lib)
+		}
 		fuzz.installedSharedDeps = append(fuzz.installedSharedDeps,
 			sharedLibraryInstallLocation(
 				lib, ctx.Host(), ctx.Arch().ArchType.String()))
@@ -363,7 +376,19 @@ func GetSharedLibsToZip(sharedLibraries android.Paths, module LinkableInterface,
 	var files []fuzz.FileToZip
 
 	for _, library := range sharedLibraries {
-		files = append(files, fuzz.FileToZip{library, "lib"})
+		if library == nil {
+			//log.Panicf("\n\nLIBRARY IS NIL\n\n\n")
+			continue
+		}
+		file := fuzz.FileToZip{library, "lib"}
+		if len(files) == 0 {
+			log.Printf("files empty\n")
+		}
+		if file.SourceFilePath == nil {
+			log.Printf("len files: %+v\nfile: %+v\n", len(files), file)
+			continue
+		}
+		files = append(files, file)
 
 		// For each architecture-specific shared library dependency, we need to
 		// install it to the output directory. Setup the install destination here,
