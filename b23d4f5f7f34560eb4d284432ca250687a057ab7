@@ -326,6 +326,30 @@
       },
       "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e8fec46_3bb4699c",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-05T11:40:39Z",
+      "side": 1,
+      "message": "\u003e Soong supports Validation dependencies which should probably be used for this sort of check.\n\nInteresting, first time I hear about Validation dependencies.\n\n\u003e Why can we not just have the platform_systemserverclasspath export a list of the files output produced by dexpreopting and have them be added as explicit dependencies of system.img?\n\nThat\u0027s the simplest option (I forgot about platform_systemserverclasspath, there\u0027s no need for a new singleton). As I understand, it should dump a makefile variable with a list of dependencies, presumably via MakeVars(), and the makefile logic should add it to system.img dependencies.",
+      "parentUuid": "347c76fc_05a66d92",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
