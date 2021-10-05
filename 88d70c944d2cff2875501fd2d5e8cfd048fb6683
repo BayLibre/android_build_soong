@@ -96,6 +96,30 @@
       },
       "revId": "88d70c944d2cff2875501fd2d5e8cfd048fb6683",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0469bc31_34f77372",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-10-05T22:47:45Z",
+      "side": 1,
+      "message": "This is a string, not a Path, as it\u0027s not a path inside the source tree or output directory. In general, I\u0027d question the usefulness of attempting to do correct incremental builds across system updates.",
+      "parentUuid": "39009cab_1781ea06",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 8
+      },
+      "revId": "88d70c944d2cff2875501fd2d5e8cfd048fb6683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
