@@ -19,6 +19,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/bazel"
 )
 
 func init() {
@@ -289,6 +290,7 @@ func PrebuiltSharedTestLibraryFactory() android.Module {
 func NewPrebuiltSharedLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) {
 	module, library := NewPrebuiltLibrary(hod)
 	library.BuildOnlyShared()
+	module.bazelHandler = &prebuiltSharedLibraryBazelHandler{module: module, library: library}
 
 	// Prebuilt shared libraries can be included in APEXes
 	android.InitApexModule(module)
@@ -369,6 +371,88 @@ func (h *prebuiltStaticLibraryBazelHandler) GenerateBazelBuildActions(ctx androi
 	})
 
 	return true
+}
+
+type prebuiltSharedLibraryBazelHandler struct {
+	android.BazelHandler
+
+	module  *Module
+	library *libraryDecorator
+}
+
+func (h *prebuiltSharedLibraryBazelHandler) GenerateBazelBuildActions(ctx android.ModuleContext, label string) bool {
+	bazelCtx := ctx.Config().BazelContext
+	ccInfo, ok, err := bazelCtx.GetCcInfo(label, ctx.Arch().ArchType)
+	if err != nil {
+		ctx.ModuleErrorf("Error getting Bazel CcInfo: %s", err)
+	}
+	if !ok {
+		return false
+	}
+	sharedLibs := ccInfo.CcSharedLibraryFiles
+	if len(sharedLibs) > 1 {
+		ctx.ModuleErrorf("expected 1 shared library from bazel target %q, got %s", label, sharedLibs)
+		return false
+	}
+
+	// TODO(b/184543518): cc_prebuilt_library_shared may have properties for re-exporting flags
+
+	// TODO(eakammer):Add stub-related flags if this library is a stub library.
+	// h.library.exportVersioningMacroIfNeeded(ctx)
+
+	// Dependencies on this library will expect collectedSnapshotHeaders to be set, otherwise
+	// validation will fail. For now, set this to an empty list.
+	// TODO(cparsons): More closely mirror the collectHeadersForSnapshot implementation.
+	h.library.collectedSnapshotHeaders = android.Paths{}
+
+	if len(sharedLibs) == 0 {
+		h.module.outputFile = android.OptionalPath{}
+		return true
+	}
+
+	out := android.PathForBazelOut(ctx, sharedLibs[0])
+	h.module.outputFile = android.OptionalPathForPath(out)
+
+	toc := android.PathForBazelOut(ctx, ccInfo.TocFile)
+
+	depSet := android.NewDepSetBuilder(android.TOPOLOGICAL).Direct(out).Build()
+	ctx.SetProvider(SharedLibraryInfoProvider, SharedLibraryInfo{
+		SharedLibrary:   out,
+		TableOfContents: android.OptionalPathForPath(toc),
+		Target:          ctx.Target(),
+
+		TransitiveStaticLibrariesForOrdering: depSet,
+	})
+
+	return true
+}
+
+type bazelPrebuiltLibrarySharedAttributes struct {
+	Shared_library bazel.LabelAttribute
+}
+
+func CcPrebuiltLibrarySharedBp2Build(ctx android.TopDownMutatorContext) {
+	m, ok := ctx.Module().(*Module)
+	if !ok || !m.ConvertWithBp2build(ctx) {
+		return
+	}
+
+	// a Module can be something other than a cc_prebuilt_library_shared
+	if ctx.ModuleType() != "cc_prebuilt_library_shared" {
+		return
+	}
+
+	baseAttrs := Bp2BuildParsePrebuiltLibraryProps(ctx, m)
+	attrs := &bazelPrebuiltLibrarySharedAttributes{
+		Shared_library: baseAttrs.Src,
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "cc_library",
+		Bzl_load_location: "//build/bazel/rules:prebuilt_library_shared.bzl",
+	}
+
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
 }
 
 func (p *prebuiltObjectLinker) prebuilt() *android.Prebuilt {
