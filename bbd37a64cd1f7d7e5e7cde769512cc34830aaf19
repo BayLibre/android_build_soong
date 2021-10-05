@@ -141,6 +141,54 @@
       },
       "revId": "bbd37a64cd1f7d7e5e7cde769512cc34830aaf19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89c83205_36c3431e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-05T16:10:43Z",
+      "side": 1,
+      "message": "Updated the Commit message which was garbled for some reason.\n\nThere are lots of packages that are split across different libraries. In AOSP that includes:\n\nandroid.app\nandroid.media\nandroid.net\nandroid.net.wifi\nandroid.os\nandroid.permission\nandroid.provider\nandroid.util\n\nThese are split across some combination of the following bootclasspath_fragments and the non-updatable libraries:\n\ncom.android.media-bootclasspath-fragment\ncom.android.mediaprovider-bootclasspath-fragment\ncom.android.os.statsd-bootclasspath-fragment\ncom.android.permission-bootclasspath-fragment\ncom.android.tethering-bootclasspath-fragment\ncom.android.wifi-bootclasspath-fragment\n\ne.g. android.net is split across com.android.tethering-bootclasspath-fragment and framework-connectivity (which is part of framework-minus-apex).",
+      "parentUuid": "cac76145_68cba2ad",
+      "range": {
+        "startLine": 15,
+        "startChar": 21,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "bbd37a64cd1f7d7e5e7cde769512cc34830aaf19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2d0a0bc_274a08bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-05T16:10:43Z",
+      "side": 1,
+      "message": "The build failures are already unit tested in verify_overlaps_test.py. I have manually tested this as described in the commit message by changing properties and making sure that the build fails properly.",
+      "parentUuid": "dd36d6fb_dd0dc32c",
+      "range": {
+        "startLine": 13,
+        "startChar": 43,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "bbd37a64cd1f7d7e5e7cde769512cc34830aaf19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

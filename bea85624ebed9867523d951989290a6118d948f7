@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63672cf4_807886c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-05T16:10:43Z",
+      "side": 1,
+      "message": "I have started work on a script that a module owner could use when setting up a bootclasspath_fragment for the first time, e.g. when moving functionality from the bootclasspath to an APEX. My intent is that script will if not modify the Android.bp file will at least be able to give the module owner detailed instructions as to what to copy into it. The build error that is output when it detects inconsistent hidden API flags would instruct the developer to use the script.\n\nI have opened http://b/202154151 to track that work.",
+      "parentUuid": "8e9e3ea0_7fc5a1ad",
+      "revId": "bea85624ebed9867523d951989290a6118d948f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6c0fe77_00e1af68",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-05T11:50:34Z",
       "side": 1,
       "message": "nit: \u0027*\u0027 should be the only element in splitPackages, having \u0027*\u0027 and anything else is an error?",
+      "range": {
+        "startLine": 40,
+        "startChar": 54,
+        "endLine": 40,
+        "endChar": 74
+      },
+      "revId": "bea85624ebed9867523d951989290a6118d948f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c39a9ae_d0f3044a",
+        "filename": "scripts/hiddenapi/signature_patterns.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-05T16:10:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6c0fe77_00e1af68",
       "range": {
         "startLine": 40,
         "startChar": 54,
