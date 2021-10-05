@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5db5455_037fe9e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-10-05T02:49:18Z",
+      "side": 1,
+      "message": "This is my proposal on how to fix this -- it\u0027s not the only way it can be done, but it seems the solution that will require the least involvement from every module type. https://android-review.googlesource.com/c/platform/build/soong/+/1844707 goes even further and starts marking more source references, but needs some more cleanup.\n\ncc\u0027ing Jiyong since this plus parts of the next change (android_sdk_repo_host) are probably useful for `android_filesystem`/`android_system_image` NOTICE handling.",
+      "revId": "906922a9a470dbffcdf26c00742f579ecfade29a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
