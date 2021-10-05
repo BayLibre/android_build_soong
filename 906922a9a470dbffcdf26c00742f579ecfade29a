@@ -16,6 +16,23 @@
       "message": "This is my proposal on how to fix this -- it\u0027s not the only way it can be done, but it seems the solution that will require the least involvement from every module type. https://android-review.googlesource.com/c/platform/build/soong/+/1844707 goes even further and starts marking more source references, but needs some more cleanup.\n\ncc\u0027ing Jiyong since this plus parts of the next change (android_sdk_repo_host) are probably useful for `android_filesystem`/`android_system_image` NOTICE handling.",
       "revId": "906922a9a470dbffcdf26c00742f579ecfade29a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b29a635_f0f586aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-10-05T17:10:31Z",
+      "side": 1,
+      "message": "The approach of listing the dependencies to propagate is a problem.\n\nEvery dependency propagates unless there is a specific reason and justification to not propagate a dependency.\n\ne.g. the dependency is a compiler for building the target and not part of the target, that\u0027s a reason and justification to not propagate.\n\ne.g. the dependency is a runtime-only dependency loaded at runtime but not used to build the target, that\u0027s a reason and justification to not propagate.\n\nOtherwise, every dependency has to propagate its license.\n\ne.g. suppose someone, someday adds a resource dependency that can include digital images, the licenses for those images have to apply to the built target unless and until someone provides a reason and justification to not propagate.\n",
+      "revId": "906922a9a470dbffcdf26c00742f579ecfade29a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
