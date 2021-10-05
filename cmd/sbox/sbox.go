@@ -164,7 +164,7 @@ func run() error {
 		if useSubDir {
 			localTempDir = filepath.Join(localTempDir, strconv.Itoa(i))
 		}
-		depFile, err := runCommand(command, localTempDir)
+		depFile, err := runCommand(command, localTempDir, i)
 		if err != nil {
 			// Running the command failed, keep the temporary output directory around in
 			// case a user wants to inspect it for debugging purposes.  Soong will delete
@@ -194,6 +194,17 @@ func run() error {
 	return nil
 }
 
+func createCommandScript(rawCommand string, toDir, toDirInSandbox string, commandIndex int) (*exec.Cmd, error) {
+	scriptName := fmt.Sprintf("sbox_command.%d.bash", commandIndex)
+	scriptPathAndName := joinPath(toDir, scriptName)
+	err := os.WriteFile(scriptPathAndName, []byte(rawCommand), 0644)
+	if err != nil {
+		return nil, fmt.Errorf("failed to write command %s... to %s",
+			rawCommand[0:40], scriptPathAndName)
+	}
+	return exec.Command("bash", joinPath(toDirInSandbox, filepath.Base(scriptName))), nil
+}
+
 // readManifest reads an sbox manifest from a textproto file.
 func readManifest(file string) (*sbox_proto.Manifest, error) {
 	manifestData, err := ioutil.ReadFile(file)
@@ -213,7 +224,7 @@ func readManifest(file string) (*sbox_proto.Manifest, error) {
 
 // runCommand runs a single command from a manifest.  If the command references the
 // __SBOX_DEPFILE__ placeholder it returns the name of the depfile that was used.
-func runCommand(command *sbox_proto.Command, tempDir string) (depFile string, err error) {
+func runCommand(command *sbox_proto.Command, tempDir string, commandIndex int) (depFile string, err error) {
 	rawCommand := command.GetCommand()
 	if rawCommand == "" {
 		return "", fmt.Errorf("command is required")
@@ -255,7 +266,11 @@ func runCommand(command *sbox_proto.Command, tempDir string) (depFile string, er
 		return "", err
 	}
 
-	cmd := exec.Command("bash", "-c", rawCommand)
+	cmd, err := createCommandScript(rawCommand, tempDir, pathToTempDirInSbox, commandIndex)
+	if err != nil {
+		return "", err
+	}
+
 	buf := &bytes.Buffer{}
 	cmd.Stdin = os.Stdin
 	cmd.Stdout = buf
