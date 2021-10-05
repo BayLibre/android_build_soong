@@ -1,9 +1,10 @@
 package bp2build
 
 import (
-	"android/soong/android"
 	"fmt"
 	"strings"
+
+	"android/soong/android"
 )
 
 // Simple metrics struct to collect information about a Blueprint to BUILD
@@ -32,6 +33,7 @@ func (metrics *CodegenMetrics) Print() {
 	for _, ruleClass := range android.SortedStringKeys(metrics.ruleClassCount) {
 		count := metrics.ruleClassCount[ruleClass]
 		fmt.Printf("[bp2build] %s: %d targets\n", ruleClass, count)
+
 		generatedTargetCount += count
 	}
 	fmt.Printf(
