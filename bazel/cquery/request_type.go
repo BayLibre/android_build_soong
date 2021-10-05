@@ -14,6 +14,7 @@ var (
 type CcInfo struct {
 	OutputFiles          []string
 	CcObjectFiles        []string
+	CcSharedLibraryFiles []string
 	CcStaticLibraryFiles []string
 	Includes             []string
 	SystemIncludes       []string
@@ -107,6 +108,7 @@ includes = cc_info.compilation_context.includes.to_list()
 system_includes = cc_info.compilation_context.system_includes.to_list()
 
 ccObjectFiles = []
+sharedLibraries = []
 staticLibraries = []
 rootStaticArchives = []
 linker_inputs = cc_info.linking_context.linker_inputs.to_list()
@@ -141,6 +143,7 @@ if toc_file_tag in providers(target):
 
 returns = [
   outputFiles,
+  sharedLibraries,
   staticLibraries,
   ccObjectFiles,
   includes,
@@ -166,9 +169,11 @@ func (g getCcInfoType) ParseResult(rawString string) (CcInfo, error) {
 	}
 	outputFilesString := splitString[0]
 	ccStaticLibrariesString := splitString[1]
-	ccObjectsString := splitString[2]
+	ccSharedLibrariesString := splitString[2]
+	ccObjectsString := splitString[3]
 	outputFiles = splitOrEmpty(outputFilesString, ", ")
 	ccStaticLibraries := splitOrEmpty(ccStaticLibrariesString, ", ")
+	ccSharedLibraries := splitOrEmpty(ccSharedLibrariesString, ", ")
 	ccObjects = splitOrEmpty(ccObjectsString, ", ")
 	includes := splitOrEmpty(splitString[3], ", ")
 	systemIncludes := splitOrEmpty(splitString[4], ", ")
@@ -178,6 +183,7 @@ func (g getCcInfoType) ParseResult(rawString string) (CcInfo, error) {
 	return CcInfo{
 		OutputFiles:          outputFiles,
 		CcObjectFiles:        ccObjects,
+		CcSharedLibraryFiles: ccSharedLibraries,
 		CcStaticLibraryFiles: ccStaticLibraries,
 		Includes:             includes,
 		SystemIncludes:       systemIncludes,

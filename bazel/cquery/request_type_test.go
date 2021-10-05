@@ -71,10 +71,11 @@ func TestGetCcInfoParseResults(t *testing.T) {
 	}{
 		{
 			description: "no result",
-			input:       "|||||||",
+			input:       "||||||||",
 			expectedOutput: CcInfo{
 				OutputFiles:          []string{},
 				CcObjectFiles:        []string{},
+				CcSharedLibraryFiles: []string{},
 				CcStaticLibraryFiles: []string{},
 				Includes:             []string{},
 				SystemIncludes:       []string{},
@@ -85,10 +86,11 @@ func TestGetCcInfoParseResults(t *testing.T) {
 		},
 		{
 			description: "only output",
-			input:       "test|||||||",
+			input:       "test||||||||",
 			expectedOutput: CcInfo{
 				OutputFiles:          []string{"test"},
 				CcObjectFiles:        []string{},
+				CcSharedLibraryFiles: []string{},
 				CcStaticLibraryFiles: []string{},
 				Includes:             []string{},
 				SystemIncludes:       []string{},
@@ -99,10 +101,12 @@ func TestGetCcInfoParseResults(t *testing.T) {
 		},
 		{
 			description: "all items set",
-			input:       "out1, out2|static_lib1, static_lib2|object1, object2|., dir/subdir|system/dir, system/other/dir|rootstaticarchive1|rootdynamiclibrary1|lib.so.toc",
+			//FIXME: static and object are reversed...?
+			input: "out1, out2|static_lib1, static_lib2|shared_lib1, shared_lib2|object1, object2|., dir/subdir|system/dir, system/other/dir|rootstaticarchive1|rootdynamiclibrary1|lib.so.toc",
 			expectedOutput: CcInfo{
 				OutputFiles:          []string{"out1", "out2"},
 				CcObjectFiles:        []string{"object1", "object2"},
+				CcSharedLibraryFiles: []string{"shared_lib1", "shared_lib2"},
 				CcStaticLibraryFiles: []string{"static_lib1", "static_lib2"},
 				Includes:             []string{".", "dir/subdir"},
 				SystemIncludes:       []string{"system/dir", "system/other/dir"},
@@ -119,9 +123,9 @@ func TestGetCcInfoParseResults(t *testing.T) {
 		},
 		{
 			description:          "too many result splits",
-			input:                strings.Repeat("|", 8),
+			input:                strings.Repeat("|", 9),
 			expectedOutput:       CcInfo{},
-			expectedErrorMessage: fmt.Sprintf("Expected %d items, got %q", 8, make([]string, 9)),
+			expectedErrorMessage: fmt.Sprintf("Expected %d items, got %q", 9, make([]string, 10)),
 		},
 	}
 	for _, tc := range testCases {
