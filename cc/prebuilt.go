@@ -306,7 +306,7 @@ func PrebuiltStaticLibraryFactory() android.Module {
 func NewPrebuiltStaticLibrary(hod android.HostOrDeviceSupported) (*Module, *libraryDecorator) {
 	module, library := NewPrebuiltLibrary(hod)
 	library.BuildOnlyStatic()
-	module.bazelHandler = &prebuiltStaticLibraryBazelHandler{module: module, library: library}
+	module.bazelHandler = &prebuiltLibraryBazelHandler{module: module, library: library}
 	return module, library
 }
 
@@ -321,14 +321,14 @@ type prebuiltObjectLinker struct {
 	properties prebuiltObjectProperties
 }
 
-type prebuiltStaticLibraryBazelHandler struct {
+type prebuiltLibraryBazelHandler struct {
 	android.BazelHandler
 
 	module  *Module
 	library *libraryDecorator
 }
 
-func (h *prebuiltStaticLibraryBazelHandler) GenerateBazelBuildActions(ctx android.ModuleContext, label string) bool {
+func (h *prebuiltLibraryBazelHandler) GenerateBazelBuildActions(ctx android.ModuleContext, label string) bool {
 	bazelCtx := ctx.Config().BazelContext
 	ccInfo, ok, err := bazelCtx.GetCcInfo(label, ctx.Arch().ArchType)
 	if err != nil {
@@ -337,9 +337,24 @@ func (h *prebuiltStaticLibraryBazelHandler) GenerateBazelBuildActions(ctx androi
 	if !ok {
 		return false
 	}
+
+	static := h.library.static()
 	staticLibs := ccInfo.CcStaticLibraryFiles
-	if len(staticLibs) > 1 {
+	if static && len(staticLibs) > 1 {
 		ctx.ModuleErrorf("expected 1 static library from bazel target %q, got %s", label, staticLibs)
+		return false
+	}
+
+	shared := h.library.shared()
+	sharedLibs := ccInfo.CcSharedLibraryFiles
+	if shared && len(sharedLibs) > 1 {
+		ctx.ModuleErrorf("expected 1 shared library from bazel target %q, got %s", label, sharedLibs)
+		return false
+	}
+
+	if shared && static {
+		ctx.ModuleErrorf("expected either shared or static library from bazel target %q, got both:\n%s\n%s",
+			label, sharedLibs, staticLibs)
 		return false
 	}
 
@@ -353,20 +368,40 @@ func (h *prebuiltStaticLibraryBazelHandler) GenerateBazelBuildActions(ctx androi
 	// TODO(cparsons): More closely mirror the collectHeadersForSnapshot implementation.
 	h.library.collectedSnapshotHeaders = android.Paths{}
 
-	if len(staticLibs) == 0 {
+	if len(staticLibs) == 0 && len(sharedLibs) == 0 {
 		h.module.outputFile = android.OptionalPath{}
 		return true
 	}
 
-	out := android.PathForBazelOut(ctx, staticLibs[0])
-	h.module.outputFile = android.OptionalPathForPath(out)
+	var staticOut android.BazelOutPath
+	if static && len(staticLibs) > 0 {
+		staticOut = android.PathForBazelOut(ctx, staticLibs[0])
+		h.module.outputFile = android.OptionalPathForPath(staticOut)
+	}
 
-	depSet := android.NewDepSetBuilder(android.TOPOLOGICAL).Direct(out).Build()
-	ctx.SetProvider(StaticLibraryInfoProvider, StaticLibraryInfo{
-		StaticLibrary: out,
+	var sharedOut android.BazelOutPath
+	if shared && len(sharedLibs) > 0 {
+		sharedOut = android.PathForBazelOut(ctx, sharedLibs[0])
+		h.module.outputFile = android.OptionalPathForPath(sharedOut)
+	}
 
-		TransitiveStaticLibrariesForOrdering: depSet,
-	})
+	if static {
+		depSet := android.NewDepSetBuilder(android.TOPOLOGICAL).Direct(staticOut).Build()
+		ctx.SetProvider(StaticLibraryInfoProvider, StaticLibraryInfo{
+			StaticLibrary: staticOut,
+
+			TransitiveStaticLibrariesForOrdering: depSet,
+		})
+	}
+	if shared {
+		depSet := android.NewDepSetBuilder(android.TOPOLOGICAL).Direct(sharedOut).Build()
+		//toc := android.PathForModuleOut(ctx, )
+		ctx.SetProvider(SharedLibraryInfoProvider, SharedLibraryInfo{
+			SharedLibrary: sharedOut,
+			//TableOfContents:
+			TransitiveStaticLibrariesForOrdering: depSet,
+		})
+	}
 
 	return true
 }
