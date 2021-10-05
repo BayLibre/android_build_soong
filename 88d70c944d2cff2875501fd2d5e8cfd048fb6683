@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c3b22c3_54a4cdc6",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-05T17:32:06Z",
+      "side": 1,
+      "message": "Much uglier but more consistent with existing syntax would be to add this to android/variable.go and write it:\n\n    product_variables: {\n        platform_version_name: {\n            base_dir: \"android-%s\",\n        },\n    },",
+      "revId": "88d70c944d2cff2875501fd2d5e8cfd048fb6683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c76081_7669cea9",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-05T17:32:06Z",
+      "side": 1,
+      "message": "Sasha added support for lists of structs, would that work better?\n\n    Deps_remap []struct{\n        From *string\n        To *string\n    } `android:\"arch_variant\"`",
+      "revId": "88d70c944d2cff2875501fd2d5e8cfd048fb6683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "390a1511_d7ceb35d",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-05T17:32:06Z",
+      "side": 1,
+      "message": "Does this work if you add .SandboxInputs()?  You\u0027ll also need to pass all input and output paths that are passed as strings through PathForInput or PathForOutput",
+      "revId": "88d70c944d2cff2875501fd2d5e8cfd048fb6683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c97876ef_5981e917",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-05T17:32:06Z",
+      "side": 1,
+      "message": "If you enable the sandbox these are unnecessary",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 0
+      },
+      "revId": "88d70c944d2cff2875501fd2d5e8cfd048fb6683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39009cab_1781ea06",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-05T17:32:06Z",
+      "side": 1,
+      "message": "Tool",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 8
+      },
+      "revId": "88d70c944d2cff2875501fd2d5e8cfd048fb6683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
