@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b9b9d4_6277a3b1",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-10-05T15:45:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "695823b6_51c854f7",
+      "revId": "f695db79b2513345ba463ab6758b168f70c99a0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6bb8cd7_672ce766",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-10-05T15:22:00Z",
       "side": 1,
       "message": "maybe just return after the PropertyError instead? (I see we don\u0027t do that above on L400, but we probably should).",
+      "range": {
+        "startLine": 419,
+        "startChar": 2,
+        "endLine": 419,
+        "endChar": 22
+      },
+      "revId": "f695db79b2513345ba463ab6758b168f70c99a0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74e3f06b_94086916",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-10-05T15:45:00Z",
+      "side": 1,
+      "message": "I never know what people prefer between multiple exit points or just one 😓\n\nI did that, happy to revert if it goes against golang/soong patterns.",
+      "parentUuid": "f6bb8cd7_672ce766",
       "range": {
         "startLine": 419,
         "startChar": 2,
