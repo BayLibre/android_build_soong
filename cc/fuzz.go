@@ -218,7 +218,11 @@ func (fuzz *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 		seen[child.Name()] = true
 
 		if IsValidSharedDependency(child) {
-			sharedLibraries = append(sharedLibraries, child.(*Module).UnstrippedOutputFile())
+			out := child.(*Module).UnstrippedOutputFile()
+			if out == nil {
+				return false
+			}
+			sharedLibraries = append(sharedLibraries, out)
 			return true
 		}
 		return false
