@@ -21,6 +21,7 @@ package cc
 import (
 	"fmt"
 	"io"
+	"log"
 	"strconv"
 	"strings"
 
@@ -1881,7 +1882,11 @@ func (c *Module) maybeInstall(ctx ModuleContext, apexInfo android.ApexInfo) {
 	// Still call c.installer.install though, the installs will be stored as PackageSpecs
 	// to allow using the outputs in a genrule.
 	if c.installer != nil && c.outputFile.Valid() {
-		c.installer.install(ctx, c.outputFile.Path())
+		path := c.outputFile.Path()
+		if path == nil {
+			log.Panicf("Output File Path nil! %s\n", path.String())
+		}
+		c.installer.install(ctx, path)
 		if ctx.Failed() {
 			return
 		}

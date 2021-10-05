@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"log"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -146,6 +147,9 @@ func IsValidSharedDependency(dependency android.Module) bool {
 
 func sharedLibraryInstallLocation(
 	libraryPath android.Path, isHost bool, archString string) string {
+	if archString == "" || libraryPath == nil || libraryPath.Base() == "" {
+		log.Panicf("arch: %s\nlibPath: %+v\n", archString, libraryPath)
+	}
 	installLocation := "$(PRODUCT_OUT)/data"
 	if isHost {
 		installLocation = "$(HOST_OUT)"
@@ -214,13 +218,20 @@ func (fuzz *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 		seen[child.Name()] = true
 
 		if IsValidSharedDependency(child) {
-			sharedLibraries = append(sharedLibraries, child.(*Module).UnstrippedOutputFile())
+			out := child.(*Module).UnstrippedOutputFile()
+			if out == nil {
+				return false
+			}
+			sharedLibraries = append(sharedLibraries, out)
 			return true
 		}
 		return false
 	})
 
 	for _, lib := range sharedLibraries {
+		if lib == nil || ctx.Arch().ArchType.String() == "" {
+			log.Panicf("arch: %s\nlib: %+v\n", ctx.Arch().ArchType.String(), lib)
+		}
 		fuzz.installedSharedDeps = append(fuzz.installedSharedDeps,
 			sharedLibraryInstallLocation(
 				lib, ctx.Host(), ctx.Arch().ArchType.String()))
@@ -363,7 +374,14 @@ func GetSharedLibsToZip(sharedLibraries android.Paths, module LinkableInterface,
 	var files []fuzz.FileToZip
 
 	for _, library := range sharedLibraries {
-		files = append(files, fuzz.FileToZip{library, "lib"})
+		if library == nil {
+			continue
+		}
+		file := fuzz.FileToZip{library, "lib"}
+		if file.SourceFilePath == nil {
+			continue
+		}
+		files = append(files, file)
 
 		// For each architecture-specific shared library dependency, we need to
 		// install it to the output directory. Setup the install destination here,
