@@ -302,6 +302,30 @@
       },
       "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "347c76fc_05a66d92",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-05T10:49:53Z",
+      "side": 1,
+      "message": "Soong supports Validation dependencies which should probably be used for this sort of check.\n\nIf rule X has a Validation dependency on path Y then while building X does not itself cause Y to be built, any dependency on X (including listing X on the command line) will cause Y to be built. In terms of the dependency graph then in essence the dependency on Y is added to all outbound edges from X to those rules that depend on X.\n\nThese types of dependencies are obviously supported by a mechanism in Ninja but I am not sure if Make can generate the appropriate Ninja rules to do this.\n\nWhy can we not just have the platform_systemserverclasspath export a list of the files output produced by dexpreopting and have them be added as explicit dependencies of system.img?",
+      "parentUuid": "e1b5392e_e43bc995",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

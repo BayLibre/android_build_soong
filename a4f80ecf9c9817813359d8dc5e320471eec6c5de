@@ -87,6 +87,40 @@
       "message": "Please document this function.",
       "revId": "a4f80ecf9c9817813359d8dc5e320471eec6c5de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d7ce1ba_e703c9ec",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-05T10:49:53Z",
+      "side": 1,
+      "message": "As a general rule we need to avoid adding singleton modules as they are not supported in Bazel and will make migrating to Bazel more difficult.\n\nThis seems to be something that should be being done on one of the existing *systemserverclasspath* modules.",
+      "revId": "a4f80ecf9c9817813359d8dc5e320471eec6c5de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a2a89c9_e8373dbd",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-05T10:49:53Z",
+      "side": 1,
+      "message": "Given that you do not do anything here why is this a singleton?",
+      "revId": "a4f80ecf9c9817813359d8dc5e320471eec6c5de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
