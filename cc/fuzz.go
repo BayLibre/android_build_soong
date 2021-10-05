@@ -15,6 +15,7 @@
 package cc
 
 import (
+	"log"
 	"path/filepath"
 	"sort"
 	"strings"
@@ -218,7 +219,11 @@ func (fuzz *fuzzBinary) install(ctx ModuleContext, file android.Path) {
 		seen[child.Name()] = true
 
 		if IsValidSharedDependency(child) {
-			sharedLibraries = append(sharedLibraries, child.(*Module).UnstrippedOutputFile())
+			out := child.(*Module).UnstrippedOutputFile()
+			if out == nil {
+				return false
+			}
+			sharedLibraries = append(sharedLibraries, out)
 			return true
 		}
 		return false
@@ -367,8 +372,6 @@ func GetSharedLibsToZip(sharedLibraries android.Paths, module LinkableInterface,
 	var files []fuzz.FileToZip
 
 	for _, library := range sharedLibraries {
-		files = append(files, fuzz.FileToZip{library, "lib"})
-
 		// For each architecture-specific shared library dependency, we need to
 		// install it to the output directory. Setup the install destination here,
 		// which will be used by $(copy-many-files) in the Make backend.
