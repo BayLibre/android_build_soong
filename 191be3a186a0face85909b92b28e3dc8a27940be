@@ -16,6 +16,24 @@
       "message": "Ping.",
       "revId": "191be3a186a0face85909b92b28e3dc8a27940be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85fc1205_5a54fe8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-05T16:18:38Z",
+      "side": 1,
+      "message": "Sorry. I had archived the Gerrit notification email by mistake.",
+      "parentUuid": "79df08d5_efa4262d",
+      "revId": "191be3a186a0face85909b92b28e3dc8a27940be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
