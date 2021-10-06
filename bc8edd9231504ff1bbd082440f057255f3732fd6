@@ -16,6 +16,24 @@
       "message": "If it isn\u0027t too much trouble, can you add a test for this functionality in project_json_test.go?",
       "revId": "bc8edd9231504ff1bbd082440f057255f3732fd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1745a9b_99cf05a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1833664
+      },
+      "writtenOn": "2021-10-06T19:20:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ace13afb_8c3e1b09",
+      "revId": "bc8edd9231504ff1bbd082440f057255f3732fd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
