@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e74eb0b_f20e7ca4",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-06T22:24:33Z",
+      "side": 1,
+      "message": "why is this check necessary?",
+      "range": {
+        "startLine": 1165,
+        "startChar": 100,
+        "endLine": 1165,
+        "endChar": 134
+      },
+      "revId": "5f463be4a96b89939e785e040c0d1ab1f2e11238",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
