@@ -258,6 +258,8 @@ type bazelCcLibraryAttributes struct {
 	Static staticOrSharedAttributes
 
 	Strip stripAttributes
+
+	Features bazel.StringListAttribute
 }
 
 type stripAttributes struct {
@@ -338,6 +340,8 @@ func CcLibraryBp2Build(ctx android.TopDownMutatorContext) {
 		Shared: sharedAttrs,
 
 		Static: staticAttrs,
+
+		Features: linkerAttrs.features,
 	}
 
 	props := bazel.BazelTargetModuleProperties{
@@ -2405,6 +2409,8 @@ func ccSharedOrStaticBp2BuildMutatorInternal(ctx android.TopDownMutatorContext, 
 			Cppflags:   compilerAttrs.cppFlags,
 			Conlyflags: compilerAttrs.conlyFlags,
 			Asflags:    asFlags,
+
+			Features: linkerAttrs.features,
 		}
 	} else {
 		attrs = &bazelCcLibrarySharedAttributes{
@@ -2432,6 +2438,8 @@ func ccSharedOrStaticBp2BuildMutatorInternal(ctx android.TopDownMutatorContext, 
 				All:                          linkerAttrs.stripAll,
 				None:                         linkerAttrs.stripNone,
 			},
+
+			Features: linkerAttrs.features,
 		}
 	}
 
@@ -2461,6 +2469,8 @@ type bazelCcLibraryStaticAttributes struct {
 	Cppflags   bazel.StringListAttribute
 	Conlyflags bazel.StringListAttribute
 	Asflags    bazel.StringListAttribute
+
+	Features bazel.StringListAttribute
 }
 
 func CcLibraryStaticBp2Build(ctx android.TopDownMutatorContext) {
@@ -2488,6 +2498,8 @@ type bazelCcLibrarySharedAttributes struct {
 	Cppflags   bazel.StringListAttribute
 	Conlyflags bazel.StringListAttribute
 	Asflags    bazel.StringListAttribute
+
+	Features bazel.StringListAttribute
 }
 
 func CcLibrarySharedBp2Build(ctx android.TopDownMutatorContext) {
