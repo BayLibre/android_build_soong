@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "0cd49d80_4eac8bef",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "According to https://android-review.googlesource.com/c/platform/build/+/363693, it looks like we don\u0027t support this on purpose.",
       "revId": "3d1d1d858753c1c752c2c950bda1139361e4cafc",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "6b10558c_76d7c018",
         "filename": "/PATCHSET_LEVEL",
@@ -31,10 +32,10 @@
       "side": 1,
       "message": "Do you have a use case that would need this?  We\u0027ve avoided it due to the high chance of causing confusing problems if a module exports unreasonable cflags.",
       "revId": "3d1d1d858753c1c752c2c950bda1139361e4cafc",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "baa5f156_6c62d6e4",
         "filename": "/PATCHSET_LEVEL",
@@ -49,8 +50,25 @@
       "message": "Our main usecase was https://review.lineageos.org/c/LineageOS/android_bootable_recovery/+/286583\nWe want to be sure every user of this header gets the same define ( the change is needed on some LG devices having non standard /misc )",
       "parentUuid": "6b10558c_76d7c018",
       "revId": "3d1d1d858753c1c752c2c950bda1139361e4cafc",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06e4aab4_c58c8ab4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2021-10-07T09:50:31Z",
+      "side": 1,
+      "message": "This might be a long shot, but I guess you don\u0027t want this change? :)",
+      "parentUuid": "baa5f156_6c62d6e4",
+      "revId": "3d1d1d858753c1c752c2c950bda1139361e4cafc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
