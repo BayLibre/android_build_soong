@@ -16,6 +16,24 @@
       "message": "I disagree with the comment. If a default has a license, it acts as a default license for the module type.",
       "revId": "28a2076dd3bef247518246524b07b95091c44da2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea0196c8_25c87d23",
+        "filename": "android/defaults.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-10-07T02:31:59Z",
+      "side": 1,
+      "message": "That\u0027s at best a terminology issue here -- the defaults module itself shouldn\u0027t be propagating any license attached to itself, but the `license` property may be forwarded like any other property. That\u0027s what\u0027s happening today (since we\u0027re not actually propagating licenses, but that string property gets propagated).\n\nThe `visibility` is special for defaults modules, but that\u0027s because defaults modules actually participate in visibility checks. Otherwise they\u0027re basically just simple typed macros for modules. Even for paths that are looked up based on which Android.bp file they\u0027re referenced from, that comes from the directory of the module using the default, not the directory of the file that defined the default.\n\nI\u0027ve updated the comment to be more clear on this.",
+      "parentUuid": "81688cf2_76f9011c",
+      "revId": "28a2076dd3bef247518246524b07b95091c44da2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
