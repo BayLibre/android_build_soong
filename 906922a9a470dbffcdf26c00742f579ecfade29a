@@ -33,6 +33,24 @@
       "message": "The approach of listing the dependencies to propagate is a problem.\n\nEvery dependency propagates unless there is a specific reason and justification to not propagate a dependency.\n\ne.g. the dependency is a compiler for building the target and not part of the target, that\u0027s a reason and justification to not propagate.\n\ne.g. the dependency is a runtime-only dependency loaded at runtime but not used to build the target, that\u0027s a reason and justification to not propagate.\n\nOtherwise, every dependency has to propagate its license.\n\ne.g. suppose someone, someday adds a resource dependency that can include digital images, the licenses for those images have to apply to the built target unless and until someone provides a reason and justification to not propagate.\n",
       "revId": "906922a9a470dbffcdf26c00742f579ecfade29a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8209161_663fdca4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-10-07T01:34:02Z",
+      "side": 1,
+      "message": "I\u0027ve now implemented this as a required method on the DependencyTag interface.\n\nWhat I haven\u0027t done is determine which dependency tags need what -- I\u0027ll leave that up to you or others on the bug (they\u0027ve all been marked with TODOs). This change largely preserves the existing behavior.",
+      "parentUuid": "0b29a635_f0f586aa",
+      "revId": "906922a9a470dbffcdf26c00742f579ecfade29a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
