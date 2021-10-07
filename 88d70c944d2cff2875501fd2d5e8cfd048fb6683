@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ea69237_4f7ec3e2",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-10-07T02:06:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c3b22c3_54a4cdc6",
+      "revId": "88d70c944d2cff2875501fd2d5e8cfd048fb6683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2c76081_7669cea9",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-10-05T17:32:06Z",
       "side": 1,
       "message": "Sasha added support for lists of structs, would that work better?\n\n    Deps_remap []struct{\n        From *string\n        To *string\n    } `android:\"arch_variant\"`",
+      "revId": "88d70c944d2cff2875501fd2d5e8cfd048fb6683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6c2b7f2_9cb0ccf6",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-10-07T02:06:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2c76081_7669cea9",
       "revId": "88d70c944d2cff2875501fd2d5e8cfd048fb6683",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "44bf4a66_69b556c5",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-10-07T02:06:53Z",
+      "side": 1,
+      "message": "No, it fails because llvm-strip can\u0027t load libc++.so -- is there another solution other than switching over from a SourcePath to using a `prebuilt_build_tool` module that could provide the list of required libraries?",
+      "parentUuid": "390a1511_d7ceb35d",
+      "revId": "88d70c944d2cff2875501fd2d5e8cfd048fb6683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c97876ef_5981e917",
         "filename": "android_sdk/sdk_repo_host.go",
         "patchSetId": 10
@@ -65,6 +119,30 @@
       "writtenOn": "2021-10-05T17:32:06Z",
       "side": 1,
       "message": "If you enable the sandbox these are unnecessary",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 0
+      },
+      "revId": "88d70c944d2cff2875501fd2d5e8cfd048fb6683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a58e725_06c72805",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-10-07T02:06:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c97876ef_5981e917",
       "range": {
         "startLine": 101,
         "startChar": 0,
