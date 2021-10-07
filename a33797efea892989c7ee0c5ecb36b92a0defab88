@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2963b406_c9e172eb",
+        "filename": "android/filegroup.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-07T13:43:50Z",
+      "side": 1,
+      "message": "could we add this to maybeGenerateBazelBuildActions instead since it is specific to mixed builds?",
+      "range": {
+        "startLine": 141,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 2
+      },
+      "revId": "a33797efea892989c7ee0c5ecb36b92a0defab88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
