@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2dd892bf_99c33f89",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-10-07T20:39:10Z",
+      "side": 1,
+      "message": "Colin, could you suggest if there is a better place to put this constant?\nThanks.",
+      "parentUuid": "90c1d320_121ea2dc",
+      "revId": "a8700043d67cc71722b7891cbe5dc54c47888a8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2612380a_f9336f94",
         "filename": "android/module.go",
         "patchSetId": 2
