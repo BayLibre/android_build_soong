@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81688cf2_76f9011c",
+        "filename": "android/defaults.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-10-07T02:17:28Z",
+      "side": 1,
+      "message": "I disagree with the comment. If a default has a license, it acts as a default license for the module type.",
+      "revId": "28a2076dd3bef247518246524b07b95091c44da2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
