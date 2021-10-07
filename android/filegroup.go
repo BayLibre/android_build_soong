@@ -112,15 +112,15 @@ func FileGroupFactory() Module {
 	return module
 }
 
-func (fg *fileGroup) GenerateBazelBuildActions(ctx ModuleContext) bool {
+func (fg *fileGroup) maybeGenerateBazelBuildActions(ctx ModuleContext, archVariant ArchType) {
 	if !fg.MixedBuildsEnabled(ctx) {
-		return false
+		return
 	}
 
 	bazelCtx := ctx.Config().BazelContext
-	filePaths, ok := bazelCtx.GetOutputFiles(fg.GetBazelLabel(ctx, fg), Common)
+	filePaths, ok := bazelCtx.GetOutputFiles(fg.GetBazelLabel(ctx, fg), archVariant)
 	if !ok {
-		return false
+		return
 	}
 
 	bazelOuts := make(Paths, 0, len(filePaths))
@@ -130,19 +130,20 @@ func (fg *fileGroup) GenerateBazelBuildActions(ctx ModuleContext) bool {
 	}
 
 	fg.srcs = bazelOuts
-
-	return true
 }
 
 func (fg *fileGroup) GenerateAndroidBuildActions(ctx ModuleContext) {
-	if fg.GenerateBazelBuildActions(ctx) {
-		return
-	}
-
 	fg.srcs = PathsForModuleSrcExcludes(ctx, fg.properties.Srcs, fg.properties.Exclude_srcs)
 	if fg.properties.Path != nil {
 		fg.srcs = PathsWithModuleSrcSubDir(ctx, fg.srcs, String(fg.properties.Path))
 	}
+
+	archVariant := ctx.Arch().ArchType
+	if len(fg.Srcs()) == 1 && fg.Srcs()[0].Base() == fg.Name() {
+		archVariant = Common
+	}
+
+	fg.maybeGenerateBazelBuildActions(ctx, archVariant)
 }
 
 func (fg *fileGroup) Srcs() Paths {
