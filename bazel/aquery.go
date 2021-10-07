@@ -18,6 +18,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"github.com/google/blueprint/proptools"
@@ -163,7 +164,19 @@ func (a *aqueryArtifactHandler) getInputPaths(depsetIds []int) ([]string, error)
 			}
 		}
 	}
-	return inputPaths, nil
+
+	// Filter out py3wrapper.sh & MANIFEST file
+	py3wrapper := string(filepath.Separator) + "py3wrapper.sh"
+	manifestFile := regexp.MustCompile(".*/.+\\.runfiles/MANIFEST$")
+	filteredInputPaths := []string{}
+	for _, path := range inputPaths {
+		if strings.HasSuffix(path, py3wrapper) || manifestFile.MatchString(path) {
+			continue
+		}
+		filteredInputPaths = append(filteredInputPaths, path)
+	}
+
+	return filteredInputPaths, nil
 }
 
 func (a *aqueryArtifactHandler) artifactIdsFromDepsetId(depsetId int) ([]int, error) {
@@ -249,6 +262,11 @@ func AqueryBuildStatements(aqueryJsonProto []byte) ([]BuildStatement, error) {
 			// Use hard links, because some soong actions expect real files (for example, `cp -d`).
 			buildStatement.Command = fmt.Sprintf("mkdir -p %[1]s && rm -f %[2]s && ln -f %[3]s %[2]s", outDir, out, in)
 			buildStatement.SymlinkPaths = outputPaths[:]
+		} else if isTemplateExpandAction(actionEntry) && len(actionEntry.Arguments) < 1 {
+			buildStatement.Command = fmt.Sprintf("touch %s", outputPaths[0])
+		} else if isPythonZipperAction(actionEntry) {
+			removePy3wrapperScript(&buildStatement)
+			replaceDeendencyOnPythonBinaryToPythonZip(&buildStatements, outputPaths[0])
 		} else if len(actionEntry.Arguments) < 1 {
 			return nil, fmt.Errorf("received action with no command: [%v]", buildStatement)
 		}
@@ -258,8 +276,46 @@ func AqueryBuildStatements(aqueryJsonProto []byte) ([]BuildStatement, error) {
 	return buildStatements, nil
 }
 
+func removePy3wrapperScript(bs *BuildStatement) {
+	// Remove from inputs
+	pos := -1
+	py3wrapper := string(filepath.Separator) + "py3wrapper.sh"
+	for index, path := range bs.InputPaths {
+		if strings.HasSuffix(path, py3wrapper) {
+			pos = index
+			break
+		}
+	}
+	if pos >= 0 {
+		bs.InputPaths = append(bs.InputPaths[:pos], bs.InputPaths[pos+1:]...)
+	}
+	// Remove from command line
+	var re = regexp.MustCompile(`\S*` + py3wrapper)
+	bs.Command = re.ReplaceAllString(bs.Command, "")
+
+}
+
+func replaceDeendencyOnPythonBinaryToPythonZip(buildStatements *[]BuildStatement, outputPath string) {
+	for i, bs := range *buildStatements {
+		for j, inputPath := range bs.InputPaths {
+			if inputPath+".zip" == outputPath {
+				(*buildStatements)[i].InputPaths[j] = (*buildStatements)[i].InputPaths[j] + ".zip"
+				break
+			}
+		}
+	}
+}
+
 func isSymlinkAction(a action) bool {
 	return a.Mnemonic == "Symlink" || a.Mnemonic == "SolibSymlink"
+}
+
+func isTemplateExpandAction(a action) bool {
+	return a.Mnemonic == "TemplateExpand"
+}
+
+func isPythonZipperAction(a action) bool {
+	return a.Mnemonic == "PythonZipper"
 }
 
 func shouldSkipAction(a action) bool {

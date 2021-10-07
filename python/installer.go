@@ -36,12 +36,14 @@ type pythonInstaller struct {
 	path android.InstallPath
 
 	androidMkSharedLibs []string
+	module              *Module
 }
 
-func NewPythonInstaller(dir, dir64 string) *pythonInstaller {
+func NewPythonInstaller(dir, dir64 string, module *Module) *pythonInstaller {
 	return &pythonInstaller{
-		dir:   dir,
-		dir64: dir64,
+		dir:    dir,
+		dir64:  dir64,
+		module: module,
 	}
 }
 
@@ -59,7 +61,15 @@ func (installer *pythonInstaller) installDir(ctx android.ModuleContext) android.
 }
 
 func (installer *pythonInstaller) install(ctx android.ModuleContext, file android.Path) {
-	installer.path = ctx.InstallFile(installer.installDir(ctx), file.Base(), file)
+	deps := make([]android.Path, 0)
+	if ctx.ModuleType() == "python_binary_host" && installer.module.MixedBuildsEnabled(ctx) {
+		label := installer.module.BazelModuleBase.GetBazelLabel(ctx, installer.module)
+		binary, _ := ctx.Config().BazelContext.GetPythonBinary(label, ctx.Arch().ArchType)
+		bazelBinaryOutPath := android.PathForBazelOut(ctx, binary)
+		zipOutPath := android.PathForBazelOut(ctx, binary+".zip")
+		deps = append(deps, bazelBinaryOutPath, zipOutPath)
+	}
+	installer.path = ctx.InstallFile(installer.installDir(ctx), file.Base(), file, deps...)
 }
 
 func (installer *pythonInstaller) setAndroidMkSharedLibs(sharedLibs []string) {

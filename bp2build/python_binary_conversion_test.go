@@ -16,7 +16,7 @@ func runBp2BuildTestCaseWithLibs(t *testing.T, tc bp2buildTestCase) {
 
 func TestPythonBinaryHostSimple(t *testing.T) {
 	runBp2BuildTestCaseWithLibs(t, bp2buildTestCase{
-		description:                        "simple python_binary_host converts to a native py_binary",
+		description:                        "simple python_binary_host converts to a python_binary_host macro",
 		moduleTypeUnderTest:                "python_binary_host",
 		moduleTypeUnderTestFactory:         python.PythonBinaryHostFactory,
 		moduleTypeUnderTestBp2BuildMutator: python.PythonBinaryBp2Build,
@@ -41,7 +41,7 @@ func TestPythonBinaryHostSimple(t *testing.T) {
       srcs: ["b/e.py"],
       bazel_module: { bp2build_available: true },
     }`,
-		expectedBazelTargets: []string{`py_binary(
+		expectedBazelTargets: []string{`python_binary_host(
     name = "foo",
     data = ["files/data.txt"],
     deps = [":bar"],
@@ -77,7 +77,7 @@ func TestPythonBinaryHostPy2(t *testing.T) {
     bazel_module: { bp2build_available: true },
 }
 `,
-		expectedBazelTargets: []string{`py_binary(
+		expectedBazelTargets: []string{`python_binary_host(
     name = "foo",
     python_version = "PY2",
     srcs = ["a.py"],
@@ -109,7 +109,7 @@ func TestPythonBinaryHostPy3(t *testing.T) {
 `,
 		expectedBazelTargets: []string{
 			// python_version is PY3 by default.
-			`py_binary(
+			`python_binary_host(
     name = "foo",
     srcs = ["a.py"],
 )`,
@@ -139,7 +139,7 @@ func TestPythonBinaryHostArchVariance(t *testing.T) {
 					},
 				 }`,
 		expectedBazelTargets: []string{
-			`py_binary(
+			`python_binary_host(
     name = "foo-arm",
     srcs = select({
         "//build/bazel/platforms/arch:arm": ["arm.py"],
