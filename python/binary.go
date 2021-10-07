@@ -89,8 +89,9 @@ func PythonBinaryBp2Build(ctx android.TopDownMutatorContext) {
 	}
 
 	props := bazel.BazelTargetModuleProperties{
-		// Use the native py_binary rule.
-		Rule_class: "py_binary",
+		// Use the python_host_binary macro.
+		Rule_class:        "python_binary_host",
+		Bzl_load_location: "//build/bazel/rules:python_binary_host.bzl",
 	}
 
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{
@@ -143,7 +144,7 @@ var (
 
 func NewBinary(hod android.HostOrDeviceSupported) (*Module, *binaryDecorator) {
 	module := newModule(hod, android.MultilibFirst)
-	decorator := &binaryDecorator{pythonInstaller: NewPythonInstaller("bin", "")}
+	decorator := &binaryDecorator{pythonInstaller: NewPythonInstaller("bin", "", module)}
 
 	module.bootstrapper = decorator
 	module.installer = decorator
