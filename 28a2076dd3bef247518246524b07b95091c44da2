@@ -34,6 +34,24 @@
       "parentUuid": "81688cf2_76f9011c",
       "revId": "28a2076dd3bef247518246524b07b95091c44da2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abe4c36d_f6392267",
+        "filename": "android/defaults.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-10-08T22:38:54Z",
+      "side": 1,
+      "message": "I think a clearer comment would be:\n\n// Defaults licenses and dependencies already copied into dependent targets by\n// mutator. No need to propagate a 2nd time.\n\nThat\u0027s assuming the dependencies of the Defaults get copied into the modules that use the default. Is that correct?",
+      "parentUuid": "ea0196c8_25c87d23",
+      "revId": "28a2076dd3bef247518246524b07b95091c44da2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
