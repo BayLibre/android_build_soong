@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5049c98_31e75d6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-08T11:13:55Z",
+      "side": 1,
+      "message": " Liz, Chris: I chose to go with this copts approach because the tradeoff is a much simpler setting than adding a new attr(s) everywhere which limits the number of user-configurable knobs. But it does rely on the user copt overriding the toolchain\u0027s default gnu++17 version, which can mean a `-std` flag showing up twice in the action. PTAL, and let me know if you would prefer the features/attr combination.\n \n",
+      "revId": "1595f4745ac9c0f517a46c57723ed78c5e69fa46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
