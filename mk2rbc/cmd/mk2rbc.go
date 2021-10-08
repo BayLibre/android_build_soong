@@ -53,7 +53,8 @@ var (
 	// TODO(asmundak): this option is for debugging
 	allInSource           = flag.Bool("all", false, "convert all product config makefiles in the tree under //")
 	outputTop             = flag.String("outdir", "", "write output files into this directory hierarchy")
-	launcher              = flag.String("launcher", "", "generated launcher path. If set, the non-flag argument is _product_name_")
+	launcher              = flag.String("launcher", "", "generated launcher path.")
+	boardlauncher         = flag.String("boardlauncher", "", "generated board configuration launcher path.")
 	printProductConfigMap = flag.Bool("print_product_config_map", false, "print product config map and exit")
 	cpuProfile            = flag.String("cpu_profile", "", "write cpu profile to file")
 	traceCalls            = flag.Bool("trace_calls", false, "trace function calls")
@@ -87,8 +88,7 @@ func main() {
 	flag.Usage = func() {
 		cmd := filepath.Base(os.Args[0])
 		fmt.Fprintf(flag.CommandLine.Output(),
-			"Usage: %[1]s flags file...\n"+
-				"or:    %[1]s flags --launcher=PATH PRODUCT\n", cmd)
+			"Usage: %[1]s flags file...\n", cmd)
 		flag.PrintDefaults()
 	}
 	flag.Parse()
@@ -170,21 +170,34 @@ func main() {
 		if len(files) != 1 {
 			quit(fmt.Errorf("a launcher can be generated only for a single product"))
 		}
-		versionDefaults, err := generateVersionDefaults()
+
+		versionDefaultsPath, err := generateVersionDefaultsFile()
 		if err != nil {
 			quit(err)
-		}
-		versionDefaultsPath := outputFilePath(versionDefaultsMk)
-		err = writeGenerated(versionDefaultsPath, versionDefaults)
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "%s:%s", files[0], err)
-			ok = false
 		}
 
 		err = writeGenerated(*launcher, mk2rbc.Launcher(outputFilePath(files[0]), versionDefaultsPath,
 			mk2rbc.MakePath2ModuleName(files[0])))
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "%s:%s", files[0], err)
+			ok = false
+		}
+	}
+
+	if *boardlauncher != "" {
+		if len(files) != 1 {
+			quit(fmt.Errorf("a launcher can be generated only for a single product"))
+		}
+
+		versionDefaultsPath, err := generateVersionDefaultsFile()
+		if err != nil {
+			quit(err)
+		}
+
+		err = writeGenerated(*boardlauncher, mk2rbc.BoardLauncher(
+			outputFilePath(files[0]), versionDefaultsPath, outputFilePath("product_cfg")))
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "%s: foobar %s", files[0], err)
 			ok = false
 		}
 	}
@@ -198,12 +211,25 @@ func main() {
 	}
 }
 
-func generateVersionDefaults() (string, error) {
+/*
+ * Parses version_defaults.mk and generates an equivalent starlark file.
+ * Returns the path to the generated file.
+ */
+func generateVersionDefaultsFile() (string, error) {
 	versionSettings, err := mk2rbc.ParseVersionDefaults(filepath.Join(*rootDir, versionDefaultsMk))
 	if err != nil {
 		return "", err
 	}
-	return mk2rbc.VersionDefaults(versionSettings), nil
+	versionDefaults := mk2rbc.VersionDefaults(versionSettings)
+	if err != nil {
+		return "", err
+	}
+	versionDefaultsPath := outputFilePath(versionDefaultsMk)
+	err = writeGenerated(versionDefaultsPath, versionDefaults)
+	if err != nil {
+		return "", err
+	}
+	return versionDefaultsPath, nil
 
 }
 
