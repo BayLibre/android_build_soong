@@ -52,6 +52,24 @@
       "parentUuid": "ea0196c8_25c87d23",
       "revId": "28a2076dd3bef247518246524b07b95091c44da2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "765c0670_4beaf720",
+        "filename": "android/defaults.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-10-08T22:42:14Z",
+      "side": 1,
+      "message": "The properties get copied, the dependencies do not (nothing from the default module other than the properties are propagated)",
+      "parentUuid": "abe4c36d_f6392267",
+      "revId": "28a2076dd3bef247518246524b07b95091c44da2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
