@@ -70,6 +70,24 @@
       "parentUuid": "abe4c36d_f6392267",
       "revId": "28a2076dd3bef247518246524b07b95091c44da2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dfba258_83cefae9",
+        "filename": "android/defaults.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-10-08T22:48:45Z",
+      "side": 1,
+      "message": "A clearer comment would be:\n\n// Licenses and other properties already copied into dependent targets by mutator.\n// No need to propagate a 2nd time.",
+      "parentUuid": "765c0670_4beaf720",
+      "revId": "28a2076dd3bef247518246524b07b95091c44da2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
