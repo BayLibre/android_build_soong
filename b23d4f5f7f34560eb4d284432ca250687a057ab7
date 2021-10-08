@@ -350,6 +350,30 @@
       },
       "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa3bcc18_fe8c23ff",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-08T13:26:58Z",
+      "side": 1,
+      "message": "There are multiple dependency chains for dexpreopted files, based on the type of the jars.\n1. system.img -\u003e platform jar defined in soong -\u003e dexpreopted files\n2. system.img -\u003e platform jar defined in make -\u003e dexpreopted files\n3. system.img -\u003e apex from source (not the jar) -\u003e dexpreopted files\n4. system.img -\u003e apex from prebuilt (not the jar) -\u003e dexpreopted files\n\nFor each chain, the first edge is guaranteed, or the system wouldn\u0027t boot. However, the second edge is not strong. It is only added when dexpreopted files are generated. I.e., if dexpreopted files are not generated for whatever reason, the second edge will not be added, and the build will therefore succeed without any error.\n\nThe purpose of this CL is to add a separate dependency chain:\nsystem.img -\u003e dexpreopt_systemserver_check.stamp -\u003e all SS dexpreopted files\nwhich doesn\u0027t actually install the dexpreopted files, but will fail if any of the SS dexpreopted files is not generated. This is essentially a check to make sure that all SS dexpreopted files are generated, no matter which dependency chain above they are installed through.\n\nMaybe this is a completely wrong approach because I don\u0027t see anything similar to it has been done in the build system AFAIK.\n\nAn alternative is to add a check to the second edge for each of the four dependency chains above for SS jars. For example, for chain #1, when dexpreopting is enabled, fail the build if a jar is an SS jar and no dexpreopted file is found. WDYT?",
+      "parentUuid": "3e8fec46_3bb4699c",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
