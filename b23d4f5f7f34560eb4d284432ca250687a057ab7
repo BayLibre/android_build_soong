@@ -374,6 +374,30 @@
       },
       "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "217cb3c6_91f0de9b",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-08T13:51:41Z",
+      "side": 1,
+      "message": "I think we agree that it\u0027s good to add direct dependency of system.img on dexpreopted files. The problem is in the way it\u0027s added: via an installed (empty) file. Instead, you can try the following approach: generate a makefile variable with a list of the dexpreopt files for SS (do that with MakeVars() method --- this way you generate arbitrary variables, not LOCAL_* ones for a specific module) and then add a bit of logic in makefiles that adds the contents of that variable to dependencies of system.img (conditionally if SS dexpreopt is enabled).\n\nThe only part I\u0027m not sure is how you reference system.img in the makefiles.\n\nAs for the best place to add this dependency in makefiles, I would try in make/core/dex_preopt.mk: it is included once at https://source.corp.google.com/aosp-master/build/make/core/main.mk;l\u003d498 which goes after inclusion of Soong-generated variables file soong/make_vars-$(TARGET_PRODUCT).mk https://source.corp.google.com/aosp-master/build/make/core/main.mk;l\u003d34.\n\nFor example of MakeVars() usage see: https://source.corp.google.com/aosp-master/build/soong/java/dexpreopt_bootjars.go;l\u003d866-908.",
+      "parentUuid": "fa3bcc18_fe8c23ff",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
