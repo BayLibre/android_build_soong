@@ -50,14 +50,16 @@ const (
 	soongNsPrefix = "SOONG_CONFIG_"
 
 	// And here are the functions and variables:
-	cfnGetCfg          = baseName + ".cfg"
-	cfnMain            = baseName + ".product_configuration"
-	cfnPrintVars       = baseName + ".printvars"
-	cfnWarning         = baseName + ".warning"
-	cfnLocalAppend     = baseName + ".local_append"
-	cfnLocalSetDefault = baseName + ".local_set_default"
-	cfnInherit         = baseName + ".inherit"
-	cfnSetListDefault  = baseName + ".setdefault"
+	cfnGetCfg           = baseName + ".cfg"
+	cfnMain             = baseName + ".product_configuration"
+	cfnPrintVars        = baseName + ".printvars"
+	cfnPrintGlobals     = baseName + ".printglobals"
+	cfnWarning          = baseName + ".warning"
+	cfnLocalAppend      = baseName + ".local_append"
+	cfnLocalSetDefault  = baseName + ".local_set_default"
+	cfnInherit          = baseName + ".inherit"
+	cfnSetListDefault   = baseName + ".setdefault"
+	cfnNewHandleWithCfg = baseName + ".new_handle_with_cfg"
 )
 
 const (
@@ -1699,6 +1701,21 @@ func Launcher(mainModuleUri, versionDefaultsUri, mainModuleName string) string {
 	fmt.Fprintf(&buf, "load(%q, \"version_defaults\")\n", versionDefaultsUri)
 	fmt.Fprintf(&buf, "load(%q, \"init\")\n", mainModuleUri)
 	fmt.Fprintf(&buf, "%s(%s(%q, init, version_defaults))\n", cfnPrintVars, cfnMain, mainModuleName)
+	return buf.String()
+}
+
+func BoardLauncher(mainModuleUri, inputVariablesUri string) string {
+	var buf bytes.Buffer
+	fmt.Fprintf(&buf, "load(%q, %q)\n", baseUri, baseName)
+	fmt.Fprintf(&buf, "load(%q, immutable_cfg = \"cfg\", globals_base = \"globals\")\n", inputVariablesUri)
+	fmt.Fprintf(&buf, "load(%q, \"init\")\n", mainModuleUri)
+	fmt.Fprintf(&buf, "# Deep copy cfg and globals so they're mutable\n")
+	fmt.Fprintf(&buf, "cfg = {i[0]: i[1][:] for i in immutable_cfg.items()}\n")
+	fmt.Fprintf(&buf, "globals = {i[0]: i[1][:] for i in globals_base.items()}\n")
+	fmt.Fprintf(&buf, "h = %s(cfg)\n", cfnNewHandleWithCfg)
+	fmt.Fprintf(&buf, "init(globals, h)\n")
+	fmt.Fprintf(&buf, "# TODO: Some product config variables need to be printed, but most are readonly so we can't just print cfg here.\n")
+	fmt.Fprintf(&buf, "%s(globals, globals_base)\n", cfnPrintGlobals)
 	return buf.String()
 }
 
