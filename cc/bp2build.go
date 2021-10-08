@@ -277,7 +277,19 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 					srcs.SetSelectValue(axis, config, srcsList)
 				}
 
-				archVariantCopts := parseCommandLineFlags(baseCompilerProps.Cflags)
+				var archVariantCopts []string
+				if axis == bazel.NoConfigAxis {
+					// If cpp_std is not specified, don't generate it in the BUILD file.
+					if baseCompilerProps.Cpp_std != nil {
+						// TODO(b/202491296): Handle C_std.
+						// These transformations are shared with compiler.go.
+						cppStdVal := parseCppStd(baseCompilerProps.Cpp_std)
+						_, cppStdVal = maybeReplaceGnuToC(baseCompilerProps.Gnu_extensions, "", cppStdVal)
+						archVariantCopts = append(archVariantCopts, "-std="+cppStdVal)
+					}
+				}
+
+				archVariantCopts = append(archVariantCopts, parseCommandLineFlags(baseCompilerProps.Cflags)...)
 				archVariantAsflags := parseCommandLineFlags(baseCompilerProps.Asflags)
 
 				localIncludeDirs := baseCompilerProps.Local_include_dirs
