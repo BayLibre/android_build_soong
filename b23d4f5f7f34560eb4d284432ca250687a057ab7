@@ -398,6 +398,30 @@
       },
       "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5f62403_523188cb",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-09T04:51:46Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s a good idea to add direct dependency of system.img on SS dexpreopted files. The existing dependency chains are working. Disabling the existing dependency edges for SS jars and adding the dependencies in a separate place makes things unnecessarily complicated. Unlike boot extension jars, who need to be compiled into a single image and therefore need to be treated specially, there isn\u0027t a reason for SS jars to be treated specially IMO.\n\nNote that the dependency chain added by this CL does not cause dexpreopted files to be packed into system.img. It is just a check to make sure that there are ninja rules that output the files into /system/framework/oat. That means the check is self-contained and does not conflict with existing dependency chains, and therefore can be easily added to PRODUCT_PACKAGES or removed from it as needed. I.e., dexpreopted files are installed with or without this check anyway.\n\nI would say this self-contained check is a working solution to make sure that dexpreopted files are generated. If it is not a good practice, I would choose to make the existing dependency chains more reliable (by adding a check to the second edge for each of the four dependency chains above for SS jars). Creating a separate piece of logic just for installing SS dexpreopted files doesn\u0027t sound good to me anyway.",
+      "parentUuid": "217cb3c6_91f0de9b",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
