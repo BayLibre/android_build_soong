@@ -99,6 +99,7 @@ type registerMutatorsContext struct {
 type RegisterMutatorsContext interface {
 	TopDown(name string, m TopDownMutator) MutatorHandle
 	BottomUp(name string, m BottomUpMutator) MutatorHandle
+	ExtraBottomUp(name string, m BottomUpMutator) MutatorHandle
 	BottomUpBlueprint(name string, m blueprint.BottomUpMutator) MutatorHandle
 }
 
@@ -400,11 +401,12 @@ type BottomUpMutatorContext interface {
 type bottomUpMutatorContext struct {
 	bp blueprint.BottomUpMutatorContext
 	baseModuleContext
-	finalPhase bool
+	finalPhase   bool
+	extraMutator bool
 }
 
 func bottomUpMutatorContextFactory(ctx blueprint.BottomUpMutatorContext, a Module,
-	finalPhase, bazelConversionMode bool) BottomUpMutatorContext {
+	finalPhase, bazelConversionMode, extraMutator bool) BottomUpMutatorContext {
 
 	moduleContext := a.base().baseModuleContextFactory(ctx)
 	moduleContext.bazelConversionMode = bazelConversionMode
@@ -413,15 +415,24 @@ func bottomUpMutatorContextFactory(ctx blueprint.BottomUpMutatorContext, a Modul
 		bp:                ctx,
 		baseModuleContext: a.base().baseModuleContextFactory(ctx),
 		finalPhase:        finalPhase,
+		extraMutator:      extraMutator,
 	}
 }
 
 func (x *registerMutatorsContext) BottomUp(name string, m BottomUpMutator) MutatorHandle {
+	return x.bottomUp(name, m, false)
+}
+
+func (x *registerMutatorsContext) ExtraBottomUp(name string, m BottomUpMutator) MutatorHandle {
+	return x.bottomUp(name, m, true)
+}
+
+func (x *registerMutatorsContext) bottomUp(name string, m BottomUpMutator, extraMutator bool) MutatorHandle {
 	finalPhase := x.finalPhase
 	bazelConversionMode := x.bazelConversionMode
 	f := func(ctx blueprint.BottomUpMutatorContext) {
 		if a, ok := ctx.Module().(Module); ok {
-			m(bottomUpMutatorContextFactory(ctx, a, finalPhase, bazelConversionMode))
+			m(bottomUpMutatorContextFactory(ctx, a, finalPhase, bazelConversionMode, extraMutator))
 		}
 	}
 	mutator := &mutator{name: x.mutatorName(name), bottomUpMutator: f}
@@ -628,6 +639,7 @@ func (b *bottomUpMutatorContext) CreateVariations(variations ...string) []Module
 		base := aModules[i].base()
 		base.commonProperties.DebugMutators = append(base.commonProperties.DebugMutators, b.MutatorName())
 		base.commonProperties.DebugVariations = append(base.commonProperties.DebugVariations, variations[i])
+		base.commonProperties.ExtraVariant = base.commonProperties.ExtraVariant || b.extraMutator
 	}
 
 	return aModules
@@ -646,6 +658,7 @@ func (b *bottomUpMutatorContext) CreateLocalVariations(variations ...string) []M
 		base := aModules[i].base()
 		base.commonProperties.DebugMutators = append(base.commonProperties.DebugMutators, b.MutatorName())
 		base.commonProperties.DebugVariations = append(base.commonProperties.DebugVariations, variations[i])
+		base.commonProperties.ExtraVariant = base.commonProperties.ExtraVariant || b.extraMutator
 	}
 
 	return aModules

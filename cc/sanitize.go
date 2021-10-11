@@ -155,7 +155,7 @@ func (t SanitizerType) registerMutators(ctx android.RegisterMutatorsContext) {
 	switch t {
 	case Asan, Hwasan, Fuzzer, scs, tsan, cfi:
 		ctx.TopDown(t.variationName()+"_deps", sanitizerDepsMutator(t))
-		ctx.BottomUp(t.variationName(), sanitizerMutator(t))
+		ctx.ExtraBottomUp(t.variationName(), sanitizerMutator(t))
 	case Memtag_heap, intOverflow:
 		// do nothing
 	default:

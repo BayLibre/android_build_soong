@@ -64,20 +64,20 @@ func registerPreArchMutators(ctx android.RegisterMutatorsContext) {
 
 func RegisterPreDepsMutators(ctx android.RegisterMutatorsContext) {
 	ctx.TopDown("apex_vndk", apexVndkMutator).Parallel()
-	ctx.BottomUp("apex_vndk_deps", apexVndkDepsMutator).Parallel()
+	ctx.ExtraBottomUp("apex_vndk_deps", apexVndkDepsMutator).Parallel()
 }
 
 func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
 	ctx.TopDown("apex_info", apexInfoMutator).Parallel()
-	ctx.BottomUp("apex_unique", apexUniqueVariationsMutator).Parallel()
-	ctx.BottomUp("apex_test_for_deps", apexTestForDepsMutator).Parallel()
-	ctx.BottomUp("apex_test_for", apexTestForMutator).Parallel()
+	ctx.ExtraBottomUp("apex_unique", apexUniqueVariationsMutator).Parallel()
+	ctx.ExtraBottomUp("apex_test_for_deps", apexTestForDepsMutator).Parallel()
+	ctx.ExtraBottomUp("apex_test_for", apexTestForMutator).Parallel()
 	// Run mark_platform_availability before the apexMutator as the apexMutator needs to know whether
 	// it should create a platform variant.
-	ctx.BottomUp("mark_platform_availability", markPlatformAvailability).Parallel()
-	ctx.BottomUp("apex", apexMutator).Parallel()
-	ctx.BottomUp("apex_directly_in_any", apexDirectlyInAnyMutator).Parallel()
-	ctx.BottomUp("apex_flattened", apexFlattenedMutator).Parallel()
+	ctx.ExtraBottomUp("mark_platform_availability", markPlatformAvailability).Parallel()
+	ctx.ExtraBottomUp("apex", apexMutator).Parallel()
+	ctx.ExtraBottomUp("apex_directly_in_any", apexDirectlyInAnyMutator).Parallel()
+	ctx.ExtraBottomUp("apex_flattened", apexFlattenedMutator).Parallel()
 }
 
 type apexBundleProperties struct {

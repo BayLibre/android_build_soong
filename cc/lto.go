@@ -256,6 +256,7 @@ func ltoMutator(mctx android.BottomUpMutatorContext) {
 				}
 				variation.Properties.PreventInstall = true
 				variation.Properties.HideFromMake = true
+				variation.SetExtraVariant()
 				variation.lto.Properties.FullDep = false
 				variation.lto.Properties.ThinDep = false
 				variation.lto.Properties.NoLtoDep = false
