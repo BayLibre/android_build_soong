@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ec2506f_cde31db7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-11T15:13:50Z",
+      "side": 1,
+      "message": "\u003e failing to dexpreopt BCP jars will result in a build failure I believe.\n\nOk, I hope you\u0027re right.",
+      "parentUuid": "d5a9034e_4f45b652",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "a4f80ecf9c9817813359d8dc5e320471eec6c5de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eaad6a3b_a5facc32",

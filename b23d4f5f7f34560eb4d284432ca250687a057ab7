@@ -704,6 +704,30 @@
       },
       "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e8bf0a_16718486",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-11T15:13:50Z",
+      "side": 1,
+      "message": "\u003e If it is not a good practice, I would choose to make the existing dependency chains more reliable (by adding a check to the second edge for each of the four dependency chains above for SS jars).\n\nThat\u0027s the fix I was hoping for - my understanding of the problem is that those second edges currently aren\u0027t known to ninja, or they aren\u0027t connected to the DAG starting with system.img. Is that correct? If so, I\u0027d say it\u0027s not so much about adding an extra check, as it is about fixing the ninja dependency graph to become more complete.\n\nMy worry is that the global list produced by the new singleton may not accurately reflect the packages that eventually get installed in the system image. For instance, will this avoid a false alarm on missing systemserver dexpreopted files from service-appsearch if someone builds a system image without com.android.appsearch in PRODUCT_PACKAGES?",
+      "parentUuid": "8630f601_1f80ff00",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
