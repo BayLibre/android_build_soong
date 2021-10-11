@@ -677,8 +677,13 @@ func (compiler *baseCompiler) compile(ctx ModuleContext, flags Flags, deps PathD
 // Compile a list of source files into objects a specified subdirectory
 func compileObjs(ctx android.ModuleContext, flags builderFlags, subdir string,
 	srcFiles, noTidySrcs, pathDeps android.Paths, cFlagsDeps android.Paths) Objects {
-
-	return transformSourceToObj(ctx, subdir, srcFiles, noTidySrcs, flags, pathDeps, cFlagsDeps)
+	objs := transformSourceToObj(ctx, subdir, srcFiles, noTidySrcs, flags, pathDeps, cFlagsDeps)
+	if mCtx, ok := ctx.(*moduleContext); ok {
+		module := mCtx.moduleContextImpl.mod
+		module.objFiles = append(module.objFiles, objs.objFiles...)
+		module.tidyFiles = append(module.tidyFiles, objs.tidyFiles...)
+	}
+	return objs
 }
 
 // Properties for rust_bindgen related to generating rust bindings.

@@ -802,6 +802,9 @@ type Module struct {
 
 	outputFile android.OptionalPath
 
+	objFiles  android.Paths
+	tidyFiles android.Paths
+
 	cachedToolchain config.Toolchain
 
 	subAndroidMkOnce map[subAndroidMkProvider]bool
