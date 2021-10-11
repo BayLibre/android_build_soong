@@ -60,14 +60,14 @@ func RegisterCCBuildComponents(ctx android.RegistrationContext) {
 		}
 
 		ctx.TopDown("sanitize_runtime_deps", sanitizerRuntimeDepsMutator).Parallel()
-		ctx.BottomUp("sanitize_runtime", sanitizerRuntimeMutator).Parallel()
+		ctx.ExtraBottomUp("sanitize_runtime", sanitizerRuntimeMutator).Parallel()
 
-		ctx.BottomUp("coverage", coverageMutator).Parallel()
+		ctx.ExtraBottomUp("coverage", coverageMutator).Parallel()
 
 		ctx.TopDown("lto_deps", ltoDepsMutator)
-		ctx.BottomUp("lto", ltoMutator).Parallel()
+		ctx.ExtraBottomUp("lto", ltoMutator).Parallel()
 
-		ctx.BottomUp("check_linktype", checkLinkTypeMutator).Parallel()
+		ctx.ExtraBottomUp("check_linktype", checkLinkTypeMutator).Parallel()
 		ctx.TopDown("double_loadable", checkDoubleLoadableLibraries).Parallel()
 	})
 
