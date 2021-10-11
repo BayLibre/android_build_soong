@@ -174,13 +174,11 @@ func SubtractStrings(haystack []string, needle []string) []string {
 	}
 
 	var strings []string
-	for s, _ := range remainder {
-		strings = append(strings, s)
+	for _, s := range haystack {
+		if ok := remainder[s]; ok {
+			strings = append(strings, s)
+		}
 	}
-
-	sort.SliceStable(strings, func(i, j int) bool {
-		return strings[i] < strings[j]
-	})
 
 	return strings
 }
@@ -198,13 +196,11 @@ func SubtractBazelLabels(haystack []Label, needle []Label) []Label {
 	}
 
 	var labels []Label
-	for label, _ := range remainder {
-		labels = append(labels, label)
+	for _, label := range haystack {
+		if ok := remainder[label]; ok {
+			labels = append(labels, label)
+		}
 	}
-
-	sort.SliceStable(labels, func(i, j int) bool {
-		return labels[i].Label < labels[j].Label
-	})
 
 	return labels
 }
