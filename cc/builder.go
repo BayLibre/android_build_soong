@@ -624,6 +624,10 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles, no
 			coverageFiles = append(coverageFiles, gcnoFile)
 		}
 
+		if mCtx, ok := ctx.(*moduleContext); ok {
+			module := mCtx.moduleContextImpl.mod
+			module.objFiles = append(module.objFiles, objFile)
+		}
 		ctx.Build(pctx, android.BuildParams{
 			Rule:            rule,
 			Description:     ccDesc + " " + srcFile.Rel(),
@@ -665,7 +669,10 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles, no
 				rule = clangTidyRE
 			}
 
-			ctx.TidyFile(tidyFile)
+			if mCtx, ok := ctx.(*moduleContext); ok {
+				module := mCtx.moduleContextImpl.mod
+				module.tidyFiles = append(module.tidyFiles, tidyFile)
+			}
 			ctx.Build(pctx, android.BuildParams{
 				Rule:        rule,
 				Description: "clang-tidy " + srcFile.Rel(),
