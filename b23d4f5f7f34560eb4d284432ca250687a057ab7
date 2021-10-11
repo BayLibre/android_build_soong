@@ -422,6 +422,30 @@
       },
       "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7262d0ad_ac5c6276",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-11T08:50:29Z",
+      "side": 1,
+      "message": "I found a better way. I can check whether ALL_DEFAULT_INSTALLED_MODULES contains the dexpreopted files or not. The check can be done at Make phase and doesn\u0027t require an empty file to be installed. I\u0027ll update the CL soon.",
+      "parentUuid": "b5f62403_523188cb",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
