@@ -646,6 +646,7 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles, no
 			coverageFiles = append(coverageFiles, gcnoFile)
 		}
 
+		ctx.ObjFile(objFile)
 		ctx.Build(pctx, android.BuildParams{
 			Rule:            rule,
 			Description:     ccDesc + " " + srcFile.Rel(),
