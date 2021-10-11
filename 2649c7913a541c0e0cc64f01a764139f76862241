@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8303afbb_a0cb4ae7",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-11T13:01:08Z",
+      "side": 0,
+      "message": "Is this removed accidentally?",
+      "range": {
+        "startLine": 1404,
+        "startChar": 4,
+        "endLine": 1405,
+        "endChar": 53
+      },
+      "revId": "2649c7913a541c0e0cc64f01a764139f76862241",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
