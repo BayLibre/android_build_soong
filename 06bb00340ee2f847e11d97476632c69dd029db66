@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de142388_ff3e7f8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-11T13:59:52Z",
+      "side": 1,
+      "message": "The approach LGTM, only the problem of filtering DEXPREOPT_SYSTEMSERVER_ARTIFACTS by the present modules remains so +1.",
+      "revId": "06bb00340ee2f847e11d97476632c69dd029db66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

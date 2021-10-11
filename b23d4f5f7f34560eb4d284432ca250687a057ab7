@@ -680,6 +680,30 @@
       },
       "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8630f601_1f80ff00",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-11T13:59:52Z",
+      "side": 1,
+      "message": "I was not suggesting to remove/change the existing dependencies (that indeed would be dangerous and complex), only to add new direct dependencies of system.img on SS jars. Your solution with the makefile check is good, but AFAIU it\u0027s a more custom way of doing the same thing. Might be worth to have a custom error message.",
+      "parentUuid": "e0cf0be9_d7dc8f4e",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
