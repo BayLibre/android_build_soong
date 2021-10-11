@@ -141,6 +141,30 @@
       },
       "revId": "0dac924c78ce95a81f78e77dae73e9980889c8be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "289b007b_7be65e1b",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 8464,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-11T21:20:33Z",
+      "side": 1,
+      "message": "I think it\u0027d work well enough to just parse the AndroidMkData strings into maps by splitting on newlines and \":\u003d\". If there\u0027s anything that doesn\u0027t parse correctly then just skip it - if the caller needs to test that stuff they\u0027d already be using AndroidMkDataForTest and that doesn\u0027t have to change.\n\nI\u0027d dispense with the clunky array values and just join them together with \" \" if the source is an AndroidMkEntriesProvider - they\u0027ll end up like that in the .mk output anyway. Again, if a caller really wants to access the values as arrays they can stick to AndroidMkEntriesForTest.\n\n(And converting all the existing tests is a different matter. I wouldn\u0027t ask for that.)",
+      "parentUuid": "b95da6b5_5486c1b8",
+      "range": {
+        "startLine": 8464,
+        "startChar": 9,
+        "endLine": 8464,
+        "endChar": 38
+      },
+      "revId": "0dac924c78ce95a81f78e77dae73e9980889c8be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

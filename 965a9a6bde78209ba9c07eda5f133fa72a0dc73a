@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "476d9446_a8a188bc",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 8353,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-11T21:20:33Z",
+      "side": 1,
+      "message": "Also optional, but I think it should be safe to assume that the main module entry is the first one: https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/prebuilt.go;l\u003d216;drc\u003dmaster",
+      "range": {
+        "startLine": 8352,
+        "startChar": 0,
+        "endLine": 8353,
+        "endChar": 71
+      },
+      "revId": "965a9a6bde78209ba9c07eda5f133fa72a0dc73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
