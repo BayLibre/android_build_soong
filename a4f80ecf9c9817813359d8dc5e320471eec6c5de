@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5a9034e_4f45b652",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-11T13:28:02Z",
+      "side": 1,
+      "message": "\u003e Does that manifest in a more obvious way than a slow boot?\n\nYes. Because dexpreopting for BCP is handled in a completely different way, failing to dexpreopt BCP jars will result in a build failure I believe.",
+      "parentUuid": "910ada74_55061b15",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "a4f80ecf9c9817813359d8dc5e320471eec6c5de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eaad6a3b_a5facc32",
@@ -106,6 +130,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf1eb51b_7e30b32d",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-11T13:28:02Z",
+      "side": 1,
+      "message": "I think it\u0027s better to keep this as a separate module rather than having it in *systemserverclasspath* modules because we may add more checks in the future (e.g., for system server jars that are dynamically loaded, which are not in systemserverclasspath and not dexpreopted today).\n\nFor BCP jars, you can see that dex_bootjars is also a separate module. When we migrate to Bazel, whatever solution for dex_bootjars should work for this too.",
+      "parentUuid": "6d7ce1ba_e703c9ec",
+      "revId": "a4f80ecf9c9817813359d8dc5e320471eec6c5de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3a2a89c9_e8373dbd",
@@ -119,6 +161,24 @@
       "writtenOn": "2021-10-05T10:49:53Z",
       "side": 1,
       "message": "Given that you do not do anything here why is this a singleton?",
+      "revId": "a4f80ecf9c9817813359d8dc5e320471eec6c5de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db622c4_cd33d9da",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-11T13:28:02Z",
+      "side": 1,
+      "message": "I need `MakeVars` now.",
+      "parentUuid": "3a2a89c9_e8373dbd",
       "revId": "a4f80ecf9c9817813359d8dc5e320471eec6c5de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
