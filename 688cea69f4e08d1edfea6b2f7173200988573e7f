@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21aad6b6_2c3d967e",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-11T17:53:25Z",
+      "side": 0,
+      "message": "Why is this dropped too? Aren\u0027t header jars the stubs, and so ought to be available for prebuilt SDKs?",
+      "range": {
+        "startLine": 282,
+        "startChar": 4,
+        "endLine": 282,
+        "endChar": 67
+      },
+      "revId": "688cea69f4e08d1edfea6b2f7173200988573e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

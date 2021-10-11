@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b8f32db_53ef7cff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-11T17:53:25Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the SDK snapshot generation also stop adding the jars/are/invalid paths? It was added in https://r.android.com/1526699 with the motivation that the property is required, but I don\u0027t have any problems when I try without it (however the description talks about a \"src\" property while the code itself adds \"jars\").",
+      "revId": "2579631bd1d816d207bde924a0108d4b515856a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
