@@ -121,8 +121,14 @@ func (s *SystemServerClasspathModule) configuredJars(ctx android.ModuleContext) 
 	// TODO(satayev): remove geotz ssc_fragment, since geotz is not part of SSCP anymore.
 	_, unknown = android.RemoveFromList("geotz", unknown)
 
-	// For non test apexes, make sure that all contents are actually declared in make.
-	if global.ApexSystemServerJars.Len() > 0 && len(unknown) > 0 && !android.IsModuleInVersionedSdk(ctx.Module()) {
+	// TODO(satayev): for apex_test we want to include all contents unconditionally to classpaths
+	// config. However, any test specific jars would not be present in ApexSystemServerJars. Instead,
+	// we should check if we are creating a config for apex_test via ApexInfo and amend the values.
+	// This is an exception to support end-to-end test for ApexdUnitTests, until such support exists.
+	if android.InList("framework-apexd_test", possibleUpdatableModules) {
+		jars = jars.Append("com.android.apex.test_package", "framework-apexd_test")
+	} else if global.ApexSystemServerJars.Len() > 0 && len(unknown) > 0 && !android.IsModuleInVersionedSdk(ctx.Module()) {
+		// For non test apexes, make sure that all contents are actually declared in make.
 		ctx.ModuleErrorf("%s in contents must also be declared in PRODUCT_APEX_SYSTEM_SERVER_JARS", unknown)
 	}
 
