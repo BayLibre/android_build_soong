@@ -1516,7 +1516,23 @@ android_app {
     ],
 }
 `,
-	},
+	}, {
+		desc: "LOCAL_OPTIONAL_USES_LIBRARIES",
+		in: `
+include $(CLEAR_VARS)
+LOCAL_MODULE := foo
+LOCAL_MODULE_PATH := $(TARGET_OUT_DATA_APPS)
+LOCAL_MODULE_PATH := $(TARGET_OUT_OPTIONAL_EXECUTABLES)
+LOCAL_CTS_TEST_PACKAGE := bar
+LOCAL_USE_APPT2 := blah
+include $(BUILD_PACKAGE)
+`,
+		expected: `
+android_app {
+    name: "foo",
+
+}
+`},
 }
 
 func TestEndToEnd(t *testing.T) {

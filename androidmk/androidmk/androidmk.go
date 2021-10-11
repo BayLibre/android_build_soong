@@ -284,8 +284,12 @@ func handleAssignment(file *bpFile, assignment *mkparser.Assignment, c *conditio
 	}
 
 	name := assignment.Name.Value(nil)
+	value := assignment.Value.Dump()
 	prefix := ""
 
+	if isIgnoreMakeLine(name, value) {
+		return
+	}
 	if newName := renameVariableWithInvalidCharacters(name); newName != "" {
 		file.warnf("Variable names cannot contain: %s. Renamed \"%s\" to \"%s\"", invalidVariableStrings(), name, newName)
 		file.variableRenames[name] = newName
@@ -348,6 +352,16 @@ func handleAssignment(file *bpFile, assignment *mkparser.Assignment, c *conditio
 	if err != nil {
 		file.errorf(assignment, err.Error())
 	}
+}
+
+func isIgnoreMakeLine(name string, value string) bool {
+	if name == "LOCAL_CTS_TEST_PACKAGE" || name == "LOCAL_USE_APPT2" {
+		return true
+	}
+	if name == "LOCAL_MODULE_PATH" && (value == "$(TARGET_OUT_OPTIONAL_EXECUTABLES)" || value == "$(TARGET_OUT_DATA_APPS)") {
+		return true
+	}
+	return false
 }
 
 func handleModuleConditionals(file *bpFile, directive *mkparser.Directive, conds []*conditional) {
