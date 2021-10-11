@@ -419,6 +419,7 @@ type ModuleContext interface {
 	PackageFile(installPath InstallPath, name string, srcPath Path) PackagingSpec
 
 	CheckbuildFile(srcPath Path)
+	ObjFile(srcPath WritablePath)
 	TidyFile(srcPath WritablePath)
 
 	InstallInData() bool
@@ -474,7 +475,10 @@ type Module interface {
 
 	DepsMutator(BottomUpMutatorContext)
 
+	BlueprintDir() string // returns blueprintDir
+
 	base() *ModuleBase
+	Base() *ModuleBase // same as base() but exported for cc/tidy.go
 	Disable()
 	Enabled() bool
 	Target() Target
@@ -1200,7 +1204,8 @@ type ModuleBase struct {
 	installFiles         InstallPaths
 	installFilesDepSet   *installPathsDepSet
 	checkbuildFiles      Paths
-	tidyFiles            WritablePaths
+	ObjFileGroups        map[string]WritablePaths // map from (variant groups) to (paths of obj files)
+	TidyFileGroups       map[string]WritablePaths // map from (variant groups) to (paths of tidy files)
 	packagingSpecs       []PackagingSpec
 	packagingSpecsDepSet *packagingSpecsDepSet
 	noticeFiles          Paths
@@ -1216,7 +1221,8 @@ type ModuleBase struct {
 	// Only set on the final variant of each module
 	installTarget    WritablePath
 	checkbuildTarget WritablePath
-	tidyTarget       WritablePath
+	ObjTargetGroups  map[string]WritablePath // each variant group has one target path
+	TidyTargetGroups map[string]WritablePath // each variant group has one target path
 	blueprintDir     string
 
 	hooks hooks
@@ -1264,6 +1270,31 @@ func (b bp2buildInfo) BazelRuleLoadLocation() string {
 // BazelAttributes returns the Bazel attributes of a bp2build converted target.
 func (b bp2buildInfo) BazelAttributes() []interface{} {
 	return []interface{}{&b.CommonAttrs, b.Attrs}
+}
+
+// A phony obj/tidy build target has two or more group name suffixes.
+// Users can select either the "" variant group with ALL variant targets,
+// or some Os().Name group to quickly test only variants with that OS name.
+// Example Os().Name: "linux_glibc", "android", "windows", "darwin", etc.
+func findVariantGroupNames(ctx *moduleContext) []string {
+	return []string{"", ctx.Os().Name}
+}
+
+// Add ctx.(obj|tidy)Files into m.(obj|tidy)FileGroups.
+func addToFileGroups(fileGroups map[string]WritablePaths, ctx *moduleContext, files WritablePaths) map[string]WritablePaths {
+	if len(files) > 0 {
+		if fileGroups == nil {
+			fileGroups = make(map[string]WritablePaths)
+		}
+		for _, group := range findVariantGroupNames(ctx) {
+			fileGroups[group] = append(fileGroups[group], files...)
+		}
+	}
+	return fileGroups
+}
+
+func (m *ModuleBase) BlueprintDir() string {
+	return m.blueprintDir
 }
 
 func (m *ModuleBase) addBp2buildInfo(info bp2buildInfo) {
@@ -1369,6 +1400,10 @@ func (m *ModuleBase) String() string {
 // BaseModuleName returns the name of the module as specified in the blueprints file.
 func (m *ModuleBase) BaseModuleName() string {
 	return String(m.nameProperties.Name)
+}
+
+func (m *ModuleBase) Base() *ModuleBase {
+	return m
 }
 
 func (m *ModuleBase) base() *ModuleBase {
@@ -1774,29 +1809,31 @@ func (m *ModuleBase) VintfFragments() Paths {
 	return append(Paths{}, m.vintfFragmentsPaths...)
 }
 
+func namespacePrefix(m ModuleContext) string {
+	if prefix := m.Namespace().id; prefix != "" {
+		return prefix + "-"
+	}
+	return ""
+}
+
 func (m *ModuleBase) generateModuleTarget(ctx ModuleContext) {
 	var allInstalledFiles InstallPaths
 	var allCheckbuildFiles Paths
-	var allTidyFiles WritablePaths
 	ctx.VisitAllModuleVariants(func(module Module) {
 		a := module.base()
 		allInstalledFiles = append(allInstalledFiles, a.installFiles...)
-		// A module's -{checkbuild,tidy} phony targets should
+		// A module's -checkbuild phony targets should
 		// not be created if the module is not exported to make.
 		// Those could depend on the build target and fail to compile
 		// for the current build target.
-		if !ctx.Config().KatiEnabled() || !shouldSkipAndroidMkProcessing(a) {
+		if !ctx.Config().KatiEnabled() || !ShouldSkipAndroidMkProcessing(a) {
 			allCheckbuildFiles = append(allCheckbuildFiles, a.checkbuildFiles...)
-			allTidyFiles = append(allTidyFiles, a.tidyFiles...)
 		}
 	})
 
 	var deps Paths
 
-	namespacePrefix := ctx.Namespace().id
-	if namespacePrefix != "" {
-		namespacePrefix = namespacePrefix + "-"
-	}
+	namespacePrefix := namespacePrefix(ctx)
 
 	if len(allInstalledFiles) > 0 {
 		name := namespacePrefix + ctx.ModuleName() + "-install"
@@ -1810,13 +1847,6 @@ func (m *ModuleBase) generateModuleTarget(ctx ModuleContext) {
 		ctx.Phony(name, allCheckbuildFiles...)
 		m.checkbuildTarget = PathForPhony(ctx, name)
 		deps = append(deps, m.checkbuildTarget)
-	}
-
-	if len(allTidyFiles) > 0 {
-		name := namespacePrefix + ctx.ModuleName() + "-tidy"
-		ctx.Phony(name, allTidyFiles.Paths()...)
-		m.tidyTarget = PathForPhony(ctx, name)
-		deps = append(deps, m.tidyTarget)
 	}
 
 	if len(deps) > 0 {
@@ -2027,7 +2057,8 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 
 		m.installFiles = append(m.installFiles, ctx.installFiles...)
 		m.checkbuildFiles = append(m.checkbuildFiles, ctx.checkbuildFiles...)
-		m.tidyFiles = append(m.tidyFiles, ctx.tidyFiles...)
+		m.ObjFileGroups = addToFileGroups(m.ObjFileGroups, ctx, ctx.objFiles)
+		m.TidyFileGroups = addToFileGroups(m.TidyFileGroups, ctx, ctx.tidyFiles)
 		m.packagingSpecs = append(m.packagingSpecs, ctx.packagingSpecs...)
 		m.katiInstalls = append(m.katiInstalls, ctx.katiInstalls...)
 		m.katiSymlinks = append(m.katiSymlinks, ctx.katiSymlinks...)
@@ -2225,6 +2256,7 @@ type moduleContext struct {
 	packagingSpecs  []PackagingSpec
 	installFiles    InstallPaths
 	checkbuildFiles Paths
+	objFiles        WritablePaths
 	tidyFiles       WritablePaths
 	module          Module
 	phonies         map[string]Paths
@@ -3063,6 +3095,10 @@ func (m *moduleContext) CheckbuildFile(srcPath Path) {
 	m.checkbuildFiles = append(m.checkbuildFiles, srcPath)
 }
 
+func (m *moduleContext) ObjFile(srcPath WritablePath) {
+	m.objFiles = append(m.objFiles, srcPath)
+}
+
 func (m *moduleContext) TidyFile(srcPath WritablePath) {
 	m.tidyFiles = append(m.tidyFiles, srcPath)
 }
@@ -3325,9 +3361,10 @@ func parentDir(dir string) string {
 
 type buildTargetSingleton struct{}
 
-func addAncestors(ctx SingletonContext, dirMap map[string]Paths, mmName func(string) string) []string {
+func AddAncestors(ctx SingletonContext, dirMap map[string]WritablePaths, mmName func(string) string) ([]string, []string) {
 	// Ensure ancestor directories are in dirMap
 	// Make directories build their direct subdirectories
+	// Returns a slice of all directories and a slice of top-level directories.
 	dirs := SortedStringKeys(dirMap)
 	for _, dir := range dirs {
 		dir := parentDir(dir)
@@ -3340,34 +3377,31 @@ func addAncestors(ctx SingletonContext, dirMap map[string]Paths, mmName func(str
 		}
 	}
 	dirs = SortedStringKeys(dirMap)
+	var topDirs []string
 	for _, dir := range dirs {
 		p := parentDir(dir)
 		if p != "." && p != "/" {
 			dirMap[p] = append(dirMap[p], PathForPhony(ctx, mmName(dir)))
+		} else if dir != "." && dir != "/" && dir != "" {
+			topDirs = append(topDirs, dir)
 		}
 	}
-	return SortedStringKeys(dirMap)
+	return SortedStringKeys(dirMap), topDirs
 }
 
 func (c *buildTargetSingleton) GenerateBuildActions(ctx SingletonContext) {
 	var checkbuildDeps Paths
-	var tidyDeps Paths
 
 	mmTarget := func(dir string) string {
 		return "MODULES-IN-" + strings.Replace(filepath.Clean(dir), "/", "-", -1)
 	}
-	mmTidyTarget := func(dir string) string {
-		return "tidy-" + strings.Replace(filepath.Clean(dir), "/", "-", -1)
-	}
 
-	modulesInDir := make(map[string]Paths)
-	tidyModulesInDir := make(map[string]Paths)
+	modulesInDir := make(map[string]WritablePaths)
 
 	ctx.VisitAllModules(func(module Module) {
 		blueprintDir := module.base().blueprintDir
 		installTarget := module.base().installTarget
 		checkbuildTarget := module.base().checkbuildTarget
-		tidyTarget := module.base().tidyTarget
 
 		if checkbuildTarget != nil {
 			checkbuildDeps = append(checkbuildDeps, checkbuildTarget)
@@ -3376,16 +3410,6 @@ func (c *buildTargetSingleton) GenerateBuildActions(ctx SingletonContext) {
 
 		if installTarget != nil {
 			modulesInDir[blueprintDir] = append(modulesInDir[blueprintDir], installTarget)
-		}
-
-		if tidyTarget != nil {
-			tidyDeps = append(tidyDeps, tidyTarget)
-			// tidyTarget is in modulesInDir so it will be built with "mm".
-			modulesInDir[blueprintDir] = append(modulesInDir[blueprintDir], tidyTarget)
-			// tidyModulesInDir contains tidyTarget but not checkbuildTarget
-			// or installTarget, so tidy targets in a directory can be built
-			// without other checkbuild or install targets.
-			tidyModulesInDir[blueprintDir] = append(tidyModulesInDir[blueprintDir], tidyTarget)
 		}
 	})
 
@@ -3397,30 +3421,18 @@ func (c *buildTargetSingleton) GenerateBuildActions(ctx SingletonContext) {
 	// Create a top-level checkbuild target that depends on all modules
 	ctx.Phony("checkbuild"+suffix, checkbuildDeps...)
 
-	// Create a top-level tidy target that depends on all modules
-	ctx.Phony("tidy"+suffix, tidyDeps...)
-
-	dirs := addAncestors(ctx, tidyModulesInDir, mmTidyTarget)
-
-	// Kati does not generate tidy-* phony targets yet.
-	// Create a tidy-<directory> target that depends on all subdirectories
-	// and modules in the directory.
-	for _, dir := range dirs {
-		ctx.Phony(mmTidyTarget(dir), tidyModulesInDir[dir]...)
-	}
-
 	// Make will generate the MODULES-IN-* targets
 	if ctx.Config().KatiEnabled() {
 		return
 	}
 
-	dirs = addAncestors(ctx, modulesInDir, mmTarget)
+	dirs, _ := AddAncestors(ctx, modulesInDir, mmTarget)
 
 	// Create a MODULES-IN-<directory> target that depends on all modules in a directory, and
 	// depends on the MODULES-IN-* targets of all of its subdirectories that contain Android.bp
 	// files.
 	for _, dir := range dirs {
-		ctx.Phony(mmTarget(dir), modulesInDir[dir]...)
+		ctx.Phony(mmTarget(dir), modulesInDir[dir].Paths()...)
 	}
 
 	// Create (host|host-cross|target)-<OS> phony rules to build a reduced checkbuild.

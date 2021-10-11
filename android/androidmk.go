@@ -788,7 +788,7 @@ func translateAndroidModule(ctx SingletonContext, w io.Writer, mod blueprint.Mod
 	provider AndroidMkDataProvider) error {
 
 	amod := mod.(Module).base()
-	if shouldSkipAndroidMkProcessing(amod) {
+	if ShouldSkipAndroidMkProcessing(amod) {
 		return nil
 	}
 
@@ -874,7 +874,7 @@ func WriteAndroidMkData(w io.Writer, data AndroidMkData) {
 
 func translateAndroidMkEntriesModule(ctx SingletonContext, w io.Writer, mod blueprint.Module,
 	provider AndroidMkEntriesProvider) error {
-	if shouldSkipAndroidMkProcessing(mod.(Module).base()) {
+	if ShouldSkipAndroidMkProcessing(mod.(Module).base()) {
 		return nil
 	}
 
@@ -887,7 +887,7 @@ func translateAndroidMkEntriesModule(ctx SingletonContext, w io.Writer, mod blue
 	return nil
 }
 
-func shouldSkipAndroidMkProcessing(module *ModuleBase) bool {
+func ShouldSkipAndroidMkProcessing(module *ModuleBase) bool {
 	if !module.commonProperties.NamespaceExportedToMake {
 		// TODO(jeffrygaston) do we want to validate that there are no modules being
 		// exported to Kati that depend on this module?
