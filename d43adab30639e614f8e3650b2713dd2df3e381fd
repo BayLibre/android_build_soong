@@ -16,6 +16,23 @@
       "message": "flame_hwasan-userdebug is broken at git_master branch now. shall rerun tests later.\n",
       "revId": "d43adab30639e614f8e3650b2713dd2df3e381fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0748afda_97badc91",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-12T22:58:34Z",
+      "side": 1,
+      "message": "The variant string comes from structured data on the module, and this is trying to make decisions based on the string representation rather than the structured data.  It needs to use the structured data directly instead, for example Module.InRecovery().",
+      "revId": "d43adab30639e614f8e3650b2713dd2df3e381fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
