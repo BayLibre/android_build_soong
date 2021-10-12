@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38771f02_bf3658fc",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-12T06:01:46Z",
+      "side": 1,
+      "message": "\"The iteration order over maps is not specified and is not guaranteed to be the same from one iteration to the next.\" \n\nhttps://golang.org/ref/spec#For_statements\n\nIs this actually stable? Same for below.",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 2
+      },
+      "revId": "8848dcc429b3f66454c04748eb0f68d037f6cfd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
