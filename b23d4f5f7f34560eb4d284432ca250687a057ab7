@@ -728,6 +728,30 @@
       },
       "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efbde2f2_d8bd7cc7",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-12T08:12:42Z",
+      "side": 1,
+      "message": "Re Ulya:\n\n\u003e I was not suggesting to remove/change the existing dependencies (that indeed would be dangerous and complex)\n\nAh, I misunderstood your suggestion. We are on the same page now :)\n\n\u003e only to add new direct dependencies of system.img on SS jars\n\nSince the dependencies are existing, new direct dependencies will just be duplicates, which IMO do not provide much value when everything is good, and will conceal real problems if any (such as forgetting to add dexpreopted files as dependencies of apexes). I\u0027d prefer keeping this as a check rather than adding new direct dependencies, but thank you for the suggestions anyway!\n\n\u003e Might be worth to have a custom error message.\n\nYes, the custom error message is in the makefile.\n\n\nRe Martin:\n\n\u003e my understanding of the problem is that those second edges currently aren\u0027t known to ninja, or they aren\u0027t connected to the DAG starting with system.img. Is that correct?\n\nNo, that\u0027s not true. The second edges are known to ninja. It\u0027s just that they exist ONLY IF `dexpreopter.dexpreopt` is called and `dexpreopter.dexpreoptDisabled` returns false. However, the condition may not hold for plenty of reasons (e.g., prebuilt jar not deapexed, misconfiguration, wrong logic, etc.). Those are what I\u0027m trying to fight against with a build-time check.\n\nI just realized that it\u0027s not practical to make the existing dependency chains more reliable. Those dependency chains are more like \"per-module\" things. If we do checks from a \"per-module\" perspective, there are good reasons that we do want those second edges (module -\u003e dexpreopted files) to be missing for some modules: there can be multiple modules for the same jar (because of variants, prebuilt/source, etc), and we only want to add the second edge for one of the modules but not others.\n\nTherefore, what I really want is a check from a \"global\" perspective, to make sure that there is exactly one module that depends on dexpreopted files for each jar. That\u0027s what this CL is doing.\n\n\u003e My worry is that the global list produced by the new singleton may not accurately reflect the packages that eventually get installed in the system image.\n\nThe global list is based on PRODUCT_SYSTEM_SERVER_JARS and PRODUCT_APEX_SYSTEM_SERVER_JARS, and these variables are always supposed to reflect what the system server is expecting. They are not only used by this check, but also used for determining the class loader context when calling dex2oat. For example, if someone wants to build a system image without com.android.appsearch in PRODUCT_PACKAGES, then PRODUCT_APEX_SYSTEM_SERVER_JARS must be updated, or it will be a real error already because the dex2oat command for other system server jars will fail.",
+      "parentUuid": "67e8bf0a_16718486",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 88,
+        "endChar": 10
+      },
+      "revId": "b23d4f5f7f34560eb4d284432ca250687a057ab7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
