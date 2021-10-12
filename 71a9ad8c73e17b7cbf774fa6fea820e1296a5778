@@ -16,6 +16,24 @@
       "message": "You can add variables here with \"skip\" as the handler to ignore them.",
       "revId": "71a9ad8c73e17b7cbf774fa6fea820e1296a5778",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b45beab0_e2eb47f1",
+        "filename": "androidmk/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2021-10-12T18:58:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec923e00_f9b23730",
+      "revId": "71a9ad8c73e17b7cbf774fa6fea820e1296a5778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

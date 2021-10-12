@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20adaa9e_a6b7e7a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2021-10-12T18:58:43Z",
+      "side": 1,
+      "message": "What do you think of this new approach?",
+      "revId": "c68191d09f9f8f8a32ce83f5e94285049de9df77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
