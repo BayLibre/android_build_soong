@@ -22,6 +22,30 @@
       },
       "revId": "688cea69f4e08d1edfea6b2f7173200988573e7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76876e3e_27338a03",
+        "filename": "apex/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-12T10:58:28Z",
+      "side": 0,
+      "message": "No. Header jars are the result of running the classes jars through turbine which removes the bodies of any concrete classes (presumably replacing them with something like \"throw UnsupportedOperationException();\" like we use in the generated stubs). They still contain implementation specific methods, classes, fields.\n\nIf the classes jar changes then the headers jar is regenerated but if it is the same as the previously generated headers jar then the build treats it as if it was unchanged. That means that other libraries do not have to be rebuilt if you simply change the body of a method saving a significant amount of build time.",
+      "parentUuid": "21aad6b6_2c3d967e",
+      "range": {
+        "startLine": 282,
+        "startChar": 4,
+        "endLine": 282,
+        "endChar": 67
+      },
+      "revId": "688cea69f4e08d1edfea6b2f7173200988573e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
