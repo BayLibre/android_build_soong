@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a34fdce7_bef08ba2",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-12T17:45:23Z",
+      "side": 1,
+      "message": "Please add a comment here explaining the rationale for this check, including that it checks the contents of PRODUCT_SYSTEM_SERVER_JARS and PRODUCT_APEX_SYSTEM_SERVER_JARS against what gets installed in the system image.",
+      "revId": "cb6532ffcafa78ab85a1276472b77ad176acc66c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4818c3ee_21e84ed1",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-12T17:45:23Z",
+      "side": 1,
+      "message": "Can this module be tested, e.g. in some of the system server classpath tests?",
+      "range": {
+        "startLine": 31,
+        "startChar": 34,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "cb6532ffcafa78ab85a1276472b77ad176acc66c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3dc41a1_a8f5abf5",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-12T17:45:23Z",
+      "side": 1,
+      "message": "Please document that these are paths (or include it in the variable name).",
+      "revId": "cb6532ffcafa78ab85a1276472b77ad176acc66c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "158853f1_36637efc",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-12T17:45:23Z",
+      "side": 1,
+      "message": "This condition can use an explanation.",
+      "range": {
+        "startLine": 55,
+        "startChar": 49,
+        "endLine": 55,
+        "endChar": 78
+      },
+      "revId": "cb6532ffcafa78ab85a1276472b77ad176acc66c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
