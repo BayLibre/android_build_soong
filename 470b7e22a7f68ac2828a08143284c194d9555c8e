@@ -16,6 +16,23 @@
       "message": "Friendly ping. Paul, may I have an owner\u0027s approval?",
       "revId": "470b7e22a7f68ac2828a08143284c194d9555c8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59b7f9e8_4e1ea389",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-12T13:10:22Z",
+      "side": 1,
+      "message": "apex_test.go is already far too big. Any chance you could extract these and similar tests into a new dexpreopt_test.go file? As a follow up CL.",
+      "revId": "470b7e22a7f68ac2828a08143284c194d9555c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
