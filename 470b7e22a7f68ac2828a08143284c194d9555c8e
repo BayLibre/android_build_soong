@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52893a76_890a1253",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-12T03:27:59Z",
+      "side": 1,
+      "message": "Friendly ping. Paul, may I have an owner\u0027s approval?",
+      "revId": "470b7e22a7f68ac2828a08143284c194d9555c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
