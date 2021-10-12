@@ -16,6 +16,24 @@
       "message": "The approach LGTM, only the problem of filtering DEXPREOPT_SYSTEMSERVER_ARTIFACTS by the present modules remains so +1.",
       "revId": "06bb00340ee2f847e11d97476632c69dd029db66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d1c9f27_c982a29c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-12T08:31:11Z",
+      "side": 1,
+      "message": "Changed. The solution is not to filter the files, but to disable the check completely on unbundled builds. None of the artifacts should be built if only part of the jars are built in the unbundled case.",
+      "parentUuid": "de142388_ff3e7f8e",
+      "revId": "06bb00340ee2f847e11d97476632c69dd029db66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
