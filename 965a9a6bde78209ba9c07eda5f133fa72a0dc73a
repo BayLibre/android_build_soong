@@ -22,6 +22,30 @@
       },
       "revId": "965a9a6bde78209ba9c07eda5f133fa72a0dc73a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f04effb9_b7d89ca4",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 8353,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-12T03:27:15Z",
+      "side": 1,
+      "message": "Thank you for the tip. That makes the code cleaner :)",
+      "parentUuid": "476d9446_a8a188bc",
+      "range": {
+        "startLine": 8352,
+        "startChar": 0,
+        "endLine": 8353,
+        "endChar": 71
+      },
+      "revId": "965a9a6bde78209ba9c07eda5f133fa72a0dc73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
