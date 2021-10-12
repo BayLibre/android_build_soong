@@ -34,6 +34,24 @@
       "parentUuid": "2b8f32db_53ef7cff",
       "revId": "2579631bd1d816d207bde924a0108d4b515856a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68e289f8_1da3d435",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-12T18:06:14Z",
+      "side": 1,
+      "message": "They\u0027re already generated without neither \"src\" nor \"srcs\" properties.\n\nIf you mean the \"jars\" property, then when does it not work? Because I couldn\u0027t entice any error when using the prebuilt core-icu4j on master-art, which doesn\u0027t have the source module in external/icu/android_icu4j/Android.bp.\n\nSo it may be worth checking if it\u0027s really necessary anymore, but not blocking this CL.",
+      "parentUuid": "4e62ae3e_776fd61d",
+      "revId": "2579631bd1d816d207bde924a0108d4b515856a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
