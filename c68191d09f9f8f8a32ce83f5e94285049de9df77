@@ -16,6 +16,23 @@
       "message": "What do you think of this new approach?",
       "revId": "c68191d09f9f8f8a32ce83f5e94285049de9df77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab6b3419_87f17d6d",
+        "filename": "androidmk/androidmk/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-12T22:53:06Z",
+      "side": 1,
+      "message": "Can you put a comment here explaining that these are obsolete and don\u0027t produce and Android.bp translation?",
+      "revId": "c68191d09f9f8f8a32ce83f5e94285049de9df77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
