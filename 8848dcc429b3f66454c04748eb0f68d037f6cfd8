@@ -22,6 +22,30 @@
       },
       "revId": "8848dcc429b3f66454c04748eb0f68d037f6cfd8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "194a1378_d9ad478a",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-12T17:37:50Z",
+      "side": 1,
+      "message": "Previously we were iterating over the map, hence the need to sort. Now we iterate over haystack (list), so it will both be stable and not require sorting.\n\nBut I also realized we could drop one iteration of haystack!",
+      "parentUuid": "38771f02_bf3658fc",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 2
+      },
+      "revId": "8848dcc429b3f66454c04748eb0f68d037f6cfd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
