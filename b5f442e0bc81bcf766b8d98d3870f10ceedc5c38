@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8a0ab2f_71f5954d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-12T16:05:55Z",
+      "side": 1,
+      "message": "this looks like there are only changes to request_type.go -- do we need to make any changes to prebuilt shared libraries?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "b5f442e0bc81bcf766b8d98d3870f10ceedc5c38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8f57a3d_5970e1f8",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-12T16:05:55Z",
+      "side": 1,
+      "message": "Did you test this query on a module converted from libclang_rt_prebuilt_library_shared?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 52
+      },
+      "revId": "b5f442e0bc81bcf766b8d98d3870f10ceedc5c38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0da1dc8d_a16cdee4",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-12T16:05:55Z",
+      "side": 1,
+      "message": "the changes to this file are unrelated.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "b5f442e0bc81bcf766b8d98d3870f10ceedc5c38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
