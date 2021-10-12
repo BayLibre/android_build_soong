@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a101ffe_c1b95a7b",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-10-12T19:20:43Z",
+      "side": 1,
+      "message": "If we propagate license requirements through a dependency needlessly, we do not increase any risk. The cost of needlessly complying with a notice requirement is negligible.\n\nIf we fail to propagate a necessary license requirement through a dependency, we increase risk a lot.\n\nUnless and until there is a specific justification for not propagating, everything has to propagate. And by \"specific justification\", I mean one that would satisfy the lawyers. A \"TODO\" does not meet that bar.",
+      "revId": "1da88840b84e539211a542179236767e1afe3420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
