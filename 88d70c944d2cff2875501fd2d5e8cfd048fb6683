@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70e692fb_7d11bf57",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-12T22:36:51Z",
+      "side": 1,
+      "message": "You could use .ImplicitTool() with the path to libc++.so.",
+      "parentUuid": "44bf4a66_69b556c5",
+      "revId": "88d70c944d2cff2875501fd2d5e8cfd048fb6683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c97876ef_5981e917",
         "filename": "android_sdk/sdk_repo_host.go",
         "patchSetId": 10
@@ -190,6 +208,30 @@
       "side": 1,
       "message": "This is a string, not a Path, as it\u0027s not a path inside the source tree or output directory. In general, I\u0027d question the usefulness of attempting to do correct incremental builds across system updates.",
       "parentUuid": "39009cab_1781ea06",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 8
+      },
+      "revId": "88d70c944d2cff2875501fd2d5e8cfd048fb6683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a25ffd3_af165ac9",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-12T22:36:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0469bc31_34f77372",
       "range": {
         "startLine": 155,
         "startChar": 4,
