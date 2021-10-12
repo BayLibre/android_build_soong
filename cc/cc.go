@@ -3250,13 +3250,8 @@ func (c *Module) TestFor() []string {
 }
 
 func (c *Module) UniqueApexVariations() bool {
-	if u, ok := c.compiler.(interface {
-		uniqueApexVariations() bool
-	}); ok {
-		return u.uniqueApexVariations()
-	} else {
-		return false
-	}
+	// We no longer use use_apex_name_macro
+	return false
 }
 
 func (c *Module) EverInstallable() bool {
