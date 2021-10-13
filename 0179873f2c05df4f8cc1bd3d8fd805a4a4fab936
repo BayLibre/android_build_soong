@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e506b6f2_af530143",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-13T13:04:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3f315ae_04ffe234",
+      "revId": "0179873f2c05df4f8cc1bd3d8fd805a4a4fab936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee3002a1_1cda015e",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-13T09:38:01Z",
       "side": 1,
       "message": "Is this supposed to be disabled?",
+      "range": {
+        "startLine": 302,
+        "startChar": 6,
+        "endLine": 302,
+        "endChar": 41
+      },
+      "revId": "0179873f2c05df4f8cc1bd3d8fd805a4a4fab936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cb71a72_e8db152c",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-13T13:04:59Z",
+      "side": 1,
+      "message": "yes, however, Colin checked in the missing dep, so this is obsolete now.",
+      "parentUuid": "ee3002a1_1cda015e",
       "range": {
         "startLine": 302,
         "startChar": 6,
