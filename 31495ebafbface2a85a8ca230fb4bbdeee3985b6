@@ -46,6 +46,30 @@
       },
       "revId": "31495ebafbface2a85a8ca230fb4bbdeee3985b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bc5136d_5295b3c7",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3252,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-13T23:24:04Z",
+      "side": 1,
+      "message": "You can remove this implementation though, ApexModuleBase has a default implementation that returns false.",
+      "parentUuid": "6ebb046e_dfcb001c",
+      "range": {
+        "startLine": 3252,
+        "startChar": 17,
+        "endLine": 3252,
+        "endChar": 37
+      },
+      "revId": "31495ebafbface2a85a8ca230fb4bbdeee3985b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
