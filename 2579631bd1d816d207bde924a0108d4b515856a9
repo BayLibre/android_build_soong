@@ -87,6 +87,24 @@
       "message": "This has passed presubmit but is it safe to submit this? Will it fail in master-art?",
       "revId": "2579631bd1d816d207bde924a0108d4b515856a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d958c5e_a184a96d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-13T12:38:18Z",
+      "side": 1,
+      "message": "It should be fine in master-art - I\u0027ve been testing with it for https://r.android.com/1853031. (And also without it for https://r.android.com/1854516, which removes core-icu4j and conscrypt from the make targets and hence avoids this issue too.)",
+      "parentUuid": "fde7702b_23e2a0ea",
+      "revId": "2579631bd1d816d207bde924a0108d4b515856a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
