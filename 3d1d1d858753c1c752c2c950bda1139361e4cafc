@@ -87,6 +87,24 @@
       "parentUuid": "06e4aab4_c58c8ab4",
       "revId": "3d1d1d858753c1c752c2c950bda1139361e4cafc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90a31434_2114b391",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2021-10-13T05:36:28Z",
+      "side": 1,
+      "message": "it\u0027s far from common, we ended up removing this change and we\u0027ll pick it back only if strictly required by one of our devices, thanks!",
+      "parentUuid": "4402e28e_44e3acba",
+      "revId": "3d1d1d858753c1c752c2c950bda1139361e4cafc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
