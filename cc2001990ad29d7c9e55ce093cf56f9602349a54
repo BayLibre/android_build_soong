@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "747f042b_2d2d6c01",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-10-13T09:05:06Z",
+      "side": 1,
+      "message": "I\u0027ll leave it as it is then; I use IntelliJ so I can\u0027t speak for any other IDEs. \n\nIn general, instead of \"any other Go-aware IDE\", I think it\u0027s better to provide instructions for specific IDEs because that\u0027s easier to follow.",
+      "parentUuid": "79c5aad2_7c084ae3",
+      "range": {
+        "startLine": 564,
+        "startChar": 29,
+        "endLine": 564,
+        "endChar": 37
+      },
+      "revId": "cc2001990ad29d7c9e55ce093cf56f9602349a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9decd246_a1e714cc",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "This is a mis-paste of bug number after the 0",
       "parentUuid": "9decd246_a1e714cc",
+      "range": {
+        "startLine": 610,
+        "startChar": 40,
+        "endLine": 610,
+        "endChar": 50
+      },
+      "revId": "cc2001990ad29d7c9e55ce093cf56f9602349a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79f97be8_ec718c6e",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-10-13T09:05:06Z",
+      "side": 1,
+      "message": "indeed, indeed, I have no idea how this ended up being here. Fixed.",
+      "parentUuid": "271904a0_a8fe6970",
       "range": {
         "startLine": 610,
         "startChar": 40,
