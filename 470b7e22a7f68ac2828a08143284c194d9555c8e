@@ -33,6 +33,24 @@
       "message": "apex_test.go is already far too big. Any chance you could extract these and similar tests into a new dexpreopt_test.go file? As a follow up CL.",
       "revId": "470b7e22a7f68ac2828a08143284c194d9555c8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a38dbd6_3a7fd8ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-13T03:17:04Z",
+      "side": 1,
+      "message": "Tests related to dexpreopt are almost all in java/dexpreopt_test.go. The two test cases added by this CL checks if the dexpreopted files are added as LOCAL_REQUIRED_MODULES of the apexes, so they are added to apex/apex_test.go. They are the only two test cases that are related to both dexpreopt and apex, but if you think it\u0027s good to move these two test cases into a new apex/dexpreopt_test.go file, sure, I can make the change as a follow up CL.",
+      "parentUuid": "59b7f9e8_4e1ea389",
+      "revId": "470b7e22a7f68ac2828a08143284c194d9555c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
