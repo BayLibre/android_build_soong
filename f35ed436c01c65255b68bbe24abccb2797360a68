@@ -69,6 +69,30 @@
       },
       "revId": "f35ed436c01c65255b68bbe24abccb2797360a68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f7b360d_9f5a0bd1",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2021-10-13T16:39:04Z",
+      "side": 1,
+      "message": "No longer reusing. Created separate sdk for system server. Updated accordingly.",
+      "parentUuid": "6b8ae158_df2fa6fb",
+      "range": {
+        "startLine": 128,
+        "startChar": 20,
+        "endLine": 128,
+        "endChar": 40
+      },
+      "revId": "f35ed436c01c65255b68bbe24abccb2797360a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
