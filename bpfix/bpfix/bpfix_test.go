@@ -160,6 +160,11 @@ func runPass(t *testing.T, in, out string, innerTest func(*Fixer) error) {
 		prev = got
 		got = string(out)
 		passes++
+
+		// for adding package module tests, just need to run once
+		if strings.Contains(got, "package {") {
+			break
+		}
 	}
 
 	if got != expected {
@@ -1605,6 +1610,83 @@ func TestFormatFlagProperty(t *testing.T) {
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
 			runPass(t, test.in, test.out, runPatchListMod(formatFlagProperties))
+		})
+	}
+}
+
+func TestRewriteLicenseProperties(t *testing.T) {
+	tests := []struct {
+		name string
+		in   string
+		out  string
+	}{
+		{
+			name: "license rewriting with one module",
+			in: `
+				android_test {
+					name: "foo",
+					android_license_kinds: ["license_kind"],
+					android_license_conditions: ["license_notice"],
+				}
+			`,
+			out: `
+				package {
+					// See: http://go/android-license-faq
+					default_applicable_licenses: [
+						"Android-Apache-2.0",
+					],
+				}
+
+				android_test {
+					name: "foo",
+					android_license_kinds: ["license_kind"],
+					android_license_conditions: ["license_notice"],
+				}
+			`,
+		},
+		{
+			name: "license rewriting with two modules",
+			in: `
+				android_test {
+					name: "foo1",
+					android_license_kinds: ["license_kind1"],
+					android_license_conditions: ["license_notice1"],
+				}
+
+				android_test {
+					name: "foo2",
+					android_license_kinds: ["license_kind2"],
+					android_license_conditions: ["license_notice2"],
+				}
+			`,
+			out: `
+				package {
+					// See: http://go/android-license-faq
+					default_applicable_licenses: [
+						"Android-Apache-2.0",
+					],
+				}
+
+				android_test {
+					name: "foo1",
+					android_license_kinds: ["license_kind1"],
+					android_license_conditions: ["license_notice1"],
+				}
+
+				android_test {
+					name: "foo2",
+					android_license_kinds: ["license_kind2"],
+					android_license_conditions: ["license_notice2"],
+				}
+			`,
+		},
+		// When "android_license_files" exists, the test requires an Android.mk file (and an
+		// Android.bp file is required as well if the license files locates outside the current
+		// directory), so no related test case is added here.
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			runPass(t, test.in, test.out, runPatchListMod(rewriteLicenseProperties))
 		})
 	}
 }
