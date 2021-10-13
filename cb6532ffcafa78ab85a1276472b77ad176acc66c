@@ -83,6 +83,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20e6e9e3_9bc78754",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-13T15:24:23Z",
+      "side": 1,
+      "message": "A test would be good to guard against false negatives - if it e.g. becomes empty due to a bug we wouldn\u0027t notice in a normal build.\n\nI don\u0027t know of any support for testing MakeVars, but it would be a reasonable thing to have. I\u0027ve asked about it in the \"mainline build\" chat.",
+      "parentUuid": "2acbb1d1_bfeec56f",
+      "range": {
+        "startLine": 31,
+        "startChar": 34,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "cb6532ffcafa78ab85a1276472b77ad176acc66c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3dc41a1_a8f5abf5",
