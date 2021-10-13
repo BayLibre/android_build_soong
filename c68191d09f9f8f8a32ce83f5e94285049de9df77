@@ -33,6 +33,24 @@
       "message": "Can you put a comment here explaining that these are obsolete and don\u0027t produce and Android.bp translation?",
       "revId": "c68191d09f9f8f8a32ce83f5e94285049de9df77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "462526ff_085e9699",
+        "filename": "androidmk/androidmk/android.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2021-10-13T17:18:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab6b3419_87f17d6d",
+      "revId": "c68191d09f9f8f8a32ce83f5e94285049de9df77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
