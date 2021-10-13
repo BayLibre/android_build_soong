@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3f315ae_04ffe234",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-13T09:32:42Z",
+      "side": 1,
+      "message": "Please make the CL description more descriptive?",
+      "revId": "0179873f2c05df4f8cc1bd3d8fd805a4a4fab936",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
