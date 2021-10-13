@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6de09c5_6452beed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-13T18:06:42Z",
+      "side": 1,
+      "message": "Builds, but fails any `bazel/ci/*.sh`. Perhaps the cause is not passing along includes somewhere...? Error is:\n```\nERROR: /usr/local/google/home/alexmarquez/android/out/soong/workspace/system/libziparchive/BUILD.bazel:10:11: Compiling system/libziparchive/zip_archive.cc failed: (Exit 1): clang++ failed: error executing command prebuilts/clang/host/linux-x86/clang-r433403/bin/clang++ -MD -MF bazel-out/k8-fastbuild/bin/system/libziparchive/_objs/libziparchive_bp2build_cc_library_static_cpp/zip_archive.d -iquote . -iquote ... (remaining 213 arguments skipped)\nsystem/libziparchive/zip_archive.cc:218:47: error: no template named \u0027span\u0027 in namespace \u0027std\u0027\n                                         std::span\u003cuint8_t\u003e scan_buffer,\n                                         ~~~~~^\n                                         ```",
+      "revId": "226352f2d713fe1341f688bb79c5676e99fe9839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
