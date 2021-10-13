@@ -22,6 +22,53 @@
       },
       "revId": "f35ed436c01c65255b68bbe24abccb2797360a68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dc4b0b4_dc842733",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-10-13T12:26:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0310d497_2d86ad27",
+      "range": {
+        "startLine": 124,
+        "startChar": 9,
+        "endLine": 124,
+        "endChar": 16
+      },
+      "revId": "f35ed436c01c65255b68bbe24abccb2797360a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b8ae158_df2fa6fb",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-10-13T12:26:02Z",
+      "side": 1,
+      "message": "bad naming pattern, framework-* is for jars that go into bootclasspath. Since you are reusing a jar, maybe name it something more generic?",
+      "range": {
+        "startLine": 128,
+        "startChar": 20,
+        "endLine": 128,
+        "endChar": 40
+      },
+      "revId": "f35ed436c01c65255b68bbe24abccb2797360a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
