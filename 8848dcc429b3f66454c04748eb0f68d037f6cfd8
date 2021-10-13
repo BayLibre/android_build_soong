@@ -46,6 +46,30 @@
       },
       "revId": "8848dcc429b3f66454c04748eb0f68d037f6cfd8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "545fd008_2dfe12a2",
+        "filename": "bazel/properties.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-13T00:05:00Z",
+      "side": 1,
+      "message": "Agh, was careless reading there. SG.",
+      "parentUuid": "194a1378_d9ad478a",
+      "range": {
+        "startLine": 177,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 2
+      },
+      "revId": "8848dcc429b3f66454c04748eb0f68d037f6cfd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
