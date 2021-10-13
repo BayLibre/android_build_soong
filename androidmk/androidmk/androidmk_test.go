@@ -1517,6 +1517,35 @@ android_app {
 }
 `,
 	},
+	{
+		desc: "LOCAL_LICENSE_KINDS, LOCAL_LICENSE_CONDITIONS, LOCAL_NOTICE_FILE",
+		// When "LOCAL_NOTICE_FILE" is valid, the test requires an Android.mk file (and an
+		// Android.bp file is required as well if the license files locates outside the current
+		// directory), so no related test case is added here.
+		in: `
+include $(CLEAR_VARS)
+LOCAL_MODULE := foo
+LOCAL_LICENSE_KINDS := license_kind
+LOCAL_LICENSE_CONDITIONS := license_condition
+LOCAL_NOTICE_FILE := license_notice
+include $(BUILD_PACKAGE)
+`,
+		expected: `
+package {
+    // See: http://go/android-license-faq
+    default_applicable_licenses: [
+	"Android-Apache-2.0",
+    ],
+}
+
+android_app {
+    name: "foo",
+    // ANDROIDMK TRANSLATION ERROR: Only $(LOCAL_PATH)/.. values are allowed
+    // LOCAL_NOTICE_FILE := license_notice
+
+}
+`,
+	},
 }
 
 func TestEndToEnd(t *testing.T) {
