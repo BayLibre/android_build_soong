@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "475b78b2_e59cd956",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3252,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-10-13T23:06:11Z",
+      "side": 1,
+      "message": "can we remove this function?",
+      "range": {
+        "startLine": 3252,
+        "startChar": 17,
+        "endLine": 3252,
+        "endChar": 37
+      },
+      "revId": "31495ebafbface2a85a8ca230fb4bbdeee3985b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
