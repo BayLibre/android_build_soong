@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1777271_89cc3a67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-13T18:30:36Z",
+      "side": 1,
+      "message": "Unit tests being worked on. Going to split out Shared/Static from `prebuiltLibraryBazelHandler` \u0026 `GenerateBazelBuildActions`.",
+      "revId": "961e64a83f33653fdee441a501d43a4d58310ba9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "821e5c30_d6184984",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-10-13T18:15:34Z",
       "side": 1,
       "message": "unit tests?",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 85
+      },
+      "revId": "961e64a83f33653fdee441a501d43a4d58310ba9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02e7997a_875ad0a0",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-13T18:30:36Z",
+      "side": 1,
+      "message": "Yes. I will write/upload.",
+      "parentUuid": "821e5c30_d6184984",
       "range": {
         "startLine": 292,
         "startChar": 0,

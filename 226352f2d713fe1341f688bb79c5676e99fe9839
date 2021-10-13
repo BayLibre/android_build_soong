@@ -39,6 +39,30 @@
       },
       "revId": "226352f2d713fe1341f688bb79c5676e99fe9839",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66574b7f_27b6fccc",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-13T18:30:36Z",
+      "side": 1,
+      "message": "Will-do.",
+      "parentUuid": "99aef13f_8f4fcf51",
+      "range": {
+        "startLine": 350,
+        "startChar": 1,
+        "endLine": 350,
+        "endChar": 5
+      },
+      "revId": "226352f2d713fe1341f688bb79c5676e99fe9839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
