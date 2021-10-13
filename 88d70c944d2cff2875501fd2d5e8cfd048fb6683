@@ -124,6 +124,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae1b1b8d_94901307",
+        "filename": "android_sdk/sdk_repo_host.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-10-13T03:57:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70e692fb_7d11bf57",
+      "revId": "88d70c944d2cff2875501fd2d5e8cfd048fb6683",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c97876ef_5981e917",
