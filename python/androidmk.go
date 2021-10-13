@@ -51,6 +51,12 @@ func (p *binaryDecorator) AndroidMk(base *Module, entries *android.AndroidMkEntr
 	entries.ExtraEntries = append(entries.ExtraEntries,
 		func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 			entries.AddCompatibilityTestSuites(p.binaryProperties.Test_suites...)
+			py2_enabled := base.properties.Version.Py2.Enabled
+			if py2_enabled != nil && *py2_enabled == true {
+				entries.SetString("LOCAL_PYTHON_VERSION", "2")
+			} else {
+				entries.SetString("LOCAL_PYTHON_VERSION", "3")
+			}
 		})
 	base.subAndroidMk(entries, p.pythonInstaller)
 }
