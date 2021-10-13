@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60f44d0b_ac6d7627",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-13T08:15:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a34fdce7_bef08ba2",
+      "revId": "cb6532ffcafa78ab85a1276472b77ad176acc66c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4818c3ee_21e84ed1",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-12T17:45:23Z",
       "side": 1,
       "message": "Can this module be tested, e.g. in some of the system server classpath tests?",
+      "range": {
+        "startLine": 31,
+        "startChar": 34,
+        "endLine": 31,
+        "endChar": 62
+      },
+      "revId": "cb6532ffcafa78ab85a1276472b77ad176acc66c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2acbb1d1_bfeec56f",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-13T08:15:16Z",
+      "side": 1,
+      "message": "This module does not generate any build rule but only generates a Make variable. I couldn\u0027t find a way to test it and I didn\u0027t see any test for MakeVars being done in Android codebase. Do you have any suggestions? I think it\u0027s probably fine without a test because this module is a check and the build will be likely to fail if the module goes wrong.",
+      "parentUuid": "4818c3ee_21e84ed1",
       "range": {
         "startLine": 31,
         "startChar": 34,
@@ -58,6 +100,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3d4f2d2_2aaa4af0",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-13T08:15:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3dc41a1_a8f5abf5",
+      "revId": "cb6532ffcafa78ab85a1276472b77ad176acc66c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "158853f1_36637efc",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-10-12T17:45:23Z",
       "side": 1,
       "message": "This condition can use an explanation.",
+      "range": {
+        "startLine": 55,
+        "startChar": 49,
+        "endLine": 55,
+        "endChar": 78
+      },
+      "revId": "cb6532ffcafa78ab85a1276472b77ad176acc66c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2075eae9_83f8251a",
+        "filename": "java/dexpreopt_check.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-13T08:15:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "158853f1_36637efc",
       "range": {
         "startLine": 55,
         "startChar": 49,
