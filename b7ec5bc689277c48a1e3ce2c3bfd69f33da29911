@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69406685_1315fc8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-13T08:54:46Z",
+      "side": 1,
+      "message": "Paul, I lost your owner\u0027s approval on this CL and aosp/1853593. Would you kindly provide another? Thanks.",
+      "revId": "b7ec5bc689277c48a1e3ce2c3bfd69f33da29911",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
