@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb21480e_5885ed7e",
+        "filename": "rust/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-10-13T22:58:15Z",
+      "side": 1,
+      "message": "Nit: PropertyErrorf() will terminate the function, so you do not need to return afterwards.",
+      "revId": "4c045909717b781f34695630d264f17193b0ce8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
