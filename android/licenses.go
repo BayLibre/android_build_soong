@@ -233,7 +233,8 @@ func licensesPropertyFlattener(ctx ModuleContext) {
 			}
 		}
 
-		if tag != nil && tag.PropagateLicenses() {
+		//if tag != nil && tag.PropagateLicenses() {
+		if true {
 			mergeStringProps(&m.base().commonProperties.Effective_licenses, module.base().commonProperties.Effective_licenses...)
 			mergePathProps(&m.base().commonProperties.Effective_license_text, module.base().commonProperties.Effective_license_text...)
 			mergeStringProps(&m.base().commonProperties.Effective_license_kinds, module.base().commonProperties.Effective_license_kinds...)
