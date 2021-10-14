@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1af1ed2_3d816227",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-10-14T09:30:05Z",
+      "side": 1,
+      "message": "the",
+      "range": {
+        "startLine": 11,
+        "startChar": 43,
+        "endLine": 11,
+        "endChar": 44
+      },
+      "revId": "087ee1ea2914df5e3c530b504c4f399fe91bb94f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7df47a03_843c1dda",
+        "filename": "cc/lto.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-10-14T09:30:05Z",
+      "side": 1,
+      "message": "This is redundant due to the check on line 187.",
+      "range": {
+        "startLine": 194,
+        "startChar": 29,
+        "endLine": 194,
+        "endChar": 49
+      },
+      "revId": "087ee1ea2914df5e3c530b504c4f399fe91bb94f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
