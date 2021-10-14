@@ -61,6 +61,16 @@ genBackedByList() {
   done < "$ndk_list"
 }
 
+genAllBackedByList() {
+  out="$1"
+  shift
+  ndk_list="$1"
+  shift
+  rm -f "$out"
+  touch "$out"
+  echo "$@" >> "$out"
+}
+
 if [[ "$1" == "help" ]]
 then
   printHelp
@@ -68,5 +78,5 @@ elif [[ "$#" -lt 2 ]]
 then
   echo "Wrong argument length. Expecting at least 2 argument representing output path, path to ndk library list, followed by a list of libraries in the Mainline module."
 else
-  genBackedByList "$@"
+  genAllBackedByList "$@"
 fi
