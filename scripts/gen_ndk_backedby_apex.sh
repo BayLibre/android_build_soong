@@ -33,11 +33,11 @@ printHelp() {
 contains() {
   val="$1"
   shift
-  for x in "$@"; do
-    if [ "$x" = "$val" ]; then
-      return 0
-    fi
-  done
+#  for x in "$@"; do
+#    if [ "$x" = "$val" ]; then
+#      return 0
+#    fi
+#  done
   return 1
 }
 
