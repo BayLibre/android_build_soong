@@ -16,13 +16,17 @@ package config
 
 import (
 	"testing"
+
+	"android/soong/android"
 )
 
 func TestExpandVars(t *testing.T) {
 	testCases := []struct {
 		description     string
+		config          android.Config
 		stringScope     exportedStringVariables
 		stringListScope exportedStringListVariables
+		configVars      configDependingVars
 		toExpand        string
 		expectedValues  []string
 	}{
@@ -57,7 +61,7 @@ func TestExpandVars(t *testing.T) {
 				"bar": []string{"baz", "${qux}"},
 			},
 			toExpand:       "${foo}",
-			expectedValues: []string{"baz", "hello"},
+			expectedValues: []string{"baz hello"},
 		},
 		{
 			description: "double level expansion",
@@ -75,7 +79,7 @@ func TestExpandVars(t *testing.T) {
 				"b": []string{"d"},
 			},
 			toExpand:       "${a}",
-			expectedValues: []string{"d", "c"},
+			expectedValues: []string{"d c"},
 		},
 		{
 			description: "double level expansion, with two variables in a string",
@@ -85,7 +89,7 @@ func TestExpandVars(t *testing.T) {
 				"c": []string{"e"},
 			},
 			toExpand:       "${a}",
-			expectedValues: []string{"d", "e"},
+			expectedValues: []string{"d e"},
 		},
 		{
 			description: "triple level expansion with two variables in a string",
@@ -96,13 +100,13 @@ func TestExpandVars(t *testing.T) {
 				"d": []string{"foo"},
 			},
 			toExpand:       "${a}",
-			expectedValues: []string{"foo", "foo", "foo"},
+			expectedValues: []string{"foo foo foo"},
 		},
 	}
 
 	for _, testCase := range testCases {
 		t.Run(testCase.description, func(t *testing.T) {
-			output := expandVar(testCase.toExpand, testCase.stringScope, testCase.stringListScope)
+			output, _ := expandVar(testCase.config, testCase.toExpand, testCase.stringScope, testCase.stringListScope, testCase.configVars)
 			if len(output) != len(testCase.expectedValues) {
 				t.Errorf("Expected %d values, got %d", len(testCase.expectedValues), len(output))
 			}
@@ -119,6 +123,7 @@ func TestExpandVars(t *testing.T) {
 func TestBazelToolchainVars(t *testing.T) {
 	testCases := []struct {
 		name        string
+		config      android.Config
 		vars        []bazelVarExporter
 		expectedOut string
 	}{
@@ -248,7 +253,7 @@ constants = struct(
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			out := bazelToolchainVars(tc.vars...)
+			out := bazelToolchainVars(tc.config, tc.vars...)
 			if out != tc.expectedOut {
 				t.Errorf("Expected \n%s, got \n%s", tc.expectedOut, out)
 			}

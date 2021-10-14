@@ -118,7 +118,8 @@ func (fg *fileGroup) GenerateBazelBuildActions(ctx ModuleContext) bool {
 	}
 
 	bazelCtx := ctx.Config().BazelContext
-	filePaths, ok := bazelCtx.GetOutputFiles(fg.GetBazelLabel(ctx, fg), Common)
+
+	filePaths, ok := bazelCtx.GetOutputFiles(fg.GetBazelLabel(ctx, fg), configKey{Common, CommonOS})
 	if !ok {
 		return false
 	}

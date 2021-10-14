@@ -334,7 +334,11 @@ func ShouldKeepExistingBuildFileForDir(dir string) bool {
 
 // MixedBuildsEnabled checks that a module is ready to be replaced by a
 // converted or handcrafted Bazel target.
-func (b *BazelModuleBase) MixedBuildsEnabled(ctx BazelConversionPathContext) bool {
+func (b *BazelModuleBase) MixedBuildsEnabled(ctx ModuleContext) bool {
+	if ctx.Os() == Windows {
+		// Windows toolchains are not currently supported.
+		return false
+	}
 	if !ctx.Config().BazelContext.BazelEnabled() {
 		return false
 	}

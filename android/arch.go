@@ -2048,7 +2048,7 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 				osArchStructs = append(osArchStructs, targetStructs...)
 			}
 
-			// Auto-combine with Linux_ and Bionic_ targets. This potentially results in
+			// Auto-combine with a and Bionic_ targets. This potentially results in
 			// repetition and select() bloat, but use of Linux_* and Bionic_* targets is rare.
 			// TODO(b/201423152): Look into cleanup.
 			if os.Linux() {
