@@ -54,9 +54,10 @@ genBackedByList() {
     soFileName=$(echo "$line" | sed 's/\(.*so\).*/\1/')
     if [[ ! -z "$soFileName" && "$soFileName" != *"#"* ]]
     then
-      if contains "$soFileName" "$@"; then
-        echo "$soFileName" >> "$out"
-      fi
+      echo "$soFileName" >> "$out"
+#      if contains "$soFileName" "$@"; then
+#        echo "$soFileName" >> "$out"
+#      fi
     fi
   done < "$ndk_list"
 }
