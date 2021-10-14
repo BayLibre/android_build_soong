@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f6dfa6d_e5e59828",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-14T21:40:06Z",
+      "side": 1,
+      "message": "A unit test that locally passes. Figuring out the `microfactory.bash` issue blocks me on doing integration tests for now.\n\nACK~~Tentatively done; may be reopened.",
+      "revId": "716b8b8fed76af5627dd71d2b371875c24639ae8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
