@@ -137,9 +137,8 @@ func (lto *lto) LTO(ctx BaseModuleContext) bool {
 
 func (lto *lto) DefaultThinLTO(ctx BaseModuleContext) bool {
 	host := ctx.Host()
-	test := ctx.testBinary()
 	vndk := ctx.isVndk() // b/169217596
-	return GlobalThinLTO(ctx) && !lto.Never() && !host && !test && !vndk
+	return GlobalThinLTO(ctx) && !lto.Never() && !host && !vndk
 }
 
 func (lto *lto) FullLTO() bool {
@@ -155,7 +154,7 @@ func (lto *lto) Never() bool {
 }
 
 func GlobalThinLTO(ctx android.BaseModuleContext) bool {
-	return ctx.Config().IsEnvTrue("GLOBAL_THINLTO")
+	return !ctx.Config().IsEnvTrue("NO_GLOBAL_THINLTO")
 }
 
 // Propagate lto requirements down from binaries
