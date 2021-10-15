@@ -33,6 +33,24 @@
       "message": "The variant string comes from structured data on the module, and this is trying to make decisions based on the string representation rather than the structured data.  It needs to use the structured data directly instead, for example Module.InRecovery().",
       "revId": "d43adab30639e614f8e3650b2713dd2df3e381fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34395b7e_45069da0",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-10-15T05:19:55Z",
+      "side": 1,
+      "message": "Done, replaced with a isCoreVariant function.",
+      "parentUuid": "0748afda_97badc91",
+      "revId": "d43adab30639e614f8e3650b2713dd2df3e381fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
