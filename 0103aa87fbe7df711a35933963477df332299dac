@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9a1f2aa_2a1d7dd2",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-15T05:31:39Z",
+      "side": 1,
+      "message": "rm?",
+      "revId": "0103aa87fbe7df711a35933963477df332299dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
