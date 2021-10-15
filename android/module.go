@@ -2868,7 +2868,9 @@ func (m *moduleContext) installFile(installPath InstallPath, name string, srcPat
 
 	m.packageFile(fullInstallPath, srcPath, executable)
 
-	m.checkbuildFiles = append(m.checkbuildFiles, srcPath)
+	if m.Module().ExportedToMake() {
+		m.checkbuildFiles = append(m.checkbuildFiles, srcPath)
+	}
 
 	return fullInstallPath
 }
@@ -2938,12 +2940,20 @@ func (m *moduleContext) InstallAbsoluteSymlink(installPath InstallPath, name str
 	return fullInstallPath
 }
 
+// A module's -{checkbuild,tidy} phony targets should
+// not be created if the module is not exported to make.
+// Those could depend on the build target and fail to compile
+// for the current build target.
 func (m *moduleContext) CheckbuildFile(srcPath Path) {
-	m.checkbuildFiles = append(m.checkbuildFiles, srcPath)
+	if m.Module().ExportedToMake() {
+		m.checkbuildFiles = append(m.checkbuildFiles, srcPath)
+	}
 }
 
 func (m *moduleContext) TidyFile(srcPath Path) {
-	m.tidyFiles = append(m.tidyFiles, srcPath)
+	if m.Module().ExportedToMake() {
+		m.tidyFiles = append(m.tidyFiles, srcPath)
+	}
 }
 
 func (m *moduleContext) blueprintModuleContext() blueprint.ModuleContext {
