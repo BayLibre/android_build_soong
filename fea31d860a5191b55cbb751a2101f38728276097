@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5094bc04_52ad4e5d",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-15T14:20:46Z",
+      "side": 1,
+      "message": "Do we want to expose variables based on Soong config directly to Bazel or do we want to look for other methods to migrate them?",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 94
+      },
+      "revId": "fea31d860a5191b55cbb751a2101f38728276097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd0bff37_32d0a9c7",
+        "filename": "cc/config/x86_linux_host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-15T14:20:46Z",
+      "side": 1,
+      "message": "can we hard-code this to `linux-x86` rather than having the dependency on HostPrebuiltTag?\n\nit looks like this path but with darwin-x86 doesn\u0027t exist: http://go/aocs/android/platform/superproject/+/master:prebuilts/gcc/darwin-x86/host/",
+      "range": {
+        "startLine": 134,
+        "startChar": 17,
+        "endLine": 134,
+        "endChar": 35
+      },
+      "revId": "fea31d860a5191b55cbb751a2101f38728276097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
