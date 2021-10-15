@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6923097_c78d6b83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-15T14:40:59Z",
+      "side": 1,
+      "message": "LGTM; thanks for the work!",
+      "revId": "0103aa87fbe7df711a35933963477df332299dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7289087a_a1e89a5c",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-15T14:40:59Z",
+      "side": 1,
+      "message": "nit: perhaps factor into a local function instead of keeping 3 copies in sync?",
+      "revId": "0103aa87fbe7df711a35933963477df332299dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9a1f2aa_2a1d7dd2",
