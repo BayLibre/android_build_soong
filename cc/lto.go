@@ -154,7 +154,7 @@ func (lto *lto) Never() bool {
 }
 
 func GlobalThinLTO(ctx android.BaseModuleContext) bool {
-	return ctx.Config().IsEnvTrue("GLOBAL_THINLTO")
+	return !ctx.Config().IsEnvTrue("NO_GLOBAL_THINLTO")
 }
 
 // Propagate lto requirements down from binaries
