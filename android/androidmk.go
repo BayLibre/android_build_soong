@@ -29,6 +29,7 @@ import (
 	"os"
 	"path/filepath"
 	"reflect"
+	"runtime"
 	"sort"
 	"strings"
 
@@ -899,6 +900,10 @@ func shouldSkipAndroidMkProcessing(module *ModuleBase) bool {
 	if !module.commonProperties.NamespaceExportedToMake {
 		// TODO(jeffrygaston) do we want to validate that there are no modules being
 		// exported to Kati that depend on this module?
+		return true
+	}
+
+	if runtime.GOOS == "darwin" && module.Os() != Darwin {
 		return true
 	}
 
