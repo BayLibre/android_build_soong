@@ -22,6 +22,30 @@
       },
       "revId": "5f463be4a96b89939e785e040c0d1ab1f2e11238",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f006722f_443e8d5a",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-10-17T20:13:27Z",
+      "side": 1,
+      "message": "Consider\nifeq (,$(filter foo,$(VAR)))\nif we know VAR is a list, we can emit\nif \"foo\" not in $VAR:\nbut in general case we should check VAR\u0027s type during the execution, and split it into words if necessary.",
+      "parentUuid": "0e74eb0b_f20e7ca4",
+      "range": {
+        "startLine": 1165,
+        "startChar": 100,
+        "endLine": 1165,
+        "endChar": 134
+      },
+      "revId": "5f463be4a96b89939e785e040c0d1ab1f2e11238",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
