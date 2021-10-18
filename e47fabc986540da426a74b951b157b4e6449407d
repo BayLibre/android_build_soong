@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba5f35c3_282e8e48",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-18T16:30:01Z",
+      "side": 1,
+      "message": "Add a comment here explaining why we skip darwin",
+      "revId": "e47fabc986540da426a74b951b157b4e6449407d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a75ed034_195d2717",
+        "filename": "android/androidmk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-18T16:30:01Z",
+      "side": 1,
+      "message": "Add a comment or a skip message on why this test is invalid on darwin",
+      "revId": "e47fabc986540da426a74b951b157b4e6449407d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
