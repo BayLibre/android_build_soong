@@ -16,6 +16,24 @@
       "message": "The ART module is updatable in S, and this will be a new API dependency since then.\n\nHow will we ensure ART remains fully functional when this dependency is missing?\n\nGoing forward, how will we ensure the same thing when an old version of this dependency is found on device? go/android-future-symbols is implemented only for platform dependencies, but this looks like another Mainline module.",
       "revId": "5b817e642c7643929d0219fed32a5d1e7acdbf14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38442871_e194b2a7",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2021-10-18T17:59:14Z",
+      "side": 1,
+      "message": "TL;DR IIUC, we\u0027re good for T (since CompOS is only packaged in APEX and won\u0027t be a Mainline module in T), but must address this problem in U for turning into Mainline.\n\nThere are a few things to considers, looking into the future:\n\n1. CompOS won\u0027t be Mainline\u0027d in T (maybe in U).  So `__builtin_available(android __ANDROID_API_T__,*)` should be sufficient for now.\n\n2. CompOS APEX is optional, so only some T devices will have it.  There will be other guarding condition to trigger the ART code path.  The condition is still TBD: it could be a `ro.` system property as a feature flag, or if possible, detect automatically if we can detect sufficient pKVM/SoC support AND CompOS APEX exists.\n\n3. We plan to transition CompOS from (optional) platform feature to (optional) Mainline module.  It\u0027ll take a few years for SoCs to catch up before we can require it.\n\nConceptually, I\u0027m thinking the following pseudo code to cover the above.\n\n  ASSERT(CompOSIsAvailable()); // This ART code path shouldn\u0027t be trigger otherwise\n\n  // [Case 3 above] Say, CompOS is required by Z...\n  // On Z+ devices, ART can use CompOS API __INTRODUCED_IN(Z)\n  if (__builtin_available(android __ANDROID_API_Z__,*)) {\n    something_that_uses_compos_api_1();\n    return;\n  }\n\n  // [Case 2] CompOS will become an (optional) Mainline module from certain\n  // platform release.\n\n  // IF, CompOS introduces any new API with a Mainline update, ART may\n  // call the new API. This probably needs b/178774199.\n  if (__builtin_available(android __ANDROID_API_U_EXT_,*)) {\n    something_that_uses_compos_api_2();\n    return;\n  }\n  // Otherwise, ART can simply use CompOS API __INTRODUCED_IN(U).\n  if (__builtin_available(android __ANDROID_API_U__,*)) {\n    something_that_uses_compos_api_3();\n    return;\n  }\n\n  // [Case 1] For T release, where CompOS is not a Mainline module.\n  // On T devices, ART can use CompOS API __INTRODUCED_IN(T)\n  if (__builtin_available(android __ANDROID_API_T__,*)) {\n    something_that_uses_compos_api_4();\n    return;\n  }\n\nDoes it make sense? Hope I\u0027m not over thinking it.\n\nJiyong, WDYT? Also +hansson for input.",
+      "parentUuid": "246e037e_b9181df6",
+      "revId": "5b817e642c7643929d0219fed32a5d1e7acdbf14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
