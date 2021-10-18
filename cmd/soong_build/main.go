@@ -51,6 +51,7 @@ var (
 	docFile           string
 	bazelQueryViewDir string
 	bp2buildMarker    string
+	bp2buildVerbose   bool
 
 	cmdlineArgs bootstrap.Args
 )
@@ -79,6 +80,7 @@ func init() {
 	flag.StringVar(&docFile, "soong_docs", "", "build documentation file to output")
 	flag.StringVar(&bazelQueryViewDir, "bazel_queryview_dir", "", "path to the bazel queryview directory relative to --top")
 	flag.StringVar(&bp2buildMarker, "bp2build_marker", "", "If set, run bp2build, touch the specified marker file then exit")
+	flag.BoolVar(&bp2buildVerbose, "bp2build_verbose", false, "If set, bp2build output is more verbose")
 	flag.StringVar(&cmdlineArgs.OutFile, "o", "build.ninja", "the Ninja file to output")
 	flag.BoolVar(&cmdlineArgs.EmptyNinjaFile, "empty-ninja-file", false, "write out a 0-byte ninja file")
 
@@ -416,7 +418,9 @@ func getPathsToIgnoredBuildFiles(topDir string, generatedRoot string, srcDirBaze
 			// BUILD file clash resolution happens later in the symlink forest creation
 			continue
 		}
-		fmt.Fprintf(os.Stderr, "Ignoring existing BUILD file: %s\n", srcDirBazelFileRelativePath)
+		if bp2buildVerbose {
+			fmt.Fprintf(os.Stderr, "Ignoring existing BUILD file: %s\n", srcDirBazelFileRelativePath)
+		}
 		paths = append(paths, srcDirBazelFileRelativePath)
 	}
 
