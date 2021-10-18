@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4454f5ba_1b88349f",
+        "filename": "android/soong_config_modules_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-18T07:53:47Z",
+      "side": 1,
+      "message": "Can you add a comment here (or somewhere in the test cases) to say that this is supposed to test that it doesn\u0027t matter that the module in this prop doesn\u0027t exist, and that we\u0027re testing Soong\u0027s logic of conditions_default correctly being skipped here?",
+      "range": {
+        "startLine": 186,
+        "startChar": 5,
+        "endLine": 188,
+        "endChar": 6
+      },
+      "revId": "f12b626cf6e7553de9545c56d777aea4e6d3b33f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
