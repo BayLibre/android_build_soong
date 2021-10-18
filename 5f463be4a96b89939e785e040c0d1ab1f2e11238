@@ -46,6 +46,30 @@
       },
       "revId": "5f463be4a96b89939e785e040c0d1ab1f2e11238",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f30d29e4_e7864b53",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-18T19:35:19Z",
+      "side": 1,
+      "message": "Can we add a test for that case?\n\nWe were already splitting lists as necessary previously for some strings, e.g. in the patchset 4 of mk2rbc/mk2rbc_test.go, lines 371, 373 were being handled correctly before, can we maintain the previous behavior for those cases?",
+      "parentUuid": "f006722f_443e8d5a",
+      "range": {
+        "startLine": 1165,
+        "startChar": 100,
+        "endLine": 1165,
+        "endChar": 134
+      },
+      "revId": "5f463be4a96b89939e785e040c0d1ab1f2e11238",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
