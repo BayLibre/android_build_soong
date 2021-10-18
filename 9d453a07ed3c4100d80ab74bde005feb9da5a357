@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87db0f17_8cb69312",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-18T10:25:52Z",
+      "side": 1,
+      "message": "Rename these variables (allDeps, exportedDeps, implementation, export) to something more generic, since this now looks like a generic function?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 30
+      },
+      "revId": "9d453a07ed3c4100d80ab74bde005feb9da5a357",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
