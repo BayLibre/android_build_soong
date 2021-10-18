@@ -51,6 +51,7 @@ var (
 	docFile           string
 	bazelQueryViewDir string
 	bp2buildMarker    string
+	bp2buildVerbose   bool
 
 	cmdlineArgs bootstrap.Args
 )
@@ -386,7 +387,7 @@ func touch(path string) {
 // - won't be overwritten by corresponding bp2build generated files
 //
 // And return their paths so they can be left out of the Bazel workspace dir (i.e. ignored)
-func getPathsToIgnoredBuildFiles(topDir string, generatedRoot string, srcDirBazelFiles []string) []string {
+func getPathsToIgnoredBuildFiles(configuration android.Config, topDir string, generatedRoot string, srcDirBazelFiles []string) []string {
 	paths := make([]string, 0)
 
 	for _, srcDirBazelFileRelativePath := range srcDirBazelFiles {
@@ -416,7 +417,9 @@ func getPathsToIgnoredBuildFiles(topDir string, generatedRoot string, srcDirBaze
 			// BUILD file clash resolution happens later in the symlink forest creation
 			continue
 		}
-		fmt.Fprintf(os.Stderr, "Ignoring existing BUILD file: %s\n", srcDirBazelFileRelativePath)
+		if configuration.IsEnvTrue("BP2BUILD_VERBOSE") {
+			fmt.Fprintf(os.Stderr, "Ignoring existing BUILD file: %s\n", srcDirBazelFileRelativePath)
+		}
 		paths = append(paths, srcDirBazelFileRelativePath)
 	}
 
@@ -523,7 +526,7 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 		os.Exit(1)
 	}
 
-	pathsToIgnoredBuildFiles := getPathsToIgnoredBuildFiles(topDir, generatedRoot, existingBazelRelatedFiles)
+	pathsToIgnoredBuildFiles := getPathsToIgnoredBuildFiles(configuration, topDir, generatedRoot, existingBazelRelatedFiles)
 	excludes = append(excludes, pathsToIgnoredBuildFiles...)
 
 	excludes = append(excludes, getTemporaryExcludes()...)
