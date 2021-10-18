@@ -17,8 +17,10 @@ package bp2build
 import (
 	"android/soong/android"
 	"android/soong/bazel"
+	"android/soong/zip"
 	"fmt"
 	"os"
+	"path/filepath"
 	"strings"
 )
 
@@ -44,6 +46,18 @@ func Codegen(ctx *CodegenContext) CodegenMetrics {
 
 	soongInjectionDir := android.PathForOutput(ctx, bazel.SoongInjectionDirName)
 	writeFiles(ctx, soongInjectionDir, CreateSoongInjectionFiles(res.metrics))
+
+	absBp2buildDir := filepath.Join(ctx.topDir, bp2buildDir.String())
+	// absSoongInjectionDir := filepath.Join(ctx.topDir, bp2buildDir.String())
+	args := zip.ZipArgs{
+		FileArgs: []zip.FileArg{
+			{GlobDir: absBp2buildDir, SourcePrefixToStrip: absBp2buildDir},
+		},
+		OutputFilePath: filepath.Join(ctx.topDir, android.PathForOutput(ctx, "bp2build.zip").String()),
+	}
+	if err := zip.Zip(args); err != nil {
+		panic(fmt.Errorf("Error zipping bp2build %s", err))
+	}
 
 	return res.metrics
 }
