@@ -34,6 +34,24 @@
       "parentUuid": "246e037e_b9181df6",
       "revId": "5b817e642c7643929d0219fed32a5d1e7acdbf14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3333143_c33e2148",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-18T22:05:40Z",
+      "side": 1,
+      "message": "\u003e IIUC, we\u0027re good for T (since CompOS is only packaged in APEX and won\u0027t be a Mainline module in T)\n\nMy concern here is the ART module - we need to make sure that it works on S devices where libcompos_client.so doesn\u0027t exist. That means the dependent binary (odrefresh, iiuc) needs to lazy load libcompos_client.so, which I think means it has to be dlopen\u0027ed (I found some docs on the net talking about a DF_P1_LAZYLOAD flag in ELF to allow lazy loading of DT_NEEDED DSO\u0027s, but I can\u0027t see that it\u0027s supported by the Bionic linker).\n\nThe technical details aside, I think the most important aspect is to ensure we have tests that executes this code path on S devices. We already have tests for odrefresh which I think should suffice.\n\nFor T I suppose it means we need to test on platforms built both with and without CompOS support, since you say it\u0027ll be optional there.\n\nThere\u0027s still the risk that someone introduces another dependency on libcompos_client.so somewhere else in ART, and once the prebuilt SDK is present it wouldn\u0027t be caught at build time. If the code path also is executed rarely we may not see it in tests either. It would be nice to be able to restrict dependencies on it through shared_libs attributes in Android.bp (i.e. only allow runtime_libs and thus dlopen), but I don\u0027t think that is supported. The next best thing we can do is to be very restrictive with visibility and generous with comments when adding the ART dependency.",
+      "parentUuid": "38442871_e194b2a7",
+      "revId": "5b817e642c7643929d0219fed32a5d1e7acdbf14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
