@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "246e037e_b9181df6",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-18T16:43:07Z",
+      "side": 1,
+      "message": "The ART module is updatable in S, and this will be a new API dependency since then.\n\nHow will we ensure ART remains fully functional when this dependency is missing?\n\nGoing forward, how will we ensure the same thing when an old version of this dependency is found on device? go/android-future-symbols is implemented only for platform dependencies, but this looks like another Mainline module.",
+      "revId": "5b817e642c7643929d0219fed32a5d1e7acdbf14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
