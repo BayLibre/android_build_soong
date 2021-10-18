@@ -242,13 +242,20 @@ func bootstrapBlueprint(ctx Context, config Config) {
 			config.Bp2BuildMarkerFile())
 	}
 
+	var bp2buildExtraArgs []string
+	if config.verbose {
+		bp2buildExtraArgs = append(bp2buildExtraArgs, "--bp2build_verbose=true")
+	}
+
 	bp2buildInvocation := primaryBuilderInvocation(
 		config,
 		bp2buildTag,
 		config.Bp2BuildMarkerFile(),
-		[]string{
+		append([]string{
 			"--bp2build_marker", config.Bp2BuildMarkerFile(),
-		})
+		}, bp2buildExtraArgs...))
+
+	fmt.Println(bp2buildInvocation)
 
 	jsonModuleGraphInvocation := primaryBuilderInvocation(
 		config,
