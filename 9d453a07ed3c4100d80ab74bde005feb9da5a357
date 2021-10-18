@@ -22,6 +22,30 @@
       },
       "revId": "9d453a07ed3c4100d80ab74bde005feb9da5a357",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd5a7021_16c778e3",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-18T14:37:14Z",
+      "side": 1,
+      "message": "the variable names are still accurate and relevant to how they\u0027re used, so I don\u0027t have any good ideas for renaming.\n\nthe distinction is only that binaries don\u0027t export dependencies, so everything is an implementation dep, renamed needsSplit -\u003e exportsDeps?",
+      "parentUuid": "87db0f17_8cb69312",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 30
+      },
+      "revId": "9d453a07ed3c4100d80ab74bde005feb9da5a357",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
