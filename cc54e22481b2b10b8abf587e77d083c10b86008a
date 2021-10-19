@@ -195,6 +195,30 @@
       },
       "revId": "cc54e22481b2b10b8abf587e77d083c10b86008a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ac1ab5e_e8ab2c28",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-19T18:39:59Z",
+      "side": 1,
+      "message": "Ok, I see. Then my next attempt is to set it on master builds (http://cl/404310347) and remove it from the script altogether (https://r.android.com/1862861). Let\u0027s see how that goes...",
+      "parentUuid": "814be14c_5f73d7e6",
+      "range": {
+        "startLine": 213,
+        "startChar": 8,
+        "endLine": 213,
+        "endChar": 69
+      },
+      "revId": "cc54e22481b2b10b8abf587e77d083c10b86008a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
