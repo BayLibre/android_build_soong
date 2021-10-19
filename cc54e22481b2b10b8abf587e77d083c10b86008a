@@ -99,6 +99,30 @@
       },
       "revId": "cc54e22481b2b10b8abf587e77d083c10b86008a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92de4508_c04d3c2e",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-19T10:04:10Z",
+      "side": 1,
+      "message": "That has been going back and forth a number of times. It was switched on last in http://ag/9292829 due to b/140162931, which looks to me like a problem with stale prebuilts on master. This would only switch the linter to prebuilt in that situation which is less fragile, isn\u0027t it?\n\nAnother variant here is to look at config.FrameworksBaseDirExists(), but I was hoping to avoid build differences based on that.",
+      "parentUuid": "3a047060_ba7fea66",
+      "range": {
+        "startLine": 213,
+        "startChar": 8,
+        "endLine": 213,
+        "endChar": 69
+      },
+      "revId": "cc54e22481b2b10b8abf587e77d083c10b86008a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
