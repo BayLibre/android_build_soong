@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03bf8ee6_f730f2e4",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-10-19T02:26:07Z",
+      "side": 1,
+      "message": "\"... so that ?\"",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 44
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84e8979d_547bdb5c",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-10-19T02:26:07Z",
+      "side": 1,
+      "message": "\"... because ?\"",
+      "range": {
+        "startLine": 280,
+        "startChar": 1,
+        "endLine": 280,
+        "endChar": 22
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
