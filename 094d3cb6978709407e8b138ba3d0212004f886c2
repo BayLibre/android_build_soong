@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e70dcf37_23bab57a",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-19T14:35:34Z",
+      "side": 1,
+      "message": "Mind adding a comment here explaining why? (no need for headers if there are no srcs)",
+      "range": {
+        "startLine": 340,
+        "startChar": 2,
+        "endLine": 342,
+        "endChar": 3
+      },
+      "revId": "094d3cb6978709407e8b138ba3d0212004f886c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
