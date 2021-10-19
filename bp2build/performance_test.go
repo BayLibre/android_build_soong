@@ -90,7 +90,7 @@ func BenchmarkManyModulesFull(b *testing.B) {
 				ctx := android.NewTestContext(config)
 
 				registerCustomModuleForBp2buildConversion(ctx)
-				codegenCtx := NewCodegenContext(config, *ctx.Context, Bp2Build)
+				codegenCtx := testCodegenContext(config, *ctx.Context, Bp2Build)
 
 				b.StartTimer()
 				_, errs := ctx.ParseFileList(dir, []string{"Android.bp"})
@@ -122,7 +122,7 @@ func BenchmarkManyModulesResolveDependencies(b *testing.B) {
 				ctx := android.NewTestContext(config)
 
 				registerCustomModuleForBp2buildConversion(ctx)
-				codegenCtx := NewCodegenContext(config, *ctx.Context, Bp2Build)
+				codegenCtx := testCodegenContext(config, *ctx.Context, Bp2Build)
 
 				_, errs := ctx.ParseFileList(dir, []string{"Android.bp"})
 				if len(errs) > 0 {
@@ -154,7 +154,7 @@ func BenchmarkManyModulesGenerateBazelTargetsForDir(b *testing.B) {
 				ctx := android.NewTestContext(config)
 
 				registerCustomModuleForBp2buildConversion(ctx)
-				codegenCtx := NewCodegenContext(config, *ctx.Context, Bp2Build)
+				codegenCtx := testCodegenContext(config, *ctx.Context, Bp2Build)
 
 				_, errs := ctx.ParseFileList(dir, []string{"Android.bp"})
 				if len(errs) > 0 {
