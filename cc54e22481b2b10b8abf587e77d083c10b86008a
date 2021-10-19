@@ -75,6 +75,30 @@
       },
       "revId": "cc54e22481b2b10b8abf587e77d083c10b86008a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a047060_ba7fea66",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-10-19T09:42:00Z",
+      "side": 1,
+      "message": "Looks like this is your problem\nhttp://cs/android/packages/modules/common/build/build_unbundled_mainline_module.sh?l\u003d122",
+      "parentUuid": "7b50277a_f2435417",
+      "range": {
+        "startLine": 213,
+        "startChar": 8,
+        "endLine": 213,
+        "endChar": 69
+      },
+      "revId": "cc54e22481b2b10b8abf587e77d083c10b86008a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
