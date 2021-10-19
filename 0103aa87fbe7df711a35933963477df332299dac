@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f3eee6e_eeb7e13c",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-10-19T20:57:00Z",
+      "side": 1,
+      "message": "I believe the function body gets less readable if I do this (the helper method should probably validate that the prefix exists, which ends in things being more verbose.\nThese are one liners, so lets keep them that way :)",
+      "parentUuid": "7289087a_a1e89a5c",
+      "revId": "0103aa87fbe7df711a35933963477df332299dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9a1f2aa_2a1d7dd2",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-10-15T05:31:39Z",
       "side": 1,
       "message": "rm?",
+      "revId": "0103aa87fbe7df711a35933963477df332299dac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bef0cc83_db53e148",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-10-19T20:57:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9a1f2aa_2a1d7dd2",
       "revId": "0103aa87fbe7df711a35933963477df332299dac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
