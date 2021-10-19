@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba2119e4_f573415c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-19T20:05:39Z",
+      "side": 1,
+      "message": "That happened in https://r.android.com/1684807 I believe. Can you please reference it, for context?",
+      "range": {
+        "startLine": 9,
+        "startChar": 6,
+        "endLine": 9,
+        "endChar": 58
+      },
+      "revId": "d0d1968ebb46c6a3044d0f45076d522f17bdb8f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
