@@ -209,6 +209,12 @@ func lintRBEExecStrategy(ctx android.ModuleContext) string {
 	return ctx.Config().GetenvWithDefault("RBE_LINT_EXEC_STRATEGY", remoteexec.LocalExecStrategy)
 }
 
+func usePrebuiltLintDependencies(config android.Config) bool {
+	// Use prebuilt linter with prebuilt SDK, and also when building unbundled
+	// apps (TARGET_BUILD_APPS), to allow those builds on thin branches.
+	return config.AlwaysUsePrebuiltSdks() || config.UnbundledBuildApps()
+}
+
 func (l *linter) writeLintProjectXML(ctx android.ModuleContext, rule *android.RuleBuilder) lintPaths {
 	projectXMLPath := android.PathForModuleOut(ctx, "lint", "project.xml")
 	// Lint looks for a lint.xml file next to the project.xml file, give it one.
@@ -404,7 +410,7 @@ func (l *linter) lint(ctx android.ModuleContext) {
 	}
 
 	var annotationsZipPath, apiVersionsXMLPath android.Path
-	if ctx.Config().AlwaysUsePrebuiltSdks() {
+	if usePrebuiltLintDependencies(ctx.Config()) {
 		annotationsZipPath = android.PathForSource(ctx, "prebuilts/sdk/current/public/data/annotations.zip")
 		apiVersionsXMLPath = android.PathForSource(ctx, apiVersionsPrebuilt)
 	} else {
@@ -517,7 +523,7 @@ func findModuleOrErr(ctx android.SingletonContext, moduleName string) android.Mo
 }
 
 func (l *lintSingleton) copyLintDependencies(ctx android.SingletonContext) {
-	if ctx.Config().AlwaysUsePrebuiltSdks() {
+	if usePrebuiltLintDependencies(ctx.Config()) {
 		return
 	}
 
