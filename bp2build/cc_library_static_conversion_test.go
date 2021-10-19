@@ -1067,10 +1067,10 @@ cc_library_static {
     name = "foo_static3",
     srcs = [
         "common.cpp",
-        ":generated_hdr",
-        "//dep:generated_hdr_other_pkg",
         ":generated_src",
         "//dep:generated_src_other_pkg",
+        ":generated_hdr",
+        "//dep:generated_hdr_other_pkg",
     ] + select({
         "//build/bazel/platforms/arch:x86": [
             "for-x86.cpp",
@@ -1082,8 +1082,8 @@ cc_library_static {
         ],
     }) + select({
         "//build/bazel/platforms/os:android": [
-            "//dep:generated_hdr_other_pkg_android",
             ":generated_src_android",
+            "//dep:generated_hdr_other_pkg_android",
         ],
         "//conditions:default": [],
     }),
