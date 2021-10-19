@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d71d995a_65b5bc03",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-19T15:28:33Z",
+      "side": 1,
+      "message": "In our discussions, there were no Bazel targets converted for this type -- did you find the root cause of that issue?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "01d39f55a6db2a26c7744a3d3086a4c2629b8d00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b50325a4_c1f3fda0",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-19T15:28:33Z",
+      "side": 1,
+      "message": "this is bp2build, not mixed builds -- can you split into a separate CL? And add tests to the bp2build directory?",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 0
+      },
+      "revId": "01d39f55a6db2a26c7744a3d3086a4c2629b8d00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
