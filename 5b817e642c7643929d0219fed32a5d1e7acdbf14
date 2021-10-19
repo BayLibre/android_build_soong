@@ -88,6 +88,24 @@
       "parentUuid": "bb3d40b6_08d2db16",
       "revId": "5b817e642c7643929d0219fed32a5d1e7acdbf14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b57d51b7_d335794a",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-19T19:52:57Z",
+      "side": 1,
+      "message": "Interesting. Another (very sketchy) idea is to add support for \"optional\" DT_NEEDED in the Bionic linker, which basically would treat a missing library like it exists but has no exported symbols. It\u0027d probably be simpler to implement than DF_P1_LAZYLOAD. But (a) if that\u0027d be a nonstandard ELF extension it\u0027s probably not where we want to go, and (b) it wouldn\u0027t help for modules that need to work in S and earlier.\n\n\u003e The visibility of libcompos_client is limited to \"//art/odrefresh:__subpackages__\".\n\nThat\u0027s good. Please keep me in the loop for future CLs adding this dependency in ART.",
+      "parentUuid": "bb3d40b6_08d2db16",
+      "revId": "5b817e642c7643929d0219fed32a5d1e7acdbf14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
