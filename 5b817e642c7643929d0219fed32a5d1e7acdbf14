@@ -70,6 +70,24 @@
       "parentUuid": "b3333143_c33e2148",
       "revId": "5b817e642c7643929d0219fed32a5d1e7acdbf14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5653d58_f2ef1582",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-10-19T19:38:37Z",
+      "side": 1,
+      "message": "Right. Introducing a new library is harder than introducing a new symbol.\n\nThis is usually done by having a shim library that is part of the caller (ART in this case). The library will dlopen the real library if it exist. It then will call dlsym on API symbols to bind to them.\n\nIf the number of API symbols are many and therefore using dlsym looks cumbersome, you may try the following trick(?).\n\nMost of the caller\u0027s functionality is implemented in a shared library, not in the main executable. The shared library has a single entry (similar to main). The main executable\u0027s job is to dlopen the shared library and to dlsym the entry function, and to call into it.\n\nThe new platform library is also provided as a shared library. The main executable searchs for the shared library and dlopens it \"prior\" to dlopening the main shared library. This has the same effect as pre-loading the platform library using LD_PRELOAD, which is prohibited in Android.\n\nIf the dlopens were done with RTLD_LAZY|RTLD_GLOBAL then, inside the main shared library, you can call symbols in the platform library without using dlsym (but behind the builtin_available check).\n\nThis might sound like a big change, but once setup, adding new symbol or even new library wouldn\u0027t be difficult.\n\nI don\u0027t know if there\u0027s easier way.",
+      "parentUuid": "bb3d40b6_08d2db16",
+      "revId": "5b817e642c7643929d0219fed32a5d1e7acdbf14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
