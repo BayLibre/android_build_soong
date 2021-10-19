@@ -153,6 +153,7 @@ type bpToBuildContext interface {
 }
 
 type CodegenContext struct {
+	topDir             string
 	config             android.Config
 	context            android.Context
 	mode               CodegenMode
@@ -221,17 +222,22 @@ func (ctx *CodegenContext) Context() android.Context { return ctx.context }
 
 // NewCodegenContext creates a wrapper context that conforms to PathContext for
 // writing BUILD files in the output directory.
-func NewCodegenContext(config android.Config, context android.Context, mode CodegenMode) *CodegenContext {
+func NewCodegenContext(topDir string, config android.Config, context android.Context, mode CodegenMode) *CodegenContext {
 	var unconvertedDeps unconvertedDepsMode
 	if config.IsEnvTrue("BP2BUILD_ERROR_UNCONVERTED") {
 		unconvertedDeps = errorModulesUnconvertedDeps
 	}
 	return &CodegenContext{
+		topDir:             topDir,
 		context:            context,
 		config:             config,
 		mode:               mode,
 		unconvertedDepMode: unconvertedDeps,
 	}
+}
+
+func testCodegenContext(config android.Config, context android.Context, mode CodegenMode) *CodegenContext {
+	return NewCodegenContext("", config, context, mode)
 }
 
 // props is an unsorted map. This function ensures that
