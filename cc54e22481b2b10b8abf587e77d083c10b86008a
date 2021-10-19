@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f17dd756_b03fa27a",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-10-19T09:33:56Z",
+      "side": 1,
+      "message": "Optional: leave a comment why unbundled requires to use prebuilts? I\u0027m not sure what is the expected level of knowledge of the reader of this file... (Maybe it\u0027s not needed)",
+      "revId": "cc54e22481b2b10b8abf587e77d083c10b86008a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
