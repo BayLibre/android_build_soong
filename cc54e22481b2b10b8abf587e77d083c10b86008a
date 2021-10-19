@@ -123,6 +123,30 @@
       },
       "revId": "cc54e22481b2b10b8abf587e77d083c10b86008a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da77f826_33fb9113",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-10-19T10:28:41Z",
+      "side": 1,
+      "message": "I don\u0027t think we can use a prebuilt lint database and a source-built sdk, they\u0027d be out of sync and you would get nonsensical results\n\nI think we want this set to true in master, and false in sc-mainline-prod. Probably false in master-art as well?\n\n+satayev looks like the value is true in sc-mainline-prod atm, can we fix that ?",
+      "parentUuid": "92de4508_c04d3c2e",
+      "range": {
+        "startLine": 213,
+        "startChar": 8,
+        "endLine": 213,
+        "endChar": 69
+      },
+      "revId": "cc54e22481b2b10b8abf587e77d083c10b86008a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
