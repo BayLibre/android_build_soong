@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ca63866_bb6e9ebb",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-19T18:27:16Z",
+      "side": 1,
+      "message": "Fair, I think we don\u0027t use this anymore, but we can re-evaluate with that bug.",
+      "parentUuid": "16dd081b_a8138f5e",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 94
+      },
+      "revId": "fea31d860a5191b55cbb751a2101f38728276097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd0bff37_32d0a9c7",
