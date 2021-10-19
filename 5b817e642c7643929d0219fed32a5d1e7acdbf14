@@ -106,6 +106,24 @@
       "parentUuid": "bb3d40b6_08d2db16",
       "revId": "5b817e642c7643929d0219fed32a5d1e7acdbf14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07458dcf_a32bc5af",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2021-10-19T20:46:16Z",
+      "side": 1,
+      "message": "Thanks Jiyong!  It also looks like ART has \"libartpalette\" that dlopen/dlsym against ART\u0027s .so on /system.  I\u0027ll see if I can/should follow the same pattern.\n\n\u003e That\u0027s good. Please keep me in the loop for future CLs adding this dependency in ART.\n\nWill definitely do.",
+      "parentUuid": "b57d51b7_d335794a",
+      "revId": "5b817e642c7643929d0219fed32a5d1e7acdbf14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
