@@ -157,7 +157,7 @@ func runMixedModeBuild(configuration android.Config, firstCtx *android.Context, 
 
 // Run the code-generation phase to convert BazelTargetModules to BUILD files.
 func runQueryView(queryviewDir, queryviewMarker string, configuration android.Config, ctx *android.Context) {
-	codegenContext := bp2build.NewCodegenContext(configuration, *ctx, bp2build.QueryView)
+	codegenContext := bp2build.NewCodegenContext(topDir, configuration, *ctx, bp2build.QueryView)
 	absoluteQueryViewDir := shared.JoinPath(topDir, queryviewDir)
 	if err := createBazelQueryView(codegenContext, absoluteQueryViewDir); err != nil {
 		fmt.Fprintf(os.Stderr, "%s", err)
@@ -490,7 +490,7 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 
 	// Run the code-generation phase to convert BazelTargetModules to BUILD files
 	// and print conversion metrics to the user.
-	codegenContext := bp2build.NewCodegenContext(configuration, *bp2buildCtx, bp2build.Bp2Build)
+	codegenContext := bp2build.NewCodegenContext(topDir, configuration, *bp2buildCtx, bp2build.Bp2Build)
 	metrics := bp2build.Codegen(codegenContext)
 
 	generatedRoot := shared.JoinPath(configuration.SoongOutDir(), "bp2build")
