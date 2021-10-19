@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9545341f_72f50c11",
+        "filename": "mk2rbc/mk2rbc_test.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-19T21:08:22Z",
+      "side": 1,
+      "message": "is there a separate change to define rblf.board_platform_in and rblf.board_platform_is? as is, this conversion appears to call undefined functions -- if so can you add the other to a topic?",
+      "range": {
+        "startLine": 578,
+        "startChar": 10,
+        "endLine": 578,
+        "endChar": 27
+      },
+      "revId": "17358b83499d8bd47fefae64d24c77f51509e28b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
