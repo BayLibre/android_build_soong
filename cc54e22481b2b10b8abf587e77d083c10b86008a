@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07050123_47caf00a",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-19T09:41:51Z",
+      "side": 1,
+      "message": "It can be found in the version history, but a comment doesn\u0027t hurt.",
+      "parentUuid": "f17dd756_b03fa27a",
+      "revId": "cc54e22481b2b10b8abf587e77d083c10b86008a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b50277a_f2435417",
