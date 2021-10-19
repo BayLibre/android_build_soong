@@ -16,6 +16,29 @@
       "message": "Optional: leave a comment why unbundled requires to use prebuilts? I\u0027m not sure what is the expected level of knowledge of the reader of this file... (Maybe it\u0027s not needed)",
       "revId": "cc54e22481b2b10b8abf587e77d083c10b86008a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b50277a_f2435417",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-10-19T09:40:22Z",
+      "side": 1,
+      "message": "Looks to me like AlwaysUsePrebuiltSdks should be true if UnbundledBuildApps is set:\nhttp://cs/android/build/make/core/config.mk?l\u003d457-462\n\nUnless someone specifically asks to *not* use prebuilt SDKs, in which case we don\u0027t want to use prebuilt lint either.\n\nIs the problem you\u0027re seeing in a build that sets UNBUNDLED_BUILD_SDKS_FROM_SOURCE ?",
+      "range": {
+        "startLine": 213,
+        "startChar": 8,
+        "endLine": 213,
+        "endChar": 69
+      },
+      "revId": "cc54e22481b2b10b8abf587e77d083c10b86008a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
