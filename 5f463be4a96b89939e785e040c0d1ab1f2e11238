@@ -70,6 +70,30 @@
       },
       "revId": "5f463be4a96b89939e785e040c0d1ab1f2e11238",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "016b3692_05c2e2b2",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1165,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-10-19T00:10:05Z",
+      "side": 1,
+      "message": "The old behavior was wrong in the general case: if\nVAR:\u003da b c\nthe code for \n$(filter a,$(VAR))\nwas wrong.",
+      "parentUuid": "f30d29e4_e7864b53",
+      "range": {
+        "startLine": 1165,
+        "startChar": 100,
+        "endLine": 1165,
+        "endChar": 134
+      },
+      "revId": "5f463be4a96b89939e785e040c0d1ab1f2e11238",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
