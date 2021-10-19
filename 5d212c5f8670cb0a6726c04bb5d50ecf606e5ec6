@@ -26,6 +26,121 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd80f2ee_aa36d8d2",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-19T15:02:39Z",
+      "side": 1,
+      "message": "This should always be \"/\".",
+      "range": {
+        "startLine": 169,
+        "startChar": 15,
+        "endLine": 169,
+        "endChar": 41
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9861b82_2277698e",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-19T15:02:39Z",
+      "side": 1,
+      "message": "Split this conditional up and add comments on why they\u0027re filtered",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 74
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3fefab8_3b47c9cf",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-19T15:02:39Z",
+      "side": 1,
+      "message": "Can you do this filtering in the inputArtifacts for-loop above?",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 55
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e8d03ab_299a3831",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-19T15:02:39Z",
+      "side": 1,
+      "message": "Can you comment what is being replaced, and why?",
+      "range": {
+        "startLine": 266,
+        "startChar": 3,
+        "endLine": 266,
+        "endChar": 67
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "235d3e68_4a03470a",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-19T15:02:39Z",
+      "side": 1,
+      "message": "Dependency",
+      "range": {
+        "startLine": 269,
+        "startChar": 10,
+        "endLine": 269,
+        "endChar": 19
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84e8979d_547bdb5c",
         "filename": "bazel/aquery.go",
         "patchSetId": 2
@@ -42,6 +157,75 @@
         "startChar": 1,
         "endLine": 280,
         "endChar": 22
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d914359_85a4946d",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-19T15:02:39Z",
+      "side": 1,
+      "message": "This should always be \"/\", so no need for filepath.Separator. We don\u0027t support Windows builds.",
+      "range": {
+        "startLine": 282,
+        "startChar": 15,
+        "endLine": 282,
+        "endChar": 41
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6e91340_af1037c5",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-19T15:02:39Z",
+      "side": 1,
+      "message": "This could be simpler with:\n\nfilteredInputPaths :\u003d []string{}\nfor _, path :\u003d range bs.InputPaths {\n\tif strings.HasSuffix(path, py3wrapper) {\n\t\tcontinue\n\t}\n\tnewInputPaths \u003d append(newInputPaths, path)\n}\n\nbs.InputPaths \u003d filteredInputPaths",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 2
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d1e7960_45771617",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-10-19T15:02:39Z",
+      "side": 1,
+      "message": "Dependency",
+      "range": {
+        "startLine": 298,
+        "startChar": 12,
+        "endLine": 298,
+        "endChar": 21
       },
       "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
