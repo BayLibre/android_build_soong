@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16dd081b_a8138f5e",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-10-19T17:00:11Z",
+      "side": 1,
+      "message": "I think we should expose them directly to Bazel for now, and aim to reassess this as part of b/202134389\n\nWe should have everything exposed guaranteed-equivalent to both build systems, but then migrate where the source of truth lies. We should avoid cases where the two sources of truth diverge.",
+      "parentUuid": "5094bc04_52ad4e5d",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 94
+      },
+      "revId": "fea31d860a5191b55cbb751a2101f38728276097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd0bff37_32d0a9c7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-15T14:20:46Z",
       "side": 1,
       "message": "can we hard-code this to `linux-x86` rather than having the dependency on HostPrebuiltTag?\n\nit looks like this path but with darwin-x86 doesn\u0027t exist: http://go/aocs/android/platform/superproject/+/master:prebuilts/gcc/darwin-x86/host/",
+      "range": {
+        "startLine": 134,
+        "startChar": 17,
+        "endLine": 134,
+        "endChar": 35
+      },
+      "revId": "fea31d860a5191b55cbb751a2101f38728276097",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d2b87f8_ed2fca25",
+        "filename": "cc/config/x86_linux_host.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-10-19T17:00:11Z",
+      "side": 1,
+      "message": "Huh. Fair point :)",
+      "parentUuid": "bd0bff37_32d0a9c7",
       "range": {
         "startLine": 134,
         "startChar": 17,
