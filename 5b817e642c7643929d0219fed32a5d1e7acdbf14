@@ -52,6 +52,24 @@
       "parentUuid": "38442871_e194b2a7",
       "revId": "5b817e642c7643929d0219fed32a5d1e7acdbf14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb3d40b6_08d2db16",
+        "filename": "scripts/build-mainline-modules.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2021-10-19T18:22:05Z",
+      "side": 1,
+      "message": "\u003e That means the dependent binary (odrefresh, iiuc) needs to lazy load libcompos_client.so\n\nJiyong, this seems to be a generic Mainline problem.  Would you suggest to solve this in a general way (if not already?), or just for CompOS (and if so, what would you suggest to do)?\n\n\u003e I think the most important aspect is to ensure we have tests that executes this code path on S devices\n\nExactly.  Once we\u0027re more ready, we do want to add more test coverage for this, possibly in odsign_e2e_tests (I haven\u0027t looked into it yet, so it might not be the best place).  FWIW, currently we do have continuous test that ensure the compiled artifacts are exactly the same.\n\n\u003e The next best thing we can do is to be very restrictive with visibility and generous with comments when adding the ART dependency.\n\nThis is indeed the current state.  The visibility of libcompos_client is limited to \"//art/odrefresh:__subpackages__\".",
+      "parentUuid": "b3333143_c33e2148",
+      "revId": "5b817e642c7643929d0219fed32a5d1e7acdbf14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
