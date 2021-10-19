@@ -171,6 +171,30 @@
       },
       "revId": "cc54e22481b2b10b8abf587e77d083c10b86008a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "814be14c_5f73d7e6",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-10-19T11:05:35Z",
+      "side": 1,
+      "message": "Yeah, I think so. Two benefits:\n- faster module builds with banchan\n- guarantee that no module uses a newly introduced API from another module (as the prebuilts are from S)",
+      "parentUuid": "704a2669_a32fd9b0",
+      "range": {
+        "startLine": 213,
+        "startChar": 8,
+        "endLine": 213,
+        "endChar": 69
+      },
+      "revId": "cc54e22481b2b10b8abf587e77d083c10b86008a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
