@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07ba6873_430a1689",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-10-19T09:41:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f17dd756_b03fa27a",
+      "revId": "cc54e22481b2b10b8abf587e77d083c10b86008a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7b50277a_f2435417",
