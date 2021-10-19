@@ -16,6 +16,24 @@
       "message": "hmm, this kind of boils down to (simplified for effect)\n\n```\nmaybeDoSomething(actuallyDoSomething bool, original thing) {\n   if (actuallyDoSomething) { return doSomething(original) }\n   else { return original }\n}\n```\n\nIt might be best to just copy this into callers instead:\n\n```\nif (exportsDeps) {\n  implementation, export :\u003d partitionExportedAndImplementationsDeps(...)\n} else {\n  implementation :\u003d allDeps\n  export :\u003d []string{}\n}\n```",
       "revId": "bbf720b36eb2dba728897ac84d3df6362a346ff6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9b8fc15_cefbaee9",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-19T18:22:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4fda85b_5c9f4f0b",
+      "revId": "bbf720b36eb2dba728897ac84d3df6362a346ff6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
