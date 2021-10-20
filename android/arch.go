@@ -566,6 +566,8 @@ func GetOsSpecificVariantsOfCommonOSVariant(mctx BaseModuleContext) []Module {
 	return variants
 }
 
+var DarwinUniversalVariantTag = archDepTag{name: "darwin universal binary"}
+
 // archMutator splits a module into a variant for each Target requested by the module.  Target selection
 // for a module is in three levels, OsClass, multilib, and then Target.
 // OsClass selection is determined by:
@@ -654,6 +656,16 @@ func archMutator(bpctx blueprint.BottomUpMutatorContext) {
 	// Determine the multilib selection for this module.
 	multilib, extraMultilib := decodeMultilib(base, os.Class)
 
+	// Define Darwin Universal mode, so that we build both X86_64 and Arm64 variants.
+	// Modules that handle their own architectures (common_first, MultiTarget) are exempted.
+	darwinUniversal := false
+	if os == Darwin && len(osTargets) > 1 && multilib != "common_first" && extraMultilib == "" {
+		darwinUniversal = true
+		if multilib == "first" {
+			multilib = "both"
+		}
+	}
+
 	// Convert the multilib selection into a list of Targets.
 	targets, err := decodeMultilibTargets(multilib, osTargets, prefer32)
 	if err != nil {
@@ -684,6 +696,12 @@ func archMutator(bpctx blueprint.BottomUpMutatorContext) {
 		return
 	}
 
+	if darwinUniversal {
+		// Reverse the targets so that the primary architecture can depend on the  secondary
+		// architecture module.
+		reverseSliceInPlace(targets)
+	}
+
 	// Convert the targets into a list of arch variation names.
 	targetNames := make([]string, len(targets))
 	for i, target := range targets {
@@ -694,13 +712,24 @@ func archMutator(bpctx blueprint.BottomUpMutatorContext) {
 	// squash the appropriate arch-specific properties into the top level properties.
 	modules := mctx.CreateVariations(targetNames...)
 	for i, m := range modules {
-		addTargetProperties(m, targets[i], multiTargets, i == 0)
+		primary := i == 0
+		if darwinUniversal && len(modules) == 2 {
+			primary = i == 1
+		}
+
+		addTargetProperties(m, targets[i], multiTargets, primary)
 		m.base().setArchProperties(mctx)
 
 		// Install support doesn't understand Darwin+Arm64
 		if os == Darwin && targets[i].HostCross {
 			m.base().commonProperties.SkipInstall = true
 		}
+	}
+
+	// Create a dependency for Darwin Universal binaries from the primary to secondary
+	// architecture. The module itself will be responsible for calling lipo to merge the outputs.
+	if darwinUniversal && len(modules) == 2 {
+		mctx.AddInterVariantDependency(DarwinUniversalVariantTag, modules[1], modules[0])
 	}
 }
 
