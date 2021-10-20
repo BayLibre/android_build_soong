@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2bec0dad_6a978489",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1042276
+      },
+      "writtenOn": "2021-10-20T17:35:06Z",
+      "side": 1,
+      "message": "Thanks for the info.  Do I need to update the \"production SDK\" somewhere to not break the build of ART module (can\u0027t tell if the module is also built somewhere else, if not just aosp-master/mainline_modules)?",
+      "parentUuid": "63f4f144_d9eca0bc",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "5b817e642c7643929d0219fed32a5d1e7acdbf14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "246e037e_b9181df6",
         "filename": "scripts/build-mainline-modules.sh",
         "patchSetId": 1
