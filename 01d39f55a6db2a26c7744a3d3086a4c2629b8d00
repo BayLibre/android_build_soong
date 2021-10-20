@@ -45,6 +45,30 @@
       },
       "revId": "01d39f55a6db2a26c7744a3d3086a4c2629b8d00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17052ee8_76ae55c8",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-20T18:00:03Z",
+      "side": 1,
+      "message": "Yes. Shall I file a bug for it, or just make a CL?",
+      "parentUuid": "b50325a4_c1f3fda0",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 0
+      },
+      "revId": "01d39f55a6db2a26c7744a3d3086a4c2629b8d00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
