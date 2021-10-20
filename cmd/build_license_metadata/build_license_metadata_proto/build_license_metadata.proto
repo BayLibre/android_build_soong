@@ -1,0 +1,63 @@
+// Copyright 2021 Google Inc. All Rights Reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto2";
+
+package build_license_metadata;
+option go_package = "android/soong/cmd/build_license_metadata/build_license_metadata_proto";
+
+message LicenseMetadata {
+  optional string license_package_name = 1;
+
+  // True if the module is a container like a zip file or a filesystem image.
+  optional bool is_container = 2;
+
+  // Path to the top level git project.  Unreliable if the .git directory does not exist or is
+  // not accessible at build time.
+  optional string root = 3;
+
+  // SPDX license identifiers that apply to this module.
+  repeated string license_kinds = 4;
+
+  // Conditions from the licenses that apply to this module.
+  repeated string license_conditions = 5;
+
+  // Notice files for licenses tha apply to this module.
+  repeated string license_texts = 6;
+
+  // List of intermediates built for this module
+  repeated string built = 7;
+
+  // List of installed files built for this module
+  repeated string installed = 8;
+
+  // For containers, mapping of filesystem paths to paths in the container
+  repeated InstallMap install_map = 9;
+
+  // Dependency intermediates used to build this module.
+  repeated string sources = 10;
+
+  // Dependency license metadata files.
+  repeated string deps = 11;
+}
+
+// InstallMap messages describe the mapping from an input filesystem file to the path to the file
+// in a container.
+message InstallMap {
+  // The input path on the filesystem.
+  optional string from_path = 1;
+
+  // The path to the file inside the container.
+  optional string container_path = 2;
+}

@@ -1,0 +1,139 @@
+// Copyright 2021 Google Inc. All rights reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package main
+
+import (
+	"flag"
+	"fmt"
+	"io/ioutil"
+	"os"
+	"path/filepath"
+	"strings"
+
+	"google.golang.org/protobuf/encoding/prototext"
+	"google.golang.org/protobuf/proto"
+
+	"android/soong/cmd/build_license_metadata/build_license_metadata_proto"
+)
+
+var (
+	packageName  = flag.String("p", "", "license package name")
+	kinds        = newMultiString("k", "license kinds")
+	conditions   = newMultiString("c", "license conditions")
+	notices      = newMultiString("n", "license notice file")
+	deps         = newMultiString("d", "license metadata file dependency")
+	sources      = newMultiString("s", "source (input) dependency")
+	built        = newMultiString("t", "built targets")
+	installed    = newMultiString("i", "installed targets")
+	root         = flag.String("r", "", "root directory of project")
+	installedMap = newMultiString("m", "map dependent targets to their installed names")
+	isContainer  = flag.Bool("is_container", false, "preserved dependent target name when given")
+	outFile      = flag.String("o", "", "output file")
+)
+
+func newMultiString(name, usage string) *multiString {
+	var f multiString
+	flag.Var(&f, name, usage)
+	return &f
+}
+
+type multiString []string
+
+func (ms *multiString) String() string     { return strings.Join(*ms, ", ") }
+func (ms *multiString) Set(s string) error { *ms = append(*ms, s); return nil }
+
+func main() {
+	flag.Parse()
+
+	*root = findGitRoot(*root)
+
+	metadata := build_license_metadata_proto.LicenseMetadata{}
+	metadata.LicensePackageName = proto.String(*packageName)
+	metadata.IsContainer = proto.Bool(*isContainer)
+	metadata.Root = proto.String(*root)
+	metadata.LicenseKinds = *kinds
+	metadata.LicenseConditions = *conditions
+	metadata.LicenseTexts = *notices
+	metadata.Built = *built
+	metadata.Installed = *installed
+	metadata.InstallMap = convertInstalledMap(*installedMap)
+	metadata.Sources = *sources
+	metadata.Deps = *deps
+
+	err := writeMetadata(*outFile, &metadata)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "error: %s\n", err.Error())
+		os.Exit(2)
+	}
+}
+
+// findGitRoot finds the directory at or above dir that contains a ".git" directory.  This isn't
+// guaranteed to exist, for example during remote execution, when sandboxed, when building from
+// infrastructure that doesn't use git, or when the .git directory has been removed to save space,
+// but it should be good enough for local builds.  If no .git directory is found the original value
+// is returned.
+func findGitRoot(dir string) string {
+	orig := dir
+	for dir != "" && dir != "." && dir != "/" {
+		_, err := os.Stat(filepath.Join(dir, ".git"))
+		if err == nil {
+			// Found dir/.git, return dir.
+			return dir
+		} else if !os.IsNotExist(err) {
+			// Error finding .git, return original input.
+			return orig
+		}
+		dir, _ = filepath.Split(dir)
+		dir = strings.TrimSuffix(dir, "/")
+	}
+	return orig
+}
+
+// convertInstalledMap converts a list of colon-separated from:to pairs into InstallMap proto
+// messages.
+func convertInstalledMap(installMaps []string) []*build_license_metadata_proto.InstallMap {
+	var ret []*build_license_metadata_proto.InstallMap
+
+	for _, installMap := range installMaps {
+		components := strings.Split(installMap, ":")
+		if len(components) != 2 {
+			panic(fmt.Errorf("install map entry %q contains %d colons, expected 1", len(components)-1))
+		}
+		ret = append(ret, &build_license_metadata_proto.InstallMap{
+			FromPath:      proto.String(components[0]),
+			ContainerPath: proto.String(components[1]),
+		})
+	}
+
+	return ret
+}
+
+func writeMetadata(file string, metadata *build_license_metadata_proto.LicenseMetadata) error {
+	buf, err := prototext.MarshalOptions{Multiline: true}.Marshal(metadata)
+	if err != nil {
+		return fmt.Errorf("error marshalling textproto: %w", err)
+	}
+
+	if file != "" {
+		err = ioutil.WriteFile(file, buf, 0666)
+		if err != nil {
+			return fmt.Errorf("error writing textproto %q: %w", file, err)
+		}
+	} else {
+		_, _ = os.Stdout.Write(buf)
+	}
+
+	return nil
+}
