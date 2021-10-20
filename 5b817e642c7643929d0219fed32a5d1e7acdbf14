@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4807aa64_88b9ff4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-10-20T10:45:03Z",
+      "side": 1,
+      "message": "Just FYI this is not \"production\" SDK build, it\u0027s just the only thing we happen to have in AOSP atm. Mainline module SDKs have an internal build script",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "5b817e642c7643929d0219fed32a5d1e7acdbf14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "246e037e_b9181df6",
         "filename": "scripts/build-mainline-modules.sh",
         "patchSetId": 1
