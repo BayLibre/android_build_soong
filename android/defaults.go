@@ -217,6 +217,10 @@ func (defaultable *DefaultableModuleBase) applyDefaults(ctx TopDownMutatorContex
 	defaultsList []Defaults) {
 
 	for _, defaults := range defaultsList {
+		if m, ok := defaults.(Module); ok && m.base().configProperties != nil {
+			ctx.Module().base().configProperties = m.base().configProperties
+			// continue
+		}
 		for _, prop := range defaultable.defaultableProperties {
 			if prop == defaultable.defaultableVariableProperties {
 				defaultable.applyDefaultVariableProperties(ctx, defaults, prop)
