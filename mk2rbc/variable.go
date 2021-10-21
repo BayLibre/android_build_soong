@@ -276,12 +276,12 @@ func (ctx *parseContext) addVariable(name string) variable {
 	v, found := ctx.variables[name]
 	if !found {
 		_, preset := presetVariables[name]
-		if vi, found := KnownVariables[name]; found {
-			switch vi.class {
+		if vi, found := ctx.knownVariables[name]; found {
+			switch vi.Class {
 			case VarClassConfig:
-				v = &productConfigVariable{baseVariable{nam: name, typ: vi.valueType, preset: preset}}
+				v = &productConfigVariable{baseVariable{nam: name, typ: vi.ValueType, preset: preset}}
 			case VarClassSoong:
-				v = &otherGlobalVariable{baseVariable{nam: name, typ: vi.valueType, preset: preset}}
+				v = &otherGlobalVariable{baseVariable{nam: name, typ: vi.ValueType, preset: preset}}
 			}
 		} else if name == strings.ToLower(name) {
 			// Heuristics: if variable's name is all lowercase, consider it local
@@ -292,11 +292,11 @@ func (ctx *parseContext) addVariable(name string) variable {
 			if strings.HasPrefix(name, "LOCAL_") {
 				// Heuristics: local variables that contribute to corresponding config variables
 				if cfgVarName, found := localProductConfigVariables[name]; found {
-					vi, found2 := KnownVariables[cfgVarName]
+					vi, found2 := ctx.knownVariables[cfgVarName]
 					if !found2 {
 						panic(fmt.Errorf("unknown config variable %s for %s", cfgVarName, name))
 					}
-					vt = vi.valueType
+					vt = vi.ValueType
 				}
 			}
 			if strings.HasSuffix(name, "_LIST") && vt == starlarkTypeUnknown {
