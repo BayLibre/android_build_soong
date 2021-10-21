@@ -26,6 +26,15 @@ blueprint_go_binary {
     ],
 }
 
+blueprint_go_binary {
+    name: "mkvars2rbc",
+    srcs: ["mkvars2rbc/mkvars2rbc.go"],
+    deps: [
+        "mk2rbc-lib",
+        "androidmk-parser",
+    ],
+}
+
 bootstrap_go_package {
     name: "mk2rbc-lib",
     pkgPath: "android/soong/mk2rbc",
