@@ -165,6 +165,7 @@ type Request struct {
 	WarnPartialSuccess bool
 	SourceFS           fs.FS
 	MakefileFinder     MakefileFinder
+	knownVariables     *KnownVariables // optional, if not provided mk2rbc will load it from hardcoded makefiles
 }
 
 // An error sink allowing to gather error statistics.
@@ -304,64 +305,6 @@ func (gctx *generationContext) newLine() {
 	gctx.writef("%*s", 2*gctx.indentLevel, "")
 }
 
-type knownVariable struct {
-	name      string
-	class     varClass
-	valueType starlarkType
-}
-
-type knownVariables map[string]knownVariable
-
-func (pcv knownVariables) NewVariable(name string, varClass varClass, valueType starlarkType) {
-	v, exists := pcv[name]
-	if !exists {
-		pcv[name] = knownVariable{name, varClass, valueType}
-		return
-	}
-	// Conflict resolution:
-	//    * config class trumps everything
-	//    * any type trumps unknown type
-	match := varClass == v.class
-	if !match {
-		if varClass == VarClassConfig {
-			v.class = VarClassConfig
-			match = true
-		} else if v.class == VarClassConfig {
-			match = true
-		}
-	}
-	if valueType != v.valueType {
-		if valueType != starlarkTypeUnknown {
-			if v.valueType == starlarkTypeUnknown {
-				v.valueType = valueType
-			} else {
-				match = false
-			}
-		}
-	}
-	if !match {
-		fmt.Fprintf(os.Stderr, "cannot redefine %s as %v/%v (already defined as %v/%v)\n",
-			name, varClass, valueType, v.class, v.valueType)
-	}
-}
-
-// All known product variables.
-var KnownVariables = make(knownVariables)
-
-func init() {
-	for _, kv := range []string{
-		// Kernel-related variables that we know are lists.
-		"BOARD_VENDOR_KERNEL_MODULES",
-		"BOARD_VENDOR_RAMDISK_KERNEL_MODULES",
-		"BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD",
-		"BOARD_RECOVERY_KERNEL_MODULES",
-		// Other variables we knwo are lists
-		"ART_APEX_JARS",
-	} {
-		KnownVariables.NewVariable(kv, VarClassSoong, starlarkTypeList)
-	}
-}
-
 type nodeReceiver interface {
 	newNode(node starlarkNode)
 }
@@ -414,9 +357,10 @@ type parseContext struct {
 	dependentModules map[string]*moduleInfo
 	soongNamespaces  map[string]map[string]bool
 	includeTops      []string
+	knownVariables   KnownVariables
 }
 
-func newParseContext(ss *StarlarkScript, nodes []mkparser.Node) *parseContext {
+func newParseContext(ss *StarlarkScript, nodes []mkparser.Node, knownVariables KnownVariables) *parseContext {
 	topdir, _ := filepath.Split(filepath.Join(ss.topDir, "foo"))
 	predefined := []struct{ name, value string }{
 		{"SRC_TARGET_DIR", filepath.Join("build", "make", "target")},
@@ -460,6 +404,7 @@ func newParseContext(ss *StarlarkScript, nodes []mkparser.Node) *parseContext {
 		dependentModules: make(map[string]*moduleInfo),
 		soongNamespaces:  make(map[string]map[string]bool),
 		includeTops:      []string{"vendor/google-devices"},
+		knownVariables:   knownVariables,
 	}
 	ctx.pushVarAssignments()
 	for _, item := range predefined {
@@ -1661,7 +1606,14 @@ func Convert(req Request) (*StarlarkScript, error) {
 		sourceFS:           req.SourceFS,
 		makefileFinder:     req.MakefileFinder,
 	}
-	ctx := newParseContext(starScript, nodes)
+	if req.knownVariables == nil {
+		knownVariables, err := CreateKnownVariables(req.RootDir)
+		if err != nil {
+			return nil, err
+		}
+		req.knownVariables = &knownVariables
+	}
+	ctx := newParseContext(starScript, nodes, *req.knownVariables)
 	ctx.outputSuffix = req.OutputSuffix
 	ctx.outputDir = req.OutputDir
 	ctx.errorLogger = req.ErrorLogger

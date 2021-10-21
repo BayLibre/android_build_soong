@@ -1008,6 +1008,7 @@ var known_variables = []struct {
 	class varClass
 	starlarkType
 }{
+	{"ART_APEX_JARS", VarClassSoong, starlarkTypeList},
 	{"PRODUCT_NAME", VarClassConfig, starlarkTypeString},
 	{"PRODUCT_MODEL", VarClassConfig, starlarkTypeString},
 	{"PRODUCT_PACKAGES", VarClassConfig, starlarkTypeList},
@@ -1055,8 +1056,9 @@ func (t *testMakefileFinder) Find(root string) []string {
 }
 
 func TestGood(t *testing.T) {
+	knownVariables := make(KnownVariables)
 	for _, v := range known_variables {
-		KnownVariables.NewVariable(v.name, v.class, v.starlarkType)
+		knownVariables.NewVariable(v.name, v.class, v.starlarkType)
 	}
 	fs := NewFindMockFS([]string{
 		"vendor/foo1/cfg.mk",
@@ -1076,6 +1078,7 @@ func TestGood(t *testing.T) {
 					WarnPartialSuccess: true,
 					SourceFS:           fs,
 					MakefileFinder:     &testMakefileFinder{fs: fs},
+					knownVariables:     &knownVariables,
 				})
 				if err != nil {
 					t.Error(err)
