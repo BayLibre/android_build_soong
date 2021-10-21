@@ -97,10 +97,7 @@ func (b *BazelModuleBase) GetBazelLabel(ctx BazelConversionPathContext, module b
 	if b.HasHandcraftedLabel() {
 		return b.HandcraftedLabel()
 	}
-	if b.ConvertWithBp2build(ctx) {
-		return bp2buildModuleLabel(ctx, module)
-	}
-	return "" // no label for unconverted module
+	return bp2buildModuleLabel(ctx, module)
 }
 
 // Configuration to decide if modules in a directory should default to true/false for bp2build_available

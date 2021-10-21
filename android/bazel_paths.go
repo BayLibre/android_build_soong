@@ -349,7 +349,6 @@ func getOtherModuleLabel(ctx TopDownMutatorContext, dep, tag string,
 	otherLabel := labelFromModule(ctx, m)
 
 	// TODO(b/165114590): Convert tag (":name{.tag}") to corresponding Bazel implicit output targets.
-
 	if samePackage(label, otherLabel) {
 		otherLabel = bazelShortLabel(otherLabel)
 	}
@@ -375,6 +374,9 @@ func bazelShortLabel(label string) string {
 
 func bazelPackage(label string) string {
 	i := strings.Index(label, ":")
+	if i == -1 {
+		panic(fmt.Errorf("Could not find the : symbol in the label: %s, is this module converted to Bazel?", label))
+	}
 	return label[0:i]
 }
 
