@@ -502,24 +502,29 @@ func ProductVariableProperties(ctx BaseMutatorContext) ProductConfigProperties {
 
 	productConfigProperties := ProductConfigProperties{}
 
-	if moduleBase.variableProperties == nil {
+	configProperties := moduleBase.configProperties
+
+	fmt.Printf("1123 %q %q\n", ctx.Module().Name(), configProperties)
+	if moduleBase.variableProperties == nil && configProperties == nil {
 		return productConfigProperties
 	}
 
-	productVariableValues(moduleBase.variableProperties, "", &productConfigProperties)
+	productVariableValues(moduleBase.variableProperties, configProperties, "", &productConfigProperties)
 
 	for _, configToProps := range moduleBase.GetArchVariantProperties(ctx, moduleBase.variableProperties) {
 		for config, props := range configToProps {
 			// GetArchVariantProperties is creating an instance of the requested type
 			// and productVariablesValues expects an interface, so no need to cast
-			productVariableValues(props, config, &productConfigProperties)
+			productVariableValues(props, configProperties, config, &productConfigProperties)
 		}
 	}
+
+	fmt.Printf("%+v\n", productConfigProperties)
 
 	return productConfigProperties
 }
 
-func productVariableValues(variableProps interface{}, suffix string, productConfigProperties *ProductConfigProperties) {
+func productVariableValues(variableProps interface{}, soongConfigVariables interface{}, suffix string, productConfigProperties *ProductConfigProperties) {
 	if suffix != "" {
 		suffix = "-" + suffix
 	}
@@ -552,6 +557,92 @@ func productVariableValues(variableProps interface{}, suffix string, productConf
 			}
 		}
 	}
+
+	// fmt.Printf("2233 %q\n", soongConfigVariables)
+	scv := reflect.ValueOf(soongConfigVariables)
+	if !scv.IsValid() {
+		return
+	}
+	if scv.Kind() == reflect.Ptr {
+		scv = scv.Elem()
+	}
+	configVariables := scv.FieldByName("Soong_config_variables")
+	// fmt.Printf("configVariables %q\n", configVariables)
+	// fmt.Printf("4444 %d, %q, %+v\n", configVariables.NumField(), configVariables.Kind(), configVariables)
+	for i := 0; i < configVariables.NumField(); i++ {
+		variable := configVariables.Field(i)
+		productVariableIntf := variable.Interface()
+		productVariableName := configVariables.Type().Field(i).Name
+
+		if variable.Kind() == reflect.Interface {
+			if !variable.IsValid() {
+				continue
+			}
+			variable = variable.Elem()
+			if variable.Kind() == reflect.Ptr {
+				variable = reflect.Indirect(variable)
+			}
+		}
+
+		if variable.Kind() == reflect.Struct {
+			variableValue := variable
+			if variableValue.Kind() != reflect.Struct {
+				panic(fmt.Errorf("%+v is not a struct", variableValue.Interface()))
+			}
+			fmt.Printf("%s, %+v, %+v\n", productVariableName, productVariableIntf, variableValue)
+			for j := 0; j < variableValue.NumField(); j++ {
+				property := variableValue.Field(j)
+				// If the property wasn't set, no need to pass it along
+				if property.IsZero() {
+					continue
+				}
+				propertyName := variableValue.Type().Field(j).Name
+				if (*productConfigProperties)[propertyName] == nil {
+					(*productConfigProperties)[propertyName] = make(map[string]ProductConfigProperty)
+				}
+				config := productVariableName + ""
+				(*productConfigProperties)[propertyName][config] = ProductConfigProperty{
+					ProductConfigVariable: productVariableName,
+					FullConfig:            config,
+					Property:              property.Interface(), // FIXME
+				}
+			}
+
+			// if conditionsDefaultStruct.IsValid() {
+			// 	conditionsDefaultIntf = conditionsDefaultStruct.Interface()
+			// }
+		} else {
+			fmt.Println(variable.Kind())
+		}
+	}
+}
+
+// conditionsDefaultField extracts the conditions_default field from v. This is always the final
+// field if initialized with initializePropertiesWithDefault.
+func conditionsDefaultField(v reflect.Value) reflect.Value {
+	return v.Field(v.NumField() - 1)
+}
+
+// removeDefault removes the conditions_default field from values while retaining values from all
+// other fields. This allows
+func removeDefault(values reflect.Value) reflect.Value {
+	v := values
+	s := conditionsDefaultField(v)
+	// if conditions_default field was not set, there will be no issues extending properties.
+	if !s.IsValid() {
+		return v
+	}
+
+	// If conditions_default field was set, it has the correct type for our property. Create a new
+	// reflect.Value of the conditions_default type and copy all fields (except for
+	// conditions_default) based on values to the result.
+	res := reflect.New(s.Type().Elem())
+	for i := 0; i < res.Type().Elem().NumField(); i++ {
+		val := v.Field(i)
+		res.Elem().Field(i).Set(val)
+	}
+
+	return res
 }
 
 func VariableMutator(mctx BottomUpMutatorContext) {

@@ -19,6 +19,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"reflect"
 	"regexp"
 	"strings"
 	"text/scanner"
@@ -508,6 +509,7 @@ type Module interface {
 	IsConvertedByBp2build() bool
 	// Bp2buildTargets returns the target(s) generated for Bazel via bp2build for this module
 	Bp2buildTargets() []bp2buildInfo
+	// SoongConfigVariables() []*reflect.Value
 	GetUnconvertedBp2buildDeps() []string
 
 	BuildParamsForTests() []BuildParams
@@ -607,6 +609,10 @@ type Dist struct {
 type nameProperties struct {
 	// The name of the module.  Must be unique across all modules.
 	Name *string
+}
+
+type soongConfigProperties struct {
+	Soong_config_variables []*reflect.Value
 }
 
 type commonProperties struct {
@@ -1164,6 +1170,9 @@ type ModuleBase struct {
 	hostAndDeviceProperties hostAndDeviceProperties
 	generalProperties       []interface{}
 
+	// soongConfigProperties soongConfigProperties
+	configProperties interface{}
+
 	// Arch specific versions of structs in generalProperties. The outer index
 	// has the same order as generalProperties as initialized in
 	// InitAndroidArchModule, and the inner index chooses the props specific to
@@ -1256,6 +1265,22 @@ func (b bp2buildInfo) BazelAttributes() []interface{} {
 func (m *ModuleBase) addBp2buildInfo(info bp2buildInfo) {
 	m.commonProperties.Bp2buildInfo = append(m.commonProperties.Bp2buildInfo, info)
 }
+
+// func (m *ModuleBase) addConfigVariables(vars *reflect.Value) {
+// 	m.soongConfigProperties.Soong_config_variables = append(m.soongConfigProperties.Soong_config_variables, vars)
+// }
+
+// func (m *ModuleBase) SoongConfigVariables() []*reflect.Value {
+// 	return m.soongConfigProperties.Soong_config_variables
+// }
+
+func (m *ModuleBase) setConfigProperties(props interface{}) {
+	m.configProperties = props
+}
+
+// func (m *ModuleBase) ConfigProperties() interface{} {
+// 	return m.configProperties
+// }
 
 // IsConvertedByBp2build returns whether this module was converted via bp2build.
 func (m *ModuleBase) IsConvertedByBp2build() bool {
