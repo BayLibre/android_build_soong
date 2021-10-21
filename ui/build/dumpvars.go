@@ -265,6 +265,8 @@ func runMakeProductConfig(ctx Context, config Config) {
 	// We need Roboleaf converter and runner in the mixed mode
 	runMicrofactory(ctx, config, ".bootstrap/bin/mk2rbc", "android/soong/mk2rbc/cmd",
 		map[string]string{"android/soong": "build/soong"})
+	runMicrofactory(ctx, config, ".bootstrap/bin/mkvars2rbc", "android/soong/mk2rbc/mkvars2rbc",
+		map[string]string{"android/soong": "build/soong"})
 	runMicrofactory(ctx, config, ".bootstrap/bin/rbcrun", "rbcrun/cmd",
 		map[string]string{"go.starlark.net": "external/starlark-go", "rbcrun": "build/make/tools/rbcrun"})
 
