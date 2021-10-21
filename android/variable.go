@@ -502,24 +502,28 @@ func ProductVariableProperties(ctx BaseMutatorContext) ProductConfigProperties {
 
 	productConfigProperties := ProductConfigProperties{}
 
-	if moduleBase.variableProperties == nil {
+	fmt.Printf("%s, %q\n", module.Name(), moduleBase.SoongConfigVariables())
+
+	soongConfigVariables := moduleBase.SoongConfigVariables()
+
+	if moduleBase.variableProperties == nil && len(soongConfigVariables) == 0 {
 		return productConfigProperties
 	}
 
-	productVariableValues(moduleBase.variableProperties, "", &productConfigProperties)
+	productVariableValues(moduleBase.variableProperties, soongConfigVariables, "", &productConfigProperties)
 
 	for _, configToProps := range moduleBase.GetArchVariantProperties(ctx, moduleBase.variableProperties) {
 		for config, props := range configToProps {
 			// GetArchVariantProperties is creating an instance of the requested type
 			// and productVariablesValues expects an interface, so no need to cast
-			productVariableValues(props, config, &productConfigProperties)
+			productVariableValues(props, soongConfigVariables, config, &productConfigProperties)
 		}
 	}
 
 	return productConfigProperties
 }
 
-func productVariableValues(variableProps interface{}, suffix string, productConfigProperties *ProductConfigProperties) {
+func productVariableValues(variableProps interface{}, soongConfigVariables []*reflect.Value, suffix string, productConfigProperties *ProductConfigProperties) {
 	if suffix != "" {
 		suffix = "-" + suffix
 	}
@@ -550,6 +554,42 @@ func productVariableValues(variableProps interface{}, suffix string, productConf
 				FullConfig:            config,
 				Property:              property.Interface(),
 			}
+		}
+	}
+
+	for _, scv := range soongConfigVariables {
+		configVariables := reflect.ValueOf(scv).FieldByName("Soong_config_variables")
+		fields := reflect.TypeOf(configVariables)
+		// fmt.Printf("%q, %q, %q\n", fields.NumField(), configVariables.Kind(), configVariables)
+		for i := 0; i < fields.NumField(); i++ {
+			variableValue := configVariables.Field(i)
+			// Check if any properties were set for the module
+			if variableValue.IsZero() {
+				continue
+			}
+			// e.g. Platform_sdk_version, Unbundled_build, Malloc_not_svelte, etc.
+			// productVariableName := configVariables.Type().Field(i).Name
+			// fmt.Printf("%q\n", productVariableName)
+			// for j := 0; j < reflect.TypeOf(variableValue).NumField(); j++ {
+			// 	fmt.Printf("%q\n", variableValue)
+			// 	property := variableValue.Field(j)
+			// 	// If the property wasn't set, no need to pass it along
+			// 	if property.IsZero() {
+			// 		continue
+			// 	}
+
+			// 	// e.g. Asflags, Cflags, Enabled, etc.
+			// 	propertyName := variableValue.Type().Field(j).Name
+			// 	if (*productConfigProperties)[propertyName] == nil {
+			// 		(*productConfigProperties)[propertyName] = make(map[string]ProductConfigProperty)
+			// 	}
+			// 	config := productVariableName + suffix
+			// 	(*productConfigProperties)[propertyName][config] = ProductConfigProperty{
+			// 		ProductConfigVariable: productVariableName,
+			// 		FullConfig:            config,
+			// 		Property:              property.Interface(),
+			// 	}
+			// }
 		}
 	}
 }

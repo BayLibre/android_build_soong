@@ -15,6 +15,7 @@
 package android
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/google/blueprint"
@@ -217,6 +218,13 @@ func (defaultable *DefaultableModuleBase) applyDefaults(ctx TopDownMutatorContex
 	defaultsList []Defaults) {
 
 	for _, defaults := range defaultsList {
+		if m, ok := defaults.(Module); ok && len(m.base().SoongConfigVariables()) > 0 {
+			ctx.Module().base().soongConfigProperties.Soong_config_variables =
+				append(ctx.Module().base().soongConfigProperties.Soong_config_variables,
+					m.base().SoongConfigVariables()...)
+			fmt.Printf("%q\n", m.base().SoongConfigVariables())
+			continue
+		}
 		for _, prop := range defaultable.defaultableProperties {
 			if prop == defaultable.defaultableVariableProperties {
 				defaultable.applyDefaultVariableProperties(ctx, defaults, prop)

@@ -31,10 +31,10 @@ import (
 )
 
 func init() {
-	RegisterModuleType("soong_config_module_type_import", soongConfigModuleTypeImportFactory)
-	RegisterModuleType("soong_config_module_type", soongConfigModuleTypeFactory)
-	RegisterModuleType("soong_config_string_variable", soongConfigStringVariableDummyFactory)
-	RegisterModuleType("soong_config_bool_variable", soongConfigBoolVariableDummyFactory)
+	RegisterModuleType("soong_config_module_type_import", SoongConfigModuleTypeImportFactory)
+	RegisterModuleType("soong_config_module_type", SoongConfigModuleTypeFactory)
+	RegisterModuleType("soong_config_string_variable", SoongConfigStringVariableDummyFactory)
+	RegisterModuleType("soong_config_bool_variable", SoongConfigBoolVariableDummyFactory)
 }
 
 type soongConfigModuleTypeImport struct {
@@ -153,7 +153,7 @@ type soongConfigModuleTypeImportProperties struct {
 // Then libacme_foo would build with cflags:
 //   "-DGENERIC -DSOC_DEFAULT -DFEATURE_DEFAULT -DSIZE=DEFAULT".
 
-func soongConfigModuleTypeImportFactory() Module {
+func SoongConfigModuleTypeImportFactory() Module {
 	module := &soongConfigModuleTypeImport{}
 
 	module.AddProperties(&module.properties)
@@ -262,7 +262,7 @@ type soongConfigModuleTypeModule struct {
 //     SOONG_CONFIG_acme_width := 200
 //
 // Then libacme_foo would build with cflags "-DGENERIC -DSOC_A -DFEATURE".
-func soongConfigModuleTypeFactory() Module {
+func SoongConfigModuleTypeFactory() Module {
 	module := &soongConfigModuleTypeModule{}
 
 	module.AddProperties(&module.properties)
@@ -296,7 +296,7 @@ type soongConfigBoolVariableDummyModule struct {
 
 // soong_config_string_variable defines a variable and a set of possible string values for use
 // in a soong_config_module_type definition.
-func soongConfigStringVariableDummyFactory() Module {
+func SoongConfigStringVariableDummyFactory() Module {
 	module := &soongConfigStringVariableDummyModule{}
 	module.AddProperties(&module.properties, &module.stringProperties)
 	initAndroidModuleBase(module)
@@ -305,7 +305,7 @@ func soongConfigStringVariableDummyFactory() Module {
 
 // soong_config_string_variable defines a variable with true or false values for use
 // in a soong_config_module_type definition.
-func soongConfigBoolVariableDummyFactory() Module {
+func SoongConfigBoolVariableDummyFactory() Module {
 	module := &soongConfigBoolVariableDummyModule{}
 	module.AddProperties(&module.properties)
 	initAndroidModuleBase(module)
@@ -418,17 +418,37 @@ func soongConfigModuleFactory(factory blueprint.ModuleFactory,
 			conditionalProps := proptools.CloneEmptyProperties(conditionalFactoryProps)
 			props = append(props, conditionalProps.Interface())
 
-			AddLoadHook(module, func(ctx LoadHookContext) {
-				config := ctx.Config().VendorConfig(moduleType.ConfigNamespace)
-				newProps, err := soongconfig.PropertiesToApply(moduleType, conditionalProps, config)
-				if err != nil {
-					ctx.ModuleErrorf("%s", err)
-					return
-				}
-				for _, ps := range newProps {
-					ctx.AppendProperties(ps)
-				}
-			})
+			// FIXME(jingwen)
+			bp2buildMode := true
+
+			if bp2buildMode {
+				AddLoadHook(module, func(ctx LoadHookContext) {
+					if m, ok := module.(Module); ok {
+						m.base().addConfigVariables(&conditionalProps)
+						fmt.Printf("%q\n", conditionalProps)
+						fmt.Printf("%q\n", m.base().SoongConfigVariables())
+					}
+					// ctx.AppendProperties(conditionalProps.Interface())
+					// newProps, err := soongconfig.ApplyAllProperties(moduleType, conditionalProps)
+					// if err != nil {
+					// 	ctx.ModuleErrorf("%s", err)
+					// 	return
+					// }
+					// ctx.AppendProperties(newProps)
+				})
+			} else {
+				AddLoadHook(module, func(ctx LoadHookContext) {
+					config := ctx.Config().VendorConfig(moduleType.ConfigNamespace)
+					newProps, err := soongconfig.PropertiesToApply(moduleType, conditionalProps, config)
+					if err != nil {
+						ctx.ModuleErrorf("%s", err)
+						return
+					}
+					for _, ps := range newProps {
+						ctx.AppendProperties(ps)
+					}
+				})
+			}
 
 			return module, props
 		}
