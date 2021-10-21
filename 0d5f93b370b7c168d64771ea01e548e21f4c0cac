@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000016441895",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1865006?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "6b3bfdfd_d14f8a07",
+          "description": "Change to \"compliance/metadata/metadata.go\"",
+          "replacements": [
+            {
+              "path": "compliance/metadata/metadata.go",
+              "range": {
+                "startLine": 212,
+                "startChar": 97,
+                "endLine": 212,
+                "endChar": 105
+              },
+              "replacement": "condition"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "0a895ab6_e97c537f",
+        "filename": "compliance/metadata/metadata.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-10-21T02:20:59Z",
+      "side": 1,
+      "message": "Common typo found: \"conditon\" -- should it be \"condition\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 212,
+        "startChar": 97,
+        "endLine": 212,
+        "endChar": 105
+      },
+      "revId": "0d5f93b370b7c168d64771ea01e548e21f4c0cac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000016441895",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1865006?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "d3ca5d61_d65048aa",
+          "description": "Change to \"compliance/metadata/metadata.go\"",
+          "replacements": [
+            {
+              "path": "compliance/metadata/metadata.go",
+              "range": {
+                "startLine": 338,
+                "startChar": 40,
+                "endLine": 338,
+                "endChar": 47
+              },
+              "replacement": "metadata"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "a0ef1a2f_8c08ca7a",
+        "filename": "compliance/metadata/metadata.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-10-21T02:20:59Z",
+      "side": 1,
+      "message": "Common typo found: \"metdata\" -- should it be \"metadata\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 338,
+        "startChar": 40,
+        "endLine": 338,
+        "endChar": 47
+      },
+      "revId": "0d5f93b370b7c168d64771ea01e548e21f4c0cac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
