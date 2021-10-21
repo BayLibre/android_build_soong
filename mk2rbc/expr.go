@@ -26,7 +26,7 @@ import (
 // a type, and it can be evaluated.
 type starlarkExpr interface {
 	starlarkNode
-	typ() starlarkType
+	typ() StarlarkType
 	// Try to substitute variable values. Return substitution result
 	// and whether it is the same as the original expression.
 	eval(valueMap map[string]starlarkExpr) (res starlarkExpr, same bool)
@@ -56,8 +56,8 @@ func (s *stringLiteralExpr) emit(gctx *generationContext) {
 	gctx.writef("%q", s.literal)
 }
 
-func (_ *stringLiteralExpr) typ() starlarkType {
-	return starlarkTypeString
+func (_ *stringLiteralExpr) typ() StarlarkType {
+	return StarlarkTypeString
 }
 
 func (s *stringLiteralExpr) emitListVarCopy(gctx *generationContext) {
@@ -79,8 +79,8 @@ func (s *intLiteralExpr) emit(gctx *generationContext) {
 	gctx.writef("%d", s.literal)
 }
 
-func (_ *intLiteralExpr) typ() starlarkType {
-	return starlarkTypeInt
+func (_ *intLiteralExpr) typ() StarlarkType {
+	return StarlarkTypeInt
 }
 
 func (s *intLiteralExpr) emitListVarCopy(gctx *generationContext) {
@@ -107,7 +107,7 @@ func (xi *interpolateExpr) emit(gctx *generationContext) {
 	}
 	gctx.writef("%q %% ", format)
 	emitarg := func(arg starlarkExpr) {
-		if arg.typ() == starlarkTypeList {
+		if arg.typ() == StarlarkTypeList {
 			gctx.write(`" ".join(`)
 			arg.emit(gctx)
 			gctx.write(`)`)
@@ -159,8 +159,8 @@ func (xi *interpolateExpr) eval(valueMap map[string]starlarkExpr) (res starlarkE
 	return
 }
 
-func (_ *interpolateExpr) typ() starlarkType {
-	return starlarkTypeString
+func (_ *interpolateExpr) typ() StarlarkType {
+	return StarlarkTypeString
 }
 
 func (xi *interpolateExpr) emitListVarCopy(gctx *generationContext) {
@@ -186,13 +186,13 @@ func (v *variableRefExpr) emit(gctx *generationContext) {
 	v.ref.emitGet(gctx, v.isDefined)
 }
 
-func (v *variableRefExpr) typ() starlarkType {
+func (v *variableRefExpr) typ() StarlarkType {
 	return v.ref.valueType()
 }
 
 func (v *variableRefExpr) emitListVarCopy(gctx *generationContext) {
 	v.emit(gctx)
-	if v.typ() == starlarkTypeList {
+	if v.typ() == StarlarkTypeList {
 		gctx.write("[:]") // this will copy the list
 	}
 }
@@ -215,8 +215,8 @@ func (n *notExpr) emit(ctx *generationContext) {
 	n.expr.emit(ctx)
 }
 
-func (_ *notExpr) typ() starlarkType {
-	return starlarkTypeBool
+func (_ *notExpr) typ() StarlarkType {
+	return StarlarkTypeBool
 }
 
 func (n *notExpr) emitListVarCopy(gctx *generationContext) {
@@ -265,8 +265,8 @@ func (eq *eqExpr) emit(gctx *generationContext) {
 	eq.right.emit(gctx)
 }
 
-func (_ *eqExpr) typ() starlarkType {
-	return starlarkTypeBool
+func (_ *eqExpr) typ() StarlarkType {
+	return StarlarkTypeBool
 }
 
 func (eq *eqExpr) emitListVarCopy(gctx *generationContext) {
@@ -293,8 +293,8 @@ func (v *variableDefinedExpr) emit(gctx *generationContext) {
 	gctx.writef("%s(%q)", cfnWarning, "TODO(VAR)")
 }
 
-func (_ *variableDefinedExpr) typ() starlarkType {
-	return starlarkTypeBool
+func (_ *variableDefinedExpr) typ() StarlarkType {
+	return StarlarkTypeBool
 }
 
 func (v *variableDefinedExpr) emitListVarCopy(gctx *generationContext) {
@@ -347,8 +347,8 @@ func (l *listExpr) emit(gctx *generationContext) {
 	gctx.write("]")
 }
 
-func (_ *listExpr) typ() starlarkType {
-	return starlarkTypeList
+func (_ *listExpr) typ() StarlarkType {
+	return StarlarkTypeList
 }
 
 func (l *listExpr) emitListVarCopy(gctx *generationContext) {
@@ -410,8 +410,8 @@ func (c *concatExpr) eval(valueMap map[string]starlarkExpr) (res starlarkExpr, s
 	return
 }
 
-func (_ *concatExpr) typ() starlarkType {
-	return starlarkTypeList
+func (_ *concatExpr) typ() StarlarkType {
+	return StarlarkTypeList
 }
 
 func (c *concatExpr) emitListVarCopy(gctx *generationContext) {
@@ -448,8 +448,8 @@ func (i *inExpr) emit(gctx *generationContext) {
 	i.list.emit(gctx)
 }
 
-func (_ *inExpr) typ() starlarkType {
-	return starlarkTypeBool
+func (_ *inExpr) typ() StarlarkType {
+	return StarlarkTypeBool
 }
 
 func (i *inExpr) emitListVarCopy(gctx *generationContext) {
@@ -468,8 +468,8 @@ func (ix indexExpr) emit(gctx *generationContext) {
 	gctx.write("]")
 }
 
-func (ix indexExpr) typ() starlarkType {
-	return starlarkTypeString
+func (ix indexExpr) typ() StarlarkType {
+	return StarlarkTypeString
 }
 
 func (ix indexExpr) eval(valueMap map[string]starlarkExpr) (res starlarkExpr, same bool) {
@@ -491,7 +491,7 @@ type callExpr struct {
 	object     starlarkExpr // nil if static call
 	name       string
 	args       []starlarkExpr
-	returnType starlarkType
+	returnType StarlarkType
 }
 
 func (cx *callExpr) eval(valueMap map[string]starlarkExpr) (res starlarkExpr, same bool) {
@@ -547,7 +547,7 @@ func (cx *callExpr) emit(gctx *generationContext) {
 	gctx.write(")")
 }
 
-func (cx *callExpr) typ() starlarkType {
+func (cx *callExpr) typ() StarlarkType {
 	return cx.returnType
 }
 
@@ -570,8 +570,8 @@ func (b *badExpr) emit(_ *generationContext) {
 	panic("implement me")
 }
 
-func (_ *badExpr) typ() starlarkType {
-	return starlarkTypeUnknown
+func (_ *badExpr) typ() StarlarkType {
+	return StarlarkTypeUnknown
 }
 
 func (b *badExpr) emitListVarCopy(gctx *generationContext) {

@@ -64,20 +64,20 @@ func (ctx *context) doFind(mkFile string) error {
 }
 
 func (ctx context) NewSoongVariable(name, typeString string) {
-	var valueType starlarkType
+	var valueType StarlarkType
 	switch typeString {
 	case "bool":
-		valueType = starlarkTypeBool
+		valueType = StarlarkTypeBool
 	case "csv":
 		// Only PLATFORM_VERSION_ALL_CODENAMES, and it's a list
-		valueType = starlarkTypeList
+		valueType = StarlarkTypeList
 	case "list":
-		valueType = starlarkTypeList
+		valueType = StarlarkTypeList
 	case "str":
-		valueType = starlarkTypeString
+		valueType = StarlarkTypeString
 	case "val":
 		// Only PLATFORM_SDK_VERSION uses this, and it's integer
-		valueType = starlarkTypeInt
+		valueType = StarlarkTypeInt
 	default:
 		panic(fmt.Errorf("unknown Soong variable type %s", typeString))
 	}
