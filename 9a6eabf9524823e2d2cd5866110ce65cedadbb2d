@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "584545a6_102d0e83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-10-21T02:24:19Z",
+      "side": 1,
+      "message": "LGTM, but who will provide the NDK libs list then?",
+      "revId": "9a6eabf9524823e2d2cd5866110ce65cedadbb2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
