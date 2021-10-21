@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98627e41_2b36910d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-10-21T11:03:35Z",
+      "side": 1,
+      "message": "Sorry for the delay responding!\n\nThis seems like a lot of changes for \"Handle export_generated_header property\". Should the description be expanded a bit? Is some of this CL more of a refactoring?",
+      "revId": "ff48cdeac44b1a4e0c46a19d393f75b43cb5f305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb9c2f4e_55dce754",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-10-21T11:03:35Z",
+      "side": 1,
+      "message": "compilerAttrs?",
+      "range": {
+        "startLine": 291,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 3
+      },
+      "revId": "ff48cdeac44b1a4e0c46a19d393f75b43cb5f305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7d5cdd3_39a3b844",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-10-21T11:03:35Z",
+      "side": 1,
+      "message": "The name is a bit vague. E.g. convert from what to what and why? Maybe reword the name and/or add a comment?",
+      "range": {
+        "startLine": 478,
+        "startChar": 28,
+        "endLine": 478,
+        "endChar": 45
+      },
+      "revId": "ff48cdeac44b1a4e0c46a19d393f75b43cb5f305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ce9f849_caa3b3ed",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-10-21T11:03:35Z",
+      "side": 1,
+      "message": "Sometimes this is called linkerAttrs (above). For consistency we should pick one name, and IMO linkerAttrs is clearer",
+      "range": {
+        "startLine": 531,
+        "startChar": 2,
+        "endLine": 531,
+        "endChar": 4
+      },
+      "revId": "ff48cdeac44b1a4e0c46a19d393f75b43cb5f305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf0baf9f_d54d8a3d",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-10-21T11:03:35Z",
+      "side": 1,
+      "message": "Does this ever happen in Soong? Can we ban it in Soong?",
+      "range": {
+        "startLine": 537,
+        "startChar": 1,
+        "endLine": 537,
+        "endChar": 84
+      },
+      "revId": "ff48cdeac44b1a4e0c46a19d393f75b43cb5f305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
