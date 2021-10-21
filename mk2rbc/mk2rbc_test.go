@@ -935,24 +935,24 @@ def init(g, handle):
 
 var known_variables = []struct {
 	name  string
-	class varClass
-	starlarkType
+	class VarClass
+	StarlarkType
 }{
-	{"ART_APEX_JARS", VarClassSoong, starlarkTypeList},
-	{"PRODUCT_NAME", VarClassConfig, starlarkTypeString},
-	{"PRODUCT_MODEL", VarClassConfig, starlarkTypeString},
-	{"PRODUCT_PACKAGES", VarClassConfig, starlarkTypeList},
-	{"PRODUCT_BOOT_JARS", VarClassConfig, starlarkTypeList},
-	{"PRODUCT_COPY_FILES", VarClassConfig, starlarkTypeList},
-	{"PRODUCT_IS_64BIT", VarClassConfig, starlarkTypeString},
-	{"PRODUCT_LIST1", VarClassConfig, starlarkTypeList},
-	{"PRODUCT_LIST2", VarClassConfig, starlarkTypeList},
-	{"PRODUCT_LIST3", VarClassConfig, starlarkTypeList},
-	{"TARGET_PRODUCT", VarClassSoong, starlarkTypeString},
-	{"TARGET_BUILD_VARIANT", VarClassSoong, starlarkTypeString},
-	{"TARGET_BOARD_PLATFORM", VarClassSoong, starlarkTypeString},
-	{"QCOM_BOARD_PLATFORMS", VarClassSoong, starlarkTypeString},
-	{"PLATFORM_LIST", VarClassSoong, starlarkTypeList}, // TODO(asmundak): make it local instead of soong
+	{"ART_APEX_JARS", VarClassSoong, StarlarkTypeList},
+	{"PRODUCT_NAME", VarClassConfig, StarlarkTypeString},
+	{"PRODUCT_MODEL", VarClassConfig, StarlarkTypeString},
+	{"PRODUCT_PACKAGES", VarClassConfig, StarlarkTypeList},
+	{"PRODUCT_BOOT_JARS", VarClassConfig, StarlarkTypeList},
+	{"PRODUCT_COPY_FILES", VarClassConfig, StarlarkTypeList},
+	{"PRODUCT_IS_64BIT", VarClassConfig, StarlarkTypeString},
+	{"PRODUCT_LIST1", VarClassConfig, StarlarkTypeList},
+	{"PRODUCT_LIST2", VarClassConfig, StarlarkTypeList},
+	{"PRODUCT_LIST3", VarClassConfig, StarlarkTypeList},
+	{"TARGET_PRODUCT", VarClassSoong, StarlarkTypeString},
+	{"TARGET_BUILD_VARIANT", VarClassSoong, StarlarkTypeString},
+	{"TARGET_BOARD_PLATFORM", VarClassSoong, StarlarkTypeString},
+	{"QCOM_BOARD_PLATFORMS", VarClassSoong, StarlarkTypeString},
+	{"PLATFORM_LIST", VarClassSoong, StarlarkTypeList}, // TODO(asmundak): make it local instead of soong
 }
 
 type testMakefileFinder struct {
@@ -988,7 +988,7 @@ func (t *testMakefileFinder) Find(root string) []string {
 func TestGood(t *testing.T) {
 	knownVariables := make(KnownVariables)
 	for _, v := range known_variables {
-		knownVariables.NewVariable(v.name, v.class, v.starlarkType)
+		knownVariables.NewVariable(v.name, v.class, v.StarlarkType)
 	}
 	fs := NewFindMockFS([]string{
 		"vendor/foo1/cfg.mk",

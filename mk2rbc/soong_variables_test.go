@@ -39,11 +39,11 @@ func TestSoongVariables(t *testing.T) {
 		t.Fatal(err)
 	}
 	expected := testVariables{[]testVar{
-		{"BUILD_ID", VarClassSoong, starlarkTypeString},
-		{"PLATFORM_SDK_VERSION", VarClassSoong, starlarkTypeInt},
-		{"DEVICE_PACKAGE_OVERLAYS", VarClassSoong, starlarkTypeList},
-		{"ENABLE_CFI", VarClassSoong, starlarkTypeBool},
-		{"ENABLE_PREOPT", VarClassSoong, starlarkTypeBool},
+		{"BUILD_ID", VarClassSoong, StarlarkTypeString},
+		{"PLATFORM_SDK_VERSION", VarClassSoong, StarlarkTypeInt},
+		{"DEVICE_PACKAGE_OVERLAYS", VarClassSoong, StarlarkTypeList},
+		{"ENABLE_CFI", VarClassSoong, StarlarkTypeBool},
+		{"ENABLE_PREOPT", VarClassSoong, StarlarkTypeBool},
 	}}
 	if !reflect.DeepEqual(expected, actual) {
 		t.Errorf("\nExpected: %v\n  Actual: %v", expected, actual)

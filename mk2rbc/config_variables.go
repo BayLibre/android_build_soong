@@ -50,11 +50,11 @@ func FindConfigVariables(mkFile string, vr variableRegistrar) error {
 			continue
 		}
 		varName := asgn.Name.Strings[0]
-		var starType starlarkType
+		var starType StarlarkType
 		if varName == "_product_list_vars" {
-			starType = starlarkTypeList
+			starType = StarlarkTypeList
 		} else if varName == "_product_single_value_vars" {
-			starType = starlarkTypeUnknown
+			starType = StarlarkTypeUnknown
 		} else {
 			continue
 		}

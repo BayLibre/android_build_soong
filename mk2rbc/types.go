@@ -15,7 +15,7 @@
 package mk2rbc
 
 // Starlark expression types we use
-type starlarkType int
+type StarlarkType int
 
 const (
 	// Variable types. Initially we only know the types of the  product
@@ -23,12 +23,12 @@ const (
 	// hardwired variables. The remaining variables are first entered as
 	// having an unknown type and treated as strings, but sometimes we
 	//  can infer variable's type from the value assigned to it.
-	starlarkTypeUnknown starlarkType = iota
-	starlarkTypeList    starlarkType = iota
-	starlarkTypeString  starlarkType = iota
-	starlarkTypeInt     starlarkType = iota
-	starlarkTypeBool    starlarkType = iota
-	starlarkTypeVoid    starlarkType = iota
+	StarlarkTypeUnknown StarlarkType = iota
+	StarlarkTypeList    StarlarkType = iota
+	StarlarkTypeString  StarlarkType = iota
+	StarlarkTypeInt     StarlarkType = iota
+	StarlarkTypeBool    StarlarkType = iota
+	StarlarkTypeVoid    StarlarkType = iota
 )
 
 type hiddenArgType int
@@ -41,16 +41,16 @@ const (
 	hiddenArgConfig hiddenArgType = iota
 )
 
-type varClass int
+type VarClass int
 
 const (
-	VarClassConfig varClass = iota
-	VarClassSoong  varClass = iota
-	VarClassLocal  varClass = iota
+	VarClassConfig VarClass = iota
+	VarClassSoong  VarClass = iota
+	VarClassLocal  VarClass = iota
 )
 
 type variableRegistrar interface {
-	NewVariable(name string, varClass varClass, valueType starlarkType)
+	NewVariable(name string, varClass VarClass, valueType StarlarkType)
 }
 
 // ScopeBase is a dummy implementation of the mkparser.Scope.

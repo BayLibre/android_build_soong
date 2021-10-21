@@ -23,15 +23,15 @@ import (
 
 type testVar struct {
 	name string
-	cl   varClass
-	ty   starlarkType
+	cl   VarClass
+	ty   StarlarkType
 }
 
 type testVariables struct {
 	v []testVar
 }
 
-func (v *testVariables) NewVariable(name string, varClass varClass, valueType starlarkType) {
+func (v *testVariables) NewVariable(name string, varClass VarClass, valueType StarlarkType) {
 	v.v = append(v.v, testVar{name, varClass, valueType})
 }
 
@@ -48,11 +48,11 @@ func TestConfigVariables(t *testing.T) {
 		t.Fatal(err)
 	}
 	expected := testVariables{[]testVar{
-		{"PRODUCT_NAME", VarClassConfig, starlarkTypeUnknown},
-		{"PRODUCT_MODEL", VarClassConfig, starlarkTypeUnknown},
-		{"PRODUCT_LOCALES", VarClassConfig, starlarkTypeList},
-		{"PRODUCT_AAPT_CONFIG", VarClassConfig, starlarkTypeList},
-		{"PRODUCT_AAPT_PREF_CONFIG", VarClassConfig, starlarkTypeUnknown},
+		{"PRODUCT_NAME", VarClassConfig, StarlarkTypeUnknown},
+		{"PRODUCT_MODEL", VarClassConfig, StarlarkTypeUnknown},
+		{"PRODUCT_LOCALES", VarClassConfig, StarlarkTypeList},
+		{"PRODUCT_AAPT_CONFIG", VarClassConfig, StarlarkTypeList},
+		{"PRODUCT_AAPT_PREF_CONFIG", VarClassConfig, StarlarkTypeUnknown},
 	}}
 	if !reflect.DeepEqual(expected, actual) {
 		t.Errorf("\nExpected: %v\n  Actual: %v", expected, actual)
