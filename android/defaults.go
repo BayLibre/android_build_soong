@@ -217,6 +217,36 @@ func (defaultable *DefaultableModuleBase) applyDefaults(ctx TopDownMutatorContex
 	defaultsList []Defaults) {
 
 	for _, defaults := range defaultsList {
+		if m, ok := defaults.(Module); ok && m.base().namespacedConfigProperties != nil {
+			if ctx.Module().base().namespacedConfigProperties == nil {
+				ctx.Module().base().namespacedConfigProperties = make(map[string][]interface{})
+			}
+			for namespace, configVariableStructs := range m.base().namespacedConfigProperties {
+				ctx.Module().base().namespacedConfigProperties[namespace] =
+					append(ctx.Module().base().namespacedConfigProperties[namespace],
+						configVariableStructs...)
+			}
+
+			// Propagate soong_config_variables struct transitively from each defaults, if set.
+			// This is only set in bp2build mode.
+			// if ctx.Module().base().namespacedConfigProperties == nil {
+			// 	ctx.Module().base().namespacedConfigProperties = make(map[string]interface{})
+			// }
+			// for namespace, props := range m.base().namespacedConfigProperties {
+			// 	if ctx.Module().base().namespacedConfigProperties[namespace] == nil {
+			// 		// If this module doesn't have props for this namespace, just set it
+			// 		ctx.Module().base().namespacedConfigProperties[namespace] = props
+			// 	} else {
+			// 		// Else, merge the structs under the same namespace
+			// 		err := proptools.ExtendMatchingProperties(
+			// 			[]interface{}{ctx.Module().base().namespacedConfigProperties[namespace]}, props, nil, nil)
+			// 		if err != nil {
+			// 			panic(err)
+			// 		}
+			// 	}
+			// }
+		}
+
 		for _, prop := range defaultable.defaultableProperties {
 			if prop == defaultable.defaultableVariableProperties {
 				defaultable.applyDefaultVariableProperties(ctx, defaults, prop)
