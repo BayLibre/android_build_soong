@@ -15,6 +15,7 @@
 package android
 
 import (
+	"android/soong/bazel"
 	"fmt"
 	"reflect"
 	"runtime"
@@ -497,26 +498,130 @@ type ProductConfigProperties map[string]map[string]ProductConfigProperty
 // ProductVariableProperties returns a ProductConfigProperties containing only the properties which
 // have been set for the module in the given context.
 func ProductVariableProperties(ctx BaseMutatorContext) ProductConfigProperties {
-	module := ctx.Module()
-	moduleBase := module.base()
-
+	moduleBase := ctx.Module().base()
 	productConfigProperties := ProductConfigProperties{}
 
-	if moduleBase.variableProperties == nil {
-		return productConfigProperties
-	}
-
-	productVariableValues(moduleBase.variableProperties, "", &productConfigProperties)
-
-	for _, configToProps := range moduleBase.GetArchVariantProperties(ctx, moduleBase.variableProperties) {
-		for config, props := range configToProps {
-			// GetArchVariantProperties is creating an instance of the requested type
-			// and productVariablesValues expects an interface, so no need to cast
-			productVariableValues(props, config, &productConfigProperties)
+	if moduleBase.variableProperties != nil {
+		productVariableValues(moduleBase.variableProperties, "", &productConfigProperties)
+		for _, configToProps := range moduleBase.GetArchVariantProperties(ctx, moduleBase.variableProperties) {
+			for config, props := range configToProps {
+				// GetArchVariantProperties is creating an instance of the requested type
+				// and productVariablesValues expects an interface, so no need to cast
+				productVariableValues(props, config, &productConfigProperties)
+			}
 		}
 	}
 
+	if moduleBase.namespacedConfigProperties != nil {
+		soongConfigVariableValues(moduleBase.namespacedConfigProperties, &productConfigProperties)
+	}
+
+	// fmt.Printf("1123 %q %q\n", ctx.Module().Name(), configProperties)
+	fmt.Printf("%+v\n", productConfigProperties)
+
 	return productConfigProperties
+}
+func soongConfigVariableValues(namespacedConfigVariables map[string]interface{}, productConfigProperties *ProductConfigProperties) {
+	for namespace, soongConfigVariables := range namespacedConfigVariables {
+		scv := reflect.ValueOf(soongConfigVariables)
+		if !scv.IsValid() {
+			return
+		}
+		if scv.Kind() == reflect.Ptr {
+			scv = scv.Elem()
+		}
+		configVariables := scv.FieldByName("Soong_config_variables")
+		// fmt.Printf("configVariables %q\n", configVariables)
+		// fmt.Printf("4444 %d, %q, %+v\n", configVariables.NumField(), configVariables.Kind(), configVariables)
+		for i := 0; i < configVariables.NumField(); i++ {
+			variable := configVariables.Field(i)
+			// productVariableIntf := variable.Interface()
+			productVariableName := namespace + "__" + configVariables.Type().Field(i).Name
+
+			if variable.Kind() == reflect.Interface {
+				if !variable.IsValid() {
+					continue
+				}
+				variable = variable.Elem()
+				if variable.Kind() == reflect.Ptr {
+					variable = reflect.Indirect(variable)
+				}
+			}
+
+			if variable.IsValid() && variable.Kind() == reflect.Struct {
+				// fmt.Printf("%s, %+v, %+v\n", productVariableName, productVariableIntf, variable)
+				for j := 0; j < variable.NumField(); j++ {
+					property := variable.Field(j)
+					// If the property wasn't set, no need to pass it along
+					if property.IsZero() {
+						continue
+					}
+					propertyName := variable.Type().Field(j).Name
+					if propertyName == "Conditions_default" && property.Kind() == reflect.Ptr {
+						property = reflect.Indirect(property)
+						if property.Kind() == reflect.Interface {
+							property = property.Elem()
+						}
+						if !property.IsValid() {
+							continue
+						}
+						for k := 0; k < property.NumField(); k++ {
+							defaultProperty := property.Field(k)
+							if defaultProperty.IsZero() {
+								continue
+							}
+							propertyName = property.Type().Field(k).Name
+							conditionsDefaultConfig := productVariableName + "__" + bazel.ConditionsDefaultConfigKey
+							(*productConfigProperties)[propertyName][conditionsDefaultConfig] = ProductConfigProperty{
+								ProductConfigVariable: productVariableName,
+								FullConfig:            conditionsDefaultConfig,
+								Property:              defaultProperty.Interface(), // FIXME
+							}
+						}
+					} else if property.Kind() == reflect.Interface {
+						// String variables
+						stringVariableSelect := productVariableName + "__" + propertyName
+						if !property.IsValid() {
+							continue
+						}
+						property = property.Elem()
+						if property.Kind() == reflect.Ptr {
+							property = reflect.Indirect(property)
+						}
+						if !property.IsValid() {
+							continue
+						}
+						for k := 0; k < property.NumField(); k++ {
+							actualPropertyName := property.Type().Field(k).Name
+							actualProperty := property.Field(k)
+							if actualProperty.IsZero() {
+								continue
+							}
+							config := stringVariableSelect
+							if (*productConfigProperties)[actualPropertyName] == nil {
+								(*productConfigProperties)[actualPropertyName] = make(map[string]ProductConfigProperty)
+							}
+							(*productConfigProperties)[actualPropertyName][config] = ProductConfigProperty{
+								ProductConfigVariable: productVariableName,
+								FullConfig:            config,
+								Property:              actualProperty.Interface(), // FIXME
+							}
+						}
+					} else {
+						if (*productConfigProperties)[propertyName] == nil {
+							(*productConfigProperties)[propertyName] = make(map[string]ProductConfigProperty)
+						}
+						config := productVariableName
+						(*productConfigProperties)[propertyName][config] = ProductConfigProperty{
+							ProductConfigVariable: productVariableName,
+							FullConfig:            config,
+							Property:              property.Interface(), // FIXME
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 func productVariableValues(variableProps interface{}, suffix string, productConfigProperties *ProductConfigProperties) {
@@ -552,6 +657,7 @@ func productVariableValues(variableProps interface{}, suffix string, productConf
 			}
 		}
 	}
+
 }
 
 func VariableMutator(mctx BottomUpMutatorContext) {
