@@ -373,11 +373,12 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 		if props, exists := productVariableProps[propName]; exists {
 			for _, prop := range props {
 				flags, ok := prop.Property.([]string)
+				axis := prop.ConfigurationAxis
 				if !ok {
 					ctx.ModuleErrorf("Could not convert product variable %s property", proptools.PropertyNameForField(propName))
 				}
 				newFlags, _ := bazel.TryVariableSubstitutions(flags, prop.ProductConfigVariable)
-				attr.SetSelectValue(bazel.ProductVariableConfigurationAxis(prop.FullConfig), prop.FullConfig, newFlags)
+				attr.SetSelectValue(axis, prop.FullConfig, newFlags)
 			}
 		}
 	}
