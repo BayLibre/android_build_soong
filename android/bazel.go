@@ -390,6 +390,32 @@ func (b *BazelModuleBase) ConvertWithBp2build(ctx BazelConversionPathContext) bo
 	return b.convertWithBp2build(ctx, ctx.Module())
 }
 
+func (b *BazelModuleBase) ConvertWithBp2buildDirect(aconfig Config, moduleName, moduleType, moduleDir string) bool {
+	if bp2buildModuleDoNotConvert[moduleName] {
+		return false
+	}
+
+	// Ensure that the module type of this module has a bp2build converter. This
+	// prevents mixed builds from using auto-converted modules just by matching
+	// the package dir; it also has to have a bp2build mutator as well.
+	if aconfig.bp2buildModuleTypeConfig[moduleType] == false {
+		return false
+	}
+
+	packagePath := moduleDir
+	config := aconfig.bp2buildPackageConfig
+
+	// This is a tristate value: true, false, or unset.
+	propValue := b.bazelProperties.Bazel_module.Bp2build_available
+	if bp2buildDefaultTrueRecursively(packagePath, config) {
+		// Allow modules to explicitly opt-out.
+		return proptools.BoolDefault(propValue, true)
+	}
+
+	// Allow modules to explicitly opt-in.
+	return proptools.BoolDefault(propValue, false)
+}
+
 func (b *BazelModuleBase) convertWithBp2build(ctx BazelConversionPathContext, module blueprint.Module) bool {
 	if bp2buildModuleDoNotConvert[module.Name()] {
 		return false
