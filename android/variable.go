@@ -15,6 +15,7 @@
 package android
 
 import (
+	"android/soong/bazel"
 	"fmt"
 	"reflect"
 	"runtime"
@@ -488,35 +489,192 @@ type ProductConfigProperty struct {
 	ProductConfigVariable string
 	FullConfig            string
 	Property              interface{}
+	ConfigurationAxis     bazel.ConfigurationAxis
 }
 
 // ProductConfigProperties is a map of property name to a slice of ProductConfigProperty such that
 // all it all product variable-specific versions of a property are easily accessed together
 type ProductConfigProperties map[string]map[string]ProductConfigProperty
 
+func (props *ProductConfigProperties) setNamespacedConfigVariable(
+	productVariable, propertyName, namespace, config string, prop interface{}) {
+	if (*props)[propertyName] == nil {
+		(*props)[propertyName] = make(map[string]ProductConfigProperty)
+	}
+	(*props)[propertyName][config] = ProductConfigProperty{
+		ProductConfigVariable: productVariable,
+		FullConfig:            config,
+		Property:              prop,
+		ConfigurationAxis:     bazel.NamespacedConfigVariableConfigurationAxis(namespace),
+	}
+}
+
 // ProductVariableProperties returns a ProductConfigProperties containing only the properties which
 // have been set for the module in the given context.
 func ProductVariableProperties(ctx BaseMutatorContext) ProductConfigProperties {
-	module := ctx.Module()
-	moduleBase := module.base()
-
+	moduleBase := ctx.Module().base()
 	productConfigProperties := ProductConfigProperties{}
 
-	if moduleBase.variableProperties == nil {
-		return productConfigProperties
-	}
-
-	productVariableValues(moduleBase.variableProperties, "", &productConfigProperties)
-
-	for _, configToProps := range moduleBase.GetArchVariantProperties(ctx, moduleBase.variableProperties) {
-		for config, props := range configToProps {
-			// GetArchVariantProperties is creating an instance of the requested type
-			// and productVariablesValues expects an interface, so no need to cast
-			productVariableValues(props, config, &productConfigProperties)
+	if moduleBase.variableProperties != nil {
+		productVariableValues(moduleBase.variableProperties, "", &productConfigProperties)
+		for _, configToProps := range moduleBase.GetArchVariantProperties(ctx, moduleBase.variableProperties) {
+			for config, props := range configToProps {
+				// GetArchVariantProperties is creating an instance of the requested type
+				// and productVariablesValues expects an interface, so no need to cast
+				productVariableValues(props, config, &productConfigProperties)
+			}
 		}
 	}
 
+	if moduleBase.namespacedConfigProperties != nil {
+		soongConfigVariableValues(moduleBase.namespacedConfigProperties, &productConfigProperties)
+	}
+
 	return productConfigProperties
+}
+
+// soongConfigVariableValue
+func soongConfigVariableValues(
+	namespacedConfigVariables map[string]interface{},
+	productConfigProperties *ProductConfigProperties) {
+
+	/**
+	soong_config_variables: {
+		board: {
+			soc_a: {
+				cflags: ["-DSOC_A"],
+			},
+			soc_b: {
+				cflags: ["-DSOC_B"],
+			},
+			soc_c: {},
+			conditions_default: {
+				cflags: ["-DSOC_CONDITIONS_DEFAULT"],
+			},
+		},
+		size: {
+			cflags: ["-DSIZE=%s"],
+			conditions_default: {
+				cflags: ["-DSIZE=CONDITIONS_DEFAULT"],
+			},
+		},
+		feature1: {
+			conditions_default: {
+				cflags: ["-DF1_CONDITIONS_DEFAULT"],
+			},
+			cflags: ["-DFEATURE1"],
+		},
+		feature2: {
+			cflags: ["-DFEATURE2"],
+			conditions_default: {
+				cflags: ["-DF2_CONDITIONS_DEFAULT"],
+			},
+		},
+		FEATURE3: {
+			cflags: ["-DFEATURE3"],
+		},
+	},
+	*/
+
+	for namespace, soongConfigVariables := range namespacedConfigVariables {
+		scv := reflect.ValueOf(soongConfigVariables)
+		if !scv.IsValid() {
+			return
+		}
+		if scv.Kind() != reflect.Ptr || scv.Elem().Kind() != reflect.Struct {
+			panic(fmt.Errorf("Expected the soong config variable reflect value to be a struct ptr, got %s", scv.Kind()))
+		}
+
+		// scv is validated to be a struct
+		scv = scv.Elem()
+		configVariables := scv.FieldByName("Soong_config_variables")
+
+		for i := 0; i < configVariables.NumField(); i++ {
+			// board, size, feature1, feature2, FEATURE3...
+			configVariable := configVariables.Field(i)
+			if !configVariable.IsValid() {
+				continue
+			}
+
+			productVariableName := configVariables.Type().Field(i).Name
+			if configVariable.Kind() == reflect.Interface {
+				configVariable = configVariable.Elem()
+				if configVariable.Kind() == reflect.Ptr {
+					configVariable = reflect.Indirect(configVariable)
+				}
+			}
+
+			if !configVariable.IsValid() {
+				continue
+			}
+			if configVariable.Kind() != reflect.Struct {
+				panic(fmt.Errorf("Expected a struct, got %s", configVariable.Kind()))
+			}
+
+			for j := 0; j < configVariable.NumField(); j++ {
+				field := configVariable.Field(j)
+				fieldName := configVariable.Type().Field(j).Name
+				// soc_a_ soc_b, soc_c, cflags, conditions_default...
+				if field.IsZero() || !field.IsValid() {
+					continue
+				}
+
+				if fieldName == "Conditions_default" && field.Kind() == reflect.Ptr {
+					field = reflect.Indirect(field)
+					if field.Kind() == reflect.Interface {
+						field = field.Elem()
+					}
+					if !field.IsValid() {
+						continue
+					}
+					for k := 0; k < field.NumField(); k++ {
+						if field.Field(k).IsZero() {
+							continue
+						}
+						productConfigProperties.setNamespacedConfigVariable(
+							productVariableName,
+							field.Type().Field(k).Name,
+							namespace+"/"+productVariableName,
+							bazel.ConditionsDefaultConfigKey,
+							field.Field(k).Interface(),
+						)
+					}
+				} else if field.Kind() == reflect.Interface {
+					// String variables
+					// Soc_a, Soc_b, ...
+					field = field.Elem()
+					if field.Kind() == reflect.Ptr {
+						field = reflect.Indirect(field)
+					}
+					if !field.IsValid() {
+						continue
+					}
+					for k := 0; k < field.NumField(); k++ {
+						if field.Field(k).IsZero() {
+							continue
+						}
+						productConfigProperties.setNamespacedConfigVariable(
+							productVariableName,
+							field.Type().Field(k).Name,
+							namespace+"/"+productVariableName,
+							fieldName,
+							field.Field(k).Interface(),
+						)
+					}
+				} else {
+					// This struct field is not a conditions default struct, and
+					// not a string variable struct.
+					productConfigProperties.setNamespacedConfigVariable(
+						productVariableName,
+						fieldName,
+						namespace+"/"+productVariableName,
+						productVariableName,
+						field.Interface(),
+					)
+				}
+			}
+		}
+	}
 }
 
 func productVariableValues(variableProps interface{}, suffix string, productConfigProperties *ProductConfigProperties) {
@@ -549,9 +707,11 @@ func productVariableValues(variableProps interface{}, suffix string, productConf
 				ProductConfigVariable: productVariableName,
 				FullConfig:            config,
 				Property:              property.Interface(),
+				ConfigurationAxis:     bazel.ProductVariableConfigurationAxis(config),
 			}
 		}
 	}
+
 }
 
 func VariableMutator(mctx BottomUpMutatorContext) {
