@@ -16,6 +16,24 @@
       "message": "LGTM, but who will provide the NDK libs list then?",
       "revId": "9a6eabf9524823e2d2cd5866110ce65cedadbb2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a9a58c4_f0131ab9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2021-10-21T18:42:05Z",
+      "side": 1,
+      "message": "Will handle NDK with cc_library together here in backed by generation. And differentiate in coverage backend.",
+      "parentUuid": "584545a6_102d0e83",
+      "revId": "9a6eabf9524823e2d2cd5866110ce65cedadbb2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
