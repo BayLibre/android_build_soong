@@ -137,9 +137,6 @@ func main() {
 		pprof.StartCPUProfile(f)
 		defer pprof.StopCPUProfile()
 	}
-	// Find out global variables
-	getConfigVariables()
-	getSoongVariables()
 
 	if *printProductConfigMap {
 		productConfigMap := buildProductConfigMap()
@@ -258,34 +255,6 @@ func buildProductConfigMap() map[string]string {
 			})
 	}
 	return productConfigMap
-}
-
-func getConfigVariables() {
-	path := filepath.Join(*rootDir, "build", "make", "core", "product.mk")
-	if err := mk2rbc.FindConfigVariables(path, mk2rbc.KnownVariables); err != nil {
-		quit(fmt.Errorf("%s\n(check --root[=%s], it should point to the source root)",
-			err, *rootDir))
-	}
-}
-
-// Implements mkparser.Scope, to be used by mkparser.Value.Value()
-type fileNameScope struct {
-	mk2rbc.ScopeBase
-}
-
-func (s fileNameScope) Get(name string) string {
-	if name != "BUILD_SYSTEM" {
-		return fmt.Sprintf("$(%s)", name)
-	}
-	return filepath.Join(*rootDir, "build", "make", "core")
-}
-
-func getSoongVariables() {
-	path := filepath.Join(*rootDir, "build", "make", "core", "soong_config.mk")
-	err := mk2rbc.FindSoongVariables(path, fileNameScope{}, mk2rbc.KnownVariables)
-	if err != nil {
-		quit(err)
-	}
 }
 
 var converted = make(map[string]*mk2rbc.StarlarkScript)
