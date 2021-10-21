@@ -1164,6 +1164,9 @@ type ModuleBase struct {
 	hostAndDeviceProperties hostAndDeviceProperties
 	generalProperties       []interface{}
 
+	// soongConfigProperties soongConfigProperties
+	configProperties interface{}
+
 	// Arch specific versions of structs in generalProperties. The outer index
 	// has the same order as generalProperties as initialized in
 	// InitAndroidArchModule, and the inner index chooses the props specific to

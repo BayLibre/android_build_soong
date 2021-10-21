@@ -54,8 +54,7 @@ const (
 	// //conditions:default for Bazel.
 	//
 	// This is consistently named "conditions_default" to mirror the Soong
-	// config variable default key in an Android.bp file, although there's no
-	// integration with Soong config variables (yet).
+	// config variable default key in an Android.bp file.
 	ConditionsDefaultConfigKey = "conditions_default"
 
 	ConditionsDefaultSelectKey = "//conditions:default"
@@ -168,6 +167,7 @@ func (ct configurationType) SelectKey(config string) string {
 	case osArch:
 		return platformOsArchMap[config]
 	case productVariables:
+		fmt.Println(config)
 		if config == ConditionsDefaultConfigKey {
 			return ConditionsDefaultSelectKey
 		}
