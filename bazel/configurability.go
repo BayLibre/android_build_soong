@@ -54,8 +54,7 @@ const (
 	// //conditions:default for Bazel.
 	//
 	// This is consistently named "conditions_default" to mirror the Soong
-	// config variable default key in an Android.bp file, although there's no
-	// integration with Soong config variables (yet).
+	// config variable default key in an Android.bp file.
 	ConditionsDefaultConfigKey = "conditions_default"
 
 	ConditionsDefaultSelectKey = "//conditions:default"
@@ -118,6 +117,7 @@ const (
 	os
 	osArch
 	productVariables
+	namespacedConfigVariables
 )
 
 func (ct configurationType) String() string {
@@ -148,7 +148,7 @@ func (ct configurationType) validateConfig(config string) {
 		if _, ok := platformOsArchMap[config]; !ok {
 			panic(fmt.Errorf("Unknown os+arch: %s", config))
 		}
-	case productVariables:
+	case productVariables, namespacedConfigVariables:
 		// do nothing
 	default:
 		panic(fmt.Errorf("Unrecognized ConfigurationType %d", ct))
@@ -172,6 +172,11 @@ func (ct configurationType) SelectKey(config string) string {
 			return ConditionsDefaultSelectKey
 		}
 		return fmt.Sprintf("%s:%s", productVariableBazelPackage, strings.ToLower(config))
+	case namespacedConfigVariables:
+		if config == ConditionsDefaultConfigKey {
+			return ConditionsDefaultSelectKey
+		}
+		return fmt.Sprintf("%s/vendor/namespace:%s", productVariableBazelPackage, strings.ToLower(config))
 	default:
 		panic(fmt.Errorf("Unrecognized ConfigurationType %d", ct))
 	}
@@ -187,6 +192,13 @@ var (
 	// An axis for arch+os-specific configurations
 	OsArchConfigurationAxis = ConfigurationAxis{configurationType: osArch}
 )
+
+func NamespacedConfigVariableConfigurationAxis(variable string) ConfigurationAxis {
+	return ConfigurationAxis{
+		configurationType: namespacedConfigVariables,
+		subType:           variable,
+	}
+}
 
 // ProductVariableConfigurationAxis returns an axis for the given product variable
 func ProductVariableConfigurationAxis(variable string) ConfigurationAxis {
