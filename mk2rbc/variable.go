@@ -276,7 +276,7 @@ func (ctx *parseContext) addVariable(name string) variable {
 	v, found := ctx.variables[name]
 	if !found {
 		_, preset := presetVariables[name]
-		if vi, found := KnownVariables[name]; found {
+		if vi, found := ctx.knownVariables[name]; found {
 			switch vi.class {
 			case VarClassConfig:
 				v = &productConfigVariable{baseVariable{nam: name, typ: vi.valueType, preset: preset}}
@@ -292,7 +292,7 @@ func (ctx *parseContext) addVariable(name string) variable {
 			if strings.HasPrefix(name, "LOCAL_") {
 				// Heuristics: local variables that contribute to corresponding config variables
 				if cfgVarName, found := localProductConfigVariables[name]; found {
-					vi, found2 := KnownVariables[cfgVarName]
+					vi, found2 := ctx.knownVariables[cfgVarName]
 					if !found2 {
 						panic(fmt.Errorf("unknown config variable %s for %s", cfgVarName, name))
 					}
