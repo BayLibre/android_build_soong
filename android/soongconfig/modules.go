@@ -96,6 +96,25 @@ func processImportModuleDef(v *SoongConfigDefinition, def *parser.Module) (errs 
 	return nil
 }
 
+type bazelModuleProperties struct {
+	// If true, bp2build will generate the converted Bazel target for this module. Note: this may
+	// cause a conflict due to the duplicate targets if label is also set.
+	//
+	// This is a bool pointer to support tristates: true, false, not set.
+	//
+	// To opt-in a module, set bazel_module: { bp2build_available: true }
+	// To opt-out a module, set bazel_module: { bp2build_available: false }
+	// To defer the default setting for the directory, do not set the value.
+	Bp2build_available *bool
+}
+
+// Properties contains common module properties for Bazel migration purposes.
+type BazelProperties struct {
+	// In USE_BAZEL_ANALYSIS=1 mode, this represents the Bazel target replacing
+	// this Soong module.
+	Bazel_module bazelModuleProperties
+}
+
 type ModuleTypeProperties struct {
 	// the name of the new module type.  Unlike most modules, this name does not need to be unique,
 	// although only one module type with any name will be importable into an Android.bp file.
@@ -125,8 +144,9 @@ type ModuleTypeProperties struct {
 func processModuleTypeDef(v *SoongConfigDefinition, def *parser.Module) (errs []error) {
 
 	props := &ModuleTypeProperties{}
+	bazelProps := &BazelProperties{}
 
-	_, errs = proptools.UnpackProperties(def.Properties, props)
+	_, errs = proptools.UnpackProperties(def.Properties, props, bazelProps)
 	if len(errs) > 0 {
 		return errs
 	}
@@ -147,7 +167,7 @@ func processModuleTypeDef(v *SoongConfigDefinition, def *parser.Module) (errs []
 		return errs
 	}
 
-	if mt, errs := newModuleType(props); len(errs) > 0 {
+	if mt, errs := newModuleType(props, bazelProps); len(errs) > 0 {
 		return errs
 	} else {
 		v.ModuleTypes[props.Name] = mt
@@ -433,14 +453,16 @@ type ModuleType struct {
 
 	affectableProperties []string
 	variableNames        []string
+	bp2buildAvailable    *bool
 }
 
-func newModuleType(props *ModuleTypeProperties) (*ModuleType, []error) {
+func newModuleType(props *ModuleTypeProperties, bazelProps *BazelProperties) (*ModuleType, []error) {
 	mt := &ModuleType{
 		affectableProperties: props.Properties,
 		ConfigNamespace:      props.Config_namespace,
 		BaseModuleType:       props.Module_type,
 		variableNames:        props.Variables,
+		bp2buildAvailable:    bazelProps.Bazel_module.Bp2build_available,
 	}
 
 	for _, name := range props.Bool_variables {

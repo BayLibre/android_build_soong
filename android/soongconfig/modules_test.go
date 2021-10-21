@@ -309,7 +309,7 @@ func Test_PropertiesToApply(t *testing.T) {
 		Config_namespace: "bar",
 		Bool_variables:   []string{"bool_var"},
 		Properties:       []string{"a", "b"},
-	})
+	}, &BazelProperties{})
 	boolVarPositive := &properties{
 		A: proptools.StringPtr("A"),
 		B: true,

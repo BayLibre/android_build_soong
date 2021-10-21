@@ -97,10 +97,17 @@ func (b *BazelModuleBase) GetBazelLabel(ctx BazelConversionPathContext, module b
 	if b.HasHandcraftedLabel() {
 		return b.HandcraftedLabel()
 	}
-	if b.ConvertWithBp2build(ctx) {
-		return bp2buildModuleLabel(ctx, module)
+	if ctx.Module().Name() == "library_linking_strategy_sample_binary" {
+		fmt.Println(
+			b.ConvertWithBp2build(ctx),
+			ctx.OtherModuleDir(module),
+			ctx.OtherModuleType(module), ctx.OtherModuleName(module),
+		)
 	}
-	return "" // no label for unconverted module
+	// if b.ConvertWithBp2build(ctx) {
+	return bp2buildModuleLabel(ctx, module)
+	// }
+	// return "" // no label for unconverted module
 }
 
 // Configuration to decide if modules in a directory should default to true/false for bp2build_available
@@ -390,6 +397,37 @@ func (b *BazelModuleBase) ConvertWithBp2build(ctx BazelConversionPathContext) bo
 	return b.convertWithBp2build(ctx, ctx.Module())
 }
 
+// func (b *BazelModuleBase) ConvertWithBp2buildDirect(ctx EarlyModuleContext) bool {
+// 	aconfig := ctx.Config()
+// 	moduleName := ctx.ModuleName()
+// 	moduleType := ctx.ModuleType()
+// 	moduleDir := ctx.ModuleDir()
+
+// 	if bp2buildModuleDoNotConvert[moduleName] {
+// 		return false
+// 	}
+
+// 	// Ensure that the module type of this module has a bp2build converter. This
+// 	// prevents mixed builds from using auto-converted modules just by matching
+// 	// the package dir; it also has to have a bp2build mutator as well.
+// 	if aconfig.bp2buildModuleTypeConfig[moduleType] == false {
+// 		return false
+// 	}
+
+// 	packagePath := moduleDir
+// 	config := aconfig.bp2buildPackageConfig
+
+// 	// This is a tristate value: true, false, or unset.
+// 	propValue := b.bazelProperties.Bazel_module.Bp2build_available
+// 	if bp2buildDefaultTrueRecursively(packagePath, config) {
+// 		// Allow modules to explicitly opt-out.
+// 		return proptools.BoolDefault(propValue, true)
+// 	}
+
+// 	// Allow modules to explicitly opt-in.
+// 	return proptools.BoolDefault(propValue, false)
+// }
+
 func (b *BazelModuleBase) convertWithBp2build(ctx BazelConversionPathContext, module blueprint.Module) bool {
 	if bp2buildModuleDoNotConvert[module.Name()] {
 		return false
@@ -408,10 +446,12 @@ func (b *BazelModuleBase) convertWithBp2build(ctx BazelConversionPathContext, mo
 	// This is a tristate value: true, false, or unset.
 	propValue := b.bazelProperties.Bazel_module.Bp2build_available
 	if bp2buildDefaultTrueRecursively(packagePath, config) {
+		// if module.Name() == "libbase" {
+		// 	fmt.Println("libbase prop:", proptools.BoolDefault(propValue, true))
+		// }
 		// Allow modules to explicitly opt-out.
 		return proptools.BoolDefault(propValue, true)
 	}
-
 	// Allow modules to explicitly opt-in.
 	return proptools.BoolDefault(propValue, false)
 }

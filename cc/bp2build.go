@@ -373,11 +373,12 @@ func bp2BuildParseCompilerProps(ctx android.TopDownMutatorContext, module *Modul
 		if props, exists := productVariableProps[propName]; exists {
 			for _, prop := range props {
 				flags, ok := prop.Property.([]string)
+				axis := prop.ConfigurationAxis
 				if !ok {
 					ctx.ModuleErrorf("Could not convert product variable %s property", proptools.PropertyNameForField(propName))
 				}
 				newFlags, _ := bazel.TryVariableSubstitutions(flags, prop.ProductConfigVariable)
-				attr.SetSelectValue(bazel.ProductVariableConfigurationAxis(prop.FullConfig), prop.FullConfig, newFlags)
+				attr.SetSelectValue(axis, prop.FullConfig, newFlags)
 			}
 		}
 	}
@@ -568,9 +569,9 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 
 	productVarToDepFields := map[string]productVarDep{
 		// product variables do not support exclude_shared_libs
-		"Shared_libs":       productVarDep{attribute: &implementationDynamicDeps, depResolutionFunc: bazelLabelForSharedDepsExcludes},
-		"Static_libs":       productVarDep{"Exclude_static_libs", &implementationDeps, bazelLabelForStaticDepsExcludes},
-		"Whole_static_libs": productVarDep{"Exclude_static_libs", &wholeArchiveDeps, bazelLabelForWholeDepsExcludes},
+		"Shared_libs":       {attribute: &implementationDynamicDeps, depResolutionFunc: bazelLabelForSharedDepsExcludes},
+		"Static_libs":       {"Exclude_static_libs", &implementationDeps, bazelLabelForStaticDepsExcludes},
+		"Whole_static_libs": {"Exclude_static_libs", &wholeArchiveDeps, bazelLabelForWholeDepsExcludes},
 	}
 
 	productVariableProps := android.ProductVariableProperties(ctx)
@@ -585,11 +586,11 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 		// we want to iterate all configurations rather than either the include or exclude because for a
 		// particular configuration we may have only and include or only an exclude to handle
 		configs := make(map[string]bool, len(props)+len(excludeProps))
-		for config := range props {
-			configs[config] = true
+		for prop := range props {
+			configs[prop] = true
 		}
-		for config := range excludeProps {
-			configs[config] = true
+		for prop := range excludeProps {
+			configs[prop] = true
 		}
 
 		for config := range configs {
@@ -605,7 +606,14 @@ func bp2BuildParseLinkerProps(ctx android.TopDownMutatorContext, module *Module)
 				ctx.ModuleErrorf("Could not convert product variable %s property", dep.excludesField)
 			}
 
-			dep.attribute.SetSelectValue(bazel.ProductVariableConfigurationAxis(config), config, dep.depResolutionFunc(ctx, android.FirstUniqueStrings(includes), excludes))
+			axis := bazel.ProductVariableConfigurationAxis(config)
+			if prop.ConfigurationAxis.IsNamespacedConfigVariable() {
+				axis = prop.ConfigurationAxis
+				config = prop.FullConfig
+				fmt.Printf("wtf: %s %s\n", config, prop.FullConfig)
+				// fmt.Printf("wtf: %+v %s\n", prop, axis.Subtype())
+			}
+			dep.attribute.SetSelectValue(axis, config, dep.depResolutionFunc(ctx, android.FirstUniqueStrings(includes), excludes))
 		}
 	}
 
