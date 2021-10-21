@@ -54,8 +54,7 @@ const (
 	// //conditions:default for Bazel.
 	//
 	// This is consistently named "conditions_default" to mirror the Soong
-	// config variable default key in an Android.bp file, although there's no
-	// integration with Soong config variables (yet).
+	// config variable default key in an Android.bp file.
 	ConditionsDefaultConfigKey = "conditions_default"
 
 	ConditionsDefaultSelectKey = "//conditions:default"
@@ -118,6 +117,7 @@ const (
 	os
 	osArch
 	productVariables
+	namespacedConfigVariables
 )
 
 func (ct configurationType) String() string {
@@ -148,7 +148,7 @@ func (ct configurationType) validateConfig(config string) {
 		if _, ok := platformOsArchMap[config]; !ok {
 			panic(fmt.Errorf("Unknown os+arch: %s", config))
 		}
-	case productVariables:
+	case productVariables, namespacedConfigVariables:
 		// do nothing
 	default:
 		panic(fmt.Errorf("Unrecognized ConfigurationType %d", ct))
@@ -156,9 +156,9 @@ func (ct configurationType) validateConfig(config string) {
 }
 
 // SelectKey returns the Bazel select key for a given configurationType and config string.
-func (ct configurationType) SelectKey(config string) string {
-	ct.validateConfig(config)
-	switch ct {
+func (ca ConfigurationAxis) SelectKey(config string) string {
+	ca.validateConfig(config)
+	switch ca.configurationType {
 	case noConfig:
 		panic(fmt.Errorf("SelectKey is unnecessary for noConfig ConfigurationType "))
 	case arch:
@@ -172,8 +172,18 @@ func (ct configurationType) SelectKey(config string) string {
 			return ConditionsDefaultSelectKey
 		}
 		return fmt.Sprintf("%s:%s", productVariableBazelPackage, strings.ToLower(config))
+	case namespacedConfigVariables:
+		config = strings.ToLower(config)
+		if config == ConditionsDefaultConfigKey {
+			return ConditionsDefaultSelectKey
+		}
+		return fmt.Sprintf(
+			"%s/vendor/%s:%s",
+			productVariableBazelPackage,
+			strings.ToLower(ca.subType), // This is the namespace concatenated with the variable name, e.g "acme/board"
+			config)
 	default:
-		panic(fmt.Errorf("Unrecognized ConfigurationType %d", ct))
+		panic(fmt.Errorf("Unrecognized ConfigurationType %d", ca.configurationType))
 	}
 }
 
@@ -187,6 +197,13 @@ var (
 	// An axis for arch+os-specific configurations
 	OsArchConfigurationAxis = ConfigurationAxis{configurationType: osArch}
 )
+
+func NamespacedConfigVariableConfigurationAxis(namespace string) ConfigurationAxis {
+	return ConfigurationAxis{
+		configurationType: namespacedConfigVariables,
+		subType:           namespace,
+	}
+}
 
 // ProductVariableConfigurationAxis returns an axis for the given product variable
 func ProductVariableConfigurationAxis(variable string) ConfigurationAxis {
@@ -203,6 +220,10 @@ type ConfigurationAxis struct {
 	// some configuration types (e.g. productVariables) have multiple independent axes, subType helps
 	// distinguish between them without needing to list all 17 product variables.
 	subType string
+}
+
+func (ca *ConfigurationAxis) Subtype() string {
+	return ca.subType
 }
 
 func (ca *ConfigurationAxis) less(other ConfigurationAxis) bool {
