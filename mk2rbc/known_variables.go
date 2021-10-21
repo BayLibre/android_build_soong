@@ -8,13 +8,13 @@ import (
 
 type KnownVariable struct {
 	Name      string
-	Class     varClass
-	ValueType starlarkType
+	Class     VarClass
+	ValueType StarlarkType
 }
 
 type KnownVariables map[string]KnownVariable
 
-func (pcv KnownVariables) NewVariable(name string, varClass varClass, valueType starlarkType) {
+func (pcv KnownVariables) NewVariable(name string, varClass VarClass, valueType StarlarkType) {
 	v, exists := pcv[name]
 	if !exists {
 		pcv[name] = KnownVariable{name, varClass, valueType}
@@ -33,8 +33,8 @@ func (pcv KnownVariables) NewVariable(name string, varClass varClass, valueType 
 		}
 	}
 	if valueType != v.ValueType {
-		if valueType != starlarkTypeUnknown {
-			if v.ValueType == starlarkTypeUnknown {
+		if valueType != StarlarkTypeUnknown {
+			if v.ValueType == StarlarkTypeUnknown {
 				v.ValueType = valueType
 			} else {
 				match = false
@@ -71,7 +71,7 @@ func CreateKnownVariables(rootDir string) (KnownVariables, error) {
 		// Other variables we know are lists
 		"ART_APEX_JARS",
 	} {
-		result.NewVariable(kv, VarClassSoong, starlarkTypeList)
+		result.NewVariable(kv, VarClassSoong, StarlarkTypeList)
 	}
 
 	path := filepath.Join(rootDir, "build", "make", "core", "product.mk")

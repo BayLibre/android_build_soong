@@ -78,59 +78,59 @@ var knownFunctions = map[string]struct {
 	// If it starts with !, then this makefile function call is rewritten to
 	// something else.
 	runtimeName string
-	returnType  starlarkType
+	returnType  StarlarkType
 	hiddenArg   hiddenArgType
 }{
-	"abspath":                             {baseName + ".abspath", starlarkTypeString, hiddenArgNone},
-	fileExistsPhony:                       {baseName + ".file_exists", starlarkTypeBool, hiddenArgNone},
-	wildcardExistsPhony:                   {baseName + ".file_wildcard_exists", starlarkTypeBool, hiddenArgNone},
-	addSoongNamespace:                     {baseName + ".add_soong_config_namespace", starlarkTypeVoid, hiddenArgGlobal},
-	addSoongConfigVarValue:                {baseName + ".add_soong_config_var_value", starlarkTypeVoid, hiddenArgGlobal},
-	"add-to-product-copy-files-if-exists": {baseName + ".copy_if_exists", starlarkTypeList, hiddenArgNone},
-	"addprefix":                           {baseName + ".addprefix", starlarkTypeList, hiddenArgNone},
-	"addsuffix":                           {baseName + ".addsuffix", starlarkTypeList, hiddenArgNone},
-	"copy-files":                          {baseName + ".copy_files", starlarkTypeList, hiddenArgNone},
-	"dir":                                 {baseName + ".dir", starlarkTypeList, hiddenArgNone},
-	"enforce-product-packages-exist":      {baseName + ".enforce_product_packages_exist", starlarkTypeVoid, hiddenArgNone},
-	"error":                               {baseName + ".mkerror", starlarkTypeVoid, hiddenArgNone},
-	"findstring":                          {"!findstring", starlarkTypeInt, hiddenArgNone},
-	"find-copy-subdir-files":              {baseName + ".find_and_copy", starlarkTypeList, hiddenArgNone},
-	"find-word-in-list":                   {"!find-word-in-list", starlarkTypeUnknown, hiddenArgNone}, // internal macro
-	"filter":                              {baseName + ".filter", starlarkTypeList, hiddenArgNone},
-	"filter-out":                          {baseName + ".filter_out", starlarkTypeList, hiddenArgNone},
-	"firstword":                           {"!firstword", starlarkTypeString, hiddenArgNone},
-	"get-vendor-board-platforms":          {"!get-vendor-board-platforms", starlarkTypeList, hiddenArgNone}, // internal macro, used by is-board-platform, etc.
-	"info":                                {baseName + ".mkinfo", starlarkTypeVoid, hiddenArgNone},
-	"is-android-codename":                 {"!is-android-codename", starlarkTypeBool, hiddenArgNone},         // unused by product config
-	"is-android-codename-in-list":         {"!is-android-codename-in-list", starlarkTypeBool, hiddenArgNone}, // unused by product config
-	"is-board-platform":                   {"!is-board-platform", starlarkTypeBool, hiddenArgNone},
-	"is-board-platform-in-list":           {"!is-board-platform-in-list", starlarkTypeBool, hiddenArgNone},
-	"is-chipset-in-board-platform":        {"!is-chipset-in-board-platform", starlarkTypeUnknown, hiddenArgNone},     // unused by product config
-	"is-chipset-prefix-in-board-platform": {"!is-chipset-prefix-in-board-platform", starlarkTypeBool, hiddenArgNone}, // unused by product config
-	"is-not-board-platform":               {"!is-not-board-platform", starlarkTypeBool, hiddenArgNone},               // defined but never used
-	"is-platform-sdk-version-at-least":    {"!is-platform-sdk-version-at-least", starlarkTypeBool, hiddenArgNone},    // unused by product config
-	"is-product-in-list":                  {"!is-product-in-list", starlarkTypeBool, hiddenArgNone},
-	"is-vendor-board-platform":            {"!is-vendor-board-platform", starlarkTypeBool, hiddenArgNone},
-	callLoadAlways:                        {"!inherit-product", starlarkTypeVoid, hiddenArgNone},
-	callLoadIf:                            {"!inherit-product-if-exists", starlarkTypeVoid, hiddenArgNone},
-	"lastword":                            {"!lastword", starlarkTypeString, hiddenArgNone},
-	"match-prefix":                        {"!match-prefix", starlarkTypeUnknown, hiddenArgNone},       // internal macro
-	"match-word":                          {"!match-word", starlarkTypeUnknown, hiddenArgNone},         // internal macro
-	"match-word-in-list":                  {"!match-word-in-list", starlarkTypeUnknown, hiddenArgNone}, // internal macro
-	"notdir":                              {baseName + ".notdir", starlarkTypeString, hiddenArgNone},
-	"my-dir":                              {"!my-dir", starlarkTypeString, hiddenArgNone},
-	"patsubst":                            {baseName + ".mkpatsubst", starlarkTypeString, hiddenArgNone},
-	"product-copy-files-by-pattern":       {baseName + ".product_copy_files_by_pattern", starlarkTypeList, hiddenArgNone},
-	"require-artifacts-in-path":           {baseName + ".require_artifacts_in_path", starlarkTypeVoid, hiddenArgNone},
-	"require-artifacts-in-path-relaxed":   {baseName + ".require_artifacts_in_path_relaxed", starlarkTypeVoid, hiddenArgNone},
+	"abspath":                             {baseName + ".abspath", StarlarkTypeString, hiddenArgNone},
+	fileExistsPhony:                       {baseName + ".file_exists", StarlarkTypeBool, hiddenArgNone},
+	wildcardExistsPhony:                   {baseName + ".file_wildcard_exists", StarlarkTypeBool, hiddenArgNone},
+	addSoongNamespace:                     {baseName + ".add_soong_config_namespace", StarlarkTypeVoid, hiddenArgGlobal},
+	addSoongConfigVarValue:                {baseName + ".add_soong_config_var_value", StarlarkTypeVoid, hiddenArgGlobal},
+	"add-to-product-copy-files-if-exists": {baseName + ".copy_if_exists", StarlarkTypeList, hiddenArgNone},
+	"addprefix":                           {baseName + ".addprefix", StarlarkTypeList, hiddenArgNone},
+	"addsuffix":                           {baseName + ".addsuffix", StarlarkTypeList, hiddenArgNone},
+	"copy-files":                          {baseName + ".copy_files", StarlarkTypeList, hiddenArgNone},
+	"dir":                                 {baseName + ".dir", StarlarkTypeList, hiddenArgNone},
+	"enforce-product-packages-exist":      {baseName + ".enforce_product_packages_exist", StarlarkTypeVoid, hiddenArgNone},
+	"error":                               {baseName + ".mkerror", StarlarkTypeVoid, hiddenArgNone},
+	"findstring":                          {"!findstring", StarlarkTypeInt, hiddenArgNone},
+	"find-copy-subdir-files":              {baseName + ".find_and_copy", StarlarkTypeList, hiddenArgNone},
+	"find-word-in-list":                   {"!find-word-in-list", StarlarkTypeUnknown, hiddenArgNone}, // internal macro
+	"filter":                              {baseName + ".filter", StarlarkTypeList, hiddenArgNone},
+	"filter-out":                          {baseName + ".filter_out", StarlarkTypeList, hiddenArgNone},
+	"firstword":                           {"!firstword", StarlarkTypeString, hiddenArgNone},
+	"get-vendor-board-platforms":          {"!get-vendor-board-platforms", StarlarkTypeList, hiddenArgNone}, // internal macro, used by is-board-platform, etc.
+	"info":                                {baseName + ".mkinfo", StarlarkTypeVoid, hiddenArgNone},
+	"is-android-codename":                 {"!is-android-codename", StarlarkTypeBool, hiddenArgNone},         // unused by product config
+	"is-android-codename-in-list":         {"!is-android-codename-in-list", StarlarkTypeBool, hiddenArgNone}, // unused by product config
+	"is-board-platform":                   {"!is-board-platform", StarlarkTypeBool, hiddenArgNone},
+	"is-board-platform-in-list":           {"!is-board-platform-in-list", StarlarkTypeBool, hiddenArgNone},
+	"is-chipset-in-board-platform":        {"!is-chipset-in-board-platform", StarlarkTypeUnknown, hiddenArgNone},     // unused by product config
+	"is-chipset-prefix-in-board-platform": {"!is-chipset-prefix-in-board-platform", StarlarkTypeBool, hiddenArgNone}, // unused by product config
+	"is-not-board-platform":               {"!is-not-board-platform", StarlarkTypeBool, hiddenArgNone},               // defined but never used
+	"is-platform-sdk-version-at-least":    {"!is-platform-sdk-version-at-least", StarlarkTypeBool, hiddenArgNone},    // unused by product config
+	"is-product-in-list":                  {"!is-product-in-list", StarlarkTypeBool, hiddenArgNone},
+	"is-vendor-board-platform":            {"!is-vendor-board-platform", StarlarkTypeBool, hiddenArgNone},
+	callLoadAlways:                        {"!inherit-product", StarlarkTypeVoid, hiddenArgNone},
+	callLoadIf:                            {"!inherit-product-if-exists", StarlarkTypeVoid, hiddenArgNone},
+	"lastword":                            {"!lastword", StarlarkTypeString, hiddenArgNone},
+	"match-prefix":                        {"!match-prefix", StarlarkTypeUnknown, hiddenArgNone},       // internal macro
+	"match-word":                          {"!match-word", StarlarkTypeUnknown, hiddenArgNone},         // internal macro
+	"match-word-in-list":                  {"!match-word-in-list", StarlarkTypeUnknown, hiddenArgNone}, // internal macro
+	"notdir":                              {baseName + ".notdir", StarlarkTypeString, hiddenArgNone},
+	"my-dir":                              {"!my-dir", StarlarkTypeString, hiddenArgNone},
+	"patsubst":                            {baseName + ".mkpatsubst", StarlarkTypeString, hiddenArgNone},
+	"product-copy-files-by-pattern":       {baseName + ".product_copy_files_by_pattern", StarlarkTypeList, hiddenArgNone},
+	"require-artifacts-in-path":           {baseName + ".require_artifacts_in_path", StarlarkTypeVoid, hiddenArgNone},
+	"require-artifacts-in-path-relaxed":   {baseName + ".require_artifacts_in_path_relaxed", StarlarkTypeVoid, hiddenArgNone},
 	// TODO(asmundak): remove it once all calls are removed from configuration makefiles. see b/183161002
-	"shell":      {baseName + ".shell", starlarkTypeString, hiddenArgNone},
-	"strip":      {baseName + ".mkstrip", starlarkTypeString, hiddenArgNone},
-	"tb-modules": {"!tb-modules", starlarkTypeUnknown, hiddenArgNone}, // defined in hardware/amlogic/tb_modules/tb_detect.mk, unused
-	"subst":      {baseName + ".mksubst", starlarkTypeString, hiddenArgNone},
-	"warning":    {baseName + ".mkwarning", starlarkTypeVoid, hiddenArgNone},
-	"word":       {baseName + "!word", starlarkTypeString, hiddenArgNone},
-	"wildcard":   {baseName + ".expand_wildcard", starlarkTypeList, hiddenArgNone},
+	"shell":      {baseName + ".shell", StarlarkTypeString, hiddenArgNone},
+	"strip":      {baseName + ".mkstrip", StarlarkTypeString, hiddenArgNone},
+	"tb-modules": {"!tb-modules", StarlarkTypeUnknown, hiddenArgNone}, // defined in hardware/amlogic/tb_modules/tb_detect.mk, unused
+	"subst":      {baseName + ".mksubst", StarlarkTypeString, hiddenArgNone},
+	"warning":    {baseName + ".mkwarning", StarlarkTypeVoid, hiddenArgNone},
+	"word":       {baseName + "!word", StarlarkTypeString, hiddenArgNone},
+	"wildcard":   {baseName + ".expand_wildcard", StarlarkTypeList, hiddenArgNone},
 }
 
 var builtinFuncRex = regexp.MustCompile(
@@ -395,7 +395,7 @@ func newParseContext(ss *StarlarkScript, nodes []mkparser.Node, knownVariables K
 	ctx.pushVarAssignments()
 	for _, item := range predefined {
 		ctx.variables[item.name] = &predefinedVariable{
-			baseVariable: baseVariable{nam: item.name, typ: starlarkTypeString},
+			baseVariable: baseVariable{nam: item.name, typ: StarlarkTypeString},
 			value:        &stringLiteralExpr{item.value},
 		}
 	}
@@ -482,7 +482,7 @@ func (ctx *parseContext) handleAssignment(a *mkparser.Assignment) {
 	}
 	_, isTraced := ctx.tracedVariables[name]
 	asgn := &assignmentNode{lhs: lhs, mkValue: a.Value, isTraced: isTraced}
-	if lhs.valueType() == starlarkTypeUnknown {
+	if lhs.valueType() == StarlarkTypeUnknown {
 		// Try to divine variable type from the RHS
 		asgn.value = ctx.parseMakeString(a, a.Value)
 		if xBad, ok := asgn.value.(*badExpr); ok {
@@ -490,11 +490,11 @@ func (ctx *parseContext) handleAssignment(a *mkparser.Assignment) {
 			return
 		}
 		inferred_type := asgn.value.typ()
-		if inferred_type != starlarkTypeUnknown {
+		if inferred_type != StarlarkTypeUnknown {
 			lhs.setValueType(inferred_type)
 		}
 	}
-	if lhs.valueType() == starlarkTypeList {
+	if lhs.valueType() == StarlarkTypeList {
 		xConcat := ctx.buildConcatExpr(a)
 		if xConcat == nil {
 			return
@@ -564,7 +564,7 @@ func (ctx *parseContext) handleSoongNsAssignment(name string, asgn *mkparser.Ass
 			ctx.receiver.newNode(&exprNode{&callExpr{
 				name:       addSoongNamespace,
 				args:       []starlarkExpr{&stringLiteralExpr{ns}},
-				returnType: starlarkTypeVoid,
+				returnType: StarlarkTypeVoid,
 			}})
 		}
 	} else {
@@ -615,7 +615,7 @@ func (ctx *parseContext) handleSoongNsAssignment(name string, asgn *mkparser.Ass
 		ctx.receiver.newNode(&exprNode{&callExpr{
 			name:       addSoongConfigVarValue,
 			args:       []starlarkExpr{&stringLiteralExpr{namespaceName}, &stringLiteralExpr{varName}, val},
-			returnType: starlarkTypeVoid,
+			returnType: StarlarkTypeVoid,
 		}})
 	}
 }
@@ -648,16 +648,16 @@ func (ctx *parseContext) buildConcatExpr(a *mkparser.Assignment) *concatExpr {
 			addToItemList(maybeConvertToStringList(x).(*listExpr).items...)
 		default:
 			switch x.typ() {
-			case starlarkTypeList:
+			case StarlarkTypeList:
 				finishItemList()
 				xConcat.items = append(xConcat.items, x)
-			case starlarkTypeString:
+			case StarlarkTypeString:
 				finishItemList()
 				xConcat.items = append(xConcat.items, &callExpr{
 					object:     x,
 					name:       "split",
 					args:       nil,
-					returnType: starlarkTypeList,
+					returnType: StarlarkTypeList,
 				})
 			default:
 				addToItemList(x)
@@ -833,7 +833,7 @@ func (ctx *parseContext) handleVariable(v *mkparser.Variable) {
 				x.args[0],
 			}
 			ctx.receiver.newNode(&exprNode{
-				&callExpr{name: x.name, args: args, returnType: starlarkTypeUnknown},
+				&callExpr{name: x.name, args: args, returnType: StarlarkTypeUnknown},
 			})
 		} else {
 			ctx.receiver.newNode(&exprNode{expr})
@@ -1109,7 +1109,7 @@ func (ctx *parseContext) parseCompareFilterFuncResult(cond *mkparser.Directive,
 		}
 		// Either pattern or text should be const, and the
 		// non-const one should be varRefExpr
-		if xInList, ok = xPattern.(*stringLiteralExpr); ok && !strings.ContainsRune(xInList.literal, '%') && xText.typ() == starlarkTypeList {
+		if xInList, ok = xPattern.(*stringLiteralExpr); ok && !strings.ContainsRune(xInList.literal, '%') && xText.typ() == StarlarkTypeList {
 			expr = xText
 		} else if xInList, ok = xText.(*stringLiteralExpr); ok {
 			expr = xPattern
@@ -1118,7 +1118,7 @@ func (ctx *parseContext) parseCompareFilterFuncResult(cond *mkparser.Directive,
 				object:     nil,
 				name:       filterFuncCall.name,
 				args:       filterFuncCall.args,
-				returnType: starlarkTypeBool,
+				returnType: StarlarkTypeBool,
 			}
 			if negate {
 				expr = &notExpr{expr: expr}
@@ -1138,7 +1138,7 @@ func (ctx *parseContext) parseCompareFilterFuncResult(cond *mkparser.Directive,
 	if expr != nil && xInList != nil {
 		slExpr := newStringListExpr(strings.Fields(xInList.literal))
 		// Generate simpler code for the common cases:
-		if expr.typ() == starlarkTypeList {
+		if expr.typ() == StarlarkTypeList {
 			if len(slExpr.items) == 1 {
 				// Checking that a string belongs to list
 				return &inExpr{isNot: negate, list: expr, expr: slExpr.items[0]}
@@ -1164,7 +1164,7 @@ func (ctx *parseContext) parseCompareWildcardFuncResult(directive *mkparser.Dire
 	if s, ok := xCall.args[0].(*stringLiteralExpr); ok && !strings.ContainsAny(s.literal, "*?{[") {
 		callFunc = fileExistsPhony
 	}
-	var cc starlarkExpr = &callExpr{name: callFunc, args: xCall.args, returnType: starlarkTypeBool}
+	var cc starlarkExpr = &callExpr{name: callFunc, args: xCall.args, returnType: StarlarkTypeBool}
 	if !negate {
 		cc = &notExpr{cc}
 	}
@@ -1179,7 +1179,7 @@ func (ctx *parseContext) parseCheckFindstringFuncResult(directive *mkparser.Dire
 				object:     xCall.args[1],
 				name:       "find",
 				args:       []starlarkExpr{xCall.args[0]},
-				returnType: starlarkTypeInt,
+				returnType: StarlarkTypeInt,
 			},
 			right: &intLiteralExpr{-1},
 			isEq:  !negate,
@@ -1197,7 +1197,7 @@ func (ctx *parseContext) parseCompareStripFuncResult(directive *mkparser.Directi
 		left: &callExpr{
 			name:       "strip",
 			args:       xCall.args,
-			returnType: starlarkTypeString,
+			returnType: StarlarkTypeString,
 		},
 		right: xValue, isEq: !negate}
 }
@@ -1221,7 +1221,7 @@ func (ctx *parseContext) parseReference(node mkparser.Node, ref *mkparser.MakeSt
 			return &callExpr{
 				name:       refDump,
 				args:       []starlarkExpr{&stringLiteralExpr{""}},
-				returnType: starlarkTypeUnknown,
+				returnType: StarlarkTypeUnknown,
 			}
 		}
 		if v := ctx.addVariable(refDump); v != nil {
@@ -1230,7 +1230,7 @@ func (ctx *parseContext) parseReference(node mkparser.Node, ref *mkparser.MakeSt
 		return ctx.newBadExpr(node, "unknown variable %s", refDump)
 	}
 
-	expr := &callExpr{name: words[0].Dump(), returnType: starlarkTypeUnknown}
+	expr := &callExpr{name: words[0].Dump(), returnType: StarlarkTypeUnknown}
 	args := words[1]
 	args.TrimLeftSpaces()
 	// Make control functions and shell need special treatment as everything
@@ -1297,7 +1297,7 @@ func (ctx *parseContext) parseSubstFunc(node mkparser.Node, fname string, args *
 	words[2].TrimRightSpaces()
 	obj := ctx.parseMakeString(node, words[2])
 	typ := obj.typ()
-	if typ == starlarkTypeString && fname == "subst" {
+	if typ == StarlarkTypeString && fname == "subst" {
 		// Optimization: if it's $(subst from, to, string), emit string.replace(from, to)
 		return &callExpr{
 			object:     obj,
@@ -1331,8 +1331,8 @@ func (ctx *parseContext) parseWordFunc(node mkparser.Node, args *mkparser.MakeSt
 	if xBad, ok := array.(*badExpr); ok {
 		return xBad
 	}
-	if array.typ() != starlarkTypeList {
-		array = &callExpr{object: array, name: "split", returnType: starlarkTypeList}
+	if array.typ() != StarlarkTypeList {
+		array = &callExpr{object: array, name: "split", returnType: StarlarkTypeList}
 	}
 	return indexExpr{array, &intLiteralExpr{int(index - 1)}}
 }
@@ -1349,10 +1349,10 @@ func (ctx *parseContext) parseFirstOrLastwordFunc(node mkparser.Node, name strin
 		}
 		index.literal = -1
 	}
-	if arg.typ() == starlarkTypeList {
+	if arg.typ() == StarlarkTypeList {
 		return &indexExpr{arg, index}
 	}
-	return &indexExpr{&callExpr{object: arg, name: "split", returnType: starlarkTypeList}, index}
+	return &indexExpr{&callExpr{object: arg, name: "split", returnType: StarlarkTypeList}, index}
 }
 
 func (ctx *parseContext) parseMakeString(node mkparser.Node, mk *mkparser.MakeString) starlarkExpr {

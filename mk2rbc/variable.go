@@ -24,15 +24,15 @@ type variable interface {
 	emitGet(gctx *generationContext, isDefined bool)
 	emitSet(gctx *generationContext, asgn *assignmentNode)
 	emitDefined(gctx *generationContext)
-	valueType() starlarkType
-	setValueType(t starlarkType)
+	valueType() StarlarkType
+	setValueType(t StarlarkType)
 	defaultValueString() string
 	isPreset() bool
 }
 
 type baseVariable struct {
 	nam    string
-	typ    starlarkType
+	typ    StarlarkType
 	preset bool // true if it has been initialized at startup
 }
 
@@ -40,11 +40,11 @@ func (v baseVariable) name() string {
 	return v.nam
 }
 
-func (v baseVariable) valueType() starlarkType {
+func (v baseVariable) valueType() StarlarkType {
 	return v.typ
 }
 
-func (v *baseVariable) setValueType(t starlarkType) {
+func (v *baseVariable) setValueType(t StarlarkType) {
 	v.typ = t
 }
 
@@ -52,13 +52,13 @@ func (v baseVariable) isPreset() bool {
 	return v.preset
 }
 
-var defaultValuesByType = map[starlarkType]string{
-	starlarkTypeUnknown: `""`,
-	starlarkTypeList:    "[]",
-	starlarkTypeString:  `""`,
-	starlarkTypeInt:     "0",
-	starlarkTypeBool:    "False",
-	starlarkTypeVoid:    "None",
+var defaultValuesByType = map[StarlarkType]string{
+	StarlarkTypeUnknown: `""`,
+	StarlarkTypeList:    "[]",
+	StarlarkTypeString:  `""`,
+	StarlarkTypeInt:     "0",
+	StarlarkTypeBool:    "False",
+	StarlarkTypeVoid:    "None",
 }
 
 func (v baseVariable) defaultValueString() string {
@@ -81,7 +81,7 @@ func (pcv productConfigVariable) emitSet(gctx *generationContext, asgn *assignme
 	emitAppend := func() {
 		pcv.emitGet(gctx, true)
 		gctx.write(" += ")
-		if pcv.valueType() == starlarkTypeString {
+		if pcv.valueType() == StarlarkTypeString {
 			gctx.writef(`" " + `)
 		}
 		asgn.value.emit(gctx)
@@ -94,7 +94,7 @@ func (pcv productConfigVariable) emitSet(gctx *generationContext, asgn *assignme
 		emitAppend()
 	case asgnMaybeAppend:
 		// If we are not sure variable has been assigned before, emit setdefault
-		if pcv.typ == starlarkTypeList {
+		if pcv.typ == StarlarkTypeList {
 			gctx.writef("%s(handle, %q)", cfnSetListDefault, pcv.name())
 		} else {
 			gctx.writef("cfg.setdefault(%q, %s)", pcv.name(), pcv.defaultValueString())
@@ -136,7 +136,7 @@ func (scv otherGlobalVariable) emitSet(gctx *generationContext, asgn *assignment
 	emitAppend := func() {
 		scv.emitGet(gctx, true)
 		gctx.write(" += ")
-		if scv.valueType() == starlarkTypeString {
+		if scv.valueType() == StarlarkTypeString {
 			gctx.writef(`" " + `)
 		}
 		asgn.value.emit(gctx)
@@ -193,7 +193,7 @@ func (lv localVariable) emitSet(gctx *generationContext, asgn *assignmentNode) {
 	case asgnAppend:
 		lv.emitGet(gctx, false)
 		gctx.write(" += ")
-		if lv.valueType() == starlarkTypeString {
+		if lv.valueType() == StarlarkTypeString {
 			gctx.writef(`" " + `)
 		}
 		asgn.value.emit(gctx)
@@ -286,9 +286,9 @@ func (ctx *parseContext) addVariable(name string) variable {
 		} else if name == strings.ToLower(name) {
 			// Heuristics: if variable's name is all lowercase, consider it local
 			// string variable.
-			v = &localVariable{baseVariable{nam: name, typ: starlarkTypeUnknown}}
+			v = &localVariable{baseVariable{nam: name, typ: StarlarkTypeUnknown}}
 		} else {
-			vt := starlarkTypeUnknown
+			vt := StarlarkTypeUnknown
 			if strings.HasPrefix(name, "LOCAL_") {
 				// Heuristics: local variables that contribute to corresponding config variables
 				if cfgVarName, found := localProductConfigVariables[name]; found {
@@ -299,9 +299,9 @@ func (ctx *parseContext) addVariable(name string) variable {
 					vt = vi.ValueType
 				}
 			}
-			if strings.HasSuffix(name, "_LIST") && vt == starlarkTypeUnknown {
+			if strings.HasSuffix(name, "_LIST") && vt == StarlarkTypeUnknown {
 				// Heuristics: Variables with "_LIST" suffix are lists
-				vt = starlarkTypeList
+				vt = StarlarkTypeList
 			}
 			v = &otherGlobalVariable{baseVariable{nam: name, typ: vt}}
 		}
