@@ -34,6 +34,24 @@
       "parentUuid": "c549cc85_f6a4be79",
       "revId": "e555352d2e15cd1e6eb26abe8c1ed704b7f1fcf4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b97b9caa_fe0fd178",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-10-22T06:39:53Z",
+      "side": 1,
+      "message": "It\u0027s too late for me to examine in detail, but dropping a quick bit of context before bed - I hit the same error trying to do a 1.55.0 -\u003e 1.55.0p1 roll, so this is not related to 1.56.0, it\u0027s related to some other change to the build that happened since 1.55.0 was picked",
+      "parentUuid": "e48478ab_0e2d1c29",
+      "revId": "e555352d2e15cd1e6eb26abe8c1ed704b7f1fcf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
