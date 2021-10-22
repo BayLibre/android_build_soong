@@ -52,6 +52,24 @@
       "parentUuid": "e48478ab_0e2d1c29",
       "revId": "e555352d2e15cd1e6eb26abe8c1ed704b7f1fcf4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cddabcd_a31850aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-10-22T06:51:14Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/toolchain/android_rust/+/1819023 is the patch that broke this for sure. It\u0027s not creating a proper RUNPATH anymore, because the linker wrappers are further shell scripts, which causes problems with escaping of arguments (either in the case of the shell script execution or the same variable in rustc/config.toml). I am not sure I\u0027m going to figure this out tonight either, but I at least know where it\u0027s broken.",
+      "parentUuid": "b97b9caa_fe0fd178",
+      "revId": "e555352d2e15cd1e6eb26abe8c1ed704b7f1fcf4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
