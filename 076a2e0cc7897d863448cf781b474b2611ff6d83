@@ -33,6 +33,24 @@
       "message": "I\u0027d prefer to collect the checkbuild files here and below and then skip the phony target later",
       "revId": "076a2e0cc7897d863448cf781b474b2611ff6d83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ae27dd_2ffea9f1",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2871,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-10-25T20:00:12Z",
+      "side": 1,
+      "message": "I don\u0027t understand what to change here.\nHere it is already collecting checkbuild files from srcPath with a test of ExportedToMake(). The CheckbuildFile function is the one that is used to add other files to non-installed modules.\nWhich phony target to skip?",
+      "parentUuid": "6738c750_170728af",
+      "revId": "076a2e0cc7897d863448cf781b474b2611ff6d83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
