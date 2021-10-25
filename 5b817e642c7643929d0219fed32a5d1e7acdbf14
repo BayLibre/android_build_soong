@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "280a9ed3_707db550",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-25T17:18:26Z",
+      "side": 1,
+      "message": "No, at least not for changes that go into AOSP. And regardless of branch, prebuilts/runtime/mainline is enough for prebuilt ART module dependencies. (There are several ART module builds that have the sources and don\u0027t need the prebuilts, but the general intention is to avoid that.)",
+      "parentUuid": "2bec0dad_6a978489",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "5b817e642c7643929d0219fed32a5d1e7acdbf14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "246e037e_b9181df6",
