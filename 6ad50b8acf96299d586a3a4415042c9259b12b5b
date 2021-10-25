@@ -118,6 +118,30 @@
       },
       "revId": "6ad50b8acf96299d586a3a4415042c9259b12b5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6c10e8e_a59c79da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-10-25T15:40:20Z",
+      "side": 1,
+      "message": "No worries. You raised valid concerns!",
+      "parentUuid": "0fc2cee9_015843d8",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 43
+      },
+      "revId": "6ad50b8acf96299d586a3a4415042c9259b12b5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
