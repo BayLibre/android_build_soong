@@ -94,6 +94,30 @@
       },
       "revId": "6ad50b8acf96299d586a3a4415042c9259b12b5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fc2cee9_015843d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-25T15:38:02Z",
+      "side": 1,
+      "message": "Thanks! Sorry for bikeshedding. 😊",
+      "parentUuid": "66f0d3ee_0ab3f103",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 43
+      },
+      "revId": "6ad50b8acf96299d586a3a4415042c9259b12b5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
