@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01c6c92f_444ae1d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-25T11:15:46Z",
+      "side": 1,
+      "message": "This is not a good idea, as the link is not publicly accessible (AOSP is an open source project). Also I\u0027m not sure about the lifetime of the link.",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 43
+      },
+      "revId": "6ad50b8acf96299d586a3a4415042c9259b12b5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
