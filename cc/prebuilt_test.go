@@ -19,6 +19,9 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/bp2build"
+
+	//"android/soong/bp2build"
 
 	"github.com/google/blueprint"
 )
@@ -377,4 +380,32 @@ func TestPrebuiltLibrarySanitized(t *testing.T) {
 
 	static2 = ctx.ModuleForTests("libtest_static", "android_arm64_armv8-a_static_hwasan").Module().(*Module)
 	assertString(t, static2.OutputFile().Path().Base(), "libf.hwasan.a")
+}
+
+func TestSharedPrebuiltLibrary(t *testing.T) {
+	bp2build.RunBp2BuildTestCase(t, func(ctx android.RegistrationContext) {},
+		bp2build.Bp2BuildTestCase{
+			Description:                        "prebuilt library shared simple",
+			ModuleTypeUnderTest:                "cc_prebuilt_library_shared",
+			ModuleTypeUnderTestFactory:         PrebuiltSharedLibraryFactory,
+			ModuleTypeUnderTestBp2BuildMutator: PrebuiltLibrarySharedBp2Build,
+			Filesystem: map[string]string{
+				"libf.so": "",
+			},
+			Blueprint: `
+cc_prebuilt_library_shared {
+	name: "libtest",
+	srcs: ["libf.so"],
+	strip: {
+			none: true,
+	},
+	bazel_module: { bp2build_available: true },
+}`,
+			ExpectedBazelTargets: []string{
+				`prebuilt_library_shared(
+    name = "libtest",
+    shared_library = "libf.so",
+)`,
+			},
+		})
 }
