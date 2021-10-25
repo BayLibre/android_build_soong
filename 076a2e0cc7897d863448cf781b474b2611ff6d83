@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efd46e69_576fcfd9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-10-25T23:31:58Z",
+      "side": 1,
+      "message": "Colin,\n\nThis change removed some but not all non-builtable targets\nfrom the module-checkbuild phony target. \nFor example, as mentioned in the commit message, non-builtable libgptutils \nlibraries were removed, by the check of m.Module().ExportedToMake().\n\nHowever, that condition is not enough to remove non-builtable\nlibrary like out/soong/.intermediates/external/skia/libskia/linux_bionic_arm64_static/libskia.a from the libskia-checkbuild phony targets.\n   lunch aosp_cf_arm64_phone-userdebug\n   make libskia-checkbuild         (failed)\n   make MODULES-IN-external-skia   (passed)\n\nIs there other condition we can use inside android/module.go\nto make module-checkbuild contain only targets in MODULES-IN-module-dir?\nI tried the !m.skipInstall() and !m.Module().IsHideFromMake() conditions\nbut they did not remove the linux_bionic_arm64_static/libskia.a target\nfrom checkbuild.\n",
+      "revId": "076a2e0cc7897d863448cf781b474b2611ff6d83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6738c750_170728af",
         "filename": "android/module.go",
         "patchSetId": 1
