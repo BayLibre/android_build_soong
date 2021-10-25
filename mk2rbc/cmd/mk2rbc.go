@@ -42,14 +42,14 @@ import (
 var (
 	rootDir = flag.String("root", ".", "the value of // for load paths")
 	// TODO(asmundak): remove this option once there is a consensus on suffix
-	suffix   = flag.String("suffix", ".rbc", "generated files' suffix")
-	dryRun   = flag.Bool("dry_run", false, "dry run")
-	recurse  = flag.Bool("convert_dependents", false, "convert all dependent files")
-	mode     = flag.String("mode", "", `"backup" to back up existing files, "write" to overwrite them`)
-	warn     = flag.Bool("warnings", false, "warn about partially failed conversions")
-	verbose  = flag.Bool("v", false, "print summary")
-	errstat  = flag.Bool("error_stat", false, "print error statistics")
-	traceVar = flag.String("trace", "", "comma-separated list of variables to trace")
+	suffix    = flag.String("suffix", ".rbc", "generated files' suffix")
+	dryRun    = flag.Bool("dry_run", false, "dry run")
+	recurse   = flag.Bool("convert_dependents", false, "convert all dependent files")
+	mode      = flag.String("mode", "", `"backup" to back up existing files, "write" to overwrite them`)
+	noWarn    = flag.Bool("no_warnings", false, "don't warn about partially failed conversions")
+	verbose   = flag.Bool("v", false, "print summary")
+	noErrStat = flag.Bool("no_error_stat", false, "don't print error statistics")
+	traceVar  = flag.String("trace", "", "comma-separated list of variables to trace")
 	// TODO(asmundak): this option is for debugging
 	allInSource           = flag.Bool("all", false, "convert all product config makefiles in the tree under //")
 	outputTop             = flag.String("outdir", "", "write output files into this directory hierarchy")
@@ -73,8 +73,8 @@ func init() {
 	flagAlias("root", "d")
 	flagAlias("dry_run", "n")
 	flagAlias("convert_dependents", "r")
-	flagAlias("warnings", "w")
-	flagAlias("error_stat", "e")
+	flagAlias("no_warnings", "w")
+	flagAlias("no_error_stat", "e")
 }
 
 var backupSuffix string
@@ -190,7 +190,7 @@ func main() {
 	}
 
 	printStats()
-	if *errstat {
+	if !*noErrStat {
 		errorLogger.printStatistics()
 	}
 	if !ok {
@@ -318,11 +318,11 @@ func convertOne(mkFile string) (ok bool) {
 		OutputSuffix:       *suffix,
 		TracedVariables:    tracedVariables,
 		TraceCalls:         *traceCalls,
-		WarnPartialSuccess: *warn,
+		WarnPartialSuccess: !*noWarn,
 		SourceFS:           os.DirFS(*rootDir),
 		MakefileFinder:     makefileFinder,
 	}
-	if *errstat {
+	if !*noErrStat {
 		mk2starRequest.ErrorLogger = errorLogger
 	}
 	ss, err := mk2rbc.Convert(mk2starRequest)
@@ -401,7 +401,7 @@ func writeGenerated(path string, contents string) error {
 
 func printStats() {
 	var sortedFiles []string
-	if !*warn && !*verbose {
+	if *noWarn && !*verbose {
 		return
 	}
 	for p := range converted {
@@ -419,7 +419,7 @@ func printStats() {
 			nOk++
 		}
 	}
-	if *warn {
+	if !*noWarn {
 		if nPartial > 0 {
 			fmt.Fprintf(os.Stderr, "Conversion was partially successful for:\n")
 			for _, f := range sortedFiles {
