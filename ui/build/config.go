@@ -785,7 +785,7 @@ func (c *configImpl) PrebuiltOS() string {
 	}
 }
 func (c *configImpl) HostToolDir() string {
-	return filepath.Join(c.SoongOutDir(), "host", c.PrebuiltOS(), "bin")
+	return filepath.Join(c.OutDir(), "host", c.PrebuiltOS(), "bin")
 }
 
 func (c *configImpl) NamedGlobFile(name string) string {
