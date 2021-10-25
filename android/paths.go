@@ -464,6 +464,9 @@ func (p OutputPaths) Strings() []string {
 
 func PathForGoBinary(ctx PathContext, goBinary bootstrap.GoBinaryTool) (WritablePath, error) {
 	goBinaryInstallDir := pathForInstall(ctx, ctx.Config().BuildOS, ctx.Config().BuildArch, "bin", false)
+	if ctx.Config().KatiEnabled() {
+		goBinaryInstallDir = goBinaryInstallDir.ToMakePath()
+	}
 	if rel, err := filepath.Rel(goBinaryInstallDir.String(), goBinary.InstallPath()); err == nil {
 		return goBinaryInstallDir.Join(ctx, rel), nil
 	} else {
