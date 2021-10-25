@@ -413,13 +413,12 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 		linkerDeps = append(linkerDeps, deps.LateSharedLibsDeps...)
 	}
 
-	linkerDeps = append(linkerDeps, objs.tidyFiles...)
 	linkerDeps = append(linkerDeps, flags.LdFlagsDeps...)
 
 	// Register link action.
 	transformObjToDynamicBinary(ctx, objs.objFiles, sharedLibs, deps.StaticLibs,
 		deps.LateStaticLibs, deps.WholeStaticLibs, linkerDeps, deps.CrtBegin, deps.CrtEnd, true,
-		builderFlags, outputFile, nil, validations)
+		builderFlags, outputFile, objs.tidyFiles, nil, validations)
 
 	objs.coverageFiles = append(objs.coverageFiles, deps.StaticLibObjs.coverageFiles...)
 	objs.coverageFiles = append(objs.coverageFiles, deps.WholeStaticLibObjs.coverageFiles...)

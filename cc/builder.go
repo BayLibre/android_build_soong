@@ -784,7 +784,7 @@ func transformObjToStaticLib(ctx android.ModuleContext,
 // and shared libraries, to a shared library (.so) or dynamic executable
 func transformObjToDynamicBinary(ctx android.ModuleContext,
 	objFiles, sharedLibs, staticLibs, lateStaticLibs, wholeStaticLibs, deps, crtBegin, crtEnd android.Paths,
-	groupLate bool, flags builderFlags, outputFile android.WritablePath,
+	groupLate bool, flags builderFlags, outputFile android.WritablePath, orderDeps android.Paths,
 	implicitOutputs android.WritablePaths, validations android.WritablePaths) {
 
 	ldCmd := "${config.ClangBin}/clang++"
@@ -844,6 +844,9 @@ func transformObjToDynamicBinary(ctx android.ModuleContext,
 		args["implicitInputs"] = strings.Join(deps.Strings(), ",")
 	}
 
+	var allOrderDeps android.Paths
+	allOrderDeps = append(allOrderDeps, orderDeps...)
+	allOrderDeps = append(allOrderDeps, sharedLibs...)
 	ctx.Build(pctx, android.BuildParams{
 		Rule:            rule,
 		Description:     "link " + outputFile.Base(),
@@ -851,7 +854,7 @@ func transformObjToDynamicBinary(ctx android.ModuleContext,
 		ImplicitOutputs: implicitOutputs,
 		Inputs:          objFiles,
 		Implicits:       deps,
-		OrderOnly:       sharedLibs,
+		OrderOnly:       allOrderDeps,
 		Validations:     validations.Paths(),
 		Args:            args,
 	})
