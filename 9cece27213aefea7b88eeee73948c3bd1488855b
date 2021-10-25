@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f8b4bdd_fd866b97",
+        "filename": "cc/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-25T18:37:45Z",
+      "side": 1,
+      "message": "It would be more efficient to add these to validations, which will ensure they still run whenever the link rule is in the build graph like an orderOnly dep, but without making the link rule wait for the tidy rules.",
+      "range": {
+        "startLine": 421,
+        "startChar": 28,
+        "endLine": 421,
+        "endChar": 42
+      },
+      "revId": "9cece27213aefea7b88eeee73948c3bd1488855b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
