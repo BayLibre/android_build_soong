@@ -1196,8 +1196,9 @@ type ModuleBase struct {
 	noticeFiles          Paths
 	// katiInstalls tracks the install rules that were created by Soong but are being exported
 	// to Make to convert to ninja rules so that Make can add additional dependencies.
-	katiInstalls katiInstalls
-	katiSymlinks katiInstalls
+	katiInstalls   katiInstalls
+	katiSymlinks   katiInstalls
+	vintfFragments katiInstalls
 
 	// The files to copy to the dist as explicitly specified in the .bp file.
 	distFiles TaggedDistFiles
@@ -1983,21 +1984,25 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 			return
 		}
 
-		m.module.GenerateAndroidBuildActions(ctx)
-		if ctx.Failed() {
-			return
-		}
-
 		m.initRcPaths = PathsForModuleSrc(ctx, m.commonProperties.Init_rc)
 		rcDir := PathForModuleInstall(ctx, "etc", "init")
 		for _, src := range m.initRcPaths {
-			ctx.PackageFile(rcDir, filepath.Base(src.String()), src)
+			ctx.InstallFile(rcDir, filepath.Base(src.String()), src)
 		}
 
 		m.vintfFragmentsPaths = PathsForModuleSrc(ctx, m.commonProperties.Vintf_fragments)
 		vintfDir := PathForModuleInstall(ctx, "etc", "vintf", "manifest")
 		for _, src := range m.vintfFragmentsPaths {
-			ctx.PackageFile(vintfDir, filepath.Base(src.String()), src)
+			installedPath := ctx.InstallFile(vintfDir, filepath.Base(src.String()), src)
+			m.vintfFragments = append(m.vintfFragments, katiInstall{
+				from: src,
+				to:   installedPath,
+			})
+		}
+
+		m.module.GenerateAndroidBuildActions(ctx)
+		if ctx.Failed() {
+			return
 		}
 
 		// Create the set of tagged dist files after calling GenerateAndroidBuildActions
