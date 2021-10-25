@@ -16,6 +16,23 @@
       "message": "friendly ping reviewers\n",
       "revId": "076a2e0cc7897d863448cf781b474b2611ff6d83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6738c750_170728af",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2871,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-25T18:33:54Z",
+      "side": 1,
+      "message": "I\u0027d prefer to collect the checkbuild files here and below and then skip the phony target later",
+      "revId": "076a2e0cc7897d863448cf781b474b2611ff6d83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
