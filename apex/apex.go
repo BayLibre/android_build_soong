@@ -1454,12 +1454,11 @@ func apexFileForPyBinary(ctx android.BaseModuleContext, py *python.Module) apexF
 
 func apexFileForGoBinary(ctx android.BaseModuleContext, depName string, gb bootstrap.GoBinaryTool) apexFile {
 	dirInApex := "bin"
-	s, err := filepath.Rel(android.PathForOutput(ctx).String(), gb.InstallPath())
+	fileToCopy, err := android.PathForGoBinary(ctx, gb)
 	if err != nil {
 		ctx.ModuleErrorf("Unable to use compiled binary at %s", gb.InstallPath())
 		return apexFile{}
 	}
-	fileToCopy := android.PathForOutput(ctx, s)
 	// NB: Since go binaries are static we don't need the module for anything here, which is
 	// good since the go tool is a blueprint.Module not an android.Module like we would
 	// normally use.
