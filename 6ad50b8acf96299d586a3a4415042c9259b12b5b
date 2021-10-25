@@ -46,6 +46,30 @@
       },
       "revId": "6ad50b8acf96299d586a3a4415042c9259b12b5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23329a7b_c3d916ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-10-25T15:27:35Z",
+      "side": 1,
+      "message": "Ok understood, let\u0027s keep it.\n\nFor the record, here\u0027s why I think it is wrong:\n\n- Buganizer links are different: this is a necessary and widely \naccepted exception, we have to use them to track bugs.\n\n- Long commit messages are not bad if they are informative (and you can trim the error output manually).\n\n- The fact that we do something bad doesn\u0027t mean we should do more bad.\n\n- If I looked at it from the standpoint of a hypothetical open source contributor, I would think something like \"these Google folks forgot about the outer world\".",
+      "parentUuid": "2fc329a4_95cd13a5",
+      "range": {
+        "startLine": 20,
+        "startChar": 20,
+        "endLine": 20,
+        "endChar": 43
+      },
+      "revId": "6ad50b8acf96299d586a3a4415042c9259b12b5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
