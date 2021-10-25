@@ -1991,13 +1991,13 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		m.initRcPaths = PathsForModuleSrc(ctx, m.commonProperties.Init_rc)
 		rcDir := PathForModuleInstall(ctx, "etc", "init")
 		for _, src := range m.initRcPaths {
-			ctx.PackageFile(rcDir, filepath.Base(src.String()), src)
+			ctx.InstallFile(rcDir, filepath.Base(src.String()), src)
 		}
 
 		m.vintfFragmentsPaths = PathsForModuleSrc(ctx, m.commonProperties.Vintf_fragments)
 		vintfDir := PathForModuleInstall(ctx, "etc", "vintf", "manifest")
 		for _, src := range m.vintfFragmentsPaths {
-			ctx.PackageFile(vintfDir, filepath.Base(src.String()), src)
+			ctx.InstallFile(vintfDir, filepath.Base(src.String()), src)
 		}
 
 		// Create the set of tagged dist files after calling GenerateAndroidBuildActions
