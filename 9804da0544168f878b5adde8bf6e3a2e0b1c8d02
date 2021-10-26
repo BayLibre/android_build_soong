@@ -34,6 +34,24 @@
       "parentUuid": "9a87f0a1_c67eea8c",
       "revId": "9804da0544168f878b5adde8bf6e3a2e0b1c8d02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ed54fa8_c2fedbad",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-10-26T15:24:50Z",
+      "side": 1,
+      "message": "Maybe. The problem with \"free floating\" comments like that it\u0027s unclear what they apply to, and they easily get separated from it. I think it\u0027s better to put it on the (in some sense) \"primary\" function instead. But no big deal either way.",
+      "parentUuid": "9f13159c_750c3120",
+      "revId": "9804da0544168f878b5adde8bf6e3a2e0b1c8d02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
