@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54b9f6a3_ec3752f7",
+        "filename": "mk2rbc/mk2rbc_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-26T15:07:25Z",
+      "side": 1,
+      "message": "something we should track to consider later for readability is whether we want to include this line in the converted file.",
+      "range": {
+        "startLine": 956,
+        "startChar": 0,
+        "endLine": 956,
+        "endChar": 31
+      },
+      "revId": "6c7a5caacf512c11a6e645e340ed9e614091049c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
