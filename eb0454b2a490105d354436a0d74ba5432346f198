@@ -33,6 +33,24 @@
       "message": "No worries! (did you want to +2 this change so that I can submit it?)",
       "revId": "eb0454b2a490105d354436a0d74ba5432346f198",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb78ca77_6ce90ed9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2021-10-26T13:20:36Z",
+      "side": 1,
+      "message": "I do not have this power :(",
+      "parentUuid": "95a5e6c8_c7a58908",
+      "revId": "eb0454b2a490105d354436a0d74ba5432346f198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
