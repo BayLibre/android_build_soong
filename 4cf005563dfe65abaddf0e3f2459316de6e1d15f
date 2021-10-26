@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "683323e5_e0e4f06b",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-26T19:23:07Z",
+      "side": 1,
+      "message": "should this be !\u003d given that only x.args[0] is passed?",
+      "range": {
+        "startLine": 1153,
+        "startChar": 18,
+        "endLine": 1153,
+        "endChar": 19
+      },
+      "revId": "4cf005563dfe65abaddf0e3f2459316de6e1d15f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
