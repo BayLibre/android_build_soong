@@ -52,6 +52,24 @@
       "parentUuid": "9f13159c_750c3120",
       "revId": "9804da0544168f878b5adde8bf6e3a2e0b1c8d02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6716f02_09f3cb7c",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-26T15:31:16Z",
+      "side": 1,
+      "message": "Ack. I\u0027ll leave it as it is for now.",
+      "parentUuid": "1ed54fa8_c2fedbad",
+      "revId": "9804da0544168f878b5adde8bf6e3a2e0b1c8d02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
