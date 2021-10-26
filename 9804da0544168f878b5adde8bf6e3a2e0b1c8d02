@@ -16,6 +16,24 @@
       "message": "Please remove the empty line to reconnect the comment to the function it originally was for: https://r.android.com/730085",
       "revId": "9804da0544168f878b5adde8bf6e3a2e0b1c8d02",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f13159c_750c3120",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1543,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-26T15:18:34Z",
+      "side": 1,
+      "message": "I left the line on purpose because the comment does not seem to be just for the IDEInfo method but is also for the IDECustomizedModuleName.",
+      "parentUuid": "9a87f0a1_c67eea8c",
+      "revId": "9804da0544168f878b5adde8bf6e3a2e0b1c8d02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
