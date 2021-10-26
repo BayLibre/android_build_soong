@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52a8af49_b4dc857c",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-10-26T23:59:04Z",
+      "side": 1,
+      "message": "Haha yeah Go seems to encourage incomprehensible names for some reason, but we generally use longer names in the Soong codebase, and it\u0027s a bit distracting if we use a mix of styles...",
+      "parentUuid": "1211fc97_b5e8cea0",
+      "range": {
+        "startLine": 291,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 3
+      },
+      "revId": "ff48cdeac44b1a4e0c46a19d393f75b43cb5f305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7d5cdd3_39a3b844",
         "filename": "cc/bp2build.go",
         "patchSetId": 1
