@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edc2a853_9d9797f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-26T19:16:27Z",
+      "side": 1,
+      "message": "Expanded in the description also, but the refactoring is due to the fact that export_generated_headers and generated_headers are in separate property structs, which required restructuring the code to allow access to both at the same time.",
+      "parentUuid": "98627e41_2b36910d",
+      "revId": "ff48cdeac44b1a4e0c46a19d393f75b43cb5f305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb9c2f4e_55dce754",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-21T11:03:35Z",
       "side": 1,
       "message": "compilerAttrs?",
+      "range": {
+        "startLine": 291,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 3
+      },
+      "revId": "ff48cdeac44b1a4e0c46a19d393f75b43cb5f305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1211fc97_b5e8cea0",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-26T19:16:27Z",
+      "side": 1,
+      "message": "The style recommendation is that receiver names are short: go/go-style/decisions#receiver-names",
+      "parentUuid": "cb9c2f4e_55dce754",
       "range": {
         "startLine": 291,
         "startChar": 1,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f700e6c_d4af0ce6",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-26T19:16:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7d5cdd3_39a3b844",
+      "range": {
+        "startLine": 478,
+        "startChar": 28,
+        "endLine": 478,
+        "endChar": 45
+      },
+      "revId": "ff48cdeac44b1a4e0c46a19d393f75b43cb5f305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ce9f849_caa3b3ed",
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a11c654f_1f176c74",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-26T19:16:27Z",
+      "side": 1,
+      "message": "here it is used as a receiver, not as a variable, the recommendation is for receiver names to be short (1-2 characters)",
+      "parentUuid": "3ce9f849_caa3b3ed",
+      "range": {
+        "startLine": 531,
+        "startChar": 2,
+        "endLine": 531,
+        "endChar": 4
+      },
+      "revId": "ff48cdeac44b1a4e0c46a19d393f75b43cb5f305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf0baf9f_d54d8a3d",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-10-21T11:03:35Z",
       "side": 1,
       "message": "Does this ever happen in Soong? Can we ban it in Soong?",
+      "range": {
+        "startLine": 537,
+        "startChar": 1,
+        "endLine": 537,
+        "endChar": 84
+      },
+      "revId": "ff48cdeac44b1a4e0c46a19d393f75b43cb5f305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cad06e8_a0b88a69",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-26T19:16:27Z",
+      "side": 1,
+      "message": "It doesn\u0027t happen in aosp, but we have no way of knowing if it is used anywhere.",
+      "parentUuid": "cf0baf9f_d54d8a3d",
       "range": {
         "startLine": 537,
         "startChar": 1,
