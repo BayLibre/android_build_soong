@@ -16,6 +16,24 @@
       "message": "IMHO it\u0027s easier to just add -w to the mk2rbc invocation.\nI don\u0027t understand why statistics should be enabled by default.",
       "revId": "07e460a7a0dbbd6d0051ddcf68f7d9b150a4fff8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "686cd4be_3dbacf0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-10-27T18:01:40Z",
+      "side": 1,
+      "message": "This is so that partners and other people less familiar with mk2rbc will be aware that the conversion was not completely successful. I discussed this with Joe and he wants to do this cl, and also make the warnings errors by default. (I\u0027ll send a followup cl for that)",
+      "parentUuid": "ef1cc071_5838fea4",
+      "revId": "07e460a7a0dbbd6d0051ddcf68f7d9b150a4fff8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
