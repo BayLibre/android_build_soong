@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4db1f090_6ddac269",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-27T20:52:21Z",
+      "side": 1,
+      "message": "This allows us to use the Bp2BuildTest infrastructure outside of the bp2build dir so that we can write bp2build tests elsewhere.",
+      "revId": "ab322619d0abd215bcedfb90436244007045b68d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
