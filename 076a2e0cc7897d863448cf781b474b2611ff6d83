@@ -37,6 +37,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4007f4fc_2eabd5b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-27T20:15:09Z",
+      "side": 1,
+      "message": "The check that is hiding the linux_bionic variant from make is here: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/androidmk.go;l\u003d916;drc\u003ddef7b5d198d294e0f945cd2b5eb7eb143e1caae6",
+      "parentUuid": "efd46e69_576fcfd9",
+      "revId": "076a2e0cc7897d863448cf781b474b2611ff6d83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d5207e_f56966cf",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1771,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-27T20:15:09Z",
+      "side": 1,
+      "message": "Use here:\n\n   if !ctx.Config().KatiEnabled() || module.ExportedToMake() {\n       allCheckbuildFiles \u003d append(allCheckbuildFiles, a.checkbuildFiles...)\n       allTidyFiles \u003d append(allTidyFiles, a.tidyFiles...)\n   }",
+      "revId": "076a2e0cc7897d863448cf781b474b2611ff6d83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6738c750_170728af",
         "filename": "android/module.go",
         "patchSetId": 1
