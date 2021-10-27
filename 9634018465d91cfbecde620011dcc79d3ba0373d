@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2ebde18_40b42102",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-10-27T17:51:47Z",
+      "side": 1,
+      "message": "Just say \"starlark file containing product config and global variables\"",
+      "revId": "9634018465d91cfbecde620011dcc79d3ba0373d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e536353_cb9b6326",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1640,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-10-27T17:51:47Z",
+      "side": 1,
+      "message": "For consistency, have it named inputVariablesUri",
+      "revId": "9634018465d91cfbecde620011dcc79d3ba0373d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae7423ad_826e73b8",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1644,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-10-27T17:51:47Z",
+      "side": 1,
+      "message": "A single load statement allows to export multiple names:\nload(\"foo.rbc\", immutable_cfg \u003d \"cfg\", globals_base\u003d\"globals\")\n\nAlso, please use %q instead of \\\"%s\\\" for consistency.",
+      "revId": "9634018465d91cfbecde620011dcc79d3ba0373d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dee2639c_1127c3b9",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1644,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-10-27T17:51:47Z",
+      "side": 1,
+      "message": "A single load statement allows to export multiple names:\nload(\"foo.rbc\", immutable_cfg \u003d \"cfg\", globals_base\u003d\"globals\")\n\nAlso, please use %q instead of \\\"%s\\\" for consistency.",
+      "revId": "9634018465d91cfbecde620011dcc79d3ba0373d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "583d52a7_56d03460",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-10-27T17:51:47Z",
+      "side": 1,
+      "message": "IMHO it\u0027s better to have a different initialization function for the board config which wraps wraps the logic above.",
+      "revId": "9634018465d91cfbecde620011dcc79d3ba0373d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
