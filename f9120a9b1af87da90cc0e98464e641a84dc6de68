@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44da77ca_aa98983c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-27T20:53:21Z",
+      "side": 1,
+      "message": "Leverages the exposition of Bp2BuildTest infra for the test.",
+      "revId": "f9120a9b1af87da90cc0e98464e641a84dc6de68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
