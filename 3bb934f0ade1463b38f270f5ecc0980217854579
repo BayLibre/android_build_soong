@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f010cc41_722a3fc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-10-27T17:31:19Z",
+      "side": 1,
+      "message": "Colin, could you please take a look at the new changes again?\nThis bug is blocking our progress to enable RBE with clang-tidy.\nThe failed test-mapping-presubmit-large-retry_cloud-tf looks like unrelated.\nThanks.\n\n",
+      "revId": "3bb934f0ade1463b38f270f5ecc0980217854579",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
