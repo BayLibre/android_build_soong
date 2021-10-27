@@ -23,9 +23,9 @@ import (
 	"testing"
 )
 
-func runApexTestCase(t *testing.T, tc bp2buildTestCase) {
+func runApexTestCase(t *testing.T, tc Bp2BuildTestCase) {
 	t.Helper()
-	runBp2BuildTestCase(t, registerApexModuleTypes, tc)
+	RunBp2BuildTestCase(t, registerApexModuleTypes, tc)
 }
 
 func registerApexModuleTypes(ctx android.RegistrationContext) {
@@ -39,13 +39,13 @@ func registerApexModuleTypes(ctx android.RegistrationContext) {
 }
 
 func TestApexBundleSimple(t *testing.T) {
-	runApexTestCase(t, bp2buildTestCase{
-		description:                        "apex - simple example",
-		moduleTypeUnderTest:                "apex",
-		moduleTypeUnderTestFactory:         apex.BundleFactory,
-		moduleTypeUnderTestBp2BuildMutator: apex.ApexBundleBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: `
+	runApexTestCase(t, Bp2BuildTestCase{
+		Description:                        "apex - simple example",
+		ModuleTypeUnderTest:                "apex",
+		ModuleTypeUnderTestFactory:         apex.BundleFactory,
+		ModuleTypeUnderTestBp2BuildMutator: apex.ApexBundleBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: `
 apex_key {
         name: "com.android.apogee.key",
         public_key: "com.android.apogee.avbpubkey",
@@ -113,7 +113,7 @@ apex {
 	],
 }
 `,
-		expectedBazelTargets: []string{`apex(
+		ExpectedBazelTargets: []string{`apex(
     name = "com.android.apogee",
     android_manifest = "ApogeeAndroidManifest.xml",
     binaries = [
@@ -139,39 +139,39 @@ apex {
 }
 
 func TestApexBundleDefaultPropertyValues(t *testing.T) {
-	runApexTestCase(t, bp2buildTestCase{
-		description:                        "apex - default property values",
-		moduleTypeUnderTest:                "apex",
-		moduleTypeUnderTestFactory:         apex.BundleFactory,
-		moduleTypeUnderTestBp2BuildMutator: apex.ApexBundleBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: `
+	runApexTestCase(t, Bp2BuildTestCase{
+		Description:                        "apex - default property values",
+		ModuleTypeUnderTest:                "apex",
+		ModuleTypeUnderTestFactory:         apex.BundleFactory,
+		ModuleTypeUnderTestBp2BuildMutator: apex.ApexBundleBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: `
 apex {
 	name: "com.android.apogee",
 	manifest: "apogee_manifest.json",
 }
 `,
-		expectedBazelTargets: []string{`apex(
+		ExpectedBazelTargets: []string{`apex(
     name = "com.android.apogee",
     manifest = "apogee_manifest.json",
 )`}})
 }
 
 func TestApexBundleHasBazelModuleProps(t *testing.T) {
-	runApexTestCase(t, bp2buildTestCase{
-		description:                        "apex - has bazel module props",
-		moduleTypeUnderTest:                "apex",
-		moduleTypeUnderTestFactory:         apex.BundleFactory,
-		moduleTypeUnderTestBp2BuildMutator: apex.ApexBundleBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: `
+	runApexTestCase(t, Bp2BuildTestCase{
+		Description:                        "apex - has bazel module props",
+		ModuleTypeUnderTest:                "apex",
+		ModuleTypeUnderTestFactory:         apex.BundleFactory,
+		ModuleTypeUnderTestBp2BuildMutator: apex.ApexBundleBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: `
 apex {
 	name: "apogee",
 	manifest: "manifest.json",
 	bazel_module: { bp2build_available: true },
 }
 `,
-		expectedBazelTargets: []string{`apex(
+		ExpectedBazelTargets: []string{`apex(
     name = "apogee",
     manifest = "manifest.json",
 )`}})

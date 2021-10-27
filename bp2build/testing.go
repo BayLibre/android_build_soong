@@ -50,16 +50,16 @@ func checkError(t *testing.T, errs []error, expectedErr error) bool {
 	return false
 }
 
-func errored(t *testing.T, tc bp2buildTestCase, errs []error) bool {
+func errored(t *testing.T, tc Bp2BuildTestCase, errs []error) bool {
 	t.Helper()
-	if tc.expectedErr != nil {
+	if tc.ExpectedErr != nil {
 		// Rely on checkErrors, as this test case is expected to have an error.
 		return false
 	}
 
 	if len(errs) > 0 {
 		for _, err := range errs {
-			t.Errorf("%s: %s", tc.description, err)
+			t.Errorf("%s: %s", tc.Description, err)
 		}
 		return true
 	}
@@ -68,44 +68,44 @@ func errored(t *testing.T, tc bp2buildTestCase, errs []error) bool {
 	return false
 }
 
-func runBp2BuildTestCaseSimple(t *testing.T, tc bp2buildTestCase) {
+func RunBp2BuildTestCaseSimple(t *testing.T, tc Bp2BuildTestCase) {
 	t.Helper()
-	runBp2BuildTestCase(t, func(ctx android.RegistrationContext) {}, tc)
+	RunBp2BuildTestCase(t, func(ctx android.RegistrationContext) {}, tc)
 }
 
-type bp2buildTestCase struct {
-	description                        string
-	moduleTypeUnderTest                string
-	moduleTypeUnderTestFactory         android.ModuleFactory
-	moduleTypeUnderTestBp2BuildMutator func(android.TopDownMutatorContext)
-	blueprint                          string
-	expectedBazelTargets               []string
-	filesystem                         map[string]string
-	dir                                string
-	expectedErr                        error
-	unconvertedDepsMode                unconvertedDepsMode
+type Bp2BuildTestCase struct {
+	Description                        string
+	ModuleTypeUnderTest                string
+	ModuleTypeUnderTestFactory         android.ModuleFactory
+	ModuleTypeUnderTestBp2BuildMutator func(android.TopDownMutatorContext)
+	Blueprint                          string
+	ExpectedBazelTargets               []string
+	Filesystem                         map[string]string
+	Dir                                string
+	ExpectedErr                        error
+	UnconvertedDepsMode                unconvertedDepsMode
 }
 
-func runBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.RegistrationContext), tc bp2buildTestCase) {
+func RunBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.RegistrationContext), tc Bp2BuildTestCase) {
 	t.Helper()
 	dir := "."
 	filesystem := make(map[string][]byte)
 	toParse := []string{
 		"Android.bp",
 	}
-	for f, content := range tc.filesystem {
+	for f, content := range tc.Filesystem {
 		if strings.HasSuffix(f, "Android.bp") {
 			toParse = append(toParse, f)
 		}
 		filesystem[f] = []byte(content)
 	}
-	config := android.TestConfig(buildDir, nil, tc.blueprint, filesystem)
+	config := android.TestConfig(buildDir, nil, tc.Blueprint, filesystem)
 	ctx := android.NewTestContext(config)
 
 	registerModuleTypes(ctx)
-	ctx.RegisterModuleType(tc.moduleTypeUnderTest, tc.moduleTypeUnderTestFactory)
+	ctx.RegisterModuleType(tc.ModuleTypeUnderTest, tc.ModuleTypeUnderTestFactory)
 	ctx.RegisterBp2BuildConfig(bp2buildConfig)
-	ctx.RegisterBp2BuildMutator(tc.moduleTypeUnderTest, tc.moduleTypeUnderTestBp2BuildMutator)
+	ctx.RegisterBp2BuildMutator(tc.ModuleTypeUnderTest, tc.ModuleTypeUnderTestBp2BuildMutator)
 	ctx.RegisterForBazelConversion()
 
 	_, parseErrs := ctx.ParseFileList(dir, toParse)
@@ -118,31 +118,31 @@ func runBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.Regi
 	}
 
 	errs := append(parseErrs, resolveDepsErrs...)
-	if tc.expectedErr != nil && checkError(t, errs, tc.expectedErr) {
+	if tc.ExpectedErr != nil && checkError(t, errs, tc.ExpectedErr) {
 		return
 	}
 
 	checkDir := dir
-	if tc.dir != "" {
-		checkDir = tc.dir
+	if tc.Dir != "" {
+		checkDir = tc.Dir
 	}
 	codegenCtx := NewCodegenContext(config, *ctx.Context, Bp2Build)
-	codegenCtx.unconvertedDepMode = tc.unconvertedDepsMode
+	codegenCtx.unconvertedDepMode = tc.UnconvertedDepsMode
 	bazelTargets, errs := generateBazelTargetsForDir(codegenCtx, checkDir)
-	if tc.expectedErr != nil && checkError(t, errs, tc.expectedErr) {
+	if tc.ExpectedErr != nil && checkError(t, errs, tc.ExpectedErr) {
 		return
 	} else {
 		android.FailIfErrored(t, errs)
 	}
-	if actualCount, expectedCount := len(bazelTargets), len(tc.expectedBazelTargets); actualCount != expectedCount {
+	if actualCount, expectedCount := len(bazelTargets), len(tc.ExpectedBazelTargets); actualCount != expectedCount {
 		t.Errorf("%s: Expected %d bazel target, got `%d``",
-			tc.description, expectedCount, actualCount)
+			tc.Description, expectedCount, actualCount)
 	} else {
 		for i, target := range bazelTargets {
-			if w, g := tc.expectedBazelTargets[i], target.content; w != g {
+			if w, g := tc.ExpectedBazelTargets[i], target.content; w != g {
 				t.Errorf(
 					"%s: Expected generated Bazel target to be `%s`, got `%s`",
-					tc.description, w, g)
+					tc.Description, w, g)
 			}
 		}
 	}

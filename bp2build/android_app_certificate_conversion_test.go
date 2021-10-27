@@ -21,28 +21,28 @@ import (
 	"testing"
 )
 
-func runAndroidAppCertificateTestCase(t *testing.T, tc bp2buildTestCase) {
+func runAndroidAppCertificateTestCase(t *testing.T, tc Bp2BuildTestCase) {
 	t.Helper()
-	runBp2BuildTestCase(t, registerAndroidAppCertificateModuleTypes, tc)
+	RunBp2BuildTestCase(t, registerAndroidAppCertificateModuleTypes, tc)
 }
 
 func registerAndroidAppCertificateModuleTypes(ctx android.RegistrationContext) {
 }
 
 func TestAndroidAppCertificateSimple(t *testing.T) {
-	runAndroidAppCertificateTestCase(t, bp2buildTestCase{
-		description:                        "Android app certificate - simple example",
-		moduleTypeUnderTest:                "android_app_certificate",
-		moduleTypeUnderTestFactory:         java.AndroidAppCertificateFactory,
-		moduleTypeUnderTestBp2BuildMutator: java.AndroidAppCertificateBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: `
+	runAndroidAppCertificateTestCase(t, Bp2BuildTestCase{
+		Description:                        "Android app certificate - simple example",
+		ModuleTypeUnderTest:                "android_app_certificate",
+		ModuleTypeUnderTestFactory:         java.AndroidAppCertificateFactory,
+		ModuleTypeUnderTestBp2BuildMutator: java.AndroidAppCertificateBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: `
 android_app_certificate {
         name: "com.android.apogee.cert",
         certificate: "chamber_of_secrets_dir",
 }
 `,
-		expectedBazelTargets: []string{`android_app_certificate(
+		ExpectedBazelTargets: []string{`android_app_certificate(
     name = "com.android.apogee.cert",
     certificate = "chamber_of_secrets_dir",
 )`}})

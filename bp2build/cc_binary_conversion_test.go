@@ -15,12 +15,13 @@
 package bp2build
 
 import (
-	"android/soong/android"
-	"android/soong/cc"
-	"android/soong/genrule"
 	"fmt"
 	"strings"
 	"testing"
+
+	"android/soong/android"
+	"android/soong/cc"
+	"android/soong/genrule"
 )
 
 const (
@@ -43,50 +44,50 @@ var hostBinaryReplacer = strings.NewReplacer(ccBinaryTypePlaceHolder, "cc_binary
         "//conditions:default": [],
     }),`)
 
-func runCcBinaryTests(t *testing.T, tc bp2buildTestCase) {
+func runCcBinaryTests(t *testing.T, tc Bp2BuildTestCase) {
 	t.Helper()
 	runCcBinaryTestCase(t, tc)
 	runCcHostBinaryTestCase(t, tc)
 }
 
-func runCcBinaryTestCase(t *testing.T, tc bp2buildTestCase) {
+func runCcBinaryTestCase(t *testing.T, tc Bp2BuildTestCase) {
 	t.Helper()
 	testCase := tc
-	testCase.expectedBazelTargets = append([]string{}, tc.expectedBazelTargets...)
-	testCase.moduleTypeUnderTest = "cc_binary"
-	testCase.moduleTypeUnderTestFactory = cc.BinaryFactory
-	testCase.moduleTypeUnderTestBp2BuildMutator = cc.BinaryBp2build
-	testCase.description = fmt.Sprintf("%s %s", testCase.moduleTypeUnderTest, testCase.description)
-	testCase.blueprint = binaryReplacer.Replace(testCase.blueprint)
-	for i, et := range testCase.expectedBazelTargets {
-		testCase.expectedBazelTargets[i] = binaryReplacer.Replace(et)
+	testCase.ExpectedBazelTargets = append([]string{}, tc.ExpectedBazelTargets...)
+	testCase.ModuleTypeUnderTest = "cc_binary"
+	testCase.ModuleTypeUnderTestFactory = cc.BinaryFactory
+	testCase.ModuleTypeUnderTestBp2BuildMutator = cc.BinaryBp2build
+	testCase.Description = fmt.Sprintf("%s %s", testCase.ModuleTypeUnderTest, testCase.Description)
+	testCase.Blueprint = binaryReplacer.Replace(testCase.Blueprint)
+	for i, et := range testCase.ExpectedBazelTargets {
+		testCase.ExpectedBazelTargets[i] = binaryReplacer.Replace(et)
 	}
-	t.Run(testCase.description, func(t *testing.T) {
-		runBp2BuildTestCase(t, registerCcBinaryModuleTypes, testCase)
+	t.Run(testCase.Description, func(t *testing.T) {
+		RunBp2BuildTestCase(t, registerCcBinaryModuleTypes, testCase)
 	})
 }
 
-func runCcHostBinaryTestCase(t *testing.T, tc bp2buildTestCase) {
+func runCcHostBinaryTestCase(t *testing.T, tc Bp2BuildTestCase) {
 	t.Helper()
 	testCase := tc
-	testCase.expectedBazelTargets = append([]string{}, tc.expectedBazelTargets...)
-	testCase.moduleTypeUnderTest = "cc_binary_host"
-	testCase.moduleTypeUnderTestFactory = cc.BinaryHostFactory
-	testCase.moduleTypeUnderTestBp2BuildMutator = cc.BinaryHostBp2build
-	testCase.description = fmt.Sprintf("%s %s", testCase.moduleTypeUnderTest, testCase.description)
-	testCase.blueprint = hostBinaryReplacer.Replace(testCase.blueprint)
-	for i, et := range testCase.expectedBazelTargets {
-		testCase.expectedBazelTargets[i] = hostBinaryReplacer.Replace(et)
+	testCase.ExpectedBazelTargets = append([]string{}, tc.ExpectedBazelTargets...)
+	testCase.ModuleTypeUnderTest = "cc_binary_host"
+	testCase.ModuleTypeUnderTestFactory = cc.BinaryHostFactory
+	testCase.ModuleTypeUnderTestBp2BuildMutator = cc.BinaryHostBp2build
+	testCase.Description = fmt.Sprintf("%s %s", testCase.ModuleTypeUnderTest, testCase.Description)
+	testCase.Blueprint = hostBinaryReplacer.Replace(testCase.Blueprint)
+	for i, et := range testCase.ExpectedBazelTargets {
+		testCase.ExpectedBazelTargets[i] = hostBinaryReplacer.Replace(et)
 	}
-	t.Run(testCase.description, func(t *testing.T) {
-		runBp2BuildTestCase(t, registerCcBinaryModuleTypes, testCase)
+	t.Run(testCase.Description, func(t *testing.T) {
+		RunBp2BuildTestCase(t, registerCcBinaryModuleTypes, testCase)
 	})
 }
 
 func TestBasicCcBinary(t *testing.T) {
-	runCcBinaryTests(t, bp2buildTestCase{
-		description: "basic -- properties -> attrs with little/no transformation",
-		blueprint: `
+	runCcBinaryTests(t, Bp2BuildTestCase{
+		Description: "basic -- properties -> attrs with little/no transformation",
+		Blueprint: `
 {rule_name} {
     name: "foo",
     srcs: ["a.cc"],
@@ -107,7 +108,7 @@ func TestBasicCcBinary(t *testing.T) {
     },
 }
 `,
-		expectedBazelTargets: []string{`cc_binary(
+		ExpectedBazelTargets: []string{`cc_binary(
     name = "foo",
     absolute_includes = ["absolute_dir"],
     asflags = ["-Dasflag"],
@@ -133,16 +134,16 @@ func TestBasicCcBinary(t *testing.T) {
 }
 
 func TestCcBinaryWithSharedLdflagDisableFeature(t *testing.T) {
-	runCcBinaryTests(t, bp2buildTestCase{
-		description: `ldflag "-shared" disables static_flag feature`,
-		blueprint: `
+	runCcBinaryTests(t, Bp2BuildTestCase{
+		Description: `ldflag "-shared" disables static_flag feature`,
+		Blueprint: `
 {rule_name} {
     name: "foo",
     ldflags: ["-shared"],
     include_build_directory: false,
 }
 `,
-		expectedBazelTargets: []string{`cc_binary(
+		ExpectedBazelTargets: []string{`cc_binary(
     name = "foo",
     features = ["-static_flag"],
     linkopts = ["-shared"],{target_compatible_with}
@@ -151,16 +152,16 @@ func TestCcBinaryWithSharedLdflagDisableFeature(t *testing.T) {
 }
 
 func TestCcBinaryWithLinkStatic(t *testing.T) {
-	runCcBinaryTests(t, bp2buildTestCase{
-		description: "link static",
-		blueprint: `
+	runCcBinaryTests(t, Bp2BuildTestCase{
+		Description: "link static",
+		Blueprint: `
 {rule_name} {
     name: "foo",
     static_executable: true,
     include_build_directory: false,
 }
 `,
-		expectedBazelTargets: []string{`cc_binary(
+		ExpectedBazelTargets: []string{`cc_binary(
     name = "foo",
     linkshared = False,{target_compatible_with}
 )`},
@@ -168,16 +169,16 @@ func TestCcBinaryWithLinkStatic(t *testing.T) {
 }
 
 func TestCcBinaryVersionScript(t *testing.T) {
-	runCcBinaryTests(t, bp2buildTestCase{
-		description: `version script`,
-		blueprint: `
+	runCcBinaryTests(t, Bp2BuildTestCase{
+		Description: `version script`,
+		Blueprint: `
 {rule_name} {
     name: "foo",
     include_build_directory: false,
     version_script: "vs",
 }
 `,
-		expectedBazelTargets: []string{`cc_binary(
+		ExpectedBazelTargets: []string{`cc_binary(
     name = "foo",
     additional_linker_inputs = ["vs"],
     linkopts = ["-Wl,--version-script,$(location vs)"],{target_compatible_with}
@@ -186,9 +187,9 @@ func TestCcBinaryVersionScript(t *testing.T) {
 }
 
 func TestCcBinarySplitSrcsByLang(t *testing.T) {
-	runCcHostBinaryTestCase(t, bp2buildTestCase{
-		description: "split srcs by lang",
-		blueprint: `
+	runCcHostBinaryTestCase(t, Bp2BuildTestCase{
+		Description: "split srcs by lang",
+		Blueprint: `
 {rule_name} {
     name: "foo",
     srcs: [
@@ -200,7 +201,7 @@ func TestCcBinarySplitSrcsByLang(t *testing.T) {
     include_build_directory: false,
 }
 ` + simpleModuleDoNotConvertBp2build("filegroup", "fg_foo"),
-		expectedBazelTargets: []string{`cc_binary(
+		ExpectedBazelTargets: []string{`cc_binary(
     name = "foo",
     srcs = [
         "cpponly.cpp",
@@ -219,9 +220,9 @@ func TestCcBinarySplitSrcsByLang(t *testing.T) {
 }
 
 func TestCcBinaryDoNotDistinguishBetweenDepsAndImplementationDeps(t *testing.T) {
-	runCcBinaryTestCase(t, bp2buildTestCase{
-		description: "no implementation deps",
-		blueprint: `
+	runCcBinaryTestCase(t, Bp2BuildTestCase{
+		Description: "no implementation deps",
+		Blueprint: `
 genrule {
     name: "generated_hdr",
     cmd: "nothing to see here",
@@ -251,7 +252,7 @@ genrule {
 			simpleModuleDoNotConvertBp2build("cc_library_static", "not_explicitly_exported_whole_static_dep") +
 			simpleModuleDoNotConvertBp2build("cc_library", "shared_dep") +
 			simpleModuleDoNotConvertBp2build("cc_library", "implementation_shared_dep"),
-		expectedBazelTargets: []string{`cc_binary(
+		ExpectedBazelTargets: []string{`cc_binary(
     name = "foo",
     deps = [
         ":implementation_static_dep",
@@ -313,10 +314,10 @@ func TestCcBinaryNocrtTests(t *testing.T) {
 		if len(attr) > 0 {
 			attr = "\n" + attr
 		}
-		runCcBinaryTests(t, bp2buildTestCase{
-			description: btc.description,
-			blueprint:   fmt.Sprintf(baseBlueprint, prop),
-			expectedBazelTargets: []string{
+		runCcBinaryTests(t, Bp2BuildTestCase{
+			Description: btc.description,
+			Blueprint:   fmt.Sprintf(baseBlueprint, prop),
+			ExpectedBazelTargets: []string{
 				fmt.Sprintf(baseBazelTarget, attr),
 			},
 		})
@@ -363,10 +364,10 @@ func TestCcBinaryNo_libcrtTests(t *testing.T) {
 		if len(attr) > 0 {
 			attr = "\n" + attr
 		}
-		runCcBinaryTests(t, bp2buildTestCase{
-			description: btc.description,
-			blueprint:   fmt.Sprintf(baseBlueprint, prop),
-			expectedBazelTargets: []string{
+		runCcBinaryTests(t, Bp2BuildTestCase{
+			Description: btc.description,
+			Blueprint:   fmt.Sprintf(baseBlueprint, prop),
+			ExpectedBazelTargets: []string{
 				fmt.Sprintf(baseBazelTarget, attr),
 			},
 		})
@@ -424,10 +425,10 @@ func TestCcBinaryPropertiesToFeatures(t *testing.T) {
 		if len(attr) > 0 {
 			attr = "\n" + attr
 		}
-		runCcBinaryTests(t, bp2buildTestCase{
-			description: btc.description,
-			blueprint:   fmt.Sprintf(baseBlueprint, prop),
-			expectedBazelTargets: []string{
+		runCcBinaryTests(t, Bp2BuildTestCase{
+			Description: btc.description,
+			Blueprint:   fmt.Sprintf(baseBlueprint, prop),
+			ExpectedBazelTargets: []string{
 				fmt.Sprintf(baseBazelTarget, attr),
 			},
 		})

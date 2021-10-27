@@ -71,18 +71,18 @@ func registerCcLibraryHeadersModuleTypes(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("toolchain_library", cc.ToolchainLibraryFactory)
 }
 
-func runCcLibraryHeadersTestCase(t *testing.T, tc bp2buildTestCase) {
+func runCcLibraryHeadersTestCase(t *testing.T, tc Bp2BuildTestCase) {
 	t.Helper()
-	runBp2BuildTestCase(t, registerCcLibraryHeadersModuleTypes, tc)
+	RunBp2BuildTestCase(t, registerCcLibraryHeadersModuleTypes, tc)
 }
 
 func TestCcLibraryHeadersSimple(t *testing.T) {
-	runCcLibraryHeadersTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_headers test",
-		moduleTypeUnderTest:                "cc_library_headers",
-		moduleTypeUnderTestFactory:         cc.LibraryHeaderFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryHeadersBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryHeadersTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_headers test",
+		ModuleTypeUnderTest:                "cc_library_headers",
+		ModuleTypeUnderTestFactory:         cc.LibraryHeaderFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryHeadersBp2Build,
+		Filesystem: map[string]string{
 			"lib-1/lib1a.h":                        "",
 			"lib-1/lib1b.h":                        "",
 			"lib-2/lib2a.h":                        "",
@@ -95,7 +95,7 @@ func TestCcLibraryHeadersSimple(t *testing.T) {
 			"arch_x86_exported_include_dir/b.h":    "",
 			"arch_x86_64_exported_include_dir/c.h": "",
 		},
-		blueprint: soongCcLibraryHeadersPreamble + `
+		Blueprint: soongCcLibraryHeadersPreamble + `
 cc_library_headers {
     name: "lib-1",
     export_include_dirs: ["lib-1"],
@@ -128,7 +128,7 @@ cc_library_headers {
 
     // TODO: Also support export_header_lib_headers
 }`,
-		expectedBazelTargets: []string{`cc_library_headers(
+		ExpectedBazelTargets: []string{`cc_library_headers(
     name = "foo_headers",
     export_includes = [
         "dir-1",
@@ -148,13 +148,13 @@ cc_library_headers {
 }
 
 func TestCcLibraryHeadersOsSpecificHeader(t *testing.T) {
-	runCcLibraryHeadersTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_headers test with os-specific header_libs props",
-		moduleTypeUnderTest:                "cc_library_headers",
-		moduleTypeUnderTestFactory:         cc.LibraryHeaderFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryHeadersBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: soongCcLibraryPreamble + `
+	runCcLibraryHeadersTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_headers test with os-specific header_libs props",
+		ModuleTypeUnderTest:                "cc_library_headers",
+		ModuleTypeUnderTestFactory:         cc.LibraryHeaderFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryHeadersBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: soongCcLibraryPreamble + `
 cc_library_headers {
     name: "android-lib",
     bazel_module: { bp2build_available: false },
@@ -191,7 +191,7 @@ cc_library_headers {
     },
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_headers(
+		ExpectedBazelTargets: []string{`cc_library_headers(
     name = "foo_headers",
     implementation_deps = [":base-lib"] + select({
         "//build/bazel/platforms/os:android": [":android-lib"],
@@ -206,13 +206,13 @@ cc_library_headers {
 }
 
 func TestCcLibraryHeadersOsSpecficHeaderLibsExportHeaderLibHeaders(t *testing.T) {
-	runCcLibraryHeadersTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_headers test with os-specific header_libs and export_header_lib_headers props",
-		moduleTypeUnderTest:                "cc_library_headers",
-		moduleTypeUnderTestFactory:         cc.LibraryHeaderFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryHeadersBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: soongCcLibraryPreamble + `
+	runCcLibraryHeadersTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_headers test with os-specific header_libs and export_header_lib_headers props",
+		ModuleTypeUnderTest:                "cc_library_headers",
+		ModuleTypeUnderTestFactory:         cc.LibraryHeaderFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryHeadersBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: soongCcLibraryPreamble + `
 cc_library_headers {
     name: "android-lib",
     bazel_module: { bp2build_available: false },
@@ -231,7 +231,7 @@ cc_library_headers {
     },
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_headers(
+		ExpectedBazelTargets: []string{`cc_library_headers(
     name = "foo_headers",
     deps = select({
         "//build/bazel/platforms/os:android": [":exported-lib"],
@@ -246,13 +246,13 @@ cc_library_headers {
 }
 
 func TestCcLibraryHeadersArchAndTargetExportSystemIncludes(t *testing.T) {
-	runCcLibraryHeadersTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_headers test with arch-specific and target-specific export_system_include_dirs props",
-		moduleTypeUnderTest:                "cc_library_headers",
-		moduleTypeUnderTestFactory:         cc.LibraryHeaderFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryHeadersBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: soongCcLibraryPreamble + `cc_library_headers {
+	runCcLibraryHeadersTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_headers test with arch-specific and target-specific export_system_include_dirs props",
+		ModuleTypeUnderTest:                "cc_library_headers",
+		ModuleTypeUnderTestFactory:         cc.LibraryHeaderFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryHeadersBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: soongCcLibraryPreamble + `cc_library_headers {
     name: "foo_headers",
     export_system_include_dirs: [
         "shared_include_dir",
@@ -288,7 +288,7 @@ func TestCcLibraryHeadersArchAndTargetExportSystemIncludes(t *testing.T) {
     },
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_headers(
+		ExpectedBazelTargets: []string{`cc_library_headers(
     name = "foo_headers",
     export_system_includes = ["shared_include_dir"] + select({
         "//build/bazel/platforms/arch:arm": ["arm_include_dir"],
@@ -305,12 +305,12 @@ func TestCcLibraryHeadersArchAndTargetExportSystemIncludes(t *testing.T) {
 }
 
 func TestCcLibraryHeadersNoCrtIgnored(t *testing.T) {
-	runCcLibraryHeadersTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_headers test",
-		moduleTypeUnderTest:                "cc_library_headers",
-		moduleTypeUnderTestFactory:         cc.LibraryHeaderFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryHeadersBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryHeadersTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_headers test",
+		ModuleTypeUnderTest:                "cc_library_headers",
+		ModuleTypeUnderTestFactory:         cc.LibraryHeaderFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryHeadersBp2Build,
+		Filesystem: map[string]string{
 			"lib-1/lib1a.h":                        "",
 			"lib-1/lib1b.h":                        "",
 			"lib-2/lib2a.h":                        "",
@@ -323,14 +323,14 @@ func TestCcLibraryHeadersNoCrtIgnored(t *testing.T) {
 			"arch_x86_exported_include_dir/b.h":    "",
 			"arch_x86_64_exported_include_dir/c.h": "",
 		},
-		blueprint: soongCcLibraryHeadersPreamble + `
+		Blueprint: soongCcLibraryHeadersPreamble + `
 cc_library_headers {
     name: "lib-1",
     export_include_dirs: ["lib-1"],
     no_libcrt: true,
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_headers(
+		ExpectedBazelTargets: []string{`cc_library_headers(
     name = "lib-1",
     export_includes = ["lib-1"],
 )`},
