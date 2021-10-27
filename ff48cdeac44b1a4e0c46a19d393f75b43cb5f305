@@ -131,6 +131,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87ddc230_1545a7d5",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-27T15:06:36Z",
+      "side": 1,
+      "message": "We\u0027re relatively consistent, we tend to use longer names for everything except receivers, e.g. https://cs.android.com/android/platform/superproject/+/master:build/soong/bazel/properties.go;l\u003d486;drc\u003d9bad9d645eddc87b213d9b6addc219d87f3dd5c6 receiver name is short and parameter name is longer.\n\nFor much of Soong, receiver names are a single character.",
+      "parentUuid": "474c6ef0_b0f0f8c0",
+      "range": {
+        "startLine": 291,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 3
+      },
+      "revId": "ff48cdeac44b1a4e0c46a19d393f75b43cb5f305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7d5cdd3_39a3b844",
