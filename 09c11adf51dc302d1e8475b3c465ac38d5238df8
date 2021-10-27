@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d508b100_919421af",
+        "filename": "apex/key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-10-27T07:36:18Z",
+      "side": 1,
+      "message": "Don\u0027t we need to make a (far variation) dependency to the tool and retrieve its install path here?",
+      "range": {
+        "startLine": 153,
+        "startChar": 26,
+        "endLine": 153,
+        "endChar": 42
+      },
+      "revId": "09c11adf51dc302d1e8475b3c465ac38d5238df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
