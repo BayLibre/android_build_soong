@@ -109,6 +109,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "474c6ef0_b0f0f8c0",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-10-27T00:06:04Z",
+      "side": 1,
+      "message": "(Don\u0027t want to block this, but we should consider whether we want consistent style in Soong. I generally think the Go style guide is wrong and that Soong\u0027s longer names are clearer, but if we are going to use the Go style guide then we should be consistent about that)",
+      "parentUuid": "52a8af49_b4dc857c",
+      "range": {
+        "startLine": 291,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 3
+      },
+      "revId": "ff48cdeac44b1a4e0c46a19d393f75b43cb5f305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7d5cdd3_39a3b844",
         "filename": "cc/bp2build.go",
         "patchSetId": 1
