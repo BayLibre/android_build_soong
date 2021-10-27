@@ -34,6 +34,24 @@
       "parentUuid": "ef1cc071_5838fea4",
       "revId": "07e460a7a0dbbd6d0051ddcf68f7d9b150a4fff8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc2b7d45_c5d0c873",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-10-27T21:33:55Z",
+      "side": 1,
+      "message": "I am suggesting that these things should be set in the script that invokes mk2rbc instead of changing the application itself.",
+      "parentUuid": "686cd4be_3dbacf0d",
+      "revId": "07e460a7a0dbbd6d0051ddcf68f7d9b150a4fff8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
