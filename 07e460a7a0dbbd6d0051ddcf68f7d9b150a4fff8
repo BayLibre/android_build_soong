@@ -52,6 +52,24 @@
       "parentUuid": "686cd4be_3dbacf0d",
       "revId": "07e460a7a0dbbd6d0051ddcf68f7d9b150a4fff8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6792552_79b6ca8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-10-27T22:01:47Z",
+      "side": 1,
+      "message": "I think the application should require as little work to run as possible. If someone comes across the mk2rbc binary, they should be able to run it and get the most desirable behavior by default. They shouldn\u0027t have to know that a flag exists, or that a separate script that has the flag in it exists.\n\nHaving only the script produce warnings would lead to the flag being forgotten in other scenarios that don\u0027t use the script.",
+      "parentUuid": "cc2b7d45_c5d0c873",
+      "revId": "07e460a7a0dbbd6d0051ddcf68f7d9b150a4fff8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
