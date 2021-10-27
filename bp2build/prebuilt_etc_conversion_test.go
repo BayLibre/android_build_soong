@@ -21,22 +21,22 @@ import (
 	"testing"
 )
 
-func runPrebuiltEtcTestCase(t *testing.T, tc bp2buildTestCase) {
+func runPrebuiltEtcTestCase(t *testing.T, tc Bp2BuildTestCase) {
 	t.Helper()
-	runBp2BuildTestCase(t, registerPrebuiltEtcModuleTypes, tc)
+	RunBp2BuildTestCase(t, registerPrebuiltEtcModuleTypes, tc)
 }
 
 func registerPrebuiltEtcModuleTypes(ctx android.RegistrationContext) {
 }
 
 func TestPrebuiltEtcSimple(t *testing.T) {
-	runPrebuiltEtcTestCase(t, bp2buildTestCase{
-		description:                        "prebuilt_etc - simple example",
-		moduleTypeUnderTest:                "prebuilt_etc",
-		moduleTypeUnderTestFactory:         etc.PrebuiltEtcFactory,
-		moduleTypeUnderTestBp2BuildMutator: etc.PrebuiltEtcBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: `
+	runPrebuiltEtcTestCase(t, Bp2BuildTestCase{
+		Description:                        "prebuilt_etc - simple example",
+		ModuleTypeUnderTest:                "prebuilt_etc",
+		ModuleTypeUnderTestFactory:         etc.PrebuiltEtcFactory,
+		ModuleTypeUnderTestBp2BuildMutator: etc.PrebuiltEtcBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: `
 prebuilt_etc {
     name: "apex_tz_version",
     src: "version/tz_version",
@@ -45,7 +45,7 @@ prebuilt_etc {
     installable: false,
 }
 `,
-		expectedBazelTargets: []string{`prebuilt_etc(
+		ExpectedBazelTargets: []string{`prebuilt_etc(
     name = "apex_tz_version",
     filename = "tz_version",
     installable = False,
@@ -55,13 +55,13 @@ prebuilt_etc {
 }
 
 func TestPrebuiltEtcArchVariant(t *testing.T) {
-	runPrebuiltEtcTestCase(t, bp2buildTestCase{
-		description:                        "prebuilt_etc - simple example",
-		moduleTypeUnderTest:                "prebuilt_etc",
-		moduleTypeUnderTestFactory:         etc.PrebuiltEtcFactory,
-		moduleTypeUnderTestBp2BuildMutator: etc.PrebuiltEtcBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: `
+	runPrebuiltEtcTestCase(t, Bp2BuildTestCase{
+		Description:                        "prebuilt_etc - simple example",
+		ModuleTypeUnderTest:                "prebuilt_etc",
+		ModuleTypeUnderTestFactory:         etc.PrebuiltEtcFactory,
+		ModuleTypeUnderTestBp2BuildMutator: etc.PrebuiltEtcBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: `
 prebuilt_etc {
     name: "apex_tz_version",
     src: "version/tz_version",
@@ -78,7 +78,7 @@ prebuilt_etc {
     }
 }
 `,
-		expectedBazelTargets: []string{`prebuilt_etc(
+		ExpectedBazelTargets: []string{`prebuilt_etc(
     name = "apex_tz_version",
     filename = "tz_version",
     installable = False,

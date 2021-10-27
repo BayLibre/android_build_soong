@@ -77,18 +77,18 @@ func registerCcLibraryStaticModuleTypes(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("cc_library", cc.LibraryFactory)
 }
 
-func runCcLibraryStaticTestCase(t *testing.T, tc bp2buildTestCase) {
+func runCcLibraryStaticTestCase(t *testing.T, tc Bp2BuildTestCase) {
 	t.Helper()
-	runBp2BuildTestCase(t, registerCcLibraryStaticModuleTypes, tc)
+	RunBp2BuildTestCase(t, registerCcLibraryStaticModuleTypes, tc)
 }
 
 func TestCcLibraryStaticSimple(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static test",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static test",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			// NOTE: include_dir headers *should not* appear in Bazel hdrs later (?)
 			"include_dir_1/include_dir_1_a.h": "",
 			"include_dir_1/include_dir_1_b.h": "",
@@ -108,7 +108,7 @@ func TestCcLibraryStaticSimple(t *testing.T) {
 			"implicit_include_1.h": "",
 			"implicit_include_2.h": "",
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_headers {
     name: "header_lib_1",
     export_include_dirs: ["header_lib_1"],
@@ -182,7 +182,7 @@ cc_library_static {
 
     // TODO: Also support export_header_lib_headers
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     absolute_includes = [
         "include_dir_1",
@@ -220,12 +220,12 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticSubpackage(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static subpackage test",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static subpackage test",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			// subpackage with subdirectory
 			"subpackage/Android.bp":                         "",
 			"subpackage/subpackage_header.h":                "",
@@ -239,7 +239,7 @@ func TestCcLibraryStaticSubpackage(t *testing.T) {
 			"subpackage/subsubpackage/subsubsubpackage/subsubsubpackage_header.h":          "",
 			"subpackage/subsubpackage/subsubsubpackage/subdirectory/subdirectory_header.h": "",
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     srcs: [],
@@ -247,7 +247,7 @@ cc_library_static {
         "subpackage",
     ],
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     absolute_includes = ["subpackage"],
     local_includes = ["."],
@@ -256,24 +256,24 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticExportIncludeDir(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static export include dir",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static export include dir",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			// subpackage with subdirectory
 			"subpackage/Android.bp":                         "",
 			"subpackage/subpackage_header.h":                "",
 			"subpackage/subdirectory/subdirectory_header.h": "",
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     export_include_dirs: ["subpackage"],
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     export_includes = ["subpackage"],
 )`},
@@ -281,24 +281,24 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticExportSystemIncludeDir(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static export system include dir",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static export system include dir",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			// subpackage with subdirectory
 			"subpackage/Android.bp":                         "",
 			"subpackage/subpackage_header.h":                "",
 			"subpackage/subdirectory/subdirectory_header.h": "",
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     export_system_include_dirs: ["subpackage"],
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     export_system_includes = ["subpackage"],
 )`},
@@ -306,13 +306,13 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticManyIncludeDirs(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static include_dirs, local_include_dirs, export_include_dirs (b/183742505)",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		dir:                                "subpackage",
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static include_dirs, local_include_dirs, export_include_dirs (b/183742505)",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Dir:                                "subpackage",
+		Filesystem: map[string]string{
 			// subpackage with subdirectory
 			"subpackage/Android.bp": `
 cc_library_static {
@@ -334,8 +334,8 @@ cc_library_static {
 			"subpackage2/header.h":                       "",
 			"subpackage3/subsubpackage/header.h":         "",
 		},
-		blueprint: soongCcLibraryStaticPreamble,
-		expectedBazelTargets: []string{`cc_library_static(
+		Blueprint: soongCcLibraryStaticPreamble,
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     absolute_includes = [
         "subpackage/subsubpackage",
@@ -352,25 +352,25 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticIncludeBuildDirectoryDisabled(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static include_build_directory disabled",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static include_build_directory disabled",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			// subpackage with subdirectory
 			"subpackage/Android.bp":                         "",
 			"subpackage/subpackage_header.h":                "",
 			"subpackage/subdirectory/subdirectory_header.h": "",
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     include_dirs: ["subpackage"], // still used, but local_include_dirs is recommended
     local_include_dirs: ["subpackage2"],
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     absolute_includes = ["subpackage"],
     local_includes = ["subpackage2"],
@@ -379,12 +379,12 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticIncludeBuildDirectoryEnabled(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static include_build_directory enabled",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static include_build_directory enabled",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			// subpackage with subdirectory
 			"subpackage/Android.bp":                         "",
 			"subpackage/subpackage_header.h":                "",
@@ -392,14 +392,14 @@ func TestCcLibraryStaticIncludeBuildDirectoryEnabled(t *testing.T) {
 			"subpackage2/subpackage2_header.h":              "",
 			"subpackage/subdirectory/subdirectory_header.h": "",
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     include_dirs: ["subpackage"], // still used, but local_include_dirs is recommended
     local_include_dirs: ["subpackage2"],
     include_build_directory: true,
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     absolute_includes = ["subpackage"],
     local_includes = [
@@ -411,13 +411,13 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticArchSpecificStaticLib(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static arch-specific static_libs",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: soongCcLibraryStaticPreamble + `
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static arch-specific static_libs",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "static_dep",
     bazel_module: { bp2build_available: false },
@@ -431,7 +431,7 @@ cc_library_static {
     arch: { arm64: { static_libs: ["static_dep"], whole_static_libs: ["static_dep2"] } },
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     implementation_deps = select({
         "//build/bazel/platforms/arch:arm64": [":static_dep"],
@@ -446,13 +446,13 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticOsSpecificStaticLib(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static os-specific static_libs",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: soongCcLibraryStaticPreamble + `
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static os-specific static_libs",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "static_dep",
     bazel_module: { bp2build_available: false },
@@ -466,7 +466,7 @@ cc_library_static {
     target: { android: { static_libs: ["static_dep"], whole_static_libs: ["static_dep2"] } },
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     implementation_deps = select({
         "//build/bazel/platforms/os:android": [":static_dep"],
@@ -481,13 +481,13 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticBaseArchOsSpecificStaticLib(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static base, arch and os-specific static_libs",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: soongCcLibraryStaticPreamble + `
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static base, arch and os-specific static_libs",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "static_dep",
     bazel_module: { bp2build_available: false },
@@ -512,7 +512,7 @@ cc_library_static {
     arch: { arm64: { static_libs: ["static_dep4"] } },
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     implementation_deps = [":static_dep"] + select({
         "//build/bazel/platforms/arch:arm64": [":static_dep4"],
@@ -527,24 +527,24 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticSimpleExcludeSrcs(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static simple exclude_srcs",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static simple exclude_srcs",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			"common.c":       "",
 			"foo-a.c":        "",
 			"foo-excluded.c": "",
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     srcs: ["common.c", "foo-*.c"],
     exclude_srcs: ["foo-excluded.c"],
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     srcs_c = [
         "common.c",
@@ -555,23 +555,23 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticOneArchSrcs(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static one arch specific srcs",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static one arch specific srcs",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			"common.c":  "",
 			"foo-arm.c": "",
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     srcs: ["common.c"],
     arch: { arm: { srcs: ["foo-arm.c"] } },
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": ["foo-arm.c"],
@@ -582,18 +582,18 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticOneArchSrcsExcludeSrcs(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static one arch specific srcs and exclude_srcs",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static one arch specific srcs and exclude_srcs",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			"common.c":           "",
 			"for-arm.c":          "",
 			"not-for-arm.c":      "",
 			"not-for-anything.c": "",
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     srcs: ["common.c", "not-for-*.c"],
@@ -603,7 +603,7 @@ cc_library_static {
     },
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": ["for-arm.c"],
@@ -614,19 +614,19 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticTwoArchExcludeSrcs(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static arch specific exclude_srcs for 2 architectures",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static arch specific exclude_srcs for 2 architectures",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			"common.c":      "",
 			"for-arm.c":     "",
 			"for-x86.c":     "",
 			"not-for-arm.c": "",
 			"not-for-x86.c": "",
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     srcs: ["common.c", "not-for-*.c"],
@@ -637,7 +637,7 @@ cc_library_static {
     },
     include_build_directory: false,
 } `,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": [
@@ -657,12 +657,12 @@ cc_library_static {
 	})
 }
 func TestCcLibraryStaticFourArchExcludeSrcs(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static arch specific exclude_srcs for 4 architectures",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static arch specific exclude_srcs for 4 architectures",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			"common.c":             "",
 			"for-arm.c":            "",
 			"for-arm64.c":          "",
@@ -674,7 +674,7 @@ func TestCcLibraryStaticFourArchExcludeSrcs(t *testing.T) {
 			"not-for-x86_64.c":     "",
 			"not-for-everything.c": "",
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     srcs: ["common.c", "not-for-*.c"],
@@ -687,7 +687,7 @@ cc_library_static {
   },
     include_build_directory: false,
 } `,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": [
@@ -726,17 +726,17 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticOneArchEmpty(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static one arch empty",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static one arch empty",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			"common.cc":       "",
 			"foo-no-arm.cc":   "",
 			"foo-excluded.cc": "",
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     srcs: ["common.cc", "foo-*.cc"],
@@ -746,7 +746,7 @@ cc_library_static {
     },
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     srcs = ["common.cc"] + select({
         "//build/bazel/platforms/arch:arm": [],
@@ -757,18 +757,18 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticOneArchEmptyOtherSet(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static one arch empty other set",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static one arch empty other set",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			"common.cc":       "",
 			"foo-no-arm.cc":   "",
 			"x86-only.cc":     "",
 			"foo-excluded.cc": "",
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     srcs: ["common.cc", "foo-*.cc"],
@@ -779,7 +779,7 @@ cc_library_static {
     },
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     srcs = ["common.cc"] + select({
         "//build/bazel/platforms/arch:arm": [],
@@ -794,13 +794,13 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticMultipleDepSameName(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static multiple dep same name panic",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: soongCcLibraryStaticPreamble + `
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static multiple dep same name panic",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "static_dep",
     bazel_module: { bp2build_available: false },
@@ -810,7 +810,7 @@ cc_library_static {
     static_libs: ["static_dep", "static_dep"],
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     implementation_deps = [":static_dep"],
 )`},
@@ -818,17 +818,17 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticOneMultilibSrcsExcludeSrcs(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static 1 multilib srcs and exclude_srcs",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static 1 multilib srcs and exclude_srcs",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			"common.c":        "",
 			"for-lib32.c":     "",
 			"not-for-lib32.c": "",
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     srcs: ["common.c", "not-for-*.c"],
@@ -837,7 +837,7 @@ cc_library_static {
     },
     include_build_directory: false,
 } `,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": ["for-lib32.c"],
@@ -849,19 +849,19 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticTwoMultilibSrcsExcludeSrcs(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static 2 multilib srcs and exclude_srcs",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static 2 multilib srcs and exclude_srcs",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			"common.c":        "",
 			"for-lib32.c":     "",
 			"for-lib64.c":     "",
 			"not-for-lib32.c": "",
 			"not-for-lib64.c": "",
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static2",
     srcs: ["common.c", "not-for-*.c"],
@@ -871,7 +871,7 @@ cc_library_static {
     },
     include_build_directory: false,
 } `,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static2",
     srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": [
@@ -900,12 +900,12 @@ cc_library_static {
 }
 
 func TestCcLibrarySTaticArchMultilibSrcsExcludeSrcs(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static arch and multilib srcs and exclude_srcs",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static arch and multilib srcs and exclude_srcs",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			"common.c":             "",
 			"for-arm.c":            "",
 			"for-arm64.c":          "",
@@ -921,7 +921,7 @@ func TestCcLibrarySTaticArchMultilibSrcsExcludeSrcs(t *testing.T) {
 			"not-for-lib64.c":      "",
 			"not-for-everything.c": "",
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
    name: "foo_static3",
    srcs: ["common.c", "not-for-*.c"],
@@ -938,7 +938,7 @@ cc_library_static {
    },
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static3",
     srcs_c = ["common.c"] + select({
         "//build/bazel/platforms/arch:arm": [
@@ -987,11 +987,11 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticGeneratedHeadersAllPartitions(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		blueprint: soongCcLibraryStaticPreamble + `
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Blueprint: soongCcLibraryStaticPreamble + `
 genrule {
     name: "generated_hdr",
     cmd: "nothing to see here",
@@ -1003,7 +1003,7 @@ cc_library_static {
     generated_headers: ["generated_hdr"],
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     srcs = [
         "cpp_src.cpp",
@@ -1022,12 +1022,12 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticArchSrcsExcludeSrcsGeneratedFiles(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static arch srcs/exclude_srcs with generated files",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem: map[string]string{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static arch srcs/exclude_srcs with generated files",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem: map[string]string{
 			"common.cpp":             "",
 			"for-x86.cpp":            "",
 			"not-for-x86.cpp":        "",
@@ -1053,7 +1053,7 @@ genrule {
   cmd: "nothing to see here",
 }`,
 		},
-		blueprint: soongCcLibraryStaticPreamble + `
+		Blueprint: soongCcLibraryStaticPreamble + `
 genrule {
     name: "generated_src",
     cmd: "nothing to see here",
@@ -1098,7 +1098,7 @@ cc_library_static {
     include_build_directory: false,
 }
 `,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static3",
     srcs = [
         "common.cpp",
@@ -1127,13 +1127,13 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticGetTargetProperties(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
 
-		description:                        "cc_library_static complex GetTargetProperties",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		blueprint: soongCcLibraryStaticPreamble + `
+		Description:                        "cc_library_static complex GetTargetProperties",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     target: {
@@ -1161,7 +1161,7 @@ cc_library_static {
     },
     include_build_directory: false,
 }`,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     srcs_c = select({
         "//build/bazel/platforms/os:android": ["android_src.c"],
@@ -1180,12 +1180,12 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticProductVariableSelects(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static product variable selects",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		blueprint: soongCcLibraryStaticPreamble + `
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static product variable selects",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     srcs: ["common.c"],
@@ -1202,7 +1202,7 @@ cc_library_static {
     },
     include_build_directory: false,
 } `,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     copts = select({
         "//build/bazel/product_variables:binder32bit": ["-Wbinder32bit"],
@@ -1220,13 +1220,13 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticProductVariableArchSpecificSelects(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static arch-specific product variable selects",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: soongCcLibraryStaticPreamble + `
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static arch-specific product variable selects",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     srcs: ["common.c"],
@@ -1264,7 +1264,7 @@ cc_library_static {
     },
     include_build_directory: false,
 } `,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     copts = select({
         "//build/bazel/product_variables:malloc_not_svelte": ["-Wmalloc_not_svelte"],
@@ -1288,13 +1288,13 @@ cc_library_static {
 }
 
 func TestCcLibraryStaticProductVariableStringReplacement(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static product variable string replacement",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: soongCcLibraryStaticPreamble + `
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static product variable string replacement",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "foo_static",
     srcs: ["common.S"],
@@ -1305,7 +1305,7 @@ cc_library_static {
     },
     include_build_directory: false,
 } `,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "foo_static",
     asflags = select({
         "//build/bazel/product_variables:platform_sdk_version": ["-DPLATFORM_SDK_VERSION=$(Platform_sdk_version)"],
@@ -1317,19 +1317,19 @@ cc_library_static {
 }
 
 func TestStaticLibrary_SystemSharedLibsRootEmpty(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static system_shared_lib empty root",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		blueprint: soongCcLibraryStaticPreamble + `
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static system_shared_lib empty root",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "root_empty",
     system_shared_libs: [],
     include_build_directory: false,
 }
 `,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "root_empty",
     system_dynamic_deps = [],
 )`},
@@ -1337,12 +1337,12 @@ cc_library_static {
 }
 
 func TestStaticLibrary_SystemSharedLibsStaticEmpty(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static system_shared_lib empty static default",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		blueprint: soongCcLibraryStaticPreamble + `
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static system_shared_lib empty static default",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_defaults {
     name: "static_empty_defaults",
     static: {
@@ -1355,7 +1355,7 @@ cc_library_static {
     defaults: ["static_empty_defaults"],
 }
 `,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "static_empty",
     system_dynamic_deps = [],
 )`},
@@ -1363,12 +1363,12 @@ cc_library_static {
 }
 
 func TestStaticLibrary_SystemSharedLibsBionicEmpty(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static system_shared_lib empty for bionic variant",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		blueprint: soongCcLibraryStaticPreamble + `
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static system_shared_lib empty for bionic variant",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "target_bionic_empty",
     target: {
@@ -1379,7 +1379,7 @@ cc_library_static {
     include_build_directory: false,
 }
 `,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "target_bionic_empty",
     system_dynamic_deps = [],
 )`},
@@ -1391,12 +1391,12 @@ func TestStaticLibrary_SystemSharedLibsLinuxBionicEmpty(t *testing.T) {
 	// The correct behavior would be if bp2build wrote `system_dynamic_deps = []`
 	// only for linux_bionic, but `android` had `["libc", "libdl", "libm"].
 	// b/195791252 tracks the fix.
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static system_shared_lib empty for linux_bionic variant",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		blueprint: soongCcLibraryStaticPreamble + `
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static system_shared_lib empty for linux_bionic variant",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library_static {
     name: "target_linux_bionic_empty",
     target: {
@@ -1407,7 +1407,7 @@ cc_library_static {
     include_build_directory: false,
 }
 `,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "target_linux_bionic_empty",
     system_dynamic_deps = [],
 )`},
@@ -1415,12 +1415,12 @@ cc_library_static {
 }
 
 func TestStaticLibrary_SystemSharedLibsBionic(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static system_shared_libs set for bionic variant",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		blueprint: soongCcLibraryStaticPreamble + `
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static system_shared_libs set for bionic variant",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library{name: "libc"}
 
 cc_library_static {
@@ -1433,7 +1433,7 @@ cc_library_static {
     include_build_directory: false,
 }
 `,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "target_bionic",
     system_dynamic_deps = select({
         "//build/bazel/platforms/os:android": [":libc"],
@@ -1445,12 +1445,12 @@ cc_library_static {
 }
 
 func TestStaticLibrary_SystemSharedLibsLinuxRootAndLinuxBionic(t *testing.T) {
-	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_static system_shared_libs set for root and linux_bionic variant",
-		moduleTypeUnderTest:                "cc_library_static",
-		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
-		blueprint: soongCcLibraryStaticPreamble + `
+	runCcLibraryStaticTestCase(t, Bp2BuildTestCase{
+		Description:                        "cc_library_static system_shared_libs set for root and linux_bionic variant",
+		ModuleTypeUnderTest:                "cc_library_static",
+		ModuleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		ModuleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		Blueprint: soongCcLibraryStaticPreamble + `
 cc_library{name: "libc"}
 cc_library{name: "libm"}
 
@@ -1465,7 +1465,7 @@ cc_library_static {
     include_build_directory: false,
 }
 `,
-		expectedBazelTargets: []string{`cc_library_static(
+		ExpectedBazelTargets: []string{`cc_library_static(
     name = "target_linux_bionic",
     system_dynamic_deps = [":libc"] + select({
         "//build/bazel/platforms/os:linux_bionic": [":libm"],

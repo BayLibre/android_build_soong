@@ -21,42 +21,42 @@ import (
 	"testing"
 )
 
-func runFilegroupTestCase(t *testing.T, tc bp2buildTestCase) {
+func runFilegroupTestCase(t *testing.T, tc Bp2BuildTestCase) {
 	t.Helper()
-	runBp2BuildTestCase(t, registerFilegroupModuleTypes, tc)
+	RunBp2BuildTestCase(t, registerFilegroupModuleTypes, tc)
 }
 
 func registerFilegroupModuleTypes(ctx android.RegistrationContext) {}
 
 func TestFilegroupSameNameAsFile_OneFile(t *testing.T) {
-	runFilegroupTestCase(t, bp2buildTestCase{
-		description:                        "filegroup - same name as file, with one file",
-		moduleTypeUnderTest:                "filegroup",
-		moduleTypeUnderTestFactory:         android.FileGroupFactory,
-		moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: `
+	runFilegroupTestCase(t, Bp2BuildTestCase{
+		Description:                        "filegroup - same name as file, with one file",
+		ModuleTypeUnderTest:                "filegroup",
+		ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+		ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: `
 filegroup {
     name: "foo",
     srcs: ["foo"],
 }
 `,
-		expectedBazelTargets: []string{}})
+		ExpectedBazelTargets: []string{}})
 }
 
 func TestFilegroupSameNameAsFile_MultipleFiles(t *testing.T) {
-	runFilegroupTestCase(t, bp2buildTestCase{
-		description:                        "filegroup - same name as file, with multiple files",
-		moduleTypeUnderTest:                "filegroup",
-		moduleTypeUnderTestFactory:         android.FileGroupFactory,
-		moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: `
+	runFilegroupTestCase(t, Bp2BuildTestCase{
+		Description:                        "filegroup - same name as file, with multiple files",
+		ModuleTypeUnderTest:                "filegroup",
+		ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+		ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: `
 filegroup {
 	name: "foo",
 	srcs: ["foo", "bar"],
 }
 `,
-		expectedErr: fmt.Errorf("filegroup 'foo' cannot contain a file with the same name"),
+		ExpectedErr: fmt.Errorf("filegroup 'foo' cannot contain a file with the same name"),
 	})
 }

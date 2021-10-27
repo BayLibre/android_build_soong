@@ -7,27 +7,27 @@ import (
 	"android/soong/python"
 )
 
-func runBp2BuildTestCaseWithLibs(t *testing.T, tc bp2buildTestCase) {
-	runBp2BuildTestCase(t, func(ctx android.RegistrationContext) {
+func runBp2BuildTestCaseWithLibs(t *testing.T, tc Bp2BuildTestCase) {
+	RunBp2BuildTestCase(t, func(ctx android.RegistrationContext) {
 		ctx.RegisterModuleType("python_library", python.PythonLibraryFactory)
 		ctx.RegisterModuleType("python_library_host", python.PythonLibraryHostFactory)
 	}, tc)
 }
 
 func TestPythonBinaryHostSimple(t *testing.T) {
-	runBp2BuildTestCaseWithLibs(t, bp2buildTestCase{
-		description:                        "simple python_binary_host converts to a native py_binary",
-		moduleTypeUnderTest:                "python_binary_host",
-		moduleTypeUnderTestFactory:         python.PythonBinaryHostFactory,
-		moduleTypeUnderTestBp2BuildMutator: python.PythonBinaryBp2Build,
-		filesystem: map[string]string{
+	runBp2BuildTestCaseWithLibs(t, Bp2BuildTestCase{
+		Description:                        "simple python_binary_host converts to a native py_binary",
+		ModuleTypeUnderTest:                "python_binary_host",
+		ModuleTypeUnderTestFactory:         python.PythonBinaryHostFactory,
+		ModuleTypeUnderTestBp2BuildMutator: python.PythonBinaryBp2Build,
+		Filesystem: map[string]string{
 			"a.py":           "",
 			"b/c.py":         "",
 			"b/d.py":         "",
 			"b/e.py":         "",
 			"files/data.txt": "",
 		},
-		blueprint: `python_binary_host {
+		Blueprint: `python_binary_host {
     name: "foo",
     main: "a.py",
     srcs: ["**/*.py"],
@@ -41,7 +41,7 @@ func TestPythonBinaryHostSimple(t *testing.T) {
       srcs: ["b/e.py"],
       bazel_module: { bp2build_available: true },
     }`,
-		expectedBazelTargets: []string{`py_binary(
+		ExpectedBazelTargets: []string{`py_binary(
     name = "foo",
     data = ["files/data.txt"],
     deps = [":bar"],
@@ -57,12 +57,12 @@ func TestPythonBinaryHostSimple(t *testing.T) {
 }
 
 func TestPythonBinaryHostPy2(t *testing.T) {
-	runBp2BuildTestCaseSimple(t, bp2buildTestCase{
-		description:                        "py2 python_binary_host",
-		moduleTypeUnderTest:                "python_binary_host",
-		moduleTypeUnderTestFactory:         python.PythonBinaryHostFactory,
-		moduleTypeUnderTestBp2BuildMutator: python.PythonBinaryBp2Build,
-		blueprint: `python_binary_host {
+	RunBp2BuildTestCaseSimple(t, Bp2BuildTestCase{
+		Description:                        "py2 python_binary_host",
+		ModuleTypeUnderTest:                "python_binary_host",
+		ModuleTypeUnderTestFactory:         python.PythonBinaryHostFactory,
+		ModuleTypeUnderTestBp2BuildMutator: python.PythonBinaryBp2Build,
+		Blueprint: `python_binary_host {
     name: "foo",
     srcs: ["a.py"],
     version: {
@@ -77,7 +77,7 @@ func TestPythonBinaryHostPy2(t *testing.T) {
     bazel_module: { bp2build_available: true },
 }
 `,
-		expectedBazelTargets: []string{`py_binary(
+		ExpectedBazelTargets: []string{`py_binary(
     name = "foo",
     python_version = "PY2",
     srcs = ["a.py"],
@@ -87,12 +87,12 @@ func TestPythonBinaryHostPy2(t *testing.T) {
 }
 
 func TestPythonBinaryHostPy3(t *testing.T) {
-	runBp2BuildTestCaseSimple(t, bp2buildTestCase{
-		description:                        "py3 python_binary_host",
-		moduleTypeUnderTest:                "python_binary_host",
-		moduleTypeUnderTestFactory:         python.PythonBinaryHostFactory,
-		moduleTypeUnderTestBp2BuildMutator: python.PythonBinaryBp2Build,
-		blueprint: `python_binary_host {
+	RunBp2BuildTestCaseSimple(t, Bp2BuildTestCase{
+		Description:                        "py3 python_binary_host",
+		ModuleTypeUnderTest:                "python_binary_host",
+		ModuleTypeUnderTestFactory:         python.PythonBinaryHostFactory,
+		ModuleTypeUnderTestBp2BuildMutator: python.PythonBinaryBp2Build,
+		Blueprint: `python_binary_host {
     name: "foo",
     srcs: ["a.py"],
     version: {
@@ -107,7 +107,7 @@ func TestPythonBinaryHostPy3(t *testing.T) {
     bazel_module: { bp2build_available: true },
 }
 `,
-		expectedBazelTargets: []string{
+		ExpectedBazelTargets: []string{
 			// python_version is PY3 by default.
 			`py_binary(
     name = "foo",
@@ -118,16 +118,16 @@ func TestPythonBinaryHostPy3(t *testing.T) {
 }
 
 func TestPythonBinaryHostArchVariance(t *testing.T) {
-	runBp2BuildTestCaseSimple(t, bp2buildTestCase{
-		description:                        "test arch variants",
-		moduleTypeUnderTest:                "python_binary_host",
-		moduleTypeUnderTestFactory:         python.PythonBinaryHostFactory,
-		moduleTypeUnderTestBp2BuildMutator: python.PythonBinaryBp2Build,
-		filesystem: map[string]string{
+	RunBp2BuildTestCaseSimple(t, Bp2BuildTestCase{
+		Description:                        "test arch variants",
+		ModuleTypeUnderTest:                "python_binary_host",
+		ModuleTypeUnderTestFactory:         python.PythonBinaryHostFactory,
+		ModuleTypeUnderTestBp2BuildMutator: python.PythonBinaryBp2Build,
+		Filesystem: map[string]string{
 			"dir/arm.py": "",
 			"dir/x86.py": "",
 		},
-		blueprint: `python_binary_host {
+		Blueprint: `python_binary_host {
 					 name: "foo-arm",
 					 arch: {
 						 arm: {
@@ -138,7 +138,7 @@ func TestPythonBinaryHostArchVariance(t *testing.T) {
 						 },
 					},
 				 }`,
-		expectedBazelTargets: []string{
+		ExpectedBazelTargets: []string{
 			`py_binary(
     name = "foo-arm",
     srcs = select({

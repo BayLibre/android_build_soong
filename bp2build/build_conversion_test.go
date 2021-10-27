@@ -221,16 +221,16 @@ func TestGenerateSoongModuleTargets(t *testing.T) {
 }
 
 func TestGenerateBazelTargetModules(t *testing.T) {
-	testCases := []bp2buildTestCase{
+	testCases := []Bp2BuildTestCase{
 		{
-			description: "string props",
-			blueprint: `custom {
+			Description: "string props",
+			Blueprint: `custom {
 	name: "foo",
     string_list_prop: ["a", "b"],
     string_prop: "a",
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{`custom(
+			ExpectedBazelTargets: []string{`custom(
     name = "foo",
     string_list_prop = [
         "a",
@@ -241,14 +241,14 @@ func TestGenerateBazelTargetModules(t *testing.T) {
 			},
 		},
 		{
-			description: "control characters",
-			blueprint: `custom {
+			Description: "control characters",
+			Blueprint: `custom {
 	name: "control_characters",
     string_list_prop: ["\t", "\n"],
     string_prop: "a\t\n\r",
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{`custom(
+			ExpectedBazelTargets: []string{`custom(
     name = "control_characters",
     string_list_prop = [
         "\t",
@@ -259,8 +259,8 @@ func TestGenerateBazelTargetModules(t *testing.T) {
 			},
 		},
 		{
-			description: "handles dep",
-			blueprint: `custom {
+			Description: "handles dep",
+			Blueprint: `custom {
   name: "has_dep",
   arch_paths: [":dep"],
   bazel_module: { bp2build_available: true },
@@ -271,7 +271,7 @@ custom {
   arch_paths: ["abc"],
   bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{`custom(
+			ExpectedBazelTargets: []string{`custom(
     name = "dep",
     arch_paths = ["abc"],
 )`,
@@ -282,8 +282,8 @@ custom {
 			},
 		},
 		{
-			description: "arch-variant srcs",
-			blueprint: `custom {
+			Description: "arch-variant srcs",
+			Blueprint: `custom {
     name: "arch_paths",
     arch: {
       x86: { arch_paths: ["x86.txt"] },
@@ -311,7 +311,7 @@ custom {
     },
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{`custom(
+			ExpectedBazelTargets: []string{`custom(
     name = "arch_paths",
     arch_paths = select({
         "//build/bazel/platforms/arch:arm": [
@@ -373,8 +373,8 @@ custom {
 			},
 		},
 		{
-			description: "arch-variant deps",
-			blueprint: `custom {
+			Description: "arch-variant deps",
+			Blueprint: `custom {
   name: "has_dep",
   arch: {
     x86: {
@@ -389,7 +389,7 @@ custom {
     arch_paths: ["abc"],
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{`custom(
+			ExpectedBazelTargets: []string{`custom(
     name = "dep",
     arch_paths = ["abc"],
 )`,
@@ -403,26 +403,26 @@ custom {
 			},
 		},
 		{
-			description: "embedded props",
-			blueprint: `custom {
+			Description: "embedded props",
+			Blueprint: `custom {
     name: "embedded_props",
     embedded_prop: "abc",
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{`custom(
+			ExpectedBazelTargets: []string{`custom(
     name = "embedded_props",
     embedded_attr = "abc",
 )`,
 			},
 		},
 		{
-			description: "ptr to embedded props",
-			blueprint: `custom {
+			Description: "ptr to embedded props",
+			Blueprint: `custom {
     name: "ptr_to_embedded_props",
     other_embedded_prop: "abc",
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{`custom(
+			ExpectedBazelTargets: []string{`custom(
     name = "ptr_to_embedded_props",
     other_embedded_attr = "abc",
 )`,
@@ -432,8 +432,8 @@ custom {
 
 	dir := "."
 	for _, testCase := range testCases {
-		t.Run(testCase.description, func(t *testing.T) {
-			config := android.TestConfig(buildDir, nil, testCase.blueprint, nil)
+		t.Run(testCase.Description, func(t *testing.T) {
+			config := android.TestConfig(buildDir, nil, testCase.Blueprint, nil)
 			ctx := android.NewTestContext(config)
 
 			registerCustomModuleForBp2buildConversion(ctx)
@@ -451,10 +451,10 @@ custom {
 			bazelTargets, err := generateBazelTargetsForDir(codegenCtx, dir)
 			android.FailIfErrored(t, err)
 
-			if actualCount, expectedCount := len(bazelTargets), len(testCase.expectedBazelTargets); actualCount != expectedCount {
+			if actualCount, expectedCount := len(bazelTargets), len(testCase.ExpectedBazelTargets); actualCount != expectedCount {
 				t.Errorf("Expected %d bazel target, got %d", expectedCount, actualCount)
 			} else {
-				for i, expectedBazelTarget := range testCase.expectedBazelTargets {
+				for i, expectedBazelTarget := range testCase.ExpectedBazelTargets {
 					actualBazelTarget := bazelTargets[i]
 					if actualBazelTarget.content != expectedBazelTarget {
 						t.Errorf(
@@ -638,49 +638,49 @@ load("//build/bazel/rules:rules.bzl", "my_library")`,
 }
 
 func TestModuleTypeBp2Build(t *testing.T) {
-	testCases := []bp2buildTestCase{
+	testCases := []Bp2BuildTestCase{
 		{
-			description:                        "filegroup with does not specify srcs",
-			moduleTypeUnderTest:                "filegroup",
-			moduleTypeUnderTestFactory:         android.FileGroupFactory,
-			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-			blueprint: `filegroup {
+			Description:                        "filegroup with does not specify srcs",
+			ModuleTypeUnderTest:                "filegroup",
+			ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+			ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			Blueprint: `filegroup {
     name: "fg_foo",
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{
+			ExpectedBazelTargets: []string{
 				`filegroup(
     name = "fg_foo",
 )`,
 			},
 		},
 		{
-			description:                        "filegroup with no srcs",
-			moduleTypeUnderTest:                "filegroup",
-			moduleTypeUnderTestFactory:         android.FileGroupFactory,
-			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-			blueprint: `filegroup {
+			Description:                        "filegroup with no srcs",
+			ModuleTypeUnderTest:                "filegroup",
+			ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+			ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			Blueprint: `filegroup {
     name: "fg_foo",
     srcs: [],
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{
+			ExpectedBazelTargets: []string{
 				`filegroup(
     name = "fg_foo",
 )`,
 			},
 		},
 		{
-			description:                        "filegroup with srcs",
-			moduleTypeUnderTest:                "filegroup",
-			moduleTypeUnderTestFactory:         android.FileGroupFactory,
-			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-			blueprint: `filegroup {
+			Description:                        "filegroup with srcs",
+			ModuleTypeUnderTest:                "filegroup",
+			ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+			ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			Blueprint: `filegroup {
     name: "fg_foo",
     srcs: ["a", "b"],
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{`filegroup(
+			ExpectedBazelTargets: []string{`filegroup(
     name = "fg_foo",
     srcs = [
         "a",
@@ -690,33 +690,33 @@ func TestModuleTypeBp2Build(t *testing.T) {
 			},
 		},
 		{
-			description:                        "filegroup with excludes srcs",
-			moduleTypeUnderTest:                "filegroup",
-			moduleTypeUnderTestFactory:         android.FileGroupFactory,
-			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-			blueprint: `filegroup {
+			Description:                        "filegroup with excludes srcs",
+			ModuleTypeUnderTest:                "filegroup",
+			ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+			ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			Blueprint: `filegroup {
     name: "fg_foo",
     srcs: ["a", "b"],
     exclude_srcs: ["a"],
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{`filegroup(
+			ExpectedBazelTargets: []string{`filegroup(
     name = "fg_foo",
     srcs = ["b"],
 )`,
 			},
 		},
 		{
-			description:                        "filegroup with glob",
-			moduleTypeUnderTest:                "filegroup",
-			moduleTypeUnderTestFactory:         android.FileGroupFactory,
-			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-			blueprint: `filegroup {
+			Description:                        "filegroup with glob",
+			ModuleTypeUnderTest:                "filegroup",
+			ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+			ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			Blueprint: `filegroup {
     name: "foo",
     srcs: ["**/*.txt"],
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{`filegroup(
+			ExpectedBazelTargets: []string{`filegroup(
     name = "foo",
     srcs = [
         "other/a.txt",
@@ -725,7 +725,7 @@ func TestModuleTypeBp2Build(t *testing.T) {
     ],
 )`,
 			},
-			filesystem: map[string]string{
+			Filesystem: map[string]string{
 				"other/a.txt":        "",
 				"other/b.txt":        "",
 				"other/subdir/a.txt": "",
@@ -733,17 +733,17 @@ func TestModuleTypeBp2Build(t *testing.T) {
 			},
 		},
 		{
-			description:                        "filegroup with glob in subdir",
-			moduleTypeUnderTest:                "filegroup",
-			moduleTypeUnderTestFactory:         android.FileGroupFactory,
-			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-			blueprint: `filegroup {
+			Description:                        "filegroup with glob in subdir",
+			ModuleTypeUnderTest:                "filegroup",
+			ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+			ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			Blueprint: `filegroup {
     name: "foo",
     srcs: ["a.txt"],
     bazel_module: { bp2build_available: true },
 }`,
-			dir: "other",
-			expectedBazelTargets: []string{`filegroup(
+			Dir: "other",
+			ExpectedBazelTargets: []string{`filegroup(
     name = "fg_foo",
     srcs = [
         "a.txt",
@@ -752,7 +752,7 @@ func TestModuleTypeBp2Build(t *testing.T) {
     ],
 )`,
 			},
-			filesystem: map[string]string{
+			Filesystem: map[string]string{
 				"other/Android.bp": `filegroup {
     name: "fg_foo",
     srcs: ["**/*.txt"],
@@ -765,11 +765,11 @@ func TestModuleTypeBp2Build(t *testing.T) {
 			},
 		},
 		{
-			description:                        "depends_on_other_dir_module",
-			moduleTypeUnderTest:                "filegroup",
-			moduleTypeUnderTestFactory:         android.FileGroupFactory,
-			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-			blueprint: `filegroup {
+			Description:                        "depends_on_other_dir_module",
+			ModuleTypeUnderTest:                "filegroup",
+			ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+			ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			Blueprint: `filegroup {
     name: "foobar",
     srcs: [
         ":foo",
@@ -777,7 +777,7 @@ func TestModuleTypeBp2Build(t *testing.T) {
     ],
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{`filegroup(
+			ExpectedBazelTargets: []string{`filegroup(
     name = "foobar",
     srcs = [
         "//other:foo",
@@ -785,7 +785,7 @@ func TestModuleTypeBp2Build(t *testing.T) {
     ],
 )`,
 			},
-			filesystem: map[string]string{
+			Filesystem: map[string]string{
 				"other/Android.bp": `filegroup {
     name: "foo",
     srcs: ["a", "b"],
@@ -794,12 +794,12 @@ func TestModuleTypeBp2Build(t *testing.T) {
 			},
 		},
 		{
-			description:                        "depends_on_other_unconverted_module_error",
-			moduleTypeUnderTest:                "filegroup",
-			moduleTypeUnderTestFactory:         android.FileGroupFactory,
-			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-			unconvertedDepsMode:                errorModulesUnconvertedDeps,
-			blueprint: `filegroup {
+			Description:                        "depends_on_other_unconverted_module_error",
+			ModuleTypeUnderTest:                "filegroup",
+			ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+			ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			UnconvertedDepsMode:                errorModulesUnconvertedDeps,
+			Blueprint: `filegroup {
     name: "foobar",
     srcs: [
         ":foo",
@@ -807,8 +807,8 @@ func TestModuleTypeBp2Build(t *testing.T) {
     ],
     bazel_module: { bp2build_available: true },
 }`,
-			expectedErr: fmt.Errorf(`"foobar" depends on unconverted modules: foo`),
-			filesystem: map[string]string{
+			ExpectedErr: fmt.Errorf(`"foobar" depends on unconverted modules: foo`),
+			Filesystem: map[string]string{
 				"other/Android.bp": `filegroup {
     name: "foo",
     srcs: ["a", "b"],
@@ -818,8 +818,8 @@ func TestModuleTypeBp2Build(t *testing.T) {
 	}
 
 	for _, testCase := range testCases {
-		t.Run(testCase.description, func(t *testing.T) {
-			runBp2BuildTestCase(t, func(ctx android.RegistrationContext) {}, testCase)
+		t.Run(testCase.Description, func(t *testing.T) {
+			RunBp2BuildTestCase(t, func(ctx android.RegistrationContext) {}, testCase)
 		})
 	}
 }
@@ -1027,29 +1027,29 @@ filegroup { name: "opt-out-h", bazel_module: { bp2build_available: false } }
 }
 
 func TestCombineBuildFilesBp2buildTargets(t *testing.T) {
-	testCases := []bp2buildTestCase{
+	testCases := []Bp2BuildTestCase{
 		{
-			description:                        "filegroup bazel_module.label",
-			moduleTypeUnderTest:                "filegroup",
-			moduleTypeUnderTestFactory:         android.FileGroupFactory,
-			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-			blueprint: `filegroup {
+			Description:                        "filegroup bazel_module.label",
+			ModuleTypeUnderTest:                "filegroup",
+			ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+			ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			Blueprint: `filegroup {
     name: "fg_foo",
     bazel_module: { label: "//other:fg_foo" },
 }`,
-			expectedBazelTargets: []string{
+			ExpectedBazelTargets: []string{
 				`// BUILD file`,
 			},
-			filesystem: map[string]string{
+			Filesystem: map[string]string{
 				"other/BUILD.bazel": `// BUILD file`,
 			},
 		},
 		{
-			description:                        "multiple bazel_module.label same BUILD",
-			moduleTypeUnderTest:                "filegroup",
-			moduleTypeUnderTestFactory:         android.FileGroupFactory,
-			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-			blueprint: `filegroup {
+			Description:                        "multiple bazel_module.label same BUILD",
+			ModuleTypeUnderTest:                "filegroup",
+			ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+			ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			Blueprint: `filegroup {
 		    name: "fg_foo",
 		    bazel_module: { label: "//other:fg_foo" },
 		}
@@ -1058,21 +1058,21 @@ func TestCombineBuildFilesBp2buildTargets(t *testing.T) {
 		    name: "foo",
 		    bazel_module: { label: "//other:foo" },
 		}`,
-			expectedBazelTargets: []string{
+			ExpectedBazelTargets: []string{
 				`// BUILD file`,
 			},
-			filesystem: map[string]string{
+			Filesystem: map[string]string{
 				"other/BUILD.bazel": `// BUILD file`,
 			},
 		},
 		{
-			description:                        "filegroup bazel_module.label and bp2build in subdir",
-			moduleTypeUnderTest:                "filegroup",
-			moduleTypeUnderTestFactory:         android.FileGroupFactory,
-			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-			dir:                                "other",
-			blueprint:                          ``,
-			filesystem: map[string]string{
+			Description:                        "filegroup bazel_module.label and bp2build in subdir",
+			ModuleTypeUnderTest:                "filegroup",
+			ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+			ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			Dir:                                "other",
+			Blueprint:                          ``,
+			Filesystem: map[string]string{
 				"other/Android.bp": `filegroup {
 				name: "fg_foo",
 				bazel_module: {
@@ -1087,18 +1087,18 @@ func TestCombineBuildFilesBp2buildTargets(t *testing.T) {
 			}`,
 				"other/BUILD.bazel": `// definition for fg_bar`,
 			},
-			expectedBazelTargets: []string{
+			ExpectedBazelTargets: []string{
 				`filegroup(
     name = "fg_foo",
 )`, `// definition for fg_bar`,
 			},
 		},
 		{
-			description:                        "filegroup bazel_module.label and filegroup bp2build",
-			moduleTypeUnderTest:                "filegroup",
-			moduleTypeUnderTestFactory:         android.FileGroupFactory,
-			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-			blueprint: `filegroup {
+			Description:                        "filegroup bazel_module.label and filegroup bp2build",
+			ModuleTypeUnderTest:                "filegroup",
+			ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+			ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			Blueprint: `filegroup {
 		    name: "fg_foo",
 		    bazel_module: {
 		      label: "//other:fg_foo",
@@ -1111,13 +1111,13 @@ func TestCombineBuildFilesBp2buildTargets(t *testing.T) {
 		      bp2build_available: true,
 		    },
 		}`,
-			expectedBazelTargets: []string{
+			ExpectedBazelTargets: []string{
 				`filegroup(
     name = "fg_bar",
 )`,
 				`// BUILD file`,
 			},
-			filesystem: map[string]string{
+			Filesystem: map[string]string{
 				"other/BUILD.bazel": `// BUILD file`,
 			},
 		},
@@ -1125,21 +1125,21 @@ func TestCombineBuildFilesBp2buildTargets(t *testing.T) {
 
 	dir := "."
 	for _, testCase := range testCases {
-		t.Run(testCase.description, func(t *testing.T) {
+		t.Run(testCase.Description, func(t *testing.T) {
 			fs := make(map[string][]byte)
 			toParse := []string{
 				"Android.bp",
 			}
-			for f, content := range testCase.filesystem {
+			for f, content := range testCase.Filesystem {
 				if strings.HasSuffix(f, "Android.bp") {
 					toParse = append(toParse, f)
 				}
 				fs[f] = []byte(content)
 			}
-			config := android.TestConfig(buildDir, nil, testCase.blueprint, fs)
+			config := android.TestConfig(buildDir, nil, testCase.Blueprint, fs)
 			ctx := android.NewTestContext(config)
-			ctx.RegisterModuleType(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestFactory)
-			ctx.RegisterBp2BuildMutator(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestBp2BuildMutator)
+			ctx.RegisterModuleType(testCase.ModuleTypeUnderTest, testCase.ModuleTypeUnderTestFactory)
+			ctx.RegisterBp2BuildMutator(testCase.ModuleTypeUnderTest, testCase.ModuleTypeUnderTestBp2BuildMutator)
 			ctx.RegisterForBazelConversion()
 
 			_, errs := ctx.ParseFileList(dir, toParse)
@@ -1152,15 +1152,15 @@ func TestCombineBuildFilesBp2buildTargets(t *testing.T) {
 			}
 
 			checkDir := dir
-			if testCase.dir != "" {
-				checkDir = testCase.dir
+			if testCase.Dir != "" {
+				checkDir = testCase.Dir
 			}
 			codegenCtx := NewCodegenContext(config, *ctx.Context, Bp2Build)
 			bazelTargets, err := generateBazelTargetsForDir(codegenCtx, checkDir)
 			android.FailIfErrored(t, err)
 			bazelTargets.sort()
 			actualCount := len(bazelTargets)
-			expectedCount := len(testCase.expectedBazelTargets)
+			expectedCount := len(testCase.ExpectedBazelTargets)
 			if actualCount != expectedCount {
 				t.Errorf("Expected %d bazel target, got %d\n%s", expectedCount, actualCount, bazelTargets)
 			}
@@ -1169,7 +1169,7 @@ func TestCombineBuildFilesBp2buildTargets(t *testing.T) {
 			}
 			for i, target := range bazelTargets {
 				actualContent := target.content
-				expectedContent := testCase.expectedBazelTargets[i]
+				expectedContent := testCase.ExpectedBazelTargets[i]
 				if expectedContent != actualContent {
 					t.Errorf(
 						"Expected generated Bazel target to be '%s', got '%s'",
@@ -1183,19 +1183,19 @@ func TestCombineBuildFilesBp2buildTargets(t *testing.T) {
 }
 
 func TestGlobExcludeSrcs(t *testing.T) {
-	testCases := []bp2buildTestCase{
+	testCases := []Bp2BuildTestCase{
 		{
-			description:                        "filegroup top level exclude_srcs",
-			moduleTypeUnderTest:                "filegroup",
-			moduleTypeUnderTestFactory:         android.FileGroupFactory,
-			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-			blueprint: `filegroup {
+			Description:                        "filegroup top level exclude_srcs",
+			ModuleTypeUnderTest:                "filegroup",
+			ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+			ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			Blueprint: `filegroup {
     name: "fg_foo",
     srcs: ["**/*.txt"],
     exclude_srcs: ["c.txt"],
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{`filegroup(
+			ExpectedBazelTargets: []string{`filegroup(
     name = "fg_foo",
     srcs = [
         "a.txt",
@@ -1205,7 +1205,7 @@ func TestGlobExcludeSrcs(t *testing.T) {
     ],
 )`,
 			},
-			filesystem: map[string]string{
+			Filesystem: map[string]string{
 				"a.txt":          "",
 				"b.txt":          "",
 				"c.txt":          "",
@@ -1215,13 +1215,13 @@ func TestGlobExcludeSrcs(t *testing.T) {
 			},
 		},
 		{
-			description:                        "filegroup in subdir exclude_srcs",
-			moduleTypeUnderTest:                "filegroup",
-			moduleTypeUnderTestFactory:         android.FileGroupFactory,
-			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-			blueprint:                          "",
-			dir:                                "dir",
-			filesystem: map[string]string{
+			Description:                        "filegroup in subdir exclude_srcs",
+			ModuleTypeUnderTest:                "filegroup",
+			ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+			ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			Blueprint:                          "",
+			Dir:                                "dir",
+			Filesystem: map[string]string{
 				"dir/Android.bp": `filegroup {
     name: "fg_foo",
     srcs: ["**/*.txt"],
@@ -1235,7 +1235,7 @@ func TestGlobExcludeSrcs(t *testing.T) {
 				"dir/subdir/e.txt":      "",
 				"dir/subdir/f.txt":      "",
 			},
-			expectedBazelTargets: []string{`filegroup(
+			ExpectedBazelTargets: []string{`filegroup(
     name = "fg_foo",
     srcs = [
         "a.txt",
@@ -1253,16 +1253,16 @@ func TestGlobExcludeSrcs(t *testing.T) {
 		toParse := []string{
 			"Android.bp",
 		}
-		for f, content := range testCase.filesystem {
+		for f, content := range testCase.Filesystem {
 			if strings.HasSuffix(f, "Android.bp") {
 				toParse = append(toParse, f)
 			}
 			fs[f] = []byte(content)
 		}
-		config := android.TestConfig(buildDir, nil, testCase.blueprint, fs)
+		config := android.TestConfig(buildDir, nil, testCase.Blueprint, fs)
 		ctx := android.NewTestContext(config)
-		ctx.RegisterModuleType(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestFactory)
-		ctx.RegisterBp2BuildMutator(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestBp2BuildMutator)
+		ctx.RegisterModuleType(testCase.ModuleTypeUnderTest, testCase.ModuleTypeUnderTestFactory)
+		ctx.RegisterBp2BuildMutator(testCase.ModuleTypeUnderTest, testCase.ModuleTypeUnderTestBp2BuildMutator)
 		ctx.RegisterForBazelConversion()
 
 		_, errs := ctx.ParseFileList(dir, toParse)
@@ -1275,20 +1275,20 @@ func TestGlobExcludeSrcs(t *testing.T) {
 		}
 
 		checkDir := dir
-		if testCase.dir != "" {
-			checkDir = testCase.dir
+		if testCase.Dir != "" {
+			checkDir = testCase.Dir
 		}
 		codegenCtx := NewCodegenContext(config, *ctx.Context, Bp2Build)
 		bazelTargets, err := generateBazelTargetsForDir(codegenCtx, checkDir)
 		android.FailIfErrored(t, err)
-		if actualCount, expectedCount := len(bazelTargets), len(testCase.expectedBazelTargets); actualCount != expectedCount {
-			t.Errorf("%s: Expected %d bazel target, got %d\n%s", testCase.description, expectedCount, actualCount, bazelTargets)
+		if actualCount, expectedCount := len(bazelTargets), len(testCase.ExpectedBazelTargets); actualCount != expectedCount {
+			t.Errorf("%s: Expected %d bazel target, got %d\n%s", testCase.Description, expectedCount, actualCount, bazelTargets)
 		} else {
 			for i, target := range bazelTargets {
-				if w, g := testCase.expectedBazelTargets[i], target.content; w != g {
+				if w, g := testCase.ExpectedBazelTargets[i], target.content; w != g {
 					t.Errorf(
 						"%s: Expected generated Bazel target to be '%s', got '%s'",
-						testCase.description,
+						testCase.Description,
 						w,
 						g,
 					)
@@ -1299,13 +1299,13 @@ func TestGlobExcludeSrcs(t *testing.T) {
 }
 
 func TestCommonBp2BuildModuleAttrs(t *testing.T) {
-	testCases := []bp2buildTestCase{
+	testCases := []Bp2BuildTestCase{
 		{
-			description:                        "Required into data test",
-			moduleTypeUnderTest:                "filegroup",
-			moduleTypeUnderTestFactory:         android.FileGroupFactory,
-			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-			blueprint: `filegroup {
+			Description:                        "Required into data test",
+			ModuleTypeUnderTest:                "filegroup",
+			ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+			ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			Blueprint: `filegroup {
     name: "reqd",
 }
 
@@ -1314,7 +1314,7 @@ filegroup {
     required: ["reqd"],
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{`filegroup(
+			ExpectedBazelTargets: []string{`filegroup(
     name = "fg_foo",
     data = [":reqd"],
 )`,
@@ -1324,11 +1324,11 @@ filegroup {
 			},
 		},
 		{
-			description:                        "Required via arch into data test",
-			moduleTypeUnderTest:                "python_library",
-			moduleTypeUnderTestFactory:         python.PythonLibraryFactory,
-			moduleTypeUnderTestBp2BuildMutator: python.PythonLibraryBp2Build,
-			blueprint: `python_library {
+			Description:                        "Required via arch into data test",
+			ModuleTypeUnderTest:                "python_library",
+			ModuleTypeUnderTestFactory:         python.PythonLibraryFactory,
+			ModuleTypeUnderTestBp2BuildMutator: python.PythonLibraryBp2Build,
+			Blueprint: `python_library {
     name: "reqdx86",
     bazel_module: { bp2build_available: false, },
 }
@@ -1350,7 +1350,7 @@ python_library {
     },
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{`py_library(
+			ExpectedBazelTargets: []string{`py_library(
     name = "fg_foo",
     data = select({
         "//build/bazel/platforms/arch:arm": [":reqdarm"],
@@ -1362,11 +1362,11 @@ python_library {
 			},
 		},
 		{
-			description:                        "Required appended to data test",
-			moduleTypeUnderTest:                "python_library",
-			moduleTypeUnderTestFactory:         python.PythonLibraryFactory,
-			moduleTypeUnderTestBp2BuildMutator: python.PythonLibraryBp2Build,
-			blueprint: `python_library {
+			Description:                        "Required appended to data test",
+			ModuleTypeUnderTest:                "python_library",
+			ModuleTypeUnderTestFactory:         python.PythonLibraryFactory,
+			ModuleTypeUnderTestBp2BuildMutator: python.PythonLibraryBp2Build,
+			Blueprint: `python_library {
     name: "reqd",
     srcs: ["src.py"],
 }
@@ -1377,7 +1377,7 @@ python_library {
     required: ["reqd"],
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{
+			ExpectedBazelTargets: []string{
 				`py_library(
     name = "fg_foo",
     data = [
@@ -1392,17 +1392,17 @@ python_library {
     srcs_version = "PY3",
 )`,
 			},
-			filesystem: map[string]string{
+			Filesystem: map[string]string{
 				"data.bin": "",
 				"src.py":   "",
 			},
 		},
 		{
-			description:                        "All props-to-attrs at once together test",
-			moduleTypeUnderTest:                "filegroup",
-			moduleTypeUnderTestFactory:         android.FileGroupFactory,
-			moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-			blueprint: `filegroup {
+			Description:                        "All props-to-attrs at once together test",
+			ModuleTypeUnderTest:                "filegroup",
+			ModuleTypeUnderTestFactory:         android.FileGroupFactory,
+			ModuleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
+			Blueprint: `filegroup {
     name: "reqd"
 }
 filegroup {
@@ -1410,7 +1410,7 @@ filegroup {
     required: ["reqd"],
     bazel_module: { bp2build_available: true },
 }`,
-			expectedBazelTargets: []string{
+			ExpectedBazelTargets: []string{
 				`filegroup(
     name = "fg_foo",
     data = [":reqd"],
@@ -1419,11 +1419,11 @@ filegroup {
     name = "reqd",
 )`,
 			},
-			filesystem: map[string]string{},
+			Filesystem: map[string]string{},
 		},
 	}
 
 	for _, test := range testCases {
-		runBp2BuildTestCaseSimple(t, test)
+		RunBp2BuildTestCaseSimple(t, test)
 	}
 }

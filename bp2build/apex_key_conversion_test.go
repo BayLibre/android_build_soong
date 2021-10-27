@@ -21,29 +21,29 @@ import (
 	"testing"
 )
 
-func runApexKeyTestCase(t *testing.T, tc bp2buildTestCase) {
+func runApexKeyTestCase(t *testing.T, tc Bp2BuildTestCase) {
 	t.Helper()
-	runBp2BuildTestCase(t, registerApexKeyModuleTypes, tc)
+	RunBp2BuildTestCase(t, registerApexKeyModuleTypes, tc)
 }
 
 func registerApexKeyModuleTypes(ctx android.RegistrationContext) {
 }
 
 func TestApexKeySimple(t *testing.T) {
-	runApexKeyTestCase(t, bp2buildTestCase{
-		description:                        "apex key - simple example",
-		moduleTypeUnderTest:                "apex_key",
-		moduleTypeUnderTestFactory:         apex.ApexKeyFactory,
-		moduleTypeUnderTestBp2BuildMutator: apex.ApexKeyBp2Build,
-		filesystem:                         map[string]string{},
-		blueprint: `
+	runApexKeyTestCase(t, Bp2BuildTestCase{
+		Description:                        "apex key - simple example",
+		ModuleTypeUnderTest:                "apex_key",
+		ModuleTypeUnderTestFactory:         apex.ApexKeyFactory,
+		ModuleTypeUnderTestBp2BuildMutator: apex.ApexKeyBp2Build,
+		Filesystem:                         map[string]string{},
+		Blueprint: `
 apex_key {
         name: "com.android.apogee.key",
         public_key: "com.android.apogee.avbpubkey",
         private_key: "com.android.apogee.pem",
 }
 `,
-		expectedBazelTargets: []string{`apex_key(
+		ExpectedBazelTargets: []string{`apex_key(
     name = "com.android.apogee.key",
     private_key = "com.android.apogee.pem",
     public_key = "com.android.apogee.avbpubkey",

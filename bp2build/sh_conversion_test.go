@@ -48,23 +48,23 @@ func TestShBinaryLoadStatement(t *testing.T) {
 	}
 }
 
-func runShBinaryTestCase(t *testing.T, tc bp2buildTestCase) {
+func runShBinaryTestCase(t *testing.T, tc Bp2BuildTestCase) {
 	t.Helper()
-	runBp2BuildTestCase(t, func(ctx android.RegistrationContext) {}, tc)
+	RunBp2BuildTestCase(t, func(ctx android.RegistrationContext) {}, tc)
 }
 
 func TestShBinarySimple(t *testing.T) {
-	runShBinaryTestCase(t, bp2buildTestCase{
-		description:                        "sh_binary test",
-		moduleTypeUnderTest:                "sh_binary",
-		moduleTypeUnderTestFactory:         sh.ShBinaryFactory,
-		moduleTypeUnderTestBp2BuildMutator: sh.ShBinaryBp2Build,
-		blueprint: `sh_binary {
+	runShBinaryTestCase(t, Bp2BuildTestCase{
+		Description:                        "sh_binary test",
+		ModuleTypeUnderTest:                "sh_binary",
+		ModuleTypeUnderTestFactory:         sh.ShBinaryFactory,
+		ModuleTypeUnderTestBp2BuildMutator: sh.ShBinaryBp2Build,
+		Blueprint: `sh_binary {
     name: "foo",
     src: "foo.sh",
     bazel_module: { bp2build_available: true },
 }`,
-		expectedBazelTargets: []string{`sh_binary(
+		ExpectedBazelTargets: []string{`sh_binary(
     name = "foo",
     srcs = ["foo.sh"],
 )`},
