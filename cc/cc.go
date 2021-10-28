@@ -325,7 +325,7 @@ type BaseProperties struct {
 	SnapshotStaticLibs  []string `blueprint:"mutated"`
 	SnapshotRuntimeLibs []string `blueprint:"mutated"`
 
-	Installable *bool
+	Installable *bool `android:"arch_variant"`
 
 	// Set by factories of module types that can only be referenced from variants compiled against
 	// the SDK.
@@ -3260,6 +3260,11 @@ func (c *Module) PreventInstall() bool {
 }
 
 func (c *Module) Installable() *bool {
+	if c.library != nil {
+		if i := c.library.installable(); i != nil {
+			return i
+		}
+	}
 	return c.Properties.Installable
 }
 
