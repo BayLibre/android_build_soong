@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eef1b123_e713cddc",
+        "filename": "java/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-10-28T13:34:41Z",
+      "side": 1,
+      "message": "hmm this one should probably be nonUpdatableFrameworkAIdlPath as well, but belongs in a separate change",
+      "range": {
+        "startLine": 181,
+        "startChar": 97,
+        "endLine": 181,
+        "endChar": 117
+      },
+      "revId": "4d313e4f6d98eeeba49733132612d8005cdb19d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
