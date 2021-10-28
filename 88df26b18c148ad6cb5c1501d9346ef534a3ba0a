@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bcde590_5838e0f2",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-28T15:11:17Z",
+      "side": 1,
+      "message": "nit: it looks like too many `s`es got in here",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "88df26b18c148ad6cb5c1501d9346ef534a3ba0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f61157_3bbeef47",
+        "filename": "third_party/zip/reader_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-28T15:11:17Z",
+      "side": 1,
+      "message": "expected",
+      "range": {
+        "startLine": 789,
+        "startChar": 40,
+        "endLine": 789,
+        "endChar": 47
+      },
+      "revId": "88df26b18c148ad6cb5c1501d9346ef534a3ba0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
