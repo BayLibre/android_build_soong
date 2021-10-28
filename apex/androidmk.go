@@ -82,25 +82,34 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 
 	moduleNames := []string{}
 	apexType := a.properties.ApexType
-	// To avoid creating duplicate build rules, run this function only when primaryApexType is true
-	// to install symbol files in $(PRODUCT_OUT}/apex.
-	// And if apexType is flattened, run this function to install files in $(PRODUCT_OUT}/system/apex.
-	if !a.primaryApexType && apexType != flattenedApex {
-		return moduleNames
-	}
-
-	// b/162366062. Prevent GKI APEXes to emit make rules to avoid conflicts.
-	if strings.HasPrefix(apexName, "com.android.gki.") && apexType != flattenedApex {
-		return moduleNames
-	}
 
 	// b/140136207. When there are overriding APEXes for a VNDK APEX, the symbols file for the overridden
 	// APEX and the overriding APEX will have the same installation paths at /apex/com.android.vndk.v<ver>
 	// as their apexName will be the same. To avoid the path conflicts, skip installing the symbol files
 	// for the overriding VNDK APEXes.
 	symbolFilesNotNeeded := a.vndkApex && len(a.overridableProperties.Overrides) > 0
-	if symbolFilesNotNeeded && apexType != flattenedApex {
-		return moduleNames
+
+	// If apexType is flattened, always run this function to install files in $(PRODUCT_OUT}/system/apex.
+	// Otherwise, build rules may not be needed in cases that are avoiding duplicate build rules.
+	if apexType != flattenedApex {
+		if symbolFilesNotNeeded {
+			return moduleNames
+		}
+
+		// Run this function only when primaryApexType is true to install symbol files in $(PRODUCT_OUT}/apex.
+		if !a.primaryApexType {
+			return moduleNames
+		}
+
+		// b/162366062. Prevent GKI APEXes to emit make rules to avoid conflicts.
+		if strings.HasPrefix(apexName, "com.android.gki.") {
+			return moduleNames
+		}
+
+		// Avoid creating duplicate build rules for multi-installed APEXes.
+		if proptools.BoolDefault(a.properties.Multi_install_skip_symbol_files, false) {
+			return moduleNames
+		}
 	}
 
 	var postInstallCommands []string
