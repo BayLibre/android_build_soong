@@ -16,6 +16,23 @@
       "message": "Cherry-picking this CL to AOSP to avoid merge conflict in my cl aosp/1853102. Hope it\u0027s fine to CP this CL.",
       "revId": "d64ab233e45cf4267b3aea5f29869a858a53c48b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c5b189_1460e296",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-28T11:14:29Z",
+      "side": 1,
+      "message": "Avoiding differences between AOSP and internal is generally a good idea but I\u0027ll leave it up to someone else to decide whether this specific change should be in AOSP.",
+      "revId": "d64ab233e45cf4267b3aea5f29869a858a53c48b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
