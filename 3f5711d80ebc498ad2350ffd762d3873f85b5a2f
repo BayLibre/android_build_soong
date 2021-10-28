@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6f569d9_ab2b2d2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-28T18:25:25Z",
+      "side": 1,
+      "message": "The next few changes improve the test coverage of the code for handling system modules (both source and prebuilt) to make sure that following changes have the desired effect.",
+      "revId": "3f5711d80ebc498ad2350ffd762d3873f85b5a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
