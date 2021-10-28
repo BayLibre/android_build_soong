@@ -22,6 +22,30 @@
       },
       "revId": "4d313e4f6d98eeeba49733132612d8005cdb19d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57d8bdf6_57e2d164",
+        "filename": "java/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-28T18:26:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eef1b123_e713cddc",
+      "range": {
+        "startLine": 181,
+        "startChar": 97,
+        "endLine": 181,
+        "endChar": 117
+      },
+      "revId": "4d313e4f6d98eeeba49733132612d8005cdb19d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
