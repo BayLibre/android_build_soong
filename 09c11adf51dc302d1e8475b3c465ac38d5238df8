@@ -46,6 +46,30 @@
       },
       "revId": "09c11adf51dc302d1e8475b3c465ac38d5238df8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "824772d6_53fa6545",
+        "filename": "apex/key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-10-28T23:57:26Z",
+      "side": 1,
+      "message": "Ping for Tianjie Xu, can you confirm that sign_target_files_apks is only valid to be launched in ANDROID_BUILD_TOP?",
+      "parentUuid": "d7efa995_ed52a65d",
+      "range": {
+        "startLine": 153,
+        "startChar": 26,
+        "endLine": 153,
+        "endChar": 42
+      },
+      "revId": "09c11adf51dc302d1e8475b3c465ac38d5238df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
