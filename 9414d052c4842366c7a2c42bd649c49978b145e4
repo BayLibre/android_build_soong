@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae23ce8_dbe17984",
+        "filename": "java/core-libraries/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-10-28T13:31:08Z",
+      "side": 1,
+      "message": "is core-for-system-modules the best name? we have the flexibility to change it now if we want",
+      "range": {
+        "startLine": 81,
+        "startChar": 41,
+        "endLine": 81,
+        "endChar": 68
+      },
+      "revId": "9414d052c4842366c7a2c42bd649c49978b145e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78bf4e5b_3408d0c8",
+        "filename": "java/core-libraries/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-10-28T13:31:08Z",
+      "side": 1,
+      "message": "system-server should probably get the module-libs one, see https://cs.android.com/android/platform/superproject/+/master:frameworks/base/StubLibraries.bp;l\u003d426",
+      "range": {
+        "startLine": 94,
+        "startChar": 9,
+        "endLine": 97,
+        "endChar": 34
+      },
+      "revId": "9414d052c4842366c7a2c42bd649c49978b145e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
