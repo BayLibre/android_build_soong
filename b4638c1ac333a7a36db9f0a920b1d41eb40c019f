@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b17627d9_741fbc23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-10-28T17:33:53Z",
+      "side": 1,
+      "message": "Leave it to a manager to mess up a CL that only changes comments. Sorry about that.",
+      "revId": "b4638c1ac333a7a36db9f0a920b1d41eb40c019f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

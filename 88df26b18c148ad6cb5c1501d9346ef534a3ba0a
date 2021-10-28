@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4a9d279_6d3f6941",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-10-28T17:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bcde590_5838e0f2",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "88df26b18c148ad6cb5c1501d9346ef534a3ba0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93f61157_3bbeef47",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-28T15:11:17Z",
       "side": 1,
       "message": "expected",
+      "range": {
+        "startLine": 789,
+        "startChar": 40,
+        "endLine": 789,
+        "endChar": 47
+      },
+      "revId": "88df26b18c148ad6cb5c1501d9346ef534a3ba0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7cb5549_60a7fa53",
+        "filename": "third_party/zip/reader_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-10-28T17:33:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93f61157_3bbeef47",
       "range": {
         "startLine": 789,
         "startChar": 40,
