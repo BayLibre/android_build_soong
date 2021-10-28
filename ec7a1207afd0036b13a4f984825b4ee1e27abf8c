@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee6f718c_45e0e7a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-10-28T21:20:17Z",
+      "side": 1,
+      "message": "The failed 2 tests bluetooth_le_audio_client_test.* are unreleated.\nThose tests have been failing since build 7861557 to latest 7862752.\n",
+      "revId": "ec7a1207afd0036b13a4f984825b4ee1e27abf8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
