@@ -15,6 +15,7 @@
 package android
 
 import (
+	"regexp"
 	"testing"
 
 	"github.com/google/blueprint"
@@ -55,7 +56,7 @@ var neverallowTests = []struct {
 				}`),
 		},
 		expectedErrors: []string{
-			`module "libother": violates neverallow deps:not_allowed_in_direct_deps`,
+			regexp.QuoteMeta("module \"libother\": violates neverallow requirements. Not allowed:\n\tdep(s): [\"not_allowed_in_direct_deps\"]"),
 		},
 	},
 
