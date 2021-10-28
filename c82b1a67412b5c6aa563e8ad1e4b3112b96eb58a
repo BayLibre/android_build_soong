@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40cea99a_89413d1c",
+        "filename": "bp2build/cc_prebuilt_library_shared_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-28T15:07:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5512ddfa_4d126cb0",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "c82b1a67412b5c6aa563e8ad1e4b3112b96eb58a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "585c521e_b89bcea1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-28T14:49:45Z",
       "side": 1,
       "message": "this seems unrelated to the current test case, let\u0027s remove it?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 3
+      },
+      "revId": "c82b1a67412b5c6aa563e8ad1e4b3112b96eb58a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94372655_7db20bd1",
+        "filename": "bp2build/cc_prebuilt_library_shared_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-28T15:07:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "585c521e_b89bcea1",
       "range": {
         "startLine": 23,
         "startChar": 0,
