@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd772020_52f85305",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-10-28T00:17:31Z",
+      "side": 1,
+      "message": "The goal of this and the two preceding CLs is to generate Starlark file containing the makefile variables that are to be set before board configuration can run. mk2rbc already has all the variable classification data for that, the only missing piece is the file containing the actual variable assignments. So the functional part of these three CLs is the printVars function and the fragment of main() that does the scanning, about 50 lines total. Why not just add this to mk2rbc?",
+      "revId": "a43e273e219f3db488a7dd13f6d0ab103bf27d1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
