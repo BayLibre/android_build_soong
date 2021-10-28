@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d6984ce_0f6abb54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2021-10-28T05:15:55Z",
+      "side": 1,
+      "message": "Cherry-picking this CL to AOSP to avoid merge conflict in my cl aosp/1853102. Hope it\u0027s fine to CP this CL.",
+      "revId": "d64ab233e45cf4267b3aea5f29869a858a53c48b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
