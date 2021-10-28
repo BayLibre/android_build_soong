@@ -94,6 +94,12 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 		return moduleNames
 	}
 
+	// Avoid creating duplicate build rules for multi-installed APEXes.
+	if !proptools.BoolDefault(a.properties.Multi_install_default, true) &&
+		apexType != flattenedApex {
+		return moduleNames
+	}
+
 	// b/140136207. When there are overriding APEXes for a VNDK APEX, the symbols file for the overridden
 	// APEX and the overriding APEX will have the same installation paths at /apex/com.android.vndk.v<ver>
 	// as their apexName will be the same. To avoid the path conflicts, skip installing the symbol files
