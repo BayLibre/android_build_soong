@@ -191,12 +191,12 @@ func (d *dexer) dexCommonFlags(ctx android.ModuleContext,
 			"--verbose")
 	}
 
-	effectiveVersion, err := minSdkVersion.EffectiveVersion(ctx)
-	if err != nil {
-		ctx.PropertyErrorf("min_sdk_version", "%s", err)
-	}
-
-	flags = append(flags, "--min-api "+strconv.Itoa(effectiveVersion.FinalOrFutureInt()))
+	// For D8, we turn off Java backports by setting the minimum API
+	// level to future. Backports should be unnecessary on platform as
+	// these are synthetic Java library methods for unimplemented
+	// Java library methods. These should be added to libcore if they
+	// are needed (b/191859202).
+	flags = append(flags, "--min-api "+strconv.Itoa(android.FutureApiLevelInt))
 	return flags, deps
 }
 
