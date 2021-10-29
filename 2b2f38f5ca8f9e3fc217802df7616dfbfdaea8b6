@@ -16,6 +16,282 @@
       "message": "Please review when you have time, thanks!",
       "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1133e8df_4511c6f7",
+        "filename": "androidmk/androidmk/androidmk_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-29T16:39:22Z",
+      "side": 1,
+      "message": "it\u0027s not clear to me why we don\u0027t create a test case for these, these seem to be the crux of the conversion -- if the file is in the same directory, can we use existing infrastructure, e.g. similar to tests for LOCAL_RESOURCE_DIR.\n\nWith some extra infrastructure, it should also be possible to create tests for license files outside the current directory.",
+      "range": {
+        "startLine": 1540,
+        "startChar": 2,
+        "endLine": 1542,
+        "endChar": 55
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37027b0c_cc854d40",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-29T16:39:22Z",
+      "side": 1,
+      "message": "According to Bob\u0027s statements in your doc, we should only add a package module if the license is the same for all modules within the blueprint -- this function doesn\u0027t appear to verify the license is the same across modules",
+      "range": {
+        "startLine": 1451,
+        "startChar": 5,
+        "endLine": 1451,
+        "endChar": 29
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a940bc2a_e3c3f3f6",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1462,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-29T16:39:22Z",
+      "side": 1,
+      "message": "rather than a list here, can we give each one a meaningful constant variable name, e.g.\n\nlicenseKindsPropertyName\nlicenseFilesPropertyName",
+      "range": {
+        "startLine": 1459,
+        "startChar": 0,
+        "endLine": 1462,
+        "endChar": 2
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33956ae6_78767699",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-29T16:39:22Z",
+      "side": 1,
+      "message": "these should start with a lower-case -- in go starting a variable with a capital letter indicates that it is exported.\n\nif you\u0027re looking for these to be constants, can define them outside of this function, but should still start with a lowercase",
+      "range": {
+        "startLine": 1464,
+        "startChar": 1,
+        "endLine": 1464,
+        "endChar": 17
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f894f6b3_4e16b0cd",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-29T16:39:22Z",
+      "side": 1,
+      "message": "this is hard to parse, we have the expected parent directory -- can we use string formatting instead to state which file we were looking for -- here and below?",
+      "range": {
+        "startLine": 1465,
+        "startChar": 6,
+        "endLine": 1465,
+        "endChar": 34
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19ac10b8_d8f3931e",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-29T16:39:22Z",
+      "side": 1,
+      "message": "module",
+      "range": {
+        "startLine": 1466,
+        "startChar": 51,
+        "endLine": 1466,
+        "endChar": 57
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5333a2cd_fae5bf82",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-29T16:39:22Z",
+      "side": 1,
+      "message": "nit: defaultApplicableLicense",
+      "range": {
+        "startLine": 1471,
+        "startChar": 1,
+        "endLine": 1471,
+        "endChar": 23
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c454bed3_44016621",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-29T16:39:22Z",
+      "side": 1,
+      "message": "nit: can we have a more meaningful name than val, e.g. patch?",
+      "range": {
+        "startLine": 1474,
+        "startChar": 1,
+        "endLine": 1474,
+        "endChar": 4
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d21502c_dbd4f611",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-29T16:39:22Z",
+      "side": 1,
+      "message": "optional: with go, you can specify this as\n\nvar licenseModuleName, val string\nvar hasFileInParentDir bool and it\u0027ll default appropriately.",
+      "range": {
+        "startLine": 1472,
+        "startChar": 1,
+        "endLine": 1474,
+        "endChar": 10
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e01fd1e_fc1c14be",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-29T16:39:22Z",
+      "side": 1,
+      "message": "can you add a comment here that if there is no LOCAL_NOTICE_FILE, this implies we should use the default license?",
+      "range": {
+        "startLine": 1475,
+        "startChar": 1,
+        "endLine": 1475,
+        "endChar": 59
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7562cfa5_1eae6ab8",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-29T16:39:22Z",
+      "side": 1,
+      "message": "There are no test cases that cover this code.",
+      "range": {
+        "startLine": 1519,
+        "startChar": 0,
+        "endLine": 1529,
+        "endChar": 7
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1336fbf7_9c8503ce",
+        "filename": "bpfix/bpfix/bpfix_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-29T16:39:22Z",
+      "side": 1,
+      "message": "instead of this heuristic, can we specify it\u0027s a fixStepsOnce?",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 3
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
