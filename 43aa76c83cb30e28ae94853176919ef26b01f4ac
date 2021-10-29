@@ -22,6 +22,30 @@
       },
       "revId": "43aa76c83cb30e28ae94853176919ef26b01f4ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c2dbb08_9a4203a5",
+        "filename": "android/makevars.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-29T22:11:05Z",
+      "side": 1,
+      "message": "No, absFrom is not a path in the source tree, so it can\u0027t be a dependency.  Its usually something like \"/apex/com.android.runtime/lib64/libc.so\" that will only exist on the device.",
+      "parentUuid": "ec01c90f_3a0e1976",
+      "range": {
+        "startLine": 474,
+        "startChar": 2,
+        "endLine": 476,
+        "endChar": 3
+      },
+      "revId": "43aa76c83cb30e28ae94853176919ef26b01f4ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
