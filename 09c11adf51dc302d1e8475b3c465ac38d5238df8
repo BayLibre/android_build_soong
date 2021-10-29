@@ -94,6 +94,30 @@
       },
       "revId": "09c11adf51dc302d1e8475b3c465ac38d5238df8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c825e15_5f1b95de",
+        "filename": "apex/key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-10-29T04:19:17Z",
+      "side": 1,
+      "message": "Thank you for the confirmation, Tianjie.\n\nJiyong, from Tianjie\u0027s answer, using the actual(install) path for the sign tool doesn\u0027t look right.",
+      "parentUuid": "dec951bf_7afef6b5",
+      "range": {
+        "startLine": 153,
+        "startChar": 26,
+        "endLine": 153,
+        "endChar": 42
+      },
+      "revId": "09c11adf51dc302d1e8475b3c465ac38d5238df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
