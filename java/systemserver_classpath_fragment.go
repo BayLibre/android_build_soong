@@ -58,12 +58,20 @@ func (p *platformSystemServerClasspathModule) AndroidMkEntries() (entries []andr
 func (p *platformSystemServerClasspathModule) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	configuredJars := p.configuredJars(ctx)
 	classpathJars := configuredJarListToClasspathJars(ctx, configuredJars, p.classpathType)
+	standaloneConfiguredJars := p.standaloneConfiguredJars(ctx)
+	standaloneClasspathJars := configuredJarListToClasspathJars(ctx, standaloneConfiguredJars, STANDALONE_SYSTEMSERVER_JARS)
+	configuredJars = configuredJars.AppendList(standaloneConfiguredJars)
+	classpathJars = append(classpathJars, standaloneClasspathJars...)
 	p.classpathFragmentBase().generateClasspathProtoBuildActions(ctx, configuredJars, classpathJars)
 }
 
 func (p *platformSystemServerClasspathModule) configuredJars(ctx android.ModuleContext) android.ConfiguredJarList {
 	// TODO(satayev): include any apex jars that don't populate their classpath proto config.
 	return dexpreopt.GetGlobalConfig(ctx).SystemServerJars
+}
+
+func (p *platformSystemServerClasspathModule) standaloneConfiguredJars(ctx android.ModuleContext) android.ConfiguredJarList {
+	return dexpreopt.GetGlobalConfig(ctx).StandaloneSystemServerJars
 }
 
 type SystemServerClasspathModule struct {
