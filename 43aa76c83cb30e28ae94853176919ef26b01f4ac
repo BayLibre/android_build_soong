@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec01c90f_3a0e1976",
+        "filename": "android/makevars.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-29T21:19:02Z",
+      "side": 1,
+      "message": "do we not need to handle absFrom also?",
+      "range": {
+        "startLine": 474,
+        "startChar": 2,
+        "endLine": 476,
+        "endChar": 3
+      },
+      "revId": "43aa76c83cb30e28ae94853176919ef26b01f4ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
