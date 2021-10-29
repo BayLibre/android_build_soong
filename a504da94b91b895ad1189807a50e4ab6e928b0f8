@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "507e19b8_a3e41a53",
+        "filename": "java/sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-29T16:55:07Z",
+      "side": 1,
+      "message": "These tests are just defining a baseline for the current behavior. Follow up changes will switch this to use `module-lib` but they cannot be made until the `prebuilts/sdk` directory has been updated.",
+      "parentUuid": "a8e43adf_4c26d303",
+      "range": {
+        "startLine": 307,
+        "startChar": 24,
+        "endLine": 307,
+        "endChar": 30
+      },
+      "revId": "a504da94b91b895ad1189807a50e4ab6e928b0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b804998_bab733e1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-29T16:48:22Z",
       "side": 1,
       "message": "module_lib?",
+      "range": {
+        "startLine": 339,
+        "startChar": 24,
+        "endLine": 339,
+        "endChar": 30
+      },
+      "revId": "a504da94b91b895ad1189807a50e4ab6e928b0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff8ae2a0_95826fd9",
+        "filename": "java/sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-29T16:55:07Z",
+      "side": 1,
+      "message": "As above.",
+      "parentUuid": "6b804998_bab733e1",
       "range": {
         "startLine": 339,
         "startChar": 24,
