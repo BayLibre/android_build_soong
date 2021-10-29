@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b852afd_035f1ff7",
+        "filename": "android/paths.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-29T19:55:39Z",
+      "side": 1,
+      "message": "godocs?",
+      "range": {
+        "startLine": 465,
+        "startChar": 5,
+        "endLine": 465,
+        "endChar": 20
+      },
+      "revId": "544ba33faed0738548c784cabdd2a35f9fa067d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
