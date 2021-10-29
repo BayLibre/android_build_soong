@@ -34,6 +34,24 @@
       "parentUuid": "cd772020_52f85305",
       "revId": "a43e273e219f3db488a7dd13f6d0ab103bf27d1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce997b0_4940867d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-10-29T16:46:41Z",
+      "side": 1,
+      "message": "I think the costs associated with maintaining two separate applications sharing the code are not justified in this case. And what are the other flags that affect emitting variable initialization code?",
+      "parentUuid": "75d428ce_0205ff03",
+      "revId": "a43e273e219f3db488a7dd13f6d0ab103bf27d1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
