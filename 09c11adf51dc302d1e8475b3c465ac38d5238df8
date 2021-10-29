@@ -70,6 +70,30 @@
       },
       "revId": "09c11adf51dc302d1e8475b3c465ac38d5238df8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dec951bf_7afef6b5",
+        "filename": "apex/key.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1088085
+      },
+      "writtenOn": "2021-10-29T00:30:40Z",
+      "side": 1,
+      "message": "No it\u0027s not. The google3 signer won\u0027t run sign_target_files_apks from android repo, though it will add binaries in otatools to $PATH",
+      "parentUuid": "824772d6_53fa6545",
+      "range": {
+        "startLine": 153,
+        "startChar": 26,
+        "endLine": 153,
+        "endChar": 42
+      },
+      "revId": "09c11adf51dc302d1e8475b3c465ac38d5238df8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
