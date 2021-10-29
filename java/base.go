@@ -452,6 +452,8 @@ type Module struct {
 
 	sdkVersion    android.SdkSpec
 	minSdkVersion android.SdkSpec
+
+	sourceExtensions []string
 }
 
 func (j *Module) CheckStableSdkVersion(ctx android.BaseModuleContext) error {
@@ -926,6 +928,13 @@ func (j *Module) collectJavacFlags(
 	return flags
 }
 
+func (j *Module) AddJSONData(d *map[string]interface{}) {
+	(*d)["Java"] = map[string]interface{}{
+		"SourceExtensions": j.sourceExtensions,
+	}
+
+}
+
 func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.deviceProperties.Aidl.Export_include_dirs)
 
@@ -936,6 +945,12 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		j.properties.Srcs = append(j.properties.Srcs, j.properties.Openjdk9.Srcs...)
 	}
 	srcFiles := android.PathsForModuleSrcExcludes(ctx, j.properties.Srcs, j.properties.Exclude_srcs)
+	j.sourceExtensions = []string{}
+	for _, ext := range []string{".kt", ".proto", ".aidl", ".java", ".logtags"} {
+		if hasSrcExt(srcFiles.Strings(), ext) {
+			j.sourceExtensions = append(j.sourceExtensions, ext)
+		}
+	}
 	if hasSrcExt(srcFiles.Strings(), ".proto") {
 		flags = protoFlags(ctx, &j.properties, &j.protoProperties, flags)
 	}
