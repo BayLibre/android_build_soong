@@ -45,6 +45,7 @@ func RegisterAppBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("override_android_test", OverrideAndroidTestModuleFactory)
 
 	android.RegisterBp2BuildMutator("android_app_certificate", AndroidAppCertificateBp2Build)
+	android.RegisterBp2BuildMutator("android_app", AppBp2Build)
 }
 
 // AndroidManifest.xml merging
@@ -139,6 +140,7 @@ type overridableAppProperties struct {
 }
 
 type AndroidApp struct {
+	android.BazelModuleBase
 	Library
 	aapt
 	android.OverridableModuleBase
@@ -1437,4 +1439,62 @@ func androidAppCertificateBp2BuildInternal(ctx android.TopDownMutatorContext, mo
 	}
 
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: module.Name()}, attrs)
+}
+
+type bazelAndroidAppAttributes struct {
+	Srcs           bazel.LabelListAttribute
+	Manifest       bazel.Label
+	Custom_package string
+	Resource_files bazel.LabelListAttribute
+}
+
+// func ReadPackageNameFromManifest(manifest string) string {
+
+// }
+
+// AppBp2Build is used for android_app.
+func AppBp2Build(ctx android.TopDownMutatorContext) {
+	a, ok := ctx.Module().(*AndroidApp)
+	if !ok || !a.ConvertWithBp2build(ctx) {
+		return
+	}
+	if ctx.ModuleType() != "android_app" {
+		return
+	}
+	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrcExcludes(ctx, a.properties.Srcs, a.properties.Exclude_srcs))
+
+	manifest := proptools.StringDefault(a.aaptProperties.Manifest, "AndroidManifest.xml")
+
+	manifestPackageName, overridden := ctx.DeviceConfig().OverrideManifestPackageNameFor(ctx.ModuleName())
+	if overridden || a.overridableAppProperties.Package_name != nil {
+		// The product override variable has a priority over the package_name property.
+		if !overridden {
+			manifestPackageName = *a.overridableAppProperties.Package_name
+		}
+	}
+
+	resourceDirs := android.PathsWithOptionalDefaultForModuleSrc(ctx, a.aaptProperties.Resource_dirs, "res")
+	resourceFiles := bazel.LabelList{
+		Includes: []bazel.Label{},
+	}
+	for _, dir := range resourceDirs {
+		files := androidResourceGlob(ctx, dir)
+		files = android.PathsWithModuleSrcSubDir(ctx, files, "")
+		for _, path := range files {
+			s := path.Rel()
+			resourceFiles.Includes = append(resourceFiles.Includes, bazel.Label{Label: s})
+		}
+	}
+
+	attrs := &bazelAndroidAppAttributes{
+		Srcs:           srcs,
+		Manifest:       android.BazelLabelForModuleSrcSingle(ctx, manifest),
+		Custom_package: manifestPackageName,
+		Resource_files: bazel.MakeLabelListAttribute(resourceFiles),
+	}
+	props := bazel.BazelTargetModuleProperties{Rule_class: "android_binary",
+		Bzl_load_location: "@rules_android//rules:rules.bzl"}
+
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: a.Name()}, attrs)
+
 }
