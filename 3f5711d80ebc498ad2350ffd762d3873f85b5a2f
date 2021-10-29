@@ -63,6 +63,30 @@
       },
       "revId": "3f5711d80ebc498ad2350ffd762d3873f85b5a2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67bc5239_2602e190",
+        "filename": "java/sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-10-29T16:55:04Z",
+      "side": 1,
+      "message": "OK. We should be able to dig one out for 31 if necessary (from sc-release), but it\u0027s a little fiddly",
+      "parentUuid": "f3d8c750_4e44ac9c",
+      "range": {
+        "startLine": 255,
+        "startChar": 24,
+        "endLine": 255,
+        "endChar": 30
+      },
+      "revId": "3f5711d80ebc498ad2350ffd762d3873f85b5a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
