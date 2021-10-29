@@ -33,6 +33,23 @@
       "message": "Colin, could you please take a look of the latest patch again?\nAre there other tests I can run?\nThanks.\n",
       "revId": "ec7a1207afd0036b13a4f984825b4ee1e27abf8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0c4fcf6_c8728587",
+        "filename": "android/module.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1775,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-10-29T23:42:37Z",
+      "side": 1,
+      "message": "if !ctx.Config().KatiEnabled() || !shouldSkipAndroidMkProcessing(a)\n\nThat way it won\u0027t affect Soong-only builds",
+      "revId": "ec7a1207afd0036b13a4f984825b4ee1e27abf8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
