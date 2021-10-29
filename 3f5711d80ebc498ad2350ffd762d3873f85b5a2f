@@ -39,6 +39,30 @@
       },
       "revId": "3f5711d80ebc498ad2350ffd762d3873f85b5a2f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3d8c750_4e44ac9c",
+        "filename": "java/sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-10-29T16:52:40Z",
+      "side": 1,
+      "message": "Not yet. This is adding some baseline tests so that the impact of follow up changes is clear. In the case of any version before current it will have to be public as we do not have a module-lib core-for-system-modules.jar file to use for 30, 31. BTW they are the only releases with a core-for-system-modules.jar file and so the only ones that can be used to build java 9 code.",
+      "parentUuid": "c56c08ee_6625445b",
+      "range": {
+        "startLine": 255,
+        "startChar": 24,
+        "endLine": 255,
+        "endChar": 30
+      },
+      "revId": "3f5711d80ebc498ad2350ffd762d3873f85b5a2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
