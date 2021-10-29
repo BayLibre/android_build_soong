@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48d1cd71_e1a3ee3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-29T14:49:42Z",
+      "side": 1,
+      "message": "LGTM; might be nice to add a test to show the new messages and verify nothing functionally changed, but a read shows nothing really should\u0027ve... I think the existing tests should suffice, though.",
+      "revId": "11317fe6d3da66be9d9f3a7b3943b576b7fe30f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
