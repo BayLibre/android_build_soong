@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8450f98_77f1613b",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-10-29T16:17:19Z",
+      "side": 1,
+      "message": "Apparently TestConfig and testCcWithConfig are deprecated. The comments say \"look to testCc for how to do it Correctly\". But `testCc` and its siblings are *also* deprecated, and don\u0027t really speak of a way to \"do it Correctly\"; only mentioning:\n```\n// If it is necessary to customize the behavior of an existing test that uses this then please first\n// convert the test to using prepareForCcTest first and then in a following change add the\n// appropriate fixture preparers. Keeping the conversion change separate makes it easy to verify\n// that it did not change the test behavior unexpectedly.\n```",
+      "revId": "ed7f0f28c23d092e0dd29935ba872aec5e632282",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
