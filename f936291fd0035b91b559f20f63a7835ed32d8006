@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c714b48_1f933ab1",
+        "filename": "android/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-10-29T19:59:56Z",
+      "side": 1,
+      "message": "optional: might be nice to reuse this in the PathForGoBinary",
+      "range": {
+        "startLine": 571,
+        "startChar": 9,
+        "endLine": 571,
+        "endChar": 94
+      },
+      "revId": "f936291fd0035b91b559f20f63a7835ed32d8006",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
