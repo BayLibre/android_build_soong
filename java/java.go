@@ -188,6 +188,8 @@ var (
 
 // JavaInfo contains information about a java module for use by modules that depend on it.
 type JavaInfo struct {
+	SourceExtensions []string
+
 	// HeaderJars is a list of jars that can be passed as the javac classpath in order to link
 	// against this module.  If empty, ImplementationJars should be used instead.
 	HeaderJars android.Paths
@@ -232,6 +234,12 @@ type JavaInfo struct {
 }
 
 var JavaInfoProvider = blueprint.NewProvider(JavaInfo{})
+
+func (i JavaInfo) AddJSONData(d *map[string]interface{}) {
+	(*d)["Java"] = map[string]interface{}{
+		"SourceExtensions": i.SourceExtensions,
+	}
+}
 
 // SyspropPublicStubInfo contains info about the sysprop public stub library that corresponds to
 // the sysprop implementation library.
