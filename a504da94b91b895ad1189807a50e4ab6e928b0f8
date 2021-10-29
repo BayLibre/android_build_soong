@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8e43adf_4c26d303",
+        "filename": "java/sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-10-29T16:48:22Z",
+      "side": 1,
+      "message": "module_lib ?",
+      "range": {
+        "startLine": 307,
+        "startChar": 24,
+        "endLine": 307,
+        "endChar": 30
+      },
+      "revId": "a504da94b91b895ad1189807a50e4ab6e928b0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b804998_bab733e1",
+        "filename": "java/sdk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-10-29T16:48:22Z",
+      "side": 1,
+      "message": "module_lib?",
+      "range": {
+        "startLine": 339,
+        "startChar": 24,
+        "endLine": 339,
+        "endChar": 30
+      },
+      "revId": "a504da94b91b895ad1189807a50e4ab6e928b0f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
