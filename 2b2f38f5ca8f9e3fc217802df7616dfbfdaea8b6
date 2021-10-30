@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b180e293_592fb5e7",
+        "filename": "androidmk/androidmk/androidmk_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-10-30T00:59:16Z",
+      "side": 1,
+      "message": "Good point. I will check the tests for LOCAL_RESOURCE_DIR soon. But one thing to me is that: if we use an existing infrastructure, or an existing Android.mk file, then it will not valid after it is converted to an Android.bp one. Or the test needs an Android.mk file. The same situation to adding the related test cases in the bpfix_test.go.",
+      "parentUuid": "1133e8df_4511c6f7",
+      "range": {
+        "startLine": 1540,
+        "startChar": 2,
+        "endLine": 1542,
+        "endChar": 55
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37027b0c_cc854d40",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 7
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-29T16:39:22Z",
       "side": 1,
       "message": "According to Bob\u0027s statements in your doc, we should only add a package module if the license is the same for all modules within the blueprint -- this function doesn\u0027t appear to verify the license is the same across modules",
+      "range": {
+        "startLine": 1451,
+        "startChar": 5,
+        "endLine": 1451,
+        "endChar": 29
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcf6f948_34f3f75e",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-10-30T00:59:16Z",
+      "side": 1,
+      "message": "You are right. My understanding is that the license lines were added recently in a consistent way. When the license lines were added to the Make modules on the same file, the same license lines had been added. Please correct me if I am wrong, bbadour@. So in this version, I just convert the license part from the first module if there are more than one modules on the same file.\n\nI was planning to convert the licenses for all the modules, or each module will have a license module. Then compare these license modules. If all of them are the same, then just move all of them except the first one; if observe diff, report an error. (the comparison can be done without generating the license modules as well, by using the converted content from the androidmk process.).\n\nBut the question is, if different licenses are observed for different module in the same Android.mk file, how do we handle it?\n\nBack to my understanding on the top, I think there should be no such case (different licenses are observed for different module in the same Android.mk file).",
+      "parentUuid": "37027b0c_cc854d40",
       "range": {
         "startLine": 1451,
         "startChar": 5,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "500f836b_7c20b7f0",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1462,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-10-30T00:59:16Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "a940bc2a_e3c3f3f6",
+      "range": {
+        "startLine": 1459,
+        "startChar": 0,
+        "endLine": 1462,
+        "endChar": 2
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "33956ae6_78767699",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 7
@@ -100,6 +172,30 @@
       "writtenOn": "2021-10-29T16:39:22Z",
       "side": 1,
       "message": "these should start with a lower-case -- in go starting a variable with a capital letter indicates that it is exported.\n\nif you\u0027re looking for these to be constants, can define them outside of this function, but should still start with a lowercase",
+      "range": {
+        "startLine": 1464,
+        "startChar": 1,
+        "endLine": 1464,
+        "endChar": 17
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8a04b14_ed0d1cd6",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-10-30T00:59:16Z",
+      "side": 1,
+      "message": "I see. Will update. Thanks!",
+      "parentUuid": "33956ae6_78767699",
       "range": {
         "startLine": 1464,
         "startChar": 1,
@@ -135,6 +231,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b30683d4_72703f8d",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-10-30T00:59:16Z",
+      "side": 1,
+      "message": "Okay.",
+      "parentUuid": "f894f6b3_4e16b0cd",
+      "range": {
+        "startLine": 1465,
+        "startChar": 6,
+        "endLine": 1465,
+        "endChar": 34
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "19ac10b8_d8f3931e",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 7
@@ -158,6 +278,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea6d0cca_c288df20",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-10-30T00:59:16Z",
+      "side": 1,
+      "message": "Yeah, it is a typo. Will update.",
+      "parentUuid": "19ac10b8_d8f3931e",
+      "range": {
+        "startLine": 1466,
+        "startChar": 51,
+        "endLine": 1466,
+        "endChar": 57
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5333a2cd_fae5bf82",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 7
@@ -169,6 +313,30 @@
       "writtenOn": "2021-10-29T16:39:22Z",
       "side": 1,
       "message": "nit: defaultApplicableLicense",
+      "range": {
+        "startLine": 1471,
+        "startChar": 1,
+        "endLine": 1471,
+        "endChar": 23
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "658ad966_c4b6da9b",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-10-30T00:59:16Z",
+      "side": 1,
+      "message": "Will update.",
+      "parentUuid": "5333a2cd_fae5bf82",
       "range": {
         "startLine": 1471,
         "startChar": 1,
@@ -227,6 +395,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ac6dac0_aa5b7b82",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-10-30T00:59:16Z",
+      "side": 1,
+      "message": "plan to change it to licensePatch.",
+      "parentUuid": "c454bed3_44016621",
+      "range": {
+        "startLine": 1474,
+        "startChar": 1,
+        "endLine": 1474,
+        "endChar": 4
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d6df73b_8a2bdfa8",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-10-30T00:59:16Z",
+      "side": 1,
+      "message": "Will update.",
+      "parentUuid": "5d21502c_dbd4f611",
+      "range": {
+        "startLine": 1472,
+        "startChar": 1,
+        "endLine": 1474,
+        "endChar": 10
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e01fd1e_fc1c14be",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 7
@@ -238,6 +454,30 @@
       "writtenOn": "2021-10-29T16:39:22Z",
       "side": 1,
       "message": "can you add a comment here that if there is no LOCAL_NOTICE_FILE, this implies we should use the default license?",
+      "range": {
+        "startLine": 1475,
+        "startChar": 1,
+        "endLine": 1475,
+        "endChar": 59
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44e20c56_d8aa6528",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-10-30T00:59:16Z",
+      "side": 1,
+      "message": "Sure.",
+      "parentUuid": "8e01fd1e_fc1c14be",
       "range": {
         "startLine": 1475,
         "startChar": 1,
@@ -273,6 +513,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "539a199e_f88b9b19",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-10-30T00:59:16Z",
+      "side": 1,
+      "message": "Yeah. This part of codes needs an Android.mk file used in the test. Previously I did not add this kind of test since need to add an Android.mk file (In addition, manual tests with the existing Android.mk files work as expected so far). I will work on the direction, to see how to add some necessary Android.mk/Android.bp files for tests.",
+      "parentUuid": "7562cfa5_1eae6ab8",
+      "range": {
+        "startLine": 1519,
+        "startChar": 0,
+        "endLine": 1529,
+        "endChar": 7
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1336fbf7_9c8503ce",
         "filename": "bpfix/bpfix/bpfix_test.go",
         "patchSetId": 7
@@ -284,6 +548,30 @@
       "writtenOn": "2021-10-29T16:39:22Z",
       "side": 1,
       "message": "instead of this heuristic, can we specify it\u0027s a fixStepsOnce?",
+      "range": {
+        "startLine": 164,
+        "startChar": 3,
+        "endLine": 167,
+        "endChar": 3
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3754ab0a_d2f7aecd",
+        "filename": "bpfix/bpfix/bpfix_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-10-30T00:59:16Z",
+      "side": 1,
+      "message": "Okay, I think I can modify this function a little bit, to achieve the fixStepsOnce as well.",
+      "parentUuid": "1336fbf7_9c8503ce",
       "range": {
         "startLine": 164,
         "startChar": 3,
