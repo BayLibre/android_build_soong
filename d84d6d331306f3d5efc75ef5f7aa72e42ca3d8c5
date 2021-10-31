@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cae8f03_2e581eb4",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-10-31T12:15:09Z",
+      "side": 1,
+      "message": "A bool property that defaults to true seems counter-intuitive. How about negating the meaning of the property or explicitly say in the comment that the default value is true?",
+      "range": {
+        "startLine": 98,
+        "startChar": 63,
+        "endLine": 98,
+        "endChar": 67
+      },
+      "revId": "d84d6d331306f3d5efc75ef5f7aa72e42ca3d8c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c04e89ce_110a2066",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-10-31T12:15:09Z",
+      "side": 1,
+      "message": "consider unwrap this. \n\nhttps://g3doc.corp.google.com/go/g3doc/style/decisions.md?cl\u003dhead#indentation-confusion",
+      "range": {
+        "startLine": 98,
+        "startChar": 69,
+        "endLine": 99,
+        "endChar": 29
+      },
+      "revId": "d84d6d331306f3d5efc75ef5f7aa72e42ca3d8c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06bf077d_e5220e5d",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-10-31T12:15:09Z",
+      "side": 1,
+      "message": "Apex_name -\u003e `apex_name`",
+      "range": {
+        "startLine": 139,
+        "startChar": 42,
+        "endLine": 139,
+        "endChar": 51
+      },
+      "revId": "d84d6d331306f3d5efc75ef5f7aa72e42ca3d8c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
