@@ -52,6 +52,24 @@
       "parentUuid": "75d428ce_0205ff03",
       "revId": "a43e273e219f3db488a7dd13f6d0ab103bf27d1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13a4fe46_f90207bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-01T19:13:58Z",
+      "side": 1,
+      "message": "I disagree. I think maintaining two separate applications is less than the cost of maintaining one mega application. \n\nMost of the flags don\u0027t affect the variable conversion code, and that\u0027s confusing. You need to maintain a mental map of what flags apply to what kind of conversion mode.\n\nIf you really don\u0027t want to do a separate binary, one other acceptable solution I can think of would be to make mk2rbc require a subcommand to run, and then each subcommand only accepts certain flags, like git. Would you prefer that solution?",
+      "parentUuid": "7ce997b0_4940867d",
+      "revId": "a43e273e219f3db488a7dd13f6d0ab103bf27d1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
