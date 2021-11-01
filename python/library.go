@@ -17,17 +17,14 @@ package python
 // This file contains the module types for building Python library.
 
 import (
-	"fmt"
-
 	"android/soong/android"
 	"android/soong/bazel"
+
 	"github.com/google/blueprint/proptools"
 )
 
 func init() {
 	registerPythonLibraryComponents(android.InitRegistrationContext)
-	android.RegisterBp2BuildMutator("python_library_host", PythonLibraryHostBp2Build)
-	android.RegisterBp2BuildMutator("python_library", PythonLibraryBp2Build)
 }
 
 func registerPythonLibraryComponents(ctx android.RegistrationContext) {
@@ -49,25 +46,7 @@ type bazelPythonLibraryAttributes struct {
 	Srcs_version string
 }
 
-func PythonLibraryHostBp2Build(ctx android.TopDownMutatorContext) {
-	pythonLibBp2Build(ctx, "python_library_host")
-}
-
-func PythonLibraryBp2Build(ctx android.TopDownMutatorContext) {
-	pythonLibBp2Build(ctx, "python_library")
-}
-
-func pythonLibBp2Build(ctx android.TopDownMutatorContext, modType string) {
-	m, ok := ctx.Module().(*Module)
-	if !ok || !m.ConvertWithBp2build(ctx) {
-		return
-	}
-
-	// a Module can be something other than a `modType`
-	if ctx.ModuleType() != modType {
-		return
-	}
-
+func pythonLibBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 	// TODO(b/182306917): this doesn't fully handle all nested props versioned
 	// by the python version, which would have been handled by the version split
 	// mutator. This is sufficient for very simple python_library modules under
@@ -80,9 +59,7 @@ func pythonLibBp2Build(ctx android.TopDownMutatorContext, modType string) {
 	} else if !py2Enabled && py3Enabled {
 		python_version = "PY3"
 	} else if !py2Enabled && !py3Enabled {
-		panic(fmt.Errorf(
-			"error for '%s' module: bp2build's %s converter doesn't understand having "+
-				"neither py2 nor py3 enabled", m.Name(), modType))
+		ctx.ModuleErrorf("bp2build converter doesn't understand having neither py2 nor py3 enabled")
 	} else {
 		// do nothing, since python_version defaults to PY2ANDPY3
 	}

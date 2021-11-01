@@ -479,7 +479,7 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 }
 
 func NewTest(hod android.HostOrDeviceSupported) *Module {
-	module, binary := NewBinary(hod)
+	module, binary := newBinary(hod, false)
 	module.multilib = android.MultilibBoth
 	binary.baseInstaller = NewTestInstaller()
 
@@ -569,6 +569,10 @@ type benchmarkDecorator struct {
 	testConfig android.Path
 }
 
+func (benchmark *benchmarkDecorator) benchmarkBinary() bool {
+	return true
+}
+
 func (benchmark *benchmarkDecorator) linkerInit(ctx BaseModuleContext) {
 	runpath := "../../lib"
 	if ctx.toolchain().Is64Bit() {
@@ -606,7 +610,7 @@ func (benchmark *benchmarkDecorator) install(ctx ModuleContext, file android.Pat
 }
 
 func NewBenchmark(hod android.HostOrDeviceSupported) *Module {
-	module, binary := NewBinary(hod)
+	module, binary := newBinary(hod, false)
 	module.multilib = android.MultilibBoth
 	binary.baseInstaller = NewBaseInstaller("benchmarktest", "benchmarktest64", InstallInData)
 

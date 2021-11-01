@@ -275,6 +275,10 @@ func (defaultable *DefaultableModuleBase) applyDefaultProperties(ctx TopDownMuta
 	}
 }
 
+// ConvertWithBp2build to fulfill Bazelable interface; however, at this time defaultable module are
+// *NOT* converted with bp2build
+func (defaultable *DefaultableModuleBase) ConvertWithBp2build(ctx TopDownMutatorContext) {}
+
 func RegisterDefaultsPreArchMutators(ctx RegisterMutatorsContext) {
 	ctx.BottomUp("defaults_deps", defaultsDepsMutator).Parallel()
 	ctx.TopDown("defaults", defaultsMutator).Parallel()

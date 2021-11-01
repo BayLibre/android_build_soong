@@ -16,10 +16,9 @@ func runBp2BuildTestCaseWithLibs(t *testing.T, tc bp2buildTestCase) {
 
 func TestPythonBinaryHostSimple(t *testing.T) {
 	runBp2BuildTestCaseWithLibs(t, bp2buildTestCase{
-		description:                        "simple python_binary_host converts to a native py_binary",
-		moduleTypeUnderTest:                "python_binary_host",
-		moduleTypeUnderTestFactory:         python.PythonBinaryHostFactory,
-		moduleTypeUnderTestBp2BuildMutator: python.PythonBinaryBp2Build,
+		description:                "simple python_binary_host converts to a native py_binary",
+		moduleTypeUnderTest:        "python_binary_host",
+		moduleTypeUnderTestFactory: python.PythonBinaryHostFactory,
 		filesystem: map[string]string{
 			"a.py":           "",
 			"b/c.py":         "",
@@ -39,7 +38,7 @@ func TestPythonBinaryHostSimple(t *testing.T) {
     python_library_host {
       name: "bar",
       srcs: ["b/e.py"],
-      bazel_module: { bp2build_available: true },
+      bazel_module: { bp2build_available: false },
     }`,
 		expectedBazelTargets: []string{`py_binary(
     name = "foo",
@@ -58,10 +57,9 @@ func TestPythonBinaryHostSimple(t *testing.T) {
 
 func TestPythonBinaryHostPy2(t *testing.T) {
 	runBp2BuildTestCaseSimple(t, bp2buildTestCase{
-		description:                        "py2 python_binary_host",
-		moduleTypeUnderTest:                "python_binary_host",
-		moduleTypeUnderTestFactory:         python.PythonBinaryHostFactory,
-		moduleTypeUnderTestBp2BuildMutator: python.PythonBinaryBp2Build,
+		description:                "py2 python_binary_host",
+		moduleTypeUnderTest:        "python_binary_host",
+		moduleTypeUnderTestFactory: python.PythonBinaryHostFactory,
 		blueprint: `python_binary_host {
     name: "foo",
     srcs: ["a.py"],
@@ -88,10 +86,9 @@ func TestPythonBinaryHostPy2(t *testing.T) {
 
 func TestPythonBinaryHostPy3(t *testing.T) {
 	runBp2BuildTestCaseSimple(t, bp2buildTestCase{
-		description:                        "py3 python_binary_host",
-		moduleTypeUnderTest:                "python_binary_host",
-		moduleTypeUnderTestFactory:         python.PythonBinaryHostFactory,
-		moduleTypeUnderTestBp2BuildMutator: python.PythonBinaryBp2Build,
+		description:                "py3 python_binary_host",
+		moduleTypeUnderTest:        "python_binary_host",
+		moduleTypeUnderTestFactory: python.PythonBinaryHostFactory,
 		blueprint: `python_binary_host {
     name: "foo",
     srcs: ["a.py"],
@@ -119,10 +116,9 @@ func TestPythonBinaryHostPy3(t *testing.T) {
 
 func TestPythonBinaryHostArchVariance(t *testing.T) {
 	runBp2BuildTestCaseSimple(t, bp2buildTestCase{
-		description:                        "test arch variants",
-		moduleTypeUnderTest:                "python_binary_host",
-		moduleTypeUnderTestFactory:         python.PythonBinaryHostFactory,
-		moduleTypeUnderTestBp2BuildMutator: python.PythonBinaryBp2Build,
+		description:                "test arch variants",
+		moduleTypeUnderTest:        "python_binary_host",
+		moduleTypeUnderTestFactory: python.PythonBinaryHostFactory,
 		filesystem: map[string]string{
 			"dir/arm.py": "",
 			"dir/x86.py": "",
