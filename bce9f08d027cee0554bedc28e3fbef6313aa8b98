@@ -22,6 +22,30 @@
       },
       "revId": "bce9f08d027cee0554bedc28e3fbef6313aa8b98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cd0c769_cfcaa481",
+        "filename": "java/core-libraries/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-11-01T15:54:40Z",
+      "side": 1,
+      "message": "I didn\u0027t want to add to that directory just in case some script somewhere was expecting those files to all be stub API jars (which this isn\u0027t).",
+      "parentUuid": "aa5463f3_f7ea2374",
+      "range": {
+        "startLine": 136,
+        "startChar": 15,
+        "endLine": 136,
+        "endChar": 29
+      },
+      "revId": "bce9f08d027cee0554bedc28e3fbef6313aa8b98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
