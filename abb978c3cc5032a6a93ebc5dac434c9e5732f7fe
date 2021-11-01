@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8298dfd4_4379924d",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2021-11-01T18:26:27Z",
+      "side": 1,
+      "message": "If this is equivalent (I haven\u0027t verified, but it seems plausible), why not just always do this, rather than only doing it when -lstatic is unavailable?",
+      "revId": "abb978c3cc5032a6a93ebc5dac434c9e5732f7fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
