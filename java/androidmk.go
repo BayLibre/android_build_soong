@@ -17,6 +17,7 @@ package java
 import (
 	"fmt"
 	"io"
+	"sync"
 
 	"android/soong/android"
 )
@@ -529,6 +530,11 @@ func (ddoc *Droiddoc) AndroidMkEntries() []android.AndroidMkEntries {
 	}}
 }
 
+var dstubsUpdateApiOnce sync.Once
+var dstubsUpdateApiScript = "$(OUT_DIR)/soong/.intermediates/update-api-script.sh"
+var dstubsUpdateApiWarningMsg = `\\e[33mWarning: You are building update*-api, which writes to the source tree. This will eventually be deprecated. Please consider using the alternate build script update-api.sh\\e[0m\\n$$ lunch \<target\> \(one time\)\\n$$ update-api.sh -h \(for more details\)`
+var dstubsUpdateApiWarningCmd = "; echo -e " + dstubsUpdateApiWarningMsg
+
 func (dstubs *Droidstubs) AndroidMkEntries() []android.AndroidMkEntries {
 	// If the stubsSrcJar is not generated (because generate_stubs is false) then
 	// use the api file as the output file to ensure the relevant phony targets
@@ -588,7 +594,18 @@ func (dstubs *Droidstubs) AndroidMkEntries() []android.AndroidMkEntries {
 				if dstubs.updateCurrentApiTimestamp != nil {
 					fmt.Fprintln(w, ".PHONY:", dstubs.Name()+"-update-current-api")
 					fmt.Fprintln(w, dstubs.Name()+"-update-current-api:",
-						dstubs.updateCurrentApiTimestamp.String())
+						dstubs.updateCurrentApiTimestamp.String(),
+						dstubs.updateCurrentApiScript.String(),
+						dstubsUpdateApiWarningCmd)
+
+					// update-api-script.sh is a cat of all update API scripts
+					dstubsUpdateApiOnce.Do(func() {
+						fmt.Fprintln(w, "update-api:",
+							dstubsUpdateApiScript,
+							dstubsUpdateApiWarningCmd)
+						fmt.Fprintln(w, dstubsUpdateApiScript, ": ; cat $^ > $@ && chmod +x $@")
+					})
+					fmt.Fprintln(w, dstubsUpdateApiScript, ":", dstubs.updateCurrentApiScript.String())
 
 					fmt.Fprintln(w, ".PHONY: update-api")
 					fmt.Fprintln(w, "update-api:",

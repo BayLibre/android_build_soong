@@ -58,6 +58,7 @@ type Droidstubs struct {
 
 	checkCurrentApiTimestamp      android.WritablePath
 	updateCurrentApiTimestamp     android.WritablePath
+	updateCurrentApiScript        android.WritablePath
 	checkLastReleasedApiTimestamp android.WritablePath
 	apiLintTimestamp              android.WritablePath
 	apiLintReport                 android.WritablePath
@@ -716,6 +717,7 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		rule.Build("metalavaCurrentApiCheck", "check current API")
 
 		d.updateCurrentApiTimestamp = android.PathForModuleOut(ctx, "metalava", "update_current_api.timestamp")
+		d.updateCurrentApiScript = android.PathForModuleOut(ctx, "metalava", "update_current_api.sh")
 
 		// update API rule
 		rule = android.NewRuleBuilder(pctx, ctx)
@@ -740,6 +742,32 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			Text(")")
 
 		rule.Build("metalavaCurrentApiUpdate", "update current API")
+
+		// Rule for creating update API helper script
+		// the generated script is run outside the build to update the public API
+		rule = android.NewRuleBuilder(pctx, ctx)
+
+		rule.Command().Text("( true")
+
+		rule.Command().
+			Text("echo cp").Flag("-f").
+			Input(d.apiFile).Flag(apiFile.String()).
+			Flag("\\&\\&").
+			Text("cp").Flag("-f").
+			Input(d.removedApiFile).Flag(removedApiFile.String()).
+			Flag(">").Output(d.updateCurrentApiScript)
+
+		msg = "failed to create update public API scripts"
+
+		rule.Command().
+			Text("chmod").Flag("+x").Output(d.updateCurrentApiScript).
+			Text(") || (").
+			Text("echo").Flag("-e").Flag(`"` + msg + `"`).
+			Text("; exit 38").
+			Text(")")
+
+		rule.Build("metalavaCurrentApiUpdateScript", "update current API script")
+
 	}
 
 	if String(d.properties.Check_nullability_warnings) != "" {
