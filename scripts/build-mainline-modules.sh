@@ -24,6 +24,7 @@ MODULES_SDK_AND_EXPORTS=(
   i18n-module-host-exports
   i18n-module-sdk
   i18n-module-test-exports
+  networkstack-module-device-exports
   platform-mainline-sdk
   platform-mainline-test-exports
   runtime-module-host-exports
