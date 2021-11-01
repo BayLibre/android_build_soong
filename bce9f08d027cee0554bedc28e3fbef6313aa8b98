@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa5463f3_f7ea2374",
+        "filename": "java/core-libraries/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-11-01T15:40:22Z",
+      "side": 1,
+      "message": "isn\u0027t api_stubs a reasonable directory for this as well? It\u0027s basically the same thing isn\u0027t it? Just seems kind of unnecessary to make a new subdir tree for it.",
+      "range": {
+        "startLine": 136,
+        "startChar": 15,
+        "endLine": 136,
+        "endChar": 29
+      },
+      "revId": "bce9f08d027cee0554bedc28e3fbef6313aa8b98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
