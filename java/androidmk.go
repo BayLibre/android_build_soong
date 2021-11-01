@@ -17,6 +17,7 @@ package java
 import (
 	"fmt"
 	"io"
+	"sync"
 
 	"android/soong/android"
 )
@@ -529,6 +530,10 @@ func (ddoc *Droiddoc) AndroidMkEntries() []android.AndroidMkEntries {
 	}}
 }
 
+var dstubsUpdateApiOnce sync.Once
+var dstubsUpdateApiWarningMsg = `\\e[33mWarning: You are building update*-api, which writes to the source tree. This will eventually be deprecated. Please consider using the alternate build script update-api\\e[0m\\n$$ lunch \<target\> \(one time\)\\n$$ update-api -h \(for more details\)`
+var dstubsUpdateApiRunAndWarnCmd = "; /bin/bash $^ && echo -e " + dstubsUpdateApiWarningMsg
+
 func (dstubs *Droidstubs) AndroidMkEntries() []android.AndroidMkEntries {
 	// If the stubsSrcJar is not generated (because generate_stubs is false) then
 	// use the api file as the output file to ensure the relevant phony targets
@@ -585,14 +590,22 @@ func (dstubs *Droidstubs) AndroidMkEntries() []android.AndroidMkEntries {
 					fmt.Fprintln(w, ".PHONY: droidcore")
 					fmt.Fprintln(w, "droidcore: checkapi")
 				}
-				if dstubs.updateCurrentApiTimestamp != nil {
+				if dstubs.updateCurrentApiScript != nil {
 					fmt.Fprintln(w, ".PHONY:", dstubs.Name()+"-update-current-api")
 					fmt.Fprintln(w, dstubs.Name()+"-update-current-api:",
-						dstubs.updateCurrentApiTimestamp.String())
+						dstubs.updateCurrentApiScript.String(),
+						dstubsUpdateApiRunAndWarnCmd)
 
-					fmt.Fprintln(w, ".PHONY: update-api")
-					fmt.Fprintln(w, "update-api:",
-						dstubs.updateCurrentApiTimestamp.String())
+					dstubsUpdateApiOnce.Do(func() {
+						fmt.Fprintln(w, ".PHONY: update-api")
+						fmt.Fprintln(w, "update-api:",
+							dstubs.globalUpdateCurrentApiScript,
+							dstubsUpdateApiRunAndWarnCmd)
+						// global update script is a cat of all update scripts
+						fmt.Fprintln(w, dstubs.globalUpdateCurrentApiScript, ": ; cat $^ > $@ && chmod +x $@")
+					})
+					fmt.Fprintln(w, dstubs.globalUpdateCurrentApiScript, ":", dstubs.updateCurrentApiScript.String())
+
 				}
 				if dstubs.checkLastReleasedApiTimestamp != nil {
 					fmt.Fprintln(w, ".PHONY:", dstubs.Name()+"-check-last-released-api")
