@@ -94,6 +94,30 @@
       },
       "revId": "bce9f08d027cee0554bedc28e3fbef6313aa8b98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3206a2b1_521208db",
+        "filename": "java/core-libraries/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-11-01T17:00:02Z",
+      "side": 1,
+      "message": "yeah, but only to store the files where we want them stored: prebuilts/sdk/\u003cx\u003e/. I guess my point is that if you put them in apistubs/.. you wouldn\u0027t need to update the script.",
+      "parentUuid": "fb795ea7_a1a736ea",
+      "range": {
+        "startLine": 136,
+        "startChar": 15,
+        "endLine": 136,
+        "endChar": 29
+      },
+      "revId": "bce9f08d027cee0554bedc28e3fbef6313aa8b98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
