@@ -15,11 +15,14 @@
 package rust
 
 import (
+	"fmt"
+
+	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
+
 	"android/soong/android"
 	"android/soong/cc"
 	"android/soong/rust/config"
-	"fmt"
-	"github.com/google/blueprint"
 )
 
 type SanitizeProperties struct {
@@ -79,7 +82,43 @@ func (sanitize *sanitize) props() []interface{} {
 }
 
 func (sanitize *sanitize) begin(ctx BaseModuleContext) {
-	s := sanitize.Properties.Sanitize
+	s := &sanitize.Properties.Sanitize
+
+	// Never always wins.
+	if Bool(s.Never) {
+		return
+	}
+
+	var globalSanitizers []string
+
+	if ctx.Host() {
+		if !ctx.Windows() {
+			globalSanitizers = ctx.Config().SanitizeHost()
+		}
+	} else {
+		arches := ctx.Config().SanitizeDeviceArch()
+		if len(arches) == 0 || android.InList(ctx.Arch().ArchType.Name, arches) {
+			globalSanitizers = ctx.Config().SanitizeDevice()
+		}
+	}
+
+	if len(globalSanitizers) > 0 {
+		var found bool
+
+		// Global Sanitizers
+		if found, globalSanitizers = android.RemoveFromList("hwaddress", globalSanitizers); found && s.Hwaddress == nil {
+			s.Hwaddress = proptools.BoolPtr(true)
+		}
+
+		if found, globalSanitizers = android.RemoveFromList("address", globalSanitizers); found && s.Address == nil {
+			s.Address = proptools.BoolPtr(true)
+		}
+
+		if found, globalSanitizers = android.RemoveFromList("fuzzer", globalSanitizers); found && s.Fuzzer == nil {
+			s.Fuzzer = proptools.BoolPtr(true)
+		}
+
+	}
 
 	// TODO:(b/178369775)
 	// For now sanitizing is only supported on devices
@@ -96,7 +135,7 @@ func (sanitize *sanitize) begin(ctx BaseModuleContext) {
 		s.Hwaddress = nil
 	}
 
-	if ctx.Os() == android.Android && Bool(s.Hwaddress) {
+	if ctx.Os() == android.Android && (Bool(s.Hwaddress) || Bool(s.Address)) {
 		sanitize.Properties.SanitizerEnabled = true
 	}
 }
@@ -268,6 +307,10 @@ func (mod *Module) SanitizerSupported(t cc.SanitizerType) bool {
 	case cc.Asan:
 		return true
 	case cc.Hwasan:
+		// TODO(b/180495975): HWASan for static Rust binaries isn't supported yet.
+		if mod.StaticExecutable() {
+			return false
+		}
 		return true
 	default:
 		return false
