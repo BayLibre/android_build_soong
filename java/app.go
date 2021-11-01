@@ -43,9 +43,6 @@ func RegisterAppBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("android_app_certificate", AndroidAppCertificateFactory)
 	ctx.RegisterModuleType("override_android_app", OverrideAndroidAppModuleFactory)
 	ctx.RegisterModuleType("override_android_test", OverrideAndroidTestModuleFactory)
-
-	android.RegisterBp2BuildMutator("android_app_certificate", AndroidAppCertificateBp2Build)
-	android.RegisterBp2BuildMutator("android_app", AppBp2Build)
 }
 
 // AndroidManifest.xml merging
@@ -945,6 +942,7 @@ func AndroidAppFactory() android.Module {
 	android.InitDefaultableModule(module)
 	android.InitOverridableModule(module, &module.appProperties.Overrides)
 	android.InitApexModule(module)
+	android.InitBazelModule(module)
 
 	return module
 }
@@ -1407,23 +1405,11 @@ type bazelAndroidAppCertificateAttributes struct {
 	Certificate string
 }
 
-func AndroidAppCertificateBp2Build(ctx android.TopDownMutatorContext) {
-	module, ok := ctx.Module().(*AndroidAppCertificate)
-	if !ok {
-		// Not an Android app certificate
-		return
-	}
-	if !module.ConvertWithBp2build(ctx) {
-		return
-	}
-	if ctx.ModuleType() != "android_app_certificate" {
-		return
-	}
-
-	androidAppCertificateBp2BuildInternal(ctx, module)
+func (m *AndroidAppCertificate) Bp2buildConversion(ctx android.TopDownMutatorContext) {
+	androidAppCertificateBp2Build(ctx, m)
 }
 
-func androidAppCertificateBp2BuildInternal(ctx android.TopDownMutatorContext, module *AndroidAppCertificate) {
+func androidAppCertificateBp2Build(ctx android.TopDownMutatorContext, module *AndroidAppCertificate) {
 	var certificate string
 	if module.properties.Certificate != nil {
 		certificate = *module.properties.Certificate
@@ -1449,15 +1435,7 @@ type bazelAndroidAppAttributes struct {
 }
 
 // AppBp2Build is used for android_app.
-func AppBp2Build(ctx android.TopDownMutatorContext) {
-	a, ok := ctx.Module().(*AndroidApp)
-	if !ok || !a.ConvertWithBp2build(ctx) {
-		return
-	}
-	if ctx.ModuleType() != "android_app" {
-		return
-	}
-
+func (a *AndroidApp) Bp2buildConversion(ctx android.TopDownMutatorContext) {
 	//TODO(b/209577426): Support multiple arch variants
 	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrcExcludes(ctx, a.properties.Srcs, a.properties.Exclude_srcs))
 
