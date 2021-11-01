@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a658ab4_fad18f5e",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-01T05:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03bf8ee6_f730f2e4",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 44
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd80f2ee_aa36d8d2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-19T15:02:39Z",
       "side": 1,
       "message": "This should always be \"/\".",
+      "range": {
+        "startLine": 169,
+        "startChar": 15,
+        "endLine": 169,
+        "endChar": 41
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14dd187a_2e34744b",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-01T05:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd80f2ee_aa36d8d2",
       "range": {
         "startLine": 169,
         "startChar": 15,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61a2dcb7_ac914c11",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-01T05:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9861b82_2277698e",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 74
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3fefab8_3b47c9cf",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-19T15:02:39Z",
       "side": 1,
       "message": "Can you do this filtering in the inputArtifacts for-loop above?",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 55
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3b7eaee_9ee37ec9",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-01T05:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3fefab8_3b47c9cf",
       "range": {
         "startLine": 176,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2d64b28_8050595f",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-01T05:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e8d03ab_299a3831",
+      "range": {
+        "startLine": 266,
+        "startChar": 3,
+        "endLine": 266,
+        "endChar": 67
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "235d3e68_4a03470a",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-10-19T15:02:39Z",
       "side": 1,
       "message": "Dependency",
+      "range": {
+        "startLine": 269,
+        "startChar": 10,
+        "endLine": 269,
+        "endChar": 19
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de239c9e_e217375b",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-01T05:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "235d3e68_4a03470a",
       "range": {
         "startLine": 269,
         "startChar": 10,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c4637ae_a9f6b9be",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-01T05:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84e8979d_547bdb5c",
+      "range": {
+        "startLine": 280,
+        "startChar": 1,
+        "endLine": 280,
+        "endChar": 22
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d914359_85a4946d",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-10-19T15:02:39Z",
       "side": 1,
       "message": "This should always be \"/\", so no need for filepath.Separator. We don\u0027t support Windows builds.",
+      "range": {
+        "startLine": 282,
+        "startChar": 15,
+        "endLine": 282,
+        "endChar": 41
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0afb4701_e98eeeca",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-01T05:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d914359_85a4946d",
       "range": {
         "startLine": 282,
         "startChar": 15,
@@ -208,6 +400,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "230b9983_6609bfb7",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-01T05:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6e91340_af1037c5",
+      "range": {
+        "startLine": 283,
+        "startChar": 1,
+        "endLine": 291,
+        "endChar": 2
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d1e7960_45771617",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-10-19T15:02:39Z",
       "side": 1,
       "message": "Dependency",
+      "range": {
+        "startLine": 298,
+        "startChar": 12,
+        "endLine": 298,
+        "endChar": 21
+      },
+      "revId": "5d212c5f8670cb0a6726c04bb5d50ecf606e5ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c322886_0e2812fd",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-01T05:16:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d1e7960_45771617",
       "range": {
         "startLine": 298,
         "startChar": 12,
