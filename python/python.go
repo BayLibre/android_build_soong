@@ -23,6 +23,7 @@ import (
 	"strings"
 
 	"android/soong/bazel"
+
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -750,6 +751,17 @@ func checkForDuplicateOutputPath(ctx android.ModuleContext, m map[string]string,
 // InstallInData returns true as Python is not supported in the system partition
 func (p *Module) InstallInData() bool {
 	return true
+}
+
+func (p *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	switch ctx.ModuleType() {
+	case "python_binary_host":
+		pythonBinaryBp2Build(ctx, p)
+	case "python_library", "python_library_host":
+		pythonLibBp2Build(ctx, p)
+	default:
+		// not converted yet
+	}
 }
 
 var Bool = proptools.Bool

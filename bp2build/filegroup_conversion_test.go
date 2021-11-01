@@ -30,11 +30,10 @@ func registerFilegroupModuleTypes(ctx android.RegistrationContext) {}
 
 func TestFilegroupSameNameAsFile_OneFile(t *testing.T) {
 	runFilegroupTestCase(t, bp2buildTestCase{
-		description:                        "filegroup - same name as file, with one file",
-		moduleTypeUnderTest:                "filegroup",
-		moduleTypeUnderTestFactory:         android.FileGroupFactory,
-		moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-		filesystem:                         map[string]string{},
+		description:                "filegroup - same name as file, with one file",
+		moduleTypeUnderTest:        "filegroup",
+		moduleTypeUnderTestFactory: android.FileGroupFactory,
+		filesystem:                 map[string]string{},
 		blueprint: `
 filegroup {
     name: "foo",
@@ -46,11 +45,10 @@ filegroup {
 
 func TestFilegroupSameNameAsFile_MultipleFiles(t *testing.T) {
 	runFilegroupTestCase(t, bp2buildTestCase{
-		description:                        "filegroup - same name as file, with multiple files",
-		moduleTypeUnderTest:                "filegroup",
-		moduleTypeUnderTestFactory:         android.FileGroupFactory,
-		moduleTypeUnderTestBp2BuildMutator: android.FilegroupBp2Build,
-		filesystem:                         map[string]string{},
+		description:                "filegroup - same name as file, with multiple files",
+		moduleTypeUnderTest:        "filegroup",
+		moduleTypeUnderTestFactory: android.FileGroupFactory,
+		filesystem:                 map[string]string{},
 		blueprint: `
 filegroup {
 	name: "foo",

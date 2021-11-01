@@ -19,7 +19,6 @@ import (
 
 	"android/soong/android"
 	"android/soong/cc"
-	"android/soong/genrule"
 )
 
 var otherCcGenruleBp = map[string]string{
@@ -44,10 +43,9 @@ func runCcGenruleTestCase(t *testing.T, tc bp2buildTestCase) {
 
 func TestCliVariableReplacement(t *testing.T) {
 	runCcGenruleTestCase(t, bp2buildTestCase{
-		description:                        "cc_genrule with command line variable replacements",
-		moduleTypeUnderTest:                "cc_genrule",
-		moduleTypeUnderTestFactory:         cc.GenRuleFactory,
-		moduleTypeUnderTestBp2BuildMutator: genrule.CcGenruleBp2Build,
+		description:                "cc_genrule with command line variable replacements",
+		moduleTypeUnderTest:        "cc_genrule",
+		moduleTypeUnderTestFactory: cc.GenRuleFactory,
 		blueprint: `cc_genrule {
     name: "foo.tool",
     out: ["foo_tool.out"],
@@ -84,10 +82,9 @@ cc_genrule {
 
 func TestUsingLocationsLabel(t *testing.T) {
 	runCcGenruleTestCase(t, bp2buildTestCase{
-		description:                        "cc_genrule using $(locations :label)",
-		moduleTypeUnderTest:                "cc_genrule",
-		moduleTypeUnderTestFactory:         cc.GenRuleFactory,
-		moduleTypeUnderTestBp2BuildMutator: genrule.CcGenruleBp2Build,
+		description:                "cc_genrule using $(locations :label)",
+		moduleTypeUnderTest:        "cc_genrule",
+		moduleTypeUnderTestFactory: cc.GenRuleFactory,
 		blueprint: `cc_genrule {
     name: "foo.tools",
     out: ["foo_tool.out", "foo_tool2.out"],
@@ -126,10 +123,9 @@ cc_genrule {
 
 func TestUsingLocationsAbsoluteLabel(t *testing.T) {
 	runCcGenruleTestCase(t, bp2buildTestCase{
-		description:                        "cc_genrule using $(locations //absolute:label)",
-		moduleTypeUnderTest:                "cc_genrule",
-		moduleTypeUnderTestFactory:         cc.GenRuleFactory,
-		moduleTypeUnderTestBp2BuildMutator: genrule.CcGenruleBp2Build,
+		description:                "cc_genrule using $(locations //absolute:label)",
+		moduleTypeUnderTest:        "cc_genrule",
+		moduleTypeUnderTestFactory: cc.GenRuleFactory,
 		blueprint: `cc_genrule {
     name: "foo",
     out: ["foo.out"],
@@ -152,10 +148,9 @@ func TestUsingLocationsAbsoluteLabel(t *testing.T) {
 
 func TestSrcsUsingAbsoluteLabel(t *testing.T) {
 	runCcGenruleTestCase(t, bp2buildTestCase{
-		description:                        "cc_genrule srcs using $(locations //absolute:label)",
-		moduleTypeUnderTest:                "cc_genrule",
-		moduleTypeUnderTestFactory:         cc.GenRuleFactory,
-		moduleTypeUnderTestBp2BuildMutator: genrule.CcGenruleBp2Build,
+		description:                "cc_genrule srcs using $(locations //absolute:label)",
+		moduleTypeUnderTest:        "cc_genrule",
+		moduleTypeUnderTestFactory: cc.GenRuleFactory,
 		blueprint: `cc_genrule {
     name: "foo",
     out: ["foo.out"],
@@ -178,10 +173,9 @@ func TestSrcsUsingAbsoluteLabel(t *testing.T) {
 
 func TestLocationsLabelUsesFirstToolFile(t *testing.T) {
 	runCcGenruleTestCase(t, bp2buildTestCase{
-		description:                        "cc_genrule using $(location) label should substitute first tool label automatically",
-		moduleTypeUnderTest:                "cc_genrule",
-		moduleTypeUnderTestFactory:         cc.GenRuleFactory,
-		moduleTypeUnderTestBp2BuildMutator: genrule.CcGenruleBp2Build,
+		description:                "cc_genrule using $(location) label should substitute first tool label automatically",
+		moduleTypeUnderTest:        "cc_genrule",
+		moduleTypeUnderTestFactory: cc.GenRuleFactory,
 		blueprint: `cc_genrule {
     name: "foo",
     out: ["foo.out"],
@@ -207,10 +201,9 @@ func TestLocationsLabelUsesFirstToolFile(t *testing.T) {
 
 func TestLocationsLabelUsesFirstTool(t *testing.T) {
 	runCcGenruleTestCase(t, bp2buildTestCase{
-		description:                        "cc_genrule using $(locations) label should substitute first tool label automatically",
-		moduleTypeUnderTest:                "cc_genrule",
-		moduleTypeUnderTestFactory:         cc.GenRuleFactory,
-		moduleTypeUnderTestBp2BuildMutator: genrule.CcGenruleBp2Build,
+		description:                "cc_genrule using $(locations) label should substitute first tool label automatically",
+		moduleTypeUnderTest:        "cc_genrule",
+		moduleTypeUnderTestFactory: cc.GenRuleFactory,
 		blueprint: `cc_genrule {
     name: "foo",
     out: ["foo.out"],
@@ -236,10 +229,9 @@ func TestLocationsLabelUsesFirstTool(t *testing.T) {
 
 func TestWithoutToolsOrToolFiles(t *testing.T) {
 	runCcGenruleTestCase(t, bp2buildTestCase{
-		description:                        "cc_genrule without tools or tool_files can convert successfully",
-		moduleTypeUnderTest:                "cc_genrule",
-		moduleTypeUnderTestFactory:         cc.GenRuleFactory,
-		moduleTypeUnderTestBp2BuildMutator: genrule.CcGenruleBp2Build,
+		description:                "cc_genrule without tools or tool_files can convert successfully",
+		moduleTypeUnderTest:        "cc_genrule",
+		moduleTypeUnderTestFactory: cc.GenRuleFactory,
 		blueprint: `cc_genrule {
     name: "foo",
     out: ["foo.out"],

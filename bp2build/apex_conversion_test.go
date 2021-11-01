@@ -40,11 +40,10 @@ func registerApexModuleTypes(ctx android.RegistrationContext) {
 
 func TestApexBundleSimple(t *testing.T) {
 	runApexTestCase(t, bp2buildTestCase{
-		description:                        "apex - simple example",
-		moduleTypeUnderTest:                "apex",
-		moduleTypeUnderTestFactory:         apex.BundleFactory,
-		moduleTypeUnderTestBp2BuildMutator: apex.ApexBundleBp2Build,
-		filesystem:                         map[string]string{},
+		description:                "apex - simple example",
+		moduleTypeUnderTest:        "apex",
+		moduleTypeUnderTestFactory: apex.BundleFactory,
+		filesystem:                 map[string]string{},
 		blueprint: `
 apex_key {
         name: "com.android.apogee.key",
@@ -140,11 +139,10 @@ apex {
 
 func TestApexBundleDefaultPropertyValues(t *testing.T) {
 	runApexTestCase(t, bp2buildTestCase{
-		description:                        "apex - default property values",
-		moduleTypeUnderTest:                "apex",
-		moduleTypeUnderTestFactory:         apex.BundleFactory,
-		moduleTypeUnderTestBp2BuildMutator: apex.ApexBundleBp2Build,
-		filesystem:                         map[string]string{},
+		description:                "apex - default property values",
+		moduleTypeUnderTest:        "apex",
+		moduleTypeUnderTestFactory: apex.BundleFactory,
+		filesystem:                 map[string]string{},
 		blueprint: `
 apex {
 	name: "com.android.apogee",
@@ -159,11 +157,10 @@ apex {
 
 func TestApexBundleHasBazelModuleProps(t *testing.T) {
 	runApexTestCase(t, bp2buildTestCase{
-		description:                        "apex - has bazel module props",
-		moduleTypeUnderTest:                "apex",
-		moduleTypeUnderTestFactory:         apex.BundleFactory,
-		moduleTypeUnderTestBp2BuildMutator: apex.ApexBundleBp2Build,
-		filesystem:                         map[string]string{},
+		description:                "apex - has bazel module props",
+		moduleTypeUnderTest:        "apex",
+		moduleTypeUnderTestFactory: apex.BundleFactory,
+		filesystem:                 map[string]string{},
 		blueprint: `
 apex {
 	name: "apogee",

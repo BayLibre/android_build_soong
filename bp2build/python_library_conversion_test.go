@@ -13,28 +13,27 @@ type PythonLibBp2Build func(ctx android.TopDownMutatorContext)
 
 func TestPythonLibrary(t *testing.T) {
 	testPythonLib(t, "python_library",
-		python.PythonLibraryFactory, python.PythonLibraryBp2Build,
+		python.PythonLibraryFactory,
 		func(ctx android.RegistrationContext) {})
 }
 
 func TestPythonLibraryHost(t *testing.T) {
 	testPythonLib(t, "python_library_host",
-		python.PythonLibraryHostFactory, python.PythonLibraryHostBp2Build,
+		python.PythonLibraryHostFactory,
 		func(ctx android.RegistrationContext) {
 			ctx.RegisterModuleType("python_library", python.PythonLibraryFactory)
 		})
 }
 
 func testPythonLib(t *testing.T, modType string,
-	factory android.ModuleFactory, mutator PythonLibBp2Build,
+	factory android.ModuleFactory,
 	registration func(ctx android.RegistrationContext)) {
 	t.Helper()
 	// Simple
 	runBp2BuildTestCase(t, registration, bp2buildTestCase{
-		description:                        fmt.Sprintf("simple %s converts to a native py_library", modType),
-		moduleTypeUnderTest:                modType,
-		moduleTypeUnderTestFactory:         factory,
-		moduleTypeUnderTestBp2BuildMutator: mutator,
+		description:                fmt.Sprintf("simple %s converts to a native py_library", modType),
+		moduleTypeUnderTest:        modType,
+		moduleTypeUnderTestFactory: factory,
 		filesystem: map[string]string{
 			"a.py":           "",
 			"b/c.py":         "",
@@ -71,10 +70,9 @@ func testPythonLib(t *testing.T, modType string,
 
 	// PY2
 	runBp2BuildTestCaseSimple(t, bp2buildTestCase{
-		description:                        fmt.Sprintf("py2 %s converts to a native py_library", modType),
-		moduleTypeUnderTest:                modType,
-		moduleTypeUnderTestFactory:         factory,
-		moduleTypeUnderTestBp2BuildMutator: mutator,
+		description:                fmt.Sprintf("py2 %s converts to a native py_library", modType),
+		moduleTypeUnderTest:        modType,
+		moduleTypeUnderTestFactory: factory,
 		blueprint: fmt.Sprintf(`%s {
     name: "foo",
     srcs: ["a.py"],
@@ -99,10 +97,9 @@ func testPythonLib(t *testing.T, modType string,
 
 	// PY3
 	runBp2BuildTestCaseSimple(t, bp2buildTestCase{
-		description:                        fmt.Sprintf("py3 %s converts to a native py_library", modType),
-		moduleTypeUnderTest:                modType,
-		moduleTypeUnderTestFactory:         factory,
-		moduleTypeUnderTestBp2BuildMutator: mutator,
+		description:                fmt.Sprintf("py3 %s converts to a native py_library", modType),
+		moduleTypeUnderTest:        modType,
+		moduleTypeUnderTestFactory: factory,
 		blueprint: fmt.Sprintf(`%s {
     name: "foo",
     srcs: ["a.py"],
@@ -127,10 +124,9 @@ func testPythonLib(t *testing.T, modType string,
 
 	// Both
 	runBp2BuildTestCaseSimple(t, bp2buildTestCase{
-		description:                        fmt.Sprintf("py2&3 %s converts to a native py_library", modType),
-		moduleTypeUnderTest:                modType,
-		moduleTypeUnderTestFactory:         factory,
-		moduleTypeUnderTestBp2BuildMutator: mutator,
+		description:                fmt.Sprintf("py2&3 %s converts to a native py_library", modType),
+		moduleTypeUnderTest:        modType,
+		moduleTypeUnderTestFactory: factory,
 		blueprint: fmt.Sprintf(`%s {
     name: "foo",
     srcs: ["a.py"],
@@ -157,26 +153,25 @@ func testPythonLib(t *testing.T, modType string,
 
 func TestPythonLibraryArchVariance(t *testing.T) {
 	testPythonArchVariance(t, "python_library", "py_library",
-		python.PythonLibraryFactory, python.PythonLibraryBp2Build,
+		python.PythonLibraryFactory,
 		func(ctx android.RegistrationContext) {})
 }
 
 func TestPythonLibraryHostArchVariance(t *testing.T) {
 	testPythonArchVariance(t, "python_library_host", "py_library",
-		python.PythonLibraryHostFactory, python.PythonLibraryHostBp2Build,
+		python.PythonLibraryHostFactory,
 		func(ctx android.RegistrationContext) {})
 }
 
 // TODO: refactor python_binary_conversion_test to use this
 func testPythonArchVariance(t *testing.T, modType, bazelTarget string,
-	factory android.ModuleFactory, mutator PythonLibBp2Build,
+	factory android.ModuleFactory,
 	registration func(ctx android.RegistrationContext)) {
 	t.Helper()
 	runBp2BuildTestCase(t, registration, bp2buildTestCase{
-		description:                        fmt.Sprintf("test %s arch variants", modType),
-		moduleTypeUnderTest:                modType,
-		moduleTypeUnderTestFactory:         factory,
-		moduleTypeUnderTestBp2BuildMutator: mutator,
+		description:                fmt.Sprintf("test %s arch variants", modType),
+		moduleTypeUnderTest:        modType,
+		moduleTypeUnderTestFactory: factory,
 		filesystem: map[string]string{
 			"dir/arm.py": "",
 			"dir/x86.py": "",

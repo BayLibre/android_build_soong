@@ -42,10 +42,9 @@ func runCcLibrarySharedTestCase(t *testing.T, tc bp2buildTestCase) {
 
 func TestCcLibrarySharedSimple(t *testing.T) {
 	runCcLibrarySharedTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_shared simple overall test",
-		moduleTypeUnderTest:                "cc_library_shared",
-		moduleTypeUnderTestFactory:         cc.LibrarySharedFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibrarySharedBp2Build,
+		description:                "cc_library_shared simple overall test",
+		moduleTypeUnderTest:        "cc_library_shared",
+		moduleTypeUnderTestFactory: cc.LibrarySharedFactory,
 		filesystem: map[string]string{
 			// NOTE: include_dir headers *should not* appear in Bazel hdrs later (?)
 			"include_dir_1/include_dir_1_a.h": "",
@@ -181,11 +180,10 @@ cc_library_shared {
 
 func TestCcLibrarySharedArchSpecificSharedLib(t *testing.T) {
 	runCcLibrarySharedTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_shared arch-specific shared_libs with whole_static_libs",
-		moduleTypeUnderTest:                "cc_library_shared",
-		moduleTypeUnderTestFactory:         cc.LibrarySharedFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibrarySharedBp2Build,
-		filesystem:                         map[string]string{},
+		description:                "cc_library_shared arch-specific shared_libs with whole_static_libs",
+		moduleTypeUnderTest:        "cc_library_shared",
+		moduleTypeUnderTestFactory: cc.LibrarySharedFactory,
+		filesystem:                 map[string]string{},
 		blueprint: soongCcLibrarySharedPreamble + `
 cc_library_static {
     name: "static_dep",
@@ -216,11 +214,10 @@ cc_library_shared {
 
 func TestCcLibrarySharedOsSpecificSharedLib(t *testing.T) {
 	runCcLibraryStaticTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_shared os-specific shared_libs",
-		moduleTypeUnderTest:                "cc_library_shared",
-		moduleTypeUnderTestFactory:         cc.LibrarySharedFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibrarySharedBp2Build,
-		filesystem:                         map[string]string{},
+		description:                "cc_library_shared os-specific shared_libs",
+		moduleTypeUnderTest:        "cc_library_shared",
+		moduleTypeUnderTestFactory: cc.LibrarySharedFactory,
+		filesystem:                 map[string]string{},
 		blueprint: soongCcLibrarySharedPreamble + `
 cc_library_shared {
     name: "shared_dep",
@@ -243,11 +240,10 @@ cc_library_shared {
 
 func TestCcLibrarySharedBaseArchOsSpecificSharedLib(t *testing.T) {
 	runCcLibrarySharedTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_shared base, arch, and os-specific shared_libs",
-		moduleTypeUnderTest:                "cc_library_shared",
-		moduleTypeUnderTestFactory:         cc.LibrarySharedFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibrarySharedBp2Build,
-		filesystem:                         map[string]string{},
+		description:                "cc_library_shared base, arch, and os-specific shared_libs",
+		moduleTypeUnderTest:        "cc_library_shared",
+		moduleTypeUnderTestFactory: cc.LibrarySharedFactory,
+		filesystem:                 map[string]string{},
 		blueprint: soongCcLibrarySharedPreamble + `
 cc_library_shared {
     name: "shared_dep",
@@ -283,10 +279,9 @@ cc_library_shared {
 
 func TestCcLibrarySharedSimpleExcludeSrcs(t *testing.T) {
 	runCcLibrarySharedTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_shared simple exclude_srcs",
-		moduleTypeUnderTest:                "cc_library_shared",
-		moduleTypeUnderTestFactory:         cc.LibrarySharedFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibrarySharedBp2Build,
+		description:                "cc_library_shared simple exclude_srcs",
+		moduleTypeUnderTest:        "cc_library_shared",
+		moduleTypeUnderTestFactory: cc.LibrarySharedFactory,
 		filesystem: map[string]string{
 			"common.c":       "",
 			"foo-a.c":        "",
@@ -311,11 +306,10 @@ cc_library_shared {
 
 func TestCcLibrarySharedStrip(t *testing.T) {
 	runCcLibrarySharedTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_shared stripping",
-		moduleTypeUnderTest:                "cc_library_shared",
-		moduleTypeUnderTestFactory:         cc.LibrarySharedFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibrarySharedBp2Build,
-		filesystem:                         map[string]string{},
+		description:                "cc_library_shared stripping",
+		moduleTypeUnderTest:        "cc_library_shared",
+		moduleTypeUnderTestFactory: cc.LibrarySharedFactory,
+		filesystem:                 map[string]string{},
 		blueprint: soongCcLibrarySharedPreamble + `
 cc_library_shared {
     name: "foo_shared",
@@ -346,10 +340,9 @@ cc_library_shared {
 
 func TestCcLibrarySharedVersionScript(t *testing.T) {
 	runCcLibrarySharedTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_shared version script",
-		moduleTypeUnderTest:                "cc_library_shared",
-		moduleTypeUnderTestFactory:         cc.LibrarySharedFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibrarySharedBp2Build,
+		description:                "cc_library_shared version script",
+		moduleTypeUnderTest:        "cc_library_shared",
+		moduleTypeUnderTestFactory: cc.LibrarySharedFactory,
 		filesystem: map[string]string{
 			"version_script": "",
 		},
@@ -369,10 +362,9 @@ cc_library_shared {
 
 func TestCcLibrarySharedNoCrtTrue(t *testing.T) {
 	runCcLibrarySharedTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_shared - nocrt: true emits attribute",
-		moduleTypeUnderTest:                "cc_library_shared",
-		moduleTypeUnderTestFactory:         cc.LibrarySharedFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibrarySharedBp2Build,
+		description:                "cc_library_shared - nocrt: true emits attribute",
+		moduleTypeUnderTest:        "cc_library_shared",
+		moduleTypeUnderTestFactory: cc.LibrarySharedFactory,
 		filesystem: map[string]string{
 			"impl.cpp": "",
 		},
@@ -393,10 +385,9 @@ cc_library_shared {
 
 func TestCcLibrarySharedNoCrtFalse(t *testing.T) {
 	runCcLibrarySharedTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_shared - nocrt: false doesn't emit attribute",
-		moduleTypeUnderTest:                "cc_library_shared",
-		moduleTypeUnderTestFactory:         cc.LibrarySharedFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibrarySharedBp2Build,
+		description:                "cc_library_shared - nocrt: false doesn't emit attribute",
+		moduleTypeUnderTest:        "cc_library_shared",
+		moduleTypeUnderTestFactory: cc.LibrarySharedFactory,
 		filesystem: map[string]string{
 			"impl.cpp": "",
 		},
@@ -416,10 +407,9 @@ cc_library_shared {
 
 func TestCcLibrarySharedNoCrtArchVariant(t *testing.T) {
 	runCcLibrarySharedTestCase(t, bp2buildTestCase{
-		description:                        "cc_library_shared - nocrt in select",
-		moduleTypeUnderTest:                "cc_library_shared",
-		moduleTypeUnderTestFactory:         cc.LibrarySharedFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.CcLibrarySharedBp2Build,
+		description:                "cc_library_shared - nocrt in select",
+		moduleTypeUnderTest:        "cc_library_shared",
+		moduleTypeUnderTestFactory: cc.LibrarySharedFactory,
 		filesystem: map[string]string{
 			"impl.cpp": "",
 		},

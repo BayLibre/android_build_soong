@@ -55,13 +55,13 @@ func runCcBinaryTestCase(t *testing.T, tc bp2buildTestCase) {
 	testCase.expectedBazelTargets = append([]string{}, tc.expectedBazelTargets...)
 	testCase.moduleTypeUnderTest = "cc_binary"
 	testCase.moduleTypeUnderTestFactory = cc.BinaryFactory
-	testCase.moduleTypeUnderTestBp2BuildMutator = cc.BinaryBp2build
 	testCase.description = fmt.Sprintf("%s %s", testCase.moduleTypeUnderTest, testCase.description)
 	testCase.blueprint = binaryReplacer.Replace(testCase.blueprint)
 	for i, et := range testCase.expectedBazelTargets {
 		testCase.expectedBazelTargets[i] = binaryReplacer.Replace(et)
 	}
 	t.Run(testCase.description, func(t *testing.T) {
+		t.Helper()
 		runBp2BuildTestCase(t, registerCcBinaryModuleTypes, testCase)
 	})
 }
@@ -72,7 +72,6 @@ func runCcHostBinaryTestCase(t *testing.T, tc bp2buildTestCase) {
 	testCase.expectedBazelTargets = append([]string{}, tc.expectedBazelTargets...)
 	testCase.moduleTypeUnderTest = "cc_binary_host"
 	testCase.moduleTypeUnderTestFactory = cc.BinaryHostFactory
-	testCase.moduleTypeUnderTestBp2BuildMutator = cc.BinaryHostBp2build
 	testCase.description = fmt.Sprintf("%s %s", testCase.moduleTypeUnderTest, testCase.description)
 	testCase.blueprint = hostBinaryReplacer.Replace(testCase.blueprint)
 	for i, et := range testCase.expectedBazelTargets {
@@ -225,11 +224,13 @@ func TestCcBinaryDoNotDistinguishBetweenDepsAndImplementationDeps(t *testing.T) 
 genrule {
     name: "generated_hdr",
     cmd: "nothing to see here",
+    bazel_module: { bp2build_available: false },
 }
 
 genrule {
     name: "export_generated_hdr",
     cmd: "nothing to see here",
+    bazel_module: { bp2build_available: false },
 }
 
 {rule_name} {
