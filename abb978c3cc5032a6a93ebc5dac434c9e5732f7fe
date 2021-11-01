@@ -16,6 +16,24 @@
       "message": "If this is equivalent (I haven\u0027t verified, but it seems plausible), why not just always do this, rather than only doing it when -lstatic is unavailable?",
       "revId": "abb978c3cc5032a6a93ebc5dac434c9e5732f7fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "971c4256_12191c57",
+        "filename": "rust/rust.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-11-01T18:59:49Z",
+      "side": 1,
+      "message": "Chatted offline and we\u0027ve decided to restrict this to binaries, and to always do it this way for binaries to avoid silent unexpected behavior. The difference in behavior between `-lstatic` and passing it directly to the linker is that rustc will rebundle static libraries into libraries when provided that way.",
+      "parentUuid": "8298dfd4_4379924d",
+      "revId": "abb978c3cc5032a6a93ebc5dac434c9e5732f7fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
