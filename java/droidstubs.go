@@ -19,6 +19,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -58,7 +59,8 @@ type Droidstubs struct {
 	nullabilityWarningsFile android.WritablePath
 
 	checkCurrentApiTimestamp      android.WritablePath
-	updateCurrentApiTimestamp     android.WritablePath
+	updateCurrentApiScript        android.WritablePath
+	globalUpdateCurrentApiScript  android.WritablePath // script to update apis of all droidstubs
 	checkLastReleasedApiTimestamp android.WritablePath
 	apiLintTimestamp              android.WritablePath
 	apiLintReport                 android.WritablePath
@@ -477,6 +479,23 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 	return cmd
 }
 
+var (
+	_ = pctx.SourcePathVariable("genUpdateApiScript", "build/soong/scripts/gen-update-api-script.sh")
+
+	genUpdateApiScriptRule = pctx.AndroidStaticRule("genUpdateApiScriptRule",
+		blueprint.RuleParams{
+			Command:     "$genUpdateApiScript --current_api_gen ${current_api_gen} --current_api_src ${current_api_src} --removed_api_gen ${removed_api_gen} --removed_api_src ${removed_api_src} --out ${out}",
+			CommandDeps: []string{"$genUpdateApiScript"},
+		},
+		"current_api_gen", "current_api_src", "removed_api_gen", "removed_api_src")
+)
+
+// WARNING: build/tools/scripts/update-api has a dependency on this path
+// Editing this will require editing build/tools/scripts/update-api as well
+func (d *Droidstubs) updateApiScriptPath(ctx android.PathContext, phonyTarget string) android.OutputPath {
+	return android.PathForOutput(ctx, "metalava", phonyTarget+".sh")
+}
+
 func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	deps := d.Javadoc.collectDeps(ctx)
 
@@ -716,31 +735,28 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 		rule.Build("metalavaCurrentApiCheck", "check current API")
 
-		d.updateCurrentApiTimestamp = android.PathForModuleOut(ctx, "metalava", "update_current_api.timestamp")
+		d.updateCurrentApiScript = d.updateApiScriptPath(ctx, d.Name()+"-update-current-api")
+		d.globalUpdateCurrentApiScript = d.updateApiScriptPath(ctx, "update-api")
 
 		// update API rule
-		rule = android.NewRuleBuilder(pctx, ctx)
-
-		rule.Command().Text("( true")
-
-		rule.Command().
-			Text("cp").Flag("-f").
-			Input(d.apiFile).Flag(apiFile.String())
-
-		rule.Command().
-			Text("cp").Flag("-f").
-			Input(d.removedApiFile).Flag(removedApiFile.String())
-
-		msg = "failed to update public API"
-
-		rule.Command().
-			Text("touch").Output(d.updateCurrentApiTimestamp).
-			Text(") || (").
-			Text("echo").Flag("-e").Flag(`"` + msg + `"`).
-			Text("; exit 38").
-			Text(")")
-
-		rule.Build("metalavaCurrentApiUpdate", "update current API")
+		// output is a script that can be run from within or from outside the build
+		ctx.Build(pctx, android.BuildParams{
+			Rule: genUpdateApiScriptRule,
+			Inputs: []android.Path{
+				d.apiFile,
+				apiFile,
+				d.removedApiFile,
+				removedApiFile,
+			},
+			Output: d.updateCurrentApiScript,
+			Args: map[string]string{
+				"current_api_gen": d.apiFile.String(),
+				"current_api_src": apiFile.String(),
+				"removed_api_gen": d.removedApiFile.String(),
+				"removed_api_src": removedApiFile.String(),
+			},
+			Description: "update current API script",
+		})
 	}
 
 	if String(d.properties.Check_nullability_warnings) != "" {

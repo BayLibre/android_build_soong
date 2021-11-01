@@ -17,6 +17,7 @@ package java
 import (
 	"fmt"
 	"io"
+	"sync"
 
 	"android/soong/android"
 )
@@ -525,6 +526,10 @@ func (ddoc *Droiddoc) AndroidMkEntries() []android.AndroidMkEntries {
 	}}
 }
 
+var dstubsUpdateApiOnce sync.Once
+var dstubsUpdateApiWarningMsg = `\\e[33mWarning: You are building update*-api, which writes to the source tree. This will eventually be deprecated. Please consider using the alternate build script update-api\\e[0m\\n$$ lunch \<target\> \(one time\)\\n$$ update-api -h \(for more details\)`
+var dstubsUpdateApiRunAndWarnCmd = "; /bin/bash $^ && echo -e " + dstubsUpdateApiWarningMsg
+
 func (dstubs *Droidstubs) AndroidMkEntries() []android.AndroidMkEntries {
 	// If the stubsSrcJar is not generated (because generate_stubs is false) then
 	// use the api file as the output file to ensure the relevant phony targets
@@ -581,14 +586,32 @@ func (dstubs *Droidstubs) AndroidMkEntries() []android.AndroidMkEntries {
 					fmt.Fprintln(w, ".PHONY: droidcore")
 					fmt.Fprintln(w, "droidcore: checkapi")
 				}
-				if dstubs.updateCurrentApiTimestamp != nil {
+				if dstubs.updateCurrentApiScript != nil {
 					fmt.Fprintln(w, ".PHONY:", dstubs.Name()+"-update-current-api")
 					fmt.Fprintln(w, dstubs.Name()+"-update-current-api:",
-						dstubs.updateCurrentApiTimestamp.String())
+						dstubs.updateCurrentApiScript.String(),
+						dstubsUpdateApiRunAndWarnCmd)
 
-					fmt.Fprintln(w, ".PHONY: update-api")
-					fmt.Fprintln(w, "update-api:",
-						dstubs.updateCurrentApiTimestamp.String())
+					dstubsUpdateApiOnce.Do(func() {
+						fmt.Fprintln(w, ".PHONY: update-api")
+						fmt.Fprintln(w, "update-api:",
+							dstubs.globalUpdateCurrentApiScript,
+							dstubsUpdateApiRunAndWarnCmd)
+						// out/soong/metalava/update-api.sh is the concatenation of the individual update-api scripts
+						// The dependency graph is ("-->" implies depends on)
+						// update-api.sh --> mod-A-update-current-api.sh
+						// update-api.sh --> mod-B-update-current-api.sh
+						// ...
+						// The line below appends mod-*-update-current-api.sh to update-api.sh and marks it as an executable
+						fmt.Fprintln(w, dstubs.globalUpdateCurrentApiScript, ": ; cat $(sort $^) > $@ && chmod +x $@")
+					})
+					// Each API module creates a dependency edge from the individual API update script to the Make target
+					// representing the single global update API script (dstubs.globalUpdateCurrentApiScript)
+					//
+					// Then, when the global update API script Make rule is run, $^ will be set to the list of every update API script,
+					// collected from the individually-written dependency edge declarations.
+					fmt.Fprintln(w, dstubs.globalUpdateCurrentApiScript, ":", dstubs.updateCurrentApiScript.String())
+
 				}
 				if dstubs.checkLastReleasedApiTimestamp != nil {
 					fmt.Fprintln(w, ".PHONY:", dstubs.Name()+"-check-last-released-api")
