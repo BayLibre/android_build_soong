@@ -57,7 +57,8 @@ type Droidstubs struct {
 	nullabilityWarningsFile android.WritablePath
 
 	checkCurrentApiTimestamp      android.WritablePath
-	updateCurrentApiTimestamp     android.WritablePath
+	updateCurrentApiScript        android.WritablePath
+	globalUpdateCurrentApiScript  android.WritablePath // script to update apis of all droidstubs
 	checkLastReleasedApiTimestamp android.WritablePath
 	apiLintTimestamp              android.WritablePath
 	apiLintReport                 android.WritablePath
@@ -476,6 +477,12 @@ func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersi
 	return cmd
 }
 
+// WARNING: build/tools/scripts/update-api.sh has a dependency on this path
+// Editing this will require editing build/tools/scripts/update-api.sh as well
+func (d *Droidstubs) updateApiScriptPath(ctx android.PathContext, phonyTarget string) android.OutputPath {
+	return android.PathForOutput(ctx, "metalava", phonyTarget+".sh")
+}
+
 func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	deps := d.Javadoc.collectDeps(ctx)
 
@@ -715,31 +722,34 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 		rule.Build("metalavaCurrentApiCheck", "check current API")
 
-		d.updateCurrentApiTimestamp = android.PathForModuleOut(ctx, "metalava", "update_current_api.timestamp")
+		d.updateCurrentApiScript = d.updateApiScriptPath(ctx, d.Name()+"-update-current-api")
+		d.globalUpdateCurrentApiScript = d.updateApiScriptPath(ctx, "update-api")
 
 		// update API rule
+		// output is a script that can be run from within or from outside the build
 		rule = android.NewRuleBuilder(pctx, ctx)
 
 		rule.Command().Text("( true")
 
 		rule.Command().
+			Text("echo cp").Flag("-f").
+			Input(d.apiFile).Flag(apiFile.String()).
+			Flag("\\&\\&").
 			Text("cp").Flag("-f").
-			Input(d.apiFile).Flag(apiFile.String())
+			Input(d.removedApiFile).Flag(removedApiFile.String()).
+			Flag(">").Output(d.updateCurrentApiScript)
+
+		msg = "failed to create update public API scripts"
 
 		rule.Command().
-			Text("cp").Flag("-f").
-			Input(d.removedApiFile).Flag(removedApiFile.String())
-
-		msg = "failed to update public API"
-
-		rule.Command().
-			Text("touch").Output(d.updateCurrentApiTimestamp).
+			Text("chmod").Flag("+x").Output(d.updateCurrentApiScript).
 			Text(") || (").
 			Text("echo").Flag("-e").Flag(`"` + msg + `"`).
 			Text("; exit 38").
 			Text(")")
 
-		rule.Build("metalavaCurrentApiUpdate", "update current API")
+		rule.Build("metalavaCurrentApiUpdateScript", "update current API script")
+
 	}
 
 	if String(d.properties.Check_nullability_warnings) != "" {
