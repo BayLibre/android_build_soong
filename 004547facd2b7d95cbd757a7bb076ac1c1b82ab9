@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e4b64e_dc7bdb31",
+        "filename": "java/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-11-01T17:17:05Z",
+      "side": 1,
+      "message": "Seems like these two can be merged",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 38
+      },
+      "revId": "004547facd2b7d95cbd757a7bb076ac1c1b82ab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
