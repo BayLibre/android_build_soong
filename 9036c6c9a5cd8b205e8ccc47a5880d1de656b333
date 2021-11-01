@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "876fef1e_05769516",
+        "filename": "java/testing.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-11-01T15:14:36Z",
+      "side": 1,
+      "message": "I think it would be cleaner to swap these two for loops, and instead of putting \"core-for-system-modules\" into the `libs` slice, just replicate line 183 for system modules (given all the special \"ifs\" you have for system-modules here.",
+      "range": {
+        "startLine": 174,
+        "startChar": 34,
+        "endLine": 176,
+        "endChar": 145
+      },
+      "revId": "9036c6c9a5cd8b205e8ccc47a5880d1de656b333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
