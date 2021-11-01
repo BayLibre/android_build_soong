@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e4f8427_28e5cb82",
+        "filename": "java/prebuilt_apis_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-11-01T14:36:11Z",
+      "side": 1,
+      "message": "comment is superfluous, but perhaps not worth rerunning presubmit to remove..",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "35e944de3674efd59fa5155454a7cf465e0ee038",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
