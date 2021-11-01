@@ -773,8 +773,9 @@ type Module struct {
 	Properties       BaseProperties
 
 	// initialize before calling Init
-	hod      android.HostOrDeviceSupported
-	multilib android.Multilib
+	hod       android.HostOrDeviceSupported
+	multilib  android.Multilib
+	bazelable bool
 
 	// Allowable SdkMemberTypes of this module type.
 	sdkMemberTypes []android.SdkMemberType
@@ -1133,7 +1134,9 @@ func (c *Module) Init() android.Module {
 	}
 
 	android.InitAndroidArchModule(c, c.hod, c.multilib)
-	android.InitBazelModule(c)
+	if c.bazelable {
+		android.InitBazelModule(c)
+	}
 	android.InitApexModule(c)
 	android.InitSdkAwareModule(c)
 	android.InitDefaultableModule(c)
@@ -3151,6 +3154,24 @@ func (c *Module) testBinary() bool {
 	return false
 }
 
+func (c *Module) benchmarkBinary() bool {
+	if b, ok := c.linker.(interface {
+		benchmarkBinary() bool
+	}); ok {
+		return b.benchmarkBinary()
+	}
+	return false
+}
+
+func (c *Module) fuzzBinary() bool {
+	if f, ok := c.linker.(interface {
+		fuzzBinary() bool
+	}); ok {
+		return f.fuzzBinary()
+	}
+	return false
+}
+
 // Header returns true if the module is a header-only variant. (See cc/library.go header()).
 func (c *Module) Header() bool {
 	if h, ok := c.linker.(interface {
@@ -3395,6 +3416,41 @@ func (c *Module) AlwaysRequiresPlatformApexVariant() bool {
 }
 
 var _ snapshot.RelativeInstallPath = (*Module)(nil)
+
+// Bp2buildConversion converts Module to Bazel for bp2build.
+func (c *Module) Bp2buildConversion(ctx android.TopDownMutatorContext) {
+	if c.Binary() {
+		binaryBp2build(ctx, c, ctx.ModuleType())
+	} else if c.Object() {
+		objectBp2Build(ctx, c)
+	} else if c.CcLibrary() {
+		if c.hod == android.HostSupported {
+			return
+		}
+
+		static := c.BuildStaticVariant()
+		shared := c.BuildSharedVariant()
+		prebuilt := c.IsPrebuilt()
+
+		if static && shared {
+			libraryBp2Build(ctx, c)
+		} else if !static && !shared {
+			libraryHeadersBp2Build(ctx, c)
+		} else if static {
+			if prebuilt {
+				prebuiltLibraryStaticBp2Build(ctx, c)
+			} else {
+				sharedOrStaticLibraryBp2Build(ctx, c, true)
+			}
+		} else if shared {
+			if prebuilt {
+				prebuiltLibrarySharedBp2Build(ctx, c)
+			} else {
+				sharedOrStaticLibraryBp2Build(ctx, c, false)
+			}
+		}
+	}
+}
 
 //
 // Defaults

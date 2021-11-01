@@ -31,11 +31,10 @@ func registerPrebuiltEtcModuleTypes(ctx android.RegistrationContext) {
 
 func TestPrebuiltEtcSimple(t *testing.T) {
 	runPrebuiltEtcTestCase(t, bp2buildTestCase{
-		description:                        "prebuilt_etc - simple example",
-		moduleTypeUnderTest:                "prebuilt_etc",
-		moduleTypeUnderTestFactory:         etc.PrebuiltEtcFactory,
-		moduleTypeUnderTestBp2BuildMutator: etc.PrebuiltEtcBp2Build,
-		filesystem:                         map[string]string{},
+		description:                "prebuilt_etc - simple example",
+		moduleTypeUnderTest:        "prebuilt_etc",
+		moduleTypeUnderTestFactory: etc.PrebuiltEtcFactory,
+		filesystem:                 map[string]string{},
 		blueprint: `
 prebuilt_etc {
     name: "apex_tz_version",
@@ -56,11 +55,10 @@ prebuilt_etc {
 
 func TestPrebuiltEtcArchVariant(t *testing.T) {
 	runPrebuiltEtcTestCase(t, bp2buildTestCase{
-		description:                        "prebuilt_etc - simple example",
-		moduleTypeUnderTest:                "prebuilt_etc",
-		moduleTypeUnderTestFactory:         etc.PrebuiltEtcFactory,
-		moduleTypeUnderTestBp2BuildMutator: etc.PrebuiltEtcBp2Build,
-		filesystem:                         map[string]string{},
+		description:                "prebuilt_etc - simple example",
+		moduleTypeUnderTest:        "prebuilt_etc",
+		moduleTypeUnderTestFactory: etc.PrebuiltEtcFactory,
+		filesystem:                 map[string]string{},
 		blueprint: `
 prebuilt_etc {
     name: "apex_tz_version",

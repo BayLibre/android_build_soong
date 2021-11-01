@@ -39,10 +39,9 @@ genrule {
 
 	testCases := []bp2buildTestCase{
 		{
-			description:                        "genrule with command line variable replacements",
-			moduleTypeUnderTest:                "genrule",
-			moduleTypeUnderTestFactory:         genrule.GenRuleFactory,
-			moduleTypeUnderTestBp2BuildMutator: genrule.GenruleBp2Build,
+			description:                "genrule with command line variable replacements",
+			moduleTypeUnderTest:        "genrule",
+			moduleTypeUnderTestFactory: genrule.GenRuleFactory,
 			blueprint: `genrule {
     name: "foo.tool",
     out: ["foo_tool.out"],
@@ -76,10 +75,9 @@ genrule {
 			},
 		},
 		{
-			description:                        "genrule using $(locations :label)",
-			moduleTypeUnderTest:                "genrule",
-			moduleTypeUnderTestFactory:         genrule.GenRuleFactory,
-			moduleTypeUnderTestBp2BuildMutator: genrule.GenruleBp2Build,
+			description:                "genrule using $(locations :label)",
+			moduleTypeUnderTest:        "genrule",
+			moduleTypeUnderTestFactory: genrule.GenRuleFactory,
 			blueprint: `genrule {
     name: "foo.tools",
     out: ["foo_tool.out", "foo_tool2.out"],
@@ -115,10 +113,9 @@ genrule {
 			},
 		},
 		{
-			description:                        "genrule using $(locations //absolute:label)",
-			moduleTypeUnderTest:                "genrule",
-			moduleTypeUnderTestFactory:         genrule.GenRuleFactory,
-			moduleTypeUnderTestBp2BuildMutator: genrule.GenruleBp2Build,
+			description:                "genrule using $(locations //absolute:label)",
+			moduleTypeUnderTest:        "genrule",
+			moduleTypeUnderTestFactory: genrule.GenRuleFactory,
 			blueprint: `genrule {
     name: "foo",
     out: ["foo.out"],
@@ -138,10 +135,9 @@ genrule {
 			filesystem: otherGenruleBp,
 		},
 		{
-			description:                        "genrule srcs using $(locations //absolute:label)",
-			moduleTypeUnderTest:                "genrule",
-			moduleTypeUnderTestFactory:         genrule.GenRuleFactory,
-			moduleTypeUnderTestBp2BuildMutator: genrule.GenruleBp2Build,
+			description:                "genrule srcs using $(locations //absolute:label)",
+			moduleTypeUnderTest:        "genrule",
+			moduleTypeUnderTestFactory: genrule.GenRuleFactory,
 			blueprint: `genrule {
     name: "foo",
     out: ["foo.out"],
@@ -161,10 +157,9 @@ genrule {
 			filesystem: otherGenruleBp,
 		},
 		{
-			description:                        "genrule using $(location) label should substitute first tool label automatically",
-			moduleTypeUnderTest:                "genrule",
-			moduleTypeUnderTestFactory:         genrule.GenRuleFactory,
-			moduleTypeUnderTestBp2BuildMutator: genrule.GenruleBp2Build,
+			description:                "genrule using $(location) label should substitute first tool label automatically",
+			moduleTypeUnderTest:        "genrule",
+			moduleTypeUnderTestFactory: genrule.GenRuleFactory,
 			blueprint: `genrule {
     name: "foo",
     out: ["foo.out"],
@@ -187,10 +182,9 @@ genrule {
 			filesystem: otherGenruleBp,
 		},
 		{
-			description:                        "genrule using $(locations) label should substitute first tool label automatically",
-			moduleTypeUnderTest:                "genrule",
-			moduleTypeUnderTestFactory:         genrule.GenRuleFactory,
-			moduleTypeUnderTestBp2BuildMutator: genrule.GenruleBp2Build,
+			description:                "genrule using $(locations) label should substitute first tool label automatically",
+			moduleTypeUnderTest:        "genrule",
+			moduleTypeUnderTestFactory: genrule.GenRuleFactory,
 			blueprint: `genrule {
     name: "foo",
     out: ["foo.out"],
@@ -213,10 +207,9 @@ genrule {
 			filesystem: otherGenruleBp,
 		},
 		{
-			description:                        "genrule without tools or tool_files can convert successfully",
-			moduleTypeUnderTest:                "genrule",
-			moduleTypeUnderTestFactory:         genrule.GenRuleFactory,
-			moduleTypeUnderTestBp2BuildMutator: genrule.GenruleBp2Build,
+			description:                "genrule without tools or tool_files can convert successfully",
+			moduleTypeUnderTest:        "genrule",
+			moduleTypeUnderTestFactory: genrule.GenRuleFactory,
 			blueprint: `genrule {
     name: "foo",
     out: ["foo.out"],
@@ -249,7 +242,6 @@ genrule {
 		config := android.TestConfig(buildDir, nil, testCase.blueprint, fs)
 		ctx := android.NewTestContext(config)
 		ctx.RegisterModuleType(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestFactory)
-		ctx.RegisterBp2BuildMutator(testCase.moduleTypeUnderTest, testCase.moduleTypeUnderTestBp2BuildMutator)
 		ctx.RegisterForBazelConversion()
 
 		_, errs := ctx.ParseFileList(dir, toParse)
@@ -288,19 +280,15 @@ genrule {
 
 func TestBp2BuildInlinesDefaults(t *testing.T) {
 	testCases := []struct {
-		moduleTypesUnderTest      map[string]android.ModuleFactory
-		bp2buildMutatorsUnderTest map[string]bp2buildMutator
-		bp                        string
-		expectedBazelTarget       string
-		description               string
+		moduleTypesUnderTest map[string]android.ModuleFactory
+		bp                   string
+		expectedBazelTarget  string
+		description          string
 	}{
 		{
 			moduleTypesUnderTest: map[string]android.ModuleFactory{
 				"genrule":          genrule.GenRuleFactory,
 				"genrule_defaults": func() android.Module { return genrule.DefaultsFactory() },
-			},
-			bp2buildMutatorsUnderTest: map[string]bp2buildMutator{
-				"genrule": genrule.GenruleBp2Build,
 			},
 			bp: `genrule_defaults {
     name: "gen_defaults",
@@ -326,9 +314,6 @@ genrule {
 			moduleTypesUnderTest: map[string]android.ModuleFactory{
 				"genrule":          genrule.GenRuleFactory,
 				"genrule_defaults": func() android.Module { return genrule.DefaultsFactory() },
-			},
-			bp2buildMutatorsUnderTest: map[string]bp2buildMutator{
-				"genrule": genrule.GenruleBp2Build,
 			},
 			bp: `genrule_defaults {
     name: "gen_defaults",
@@ -364,9 +349,6 @@ genrule {
 				"genrule":          genrule.GenRuleFactory,
 				"genrule_defaults": func() android.Module { return genrule.DefaultsFactory() },
 			},
-			bp2buildMutatorsUnderTest: map[string]bp2buildMutator{
-				"genrule": genrule.GenruleBp2Build,
-			},
 			bp: `genrule_defaults {
     name: "gen_defaults1",
     cmd: "cp $(in) $(out)",
@@ -396,9 +378,6 @@ genrule {
 			moduleTypesUnderTest: map[string]android.ModuleFactory{
 				"genrule":          genrule.GenRuleFactory,
 				"genrule_defaults": func() android.Module { return genrule.DefaultsFactory() },
-			},
-			bp2buildMutatorsUnderTest: map[string]bp2buildMutator{
-				"genrule": genrule.GenruleBp2Build,
 			},
 			bp: `genrule_defaults {
     name: "gen_defaults1",
@@ -450,9 +429,6 @@ genrule {
 		ctx := android.NewTestContext(config)
 		for m, factory := range testCase.moduleTypesUnderTest {
 			ctx.RegisterModuleType(m, factory)
-		}
-		for mutator, f := range testCase.bp2buildMutatorsUnderTest {
-			ctx.RegisterBp2BuildMutator(mutator, f)
 		}
 		ctx.RegisterForBazelConversion()
 

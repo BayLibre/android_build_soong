@@ -44,7 +44,6 @@ func RegisterAppBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("override_android_app", OverrideAndroidAppModuleFactory)
 	ctx.RegisterModuleType("override_android_test", OverrideAndroidTestModuleFactory)
 
-	android.RegisterBp2BuildMutator("android_app_certificate", AndroidAppCertificateBp2Build)
 }
 
 // AndroidManifest.xml merging
@@ -1400,23 +1399,15 @@ type bazelAndroidAppCertificateAttributes struct {
 	Certificate string
 }
 
-func AndroidAppCertificateBp2Build(ctx android.TopDownMutatorContext) {
-	module, ok := ctx.Module().(*AndroidAppCertificate)
-	if !ok {
-		// Not an Android app certificate
-		return
-	}
-	if !module.ConvertWithBp2build(ctx) {
-		return
-	}
+func (m *AndroidAppCertificate) Bp2buildConversion(ctx android.TopDownMutatorContext) {
 	if ctx.ModuleType() != "android_app_certificate" {
 		return
 	}
 
-	androidAppCertificateBp2BuildInternal(ctx, module)
+	androidAppCertificateBp2Build(ctx, m)
 }
 
-func androidAppCertificateBp2BuildInternal(ctx android.TopDownMutatorContext, module *AndroidAppCertificate) {
+func androidAppCertificateBp2Build(ctx android.TopDownMutatorContext, module *AndroidAppCertificate) {
 	var certificate string
 	if module.properties.Certificate != nil {
 		certificate = *module.properties.Certificate

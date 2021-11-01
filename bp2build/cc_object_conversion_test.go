@@ -33,10 +33,9 @@ func runCcObjectTestCase(t *testing.T, tc bp2buildTestCase) {
 
 func TestCcObjectSimple(t *testing.T) {
 	runCcObjectTestCase(t, bp2buildTestCase{
-		description:                        "simple cc_object generates cc_object with include header dep",
-		moduleTypeUnderTest:                "cc_object",
-		moduleTypeUnderTestFactory:         cc.ObjectFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.ObjectBp2Build,
+		description:                "simple cc_object generates cc_object with include header dep",
+		moduleTypeUnderTest:        "cc_object",
+		moduleTypeUnderTestFactory: cc.ObjectFactory,
 		filesystem: map[string]string{
 			"a/b/foo.h":     "",
 			"a/b/bar.h":     "",
@@ -79,9 +78,8 @@ func TestCcObjectSimple(t *testing.T) {
 
 func TestCcObjectDefaults(t *testing.T) {
 	runCcObjectTestCase(t, bp2buildTestCase{
-		moduleTypeUnderTest:                "cc_object",
-		moduleTypeUnderTestFactory:         cc.ObjectFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.ObjectBp2Build,
+		moduleTypeUnderTest:        "cc_object",
+		moduleTypeUnderTestFactory: cc.ObjectFactory,
 		blueprint: `cc_object {
     name: "foo",
     system_shared_libs: [],
@@ -124,10 +122,9 @@ cc_defaults {
 
 func TestCcObjectCcObjetDepsInObjs(t *testing.T) {
 	runCcObjectTestCase(t, bp2buildTestCase{
-		description:                        "cc_object with cc_object deps in objs props",
-		moduleTypeUnderTest:                "cc_object",
-		moduleTypeUnderTestFactory:         cc.ObjectFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.ObjectBp2Build,
+		description:                "cc_object with cc_object deps in objs props",
+		moduleTypeUnderTest:        "cc_object",
+		moduleTypeUnderTestFactory: cc.ObjectFactory,
 		filesystem: map[string]string{
 			"a/b/c.c": "",
 			"x/y/z.c": "",
@@ -165,10 +162,9 @@ cc_object {
 
 func TestCcObjectIncludeBuildDirFalse(t *testing.T) {
 	runCcObjectTestCase(t, bp2buildTestCase{
-		description:                        "cc_object with include_build_dir: false",
-		moduleTypeUnderTest:                "cc_object",
-		moduleTypeUnderTestFactory:         cc.ObjectFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.ObjectBp2Build,
+		description:                "cc_object with include_build_dir: false",
+		moduleTypeUnderTest:        "cc_object",
+		moduleTypeUnderTestFactory: cc.ObjectFactory,
 		filesystem: map[string]string{
 			"a/b/c.c": "",
 			"x/y/z.c": "",
@@ -192,10 +188,9 @@ func TestCcObjectIncludeBuildDirFalse(t *testing.T) {
 
 func TestCcObjectProductVariable(t *testing.T) {
 	runCcObjectTestCase(t, bp2buildTestCase{
-		description:                        "cc_object with product variable",
-		moduleTypeUnderTest:                "cc_object",
-		moduleTypeUnderTestFactory:         cc.ObjectFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.ObjectBp2Build,
+		description:                "cc_object with product variable",
+		moduleTypeUnderTest:        "cc_object",
+		moduleTypeUnderTestFactory: cc.ObjectFactory,
 		blueprint: `cc_object {
     name: "foo",
     system_shared_libs: [],
@@ -224,10 +219,9 @@ func TestCcObjectProductVariable(t *testing.T) {
 
 func TestCcObjectCflagsOneArch(t *testing.T) {
 	runCcObjectTestCase(t, bp2buildTestCase{
-		description:                        "cc_object setting cflags for one arch",
-		moduleTypeUnderTest:                "cc_object",
-		moduleTypeUnderTestFactory:         cc.ObjectFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.ObjectBp2Build,
+		description:                "cc_object setting cflags for one arch",
+		moduleTypeUnderTest:        "cc_object",
+		moduleTypeUnderTestFactory: cc.ObjectFactory,
 		blueprint: `cc_object {
     name: "foo",
     system_shared_libs: [],
@@ -262,10 +256,9 @@ func TestCcObjectCflagsOneArch(t *testing.T) {
 
 func TestCcObjectCflagsFourArch(t *testing.T) {
 	runCcObjectTestCase(t, bp2buildTestCase{
-		description:                        "cc_object setting cflags for 4 architectures",
-		moduleTypeUnderTest:                "cc_object",
-		moduleTypeUnderTestFactory:         cc.ObjectFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.ObjectBp2Build,
+		description:                "cc_object setting cflags for 4 architectures",
+		moduleTypeUnderTest:        "cc_object",
+		moduleTypeUnderTestFactory: cc.ObjectFactory,
 		blueprint: `cc_object {
     name: "foo",
     system_shared_libs: [],
@@ -316,10 +309,9 @@ func TestCcObjectCflagsFourArch(t *testing.T) {
 
 func TestCcObjectLinkerScript(t *testing.T) {
 	runCcObjectTestCase(t, bp2buildTestCase{
-		description:                        "cc_object setting linker_script",
-		moduleTypeUnderTest:                "cc_object",
-		moduleTypeUnderTestFactory:         cc.ObjectFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.ObjectBp2Build,
+		description:                "cc_object setting linker_script",
+		moduleTypeUnderTest:        "cc_object",
+		moduleTypeUnderTestFactory: cc.ObjectFactory,
 		blueprint: `cc_object {
     name: "foo",
     srcs: ["base.cpp"],
@@ -340,10 +332,9 @@ func TestCcObjectLinkerScript(t *testing.T) {
 
 func TestCcObjectDepsAndLinkerScriptSelects(t *testing.T) {
 	runCcObjectTestCase(t, bp2buildTestCase{
-		description:                        "cc_object setting deps and linker_script across archs",
-		moduleTypeUnderTest:                "cc_object",
-		moduleTypeUnderTestFactory:         cc.ObjectFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.ObjectBp2Build,
+		description:                "cc_object setting deps and linker_script across archs",
+		moduleTypeUnderTest:        "cc_object",
+		moduleTypeUnderTestFactory: cc.ObjectFactory,
 		blueprint: `cc_object {
     name: "foo",
     srcs: ["base.cpp"],
@@ -412,10 +403,9 @@ cc_object {
 
 func TestCcObjectSelectOnLinuxAndBionicArchs(t *testing.T) {
 	runCcObjectTestCase(t, bp2buildTestCase{
-		description:                        "cc_object setting srcs based on linux and bionic archs",
-		moduleTypeUnderTest:                "cc_object",
-		moduleTypeUnderTestFactory:         cc.ObjectFactory,
-		moduleTypeUnderTestBp2BuildMutator: cc.ObjectBp2Build,
+		description:                "cc_object setting srcs based on linux and bionic archs",
+		moduleTypeUnderTest:        "cc_object",
+		moduleTypeUnderTestFactory: cc.ObjectFactory,
 		blueprint: `cc_object {
     name: "foo",
     srcs: ["base.cpp"],

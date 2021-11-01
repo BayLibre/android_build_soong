@@ -42,8 +42,6 @@ func init() {
 	pctx.Import("android/soong/android")
 
 	registerShBuildComponents(android.InitRegistrationContext)
-
-	android.RegisterBp2BuildMutator("sh_binary", ShBinaryBp2Build)
 }
 
 func registerShBuildComponents(ctx android.RegistrationContext) {
@@ -531,12 +529,7 @@ type bazelShBinaryAttributes struct {
 	// visibility
 }
 
-func ShBinaryBp2Build(ctx android.TopDownMutatorContext) {
-	m, ok := ctx.Module().(*ShBinary)
-	if !ok || !m.ConvertWithBp2build(ctx) {
-		return
-	}
-
+func (m *ShBinary) Bp2buildConversion(ctx android.TopDownMutatorContext) {
 	srcs := bazel.MakeLabelListAttribute(
 		android.BazelLabelForModuleSrc(ctx, []string{*m.properties.Src}))
 
