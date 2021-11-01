@@ -70,6 +70,30 @@
       },
       "revId": "bce9f08d027cee0554bedc28e3fbef6313aa8b98",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb795ea7_a1a736ea",
+        "filename": "java/core-libraries/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-11-01T16:52:23Z",
+      "side": 1,
+      "message": "The update_prebuilts.py appears to download all files that match apistubs/android/\u003cscope\u003e/*.jar.",
+      "parentUuid": "04dd6fe0_74fd892f",
+      "range": {
+        "startLine": 136,
+        "startChar": 15,
+        "endLine": 136,
+        "endChar": 29
+      },
+      "revId": "bce9f08d027cee0554bedc28e3fbef6313aa8b98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
