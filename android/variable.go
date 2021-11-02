@@ -15,6 +15,7 @@
 package android
 
 import (
+	"android/soong/bazel"
 	"fmt"
 	"reflect"
 	"runtime"
@@ -490,11 +491,33 @@ type ProductConfigProperty struct {
 	ProductConfigVariable string
 	FullConfig            string
 	Property              interface{}
+	ConfigurationAxis     bazel.ConfigurationAxis
 }
 
 // ProductConfigProperties is a map of property name to a slice of ProductConfigProperty such that
 // all it all product variable-specific versions of a property are easily accessed together
 type ProductConfigProperties map[string]map[string]ProductConfigProperty
+
+func (props *ProductConfigProperties) setNamespacedConfigVariable(
+	configVariable, propertyName, namespace, config string, prop interface{}) {
+	if (*props)[propertyName] == nil {
+		(*props)[propertyName] = make(map[string]ProductConfigProperty)
+	}
+
+	namespace = strings.ToLower(namespace)
+	configVariable = strings.ToLower(configVariable)
+	config = strings.ToLower(config)
+
+	namespacedVariable := namespace + "__" + configVariable        // e.g. "acme__board", "acme__size"
+	namespacedVariableConfig := namespacedVariable + "__" + config // e.g. "android__library_linking_strategy__prefer_static", "acme__size__conditions_default"
+
+	(*props)[propertyName][namespacedVariableConfig] = ProductConfigProperty{
+		ProductConfigVariable: configVariable,           // e.g. "board", "size", "Library_linking_strategy"
+		FullConfig:            namespacedVariableConfig, // e.g. "soc_a", "conditions_default"
+		Property:              prop,
+		ConfigurationAxis:     bazel.NamespacedVariableConfigurationAxis(namespacedVariable),
+	}
+}
 
 // ProductVariableProperties returns a ProductConfigProperties containing only the properties which
 // have been set for the module in the given context.
@@ -504,17 +527,23 @@ func ProductVariableProperties(ctx BazelConversionPathContext) ProductConfigProp
 
 	productConfigProperties := ProductConfigProperties{}
 
-	if moduleBase.variableProperties == nil {
-		return productConfigProperties
+	if moduleBase.variableProperties != nil {
+		productVariableValues(moduleBase.variableProperties, "", &productConfigProperties)
+
+		for _, configToProps := range moduleBase.GetArchVariantProperties(ctx, moduleBase.variableProperties) {
+			for config, props := range configToProps {
+				// GetArchVariantProperties is creating an instance of the requested type
+				// and productVariablesValues expects an interface, so no need to cast
+				productVariableValues(props, config, &productConfigProperties)
+			}
+		}
 	}
 
-	productVariableValues(moduleBase.variableProperties, "", &productConfigProperties)
-
-	for _, configToProps := range moduleBase.GetArchVariantProperties(ctx, moduleBase.variableProperties) {
-		for config, props := range configToProps {
-			// GetArchVariantProperties is creating an instance of the requested type
-			// and productVariablesValues expects an interface, so no need to cast
-			productVariableValues(props, config, &productConfigProperties)
+	if m, ok := module.(Bazelable); ok && m.namespacedVariableProps() != nil {
+		for namespace, namespacedVariableStructs := range *m.namespacedVariableProps() {
+			for _, namespacedVariableStruct := range namespacedVariableStructs {
+				namespacedProductVariableValue(namespace, namespacedVariableStruct, &productConfigProperties)
+			}
 		}
 	}
 
@@ -551,6 +580,112 @@ func productVariableValues(variableProps interface{}, suffix string, productConf
 				ProductConfigVariable: productVariableName,
 				FullConfig:            config,
 				Property:              property.Interface(),
+				ConfigurationAxis:     bazel.ProductVariableConfigurationAxis(config),
+			}
+		}
+	}
+}
+
+func namespacedProductVariableValue(namespace string, namespacedVariableStruct interface{}, productConfigProperties *ProductConfigProperties) {
+
+	scv := reflect.ValueOf(namespacedVariableStruct)
+	if !scv.IsValid() {
+		return
+	}
+	if scv.Kind() != reflect.Ptr || scv.Elem().Kind() != reflect.Struct {
+		panic(fmt.Errorf("Expected the soong config variable reflect value to be a struct ptr, got %s", scv.Kind()))
+	}
+
+	// scv is validated to be a struct
+	scv = scv.Elem()
+	configVariables := scv.FieldByName("Soong_config_variables")
+
+	for i := 0; i < configVariables.NumField(); i++ {
+		// Iterate over the struct fields named:
+		// board, size, feature1, feature2, FEATURE3...
+		configVariable := configVariables.Field(i)
+		if !configVariable.IsValid() {
+			continue
+		}
+
+		configVariableName := configVariables.Type().Field(i).Name
+		if configVariable.Kind() == reflect.Interface {
+			configVariable = configVariable.Elem()
+			if configVariable.Kind() == reflect.Ptr {
+				configVariable = reflect.Indirect(configVariable)
+			}
+		}
+
+		if !configVariable.IsValid() {
+			continue
+		}
+		if configVariable.Kind() != reflect.Struct {
+			panic(fmt.Errorf("Expected a struct, got %s", configVariable.Kind()))
+		}
+
+		// For each config variable struct, iterate over its fields..
+		for j := 0; j < configVariable.NumField(); j++ {
+			field := configVariable.Field(j)
+			fieldName := configVariable.Type().Field(j).Name
+			// soc_a_ soc_b, soc_c, cflags, conditions_default...
+			if field.IsZero() || !field.IsValid() {
+				continue
+			}
+
+			if fieldName == "Conditions_default" && field.Kind() == reflect.Ptr {
+				// If the field is a conditions_default field
+				field = reflect.Indirect(field)
+				if field.Kind() == reflect.Interface {
+					field = field.Elem()
+				}
+				if !field.IsValid() {
+					continue
+				}
+				for k := 0; k < field.NumField(); k++ {
+					if field.Field(k).IsZero() {
+						continue
+					}
+					productConfigProperties.setNamespacedConfigVariable(
+						configVariableName,               // e.g. size, feature1, feature2, FEATURE3, board
+						field.Type().Field(k).Name,       // e.g. cflags, srcs, cppflags
+						namespace,                        // e.g. acme
+						bazel.ConditionsDefaultConfigKey, // conditions_default
+						field.Field(k).Interface(),       // e.g. ["-O3"]
+					)
+				}
+			} else if field.Kind() == reflect.Interface {
+				// The field is an interface of a struct, which is used by
+				// string variables like soc_a, soc_b, ...
+				field = field.Elem()
+				if field.Kind() == reflect.Ptr {
+					field = reflect.Indirect(field)
+				}
+				if !field.IsValid() {
+					continue
+				}
+				for k := 0; k < field.NumField(); k++ {
+					if field.Field(k).IsZero() {
+						continue
+					}
+					productConfigProperties.setNamespacedConfigVariable(
+						configVariableName,         // e.g. board. *NOT size, feature, etc*
+						field.Type().Field(k).Name, // e.g. cflags, srcs, cppflags
+						namespace,                  // e.g. acme
+						fieldName,                  // e.g. soc_a, soc_b
+						field.Field(k).Interface(), // e.g. ["-O3"]
+					)
+				}
+			} else {
+				// Not a struct (so not a conditions_default or string
+				// variable struct), so this can be immediately turned into
+				// a config variable
+				productConfigProperties.setNamespacedConfigVariable(
+					configVariableName, // e.g. size, feature1, feature2, feature3. *NOT board*
+					fieldName,          // e.g. cflags, srcs, cppflags
+					namespace,          // e.g. acme
+					configVariableName, // e.g. size, feature1, feature2, feature3
+					field.Interface(),  // e.g. ["-O3"]
+				)
 			}
 		}
 	}

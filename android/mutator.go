@@ -216,7 +216,8 @@ func FinalDepsMutators(f RegisterMutatorFunc) {
 }
 
 var bp2buildPreArchMutators = []RegisterMutatorFunc{}
-var bp2buildMutators = map[string]RegisterMutatorFunc{}
+var bp2buildMutators = map[string]func(TopDownMutatorContext){}
+var bp2buildMutatorFuncs = map[string]RegisterMutatorFunc{}
 
 // See http://b/192523357
 var bp2buildLock sync.Mutex
@@ -233,7 +234,8 @@ func RegisterBp2BuildMutator(moduleType string, m func(TopDownMutatorContext)) {
 	// Use a lock to avoid a concurrent map write if RegisterBp2BuildMutator is called in parallel
 	bp2buildLock.Lock()
 	defer bp2buildLock.Unlock()
-	bp2buildMutators[moduleType] = f
+	bp2buildMutators[moduleType] = m
+	bp2buildMutatorFuncs[moduleType] = f
 }
 
 // PreArchBp2BuildMutators adds mutators to be register for converting Android Blueprint modules
