@@ -254,6 +254,12 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 
 	if BoolDefault(opt.Proguard_compatibility, true) {
 		r8Flags = append(r8Flags, "--force-proguard-compatibility")
+	} else {
+		// TODO(zerny): Consider also tagging the source file in compat builds.
+		if Bool(opt.Optimize) || Bool(opt.Obfuscate) {
+			r8Flags = append(r8Flags, "--map-id-template", "%MAP_HASH")
+			r8Flags = append(r8Flags, "--source-file-template", "\"go/retraceme %MAP_ID\"")
+		}
 	}
 
 	// TODO(ccross): Don't shrink app instrumentation tests by default.
