@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad8b2c04_d3fc29f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-02T16:10:12Z",
+      "side": 1,
+      "message": "Update: please hold off reviewing this; we seem to be clashing with Colin\u0027s aosp/1875757 and this one is not very important in the grand scheme of things.",
+      "revId": "56c867d2ce5470ee5f47ec766fd8159b88d1b159",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
