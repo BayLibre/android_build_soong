@@ -94,6 +94,30 @@
       },
       "revId": "55bc820d66a1ce1d56d68da4efcbcef1fa178878",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b00e9fb2_b1408b98",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-02T21:32:28Z",
+      "side": 1,
+      "message": "Agreed that the names are a bit non-ideal, but they are consistent with use in Soong, which has some value.\n\nWe could introduce _new_ methods to baseModuleContext that have other names but we couldn\u0027t use ModuleType/ModuleName/ModuleDir there because there is no overloading of methods in go -- which is I assume why we have the \"OtherModule*\" names in the first place.\n\nconvertedToBazel and AddUnconvertedBp2buildDep are often operating on other modules as they are used as part of dep resolution, so we retain the need to access information about other modules...",
+      "parentUuid": "b3e83b52_a2b3fca5",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 16
+      },
+      "revId": "55bc820d66a1ce1d56d68da4efcbcef1fa178878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
