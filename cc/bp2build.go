@@ -323,11 +323,12 @@ func (ca *compilerAttributes) convertProductVariables(ctx android.BazelConversio
 		if props, exists := productVariableProps[propName]; exists {
 			for _, prop := range props {
 				flags, ok := prop.Property.([]string)
+				axis := prop.ConfigurationAxis
 				if !ok {
 					ctx.ModuleErrorf("Could not convert product variable %s property", proptools.PropertyNameForField(propName))
 				}
 				newFlags, _ := bazel.TryVariableSubstitutions(flags, prop.ProductConfigVariable)
-				attr.SetSelectValue(bazel.ProductVariableConfigurationAxis(prop.FullConfig), prop.FullConfig, newFlags)
+				attr.SetSelectValue(axis, prop.FullConfig, newFlags)
 			}
 		}
 	}
@@ -611,7 +612,12 @@ func (la *linkerAttributes) convertProductVariables(ctx android.BazelConversionP
 				ctx.ModuleErrorf("Could not convert product variable %s property", dep.excludesField)
 			}
 
-			dep.attribute.SetSelectValue(bazel.ProductVariableConfigurationAxis(config), config, dep.depResolutionFunc(ctx, android.FirstUniqueStrings(includes), excludes))
+			axis := bazel.ProductVariableConfigurationAxis(config)
+			if strings.HasPrefix(prop.ConfigurationAxis.String(), "namespaced_variables") {
+				axis = prop.ConfigurationAxis
+			}
+
+			dep.attribute.SetSelectValue(axis, config, dep.depResolutionFunc(ctx, android.FirstUniqueStrings(includes), excludes))
 		}
 	}
 }
