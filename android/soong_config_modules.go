@@ -31,10 +31,10 @@ import (
 )
 
 func init() {
-	RegisterModuleType("soong_config_module_type_import", soongConfigModuleTypeImportFactory)
-	RegisterModuleType("soong_config_module_type", soongConfigModuleTypeFactory)
-	RegisterModuleType("soong_config_string_variable", soongConfigStringVariableDummyFactory)
-	RegisterModuleType("soong_config_bool_variable", soongConfigBoolVariableDummyFactory)
+	RegisterModuleType("soong_config_module_type_import", SoongConfigModuleTypeImportFactory)
+	RegisterModuleType("soong_config_module_type", SoongConfigModuleTypeFactory)
+	RegisterModuleType("soong_config_string_variable", SoongConfigStringVariableDummyFactory)
+	RegisterModuleType("soong_config_bool_variable", SoongConfigBoolVariableDummyFactory)
 }
 
 type soongConfigModuleTypeImport struct {
@@ -153,7 +153,7 @@ type soongConfigModuleTypeImportProperties struct {
 // Then libacme_foo would build with cflags:
 //   "-DGENERIC -DSOC_DEFAULT -DFEATURE_DEFAULT -DSIZE=DEFAULT".
 
-func soongConfigModuleTypeImportFactory() Module {
+func SoongConfigModuleTypeImportFactory() Module {
 	module := &soongConfigModuleTypeImport{}
 
 	module.AddProperties(&module.properties)
@@ -179,6 +179,7 @@ func (*soongConfigModuleTypeImport) GenerateAndroidBuildActions(ModuleContext) {
 
 type soongConfigModuleTypeModule struct {
 	ModuleBase
+	BazelModuleBase
 	properties soongconfig.ModuleTypeProperties
 }
 
@@ -262,7 +263,7 @@ type soongConfigModuleTypeModule struct {
 //     SOONG_CONFIG_acme_width := 200
 //
 // Then libacme_foo would build with cflags "-DGENERIC -DSOC_A -DFEATURE".
-func soongConfigModuleTypeFactory() Module {
+func SoongConfigModuleTypeFactory() Module {
 	module := &soongConfigModuleTypeModule{}
 
 	module.AddProperties(&module.properties)
@@ -296,7 +297,7 @@ type soongConfigBoolVariableDummyModule struct {
 
 // soong_config_string_variable defines a variable and a set of possible string values for use
 // in a soong_config_module_type definition.
-func soongConfigStringVariableDummyFactory() Module {
+func SoongConfigStringVariableDummyFactory() Module {
 	module := &soongConfigStringVariableDummyModule{}
 	module.AddProperties(&module.properties, &module.stringProperties)
 	initAndroidModuleBase(module)
@@ -305,7 +306,7 @@ func soongConfigStringVariableDummyFactory() Module {
 
 // soong_config_string_variable defines a variable with true or false values for use
 // in a soong_config_module_type definition.
-func soongConfigBoolVariableDummyFactory() Module {
+func SoongConfigBoolVariableDummyFactory() Module {
 	module := &soongConfigBoolVariableDummyModule{}
 	module.AddProperties(&module.properties)
 	initAndroidModuleBase(module)
@@ -324,6 +325,9 @@ func (m *soongConfigBoolVariableDummyModule) Name() string {
 func (*soongConfigBoolVariableDummyModule) Nameless()                                     {}
 func (*soongConfigBoolVariableDummyModule) GenerateAndroidBuildActions(ctx ModuleContext) {}
 
+// importModuleTypes registers the module factories for a list of module types defined
+// in an Android.bp file. These module factories are scoped for the current Android.bp
+// file only.
 func importModuleTypes(ctx LoadHookContext, from string, moduleTypes ...string) {
 	from = filepath.Clean(from)
 	if filepath.Ext(from) != ".bp" {
@@ -389,7 +393,15 @@ func loadSoongConfigModuleTypeDefinition(ctx LoadHookContext, from string) map[s
 		for name, moduleType := range mtDef.ModuleTypes {
 			factory := globalModuleTypes[moduleType.BaseModuleType]
 			if factory != nil {
-				factories[name] = soongConfigModuleFactory(factory, moduleType)
+				factories[name] = soongConfigModuleFactory(factory, moduleType, ctx.Config().runningAsBp2Build)
+				if ctx.Config().runningAsBp2Build && proptools.BoolDefault(moduleType.Bp2buildAvailable, false) {
+					// Register the bp2build mutator for the base module type so that
+					// custom modules use the same bp2build mutator as their base module type.
+					if bp2buildMutators[moduleType.BaseModuleType] != nil {
+						ctx.Config().bp2buildModuleTypeConfig[name] = true
+						RegisterBp2BuildMutator(name, bp2buildMutators[moduleType.BaseModuleType])
+					}
+				}
 			} else {
 				reportErrors(ctx, from,
 					fmt.Errorf("missing global module type factory for %q", moduleType.BaseModuleType))
@@ -408,7 +420,7 @@ func loadSoongConfigModuleTypeDefinition(ctx LoadHookContext, from string) map[s
 // a new soongConfigModuleFactory that wraps the existing soongConfigModuleFactory and adds conditional on Soong config
 // variables.
 func soongConfigModuleFactory(factory blueprint.ModuleFactory,
-	moduleType *soongconfig.ModuleType) blueprint.ModuleFactory {
+	moduleType *soongconfig.ModuleType, runningAsBp2Build bool) blueprint.ModuleFactory {
 
 	conditionalFactoryProps := soongconfig.CreateProperties(factory, moduleType)
 	if conditionalFactoryProps.IsValid() {
@@ -418,17 +430,31 @@ func soongConfigModuleFactory(factory blueprint.ModuleFactory,
 			conditionalProps := proptools.CloneEmptyProperties(conditionalFactoryProps)
 			props = append(props, conditionalProps.Interface())
 
-			AddLoadHook(module, func(ctx LoadHookContext) {
-				config := ctx.Config().VendorConfig(moduleType.ConfigNamespace)
-				newProps, err := soongconfig.PropertiesToApply(moduleType, conditionalProps, config)
-				if err != nil {
-					ctx.ModuleErrorf("%s", err)
-					return
-				}
-				for _, ps := range newProps {
-					ctx.AppendProperties(ps)
-				}
-			})
+			if runningAsBp2Build {
+				AddLoadHook(module, func(ctx LoadHookContext) {
+					if m, ok := module.(Bazelable); ok {
+						m.SetBaseModuleType(moduleType.BaseModuleType)
+						namespacedVarProps := m.namespacedVariableProps()
+						// Instead of applying all properties, keep the entire conditionalProps struct as
+						// part of the custom module so dependent modules can create the selects accordingly
+						*namespacedVarProps = map[string][]interface{}{
+							moduleType.ConfigNamespace: {conditionalProps.Interface()},
+						}
+					}
+				})
+			} else {
+				AddLoadHook(module, func(ctx LoadHookContext) {
+					config := ctx.Config().VendorConfig(moduleType.ConfigNamespace)
+					newProps, err := soongconfig.PropertiesToApply(moduleType, conditionalProps, config)
+					if err != nil {
+						ctx.ModuleErrorf("%s", err)
+						return
+					}
+					for _, ps := range newProps {
+						ctx.AppendProperties(ps)
+					}
+				})
+			}
 
 			return module, props
 		}
