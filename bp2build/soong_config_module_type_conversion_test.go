@@ -114,3 +114,93 @@ cc_library_static {
     local_includes = ["."],
 )`}})
 }
+
+func TestSoongConfigModuleType_LoadFromFile(t *testing.T) {
+	configBp := `
+		soong_config_module_type {
+			name: "acme_test",
+			module_type: "cc_defaults",
+			config_namespace: "acme",
+			variables: ["board", "feature1"],
+			properties: ["static_libs", "cflags"],
+		}
+
+		soong_config_string_variable {
+			name: "board",
+			values: ["soc_a", "soc_b", "soc_c", "soc_d"],
+		}
+
+		soong_config_bool_variable {
+			name: "feature1",
+		}
+	`
+
+	importBp := `
+		soong_config_module_type_import {
+			from: "path/to/SoongConfig.bp",
+			module_types: ["acme_test"],
+		}
+	`
+
+	bp := `
+acme_test {
+	name: "foo",
+	static_libs: ["generic_dep"],
+	soong_config_variables: {
+		board: {
+			soc_a: {
+				static_libs: ["soc_a_dep"],
+			},
+			soc_b: {
+				static_libs: ["soc_b_dep"],
+			},
+			soc_c: {},
+			conditions_default: {
+				static_libs: ["default_board_dep"],
+				cflags: ["-Ddefault_board"]
+			},
+		},
+		feature1: {
+			conditions_default: {
+				static_libs: ["disabled_feature1_dep"],
+			},
+			static_libs: ["enabled_feature1_dep"],
+			cflags: ["-Dfeature1"]
+		},
+	},
+}
+
+cc_library_static {name: "generic_dep", bazel_module: { bp2build_available: false }}
+cc_library_static {name: "enabled_feature1_dep", bazel_module: { bp2build_available: false }}
+cc_library_static {name: "disabled_feature1_dep", bazel_module: { bp2build_available: false }}
+cc_library_static {name: "soc_a_dep", bazel_module: { bp2build_available: false }}
+cc_library_static {name: "soc_b_dep", bazel_module: { bp2build_available: false }}
+cc_library_static {name: "default_board_dep", bazel_module: { bp2build_available: false }}
+
+cc_library_static {
+    name: "foo_library",
+    defaults: ["foo"],
+}
+`
+
+	// TODO(b/198556411): foo_library should generate selects for custom config vars.
+	runSoongConfigModuleTypeTest(t, bp2buildTestCase{
+		description:                        "soong config variables - import module type from another file",
+		moduleTypeUnderTest:                "cc_library_static",
+		moduleTypeUnderTestFactory:         cc.LibraryStaticFactory,
+		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryStaticBp2Build,
+		filesystem: map[string]string{
+			"path/to/SoongConfig.bp": configBp,
+		},
+		blueprint: importBp + bp,
+		expectedBazelTargets: []string{`cc_library_static(
+    name = "foo_library",
+    copts = ["-Ddefault_board"],
+    implementation_deps = [
+        ":generic_dep",
+        ":default_board_dep",
+        ":disabled_feature1_dep",
+    ],
+    local_includes = ["."],
+)`}})
+}
