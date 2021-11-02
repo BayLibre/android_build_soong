@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a87353c5_bc75465e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-02T15:49:15Z",
+      "side": 1,
+      "message": "Ping? Trevor had some problems setting up his IDE and I hope these instructions help.",
+      "revId": "9699c52ca3eab18369704cd3824b5ddd90ff7078",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
