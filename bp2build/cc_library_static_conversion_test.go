@@ -1119,8 +1119,8 @@ cc_library_static {
             "//dep:generated_hdr_other_pkg_x86",
         ],
         "//conditions:default": [
-            "not-for-x86.cpp",
             ":generated_src_not_x86",
+            "not-for-x86.cpp",
         ],
     }) + select({
         "//build/bazel/platforms/os:android": [
