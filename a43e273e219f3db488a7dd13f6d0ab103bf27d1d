@@ -70,6 +70,24 @@
       "parentUuid": "7ce997b0_4940867d",
       "revId": "a43e273e219f3db488a7dd13f6d0ab103bf27d1d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "719c5a02_97b792c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-11-02T16:15:17Z",
+      "side": 1,
+      "message": "I don\u0027t understand the claim about the flags. Which options are confusing? I still see no reason for a separate application for a step has no meaning standalone.",
+      "parentUuid": "13a4fe46_f90207bb",
+      "revId": "a43e273e219f3db488a7dd13f6d0ab103bf27d1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
