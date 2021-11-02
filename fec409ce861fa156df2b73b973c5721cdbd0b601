@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cb0944f_69065509",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-02T15:30:52Z",
+      "side": 1,
+      "message": "I\u0027m not sure, I\u0027d have to think about it.  I\u0027ll upload a separate CL that deletes it while I consider it.",
+      "parentUuid": "c3741076_595d31f1",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 19
+      },
+      "revId": "fec409ce861fa156df2b73b973c5721cdbd0b601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95cddc91_adb233f2",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-02T08:22:56Z",
       "side": 1,
       "message": "nit: this sentence is missing an object",
+      "range": {
+        "startLine": 187,
+        "startChar": 25,
+        "endLine": 187,
+        "endChar": 50
+      },
+      "revId": "fec409ce861fa156df2b73b973c5721cdbd0b601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecda8671_9841b0fb",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-02T15:30:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95cddc91_adb233f2",
       "range": {
         "startLine": 187,
         "startChar": 25,
