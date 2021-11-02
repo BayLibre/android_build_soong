@@ -70,6 +70,30 @@
       },
       "revId": "55bc820d66a1ce1d56d68da4efcbcef1fa178878",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3e83b52_a2b3fca5",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-02T10:39:21Z",
+      "side": 1,
+      "message": "If we refactor that convertedToBazel/AddUnconvertedBp2buildDep usage to rely on other mechanisms, this can be indeed be named ModuleType/ModuleName/ModuleDir. Liz: WDYT?",
+      "parentUuid": "73dfa313_8666d050",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 16
+      },
+      "revId": "55bc820d66a1ce1d56d68da4efcbcef1fa178878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
