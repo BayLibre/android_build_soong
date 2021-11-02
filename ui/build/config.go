@@ -789,7 +789,7 @@ func (c *configImpl) HostToolDir() string {
 }
 
 func (c *configImpl) NamedGlobFile(name string) string {
-	return shared.JoinPath(c.SoongOutDir(), ".bootstrap/build-globs."+name+".ninja")
+	return shared.JoinPath(c.SoongOutDir(), "globs-"+name+".ninja")
 }
 
 func (c *configImpl) UsedEnvFile(tag string) string {
@@ -797,7 +797,7 @@ func (c *configImpl) UsedEnvFile(tag string) string {
 }
 
 func (c *configImpl) Bp2BuildMarkerFile() string {
-	return shared.JoinPath(c.SoongOutDir(), ".bootstrap/bp2build_workspace_marker")
+	return shared.JoinPath(c.SoongOutDir(), "bp2build_workspace_marker")
 }
 
 func (c *configImpl) SoongDocsHtml() string {
