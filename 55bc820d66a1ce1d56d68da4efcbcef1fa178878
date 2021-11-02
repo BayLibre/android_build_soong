@@ -46,6 +46,30 @@
       },
       "revId": "55bc820d66a1ce1d56d68da4efcbcef1fa178878",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73dfa313_8666d050",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-02T10:14:29Z",
+      "side": 1,
+      "message": "I didn\u0027t phrase myself clearly enough... looking at other modules is useful, of course, but given what this interface does, I would expect the methods to be simpler called ModuleType/ModuleName/ModuleDir .\n\n(not that this matters much)",
+      "parentUuid": "d308dcfb_b31f7286",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 16
+      },
+      "revId": "55bc820d66a1ce1d56d68da4efcbcef1fa178878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
