@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f8407a3_a34b37b1",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-02T08:15:02Z",
+      "side": 1,
+      "message": "nit: these names are not very great because there is no \"otherness\" to speak of here, but of course you can\u0027t change this name without writing a forwarding method on baseModuleContext. And you can\u0027t even rename the method on baseModuleContext, \u0027coz Soong plugins.\n\nSo I guess the best course of action is for these methods to have an ugly name? This change is for splitting the interface anyway and renaming them is best done in another change anyway.",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 16
+      },
+      "revId": "55bc820d66a1ce1d56d68da4efcbcef1fa178878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
