@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad9c3009_58b1fd02",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-02T19:03:56Z",
+      "side": 1,
+      "message": "After discussion with bbadour@, I have added the logic to check whether all the modules in one Android.mk file have the same license or not (expected yes, so will report an error when detect not the case).\nThanks for pointing this out!",
+      "parentUuid": "fcf6f948_34f3f75e",
+      "range": {
+        "startLine": 1451,
+        "startChar": 5,
+        "endLine": 1451,
+        "endChar": 29
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a940bc2a_e3c3f3f6",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 7
