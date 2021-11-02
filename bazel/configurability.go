@@ -120,15 +120,17 @@ const (
 	os
 	osArch
 	productVariables
+	namespacedVariables
 )
 
 func (ct configurationType) String() string {
 	return map[configurationType]string{
-		noConfig:         "no_config",
-		arch:             "arch",
-		os:               "os",
-		osArch:           "arch_os",
-		productVariables: "product_variables",
+		noConfig:            "no_config",
+		arch:                "arch",
+		os:                  "os",
+		osArch:              "arch_os",
+		productVariables:    "product_variables",
+		namespacedVariables: "namespaced_variables",
 	}[ct]
 }
 
@@ -150,7 +152,7 @@ func (ct configurationType) validateConfig(config string) {
 		if _, ok := platformOsArchMap[config]; !ok {
 			panic(fmt.Errorf("Unknown os+arch: %s", config))
 		}
-	case productVariables:
+	case productVariables, namespacedVariables:
 		// do nothing
 	default:
 		panic(fmt.Errorf("Unrecognized ConfigurationType %d", ct))
@@ -158,9 +160,9 @@ func (ct configurationType) validateConfig(config string) {
 }
 
 // SelectKey returns the Bazel select key for a given configurationType and config string.
-func (ct configurationType) SelectKey(config string) string {
-	ct.validateConfig(config)
-	switch ct {
+func (ca ConfigurationAxis) SelectKey(config string) string {
+	ca.validateConfig(config)
+	switch ca.configurationType {
 	case noConfig:
 		panic(fmt.Errorf("SelectKey is unnecessary for noConfig ConfigurationType "))
 	case arch:
@@ -170,12 +172,13 @@ func (ct configurationType) SelectKey(config string) string {
 	case osArch:
 		return platformOsArchMap[config]
 	case productVariables:
-		if config == ConditionsDefaultConfigKey {
+		config = strings.ToLower(config)
+		if strings.HasSuffix(config, ConditionsDefaultConfigKey) {
 			return ConditionsDefaultSelectKey
 		}
-		return fmt.Sprintf("%s:%s", productVariableBazelPackage, strings.ToLower(config))
+		return fmt.Sprintf("%s:%s", productVariableBazelPackage, config)
 	default:
-		panic(fmt.Errorf("Unrecognized ConfigurationType %d", ct))
+		panic(fmt.Errorf("Unrecognized ConfigurationType %d", ca.configurationType))
 	}
 }
 
@@ -198,6 +201,13 @@ func ProductVariableConfigurationAxis(variable string) ConfigurationAxis {
 	}
 }
 
+func NamespacedVariableConfigurationAxis(namespacedVariableName string) ConfigurationAxis {
+	return ConfigurationAxis{
+		configurationType: namespacedVariables,
+		subType:           namespacedVariableName,
+	}
+}
+
 // ConfigurationAxis is an independent axis for configuration, there should be no overlap between
 // elements within an axis.
 type ConfigurationAxis struct {
@@ -205,6 +215,18 @@ type ConfigurationAxis struct {
 	// some configuration types (e.g. productVariables) have multiple independent axes, subType helps
 	// distinguish between them without needing to list all 17 product variables.
 	subType string
+}
+
+func (ca ConfigurationAxis) String() string {
+	ret := ca.configurationType.String()
+	if ca.subType != "" {
+		ret += "|" + ca.subType
+	}
+	return ret
+}
+
+func (ca *ConfigurationAxis) Subtype() string {
+	return ca.subType
 }
 
 func (ca *ConfigurationAxis) less(other ConfigurationAxis) bool {
