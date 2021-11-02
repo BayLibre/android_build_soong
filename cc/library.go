@@ -2349,7 +2349,7 @@ func maybeInjectBoringSSLHash(ctx android.ModuleContext, outputFile android.Modu
 	return outputFile
 }
 
-func ccSharedOrStaticBp2BuildMutator(ctx android.TopDownMutatorContext, modType string) {
+func ccSharedOrStaticBp2BuildMutator(ctx android.TopDownMutatorContext) {
 	module, ok := ctx.Module().(*Module)
 	if !ok {
 		// Not a cc module
@@ -2358,11 +2358,16 @@ func ccSharedOrStaticBp2BuildMutator(ctx android.TopDownMutatorContext, modType 
 	if !module.ConvertWithBp2build(ctx) {
 		return
 	}
-	if ctx.ModuleType() != modType {
-		return
+	if ctx.ModuleType() == "cc_library_shared" || ctx.ModuleType() == "cc_library_static" {
+		ccSharedOrStaticBp2BuildMutatorInternal(ctx, module, ctx.ModuleType())
+	} else if b, ok := ctx.Module().(android.Bazelable); ok {
+		if b.BaseModuleType() == "cc_library_shared" || b.BaseModuleType() == "cc_library_static" {
+			// This is created by a soong config module
+			ccSharedOrStaticBp2BuildMutatorInternal(ctx, module, b.BaseModuleType())
+		}
 	}
 
-	ccSharedOrStaticBp2BuildMutatorInternal(ctx, module, modType)
+	return
 }
 
 func ccSharedOrStaticBp2BuildMutatorInternal(ctx android.TopDownMutatorContext, module *Module, modType string) {
@@ -2498,7 +2503,7 @@ type bazelCcLibraryStaticAttributes struct {
 }
 
 func CcLibraryStaticBp2Build(ctx android.TopDownMutatorContext) {
-	ccSharedOrStaticBp2BuildMutator(ctx, "cc_library_static")
+	ccSharedOrStaticBp2BuildMutator(ctx)
 }
 
 // TODO(b/199902614): Can this be factored to share with the other Attributes?
@@ -2529,5 +2534,5 @@ type bazelCcLibrarySharedAttributes struct {
 }
 
 func CcLibrarySharedBp2Build(ctx android.TopDownMutatorContext) {
-	ccSharedOrStaticBp2BuildMutator(ctx, "cc_library_shared")
+	ccSharedOrStaticBp2BuildMutator(ctx)
 }
