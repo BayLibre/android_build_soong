@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "112c1d32_59e1cbe7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-02T08:22:56Z",
+      "side": 1,
+      "message": "Yep, bpglob has a better place in out/soong .\n\nI won\u0027t +2 things change right now because I\u0027d like to understand whether the -v argument of bpglob is required. If it\u0027s not, let\u0027s delete it, if it is, I should probably not approve this change before I understand why.",
+      "revId": "fec409ce861fa156df2b73b973c5721cdbd0b601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3741076_595d31f1",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-02T08:22:56Z",
+      "side": 1,
+      "message": "If you add this mechanism, is the version argument to bpglob still required?",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 19
+      },
+      "revId": "fec409ce861fa156df2b73b973c5721cdbd0b601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95cddc91_adb233f2",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-02T08:22:56Z",
+      "side": 1,
+      "message": "nit: this sentence is missing an object",
+      "range": {
+        "startLine": 187,
+        "startChar": 25,
+        "endLine": 187,
+        "endChar": 50
+      },
+      "revId": "fec409ce861fa156df2b73b973c5721cdbd0b601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
