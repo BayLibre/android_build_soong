@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81daf9e3_c9977d4b",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-02T01:20:49Z",
+      "side": 1,
+      "message": "It looks there is no information can be used to check if a middleman action is for python binary target, so I had to put the logic here to filter out these dependencies in input paths.",
+      "parentUuid": "79dda5dd_45fbb75c",
+      "range": {
+        "startLine": 170,
+        "startChar": 1,
+        "endLine": 182,
+        "endChar": 2
+      },
+      "revId": "422fb425a175b0e9134e5b3d3e3c15c30c11bfac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19cec347_62570f65",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-01T06:25:43Z",
       "side": 1,
       "message": "Please add tests in https://cs.android.com/android/platform/superproject/+/master:build/soong/bazel/aquery_test.go",
+      "range": {
+        "startLine": 270,
+        "startChar": 12,
+        "endLine": 270,
+        "endChar": 81
+      },
+      "revId": "422fb425a175b0e9134e5b3d3e3c15c30c11bfac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f4a488e_9411981e",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-02T01:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19cec347_62570f65",
       "range": {
         "startLine": 270,
         "startChar": 12,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "773ad880_20d26c0c",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-02T01:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4707a55_c167f963",
+      "range": {
+        "startLine": 272,
+        "startChar": 119,
+        "endLine": 272,
+        "endChar": 133
+      },
+      "revId": "422fb425a175b0e9134e5b3d3e3c15c30c11bfac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff54c5e8_d15eccf4",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-11-01T06:25:43Z",
       "side": 1,
       "message": "Please add tests in https://cs.android.com/android/platform/superproject/+/master:build/soong/bazel/aquery_test.go",
+      "range": {
+        "startLine": 278,
+        "startChar": 12,
+        "endLine": 278,
+        "endChar": 32
+      },
+      "revId": "422fb425a175b0e9134e5b3d3e3c15c30c11bfac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3037b1d1_297d406b",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-02T01:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff54c5e8_d15eccf4",
       "range": {
         "startLine": 278,
         "startChar": 12,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a150f024_2a6c4492",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-02T01:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c547db14_211dcec2",
+      "range": {
+        "startLine": 280,
+        "startChar": 53,
+        "endLine": 280,
+        "endChar": 82
+      },
+      "revId": "422fb425a175b0e9134e5b3d3e3c15c30c11bfac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "691bd243_38af1313",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-11-01T06:25:43Z",
       "side": 1,
       "message": "Instead of passing pointers, can you do this to be consistent with other branches:\n\nbuildStatement.Command \u003d removePy3wrapperScript(buildStatement.Command)\nbuildStatement.Command \u003d ...\n\nAlternatively, put all three steps into a single function call to keep this branch small?",
+      "range": {
+        "startLine": 279,
+        "startChar": 3,
+        "endLine": 281,
+        "endChar": 79
+      },
+      "revId": "422fb425a175b0e9134e5b3d3e3c15c30c11bfac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "939fe083_2c68be52",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-02T01:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "691bd243_38af1313",
       "range": {
         "startLine": 279,
         "startChar": 3,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0e42e8b_1ef7ea94",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-02T01:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa5196e1_989c521e",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 3
+      },
+      "revId": "422fb425a175b0e9134e5b3d3e3c15c30c11bfac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73295bb0_efdd6ed4",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-11-01T06:25:43Z",
       "side": 1,
       "message": "This should be a generic function, so put this comment into the python_binary conditional?",
+      "range": {
+        "startLine": 291,
+        "startChar": 64,
+        "endLine": 292,
+        "endChar": 95
+      },
+      "revId": "422fb425a175b0e9134e5b3d3e3c15c30c11bfac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51f41702_1da5faa6",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-02T01:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73295bb0_efdd6ed4",
       "range": {
         "startLine": 291,
         "startChar": 64,
@@ -225,6 +417,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dff869d8_6192afb9",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-02T01:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2e05e46_385d8b7c",
+      "range": {
+        "startLine": 297,
+        "startChar": 2,
+        "endLine": 299,
+        "endChar": 3
+      },
+      "revId": "422fb425a175b0e9134e5b3d3e3c15c30c11bfac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c189b48a_3efe8df2",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-11-01T06:25:43Z",
       "side": 1,
       "message": "This is hardcoded specific to python, and it\u0027s called from a general isTemplateAction branch. This also seems like a brittle way to check for executables.\n\nWhy not just make all of them executable? Is there a downside for doing so? FWIW, all of Bazel\u0027s intermediate outputs are also set to rx bits.",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 0
+      },
+      "revId": "422fb425a175b0e9134e5b3d3e3c15c30c11bfac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9525737c_fafd237e",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-02T01:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c189b48a_3efe8df2",
       "range": {
         "startLine": 306,
         "startChar": 0,
@@ -271,6 +511,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28d78a8a_f318edd1",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-02T01:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "def4d705_1e941108",
+      "range": {
+        "startLine": 315,
+        "startChar": 33,
+        "endLine": 315,
+        "endChar": 43
+      },
+      "revId": "422fb425a175b0e9134e5b3d3e3c15c30c11bfac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ade8c73_351edd0c",
@@ -284,6 +548,30 @@
       "writtenOn": "2021-11-01T06:25:43Z",
       "side": 1,
       "message": "Why not pass the module in here? \n\nAlternatively, add a comment/TODO on why it\u0027s nil.",
+      "range": {
+        "startLine": 104,
+        "startChar": 75,
+        "endLine": 104,
+        "endChar": 78
+      },
+      "revId": "422fb425a175b0e9134e5b3d3e3c15c30c11bfac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc2d7b2c_a0fb2db9",
+        "filename": "python/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-02T01:20:49Z",
+      "side": 1,
+      "message": "Done. Forgot to clean this file.",
+      "parentUuid": "9ade8c73_351edd0c",
       "range": {
         "startLine": 104,
         "startChar": 75,
