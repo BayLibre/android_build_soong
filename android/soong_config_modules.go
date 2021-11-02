@@ -31,10 +31,10 @@ import (
 )
 
 func init() {
-	RegisterModuleType("soong_config_module_type_import", soongConfigModuleTypeImportFactory)
-	RegisterModuleType("soong_config_module_type", soongConfigModuleTypeFactory)
-	RegisterModuleType("soong_config_string_variable", soongConfigStringVariableDummyFactory)
-	RegisterModuleType("soong_config_bool_variable", soongConfigBoolVariableDummyFactory)
+	RegisterModuleType("soong_config_module_type_import", SoongConfigModuleTypeImportFactory)
+	RegisterModuleType("soong_config_module_type", SoongConfigModuleTypeFactory)
+	RegisterModuleType("soong_config_string_variable", SoongConfigStringVariableDummyFactory)
+	RegisterModuleType("soong_config_bool_variable", SoongConfigBoolVariableDummyFactory)
 }
 
 type soongConfigModuleTypeImport struct {
@@ -153,7 +153,7 @@ type soongConfigModuleTypeImportProperties struct {
 // Then libacme_foo would build with cflags:
 //   "-DGENERIC -DSOC_DEFAULT -DFEATURE_DEFAULT -DSIZE=DEFAULT".
 
-func soongConfigModuleTypeImportFactory() Module {
+func SoongConfigModuleTypeImportFactory() Module {
 	module := &soongConfigModuleTypeImport{}
 
 	module.AddProperties(&module.properties)
@@ -262,7 +262,7 @@ type soongConfigModuleTypeModule struct {
 //     SOONG_CONFIG_acme_width := 200
 //
 // Then libacme_foo would build with cflags "-DGENERIC -DSOC_A -DFEATURE".
-func soongConfigModuleTypeFactory() Module {
+func SoongConfigModuleTypeFactory() Module {
 	module := &soongConfigModuleTypeModule{}
 
 	module.AddProperties(&module.properties)
@@ -296,7 +296,7 @@ type soongConfigBoolVariableDummyModule struct {
 
 // soong_config_string_variable defines a variable and a set of possible string values for use
 // in a soong_config_module_type definition.
-func soongConfigStringVariableDummyFactory() Module {
+func SoongConfigStringVariableDummyFactory() Module {
 	module := &soongConfigStringVariableDummyModule{}
 	module.AddProperties(&module.properties, &module.stringProperties)
 	initAndroidModuleBase(module)
@@ -305,7 +305,7 @@ func soongConfigStringVariableDummyFactory() Module {
 
 // soong_config_string_variable defines a variable with true or false values for use
 // in a soong_config_module_type definition.
-func soongConfigBoolVariableDummyFactory() Module {
+func SoongConfigBoolVariableDummyFactory() Module {
 	module := &soongConfigBoolVariableDummyModule{}
 	module.AddProperties(&module.properties)
 	initAndroidModuleBase(module)
