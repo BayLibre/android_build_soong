@@ -15,6 +15,7 @@
 package soongconfig
 
 import (
+	"android/soong/bazel"
 	"fmt"
 	"io"
 	"reflect"
@@ -120,6 +121,8 @@ type ModuleTypeProperties struct {
 
 	// the list of properties that this module type will extend.
 	Properties []string
+
+	Bazel_module bazel.BazelModuleProperties
 }
 
 func processModuleTypeDef(v *SoongConfigDefinition, def *parser.Module) (errs []error) {
@@ -433,6 +436,7 @@ type ModuleType struct {
 
 	affectableProperties []string
 	variableNames        []string
+	Bp2buildAvailable    *bool
 }
 
 func newModuleType(props *ModuleTypeProperties) (*ModuleType, []error) {
@@ -441,6 +445,7 @@ func newModuleType(props *ModuleTypeProperties) (*ModuleType, []error) {
 		ConfigNamespace:      props.Config_namespace,
 		BaseModuleType:       props.Module_type,
 		variableNames:        props.Variables,
+		Bp2buildAvailable:    props.Bazel_module.Bp2build_available,
 	}
 
 	for _, name := range props.Bool_variables {
