@@ -15,6 +15,7 @@
 package android
 
 import (
+	"android/soong/bazel"
 	"fmt"
 	"reflect"
 	"runtime"
@@ -490,6 +491,7 @@ type ProductConfigProperty struct {
 	ProductConfigVariable string
 	FullConfig            string
 	Property              interface{}
+	ConfigurationAxis     bazel.ConfigurationAxis
 }
 
 // ProductConfigProperties is a map of property name to a slice of ProductConfigProperty such that
@@ -504,33 +506,51 @@ func ProductVariableProperties(ctx BazelConversionPathContext) ProductConfigProp
 
 	productConfigProperties := ProductConfigProperties{}
 
-	if moduleBase.variableProperties == nil {
-		return productConfigProperties
+	if moduleBase.variableProperties != nil {
+		productVariableValues(moduleBase.variableProperties, "", "", &productConfigProperties)
+
+		for _, configToProps := range moduleBase.GetArchVariantProperties(ctx, moduleBase.variableProperties) {
+			for config, props := range configToProps {
+				// GetArchVariantProperties is creating an instance of the requested type
+				// and productVariablesValues expects an interface, so no need to cast
+				productVariableValues(props, "", config, &productConfigProperties)
+			}
+		}
 	}
 
-	productVariableValues(moduleBase.variableProperties, "", &productConfigProperties)
-
-	for _, configToProps := range moduleBase.GetArchVariantProperties(ctx, moduleBase.variableProperties) {
-		for config, props := range configToProps {
-			// GetArchVariantProperties is creating an instance of the requested type
-			// and productVariablesValues expects an interface, so no need to cast
-			productVariableValues(props, config, &productConfigProperties)
+	if m, ok := module.(Bazelable); ok && m.namespacedVariableProps() != nil {
+		for namespace, namespacedVariableProps := range *m.namespacedVariableProps() {
+			for _, namespacedVariableProp := range namespacedVariableProps {
+				productVariableValues(namespacedVariableProp, namespace, "", &productConfigProperties)
+				// namespacedProductVariableValue(namespace, namespacedVariableStruct, &productConfigProperties)
+			}
 		}
 	}
 
 	return productConfigProperties
 }
 
-func productVariableValues(variableProps interface{}, suffix string, productConfigProperties *ProductConfigProperties) {
+func productVariableValues(variableProps interface{}, namespace, suffix string, productConfigProperties *ProductConfigProperties) {
 	if suffix != "" {
 		suffix = "-" + suffix
 	}
-	variableValues := reflect.ValueOf(variableProps).Elem().FieldByName("Product_variables")
+	fieldName := "Product_variables"
+	if namespace != "" {
+		fieldName = "Soong_config_variables"
+	}
+	variableValues := reflect.ValueOf(variableProps).Elem().FieldByName(fieldName)
 	for i := 0; i < variableValues.NumField(); i++ {
 		variableValue := variableValues.Field(i)
 		// Check if any properties were set for the module
 		if variableValue.IsZero() {
 			continue
+		}
+
+		if variableValue.Kind() == reflect.Interface {
+			variableValue = variableValue.Elem()
+			if variableValue.Kind() == reflect.Ptr {
+				variableValue = reflect.Indirect(variableValue)
+			}
 		}
 		// e.g. Platform_sdk_version, Unbundled_build, Malloc_not_svelte, etc.
 		productVariableName := variableValues.Type().Field(i).Name
@@ -543,14 +563,77 @@ func productVariableValues(variableProps interface{}, suffix string, productConf
 
 			// e.g. Asflags, Cflags, Enabled, etc.
 			propertyName := variableValue.Type().Field(j).Name
-			if (*productConfigProperties)[propertyName] == nil {
-				(*productConfigProperties)[propertyName] = make(map[string]ProductConfigProperty)
-			}
-			config := productVariableName + suffix
-			(*productConfigProperties)[propertyName][config] = ProductConfigProperty{
-				ProductConfigVariable: productVariableName,
-				FullConfig:            config,
-				Property:              property.Interface(),
+
+			if propertyName == "Conditions_default" && property.Kind() == reflect.Ptr {
+				// This is a conditions_default field.
+				field := reflect.Indirect(variableValue.Field(j))
+				if field.Kind() == reflect.Interface {
+					field = field.Elem()
+				}
+				if !field.IsValid() {
+					continue
+				}
+				for k := 0; k < field.NumField(); k++ {
+					if field.Field(k).IsZero() {
+						continue
+					}
+
+					propertyName := field.Type().Field(k).Name
+					if (*productConfigProperties)[propertyName] == nil {
+						(*productConfigProperties)[propertyName] = make(map[string]ProductConfigProperty)
+					}
+					namespacedProductVariable := strings.Join([]string{namespace, productVariableName}, "__")
+					config := namespacedProductVariable + "__" + bazel.ConditionsDefaultConfigKey
+					(*productConfigProperties)[propertyName][config] = ProductConfigProperty{
+						ProductConfigVariable: productVariableName, // e.g. size, feature1, feature2, FEATURE3, board
+						FullConfig:            config,
+						ConfigurationAxis:     bazel.ProductVariableConfigurationAxis(namespacedProductVariable),
+						Property:              field.Field(k).Interface(), // e.g. ["-O3"]
+					}
+				}
+			} else if property.Kind() == reflect.Interface {
+				// The field is an interface of a struct, which is used by
+				// string variables like soc_a, soc_b, ...
+				field := property.Elem()
+				if field.Kind() == reflect.Ptr {
+					field = reflect.Indirect(field)
+				}
+				if !field.IsValid() {
+					continue
+				}
+				for k := 0; k < field.NumField(); k++ {
+					if field.Field(k).IsZero() {
+						continue
+					}
+
+					stringVariableValue := variableValue.Type().Field(j).Name
+					propertyName := field.Type().Field(k).Name
+					if (*productConfigProperties)[propertyName] == nil {
+						(*productConfigProperties)[propertyName] = make(map[string]ProductConfigProperty)
+					}
+					namespacedProductVariable := strings.Join([]string{namespace, productVariableName}, "__")
+					config := namespacedProductVariable + "__" + stringVariableValue
+					(*productConfigProperties)[propertyName][config] = ProductConfigProperty{
+						ProductConfigVariable: productVariableName, // e.g. size, feature1, feature2, FEATURE3, board
+						FullConfig:            config,
+						ConfigurationAxis:     bazel.ProductVariableConfigurationAxis(namespacedProductVariable),
+						Property:              field.Field(k).Interface(), // e.g. ["-O3"]
+					}
+				}
+			} else {
+				if (*productConfigProperties)[propertyName] == nil {
+					(*productConfigProperties)[propertyName] = make(map[string]ProductConfigProperty)
+				}
+				config := productVariableName + suffix
+				if namespace != "" {
+					config = namespace + "__" + config
+				}
+				(*productConfigProperties)[propertyName][config] = ProductConfigProperty{
+					ProductConfigVariable: productVariableName,
+					FullConfig:            config,
+					Property:              property.Interface(),
+					ConfigurationAxis:     bazel.ProductVariableConfigurationAxis(config),
+				}
 			}
 		}
 	}

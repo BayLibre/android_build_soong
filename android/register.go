@@ -165,6 +165,8 @@ func NewContext(config Config) *Context {
 // singletons, module types and mutators to register for converting Blueprint
 // files to semantically equivalent BUILD files.
 func (ctx *Context) RegisterForBazelConversion() {
+	ctx.config.runningAsBp2Build = true
+
 	for _, t := range moduleTypes {
 		t.register(ctx)
 	}
@@ -175,7 +177,10 @@ func (ctx *Context) RegisterForBazelConversion() {
 	}
 
 	bp2buildMutatorList := []RegisterMutatorFunc{}
-	for t, f := range bp2buildMutators {
+	for t, m := range bp2buildMutators {
+		f := func(ctx RegisterMutatorsContext) {
+			ctx.TopDown(t, m)
+		}
 		ctx.config.bp2buildModuleTypeConfig[t] = true
 		bp2buildMutatorList = append(bp2buildMutatorList, f)
 	}
