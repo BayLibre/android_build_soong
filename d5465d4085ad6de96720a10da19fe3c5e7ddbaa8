@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d03f6a58_47af75b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-02T08:18:24Z",
+      "side": 1,
+      "message": "This isn\u0027t a very useful test because you are essentially testing that soong_config_* is NOT handled, which is not the desirable behavior, but I don\u0027t have a very strong opinion so I\u0027ll wave this change through?",
+      "revId": "d5465d4085ad6de96720a10da19fe3c5e7ddbaa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
