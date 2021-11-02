@@ -690,7 +690,7 @@ func bp2BuildParseExportedIncludesHelper(ctx android.TopDownMutatorContext, modu
 	return exported
 }
 
-func bazelLabelForStaticModule(ctx android.TopDownMutatorContext, m blueprint.Module) string {
+func bazelLabelForStaticModule(ctx android.BazelConversionPathContext, m blueprint.Module) string {
 	label := android.BazelModuleLabel(ctx, m)
 	if aModule, ok := m.(android.Module); ok {
 		if ctx.OtherModuleType(aModule) == "cc_library" && !android.GenerateCcLibraryStaticOnly(m.Name()) {
@@ -700,13 +700,13 @@ func bazelLabelForStaticModule(ctx android.TopDownMutatorContext, m blueprint.Mo
 	return label
 }
 
-func bazelLabelForSharedModule(ctx android.TopDownMutatorContext, m blueprint.Module) string {
+func bazelLabelForSharedModule(ctx android.BazelConversionPathContext, m blueprint.Module) string {
 	// cc_library, at it's root name, propagates the shared library, which depends on the static
 	// library.
 	return android.BazelModuleLabel(ctx, m)
 }
 
-func bazelLabelForStaticWholeModuleDeps(ctx android.TopDownMutatorContext, m blueprint.Module) string {
+func bazelLabelForStaticWholeModuleDeps(ctx android.BazelConversionPathContext, m blueprint.Module) string {
 	label := bazelLabelForStaticModule(ctx, m)
 	if aModule, ok := m.(android.Module); ok {
 		if android.IsModulePrebuilt(aModule) {
@@ -716,7 +716,7 @@ func bazelLabelForStaticWholeModuleDeps(ctx android.TopDownMutatorContext, m blu
 	return label
 }
 
-func bazelLabelForWholeDeps(ctx android.TopDownMutatorContext, modules []string) bazel.LabelList {
+func bazelLabelForWholeDeps(ctx android.BazelConversionPathContext, modules []string) bazel.LabelList {
 	return android.BazelLabelForModuleDepsWithFn(ctx, modules, bazelLabelForStaticWholeModuleDeps)
 }
 
