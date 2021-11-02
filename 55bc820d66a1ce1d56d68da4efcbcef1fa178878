@@ -22,6 +22,30 @@
       },
       "revId": "55bc820d66a1ce1d56d68da4efcbcef1fa178878",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d308dcfb_b31f7286",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-02T09:44:26Z",
+      "side": 1,
+      "message": "\u003e these names are not very great because there is no \"otherness\" to speak of here,\n\nThat\u0027s not quite true. OtherModule* is used to detect if a dep of a module to be converted is also converted, here in getOtherModuleLabel: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_paths.go;l\u003d341-345;drc\u003d0f3b7d2fc4d557073c162f801fd2176e9b15deb9\n\nYou\u0027re right that in most cases this always refer to the context of the module itself.",
+      "parentUuid": "4f8407a3_a34b37b1",
+      "range": {
+        "startLine": 79,
+        "startChar": 1,
+        "endLine": 79,
+        "endChar": 16
+      },
+      "revId": "55bc820d66a1ce1d56d68da4efcbcef1fa178878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
