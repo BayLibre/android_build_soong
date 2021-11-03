@@ -79,6 +79,7 @@ func getBoolValue(boolAttr bazel.BoolAttribute) (reflect.Value, []selects) {
 
 	return value, []selects{ret}
 }
+
 func getLabelListValues(list bazel.LabelListAttribute) (reflect.Value, []selects) {
 	value := reflect.ValueOf(list.Value.Includes)
 	var ret []selects
@@ -136,6 +137,7 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 		value, configurableAttrs = getStringListValues(list)
 		defaultSelectValue = &emptyBazelList
 	case bazel.LabelListAttribute:
+		fmt.Println(list)
 		value, configurableAttrs = getLabelListValues(list)
 		defaultSelectValue = &emptyBazelList
 		if list.ForceSpecifyEmptyList && (!value.IsNil() || list.HasConfigurableValues()) {
