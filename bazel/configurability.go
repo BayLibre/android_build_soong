@@ -171,6 +171,7 @@ func (ca ConfigurationAxis) SelectKey(config string) string {
 		return platformOsArchMap[config]
 	case productVariables:
 		config = strings.ToLower(config)
+		fmt.Println(config)
 		if strings.HasSuffix(config, ConditionsDefaultConfigKey) {
 			return ConditionsDefaultSelectKey
 		}
