@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d34c0d52_790d00e5",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-11-03T08:41:31Z",
+      "side": 1,
+      "message": "There are lots of duplication here. You could make this simpler by \n\n```\nm :\u003d make(map[string]string)\nm[\"ndk_apis_usedby_apex\"] \u003d a.nativeApisUsedByModuleFile.String()\nm[\"ndk_apis_usedby_apex\"] \u003d a.nativeApisBackedBymoduleFile.String()\nm[\"java_apis_used_by_apex\"] \u003d a....\nfor dir, file :\u003d range m {\n   if file \u003d\u003d \" {\n       continue\n   }\n   goal :\u003d \"apps_only\"\n   fmt.Fprintf(w, \".....\", goal, distfile, dir, distfile)\n}\n```",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 5
+      },
+      "revId": "2052d9d5b1b9602f78c9454a641ed93a31ce5c2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
