@@ -22,6 +22,30 @@
       },
       "revId": "fcd1e26802a3517d7f9ed8c450ba2d54d2ec4a92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fee5a4e_f75b7601",
+        "filename": "bazel/properties.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-03T01:57:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "effc540d_cb175e0d",
+      "range": {
+        "startLine": 543,
+        "startChar": 67,
+        "endLine": 543,
+        "endChar": 73
+      },
+      "revId": "fcd1e26802a3517d7f9ed8c450ba2d54d2ec4a92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
