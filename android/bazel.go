@@ -32,6 +32,10 @@ type properties struct {
 	Bazel_module bazel.BazelModuleProperties
 }
 
+// namespacedVariableProperties is a map from a string representing a Soong
+// config variable namespace, like "android" or "vendor_name" to a struct
+// pointer representing the soong_config_variables property of a module created
+// by a soong_config_module_type or soong_config_module_type_import.
 type namespacedVariableProperties map[string]interface{}
 
 // BazelModuleBase contains the property structs with metadata for modules which can be converted to
@@ -231,6 +235,7 @@ var (
 		"packages/modules/adb/proto":                         Bp2BuildDefaultTrueRecursively,
 		"packages/modules/adb/tls":                           Bp2BuildDefaultTrueRecursively,
 		"prebuilts/clang/host/linux-x86":                     Bp2BuildDefaultTrueRecursively,
+		"system/apex":                                        Bp2BuildDefaultTrue,
 		"system/core/diagnose_usb":                           Bp2BuildDefaultTrueRecursively,
 		"system/core/libasyncio":                             Bp2BuildDefaultTrue,
 		"system/core/libcrypto_utils":                        Bp2BuildDefaultTrueRecursively,
