@@ -446,22 +446,27 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 					fmt.Fprintf(w, dist)
 				}
 
-				if a.apisUsedByModuleFile.String() != "" {
+				if a.javaApisUsedByModuleFile.String() != "" {
 					goal := "apps_only"
-					distFile := a.apisUsedByModuleFile.String()
+					distFile := a.javaApisUsedByModuleFile.String()
 					fmt.Fprintf(w, "ifneq (,$(filter $(my_register_name),$(TARGET_BUILD_APPS)))\n"+
-						" $(call dist-for-goals,%s,%s:ndk_apis_usedby_apex/$(notdir %s))\n"+
+						" $(call dist-for-goals,%s,%s:java_apis_usedby_apex/$(notdir %s))\n"+
 						"endif\n",
 						goal, distFile, distFile)
 				}
 
-				if a.apisBackedByModuleFile.String() != "" {
+				m := make(map[string]string)
+				m["ndk_apis_usedby_apex"] = a.nativeApisUsedByModuleFile.String()
+				m["ndk_apis_usedby_apex"] = a.nativeApisBackedByModuleFile.String()
+				m["java_apis_used_by_apex"] = a.javaApisUsedByModuleFile.String()
+				for dir, distfile := range m {
+					if distfile == "" {
+						continue
+					}
 					goal := "apps_only"
-					distFile := a.apisBackedByModuleFile.String()
 					fmt.Fprintf(w, "ifneq (,$(filter $(my_register_name),$(TARGET_BUILD_APPS)))\n"+
-						" $(call dist-for-goals,%s,%s:ndk_apis_backedby_apex/$(notdir %s))\n"+
-						"endif\n",
-						goal, distFile, distFile)
+						" $(call dist-for-goals,%s,%s:%s/$(notdir %s))\n"+
+						"endif\n", goal, distfile, dir, distfile)
 				}
 			}
 		}}
