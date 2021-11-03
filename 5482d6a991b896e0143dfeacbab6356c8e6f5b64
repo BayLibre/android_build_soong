@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a384c826_82ea3953",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-11-03T18:18:36Z",
+      "side": 1,
+      "message": "Test failures on latest presubmit seem unrelated. I\u0027ll re-run it once they\u0027re resolved on ToT.",
+      "revId": "5482d6a991b896e0143dfeacbab6356c8e6f5b64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e324b3cb_f1667f0b",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-11-03T18:18:36Z",
+      "side": 1,
+      "message": "Evgenii, wanted to specifically draw your attention to these flags. Adding these seemed to fix HWASAN-ified Rust/C interop; are you aware of any others we may need to include?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 41
+      },
+      "revId": "5482d6a991b896e0143dfeacbab6356c8e6f5b64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
