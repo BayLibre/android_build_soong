@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faf328c8_6e805bb0",
+        "filename": "java/jdeps.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2021-11-03T09:02:12Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 43,
+        "startChar": 1,
+        "endLine": 43,
+        "endChar": 68
+      },
+      "revId": "98d8698bd27ba206e963bd9bc7baf836f787de93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
