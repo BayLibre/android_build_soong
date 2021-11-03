@@ -215,8 +215,19 @@ var _ Defaults = (*DefaultsModuleBase)(nil)
 
 func (defaultable *DefaultableModuleBase) applyDefaults(ctx TopDownMutatorContext,
 	defaultsList []Defaults) {
-
+	// For every defaults module in the defaults list
 	for _, defaults := range defaultsList {
+		if m, ok := defaults.(Bazelable); ok {
+			if b, ok := ctx.Module().(Bazelable); ok {
+				src := *m.namespacedVariableProps()
+				dst := make(map[string][]interface{})
+				for k, v := range src {
+					dst[k] = v
+				}
+				b.setNamespacedVariableProps(&dst)
+			}
+		}
+		// For every prop that's defaultable
 		for _, prop := range defaultable.defaultableProperties {
 			if prop == defaultable.defaultableVariableProperties {
 				defaultable.applyDefaultVariableProperties(ctx, defaults, prop)

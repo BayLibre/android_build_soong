@@ -54,6 +54,7 @@ type Bazelable interface {
 
 	// For namespaced config variable support
 	namespacedVariableProps() namespacedVariableProperties
+	setNamespacedVariableProps(props namespacedVariableProperties)
 	BaseModuleType() string
 	SetBaseModuleType(string)
 }
@@ -79,6 +80,10 @@ type namespacedVariableProperties *map[string][]interface{}
 
 func (b *BazelModuleBase) namespacedVariableProps() namespacedVariableProperties {
 	return &b.namespacedVariableProperties
+}
+
+func (b *BazelModuleBase) setNamespacedVariableProps(props namespacedVariableProperties) {
+	b.namespacedVariableProperties = *props
 }
 
 func (b *BazelModuleBase) BaseModuleType() string {
