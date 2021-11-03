@@ -213,10 +213,28 @@ func InitDefaultsModule(module DefaultsModule) {
 
 var _ Defaults = (*DefaultsModuleBase)(nil)
 
+func propagateNamespacedVariableProps(srcDefaults Defaults, dstModule Module) {
+	if m, ok := srcDefaults.(Bazelable); ok {
+		if b, ok := dstModule.(Bazelable); ok {
+			src := m.namespacedVariableProps()
+			dst := make(namespacedVariableProperties)
+			for k, v := range src {
+				dst[k] = v
+			}
+			b.setNamespacedVariableProps(dst)
+		}
+	}
+}
+
 func (defaultable *DefaultableModuleBase) applyDefaults(ctx TopDownMutatorContext,
 	defaultsList []Defaults) {
-
+	// For every defaults module in the defaults list
 	for _, defaults := range defaultsList {
+
+		if ctx.Config().runningAsBp2Build {
+			propagateNamespacedVariableProps(defaults, ctx.Module())
+		}
+		// For every prop that's defaultable
 		for _, prop := range defaultable.defaultableProperties {
 			if prop == defaultable.defaultableVariableProperties {
 				defaultable.applyDefaultVariableProperties(ctx, defaults, prop)
