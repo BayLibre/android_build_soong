@@ -321,13 +321,13 @@ func (ca *compilerAttributes) convertProductVariables(ctx android.BazelConversio
 	}
 	for propName, attr := range productVarPropNameToAttribute {
 		if props, exists := productVariableProps[propName]; exists {
-			for _, prop := range props {
-				flags, ok := prop.Property.([]string)
+			for productConfigVar, prop := range props {
+				flags, ok := prop.([]string)
 				if !ok {
 					ctx.ModuleErrorf("Could not convert product variable %s property", proptools.PropertyNameForField(propName))
 				}
-				newFlags, _ := bazel.TryVariableSubstitutions(flags, prop.ProductConfigVariable)
-				attr.SetSelectValue(prop.ConfigurationAxis(), prop.FullConfig, newFlags)
+				newFlags, _ := bazel.TryVariableSubstitutions(flags, productConfigVar.Name)
+				attr.SetSelectValue(productConfigVar.ConfigurationAxis(), productConfigVar.SelectKey(), newFlags)
 			}
 		}
 	}
@@ -581,7 +581,7 @@ func (la *linkerAttributes) convertProductVariables(ctx android.BazelConversionP
 	}
 
 	for name, dep := range productVarToDepFields {
-		props, exists := productVariableProps[name]
+		productConfigVars, exists := productVariableProps[name]
 		excludeProps, excludesExists := productVariableProps[dep.excludesField]
 		// if neither an include or excludes property exists, then skip it
 		if !exists && !excludesExists {
@@ -590,28 +590,28 @@ func (la *linkerAttributes) convertProductVariables(ctx android.BazelConversionP
 		// collect all the configurations that an include or exclude property exists for.
 		// we want to iterate all configurations rather than either the include or exclude because for a
 		// particular configuration we may have only and include or only an exclude to handle
-		configs := make(map[string]bool, len(props)+len(excludeProps))
-		for config := range props {
-			configs[config] = true
+		configs := make(map[android.ProductConfigProperty]bool, len(productConfigVars)+len(excludeProps))
+		for productConfigVar, _ := range productConfigVars {
+			configs[productConfigVar] = true
 		}
-		for config := range excludeProps {
-			configs[config] = true
+		for productConfigVar := range excludeProps {
+			configs[productConfigVar] = true
 		}
 
-		for config := range configs {
-			prop, includesExists := props[config]
-			excludesProp, excludesExists := excludeProps[config]
+		for productConfigVar := range configs {
+			prop, includesExists := productConfigVars[productConfigVar]
+			excludesProp, excludesExists := excludeProps[productConfigVar]
 			var includes, excludes []string
 			var ok bool
 			// if there was no includes/excludes property, casting fails and that's expected
-			if includes, ok = prop.Property.([]string); includesExists && !ok {
+			if includes, ok = prop.([]string); includesExists && !ok {
 				ctx.ModuleErrorf("Could not convert product variable %s property", name)
 			}
-			if excludes, ok = excludesProp.Property.([]string); excludesExists && !ok {
+			if excludes, ok = excludesProp.([]string); excludesExists && !ok {
 				ctx.ModuleErrorf("Could not convert product variable %s property", dep.excludesField)
 			}
 
-			dep.attribute.SetSelectValue(prop.ConfigurationAxis(), config, dep.depResolutionFunc(ctx, android.FirstUniqueStrings(includes), excludes))
+			dep.attribute.SetSelectValue(productConfigVar.ConfigurationAxis(), productConfigVar.SelectKey(), dep.depResolutionFunc(ctx, android.FirstUniqueStrings(includes), excludes))
 		}
 	}
 }

@@ -213,10 +213,43 @@ func InitDefaultsModule(module DefaultsModule) {
 
 var _ Defaults = (*DefaultsModuleBase)(nil)
 
+func propagateNamespacedVariableProps(srcDefaults Defaults, dstModule Module) {
+	if m, ok := srcDefaults.(Bazelable); ok {
+		if b, ok := dstModule.(Bazelable); ok {
+			src := m.namespacedVariableProps()
+			dst := b.namespacedVariableProps()
+			if dst == nil {
+				dst = make(namespacedVariableProperties)
+			}
+			for k := range src {
+				if dst[k] != nil {
+					// Merge dependency defaults into this module's variables
+					dstProps := []interface{}{
+						dst[k],
+						proptools.CloneEmptyProperties(reflect.ValueOf(src[k])).Interface(),
+					}
+					err := proptools.PrependMatchingProperties(dstProps, src[k], nil)
+					if err != nil {
+						panic(err)
+					}
+				} else {
+					dst[k] = src[k]
+				}
+			}
+			b.setNamespacedVariableProps(dst)
+		}
+	}
+}
+
 func (defaultable *DefaultableModuleBase) applyDefaults(ctx TopDownMutatorContext,
 	defaultsList []Defaults) {
-
+	// For every defaults module in the defaults list
 	for _, defaults := range defaultsList {
+
+		if ctx.Config().runningAsBp2Build {
+			propagateNamespacedVariableProps(defaults, ctx.Module())
+		}
+		// For every prop that's defaultable
 		for _, prop := range defaultable.defaultableProperties {
 			if prop == defaultable.defaultableVariableProperties {
 				defaultable.applyDefaultVariableProperties(ctx, defaults, prop)

@@ -79,6 +79,7 @@ func getBoolValue(boolAttr bazel.BoolAttribute) (reflect.Value, []selects) {
 
 	return value, []selects{ret}
 }
+
 func getLabelListValues(list bazel.LabelListAttribute) (reflect.Value, []selects) {
 	value := reflect.ValueOf(list.Value.Includes)
 	var ret []selects
