@@ -213,10 +213,49 @@ func InitDefaultsModule(module DefaultsModule) {
 
 var _ Defaults = (*DefaultsModuleBase)(nil)
 
+// propagateNamespacedVariableProps only runs in bp2build mode for
+// defaultable/defaults modules. Its purpose is to flatten namespaced product
+// variable props transitively through defaults, even if those defaults are
+// custom module types created from soong_config_module_type, e.g. one that's
+// wrapping a cc_defaults.
+func propagateNamespacedVariableProps(defaultDep Defaults, this Module) {
+	if dep, ok := defaultDep.(Bazelable); ok {
+		if mod, ok := this.(Bazelable); ok {
+			propsToCopy := dep.namespacedVariableProps()
+			newProps := mod.namespacedVariableProps()
+			if newProps == nil {
+				newProps = make(namespacedVariableProperties)
+			}
+			for k := range propsToCopy {
+				if newProps[k] != nil {
+					dstProps := []interface{}{
+						newProps[k],
+						// Put an empty copy of the src properties into dst so that properties in src that are not in dst
+						// don't cause a "failed to find property to extend" error.
+						proptools.CloneEmptyProperties(reflect.ValueOf(propsToCopy[k])).Interface(),
+					}
+					err := proptools.PrependMatchingProperties(dstProps, propsToCopy[k], nil)
+					if err != nil {
+						panic(err)
+					}
+				} else {
+					newProps[k] = propsToCopy[k]
+				}
+			}
+			mod.setNamespacedVariableProps(newProps)
+		}
+	}
+}
+
 func (defaultable *DefaultableModuleBase) applyDefaults(ctx TopDownMutatorContext,
 	defaultsList []Defaults) {
-
+	// For every defaults module in the defaults list
 	for _, defaults := range defaultsList {
+
+		if ctx.Config().runningAsBp2Build {
+			propagateNamespacedVariableProps(defaults, ctx.Module())
+		}
+		// For every prop that's defaultable
 		for _, prop := range defaultable.defaultableProperties {
 			if prop == defaultable.defaultableVariableProperties {
 				defaultable.applyDefaultVariableProperties(ctx, defaults, prop)
