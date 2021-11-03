@@ -593,6 +593,9 @@ func (c *config) HostJNIToolPath(ctx PathContext, lib string) Path {
 
 func (c *config) HostJavaToolPath(ctx PathContext, tool string) Path {
 	path := pathForInstall(ctx, ctx.Config().BuildOS, ctx.Config().BuildArch, "framework", false, tool)
+	if ctx.Config().KatiEnabled() {
+		path = path.ToMakePath()
+	}
 	return path
 }
 
