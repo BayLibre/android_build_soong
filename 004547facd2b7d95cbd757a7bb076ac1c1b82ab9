@@ -22,6 +22,30 @@
       },
       "revId": "004547facd2b7d95cbd757a7bb076ac1c1b82ab9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11b42c77_22a445e6",
+        "filename": "java/sdk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-11-03T15:32:35Z",
+      "side": 1,
+      "message": "I could but I think it is worth keeping them separate as the reasons why they both use public are different. Having them separate makes it easier to explain and modify in future.",
+      "parentUuid": "c8e4b64e_dc7bdb31",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 38
+      },
+      "revId": "004547facd2b7d95cbd757a7bb076ac1c1b82ab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
