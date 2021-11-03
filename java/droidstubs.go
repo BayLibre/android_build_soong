@@ -16,6 +16,7 @@ package java
 
 import (
 	"fmt"
+	"path/filepath"
 	"strings"
 
 	"github.com/google/blueprint/proptools"
@@ -825,30 +826,37 @@ func (p *PrebuiltStubsSources) GenerateAndroidBuildActions(ctx android.ModuleCon
 	p.stubsSrcJar = android.PathForModuleOut(ctx, ctx.ModuleName()+"-"+"stubs.srcjar")
 
 	if len(p.properties.Srcs) != 1 {
-		ctx.PropertyErrorf("srcs", "must only specify one directory path, contains %d paths", len(p.properties.Srcs))
+		ctx.PropertyErrorf("srcs", "must only specify one directory path or srcjar, contains %d paths", len(p.properties.Srcs))
 		return
 	}
 
-	localSrcDir := p.properties.Srcs[0]
-	// Although PathForModuleSrc can return nil if either the path doesn't exist or
-	// the path components are invalid it won't in this case because no components
-	// are specified and the module directory must exist in order to get this far.
-	srcDir := android.PathForModuleSrc(ctx).(android.SourcePath).Join(ctx, localSrcDir)
-
-	// Glob the contents of the directory just in case the directory does not exist.
-	srcGlob := localSrcDir + "/**/*"
-	srcPaths := android.PathsForModuleSrc(ctx, []string{srcGlob})
-
 	rule := android.NewRuleBuilder(pctx, ctx)
-	rule.Command().
-		BuiltTool("soong_zip").
-		Flag("-write_if_changed").
-		Flag("-jar").
-		FlagWithOutput("-o ", p.stubsSrcJar).
-		FlagWithArg("-C ", srcDir.String()).
-		FlagWithRspFileInputList("-r ", p.stubsSrcJar.ReplaceExtension(ctx, "rsp"), srcPaths)
 
-	rule.Restat()
+	src := p.properties.Srcs[0]
+	if filepath.Ext(src) == ".srcjar" {
+		// This is a srcjar. We can just copy it.
+		rule.Command().Text("cp").
+			Input(android.PathForModuleSrc(ctx, src)).
+			Output(p.stubsSrcJar)
+	} else {
+		// This is a directory. Glob the contents just in case the directory does not exist.
+		srcGlob := src + "/**/*"
+		srcPaths := android.PathsForModuleSrc(ctx, []string{srcGlob})
+
+		// Although PathForModuleSrc can return nil if either the path doesn't exist or
+		// the path components are invalid it won't in this case because no components
+		// are specified and the module directory must exist in order to get this far.
+		srcDir := android.PathForModuleSrc(ctx).(android.SourcePath).Join(ctx, src)
+
+		rule.Command().
+			BuiltTool("soong_zip").
+			Flag("-write_if_changed").
+			Flag("-jar").
+			FlagWithOutput("-o ", p.stubsSrcJar).
+			FlagWithArg("-C ", srcDir.String()).
+			FlagWithRspFileInputList("-r ", p.stubsSrcJar.ReplaceExtension(ctx, "rsp"), srcPaths)
+		rule.Restat()
+	}
 
 	rule.Build("zip src", "Create srcjar from prebuilt source")
 }
