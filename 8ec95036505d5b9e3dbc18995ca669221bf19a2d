@@ -56,6 +56,24 @@
       "message": "You don\u0027t even need to copy it. You should just be able to:\n    p.stubsSrcJar \u003d src\n\nYou would need to change its type (from ModuleOutPath to Path) and refactor the code below as some parts of it expect it to be a ModuleOutPath.",
       "revId": "8ec95036505d5b9e3dbc18995ca669221bf19a2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9aa6024e_2fbbd382",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-11-03T16:01:07Z",
+      "side": 1,
+      "message": "OK, I think I did the right thing. Seems to work anyway, have a look :)",
+      "parentUuid": "797cd5c6_e66eaad0",
+      "revId": "8ec95036505d5b9e3dbc18995ca669221bf19a2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
