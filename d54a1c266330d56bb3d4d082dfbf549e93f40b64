@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9ef63fe_32656788",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-03T01:59:18Z",
+      "side": 1,
+      "message": "Can you file a bug with the new mixed_droid specific breakage and update the comment here?",
+      "range": {
+        "startLine": 312,
+        "startChar": 45,
+        "endLine": 312,
+        "endChar": 165
+      },
+      "revId": "d54a1c266330d56bb3d4d082dfbf549e93f40b64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
