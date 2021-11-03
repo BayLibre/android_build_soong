@@ -39,6 +39,30 @@
       },
       "revId": "5482d6a991b896e0143dfeacbab6356c8e6f5b64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc251466_fcb84bf3",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2021-11-03T23:18:34Z",
+      "side": 1,
+      "message": "The first three flags - yes, makes sense. Seeing this helped me understand https://b.corp.google.com/issues/204746309#comment3 - thank you 😊\n\nDo you know why the default \"tls\" method does not work for Rust? It\u0027s not even \"C++ TLS\", just a thread descriptor-relative memory location.",
+      "parentUuid": "e324b3cb_f1667f0b",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 41
+      },
+      "revId": "5482d6a991b896e0143dfeacbab6356c8e6f5b64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
