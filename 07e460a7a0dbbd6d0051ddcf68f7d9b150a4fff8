@@ -70,6 +70,23 @@
       "parentUuid": "cc2b7d45_c5d0c873",
       "revId": "07e460a7a0dbbd6d0051ddcf68f7d9b150a4fff8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "854a398c_060716b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2021-11-03T03:40:08Z",
+      "side": 1,
+      "message": "I think the right defaults for the flags should be what we want them to be for the main use case (i.e. running as part of the build), long term, so the normal invocation has as few flags set as possible.  Other use cases (development, testing, etc.) should have their flags set accordingly.\n\nIn this case, that means that the warnings should be errors.  I think that\u0027s what we\u0027ll eventually get to.\n\nAre there any other scripts that need to be updated so they don\u0027t break as part of this change?",
+      "revId": "07e460a7a0dbbd6d0051ddcf68f7d9b150a4fff8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
