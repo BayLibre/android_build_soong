@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c7488f_318e6471",
+        "filename": "android/register.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-03T10:20:33Z",
+      "side": 1,
+      "message": "No, removed.",
+      "parentUuid": "8f3f0c83_1872a4b9",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 30
+      },
+      "revId": "7e6011dec1e3f46e06aaee68b9f269076db14047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b3956c1_e7ae682c",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd63b788_30f1cb49",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-03T10:20:33Z",
+      "side": 1,
+      "message": "Good idea, I think it\u0027s clearer. Done.",
+      "parentUuid": "6b3956c1_e7ae682c",
+      "range": {
+        "startLine": 430,
+        "startChar": 3,
+        "endLine": 430,
+        "endChar": 25
+      },
+      "revId": "7e6011dec1e3f46e06aaee68b9f269076db14047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54e60839_e2c8df47",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-11-03T09:51:27Z",
       "side": 1,
       "message": "Delete?",
+      "range": {
+        "startLine": 534,
+        "startChar": 4,
+        "endLine": 534,
+        "endChar": 100
+      },
+      "revId": "7e6011dec1e3f46e06aaee68b9f269076db14047",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f374c10a_d8a888b9",
+        "filename": "android/variable.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-03T10:20:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54e60839_e2c8df47",
       "range": {
         "startLine": 534,
         "startChar": 4,
