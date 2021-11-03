@@ -611,6 +611,7 @@ func (la *linkerAttributes) convertProductVariables(ctx android.BazelConversionP
 				ctx.ModuleErrorf("Could not convert product variable %s property", dep.excludesField)
 			}
 
+			dep.attribute.ForceSpecifyEmptyList = true
 			dep.attribute.SetSelectValue(prop.ConfigurationAxis(), config, dep.depResolutionFunc(ctx, android.FirstUniqueStrings(includes), excludes))
 		}
 	}
