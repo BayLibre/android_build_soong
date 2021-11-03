@@ -22,6 +22,40 @@
       },
       "revId": "8ec95036505d5b9e3dbc18995ca669221bf19a2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "219d4ff1_394c34b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-11-03T15:45:17Z",
+      "side": 1,
+      "message": "Is fine as it is but have added a suggestion for a slight optimization.",
+      "revId": "8ec95036505d5b9e3dbc18995ca669221bf19a2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "797cd5c6_e66eaad0",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-11-03T15:45:17Z",
+      "side": 1,
+      "message": "You don\u0027t even need to copy it. You should just be able to:\n    p.stubsSrcJar \u003d src\n\nYou would need to change its type (from ModuleOutPath to Path) and refactor the code below as some parts of it expect it to be a ModuleOutPath.",
+      "revId": "8ec95036505d5b9e3dbc18995ca669221bf19a2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
