@@ -74,6 +74,24 @@
       "parentUuid": "797cd5c6_e66eaad0",
       "revId": "8ec95036505d5b9e3dbc18995ca669221bf19a2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f01f9401_02d57961",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-11-03T16:04:01Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "9aa6024e_2fbbd382",
+      "revId": "8ec95036505d5b9e3dbc18995ca669221bf19a2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
