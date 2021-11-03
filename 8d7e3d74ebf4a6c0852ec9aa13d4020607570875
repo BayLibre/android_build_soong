@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a04eed3_d3a6d28f",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-11-03T10:56:13Z",
+      "side": 1,
+      "message": "(Please see below about the original comment)",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 2
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70943923_1f17eeed",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-11-03T10:56:13Z",
+      "side": 1,
+      "message": "This comment doesn\u0027t make really sense - it can\u0027t take an existing soongConfigModuleFactory the first time it is called, because none exist yet, and it isn\u0027t really obvious that all subsequent calls take a soongConfigModuleFactory as the ModuleFactory\n\nShould all the soongConfigModuleFactory references be replaced with ModuleFactory... ?",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 13
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
