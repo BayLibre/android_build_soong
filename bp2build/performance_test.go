@@ -78,6 +78,33 @@ func genCustomModuleBp(pctConverted float64) string {
 
 var pctToConvert = []float64{0.0, 0.01, 0.05, 0.10, 0.25, 0.5, 0.75, 1.0}
 
+func TestConvertManyModulesFull(t *testing.T) {
+	dir := "."
+	for _, tcSize := range pctToConvert {
+
+		t.Run(fmt.Sprintf("pctConverted %f", tcSize), func(t *testing.T) {
+			// setup we don't want to measure
+			config := android.TestConfig(buildDir, nil, genCustomModuleBp(tcSize), nil)
+			ctx := android.NewTestContext(config)
+
+			registerCustomModuleForBp2buildConversion(ctx)
+			codegenCtx := NewCodegenContext(config, *ctx.Context, Bp2Build)
+
+			_, errs := ctx.ParseFileList(dir, []string{"Android.bp"})
+			if len(errs) > 0 {
+				t.Fatalf("Unexpected errors: %s", errs)
+			}
+
+			_, errs = ctx.ResolveDependencies(config)
+			if len(errs) > 0 {
+				t.Fatalf("Unexpected errors: %s", errs)
+			}
+
+			generateBazelTargetsForDir(codegenCtx, dir)
+		})
+	}
+}
+
 func BenchmarkManyModulesFull(b *testing.B) {
 	dir := "."
 	for _, tcSize := range pctToConvert {
