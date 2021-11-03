@@ -45,10 +45,9 @@ var _ android.SingletonMakeVarsProvider = (*ccdepsGeneratorSingleton)(nil)
 
 const (
 	// Environment variables used to control the behavior of this singleton.
-	envVariableCollectCCDeps = "SOONG_COLLECT_CC_DEPS"
-	ccdepsJsonFileName       = "module_bp_cc_deps.json"
-	cClang                   = "clang"
-	cppClang                 = "clang++"
+	ccdepsJsonFileName = "module_bp_cc_deps.json"
+	cClang             = "clang"
+	cppClang           = "clang++"
 )
 
 type ccIdeInfo struct {
@@ -83,10 +82,7 @@ type ccDeps struct {
 }
 
 func (c *ccdepsGeneratorSingleton) GenerateBuildActions(ctx android.SingletonContext) {
-	if !ctx.Config().IsEnvTrue(envVariableCollectCCDeps) {
-		return
-	}
-
+	// (b/204397180) Turn on SOONG_COLLECT_CC_DEPS by default.
 	moduleDeps := ccDeps{}
 	moduleInfos := map[string]ccIdeInfo{}
 
