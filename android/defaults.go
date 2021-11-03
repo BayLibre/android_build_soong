@@ -213,10 +213,52 @@ func InitDefaultsModule(module DefaultsModule) {
 
 var _ Defaults = (*DefaultsModuleBase)(nil)
 
+// applyNamedspacedVariableDefaults only runs in bp2build mode for
+// defaultable/defaults modules. Its purpose is to merge namespaced product
+// variable props from defaults, even if those defaults are custom module types
+// created from soong_config_module_type, e.g. one that's wrapping a
+// cc_defaults or java_defaults.
+func applyNamedspacedVariableDefaults(defaultDep Defaults, this Module) {
+	if dep, ok := defaultDep.(Bazelable); ok {
+		if b, ok := this.(Bazelable); ok {
+			src := dep.namespacedVariableProps()
+			dst := b.namespacedVariableProps()
+			if dst == nil {
+				dst = make(namespacedVariableProperties)
+			}
+			for namespace := range src {
+				if dst[namespace] != nil {
+					// Merge dependency defaults into this module's variables
+					dstProps := []interface{}{dst[namespace]}
+					err := proptools.PrependMatchingProperties(dstProps, src[namespace], nil)
+					if err != nil {
+						panic(err)
+					}
+				} else {
+					// Create an empty copy of the src properties.
+					dstProps := []interface{}{
+						proptools.CloneEmptyProperties(reflect.ValueOf(src[namespace])).Interface(),
+					}
+					err := proptools.PrependMatchingProperties(dstProps, src[namespace], nil)
+					if err != nil {
+						panic(err)
+					}
+					dst[namespace] = dstProps[0]
+				}
+			}
+
+			b.setNamespacedVariableProps(dst)
+		}
+	}
+}
+
 func (defaultable *DefaultableModuleBase) applyDefaults(ctx TopDownMutatorContext,
 	defaultsList []Defaults) {
-
 	for _, defaults := range defaultsList {
+		if ctx.Config().runningAsBp2Build {
+			applyNamedspacedVariableDefaults(defaults, ctx.Module())
+		}
+		// For every prop that's defaultable
 		for _, prop := range defaultable.defaultableProperties {
 			if prop == defaultable.defaultableVariableProperties {
 				defaultable.applyDefaultVariableProperties(ctx, defaults, prop)
