@@ -1,6 +1,138 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58cad6bf_c7947c65",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "Wow, my brain just exploded. This was *really* difficult to review.",
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf410abf_a5c9fe42",
+        "filename": "android/bazel.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "nit: also explain what this map contains. It\u0027s not at all obvious from its type.",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 42
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5289d5b4_e2095f5e",
+        "filename": "android/bazel.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "nit: if you omit the pointer, you can re-use it for BazelModuleBase.namespacedVariableProperties. And it\u0027s confusing to \"hide\" a reference behind a type name anyway, isn\u0027t it?",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 33
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7e0faf4_13390eba",
+        "filename": "android/config.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "I\u0027m surprised that we didn\u0027t have this bit before.",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 18
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a585746_e09e52b0",
+        "filename": "android/register.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "nit: it\u0027s odd that you mutate the config here even though the rest of the configuration is created very early in main(). At least move this to runBp2build() \n\n(this assumes that the configuration is not mutated anywhere else, which is a property I would like to hold, but I\u0027m not sure if it does)",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 36
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4038ea89_42d43ce4",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "Is this necessary to mutate ctx.Config() here?\n\nI\u0027m hoping that since the module created from the newly created module type is a Bazelable and it\u0027s created from the function returned by bp2buidConfigModuleFactory(), you can hard-wire the \"convert me\" bit there to true and redirect to checking bp2buildModuleTypeConfig() for regular modules.\n\nOr maybe one can even get away without bp2buildModuleTypeConfig entirely and rely on downcasting the module type to Bazelable?",
+      "range": {
+        "startLine": 398,
+        "startChar": 5,
+        "endLine": 398,
+        "endChar": 55
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a04eed3_d3a6d28f",
@@ -26,6 +158,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dfa0d9d6_ec1ce7ec",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "This function shared quite a bit of code with soongConfigModuleFactory(), Given that this is quite arcane, mind trying to share some code between them so that one doesn\u0027t accidentally modify one and forget the other?",
+      "range": {
+        "startLine": 425,
+        "startChar": 5,
+        "endLine": 425,
+        "endChar": 32
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "859ea8c8_d529a2a5",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "Let me see if I understand this correctly: soongconfig.CreateProperties() creates the property objects that soong_config_module says that can depend on product variables.\n\nThen in the module factory function, those are added to the set of properties the module has so the Blueprint can parse them. In addition, a reference to them is added to namespacedVariableProps so that bp2build can figure out what the Blueprint file contained and emit select() statements accordingly.\n\nIs this correct?",
+      "range": {
+        "startLine": 426,
+        "startChar": 1,
+        "endLine": 426,
+        "endChar": 24
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95f5b799_bd127864",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "When will this map contain more than one element?",
+      "range": {
+        "startLine": 440,
+        "startChar": 4,
+        "endLine": 440,
+        "endChar": 32
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70943923_1f17eeed",
         "filename": "android/soong_config_modules.go",
         "patchSetId": 18
@@ -42,6 +243,190 @@
         "startChar": 0,
         "endLine": 451,
         "endChar": 13
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "251b88bc_324933de",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "What does this field contain? I assume the name of the config_setting that contains the config axis / axis value pair?",
+      "range": {
+        "startLine": 494,
+        "startChar": 1,
+        "endLine": 494,
+        "endChar": 11
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "664623c8_961fac5d",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "?SYNTAX ERROR\n\nIs my understanding correct that this is a variable name -\u003e config -\u003e property struct map where \"config\" a string encoding of the conditions under which the property struct should take effect?\n\nIn that case, why are the ProductConfigVariable and FullConfig members of ProductConfigProperty needed if they are just the duplication of the two map keys?",
+      "range": {
+        "startLine": 509,
+        "startChar": 3,
+        "endLine": 509,
+        "endChar": 13
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7752c79_dd4e8488",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this start with a capital P?",
+      "range": {
+        "startLine": 521,
+        "startChar": 62,
+        "endLine": 521,
+        "endChar": 79
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51f97087_2ebfac22",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "Why is this code needed here? (maybe add a comment to explain?)",
+      "range": {
+        "startLine": 592,
+        "startChar": 2,
+        "endLine": 592,
+        "endChar": 48
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9b20298_11c2a797",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "What happens is the property name is \"conditions_default\" but the kind is not a pointer?\n\nIf that case is not defined, maybe just panic on the principle that it\u0027s better to die quickly and predictably than to do a random thing?",
+      "range": {
+        "startLine": 610,
+        "startChar": 48,
+        "endLine": 610,
+        "endChar": 79
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32f2c55b_8171b12b",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "Let me see if I understand this correctly: \"config\" is what will eventually become the name of a Bazel config_setting(), and it has the following structure: \n\n- For soong_config_variables: , ${NAMESPACE}__${VARIABLE}__${VALUE}\n- For unconditional product_variables: , ${VARIABLE} and nothing else. How does this work? It looks like that shouldn\u0027t result in a select(), should it?\n- For arch-dependent product variables, ${VARIABLE}__${ARCH} (or os, etc.)\n\nIs this correct? If so, it looks like an odd admixture of... things. Then consider separating productVariableValues() in three functions for each of the call sites. It\u0027ll probably look simpler that way.",
+      "range": {
+        "startLine": 624,
+        "startChar": 5,
+        "endLine": 624,
+        "endChar": 11
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6cdfe40_110eba98",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "nit: Hard-wire conditions_default. Then it\u0027s a bit easier to read. It\u0027s only a bit of relief but that relief is sorely needed here...",
+      "range": {
+        "startLine": 626,
+        "startChar": 6,
+        "endLine": 626,
+        "endChar": 18
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e3e627_46f65014",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-03T12:39:22Z",
+      "side": 1,
+      "message": "What is this branch for?",
+      "range": {
+        "startLine": 659,
+        "startChar": 3,
+        "endLine": 659,
+        "endChar": 11
       },
       "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
