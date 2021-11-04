@@ -22,6 +22,30 @@
       },
       "revId": "04bd17ecb9d8fb179934522cc50c4223015f570f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "294ec2e8_478824da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-04T17:11:48Z",
+      "side": 1,
+      "message": "Yep. It trivially breaks at HEAD. I relied on presubmit to testi Starlark product configs, which was a bad decision in retrospect. Your suggestion to put them on presubmit is a slam dunk!",
+      "parentUuid": "7642175c_f668cf19",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "04bd17ecb9d8fb179934522cc50c4223015f570f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
