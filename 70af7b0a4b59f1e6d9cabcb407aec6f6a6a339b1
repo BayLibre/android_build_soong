@@ -52,6 +52,24 @@
       "parentUuid": "b0756510_2049a9bc",
       "revId": "70af7b0a4b59f1e6d9cabcb407aec6f6a6a339b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0042ec39_e867aa7e",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2021-11-04T12:22:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "982dc89d_0597bb01",
+      "revId": "70af7b0a4b59f1e6d9cabcb407aec6f6a6a339b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
