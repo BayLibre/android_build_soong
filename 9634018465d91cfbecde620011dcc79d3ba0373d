@@ -174,6 +174,24 @@
       "parentUuid": "583d52a7_56d03460",
       "revId": "9634018465d91cfbecde620011dcc79d3ba0373d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98498032_b908d76b",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-11-04T22:45:01Z",
+      "side": 1,
+      "message": "\u003e I\u0027d like to do this in a followup CL that moves the board launcher out of mk2rbc entirely if that\u0027s ok with you. (Did it in mk2rbc for now just to follow the status quo in order to get board config working in general)\n\nI\u0027d rather all the initialization is a single function call whose result is passed to print_global. IMHO it\u0027s better than exporting h_new_with_cfg.",
+      "parentUuid": "d77380cb_239623a6",
+      "revId": "9634018465d91cfbecde620011dcc79d3ba0373d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
