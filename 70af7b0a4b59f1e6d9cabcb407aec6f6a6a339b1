@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ce050d2_fb070688",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-11-04T09:08:59Z",
+      "side": 1,
+      "message": "Maybe declare this one first (with all the comments above too), and then append it to `hwasanCflags`? I dislike the duplication, especially when the other block has full comments about why these exist.",
+      "revId": "70af7b0a4b59f1e6d9cabcb407aec6f6a6a339b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
