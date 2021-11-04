@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86986452_4c0bcd4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2021-11-04T22:57:37Z",
+      "side": 1,
+      "message": "I think now all that\u0027s left is actually making the embedded launcher load the library\n_libfdt.so is now installed properly in the zipped library with no deps ( just had to remove stl )",
+      "revId": "21827e660ebf65966f92067b235818d04a64e32a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
