@@ -16,6 +16,24 @@
       "message": "Could you also update cc/sanitize.go to use StaticDepTag?",
       "revId": "4ddfc817177a51ae8d59a0c09a1024dfe281e268",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25966047_24edfe35",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-11-04T15:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "651ac973_ff978379",
+      "revId": "4ddfc817177a51ae8d59a0c09a1024dfe281e268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
