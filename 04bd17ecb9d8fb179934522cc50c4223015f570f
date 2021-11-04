@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7642175c_f668cf19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-04T17:06:11Z",
+      "side": 1,
+      "message": "I don\u0027t believe rbc-run runs in presubmit (which we should change) -- did you test locally also?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "04bd17ecb9d8fb179934522cc50c4223015f570f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
