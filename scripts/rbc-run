@@ -24,6 +24,6 @@ declare -r converter="${output_root}/soong/host/${os}/bin/mk2rbc"
 declare -r launcher="$output_root/launchers/run.rbc"
 declare -r makefile="$1"
 shift
-"$converter" -mode=write -r --outdir "$output_root" --launcher="$launcher" "$makefile"
-"$runner" RBC_OUT="make,global" RBC_DEBUG="${RBC_DEBUG:-}" $@ "$launcher"
+"${converter}" -mode=write -r --outdir "${output_root}" --launcher="${launcher}" "${makefile}"
+"${runner}" RBC_OUT="make,global" RBC_DEBUG="${RBC_DEBUG:-}" $@ "${launcher}"
 
