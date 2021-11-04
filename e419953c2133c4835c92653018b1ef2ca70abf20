@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f2ed78c_4cf4d56d",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-11-04T14:30:33Z",
+      "side": 1,
+      "message": "You\u0027ve probably tried it, but does adding a blank line before 2) improve things at all?",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 70
+      },
+      "revId": "e419953c2133c4835c92653018b1ef2ca70abf20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05181248_bbc3cdbb",
+        "filename": "java/sdk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-11-04T14:30:33Z",
+      "side": 1,
+      "message": "Is the second blank line here necessary?",
+      "range": {
+        "startLine": 372,
+        "startChar": 0,
+        "endLine": 373,
+        "endChar": 3
+      },
+      "revId": "e419953c2133c4835c92653018b1ef2ca70abf20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
