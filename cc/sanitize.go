@@ -55,6 +55,13 @@ var (
 		"-mllvm", "-fast-isel=false",
 	}
 
+	// Need to pass the codegen cflags above to linker as well.
+	hwasanLdflags = []string{
+		"-Wl,-mllvm,-instcombine-lower-dbg-declare=0",
+		"-Wl,-mllvm,--aarch64-enable-global-isel-at-O=-1",
+		"-Wl,-mllvm,-fast-isel=false",
+	}
+
 	cfiCflags = []string{"-flto", "-fsanitize-cfi-cross-dso",
 		"-fsanitize-ignorelist=external/compiler-rt/lib/cfi/cfi_blocklist.txt"}
 	// -flto and -fvisibility are required by clang when -fsanitize=cfi is
@@ -629,6 +636,7 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 
 	if Bool(sanitize.Properties.Sanitize.Hwaddress) {
 		flags.Local.CFlags = append(flags.Local.CFlags, hwasanCflags...)
+		flags.Local.LdFlags = append(flags.Local.LdFlags, hwasanLdflags...)
 		if Bool(sanitize.Properties.Sanitize.Writeonly) {
 			flags.Local.CFlags = append(flags.Local.CFlags, "-mllvm", "-hwasan-instrument-reads=0")
 		}
