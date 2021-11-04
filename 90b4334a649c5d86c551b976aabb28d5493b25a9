@@ -57,6 +57,29 @@
       },
       "revId": "90b4334a649c5d86c551b976aabb28d5493b25a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a0cb9c5_3f58fd67",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-11-04T14:11:37Z",
+      "side": 1,
+      "message": "Why are we renaming build-globs to globs ? Are there several globs files?",
+      "range": {
+        "startLine": 793,
+        "startChar": 42,
+        "endLine": 793,
+        "endChar": 48
+      },
+      "revId": "90b4334a649c5d86c551b976aabb28d5493b25a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
