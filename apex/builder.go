@@ -824,7 +824,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 	}
 
 	// Install to $OUT/soong/{target,host}/.../apex.
-	ctx.InstallFile(a.installDir, a.Name()+suffix, a.outputFile)
+	a.installedFile = ctx.InstallFile(a.installDir, a.Name()+suffix, a.outputFile)
 
 	// installed-files.txt is dist'ed
 	a.installedFilesFile = a.buildInstalledFilesFile(ctx, a.outputFile, imageDir)
