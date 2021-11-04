@@ -63,6 +63,30 @@
       },
       "revId": "5482d6a991b896e0143dfeacbab6356c8e6f5b64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55876695_2b71d1d0",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-11-04T15:32:04Z",
+      "side": 1,
+      "message": "I\u0027m actually not sure -- I was hoping you\u0027d maybe know why :) I tried various llvm-args flags, and it turned out this was the only additional flag we needed.\n\nMatthew, do you have any idea why this might be causing issues?",
+      "parentUuid": "bc251466_fcb84bf3",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 41
+      },
+      "revId": "5482d6a991b896e0143dfeacbab6356c8e6f5b64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
