@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24d6dc07_11b716db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2021-11-04T22:17:31Z",
+      "side": 1,
+      "message": "This gets the whole pylibfdt a bit more on track.\n\nNow the library ( albeit a shared one, need to make it static but as so, unless we want to pull in all the libs ) is included in the embedded .zip\nSadly python supports loading only py modules in zip, so it\u0027s not quite there yet :( ",
+      "revId": "de152ef5e01ad1e2cf7f273717ed955934acef2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
