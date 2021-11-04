@@ -34,6 +34,24 @@
       "parentUuid": "7ce050d2_fb070688",
       "revId": "70af7b0a4b59f1e6d9cabcb407aec6f6a6a339b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "982dc89d_0597bb01",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-11-04T10:35:16Z",
+      "side": 1,
+      "message": "We probably could use a function that joins some tuples like this to convert compiler -\u003e linker arguments. Also, leave it to ~2am Steve to not notice that the code isn\u0027t quite exactly copy/paste like my brain actually thought.",
+      "parentUuid": "b0756510_2049a9bc",
+      "revId": "70af7b0a4b59f1e6d9cabcb407aec6f6a6a339b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
