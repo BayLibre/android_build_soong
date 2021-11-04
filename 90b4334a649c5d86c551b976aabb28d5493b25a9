@@ -59,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a04352e5_744af0ba",
+        "filename": "scripts/rbc-run",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-04T14:59:06Z",
+      "side": 1,
+      "message": "I\u0027ll do a followup change to avoid having to run presubmits again.",
+      "parentUuid": "5d924c7b_e9f94466",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 73
+      },
+      "revId": "90b4334a649c5d86c551b976aabb28d5493b25a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a0cb9c5_3f58fd67",
@@ -72,6 +96,30 @@
       "writtenOn": "2021-11-04T14:11:37Z",
       "side": 1,
       "message": "Why are we renaming build-globs to globs ? Are there several globs files?",
+      "range": {
+        "startLine": 793,
+        "startChar": 42,
+        "endLine": 793,
+        "endChar": 48
+      },
+      "revId": "90b4334a649c5d86c551b976aabb28d5493b25a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07778ff1_52c0ed0e",
+        "filename": "ui/build/config.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-04T14:59:06Z",
+      "side": 1,
+      "message": "Yep, one for each way one can call soong_build (soong_build, soong_docs, bp2build and json-module-graph).\n\nRenaming it is not, strictly speaking, required, but I moved it so I thought it\u0027s a nice occasion to remove the not-quite-true \"build-\" prefix.",
+      "parentUuid": "7a0cb9c5_3f58fd67",
       "range": {
         "startLine": 793,
         "startChar": 42,
