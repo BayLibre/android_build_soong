@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c00c17db_421d22b7",
+        "filename": "tests/run_integration_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-04T20:57:36Z",
+      "side": 1,
+      "message": "I moved the cd into the rbc_product_config.sh script. I tested running it and then running pwd from inside run_integration_tests.sh, and it didn\u0027t affect the cwd after rbc_product_config.sh finished.",
+      "parentUuid": "012c98a7_6ec28686",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 9
+      },
+      "revId": "7f5f00c2f3d7999d03ccdd38e759795f0d89492f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94906deb_5fc583f4",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-04T19:18:35Z",
       "side": 1,
       "message": "do you have an estimate of how much runtime this adds?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 57
+      },
+      "revId": "7f5f00c2f3d7999d03ccdd38e759795f0d89492f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b3a1716_865c95d9",
+        "filename": "tests/run_integration_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-04T20:57:36Z",
+      "side": 1,
+      "message": "On my P920:\nreal\t2m32.342s\nuser\t3m19.782s\nsys\t1m19.728s",
+      "parentUuid": "94906deb_5fc583f4",
       "range": {
         "startLine": 11,
         "startChar": 0,
