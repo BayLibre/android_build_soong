@@ -188,6 +188,8 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 			// we will have duplicated notice entries.
 			fmt.Fprintln(w, "LOCAL_NO_NOTICE_FILE := true")
 		}
+		fmt.Fprintln(w, "LOCAL_SOONG_INSTALLED_MODULE :=", filepath.Join(modulePath, fi.stem()))
+		fmt.Fprintln(w, "LOCAL_SOONG_INSTALL_PAIRS :=", fi.builtFile.String()+":"+filepath.Join(modulePath, fi.stem()))
 		fmt.Fprintln(w, "LOCAL_PREBUILT_MODULE_FILE :=", fi.builtFile.String())
 		fmt.Fprintln(w, "LOCAL_MODULE_CLASS :=", fi.class.nameInMake())
 		if fi.module != nil {
@@ -297,10 +299,6 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 					if len(patterns) > 0 {
 						fmt.Fprintln(w, "LOCAL_OVERRIDES_MODULES :=", strings.Join(patterns, " "))
 					}
-					if len(a.compatSymlinks) > 0 {
-						// For flattened apexes, compat symlinks are attached to apex_manifest.json which is guaranteed for every apex
-						postInstallCommands = append(postInstallCommands, a.compatSymlinks...)
-					}
 				}
 
 				// File_contexts of flattened APEXes should be merged into file_contexts.bin
@@ -389,6 +387,8 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 				}
 				fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", name+stemSuffix)
 				fmt.Fprintln(w, "LOCAL_UNINSTALLABLE_MODULE :=", !a.installable())
+				fmt.Fprintln(w, "LOCAL_SOONG_INSTALLED_MODULE :=", a.installedFile.String())
+				fmt.Fprintln(w, "LOCAL_SOONG_INSTALL_PAIRS :=", a.outputFile.String()+":"+a.installedFile.String())
 
 				// Because apex writes .mk with Custom(), we need to write manually some common properties
 				// which are available via data.Entries
@@ -417,11 +417,6 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 				if a.prebuiltFileToDelete != "" {
 					postInstallCommands = append(postInstallCommands, "rm -rf "+
 						filepath.Join(a.installDir.ToMakePath().String(), a.prebuiltFileToDelete))
-				}
-				// For unflattened apexes, compat symlinks are attached to apex package itself as LOCAL_POST_INSTALL_CMD
-				postInstallCommands = append(postInstallCommands, a.compatSymlinks...)
-				if len(postInstallCommands) > 0 {
-					fmt.Fprintln(w, "LOCAL_POST_INSTALL_CMD :=", strings.Join(postInstallCommands, " && "))
 				}
 
 				if a.mergedNotices.Merged.Valid() {
