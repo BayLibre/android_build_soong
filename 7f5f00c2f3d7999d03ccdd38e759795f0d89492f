@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "012c98a7_6ec28686",
+        "filename": "tests/run_integration_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-04T19:18:35Z",
+      "side": 1,
+      "message": "nit: if we\u0027re going to cd, can we do it within a subshell just in case?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 9
+      },
+      "revId": "7f5f00c2f3d7999d03ccdd38e759795f0d89492f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94906deb_5fc583f4",
+        "filename": "tests/run_integration_tests.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-04T19:18:35Z",
+      "side": 1,
+      "message": "do you have an estimate of how much runtime this adds?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 57
+      },
+      "revId": "7f5f00c2f3d7999d03ccdd38e759795f0d89492f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
