@@ -17,6 +17,7 @@ package apex
 import (
 	"fmt"
 	"io"
+	"path/filepath"
 	"strconv"
 	"strings"
 
@@ -53,6 +54,7 @@ type prebuiltCommon struct {
 
 	installDir      android.InstallPath
 	installFilename string
+	installedFile   android.InstallPath
 	outputApex      android.WritablePath
 
 	// A list of apexFile objects created in prebuiltCommon.initApexFilesForAndroidMk which are used
@@ -223,6 +225,8 @@ func (p *prebuiltCommon) AndroidMkEntries() []android.AndroidMkEntries {
 				func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 					entries.SetString("LOCAL_MODULE_PATH", p.installDir.ToMakePath().String())
 					entries.SetString("LOCAL_MODULE_STEM", p.installFilename)
+					entries.SetPath("LOCAL_SOONG_INSTALLED_MODULE", p.installedFile)
+					entries.SetString("LOCAL_SOONG_INSTALL_PAIRS", p.outputApex.String()+":"+p.installedFile.String())
 					entries.SetBoolIfTrue("LOCAL_UNINSTALLABLE_MODULE", !p.installable())
 					entries.AddStrings("LOCAL_OVERRIDES_MODULES", p.prebuiltCommonProperties.Overrides...)
 					postInstallCommands := append([]string{}, p.postInstallCommands...)
@@ -259,6 +263,9 @@ func (p *prebuiltCommon) createEntriesForApexFile(fi apexFile, apexName string) 
 		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
 			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 				entries.SetString("LOCAL_MODULE_PATH", p.installDir.ToMakePath().String())
+				entries.SetString("LOCAL_SOONG_INSTALLED_MODULE :=", filepath.Join(p.installDir.String(), fi.stem()))
+				entries.SetString("LOCAL_SOONG_INSTALL_PAIRS :=",
+					fi.builtFile.String()+":"+filepath.Join(p.installDir.String(), fi.stem()))
 
 				// soong_java_prebuilt.mk sets LOCAL_MODULE_SUFFIX := .jar  Therefore
 				// we need to remove the suffix from LOCAL_MODULE_STEM, otherwise
@@ -469,6 +476,10 @@ type Prebuilt struct {
 	properties PrebuiltProperties
 
 	inputApex android.Path
+}
+
+func (p *Prebuilt) InstallBypassMake() bool {
+	return true
 }
 
 type ApexFileProperties struct {
@@ -757,7 +768,7 @@ func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	p.initApexFilesForAndroidMk(ctx)
 
 	if p.installable() {
-		ctx.InstallFile(p.installDir, p.installFilename, p.inputApex)
+		p.installedFile = ctx.InstallFile(p.installDir, p.installFilename, p.inputApex)
 	}
 
 	// in case that prebuilt_apex replaces source apex (using prefer: prop)
