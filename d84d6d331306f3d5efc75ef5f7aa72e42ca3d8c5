@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d1a2dcb_841f85d2",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2021-11-04T23:05:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cae8f03_2e581eb4",
+      "range": {
+        "startLine": 98,
+        "startChar": 63,
+        "endLine": 98,
+        "endChar": 67
+      },
+      "revId": "d84d6d331306f3d5efc75ef5f7aa72e42ca3d8c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c04e89ce_110a2066",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "062642af_0fbe4add",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2021-11-04T23:05:48Z",
+      "side": 1,
+      "message": "Done, by rearranging this whole section a bit. LMK if you think there\u0027s any other area for improvement!",
+      "parentUuid": "c04e89ce_110a2066",
+      "range": {
+        "startLine": 98,
+        "startChar": 69,
+        "endLine": 99,
+        "endChar": 29
+      },
+      "revId": "d84d6d331306f3d5efc75ef5f7aa72e42ca3d8c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06bf077d_e5220e5d",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-10-31T12:15:09Z",
       "side": 1,
       "message": "Apex_name -\u003e `apex_name`",
+      "range": {
+        "startLine": 139,
+        "startChar": 42,
+        "endLine": 139,
+        "endChar": 51
+      },
+      "revId": "d84d6d331306f3d5efc75ef5f7aa72e42ca3d8c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7472b7e1_f1f73c94",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2021-11-04T23:05:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06bf077d_e5220e5d",
       "range": {
         "startLine": 139,
         "startChar": 42,
