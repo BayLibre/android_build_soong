@@ -8,6 +8,7 @@ bootstrap_go_package {
     deps: [
         "blueprint",
         "soong-android",
+        "soong-cc",
         "soong-tradefed",
     ],
     srcs: [

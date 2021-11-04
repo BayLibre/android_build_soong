@@ -23,6 +23,7 @@ import (
 	"strings"
 
 	"android/soong/bazel"
+	"android/soong/cc"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -93,6 +94,9 @@ type BaseProperties struct {
 
 	// list of java modules that provide data that should be installed alongside the test.
 	Java_data []string
+
+	// list of library modules that should be installed alongside the test
+	Cc_libs []string `android:"path,arch_variant"`
 
 	// list of the Python libraries compatible both with Python2 and Python3.
 	Libs []string `android:"arch_variant"`
@@ -288,6 +292,7 @@ type installDependencyTag struct {
 var (
 	pythonLibTag         = dependencyTag{name: "pythonLib"}
 	javaDataTag          = dependencyTag{name: "javaData"}
+	ccLibTag             = dependencyTag{name: "ccLib"}
 	launcherTag          = dependencyTag{name: "launcher"}
 	launcherSharedLibTag = installDependencyTag{name: "launcherSharedLib"}
 	pathComponentRegexp  = regexp.MustCompile(`^[a-zA-Z_][a-zA-Z0-9_-]*$`)
@@ -385,6 +390,8 @@ func (p *Module) anySrcHasExt(ctx android.BottomUpMutatorContext, ext string) bo
 	return anyHasExt(p.properties.Srcs, ext)
 }
 
+var staticLibVariations = []blueprint.Variation{{Mutator: "link", Variation: "static"}}
+
 // DepsMutator mutates dependencies for this module:
 //  * handles proto dependencies,
 //  * if required, specifies launcher and adds launcher dependencies,
@@ -457,6 +464,9 @@ func (p *Module) DepsMutator(ctx android.BottomUpMutatorContext) {
 	// so that it can point to java modules.
 	javaDataVariation := []blueprint.Variation{{"arch", android.Common.String()}}
 	ctx.AddVariationDependencies(javaDataVariation, javaDataTag, p.properties.Java_data...)
+
+	ctx.AddFarVariationDependencies(append(ctx.Target().Variations(), staticLibVariations...),
+		ccLibTag, p.properties.Cc_libs...)
 }
 
 func (p *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -509,6 +519,18 @@ func (p *Module) generatePythonBuildActions(ctx android.ModuleContext) {
 	// Emulate the data property for java_data dependencies.
 	for _, javaData := range ctx.GetDirectDepsWithTag(javaDataTag) {
 		expandedData = append(expandedData, android.OutputFilesForModule(ctx, javaData, "")...)
+	}
+
+	for _, pythonDataLib := range ctx.GetDirectDepsWithTag(ccLibTag) {
+		if cc, isCc := pythonDataLib.(*cc.Module); isCc {
+			lib := android.PathForModuleOut(ctx, cc.OutputFile().Path().Base())
+			ctx.Build(pctx, android.BuildParams{
+				Rule:   android.Cp,
+				Input:  cc.OutputFile().Path(),
+				Output: lib,
+			})
+			expandedData = append(expandedData, lib)
+		}
 	}
 
 	// Validate pkg_path property
