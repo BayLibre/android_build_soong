@@ -823,20 +823,17 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 		a.outputFile = signedCompressedOutputFile
 	}
 
+	installSuffix := suffix
+	if a.isCompressed {
+		installSuffix = imageCapexSuffix
+	}
+
 	// Install to $OUT/soong/{target,host}/.../apex.
-	ctx.InstallFile(a.installDir, a.Name()+suffix, a.outputFile)
+	a.installedFile = ctx.InstallFile(a.installDir, a.Name()+installSuffix, a.outputFile,
+		a.compatSymlinks.Paths()...)
 
 	// installed-files.txt is dist'ed
 	a.installedFilesFile = a.buildInstalledFilesFile(ctx, a.outputFile, imageDir)
-}
-
-// Context "decorator", overriding the InstallBypassMake method to always reply `true`.
-type flattenedApexContext struct {
-	android.ModuleContext
-}
-
-func (c *flattenedApexContext) InstallBypassMake() bool {
-	return true
 }
 
 // buildFlattenedApex creates rules for a flattened APEX. Flattened APEX actually doesn't have a
@@ -856,14 +853,7 @@ func (a *apexBundle) buildFlattenedApex(ctx android.ModuleContext) {
 
 	a.fileContexts = a.buildFileContexts(ctx)
 
-	// Temporarily wrap the original `ctx` into a `flattenedApexContext` to have it reply true
-	// to `InstallBypassMake()` (thus making the call `android.PathForModuleInstall` below use
-	// `android.pathForInstallInMakeDir` instead of `android.PathForOutput`) to return the
-	// correct path to the flattened APEX (as its contents is installed by Make, not Soong).
-	// TODO(jiyong): Why do we need to set outputFile for flattened APEX? We don't seem to use
-	// it and it actually points to a path that can never be built. Remove this.
-	factx := flattenedApexContext{ctx}
-	a.outputFile = android.PathForModuleInstall(&factx, "apex", bundleName)
+	a.outputFile = android.PathForModuleInstall(ctx, "apex", bundleName)
 }
 
 // getCertificateAndPrivateKey retrieves the cert and the private key that will be used to sign
