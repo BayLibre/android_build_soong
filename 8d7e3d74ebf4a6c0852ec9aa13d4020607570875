@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eec4a917_8db19fbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T13:46:42Z",
+      "side": 1,
+      "message": "awesome :) mostly just nits/requests for additional comments",
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf410abf_a5c9fe42",
@@ -77,6 +94,30 @@
       "writtenOn": "2021-11-03T12:39:22Z",
       "side": 1,
       "message": "I\u0027m surprised that we didn\u0027t have this bit before.",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 18
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "685f6ed7_ad9d130e",
+        "filename": "android/config.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T13:46:42Z",
+      "side": 1,
+      "message": "yeah, somehow we\u0027d been able to get away with one in basemodulecontext https://cs.android.com/android/platform/superproject/+/master:build/soong/android/module.go;l\u003d2159;drc\u003d1caea3527898afed1d1706e779ac5b3715806dab -- but we may be able to dedupe the part in context to the config based version later.",
+      "parentUuid": "f7e0faf4_13390eba",
       "range": {
         "startLine": 158,
         "startChar": 1,
@@ -273,6 +314,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d197cdfe_1d687c13",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T13:46:42Z",
+      "side": 1,
+      "message": "This contains product variable name + optionally arch-variant info, should\u0027ve left comments initially, sorry.",
+      "parentUuid": "251b88bc_324933de",
+      "range": {
+        "startLine": 494,
+        "startChar": 1,
+        "endLine": 494,
+        "endChar": 11
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "664623c8_961fac5d",
         "filename": "android/variable.go",
         "patchSetId": 18
@@ -296,6 +361,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ca069d18_1403f59d",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T13:46:42Z",
+      "side": 1,
+      "message": "FullConfig can also contain arch-variant info when the two are used in combination. \n\nThe product variable itself is still needed in order to be able to reference the product variable for string replacement use cases.",
+      "parentUuid": "664623c8_961fac5d",
+      "range": {
+        "startLine": 509,
+        "startChar": 3,
+        "endLine": 509,
+        "endChar": 13
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30a17192_763aac8b",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T13:46:42Z",
+      "side": 1,
+      "message": "Awesome! I like the reuse of this code.\n\nWith its reuse we should make sure we don\u0027t only focus on property names explicitly listed for product variables, but that doesn\u0027t need to happen in this CL.",
+      "range": {
+        "startLine": 514,
+        "startChar": 5,
+        "endLine": 514,
+        "endChar": 30
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7752c79_dd4e8488",
         "filename": "android/variable.go",
         "patchSetId": 18
@@ -312,6 +424,53 @@
         "startChar": 62,
         "endLine": 521,
         "endChar": 79
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf31263c_80bf2ae6",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T13:46:42Z",
+      "side": 1,
+      "message": "proptools.FieldNameForProperty handles that conversion",
+      "parentUuid": "b7752c79_dd4e8488",
+      "range": {
+        "startLine": 521,
+        "startChar": 62,
+        "endLine": 521,
+        "endChar": 79
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0764dd67_666639c5",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T13:46:42Z",
+      "side": 1,
+      "message": "should we give an example for this too to distinguish between ProductConfigVariable and FullConfig?",
+      "range": {
+        "startLine": 567,
+        "startChar": 24,
+        "endLine": 567,
+        "endChar": 32
       },
       "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -411,6 +570,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41bf733b_2788c2c6",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T13:46:42Z",
+      "side": 1,
+      "message": "there are a lot of similarities between this and the conditions default case -- is it possible to dedupe or is that harder to follow?",
+      "range": {
+        "startLine": 633,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 51
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dfb7572_3a71d837",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T13:46:42Z",
+      "side": 1,
+      "message": "should we clarify that this is for soong config string variables since this code is handling a mixture of product config and soong config variables now?",
+      "range": {
+        "startLine": 635,
+        "startChar": 7,
+        "endLine": 635,
+        "endChar": 46
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "63e3e627_46f65014",
         "filename": "android/variable.go",
         "patchSetId": 18
@@ -427,6 +632,29 @@
         "startChar": 3,
         "endLine": 659,
         "endChar": 11
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "799aaca5_4c2846fb",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T13:46:42Z",
+      "side": 1,
+      "message": "will these eventually end up in the directory they\u0027re defined?",
+      "range": {
+        "startLine": 173,
+        "startChar": 9,
+        "endLine": 173,
+        "endChar": 59
       },
       "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
