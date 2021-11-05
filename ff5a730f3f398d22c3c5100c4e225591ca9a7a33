@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7bf78a8_104ff74e",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T13:48:16Z",
+      "side": 1,
+      "message": "this isn\u0027t intuitive, can we add a comment as to why?",
+      "range": {
+        "startLine": 1173,
+        "startChar": 4,
+        "endLine": 1173,
+        "endChar": 19
+      },
+      "revId": "ff5a730f3f398d22c3c5100c4e225591ca9a7a33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
