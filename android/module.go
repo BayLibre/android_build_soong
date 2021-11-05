@@ -1702,7 +1702,7 @@ func (m *ModuleBase) InstallInRoot() bool {
 }
 
 func (m *ModuleBase) InstallBypassMake() bool {
-	return false
+	return true
 }
 
 func (m *ModuleBase) InstallForceOS() (*OsType, *ArchType) {
@@ -2830,7 +2830,7 @@ func (m *moduleContext) InstallInRoot() bool {
 }
 
 func (m *moduleContext) InstallBypassMake() bool {
-	return m.module.InstallBypassMake()
+	return m.Module().InstallBypassMake()
 }
 
 func (m *moduleContext) InstallForceOS() (*OsType, *ArchType) {
