@@ -16,6 +16,144 @@
       "message": "LGTM ; Thanks!",
       "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cf2b3ef_c5de1477",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T14:48:35Z",
+      "side": 1,
+      "message": "android still uses python2 in some places -- is python2 handled differently by Bazel?",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 30
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e00a67bb_41fb53c2",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T14:48:35Z",
+      "side": 1,
+      "message": "do these should up in aquery actions that we drop or do they not show up in aquery actions at all?",
+      "range": {
+        "startLine": 179,
+        "startChar": 74,
+        "endLine": 180,
+        "endChar": 57
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "555edd68_4d412138",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T14:48:35Z",
+      "side": 1,
+      "message": "is this to only explicitly perform the template expand action if there is not a command line argument provided to perform the expansion?",
+      "range": {
+        "startLine": 278,
+        "startChar": 48,
+        "endLine": 278,
+        "endChar": 81
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cd94674_0b113154",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T14:48:35Z",
+      "side": 1,
+      "message": "elsewhere in this file we use proptools.ShellEscapeList and proptools.ShellEscapeIncludingSpaces (from http://go/aocs/android/platform/superproject/+/master:build/blueprint/proptools/escape.go) -- would one of those be an appropriate substitute rather than creating our own escaping?",
+      "range": {
+        "startLine": 316,
+        "startChar": 5,
+        "endLine": 316,
+        "endChar": 30
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb4a52ee_43d44c7f",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T14:48:35Z",
+      "side": 1,
+      "message": "I _think_ this may be handled more directly by b/204913827 that cparsons@ is working on runfiles in general, but I\u0027ll let him verify",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 59
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "349f9099_df92f23f",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T14:48:35Z",
+      "side": 1,
+      "message": "fyi: for other symlink actions we found that symlinks needed to be to the absolute path rather than a relative path to work within sandboxing\n\nAdditionally, symlinks should be specified as BuildStatement.SymlinkPaths",
+      "range": {
+        "startLine": 359,
+        "startChar": 29,
+        "endLine": 359,
+        "endChar": 36
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
