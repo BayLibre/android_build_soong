@@ -106,6 +106,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "653689ab_6bbcfae9",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-05T15:09:31Z",
+      "side": 1,
+      "message": "Can you clarify this?",
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6cd94674_0b113154",
         "filename": "bazel/aquery.go",
         "patchSetId": 4
@@ -168,6 +185,53 @@
         "startChar": 0,
         "endLine": 352,
         "endChar": 59
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5da1550d_242ff26b",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-05T15:09:31Z",
+      "side": 1,
+      "message": "I\u0027m more focused on appropriately propagating runfiles up the tree for use in cquery, (that is, if a soong modle depends on a bazel target, it should acquire the  transitive runfiles of the bazel target, and register them using appropriate Soong mechanisms).\n\nThis seems like it\u0027s preparing runfiles for specifically a template expand action. Why is this needed? Can you provide some more context on this?",
+      "parentUuid": "fb4a52ee_43d44c7f",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 59
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3c281bf_3bad9f05",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-05T15:09:31Z",
+      "side": 1,
+      "message": "symbolic*",
+      "range": {
+        "startLine": 357,
+        "startChar": 13,
+        "endLine": 357,
+        "endChar": 20
       },
       "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
