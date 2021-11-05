@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ec35f84_1b3dc1fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-11-05T14:57:20Z",
+      "side": 1,
+      "message": "LGTM pending Liz\u0027s comments",
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cf2b3ef_c5de1477",
@@ -105,6 +122,29 @@
         "startChar": 5,
         "endLine": 316,
         "endChar": 30
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51922540_abc41f16",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-11-05T14:57:20Z",
+      "side": 1,
+      "message": "Remove the empty return?",
+      "range": {
+        "startLine": 348,
+        "startChar": 1,
+        "endLine": 348,
+        "endChar": 7
       },
       "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
