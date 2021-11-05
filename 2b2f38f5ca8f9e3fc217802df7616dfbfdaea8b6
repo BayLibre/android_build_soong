@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb8cebf3_9f0ee5d0",
+        "filename": "androidmk/androidmk/androidmk_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T15:25:41Z",
+      "side": 1,
+      "message": "may need a separate testcase or just additional infrastructure for this test case, but using blueprint\u0027s fs http://go/aocs/android/platform/superproject/+/master:build/blueprint/pathtools/fs.go should make it easier to test with a fake filesystem,\n\nE.g. for the bp2build tests, we specify filenames + contents like so: https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/cc_library_conversion_test.go;l\u003d224;drc\u003d51da93381c14f2a39e496e07b64555af91b94983 that get turned into a mock file system: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/config.go;l\u003d532;drc\u003d91eaa6316a3d52ac380786cbccda529e75e2ca35\n\nRather than using os.stat directly, can use the Blueprint\u0027s fs.Stat which will allow for easier mocking.\n\nIf you need more context or details, feel free to reach out!",
+      "parentUuid": "b180e293_592fb5e7",
+      "range": {
+        "startLine": 1540,
+        "startChar": 2,
+        "endLine": 1542,
+        "endChar": 55
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37027b0c_cc854d40",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 7

@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e9a5373_f5f7e206",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T15:25:41Z",
+      "side": 1,
+      "message": "Except for missing tests, looks pretty good, feel free to reach out if you need/want more context expanding testing infra!",
+      "revId": "ec6624e22fb45d9056a54c03403c039648f0329c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d7b886b_adc088ff",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1486,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T15:25:41Z",
+      "side": 1,
+      "message": "it\u0027s a bit odd to be ignoring the error here -- perhaps getAndroidbpFile should return a bool with whether the file was found or not?",
+      "range": {
+        "startLine": 1486,
+        "startChar": 3,
+        "endLine": 1486,
+        "endChar": 18
+      },
+      "revId": "ec6624e22fb45d9056a54c03403c039648f0329c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf9190fb_e398290b",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1630,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T15:25:41Z",
+      "side": 1,
+      "message": "since this has been extended to include property files --- perhaps getDirFromProperty?",
+      "range": {
+        "startLine": 1630,
+        "startChar": 5,
+        "endLine": 1630,
+        "endChar": 20
+      },
+      "revId": "ec6624e22fb45d9056a54c03403c039648f0329c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3627305c_8890871d",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1703,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T15:25:41Z",
+      "side": 1,
+      "message": "Can we add a test for this? it looks to be independent of the existence of bp/mk files",
+      "range": {
+        "startLine": 1703,
+        "startChar": 5,
+        "endLine": 1703,
+        "endChar": 20
+      },
+      "revId": "ec6624e22fb45d9056a54c03403c039648f0329c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
