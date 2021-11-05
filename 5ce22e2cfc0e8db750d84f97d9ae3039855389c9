@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69526c84_2f9e4956",
+        "filename": "cc/ccdeps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2021-11-05T03:52:55Z",
+      "side": 1,
+      "message": "The description should more likely that `Generate module_bp_cc_deps.json by default.`",
+      "range": {
+        "startLine": 84,
+        "startChar": 26,
+        "endLine": 84,
+        "endChar": 47
+      },
+      "revId": "5ce22e2cfc0e8db750d84f97d9ae3039855389c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c35fd3_2147a78c",
+        "filename": "java/jdeps.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2021-11-05T03:52:55Z",
+      "side": 1,
+      "message": "The description should more likely that `Generate module_bp_java_deps.json by default.`",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 61
+      },
+      "revId": "5ce22e2cfc0e8db750d84f97d9ae3039855389c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
