@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf94907e_a0c89da6",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-05T22:27:25Z",
+      "side": 1,
+      "message": "Picking version of python binary is handled in py3wrapper.sh, which is not in aquery output, so to simplify the solution for now we thought python3 from the environment could be used for py_binary targets unless there are some errors reported.",
+      "parentUuid": "9cf2b3ef_c5de1477",
+      "range": {
+        "startLine": 111,
+        "startChar": 1,
+        "endLine": 111,
+        "endChar": 30
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e00a67bb_41fb53c2",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-11-05T14:48:35Z",
       "side": 1,
       "message": "do these should up in aquery actions that we drop or do they not show up in aquery actions at all?",
+      "range": {
+        "startLine": 179,
+        "startChar": 74,
+        "endLine": 180,
+        "endChar": 57
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0739f312_039abe74",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-05T22:27:25Z",
+      "side": 1,
+      "message": "py3wrapper.sh is not in aquery output.\n\nMANIFEST file is in aquery output as below, which is not quite useful for creating it. Jin mentioned that MANIFEST file is not needed when running python binary on Linux, so I removed it from the input.\n\naction \u0027Creating source manifest for //bionic/libc/tools:genfunctosyscallnrs\u0027\n  Mnemonic: SourceSymlinkManifest\n  Target: //bionic/libc/tools:genfunctosyscallnrs\n  Configuration: k8-fastbuild\n  Execution platform: //build/bazel/platforms:linux_x86_64\n  ActionKey: 6b2327ab20f7a01ec4f4ecb19275ce80f0d4c8158b15d1f1a0791d5b067cf324\n  Inputs: []\n  Outputs: [bazel-out/k8-fastbuild/bin/bionic/libc/tools/genfunctosyscallnrs.runfiles_manifest]\n\naction \u0027Creating runfiles tree bazel-out/k8-fastbuild/bin/bionic/libc/tools/genfunctosyscallnrs.runfiles\u0027\n  Mnemonic: SymlinkTree\n  Target: //bionic/libc/tools:genfunctosyscallnrs\n  Configuration: k8-fastbuild\n  Execution platform: //build/bazel/platforms:linux_x86_64\n  ActionKey: b1b3fef4406c17d2bb98075d0ee27017f4f331dc29d68589d2b82b0fa0bb2b26\n  Inputs: [bazel-out/k8-fastbuild/bin/bionic/libc/tools/genfunctosyscallnrs.runfiles_manifest]\n  Outputs: [bazel-out/k8-fastbuild/bin/bionic/libc/tools/genfunctosyscallnrs.runfiles/MANIFEST]\n  Environment: [BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN\u003d1, PATH\u003d/usr/local/google/home/weiwli/aosp/prebuilts/build-tools/path/linux-x86:/usr/local/google/home/weiwli/aosp/out/.path]",
+      "parentUuid": "e00a67bb_41fb53c2",
       "range": {
         "startLine": 179,
         "startChar": 74,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6d4885a_7ce6c4c9",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-05T22:27:25Z",
+      "side": 1,
+      "message": "Yes. But we can always review this logic later if there are new cases for template expansion.",
+      "parentUuid": "555edd68_4d412138",
+      "range": {
+        "startLine": 278,
+        "startChar": 48,
+        "endLine": 278,
+        "endChar": 81
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "653689ab_6bbcfae9",
@@ -117,6 +189,24 @@
       "writtenOn": "2021-11-05T15:09:31Z",
       "side": 1,
       "message": "Can you clarify this?",
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7833bbb2_e11f840a",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-05T22:27:25Z",
+      "side": 1,
+      "message": "The test TestTemplateExpandActionSubstitutions in aquery_test.go in this CL should give some ideas of how this method works. \n\nSubstitutions is a list of key-value pair, field \"key\" is a string token that will be  replaced with field \"value\" in the template content. In this process we sometimes don\u0027t want to use the value provided by Bazel, so TemplateActionOverriddenTokens is used to override the value from Bazel. Currently this is used only for overriding the value for %python_binary% in python binary stub script which points to \"bazel_tools/tools/python/py3wrapper.sh\" in aaquery output. But py3wrapper.sh is not in aquery output so we use python3 here.",
+      "parentUuid": "653689ab_6bbcfae9",
       "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -144,6 +234,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eca6625f_1ee98ce0",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-05T22:27:25Z",
+      "side": 1,
+      "message": "I tried that method which uses single quote and should be good for things like in ninja rules:\n\ncd output_directory \u0026\u0026 rm -rf output_file \u0026\u0026 some_command \u0027escaped args\u0027\n\nif we enforce /bin/bash, the upper command becomes:\n\ncd output_directory \u0026\u0026 rm -rf output_file \u0026\u0026 /bin/bash -c \u0027some_command \u0027escaped_args\u0027\u0027, \n\nwhich is not right and the part of \u003csome_command \u0027escaped_args\u0027\u003e in single quote should be escaped again which is quite confusing when handling the template content of python programs.\n\nSo I used double quote instead of single quote and the command looks like:\n\ncd output_directory \u0026\u0026 rm -rf output_file \u0026\u0026 /bin/bash -c \u0027echo \"escaped content for double quote\" \u0027\n\nThe function escapeCommandlineArgument escapes string for being used in double quote.",
+      "parentUuid": "6cd94674_0b113154",
+      "range": {
+        "startLine": 316,
+        "startChar": 5,
+        "endLine": 316,
+        "endChar": 30
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51922540_abc41f16",
@@ -157,6 +271,30 @@
       "writtenOn": "2021-11-05T14:57:20Z",
       "side": 1,
       "message": "Remove the empty return?",
+      "range": {
+        "startLine": 348,
+        "startChar": 1,
+        "endLine": 348,
+        "endChar": 7
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b96f1be5_c76334ae",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-05T22:27:25Z",
+      "side": 1,
+      "message": "looks golang requires a \"return\"",
+      "parentUuid": "51922540_abc41f16",
       "range": {
         "startLine": 348,
         "startChar": 1,
@@ -214,6 +352,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c090871_a5a89a8b",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-05T22:27:25Z",
+      "side": 1,
+      "message": "For example, a py_binary target \"abc\" is built by Bazel that generates following output:\n\nabc  -- the executable stub script\nabc.runfiles/\n  __main__/  --contains all the data files and python source files for this binary\n\nIn mixed build aquery output doesn\u0027t tell how to create the runfiles directory but has an action(PythonZipper) of generating python zip file which can be run directly using \"python3 abc.zip\". The zip contains all data files and python source files, but in a little different directory structure:\nabc.zip\n  runfiles/\n    __main__/\n    \nSo after it is unzipped to abc.runfiles, a symbolic link is created and make it same as the expected structure\nabc.runfiles/\n  __main__@  --symbolic link to runfiles/__main__/\n  runfiles/\n    __main__/",
+      "parentUuid": "5da1550d_242ff26b",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 59
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3c281bf_3bad9f05",
@@ -237,6 +399,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf79d9ec_d06d98b0",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-05T22:27:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3c281bf_3bad9f05",
+      "range": {
+        "startLine": 357,
+        "startChar": 13,
+        "endLine": 357,
+        "endChar": 20
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "349f9099_df92f23f",
@@ -250,6 +436,30 @@
       "writtenOn": "2021-11-05T14:48:35Z",
       "side": 1,
       "message": "fyi: for other symlink actions we found that symlinks needed to be to the absolute path rather than a relative path to work within sandboxing\n\nAdditionally, symlinks should be specified as BuildStatement.SymlinkPaths",
+      "range": {
+        "startLine": 359,
+        "startChar": 29,
+        "endLine": 359,
+        "endChar": 36
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfedec57_201c9a2c",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-05T22:27:25Z",
+      "side": 1,
+      "message": "This symbolic link is not for build system but the stub script use when it runs, so I think it should be ok. But I don\u0027t know the sandboxing you mentioned so I might be wrong.",
+      "parentUuid": "349f9099_df92f23f",
       "range": {
         "startLine": 359,
         "startChar": 29,
