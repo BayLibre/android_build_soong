@@ -17,7 +17,6 @@ package rust
 import (
 	"fmt"
 	"path/filepath"
-	"reflect"
 	"strings"
 	"testing"
 
@@ -362,635 +361,636 @@ func TestVendorSnapshotExclude(t *testing.T) {
 	}
 }
 
-func TestVendorSnapshotUse(t *testing.T) {
-	frameworkBp := `
-	cc_library {
-		name: "libvndk",
-		vendor_available: true,
-		product_available: true,
-		vndk: {
-			enabled: true,
-		},
-		nocrt: true,
-	}
+// func TestVendorSnapshotUse(t *testing.T) {
+// 	frameworkBp := `
+// 	cc_library {
+// 		name: "libvndk",
+// 		vendor_available: true,
+// 		product_available: true,
+// 		vndk: {
+// 			enabled: true,
+// 		},
+// 		nocrt: true,
+// 	}
 
-	cc_library {
-		name: "libvendor",
-		vendor: true,
-		nocrt: true,
-		no_libcrt: true,
-		stl: "none",
-		system_shared_libs: [],
-	}
+// 	cc_library {
+// 		name: "libvendor",
+// 		vendor: true,
+// 		nocrt: true,
+// 		no_libcrt: true,
+// 		stl: "none",
+// 		system_shared_libs: [],
+// 	}
 
-	cc_library {
-		name: "libvendor_available",
-		vendor_available: true,
-		nocrt: true,
-		no_libcrt: true,
-		stl: "none",
-		system_shared_libs: [],
-	}
+// 	cc_library {
+// 		name: "libvendor_available",
+// 		vendor_available: true,
+// 		nocrt: true,
+// 		no_libcrt: true,
+// 		stl: "none",
+// 		system_shared_libs: [],
+// 	}
 
-	cc_library {
-		name: "lib32",
-		vendor: true,
-		nocrt: true,
-		no_libcrt: true,
-		stl: "none",
-		system_shared_libs: [],
-		compile_multilib: "32",
-	}
+// 	cc_library {
+// 		name: "lib32",
+// 		vendor: true,
+// 		nocrt: true,
+// 		no_libcrt: true,
+// 		stl: "none",
+// 		system_shared_libs: [],
+// 		compile_multilib: "32",
+// 	}
 
-	cc_library {
-		name: "lib64",
-		vendor: true,
-		nocrt: true,
-		no_libcrt: true,
-		stl: "none",
-		system_shared_libs: [],
-		compile_multilib: "64",
-	}
+// 	cc_library {
+// 		name: "lib64",
+// 		vendor: true,
+// 		nocrt: true,
+// 		no_libcrt: true,
+// 		stl: "none",
+// 		system_shared_libs: [],
+// 		compile_multilib: "64",
+// 	}
 
-	rust_binary {
-		name: "bin",
-		vendor: true,
-		srcs: ["bin.rs"],
-	}
+// 	rust_binary {
+// 		name: "bin",
+// 		vendor: true,
+// 		srcs: ["bin.rs"],
+// 	}
 
-	rust_binary {
-		name: "bin32",
-		vendor: true,
-		compile_multilib: "32",
-		srcs: ["bin.rs"],
-	}
-`
+// 	rust_binary {
+// 		name: "bin32",
+// 		vendor: true,
+// 		compile_multilib: "32",
+// 		srcs: ["bin.rs"],
+// 	}
+// `
 
-	vndkBp := `
-	vndk_prebuilt_shared {
-		name: "libvndk",
-		version: "30",
-		target_arch: "arm64",
-		vendor_available: true,
-		product_available: true,
-		vndk: {
-			enabled: true,
-		},
-		arch: {
-			arm64: {
-				srcs: ["libvndk.so"],
-				export_include_dirs: ["include/libvndk"],
-			},
-			arm: {
-				srcs: ["libvndk.so"],
-				export_include_dirs: ["include/libvndk"],
-			},
-		},
-	}
+// 	vndkBp := `
+// 	vndk_prebuilt_shared {
+// 		name: "libvndk",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		vendor_available: true,
+// 		product_available: true,
+// 		vndk: {
+// 			enabled: true,
+// 		},
+// 		arch: {
+// 			arm64: {
+// 				srcs: ["libvndk.so"],
+// 				export_include_dirs: ["include/libvndk"],
+// 			},
+// 			arm: {
+// 				srcs: ["libvndk.so"],
+// 				export_include_dirs: ["include/libvndk"],
+// 			},
+// 		},
+// 	}
 
-	// old snapshot module which has to be ignored
-	vndk_prebuilt_shared {
-		name: "libvndk",
-		version: "26",
-		target_arch: "arm64",
-		vendor_available: true,
-		product_available: true,
-		vndk: {
-			enabled: true,
-		},
-		arch: {
-			arm64: {
-				srcs: ["libvndk.so"],
-				export_include_dirs: ["include/libvndk"],
-			},
-			arm: {
-				srcs: ["libvndk.so"],
-				export_include_dirs: ["include/libvndk"],
-			},
-		},
-	}
+// 	// old snapshot module which has to be ignored
+// 	vndk_prebuilt_shared {
+// 		name: "libvndk",
+// 		version: "26",
+// 		target_arch: "arm64",
+// 		vendor_available: true,
+// 		product_available: true,
+// 		vndk: {
+// 			enabled: true,
+// 		},
+// 		arch: {
+// 			arm64: {
+// 				srcs: ["libvndk.so"],
+// 				export_include_dirs: ["include/libvndk"],
+// 			},
+// 			arm: {
+// 				srcs: ["libvndk.so"],
+// 				export_include_dirs: ["include/libvndk"],
+// 			},
+// 		},
+// 	}
 
-	// different arch snapshot which has to be ignored
-	vndk_prebuilt_shared {
-		name: "libvndk",
-		version: "30",
-		target_arch: "arm",
-		vendor_available: true,
-		product_available: true,
-		vndk: {
-			enabled: true,
-		},
-		arch: {
-			arm: {
-				srcs: ["libvndk.so"],
-				export_include_dirs: ["include/libvndk"],
-			},
-		},
-	}
-`
+// 	// different arch snapshot which has to be ignored
+// 	vndk_prebuilt_shared {
+// 		name: "libvndk",
+// 		version: "30",
+// 		target_arch: "arm",
+// 		vendor_available: true,
+// 		product_available: true,
+// 		vndk: {
+// 			enabled: true,
+// 		},
+// 		arch: {
+// 			arm: {
+// 				srcs: ["libvndk.so"],
+// 				export_include_dirs: ["include/libvndk"],
+// 			},
+// 		},
+// 	}
+// `
 
-	vendorProprietaryBp := `
-	cc_library {
-		name: "libvendor_without_snapshot",
-		vendor: true,
-		nocrt: true,
-		no_libcrt: true,
-		stl: "none",
-		system_shared_libs: [],
-	}
+// 	vendorProprietaryBp := `
+// 	cc_library {
+// 		name: "libvendor_without_snapshot",
+// 		vendor: true,
+// 		nocrt: true,
+// 		no_libcrt: true,
+// 		stl: "none",
+// 		system_shared_libs: [],
+// 	}
 
-	rust_library {
-		name: "librust_vendor_available",
-		crate_name: "rust_vendor",
-		vendor_available: true,
-		srcs: ["client.rs"],
-	}
+// 	rust_library {
+// 		name: "librust_vendor_available",
+// 		crate_name: "rust_vendor",
+// 		vendor_available: true,
+// 		srcs: ["client.rs"],
+// 	}
 
-	rust_ffi_shared {
-		name: "libclient",
-		crate_name: "client",
-		vendor: true,
-		shared_libs: ["libvndk", "libvendor_available"],
-		static_libs: ["libvendor", "libvendor_without_snapshot"],
-		rustlibs: ["librust_vendor_available"],
-		arch: {
-			arm64: {
-				shared_libs: ["lib64"],
-			},
-			arm: {
-				shared_libs: ["lib32"],
-			},
-		},
-		srcs: ["client.rs"],
-	}
+// 	rust_ffi_shared {
+// 		name: "libclient",
+// 		crate_name: "client",
+// 		vendor: true,
+// 		shared_libs: ["libvndk", "libvendor_available"],
+// 		static_libs: ["libvendor", "libvendor_without_snapshot"],
+// 		rustlibs: ["librust_vendor_available"],
+// 		arch: {
+// 			arm64: {
+// 				shared_libs: ["lib64"],
+// 			},
+// 			arm: {
+// 				shared_libs: ["lib32"],
+// 			},
+// 		},
+// 		srcs: ["client.rs"],
+// 	}
 
-	rust_library_rlib {
-		name: "libclient_rust",
-		crate_name: "client_rust",
-		vendor: true,
-		shared_libs: ["libvndk", "libvendor_available"],
-		static_libs: ["libvendor", "libvendor_without_snapshot"],
-		rustlibs: ["librust_vendor_available"],
-		arch: {
-			arm64: {
-				shared_libs: ["lib64"],
-			},
-			arm: {
-				shared_libs: ["lib32"],
-			},
-		},
-		srcs: ["client.rs"],
-	}
+// 	rust_library_rlib {
+// 		name: "libclient_rust",
+// 		crate_name: "client_rust",
+// 		vendor: true,
+// 		shared_libs: ["libvndk", "libvendor_available"],
+// 		static_libs: ["libvendor", "libvendor_without_snapshot"],
+// 		rustlibs: ["librust_vendor_available"],
+// 		arch: {
+// 			arm64: {
+// 				shared_libs: ["lib64"],
+// 			},
+// 			arm: {
+// 				shared_libs: ["lib32"],
+// 			},
+// 		},
+// 		srcs: ["client.rs"],
+// 	}
 
-	rust_binary {
-		name: "bin_without_snapshot",
-		vendor: true,
-		static_libs: ["libvndk"],
-		srcs: ["bin.rs"],
-		rustlibs: ["librust_vendor_available"],
-	}
+// 	rust_binary {
+// 		name: "bin_without_snapshot",
+// 		vendor: true,
+// 		static_libs: ["libvndk"],
+// 		srcs: ["bin.rs"],
+// 		rustlibs: ["librust_vendor_available"],
+// 	}
 
-	vendor_snapshot {
-		name: "vendor_snapshot",
-		version: "30",
-		arch: {
-			arm64: {
-				vndk_libs: [
-					"libvndk",
-				],
-				static_libs: [
-					"libvendor",
-					"libvndk",
-					"libclang_rt.builtins-aarch64-android",
-				],
-				shared_libs: [
-					"libvendor_available",
-					"lib64",
-				],
-				rlibs: [
-					"libstd",
-					"librust_vendor_available",
-				],
-				binaries: [
-					"bin",
-				],
-                objects: [
-				    "crtend_so",
-					"crtbegin_so",
-					"crtbegin_dynamic",
-					"crtend_android"
-				],
-			},
-			arm: {
-				vndk_libs: [
-					"libvndk",
-				],
-				static_libs: [
-					"libvendor",
-					"libvndk",
-					"libclang_rt.builtins-arm-android",
-				],
-				shared_libs: [
-					"libvendor_available",
-					"lib32",
-				],
-				rlibs: [
-					"libstd",
-					"librust_vendor_available",
-				],
-				binaries: [
-					"bin32",
-				],
-                objects: [
-				    "crtend_so",
-					"crtbegin_so",
-					"crtbegin_dynamic",
-					"crtend_android"
-				],
+// 	vendor_snapshot {
+// 		name: "vendor_snapshot",
+// 		version: "30",
+// 		arch: {
+// 			arm64: {
+// 				vndk_libs: [
+// 					"libvndk",
+// 				],
+// 				static_libs: [
+// 					"libvendor",
+// 					"libvndk",
+// 					"libclang_rt.builtins-aarch64-android",
+// 				],
+// 				shared_libs: [
+// 					"libvendor_available",
+// 					"lib64",
+// 				],
+// 				rlibs: [
+// 					"libstd",
+// 					"librust_vendor_available",
+// 				],
+// 				binaries: [
+// 					"bin",
+// 				],
+//                 objects: [
+// 				    "crtend_so",
+// 					"crtbegin_so",
+// 					"crtbegin_dynamic",
+// 					"crtend_android"
+// 				],
+// 			},
+// 			arm: {
+// 				vndk_libs: [
+// 					"libvndk",
+// 				],
+// 				static_libs: [
+// 					"libvendor",
+// 					"libvndk",
+// 					"libclang_rt.builtins-arm-android",
+// 				],
+// 				shared_libs: [
+// 					"libvendor_available",
+// 					"lib32",
+// 				],
+// 				rlibs: [
+// 					"libstd",
+// 					"librust_vendor_available",
+// 				],
+// 				binaries: [
+// 					"bin32",
+// 				],
+//                 objects: [
+// 				    "crtend_so",
+// 					"crtbegin_so",
+// 					"crtbegin_dynamic",
+// 					"crtend_android"
+// 				],
 
-			},
-		}
-	}
+// 			},
+// 		}
+// 	}
 
-	vendor_snapshot_object {
-		name: "crtend_so",
-		version: "30",
-		target_arch: "arm64",
-		vendor: true,
-		stl: "none",
-		crt: true,
-		arch: {
-			arm64: {
-				src: "crtend_so.o",
-			},
-			arm: {
-				src: "crtend_so.o",
-			},
-		},
-	}
+// 	vendor_snapshot_object {
+// 		name: "crtend_so",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		vendor: true,
+// 		stl: "none",
+// 		crt: true,
+// 		arch: {
+// 			arm64: {
+// 				src: "crtend_so.o",
+// 			},
+// 			arm: {
+// 				src: "crtend_so.o",
+// 			},
+// 		},
+// 	}
 
-	vendor_snapshot_object {
-		name: "crtbegin_so",
-		version: "30",
-		target_arch: "arm64",
-		vendor: true,
-		stl: "none",
-		crt: true,
-		arch: {
-			arm64: {
-				src: "crtbegin_so.o",
-			},
-			arm: {
-				src: "crtbegin_so.o",
-			},
-		},
-	}
+// 	vendor_snapshot_object {
+// 		name: "crtbegin_so",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		vendor: true,
+// 		stl: "none",
+// 		crt: true,
+// 		arch: {
+// 			arm64: {
+// 				src: "crtbegin_so.o",
+// 			},
+// 			arm: {
+// 				src: "crtbegin_so.o",
+// 			},
+// 		},
+// 	}
 
-	vendor_snapshot_rlib {
-		name: "libstd",
-		version: "30",
-		target_arch: "arm64",
-		vendor: true,
-		sysroot: true,
-		arch: {
-			arm64: {
-				src: "libstd.rlib",
-			},
-			arm: {
-				src: "libstd.rlib",
-			},
-		},
-	}
+// 	vendor_snapshot_rlib {
+// 		name: "libstd",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		vendor: true,
+// 		sysroot: true,
+// 		arch: {
+// 			arm64: {
+// 				src: "libstd.rlib",
+// 			},
+// 			arm: {
+// 				src: "libstd.rlib",
+// 			},
+// 		},
+// 	}
 
-	vendor_snapshot_rlib {
-		name: "librust_vendor_available",
-		version: "30",
-		target_arch: "arm64",
-		vendor: true,
-		arch: {
-			arm64: {
-				src: "librust_vendor_available.rlib",
-			},
-			arm: {
-				src: "librust_vendor_available.rlib",
-			},
-		},
-	}
+// 	vendor_snapshot_rlib {
+// 		name: "librust_vendor_available",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		vendor: true,
+// 		arch: {
+// 			arm64: {
+// 				src: "librust_vendor_available.rlib",
+// 			},
+// 			arm: {
+// 				src: "librust_vendor_available.rlib",
+// 			},
+// 		},
+// 	}
 
-	vendor_snapshot_object {
-		name: "crtend_android",
-		version: "30",
-		target_arch: "arm64",
-		vendor: true,
-		stl: "none",
-		crt: true,
-		arch: {
-			arm64: {
-				src: "crtend_so.o",
-			},
-			arm: {
-				src: "crtend_so.o",
-			},
-		},
-	}
+// 	vendor_snapshot_object {
+// 		name: "crtend_android",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		vendor: true,
+// 		stl: "none",
+// 		crt: true,
+// 		arch: {
+// 			arm64: {
+// 				src: "crtend_so.o",
+// 			},
+// 			arm: {
+// 				src: "crtend_so.o",
+// 			},
+// 		},
+// 	}
 
-	vendor_snapshot_object {
-		name: "crtbegin_dynamic",
-		version: "30",
-		target_arch: "arm64",
-		vendor: true,
-		stl: "none",
-		crt: true,
-		arch: {
-			arm64: {
-				src: "crtbegin_so.o",
-			},
-			arm: {
-				src: "crtbegin_so.o",
-			},
-		},
-	}
+// 	vendor_snapshot_object {
+// 		name: "crtbegin_dynamic",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		vendor: true,
+// 		stl: "none",
+// 		crt: true,
+// 		arch: {
+// 			arm64: {
+// 				src: "crtbegin_so.o",
+// 			},
+// 			arm: {
+// 				src: "crtbegin_so.o",
+// 			},
+// 		},
+// 	}
 
-	vendor_snapshot_static {
-		name: "libvndk",
-		version: "30",
-		target_arch: "arm64",
-		compile_multilib: "both",
-		vendor: true,
-		arch: {
-			arm64: {
-				src: "libvndk.a",
-			},
-			arm: {
-				src: "libvndk.a",
-			},
-		},
-		shared_libs: ["libvndk"],
-		export_shared_lib_headers: ["libvndk"],
-	}
+// 	vendor_snapshot_static {
+// 		name: "libvndk",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		compile_multilib: "both",
+// 		vendor: true,
+// 		arch: {
+// 			arm64: {
+// 				src: "libvndk.a",
+// 			},
+// 			arm: {
+// 				src: "libvndk.a",
+// 			},
+// 		},
+// 		shared_libs: ["libvndk"],
+// 		export_shared_lib_headers: ["libvndk"],
+// 	}
 
-	vendor_snapshot_static {
-		name: "libclang_rt.builtins-aarch64-android",
-		version: "30",
-		target_arch: "arm64",
-		vendor: true,
-		arch: {
-			arm64: {
-				src: "libclang_rt.builtins-aarch64-android.a",
-			},
-		},
-    }
+// 	vendor_snapshot_static {
+// 		name: "libclang_rt.builtins-aarch64-android",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		vendor: true,
+// 		arch: {
+// 			arm64: {
+// 				src: "libclang_rt.builtins-aarch64-android.a",
+// 			},
+// 		},
+//     }
 
-    vendor_snapshot_static {
-		name: "libclang_rt.builtins-arm-android",
-		version: "30",
-		target_arch: "arm64",
-		vendor: true,
-		arch: {
-			arm: {
-				src: "libclang_rt.builtins-arm-android.a",
-			},
-		},
-    }
+//     vendor_snapshot_static {
+// 		name: "libclang_rt.builtins-arm-android",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		vendor: true,
+// 		arch: {
+// 			arm: {
+// 				src: "libclang_rt.builtins-arm-android.a",
+// 			},
+// 		},
+//     }
 
-	vendor_snapshot_shared {
-		name: "lib32",
-		version: "30",
-		target_arch: "arm64",
-		compile_multilib: "32",
-		vendor: true,
-		arch: {
-			arm: {
-				src: "lib32.so",
-			},
-		},
-	}
+// 	vendor_snapshot_shared {
+// 		name: "lib32",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		compile_multilib: "32",
+// 		vendor: true,
+// 		arch: {
+// 			arm: {
+// 				src: "lib32.so",
+// 			},
+// 		},
+// 	}
 
-	vendor_snapshot_shared {
-		name: "lib64",
-		version: "30",
-		target_arch: "arm64",
-		compile_multilib: "64",
-		vendor: true,
-		arch: {
-			arm64: {
-				src: "lib64.so",
-			},
-		},
-	}
-	vendor_snapshot_shared {
-		name: "liblog",
-		version: "30",
-		target_arch: "arm64",
-		compile_multilib: "64",
-		vendor: true,
-		arch: {
-			arm64: {
-				src: "liblog.so",
-			},
-		},
-	}
+// 	vendor_snapshot_shared {
+// 		name: "lib64",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		compile_multilib: "64",
+// 		vendor: true,
+// 		arch: {
+// 			arm64: {
+// 				src: "lib64.so",
+// 			},
+// 		},
+// 	}
+// 	vendor_snapshot_shared {
+// 		name: "liblog",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		compile_multilib: "64",
+// 		vendor: true,
+// 		arch: {
+// 			arm64: {
+// 				src: "liblog.so",
+// 			},
+// 		},
+// 	}
 
-	vendor_snapshot_static {
-		name: "libvendor",
-		version: "30",
-		target_arch: "arm64",
-		compile_multilib: "both",
-		vendor: true,
-		arch: {
-			arm64: {
-				src: "libvendor.a",
-				export_include_dirs: ["include/libvendor"],
-			},
-			arm: {
-				src: "libvendor.a",
-				export_include_dirs: ["include/libvendor"],
-			},
-		},
-	}
+// 	vendor_snapshot_static {
+// 		name: "libvendor",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		compile_multilib: "both",
+// 		vendor: true,
+// 		arch: {
+// 			arm64: {
+// 				src: "libvendor.a",
+// 				export_include_dirs: ["include/libvendor"],
+// 			},
+// 			arm: {
+// 				src: "libvendor.a",
+// 				export_include_dirs: ["include/libvendor"],
+// 			},
+// 		},
+// 	}
 
-	vendor_snapshot_shared {
-		name: "libvendor_available",
-		version: "30",
-		target_arch: "arm64",
-		compile_multilib: "both",
-		vendor: true,
-		arch: {
-			arm64: {
-				src: "libvendor_available.so",
-				export_include_dirs: ["include/libvendor"],
-			},
-			arm: {
-				src: "libvendor_available.so",
-				export_include_dirs: ["include/libvendor"],
-			},
-		},
-	}
+// 	vendor_snapshot_shared {
+// 		name: "libvendor_available",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		compile_multilib: "both",
+// 		vendor: true,
+// 		arch: {
+// 			arm64: {
+// 				src: "libvendor_available.so",
+// 				export_include_dirs: ["include/libvendor"],
+// 			},
+// 			arm: {
+// 				src: "libvendor_available.so",
+// 				export_include_dirs: ["include/libvendor"],
+// 			},
+// 		},
+// 	}
 
-	vendor_snapshot_binary {
-		name: "bin",
-		version: "30",
-		target_arch: "arm64",
-		compile_multilib: "64",
-		vendor: true,
-		arch: {
-			arm64: {
-				src: "bin",
-			},
-		},
-	}
+// 	vendor_snapshot_binary {
+// 		name: "bin",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		compile_multilib: "64",
+// 		vendor: true,
+// 		arch: {
+// 			arm64: {
+// 				src: "bin",
+// 			},
+// 		},
+// 	}
 
-	vendor_snapshot_binary {
-		name: "bin32",
-		version: "30",
-		target_arch: "arm64",
-		compile_multilib: "32",
-		vendor: true,
-		arch: {
-			arm: {
-				src: "bin32",
-			},
-		},
-	}
+// 	vendor_snapshot_binary {
+// 		name: "bin32",
+// 		version: "30",
+// 		target_arch: "arm64",
+// 		compile_multilib: "32",
+// 		vendor: true,
+// 		arch: {
+// 			arm: {
+// 				src: "bin32",
+// 			},
+// 		},
+// 	}
 
-	// old snapshot module which has to be ignored
-	vendor_snapshot_binary {
-		name: "bin",
-		version: "26",
-		target_arch: "arm64",
-		compile_multilib: "first",
-		vendor: true,
-		arch: {
-			arm64: {
-				src: "bin",
-			},
-		},
-	}
+// 	// old snapshot module which has to be ignored
+// 	vendor_snapshot_binary {
+// 		name: "bin",
+// 		version: "26",
+// 		target_arch: "arm64",
+// 		compile_multilib: "first",
+// 		vendor: true,
+// 		arch: {
+// 			arm64: {
+// 				src: "bin",
+// 			},
+// 		},
+// 	}
 
-	// different arch snapshot which has to be ignored
-	vendor_snapshot_binary {
-		name: "bin",
-		version: "30",
-		target_arch: "arm",
-		compile_multilib: "first",
-		vendor: true,
-		arch: {
-			arm64: {
-				src: "bin",
-			},
-		},
-	}
-`
+// 	// different arch snapshot which has to be ignored
+// 	vendor_snapshot_binary {
+// 		name: "bin",
+// 		version: "30",
+// 		target_arch: "arm",
+// 		compile_multilib: "first",
+// 		vendor: true,
+// 		arch: {
+// 			arm64: {
+// 				src: "bin",
+// 			},
+// 		},
+// 	}
+// `
 
-	mockFS := android.MockFS{
-		"framework/Android.bp":                          []byte(frameworkBp),
-		"framework/bin.rs":                              nil,
-		"vendor/Android.bp":                             []byte(vendorProprietaryBp),
-		"vendor/bin":                                    nil,
-		"vendor/bin32":                                  nil,
-		"vendor/bin.rs":                                 nil,
-		"vendor/client.rs":                              nil,
-		"vendor/include/libvndk/a.h":                    nil,
-		"vendor/include/libvendor/b.h":                  nil,
-		"vendor/libvndk.a":                              nil,
-		"vendor/libvendor.a":                            nil,
-		"vendor/libvendor.so":                           nil,
-		"vendor/lib32.so":                               nil,
-		"vendor/lib64.so":                               nil,
-		"vendor/liblog.so":                              nil,
-		"vendor/libstd.rlib":                            nil,
-		"vendor/librust_vendor_available.rlib":          nil,
-		"vendor/crtbegin_so.o":                          nil,
-		"vendor/crtend_so.o":                            nil,
-		"vendor/libclang_rt.builtins-aarch64-android.a": nil,
-		"vendor/libclang_rt.builtins-arm-android.a":     nil,
-		"vndk/Android.bp":                               []byte(vndkBp),
-		"vndk/include/libvndk/a.h":                      nil,
-		"vndk/libvndk.so":                               nil,
-	}
+// 	mockFS := android.MockFS{
+// 		"framework/Android.bp":                          []byte(frameworkBp),
+// 		"framework/bin.rs":                              nil,
+// 		"vendor/Android.bp":                             []byte(vendorProprietaryBp),
+// 		"vendor/bin":                                    nil,
+// 		"vendor/bin32":                                  nil,
+// 		"vendor/bin.rs":                                 nil,
+// 		"vendor/client.rs":                              nil,
+// 		"vendor/include/libvndk/a.h":                    nil,
+// 		"vendor/include/libvendor/b.h":                  nil,
+// 		"vendor/libvndk.a":                              nil,
+// 		"vendor/libvendor.a":                            nil,
+// 		"vendor/libvendor.so":                           nil,
+// 		"vendor/lib32.so":                               nil,
+// 		"vendor/lib64.so":                               nil,
+// 		"vendor/liblog.so":                              nil,
+// 		"vendor/libstd.rlib":                            nil,
+// 		"vendor/librust_vendor_available.rlib":          nil,
+// 		"vendor/crtbegin_so.o":                          nil,
+// 		"vendor/crtend_so.o":                            nil,
+// 		"vendor/libclang_rt.builtins-aarch64-android.a": nil,
+// 		"vendor/libclang_rt.builtins-arm-android.a":     nil,
+// 		"vndk/Android.bp":                               []byte(vndkBp),
+// 		"vndk/include/libvndk/a.h":                      nil,
+// 		"vndk/libvndk.so":                               nil,
+// 	}
 
-	sharedVariant := "android_vendor.30_arm64_armv8-a_shared"
-	rlibVariant := "android_vendor.30_arm64_armv8-a_rlib_rlib-std"
-	staticVariant := "android_vendor.30_arm64_armv8-a_static"
-	binaryVariant := "android_vendor.30_arm64_armv8-a"
+// 	sharedVariant := "android_vendor.30_arm64_armv8-a_shared"
+// 	rlibVariant := "android_vendor.30_arm64_armv8-a_rlib_rlib-std"
+// 	staticVariant := "android_vendor.30_arm64_armv8-a_static"
+// 	binaryVariant := "android_vendor.30_arm64_armv8-a"
 
-	shared32Variant := "android_vendor.30_arm_armv7-a-neon_shared"
-	binary32Variant := "android_vendor.30_arm_armv7-a-neon"
+// 	shared32Variant := "android_vendor.30_arm_armv7-a-neon_shared"
+// 	binary32Variant := "android_vendor.30_arm_armv7-a-neon"
 
-	ctx := testRustVndkFsVersions(t, "", mockFS, "30", "current", "31")
+// 	ctx := testRustVndkFsVersions(t, "", mockFS, "30", "current", "31")
 
-	// libclient uses libvndk.vndk.30.arm64, libvendor.vendor_static.30.arm64, libvendor_without_snapshot
-	libclientLdFlags := ctx.ModuleForTests("libclient", sharedVariant).Rule("rustc").Args["linkFlags"]
-	for _, input := range [][]string{
-		[]string{sharedVariant, "libvndk.vndk.30.arm64"},
-		[]string{staticVariant, "libvendor.vendor_static.30.arm64"},
-		[]string{staticVariant, "libvendor_without_snapshot"},
-	} {
-		outputPaths := cc.GetOutputPaths(ctx, input[0] /* variant */, []string{input[1]} /* module name */)
-		if !strings.Contains(libclientLdFlags, outputPaths[0].String()) {
-			t.Errorf("libflags for libclient must contain %#v, but was %#v", outputPaths[0], libclientLdFlags)
-		}
-	}
+// 	// libclient uses libvndk.vndk.30.arm64, libvendor.vendor_static.30.arm64, libvendor_without_snapshot
+// 	libclientLdFlags := ctx.ModuleForTests("libclient", sharedVariant).Rule("rustc").Args["linkFlags"]
+// 	for _, input := range [][]string{
+// 		[]string{sharedVariant, "libvndk.vndk.30.arm64"},
+// 		[]string{staticVariant, "libvendor.vendor_static.30.arm64"},
+// 		[]string{staticVariant, "libvendor_without_snapshot"},
+// 	} {
+// 		outputPaths := cc.GetOutputPaths(ctx, input[0] /* variant */, []string{input[1]} /* module name */)
+// 		if !strings.Contains(libclientLdFlags, outputPaths[0].String()) {
+// 			t.Errorf("libflags for libclient must contain %#v, but was %#v", outputPaths[0], libclientLdFlags)
+// 		}
+// 	}
 
-	libclientAndroidMkSharedLibs := ctx.ModuleForTests("libclient", sharedVariant).Module().(*Module).Properties.AndroidMkSharedLibs
-	if g, w := libclientAndroidMkSharedLibs, []string{"libvndk.vendor", "libvendor_available.vendor", "lib64", "liblog.vendor", "libc.vendor", "libm.vendor", "libdl.vendor"}; !reflect.DeepEqual(g, w) {
-		t.Errorf("wanted libclient AndroidMkSharedLibs %q, got %q", w, g)
-	}
+// 	libclientAndroidMkSharedLibs := ctx.ModuleForTests("libclient", sharedVariant).Module().(*Module).Properties.AndroidMkSharedLibs
+// 	if g, w := libclientAndroidMkSharedLibs, []string{"libvndk.vendor", "libvendor_available.vendor", "lib64", "liblog.vendor", "libc.vendor", "libm.vendor", "libdl.vendor"}; !reflect.DeepEqual(g, w) {
+// 		t.Errorf("wanted libclient AndroidMkSharedLibs %q, got %q", w, g)
+// 	}
 
-	libclientAndroidMkStaticLibs := ctx.ModuleForTests("libclient", sharedVariant).Module().(*Module).Properties.AndroidMkStaticLibs
-	if g, w := libclientAndroidMkStaticLibs, []string{"libvendor", "libvendor_without_snapshot", "libclang_rt.builtins-aarch64-android.vendor"}; !reflect.DeepEqual(g, w) {
-		t.Errorf("wanted libclient AndroidMkStaticLibs %q, got %q", w, g)
-	}
+// 	libclientAndroidMkStaticLibs := ctx.ModuleForTests("libclient", sharedVariant).Module().(*Module).Properties.AndroidMkStaticLibs
+// 	if g, w := libclientAndroidMkStaticLibs, []string{"libvendor", "libvendor_without_snapshot", "libclang_rt.builtins-aarch64-android.vendor"}; !reflect.DeepEqual(g, w) {
+// 		t.Errorf("wanted libclient AndroidMkStaticLibs %q, got %q", w, g)
+// 	}
 
-	libclientAndroidMkRlibs := ctx.ModuleForTests("libclient", sharedVariant).Module().(*Module).Properties.AndroidMkRlibs
-	if g, w := libclientAndroidMkRlibs, []string{"librust_vendor_available.vendor_rlib.30.arm64.rlib-std", "libstd.vendor_rlib.30.arm64"}; !reflect.DeepEqual(g, w) {
-		t.Errorf("wanted libclient libclientAndroidMkRlibs %q, got %q", w, g)
-	}
+// 	libclientAndroidMkRlibs := ctx.ModuleForTests("libclient", sharedVariant).Module().(*Module).Properties.AndroidMkRlibs
+// 	if g, w := libclientAndroidMkRlibs, []string{"librust_vendor_available.vendor_rlib.30.arm64.rlib-std", "libstd.vendor_rlib.30.arm64"}; !reflect.DeepEqual(g, w) {
+// 		t.Errorf("wanted libclient libclientAndroidMkRlibs %q, got %q", w, g)
+// 	}
 
-	libclientAndroidMkDylibs := ctx.ModuleForTests("libclient", sharedVariant).Module().(*Module).Properties.AndroidMkDylibs
-	if len(libclientAndroidMkDylibs) > 0 {
-		t.Errorf("wanted libclient libclientAndroidMkDylibs [], got %q", libclientAndroidMkDylibs)
-	}
+// 	libclientAndroidMkDylibs := ctx.ModuleForTests("libclient", sharedVariant).Module().(*Module).Properties.AndroidMkDylibs
+// 	if len(libclientAndroidMkDylibs) > 0 {
+// 		t.Errorf("wanted libclient libclientAndroidMkDylibs [], got %q", libclientAndroidMkDylibs)
+// 	}
 
-	libclient32AndroidMkSharedLibs := ctx.ModuleForTests("libclient", shared32Variant).Module().(*Module).Properties.AndroidMkSharedLibs
-	if g, w := libclient32AndroidMkSharedLibs, []string{"libvndk.vendor", "libvendor_available.vendor", "lib32", "liblog.vendor", "libc.vendor", "libm.vendor", "libdl.vendor"}; !reflect.DeepEqual(g, w) {
-		t.Errorf("wanted libclient32 AndroidMkSharedLibs %q, got %q", w, g)
-	}
+// 	libclient32AndroidMkSharedLibs := ctx.ModuleForTests("libclient", shared32Variant).Module().(*Module).Properties.AndroidMkSharedLibs
+// 	if g, w := libclient32AndroidMkSharedLibs, []string{"libvndk.vendor", "libvendor_available.vendor", "lib32", "liblog.vendor", "libc.vendor", "libm.vendor", "libdl.vendor"}; !reflect.DeepEqual(g, w) {
+// 		t.Errorf("wanted libclient32 AndroidMkSharedLibs %q, got %q", w, g)
+// 	}
 
-	libclientRustAndroidMkRlibs := ctx.ModuleForTests("libclient_rust", rlibVariant).Module().(*Module).Properties.AndroidMkRlibs
-	if g, w := libclientRustAndroidMkRlibs, []string{"librust_vendor_available.vendor_rlib.30.arm64.rlib-std", "libstd.vendor_rlib.30.arm64"}; !reflect.DeepEqual(g, w) {
-		t.Errorf("wanted libclient libclientAndroidMkRlibs %q, got %q", w, g)
-	}
+// 	libclientRustAndroidMkRlibs := ctx.ModuleForTests("libclient_rust", rlibVariant).Module().(*Module).Properties.AndroidMkRlibs
+// 	if g, w := libclientRustAndroidMkRlibs, []string{"librust_vendor_available.vendor_rlib.30.arm64.rlib-std", "libstd.vendor_rlib.30.arm64"}; !reflect.DeepEqual(g, w) {
+// 		t.Errorf("wanted libclient libclientAndroidMkRlibs %q, got %q", w, g)
+// 	}
 
-	binWithoutSnapshotLdFlags := ctx.ModuleForTests("bin_without_snapshot", binaryVariant).Rule("rustc").Args["linkFlags"]
-	libVndkStaticOutputPaths := cc.GetOutputPaths(ctx, staticVariant, []string{"libvndk.vendor_static.30.arm64"})
-	if !strings.Contains(binWithoutSnapshotLdFlags, libVndkStaticOutputPaths[0].String()) {
-		t.Errorf("libflags for bin_without_snapshot must contain %#v, but was %#v",
-			libVndkStaticOutputPaths[0], binWithoutSnapshotLdFlags)
-	}
+// 	binWithoutSnapshotLdFlags := ctx.ModuleForTests("bin_without_snapshot", binaryVariant).Rule("rustc").Args["linkFlags"]
+// 	libVndkStaticOutputPaths := cc.GetOutputPaths(ctx, staticVariant, []string{"libvndk.vendor_static.30.arm64"})
+// 	if !strings.Contains(binWithoutSnapshotLdFlags, libVndkStaticOutputPaths[0].String()) {
+// 		t.Errorf("libflags for bin_without_snapshot must contain %#v, but was %#v",
+// 			libVndkStaticOutputPaths[0], binWithoutSnapshotLdFlags)
+// 	}
 
-	// bin is installed by bin.vendor_binary.30.arm64
-	ctx.ModuleForTests("bin.vendor_binary.30.arm64", binaryVariant).Output("bin")
+// 	// bin is installed by bin.vendor_binary.30.arm64
+// 	ctx.ModuleForTests("bin.vendor_binary.30.arm64", binaryVariant).Output("bin")
 
-	// bin32 is installed by bin32.vendor_binary.30.arm64
-	ctx.ModuleForTests("bin32.vendor_binary.30.arm64", binary32Variant).Output("bin32")
+// 	// bin32 is installed by bin32.vendor_binary.30.arm64
+// 	ctx.ModuleForTests("bin32.vendor_binary.30.arm64", binary32Variant).Output("bin32")
 
-	// bin_without_snapshot is installed by bin_without_snapshot
-	ctx.ModuleForTests("bin_without_snapshot", binaryVariant).Output("bin_without_snapshot")
+// 	// bin_without_snapshot is installed by bin_without_snapshot
+// 	ctx.ModuleForTests("bin_without_snapshot", binaryVariant).Output("bin_without_snapshot")
 
-	// libvendor, libvendor_available and bin don't have vendor.30 variant
-	libvendorVariants := ctx.ModuleVariantsForTests("libvendor")
-	if android.InList(sharedVariant, libvendorVariants) {
-		t.Errorf("libvendor must not have variant %#v, but it does", sharedVariant)
-	}
+// 	// libvendor, libvendor_available and bin don't have vendor.30 variant
+// 	libvendorVariants := ctx.ModuleVariantsForTests("libvendor")
+// 	if android.InList(sharedVariant, libvendorVariants) {
+// 		t.Errorf("libvendor must not have variant %#v, but it does", sharedVariant)
+// 	}
 
-	libvendorAvailableVariants := ctx.ModuleVariantsForTests("libvendor_available")
-	if android.InList(sharedVariant, libvendorAvailableVariants) {
-		t.Errorf("libvendor_available must not have variant %#v, but it does", sharedVariant)
-	}
+// 	libvendorAvailableVariants := ctx.ModuleVariantsForTests("libvendor_available")
+// 	if android.InList(sharedVariant, libvendorAvailableVariants) {
+// 		t.Errorf("libvendor_available must not have variant %#v, but it does", sharedVariant)
+// 	}
 
-	binVariants := ctx.ModuleVariantsForTests("bin")
-	if android.InList(binaryVariant, binVariants) {
-		t.Errorf("bin must not have variant %#v, but it does", sharedVariant)
-	}
-}
+// 	binVariants := ctx.ModuleVariantsForTests("bin")
+// 	if android.InList(binaryVariant, binVariants) {
+// 		t.Errorf("bin must not have variant %#v, but it does", sharedVariant)
+// 	}
+// }
+//
