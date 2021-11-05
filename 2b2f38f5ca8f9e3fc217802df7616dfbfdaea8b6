@@ -207,6 +207,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d220fda_28299933",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1462,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-05T17:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "500f836b_7c20b7f0",
+      "range": {
+        "startLine": 1459,
+        "startChar": 0,
+        "endLine": 1462,
+        "endChar": 2
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33956ae6_78767699",
@@ -244,6 +268,30 @@
       "side": 1,
       "message": "I see. Will update. Thanks!",
       "parentUuid": "33956ae6_78767699",
+      "range": {
+        "startLine": 1464,
+        "startChar": 1,
+        "endLine": 1464,
+        "endChar": 17
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "426aa7e3_02a5bb77",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-05T17:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8a04b14_ed0d1cd6",
       "range": {
         "startLine": 1464,
         "startChar": 1,
@@ -301,6 +349,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71d3a03f_80a68320",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-05T17:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b30683d4_72703f8d",
+      "range": {
+        "startLine": 1465,
+        "startChar": 6,
+        "endLine": 1465,
+        "endChar": 34
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19ac10b8_d8f3931e",
@@ -348,6 +420,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e709c6b2_890e4792",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-05T17:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea6d0cca_c288df20",
+      "range": {
+        "startLine": 1466,
+        "startChar": 51,
+        "endLine": 1466,
+        "endChar": 57
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5333a2cd_fae5bf82",
@@ -385,6 +481,30 @@
       "side": 1,
       "message": "Will update.",
       "parentUuid": "5333a2cd_fae5bf82",
+      "range": {
+        "startLine": 1471,
+        "startChar": 1,
+        "endLine": 1471,
+        "endChar": 23
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2422856_2e5054b6",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-05T17:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "658ad966_c4b6da9b",
       "range": {
         "startLine": 1471,
         "startChar": 1,
@@ -489,6 +609,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "760201bb_51fc6e73",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-05T17:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d6df73b_8a2bdfa8",
+      "range": {
+        "startLine": 1472,
+        "startChar": 1,
+        "endLine": 1474,
+        "endChar": 10
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1b10024_665eafd6",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-05T17:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac6dac0_aa5b7b82",
+      "range": {
+        "startLine": 1474,
+        "startChar": 1,
+        "endLine": 1474,
+        "endChar": 4
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e01fd1e_fc1c14be",
@@ -526,6 +694,30 @@
       "side": 1,
       "message": "Sure.",
       "parentUuid": "8e01fd1e_fc1c14be",
+      "range": {
+        "startLine": 1475,
+        "startChar": 1,
+        "endLine": 1475,
+        "endChar": 59
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dec73b7e_6f4f8415",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-05T17:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44e20c56_d8aa6528",
       "range": {
         "startLine": 1475,
         "startChar": 1,
