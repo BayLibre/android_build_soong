@@ -140,6 +140,24 @@
       "parentUuid": "c3feaf66_f562cd03",
       "revId": "07e460a7a0dbbd6d0051ddcf68f7d9b150a4fff8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eed6b646_36c7ddc2",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-05T18:21:48Z",
+      "side": 1,
+      "message": "Doesn\u0027t this cl already print conversion errors to stderr? I don\u0027t understand what you\u0027re trying to say.",
+      "parentUuid": "4eb5bb5a_aebf0c0e",
+      "revId": "07e460a7a0dbbd6d0051ddcf68f7d9b150a4fff8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
