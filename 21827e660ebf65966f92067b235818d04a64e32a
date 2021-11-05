@@ -16,6 +16,29 @@
       "message": "I think now all that\u0027s left is actually making the embedded launcher load the library\n_libfdt.so is now installed properly in the zipped library with no deps ( just had to remove stl )",
       "revId": "21827e660ebf65966f92067b235818d04a64e32a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe3062f5_a76128e6",
+        "filename": "python/python.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-05T02:05:43Z",
+      "side": 1,
+      "message": "This is called \"data_libs\" for other module types",
+      "range": {
+        "startLine": 98,
+        "startChar": 1,
+        "endLine": 98,
+        "endChar": 8
+      },
+      "revId": "21827e660ebf65966f92067b235818d04a64e32a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
