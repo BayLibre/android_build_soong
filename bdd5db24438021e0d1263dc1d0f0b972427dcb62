@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0440a37f_1f744f3e",
+        "filename": "java/androidmk.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-05T14:19:23Z",
+      "side": 1,
+      "message": "this change seems unrelated?",
+      "range": {
+        "startLine": 295,
+        "startChar": 5,
+        "endLine": 295,
+        "endChar": 47
+      },
+      "revId": "bdd5db24438021e0d1263dc1d0f0b972427dcb62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
