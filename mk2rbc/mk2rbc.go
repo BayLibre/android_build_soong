@@ -1170,7 +1170,7 @@ func (ctx *parseContext) parseCheckFunctionCallResult(directive *mkparser.Direct
 			return &inExpr{
 				expr:  &variableRefExpr{ctx.addVariable("TARGET_BOARD_PLATFORM"), false},
 				list:  &variableRefExpr{ctx.addVariable("QCOM_BOARD_PLATFORMS"), true},
-				isNot: negate,
+				isNot: !negate,
 			}, true
 		default:
 			return ctx.newBadExpr(directive, "Unknown function in ifeq: %s", x.name), true
