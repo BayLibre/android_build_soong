@@ -16,6 +16,46 @@
       "message": "Colin, could you please take a look of the new change again?\nThis has been rebased to include other changes and also\nwith a specialMutatorNames map. Thanks.\n",
       "revId": "e44263ae811f1ccda8b9147ae4c89fb88968deee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6b208c1_db7b6666",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1265,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-05T01:50:10Z",
+      "side": 1,
+      "message": "This is still using string matching instead of the structured data from the module.",
+      "revId": "e44263ae811f1ccda8b9147ae4c89fb88968deee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7776ae5_96cf5104",
+        "filename": "android/module.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1777,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-05T01:50:10Z",
+      "side": 1,
+      "message": "This is intended for debug usage only",
+      "range": {
+        "startLine": 1777,
+        "startChar": 38,
+        "endLine": 1777,
+        "endChar": 51
+      },
+      "revId": "e44263ae811f1ccda8b9147ae4c89fb88968deee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
