@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04dc747c_c69ef4a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2021-11-06T18:06:29Z",
+      "side": 1,
+      "message": "bypassing presubmit because there is a race-condition on goog manifest which reference aosp.",
+      "revId": "5dd07e514e49be0b426fbe42320a486b6bbb99a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
