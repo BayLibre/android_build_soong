@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e596e77_5ccc4eed",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1486,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-06T00:39:22Z",
+      "side": 1,
+      "message": "Updated to return a bool.",
+      "parentUuid": "3d7b886b_adc088ff",
+      "range": {
+        "startLine": 1486,
+        "startChar": 3,
+        "endLine": 1486,
+        "endChar": 18
+      },
+      "revId": "ec6624e22fb45d9056a54c03403c039648f0329c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf9190fb_e398290b",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fa5d6c1_b92662ef",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1630,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-06T00:39:22Z",
+      "side": 1,
+      "message": "updated the function name as suggested.",
+      "parentUuid": "bf9190fb_e398290b",
+      "range": {
+        "startLine": 1630,
+        "startChar": 5,
+        "endLine": 1630,
+        "endChar": 20
+      },
+      "revId": "ec6624e22fb45d9056a54c03403c039648f0329c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3627305c_8890871d",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-11-05T15:25:41Z",
       "side": 1,
       "message": "Can we add a test for this? it looks to be independent of the existence of bp/mk files",
+      "range": {
+        "startLine": 1703,
+        "startChar": 5,
+        "endLine": 1703,
+        "endChar": 20
+      },
+      "revId": "ec6624e22fb45d9056a54c03403c039648f0329c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0e8fb03_cd0c1710",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1703,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-06T00:39:22Z",
+      "side": 1,
+      "message": "Okay, I will work on this soon.",
+      "parentUuid": "3627305c_8890871d",
       "range": {
         "startLine": 1703,
         "startChar": 5,

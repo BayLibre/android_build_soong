@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6442e0a_5ff9a1d4",
+        "filename": "androidmk/androidmk/androidmk_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-06T00:39:22Z",
+      "side": 1,
+      "message": "Thanks for providing these links, I will read them soon.\n\u003e \n\u003e Rather than using os.stat directly, can use the Blueprint\u0027s fs.Stat which will allow for easier mocking.\n\u003e \nis this function https://cs.android.com/android/platform/superproject/+/master:build/blueprint/pathtools/fs.go;l\u003d428 that you mentioned above?",
+      "parentUuid": "fb8cebf3_9f0ee5d0",
+      "range": {
+        "startLine": 1540,
+        "startChar": 2,
+        "endLine": 1542,
+        "endChar": 55
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37027b0c_cc854d40",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 7
