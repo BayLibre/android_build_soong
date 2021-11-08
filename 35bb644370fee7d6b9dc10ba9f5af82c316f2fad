@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4aeb2ae_0351fab9",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-08T23:12:25Z",
+      "side": 1,
+      "message": "Done. Also updated line 685 to be consistent with this new comment.",
+      "parentUuid": "c84b527e_96f0c5d0",
+      "revId": "35bb644370fee7d6b9dc10ba9f5af82c316f2fad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "278f490a_83764fc7",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-08T23:00:16Z",
       "side": 1,
       "message": "Optional: you might want to divine namespace and variable names, the same way as it is being done for the assignment on line 650.",
+      "revId": "35bb644370fee7d6b9dc10ba9f5af82c316f2fad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ac03af9_49844a5f",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-08T23:12:25Z",
+      "side": 1,
+      "message": "I did attempt this, but was running into issues where the namespaces were unknown and thus couldn\u0027t be parsed. So I decided I would just do this part for now.",
+      "parentUuid": "278f490a_83764fc7",
       "revId": "35bb644370fee7d6b9dc10ba9f5af82c316f2fad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
