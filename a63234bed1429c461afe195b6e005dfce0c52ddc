@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ef5912b_d3ac1212",
+        "filename": "android/variable.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-08T12:44:58Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be \"safestack\", or alternatively the FullConfig in line 512 be \"foo\"?",
+      "range": {
+        "startLine": 507,
+        "startChar": 8,
+        "endLine": 507,
+        "endChar": 12
+      },
+      "revId": "a63234bed1429c461afe195b6e005dfce0c52ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93f43d7a_f2477ad4",
+        "filename": "android/variable.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-08T12:44:58Z",
+      "side": 1,
+      "message": "nit: shouldn\u0027t this be enclosed in a \"soong_config_variables {}\" structure just like the previous one is enclosed in a \"product_variables {}\" one? (also below)",
+      "range": {
+        "startLine": 532,
+        "startChar": 4,
+        "endLine": 532,
+        "endChar": 13
+      },
+      "revId": "a63234bed1429c461afe195b6e005dfce0c52ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98316541_5867fa34",
+        "filename": "android/variable.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-08T12:44:58Z",
+      "side": 1,
+      "message": "nit: don\u0027t use tabs (or do, but then be consistent with e.g. line 520)",
+      "range": {
+        "startLine": 534,
+        "startChar": 4,
+        "endLine": 534,
+        "endChar": 5
+      },
+      "revId": "a63234bed1429c461afe195b6e005dfce0c52ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bdfe204_ee2f175e",
+        "filename": "android/variable.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-08T12:44:58Z",
+      "side": 1,
+      "message": "Is this superfluous here? My understanding is that \n\nfeature1: {\n  conditions_default: { cflags: [\"-DA\"] }\n  cflags: [\"-DB\"]  \n}\n\ndoesn\u0027t make sense, does it?",
+      "range": {
+        "startLine": 536,
+        "startChar": 6,
+        "endLine": 536,
+        "endChar": 29
+      },
+      "revId": "a63234bed1429c461afe195b6e005dfce0c52ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef0666da_9614e460",
+        "filename": "android/variable.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-08T12:44:58Z",
+      "side": 1,
+      "message": "nit: this is inconsistent with line 646 (if I understand correctly that this comment refers to that function :) )",
+      "range": {
+        "startLine": 643,
+        "startChar": 3,
+        "endLine": 643,
+        "endChar": 30
+      },
+      "revId": "a63234bed1429c461afe195b6e005dfce0c52ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cc4b2e5_4800abbb",
+        "filename": "android/variable.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-08T12:44:58Z",
+      "side": 1,
+      "message": "nit: do not use tabs",
+      "range": {
+        "startLine": 702,
+        "startChar": 11,
+        "endLine": 702,
+        "endChar": 12
+      },
+      "revId": "a63234bed1429c461afe195b6e005dfce0c52ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a056a660_6dc2da45",
+        "filename": "android/variable.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-08T12:44:58Z",
+      "side": 1,
+      "message": "nit: do not use tabs",
+      "range": {
+        "startLine": 709,
+        "startChar": 11,
+        "endLine": 709,
+        "endChar": 12
+      },
+      "revId": "a63234bed1429c461afe195b6e005dfce0c52ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
