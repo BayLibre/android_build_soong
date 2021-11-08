@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017008234",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1878091?revision\u003d26",
+      "fixSuggestions": [
+        {
+          "fixId": "a05f2e4d_afb9ccb2",
+          "description": "Change to \"bazel/configurability.go\"",
+          "replacements": [
+            {
+              "path": "bazel/configurability.go",
+              "range": {
+                "startLine": 174,
+                "startChar": 5,
+                "endLine": 174,
+                "endChar": 10
+              },
+              "replacement": " e.g. "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "8fe150bc_dc3de40e",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-08T13:34:35Z",
+      "side": 1,
+      "message": "Common typo found: \" e.g \" -- should it be \" e.g. \"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 174,
+        "startChar": 5,
+        "endLine": 174,
+        "endChar": 10
+      },
+      "revId": "547cd0f88ba431a9fa0fa2a029a57c4d6e4c3be0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
