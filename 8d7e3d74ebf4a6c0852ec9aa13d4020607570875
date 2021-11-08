@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "475af4ce_8cc6d641",
+        "filename": "android/bazel.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf410abf_a5c9fe42",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 42
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5289d5b4_e2095f5e",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-11-03T12:39:22Z",
       "side": 1,
       "message": "nit: if you omit the pointer, you can re-use it for BazelModuleBase.namespacedVariableProperties. And it\u0027s confusing to \"hide\" a reference behind a type name anyway, isn\u0027t it?",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 33
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ee86915_c2528b82",
+        "filename": "android/bazel.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5289d5b4_e2095f5e",
       "range": {
         "startLine": 78,
         "startChar": 5,
@@ -151,6 +199,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d616493_8ad91490",
+        "filename": "android/register.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a585746_e09e52b0",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 36
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4038ea89_42d43ce4",
@@ -164,6 +236,30 @@
       "writtenOn": "2021-11-03T12:39:22Z",
       "side": 1,
       "message": "Is this necessary to mutate ctx.Config() here?\n\nI\u0027m hoping that since the module created from the newly created module type is a Bazelable and it\u0027s created from the function returned by bp2buidConfigModuleFactory(), you can hard-wire the \"convert me\" bit there to true and redirect to checking bp2buildModuleTypeConfig() for regular modules.\n\nOr maybe one can even get away without bp2buildModuleTypeConfig entirely and rely on downcasting the module type to Bazelable?",
+      "range": {
+        "startLine": 398,
+        "startChar": 5,
+        "endLine": 398,
+        "endChar": 55
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40bec374_14226e52",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Nice catch, there\u0027s no need to mutate it here. I\u0027m using the BaseModuleType as the \"convert me\" bit.",
+      "parentUuid": "4038ea89_42d43ce4",
       "range": {
         "startLine": 398,
         "startChar": 5,
@@ -197,6 +293,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a356e974_32e267d9",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a04eed3_d3a6d28f",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 2
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfa0d9d6_ec1ce7ec",
@@ -210,6 +330,30 @@
       "writtenOn": "2021-11-03T12:39:22Z",
       "side": 1,
       "message": "This function shared quite a bit of code with soongConfigModuleFactory(), Given that this is quite arcane, mind trying to share some code between them so that one doesn\u0027t accidentally modify one and forget the other?",
+      "range": {
+        "startLine": 425,
+        "startChar": 5,
+        "endLine": 425,
+        "endChar": 32
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9c567fd_910ada49",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "I actually split this up with Rupert\u0027s review, but sure, reverted it back with more comments to make the logic a bit less arcane and more descriptive.",
+      "parentUuid": "dfa0d9d6_ec1ce7ec",
       "range": {
         "startLine": 425,
         "startChar": 5,
@@ -243,6 +387,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c676e7_c4868e26",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Correct!",
+      "parentUuid": "859ea8c8_d529a2a5",
+      "range": {
+        "startLine": 426,
+        "startChar": 1,
+        "endLine": 426,
+        "endChar": 24
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95f5b799_bd127864",
@@ -266,6 +434,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70da11c5_15d90438",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "I was originally thinking of defaults, e.g. \n\ncc_binary -\u003e custom_cc_defaults_foo -\u003e custom_cc_defaults_bar, and custom_cc_defaults_foo and custom_cc_defaults_bar both have soong_config_variables under the same namespace.\n\n...but, we shouldn\u0027t be keeping both s_c_v structs in the list, but instead merge them like they\u0027re done for non-s_c_v props today. Will remove the list.",
+      "parentUuid": "95f5b799_bd127864",
+      "range": {
+        "startLine": 440,
+        "startChar": 4,
+        "endLine": 440,
+        "endChar": 32
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70943923_1f17eeed",
@@ -279,6 +471,30 @@
       "writtenOn": "2021-11-03T10:56:13Z",
       "side": 1,
       "message": "This comment doesn\u0027t make really sense - it can\u0027t take an existing soongConfigModuleFactory the first time it is called, because none exist yet, and it isn\u0027t really obvious that all subsequent calls take a soongConfigModuleFactory as the ModuleFactory\n\nShould all the soongConfigModuleFactory references be replaced with ModuleFactory... ?",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 451,
+        "endChar": 13
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7200c8_ddd90dd2",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70943923_1f17eeed",
       "range": {
         "startLine": 449,
         "startChar": 0,
@@ -336,6 +552,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f56c0033_a470b063",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "I added documentation, PTAL.",
+      "parentUuid": "d197cdfe_1d687c13",
+      "range": {
+        "startLine": 494,
+        "startChar": 1,
+        "endLine": 494,
+        "endChar": 11
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "664623c8_961fac5d",
@@ -383,6 +623,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed48aada_c196b637",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Think of FullConfig as the \"primary key\" of a product variable prop value -- ProductConfigVariable is not sufficient as a key, since the variable can have archvariants or string values in the case of soong config vars.\n\nI hope the documentation on the field makes sense.",
+      "parentUuid": "ca069d18_1403f59d",
+      "range": {
+        "startLine": 509,
+        "startChar": 3,
+        "endLine": 509,
+        "endChar": 13
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30a17192_763aac8b",
@@ -396,6 +660,30 @@
       "writtenOn": "2021-11-05T13:46:42Z",
       "side": 1,
       "message": "Awesome! I like the reuse of this code.\n\nWith its reuse we should make sure we don\u0027t only focus on property names explicitly listed for product variables, but that doesn\u0027t need to happen in this CL.",
+      "range": {
+        "startLine": 514,
+        "startChar": 5,
+        "endLine": 514,
+        "endChar": 30
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5abc7e4f_b1c3e90c",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "30a17192_763aac8b",
       "range": {
         "startLine": 514,
         "startChar": 5,
@@ -455,6 +743,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bb046584_b3f647eb",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Yep.",
+      "parentUuid": "cf31263c_80bf2ae6",
+      "range": {
+        "startLine": 521,
+        "startChar": 62,
+        "endLine": 521,
+        "endChar": 79
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0764dd67_666639c5",
         "filename": "android/variable.go",
         "patchSetId": 18
@@ -499,6 +811,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65366546_62ddecac",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51f97087_2ebfac22",
+      "range": {
+        "startLine": 592,
+        "startChar": 2,
+        "endLine": 592,
+        "endChar": 48
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9b20298_11c2a797",
@@ -512,6 +848,54 @@
       "writtenOn": "2021-11-03T12:39:22Z",
       "side": 1,
       "message": "What happens is the property name is \"conditions_default\" but the kind is not a pointer?\n\nIf that case is not defined, maybe just panic on the principle that it\u0027s better to die quickly and predictably than to do a random thing?",
+      "range": {
+        "startLine": 610,
+        "startChar": 48,
+        "endLine": 610,
+        "endChar": 79
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9161506_d38322b8",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9b20298_11c2a797",
+      "range": {
+        "startLine": 610,
+        "startChar": 48,
+        "endLine": 610,
+        "endChar": 79
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71d58970_d845a301",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9b20298_11c2a797",
       "range": {
         "startLine": 610,
         "startChar": 48,
@@ -545,6 +929,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d620e7d0_709d5a5c",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Correct. I plan to handle all of them similarly in the soong_injection pipeline, which is already supporting your second and third use cases. \n\nAlso see https://cs.android.com/android/platform/superproject/+/master:build/bazel/platforms/product_variables/product_platform.bzl;l\u003d1-3;drc\u003defbd2db6e76a8b478a37024bfc24399becb7ee4d\n\nI\u0027ve done a refactor of the previous implementation, it should look cleaner now. PTAL.",
+      "parentUuid": "32f2c55b_8171b12b",
+      "range": {
+        "startLine": 624,
+        "startChar": 5,
+        "endLine": 624,
+        "endChar": 11
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6cdfe40_110eba98",
@@ -558,6 +966,30 @@
       "writtenOn": "2021-11-03T12:39:22Z",
       "side": 1,
       "message": "nit: Hard-wire conditions_default. Then it\u0027s a bit easier to read. It\u0027s only a bit of relief but that relief is sorely needed here...",
+      "range": {
+        "startLine": 626,
+        "startChar": 6,
+        "endLine": 626,
+        "endChar": 18
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9b411e5_167126fd",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "propertyName is not conditions_default, but the actual property that this value is default for. Added some clarifying notes.",
+      "parentUuid": "d6cdfe40_110eba98",
       "range": {
         "startLine": 626,
         "startChar": 6,
@@ -591,6 +1023,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b332998_7dd8ea41",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Done, good call!",
+      "parentUuid": "41bf733b_2788c2c6",
+      "range": {
+        "startLine": 633,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 51
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dfb7572_3a71d837",
@@ -604,6 +1060,30 @@
       "writtenOn": "2021-11-05T13:46:42Z",
       "side": 1,
       "message": "should we clarify that this is for soong config string variables since this code is handling a mixture of product config and soong config variables now?",
+      "range": {
+        "startLine": 635,
+        "startChar": 7,
+        "endLine": 635,
+        "endChar": 46
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f3c0987_faaced32",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dfb7572_3a71d837",
       "range": {
         "startLine": 635,
         "startChar": 7,
@@ -637,6 +1117,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29e25699_b9a5f3a4",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Non-struct typed props, like regular product variables and non-string-var typed config variables.",
+      "parentUuid": "63e3e627_46f65014",
+      "range": {
+        "startLine": 659,
+        "startChar": 3,
+        "endLine": 659,
+        "endChar": 11
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "799aaca5_4c2846fb",
@@ -650,6 +1154,30 @@
       "writtenOn": "2021-11-05T13:46:42Z",
       "side": 1,
       "message": "will these eventually end up in the directory they\u0027re defined?",
+      "range": {
+        "startLine": 173,
+        "startChar": 9,
+        "endLine": 173,
+        "endChar": 59
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9654f33a_b742038a",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T11:04:55Z",
+      "side": 1,
+      "message": "Yeah, the soong_config_module_type modules themselves will be bp2build-ed into the settings. This is just a placeholder for now -- I\u0027ll have to think about this more, but it shouldn\u0027t be a big problem to change it.",
+      "parentUuid": "799aaca5_4c2846fb",
       "range": {
         "startLine": 173,
         "startChar": 9,
