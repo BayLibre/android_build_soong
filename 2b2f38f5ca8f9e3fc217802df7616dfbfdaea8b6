@@ -113,6 +113,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "631576c2_1c1c1e8a",
+        "filename": "androidmk/androidmk/androidmk_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1542,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-08T22:57:16Z",
+      "side": 1,
+      "message": "yeah, if we change it to use the pathtools.FileSystem we\u0027ll have stat (https://cs.android.com/android/platform/superproject/+/master:build/blueprint/pathtools/fs.go;l\u003d130;drc\u003d67c99255cc56f10ee20e3d3edab43d382c1571c2), the actual implementation can use OsFs (https://cs.android.com/android/platform/superproject/+/master:build/blueprint/pathtools/fs.go;l\u003d130;drc\u003d67c99255cc56f10ee20e3d3edab43d382c1571c2) and our tests can use MockFs where the link you shared will apply.\n\nFeel free to reach out if I can clarify or help at all!",
+      "parentUuid": "d6442e0a_5ff9a1d4",
+      "range": {
+        "startLine": 1540,
+        "startChar": 2,
+        "endLine": 1542,
+        "endChar": 55
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37027b0c_cc854d40",

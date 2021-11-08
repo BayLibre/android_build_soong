@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cd06cf2_f39aad0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-08T22:57:16Z",
+      "side": 1,
+      "message": "Except for the test setup, LGTM",
+      "revId": "6f97286ff7c3df1c10c543ae3d3e135886799eed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06488df5_1092e858",
+        "filename": "bpfix/bpfix/bpfix_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-08T22:57:16Z",
+      "side": 1,
+      "message": "is this only for use in TestHaveSameLicense? we could support the ability to expect an error instead? it\u0027s much clearer to specify in the testcase an expected error message separate from an expected out. if you search in Soong for expectedErr there should be a number of examples.",
+      "range": {
+        "startLine": 128,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 9
+      },
+      "revId": "6f97286ff7c3df1c10c543ae3d3e135886799eed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
