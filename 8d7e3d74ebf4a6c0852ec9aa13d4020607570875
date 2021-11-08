@@ -482,6 +482,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "923eb57a_dd03fa0c",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T13:37:03Z",
+      "side": 1,
+      "message": "It\u0027s for defaults and multiple namespace support. e.g if `cc_lib` depends on `foo_cc_defaults` and `bar_cc_defaults`, with both default modules being custom config module types contributing to a different namespace, they need to be stored as a map. Each defaults can also transitively depend on other defaults.\n\nYou can see `TestSoongConfigModuleType_MultipleNamespaces` https://android-review.googlesource.com/c/platform/build/soong/+/1878095/15/bp2build/soong_config_module_type_conversion_test.go",
+      "parentUuid": "e296bba2_966c0931",
+      "range": {
+        "startLine": 440,
+        "startChar": 4,
+        "endLine": 440,
+        "endChar": 32
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70943923_1f17eeed",
@@ -614,6 +638,30 @@
       "side": 1,
       "message": "Thanks! I\u0027m still somewhat confused, though; I thought that this goes verbatim into the name of the \"config_setting\" target that is used to select on this condition (e.g. \"safestack is true, we are in the Android target will yield \"safestack-android\" as the target name)\n\nDid I get this wrong? (probably yes, because otherwise \".*Conditions_default\" wouldn\u0027t make sense, but how does that work? The only place FullConfig is read is in bp2build.go:330 .",
       "parentUuid": "f56c0033_a470b063",
+      "range": {
+        "startLine": 494,
+        "startChar": 1,
+        "endLine": 494,
+        "endChar": 11
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acd0b392_2da38fd7",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T13:37:03Z",
+      "side": 1,
+      "message": "See configurability.go:174 and variable.go:631 for the special handling of conditions_default. The \"conditions_default\" suffix is needed as part of the key for the unique product variable prop value, but `SelectKey(string) string` translates it to just `//conditions:default` instead of the full string.",
+      "parentUuid": "c969ab49_20cc063e",
       "range": {
         "startLine": 494,
         "startChar": 1,

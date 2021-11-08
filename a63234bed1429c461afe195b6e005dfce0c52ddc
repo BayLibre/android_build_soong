@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93b83956_a99502ae",
+        "filename": "android/variable.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T13:37:03Z",
+      "side": 1,
+      "message": "Fixed, using \"foo\".",
+      "parentUuid": "1ef5912b_d3ac1212",
+      "range": {
+        "startLine": 507,
+        "startChar": 8,
+        "endLine": 507,
+        "endChar": 12
+      },
+      "revId": "a63234bed1429c461afe195b6e005dfce0c52ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93f43d7a_f2477ad4",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-08T12:44:58Z",
       "side": 1,
       "message": "nit: shouldn\u0027t this be enclosed in a \"soong_config_variables {}\" structure just like the previous one is enclosed in a \"product_variables {}\" one? (also below)",
+      "range": {
+        "startLine": 532,
+        "startChar": 4,
+        "endLine": 532,
+        "endChar": 13
+      },
+      "revId": "a63234bed1429c461afe195b6e005dfce0c52ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d341f466_fb82a831",
+        "filename": "android/variable.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T13:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93f43d7a_f2477ad4",
       "range": {
         "startLine": 532,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f4cf64c_e2b34125",
+        "filename": "android/variable.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T13:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98316541_5867fa34",
+      "range": {
+        "startLine": 534,
+        "startChar": 4,
+        "endLine": 534,
+        "endChar": 5
+      },
+      "revId": "a63234bed1429c461afe195b6e005dfce0c52ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bdfe204_ee2f175e",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-11-08T12:44:58Z",
       "side": 1,
       "message": "Is this superfluous here? My understanding is that \n\nfeature1: {\n  conditions_default: { cflags: [\"-DA\"] }\n  cflags: [\"-DB\"]  \n}\n\ndoesn\u0027t make sense, does it?",
+      "range": {
+        "startLine": 536,
+        "startChar": 6,
+        "endLine": 536,
+        "endChar": 29
+      },
+      "revId": "a63234bed1429c461afe195b6e005dfce0c52ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14419457_ba64cf9d",
+        "filename": "android/variable.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T13:37:03Z",
+      "side": 1,
+      "message": "Why doesn\u0027t it make sense? -DA would be set of feature1 isn\u0027t set. -DB if it is.",
+      "parentUuid": "0bdfe204_ee2f175e",
       "range": {
         "startLine": 536,
         "startChar": 6,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4c72b10_afedee10",
+        "filename": "android/variable.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T13:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef0666da_9614e460",
+      "range": {
+        "startLine": 643,
+        "startChar": 3,
+        "endLine": 643,
+        "endChar": 30
+      },
+      "revId": "a63234bed1429c461afe195b6e005dfce0c52ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cc4b2e5_4800abbb",
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a220cbef_da216030",
+        "filename": "android/variable.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T13:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cc4b2e5_4800abbb",
+      "range": {
+        "startLine": 702,
+        "startChar": 11,
+        "endLine": 702,
+        "endChar": 12
+      },
+      "revId": "a63234bed1429c461afe195b6e005dfce0c52ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a056a660_6dc2da45",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-11-08T12:44:58Z",
       "side": 1,
       "message": "nit: do not use tabs",
+      "range": {
+        "startLine": 709,
+        "startChar": 11,
+        "endLine": 709,
+        "endChar": 12
+      },
+      "revId": "a63234bed1429c461afe195b6e005dfce0c52ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b248fc9e_a96a7224",
+        "filename": "android/variable.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 709,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T13:37:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a056a660_6dc2da45",
       "range": {
         "startLine": 709,
         "startChar": 11,
