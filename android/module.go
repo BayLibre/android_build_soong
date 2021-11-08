@@ -860,6 +860,9 @@ type CommonAttributes struct {
 	Name string
 	// Data mapped from: Required
 	Data bazel.LabelListAttribute
+
+	// Targets this target can build for
+	Target_compatible_with bazel.StringListAttribute
 }
 
 type distProperties struct {
@@ -1090,24 +1093,57 @@ func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutator
 	}
 
 	mod := ctx.Module().base()
-	props := &mod.commonProperties
+	// props := &mod.commonProperties
 
 	depsToLabelList := func(deps []string) bazel.LabelListAttribute {
 		return bazel.MakeLabelListAttribute(BazelLabelForModuleDeps(ctx, deps))
 	}
 
-	data := &attrs.Data
+	// data := &attrs.Data
 
-	required := depsToLabelList(props.Required)
+	var required bazel.LabelListAttribute
+	var compatibleWith bazel.StringListAttribute
+	hostSupported := mod.HostSupported()
+	deviceSupported := mod.DeviceSupported()
+	if hostSupported && !deviceSupported {
+		compatibleWith.SetSelectValue(bazel.OsConfigurationAxis, Android.Name, []string{"@platforms//:incompatible"})
+		compatibleWith.SetSelectValue(bazel.OsConfigurationAxis, bazel.ConditionsDefaultConfigKey, []string{})
+	} else if deviceSupported && !hostSupported {
+		compatibleWith.SetSelectValue(bazel.OsConfigurationAxis, Android.Name, []string{})
+		compatibleWith.SetSelectValue(bazel.OsConfigurationAxis, bazel.ConditionsDefaultConfigKey, []string{"@platforms//:incompatible"})
+	}
+
 	archVariantProps := mod.GetArchVariantProperties(ctx, &commonProperties{})
 	for axis, configToProps := range archVariantProps {
-		for config, _props := range configToProps {
-			if archProps, ok := _props.(*commonProperties); ok {
+		for config, props := range configToProps {
+			if archProps, ok := props.(*commonProperties); ok {
 				required.SetSelectValue(axis, config, depsToLabelList(archProps.Required).Value)
+
+				// todo need to handle incompatiblity between host/device and arch-variant
+				if IsDisabled(hostSupported, axis, config, archProps.Enabled) {
+					compatibleWith.SetSelectValue(axis, config, []string{"@platforms//:incompatible"})
+				}
 			}
 		}
 	}
-	data.Append(required)
+	(&attrs.Data).Append(required)
+	attrs.Target_compatible_with = compatibleWith
+}
+
+func IsDisabled(hostSupported bool, axis bazel.ConfigurationAxis, config string, enabled *bool) bool {
+	if enabled == nil {
+		// OS-es can be default disabled
+		if axis == bazel.OsConfigurationAxis {
+			os := osByName(config)
+			if hostSupported == (os.Class == Host) {
+				//return osByName(config).DefaultDisabled
+			}
+		}
+		// default to enabled
+		return false
+	} else {
+		return !*enabled
+	}
 }
 
 // A ModuleBase object contains the properties that are common to all Android
