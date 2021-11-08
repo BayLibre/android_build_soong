@@ -305,6 +305,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67031c27_d240ca67",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T08:13:20Z",
+      "side": 1,
+      "message": "nit: we generally don\u0027t use named return arguments in Soong\u0027s codebase, but in some cases it can be clearer that way. I don\u0027t feel super strongly about this.",
+      "parentUuid": "b96f1be5_c76334ae",
+      "range": {
+        "startLine": 348,
+        "startChar": 1,
+        "endLine": 348,
+        "endChar": 7
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb4a52ee_43d44c7f",
@@ -460,6 +484,30 @@
       "side": 1,
       "message": "This symbolic link is not for build system but the stub script use when it runs, so I think it should be ok. But I don\u0027t know the sandboxing you mentioned so I might be wrong.",
       "parentUuid": "349f9099_df92f23f",
+      "range": {
+        "startLine": 359,
+        "startChar": 29,
+        "endLine": 359,
+        "endChar": 36
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe114c19_680699ad",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T08:13:20Z",
+      "side": 1,
+      "message": "Liz: do you mean nsjail sandboxing?",
+      "parentUuid": "dfedec57_201c9a2c",
       "range": {
         "startLine": 359,
         "startChar": 29,
