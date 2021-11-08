@@ -19,6 +19,7 @@ import (
 	"strings"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 
 	"android/soong/remoteexec"
 )
@@ -173,7 +174,7 @@ func (p PackageContext) SourcePathVariableWithEnvOverride(name, path, env string
 // package-scoped variable's initialization.
 func (p PackageContext) HostBinToolVariable(name, path string) blueprint.Variable {
 	return p.VariableFunc(name, func(ctx PackageVarContext) string {
-		return ctx.Config().HostToolPath(ctx, path).String()
+		return proptools.NinjaAndShellEscape(ctx.Config().HostToolPath(ctx, path).String())
 	})
 }
 
