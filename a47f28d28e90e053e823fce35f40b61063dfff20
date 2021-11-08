@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4079de44_3436a853",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-08T17:06:43Z",
+      "side": 1,
+      "message": "Approving so that you don\u0027t have to wait another day, assuming that the thread in soong_config_modules.go:440 is just something that I overlooked in this change.",
+      "revId": "a47f28d28e90e053e823fce35f40b61063dfff20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "588c164c_316eada1",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 27
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-08T17:06:43Z",
+      "side": 1,
+      "message": "It\u0027s kinda weird that you create an unstructured string and then dissect it with HasSuffix() to determine whether it\u0027s the default key. This is an indication that maybe the way selects are modeled in configurableStringLists could be improved?\n\n(not in this change though; you could probably live without tacking a refactoring on top of this change...)",
+      "range": {
+        "startLine": 173,
+        "startChar": 2,
+        "endLine": 173,
+        "endChar": 60
+      },
+      "revId": "a47f28d28e90e053e823fce35f40b61063dfff20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

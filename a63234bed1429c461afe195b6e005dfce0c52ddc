@@ -189,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d6efe6d_97767ea9",
+        "filename": "android/variable.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-08T17:06:43Z",
+      "side": 1,
+      "message": "Argh, I see. I didn\u0027t realize this is the syntax for \"binary\" product variables. Move along.",
+      "parentUuid": "14419457_ba64cf9d",
+      "range": {
+        "startLine": 536,
+        "startChar": 6,
+        "endLine": 536,
+        "endChar": 29
+      },
+      "revId": "a63234bed1429c461afe195b6e005dfce0c52ddc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef0666da_9614e460",
