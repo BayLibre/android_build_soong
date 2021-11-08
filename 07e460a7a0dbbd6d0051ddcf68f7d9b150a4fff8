@@ -158,6 +158,24 @@
       "parentUuid": "4eb5bb5a_aebf0c0e",
       "revId": "07e460a7a0dbbd6d0051ddcf68f7d9b150a4fff8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f2aa7e_16384ba1",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-11-08T23:12:23Z",
+      "side": 1,
+      "message": "--error_stat prints something like this:\nError counts:\n   1 SOONG_CONFIG_ variables cannot be referenced: %s [1 unique items]:\n       SOONG_CONFIG_art_module_source_build\n\nWhat I mean is to print a message for each conversion problem, just like compilers usually do:\n\nbuild/make/target/product/runtime_libart.mk:64: SOONG_CONFIG_ variables cannot be referenced: SOONG_CONFIG_art_module_source_build\n\nstatistics is useful to prioritize the conversion problems, but hopefully by the time the converter reaches users their number will be small, so individual diagnostics will be preferable.",
+      "parentUuid": "eed6b646_36c7ddc2",
+      "revId": "07e460a7a0dbbd6d0051ddcf68f7d9b150a4fff8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
