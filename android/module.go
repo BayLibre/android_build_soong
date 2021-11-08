@@ -1917,6 +1917,10 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 		variables:         make(map[string]string),
 	}
 
+	//if strings.ContainsAny(m.Name(), " \t\r\n*!#$%^&*()={}[]|\\'\":;,<>/?") {
+	//	ctx.PropertyErrorf("name", "invalid name %q", m.Name())
+	//}
+
 	dependencyInstallFiles, dependencyPackagingSpecs := m.computeInstallDeps(ctx)
 	// set m.installFilesDepSet to only the transitive dependencies to be used as the dependencies
 	// of installed files of this module.  It will be replaced by a depset including the installed
@@ -2048,6 +2052,8 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 
 	m.installFilesDepSet = newInstallPathsDepSet(m.installFiles, dependencyInstallFiles)
 	m.packagingSpecsDepSet = newPackagingSpecsDepSet(m.packagingSpecs, dependencyPackagingSpecs)
+
+	buildLicenseMetadata(ctx)
 
 	m.buildParams = ctx.buildParams
 	m.ruleParams = ctx.ruleParams
