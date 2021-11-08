@@ -176,6 +176,24 @@
       "parentUuid": "eed6b646_36c7ddc2",
       "revId": "07e460a7a0dbbd6d0051ddcf68f7d9b150a4fff8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c11a83e_6697effd",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-08T23:22:38Z",
+      "side": 1,
+      "message": "Ah I see, done. I think I was worried initially that there would be some types of errors that show up in the error stat but not the regular warnings.",
+      "parentUuid": "74f2aa7e_16384ba1",
+      "revId": "07e460a7a0dbbd6d0051ddcf68f7d9b150a4fff8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
