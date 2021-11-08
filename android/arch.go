@@ -1961,11 +1961,6 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 	// Return value of the arch types to the prop values for that arch.
 	axisToProps := ConfigurationAxisToArchVariantProperties{}
 
-	// Nothing to do for non-arch-specific modules.
-	if !m.ArchSpecific() {
-		return axisToProps
-	}
-
 	dstType := reflect.ValueOf(propertySet).Type()
 	var archProperties []interface{}
 
@@ -1974,10 +1969,17 @@ func (m *ModuleBase) GetArchVariantProperties(ctx ArchVariantContext, propertySe
 	for i, generalProp := range m.generalProperties {
 		srcType := reflect.ValueOf(generalProp).Type()
 		if srcType == dstType {
-			archProperties = m.archProperties[i]
+			if m.ArchSpecific() {
+				archProperties = m.archProperties[i]
+			}
 			axisToProps[bazel.NoConfigAxis] = ArchVariantProperties{"": generalProp}
 			break
 		}
+	}
+
+	// Nothing to do for non-arch-specific modules.
+	if !m.ArchSpecific() {
+		return axisToProps
 	}
 
 	if archProperties == nil {

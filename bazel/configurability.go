@@ -111,6 +111,25 @@ var (
 	}
 )
 
+func OsNameForOsArchConfig(osArch string) string {
+	switch osArch {
+	case osArchAndroidArm, osArchAndroidArm64, osArchAndroidX86, osArchAndroidX86_64:
+		return osAndroid
+	case osArchDarwinArm64, osArchDarwinX86_64:
+		return osDarwin
+	case osArchLinuxX86, osArchLinuxX86_64:
+		return osLinux
+	case osArchLinuxMuslX86, osArchLinuxMuslX86_64:
+		return osLinuxMusl
+	case osArchLinuxBionicArm64, osArchLinuxBionicX86_64:
+		return osLinuxBionic
+	case osArchWindowsX86, osArchWindowsX86_64:
+		return osWindows
+	default:
+		panic(fmt.Errorf("unsupported arch/os config: %s", osArch))
+	}
+}
+
 // basic configuration types
 type configurationType int
 
