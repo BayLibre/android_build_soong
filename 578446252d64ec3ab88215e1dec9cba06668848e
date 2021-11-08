@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42040652_93ff17ac",
+        "filename": "bp2build/performance_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-08T05:46:48Z",
+      "side": 1,
+      "message": "This seems identical to BenchmarkManyModulesFull. Can you share the test code between the two so we don\u0027t forget to update one when the other is updated?",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 103,
+        "endChar": 46
+      },
+      "revId": "578446252d64ec3ab88215e1dec9cba06668848e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
