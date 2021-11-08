@@ -57,6 +57,7 @@ bootstrap_go_package {
         "namespace.go",
         "neverallow.go",
         "ninja_deps.go",
+        "notice_files.go",
         "notices.go",
         "onceper.go",
         "override_module.go",
