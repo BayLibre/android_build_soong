@@ -530,6 +530,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "599eff55_d853f75f",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-09T04:14:14Z",
+      "side": 1,
+      "message": "Not in this CL, see propagateNamespaceVariableProps here: https://android-review.googlesource.com/c/platform/build/soong/+/1878095/17/android/defaults.go",
+      "parentUuid": "ea805aa5_efe6088d",
+      "range": {
+        "startLine": 440,
+        "startChar": 4,
+        "endLine": 440,
+        "endChar": 32
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70943923_1f17eeed",
@@ -710,6 +734,30 @@
       "side": 1,
       "message": "Got it. It appears that FullConfig is indeed the name of the config_setting at least most of the time if I read the code correctly:\n\n- bp2build.go:230 calls SetSelectValue() with FullConfig as the second argument\n- properties.go:763 puts config into the key of stringListSelectValues\n- getStringListValues() passes the key of stringListSelectValues to axis.SelectKey() in configurability.go:25\n- SelectKey() then returns \"config\" as the select key (usually)",
       "parentUuid": "acd0b392_2da38fd7",
+      "range": {
+        "startLine": 494,
+        "startChar": 1,
+        "endLine": 494,
+        "endChar": 11
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7539fe48_50188dda",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-09T04:14:14Z",
+      "side": 1,
+      "message": "Correct.",
+      "parentUuid": "aaa056d0_30838e14",
       "range": {
         "startLine": 494,
         "startChar": 1,
@@ -922,6 +970,30 @@
       "writtenOn": "2021-11-05T13:46:42Z",
       "side": 1,
       "message": "should we give an example for this too to distinguish between ProductConfigVariable and FullConfig?",
+      "range": {
+        "startLine": 567,
+        "startChar": 24,
+        "endLine": 567,
+        "endChar": 32
+      },
+      "revId": "8d7e3d74ebf4a6c0852ec9aa13d4020607570875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7433ce09_163937c0",
+        "filename": "android/variable.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-09T04:14:14Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "0764dd67_666639c5",
       "range": {
         "startLine": 567,
         "startChar": 24,
