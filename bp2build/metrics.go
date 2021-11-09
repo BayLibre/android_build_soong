@@ -1,9 +1,12 @@
 package bp2build
 
 import (
-	"android/soong/android"
 	"fmt"
 	"strings"
+
+	"android/soong/android"
+	metrics_pkg "android/soong/ui/metrics"
+	bp2build_metrics_proto "android/soong/ui/metrics/bp2build_metrics_proto"
 )
 
 // Simple metrics struct to collect information about a Blueprint to BUILD
@@ -24,6 +27,17 @@ type CodegenMetrics struct {
 	moduleWithUnconvertedDepsMsgs []string
 
 	convertedModules []string
+}
+
+func (metrics *CodegenMetrics) Serialize() bp2build_metrics_proto.Bp2BuildMetrics {
+	return bp2build_metrics_proto.Bp2BuildMetrics{
+		generatedModuleCount:          metrics.generatedModuleCount,
+		handCraftedModuleCount:        metrics.handCraftedModuleCount,
+		unconvertedModuleCount:        metrics.unconvertedModuleCount,
+		ruleClassCount:                metrics.ruleClassCount,
+		moduleWithUnconvertedDepsMsgs: metrics.moduleWithUnconvertedDepsMsgs,
+		convertedModules:              metrics.convertedModules,
+	}
 }
 
 // Print the codegen metrics to stdout.
@@ -55,6 +69,10 @@ func (metrics *CodegenMetrics) TotalModuleCount() int {
 	return metrics.handCraftedModuleCount +
 		metrics.generatedModuleCount +
 		metrics.unconvertedModuleCount
+}
+
+func (metrics *CodegenMetrics) Dump(filename string) (err error) {
+	return metrics_pkg.Save(metrics.Serialize(), filename)
 }
 
 type ConversionType int
