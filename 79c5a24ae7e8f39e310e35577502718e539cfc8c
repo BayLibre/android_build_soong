@@ -54,6 +54,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "86c234e7_298bb424",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-09T22:13:52Z",
+      "side": 1,
+      "message": "can we add a comment about what this command is doing?",
+      "range": {
+        "startLine": 283,
+        "startChar": 3,
+        "endLine": 283,
+        "endChar": 106
+      },
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a618874c_6a4882c0",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-09T22:13:52Z",
+      "side": 1,
+      "message": "should this be `\u003e` instead of `\u003e\u003e`? We want to overwrite, not append on subsequent evaluations, right?",
+      "range": {
+        "startLine": 283,
+        "startChar": 76,
+        "endLine": 283,
+        "endChar": 78
+      },
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f4ff16cb_79c203b5",
         "filename": "bazel/aquery.go",
         "patchSetId": 8
@@ -150,6 +196,29 @@
       "writtenOn": "2021-11-09T22:01:25Z",
       "side": 1,
       "message": "The beginning of this documentation sounds like this adds an action, but it\u0027s adding an input to another action. \n\nConsider \"addPythonZipFileAsDependencyOfPythonBinary scans through all buildStatements and adds inputs...\"\n\nFocus first on saying what the function actually does, then you can follow up with clarifying *why* it\u0027s necessary.",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "620049c8_1a41708d",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-09T22:13:52Z",
+      "side": 1,
+      "message": "nit: creating",
+      "range": {
+        "startLine": 365,
+        "startChar": 17,
+        "endLine": 365,
+        "endChar": 26
+      },
       "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },

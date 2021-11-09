@@ -564,6 +564,30 @@
       },
       "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73e0ab83_f4541e63",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-09T22:13:52Z",
+      "side": 1,
+      "message": "Can you explain what you mean by the symlink not being for the build system? When the stub script runs, it may be running inside the build system, correct?\n\nyes, I mean nsjail sandboxing",
+      "parentUuid": "fe114c19_680699ad",
+      "range": {
+        "startLine": 359,
+        "startChar": 29,
+        "endLine": 359,
+        "endChar": 36
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
