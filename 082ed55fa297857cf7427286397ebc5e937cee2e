@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff11b057_8bd4477d",
+        "filename": "rust/snapshot_prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-11-09T16:36:12Z",
+      "side": 1,
+      "message": "I think this got scrambled, it should be VendorSnapshotImageSingleton here, and RecoverySnapshotImageSingleton below -- this fixes the tests in vendor_snapshot_test.go :)",
+      "range": {
+        "startLine": 103,
+        "startChar": 47,
+        "endLine": 103,
+        "endChar": 77
+      },
+      "revId": "082ed55fa297857cf7427286397ebc5e937cee2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
