@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeda4517_753755a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-11-09T17:09:23Z",
+      "side": 1,
+      "message": "LGTM -- thanks for volunteering to take care of this!\n\nDo you have cycles to add the relevant Soong tests? (similar to cc\u0027s TestRecoverySnapshotDirected, TestRecoverySnapshotCapture, TestRecoverySnapshotExclude). If not, I\u0027ll gladly tackle those in a follow-up CL.",
+      "revId": "d7d99be2259747ba0082aa97b954c504dd43db38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
