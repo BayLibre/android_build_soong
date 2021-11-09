@@ -131,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41affc91_364abe9e",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-09T22:01:25Z",
+      "side": 1,
+      "message": "Is there a bug with more context here for handling symlink manifests? It seems a lot of the implementation in this CL is a hack for circumventing the need for correct manifest handling, so I\u0027d like to make sure we have a tracking bug explaining the rationale.",
+      "parentUuid": "0739f312_039abe74",
+      "range": {
+        "startLine": 179,
+        "startChar": 74,
+        "endLine": 180,
+        "endChar": 57
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "555edd68_4d412138",
         "filename": "bazel/aquery.go",
         "patchSetId": 4
@@ -390,6 +414,30 @@
       "side": 1,
       "message": "For example, a py_binary target \"abc\" is built by Bazel that generates following output:\n\nabc  -- the executable stub script\nabc.runfiles/\n  __main__/  --contains all the data files and python source files for this binary\n\nIn mixed build aquery output doesn\u0027t tell how to create the runfiles directory but has an action(PythonZipper) of generating python zip file which can be run directly using \"python3 abc.zip\". The zip contains all data files and python source files, but in a little different directory structure:\nabc.zip\n  runfiles/\n    __main__/\n    \nSo after it is unzipped to abc.runfiles, a symbolic link is created and make it same as the expected structure\nabc.runfiles/\n  __main__@  --symbolic link to runfiles/__main__/\n  runfiles/\n    __main__/",
       "parentUuid": "5da1550d_242ff26b",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 59
+      },
+      "revId": "b83704a5b6397e1c37a693cb0e03eeca4041f6d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cc05a2d_75b9581b",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-09T22:01:25Z",
+      "side": 1,
+      "message": "It seems fragile that we are making assumptions about Bazel runfiles specifics, when the true issue here is that aquery doesn\u0027t provide information about runfiles.\n\nWe should discuss alternatives, even if we don\u0027t follow through right now.",
+      "parentUuid": "3c090871_a5a89a8b",
       "range": {
         "startLine": 351,
         "startChar": 0,
