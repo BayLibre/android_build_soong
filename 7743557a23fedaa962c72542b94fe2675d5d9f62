@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad0016c7_9f5dad08",
+        "filename": "rust/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-09T01:10:43Z",
+      "side": 1,
+      "message": "If I understand correctly, this part of the code is the former: \"Have make installation trigger Soong installation\". But the confusing part to me is that: previously, \"Soong installation is only supported for host modules\", but now it is supported for all the modules? So If I follow this logic, then we should just keep former line 192?\n\nThe only thing that let me go back to the Make logic is that: the solution in the bug is about to write installation rules into a Makefile, rather than writing them into Ninja directly. But I am not sure whether this is the reason or not (to keep the former logic of \"Have Make installation trigger Soong installation\").",
+      "revId": "7743557a23fedaa962c72542b94fe2675d5d9f62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
