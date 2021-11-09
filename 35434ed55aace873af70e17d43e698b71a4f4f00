@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68239cce_dafa3efb",
+        "filename": "mk2rbc/mk2rbc_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 723,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-09T13:11:59Z",
+      "side": 1,
+      "message": "this gets hard to read -- later for readability of the files, we could consider using string.format() in place of %",
+      "range": {
+        "startLine": 723,
+        "startChar": 53,
+        "endLine": 723,
+        "endChar": 81
+      },
+      "revId": "35434ed55aace873af70e17d43e698b71a4f4f00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
