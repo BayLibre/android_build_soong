@@ -267,6 +267,30 @@
       },
       "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dede5433_de7bf074",
+        "filename": "ui/codegen_metrics_proto/regen.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-09T23:28:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f7b44a9_2152c73f",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 6
+      },
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
