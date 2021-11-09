@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2afd162e_c680db08",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-09T20:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f988d3a_bb62ed37",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "859068f9_1f5c98c6",
@@ -87,6 +111,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb92f0a_421a963e",
+        "filename": "ui/codegen_metrics_proto/bp2build_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-09T20:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7a1e7e8_040e4b9d",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "759a6992_6db6a300",
@@ -100,6 +148,30 @@
       "writtenOn": "2021-11-09T16:26:07Z",
       "side": 1,
       "message": "other metrics protos are in build/soong/ui/metrics https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/metrics/, why is this at build/soong/ui?\n\nsubdirectory as codegen_metrics_proto vs file bp2build_metrics proto -- can we be consistent in naming of subdirectory and",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 2
+      },
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1164b62_24406103",
+        "filename": "ui/codegen_metrics_proto/bp2build_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-09T20:25:08Z",
+      "side": 1,
+      "message": "Missed rename. Thanks.",
+      "parentUuid": "759a6992_6db6a300",
       "range": {
         "startLine": 2,
         "startChar": 0,
@@ -140,6 +212,30 @@
       "writtenOn": "2021-11-09T16:26:07Z",
       "side": 1,
       "message": "this should also have the licensing header",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "948e4a8b_46e9e337",
+        "filename": "ui/codegen_metrics_proto/regen.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-09T20:25:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bff97fda_04556f56",
       "range": {
         "startLine": 1,
         "startChar": 0,
