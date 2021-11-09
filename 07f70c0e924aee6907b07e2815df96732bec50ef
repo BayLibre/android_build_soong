@@ -16,6 +16,23 @@
       "message": "Colin, please take a look.",
       "revId": "07f70c0e924aee6907b07e2815df96732bec50ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a84dfa44_c6641cd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-11-09T08:34:59Z",
+      "side": 1,
+      "message": "Adding Paul for owner review. Paul, this is passing min_sdk_version to the AIDL compiler from cc/java modules. Please take a look.",
+      "revId": "07f70c0e924aee6907b07e2815df96732bec50ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
