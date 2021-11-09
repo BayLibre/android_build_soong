@@ -39,6 +39,30 @@
       },
       "revId": "6f97286ff7c3df1c10c543ae3d3e135886799eed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbcbc091_d7378583",
+        "filename": "bpfix/bpfix/bpfix_test.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-09T21:22:28Z",
+      "side": 1,
+      "message": "Currently it is for TestHaveSameLicense only. I have added a separate func checkError() for checking expected errors specifically.",
+      "parentUuid": "06488df5_1092e858",
+      "range": {
+        "startLine": 128,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 9
+      },
+      "revId": "6f97286ff7c3df1c10c543ae3d3e135886799eed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
