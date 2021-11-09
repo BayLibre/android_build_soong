@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13241650_07da9ccc",
+        "filename": "android/defaults.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-09T15:58:07Z",
+      "side": 1,
+      "message": "nit: the name of this argument confuses the Java programmer I am",
+      "range": {
+        "startLine": 221,
+        "startChar": 59,
+        "endLine": 221,
+        "endChar": 63
+      },
+      "revId": "543d6f32597e03bbeaf0064640096df3dd3fbad2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "443b4f8f_eb1463d2",
+        "filename": "android/defaults.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-09T15:58:07Z",
+      "side": 1,
+      "message": "Well this loop made my head spin. Let\u0027s see if I understand it correctly: namespacedVariableProps() contains a map from namespace to the config variables that can be used in that namespace for the particular module (not module type!) in question. The config variables are represented as an instance of an anonymous struct that is created by reflection.\n\nWhat happens is that both src and dst \"know about\" the same namespace, an anonymous struct must be created that contains the union of fields in src and dst. If dst doesn\u0027t have that namespace yet, another instance of the anonymous struct of src must be created; it\u0027s not enough to just say dst[namespace] \u003d src[namespace] because dst[namespace] is actually used to store the data of that particular module.\n\nDid I get this right? (some sort of comment might be helpful; I am probably not the only one who is confused...)",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 31
+      },
+      "revId": "543d6f32597e03bbeaf0064640096df3dd3fbad2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ee41c0_79ccd5f3",
+        "filename": "android/defaults.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-09T15:58:07Z",
+      "side": 1,
+      "message": "isn\u0027t this just proptools.CloneEmptyProperties(src[namespace]) ?",
+      "range": {
+        "startLine": 240,
+        "startChar": 37,
+        "endLine": 240,
+        "endChar": 81
+      },
+      "revId": "543d6f32597e03bbeaf0064640096df3dd3fbad2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb8dfbe9_76f1f065",
+        "filename": "android/variable.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-09T15:58:07Z",
+      "side": 1,
+      "message": "nit: this level of indentation is unnecessary here and also in line 585, i.e.\n\nif p.Namespace \u003d\u003d \"\" {\n  return ...\n}\n\nif p.FullConfig \u003d\u003d bazel.ConditionsDefaultConfigKey {\n  return ...\n}\n\nreturn ...\n\nis a bit more readable.",
+      "range": {
+        "startLine": 582,
+        "startChar": 3,
+        "endLine": 582,
+        "endChar": 9
+      },
+      "revId": "543d6f32597e03bbeaf0064640096df3dd3fbad2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
