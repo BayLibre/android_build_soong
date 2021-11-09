@@ -112,6 +112,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "657b37b6_7b313952",
+        "filename": "ui/codegen_metrics_proto/bp2build_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-09T17:35:47Z",
+      "side": 1,
+      "message": "I have concerns these don\u0027t make too much sense for tabulated Soong metrics -- WDYT Liz?",
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bff97fda_04556f56",
         "filename": "ui/codegen_metrics_proto/regen.sh",
         "patchSetId": 1
