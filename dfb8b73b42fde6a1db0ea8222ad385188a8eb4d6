@@ -16,6 +16,144 @@
       "message": "The Soong side of cl/408437064\nSuggestions for Tests welcome.",
       "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f988d3a_bb62ed37",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-09T16:26:07Z",
+      "side": 1,
+      "message": "reformatting change is unrelated",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "859068f9_1f5c98c6",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-09T16:26:07Z",
+      "side": 1,
+      "message": "1. let\u0027s split the writing of output from the introduction as stated in the bug.\n2. `met` is not of type bp2build_metrics.proto and we\u0027re not populating bp2build_metrics.proto anywhere?",
+      "range": {
+        "startLine": 262,
+        "startChar": 2,
+        "endLine": 262,
+        "endChar": 37
+      },
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7a1e7e8_040e4b9d",
+        "filename": "ui/codegen_metrics_proto/bp2build_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-09T16:26:07Z",
+      "side": 1,
+      "message": "2021?",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759a6992_6db6a300",
+        "filename": "ui/codegen_metrics_proto/bp2build_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-09T16:26:07Z",
+      "side": 1,
+      "message": "other metrics protos are in build/soong/ui/metrics https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/metrics/, why is this at build/soong/ui?\n\nsubdirectory as codegen_metrics_proto vs file bp2build_metrics proto -- can we be consistent in naming of subdirectory and",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 2
+      },
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bff97fda_04556f56",
+        "filename": "ui/codegen_metrics_proto/regen.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-09T16:26:07Z",
+      "side": 1,
+      "message": "this should also have the licensing header",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f7b44a9_2152c73f",
+        "filename": "ui/codegen_metrics_proto/regen.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-09T16:26:07Z",
+      "side": 1,
+      "message": "we need to run this script before checking in -- additionally we need to add support to Android.bp in order to depend on the proto -- CLs for `upload_proto`  `metrics_proto` should be good examples",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 6
+      },
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
