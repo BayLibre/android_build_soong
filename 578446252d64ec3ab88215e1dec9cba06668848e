@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0751902_56ad6ff7",
+        "filename": "bp2build/performance_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-11-09T08:24:56Z",
+      "side": 1,
+      "message": "Can you add a comment that this is not intended as a performance test but as test of the performance test framework ?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 47
+      },
+      "revId": "578446252d64ec3ab88215e1dec9cba06668848e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "42040652_93ff17ac",
         "filename": "bp2build/performance_test.go",
         "patchSetId": 1
