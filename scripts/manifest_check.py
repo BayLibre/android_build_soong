@@ -335,7 +335,7 @@ def main():
         if is_apk:
             aapt = args.aapt if args.aapt is not None else 'aapt'
             manifest = subprocess.check_output(
-                [aapt, 'dump', 'badging', args.input])
+                [aapt, 'dump', 'badging', args.input]).decode()
         else:
             manifest = minidom.parse(args.input)
 
@@ -381,13 +381,14 @@ def main():
             if is_apk:
                 raise RuntimeError('cannot save APK manifest as XML')
 
-            with open(args.output, 'wb') as f:
+            with open(args.output, 'w') as f:
                 write_xml(f, manifest)
 
     # pylint: disable=broad-except
     except Exception as err:
-        print('%serror:%s ' % (C_RED, C_OFF) + str(err), file=sys.stderr)
-        sys.exit(-1)
+        raise
+        #print('%serror:%s ' % (C_RED, C_OFF) + str(err), file=sys.stderr)
+        #sys.exit(-1)
 
 
 if __name__ == '__main__':
