@@ -1,9 +1,10 @@
 package bp2build
 
 import (
-	"android/soong/android"
 	"fmt"
 	"strings"
+
+	"android/soong/android"
 )
 
 // Simple metrics struct to collect information about a Blueprint to BUILD
