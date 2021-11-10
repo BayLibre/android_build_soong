@@ -225,6 +225,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79927cc4_400df40b",
+        "filename": "ui/codegen_metrics_proto/bp2build_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-10T15:11:22Z",
+      "side": 1,
+      "message": "Hmm, yeah, the messages are probably not super helpful. If it was just module name _may_ be worthwhile, but the messages are likely more info than is useful.\n\nLet\u0027s skip for now and we can revisit if/how we want to incorporate info from here later.",
+      "parentUuid": "657b37b6_7b313952",
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bff97fda_04556f56",
         "filename": "ui/codegen_metrics_proto/regen.sh",
         "patchSetId": 1
@@ -307,6 +325,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "4f7b44a9_2152c73f",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 6
+      },
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03d27836_6c56cff5",
+        "filename": "ui/codegen_metrics_proto/regen.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-10T15:11:22Z",
+      "side": 1,
+      "message": "We still to change the Android.bp",
+      "parentUuid": "dede5433_de7bf074",
       "range": {
         "startLine": 5,
         "startChar": 0,

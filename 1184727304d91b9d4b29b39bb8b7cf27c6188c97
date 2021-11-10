@@ -16,6 +16,52 @@
       "message": "aosp/1887075 has the output-side changes",
       "revId": "1184727304d91b9d4b29b39bb8b7cf27c6188c97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "777ee7de_fa6a6d6f",
+        "filename": "ui/metrics/bp2build_metrics_proto/bp2build_metrics.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-10T15:11:22Z",
+      "side": 1,
+      "message": "can we add a comment describing this?",
+      "range": {
+        "startLine": 34,
+        "startChar": 18,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "1184727304d91b9d4b29b39bb8b7cf27c6188c97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f50c701_c3d360a7",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-10T15:11:22Z",
+      "side": 1,
+      "message": "the changes in this file are unrelated",
+      "range": {
+        "startLine": 189,
+        "startChar": 1,
+        "endLine": 189,
+        "endChar": 2
+      },
+      "revId": "1184727304d91b9d4b29b39bb8b7cf27c6188c97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
