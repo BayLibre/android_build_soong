@@ -537,6 +537,7 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 	// for queryview, since that's a total repo-wide conversion and there's a
 	// 1:1 mapping for each module.
 	metrics.Print()
+	writeBp2BuildMetrics(&metrics, configuration)
 
 	ninjaDeps = append(ninjaDeps, codegenContext.AdditionalNinjaDeps()...)
 	ninjaDeps = append(ninjaDeps, symlinkForestDeps...)
@@ -545,4 +546,17 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 
 	// Create an empty bp2build marker file.
 	touch(shared.JoinPath(topDir, bp2buildMarker))
+}
+
+// Write Bp2Build metrics to $LOG_DIR
+func writeBp2BuildMetrics(metrics *bp2build.CodegenMetrics, configuration android.Config) {
+	metricsDir := configuration.Getenv("LOG_DIR")
+	fmt.Fprintf(os.Stderr, "\nLOG_DIR: %s\n", metricsDir)
+	if len(metricsDir) < 1 {
+		fmt.Fprintf(os.Stderr, "\nMissing required env var for generating bp2build metrics: LOG_DIR\n")
+		os.Exit(1)
+	}
+	dir := filepath.Join(topDir, metricsDir)
+	fmt.Printf("\nWriting bp2build metrics to %s\n", dir)
+	metrics.Write(dir)
 }
