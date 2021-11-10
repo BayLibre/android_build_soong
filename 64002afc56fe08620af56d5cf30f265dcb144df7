@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4328a7a6_3d8fe4bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-11-10T11:13:27Z",
+      "side": 1,
+      "message": "I confirm that with this patch set the problem in b/205674000 is fixed: removing dex2oat binary and rebuilding the boot image triggers rebuilds for both dex2oat binary and the boot image itself via the dex2oat symlink dependency:\n\n  $ lunch sdk \u0026\u0026 m\n  $ rm out/host/linux-x86/bin/dex2oatd64 \u0026\u0026 \\\n      m out/soong/emulator_arm/dex_artjars/android/apex/art_boot_images/javalib/arm/boot.art\n   ...\n   Starting ninja...\n   [ 33% 1/3] build out/host/linux-x86/bin/dex2oatd64\n   [ 66% 2/3] build out/host/linux-x86/bin/dex2oatd\n   [100% 3/3] //art/build/boot:art-bootclasspath-fragment dexpreopt art jars arm \n   [apex31]\n\n(Previously it would only rebuild dex2oat binary).",
+      "revId": "64002afc56fe08620af56d5cf30f265dcb144df7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c37df57d_3bdc86c8",
+        "filename": "android/module_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-11-10T11:13:27Z",
+      "side": 1,
+      "message": "You are probably aware of it, but in aosp/1208492 Dan said:\n\n  Symlinks should be quick to recreate, so I\u0027m not copying the logic to do\n  order-only dependencies for the device.\n\nSo this change may slow down incremental builds.",
+      "range": {
+        "startLine": 446,
+        "startChar": 45,
+        "endLine": 446,
+        "endChar": 95
+      },
+      "revId": "64002afc56fe08620af56d5cf30f265dcb144df7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
