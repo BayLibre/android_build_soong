@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "effd092e_c3210a83",
+        "filename": "ui/metrics/bp2build_metrics_proto/bp2build_metrics.proto",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-10T19:11:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "777ee7de_fa6a6d6f",
+      "range": {
+        "startLine": 34,
+        "startChar": 18,
+        "endLine": 34,
+        "endChar": 34
+      },
+      "revId": "1184727304d91b9d4b29b39bb8b7cf27c6188c97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f50c701_c3d360a7",
