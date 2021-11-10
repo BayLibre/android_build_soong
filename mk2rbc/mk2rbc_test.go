@@ -515,6 +515,21 @@ def init(g, handle):
 `,
 	},
 	{
+		desc:   "if with interpolation",
+		mkname: "product.mk",
+		in: `
+ifeq ($(VARIABLE1)text$(VARIABLE2),true)
+endif
+`,
+		expected: `load("//build/make/core:product_config.rbc", "rblf")
+
+def init(g, handle):
+  cfg = rblf.cfg(handle)
+  if "%stext%s" % (g.get("VARIABLE1", ""), g.get("VARIABLE2", "")) == "true":
+    pass
+`,
+	},
+	{
 		desc:   "ifneq $(X),true",
 		mkname: "product.mk",
 		in: `
