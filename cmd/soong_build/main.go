@@ -18,6 +18,7 @@ import (
 	"flag"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -535,6 +536,12 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 	// for queryview, since that's a total repo-wide conversion and there's a
 	// 1:1 mapping for each module.
 	metrics.Print()
+	metricsFile := "bp2build_metrics.pb" //filepath.Join(logsDir, c.logsPrefix+"bp2build_metrics.pb")
+	log.Printf("\nDUMPING:%+v TO %s\n", metrics, metricsFile)
+	if err := metrics.Dump(metricsFile); err != nil {
+		fmt.Fprintf(os.Stderr, "Error outputing %s: %s\n", metricsFile, err)
+		os.Exit(1)
+	}
 
 	ninjaDeps = append(ninjaDeps, codegenContext.AdditionalNinjaDeps()...)
 	ninjaDeps = append(ninjaDeps, symlinkForestDeps...)

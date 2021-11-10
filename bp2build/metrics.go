@@ -1,34 +1,51 @@
 package bp2build
 
 import (
-	"android/soong/android"
 	"fmt"
+	"log"
 	"strings"
+
+	"android/soong/android"
+	"android/soong/shared"
+	"android/soong/ui/metrics/bp2build_metrics_proto"
 )
 
 // Simple metrics struct to collect information about a Blueprint to BUILD
 // conversion process.
 type CodegenMetrics struct {
 	// Total number of Soong modules converted to generated targets
-	generatedModuleCount int
+	generatedModuleCount uint64
 
 	// Total number of Soong modules converted to handcrafted targets
-	handCraftedModuleCount int
+	handCraftedModuleCount uint64
 
 	// Total number of unconverted Soong modules
-	unconvertedModuleCount int
+	unconvertedModuleCount uint64
 
 	// Counts of generated Bazel targets per Bazel rule class
-	ruleClassCount map[string]int
+	ruleClassCount map[string]uint64
 
+	// List of modules with unconverted deps
+	// NOTE: NOT in the .proto
 	moduleWithUnconvertedDepsMsgs []string
 
+	// List of converted modules
 	convertedModules []string
+}
+
+func (metrics *CodegenMetrics) Serialize() bp2build_metrics_proto.Bp2BuildMetrics {
+	return bp2build_metrics_proto.Bp2BuildMetrics{
+		GeneratedModuleCount:   metrics.generatedModuleCount,
+		HandCraftedModuleCount: metrics.handCraftedModuleCount,
+		UnconvertedModuleCount: metrics.unconvertedModuleCount,
+		RuleClassCount:         metrics.ruleClassCount,
+		ConvertedModules:       metrics.convertedModules,
+	}
 }
 
 // Print the codegen metrics to stdout.
 func (metrics *CodegenMetrics) Print() {
-	generatedTargetCount := 0
+	generatedTargetCount := uint64(0)
 	for _, ruleClass := range android.SortedStringKeys(metrics.ruleClassCount) {
 		count := metrics.ruleClassCount[ruleClass]
 		fmt.Printf("[bp2build] %s: %d targets\n", ruleClass, count)
@@ -51,10 +68,16 @@ func (metrics *CodegenMetrics) IncrementUnconvertedCount() {
 	metrics.unconvertedModuleCount += 1
 }
 
-func (metrics *CodegenMetrics) TotalModuleCount() int {
+func (metrics *CodegenMetrics) TotalModuleCount() uint64 {
 	return metrics.handCraftedModuleCount +
 		metrics.generatedModuleCount +
 		metrics.unconvertedModuleCount
+}
+
+func (metrics *CodegenMetrics) Dump(filename string) (err error) {
+	ser := metrics.Serialize()
+	log.Printf("\nDumping %+v to %s\n", ser, filename)
+	return shared.Save(&ser, filename)
 }
 
 type ConversionType int
