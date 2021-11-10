@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd2dca21_9e1b76fb",
+        "filename": "android/defaults.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-10T09:03:11Z",
+      "side": 1,
+      "message": "What happens if src[namespace] and dst[namespace] have different properties (i.e. different fields in struct that implements the interface{} in namespacedVariableProperties?)\n\nMy understanding is that this could happen e.g. if a module uses two defaults modules that have different soong_config_defaults, i.e.\n\nsoong_config_module_type {\n  name: \"ad\",\n  module_type: \"cc_defaults\",\n  config_namespace: \"n\",\n  properties: [\"cflags\"],\n}\n\nsoong_config_module_type {\n  name: \"bd\",\n  module_type: \"cc_defaults\",\n  config_namespace: \"n\",\n  properties: [\"srcs\"],\n}\n\nad {\n  name: \"ai\",\n  soong_config_variables: {\n     ... cflags:\n  }\n}\n\n\nbd {\n  name: \"bi\",\n  soong_config_variables: {\n    ... srcs: \n  }\n}\n\ncc_library {\n  name: \"lib\",\n  defaults: [\"ai\", bi\"]\n}",
+      "range": {
+        "startLine": 271,
+        "startChar": 3,
+        "endLine": 271,
+        "endChar": 60
+      },
+      "revId": "0f4965e0b4bd4dcc6b5ffec7e0cf3d125533b021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

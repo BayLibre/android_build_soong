@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6be0e71_3991e13c",
+        "filename": "android/defaults.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-10T09:03:11Z",
+      "side": 1,
+      "message": "Thanks. Much clearer.",
+      "parentUuid": "19c69078_db87c5a8",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 31
+      },
+      "revId": "543d6f32597e03bbeaf0064640096df3dd3fbad2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05ee41c0_79ccd5f3",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "CloneEmptyProperties takes a reflect.Value and returns a reflect.Value. src[namespace] is an interface{} (which holds a struct pointer).",
       "parentUuid": "05ee41c0_79ccd5f3",
+      "range": {
+        "startLine": 240,
+        "startChar": 37,
+        "endLine": 240,
+        "endChar": 81
+      },
+      "revId": "543d6f32597e03bbeaf0064640096df3dd3fbad2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f3c9a9a_6893515e",
+        "filename": "android/defaults.go",
+        "patchSetId": 25
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-10T09:03:11Z",
+      "side": 1,
+      "message": "Argh, nm. I read this code as\n\nproptools.CloneEmptyProperties(reflect.ValueOf(src[namespace]).Interface())\n\n(can you spot the difference?)",
+      "parentUuid": "1eafe980_3167f107",
       "range": {
         "startLine": 240,
         "startChar": 37,
