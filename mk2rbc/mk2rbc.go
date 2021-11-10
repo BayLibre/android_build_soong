@@ -169,10 +169,10 @@ type Request struct {
 	MakefileFinder     MakefileFinder
 }
 
-// An error sink allowing to gather error statistics.
+// An error sink to print errors and gather error statistics.
 // NewError is called on every error encountered during processing.
 type ErrorMonitorCB interface {
-	NewError(s string, node mkparser.Node, args ...interface{})
+	NewError(sourceFile string, sourceLine int, node mkparser.Node, text string, args ...interface{})
 }
 
 // Derives module name for a given file. It is base name
@@ -381,6 +381,7 @@ type StarlarkScript struct {
 	warnPartialSuccess bool
 	sourceFS           fs.FS
 	makefileFinder     MakefileFinder
+	nodeLocator        func(pos mkparser.Pos) int
 }
 
 func (ss *StarlarkScript) newNode(node starlarkNode) {
@@ -1031,7 +1032,7 @@ func (ctx *parseContext) parseCondition(check *mkparser.Directive) starlarkNode 
 func (ctx *parseContext) newBadExpr(node mkparser.Node, text string, args ...interface{}) starlarkExpr {
 	message := fmt.Sprintf(text, args...)
 	if ctx.errorLogger != nil {
-		ctx.errorLogger.NewError(text, node, args)
+		ctx.errorLogger.NewError(ctx.script.mkFile, ctx.script.nodeLocator(node.Pos()), node, text, args...)
 	}
 	ctx.script.hasErrors = true
 	return &badExpr{node, message}
@@ -1554,11 +1555,12 @@ func (ctx *parseContext) carryAsComment(failedNode mkparser.Node) {
 // records that the given node failed to be converted and includes an explanatory message
 func (ctx *parseContext) errorf(failedNode mkparser.Node, message string, args ...interface{}) {
 	if ctx.errorLogger != nil {
-		ctx.errorLogger.NewError(message, failedNode, args...)
+		ctx.errorLogger.NewError(ctx.script.mkFile, ctx.script.nodeLocator(failedNode.Pos()), failedNode, message, args...)
 	}
 	message = fmt.Sprintf(message, args...)
 	ctx.insertComment(fmt.Sprintf("# MK2RBC TRANSLATION ERROR: %s", message))
 	ctx.carryAsComment(failedNode)
+
 	ctx.script.hasErrors = true
 }
 
@@ -1675,6 +1677,7 @@ func Convert(req Request) (*StarlarkScript, error) {
 		warnPartialSuccess: req.WarnPartialSuccess,
 		sourceFS:           req.SourceFS,
 		makefileFinder:     req.MakefileFinder,
+		nodeLocator:        func(pos mkparser.Pos) int { return parser.Unpack(pos).Line },
 	}
 	ctx := newParseContext(starScript, nodes)
 	ctx.outputSuffix = req.OutputSuffix

@@ -456,10 +456,8 @@ func printStats() {
 			}
 		}
 	}
-	if *verbose {
-		fmt.Fprintf(os.Stderr, "%-16s%5d\n", "Succeeded:", nOk)
-		fmt.Fprintf(os.Stderr, "%-16s%5d\n", "Partial:", nPartial)
-		fmt.Fprintf(os.Stderr, "%-16s%5d\n", "Failed:", nFailed)
+	if *verbose && (nPartial > 0 || nFailed > 0) {
+		fmt.Fprintln(os.Stderr, "Succeeded: ", nOk, " Partial: ", nPartial, " Failed: ", nFailed)
 	}
 }
 
@@ -472,7 +470,7 @@ type errorsByType struct {
 	data map[string]datum
 }
 
-func (ebt errorsByType) NewError(message string, node parser.Node, args ...interface{}) {
+func (ebt errorsByType) NewError(sourceFile string, sourceLine int, node parser.Node, message string, args ...interface{}) {
 	v, exists := ebt.data[message]
 	if exists {
 		v.count++
@@ -495,6 +493,9 @@ func (ebt errorsByType) NewError(message string, node parser.Node, args ...inter
 		v.formattingArgs = append(v.formattingArgs, newArg1)
 	}
 	ebt.data[message] = v
+	fmt.Fprintf(os.Stderr, "%s:%d ", sourceFile, sourceLine)
+	fmt.Fprintf(os.Stderr, message, args...)
+	fmt.Fprintln(os.Stderr)
 }
 
 func (ebt errorsByType) printStatistics() {
