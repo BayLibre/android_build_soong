@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4158a01_662e2525",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-10T09:52:44Z",
+      "side": 1,
+      "message": "Thanks, this is really nice! I have been trying to gather my willpower to do exactly this, but haven\u0027t succeeded since :(",
+      "revId": "7b6a55f5a28f3d86c1f561aae347e1383ed7b3ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
