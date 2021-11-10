@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7beb3edf_9b7d8734",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-10T22:45:02Z",
+      "side": 1,
+      "message": "I think py3wrapper.sh is part of the Python toolchain of Bazel, so the aquery output of a py_binary target should not include it. But I don\u0027t think it is really needed for a py_binary target since the stub script already requires a specific version of Python interpreter.\n\nb/205879240 is created for this.",
+      "parentUuid": "23eb09e9_d33921d4",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bead41f3_e5f8f34c",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "716942c6_aa658c3c",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-10T22:45:02Z",
+      "side": 1,
+      "message": "I created doc go/python-binary-host-mixed-build to explain this with more details. \n\nAdded a link to the doc in the comments.",
+      "parentUuid": "bead41f3_e5f8f34c",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce344812_d95e3dd1",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-11-09T22:01:25Z",
       "side": 1,
       "message": "I don\u0027t know how golang optimizes this, but generally compiling a regular expression can be an expensive operation. Perhaps we should statically initialize this regex and then use it?\n\nYou might consider also regulating these to a helper function:\n\n```\nshouldSkipInput(inputPath string) {...}\n```",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85224822_da0b3c34",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-10T22:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce344812_d95e3dd1",
       "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -98,6 +152,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6388a88d_7503a645",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-10T22:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86c234e7_298bb424",
+      "range": {
+        "startLine": 283,
+        "startChar": 3,
+        "endLine": 283,
+        "endChar": 106
+      },
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf78848a_34313639",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-10T22:45:02Z",
+      "side": 1,
+      "message": "Done. Thanks for catching this.\n\n \u003e\u003e was used in a previous solution and I forgot to change it to \u003e. Although it is not harmful using \u003e\u003e in this case, but better to change to \u003e.",
+      "parentUuid": "a618874c_6a4882c0",
+      "range": {
+        "startLine": 283,
+        "startChar": 76,
+        "endLine": 283,
+        "endChar": 78
+      },
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4ff16cb_79c203b5",
@@ -111,6 +213,24 @@
       "writtenOn": "2021-11-09T22:01:25Z",
       "side": 1,
       "message": "This may be a bit problematic depending on the ordering that buildStatements are processed, no? I don\u0027t think Bazel provides any guarantees about the ordering of actions sent in aquery.\n\nWhat if the python zipper action is the first action sent?",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aeee788_eb5693a3",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-10T22:45:02Z",
+      "side": 1,
+      "message": "The Python zip file contains all files so that it can be run by Python interpreter directly, so naturally it should be the last one to be created after all other artifacts of py_binary are created. I think Bazel collects all actions in a way that for later execution dependencies are created first, and the order of actions in aquery output should reflect that execution sequence properly. But that might be just my expectation and wrong.",
+      "parentUuid": "f4ff16cb_79c203b5",
       "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -132,6 +252,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "707f495e_79e7e1a9",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-10T22:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c7cd6d1_4234dded",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "708ab0f4_ca32eaf7",
@@ -145,6 +283,24 @@
       "writtenOn": "2021-11-09T22:01:25Z",
       "side": 1,
       "message": "Likewise, link to a bug?",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93966511_22a8642f",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-10T22:45:02Z",
+      "side": 1,
+      "message": "Done. b/205879240",
+      "parentUuid": "708ab0f4_ca32eaf7",
       "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -166,6 +322,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0cd786b_b8c544f9",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-10T22:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e935765b_67ecea36",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d8ede5a_1acb80cf",
@@ -183,6 +357,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59b73ede_a60938bb",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-10T22:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d8ede5a_1acb80cf",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8623acdc_608d2dcc",
@@ -196,6 +388,24 @@
       "writtenOn": "2021-11-09T22:01:25Z",
       "side": 1,
       "message": "The beginning of this documentation sounds like this adds an action, but it\u0027s adding an input to another action. \n\nConsider \"addPythonZipFileAsDependencyOfPythonBinary scans through all buildStatements and adds inputs...\"\n\nFocus first on saying what the function actually does, then you can follow up with clarifying *why* it\u0027s necessary.",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcfaf6ed_012569eb",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-10T22:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8623acdc_608d2dcc",
       "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -223,6 +433,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "076badc3_a3bd723d",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-10T22:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "620049c8_1a41708d",
+      "range": {
+        "startLine": 365,
+        "startChar": 17,
+        "endLine": 365,
+        "endChar": 26
+      },
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccb39ada_990e86eb",
@@ -236,6 +470,24 @@
       "writtenOn": "2021-11-09T22:01:25Z",
       "side": 1,
       "message": "Likewise I don\u0027t think there is any guarantee on the ordering in output paths in actions retrieved by aquery. You can\u0027t be certain that looking at the first output path is sufficient. Perhaps you can search *all* the output paths?\n\nThough this is pretty inefficient.\n\nCan you search only build statements of the type that you would expect to see this artifact?",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fa1969a_e73ba240",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-10T22:45:02Z",
+      "side": 1,
+      "message": "Actually the length of OutputPaths of a py_binary stub script build statement should be 1, and this is enforced by these lines in method AqueryBuildStatements()\n\nif isTemplateExpandAction(actionEntry) \u0026\u0026 len(actionEntry.Arguments) \u003c 1 {\n  if len(outputPaths) !\u003d 1 {\n    return nil, fmt.Errorf(\"Expect 1 output to template expand action, got: output %q\", outputPaths)\n  }",
+      "parentUuid": "ccb39ada_990e86eb",
       "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
