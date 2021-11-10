@@ -222,11 +222,20 @@ func main() {
 
 	// Set up files to be outputted in the log directory.
 	logsDir := config.LogsDir()
+	fmt.Fprintf(os.Stderr, "\nlogsDir: "+logsDir+"\n")
+	fmt.Fprintf(os.Stderr, "\n$TOP: "+os.Getenv("TOP")+"\n")
+
+	cwd, wderr := os.Getwd()
+	if wderr != nil {
+		cwd = "FAILED TO GET $PWD: " + wderr.Error()
+	}
+	fmt.Fprintf(os.Stderr, "\n$PWD: "+cwd+"\n")
 
 	// Common list of metric file definition.
 	buildErrorFile := filepath.Join(logsDir, c.logsPrefix+"build_error")
 	rbeMetricsFile := filepath.Join(logsDir, c.logsPrefix+"rbe_metrics.pb")
 	soongMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_metrics")
+	fmt.Fprintf(os.Stderr, "\nsoong_metrics output: "+soongMetricsFile+"\n")
 
 	build.PrintOutDirWarning(buildCtx, config)
 
