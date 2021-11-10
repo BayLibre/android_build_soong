@@ -87,6 +87,30 @@
       },
       "revId": "5482d6a991b896e0143dfeacbab6356c8e6f5b64",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "956b2762_0b06c2fc",
+        "filename": "rust/sanitize.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-11-10T21:45:15Z",
+      "side": 1,
+      "message": "Spoke with Evgenii offline -- relying on the `--hwasan-with-ifunc` flag shouldn\u0027t be problematic. It does mean worse diagnostics for stack reports since it doesn\u0027t support stack history record, but this would still be an improvement over the status quo while we determine why it\u0027s necessary.",
+      "parentUuid": "55876695_2b71d1d0",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 41
+      },
+      "revId": "5482d6a991b896e0143dfeacbab6356c8e6f5b64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
