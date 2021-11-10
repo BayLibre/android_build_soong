@@ -535,6 +535,27 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 	// for queryview, since that's a total repo-wide conversion and there's a
 	// 1:1 mapping for each module.
 	metrics.Print()
+	metricsDir := configuration.Getenv("LOG_DIR")
+	if len(metricsDir) < 1 {
+		fmt.Fprintf(os.Stderr, "\nMissing required env var to use bazel: LOG_DIR\n")
+		os.Exit(1)
+	}
+	dir := filepath.Join(topDir, metricsDir)
+	if _, err := os.Stat(dir); os.IsNotExist(err) {
+		// The metrics dir doesn't already exist, so create it
+		if err := os.MkdirAll(dir, 0755); err != nil { // TODO: doc perms
+			fmt.Errorf("\nFailed to `mkdir -p` %s: %w\n", dir, err)
+			os.Exit(1)
+		}
+	} else if err != nil {
+		fmt.Errorf("\nFailed to `stat` %s: %w\n", dir, err)
+		os.Exit(1)
+	}
+	metricsFile := filepath.Join(dir, "bp2build_metrics.pb")
+	if err := metrics.Dump(metricsFile); err != nil {
+		fmt.Errorf("\nError outputting %s: %w\n", metricsFile, err)
+		os.Exit(1)
+	}
 
 	ninjaDeps = append(ninjaDeps, codegenContext.AdditionalNinjaDeps()...)
 	ninjaDeps = append(ninjaDeps, symlinkForestDeps...)
