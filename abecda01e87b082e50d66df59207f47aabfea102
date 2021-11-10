@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9508382d_9916b447",
+        "filename": "scripts/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-11-10T19:32:34Z",
+      "side": 1,
+      "message": "I think we can also include the bug ID here as a TODO? (especially if the apexer work is being tracked in a different bug than b/203436762)\n```\n// TODO(b/\u003cid\u003e) Remove when system/apex/apexer/apexer.py is converted\n```",
+      "revId": "abecda01e87b082e50d66df59207f47aabfea102",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a0d36cc_858b19bb",
+        "filename": "scripts/manifest_fixer_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-11-10T19:32:34Z",
+      "side": 1,
+      "message": "I think python\u0027s `ElementTree` module has a functionality called `canonicalize` for sorting attributes. What are your thoughts on using it here instead of a custom sorting implementation?\n```\nimport xml.etree.ElementTree as ET\n\ntemplate \u003d \u0027\u003cnode attr2\u003d\"attr2_val\" attr1\u003d\"attr1_val\"/\u003e\u0027\n\nET.canonicalize(template)\n\u0027\u003cnode attr1\u003d\"attr1_val\" attr2\u003d\"attr2_val\"\u003e\u003c/node\u003e\u0027\n```",
+      "revId": "abecda01e87b082e50d66df59207f47aabfea102",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b5db81_745c0ce7",
+        "filename": "scripts/manifest_fixer_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-11-10T19:32:34Z",
+      "side": 1,
+      "message": "nit: I think compiling the regex outside the loop using re.compile might be *marginally* faster",
+      "revId": "abecda01e87b082e50d66df59207f47aabfea102",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
