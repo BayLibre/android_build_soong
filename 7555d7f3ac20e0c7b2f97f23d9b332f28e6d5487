@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54ec8dfc_4669a2b0",
+        "filename": "rust/vendor_snapshot_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-11-10T21:58:29Z",
+      "side": 1,
+      "message": "\u003e But by its path\nIIUC correctly, this is because the Android.bp file is declared in device/? \n\nnit: I know you documented this in line 1108-1109, but can we also mention it here? (At first glance, I confused the meaning of path to be the path of \"srcs\")",
+      "revId": "7555d7f3ac20e0c7b2f97f23d9b332f28e6d5487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12312235_4cfb191d",
+        "filename": "rust/vendor_snapshot_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-11-10T21:58:29Z",
+      "side": 1,
+      "message": "Is there a flag that can be used to differentiate between fake and real included modules?",
+      "revId": "7555d7f3ac20e0c7b2f97f23d9b332f28e6d5487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
