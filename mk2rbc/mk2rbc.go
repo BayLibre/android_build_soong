@@ -381,6 +381,7 @@ type StarlarkScript struct {
 	warnPartialSuccess bool
 	sourceFS           fs.FS
 	makefileFinder     MakefileFinder
+	nodeLocator        func(pos mkparser.Pos) int
 }
 
 func (ss *StarlarkScript) newNode(node starlarkNode) {
@@ -1034,6 +1035,7 @@ func (ctx *parseContext) newBadExpr(node mkparser.Node, text string, args ...int
 		ctx.errorLogger.NewError(text, node, args)
 	}
 	ctx.script.hasErrors = true
+	fmt.Fprintf(os.Stderr, "%s:%d: %s\n", ctx.script.mkFile, ctx.script.nodeLocator(node.Pos()), message)
 	return &badExpr{node, message}
 }
 
@@ -1559,6 +1561,8 @@ func (ctx *parseContext) errorf(failedNode mkparser.Node, message string, args .
 	message = fmt.Sprintf(message, args...)
 	ctx.insertComment(fmt.Sprintf("# MK2RBC TRANSLATION ERROR: %s", message))
 	ctx.carryAsComment(failedNode)
+	fmt.Fprintf(os.Stderr, "%s:%d: %s\n", ctx.script.mkFile, ctx.script.nodeLocator(failedNode.Pos()), message)
+
 	ctx.script.hasErrors = true
 }
 
@@ -1675,6 +1679,7 @@ func Convert(req Request) (*StarlarkScript, error) {
 		warnPartialSuccess: req.WarnPartialSuccess,
 		sourceFS:           req.SourceFS,
 		makefileFinder:     req.MakefileFinder,
+		nodeLocator:        func(pos mkparser.Pos) int { return parser.Unpack(pos).Line },
 	}
 	ctx := newParseContext(starScript, nodes)
 	ctx.outputSuffix = req.OutputSuffix
