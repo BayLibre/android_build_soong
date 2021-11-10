@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d70bab8_cd623e08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-11-10T16:07:07Z",
+      "side": 1,
+      "message": "Note that build/bazel/scripts/run_presubmits.sh does not fully complete locally due to a bug at HEAD, see http://b/205837541",
+      "revId": "7fdfa9afe5931e08da959b6f31a0c728c2baed44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
