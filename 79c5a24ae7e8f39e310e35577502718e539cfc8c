@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9072a30_714fc19a",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-10T23:29:57Z",
+      "side": 1,
+      "message": "Thank you for writing the doc. Can you please still update the comment here?  The sentence \"The middleman action returned by aquery for python binary is the input list for a dependent of python binary\" is somewhat confusing. Perhaps:\n\n\"The manner in which bazel generates py3wrapper.sh and MANIFEST files is not fully described in Bazel aquery, so they are omitted from the inputs of converted build statements. See go/python-binary-host-mixed-build for more details.\"\n\nYou might also consider moving this comment to shouldSkipInput, since that\u0027s where the meaningful logic now lives.",
+      "parentUuid": "716942c6_aa658c3c",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce344812_d95e3dd1",
         "filename": "bazel/aquery.go",
         "patchSetId": 8
@@ -237,6 +255,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "761b6c89_9e85195e",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-10T23:29:57Z",
+      "side": 1,
+      "message": "Unless you can find documentation of guarantees of the ordering of aquery, we would be best served making no such assumptions. Even if actions are topologically sorted today, there may not be guarantees that Bazel won\u0027t change this moving forward. And, with the given code, this failure would be *quite* difficult to debug.",
+      "parentUuid": "1aeee788_eb5693a3",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3c7cd6d1_4234dded",
         "filename": "bazel/aquery.go",
         "patchSetId": 8
@@ -301,6 +337,24 @@
       "side": 1,
       "message": "Done. b/205879240",
       "parentUuid": "708ab0f4_ca32eaf7",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60ec3e6b_82318989",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-10T23:29:57Z",
+      "side": 1,
+      "message": "Prefer \"See b/205879240.\", or alternatively,\n\n// TODO(b/205879240): Description of action item",
+      "parentUuid": "93966511_22a8642f",
       "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -377,6 +431,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b972711a_143dcb4d",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-10T23:29:57Z",
+      "side": 1,
+      "message": "Prefer \"See b/197135294.\", or alternatively,\n\n// TODO(b/197135294): Description of action item",
+      "parentUuid": "59b73ede_a60938bb",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8623acdc_608d2dcc",
         "filename": "bazel/aquery.go",
         "patchSetId": 8
@@ -406,6 +478,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "8623acdc_608d2dcc",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbb55381_fed6529e",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-10T23:29:57Z",
+      "side": 1,
+      "message": "This description of the function semantics is still confusing -- perhaps because it is too focused on describing the reason it exists, and less so what it actually does.\n\nConsider an alternate description of this function:\n\n```\n// addOutputToBuildStatements finds all buildStatements which contain requiredOutput, \n// and for each such buildStatement, adds newInput as an input to that buildStatement.\nfunc addOutputToBuildStatements(buildStatements *[]BuildStatement, requiredOutput string, newInput string) {\n   ...\n}\n```\n\nThen the caller would call `addOutputToBuildStatements(\u0026buildStatements, outputPaths[0] + \".zip\", outputPaths[0])`, instead of addPythonZipFileAsDependencyOfPythonBinary.\n\n\nAs general feedback, the comment that describes a function should describe what the function does. You can follow up with a description for why the function needs to exist only after you have described what the function does.",
+      "parentUuid": "dcfaf6ed_012569eb",
       "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -488,6 +578,24 @@
       "side": 1,
       "message": "Actually the length of OutputPaths of a py_binary stub script build statement should be 1, and this is enforced by these lines in method AqueryBuildStatements()\n\nif isTemplateExpandAction(actionEntry) \u0026\u0026 len(actionEntry.Arguments) \u003c 1 {\n  if len(outputPaths) !\u003d 1 {\n    return nil, fmt.Errorf(\"Expect 1 output to template expand action, got: output %q\", outputPaths)\n  }",
       "parentUuid": "ccb39ada_990e86eb",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2a33ce9_b0bfa1f1",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-10T23:29:57Z",
+      "side": 1,
+      "message": "That condition is not checked in this function. This ties into my feedback above: This function assumes too many things about the manner in which it is called, when actually its a very pure utility function which does something else.\n\nConsider either refactoring this function as I\u0027ve suggested above, or inlining its contents in the caller.",
+      "parentUuid": "6fa1969a_e73ba240",
       "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
