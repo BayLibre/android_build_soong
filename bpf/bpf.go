@@ -54,12 +54,16 @@ type BpfModule interface {
 	android.Module
 
 	OutputFiles(tag string) (android.Paths, error)
+
+	// Returns the sub install directory if the bpf module is included by apex.
+	SubDir() string
 }
 
 type BpfProperties struct {
 	Srcs         []string `android:"path"`
 	Cflags       []string
 	Include_dirs []string
+	Apex_sub_dir string
 }
 
 type bpf struct {
@@ -152,6 +156,10 @@ func (bpf *bpf) OutputFiles(tag string) (android.Paths, error) {
 	default:
 		return nil, fmt.Errorf("unsupported module reference tag %q", tag)
 	}
+}
+
+func (bpf *bpf) SubDir() string {
+	return bpf.properties.Apex_sub_dir
 }
 
 var _ android.OutputFileProducer = (*bpf)(nil)
