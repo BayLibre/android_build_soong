@@ -26,6 +26,7 @@ import (
 	"strings"
 	"time"
 
+	"android/soong/bp2build"
 	"android/soong/shared"
 	"android/soong/ui/build"
 	"android/soong/ui/logger"
@@ -198,6 +199,9 @@ func main() {
 		stat.Finish()
 	})
 
+	// TODO(alexmarquez): Replace with wherever they're generated!
+	bp2buildMetrics := bp2build.CodegenMetrics{}
+
 	buildCtx := build.Context{ContextImpl: &build.ContextImpl{
 		Context: ctx,
 		Logger:  log,
@@ -227,6 +231,7 @@ func main() {
 	buildErrorFile := filepath.Join(logsDir, c.logsPrefix+"build_error")
 	rbeMetricsFile := filepath.Join(logsDir, c.logsPrefix+"rbe_metrics.pb")
 	soongMetricsFile := filepath.Join(logsDir, c.logsPrefix+"soong_metrics")
+	bp2buildMetricsFile := filepath.Join(logsDir, c.logsPrefix+"bp2build_metrics.pb")
 
 	build.PrintOutDirWarning(buildCtx, config)
 
@@ -253,10 +258,12 @@ func main() {
 			buildErrorFile,           // build error strings
 			rbeMetricsFile,           // high level metrics related to remote build execution.
 			soongMetricsFile,         // high level metrics related to this build system.
+			bp2buildMetricsFile,      // high level metrics related to the bp2build conversion.
 			config.BazelMetricsDir(), // directory that contains a set of bazel metrics.
 		}
 		defer build.UploadMetrics(buildCtx, config, c.simpleOutput, buildStarted, files...)
 		defer met.Dump(soongMetricsFile)
+		defer bp2buildMetrics.Dump(bp2buildMetricsFile)
 		defer build.DumpRBEMetrics(buildCtx, config, rbeMetricsFile)
 	}
 
