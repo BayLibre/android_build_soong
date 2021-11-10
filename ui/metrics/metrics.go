@@ -196,7 +196,7 @@ func (m *Metrics) Dump(out string) error {
 	}
 	m.metrics.HostOs = proto.String(runtime.GOOS)
 
-	return save(&m.metrics, out)
+	return Save(&m.metrics, out)
 }
 
 // SetSoongBuildMetrics sets the metrics collected from the soong_build
@@ -228,12 +228,12 @@ func (c *CriticalUserJourneysMetrics) Add(name string, metrics *Metrics) {
 
 // Dump saves the collected CUJs metrics to the raw protobuf file.
 func (c *CriticalUserJourneysMetrics) Dump(filename string) (err error) {
-	return save(&c.cujs, filename)
+	return Save(&c.cujs, filename)
 }
 
-// save takes a protobuf message, marshals to an array of bytes
+// Save takes a protobuf message, marshals to an array of bytes
 // and is then saved to a file.
-func save(pb proto.Message, filename string) (err error) {
+func Save(pb proto.Message, filename string) (err error) {
 	data, err := proto.Marshal(pb)
 	if err != nil {
 		return err
