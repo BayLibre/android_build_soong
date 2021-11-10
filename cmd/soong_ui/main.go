@@ -222,6 +222,7 @@ func main() {
 
 	// Set up files to be outputted in the log directory.
 	logsDir := config.LogsDir()
+	config.Environment().Set("LOG_DIR", logsDir)
 
 	// Common list of metric file definition.
 	buildErrorFile := filepath.Join(logsDir, c.logsPrefix+"build_error")
