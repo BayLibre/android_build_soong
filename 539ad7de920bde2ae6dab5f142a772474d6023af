@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf6ff658_e2f8c542",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-10T22:40:44Z",
+      "side": 1,
+      "message": "We have a StarlarkScript.HasErrors() already. Would it be better to make a StarlarkScript.GetErrors() instead, and print out the errors when we show the \"Conversion was partially successful for\" message?",
+      "revId": "539ad7de920bde2ae6dab5f142a772474d6023af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
