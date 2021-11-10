@@ -399,6 +399,30 @@
       },
       "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cb77670_3989e931",
+        "filename": "ui/codegen_metrics_proto/regen.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-10T19:51:55Z",
+      "side": 1,
+      "message": "`metrics/Android.bp` changed",
+      "parentUuid": "d05430f1_1c6636ef",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 6
+      },
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
