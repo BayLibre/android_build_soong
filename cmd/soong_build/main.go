@@ -531,10 +531,25 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 	symlinkForestDeps := bp2build.PlantSymlinkForest(
 		topDir, workspaceRoot, generatedRoot, ".", excludes)
 
+	missingEnvVars := []string{}
+
 	// Only report metrics when in bp2build mode. The metrics aren't relevant
 	// for queryview, since that's a total repo-wide conversion and there's a
 	// 1:1 mapping for each module.
 	metrics.Print()
+	metricsDir := configuration.Getenv("LOG_DIR")
+	if len(metricsDir) < 1 {
+		missingEnvVars = append(missingEnvVars, "LOG_DIR")
+	}
+	if len(missingEnvVars) > 0 {
+		fmt.Fprintf(os.Stderr, "missing required env vars to use bazel: %s", missingEnvVars)
+		os.Exit(1)
+	}
+	metricsFile := filepath.Join(topDir, metricsDir, "bp2build_metrics.pb")
+	if err := metrics.Dump(metricsFile); err != nil {
+		fmt.Fprintf(os.Stderr, "Error outputting %s: %s\n", metricsFile, err)
+		os.Exit(1)
+	}
 
 	ninjaDeps = append(ninjaDeps, codegenContext.AdditionalNinjaDeps()...)
 	ninjaDeps = append(ninjaDeps, symlinkForestDeps...)
