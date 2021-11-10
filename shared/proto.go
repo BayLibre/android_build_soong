@@ -26,4 +26,3 @@ func Save(pb proto.Message, filename string) (err error) {
 
 	return nil
 }
-
