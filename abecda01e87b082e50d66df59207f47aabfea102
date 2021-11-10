@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bfb5792_2656bef8",
+        "filename": "scripts/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-10T19:41:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9508382d_9916b447",
+      "revId": "abecda01e87b082e50d66df59207f47aabfea102",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a0d36cc_858b19bb",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "116e3ea7_1a3e7314",
+        "filename": "scripts/manifest_fixer_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-10T19:41:40Z",
+      "side": 1,
+      "message": "I was looking for something like this but couldn\u0027t find it, thanks!",
+      "parentUuid": "2a0d36cc_858b19bb",
+      "revId": "abecda01e87b082e50d66df59207f47aabfea102",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9b5db81_745c0ce7",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-11-10T19:32:34Z",
       "side": 1,
       "message": "nit: I think compiling the regex outside the loop using re.compile might be *marginally* faster",
+      "revId": "abecda01e87b082e50d66df59207f47aabfea102",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79e2e5a1_45d34f5b",
+        "filename": "scripts/manifest_fixer_test.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-10T19:41:40Z",
+      "side": 1,
+      "message": "No longer relevant.",
+      "parentUuid": "e9b5db81_745c0ce7",
       "revId": "abecda01e87b082e50d66df59207f47aabfea102",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
