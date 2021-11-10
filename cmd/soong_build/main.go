@@ -535,6 +535,12 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 	// for queryview, since that's a total repo-wide conversion and there's a
 	// 1:1 mapping for each module.
 	metrics.Print()
+	metricsFile := filepath.Join(topDir, outDir, "dist", "logs", "bp2build_metrics.pb")
+	if err := metrics.Dump(metricsFile); err != nil {
+		fmt.Fprintf(os.Stderr, "Error outputing %s: %s\n", metricsFile, err)
+		listRecursively(topDir)
+		os.Exit(1)
+	}
 
 	ninjaDeps = append(ninjaDeps, codegenContext.AdditionalNinjaDeps()...)
 	ninjaDeps = append(ninjaDeps, symlinkForestDeps...)
@@ -543,4 +549,17 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 
 	// Create an empty bp2build marker file.
 	touch(shared.JoinPath(topDir, bp2buildMarker))
+}
+
+func listRecursively(root string) (err error) {
+	return filepath.Walk(root,
+		func(path string, info os.FileInfo, err error) error {
+			if err != nil {
+				return err
+			}
+			if info.IsDir() {
+				fmt.Println(path)
+			}
+			return nil
+		})
 }
