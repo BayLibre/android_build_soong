@@ -24,6 +24,7 @@ blueprint_go_binary {
         "soong-ui-logger",
         "soong-ui-terminal",
         "soong-ui-tracer",
+        "soong-ui-metrics",
     ],
     srcs: [
         "main.go",
