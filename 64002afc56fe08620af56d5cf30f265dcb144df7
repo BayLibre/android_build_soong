@@ -39,6 +39,30 @@
       },
       "revId": "64002afc56fe08620af56d5cf30f265dcb144df7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dfd24bd_b437752d",
+        "filename": "android/module_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-10T17:50:03Z",
+      "side": 1,
+      "message": "The behavior here matches aosp/1208492, using normal dependencies for the device.  Using an order-only dependency could provide a tiny speedup, but not enough to matter.",
+      "parentUuid": "c37df57d_3bdc86c8",
+      "range": {
+        "startLine": 446,
+        "startChar": 45,
+        "endLine": 446,
+        "endChar": 95
+      },
+      "revId": "64002afc56fe08620af56d5cf30f265dcb144df7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
