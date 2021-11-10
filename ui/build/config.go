@@ -1260,11 +1260,19 @@ func (c *configImpl) MetricsUploaderApp() string {
 // directory. If the argument dist is specified, the logs directory
 // is <dist_dir>/logs.
 func (c *configImpl) LogsDir() string {
+	dir := c.OutDir()
 	if c.Dist() {
 		// Always write logs to the real dist dir, even if Bazel is using a rigged dist dir for other files
-		return filepath.Join(c.RealDistDir(), "logs")
+		dir = filepath.Join(c.RealDistDir(), "logs")
 	}
-	return c.OutDir()
+	absDir, err := filepath.Abs(dir)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "\nError making log dir '%s' absolute: %s\n", dir, err.Error())
+		os.Exit(1)
+	}
+	return absDir
+	//return "/tmp/dev/logs"
+	//return "./tmp-dev/logs"
 }
 
 // BazelMetricsDir returns the <logs dir>/bazel_metrics directory
