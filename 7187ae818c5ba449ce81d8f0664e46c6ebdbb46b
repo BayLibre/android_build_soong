@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017172141",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1889241?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "ad3ce61f_20760245",
+          "description": "Change to \"android/module.go\"",
+          "replacements": [
+            {
+              "path": "android/module.go",
+              "range": {
+                "startLine": 1122,
+                "startChar": 27,
+                "endLine": 1122,
+                "endChar": 41
+              },
+              "replacement": "incompatibility"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "1ffc0b21_1b882ea9",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1122,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-11T20:24:23Z",
+      "side": 1,
+      "message": "Common typo found: \"incompatiblity\" -- should it be \"incompatibility\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 1122,
+        "startChar": 27,
+        "endLine": 1122,
+        "endChar": 41
+      },
+      "revId": "7187ae818c5ba449ce81d8f0664e46c6ebdbb46b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
