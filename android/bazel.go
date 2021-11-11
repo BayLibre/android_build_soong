@@ -15,11 +15,12 @@
 package android
 
 import (
-	"android/soong/bazel"
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"strings"
+
+	"android/soong/bazel"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -273,14 +274,8 @@ var (
 		"platform_tools_properties",
 		"build_tools_source_properties",
 
-		// //external/libcap/...
-		"cap_names.h", // http://b/196105070 host toolchain misconfigurations for mixed builds
-		"libcap",      // http://b/196105070 host toolchain misconfigurations for mixed builds
-
-		"libminijail", // depends on unconverted modules: libcap
-		"getcap",      // depends on unconverted modules: libcap
-		"setcap",      // depends on unconverted modules: libcap
-		"minijail0",   // depends on unconverted modules: libcap, libminijail
+		"libminijail", // b/202491296: Uses unsupported c_std proprety.
+		"minijail0",   // depends on unconverted modules: libminijail
 		"drop_privs",  // depends on unconverted modules: libminijail
 
 		// Tests. Handle later.
