@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22b17026_1c7aaf20",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 13
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-11T20:15:07Z",
+      "side": 1,
+      "message": "since this is changing Soong only, `m nothing` or CI is reasonable here",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "2ad9c091baf4d31410e151be774fa152b0632b83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
