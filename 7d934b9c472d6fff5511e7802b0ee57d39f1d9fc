@@ -16,6 +16,24 @@
       "message": "Fixed an error  (nothign would be printed without --errstat), and renamed relevant entities. PTAL.",
       "revId": "7d934b9c472d6fff5511e7802b0ee57d39f1d9fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd15ba4_18a6396b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-11T23:48:38Z",
+      "side": 1,
+      "message": "Does this change the printing behavior? Looking at the patchset 3-\u003e4 diff, it seems like you just moved the printing to the top of NewError(). There wasn\u0027t any return in NewError() before that would prevent reaching the print statements.",
+      "parentUuid": "9e089647_c871a68a",
+      "revId": "7d934b9c472d6fff5511e7802b0ee57d39f1d9fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
