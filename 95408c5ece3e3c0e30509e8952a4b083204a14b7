@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dedaf1a_606da0d1",
+        "filename": "rust/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2021-11-11T19:47:21Z",
+      "side": 1,
+      "message": "Could we have a helper function that took a prebuilt object and returned this function?",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "95408c5ece3e3c0e30509e8952a4b083204a14b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
