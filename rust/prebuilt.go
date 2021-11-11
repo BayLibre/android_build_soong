@@ -32,6 +32,8 @@ type PrebuiltProperties struct {
 }
 
 type prebuiltLibraryDecorator struct {
+	android.Prebuilt
+
 	*libraryDecorator
 	Properties PrebuiltProperties
 }
@@ -62,6 +64,12 @@ func NewPrebuiltLibrary(hod android.HostOrDeviceSupported) (*Module, *prebuiltLi
 		libraryDecorator: library,
 	}
 	module.compiler = prebuilt
+
+	srcsSupplier := func(_ android.BaseModuleContext, _ android.Module) []string {
+		return prebuilt.prebuiltSrcs()
+	}
+	android.InitPrebuiltModuleWithSrcSupplier(module, srcsSupplier, "srcs")
+
 	return module, prebuilt
 }
 
@@ -73,6 +81,12 @@ func NewPrebuiltDylib(hod android.HostOrDeviceSupported) (*Module, *prebuiltLibr
 		libraryDecorator: library,
 	}
 	module.compiler = prebuilt
+
+	srcsSupplier := func(_ android.BaseModuleContext, _ android.Module) []string {
+		return prebuilt.prebuiltSrcs()
+	}
+	android.InitPrebuiltModuleWithSrcSupplier(module, srcsSupplier, "srcs")
+
 	return module, prebuilt
 }
 
@@ -84,6 +98,12 @@ func NewPrebuiltRlib(hod android.HostOrDeviceSupported) (*Module, *prebuiltLibra
 		libraryDecorator: library,
 	}
 	module.compiler = prebuilt
+
+	srcsSupplier := func(_ android.BaseModuleContext, _ android.Module) []string {
+		return prebuilt.prebuiltSrcs()
+	}
+	android.InitPrebuiltModuleWithSrcSupplier(module, srcsSupplier, "srcs")
+
 	return module, prebuilt
 }
 
@@ -129,4 +149,8 @@ func (prebuilt *prebuiltLibraryDecorator) prebuiltSrcs() []string {
 	}
 
 	return srcs
+}
+
+func (prebuilt *prebuiltLibraryDecorator) prebuilt() *android.Prebuilt {
+	return &prebuilt.Prebuilt
 }
