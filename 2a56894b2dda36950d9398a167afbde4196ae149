@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "babf7613_0a3dd257",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2021-11-11T15:38:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bbdac2c8_aecb4673",
+      "range": {
+        "startLine": 190,
+        "startChar": 29,
+        "endLine": 190,
+        "endChar": 37
+      },
+      "revId": "2a56894b2dda36950d9398a167afbde4196ae149",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faff7799_2e36c4be",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20244869_e5963182",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2021-11-11T15:38:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "faff7799_2e36c4be",
+      "range": {
+        "startLine": 191,
+        "startChar": 38,
+        "endLine": 191,
+        "endChar": 39
+      },
+      "revId": "2a56894b2dda36950d9398a167afbde4196ae149",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ae9b067_813c000f",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-11-11T10:28:51Z",
       "side": 1,
       "message": "In the AOSP world it seems to be build/soong/android/sdk_version.go\n\n(https://osscs.corp.google.com/android/platform/superproject/+/master:build/soong/android/sdk_version.go)",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 36
+      },
+      "revId": "2a56894b2dda36950d9398a167afbde4196ae149",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f428091a_f99217fa",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2021-11-11T15:38:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ae9b067_813c000f",
       "range": {
         "startLine": 192,
         "startChar": 4,
