@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b06c7327_0d04912f",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1127078
+      },
+      "writtenOn": "2021-11-11T08:18:20Z",
+      "side": 1,
+      "message": "what is the reason for not just doing that?",
+      "range": {
+        "startLine": 258,
+        "startChar": 10,
+        "endLine": 258,
+        "endChar": 15
+      },
+      "revId": "7da843444a45147b87bc361385e06932675803ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
