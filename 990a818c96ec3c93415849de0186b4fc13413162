@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c24ba8d_3b29cfe1",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-11T20:41:34Z",
+      "side": 1,
+      "message": "Definitely not needed in this CL, but what are your thoughts on refactoring around value strings, too?\n\nIt\u0027s unfortunate that the value string here needs to be concerned with indentation of the containing module...",
+      "revId": "990a818c96ec3c93415849de0186b4fc13413162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae2e20d_efa548fa",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-11T20:41:34Z",
+      "side": 1,
+      "message": "(Non-blocking) Is there a rationale for not treating name as just another attr that belongs in attrNameToString?",
+      "revId": "990a818c96ec3c93415849de0186b4fc13413162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
