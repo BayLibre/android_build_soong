@@ -279,6 +279,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5bbaabcf_b560a7f2",
+        "filename": "ui/codegen_metrics_proto/bp2build_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-11T20:27:03Z",
+      "side": 1,
+      "message": "No. Fine with taking it out. I read your comment as \"let\u0027s leave it there for now\".",
+      "parentUuid": "dea55cfb_1ccf9129",
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bff97fda_04556f56",
         "filename": "ui/codegen_metrics_proto/regen.sh",
         "patchSetId": 1
