@@ -16,6 +16,75 @@
       "message": "+rprichard FYI :-)",
       "revId": "b3ab7873947f3d2b093ad057c25a24603638dd5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "279841ce_80ffa305",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-11T05:48:49Z",
+      "side": 1,
+      "message": "Could this be a check on base.commonProperties.UseDarwinUniversal flag that gets set by cc modules?",
+      "range": {
+        "startLine": 662,
+        "startChar": 42,
+        "endLine": 662,
+        "endChar": 91
+      },
+      "revId": "b3ab7873947f3d2b093ad057c25a24603638dd5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c37eb0_dea9b92e",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-11T05:48:49Z",
+      "side": 1,
+      "message": "could this be something like multilib \u003d \"darwin_universal\", and then handle that case appropriately in decodeMultilibTargets?",
+      "range": {
+        "startLine": 663,
+        "startChar": 2,
+        "endLine": 666,
+        "endChar": 3
+      },
+      "revId": "b3ab7873947f3d2b093ad057c25a24603638dd5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4f940e1_f2a4acd5",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-11T05:48:49Z",
+      "side": 1,
+      "message": "This is complicating the meaning of \"primary architecture\", which has previously always meant first architecture.  If you\u0027re eventually producing a fat binary does it matter which is the primary architecture?",
+      "range": {
+        "startLine": 700,
+        "startChar": 37,
+        "endLine": 700,
+        "endChar": 57
+      },
+      "revId": "b3ab7873947f3d2b093ad057c25a24603638dd5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
