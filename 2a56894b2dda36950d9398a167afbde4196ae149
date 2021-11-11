@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbdac2c8_aecb4673",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-11-11T10:28:51Z",
+      "side": 1,
+      "message": "nit: current -\u003e \"current\", since we mean the literal word?",
+      "range": {
+        "startLine": 190,
+        "startChar": 29,
+        "endLine": 190,
+        "endChar": 37
+      },
+      "revId": "2a56894b2dda36950d9398a167afbde4196ae149",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "faff7799_2e36c4be",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-11-11T10:28:51Z",
+      "side": 1,
+      "message": "Missing close quote.",
+      "range": {
+        "startLine": 191,
+        "startChar": 38,
+        "endLine": 191,
+        "endChar": 39
+      },
+      "revId": "2a56894b2dda36950d9398a167afbde4196ae149",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ae9b067_813c000f",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-11-11T10:28:51Z",
+      "side": 1,
+      "message": "In the AOSP world it seems to be build/soong/android/sdk_version.go\n\n(https://osscs.corp.google.com/android/platform/superproject/+/master:build/soong/android/sdk_version.go)",
+      "range": {
+        "startLine": 192,
+        "startChar": 4,
+        "endLine": 192,
+        "endChar": 36
+      },
+      "revId": "2a56894b2dda36950d9398a167afbde4196ae149",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
