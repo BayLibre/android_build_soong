@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13d827fd_02de1bdd",
+        "filename": "scripts/gen_java_usedby_apex.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1587390
+      },
+      "writtenOn": "2021-11-11T03:59:57Z",
+      "side": 1,
+      "message": "Only change based on aosp/1879177",
+      "range": {
+        "startLine": 34,
+        "startChar": 30,
+        "endLine": 34,
+        "endChar": 39
+      },
+      "revId": "8add6c9669bff3f208d7f6ae76abc01f629de991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
