@@ -70,6 +70,24 @@
       "parentUuid": "e403378b_055ad3e5",
       "revId": "539ad7de920bde2ae6dab5f142a772474d6023af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6e052c8_9f199c90",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-11T19:09:39Z",
+      "side": 1,
+      "message": "Thanks, this makes more sense to me.\n\nI was just pointing out how the hasErrors could be replaced with a collection of errors, and then use that instead of errorLogger. Or just get rid of hasErrors and rely on errorLogger.NewError() calls to know if there\u0027s been errors. But this is fine.",
+      "parentUuid": "7417ed1a_7ac4ab3c",
+      "revId": "539ad7de920bde2ae6dab5f142a772474d6023af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
