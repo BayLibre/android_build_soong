@@ -89,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e75485b_903867d5",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-11T22:38:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9072a30_714fc19a",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce344812_d95e3dd1",
@@ -271,6 +289,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b0d7f6a_4b71bcfb",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-11T22:38:47Z",
+      "side": 1,
+      "message": "Added some comments and error message to help later troubleshooting, in case Bazel might change the aquery output.",
+      "parentUuid": "761b6c89_9e85195e",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c7cd6d1_4234dded",
@@ -355,6 +391,24 @@
       "side": 1,
       "message": "Prefer \"See b/205879240.\", or alternatively,\n\n// TODO(b/205879240): Description of action item",
       "parentUuid": "93966511_22a8642f",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4cb56bd_778c588c",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-11T22:38:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60ec3e6b_82318989",
       "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -447,6 +501,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37b4f4b2_f452b91c",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-11T22:38:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b972711a_143dcb4d",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8623acdc_608d2dcc",
@@ -496,6 +568,24 @@
       "side": 1,
       "message": "This description of the function semantics is still confusing -- perhaps because it is too focused on describing the reason it exists, and less so what it actually does.\n\nConsider an alternate description of this function:\n\n```\n// addOutputToBuildStatements finds all buildStatements which contain requiredOutput, \n// and for each such buildStatement, adds newInput as an input to that buildStatement.\nfunc addOutputToBuildStatements(buildStatements *[]BuildStatement, requiredOutput string, newInput string) {\n   ...\n}\n```\n\nThen the caller would call `addOutputToBuildStatements(\u0026buildStatements, outputPaths[0] + \".zip\", outputPaths[0])`, instead of addPythonZipFileAsDependencyOfPythonBinary.\n\n\nAs general feedback, the comment that describes a function should describe what the function does. You can follow up with a description for why the function needs to exist only after you have described what the function does.",
       "parentUuid": "dcfaf6ed_012569eb",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6830fa29_46f42865",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-11T22:38:47Z",
+      "side": 1,
+      "message": "Done. The function is inlined in caller which can provide better context.",
+      "parentUuid": "cbb55381_fed6529e",
       "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -596,6 +686,24 @@
       "side": 1,
       "message": "That condition is not checked in this function. This ties into my feedback above: This function assumes too many things about the manner in which it is called, when actually its a very pure utility function which does something else.\n\nConsider either refactoring this function as I\u0027ve suggested above, or inlining its contents in the caller.",
       "parentUuid": "6fa1969a_e73ba240",
+      "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d2bbc74_2eb25fc6",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-11-11T22:38:47Z",
+      "side": 1,
+      "message": "Done. The function is inlined in caller.",
+      "parentUuid": "e2a33ce9_b0bfa1f1",
       "revId": "79c5a24ae7e8f39e310e35577502718e539cfc8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
