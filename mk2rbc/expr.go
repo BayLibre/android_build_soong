@@ -556,8 +556,9 @@ func (cx *callExpr) emitListVarCopy(gctx *generationContext) {
 }
 
 type badExpr struct {
-	node    mkparser.Node
-	message string
+	errorLocation ErrorLocation
+	node          mkparser.Node
+	message       string
 }
 
 func (b *badExpr) eval(_ map[string]starlarkExpr) (res starlarkExpr, same bool) {
@@ -566,15 +567,15 @@ func (b *badExpr) eval(_ map[string]starlarkExpr) (res starlarkExpr, same bool) 
 	return
 }
 
-func (b *badExpr) emit(_ *generationContext) {
-	panic("implement me")
+func (b *badExpr) emit(gctx *generationContext) {
+	gctx.emitConversionError(b.errorLocation, b.message)
 }
 
 func (_ *badExpr) typ() starlarkType {
 	return starlarkTypeUnknown
 }
 
-func (b *badExpr) emitListVarCopy(gctx *generationContext) {
+func (_ *badExpr) emitListVarCopy(gctx *generationContext) {
 	panic("implement me")
 }
 
