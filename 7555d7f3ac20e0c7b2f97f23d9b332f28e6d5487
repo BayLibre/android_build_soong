@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf63e1e9_d727fafb",
+        "filename": "rust/vendor_snapshot_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-11-12T16:11:55Z",
+      "side": 1,
+      "message": "Yup that\u0027s correct. I\u0027ve added the additional comment, thanks!",
+      "parentUuid": "54ec8dfc_4669a2b0",
+      "revId": "7555d7f3ac20e0c7b2f97f23d9b332f28e6d5487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12312235_4cfb191d",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-11-10T21:58:29Z",
       "side": 1,
       "message": "Is there a flag that can be used to differentiate between fake and real included modules?",
+      "revId": "7555d7f3ac20e0c7b2f97f23d9b332f28e6d5487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc8d725f_4b0295d6",
+        "filename": "rust/vendor_snapshot_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-11-12T16:11:55Z",
+      "side": 1,
+      "message": "I\u0027m not sure -- I reused much of the testing done in cc/vendor_snapshot_test.go, just refactored to test Rust instead, so this comment and the means of testing it comes from there. (Resolving this, but feel free to re-open).",
+      "parentUuid": "12312235_4cfb191d",
       "revId": "7555d7f3ac20e0c7b2f97f23d9b332f28e6d5487",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
