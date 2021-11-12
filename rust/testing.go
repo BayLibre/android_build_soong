@@ -53,14 +53,74 @@ var PrepareForTestWithRustIncludeVndk = android.GroupFixturePreparers(
 func GatherRequiredDepsForTest() string {
 	bp := `
 		rust_prebuilt_library {
-				name: "libstd",
-				crate_name: "std",
-				rlib: {
-					srcs: ["libstd.rlib"],
-				},
-				dylib: {
-					srcs: ["libstd.so"],
-				},
+				name: "libstd_x86_64-unknown-linux-gnu",
+                                crate_name: "std",
+                                rlib: {
+                                    srcs: ["libstd.rlib"],
+                                },
+                                dylib: {
+                                    srcs: ["libstd.so"],
+                                },
+				host_supported: true,
+				sysroot: true,
+		}
+		rust_prebuilt_library {
+				name: "libtest_x86_64-unknown-linux-gnu",
+                                crate_name: "test",
+                                rlib: {
+                                    srcs: ["libtest.rlib"],
+                                },
+                                dylib: {
+                                    srcs: ["libtest.so"],
+                                },
+				host_supported: true,
+				sysroot: true,
+		}
+		rust_prebuilt_library {
+				name: "libstd_i686-unknown-linux-gnu",
+                                crate_name: "std",
+                                rlib: {
+                                    srcs: ["libstd.rlib"],
+                                },
+                                dylib: {
+                                    srcs: ["libstd.so"],
+                                },
+				host_supported: true,
+				sysroot: true,
+		}
+		rust_prebuilt_library {
+				name: "libtest_i686-unknown-linux-gnu",
+                                crate_name: "test",
+                                rlib: {
+                                    srcs: ["libtest.rlib"],
+                                },
+                                dylib: {
+                                    srcs: ["libtest.so"],
+                                },
+				host_supported: true,
+				sysroot: true,
+		}
+		rust_prebuilt_library {
+				name: "libstd_x86_64-apple-darwin",
+                                crate_name: "std",
+                                rlib: {
+                                    srcs: ["libstd.rlib"],
+                                },
+                                dylib: {
+                                    srcs: ["libstd.so"],
+                                },
+				host_supported: true,
+				sysroot: true,
+		}
+		rust_prebuilt_library {
+				name: "libtest_x86_64-apple-darwin",
+                                crate_name: "test",
+                                rlib: {
+                                    srcs: ["libtest.rlib"],
+                                },
+                                dylib: {
+                                    srcs: ["libtest.so"],
+                                },
 				host_supported: true,
 				sysroot: true,
 		}
