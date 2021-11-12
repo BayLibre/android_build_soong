@@ -420,7 +420,6 @@ type ModuleContext interface {
 	InstallInRecovery() bool
 	InstallInRoot() bool
 	InstallInVendor() bool
-	InstallBypassMake() bool
 	InstallForceOS() (*OsType, *ArchType)
 
 	RequiredModuleNames() []string
@@ -487,7 +486,6 @@ type Module interface {
 	InstallInRecovery() bool
 	InstallInRoot() bool
 	InstallInVendor() bool
-	InstallBypassMake() bool
 	InstallForceOS() (*OsType, *ArchType)
 	HideFromMake()
 	IsHideFromMake() bool
@@ -1691,10 +1689,6 @@ func (m *ModuleBase) InstallInRoot() bool {
 	return false
 }
 
-func (m *ModuleBase) InstallBypassMake() bool {
-	return true
-}
-
 func (m *ModuleBase) InstallForceOS() (*OsType, *ArchType) {
 	return nil, nil
 }
@@ -2813,10 +2807,6 @@ func (m *moduleContext) InstallInRoot() bool {
 	return m.module.InstallInRoot()
 }
 
-func (m *moduleContext) InstallBypassMake() bool {
-	return m.Module().InstallBypassMake()
-}
-
 func (m *moduleContext) InstallForceOS() (*OsType, *ArchType) {
 	return m.module.InstallForceOS()
 }
@@ -2839,12 +2829,6 @@ func (m *moduleContext) skipInstall() bool {
 	// list of namespaces to install in a Soong-only build.
 	if !m.module.base().commonProperties.NamespaceExportedToMake {
 		return true
-	}
-
-	if m.Device() {
-		if m.Config().KatiEnabled() && !m.InstallBypassMake() {
-			return true
-		}
 	}
 
 	return false
@@ -2896,7 +2880,7 @@ func (m *moduleContext) installFile(installPath InstallPath, name string, srcPat
 			orderOnlyDeps = deps
 		}
 
-		if m.Config().KatiEnabled() && m.InstallBypassMake() {
+		if m.Config().KatiEnabled() {
 			// When creating the install rule in Soong but embedding in Make, write the rule to a
 			// makefile instead of directly to the ninja file so that main.mk can add the
 			// dependencies from the `required` property that are hard to resolve in Soong.
@@ -2944,7 +2928,7 @@ func (m *moduleContext) InstallSymlink(installPath InstallPath, name string, src
 	}
 	if !m.skipInstall() {
 
-		if m.Config().KatiEnabled() && m.InstallBypassMake() {
+		if m.Config().KatiEnabled() {
 			// When creating the symlink rule in Soong but embedding in Make, write the rule to a
 			// makefile instead of directly to the ninja file so that main.mk can add the
 			// dependencies from the `required` property that are hard to resolve in Soong.
@@ -2990,7 +2974,7 @@ func (m *moduleContext) InstallAbsoluteSymlink(installPath InstallPath, name str
 	m.module.base().hooks.runInstallHooks(m, nil, fullInstallPath, true)
 
 	if !m.skipInstall() {
-		if m.Config().KatiEnabled() && m.InstallBypassMake() {
+		if m.Config().KatiEnabled() {
 			// When creating the symlink rule in Soong but embedding in Make, write the rule to a
 			// makefile instead of directly to the ninja file so that main.mk can add the
 			// dependencies from the `required` property that are hard to resolve in Soong.
