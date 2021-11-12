@@ -104,6 +104,7 @@ var VndkMustUseVendorVariantList = []string{
 	"android.se.omapi-V1-ndk_platform",
 	"android.se.omapi-ndk_platform",
 	"android.se.omapi-unstable-ndk_platform",
+	"android.hardware.wifi-V1-ndk",
 	"android.hardware.wifi.hostapd-V1-ndk",
 	"android.hardware.wifi.hostapd-V1-ndk_platform",
 	"android.hardware.wifi.supplicant-V1-ndk",
