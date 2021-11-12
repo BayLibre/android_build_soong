@@ -46,6 +46,30 @@
       },
       "revId": "95408c5ece3e3c0e30509e8952a4b083204a14b7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e988b70_1d7130a7",
+        "filename": "rust/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-11-12T13:59:08Z",
+      "side": 1,
+      "message": "Great suggestion, thanks! Done.",
+      "parentUuid": "bbff63cd_7d80f6ac",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 2
+      },
+      "revId": "95408c5ece3e3c0e30509e8952a4b083204a14b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
