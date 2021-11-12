@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "066cfe2b_41df6e21",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-12T19:35:48Z",
+      "side": 1,
+      "message": "I think this is unused now and can be removed.",
+      "revId": "e332c6eb6052e79b870951128aeb073776d9d8f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
