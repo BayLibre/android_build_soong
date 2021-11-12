@@ -33,6 +33,24 @@
       "message": "It\u0027s unexpected that this is named \"createCommandScript\" but executes the command.  Maybe rename to runCommand or createAndRunCommandScript?  Also, a godoc description of the function would be helpful.",
       "revId": "1fa9be5154c24e87ee0325b0cbbe70db786b341f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37cbf08c_845ef13d",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1246679
+      },
+      "writtenOn": "2021-11-12T00:29:50Z",
+      "side": 1,
+      "message": "not a go native, but doesn\u0027t\nhttps://pkg.go.dev/os/exec#Command\nconstruct the command, and then \nhttps://pkg.go.dev/os/exec#Cmd.Run\nwill run the command (later down in this function?\n\nWill add docstring",
+      "parentUuid": "7990933b_9682b6af",
+      "revId": "1fa9be5154c24e87ee0325b0cbbe70db786b341f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
