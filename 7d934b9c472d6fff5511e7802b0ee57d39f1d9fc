@@ -87,6 +87,24 @@
       "message": "Do we need this, considering errorLogger.printStatistics() is wrapped in if *errstat already?",
       "revId": "7d934b9c472d6fff5511e7802b0ee57d39f1d9fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5b1e29a_75a77f7f",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-11-12T02:34:29Z",
+      "side": 1,
+      "message": "I don\u0027t think there\u0027s a need to gather statistics that will not be printed.",
+      "parentUuid": "ec557590_61fab983",
+      "revId": "7d934b9c472d6fff5511e7802b0ee57d39f1d9fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
