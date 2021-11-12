@@ -52,6 +52,41 @@
       "parentUuid": "cdd15ba4_18a6396b",
       "revId": "7d934b9c472d6fff5511e7802b0ee57d39f1d9fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63a0c4f6_39f964ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-12T00:22:56Z",
+      "side": 1,
+      "message": "Ah, I see.",
+      "parentUuid": "4a65dccf_6f6cb548",
+      "revId": "7d934b9c472d6fff5511e7802b0ee57d39f1d9fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec557590_61fab983",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-12T00:22:56Z",
+      "side": 1,
+      "message": "Do we need this, considering errorLogger.printStatistics() is wrapped in if *errstat already?",
+      "revId": "7d934b9c472d6fff5511e7802b0ee57d39f1d9fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
