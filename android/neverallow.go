@@ -264,10 +264,6 @@ func neverallowMutator(ctx BottomUpMutatorContext) {
 			continue
 		}
 
-		if !n.appliesToBootclasspathJar(ctx) {
-			continue
-		}
-
 		ctx.ModuleErrorf("violates " + n.String())
 	}
 }
@@ -369,8 +365,6 @@ type Rule interface {
 
 	NotModuleType(types ...string) Rule
 
-	BootclasspathJar() Rule
-
 	With(properties, value string) Rule
 
 	WithMatcher(properties string, matcher ValueMatcher) Rule
@@ -398,8 +392,6 @@ type rule struct {
 
 	props       []ruleProperty
 	unlessProps []ruleProperty
-
-	onlyBootclasspathJar bool
 }
 
 // Create a new NeverAllow rule.
@@ -475,11 +467,6 @@ func (r *rule) Because(reason string) Rule {
 	return r
 }
 
-func (r *rule) BootclasspathJar() Rule {
-	r.onlyBootclasspathJar = true
-	return r
-}
-
 func (r *rule) String() string {
 	s := "neverallow"
 	for _, v := range r.paths {
@@ -505,9 +492,6 @@ func (r *rule) String() string {
 	}
 	for _, v := range r.osClasses {
 		s += " os:" + v.String()
-	}
-	if r.onlyBootclasspathJar {
-		s += " inBcp"
 	}
 	if len(r.reason) != 0 {
 		s += " which is restricted because " + r.reason
@@ -535,14 +519,6 @@ func (r *rule) appliesToDirectDeps(ctx BottomUpMutatorContext) bool {
 	})
 
 	return matches
-}
-
-func (r *rule) appliesToBootclasspathJar(ctx BottomUpMutatorContext) bool {
-	if !r.onlyBootclasspathJar {
-		return true
-	}
-
-	return InList(ctx.ModuleName(), ctx.Config().BootJars())
 }
 
 func (r *rule) appliesToOsClass(osClass OsClass) bool {
