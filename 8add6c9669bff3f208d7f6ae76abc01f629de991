@@ -22,6 +22,29 @@
       },
       "revId": "8add6c9669bff3f208d7f6ae76abc01f629de991",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ce94d5d_9bb4554b",
+        "filename": "scripts/gen_java_usedby_apex.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-12T19:54:49Z",
+      "side": 1,
+      "message": "Is this supposed to be +e?  Or, if you\u0027re just trying to make dexdeps failures non-fatal, maybe `|| true`?\n\nThis seems complex enough to be worth a comment.",
+      "range": {
+        "startLine": 34,
+        "startChar": 37,
+        "endLine": 34,
+        "endChar": 39
+      },
+      "revId": "8add6c9669bff3f208d7f6ae76abc01f629de991",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
