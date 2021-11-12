@@ -1662,6 +1662,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	a.checkMinSdkVersion(ctx)
 	a.checkStaticLinkingToStubLibraries(ctx)
 	a.checkStaticExecutables(ctx)
+	a.checkBcpPermittedPackagesRule(ctx)
 	if len(a.properties.Tests) > 0 && !a.testApex {
 		ctx.PropertyErrorf("tests", "property allowed only in apex_test module type")
 		return
@@ -2484,6 +2485,29 @@ func isStaticExecutableAllowed(apex string, exec string) bool {
 	return ok && android.InList(exec, execNames)
 }
 
+// this check ensures that bcp's permitted_packages is safe from rename
+// Renaming a bootjar will require updating the bootjar-->permitted_packages map
+var bcpPermittedPackagesRuleKey = android.NewOnceKey("bcpPermittedPackagesRuleKey")
+
+func (a *apexBundle) checkBcpPermittedPackagesRule(ctx android.ModuleContext) {
+	ctx.Config().Once(bcpPermittedPackagesRuleKey, func() interface{} {
+		bcpPermittedPackages := ctx.Config().GetBcpPermittedPackages()
+		if bcpPermittedPackages == nil || ctx.Config().SkipBcpPermittedPackagesCheck() {
+			return []string{}
+		}
+		var expected []string
+		for jar := range *bcpPermittedPackages {
+			expected = append(expected, jar)
+		}
+		for _, jar := range expected {
+			if !android.InList(jar, ctx.Config().BootJars()) {
+				ctx.ModuleErrorf("Detected rename: non-updatable APEX bootjar %s not found in %s. This bootjar has a restricted set of permitted_packages. To ensure this rule is enforced, update the BcpPermittedPackages map in build/soong/android/config.go", jar, ctx.Config().BootJars())
+			}
+		}
+		return expected
+	})
+}
+
 // Collect information for opening IDE project files in java/jdeps.go.
 func (a *apexBundle) IDEInfo(dpInfo *android.IdeInfo) {
 	dpInfo.Deps = append(dpInfo.Deps, a.properties.Java_libs...)
@@ -3109,72 +3133,21 @@ func makeApexAvailableBaseline() map[string][]string {
 }
 
 func init() {
-	android.AddNeverAllowRules(createApexPermittedPackagesRules(qModulesPackages())...)
-	android.AddNeverAllowRules(createApexPermittedPackagesRules(rModulesPackages())...)
+	android.AddNeverAllowRules(createBcpPermittedPackagesRules(android.BcpPermittedPackages)...)
 }
 
-func createApexPermittedPackagesRules(modules_packages map[string][]string) []android.Rule {
-	rules := make([]android.Rule, 0, len(modules_packages))
-	for module_name, module_packages := range modules_packages {
+func createBcpPermittedPackagesRules(bcpPermittedPackages map[string][]string) []android.Rule {
+	rules := make([]android.Rule, 0, len(bcpPermittedPackages))
+	for jar, permittedPackages := range bcpPermittedPackages {
 		permittedPackagesRule := android.NeverAllow().
-			BootclasspathJar().
-			With("apex_available", module_name).
-			WithMatcher("permitted_packages", android.NotInList(module_packages)).
-			Because("jars that are part of the " + module_name +
-				" module may only allow these packages: " + strings.Join(module_packages, ",") +
+			With("name", jar).
+			WithMatcher("permitted_packages", android.NotInList(permittedPackages)).
+			Because(jar +
+				" bootjar may only allow these packages: " + strings.Join(permittedPackages, ",") +
 				". Please jarjar or move code around.")
 		rules = append(rules, permittedPackagesRule)
 	}
 	return rules
-}
-
-// DO NOT EDIT! These are the package prefixes that are exempted from being AOT'ed by ART.
-// Adding code to the bootclasspath in new packages will cause issues on module update.
-func qModulesPackages() map[string][]string {
-	return map[string][]string{
-		"com.android.conscrypt": []string{
-			"android.net.ssl",
-			"com.android.org.conscrypt",
-		},
-		"com.android.media": []string{
-			"android.media",
-		},
-	}
-}
-
-// DO NOT EDIT! These are the package prefixes that are exempted from being AOT'ed by ART.
-// Adding code to the bootclasspath in new packages will cause issues on module update.
-func rModulesPackages() map[string][]string {
-	return map[string][]string{
-		"com.android.mediaprovider": []string{
-			"android.provider",
-		},
-		"com.android.permission": []string{
-			"android.permission",
-			"android.app.role",
-			"com.android.permission",
-			"com.android.role",
-		},
-		"com.android.sdkext": []string{
-			"android.os.ext",
-		},
-		"com.android.os.statsd": []string{
-			"android.app",
-			"android.os",
-			"android.util",
-			"com.android.internal.statsd",
-			"com.android.server.stats",
-		},
-		"com.android.wifi": []string{
-			"com.android.server.wifi",
-			"com.android.wifi.x",
-			"android.hardware.wifi",
-			"android.net.wifi",
-		},
-		"com.android.tethering": []string{
-			"android.net",
-		},
-	}
 }
 
 // For Bazel / bp2build
