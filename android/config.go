@@ -169,6 +169,10 @@ type config struct {
 	ninjaFileDepsSet sync.Map
 
 	OncePer
+
+	// apex bootjar permitted packages
+	// jars in the bcp cannot contain packages outside this map
+	bcpPermittedPackages *map[string][]string
 }
 
 type deviceConfig struct {
@@ -524,6 +528,7 @@ func NewConfig(moduleListFile string, runGoTests bool, outDir, soongOutDir strin
 	config.bp2buildPackageConfig = bp2buildDefaultConfig
 	config.bp2buildModuleTypeConfig = make(map[string]bool)
 
+	config.bcpPermittedPackages = &BcpPermittedPackages
 	return Config{config}, err
 }
 
@@ -1921,6 +1926,61 @@ func (c *config) NonApexBootJars() ConfiguredJarList {
 
 func (c *config) ApexBootJars() ConfiguredJarList {
 	return c.productVariables.ApexBootJars
+}
+
+func (c *config) GetBcpPermittedPackages() *map[string][]string {
+	return c.bcpPermittedPackages
+}
+
+func (c *config) SetBcpPermittedPackages(bcpPermittedPackages *map[string][]string) {
+	c.bcpPermittedPackages = bcpPermittedPackages
+}
+
+// Bootjars will be empty if productconfig is not run
+func (c *config) SkipBcpPermittedPackagesCheck() bool {
+	return len(c.BootJars()) == 0
+}
+
+// DO NOT EDIT! These are the package prefixes that are exempted from being AOT'ed by ART.
+// Adding code to the bootclasspath in new packages will cause issues on module update.
+var BcpPermittedPackages = map[string][]string{
+	// from Q
+	"conscrypt": []string{
+		"android.net.ssl",
+		"com.android.org.conscrypt",
+	},
+	"updatable-media": []string{
+		"android.media",
+	},
+	// from R
+	"framework-mediaprovider": []string{
+		"android.provider",
+	},
+	"framework-permission": []string{
+		"android.permission",
+		"android.app.role",
+		"com.android.permission",
+		"com.android.role",
+	},
+	"framework-sdkextensions": []string{
+		"android.os.ext",
+	},
+	"framework-statsd": []string{
+		"android.app",
+		"android.os",
+		"android.util",
+		"com.android.internal.statsd",
+		"com.android.server.stats",
+	},
+	"framework-wifi": []string{
+		"com.android.server.wifi",
+		"com.android.wifi.x",
+		"android.hardware.wifi",
+		"android.net.wifi",
+	},
+	"framework-tethering": []string{
+		"android.net",
+	},
 }
 
 func (c *config) RBEWrapper() string {
