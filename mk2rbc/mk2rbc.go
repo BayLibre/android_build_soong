@@ -1048,13 +1048,13 @@ func (ctx *parseContext) parseCompare(cond *mkparser.Directive) starlarkExpr {
 		return expr
 	}
 
-	if xLeft.typ() != xRight.typ() {
-		return ctx.newBadExpr(cond, "Sides of if condition have differing types:  %s", cond.Dump())
-	}
-
 	return &eqExpr{left: xLeft, right: xRight, isEq: isEq}
 }
 
+// Given an if statement's directive and the left/right starlarkExprs,
+// check if the starlarkExprs are one of a few hardcoded special cases
+// that can be converted to a simpler equalify expression than simply comparing
+// the two.
 func (ctx *parseContext) parseCompareSpecialCases(directive *mkparser.Directive, left starlarkExpr,
 	right starlarkExpr) (starlarkExpr, bool) {
 	isEq := !strings.HasSuffix(directive.Name, "neq")
