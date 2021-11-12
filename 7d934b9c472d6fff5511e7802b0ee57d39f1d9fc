@@ -34,6 +34,24 @@
       "parentUuid": "9e089647_c871a68a",
       "revId": "7d934b9c472d6fff5511e7802b0ee57d39f1d9fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a65dccf_6f6cb548",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-11-12T00:19:04Z",
+      "side": 1,
+      "message": "The main change is on cmd/mk2rbc.go:342. Without is NewError was not called without --errstat",
+      "parentUuid": "cdd15ba4_18a6396b",
+      "revId": "7d934b9c472d6fff5511e7802b0ee57d39f1d9fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
