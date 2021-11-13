@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3996dbbe_f1959b8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-11-13T15:59:36Z",
+      "side": 1,
+      "message": "Presubmit test failure is unrelated, looks flaky",
+      "revId": "f3e8fc3f0bf2fbc707af3657b496f9a58628d2f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
