@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc88fbfd_13e48b9d",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-11-15T22:19:32Z",
+      "side": 1,
+      "message": "Ah thanks!",
+      "parentUuid": "db4f18e4_6068e440",
+      "revId": "3c4d675d39f86b7a5fd169b9f81be10a4855dbb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82a5599e_d0727a12",
@@ -58,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa838f09_1842b4c0",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-11-15T22:19:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82a5599e_d0727a12",
+      "range": {
+        "startLine": 761,
+        "startChar": 4,
+        "endLine": 761,
+        "endChar": 10
+      },
+      "revId": "3c4d675d39f86b7a5fd169b9f81be10a4855dbb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "985aee7e_58bd182b",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-11-15T21:42:01Z",
       "side": 1,
       "message": "Fatalf",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 10
+      },
+      "revId": "3c4d675d39f86b7a5fd169b9f81be10a4855dbb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d6ab753_7c233987",
+        "filename": "rust/test_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-11-15T22:19:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "985aee7e_58bd182b",
       "range": {
         "startLine": 113,
         "startChar": 4,
