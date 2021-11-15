@@ -15,6 +15,7 @@
 package android
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/google/blueprint"
@@ -213,10 +214,297 @@ func InitDefaultsModule(module DefaultsModule) {
 
 var _ Defaults = (*DefaultsModuleBase)(nil)
 
+// applyNamedspacedVariableDefaults only runs in bp2build mode for
+// defaultable/defaults modules. Its purpose is to merge namespaced product
+// variable props from defaults deps, even if those defaults are custom module
+// types created from soong_config_module_type, e.g. one that's wrapping a
+// cc_defaults or java_defaults.
+func applyNamedspacedVariableDefaults(defaultDep Defaults, mod Module) {
+	var dep, b Bazelable
+
+	dep, ok := defaultDep.(Bazelable)
+	if !ok {
+		return
+	}
+
+	b, ok = mod.(Bazelable)
+	if !ok {
+		return
+	}
+
+	// namespacedVariableProps is a map from namespaces (e.g. acme, android,
+	// vendor_foo) to the soong_config_variable struct pointers, containing
+	// properties for that particular module.
+	src := dep.namespacedVariableProps()
+	dst := b.namespacedVariableProps()
+	if dst == nil {
+		dst = make(namespacedVariableProperties)
+	}
+
+	for namespace := range src {
+		if dst[namespace] == nil {
+			// If dst does not have the same namespace, then we'll need to clone
+			// src[namespace] into dst[namespace], instead of assigning
+			// src[namespace] to dst[namespace]. This is because src[namespace]
+			// is a struct pointer, and changes/writes to that are unsafe if src
+			// is a common dep between multiple modules.
+
+			// 1. Create an empty copy of the src properties.
+			dstProps := []interface{}{
+				// Convert the src[namespace] interface{} (which holds a
+				// struct pointer for the soong_config_variables struct)
+				// to a reflect.Value, create a cloned struct with empty
+				// props, and return it as an interface{}.
+				proptools.CloneEmptyProperties(reflect.ValueOf(src[namespace])).Interface(),
+			}
+			// 2. Copy the property values over.
+			err := proptools.PrependMatchingProperties(dstProps, src[namespace], nil)
+			if err != nil {
+				panic(err)
+			}
+			// 3. Assign the cloned prop to dst[namespace].
+			dst[namespace] = dstProps[0]
+		} else {
+			// If dst[namespace] exists, then we can just merge src[namespace] into
+			// the struct pointer represented by dst[namespace].
+			// dstProps := []interface{}{dst[namespace]}
+			newMergedProps := []interface{}{
+				proptools.CloneEmptyProperties(dep.BaseModuleType().FactoryProps).Interface(),
+			}
+			fmt.Printf("%+v\n", dep.BaseModuleType().FactoryProps.Interface())
+			fmt.Printf("%+v\n", src[namespace])
+			fmt.Printf("%+v\n", dst[namespace])
+			err := proptools.PrependMatchingProperties(newMergedProps, src[namespace], nil)
+			if err != nil {
+				panic(err)
+			}
+			err = proptools.PrependMatchingProperties(newMergedProps, dst[namespace], nil)
+			if err != nil {
+				panic(err)
+			}
+			// unconditionallyMergeStructPtrs(reflect.ValueOf(dst[namespace]), reflect.ValueOf(src[namespace]))
+			dst[namespace] = newMergedProps[0]
+		}
+	}
+
+	b.setNamespacedVariableProps(dst)
+}
+
+// Merge all fields from src into dst. If the field the same name/type in dst
+// and src, recursively merge into the field. If the field is a slice, append
+// the slices together.
+func mergeStructsRecursively(dst, src reflect.Value) {
+	if !src.IsValid() {
+		return
+	}
+	if !dst.IsValid() {
+		return
+	}
+	src, _ = maybeExtractConfigVarProp(src)
+	if dst.Kind() != src.Kind() {
+		panic(fmt.Errorf("%s %s", dst.Kind(), src.Kind()))
+	}
+
+	switch src.Kind() {
+	case reflect.Struct:
+		missingDstValues := []reflect.Value{}
+		missingDstFields := []reflect.StructField{}
+		for i := 0; i < src.NumField(); i++ {
+			srcFieldName := src.Type().Field(i).Name
+			dstField := dst.FieldByName(srcFieldName)
+			srcField := src.FieldByName(srcFieldName)
+			if dstField.IsValid() {
+				mergeStructsRecursively(dstField, srcField)
+			} else {
+				// dst does not have a field named as srcFieldName. We'll need
+				// to create a new struct type that contains the union of struct
+				// fields in src and dst.
+				missingDstFields = append(missingDstFields, reflect.StructField{
+					Name: srcFieldName,
+					Type: srcField.Type(),
+				})
+				missingDstValues = append(missingDstValues, srcField)
+			}
+		}
+
+		if len(missingDstFields) > 0 {
+			// Create the new struct type.
+			for i := 0; i < dst.NumField(); i++ {
+				dstFieldName := dst.Type().Field(i).Name
+				dstField := dst.FieldByName(dstFieldName)
+				missingDstFields = append(missingDstFields, reflect.StructField{
+					Name: dstFieldName,
+					Type: dstField.Type(),
+				})
+				missingDstValues = append(missingDstValues, dstField)
+			}
+
+			newStructType := reflect.StructOf(missingDstFields)
+			newStruct := reflect.New(newStructType).Elem()
+			for i := 0; i < newStruct.NumField(); i++ {
+				newStruct.Field(i).Set(missingDstValues[i])
+			}
+			// Fails
+			// reflect.Set: value of type struct { Asflags []string; Cflags []string } is not assignable to type struct { Cflags []string }
+			dst.Set(newStruct)
+			// Use pointers?
+		}
+	case reflect.Interface, reflect.Ptr:
+		mergeStructsRecursively(dst.Elem(), src.Elem())
+	case reflect.Slice:
+		dst.Set(reflect.AppendSlice(dst, src))
+	default:
+		// do nothing
+	}
+
+	return
+}
+
+// mergeStructs
+func unconditionallyMergeStructPtrs(dst, src reflect.Value) {
+	if dst.Kind() != reflect.Ptr || src.Kind() != reflect.Ptr {
+		panic(fmt.Errorf("Expected ptrs, got %s and %s", dst.Kind(), src.Kind()))
+	}
+
+	dst = dst.Elem()
+	src = src.Elem()
+
+	if dst.Kind() != reflect.Struct || src.Kind() != reflect.Struct {
+		panic(fmt.Errorf("Expected structs, got %s and %s", dst.Kind(), src.Kind()))
+	}
+
+	mergeStructsRecursively(dst, src)
+}
+
+type structNode struct {
+	nameFragment string
+	children     []structNode
+	typ          reflect.Type
+}
+
+func (s *structNode) collectStructFields(scv reflect.Value) {
+	scv = scv.Elem()
+	// struct
+	scv = scv.FieldByName("Soong_config_variables")
+
+	for i := 0; i < scv.NumField(); i++ {
+		sn := structNode{}
+		featureName := scv.Type().Field(i).Name
+		featureField, _ := maybeExtractConfigVarProp(scv.FieldByName(featureName))
+		sn.nameFragment = featureName
+		sn.children = []structNode{}
+
+		for j := 0; j < featureField.NumField(); j++ {
+			ssn := structNode{}
+			propertyName := featureField.Type().Field(j).Name
+			property := featureField.Field(j)
+			ssn.nameFragment = propertyName
+			ssn.children = []structNode{}
+
+			if v, ok := maybeExtractConfigVarProp(property); ok {
+				for k := 0; k < v.NumField(); k++ {
+					sssn := structNode{}
+					vName := v.Type().Field(k).Name
+					vField := v.Field(k)
+					sssn.nameFragment = vName
+					sssn.typ = vField.Type()
+					ssn.children = append(ssn.children, sssn)
+				}
+			} else {
+				ssn.typ = property.Type()
+			}
+			sn.children = append(sn.children, ssn)
+		}
+		s.children = append(s.children, sn)
+	}
+}
+
+func (m *structNode) makeStructFields() []reflect.StructField {
+	ret := []reflect.StructField{}
+	if len(m.children) == 0 {
+		return append(ret, reflect.StructField{Name: m.nameFragment, Type: m.typ})
+	}
+	seen := map[string]bool{}
+	childStructs := []reflect.StructField{}
+	for _, c := range m.children {
+		if _, ok := seen[c.nameFragment]; !ok {
+			childStructs = append(childStructs, c.makeStructFields()...)
+		}
+		seen[c.nameFragment] = true
+	}
+	ret = append(ret, reflect.StructField{
+		Name: m.nameFragment,
+		Type: reflect.StructOf(childStructs),
+	})
+	return ret
+}
+
 func (defaultable *DefaultableModuleBase) applyDefaults(ctx TopDownMutatorContext,
 	defaultsList []Defaults) {
 
+	if ctx.Config().runningAsBp2Build {
+		namespacedMergedStructs := map[string]structNode{}
+		namespacedMergedStructValues := map[string]reflect.Value{}
+		for _, defaults := range defaultsList {
+			if b, ok := defaults.(Bazelable); ok {
+				for namespace, scv := range b.namespacedVariableProps() {
+					if _, ok := namespacedMergedStructs[namespace]; !ok {
+						namespacedMergedStructs[namespace] = structNode{nameFragment: "Soong_config_variables"}
+					}
+					nms := namespacedMergedStructs[namespace]
+					nms.collectStructFields(reflect.ValueOf(scv))
+					namespacedMergedStructs[namespace] = nms
+				}
+			}
+		}
+		for k, v := range namespacedMergedStructs {
+			namespacedMergedStructValues[k] = reflect.New(reflect.StructOf(v.makeStructFields()))
+		}
+		b, ok := ctx.Module().(Bazelable)
+		if ok {
+			if b.namespacedVariableProps() == nil {
+				b.setNamespacedVariableProps(namespacedVariableProperties{})
+			}
+			for namespace, props := range b.namespacedVariableProps() {
+				dst := []interface{}{namespacedMergedStructValues[namespace].Interface()}
+				// unconditionallyMergeStructPtrs(dst, reflect.ValueOf(props))
+				err := proptools.ExtendMatchingProperties(dst, props, nil, nil)
+				if err != nil {
+					panic(err)
+				}
+				b.namespacedVariableProps()[namespace] = dst[0]
+			}
+			for _, defaults := range defaultsList {
+				if d, ok := defaults.(Bazelable); ok {
+					for namespace, props := range d.namespacedVariableProps() {
+						if b.namespacedVariableProps()[namespace] == nil {
+							// dst := namespacedMergedStructValues[namespace]
+							dst := []interface{}{namespacedMergedStructValues[namespace].Interface()}
+							err := proptools.ExtendMatchingProperties(dst, props, nil, nil)
+							if err != nil {
+								panic(err)
+							}
+							// unconditionallyMergeStructPtrs(dst, reflect.ValueOf(props))
+							b.namespacedVariableProps()[namespace] = dst[0]
+						} else {
+							dst := []interface{}{b.namespacedVariableProps()[namespace]}
+							// unconditionallyMergeStructPtrs(reflect.ValueOf(dst), reflect.ValueOf(props))
+							err := proptools.ExtendMatchingProperties(dst, props, nil, nil)
+							if err != nil {
+								panic(err)
+							}
+							b.namespacedVariableProps()[namespace] = dst[0]
+						}
+					}
+				}
+			}
+
+		}
+
+		fmt.Println(namespacedMergedStructValues)
+	}
 	for _, defaults := range defaultsList {
+		// For every prop that's defaultable
 		for _, prop := range defaultable.defaultableProperties {
 			if prop == defaultable.defaultableVariableProperties {
 				defaultable.applyDefaultVariableProperties(ctx, defaults, prop)

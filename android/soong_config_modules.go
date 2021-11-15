@@ -430,7 +430,10 @@ func configModuleFactory(factory blueprint.ModuleFactory, moduleType *soongconfi
 			// creating the custom module with the factory.
 			AddLoadHook(module, func(ctx LoadHookContext) {
 				if m, ok := module.(Bazelable); ok {
-					m.SetBaseModuleType(moduleType.BaseModuleType)
+					m.SetBaseModuleType(baseModuleType{
+						Name:         moduleType.BaseModuleType,
+						FactoryProps: conditionalFactoryProps,
+					})
 					// Instead of applying all properties, keep the entire conditionalProps struct as
 					// part of the custom module so dependent modules can create the selects accordingly
 					m.setNamespacedVariableProps(namespacedVariableProperties{

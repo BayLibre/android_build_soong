@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
+	"reflect"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -55,7 +56,7 @@ type BazelModuleBase struct {
 	// "wraps" another module type, e.g. a soong_config_module_type can wrap a
 	// cc_defaults to a custom_cc_defaults, or cc_binary to a custom_cc_binary.
 	// This baseModuleType is set to the wrapped module type.
-	baseModuleType string
+	baseModuleType baseModuleType
 }
 
 // Bazelable is specifies the interface for modules that can be converted to Bazel.
@@ -71,8 +72,13 @@ type Bazelable interface {
 	// For namespaced config variable support
 	namespacedVariableProps() namespacedVariableProperties
 	setNamespacedVariableProps(props namespacedVariableProperties)
-	BaseModuleType() string
-	SetBaseModuleType(string)
+	BaseModuleType() baseModuleType
+	SetBaseModuleType(baseModuleType)
+}
+
+type baseModuleType struct {
+	Name         string
+	FactoryProps reflect.Value
 }
 
 // BazelModule is a lightweight wrapper interface around Module for Bazel-convertible modules.
@@ -100,11 +106,11 @@ func (b *BazelModuleBase) setNamespacedVariableProps(props namespacedVariablePro
 	b.namespacedVariableProperties = props
 }
 
-func (b *BazelModuleBase) BaseModuleType() string {
+func (b *BazelModuleBase) BaseModuleType() baseModuleType {
 	return b.baseModuleType
 }
 
-func (b *BazelModuleBase) SetBaseModuleType(baseModuleType string) {
+func (b *BazelModuleBase) SetBaseModuleType(baseModuleType baseModuleType) {
 	b.baseModuleType = baseModuleType
 }
 
@@ -237,6 +243,7 @@ var (
 		"packages/modules/adb/proto":                         Bp2BuildDefaultTrueRecursively,
 		"packages/modules/adb/tls":                           Bp2BuildDefaultTrueRecursively,
 		"prebuilts/clang/host/linux-x86":                     Bp2BuildDefaultTrueRecursively,
+		"system/apex":                                        Bp2BuildDefaultTrue,
 		"system/core/diagnose_usb":                           Bp2BuildDefaultTrueRecursively,
 		"system/core/libasyncio":                             Bp2BuildDefaultTrue,
 		"system/core/libcrypto_utils":                        Bp2BuildDefaultTrueRecursively,
@@ -427,10 +434,10 @@ func (b *BazelModuleBase) convertWithBp2build(ctx BazelConversionContext, module
 	// prevents mixed builds from using auto-converted modules just by matching
 	// the package dir; it also has to have a bp2build mutator as well.
 	if ctx.Config().bp2buildModuleTypeConfig[ctx.OtherModuleType(module)] == false {
-		if b, ok := module.(Bazelable); ok && b.BaseModuleType() != "" {
+		if b, ok := module.(Bazelable); ok && b.BaseModuleType().Name != "" {
 			// For modules with custom types from soong_config_module_types,
 			// check that their _base module type_ has a bp2build mutator.
-			if ctx.Config().bp2buildModuleTypeConfig[b.BaseModuleType()] == false {
+			if ctx.Config().bp2buildModuleTypeConfig[b.BaseModuleType().Name] == false {
 				return false
 			}
 		} else {
