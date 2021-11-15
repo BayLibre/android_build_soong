@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e8d3987_42b8e45a",
+        "filename": "rust/toolchain_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2021-11-15T22:22:53Z",
+      "side": 1,
+      "message": "This could all be abstracted out into a helper function that returns the result of module.Init().",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "c266352264f289fdd28fc4fb320ef1543de265c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
