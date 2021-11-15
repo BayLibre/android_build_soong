@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "86d40be5_430b9ef4",
+        "filename": "bp2build/android_app_certificate_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-15T07:19:03Z",
+      "side": 1,
+      "message": "(see other comment)",
+      "parentUuid": "bde0a86f_0422bdf5",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "990a818c96ec3c93415849de0186b4fc13413162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "4c24ba8d_3b29cfe1",
         "filename": "bp2build/build_conversion_test.go",
         "patchSetId": 1
