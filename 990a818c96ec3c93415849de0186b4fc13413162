@@ -67,6 +67,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4642d913_72b68d84",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-15T16:25:44Z",
+      "side": 1,
+      "message": "agreed, that it\u0027s unfortunate.\n\nthe current code for formatting isn\u0027t easily reused in testing, and i didn\u0027t want to write helpers for each type...\n\npart of me keeps waiting to bring buildifier into the tree and then...just care ~0 about formatting...",
+      "parentUuid": "4c24ba8d_3b29cfe1",
+      "revId": "990a818c96ec3c93415849de0186b4fc13413162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9f9335b2_66eade3c",
         "filename": "bp2build/build_conversion_test.go",
         "patchSetId": 1
@@ -141,6 +159,48 @@
       "writtenOn": "2021-11-15T07:18:48Z",
       "side": 1,
       "message": "I prefer that name is special cased for easier eyeballing.",
+      "parentUuid": "cae2e20d_efa548fa",
+      "revId": "990a818c96ec3c93415849de0186b4fc13413162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44d61611_93d92c55",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-15T16:25:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b4b4561_cd8ff60f",
+      "range": {
+        "startLine": 370,
+        "startChar": 5,
+        "endLine": 370,
+        "endChar": 33
+      },
+      "revId": "990a818c96ec3c93415849de0186b4fc13413162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d9dca2_e51248b0",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-15T16:25:44Z",
+      "side": 1,
+      "message": "I\u0027d separated it because name is always first and I thought it would make sorting the attr names more annoying...",
       "parentUuid": "cae2e20d_efa548fa",
       "revId": "990a818c96ec3c93415849de0186b4fc13413162",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
