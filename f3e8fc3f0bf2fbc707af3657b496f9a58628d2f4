@@ -16,6 +16,23 @@
       "message": "Presubmit test failure is unrelated, looks flaky",
       "revId": "f3e8fc3f0bf2fbc707af3657b496f9a58628d2f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6a234e2_c91afc9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2021-11-15T16:02:38Z",
+      "side": 1,
+      "message": "Bypassing presubmit (failing test is due to b/206336727)",
+      "revId": "f3e8fc3f0bf2fbc707af3657b496f9a58628d2f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
