@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "681edacd_d3cc0bad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-15T19:07:36Z",
+      "side": 1,
+      "message": "nit: we\u0027re not logging a .pb yet, can focus this cl description on adding a proto for bp2build metrics.",
+      "range": {
+        "startLine": 9,
+        "startChar": 17,
+        "endLine": 9,
+        "endChar": 33
+      },
+      "revId": "9b6f09e63e7250ba61476a519be69f3bf98793ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ddccba7_e0979a9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-15T19:07:36Z",
+      "side": 1,
+      "message": "since this change only affects Soong builds, so it should be unnecessary to test bp2build or mixed builds",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 38
+      },
+      "revId": "9b6f09e63e7250ba61476a519be69f3bf98793ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9e61a1e6_9d868e9c",
@@ -14,6 +60,24 @@
       "writtenOn": "2021-11-11T23:15:18Z",
       "side": 1,
       "message": "Trying to see if they\u0027ll run presubmit together given topic...",
+      "revId": "9b6f09e63e7250ba61476a519be69f3bf98793ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9ceb571_a0d5d026",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-15T19:07:36Z",
+      "side": 1,
+      "message": "We\u0027ve previously discussed removing the topic so that these can be submitted sequentially.\n\nCan we please remove the topic and separate the non-proto-related bits to the second CL?",
+      "parentUuid": "9e61a1e6_9d868e9c",
       "revId": "9b6f09e63e7250ba61476a519be69f3bf98793ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
