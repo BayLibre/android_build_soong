@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38dc30a5_3d7412e5",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-15T08:26:33Z",
+      "side": 1,
+      "message": "It seems a little odd to link into bp2build here. Can we use android/soong/shared (which is for sharing code between soong_ui and soong_build), or move the Dump function into soong/ui/build, similar to what https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/rbe.go is doing for build.DumpRBEMetrics?\n\n(probably needs a change in the parent CL)",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 45
+      },
+      "revId": "ab5b00ec3cbd59d1c35fb152812ea4ddc8be3a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fac48f3_65d20143",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-15T08:26:33Z",
+      "side": 1,
+      "message": "Why is this export needed?",
+      "range": {
+        "startLine": 199,
+        "startChar": 8,
+        "endLine": 199,
+        "endChar": 12
+      },
+      "revId": "ab5b00ec3cbd59d1c35fb152812ea4ddc8be3a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
