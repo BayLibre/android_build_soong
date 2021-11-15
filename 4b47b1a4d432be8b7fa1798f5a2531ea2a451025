@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbb4b2bd_7f1fe127",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-15T16:45:51Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 497,
+        "startChar": 29,
+        "endLine": 497,
+        "endChar": 39
+      },
+      "revId": "4b47b1a4d432be8b7fa1798f5a2531ea2a451025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cfb9748_f5dcc53a",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-15T16:45:51Z",
+      "side": 1,
+      "message": "it looks like this is not a map to a slice anymore, but then what are the values of this map?",
+      "range": {
+        "startLine": 596,
+        "startChar": 58,
+        "endLine": 596,
+        "endChar": 63
+      },
+      "revId": "4b47b1a4d432be8b7fa1798f5a2531ea2a451025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ddacafe_fd3f0aa6",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-15T16:45:51Z",
+      "side": 1,
+      "message": "Now I understand why I am so confused! In my mind, soong_config_variables and product_variables are very different things whose syntax is confusingly similar and thus I have to keep juggling both in my head to understand what\u0027s going on here.\n\nI would have considered splitting handling the two into two separate functions, but it\u0027s okay this way, too. That way, there would probably be an annoying amount of code duplication.",
+      "range": {
+        "startLine": 697,
+        "startChar": 5,
+        "endLine": 697,
+        "endChar": 26
+      },
+      "revId": "4b47b1a4d432be8b7fa1798f5a2531ea2a451025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c097326e_dab9cb9f",
+        "filename": "android/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 799,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-15T16:45:51Z",
+      "side": 1,
+      "message": "nit: maybe add a comment that says \"this can be conditions_default also\"?",
+      "range": {
+        "startLine": 799,
+        "startChar": 5,
+        "endLine": 799,
+        "endChar": 11
+      },
+      "revId": "4b47b1a4d432be8b7fa1798f5a2531ea2a451025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
