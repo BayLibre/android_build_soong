@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e6bd9ce_eaba6eb3",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-15T22:36:39Z",
+      "side": 1,
+      "message": "does this ever actually happen? If not, could we enforce that this isn\u0027t supported?",
+      "range": {
+        "startLine": 393,
+        "startChar": 5,
+        "endLine": 393,
+        "endChar": 63
+      },
+      "revId": "6be9a4b2100357c80885c1965d68890cbe58673f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
