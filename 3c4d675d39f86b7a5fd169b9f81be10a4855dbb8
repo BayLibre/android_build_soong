@@ -16,6 +16,69 @@
       "message": "Friendly ping for owners review",
       "revId": "3c4d675d39f86b7a5fd169b9f81be10a4855dbb8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db4f18e4_6068e440",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-15T21:42:01Z",
+      "side": 1,
+      "message": "No need for return after Fatalf",
+      "revId": "3c4d675d39f86b7a5fd169b9f81be10a4855dbb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a5599e_d0727a12",
+        "filename": "cc/cc_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-15T21:42:01Z",
+      "side": 1,
+      "message": "Use Fatalf if you don\u0027t want to continue",
+      "range": {
+        "startLine": 761,
+        "startChar": 4,
+        "endLine": 761,
+        "endChar": 10
+      },
+      "revId": "3c4d675d39f86b7a5fd169b9f81be10a4855dbb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "985aee7e_58bd182b",
+        "filename": "rust/test_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-15T21:42:01Z",
+      "side": 1,
+      "message": "Fatalf",
+      "range": {
+        "startLine": 113,
+        "startChar": 4,
+        "endLine": 113,
+        "endChar": 10
+      },
+      "revId": "3c4d675d39f86b7a5fd169b9f81be10a4855dbb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
