@@ -22,6 +22,30 @@
       },
       "revId": "0f4965e0b4bd4dcc6b5ffec7e0cf3d125533b021",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8c77f23_6f1023f9",
+        "filename": "android/defaults.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-15T12:36:39Z",
+      "side": 1,
+      "message": "As discussed offline, good catch - I\u0027m working a some union/merging logic here for structs for the same namespace, but it\u0027s not trivial to handle reflect.Value struct merging :( \n\nI\u0027m breaking this change up into two so that I can make some semblance of progress, between product config select key creation and defaults portions:\n\nhttps://android-review.googlesource.com/c/platform/build/soong/+/1892222\nhttps://android-review.googlesource.com/c/platform/build/soong/+/1892223 (still WIP)",
+      "parentUuid": "bd2dca21_9e1b76fb",
+      "range": {
+        "startLine": 271,
+        "startChar": 3,
+        "endLine": 271,
+        "endChar": 60
+      },
+      "revId": "0f4965e0b4bd4dcc6b5ffec7e0cf3d125533b021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
