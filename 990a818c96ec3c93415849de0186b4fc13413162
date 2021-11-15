@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde0a86f_0422bdf5",
+        "filename": "bp2build/android_app_certificate_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-15T07:18:48Z",
+      "side": 1,
+      "message": "nit: make this a bit shorter, like `expectedBazelTarget`?",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 46,
+        "endChar": 31
+      },
+      "revId": "990a818c96ec3c93415849de0186b4fc13413162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4c24ba8d_3b29cfe1",
@@ -20,6 +43,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9f9335b2_66eade3c",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-15T07:18:48Z",
+      "side": 1,
+      "message": "nice",
+      "range": {
+        "startLine": 1239,
+        "startChar": 3,
+        "endLine": 1239,
+        "endChar": 28
+      },
+      "revId": "990a818c96ec3c93415849de0186b4fc13413162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cae2e20d_efa548fa",
         "filename": "bp2build/testing.go",
         "patchSetId": 1
@@ -31,6 +77,47 @@
       "writtenOn": "2021-11-11T20:41:34Z",
       "side": 1,
       "message": "(Non-blocking) Is there a rationale for not treating name as just another attr that belongs in attrNameToString?",
+      "revId": "990a818c96ec3c93415849de0186b4fc13413162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b4b4561_cd8ff60f",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-15T07:18:48Z",
+      "side": 1,
+      "message": "nit: this can be a bit shorter and still retain readability, like makeBazelTarget",
+      "range": {
+        "startLine": 370,
+        "startChar": 5,
+        "endLine": 370,
+        "endChar": 33
+      },
+      "revId": "990a818c96ec3c93415849de0186b4fc13413162",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7699a853_80667418",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-15T07:18:48Z",
+      "side": 1,
+      "message": "I prefer that name is special cased for easier eyeballing.",
+      "parentUuid": "cae2e20d_efa548fa",
       "revId": "990a818c96ec3c93415849de0186b4fc13413162",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
