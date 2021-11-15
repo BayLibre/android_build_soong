@@ -847,6 +847,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b45ed99_9aa1f3af",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-15T22:57:11Z",
+      "side": 1,
+      "message": "From the offline discussion, will do this in a following up CL, https://b.corp.google.com/issues/205615944",
+      "parentUuid": "539a199e_f88b9b19",
+      "range": {
+        "startLine": 1519,
+        "startChar": 0,
+        "endLine": 1529,
+        "endChar": 7
+      },
+      "revId": "2b2f38f5ca8f9e3fc217802df7616dfbfdaea8b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1336fbf7_9c8503ce",
