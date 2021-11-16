@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c695cfcc_221f259b",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-16T19:45:50Z",
+      "side": 1,
+      "message": "the changes in this file should be in the other CL, otherwise, this CL is looking good.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "9eaaf3e32a442e54d1b81937a48c4e27813b05d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
