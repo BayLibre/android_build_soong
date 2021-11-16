@@ -117,6 +117,10 @@ type appProperties struct {
 	// Prefer using other specific properties if build behaviour must be changed; avoid using this
 	// flag for anything but neverallow rules (unless the behaviour change is invisible to owners).
 	Updatable *bool
+
+	// Whether to compile against the platform APIs instead of an SDK.
+	// If true, then sdk_version must be empty.
+	Platform_apis *bool
 }
 
 // android_app properties that can be overridden by override_android_app
@@ -194,6 +198,19 @@ func (a *AndroidApp) Certificate() Certificate {
 
 func (a *AndroidApp) JniCoverageOutputs() android.Paths {
 	return a.jniCoverageOutputs
+}
+
+func (a *AndroidApp) checkPlatformAPI(ctx android.ModuleContext) {
+	if sc, ok := ctx.Module().(android.SdkContext); ok {
+		usePlatformAPI := proptools.Bool(a.appProperties.Platform_apis)
+		sdkVersionSpecified := sc.SdkVersion(ctx).Specified()
+		if usePlatformAPI && sdkVersionSpecified {
+			ctx.PropertyErrorf("platform_apis", "platform_apis must be false when sdk_version is not empty.")
+		} else if !usePlatformAPI && !sdkVersionSpecified {
+			ctx.PropertyErrorf("platform_apis", "platform_apis must be true when sdk_version is empty.")
+		}
+
+	}
 }
 
 var _ AndroidLibraryDependency = (*AndroidApp)(nil)
@@ -383,7 +400,7 @@ func (a *AndroidApp) renameResourcesPackage() bool {
 }
 
 func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
-	usePlatformAPI := proptools.Bool(a.Module.deviceProperties.Platform_apis)
+	usePlatformAPI := proptools.Bool(a.appProperties.Platform_apis)
 	if ctx.Module().(android.SdkContext).SdkVersion(ctx).Kind == android.SdkModule {
 		usePlatformAPI = true
 	}

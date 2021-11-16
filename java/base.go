@@ -196,11 +196,6 @@ type DeviceProperties struct {
 	// Defaults to sdk_version if not set.
 	Target_sdk_version *string
 
-	// Whether to compile against the platform APIs instead of an SDK.
-	// If true, then sdk_version must be empty. The value of this field
-	// is ignored when module's type isn't android_app.
-	Platform_apis *bool
-
 	Aidl struct {
 		// Top level directories to pass to aidl tool
 		Include_dirs []string
@@ -495,19 +490,6 @@ func (j *Module) checkSdkVersions(ctx android.ModuleContext) {
 			}
 		}
 	})
-}
-
-func (j *Module) checkPlatformAPI(ctx android.ModuleContext) {
-	if sc, ok := ctx.Module().(android.SdkContext); ok {
-		usePlatformAPI := proptools.Bool(j.deviceProperties.Platform_apis)
-		sdkVersionSpecified := sc.SdkVersion(ctx).Specified()
-		if usePlatformAPI && sdkVersionSpecified {
-			ctx.PropertyErrorf("platform_apis", "platform_apis must be false when sdk_version is not empty.")
-		} else if !usePlatformAPI && !sdkVersionSpecified {
-			ctx.PropertyErrorf("platform_apis", "platform_apis must be true when sdk_version is empty.")
-		}
-
-	}
 }
 
 func (j *Module) addHostProperties() {
