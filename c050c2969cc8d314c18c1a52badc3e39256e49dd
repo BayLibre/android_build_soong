@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d1e4cfb_b4e22a3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-11-16T09:21:59Z",
+      "side": 1,
+      "message": "Thanks for seeing this all the way through! I can confirm that the Darwin sdk tools build works with this as well. We should be all set.",
+      "revId": "c050c2969cc8d314c18c1a52badc3e39256e49dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
