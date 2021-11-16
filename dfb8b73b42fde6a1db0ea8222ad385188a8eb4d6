@@ -477,6 +477,30 @@
       },
       "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4fcd0b1_d757f75c",
+        "filename": "ui/codegen_metrics_proto/regen.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-16T19:52:58Z",
+      "side": 1,
+      "message": "Are the changes there satisfactory?",
+      "parentUuid": "2cb77670_3989e931",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 6
+      },
+      "revId": "dfb8b73b42fde6a1db0ea8222ad385188a8eb4d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
