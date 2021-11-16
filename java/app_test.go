@@ -1055,7 +1055,8 @@ func TestAppSdkVersion(t *testing.T) {
 		for _, test := range testCases {
 			t.Run(moduleType+" "+test.name, func(t *testing.T) {
 				platformApiProp := ""
-				if test.platformApis {
+				// platform_apis is used only in android_app
+				if moduleType == "android_app" && test.platformApis {
 					platformApiProp = "platform_apis: true,"
 				}
 				bp := fmt.Sprintf(`%s {

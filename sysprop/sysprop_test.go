@@ -189,7 +189,6 @@ func TestSyspropLibrary(t *testing.T) {
 		java_library {
 			name: "java-platform-private",
 			srcs: ["c.java"],
-			platform_apis: true,
 			libs: ["sysprop-platform"],
 		}
 
