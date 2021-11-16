@@ -224,9 +224,9 @@ func (s *toStringExpr) emit(ctx *generationContext) {
 		s.expr.emit(ctx)
 		ctx.write("))")
 	case starlarkTypeBool:
-		ctx.write("((")
+		ctx.write(`("true" if (`)
 		s.expr.emit(ctx)
-		ctx.write(`) ? "true" : "")`)
+		ctx.write(`) else "")`)
 	case starlarkTypeVoid:
 		ctx.write(`""`)
 	default:
@@ -285,20 +285,33 @@ func (eq *eqExpr) eval(valueMap map[string]starlarkExpr) (res starlarkExpr, same
 }
 
 func (eq *eqExpr) emit(gctx *generationContext) {
-	emitSimple := func(expr starlarkExpr) {
-		if eq.isEq {
-			gctx.write("not ")
+	emitSimple := func(s string, expr starlarkExpr) bool {
+		if s == "" {
+			if eq.isEq {
+				gctx.write("not ")
+			}
+			expr.emit(gctx)
+			return true
 		}
-		expr.emit(gctx)
+		if s == "true" && expr.typ() == starlarkTypeBool {
+			if !eq.isEq {
+				gctx.write("not ")
+			}
+			expr.emit(gctx)
+			return true
+		}
+		return false
 	}
-	// Are we checking that a variable is empty?
-	if isEmptyString(eq.left) {
-		emitSimple(eq.right)
-		return
-	} else if isEmptyString(eq.right) {
-		emitSimple(eq.left)
-		return
 
+	if s, ok := maybeString(eq.left); ok {
+		if emitSimple(s, eq.right) {
+			return
+		}
+	}
+	if s, ok := maybeString(eq.right); ok {
+		if emitSimple(s, eq.left) {
+			return
+		}
 	}
 
 	if eq.left.typ() != eq.right.typ() {
