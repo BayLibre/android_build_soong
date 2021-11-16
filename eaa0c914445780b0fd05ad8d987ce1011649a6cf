@@ -39,6 +39,30 @@
       },
       "revId": "eaa0c914445780b0fd05ad8d987ce1011649a6cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e46d7b6_21020069",
+        "filename": "android/defaults.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-16T12:18:43Z",
+      "side": 1,
+      "message": "Sorry, I should have removed reviewers from this CL: I divided this CL into two, and submitted the first. I\u0027m still working on the second.\n\nhttps://android-review.googlesource.com/c/platform/build/soong/+/1892222\nhttps://android-review.googlesource.com/c/platform/build/soong/+/1892223 (still WIP)",
+      "parentUuid": "05ba6473_d66dfb52",
+      "range": {
+        "startLine": 339,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 19
+      },
+      "revId": "eaa0c914445780b0fd05ad8d987ce1011649a6cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
