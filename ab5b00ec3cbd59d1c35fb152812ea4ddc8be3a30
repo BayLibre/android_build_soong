@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36a0cf11_6e13b052",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-16T05:49:10Z",
+      "side": 1,
+      "message": "Yeah, android/soong/shared is probably the better place to share code between soong_ui and soong_build instead of linking android/soong/bp2build directly.",
+      "parentUuid": "c02dedc0_7d444ec3",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 45
+      },
+      "revId": "ab5b00ec3cbd59d1c35fb152812ea4ddc8be3a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fac48f3_65d20143",
         "filename": "ui/metrics/metrics.go",
         "patchSetId": 16
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Because I didn\u0027t want to duplicate the provided functionality. Should I move it elsewhere?",
       "parentUuid": "3fac48f3_65d20143",
+      "range": {
+        "startLine": 199,
+        "startChar": 8,
+        "endLine": 199,
+        "endChar": 12
+      },
+      "revId": "ab5b00ec3cbd59d1c35fb152812ea4ddc8be3a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7c3ab18_c88c35fa",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-16T05:49:10Z",
+      "side": 1,
+      "message": "(see other comment)",
+      "parentUuid": "1dd97483_1ab3d1c2",
       "range": {
         "startLine": 199,
         "startChar": 8,
