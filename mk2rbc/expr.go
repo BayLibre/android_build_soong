@@ -285,20 +285,31 @@ func (eq *eqExpr) eval(valueMap map[string]starlarkExpr) (res starlarkExpr, same
 }
 
 func (eq *eqExpr) emit(gctx *generationContext) {
-	emitSimple := func(expr starlarkExpr) {
-		if eq.isEq {
-			gctx.write("not ")
+	findSpecialCases := func(left starlarkExpr, right starlarkExpr) bool {
+		if isEmptyString(left) {
+			if eq.isEq {
+				gctx.write("not ")
+			}
+			right.emit(gctx)
+			return true
 		}
-		expr.emit(gctx)
+		if x, ok := left.(*stringLiteralExpr); ok && x.literal == "true" && right.typ() == starlarkTypeBool {
+			if !eq.isEq {
+				gctx.write("not ")
+			}
+			right.emit(gctx)
+			return true
+		}
+		return false
 	}
-	// Are we checking that a variable is empty?
-	if isEmptyString(eq.left) {
-		emitSimple(eq.right)
-		return
-	} else if isEmptyString(eq.right) {
-		emitSimple(eq.left)
-		return
 
+	// To simplify the code that looks for empty spaces, search twice, but
+	// with the order of the operands swapped the second time.
+	if findSpecialCases(eq.left, eq.right) {
+		return
+	}
+	if findSpecialCases(eq.right, eq.left) {
+		return
 	}
 
 	if eq.left.typ() != eq.right.typ() {
