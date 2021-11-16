@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98379cc7_5fe21a7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 32
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-11-16T09:55:47Z",
+      "side": 1,
+      "message": "Update the description to say that you wrote tests?\n\n(Just says Test: CI at the moment)",
+      "revId": "eaa0c914445780b0fd05ad8d987ce1011649a6cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05ba6473_d66dfb52",
+        "filename": "android/defaults.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-11-16T09:55:47Z",
+      "side": 1,
+      "message": "Should these comments be removed?",
+      "range": {
+        "startLine": 339,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 19
+      },
+      "revId": "eaa0c914445780b0fd05ad8d987ce1011649a6cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
