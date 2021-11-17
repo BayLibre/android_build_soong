@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4e63ac1_d30c8026",
+        "filename": "android/variable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-17T15:35:24Z",
+      "side": 1,
+      "message": "No, those require struct pointers. There\u0027s ExtendBasicType which seems like it should work, but I ran into some reflection errors around settability that I\u0027d like to defer till later.",
+      "parentUuid": "56352fc6_babb27db",
+      "range": {
+        "startLine": 678,
+        "startChar": 3,
+        "endLine": 678,
+        "endChar": 48
+      },
+      "revId": "b4765628a18177023b8b77a8ba0f665775c29420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49646197_5c982e5c",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-17T12:39:32Z",
       "side": 1,
       "message": "this looks obsolete?",
+      "range": {
+        "startLine": 446,
+        "startChar": 0,
+        "endLine": 446,
+        "endChar": 114
+      },
+      "revId": "b4765628a18177023b8b77a8ba0f665775c29420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e77f091_fb23219c",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-17T15:35:24Z",
+      "side": 1,
+      "message": "(removed)",
+      "parentUuid": "49646197_5c982e5c",
       "range": {
         "startLine": 446,
         "startChar": 0,

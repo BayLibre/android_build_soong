@@ -207,6 +207,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dc44400_989ec98d",
+        "filename": "android/defaults.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-17T15:35:24Z",
+      "side": 1,
+      "message": "If the dep isn\u0027t Bazelable, then it wouldn\u0027t have namespacedVariableProperties interfaces to propagate.",
+      "parentUuid": "57110b17_33c7fa9f",
+      "range": {
+        "startLine": 224,
+        "startChar": 12,
+        "endLine": 224,
+        "endChar": 22
+      },
+      "revId": "5e31c901f66f00d2d2d866da364c118cf3573e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "653ac690_588387e1",
