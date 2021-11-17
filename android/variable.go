@@ -665,7 +665,19 @@ func (p *ProductConfigProperties) AddProductConfigProperty(
 		FullConfig: config,              // e.g. size, feature1-x86, size__conditions_default
 	}
 
-	(*p)[propertyName][productConfigProp] = property
+	if existing, ok := (*p)[propertyName][productConfigProp]; ok && namespace != "" {
+		switch dst := existing.(type) {
+		case []string:
+			if src, ok := property.([]string); ok {
+				dst = append(dst, src...)
+				(*p)[propertyName][productConfigProp] = dst
+			}
+		default:
+			// TODO(jingwen): Add support for more types.
+		}
+	} else {
+		(*p)[propertyName][productConfigProp] = property
+	}
 }
 
 var (
@@ -701,19 +713,10 @@ func maybeExtractConfigVarProp(v reflect.Value) (reflect.Value, bool) {
 	return v, true
 }
 
-// productVariableValues uses reflection to convert a property struct for
-// product_variables and soong_config_variables to structs that can be generated
-// as select statements.
-func productVariableValues(
-	fieldName string, variableProps interface{}, namespace, suffix string, productConfigProperties *ProductConfigProperties) {
-	if suffix != "" {
-		suffix = "-" + suffix
-	}
-
-	// variableValues represent the product_variables or soong_config_variables
-	// struct.
-	variableValues := reflect.ValueOf(variableProps).Elem().FieldByName(fieldName)
-
+func (productConfigProperties *ProductConfigProperties) AddProductConfigProperties(namespace, suffix string, variableValues reflect.Value) {
+	// variableValues can either be a product_variables or
+	// soong_config_variables struct.
+	//
 	// Example of product_variables:
 	//
 	// product_variables: {
@@ -831,6 +834,29 @@ func productVariableValues(
 				)
 			}
 		}
+	}
+}
+
+// productVariableValues uses reflection to convert a property struct for
+// product_variables and soong_config_variables to structs that can be generated
+// as select statements.
+func productVariableValues(
+	fieldName string, variableProps interface{}, namespace, suffix string, productConfigProperties *ProductConfigProperties) {
+	if suffix != "" {
+		suffix = "-" + suffix
+	}
+
+	// variableValues represent the product_variables or soong_config_variables
+	// struct.
+	variableValues := reflect.ValueOf(variableProps)
+	if variableValues.Kind() == reflect.Slice {
+		for i := 0; i < variableValues.Len(); i++ {
+			v := variableValues.Index(i).Elem().Elem().FieldByName(fieldName)
+			productConfigProperties.AddProductConfigProperties(namespace, suffix, v)
+		}
+	} else {
+		variableValues = variableValues.Elem().FieldByName(fieldName)
+		productConfigProperties.AddProductConfigProperties(namespace, suffix, variableValues)
 	}
 }
 

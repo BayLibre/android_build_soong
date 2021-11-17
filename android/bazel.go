@@ -36,7 +36,7 @@ type properties struct {
 // config variable namespace, like "android" or "vendor_name" to a struct
 // pointer representing the soong_config_variables property of a module created
 // by a soong_config_module_type or soong_config_module_type_import.
-type namespacedVariableProperties map[string]interface{}
+type namespacedVariableProperties map[string][]interface{}
 
 // BazelModuleBase contains the property structs with metadata for modules which can be converted to
 // Bazel.
@@ -72,7 +72,7 @@ type Bazelable interface {
 	namespacedVariableProps() namespacedVariableProperties
 	setNamespacedVariableProps(props namespacedVariableProperties)
 	BaseModuleType() string
-	SetBaseModuleType(string)
+	SetBaseModuleType(baseModuleType string)
 }
 
 // BazelModule is a lightweight wrapper interface around Module for Bazel-convertible modules.
