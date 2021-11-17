@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ae46e140_d318ae3c",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-17T04:24:15Z",
+      "side": 1,
+      "message": "I was expecting this line to change to shared.Bp2buildCodegenMetrics{} or something like that, but it\u0027s still linking into the bp2build package directly?\n\nTo put it another way, I was expecting that your change will rid `soong-bp2build` as a dep of `soong_ui`.",
+      "parentUuid": "c2d03393_07b2a20b",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 45
+      },
+      "revId": "ab5b00ec3cbd59d1c35fb152812ea4ddc8be3a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fac48f3_65d20143",
         "filename": "ui/metrics/metrics.go",
         "patchSetId": 16
@@ -181,6 +205,30 @@
       "side": 1,
       "message": "In latest patch.",
       "parentUuid": "a7c3ab18_c88c35fa",
+      "range": {
+        "startLine": 199,
+        "startChar": 8,
+        "endLine": 199,
+        "endChar": 12
+      },
+      "revId": "ab5b00ec3cbd59d1c35fb152812ea4ddc8be3a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74c99809_64e23be7",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-17T04:24:15Z",
+      "side": 1,
+      "message": "(resolving this, let\u0027s use the other thread)",
+      "parentUuid": "22f75b57_668da88b",
       "range": {
         "startLine": 199,
         "startChar": 8,
