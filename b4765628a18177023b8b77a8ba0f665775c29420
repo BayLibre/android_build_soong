@@ -16,6 +16,52 @@
       "message": "Thank you for the patience!",
       "revId": "b4765628a18177023b8b77a8ba0f665775c29420",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56352fc6_babb27db",
+        "filename": "android/variable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-17T12:39:32Z",
+      "side": 1,
+      "message": "does using proptools.AppendProperties/AppendMatchingProperties not work here?",
+      "range": {
+        "startLine": 678,
+        "startChar": 3,
+        "endLine": 678,
+        "endChar": 48
+      },
+      "revId": "b4765628a18177023b8b77a8ba0f665775c29420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49646197_5c982e5c",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-17T12:39:32Z",
+      "side": 1,
+      "message": "this looks obsolete?",
+      "range": {
+        "startLine": 446,
+        "startChar": 0,
+        "endLine": 446,
+        "endChar": 114
+      },
+      "revId": "b4765628a18177023b8b77a8ba0f665775c29420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

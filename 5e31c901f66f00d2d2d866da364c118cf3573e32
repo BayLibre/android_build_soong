@@ -161,6 +161,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57110b17_33c7fa9f",
+        "filename": "android/defaults.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-17T12:39:32Z",
+      "side": 1,
+      "message": "this differs from how we\u0027re handling other defaults modules, which is a bit odd",
+      "parentUuid": "7b008866_3289b943",
+      "range": {
+        "startLine": 224,
+        "startChar": 12,
+        "endLine": 224,
+        "endChar": 22
+      },
+      "revId": "5e31c901f66f00d2d2d866da364c118cf3573e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "653ac690_588387e1",
         "filename": "android/defaults.go",
         "patchSetId": 3
