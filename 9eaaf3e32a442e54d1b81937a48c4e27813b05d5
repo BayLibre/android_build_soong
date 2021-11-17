@@ -70,6 +70,30 @@
       },
       "revId": "9eaaf3e32a442e54d1b81937a48c4e27813b05d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6707b13_ec72c021",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-17T16:43:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "692b863a_b53cc6d9",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "9eaaf3e32a442e54d1b81937a48c4e27813b05d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
