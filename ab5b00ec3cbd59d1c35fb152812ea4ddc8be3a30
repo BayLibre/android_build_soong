@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6573a2d7_fad64c7e",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-17T12:49:50Z",
+      "side": 1,
+      "message": "We\u0027re already collecting bp2build metrics when we run bp2build.\n\nA good analogue to look at may be BazelMetricsDir, which is using `android/soong/shared`",
+      "parentUuid": "c2d03393_07b2a20b",
+      "range": {
+        "startLine": 202,
+        "startChar": 1,
+        "endLine": 203,
+        "endChar": 45
+      },
+      "revId": "ab5b00ec3cbd59d1c35fb152812ea4ddc8be3a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fac48f3_65d20143",
         "filename": "ui/metrics/metrics.go",
         "patchSetId": 16
