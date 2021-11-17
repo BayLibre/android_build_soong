@@ -422,6 +422,7 @@ type LabelListAttribute struct {
 type configurableLabelLists map[ConfigurationAxis]labelListSelectValues
 
 func (cll configurableLabelLists) setValueForAxis(axis ConfigurationAxis, config string, list LabelList) {
+	// fmt.Println(axis, config, list)
 	if list.IsNil() {
 		if _, ok := cll[axis][config]; ok {
 			delete(cll[axis], config)
@@ -433,6 +434,9 @@ func (cll configurableLabelLists) setValueForAxis(axis ConfigurationAxis, config
 	}
 
 	cll[axis][config] = list
+	// if axis.configurationType == productVariables {
+	// 	fmt.Printf("%+v\n", cll[axis])
+	// }
 }
 
 func (cll configurableLabelLists) Append(other configurableLabelLists) {
