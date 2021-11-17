@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62a5d859_ba2fdaed",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2021-11-17T19:53:13Z",
+      "side": 1,
+      "message": "It\u0027s usually \"\u003d1\" or \"\u003d0\".",
+      "revId": "84995f47fa4dac871d1d1c050de7e7245d81112b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
