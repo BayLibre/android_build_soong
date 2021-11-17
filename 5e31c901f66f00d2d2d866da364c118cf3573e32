@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "666c02d6_2d7cfcdd",
+        "filename": "android/bazel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-17T12:26:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "145acf73_62409911",
+      "range": {
+        "startLine": 36,
+        "startChar": 62,
+        "endLine": 37,
+        "endChar": 10
+      },
+      "revId": "5e31c901f66f00d2d2d866da364c118cf3573e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bc07ff3_bd5c9737",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-17T12:03:01Z",
       "side": 1,
       "message": "nit: typo in name (Name*d*spaced)",
+      "range": {
+        "startLine": 221,
+        "startChar": 5,
+        "endLine": 221,
+        "endChar": 37
+      },
+      "revId": "5e31c901f66f00d2d2d866da364c118cf3573e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d07903d_a1b6b21f",
+        "filename": "android/defaults.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-17T12:26:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bc07ff3_bd5c9737",
       "range": {
         "startLine": 221,
         "startChar": 5,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b008866_3289b943",
+        "filename": "android/defaults.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-17T12:26:16Z",
+      "side": 1,
+      "message": "Yes, i.e. we only want to use soong_config_module_types that have been allowlisted to bp2build.",
+      "parentUuid": "f4a3deeb_98a319f5",
+      "range": {
+        "startLine": 224,
+        "startChar": 12,
+        "endLine": 224,
+        "endChar": 22
+      },
+      "revId": "5e31c901f66f00d2d2d866da364c118cf3573e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "653ac690_588387e1",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-11-17T12:03:01Z",
       "side": 1,
       "message": "nit: it\u0027s probably useful to tell where exactly the struct points (i.e. whether it is the one with a single member called Soong_config_variables or it has a member of each pertinent variable). Even better, do it at the comment of namespacedVariableProps.",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 25
+      },
+      "revId": "5e31c901f66f00d2d2d866da364c118cf3573e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35b52374_4c3a6739",
+        "filename": "android/defaults.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-17T12:26:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "653ac690_588387e1",
       "range": {
         "startLine": 236,
         "startChar": 4,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0df494d8_981c5591",
+        "filename": "android/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-17T12:26:16Z",
+      "side": 1,
+      "message": "Correct! As mentioned in the other comment, I refactored the caller of this function to do the slice iteration instead. The trick to make this simple is to do the merging in AddProductConfigProperty, as you discovered :)",
+      "parentUuid": "4cd0a5e1_d6919ff6",
+      "range": {
+        "startLine": 843,
+        "startChar": 5,
+        "endLine": 843,
+        "endChar": 26
+      },
+      "revId": "5e31c901f66f00d2d2d866da364c118cf3573e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1815d8a2_4e250735",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-11-17T12:03:01Z",
       "side": 1,
       "message": "Isn\u0027t this always a slice? variableProps seems to be a value from the return value of namespacedVariableProps() in line 642, and its type is namespacedVariableProperties, which is a []interface{}.",
+      "range": {
+        "startLine": 851,
+        "startChar": 1,
+        "endLine": 851,
+        "endChar": 49
+      },
+      "revId": "5e31c901f66f00d2d2d866da364c118cf3573e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3dfaa98_4650abd0",
+        "filename": "android/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-17T12:26:16Z",
+      "side": 1,
+      "message": "I refactored the caller of this function to do the slice iteration instead, so there\u0027s no need to check the type here.",
+      "parentUuid": "1815d8a2_4e250735",
       "range": {
         "startLine": 851,
         "startChar": 1,
