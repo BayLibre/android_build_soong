@@ -650,6 +650,57 @@ func ProductVariableProperties(ctx BazelConversionPathContext) ProductConfigProp
 		}
 	}
 
+	productVars := map[string]map[string]map[string]interface{}{}
+	hasNonDefaultValue := map[string]bool{}
+	for propName, v := range productConfigProperties {
+		for p, intf := range v {
+			if productVars[p.Namespace] == nil {
+				productVars[p.Namespace] = map[string]map[string]interface{}{}
+			}
+			if productVars[p.Namespace][p.Name] == nil {
+				productVars[p.Namespace][p.Name] = map[string]interface{}{}
+			}
+			productVars[p.Namespace][p.Name][p.FullConfig] = reflect.Zero(reflect.TypeOf(intf)).Interface()
+			if p.SelectKey() != bazel.ConditionsDefaultConfigKey {
+				hasNonDefaultValue[propName] = true
+			}
+		}
+	}
+	for propName, v := range productConfigProperties {
+		if _, ok := hasNonDefaultValue[propName]; !ok {
+			for p, _ := range v {
+				for config, zeroVal := range productVars[p.Namespace][p.Name] {
+					if config != bazel.ConditionsDefaultConfigKey {
+						fmt.Println(propName, p.Namespace, p.Name, config, zeroVal)
+						productConfigProperties.AddProductConfigProperty(
+							propName,
+							p.Namespace,
+							p.Name,
+							config,
+							zeroVal,
+						)
+					}
+				}
+			}
+		}
+	}
+
+	// zeroValues := map[string]interface{}{}
+	// productVars := productConfigProperties
+	// for k, v := range productConfigProperties {
+	// 	for productConfigProperty, j := range v {
+	// 		if productConfigProperty.SelectKey() != bazel.ConditionsDefaultConfigKey {
+	// 			hasNonDefaultValue[k] = true
+	// 		}
+	// 		zeroValues[k] = reflect.Zero(reflect.TypeOf(j)).Interface()
+	// 	}
+	// }
+	// for k, v := range zeroValues {
+	// 	if _, ok := hasNonDefaultValue[k]; !ok {
+	// 		fmt.Println(k, v)
+	// 	}
+	// }
+
 	return productConfigProperties
 }
 
