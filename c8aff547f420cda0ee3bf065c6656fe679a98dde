@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8cc2904_18963828",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-11-17T05:44:38Z",
+      "side": 1,
+      "message": "The code emitted here is syntactically wrong.",
+      "revId": "c8aff547f420cda0ee3bf065c6656fe679a98dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7accbbf_b2480ebc",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-11-17T05:44:38Z",
+      "side": 1,
+      "message": "This looks somewhat excessive. We just need to determine which of the operands is string literal (btw, expr.maybeString returns string value and  true in such case and false otherwise), and then assign the other operand to \u0027x\u0027. We then emit the code for `x` in two cases: when literal is empty or when the type of `x` is boolean and the literal is \u0027true\u0027. The code is shorter and simpler.",
+      "revId": "c8aff547f420cda0ee3bf065c6656fe679a98dde",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
