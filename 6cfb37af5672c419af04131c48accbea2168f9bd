@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "379bd929_4586ddbc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2021-11-17T19:13:26Z",
+      "side": 1,
+      "message": "Note: patchset 1 -\u003e patchset 3 includes moving the new property down a little bit, to avoid conflicts with compressible when merging to internal, caused by http://ag/16059995. ",
+      "revId": "6cfb37af5672c419af04131c48accbea2168f9bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
