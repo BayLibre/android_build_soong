@@ -652,6 +652,40 @@ func ProductVariableProperties(ctx BazelConversionPathContext) ProductConfigProp
 		}
 	}
 
+	productVars := map[string]map[string]map[string]interface{}{}
+	hasNonDefaultValue := map[string]bool{}
+	for propName, v := range productConfigProperties {
+		for p, intf := range v {
+			if productVars[p.Namespace] == nil {
+				productVars[p.Namespace] = map[string]map[string]interface{}{}
+			}
+			if productVars[p.Namespace][p.Name] == nil {
+				productVars[p.Namespace][p.Name] = map[string]interface{}{}
+			}
+			productVars[p.Namespace][p.Name][p.FullConfig] = reflect.Zero(reflect.TypeOf(intf)).Interface()
+			if p.SelectKey() != bazel.ConditionsDefaultConfigKey {
+				hasNonDefaultValue[propName] = true
+			}
+		}
+	}
+	for propName, v := range productConfigProperties {
+		if _, ok := hasNonDefaultValue[propName]; !ok {
+			for p, _ := range v {
+				for config, zeroVal := range productVars[p.Namespace][p.Name] {
+					if config != bazel.ConditionsDefaultConfigKey {
+						productConfigProperties.AddProductConfigProperty(
+							propName,
+							p.Namespace,
+							p.Name,
+							config,
+							zeroVal,
+						)
+					}
+				}
+			}
+		}
+	}
+
 	return productConfigProperties
 }
 
