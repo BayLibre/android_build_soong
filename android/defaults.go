@@ -213,10 +213,85 @@ func InitDefaultsModule(module DefaultsModule) {
 
 var _ Defaults = (*DefaultsModuleBase)(nil)
 
+// applyNamedspacedVariableDefaults only runs in bp2build mode for
+// defaultable/defaults modules. Its purpose is to merge namespaced product
+// variable props from defaults deps, even if those defaults are custom module
+// types created from soong_config_module_type, e.g. one that's wrapping a
+// cc_defaults or java_defaults.
+func applyNamedspacedVariableDefaults(defaultDep Defaults, mod Module) {
+	var dep, b Bazelable
+
+	dep, ok := defaultDep.(Bazelable)
+	if !ok {
+		return
+	}
+
+	b, ok = mod.(Bazelable)
+	if !ok {
+		return
+	}
+
+	// namespacedVariableProps is a map from namespaces (e.g. acme, android,
+	// vendor_foo) to the soong_config_variable struct pointers, containing
+	// properties for that particular module.
+	src := dep.namespacedVariableProps()
+	dst := b.namespacedVariableProps()
+	if dst == nil {
+		dst = make(namespacedVariableProperties)
+	}
+
+	for namespace := range src {
+		if dst[namespace] == nil {
+			// If dst does not have the same namespace, then we'll need to clone
+			// src[namespace] into dst[namespace], instead of assigning
+			// src[namespace] to dst[namespace]. This is because src[namespace]
+			// is a struct pointer, and changes/writes to that are unsafe if src
+			// is a common dep between multiple modules.
+			dst[namespace] = []interface{}{}
+			for _, i := range src[namespace] {
+				dst[namespace] = append(dst[namespace], i)
+			}
+			// // 1. Create an empty copy of the src properties.
+			// newMergedProps := []interface{}{
+			// 	// Convert the src[namespace] interface{} (which holds a
+			// 	// struct pointer for the soong_config_variables struct)
+			// 	// to a reflect.Value, create a cloned struct with empty
+			// 	// props, and return it as an interface{}.
+			// 	proptools.CloneEmptyProperties(newFactoryProps).Interface(),
+			// }
+			// // 2. Copy the property values over.
+			// err := proptools.PrependMatchingProperties(newMergedProps, src[namespace], nil)
+			// if err != nil {
+			// 	panic(err)
+			// }
+			// 3. Assign the cloned prop to dst[namespace].
+			// dst[namespace] = newMergedProps
+		} else {
+			// newFactoryProps := soongconfig.CreateProperties(dep.BaseModuleFactory(), dep.SoongConfigModuleType())
+			// newMergedProps := []interface{}{
+			// 	proptools.CloneEmptyProperties(newFactoryProps).Interface(),
+			// }
+			// err := proptools.PrependMatchingProperties(newMergedProps, src[namespace], nil)
+			// if err != nil {
+			// 	panic(err)
+			// }
+			for _, i := range src[namespace] {
+				dst[namespace] = append(dst[namespace], i)
+			}
+			// dst[namespace] = append(dst[namespace], newMergedProps...)
+		}
+	}
+
+	b.setNamespacedVariableProps(dst)
+}
+
 func (defaultable *DefaultableModuleBase) applyDefaults(ctx TopDownMutatorContext,
 	defaultsList []Defaults) {
 
 	for _, defaults := range defaultsList {
+		if ctx.Config().runningAsBp2Build {
+			applyNamedspacedVariableDefaults(defaults, ctx.Module())
+		}
 		for _, prop := range defaultable.defaultableProperties {
 			if prop == defaultable.defaultableVariableProperties {
 				defaultable.applyDefaultVariableProperties(ctx, defaults, prop)
