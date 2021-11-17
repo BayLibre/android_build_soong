@@ -45,6 +45,30 @@
       },
       "revId": "19adabff0cb960c73f479790ee8df2ab1a5f4026",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b426faea_a822b360",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-17T17:54:41Z",
+      "side": 1,
+      "message": "Re-reading this a week later, I think the \"check in the one line shell script\" is still a sound advice; it requires one extra file but I guess it\u0027s better than this exercise in quoting and you may even be able to get away with a static rule:\n\nvar (\n  copyGolden \u003d pctx.AndroidStaticRule(\n    \"copyGolden\", blueprint.RuleParams{\n      Command: \"build/make/scripts/copy_stuff.sh ${in} ${golden}\n  )  \n)\n\nthen\n\nctx.Build(BuildParams{\n  Rule: copyGolden, \n  Inputs: \u003coutput file\u003e,\n  Args: map[string]string{ \"golden\": \u003cgolden file\u003e}})\n  \nOr if that doesn\u0027t work for some reason, at least extract the shell stanza in linees 735-738 into a static rule so that it\u0027s a bit more readable.",
+      "parentUuid": "0d54943e_3ec07ddd",
+      "range": {
+        "startLine": 752,
+        "startChar": 2,
+        "endLine": 752,
+        "endChar": 17
+      },
+      "revId": "19adabff0cb960c73f479790ee8df2ab1a5f4026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
