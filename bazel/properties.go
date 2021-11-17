@@ -417,6 +417,8 @@ type LabelListAttribute struct {
 	// This mode facilitates use of attribute defaults: an empty list should
 	// override the default.
 	ForceSpecifyEmptyList bool
+
+	EmitEmptyList bool
 }
 
 type configurableLabelLists map[ConfigurationAxis]labelListSelectValues
