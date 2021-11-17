@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffdea64a_49da2639",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2021-11-17T20:44:35Z",
+      "side": 1,
+      "message": "The clang update got reverted: https://r.android.com/1895137.\n\nNeed to wait for reland before submitting this.",
+      "revId": "753dd32123a3eb8ff251a2c876ab0c5258ead752",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
