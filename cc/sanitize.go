@@ -958,8 +958,12 @@ func sanitizerDepsMutator(t SanitizerType) func(android.TopDownMutatorContext) {
 				c.SetSanitizeDep(true)
 			}
 			if enabled {
-				isSanitizableDependencyTag := c.SanitizableDepTagChecker()
 				mctx.WalkDeps(func(child, parent android.Module) bool {
+					isSanitizableDependencyTag := c.SanitizableDepTagChecker()
+					if childSanitizable, ok := child.(PlatformSanitizeable); ok {
+						// If the child is PlatformSanitizeable, we should use the SanitizableDepTagChecker it provides.
+						isSanitizableDependencyTag = childSanitizable.(PlatformSanitizeable).SanitizableDepTagChecker()
+					}
 					if !isSanitizableDependencyTag(mctx.OtherModuleDependencyTag(child)) {
 						return false
 					}

@@ -410,6 +410,10 @@ func (mod *Module) SanitizerSupported(t cc.SanitizerType) bool {
 	case cc.Fuzzer:
 		return true
 	case cc.Asan:
+		if mod.Target().Os == android.Android {
+			// TODO(b/178365482): ASAN is not yet enabled for Android targets.
+			return false
+		}
 		return true
 	case cc.Hwasan:
 		// TODO(b/180495975): HWASan for static Rust binaries isn't supported yet.
@@ -431,14 +435,6 @@ func (mod *Module) IsSanitizerEnabled(t cc.SanitizerType) bool {
 func (mod *Module) IsSanitizerExplicitlyDisabled(t cc.SanitizerType) bool {
 	if mod.Host() {
 		return true
-	}
-
-	// TODO(b/178365482): Rust/CC interop doesn't work just yet; don't sanitize rust_ffi modules until
-	// linkage issues are resolved.
-	if lib, ok := mod.compiler.(libraryInterface); ok {
-		if lib.shared() || lib.static() {
-			return true
-		}
 	}
 
 	return mod.sanitize.isSanitizerExplicitlyDisabled(t)
