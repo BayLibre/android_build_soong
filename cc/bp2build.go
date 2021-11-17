@@ -605,10 +605,10 @@ func (la *linkerAttributes) convertProductVariables(ctx android.BazelConversionP
 			var ok bool
 			// if there was no includes/excludes property, casting fails and that's expected
 			if includes, ok = prop.([]string); includesExists && !ok {
-				ctx.ModuleErrorf("Could not convert product variable %s property", name)
+				continue
 			}
 			if excludes, ok = excludesProp.([]string); excludesExists && !ok {
-				ctx.ModuleErrorf("Could not convert product variable %s property", dep.excludesField)
+				continue
 			}
 
 			dep.attribute.SetSelectValue(
