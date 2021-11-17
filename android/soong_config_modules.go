@@ -415,14 +415,13 @@ func configModuleFactory(factory blueprint.ModuleFactory, moduleType *soongconfi
 	if !conditionalFactoryProps.IsValid() {
 		return factory
 	}
-	useBp2buildHook := bp2build && proptools.BoolDefault(moduleType.Bp2buildAvailable, false)
 
 	return func() (blueprint.Module, []interface{}) {
 		module, props := factory()
 		conditionalProps := proptools.CloneEmptyProperties(conditionalFactoryProps)
 		props = append(props, conditionalProps.Interface())
 
-		if useBp2buildHook {
+		if bp2build {
 			// The loadhook is different for bp2build, since we don't want to set a specific
 			// set of property values based on a vendor var -- we want __all of them__ to
 			// generate select statements, so we put the entire soong_config_variables

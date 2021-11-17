@@ -652,6 +652,43 @@ func ProductVariableProperties(ctx BazelConversionPathContext) ProductConfigProp
 		}
 	}
 
+	productVars := map[string]map[string]map[string]interface{}{}
+	hasNonDefaultValue := map[string]bool{}
+	for propName, v := range productConfigProperties {
+		for p, intf := range v {
+			if productVars[p.Namespace] == nil {
+				productVars[p.Namespace] = map[string]map[string]interface{}{}
+			}
+			if productVars[p.Namespace][p.Name] == nil {
+				productVars[p.Namespace][p.Name] = map[string]interface{}{}
+			}
+			if _, ok := productVars[p.Namespace][p.Name][p.FullConfig]; !ok {
+				productVars[p.Namespace][p.Name][p.FullConfig] = reflect.Zero(reflect.ValueOf(intf).Type()).Interface()
+			}
+			if p.SelectKey() != bazel.ConditionsDefaultConfigKey {
+				hasNonDefaultValue[propName] = true
+			}
+		}
+	}
+	for propName, v := range productConfigProperties {
+		if _, ok := hasNonDefaultValue[propName]; !ok {
+			for p, _ := range v {
+				for config, zeroVal := range productVars[p.Namespace][p.Name] {
+					if config != bazel.ConditionsDefaultConfigKey {
+						fmt.Println(propName, p.Namespace, p.Name, config, zeroVal)
+						productConfigProperties.AddProductConfigProperty(
+							propName,
+							p.Namespace,
+							p.Name,
+							config,
+							zeroVal,
+						)
+					}
+				}
+			}
+		}
+	}
+
 	return productConfigProperties
 }
 
@@ -674,8 +711,13 @@ func (p *ProductConfigProperties) AddProductConfigProperty(
 				dst = append(dst, src...)
 				(*p)[propertyName][productConfigProp] = dst
 			}
+		case *string:
+			if src, ok := property.(*string); ok {
+				(*p)[propertyName][productConfigProp] = src
+			}
 		default:
-			// TODO(jingwen): Add support for more types.
+			// ignore
+			// panic(existing)
 		}
 	} else {
 		(*p)[propertyName][productConfigProp] = property
