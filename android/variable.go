@@ -652,7 +652,123 @@ func ProductVariableProperties(ctx BazelConversionPathContext) ProductConfigProp
 		}
 	}
 
+	productConfigProperties.zeroValuesForNamespacedVariables()
+
 	return productConfigProperties
+}
+
+// zeroValuesForNamespacedVariables ensures that selects that contain __only__
+// conditions default values have zero values set for the other non-default
+// values for that select statement.
+//
+// If the ProductConfigProperties map contains these items, as parsed from the .bp file:
+//
+// library_linking_strategy: {
+//     prefer_static: {
+//         static_libs: [
+//             "lib_a",
+//             "lib_b",
+//         ],
+//     },
+//     conditions_default: {
+//         shared_libs: [
+//             "lib_a",
+//             "lib_b",
+//         ],
+//     },
+// },
+//
+// Static_libs {Library_linking_strategy ANDROID prefer_static} [lib_a lib_b]
+// Shared_libs {Library_linking_strategy ANDROID conditions_default} [lib_a lib_b]
+//
+// We need to add this:
+//
+// Shared_libs {Library_linking_strategy ANDROID prefer_static} []
+//
+// so that the following gets generated for the "dynamic_deps" attribute,
+// instead of putting lib_a and lib_b directly into dynamic_deps without a
+// select:
+//
+// dynamic_deps = select({
+//     "//build/bazel/product_variables:android__library_linking_strategy__prefer_static": [],
+//     "//conditions:default": [
+//         "//foo/bar:lib_a",
+//         "//foo/bar:lib_b",
+//     ],
+// }),
+//
+// TODO(jingwen): This is not the best implementation, and should probably use
+// the full information from the soong_config_module_type definitions themselves
+// for the variable value space. This implementation just uses the variables
+// used in the current module.
+func (props *ProductConfigProperties) zeroValuesForNamespacedVariables() {
+	// A map of product config properties to the zero values of their respective
+	// property value.
+	zeroValues := make(map[ProductConfigProperty]interface{})
+
+	// A map of prop names (e.g. cflags) to product config properties where the
+	// (prop name, ProductConfigProperty) tuple contains a non-conditions_default key.
+	//
+	// e.g.
+	//
+	// prefer_static: {
+	//     static_libs: [
+	//         "lib_a",
+	//         "lib_b",
+	//     ],
+	// },
+	// conditions_default: {
+	//     shared_libs: [
+	//         "lib_a",
+	//         "lib_b",
+	//     ],
+	// },
+	//
+	// The tuple of ("static_libs", prefer_static) would be in this map.
+	hasNonDefaultValue := make(map[string]map[ProductConfigProperty]bool)
+
+	// Iterate over all added soong config variables.
+	for propName, v := range *props {
+		for p, intf := range v {
+			if p.Namespace == "" {
+				// Skip variables that don't have a namespace, i.e. product_variables
+				continue
+			}
+			if p.FullConfig == bazel.ConditionsDefaultConfigKey {
+				// Skip conditions_defaults.
+				continue
+			}
+			if hasNonDefaultValue[propName] == nil {
+				hasNonDefaultValue[propName] = make(map[ProductConfigProperty]bool)
+				hasNonDefaultValue[propName][p] = false
+			}
+			// Create the zero value of the variable.
+			if _, exists := zeroValues[p]; !exists {
+				zeroValue := reflect.Zero(reflect.ValueOf(intf).Type()).Interface()
+				if zeroValue == nil {
+					panic(fmt.Errorf("Expected non-nil zero value for product/config variable %+v\n", intf))
+				}
+				zeroValues[p] = zeroValue
+			}
+			hasNonDefaultValue[propName][p] = true
+		}
+	}
+
+	for p, zeroValue := range zeroValues {
+		for propName := range *props {
+			// Ignore variables that already have a non-default value for that axis
+			if exists, _ := hasNonDefaultValue[propName][p]; !exists {
+				// Insert the zero value for this propname + product config value.
+				props.AddProductConfigProperty(
+					propName,
+					p.Namespace,
+					p.Name,
+					p.FullConfig,
+					zeroValue,
+				)
+			}
+		}
+	}
 }
 
 func (p *ProductConfigProperties) AddProductConfigProperty(
@@ -675,7 +791,7 @@ func (p *ProductConfigProperties) AddProductConfigProperty(
 				(*p)[propertyName][productConfigProp] = dst
 			}
 		default:
-			// TODO(jingwen): Add support for more types.
+			panic(fmt.Errorf("TODO: handle merging value %s", existing))
 		}
 	} else {
 		(*p)[propertyName][productConfigProp] = property
