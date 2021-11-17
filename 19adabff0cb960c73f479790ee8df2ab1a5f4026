@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "914585c4_2843d9fe",
+        "filename": "java/androidmk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-17T16:41:00Z",
+      "side": 1,
+      "message": "Let me see if I understand this correctly: each \"thing\" that has an API adds a dependency on it to the individual API update script and this line above lists all the dependencies, copies them into a shell scripts and sets the \"executable\" bit on it. Is this so? (if so, you may want to add a comment -- it took me a while to wrap my head around it)",
+      "range": {
+        "startLine": 606,
+        "startChar": 54,
+        "endLine": 606,
+        "endChar": 56
+      },
+      "revId": "19adabff0cb960c73f479790ee8df2ab1a5f4026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d54943e_3ec07ddd",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-17T16:41:00Z",
+      "side": 1,
+      "message": "Whereas this works, I\u0027m always hesitant to get into the business of quoting shell code in some other programming language, especially that what you are doing here is shell code quoted in Ninja quoted in Go. \n\nI suggest the following alternative: check in two little shell scripts somewhere that contain these two little code snippets [1]\n\n1: i.e.\n\n#!/bin/bash -eux\n\ncp -f $1 $2  # Echo is not needed, that\u0027s what -x does\n\nthen you get rid of the weird quoting you need. They are one-liners so it\u0027s not that important but why not make it nice?\n\nIf you want to go all out, what you can also do is to put the copying logic itno update-api.sh the copying logic and then you can get rid of the helper scripts completely,",
+      "range": {
+        "startLine": 752,
+        "startChar": 2,
+        "endLine": 752,
+        "endChar": 17
+      },
+      "revId": "19adabff0cb960c73f479790ee8df2ab1a5f4026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
