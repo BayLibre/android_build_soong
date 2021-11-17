@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d259f2f9_c46c0e44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-17T13:18:54Z",
+      "side": 1,
+      "message": "\\o/",
+      "revId": "7057f8ec0701b0d72c7698b722a02b0e2d179418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8253b1fc_83abe5a1",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-17T13:18:54Z",
+      "side": 1,
+      "message": "nit: fwiw, when I read this, I thought this is one level deeper i.e. has a field for every config variable instead of having only one called Soong_config_variables, but I don\u0027t have an idea for a nice concise wording. Maybe: \"pointer to a struct containing a single field called Soong_variables whose value mirrors the structure in the Blueprint file?\"",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 58
+      },
+      "revId": "7057f8ec0701b0d72c7698b722a02b0e2d179418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ac1307b_9a4fdcbc",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-17T13:18:54Z",
+      "side": 1,
+      "message": "nit: is this true? I mean, if they are reflect.Struct pointers, why don\u0027t give them that type? But I thought these are just vanilla interface{}, i.e. struct, but we don\u0027t know what kind.",
+      "range": {
+        "startLine": 72,
+        "startChar": 37,
+        "endLine": 73,
+        "endChar": 27
+      },
+      "revId": "7057f8ec0701b0d72c7698b722a02b0e2d179418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
