@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03f82c15_0fc39771",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-17T12:03:01Z",
+      "side": 1,
+      "message": "This ended up being pleasantly short (although not straightforward at all..)",
+      "revId": "5e31c901f66f00d2d2d866da364c118cf3573e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "145acf73_62409911",
+        "filename": "android/bazel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-17T12:03:01Z",
+      "side": 1,
+      "message": "nit: This is obsolete, isn\u0027t it? (it\u0027s at least a slice of struct pointers)",
+      "range": {
+        "startLine": 36,
+        "startChar": 62,
+        "endLine": 37,
+        "endChar": 10
+      },
+      "revId": "5e31c901f66f00d2d2d866da364c118cf3573e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc07ff3_bd5c9737",
+        "filename": "android/defaults.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-17T12:03:01Z",
+      "side": 1,
+      "message": "nit: typo in name (Name*d*spaced)",
+      "range": {
+        "startLine": 221,
+        "startChar": 5,
+        "endLine": 221,
+        "endChar": 37
+      },
+      "revId": "5e31c901f66f00d2d2d866da364c118cf3573e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a3deeb_98a319f5",
+        "filename": "android/defaults.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-17T12:03:01Z",
+      "side": 1,
+      "message": "Does this mean that if the defaults module is not Bazelable but the module is, the defaults module is ignored?",
+      "range": {
+        "startLine": 224,
+        "startChar": 12,
+        "endLine": 224,
+        "endChar": 22
+      },
+      "revId": "5e31c901f66f00d2d2d866da364c118cf3573e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "653ac690_588387e1",
+        "filename": "android/defaults.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-17T12:03:01Z",
+      "side": 1,
+      "message": "nit: it\u0027s probably useful to tell where exactly the struct points (i.e. whether it is the one with a single member called Soong_config_variables or it has a member of each pertinent variable). Even better, do it at the comment of namespacedVariableProps.",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 25
+      },
+      "revId": "5e31c901f66f00d2d2d866da364c118cf3573e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cd0a5e1_d6919ff6",
+        "filename": "android/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 843,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-17T12:03:01Z",
+      "side": 1,
+      "message": "Let me see if I understand this! AFAICT: productVariableValues() is called for each item in namespacedVariableProperties and then for each item in the slice, AddProductConfigProperties() is called in line 855. This means an AddProductConfigProperties() for each (defaults module, top-level property struct, namespace, product variable) tuple.\n\nThen AddProductConfigProperty() is called for each property in turn and if the same (property, namespace, product variable) tuple is referenced from multiple defaults modules, the merging logic in line 669 takes care of it.\n\nIs this correct?",
+      "range": {
+        "startLine": 843,
+        "startChar": 5,
+        "endLine": 843,
+        "endChar": 26
+      },
+      "revId": "5e31c901f66f00d2d2d866da364c118cf3573e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1815d8a2_4e250735",
+        "filename": "android/variable.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 851,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-17T12:03:01Z",
+      "side": 1,
+      "message": "Isn\u0027t this always a slice? variableProps seems to be a value from the return value of namespacedVariableProps() in line 642, and its type is namespacedVariableProperties, which is a []interface{}.",
+      "range": {
+        "startLine": 851,
+        "startChar": 1,
+        "endLine": 851,
+        "endChar": 49
+      },
+      "revId": "5e31c901f66f00d2d2d866da364c118cf3573e32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
