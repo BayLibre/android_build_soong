@@ -15,11 +15,12 @@
 package android
 
 import (
-	"android/soong/bazel"
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"strings"
+
+	"android/soong/bazel"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -310,7 +311,7 @@ var (
 
 		"abb",                     // depends on unconverted modules: libadbd_core, libadbd_services, libcmd, libbinder, libutils, libselinux
 		"adb",                     // depends on unconverted modules: bin2c_fastdeployagent, libadb_crypto, libadb_host, libadb_pairing_connection, libadb_protos, libandroidfw, libapp_processes_protos_full, libfastdeploy_host, libmdnssd, libopenscreen-discovery, libopenscreen-platform-impl, libusb, libutils, libziparchive, libzstd, AdbWinApi
-		"adbd",                    // depends on unconverted modules: libadb_crypto, libadb_pairing_connection, libadb_protos, libadbd, libadbd_core, libapp_processes_protos_lite, libmdnssd, libzstd, libadbd_services, libcap, libminijail, libselinux
+		"adbd",                    // depends on unconverted modules: libadb_crypto, libadb_pairing_connection, libadb_protos, libadbd, libadbd_core, libapp_processes_protos_lite, libmdnssd, libzstd, libadbd_services, libminijail, libselinux
 		"bionic_tests_zipalign",   // depends on unconverted modules: libziparchive, libutils
 		"linker",                  // depends on unconverted modules: liblinker_debuggerd_stub, libdebuggerd_handler_fallback, libziparchive, liblinker_main, liblinker_malloc
 		"linker_reloc_bench_main", // depends on unconverted modules: liblinker_reloc_bench_*
@@ -334,9 +335,6 @@ var (
 	mixedBuildsDisabledList = []string{
 		"libbrotli",               // http://b/198585397, ld.lld: error: bionic/libc/arch-arm64/generic/bionic/memmove.S:95:(.text+0x10): relocation R_AARCH64_CONDBR19 out of range: -1404176 is not in [-1048576, 1048575]; references __memcpy
 		"minijail_constants_json", // http://b/200899432, bazel-built cc_genrule does not work in mixed build when it is a dependency of another soong module.
-
-		"cap_names.h", // TODO(b/204913827) runfiles need to be handled in mixed builds
-		"libcap",      // TODO(b/204913827) runfiles need to be handled in mixed builds
 	}
 
 	// Used for quicker lookups
