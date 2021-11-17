@@ -415,7 +415,7 @@ func configModuleFactory(factory blueprint.ModuleFactory, moduleType *soongconfi
 	if !conditionalFactoryProps.IsValid() {
 		return factory
 	}
-	useBp2buildHook := bp2build && proptools.BoolDefault(moduleType.Bp2buildAvailable, false)
+	useBp2buildHook := bp2build
 
 	return func() (blueprint.Module, []interface{}) {
 		module, props := factory()

@@ -5,6 +5,7 @@ import (
 	"android/soong/bazel"
 	"fmt"
 	"reflect"
+	"strings"
 )
 
 // Configurability support for bp2build.
@@ -115,6 +116,9 @@ func labelListSelectValue(selectKey string, list bazel.LabelList) (bool, reflect
 		// value in conditions default Includes
 		return true, reflect.ValueOf([]string{})
 	}
+	if strings.Contains(selectKey, "product_variables") {
+		return true, reflect.ValueOf(list.Includes)
+	}
 	return false, reflect.Zero(reflect.TypeOf([]string{}))
 }
 
@@ -154,7 +158,7 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 	var err error
 	ret := ""
 	if value.Kind() != reflect.Invalid {
-		s, err := prettyPrint(value, indent)
+		s, err := prettyPrint(value, indent, true)
 		if err != nil {
 			return ret, err
 		}
@@ -202,7 +206,7 @@ func prettyPrintSelectMap(selectMap map[string]reflect.Value, defaultValue *stri
 			continue
 		}
 		value := selectMap[selectKey]
-		if isZero(value) {
+		if isZero(value) && !strings.Contains(selectKey, "product_variable") {
 			// Ignore zero values to not generate empty lists.
 			continue
 		}
@@ -251,7 +255,7 @@ func prettyPrintSelectMap(selectMap map[string]reflect.Value, defaultValue *stri
 // with a provided key.
 func prettyPrintSelectEntry(value reflect.Value, key string, indent int) (string, error) {
 	s := makeIndent(indent + 1)
-	v, err := prettyPrint(value, indent+1)
+	v, err := prettyPrint(value, indent+1, !strings.Contains(key, "product_variables"))
 	if err != nil {
 		return "", err
 	}
