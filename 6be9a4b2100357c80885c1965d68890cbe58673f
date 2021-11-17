@@ -46,6 +46,30 @@
       },
       "revId": "6be9a4b2100357c80885c1965d68890cbe58673f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27cc594e_92731cd5",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-17T12:30:01Z",
+      "side": 1,
+      "message": "👍 I\u0027d been thinking if it is unused, we could disallow it in Soong, but given that we\u0027ve got a solution, that should be unnecessary.",
+      "parentUuid": "31aac550_f0db4745",
+      "range": {
+        "startLine": 393,
+        "startChar": 5,
+        "endLine": 393,
+        "endChar": 63
+      },
+      "revId": "6be9a4b2100357c80885c1965d68890cbe58673f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
