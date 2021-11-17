@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2325614d_8bc74e38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-17T15:23:28Z",
+      "side": 1,
+      "message": "Heavy presubmit confirms this revert fixes the issue: https://android-build.googleplex.com/builds/tests/view?invocationId\u003dI52000009996654078\u0026testResultId\u003dTR66227798877162596",
+      "revId": "1973f4d2cce70fd7dfc32ce17174c624ad68e7ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
