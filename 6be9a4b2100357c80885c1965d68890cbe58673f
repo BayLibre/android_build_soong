@@ -22,6 +22,30 @@
       },
       "revId": "6be9a4b2100357c80885c1965d68890cbe58673f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31aac550_f0db4745",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-17T11:11:28Z",
+      "side": 1,
+      "message": "(see https://android-review.googlesource.com/c/platform/build/soong/+/1894966 - given that this is valid soong syntax, I think we should still support it)",
+      "parentUuid": "9e6bd9ce_eaba6eb3",
+      "range": {
+        "startLine": 393,
+        "startChar": 5,
+        "endLine": 393,
+        "endChar": 63
+      },
+      "revId": "6be9a4b2100357c80885c1965d68890cbe58673f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
