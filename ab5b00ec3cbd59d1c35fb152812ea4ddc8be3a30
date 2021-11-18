@@ -146,6 +146,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24693221_e07455d8",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-18T20:52:42Z",
+      "side": 1,
+      "message": "It looks like this is just writing an empty proto?\n\nBefore the CL should be marked ready for review, I\u0027d like to understand what manual verification you did that the implementation works. I imagine this would include inspection of the output metrics file to verify it has some contents which correct at a cursory glance.\n\n(Of course, you can export as \"Work In Progress (WIP)\" if you want eyes on it and are asking specific questions which are clarified by showing the current state of the CL, but you shouldn\u0027t circulate a WIP CL as \"ready for review\", nor send to presubmit.",
+      "revId": "ab5b00ec3cbd59d1c35fb152812ea4ddc8be3a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fac48f3_65d20143",
         "filename": "ui/metrics/metrics.go",
         "patchSetId": 16
