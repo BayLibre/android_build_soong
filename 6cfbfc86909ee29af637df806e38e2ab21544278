@@ -16,6 +16,24 @@
       "message": "nit: declare -r?",
       "revId": "6cfbfc86909ee29af637df806e38e2ab21544278",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4b12d65_a8b33128",
+        "filename": "scripts/update_out",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-11-18T23:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5286c4ce_e925152f",
+      "revId": "6cfbfc86909ee29af637df806e38e2ab21544278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
