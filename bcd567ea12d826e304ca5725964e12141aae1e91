@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7f5a05c_db0abf98",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-11-18T13:48:45Z",
+      "side": 1,
+      "message": "No idea if this is reasonable/safe. Adding Paul",
+      "revId": "bcd567ea12d826e304ca5725964e12141aae1e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
