@@ -163,6 +163,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "518dc95f_eb4fbfb5",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-18T21:29:29Z",
+      "side": 1,
+      "message": "It would be empty, yes. I checked for the relevant file and noted it there but empty. I left it as a placeholder, to be filled-in with whatever real `CodegenMetrics` I could reach. After recent discussions, none of this may happen here anyway.\n\nI\u0027ll revert to WIP next time.",
+      "parentUuid": "24693221_e07455d8",
+      "revId": "ab5b00ec3cbd59d1c35fb152812ea4ddc8be3a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fac48f3_65d20143",
         "filename": "ui/metrics/metrics.go",
         "patchSetId": 16
