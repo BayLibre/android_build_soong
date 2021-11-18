@@ -16,6 +16,24 @@
       "message": "No idea if this is reasonable/safe. Adding Paul",
       "revId": "bcd567ea12d826e304ca5725964e12141aae1e91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af8ac8bc_a0336f20",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-11-18T13:52:37Z",
+      "side": 1,
+      "message": "FWIW I discussed this with Jiakai - and in fact this was his suggestion.",
+      "parentUuid": "b7f5a05c_db0abf98",
+      "revId": "bcd567ea12d826e304ca5725964e12141aae1e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
