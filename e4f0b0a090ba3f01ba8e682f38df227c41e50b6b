@@ -16,6 +16,24 @@
       "message": "Martin, PTAL (aosp/1894153 probably should land first)",
       "revId": "e4f0b0a090ba3f01ba8e682f38df227c41e50b6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6333e507_945e4246",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-18T13:56:00Z",
+      "side": 1,
+      "message": "Thanks, sorry for the delay.\n\n\u003e (aosp/1894153 probably should land first)\n\nStrictly speaking yes, but timing isn\u0027t a big deal since we only take these prebuilts manually and infrequently.",
+      "parentUuid": "79041a70_d91c2cf1",
+      "revId": "e4f0b0a090ba3f01ba8e682f38df227c41e50b6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
