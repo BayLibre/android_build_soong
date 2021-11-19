@@ -118,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bafc1246_08316fbf",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-19T16:04:26Z",
+      "side": 1,
+      "message": "Yeah, I wasn\u0027t sure if the semantics are the same, but I\u0027ll follow up if they can be consolidated.",
+      "parentUuid": "6f6b77f9_0a17c872",
+      "range": {
+        "startLine": 143,
+        "startChar": 5,
+        "endLine": 143,
+        "endChar": 31
+      },
+      "revId": "602f71b7ba5d2b0aad1bac9492f496dfad21d63f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6684d752_c62d7a92",
