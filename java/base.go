@@ -1105,7 +1105,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		}
 
 		if enableSharding {
-			flags.classpath = append(flags.classpath, headerJarFileWithoutJarjar)
+			flags.classpath = append(classpath{headerJarFileWithoutJarjar}, flags.classpath...)
 			shardSize := int(*(j.properties.Javac_shard_size))
 			var shardSrcs []android.Paths
 			if len(uniqueSrcFiles) > 0 {
