@@ -364,3 +364,98 @@ func Test_PropertiesToApply(t *testing.T) {
 		}
 	}
 }
+
+func Test_Bp2BuildSoongConfigDefinitions(t *testing.T) {
+	testCases := []struct {
+		defs     Bp2BuildSoongConfigDefinitions
+		expected string
+	}{
+		{
+			defs: Bp2BuildSoongConfigDefinitions{},
+			expected: `soong_config_bool_variables = {
+}
+
+soong_config_value_variables = {
+}
+
+soong_config_string_variables = {
+}`}, {
+			defs: Bp2BuildSoongConfigDefinitions{
+				BoolVars: []string{"bool_var"},
+			},
+			expected: `soong_config_bool_variables = {
+    "bool_var": True,
+}
+
+soong_config_value_variables = {
+}
+
+soong_config_string_variables = {
+}`}, {
+			defs: Bp2BuildSoongConfigDefinitions{
+				ValueVars: []string{"value_var"},
+			},
+			expected: `soong_config_bool_variables = {
+}
+
+soong_config_value_variables = {
+    "value_var": True,
+}
+
+soong_config_string_variables = {
+}`}, {
+			defs: Bp2BuildSoongConfigDefinitions{
+				StringVars: map[string][]string{
+					"string_var": []string{"choice1", "choice2", "choice3"},
+				},
+			},
+			expected: `soong_config_bool_variables = {
+}
+
+soong_config_value_variables = {
+}
+
+soong_config_string_variables = {
+    "string_var": [
+        "choice1",
+        "choice2",
+        "choice3",
+    ],
+}`}, {
+			defs: Bp2BuildSoongConfigDefinitions{
+				BoolVars:  []string{"bool_var_one", "bool_var_dupe", "bool_var_dupe"},
+				ValueVars: []string{"value_var_one", "value_var_two"},
+				StringVars: map[string][]string{
+					"string_var_one": []string{"choice1", "choice2", "choice3"},
+					"string_var_two": []string{"foo", "bar"},
+				},
+			},
+			expected: `soong_config_bool_variables = {
+    "bool_var_dupe": True,
+    "bool_var_one": True,
+}
+
+soong_config_value_variables = {
+    "value_var_one": True,
+    "value_var_two": True,
+}
+
+soong_config_string_variables = {
+    "string_var_one": [
+        "choice1",
+        "choice2",
+        "choice3",
+    ],
+    "string_var_two": [
+        "foo",
+        "bar",
+    ],
+}`},
+	}
+	for _, test := range testCases {
+		actual := test.defs.String()
+		if actual != test.expected {
+			t.Errorf("Expected:\n%s\nbut got:\n%s", test.expected, actual)
+		}
+	}
+}
