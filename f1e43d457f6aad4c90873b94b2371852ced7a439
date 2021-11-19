@@ -91,6 +91,30 @@
       },
       "revId": "f1e43d457f6aad4c90873b94b2371852ced7a439",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80c85cfd_2a5586f9",
+        "filename": "android/mutator.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-11-19T23:30:09Z",
+      "side": 1,
+      "message": "I am open to any better name to replace \"Extra\".\nThe plan is just to separate some variants from the \"core\" variants, so we can test the \"core\" variants before all variants. It\u0027s not critical to define the exact non-core variants, and the definition could be extended when we can afford to test more as the core-variants.\n\nAbout enable or not-enabled variants, how does checkbuild deal with disabled variants? What I would prefer is to have obj-* and tidy-* targets include exactly a subset of checkbuild targets. \n\nSelect the \"first\" or \"last\" or a random variant as the core is possible, but the selected core variant could be different across modules, and only-one might not be enough. Some \"arch\" and 32/64-bit variants are now considered core, but they would not be all included if we only pick the first or last, right?",
+      "parentUuid": "09932573_9fe8c8c1",
+      "range": {
+        "startLine": 426,
+        "startChar": 34,
+        "endLine": 426,
+        "endChar": 39
+      },
+      "revId": "f1e43d457f6aad4c90873b94b2371852ced7a439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
