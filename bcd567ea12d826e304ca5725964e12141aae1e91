@@ -52,6 +52,24 @@
       "parentUuid": "af8ac8bc_a0336f20",
       "revId": "bcd567ea12d826e304ca5725964e12141aae1e91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70aef962_9701e2a6",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2021-11-19T15:07:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "67f5a1d1_018101d7",
+      "revId": "bcd567ea12d826e304ca5725964e12141aae1e91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
