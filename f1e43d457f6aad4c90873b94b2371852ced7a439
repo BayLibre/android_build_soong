@@ -33,6 +33,46 @@
       "message": "friendly ping reviewers\n",
       "revId": "f1e43d457f6aad4c90873b94b2371852ced7a439",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66a67e12_14247e8c",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1876,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-19T21:55:23Z",
+      "side": 1,
+      "message": "What is the purpose of the \"obj\" targets?  \"obj\" is very specific to native code, and seems a little strange to implement in the common module code.  Is there something more generic that could be used across multiple module types that should be implemented here?  If it\u0027s just for native code, maybe it should be in a singleton in cc?",
+      "revId": "f1e43d457f6aad4c90873b94b2371852ced7a439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09932573_9fe8c8c1",
+        "filename": "android/mutator.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-19T21:55:23Z",
+      "side": 1,
+      "message": "\"Extra\" is a very generic term to spread around the codebase like this.  There is also no guarantee that the variant that is not marked \"ExtraVariant\" is enabled, so you could end up missing modules.\n\nI wonder if a better implementation would be to check for ctx.FinalModule(), which is only true for the very last variant, and then use ctx.VisitAllModuleVariants to iterate over all the variants.  You can take the first enabled variant, or maybe the first enabled host variant and the first enabled device variant.",
+      "range": {
+        "startLine": 426,
+        "startChar": 34,
+        "endLine": 426,
+        "endChar": 39
+      },
+      "revId": "f1e43d457f6aad4c90873b94b2371852ced7a439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
