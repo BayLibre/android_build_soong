@@ -30,8 +30,8 @@ func NewStatusOutput(w io.Writer, statusFormat string, forceSimpleOutput, quietB
 	formatter := newFormatter(statusFormat, quietBuild)
 
 	if !forceSimpleOutput && isSmartTerminal(w) {
-		return NewSmartStatusOutput(w, formatter)
+		return NewSmartStatusOutput(w, formatter, quietBuild)
 	} else {
-		return NewSimpleStatusOutput(w, formatter, forceKeepANSI)
+		return NewSimpleStatusOutput(w, formatter, forceKeepANSI, quietBuild)
 	}
 }

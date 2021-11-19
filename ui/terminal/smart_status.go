@@ -36,8 +36,9 @@ type actionTableEntry struct {
 }
 
 type smartStatusOutput struct {
-	writer    io.Writer
-	formatter formatter
+	writer      io.Writer
+	formatter   formatter
+	outputLevel status.MsgLevel
 
 	lock sync.Mutex
 
@@ -58,30 +59,36 @@ type smartStatusOutput struct {
 // NewSmartStatusOutput returns a StatusOutput that represents the
 // current build status similarly to Ninja's built-in terminal
 // output.
-func NewSmartStatusOutput(w io.Writer, formatter formatter) status.StatusOutput {
+func NewSmartStatusOutput(w io.Writer, formatter formatter, quietBuild bool) status.StatusOutput {
+	level := status.StatusLvl
+	if quietBuild {
+		level = status.PrintLvl
+	}
 	s := &smartStatusOutput{
-		writer:    w,
-		formatter: formatter,
-
+		writer:        w,
+		formatter:     formatter,
+		outputLevel:   level,
 		haveBlankLine: true,
 
-		tableMode: true,
+		tableMode: !quietBuild,
 
 		done:     make(chan bool),
 		sigwinch: make(chan os.Signal),
 	}
 
-	if env, ok := os.LookupEnv(tableHeightEnVar); ok {
-		h, _ := strconv.Atoi(env)
-		s.tableMode = h > 0
-		s.requestedTableHeight = h
-	}
+	if s.tableMode {
+		if env, ok := os.LookupEnv(tableHeightEnVar); ok {
+			h, _ := strconv.Atoi(env)
+			s.tableMode = h > 0
+			s.requestedTableHeight = h
+		}
 
-	if w, h, ok := termSize(s.writer); ok {
-		s.termWidth, s.termHeight = w, h
-		s.computeTableHeight()
-	} else {
-		s.tableMode = false
+		if w, h, ok := termSize(s.writer); ok {
+			s.termWidth, s.termHeight = w, h
+			s.computeTableHeight()
+		} else {
+			s.tableMode = false
+		}
 	}
 
 	if s.tableMode {
@@ -108,7 +115,7 @@ func NewSmartStatusOutput(w io.Writer, formatter formatter) status.StatusOutput 
 }
 
 func (s *smartStatusOutput) Message(level status.MsgLevel, message string) {
-	if level < status.StatusLvl {
+	if level < s.outputLevel {
 		return
 	}
 
@@ -125,6 +132,9 @@ func (s *smartStatusOutput) Message(level status.MsgLevel, message string) {
 }
 
 func (s *smartStatusOutput) StartAction(action *status.Action, counts status.Counts) {
+	if s.outputLevel > status.StatusLvl {
+		return
+	}
 	startTime := time.Now()
 
 	str := action.Description
@@ -146,6 +156,9 @@ func (s *smartStatusOutput) StartAction(action *status.Action, counts status.Cou
 }
 
 func (s *smartStatusOutput) FinishAction(result status.ActionResult, counts status.Counts) {
+	if s.outputLevel > status.StatusLvl {
+		return
+	}
 	str := result.Description
 	if str == "" {
 		str = result.Command
@@ -231,6 +244,9 @@ func (s *smartStatusOutput) print(str string) {
 }
 
 func (s *smartStatusOutput) statusLine(str string) {
+	if s.outputLevel > status.StatusLvl {
+		return
+	}
 	idx := strings.IndexRune(str, '\n')
 	if idx != -1 {
 		str = str[0:idx]
@@ -282,7 +298,7 @@ func (s *smartStatusOutput) stopActionTableTick() {
 func (s *smartStatusOutput) startSigwinch() {
 	signal.Notify(s.sigwinch, syscall.SIGWINCH)
 	go func() {
-		for _ = range s.sigwinch {
+		for range s.sigwinch {
 			s.lock.Lock()
 			s.updateTermSize()
 			if s.tableMode {
