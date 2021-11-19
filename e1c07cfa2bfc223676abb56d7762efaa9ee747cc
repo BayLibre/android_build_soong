@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d005a90f_36584253",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-19T22:46:12Z",
+      "side": 1,
+      "message": "should we add a fail case in case we add a new type of variable is added so we can\u0027t forget to convert it?",
+      "range": {
+        "startLine": 262,
+        "startChar": 3,
+        "endLine": 262,
+        "endChar": 4
+      },
+      "revId": "e1c07cfa2bfc223676abb56d7762efaa9ee747cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06c4eae2_71bb6079",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-19T22:46:12Z",
+      "side": 1,
+      "message": "can we add a unit test for this?",
+      "range": {
+        "startLine": 270,
+        "startChar": 43,
+        "endLine": 270,
+        "endChar": 49
+      },
+      "revId": "e1c07cfa2bfc223676abb56d7762efaa9ee747cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce3f29d_cc25a9cc",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-19T22:46:12Z",
+      "side": 1,
+      "message": "unfortunate that we don\u0027t have reusable code for printing dicts yet...",
+      "range": {
+        "startLine": 289,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 12
+      },
+      "revId": "e1c07cfa2bfc223676abb56d7762efaa9ee747cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
