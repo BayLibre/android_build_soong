@@ -34,21 +34,24 @@ func runNinjaForBuild(ctx Context, config Config) {
 	ctx.BeginTrace(metrics.PrimaryNinja, "ninja")
 	defer ctx.EndTrace()
 
-	// Sets up the FIFO status updater that reads the Ninja protobuf output, and
-	// translates it to the soong_ui status output, displaying real-time
-	// progress of the build.
-	fifo := filepath.Join(config.OutDir(), ".ninja_fifo")
-	nr := status.NewNinjaReader(ctx, ctx.Status.StartTool(), fifo)
-	defer nr.Close()
-
 	executable := config.PrebuiltBuildTool("ninja")
 	args := []string{
 		"-d", "keepdepfile",
 		"-d", "keeprsp",
-		"-d", "stats",
-		"--frontend_file", fifo,
 	}
 
+	quietBuild := config.Environment().IsEnvTrue("ANDROID_QUIET_BUILD")
+	if quietBuild {
+		args = append(args, "--quiet")
+	} else {
+		// Sets up the FIFO status updater that reads the Ninja protobuf output, and
+		// translates it to the soong_ui status output, displaying real-time
+		// progress of the build.
+		fifo := filepath.Join(config.OutDir(), ".ninja_fifo")
+		nr := status.NewNinjaReader(ctx, ctx.Status.StartTool(), fifo)
+		defer nr.Close()
+		args = append(args, "-d", "stats", "--frontend_file", fifo)
+	}
 	args = append(args, config.NinjaArgs()...)
 
 	var parallel int
@@ -202,7 +205,9 @@ func runNinjaForBuild(ctx Context, config Config) {
 		}
 	}()
 
-	ctx.Status.Status("Starting ninja...")
+	if !quietBuild {
+		ctx.Status.Status("Starting ninja...")
+	}
 	cmd.RunAndStreamOrFatal()
 }
 
