@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfb024a5_78c92c8c",
+        "filename": "android/variable.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-19T14:39:59Z",
+      "side": 1,
+      "message": "what info do you think we\u0027ll need for variables not used for a module?",
+      "range": {
+        "startLine": 704,
+        "startChar": 18,
+        "endLine": 707,
+        "endChar": 30
+      },
+      "revId": "602f71b7ba5d2b0aad1bac9492f496dfad21d63f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00e86881_33b5543d",
+        "filename": "android/variable.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-19T14:39:59Z",
+      "side": 1,
+      "message": "can we add that this is because product_variables don\u0027t support conditions_default -- as we may need to update this if that occurs",
+      "range": {
+        "startLine": 738,
+        "startChar": 56,
+        "endLine": 738,
+        "endChar": 73
+      },
+      "revId": "602f71b7ba5d2b0aad1bac9492f496dfad21d63f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f6b77f9_0a17c872",
+        "filename": "bp2build/configurability.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-19T14:39:59Z",
+      "side": 1,
+      "message": "we also have this to force empty lists, eventually may be nice to consolidate to a single mechanism.",
+      "range": {
+        "startLine": 143,
+        "startChar": 5,
+        "endLine": 143,
+        "endChar": 31
+      },
+      "revId": "602f71b7ba5d2b0aad1bac9492f496dfad21d63f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6684d752_c62d7a92",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-19T14:39:59Z",
+      "side": 1,
+      "message": "can we add a test case where one of the properties is unused to ensure we don\u0027t start emitting unnecessary selects all with `[]`?",
+      "range": {
+        "startLine": 596,
+        "startChar": 5,
+        "endLine": 596,
+        "endChar": 39
+      },
+      "revId": "602f71b7ba5d2b0aad1bac9492f496dfad21d63f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
