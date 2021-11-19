@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a93d8418_dd6dc78e",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1876,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-11-19T23:15:21Z",
+      "side": 1,
+      "message": "obj-* targets are similar to tidy-* targets to test clang/clang++/clang-tidy compilations, without making other java or unrelated checkbuild targets. For example, \"make obj-soong tidy-soong\" will complete where \"make checkbuild\" will run out of disk space.\nBoth obj-* and tidy-* are generated in module.go to share their logic and with the checkbuild target. I don\u0027t understand the comment about \"singleton in cc\". Will that also apply to tidy-* targets? Could you give some example?",
+      "parentUuid": "66a67e12_14247e8c",
+      "revId": "f1e43d457f6aad4c90873b94b2371852ced7a439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09932573_9fe8c8c1",
         "filename": "android/mutator.go",
         "patchSetId": 5
