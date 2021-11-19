@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef979a2f_a9d51251",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-19T14:47:07Z",
+      "side": 1,
+      "message": "Friendly ping. PTAL, thanks.",
+      "revId": "1189d4e36e4a867ddc2e7cb87b2060952df2d071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
