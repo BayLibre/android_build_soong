@@ -397,21 +397,23 @@ func runSoong(ctx Context, config Config) {
 		ctx.BeginTrace(metrics.RunSoong, name)
 		defer ctx.EndTrace()
 
-		fifo := filepath.Join(config.OutDir(), ".ninja_fifo")
-		nr := status.NewNinjaReader(ctx, ctx.Status.StartTool(), fifo)
-		defer nr.Close()
-
 		ninjaArgs := []string{
 			"-d", "keepdepfile",
-			"-d", "stats",
 			"-o", "usesphonyoutputs=yes",
 			"-o", "preremoveoutputs=yes",
 			"-w", "dupbuild=err",
 			"-w", "outputdir=err",
 			"-w", "missingoutfile=err",
 			"-j", strconv.Itoa(config.Parallel()),
-			"--frontend_file", fifo,
 			"-f", filepath.Join(config.SoongOutDir(), ninjaFile),
+		}
+		if config.Environment().IsEnvTrue("ANDROID_QUIET_BUILD") {
+			ninjaArgs = append(ninjaArgs, "--quiet")
+		} else {
+			fifo := filepath.Join(config.OutDir(), ".ninja_fifo")
+			nr := status.NewNinjaReader(ctx, ctx.Status.StartTool(), fifo)
+			defer nr.Close()
+			ninjaArgs = append(ninjaArgs, "-d", "stats", "--frontend_file", fifo)
 		}
 
 		ninjaArgs = append(ninjaArgs, targets...)
