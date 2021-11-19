@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38c11b94_438bcc44",
+        "filename": "android/variable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-11-19T14:15:45Z",
+      "side": 1,
+      "message": "👍 yeah, my next suggestion was going to be ExtendBasicType, but deferring sg.",
+      "parentUuid": "d4e63ac1_d30c8026",
+      "range": {
+        "startLine": 678,
+        "startChar": 3,
+        "endLine": 678,
+        "endChar": 48
+      },
+      "revId": "b4765628a18177023b8b77a8ba0f665775c29420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49646197_5c982e5c",
