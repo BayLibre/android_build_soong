@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe77ccf9_1cbde307",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-11-19T00:55:00Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t fully understand this change. So +1.",
+      "revId": "ffbcd1d8a086c581a14a42e54fa0019c637f56e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
