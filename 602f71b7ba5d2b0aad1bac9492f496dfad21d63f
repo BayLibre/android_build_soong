@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffbfd2bb_5d316e15",
+        "filename": "android/variable.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-19T15:52:17Z",
+      "side": 1,
+      "message": "Humm, good question. I think the latest added test (TestSoongConfigModuleType_Defaults_UnusedProps) demonstrates that it\u0027s sufficient to just rely on conditions_default, and we only need to set zero values for the explicitly set non-default values in the other attribute.",
+      "parentUuid": "cfb024a5_78c92c8c",
+      "range": {
+        "startLine": 704,
+        "startChar": 18,
+        "endLine": 707,
+        "endChar": 30
+      },
+      "revId": "602f71b7ba5d2b0aad1bac9492f496dfad21d63f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00e86881_33b5543d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-19T14:39:59Z",
       "side": 1,
       "message": "can we add that this is because product_variables don\u0027t support conditions_default -- as we may need to update this if that occurs",
+      "range": {
+        "startLine": 738,
+        "startChar": 56,
+        "endLine": 738,
+        "endChar": 73
+      },
+      "revId": "602f71b7ba5d2b0aad1bac9492f496dfad21d63f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe1221a_c2f49c95",
+        "filename": "android/variable.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-19T15:52:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00e86881_33b5543d",
       "range": {
         "startLine": 738,
         "startChar": 56,
@@ -83,6 +131,30 @@
       "writtenOn": "2021-11-19T14:39:59Z",
       "side": 1,
       "message": "can we add a test case where one of the properties is unused to ensure we don\u0027t start emitting unnecessary selects all with `[]`?",
+      "range": {
+        "startLine": 596,
+        "startChar": 5,
+        "endLine": 596,
+        "endChar": 39
+      },
+      "revId": "602f71b7ba5d2b0aad1bac9492f496dfad21d63f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a4d552_a11d92ff",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-19T15:52:17Z",
+      "side": 1,
+      "message": "Done. This actually caught a bug where I was adding an invalid reflect.Value/interface into the product config variables list while adding TestSoongConfigModuleType_Defaults_UnusedProps.",
+      "parentUuid": "6684d752_c62d7a92",
       "range": {
         "startLine": 596,
         "startChar": 5,
