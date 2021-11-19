@@ -15,7 +15,6 @@
 package soongconfig
 
 import (
-	"android/soong/bazel"
 	"fmt"
 	"io"
 	"reflect"
@@ -121,8 +120,6 @@ type ModuleTypeProperties struct {
 
 	// the list of properties that this module type will extend.
 	Properties []string
-
-	Bazel_module bazel.BazelModuleProperties
 }
 
 func processModuleTypeDef(v *SoongConfigDefinition, def *parser.Module) (errs []error) {
@@ -231,6 +228,89 @@ type SoongConfigDefinition struct {
 	ModuleTypes map[string]*ModuleType
 
 	variables map[string]soongConfigVariable
+}
+
+// Bp2BuildSoongConfigDefinition keeps a global record of all soong config
+// string vars, bool vars and value vars created by every
+// soong_config_module_type in this build.
+type Bp2BuildSoongConfigDefinition struct {
+	StringVars map[string][]string
+	BoolVars   []string
+	ValueVars  []string
+}
+
+type Bp2BuildSoongConfigDefinitions []Bp2BuildSoongConfigDefinition
+
+// SoongConfigVariablesForBp2build extracts information from a
+// SoongConfigDefinition that bp2build needs to generate constraint settings and
+// values for, in order to migrate soong_config_module_type usages to Bazel.
+func (mtDef *SoongConfigDefinition) SoongConfigVariablesForBp2build() Bp2BuildSoongConfigDefinition {
+	ret := Bp2BuildSoongConfigDefinition{
+		StringVars: map[string][]string{},
+		BoolVars:   []string{},
+		ValueVars:  []string{},
+	}
+	for _, moduleType := range mtDef.ModuleTypes {
+		for _, v := range moduleType.Variables {
+			key := strings.Join([]string{moduleType.ConfigNamespace, v.variableProperty()}, "__")
+			if strVar, ok := v.(*stringVariable); ok {
+				ret.StringVars[key] = strVar.values
+			} else if _, ok := v.(*boolVariable); ok {
+				ret.BoolVars = append(ret.BoolVars, key)
+			} else if _, ok := v.(*valueVariable); ok {
+				ret.ValueVars = append(ret.ValueVars, key)
+			}
+		}
+	}
+
+	return ret
+}
+
+// String emits the Soong config variable definitions as Starlark dictionaries.
+func (defs Bp2BuildSoongConfigDefinitions) String() string {
+	boolVars := make(map[string]bool)
+	valueVars := make(map[string]bool)
+	stringVars := make(map[string][]string)
+	ret := ""
+	for _, def := range defs {
+		for _, boolVar := range def.BoolVars {
+			boolVars[boolVar] = true
+		}
+		for _, valueVar := range def.ValueVars {
+			valueVars[valueVar] = true
+		}
+		for stringVar, choices := range def.StringVars {
+			if _, ok := stringVars[stringVar]; !ok {
+				stringVars[stringVar] = choices
+			}
+		}
+	}
+
+	ret += "soong_config_bool_variables = {\n"
+	for boolVar := range boolVars {
+		ret += fmt.Sprintf("    \"%s\": True,\n", boolVar)
+	}
+	ret += "}\n"
+	ret += "\n"
+
+	ret += "soong_config_value_variables = {\n"
+	for valueVar := range valueVars {
+		ret += fmt.Sprintf("    \"%s\": True,\n", valueVar)
+	}
+	ret += "}\n"
+	ret += "\n"
+
+	ret += "soong_config_string_variables = {\n"
+	for stringVar, choices := range stringVars {
+		ret += fmt.Sprintf("    \"%s\": [\n", stringVar)
+		for _, choice := range choices {
+			ret += fmt.Sprintf("        \"%s\",\n", choice)
+		}
+		ret += fmt.Sprintf("    ],\n")
+	}
+	ret += "}\n"
+
+	return ret
 }
 
 // CreateProperties returns a reflect.Value of a newly constructed type that contains the desired
@@ -436,7 +516,6 @@ type ModuleType struct {
 
 	affectableProperties []string
 	variableNames        []string
-	Bp2buildAvailable    *bool
 }
 
 func newModuleType(props *ModuleTypeProperties) (*ModuleType, []error) {
@@ -445,7 +524,6 @@ func newModuleType(props *ModuleTypeProperties) (*ModuleType, []error) {
 		ConfigNamespace:      props.Config_namespace,
 		BaseModuleType:       props.Module_type,
 		variableNames:        props.Variables,
-		Bp2buildAvailable:    props.Bazel_module.Bp2build_available,
 	}
 
 	for _, name := range props.Bool_variables {
