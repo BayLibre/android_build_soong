@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95426f88_d909391f",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-11-22T16:16:49Z",
+      "side": 1,
+      "message": "Any particular reason this is appended to ninjaArgs afterwards instead of just being in its initializer?",
+      "revId": "1c639a2963e0f9c1c4e640fa8d97bd460b2726ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
