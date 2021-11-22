@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d51ba63_e422bfaa",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-22T08:27:27Z",
+      "side": 1,
+      "message": "nit: is this separate type necessary?",
+      "range": {
+        "startLine": 242,
+        "startChar": 5,
+        "endLine": 242,
+        "endChar": 35
+      },
+      "revId": "e1c07cfa2bfc223676abb56d7762efaa9ee747cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b5c9e5c_a7f507d4",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-22T08:27:27Z",
+      "side": 1,
+      "message": "At first I was about to recommend creating collecting the config definitions where one parses the soong.variables, but then I realized that one cannot do that, since the type information is not available there, only the names of the variables :(",
+      "range": {
+        "startLine": 247,
+        "startChar": 36,
+        "endLine": 247,
+        "endChar": 67
+      },
+      "revId": "e1c07cfa2bfc223676abb56d7762efaa9ee747cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70263882_3aaa83b5",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-22T08:27:27Z",
+      "side": 1,
+      "message": "It\u0027s kinda odd that you store the config variables in two layers: first you have a slice of Bp2BuildSoongConfigDefinition, then each of those contains slices of variables of different types.\n\nIt would be simpler to have the StringVars/BoolVars/ValueVars slices be a direct member of Config. Is this possible?",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 38
+      },
+      "revId": "e1c07cfa2bfc223676abb56d7762efaa9ee747cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d005a90f_36584253",
         "filename": "android/soongconfig/modules.go",
         "patchSetId": 7
