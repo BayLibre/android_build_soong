@@ -16,6 +16,23 @@
       "message": "The new compiler update seems to be breaking coverage on Rust.  -2 to prevent autosubmit.  Let me investigate and report back on how to proceed.",
       "revId": "933e7014da01cdb099bd65729f73a05e97710858",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bfccaa3_d51c3fc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-11-22T18:08:14Z",
+      "side": 1,
+      "message": "The Rust issue is resolved with https://android-review.googlesource.com/q/topic:rust-update-prebuilts-1.56.1p1.",
+      "revId": "933e7014da01cdb099bd65729f73a05e97710858",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
