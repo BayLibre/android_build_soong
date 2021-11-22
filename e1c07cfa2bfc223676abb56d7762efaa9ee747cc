@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5df5fb76_1e4b9c7d",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-22T08:13:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d005a90f_36584253",
+      "range": {
+        "startLine": 262,
+        "startChar": 3,
+        "endLine": 262,
+        "endChar": 4
+      },
+      "revId": "e1c07cfa2bfc223676abb56d7762efaa9ee747cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06c4eae2_71bb6079",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-19T22:46:12Z",
       "side": 1,
       "message": "can we add a unit test for this?",
+      "range": {
+        "startLine": 270,
+        "startChar": 43,
+        "endLine": 270,
+        "endChar": 49
+      },
+      "revId": "e1c07cfa2bfc223676abb56d7762efaa9ee747cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab511d3b_b9395961",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-22T08:13:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06c4eae2_71bb6079",
       "range": {
         "startLine": 270,
         "startChar": 43,
