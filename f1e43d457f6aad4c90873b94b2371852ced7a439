@@ -115,6 +115,30 @@
       },
       "revId": "f1e43d457f6aad4c90873b94b2371852ced7a439",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ca96169_bc784737",
+        "filename": "android/mutator.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-11-22T07:35:39Z",
+      "side": 1,
+      "message": "Done. The new patch replaced \"Extra\" variants with \"*_subset\" phony targets that only include the first variant. I reused the VisitAllModuleVariants function in generateModuleTarget and did not need to use the FinalModule function.",
+      "parentUuid": "80c85cfd_2a5586f9",
+      "range": {
+        "startLine": 426,
+        "startChar": 34,
+        "endLine": 426,
+        "endChar": 39
+      },
+      "revId": "f1e43d457f6aad4c90873b94b2371852ced7a439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
