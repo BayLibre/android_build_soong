@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a7cd0d31_8186ce63",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-22T08:54:36Z",
+      "side": 1,
+      "message": "yes, for the String() method. One cannot use an actual slice as the method receiver.",
+      "parentUuid": "0d51ba63_e422bfaa",
+      "range": {
+        "startLine": 242,
+        "startChar": 5,
+        "endLine": 242,
+        "endChar": 35
+      },
+      "revId": "e1c07cfa2bfc223676abb56d7762efaa9ee747cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9b5c9e5c_a7f507d4",
         "filename": "android/soongconfig/modules.go",
         "patchSetId": 7
@@ -60,6 +84,30 @@
       "writtenOn": "2021-11-22T08:27:27Z",
       "side": 1,
       "message": "It\u0027s kinda odd that you store the config variables in two layers: first you have a slice of Bp2BuildSoongConfigDefinition, then each of those contains slices of variables of different types.\n\nIt would be simpler to have the StringVars/BoolVars/ValueVars slices be a direct member of Config. Is this possible?",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 38
+      },
+      "revId": "e1c07cfa2bfc223676abb56d7762efaa9ee747cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05597d2f_3d6ae176",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-22T08:54:36Z",
+      "side": 1,
+      "message": "It\u0027s possible, but this approach keeps soong_config_variables.go simple. I also don\u0027t think it\u0027s simpler/cleaner to flatten the implementation details of config var types into Config as opposed to an abstraction specific for bp2build.",
+      "parentUuid": "70263882_3aaa83b5",
       "range": {
         "startLine": 248,
         "startChar": 1,
