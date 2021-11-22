@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59e3a267_97413427",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-22T09:34:08Z",
+      "side": 1,
+      "message": "Conceptually, the \"outer\" slice is not how vendor variables work, is it? I thought it\u0027s better if the data in Config reflects the conceptual model instead of just whatever makes the code easier to type.\n\nExample: you are saying that one needs the \"outer\" slice because it keeps soong_config_variables.go simple. True that, but it comes at a cost to whoever looks at Config and it makes modules.go more complicated in turn. It also makes it necessary to add the \"workaround\" Bp2BuildSoongConfigDefinitions type.\n\nInstead, how about this:\n\ntype Bp2BuildSoongConfigDefinitions struct {\n  StringVars map[string][]string,\n  BoolVars: []string,\n  ValueVars: []string,\n}\n\nfunc (*d Bp2BuildSoongConfigDefinition) AddStringVar(...) {\n...}\n\nfunc (*d Bp2BuildSoongConfigDefinition) String() {\n...\n}\n\nThen you don\u0027t have the extra slice, soong_config_variables.go is simple and the concept of \"set of config variables\" is nicely encapsulated.",
+      "parentUuid": "05597d2f_3d6ae176",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 38
+      },
+      "revId": "e1c07cfa2bfc223676abb56d7762efaa9ee747cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d005a90f_36584253",
         "filename": "android/soongconfig/modules.go",
         "patchSetId": 7
