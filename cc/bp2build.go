@@ -93,7 +93,7 @@ func groupSrcsByExtension(ctx android.BazelConversionPathContext, srcs bazel.Lab
 }
 
 // bp2BuildParseLibProps returns the attributes for a variant of a cc_library.
-func bp2BuildParseLibProps(ctx android.BazelConversionPathContext, module *Module, isStatic bool) staticOrSharedAttributes {
+func bp2BuildParseLibProps(ctx android.TopDownMutatorContext, module *Module, isStatic bool) staticOrSharedAttributes {
 	lib, ok := module.compiler.(*libraryDecorator)
 	if !ok {
 		return staticOrSharedAttributes{}
@@ -102,12 +102,12 @@ func bp2BuildParseLibProps(ctx android.BazelConversionPathContext, module *Modul
 }
 
 // bp2buildParseSharedProps returns the attributes for the shared variant of a cc_library.
-func bp2BuildParseSharedProps(ctx android.BazelConversionPathContext, module *Module) staticOrSharedAttributes {
+func bp2BuildParseSharedProps(ctx android.TopDownMutatorContext, module *Module) staticOrSharedAttributes {
 	return bp2BuildParseLibProps(ctx, module, false)
 }
 
 // bp2buildParseStaticProps returns the attributes for the static variant of a cc_library.
-func bp2BuildParseStaticProps(ctx android.BazelConversionPathContext, module *Module) staticOrSharedAttributes {
+func bp2BuildParseStaticProps(ctx android.TopDownMutatorContext, module *Module) staticOrSharedAttributes {
 	return bp2BuildParseLibProps(ctx, module, true)
 }
 
@@ -149,7 +149,7 @@ func maybePartitionExportedAndImplementationsDepsExcludes(ctx android.BazelConve
 	}
 }
 
-func bp2buildParseStaticOrSharedProps(ctx android.BazelConversionPathContext, module *Module, lib *libraryDecorator, isStatic bool) staticOrSharedAttributes {
+func bp2buildParseStaticOrSharedProps(ctx android.TopDownMutatorContext, module *Module, lib *libraryDecorator, isStatic bool) staticOrSharedAttributes {
 	attrs := staticOrSharedAttributes{}
 
 	setAttrs := func(axis bazel.ConfigurationAxis, config string, props StaticOrSharedProperties) {
@@ -204,7 +204,7 @@ type prebuiltAttributes struct {
 }
 
 // NOTE: Used outside of Soong repo project, in the clangprebuilts.go bootstrap_go_package
-func Bp2BuildParsePrebuiltLibraryProps(ctx android.BazelConversionPathContext, module *Module) prebuiltAttributes {
+func Bp2BuildParsePrebuiltLibraryProps(ctx android.TopDownMutatorContext, module *Module) prebuiltAttributes {
 	var srcLabelAttribute bazel.LabelAttribute
 
 	for axis, configToProps := range module.GetArchVariantProperties(ctx, &prebuiltLinkerProperties{}) {
@@ -392,7 +392,7 @@ func bp2buildResolveCppStdValue(cpp_std *string, gnu_extensions *bool) *string {
 }
 
 // bp2BuildParseCompilerProps returns copts, srcs and hdrs and other attributes.
-func bp2BuildParseBaseProps(ctx android.BazelConversionPathContext, module *Module) baseAttributes {
+func bp2BuildParseBaseProps(ctx android.TopDownMutatorContext, module *Module) baseAttributes {
 	archVariantCompilerProps := module.GetArchVariantProperties(ctx, &BaseCompilerProperties{})
 	archVariantLinkerProps := module.GetArchVariantProperties(ctx, &BaseLinkerProperties{})
 
@@ -548,7 +548,7 @@ func (la *linkerAttributes) bp2buildForAxisAndConfig(ctx android.BazelConversion
 	}
 }
 
-func (la *linkerAttributes) convertStripProps(ctx android.BazelConversionPathContext, module *Module) {
+func (la *linkerAttributes) convertStripProps(ctx android.TopDownMutatorContext, module *Module) {
 	for axis, configToProps := range module.GetArchVariantProperties(ctx, &StripProperties{}) {
 		for config, props := range configToProps {
 			if stripProperties, ok := props.(*StripProperties); ok {
@@ -659,14 +659,14 @@ type BazelIncludes struct {
 	SystemIncludes bazel.StringListAttribute
 }
 
-func bp2BuildParseExportedIncludes(ctx android.BazelConversionPathContext, module *Module) BazelIncludes {
+func bp2BuildParseExportedIncludes(ctx android.TopDownMutatorContext, module *Module) BazelIncludes {
 	libraryDecorator := module.linker.(*libraryDecorator)
 	return bp2BuildParseExportedIncludesHelper(ctx, module, libraryDecorator)
 }
 
 // Bp2buildParseExportedIncludesForPrebuiltLibrary returns a BazelIncludes with Bazel-ified values
 // to export includes from the underlying module's properties.
-func Bp2BuildParseExportedIncludesForPrebuiltLibrary(ctx android.BazelConversionPathContext, module *Module) BazelIncludes {
+func Bp2BuildParseExportedIncludesForPrebuiltLibrary(ctx android.TopDownMutatorContext, module *Module) BazelIncludes {
 	prebuiltLibraryLinker := module.linker.(*prebuiltLibraryLinker)
 	libraryDecorator := prebuiltLibraryLinker.libraryDecorator
 	return bp2BuildParseExportedIncludesHelper(ctx, module, libraryDecorator)
@@ -674,7 +674,7 @@ func Bp2BuildParseExportedIncludesForPrebuiltLibrary(ctx android.BazelConversion
 
 // bp2BuildParseExportedIncludes creates a string list attribute contains the
 // exported included directories of a module.
-func bp2BuildParseExportedIncludesHelper(ctx android.BazelConversionPathContext, module *Module, libraryDecorator *libraryDecorator) BazelIncludes {
+func bp2BuildParseExportedIncludesHelper(ctx android.TopDownMutatorContext, module *Module, libraryDecorator *libraryDecorator) BazelIncludes {
 	exported := BazelIncludes{}
 	for axis, configToProps := range module.GetArchVariantProperties(ctx, &FlagExporterProperties{}) {
 		for config, props := range configToProps {
@@ -754,7 +754,7 @@ type binaryLinkerAttrs struct {
 	Linkshared *bool
 }
 
-func bp2buildBinaryLinkerProps(ctx android.BazelConversionPathContext, m *Module) binaryLinkerAttrs {
+func bp2buildBinaryLinkerProps(ctx android.TopDownMutatorContext, m *Module) binaryLinkerAttrs {
 	attrs := binaryLinkerAttrs{}
 	archVariantProps := m.GetArchVariantProperties(ctx, &BinaryLinkerProperties{})
 	for axis, configToProps := range archVariantProps {

@@ -140,6 +140,8 @@ type EarlyModuleContext interface {
 type BaseModuleContext interface {
 	EarlyModuleContext
 
+	TargetPropertyMap() map[string][]interface{}
+
 	blueprintBaseModuleContext() blueprint.BaseModuleContext
 
 	// OtherModuleName returns the name of another Module.  See BaseModuleContext.ModuleName for more information.
@@ -2217,6 +2219,10 @@ func (b *baseModuleContext) GetDirectDepWithTag(name string, tag blueprint.Depen
 
 func (b *baseModuleContext) blueprintBaseModuleContext() blueprint.BaseModuleContext {
 	return b.bp
+}
+
+func (b *baseModuleContext) TargetPropertyMap() map[string][]interface{} {
+	return b.bp.TargetPropertyMap()
 }
 
 type moduleContext struct {

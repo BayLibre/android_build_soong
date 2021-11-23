@@ -68,7 +68,7 @@ func (l *loadHookContext) moduleFactories() map[string]blueprint.ModuleFactory {
 func (l *loadHookContext) AppendProperties(props ...interface{}) {
 	for _, p := range props {
 		err := proptools.AppendMatchingProperties(l.Module().base().customizableProperties,
-			p, nil)
+			p, blueprint.TargetFilter)
 		if err != nil {
 			if propertyErr, ok := err.(*proptools.ExtendPropertyError); ok {
 				l.PropertyErrorf(propertyErr.Property, "%s", propertyErr.Err.Error())
@@ -76,6 +76,10 @@ func (l *loadHookContext) AppendProperties(props ...interface{}) {
 				panic(err)
 			}
 		}
+
+		blueprint.ParseTargetProperty(p,
+			l.bp.ClonedPropertyMap(),
+			l.bp.TargetPropertyMap())
 	}
 }
 
