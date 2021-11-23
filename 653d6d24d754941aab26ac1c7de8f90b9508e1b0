@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81906370_e78e06fa",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2833,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-11-23T02:33:55Z",
+      "side": 1,
+      "message": "Could you please add a comment here for why using `Module()` here? Thanks!",
+      "revId": "653d6d24d754941aab26ac1c7de8f90b9508e1b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
