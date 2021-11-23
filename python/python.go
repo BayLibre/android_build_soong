@@ -114,7 +114,8 @@ type BaseProperties struct {
 
 	// whether the module is required to be built with actual_version.
 	// this is set by the python version mutator based on version-specific properties
-	Enabled *bool `blueprint:"mutated"`
+	// TODO(lberki): And apparently in some Blueprint files, grump.
+	Enabled *bool
 
 	// whether the binary is required to be built with embedded launcher for this actual_version.
 	// this is set by the python version mutator based on version-specific properties

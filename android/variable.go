@@ -15,12 +15,13 @@
 package android
 
 import (
-	"android/soong/android/soongconfig"
-	"android/soong/bazel"
 	"fmt"
 	"reflect"
 	"runtime"
 	"strings"
+
+	"android/soong/android/soongconfig"
+	"android/soong/bazel"
 
 	"github.com/google/blueprint/proptools"
 )
@@ -610,7 +611,7 @@ type ProductConfigProperties map[string]map[ProductConfigProperty]interface{}
 
 // ProductVariableProperties returns a ProductConfigProperties containing only the properties which
 // have been set for the module in the given context.
-func ProductVariableProperties(ctx BazelConversionPathContext) ProductConfigProperties {
+func ProductVariableProperties(ctx TopDownMutatorContext) ProductConfigProperties {
 	module := ctx.Module()
 	moduleBase := module.base()
 

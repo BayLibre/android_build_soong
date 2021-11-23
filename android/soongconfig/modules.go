@@ -15,12 +15,13 @@
 package soongconfig
 
 import (
-	"android/soong/bazel"
 	"fmt"
 	"io"
 	"reflect"
 	"sort"
 	"strings"
+
+	"android/soong/bazel"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/parser"
@@ -126,10 +127,19 @@ type ModuleTypeProperties struct {
 }
 
 func processModuleTypeDef(v *SoongConfigDefinition, def *parser.Module) (errs []error) {
-
 	props := &ModuleTypeProperties{}
 
-	_, errs = proptools.UnpackProperties(def.Properties, props)
+	unpackContext := proptools.CreateContext(def.Properties)
+	if len(unpackContext.Errors()) > 0 {
+		return errs
+	}
+
+	_, errs = proptools.UnpackProperties(unpackContext, "", props)
+	if len(errs) > 0 {
+		return errs
+	}
+
+	errs = proptools.CollectUnusedProperties(unpackContext)
 	if len(errs) > 0 {
 		return errs
 	}
@@ -213,7 +223,17 @@ func processVariableDef(def *parser.Module,
 
 	allProps := append([]interface{}{props}, extraProps...)
 
-	_, errs = proptools.UnpackProperties(def.Properties, allProps...)
+	unpackContext := proptools.CreateContext(def.Properties)
+	if len(unpackContext.Errors()) > 0 {
+		return baseVariable{}, unpackContext.Errors()
+	}
+
+	_, errs = proptools.UnpackProperties(unpackContext, "", allProps...)
+	if len(errs) > 0 {
+		return baseVariable{}, errs
+	}
+
+	errs = proptools.CollectUnusedProperties(unpackContext)
 	if len(errs) > 0 {
 		return baseVariable{}, errs
 	}
