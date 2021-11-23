@@ -530,9 +530,9 @@ func (t *topDownMutatorContext) CreateBazelTargetModule(
 }
 
 func (t *topDownMutatorContext) appendPrependHelper(props []interface{},
-	f func([]interface{}, interface{}, proptools.ExtendPropertyFilterFunc) error) {
+	extendFn func([]interface{}, interface{}, proptools.ExtendPropertyFilterFunc) error) {
 	for _, p := range props {
-		err := f(t.Module().base().customizableProperties, p, nil)
+		err := extendFn(t.Module().base().customizableProperties, p, nil)
 		if err != nil {
 			if propertyErr, ok := err.(*proptools.ExtendPropertyError); ok {
 				t.PropertyErrorf(propertyErr.Property, "%s", propertyErr.Err.Error())
