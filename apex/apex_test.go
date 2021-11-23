@@ -4272,6 +4272,37 @@ func TestApexWithShBinary(t *testing.T) {
 	ensureContains(t, copyCmds, "image.apex/bin/script/myscript.sh")
 }
 
+func TestVendorApexWithShBinary(t *testing.T) {
+	ctx := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			sh_binaries: ["myscript"],
+			soc_specific: true,
+			updatable: false,
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		sh_binary {
+			name: "myscript",
+			src: "mylib.cpp",
+			vendor: true,
+			filename: "myscript.sh",
+			sub_dir: "script",
+		}
+	`)
+
+	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexRule")
+	copyCmds := apexRule.Args["copy_commands"]
+
+	ensureContains(t, copyCmds, "image.apex/bin/script/myscript.sh")
+}
+
 func TestApexInVariousPartition(t *testing.T) {
 	testcases := []struct {
 		propName, parition, flattenedPartition string
