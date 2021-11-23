@@ -3109,19 +3109,18 @@ func makeApexAvailableBaseline() map[string][]string {
 }
 
 func init() {
-	android.AddNeverAllowRules(createApexPermittedPackagesRules(qModulesPackages())...)
-	android.AddNeverAllowRules(createApexPermittedPackagesRules(rModulesPackages())...)
+	android.AddNeverAllowRules(createBcpPermittedPackagesRules(qBcpPermittedPackages())...)
+	android.AddNeverAllowRules(createBcpPermittedPackagesRules(rBcpPermittedPackages())...)
 }
 
-func createApexPermittedPackagesRules(modules_packages map[string][]string) []android.Rule {
-	rules := make([]android.Rule, 0, len(modules_packages))
-	for module_name, module_packages := range modules_packages {
+func createBcpPermittedPackagesRules(bcpPermittedPackages map[string][]string) []android.Rule {
+	rules := make([]android.Rule, 0, len(bcpPermittedPackages))
+	for jar, permittedPackages := range bcpPermittedPackages {
 		permittedPackagesRule := android.NeverAllow().
-			BootclasspathJar().
-			With("apex_available", module_name).
-			WithMatcher("permitted_packages", android.NotInList(module_packages)).
-			Because("jars that are part of the " + module_name +
-				" module may only allow these packages: " + strings.Join(module_packages, ",") +
+			With("name", jar).
+			WithMatcher("permitted_packages", android.NotInList(permittedPackages)).
+			Because(jar +
+				" bootjar may only allow these packages: " + strings.Join(permittedPackages, ",") +
 				". Please jarjar or move code around.")
 		rules = append(rules, permittedPackagesRule)
 	}
@@ -3130,13 +3129,13 @@ func createApexPermittedPackagesRules(modules_packages map[string][]string) []an
 
 // DO NOT EDIT! These are the package prefixes that are exempted from being AOT'ed by ART.
 // Adding code to the bootclasspath in new packages will cause issues on module update.
-func qModulesPackages() map[string][]string {
+func qBcpPermittedPackages() map[string][]string {
 	return map[string][]string{
-		"com.android.conscrypt": []string{
+		"conscrypt": []string{
 			"android.net.ssl",
 			"com.android.org.conscrypt",
 		},
-		"com.android.media": []string{
+		"updatable-media": []string{
 			"android.media",
 		},
 	}
@@ -3144,34 +3143,34 @@ func qModulesPackages() map[string][]string {
 
 // DO NOT EDIT! These are the package prefixes that are exempted from being AOT'ed by ART.
 // Adding code to the bootclasspath in new packages will cause issues on module update.
-func rModulesPackages() map[string][]string {
+func rBcpPermittedPackages() map[string][]string {
 	return map[string][]string{
-		"com.android.mediaprovider": []string{
+		"framework-mediaprovider": []string{
 			"android.provider",
 		},
-		"com.android.permission": []string{
+		"framework-permission": []string{
 			"android.permission",
 			"android.app.role",
 			"com.android.permission",
 			"com.android.role",
 		},
-		"com.android.sdkext": []string{
+		"framework-sdkextensions": []string{
 			"android.os.ext",
 		},
-		"com.android.os.statsd": []string{
+		"framework-statsd": []string{
 			"android.app",
 			"android.os",
 			"android.util",
 			"com.android.internal.statsd",
 			"com.android.server.stats",
 		},
-		"com.android.wifi": []string{
+		"framework-wifi": []string{
 			"com.android.server.wifi",
 			"com.android.wifi.x",
 			"android.hardware.wifi",
 			"android.net.wifi",
 		},
-		"com.android.tethering": []string{
+		"framework-tethering": []string{
 			"android.net",
 		},
 	}
