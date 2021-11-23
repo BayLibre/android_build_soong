@@ -95,7 +95,7 @@ func getLabelListValues(list bazel.LabelListAttribute) (reflect.Value, []selects
 				continue
 			}
 			selectKey := axis.SelectKey(config)
-			if use, value := labelListSelectValue(selectKey, labels, list.EmitEmptyList); use {
+			if use, value := labelListSelectValue(selectKey, labels); use {
 				archSelects[selectKey] = value
 			}
 		}
@@ -107,8 +107,8 @@ func getLabelListValues(list bazel.LabelListAttribute) (reflect.Value, []selects
 	return value, ret
 }
 
-func labelListSelectValue(selectKey string, list bazel.LabelList, emitEmptyList bool) (bool, reflect.Value) {
-	if selectKey == bazel.ConditionsDefaultSelectKey || emitEmptyList || len(list.Includes) > 0 {
+func labelListSelectValue(selectKey string, list bazel.LabelList) (bool, reflect.Value) {
+	if selectKey == bazel.ConditionsDefaultSelectKey || len(list.Includes) > 0 {
 		return true, reflect.ValueOf(list.Includes)
 	} else if len(list.Excludes) > 0 {
 		// if there is still an excludes -- we need to have an empty list for this select & use the
@@ -129,7 +129,6 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 	var value reflect.Value
 	var configurableAttrs []selects
 	var defaultSelectValue *string
-	var emitZeroValues bool
 	// If true, print the default attribute value, even if the attribute is zero.
 	shouldPrintDefault := false
 	switch list := v.(type) {
@@ -138,7 +137,6 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 		defaultSelectValue = &emptyBazelList
 	case bazel.LabelListAttribute:
 		value, configurableAttrs = getLabelListValues(list)
-		emitZeroValues = list.EmitEmptyList
 		defaultSelectValue = &emptyBazelList
 		if list.ForceSpecifyEmptyList && (!value.IsNil() || list.HasConfigurableValues()) {
 			shouldPrintDefault = true
@@ -156,7 +154,7 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 	var err error
 	ret := ""
 	if value.Kind() != reflect.Invalid {
-		s, err := prettyPrint(value, indent, false) // never emit zero values for the base value
+		s, err := prettyPrint(value, indent)
 		if err != nil {
 			return ret, err
 		}
@@ -165,7 +163,7 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 	}
 	// Convenience function to append selects components to an attribute value.
 	appendSelects := func(selectsData selects, defaultValue *string, s string) (string, error) {
-		selectMap, err := prettyPrintSelectMap(selectsData, defaultValue, indent, emitZeroValues)
+		selectMap, err := prettyPrintSelectMap(selectsData, defaultValue, indent)
 		if err != nil {
 			return "", err
 		}
@@ -192,7 +190,7 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 
 // prettyPrintSelectMap converts a map of select keys to reflected Values as a generic way
 // to construct a select map for any kind of attribute type.
-func prettyPrintSelectMap(selectMap map[string]reflect.Value, defaultValue *string, indent int, emitZeroValues bool) (string, error) {
+func prettyPrintSelectMap(selectMap map[string]reflect.Value, defaultValue *string, indent int) (string, error) {
 	if selectMap == nil {
 		return "", nil
 	}
@@ -204,11 +202,11 @@ func prettyPrintSelectMap(selectMap map[string]reflect.Value, defaultValue *stri
 			continue
 		}
 		value := selectMap[selectKey]
-		if isZero(value) && !emitZeroValues {
+		if isZero(value) {
 			// Ignore zero values to not generate empty lists.
 			continue
 		}
-		s, err := prettyPrintSelectEntry(value, selectKey, indent, emitZeroValues)
+		s, err := prettyPrintSelectEntry(value, selectKey, indent)
 		if err != nil {
 			return "", err
 		}
@@ -229,7 +227,7 @@ func prettyPrintSelectMap(selectMap map[string]reflect.Value, defaultValue *stri
 	ret += selects
 
 	// Handle the default condition
-	s, err := prettyPrintSelectEntry(selectMap[bazel.ConditionsDefaultSelectKey], bazel.ConditionsDefaultSelectKey, indent, emitZeroValues)
+	s, err := prettyPrintSelectEntry(selectMap[bazel.ConditionsDefaultSelectKey], bazel.ConditionsDefaultSelectKey, indent)
 	if err != nil {
 		return "", err
 	}
@@ -251,9 +249,9 @@ func prettyPrintSelectMap(selectMap map[string]reflect.Value, defaultValue *stri
 
 // prettyPrintSelectEntry converts a reflect.Value into an entry in a select map
 // with a provided key.
-func prettyPrintSelectEntry(value reflect.Value, key string, indent int, emitZeroValues bool) (string, error) {
+func prettyPrintSelectEntry(value reflect.Value, key string, indent int) (string, error) {
 	s := makeIndent(indent + 1)
-	v, err := prettyPrint(value, indent+1, emitZeroValues)
+	v, err := prettyPrint(value, indent+1)
 	if err != nil {
 		return "", err
 	}

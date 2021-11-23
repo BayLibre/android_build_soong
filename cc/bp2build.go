@@ -611,7 +611,6 @@ func (la *linkerAttributes) convertProductVariables(ctx android.BazelConversionP
 				ctx.ModuleErrorf("Could not convert product variable %s property", dep.excludesField)
 			}
 
-			dep.attribute.EmitEmptyList = productConfigProp.AlwaysEmit()
 			dep.attribute.SetSelectValue(
 				productConfigProp.ConfigurationAxis(),
 				productConfigProp.SelectKey(),
