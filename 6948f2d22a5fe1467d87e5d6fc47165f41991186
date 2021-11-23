@@ -16,6 +16,75 @@
       "message": "Ready for review, passing presubmits AFAICT. Liz\u0027s comment may be unresolvable until she gets back and confirms things are now how she expected them.",
       "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0666e66d_025c1c19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-23T21:46:31Z",
+      "side": 1,
+      "message": "Please be sure to mark all lingering comments as resolved!\n\nHow did you end up verifying the protobuf has expected content? (Did you use a proto-reading tool? Which one?)",
+      "parentUuid": "5ddc6188_15bfc7cf",
+      "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a672f09b_828911fc",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-23T21:46:31Z",
+      "side": 1,
+      "message": "Does this end up adjacent to soong_metrics and other logs, as the bug suggests?\n\nIt looks like the other path determination logic uses a \"logs prefix\", which is omitted here. \nExample:\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cmd/soong_ui/main.go;l\u003d229;drc\u003d3c0fe0edc0aa5332f7ad23af13b75cd13cab1fb8",
+      "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e18a464_96e17619",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-23T21:46:31Z",
+      "side": 1,
+      "message": "outputting*",
+      "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3215bde4_c18d84ff",
+        "filename": "shared/proto.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-23T21:46:31Z",
+      "side": 1,
+      "message": "This is redundant with build/soong/ui/metrics/metrics.go\u0027s. Are you planning on refactoring all callers to use this?",
+      "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
