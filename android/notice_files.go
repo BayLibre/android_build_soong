@@ -188,5 +188,39 @@ type LicenseAnnotationsDependencyTag interface {
 type LicenseAnnotation string
 
 const (
+	// LicenseAnnotationSharedDependency should be returned by LicenseAnnotations implementations
+	// of dependency tags when the usage of the dependency is dynamic, for example a shared library
+	// linkage for native modules or as a classpath library for java modules.
 	LicenseAnnotationSharedDependency LicenseAnnotation = "dynamic"
+
+	// LicenseAnnotationGenerator should be returned by LicenseAnnotations implementations of
+	// dependency tags when the dependency is used as a generator that produces output
+	// source files.
+	//
+	// Dependency tags that need to always return LicenseAnnotationGenerator
+	// can embed LicenseAnnotationGeneratorDependencyTag to implement LicenseAnnotations.
+	LicenseAnnotationGenerator LicenseAnnotation = "generator"
+
+	// LicenseAnnotationCompiler should be returned by LicenseAnnotations implementations of
+	// dependency tags when the dependency is used as a compiler.
+	//
+	// Dependency tags that need to always return LicenseAnnotationCompiler
+	// can embed LicenseAnnotationCompilerDependencyTag to implement LicenseAnnotations.
+	LicenseAnnotationCompiler LicenseAnnotation = "compiler"
 )
+
+// LicenseAnnotationGeneratorDependencyTag can be embedded in a dependency tag to implement
+// LicenseAnnotations that always returns LicenseAnnotationGenerator.
+type LicenseAnnotationGeneratorDependencyTag struct{}
+
+func (LicenseAnnotationGeneratorDependencyTag) LicenseAnnotations() []LicenseAnnotation {
+	return []LicenseAnnotation{LicenseAnnotationGenerator}
+}
+
+// LicenseAnnotationCompilerDependencyTag can be embedded in a dependency tag to implement
+// LicenseAnnotations that always returns LicenseAnnotationCompiler.
+type LicenseAnnotationCompilerDependencyTag struct{}
+
+func (LicenseAnnotationCompilerDependencyTag) LicenseAnnotations() []LicenseAnnotation {
+	return []LicenseAnnotation{LicenseAnnotationCompiler}
+}

@@ -110,6 +110,7 @@ type HostToolProvider interface {
 
 type hostToolDependencyTag struct {
 	blueprint.BaseDependencyTag
+	android.LicenseAnnotationGeneratorDependencyTag
 	label string
 }
 type generatorProperties struct {
