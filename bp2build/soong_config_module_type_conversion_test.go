@@ -44,6 +44,7 @@ soong_config_module_type {
 	config_namespace: "acme",
 	bool_variables: ["feature1"],
 	properties: ["cflags"],
+	bazel_module: { bp2build_available: true },
 }
 
 custom_cc_library_static {
@@ -84,6 +85,7 @@ soong_config_module_type {
 	config_namespace: "acme",
 	bool_variables: ["feature1"],
 	properties: ["cflags"],
+	bazel_module: { bp2build_available: true },
 }
 `
 	bp := `
@@ -138,6 +140,7 @@ soong_config_module_type {
 	config_namespace: "acme",
 	variables: ["board"],
 	properties: ["cflags"],
+	bazel_module: { bp2build_available: true },
 }
 
 custom_cc_library_static {
@@ -198,6 +201,7 @@ soong_config_module_type {
 	config_namespace: "acme",
 	variables: ["feature1", "feature2", "board"],
 	properties: ["cflags"],
+	bazel_module: { bp2build_available: true },
 }
 
 custom_cc_library_static {
@@ -267,6 +271,7 @@ soong_config_module_type {
 	config_namespace: "acme",
 	variables: ["board"],
 	properties: ["cflags", "static_libs"],
+	bazel_module: { bp2build_available: true },
 }
 
 custom_cc_library_static {
@@ -330,6 +335,7 @@ soong_config_module_type {
 	config_namespace: "vendor_foo",
 	bool_variables: ["feature"],
 	properties: ["cflags", "cppflags"],
+	bazel_module: { bp2build_available: true },
 }
 
 vendor_foo_cc_defaults {
@@ -394,6 +400,7 @@ soong_config_module_type {
 	config_namespace: "acme",
 	bool_variables: ["feature"],
 	properties: ["cflags"],
+	bazel_module: { bp2build_available: true },
 }
 
 soong_config_module_type {
@@ -402,6 +409,7 @@ soong_config_module_type {
 	config_namespace: "acme",
 	bool_variables: ["feature"],
 	properties: ["cflags", "asflags"],
+	bazel_module: { bp2build_available: true },
 }
 
 foo_cc_defaults {
@@ -498,6 +506,7 @@ soong_config_module_type {
 	config_namespace: "vendor_foo",
 	bool_variables: ["feature"],
 	properties: ["cflags"],
+	bazel_module: { bp2build_available: true },
 }
 
 soong_config_module_type {
@@ -506,6 +515,7 @@ soong_config_module_type {
 	config_namespace: "vendor_bar",
 	bool_variables: ["feature"],
 	properties: ["cflags"],
+	bazel_module: { bp2build_available: true },
 }
 
 soong_config_module_type {
@@ -514,6 +524,7 @@ soong_config_module_type {
 	config_namespace: "vendor_qux",
 	bool_variables: ["feature"],
 	properties: ["cflags"],
+	bazel_module: { bp2build_available: true },
 }
 
 vendor_foo_cc_defaults {
@@ -600,6 +611,7 @@ soong_config_module_type {
         "shared_libs",
         "static_libs",
     ],
+	bazel_module: { bp2build_available: true },
 }
 
 library_linking_strategy_cc_defaults {
@@ -699,6 +711,7 @@ soong_config_module_type {
         "shared_libs",
         "static_libs",
     ],
+	bazel_module: { bp2build_available: true },
 }
 
 library_linking_strategy_cc_defaults {
@@ -783,6 +796,7 @@ soong_config_module_type {
         "shared_libs",
         "static_libs",
     ],
+    bazel_module: { bp2build_available: true },
 }
 
 alphabet_cc_defaults {
