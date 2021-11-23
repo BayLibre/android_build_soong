@@ -251,7 +251,7 @@ type bazelCcLibraryAttributes struct {
 	Use_libcrt             bazel.BoolAttribute
 	Rtti                   bazel.BoolAttribute
 
-	Stl     *string
+	Stl     bazel.StringAttribute
 	Cpp_std *string
 
 	// This is shared only.
@@ -2478,7 +2478,7 @@ type bazelCcLibraryStaticAttributes struct {
 
 	Use_libcrt bazel.BoolAttribute
 	Rtti       bazel.BoolAttribute
-	Stl        *string
+	Stl        bazel.StringAttribute
 	Cpp_std    *string
 
 	Export_includes        bazel.StringListAttribute
@@ -2514,7 +2514,7 @@ type bazelCcLibrarySharedAttributes struct {
 	Link_crt   bazel.BoolAttribute // Only for linking shared library (and cc_binary)
 	Use_libcrt bazel.BoolAttribute
 	Rtti       bazel.BoolAttribute
-	Stl        *string
+	Stl        bazel.StringAttribute
 	Cpp_std    *string
 
 	Export_includes        bazel.StringListAttribute

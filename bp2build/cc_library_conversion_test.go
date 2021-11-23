@@ -1688,6 +1688,45 @@ cc_library {
 	})
 }
 
+func TestCcLibraryTargetVariantStl(t *testing.T) {
+	runCcLibraryTestCase(t, bp2buildTestCase{
+		description:                        "cc_library - target variant selects",
+		moduleTypeUnderTest:                "cc_library",
+		moduleTypeUnderTestFactory:         cc.LibraryFactory,
+		moduleTypeUnderTestBp2BuildMutator: cc.CcLibraryBp2Build,
+		filesystem:                         map[string]string{},
+		blueprint: soongCcLibraryPreamble + `
+cc_library {
+    name: "foo-lib",
+    target: {
+        android: {
+			stl: "android_stl",
+        },
+        host: {
+			stl: "host_stl",
+        },
+        darwin: {
+			stl: "darwin_stl",
+        },
+    },
+    include_build_directory: false,
+}
+`,
+		expectedBazelTargets: []string{`cc_library(
+    name = "foo-lib",
+    stl = select({
+        "//build/bazel/platforms/os:android": "android_stl",
+        "//build/bazel/platforms/os:darwin": "darwin_stl",
+        "//build/bazel/platforms/os:linux": "host_stl",
+        "//build/bazel/platforms/os:linux_bionic": "host_stl",
+        "//build/bazel/platforms/os:linux_musl": "host_stl",
+        "//build/bazel/platforms/os:windows": "host_stl",
+        "//conditions:default": None,
+    }),
+)`},
+	})
+}
+
 func TestCcLibraryCppStdWithGnuExtensions_ConvertsToFeatureAttr(t *testing.T) {
 	type testCase struct {
 		cpp_std        string

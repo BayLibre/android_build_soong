@@ -79,6 +79,7 @@ func getBoolValue(boolAttr bazel.BoolAttribute) (reflect.Value, []selects) {
 
 	return value, []selects{ret}
 }
+
 func getLabelListValues(list bazel.LabelListAttribute) (reflect.Value, []selects) {
 	value := reflect.ValueOf(list.Value.Includes)
 	var ret []selects
@@ -105,6 +106,29 @@ func getLabelListValues(list bazel.LabelListAttribute) (reflect.Value, []selects
 	}
 
 	return value, ret
+}
+
+func getStringValue(stringAttr bazel.StringAttribute) (reflect.Value, []selects) {
+	value := reflect.ValueOf(stringAttr.Value)
+	if !stringAttr.HasConfigurableValues() {
+		return value, []selects{}
+	}
+
+	ret := selects{}
+	for _, axis := range stringAttr.SortedConfigurationAxes() {
+		configToStrings := stringAttr.ConfigurableValues[axis]
+		for config, strings := range configToStrings {
+			selectKey := axis.SelectKey(config)
+			ret[selectKey] = reflect.ValueOf(strings)
+		}
+	}
+	// if there is a select, use the base value as the conditions default value
+	if len(ret) > 0 {
+		ret[bazel.ConditionsDefaultSelectKey] = value
+		value = reflect.Zero(value.Type())
+	}
+
+	return value, []selects{ret}
 }
 
 func labelListSelectValue(selectKey string, list bazel.LabelList, emitEmptyList bool) (bool, reflect.Value) {
@@ -148,6 +172,9 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 		defaultSelectValue = &bazelNone
 	case bazel.BoolAttribute:
 		value, configurableAttrs = getBoolValue(list)
+		defaultSelectValue = &bazelNone
+	case bazel.StringAttribute:
+		value, configurableAttrs = getStringValue(list)
 		defaultSelectValue = &bazelNone
 	default:
 		return "", fmt.Errorf("Not a supported Bazel attribute type: %s", v)

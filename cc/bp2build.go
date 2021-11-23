@@ -249,9 +249,9 @@ type compilerAttributes struct {
 	hdrs bazel.LabelListAttribute
 
 	rtti bazel.BoolAttribute
+	stl  bazel.StringAttribute
 
 	// Not affected by arch variants
-	stl    *string
 	cppStd *string
 
 	localIncludes    bazel.StringListAttribute
@@ -297,34 +297,49 @@ func (ca *compilerAttributes) bp2buildForAxisAndConfig(ctx android.BazelConversi
 
 func (ca *compilerAttributes) convertStlProps(ctx android.ArchVariantContext, module *Module) {
 	stlPropsByArch := module.GetArchVariantProperties(ctx, &StlProperties{})
-	for _, configToProps := range stlPropsByArch {
-		for _, props := range configToProps {
+	for axis, configToProps := range stlPropsByArch {
+		for config, props := range configToProps {
 			if stlProps, ok := props.(*StlProperties); ok {
 				if stlProps.Stl == nil {
 					continue
 				}
-				if ca.stl == nil {
-					ca.stl = stlProps.Stl
-				} else if ca.stl != stlProps.Stl {
-					ctx.ModuleErrorf("Unsupported conversion: module with different stl for different variants: %s and %s", *ca.stl, stlProps.Stl)
-				}
+				// TODO(b/201079053): Migrate build/bazel/rules/stl.bzl to
+				// toolchains so stl property can be used with selects.
+				// Currently, all usages in the bp2build allowlist _do not_ use
+				// stl in a select statement (i.e. not arch-variant), so resolve
+				// b/201079053 to use stl with selects.
+				ca.stl.SetSelectValue(axis, config, stlProps.Stl)
 			}
 		}
 	}
 }
 
 func (ca *compilerAttributes) convertProductVariables(ctx android.BazelConversionPathContext, productVariableProps android.ProductConfigProperties) {
-	productVarPropNameToAttribute := map[string]*bazel.StringListAttribute{
+	stringAttrs := map[string]*bazel.StringAttribute{
+		"Stl": &ca.stl,
+	}
+	for propName, attr := range stringAttrs {
+		if productConfigProps, exists := productVariableProps[propName]; exists {
+			for productConfigProp, prop := range productConfigProps {
+				val, ok := prop.(*string)
+				if !ok {
+					ctx.ModuleErrorf("Could not convert string ptr product variable %s property", proptools.PropertyNameForField(propName))
+				}
+				attr.SetSelectValue(productConfigProp.ConfigurationAxis(), productConfigProp.SelectKey(), val)
+			}
+		}
+	}
+	stringListAttrs := map[string]*bazel.StringListAttribute{
 		"Cflags":   &ca.copts,
 		"Asflags":  &ca.asFlags,
 		"CppFlags": &ca.cppFlags,
 	}
-	for propName, attr := range productVarPropNameToAttribute {
+	for propName, attr := range stringListAttrs {
 		if productConfigProps, exists := productVariableProps[propName]; exists {
 			for productConfigProp, prop := range productConfigProps {
 				flags, ok := prop.([]string)
 				if !ok {
-					ctx.ModuleErrorf("Could not convert product variable %s property", proptools.PropertyNameForField(propName))
+					ctx.ModuleErrorf("Could not convert string slice product variable %s property", proptools.PropertyNameForField(propName))
 				}
 				newFlags, _ := bazel.TryVariableSubstitutions(flags, productConfigProp.Name)
 				attr.SetSelectValue(productConfigProp.ConfigurationAxis(), productConfigProp.SelectKey(), newFlags)
