@@ -16,6 +16,7 @@ package android
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -40,8 +41,9 @@ func buildLicenseMetadata(ctx ModuleContext) {
 		return
 	}
 
-	var orderOnlyDeps Paths
-	var args []string
+	if exemptFromRequiredApplicableLicensesProperty(ctx.Module()) {
+		return
+	}
 
 	var allDepMetadataFiles Paths
 	var allDepMetadataArgs []string
@@ -72,6 +74,13 @@ func buildLicenseMetadata(ctx ModuleContext) {
 			}
 		}
 	})
+
+	allDepMetadataFiles = SortedUniquePaths(allDepMetadataFiles)
+	sort.Strings(allDepMetadataArgs)
+	allDepOutputFiles = SortedUniquePaths(allDepOutputFiles)
+
+	var orderOnlyDeps Paths
+	var args []string
 
 	if t := ctx.ModuleType(); t != "" {
 		args = append(args,
