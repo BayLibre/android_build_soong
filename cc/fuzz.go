@@ -261,7 +261,9 @@ func NewFuzz(hod android.HostOrDeviceSupported) *Module {
 		}{}
 		disableDarwinAndLinuxBionic.Target.Darwin.Enabled = BoolPtr(false)
 		disableDarwinAndLinuxBionic.Target.Linux_bionic.Enabled = BoolPtr(false)
-		ctx.AppendProperties(&disableDarwinAndLinuxBionic)
+
+		ctx.AppendTargetProperties("darwin", &disableDarwinAndLinuxBionic.Target.Darwin)
+		ctx.AppendTargetProperties("linux_bionic", &disableDarwinAndLinuxBionic.Target.Linux_bionic)
 	})
 
 	return module

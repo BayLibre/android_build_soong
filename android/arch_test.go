@@ -468,7 +468,7 @@ func TestArchMutatorNativeBridge(t *testing.T) {
 			}
 
 			if g, w := enabledVariants(ctx, "baz"), tt.bazVariants; !reflect.DeepEqual(w, g) {
-				t.Errorf("want qux variants:\n%q\ngot:\n%q\n", w, g)
+				t.Errorf("want baz variants:\n%q\ngot:\n%q\n", w, g)
 			}
 		})
 	}
@@ -482,6 +482,85 @@ type testArchPropertiesModule struct {
 }
 
 func (testArchPropertiesModule) GenerateAndroidBuildActions(ctx ModuleContext) {}
+
+func TestTargetStuff(t *testing.T) {
+	bp := `
+module {
+  name: "foo",
+  a: ["root"],
+  target: {
+    bionic: {
+      a: ["bionic2"]
+    },
+
+    host: {
+      a: ["host2"]
+    },
+
+    windows: {
+      a: ["windows2"],
+    }
+  }
+}
+`
+
+	type result struct {
+		module   string
+		variant  string
+		property []string
+	}
+
+	testCases := []struct {
+		name     string
+		goOS     string
+		preparer FixturePreparer
+		results  []result
+	}{
+		{
+			name: "windows",
+			goOS: "linux",
+			preparer: FixtureModifyConfig(func(config Config) {
+				config.Targets[Windows] = []Target{
+					{Windows, Arch{ArchType: X86}, NativeBridgeDisabled, "", "", true},
+				}
+			}),
+			results: []result{
+				{
+					module:   "foo",
+					variant:  "windows_x86",
+					property: []string{"root", "host2", "windows2"},
+				},
+			},
+		},
+	}
+
+	for _, tt := range testCases {
+		t.Run(tt.name, func(t *testing.T) {
+			if tt.goOS != "" && tt.goOS != runtime.GOOS {
+				t.Skipf("test requires runtime.GOOS==%s, got %s", tt.goOS, runtime.GOOS)
+			}
+			result := GroupFixturePreparers(
+				PrepareForTestWithArchMutator,
+				OptionalFixturePreparer(tt.preparer),
+				FixtureRegisterWithContext(func(ctx RegistrationContext) {
+					ctx.RegisterModuleType("module", func() Module {
+						module := &testArchPropertiesModule{}
+						module.AddProperties(&module.properties)
+						InitAndroidArchModule(module, HostAndDeviceDefault, MultilibBoth)
+						return module
+					})
+				}),
+			).RunTestWithBp(t, bp)
+
+			for _, want := range tt.results {
+				t.Run(want.module+"_"+want.variant, func(t *testing.T) {
+					got := result.ModuleForTests(want.module, want.variant).Module().(*testArchPropertiesModule).properties.A
+					AssertArrayString(t, "arch mutator property", want.property, got)
+				})
+			}
+		})
+	}
+}
 
 func TestArchProperties(t *testing.T) {
 	bp := `
