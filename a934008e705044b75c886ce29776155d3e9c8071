@@ -1,0 +1,133 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017588953",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1899702?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "64be7775_dbaa4961",
+          "description": "Change to \"android/androidmk.go\"",
+          "replacements": [
+            {
+              "path": "android/androidmk.go",
+              "range": {
+                "startLine": 614,
+                "startChar": 9,
+                "endLine": 614,
+                "endChar": 16
+              },
+              "replacement": "Metadata"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "38ae2956_ccf3e88b",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-23T06:00:17Z",
+      "side": 1,
+      "message": "Common typo found: \"Metdata\" -- should it be \"Metadata\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 614,
+        "startChar": 9,
+        "endLine": 614,
+        "endChar": 16
+      },
+      "revId": "a934008e705044b75c886ce29776155d3e9c8071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017588953",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1899702?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "cb453144_fb574e3b",
+          "description": "Change to \"android/androidmk.go\"",
+          "replacements": [
+            {
+              "path": "android/androidmk.go",
+              "range": {
+                "startLine": 615,
+                "startChar": 51,
+                "endLine": 615,
+                "endChar": 58
+              },
+              "replacement": "Metadata"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "2f1e115a_7833d0f1",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-23T06:00:17Z",
+      "side": 1,
+      "message": "Common typo found: \"Metdata\" -- should it be \"Metadata\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 615,
+        "startChar": 51,
+        "endLine": 615,
+        "endChar": 58
+      },
+      "revId": "a934008e705044b75c886ce29776155d3e9c8071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017588953",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1899702?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "801f50d0_0f6199db",
+          "description": "Change to \"android/notice_files.go\"",
+          "replacements": [
+            {
+              "path": "android/notice_files.go",
+              "range": {
+                "startLine": 176,
+                "startChar": 11,
+                "endLine": 176,
+                "endChar": 22
+              },
+              "replacement": "information"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "6276e7fa_1185d580",
+        "filename": "android/notice_files.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-23T06:00:17Z",
+      "side": 1,
+      "message": "Common typo found: \"infomration\" -- should it be \"information\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 176,
+        "startChar": 11,
+        "endLine": 176,
+        "endChar": 22
+      },
+      "revId": "a934008e705044b75c886ce29776155d3e9c8071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
