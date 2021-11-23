@@ -268,6 +268,9 @@ func (j *Module) XrefJavaFiles() android.Paths {
 type dependencyTag struct {
 	blueprint.BaseDependencyTag
 	name string
+
+	// True if the dependency is used in a way that would satisfy the classpath exception.
+	classpathLinked bool
 }
 
 // installDependencyTag is a dependency tag that is annotated to cause the installed files of the
@@ -277,6 +280,15 @@ type installDependencyTag struct {
 	android.InstallAlwaysNeededDependencyTag
 	name string
 }
+
+func (d dependencyTag) LicenseAnnotations() []android.LicenseAnnotation {
+	if d.classpathLinked {
+		return []android.LicenseAnnotation{android.LicenseAnnotationSharedDependency}
+	}
+	return nil
+}
+
+var _ android.LicenseAnnotationsDependencyTag = dependencyTag{}
 
 type usesLibraryDependencyTag struct {
 	dependencyTag
@@ -294,10 +306,13 @@ type usesLibraryDependencyTag struct {
 
 func makeUsesLibraryDependencyTag(sdkVersion int, optional bool, implicit bool) usesLibraryDependencyTag {
 	return usesLibraryDependencyTag{
-		dependencyTag: dependencyTag{name: fmt.Sprintf("uses-library-%d", sdkVersion)},
-		sdkVersion:    sdkVersion,
-		optional:      optional,
-		implicit:      implicit,
+		dependencyTag: dependencyTag{
+			name:            fmt.Sprintf("uses-library-%d", sdkVersion),
+			classpathLinked: true,
+		},
+		sdkVersion: sdkVersion,
+		optional:   optional,
+		implicit:   implicit,
 	}
 }
 
@@ -308,22 +323,22 @@ func IsJniDepTag(depTag blueprint.DependencyTag) bool {
 var (
 	dataNativeBinsTag       = dependencyTag{name: "dataNativeBins"}
 	staticLibTag            = dependencyTag{name: "staticlib"}
-	libTag                  = dependencyTag{name: "javalib"}
-	java9LibTag             = dependencyTag{name: "java9lib"}
+	libTag                  = dependencyTag{name: "javalib", classpathLinked: true}
+	java9LibTag             = dependencyTag{name: "java9lib", classpathLinked: true}
 	pluginTag               = dependencyTag{name: "plugin"}
 	errorpronePluginTag     = dependencyTag{name: "errorprone-plugin"}
 	exportedPluginTag       = dependencyTag{name: "exported-plugin"}
-	bootClasspathTag        = dependencyTag{name: "bootclasspath"}
-	systemModulesTag        = dependencyTag{name: "system modules"}
+	bootClasspathTag        = dependencyTag{name: "bootclasspath", classpathLinked: true}
+	systemModulesTag        = dependencyTag{name: "system modules", classpathLinked: true}
 	frameworkResTag         = dependencyTag{name: "framework-res"}
-	kotlinStdlibTag         = dependencyTag{name: "kotlin-stdlib"}
-	kotlinAnnotationsTag    = dependencyTag{name: "kotlin-annotations"}
+	kotlinStdlibTag         = dependencyTag{name: "kotlin-stdlib", classpathLinked: true}
+	kotlinAnnotationsTag    = dependencyTag{name: "kotlin-annotations", classpathLinked: true}
 	kotlinPluginTag         = dependencyTag{name: "kotlin-plugin"}
 	proguardRaiseTag        = dependencyTag{name: "proguard-raise"}
 	certificateTag          = dependencyTag{name: "certificate"}
 	instrumentationForTag   = dependencyTag{name: "instrumentation_for"}
 	extraLintCheckTag       = dependencyTag{name: "extra-lint-check"}
-	jniLibTag               = dependencyTag{name: "jnilib"}
+	jniLibTag               = dependencyTag{name: "jnilib", classpathLinked: true}
 	syspropPublicStubDepTag = dependencyTag{name: "sysprop public stub"}
 	jniInstallTag           = installDependencyTag{name: "jni install"}
 	binaryInstallTag        = installDependencyTag{name: "binary install"}
