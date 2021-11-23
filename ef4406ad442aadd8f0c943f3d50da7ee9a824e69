@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d928e0b_03b75e5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-23T19:10:19Z",
+      "side": 1,
+      "message": "Should we fix sh_binary to support vendor variants?",
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
