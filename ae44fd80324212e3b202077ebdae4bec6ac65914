@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6300ef51_4bf290c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-23T23:24:13Z",
+      "side": 1,
+      "message": "Make parse rules made this one pop up in a somewhat weird way:\n\n  In file included from out/soong/installs-cf_x86_64_phone.mk:181142:\n  In file included from out/soong/Android-cf_x86_64_phone.mk:1474348:\n  In file included from build/make/core/soong_java_prebuilt.mk:38:\n  build/make/core/base_rules.mk:522: error: empty variable name.\n\nwhere the line in base_rules.mk doesn\u0027t appear to be an assignment at all:\n\n  $(LOCAL_INSTALLED_MODULE): $(LOCAL_BUILT_MODULE)",
+      "revId": "ae44fd80324212e3b202077ebdae4bec6ac65914",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
