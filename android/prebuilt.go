@@ -97,6 +97,9 @@ type ConfigVarProperties struct {
 type Prebuilt struct {
 	properties PrebuiltProperties
 
+	// true if the prebuilt has no srcs property at all. See InitPrebuiltModuleWithoutSrcs.
+	noSrcsProperty bool
+
 	srcsSupplier     PrebuiltSrcsSupplier
 	srcsPropertyName string
 }
@@ -162,6 +165,9 @@ func SingleSourcePathFromSupplier(ctx ModuleContext, srcsSupplier PrebuiltSrcsSu
 // preference configs. We'll want to add native support for dynamic source cases if we end up having
 // more modules like this.
 func (p *Prebuilt) SingleSourcePath(ctx ModuleContext) Path {
+	if p.noSrcsProperty {
+		panic(fmt.Errorf("Unexpected call to SingleSourcePath for prebuilt module %s without srcs property", ctx.Module()))
+	}
 	return SingleSourcePathFromSupplier(ctx, p.srcsSupplier, p.srcsPropertyName)
 }
 
@@ -177,6 +183,23 @@ func (p *Prebuilt) UsePrebuilt() bool {
 // Return the src value or nil if it is not available.
 type PrebuiltSrcsSupplier func(ctx BaseModuleContext, prebuilt Module) []string
 
+func initPrebuiltModuleCommon(module PrebuiltInterface) *Prebuilt {
+	p := module.Prebuilt()
+	module.AddProperties(&p.properties)
+	module.base().customizableProperties = module.GetProperties()
+	return p
+}
+
+// Initialize the module as a prebuilt module that has no dedicated property that lists its
+// sources. SingleSourcePathFromSupplier should not be called for this module.
+//
+// This is the case e.g. for header modules, which provides the headers in source form
+// regardless whether they are prebuilt or not.
+func InitPrebuiltModuleWithoutSrcs(module PrebuiltInterface) {
+	p := initPrebuiltModuleCommon(module)
+	p.noSrcsProperty = true
+}
+
 // Initialize the module as a prebuilt module that uses the provided supplier to access the
 // prebuilt sources of the module.
 //
@@ -190,9 +213,7 @@ type PrebuiltSrcsSupplier func(ctx BaseModuleContext, prebuilt Module) []string
 // The provided property name is used to provide helpful error messages in the event that
 // a problem arises, e.g. calling SingleSourcePath() when more than one source is provided.
 func InitPrebuiltModuleWithSrcSupplier(module PrebuiltInterface, srcsSupplier PrebuiltSrcsSupplier, srcsPropertyName string) {
-	p := module.Prebuilt()
-	module.AddProperties(&p.properties)
-	module.base().customizableProperties = module.GetProperties()
+	p := initPrebuiltModuleCommon(module)
 
 	if srcsSupplier == nil {
 		panic(fmt.Errorf("srcsSupplier must not be nil"))
@@ -201,6 +222,7 @@ func InitPrebuiltModuleWithSrcSupplier(module PrebuiltInterface, srcsSupplier Pr
 		panic(fmt.Errorf("srcsPropertyName must not be empty"))
 	}
 
+	p.noSrcsProperty = false
 	p.srcsSupplier = srcsSupplier
 	p.srcsPropertyName = srcsPropertyName
 }
@@ -336,7 +358,7 @@ func PrebuiltSourceDepsMutator(ctx BottomUpMutatorContext) {
 func PrebuiltSelectModuleMutator(ctx TopDownMutatorContext) {
 	m := ctx.Module()
 	if p := GetEmbeddedPrebuilt(m); p != nil {
-		if p.srcsSupplier == nil {
+		if !p.noSrcsProperty && p.srcsSupplier == nil {
 			panic(fmt.Errorf("prebuilt module did not have InitPrebuiltModule called on it"))
 		}
 		if !p.properties.SourceExists {
