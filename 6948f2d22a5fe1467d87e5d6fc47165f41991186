@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bda7952c_e0696073",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-23T23:23:33Z",
+      "side": 1,
+      "message": "In many (interactive) cases, this is indeed out/. However, in cases where `dist` is specified (e.g. many CI runs), this is a different directory.\n\nOne such case is running mixed_libc.sh. After said run, you should likely find that `out/dist/logs/soong_metrics` is an output file.\n\n\nAs an aside: I find it difficult not to interpret \"Yes, I have brought that up a few times. The best response I got...\" as that you are frustrated, so let me provide some context: In our prior conversations, I specifically aimed to help you debug an error in your WIP CL, specifically the message \"Error outputing bp2build_metrics.pb: open .bp2build_metrics.pb.tmp: read-only file system\". I suggested that if you were stuck on understanding why you couldn\u0027t output a .pb file at the location you specified you should first verify your code works for an output location that you knew that very same binary was able to output files.\n\nThen you asked specifically about where you might find a way to locate outDir in that binary, and I pointed you up a few lines.\n\nI\u0027ve answered very specifically the questions you\u0027ve asked, or guided you as appropriate based on the status of your CL; I would like to avoid micromanaging aspects of CL creation whenever I can, and leave details like this to the CL review process.\n\nIn this case, I am pointing out that other logs files are output to another directory sometimes, and we should try to mirror that behavior. Particularly see the comment here:\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/config.go;l\u003d1258-1261;drc\u003dmaster",
+      "parentUuid": "8254c955_7af55d7f",
+      "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e18a464_96e17619",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 29
