@@ -282,6 +282,8 @@ type BottomUpMutator func(BottomUpMutatorContext)
 type BottomUpMutatorContext interface {
 	BaseMutatorContext
 
+	MergeTargetProperties(variation int, target string) error
+
 	// AddDependency adds a dependency to the given module.  It returns a slice of modules for each
 	// dependency (some entries may be nil).
 	//
@@ -605,6 +607,10 @@ func (b *bottomUpMutatorContext) MutatorName() string {
 func (b *bottomUpMutatorContext) Rename(name string) {
 	b.bp.Rename(name)
 	b.Module().base().commonProperties.DebugName = name
+}
+
+func (b *bottomUpMutatorContext) MergeTargetProperties(variation int, target string) error {
+	return b.bp.MergeTargetProperties(variation, target)
 }
 
 func (b *bottomUpMutatorContext) AddDependency(module blueprint.Module, tag blueprint.DependencyTag, name ...string) []blueprint.Module {
