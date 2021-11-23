@@ -16,6 +16,46 @@
       "message": "Friendly ping. PTAL, thanks.",
       "revId": "1189d4e36e4a867ddc2e7cb87b2060952df2d071",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8f51bca_b94ff289",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-11-23T14:59:48Z",
+      "side": 1,
+      "message": "You need more soong tests for this, follow similar setup for systemserver_classpath_fragment as an example.",
+      "revId": "1189d4e36e4a867ddc2e7cb87b2060952df2d071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ab65912_696987a6",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-11-23T14:59:48Z",
+      "side": 1,
+      "message": "Is this a good name? Standalone isn\u0027t really true, since the jars depend on BOOTCLASSPATH and SYSTEMSERVERCLASSPATH jars. How about DynamicSystermServerJars? SystemserverJars?",
+      "range": {
+        "startLine": 45,
+        "startChar": 87,
+        "endLine": 45,
+        "endChar": 115
+      },
+      "revId": "1189d4e36e4a867ddc2e7cb87b2060952df2d071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
