@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "815fb860_a2f3441b",
+        "filename": "android/hooks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2021-11-23T22:38:58Z",
+      "side": 1,
+      "message": "yep makes sense - for some reason I thought \"local private\" methods were generally single-letter named for convention.\n\nmergeFn sounds fine? (I see there\u0027s no convention in how to abbreviate `function` - e.g. I see XyzFunc, XyzFn and XyzFunction :-) )",
+      "parentUuid": "3fba0dbb_8a931c29",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "35d8f480b50668e7bca3794231ccee9b023ba78f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "857a5d47_e2b9b783",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-23T19:46:27Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 533,
+        "startChar": 1,
+        "endLine": 533,
+        "endChar": 2
+      },
+      "revId": "35d8f480b50668e7bca3794231ccee9b023ba78f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa2d89a5_18e2bf5d",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2021-11-23T22:38:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "857a5d47_e2b9b783",
       "range": {
         "startLine": 533,
         "startChar": 1,
