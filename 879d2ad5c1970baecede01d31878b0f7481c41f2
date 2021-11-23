@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a42295e2_485e9a5c",
+        "filename": "android/soong_config_modules.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-23T08:53:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "463bcc78_0b4b9138",
+      "range": {
+        "startLine": 385,
+        "startChar": 3,
+        "endLine": 385,
+        "endChar": 59
+      },
+      "revId": "879d2ad5c1970baecede01d31878b0f7481c41f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "62e1db99_0bd8cc14",
         "filename": "android/soongconfig/modules.go",
         "patchSetId": 11
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-23T08:37:54Z",
       "side": 1,
       "message": "These checks are kinda ugly but there isn\u0027t really a better place to put them at, is there?",
+      "range": {
+        "startLine": 246,
+        "startChar": 1,
+        "endLine": 246,
+        "endChar": 27
+      },
+      "revId": "879d2ad5c1970baecede01d31878b0f7481c41f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3e76457_d4ab713d",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-23T08:53:58Z",
+      "side": 1,
+      "message": "Nope, unfortunately, as constructors aren\u0027t a thing as you alluded to :)",
+      "parentUuid": "62e1db99_0bd8cc14",
       "range": {
         "startLine": 246,
         "startChar": 1,
