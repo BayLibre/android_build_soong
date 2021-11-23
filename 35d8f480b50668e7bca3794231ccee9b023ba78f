@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fba0dbb_8a931c29",
+        "filename": "android/hooks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-23T19:46:27Z",
+      "side": 1,
+      "message": "What\u0027s \"f\"? Since it looks like this is the function that computes the new property value, i.e.\n\nnewPropertyValue \u003d f(existing, toBeAdded)\n\nmaybe call it \"mergeFunction\" or \"merge\"? (also, a comment as to what it does would be nice)",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "35d8f480b50668e7bca3794231ccee9b023ba78f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "857a5d47_e2b9b783",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-23T19:46:27Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 533,
+        "startChar": 1,
+        "endLine": 533,
+        "endChar": 2
+      },
+      "revId": "35d8f480b50668e7bca3794231ccee9b023ba78f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
