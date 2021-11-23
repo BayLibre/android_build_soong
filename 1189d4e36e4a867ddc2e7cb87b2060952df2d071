@@ -56,6 +56,29 @@
       },
       "revId": "1189d4e36e4a867ddc2e7cb87b2060952df2d071",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "565d079a_b1853f3e",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-11-23T17:25:49Z",
+      "side": 1,
+      "message": "Why are you adding this to systemserverclasspath_fragment {}?\n\nWhy not a separate fragment type or just generate it from make variable?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 29
+      },
+      "revId": "1189d4e36e4a867ddc2e7cb87b2060952df2d071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
