@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a9e5ea8_33dde295",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 29
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-23T22:03:31Z",
+      "side": 1,
+      "message": "`protoc --decode{,_raw}`\n\nre: comments: ok",
+      "parentUuid": "0666e66d_025c1c19",
+      "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a672f09b_828911fc",
@@ -49,6 +67,24 @@
       "writtenOn": "2021-11-23T21:46:31Z",
       "side": 1,
       "message": "Does this end up adjacent to soong_metrics and other logs, as the bug suggests?\n\nIt looks like the other path determination logic uses a \"logs prefix\", which is omitted here. \nExample:\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cmd/soong_ui/main.go;l\u003d229;drc\u003d3c0fe0edc0aa5332f7ad23af13b75cd13cab1fb8",
+      "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8254c955_7af55d7f",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-23T22:03:31Z",
+      "side": 1,
+      "message": "The build log is dumped to `out/`, as is the `build_progress.pb`. AFAICT, there is no `soong_metrics`, `logs` or otherwise. In fact, there is no `logs` AFAICT in `out/`.\n\nYes, I have brought that up a few times. The best response I got was you pointing out the local variables at the top of `soong_build/main.go`, hence my use of `{top,out}Dir`.",
+      "parentUuid": "a672f09b_828911fc",
       "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -70,6 +106,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ba8f07_dab9fdf8",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-23T22:03:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e18a464_96e17619",
+      "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3215bde4_c18d84ff",
@@ -83,6 +137,24 @@
       "writtenOn": "2021-11-23T21:46:31Z",
       "side": 1,
       "message": "This is redundant with build/soong/ui/metrics/metrics.go\u0027s. Are you planning on refactoring all callers to use this?",
+      "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e0b5063_7b0e0d65",
+        "filename": "shared/proto.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-23T22:03:31Z",
+      "side": 1,
+      "message": "Oh geez, I forgot to remove the `Save` impl there. Thanks!",
+      "parentUuid": "3215bde4_c18d84ff",
       "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
