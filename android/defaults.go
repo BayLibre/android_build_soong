@@ -118,6 +118,8 @@ type DefaultsVisibilityProperties struct {
 
 type DefaultsModuleBase struct {
 	DefaultableModuleBase
+
+	targetPropertyMap map[string][]interface{}
 }
 
 // The common pattern for defaults modules is to register separate instances of
@@ -151,6 +153,10 @@ type Defaults interface {
 	properties() []interface{}
 
 	productVariableProperties() interface{}
+
+	TargetPropertyMap() map[string][]interface{}
+
+	setTargetPropertyMap(map[string][]interface{})
 }
 
 func (d *DefaultsModuleBase) isDefaults() bool {
@@ -168,6 +174,14 @@ func (d *DefaultsModuleBase) properties() []interface{} {
 
 func (d *DefaultsModuleBase) productVariableProperties() interface{} {
 	return d.defaultableVariableProperties
+}
+
+func (d *DefaultsModuleBase) TargetPropertyMap() map[string][]interface{} {
+	return d.targetPropertyMap
+}
+
+func (d *DefaultsModuleBase) setTargetPropertyMap(m map[string][]interface{}) {
+	d.targetPropertyMap = m
 }
 
 func (d *DefaultsModuleBase) GenerateAndroidBuildActions(ctx ModuleContext) {
@@ -213,6 +227,26 @@ func InitDefaultsModule(module DefaultsModule) {
 
 var _ Defaults = (*DefaultsModuleBase)(nil)
 
+func mergeTargetPropertyMaps(ctx TopDownMutatorContext, dstProps []interface{}, srcProps []interface{}) {
+	for _, dst := range dstProps {
+		for _, src := range srcProps {
+			if dst == nil || src == nil {
+				continue // For arch properties, whose functionality we are duplicating
+			}
+			if proptools.TypeEqual(dst, src) {
+				err := proptools.PrependProperties(dst, src, nil)
+				if err != nil {
+					if propertyErr, ok := err.(*proptools.ExtendPropertyError); ok {
+						ctx.PropertyErrorf(propertyErr.Property, "%s", propertyErr.Err.Error())
+					} else {
+						panic(err)
+					}
+				}
+			}
+		}
+	}
+}
+
 func (defaultable *DefaultableModuleBase) applyDefaults(ctx TopDownMutatorContext,
 	defaultsList []Defaults) {
 
@@ -223,6 +257,18 @@ func (defaultable *DefaultableModuleBase) applyDefaults(ctx TopDownMutatorContex
 			} else {
 				defaultable.applyDefaultProperties(ctx, defaults, prop)
 			}
+		}
+
+		dstTargetPropMap := ctx.blueprintBaseModuleContext().TargetPropertyMap()
+		srcTargetPropMap := defaults.TargetPropertyMap()
+		for target, srcTargetProps := range srcTargetPropMap {
+			dstTargetProps, ok := dstTargetPropMap[target]
+			if !ok {
+				dstTargetProps = ctx.blueprintBaseModuleContext().ClonedPropertyMap()
+				dstTargetPropMap[target] = dstTargetProps
+			}
+
+			mergeTargetPropertyMaps(ctx, dstTargetProps, srcTargetProps)
 		}
 	}
 }
@@ -283,6 +329,10 @@ func RegisterDefaultsPreArchMutators(ctx RegisterMutatorsContext) {
 func defaultsDepsMutator(ctx BottomUpMutatorContext) {
 	if defaultable, ok := ctx.Module().(Defaultable); ok {
 		ctx.AddDependency(ctx.Module(), DefaultsDepTag, defaultable.defaults().Defaults...)
+	}
+
+	if defaults, ok := ctx.Module().(Defaults); ok {
+		defaults.setTargetPropertyMap(ctx.TargetPropertyMap())
 	}
 }
 

@@ -33,6 +33,7 @@ type LoadHookContext interface {
 
 	AppendProperties(...interface{})
 	PrependProperties(...interface{})
+	AppendTargetProperties(target string, props interface{})
 	CreateModule(ModuleFactory, ...interface{}) Module
 
 	registerScopedModuleType(name string, factory blueprint.ModuleFactory)
@@ -63,6 +64,24 @@ type loadHookContext struct {
 
 func (l *loadHookContext) moduleFactories() map[string]blueprint.ModuleFactory {
 	return l.bp.ModuleFactories()
+}
+
+func (l *loadHookContext) AppendTargetProperties(target string, props interface{}) {
+	targetPropertyMap := l.bp.TargetPropertyMap()
+	targetProps, ok := targetPropertyMap[target]
+	if !ok {
+		targetProps = l.bp.ClonedPropertyMap()
+		targetPropertyMap[target] = targetProps
+	}
+
+	filteredTargetProps := make([]interface{}, 0)
+	for _, targetProp := range targetProps {
+		if targetProp != nil {
+			filteredTargetProps = append(filteredTargetProps, targetProp)
+		}
+	}
+
+	proptools.ExtendMatchingProperties(filteredTargetProps, props, nil, proptools.OrderAppend)
 }
 
 func (l *loadHookContext) AppendProperties(props ...interface{}) {

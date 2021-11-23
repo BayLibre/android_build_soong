@@ -519,7 +519,7 @@ func osMutator(bpctx blueprint.BottomUpMutatorContext) {
 	modules := mctx.CreateVariations(osNames...)
 	for i, m := range modules {
 		m.base().commonProperties.CompileOS = moduleOSList[i]
-		m.base().setOSProperties(mctx)
+		m.base().setOSProperties(i, mctx)
 	}
 
 	if createCommonOSVariant {
@@ -690,12 +690,14 @@ func archMutator(bpctx blueprint.BottomUpMutatorContext) {
 		targetNames[i] = target.ArchVariation()
 	}
 
+	n := bpctx.Module().Name()
+
 	// Create the variations, annotate each one with which Target it was created for, and
 	// squash the appropriate arch-specific properties into the top level properties.
 	modules := mctx.CreateVariations(targetNames...)
 	for i, m := range modules {
 		addTargetProperties(m, targets[i], multiTargets, i == 0)
-		m.base().setArchProperties(mctx)
+		m.base().setArchProperties(i, mctx, n)
 
 		// Install support doesn't understand Darwin+Arm64
 		if os == Darwin && targets[i].HostCross {
@@ -1069,133 +1071,44 @@ func getChildPropertyStruct(ctx ArchVariantContext,
 
 // Squash the appropriate OS-specific property structs into the matching top level property structs
 // based on the CompileOS value that was annotated on the variant.
-func (m *ModuleBase) setOSProperties(ctx BottomUpMutatorContext) {
+func (m *ModuleBase) setOSProperties(variation int, ctx BottomUpMutatorContext) {
 	os := m.commonProperties.CompileOS
 
-	for i := range m.generalProperties {
-		genProps := m.generalProperties[i]
-		if m.archProperties[i] == nil {
-			continue
-		}
-		for _, archProperties := range m.archProperties[i] {
-			archPropValues := reflect.ValueOf(archProperties).Elem()
+	if os.Class == Host {
+		ctx.MergeTargetProperties(variation, "host")
+	}
 
-			targetProp := archPropValues.FieldByName("Target").Elem()
+	if os.Linux() {
+		ctx.MergeTargetProperties(variation, "linux")
+	}
 
-			// Handle host-specific properties in the form:
-			// target: {
-			//     host: {
-			//         key: value,
-			//     },
-			// },
-			if os.Class == Host {
-				field := "Host"
-				prefix := "target.host"
-				if hostProperties, ok := getChildPropertyStruct(ctx, targetProp, field, prefix); ok {
-					mergePropertyStruct(ctx, genProps, hostProperties)
-				}
-			}
+	if os.Bionic() {
+		ctx.MergeTargetProperties(variation, "bionic")
+	}
 
-			// Handle target OS generalities of the form:
-			// target: {
-			//     bionic: {
-			//         key: value,
-			//     },
-			// }
-			if os.Linux() {
-				field := "Linux"
-				prefix := "target.linux"
-				if linuxProperties, ok := getChildPropertyStruct(ctx, targetProp, field, prefix); ok {
-					mergePropertyStruct(ctx, genProps, linuxProperties)
-				}
-			}
+	if os == Linux {
+		ctx.MergeTargetProperties(variation, "glibc")
+	}
 
-			if os.Bionic() {
-				field := "Bionic"
-				prefix := "target.bionic"
-				if bionicProperties, ok := getChildPropertyStruct(ctx, targetProp, field, prefix); ok {
-					mergePropertyStruct(ctx, genProps, bionicProperties)
-				}
-			}
+	if os == LinuxMusl {
+		ctx.MergeTargetProperties(variation, "musl")
 
-			if os == Linux {
-				field := "Glibc"
-				prefix := "target.glibc"
-				if bionicProperties, ok := getChildPropertyStruct(ctx, targetProp, field, prefix); ok {
-					mergePropertyStruct(ctx, genProps, bionicProperties)
-				}
-			}
+		// Special case:  to ease the transition from glibc to musl, apply linux_glibc
+		// properties (which has historically mean host linux) to musl variants.
+		ctx.MergeTargetProperties(variation, "linux_glibc")
+	}
 
-			if os == LinuxMusl {
-				field := "Musl"
-				prefix := "target.musl"
-				if bionicProperties, ok := getChildPropertyStruct(ctx, targetProp, field, prefix); ok {
-					mergePropertyStruct(ctx, genProps, bionicProperties)
-				}
+	ctx.MergeTargetProperties(variation, proptools.PropertyNameForField(os.Field))
 
-				// Special case:  to ease the transition from glibc to musl, apply linux_glibc
-				// properties (which has historically mean host linux) to musl variants.
-				field = "Linux_glibc"
-				prefix = "target.linux_glibc"
-				if bionicProperties, ok := getChildPropertyStruct(ctx, targetProp, field, prefix); ok {
-					mergePropertyStruct(ctx, genProps, bionicProperties)
-				}
-			}
+	if os.Class == Host && os != Windows {
+		ctx.MergeTargetProperties(variation, "not_windows")
+	}
 
-			// Handle target OS properties in the form:
-			// target: {
-			//     linux_glibc: {
-			//         key: value,
-			//     },
-			//     not_windows: {
-			//         key: value,
-			//     },
-			//     android {
-			//         key: value,
-			//     },
-			// },
-			field := os.Field
-			prefix := "target." + os.Name
-			if osProperties, ok := getChildPropertyStruct(ctx, targetProp, field, prefix); ok {
-				mergePropertyStruct(ctx, genProps, osProperties)
-			}
-
-			if os.Class == Host && os != Windows {
-				field := "Not_windows"
-				prefix := "target.not_windows"
-				if notWindowsProperties, ok := getChildPropertyStruct(ctx, targetProp, field, prefix); ok {
-					mergePropertyStruct(ctx, genProps, notWindowsProperties)
-				}
-			}
-
-			// Handle 64-bit device properties in the form:
-			// target {
-			//     android64 {
-			//         key: value,
-			//     },
-			//     android32 {
-			//         key: value,
-			//     },
-			// },
-			// WARNING: this is probably not what you want to use in your blueprints file, it selects
-			// options for all targets on a device that supports 64-bit binaries, not just the targets
-			// that are being compiled for 64-bit.  Its expected use case is binaries like linker and
-			// debuggerd that need to know when they are a 32-bit process running on a 64-bit device
-			if os.Class == Device {
-				if ctx.Config().Android64() {
-					field := "Android64"
-					prefix := "target.android64"
-					if android64Properties, ok := getChildPropertyStruct(ctx, targetProp, field, prefix); ok {
-						mergePropertyStruct(ctx, genProps, android64Properties)
-					}
-				} else {
-					field := "Android32"
-					prefix := "target.android32"
-					if android32Properties, ok := getChildPropertyStruct(ctx, targetProp, field, prefix); ok {
-						mergePropertyStruct(ctx, genProps, android32Properties)
-					}
-				}
-			}
+	if os.Class == Device {
+		if ctx.Config().Android64() {
+			ctx.MergeTargetProperties(variation, "android64")
+		} else {
+			ctx.MergeTargetProperties(variation, "android32")
 		}
 	}
 }
@@ -1237,11 +1150,10 @@ func GetCompoundTargetField(os OsType, arch ArchType) string {
 // architecture and OS in archProperties.
 func getArchProperties(ctx BaseMutatorContext, archProperties interface{}, arch Arch, os OsType, nativeBridgeEnabled bool) []reflect.Value {
 	result := make([]reflect.Value, 0)
-	archPropValues := reflect.ValueOf(archProperties).Elem()
-
-	targetProp := archPropValues.FieldByName("Target").Elem()
-
 	archType := arch.ArchType
+
+	//archPropValues := reflect.ValueOf(archProperties).Elem()
+	//targetProp := archPropValues.FieldByName("Target").Elem()
 
 	if arch.ArchType != Common {
 		archStruct, ok := getArchTypeStruct(ctx, archProperties, arch.ArchType)
@@ -1301,59 +1213,6 @@ func getArchProperties(ctx BaseMutatorContext, archProperties interface{}, arch 
 		if multilibProperties, ok := getMultilibStruct(ctx, archProperties, archType); ok {
 			result = append(result, multilibProperties)
 		}
-
-		// Handle combined OS-feature and arch specific properties in the form:
-		// target: {
-		//     bionic_x86: {
-		//         key: value,
-		//     },
-		// }
-		if os.Linux() {
-			field := "Linux_" + arch.ArchType.Name
-			userFriendlyField := "target.linux_" + arch.ArchType.Name
-			if linuxProperties, ok := getChildPropertyStruct(ctx, targetProp, field, userFriendlyField); ok {
-				result = append(result, linuxProperties)
-			}
-		}
-
-		if os.Bionic() {
-			field := "Bionic_" + archType.Name
-			userFriendlyField := "target.bionic_" + archType.Name
-			if bionicProperties, ok := getChildPropertyStruct(ctx, targetProp, field, userFriendlyField); ok {
-				result = append(result, bionicProperties)
-			}
-		}
-
-		// Handle combined OS and arch specific properties in the form:
-		// target: {
-		//     linux_glibc_x86: {
-		//         key: value,
-		//     },
-		//     linux_glibc_arm: {
-		//         key: value,
-		//     },
-		//     android_arm {
-		//         key: value,
-		//     },
-		//     android_x86 {
-		//         key: value,
-		//     },
-		// },
-		field := GetCompoundTargetField(os, archType)
-		userFriendlyField := "target." + os.Name + "_" + archType.Name
-		if osArchProperties, ok := getChildPropertyStruct(ctx, targetProp, field, userFriendlyField); ok {
-			result = append(result, osArchProperties)
-		}
-
-		if os == LinuxMusl {
-			// Special case:  to ease the transition from glibc to musl, apply linux_glibc
-			// properties (which has historically mean host linux) to musl variants.
-			field := "Linux_glibc_" + archType.Name
-			userFriendlyField := "target.linux_glibc_" + archType.Name
-			if osArchProperties, ok := getChildPropertyStruct(ctx, targetProp, field, userFriendlyField); ok {
-				result = append(result, osArchProperties)
-			}
-		}
 	}
 
 	// Handle arm on x86 properties in the form:
@@ -1366,29 +1225,29 @@ func getArchProperties(ctx BaseMutatorContext, archProperties interface{}, arch 
 	//     },
 	// },
 	if os.Class == Device {
-		if arch.ArchType == X86 && (hasArmAbi(arch) ||
-			hasArmAndroidArch(ctx.Config().Targets[Android])) {
-			field := "Arm_on_x86"
-			userFriendlyField := "target.arm_on_x86"
-			if armOnX86Properties, ok := getChildPropertyStruct(ctx, targetProp, field, userFriendlyField); ok {
-				result = append(result, armOnX86Properties)
-			}
-		}
-		if arch.ArchType == X86_64 && (hasArmAbi(arch) ||
-			hasArmAndroidArch(ctx.Config().Targets[Android])) {
-			field := "Arm_on_x86_64"
-			userFriendlyField := "target.arm_on_x86_64"
-			if armOnX8664Properties, ok := getChildPropertyStruct(ctx, targetProp, field, userFriendlyField); ok {
-				result = append(result, armOnX8664Properties)
-			}
-		}
-		if os == Android && nativeBridgeEnabled {
-			userFriendlyField := "Native_bridge"
-			prefix := "target.native_bridge"
-			if nativeBridgeProperties, ok := getChildPropertyStruct(ctx, targetProp, userFriendlyField, prefix); ok {
-				result = append(result, nativeBridgeProperties)
-			}
-		}
+		//	if arch.ArchType == X86 && (hasArmAbi(arch) ||
+		//		hasArmAndroidArch(ctx.Config().Targets[Android])) {
+		//		field := "Arm_on_x86"
+		//		userFriendlyField := "target.arm_on_x86"
+		//		if armOnX86Properties, ok := getChildPropertyStruct(ctx, targetProp, field, userFriendlyField); ok {
+		//			result = append(result, armOnX86Properties)
+		//		}
+		//	}
+		//	if arch.ArchType == X86_64 && (hasArmAbi(arch) ||
+		//		hasArmAndroidArch(ctx.Config().Targets[Android])) {
+		//		field := "Arm_on_x86_64"
+		//		userFriendlyField := "target.arm_on_x86_64"
+		//		if armOnX8664Properties, ok := getChildPropertyStruct(ctx, targetProp, field, userFriendlyField); ok {
+		//			result = append(result, armOnX8664Properties)
+		//		}
+		//	}
+		//	if os == Android && nativeBridgeEnabled {
+		//		userFriendlyField := "Native_bridge"
+		//		prefix := "target.native_bridge"
+		//		if nativeBridgeProperties, ok := getChildPropertyStruct(ctx, targetProp, userFriendlyField, prefix); ok {
+		//			result = append(result, nativeBridgeProperties)
+		//		}
+		//	}
 	}
 
 	return result
@@ -1396,9 +1255,10 @@ func getArchProperties(ctx BaseMutatorContext, archProperties interface{}, arch 
 
 // Squash the appropriate arch-specific property structs into the matching top level property
 // structs based on the CompileTarget value that was annotated on the variant.
-func (m *ModuleBase) setArchProperties(ctx BottomUpMutatorContext) {
+func (m *ModuleBase) setArchProperties(variation int, ctx BottomUpMutatorContext, n string) {
 	arch := m.Arch()
 	os := m.Os()
+	nativeBridgeEnabled := m.Target().NativeBridge == NativeBridgeEnabled
 
 	for i := range m.generalProperties {
 		genProps := m.generalProperties[i]
@@ -1408,12 +1268,52 @@ func (m *ModuleBase) setArchProperties(ctx BottomUpMutatorContext) {
 
 		propStructs := make([]reflect.Value, 0)
 		for _, archProperty := range m.archProperties[i] {
-			propStructShard := getArchProperties(ctx, archProperty, arch, os, m.Target().NativeBridge == NativeBridgeEnabled)
+			propStructShard := getArchProperties(ctx, archProperty, arch, os, nativeBridgeEnabled)
 			propStructs = append(propStructs, propStructShard...)
 		}
 
 		for _, propStruct := range propStructs {
 			mergePropertyStruct(ctx, genProps, propStruct)
+		}
+	}
+
+	if arch.ArchType != Common {
+		if os.Linux() {
+			ctx.MergeTargetProperties(variation, "linux_"+arch.ArchType.Name)
+		}
+
+		if os.Bionic() {
+			ctx.MergeTargetProperties(variation, "bionic_"+arch.ArchType.Name)
+		}
+
+		compoundField := GetCompoundTargetField(os, arch.ArchType)
+		if n == "libstd" || n == "prebuilt_libstd" {
+			for i := 0; i < 1; i++ {
+				break
+			}
+		}
+		ctx.MergeTargetProperties(variation, proptools.PropertyNameForField(compoundField))
+
+		if os == LinuxMusl {
+			// Special case:  to ease the transition from glibc to musl, apply linux_glibc
+			// properties (which has historically mean host linux) to musl variants.
+			ctx.MergeTargetProperties(variation, "linux_glibc_"+arch.ArchType.Name)
+		}
+	}
+
+	if os.Class == Device {
+		if arch.ArchType == X86 && (hasArmAbi(arch) ||
+			hasArmAndroidArch(ctx.Config().Targets[Android])) {
+			ctx.MergeTargetProperties(variation, "arm_on_x86")
+		}
+
+		if arch.ArchType == X86_64 && (hasArmAbi(arch) ||
+			hasArmAndroidArch(ctx.Config().Targets[Android])) {
+			ctx.MergeTargetProperties(variation, "arm_on_x86_64")
+		}
+
+		if os == Android && nativeBridgeEnabled {
+			ctx.MergeTargetProperties(variation, "native_bridge")
 		}
 	}
 }
