@@ -131,7 +131,7 @@ type bazelObjectAttributes struct {
 	Asflags             bazel.StringListAttribute
 	Local_includes      bazel.StringListAttribute
 	Absolute_includes   bazel.StringListAttribute
-	Stl                 *string
+	Stl                 bazel.StringAttribute
 	Linker_script       bazel.LabelAttribute
 }
 

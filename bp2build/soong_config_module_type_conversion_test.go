@@ -845,3 +845,78 @@ cc_library { name: "lib_default", bazel_module: { bp2build_available: false } }
     srcs = ["main.cc"],
 )`}})
 }
+
+func TestSoongConfigModuleType_Defaults_StringProp(t *testing.T) {
+	bp := `
+soong_config_string_variable {
+    name: "string_var",
+    values: [
+        "foo",
+    ],
+}
+
+soong_config_module_type {
+    name: "foo_cc_defaults",
+    module_type: "cc_defaults",
+    config_namespace: "foo",
+    variables: ["string_var"],
+    properties: [
+        "shared_libs",
+        "static_libs",
+        "stl",
+    ],
+}
+
+foo_cc_defaults {
+    name: "foo_sample_defaults",
+    soong_config_variables: {
+        string_var: {
+            foo: {
+                shared_libs: ["lib_a"],
+                stl: "c++_static",
+            },
+            conditions_default: {
+                static_libs: ["lib_b"],
+			},
+        },
+    },
+}
+
+cc_binary {
+    name: "sample_binary",
+    srcs: ["sample.cc"],
+    defaults: ["foo_sample_defaults"],
+}`
+
+	otherDeps := `
+cc_library { name: "lib_a", bazel_module: { bp2build_available: false } }
+cc_library { name: "lib_b", bazel_module: { bp2build_available: false } }
+`
+
+	runSoongConfigModuleTypeTest(t, bp2buildTestCase{
+		description:                        "soong config variables - generates selects for library_linking_strategy",
+		moduleTypeUnderTest:                "cc_binary",
+		moduleTypeUnderTestFactory:         cc.BinaryFactory,
+		moduleTypeUnderTestBp2BuildMutator: cc.BinaryBp2build,
+		blueprint:                          bp,
+		filesystem: map[string]string{
+			"foo/bar/Android.bp": otherDeps,
+		},
+		expectedBazelTargets: []string{`cc_binary(
+    name = "sample_binary",
+    deps = select({
+        "//build/bazel/product_variables:foo__string_var__foo": [],
+        "//conditions:default": ["//foo/bar:lib_b_bp2build_cc_library_static"],
+    }),
+    dynamic_deps = select({
+        "//build/bazel/product_variables:foo__string_var__foo": ["//foo/bar:lib_a"],
+        "//conditions:default": [],
+    }),
+    local_includes = ["."],
+    srcs = ["sample.cc"],
+    stl = select({
+        "//build/bazel/product_variables:foo__string_var__foo": "c++_static",
+        "//conditions:default": None,
+    }),
+)`}})
+}

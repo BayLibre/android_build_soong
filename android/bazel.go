@@ -261,7 +261,6 @@ var (
 		"packages/modules/adb/proto":                         Bp2BuildDefaultTrueRecursively,
 		"packages/modules/adb/tls":                           Bp2BuildDefaultTrueRecursively,
 		"prebuilts/clang/host/linux-x86":                     Bp2BuildDefaultTrueRecursively,
-		"system/apex":                                        Bp2BuildDefaultFalse, // TODO(b/207466993): flaky failures
 		"system/core/diagnose_usb":                           Bp2BuildDefaultTrueRecursively,
 		"system/core/libasyncio":                             Bp2BuildDefaultTrue,
 		"system/core/libcrypto_utils":                        Bp2BuildDefaultTrueRecursively,
@@ -277,6 +276,10 @@ var (
 		"system/sepolicy/apex":                               Bp2BuildDefaultTrueRecursively,
 		"system/timezone/apex":                               Bp2BuildDefaultTrueRecursively,
 		"system/timezone/output_data":                        Bp2BuildDefaultTrueRecursively,
+
+		// TODO(b/201079053): stl.bzl is not compatible with arch-variant stl from
+		// the soong config module typed "library_linking_strategy_cc_defaults".
+		"system/apex": Bp2BuildDefaultFalse,
 	}
 
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
