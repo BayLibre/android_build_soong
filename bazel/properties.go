@@ -693,6 +693,87 @@ func PartitionLabelListAttribute(ctx OtherModuleContext, lla *LabelListAttribute
 	return ret
 }
 
+// StringListAttribute corresponds to the string Bazel attribute type with
+// support for additional metadata, like configurations.
+type StringAttribute struct {
+	// The base value of the string attribute.
+	Value *string
+
+	// The configured attribute label list Values. Optional
+	// a map of independent configurability axes
+	ConfigurableValues configurableStrings
+}
+
+type configurableStrings map[ConfigurationAxis]stringSelectValues
+
+type stringSelectValues map[string]string
+
+func (ssv stringSelectValues) setValue(config string, value *string) {
+	if value == nil {
+		if _, ok := ssv[config]; ok {
+			delete(ssv, config)
+		}
+		return
+	}
+	ssv[config] = *value
+}
+
+func (cs configurableStrings) setValueForAxis(axis ConfigurationAxis, config string, s *string) {
+	if cs[axis] == nil {
+		cs[axis] = make(stringSelectValues)
+	}
+	cs[axis].setValue(config, s)
+}
+
+// SetSelectValue set a value for a bazel select for the given axis, config and value.
+func (sla *StringAttribute) SetSelectValue(axis ConfigurationAxis, config string, s *string) {
+	axis.validateConfig(config)
+	switch axis.configurationType {
+	case noConfig:
+		sla.Value = s
+	case arch, os, osArch, productVariables:
+		if sla.ConfigurableValues == nil {
+			sla.ConfigurableValues = make(configurableStrings)
+		}
+		sla.ConfigurableValues.setValueForAxis(axis, config, s)
+	default:
+		panic(fmt.Errorf("Unrecognized ConfigurationAxis %s", axis))
+	}
+}
+
+// HasConfigurableValues returns whether there are configurable values for this attribute.
+func (sa StringAttribute) HasConfigurableValues() bool {
+	return len(sa.ConfigurableValues) > 0
+}
+
+// SelectValue gets the value for the given axis/config.
+func (sa StringAttribute) SelectValue(axis ConfigurationAxis, config string) *string {
+	axis.validateConfig(config)
+	switch axis.configurationType {
+	case noConfig:
+		return sa.Value
+	case arch, os, osArch, productVariables:
+		if v, ok := sa.ConfigurableValues[axis][config]; ok {
+			return &v
+		} else {
+			return nil
+		}
+	default:
+		panic(fmt.Errorf("Unrecognized ConfigurationAxis %s", axis))
+	}
+}
+
+// SortedConfigurationAxes returns all the used ConfigurationAxis in sorted order.
+func (sa *StringAttribute) SortedConfigurationAxes() []ConfigurationAxis {
+	keys := make([]ConfigurationAxis, 0, len(sa.ConfigurableValues))
+	for k := range sa.ConfigurableValues {
+		keys = append(keys, k)
+	}
+
+	sort.Slice(keys, func(i, j int) bool { return keys[i].less(keys[j]) })
+	return keys
+}
+
 // StringListAttribute corresponds to the string_list Bazel attribute type with
 // support for additional metadata, like configurations.
 type StringListAttribute struct {
