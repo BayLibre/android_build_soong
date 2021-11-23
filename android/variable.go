@@ -745,11 +745,12 @@ func (props *ProductConfigProperties) zeroValuesForNamespacedVariables() {
 			}
 			// Create the zero value of the variable.
 			if _, exists := zeroValues[p]; !exists {
-				zeroValue := reflect.Zero(reflect.ValueOf(intf).Type()).Interface()
-				if zeroValue == nil {
-					panic(fmt.Errorf("Expected non-nil zero value for product/config variable %+v\n", intf))
+				zeroValue := reflect.Zero(reflect.ValueOf(intf).Type())
+				if zeroValue.Interface() == nil || (zeroValue.Kind() == reflect.Ptr && zeroValue.IsNil()) {
+					// Ignore nils and nil pointers
+					continue
 				}
-				zeroValues[p] = zeroValue
+				zeroValues[p] = zeroValue.Interface()
 			}
 			hasNonDefaultValue[propName][p] = true
 		}
@@ -759,7 +760,6 @@ func (props *ProductConfigProperties) zeroValuesForNamespacedVariables() {
 		for p, zeroValue := range zeroValues {
 			// Ignore variables that already have a non-default value for that axis
 			if exists, _ := hasNonDefaultValue[propName][p]; !exists {
-				// fmt.Println(propName, p.Namespace, p.Name, p.FullConfig, zeroValue)
 				// Insert the zero value for this propname + product config value.
 				props.AddProductConfigProperty(
 					propName,
@@ -791,6 +791,11 @@ func (p *ProductConfigProperties) AddProductConfigProperty(
 			if src, ok := property.([]string); ok {
 				dst = append(dst, src...)
 				(*p)[propertyName][productConfigProp] = dst
+			}
+		case *string:
+			// Override the existing value with the new value (latest declared one wins)
+			if src, ok := property.(*string); ok {
+				(*p)[propertyName][productConfigProp] = src
 			}
 		default:
 			panic(fmt.Errorf("TODO: handle merging value %s", existing))

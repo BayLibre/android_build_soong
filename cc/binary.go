@@ -654,7 +654,7 @@ type binaryAttributes struct {
 	Use_libcrt bazel.BoolAttribute
 
 	Rtti    bazel.BoolAttribute
-	Stl     *string
+	Stl     bazel.StringAttribute
 	Cpp_std *string
 
 	Strip stripAttributes
