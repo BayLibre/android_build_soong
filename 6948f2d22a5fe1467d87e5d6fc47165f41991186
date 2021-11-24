@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "119602b2_765d2716",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-24T19:48:08Z",
+      "side": 1,
+      "message": "`BAZEL_METRICS_DIR` is `out/bazel_metrics` at the point of me writing out \"bp2build_metrics.pb\". Because that dir doesn\u0027t exist (anywhere under `out/`), I can\u0027t output to it (and am unsure whether it\u0027s OK for me to just mkdir). Should I push forward some e.g. logging directory from higher in the call chain? If so, should I introduce a new env var?",
+      "parentUuid": "a86a22d0_f3f2105d",
+      "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e18a464_96e17619",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 29
