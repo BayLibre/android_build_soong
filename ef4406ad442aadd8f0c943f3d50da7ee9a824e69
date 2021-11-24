@@ -83,6 +83,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3fbe07e_3abf8646",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-11-24T01:15:51Z",
+      "side": 1,
+      "message": "shBinaryTag?",
+      "parentUuid": "30f662a2_50f1e9c9",
+      "range": {
+        "startLine": 758,
+        "startChar": 5,
+        "endLine": 758,
+        "endChar": 18
+      },
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4f82bb63_7d75f7f7",
         "filename": "apex/apex.go",
         "patchSetId": 1
@@ -94,6 +118,29 @@
       "writtenOn": "2021-11-24T00:43:08Z",
       "side": 1,
       "message": "Why? sh_binary modules don\u0027t have transitive dependencies, do they?",
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09e33ee8_419be691",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4294,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-11-24T01:15:51Z",
+      "side": 1,
+      "message": "What if sh_binary is not a vendor:true module? The change looks like allowing it. I\u0027m not sure but how about adding a check if the added sh_binary modules are actually vendor modules?\n\nOr, you can explicitly express the intention (apex doesn\u0027t care about sh_binary module\u0027s target partition) by adding a few more tests.",
+      "range": {
+        "startLine": 4294,
+        "startChar": 0,
+        "endLine": 4294,
+        "endChar": 16
+      },
       "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
