@@ -16,6 +16,24 @@
       "message": "I am somewhat wary of gathering the types from multiple files and saving them together. Is type information really necessary?",
       "revId": "12283372359568b57746f37abef97d87bed69369",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4cbe525_e24e56a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-24T21:53:54Z",
+      "side": 1,
+      "message": "The type information is needed because when you lunch a product, TARGET_BUILD_APPS is set to the empty string in your environment variables. Then rbcrun passes that to the rbc files, which causes this check in envsetup.rbc to fail because TARGET_BUILD_APPS is a string instead of an empty list: https://cs.android.com/android/platform/superproject/+/master:build/make/core/envsetup.rbc;l\u003d156;drc\u003db2220c29904e55ba4719553f56e3448456c45081\n\nThis means that `./build/bazel/ci/rbc_regression_test.sh mainline_system_x86_64-userdebug` fails when you\u0027ve lunched a product, but passes otherwise.\n\nI think making the variables have the correct types is necessary, because the product config rbc files could also attempt to do something like a var + a list, assuming that the var is a list when it is a string.\n\nOne possible alternative would be to limit the types of variables that rbcrun is allowed to provide to only the string vars. But then if the product configuration files actually needed to access TARGET_BUILD_APPS from the environment they would be unable to.\n\nSo I think we should definitely have the correct types. Let me know if there\u0027s a more palatable way to pass them to rbc though.",
+      "parentUuid": "11da0d2b_bc426049",
+      "revId": "12283372359568b57746f37abef97d87bed69369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
