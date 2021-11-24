@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a86a22d0_f3f2105d",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-24T17:29:02Z",
+      "side": 1,
+      "message": "As far as I know, there is nothing currently available in the scope of soong_build that gives you the exact analogue; you may have to wire this in to the environment of soong_build.\n\nI would look to what we do for BAZEL_METRICS_DIR, which we determine in soong_ui using LogsDir, forward to soong_build, which then forwards it to its Bazel invocation.\n\nHere\u0027s a soong_ui pointer: \n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/soong.go;l\u003d358;drc\u003da64bd73b1873ca7cb056fc29bef476774f0d3359\n\nLet me know if you have any questions about this approach I\u0027m proposing. Feel free to think of alternatives, too.",
+      "parentUuid": "e59bcec0_6c965236",
+      "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e18a464_96e17619",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 29
