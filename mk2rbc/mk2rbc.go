@@ -54,7 +54,6 @@ const (
 	cfnMain            = baseName + ".product_configuration"
 	cfnBoardMain       = baseName + ".board_configuration"
 	cfnPrintVars       = baseName + ".printvars"
-	cfnPrintGlobals    = baseName + ".printglobals"
 	cfnWarning         = baseName + ".warning"
 	cfnLocalAppend     = baseName + ".local_append"
 	cfnLocalSetDefault = baseName + ".local_set_default"
@@ -354,6 +353,16 @@ func (pcv knownVariables) NewVariable(name string, varClass varClass, valueType 
 		fmt.Fprintf(os.Stderr, "cannot redefine %s as %v/%v (already defined as %v/%v)\n",
 			name, varClass, valueType, v.class, v.valueType)
 	}
+}
+
+func (pcv knownVariables) StarlarkTypeInfoDict() string {
+	result := "type_info = {\n"
+	for key, value := range pcv {
+		if value.valueType != starlarkTypeUnknown {
+			result += `  "` + key + `": "` + value.valueType.String() + "\",\n"
+		}
+	}
+	return result + "}\n"
 }
 
 // All known product variables.
@@ -1695,16 +1704,17 @@ func Convert(req Request) (*StarlarkScript, error) {
 	return starScript, nil
 }
 
-func Launcher(mainModuleUri, versionDefaultsUri, mainModuleName string) string {
+func Launcher(mainModuleUri, versionDefaultsUri, mainModuleName, typeInfoUri string) string {
 	var buf bytes.Buffer
 	fmt.Fprintf(&buf, "load(%q, %q)\n", baseUri, baseName)
 	fmt.Fprintf(&buf, "load(%q, \"version_defaults\")\n", versionDefaultsUri)
 	fmt.Fprintf(&buf, "load(%q, \"init\")\n", mainModuleUri)
-	fmt.Fprintf(&buf, "%s(%s(%q, init, version_defaults))\n", cfnPrintVars, cfnMain, mainModuleName)
+	fmt.Fprintf(&buf, "load(%q, \"type_info\")\n", typeInfoUri)
+	fmt.Fprintf(&buf, "%s(%s(%q, init, version_defaults, type_info))\n", cfnPrintVars, cfnMain, mainModuleName)
 	return buf.String()
 }
 
-func BoardLauncher(mainModuleUri string, inputVariablesUri string) string {
+func BoardLauncher(mainModuleUri, inputVariablesUri string) string {
 	var buf bytes.Buffer
 	fmt.Fprintf(&buf, "load(%q, %q)\n", baseUri, baseName)
 	fmt.Fprintf(&buf, "load(%q, \"init\")\n", mainModuleUri)
