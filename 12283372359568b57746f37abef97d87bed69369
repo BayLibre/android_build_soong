@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11da0d2b_bc426049",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-11-24T21:43:59Z",
+      "side": 1,
+      "message": "I am somewhat wary of gathering the types from multiple files and saving them together. Is type information really necessary?",
+      "revId": "12283372359568b57746f37abef97d87bed69369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
