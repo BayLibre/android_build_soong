@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e59bcec0_6c965236",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-24T16:58:31Z",
+      "side": 1,
+      "message": "Apologies on my frustration. I felt like I\u0027ve just gone \u0027round and \u0027round on the same underlying question. I appreciate all the tips and guidance. Checking the working directory, for example. I understand that we want these metrics in an appropriate subdirectory. Hence me having talked about the fact that `cmd/soong_ui/main.go` leverages the `command` it uses in order to get the context and logging dir. There was nothing analogous that I could see to reach for through `cmd/soong_build/main.go:runBp2Build(...)`. I am glad you pointed out outDir; though I misinterpreted that as \"might as well put it here\". A more careful inspection revealed that I could get the context from `codegenContect.Context()`.\n\nOptions I\u0027ve looked through for something analogous to `soong_ui/main.go`\u0027s use of `logsDir` et al:\n```\ncodegenContect.{Context().OutDir(), Config().{OutDir,SoongOutDir}()}\nconfiguration.{OutDir,SoongOutDir}()\nbp2buildCtx.OutDir()\n```\nTo expound, what I\u0027ve been requesting is \"¿does anything available in the scope of `runBp2Build` give me the analogue I need?\". Listing all considerations definitely would\u0027ve been a better approach; my bad. Beyond `logs`, the `dist` doesn\u0027t seem congruent with any of the function-local options on-offer. I am very likely overlooking something, as in the case of the {top,out}Dir globals. It\u0027s a matter of convention, taste, and expectation; hence me reaching to my seniors as to what I should use.\n\nAs to `mixed_libc.sh`, I\u0027ve ALWAYS been running this without setting `DIST_DIR`, so it takes the default of `out/dist`. Don\u0027t know if that matters.\n\nLooking at the example you gave me of `configImpl.LogsDir()`, it seems to me the case of there\u0027s already something in scope that provides what we need; I can\u0027t find an analogue for `runBp2Build`. 😿",
+      "parentUuid": "bda7952c_e0696073",
+      "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e18a464_96e17619",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 29
