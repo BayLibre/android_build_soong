@@ -16,6 +16,24 @@
       "message": "Are you sure `Unbundled_build_apps` is a list? According to https://cs.android.com/android/platform/superproject/+/master:build/make/core/soong_config.mk;drc\u003df41bff99b3acc34de4dfb3f311c4a94f666fe7ac;l\u003d40, it is boolean.",
       "revId": "701ca2545e09dd26006809e0d8a34f51c9e6506f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "897cbc7c_678a86a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-24T18:24:09Z",
+      "side": 1,
+      "message": "I change that in the other cl in this topic. I think it should be a list because it originates from TARGET_BUILD_APPS, which is a list of apps to build in an unbundled way. The envsetup.rbc file also assumes it\u0027s a list: https://cs.android.com/android/platform/superproject/+/master:build/make/core/envsetup.rbc;l\u003d156;drc\u003db2220c29904e55ba4719553f56e3448456c45081",
+      "parentUuid": "2fb2d75b_ed900d1e",
+      "revId": "701ca2545e09dd26006809e0d8a34f51c9e6506f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
