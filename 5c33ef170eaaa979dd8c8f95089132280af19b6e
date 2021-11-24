@@ -52,6 +52,24 @@
       "parentUuid": "7b8fead2_a3ab782f",
       "revId": "5c33ef170eaaa979dd8c8f95089132280af19b6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bab2ee03_fb7290ac",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-24T20:49:24Z",
+      "side": 1,
+      "message": "\u003e nil - error.\n\u003e [] - no srcs required.\n\nI think that\u0027s a subtle difference that we\u0027re better off avoiding.\n\n(As I mentioned offline, I tried having a magic srcsSupplier, but it fell on Go not allowing function references to be compared to anything but nil.)\n\nI\u0027ve removed the bool by simply allowing srcsSupplier to be nil instead. Afterall, having a sources property is not a characteristic that applies to every prebuilt module.\n\nIt assigns a special value to srcsPropertyName just to be able to keep the debug check on this line, but I don\u0027t feel strongly about that.",
+      "parentUuid": "39a0a49e_bda62526",
+      "revId": "5c33ef170eaaa979dd8c8f95089132280af19b6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
