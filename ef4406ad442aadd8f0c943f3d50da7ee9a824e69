@@ -37,6 +37,42 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e8394a1_be74d2e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-11-24T01:38:40Z",
+      "side": 1,
+      "message": "IIRC, that was Sundong\u0027s first attempt.\n\nIn fact, sh_binary is mutated by the \"image\" mutator (that\u0027s why the existing apexes can have sh_binary modules via \"binaries\" property). The problem is sh_binary doesn\u0027t create \"vendor.*\" variants while being mutated by the \"image\" mutator. Making \"vendor.*\" variants is quite complex. We might need to move bunch of those logic out of cc package and use it. Or, we can just create all vendor.* variants with possible values.\n\nbtw, creating vendor.* variants for sh_binary modules doesn\u0027t make sense to me.",
+      "parentUuid": "9eeda786_97e17372",
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab0b07b0_308d679a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-11-24T01:38:40Z",
+      "side": 1,
+      "message": "I found that prebuilt_etc is in the similar situation. prebuilt_etc modules are mutated by \"image\" variants, but not creating vendor.* variants. Apexes add dependency to prebuilt_etc modules with not specifying \"image\" variation.",
+      "parentUuid": "5d928e0b_03b75e5b",
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c24bae8_2bd05bab",
         "filename": "apex/apex.go",
         "patchSetId": 1
