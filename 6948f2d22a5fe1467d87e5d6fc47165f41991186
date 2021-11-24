@@ -181,6 +181,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "866520f6_b1bd6064",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-24T21:52:44Z",
+      "side": 1,
+      "message": "Thanks very much for your considerations! I have implemented your `LOG_DIR` brainstorm with a defaulting to what I had.",
+      "parentUuid": "ded9b300_4bf195c0",
+      "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e18a464_96e17619",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 29
