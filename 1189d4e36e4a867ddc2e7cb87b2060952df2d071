@@ -145,6 +145,30 @@
       },
       "revId": "1189d4e36e4a867ddc2e7cb87b2060952df2d071",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d34e8f8_a9180400",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-11-24T15:50:48Z",
+      "side": 1,
+      "message": "\u003e I think it\u0027s unnecessary to have multiple fragment types for different variables because all fragments serve the same purpose: making something updatable.\n\nWe could just put everything into bootclasspath_fragment then?.. 😄\n\nPaul, any thoughts on this? Re-using systemserverclasspath_fragment or adding a new one? I don\u0027t think I have a strong opinion.",
+      "parentUuid": "a8c40b50_afd1e483",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 29
+      },
+      "revId": "1189d4e36e4a867ddc2e7cb87b2060952df2d071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
