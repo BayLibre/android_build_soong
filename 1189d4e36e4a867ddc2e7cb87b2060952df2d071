@@ -213,6 +213,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08268391_9496c83b",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-11-24T17:11:31Z",
+      "side": 1,
+      "message": "SGTM.",
+      "parentUuid": "5d65f85a_85be472f",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 29
+      },
+      "revId": "1189d4e36e4a867ddc2e7cb87b2060952df2d071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb41b2ab_e6de6743",
