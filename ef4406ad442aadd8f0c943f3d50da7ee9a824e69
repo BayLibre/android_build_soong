@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56342472_487becbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-11-24T01:49:42Z",
+      "side": 1,
+      "message": "Then I think the best way forward is to not allow sh_binary modules to be listed in the binaries property, and force them to be in the new sh_binaries property.",
+      "parentUuid": "8e8394a1_be74d2e5",
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2c24bae8_2bd05bab",
         "filename": "apex/apex.go",
         "patchSetId": 1
