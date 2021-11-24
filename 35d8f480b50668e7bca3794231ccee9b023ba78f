@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a9c6352_0a106406",
+        "filename": "android/hooks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-24T08:05:53Z",
+      "side": 1,
+      "message": "FWIW, \"single letter\" does look like the Golang convention, but they are not very descriptive so \"extendFn\" is a good compromise between the fully-Go \"f\" and the Javanese \"functionToExtendPropertyListsWhileAlsoTalkingAFilterFunction\"...",
+      "parentUuid": "815fb860_a2f3441b",
+      "range": {
+        "startLine": 69,
+        "startChar": 1,
+        "endLine": 69,
+        "endChar": 2
+      },
+      "revId": "35d8f480b50668e7bca3794231ccee9b023ba78f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "857a5d47_e2b9b783",
