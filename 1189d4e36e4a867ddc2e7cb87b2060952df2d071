@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce157af_2df1b8d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-24T15:23:43Z",
+      "side": 1,
+      "message": "I looked into systemserver_classpath_fragment_test.go, but I don\u0027t see similar tests set up for systemserver_classpath_fragment. Maybe it\u0027s because this Soong module is generating files (unlike normal Soong modules, which generate build rules), and it\u0027s hard to verify file contents in Soong tests. Paul, do you have any suggestions?",
+      "parentUuid": "d8f51bca_b94ff289",
+      "revId": "1189d4e36e4a867ddc2e7cb87b2060952df2d071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ab65912_696987a6",
@@ -58,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fac57ac_9344569e",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-24T15:23:43Z",
+      "side": 1,
+      "message": "The term \"standalone\" is used in go/updatable-system-services, and I want to keep the consistency to reduce confusion.",
+      "parentUuid": "4ab65912_696987a6",
+      "range": {
+        "startLine": 45,
+        "startChar": 87,
+        "endLine": 45,
+        "endChar": 115
+      },
+      "revId": "1189d4e36e4a867ddc2e7cb87b2060952df2d071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "565d079a_b1853f3e",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-11-23T17:25:49Z",
       "side": 1,
       "message": "Why are you adding this to systemserverclasspath_fragment {}?\n\nWhy not a separate fragment type or just generate it from make variable?",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 29
+      },
+      "revId": "1189d4e36e4a867ddc2e7cb87b2060952df2d071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8c40b50_afd1e483",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-24T15:23:43Z",
+      "side": 1,
+      "message": "Unfortunately, we can\u0027t generate it from the make variable because we need an actual Soong module to output the pb file, either the existing systemserverclasspath_fragment module or a separate one. Besides, the Soong module can take a list of jars from the bp file to allow us to easily know what jars go into each APEX.\n\nI think it\u0027s unnecessary to have multiple fragment types for different variables because all fragments serve the same purpose: making something updatable. Therefore, it makes sense to me to add this to the existing systemserverclasspath_fragment, while the only concern is the naming issue (we will then regret for naming it as \"systemserverclasspath_fragment\").\n\nA fragment type requires multiple Soong modules. If we add a fragment type, say standalone_systemserver_jars_fragment, we will have to also add prebuilt_standalone_systemserver_jars_fragment, module_prebuilt_standalone_systemserver_jars_fragment, art_prebuilt_standalone_systemserver_jars_fragment, which makes the already complicated build system even more complicated. I have discussed this with Paul and he accepts reusing the existing systemserverclasspath_fragment module to reduce the complexity.",
+      "parentUuid": "565d079a_b1853f3e",
       "range": {
         "startLine": 100,
         "startChar": 0,
