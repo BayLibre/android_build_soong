@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017664418",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1901791?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "b7739319_871458b1",
+          "description": "Change to \"mk2rbc/types.go\"",
+          "replacements": [
+            {
+              "path": "mk2rbc/types.go",
+              "range": {
+                "startLine": 49,
+                "startChar": 9,
+                "endLine": 49,
+                "endChar": 15
+              },
+              "replacement": "Unknown"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "d85b7dc9_185e175a",
+        "filename": "mk2rbc/types.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-24T19:45:27Z",
+      "side": 1,
+      "message": "Common typo found: \"Unkown\" -- should it be \"Unknown\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 49,
+        "startChar": 9,
+        "endLine": 49,
+        "endChar": 15
+      },
+      "revId": "90808b5efd4e7d73856466ad51db3d7ab31f83f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
