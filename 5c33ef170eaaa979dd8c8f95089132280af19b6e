@@ -16,6 +16,24 @@
       "message": "It seems as though this (in combination with the changes to prebuiltLibraryHeaderFactory and NewPrebuiltLibrary() that causes noSrcsProperty to be set to true) is the crucial part of this change.\n\nCould the same effect not be achieved simply by changing the prebuiltLibraryHeaderFactory and NewPrebuiltLibrary() to provided a non-nil PrebuiltSrcsSupplier that throws an exception when called? That would cause srcsSupplier to be non-nil at this point so it will behave just as this would when noSrcsProperty \u003d true.\n\nThat should simplify this change by avoiding any changes to the prebuilt code.",
       "revId": "5c33ef170eaaa979dd8c8f95089132280af19b6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b8fead2_a3ab782f",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-24T11:26:37Z",
+      "side": 1,
+      "message": "No, the crucial part of this change is that srcsSupplier is nil on line 404 below, and so doesn\u0027t get caught in the early return. I\u0027d have to introduce a 2nd return value from it to tell the cases apart, and then I think this is better since it\u0027s not a characteristic that needs to be decided on a per-call basis.",
+      "parentUuid": "69bd3f16_ef3a93d1",
+      "revId": "5c33ef170eaaa979dd8c8f95089132280af19b6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
