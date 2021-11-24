@@ -163,6 +163,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ded9b300_4bf195c0",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 29
+      },
+      "lineNbr": 538,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-24T20:42:53Z",
+      "side": 1,
+      "message": "Yes, I think it would be good to identify the appropriate logs directory in soong_ui, forward this to soong_build via a new environment variable (as is done for BAZEL_METRICS_DIR, but do it with a brand new env variable). I don\u0027t think you can re-use BAZEL_METRICS_DIR here.\n\nThough, brainstormin:\nConsider that we might set a new environment variable LOG_DIR to the value of `c.LogsDir()` in soong_ui. soong_build will then read LOG_DIR from the environment to get the appropriate logs directory. It can then determine the bazel metrics directory using `${LOG_DIR}/bazel_metrics` -- it need not obtain it from BAZEL_METRICS_DIR, thus we may not need BAZEL_METRICS_DIR at all.\n\nThat refactoring (the removal of BAZEL_METRICS_DIR) is probably best suited for a followup CL, though, if we choose to go that way.",
+      "parentUuid": "119602b2_765d2716",
+      "revId": "6948f2d22a5fe1467d87e5d6fc47165f41991186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e18a464_96e17619",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 29
