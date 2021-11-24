@@ -34,6 +34,24 @@
       "parentUuid": "69bd3f16_ef3a93d1",
       "revId": "5c33ef170eaaa979dd8c8f95089132280af19b6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39a0a49e_bda62526",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-11-24T16:00:49Z",
+      "side": 1,
+      "message": "Ack.\n\nI agree that it is not a characteristic that needs to be decided on a per-call basis but equally it is not a characteristic that applies to every module type and so is not something that needs to be handled in the generic Prebuilt logic. The problem with having both srcsSupplier and noSrcsProperty fields in Prebuilt struct is that they look orthogonal but are really mutually exclusive.\n\nAvoiding that sort of pattern was the reason why I created the PrebuiltSrcsSupplier mechanism in the first place. Before that Prebuilt had fields to support two different ways of supplying the srcs, via a *[]string or through reflection.\n\nOf course, a similar argument could apply if you make PrebuiltSrcsSupplier return ([]string,bool), after all only one will be used.\n\nOne way to avoid adding a separate return type is to treat the return type as follows:\nnil - error.\n[] - no srcs required.\n[\"xyz\"] - srcs required and provided.\n\nAlternatively, if all you need to do is fail the \"len(...) \u003d\u003d 0\" test why not just have cc_prebuilt_library_headers provide a PrebuiltSrcsSupplier that returns a non empty []string?",
+      "parentUuid": "7b8fead2_a3ab782f",
+      "revId": "5c33ef170eaaa979dd8c8f95089132280af19b6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
