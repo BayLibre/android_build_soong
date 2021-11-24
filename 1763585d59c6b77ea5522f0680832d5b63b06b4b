@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73b7922_e76723a9",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-24T23:02:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f132c424_72716db3",
+      "revId": "1763585d59c6b77ea5522f0680832d5b63b06b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37a1e4ff_3c039b05",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b646dbfa_2c348d5c",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-24T23:02:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37a1e4ff_3c039b05",
+      "revId": "1763585d59c6b77ea5522f0680832d5b63b06b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "204254bf_30c8aea4",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-11-24T22:00:25Z",
       "side": 1,
       "message": "Can we instead do this where the other environment variables are set? (e.g. adjacent to BAZEL_METRICS_DIR?)",
+      "revId": "1763585d59c6b77ea5522f0680832d5b63b06b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3e02dca_cae0bc8c",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-11-24T23:02:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "204254bf_30c8aea4",
       "revId": "1763585d59c6b77ea5522f0680832d5b63b06b4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
