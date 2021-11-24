@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f132c424_72716db3",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-24T22:00:25Z",
+      "side": 1,
+      "message": "Are there any conditions of proper execution would we expect LOG_DIR to be empty?\n\nIt looks like for BAZEL_METRICS_DIR we raise an error if this environment variable is missing. \n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_handler.go;l\u003d282-291;drc\u003d494eef3dc85a0b4085ac4a80bbff817eb2c3dc65\n\nPerhaps we can do something similar here?",
+      "revId": "1763585d59c6b77ea5522f0680832d5b63b06b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37a1e4ff_3c039b05",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-24T22:00:25Z",
+      "side": 1,
+      "message": "I think this is no longer relevant if we don\u0027t have the empty metricsDir, but -- if we hit the empty metricsDir branch, I think we\u0027d have topDir/topDir/metricsDir/bp2build_metrics.pb, which seems incorrect.",
+      "revId": "1763585d59c6b77ea5522f0680832d5b63b06b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "204254bf_30c8aea4",
+        "filename": "cmd/soong_ui/main.go",
+        "patchSetId": 32
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-24T22:00:25Z",
+      "side": 1,
+      "message": "Can we instead do this where the other environment variables are set? (e.g. adjacent to BAZEL_METRICS_DIR?)",
+      "revId": "1763585d59c6b77ea5522f0680832d5b63b06b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
