@@ -16,6 +16,86 @@
       "message": "Should we fix sh_binary to support vendor variants?",
       "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c24bae8_2bd05bab",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-11-24T00:43:08Z",
+      "side": 1,
+      "message": "What should users do when they want to add a new sh_binary module to an APEX? To binaries, or to sh_binaries? We need to eliminate the ambiguity.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 21
+      },
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d51f2f6_276d1ede",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-11-24T00:43:08Z",
+      "side": 1,
+      "message": "This is not used",
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30f662a2_50f1e9c9",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-11-24T00:43:08Z",
+      "side": 1,
+      "message": "This makes it possible to add non-sh binaries to `sh_binaries` property.",
+      "range": {
+        "startLine": 758,
+        "startChar": 5,
+        "endLine": 758,
+        "endChar": 18
+      },
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f82bb63_7d75f7f7",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-11-24T00:43:08Z",
+      "side": 1,
+      "message": "Why? sh_binary modules don\u0027t have transitive dependencies, do they?",
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
