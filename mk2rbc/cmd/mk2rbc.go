@@ -179,8 +179,15 @@ func main() {
 			ok = false
 		}
 
+		typeInfoPath := outputFilePath("type_info.rbc")
+		err = writeGenerated(typeInfoPath, mk2rbc.KnownVariables.StarlarkTypeInfoDict())
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "%s: %s", files[0], err)
+			ok = false
+		}
+
 		err = writeGenerated(*launcher, mk2rbc.Launcher(outputFilePath(files[0]), versionDefaultsPath,
-			mk2rbc.MakePath2ModuleName(files[0])))
+			mk2rbc.MakePath2ModuleName(files[0]), typeInfoPath))
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "%s: %s", files[0], err)
 			ok = false
