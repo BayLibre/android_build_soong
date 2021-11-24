@@ -187,6 +187,47 @@
       },
       "revId": "1189d4e36e4a867ddc2e7cb87b2060952df2d071",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d65f85a_85be472f",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-11-24T16:31:20Z",
+      "side": 1,
+      "message": "I did discuss this with Jiakai previously and I didn\u0027t have a strong opinion either way either. I think it is fine to add it to systemserverclasspath_fragment because the cost of creating separate module types is quite high and it is not clear that there would be any real benefit.\n\nIf we do find a need to create separate module types the cost would be higher than the cost to do it right the first time but it would not be significantly higher.",
+      "parentUuid": "1d34e8f8_a9180400",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 29
+      },
+      "revId": "1189d4e36e4a867ddc2e7cb87b2060952df2d071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb41b2ab_e6de6743",
+        "filename": "java/systemserver_classpath_fragment_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-11-24T16:31:20Z",
+      "side": 1,
+      "message": "Could you add a test for the standalone_contents property?",
+      "revId": "1189d4e36e4a867ddc2e7cb87b2060952df2d071",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
