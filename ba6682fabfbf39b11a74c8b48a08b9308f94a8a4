@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4fba4e8_c5aa5453",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-11-25T12:19:50Z",
+      "side": 1,
+      "message": "There is no need to have this as a separate change. It should just be merged into https://r.android.com/1901598 which introduces the issue and has not yet been merged.",
+      "revId": "ba6682fabfbf39b11a74c8b48a08b9308f94a8a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
