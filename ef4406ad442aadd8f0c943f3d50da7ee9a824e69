@@ -89,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f081281d_8c467325",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2021-11-25T02:23:39Z",
+      "side": 1,
+      "message": "Fortunately, there is no sh_binary module in apexes. I changed the sh_binary module not to be added to the Binaries property.",
+      "parentUuid": "56342472_487becbf",
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c24bae8_2bd05bab",
@@ -112,6 +130,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6122e05_13a93db8",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2021-11-25T02:23:39Z",
+      "side": 1,
+      "message": "Changed Binaries to not include sh_binary module.",
+      "parentUuid": "2c24bae8_2bd05bab",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 21
+      },
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d51f2f6_276d1ede",
@@ -125,6 +167,24 @@
       "writtenOn": "2021-11-24T00:43:08Z",
       "side": 1,
       "message": "This is not used",
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc6002f_0239b40f",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2021-11-25T02:23:39Z",
+      "side": 1,
+      "message": "I changed to use the shBinaryTag instead of executableTag",
+      "parentUuid": "0d51f2f6_276d1ede",
       "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -176,6 +236,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44badfd5_ca172fe6",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2021-11-25T02:23:39Z",
+      "side": 1,
+      "message": "Changed to shBinaryTag",
+      "parentUuid": "d3fbe07e_3abf8646",
+      "range": {
+        "startLine": 758,
+        "startChar": 5,
+        "endLine": 758,
+        "endChar": 18
+      },
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f82bb63_7d75f7f7",
@@ -193,6 +277,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3014e83c_65650217",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2021-11-25T02:23:39Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "4f82bb63_7d75f7f7",
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09e33ee8_419be691",
@@ -206,6 +308,30 @@
       "writtenOn": "2021-11-24T01:15:51Z",
       "side": 1,
       "message": "What if sh_binary is not a vendor:true module? The change looks like allowing it. I\u0027m not sure but how about adding a check if the added sh_binary modules are actually vendor modules?\n\nOr, you can explicitly express the intention (apex doesn\u0027t care about sh_binary module\u0027s target partition) by adding a few more tests.",
+      "range": {
+        "startLine": 4294,
+        "startChar": 0,
+        "endLine": 4294,
+        "endChar": 16
+      },
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f709d04_2dc91343",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4294,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2021-11-25T02:23:39Z",
+      "side": 1,
+      "message": "I deleted the test because I changed all sh_binary modules to only add to sh_binaries.",
+      "parentUuid": "09e33ee8_419be691",
       "range": {
         "startLine": 4294,
         "startChar": 0,
