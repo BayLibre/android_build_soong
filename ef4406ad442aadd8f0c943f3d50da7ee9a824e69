@@ -107,6 +107,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d92470_80a1f1e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2021-11-25T07:21:19Z",
+      "side": 1,
+      "message": "Colin, as mentioned in Jooyung\u0027s comment, making \"vendor.*\" variants is quite complex. So I add sh_binaries property.\nPlease let me know if you have any concerns.",
+      "parentUuid": "ab0b07b0_308d679a",
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c24bae8_2bd05bab",
