@@ -70,6 +70,24 @@
       "parentUuid": "39a0a49e_bda62526",
       "revId": "5c33ef170eaaa979dd8c8f95089132280af19b6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ea2ee6_141a2109",
+        "filename": "android/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-11-25T18:40:37Z",
+      "side": 1,
+      "message": "Agree about the subtle difference. This latest patch is better.\n\nI don\u0027t understand why you would need to compare function pointers. Just provide a dummy PrebuiltSrcsSupplier that returns a non empty array. e.g.\n\nsrcsSupplier :\u003d func(ctx android.BaseModuleContext, _ android.Module) []string {\n    return []string{\"this is an invalid path that should never be used\"}\n}",
+      "parentUuid": "bab2ee03_fb7290ac",
+      "revId": "5c33ef170eaaa979dd8c8f95089132280af19b6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

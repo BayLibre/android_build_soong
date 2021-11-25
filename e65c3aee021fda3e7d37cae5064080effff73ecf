@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ffa1195_4a3f513d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-11-25T18:40:37Z",
+      "side": 1,
+      "message": "I\u0027ve +2\u0027d this as I don\u0027t think particularly strongly about it.",
+      "revId": "e65c3aee021fda3e7d37cae5064080effff73ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
