@@ -364,6 +364,30 @@
       },
       "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf1130ff_1c7fd599",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4294,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-11-25T03:16:07Z",
+      "side": 1,
+      "message": "I think that\u0027s fine. Or, we could check if the sh_binary and the current APEX are in the same partition.",
+      "parentUuid": "0d15fefa_729fe687",
+      "range": {
+        "startLine": 4294,
+        "startChar": 0,
+        "endLine": 4294,
+        "endChar": 16
+      },
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
