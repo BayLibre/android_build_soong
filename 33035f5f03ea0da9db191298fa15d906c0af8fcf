@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "227c1f23_3f1661d7",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1735,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-11-25T02:25:18Z",
+      "side": 1,
+      "message": "Emit an error when a module listed in sh_binaries is not sh_binary.",
+      "range": {
+        "startLine": 1735,
+        "startChar": 4,
+        "endLine": 1735,
+        "endChar": 5
+      },
+      "revId": "33035f5f03ea0da9db191298fa15d906c0af8fcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
