@@ -16,6 +16,24 @@
       "message": "This comment seems a little weird. Why does this need to be here for compatibility with soong code if it is not actually used? It seems to me that if we want this here to make tests more realistic then we should actually have a test that relies on it being here.",
       "revId": "c362142438b5b883f62d57f980fdee2f02a26b7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c931a6d_50113251",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-11-25T12:35:41Z",
+      "side": 1,
+      "message": "I don\u0027t remember the problem exactly now... \n\nBut I remember that without this, soong unit tests would fail because they didn\u0027t recognize this codename.\n\nMaybe this is because I have production code referring to \"Tiramisu\" before it was an official codename in soong? \n\nAnyway, back then I tried alternatives and after checking with Colin this was the only reasonable solution. Perhaps now we can remove it, I don\u0027t know.",
+      "parentUuid": "64bb433f_e44da566",
+      "revId": "c362142438b5b883f62d57f980fdee2f02a26b7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
