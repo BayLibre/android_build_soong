@@ -388,6 +388,30 @@
       },
       "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c455f70_ccf7a9eb",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4294,
+      "author": {
+        "id": 1187124
+      },
+      "writtenOn": "2021-11-25T03:44:55Z",
+      "side": 1,
+      "message": "+1 The prebuilts property also don\u0027t check, so I think it\u0027s fine.",
+      "parentUuid": "bf1130ff_1c7fd599",
+      "range": {
+        "startLine": 4294,
+        "startChar": 0,
+        "endLine": 4294,
+        "endChar": 16
+      },
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
