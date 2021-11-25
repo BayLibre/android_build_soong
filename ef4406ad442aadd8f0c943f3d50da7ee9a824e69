@@ -340,6 +340,30 @@
       },
       "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d15fefa_729fe687",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 4294,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2021-11-25T02:31:53Z",
+      "side": 1,
+      "message": "So, do we allow \"vendor\" sh_binary modules to be packaged in \"non-vendor\" apexes?",
+      "parentUuid": "4f709d04_2dc91343",
+      "range": {
+        "startLine": 4294,
+        "startChar": 0,
+        "endLine": 4294,
+        "endChar": 16
+      },
+      "revId": "ef4406ad442aadd8f0c943f3d50da7ee9a824e69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
