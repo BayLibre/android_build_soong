@@ -256,6 +256,9 @@ type bootImageConfig struct {
 	// Subdirectory where the image files on device are installed.
 	installDirOnDevice string
 
+	// True if the boot image profile needs to be installed in the APEX.
+	installProfileInApex bool
+
 	// A list of (location, jar) pairs for the Java modules in this image.
 	modules android.ConfiguredJarList
 
@@ -271,6 +274,9 @@ type bootImageConfig struct {
 
 	// Rules which should be used in make to install the outputs.
 	profileInstalls android.RuleBuilderInstalls
+
+	// Path to the image profile file on host (or empty, if profile is not generated).
+	profilePathOnHost android.Path
 
 	// Target-dependent fields.
 	variants []*bootImageVariant
@@ -758,7 +764,7 @@ func bootImageProfileRule(ctx android.ModuleContext, image *bootImageConfig) and
 		return nil
 	}
 
-	profile := image.dir.Join(ctx, "boot.prof")
+	profile := image.dir.Join(ctx, "boot-image.prof")
 
 	rule.Command().
 		Text(`ANDROID_LOG_TAGS="*:e"`).
@@ -769,11 +775,14 @@ func bootImageProfileRule(ctx android.ModuleContext, image *bootImageConfig) and
 		FlagForEachArg("--dex-location=", image.getAnyAndroidVariant().dexLocationsDeps).
 		FlagWithOutput("--reference-profile-file=", profile)
 
-	rule.Install(profile, "/system/etc/boot-image.prof")
+	if image == defaultBootImageConfig(ctx) {
+		rule.Install(profile, "/system/etc/boot-image.prof")
+		image.profileInstalls = append(image.profileInstalls, rule.Installs()...)
+	}
 
 	rule.Build("bootJarsProfile", "profile boot jars")
 
-	image.profileInstalls = append(image.profileInstalls, rule.Installs()...)
+	image.profilePathOnHost = profile
 
 	return profile
 }

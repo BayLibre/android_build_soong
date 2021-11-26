@@ -390,6 +390,12 @@ type BootclasspathFragmentApexContentInfo struct {
 	// Map from the base module name (without prebuilt_ prefix) of a fragment's contents module to the
 	// hidden API encoded dex jar path.
 	contentModuleDexJarPaths bootDexJarByModule
+
+	// Path to the image profile file on host (or empty, if profile is not generated).
+	profilePathOnHost android.Path
+
+	// True if the boot image profile needs to be installed in the APEX.
+	installProfileInApex bool
 }
 
 func (i BootclasspathFragmentApexContentInfo) Modules() android.ConfiguredJarList {
@@ -416,6 +422,14 @@ func (i BootclasspathFragmentApexContentInfo) DexBootJarPathForContentModule(mod
 		return nil, fmt.Errorf("unknown bootclasspath_fragment content module %s, expected one of %s",
 			name, strings.Join(android.SortedStringKeys(i.contentModuleDexJarPaths), ", "))
 	}
+}
+
+func (i BootclasspathFragmentApexContentInfo) ProfilePathOnHost() android.Path {
+	return i.profilePathOnHost
+}
+
+func (i BootclasspathFragmentApexContentInfo) InstallProfileInApex() bool {
+	return i.installProfileInApex
 }
 
 func (b *BootclasspathFragmentModule) DepIsInSameApex(ctx android.BaseModuleContext, dep android.Module) bool {
@@ -579,6 +593,8 @@ func (b *BootclasspathFragmentModule) provideApexContentInfo(ctx android.ModuleC
 
 	if imageConfig != nil {
 		info.modules = imageConfig.modules
+		info.profilePathOnHost = imageConfig.profilePathOnHost
+		info.installProfileInApex = imageConfig.installProfileInApex
 	}
 
 	info.bootImageFilesByArch = bootImageFilesByArch
