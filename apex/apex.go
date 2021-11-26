@@ -2159,6 +2159,24 @@ func apexBootclasspathFragmentFiles(ctx android.ModuleContext, module blueprint.
 		filesToAdd = append(filesToAdd, *af)
 	}
 
+	if PathInApex := bootclasspathFragmentInfo.ProfileInstallPathInApex(); len(PathInApex) > 0 {
+		pathOnHost := bootclasspathFragmentInfo.ProfilePathOnHost()
+		if pathOnHost == nil {
+			ctx.ModuleErrorf("Boot image profile \"%s\" cannot be generated", PathInApex)
+		}
+		tempPath := android.PathForModuleOut(ctx, "boot_image_profile", PathInApex)
+		// We need to copy the profile to a temparary path with the right filename because the apexer
+		// will take the filename as is.
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   android.Cp,
+			Input:  pathOnHost,
+			Output: tempPath,
+		})
+		androidMkModuleName := filepath.Base(PathInApex)
+		af := newApexFile(ctx, tempPath, androidMkModuleName, filepath.Dir(PathInApex), etc, nil)
+		filesToAdd = append(filesToAdd, af)
+	}
+
 	return filesToAdd
 }
 
