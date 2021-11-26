@@ -429,14 +429,22 @@ func checkProducesJars(ctx android.ModuleContext, dep android.SourceFileProducer
 	}
 }
 
-func getJavaVersion(ctx android.ModuleContext, javaVersion string, sdkContext android.SdkContext) javaVersion {
-	if javaVersion != "" {
-		return normalizeJavaVersion(ctx, javaVersion)
+func getJavaVersion(ctx android.ModuleContext, javaVersionStr string, sdkContext android.SdkContext) javaVersion {
+	// Temporary experimental flag to be able to try and build with java version 11 options.
+	// The flag, if used, just replaces Java 9 with Java 11, leaving any components that target an older version intact.
+	useJavaVersion11 := ctx.Config().GetenvWithDefault("EXPERIMENTAL_TARGET_JAVA_VERSION_11", "false")
+	var javaVersionToUse javaVersion = JAVA_VERSION_9
+	if javaVersionStr != "" {
+		javaVersionToUse = normalizeJavaVersion(ctx, javaVersionStr)
 	} else if ctx.Device() {
-		return defaultJavaLanguageVersion(ctx, sdkContext.SdkVersion(ctx))
+		javaVersionToUse = defaultJavaLanguageVersion(ctx, sdkContext.SdkVersion(ctx))
 	} else {
-		return JAVA_VERSION_9
+		javaVersionToUse = JAVA_VERSION_9
 	}
+	if useJavaVersion11 == "true" && javaVersionToUse == JAVA_VERSION_9 {
+		return JAVA_VERSION_11
+	}
+	return javaVersionToUse
 }
 
 type javaVersion int
