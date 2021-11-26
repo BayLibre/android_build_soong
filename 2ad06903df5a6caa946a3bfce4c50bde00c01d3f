@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a27f95f_1cebfbd8",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-26T18:55:52Z",
+      "side": 1,
+      "message": "No, /system/etc/boot-image.prof will always be only the framework profile. You can see the the `profman` invocation above takes dex jars as inputs (`--apk\u003d...`). It actually prunes entries that are unrelated to the input dex jars.",
+      "parentUuid": "94874f37_e698dd9f",
+      "range": {
+        "startLine": 776,
+        "startChar": 72,
+        "endLine": 776,
+        "endChar": 87
+      },
+      "revId": "2ad06903df5a6caa946a3bfce4c50bde00c01d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d5bf25b_dbc38fdc",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-26T18:38:47Z",
       "side": 1,
       "message": "Why \"/\" here but not on the other (device) path above?",
+      "range": {
+        "startLine": 66,
+        "startChar": 31,
+        "endLine": 66,
+        "endChar": 32
+      },
+      "revId": "2ad06903df5a6caa946a3bfce4c50bde00c01d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cad2670_c5752f2f",
+        "filename": "java/dexpreopt_config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-26T18:55:52Z",
+      "side": 1,
+      "message": "\"/\" is added for the path above when variants are created.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/java/dexpreopt_config.go;l\u003d114;drc\u003d4102c0cc47f58c5278852641ab1636920a59ab48",
+      "parentUuid": "1d5bf25b_dbc38fdc",
       "range": {
         "startLine": 66,
         "startChar": 31,
