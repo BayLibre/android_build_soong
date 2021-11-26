@@ -282,8 +282,6 @@ var (
 
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
 	bp2buildModuleDoNotConvertList = []string{
-		"libprotobuf-cpp-full", "libprotobuf-cpp-lite", // Unsupported product&vendor suffix. b/204811222 and b/204810610.
-
 		"libc_malloc_debug", // depends on libunwindstack, which depends on unsupported module art_cc_library_statics
 
 		"libbase_ndk", // http://b/186826477, fails to link libctscamera2_jni for device (required for CtsCameraTestCases)
@@ -361,8 +359,9 @@ var (
 		"libbrotli",               // http://b/198585397, ld.lld: error: bionic/libc/arch-arm64/generic/bionic/memmove.S:95:(.text+0x10): relocation R_AARCH64_CONDBR19 out of range: -1404176 is not in [-1048576, 1048575]; references __memcpy
 		"minijail_constants_json", // http://b/200899432, bazel-built cc_genrule does not work in mixed build when it is a dependency of another soong module.
 
-		"cap_names.h", // TODO(b/204913827) runfiles need to be handled in mixed builds
-		"libcap",      // TODO(b/204913827) runfiles need to be handled in mixed builds
+		"cap_names.h",                                  // TODO(b/204913827) runfiles need to be handled in mixed builds
+		"libcap",                                       // TODO(b/204913827) runfiles need to be handled in mixed builds
+		"libprotobuf-cpp-full", "libprotobuf-cpp-lite", // Unsupported product&vendor suffix. b/204811222 and b/204810610.
 	}
 
 	// Used for quicker lookups
