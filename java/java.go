@@ -430,10 +430,16 @@ func checkProducesJars(ctx android.ModuleContext, dep android.SourceFileProducer
 }
 
 func getJavaVersion(ctx android.ModuleContext, javaVersion string, sdkContext android.SdkContext) javaVersion {
+	// Temporary experimental flag to be able to try and build with java version 11 options.
+	// The flag, if used, just sets Java 11 as the default version, leaving
+	// any components that target an older version intact.
+	useJavaVersion11 := ctx.Config().GetenvWithDefault("EXPERIMENTAL_TARGET_JAVA_VERSION_11", "false")
 	if javaVersion != "" {
 		return normalizeJavaVersion(ctx, javaVersion)
 	} else if ctx.Device() {
 		return defaultJavaLanguageVersion(ctx, sdkContext.SdkVersion(ctx))
+	} else if useJavaVersion11 == "true" {
+		return JAVA_VERSION_11
 	} else {
 		return JAVA_VERSION_9
 	}
