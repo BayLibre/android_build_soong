@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94874f37_e698dd9f",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-26T18:48:40Z",
+      "side": 1,
+      "message": "If we build ART from source in a system image, /system/etc/boot-image.prof will be the union of the primary (ART) and framework boot image profiles, but if we build with a prebuilt ART module I suspect it\u0027s only the framework profile. Is that correct?\n\nHow is it used on device? If the primary boot image entries are unnecessary I think we should split this command so that /system/etc/boot-image.prof only has the framework profile regardless of source vs prebuilt.",
+      "range": {
+        "startLine": 776,
+        "startChar": 72,
+        "endLine": 776,
+        "endChar": 87
+      },
+      "revId": "2ad06903df5a6caa946a3bfce4c50bde00c01d3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1d5bf25b_dbc38fdc",
         "filename": "java/dexpreopt_config.go",
         "patchSetId": 1
