@@ -256,6 +256,9 @@ type bootImageConfig struct {
 	// Subdirectory where the image files on device are installed.
 	installDirOnDevice string
 
+	// Subdirectory where the image profile file on device is installed (or empty, if not needed).
+	profileInstallDirOnDevice string
+
 	// A list of (location, jar) pairs for the Java modules in this image.
 	modules android.ConfiguredJarList
 
@@ -769,11 +772,12 @@ func bootImageProfileRule(ctx android.ModuleContext, image *bootImageConfig) and
 		FlagForEachArg("--dex-location=", image.getAnyAndroidVariant().dexLocationsDeps).
 		FlagWithOutput("--reference-profile-file=", profile)
 
-	rule.Install(profile, "/system/etc/boot-image.prof")
+	if image.profileInstallDirOnDevice != "" {
+		rule.Install(profile, filepath.Join(image.profileInstallDirOnDevice, "boot-image.prof"))
+		image.profileInstalls = append(image.profileInstalls, rule.Installs()...)
+	}
 
 	rule.Build("bootJarsProfile", "profile boot jars")
-
-	image.profileInstalls = append(image.profileInstalls, rule.Installs()...)
 
 	return profile
 }
@@ -885,7 +889,7 @@ func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 		// necessary to rework the logic in makefiles.
 		for _, current := range append(d.otherImages, image) {
 			imageNames = append(imageNames, current.name)
-			for _, variant := range current.variants {
+			for i, variant := range current.variants {
 				suffix := ""
 				if variant.target.Os.Class == android.Host {
 					suffix = "_host"
@@ -896,6 +900,11 @@ func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 				ctx.Strict("DEXPREOPT_IMAGE_DEPS_"+sfx, strings.Join(variant.imagesDeps.Strings(), " "))
 				ctx.Strict("DEXPREOPT_IMAGE_BUILT_INSTALLED_"+sfx, variant.installs.String())
 				ctx.Strict("DEXPREOPT_IMAGE_UNSTRIPPED_BUILT_INSTALLED_"+sfx, variant.unstrippedInstalls.String())
+				// Only install the profile for the first variant because profiles are identical for different variants.
+				// Also, skip the profile for the default boot image because it is handled in a different way.
+				if i == 0 && current != image && len(variant.profileInstalls) > 0 {
+					ctx.Strict("DEXPREOPT_IMAGE_PROFILE_BUILT_INSTALLED_"+sfx, variant.profileInstalls.String())
+				}
 			}
 			imageLocationsOnHost, imageLocationsOnDevice := current.getAnyAndroidVariant().imageLocations()
 			ctx.Strict("DEXPREOPT_IMAGE_LOCATIONS_ON_HOST"+current.name, strings.Join(imageLocationsOnHost, ":"))
