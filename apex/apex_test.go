@@ -7037,6 +7037,7 @@ func testDexpreoptWithApexes(t *testing.T, bp, errmsg string, preparer android.F
 				`, insert))
 			}
 		}),
+		dexpreopt.FixtureSetBootImageProfiles("art/build/boot/boot-image-profile.txt"),
 	).
 		ExtendWithErrorHandler(errorHandler).
 		RunTestWithBp(t, bp)
@@ -8390,6 +8391,46 @@ func TestAndroidMk_RequiredModules(t *testing.T) {
 	data.Custom(&builder, apexBundle.BaseModuleName(), "TARGET_", "", data)
 	androidMk := builder.String()
 	ensureContains(t, androidMk, "LOCAL_REQUIRED_MODULES += otherapex")
+}
+
+func TestBootImageProfile(t *testing.T) {
+	ctx := testApex(t, `
+		apex {
+			name: "myapex",
+			key: "myapex.key",
+			updatable: false,
+			bootclasspath_fragments: ["mybootclasspathfragment"],
+		}
+
+		apex_key {
+			name: "myapex.key",
+			public_key: "testkey.avbpubkey",
+			private_key: "testkey.pem",
+		}
+
+		bootclasspath_fragment {
+			name: "mybootclasspathfragment",
+			image_name: "art",
+			contents: ["mybootclasspathlib"],
+			apex_available: ["myapex"],
+		}
+
+		java_library {
+			name: "mybootclasspathlib",
+			srcs: ["mybootclasspathlib.java"],
+			apex_available: ["myapex"],
+			compile_dex: true,
+		}
+	`,
+		dexpreopt.FixtureSetApexBootJars("myapex:mybootclasspathlib"),
+		dexpreopt.FixtureSetBootImageProfiles("art/build/boot/boot-image-profile.txt"),
+	)
+
+	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
+		"etc/boot-image.prof",
+		"etc/classpaths/bootclasspath.pb",
+		"javalib/mybootclasspathlib.jar",
+	})
 }
 
 func TestMain(m *testing.M) {
