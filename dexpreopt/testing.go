@@ -90,7 +90,7 @@ var PrepareForTestByEnablingDexpreopt = android.GroupFixturePreparers(
 
 // FixtureModifyGlobalConfig enables dexpreopt (unless modified by the mutator) and modifies the
 // configuration.
-func FixtureModifyGlobalConfig(configModifier func(dexpreoptConfig *GlobalConfig)) android.FixturePreparer {
+func FixtureModifyGlobalConfigWithContext(configModifier func(ctx android.PathContext, dexpreoptConfig *GlobalConfig)) android.FixturePreparer {
 	return android.FixtureModifyConfig(func(config android.Config) {
 		// Initialize the dexpreopt GlobalConfig to an empty structure. This has no effect if it has
 		// already been set.
@@ -100,6 +100,13 @@ func FixtureModifyGlobalConfig(configModifier func(dexpreoptConfig *GlobalConfig
 
 		// Retrieve the existing configuration and modify it.
 		dexpreoptConfig = GetGlobalConfig(pathCtx)
+		configModifier(pathCtx, dexpreoptConfig)
+	})
+}
+
+// Same as above, but omits the path context.
+func FixtureModifyGlobalConfig(configModifier func(dexpreoptConfig *GlobalConfig)) android.FixturePreparer {
+	return FixtureModifyGlobalConfigWithContext(func(ctx android.PathContext, dexpreoptConfig *GlobalConfig) {
 		configModifier(dexpreoptConfig)
 	})
 }
@@ -143,5 +150,12 @@ func FixtureSetApexSystemServerJars(jars ...string) android.FixturePreparer {
 func FixtureSetPreoptWithUpdatableBcp(value bool) android.FixturePreparer {
 	return FixtureModifyGlobalConfig(func(dexpreoptConfig *GlobalConfig) {
 		dexpreoptConfig.PreoptWithUpdatableBcp = value
+	})
+}
+
+// FixtureSetBootImageProfiles sets the BootImageProfiles property in the global config.
+func FixtureSetBootImageProfiles(profiles ...string) android.FixturePreparer {
+	return FixtureModifyGlobalConfigWithContext(func(ctx android.PathContext, dexpreoptConfig *GlobalConfig) {
+		dexpreoptConfig.BootImageProfiles = android.PathsForSource(ctx, profiles)
 	})
 }

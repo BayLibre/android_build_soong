@@ -2158,6 +2158,13 @@ func apexBootclasspathFragmentFiles(ctx android.ModuleContext, module blueprint.
 		filesToAdd = append(filesToAdd, *af)
 	}
 
+	profilePath := bootclasspathFragmentInfo.ProfilePathOnHost()
+	if profilePath != nil && bootclasspathFragmentInfo.InstallProfileInApex() {
+		androidMkModuleName := filepath.Base(profilePath.String())
+		af := newApexFile(ctx, profilePath, androidMkModuleName, "etc", etc, nil)
+		filesToAdd = append(filesToAdd, af)
+	}
+
 	return filesToAdd
 }
 
