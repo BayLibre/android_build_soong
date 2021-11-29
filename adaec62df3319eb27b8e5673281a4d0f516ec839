@@ -34,6 +34,24 @@
       "parentUuid": "2914e6a9_ffeef595",
       "revId": "adaec62df3319eb27b8e5673281a4d0f516ec839",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b642932_1f316457",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-11-29T11:00:06Z",
+      "side": 1,
+      "message": "Can you update the description to also do some \u0027b\u0027 testing?\n\nI personally want bp2build to always be verbose in the context of any \u0027b\u0027 build I do (e.g. b build //foo/...)\n\nMaybe we need another alias, something like \u0027vb\u0027, that does the same as \u0027b\u0027 but with showcommands automatically set for the implicit bp2build part?\n\n(Am I missing something?)",
+      "parentUuid": "3905c2d3_e5d9684a",
+      "revId": "adaec62df3319eb27b8e5673281a4d0f516ec839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
