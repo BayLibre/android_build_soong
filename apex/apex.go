@@ -127,6 +127,13 @@ type apexBundleProperties struct {
 	// symlinking to the system libs. Default is true.
 	Updatable *bool
 
+	// Force disables the size optimization so that shared libraries are included in this APEX
+	// even if this APEX is marked as `updatable: true`. This property however has LOWER
+	// precedence than the global switch TARGET_FORCE_APEX_SYMLINK_OPTIMIZATION. If the global
+	// switch is on, then this property becomes a no-op; i.e. the optimization is done. Default
+	// is false.
+	Force_disable_size_optimization *bool
+
 	// Whether this APEX can use platform APIs or not. Can be set to true only when `updatable:
 	// false`. Default is false.
 	Platform_apis *bool
@@ -2088,11 +2095,15 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		a.linkToSystemLib = false
 	}
 
-	forced := ctx.Config().ForceApexSymlinkOptimization()
+	globallyForced := ctx.Config().ForceApexSymlinkOptimization()
 
 	// We don't need the optimization for updatable APEXes, as it might give false signal
 	// to the system health when the APEXes are still bundled (b/149805758).
-	if !forced && a.Updatable() && a.properties.ApexType == imageApex {
+	if !globallyForced && a.Updatable() && a.properties.ApexType == imageApex {
+		a.linkToSystemLib = false
+	}
+
+	if !globallyForced && proptools.Bool(a.properties.Force_disable_size_optimization) {
 		a.linkToSystemLib = false
 	}
 
