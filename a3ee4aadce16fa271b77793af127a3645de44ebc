@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60c471ba_61d4b4f1",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-29T15:56:39Z",
+      "side": 0,
+      "message": "This was only used as an intermediate?",
+      "range": {
+        "startLine": 761,
+        "startChar": 33,
+        "endLine": 761,
+        "endChar": 42
+      },
+      "revId": "a3ee4aadce16fa271b77793af127a3645de44ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

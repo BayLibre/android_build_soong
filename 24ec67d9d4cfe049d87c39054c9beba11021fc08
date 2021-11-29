@@ -3,6 +3,29 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3bad3445_62822436",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-29T15:56:39Z",
+      "side": 1,
+      "message": "FYI this directory isn\u0027t necessarily the same thing as the extracted APEXes in $ANDROID_PRODUCT_OUT/system/apex: https://cs.android.com/android/platform/superproject/+/master:build/make/core/artifact_path_requirements.mk;l\u003d11-15;drc\u003dd1258eb2f83696f68cd0349ec57d4029662aec06 For this it could have a false negative, but since that isn\u0027t the case it\u0027s ok.",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "24ec67d9d4cfe049d87c39054c9beba11021fc08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "77f5cee1_a63dfbf5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -14,6 +37,52 @@
       "writtenOn": "2021-11-27T00:57:49Z",
       "side": 1,
       "message": "PS1 didn\u0027t actually work because the profile was not packed into the APEX. I changed the implementation. PTAL, thanks.",
+      "revId": "24ec67d9d4cfe049d87c39054c9beba11021fc08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96ddd898_1559ac35",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2162,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-29T15:56:39Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be an error if InstallProfileInApex() is true and this isn\u0027t set?",
+      "range": {
+        "startLine": 2162,
+        "startChar": 4,
+        "endLine": 2162,
+        "endChar": 15
+      },
+      "revId": "24ec67d9d4cfe049d87c39054c9beba11021fc08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "218c0317_ab74a84b",
+        "filename": "dexpreopt/testing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-29T15:56:39Z",
+      "side": 1,
+      "message": "Do away with this alias? It has a few calls, but they\u0027re all in this file.",
+      "range": {
+        "startLine": 108,
+        "startChar": 5,
+        "endLine": 108,
+        "endChar": 30
+      },
       "revId": "24ec67d9d4cfe049d87c39054c9beba11021fc08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
