@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4203badd_dc34f331",
+        "filename": "java/androidmk.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-11-29T18:51:16Z",
+      "side": 1,
+      "message": "This description is correct. \nI have added a description to hopefully make it more informative",
+      "parentUuid": "914585c4_2843d9fe",
+      "range": {
+        "startLine": 606,
+        "startChar": 54,
+        "endLine": 606,
+        "endChar": 56
+      },
+      "revId": "19adabff0cb960c73f479790ee8df2ab1a5f4026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d54943e_3ec07ddd",
@@ -61,6 +85,30 @@
       "side": 1,
       "message": "Re-reading this a week later, I think the \"check in the one line shell script\" is still a sound advice; it requires one extra file but I guess it\u0027s better than this exercise in quoting and you may even be able to get away with a static rule:\n\nvar (\n  copyGolden \u003d pctx.AndroidStaticRule(\n    \"copyGolden\", blueprint.RuleParams{\n      Command: \"build/make/scripts/copy_stuff.sh ${in} ${golden}\n  )  \n)\n\nthen\n\nctx.Build(BuildParams{\n  Rule: copyGolden, \n  Inputs: \u003coutput file\u003e,\n  Args: map[string]string{ \"golden\": \u003cgolden file\u003e}})\n  \nOr if that doesn\u0027t work for some reason, at least extract the shell stanza in linees 735-738 into a static rule so that it\u0027s a bit more readable.",
       "parentUuid": "0d54943e_3ec07ddd",
+      "range": {
+        "startLine": 752,
+        "startChar": 2,
+        "endLine": 752,
+        "endChar": 17
+      },
+      "revId": "19adabff0cb960c73f479790ee8df2ab1a5f4026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da59d9c7_bc0ab32f",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-11-29T18:51:16Z",
+      "side": 1,
+      "message": "This is a great point, my previous implementation was fragile in this respect\n\nI have created a new Ninja rule `genUpdateApiScriptRule` for this. The ninja rule generates the output scripts using the new checked-in script `build/soong/scripts/gen-update-api-script.sh`",
+      "parentUuid": "b426faea_a822b360",
       "range": {
         "startLine": 752,
         "startChar": 2,
