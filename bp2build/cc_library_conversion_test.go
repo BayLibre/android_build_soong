@@ -1693,6 +1693,7 @@ func TestCcLibraryCppStdWithGnuExtensions_ConvertsToFeatureAttr(t *testing.T) {
 		cpp_std        string
 		gnu_extensions string
 		bazel_cpp_std  string
+		bazel_c_std    string
 	}
 
 	testCases := []testCase{
@@ -1702,38 +1703,38 @@ func TestCcLibraryCppStdWithGnuExtensions_ConvertsToFeatureAttr(t *testing.T) {
 		// not set, only emit if gnu_extensions is disabled. the default (gnu+17
 		// is set in the toolchain.)
 		{cpp_std: "", gnu_extensions: "", bazel_cpp_std: ""},
-		{cpp_std: "", gnu_extensions: "false", bazel_cpp_std: "c++17"},
+		{cpp_std: "", gnu_extensions: "false", bazel_cpp_std: "c++17", bazel_c_std: "c99"},
 		{cpp_std: "", gnu_extensions: "true", bazel_cpp_std: ""},
 		// experimental defaults to gnu++2a
 		{cpp_std: "experimental", gnu_extensions: "", bazel_cpp_std: "gnu++2a"},
-		{cpp_std: "experimental", gnu_extensions: "false", bazel_cpp_std: "c++2a"},
+		{cpp_std: "experimental", gnu_extensions: "false", bazel_cpp_std: "c++2a", bazel_c_std: "c99"},
 		{cpp_std: "experimental", gnu_extensions: "true", bazel_cpp_std: "gnu++2a"},
 		// Explicitly setting a c++ std does not use replace gnu++ std even if
 		// gnu_extensions is true.
 		// "c++11",
 		{cpp_std: "c++11", gnu_extensions: "", bazel_cpp_std: "c++11"},
-		{cpp_std: "c++11", gnu_extensions: "false", bazel_cpp_std: "c++11"},
+		{cpp_std: "c++11", gnu_extensions: "false", bazel_cpp_std: "c++11", bazel_c_std: "c99"},
 		{cpp_std: "c++11", gnu_extensions: "true", bazel_cpp_std: "c++11"},
 		// "c++17",
 		{cpp_std: "c++17", gnu_extensions: "", bazel_cpp_std: "c++17"},
-		{cpp_std: "c++17", gnu_extensions: "false", bazel_cpp_std: "c++17"},
+		{cpp_std: "c++17", gnu_extensions: "false", bazel_cpp_std: "c++17", bazel_c_std: "c99"},
 		{cpp_std: "c++17", gnu_extensions: "true", bazel_cpp_std: "c++17"},
 		// "c++2a",
 		{cpp_std: "c++2a", gnu_extensions: "", bazel_cpp_std: "c++2a"},
-		{cpp_std: "c++2a", gnu_extensions: "false", bazel_cpp_std: "c++2a"},
+		{cpp_std: "c++2a", gnu_extensions: "false", bazel_cpp_std: "c++2a", bazel_c_std: "c99"},
 		{cpp_std: "c++2a", gnu_extensions: "true", bazel_cpp_std: "c++2a"},
 		// "c++98",
 		{cpp_std: "c++98", gnu_extensions: "", bazel_cpp_std: "c++98"},
-		{cpp_std: "c++98", gnu_extensions: "false", bazel_cpp_std: "c++98"},
+		{cpp_std: "c++98", gnu_extensions: "false", bazel_cpp_std: "c++98", bazel_c_std: "c99"},
 		{cpp_std: "c++98", gnu_extensions: "true", bazel_cpp_std: "c++98"},
 		// gnu++ is replaced with c++ if gnu_extensions is explicitly false.
 		// "gnu++11",
 		{cpp_std: "gnu++11", gnu_extensions: "", bazel_cpp_std: "gnu++11"},
-		{cpp_std: "gnu++11", gnu_extensions: "false", bazel_cpp_std: "c++11"},
+		{cpp_std: "gnu++11", gnu_extensions: "false", bazel_cpp_std: "c++11", bazel_c_std: "c99"},
 		{cpp_std: "gnu++11", gnu_extensions: "true", bazel_cpp_std: "gnu++11"},
 		// "gnu++17",
 		{cpp_std: "gnu++17", gnu_extensions: "", bazel_cpp_std: "gnu++17"},
-		{cpp_std: "gnu++17", gnu_extensions: "false", bazel_cpp_std: "c++17"},
+		{cpp_std: "gnu++17", gnu_extensions: "false", bazel_cpp_std: "c++17", bazel_c_std: "c99"},
 		{cpp_std: "gnu++17", gnu_extensions: "true", bazel_cpp_std: "gnu++17"},
 	}
 	for _, tc := range testCases {
@@ -1748,6 +1749,9 @@ func TestCcLibraryCppStdWithGnuExtensions_ConvertsToFeatureAttr(t *testing.T) {
 		attrs := attrNameToString{}
 		if tc.bazel_cpp_std != "" {
 			attrs["cpp_std"] = fmt.Sprintf(`"%s"`, tc.bazel_cpp_std)
+		}
+		if tc.bazel_c_std != "" {
+			attrs["c_std"] = fmt.Sprintf(`"%s"`, tc.bazel_c_std)
 		}
 
 		runCcLibraryTestCase(t, bp2buildTestCase{
