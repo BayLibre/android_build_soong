@@ -70,6 +70,24 @@
       "parentUuid": "2b642932_1f316457",
       "revId": "adaec62df3319eb27b8e5673281a4d0f516ec839",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b6c8fa4_dc0f143a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-11-29T13:08:13Z",
+      "side": 1,
+      "message": "I\u0027m fine to change the default behaviour of b to be quieter, but I want to keep the option of having a verbose b, because that\u0027s what I would always use personally\n\n(maybe as a new alias, vb, if there isn\u0027t a good way to pass non-Bazel arguments like showcommands to b?)",
+      "parentUuid": "fdf47a1a_5d9e379e",
+      "revId": "adaec62df3319eb27b8e5673281a4d0f516ec839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
