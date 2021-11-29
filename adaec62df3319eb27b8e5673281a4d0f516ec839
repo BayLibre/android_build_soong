@@ -52,6 +52,24 @@
       "parentUuid": "3905c2d3_e5d9684a",
       "revId": "adaec62df3319eb27b8e5673281a4d0f516ec839",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdf47a1a_5d9e379e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-11-29T11:44:55Z",
+      "side": 1,
+      "message": "I think this plan is to make `b` quieter, and I tend to agree because it hasn\u0027t been super useful since the short period after we added it to find bugs.\n\nDoes `m bp2build showcommands` work well enough to avoid extending `b`?",
+      "parentUuid": "2b642932_1f316457",
+      "revId": "adaec62df3319eb27b8e5673281a4d0f516ec839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
