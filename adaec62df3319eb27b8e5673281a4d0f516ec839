@@ -88,6 +88,24 @@
       "parentUuid": "fdf47a1a_5d9e379e",
       "revId": "adaec62df3319eb27b8e5673281a4d0f516ec839",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28c809dd_7371cbbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-11-29T13:09:21Z",
+      "side": 1,
+      "message": "Or bb instead of vb? I\u0027m not sure if there is a standard naming convention to indicate you want extra verbosity for envsetup.sh commands",
+      "parentUuid": "8b6c8fa4_dc0f143a",
+      "revId": "adaec62df3319eb27b8e5673281a4d0f516ec839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
