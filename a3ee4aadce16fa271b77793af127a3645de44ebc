@@ -46,6 +46,30 @@
       },
       "revId": "a3ee4aadce16fa271b77793af127a3645de44ebc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78f68b4e_b2715c81",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-29T16:44:25Z",
+      "side": 0,
+      "message": "That in itself may not be a problem. The reason I asked is rather whether the old name has been visible in some dist artifact and hence there may be tools or scripts elsewhere that depend on this old name.\n\nA workaround in that case would be to add an android.Cp rule here?",
+      "parentUuid": "a5ee06e7_2df2d56b",
+      "range": {
+        "startLine": 761,
+        "startChar": 33,
+        "endLine": 761,
+        "endChar": 42
+      },
+      "revId": "a3ee4aadce16fa271b77793af127a3645de44ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
