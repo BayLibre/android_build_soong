@@ -22,6 +22,30 @@
       },
       "revId": "a3ee4aadce16fa271b77793af127a3645de44ebc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5ee06e7_2df2d56b",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-29T16:16:27Z",
+      "side": 0,
+      "message": "Unfortunately, the name of the intermediate determines the name of the file packed into the APEX, and I don\u0027t see a way to override it.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/apex/androidmk.go;l\u003d324;drc\u003dmaster",
+      "parentUuid": "60c471ba_61d4b4f1",
+      "range": {
+        "startLine": 761,
+        "startChar": 33,
+        "endLine": 761,
+        "endChar": 42
+      },
+      "revId": "a3ee4aadce16fa271b77793af127a3645de44ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

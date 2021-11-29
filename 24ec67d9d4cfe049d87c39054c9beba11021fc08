@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7303c2c8_f0bcfcd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-29T16:16:27Z",
+      "side": 1,
+      "message": "You are right. That\u0027s exactly why I revised my implementation. Originally, I saw the file in `$ANDROID_PRODUCT_OUT/apex`, but I then found that it was not packed into the APEX.\n\nThis time I got it right because I see the file on device when I run Cuttlefish (please see the third test).",
+      "parentUuid": "3bad3445_62822436",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "24ec67d9d4cfe049d87c39054c9beba11021fc08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "77f5cee1_a63dfbf5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "776f1892_97efd423",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2162,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-29T16:16:27Z",
+      "side": 1,
+      "message": "There are some tests where a mock profile is not provided because they are not testing the profile but something else. Throwing an error will cause those tests to fail.",
+      "parentUuid": "96ddd898_1559ac35",
+      "range": {
+        "startLine": 2162,
+        "startChar": 4,
+        "endLine": 2162,
+        "endChar": 15
+      },
+      "revId": "24ec67d9d4cfe049d87c39054c9beba11021fc08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "218c0317_ab74a84b",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-11-29T15:56:39Z",
       "side": 1,
       "message": "Do away with this alias? It has a few calls, but they\u0027re all in this file.",
+      "range": {
+        "startLine": 108,
+        "startChar": 5,
+        "endLine": 108,
+        "endChar": 30
+      },
+      "revId": "24ec67d9d4cfe049d87c39054c9beba11021fc08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73fa221_65561fc1",
+        "filename": "dexpreopt/testing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-11-29T16:16:27Z",
+      "side": 1,
+      "message": "I think it\u0027s good to have this alias because all calls except the new one don\u0027t need a PathContext.",
+      "parentUuid": "218c0317_ab74a84b",
       "range": {
         "startLine": 108,
         "startChar": 5,
