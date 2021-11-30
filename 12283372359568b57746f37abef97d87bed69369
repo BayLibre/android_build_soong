@@ -52,6 +52,24 @@
       "parentUuid": "d4cbe525_e24e56a8",
       "revId": "12283372359568b57746f37abef97d87bed69369",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d89aab1_9d04ceb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-11-30T22:11:10Z",
+      "side": 1,
+      "message": "What is the fix you\u0027re thinking of doing at envsetup.rbc:155? Just making it compare against an empty string? That seems like a hack and will only delay the problem until later on.\n\nCurrently I\u0027ve only come across the TARGET_BUILD_APPS scenario, I don\u0027t know of others of the top of my head. But it\u0027s clearly a deficiency in the current code, and deserves to be fixed properly even if we don\u0027t have any other issues with it at the moment.\n\nOne alternative way I could think to fix this would be to get rid of the rblf_cli and rblf_env variables, thus requiring input variables to be passed in via a separate file like how board config does it. Then mk2rbc will handle making them the correct types. What do you think about that? Or do you have another method?",
+      "parentUuid": "825c1b18_70933444",
+      "revId": "12283372359568b57746f37abef97d87bed69369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
