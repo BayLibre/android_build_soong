@@ -196,6 +196,17 @@ func (a *AndroidApp) JniCoverageOutputs() android.Paths {
 	return a.jniCoverageOutputs
 }
 
+func (a *AndroidApp) TargetSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	// target_sdk_version defaults to FutureApiLevel if TARGET_BUILD_APPS is set
+	if ctx.Config().UnbundledBuildApps() {
+		return android.SdkSpecPrivate
+	}
+	if a.deviceProperties.Target_sdk_version != nil {
+		return android.SdkSpecFrom(ctx, *a.deviceProperties.Target_sdk_version)
+	}
+	return a.SdkVersion(ctx)
+}
+
 var _ AndroidLibraryDependency = (*AndroidApp)(nil)
 
 type Certificate struct {
