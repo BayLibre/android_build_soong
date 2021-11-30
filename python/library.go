@@ -21,6 +21,7 @@ import (
 
 	"android/soong/android"
 	"android/soong/bazel"
+
 	"github.com/google/blueprint/proptools"
 )
 
@@ -95,8 +96,8 @@ func pythonLibBp2Build(ctx android.TopDownMutatorContext, modType string) {
 	}
 
 	props := bazel.BazelTargetModuleProperties{
-		// Use the native py_library rule.
-		Rule_class: "py_library",
+		Rule_class:        "py_library",
+		Bzl_load_location: "//build/bazel/rules/python:library.bzl",
 	}
 
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{
