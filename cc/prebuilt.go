@@ -197,7 +197,11 @@ func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 	if p.header() {
 		ctx.SetProvider(HeaderLibraryInfoProvider, HeaderLibraryInfo{})
 
-		return nil
+		// Need to return an output path so that the AndroidMk logic doesn't skip
+		// the prebuilt header. Just like the output file for a non-prebuilt header
+		// module it's not actually used, so doesn't need to point to an existing
+		// file.
+		return android.PathForModuleOut(ctx, ctx.ModuleName()+"_placeholder")
 	}
 
 	return nil

@@ -47,6 +47,20 @@ func TestLibraryHeaders(t *testing.T) {
 			if !strings.Contains(cflags, " -Imy_include ") {
 				t.Errorf("cflags for libsystem must contain -Imy_include, but was %#v.", cflags)
 			}
+
+			// Test that there's a valid AndroidMk entry.
+			headers := ctx.ModuleForTests("headers", "android_arm64_armv8-a").Module()
+			e := android.AndroidMkEntriesForTest(t, ctx, headers)[0]
+
+			// This duplicates the tests done in AndroidMkEntries.write. It would be
+			// better to test its output, but there are no test functions that capture that.
+			android.AssertBoolEquals(t, "AndroidMkEntries.Disabled", false, e.Disabled)
+			android.AssertBoolEquals(t, "AndroidMkEntries.OutputFile.Valid()", true, e.OutputFile.Valid())
+
+			cflags = " " + strings.Join(e.EntryMap["LOCAL_EXPORT_CFLAGS"], " ") + " "
+			if !strings.Contains(cflags, " -Imy_include ") {
+				t.Errorf("AndroidMkEntries for header module doesn't export -Imy_include, got: %s", cflags)
+			}
 		})
 	}
 }
