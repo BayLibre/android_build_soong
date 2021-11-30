@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9b00c63_bdffb99d",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 863,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-30T22:12:58Z",
+      "side": 1,
+      "message": "We\u0027ve generally avoided changing the rules based on whether the app is in TARGET_BUILD_APPS, and instead changed the rules for all apps when TARGET_BUILD_APPS is set.  The list of apps is only used to set the default build modules if nothing is specified on the command line and to add dependencies for creating the dist artifacts.",
+      "revId": "94192842bd46b71493c6da4786249c332592665b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
