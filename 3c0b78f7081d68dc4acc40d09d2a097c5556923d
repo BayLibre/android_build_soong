@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b788cf1_995c9cdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-30T12:05:10Z",
+      "side": 1,
+      "message": "Only nits left, modulo the $(sort $^) part, but I don\u0027t want to make you wait another day to submit this.",
+      "revId": "3c0b78f7081d68dc4acc40d09d2a097c5556923d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01b17084_5979814f",
+        "filename": "java/androidmk.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-30T12:05:10Z",
+      "side": 1,
+      "message": "nit: \"is the concatenation of?\"",
+      "range": {
+        "startLine": 600,
+        "startChar": 45,
+        "endLine": 600,
+        "endChar": 50
+      },
+      "revId": "3c0b78f7081d68dc4acc40d09d2a097c5556923d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b510fb4_08a3d673",
+        "filename": "java/androidmk.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-30T12:05:10Z",
+      "side": 1,
+      "message": "nit: appends?",
+      "range": {
+        "startLine": 605,
+        "startChar": 24,
+        "endLine": 605,
+        "endChar": 28
+      },
+      "revId": "3c0b78f7081d68dc4acc40d09d2a097c5556923d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f72d789f_057e7d89",
+        "filename": "java/androidmk.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-30T12:05:10Z",
+      "side": 1,
+      "message": "In what order will the files be listed? How about doing $(sort $^) instead to make this very explicitly deterministic?",
+      "range": {
+        "startLine": 606,
+        "startChar": 68,
+        "endLine": 606,
+        "endChar": 70
+      },
+      "revId": "3c0b78f7081d68dc4acc40d09d2a097c5556923d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89dd6933_b11a5df2",
+        "filename": "java/androidmk.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-30T12:05:10Z",
+      "side": 1,
+      "message": "Oh wow, this is tricky. May I recommend adding this comment to somewhere convenient (or something that\u0027s written in better English):\n\n\"\nEach API module adds a dependency from the Make target representing the single global update API script (dstubs.globalUpdateCurrentApiScript) on the individual API update script. \n\nThen, when the global update API script Make rule is run, $^ will be set to the list of every update API script, collected from the individually-written dependency edge declarations.\n\"",
+      "range": {
+        "startLine": 608,
+        "startChar": 5,
+        "endLine": 608,
+        "endChar": 102
+      },
+      "revId": "3c0b78f7081d68dc4acc40d09d2a097c5556923d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d51f1085_e459f50b",
+        "filename": "scripts/gen-update-api-script.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-30T12:05:10Z",
+      "side": 1,
+      "message": "nit: read-only? (this English, not Java :) )",
+      "range": {
+        "startLine": 6,
+        "startChar": 67,
+        "endLine": 6,
+        "endChar": 75
+      },
+      "revId": "3c0b78f7081d68dc4acc40d09d2a097c5556923d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

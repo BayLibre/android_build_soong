@@ -117,6 +117,30 @@
       },
       "revId": "19adabff0cb960c73f479790ee8df2ab1a5f4026",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a72a2212_efb98d22",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-11-30T12:05:10Z",
+      "side": 1,
+      "message": "Sgtm. I mean, it didn\u0027t end up being a \"single-line\" shell script, but philosophically, it is :)",
+      "parentUuid": "da59d9c7_bc0ab32f",
+      "range": {
+        "startLine": 752,
+        "startChar": 2,
+        "endLine": 752,
+        "endChar": 17
+      },
+      "revId": "19adabff0cb960c73f479790ee8df2ab1a5f4026",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
