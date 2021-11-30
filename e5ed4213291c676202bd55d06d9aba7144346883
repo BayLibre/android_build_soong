@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ecffb9f_b7816a8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-11-30T19:04:58Z",
+      "side": 1,
+      "message": "Colin, Stephen, I have rebased and tested the the latest change.\nThe new _subset phony targets are simple and worked well to discover several existing checkbuild compilation errors now. \nCould you please take a look again?\nThanks.\n",
+      "revId": "e5ed4213291c676202bd55d06d9aba7144346883",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

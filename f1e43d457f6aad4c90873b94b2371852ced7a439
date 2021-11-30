@@ -70,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c9016b2_e4da18c4",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1876,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-11-30T19:04:58Z",
+      "side": 1,
+      "message": "I hope the new tidy-*_subset target implementation has showed that collecting such phony targets are simpler in module.go than in cc singleton.",
+      "parentUuid": "a93d8418_dd6dc78e",
+      "revId": "f1e43d457f6aad4c90873b94b2371852ced7a439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09932573_9fe8c8c1",
