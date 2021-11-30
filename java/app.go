@@ -196,6 +196,27 @@ func (a *AndroidApp) JniCoverageOutputs() android.Paths {
 	return a.jniCoverageOutputs
 }
 
+func (a *AndroidApp) TargetSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
+	sdkSpecPrivate := &android.SdkSpecPrivate
+	var targetSdkSpecFromUser *android.SdkSpec
+	if a.deviceProperties.Target_sdk_version != nil {
+		tmp := android.SdkSpecFrom(ctx, *a.deviceProperties.Target_sdk_version)
+		targetSdkSpecFromUser = &tmp
+	}
+	// target_sdk_version defaults to FutureApiLevel if TARGET_BUILD_APPS is set
+	// If a different target_sdk_version is defined in the app's Android.bp, an exception will be raised
+	if ctx.Config().UnbundledBuildApps() {
+		if targetSdkSpecFromUser != nil && !targetSdkSpecFromUser.ApiLevel.EqualTo(sdkSpecPrivate.ApiLevel) {
+			ctx.PropertyErrorf("target_sdk_version", "TARGET_BUILD_APPS is non-empty, therefore app %s cannot use target_sdk_version %s", a.Name(), targetSdkSpecFromUser.ApiLevel)
+		}
+		return *sdkSpecPrivate
+	}
+	if targetSdkSpecFromUser != nil {
+		return *targetSdkSpecFromUser
+	}
+	return a.SdkVersion(ctx)
+}
+
 var _ AndroidLibraryDependency = (*AndroidApp)(nil)
 
 type Certificate struct {
