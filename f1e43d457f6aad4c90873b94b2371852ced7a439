@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83ac021c_b935fb78",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1876,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-11-30T23:58:10Z",
+      "side": 1,
+      "message": "This looks pretty good, but I think you can put everything you added into a new singleton in cc.  You may need export some methods from the android package, for example addAncestors.",
+      "parentUuid": "7c9016b2_e4da18c4",
+      "revId": "f1e43d457f6aad4c90873b94b2371852ced7a439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09932573_9fe8c8c1",
         "filename": "android/mutator.go",
         "patchSetId": 5
