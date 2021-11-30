@@ -859,6 +859,11 @@ func (c *config) UnbundledBuildApps() bool {
 	return len(c.productVariables.Unbundled_build_apps) > 0
 }
 
+// Returns true if TARGET_BUILD_APPS contains (app)name
+func (c *config) AppIsUnbundled(name string) bool {
+	return InList(name, c.productVariables.Unbundled_build_apps)
+}
+
 // Returns true if building image that aren't bundled with the platform.
 // UnbundledBuild() is always true when this is true.
 func (c *config) UnbundledBuildImage() bool {

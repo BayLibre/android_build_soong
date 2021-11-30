@@ -2873,3 +2873,74 @@ func TestExportedProguardFlagFiles(t *testing.T) {
 		t.Errorf("App does not use library proguard config")
 	}
 }
+
+func TestTargetSdkVersion(t *testing.T) {
+	testCases := []struct {
+		name            string
+		bp              string
+		targetBuildApps []string
+		expectedError   string
+	}{
+		{
+			name: "TARGET_BUILD_APPS is empty",
+			bp: `
+			android_app {
+				name: "foo",
+				sdk_version: "current",
+				target_sdk_version: "31",
+			}
+			`,
+			targetBuildApps: []string{},
+			expectedError:   "",
+		},
+		{
+			name: "app not in non-empty TARGET_BUILD_APPS",
+			bp: `
+			android_app {
+				name: "foo",
+				sdk_version: "current",
+				target_sdk_version: "31",
+			}
+			`,
+			targetBuildApps: []string{"bar"},
+			expectedError:   "",
+		},
+		{
+			name: "app in TARGET_BUILD_APPS, empty target_sdk_version",
+			bp: `
+			android_app {
+				name: "foo",
+				sdk_version: "current",
+			}
+			`,
+			targetBuildApps: []string{"foo"},
+			expectedError:   "",
+		},
+		{
+			name: "app in TARGET_BUILD_APPS, incompatible target_sdk_version",
+			bp: `
+			android_app {
+				name: "foo",
+				sdk_version: "current",
+				target_sdk_version: "31",
+			}
+			`,
+			targetBuildApps: []string{"foo"},
+			expectedError:   "app foo found in TARGET_BUILD_APPS, therefore cannot use target_sdk_version",
+		},
+	}
+	for _, testCase := range testCases {
+		t.Run(testCase.name, func(t *testing.T) {
+			errorHandler := android.FixtureExpectsNoErrors
+			if testCase.expectedError != "" {
+				errorHandler = android.FixtureExpectsAtLeastOneErrorMatchingPattern(testCase.expectedError)
+			}
+			android.GroupFixturePreparers(
+				prepareForJavaTest,
+				android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+					variables.Unbundled_build_apps = testCase.targetBuildApps
+				}),
+			).ExtendWithErrorHandler(errorHandler).RunTestWithBp(t, testCase.bp)
+		})
+	}
+}
