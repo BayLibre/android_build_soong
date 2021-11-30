@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cdddc5d_a05ae289",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-11-30T16:34:03Z",
+      "side": 1,
+      "message": "I\u0027m wary of adding things to the mixed build denylist in general as a solution, as then anything that depends on these must also be mixed build denylisted. In this case, this means that proto support must also be mixed build denylisted.\n\nThat said, this perhaps unblocks Liz from initial \"does it compile in standalone?\" testing for protos, so we can do this as a shortlived change.",
+      "revId": "d480859cee44c22c71b438a43a2e1d94821a80f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
