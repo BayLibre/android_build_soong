@@ -84,11 +84,10 @@ func initClasspathFragment(c classpathFragment, classpathType classpathType) {
 
 // Matches definition of Jar in packages/modules/SdkExtensions/proto/classpaths.proto
 type classpathJar struct {
-	path      string
-	classpath classpathType
-	// TODO(satayev): propagate min/max sdk versions for the jars
-	minSdkVersion int32
-	maxSdkVersion int32
+	path          string
+	classpath     classpathType
+	minSdkVersion string
+	maxSdkVersion string
 }
 
 // gatherPossibleApexModuleNamesAndStems returns a set of module and stem names from the
@@ -120,10 +119,23 @@ func configuredJarListToClasspathJars(ctx android.ModuleContext, configuredJars 
 	jars := make([]classpathJar, 0, len(paths)*len(classpaths))
 	for i := 0; i < len(paths); i++ {
 		for _, classpathType := range classpaths {
-			jars = append(jars, classpathJar{
+			jar := classpathJar{
 				classpath: classpathType,
 				path:      paths[i],
+			}
+			ctx.VisitDirectDepsIf(func(m android.Module) bool {
+				return m.Name() == configuredJars.Jar(i)
+			}, func(m android.Module) {
+				if s, ok := m.(*SdkLibrary); ok {
+					if s.minSdkVersion.Specified() {
+						jar.minSdkVersion = s.minSdkVersion.ApiLevel.String()
+					}
+					if s.maxSdkVersion.Specified() {
+						jar.maxSdkVersion = s.maxSdkVersion.ApiLevel.String()
+					}
+				}
 			})
+			jars = append(jars, jar)
 		}
 	}
 	return jars
@@ -161,13 +173,22 @@ func (c *ClasspathFragmentBase) generateClasspathProtoBuildActions(ctx android.M
 
 func writeClasspathsJson(ctx android.ModuleContext, output android.WritablePath, jars []classpathJar) {
 	var content strings.Builder
+
 	fmt.Fprintf(&content, "{\n")
 	fmt.Fprintf(&content, "\"jars\": [\n")
 	for idx, jar := range jars {
 		fmt.Fprintf(&content, "{\n")
 
 		fmt.Fprintf(&content, "\"path\": \"%s\",\n", jar.path)
-		fmt.Fprintf(&content, "\"classpath\": \"%s\"\n", jar.classpath)
+		fmt.Fprintf(&content, "\"classpath\": \"%s\",\n", jar.classpath)
+		fmt.Fprintf(&content, "\"minSdkVersion\": \"%s\"", jar.minSdkVersion)
+
+		if jar.maxSdkVersion != "" {
+			fmt.Fprintf(&content, ",\n")
+			fmt.Fprintf(&content, "\"maxSdkVersion\": \"%s\"\n", jar.maxSdkVersion)
+		} else {
+			fmt.Fprintf(&content, "\n")
+		}
 
 		if idx < len(jars)-1 {
 			fmt.Fprintf(&content, "},\n")
