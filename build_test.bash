@@ -50,7 +50,7 @@ esac
 
 echo
 echo "Free disk space:"
-df -h
+df -h || true
 
 echo
 echo "Running Bazel smoke test..."
