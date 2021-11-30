@@ -197,7 +197,15 @@ func (p *prebuiltLibraryLinker) link(ctx ModuleContext,
 	if p.header() {
 		ctx.SetProvider(HeaderLibraryInfoProvider, HeaderLibraryInfo{})
 
-		return nil
+		// Need to return an output path so that the AndroidMk logic doesn't skip
+		// the prebuilt header. Like the output file for a non-prebuilt header
+		// module (which is just an empty ar file), it's not actually used.
+		ph := android.PathForModuleOut(ctx, ctx.ModuleName()+"_placeholder")
+		ctx.Build(pctx, android.BuildParams{
+			Rule:   android.Touch,
+			Output: ph,
+		})
+		return ph
 	}
 
 	return nil
