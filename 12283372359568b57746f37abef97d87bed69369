@@ -34,6 +34,24 @@
       "parentUuid": "11da0d2b_bc426049",
       "revId": "12283372359568b57746f37abef97d87bed69369",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "825c1b18_70933444",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-11-30T21:39:10Z",
+      "side": 1,
+      "message": "If this is solely  about TARGET_BUILD_APPS variable, it\u0027s easy to fix at envsetup.rbc:155. Are there more cases like that?",
+      "parentUuid": "d4cbe525_e24e56a8",
+      "revId": "12283372359568b57746f37abef97d87bed69369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
