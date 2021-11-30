@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f0acadf_5c66a78f",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-11-30T18:59:51Z",
+      "side": 1,
+      "message": "I went with this approach since non-prebuilt header modules produce AndroidMk entries with phony output files like this:\n\n  LOCAL_PREBUILT_MODULE_FILE :\u003d out/soong/.intermediates/libnativehelper/jni_headers/linux_glibc_x86_64/jni_headers.a\n\nWhere these .a files don\u0027t actually exist. Maybe that\u0027s something that should be cleaned up, but that\u0027s out of scope. This way prebuilt header modules behave more like their source counterparts so things like the tests in AndroidMkEntries.write() work for both.",
+      "range": {
+        "startLine": 201,
+        "startChar": 26,
+        "endLine": 202,
+        "endChar": 11
+      },
+      "revId": "a62eba03a142d394e3abfe59e7118996c2fa1ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
