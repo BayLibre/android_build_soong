@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c22471a_35f4fa5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-01T02:19:21Z",
+      "side": 1,
+      "message": "Could you set this and https://android-review.googlesource.com/c/platform/build/bazel/+/1901172 to be the same Gerrit topic so that they are batched on Gerrit and submitted together?",
+      "revId": "21b57532be3a4473234aa7d85842c9978c251475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
