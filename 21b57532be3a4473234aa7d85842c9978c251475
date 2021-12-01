@@ -16,6 +16,23 @@
       "message": "Could you set this and https://android-review.googlesource.com/c/platform/build/bazel/+/1901172 to be the same Gerrit topic so that they are batched on Gerrit and submitted together?",
       "revId": "21b57532be3a4473234aa7d85842c9978c251475",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57535bfe_8ad5070f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-01T02:20:35Z",
+      "side": 1,
+      "message": "Please add a test to https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/sh_conversion_test.go to assert that the filename and sub_dir props are translated correctly to Bazel attributes.",
+      "revId": "21b57532be3a4473234aa7d85842c9978c251475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
