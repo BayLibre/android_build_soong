@@ -208,8 +208,9 @@ func ParseGlobalConfig(ctx android.PathContext, data []byte) (*GlobalConfig, err
 }
 
 type globalConfigAndRaw struct {
-	global *GlobalConfig
-	data   []byte
+	global     *GlobalConfig
+	data       []byte
+	pathErrors []error
 }
 
 // GetGlobalConfig returns the global dexpreopt.config that's created in the
@@ -218,7 +219,25 @@ type globalConfigAndRaw struct {
 // ctx.Config(). A value can be inserted for tests using
 // setDexpreoptTestGlobalConfig.
 func GetGlobalConfig(ctx android.PathContext) *GlobalConfig {
-	return getGlobalConfigRaw(ctx).global
+	config := getGlobalConfigRaw(ctx)
+
+	// Avoid non-deterministic errors by reporting cached path errors on all callers.
+	for _, err := range config.pathErrors {
+		if ctx.Config().AllowMissingDependencies() {
+			// When AllowMissingDependencies it set, report errors through AddMissingDependencies.
+			// If AddMissingDependencies doesn't exist on the current context (for exmaple when
+			// called with a SingletonContext), just swallow the errors sincee there is no way to
+			// report them.
+			if missingDepsCtx, ok := ctx.(interface {
+				AddMissingDependencies(missingDeps []string)
+			}); ok {
+				missingDepsCtx.AddMissingDependencies([]string{err.Error()})
+			}
+		} else {
+			android.ReportPathErrorf(ctx, "%w", err)
+		}
+	}
+	return config.global
 }
 
 // GetGlobalConfigRawData is the same as GetGlobalConfig, except that it returns
@@ -230,16 +249,26 @@ func GetGlobalConfigRawData(ctx android.PathContext) []byte {
 var globalConfigOnceKey = android.NewOnceKey("DexpreoptGlobalConfig")
 var testGlobalConfigOnceKey = android.NewOnceKey("TestDexpreoptGlobalConfig")
 
+type pathContextErrorCollector struct {
+	android.PathContext
+	errors []error
+}
+
+func (p *pathContextErrorCollector) Errorf(format string, args ...interface{}) {
+	p.errors = append(p.errors, fmt.Errorf(format, args...))
+}
+
 func getGlobalConfigRaw(ctx android.PathContext) globalConfigAndRaw {
 	return ctx.Config().Once(globalConfigOnceKey, func() interface{} {
 		if data, err := ctx.Config().DexpreoptGlobalConfig(ctx); err != nil {
 			panic(err)
 		} else if data != nil {
-			globalConfig, err := ParseGlobalConfig(ctx, data)
+			pathErrorCollectorCtx := &pathContextErrorCollector{PathContext: ctx}
+			globalConfig, err := ParseGlobalConfig(pathErrorCollectorCtx, data)
 			if err != nil {
 				panic(err)
 			}
-			return globalConfigAndRaw{globalConfig, data}
+			return globalConfigAndRaw{globalConfig, data, pathErrorCollectorCtx.errors}
 		}
 
 		// No global config filename set, see if there is a test config set
@@ -249,7 +278,7 @@ func getGlobalConfigRaw(ctx android.PathContext) globalConfigAndRaw {
 				DisablePreopt:           true,
 				DisablePreoptBootImages: true,
 				DisableGenerateProfile:  true,
-			}, nil}
+			}, nil, nil}
 		})
 	}).(globalConfigAndRaw)
 }
@@ -258,7 +287,7 @@ func getGlobalConfigRaw(ctx android.PathContext) globalConfigAndRaw {
 // will return. It must be called before the first call to GetGlobalConfig for
 // the config.
 func SetTestGlobalConfig(config android.Config, globalConfig *GlobalConfig) {
-	config.Once(testGlobalConfigOnceKey, func() interface{} { return globalConfigAndRaw{globalConfig, nil} })
+	config.Once(testGlobalConfigOnceKey, func() interface{} { return globalConfigAndRaw{globalConfig, nil, nil} })
 }
 
 // This struct is required to convert ModuleConfig from/to JSON.
