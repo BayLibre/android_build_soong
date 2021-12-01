@@ -88,6 +88,24 @@
       "parentUuid": "8d89aab1_9d04ceb9",
       "revId": "12283372359568b57746f37abef97d87bed69369",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb18bf83_f44f19f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-01T22:15:46Z",
+      "side": 1,
+      "message": "Ok, switched to my other proposal. See aosp/1908370 and the other cl in it\u0027s topic.",
+      "parentUuid": "e7e3ce84_40e5f8a9",
+      "revId": "12283372359568b57746f37abef97d87bed69369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
