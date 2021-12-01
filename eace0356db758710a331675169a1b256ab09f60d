@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffd9e92d_9b8038e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-01T16:25:49Z",
+      "side": 1,
+      "message": "No problem, thanks for the review.",
+      "parentUuid": "36df2084_f9f264ed",
+      "revId": "eace0356db758710a331675169a1b256ab09f60d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "063a3086_73163bde",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-12-01T07:58:28Z",
       "side": 1,
       "message": "nit: maybe add a comment about why this is necessary (something like \"df fails on gvfsd file systems and df is only called for informational purposes\")?",
+      "range": {
+        "startLine": 53,
+        "startChar": 6,
+        "endLine": 53,
+        "endChar": 13
+      },
+      "revId": "eace0356db758710a331675169a1b256ab09f60d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9058a344_0b8c96fc",
+        "filename": "build_test.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-01T16:25:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "063a3086_73163bde",
       "range": {
         "startLine": 53,
         "startChar": 6,
