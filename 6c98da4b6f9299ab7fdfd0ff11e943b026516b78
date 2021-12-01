@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a674c3e_2e050d6e",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-12-01T17:59:52Z",
+      "side": 1,
+      "message": "aosp/Ic80330413c35f16d274fef721ff908f1fe380e55 we\u0027ve changed the type in classpaths.proto to support codenames. This just reflects that.",
+      "parentUuid": "40b10f60_5239fd07",
+      "revId": "6c98da4b6f9299ab7fdfd0ff11e943b026516b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d86166c1_a5f90f83",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f466c43_0431149e",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-12-01T17:59:52Z",
+      "side": 1,
+      "message": "Moved this to Config.",
+      "parentUuid": "d86166c1_a5f90f83",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 6
+      },
+      "revId": "6c98da4b6f9299ab7fdfd0ff11e943b026516b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2704c88_77c570dc",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-12-01T13:43:11Z",
       "side": 1,
       "message": "Do we create lots of JSON files in Soong? If so it might be worth providing an abstract for it that handles the formatting as this is quite error prone.\n\nSomething to consider for later not needed as part of this change.",
+      "revId": "6c98da4b6f9299ab7fdfd0ff11e943b026516b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a47cd54d_e9e30f0c",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-12-01T17:59:52Z",
+      "side": 1,
+      "message": "Not that I am aware of. Ideally, I\u0027d want this to not even use JSON as intermediate file, and instead use textproto format. I had some problems with that before, maybe I can switch this now... I\u0027ll try in a follow up.",
+      "parentUuid": "a2704c88_77c570dc",
       "revId": "6c98da4b6f9299ab7fdfd0ff11e943b026516b78",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

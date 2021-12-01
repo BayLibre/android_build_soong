@@ -16,6 +16,24 @@
       "message": "Why did you remove this?",
       "revId": "2e5efb938a96599e63da3abc7b5b73008b38c8a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec858003_36c5caad",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-12-01T17:59:52Z",
+      "side": 0,
+      "message": "It\u0027s outdated now, and I think it just got merged here. APEX boot jars now go into their own fragments.",
+      "parentUuid": "1413a3e5_5df93f68",
+      "revId": "2e5efb938a96599e63da3abc7b5b73008b38c8a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
