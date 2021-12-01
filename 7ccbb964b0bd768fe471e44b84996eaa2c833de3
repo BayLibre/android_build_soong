@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa777b5e_524270aa",
+        "filename": "cc/library_headers_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-01T15:21:32Z",
+      "side": 1,
+      "message": "AssertStringDoesNotContain(t, \"cFlags\", cflags, \" -Imy_include \")",
+      "revId": "7ccbb964b0bd768fe471e44b84996eaa2c833de3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
