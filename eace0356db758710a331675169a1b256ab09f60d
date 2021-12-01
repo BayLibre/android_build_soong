@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bb7b766_065bbc55",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2021-12-01T07:59:32Z",
+      "side": 1,
+      "message": "FYI: This seems to be https://bugs.launchpad.net/ubuntu/+source/xdg-desktop-portal/+bug/1905623 ",
+      "revId": "eace0356db758710a331675169a1b256ab09f60d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "063a3086_73163bde",
