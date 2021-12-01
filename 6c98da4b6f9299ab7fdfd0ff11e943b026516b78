@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40b10f60_5239fd07",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-01T13:43:11Z",
+      "side": 1,
+      "message": "Why is this a string instead of an int32?",
+      "revId": "6c98da4b6f9299ab7fdfd0ff11e943b026516b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d86166c1_a5f90f83",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-01T13:43:11Z",
+      "side": 1,
+      "message": "Is this something that can be done once in config and cached? e.g. Config().LatestPreviewApiLevel()",
+      "range": {
+        "startLine": 131,
+        "startChar": 5,
+        "endLine": 136,
+        "endChar": 6
+      },
+      "revId": "6c98da4b6f9299ab7fdfd0ff11e943b026516b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2704c88_77c570dc",
+        "filename": "java/classpath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-01T13:43:11Z",
+      "side": 1,
+      "message": "Do we create lots of JSON files in Soong? If so it might be worth providing an abstract for it that handles the formatting as this is quite error prone.\n\nSomething to consider for later not needed as part of this change.",
+      "revId": "6c98da4b6f9299ab7fdfd0ff11e943b026516b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

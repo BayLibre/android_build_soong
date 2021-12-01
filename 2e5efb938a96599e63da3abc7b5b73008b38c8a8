@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1413a3e5_5df93f68",
+        "filename": "java/platform_bootclasspath.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-01T13:43:11Z",
+      "side": 0,
+      "message": "Why did you remove this?",
+      "revId": "2e5efb938a96599e63da3abc7b5b73008b38c8a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
