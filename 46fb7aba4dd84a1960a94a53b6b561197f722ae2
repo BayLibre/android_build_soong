@@ -22,6 +22,30 @@
       },
       "revId": "46fb7aba4dd84a1960a94a53b6b561197f722ae2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6510e9b0_b38e3c54",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-01T15:46:17Z",
+      "side": 1,
+      "message": "it causes a bunch of \"\" everywhere, not sure it provides any value we can\u0027t get with the pointer",
+      "parentUuid": "8d1edc07_c2cf7d80",
+      "range": {
+        "startLine": 275,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 25
+      },
+      "revId": "46fb7aba4dd84a1960a94a53b6b561197f722ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
