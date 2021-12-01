@@ -63,6 +63,24 @@
       "message": "It\u0027s not clear to me how this will handle an \"\". As I recall it will return SdkSpecPrivate. Is that what you want? If so I think it should be documented here as it is not obvious.\n\nAlso, it should probably have tests too for a similar reason.",
       "revId": "2e5efb938a96599e63da3abc7b5b73008b38c8a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa85e728_f9c7a75b",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-12-01T17:50:34Z",
+      "side": 1,
+      "message": "We chatted a bit about this... But I think we\u0027ll have to go with SdkSpecPrivate here for now.\n\nWhat I really want is for min_sdk_version and max_sdk_version to be ApiLevel and not SdkSpec. That\u0027s b/208456999.\n\nIn the absence of that, the next best thing is SdkSpec{SdkNone, FutureApiLevel, \"\"}. But I think naming this and having a new raw string for that is going to add confusion. Is it \"future\" or \"current\" or \"unbounded\"?\n\nGiven that the only use case for max_sdk_version today doesn\u0027t care about SdkKind, it is fine to re-use SdkSpecPrivate for now?",
+      "parentUuid": "d07624ae_c72fc621",
+      "revId": "2e5efb938a96599e63da3abc7b5b73008b38c8a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
