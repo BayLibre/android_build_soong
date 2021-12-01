@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "66df4c3c_0aa3939f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-01T12:24:22Z",
+      "side": 1,
+      "message": "Something is broken.",
+      "revId": "a62eba03a142d394e3abfe59e7118996c2fa1ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9f0acadf_5c66a78f",
         "filename": "cc/prebuilt.go",
         "patchSetId": 1
