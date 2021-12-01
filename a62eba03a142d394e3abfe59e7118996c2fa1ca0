@@ -39,6 +39,30 @@
       },
       "revId": "a62eba03a142d394e3abfe59e7118996c2fa1ca0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d86c67e_6d7b9063",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-01T12:25:56Z",
+      "side": 1,
+      "message": "Based on the build failure I think you will need a rule to create this.",
+      "parentUuid": "9f0acadf_5c66a78f",
+      "range": {
+        "startLine": 201,
+        "startChar": 26,
+        "endLine": 202,
+        "endChar": 11
+      },
+      "revId": "a62eba03a142d394e3abfe59e7118996c2fa1ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
