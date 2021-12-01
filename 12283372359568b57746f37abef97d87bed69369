@@ -70,6 +70,24 @@
       "parentUuid": "825c1b18_70933444",
       "revId": "12283372359568b57746f37abef97d87bed69369",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7e3ce84_40e5f8a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-12-01T18:18:57Z",
+      "side": 1,
+      "message": "IMHO at the moment the keys with empty values in the dictionaries returned by rblf_cli/rblf_env can be treated as non-existent. Once we find the cases where a non-string variable is set, I prefer to use your last proposal.",
+      "parentUuid": "8d89aab1_9d04ceb9",
+      "revId": "12283372359568b57746f37abef97d87bed69369",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
