@@ -63,6 +63,30 @@
       },
       "revId": "a62eba03a142d394e3abfe59e7118996c2fa1ca0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "619fc3a0_69494b40",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-01T16:11:41Z",
+      "side": 1,
+      "message": "Yes.\n\nFTR, the corresponding file for non-prebuilt header modules is a dummy static lib without contents, created here: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/library.go;l\u003d1299;drc\u003d79bd2b7761198f38a5d50af1ad7eca972d688717",
+      "parentUuid": "0d86c67e_6d7b9063",
+      "range": {
+        "startLine": 201,
+        "startChar": 26,
+        "endLine": 202,
+        "endChar": 11
+      },
+      "revId": "a62eba03a142d394e3abfe59e7118996c2fa1ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
