@@ -81,6 +81,24 @@
       "parentUuid": "d07624ae_c72fc621",
       "revId": "2e5efb938a96599e63da3abc7b5b73008b38c8a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b4b0159_1331a24a",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-02T14:49:28Z",
+      "side": 1,
+      "message": "It\u0027s ok for now. If it does not care about kind then maybe use ApiLevel instead of SdkSpec.",
+      "parentUuid": "aa85e728_f9c7a75b",
+      "revId": "2e5efb938a96599e63da3abc7b5b73008b38c8a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
