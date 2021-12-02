@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd1a695a_e01b6ea2",
+        "filename": "android/proto.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-02T19:55:40Z",
+      "side": 1,
+      "message": "added a comment.",
+      "parentUuid": "3103bcfc_765a6a50",
+      "range": {
+        "startLine": 191,
+        "startChar": 5,
+        "endLine": 192,
+        "endChar": 38
+      },
+      "revId": "e208f54e0121f776ac71ddcd2810f420862da5e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3df4e4b2_5cc7ce86",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ff3f110_53ba20e0",
+        "filename": "bazel/properties.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-02T19:55:40Z",
+      "side": 1,
+      "message": "I believe our godocs generally follow a format of \"function name does blah\". -- reworded.",
+      "parentUuid": "3df4e4b2_5cc7ce86",
+      "range": {
+        "startLine": 110,
+        "startChar": 7,
+        "endLine": 110,
+        "endChar": 15
+      },
+      "revId": "e208f54e0121f776ac71ddcd2810f420862da5e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b0ae018_0660fa96",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-02T14:47:20Z",
       "side": 1,
       "message": "godoc?",
+      "range": {
+        "startLine": 522,
+        "startChar": 31,
+        "endLine": 522,
+        "endChar": 34
+      },
+      "revId": "e208f54e0121f776ac71ddcd2810f420862da5e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7dffb7b_e5fb1c2d",
+        "filename": "bazel/properties.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-02T19:55:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b0ae018_0660fa96",
       "range": {
         "startLine": 522,
         "startChar": 31,
@@ -95,6 +167,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b8a690f3_7bb39e8b",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-02T19:55:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf264d7b_9e2c4218",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 9
+      },
+      "revId": "e208f54e0121f776ac71ddcd2810f420862da5e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "d6896f91_5663c67d",
         "filename": "bp2build/cc_binary_conversion_test.go",
         "patchSetId": 6
@@ -106,6 +202,30 @@
       "writtenOn": "2021-12-02T14:47:20Z",
       "side": 1,
       "message": "tbh, I find this harder to read than literal BUILD definitions.",
+      "range": {
+        "startLine": 465,
+        "startChar": 3,
+        "endLine": 472,
+        "endChar": 6
+      },
+      "revId": "e208f54e0121f776ac71ddcd2810f420862da5e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86da08a8_93f01e19",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-02T19:55:40Z",
+      "side": 1,
+      "message": "can adjust the formatting for these specifically if there are other cases that work for you, but in general, was trying to address difficulties with refactoring or renaming attributes. Open to other suggestions for making our tests more readable and easier to maintain.",
+      "parentUuid": "d6896f91_5663c67d",
       "range": {
         "startLine": 465,
         "startChar": 3,
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc6874c_a6cb40b8",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-02T19:55:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d11fc10a_8b198271",
+      "range": {
+        "startLine": 200,
+        "startChar": 20,
+        "endLine": 200,
+        "endChar": 86
+      },
+      "revId": "e208f54e0121f776ac71ddcd2810f420862da5e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5626e352_33d13a89",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-12-02T14:47:20Z",
       "side": 1,
       "message": "It\u0027s not clear reading this that the control flow in bp2buildProto causes only at most one of these two lines to take effect based on export_proto_headers. Can you make it clearer here that the protoDep doesn\u0027t get added to both attributes?",
+      "range": {
+        "startLine": 472,
+        "startChar": 1,
+        "endLine": 473,
+        "endChar": 89
+      },
+      "revId": "e208f54e0121f776ac71ddcd2810f420862da5e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce77b04b_49901102",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-02T19:55:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5626e352_33d13a89",
       "range": {
         "startLine": 472,
         "startChar": 1,
@@ -185,6 +353,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "851e6551_0129a90a",
+        "filename": "cc/library.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2418,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-02T19:55:40Z",
+      "side": 1,
+      "message": "oops. thanks 😊",
+      "parentUuid": "b2fe13e9_99c88c41",
+      "range": {
+        "startLine": 2418,
+        "startChar": 2,
+        "endLine": 2418,
+        "endChar": 83
+      },
+      "revId": "e208f54e0121f776ac71ddcd2810f420862da5e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4b03f42_e368d00b",
@@ -198,6 +390,30 @@
       "writtenOn": "2021-12-02T14:47:20Z",
       "side": 1,
       "message": "nit: how about //build/bazel/rules/proto/cc.bzl? //build/bazel/rules is getting crowded.",
+      "range": {
+        "startLine": 213,
+        "startChar": 43,
+        "endLine": 213,
+        "endChar": 55
+      },
+      "revId": "e208f54e0121f776ac71ddcd2810f420862da5e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b8f5e8c_36d652b2",
+        "filename": "cc/proto.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-02T19:55:40Z",
+      "side": 1,
+      "message": "filed a bug to do a general overhaul of the directory rather than a one off.",
+      "parentUuid": "d4b03f42_e368d00b",
       "range": {
         "startLine": 213,
         "startChar": 43,
