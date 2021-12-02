@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de6ab8dc_81e40bd6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-02T16:36:07Z",
+      "side": 1,
+      "message": "Is it obvious somewhere that host targets never depend on dexpreopt?",
+      "parentUuid": "8ae2da89_953315b1",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "b23eab3ba715441fde878c43368b65c6fd8897c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1559ae1e_10c0721e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -78,6 +102,24 @@
       "writtenOn": "2021-12-02T16:30:43Z",
       "side": 1,
       "message": "This is still necessary to land the next patch, which makes all calls to dexpreopt.GetGlobalConfig return any path errors detected by the first.  Calling these dexpreopt method transitively calls dexpreopt.GetGlobalConfig.",
+      "parentUuid": "1559ae1e_10c0721e",
+      "revId": "b23eab3ba715441fde878c43368b65c6fd8897c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c564f636_1c8963a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-02T16:36:07Z",
+      "side": 1,
+      "message": "\u003e I believe we don\u0027t need this change because the breakage is already fixed by aosp/1908170.\n\nThen doesn\u0027t that mean ART host tests are already broken by aosp/1908170? Can we check if they still work as expected? (Everything is still green on http://ab/git_master-art-host, but maybe some tests are now JIT\u0027ing instead.)",
       "parentUuid": "1559ae1e_10c0721e",
       "revId": "b23eab3ba715441fde878c43368b65c6fd8897c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
