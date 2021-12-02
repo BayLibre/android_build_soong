@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1559ae1e_10c0721e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-02T16:14:29Z",
+      "side": 1,
+      "message": "I believe we don\u0027t need this change because the breakage is already fixed by aosp/1908170.\n\ndexpreopter is already disabled on host builds (https://cs.android.com/android/platform/superproject/+/master:build/soong/java/dexpreopt.go;l\u003d125;drc\u003d38310bb4ac9caf350b3fd79b069295c54b354c62). Before aosp/1908170, this check was just performed too late.",
+      "revId": "b23eab3ba715441fde878c43368b65c6fd8897c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51d5086b_49ebb043",
         "filename": "java/java.go",
         "patchSetId": 1
