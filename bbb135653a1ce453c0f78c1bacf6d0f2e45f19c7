@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87097156_cde0d482",
+        "filename": "android/bazel.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-02T21:39:33Z",
+      "side": 1,
+      "message": "Should these still be noted? One will trip on them eventually.",
+      "revId": "bbb135653a1ce453c0f78c1bacf6d0f2e45f19c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
