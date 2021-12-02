@@ -125,6 +125,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c7156d0_ab74fc01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-02T16:58:48Z",
+      "side": 1,
+      "message": "\u003e Calling these dexpreopt method transitively calls dexpreopt.GetGlobalConfig.\n\nAh, I see. `dexpreopter.getInstallPath` also calls `dexpreopt.GetGlobalConfig`. That\u0027s why you need this CL.\n\n\u003e Then doesn\u0027t that mean ART host tests are already broken by aosp/1908170? Can we check if they still work as expected? (Everything is still green on http://ab/git_master-art-host, but maybe some tests are now JIT\u0027ing instead.)\n\nMaybe I\u0027m missing something. aosp/1908170 does not change the existing logic. It only reorders some checks so that the function can return early on host builds before calling dexpreopt.GetGlobalConfig. AFAIK, the code that Roland points out is for dexpreopting boot images, but \"dexpreopter\" is for dexpreopting other things, such as system server jars and apps, and it has never been used for ART host tests.",
+      "parentUuid": "c564f636_1c8963a2",
+      "revId": "b23eab3ba715441fde878c43368b65c6fd8897c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51d5086b_49ebb043",
