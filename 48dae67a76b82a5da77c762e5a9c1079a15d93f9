@@ -34,6 +34,24 @@
       "parentUuid": "f4169742_93998d8b",
       "revId": "48dae67a76b82a5da77c762e5a9c1079a15d93f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c569780_69fd3272",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-02T15:16:01Z",
+      "side": 1,
+      "message": "What happens if a line is deleted and some information is dropped? Will that always cause a failure when it is consumed? If all fields in the proto are required then it won\u0027t but if some of them are optional then it will.",
+      "parentUuid": "f0d512b3_fe6dd5f5",
+      "revId": "48dae67a76b82a5da77c762e5a9c1079a15d93f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
