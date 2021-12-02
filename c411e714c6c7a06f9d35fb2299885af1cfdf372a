@@ -16,6 +16,23 @@
       "message": "Updated to rebase/merge off tip-of-tree.",
       "revId": "c411e714c6c7a06f9d35fb2299885af1cfdf372a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "915f9470_425e1b18",
+        "filename": "python/binary.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-02T21:35:23Z",
+      "side": 1,
+      "message": "what pieces of generatePythonBuildActions are specifically needed? that\u0027s a significant bulk of the legacy python implementation, and thus it concerns me that this is \"working\" but we\u0027re missing setting, for example:\n\np.srcsZip\np.srcsPathMappings\np.dataPathMappings\n\nThis is one reason I\u0027m pushing for stronger verification that this is operating as intended",
+      "revId": "c411e714c6c7a06f9d35fb2299885af1cfdf372a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
