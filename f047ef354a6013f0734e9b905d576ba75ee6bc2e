@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffe72f71_665f5615",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-02T14:55:20Z",
+      "side": 1,
+      "message": "Pass verbosity as a bool here?",
+      "range": {
+        "startLine": 529,
+        "startChar": 57,
+        "endLine": 529,
+        "endChar": 70
+      },
+      "revId": "f047ef354a6013f0734e9b905d576ba75ee6bc2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
