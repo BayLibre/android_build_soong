@@ -124,6 +124,24 @@
       "parentUuid": "28c809dd_7371cbbb",
       "revId": "adaec62df3319eb27b8e5673281a4d0f516ec839",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4d2ad52_fa7eac19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-02T14:51:45Z",
+      "side": 1,
+      "message": "k, now an environment variable BP2BUILD_VERBOSE, should be able to add that to your environment and not need to set each time",
+      "parentUuid": "c0af2915_06a62259",
+      "revId": "adaec62df3319eb27b8e5673281a4d0f516ec839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
