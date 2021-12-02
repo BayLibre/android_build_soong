@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "102166fd_9b9ecb4f",
+        "filename": "android/module.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-02T23:10:44Z",
+      "side": 1,
+      "message": "I added comments on the uses of ModuleBase in tidy.go on how to remove them.",
+      "parentUuid": "275fecee_33f6650a",
+      "revId": "f275af11779648d63ccf0791f6d4b28f9a9bfc96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6034c056_104bf360",
         "filename": "android/module.go",
         "patchSetId": 9

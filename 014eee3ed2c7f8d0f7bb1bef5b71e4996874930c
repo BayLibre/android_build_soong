@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f50511e7_c396e6fa",
+        "filename": "cc/tidy.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-02T23:10:44Z",
+      "side": 1,
+      "message": "This is unused",
+      "range": {
+        "startLine": 323,
+        "startChar": 77,
+        "endLine": 323,
+        "endChar": 99
+      },
+      "revId": "014eee3ed2c7f8d0f7bb1bef5b71e4996874930c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67822b8c_c5bb53a6",
+        "filename": "cc/tidy.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-02T23:10:44Z",
+      "side": 1,
+      "message": "android.Module",
+      "range": {
+        "startLine": 336,
+        "startChar": 34,
+        "endLine": 336,
+        "endChar": 53
+      },
+      "revId": "014eee3ed2c7f8d0f7bb1bef5b71e4996874930c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf4c67de_9a65ca0b",
+        "filename": "cc/tidy.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-02T23:10:44Z",
+      "side": 1,
+      "message": "You can add Os() to android.Module, or use module.Target().Os.Name",
+      "range": {
+        "startLine": 337,
+        "startChar": 21,
+        "endLine": 337,
+        "endChar": 37
+      },
+      "revId": "014eee3ed2c7f8d0f7bb1bef5b71e4996874930c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8fefe85_49510047",
+        "filename": "cc/tidy.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-02T23:10:44Z",
+      "side": 1,
+      "message": "This can be android.Module",
+      "range": {
+        "startLine": 341,
+        "startChar": 28,
+        "endLine": 341,
+        "endChar": 47
+      },
+      "revId": "014eee3ed2c7f8d0f7bb1bef5b71e4996874930c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
