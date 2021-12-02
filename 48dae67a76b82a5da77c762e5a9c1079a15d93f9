@@ -52,6 +52,24 @@
       "parentUuid": "f0d512b3_fe6dd5f5",
       "revId": "48dae67a76b82a5da77c762e5a9c1079a15d93f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2349801_7f6e684c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-12-02T15:21:58Z",
+      "side": 1,
+      "message": "This is where I plan to have MTS tests that utilize different min/max sdkversions on java_sdk_library, which is going to be more of an end-to-end test that you are looking for here I guess?",
+      "parentUuid": "9c569780_69fd3272",
+      "revId": "48dae67a76b82a5da77c762e5a9c1079a15d93f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
