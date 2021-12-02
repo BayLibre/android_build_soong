@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23339c26_3d0be363",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-02T15:14:09Z",
+      "side": 1,
+      "message": "Isn\u0027t it better to do this in getGlobalConfigRaw?",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 2
+      },
+      "revId": "afa7c4811ae3f52c6e82dc3f4bc021287601e57b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94f209f2_4fefa802",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-02T15:14:09Z",
+      "side": 1,
+      "message": "It would be nice to block Once callbacks from changing state in the context, but when it\u0027s passed through a lexical reference like this it gets tricky. Maybe it\u0027s possible to check the function reference through reflection. (All callbacks would need to be changed to take a (wrapped) context as an argument as well.)",
+      "range": {
+        "startLine": 263,
+        "startChar": 18,
+        "endLine": 263,
+        "endChar": 21
+      },
+      "revId": "afa7c4811ae3f52c6e82dc3f4bc021287601e57b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
