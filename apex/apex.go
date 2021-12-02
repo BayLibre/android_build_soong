@@ -3106,26 +3106,29 @@ func makeApexAvailableBaseline() map[string][]string {
 }
 
 func init() {
-	android.AddNeverAllowRules(createApexPermittedPackagesRules(qModulesPackages())...)
-	android.AddNeverAllowRules(createApexPermittedPackagesRules(rModulesPackages())...)
+	android.AddNeverAllowRules(createApexPermittedPackagesRules("29", qModulesPackages())...)
+	android.AddNeverAllowRules(createApexPermittedPackagesRules("30", qModulesPackages())...)
+	android.AddNeverAllowRules(createApexPermittedPackagesRules("30", rModulesPackages())...)
 }
 
-func createApexPermittedPackagesRules(modules_packages map[string][]string) []android.Rule {
+func createApexPermittedPackagesRules(
+	min_sdk string, modules_packages map[string][]string) []android.Rule {
 	rules := make([]android.Rule, 0, len(modules_packages))
 	for module_name, module_packages := range modules_packages {
 		permittedPackagesRule := android.NeverAllow().
 			BootclasspathJar().
 			With("apex_available", module_name).
 			WithMatcher("permitted_packages", android.NotInList(module_packages)).
+			With("min_sdk_version", min_sdk).
 			Because("jars that are part of the " + module_name +
 				" module may only allow these packages: " + strings.Join(module_packages, ",") +
-				". Please jarjar or move code around.")
+				" with min_sdk " + min_sdk + ". Please jarjar or move code around.")
 		rules = append(rules, permittedPackagesRule)
 	}
 	return rules
 }
 
-// DO NOT EDIT! These are the package prefixes that are exempted from being AOT'ed by ART.
+// DO NOT EDIT! These are the package prefixes that are exempted from being AOT'ed by ART on Q and R.
 // Adding code to the bootclasspath in new packages will cause issues on module update.
 func qModulesPackages() map[string][]string {
 	return map[string][]string{
@@ -3139,7 +3142,7 @@ func qModulesPackages() map[string][]string {
 	}
 }
 
-// DO NOT EDIT! These are the package prefixes that are exempted from being AOT'ed by ART.
+// DO NOT EDIT! These are the package prefixes that are exempted from being AOT'ed by ART on R.
 // Adding code to the bootclasspath in new packages will cause issues on module update.
 func rModulesPackages() map[string][]string {
 	return map[string][]string{
