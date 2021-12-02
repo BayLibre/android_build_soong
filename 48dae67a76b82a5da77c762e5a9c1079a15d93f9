@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4169742_93998d8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-02T14:53:31Z",
+      "side": 1,
+      "message": "It would be nice to have an end to end test to make sure that the generated file matches the .proto file but I\u0027m not sure that is feasible to do as a Soong unit test.\n\nA test to detect changes in the output of that method would be useful though.",
+      "revId": "48dae67a76b82a5da77c762e5a9c1079a15d93f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
