@@ -1,0 +1,112 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f0e044a_5587d2a1",
+        "filename": "android/module.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-02T05:27:54Z",
+      "side": 1,
+      "message": "You shouldn\u0027t need this any more, you can use an interface or a provider to get this directly from cc modules in the singleton",
+      "revId": "f275af11779648d63ccf0791f6d4b28f9a9bfc96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b3189c9_09467c14",
+        "filename": "android/module.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-02T05:27:54Z",
+      "side": 1,
+      "message": "Use SingletonContext.ModuleDir(module) instead",
+      "revId": "f275af11779648d63ccf0791f6d4b28f9a9bfc96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "487a9fb4_5063f034",
+        "filename": "android/module.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-02T05:27:54Z",
+      "side": 1,
+      "message": "With SingletonContext.ModuleDir you shouldn\u0027t need this",
+      "revId": "f275af11779648d63ccf0791f6d4b28f9a9bfc96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6034c056_104bf360",
+        "filename": "android/module.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1208,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-02T05:27:54Z",
+      "side": 1,
+      "message": "These can both be stored in cc.Module",
+      "range": {
+        "startLine": 1207,
+        "startChar": 0,
+        "endLine": 1208,
+        "endChar": 100
+      },
+      "revId": "f275af11779648d63ccf0791f6d4b28f9a9bfc96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40dc41af_b03fb32e",
+        "filename": "cc/tidy.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-02T05:27:54Z",
+      "side": 1,
+      "message": "remove?",
+      "revId": "f275af11779648d63ccf0791f6d4b28f9a9bfc96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8a17f95_2c1dd346",
+        "filename": "cc/tidy.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-02T05:27:54Z",
+      "side": 1,
+      "message": "You can use SingletonContext.ModuleDir(module) instead of getting ModuleBase",
+      "revId": "f275af11779648d63ccf0791f6d4b28f9a9bfc96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
