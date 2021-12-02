@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa53c671_0c5bf7d3",
+        "filename": "android/module.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-12-02T06:58:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f0e044a_5587d2a1",
+      "revId": "f275af11779648d63ccf0791f6d4b28f9a9bfc96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b3189c9_09467c14",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65fec847_4aa73962",
+        "filename": "android/module.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-12-02T06:58:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b3189c9_09467c14",
+      "revId": "f275af11779648d63ccf0791f6d4b28f9a9bfc96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "487a9fb4_5063f034",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-12-02T05:27:54Z",
       "side": 1,
       "message": "With SingletonContext.ModuleDir you shouldn\u0027t need this",
+      "revId": "f275af11779648d63ccf0791f6d4b28f9a9bfc96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f56e4c75_12649caa",
+        "filename": "android/module.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-12-02T06:58:31Z",
+      "side": 1,
+      "message": "How to use it to get from android.Module to its BaseModule?",
+      "parentUuid": "487a9fb4_5063f034",
       "revId": "f275af11779648d63ccf0791f6d4b28f9a9bfc96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -75,6 +129,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8683370b_8b7ad70a",
+        "filename": "android/module.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1208,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-12-02T06:58:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6034c056_104bf360",
+      "range": {
+        "startLine": 1207,
+        "startChar": 0,
+        "endLine": 1208,
+        "endChar": 100
+      },
+      "revId": "f275af11779648d63ccf0791f6d4b28f9a9bfc96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40dc41af_b03fb32e",
@@ -92,6 +170,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e746e4a8_a494df3d",
+        "filename": "cc/tidy.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-12-02T06:58:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40dc41af_b03fb32e",
+      "revId": "f275af11779648d63ccf0791f6d4b28f9a9bfc96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8a17f95_2c1dd346",
@@ -105,6 +201,24 @@
       "writtenOn": "2021-12-02T05:27:54Z",
       "side": 1,
       "message": "You can use SingletonContext.ModuleDir(module) instead of getting ModuleBase",
+      "revId": "f275af11779648d63ccf0791f6d4b28f9a9bfc96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "890937c3_22214fd3",
+        "filename": "cc/tidy.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-12-02T06:58:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8a17f95_2c1dd346",
       "revId": "f275af11779648d63ccf0791f6d4b28f9a9bfc96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
