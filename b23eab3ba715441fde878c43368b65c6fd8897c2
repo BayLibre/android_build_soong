@@ -45,6 +45,30 @@
       },
       "revId": "b23eab3ba715441fde878c43368b65c6fd8897c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b009adac_cd3b283a",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1052644
+      },
+      "writtenOn": "2021-12-02T16:11:21Z",
+      "side": 1,
+      "message": "Yes, we do preopt on host for ART tests (see https://cs.android.com/android/platform/superproject/+/master:build/soong/java/dexpreopt_config.go).",
+      "parentUuid": "51d5086b_49ebb043",
+      "range": {
+        "startLine": 555,
+        "startChar": 1,
+        "endLine": 555,
+        "endChar": 18
+      },
+      "revId": "b23eab3ba715441fde878c43368b65c6fd8897c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
