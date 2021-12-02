@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47747d5f_60748431",
+        "filename": "dexpreopt/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-02T15:36:45Z",
+      "side": 1,
+      "message": "Iirc we know the first call should never be in a SingletonContext, so for the sake of prudence, it\u0027d be good if the Once callback verifies that it has AddMissingDependencies. Then we\u0027ve ensured the missing deps have been reported at least once.",
+      "range": {
+        "startLine": 229,
+        "startChar": 39,
+        "endLine": 229,
+        "endChar": 62
+      },
+      "revId": "afa7c4811ae3f52c6e82dc3f4bc021287601e57b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23339c26_3d0be363",
         "filename": "dexpreopt/config.go",
         "patchSetId": 4
