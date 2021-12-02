@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eec4c228_0beaaeaf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-12-02T22:28:09Z",
+      "side": 1,
+      "message": "friendly ping reviewers\n",
+      "revId": "5b721536461306cdc580d38794fbd23ba941fdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d11fcd6_e5a5964e",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-12-02T22:28:09Z",
+      "side": 1,
+      "message": "Maybe here for source to objFile compilation we can also skip NDK library dependencies. We can do that in a follow up CL.",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 29
+      },
+      "revId": "5b721536461306cdc580d38794fbd23ba941fdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
