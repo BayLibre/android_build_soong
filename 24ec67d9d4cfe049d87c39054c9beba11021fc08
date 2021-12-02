@@ -136,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c430aa7b_4e0ff15c",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2162,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-02T17:44:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fc8a40f_bca7c737",
+      "range": {
+        "startLine": 2162,
+        "startChar": 4,
+        "endLine": 2162,
+        "endChar": 15
+      },
+      "revId": "24ec67d9d4cfe049d87c39054c9beba11021fc08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "218c0317_ab74a84b",
@@ -197,6 +221,30 @@
       "side": 1,
       "message": "That\u0027s usually dealt with by using \"_\" for such arguments.",
       "parentUuid": "f73fa221_65561fc1",
+      "range": {
+        "startLine": 108,
+        "startChar": 5,
+        "endLine": 108,
+        "endChar": 30
+      },
+      "revId": "24ec67d9d4cfe049d87c39054c9beba11021fc08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ace1b57_adf20dd4",
+        "filename": "dexpreopt/testing.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-02T17:44:58Z",
+      "side": 1,
+      "message": "Done. Thanks for the tip!",
+      "parentUuid": "afa7f994_68b49307",
       "range": {
         "startLine": 108,
         "startChar": 5,
