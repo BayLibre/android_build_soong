@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2df9e9ab_f5be271c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-02T17:35:10Z",
+      "side": 1,
+      "message": "Discussed in another thread.",
+      "parentUuid": "de6ab8dc_81e40bd6",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "b23eab3ba715441fde878c43368b65c6fd8897c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1559ae1e_10c0721e",
@@ -143,6 +167,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "999684e8_76a1ca9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-02T17:35:10Z",
+      "side": 1,
+      "message": "Fair point, it didn\u0027t regress.\n\nAdding Ulya for review, since neither of us is confident for +2.",
+      "parentUuid": "8c7156d0_ab74fc01",
+      "revId": "b23eab3ba715441fde878c43368b65c6fd8897c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51d5086b_49ebb043",
@@ -180,6 +222,30 @@
       "side": 1,
       "message": "Yes, we do preopt on host for ART tests (see https://cs.android.com/android/platform/superproject/+/master:build/soong/java/dexpreopt_config.go).",
       "parentUuid": "51d5086b_49ebb043",
+      "range": {
+        "startLine": 555,
+        "startChar": 1,
+        "endLine": 555,
+        "endChar": 18
+      },
+      "revId": "b23eab3ba715441fde878c43368b65c6fd8897c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d15eb8e_85b316b3",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-02T17:35:10Z",
+      "side": 1,
+      "message": "Jiakai said j.dexpreopter isn\u0027t for boot images, so no problem.",
+      "parentUuid": "b009adac_cd3b283a",
       "range": {
         "startLine": 555,
         "startChar": 1,
