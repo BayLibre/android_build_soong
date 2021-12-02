@@ -33,6 +33,42 @@
       "message": "Please add a test to https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/sh_conversion_test.go to assert that the filename and sub_dir props are translated correctly to Bazel attributes.",
       "revId": "21b57532be3a4473234aa7d85842c9978c251475",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec2af3ac_2a6fdbc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2021-12-02T22:52:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57535bfe_8ad5070f",
+      "revId": "21b57532be3a4473234aa7d85842c9978c251475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc1173be_042b1f80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2021-12-02T22:52:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c22471a_35f4fa5f",
+      "revId": "21b57532be3a4473234aa7d85842c9978c251475",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
