@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe700cf6_b891826f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-02T05:38:18Z",
+      "side": 1,
+      "message": "Why not make this change in status.go where it can affect everything?",
+      "revId": "722c56ea4be2caee5d7c37db38ef9b83cc853a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
