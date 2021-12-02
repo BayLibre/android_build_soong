@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017913521",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1904290?revision\u003d4",
+      "fixSuggestions": [
+        {
+          "fixId": "e73e62b8_8bceff88",
+          "description": "Change to \"java/bootclasspath_fragment.go\"",
+          "replacements": [
+            {
+              "path": "java/bootclasspath_fragment.go",
+              "range": {
+                "startLine": 397,
+                "startChar": 20,
+                "endLine": 397,
+                "endChar": 27
+              },
+              "replacement": "the"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "ee539401_d5375fdc",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-02T17:40:48Z",
+      "side": 1,
+      "message": "Common typo found: \"the the\" -- should it be \"the\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 397,
+        "startChar": 20,
+        "endLine": 397,
+        "endChar": 27
+      },
+      "revId": "9bbe871198859b9c65d0aef8a6d852880e2fece6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017913521",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1904290?revision\u003d4",
+      "fixSuggestions": [
+        {
+          "fixId": "e1aa3e01_26b38d60",
+          "description": "Change to \"java/dexpreopt_bootjars.go\"",
+          "replacements": [
+            {
+              "path": "java/dexpreopt_bootjars.go",
+              "range": {
+                "startLine": 259,
+                "startChar": 20,
+                "endLine": 259,
+                "endChar": 27
+              },
+              "replacement": "the"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "ab99182d_97d9a403",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-02T17:40:48Z",
+      "side": 1,
+      "message": "Common typo found: \"the the\" -- should it be \"the\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 259,
+        "startChar": 20,
+        "endLine": 259,
+        "endChar": 27
+      },
+      "revId": "9bbe871198859b9c65d0aef8a6d852880e2fece6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
