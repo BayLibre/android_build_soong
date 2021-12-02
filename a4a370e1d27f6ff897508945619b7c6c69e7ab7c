@@ -16,6 +16,24 @@
       "message": "Can you add some context on why this is desired?",
       "revId": "a4a370e1d27f6ff897508945619b7c6c69e7ab7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaceb46f_24d596c9",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-12-02T19:57:49Z",
+      "side": 1,
+      "message": "Good idea, I have added some context from my understanding of the issue.\nCan you please lmk if this is inaccurate/incomplete?",
+      "parentUuid": "efab46f4_e3aa623b",
+      "revId": "a4a370e1d27f6ff897508945619b7c6c69e7ab7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
