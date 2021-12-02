@@ -33,6 +33,24 @@
       "message": "I think this file would be used if an Android.mk file referenced the header library with LOCAL_STATIC_LIBRARIES instead of LOCAL_HEADER_LIBRARIES.  To avoid breakages when switching between source and prebuilts, either the source module should return a zero byte non-archive file, or this should return an empty archive file.",
       "revId": "e899e194c6e943aeb5fc4cb752ab4c014c4a514f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30e44175_9b113522",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-02T10:58:41Z",
+      "side": 1,
+      "message": "Done. I opted to create an empty archive, to avoid potential ripple effects.",
+      "parentUuid": "c93d4b70_8860d96f",
+      "revId": "e899e194c6e943aeb5fc4cb752ab4c014c4a514f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
