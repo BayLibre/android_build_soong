@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4a5a13b_95a68a0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-02T16:07:27Z",
+      "side": 1,
+      "message": "I think a better way would be to amend the logic at the top of build/make/core/dex_preopt_config.mk to disable ENABLE_PREOPT_BOOT_IMAGES in this case. Can we detect these builds in a good way?\n\nIf not, then maybe a $(wildcard art/build/boot/boot-image-profile.txt) check in default_art_config.mk that bypasses the PRODUCT_DEX_PREOPT_BOOT_IMAGE_PROFILE_LOCATION and `PRODUCT_USES_DEFAULT_ART_CONFIG :\u003d true` lines? I\u0027d prefer to avoid that since it could hide real build problems, but I think it should do the job if there\u0027s no better option.",
+      "range": {
+        "startLine": 10,
+        "startChar": 30,
+        "endLine": 10,
+        "endChar": 56
+      },
+      "revId": "b23eab3ba715441fde878c43368b65c6fd8897c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51d5086b_49ebb043",
         "filename": "java/java.go",
         "patchSetId": 1
