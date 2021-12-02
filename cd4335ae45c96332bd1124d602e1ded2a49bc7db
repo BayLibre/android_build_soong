@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab94fb75_9c3d7b3e",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2021-12-02T20:27:19Z",
+      "side": 0,
+      "message": "Dead code",
+      "revId": "cd4335ae45c96332bd1124d602e1ded2a49bc7db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
