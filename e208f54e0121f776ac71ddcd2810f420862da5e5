@@ -236,6 +236,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "751db7f1_09434517",
+        "filename": "bp2build/cc_binary_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-02T22:46:52Z",
+      "side": 1,
+      "message": "Yeah, understood, I don\u0027t think we need to take any action in this CL.",
+      "parentUuid": "86da08a8_93f01e19",
+      "range": {
+        "startLine": 465,
+        "startChar": 3,
+        "endLine": 472,
+        "endChar": 6
+      },
+      "revId": "e208f54e0121f776ac71ddcd2810f420862da5e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d11fc10a_8b198271",
