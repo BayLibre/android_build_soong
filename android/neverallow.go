@@ -249,7 +249,7 @@ func neverallowMutator(ctx BottomUpMutatorContext) {
 			continue
 		}
 
-		if !n.appliesToProperties(properties) {
+		if !n.appliesToProperties(ctx, properties) {
 			continue
 		}
 
@@ -270,7 +270,7 @@ func neverallowMutator(ctx BottomUpMutatorContext) {
 }
 
 type ValueMatcher interface {
-	Test(string) bool
+	Test(BottomUpMutatorContext, string) bool
 	String() string
 }
 
@@ -278,7 +278,7 @@ type equalMatcher struct {
 	expected string
 }
 
-func (m *equalMatcher) Test(value string) bool {
+func (m *equalMatcher) Test(ctx BottomUpMutatorContext, value string) bool {
 	return m.expected == value
 }
 
@@ -289,7 +289,7 @@ func (m *equalMatcher) String() string {
 type anyMatcher struct {
 }
 
-func (m *anyMatcher) Test(value string) bool {
+func (m *anyMatcher) Test(ctx BottomUpMutatorContext, value string) bool {
 	return true
 }
 
@@ -303,7 +303,7 @@ type startsWithMatcher struct {
 	prefix string
 }
 
-func (m *startsWithMatcher) Test(value string) bool {
+func (m *startsWithMatcher) Test(ctx BottomUpMutatorContext, value string) bool {
 	return strings.HasPrefix(value, m.prefix)
 }
 
@@ -315,7 +315,7 @@ type regexMatcher struct {
 	re *regexp.Regexp
 }
 
-func (m *regexMatcher) Test(value string) bool {
+func (m *regexMatcher) Test(ctx BottomUpMutatorContext, value string) bool {
 	return m.re.MatchString(value)
 }
 
@@ -327,7 +327,7 @@ type notInListMatcher struct {
 	allowed []string
 }
 
-func (m *notInListMatcher) Test(value string) bool {
+func (m *notInListMatcher) Test(ctx BottomUpMutatorContext, value string) bool {
 	return !InList(value, m.allowed)
 }
 
@@ -337,7 +337,7 @@ func (m *notInListMatcher) String() string {
 
 type isSetMatcher struct{}
 
-func (m *isSetMatcher) Test(value string) bool {
+func (m *isSetMatcher) Test(ctx BottomUpMutatorContext, value string) bool {
 	return value != ""
 }
 
@@ -346,6 +346,19 @@ func (m *isSetMatcher) String() string {
 }
 
 var isSetMatcherInstance = &isSetMatcher{}
+
+type sdkVersionMatcher struct {
+	upperBound string
+}
+
+func (m *sdkVersionMatcher) Test(ctx BottomUpMutatorContext, value string) bool {
+	return SdkSpecFrom(ctx, value).ApiLevel.LessThan(
+		SdkSpecFrom(ctx, m.upperBound).ApiLevel)
+}
+
+func (m *sdkVersionMatcher) String() string {
+	return ".sdk-version(upperBound=" + m.upperBound + ")"
+}
 
 type ruleProperty struct {
 	fields  []string // e.x.: Vndk.Enabled
@@ -560,9 +573,10 @@ func (r *rule) appliesToModuleType(moduleType string) bool {
 	return (len(r.moduleTypes) == 0 || InList(moduleType, r.moduleTypes)) && !InList(moduleType, r.unlessModuleTypes)
 }
 
-func (r *rule) appliesToProperties(properties []interface{}) bool {
-	includeProps := hasAllProperties(properties, r.props)
-	excludeProps := hasAnyProperty(properties, r.unlessProps)
+func (r *rule) appliesToProperties(ctx BottomUpMutatorContext,
+	properties []interface{}) bool {
+	includeProps := hasAllProperties(ctx, properties, r.props)
+	excludeProps := hasAnyProperty(ctx, properties, r.unlessProps)
 	return includeProps && !excludeProps
 }
 
@@ -580,6 +594,10 @@ func Regexp(re string) ValueMatcher {
 
 func NotInList(allowed []string) ValueMatcher {
 	return &notInListMatcher{allowed}
+}
+
+func AtMostSdkVersion(sdk string) ValueMatcher {
+	return &sdkVersionMatcher{sdk}
 }
 
 // assorted utils
@@ -600,25 +618,28 @@ func fieldNamesForProperties(propertyNames string) []string {
 	return names
 }
 
-func hasAnyProperty(properties []interface{}, props []ruleProperty) bool {
+func hasAnyProperty(ctx BottomUpMutatorContext, properties []interface{},
+	props []ruleProperty) bool {
 	for _, v := range props {
-		if hasProperty(properties, v) {
+		if hasProperty(ctx, properties, v) {
 			return true
 		}
 	}
 	return false
 }
 
-func hasAllProperties(properties []interface{}, props []ruleProperty) bool {
+func hasAllProperties(ctx BottomUpMutatorContext, properties []interface{},
+	props []ruleProperty) bool {
 	for _, v := range props {
-		if !hasProperty(properties, v) {
+		if !hasProperty(ctx, properties, v) {
 			return false
 		}
 	}
 	return true
 }
 
-func hasProperty(properties []interface{}, prop ruleProperty) bool {
+func hasProperty(ctx BottomUpMutatorContext, properties []interface{},
+	prop ruleProperty) bool {
 	for _, propertyStruct := range properties {
 		propertiesValue := reflect.ValueOf(propertyStruct).Elem()
 		for _, v := range prop.fields {
@@ -632,7 +653,7 @@ func hasProperty(properties []interface{}, prop ruleProperty) bool {
 		}
 
 		check := func(value string) bool {
-			return prop.matcher.Test(value)
+			return prop.matcher.Test(ctx, value)
 		}
 
 		if matchValue(propertiesValue, check) {
