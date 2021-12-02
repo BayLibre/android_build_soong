@@ -106,6 +106,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d08a36c_10d6f629",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1876,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-12-02T02:37:38Z",
+      "side": 1,
+      "message": "PTAL the new patchset 8 and compare it with patchset 7.\nMost of the tidy/obj phony target code are moved to tidy.go.\nThe functionality should be the same.\nSome functions in module.go are exported.\nI did not rename base() to Base() to save massive changes in android/*.go files.\nNew Obj*Groups and Tidy*Groups are shared between module.go and tidy.go.\nIt\u0027s not a very clean cut. I\u0027m not sure if there is a better way to make them private to module.go or tidy.go.",
+      "parentUuid": "83ac021c_b935fb78",
+      "revId": "f1e43d457f6aad4c90873b94b2371852ced7a439",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09932573_9fe8c8c1",
