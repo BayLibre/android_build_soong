@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efab46f4_e3aa623b",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-02T05:30:22Z",
+      "side": 1,
+      "message": "Can you add some context on why this is desired?",
+      "revId": "a4a370e1d27f6ff897508945619b7c6c69e7ab7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
