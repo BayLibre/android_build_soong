@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7edd95cd_2e85cecb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-02T05:32:22Z",
+      "side": 1,
+      "message": "`future_updatable` can be documented once at go/Android.bp.  If developers start sprinkling force_disable_size_optimization around the tree you won\u0027t know if they did it because their module was planned to be updatable in the future, or if they are removing the symlinks for some other reason.",
+      "parentUuid": "078fc441_860e4fb8",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "04a583d3b6f09a743b08dfd105ca4797b9171a0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fabbfcba_b359393c",
         "filename": "apex/apex.go",
         "patchSetId": 1
