@@ -870,6 +870,9 @@ type CommonAttributes struct {
 	Name string
 	// Data mapped from: Required
 	Data bazel.LabelListAttribute
+
+	// Targets this target can build for
+	Target_compatible_with bazel.StringListAttribute
 }
 
 type distProperties struct {
@@ -1106,7 +1109,16 @@ func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutator
 		return bazel.MakeLabelListAttribute(BazelLabelForModuleDeps(ctx, deps))
 	}
 
-	data := &attrs.Data
+	var compatibleWith bazel.StringListAttribute
+	//hostSupported := mod.HostSupported()
+	//deviceSupported := mod.DeviceSupported()
+	//if hostSupported && !deviceSupported {
+	//	compatibleWith.SetSelectValue(bazel.OsConfigurationAxis, Android.Name, []string{"@platforms//:incompatible"})
+	//	compatibleWith.SetSelectValue(bazel.OsConfigurationAxis, bazel.ConditionsDefaultConfigKey, []string{})
+	//} else if deviceSupported && !hostSupported {
+	//	compatibleWith.SetSelectValue(bazel.OsConfigurationAxis, Android.Name, []string{})
+	//	compatibleWith.SetSelectValue(bazel.OsConfigurationAxis, bazel.ConditionsDefaultConfigKey, []string{"@platforms//:incompatible"})
+	//}
 
 	required := depsToLabelList(props.Required)
 	archVariantProps := mod.GetArchVariantProperties(ctx, &commonProperties{})
@@ -1114,10 +1126,18 @@ func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutator
 		for config, _props := range configToProps {
 			if archProps, ok := _props.(*commonProperties); ok {
 				required.SetSelectValue(axis, config, depsToLabelList(archProps.Required).Value)
+				if archProps.Enabled != nil && (!*archProps.Enabled) {
+					if ctx.ModuleName() == "libclang_rt.asan-x86_64-android" {
+						fmt.Println("@@@@@@@@@@@@@", axis, config)
+					}
+					compatibleWith.SetSelectValue(axis, config, []string{"@platforms//:incompatible"})
+				}
 			}
 		}
 	}
-	data.Append(required)
+	compatibleWith.DeduplicateAxesFromBase()
+	(&attrs.Data).Append(required)
+	attrs.Target_compatible_with = compatibleWith
 }
 
 // A ModuleBase object contains the properties that are common to all Android
