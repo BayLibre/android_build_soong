@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a25a68c9_d7ac543a",
+        "filename": "android/bazel.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T23:05:29Z",
+      "side": 1,
+      "message": "🎉 exciting to see so many more items here 😄",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 22
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "599978c3_6a9b3017",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1460,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T23:05:29Z",
+      "side": 1,
+      "message": "srcs/exclude_srcs appears to be arch-variant https://cs.android.com/android/platform/superproject/+/master:build/soong/java/base.go;l\u003d47,56;drc\u003d0a420e771a2201c99f570cf48bd09a6bd837cce2\n\nCan we add support or a file a bug to support this?",
+      "range": {
+        "startLine": 1460,
+        "startChar": 1,
+        "endLine": 1460,
+        "endChar": 128
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6f67aa5_42ce20f9",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1462,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T23:05:29Z",
+      "side": 1,
+      "message": "optional, but for defaults like this used both in soong/bp2build, i\u0027ve started storing them in a constant to use in both cases so they don\u0027t get out of sync",
+      "range": {
+        "startLine": 1462,
+        "startChar": 64,
+        "endLine": 1462,
+        "endChar": 85
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93eb2888_3306ff94",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T23:05:29Z",
+      "side": 1,
+      "message": "this looks like it allows overriding the package name per product with the product variable PRODUCT_MANIFEST_PACKAGE_NAME_OVERRIDES/ManifestPackageNameOverrides.\n\nSince we don\u0027t want to convert product-specific logic, let\u0027s ignore this for now and file a bug to figure out that integration with product variables?",
+      "range": {
+        "startLine": 1464,
+        "startChar": 36,
+        "endLine": 1464,
+        "endChar": 103
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ae6baae_89bf4263",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T23:05:29Z",
+      "side": 1,
+      "message": "The naming of this is somewhat misleading, the override here is used to indicate that the package name can be overridden, used in the `override_android_app` type (oh the fun to come in the future...)",
+      "range": {
+        "startLine": 1466,
+        "startChar": 17,
+        "endLine": 1466,
+        "endChar": 34
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b0b5afd_9776360b",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1480,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T23:05:29Z",
+      "side": 1,
+      "message": "can you add a comment about why we use rel + PathsWithModuleSrcSubDir here?",
+      "range": {
+        "startLine": 1480,
+        "startChar": 0,
+        "endLine": 1480,
+        "endChar": 18
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d00680_8c7fe6f4",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1482,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T23:05:29Z",
+      "side": 1,
+      "message": "do you think we\u0027ll need this functionality again? would it be worth adding this to android/bazel_paths.go?",
+      "range": {
+        "startLine": 1478,
+        "startChar": 2,
+        "endLine": 1482,
+        "endChar": 3
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
