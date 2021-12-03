@@ -16,6 +16,161 @@
       "message": "Please review when you have time, thanks!",
       "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43ea6666_32df55f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T22:15:14Z",
+      "side": 1,
+      "message": "Thanks!!",
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c8d48dc_5dce341b",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1664,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T22:15:14Z",
+      "side": 1,
+      "message": "rather than ok, can we use isDir or something to indicate what we\u0027re looking for when using the second return from Exists?",
+      "range": {
+        "startLine": 1664,
+        "startChar": 15,
+        "endLine": 1664,
+        "endChar": 21
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d332132_cc17cc8a",
+        "filename": "bpfix/bpfix/bpfix_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1700,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T22:15:14Z",
+      "side": 1,
+      "message": "for these cases you aren\u0027t reusing, I\u0027d recommend embedding them in the test case so they\u0027re adjacent to the test case and it\u0027s easier to read in one go.",
+      "range": {
+        "startLine": 1689,
+        "startChar": 0,
+        "endLine": 1700,
+        "endChar": 3
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc599feb_588a6df8",
+        "filename": "tests/androidmk_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T22:15:14Z",
+      "side": 1,
+      "message": "I think we need a license header for this test case :)",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 15
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69cabc51_e90a91e9",
+        "filename": "tests/androidmk_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T22:15:14Z",
+      "side": 1,
+      "message": "one risk of this test is that it isn\u0027t running on CI, unfortunately -- you can look at hooking it into our other integration tests: build/soong/tests/run_integration_tests.sh",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 51
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e601a9b1_f1a40101",
+        "filename": "tests/androidmk_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T22:15:14Z",
+      "side": 1,
+      "message": "input? perhaps move this above the output so that it\u0027s clearer that this is setup rather than expected out",
+      "range": {
+        "startLine": 87,
+        "startChar": 14,
+        "endLine": 87,
+        "endChar": 22
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce8c05b3_81940d32",
+        "filename": "tests/androidmk_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T22:15:14Z",
+      "side": 1,
+      "message": "i think with the call of setup + https://cs.android.com/android/platform/superproject/+/master:build/soong/tests/lib.sh;l\u003d15;drc\u003d34d60c9281a127d1ff5e9cf0d585a2d795acbcf6, you shouldn\u0027t need to call cleanup_mock_top each time",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 20
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
