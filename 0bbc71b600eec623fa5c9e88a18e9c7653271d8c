@@ -33,6 +33,24 @@
       "message": "perhaps have a \u0027bpf_with_btf\u0027 rule type? or something?\n\nI\u0027m a tad worried what this will mean for mainline backward compatibility and my attempts to use these .o with iproute2\u0027s tc cli utility.",
       "revId": "0bbc71b600eec623fa5c9e88a18e9c7653271d8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aab3a35b_c10f6bd5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2021-12-03T21:07:16Z",
+      "side": 1,
+      "message": "My understanding is that the changes from adding \"-g\" are contained to new sections of the .o and that as a result this should be a no-op from the standpoint of the current bpfloader code or anything else without BTF loading support.\n\nLess familiar with the iproute2 use case but from this comment it sounds as though it would complain about the new sections but still load everything else successfully: https://bugzilla.redhat.com/show_bug.cgi?id\u003d1835921#c3. It also looks like more recent iproute2 versions may have added BTF support via libbpf\n\nIf we do want to make this opt-in, that might also be possible to do in the .c files, e.g. with a \"load_btf\" section similar to the existing \"critical\". Not sure of the pros \u0026 cons compared to adding a new rule type though.",
+      "parentUuid": "1be0f4da_1932bc93",
+      "revId": "0bbc71b600eec623fa5c9e88a18e9c7653271d8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
