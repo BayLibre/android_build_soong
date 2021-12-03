@@ -366,9 +366,12 @@ func (ba *BoolAttribute) SortedConfigurationAxes() []ConfigurationAxis {
 // labelListSelectValues supports config-specific label_list typed Bazel attribute values.
 type labelListSelectValues map[string]LabelList
 
-func (ll labelListSelectValues) appendSelects(other labelListSelectValues) {
+func (ll labelListSelectValues) appendSelects(other labelListSelectValues, forceSpecifyEmptyList bool) {
 	for k, v := range other {
 		l := ll[k]
+		if forceSpecifyEmptyList && l.IsNil() && !v.IsNil() {
+			l.Includes = []Label{}
+		}
 		(&l).Append(v)
 		ll[k] = l
 	}
@@ -424,15 +427,20 @@ func (cll configurableLabelLists) setValueForAxis(axis ConfigurationAxis, config
 	cll[axis][config] = list
 }
 
-func (cll configurableLabelLists) Append(other configurableLabelLists) {
+func (cll configurableLabelLists) Append(other configurableLabelLists, forceSpecifyEmptyList bool) {
 	for axis, otherSelects := range other {
 		selects := cll[axis]
 		if selects == nil {
 			selects = make(labelListSelectValues, len(otherSelects))
 		}
-		selects.appendSelects(otherSelects)
+		selects.appendSelects(otherSelects, forceSpecifyEmptyList)
 		cll[axis] = selects
 	}
+}
+
+func (lla *LabelListAttribute) Clone() *LabelListAttribute {
+	result := &LabelListAttribute{ForceSpecifyEmptyList: lla.ForceSpecifyEmptyList}
+	return result.Append(*lla)
 }
 
 // MakeLabelListAttribute initializes a LabelListAttribute with the non-arch specific value.
@@ -488,16 +496,18 @@ func (lla *LabelListAttribute) SortedConfigurationAxes() []ConfigurationAxis {
 }
 
 // Append all values, including os and arch specific ones, from another
-// LabelListAttribute to this LabelListAttribute.
-func (lla *LabelListAttribute) Append(other LabelListAttribute) {
-	if lla.ForceSpecifyEmptyList && !other.Value.IsNil() {
+// LabelListAttribute to this LabelListAttribute. Returns this LabelListAttribute.
+func (lla *LabelListAttribute) Append(other LabelListAttribute) *LabelListAttribute {
+	forceSpecifyEmptyList := lla.ForceSpecifyEmptyList || other.ForceSpecifyEmptyList
+	if forceSpecifyEmptyList && lla.Value.IsNil() && !other.Value.IsNil() {
 		lla.Value.Includes = []Label{}
 	}
 	lla.Value.Append(other.Value)
 	if lla.ConfigurableValues == nil {
 		lla.ConfigurableValues = make(configurableLabelLists)
 	}
-	lla.ConfigurableValues.Append(other.ConfigurableValues)
+	lla.ConfigurableValues.Append(other.ConfigurableValues, forceSpecifyEmptyList)
+	return lla
 }
 
 // HasConfigurableValues returns true if the attribute contains axis-specific label list values.
@@ -757,12 +767,18 @@ func (sla StringListAttribute) HasConfigurableValues() bool {
 
 // Append appends all values, including os and arch specific ones, from another
 // StringListAttribute to this StringListAttribute
-func (sla *StringListAttribute) Append(other StringListAttribute) {
+func (sla *StringListAttribute) Append(other StringListAttribute) *StringListAttribute {
 	sla.Value = append(sla.Value, other.Value...)
 	if sla.ConfigurableValues == nil {
 		sla.ConfigurableValues = make(configurableStringLists)
 	}
 	sla.ConfigurableValues.Append(other.ConfigurableValues)
+	return sla
+}
+
+func (sla *StringListAttribute) Clone() *StringListAttribute {
+	result := &StringListAttribute{}
+	return result.Append(*sla)
 }
 
 // SetSelectValue set a value for a bazel select for the given axis, config and value.
