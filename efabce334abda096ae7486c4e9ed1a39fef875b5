@@ -16,6 +16,24 @@
       "message": "It seems unnecessary to use missingEnvVars here, given this is the only possible missing env var in this function at this time.\n\nPerhaps just move this check up to the `if len(metricsDir) \u003c 1` stanza, and remove missingEnvVars, instead?",
       "revId": "efabce334abda096ae7486c4e9ed1a39fef875b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7b0ef1a_92a90a16",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 33
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-03T20:14:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41ee2c42_a684166b",
+      "revId": "efabce334abda096ae7486c4e9ed1a39fef875b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

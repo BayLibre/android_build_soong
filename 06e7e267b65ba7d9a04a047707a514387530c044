@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e26b0f5a_87426dfe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 34
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-03T20:14:20Z",
+      "side": 1,
+      "message": "I\u0027m trying to bypass the whole \"pick an extant outdir for metrics\" by just creating it if it doesn\u0027t exist.\n\nI also clean up error handling a little.",
+      "revId": "06e7e267b65ba7d9a04a047707a514387530c044",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6878507_5abe7445",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 34
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-03T20:14:20Z",
+      "side": 1,
+      "message": "(Will document before submission)",
+      "revId": "06e7e267b65ba7d9a04a047707a514387530c044",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
