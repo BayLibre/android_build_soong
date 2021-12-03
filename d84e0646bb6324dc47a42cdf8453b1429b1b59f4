@@ -47,6 +47,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cb3d138_f0d61616",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2162,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-03T20:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3facbc0_73653dc8",
+      "range": {
+        "startLine": 2162,
+        "startChar": 72,
+        "endLine": 2162,
+        "endChar": 91
+      },
+      "revId": "d84e0646bb6324dc47a42cdf8453b1429b1b59f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5660b5f2_a88cbd33",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2162,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-03T20:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4229bd0b_7f1dfc51",
+      "range": {
+        "startLine": 2162,
+        "startChar": 4,
+        "endLine": 2162,
+        "endChar": 14
+      },
+      "revId": "d84e0646bb6324dc47a42cdf8453b1429b1b59f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6183a2e_bdbeaa79",
@@ -64,6 +112,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3b6d040_99009cad",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2172,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-03T20:15:52Z",
+      "side": 1,
+      "message": "I haven\u0027t checked `m checkbuild`, but `android.ErrorRule` seems more idiomatic while using a non-existing filename looks like a hack, so I take your suggestion.",
+      "parentUuid": "d6183a2e_bdbeaa79",
+      "revId": "d84e0646bb6324dc47a42cdf8453b1429b1b59f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "757e3cc2_8cb79a75",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-12-03T18:32:27Z",
       "side": 1,
       "message": "Typo: \"temporary\"",
+      "range": {
+        "startLine": 2175,
+        "startChar": 38,
+        "endLine": 2175,
+        "endChar": 47
+      },
+      "revId": "d84e0646bb6324dc47a42cdf8453b1429b1b59f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3395b656_0855cce5",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2175,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-03T20:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "757e3cc2_8cb79a75",
       "range": {
         "startLine": 2175,
         "startChar": 38,
