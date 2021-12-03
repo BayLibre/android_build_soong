@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e65062c2_ef8c8cbb",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-12-03T11:19:46Z",
+      "side": 1,
+      "message": "I\u0027m a bit concerned that BootclasspathFragmentApexContentInfo overlaps a lot with this struct. Not for this CL, but it would be good to factor out the common part if possible.",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "d84e0646bb6324dc47a42cdf8453b1429b1b59f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
