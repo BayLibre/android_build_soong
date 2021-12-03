@@ -22,6 +22,30 @@
       },
       "revId": "d84e0646bb6324dc47a42cdf8453b1429b1b59f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3896034a_85928c74",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-03T13:11:52Z",
+      "side": 1,
+      "message": "Thank you for the suggestion. I prefer not to do that at the moment because I think these two structs are for very different purposes. It doesn\u0027t sound like a good practice to me to extract things from two structs just because they happen to have things in common. I admit that maybe things can be done in a better way to avoid duplications, but it\u0027s probably requires some refactoring that is not as trivial as extracting the common part. We can do refactoring once it becomes necessary in the future.",
+      "parentUuid": "e65062c2_ef8c8cbb",
+      "range": {
+        "startLine": 259,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "d84e0646bb6324dc47a42cdf8453b1429b1b59f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
