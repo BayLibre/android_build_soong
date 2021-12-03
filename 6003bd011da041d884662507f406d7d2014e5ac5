@@ -16,6 +16,29 @@
       "message": "Updated as per discussion on the bug",
       "revId": "6003bd011da041d884662507f406d7d2014e5ac5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7a8ed35_5cd14f54",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3109,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-12-03T11:27:41Z",
+      "side": 1,
+      "message": "This doesn\u0027t take into account sv2. Perhaps a more generic solution is to create a custom matcher. Something like:\n\ntype minSdkVersionMatcher struct {\n\tupperBound ApiLevel\n}\n\nfunc (m *minSdkVersionMatcher) Test(value string) bool {\n\treturn android.SdkSpecFrom(value).ApiLevel.LessThan(m.upperBound) /*\u0026\u0026 GreatherThan(Q)*/\n}\n\nfunc (m *minSdkVersionMatcher) String() string {\n\treturn \".starts-with(\" + m.prefix + \")\"\n}\n\n\nThen you can add WithMatcher(\"min_sdk_version\", \u0026minSdkVersionMatcher{SdkSpecFrom(\"Tiramisu\")}",
+      "range": {
+        "startLine": 3109,
+        "startChar": 61,
+        "endLine": 3109,
+        "endChar": 72
+      },
+      "revId": "6003bd011da041d884662507f406d7d2014e5ac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
