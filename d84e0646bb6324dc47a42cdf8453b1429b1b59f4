@@ -1,6 +1,92 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4229bd0b_7f1dfc51",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2162,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-03T18:32:27Z",
+      "side": 1,
+      "message": "Style: Use lowercase initial letter for local variables.",
+      "range": {
+        "startLine": 2162,
+        "startChar": 4,
+        "endLine": 2162,
+        "endChar": 14
+      },
+      "revId": "d84e0646bb6324dc47a42cdf8453b1429b1b59f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3facbc0_73653dc8",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2162,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-03T18:32:27Z",
+      "side": 1,
+      "message": "Nit: PathInApex !\u003d \"\" is somewhat more idiomatic.",
+      "range": {
+        "startLine": 2162,
+        "startChar": 72,
+        "endLine": 2162,
+        "endChar": 91
+      },
+      "revId": "d84e0646bb6324dc47a42cdf8453b1429b1b59f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6183a2e_bdbeaa79",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2172,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-03T18:32:27Z",
+      "side": 1,
+      "message": "If this file doesn\u0027t have a rule then I\u0027d expect the dangling rules check in checkbuild to fail. Does this pass `m checkbuild`? (You can safely interrupt it if ninja starts building stuff.)\n\nTo achieve what you want here I think you should look at android.ErrorRule.",
+      "revId": "d84e0646bb6324dc47a42cdf8453b1429b1b59f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "757e3cc2_8cb79a75",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2175,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-03T18:32:27Z",
+      "side": 1,
+      "message": "Typo: \"temporary\"",
+      "range": {
+        "startLine": 2175,
+        "startChar": 38,
+        "endLine": 2175,
+        "endChar": 47
+      },
+      "revId": "d84e0646bb6324dc47a42cdf8453b1429b1b59f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e65062c2_ef8c8cbb",
