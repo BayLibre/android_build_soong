@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4c5bd3a_024f4909",
+        "filename": "cc/tidy.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-12-03T00:21:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f50511e7_c396e6fa",
+      "range": {
+        "startLine": 323,
+        "startChar": 77,
+        "endLine": 323,
+        "endChar": 99
+      },
+      "revId": "014eee3ed2c7f8d0f7bb1bef5b71e4996874930c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67822b8c_c5bb53a6",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-02T23:10:44Z",
       "side": 1,
       "message": "android.Module",
+      "range": {
+        "startLine": 336,
+        "startChar": 34,
+        "endLine": 336,
+        "endChar": 53
+      },
+      "revId": "014eee3ed2c7f8d0f7bb1bef5b71e4996874930c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef671300_e9399d70",
+        "filename": "cc/tidy.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-12-03T00:21:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67822b8c_c5bb53a6",
       "range": {
         "startLine": 336,
         "startChar": 34,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d36dd08_fbcd0421",
+        "filename": "cc/tidy.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-12-03T00:21:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf4c67de_9a65ca0b",
+      "range": {
+        "startLine": 337,
+        "startChar": 21,
+        "endLine": 337,
+        "endChar": 37
+      },
+      "revId": "014eee3ed2c7f8d0f7bb1bef5b71e4996874930c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8fefe85_49510047",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-12-02T23:10:44Z",
       "side": 1,
       "message": "This can be android.Module",
+      "range": {
+        "startLine": 341,
+        "startChar": 28,
+        "endLine": 341,
+        "endChar": 47
+      },
+      "revId": "014eee3ed2c7f8d0f7bb1bef5b71e4996874930c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa558fe2_fcb9bbe3",
+        "filename": "cc/tidy.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-12-03T00:21:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8fefe85_49510047",
       "range": {
         "startLine": 341,
         "startChar": 28,
