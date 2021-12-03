@@ -39,6 +39,30 @@
       },
       "revId": "5b721536461306cdc580d38794fbd23ba941fdd8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "391c4d47_06dd9da9",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-12-03T01:08:47Z",
+      "side": 1,
+      "message": "Agree that any order-only dependencies can probably also safely skip NDK-related build checking steps.",
+      "parentUuid": "7d11fcd6_e5a5964e",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 29
+      },
+      "revId": "5b721536461306cdc580d38794fbd23ba941fdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
