@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76e00f70_5a3caefe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-12-03T19:54:55Z",
+      "side": 1,
+      "message": "Remi, FYI, this change (I want to add a couple more tests) should allow bootclasspath and systemserverclasspath jars to have higher min_sdk_version.\n\nAllowing standalone system server jars (that go into javalibs of the apex) would need more work, but I think that\u0027s a lower priority.",
+      "revId": "9d183b2413b78492bff1a466cb74b31bed0b217a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
