@@ -37,7 +37,7 @@ var (
 		blueprint.RuleParams{
 			Depfile:     "${out}.d",
 			Deps:        blueprint.DepsGCC,
-			Command:     "$ccCmd --target=bpf -c $cFlags -MD -MF ${out}.d -o $out $in",
+			Command:     "$ccCmd --target=bpf -g -c $cFlags -MD -MF ${out}.d -o $out $in",
 			CommandDeps: []string{"$ccCmd"},
 		},
 		"ccCmd", "cFlags")
@@ -60,6 +60,7 @@ type BpfProperties struct {
 	Srcs         []string `android:"path"`
 	Cflags       []string
 	Include_dirs []string
+	Btf          bool
 }
 
 type bpf struct {
@@ -94,6 +95,10 @@ func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	cflags = append(cflags, bpf.properties.Cflags...)
+
+	if bpf.properties.Btf {
+		cflags = append(cflags, "-g")
+	}
 
 	srcs := android.PathsForModuleSrc(ctx, bpf.properties.Srcs)
 
