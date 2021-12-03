@@ -16,6 +16,23 @@
       "message": "looking, want to understand what changes to .o it makes first.\n\ncould we make this optional?\n\neh, https://android-review.googlesource.com/c/platform/system/bpf/+/1909155",
       "revId": "0bbc71b600eec623fa5c9e88a18e9c7653271d8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1be0f4da_1932bc93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2021-12-03T20:19:24Z",
+      "side": 1,
+      "message": "perhaps have a \u0027bpf_with_btf\u0027 rule type? or something?\n\nI\u0027m a tad worried what this will mean for mainline backward compatibility and my attempts to use these .o with iproute2\u0027s tc cli utility.",
+      "revId": "0bbc71b600eec623fa5c9e88a18e9c7653271d8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
