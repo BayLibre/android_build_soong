@@ -87,6 +87,30 @@
       },
       "revId": "5b721536461306cdc580d38794fbd23ba941fdd8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0bec200_617449e8",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-12-03T23:14:09Z",
+      "side": 1,
+      "message": "Good idea. I will do that in the next CL. Let\u0027s try this change and see the impact to clang-tidy enabled builds.",
+      "parentUuid": "64da08df_e2768f42",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 29
+      },
+      "revId": "5b721536461306cdc580d38794fbd23ba941fdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
