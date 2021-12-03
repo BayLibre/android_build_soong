@@ -63,6 +63,30 @@
       },
       "revId": "5b721536461306cdc580d38794fbd23ba941fdd8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64da08df_e2768f42",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-03T22:37:56Z",
+      "side": 1,
+      "message": "Maybe instead of this CL you could make ndkPathDeps in cc/compiler.go return getNdkHeadersTimestampFile, and then add a similar dependency to linkShared on getNdkBaseTimestampFile.  That would cover objFile compilation and tidy without the complexity of finding and rewriting the timestamp dependency.",
+      "parentUuid": "391c4d47_06dd9da9",
+      "range": {
+        "startLine": 638,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 29
+      },
+      "revId": "5b721536461306cdc580d38794fbd23ba941fdd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
