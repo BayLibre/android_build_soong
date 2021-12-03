@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04be28cc_da82a8c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 35
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T22:36:38Z",
+      "side": 1,
+      "message": "looking pretty good overall",
+      "revId": "a5f5c8e4060ba63df0e0d1c6d7c89bf9bd7a4298",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e3e898e_87eca7d2",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T22:36:38Z",
+      "side": 1,
+      "message": "godocs for exported method",
+      "range": {
+        "startLine": 35,
+        "startChar": 31,
+        "endLine": 35,
+        "endChar": 40
+      },
+      "revId": "a5f5c8e4060ba63df0e0d1c6d7c89bf9bd7a4298",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "732db670_30b8dc7b",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T22:36:38Z",
+      "side": 1,
+      "message": "godocs here also",
+      "range": {
+        "startLine": 76,
+        "startChar": 31,
+        "endLine": 76,
+        "endChar": 35
+      },
+      "revId": "a5f5c8e4060ba63df0e0d1c6d7c89bf9bd7a4298",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11778b1e_b00a6555",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T22:36:38Z",
+      "side": 1,
+      "message": "for the passing bp2build run, i\u0027m not seeing this in the artifacts -- I\u0027d recommend logging the directory and/or filename and running only bp2build on CI to debug the issue",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 556,
+        "endChar": 57
+      },
+      "revId": "a5f5c8e4060ba63df0e0d1c6d7c89bf9bd7a4298",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cbabbef_015c5258",
+        "filename": "shared/proto.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-03T22:36:38Z",
+      "side": 1,
+      "message": "this needs a license header",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 14
+      },
+      "revId": "a5f5c8e4060ba63df0e0d1c6d7c89bf9bd7a4298",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
