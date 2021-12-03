@@ -23,6 +23,7 @@ import (
 	_ "android/soong/cc/config"
 
 	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
 )
 
 func init() {
@@ -60,6 +61,8 @@ type BpfProperties struct {
 	Srcs         []string `android:"path"`
 	Cflags       []string
 	Include_dirs []string
+	// If set to true, generate BTF debug info for maps & programs
+	Btf          *bool
 }
 
 type bpf struct {
@@ -94,6 +97,10 @@ func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	cflags = append(cflags, bpf.properties.Cflags...)
+
+	if proptools.Bool(bpf.properties.Btf) {
+		cflags = append(cflags, "-g")
+	}
 
 	srcs := android.PathsForModuleSrc(ctx, bpf.properties.Srcs)
 
