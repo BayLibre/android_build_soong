@@ -8392,6 +8392,83 @@ func TestAndroidMk_RequiredModules(t *testing.T) {
 	ensureContains(t, androidMk, "LOCAL_REQUIRED_MODULES += otherapex")
 }
 
+func TestSdkLibraryCanHaveHigherMinSdkVersion(t *testing.T) {
+	preparer := android.GroupFixturePreparers(
+		PrepareForTestWithApexBuildComponents,
+		prepareForTestWithMyapex,
+		java.PrepareForTestWithJavaSdkLibraryFiles,
+		java.PrepareForTestWithJavaDefaultModules,
+		android.PrepareForTestWithAndroidBuildComponents,
+		dexpreopt.FixtureSetApexBootJars("myapex:mybootclasspathlib"),
+		dexpreopt.FixtureSetApexSystemServerJars("myapex:mysystemserverclasspathlib"),
+		android.FixtureWithRootAndroidBp(`
+			apex {
+				name: "myapex",
+				key: "myapex.key",
+				bootclasspath_fragments: ["mybootclasspathfragment"],
+				systemserverclasspath_fragments: ["mysystemserverclasspathfragment"],
+				min_sdk_version: "30",
+				updatable: false,
+			}
+	
+			apex_key {
+				name: "myapex.key",
+				public_key: "testkey.avbpubkey",
+				private_key: "testkey.pem",
+			}
+	
+			bootclasspath_fragment {
+				name: "mybootclasspathfragment",
+				contents: ["mybootclasspathlib"],
+				apex_available: ["myapex"],
+			}
+	
+			java_sdk_library {
+				name: "mybootclasspathlib",
+				srcs: ["mybootclasspathlib.java"],
+				apex_available: ["myapex"],
+				compile_dex: true,
+				unsafe_ignore_missing_latest_api: true,
+				min_sdk_version: "31",
+				static_libs: ["util"],
+			}
+	
+			systemserverclasspath_fragment {
+				name: "mysystemserverclasspathfragment",
+				contents: ["mysystemserverclasspathlib"],
+				apex_available: ["myapex"],
+			}
+	
+			java_sdk_library {
+				name: "mysystemserverclasspathlib",
+				srcs: ["mysystemserverclasspathlib.java"],
+				apex_available: ["myapex"],
+				compile_dex: true,
+				min_sdk_version: "32",
+				unsafe_ignore_missing_latest_api: true,
+				static_libs: ["util"],
+			}
+
+			java_library {
+				name: "util",
+                srcs: ["a.java"],
+				apex_available: ["myapex"],
+				min_sdk_version: "31",
+				static_libs: ["another_util"],
+			}
+
+			java_library {
+				name: "another_util",
+                srcs: ["a.java"],
+				min_sdk_version: "31",
+				apex_available: ["myapex"],
+			}
+	`),
+	)
+
+	preparer.RunTest(t)
+}
+
 func TestMain(m *testing.M) {
 	os.Exit(m.Run())
 }
