@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83a6f927_1dce0ecc",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1664,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-12-04T19:41:05Z",
+      "side": 1,
+      "message": "Good point. Updated as isDir",
+      "parentUuid": "6c8d48dc_5dce341b",
+      "range": {
+        "startLine": 1664,
+        "startChar": 15,
+        "endLine": 1664,
+        "endChar": 21
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d332132_cc17cc8a",
         "filename": "bpfix/bpfix/bpfix_test.go",
         "patchSetId": 2
@@ -71,6 +95,30 @@
       "writtenOn": "2021-12-03T22:15:14Z",
       "side": 1,
       "message": "for these cases you aren\u0027t reusing, I\u0027d recommend embedding them in the test case so they\u0027re adjacent to the test case and it\u0027s easier to read in one go.",
+      "range": {
+        "startLine": 1689,
+        "startChar": 0,
+        "endLine": 1700,
+        "endChar": 3
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0af2f7a2_402dd88c",
+        "filename": "bpfix/bpfix/bpfix_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1700,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-12-04T19:41:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d332132_cc17cc8a",
       "range": {
         "startLine": 1689,
         "startChar": 0,
@@ -106,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f8282c25_3381dbd5",
+        "filename": "tests/androidmk_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-12-04T19:41:05Z",
+      "side": 1,
+      "message": "I see. How about this one https://cs.android.com/android/platform/superproject/+/master:build/soong/bpfix/Android.bp;l\u003d1? (with year of 2021?)\n\nBut I did not see license header for other .sh files in this directory. So the files for bazel have a different policy of license headers?",
+      "parentUuid": "fc599feb_588a6df8",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 15
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69cabc51_e90a91e9",
         "filename": "tests/androidmk_test.sh",
         "patchSetId": 2
@@ -117,6 +189,30 @@
       "writtenOn": "2021-12-03T22:15:14Z",
       "side": 1,
       "message": "one risk of this test is that it isn\u0027t running on CI, unfortunately -- you can look at hooking it into our other integration tests: build/soong/tests/run_integration_tests.sh",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 51
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f602d8af_8a3195c7",
+        "filename": "tests/androidmk_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-12-04T19:41:05Z",
+      "side": 1,
+      "message": "Yeah, I also noticed that but was not sure the appropriate way to include it. Do you mean to add a line like `\"$TOP/build/soong/tests/androidmk_test.sh\"` to the script of build/soong/tests/run_integration_tests.sh? My understanding is that this script seems for Soong to Bazel tests which is eventually called by TH, see https://cs.android.com/android/platform/superproject/+/master:prebuilts/bazel/linux-x86_64/README.md;l\u003d45.\n\nBut I am totally Okay if I can add the current script into the build/soong/tests/run_integration_tests.sh",
+      "parentUuid": "69cabc51_e90a91e9",
       "range": {
         "startLine": 3,
         "startChar": 0,
@@ -152,6 +248,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ed583be_13a74e2c",
+        "filename": "tests/androidmk_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-12-04T19:41:05Z",
+      "side": 1,
+      "message": "Yes. Okay, label it as input and move it above the out.",
+      "parentUuid": "e601a9b1_f1a40101",
+      "range": {
+        "startLine": 87,
+        "startChar": 14,
+        "endLine": 87,
+        "endChar": 22
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce8c05b3_81940d32",
         "filename": "tests/androidmk_test.sh",
         "patchSetId": 2
@@ -163,6 +283,30 @@
       "writtenOn": "2021-12-03T22:15:14Z",
       "side": 1,
       "message": "i think with the call of setup + https://cs.android.com/android/platform/superproject/+/master:build/soong/tests/lib.sh;l\u003d15;drc\u003d34d60c9281a127d1ff5e9cf0d585a2d795acbcf6, you shouldn\u0027t need to call cleanup_mock_top each time",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 20
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f048b01_00fb238b",
+        "filename": "tests/androidmk_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-12-04T19:41:05Z",
+      "side": 1,
+      "message": "I manually tested this, and found if I remove the `cleanup_mock_top` here, I will observe a tmp file as tmp/st.xxxxx when the test fails. While if having this line, no tmp file was observed. So I think we should keep this line in order to delete it, no matter the test case fails or not.\n\nMy understanding to the code you linked to is that: if there is any error occurs during the running `mktemp` command, then that will trigger the trap line to execute the `clean_mock_top` command. But the error occurring after that will not.",
+      "parentUuid": "ce8c05b3_81940d32",
       "range": {
         "startLine": 125,
         "startChar": 0,
