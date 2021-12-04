@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ad3121_7af83d3b",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-04T04:41:29Z",
+      "side": 1,
+      "message": "Prefer android.PathForOutput(ctx, \"rustc\").String(), which will produce out/soong/rustc",
+      "range": {
+        "startLine": 221,
+        "startChar": 21,
+        "endLine": 221,
+        "endChar": 66
+      },
+      "revId": "5a1ff376edff9a6bf618c01fb4d01a4373ae2e38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
