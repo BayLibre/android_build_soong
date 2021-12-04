@@ -51,6 +51,23 @@
       "parentUuid": "1be0f4da_1932bc93",
       "revId": "0bbc71b600eec623fa5c9e88a18e9c7653271d8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc00fe41_4273d0b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2021-12-04T12:08:44Z",
+      "side": 1,
+      "message": "from aosp-master cuttlefish builds with and without this patch\nout/target/product/vsoc_x86/system/etc/bpf\nout/target/product/vsoc_x86/apex/com.android.tethering/etc/bpf\n\n$ ls -l pre-btf\ntotal 172\n-rw-r----- 1 maze eng  1696 Dec  3 13:42 bpf_load_tp_prog.o\n-rw-r----- 1 maze eng  8952 Dec  3 13:40 clatd.o\n-rw-r----- 1 maze eng  6272 Dec  3 13:40 fuse_media.o\n-rw-r----- 1 maze eng  1968 Dec  3 13:39 gpu_mem.o\n-rw-r----- 1 maze eng  2784 Dec  3 14:15 kern.o\n-rw-r----- 1 maze eng 16840 Dec  3 13:40 netd.o\n-rw-r----- 1 maze eng 99832 Dec  3 13:40 offload.o\n-rw-r----- 1 maze eng  1640 Dec  3 13:40 test.o\n-rw-r----- 1 maze eng 10944 Dec  3 13:39 time_in_state.o\n\n$ ls -l post-btf\ntotal 720\n-rw-r----- 1 maze eng  13200 Dec  4 03:54 block.o\n-rw-r----- 1 maze eng  11520 Dec  4 03:55 bpf_load_tp_prog.o\n-rw-r----- 1 maze eng  44768 Dec  4 03:54 clatd.o\n-rw-r----- 1 maze eng  25936 Dec  4 03:54 fuse_media.o\n-rw-r----- 1 maze eng  12512 Dec  4 03:54 gpu_mem.o\n-rw-r----- 1 maze eng  78336 Dec  4 03:54 netd.o\n-rw-r----- 1 maze eng 459168 Dec  4 03:54 offload.o\n-rw-r----- 1 maze eng  13032 Dec  4 03:54 test.o\n-rw-r----- 1 maze eng  54584 Dec  4 03:54 time_in_state.o\n\nThis looks a bit like a system health issue...",
+      "revId": "0bbc71b600eec623fa5c9e88a18e9c7653271d8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
