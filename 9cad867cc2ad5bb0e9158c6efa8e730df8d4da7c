@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3e67da2_49b7e5ae",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2396,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-04T05:43:44Z",
+      "side": 1,
+      "message": "\"Consider\" makes this sound like a warning.  Maybe \"Remove `future_updateable: true`\"",
+      "range": {
+        "startLine": 2396,
+        "startChar": 62,
+        "endLine": 2396,
+        "endChar": 70
+      },
+      "revId": "9cad867cc2ad5bb0e9158c6efa8e730df8d4da7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
