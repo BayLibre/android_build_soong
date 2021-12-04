@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78c32f53_894f7e45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-12-04T01:34:30Z",
+      "side": 1,
+      "message": "Please verify that this does not cause regression for the Starlark-based build before committing.",
+      "revId": "864028a71b373d91839b045e1818fa2db2af465f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
