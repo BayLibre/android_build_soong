@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ba04c13_699d75cb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-12-04T05:35:07Z",
+      "side": 1,
+      "message": "OK. That makes sense. Done.",
+      "parentUuid": "7edd95cd_2e85cecb",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "04a583d3b6f09a743b08dfd105ca4797b9171a0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fabbfcba_b359393c",
@@ -95,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6be0b214_8e1e104f",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-12-04T05:35:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fabbfcba_b359393c",
+      "range": {
+        "startLine": 131,
+        "startChar": 47,
+        "endLine": 131,
+        "endChar": 51
+      },
+      "revId": "04a583d3b6f09a743b08dfd105ca4797b9171a0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ff398bb_0b5beb31",
@@ -108,6 +156,30 @@
       "writtenOn": "2021-11-30T17:59:05Z",
       "side": 1,
       "message": "nit: s/Force_// - since your comment explains it can be overriden.",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 32
+      },
+      "revId": "04a583d3b6f09a743b08dfd105ca4797b9171a0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc2b2672_834cdfe2",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-12-04T05:35:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ff398bb_0b5beb31",
       "range": {
         "startLine": 135,
         "startChar": 1,
