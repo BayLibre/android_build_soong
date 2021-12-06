@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9c3f6c5_cf864e4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-12-06T10:25:19Z",
+      "side": 1,
+      "message": "Not an owner of soong, but general LGTM",
+      "revId": "e460d2c87ff87a21b7a36be5979103f58b61a3a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "737b99f1_e6d7893f",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 3120,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-12-06T10:25:19Z",
+      "side": 1,
+      "message": "nit: for readability, it\u0027s probably better to name this as android.IsAtMostSdkVersion or something similar?",
+      "range": {
+        "startLine": 3120,
+        "startChar": 42,
+        "endLine": 3120,
+        "endChar": 48
+      },
+      "revId": "e460d2c87ff87a21b7a36be5979103f58b61a3a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
