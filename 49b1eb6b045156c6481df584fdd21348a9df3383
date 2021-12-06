@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0cde9e1_9d6c4870",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-06T16:44:43Z",
+      "side": 1,
+      "message": "Paul, could you please review it for owner\u0027s approval? Thanks.",
+      "revId": "49b1eb6b045156c6481df584fdd21348a9df3383",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
