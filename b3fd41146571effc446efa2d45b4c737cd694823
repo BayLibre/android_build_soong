@@ -16,6 +16,24 @@
       "message": "Why did you extract this from UpdatableModule? Why not just add CheckMinSdkVersion(ctx) to UpdatableModule?",
       "revId": "b3fd41146571effc446efa2d45b4c737cd694823",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2a22677_efd15b3f",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-12-06T15:54:12Z",
+      "side": 1,
+      "message": "The UpdatableModule interface itself wasn\u0027t very useful and also misleading. Going foward, not every type that implements CheckMinSdkVersion needs to implement WalkPayloadDeps either.\n\nSo I thought this was okay?",
+      "parentUuid": "cf1c6701_0a4f29c7",
+      "revId": "b3fd41146571effc446efa2d45b4c737cd694823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
