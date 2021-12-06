@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf1c6701_0a4f29c7",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-06T13:02:10Z",
+      "side": 1,
+      "message": "Why did you extract this from UpdatableModule? Why not just add CheckMinSdkVersion(ctx) to UpdatableModule?",
+      "revId": "b3fd41146571effc446efa2d45b4c737cd694823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
