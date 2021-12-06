@@ -2325,7 +2325,7 @@ func (a *apexBundle) CheckMinSdkVersion(ctx android.ModuleContext) {
 	android.CheckMinSdkVersion(ctx, minSdkVersion, a.WalkPayloadDeps)
 }
 
-func (a *apexBundle) MinSdkVersion(ctx android.BaseModuleContext) android.SdkSpec {
+func (a *apexBundle) MinSdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
 	return android.SdkSpec{
 		Kind:     android.SdkNone,
 		ApiLevel: a.minSdkVersion(ctx),
@@ -2333,7 +2333,7 @@ func (a *apexBundle) MinSdkVersion(ctx android.BaseModuleContext) android.SdkSpe
 	}
 }
 
-func (a *apexBundle) minSdkVersion(ctx android.BaseModuleContext) android.ApiLevel {
+func (a *apexBundle) minSdkVersion(ctx android.EarlyModuleContext) android.ApiLevel {
 	ver := proptools.String(a.properties.Min_sdk_version)
 	if ver == "" {
 		return android.NoneApiLevel
