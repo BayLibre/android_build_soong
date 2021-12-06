@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "709d89ef_c6cf05cc",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-06T14:19:44Z",
+      "side": 1,
+      "message": "not a request to change, but i\u0027m struggling to see what\u0027s the delta between this test and the one above? they look so simliar ... it\u0027d be nice to not repeatedly test the same stuff...",
+      "range": {
+        "startLine": 397,
+        "startChar": 5,
+        "endLine": 397,
+        "endChar": 22
+      },
+      "revId": "6f476b3b30a233f6f018ac2476d165e48807bcf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "602ee98a_bf06a683",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-06T14:19:44Z",
+      "side": 1,
+      "message": "perhaps as a cleanup we can see if we can dedupe anything between this use and building static/shared libraries",
+      "range": {
+        "startLine": 312,
+        "startChar": 22,
+        "endLine": 312,
+        "endChar": 46
+      },
+      "revId": "6f476b3b30a233f6f018ac2476d165e48807bcf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "646faa3e_c420befa",
+        "filename": "cc/library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-06T14:19:44Z",
+      "side": 1,
+      "message": "hmm with this change, would it make sense to split the cquery into a static cquery/shared cquery? (as a cleanup)",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 61
+      },
+      "revId": "6f476b3b30a233f6f018ac2476d165e48807bcf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
