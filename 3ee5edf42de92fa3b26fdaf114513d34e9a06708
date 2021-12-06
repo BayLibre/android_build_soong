@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b0db39b_5c8cd2b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 37
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-06T18:42:46Z",
+      "side": 1,
+      "message": "Mild confusion",
+      "revId": "3ee5edf42de92fa3b26fdaf114513d34e9a06708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98a7c2f3_20ff80e6",
@@ -48,6 +65,24 @@
       "writtenOn": "2021-12-06T16:41:01Z",
       "side": 1,
       "message": "Nit: maybe this should be to stderr?",
+      "revId": "3ee5edf42de92fa3b26fdaf114513d34e9a06708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1950a31_d02a913d",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-06T18:42:46Z",
+      "side": 1,
+      "message": "It is...?",
+      "parentUuid": "98a7c2f3_20ff80e6",
       "revId": "3ee5edf42de92fa3b26fdaf114513d34e9a06708",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
