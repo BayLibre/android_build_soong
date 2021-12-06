@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2e6ffe2_d0550702",
+        "filename": "java/androidmk.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 600,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-12-06T00:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01b17084_5979814f",
+      "range": {
+        "startLine": 600,
+        "startChar": 45,
+        "endLine": 600,
+        "endChar": 50
+      },
+      "revId": "3c0b78f7081d68dc4acc40d09d2a097c5556923d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b510fb4_08a3d673",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-30T12:05:10Z",
       "side": 1,
       "message": "nit: appends?",
+      "range": {
+        "startLine": 605,
+        "startChar": 24,
+        "endLine": 605,
+        "endChar": 28
+      },
+      "revId": "3c0b78f7081d68dc4acc40d09d2a097c5556923d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28ea896b_e2122876",
+        "filename": "java/androidmk.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-12-06T00:38:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b510fb4_08a3d673",
       "range": {
         "startLine": 605,
         "startChar": 24,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a73f1586_dc73e71a",
+        "filename": "java/androidmk.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-12-06T00:38:41Z",
+      "side": 1,
+      "message": "That\u0027s a good point. Adding sort here to make the result more deterministic.",
+      "parentUuid": "f72d789f_057e7d89",
+      "range": {
+        "startLine": 606,
+        "startChar": 68,
+        "endLine": 606,
+        "endChar": 70
+      },
+      "revId": "3c0b78f7081d68dc4acc40d09d2a097c5556923d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89dd6933_b11a5df2",
@@ -110,6 +182,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08734d6c_ab91debd",
+        "filename": "java/androidmk.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-12-06T00:38:41Z",
+      "side": 1,
+      "message": "Yeah, the implementation could benefit from some documentation. Adding this text as a comment with a little modification",
+      "parentUuid": "89dd6933_b11a5df2",
+      "range": {
+        "startLine": 608,
+        "startChar": 5,
+        "endLine": 608,
+        "endChar": 102
+      },
+      "revId": "3c0b78f7081d68dc4acc40d09d2a097c5556923d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d51f1085_e459f50b",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-11-30T12:05:10Z",
       "side": 1,
       "message": "nit: read-only? (this English, not Java :) )",
+      "range": {
+        "startLine": 6,
+        "startChar": 67,
+        "endLine": 6,
+        "endChar": 75
+      },
+      "revId": "3c0b78f7081d68dc4acc40d09d2a097c5556923d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94bc99e6_39790337",
+        "filename": "scripts/gen-update-api-script.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-12-06T00:38:41Z",
+      "side": 1,
+      "message": "I have updated the comment to make it more dev-friendly",
+      "parentUuid": "d51f1085_e459f50b",
       "range": {
         "startLine": 6,
         "startChar": 67,
