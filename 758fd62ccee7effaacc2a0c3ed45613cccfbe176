@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9815c9b9_60be4649",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-06T16:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd1f044d_48015571",
+      "range": {
+        "startLine": 542,
+        "startChar": 52,
+        "endLine": 542,
+        "endChar": 65
+      },
+      "revId": "758fd62ccee7effaacc2a0c3ed45613cccfbe176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4d64916_10fc458f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-06T12:39:06Z",
       "side": 1,
       "message": "nit: wrap all of these in a writeMetrics function.",
+      "range": {
+        "startLine": 539,
+        "startChar": 1,
+        "endLine": 566,
+        "endChar": 2
+      },
+      "revId": "758fd62ccee7effaacc2a0c3ed45613cccfbe176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "896f0e73_2744356b",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-06T16:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4d64916_10fc458f",
       "range": {
         "startLine": 539,
         "startChar": 1,
