@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d89e314a_53753c36",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-06T19:12:14Z",
+      "side": 1,
+      "message": "I\u0027m with ya. FWIW, I think you wrote it ;) aosp/1835374",
+      "parentUuid": "709d89ef_c6cf05cc",
+      "range": {
+        "startLine": 397,
+        "startChar": 5,
+        "endLine": 397,
+        "endChar": 22
+      },
+      "revId": "6f476b3b30a233f6f018ac2476d165e48807bcf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "602ee98a_bf06a683",
         "filename": "cc/library.go",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f805b5f0_7b7dc4e8",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-06T19:12:14Z",
+      "side": 1,
+      "message": "indeed:)",
+      "parentUuid": "602ee98a_bf06a683",
+      "range": {
+        "startLine": 312,
+        "startChar": 22,
+        "endLine": 312,
+        "endChar": 46
+      },
+      "revId": "6f476b3b30a233f6f018ac2476d165e48807bcf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "646faa3e_c420befa",
         "filename": "cc/library_test.go",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-06T14:19:44Z",
       "side": 1,
       "message": "hmm with this change, would it make sense to split the cquery into a static cquery/shared cquery? (as a cleanup)",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 61
+      },
+      "revId": "6f476b3b30a233f6f018ac2476d165e48807bcf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d298be01_14c66c49",
+        "filename": "cc/library_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-06T19:12:14Z",
+      "side": 1,
+      "message": "I think this is very much a personal flavor preference, and I\u0027m inclined to keep things as is. It\u0027s a tradeoff: We have some optional fields in our query result, but we have fewer query request types.",
+      "parentUuid": "646faa3e_c420befa",
       "range": {
         "startLine": 262,
         "startChar": 0,
