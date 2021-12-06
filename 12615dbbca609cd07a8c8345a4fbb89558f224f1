@@ -16,6 +16,24 @@
       "message": "I just skimmed over this (after all, I am not supposed to be working and I\u0027m not quite at the peak of my mental abilities anyway), but this is awesome work. Really.\n\nIs this equivalent to Soong\u0027s protocol buffers support? If so, I am somewhat surprised, and positively so, that it\u0027s so free of quirks.",
       "revId": "12615dbbca609cd07a8c8345a4fbb89558f224f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e2e2ebd_75fccd38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-06T14:46:14Z",
+      "side": 1,
+      "message": "There is one quirk that this doesn\u0027t address, that I suspect will primarily be an issue for Python. I\u0027m going to write up a proposal to handle that on the Soong side",
+      "parentUuid": "2d803724_9a92d172",
+      "revId": "12615dbbca609cd07a8c8345a4fbb89558f224f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
