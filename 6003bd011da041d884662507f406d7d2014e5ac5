@@ -39,6 +39,30 @@
       },
       "revId": "6003bd011da041d884662507f406d7d2014e5ac5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2902b57_b3a92af7",
+        "filename": "apex/apex.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3109,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-12-06T05:35:12Z",
+      "side": 1,
+      "message": "Thanks, I tried to do something similar but had to adapt a bit because SdkSpecFrom takes a context - hopefully that\u0027s OK.",
+      "parentUuid": "a7a8ed35_5cd14f54",
+      "range": {
+        "startLine": 3109,
+        "startChar": 61,
+        "endLine": 3109,
+        "endChar": 72
+      },
+      "revId": "6003bd011da041d884662507f406d7d2014e5ac5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
