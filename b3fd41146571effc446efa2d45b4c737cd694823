@@ -34,6 +34,24 @@
       "parentUuid": "cf1c6701_0a4f29c7",
       "revId": "b3fd41146571effc446efa2d45b4c737cd694823",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f62119e_cd54e8b6",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-06T16:22:59Z",
+      "side": 1,
+      "message": "Ok. Just wanted to understand the changes.",
+      "parentUuid": "a2a22677_efd15b3f",
+      "revId": "b3fd41146571effc446efa2d45b4c737cd694823",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
