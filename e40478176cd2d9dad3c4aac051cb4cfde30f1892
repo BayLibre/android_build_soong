@@ -34,6 +34,24 @@
       "parentUuid": "20230ea8_cec3e0e3",
       "revId": "e40478176cd2d9dad3c4aac051cb4cfde30f1892",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4af8537_66bd9d93",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-06T23:18:52Z",
+      "side": 1,
+      "message": "But if along the way you find some code that is incompatible with 1.11 you have no way to pin it to 1.9 to unblock moving forward on 1.11.\n\nI\u0027d suggest:\n- remove the no-op java_version: \"1.9\" lines in Android.bp files.\n- when the flag is set only change the default version to 1.11.\n \nThat will give you the same behavior as this CL, but also give you more flexibility to deal with problems that come up later by adding java_language: \"1.9\" to modules that are incompatible with 1.11.",
+      "parentUuid": "4d36c813_1e3e9232",
+      "revId": "e40478176cd2d9dad3c4aac051cb4cfde30f1892",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
