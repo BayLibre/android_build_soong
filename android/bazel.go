@@ -412,7 +412,7 @@ var (
 		"libprotobuf-cpp-full", "libprotobuf-cpp-lite", // Unsupported product&vendor suffix. b/204811222 and b/204810610.
 
 		// Depends on libprotobuf-cpp-*
-		"libadb_crypto", "libadb_crypto_static", "libadb_pairing_connection",
+		"libadb_pairing_connection",
 		"libadb_pairing_connection_static",
 		"libadb_pairing_server", "libadb_pairing_server_static",
 		"libadb_protos_static", "libadb_protos",
