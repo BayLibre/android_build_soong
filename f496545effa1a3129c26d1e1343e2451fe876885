@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2255f130_c1087db0",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2328,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-06T16:23:46Z",
+      "side": 1,
+      "message": "Can\u0027t this just return ApiLevel?",
+      "revId": "f496545effa1a3129c26d1e1343e2451fe876885",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
