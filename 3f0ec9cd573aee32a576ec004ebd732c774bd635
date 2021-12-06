@@ -295,6 +295,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2cc47e1_48817a9f",
+        "filename": "tests/androidmk_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-12-06T17:31:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6027154_94fe0881",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 51
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e601a9b1_f1a40101",
