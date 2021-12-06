@@ -82,6 +82,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac2ac72a_799155aa",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1664,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-06T14:59:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83a6f927_1dce0ecc",
+      "range": {
+        "startLine": 1664,
+        "startChar": 15,
+        "endLine": 1664,
+        "endChar": 21
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d332132_cc17cc8a",
@@ -176,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cd3ad63_35de4042",
+        "filename": "tests/androidmk_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-06T14:59:48Z",
+      "side": 1,
+      "message": "a lack of knowledge that they were necessary (: -- I\u0027ll file a bug for us to cleanup",
+      "parentUuid": "f8282c25_3381dbd5",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 15
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69cabc51_e90a91e9",
@@ -213,6 +261,30 @@
       "side": 1,
       "message": "Yeah, I also noticed that but was not sure the appropriate way to include it. Do you mean to add a line like `\"$TOP/build/soong/tests/androidmk_test.sh\"` to the script of build/soong/tests/run_integration_tests.sh? My understanding is that this script seems for Soong to Bazel tests which is eventually called by TH, see https://cs.android.com/android/platform/superproject/+/master:prebuilts/bazel/linux-x86_64/README.md;l\u003d45.\n\nBut I am totally Okay if I can add the current script into the build/soong/tests/run_integration_tests.sh",
       "parentUuid": "69cabc51_e90a91e9",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 51
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6027154_94fe0881",
+        "filename": "tests/androidmk_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-06T14:59:48Z",
+      "side": 1,
+      "message": "yep, adding`\"$TOP/build/soong/tests/androidmk_test.sh\" will make it run on TH :)",
+      "parentUuid": "f602d8af_8a3195c7",
       "range": {
         "startLine": 3,
         "startChar": 0,
@@ -270,6 +342,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "47adb22b_0007730e",
+        "filename": "tests/androidmk_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-06T14:59:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ed583be_13a74e2c",
+      "range": {
+        "startLine": 87,
+        "startChar": 14,
+        "endLine": 87,
+        "endChar": 22
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce8c05b3_81940d32",
@@ -307,6 +403,30 @@
       "side": 1,
       "message": "I manually tested this, and found if I remove the `cleanup_mock_top` here, I will observe a tmp file as tmp/st.xxxxx when the test fails. While if having this line, no tmp file was observed. So I think we should keep this line in order to delete it, no matter the test case fails or not.\n\nMy understanding to the code you linked to is that: if there is any error occurs during the running `mktemp` command, then that will trigger the trap line to execute the `clean_mock_top` command. But the error occurring after that will not.",
       "parentUuid": "ce8c05b3_81940d32",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 20
+      },
+      "revId": "3f0ec9cd573aee32a576ec004ebd732c774bd635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "780fb749_a695805a",
+        "filename": "tests/androidmk_test.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-06T14:59:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7f048b01_00fb238b",
       "range": {
         "startLine": 125,
         "startChar": 0,
