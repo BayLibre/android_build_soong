@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd1f044d_48015571",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-06T12:39:06Z",
+      "side": 1,
+      "message": "To be precise, this should be \"for generating bp2build metrics\". LOG_DIR isn\u0027t needed to use Bazel.",
+      "range": {
+        "startLine": 542,
+        "startChar": 52,
+        "endLine": 542,
+        "endChar": 65
+      },
+      "revId": "758fd62ccee7effaacc2a0c3ed45613cccfbe176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4d64916_10fc458f",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 36
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-06T12:39:06Z",
+      "side": 1,
+      "message": "nit: wrap all of these in a writeMetrics function.",
+      "range": {
+        "startLine": 539,
+        "startChar": 1,
+        "endLine": 566,
+        "endChar": 2
+      },
+      "revId": "758fd62ccee7effaacc2a0c3ed45613cccfbe176",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
