@@ -16,6 +16,24 @@
       "message": "This means you can never target a module to 1.9, which will likely be necessary. Does this really need to change everything that targets 1.9 to 1.11, or should it change the default when unspecified and leave manual selections alone?\n\nThere are only 4 Android.bp files in the tree that currently specify 1.9, and they look like the ones that needed 1.9 when the default was 1.8 (https://cs.android.com/search?q\u003d%22java_version:%20%5C%221.9%5C%22%22).  Those lines should probably be deleted now that 1.9 is the default.",
       "revId": "e40478176cd2d9dad3c4aac051cb4cfde30f1892",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d36c813_1e3e9232",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2021-12-06T23:00:51Z",
+      "side": 1,
+      "message": "Yes, that\u0027s right, when the experimental env var is set, 1.11 will be used, even though 1.9 was specified in the module. Though the EXPERIMENTAL_TARGET_JAVA_VERSION_11 flag is not used in any of the current builds, it\u0027s just used to test as we\u0027re preparing for the update to 1.11.\n\nOnce it\u0027s ready for the switch, we\u0027ll remove the code added here, and just use 1.11 for default. In any case, I think that by that time the 1.9 options currently used in Android.bp files will probably be removed, or updated to 1.11.",
+      "parentUuid": "20230ea8_cec3e0e3",
+      "revId": "e40478176cd2d9dad3c4aac051cb4cfde30f1892",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
