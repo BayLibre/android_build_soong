@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27d3289f_82ef0a77",
+        "filename": "bp2build/android_app_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-06T11:08:31Z",
+      "side": 1,
+      "message": "\"simple example with overrides\"?",
+      "range": {
+        "startLine": 61,
+        "startChar": 53,
+        "endLine": 61,
+        "endChar": 67
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "599978c3_6a9b3017",
         "filename": "java/app.go",
         "patchSetId": 8
@@ -95,6 +118,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ccfa4fe3_bf98b748",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-06T11:08:31Z",
+      "side": 1,
+      "message": "+1 let\u0027s not read into product config for bp2build. It makes the generated BUILD files dependent on a specific combination of product configuration, which we should try to avoid.",
+      "parentUuid": "93eb2888_3306ff94",
+      "range": {
+        "startLine": 1464,
+        "startChar": 36,
+        "endLine": 1464,
+        "endChar": 103
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4ae6baae_89bf4263",
         "filename": "java/app.go",
         "patchSetId": 8
@@ -152,6 +199,30 @@
       "writtenOn": "2021-12-03T23:05:29Z",
       "side": 1,
       "message": "do you think we\u0027ll need this functionality again? would it be worth adding this to android/bazel_paths.go?",
+      "range": {
+        "startLine": 1478,
+        "startChar": 2,
+        "endLine": 1482,
+        "endChar": 3
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dcb473c_c653bde3",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1482,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-06T11:08:31Z",
+      "side": 1,
+      "message": "yeah seems reasonable to wrap this all up in a function like `resourceFiles :\u003d android.BazelPathsForFilesInDir(ctx, a.aaptProperties.Resource_dirs, \"res\")`",
+      "parentUuid": "11d00680_8c7fe6f4",
       "range": {
         "startLine": 1478,
         "startChar": 2,
