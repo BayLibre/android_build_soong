@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "547602a1_4aa026da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-12-06T04:22:37Z",
+      "side": 1,
+      "message": "I agree with Maciej that we would need to be careful about system health and compatibility here. In particular, as soon as this CL is merged, tethering.o (whose size is going up 4.5x and whose contents are changing) will be rolled out to all R+ devices in the next mainline cut.\n\nDo we have an idea of the system health impact of these changes (e.g., possible boot time regressions)? Do we expect performance to be impacted at all? Do we have an idea on how compressible the debug information is?",
+      "revId": "ad6bb9b3e13de1e66c4abf0b87f3dae91eab7a93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
