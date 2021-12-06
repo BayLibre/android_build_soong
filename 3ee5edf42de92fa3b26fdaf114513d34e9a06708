@@ -85,6 +85,24 @@
       "parentUuid": "98a7c2f3_20ff80e6",
       "revId": "3ee5edf42de92fa3b26fdaf114513d34e9a06708",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60341864_a2c68fd7",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-06T18:44:39Z",
+      "side": 1,
+      "message": "it sure is. idk what I was thinking :D",
+      "parentUuid": "d1950a31_d02a913d",
+      "revId": "3ee5edf42de92fa3b26fdaf114513d34e9a06708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
