@@ -52,6 +52,24 @@
       "parentUuid": "4d36c813_1e3e9232",
       "revId": "e40478176cd2d9dad3c4aac051cb4cfde30f1892",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d802681_1277e580",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2021-12-06T23:23:40Z",
+      "side": 1,
+      "message": "OK, I\u0027ll do that. I\u0027ll also have to update https://cs.android.com/android/platform/superproject/+/master:build/soong/java/sdk.go;drc\u003de5ad90c37bc433ff3fb2058430bc64b67334dd6d;l\u003d59 to return the default value based on the experimental flag.",
+      "parentUuid": "c4af8537_66bd9d93",
+      "revId": "e40478176cd2d9dad3c4aac051cb4cfde30f1892",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
