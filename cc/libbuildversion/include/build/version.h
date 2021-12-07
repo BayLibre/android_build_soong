@@ -22,6 +22,13 @@
 namespace android {
 namespace build {
 
+/**
+ * Returns the build number corresponding to the system image.
+ *
+ * Note that on a device, the system image and vendor image may come from
+ * different builds, and this will return the system image build number even
+ * when called from the vendor image.
+ */
 std::string GetBuildNumber();
 
 } // namespace build
