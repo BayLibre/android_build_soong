@@ -16,6 +16,24 @@
       "message": "IsEnvTrue converts an environment variable to a bool",
       "revId": "d83d4ce5ad5385562d64abe103622b5e32963de1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "795fae3c_439e9895",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2021-12-07T17:47:41Z",
+      "side": 1,
+      "message": "Thank you, it\u0027s much better with it.",
+      "parentUuid": "3d61dded_de39b8c1",
+      "revId": "d83d4ce5ad5385562d64abe103622b5e32963de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
