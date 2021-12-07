@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e22a9de8_d7982240",
+        "filename": "android/bazel.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1714053
+      },
+      "writtenOn": "2021-12-07T01:41:44Z",
+      "side": 1,
+      "message": "🎉",
+      "parentUuid": "a25a68c9_d7ac543a",
+      "range": {
+        "startLine": 228,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 22
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27d3289f_82ef0a77",
@@ -60,6 +84,30 @@
       "writtenOn": "2021-12-03T23:05:29Z",
       "side": 1,
       "message": "srcs/exclude_srcs appears to be arch-variant https://cs.android.com/android/platform/superproject/+/master:build/soong/java/base.go;l\u003d47,56;drc\u003d0a420e771a2201c99f570cf48bd09a6bd837cce2\n\nCan we add support or a file a bug to support this?",
+      "range": {
+        "startLine": 1460,
+        "startChar": 1,
+        "endLine": 1460,
+        "endChar": 128
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b23d105a_22fda6dc",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1460,
+      "author": {
+        "id": 1714053
+      },
+      "writtenOn": "2021-12-07T01:41:44Z",
+      "side": 1,
+      "message": "yeah I would guess that we would need to \"render\" this as select()\u0027s in the bazel build file, I think we have some examples of this elsewhere, but I don\u0027t think we\u0027ve figured out exactly how we\u0027ll want to support compiling app to different architectures yet",
+      "parentUuid": "599978c3_6a9b3017",
       "range": {
         "startLine": 1460,
         "startChar": 1,
