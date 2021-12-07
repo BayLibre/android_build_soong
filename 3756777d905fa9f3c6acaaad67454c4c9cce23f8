@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60179cd8_5a4c23df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 40
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-07T22:56:58Z",
+      "side": 1,
+      "message": "Removed prefix of `topDir` in outputting metrics. Thus they now appear under the expected parent path, within $DIST_DIR. They should be included in artifacts now.",
+      "revId": "3756777d905fa9f3c6acaaad67454c4c9cce23f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
