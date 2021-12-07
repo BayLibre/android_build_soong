@@ -16,6 +16,24 @@
       "message": "Remi, FYI, this change (I want to add a couple more tests) should allow bootclasspath and systemserverclasspath jars to have higher min_sdk_version.\n\nAllowing standalone system server jars (that go into javalibs of the apex) would need more work, but I think that\u0027s a lower priority.",
       "revId": "9d183b2413b78492bff1a466cb74b31bed0b217a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d34d2d4_d885904d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-12-07T01:31:56Z",
+      "side": 1,
+      "message": "Thanks ! Yes system server jars is lower priority, since we need to separate the newer bootclasspath jars to load them separately, but newer system server code would generally be added to the existing system server jar.",
+      "parentUuid": "76e00f70_5a3caefe",
+      "revId": "9d183b2413b78492bff1a466cb74b31bed0b217a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
