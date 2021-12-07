@@ -16,6 +16,24 @@
       "message": "I agree with Maciej that we would need to be careful about system health and compatibility here. In particular, as soon as this CL is merged, tethering.o (whose size is going up 4.5x and whose contents are changing) will be rolled out to all R+ devices in the next mainline cut.\n\nDo we have an idea of the system health impact of these changes (e.g., possible boot time regressions)? Do we expect performance to be impacted at all? Do we have an idea on how compressible the debug information is?",
       "revId": "ad6bb9b3e13de1e66c4abf0b87f3dae91eab7a93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "359b1a9b_62236c91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2021-12-07T03:57:03Z",
+      "side": 1,
+      "message": "Still looking into the rest of your \u0026 Maciej\u0027s questions, but it looks like the increase can be reduced to 2x or less by stripping out .debug_* sections (added by -g flag but unnecessary for BTF features) and .rel.BTF and .rel.BTF.ext (which look like they may also be unnecessary). Dropping .BTF.ext (the function line info) entirely and just keeping the map info in .BTF would shrink things further if needed.\n\nStripping does seem to reorder sections \u0026 potentially break some of bpfloader\u0027s current assumptions about section ordering, so if that can\u0027t be avoided there will probably still need to be a way to avoid turning it on for mainline programs.",
+      "parentUuid": "547602a1_4aa026da",
+      "revId": "ad6bb9b3e13de1e66c4abf0b87f3dae91eab7a93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
