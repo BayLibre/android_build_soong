@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2418de2_9d10f5c8",
+        "filename": "bp2build/android_app_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2021-12-07T11:59:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27d3289f_82ef0a77",
+      "range": {
+        "startLine": 61,
+        "startChar": 53,
+        "endLine": 61,
+        "endChar": 67
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "599978c3_6a9b3017",
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "yeah I would guess that we would need to \"render\" this as select()\u0027s in the bazel build file, I think we have some examples of this elsewhere, but I don\u0027t think we\u0027ve figured out exactly how we\u0027ll want to support compiling app to different architectures yet",
       "parentUuid": "599978c3_6a9b3017",
+      "range": {
+        "startLine": 1460,
+        "startChar": 1,
+        "endLine": 1460,
+        "endChar": 128
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "501aec32_4864bd47",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1460,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2021-12-07T11:59:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b23d105a_22fda6dc",
       "range": {
         "startLine": 1460,
         "startChar": 1,
@@ -188,6 +236,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50a58960_bfcf8366",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2021-12-07T11:59:25Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "93eb2888_3306ff94",
+      "range": {
+        "startLine": 1464,
+        "startChar": 36,
+        "endLine": 1464,
+        "endChar": 103
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ae6baae_89bf4263",
@@ -211,6 +283,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cff27a2_ed8f86f1",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2021-12-07T11:59:25Z",
+      "side": 1,
+      "message": "I think this will become relevant again once we figure out the product variable integration.",
+      "parentUuid": "4ae6baae_89bf4263",
+      "range": {
+        "startLine": 1466,
+        "startChar": 17,
+        "endLine": 1466,
+        "endChar": 34
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b0b5afd_9776360b",
@@ -224,6 +320,30 @@
       "writtenOn": "2021-12-03T23:05:29Z",
       "side": 1,
       "message": "can you add a comment about why we use rel + PathsWithModuleSrcSubDir here?",
+      "range": {
+        "startLine": 1480,
+        "startChar": 0,
+        "endLine": 1480,
+        "endChar": 18
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53df5f31_5c7f98a4",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1480,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2021-12-07T11:59:25Z",
+      "side": 1,
+      "message": "full disclosure, I copied the logic at https://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_paths.go;l\u003d332-336 (which you wrote), because it seemed to match what I needed, but this simpler logic seems to work, so I\u0027m going to leave it at that for now but let me know if I\u0027m missing something.",
+      "parentUuid": "9b0b5afd_9776360b",
       "range": {
         "startLine": 1480,
         "startChar": 0,
@@ -271,6 +391,30 @@
       "side": 1,
       "message": "yeah seems reasonable to wrap this all up in a function like `resourceFiles :\u003d android.BazelPathsForFilesInDir(ctx, a.aaptProperties.Resource_dirs, \"res\")`",
       "parentUuid": "11d00680_8c7fe6f4",
+      "range": {
+        "startLine": 1478,
+        "startChar": 2,
+        "endLine": 1482,
+        "endChar": 3
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b4802cb_2099f915",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1482,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2021-12-07T11:59:25Z",
+      "side": 1,
+      "message": "androidResourceGlob is pretty specific to this usecase in terms of the exclusions that it has, so only the logic beyond this point would have made sense to wrap in a function, but I\u0027ve removed it now, see my above comment",
+      "parentUuid": "5dcb473c_c653bde3",
       "range": {
         "startLine": 1478,
         "startChar": 2,
