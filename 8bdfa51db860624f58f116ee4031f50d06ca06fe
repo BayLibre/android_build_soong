@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a546d0c5_f1765908",
+        "filename": "android/neverallow.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-12-07T10:37:41Z",
+      "side": 1,
+      "message": "You want BaseModuleContext here probably. Not actually sure if Paul would be okay with adding context here at all...",
+      "range": {
+        "startLine": 273,
+        "startChar": 6,
+        "endLine": 273,
+        "endChar": 28
+      },
+      "revId": "8bdfa51db860624f58f116ee4031f50d06ca06fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4abc7a5_2329b24c",
+        "filename": "android/neverallow.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-12-07T10:37:41Z",
+      "side": 1,
+      "message": "instead of modifying the api on ValueMatcher and requesting for ctx, you can just pass ApiLevel directly to sdkVersionMatcher (instead of string), so you don\u0027t need to call SdkSpecFrom here in the Test.\n\nSorry, should\u0027ve realized that SdkSpecFrom needs a context before suggesting that solution earlier",
+      "range": {
+        "startLine": 355,
+        "startChar": 8,
+        "endLine": 355,
+        "endChar": 30
+      },
+      "revId": "8bdfa51db860624f58f116ee4031f50d06ca06fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
