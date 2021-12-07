@@ -356,6 +356,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "443c8b90_4837dc65",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1480,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2021-12-07T15:04:30Z",
+      "side": 1,
+      "message": "Correction, the simpler logic does not work, the paths needed to be converted from root-relative to module-relative, much like at the other location I was pointing to. I\u0027ve wrapped this logic in a function.",
+      "parentUuid": "53df5f31_5c7f98a4",
+      "range": {
+        "startLine": 1480,
+        "startChar": 0,
+        "endLine": 1480,
+        "endChar": 18
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11d00680_8c7fe6f4",
         "filename": "java/app.go",
         "patchSetId": 8
@@ -415,6 +439,30 @@
       "side": 1,
       "message": "androidResourceGlob is pretty specific to this usecase in terms of the exclusions that it has, so only the logic beyond this point would have made sense to wrap in a function, but I\u0027ve removed it now, see my above comment",
       "parentUuid": "5dcb473c_c653bde3",
+      "range": {
+        "startLine": 1478,
+        "startChar": 2,
+        "endLine": 1482,
+        "endChar": 3
+      },
+      "revId": "2eae35a5fd7b00ddc530a330a258559a4f63e4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82a2d033_51d8dbbe",
+        "filename": "java/app.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1482,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2021-12-07T15:04:30Z",
+      "side": 1,
+      "message": "(Correction, I have written a function to wrap the logic past androidResourceGlob)",
+      "parentUuid": "6b4802cb_2099f915",
       "range": {
         "startLine": 1478,
         "startChar": 2,
