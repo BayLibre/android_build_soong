@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure libbuildversion will work usefully on vendor binaries.  On the device it reads the ro.build.version.incremental property, which will be wrong if the system and vendor images came from different builds.",
       "revId": "b385deb5f88349f8b7617df5bcd8d4f79178cba7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "495fb107_67a7df79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2021-12-07T02:07:53Z",
+      "side": 1,
+      "message": "That issue is probably fine for the Cuttlefish use case, but I can see it being confusing in general.\n\nWhat this change would help with in Cuttlefish is building a host-side client and persistent server (like adb), and detecting when the builds for the two diverge. Due to an unrelated concern, many Cuttlefish binaries intended for use on the host are also being built for the guest.\n\nhttps://cs.android.com/android/platform/superproject/+/master:device/google/cuttlefish/Android.bp;l\u003d95;drc\u003d8577c21ef91af8aaa9d60e7b4ac1deed322ec80b\n\nThis kind of drift seems less likely for guest-side code where the entire vendor image is built together and multiple vendor binaries won\u0027t come from different builds.\n\nWould this change be acceptable with documentation clarifying the behavior of `GetBuildNumber()`?",
+      "parentUuid": "c89187da_60b5435f",
+      "revId": "b385deb5f88349f8b7617df5bcd8d4f79178cba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
