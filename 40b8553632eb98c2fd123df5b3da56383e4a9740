@@ -16,6 +16,24 @@
       "message": "Is there some reason you can\u0027t add objFiles and tidyFiles here?",
       "revId": "40b8553632eb98c2fd123df5b3da56383e4a9740",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf5731f0_19532f2b",
+        "filename": "cc/cc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1840,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2021-12-07T21:01:05Z",
+      "side": 1,
+      "message": "Done. thanks for reminding this place",
+      "parentUuid": "8ba743df_fac6e9d0",
+      "revId": "40b8553632eb98c2fd123df5b3da56383e4a9740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
