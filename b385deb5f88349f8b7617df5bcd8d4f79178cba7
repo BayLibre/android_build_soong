@@ -52,6 +52,24 @@
       "parentUuid": "495fb107_67a7df79",
       "revId": "b385deb5f88349f8b7617df5bcd8d4f79178cba7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f79239fd_b603f90e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2021-12-07T04:23:50Z",
+      "side": 1,
+      "message": "Thanks for the reference, updated to use this property on the vendor side.",
+      "parentUuid": "cd906c91_85f28a6e",
+      "revId": "b385deb5f88349f8b7617df5bcd8d4f79178cba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
