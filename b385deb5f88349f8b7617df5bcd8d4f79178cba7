@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c89187da_60b5435f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-07T00:38:33Z",
+      "side": 1,
+      "message": "I\u0027m not sure libbuildversion will work usefully on vendor binaries.  On the device it reads the ro.build.version.incremental property, which will be wrong if the system and vendor images came from different builds.",
+      "revId": "b385deb5f88349f8b7617df5bcd8d4f79178cba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
