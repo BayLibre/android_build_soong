@@ -34,6 +34,24 @@
       "parentUuid": "c89187da_60b5435f",
       "revId": "b385deb5f88349f8b7617df5bcd8d4f79178cba7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd906c91_85f28a6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2021-12-07T03:04:56Z",
+      "side": 1,
+      "message": "It should probably read ro.vendor.build.version.incremental for vendor binaries",
+      "parentUuid": "495fb107_67a7df79",
+      "revId": "b385deb5f88349f8b7617df5bcd8d4f79178cba7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
