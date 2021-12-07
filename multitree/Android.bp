@@ -1,0 +1,25 @@
+// generate stub .so from map.txt
+genrule {
+    name: "liblog.stub",
+    srcs: [":liblog_symbols_api_contribution"],
+    out: ["liblog.so"],
+    tools: ["ndkstubgen"],
+    cmd: "$(location) --api 30 --arch x86_64 --api-map out/soong/api_levels.json $(in) $(genDir)/stub.c $(genDir)/stub.map $(genDir)/abi_symbol_list.txt && " + // generate stub.c and stub.map
+        "prebuilts/clang/host/linux-x86/clang-r437112/bin/clang -c $(genDir)/stub.c -o $(genDir)/stub.o && " + // generate stub.o
+        "prebuilts/clang/host/linux-x86/clang-r437112/bin/clang -B prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/x86_64-linux/bin " +
+        "$(genDir)/stub.o -o $(out) -shared -Wl,-soname,liblog.so -Wl,--version-script,$(genDir)/stub.map", // generate stub.so
+}
+
+// compile using headers in api_surface
+// link against stub .so
+genrule {
+    name: "hello_world_multitree",
+    srcs: [
+        "hello_world.c",
+        ":liblog.stub",
+        ":liblog_headers_api_contribution",
+    ],
+    out: ["hello_world_multitree"],
+    cmd: "prebuilts/clang/host/linux-x86/clang-r437112/bin/clang -B prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/x86_64-linux/bin " +
+        "$(location hello_world.c) -L$$(dirname $(location :liblog.stub)) -llog -I$(location :liblog_headers_api_contribution) -o $(out)",
+}
