@@ -1,0 +1,5 @@
+// multitree helper script
+sh_binary_host {
+    name: "gen_api_surface_build_files",
+    src: "gen_api_surface_build_files",
+}
