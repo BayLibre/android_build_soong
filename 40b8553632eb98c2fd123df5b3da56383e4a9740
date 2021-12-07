@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ba743df_fac6e9d0",
+        "filename": "cc/cc.go",
+        "patchSetId": 13
+      },
+      "lineNbr": 1840,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-07T18:38:07Z",
+      "side": 1,
+      "message": "Is there some reason you can\u0027t add objFiles and tidyFiles here?",
+      "revId": "40b8553632eb98c2fd123df5b3da56383e4a9740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
