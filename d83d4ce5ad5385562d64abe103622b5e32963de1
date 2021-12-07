@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d61dded_de39b8c1",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-07T15:36:35Z",
+      "side": 1,
+      "message": "IsEnvTrue converts an environment variable to a bool",
+      "revId": "d83d4ce5ad5385562d64abe103622b5e32963de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
