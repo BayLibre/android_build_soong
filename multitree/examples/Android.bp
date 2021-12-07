@@ -1,0 +1,25 @@
+cc_library {
+    name: "libhelloworld",
+    srcs: [
+        "hello_world.c",
+    ],
+    shared_libs: [
+        "liblog_api_contribution.api_surface#29",
+    ],
+    header_libs: [
+        "liblog_api_contribution_headers.api_surface",
+    ],
+}
+
+cc_binary {
+    name: "binhelloworld",
+    srcs: [
+        "hello_world.c",
+    ],
+    shared_libs: [
+        "liblog_api_contribution.api_surface#29",
+    ],
+    header_libs: [
+        "liblog_api_contribution_headers.api_surface",
+    ],
+}
