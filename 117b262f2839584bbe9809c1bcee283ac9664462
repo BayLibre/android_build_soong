@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0de5c0ae_6e2fc730",
+        "filename": "cc/builder.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 631,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-07T00:45:29Z",
+      "side": 1,
+      "message": "transformSourceToObj shouldn\u0027t be modifying the module, it\u0027s already returning objFiles and tidyFiles in the Objects struct.  You can collect them into module.objFiles in cc.go after it calls c.compiler.compile()",
+      "revId": "117b262f2839584bbe9809c1bcee283ac9664462",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
