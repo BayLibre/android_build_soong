@@ -617,6 +617,46 @@ func (cx *callExpr) emitListVarCopy(gctx *generationContext) {
 	cx.emit(gctx)
 }
 
+type ifExpr struct {
+	condition starlarkExpr
+	ifTrue    starlarkExpr
+	ifFalse   starlarkExpr
+}
+
+func (i *ifExpr) eval(valueMap map[string]starlarkExpr) (res starlarkExpr, same bool) {
+	cond, condSame := i.condition.eval(valueMap)
+	t, tSame := i.ifTrue.eval(valueMap)
+	f, fSame := i.ifFalse.eval(valueMap)
+	same = condSame && tSame && fSame
+	if same {
+		return i, same
+	} else {
+		return &ifExpr{
+			condition: cond,
+			ifTrue:    t,
+			ifFalse:   f,
+		}, same
+	}
+}
+
+func (i *ifExpr) emit(gctx *generationContext) {
+	gctx.write("(")
+	i.ifTrue.emit(gctx)
+	gctx.write(" if ")
+	i.condition.emit(gctx)
+	gctx.write(" else ")
+	i.ifFalse.emit(gctx)
+	gctx.write(")")
+}
+
+func (i *ifExpr) typ() starlarkType {
+	return starlarkTypeUnknown
+}
+
+func (i *ifExpr) emitListVarCopy(gctx *generationContext) {
+	i.emit(gctx)
+}
+
 type badExpr struct {
 	errorLocation ErrorLocation
 	message       string

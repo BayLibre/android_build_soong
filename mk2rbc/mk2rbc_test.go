@@ -1087,6 +1087,23 @@ def init(g, handle):
     pass
 `,
 	},
+	{
+		desc:   "if expression",
+		mkname: "product.mk",
+		in: `
+TEST_VAR := foo
+TEST_VAR_2 := $(if $(TEST_VAR),bar)
+TEST_VAR_3 := $(if $(TEST_VAR),bar,baz)
+`,
+		expected: `load("//build/make/core:product_config.rbc", "rblf")
+
+def init(g, handle):
+  cfg = rblf.cfg(handle)
+  g["TEST_VAR"] = "foo"
+  g["TEST_VAR_2"] = ("bar" if g["TEST_VAR"] else "")
+  g["TEST_VAR_3"] = ("bar" if g["TEST_VAR"] else "baz")
+`,
+	},
 }
 
 var known_variables = []struct {
