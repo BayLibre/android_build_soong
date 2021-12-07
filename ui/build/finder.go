@@ -51,7 +51,7 @@ func NewSourceFinder(ctx Context, config Config) (f *finder.Finder) {
 	// search recursively down those branches. It's possible that these files
 	// are in the root directory, and if they are, then the subsequent error
 	// messages are very confusing, so check for that here.
-	pruneFiles := []string{".out-dir", ".find-ignore"}
+	pruneFiles := []string{".find-ignore"} //TODO: update finder for new multi-tree dir structure
 	for _, name := range pruneFiles {
 		prunePath := filepath.Join(dir, name)
 		_, statErr := filesystem.Lstat(prunePath)
