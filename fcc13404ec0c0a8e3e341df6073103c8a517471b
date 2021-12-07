@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a61f2db5_ad8b8f70",
+        "filename": "cc/libbuildversion/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-07T04:31:14Z",
+      "side": 1,
+      "message": "The flags are appended to the default flags, you don\u0027t need to repeat -fvisibility\u003dhidden",
+      "revId": "fcc13404ec0c0a8e3e341df6073103c8a517471b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bdc7dd5_61245ec2",
+        "filename": "cc/libbuildversion/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-07T04:31:14Z",
+      "side": 1,
+      "message": "Trailing comma please",
+      "revId": "fcc13404ec0c0a8e3e341df6073103c8a517471b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "362ed4a5_0fd24ec2",
+        "filename": "cc/libbuildversion/libbuildversion.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-07T04:31:14Z",
+      "side": 1,
+      "message": "I think you can use __ANDROID_VENDOR__",
+      "revId": "fcc13404ec0c0a8e3e341df6073103c8a517471b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
