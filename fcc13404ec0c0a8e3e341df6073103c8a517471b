@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8021e9ad_20ad0bef",
+        "filename": "cc/libbuildversion/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2021-12-07T06:10:08Z",
+      "side": 1,
+      "message": "Removed since the implementation uses __ANDROID_VENDOR__ instead.",
+      "parentUuid": "a61f2db5_ad8b8f70",
+      "revId": "fcc13404ec0c0a8e3e341df6073103c8a517471b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9bdc7dd5_61245ec2",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef2c3b4_535b9431",
+        "filename": "cc/libbuildversion/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2021-12-07T06:10:08Z",
+      "side": 1,
+      "message": "Removed since the implementation uses __ANDROID_VENDOR__ instead.",
+      "parentUuid": "9bdc7dd5_61245ec2",
+      "revId": "fcc13404ec0c0a8e3e341df6073103c8a517471b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "362ed4a5_0fd24ec2",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-12-07T04:31:14Z",
       "side": 1,
       "message": "I think you can use __ANDROID_VENDOR__",
+      "revId": "fcc13404ec0c0a8e3e341df6073103c8a517471b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed123ad4_4ef62855",
+        "filename": "cc/libbuildversion/libbuildversion.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1291337
+      },
+      "writtenOn": "2021-12-07T06:10:08Z",
+      "side": 1,
+      "message": "Thanks for the reference, tested and looks like this works.",
+      "parentUuid": "362ed4a5_0fd24ec2",
       "revId": "fcc13404ec0c0a8e3e341df6073103c8a517471b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
