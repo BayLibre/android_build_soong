@@ -45,6 +45,30 @@
       },
       "revId": "8bdfa51db860624f58f116ee4031f50d06ca06fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06483aa4_b48a7e2e",
+        "filename": "android/neverallow.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-12-08T03:44:03Z",
+      "side": 1,
+      "message": "I would have preferred doing that, but is there a way to get a context from apex.go init() ? It looked to me like this is initialized kind of statically (sorry I\u0027m not used to this codebase or go)",
+      "parentUuid": "c4abc7a5_2329b24c",
+      "range": {
+        "startLine": 355,
+        "startChar": 8,
+        "endLine": 355,
+        "endChar": 30
+      },
+      "revId": "8bdfa51db860624f58f116ee4031f50d06ca06fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
