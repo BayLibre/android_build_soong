@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6654f26f_f7ce4c78",
+        "filename": "android/module.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1932,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-08T23:12:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f552f763_e0b2c673",
+      "revId": "21d3a7efc5bd3cbe26ce9b55fb4c6230c7b8d89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62119a69_42c53b68",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-08T00:51:01Z",
       "side": 1,
       "message": "I would expect Soong to know the ModuleClass",
+      "revId": "21d3a7efc5bd3cbe26ce9b55fb4c6230c7b8d89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54f2fa2c_bceae985",
+        "filename": "android/notice_files.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-08T23:12:02Z",
+      "side": 1,
+      "message": "Module class is not a Soong concept.  Make uses it to enforce that the tuple (host/device, 32/64, class, name) is unique.  Soong enforces the tuple (namespace, name) is unique, and so doesn\u0027t need class.  It has module types instead.",
+      "parentUuid": "62119a69_42c53b68",
       "revId": "21d3a7efc5bd3cbe26ce9b55fb4c6230c7b8d89d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7e30f1d_0aa4f015",
+        "filename": "android/notice_files.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-08T23:12:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8de6577c_9333b1a0",
+      "revId": "21d3a7efc5bd3cbe26ce9b55fb4c6230c7b8d89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "975df5d3_e4a433d2",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-12-08T00:51:01Z",
       "side": 1,
       "message": "Did you intend this to be part of this change?",
+      "revId": "21d3a7efc5bd3cbe26ce9b55fb4c6230c7b8d89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3cc3d70_eb260e96",
+        "filename": "android/package_ctx.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-08T23:12:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "975df5d3_e4a433d2",
       "revId": "21d3a7efc5bd3cbe26ce9b55fb4c6230c7b8d89d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
