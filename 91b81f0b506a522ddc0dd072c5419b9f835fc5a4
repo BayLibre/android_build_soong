@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be1a00ac_f0b1ee80",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-08T16:50:53Z",
+      "side": 1,
+      "message": "this is getting long -- if we lengthen it further, we might want to use multiline strings.",
+      "range": {
+        "startLine": 39,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 213
+      },
+      "revId": "91b81f0b506a522ddc0dd072c5419b9f835fc5a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
