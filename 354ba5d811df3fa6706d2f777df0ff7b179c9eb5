@@ -34,6 +34,24 @@
       "parentUuid": "ab06aa2b_b34ed6c3",
       "revId": "354ba5d811df3fa6706d2f777df0ff7b179c9eb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0133cf2_521e9a37",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 8423,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-08T11:14:39Z",
+      "side": 1,
+      "message": "I didn\u0027t actually notice that you were testing bootclasspath and systemserverclasspath so separating them out with a comment/description explaining what they are for makes it much better. It is ok to dedup a little bit if you want though, e.g. have separate FixturePreparers to add the following with varying min_sdk_versions:\n1. The apex.\n2. The java_sdk_library.\n3. The systemserverclasspath related modules.\n4. The bootclasspath related modules.\n\nThen mix and match them. It could make the tests more readable if you have something like (..., sdkLibraryMinSdkVersionX, bootclasspathFragmentMinSdkVersionY, apexMinSdkVersionZ).\n\nFeel free to do as a follow up, or not at all.",
+      "parentUuid": "145df4e9_609f232f",
+      "revId": "354ba5d811df3fa6706d2f777df0ff7b179c9eb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
