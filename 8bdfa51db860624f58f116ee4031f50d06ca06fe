@@ -175,6 +175,30 @@
       },
       "revId": "8bdfa51db860624f58f116ee4031f50d06ca06fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd6f599_9b68fc10",
+        "filename": "android/neverallow.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-08T11:19:44Z",
+      "side": 1,
+      "message": "No, there is no way to get access to a context at the point where you are initializing the sdkVersionMatcher. You have no choice but to call SdkSpecFrom... here.\n\nIf performance was a serious issue then you could of course refactor the ValueMatcher so they have a Prepare(ctx) method that is called in advance to allow them to initialize any context specific state once only. Or you could use Once here. Unless there is a specific performance issue I would not bother though. Even then I would try other things first, like moving this matcher after cheaper matchers.",
+      "parentUuid": "15d71ef6_dc6dd209",
+      "range": {
+        "startLine": 355,
+        "startChar": 8,
+        "endLine": 355,
+        "endChar": 30
+      },
+      "revId": "8bdfa51db860624f58f116ee4031f50d06ca06fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
