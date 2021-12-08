@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dfb8792_4e2b48d8",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1336,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-12-08T19:32:12Z",
+      "side": 1,
+      "message": "IMHO three separate messages is an overkill, but it\u0027s up to you.",
+      "revId": "7b0cc6065db6abaa7994d490ff67d6826ba67212",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
