@@ -16,6 +16,24 @@
       "message": "I think it would be worth adding a test for this. In a follow up CL.",
       "revId": "29e35e115d70423635661f3b2387301f3ce1df62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bd625b7_3422124a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-08T11:39:52Z",
+      "side": 1,
+      "message": "Will do. I\u0027ll submit this CL first in order to fix the golem build failure.",
+      "parentUuid": "9bb2df50_4b205182",
+      "revId": "29e35e115d70423635661f3b2387301f3ce1df62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
