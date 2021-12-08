@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "092f89fe_5f31e360",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 18
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-08T18:38:30Z",
+      "side": 1,
+      "message": "This CL only went into sc-dev without merging downstream, so the current one complements it. The plan was to submit it after PRODUCT_INSTALL_APEXES was implemented, but now with that shelved and the AOSP ART module prebuilts removed instead it should still work to add this check. I\u0027ve started a heavy presubmit with the build_test builds on git_master.",
+      "range": {
+        "startLine": 15,
+        "startChar": 17,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "43c44b00d63aef2d84aee2e2e7b9bce14dceb91b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
