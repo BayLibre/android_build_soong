@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07d43d0d_965ac064",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-12-08T16:15:15Z",
+      "side": 1,
+      "message": "Agh.. are soong presubmits always this long? It\u0027s been more than 3 hours now. I shouldn\u0027t have uploaded a new patch!! 😄",
+      "parentUuid": "a154770c_723ff385",
+      "range": {
+        "startLine": 916,
+        "startChar": 19,
+        "endLine": 916,
+        "endChar": 36
+      },
+      "revId": "f496545effa1a3129c26d1e1343e2451fe876885",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2255f130_c1087db0",
