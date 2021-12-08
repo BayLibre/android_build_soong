@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb842315_e7983730",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-12-08T00:35:01Z",
+      "side": 1,
+      "message": "I prefer to keep this in compliance/policy\n\nIs there a situation where the current logic of a dynamic link in a different package fails? If so, is there nothing else we can look at in the target and dependency to determine whether the modules are independent?",
+      "revId": "c26de01c8837299f6a53949db927cb7c6b168cc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
