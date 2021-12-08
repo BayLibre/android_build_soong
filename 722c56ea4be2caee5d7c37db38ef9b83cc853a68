@@ -16,6 +16,24 @@
       "message": "Why not make this change in status.go where it can affect everything?",
       "revId": "722c56ea4be2caee5d7c37db38ef9b83cc853a68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24b7e413_a23ad083",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-12-08T21:00:23Z",
+      "side": 1,
+      "message": "Where do you suggest to make a change?\nIn any case, not asking Ninja to send the progress messages unless we want to print them is correct.",
+      "parentUuid": "fe700cf6_b891826f",
+      "revId": "722c56ea4be2caee5d7c37db38ef9b83cc853a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
