@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7da9508_6770d8d7",
+        "filename": "android/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-08T11:14:02Z",
+      "side": 1,
+      "message": "I notice that you use BaseModuleContext here but in https://r.android.com/c/1907862/5 you change it to EarlyModuleContext. Can you not just use EarlyModuleContext here to avoid the churn?",
+      "range": {
+        "startLine": 916,
+        "startChar": 19,
+        "endLine": 916,
+        "endChar": 36
+      },
+      "revId": "f496545effa1a3129c26d1e1343e2451fe876885",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2255f130_c1087db0",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -49,6 +72,24 @@
       "side": 1,
       "message": "The problem is that other ModuleWithMinSdkVersionCheck types already implement MinSdkVersion that return SdkSpec. :-( This is something that needs to be handled by b/208456999 ideally.\n\nOr I could introduce some new MinSdkVersionApiLevel() method or something?",
       "parentUuid": "2255f130_c1087db0",
+      "revId": "f496545effa1a3129c26d1e1343e2451fe876885",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1027ddf_544ca976",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2328,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-08T11:14:02Z",
+      "side": 1,
+      "message": "It is fine to do that as a follow up if it make sense.",
+      "parentUuid": "ff6e63b9_cbc26468",
       "revId": "f496545effa1a3129c26d1e1343e2451fe876885",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
