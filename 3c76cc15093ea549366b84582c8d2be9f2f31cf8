@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59b4b77c_d092e06c",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-12-08T18:44:00Z",
+      "side": 1,
+      "message": "would it be possible to add soong test for this as well?",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 37
+      },
+      "revId": "3c76cc15093ea549366b84582c8d2be9f2f31cf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
