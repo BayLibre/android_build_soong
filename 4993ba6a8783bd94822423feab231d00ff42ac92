@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000018192080",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1914977?revision\u003d4",
+      "fixSuggestions": [
+        {
+          "fixId": "c0e4c3fe_54a03c36",
+          "description": "Change to \"java/app_test.go\"",
+          "replacements": [
+            {
+              "path": "java/app_test.go",
+              "range": {
+                "startLine": 2921,
+                "startChar": 20,
+                "endLine": 2921,
+                "endChar": 25
+              },
+              "replacement": "empty"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "9f5dbc75_4c573cc1",
+        "filename": "java/app_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2921,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-08T22:04:19Z",
+      "side": 1,
+      "message": "Common typo found: \"emtpy\" -- should it be \"empty\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 2921,
+        "startChar": 20,
+        "endLine": 2921,
+        "endChar": 25
+      },
+      "revId": "4993ba6a8783bd94822423feab231d00ff42ac92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
