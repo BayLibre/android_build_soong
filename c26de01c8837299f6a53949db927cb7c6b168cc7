@@ -16,6 +16,24 @@
       "message": "I prefer to keep this in compliance/policy\n\nIs there a situation where the current logic of a dynamic link in a different package fails? If so, is there nothing else we can look at in the target and dependency to determine whether the modules are independent?",
       "revId": "c26de01c8837299f6a53949db927cb7c6b168cc7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3dd1fff_6afd40c5",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-08T00:58:05Z",
+      "side": 1,
+      "message": "I\u0027m not sure what you mean by \"the current logic of a dynamic link in a different package\".\n\nI don\u0027t see any way to put this anywhere else.  This is annotating specific dependency types as dynamic.  Below where libTag is defined as a dependency tag with classpathLinked: true is equivalent to Make hardcoding LOCAL_JAVA_LIBRARIES as a dynamic dependency.",
+      "parentUuid": "eb842315_e7983730",
+      "revId": "c26de01c8837299f6a53949db927cb7c6b168cc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
