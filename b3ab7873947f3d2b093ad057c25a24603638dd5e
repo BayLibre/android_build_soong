@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fe03959_52d6f78c",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-08T21:05:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "30ba1626_6c88e55e",
+      "range": {
+        "startLine": 662,
+        "startChar": 42,
+        "endLine": 662,
+        "endChar": 91
+      },
+      "revId": "b3ab7873947f3d2b093ad057c25a24603638dd5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03c37eb0_dea9b92e",
