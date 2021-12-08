@@ -26,6 +26,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "45449629_44beb887",
+        "filename": "android/neverallow.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-08T10:30:28Z",
+      "side": 1,
+      "message": "I don\u0027t have a particular issue with adding a context here. However, I think it would be better to have a ValueMatcherContext interface that only provides the methods needed for the ValueMatcher implementations. That makes it easier to extend and test.\n\nI think at the moment it would only need to have a Config() method. You should not need an implementation of this interface, just pass the BottomUpMutatorContext.",
+      "parentUuid": "a546d0c5_f1765908",
+      "range": {
+        "startLine": 273,
+        "startChar": 6,
+        "endLine": 273,
+        "endChar": 28
+      },
+      "revId": "8bdfa51db860624f58f116ee4031f50d06ca06fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f46003_c9893a89",
+        "filename": "android/neverallow.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-08T10:30:28Z",
+      "side": 1,
+      "message": "The name of the type makes it seem as though this is a general matcher for sdk_version but its implementation only supports one specific way of matching against the sdk_version.\n\nI think it would be better to abstract the matching behavior into a func that is passed in, along with a description of the matcher (for use by String()).\n\ne.g. something like:\n  type sdkVersionMatcher struct {\n    condition func(ctx ValueMatcherContext, spec SdkSpec) bool\n    description string\n  }\n  \nThen AtMostSdkVersion() can pass in a func that uses ApiLevel.LessThan(...) along with a string description.",
+      "revId": "8bdfa51db860624f58f116ee4031f50d06ca06fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c4abc7a5_2329b24c",
         "filename": "android/neverallow.go",
         "patchSetId": 5
@@ -85,6 +126,30 @@
       "side": 1,
       "message": "Ah, fair. I am not really much more used to soong, maybe Paul would have some thoughts here.",
       "parentUuid": "06483aa4_b48a7e2e",
+      "range": {
+        "startLine": 355,
+        "startChar": 8,
+        "endLine": 355,
+        "endChar": 30
+      },
+      "revId": "8bdfa51db860624f58f116ee4031f50d06ca06fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15d71ef6_dc6dd209",
+        "filename": "android/neverallow.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-08T10:30:28Z",
+      "side": 1,
+      "message": "This should use SdkSpecFromWithConfig(...).",
+      "parentUuid": "a2462b76_41d859e7",
       "range": {
         "startLine": 355,
         "startChar": 8,
