@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f552f763_e0b2c673",
+        "filename": "android/module.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 1932,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-12-08T00:51:01Z",
+      "side": 1,
+      "message": "Something you forgot to delete?",
+      "revId": "21d3a7efc5bd3cbe26ce9b55fb4c6230c7b8d89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62119a69_42c53b68",
+        "filename": "android/notice_files.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-12-08T00:51:01Z",
+      "side": 1,
+      "message": "I would expect Soong to know the ModuleClass",
+      "revId": "21d3a7efc5bd3cbe26ce9b55fb4c6230c7b8d89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8de6577c_9333b1a0",
+        "filename": "android/notice_files.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-12-08T00:51:01Z",
+      "side": 1,
+      "message": "Yes. It\u0027s a property of the output file. A purely aggregating file like a zip file or a disk image is a container. A file with internal linkage like a .a or a .jar file does more than simply aggregate, which is important for restricted licenses.",
+      "revId": "21d3a7efc5bd3cbe26ce9b55fb4c6230c7b8d89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "975df5d3_e4a433d2",
+        "filename": "android/package_ctx.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-12-08T00:51:01Z",
+      "side": 1,
+      "message": "Did you intend this to be part of this change?",
+      "revId": "21d3a7efc5bd3cbe26ce9b55fb4c6230c7b8d89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
