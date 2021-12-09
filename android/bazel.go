@@ -440,9 +440,7 @@ var (
 
 	// Per-module denylist of cc_library modules to only generate the static
 	// variant if their shared variant isn't ready or buildable by Bazel.
-	bp2buildCcLibraryStaticOnlyList = []string{
-		"libjemalloc5", // http://b/188503688, cc_library, `target: { android: { enabled: false } }` for android targets.
-	}
+	bp2buildCcLibraryStaticOnlyList = []string{}
 
 	// Per-module denylist to opt modules out of mixed builds. Such modules will
 	// still be generated via bp2build.
