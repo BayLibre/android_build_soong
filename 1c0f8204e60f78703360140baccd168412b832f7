@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6061f8d7_9e7eaf52",
+        "filename": "java/app_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2879,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2021-12-09T11:50:44Z",
+      "side": 1,
+      "message": "maybe also a case for when targetSdkVersionInBp is explicitly set to \"Tiramisu\" for completeness?",
+      "range": {
+        "startLine": 2879,
+        "startChar": 1,
+        "endLine": 2879,
+        "endChar": 10
+      },
+      "revId": "1c0f8204e60f78703360140baccd168412b832f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
