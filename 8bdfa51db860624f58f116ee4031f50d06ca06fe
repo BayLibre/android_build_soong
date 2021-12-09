@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "130ad05b_616937a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-12-09T09:29:25Z",
+      "side": 1,
+      "message": "Added tests",
+      "parentUuid": "153df08f_2f3101bf",
+      "revId": "8bdfa51db860624f58f116ee4031f50d06ca06fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a546d0c5_f1765908",
@@ -65,6 +83,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cee6932_acb29d8b",
+        "filename": "android/neverallow.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-12-09T09:29:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45449629_44beb887",
+      "range": {
+        "startLine": 273,
+        "startChar": 6,
+        "endLine": 273,
+        "endChar": 28
+      },
+      "revId": "8bdfa51db860624f58f116ee4031f50d06ca06fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0f46003_c9893a89",
@@ -78,6 +120,24 @@
       "writtenOn": "2021-12-08T10:30:28Z",
       "side": 1,
       "message": "The name of the type makes it seem as though this is a general matcher for sdk_version but its implementation only supports one specific way of matching against the sdk_version.\n\nI think it would be better to abstract the matching behavior into a func that is passed in, along with a description of the matcher (for use by String()).\n\ne.g. something like:\n  type sdkVersionMatcher struct {\n    condition func(ctx ValueMatcherContext, spec SdkSpec) bool\n    description string\n  }\n  \nThen AtMostSdkVersion() can pass in a func that uses ApiLevel.LessThan(...) along with a string description.",
+      "revId": "8bdfa51db860624f58f116ee4031f50d06ca06fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5217f5d3_a231d221",
+        "filename": "android/neverallow.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-12-09T09:29:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0f46003_c9893a89",
       "revId": "8bdfa51db860624f58f116ee4031f50d06ca06fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -191,6 +251,30 @@
       "side": 1,
       "message": "No, there is no way to get access to a context at the point where you are initializing the sdkVersionMatcher. You have no choice but to call SdkSpecFrom... here.\n\nIf performance was a serious issue then you could of course refactor the ValueMatcher so they have a Prepare(ctx) method that is called in advance to allow them to initialize any context specific state once only. Or you could use Once here. Unless there is a specific performance issue I would not bother though. Even then I would try other things first, like moving this matcher after cheaper matchers.",
       "parentUuid": "15d71ef6_dc6dd209",
+      "range": {
+        "startLine": 355,
+        "startChar": 8,
+        "endLine": 355,
+        "endChar": 30
+      },
+      "revId": "8bdfa51db860624f58f116ee4031f50d06ca06fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f718634_58b8b89d",
+        "filename": "android/neverallow.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2021-12-09T09:29:25Z",
+      "side": 1,
+      "message": "Thanks for clarifying. Updated to use SdkSpecFromWithConfig in the matcher function.",
+      "parentUuid": "bcd6f599_9b68fc10",
       "range": {
         "startLine": 355,
         "startChar": 8,
