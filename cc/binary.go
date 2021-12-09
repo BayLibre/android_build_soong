@@ -578,13 +578,6 @@ func binaryBp2build(ctx android.TopDownMutatorContext, typ string) {
 		return
 	}
 
-	var compatibleWith bazel.StringListAttribute
-	if typ == "cc_binary_host" {
-		//incompatible with android OS
-		compatibleWith.SetSelectValue(bazel.OsConfigurationAxis, android.Android.Name, []string{"@platforms//:incompatible"})
-		compatibleWith.SetSelectValue(bazel.OsConfigurationAxis, bazel.ConditionsDefaultConfigKey, []string{})
-	}
-
 	baseAttrs := bp2BuildParseBaseProps(ctx, m)
 	binaryLinkerAttrs := bp2buildBinaryLinkerProps(ctx, m)
 
@@ -630,11 +623,10 @@ func binaryBp2build(ctx android.TopDownMutatorContext, typ string) {
 			None:                         baseAttrs.stripNone,
 		},
 
-		Target_compatible_with: compatibleWith,
-		Features:               baseAttrs.features,
+		Features: baseAttrs.features,
 	}
 
-	ctx.CreateBazelTargetModule(bazel.BazelTargetModuleProperties{
+	ctx.CreateBazelTargetHostOnlyModule(bazel.BazelTargetModuleProperties{
 		Rule_class:        "cc_binary",
 		Bzl_load_location: "//build/bazel/rules:cc_binary.bzl",
 	},
@@ -675,6 +667,4 @@ type binaryAttributes struct {
 	Strip stripAttributes
 
 	Features bazel.StringListAttribute
-
-	Target_compatible_with bazel.StringListAttribute
 }

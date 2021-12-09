@@ -350,16 +350,12 @@ var (
 		"libnativehelper_compat_libc++",              // Broken compile: implicit declaration of function 'strerror_r' is invalid in C99
 		"art_libdexfile_dex_instruction_list_header", // breaks libart_mterp.armng, header not found
 
-		"libandroid_runtime_lazy", // depends on unconverted modules: libbinder_headers
-		"libcmd",                  // depends on unconverted modules: libbinder
-
 		"chkcon", "sefcontext_compile", // depends on unconverted modules: libsepol
 
 		"libsepol", // TODO(b/207408632): Unsupported case of .l sources in cc library rules
 
 		"get_clang_version_test", // depends on unconverted module: get_clang_version
 
-		"libbinder",               // TODO(b/188503688): Disabled for some archs,
 		"libactivitymanager_aidl", // TODO(b/207426160): Depends on activity_manager_procstate_aidl, which is an aidl filegroup.
 
 		"libnativehelper_lazy_mts_jni", // depends on unconverted modules: libgmock_ndk
@@ -425,7 +421,6 @@ var (
 		"libgtest_ndk_c++",      // b/201816222: Requires sdk_version support.
 		"libgtest_main_ndk_c++", // b/201816222: Requires sdk_version support.
 
-		"abb",                     // depends on unconverted modules: libcmd, libbinder
 		"adb",                     // depends on unconverted modules: AdbWinApi, libadb_host, libandroidfw, libapp_processes_protos_full, libfastdeploy_host, libopenscreen-discovery, libopenscreen-platform-impl, libusb, bin2c_fastdeployagent, AdbWinUsbApi
 		"linker",                  // depends on unconverted modules: libdebuggerd_handler_fallback
 		"linker_reloc_bench_main", // depends on unconverted modules: liblinker_reloc_bench_*
@@ -434,15 +429,12 @@ var (
 		"linkerconfig", // http://b/202876379 has arch-variant static_executable
 		"mdnsd",        // http://b/202876379 has arch-variant static_executable
 
-		"acvp_modulewrapper", // disabled for android x86/x86_64
-		"CarHTMLViewer",      // depends on unconverted modules android.car-stubs, car-ui-lib
+		"CarHTMLViewer", // depends on unconverted modules android.car-stubs, car-ui-lib
 	}
 
 	// Per-module denylist of cc_library modules to only generate the static
 	// variant if their shared variant isn't ready or buildable by Bazel.
-	bp2buildCcLibraryStaticOnlyList = []string{
-		"libjemalloc5", // http://b/188503688, cc_library, `target: { android: { enabled: false } }` for android targets.
-	}
+	bp2buildCcLibraryStaticOnlyList = []string{}
 
 	// Per-module denylist to opt modules out of mixed builds. Such modules will
 	// still be generated via bp2build.
