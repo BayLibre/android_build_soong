@@ -224,7 +224,7 @@ func Bp2BuildParsePrebuiltLibraryProps(ctx android.BazelConversionPathContext, m
 					continue
 				}
 				src := android.BazelLabelForModuleSrcSingle(ctx, prebuiltLinkerProperties.Srcs[0])
-				srcLabelAttribute.SetSelectValue(axis, config, src)
+				srcLabelAttribute.SetSelectValue(axis, config, &src)
 			}
 		}
 	}

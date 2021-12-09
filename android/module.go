@@ -870,6 +870,9 @@ type CommonAttributes struct {
 	Name string
 	// Data mapped from: Required
 	Data bazel.LabelListAttribute
+
+	// Targets this target can build for
+	Target_compatible_with bazel.LabelListAttribute
 }
 
 type distProperties struct {
@@ -1106,18 +1109,34 @@ func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutator
 		return bazel.MakeLabelListAttribute(BazelLabelForModuleDeps(ctx, deps))
 	}
 
+	var enabled bazel.BoolAttribute
+
 	data := &attrs.Data
 
 	required := depsToLabelList(props.Required)
 	archVariantProps := mod.GetArchVariantProperties(ctx, &commonProperties{})
+
+	enabled.Value = props.Enabled
 	for axis, configToProps := range archVariantProps {
 		for config, _props := range configToProps {
 			if archProps, ok := _props.(*commonProperties); ok {
 				required.SetSelectValue(axis, config, depsToLabelList(archProps.Required).Value)
+				if archProps.Enabled != nil {
+					enabled.SetSelectValue(axis, config, archProps.Enabled)
+				}
 			}
 		}
 	}
 	data.Append(required)
+
+	var err error
+	attrs.Target_compatible_with, err = enabled.ToLabelListAttribute(
+		bazel.LabelList{[]bazel.Label{bazel.Label{Label: "@platforms//:incompatible"}}, nil},
+		bazel.LabelList{[]bazel.Label{}, nil})
+	if err != nil {
+		ctx.ModuleErrorf("Error processing enabled attribute: %s", err)
+		return
+	}
 }
 
 // A ModuleBase object contains the properties that are common to all Android
