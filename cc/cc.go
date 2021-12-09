@@ -3451,6 +3451,12 @@ var _ snapshot.RelativeInstallPath = (*Module)(nil)
 
 // ConvertWithBp2build converts Module to Bazel for bp2build.
 func (c *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	// Use the base module type if this module is a custom type.
+	moduleType := c.BaseModuleType()
+	if len(moduleType) == 0 {
+		moduleType = ctx.ModuleType()
+	}
+
 	prebuilt := c.IsPrebuilt()
 	if c.Binary() {
 		if !prebuilt {
@@ -3461,29 +3467,22 @@ func (c *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 			objectBp2Build(ctx, c)
 		}
 	} else if c.CcLibrary() {
-		static := c.BuildStaticVariant()
-		shared := c.BuildSharedVariant()
-
-		if static && shared {
-			if !prebuilt {
-				libraryBp2Build(ctx, c)
-			}
-		} else if !static && !shared {
-			if !prebuilt {
-				libraryHeadersBp2Build(ctx, c)
-			}
-		} else if static {
-			if prebuilt {
-				prebuiltLibraryStaticBp2Build(ctx, c)
-			} else {
-				sharedOrStaticLibraryBp2Build(ctx, c, true)
-			}
-		} else if shared {
-			if prebuilt {
-				prebuiltLibrarySharedBp2Build(ctx, c)
-			} else {
-				sharedOrStaticLibraryBp2Build(ctx, c, false)
-			}
+		// Identify the type of library based on module type. It's difficult to use existing
+		// module functions, as they may assess whether the library is static/shared buildable
+		// based on properties which are variant-specific (and this evaluation runs in a
+		// variant-inspecific context!)
+		if moduleType == "cc_library" {
+			libraryBp2Build(ctx, c)
+		} else if moduleType == "cc_library_static" {
+			sharedOrStaticLibraryBp2Build(ctx, c, true)
+		} else if moduleType == "cc_library_shared" {
+			sharedOrStaticLibraryBp2Build(ctx, c, false)
+		} else if moduleType == "cc_library_headers" {
+			libraryHeadersBp2Build(ctx, c)
+		} else if moduleType == "cc_prebuilt_library_static" {
+			prebuiltLibraryStaticBp2Build(ctx, c)
+		} else if moduleType == "cc_prebuilt_library_shared" {
+			prebuiltLibrarySharedBp2Build(ctx, c)
 		}
 	}
 }
