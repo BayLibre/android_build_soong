@@ -31,6 +31,11 @@ type starlarkExpr interface {
 	// Emit the code to copy the expression, otherwise we will end up
 	// with source and target pointing to the same list.
 	emitListVarCopy(gctx *generationContext)
+	// Return a copy of the expression, calling the visitor func for
+	// every expression in the tree. If the visitor func returns non-nil,
+	// its result is used in place of the expression it was called with in the
+	// resulting copy.
+	transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr
 }
 
 func maybeString(expr starlarkExpr) (string, bool) {
@@ -62,6 +67,14 @@ func (s *stringLiteralExpr) emitListVarCopy(gctx *generationContext) {
 	s.emit(gctx)
 }
 
+func (s *stringLiteralExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	if replacement := visitor(s); replacement != nil {
+		return replacement
+	} else {
+		return &stringLiteralExpr{literal: s.literal}
+	}
+}
+
 // Integer literal
 type intLiteralExpr struct {
 	literal int
@@ -83,6 +96,14 @@ func (_ *intLiteralExpr) typ() starlarkType {
 
 func (s *intLiteralExpr) emitListVarCopy(gctx *generationContext) {
 	s.emit(gctx)
+}
+
+func (s *intLiteralExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	if replacement := visitor(s); replacement != nil {
+		return replacement
+	} else {
+		return &intLiteralExpr{literal: s.literal}
+	}
 }
 
 // Boolean literal
@@ -108,6 +129,14 @@ func (_ *boolLiteralExpr) typ() starlarkType {
 
 func (b *boolLiteralExpr) emitListVarCopy(gctx *generationContext) {
 	b.emit(gctx)
+}
+
+func (b *boolLiteralExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	if replacement := visitor(b); replacement != nil {
+		return replacement
+	} else {
+		return &boolLiteralExpr{literal: b.literal}
+	}
 }
 
 // interpolateExpr represents Starlark's interpolation operator <string> % list
@@ -190,6 +219,21 @@ func (xi *interpolateExpr) emitListVarCopy(gctx *generationContext) {
 	xi.emit(gctx)
 }
 
+func (xi *interpolateExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	chunksCopy := make([]string, len(xi.chunks))
+	copy(chunksCopy, xi.chunks)
+	argsCopy := make([]starlarkExpr, 0, len(xi.args))
+	for _, arg := range xi.args {
+		argsCopy = append(argsCopy, arg.transform(visitor))
+	}
+	result := &interpolateExpr{chunks: chunksCopy, args: argsCopy}
+	if replacement := visitor(result); replacement != nil {
+		return replacement
+	} else {
+		return result
+	}
+}
+
 type variableRefExpr struct {
 	ref       variable
 	isDefined bool
@@ -217,6 +261,14 @@ func (v *variableRefExpr) emitListVarCopy(gctx *generationContext) {
 	v.emit(gctx)
 	if v.typ() == starlarkTypeList {
 		gctx.write("[:]") // this will copy the list
+	}
+}
+
+func (v *variableRefExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	if replacement := visitor(v); replacement != nil {
+		return replacement
+	} else {
+		return &variableRefExpr{ref: v.ref, isDefined: v.isDefined}
 	}
 }
 
@@ -265,6 +317,16 @@ func (s *toStringExpr) emitListVarCopy(gctx *generationContext) {
 	s.emit(gctx)
 }
 
+func (s *toStringExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	exprCopy := s.expr.transform(visitor)
+	result := &toStringExpr{expr: exprCopy}
+	if replacement := visitor(result); replacement != nil {
+		return replacement
+	} else {
+		return result
+	}
+}
+
 type notExpr struct {
 	expr starlarkExpr
 }
@@ -289,6 +351,16 @@ func (_ *notExpr) typ() starlarkType {
 
 func (n *notExpr) emitListVarCopy(gctx *generationContext) {
 	n.emit(gctx)
+}
+
+func (n *notExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	exprCopy := n.expr.transform(visitor)
+	result := &notExpr{expr: exprCopy}
+	if replacement := visitor(result); replacement != nil {
+		return replacement
+	} else {
+		return result
+	}
 }
 
 type eqExpr struct {
@@ -360,6 +432,17 @@ func (eq *eqExpr) emitListVarCopy(gctx *generationContext) {
 	eq.emit(gctx)
 }
 
+func (eq *eqExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	leftCopy := eq.left.transform(visitor)
+	rightCopy := eq.right.transform(visitor)
+	result := &eqExpr{left: leftCopy, right: rightCopy, isEq: eq.isEq}
+	if replacement := visitor(result); replacement != nil {
+		return replacement
+	} else {
+		return result
+	}
+}
+
 // variableDefinedExpr corresponds to Make's ifdef VAR
 type variableDefinedExpr struct {
 	v variable
@@ -386,6 +469,11 @@ func (_ *variableDefinedExpr) typ() starlarkType {
 
 func (v *variableDefinedExpr) emitListVarCopy(gctx *generationContext) {
 	v.emit(gctx)
+}
+
+func (v *variableDefinedExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	// TODO: VariableDefinedExpr isn't really an expression?
+	return v
 }
 
 type listExpr struct {
@@ -440,6 +528,19 @@ func (_ *listExpr) typ() starlarkType {
 
 func (l *listExpr) emitListVarCopy(gctx *generationContext) {
 	l.emit(gctx)
+}
+
+func (l *listExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	itemsCopy := make([]starlarkExpr, 0, len(l.items))
+	for _, item := range l.items {
+		itemsCopy = append(itemsCopy, item.transform(visitor))
+	}
+	result := &listExpr{items: itemsCopy}
+	if replacement := visitor(result); replacement != nil {
+		return replacement
+	} else {
+		return result
+	}
 }
 
 func newStringListExpr(items []string) *listExpr {
@@ -505,6 +606,19 @@ func (c *concatExpr) emitListVarCopy(gctx *generationContext) {
 	c.emit(gctx)
 }
 
+func (c *concatExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	itemsCopy := make([]starlarkExpr, 0, len(c.items))
+	for _, item := range c.items {
+		itemsCopy = append(itemsCopy, item.transform(visitor))
+	}
+	result := &concatExpr{items: itemsCopy}
+	if replacement := visitor(result); replacement != nil {
+		return replacement
+	} else {
+		return result
+	}
+}
+
 // inExpr generates <expr> [not] in <list>
 type inExpr struct {
 	expr  starlarkExpr
@@ -543,23 +657,34 @@ func (i *inExpr) emitListVarCopy(gctx *generationContext) {
 	i.emit(gctx)
 }
 
+func (i *inExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	exprCopy := i.expr.transform(visitor)
+	listCopy := i.list.transform(visitor)
+	result := &inExpr{expr: exprCopy, list: listCopy, isNot: i.isNot}
+	if replacement := visitor(result); replacement != nil {
+		return replacement
+	} else {
+		return result
+	}
+}
+
 type indexExpr struct {
 	array starlarkExpr
 	index starlarkExpr
 }
 
-func (ix indexExpr) emit(gctx *generationContext) {
+func (ix *indexExpr) emit(gctx *generationContext) {
 	ix.array.emit(gctx)
 	gctx.write("[")
 	ix.index.emit(gctx)
 	gctx.write("]")
 }
 
-func (ix indexExpr) typ() starlarkType {
+func (ix *indexExpr) typ() starlarkType {
 	return starlarkTypeString
 }
 
-func (ix indexExpr) eval(valueMap map[string]starlarkExpr) (res starlarkExpr, same bool) {
+func (ix *indexExpr) eval(valueMap map[string]starlarkExpr) (res starlarkExpr, same bool) {
 	newArray, isSameArray := ix.array.eval(valueMap)
 	newIndex, isSameIndex := ix.index.eval(valueMap)
 	if same = isSameArray && isSameIndex; same {
@@ -570,8 +695,19 @@ func (ix indexExpr) eval(valueMap map[string]starlarkExpr) (res starlarkExpr, sa
 	return
 }
 
-func (ix indexExpr) emitListVarCopy(gctx *generationContext) {
+func (ix *indexExpr) emitListVarCopy(gctx *generationContext) {
 	ix.emit(gctx)
+}
+
+func (ix *indexExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	arrayCopy := ix.array.transform(visitor)
+	indexCopy := ix.index.transform(visitor)
+	result := &indexExpr{array: arrayCopy, index: indexCopy}
+	if replacement := visitor(result); replacement != nil {
+		return replacement
+	} else {
+		return result
+	}
 }
 
 type callExpr struct {
@@ -642,6 +778,23 @@ func (cx *callExpr) emitListVarCopy(gctx *generationContext) {
 	cx.emit(gctx)
 }
 
+func (cx *callExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	var objectCopy starlarkExpr
+	if cx.object != nil {
+		objectCopy = cx.object.transform(visitor)
+	}
+	argsCopy := make([]starlarkExpr, 0, len(cx.args))
+	for _, arg := range cx.args {
+		argsCopy = append(argsCopy, arg.transform(visitor))
+	}
+	result := &callExpr{object: objectCopy, name: cx.name, args: argsCopy, returnType: cx.returnType}
+	if replacement := visitor(result); replacement != nil {
+		return replacement
+	} else {
+		return result
+	}
+}
+
 type ifExpr struct {
 	condition starlarkExpr
 	ifTrue    starlarkExpr
@@ -691,6 +844,94 @@ func (i *ifExpr) emitListVarCopy(gctx *generationContext) {
 	i.emit(gctx)
 }
 
+func (i *ifExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	condCopy := i.condition.transform(visitor)
+	tCopy := i.ifTrue.transform(visitor)
+	fCopy := i.ifFalse.transform(visitor)
+	result := &ifExpr{condition: condCopy, ifTrue: tCopy, ifFalse: fCopy}
+	if replacement := visitor(result); replacement != nil {
+		return replacement
+	} else {
+		return result
+	}
+}
+
+type identifierExpr struct {
+	name string
+}
+
+func (i *identifierExpr) eval(valueMap map[string]starlarkExpr) (res starlarkExpr, same bool) {
+	return i, true
+}
+
+func (i *identifierExpr) emit(gctx *generationContext) {
+	gctx.write(i.name)
+}
+
+func (i *identifierExpr) typ() starlarkType {
+	return starlarkTypeUnknown
+}
+
+func (i *identifierExpr) emitListVarCopy(gctx *generationContext) {
+	i.emit(gctx)
+}
+
+func (i *identifierExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	if replacement := visitor(i); replacement != nil {
+		return replacement
+	} else {
+		return &identifierExpr{name: i.name}
+	}
+}
+
+type foreachExpr struct {
+	varName string
+	list    starlarkExpr
+	action  starlarkExpr
+}
+
+func (f *foreachExpr) eval(valueMap map[string]starlarkExpr) (res starlarkExpr, same bool) {
+	list, listSame := f.list.eval(valueMap)
+	action, actionSame := f.action.eval(valueMap)
+	same = listSame && actionSame
+	if same {
+		return f, same
+	} else {
+		return &foreachExpr{
+			varName: f.varName,
+			list:    list,
+			action:  action,
+		}, same
+	}
+}
+
+func (f *foreachExpr) emit(gctx *generationContext) {
+	gctx.write("[")
+	f.action.emit(gctx)
+	gctx.write(" for " + f.varName + " in ")
+	f.list.emit(gctx)
+	gctx.write("]")
+}
+
+func (f *foreachExpr) typ() starlarkType {
+	return starlarkTypeList
+}
+
+func (f *foreachExpr) emitListVarCopy(gctx *generationContext) {
+	f.emit(gctx)
+}
+
+func (f *foreachExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	listCopy := f.list.transform(visitor)
+	actionCopy := f.action.transform(visitor)
+	result := &foreachExpr{varName: f.varName, list: listCopy, action: actionCopy}
+	if replacement := visitor(result); replacement != nil {
+		return replacement
+	} else {
+		return result
+	}
+}
+
 type badExpr struct {
 	errorLocation ErrorLocation
 	message       string
@@ -712,6 +953,14 @@ func (_ *badExpr) typ() starlarkType {
 
 func (_ *badExpr) emitListVarCopy(_ *generationContext) {
 	panic("implement me")
+}
+
+func (b *badExpr) transform(visitor func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	if replacement := visitor(b); replacement != nil {
+		return replacement
+	} else {
+		return &badExpr{errorLocation: b.errorLocation, message: b.message}
+	}
 }
 
 func maybeConvertToStringList(expr starlarkExpr) starlarkExpr {
