@@ -18,7 +18,7 @@ import (
 	"strings"
 	"testing"
 
-	"android/soong/android"
+	"android/soong/android/util"
 )
 
 func TestRustBenchmark(t *testing.T) {
@@ -45,10 +45,10 @@ func TestRustBenchmarkLinkage(t *testing.T) {
 
 	testingModule := ctx.ModuleForTests("my_bench", "android_arm64_armv8-a").Module().(*Module)
 
-	if !android.InList("libcriterion.rlib-std", testingModule.Properties.AndroidMkRlibs) {
+	if !util.InList("libcriterion.rlib-std", testingModule.Properties.AndroidMkRlibs) {
 		t.Errorf("rlib-std variant for libcriterion not detected as a rustlib-defined rlib dependency for device rust_benchmark module")
 	}
-	if !android.InList("libstd", testingModule.Properties.AndroidMkRlibs) {
+	if !util.InList("libstd", testingModule.Properties.AndroidMkRlibs) {
 		t.Errorf("Device rust_benchmark module 'my_bench' does not link libstd as an rlib")
 	}
 }

@@ -19,6 +19,7 @@ import (
 	"fmt"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 // This singleton generates android java dependency into to a json file. It does so for each
@@ -64,13 +65,13 @@ func (j *jdepsGeneratorSingleton) GenerateBuildActions(ctx android.SingletonCont
 
 		dpInfo := moduleInfos[name]
 		ideInfoProvider.IDEInfo(&dpInfo)
-		dpInfo.Deps = android.FirstUniqueStrings(dpInfo.Deps)
-		dpInfo.Srcs = android.FirstUniqueStrings(dpInfo.Srcs)
-		dpInfo.Aidl_include_dirs = android.FirstUniqueStrings(dpInfo.Aidl_include_dirs)
-		dpInfo.Jarjar_rules = android.FirstUniqueStrings(dpInfo.Jarjar_rules)
-		dpInfo.Jars = android.FirstUniqueStrings(dpInfo.Jars)
-		dpInfo.SrcJars = android.FirstUniqueStrings(dpInfo.SrcJars)
-		dpInfo.Paths = android.FirstUniqueStrings(dpInfo.Paths)
+		dpInfo.Deps = util.FirstUniqueStrings(dpInfo.Deps)
+		dpInfo.Srcs = util.FirstUniqueStrings(dpInfo.Srcs)
+		dpInfo.Aidl_include_dirs = util.FirstUniqueStrings(dpInfo.Aidl_include_dirs)
+		dpInfo.Jarjar_rules = util.FirstUniqueStrings(dpInfo.Jarjar_rules)
+		dpInfo.Jars = util.FirstUniqueStrings(dpInfo.Jars)
+		dpInfo.SrcJars = util.FirstUniqueStrings(dpInfo.SrcJars)
+		dpInfo.Paths = util.FirstUniqueStrings(dpInfo.Paths)
 		moduleInfos[name] = dpInfo
 
 		mkProvider, ok := module.(android.AndroidMkDataProvider)
@@ -86,8 +87,8 @@ func (j *jdepsGeneratorSingleton) GenerateBuildActions(ctx android.SingletonCont
 			dep := ctx.ModuleProvider(module, JavaInfoProvider).(JavaInfo)
 			dpInfo.Installed_paths = append(dpInfo.Installed_paths, dep.ImplementationJars.Strings()...)
 		}
-		dpInfo.Classes = android.FirstUniqueStrings(dpInfo.Classes)
-		dpInfo.Installed_paths = android.FirstUniqueStrings(dpInfo.Installed_paths)
+		dpInfo.Classes = util.FirstUniqueStrings(dpInfo.Classes)
+		dpInfo.Installed_paths = util.FirstUniqueStrings(dpInfo.Installed_paths)
 		moduleInfos[name] = dpInfo
 	})
 

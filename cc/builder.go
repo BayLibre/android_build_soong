@@ -24,6 +24,7 @@ import (
 	"strconv"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
 
@@ -775,7 +776,7 @@ func transformObjToDynamicBinary(ctx android.ModuleContext,
 
 	if len(wholeStaticLibs) > 0 {
 		if ctx.Host() && ctx.Darwin() {
-			libFlagsList = append(libFlagsList, android.JoinWithPrefix(wholeStaticLibs.Strings(), "-force_load "))
+			libFlagsList = append(libFlagsList, util.JoinWithPrefix(wholeStaticLibs.Strings(), "-force_load "))
 		} else {
 			libFlagsList = append(libFlagsList, "-Wl,--whole-archive ")
 			libFlagsList = append(libFlagsList, wholeStaticLibs.Strings()...)

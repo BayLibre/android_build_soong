@@ -22,6 +22,7 @@ import (
 	"strings"
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 )
 
@@ -1459,14 +1460,14 @@ func TestPathsForModuleSrc_AllowMissingDependencies(t *testing.T) {
 
 	foo := result.ModuleForTests("foo", "").Module().(*pathForModuleSrcTestModule)
 
-	AssertArrayString(t, "foo missing deps", []string{"a", "b", "c"}, foo.missingDeps)
-	AssertArrayString(t, "foo srcs", []string{}, foo.srcs)
-	AssertStringEquals(t, "foo src", "", foo.src)
+	util.AssertArrayString(t, "foo missing deps", []string{"a", "b", "c"}, foo.missingDeps)
+	util.AssertArrayString(t, "foo srcs", []string{}, foo.srcs)
+	util.AssertStringEquals(t, "foo src", "", foo.src)
 
 	bar := result.ModuleForTests("bar", "").Module().(*pathForModuleSrcTestModule)
 
-	AssertArrayString(t, "bar missing deps", []string{"d", "e"}, bar.missingDeps)
-	AssertArrayString(t, "bar srcs", []string{}, bar.srcs)
+	util.AssertArrayString(t, "bar missing deps", []string{"d", "e"}, bar.missingDeps)
+	util.AssertArrayString(t, "bar srcs", []string{}, bar.srcs)
 }
 
 func TestPathRelativeToTop(t *testing.T) {
@@ -1586,6 +1587,96 @@ func BenchmarkFirstUniquePaths(b *testing.B) {
 						f(b, implementation.f, uniquePaths[:n])
 					})
 				})
+			}
+		})
+	}
+}
+
+func Test_Shard(t *testing.T) {
+	type args struct {
+		strings   []string
+		shardSize int
+	}
+	tests := []struct {
+		name string
+		args args
+		want [][]string
+	}{
+		{
+			name: "empty",
+			args: args{
+				strings:   nil,
+				shardSize: 1,
+			},
+			want: [][]string(nil),
+		},
+		{
+			name: "single shard",
+			args: args{
+				strings:   []string{"a", "b"},
+				shardSize: 2,
+			},
+			want: [][]string{{"a", "b"}},
+		},
+		{
+			name: "single short shard",
+			args: args{
+				strings:   []string{"a", "b"},
+				shardSize: 3,
+			},
+			want: [][]string{{"a", "b"}},
+		},
+		{
+			name: "shard per input",
+			args: args{
+				strings:   []string{"a", "b", "c"},
+				shardSize: 1,
+			},
+			want: [][]string{{"a"}, {"b"}, {"c"}},
+		},
+		{
+			name: "balanced shards",
+			args: args{
+				strings:   []string{"a", "b", "c", "d"},
+				shardSize: 2,
+			},
+			want: [][]string{{"a", "b"}, {"c", "d"}},
+		},
+		{
+			name: "unbalanced shards",
+			args: args{
+				strings:   []string{"a", "b", "c"},
+				shardSize: 2,
+			},
+			want: [][]string{{"a", "b"}, {"c"}},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			stringsToPaths := func(strings []string) Paths {
+				if strings == nil {
+					return nil
+				}
+				paths := make(Paths, len(strings))
+				for i, s := range strings {
+					paths[i] = PathForTesting(s)
+				}
+				return paths
+			}
+
+			paths := stringsToPaths(tt.args.strings)
+
+			var want []Paths
+			if sWant := tt.want; sWant != nil {
+				want = make([]Paths, len(sWant))
+				for i, w := range sWant {
+					want[i] = stringsToPaths(w)
+				}
+			}
+
+			if got := ShardPaths(paths, tt.args.shardSize); !reflect.DeepEqual(got, want) {
+				t.Errorf("ShardPaths(%v, %v) = %v, want %v",
+					paths, tt.args.shardSize, got, want)
 			}
 		})
 	}

@@ -14,7 +14,11 @@
 
 package android
 
-import "fmt"
+import (
+	"fmt"
+
+	"android/soong/android/util"
+)
 
 var archVariants = map[ArchType][]string{
 	Arm: {
@@ -396,10 +400,10 @@ var defaultArchFeatureMap = map[OsType]map[ArchType][]string{}
 // arch features that are available for the default arch variant.  It must be called from an
 // init() function.
 func RegisterDefaultArchVariantFeatures(os OsType, arch ArchType, features ...string) {
-	checkCalledFromInit()
+	util.CheckCalledFromInit()
 
 	for _, feature := range features {
-		if !InList(feature, archFeatures[arch]) {
+		if !util.InList(feature, archFeatures[arch]) {
 			panic(fmt.Errorf("Invalid feature %q for arch %q variant \"\"", feature, arch))
 		}
 	}

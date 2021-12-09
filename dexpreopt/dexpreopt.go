@@ -40,6 +40,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 
 	"github.com/google/blueprint/pathtools"
 )
@@ -375,7 +376,7 @@ func dexpreoptCommand(ctx android.PathContext, globalSoong *GlobalSoongConfig, g
 		cmd.FlagWithArg("--copy-dex-files=", "false")
 	}
 
-	if !android.PrefixInList(preoptFlags, "--compiler-filter=") {
+	if !util.PrefixInList(preoptFlags, "--compiler-filter=") {
 		var compilerFilter string
 		if systemServerJars.ContainsJar(module.Name) {
 			// Jars of system server, use the product option if it is set, speed otherwise.
@@ -597,4 +598,4 @@ func contains(l []string, s string) bool {
 	return false
 }
 
-var copyOf = android.CopyOf
+var copyOf = util.CopyOf

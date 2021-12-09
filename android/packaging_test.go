@@ -17,6 +17,7 @@ package android
 import (
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 )
@@ -122,9 +123,9 @@ func runPackagingTest(t *testing.T, multitarget bool, bp string, expected []stri
 
 	p := result.Module("package", archVariant).(*packageTestModule)
 	actual := p.entries
-	actual = SortedUniqueStrings(actual)
-	expected = SortedUniqueStrings(expected)
-	AssertDeepEquals(t, "package entries", expected, actual)
+	actual = util.SortedUniqueStrings(actual)
+	expected = util.SortedUniqueStrings(expected)
+	util.AssertDeepEquals(t, "package entries", expected, actual)
 }
 
 func TestPackagingBaseMultiTarget(t *testing.T) {

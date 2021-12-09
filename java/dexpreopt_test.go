@@ -21,6 +21,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/cc"
 	"android/soong/dexpreopt"
 )
@@ -283,7 +284,7 @@ func TestDex2oatToolDeps(t *testing.T) {
 				`, sourceEnabled, prebuiltEnabled, prebuiltPreferred))
 			pathContext := android.PathContextForTesting(result.Config)
 			dex2oatPath := dexpreopt.GetCachedGlobalSoongConfig(pathContext).Dex2oat
-			android.AssertStringEquals(t, "Testing "+name, expectedDex2oatPath, android.NormalizePathForTesting(dex2oatPath))
+			util.AssertStringEquals(t, "Testing "+name, expectedDex2oatPath, android.NormalizePathForTesting(dex2oatPath))
 		})
 	}
 
@@ -317,21 +318,21 @@ func TestDexpreoptBuiltInstalledForApex(t *testing.T) {
 
 	installs := library.dexpreopter.DexpreoptBuiltInstalledForApex()
 
-	android.AssertIntEquals(t, "install count", 2, len(installs))
+	util.AssertIntEquals(t, "install count", 2, len(installs))
 
-	android.AssertStringEquals(t, "installs[0] FullModuleName",
+	util.AssertStringEquals(t, "installs[0] FullModuleName",
 		"service-foo-dexpreopt-arm64-apex@com.android.apex1@javalib@service-foo.jar@classes.odex",
 		installs[0].FullModuleName())
 
-	android.AssertStringEquals(t, "installs[0] SubModuleName",
+	util.AssertStringEquals(t, "installs[0] SubModuleName",
 		"-dexpreopt-arm64-apex@com.android.apex1@javalib@service-foo.jar@classes.odex",
 		installs[0].SubModuleName())
 
-	android.AssertStringEquals(t, "installs[1] FullModuleName",
+	util.AssertStringEquals(t, "installs[1] FullModuleName",
 		"service-foo-dexpreopt-arm64-apex@com.android.apex1@javalib@service-foo.jar@classes.vdex",
 		installs[1].FullModuleName())
 
-	android.AssertStringEquals(t, "installs[1] SubModuleName",
+	util.AssertStringEquals(t, "installs[1] SubModuleName",
 		"-dexpreopt-arm64-apex@com.android.apex1@javalib@service-foo.jar@classes.vdex",
 		installs[1].SubModuleName())
 
@@ -348,7 +349,7 @@ func TestDexpreoptBuiltInstalledForApex(t *testing.T) {
 
 	installs = library.dexpreopter.DexpreoptBuiltInstalledForApex()
 
-	android.AssertIntEquals(t, "install count", 0, len(installs))
+	util.AssertIntEquals(t, "install count", 0, len(installs))
 }
 
 func filterDexpreoptEntriesList(entriesList []android.AndroidMkEntries) []android.AndroidMkEntries {
@@ -364,22 +365,22 @@ func filterDexpreoptEntriesList(entriesList []android.AndroidMkEntries) []androi
 func verifyEntries(t *testing.T, message string, expectedModule string,
 	expectedPrebuiltModuleFile string, expectedModulePath string, expectedInstalledModuleStem string,
 	entries android.AndroidMkEntries) {
-	android.AssertStringEquals(t, message+" LOCAL_MODULE", expectedModule,
+	util.AssertStringEquals(t, message+" LOCAL_MODULE", expectedModule,
 		entries.EntryMap["LOCAL_MODULE"][0])
 
-	android.AssertStringEquals(t, message+" LOCAL_MODULE_CLASS", "ETC",
+	util.AssertStringEquals(t, message+" LOCAL_MODULE_CLASS", "ETC",
 		entries.EntryMap["LOCAL_MODULE_CLASS"][0])
 
-	android.AssertStringDoesContain(t, message+" LOCAL_PREBUILT_MODULE_FILE",
+	util.AssertStringDoesContain(t, message+" LOCAL_PREBUILT_MODULE_FILE",
 		entries.EntryMap["LOCAL_PREBUILT_MODULE_FILE"][0], expectedPrebuiltModuleFile)
 
-	android.AssertStringDoesContain(t, message+" LOCAL_MODULE_PATH",
+	util.AssertStringDoesContain(t, message+" LOCAL_MODULE_PATH",
 		entries.EntryMap["LOCAL_MODULE_PATH"][0], expectedModulePath)
 
-	android.AssertStringEquals(t, message+" LOCAL_INSTALLED_MODULE_STEM",
+	util.AssertStringEquals(t, message+" LOCAL_INSTALLED_MODULE_STEM",
 		expectedInstalledModuleStem, entries.EntryMap["LOCAL_INSTALLED_MODULE_STEM"][0])
 
-	android.AssertStringEquals(t, message+" LOCAL_NOT_AVAILABLE_FOR_PLATFORM",
+	util.AssertStringEquals(t, message+" LOCAL_NOT_AVAILABLE_FOR_PLATFORM",
 		"false", entries.EntryMap["LOCAL_NOT_AVAILABLE_FOR_PLATFORM"][0])
 }
 
@@ -404,7 +405,7 @@ func TestAndroidMkEntriesForApex(t *testing.T) {
 	entriesList := android.AndroidMkEntriesForTest(t, ctx, module.Module())
 	entriesList = filterDexpreoptEntriesList(entriesList)
 
-	android.AssertIntEquals(t, "entries count", 2, len(entriesList))
+	util.AssertIntEquals(t, "entries count", 2, len(entriesList))
 
 	verifyEntries(t,
 		"entriesList[0]",
@@ -435,5 +436,5 @@ func TestAndroidMkEntriesForApex(t *testing.T) {
 	entriesList = android.AndroidMkEntriesForTest(t, ctx, module.Module())
 	entriesList = filterDexpreoptEntriesList(entriesList)
 
-	android.AssertIntEquals(t, "entries count", 0, len(entriesList))
+	util.AssertIntEquals(t, "entries count", 0, len(entriesList))
 }

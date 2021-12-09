@@ -25,6 +25,7 @@ import (
 	"strings"
 	"sync"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -1245,7 +1246,7 @@ func (module *SdkLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	})
 
 	// Make the set of components exported by this module available for use elsewhere.
-	exportedComponentInfo := android.ExportedComponentsInfo{Components: android.SortedStringKeys(exportedComponents)}
+	exportedComponentInfo := android.ExportedComponentsInfo{Components: util.SortedStringKeys(exportedComponents)}
 	ctx.SetProvider(android.ExportedComponentsInfoProvider, exportedComponentInfo)
 }
 
@@ -1483,7 +1484,7 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 	}
 	if len(module.sdkLibraryProperties.Hidden_api_packages) != 0 {
 		droidstubsArgs = append(droidstubsArgs,
-			android.JoinWithPrefix(module.sdkLibraryProperties.Hidden_api_packages, " --hide-package "))
+			util.JoinWithPrefix(module.sdkLibraryProperties.Hidden_api_packages, " --hide-package "))
 	}
 	droidstubsArgs = append(droidstubsArgs, module.sdkLibraryProperties.Droiddoc_options...)
 	disabledWarnings := []string{
@@ -1497,7 +1498,7 @@ func (module *SdkLibrary) createStubsSourcesAndApi(mctx android.DefaultableHookC
 		"Todo",
 		"Typo",
 	}
-	droidstubsArgs = append(droidstubsArgs, android.JoinWithPrefix(disabledWarnings, "--hide "))
+	droidstubsArgs = append(droidstubsArgs, util.JoinWithPrefix(disabledWarnings, "--hide "))
 
 	// Output Javadoc comments for public scope.
 	if apiScope == apiScopePublic {

@@ -20,6 +20,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/shared"
 )
 
@@ -70,7 +71,7 @@ func TestRuntimeResourceOverlay(t *testing.T) {
 	// Check AAPT2 link flags.
 	aapt2Flags := m.Output("package-res.apk").Args["flags"]
 	expectedFlags := []string{"--keep-raw-values", "--no-resource-deduping", "--no-resource-removal"}
-	absentFlags := android.RemoveListFromList(expectedFlags, strings.Split(aapt2Flags, " "))
+	absentFlags := util.RemoveListFromList(expectedFlags, strings.Split(aapt2Flags, " "))
 	if len(absentFlags) > 0 {
 		t.Errorf("expected values, %q are missing in aapt2 link flags, %q", absentFlags, aapt2Flags)
 	}
@@ -153,7 +154,7 @@ func TestRuntimeResourceOverlay_JavaDefaults(t *testing.T) {
 	// Check AAPT2 link flags.
 	aapt2Flags := strings.Split(m.Output("package-res.apk").Args["flags"], " ")
 	expectedFlags := []string{"--keep-raw-values", "--no-resource-deduping", "--no-resource-removal"}
-	absentFlags := android.RemoveListFromList(expectedFlags, aapt2Flags)
+	absentFlags := util.RemoveListFromList(expectedFlags, aapt2Flags)
 	if len(absentFlags) > 0 {
 		t.Errorf("expected values, %q are missing in aapt2 link flags, %q", absentFlags, aapt2Flags)
 	}

@@ -22,6 +22,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/snapshot"
 )
 
@@ -587,11 +588,11 @@ func MutateImage(mctx android.BaseModuleContext, m ImageMutatableModule) {
 		recoveryVariantNeeded = false
 	}
 
-	for _, variant := range android.FirstUniqueStrings(vendorVariants) {
+	for _, variant := range util.FirstUniqueStrings(vendorVariants) {
 		m.AppendExtraVariant(VendorVariationPrefix + variant)
 	}
 
-	for _, variant := range android.FirstUniqueStrings(productVariants) {
+	for _, variant := range util.FirstUniqueStrings(productVariants) {
 		m.AppendExtraVariant(ProductVariationPrefix + variant)
 	}
 

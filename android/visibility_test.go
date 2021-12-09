@@ -4,6 +4,7 @@ import (
 	"reflect"
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 )
 
@@ -1176,7 +1177,7 @@ func checkEffectiveVisibility(t *testing.T, result *TestResult, effectiveVisibil
 	for moduleName, expectedRules := range effectiveVisibility {
 		rule := effectiveVisibilityRules(result.Config, moduleName)
 		stringRules := rule.Strings()
-		AssertDeepEquals(t, "effective rules mismatch", expectedRules, stringRules)
+		util.AssertDeepEquals(t, "effective rules mismatch", expectedRules, stringRules)
 	}
 }
 

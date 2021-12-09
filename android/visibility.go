@@ -21,6 +21,7 @@ import (
 	"strings"
 	"sync"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 )
 
@@ -551,7 +552,7 @@ func (v *visibilityRuleSet) Widen(extra []string) error {
 		}
 	}
 
-	v.rules = FirstUniqueStrings(append(v.rules, extra...))
+	v.rules = util.FirstUniqueStrings(append(v.rules, extra...))
 	sort.Strings(v.rules)
 	return nil
 }

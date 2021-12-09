@@ -20,6 +20,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 
 	"github.com/google/blueprint/proptools"
 )
@@ -57,7 +58,7 @@ func TestHiddenAPISingleton(t *testing.T) {
 	hiddenAPI := result.ModuleForTests("platform-bootclasspath", "android_common")
 	hiddenapiRule := hiddenAPI.Rule("platform-bootclasspath-monolithic-hiddenapi-stub-flags")
 	want := "--boot-dex=out/soong/.intermediates/foo/android_common/aligned/foo.jar"
-	android.AssertStringDoesContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, want)
+	util.AssertStringDoesContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, want)
 }
 
 func TestHiddenAPISingletonWithSourceAndPrebuiltPreferredButNoDex(t *testing.T) {
@@ -99,7 +100,7 @@ func TestHiddenAPISingletonWithPrebuilt(t *testing.T) {
 	hiddenAPI := result.ModuleForTests("platform-bootclasspath", "android_common")
 	hiddenapiRule := hiddenAPI.Rule("platform-bootclasspath-monolithic-hiddenapi-stub-flags")
 	want := "--boot-dex=out/soong/.intermediates/foo/android_common/aligned/foo.jar"
-	android.AssertStringDoesContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, want)
+	util.AssertStringDoesContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, want)
 }
 
 func TestHiddenAPISingletonWithPrebuiltUseSource(t *testing.T) {
@@ -125,10 +126,10 @@ func TestHiddenAPISingletonWithPrebuiltUseSource(t *testing.T) {
 	hiddenAPI := result.ModuleForTests("platform-bootclasspath", "android_common")
 	hiddenapiRule := hiddenAPI.Rule("platform-bootclasspath-monolithic-hiddenapi-stub-flags")
 	fromSourceJarArg := "--boot-dex=out/soong/.intermediates/foo/android_common/aligned/foo.jar"
-	android.AssertStringDoesContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, fromSourceJarArg)
+	util.AssertStringDoesContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, fromSourceJarArg)
 
 	prebuiltJarArg := "--boot-dex=out/soong/.intermediates/foo/android_common/dex/foo.jar"
-	android.AssertStringDoesNotContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, prebuiltJarArg)
+	util.AssertStringDoesNotContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, prebuiltJarArg)
 }
 
 func TestHiddenAPISingletonWithPrebuiltOverrideSource(t *testing.T) {
@@ -154,10 +155,10 @@ func TestHiddenAPISingletonWithPrebuiltOverrideSource(t *testing.T) {
 	hiddenAPI := result.ModuleForTests("platform-bootclasspath", "android_common")
 	hiddenapiRule := hiddenAPI.Rule("platform-bootclasspath-monolithic-hiddenapi-stub-flags")
 	prebuiltJarArg := "--boot-dex=out/soong/.intermediates/prebuilt_foo/android_common/dex/foo.jar"
-	android.AssertStringDoesContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, prebuiltJarArg)
+	util.AssertStringDoesContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, prebuiltJarArg)
 
 	fromSourceJarArg := "--boot-dex=out/soong/.intermediates/foo/android_common/aligned/foo.jar"
-	android.AssertStringDoesNotContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, fromSourceJarArg)
+	util.AssertStringDoesNotContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, fromSourceJarArg)
 }
 
 func TestHiddenAPISingletonSdks(t *testing.T) {
@@ -204,16 +205,16 @@ func TestHiddenAPISingletonSdks(t *testing.T) {
 			hiddenAPI := result.ModuleForTests("platform-bootclasspath", "android_common")
 			hiddenapiRule := hiddenAPI.Rule("platform-bootclasspath-monolithic-hiddenapi-stub-flags")
 			wantPublicStubs := "--public-stub-classpath=" + generateSdkDexPath(tc.publicStub, tc.unbundledBuild)
-			android.AssertStringDoesContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, wantPublicStubs)
+			util.AssertStringDoesContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, wantPublicStubs)
 
 			wantSystemStubs := "--system-stub-classpath=" + generateSdkDexPath(tc.systemStub, tc.unbundledBuild)
-			android.AssertStringDoesContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, wantSystemStubs)
+			util.AssertStringDoesContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, wantSystemStubs)
 
 			wantTestStubs := "--test-stub-classpath=" + generateSdkDexPath(tc.testStub, tc.unbundledBuild)
-			android.AssertStringDoesContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, wantTestStubs)
+			util.AssertStringDoesContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, wantTestStubs)
 
 			wantCorePlatformStubs := "--core-platform-stub-classpath=" + generateDexPath(defaultJavaDir, tc.corePlatformStub)
-			android.AssertStringDoesContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, wantCorePlatformStubs)
+			util.AssertStringDoesContain(t, "hiddenapi command", hiddenapiRule.RuleParams.Command, wantCorePlatformStubs)
 		})
 	}
 }
@@ -273,7 +274,7 @@ func TestHiddenAPISingletonWithPrebuiltCsvFile(t *testing.T) {
 
 	android.AssertPathRelativeToTopEquals(t, "hiddenapi cp rule output", expectedCpOutput, actualCpOutput)
 
-	android.AssertStringEquals(t, "hiddenapi encode dex rule flags csv", expectedFlagsCsv, actualFlagsCsv)
+	util.AssertStringEquals(t, "hiddenapi encode dex rule flags csv", expectedFlagsCsv, actualFlagsCsv)
 }
 
 func TestHiddenAPIEncoding_JavaSdkLibrary(t *testing.T) {
@@ -304,7 +305,7 @@ func TestHiddenAPIEncoding_JavaSdkLibrary(t *testing.T) {
 		actualUnencodedDexJar := encodeDexRule.Input
 
 		// Make sure that the module has its dex jar encoded.
-		android.AssertStringEquals(t, "encode embedded java_library", unencodedDexJar, actualUnencodedDexJar.String())
+		util.AssertStringEquals(t, "encode embedded java_library", unencodedDexJar, actualUnencodedDexJar.String())
 
 		// Make sure that the encoded dex jar is the exported one.
 		exportedDexJar := moduleForTests.Module().(UsesLibraryDependency).DexJarBuildPath().Path()

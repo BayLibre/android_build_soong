@@ -18,6 +18,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 var prepareForTestWithSystemServerClasspath = android.GroupFixturePreparers(
@@ -35,7 +36,7 @@ func TestPlatformSystemServerClasspathVariant(t *testing.T) {
 	).RunTest(t)
 
 	variants := result.ModuleVariantsForTests("platform-systemserverclasspath")
-	android.AssertIntEquals(t, "expect 1 variant", 1, len(variants))
+	util.AssertIntEquals(t, "expect 1 variant", 1, len(variants))
 }
 
 func TestPlatformSystemServerClasspath_ClasspathFragmentPaths(t *testing.T) {
@@ -49,7 +50,7 @@ func TestPlatformSystemServerClasspath_ClasspathFragmentPaths(t *testing.T) {
 	).RunTest(t)
 
 	p := result.Module("platform-systemserverclasspath", "android_common").(*platformSystemServerClasspathModule)
-	android.AssertStringEquals(t, "output filepath", "systemserverclasspath.pb", p.ClasspathFragmentBase.outputFilepath.Base())
+	util.AssertStringEquals(t, "output filepath", "systemserverclasspath.pb", p.ClasspathFragmentBase.outputFilepath.Base())
 	android.AssertPathRelativeToTopEquals(t, "install filepath", "out/soong/target/product/test_device/system/etc/classpaths", p.ClasspathFragmentBase.installDirPath)
 }
 
@@ -69,7 +70,7 @@ func TestPlatformSystemServerClasspathModule_AndroidMkEntries(t *testing.T) {
 		p := result.Module("platform-systemserverclasspath", "android_common").(*platformSystemServerClasspathModule)
 
 		entries := android.AndroidMkEntriesForTest(t, result.TestContext, p)
-		android.AssertIntEquals(t, "AndroidMkEntries count", 1, len(entries))
+		util.AssertIntEquals(t, "AndroidMkEntries count", 1, len(entries))
 	})
 
 	t.Run("classpath-fragment-entry", func(t *testing.T) {
@@ -88,7 +89,7 @@ func TestPlatformSystemServerClasspathModule_AndroidMkEntries(t *testing.T) {
 		got := entries[0]
 		for k, expectedValue := range want {
 			if value, ok := got.EntryMap[k]; ok {
-				android.AssertDeepEquals(t, k, expectedValue, value)
+				util.AssertDeepEquals(t, k, expectedValue, value)
 			} else {
 				t.Errorf("No %s defined, saw %q", k, got.EntryMap)
 			}

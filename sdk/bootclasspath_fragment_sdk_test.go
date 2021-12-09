@@ -20,6 +20,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/java"
 )
 
@@ -219,7 +220,7 @@ func checkBootJarsPackageCheckRule(t *testing.T, result *android.TestResult, exp
 	bootJarsCheckRule := platformBcp.Rule("boot_jars_package_check")
 	command := bootJarsCheckRule.RuleParams.Command
 	expectedCommandArgs := " out/soong/host/linux-x86/bin/dexdump build/soong/scripts/check_boot_jars/package_allowed_list.txt " + expectedModule + " &&"
-	android.AssertStringDoesContain(t, "boot jars package check", command, expectedCommandArgs)
+	util.AssertStringDoesContain(t, "boot jars package check", command, expectedCommandArgs)
 }
 
 func TestSnapshotWithBootClasspathFragment_Contents(t *testing.T) {
@@ -541,13 +542,13 @@ sdk_snapshot {
 			`, rule)
 
 			rule = module.Output("out/soong/hiddenapi/hiddenapi-flags.csv.valid")
-			android.AssertStringDoesContain(t, "verify-overlaps", rule.RuleParams.Command, " snapshot/hiddenapi/filtered-flags.csv:snapshot/hiddenapi/signature-patterns.csv ")
+			util.AssertStringDoesContain(t, "verify-overlaps", rule.RuleParams.Command, " snapshot/hiddenapi/filtered-flags.csv:snapshot/hiddenapi/signature-patterns.csv ")
 		}),
 		snapshotTestPreparer(checkSnapshotWithSourcePreferred, preparerForSnapshot),
 		snapshotTestChecker(checkSnapshotWithSourcePreferred, func(t *testing.T, result *android.TestResult) {
 			module := result.ModuleForTests("platform-bootclasspath", "android_common")
 			rule := module.Output("out/soong/hiddenapi/hiddenapi-flags.csv.valid")
-			android.AssertStringDoesContain(t, "verify-overlaps", rule.RuleParams.Command, " out/soong/.intermediates/mybootclasspathfragment/android_common_myapex/modular-hiddenapi/filtered-flags.csv:out/soong/.intermediates/mybootclasspathfragment/android_common_myapex/modular-hiddenapi/signature-patterns.csv ")
+			util.AssertStringDoesContain(t, "verify-overlaps", rule.RuleParams.Command, " out/soong/.intermediates/mybootclasspathfragment/android_common_myapex/modular-hiddenapi/filtered-flags.csv:out/soong/.intermediates/mybootclasspathfragment/android_common_myapex/modular-hiddenapi/signature-patterns.csv ")
 		}),
 		snapshotTestPreparer(checkSnapshotPreferredWithSource, preparerForSnapshot),
 	)

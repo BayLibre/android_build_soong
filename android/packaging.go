@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"path/filepath"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 )
 
@@ -166,7 +167,7 @@ func (p *PackagingBase) getDepsForArch(ctx BaseModuleContext, arch ArchType) []s
 		}
 	}
 
-	return FirstUniqueStrings(ret)
+	return util.FirstUniqueStrings(ret)
 }
 
 func (p *PackagingBase) getSupportedTargets(ctx BaseModuleContext) []Target {
@@ -231,7 +232,7 @@ func (p *PackagingBase) GatherPackagingSpecs(ctx ModuleContext) map[string]Packa
 // entries into the specified directory.
 func (p *PackagingBase) CopySpecsToDir(ctx ModuleContext, builder *RuleBuilder, m map[string]PackagingSpec, dir ModuleOutPath) (entries []string) {
 	seenDir := make(map[string]bool)
-	for _, k := range SortedStringKeys(m) {
+	for _, k := range util.SortedStringKeys(m) {
 		ps := m[k]
 		destPath := dir.Join(ctx, ps.relPathInPackage).String()
 		destDir := filepath.Dir(destPath)

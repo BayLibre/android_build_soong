@@ -19,6 +19,7 @@ import (
 	"sort"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -327,12 +328,12 @@ func (l *linter) lint(ctx android.ModuleContext) {
 
 	if l.minSdkVersion != l.compileSdkVersion {
 		l.extraMainlineLintErrors = append(l.extraMainlineLintErrors, updatabilityChecks...)
-		_, filtered := android.FilterList(l.properties.Lint.Warning_checks, updatabilityChecks)
+		_, filtered := util.FilterList(l.properties.Lint.Warning_checks, updatabilityChecks)
 		if len(filtered) != 0 {
 			ctx.PropertyErrorf("lint.warning_checks",
 				"Can't treat %v checks as warnings if min_sdk_version is different from sdk_version.", filtered)
 		}
-		_, filtered = android.FilterList(l.properties.Lint.Disabled_checks, updatabilityChecks)
+		_, filtered = util.FilterList(l.properties.Lint.Disabled_checks, updatabilityChecks)
 		if len(filtered) != 0 {
 			ctx.PropertyErrorf("lint.disabled_checks",
 				"Can't disable %v checks if min_sdk_version is different from sdk_version.", filtered)
@@ -590,7 +591,7 @@ func (l *lintSingleton) generateLintReportZips(ctx android.SingletonContext) {
 		}
 	})
 
-	dirs = android.SortedUniqueStrings(dirs)
+	dirs = util.SortedUniqueStrings(dirs)
 
 	zip := func(outputPath android.WritablePath, get func(*lintOutputs) android.Path) {
 		var paths android.Paths

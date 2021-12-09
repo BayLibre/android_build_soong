@@ -21,6 +21,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/java"
 
 	"github.com/google/blueprint/proptools"
@@ -390,9 +391,9 @@ func TestCommonValueOptimization(t *testing.T) {
 	extractor := newCommonValueExtractor(common)
 
 	err := extractor.extractCommonProperties(common, structs)
-	android.AssertDeepEquals(t, "unexpected error", nil, err)
+	util.AssertDeepEquals(t, "unexpected error", nil, err)
 
-	android.AssertDeepEquals(t, "common properties not correct",
+	util.AssertDeepEquals(t, "common properties not correct",
 		&testPropertiesStruct{
 			name:        "common",
 			private:     "",
@@ -410,7 +411,7 @@ func TestCommonValueOptimization(t *testing.T) {
 		},
 		common)
 
-	android.AssertDeepEquals(t, "updated properties[0] not correct",
+	util.AssertDeepEquals(t, "updated properties[0] not correct",
 		&testPropertiesStruct{
 			name:        "struct-0",
 			private:     "common",
@@ -428,7 +429,7 @@ func TestCommonValueOptimization(t *testing.T) {
 		},
 		structs[0])
 
-	android.AssertDeepEquals(t, "updated properties[1] not correct",
+	util.AssertDeepEquals(t, "updated properties[1] not correct",
 		&testPropertiesStruct{
 			name:        "struct-1",
 			private:     "common",
@@ -463,7 +464,7 @@ func TestCommonValueOptimization_InvalidArchSpecificVariants(t *testing.T) {
 	extractor := newCommonValueExtractor(common)
 
 	err := extractor.extractCommonProperties(common, structs)
-	android.AssertErrorMessageEquals(t, "unexpected error", `field "S_Common" is not tagged as "arch_variant" but has arch specific properties:
+	util.AssertErrorMessageEquals(t, "unexpected error", `field "S_Common" is not tagged as "arch_variant" but has arch specific properties:
     "struct-0" has value "should-be-but-is-not-common0"
     "struct-1" has value "should-be-but-is-not-common1"`, err)
 }
@@ -492,7 +493,7 @@ func TestSnapshot_EnvConfiguration(t *testing.T) {
 
 	checkZipFile := func(t *testing.T, result *android.TestResult, expected string) {
 		zipRule := result.ModuleForTests("mysdk", "common_os").Rule("SnapshotZipFiles")
-		android.AssertStringEquals(t, "snapshot zip file", expected, zipRule.Output.String())
+		util.AssertStringEquals(t, "snapshot zip file", expected, zipRule.Output.String())
 	}
 
 	t.Run("no env variables", func(t *testing.T) {

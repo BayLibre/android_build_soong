@@ -24,6 +24,7 @@ import (
 	"sort"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
 	"github.com/google/blueprint/pathtools"
@@ -610,7 +611,7 @@ func expandOneSrcPath(ctx ModuleWithDepsPathContext, sPath string, expandedExclu
 		}
 		remainder := make(Paths, 0, len(paths))
 		for _, p := range paths {
-			if !InList(p.String(), expandedExcludes) {
+			if !util.InList(p.String(), expandedExcludes) {
 				remainder = append(remainder, p)
 			}
 		}
@@ -634,7 +635,7 @@ func expandOneSrcPath(ctx ModuleWithDepsPathContext, sPath string, expandedExclu
 			ReportPathErrorf(ctx, "module source path %q does not exist", p)
 		}
 
-		if InList(p.String(), expandedExcludes) {
+		if util.InList(p.String(), expandedExcludes) {
 			return nil, nil
 		}
 		return Paths{p}, nil
@@ -1586,7 +1587,7 @@ type InstallPath struct {
 
 // Will panic if called from outside a test environment.
 func ensureTestOnly() {
-	if PrefixInList(os.Args, "-test.") {
+	if util.PrefixInList(os.Args, "-test.") {
 		return
 	}
 	panic(fmt.Errorf("Not in test. Command line:\n  %s", strings.Join(os.Args, "\n  ")))
@@ -2147,7 +2148,7 @@ var thirdPartyDirPrefixExceptions = []*regexp.Regexp{
 func IsThirdPartyPath(path string) bool {
 	thirdPartyDirPrefixes := []string{"external/", "vendor/", "hardware/"}
 
-	if HasAnyPrefix(path, thirdPartyDirPrefixes) {
+	if util.HasAnyPrefix(path, thirdPartyDirPrefixes) {
 		for _, prefix := range thirdPartyDirPrefixExceptions {
 			if prefix.MatchString(path) {
 				return false
@@ -2156,4 +2157,20 @@ func IsThirdPartyPath(path string) bool {
 		return true
 	}
 	return false
+}
+
+// ShardPaths takes a Paths, and returns a slice of Paths where each one has at most shardSize paths.
+func ShardPaths(paths Paths, shardSize int) []Paths {
+	if len(paths) == 0 {
+		return nil
+	}
+	ret := make([]Paths, 0, (len(paths)+shardSize-1)/shardSize)
+	for len(paths) > shardSize {
+		ret = append(ret, paths[0:shardSize])
+		paths = paths[shardSize:]
+	}
+	if len(paths) > 0 {
+		ret = append(ret, paths)
+	}
+	return ret
 }

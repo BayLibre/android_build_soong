@@ -19,6 +19,7 @@ import (
 	"strconv"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 
 	"android/soong/android"
@@ -156,7 +157,7 @@ func manifestMerger(ctx android.ModuleContext, manifest android.Path, staticLibM
 		Implicits:   staticLibManifests,
 		Output:      mergedManifest,
 		Args: map[string]string{
-			"libs": android.JoinWithPrefix(staticLibManifests.Strings(), "--libs "),
+			"libs": util.JoinWithPrefix(staticLibManifests.Strings(), "--libs "),
 			"args": args,
 		},
 	})

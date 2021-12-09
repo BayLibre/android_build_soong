@@ -18,7 +18,7 @@ import (
 	"strings"
 	"testing"
 
-	"android/soong/android"
+	"android/soong/android/util"
 )
 
 func TestRustFuzz(t *testing.T) {
@@ -37,10 +37,10 @@ func TestRustFuzz(t *testing.T) {
 
 	// Check that appropriate dependencies are added and that the rustlib linkage is correct.
 	fuzz_libtest_mod := ctx.ModuleForTests("fuzz_libtest", "android_arm64_armv8-a_fuzzer").Module().(*Module)
-	if !android.InList("liblibfuzzer_sys.rlib-std", fuzz_libtest_mod.Properties.AndroidMkRlibs) {
+	if !util.InList("liblibfuzzer_sys.rlib-std", fuzz_libtest_mod.Properties.AndroidMkRlibs) {
 		t.Errorf("liblibfuzzer_sys rlib library dependency missing for rust_fuzz module. %#v", fuzz_libtest_mod.Properties.AndroidMkRlibs)
 	}
-	if !android.InList("libtest_fuzzing.rlib-std", fuzz_libtest_mod.Properties.AndroidMkRlibs) {
+	if !util.InList("libtest_fuzzing.rlib-std", fuzz_libtest_mod.Properties.AndroidMkRlibs) {
 		t.Errorf("rustlibs not linked as rlib for rust_fuzz module.")
 	}
 

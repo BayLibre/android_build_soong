@@ -20,6 +20,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 var prepareForAsanTest = android.FixtureAddFile("asan/Android.bp", []byte(`
@@ -135,7 +136,7 @@ func TestAsan(t *testing.T) {
 			fromLink := from.Description("link")
 			toLink := to.Description("strip")
 
-			if g, w := fromLink.OrderOnly.Strings(), toLink.Output.String(); !android.InList(w, g) {
+			if g, w := fromLink.OrderOnly.Strings(), toLink.Output.String(); !util.InList(w, g) {
 				t.Errorf("%s should link against %s, expected %q, got %q",
 					from.Module(), to.Module(), w, g)
 			}
@@ -148,7 +149,7 @@ func TestAsan(t *testing.T) {
 			fromLink := from.Description("link")
 			toLink := to.Description("static link")
 
-			if g, w := fromLink.Implicits.Strings(), toLink.Output.String(); !android.InList(w, g) {
+			if g, w := fromLink.Implicits.Strings(), toLink.Output.String(); !util.InList(w, g) {
 				t.Errorf("%s should link against %s, expected %q, got %q",
 					from.Module(), to.Module(), w, g)
 			}
@@ -166,7 +167,7 @@ func TestAsan(t *testing.T) {
 			// order-only.
 			got := append(fromInstalled.Implicits.Strings(), fromInstalled.OrderOnly.Strings()...)
 			want := toInstalled.Output.String()
-			if !android.InList(want, got) {
+			if !util.InList(want, got) {
 				t.Errorf("%s installation should depend on %s, expected %q, got %q",
 					from.Module(), to.Module(), want, got)
 			}

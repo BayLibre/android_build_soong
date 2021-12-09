@@ -21,6 +21,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/cc"
 
 	"github.com/google/blueprint/pathtools"
@@ -109,15 +110,15 @@ func TestRemapPackageSpecs(t *testing.T) {
 			err := remapPackageSpecs(specs, test.remaps)
 
 			if test.err != "" {
-				android.AssertErrorMessageEquals(t, "", test.err, err)
+				util.AssertErrorMessageEquals(t, "", test.err, err)
 			} else {
 				outputs := []string{}
 				for path, spec := range specs {
-					android.AssertStringEquals(t, "path does not match rel path", path, spec.RelPathInPackage())
+					util.AssertStringEquals(t, "path does not match rel path", path, spec.RelPathInPackage())
 					outputs = append(outputs, path)
 				}
 				sort.Strings(outputs)
-				android.AssertArrayString(t, "outputs mismatch", test.output, outputs)
+				util.AssertArrayString(t, "outputs mismatch", test.output, outputs)
 			}
 		})
 	}

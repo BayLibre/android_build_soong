@@ -19,6 +19,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/dexpreopt"
 )
 
@@ -197,7 +198,7 @@ func bcpForDexpreopt(ctx android.PathContext, withUpdatable bool) (android.Writa
 
 var defaultBootclasspathKey = android.NewOnceKey("defaultBootclasspath")
 
-var copyOf = android.CopyOf
+var copyOf = util.CopyOf
 
 func init() {
 	android.RegisterMakeVarsProvider(pctx, dexpreoptConfigMakevars)

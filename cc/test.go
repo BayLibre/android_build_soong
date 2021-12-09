@@ -19,6 +19,7 @@ import (
 	"strconv"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -213,7 +214,7 @@ func TestPerSrcMutator(mctx android.BottomUpMutatorContext) {
 		if test, ok := m.linker.(testPerSrc); ok {
 			numTests := len(test.srcs())
 			if test.testPerSrc() && numTests > 0 {
-				if duplicate, found := android.CheckDuplicate(test.srcs()); found {
+				if duplicate, found := util.CheckDuplicate(test.srcs()); found {
 					mctx.PropertyErrorf("srcs", "found a duplicate entry %q", duplicate)
 					return
 				}

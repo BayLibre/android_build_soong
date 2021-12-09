@@ -32,6 +32,7 @@ import (
 	"sort"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
 	"github.com/google/blueprint/pathtools"
@@ -272,7 +273,7 @@ func (a *AndroidMkEntries) AddCompatibilityTestSuites(suites ...string) {
 	// MTS supports a full test suite and partial per-module MTS test suites, with naming mts-${MODULE}.
 	// To reduce repetition, if we find a partial MTS test suite without an full MTS test suite,
 	// we add the full test suite to our list.
-	if PrefixInList(suites, "mts-") && !InList("mts", suites) {
+	if util.PrefixInList(suites, "mts-") && !util.InList("mts", suites) {
 		suites = append(suites, "mts")
 	}
 	a.AddStrings("LOCAL_COMPATIBILITY_SUITE", suites...)

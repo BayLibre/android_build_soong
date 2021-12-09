@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package android
+package util
 
 import (
 	"fmt"
@@ -57,34 +57,6 @@ func AssertStringEquals(t *testing.T, message string, expected string, actual st
 	if actual != expected {
 		t.Errorf("%s: expected %s, actual %s", message, expected, actual)
 	}
-}
-
-// AssertPathRelativeToTopEquals checks if the expected value is equal to the result of calling
-// PathRelativeToTop on the actual Path.
-func AssertPathRelativeToTopEquals(t *testing.T, message string, expected string, actual Path) {
-	t.Helper()
-	AssertStringEquals(t, message, expected, PathRelativeToTop(actual))
-}
-
-// AssertPathsRelativeToTopEquals checks if the expected value is equal to the result of calling
-// PathsRelativeToTop on the actual Paths.
-func AssertPathsRelativeToTopEquals(t *testing.T, message string, expected []string, actual Paths) {
-	t.Helper()
-	AssertDeepEquals(t, message, expected, PathsRelativeToTop(actual))
-}
-
-// AssertStringPathRelativeToTopEquals checks if the expected value is equal to the result of calling
-// StringPathRelativeToTop on the actual string path.
-func AssertStringPathRelativeToTopEquals(t *testing.T, message string, config Config, expected string, actual string) {
-	t.Helper()
-	AssertStringEquals(t, message, expected, StringPathRelativeToTop(config.soongOutDir, actual))
-}
-
-// AssertStringPathsRelativeToTopEquals checks if the expected value is equal to the result of
-// calling StringPathsRelativeToTop on the actual string paths.
-func AssertStringPathsRelativeToTopEquals(t *testing.T, message string, config Config, expected []string, actual []string) {
-	t.Helper()
-	AssertDeepEquals(t, message, expected, StringPathsRelativeToTop(config.soongOutDir, actual))
 }
 
 // AssertErrorMessageEquals checks if the error is not nil and has the expected message. If it does

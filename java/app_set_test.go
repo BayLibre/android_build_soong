@@ -21,6 +21,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 func TestAndroidAppSet(t *testing.T) {
@@ -127,7 +128,7 @@ func TestAndroidAppSet_Variants(t *testing.T) {
 		params := module.Output(packedSplitApks)
 		for k, v := range test.expected {
 			t.Run(test.name, func(t *testing.T) {
-				android.AssertStringEquals(t, fmt.Sprintf("arg value for `%s`", k), v, params.Args[k])
+				util.AssertStringEquals(t, fmt.Sprintf("arg value for `%s`", k), v, params.Args[k])
 			})
 		}
 	}

@@ -20,6 +20,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/java"
 
 	"github.com/google/blueprint"
@@ -164,8 +165,8 @@ func TestPlatformBootclasspath_Fragments(t *testing.T) {
 	android.AssertPathsRelativeToTopEquals(t, "metadata flags", []string{"out/soong/.intermediates/bar-fragment/android_common_apex10000/modular-hiddenapi/metadata.csv"}, info.MetadataPaths)
 	android.AssertPathsRelativeToTopEquals(t, "index flags", []string{"out/soong/.intermediates/bar-fragment/android_common_apex10000/modular-hiddenapi/index.csv"}, info.IndexPaths)
 
-	android.AssertArrayString(t, "stub flags", []string{"out/soong/.intermediates/bar-fragment/android_common_apex10000/modular-hiddenapi/filtered-stub-flags.csv:out/soong/.intermediates/bar-fragment/android_common_apex10000/modular-hiddenapi/signature-patterns.csv"}, info.StubFlagSubsets.RelativeToTop())
-	android.AssertArrayString(t, "all flags", []string{"out/soong/.intermediates/bar-fragment/android_common_apex10000/modular-hiddenapi/filtered-flags.csv:out/soong/.intermediates/bar-fragment/android_common_apex10000/modular-hiddenapi/signature-patterns.csv"}, info.FlagSubsets.RelativeToTop())
+	util.AssertArrayString(t, "stub flags", []string{"out/soong/.intermediates/bar-fragment/android_common_apex10000/modular-hiddenapi/filtered-stub-flags.csv:out/soong/.intermediates/bar-fragment/android_common_apex10000/modular-hiddenapi/signature-patterns.csv"}, info.StubFlagSubsets.RelativeToTop())
+	util.AssertArrayString(t, "all flags", []string{"out/soong/.intermediates/bar-fragment/android_common_apex10000/modular-hiddenapi/filtered-flags.csv:out/soong/.intermediates/bar-fragment/android_common_apex10000/modular-hiddenapi/signature-patterns.csv"}, info.FlagSubsets.RelativeToTop())
 }
 
 // TestPlatformBootclasspath_LegacyPrebuiltFragment verifies that the
@@ -234,8 +235,8 @@ func TestPlatformBootclasspath_LegacyPrebuiltFragment(t *testing.T) {
 	pbcp := result.Module("myplatform-bootclasspath", "android_common")
 	info := result.ModuleProvider(pbcp, java.MonolithicHiddenAPIInfoProvider).(java.MonolithicHiddenAPIInfo)
 
-	android.AssertArrayString(t, "stub flags", []string{"prebuilt-stub-flags.csv:out/soong/.intermediates/mybootclasspath-fragment/android_common_myapex/modular-hiddenapi/signature-patterns.csv"}, info.StubFlagSubsets.RelativeToTop())
-	android.AssertArrayString(t, "all flags", []string{"prebuilt-all-flags.csv:out/soong/.intermediates/mybootclasspath-fragment/android_common_myapex/modular-hiddenapi/signature-patterns.csv"}, info.FlagSubsets.RelativeToTop())
+	util.AssertArrayString(t, "stub flags", []string{"prebuilt-stub-flags.csv:out/soong/.intermediates/mybootclasspath-fragment/android_common_myapex/modular-hiddenapi/signature-patterns.csv"}, info.StubFlagSubsets.RelativeToTop())
+	util.AssertArrayString(t, "all flags", []string{"prebuilt-all-flags.csv:out/soong/.intermediates/mybootclasspath-fragment/android_common_myapex/modular-hiddenapi/signature-patterns.csv"}, info.FlagSubsets.RelativeToTop())
 }
 
 func TestPlatformBootclasspathDependencies(t *testing.T) {
@@ -559,7 +560,7 @@ func CheckModuleDependencies(t *testing.T, ctx *android.TestContext, name, varia
 	})
 
 	pairs := java.ApexNamePairsFromModules(ctx, modules)
-	android.AssertDeepEquals(t, "module dependencies", expected, pairs)
+	util.AssertDeepEquals(t, "module dependencies", expected, pairs)
 }
 
 // TestPlatformBootclasspath_IncludesRemainingApexJars verifies that any apex boot jar is present in

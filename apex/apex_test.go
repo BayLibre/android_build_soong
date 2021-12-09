@@ -26,6 +26,7 @@ import (
 	"strings"
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -272,14 +273,14 @@ func ensureMatches(t *testing.T, result string, expectedRex string) {
 
 func ensureListContains(t *testing.T, result []string, expected string) {
 	t.Helper()
-	if !android.InList(expected, result) {
+	if !util.InList(expected, result) {
 		t.Errorf("%q is not found in %v", expected, result)
 	}
 }
 
 func ensureListNotContains(t *testing.T, result []string, notExpected string) {
 	t.Helper()
-	if android.InList(notExpected, result) {
+	if util.InList(notExpected, result) {
 		t.Errorf("%q is found in %v", notExpected, result)
 	}
 }
@@ -1918,7 +1919,7 @@ func TestApexMinSdkVersion_crtobjectInVendorApex(t *testing.T) {
 
 	// Ensure that the crtbegin_so used by the APEX is targeting 29
 	cflags := ctx.ModuleForTests("crtbegin_so", vendorVariant+"_apex29").Rule("cc").Args["cFlags"]
-	android.AssertStringDoesContain(t, "cflags", cflags, "-target aarch64-linux-android29")
+	util.AssertStringDoesContain(t, "cflags", cflags, "-target aarch64-linux-android29")
 }
 
 func TestPlatformUsesLatestStubsFromApexes(t *testing.T) {
@@ -4626,7 +4627,7 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 		p := ctx.ModuleForTests(name, "android_common_myapex").Module().(java.UsesLibraryDependency)
 		dexJarBuildPath := p.DexJarBuildPath().PathOrNil()
 		stem := android.RemoveOptionalPrebuiltPrefix(name)
-		android.AssertStringEquals(t, "DexJarBuildPath should be apex-related path.",
+		util.AssertStringEquals(t, "DexJarBuildPath should be apex-related path.",
 			".intermediates/myapex.deapexer/android_common/deapexer/javalib/"+stem+".jar",
 			android.NormalizePathForTesting(dexJarBuildPath))
 	}
@@ -4637,7 +4638,7 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 		p := ctx.ModuleForTests(name, "android_common_myapex").Module().(java.UsesLibraryDependency)
 		dexJarBuildPath := p.DexJarInstallPath()
 		stem := android.RemoveOptionalPrebuiltPrefix(name)
-		android.AssertStringEquals(t, "DexJarInstallPath should be apex-related path.",
+		util.AssertStringEquals(t, "DexJarInstallPath should be apex-related path.",
 			"target/product/test_device/apex/myapex/javalib/"+stem+".jar",
 			android.NormalizePathForTesting(dexJarBuildPath))
 	}
@@ -4645,7 +4646,7 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 	ensureNoSourceVariant := func(t *testing.T, ctx *android.TestContext, name string) {
 		t.Helper()
 		// Make sure that an apex variant is not created for the source module.
-		android.AssertArrayString(t, "Check if there is no source variant",
+		util.AssertArrayString(t, "Check if there is no source variant",
 			[]string{"android_common"},
 			ctx.ModuleVariantsForTests(name))
 	}
@@ -4682,7 +4683,7 @@ func TestPrebuiltExportDexImplementationJars(t *testing.T) {
 		ctx := testDexpreoptWithApexes(t, bp, "", transform)
 
 		deapexerName := deapexerModuleName("myapex")
-		android.AssertStringEquals(t, "APEX module name from deapexer name", "myapex", apexModuleName(deapexerName))
+		util.AssertStringEquals(t, "APEX module name from deapexer name", "myapex", apexModuleName(deapexerName))
 
 		// Make sure that the deapexer has the correct input APEX.
 		deapexer := ctx.ModuleForTests(deapexerName, "android_common")
@@ -4826,7 +4827,7 @@ func TestBootDexJarsFromSourcesAndPrebuilts(t *testing.T) {
 			if filepath.Base(output) == base {
 				foundLibfooJar = true
 				buildRule := s.Output(output)
-				android.AssertStringEquals(t, "boot dex jar path", bootDexJarPath, buildRule.Input.String())
+				util.AssertStringEquals(t, "boot dex jar path", bootDexJarPath, buildRule.Input.String())
 			}
 		}
 		if !foundLibfooJar {
@@ -6872,13 +6873,13 @@ func TestAppSetBundlePrebuilt(t *testing.T) {
 	m := ctx.ModuleForTests("myapex.apex.extractor", "android_common")
 	extractedApex := m.Output(extractorOutput)
 
-	android.AssertArrayString(t, "extractor input", []string{"myapex.hwasan.apks"}, extractedApex.Inputs.Strings())
+	util.AssertArrayString(t, "extractor input", []string{"myapex.hwasan.apks"}, extractedApex.Inputs.Strings())
 
 	// Ditto for the apex.
 	m = ctx.ModuleForTests("myapex", "android_common_myapex")
 	copiedApex := m.Output("out/soong/.intermediates/myapex/android_common_myapex/foo_v2.apex")
 
-	android.AssertStringEquals(t, "myapex input", extractorOutput, copiedApex.Input.String())
+	util.AssertStringEquals(t, "myapex input", extractorOutput, copiedApex.Input.String())
 }
 
 func testNoUpdatableJarsInBootImage(t *testing.T, errmsg string, preparer android.FixturePreparer, fragments ...java.ApexVariantReference) {
@@ -7490,8 +7491,8 @@ func TestTestFor(t *testing.T) {
 
 	ensureLinkedLibIs := func(mod, variant, linkedLib, expectedVariant string) {
 		ldFlags := strings.Split(ctx.ModuleForTests(mod, variant).Rule("ld").Args["libFlags"], " ")
-		mylibLdFlags := android.FilterListPred(ldFlags, func(s string) bool { return strings.HasPrefix(s, linkedLib) })
-		android.AssertArrayString(t, "unexpected "+linkedLib+" link library for "+mod, []string{linkedLib + expectedVariant}, mylibLdFlags)
+		mylibLdFlags := util.FilterListPred(ldFlags, func(s string) bool { return strings.HasPrefix(s, linkedLib) })
+		util.AssertArrayString(t, "unexpected "+linkedLib+" link library for "+mod, []string{linkedLib + expectedVariant}, mylibLdFlags)
 	}
 
 	// These modules are tests for the apex, therefore are linked to the
@@ -7548,8 +7549,8 @@ func TestIndirectTestFor(t *testing.T) {
 
 	ensureLinkedLibIs := func(mod, variant, linkedLib, expectedVariant string) {
 		ldFlags := strings.Split(ctx.ModuleForTests(mod, variant).Rule("ld").Args["libFlags"], " ")
-		mylibLdFlags := android.FilterListPred(ldFlags, func(s string) bool { return strings.HasPrefix(s, linkedLib) })
-		android.AssertArrayString(t, "unexpected "+linkedLib+" link library for "+mod, []string{linkedLib + expectedVariant}, mylibLdFlags)
+		mylibLdFlags := util.FilterListPred(ldFlags, func(s string) bool { return strings.HasPrefix(s, linkedLib) })
+		util.AssertArrayString(t, "unexpected "+linkedLib+" link library for "+mod, []string{linkedLib + expectedVariant}, mylibLdFlags)
 	}
 
 	// The platform variant of mytestlib links to the platform variant of the
@@ -8142,7 +8143,7 @@ func TestPrebuiltStubLibDep(t *testing.T) {
 						}
 						cflags := entry.mkEntries.EntryMap["LOCAL_EXPORT_CFLAGS"]
 						expected := "-D__STUBLIB_API__=10000"
-						if !android.InList(expected, cflags) {
+						if !util.InList(expected, cflags) {
 							t.Errorf("LOCAL_EXPORT_CFLAGS expected to have %q, but got %q", expected, cflags)
 						}
 					}
@@ -8361,7 +8362,7 @@ func TestAndroidMk_DexpreoptBuiltInstalledForApex_Prebuilt(t *testing.T) {
 	prebuilt := ctx.ModuleForTests("myapex", "android_common_myapex").Module().(*Prebuilt)
 	entriesList := android.AndroidMkEntriesForTest(t, ctx, prebuilt)
 	mainModuleEntries := entriesList[0]
-	android.AssertArrayString(t,
+	util.AssertArrayString(t,
 		"LOCAL_REQUIRED_MODULES",
 		mainModuleEntries.EntryMap["LOCAL_REQUIRED_MODULES"],
 		[]string{

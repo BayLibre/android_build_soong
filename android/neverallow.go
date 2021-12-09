@@ -21,6 +21,7 @@ import (
 	"strconv"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 )
 
@@ -331,7 +332,7 @@ type notInListMatcher struct {
 }
 
 func (m *notInListMatcher) Test(value string) bool {
-	return !InList(value, m.allowed)
+	return !util.InList(value, m.allowed)
 }
 
 func (m *notInListMatcher) String() string {
@@ -516,8 +517,8 @@ func (r *rule) String() string {
 }
 
 func (r *rule) appliesToPath(dir string) bool {
-	includePath := len(r.paths) == 0 || HasAnyPrefix(dir, r.paths)
-	excludePath := HasAnyPrefix(dir, r.unlessPaths)
+	includePath := len(r.paths) == 0 || util.HasAnyPrefix(dir, r.paths)
+	excludePath := util.HasAnyPrefix(dir, r.unlessPaths)
 	return includePath && !excludePath
 }
 
@@ -542,7 +543,7 @@ func (r *rule) appliesToBootclasspathJar(ctx BottomUpMutatorContext) bool {
 		return true
 	}
 
-	return InList(ctx.ModuleName(), ctx.Config().BootJars())
+	return util.InList(ctx.ModuleName(), ctx.Config().BootJars())
 }
 
 func (r *rule) appliesToOsClass(osClass OsClass) bool {
@@ -560,7 +561,7 @@ func (r *rule) appliesToOsClass(osClass OsClass) bool {
 }
 
 func (r *rule) appliesToModuleType(moduleType string) bool {
-	return (len(r.moduleTypes) == 0 || InList(moduleType, r.moduleTypes)) && !InList(moduleType, r.unlessModuleTypes)
+	return (len(r.moduleTypes) == 0 || util.InList(moduleType, r.moduleTypes)) && !util.InList(moduleType, r.unlessModuleTypes)
 }
 
 func (r *rule) appliesToProperties(properties []interface{}) bool {

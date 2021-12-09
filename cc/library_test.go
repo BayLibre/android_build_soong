@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/bazel/cquery"
 )
 
@@ -278,7 +279,7 @@ cc_library {
 	}
 
 	expectedOutputFiles := []string{"outputbase/execroot/__main__/foo.a"}
-	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
+	util.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
 
 	flagExporter := ctx.ModuleProvider(staticFoo, FlagExporterInfoProvider).(FlagExporterInfo)
 	android.AssertPathsRelativeToTopEquals(t, "exported include dirs", []string{"outputbase/execroot/__main__/include"}, flagExporter.IncludeDirs)
@@ -292,7 +293,7 @@ cc_library {
 		t.Errorf("Unexpected error getting cc_library outputfiles %s", err)
 	}
 	expectedOutputFiles = []string{"outputbase/execroot/__main__/foo.so"}
-	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
+	util.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
 
 	flagExporter = ctx.ModuleProvider(sharedFoo, FlagExporterInfoProvider).(FlagExporterInfo)
 	android.AssertPathsRelativeToTopEquals(t, "exported include dirs", []string{"outputbase/execroot/__main__/include"}, flagExporter.IncludeDirs)
@@ -311,9 +312,9 @@ func TestLibraryVersionScript(t *testing.T) {
 
 	libfoo := result.ModuleForTests("libfoo", "android_arm64_armv8-a_shared").Rule("ld")
 
-	android.AssertStringListContains(t, "missing dependency on version_script",
+	util.AssertStringListContains(t, "missing dependency on version_script",
 		libfoo.Implicits.Strings(), "foo.map.txt")
-	android.AssertStringDoesContain(t, "missing flag for version_script",
+	util.AssertStringDoesContain(t, "missing flag for version_script",
 		libfoo.Args["ldFlags"], "-Wl,--version-script,foo.map.txt")
 
 }
@@ -328,9 +329,9 @@ func TestLibraryDynamicList(t *testing.T) {
 
 	libfoo := result.ModuleForTests("libfoo", "android_arm64_armv8-a_shared").Rule("ld")
 
-	android.AssertStringListContains(t, "missing dependency on dynamic_list",
+	util.AssertStringListContains(t, "missing dependency on dynamic_list",
 		libfoo.Implicits.Strings(), "foo.dynamic.txt")
-	android.AssertStringDoesContain(t, "missing flag for dynamic_list",
+	util.AssertStringDoesContain(t, "missing flag for dynamic_list",
 		libfoo.Args["ldFlags"], "-Wl,--dynamic-list,foo.dynamic.txt")
 
 }
@@ -364,7 +365,7 @@ cc_library_shared {
 		t.Errorf("Unexpected error getting cc_object outputfiles %s", err)
 	}
 	expectedOutputFiles := []string{"outputbase/execroot/__main__/foo.so"}
-	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
+	util.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
 
 	tocFilePath := sharedFoo.(*Module).Toc()
 	if !tocFilePath.Valid() {
@@ -372,10 +373,10 @@ cc_library_shared {
 	}
 	tocFile := tocFilePath.Path()
 	expectedToc := "outputbase/execroot/__main__/foo.so.toc"
-	android.AssertStringEquals(t, "toc file", expectedToc, tocFile.String())
+	util.AssertStringEquals(t, "toc file", expectedToc, tocFile.String())
 
 	entries := android.AndroidMkEntriesForTest(t, ctx, sharedFoo)[0]
 	expectedFlags := []string{"-Ioutputbase/execroot/__main__/include", "-isystem outputbase/execroot/__main__/system_include"}
 	gotFlags := entries.EntryMap["LOCAL_EXPORT_CFLAGS"]
-	android.AssertDeepEquals(t, "androidmk exported cflags", expectedFlags, gotFlags)
+	util.AssertDeepEquals(t, "androidmk exported cflags", expectedFlags, gotFlags)
 }

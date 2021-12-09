@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"reflect"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 )
 
@@ -46,7 +47,7 @@ func addPathDepsForProps(ctx BottomUpMutatorContext, props []interface{}) {
 	}
 
 	// Remove duplicates to avoid multiple dependencies.
-	pathProperties = FirstUniqueStrings(pathProperties)
+	pathProperties = util.FirstUniqueStrings(pathProperties)
 
 	// Add dependencies to anything that is a module reference.
 	for _, s := range pathProperties {

@@ -22,6 +22,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/java"
 
 	"github.com/google/blueprint"
@@ -140,8 +141,8 @@ func (p *prebuiltCommon) checkForceDisable(ctx android.ModuleContext) bool {
 
 	// b/137216042 don't use prebuilts when address sanitizer is on, unless the prebuilt has a sanitized source
 	sanitized := ctx.Module().(sanitizedPrebuilt)
-	forceDisable = forceDisable || (android.InList("address", ctx.Config().SanitizeDevice()) && !sanitized.hasSanitizedSource("address"))
-	forceDisable = forceDisable || (android.InList("hwaddress", ctx.Config().SanitizeDevice()) && !sanitized.hasSanitizedSource("hwaddress"))
+	forceDisable = forceDisable || (util.InList("address", ctx.Config().SanitizeDevice()) && !sanitized.hasSanitizedSource("address"))
+	forceDisable = forceDisable || (util.InList("hwaddress", ctx.Config().SanitizeDevice()) && !sanitized.hasSanitizedSource("hwaddress"))
 
 	if forceDisable && p.prebuilt.SourceExists() {
 		p.prebuiltCommonProperties.ForceDisable = true
@@ -617,11 +618,11 @@ func (p *prebuiltCommon) createDeapexerModuleIfNeeded(ctx android.TopDownMutator
 	deapexerProperties := &DeapexerProperties{
 		// Remove any duplicates from the common modules lists as a module may be included via a direct
 		// dependency as well as transitive ones.
-		CommonModules: android.SortedUniqueStrings(commonModules),
+		CommonModules: util.SortedUniqueStrings(commonModules),
 	}
 
 	// Populate the exported files property in a fixed order.
-	deapexerProperties.ExportedFiles = android.SortedUniqueStrings(exportedFiles)
+	deapexerProperties.ExportedFiles = util.SortedUniqueStrings(exportedFiles)
 
 	props := struct {
 		Name          *string
@@ -855,9 +856,9 @@ func (e *ApexExtractorProperties) prebuiltSrcs(ctx android.BaseModuleContext) []
 		sanitizers = ctx.Config().SanitizeDevice()
 	}
 
-	if android.InList("address", sanitizers) && e.Sanitized.Address.Set != nil {
+	if util.InList("address", sanitizers) && e.Sanitized.Address.Set != nil {
 		srcs = append(srcs, *e.Sanitized.Address.Set)
-	} else if android.InList("hwaddress", sanitizers) && e.Sanitized.Hwaddress.Set != nil {
+	} else if util.InList("hwaddress", sanitizers) && e.Sanitized.Hwaddress.Set != nil {
 		srcs = append(srcs, *e.Sanitized.Hwaddress.Set)
 	} else if e.Sanitized.None.Set != nil {
 		srcs = append(srcs, *e.Sanitized.None.Set)

@@ -17,6 +17,7 @@ package android
 import (
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 )
 
@@ -95,19 +96,19 @@ func TestInstallDependencyTag(t *testing.T) {
 	hostTransitive := result.ModuleForTests("transitive", config.BuildOSCommonTarget.String()).Description("install")
 	hostDep := result.ModuleForTests("dep", config.BuildOSCommonTarget.String()).Description("install")
 
-	if g, w := hostFoo.Implicits.Strings(), hostInstallDep.Output.String(); !InList(w, g) {
+	if g, w := hostFoo.Implicits.Strings(), hostInstallDep.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected host dependency %q, got %q", w, g)
 	}
 
-	if g, w := hostFoo.Implicits.Strings(), hostTransitive.Output.String(); !InList(w, g) {
+	if g, w := hostFoo.Implicits.Strings(), hostTransitive.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected host dependency %q, got %q", w, g)
 	}
 
-	if g, w := hostInstallDep.Implicits.Strings(), hostTransitive.Output.String(); !InList(w, g) {
+	if g, w := hostInstallDep.Implicits.Strings(), hostTransitive.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected host dependency %q, got %q", w, g)
 	}
 
-	if g, w := hostFoo.Implicits.Strings(), hostDep.Output.String(); InList(w, g) {
+	if g, w := hostFoo.Implicits.Strings(), hostDep.Output.String(); util.InList(w, g) {
 		t.Errorf("expected no host dependency %q, got %q", w, g)
 	}
 
@@ -116,19 +117,19 @@ func TestInstallDependencyTag(t *testing.T) {
 	deviceTransitive := result.ModuleForTests("transitive", "android_common").Description("install")
 	deviceDep := result.ModuleForTests("dep", "android_common").Description("install")
 
-	if g, w := deviceFoo.OrderOnly.Strings(), deviceInstallDep.Output.String(); !InList(w, g) {
+	if g, w := deviceFoo.OrderOnly.Strings(), deviceInstallDep.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected device dependency %q, got %q", w, g)
 	}
 
-	if g, w := deviceFoo.OrderOnly.Strings(), deviceTransitive.Output.String(); !InList(w, g) {
+	if g, w := deviceFoo.OrderOnly.Strings(), deviceTransitive.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected device dependency %q, got %q", w, g)
 	}
 
-	if g, w := deviceInstallDep.OrderOnly.Strings(), deviceTransitive.Output.String(); !InList(w, g) {
+	if g, w := deviceInstallDep.OrderOnly.Strings(), deviceTransitive.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected device dependency %q, got %q", w, g)
 	}
 
-	if g, w := deviceFoo.OrderOnly.Strings(), deviceDep.Output.String(); InList(w, g) {
+	if g, w := deviceFoo.OrderOnly.Strings(), deviceDep.Output.String(); util.InList(w, g) {
 		t.Errorf("expected no device dependency %q, got %q", w, g)
 	}
 }

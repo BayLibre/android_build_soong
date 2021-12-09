@@ -19,6 +19,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 
 	"github.com/google/blueprint"
 )
@@ -650,7 +651,7 @@ func (s StubDexJarsByModule) addStubDexJarsByModule(other StubDexJarsByModule) {
 // The relative width of APIs is determined by their order in hiddenAPIScopes.
 func (s StubDexJarsByModule) StubDexJarsForWidestAPIScope() android.Paths {
 	stubDexJars := android.Paths{}
-	modules := android.SortedStringKeys(s)
+	modules := util.SortedStringKeys(s)
 	for _, module := range modules {
 		stubDexJarsByScope := s[module]
 
@@ -667,7 +668,7 @@ func (s StubDexJarsByModule) StubDexJarsForWidestAPIScope() android.Paths {
 // the returned list.
 func (s StubDexJarsByModule) StubDexJarsForScope(scope *HiddenAPIScope) android.Paths {
 	stubDexJars := android.Paths{}
-	modules := android.SortedStringKeys(s)
+	modules := util.SortedStringKeys(s)
 	for _, module := range modules {
 		stubDexJarsByScope := s[module]
 		// Not every module will have the same set of
@@ -822,7 +823,7 @@ func (b bootDexJarByModule) addPath(module android.Module, path android.Path) {
 // bootDexJars returns the boot dex jar paths sorted by their keys.
 func (b bootDexJarByModule) bootDexJars() android.Paths {
 	paths := android.Paths{}
-	for _, k := range android.SortedStringKeys(b) {
+	for _, k := range util.SortedStringKeys(b) {
 		paths = append(paths, b[k])
 	}
 	return paths
@@ -832,7 +833,7 @@ func (b bootDexJarByModule) bootDexJars() android.Paths {
 // libraries if present.
 func (b bootDexJarByModule) bootDexJarsWithoutCoverage() android.Paths {
 	paths := android.Paths{}
-	for _, k := range android.SortedStringKeys(b) {
+	for _, k := range util.SortedStringKeys(b) {
 		if k == "jacocoagent" {
 			continue
 		}
@@ -1062,7 +1063,7 @@ func hiddenAPIRulesForBootclasspathFragment(ctx android.ModuleContext, contents 
 	// Encode the flags into the boot dex files.
 	encodedBootDexJarsByModule := map[string]android.Path{}
 	outputDir := android.PathForModuleOut(ctx, "hiddenapi-modular/encoded").OutputPath
-	for _, name := range android.SortedStringKeys(bootDexInfoByModule) {
+	for _, name := range util.SortedStringKeys(bootDexInfoByModule) {
 		bootDexInfo := bootDexInfoByModule[name]
 		unencodedDex := bootDexInfo.path
 		encodedDex := hiddenAPIEncodeDex(ctx, unencodedDex, allFlagsCSV, bootDexInfo.uncompressDex, outputDir)
@@ -1154,7 +1155,7 @@ type bootDexInfoByModule map[string]bootDexInfo
 // bootDexJars returns the boot dex jar paths sorted by their keys.
 func (b bootDexInfoByModule) bootDexJars() android.Paths {
 	paths := android.Paths{}
-	for _, m := range android.SortedStringKeys(b) {
+	for _, m := range util.SortedStringKeys(b) {
 		paths = append(paths, b[m].path)
 	}
 	return paths

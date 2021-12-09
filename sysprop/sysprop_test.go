@@ -20,6 +20,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/cc"
 	"android/soong/java"
 
@@ -261,7 +262,7 @@ func TestSyspropLibrary(t *testing.T) {
 	} {
 		library := result.ModuleForTests("libsysprop-platform", variant).Module().(*cc.Module)
 		expectedApexAvailableOnLibrary := []string{"//apex_available:platform"}
-		android.AssertDeepEquals(t, "apex available property on libsysprop-platform", expectedApexAvailableOnLibrary, library.ApexProperties.Apex_available)
+		util.AssertDeepEquals(t, "apex available property on libsysprop-platform", expectedApexAvailableOnLibrary, library.ApexProperties.Apex_available)
 
 		// product variant of vendor-owned sysprop_library
 		result.ModuleForTests("libsysprop-vendor-on-product", variant)
@@ -289,13 +290,13 @@ func TestSyspropLibrary(t *testing.T) {
 	platformFlags := platformClient.Rule("cc").Args["cFlags"]
 
 	// platform should use platform's internal header
-	android.AssertStringDoesContain(t, "flags for platform", platformFlags, platformInternalPath)
+	util.AssertStringDoesContain(t, "flags for platform", platformFlags, platformInternalPath)
 
 	platformStaticClient := result.ModuleForTests("cc-client-platform-static", coreVariant)
 	platformStaticFlags := platformStaticClient.Rule("cc").Args["cFlags"]
 
 	// platform-static should use platform's internal header
-	android.AssertStringDoesContain(t, "flags for platform-static", platformStaticFlags, platformInternalPath)
+	util.AssertStringDoesContain(t, "flags for platform-static", platformStaticFlags, platformInternalPath)
 
 	productClient := result.ModuleForTests("cc-client-product", coreVariant)
 	productFlags := productClient.Rule("cc").Args["cFlags"]
@@ -320,7 +321,7 @@ func TestSyspropLibrary(t *testing.T) {
 	// Java modules linking against system API should use public stub
 	javaSystemApiClient := result.ModuleForTests("java-platform", "android_common").Rule("javac")
 	syspropPlatformPublic := result.ModuleForTests("sysprop-platform_public", "android_common").Description("for turbine")
-	if g, w := javaSystemApiClient.Implicits.Strings(), syspropPlatformPublic.Output.String(); !android.InList(w, g) {
+	if g, w := javaSystemApiClient.Implicits.Strings(), syspropPlatformPublic.Output.String(); !util.InList(w, g) {
 		t.Errorf("system api client should use public stub %q, got %q", w, g)
 	}
 }
@@ -340,11 +341,11 @@ func TestApexAvailabilityIsForwarded(t *testing.T) {
 
 	ccModule := result.ModuleForTests("libsysprop-platform", "android_arm64_armv8-a_shared").Module().(*cc.Module)
 	propFromCc := ccModule.ApexProperties.Apex_available
-	android.AssertDeepEquals(t, "apex_available forwarding to cc module", expected, propFromCc)
+	util.AssertDeepEquals(t, "apex_available forwarding to cc module", expected, propFromCc)
 
 	javaModule := result.ModuleForTests("sysprop-platform", "android_common").Module().(*java.Library)
 	propFromJava := javaModule.ApexProperties.Apex_available
-	android.AssertDeepEquals(t, "apex_available forwarding to java module", expected, propFromJava)
+	util.AssertDeepEquals(t, "apex_available forwarding to java module", expected, propFromJava)
 }
 
 func TestMinSdkVersionIsForwarded(t *testing.T) {
@@ -365,9 +366,9 @@ func TestMinSdkVersionIsForwarded(t *testing.T) {
 
 	ccModule := result.ModuleForTests("libsysprop-platform", "android_arm64_armv8-a_shared").Module().(*cc.Module)
 	propFromCc := proptools.String(ccModule.Properties.Min_sdk_version)
-	android.AssertStringEquals(t, "min_sdk_version forwarding to cc module", "29", propFromCc)
+	util.AssertStringEquals(t, "min_sdk_version forwarding to cc module", "29", propFromCc)
 
 	javaModule := result.ModuleForTests("sysprop-platform", "android_common").Module().(*java.Library)
 	propFromJava := javaModule.MinSdkVersionString()
-	android.AssertStringEquals(t, "min_sdk_version forwarding to java module", "30", propFromJava)
+	util.AssertStringEquals(t, "min_sdk_version forwarding to java module", "30", propFromJava)
 }

@@ -21,6 +21,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/java/config"
 	"android/soong/tradefed"
 )
@@ -168,7 +169,7 @@ func (r *robolectricTest) GenerateAndroidBuildActions(ctx android.ModuleContext)
 	for _, dep := range ctx.GetDirectDepsWithTag(libTag) {
 		m := ctx.OtherModuleProvider(dep, JavaInfoProvider).(JavaInfo)
 		r.libs = append(r.libs, ctx.OtherModuleName(dep))
-		if !android.InList(ctx.OtherModuleName(dep), config.FrameworkLibraries) {
+		if !util.InList(ctx.OtherModuleName(dep), config.FrameworkLibraries) {
 			combinedJarJars = append(combinedJarJars, m.ImplementationAndResourcesJars...)
 		}
 	}
@@ -286,7 +287,7 @@ func (r *robolectricTest) AndroidMkEntries() []android.AndroidMkEntries {
 			if s := r.robolectricProperties.Test_options.Shards; s != nil && *s > 1 {
 				numShards := int(*s)
 				shardSize := (len(r.tests) + numShards - 1) / numShards
-				shards := android.ShardStrings(r.tests, shardSize)
+				shards := util.ShardStrings(r.tests, shardSize)
 				for i, shard := range shards {
 					r.writeTestRunner(w, name, "Run"+name+strconv.Itoa(i), shard)
 				}

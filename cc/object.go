@@ -18,6 +18,7 @@ import (
 	"fmt"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/bazel"
 )
 
@@ -170,7 +171,7 @@ func ObjectBp2Build(ctx android.TopDownMutatorContext) {
 				deps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, objectLinkerProps.Objs))
 				systemSharedLibs := objectLinkerProps.System_shared_libs
 				if len(systemSharedLibs) > 0 {
-					systemSharedLibs = android.FirstUniqueStrings(systemSharedLibs)
+					systemSharedLibs = util.FirstUniqueStrings(systemSharedLibs)
 				}
 				systemDynamicDeps.SetSelectValue(axis, config, bazelLabelForSharedDeps(ctx, systemSharedLibs))
 			}

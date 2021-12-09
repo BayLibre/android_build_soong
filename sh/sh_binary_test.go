@@ -7,6 +7,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/cc"
 )
 
@@ -82,7 +83,7 @@ func TestShTest(t *testing.T) {
 
 	expectedData := []string{":testdata/data1", ":testdata/sub/data2"}
 	actualData := entries.EntryMap["LOCAL_TEST_DATA"]
-	android.AssertDeepEquals(t, "LOCAL_TEST_DATA", expectedData, actualData)
+	util.AssertDeepEquals(t, "LOCAL_TEST_DATA", expectedData, actualData)
 }
 
 func TestShTest_dataModules(t *testing.T) {
@@ -162,7 +163,7 @@ func TestShTestHost(t *testing.T) {
 	}
 	entries := android.AndroidMkEntriesForTest(t, ctx, mod)[0]
 	actualData, _ := strconv.ParseBool(entries.EntryMap["LOCAL_IS_UNIT_TEST"][0])
-	android.AssertBoolEquals(t, "LOCAL_IS_UNIT_TEST", true, actualData)
+	util.AssertBoolEquals(t, "LOCAL_IS_UNIT_TEST", true, actualData)
 }
 
 func TestShTestHost_dataDeviceModules(t *testing.T) {

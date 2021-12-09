@@ -21,6 +21,7 @@ import (
 	"strings"
 	"sync"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 )
 
@@ -386,7 +387,7 @@ func (m *ApexModuleBase) BuildForApex(apex ApexInfo) {
 			// `com.mycompany.android.foo` (from the `override_apex` module type), both
 			// of which has the same ApexVariantName `com.android.foo`. Add the apex
 			// name to the list so that it's not lost.
-			if !InList(apex.InApexModules[0], v.InApexModules) {
+			if !util.InList(apex.InApexModules[0], v.InApexModules) {
 				m.apexInfos[i].InApexModules = append(m.apexInfos[i].InApexModules, apex.InApexModules[0])
 			}
 			return
@@ -461,9 +462,9 @@ func CheckAvailableForApex(what string, apex_available []string) bool {
 	if len(apex_available) == 0 {
 		return what == AvailableToPlatform
 	}
-	return InList(what, apex_available) ||
-		(what != AvailableToPlatform && InList(AvailableToAnyApex, apex_available)) ||
-		(strings.HasPrefix(what, "com.android.gki.") && InList(AvailableToGkiApex, apex_available))
+	return util.InList(what, apex_available) ||
+		(what != AvailableToPlatform && util.InList(AvailableToAnyApex, apex_available)) ||
+		(strings.HasPrefix(what, "com.android.gki.") && util.InList(AvailableToGkiApex, apex_available))
 }
 
 // Implements ApexModule
@@ -502,8 +503,8 @@ func (m *ApexModuleBase) checkApexAvailableProperty(mctx BaseModuleContext) {
 // exactly the same set of APEXes (and platform), i.e. if their apex_available
 // properties have the same elements.
 func AvailableToSameApexes(mod1, mod2 ApexModule) bool {
-	mod1ApexAvail := SortedUniqueStrings(mod1.apexModuleBase().ApexProperties.Apex_available)
-	mod2ApexAvail := SortedUniqueStrings(mod2.apexModuleBase().ApexProperties.Apex_available)
+	mod1ApexAvail := util.SortedUniqueStrings(mod1.apexModuleBase().ApexProperties.Apex_available)
+	mod2ApexAvail := util.SortedUniqueStrings(mod2.apexModuleBase().ApexProperties.Apex_available)
 	if len(mod1ApexAvail) != len(mod2ApexAvail) {
 		return false
 	}
@@ -553,8 +554,8 @@ func mergeApexVariations(ctx PathContext, apexInfos []ApexInfo) (merged []ApexIn
 		} else {
 			seen[mergedName] = len(merged)
 			apexInfo.ApexVariationName = mergedName
-			apexInfo.InApexVariants = CopyOf(apexInfo.InApexVariants)
-			apexInfo.InApexModules = CopyOf(apexInfo.InApexModules)
+			apexInfo.InApexVariants = util.CopyOf(apexInfo.InApexVariants)
+			apexInfo.InApexModules = util.CopyOf(apexInfo.InApexModules)
 			apexInfo.ApexContents = append([]*ApexContents(nil), apexInfo.ApexContents...)
 			merged = append(merged, apexInfo)
 		}
@@ -827,13 +828,13 @@ func (d *ApexBundleDepsInfo) BuildDepsInfoLists(ctx ModuleContext, minSdkVersion
 	var flatContent strings.Builder
 
 	fmt.Fprintf(&fullContent, "%s(minSdkVersion:%s):\n", ctx.ModuleName(), minSdkVersion)
-	for _, key := range FirstUniqueStrings(SortedStringKeys(depInfos)) {
+	for _, key := range util.FirstUniqueStrings(util.SortedStringKeys(depInfos)) {
 		info := depInfos[key]
 		toName := fmt.Sprintf("%s(minSdkVersion:%s)", info.To, info.MinSdkVersion)
 		if info.IsExternal {
 			toName = toName + " (external)"
 		}
-		fmt.Fprintf(&fullContent, "  %s <- %s\n", toName, strings.Join(SortedUniqueStrings(info.From), ", "))
+		fmt.Fprintf(&fullContent, "  %s <- %s\n", toName, strings.Join(util.SortedUniqueStrings(info.From), ", "))
 		fmt.Fprintf(&flatContent, "%s\n", toName)
 	}
 

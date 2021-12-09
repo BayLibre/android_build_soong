@@ -1,0 +1,15 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+bootstrap_go_package {
+    name: "soong-android-util",
+    pkgPath: "android/soong/android/util",
+    srcs: [
+        "test_asserts.go",
+        "util.go",
+    ],
+    testSrcs: [
+        "util_test.go",
+    ],
+}

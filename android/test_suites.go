@@ -14,6 +14,8 @@
 
 package android
 
+import "android/soong/android/util"
+
 func init() {
 	RegisterSingletonType("testsuites", testSuiteFilesFactory)
 }
@@ -57,7 +59,7 @@ func (t *testSuiteFiles) MakeVars(ctx MakeVarsContext) {
 
 func robolectricTestSuite(ctx SingletonContext, files map[string]InstallPaths) WritablePath {
 	var installedPaths InstallPaths
-	for _, module := range SortedStringKeys(files) {
+	for _, module := range util.SortedStringKeys(files) {
 		installedPaths = append(installedPaths, files[module]...)
 	}
 	testCasesDir := pathForInstall(ctx, ctx.Config().BuildOS, X86, "testcases", false).ToMakePath()

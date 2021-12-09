@@ -16,6 +16,8 @@ package android
 
 import (
 	"testing"
+
+	"android/soong/android/util"
 )
 
 type pathDepsMutatorTestModule struct {
@@ -169,7 +171,7 @@ func TestPathDepsMutator(t *testing.T) {
 
 			m := result.Module("foo", "android_arm64_armv8-a").(*pathDepsMutatorTestModule)
 
-			AssertDeepEquals(t, "deps", test.deps, m.sourceDeps)
+			util.AssertDeepEquals(t, "deps", test.deps, m.sourceDeps)
 		})
 	}
 }

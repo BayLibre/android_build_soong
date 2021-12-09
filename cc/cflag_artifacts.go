@@ -5,6 +5,7 @@ import (
 	"sort"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -41,7 +42,7 @@ type cflagArtifactsText struct {
 // filter.
 func allowedDir(subdir string) bool {
 	subdir += "/"
-	return android.HasAnyPrefix(subdir, TrackedCFlagsDir)
+	return util.HasAnyPrefix(subdir, TrackedCFlagsDir)
 }
 
 func (s *cflagArtifactsText) genFlagFilename(flag string) string {
@@ -91,7 +92,7 @@ func (s *cflagArtifactsText) GenCFlagArtifactParts(ctx android.SingletonContext,
 	// Following loop splits the module list for each tracked C Flag into
 	// chunks of length FileBP (file breakpoint) and generates a partial artifact
 	// (intermediary file) build rule for each split.
-	moduleShards := android.ShardStrings(modules, FileBP)
+	moduleShards := util.ShardStrings(modules, FileBP)
 	for index, shard := range moduleShards {
 		rule.Command().
 			Textf("for m in %s; do echo $m",

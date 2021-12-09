@@ -24,6 +24,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 func TestCLC(t *testing.T) {
@@ -173,16 +174,16 @@ func TestCLCJson(t *testing.T) {
 	m.AddContext(ctx, AnySdkVersion, "d", optional, implicit, buildPath(ctx, "d"), installPath(ctx, "d"), nil)
 	jsonCLC := toJsonClassLoaderContext(m)
 	restored := fromJsonClassLoaderContext(ctx, jsonCLC)
-	android.AssertIntEquals(t, "The size of the maps should be the same.", len(m), len(restored))
+	util.AssertIntEquals(t, "The size of the maps should be the same.", len(m), len(restored))
 	for k := range m {
 		a, _ := m[k]
 		b, ok := restored[k]
-		android.AssertBoolEquals(t, "The both maps should have the same keys.", ok, true)
-		android.AssertIntEquals(t, "The size of the elements should be the same.", len(a), len(b))
+		util.AssertBoolEquals(t, "The both maps should have the same keys.", ok, true)
+		util.AssertIntEquals(t, "The size of the elements should be the same.", len(a), len(b))
 		for i, elemA := range a {
 			before := fmt.Sprintf("%v", *elemA)
 			after := fmt.Sprintf("%v", *b[i])
-			android.AssertStringEquals(t, "The content should be the same.", before, after)
+			util.AssertStringEquals(t, "The content should be the same.", before, after)
 		}
 	}
 }

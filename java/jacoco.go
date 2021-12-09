@@ -21,6 +21,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -89,7 +90,7 @@ func (j *Module) jacocoModuleToZipCommand(ctx android.ModuleContext) string {
 func jacocoFiltersToZipCommand(includes, excludes []string) string {
 	specs := ""
 	if len(excludes) > 0 {
-		specs += android.JoinWithPrefix(excludes, "-x ") + " "
+		specs += util.JoinWithPrefix(excludes, "-x ") + " "
 	}
 	if len(includes) > 0 {
 		specs += strings.Join(includes, " ")

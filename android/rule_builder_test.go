@@ -23,6 +23,7 @@ import (
 	"strings"
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 
 	"android/soong/shared"
@@ -381,18 +382,18 @@ func TestRuleBuilder(t *testing.T) {
 		wantDepMergerCommand := "out_local/soong/host/" + ctx.Config().PrebuiltOS() + "/bin/dep_fixer " +
 			"out_local/soong/module/DepFile out_local/soong/module/depfile out_local/soong/module/ImplicitDepFile out_local/soong/module/depfile2"
 
-		AssertDeepEquals(t, "rule.Commands()", wantCommands, rule.Commands())
+		util.AssertDeepEquals(t, "rule.Commands()", wantCommands, rule.Commands())
 
-		AssertDeepEquals(t, "rule.Inputs()", wantInputs, rule.Inputs())
-		AssertDeepEquals(t, "rule.RspfileInputs()", wantRspFileInputs, rule.RspFileInputs())
-		AssertDeepEquals(t, "rule.Outputs()", wantOutputs, rule.Outputs())
-		AssertDeepEquals(t, "rule.SymlinkOutputs()", wantSymlinkOutputs, rule.SymlinkOutputs())
-		AssertDeepEquals(t, "rule.DepFiles()", wantDepFiles, rule.DepFiles())
-		AssertDeepEquals(t, "rule.Tools()", wantTools, rule.Tools())
-		AssertDeepEquals(t, "rule.OrderOnlys()", wantOrderOnlys, rule.OrderOnlys())
-		AssertDeepEquals(t, "rule.Validations()", wantValidations, rule.Validations())
+		util.AssertDeepEquals(t, "rule.Inputs()", wantInputs, rule.Inputs())
+		util.AssertDeepEquals(t, "rule.RspfileInputs()", wantRspFileInputs, rule.RspFileInputs())
+		util.AssertDeepEquals(t, "rule.Outputs()", wantOutputs, rule.Outputs())
+		util.AssertDeepEquals(t, "rule.SymlinkOutputs()", wantSymlinkOutputs, rule.SymlinkOutputs())
+		util.AssertDeepEquals(t, "rule.DepFiles()", wantDepFiles, rule.DepFiles())
+		util.AssertDeepEquals(t, "rule.Tools()", wantTools, rule.Tools())
+		util.AssertDeepEquals(t, "rule.OrderOnlys()", wantOrderOnlys, rule.OrderOnlys())
+		util.AssertDeepEquals(t, "rule.Validations()", wantValidations, rule.Validations())
 
-		AssertSame(t, "rule.depFileMergerCmd()", wantDepMergerCommand, rule.depFileMergerCmd(rule.DepFiles()).String())
+		util.AssertSame(t, "rule.depFileMergerCmd()", wantDepMergerCommand, rule.depFileMergerCmd(rule.DepFiles()).String())
 	})
 
 	t.Run("sbox", func(t *testing.T) {
@@ -411,18 +412,18 @@ func TestRuleBuilder(t *testing.T) {
 
 		wantDepMergerCommand := "out_local/soong/host/" + ctx.Config().PrebuiltOS() + "/bin/dep_fixer __SBOX_SANDBOX_DIR__/out/DepFile __SBOX_SANDBOX_DIR__/out/depfile __SBOX_SANDBOX_DIR__/out/ImplicitDepFile __SBOX_SANDBOX_DIR__/out/depfile2"
 
-		AssertDeepEquals(t, "rule.Commands()", wantCommands, rule.Commands())
+		util.AssertDeepEquals(t, "rule.Commands()", wantCommands, rule.Commands())
 
-		AssertDeepEquals(t, "rule.Inputs()", wantInputs, rule.Inputs())
-		AssertDeepEquals(t, "rule.RspfileInputs()", wantRspFileInputs, rule.RspFileInputs())
-		AssertDeepEquals(t, "rule.Outputs()", wantOutputs, rule.Outputs())
-		AssertDeepEquals(t, "rule.SymlinkOutputs()", wantSymlinkOutputs, rule.SymlinkOutputs())
-		AssertDeepEquals(t, "rule.DepFiles()", wantDepFiles, rule.DepFiles())
-		AssertDeepEquals(t, "rule.Tools()", wantTools, rule.Tools())
-		AssertDeepEquals(t, "rule.OrderOnlys()", wantOrderOnlys, rule.OrderOnlys())
-		AssertDeepEquals(t, "rule.Validations()", wantValidations, rule.Validations())
+		util.AssertDeepEquals(t, "rule.Inputs()", wantInputs, rule.Inputs())
+		util.AssertDeepEquals(t, "rule.RspfileInputs()", wantRspFileInputs, rule.RspFileInputs())
+		util.AssertDeepEquals(t, "rule.Outputs()", wantOutputs, rule.Outputs())
+		util.AssertDeepEquals(t, "rule.SymlinkOutputs()", wantSymlinkOutputs, rule.SymlinkOutputs())
+		util.AssertDeepEquals(t, "rule.DepFiles()", wantDepFiles, rule.DepFiles())
+		util.AssertDeepEquals(t, "rule.Tools()", wantTools, rule.Tools())
+		util.AssertDeepEquals(t, "rule.OrderOnlys()", wantOrderOnlys, rule.OrderOnlys())
+		util.AssertDeepEquals(t, "rule.Validations()", wantValidations, rule.Validations())
 
-		AssertSame(t, "rule.depFileMergerCmd()", wantDepMergerCommand, rule.depFileMergerCmd(rule.DepFiles()).String())
+		util.AssertSame(t, "rule.depFileMergerCmd()", wantDepMergerCommand, rule.depFileMergerCmd(rule.DepFiles()).String())
 	})
 
 	t.Run("sbox tools", func(t *testing.T) {
@@ -441,18 +442,18 @@ func TestRuleBuilder(t *testing.T) {
 
 		wantDepMergerCommand := "__SBOX_SANDBOX_DIR__/tools/out/bin/dep_fixer __SBOX_SANDBOX_DIR__/out/DepFile __SBOX_SANDBOX_DIR__/out/depfile __SBOX_SANDBOX_DIR__/out/ImplicitDepFile __SBOX_SANDBOX_DIR__/out/depfile2"
 
-		AssertDeepEquals(t, "rule.Commands()", wantCommands, rule.Commands())
+		util.AssertDeepEquals(t, "rule.Commands()", wantCommands, rule.Commands())
 
-		AssertDeepEquals(t, "rule.Inputs()", wantInputs, rule.Inputs())
-		AssertDeepEquals(t, "rule.RspfileInputs()", wantRspFileInputs, rule.RspFileInputs())
-		AssertDeepEquals(t, "rule.Outputs()", wantOutputs, rule.Outputs())
-		AssertDeepEquals(t, "rule.SymlinkOutputs()", wantSymlinkOutputs, rule.SymlinkOutputs())
-		AssertDeepEquals(t, "rule.DepFiles()", wantDepFiles, rule.DepFiles())
-		AssertDeepEquals(t, "rule.Tools()", wantTools, rule.Tools())
-		AssertDeepEquals(t, "rule.OrderOnlys()", wantOrderOnlys, rule.OrderOnlys())
-		AssertDeepEquals(t, "rule.Validations()", wantValidations, rule.Validations())
+		util.AssertDeepEquals(t, "rule.Inputs()", wantInputs, rule.Inputs())
+		util.AssertDeepEquals(t, "rule.RspfileInputs()", wantRspFileInputs, rule.RspFileInputs())
+		util.AssertDeepEquals(t, "rule.Outputs()", wantOutputs, rule.Outputs())
+		util.AssertDeepEquals(t, "rule.SymlinkOutputs()", wantSymlinkOutputs, rule.SymlinkOutputs())
+		util.AssertDeepEquals(t, "rule.DepFiles()", wantDepFiles, rule.DepFiles())
+		util.AssertDeepEquals(t, "rule.Tools()", wantTools, rule.Tools())
+		util.AssertDeepEquals(t, "rule.OrderOnlys()", wantOrderOnlys, rule.OrderOnlys())
+		util.AssertDeepEquals(t, "rule.Validations()", wantValidations, rule.Validations())
 
-		AssertSame(t, "rule.depFileMergerCmd()", wantDepMergerCommand, rule.depFileMergerCmd(rule.DepFiles()).String())
+		util.AssertSame(t, "rule.depFileMergerCmd()", wantDepMergerCommand, rule.depFileMergerCmd(rule.DepFiles()).String())
 	})
 
 	t.Run("sbox inputs", func(t *testing.T) {
@@ -471,18 +472,18 @@ func TestRuleBuilder(t *testing.T) {
 
 		wantDepMergerCommand := "__SBOX_SANDBOX_DIR__/tools/out/bin/dep_fixer __SBOX_SANDBOX_DIR__/out/DepFile __SBOX_SANDBOX_DIR__/out/depfile __SBOX_SANDBOX_DIR__/out/ImplicitDepFile __SBOX_SANDBOX_DIR__/out/depfile2"
 
-		AssertDeepEquals(t, "rule.Commands()", wantCommands, rule.Commands())
+		util.AssertDeepEquals(t, "rule.Commands()", wantCommands, rule.Commands())
 
-		AssertDeepEquals(t, "rule.Inputs()", wantInputs, rule.Inputs())
-		AssertDeepEquals(t, "rule.RspfileInputs()", wantRspFileInputs, rule.RspFileInputs())
-		AssertDeepEquals(t, "rule.Outputs()", wantOutputs, rule.Outputs())
-		AssertDeepEquals(t, "rule.SymlinkOutputs()", wantSymlinkOutputs, rule.SymlinkOutputs())
-		AssertDeepEquals(t, "rule.DepFiles()", wantDepFiles, rule.DepFiles())
-		AssertDeepEquals(t, "rule.Tools()", wantTools, rule.Tools())
-		AssertDeepEquals(t, "rule.OrderOnlys()", wantOrderOnlys, rule.OrderOnlys())
-		AssertDeepEquals(t, "rule.Validations()", wantValidations, rule.Validations())
+		util.AssertDeepEquals(t, "rule.Inputs()", wantInputs, rule.Inputs())
+		util.AssertDeepEquals(t, "rule.RspfileInputs()", wantRspFileInputs, rule.RspFileInputs())
+		util.AssertDeepEquals(t, "rule.Outputs()", wantOutputs, rule.Outputs())
+		util.AssertDeepEquals(t, "rule.SymlinkOutputs()", wantSymlinkOutputs, rule.SymlinkOutputs())
+		util.AssertDeepEquals(t, "rule.DepFiles()", wantDepFiles, rule.DepFiles())
+		util.AssertDeepEquals(t, "rule.Tools()", wantTools, rule.Tools())
+		util.AssertDeepEquals(t, "rule.OrderOnlys()", wantOrderOnlys, rule.OrderOnlys())
+		util.AssertDeepEquals(t, "rule.Validations()", wantValidations, rule.Validations())
 
-		AssertSame(t, "rule.depFileMergerCmd()", wantDepMergerCommand, rule.depFileMergerCmd(rule.DepFiles()).String())
+		util.AssertSame(t, "rule.depFileMergerCmd()", wantDepMergerCommand, rule.depFileMergerCmd(rule.DepFiles()).String())
 	})
 }
 
@@ -625,15 +626,15 @@ func TestRuleBuilder_Build(t *testing.T) {
 		re := regexp.MustCompile(" # hash of input list: [a-z0-9]*$")
 		command = re.ReplaceAllLiteralString(command, "")
 
-		AssertStringEquals(t, "RuleParams.Command", wantCommand, command)
+		util.AssertStringEquals(t, "RuleParams.Command", wantCommand, command)
 
 		wantDeps := append([]string{"cp"}, extraCmdDeps...)
-		AssertArrayString(t, "RuleParams.CommandDeps", wantDeps, params.RuleParams.CommandDeps)
+		util.AssertArrayString(t, "RuleParams.CommandDeps", wantDeps, params.RuleParams.CommandDeps)
 
-		AssertBoolEquals(t, "RuleParams.Restat", wantRestat, params.RuleParams.Restat)
+		util.AssertBoolEquals(t, "RuleParams.Restat", wantRestat, params.RuleParams.Restat)
 
 		wantInputs := []string{"rsp_in"}
-		AssertArrayString(t, "Inputs", wantInputs, params.Inputs.Strings())
+		util.AssertArrayString(t, "Inputs", wantInputs, params.Inputs.Strings())
 
 		wantImplicits := append([]string{"implicit", "in"}, extraImplicits...)
 		// The second rsp file and the files listed in it should be in implicits
@@ -647,9 +648,9 @@ func TestRuleBuilder_Build(t *testing.T) {
 		AssertPathsRelativeToTopEquals(t, "Validations", wantValidations, params.Validations)
 
 		wantRspFileContent := "$in"
-		AssertStringEquals(t, "RspfileContent", wantRspFileContent, params.RuleParams.RspfileContent)
+		util.AssertStringEquals(t, "RspfileContent", wantRspFileContent, params.RuleParams.RspfileContent)
 
-		AssertStringEquals(t, "Rspfile", wantRspFile, params.RuleParams.Rspfile)
+		util.AssertStringEquals(t, "Rspfile", wantRspFile, params.RuleParams.Rspfile)
 
 		AssertPathRelativeToTopEquals(t, "Output", wantOutput, params.Output)
 
@@ -664,7 +665,7 @@ func TestRuleBuilder_Build(t *testing.T) {
 		}
 
 		rspFile2Content := ContentFromFileRuleForTests(t, rspFile2Params)
-		AssertStringEquals(t, "rspFile2 content", "rsp_in2\n", rspFile2Content)
+		util.AssertStringEquals(t, "rspFile2 content", "rsp_in2\n", rspFile2Content)
 	}
 
 	t.Run("module", func(t *testing.T) {
@@ -780,7 +781,7 @@ func TestRuleBuilderHashInputs(t *testing.T) {
 				manifest := RuleBuilderSboxProtoForTests(t, gen.Output("sbox.textproto"))
 				hash := manifest.Commands[0].GetInputHash()
 
-				AssertStringEquals(t, "hash", test.expectedHash, hash)
+				util.AssertStringEquals(t, "hash", test.expectedHash, hash)
 			})
 			t.Run("", func(t *testing.T) {
 				gen := result.ModuleForTests(test.name+"", "")

@@ -18,6 +18,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/dexpreopt"
 )
 
@@ -157,7 +158,7 @@ func TestBootclasspathFragment_Coverage(t *testing.T) {
 
 	checkContents := func(t *testing.T, result *android.TestResult, expected ...string) {
 		module := result.Module("myfragment", "android_common").(*BootclasspathFragmentModule)
-		android.AssertArrayString(t, "contents property", expected, module.properties.Contents)
+		util.AssertArrayString(t, "contents property", expected, module.properties.Contents)
 	}
 
 	preparer := android.GroupFixturePreparers(

@@ -21,6 +21,7 @@ import (
 	"strconv"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -285,7 +286,7 @@ func (compiler *baseCompiler) compilerDeps(ctx DepsContext, deps Deps) Deps {
 // Return true if the module is in the WarningAllowedProjects.
 func warningsAreAllowed(subdir string) bool {
 	subdir += "/"
-	return android.HasAnyPrefix(subdir, config.WarningAllowedProjects)
+	return util.HasAnyPrefix(subdir, config.WarningAllowedProjects)
 }
 
 func addToModuleList(ctx ModuleContext, key android.OnceKey, module string) {
@@ -598,7 +599,7 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 
 	// Exclude directories from manual binder interface allowed list.
 	//TODO(b/145621474): Move this check into IInterface.h when clang-tidy no longer uses absolute paths.
-	if android.HasAnyPrefix(ctx.ModuleDir(), allowedManualInterfacePaths) {
+	if util.HasAnyPrefix(ctx.ModuleDir(), allowedManualInterfacePaths) {
 		flags.Local.CFlags = append(flags.Local.CFlags, "-DDO_NOT_CHECK_MANUAL_BINDER_INTERFACES")
 	}
 

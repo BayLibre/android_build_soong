@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 // Test that feature flags are being correctly generated.
@@ -230,13 +231,13 @@ func TestLints(t *testing.T) {
 			).RunTest(t)
 
 			r := result.ModuleForTests("libfoo", "android_arm64_armv8-a_dylib").MaybeRule("rustc")
-			android.AssertStringDoesContain(t, "libfoo flags", r.Args["rustcFlags"], tc.fooFlags)
+			util.AssertStringDoesContain(t, "libfoo flags", r.Args["rustcFlags"], tc.fooFlags)
 
 			r = result.ModuleForTests("libbar", "android_arm64_armv8-a_dylib").MaybeRule("rustc")
-			android.AssertStringDoesContain(t, "libbar flags", r.Args["rustcFlags"], "${config.RustDefaultLints}")
+			util.AssertStringDoesContain(t, "libbar flags", r.Args["rustcFlags"], "${config.RustDefaultLints}")
 
 			r = result.ModuleForTests("libfoobar", "android_arm64_armv8-a_dylib").MaybeRule("rustc")
-			android.AssertStringDoesContain(t, "libfoobar flags", r.Args["rustcFlags"], "${config.RustAllowAllLints}")
+			util.AssertStringDoesContain(t, "libfoobar flags", r.Args["rustcFlags"], "${config.RustAllowAllLints}")
 		})
 	}
 }
@@ -257,13 +258,13 @@ func TestStdDeviceLinkage(t *testing.T) {
 	fooRlib := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_rlib_dylib-std").Module().(*Module)
 	fooDylib := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_dylib").Module().(*Module)
 
-	if !android.InList("libstd", fizz.Properties.AndroidMkDylibs) {
+	if !util.InList("libstd", fizz.Properties.AndroidMkDylibs) {
 		t.Errorf("libstd is not linked dynamically for device binaries")
 	}
-	if !android.InList("libstd", fooRlib.Properties.AndroidMkDylibs) {
+	if !util.InList("libstd", fooRlib.Properties.AndroidMkDylibs) {
 		t.Errorf("libstd is not linked dynamically for rlibs")
 	}
-	if !android.InList("libstd", fooDylib.Properties.AndroidMkDylibs) {
+	if !util.InList("libstd", fooDylib.Properties.AndroidMkDylibs) {
 		t.Errorf("libstd is not linked dynamically for dylibs")
 	}
 }

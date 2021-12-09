@@ -19,6 +19,7 @@ import (
 	"sort"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -120,7 +121,7 @@ func BuildLinkerConfig(ctx android.ModuleContext, builder *android.RuleBuilder,
 			}
 		}
 	}
-	provideLibs = android.FirstUniqueStrings(provideLibs)
+	provideLibs = util.FirstUniqueStrings(provideLibs)
 	sort.Strings(provideLibs)
 	if len(provideLibs) > 0 {
 		builder.Command().

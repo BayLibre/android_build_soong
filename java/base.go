@@ -20,6 +20,7 @@ import (
 	"strconv"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/pathtools"
 	"github.com/google/blueprint/proptools"
 
@@ -704,7 +705,7 @@ func (j *Module) deps(ctx android.BottomUpMutatorContext) {
 			if component, ok := dep.(SdkLibraryComponentDependency); ok {
 				if lib := component.OptionalSdkLibraryImplementation(); lib != nil {
 					// Add library as optional if it's one of the optional compatibility libs.
-					optional := android.InList(*lib, dexpreopt.OptionalCompatUsesLibs)
+					optional := util.InList(*lib, dexpreopt.OptionalCompatUsesLibs)
 					tag := makeUsesLibraryDependencyTag(dexpreopt.AnySdkVersion, optional, true)
 					ctx.AddVariationDependencies(nil, tag, *lib)
 				}
@@ -780,15 +781,15 @@ func (j *Module) aidlFlags(ctx android.ModuleContext, aidlPreprocess android.Opt
 		flags = append(flags, "-p"+aidlPreprocess.String())
 		deps = append(deps, aidlPreprocess.Path())
 	} else if len(aidlIncludeDirs) > 0 {
-		flags = append(flags, android.JoinWithPrefix(aidlIncludeDirs.Strings(), "-I"))
+		flags = append(flags, util.JoinWithPrefix(aidlIncludeDirs.Strings(), "-I"))
 	}
 
 	if len(j.exportAidlIncludeDirs) > 0 {
-		flags = append(flags, android.JoinWithPrefix(j.exportAidlIncludeDirs.Strings(), "-I"))
+		flags = append(flags, util.JoinWithPrefix(j.exportAidlIncludeDirs.Strings(), "-I"))
 	}
 
 	if len(aidlIncludes) > 0 {
-		flags = append(flags, android.JoinWithPrefix(aidlIncludes.Strings(), "-I"))
+		flags = append(flags, util.JoinWithPrefix(aidlIncludes.Strings(), "-I"))
 	}
 
 	flags = append(flags, "-I"+android.PathForModuleSrc(ctx).String())
@@ -842,7 +843,7 @@ func (j *Module) collectBuilderFlags(ctx android.ModuleContext, deps deps) javaB
 	flags.errorProneProcessorPath = append(flags.errorProneProcessorPath, deps.errorProneProcessorPath...)
 
 	flags.processors = append(flags.processors, deps.processorClasses...)
-	flags.processors = android.FirstUniqueStrings(flags.processors)
+	flags.processors = util.FirstUniqueStrings(flags.processors)
 
 	if len(flags.bootClasspath) == 0 && ctx.Host() && !flags.javaVersion.usesJavaModules() &&
 		decodeSdkDep(ctx, android.SdkContext(j)).hasStandardLibs() {
@@ -928,7 +929,7 @@ func (j *Module) collectJavacFlags(
 					topLevelDirs[srcFileParts[0]] = true
 				}
 			}
-			patchPaths = append(patchPaths, android.SortedStringKeys(topLevelDirs)...)
+			patchPaths = append(patchPaths, util.SortedStringKeys(topLevelDirs)...)
 
 			classPath := flags.classpath.FormJavaClassPath("")
 			if classPath != "" {
@@ -1456,7 +1457,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 }
 
 func (j *Module) useCompose() bool {
-	return android.InList("androidx.compose.runtime_runtime", j.properties.Static_libs)
+	return util.InList("androidx.compose.runtime_runtime", j.properties.Static_libs)
 }
 
 // Returns a copy of the supplied flags, but with all the errorprone-related

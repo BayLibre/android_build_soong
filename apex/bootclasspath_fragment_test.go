@@ -21,6 +21,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/dexpreopt"
 	"android/soong/java"
 
@@ -262,7 +263,7 @@ func checkBootclasspathFragment(t *testing.T, result *android.TestResult, module
 
 	bootclasspathFragmentInfo := result.ModuleProvider(bootclasspathFragment, java.BootclasspathFragmentApexContentInfoProvider).(java.BootclasspathFragmentApexContentInfo)
 	modules := bootclasspathFragmentInfo.Modules()
-	android.AssertStringEquals(t, "invalid modules for "+moduleName, expectedConfiguredModules, modules.String())
+	util.AssertStringEquals(t, "invalid modules for "+moduleName, expectedConfiguredModules, modules.String())
 
 	// Get a list of all the paths in the boot image sorted by arch type.
 	allPaths := []string{}
@@ -275,7 +276,7 @@ func checkBootclasspathFragment(t *testing.T, result *android.TestResult, module
 		}
 	}
 
-	android.AssertTrimmedStringEquals(t, "invalid paths for "+moduleName, expectedBootclasspathFragmentFiles, strings.Join(allPaths, "\n"))
+	util.AssertTrimmedStringEquals(t, "invalid paths for "+moduleName, expectedBootclasspathFragmentFiles, strings.Join(allPaths, "\n"))
 }
 
 func TestBootclasspathFragmentInArtApex(t *testing.T) {
@@ -642,7 +643,7 @@ func checkCopiesToPredefinedLocationForArt(t *testing.T, config android.Config, 
 	}
 	sort.Strings(expected)
 
-	android.AssertArrayString(t, "copies to predefined locations for art", expected, bootJarLocations)
+	util.AssertArrayString(t, "copies to predefined locations for art", expected, bootJarLocations)
 }
 
 func TestBootclasspathFragmentContentsNoName(t *testing.T) {
@@ -735,7 +736,7 @@ func TestBootclasspathFragmentContentsNoName(t *testing.T) {
 		android.AssertPathRelativeToTopEquals(t, name+" dex", expectedDexJar, dexJar)
 
 		expectedCopyCommand := fmt.Sprintf("&& cp -f %s out/soong/.intermediates/myapex/android_common_myapex_image/image.apex/javalib/%s.jar", expectedDexJar, name)
-		android.AssertStringDoesContain(t, name+" apex copy command", copyCommands, expectedCopyCommand)
+		util.AssertStringDoesContain(t, name+" apex copy command", copyCommands, expectedCopyCommand)
 	}
 
 	checkFragmentExportedDexJar("foo", "out/soong/.intermediates/mybootclasspathfragment/android_common_apex10000/hiddenapi-modular/encoded/foo.jar")
@@ -879,17 +880,17 @@ func TestBootclasspathFragment_HiddenAPIList(t *testing.T) {
 
 	rule := fragment.Rule("modularHiddenAPIStubFlagsFile")
 	command := rule.RuleParams.Command
-	android.AssertStringDoesContain(t, "check correct rule", command, "hiddenapi list")
+	util.AssertStringDoesContain(t, "check correct rule", command, "hiddenapi list")
 
 	// Make sure that the quuz stubs are available for resolving references from the implementation
 	// boot dex jars provided by this module.
-	android.AssertStringDoesContain(t, "quuz widest", command, "--dependency-stub-dex="+quuzModuleLibStubs)
+	util.AssertStringDoesContain(t, "quuz widest", command, "--dependency-stub-dex="+quuzModuleLibStubs)
 
 	// Make sure that the quuz stubs are available for resolving references from the different API
 	// stubs provided by this module.
-	android.AssertStringDoesContain(t, "public", command, "--public-stub-classpath="+quuzPublicStubs+":"+fooStubs)
-	android.AssertStringDoesContain(t, "system", command, "--system-stub-classpath="+quuzSystemStubs+":"+fooStubs)
-	android.AssertStringDoesContain(t, "test", command, "--test-stub-classpath="+quuzTestStubs+":"+fooStubs)
+	util.AssertStringDoesContain(t, "public", command, "--public-stub-classpath="+quuzPublicStubs+":"+fooStubs)
+	util.AssertStringDoesContain(t, "system", command, "--system-stub-classpath="+quuzSystemStubs+":"+fooStubs)
+	util.AssertStringDoesContain(t, "test", command, "--test-stub-classpath="+quuzTestStubs+":"+fooStubs)
 }
 
 // TestBootclasspathFragment_AndroidNonUpdatable checks to make sure that setting
@@ -1048,17 +1049,17 @@ func TestBootclasspathFragment_AndroidNonUpdatable(t *testing.T) {
 
 	rule := fragment.Rule("modularHiddenAPIStubFlagsFile")
 	command := rule.RuleParams.Command
-	android.AssertStringDoesContain(t, "check correct rule", command, "hiddenapi list")
+	util.AssertStringDoesContain(t, "check correct rule", command, "hiddenapi list")
 
 	// Make sure that the module_lib non-updatable stubs are available for resolving references from
 	// the implementation boot dex jars provided by this module.
-	android.AssertStringDoesContain(t, "android-non-updatable widest", command, "--dependency-stub-dex="+nonUpdatableModuleLibStubs)
+	util.AssertStringDoesContain(t, "android-non-updatable widest", command, "--dependency-stub-dex="+nonUpdatableModuleLibStubs)
 
 	// Make sure that the appropriate non-updatable stubs are available for resolving references from
 	// the different API stubs provided by this module.
-	android.AssertStringDoesContain(t, "public", command, "--public-stub-classpath="+nonUpdatablePublicStubs)
-	android.AssertStringDoesContain(t, "system", command, "--system-stub-classpath="+nonUpdatableSystemStubs)
-	android.AssertStringDoesContain(t, "test", command, "--test-stub-classpath="+nonUpdatableTestStubs)
+	util.AssertStringDoesContain(t, "public", command, "--public-stub-classpath="+nonUpdatablePublicStubs)
+	util.AssertStringDoesContain(t, "system", command, "--system-stub-classpath="+nonUpdatableSystemStubs)
+	util.AssertStringDoesContain(t, "test", command, "--test-stub-classpath="+nonUpdatableTestStubs)
 }
 
 // TestBootclasspathFragment_AndroidNonUpdatable_AlwaysUsePrebuiltSdks checks to make sure that
@@ -1207,17 +1208,17 @@ func TestBootclasspathFragment_AndroidNonUpdatable_AlwaysUsePrebuiltSdks(t *test
 
 	rule := fragment.Rule("modularHiddenAPIStubFlagsFile")
 	command := rule.RuleParams.Command
-	android.AssertStringDoesContain(t, "check correct rule", command, "hiddenapi list")
+	util.AssertStringDoesContain(t, "check correct rule", command, "hiddenapi list")
 
 	// Make sure that the module_lib non-updatable stubs are available for resolving references from
 	// the implementation boot dex jars provided by this module.
-	android.AssertStringDoesContain(t, "android-non-updatable widest", command, "--dependency-stub-dex="+nonUpdatableModuleLibStubs)
+	util.AssertStringDoesContain(t, "android-non-updatable widest", command, "--dependency-stub-dex="+nonUpdatableModuleLibStubs)
 
 	// Make sure that the appropriate non-updatable stubs are available for resolving references from
 	// the different API stubs provided by this module.
-	android.AssertStringDoesContain(t, "public", command, "--public-stub-classpath="+nonUpdatablePublicStubs)
-	android.AssertStringDoesContain(t, "system", command, "--system-stub-classpath="+nonUpdatableSystemStubs)
-	android.AssertStringDoesContain(t, "test", command, "--test-stub-classpath="+nonUpdatableTestStubs)
+	util.AssertStringDoesContain(t, "public", command, "--public-stub-classpath="+nonUpdatablePublicStubs)
+	util.AssertStringDoesContain(t, "system", command, "--system-stub-classpath="+nonUpdatableSystemStubs)
+	util.AssertStringDoesContain(t, "test", command, "--test-stub-classpath="+nonUpdatableTestStubs)
 }
 
 // TODO(b/177892522) - add test for host apex.
