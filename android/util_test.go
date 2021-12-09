@@ -589,6 +589,18 @@ func Test_Shard(t *testing.T) {
 	}
 }
 
+func TestDeduplicate(t *testing.T) {
+	input := []string{"a", "b", "c", "c", "d", "a", "c", "d"}
+	expected := []string{"a", "b", "c", "d"}
+	out, _ := Deduplicate(input)
+	if !reflect.DeepEqual(out, expected) {
+		t.Errorf("incorrect output:")
+		t.Errorf("     input: %#v", input)
+		t.Errorf("  expected: %#v", expected)
+		t.Errorf("       got: %#v", out)
+	}
+}
+
 func BenchmarkFirstUniqueStrings(b *testing.B) {
 	implementations := []struct {
 		name string
