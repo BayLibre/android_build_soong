@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceb7b695_bc6f4e4e",
+        "filename": "android/notice_files.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-12-09T00:14:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "54f2fa2c_bceae985",
+      "revId": "21d3a7efc5bd3cbe26ce9b55fb4c6230c7b8d89d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8de6577c_9333b1a0",
