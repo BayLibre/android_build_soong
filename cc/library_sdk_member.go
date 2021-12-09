@@ -18,6 +18,7 @@ import (
 	"path/filepath"
 
 	"android/soong/android"
+	"android/soong/android/util"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -407,7 +408,7 @@ func addPossiblyArchSpecificProperties(sdkModuleContext android.ModuleContext, b
 	}
 
 	// Add the collated include dir properties to the output.
-	for _, property := range android.SortedStringKeys(includeDirs) {
+	for _, property := range util.SortedStringKeys(includeDirs) {
 		outputProperties.AddProperty(property, includeDirs[property])
 	}
 

@@ -22,6 +22,7 @@ import (
 	"sort"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -397,7 +398,7 @@ func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 	aaptLinkFlags := []string{}
 
 	// Add TARGET_AAPT_CHARACTERISTICS values to AAPT link flags if they exist and --product flags were not provided.
-	hasProduct := android.PrefixInList(a.aaptProperties.Aaptflags, "--product")
+	hasProduct := util.PrefixInList(a.aaptProperties.Aaptflags, "--product")
 	if !hasProduct && len(ctx.Config().ProductAAPTCharacteristics()) > 0 {
 		aaptLinkFlags = append(aaptLinkFlags, "--product", ctx.Config().ProductAAPTCharacteristics())
 	}
@@ -1223,7 +1224,7 @@ type usesLibrary struct {
 }
 
 func (u *usesLibrary) addLib(lib string, optional bool) {
-	if !android.InList(lib, u.usesLibraryProperties.Uses_libs) && !android.InList(lib, u.usesLibraryProperties.Optional_uses_libs) {
+	if !util.InList(lib, u.usesLibraryProperties.Uses_libs) && !util.InList(lib, u.usesLibraryProperties.Optional_uses_libs) {
 		if optional {
 			u.usesLibraryProperties.Optional_uses_libs = append(u.usesLibraryProperties.Optional_uses_libs, lib)
 		} else {
@@ -1263,7 +1264,7 @@ func (u *usesLibrary) deps(ctx android.BottomUpMutatorContext, hasFrameworkLibs 
 // presentOptionalUsesLibs returns optional_uses_libs after filtering out MissingUsesLibraries, which don't exist in the
 // build.
 func (u *usesLibrary) presentOptionalUsesLibs(ctx android.BaseModuleContext) []string {
-	optionalUsesLibs, _ := android.FilterList(u.usesLibraryProperties.Optional_uses_libs, ctx.Config().MissingUsesLibraries())
+	optionalUsesLibs, _ := util.FilterList(u.usesLibraryProperties.Optional_uses_libs, ctx.Config().MissingUsesLibraries())
 	return optionalUsesLibs
 }
 

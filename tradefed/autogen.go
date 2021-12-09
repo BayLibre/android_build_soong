@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -48,7 +49,7 @@ func testConfigPath(ctx android.ModuleContext, prop *string, testSuites []string
 	p := getTestConfig(ctx, prop)
 	if !Bool(autoGenConfig) && p != nil {
 		return p, nil
-	} else if BoolDefault(autoGenConfig, true) && (!android.InList("cts", testSuites) || testConfigTemplateProp != nil) {
+	} else if BoolDefault(autoGenConfig, true) && (!util.InList("cts", testSuites) || testConfigTemplateProp != nil) {
 		outputFile := android.PathForModuleOut(ctx, ctx.ModuleName()+".config")
 		return nil, outputFile
 	} else {

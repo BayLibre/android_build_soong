@@ -19,6 +19,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 var (
@@ -120,7 +121,7 @@ func (proto *protobufDecorator) GenerateSource(ctx ModuleContext, deps PathDeps)
 
 	for _, protoFile := range protoFiles {
 		// Since we're iterating over the protoFiles already, make sure they're not redeclared in grpcFiles
-		if android.InList(protoFile.String(), grpcFiles.Strings()) {
+		if util.InList(protoFile.String(), grpcFiles.Strings()) {
 			ctx.PropertyErrorf("protos",
 				"A proto can only be added once to either grpc_protos or protos. %q is declared in both properties",
 				protoFile.String())
@@ -155,7 +156,7 @@ func (proto *protobufDecorator) GenerateSource(ctx ModuleContext, deps PathDeps)
 
 	// Check that all proto base filenames are unique as outputs are written to the same directory.
 	baseFilenames := append(proto.protoNames, proto.grpcNames...)
-	if len(baseFilenames) != len(android.FirstUniqueStrings(baseFilenames)) {
+	if len(baseFilenames) != len(util.FirstUniqueStrings(baseFilenames)) {
 		ctx.PropertyErrorf("protos", "proto filenames must be unique across  'protos' and 'grpc_protos' "+
 			"to be used in the same rust_protobuf module. For example, foo.proto and src/foo.proto will conflict.")
 	}

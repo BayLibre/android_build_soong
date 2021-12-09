@@ -19,6 +19,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/bazel"
 
 	"github.com/google/blueprint"
@@ -127,7 +128,7 @@ func maybePartitionExportedAndImplementationsDeps(ctx android.BazelConversionPat
 		}
 	}
 
-	implementation, export := android.FilterList(allDeps, exportedDeps)
+	implementation, export := util.FilterList(allDeps, exportedDeps)
 
 	return depsPartition{
 		export:         fn(ctx, export),
@@ -143,7 +144,7 @@ func maybePartitionExportedAndImplementationsDepsExcludes(ctx android.BazelConve
 			implementation: fn(ctx, allDeps, excludes),
 		}
 	}
-	implementation, export := android.FilterList(allDeps, exportedDeps)
+	implementation, export := util.FilterList(allDeps, exportedDeps)
 
 	return depsPartition{
 		export:         fn(ctx, export, excludes),
@@ -512,10 +513,10 @@ func (la *linkerAttributes) bp2buildForAxisAndConfig(ctx android.BazelConversion
 
 	// Excludes to parallel Soong:
 	// https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/linker.go;l=247-249;drc=088b53577dde6e40085ffd737a1ae96ad82fc4b0
-	staticLibs := android.FirstUniqueStrings(props.Static_libs)
+	staticLibs := util.FirstUniqueStrings(props.Static_libs)
 	staticDeps := maybePartitionExportedAndImplementationsDepsExcludes(ctx, !isBinary, staticLibs, props.Exclude_static_libs, props.Export_static_lib_headers, bazelLabelForStaticDepsExcludes)
 
-	headerLibs := android.FirstUniqueStrings(props.Header_libs)
+	headerLibs := util.FirstUniqueStrings(props.Header_libs)
 	hDeps := maybePartitionExportedAndImplementationsDeps(ctx, !isBinary, headerLibs, props.Export_header_lib_headers, bazelLabelForHeaderDeps)
 
 	(&hDeps.export).Append(staticDeps.export)
@@ -524,7 +525,7 @@ func (la *linkerAttributes) bp2buildForAxisAndConfig(ctx android.BazelConversion
 	(&hDeps.implementation).Append(staticDeps.implementation)
 	la.implementationDeps.SetSelectValue(axis, config, hDeps.implementation)
 
-	wholeStaticLibs := android.FirstUniqueStrings(props.Whole_static_libs)
+	wholeStaticLibs := util.FirstUniqueStrings(props.Whole_static_libs)
 	la.wholeArchiveDeps.SetSelectValue(axis, config, bazelLabelForWholeDepsExcludes(ctx, wholeStaticLibs, props.Exclude_static_libs))
 
 	systemSharedLibs := props.System_shared_libs
@@ -532,11 +533,11 @@ func (la *linkerAttributes) bp2buildForAxisAndConfig(ctx android.BazelConversion
 	//    nil -> use default values
 	//    empty list -> no values specified
 	if len(systemSharedLibs) > 0 {
-		systemSharedLibs = android.FirstUniqueStrings(systemSharedLibs)
+		systemSharedLibs = util.FirstUniqueStrings(systemSharedLibs)
 	}
 	la.systemDynamicDeps.SetSelectValue(axis, config, bazelLabelForSharedDeps(ctx, systemSharedLibs))
 
-	sharedLibs := android.FirstUniqueStrings(props.Shared_libs)
+	sharedLibs := util.FirstUniqueStrings(props.Shared_libs)
 	sharedDeps := maybePartitionExportedAndImplementationsDepsExcludes(ctx, !isBinary, sharedLibs, props.Exclude_shared_libs, props.Export_shared_lib_headers, bazelLabelForSharedDepsExcludes)
 	la.dynamicDeps.SetSelectValue(axis, config, sharedDeps.export)
 	la.implementationDynamicDeps.SetSelectValue(axis, config, sharedDeps.implementation)
@@ -553,7 +554,7 @@ func (la *linkerAttributes) bp2buildForAxisAndConfig(ctx android.BazelConversion
 	if len(props.Ldflags) > 0 {
 		linkerFlags = append(linkerFlags, props.Ldflags...)
 		// binaries remove static flag if -shared is in the linker flags
-		if isBinary && android.InList("-shared", linkerFlags) {
+		if isBinary && util.InList("-shared", linkerFlags) {
 			axisFeatures = append(axisFeatures, "-static_flag")
 		}
 	}
@@ -646,7 +647,7 @@ func (la *linkerAttributes) convertProductVariables(ctx android.BazelConversionP
 			dep.attribute.SetSelectValue(
 				productConfigProp.ConfigurationAxis(),
 				productConfigProp.SelectKey(),
-				dep.depResolutionFunc(ctx, android.FirstUniqueStrings(includes), excludes),
+				dep.depResolutionFunc(ctx, util.FirstUniqueStrings(includes), excludes),
 			)
 		}
 	}

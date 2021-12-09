@@ -14,7 +14,11 @@
 
 package android
 
-import "testing"
+import (
+	"testing"
+
+	"android/soong/android/util"
+)
 
 type testSdkRegisterable struct {
 	name string
@@ -33,21 +37,21 @@ func TestSdkRegistry(t *testing.T) {
 
 	// Make sure that an empty registry is empty.
 	emptyRegistry := &sdkRegistry{}
-	AssertDeepEquals(t, "emptyRegistry should be empty", ([]sdkRegisterable)(nil), emptyRegistry.registeredObjects())
+	util.AssertDeepEquals(t, "emptyRegistry should be empty", ([]sdkRegisterable)(nil), emptyRegistry.registeredObjects())
 
 	// Add beta to the empty registry to create another registry, check that it contains beta and make
 	// sure that it does not affect the creating registry.
 	registry1 := emptyRegistry.copyAndAppend(beta)
-	AssertDeepEquals(t, "emptyRegistry should still be empty", ([]sdkRegisterable)(nil), emptyRegistry.registeredObjects())
-	AssertDeepEquals(t, "registry1 should contain beta", []sdkRegisterable{beta}, registry1.registeredObjects())
+	util.AssertDeepEquals(t, "emptyRegistry should still be empty", ([]sdkRegisterable)(nil), emptyRegistry.registeredObjects())
+	util.AssertDeepEquals(t, "registry1 should contain beta", []sdkRegisterable{beta}, registry1.registeredObjects())
 
 	// Add alpha to the registry containing beta to create another registry, check that it contains
 	// alpha,beta (in order) and make sure that it does not affect the creating registry.
 	registry2 := registry1.copyAndAppend(alpha)
-	AssertDeepEquals(t, "registry1 should still contain beta", []sdkRegisterable{beta}, registry1.registeredObjects())
-	AssertDeepEquals(t, "registry2 should contain alpha,beta", []sdkRegisterable{alpha, beta}, registry2.registeredObjects())
+	util.AssertDeepEquals(t, "registry1 should still contain beta", []sdkRegisterable{beta}, registry1.registeredObjects())
+	util.AssertDeepEquals(t, "registry2 should contain alpha,beta", []sdkRegisterable{alpha, beta}, registry2.registeredObjects())
 
-	AssertPanicMessageContains(t, "duplicate beta should be detected", `"beta" already exists in ["alpha" "beta"]`, func() {
+	util.AssertPanicMessageContains(t, "duplicate beta should be detected", `"beta" already exists in ["alpha" "beta"]`, func() {
 		registry2.copyAndAppend(betaDup)
 	})
 }

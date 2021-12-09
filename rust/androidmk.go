@@ -18,6 +18,7 @@ import (
 	"path/filepath"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/cc"
 )
 
@@ -166,7 +167,7 @@ func (sourceProvider *BaseSourceProvider) AndroidMk(ctx AndroidMkContext, ret *a
 	ret.ExtraEntries = append(ret.ExtraEntries,
 		func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 			_, file := filepath.Split(outFile.String())
-			stem, suffix, _ := android.SplitFileExt(file)
+			stem, suffix, _ := util.SplitFileExt(file)
 			entries.SetString("LOCAL_MODULE_SUFFIX", suffix)
 			entries.SetString("LOCAL_MODULE_STEM", stem)
 			entries.SetBool("LOCAL_UNINSTALLABLE_MODULE", true)
@@ -194,7 +195,7 @@ func (compiler *baseCompiler) AndroidMk(ctx AndroidMkContext, ret *android.Andro
 		func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 			entries.SetPath("LOCAL_SOONG_UNSTRIPPED_BINARY", compiler.unstrippedOutputFile)
 			path, file := filepath.Split(compiler.path.ToMakePath().String())
-			stem, suffix, _ := android.SplitFileExt(file)
+			stem, suffix, _ := util.SplitFileExt(file)
 			entries.SetString("LOCAL_MODULE_SUFFIX", suffix)
 			entries.SetString("LOCAL_MODULE_PATH", path)
 			entries.SetString("LOCAL_MODULE_STEM", stem)

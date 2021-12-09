@@ -20,6 +20,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 type bpPropertySet struct {
@@ -204,7 +205,7 @@ func (s *bpPropertySet) setProperty(name string, value interface{}) {
 func (s *bpPropertySet) removeProperty(name string) {
 	delete(s.properties, name)
 	delete(s.tags, name)
-	_, s.order = android.RemoveFromList(name, s.order)
+	_, s.order = util.RemoveFromList(name, s.order)
 }
 
 func (s *bpPropertySet) insertAfter(position string, name string, value interface{}) {

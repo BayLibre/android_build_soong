@@ -18,7 +18,7 @@ import (
 	"strings"
 	"testing"
 
-	"android/soong/android"
+	"android/soong/android/util"
 )
 
 // Test that rustlibs default linkage is correct for binaries.
@@ -47,11 +47,11 @@ func TestBinaryLinkage(t *testing.T) {
 	fizzBuzzHost := ctx.ModuleForTests("fizz-buzz", "linux_glibc_x86_64").Module().(*Module)
 	fizzBuzzDevice := ctx.ModuleForTests("fizz-buzz", "android_arm64_armv8-a").Module().(*Module)
 
-	if !android.InList("libfoo.rlib-std", fizzBuzzHost.Properties.AndroidMkRlibs) {
+	if !util.InList("libfoo.rlib-std", fizzBuzzHost.Properties.AndroidMkRlibs) {
 		t.Errorf("rustlibs dependency libfoo should be an rlib dep for host modules")
 	}
 
-	if !android.InList("libfoo", fizzBuzzDevice.Properties.AndroidMkDylibs) {
+	if !util.InList("libfoo", fizzBuzzDevice.Properties.AndroidMkDylibs) {
 		t.Errorf("rustlibs dependency libfoo should be an dylib dep for device modules")
 	}
 }
@@ -75,11 +75,11 @@ func TestBinaryPreferRlib(t *testing.T) {
 
 	mod := ctx.ModuleForTests("rlib_linked", "android_arm64_armv8-a").Module().(*Module)
 
-	if !android.InList("libfoo.rlib-std", mod.Properties.AndroidMkRlibs) {
+	if !util.InList("libfoo.rlib-std", mod.Properties.AndroidMkRlibs) {
 		t.Errorf("rustlibs dependency libfoo should be an rlib dep when prefer_rlib is defined")
 	}
 
-	if !android.InList("libstd", mod.Properties.AndroidMkRlibs) {
+	if !util.InList("libstd", mod.Properties.AndroidMkRlibs) {
 		t.Errorf("libstd dependency should be an rlib dep when prefer_rlib is defined")
 	}
 }
@@ -154,7 +154,7 @@ func TestStaticBinaryFlags(t *testing.T) {
 		t.Errorf("static binary missing '-static' in linkFlags, found: %#v", flags)
 	}
 
-	if !android.InList("libc", fizzMod.Properties.AndroidMkStaticLibs) {
+	if !util.InList("libc", fizzMod.Properties.AndroidMkStaticLibs) {
 		t.Errorf("static binary not linking against libc as a static library")
 	}
 	if len(fizzMod.Properties.AndroidMkSharedLibs) > 0 {

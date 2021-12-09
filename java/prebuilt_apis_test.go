@@ -20,6 +20,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 )
 
@@ -52,5 +53,5 @@ func TestPrebuiltApis_SystemModulesCreation(t *testing.T) {
 		"sdk_module-lib_current_system_modules",
 	}
 	sort.Strings(expected)
-	android.AssertArrayString(t, "sdk system modules", expected, sdkSystemModules)
+	util.AssertArrayString(t, "sdk system modules", expected, sdkSystemModules)
 }

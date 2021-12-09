@@ -22,6 +22,7 @@ import (
 	"sort"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
 	"github.com/google/blueprint/proptools"
@@ -1363,13 +1364,13 @@ func (a *apexBundle) testOnlyShouldForceCompression() bool {
 // sanitizers, extra dependencies can be forcibly added as well.
 
 func (a *apexBundle) EnableSanitizer(sanitizerName string) {
-	if !android.InList(sanitizerName, a.properties.SanitizerNames) {
+	if !util.InList(sanitizerName, a.properties.SanitizerNames) {
 		a.properties.SanitizerNames = append(a.properties.SanitizerNames, sanitizerName)
 	}
 }
 
 func (a *apexBundle) IsSanitizerEnabled(ctx android.BaseModuleContext, sanitizerName string) bool {
-	if android.InList(sanitizerName, a.properties.SanitizerNames) {
+	if util.InList(sanitizerName, a.properties.SanitizerNames) {
 		return true
 	}
 
@@ -1379,11 +1380,11 @@ func (a *apexBundle) IsSanitizerEnabled(ctx android.BaseModuleContext, sanitizer
 		globalSanitizerNames = ctx.Config().SanitizeHost()
 	} else {
 		arches := ctx.Config().SanitizeDeviceArch()
-		if len(arches) == 0 || android.InList(a.Arch().ArchType.Name, arches) {
+		if len(arches) == 0 || util.InList(a.Arch().ArchType.Name, arches) {
 			globalSanitizerNames = ctx.Config().SanitizeDevice()
 		}
 	}
-	return android.InList(sanitizerName, globalSanitizerNames)
+	return util.InList(sanitizerName, globalSanitizerNames)
 }
 
 func (a *apexBundle) AddSanitizerDependencies(ctx android.BottomUpMutatorContext, sanitizerName string) {
@@ -1641,7 +1642,7 @@ func (a *apexBundle) WalkPayloadDeps(ctx android.ModuleContext, do android.Paylo
 		}
 
 		ai := ctx.OtherModuleProvider(child, android.ApexInfoProvider).(android.ApexInfo)
-		externalDep := !android.InList(ctx.ModuleName(), ai.InApexVariants)
+		externalDep := !util.InList(ctx.ModuleName(), ai.InApexVariants)
 
 		// Visit actually
 		return do(ctx, parent, am, externalDep)
@@ -1922,7 +1923,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 							if !am.DirectlyInAnyApex() {
 								// we need a module name for Make
 								name := cc.ImplementationModuleNameForMake(ctx) + cc.Properties.SubName
-								if !android.InList(name, a.requiredDeps) {
+								if !util.InList(name, a.requiredDeps) {
 									a.requiredDeps = append(a.requiredDeps, name)
 								}
 							}
@@ -2561,7 +2562,7 @@ func isStaticExecutableAllowed(apex string, exec string) bool {
 		},
 	}
 	execNames, ok := m[apex]
-	return ok && android.InList(exec, execNames)
+	return ok && util.InList(exec, execNames)
 }
 
 // Collect information for opening IDE project files in java/jdeps.go.
@@ -2581,12 +2582,12 @@ func baselineApexAvailable(apex, moduleName string) bool {
 	key := apex
 	moduleName = normalizeModuleName(moduleName)
 
-	if val, ok := apexAvailBaseline[key]; ok && android.InList(moduleName, val) {
+	if val, ok := apexAvailBaseline[key]; ok && util.InList(moduleName, val) {
 		return true
 	}
 
 	key = android.AvailableToAnyApex
-	if val, ok := apexAvailBaseline[key]; ok && android.InList(moduleName, val) {
+	if val, ok := apexAvailBaseline[key]; ok && util.InList(moduleName, val) {
 		return true
 	}
 

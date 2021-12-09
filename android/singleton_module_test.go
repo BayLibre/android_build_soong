@@ -16,6 +16,8 @@ package android
 
 import (
 	"testing"
+
+	"android/soong/android/util"
 )
 
 type testSingletonModule struct {
@@ -63,7 +65,7 @@ func TestSingletonModule(t *testing.T) {
 
 	ops := result.ModuleForTests("test_singleton_module", "").Module().(*testSingletonModule).ops
 	wantOps := []string{"GenerateAndroidBuildActions", "GenerateSingletonBuildActions", "MakeVars"}
-	AssertDeepEquals(t, "operations", wantOps, ops)
+	util.AssertDeepEquals(t, "operations", wantOps, ops)
 }
 
 func TestDuplicateSingletonModule(t *testing.T) {

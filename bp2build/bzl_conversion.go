@@ -16,6 +16,8 @@ package bp2build
 
 import (
 	"android/soong/android"
+	"android/soong/android/util"
+
 	"fmt"
 	"reflect"
 	"runtime"
@@ -83,7 +85,7 @@ func CreateRuleShims(moduleTypeFactories map[string]android.ModuleFactory) map[s
 func generateSoongModuleBzl(bzlLoads map[string]RuleShim) string {
 	var loadStmts string
 	var moduleRuleMap string
-	for _, bzlFileName := range android.SortedStringKeys(bzlLoads) {
+	for _, bzlFileName := range util.SortedStringKeys(bzlLoads) {
 		loadStmt := "load(\"//build/bazel/queryview_rules:"
 		loadStmt += bzlFileName
 		loadStmt += ".bzl\""
@@ -104,7 +106,7 @@ func generateRules(moduleTypeFactories map[string]android.ModuleFactory) map[str
 
 	rules := make(map[string][]rule)
 	// TODO: allow registration of a bzl rule when registring a factory
-	for _, moduleType := range android.SortedStringKeys(moduleTypeFactories) {
+	for _, moduleType := range util.SortedStringKeys(moduleTypeFactories) {
 		factory := moduleTypeFactories[moduleType]
 		factoryName := runtime.FuncForPC(reflect.ValueOf(factory).Pointer()).Name()
 		pkg := strings.Split(factoryName, ".")[0]
@@ -221,7 +223,7 @@ func getPropertyDescriptions(props []interface{}) []property {
 	}
 
 	properties := make([]property, 0, len(propertiesByName))
-	for _, key := range android.SortedStringKeys(propertiesByName) {
+	for _, key := range util.SortedStringKeys(propertiesByName) {
 		properties = append(properties, propertiesByName[key])
 	}
 

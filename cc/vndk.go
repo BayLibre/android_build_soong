@@ -23,6 +23,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/cc/config"
 	"android/soong/etc"
 	"android/soong/snapshot"
@@ -250,8 +251,8 @@ func vndkModuleLister(predicate func(*Module) bool) moduleListerFunc {
 				fileNames = append(fileNames, filename)
 			}
 		})
-		moduleNames = android.SortedUniqueStrings(moduleNames)
-		fileNames = android.SortedUniqueStrings(fileNames)
+		moduleNames = util.SortedUniqueStrings(moduleNames)
+		fileNames = util.SortedUniqueStrings(fileNames)
 		return
 	}
 }
@@ -887,7 +888,7 @@ func (c *vndkSnapshotSingleton) MakeVars(ctx android.MakeVarsContext) {
 	})
 
 	ctx.Strict("LLNDK_MOVED_TO_APEX_LIBRARIES",
-		strings.Join(android.SortedStringKeys(movedToApexLlndkLibraries), " "))
+		strings.Join(util.SortedStringKeys(movedToApexLlndkLibraries), " "))
 
 	ctx.Strict("VNDK_LIBRARIES_FILE", c.vndkLibrariesFile.String())
 	ctx.Strict("SOONG_VNDK_SNAPSHOT_ZIP", c.vndkSnapshotZipFile.String())

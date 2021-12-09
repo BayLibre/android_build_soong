@@ -19,6 +19,7 @@ import (
 	"runtime"
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 )
 
@@ -650,7 +651,7 @@ func TestArchProperties(t *testing.T) {
 			for _, want := range tt.results {
 				t.Run(want.module+"_"+want.variant, func(t *testing.T) {
 					got := result.ModuleForTests(want.module, want.variant).Module().(*testArchPropertiesModule).properties.A
-					AssertArrayString(t, "arch mutator property", want.property, got)
+					util.AssertArrayString(t, "arch mutator property", want.property, got)
 				})
 			}
 		})

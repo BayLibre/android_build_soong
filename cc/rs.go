@@ -16,6 +16,8 @@ package cc
 
 import (
 	"android/soong/android"
+	"android/soong/android/util"
+
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -104,7 +106,7 @@ func rsFlags(ctx ModuleContext, flags Flags, properties *BaseCompilerProperties)
 		case "current", "system_current", "test_current":
 			// Nothing
 		default:
-			targetApi = android.GetNumericSdkVersion(ctx.sdkVersion())
+			targetApi = util.GetNumericSdkVersion(ctx.sdkVersion())
 		}
 	}
 

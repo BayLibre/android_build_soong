@@ -21,6 +21,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/dexpreopt"
 
 	"github.com/google/blueprint"
@@ -167,8 +168,8 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext android.SdkConte
 	manifestPath android.Path) (compileFlags, linkFlags []string, linkDeps android.Paths,
 	resDirs, overlayDirs []globbedResourceDir, rroDirs []rroDir, resZips android.Paths) {
 
-	hasVersionCode := android.PrefixInList(a.aaptProperties.Aaptflags, "--version-code")
-	hasVersionName := android.PrefixInList(a.aaptProperties.Aaptflags, "--version-name")
+	hasVersionCode := util.PrefixInList(a.aaptProperties.Aaptflags, "--version-code")
+	hasVersionName := util.PrefixInList(a.aaptProperties.Aaptflags, "--version-name")
 
 	// Flags specified in Android.bp
 	linkFlags = append(linkFlags, a.aaptProperties.Aaptflags...)
@@ -214,7 +215,7 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext android.SdkConte
 	linkFlags = append(linkFlags, "--manifest "+manifestPath.String())
 	linkDeps = append(linkDeps, manifestPath)
 
-	linkFlags = append(linkFlags, android.JoinWithPrefix(assetDirStrings, "-A "))
+	linkFlags = append(linkFlags, util.JoinWithPrefix(assetDirStrings, "-A "))
 	linkDeps = append(linkDeps, assetDeps...)
 
 	// SDK version flags
@@ -245,7 +246,7 @@ func (a *aapt) aapt2Flags(ctx android.ModuleContext, sdkContext android.SdkConte
 		linkFlags = append(linkFlags, "--version-name ", versionName)
 	}
 
-	linkFlags, compileFlags = android.FilterList(linkFlags, []string{"--legacy"})
+	linkFlags, compileFlags = util.FilterList(linkFlags, []string{"--legacy"})
 
 	// Always set --pseudo-localize, it will be stripped out later for release
 	// builds that don't want it.
@@ -375,7 +376,7 @@ func (a *aapt) buildActions(ctx android.ModuleContext, sdkContext android.SdkCon
 
 	// Extract assets from the resource package output so that they can be used later in aapt2link
 	// for modules that depend on this one.
-	if android.PrefixInList(linkFlags, "-A ") || len(assetPackages) > 0 {
+	if util.PrefixInList(linkFlags, "-A ") || len(assetPackages) > 0 {
 		assets := android.PathForModuleOut(ctx, "assets.zip")
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        extractAssetsRule,

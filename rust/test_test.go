@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 func TestRustTest(t *testing.T) {
@@ -64,13 +65,13 @@ func TestRustTestLinkage(t *testing.T) {
 
 	testingModule := ctx.ModuleForTests("my_test", "android_arm64_armv8-a").Module().(*Module)
 
-	if !android.InList("libfoo.rlib-std", testingModule.Properties.AndroidMkRlibs) {
+	if !util.InList("libfoo.rlib-std", testingModule.Properties.AndroidMkRlibs) {
 		t.Errorf("rlib-std variant for libfoo not detected as a rustlib-defined rlib dependency for device rust_test module")
 	}
-	if !android.InList("libbar.rlib-std", testingModule.Properties.AndroidMkRlibs) {
+	if !util.InList("libbar.rlib-std", testingModule.Properties.AndroidMkRlibs) {
 		t.Errorf("rlib-std variant for libbar not detected as an rlib dependency for device rust_test module")
 	}
-	if !android.InList("libstd", testingModule.Properties.AndroidMkRlibs) {
+	if !util.InList("libstd", testingModule.Properties.AndroidMkRlibs) {
 		t.Errorf("Device rust_test module 'my_test' does not link libstd as an rlib")
 	}
 }

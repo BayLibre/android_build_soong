@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 
 	"github.com/google/blueprint"
 )
@@ -42,7 +43,7 @@ func TestLibraryHeaders(t *testing.T) {
 
 			// test if header search paths are correctly added
 			cc := ctx.ModuleForTests("lib", "android_arm64_armv8-a_static").Rule("cc")
-			android.AssertStringDoesContain(t, "cFlags for lib module", cc.Args["cFlags"], " -Imy_include ")
+			util.AssertStringDoesContain(t, "cFlags for lib module", cc.Args["cFlags"], " -Imy_include ")
 
 			// Test that there's a valid AndroidMk entry.
 			headers := ctx.ModuleForTests("headers", "android_arm64_armv8-a").Module()
@@ -50,10 +51,10 @@ func TestLibraryHeaders(t *testing.T) {
 
 			// This duplicates the tests done in AndroidMkEntries.write. It would be
 			// better to test its output, but there are no test functions that capture that.
-			android.AssertBoolEquals(t, "AndroidMkEntries.Disabled", false, e.Disabled)
-			android.AssertBoolEquals(t, "AndroidMkEntries.OutputFile.Valid()", true, e.OutputFile.Valid())
+			util.AssertBoolEquals(t, "AndroidMkEntries.Disabled", false, e.Disabled)
+			util.AssertBoolEquals(t, "AndroidMkEntries.OutputFile.Valid()", true, e.OutputFile.Valid())
 
-			android.AssertStringListContains(t, "LOCAL_EXPORT_CFLAGS for headers module", e.EntryMap["LOCAL_EXPORT_CFLAGS"], "-Imy_include")
+			util.AssertStringListContains(t, "LOCAL_EXPORT_CFLAGS for headers module", e.EntryMap["LOCAL_EXPORT_CFLAGS"], "-Imy_include")
 		})
 	}
 }
@@ -92,8 +93,8 @@ func TestPrebuiltLibraryHeadersPreferred(t *testing.T) {
 					hasPrebuiltDep = true
 				}
 			})
-			android.AssertBoolEquals(t, "depends on source headers", !prebuiltPreferred, hasSourceDep)
-			android.AssertBoolEquals(t, "depends on prebuilt headers", prebuiltPreferred, hasPrebuiltDep)
+			util.AssertBoolEquals(t, "depends on source headers", !prebuiltPreferred, hasSourceDep)
+			util.AssertBoolEquals(t, "depends on prebuilt headers", prebuiltPreferred, hasPrebuiltDep)
 		})
 	}
 }

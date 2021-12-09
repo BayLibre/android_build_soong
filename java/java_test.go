@@ -24,6 +24,7 @@ import (
 	"strings"
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -244,9 +245,9 @@ func TestSimple(t *testing.T) {
 	barTurbine := filepath.Join("out", "soong", ".intermediates", "bar", "android_common", "turbine-combined", "bar.jar")
 	bazTurbine := filepath.Join("out", "soong", ".intermediates", "baz", "android_common", "turbine-combined", "baz.jar")
 
-	android.AssertStringDoesContain(t, "foo classpath", javac.Args["classpath"], barTurbine)
+	util.AssertStringDoesContain(t, "foo classpath", javac.Args["classpath"], barTurbine)
 
-	android.AssertStringDoesContain(t, "foo classpath", javac.Args["classpath"], bazTurbine)
+	util.AssertStringDoesContain(t, "foo classpath", javac.Args["classpath"], bazTurbine)
 
 	if len(combineJar.Inputs) != 2 || combineJar.Inputs[1].String() != baz {
 		t.Errorf("foo combineJar inputs %v does not contain %q", combineJar.Inputs, baz)
@@ -452,12 +453,12 @@ func TestBinary(t *testing.T) {
 	libjniSO := libjni.Rule("Cp").Output.String()
 
 	// Test that the install binary wrapper depends on the installed jar file
-	if g, w := barWrapperDeps, barJar; !android.InList(w, g) {
+	if g, w := barWrapperDeps, barJar; !util.InList(w, g) {
 		t.Errorf("expected binary wrapper implicits to contain %q, got %q", w, g)
 	}
 
 	// Test that the install binary wrapper depends on the installed JNI libraries
-	if g, w := barWrapperDeps, libjniSO; !android.InList(w, g) {
+	if g, w := barWrapperDeps, libjniSO; !util.InList(w, g) {
 		t.Errorf("expected binary wrapper implicits to contain %q, got %q", w, g)
 	}
 }
@@ -973,10 +974,10 @@ func TestTurbine(t *testing.T) {
 
 	fooHeaderJar := filepath.Join("out", "soong", ".intermediates", "foo", "android_common", "turbine-combined", "foo.jar")
 	barTurbineJar := filepath.Join("out", "soong", ".intermediates", "bar", "android_common", "turbine", "bar.jar")
-	android.AssertStringDoesContain(t, "bar turbine classpath", barTurbine.Args["classpath"], fooHeaderJar)
-	android.AssertStringDoesContain(t, "bar javac classpath", barJavac.Args["classpath"], fooHeaderJar)
+	util.AssertStringDoesContain(t, "bar turbine classpath", barTurbine.Args["classpath"], fooHeaderJar)
+	util.AssertStringDoesContain(t, "bar javac classpath", barJavac.Args["classpath"], fooHeaderJar)
 	android.AssertPathsRelativeToTopEquals(t, "bar turbine combineJar", []string{barTurbineJar, fooHeaderJar}, barTurbineCombined.Inputs)
-	android.AssertStringDoesContain(t, "baz javac classpath", bazJavac.Args["classpath"], "prebuilts/sdk/14/public/android.jar")
+	util.AssertStringDoesContain(t, "baz javac classpath", bazJavac.Args["classpath"], "prebuilts/sdk/14/public/android.jar")
 }
 
 func TestSharding(t *testing.T) {
@@ -1031,7 +1032,7 @@ func TestJarGenrules(t *testing.T) {
 	baz := ctx.ModuleForTests("baz", "android_common").Output("javac/baz.jar")
 	barCombined := ctx.ModuleForTests("bar", "android_common").Output("combined/bar.jar")
 
-	if g, w := jargen.Implicits.Strings(), foo.Output.String(); !android.InList(w, g) {
+	if g, w := jargen.Implicits.Strings(), foo.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected jargen inputs [%q], got %q", w, g)
 	}
 

@@ -18,6 +18,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 func TestMinSdkVersionsOfCrtObjects(t *testing.T) {
@@ -45,7 +46,7 @@ func TestMinSdkVersionsOfCrtObjects(t *testing.T) {
 	for _, v := range variants {
 		cflags := ctx.ModuleForTests("crt_foo", v.variant).Rule("cc").Args["cFlags"]
 		expected := "-target aarch64-linux-android" + v.num + " "
-		android.AssertStringDoesContain(t, "cflag", cflags, expected)
+		util.AssertStringDoesContain(t, "cflag", cflags, expected)
 	}
 }
 
@@ -63,13 +64,13 @@ func TestUseCrtObjectOfCorrectVersion(t *testing.T) {
 	// Sdk variant uses the crt object of the matching min_sdk_version
 	variant := "android_arm64_armv8-a_sdk"
 	crt := ctx.ModuleForTests("bin", variant).Rule("ld").Args["crtBegin"]
-	android.AssertStringDoesContain(t, "crt dep of sdk variant", crt,
+	util.AssertStringDoesContain(t, "crt dep of sdk variant", crt,
 		variant+"_29/crtbegin_dynamic.o")
 
 	// platform variant uses the crt object built for platform
 	variant = "android_arm64_armv8-a"
 	crt = ctx.ModuleForTests("bin", variant).Rule("ld").Args["crtBegin"]
-	android.AssertStringDoesContain(t, "crt dep of platform variant", crt,
+	util.AssertStringDoesContain(t, "crt dep of platform variant", crt,
 		variant+"/crtbegin_dynamic.o")
 }
 
@@ -105,5 +106,5 @@ cc_object {
 	}
 
 	expectedOutputFiles := []string{"outputbase/execroot/__main__/bazel_out.o"}
-	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
+	util.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
 }

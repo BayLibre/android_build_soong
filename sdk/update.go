@@ -20,6 +20,7 @@ import (
 	"sort"
 	"strings"
 
+	"android/soong/android/util"
 	"android/soong/apex"
 	"android/soong/cc"
 
@@ -617,7 +618,7 @@ func (s *sdk) addSnapshotModule(ctx android.ModuleContext, builder *snapshotBuil
 		for _, memberVariantDep := range memberVariantDeps {
 			if memberVariantDep.memberType.IsHostOsDependent() && memberVariantDep.variant.Target().Os.Class == android.Host {
 				targetString := memberVariantDep.variant.Target().Os.String() + "_" + memberVariantDep.variant.Target().Arch.ArchType.String()
-				if !android.InList(targetString, supportedHostTargets) {
+				if !util.InList(targetString, supportedHostTargets) {
 					supportedHostTargets = append(supportedHostTargets, targetString)
 				}
 			}
@@ -730,7 +731,7 @@ func (s *sdk) collateSnapshotModuleInfo(ctx android.BaseModuleContext, sdkVarian
 
 		// Append the member to the appropriate list, if it is not already present in the list.
 		memberList := memberListProperty.getter(combined.dynamicProperties)
-		if !android.InList(memberName, memberList) {
+		if !util.InList(memberName, memberList) {
 			memberList = append(memberList, memberName)
 		}
 		memberListProperty.setter(combined.dynamicProperties, memberList)
@@ -1179,7 +1180,7 @@ func (s *snapshotBuilder) AddPrebuiltModule(member android.SdkMember, moduleType
 		apexAvailable = append(apexAvailable, apex.BaselineApexAvailable(member.Name())...)
 
 		// Remove duplicates and sort.
-		apexAvailable = android.FirstUniqueStrings(apexAvailable)
+		apexAvailable = util.FirstUniqueStrings(apexAvailable)
 		sort.Strings(apexAvailable)
 
 		m.AddProperty("apex_available", apexAvailable)
@@ -1645,7 +1646,7 @@ func newArchSpecificInfo(ctx android.SdkMemberContext, archId archId, osType and
 		}
 
 		// Create the image variant info in a fixed order.
-		for _, imageVariantName := range android.SortedStringKeys(variantsByImage) {
+		for _, imageVariantName := range util.SortedStringKeys(variantsByImage) {
 			variants := variantsByImage[imageVariantName]
 			archInfo.imageVariantInfos = append(archInfo.imageVariantInfos, newImageVariantSpecificInfo(ctx, imageVariantName, variantPropertiesFactory, variants))
 		}

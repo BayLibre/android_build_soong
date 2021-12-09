@@ -10,6 +10,7 @@ bootstrap_go_package {
         "blueprint-pathtools",
         "soong",
         "soong-android",
+        "soong-android-util",
         "soong-bazel",
         "soong-cc-config",
         "soong-etc",

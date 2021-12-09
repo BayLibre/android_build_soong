@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/cc"
 )
 
@@ -52,9 +53,9 @@ func TestKernelModulesFilelist(t *testing.T) {
 	for _, ps := range ctx.ModuleForTests("foo", "android_arm64_armv8-a").Module().PackagingSpecs() {
 		actual = append(actual, ps.RelPathInPackage())
 	}
-	actual = android.SortedUniqueStrings(actual)
-	expected = android.SortedUniqueStrings(expected)
-	android.AssertDeepEquals(t, "foo packaging specs", expected, actual)
+	actual = util.SortedUniqueStrings(actual)
+	expected = util.SortedUniqueStrings(expected)
+	util.AssertDeepEquals(t, "foo packaging specs", expected, actual)
 }
 
 func TestMain(m *testing.M) {

@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -486,11 +487,11 @@ type flagExporter struct {
 }
 
 func (flagExporter *flagExporter) exportLinkDirs(dirs ...string) {
-	flagExporter.linkDirs = android.FirstUniqueStrings(append(flagExporter.linkDirs, dirs...))
+	flagExporter.linkDirs = util.FirstUniqueStrings(append(flagExporter.linkDirs, dirs...))
 }
 
 func (flagExporter *flagExporter) exportLinkObjects(flags ...string) {
-	flagExporter.linkObjects = android.FirstUniqueStrings(append(flagExporter.linkObjects, flags...))
+	flagExporter.linkObjects = util.FirstUniqueStrings(append(flagExporter.linkObjects, flags...))
 }
 
 func (flagExporter *flagExporter) setProvider(ctx ModuleContext) {
@@ -953,13 +954,13 @@ func (mod *Module) deps(ctx DepsContext) Deps {
 		deps = mod.sanitize.deps(ctx, deps)
 	}
 
-	deps.Rlibs = android.LastUniqueStrings(deps.Rlibs)
-	deps.Dylibs = android.LastUniqueStrings(deps.Dylibs)
-	deps.Rustlibs = android.LastUniqueStrings(deps.Rustlibs)
-	deps.ProcMacros = android.LastUniqueStrings(deps.ProcMacros)
-	deps.SharedLibs = android.LastUniqueStrings(deps.SharedLibs)
-	deps.StaticLibs = android.LastUniqueStrings(deps.StaticLibs)
-	deps.WholeStaticLibs = android.LastUniqueStrings(deps.WholeStaticLibs)
+	deps.Rlibs = util.LastUniqueStrings(deps.Rlibs)
+	deps.Dylibs = util.LastUniqueStrings(deps.Dylibs)
+	deps.Rustlibs = util.LastUniqueStrings(deps.Rustlibs)
+	deps.ProcMacros = util.LastUniqueStrings(deps.ProcMacros)
+	deps.SharedLibs = util.LastUniqueStrings(deps.SharedLibs)
+	deps.StaticLibs = util.LastUniqueStrings(deps.StaticLibs)
+	deps.WholeStaticLibs = util.LastUniqueStrings(deps.WholeStaticLibs)
 	return deps
 
 }
@@ -1050,7 +1051,7 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		mod.apexSdkVersion = apexInfo.MinSdkVersion
 	}
 
-	if android.InList("hwaddress", ctx.Config().SanitizeDevice()) {
+	if util.InList("hwaddress", ctx.Config().SanitizeDevice()) {
 		// In hwasan build, we override apexSdkVersion to the FutureApiLevel(10000)
 		// so that even Q(29/Android10) apexes could use the dynamic unwinder by linking the newer stubs(e.g libc(R+)).
 		// (b/144430859)
@@ -1273,10 +1274,10 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	depPaths.SrcDeps = append(depPaths.SrcDeps, srcProviderDepFiles...)
 
 	// Dedup exported flags from dependencies
-	depPaths.linkDirs = android.FirstUniqueStrings(depPaths.linkDirs)
-	depPaths.linkObjects = android.FirstUniqueStrings(depPaths.linkObjects)
-	depPaths.depFlags = android.FirstUniqueStrings(depPaths.depFlags)
-	depPaths.depClangFlags = android.FirstUniqueStrings(depPaths.depClangFlags)
+	depPaths.linkDirs = util.FirstUniqueStrings(depPaths.linkDirs)
+	depPaths.linkObjects = util.FirstUniqueStrings(depPaths.linkObjects)
+	depPaths.depFlags = util.FirstUniqueStrings(depPaths.depFlags)
+	depPaths.depClangFlags = util.FirstUniqueStrings(depPaths.depClangFlags)
 	depPaths.depIncludePaths = android.FirstUniquePaths(depPaths.depIncludePaths)
 	depPaths.depSystemIncludePaths = android.FirstUniquePaths(depPaths.depSystemIncludePaths)
 

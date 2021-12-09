@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/cc"
 )
 
@@ -69,8 +70,8 @@ func TestFileSystemFillsLinkerConfigWithStubLibs(t *testing.T) {
 	module := result.ModuleForTests("myfilesystem", "android_common")
 	output := module.Output("system/etc/linker.config.pb")
 
-	android.AssertStringDoesContain(t, "linker.config.pb should have libfoo",
+	util.AssertStringDoesContain(t, "linker.config.pb should have libfoo",
 		output.RuleParams.Command, "libfoo.so")
-	android.AssertStringDoesNotContain(t, "linker.config.pb should not have libbar",
+	util.AssertStringDoesNotContain(t, "linker.config.pb should not have libbar",
 		output.RuleParams.Command, "libbar.so")
 }

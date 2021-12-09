@@ -20,6 +20,7 @@ import (
 	"runtime"
 	"testing"
 
+	"android/soong/android/util"
 	mkparser "android/soong/androidmk/parser"
 )
 
@@ -397,19 +398,19 @@ func TestInstall(t *testing.T) {
 
 	assertInputs := func(params TestingBuildParams, inputs ...Path) {
 		t.Helper()
-		AssertArrayString(t, "expected inputs", Paths(inputs).Strings(),
+		util.AssertArrayString(t, "expected inputs", Paths(inputs).Strings(),
 			append(PathsIfNonNil(params.Input), params.Inputs...).Strings())
 	}
 
 	assertImplicits := func(params TestingBuildParams, implicits ...Path) {
 		t.Helper()
-		AssertArrayString(t, "expected implicit dependencies", Paths(implicits).Strings(),
+		util.AssertArrayString(t, "expected implicit dependencies", Paths(implicits).Strings(),
 			append(PathsIfNonNil(params.Implicit), params.Implicits...).Strings())
 	}
 
 	assertOrderOnlys := func(params TestingBuildParams, orderonlys ...Path) {
 		t.Helper()
-		AssertArrayString(t, "expected orderonly dependencies", Paths(orderonlys).Strings(),
+		util.AssertArrayString(t, "expected orderonly dependencies", Paths(orderonlys).Strings(),
 			params.OrderOnly.Strings())
 	}
 
@@ -535,12 +536,12 @@ func TestInstallBypassMake(t *testing.T) {
 
 	assertDeps := func(rule installMakeRule, deps ...string) {
 		t.Helper()
-		AssertArrayString(t, "expected inputs", deps, rule.deps)
+		util.AssertArrayString(t, "expected inputs", deps, rule.deps)
 	}
 
 	assertOrderOnlys := func(rule installMakeRule, orderonlys ...string) {
 		t.Helper()
-		AssertArrayString(t, "expected orderonly dependencies", orderonlys, rule.orderOnlyDeps)
+		util.AssertArrayString(t, "expected orderonly dependencies", orderonlys, rule.orderOnlyDeps)
 	}
 
 	// Check host install rule dependencies

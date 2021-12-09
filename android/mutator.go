@@ -18,6 +18,7 @@ import (
 	"reflect"
 	"sync"
 
+	"android/soong/android/util"
 	"android/soong/bazel"
 
 	"github.com/google/blueprint"
@@ -641,7 +642,7 @@ func (b *bottomUpMutatorContext) SetDefaultDependencyVariation(variation *string
 func (b *bottomUpMutatorContext) AddVariationDependencies(variations []blueprint.Variation, tag blueprint.DependencyTag,
 	names ...string) []blueprint.Module {
 	if b.bazelConversionMode {
-		_, noSelfDeps := RemoveFromList(b.ModuleName(), names)
+		_, noSelfDeps := util.RemoveFromList(b.ModuleName(), names)
 		if len(noSelfDeps) == 0 {
 			return []blueprint.Module(nil)
 		}

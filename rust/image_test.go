@@ -18,7 +18,7 @@ import (
 	"strings"
 	"testing"
 
-	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/cc"
 )
 
@@ -40,7 +40,7 @@ func TestVendorLinkage(t *testing.T) {
 
 	vendorBinary := ctx.ModuleForTests("fizz_vendor", "android_vendor.29_arm64_armv8-a").Module().(*cc.Module)
 
-	if !android.InList("libfoo_vendor.vendor", vendorBinary.Properties.AndroidMkStaticLibs) {
+	if !util.InList("libfoo_vendor.vendor", vendorBinary.Properties.AndroidMkStaticLibs) {
 		t.Errorf("vendorBinary should have a dependency on libfoo_vendor: %#v", vendorBinary.Properties.AndroidMkStaticLibs)
 	}
 }
@@ -82,7 +82,7 @@ func TestVendorRamdiskLinkage(t *testing.T) {
 
 	vendorRamdiskLibrary := ctx.ModuleForTests("libcc_vendor_ramdisk", "android_vendor_ramdisk_arm64_armv8-a_static").Module().(*cc.Module)
 
-	if !android.InList("libfoo_vendor_ramdisk.vendor_ramdisk", vendorRamdiskLibrary.Properties.AndroidMkStaticLibs) {
+	if !util.InList("libfoo_vendor_ramdisk.vendor_ramdisk", vendorRamdiskLibrary.Properties.AndroidMkStaticLibs) {
 		t.Errorf("libcc_vendor_ramdisk should have a dependency on libfoo_vendor_ramdisk")
 	}
 }

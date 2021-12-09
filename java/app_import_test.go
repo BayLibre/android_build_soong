@@ -21,6 +21,7 @@ import (
 	"strings"
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -713,7 +714,7 @@ func TestAndroidTestImport_UncompressDex(t *testing.T) {
 			}
 		}
 
-		android.AssertBoolEquals(t, "uncompress dex", expect, actual)
+		util.AssertBoolEquals(t, "uncompress dex", expect, actual)
 	}
 
 	for _, unbundled := range []bool{false, true} {

@@ -16,6 +16,7 @@ package java
 
 import (
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/dexpreopt"
 
 	"github.com/google/blueprint"
@@ -136,23 +137,23 @@ func (s *SystemServerClasspathModule) configuredJars(ctx android.ModuleContext) 
 	possibleUpdatableModules := gatherPossibleApexModuleNamesAndStems(ctx, s.properties.Contents, systemServerClasspathFragmentContentDepTag)
 	jars, unknown := global.ApexSystemServerJars.Filter(possibleUpdatableModules)
 	// TODO(satayev): remove geotz ssc_fragment, since geotz is not part of SSCP anymore.
-	_, unknown = android.RemoveFromList("geotz", unknown)
+	_, unknown = util.RemoveFromList("geotz", unknown)
 	// This module only exists in car products.
 	// So ignore it even if it is not in PRODUCT_APEX_SYSTEM_SERVER_JARS.
 	// TODO(b/203233647): Add better mechanism to make it optional.
-	_, unknown = android.RemoveFromList("car-frameworks-service-module", unknown)
+	_, unknown = util.RemoveFromList("car-frameworks-service-module", unknown)
 
 	// This module is optional, so it is not present in all products.
 	// (See PRODUCT_ISOLATED_COMPILATION_ENABLED.)
 	// So ignore it even if it is not in PRODUCT_APEX_SYSTEM_SERVER_JARS.
 	// TODO(b/203233647): Add better mechanism to make it optional.
-	_, unknown = android.RemoveFromList("service-compos", unknown)
+	_, unknown = util.RemoveFromList("service-compos", unknown)
 
 	// TODO(satayev): for apex_test we want to include all contents unconditionally to classpaths
 	// config. However, any test specific jars would not be present in ApexSystemServerJars. Instead,
 	// we should check if we are creating a config for apex_test via ApexInfo and amend the values.
 	// This is an exception to support end-to-end test for ApexdUnitTests, until such support exists.
-	if android.InList("test_service-apexd", possibleUpdatableModules) {
+	if util.InList("test_service-apexd", possibleUpdatableModules) {
 		jars = jars.Append("com.android.apex.test_package", "test_service-apexd")
 	} else if global.ApexSystemServerJars.Len() > 0 && len(unknown) > 0 && !android.IsModuleInVersionedSdk(ctx.Module()) {
 		// For non test apexes, make sure that all contents are actually declared in make.

@@ -19,6 +19,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -295,10 +296,10 @@ func (j *Javadoc) aidlFlags(ctx android.ModuleContext, aidlPreprocess android.Op
 		flags = append(flags, "-p"+aidlPreprocess.String())
 		deps = append(deps, aidlPreprocess.Path())
 	} else {
-		flags = append(flags, android.JoinWithPrefix(aidlIncludeDirs.Strings(), "-I"))
+		flags = append(flags, util.JoinWithPrefix(aidlIncludeDirs.Strings(), "-I"))
 	}
 
-	flags = append(flags, android.JoinWithPrefix(aidlIncludes.Strings(), "-I"))
+	flags = append(flags, util.JoinWithPrefix(aidlIncludes.Strings(), "-I"))
 	flags = append(flags, "-I"+android.PathForModuleSrc(ctx).String())
 	if src := android.ExistentPathForSource(ctx, ctx.ModuleDir(), "src"); src.Valid() {
 		flags = append(flags, "-I"+src.String())
@@ -417,7 +418,7 @@ func (j *Javadoc) collectDeps(ctx android.ModuleContext) deps {
 				continue
 			}
 			packageName := strings.ReplaceAll(filepath.Dir(src.Rel()), "/", ".")
-			if android.HasAnyPrefix(packageName, filterPackages) {
+			if util.HasAnyPrefix(packageName, filterPackages) {
 				filtered = append(filtered, src)
 			}
 		}

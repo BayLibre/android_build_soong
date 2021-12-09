@@ -21,6 +21,7 @@ import (
 	"strconv"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/java/config"
 
 	"github.com/google/blueprint/pathtools"
@@ -305,7 +306,7 @@ func createFrameworkAidl(stubsModules []string, path android.WritablePath, ctx a
 		if ctx.ModuleHasProvider(module, JavaInfoProvider) {
 			j := ctx.ModuleProvider(module, JavaInfoProvider).(JavaInfo)
 			name := ctx.ModuleName(module)
-			if i := android.IndexList(name, stubsModules); i != -1 {
+			if i := util.IndexList(name, stubsModules); i != -1 {
 				stubsJars[i] = j.HeaderJars
 			}
 		}
@@ -388,7 +389,7 @@ func createAPIFingerprint(ctx android.SingletonContext) {
 		count := 0
 		ctx.VisitAllModules(func(module android.Module) {
 			name := ctx.ModuleName(module)
-			if android.InList(name, apiTxtFileModules) {
+			if util.InList(name, apiTxtFileModules) {
 				cmd.Inputs(android.OutputFilesForModule(ctx, module, ""))
 				count++
 			}

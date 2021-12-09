@@ -18,6 +18,7 @@ import (
 	"strconv"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
 
@@ -119,12 +120,12 @@ func genAidlIncludeFlags(srcFiles android.Paths) string {
 	for _, srcFile := range srcFiles {
 		if srcFile.Ext() == ".aidl" {
 			baseDir := strings.TrimSuffix(srcFile.String(), srcFile.Rel())
-			if baseDir != "" && !android.InList(baseDir, baseDirs) {
+			if baseDir != "" && !util.InList(baseDir, baseDirs) {
 				baseDirs = append(baseDirs, baseDir)
 			}
 		}
 	}
-	return android.JoinWithPrefix(baseDirs, " -I")
+	return util.JoinWithPrefix(baseDirs, " -I")
 }
 
 func (j *Module) genSources(ctx android.ModuleContext, srcFiles android.Paths,

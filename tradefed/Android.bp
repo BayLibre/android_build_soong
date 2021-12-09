@@ -8,6 +8,7 @@ bootstrap_go_package {
     deps: [
         "blueprint",
         "soong-android",
+        "soong-android-util",
     ],
     srcs: [
         "autogen.go",
@@ -26,6 +27,7 @@ bootstrap_go_package {
         "blueprint-proptools",
         "soong",
         "soong-android",
+        "soong-android-util",
         "soong-java",
     ],
     srcs: [

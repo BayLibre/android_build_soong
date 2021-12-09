@@ -18,6 +18,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 func TestClippy(t *testing.T) {
@@ -63,10 +64,10 @@ func TestClippy(t *testing.T) {
 			).RunTest(t)
 
 			r := result.ModuleForTests("libfoo", "android_arm64_armv8-a_dylib").MaybeRule("clippy")
-			android.AssertStringEquals(t, "libfoo flags", tc.fooFlags, r.Args["clippyFlags"])
+			util.AssertStringEquals(t, "libfoo flags", tc.fooFlags, r.Args["clippyFlags"])
 
 			r = result.ModuleForTests("libbar", "android_arm64_armv8-a_dylib").MaybeRule("clippy")
-			android.AssertStringEquals(t, "libbar flags", "${config.ClippyDefaultLints}", r.Args["clippyFlags"])
+			util.AssertStringEquals(t, "libbar flags", "${config.ClippyDefaultLints}", r.Args["clippyFlags"])
 
 			r = result.ModuleForTests("libfoobar", "android_arm64_armv8-a_dylib").MaybeRule("clippy")
 			if r.Rule != nil {

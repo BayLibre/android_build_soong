@@ -18,7 +18,7 @@ import (
 	"sort"
 	"strings"
 
-	"android/soong/android"
+	"android/soong/android/util"
 )
 
 // Cflags that should be filtered out when compiling with clang
@@ -85,7 +85,7 @@ var ClangTidyDisableChecks = []string{
 }
 
 func ClangFilterUnknownCflags(cflags []string) []string {
-	result, _ := android.FilterList(cflags, ClangUnknownCflags)
+	result, _ := util.FilterList(cflags, ClangUnknownCflags)
 	return result
 }
 
@@ -106,12 +106,12 @@ func ClangRewriteTidyChecks(checks []string) []string {
 	// clang-tidy does not allow later arguments to override earlier arguments,
 	// so if we just disabled an argument that was explicitly enabled we must
 	// remove the enabling argument from the list.
-	result, _ := android.FilterList(checks, ClangTidyDisableChecks)
+	result, _ := util.FilterList(checks, ClangTidyDisableChecks)
 	return result
 }
 
 func ClangLibToolingFilterUnknownCflags(libToolingFlags []string) []string {
-	return android.RemoveListFromList(libToolingFlags, ClangLibToolingUnknownCflags)
+	return util.RemoveListFromList(libToolingFlags, ClangLibToolingUnknownCflags)
 }
 
 func sorted(list []string) []string {

@@ -15,8 +15,10 @@
 package android
 
 import (
-	"android/soong/bazel"
 	"strings"
+
+	"android/soong/android/util"
+	"android/soong/bazel"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -68,11 +70,11 @@ func GetProtoFlags(ctx ModuleContext, p *ProtoProperties) ProtoFlags {
 
 	if len(p.Proto.Local_include_dirs) > 0 {
 		localProtoIncludeDirs := PathsForModuleSrc(ctx, p.Proto.Local_include_dirs)
-		flags = append(flags, JoinWithPrefix(localProtoIncludeDirs.Strings(), "-I"))
+		flags = append(flags, util.JoinWithPrefix(localProtoIncludeDirs.Strings(), "-I"))
 	}
 	if len(p.Proto.Include_dirs) > 0 {
 		rootProtoIncludeDirs := PathsForSource(ctx, p.Proto.Include_dirs)
-		flags = append(flags, JoinWithPrefix(rootProtoIncludeDirs.Strings(), "-I"))
+		flags = append(flags, util.JoinWithPrefix(rootProtoIncludeDirs.Strings(), "-I"))
 	}
 
 	ctx.VisitDirectDepsWithTag(ProtoPluginDepTag, func(dep Module) {

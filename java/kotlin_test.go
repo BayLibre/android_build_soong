@@ -20,6 +20,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 func TestKotlin(t *testing.T) {
@@ -312,15 +313,15 @@ func TestKotlinCompose(t *testing.T) {
 	withCompose := result.ModuleForTests("withcompose", "android_common")
 	noCompose := result.ModuleForTests("nocompose", "android_common")
 
-	android.AssertStringListContains(t, "missing compose compiler dependency",
+	util.AssertStringListContains(t, "missing compose compiler dependency",
 		withCompose.Rule("kotlinc").Implicits.Strings(), composeCompiler.String())
 
-	android.AssertStringDoesContain(t, "missing compose compiler plugin",
+	util.AssertStringDoesContain(t, "missing compose compiler plugin",
 		withCompose.VariablesForTestsRelativeToTop()["kotlincFlags"], "-Xplugin="+composeCompiler.String())
 
-	android.AssertStringListDoesNotContain(t, "unexpected compose compiler dependency",
+	util.AssertStringListDoesNotContain(t, "unexpected compose compiler dependency",
 		noCompose.Rule("kotlinc").Implicits.Strings(), composeCompiler.String())
 
-	android.AssertStringDoesNotContain(t, "unexpected compose compiler plugin",
+	util.AssertStringDoesNotContain(t, "unexpected compose compiler plugin",
 		noCompose.VariablesForTestsRelativeToTop()["kotlincFlags"], "-Xplugin="+composeCompiler.String())
 }

@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 func testGenruleContext(config android.Config) *android.TestContext {
@@ -181,9 +182,9 @@ func TestCmdPrefix(t *testing.T) {
 			gen := result.ModuleForTests("gen", tt.variant)
 			sboxProto := android.RuleBuilderSboxProtoForTests(t, gen.Output("genrule.sbox.textproto"))
 			cmd := *sboxProto.Commands[0].Command
-			android.AssertStringDoesContain(t, "incorrect CC_ARCH", cmd, "CC_ARCH="+tt.arch+" ")
-			android.AssertStringDoesContain(t, "incorrect CC_NATIVE_BRIDGE", cmd, "CC_NATIVE_BRIDGE="+tt.nativeBridge+" ")
-			android.AssertStringDoesContain(t, "incorrect CC_MULTILIB", cmd, "CC_MULTILIB="+tt.multilib+" ")
+			util.AssertStringDoesContain(t, "incorrect CC_ARCH", cmd, "CC_ARCH="+tt.arch+" ")
+			util.AssertStringDoesContain(t, "incorrect CC_NATIVE_BRIDGE", cmd, "CC_NATIVE_BRIDGE="+tt.nativeBridge+" ")
+			util.AssertStringDoesContain(t, "incorrect CC_MULTILIB", cmd, "CC_MULTILIB="+tt.multilib+" ")
 		})
 	}
 }

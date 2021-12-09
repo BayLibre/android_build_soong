@@ -19,6 +19,7 @@ import (
 	"path/filepath"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 type toolchainFactory func(arch android.Arch) Toolchain
@@ -290,4 +291,4 @@ func ToolPath(t Toolchain) string {
 	return filepath.Join(t.GccRoot(), t.GccTriple(), "bin")
 }
 
-var inList = android.InList
+var inList = util.InList

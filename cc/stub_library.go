@@ -19,6 +19,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 func init() {
@@ -73,7 +74,7 @@ func stubLibrariesSingleton() android.Singleton {
 
 func (s *stubLibraries) MakeVars(ctx android.MakeVarsContext) {
 	// Convert stub library file names into Makefile variable.
-	ctx.Strict("STUB_LIBRARIES", strings.Join(android.SortedStringKeys(s.stubLibraryMap), " "))
+	ctx.Strict("STUB_LIBRARIES", strings.Join(util.SortedStringKeys(s.stubLibraryMap), " "))
 
 	// Export the list of API XML files to Make.
 	sort.Strings(s.apiListCoverageXmlPaths)

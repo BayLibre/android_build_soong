@@ -19,6 +19,7 @@ import (
 	"strings"
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -561,7 +562,7 @@ func testClasspathTestCases(t *testing.T, classpathTestcases []classpathTestCase
 				if testcase.host != android.Host {
 					aidl := result.ModuleForTests("foo", variant(result)).Rule("aidl")
 
-					android.AssertStringDoesContain(t, "aidl command", aidl.RuleParams.Command, testcase.aidl+" -I.")
+					util.AssertStringDoesContain(t, "aidl command", aidl.RuleParams.Command, testcase.aidl+" -I.")
 				}
 			})
 
@@ -574,7 +575,7 @@ func testClasspathTestCases(t *testing.T, classpathTestcases []classpathTestCase
 				if testcase.host != android.Host {
 					aidl := result.ModuleForTests("foo", variant(result)).Rule("aidl")
 
-					android.AssertStringDoesContain(t, "aidl command", aidl.RuleParams.Command, testcase.aidl+" -I.")
+					util.AssertStringDoesContain(t, "aidl command", aidl.RuleParams.Command, testcase.aidl+" -I.")
 				}
 			})
 

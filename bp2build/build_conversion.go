@@ -26,6 +26,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/bazel"
 
 	"github.com/google/blueprint"
@@ -129,7 +130,7 @@ func (targets BazelTargets) LoadStatements() string {
 		loadStatement := "load(\""
 		loadStatement += bzl
 		loadStatement += "\", "
-		ruleClasses = android.SortedUniqueStrings(ruleClasses)
+		ruleClasses = util.SortedUniqueStrings(ruleClasses)
 		for i, ruleClass := range ruleClasses {
 			loadStatement += "\"" + ruleClass + "\""
 			if i != len(ruleClasses)-1 {
@@ -139,7 +140,7 @@ func (targets BazelTargets) LoadStatements() string {
 		loadStatement += ")"
 		loadStatements = append(loadStatements, loadStatement)
 	}
-	return strings.Join(android.SortedUniqueStrings(loadStatements), "\n")
+	return strings.Join(util.SortedUniqueStrings(loadStatements), "\n")
 }
 
 type bpToBuildContext interface {
@@ -238,7 +239,7 @@ func NewCodegenContext(config android.Config, context android.Context, mode Code
 // the generated attributes are sorted to ensure determinism.
 func propsToAttributes(props map[string]string) string {
 	var attributes string
-	for _, propName := range android.SortedStringKeys(props) {
+	for _, propName := range util.SortedStringKeys(props) {
 		attributes += fmt.Sprintf("    %s = %s,\n", propName, props[propName])
 	}
 	return attributes
@@ -605,7 +606,7 @@ func prettyPrint(propertyValue reflect.Value, indent int, emitZeroValues bool) (
 		if len(structProps) == 0 {
 			return "", nil
 		}
-		for _, k := range android.SortedStringKeys(structProps) {
+		for _, k := range util.SortedStringKeys(structProps) {
 			ret += makeIndent(indent + 1)
 			ret += fmt.Sprintf("%q: %s,\n", k, structProps[k])
 		}

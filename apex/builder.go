@@ -24,6 +24,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/java"
 
 	"github.com/google/blueprint"
@@ -198,8 +199,8 @@ func (a *apexBundle) buildManifest(ctx android.ModuleContext, provideNativeLibs,
 	src := android.PathForModuleSrc(ctx, proptools.StringDefault(a.properties.Manifest, "apex_manifest.json"))
 
 	// Put dependency({provide|require}NativeLibs) in apex_manifest.json
-	provideNativeLibs = android.SortedUniqueStrings(provideNativeLibs)
-	requireNativeLibs = android.SortedUniqueStrings(android.RemoveListFromList(requireNativeLibs, provideNativeLibs))
+	provideNativeLibs = util.SortedUniqueStrings(provideNativeLibs)
+	requireNativeLibs = util.SortedUniqueStrings(util.RemoveListFromList(requireNativeLibs, provideNativeLibs))
 
 	// APEX name can be overridden
 	optCommands := []string{}
@@ -210,7 +211,7 @@ func (a *apexBundle) buildManifest(ctx android.ModuleContext, provideNativeLibs,
 	// Collect jniLibs. Notice that a.filesInfo is already sorted
 	var jniLibs []string
 	for _, fi := range a.filesInfo {
-		if fi.isJniLib && !android.InList(fi.stem(), jniLibs) {
+		if fi.isJniLib && !util.InList(fi.stem(), jniLibs) {
 			jniLibs = append(jniLibs, fi.stem())
 		}
 	}
@@ -594,7 +595,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 				readOnlyPaths = append(readOnlyPaths, pathInApex)
 			}
 			dir := f.installDir
-			for !android.InList(dir, executablePaths) && dir != "" {
+			for !util.InList(dir, executablePaths) && dir != "" {
 				executablePaths = append(executablePaths, dir)
 				dir, _ = filepath.Split(dir) // move up to the parent
 				if len(dir) > 0 {
@@ -787,7 +788,7 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 			}
 		}
 
-		abis = android.FirstUniqueStrings(abis)
+		abis = util.FirstUniqueStrings(abis)
 
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        apexBundleRule,
@@ -1005,7 +1006,7 @@ func (a *apexBundle) buildApexDependencyInfo(ctx android.ModuleContext) {
 		}
 
 		if info, exists := depInfos[to.Name()]; exists {
-			if !android.InList(from.Name(), info.From) {
+			if !util.InList(from.Name(), info.From) {
 				info.From = append(info.From, from.Name())
 			}
 			info.IsExternal = info.IsExternal && externalDep

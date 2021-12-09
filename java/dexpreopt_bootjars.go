@@ -19,6 +19,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/dexpreopt"
 
 	"github.com/google/blueprint/proptools"
@@ -498,9 +499,9 @@ func shouldBuildBootImages(config android.Config, global *dexpreopt.GlobalConfig
 func copyBootJarsToPredefinedLocations(ctx android.ModuleContext, srcBootDexJarsByModule bootDexJarByModule, dstBootJarsByModule map[string]android.WritablePath) {
 	// Create the super set of module names.
 	names := []string{}
-	names = append(names, android.SortedStringKeys(srcBootDexJarsByModule)...)
-	names = append(names, android.SortedStringKeys(dstBootJarsByModule)...)
-	names = android.SortedUniqueStrings(names)
+	names = append(names, util.SortedStringKeys(srcBootDexJarsByModule)...)
+	names = append(names, util.SortedStringKeys(dstBootJarsByModule)...)
+	names = util.SortedUniqueStrings(names)
 	for _, name := range names {
 		src := srcBootDexJarsByModule[name]
 		dst := dstBootJarsByModule[name]

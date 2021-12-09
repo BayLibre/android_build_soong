@@ -21,6 +21,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/apex"
 	"android/soong/cc"
 	"android/soong/genrule"
@@ -110,7 +111,7 @@ func testSdkError(t *testing.T, pattern, bp string) {
 
 func ensureListContains(t *testing.T, result []string, expected string) {
 	t.Helper()
-	if !android.InList(expected, result) {
+	if !util.InList(expected, result) {
 		t.Errorf("%q is not found in %v", expected, result)
 	}
 }
@@ -244,7 +245,7 @@ func CheckSnapshot(t *testing.T, result *android.TestResult, name string, dir st
 	}
 
 	expectedZipPath := fmt.Sprintf(".intermediates/%s%s/%s/%s%s.zip", dir, name, variant, name, suffix)
-	android.AssertStringEquals(t, "Snapshot zip file in wrong place", expectedZipPath, actual)
+	util.AssertStringEquals(t, "Snapshot zip file in wrong place", expectedZipPath, actual)
 
 	// Populate a mock filesystem with the files that would have been copied by
 	// the rules.
@@ -321,7 +322,7 @@ type snapshotBuildInfoChecker func(info *snapshotBuildInfo)
 func checkAndroidBpContents(expected string) snapshotBuildInfoChecker {
 	return func(info *snapshotBuildInfo) {
 		info.t.Helper()
-		android.AssertTrimmedStringEquals(info.t, "Android.bp contents do not match", expected, info.androidBpContents)
+		util.AssertTrimmedStringEquals(info.t, "Android.bp contents do not match", expected, info.androidBpContents)
 	}
 }
 
@@ -333,7 +334,7 @@ func checkAndroidBpContents(expected string) snapshotBuildInfoChecker {
 func checkUnversionedAndroidBpContents(expected string) snapshotBuildInfoChecker {
 	return func(info *snapshotBuildInfo) {
 		info.t.Helper()
-		android.AssertTrimmedStringEquals(info.t, "unversioned Android.bp contents do not match", expected, info.androidUnversionedBpContents)
+		util.AssertTrimmedStringEquals(info.t, "unversioned Android.bp contents do not match", expected, info.androidUnversionedBpContents)
 	}
 }
 
@@ -348,7 +349,7 @@ func checkUnversionedAndroidBpContents(expected string) snapshotBuildInfoChecker
 func checkVersionedAndroidBpContents(expected string) snapshotBuildInfoChecker {
 	return func(info *snapshotBuildInfo) {
 		info.t.Helper()
-		android.AssertTrimmedStringEquals(info.t, "versioned Android.bp contents do not match", expected, info.androidVersionedBpContents)
+		util.AssertTrimmedStringEquals(info.t, "versioned Android.bp contents do not match", expected, info.androidVersionedBpContents)
 	}
 }
 
@@ -360,14 +361,14 @@ func checkVersionedAndroidBpContents(expected string) snapshotBuildInfoChecker {
 func checkAllCopyRules(expected string) snapshotBuildInfoChecker {
 	return func(info *snapshotBuildInfo) {
 		info.t.Helper()
-		android.AssertTrimmedStringEquals(info.t, "Incorrect copy rules", expected, info.copyRules)
+		util.AssertTrimmedStringEquals(info.t, "Incorrect copy rules", expected, info.copyRules)
 	}
 }
 
 func checkAllOtherCopyRules(expected string) snapshotBuildInfoChecker {
 	return func(info *snapshotBuildInfo) {
 		info.t.Helper()
-		android.AssertTrimmedStringEquals(info.t, "Incorrect copy rules", expected, info.otherCopyRules)
+		util.AssertTrimmedStringEquals(info.t, "Incorrect copy rules", expected, info.otherCopyRules)
 	}
 }
 
@@ -379,7 +380,7 @@ func checkMergeZips(expected ...string) snapshotBuildInfoChecker {
 			info.t.Errorf("No intermediate zip file was created")
 		}
 
-		android.AssertDeepEquals(info.t, "mismatching merge zip files", expected, info.mergeZips)
+		util.AssertDeepEquals(info.t, "mismatching merge zip files", expected, info.mergeZips)
 	}
 }
 

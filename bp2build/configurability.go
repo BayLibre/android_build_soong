@@ -1,10 +1,11 @@
 package bp2build
 
 import (
-	"android/soong/android"
-	"android/soong/bazel"
 	"fmt"
 	"reflect"
+
+	"android/soong/android/util"
+	"android/soong/bazel"
 )
 
 // Configurability support for bp2build.
@@ -198,7 +199,7 @@ func prettyPrintSelectMap(selectMap map[string]reflect.Value, defaultValue *stri
 	}
 
 	var selects string
-	for _, selectKey := range android.SortedStringKeys(selectMap) {
+	for _, selectKey := range util.SortedStringKeys(selectMap) {
 		if selectKey == bazel.ConditionsDefaultSelectKey {
 			// Handle default condition later.
 			continue

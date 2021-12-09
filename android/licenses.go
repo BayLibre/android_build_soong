@@ -18,6 +18,7 @@ import (
 	"reflect"
 	"sync"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 )
 
@@ -236,7 +237,7 @@ func licensesPropertyFlattener(ctx ModuleContext) {
 // Update a property string array with a distinct union of its values and a list of new values.
 func mergeStringProps(prop *[]string, values ...string) {
 	*prop = append(*prop, values...)
-	*prop = SortedUniqueStrings(*prop)
+	*prop = util.SortedUniqueStrings(*prop)
 }
 
 // Update a property Path array with a distinct union of its values and a list of new values.

@@ -21,28 +21,29 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/snapshot"
 )
 
 // Efficiently converts a list of include directories to a single string
 // of cflags with -I prepended to each directory.
 func includeDirsToFlags(dirs android.Paths) string {
-	return android.JoinWithPrefix(dirs.Strings(), "-I")
+	return util.JoinWithPrefix(dirs.Strings(), "-I")
 }
 
 func ldDirsToFlags(dirs []string) string {
-	return android.JoinWithPrefix(dirs, "-L")
+	return util.JoinWithPrefix(dirs, "-L")
 }
 
 func libNamesToFlags(names []string) string {
-	return android.JoinWithPrefix(names, "-l")
+	return util.JoinWithPrefix(names, "-l")
 }
 
-var indexList = android.IndexList
-var inList = android.InList
-var filterList = android.FilterList
-var removeListFromList = android.RemoveListFromList
-var removeFromList = android.RemoveFromList
+var indexList = util.IndexList
+var inList = util.InList
+var filterList = util.FilterList
+var removeListFromList = util.RemoveListFromList
+var removeFromList = util.RemoveFromList
 
 var libNameRegexp = regexp.MustCompile(`^lib(.*)$`)
 
@@ -144,7 +145,7 @@ func combineNoticesRule(ctx android.SingletonContext, paths android.Paths, out s
 // ...
 func installMapListFileRule(ctx android.SingletonContext, m map[string]string, path string) android.OutputPath {
 	var txtBuilder strings.Builder
-	for idx, k := range android.SortedStringKeys(m) {
+	for idx, k := range util.SortedStringKeys(m) {
 		if idx > 0 {
 			txtBuilder.WriteString("\n")
 		}

@@ -18,6 +18,8 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+
+	"android/soong/android/util"
 )
 
 type SdkContext interface {
@@ -278,7 +280,7 @@ func (s SdkSpec) ValidateSystemSdk(ctx EarlyModuleContext) bool {
 			allowedVersions = systemSdkVersions
 		}
 	}
-	if len(allowedVersions) > 0 && !InList(s.ApiLevel.String(), allowedVersions) {
+	if len(allowedVersions) > 0 && !util.InList(s.ApiLevel.String(), allowedVersions) {
 		ctx.PropertyErrorf("sdk_version", "incompatible sdk version %q. System SDK version should be one of %q",
 			s.Raw, allowedVersions)
 		return false

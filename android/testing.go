@@ -23,6 +23,7 @@ import (
 	"sync"
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 )
@@ -372,7 +373,7 @@ func (o *registeredComponentOrder) checkTestOrder(testOrder []string, unknownCom
 			" Unfortunately it uses %s components in the wrong order.\n"+
 			"test order:\n    %s\n"+
 			"runtime order\n    %s\n",
-			SortedUniqueStrings(unknownComponents),
+			util.SortedUniqueStrings(unknownComponents),
 			componentType,
 			strings.Join(testOrder, "\n    "),
 			strings.Join(runtimeOrder, "\n    ")))
@@ -531,7 +532,7 @@ func (ctx *TestContext) ModuleVariantForTests(name string, matchVariations map[s
 
 		if len(allVariants) == 0 {
 			panic(fmt.Errorf("failed to find module %q. All modules:\n  %s",
-				name, strings.Join(SortedUniqueStrings(allModuleNames), "\n  ")))
+				name, strings.Join(util.SortedUniqueStrings(allModuleNames), "\n  ")))
 		} else {
 			sort.Strings(allVariants)
 			panic(fmt.Errorf("failed to find module %q matching %v. All variants:\n  %s",
@@ -574,7 +575,7 @@ func (ctx *TestContext) ModuleForTests(name, variant string) TestingModule {
 
 		if len(allVariants) == 0 {
 			panic(fmt.Errorf("failed to find module %q. All modules:\n  %s",
-				name, strings.Join(SortedUniqueStrings(allModuleNames), "\n  ")))
+				name, strings.Join(util.SortedUniqueStrings(allModuleNames), "\n  ")))
 		} else {
 			panic(fmt.Errorf("failed to find module %q variant %q. All variants:\n  %s",
 				name, variant, strings.Join(allVariants, "\n  ")))
@@ -1178,4 +1179,32 @@ func StringRelativeToTop(config Config, command string) string {
 // of calling StringRelativeToTop on the corresponding item in the input slice.
 func StringsRelativeToTop(config Config, command []string) []string {
 	return normalizeStringArrayRelativeToTop(config, command)
+}
+
+// AssertPathRelativeToTopEquals checks if the expected value is equal to the result of calling
+// PathRelativeToTop on the actual Path.
+func AssertPathRelativeToTopEquals(t *testing.T, message string, expected string, actual Path) {
+	t.Helper()
+	util.AssertStringEquals(t, message, expected, PathRelativeToTop(actual))
+}
+
+// AssertPathsRelativeToTopEquals checks if the expected value is equal to the result of calling
+// PathsRelativeToTop on the actual Paths.
+func AssertPathsRelativeToTopEquals(t *testing.T, message string, expected []string, actual Paths) {
+	t.Helper()
+	util.AssertDeepEquals(t, message, expected, PathsRelativeToTop(actual))
+}
+
+// AssertStringPathRelativeToTopEquals checks if the expected value is equal to the result of calling
+// StringPathRelativeToTop on the actual string path.
+func AssertStringPathRelativeToTopEquals(t *testing.T, message string, config Config, expected string, actual string) {
+	t.Helper()
+	util.AssertStringEquals(t, message, expected, StringPathRelativeToTop(config.soongOutDir, actual))
+}
+
+// AssertStringPathsRelativeToTopEquals checks if the expected value is equal to the result of
+// calling StringPathsRelativeToTop on the actual string paths.
+func AssertStringPathsRelativeToTopEquals(t *testing.T, message string, config Config, expected []string, actual []string) {
+	t.Helper()
+	util.AssertDeepEquals(t, message, expected, StringPathsRelativeToTop(config.soongOutDir, actual))
 }
