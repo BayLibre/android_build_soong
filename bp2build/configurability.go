@@ -1,10 +1,11 @@
 package bp2build
 
 import (
-	"android/soong/android"
-	"android/soong/bazel"
 	"fmt"
 	"reflect"
+
+	"android/soong/android"
+	"android/soong/bazel"
 )
 
 // Configurability support for bp2build.
@@ -144,9 +145,11 @@ func prettyPrintAttribute(v bazel.Attribute, indent int) (string, error) {
 			shouldPrintDefault = true
 		}
 	case bazel.LabelAttribute:
+		list.Collapse()
 		value, configurableAttrs = getLabelValue(list)
 		defaultSelectValue = &bazelNone
 	case bazel.BoolAttribute:
+		list.Collapse()
 		value, configurableAttrs = getBoolValue(list)
 		defaultSelectValue = &bazelNone
 	default:

@@ -870,6 +870,8 @@ type CommonAttributes struct {
 	Name string
 	// Data mapped from: Required
 	Data bazel.LabelListAttribute
+
+	Enabled bazel.BoolAttribute
 }
 
 type distProperties struct {
@@ -1106,6 +1108,9 @@ func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutator
 		return bazel.MakeLabelListAttribute(BazelLabelForModuleDeps(ctx, deps))
 	}
 
+	var compatibleWith bazel.StringListAttribute
+	var enabled bazel.BoolAttribute
+
 	data := &attrs.Data
 
 	required := depsToLabelList(props.Required)
@@ -1114,10 +1119,19 @@ func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutator
 		for config, _props := range configToProps {
 			if archProps, ok := _props.(*commonProperties); ok {
 				required.SetSelectValue(axis, config, depsToLabelList(archProps.Required).Value)
+				if archProps.Enabled != nil && (!*archProps.Enabled) {
+					if ctx.ModuleName() == "libclang_rt.asan-x86_64-android" {
+						fmt.Println("@@@@@@@@@@@@@", axis, config)
+					}
+					falseVal := false
+					enabled.SetSelectValue(axis, config, &falseVal)
+					compatibleWith.SetSelectValue(axis, config, []string{"@platforms//:incompatible"})
+				}
 			}
 		}
 	}
 	data.Append(required)
+	attrs.Enabled = enabled
 }
 
 // A ModuleBase object contains the properties that are common to all Android

@@ -244,6 +244,61 @@ type LabelAttribute struct {
 	ConfigurableValues configurableLabels
 }
 
+func (la *LabelAttribute) axisTypes() map[configurationType]bool {
+	types := map[configurationType]bool{}
+	for k := range la.ConfigurableValues {
+		types[k.configurationType] = true
+	}
+	return types
+}
+
+// Collapse reduces the configurable axes of the boolean attribute to a single axis.
+// This is necessary for final writing to bp2build, as a configurable boolean
+// attribute can only be comprised by a single select.
+func (la *LabelAttribute) Collapse() error {
+	axisTypes := la.axisTypes()
+	_, containsOs := axisTypes[os]
+	_, containsArch := axisTypes[arch]
+	_, containsOsArch := axisTypes[osArch]
+	_, containsProductVariables := axisTypes[productVariables]
+	if containsProductVariables {
+		if containsOs || containsArch || containsOsArch {
+			return fmt.Errorf("boolean attribute could not be collapsed as it has two or more unrelated axes")
+		}
+	}
+	if (containsOs && containsArch) || (containsOsArch && (containsOs || containsArch)) {
+		// If a bool attribute has both os and arch configuration axes, the only
+		// way to successfully union their values is to increase the granularity
+		// of the configuration criteria to os_arch.
+		for osType, supportedArchs := range osToArchMap {
+			for _, supportedArch := range supportedArchs {
+				osArch := osArchString(osType, supportedArch)
+				if archOsVal := la.SelectValue(OsArchConfigurationAxis, osArch); archOsVal != nil {
+					// Do nothing, as the arch_os is explicitly defined already.
+				} else {
+					archVal := la.SelectValue(ArchConfigurationAxis, supportedArch)
+					osVal := la.SelectValue(OsConfigurationAxis, osType)
+					if osVal != nil && archVal != nil {
+						if osVal == archVal {
+							la.SetSelectValue(OsArchConfigurationAxis, osArch, osVal)
+						} else {
+							return fmt.Errorf("value conflict for boolean attribute for os %s, arch %s", osType, supportedArch)
+						}
+					} else if osVal != nil && archVal == nil {
+						la.SetSelectValue(OsArchConfigurationAxis, osArch, osVal)
+					} else if osVal == nil && archVal != nil {
+						la.SetSelectValue(OsArchConfigurationAxis, osArch, archVal)
+					}
+				}
+			}
+		}
+		// All os_arch values are now set. Clear os and arch axes.
+		delete(la.ConfigurableValues, ArchConfigurationAxis)
+		delete(la.ConfigurableValues, OsConfigurationAxis)
+	}
+	return nil
+}
+
 // HasConfigurableValues returns whether there are configurable values set for this label.
 func (la LabelAttribute) HasConfigurableValues() bool {
 	return len(la.ConfigurableValues) > 0
@@ -251,33 +306,33 @@ func (la LabelAttribute) HasConfigurableValues() bool {
 
 // SetValue sets the base, non-configured value for the Label
 func (la *LabelAttribute) SetValue(value Label) {
-	la.SetSelectValue(NoConfigAxis, "", value)
+	la.SetSelectValue(NoConfigAxis, "", &value)
 }
 
 // SetSelectValue set a value for a bazel select for the given axis, config and value.
-func (la *LabelAttribute) SetSelectValue(axis ConfigurationAxis, config string, value Label) {
+func (la *LabelAttribute) SetSelectValue(axis ConfigurationAxis, config string, value *Label) {
 	axis.validateConfig(config)
 	switch axis.configurationType {
 	case noConfig:
-		la.Value = &value
+		la.Value = value
 	case arch, os, osArch, productVariables:
 		if la.ConfigurableValues == nil {
 			la.ConfigurableValues = make(configurableLabels)
 		}
-		la.ConfigurableValues.setValueForAxis(axis, config, &value)
+		la.ConfigurableValues.setValueForAxis(axis, config, value)
 	default:
 		panic(fmt.Errorf("Unrecognized ConfigurationAxis %s", axis))
 	}
 }
 
 // SelectValue gets a value for a bazel select for the given axis and config.
-func (la *LabelAttribute) SelectValue(axis ConfigurationAxis, config string) Label {
+func (la *LabelAttribute) SelectValue(axis ConfigurationAxis, config string) *Label {
 	axis.validateConfig(config)
 	switch axis.configurationType {
 	case noConfig:
-		return *la.Value
+		return la.Value
 	case arch, os, osArch, productVariables:
-		return *la.ConfigurableValues[axis][config]
+		return la.ConfigurableValues[axis][config]
 	default:
 		panic(fmt.Errorf("Unrecognized ConfigurationAxis %s", axis))
 	}
@@ -341,6 +396,61 @@ func (ba *BoolAttribute) SetSelectValue(axis ConfigurationAxis, config string, v
 	default:
 		panic(fmt.Errorf("Unrecognized ConfigurationAxis %s", axis))
 	}
+}
+
+// Collapse reduces the configurable axes of the boolean attribute to a single axis.
+// This is necessary for final writing to bp2build, as a configurable boolean
+// attribute can only be comprised by a single select.
+func (ba *BoolAttribute) Collapse() error {
+	axisTypes := ba.axisTypes()
+	_, containsOs := axisTypes[os]
+	_, containsArch := axisTypes[arch]
+	_, containsOsArch := axisTypes[osArch]
+	_, containsProductVariables := axisTypes[productVariables]
+	if containsProductVariables {
+		if containsOs || containsArch || containsOsArch {
+			return fmt.Errorf("boolean attribute could not be collapsed as it has two or more unrelated axes")
+		}
+	}
+	if (containsOs && containsArch) || (containsOsArch && (containsOs || containsArch)) {
+		// If a bool attribute has both os and arch configuration axes, the only
+		// way to successfully union their values is to increase the granularity
+		// of the configuration criteria to os_arch.
+		for osType, supportedArchs := range osToArchMap {
+			for _, supportedArch := range supportedArchs {
+				osArch := osArchString(osType, supportedArch)
+				if archOsVal := ba.SelectValue(OsArchConfigurationAxis, osArch); archOsVal != nil {
+					// Do nothing, as the arch_os is explicitly defined already.
+				} else {
+					archVal := ba.SelectValue(ArchConfigurationAxis, supportedArch)
+					osVal := ba.SelectValue(OsConfigurationAxis, osType)
+					if osVal != nil && archVal != nil {
+						if osVal == archVal {
+							ba.SetSelectValue(OsArchConfigurationAxis, osArch, osVal)
+						} else {
+							return fmt.Errorf("value conflict for boolean attribute for os %s, arch %s", osType, supportedArch)
+						}
+					} else if osVal != nil && archVal == nil {
+						ba.SetSelectValue(OsArchConfigurationAxis, osArch, osVal)
+					} else if osVal == nil && archVal != nil {
+						ba.SetSelectValue(OsArchConfigurationAxis, osArch, archVal)
+					}
+				}
+			}
+		}
+		// All os_arch values are now set. Clear os and arch axes.
+		delete(ba.ConfigurableValues, ArchConfigurationAxis)
+		delete(ba.ConfigurableValues, OsConfigurationAxis)
+	}
+	return nil
+}
+
+func (ba *BoolAttribute) axisTypes() map[configurationType]bool {
+	types := map[configurationType]bool{}
+	for k := range ba.ConfigurableValues {
+		types[k.configurationType] = true
+	}
+	return types
 }
 
 // SelectValue gets the value for the given axis/config.

@@ -623,8 +623,8 @@ func binaryBp2build(ctx android.TopDownMutatorContext, typ string) {
 			None:                         baseAttrs.stripNone,
 		},
 
-		Target_compatible_with: compatibleWith,
-		Features:               baseAttrs.features,
+		//Target_compatible_with: compatibleWith,
+		Features: baseAttrs.features,
 	}
 
 	ctx.CreateBazelTargetModule(bazel.BazelTargetModuleProperties{
@@ -669,5 +669,5 @@ type binaryAttributes struct {
 
 	Features bazel.StringListAttribute
 
-	Target_compatible_with bazel.StringListAttribute
+	//Target_compatible_with bazel.StringListAttribute
 }
