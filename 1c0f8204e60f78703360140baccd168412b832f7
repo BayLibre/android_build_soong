@@ -22,6 +22,30 @@
       },
       "revId": "1c0f8204e60f78703360140baccd168412b832f7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f014435_529351b2",
+        "filename": "java/app_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2879,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2021-12-09T18:10:01Z",
+      "side": 1,
+      "message": "Good catch, added this testCase in the latest patchset",
+      "parentUuid": "6061f8d7_9e7eaf52",
+      "range": {
+        "startLine": 2879,
+        "startChar": 1,
+        "endLine": 2879,
+        "endChar": 10
+      },
+      "revId": "1c0f8204e60f78703360140baccd168412b832f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
