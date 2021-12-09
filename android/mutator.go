@@ -277,6 +277,13 @@ type TopDownMutatorContext interface {
 	// BazelTargetModuleProperties containing additional metadata for the
 	// bp2build codegenerator.
 	CreateBazelTargetModule(bazel.BazelTargetModuleProperties, CommonAttributes, interface{})
+
+	// CreateBazelTargetHostOnlyModule creates a BazelTargetModule by calling the
+	// factory method, just like in CreateModule, but also requires
+	// BazelTargetModuleProperties containing additional metadata for the
+	// bp2build codegenerator. The generated target is restricted to only be buildable for host
+	// platforms.
+	CreateBazelTargetHostOnlyModule(bazel.BazelTargetModuleProperties, CommonAttributes, interface{})
 }
 
 type topDownMutatorContext struct {
@@ -525,7 +532,22 @@ func (t *topDownMutatorContext) CreateBazelTargetModule(
 	bazelProps bazel.BazelTargetModuleProperties,
 	commonAttrs CommonAttributes,
 	attrs interface{}) {
-	commonAttrs.fillCommonBp2BuildModuleAttrs(t)
+	t.createBazelTargetModule(bazelProps, commonAttrs, attrs, true /* deviceSupported */)
+}
+
+func (t *topDownMutatorContext) CreateBazelTargetHostOnlyModule(
+	bazelProps bazel.BazelTargetModuleProperties,
+	commonAttrs CommonAttributes,
+	attrs interface{}) {
+	t.createBazelTargetModule(bazelProps, commonAttrs, attrs, false /* deviceSupported */)
+}
+
+func (t *topDownMutatorContext) createBazelTargetModule(
+	bazelProps bazel.BazelTargetModuleProperties,
+	commonAttrs CommonAttributes,
+	attrs interface{},
+	deviceSupported bool) {
+	commonAttrs.fillCommonBp2BuildModuleAttrs(t, deviceSupported)
 	mod := t.Module()
 	info := bp2buildInfo{
 		Dir:         t.OtherModuleDir(mod),
