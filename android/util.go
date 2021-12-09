@@ -468,3 +468,17 @@ func CheckDuplicate(values []string) (duplicate string, found bool) {
 	}
 	return "", false
 }
+
+// Remove duplciates from the given string list.
+func Deduplicate(values []string) (dedupe []string, found bool) {
+	seen := make(map[string]bool)
+	for _, v := range values {
+		if _, f := seen[v]; f {
+			found = true
+		} else {
+			seen[v] = true
+			dedupe = append(dedupe, v)
+		}
+	}
+	return dedupe, found
+}
