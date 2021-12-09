@@ -165,7 +165,8 @@ func ObjectBp2Build(ctx android.TopDownMutatorContext) {
 		for config, props := range configToProps {
 			if objectLinkerProps, ok := props.(*ObjectLinkerProperties); ok {
 				if objectLinkerProps.Linker_script != nil {
-					linkerScript.SetSelectValue(axis, config, android.BazelLabelForModuleSrcSingle(ctx, *objectLinkerProps.Linker_script))
+					label := android.BazelLabelForModuleSrcSingle(ctx, *objectLinkerProps.Linker_script)
+					linkerScript.SetSelectValue(axis, config, &label)
 				}
 				deps.SetSelectValue(axis, config, android.BazelLabelForModuleDeps(ctx, objectLinkerProps.Objs))
 				systemSharedLibs := objectLinkerProps.System_shared_libs
