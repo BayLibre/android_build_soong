@@ -18,9 +18,11 @@ package java
 
 import (
 	"fmt"
+	"strings"
+
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
-	"strings"
 
 	"android/soong/android"
 )
@@ -111,7 +113,7 @@ func gatherPossibleApexModuleNamesAndStems(ctx android.ModuleContext, contents [
 			ctx.PropertyErrorf("contents", "%v is not a ModuleWithStem", name)
 		}
 	}
-	return android.SortedStringKeys(set)
+	return util.SortedStringKeys(set)
 }
 
 // Converts android.ConfiguredJarList into a list of classpathJars for each given classpathType.

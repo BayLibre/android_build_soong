@@ -16,6 +16,8 @@ package dexpreopt
 
 import (
 	"android/soong/android"
+	"android/soong/android/util"
+
 	"fmt"
 	"testing"
 )
@@ -178,7 +180,7 @@ func TestDexPreoptApexSystemServerJars(t *testing.T) {
 		{android.PathForOutput(ctx, "service-A/dexpreopt/oat/arm/javalib.vdex"), "/system/framework/oat/arm/apex@com.android.apex1@javalib@service-A.jar@classes.vdex"},
 	}
 
-	android.AssertStringEquals(t, "installs", wantInstalls.String(), rule.Installs().String())
+	util.AssertStringEquals(t, "installs", wantInstalls.String(), rule.Installs().String())
 }
 
 func TestDexPreoptProfile(t *testing.T) {
@@ -221,5 +223,5 @@ func TestDexPreoptConfigToJson(t *testing.T) {
 	}
 	before := fmt.Sprintf("%v", module)
 	after := fmt.Sprintf("%v", parsed)
-	android.AssertStringEquals(t, "The result must be the same as the original after marshalling and unmarshalling it.", before, after)
+	util.AssertStringEquals(t, "The result must be the same as the original after marshalling and unmarshalling it.", before, after)
 }

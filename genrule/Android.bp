@@ -11,6 +11,7 @@ bootstrap_go_package {
         "sbox_proto",
         "soong",
         "soong-android",
+        "soong-android-util",
         "soong-bazel",
         "soong-shared",
     ],

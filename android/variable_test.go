@@ -19,6 +19,7 @@ import (
 	"strconv"
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 )
 
@@ -304,7 +305,7 @@ func TestProductVariablesDefaults(t *testing.T) {
 	foo := result.ModuleForTests("foo", "").Module().(*productVariablesDefaultsTestModule)
 
 	want := []string{"defaults", "module", "product_variable_defaults", "product_variable_module"}
-	AssertDeepEquals(t, "foo", want, foo.properties.Foo)
+	util.AssertDeepEquals(t, "foo", want, foo.properties.Foo)
 }
 
 func BenchmarkSliceToTypeArray(b *testing.B) {

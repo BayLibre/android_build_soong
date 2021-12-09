@@ -22,6 +22,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 type pyModule struct {
@@ -368,7 +369,7 @@ func expectModule(t *testing.T, ctx *android.TestContext, name, variant, expecte
 		actualPyRunfiles = append(actualPyRunfiles, path.dest)
 	}
 
-	android.AssertDeepEquals(t, "pyRunfiles", expectedPyRunfiles, actualPyRunfiles)
+	util.AssertDeepEquals(t, "pyRunfiles", expectedPyRunfiles, actualPyRunfiles)
 
 	android.AssertPathRelativeToTopEquals(t, "srcsZip", expectedSrcsZip, base.srcsZip)
 

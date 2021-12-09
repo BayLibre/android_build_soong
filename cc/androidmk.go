@@ -21,6 +21,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 var (
@@ -264,7 +265,7 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 		library.androidMkEntriesWriteAdditionalDependenciesForSourceAbiDiff(entries)
 
 		if entries.OutputFile.Valid() {
-			_, _, ext := android.SplitFileExt(entries.OutputFile.Path().Base())
+			_, _, ext := util.SplitFileExt(entries.OutputFile.Path().Base())
 			entries.SetString("LOCAL_BUILT_MODULE_STEM", "$(LOCAL_MODULE)"+ext)
 		}
 
@@ -442,7 +443,7 @@ func (test *testLibrary) AndroidMkEntries(ctx AndroidMkContext, entries *android
 func (library *toolchainLibraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
 	entries.Class = "STATIC_LIBRARIES"
 	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
-		_, suffix, _ := android.SplitFileExt(entries.OutputFile.Path().Base())
+		_, suffix, _ := util.SplitFileExt(entries.OutputFile.Path().Base())
 		entries.SetString("LOCAL_MODULE_SUFFIX", suffix)
 	})
 }
@@ -454,7 +455,7 @@ func (installer *baseInstaller) AndroidMkEntries(ctx AndroidMkContext, entries *
 
 	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		path, file := filepath.Split(installer.path.ToMakePath().String())
-		stem, suffix, _ := android.SplitFileExt(file)
+		stem, suffix, _ := util.SplitFileExt(file)
 		entries.SetString("LOCAL_MODULE_SUFFIX", suffix)
 		entries.SetString("LOCAL_MODULE_PATH", path)
 		entries.SetString("LOCAL_MODULE_STEM", stem)
@@ -472,7 +473,7 @@ func (c *stubDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 
 	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 		path, file := filepath.Split(c.installPath.String())
-		stem, suffix, _ := android.SplitFileExt(file)
+		stem, suffix, _ := util.SplitFileExt(file)
 		entries.SetString("LOCAL_MODULE_SUFFIX", suffix)
 		entries.SetString("LOCAL_MODULE_PATH", path)
 		entries.SetString("LOCAL_MODULE_STEM", stem)
@@ -494,7 +495,7 @@ func (c *vndkPrebuiltLibraryDecorator) AndroidMkEntries(ctx AndroidMkContext, en
 		// Specifying stem is to pass check_elf_files when vendor modules link against vndk prebuilt.
 		// We can't use install path because VNDKs are not installed. Instead, Srcs is directly used.
 		_, file := filepath.Split(c.properties.Srcs[0])
-		stem, suffix, ext := android.SplitFileExt(file)
+		stem, suffix, ext := util.SplitFileExt(file)
 		entries.SetString("LOCAL_BUILT_MODULE_STEM", "$(LOCAL_MODULE)"+ext)
 		entries.SetString("LOCAL_MODULE_SUFFIX", suffix)
 		entries.SetString("LOCAL_MODULE_STEM", stem)
@@ -533,7 +534,7 @@ func (c *snapshotLibraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entrie
 
 		if c.shared() || c.static() {
 			path, file := filepath.Split(c.path.ToMakePath().String())
-			stem, suffix, ext := android.SplitFileExt(file)
+			stem, suffix, ext := util.SplitFileExt(file)
 			entries.SetString("LOCAL_BUILT_MODULE_STEM", "$(LOCAL_MODULE)"+ext)
 			entries.SetString("LOCAL_MODULE_SUFFIX", suffix)
 			entries.SetString("LOCAL_MODULE_STEM", stem)

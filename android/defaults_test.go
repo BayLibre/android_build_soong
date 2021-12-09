@@ -16,6 +16,8 @@ package android
 
 import (
 	"testing"
+
+	"android/soong/android/util"
 )
 
 type defaultsTestProperties struct {
@@ -90,7 +92,7 @@ func TestDefaults(t *testing.T) {
 
 	foo := result.Module("foo", "").(*defaultsTestModule)
 
-	AssertDeepEquals(t, "foo", []string{"transitive", "defaults", "module"}, foo.properties.Foo)
+	util.AssertDeepEquals(t, "foo", []string{"transitive", "defaults", "module"}, foo.properties.Foo)
 }
 
 func TestDefaultsAllowMissingDependencies(t *testing.T) {
@@ -123,9 +125,9 @@ func TestDefaultsAllowMissingDependencies(t *testing.T) {
 	missingDefaults := result.ModuleForTests("missing_defaults", "").Output("out")
 	missingTransitiveDefaults := result.ModuleForTests("missing_transitive_defaults", "").Output("out")
 
-	AssertSame(t, "missing_defaults rule", ErrorRule, missingDefaults.Rule)
+	util.AssertSame(t, "missing_defaults rule", ErrorRule, missingDefaults.Rule)
 
-	AssertStringEquals(t, "missing_defaults", "module missing_defaults missing dependencies: missing\n", missingDefaults.Args["error"])
+	util.AssertStringEquals(t, "missing_defaults", "module missing_defaults missing dependencies: missing\n", missingDefaults.Args["error"])
 
 	// TODO: missing transitive defaults is currently not handled
 	_ = missingTransitiveDefaults

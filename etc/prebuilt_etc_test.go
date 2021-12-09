@@ -20,6 +20,7 @@ import (
 	"path/filepath"
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -96,7 +97,7 @@ func TestPrebuiltEtcOutputPath(t *testing.T) {
 	`)
 
 	p := result.Module("foo.conf", "android_arm64_armv8-a").(*PrebuiltEtc)
-	android.AssertStringEquals(t, "output file path", "foo.installed.conf", p.outputFilePath.Base())
+	util.AssertStringEquals(t, "output file path", "foo.installed.conf", p.outputFilePath.Base())
 }
 
 func TestPrebuiltEtcGlob(t *testing.T) {
@@ -113,10 +114,10 @@ func TestPrebuiltEtcGlob(t *testing.T) {
 	`)
 
 	p := result.Module("my_foo", "android_arm64_armv8-a").(*PrebuiltEtc)
-	android.AssertStringEquals(t, "my_foo output file path", "my_foo", p.outputFilePath.Base())
+	util.AssertStringEquals(t, "my_foo output file path", "my_foo", p.outputFilePath.Base())
 
 	p = result.Module("my_bar", "android_arm64_armv8-a").(*PrebuiltEtc)
-	android.AssertStringEquals(t, "my_bar output file path", "bar.conf", p.outputFilePath.Base())
+	util.AssertStringEquals(t, "my_bar output file path", "bar.conf", p.outputFilePath.Base())
 }
 
 func TestPrebuiltEtcAndroidMk(t *testing.T) {
@@ -146,7 +147,7 @@ func TestPrebuiltEtcAndroidMk(t *testing.T) {
 	entries := android.AndroidMkEntriesForTest(t, result.TestContext, mod)[0]
 	for k, expectedValue := range expected {
 		if value, ok := entries.EntryMap[k]; ok {
-			android.AssertDeepEquals(t, k, expectedValue, value)
+			util.AssertDeepEquals(t, k, expectedValue, value)
 		} else {
 			t.Errorf("No %s defined, saw %q", k, entries.EntryMap)
 		}

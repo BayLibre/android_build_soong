@@ -22,6 +22,44 @@ import (
 	"testing"
 )
 
+var firstUniqueStringsTestCases = []struct {
+	in  []string
+	out []string
+}{
+	{
+		in:  []string{"a"},
+		out: []string{"a"},
+	},
+	{
+		in:  []string{"a", "b"},
+		out: []string{"a", "b"},
+	},
+	{
+		in:  []string{"a", "a"},
+		out: []string{"a"},
+	},
+	{
+		in:  []string{"a", "b", "a"},
+		out: []string{"a", "b"},
+	},
+	{
+		in:  []string{"b", "a", "a"},
+		out: []string{"b", "a"},
+	},
+	{
+		in:  []string{"a", "a", "b"},
+		out: []string{"a", "b"},
+	},
+	{
+		in:  []string{"a", "b", "a", "b"},
+		out: []string{"a", "b"},
+	},
+	{
+		in:  []string{"liblog", "libdl", "libc++", "libdl", "libc", "libm"},
+		out: []string{"liblog", "libdl", "libc++", "libc", "libm"},
+	},
+}
+
 func ExampleDepSet_ToList_postordered() {
 	a := NewDepSetBuilder(POSTORDER).Direct(PathForTesting("a")).Build()
 	b := NewDepSetBuilder(POSTORDER).Direct(PathForTesting("b")).Transitive(a).Build()

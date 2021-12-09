@@ -16,6 +16,8 @@ package android
 
 import (
 	"testing"
+
+	"android/soong/android/util"
 )
 
 type soongConfigTestDefaultsModuleProperties struct {
@@ -322,10 +324,10 @@ func TestSoongConfigModule(t *testing.T) {
 				).RunTest(t)
 
 				foo := result.ModuleForTests("foo", "").Module().(*soongConfigTestModule)
-				AssertDeepEquals(t, "foo cflags", tc.fooExpectedFlags, foo.props.Cflags)
+				util.AssertDeepEquals(t, "foo cflags", tc.fooExpectedFlags, foo.props.Cflags)
 
 				fooDefaults := result.ModuleForTests("foo_with_defaults", "").Module().(*soongConfigTestModule)
-				AssertDeepEquals(t, "foo_with_defaults cflags", tc.fooDefaultsExpectedFlags, fooDefaults.props.Cflags)
+				util.AssertDeepEquals(t, "foo_with_defaults cflags", tc.fooDefaultsExpectedFlags, fooDefaults.props.Cflags)
 			})
 		}
 	}

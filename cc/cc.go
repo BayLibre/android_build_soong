@@ -24,6 +24,7 @@ import (
 	"strconv"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -901,7 +902,7 @@ func (c *Module) HiddenFromMake() bool {
 }
 
 func (c *Module) RequiredModuleNames() []string {
-	required := android.CopyOf(c.ModuleBase.RequiredModuleNames())
+	required := util.CopyOf(c.ModuleBase.RequiredModuleNames())
 	if c.ImageVariation().Variation == android.CoreVariation {
 		required = append(required, c.Properties.Target.Platform.Required...)
 		required = removeListFromList(required, c.Properties.Target.Platform.Exclude_required)
@@ -909,7 +910,7 @@ func (c *Module) RequiredModuleNames() []string {
 		required = append(required, c.Properties.Target.Recovery.Required...)
 		required = removeListFromList(required, c.Properties.Target.Recovery.Exclude_required)
 	}
-	return android.FirstUniqueStrings(required)
+	return util.FirstUniqueStrings(required)
 }
 
 func (c *Module) Toc() android.OptionalPath {
@@ -1962,13 +1963,13 @@ func (c *Module) deps(ctx DepsContext) Deps {
 		deps = c.coverage.deps(ctx, deps)
 	}
 
-	deps.WholeStaticLibs = android.LastUniqueStrings(deps.WholeStaticLibs)
-	deps.StaticLibs = android.LastUniqueStrings(deps.StaticLibs)
-	deps.LateStaticLibs = android.LastUniqueStrings(deps.LateStaticLibs)
-	deps.SharedLibs = android.LastUniqueStrings(deps.SharedLibs)
-	deps.LateSharedLibs = android.LastUniqueStrings(deps.LateSharedLibs)
-	deps.HeaderLibs = android.LastUniqueStrings(deps.HeaderLibs)
-	deps.RuntimeLibs = android.LastUniqueStrings(deps.RuntimeLibs)
+	deps.WholeStaticLibs = util.LastUniqueStrings(deps.WholeStaticLibs)
+	deps.StaticLibs = util.LastUniqueStrings(deps.StaticLibs)
+	deps.LateStaticLibs = util.LastUniqueStrings(deps.LateStaticLibs)
+	deps.SharedLibs = util.LastUniqueStrings(deps.SharedLibs)
+	deps.LateSharedLibs = util.LastUniqueStrings(deps.LateSharedLibs)
+	deps.HeaderLibs = util.LastUniqueStrings(deps.HeaderLibs)
+	deps.RuntimeLibs = util.LastUniqueStrings(deps.RuntimeLibs)
 
 	// In Bazel conversion mode, we dependency and build validations will occur in Bazel, so there is
 	// no need to do so in Soong.
@@ -2577,7 +2578,7 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		c.apexSdkVersion = apexInfo.MinSdkVersion
 	}
 
-	if android.InList("hwaddress", ctx.Config().SanitizeDevice()) {
+	if util.InList("hwaddress", ctx.Config().SanitizeDevice()) {
 		// In hwasan build, we override apexSdkVersion to the FutureApiLevel(10000)
 		// so that even Q(29/Android10) apexes could use the dynamic unwinder by linking the newer stubs(e.g libc(R+)).
 		// (b/144430859)
@@ -2900,18 +2901,18 @@ func (c *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 	depPaths.StaticLibs = append(depPaths.StaticLibs, orderedStaticPaths...)
 
 	// Dedup exported flags from dependencies
-	depPaths.Flags = android.FirstUniqueStrings(depPaths.Flags)
+	depPaths.Flags = util.FirstUniqueStrings(depPaths.Flags)
 	depPaths.IncludeDirs = android.FirstUniquePaths(depPaths.IncludeDirs)
 	depPaths.SystemIncludeDirs = android.FirstUniquePaths(depPaths.SystemIncludeDirs)
 	depPaths.GeneratedDeps = android.FirstUniquePaths(depPaths.GeneratedDeps)
 	depPaths.ReexportedDirs = android.FirstUniquePaths(depPaths.ReexportedDirs)
 	depPaths.ReexportedSystemDirs = android.FirstUniquePaths(depPaths.ReexportedSystemDirs)
-	depPaths.ReexportedFlags = android.FirstUniqueStrings(depPaths.ReexportedFlags)
+	depPaths.ReexportedFlags = util.FirstUniqueStrings(depPaths.ReexportedFlags)
 	depPaths.ReexportedDeps = android.FirstUniquePaths(depPaths.ReexportedDeps)
 	depPaths.ReexportedGeneratedHeaders = android.FirstUniquePaths(depPaths.ReexportedGeneratedHeaders)
 
 	if c.sabi != nil {
-		c.sabi.Properties.ReexportedIncludes = android.FirstUniqueStrings(c.sabi.Properties.ReexportedIncludes)
+		c.sabi.Properties.ReexportedIncludes = util.FirstUniqueStrings(c.sabi.Properties.ReexportedIncludes)
 	}
 
 	return depPaths

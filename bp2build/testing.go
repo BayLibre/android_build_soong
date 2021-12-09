@@ -25,6 +25,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/bazel"
 )
 
@@ -370,7 +371,7 @@ type attrNameToString map[string]string
 func makeBazelTarget(typ, name string, attrs attrNameToString) string {
 	attrStrings := make([]string, 0, len(attrs)+1)
 	attrStrings = append(attrStrings, fmt.Sprintf(`    name = "%s",`, name))
-	for _, k := range android.SortedStringKeys(attrs) {
+	for _, k := range util.SortedStringKeys(attrs) {
 		attrStrings = append(attrStrings, fmt.Sprintf("    %s = %s,", k, attrs[k]))
 	}
 	return fmt.Sprintf(`%s(

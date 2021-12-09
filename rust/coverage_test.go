@@ -18,7 +18,7 @@ import (
 	"strings"
 	"testing"
 
-	"android/soong/android"
+	"android/soong/android/util"
 )
 
 // Test that coverage flags are being correctly generated.
@@ -46,7 +46,7 @@ func TestCoverageFlags(t *testing.T) {
 		}`)
 
 	// Make sure native_coverage: false isn't creating a coverage variant.
-	if android.InList("android_arm64_armv8-a_dylib_cov", ctx.ModuleVariantsForTests("libbar_nocov")) {
+	if util.InList("android_arm64_armv8-a_dylib_cov", ctx.ModuleVariantsForTests("libbar_nocov")) {
 		t.Fatalf("coverage variant created for module 'libbar_nocov' with native coverage disabled")
 	}
 

@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/etc"
 )
 
@@ -72,9 +73,9 @@ func TestPrebuiltEtcXml(t *testing.T) {
 	} {
 		t.Run(tc.schemaType, func(t *testing.T) {
 			rule := result.ModuleForTests(tc.input, "android_arm64_armv8-a").Rule(tc.rule)
-			android.AssertStringEquals(t, "input", tc.input, rule.Input.String())
+			util.AssertStringEquals(t, "input", tc.input, rule.Input.String())
 			if tc.schemaType != "" {
-				android.AssertStringEquals(t, "schema", tc.schema, rule.Args[tc.schemaType])
+				util.AssertStringEquals(t, "schema", tc.schema, rule.Args[tc.schemaType])
 			}
 		})
 	}

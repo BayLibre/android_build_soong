@@ -21,6 +21,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/cc"
 	"android/soong/java"
 
@@ -125,7 +126,7 @@ func (a *apexBundle) androidMkForFiles(w io.Writer, apexBundleName, apexName, mo
 		case "lib64":
 			aName = aName + ":64"
 		}
-		if !android.InList(aName, moduleNames) {
+		if !util.InList(aName, moduleNames) {
 			moduleNames = append(moduleNames, aName)
 		}
 
@@ -335,7 +336,7 @@ func (a *apexBundle) writeRequiredModules(w io.Writer, apexBundleName string) {
 	}
 	if len(installMapSet) > 0 {
 		var installs []string
-		installs = append(installs, android.SortedStringKeys(installMapSet)...)
+		installs = append(installs, util.SortedStringKeys(installMapSet)...)
 		fmt.Fprintln(w, "LOCAL_LICENSE_INSTALL_MAP +=", strings.Join(installs, " "))
 	}
 }

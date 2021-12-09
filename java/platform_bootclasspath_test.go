@@ -18,6 +18,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/dexpreopt"
 )
 
@@ -161,7 +162,7 @@ func TestPlatformBootclasspathVariant(t *testing.T) {
 	).RunTest(t)
 
 	variants := result.ModuleVariantsForTests("platform-bootclasspath")
-	android.AssertIntEquals(t, "expect 1 variant", 1, len(variants))
+	util.AssertIntEquals(t, "expect 1 variant", 1, len(variants))
 }
 
 func TestPlatformBootclasspath_ClasspathFragmentPaths(t *testing.T) {
@@ -175,7 +176,7 @@ func TestPlatformBootclasspath_ClasspathFragmentPaths(t *testing.T) {
 	).RunTest(t)
 
 	p := result.Module("platform-bootclasspath", "android_common").(*platformBootclasspathModule)
-	android.AssertStringEquals(t, "output filepath", "bootclasspath.pb", p.ClasspathFragmentBase.outputFilepath.Base())
+	util.AssertStringEquals(t, "output filepath", "bootclasspath.pb", p.ClasspathFragmentBase.outputFilepath.Base())
 	android.AssertPathRelativeToTopEquals(t, "install filepath", "out/soong/target/product/test_device/system/etc/classpaths", p.ClasspathFragmentBase.installDirPath)
 }
 
@@ -195,7 +196,7 @@ func TestPlatformBootclasspathModule_AndroidMkEntries(t *testing.T) {
 		p := result.Module("platform-bootclasspath", "android_common").(*platformBootclasspathModule)
 
 		entries := android.AndroidMkEntriesForTest(t, result.TestContext, p)
-		android.AssertIntEquals(t, "AndroidMkEntries count", 2, len(entries))
+		util.AssertIntEquals(t, "AndroidMkEntries count", 2, len(entries))
 	})
 
 	t.Run("hiddenapi-flags-entry", func(t *testing.T) {
@@ -205,8 +206,8 @@ func TestPlatformBootclasspathModule_AndroidMkEntries(t *testing.T) {
 
 		entries := android.AndroidMkEntriesForTest(t, result.TestContext, p)
 		got := entries[0].OutputFile
-		android.AssertBoolEquals(t, "valid output path", true, got.Valid())
-		android.AssertSame(t, "output filepath", p.hiddenAPIFlagsCSV, got.Path())
+		util.AssertBoolEquals(t, "valid output path", true, got.Valid())
+		util.AssertSame(t, "output filepath", p.hiddenAPIFlagsCSV, got.Path())
 	})
 
 	t.Run("classpath-fragment-entry", func(t *testing.T) {
@@ -225,7 +226,7 @@ func TestPlatformBootclasspathModule_AndroidMkEntries(t *testing.T) {
 		got := entries[1]
 		for k, expectedValue := range want {
 			if value, ok := got.EntryMap[k]; ok {
-				android.AssertDeepEquals(t, k, expectedValue, value)
+				util.AssertDeepEquals(t, k, expectedValue, value)
 			} else {
 				t.Errorf("No %s defined, saw %q", k, got.EntryMap)
 			}
@@ -270,8 +271,8 @@ func TestPlatformBootclasspath_Dist(t *testing.T) {
 	platformBootclasspath := result.Module("platform-bootclasspath", "android_common").(*platformBootclasspathModule)
 	entries := android.AndroidMkEntriesForTest(t, result.TestContext, platformBootclasspath)
 	goals := entries[0].GetDistForGoals(platformBootclasspath)
-	android.AssertStringEquals(t, "platform dist goals phony", ".PHONY: droidcore\n", goals[0])
-	android.AssertStringEquals(t, "platform dist goals call", "$(call dist-for-goals,droidcore,out/soong/hiddenapi/hiddenapi-flags.csv:hiddenapi-flags.csv)\n", android.StringRelativeToTop(result.Config, goals[1]))
+	util.AssertStringEquals(t, "platform dist goals phony", ".PHONY: droidcore\n", goals[0])
+	util.AssertStringEquals(t, "platform dist goals call", "$(call dist-for-goals,droidcore,out/soong/hiddenapi/hiddenapi-flags.csv:hiddenapi-flags.csv)\n", android.StringRelativeToTop(result.Config, goals[1]))
 }
 
 func TestPlatformBootclasspath_HiddenAPIMonolithicFiles(t *testing.T) {

@@ -8,6 +8,7 @@ bootstrap_go_package {
     deps: [
         "soong",
         "soong-android",
+        "soong-android-util",
         "soong-bloaty",
         "soong-cc",
         "soong-rust-config",

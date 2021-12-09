@@ -18,6 +18,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 
 	"android/soong/android"
@@ -255,7 +256,7 @@ func transformSrctoCrate(ctx ModuleContext, main android.Path, deps PathDeps, fl
 		var outputs android.WritablePaths
 
 		for _, genSrc := range deps.SrcDeps {
-			if android.SuffixInList(outputs.Strings(), genSubDir+genSrc.Base()) {
+			if util.SuffixInList(outputs.Strings(), genSubDir+genSrc.Base()) {
 				ctx.PropertyErrorf("srcs",
 					"multiple source providers generate the same filename output: "+genSrc.Base())
 			}

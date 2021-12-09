@@ -16,6 +16,8 @@ package android
 
 import (
 	"testing"
+
+	"android/soong/android/util"
 )
 
 func init() {
@@ -66,7 +68,7 @@ func TestNinjaDeps(t *testing.T) {
 	).RunTest(t)
 
 	// Verify that the ninja file has a dependency on the test_ninja_deps directory.
-	if g, w := result.NinjaDeps, "test_ninja_deps"; !InList(w, g) {
+	if g, w := result.NinjaDeps, "test_ninja_deps"; !util.InList(w, g) {
 		t.Errorf("expected %q in %q", w, g)
 	}
 }

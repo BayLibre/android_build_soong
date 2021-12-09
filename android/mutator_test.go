@@ -19,6 +19,7 @@ import (
 	"strings"
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 )
 
@@ -78,7 +79,7 @@ func TestMutatorAddMissingDependencies(t *testing.T) {
 
 	foo := result.ModuleForTests("foo", "").Module().(*mutatorTestModule)
 
-	AssertDeepEquals(t, "foo missing deps", []string{"added_missing_dep", "regular_missing_dep"}, foo.missingDeps)
+	util.AssertDeepEquals(t, "foo missing deps", []string{"added_missing_dep", "regular_missing_dep"}, foo.missingDeps)
 }
 
 func TestModuleString(t *testing.T) {
@@ -169,7 +170,7 @@ func TestModuleString(t *testing.T) {
 		"foo_renamed2{pre_arch:b,pre_deps:d,post_deps:f}",
 	}
 
-	AssertDeepEquals(t, "module String() values", want, moduleStrings)
+	util.AssertDeepEquals(t, "module String() values", want, moduleStrings)
 }
 
 func TestFinalDepsPhase(t *testing.T) {
@@ -239,7 +240,7 @@ func TestFinalDepsPhase(t *testing.T) {
 		"foo{variant:b} -> common_dep_2{variant:a}": 1,
 	}
 
-	AssertDeepEquals(t, "final", finalWant, finalGot)
+	util.AssertDeepEquals(t, "final", finalWant, finalGot)
 }
 
 func TestNoCreateVariationsInFinalDeps(t *testing.T) {

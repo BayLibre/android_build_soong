@@ -18,6 +18,7 @@ import (
 	"strconv"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -173,7 +174,7 @@ func (d *dexer) dexCommonFlags(ctx android.ModuleContext,
 	flags = d.dexProperties.Dxflags
 	// Translate all the DX flags to D8 ones until all the build files have been migrated
 	// to D8 flags. See: b/69377755
-	flags = android.RemoveListFromList(flags,
+	flags = util.RemoveListFromList(flags,
 		[]string{"--core-library", "--dex", "--multi-dex"})
 
 	for _, f := range android.PathsForModuleSrc(ctx, d.dexProperties.Main_dex_rules) {
@@ -243,7 +244,7 @@ func (d *dexer) r8Flags(ctx android.ModuleContext, flags javaBuilderFlags) (r8Fl
 
 	flagFiles = append(flagFiles, android.PathsForModuleSrc(ctx, opt.Proguard_flags_files)...)
 
-	r8Flags = append(r8Flags, android.JoinWithPrefix(flagFiles.Strings(), "-include "))
+	r8Flags = append(r8Flags, util.JoinWithPrefix(flagFiles.Strings(), "-include "))
 	r8Deps = append(r8Deps, flagFiles...)
 
 	// TODO(b/70942988): This is included from build/make/core/proguard.flags

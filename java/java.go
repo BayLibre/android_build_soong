@@ -22,6 +22,7 @@ import (
 	"fmt"
 	"path/filepath"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -1887,7 +1888,7 @@ func (ks *kytheExtractJavaSingleton) GenerateBuildActions(ctx android.SingletonC
 var Bool = proptools.Bool
 var BoolDefault = proptools.BoolDefault
 var String = proptools.String
-var inList = android.InList
+var inList = util.InList
 
 // Add class loader context (CLC) of a given dependency to the current CLC.
 func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,

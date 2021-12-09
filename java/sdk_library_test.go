@@ -21,6 +21,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 
 	"github.com/google/blueprint/proptools"
 )
@@ -132,34 +133,34 @@ func TestJavaSdkLibrary(t *testing.T) {
 		"foo.stubs.system",
 		"foo.stubs.test",
 	}
-	android.AssertArrayString(t, "foo exported components", expectedFooExportedComponents, exportedComponentsInfo.Components)
+	util.AssertArrayString(t, "foo exported components", expectedFooExportedComponents, exportedComponentsInfo.Components)
 
 	bazJavac := result.ModuleForTests("baz", "android_common").Rule("javac")
 	// tests if baz is actually linked to the stubs lib
-	android.AssertStringDoesContain(t, "baz javac classpath", bazJavac.Args["classpath"], "foo.stubs.system.jar")
+	util.AssertStringDoesContain(t, "baz javac classpath", bazJavac.Args["classpath"], "foo.stubs.system.jar")
 	// ... and not to the impl lib
-	android.AssertStringDoesNotContain(t, "baz javac classpath", bazJavac.Args["classpath"], "foo.jar")
+	util.AssertStringDoesNotContain(t, "baz javac classpath", bazJavac.Args["classpath"], "foo.jar")
 	// test if baz is not linked to the system variant of foo
-	android.AssertStringDoesNotContain(t, "baz javac classpath", bazJavac.Args["classpath"], "foo.stubs.jar")
+	util.AssertStringDoesNotContain(t, "baz javac classpath", bazJavac.Args["classpath"], "foo.stubs.jar")
 
 	bazTestJavac := result.ModuleForTests("baz-test", "android_common").Rule("javac")
 	// tests if baz-test is actually linked to the test stubs lib
-	android.AssertStringDoesContain(t, "baz-test javac classpath", bazTestJavac.Args["classpath"], "foo.stubs.test.jar")
+	util.AssertStringDoesContain(t, "baz-test javac classpath", bazTestJavac.Args["classpath"], "foo.stubs.test.jar")
 
 	baz29Javac := result.ModuleForTests("baz-29", "android_common").Rule("javac")
 	// tests if baz-29 is actually linked to the system 29 stubs lib
-	android.AssertStringDoesContain(t, "baz-29 javac classpath", baz29Javac.Args["classpath"], "prebuilts/sdk/29/system/foo.jar")
+	util.AssertStringDoesContain(t, "baz-29 javac classpath", baz29Javac.Args["classpath"], "prebuilts/sdk/29/system/foo.jar")
 
 	bazModule30Javac := result.ModuleForTests("baz-module-30", "android_common").Rule("javac")
 	// tests if "baz-module-30" is actually linked to the module 30 stubs lib
-	android.AssertStringDoesContain(t, "baz-module-30 javac classpath", bazModule30Javac.Args["classpath"], "prebuilts/sdk/30/module-lib/foo.jar")
+	util.AssertStringDoesContain(t, "baz-module-30 javac classpath", bazModule30Javac.Args["classpath"], "prebuilts/sdk/30/module-lib/foo.jar")
 
 	// test if baz has exported SDK lib names foo and bar to qux
 	qux := result.ModuleForTests("qux", "android_common")
 	if quxLib, ok := qux.Module().(*Library); ok {
 		requiredSdkLibs, optionalSdkLibs := quxLib.ClassLoaderContexts().UsesLibs()
-		android.AssertDeepEquals(t, "qux exports (required)", []string{"fred", "quuz", "foo", "bar"}, requiredSdkLibs)
-		android.AssertDeepEquals(t, "qux exports (optional)", []string{}, optionalSdkLibs)
+		util.AssertDeepEquals(t, "qux exports (required)", []string{"fred", "quuz", "foo", "bar"}, requiredSdkLibs)
+		util.AssertDeepEquals(t, "qux exports (optional)", []string{}, optionalSdkLibs)
 	}
 }
 
@@ -195,18 +196,18 @@ func TestJavaSdkLibrary_UpdatableLibrary(t *testing.T) {
 `)
 	// test that updatability attributes are passed on correctly
 	fooUpdatable := result.ModuleForTests("fooUpdatable.xml", "android_common").Rule("java_sdk_xml")
-	android.AssertStringDoesContain(t, "fooUpdatable.xml java_sdk_xml command", fooUpdatable.RuleParams.Command, `on-bootclasspath-since=\"9001\"`)
-	android.AssertStringDoesContain(t, "fooUpdatable.xml java_sdk_xml command", fooUpdatable.RuleParams.Command, `on-bootclasspath-before=\"9002\"`)
-	android.AssertStringDoesContain(t, "fooUpdatable.xml java_sdk_xml command", fooUpdatable.RuleParams.Command, `min-device-sdk=\"9003\"`)
-	android.AssertStringDoesContain(t, "fooUpdatable.xml java_sdk_xml command", fooUpdatable.RuleParams.Command, `max-device-sdk=\"10000\"`)
+	util.AssertStringDoesContain(t, "fooUpdatable.xml java_sdk_xml command", fooUpdatable.RuleParams.Command, `on-bootclasspath-since=\"9001\"`)
+	util.AssertStringDoesContain(t, "fooUpdatable.xml java_sdk_xml command", fooUpdatable.RuleParams.Command, `on-bootclasspath-before=\"9002\"`)
+	util.AssertStringDoesContain(t, "fooUpdatable.xml java_sdk_xml command", fooUpdatable.RuleParams.Command, `min-device-sdk=\"9003\"`)
+	util.AssertStringDoesContain(t, "fooUpdatable.xml java_sdk_xml command", fooUpdatable.RuleParams.Command, `max-device-sdk=\"10000\"`)
 
 	// double check that updatability attributes are not written if they don't exist in the bp file
 	// the permissions file for the foo library defined above
 	fooPermissions := result.ModuleForTests("foo.xml", "android_common").Rule("java_sdk_xml")
-	android.AssertStringDoesNotContain(t, "foo.xml java_sdk_xml command", fooPermissions.RuleParams.Command, `on-bootclasspath-since`)
-	android.AssertStringDoesNotContain(t, "foo.xml java_sdk_xml command", fooPermissions.RuleParams.Command, `on-bootclasspath-before`)
-	android.AssertStringDoesNotContain(t, "foo.xml java_sdk_xml command", fooPermissions.RuleParams.Command, `min-device-sdk`)
-	android.AssertStringDoesNotContain(t, "foo.xml java_sdk_xml command", fooPermissions.RuleParams.Command, `max-device-sdk`)
+	util.AssertStringDoesNotContain(t, "foo.xml java_sdk_xml command", fooPermissions.RuleParams.Command, `on-bootclasspath-since`)
+	util.AssertStringDoesNotContain(t, "foo.xml java_sdk_xml command", fooPermissions.RuleParams.Command, `on-bootclasspath-before`)
+	util.AssertStringDoesNotContain(t, "foo.xml java_sdk_xml command", fooPermissions.RuleParams.Command, `min-device-sdk`)
+	util.AssertStringDoesNotContain(t, "foo.xml java_sdk_xml command", fooPermissions.RuleParams.Command, `max-device-sdk`)
 }
 
 func TestJavaSdkLibrary_UpdatableLibrary_Validation_ValidVersion(t *testing.T) {
@@ -338,8 +339,8 @@ func TestJavaSdkLibrary_UpdatableLibrary_usesNewTag(t *testing.T) {
 `)
 	// test that updatability attributes are passed on correctly
 	fooUpdatable := result.ModuleForTests("foo.xml", "android_common").Rule("java_sdk_xml")
-	android.AssertStringDoesContain(t, "foo.xml java_sdk_xml command", fooUpdatable.RuleParams.Command, `<updatable-library`)
-	android.AssertStringDoesNotContain(t, "foo.xml java_sdk_xml command", fooUpdatable.RuleParams.Command, `<library`)
+	util.AssertStringDoesContain(t, "foo.xml java_sdk_xml command", fooUpdatable.RuleParams.Command, `<updatable-library`)
+	util.AssertStringDoesNotContain(t, "foo.xml java_sdk_xml command", fooUpdatable.RuleParams.Command, `<library`)
 }
 
 func TestJavaSdkLibrary_StubOrImplOnlyLibs(t *testing.T) {
@@ -384,11 +385,11 @@ func TestJavaSdkLibrary_StubOrImplOnlyLibs(t *testing.T) {
 	verify := func(sdklib, dep string, cp, combined bool) {
 		sdklibCp := result.ModuleForTests(sdklib, "android_common").Rule("javac").Args["classpath"]
 		expected := cp || combined // Every combined jar is also on the classpath.
-		android.AssertStringContainsEquals(t, "bad classpath for "+sdklib, sdklibCp, "/"+dep+".jar", expected)
+		util.AssertStringContainsEquals(t, "bad classpath for "+sdklib, sdklibCp, "/"+dep+".jar", expected)
 
 		combineJarInputs := result.ModuleForTests(sdklib, "android_common").Rule("combineJar").Inputs.Strings()
 		depPath := filepath.Join("out", "soong", ".intermediates", dep, "android_common", "turbine-combined", dep+".jar")
-		android.AssertStringListContainsEquals(t, "bad combined inputs for "+sdklib, combineJarInputs, depPath, combined)
+		util.AssertStringListContainsEquals(t, "bad combined inputs for "+sdklib, combineJarInputs, depPath, combined)
 	}
 	for _, expectation := range expectations {
 		verify("sdklib", expectation.lib, expectation.on_impl_classpath, expectation.in_impl_combined)
@@ -802,7 +803,7 @@ func TestJavaSdkLibraryImport(t *testing.T) {
 		javac := fooModule.Rule("javac")
 
 		sdklibStubsJar := result.ModuleForTests("sdklib.stubs"+scope, "android_common").Rule("combineJar").Output
-		android.AssertStringDoesContain(t, "foo classpath", javac.Args["classpath"], sdklibStubsJar.String())
+		util.AssertStringDoesContain(t, "foo classpath", javac.Args["classpath"], sdklibStubsJar.String())
 	}
 
 	CheckModuleDependencies(t, result.TestContext, "sdklib", "android_common", []string{

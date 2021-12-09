@@ -22,6 +22,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 // This comment describes the following:
@@ -250,8 +251,8 @@ var CompatUsesLibs29 = []string{
 	AndroidHidlManager,
 	AndroidHidlBase,
 }
-var OptionalCompatUsesLibs = append(android.CopyOf(OptionalCompatUsesLibs28), OptionalCompatUsesLibs30...)
-var CompatUsesLibs = android.CopyOf(CompatUsesLibs29)
+var OptionalCompatUsesLibs = append(util.CopyOf(OptionalCompatUsesLibs28), OptionalCompatUsesLibs30...)
+var CompatUsesLibs = util.CopyOf(CompatUsesLibs29)
 
 const UnknownInstallLibraryPath = "error"
 
@@ -271,7 +272,7 @@ func (clcMap ClassLoaderContextMap) addContext(ctx android.ModuleInstallPathCont
 
 	devicePath := UnknownInstallLibraryPath
 	if installPath == nil {
-		if android.InList(lib, CompatUsesLibs) || android.InList(lib, OptionalCompatUsesLibs) {
+		if util.InList(lib, CompatUsesLibs) || util.InList(lib, OptionalCompatUsesLibs) {
 			// Assume that compatibility libraries are installed in /system/framework.
 			installPath = android.PathForModuleInstall(ctx, "framework", lib+".jar")
 		} else {
@@ -424,9 +425,9 @@ func fixClassLoaderContext(clcMap ClassLoaderContextMap) {
 		}
 		fixedClcs := []*ClassLoaderContext{}
 		for _, clc := range clcs {
-			if android.InList(clc.Name, usesLibs) {
+			if util.InList(clc.Name, usesLibs) {
 				// skip compatibility libraries that are already included in unconditional context
-			} else if clc.Name == AndroidTestMock && !android.InList("android.test.runner", usesLibs) {
+			} else if clc.Name == AndroidTestMock && !util.InList("android.test.runner", usesLibs) {
 				// android.test.mock is only needed as a compatibility library (in conditional class
 				// loader context) if android.test.runner is used, otherwise skip it
 			} else {

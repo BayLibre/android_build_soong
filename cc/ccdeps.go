@@ -22,6 +22,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 // This singleton collects cc modules' source and flags into to a json file.
@@ -203,8 +204,8 @@ func generateCLionProjectData(ctx android.SingletonContext, compiledModule Compi
 
 	dpInfo.Path = append(dpInfo.Path, path.Dir(ctx.BlueprintFile(ccModule)))
 	dpInfo.Srcs = append(dpInfo.Srcs, srcs.Strings()...)
-	dpInfo.Path = android.FirstUniqueStrings(dpInfo.Path)
-	dpInfo.Srcs = android.FirstUniqueStrings(dpInfo.Srcs)
+	dpInfo.Path = util.FirstUniqueStrings(dpInfo.Path)
+	dpInfo.Srcs = util.FirstUniqueStrings(dpInfo.Srcs)
 
 	dpInfo.Global_Common_Flags = parseCompilerCCParameters(ctx, ccModule.flags.Global.CommonFlags)
 	dpInfo.Local_Common_Flags = parseCompilerCCParameters(ctx, ccModule.flags.Local.CommonFlags)

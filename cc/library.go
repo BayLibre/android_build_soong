@@ -24,6 +24,7 @@ import (
 	"sync"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/bazel"
 	"android/soong/bazel/cquery"
 	"android/soong/cc/config"
@@ -515,7 +516,7 @@ func (f *flagExporter) reexportSystemDirs(dirs ...android.Path) {
 // reexportFlags registers the flags to be exported transitively to modules depending on this
 // module.
 func (f *flagExporter) reexportFlags(flags ...string) {
-	if android.PrefixInList(flags, "-I") || android.PrefixInList(flags, "-isystem") {
+	if util.PrefixInList(flags, "-I") || util.PrefixInList(flags, "-isystem") {
 		panic(fmt.Errorf("Exporting invalid flag %q: "+
 			"use reexportDirs or reexportSystemDirs to export directories", flag))
 	}
@@ -1309,11 +1310,11 @@ func (library *libraryDecorator) linkerSpecifiedDeps(specifiedDeps specifiedDeps
 		specifiedDeps.systemSharedLibs = append(specifiedDeps.systemSharedLibs, properties.System_shared_libs...)
 	}
 
-	specifiedDeps.sharedLibs = android.FirstUniqueStrings(specifiedDeps.sharedLibs)
+	specifiedDeps.sharedLibs = util.FirstUniqueStrings(specifiedDeps.sharedLibs)
 	if len(specifiedDeps.systemSharedLibs) > 0 {
 		// Skip this if systemSharedLibs is either nil or [], to ensure they are
 		// retained.
-		specifiedDeps.systemSharedLibs = android.FirstUniqueStrings(specifiedDeps.systemSharedLibs)
+		specifiedDeps.systemSharedLibs = util.FirstUniqueStrings(specifiedDeps.systemSharedLibs)
 	}
 	return specifiedDeps
 }
@@ -2261,7 +2262,7 @@ func normalizeVersions(ctx android.BaseModuleContext, versions []string) {
 func createVersionVariations(mctx android.BottomUpMutatorContext, versions []string) {
 	// "" is for the non-stubs (implementation) variant for system modules, or the LLNDK variant
 	// for LLNDK modules.
-	variants := append(android.CopyOf(versions), "")
+	variants := append(util.CopyOf(versions), "")
 
 	m := mctx.Module().(*Module)
 	isLLNDK := m.IsLlndk()

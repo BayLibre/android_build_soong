@@ -18,6 +18,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 var (
@@ -54,7 +55,7 @@ var (
 	// bionic binary, omitting the PT_INTERP declaration. The kernel will treat it as a static
 	// binary, and then we use a special entry point to fix up the arguments passed by
 	// the kernel before jumping to the embedded linker.
-	linuxArm64CrtBeginSharedBinary = append(android.CopyOf(bionicCrtBeginSharedBinary),
+	linuxArm64CrtBeginSharedBinary = append(util.CopyOf(bionicCrtBeginSharedBinary),
 		"host_bionic_linker_script")
 )
 

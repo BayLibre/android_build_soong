@@ -16,6 +16,8 @@ package android
 
 import (
 	"testing"
+
+	"android/soong/android/util"
 )
 
 func TestCSuiteConfig(t *testing.T) {
@@ -34,5 +36,5 @@ func TestCSuiteConfig(t *testing.T) {
 	}
 	outputFilename := result.ModuleForTests(
 		"plain", variants[0]).Module().(*CSuiteConfig).OutputFilePath.Base()
-	AssertStringEquals(t, "output file name", "plain", outputFilename)
+	util.AssertStringEquals(t, "output file name", "plain", outputFilename)
 }

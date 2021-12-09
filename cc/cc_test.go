@@ -24,6 +24,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 func TestMain(m *testing.M) {
@@ -2697,10 +2698,10 @@ func TestLlndkLibrary(t *testing.T) {
 		"android_vendor.29_arm_armv7-a-neon_shared_current",
 		"android_vendor.29_arm_armv7-a-neon_shared",
 	}
-	android.AssertArrayString(t, "variants for llndk stubs", expected, actual)
+	util.AssertArrayString(t, "variants for llndk stubs", expected, actual)
 
 	params := result.ModuleForTests("libllndk", "android_vendor.29_arm_armv7-a-neon_shared").Description("generate stub")
-	android.AssertSame(t, "use VNDK version for default stubs", "current", params.Args["apiLevel"])
+	util.AssertSame(t, "use VNDK version for default stubs", "current", params.Args["apiLevel"])
 
 	checkExportedIncludeDirs := func(module, variant string, expectedDirs ...string) {
 		t.Helper()
@@ -3058,12 +3059,12 @@ func TestRecovery(t *testing.T) {
 
 	variants := ctx.ModuleVariantsForTests("librecovery")
 	const arm64 = "android_recovery_arm64_armv8-a_shared"
-	if len(variants) != 1 || !android.InList(arm64, variants) {
+	if len(variants) != 1 || !util.InList(arm64, variants) {
 		t.Errorf("variants of librecovery must be \"%s\" only, but was %#v", arm64, variants)
 	}
 
 	variants = ctx.ModuleVariantsForTests("librecovery32")
-	if android.InList(arm64, variants) {
+	if util.InList(arm64, variants) {
 		t.Errorf("multilib was set to 32 for librecovery32, but its variants has %s.", arm64)
 	}
 
@@ -3320,7 +3321,7 @@ func assertArrayString(t *testing.T, got, expected []string) {
 
 func assertMapKeys(t *testing.T, m map[string]string, expected []string) {
 	t.Helper()
-	assertArrayString(t, android.SortedStringKeys(m), expected)
+	assertArrayString(t, util.SortedStringKeys(m), expected)
 }
 
 func TestDefaults(t *testing.T) {
@@ -3419,7 +3420,7 @@ func TestProductVariableDefaults(t *testing.T) {
 	).RunTestWithBp(t, bp)
 
 	libfoo := result.Module("libfoo", "android_arm64_armv8-a_static").(*Module)
-	android.AssertStringListContains(t, "cppflags", libfoo.flags.Local.CppFlags, "-DBAR")
+	util.AssertStringListContains(t, "cppflags", libfoo.flags.Local.CppFlags, "-DBAR")
 }
 
 func TestEmptyWholeStaticLibsAllowMissingDependencies(t *testing.T) {
@@ -3443,12 +3444,12 @@ func TestEmptyWholeStaticLibsAllowMissingDependencies(t *testing.T) {
 	).RunTestWithBp(t, bp)
 
 	libbar := result.ModuleForTests("libbar", "android_arm64_armv8-a_static").Output("libbar.a")
-	android.AssertDeepEquals(t, "libbar rule", android.ErrorRule, libbar.Rule)
+	util.AssertDeepEquals(t, "libbar rule", android.ErrorRule, libbar.Rule)
 
-	android.AssertStringDoesContain(t, "libbar error", libbar.Args["error"], "missing dependencies: libmissing")
+	util.AssertStringDoesContain(t, "libbar error", libbar.Args["error"], "missing dependencies: libmissing")
 
 	libfoo := result.ModuleForTests("libfoo", "android_arm64_armv8-a_static").Output("libfoo.a")
-	android.AssertStringListContains(t, "libfoo.a dependencies", libfoo.Inputs.Strings(), libbar.Output.String())
+	util.AssertStringListContains(t, "libfoo.a dependencies", libfoo.Inputs.Strings(), libbar.Output.String())
 }
 
 func TestInstallSharedLibs(t *testing.T) {
@@ -3499,23 +3500,23 @@ func TestInstallSharedLibs(t *testing.T) {
 	hostTransitive := ctx.ModuleForTests("libtransitive", config.BuildOSTarget.String()+"_shared").Description("install")
 	hostTool := ctx.ModuleForTests("tool", config.BuildOSTarget.String()).Description("install")
 
-	if g, w := hostBin.Implicits.Strings(), hostShared.Output.String(); !android.InList(w, g) {
+	if g, w := hostBin.Implicits.Strings(), hostShared.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected host bin dependency %q, got %q", w, g)
 	}
 
-	if g, w := hostBin.Implicits.Strings(), hostTransitive.Output.String(); !android.InList(w, g) {
+	if g, w := hostBin.Implicits.Strings(), hostTransitive.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected host bin dependency %q, got %q", w, g)
 	}
 
-	if g, w := hostShared.Implicits.Strings(), hostTransitive.Output.String(); !android.InList(w, g) {
+	if g, w := hostShared.Implicits.Strings(), hostTransitive.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected host bin dependency %q, got %q", w, g)
 	}
 
-	if g, w := hostBin.Implicits.Strings(), hostRuntime.Output.String(); !android.InList(w, g) {
+	if g, w := hostBin.Implicits.Strings(), hostRuntime.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected host bin dependency %q, got %q", w, g)
 	}
 
-	if g, w := hostBin.Implicits.Strings(), hostTool.Output.String(); android.InList(w, g) {
+	if g, w := hostBin.Implicits.Strings(), hostTool.Output.String(); util.InList(w, g) {
 		t.Errorf("expected no host bin dependency %q, got %q", w, g)
 	}
 
@@ -3524,23 +3525,23 @@ func TestInstallSharedLibs(t *testing.T) {
 	deviceTransitive := ctx.ModuleForTests("libtransitive", "android_arm64_armv8-a_shared").Description("install")
 	deviceRuntime := ctx.ModuleForTests("libruntime", "android_arm64_armv8-a_shared").Description("install")
 
-	if g, w := deviceBin.OrderOnly.Strings(), deviceShared.Output.String(); !android.InList(w, g) {
+	if g, w := deviceBin.OrderOnly.Strings(), deviceShared.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected device bin dependency %q, got %q", w, g)
 	}
 
-	if g, w := deviceBin.OrderOnly.Strings(), deviceTransitive.Output.String(); !android.InList(w, g) {
+	if g, w := deviceBin.OrderOnly.Strings(), deviceTransitive.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected device bin dependency %q, got %q", w, g)
 	}
 
-	if g, w := deviceShared.OrderOnly.Strings(), deviceTransitive.Output.String(); !android.InList(w, g) {
+	if g, w := deviceShared.OrderOnly.Strings(), deviceTransitive.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected device bin dependency %q, got %q", w, g)
 	}
 
-	if g, w := deviceBin.OrderOnly.Strings(), deviceRuntime.Output.String(); !android.InList(w, g) {
+	if g, w := deviceBin.OrderOnly.Strings(), deviceRuntime.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected device bin dependency %q, got %q", w, g)
 	}
 
-	if g, w := deviceBin.OrderOnly.Strings(), hostTool.Output.String(); android.InList(w, g) {
+	if g, w := deviceBin.OrderOnly.Strings(), hostTool.Output.String(); util.InList(w, g) {
 		t.Errorf("expected no device bin dependency %q, got %q", w, g)
 	}
 
@@ -3657,7 +3658,7 @@ func TestMinSdkVersionInClangTriple(t *testing.T) {
 		}`)
 
 	cFlags := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_shared").Rule("cc").Args["cFlags"]
-	android.AssertStringDoesContain(t, "min sdk version", cFlags, "-target aarch64-linux-android29")
+	util.AssertStringDoesContain(t, "min sdk version", cFlags, "-target aarch64-linux-android29")
 }
 
 func TestIncludeDirsExporting(t *testing.T) {
@@ -3671,7 +3672,7 @@ func TestIncludeDirsExporting(t *testing.T) {
 	checkPaths := func(t *testing.T, message string, expected string, paths android.Paths) {
 		t.Helper()
 		expected = trimIndentingSpaces(expected)
-		actual := trimIndentingSpaces(strings.Join(android.FirstUniqueStrings(android.NormalizePathsForTesting(paths)), "\n"))
+		actual := trimIndentingSpaces(strings.Join(util.FirstUniqueStrings(android.NormalizePathsForTesting(paths)), "\n"))
 		if expected != actual {
 			t.Errorf("%s: expected:\n%s\n actual:\n%s\n", message, expected, actual)
 		}
@@ -4127,7 +4128,7 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 				}
 			}
 
-			android.AssertArrayString(t, "includes", tc.expected, includes)
+			util.AssertArrayString(t, "includes", tc.expected, includes)
 		})
 	}
 

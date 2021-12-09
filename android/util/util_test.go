@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package android
+package util
 
 import (
 	"fmt"
@@ -551,40 +551,10 @@ func Test_Shard(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			t.Run("strings", func(t *testing.T) {
-				if got := ShardStrings(tt.args.strings, tt.args.shardSize); !reflect.DeepEqual(got, tt.want) {
-					t.Errorf("ShardStrings(%v, %v) = %v, want %v",
-						tt.args.strings, tt.args.shardSize, got, tt.want)
-				}
-			})
-
-			t.Run("paths", func(t *testing.T) {
-				stringsToPaths := func(strings []string) Paths {
-					if strings == nil {
-						return nil
-					}
-					paths := make(Paths, len(strings))
-					for i, s := range strings {
-						paths[i] = PathForTesting(s)
-					}
-					return paths
-				}
-
-				paths := stringsToPaths(tt.args.strings)
-
-				var want []Paths
-				if sWant := tt.want; sWant != nil {
-					want = make([]Paths, len(sWant))
-					for i, w := range sWant {
-						want[i] = stringsToPaths(w)
-					}
-				}
-
-				if got := ShardPaths(paths, tt.args.shardSize); !reflect.DeepEqual(got, want) {
-					t.Errorf("ShardPaths(%v, %v) = %v, want %v",
-						paths, tt.args.shardSize, got, want)
-				}
-			})
+			if got := ShardStrings(tt.args.strings, tt.args.shardSize); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("ShardStrings(%v, %v) = %v, want %v",
+					tt.args.strings, tt.args.shardSize, got, tt.want)
+			}
 		})
 	}
 }

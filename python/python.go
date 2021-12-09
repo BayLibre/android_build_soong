@@ -22,6 +22,7 @@ import (
 	"regexp"
 	"strings"
 
+	"android/soong/android/util"
 	"android/soong/bazel"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -402,7 +403,7 @@ func (p *Module) DepsMutator(ctx android.BottomUpMutatorContext) {
 	}
 
 	// Add python library dependencies for this python version variation
-	ctx.AddVariationDependencies(versionVariation, pythonLibTag, android.LastUniqueStrings(p.properties.Libs)...)
+	ctx.AddVariationDependencies(versionVariation, pythonLibTag, util.LastUniqueStrings(p.properties.Libs)...)
 
 	// If this module will be installed and has an embedded launcher, we need to add dependencies for:
 	//   * standard library
@@ -621,7 +622,7 @@ func (p *Module) createSrcsZip(ctx android.ModuleContext, pkgPath string) androi
 
 	if len(relativeRootMap) > 0 {
 		// in order to keep stable order of soong_zip params, we sort the keys here.
-		roots := android.SortedStringKeys(relativeRootMap)
+		roots := util.SortedStringKeys(relativeRootMap)
 
 		parArgs := []string{}
 		if pkgPath != "" {

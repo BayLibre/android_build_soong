@@ -20,6 +20,7 @@ import (
 	"strings"
 	"sync"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -1459,9 +1460,9 @@ func (s *sanitizerStaticLibsMap) add(c LinkableInterface, name string) {
 // These are to be used by use_soong_sanitized_static_libraries.
 // See build/make/core/binary.mk for more details.
 func (s *sanitizerStaticLibsMap) exportToMake(ctx android.MakeVarsContext) {
-	for _, image := range android.SortedStringKeys(s.libsMap) {
+	for _, image := range util.SortedStringKeys(s.libsMap) {
 		archMap := s.libsMap[ImageVariantType(image)]
-		for _, arch := range android.SortedStringKeys(archMap) {
+		for _, arch := range util.SortedStringKeys(archMap) {
 			libs := archMap[arch]
 			sort.Strings(libs)
 

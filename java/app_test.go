@@ -22,6 +22,7 @@ import (
 	"strings"
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -83,7 +84,7 @@ func TestApp(t *testing.T) {
 
 			// Test the mapping from input files to compiled output file names
 			compile := foo.Output(compiledResourceFiles[0])
-			android.AssertDeepEquals(t, "aapt2 compile inputs", resourceFiles, compile.Inputs.Strings())
+			util.AssertDeepEquals(t, "aapt2 compile inputs", resourceFiles, compile.Inputs.Strings())
 
 			compiledResourceOutputs := compile.Outputs.Strings()
 			sort.Strings(compiledResourceOutputs)
@@ -95,7 +96,7 @@ func TestApp(t *testing.T) {
 
 			// Check that the link rule uses
 			res := result.ModuleForTests("foo", "android_common").Output("package-res.apk")
-			android.AssertDeepEquals(t, "aapt2 link implicits", expectedLinkImplicits, res.Implicits.Strings())
+			util.AssertDeepEquals(t, "aapt2 link implicits", expectedLinkImplicits, res.Implicits.Strings())
 		})
 	}
 }
@@ -569,7 +570,7 @@ func TestResourceDirs(t *testing.T) {
 				}
 			}
 
-			android.AssertDeepEquals(t, "resource files", testCase.resources, resources)
+			util.AssertDeepEquals(t, "resource files", testCase.resources, resources)
 		})
 	}
 }
@@ -655,9 +656,9 @@ func TestLibraryAssets(t *testing.T) {
 			aapt2link = aapt2link
 			aapt2Flags := aapt2link.Args["flags"]
 			if test.assetFlag != "" {
-				android.AssertStringDoesContain(t, "asset flag", aapt2Flags, test.assetFlag)
+				util.AssertStringDoesContain(t, "asset flag", aapt2Flags, test.assetFlag)
 			} else {
-				android.AssertStringDoesNotContain(t, "aapt2 link flags", aapt2Flags, " -A ")
+				util.AssertStringDoesNotContain(t, "aapt2 link flags", aapt2Flags, " -A ")
 			}
 
 			// Check asset merge rule.
@@ -693,7 +694,7 @@ func TestAppJavaResources(t *testing.T) {
 	fooDexJarAligned := foo.Output("dex-withres-aligned/foo.jar")
 	fooApk := foo.Rule("combineApk")
 
-	if g, w := fooDexJar.Inputs.Strings(), fooResources.Output.String(); !android.InList(w, g) {
+	if g, w := fooDexJar.Inputs.Strings(), fooResources.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected resource jar %q in foo dex jar inputs %q", w, g)
 	}
 
@@ -701,7 +702,7 @@ func TestAppJavaResources(t *testing.T) {
 		t.Errorf("expected dex jar %q in foo aligned dex jar inputs %q", w, g)
 	}
 
-	if g, w := fooApk.Inputs.Strings(), fooDexJarAligned.Output.String(); !android.InList(w, g) {
+	if g, w := fooApk.Inputs.Strings(), fooDexJarAligned.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected aligned dex jar %q in foo apk inputs %q", w, g)
 	}
 
@@ -709,7 +710,7 @@ func TestAppJavaResources(t *testing.T) {
 	barResources := bar.Output("res/bar.jar")
 	barApk := bar.Rule("combineApk")
 
-	if g, w := barApk.Inputs.Strings(), barResources.Output.String(); !android.InList(w, g) {
+	if g, w := barApk.Inputs.Strings(), barResources.Output.String(); !util.InList(w, g) {
 		t.Errorf("expected resources jar %q in bar apk inputs %q", w, g)
 	}
 }
@@ -980,8 +981,8 @@ func checkSdkVersion(t *testing.T, result *android.TestResult, expectedSdkVersio
 	foo := result.ModuleForTests("foo", "android_common")
 	link := foo.Output("package-res.apk")
 	linkFlags := strings.Split(link.Args["flags"], " ")
-	min := android.IndexList("--min-sdk-version", linkFlags)
-	target := android.IndexList("--target-sdk-version", linkFlags)
+	min := util.IndexList("--min-sdk-version", linkFlags)
+	target := util.IndexList("--target-sdk-version", linkFlags)
 
 	if min == -1 || target == -1 || min == len(linkFlags)-1 || target == len(linkFlags)-1 {
 		t.Fatalf("missing --min-sdk-version or --target-sdk-version in link flags: %q", linkFlags)
@@ -990,9 +991,9 @@ func checkSdkVersion(t *testing.T, result *android.TestResult, expectedSdkVersio
 	gotMinSdkVersion := linkFlags[min+1]
 	gotTargetSdkVersion := linkFlags[target+1]
 
-	android.AssertStringEquals(t, "incorrect --min-sdk-version", expectedSdkVersion, gotMinSdkVersion)
+	util.AssertStringEquals(t, "incorrect --min-sdk-version", expectedSdkVersion, gotMinSdkVersion)
 
-	android.AssertStringEquals(t, "incorrect --target-sdk-version", expectedSdkVersion, gotTargetSdkVersion)
+	util.AssertStringEquals(t, "incorrect --target-sdk-version", expectedSdkVersion, gotTargetSdkVersion)
 }
 
 func TestAppSdkVersion(t *testing.T) {
@@ -1618,10 +1619,10 @@ func TestCertificates(t *testing.T) {
 
 			signapk := foo.Output("foo.apk")
 			signCertificateFlags := signapk.Args["certificates"]
-			android.AssertStringEquals(t, "certificates flags", test.expectedCertificate, signCertificateFlags)
+			util.AssertStringEquals(t, "certificates flags", test.expectedCertificate, signCertificateFlags)
 
 			signFlags := signapk.Args["flags"]
-			android.AssertStringEquals(t, "signing flags", test.expectedLineage, signFlags)
+			util.AssertStringEquals(t, "signing flags", test.expectedLineage, signFlags)
 		})
 	}
 }
@@ -1679,7 +1680,7 @@ func TestRequestV4SigningFlag(t *testing.T) {
 
 			signapk := foo.Output("foo.apk")
 			signFlags := signapk.Args["flags"]
-			android.AssertStringEquals(t, "signing flags", test.expected, signFlags)
+			util.AssertStringEquals(t, "signing flags", test.expected, signFlags)
 		})
 	}
 }
@@ -1939,19 +1940,19 @@ func TestOverrideAndroidApp(t *testing.T) {
 		// Check the certificate paths
 		signapk := variant.Output(expected.moduleName + ".apk")
 		certFlag := signapk.Args["certificates"]
-		android.AssertStringEquals(t, "certificates flags", expected.certFlag, certFlag)
+		util.AssertStringEquals(t, "certificates flags", expected.certFlag, certFlag)
 
 		// Check the lineage flags
 		lineageFlag := signapk.Args["flags"]
-		android.AssertStringEquals(t, "signing flags", expected.lineageFlag, lineageFlag)
+		util.AssertStringEquals(t, "signing flags", expected.lineageFlag, lineageFlag)
 
 		// Check if the overrides field values are correctly aggregated.
 		mod := variant.Module().(*AndroidApp)
-		android.AssertDeepEquals(t, "overrides property", expected.overrides, mod.appProperties.Overrides)
+		util.AssertDeepEquals(t, "overrides property", expected.overrides, mod.appProperties.Overrides)
 
 		// Test Overridable property: Logging_parent
 		logging_parent := mod.aapt.LoggingParent
-		android.AssertStringEquals(t, "overrides property value for logging parent", expected.logging_parent, logging_parent)
+		util.AssertStringEquals(t, "overrides property value for logging parent", expected.logging_parent, logging_parent)
 
 		// Check the package renaming flag, if exists.
 		res := variant.Output("package-res.apk")
@@ -2399,7 +2400,7 @@ func TestUsesLibraries(t *testing.T) {
 		`--uses-library qux ` +
 		`--uses-library quuz ` +
 		`--uses-library runtime-library`
-	android.AssertStringEquals(t, "manifest_fixer args", expectManifestFixerArgs, actualManifestFixerArgs)
+	util.AssertStringEquals(t, "manifest_fixer args", expectManifestFixerArgs, actualManifestFixerArgs)
 
 	// Test that all libraries are verified (library order matters).
 	verifyCmd := app.Rule("verify_uses_libraries").RuleParams.Command
@@ -2414,7 +2415,7 @@ func TestUsesLibraries(t *testing.T) {
 		`--optional-uses-library baz ` +
 		`--optional-uses-library runtime-optional-x ` +
 		`--optional-uses-library runtime-optional-y `
-	android.AssertStringDoesContain(t, "verify cmd args", verifyCmd, verifyArgs)
+	util.AssertStringDoesContain(t, "verify cmd args", verifyCmd, verifyArgs)
 
 	// Test that all libraries are verified for an APK (library order matters).
 	verifyApkCmd := prebuilt.Rule("verify_uses_libraries").RuleParams.Command
@@ -2423,7 +2424,7 @@ func TestUsesLibraries(t *testing.T) {
 		`--uses-library android.test.runner ` +
 		`--optional-uses-library bar ` +
 		`--optional-uses-library baz `
-	android.AssertStringDoesContain(t, "verify apk cmd args", verifyApkCmd, verifyApkArgs)
+	util.AssertStringDoesContain(t, "verify apk cmd args", verifyApkCmd, verifyApkArgs)
 
 	// Test that all present libraries are preopted, including implicit SDK dependencies, possibly stubs
 	cmd := app.Rule("dexpreopt").RuleParams.Command
@@ -2438,27 +2439,27 @@ func TestUsesLibraries(t *testing.T) {
 		`PCL[/system/framework/runtime-optional-x.jar]#` +
 		`PCL[/system/framework/runtime-required-y.jar]#` +
 		`PCL[/system/framework/runtime-optional-y.jar] `
-	android.AssertStringDoesContain(t, "dexpreopt app cmd args", cmd, w)
+	util.AssertStringDoesContain(t, "dexpreopt app cmd args", cmd, w)
 
 	// Test conditional context for target SDK version 28.
-	android.AssertStringDoesContain(t, "dexpreopt app cmd 28", cmd,
+	util.AssertStringDoesContain(t, "dexpreopt app cmd 28", cmd,
 		`--target-context-for-sdk 28`+
 			` PCL[/system/framework/org.apache.http.legacy.jar] `)
 
 	// Test conditional context for target SDK version 29.
-	android.AssertStringDoesContain(t, "dexpreopt app cmd 29", cmd,
+	util.AssertStringDoesContain(t, "dexpreopt app cmd 29", cmd,
 		`--target-context-for-sdk 29`+
 			` PCL[/system/framework/android.hidl.manager-V1.0-java.jar]`+
 			`#PCL[/system/framework/android.hidl.base-V1.0-java.jar] `)
 
 	// Test conditional context for target SDK version 30.
 	// "android.test.mock" is absent because "android.test.runner" is not used.
-	android.AssertStringDoesContain(t, "dexpreopt app cmd 30", cmd,
+	util.AssertStringDoesContain(t, "dexpreopt app cmd 30", cmd,
 		`--target-context-for-sdk 30`+
 			` PCL[/system/framework/android.test.base.jar] `)
 
 	cmd = prebuilt.Rule("dexpreopt").RuleParams.Command
-	android.AssertStringDoesContain(t, "dexpreopt prebuilt cmd", cmd,
+	util.AssertStringDoesContain(t, "dexpreopt prebuilt cmd", cmd,
 		`--target-context-for-sdk any`+
 			` PCL[/system/framework/foo.jar]`+
 			`#PCL[/system/framework/non-sdk-lib.jar]`+
@@ -2467,7 +2468,7 @@ func TestUsesLibraries(t *testing.T) {
 
 	// Test conditional context for target SDK version 30.
 	// "android.test.mock" is present because "android.test.runner" is used.
-	android.AssertStringDoesContain(t, "dexpreopt prebuilt cmd 30", cmd,
+	util.AssertStringDoesContain(t, "dexpreopt prebuilt cmd 30", cmd,
 		`--target-context-for-sdk 30`+
 			` PCL[/system/framework/android.test.base.jar]`+
 			`#PCL[/system/framework/android.test.mock.jar] `)
@@ -2528,7 +2529,7 @@ func TestDexpreoptBcp(t *testing.T) {
 			app := result.ModuleForTests("app", "android_common")
 			cmd := app.Rule("dexpreopt").RuleParams.Command
 			bcp := " -Xbootclasspath-locations:" + test.expect + " " // space at the end matters
-			android.AssertStringDoesContain(t, "dexpreopt app bcp", cmd, bcp)
+			util.AssertStringDoesContain(t, "dexpreopt app bcp", cmd, bcp)
 		})
 	}
 }
@@ -2700,14 +2701,14 @@ func TestEmbedNotice(t *testing.T) {
 	res := foo.Output("package-res.apk")
 	aapt2Flags := res.Args["flags"]
 	e := "-A out/soong/.intermediates/foo/android_common/NOTICE"
-	android.AssertStringDoesContain(t, "expected.apkPath", aapt2Flags, e)
+	util.AssertStringDoesContain(t, "expected.apkPath", aapt2Flags, e)
 
 	// bar has NOTICE files to process, but embed_notices is not set.
 	bar := result.ModuleForTests("bar", "android_common")
 	res = bar.Output("package-res.apk")
 	aapt2Flags = res.Args["flags"]
 	e = "-A out/soong/.intermediates/bar/android_common/NOTICE"
-	android.AssertStringDoesNotContain(t, "bar shouldn't have the asset dir flag for NOTICE", aapt2Flags, e)
+	util.AssertStringDoesNotContain(t, "bar shouldn't have the asset dir flag for NOTICE", aapt2Flags, e)
 
 	// baz's embed_notice is true, but it doesn't have any NOTICE files.
 	baz := result.ModuleForTests("baz", "android_common")
@@ -2812,9 +2813,9 @@ func TestUncompressDex(t *testing.T) {
 		uncompressedInDexJar := strings.Contains(dex.Args["zipFlags"], "-L 0")
 		aligned := foo.MaybeRule("zipalign").Rule != nil
 
-		android.AssertBoolEquals(t, "uncompressed in dex", want, uncompressedInDexJar)
+		util.AssertBoolEquals(t, "uncompressed in dex", want, uncompressedInDexJar)
 
-		android.AssertBoolEquals(t, "aligne", want, aligned)
+		util.AssertBoolEquals(t, "aligne", want, aligned)
 	}
 
 	for _, tt := range testCases {

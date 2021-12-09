@@ -19,6 +19,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"android/soong/android/util"
 	"android/soong/bazel"
 
 	"github.com/google/blueprint"
@@ -145,7 +146,7 @@ func BazelLabelForModuleDepsWithFn(ctx BazelConversionPathContext, modules []str
 // the excluded dependencies.
 func BazelLabelForModuleDepsExcludesWithFn(ctx BazelConversionPathContext, modules, excludes []string,
 	moduleToLabelFn func(BazelConversionPathContext, blueprint.Module) string) bazel.LabelList {
-	moduleLabels := BazelLabelForModuleDepsWithFn(ctx, RemoveListFromList(modules, excludes), moduleToLabelFn)
+	moduleLabels := BazelLabelForModuleDepsWithFn(ctx, util.RemoveListFromList(modules, excludes), moduleToLabelFn)
 	if len(excludes) == 0 {
 		return moduleLabels
 	}
@@ -328,7 +329,7 @@ func expandSrcsForBazel(ctx BazelConversionPathContext, paths, expandedExcludes 
 	for _, p := range paths {
 		if m, tag := SrcIsModuleWithTag(p); m != "" {
 			l := getOtherModuleLabel(ctx, m, tag, BazelModuleLabel)
-			if !InList(l.Label, expandedExcludes) {
+			if !util.InList(l.Label, expandedExcludes) {
 				l.OriginalModuleName = fmt.Sprintf(":%s", m)
 				labels.Includes = append(labels.Includes, l)
 			}
@@ -340,7 +341,7 @@ func expandSrcsForBazel(ctx BazelConversionPathContext, paths, expandedExcludes 
 				rootRelativeGlobPath := pathForModuleSrc(ctx, p).String()
 				expandedPaths = RootToModuleRelativePaths(ctx, GlobFiles(ctx, rootRelativeGlobPath, rootRelativeExpandedExcludes))
 			} else {
-				if !InList(p, expandedExcludes) {
+				if !util.InList(p, expandedExcludes) {
 					expandedPaths = append(expandedPaths, bazel.Label{Label: p})
 				}
 			}

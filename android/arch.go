@@ -21,6 +21,7 @@ import (
 	"runtime"
 	"strings"
 
+	"android/soong/android/util"
 	"android/soong/bazel"
 
 	"github.com/google/blueprint"
@@ -260,7 +261,7 @@ func (os OsType) Linux() bool {
 
 // newOsType constructs an OsType and adds it to the global lists.
 func newOsType(name string, class OsClass, defDisabled bool, archTypes ...ArchType) OsType {
-	checkCalledFromInit()
+	util.CheckCalledFromInit()
 	os := OsType{
 		Name:  name,
 		Field: proptools.FieldNameForProperty(name),
@@ -459,7 +460,7 @@ func osMutator(bpctx blueprint.BottomUpMutatorContext) {
 					osNames = append(osNames, hostCrossTarget.OsVariation())
 				}
 			}
-			osNames = FirstUniqueStrings(osNames)
+			osNames = util.FirstUniqueStrings(osNames)
 			bpctx.CreateVariations(osNames...)
 		}
 		return
@@ -920,13 +921,13 @@ func createArchPropTypeDesc(props reflect.Type) []archPropTypeDesc {
 				// Also add the special "linux_<arch>" and "bionic_<arch>" property structs.
 				if os.Linux() {
 					target := "Linux_" + archType.Name
-					if !InList(target, targets) {
+					if !util.InList(target, targets) {
 						targets = append(targets, target)
 					}
 				}
 				if os.Bionic() {
 					target := "Bionic_" + archType.Name
-					if !InList(target, targets) {
+					if !util.InList(target, targets) {
 						targets = append(targets, target)
 					}
 				}
@@ -967,7 +968,7 @@ func filterArchStruct(field reflect.StructField, prefix string) (bool, reflect.S
 		}
 		// don't delete path tag as it is needed for bp2build
 		// these tags don't need to be present in the runtime generated struct type.
-		values = RemoveListFromList(values, []string{"arch_variant", "variant_prepend"})
+		values = util.RemoveListFromList(values, []string{"arch_variant", "variant_prepend"})
 		if len(values) > 0 && values[0] != "path" {
 			panic(fmt.Errorf("unknown tags %q in field %q", values, prefix+field.Name))
 		} else if len(values) == 1 {
@@ -1621,7 +1622,7 @@ func decodeTargetProductVariables(config *config) (map[OsType][]Target, error) {
 
 // hasArmAbi returns true if arch has at least one arm ABI
 func hasArmAbi(arch Arch) bool {
-	return PrefixInList(arch.Abi, "arm")
+	return util.PrefixInList(arch.Abi, "arm")
 }
 
 // hasArmAndroidArch returns true if targets has at least

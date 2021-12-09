@@ -18,6 +18,7 @@ import (
 	"fmt"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 
 	"android/soong/remoteexec"
@@ -216,7 +217,7 @@ func (p PackageContext) PrefixedExistentPathsForSourcesVariable(
 
 	return p.VariableFunc(name, func(ctx PackageVarContext) string {
 		paths := ExistentPathsForSources(ctx, paths)
-		return JoinWithPrefix(paths.Strings(), prefix)
+		return util.JoinWithPrefix(paths.Strings(), prefix)
 	})
 }
 

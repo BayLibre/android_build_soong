@@ -19,6 +19,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 // Tests for build_release.go
@@ -33,12 +34,12 @@ var (
 func TestNameToRelease(t *testing.T) {
 	t.Run("single release", func(t *testing.T) {
 		release, err := nameToRelease("S")
-		android.AssertDeepEquals(t, "errors", nil, err)
-		android.AssertDeepEquals(t, "release", buildReleaseS, release)
+		util.AssertDeepEquals(t, "errors", nil, err)
+		util.AssertDeepEquals(t, "release", buildReleaseS, release)
 	})
 	t.Run("invalid release", func(t *testing.T) {
 		release, err := nameToRelease("A")
-		android.AssertDeepEquals(t, "release", (*buildRelease)(nil), release)
+		util.AssertDeepEquals(t, "release", (*buildRelease)(nil), release)
 		// Uses a wildcard in the error message to allow for additional build releases to be added to
 		// the supported set without breaking this test.
 		android.FailIfNoMatchingErrors(t, `unknown release "A", expected one of \[S,T.*,F1,F2\]`, []error{err})
@@ -48,54 +49,54 @@ func TestNameToRelease(t *testing.T) {
 func TestParseBuildReleaseSet(t *testing.T) {
 	t.Run("single release", func(t *testing.T) {
 		set, err := parseBuildReleaseSet("S")
-		android.AssertDeepEquals(t, "errors", nil, err)
-		android.AssertStringEquals(t, "set", "[S]", set.String())
+		util.AssertDeepEquals(t, "errors", nil, err)
+		util.AssertStringEquals(t, "set", "[S]", set.String())
 	})
 	t.Run("open range", func(t *testing.T) {
 		set, err := parseBuildReleaseSet("F1+")
-		android.AssertDeepEquals(t, "errors", nil, err)
-		android.AssertStringEquals(t, "set", "[F1,F2]", set.String())
+		util.AssertDeepEquals(t, "errors", nil, err)
+		util.AssertStringEquals(t, "set", "[F1,F2]", set.String())
 	})
 	t.Run("closed range", func(t *testing.T) {
 		set, err := parseBuildReleaseSet("S-F1")
-		android.AssertDeepEquals(t, "errors", nil, err)
-		android.AssertStringEquals(t, "set", "[S,T,F1]", set.String())
+		util.AssertDeepEquals(t, "errors", nil, err)
+		util.AssertStringEquals(t, "set", "[S,T,F1]", set.String())
 	})
 	invalidAReleaseMessage := `unknown release "A", expected one of ` + allBuildReleaseSet.String()
 	t.Run("invalid release", func(t *testing.T) {
 		set, err := parseBuildReleaseSet("A")
-		android.AssertDeepEquals(t, "set", (*buildReleaseSet)(nil), set)
-		android.AssertStringDoesContain(t, "errors", fmt.Sprint(err), invalidAReleaseMessage)
+		util.AssertDeepEquals(t, "set", (*buildReleaseSet)(nil), set)
+		util.AssertStringDoesContain(t, "errors", fmt.Sprint(err), invalidAReleaseMessage)
 	})
 	t.Run("invalid release in open range", func(t *testing.T) {
 		set, err := parseBuildReleaseSet("A+")
-		android.AssertDeepEquals(t, "set", (*buildReleaseSet)(nil), set)
-		android.AssertStringDoesContain(t, "errors", fmt.Sprint(err), invalidAReleaseMessage)
+		util.AssertDeepEquals(t, "set", (*buildReleaseSet)(nil), set)
+		util.AssertStringDoesContain(t, "errors", fmt.Sprint(err), invalidAReleaseMessage)
 	})
 	t.Run("invalid release in closed range start", func(t *testing.T) {
 		set, err := parseBuildReleaseSet("A-S")
-		android.AssertDeepEquals(t, "set", (*buildReleaseSet)(nil), set)
-		android.AssertStringDoesContain(t, "errors", fmt.Sprint(err), invalidAReleaseMessage)
+		util.AssertDeepEquals(t, "set", (*buildReleaseSet)(nil), set)
+		util.AssertStringDoesContain(t, "errors", fmt.Sprint(err), invalidAReleaseMessage)
 	})
 	t.Run("invalid release in closed range end", func(t *testing.T) {
 		set, err := parseBuildReleaseSet("T-A")
-		android.AssertDeepEquals(t, "set", (*buildReleaseSet)(nil), set)
-		android.AssertStringDoesContain(t, "errors", fmt.Sprint(err), invalidAReleaseMessage)
+		util.AssertDeepEquals(t, "set", (*buildReleaseSet)(nil), set)
+		util.AssertStringDoesContain(t, "errors", fmt.Sprint(err), invalidAReleaseMessage)
 	})
 	t.Run("invalid closed range reversed", func(t *testing.T) {
 		set, err := parseBuildReleaseSet("F1-S")
-		android.AssertDeepEquals(t, "set", (*buildReleaseSet)(nil), set)
-		android.AssertStringDoesContain(t, "errors", fmt.Sprint(err), `invalid closed range, start release "F1" is later than end release "S"`)
+		util.AssertDeepEquals(t, "set", (*buildReleaseSet)(nil), set)
+		util.AssertStringDoesContain(t, "errors", fmt.Sprint(err), `invalid closed range, start release "F1" is later than end release "S"`)
 	})
 }
 
 func TestBuildReleaseSetContains(t *testing.T) {
 	t.Run("contains", func(t *testing.T) {
 		set, _ := parseBuildReleaseSet("F1-F2")
-		android.AssertBoolEquals(t, "set contains F1", true, set.contains(buildReleaseFuture1))
-		android.AssertBoolEquals(t, "set does not contain S", false, set.contains(buildReleaseS))
-		android.AssertBoolEquals(t, "set contains F2", true, set.contains(buildReleaseFuture2))
-		android.AssertBoolEquals(t, "set does not contain T", false, set.contains(buildReleaseT))
+		util.AssertBoolEquals(t, "set contains F1", true, set.contains(buildReleaseFuture1))
+		util.AssertBoolEquals(t, "set does not contain S", false, set.contains(buildReleaseS))
+		util.AssertBoolEquals(t, "set contains F2", true, set.contains(buildReleaseFuture2))
+		util.AssertBoolEquals(t, "set does not contain T", false, set.contains(buildReleaseT))
 	})
 }
 
@@ -108,13 +109,13 @@ func TestPropertyPrunerInvalidTag(t *testing.T) {
 	}
 
 	t.Run("broken struct", func(t *testing.T) {
-		android.AssertPanicMessageContains(t, "error", "invalid `supported_build_releases` tag on Broken of *sdk.brokenStruct: unknown release \"A\"", func() {
+		util.AssertPanicMessageContains(t, "error", "invalid `supported_build_releases` tag on Broken of *sdk.brokenStruct: unknown release \"A\"", func() {
 			newPropertyPrunerByBuildRelease(&brokenStruct{}, buildReleaseS)
 		})
 	})
 
 	t.Run("nested broken struct", func(t *testing.T) {
-		android.AssertPanicMessageContains(t, "error", "invalid `supported_build_releases` tag on Nested.Broken of *sdk.containingStruct: unknown release \"A\"", func() {
+		util.AssertPanicMessageContains(t, "error", "invalid `supported_build_releases` tag on Nested.Broken of *sdk.containingStruct: unknown release \"A\"", func() {
 			newPropertyPrunerByBuildRelease(&containingStruct{}, buildReleaseS)
 		})
 	})
@@ -149,7 +150,7 @@ func TestPropertyPrunerByBuildRelease(t *testing.T) {
 		expected := input
 		expected.T_later = ""
 		expected.Nested.F1_only = ""
-		android.AssertDeepEquals(t, "test struct", expected, testStruct)
+		util.AssertDeepEquals(t, "test struct", expected, testStruct)
 	})
 
 	t.Run("target T", func(t *testing.T) {
@@ -159,7 +160,7 @@ func TestPropertyPrunerByBuildRelease(t *testing.T) {
 
 		expected := input
 		expected.Nested.F1_only = ""
-		android.AssertDeepEquals(t, "test struct", expected, testStruct)
+		util.AssertDeepEquals(t, "test struct", expected, testStruct)
 	})
 
 	t.Run("target F1", func(t *testing.T) {
@@ -169,7 +170,7 @@ func TestPropertyPrunerByBuildRelease(t *testing.T) {
 
 		expected := input
 		expected.S_and_T_only = ""
-		android.AssertDeepEquals(t, "test struct", expected, testStruct)
+		util.AssertDeepEquals(t, "test struct", expected, testStruct)
 	})
 
 	t.Run("target F2", func(t *testing.T) {
@@ -180,6 +181,6 @@ func TestPropertyPrunerByBuildRelease(t *testing.T) {
 		expected := input
 		expected.S_and_T_only = ""
 		expected.Nested.F1_only = ""
-		android.AssertDeepEquals(t, "test struct", expected, testStruct)
+		util.AssertDeepEquals(t, "test struct", expected, testStruct)
 	})
 }

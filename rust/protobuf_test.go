@@ -18,7 +18,7 @@ import (
 	"strings"
 	"testing"
 
-	"android/soong/android"
+	"android/soong/android/util"
 )
 
 func TestRustProtobuf(t *testing.T) {
@@ -42,7 +42,7 @@ func TestRustProtobuf(t *testing.T) {
 	`)
 	// Check that libprotobuf is added as a dependency.
 	librust_proto := ctx.ModuleForTests("librust_proto", "android_arm64_armv8-a_dylib").Module().(*Module)
-	if !android.InList("libprotobuf", librust_proto.Properties.AndroidMkDylibs) {
+	if !util.InList("libprotobuf", librust_proto.Properties.AndroidMkDylibs) {
 		t.Errorf("libprotobuf dependency missing for rust_protobuf (dependency missing from AndroidMkDylibs)")
 	}
 
@@ -63,7 +63,7 @@ func TestRustProtobuf(t *testing.T) {
 
 	// Check proto.rs, the second protobuf, is listed as an output
 	librust_proto_outputs := ctx.ModuleForTests("librust_proto", "android_arm64_armv8-a_source").AllOutputs()
-	if android.InList("proto.rs", librust_proto_outputs) {
+	if util.InList("proto.rs", librust_proto_outputs) {
 		t.Errorf("rust_protobuf is not producing multiple outputs; expected 'proto.rs' in list, got: %#v ",
 			librust_proto_outputs)
 	}
@@ -84,12 +84,12 @@ func TestRustGrpc(t *testing.T) {
 	librust_grpcio_module := ctx.ModuleForTests("librust_grpcio", "android_arm64_armv8-a_dylib").Module().(*Module)
 
 	// Check that libgrpcio is added as a dependency.
-	if !android.InList("libgrpcio", librust_grpcio_module.Properties.AndroidMkDylibs) {
+	if !util.InList("libgrpcio", librust_grpcio_module.Properties.AndroidMkDylibs) {
 		t.Errorf("libgrpcio dependency missing for rust_grpcio (dependency missing from AndroidMkDylibs)")
 	}
 
 	// Check that libfutures is added as a dependency.
-	if !android.InList("libfutures", librust_grpcio_module.Properties.AndroidMkDylibs) {
+	if !util.InList("libfutures", librust_grpcio_module.Properties.AndroidMkDylibs) {
 		t.Errorf("libfutures dependency missing for rust_grpcio (dependency missing from AndroidMkDylibs)")
 	}
 
@@ -107,7 +107,7 @@ func TestRustGrpc(t *testing.T) {
 
 	// Check proto.rs, the second protobuf, is listed as an output
 	librust_grpcio_outputs := ctx.ModuleForTests("librust_grpcio", "android_arm64_armv8-a_source").AllOutputs()
-	if android.InList("proto_grpc.rs", librust_grpcio_outputs) {
+	if util.InList("proto_grpc.rs", librust_grpcio_outputs) {
 		t.Errorf("rust_protobuf is not producing multiple outputs; expected 'proto_grpc.rs' in list, got: %#v ",
 			librust_grpcio_outputs)
 	}

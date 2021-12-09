@@ -20,6 +20,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 
 	"github.com/google/blueprint/proptools"
 )
@@ -464,7 +465,7 @@ func TestGenruleCmd(t *testing.T) {
 			}
 
 			gen := result.Module("gen", "").(*Module)
-			android.AssertStringEquals(t, "raw commands", test.expect, gen.rawCommands[0])
+			util.AssertStringEquals(t, "raw commands", test.expect, gen.rawCommands[0])
 		})
 	}
 }
@@ -532,7 +533,7 @@ func TestGenruleHashInputs(t *testing.T) {
 			manifest := android.RuleBuilderSboxProtoForTests(t, gen.Output("genrule.sbox.textproto"))
 			hash := manifest.Commands[0].GetInputHash()
 
-			android.AssertStringEquals(t, "hash", test.expectedHash, hash)
+			util.AssertStringEquals(t, "hash", test.expectedHash, hash)
 		})
 	}
 }
@@ -615,7 +616,7 @@ func TestGenSrcs(t *testing.T) {
 			}
 
 			gen := result.Module("gen", "").(*Module)
-			android.AssertDeepEquals(t, "cmd", test.cmds, gen.rawCommands)
+			util.AssertDeepEquals(t, "cmd", test.cmds, gen.rawCommands)
 
 			android.AssertPathsRelativeToTopEquals(t, "deps", test.deps, gen.outputDeps)
 
@@ -648,10 +649,10 @@ func TestGenruleDefaults(t *testing.T) {
 	gen := result.Module("gen", "").(*Module)
 
 	expectedCmd := "cp in1 __SBOX_SANDBOX_DIR__/out/out"
-	android.AssertStringEquals(t, "cmd", expectedCmd, gen.rawCommands[0])
+	util.AssertStringEquals(t, "cmd", expectedCmd, gen.rawCommands[0])
 
 	expectedSrcs := []string{"in1"}
-	android.AssertDeepEquals(t, "srcs", expectedSrcs, gen.properties.Srcs)
+	util.AssertDeepEquals(t, "srcs", expectedSrcs, gen.properties.Srcs)
 }
 
 func TestGenruleAllowMissingDependencies(t *testing.T) {
@@ -741,8 +742,8 @@ func TestGenruleWithBazel(t *testing.T) {
 
 	expectedOutputFiles := []string{"outputbase/execroot/__main__/bazelone.txt",
 		"outputbase/execroot/__main__/bazeltwo.txt"}
-	android.AssertDeepEquals(t, "output files", expectedOutputFiles, gen.outputFiles.Strings())
-	android.AssertDeepEquals(t, "output deps", expectedOutputFiles, gen.outputDeps.Strings())
+	util.AssertDeepEquals(t, "output files", expectedOutputFiles, gen.outputFiles.Strings())
+	util.AssertDeepEquals(t, "output deps", expectedOutputFiles, gen.outputDeps.Strings())
 }
 
 type testTool struct {

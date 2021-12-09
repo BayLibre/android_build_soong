@@ -20,6 +20,7 @@ import (
 	"strings"
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -251,23 +252,23 @@ func TestDepsTracking(t *testing.T) {
 	rustc := ctx.ModuleForTests("librlib", "linux_glibc_x86_64_rlib_rlib-std").Rule("rustc")
 
 	// Since dependencies are added to AndroidMk* properties, we can check these to see if they've been picked up.
-	if !android.InList("libdylib", module.Properties.AndroidMkDylibs) {
+	if !util.InList("libdylib", module.Properties.AndroidMkDylibs) {
 		t.Errorf("Dylib dependency not detected (dependency missing from AndroidMkDylibs)")
 	}
 
-	if !android.InList("librlib.rlib-std", module.Properties.AndroidMkRlibs) {
+	if !util.InList("librlib.rlib-std", module.Properties.AndroidMkRlibs) {
 		t.Errorf("Rlib dependency not detected (dependency missing from AndroidMkRlibs)")
 	}
 
-	if !android.InList("libpm", module.Properties.AndroidMkProcMacroLibs) {
+	if !util.InList("libpm", module.Properties.AndroidMkProcMacroLibs) {
 		t.Errorf("Proc_macro dependency not detected (dependency missing from AndroidMkProcMacroLibs)")
 	}
 
-	if !android.InList("libshared", module.Properties.AndroidMkSharedLibs) {
+	if !util.InList("libshared", module.Properties.AndroidMkSharedLibs) {
 		t.Errorf("Shared library dependency not detected (dependency missing from AndroidMkSharedLibs)")
 	}
 
-	if !android.InList("libstatic", module.Properties.AndroidMkStaticLibs) {
+	if !util.InList("libstatic", module.Properties.AndroidMkStaticLibs) {
 		t.Errorf("Static library dependency not detected (dependency missing from AndroidMkStaticLibs)")
 	}
 
@@ -331,40 +332,40 @@ func TestSourceProviderDeps(t *testing.T) {
 	`)
 
 	libfoo := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_rlib_dylib-std").Rule("rustc")
-	if !android.SuffixInList(libfoo.Implicits.Strings(), "/out/bindings.rs") {
+	if !util.SuffixInList(libfoo.Implicits.Strings(), "/out/bindings.rs") {
 		t.Errorf("rust_bindgen generated source not included as implicit input for libfoo; Implicits %#v", libfoo.Implicits.Strings())
 	}
-	if !android.SuffixInList(libfoo.Implicits.Strings(), "/out/any.rs") {
+	if !util.SuffixInList(libfoo.Implicits.Strings(), "/out/any.rs") {
 		t.Errorf("genrule generated source not included as implicit input for libfoo; Implicits %#v", libfoo.Implicits.Strings())
 	}
 
 	fizzBuzz := ctx.ModuleForTests("fizz-buzz-dep", "android_arm64_armv8-a").Rule("rustc")
-	if !android.SuffixInList(fizzBuzz.Implicits.Strings(), "/out/bindings.rs") {
+	if !util.SuffixInList(fizzBuzz.Implicits.Strings(), "/out/bindings.rs") {
 		t.Errorf("rust_bindgen generated source not included as implicit input for fizz-buzz-dep; Implicits %#v", libfoo.Implicits.Strings())
 	}
-	if !android.SuffixInList(fizzBuzz.Implicits.Strings(), "/out/any.rs") {
+	if !util.SuffixInList(fizzBuzz.Implicits.Strings(), "/out/any.rs") {
 		t.Errorf("genrule generated source not included as implicit input for fizz-buzz-dep; Implicits %#v", libfoo.Implicits.Strings())
 	}
 
 	libprocmacro := ctx.ModuleForTests("libprocmacro", "linux_glibc_x86_64").Rule("rustc")
-	if !android.SuffixInList(libprocmacro.Implicits.Strings(), "/out/bindings.rs") {
+	if !util.SuffixInList(libprocmacro.Implicits.Strings(), "/out/bindings.rs") {
 		t.Errorf("rust_bindgen generated source not included as implicit input for libprocmacro; Implicits %#v", libfoo.Implicits.Strings())
 	}
-	if !android.SuffixInList(libprocmacro.Implicits.Strings(), "/out/any.rs") {
+	if !util.SuffixInList(libprocmacro.Implicits.Strings(), "/out/any.rs") {
 		t.Errorf("genrule generated source not included as implicit input for libprocmacro; Implicits %#v", libfoo.Implicits.Strings())
 	}
 
 	// Check that our bindings are picked up as crate dependencies as well
 	libfooMod := ctx.ModuleForTests("libfoo", "android_arm64_armv8-a_dylib").Module().(*Module)
-	if !android.InList("libbindings.dylib-std", libfooMod.Properties.AndroidMkRlibs) {
+	if !util.InList("libbindings.dylib-std", libfooMod.Properties.AndroidMkRlibs) {
 		t.Errorf("bindgen dependency not detected as a rlib dependency (dependency missing from AndroidMkRlibs)")
 	}
 	fizzBuzzMod := ctx.ModuleForTests("fizz-buzz-dep", "android_arm64_armv8-a").Module().(*Module)
-	if !android.InList("libbindings.dylib-std", fizzBuzzMod.Properties.AndroidMkRlibs) {
+	if !util.InList("libbindings.dylib-std", fizzBuzzMod.Properties.AndroidMkRlibs) {
 		t.Errorf("bindgen dependency not detected as a rlib dependency (dependency missing from AndroidMkRlibs)")
 	}
 	libprocmacroMod := ctx.ModuleForTests("libprocmacro", "linux_glibc_x86_64").Module().(*Module)
-	if !android.InList("libbindings.rlib-std", libprocmacroMod.Properties.AndroidMkRlibs) {
+	if !util.InList("libbindings.rlib-std", libprocmacroMod.Properties.AndroidMkRlibs) {
 		t.Errorf("bindgen dependency not detected as a rlib dependency (dependency missing from AndroidMkRlibs)")
 	}
 
@@ -428,7 +429,7 @@ func TestNoStdlibs(t *testing.T) {
 		}`)
 	module := ctx.ModuleForTests("fizz-buzz", "android_arm64_armv8-a").Module().(*Module)
 
-	if android.InList("libstd", module.Properties.AndroidMkDylibs) {
+	if util.InList("libstd", module.Properties.AndroidMkDylibs) {
 		t.Errorf("no_stdlibs did not suppress dependency on libstd")
 	}
 }

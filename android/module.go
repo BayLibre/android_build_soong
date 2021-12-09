@@ -23,6 +23,7 @@ import (
 	"strings"
 	"text/scanner"
 
+	"android/soong/android/util"
 	"android/soong/bazel"
 
 	"github.com/google/blueprint"
@@ -2424,7 +2425,7 @@ func (m *moduleContext) GetMissingDependencies() []string {
 	var missingDeps []string
 	missingDeps = append(missingDeps, m.Module().base().commonProperties.MissingDeps...)
 	missingDeps = append(missingDeps, m.bp.GetMissingDependencies()...)
-	missingDeps = FirstUniqueStrings(missingDeps)
+	missingDeps = util.FirstUniqueStrings(missingDeps)
 	return missingDeps
 }
 
@@ -2432,7 +2433,7 @@ func (b *baseModuleContext) AddMissingDependencies(deps []string) {
 	if deps != nil {
 		missingDeps := &b.Module().base().commonProperties.MissingDeps
 		*missingDeps = append(*missingDeps, deps...)
-		*missingDeps = FirstUniqueStrings(*missingDeps)
+		*missingDeps = util.FirstUniqueStrings(*missingDeps)
 	}
 }
 
@@ -3313,7 +3314,7 @@ func AddAncestors(ctx SingletonContext, dirMap map[string]Paths, mmName func(str
 	// Ensure ancestor directories are in dirMap
 	// Make directories build their direct subdirectories
 	// Returns a slice of all directories and a slice of top-level directories.
-	dirs := SortedStringKeys(dirMap)
+	dirs := util.SortedStringKeys(dirMap)
 	for _, dir := range dirs {
 		dir := parentDir(dir)
 		for dir != "." && dir != "/" {
@@ -3324,7 +3325,7 @@ func AddAncestors(ctx SingletonContext, dirMap map[string]Paths, mmName func(str
 			dir = parentDir(dir)
 		}
 	}
-	dirs = SortedStringKeys(dirMap)
+	dirs = util.SortedStringKeys(dirMap)
 	var topDirs []string
 	for _, dir := range dirs {
 		p := parentDir(dir)
@@ -3334,7 +3335,7 @@ func AddAncestors(ctx SingletonContext, dirMap map[string]Paths, mmName func(str
 			topDirs = append(topDirs, dir)
 		}
 	}
-	return SortedStringKeys(dirMap), topDirs
+	return util.SortedStringKeys(dirMap), topDirs
 }
 
 func (c *buildTargetSingleton) GenerateBuildActions(ctx SingletonContext) {
@@ -3420,7 +3421,7 @@ func (c *buildTargetSingleton) GenerateBuildActions(ctx SingletonContext) {
 	}
 
 	// Wrap those into host|host-cross|target phony rules
-	for _, class := range SortedStringKeys(osClass) {
+	for _, class := range util.SortedStringKeys(osClass) {
 		ctx.Phony(class, osClass[class]...)
 	}
 }

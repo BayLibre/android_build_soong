@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package android
+package util
 
 import (
 	"fmt"
@@ -294,9 +294,9 @@ func SortedUniqueStrings(list []string) []string {
 	return unique
 }
 
-// checkCalledFromInit panics if a Go package's init function is not on the
+// CheckCalledFromInit panics if a Go package's init function is not on the
 // call stack.
-func checkCalledFromInit() {
+func CheckCalledFromInit() {
 	for skip := 3; ; skip++ {
 		_, funcName, ok := callerName(skip)
 		if !ok {
@@ -340,7 +340,7 @@ func GetNumericSdkVersion(v string) string {
 }
 
 // copied from build/kati/strutil.go
-func substPattern(pat, repl, str string) string {
+func SubstPattern(pat, repl, str string) string {
 	ps := strings.SplitN(pat, "%", 2)
 	if len(ps) != 2 {
 		if str == pat {
@@ -372,7 +372,7 @@ func substPattern(pat, repl, str string) string {
 }
 
 // copied from build/kati/strutil.go
-func matchPattern(pat, str string) bool {
+func MatchPattern(pat, str string) bool {
 	i := strings.IndexByte(pat, '%')
 	if i < 0 {
 		return pat == str
@@ -404,22 +404,6 @@ func SplitFileExt(name string) (string, string, string) {
 	suffix = ext + suffix
 
 	return root, suffix, ext
-}
-
-// ShardPaths takes a Paths, and returns a slice of Paths where each one has at most shardSize paths.
-func ShardPaths(paths Paths, shardSize int) []Paths {
-	if len(paths) == 0 {
-		return nil
-	}
-	ret := make([]Paths, 0, (len(paths)+shardSize-1)/shardSize)
-	for len(paths) > shardSize {
-		ret = append(ret, paths[0:shardSize])
-		paths = paths[shardSize:]
-	}
-	if len(paths) > 0 {
-		ret = append(ret, paths)
-	}
-	return ret
 }
 
 // ShardString takes a string and returns a slice of strings where the length of each one is

@@ -29,6 +29,7 @@ import (
 	"strings"
 	"sync"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
 	"github.com/google/blueprint/pathtools"
@@ -1029,17 +1030,17 @@ func (c *config) EnforceRROForModule(name string) bool {
 	enforceList := c.productVariables.EnforceRROTargets
 
 	if len(enforceList) > 0 {
-		if InList("*", enforceList) {
+		if util.InList("*", enforceList) {
 			return true
 		}
-		return InList(name, enforceList)
+		return util.InList(name, enforceList)
 	}
 	return false
 }
 func (c *config) EnforceRROExcludedOverlay(path string) bool {
 	excluded := c.productVariables.EnforceRROExcludedOverlays
 	if len(excluded) > 0 {
-		return HasAnyPrefix(path, excluded)
+		return util.HasAnyPrefix(path, excluded)
 	}
 	return false
 }
@@ -1203,12 +1204,12 @@ func (c *deviceConfig) DeviceKernelHeaderDirs() []string {
 func (c *deviceConfig) JavaCoverageEnabledForPath(path string) bool {
 	coverage := false
 	if len(c.config.productVariables.JavaCoveragePaths) == 0 ||
-		InList("*", c.config.productVariables.JavaCoveragePaths) ||
-		HasAnyPrefix(path, c.config.productVariables.JavaCoveragePaths) {
+		util.InList("*", c.config.productVariables.JavaCoveragePaths) ||
+		util.HasAnyPrefix(path, c.config.productVariables.JavaCoveragePaths) {
 		coverage = true
 	}
 	if coverage && len(c.config.productVariables.JavaCoverageExcludePaths) > 0 {
-		if HasAnyPrefix(path, c.config.productVariables.JavaCoverageExcludePaths) {
+		if util.HasAnyPrefix(path, c.config.productVariables.JavaCoverageExcludePaths) {
 			coverage = false
 		}
 	}
@@ -1237,12 +1238,12 @@ func (c *deviceConfig) GcovCoverageEnabled() bool {
 func (c *deviceConfig) NativeCoverageEnabledForPath(path string) bool {
 	coverage := false
 	if len(c.config.productVariables.NativeCoveragePaths) > 0 {
-		if InList("*", c.config.productVariables.NativeCoveragePaths) || HasAnyPrefix(path, c.config.productVariables.NativeCoveragePaths) {
+		if util.InList("*", c.config.productVariables.NativeCoveragePaths) || util.HasAnyPrefix(path, c.config.productVariables.NativeCoveragePaths) {
 			coverage = true
 		}
 	}
 	if coverage && len(c.config.productVariables.NativeCoverageExcludePaths) > 0 {
-		if HasAnyPrefix(path, c.config.productVariables.NativeCoverageExcludePaths) {
+		if util.HasAnyPrefix(path, c.config.productVariables.NativeCoverageExcludePaths) {
 			coverage = false
 		}
 	}
@@ -1304,8 +1305,8 @@ func findOverrideValue(overrides []string, name string, errorMsg string) (newVal
 			// This shouldn't happen as this is first checked in make, but just in case.
 			panic(fmt.Errorf(errorMsg, o))
 		}
-		if matchPattern(split[0], name) {
-			return substPattern(split[0], split[1], name), true
+		if util.MatchPattern(split[0], name) {
+			return util.SubstPattern(split[0], split[1], name), true
 		}
 	}
 	return "", false
@@ -1315,42 +1316,42 @@ func (c *config) IntegerOverflowDisabledForPath(path string) bool {
 	if len(c.productVariables.IntegerOverflowExcludePaths) == 0 {
 		return false
 	}
-	return HasAnyPrefix(path, c.productVariables.IntegerOverflowExcludePaths)
+	return util.HasAnyPrefix(path, c.productVariables.IntegerOverflowExcludePaths)
 }
 
 func (c *config) CFIDisabledForPath(path string) bool {
 	if len(c.productVariables.CFIExcludePaths) == 0 {
 		return false
 	}
-	return HasAnyPrefix(path, c.productVariables.CFIExcludePaths)
+	return util.HasAnyPrefix(path, c.productVariables.CFIExcludePaths)
 }
 
 func (c *config) CFIEnabledForPath(path string) bool {
 	if len(c.productVariables.CFIIncludePaths) == 0 {
 		return false
 	}
-	return HasAnyPrefix(path, c.productVariables.CFIIncludePaths) && !c.CFIDisabledForPath(path)
+	return util.HasAnyPrefix(path, c.productVariables.CFIIncludePaths) && !c.CFIDisabledForPath(path)
 }
 
 func (c *config) MemtagHeapDisabledForPath(path string) bool {
 	if len(c.productVariables.MemtagHeapExcludePaths) == 0 {
 		return false
 	}
-	return HasAnyPrefix(path, c.productVariables.MemtagHeapExcludePaths)
+	return util.HasAnyPrefix(path, c.productVariables.MemtagHeapExcludePaths)
 }
 
 func (c *config) MemtagHeapAsyncEnabledForPath(path string) bool {
 	if len(c.productVariables.MemtagHeapAsyncIncludePaths) == 0 {
 		return false
 	}
-	return HasAnyPrefix(path, c.productVariables.MemtagHeapAsyncIncludePaths) && !c.MemtagHeapDisabledForPath(path)
+	return util.HasAnyPrefix(path, c.productVariables.MemtagHeapAsyncIncludePaths) && !c.MemtagHeapDisabledForPath(path)
 }
 
 func (c *config) MemtagHeapSyncEnabledForPath(path string) bool {
 	if len(c.productVariables.MemtagHeapSyncIncludePaths) == 0 {
 		return false
 	}
-	return HasAnyPrefix(path, c.productVariables.MemtagHeapSyncIncludePaths) && !c.MemtagHeapDisabledForPath(path)
+	return util.HasAnyPrefix(path, c.productVariables.MemtagHeapSyncIncludePaths) && !c.MemtagHeapDisabledForPath(path)
 }
 
 func (c *config) VendorConfig(name string) VendorConfig {
@@ -1641,7 +1642,7 @@ func (l *ConfiguredJarList) Apex(idx int) string {
 // ContainsJar returns true if the (apex, jar) pairs contains a pair with the
 // given jar module name.
 func (l *ConfiguredJarList) ContainsJar(jar string) bool {
-	return InList(jar, l.jars)
+	return util.InList(jar, l.jars)
 }
 
 // If the list contains the given (apex, jar) pair.
@@ -1657,8 +1658,8 @@ func (l *ConfiguredJarList) containsApexJarPair(apex, jar string) bool {
 // ApexOfJar returns the apex component of the first pair with the given jar name on the list, or
 // an empty string if not found.
 func (l *ConfiguredJarList) ApexOfJar(jar string) string {
-	if idx := IndexList(jar, l.jars); idx != -1 {
-		return l.Apex(IndexList(jar, l.jars))
+	if idx := util.IndexList(jar, l.jars); idx != -1 {
+		return l.Apex(util.IndexList(jar, l.jars))
 	}
 	return ""
 }
@@ -1666,7 +1667,7 @@ func (l *ConfiguredJarList) ApexOfJar(jar string) string {
 // IndexOfJar returns the first pair with the given jar name on the list, or -1
 // if not found.
 func (l *ConfiguredJarList) IndexOfJar(jar string) int {
-	return IndexList(jar, l.jars)
+	return util.IndexList(jar, l.jars)
 }
 
 func copyAndAppend(list []string, item string) []string {
@@ -1729,19 +1730,19 @@ func (l *ConfiguredJarList) Filter(jarsToKeep []string) (ConfiguredJarList, []st
 	var jars []string
 
 	for i, jar := range l.jars {
-		if InList(jar, jarsToKeep) {
+		if util.InList(jar, jarsToKeep) {
 			apexes = append(apexes, l.apexes[i])
 			jars = append(jars, jar)
 		}
 	}
 
-	return ConfiguredJarList{apexes, jars}, RemoveListFromList(jarsToKeep, jars)
+	return ConfiguredJarList{apexes, jars}, util.RemoveListFromList(jarsToKeep, jars)
 }
 
 // CopyOfJars returns a copy of the list of strings containing jar module name
 // components.
 func (l *ConfiguredJarList) CopyOfJars() []string {
-	return CopyOf(l.jars)
+	return util.CopyOf(l.jars)
 }
 
 // CopyOfApexJarPairs returns a copy of the list of strings with colon-separated

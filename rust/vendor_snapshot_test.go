@@ -22,6 +22,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/cc"
 )
 
@@ -1009,17 +1010,17 @@ func TestVendorSnapshotUse(t *testing.T) {
 
 	// libvendor, libvendor_available and bin don't have vendor.30 variant
 	libvendorVariants := ctx.ModuleVariantsForTests("libvendor")
-	if android.InList(sharedVariant, libvendorVariants) {
+	if util.InList(sharedVariant, libvendorVariants) {
 		t.Errorf("libvendor must not have variant %#v, but it does", sharedVariant)
 	}
 
 	libvendorAvailableVariants := ctx.ModuleVariantsForTests("libvendor_available")
-	if android.InList(sharedVariant, libvendorAvailableVariants) {
+	if util.InList(sharedVariant, libvendorAvailableVariants) {
 		t.Errorf("libvendor_available must not have variant %#v, but it does", sharedVariant)
 	}
 
 	binVariants := ctx.ModuleVariantsForTests("bin")
-	if android.InList(binaryVariant, binVariants) {
+	if util.InList(binaryVariant, binVariants) {
 		t.Errorf("bin must not have variant %#v, but it does", sharedVariant)
 	}
 

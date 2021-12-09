@@ -19,6 +19,7 @@ import (
 	"strings"
 	"testing"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
 	"github.com/google/blueprint/proptools"
@@ -172,7 +173,7 @@ func WriteFileRule(ctx BuilderContext, outputFile WritablePath, content string) 
 	content += "\n"
 	if len(content) > SHARD_SIZE {
 		var chunks WritablePaths
-		for i, c := range ShardString(content, SHARD_SIZE) {
+		for i, c := range util.ShardString(content, SHARD_SIZE) {
 			tempPath := outputFile.ReplaceExtension(ctx, fmt.Sprintf("%s.%d", outputFile.Ext(), i))
 			buildWriteFileRule(ctx, tempPath, c)
 			chunks = append(chunks, tempPath)

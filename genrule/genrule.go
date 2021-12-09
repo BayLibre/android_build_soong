@@ -25,6 +25,7 @@ import (
 	"strconv"
 	"strings"
 
+	"android/soong/android/util"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
 	"github.com/google/blueprint/proptools"
@@ -539,7 +540,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			outputFiles = append(outputFiles, task.copyTo...)
 			copyFrom = append(copyFrom, task.out.Paths()...)
 			zipArgs.WriteString(" -C " + task.genDir.String())
-			zipArgs.WriteString(android.JoinWithPrefix(task.out.Strings(), " -f "))
+			zipArgs.WriteString(util.JoinWithPrefix(task.out.Strings(), " -f "))
 		} else {
 			outputFiles = append(outputFiles, task.out...)
 		}

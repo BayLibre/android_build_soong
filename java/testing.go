@@ -23,6 +23,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/cc"
 	"android/soong/dexpreopt"
 
@@ -156,7 +157,7 @@ func FixtureWithPrebuiltApis(release2Modules map[string][]string) android.Fixtur
 				imports_sdk_version: "none",
 				imports_compile_dex: true,
 			}
-		`, strings.Join(android.SortedStringKeys(release2Modules), `", "`))
+		`, strings.Join(util.SortedStringKeys(release2Modules), `", "`))
 
 	for release, modules := range release2Modules {
 		mockFS.Merge(prebuiltApisFilesForModules([]string{release}, modules))
@@ -394,7 +395,7 @@ func CheckPlatformBootclasspathModules(t *testing.T, result *android.TestResult,
 	t.Helper()
 	platformBootclasspath := result.Module(name, "android_common").(*platformBootclasspathModule)
 	pairs := ApexNamePairsFromModules(result.TestContext, platformBootclasspath.configuredModules)
-	android.AssertDeepEquals(t, fmt.Sprintf("%s modules", "platform-bootclasspath"), expected, pairs)
+	util.AssertDeepEquals(t, fmt.Sprintf("%s modules", "platform-bootclasspath"), expected, pairs)
 }
 
 func CheckClasspathFragmentProtoContentInfoProvider(t *testing.T, result *android.TestResult, generated bool, contents, outputFilename, installDir string) {
@@ -402,9 +403,9 @@ func CheckClasspathFragmentProtoContentInfoProvider(t *testing.T, result *androi
 	p := result.Module("platform-bootclasspath", "android_common").(*platformBootclasspathModule)
 	info := result.ModuleProvider(p, ClasspathFragmentProtoContentInfoProvider).(ClasspathFragmentProtoContentInfo)
 
-	android.AssertBoolEquals(t, "classpath proto generated", generated, info.ClasspathFragmentProtoGenerated)
-	android.AssertStringEquals(t, "classpath proto contents", contents, info.ClasspathFragmentProtoContents.String())
-	android.AssertStringEquals(t, "output filepath", outputFilename, info.ClasspathFragmentProtoOutput.Base())
+	util.AssertBoolEquals(t, "classpath proto generated", generated, info.ClasspathFragmentProtoGenerated)
+	util.AssertStringEquals(t, "classpath proto contents", contents, info.ClasspathFragmentProtoContents.String())
+	util.AssertStringEquals(t, "output filepath", outputFilename, info.ClasspathFragmentProtoOutput.Base())
 	android.AssertPathRelativeToTopEquals(t, "install filepath", installDir, info.ClasspathFragmentProtoInstallDir)
 }
 
@@ -436,7 +437,7 @@ func CheckPlatformBootclasspathFragments(t *testing.T, result *android.TestResul
 	t.Helper()
 	platformBootclasspath := result.Module(name, "android_common").(*platformBootclasspathModule)
 	pairs := ApexNamePairsFromModules(result.TestContext, platformBootclasspath.fragments)
-	android.AssertDeepEquals(t, fmt.Sprintf("%s fragments", "platform-bootclasspath"), expected, pairs)
+	util.AssertDeepEquals(t, fmt.Sprintf("%s fragments", "platform-bootclasspath"), expected, pairs)
 }
 
 func CheckHiddenAPIRuleInputs(t *testing.T, message string, expected string, hiddenAPIRule android.TestingBuildParams) {
@@ -460,7 +461,7 @@ func CheckHiddenAPIRuleInputs(t *testing.T, message string, expected string, hid
 func CheckMergedCompatConfigInputs(t *testing.T, result *android.TestResult, message string, expectedPaths ...string) {
 	sourceGlobalCompatConfig := result.SingletonForTests("platform_compat_config_singleton")
 	allOutputs := sourceGlobalCompatConfig.AllOutputs()
-	android.AssertIntEquals(t, message+": output len", 1, len(allOutputs))
+	util.AssertIntEquals(t, message+": output len", 1, len(allOutputs))
 	output := sourceGlobalCompatConfig.Output(allOutputs[0])
 	android.AssertPathsRelativeToTopEquals(t, message+": inputs", expectedPaths, output.Implicits)
 }

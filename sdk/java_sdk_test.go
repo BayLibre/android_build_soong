@@ -18,6 +18,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/java"
 )
 
@@ -1377,18 +1378,18 @@ java_sdk_library_import {
 			}
 
 			dexJarPath := dexJarBuildPath("myjavalib", android.SdkPublic)
-			android.AssertStringEquals(t, "source dex public stubs jar build path", "out/soong/.intermediates/myjavalib.stubs/android_common/dex/myjavalib.stubs.jar", dexJarPath)
+			util.AssertStringEquals(t, "source dex public stubs jar build path", "out/soong/.intermediates/myjavalib.stubs/android_common/dex/myjavalib.stubs.jar", dexJarPath)
 
 			dexJarPath = dexJarBuildPath("myjavalib", android.SdkSystem)
 			systemDexJar := "out/soong/.intermediates/myjavalib.stubs.system/android_common/dex/myjavalib.stubs.system.jar"
-			android.AssertStringEquals(t, "source dex system stubs jar build path", systemDexJar, dexJarPath)
+			util.AssertStringEquals(t, "source dex system stubs jar build path", systemDexJar, dexJarPath)
 
 			// This should fall back to system as module is not available.
 			dexJarPath = dexJarBuildPath("myjavalib", android.SdkModule)
-			android.AssertStringEquals(t, "source dex module stubs jar build path", systemDexJar, dexJarPath)
+			util.AssertStringEquals(t, "source dex module stubs jar build path", systemDexJar, dexJarPath)
 
 			dexJarPath = dexJarBuildPath(android.PrebuiltNameFromSource("myjavalib"), android.SdkPublic)
-			android.AssertStringEquals(t, "prebuilt dex public stubs jar build path", "out/soong/.intermediates/snapshot/prebuilt_myjavalib.stubs/android_common/dex/myjavalib.stubs.jar", dexJarPath)
+			util.AssertStringEquals(t, "prebuilt dex public stubs jar build path", "out/soong/.intermediates/snapshot/prebuilt_myjavalib.stubs/android_common/dex/myjavalib.stubs.jar", dexJarPath)
 		}),
 	)
 }

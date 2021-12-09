@@ -21,6 +21,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/android/util"
 	"android/soong/dexpreopt"
 
 	"github.com/google/blueprint/proptools"
@@ -421,7 +422,7 @@ func (i BootclasspathFragmentApexContentInfo) DexBootJarPathForContentModule(mod
 		return dexJar, nil
 	} else {
 		return nil, fmt.Errorf("unknown bootclasspath_fragment content module %s, expected one of %s",
-			name, strings.Join(android.SortedStringKeys(i.contentModuleDexJarPaths), ", "))
+			name, strings.Join(util.SortedStringKeys(i.contentModuleDexJarPaths), ", "))
 	}
 }
 
@@ -634,13 +635,13 @@ func (b *BootclasspathFragmentModule) configuredJars(ctx android.ModuleContext) 
 	// config. However, any test specific jars would not be present in ApexBootJars. Instead,
 	// we should check if we are creating a config for apex_test via ApexInfo and amend the values.
 	// This is an exception to support end-to-end test for SdkExtensions, until such support exists.
-	if android.InList("test_framework-sdkextensions", possibleUpdatableModules) {
+	if util.InList("test_framework-sdkextensions", possibleUpdatableModules) {
 		jars = jars.Append("com.android.sdkext", "test_framework-sdkextensions")
-	} else if android.InList("test_framework-apexd", possibleUpdatableModules) {
+	} else if util.InList("test_framework-apexd", possibleUpdatableModules) {
 		jars = jars.Append("com.android.apex.test_package", "test_framework-apexd")
 	} else if global.ApexBootJars.Len() != 0 && !android.IsModuleInVersionedSdk(ctx.Module()) {
-		unknown = android.RemoveListFromList(unknown, b.properties.Coverage.Contents)
-		_, unknown = android.RemoveFromList("core-icu4j", unknown)
+		unknown = util.RemoveListFromList(unknown, b.properties.Coverage.Contents)
+		_, unknown = util.RemoveFromList("core-icu4j", unknown)
 		if len(unknown) > 0 {
 			ctx.ModuleErrorf("%s in contents must also be declared in PRODUCT_APEX_BOOT_JARS", unknown)
 		}
@@ -661,7 +662,7 @@ func (b *BootclasspathFragmentModule) getImageConfig(ctx android.EarlyModuleCont
 	imageName := *imageNamePtr
 	imageConfig := imageConfigs[imageName]
 	if imageConfig == nil {
-		ctx.PropertyErrorf("image_name", "Unknown image name %q, expected one of %s", imageName, strings.Join(android.SortedStringKeys(imageConfigs), ", "))
+		ctx.PropertyErrorf("image_name", "Unknown image name %q, expected one of %s", imageName, strings.Join(util.SortedStringKeys(imageConfigs), ", "))
 		return nil
 	}
 	return imageConfig

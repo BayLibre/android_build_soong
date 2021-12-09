@@ -22,6 +22,7 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/util"
 )
 
 func TestDroidstubs(t *testing.T) {
@@ -122,7 +123,7 @@ func getAndroidJarPatternsForDroidstubs(t *testing.T, sdkType string) []string {
 func TestPublicDroidstubs(t *testing.T) {
 	patterns := getAndroidJarPatternsForDroidstubs(t, "public")
 
-	android.AssertArrayString(t, "order of patterns", []string{
+	util.AssertArrayString(t, "order of patterns", []string{
 		"--android-jar-pattern somedir/%/public/android.jar",
 		"--android-jar-pattern someotherdir/%/public/android.jar",
 	}, patterns)
@@ -131,7 +132,7 @@ func TestPublicDroidstubs(t *testing.T) {
 func TestSystemDroidstubs(t *testing.T) {
 	patterns := getAndroidJarPatternsForDroidstubs(t, "system")
 
-	android.AssertArrayString(t, "order of patterns", []string{
+	util.AssertArrayString(t, "order of patterns", []string{
 		"--android-jar-pattern somedir/%/system/android.jar",
 		"--android-jar-pattern someotherdir/%/system/android.jar",
 		"--android-jar-pattern somedir/%/public/android.jar",
@@ -142,7 +143,7 @@ func TestSystemDroidstubs(t *testing.T) {
 func TestModuleLibDroidstubs(t *testing.T) {
 	patterns := getAndroidJarPatternsForDroidstubs(t, "module-lib")
 
-	android.AssertArrayString(t, "order of patterns", []string{
+	util.AssertArrayString(t, "order of patterns", []string{
 		"--android-jar-pattern somedir/%/module-lib/android.jar",
 		"--android-jar-pattern someotherdir/%/module-lib/android.jar",
 		"--android-jar-pattern somedir/%/system/android.jar",
