@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be1ba40a_0755136f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-10T23:09:15Z",
+      "side": 1,
+      "message": "Please also mention the pair of tests you modified in `cc_library_static_conversion_test.go`",
+      "revId": "b42d852411b8c7e51c82e80bd7de30dea79519a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4cfd7fb_c7c45dfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-10T23:09:15Z",
+      "side": 1,
+      "message": "LGTM; minor recommendations",
+      "revId": "b42d852411b8c7e51c82e80bd7de30dea79519a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40dbaf2c_8d52fcdd",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-10T23:09:15Z",
+      "side": 1,
+      "message": "This whole block of code would be nice as a separate function returning a triple, I think.",
+      "revId": "b42d852411b8c7e51c82e80bd7de30dea79519a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
