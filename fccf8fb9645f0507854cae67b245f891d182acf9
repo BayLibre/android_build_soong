@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89de890b_8629a2af",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-10T22:11:21Z",
+      "side": 1,
+      "message": "We want a CL to do one thing rather than multiple: go/small-cls#what_is_small.\n\nA separate CL for each cleanup is unnecessary, but can we split the cleanups from the new functionality to list all commands?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "fccf8fb9645f0507854cae67b245f891d182acf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a5d52fd_b5e8b157",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-10T22:11:21Z",
+      "side": 1,
+      "message": "in general, looks good",
+      "revId": "fccf8fb9645f0507854cae67b245f891d182acf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
