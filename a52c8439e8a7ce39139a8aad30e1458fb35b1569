@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f98d4ba6_17c999fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-10T22:56:44Z",
+      "side": 1,
+      "message": "a test case?",
+      "revId": "a52c8439e8a7ce39139a8aad30e1458fb35b1569",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ba0245e_c5168e37",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-10T22:56:44Z",
+      "side": 1,
+      "message": "Should we ensure this is only used for `bazel.NoConfigAxis` for now?",
+      "range": {
+        "startLine": 568,
+        "startChar": 1,
+        "endLine": 568,
+        "endChar": 69
+      },
+      "revId": "a52c8439e8a7ce39139a8aad30e1458fb35b1569",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
