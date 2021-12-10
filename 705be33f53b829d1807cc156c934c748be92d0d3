@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c9d961e_4b9c1790",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-12-10T23:01:54Z",
+      "side": 1,
+      "message": "I am still working on test cases of the new bp2build converters, but with these two CLs I can sign the minimal apex and verify the signature. Please take a look and see if anything is missed. Thanks!",
+      "revId": "705be33f53b829d1807cc156c934c748be92d0d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
