@@ -1446,6 +1446,7 @@ type bazelAndroidAppAttributes struct {
 	Manifest       bazel.Label
 	Custom_package *string
 	Resource_files bazel.LabelListAttribute
+	Deps           bazel.LabelListAttribute
 }
 
 // AppBp2Build is used for android_app.
@@ -1471,12 +1472,15 @@ func AppBp2Build(ctx android.TopDownMutatorContext) {
 		resourceFiles.Includes = append(resourceFiles.Includes, files...)
 	}
 
+	deps := bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, a.properties.Static_libs))
+
 	attrs := &bazelAndroidAppAttributes{
 		Srcs:     srcs,
 		Manifest: android.BazelLabelForModuleSrcSingle(ctx, manifest),
 		// TODO(b/209576404): handle package name override by product variable PRODUCT_MANIFEST_PACKAGE_NAME_OVERRIDES
 		Custom_package: a.overridableAppProperties.Package_name,
 		Resource_files: bazel.MakeLabelListAttribute(resourceFiles),
+		Deps:           deps,
 	}
 	props := bazel.BazelTargetModuleProperties{Rule_class: "android_binary",
 		Bzl_load_location: "@rules_android//rules:rules.bzl"}
