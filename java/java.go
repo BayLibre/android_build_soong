@@ -22,6 +22,7 @@ import (
 	"fmt"
 	"path/filepath"
 
+	"android/soong/bazel"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -66,6 +67,10 @@ func registerJavaBuildComponents(ctx android.RegistrationContext) {
 
 	ctx.RegisterSingletonType("logtags", LogtagsSingleton)
 	ctx.RegisterSingletonType("kythe_java_extract", kytheExtractJavaFactory)
+
+	android.RegisterBp2BuildMutator("java_library", JavaLibraryBp2Build)
+	android.RegisterBp2BuildMutator("java_library_host", JavaLibraryHostBp2Build)
+	android.RegisterBp2BuildMutator("java_binary_host", JavaBinaryHostBp2Build)
 }
 
 func RegisterJavaSdkMemberTypes() {
@@ -763,6 +768,7 @@ func LibraryHostFactory() android.Module {
 
 	android.InitApexModule(module)
 	android.InitSdkAwareModule(module)
+	android.InitBazelModule(module)
 	InitJavaModule(module, android.HostSupported)
 	return module
 }
@@ -1213,6 +1219,8 @@ func BinaryFactory() android.Module {
 
 	android.InitAndroidArchModule(module, android.HostAndDeviceSupported, android.MultilibCommonFirst)
 	android.InitDefaultableModule(module)
+	android.InitBazelModule(module)
+
 	return module
 }
 
@@ -1945,4 +1953,114 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 	} else {
 		clcMap.AddContextMap(dep.ClassLoaderContexts(), depName)
 	}
+}
+
+type javaLibraryAttributes struct {
+	Srcs      bazel.LabelListAttribute
+	Deps      bazel.LabelListAttribute
+	Javacopts bazel.StringListAttribute
+}
+
+// JavaLibraryBp2Build is for java_library bp2build.
+func JavaLibraryBp2Build(ctx android.TopDownMutatorContext) {
+	m, ok := ctx.Module().(*Library)
+	if !ok || !m.ConvertWithBp2build(ctx) || ctx.ModuleType() != "java_library" {
+		return
+	}
+
+	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs))
+	attrs := &javaLibraryAttributes{
+		Srcs: srcs,
+		// Disable the error prone check of HashtableContains by default. See https://errorprone.info/bugpattern/HashtableContains
+		Javacopts: bazel.MakeStringListAttribute([]string{"-Xep:HashtableContains:OFF"}),
+	}
+
+	if m.properties.Libs != nil {
+		attrs.Deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, m.properties.Libs))
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class: "java_library",
+	}
+
+	// Create the BazelTargetModule.
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
+}
+
+type javaLibraryHostAttributes struct {
+	Srcs      bazel.LabelListAttribute
+	Javacopts bazel.StringListAttribute
+}
+
+// JavaLibraryHostBp2Build is for java_library_host bp2build.
+func JavaLibraryHostBp2Build(ctx android.TopDownMutatorContext) {
+	m, ok := ctx.Module().(*Library)
+	if !ok || !m.ConvertWithBp2build(ctx) || ctx.ModuleType() != "java_library_host" {
+		return
+	}
+
+	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs))
+	attrs := &javaLibraryHostAttributes{
+		Srcs: srcs,
+	}
+
+	if m.properties.Javacflags != nil {
+		attrs.Javacopts = bazel.MakeStringListAttribute(m.properties.Javacflags)
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class: "java_library",
+	}
+
+	// Create the BazelTargetModule.
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
+}
+
+type javaBinaryHostAttributes struct {
+	Srcs       bazel.LabelListAttribute
+	Deps       bazel.LabelListAttribute
+	Main_class string
+}
+
+// JavaBinaryHostBp2Build is for java_binary_host bp2build.
+func JavaBinaryHostBp2Build(ctx android.TopDownMutatorContext) {
+	m, ok := ctx.Module().(*Binary)
+	if !ok || !m.ConvertWithBp2build(ctx) || ctx.ModuleType() != "java_binary_host" {
+		return
+	}
+
+	mainClass := ""
+	if m.binaryProperties.Main_class != nil {
+		mainClass = *m.binaryProperties.Main_class
+	}
+	if m.properties.Manifest != nil {
+		mainClassInManifest, err := android.GetMainClassInManifest(android.PathForModuleSrc(ctx, *m.properties.Manifest).String())
+		if err != nil {
+			return
+		}
+		mainClass = mainClassInManifest
+	}
+	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrc(ctx, m.properties.Srcs))
+	attrs := &javaBinaryHostAttributes{
+		Srcs:       srcs,
+		Main_class: mainClass,
+	}
+
+	deps := []string{}
+	if m.properties.Static_libs != nil {
+		deps = append(deps, m.properties.Static_libs...)
+	}
+	if m.binaryProperties.Jni_libs != nil {
+		deps = append(deps, m.binaryProperties.Jni_libs...)
+	}
+	if len(deps) > 0 {
+		attrs.Deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, deps))
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class: "java_binary",
+	}
+
+	// Create the BazelTargetModule.
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
 }
