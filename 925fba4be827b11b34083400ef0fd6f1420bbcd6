@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f825f632_3cc4e155",
+        "filename": "ui/terminal/smart_status.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-10T18:57:47Z",
+      "side": 1,
+      "message": "Is the smart status useful in quiet mode?  If not you could simplify this by always using simple status when quiet mode is enabled.",
+      "revId": "925fba4be827b11b34083400ef0fd6f1420bbcd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
