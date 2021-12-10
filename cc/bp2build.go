@@ -267,6 +267,8 @@ type compilerAttributes struct {
 	localIncludes    bazel.StringListAttribute
 	absoluteIncludes bazel.StringListAttribute
 
+	includes BazelIncludes
+
 	protoSrcs bazel.LabelListAttribute
 }
 
@@ -455,6 +457,37 @@ func bp2BuildParseBaseProps(ctx android.Bp2buildMutatorContext, module *Module) 
 			headers := maybePartitionExportedAndImplementationsDeps(ctx, !module.Binary(), allHdrs, exportHdrs, android.BazelLabelForModuleDeps)
 			implementationHdrs.SetSelectValue(axis, config, headers.implementation)
 			compilerAttrs.hdrs.SetSelectValue(axis, config, headers.export)
+
+			var exportIncludes, exportAbsoluteIncludes, absoluteIncludes []string
+			getPackage := func(label string) (string, bool) {
+				split := strings.Split(label, ":")
+				if len(split) != 2 {
+					return "", false
+				}
+				if split[0] == "" {
+					return ".", false
+				}
+				return split[0][2:], true
+			}
+			for _, hdr := range headers.implementation.Includes {
+				if pkg, hasPkg := getPackage(hdr.Label); hasPkg {
+					absoluteIncludes = append(absoluteIncludes, pkg)
+				}
+			}
+			for _, hdr := range headers.export.Includes {
+				if pkg, hasPkg := getPackage(hdr.Label); hasPkg {
+					exportAbsoluteIncludes = append(exportAbsoluteIncludes, pkg)
+				} else if pkg != "" {
+					exportIncludes = append(exportIncludes, pkg)
+				}
+			}
+
+			compilerAttrs.includes.Includes.SetSelectValue(axis, config, exportIncludes)
+			compilerAttrs.includes.AbsoluteIncludes.SetSelectValue(axis, config, exportAbsoluteIncludes)
+
+			currAbsoluteIncludes := compilerAttrs.absoluteIncludes.SelectValue(axis, config)
+			currAbsoluteIncludes = android.FirstUniqueStrings(append(currAbsoluteIncludes, absoluteIncludes...))
+			compilerAttrs.absoluteIncludes.SetSelectValue(axis, config, currAbsoluteIncludes)
 		}
 	}
 
@@ -687,13 +720,14 @@ func bp2BuildMakePathsRelativeToModule(ctx android.BazelConversionPathContext, p
 // BazelIncludes contains information about -I and -isystem paths from a module converted to Bazel
 // attributes.
 type BazelIncludes struct {
-	Includes       bazel.StringListAttribute
-	SystemIncludes bazel.StringListAttribute
+	AbsoluteIncludes bazel.StringListAttribute
+	Includes         bazel.StringListAttribute
+	SystemIncludes   bazel.StringListAttribute
 }
 
-func bp2BuildParseExportedIncludes(ctx android.BazelConversionPathContext, module *Module) BazelIncludes {
+func bp2BuildParseExportedIncludes(ctx android.BazelConversionPathContext, module *Module, existingIncludes BazelIncludes) BazelIncludes {
 	libraryDecorator := module.linker.(*libraryDecorator)
-	return bp2BuildParseExportedIncludesHelper(ctx, module, libraryDecorator)
+	return bp2BuildParseExportedIncludesHelper(ctx, module, libraryDecorator, &existingIncludes)
 }
 
 // Bp2buildParseExportedIncludesForPrebuiltLibrary returns a BazelIncludes with Bazel-ified values
@@ -701,25 +735,31 @@ func bp2BuildParseExportedIncludes(ctx android.BazelConversionPathContext, modul
 func Bp2BuildParseExportedIncludesForPrebuiltLibrary(ctx android.BazelConversionPathContext, module *Module) BazelIncludes {
 	prebuiltLibraryLinker := module.linker.(*prebuiltLibraryLinker)
 	libraryDecorator := prebuiltLibraryLinker.libraryDecorator
-	return bp2BuildParseExportedIncludesHelper(ctx, module, libraryDecorator)
+	return bp2BuildParseExportedIncludesHelper(ctx, module, libraryDecorator, nil)
 }
 
 // bp2BuildParseExportedIncludes creates a string list attribute contains the
 // exported included directories of a module.
-func bp2BuildParseExportedIncludesHelper(ctx android.BazelConversionPathContext, module *Module, libraryDecorator *libraryDecorator) BazelIncludes {
-	exported := BazelIncludes{}
+func bp2BuildParseExportedIncludesHelper(ctx android.BazelConversionPathContext, module *Module, libraryDecorator *libraryDecorator, includes *BazelIncludes) BazelIncludes {
+	var exported BazelIncludes
+	if includes != nil {
+		exported = *includes
+	} else {
+		exported = BazelIncludes{}
+	}
 	for axis, configToProps := range module.GetArchVariantProperties(ctx, &FlagExporterProperties{}) {
 		for config, props := range configToProps {
 			if flagExporterProperties, ok := props.(*FlagExporterProperties); ok {
 				if len(flagExporterProperties.Export_include_dirs) > 0 {
-					exported.Includes.SetSelectValue(axis, config, flagExporterProperties.Export_include_dirs)
+					exported.Includes.SetSelectValue(axis, config, android.FirstUniqueStrings(append(exported.Includes.SelectValue(axis, config), flagExporterProperties.Export_include_dirs...)))
 				}
 				if len(flagExporterProperties.Export_system_include_dirs) > 0 {
-					exported.SystemIncludes.SetSelectValue(axis, config, flagExporterProperties.Export_system_include_dirs)
+					exported.SystemIncludes.SetSelectValue(axis, config, android.FirstUniqueStrings(append(exported.SystemIncludes.SelectValue(axis, config), flagExporterProperties.Export_system_include_dirs...)))
 				}
 			}
 		}
 	}
+	exported.AbsoluteIncludes.DeduplicateAxesFromBase()
 	exported.Includes.DeduplicateAxesFromBase()
 	exported.SystemIncludes.DeduplicateAxesFromBase()
 
