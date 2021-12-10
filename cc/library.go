@@ -210,6 +210,7 @@ func init() {
 
 	android.RegisterBp2BuildMutator("cc_library_static", CcLibraryStaticBp2Build)
 	android.RegisterBp2BuildMutator("cc_library_shared", CcLibrarySharedBp2Build)
+	android.RegisterBp2BuildMutator("cc_library_host_shared", CcLibraryHostSharedBp2Build)
 	android.RegisterBp2BuildMutator("cc_library", CcLibraryBp2Build)
 }
 
@@ -2618,6 +2619,18 @@ func CcLibrarySharedBp2Build(ctx android.TopDownMutatorContext) {
 		// This is created by a custom soong config module type, so its ctx.ModuleType() is not
 		// cc_library_shared. Check its BaseModuleType.
 		isLibraryShared = isLibraryShared || b.BaseModuleType() == "cc_library_shared"
+	}
+	if isLibraryShared {
+		ccSharedOrStaticBp2BuildMutator(ctx, "cc_library_shared")
+	}
+}
+
+func CcLibraryHostSharedBp2Build(ctx android.TopDownMutatorContext) {
+	isLibraryShared := ctx.ModuleType() == "cc_library_host_shared"
+	if b, ok := ctx.Module().(android.Bazelable); ok {
+		// This is created by a custom soong config module type, so its ctx.ModuleType() is not
+		// cc_library_shared. Check its BaseModuleType.
+		isLibraryShared = isLibraryShared || b.BaseModuleType() == "cc_library_host_shared"
 	}
 	if isLibraryShared {
 		ccSharedOrStaticBp2BuildMutator(ctx, "cc_library_shared")
