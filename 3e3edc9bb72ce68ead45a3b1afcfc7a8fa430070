@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ccc5143a_ea7a778b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2021-12-11T01:21:30Z",
+      "side": 1,
+      "message": "I can add an additional stripping step when btf is enabled to reduce the size increase to 80% or so, but as mentioned above that would affect section ordering \u0026 require an accompanying change to Loader.cpp (and thus wouldn\u0027t be backwards compatible/mainline-friendly)",
+      "revId": "3e3edc9bb72ce68ead45a3b1afcfc7a8fa430070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
