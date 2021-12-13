@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e22d934_ee39681e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-13T17:12:35Z",
+      "side": 1,
+      "message": "LGTM\nThanks for doing this! And also restructuring that block. 😊",
+      "revId": "1263d9bdb1627f2ec2c030bcef5b53d011be3b77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
