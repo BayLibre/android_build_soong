@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de149a52_8e614f5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-13T11:03:18Z",
+      "side": 1,
+      "message": "Massive cleanup and improvement! always nice to see a big red code delta. Thanks for doing this!",
+      "revId": "f293c5410d28bc971b03d55bb89ceeb9242d9b8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51b3e153_f93b1fef",
@@ -48,6 +65,116 @@
       "writtenOn": "2021-12-10T17:49:37Z",
       "side": 1,
       "message": "Similarly verb-naming of functions containing the noun of \"Conversion\" seems strange",
+      "revId": "f293c5410d28bc971b03d55bb89ceeb9242d9b8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b83028d0_a835a413",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-13T11:03:18Z",
+      "side": 1,
+      "message": "+1 generally agree that it\u0027s hard to quickly parse the purpose of each method here",
+      "parentUuid": "fd20ebd9_76bca113",
+      "revId": "f293c5410d28bc971b03d55bb89ceeb9242d9b8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92fe4d32_28aca5ce",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-13T11:03:18Z",
+      "side": 1,
+      "message": "these two modules are repeated many times in this list. here and below.",
+      "range": {
+        "startLine": 450,
+        "startChar": 75,
+        "endLine": 450,
+        "endChar": 101
+      },
+      "revId": "f293c5410d28bc971b03d55bb89ceeb9242d9b8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8813a4f5_ed7eb1fc",
+        "filename": "android/defaults.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-13T11:03:18Z",
+      "side": 1,
+      "message": "Is this true? I thought *Defaults* modules are not converted to bp2build (e.g cc_defaults), but *Defaultable* modules, like a cc_library, are/can be converted.",
+      "range": {
+        "startLine": 328,
+        "startChar": 63,
+        "endLine": 329,
+        "endChar": 32
+      },
+      "revId": "f293c5410d28bc971b03d55bb89ceeb9242d9b8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "702d603d_40a7712b",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-13T11:03:18Z",
+      "side": 1,
+      "message": "Add a docstring?",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 23
+      },
+      "revId": "f293c5410d28bc971b03d55bb89ceeb9242d9b8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6600515c_bd4624bd",
+        "filename": "cc/cc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 3463,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-13T11:03:18Z",
+      "side": 1,
+      "message": "This is so clean.",
+      "range": {
+        "startLine": 3431,
+        "startChar": 0,
+        "endLine": 3463,
+        "endChar": 1
+      },
       "revId": "f293c5410d28bc971b03d55bb89ceeb9242d9b8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
