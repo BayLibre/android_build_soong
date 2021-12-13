@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5450d023_fe6f31fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-12-13T22:55:11Z",
+      "side": 1,
+      "message": "1. I\u0027d name it just transform instead of visitAndReplace, but it\u0027s up to you.\n2. Would it be better to have this function return a rewritten node + an indicator if it has changed, similar to what eval does? This might reduce the number of objects that are created.\n",
+      "revId": "c7f5c1ac89c6827798e8a939f8bcac06439dd981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
