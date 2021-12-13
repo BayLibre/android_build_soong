@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d581d410_fa2f56b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-13T20:43:56Z",
+      "side": 1,
+      "message": "To address the issue you noticed in comments adding new denylisted modules",
+      "revId": "3b87113871bcb64dfdcd28d0f6c882dbb382a444",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
