@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "578d1cb4_6150809d",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-13T10:31:10Z",
+      "side": 1,
+      "message": "Un-export this, and move it next to the bp2build converter where it\u0027s called. I don\u0027t expect non-bp2build use cases of this.",
+      "range": {
+        "startLine": 648,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 27
+      },
+      "revId": "e417d5ce7557f3efc3b94de95907b2e29a8d9966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c29690bd_15655fcd",
+        "filename": "bp2build/java_binary_host_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-13T10:31:10Z",
+      "side": 1,
+      "message": "Can you add a test for jni_libs conversion, since it\u0027s used by the signapk java_binary_host?\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/make/tools/signapk/Android.bp;l\u003d34;drc\u003d039058026211d5221f723ebd66e1da584ab2ba22",
+      "revId": "e417d5ce7557f3efc3b94de95907b2e29a8d9966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42272397_506fa2c0",
+        "filename": "bp2build/java_library_host_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-13T10:31:10Z",
+      "side": 1,
+      "message": "fix indent",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "e417d5ce7557f3efc3b94de95907b2e29a8d9966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72042dad_f15bf402",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1992,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-13T10:31:10Z",
+      "side": 1,
+      "message": "Let\u0027s keep the bp2build converter simple, so this should be in the Bazel side macro.\n\nI also think we need to handle errorprone flags in a more generic approach than one-off flags like this. Can you move it to Starlark, and file a bug to track errorprone integration?\n\n(also see go/bp2build-principles)",
+      "range": {
+        "startLine": 1992,
+        "startChar": 1,
+        "endLine": 1992,
+        "endChar": 52
+      },
+      "revId": "e417d5ce7557f3efc3b94de95907b2e29a8d9966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
