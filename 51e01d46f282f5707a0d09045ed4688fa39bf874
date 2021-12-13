@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0932e1ba_f74bc712",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 48
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-13T18:11:15Z",
+      "side": 1,
+      "message": "Not in the instances we have here, but `alertFmt` can be an arbitrary formatting string, so one may not necessarily pass in just strings. More proximally, because of the way that Go handles varargs, `Fprintf` cannot cope with `fmt, cwd, vals...`, as it wants just `io.Writer, string, ...interface{}`. Further, Go won\u0027t accept e.g. `fmt, cwd, vals..., err.Error()`, which is bad because even if Go actually patterned varargs, the `err`\u0027s `%s` would have to go ahead of the `alertFmt`, thus the user experience could be a dump of a large error, then the intended human context below, vs. it introducing the error immediately, offering context.",
+      "parentUuid": "7ae9bfed_662af853",
+      "range": {
+        "startLine": 69,
+        "startChar": 46,
+        "endLine": 69,
+        "endChar": 57
+      },
+      "revId": "51e01d46f282f5707a0d09045ed4688fa39bf874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fd511c5d_4781f1ea",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-13T15:51:11Z",
       "side": 1,
       "message": "optional nit: with using Fprintf, rather than so much concatenation, can we use a format string to substitute cwd and the error?",
+      "range": {
+        "startLine": 74,
+        "startChar": 24,
+        "endLine": 74,
+        "endChar": 73
+      },
+      "revId": "51e01d46f282f5707a0d09045ed4688fa39bf874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7cc0feea_3bc70c1b",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 48
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-13T18:11:15Z",
+      "side": 1,
+      "message": "For reasons discussed in the other comment, unfortunately it would require far more contortions and cost clarity. And `alertFmt` is a formatting string itself, so shouldn\u0027t be used as `%s`.",
+      "parentUuid": "fd511c5d_4781f1ea",
       "range": {
         "startLine": 74,
         "startChar": 24,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f51e3729_fcc12a08",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 48
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-13T18:11:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fa32f9c_6ae7bd31",
+      "range": {
+        "startLine": 114,
+        "startChar": 31,
+        "endLine": 114,
+        "endChar": 35
+      },
+      "revId": "51e01d46f282f5707a0d09045ed4688fa39bf874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b857a42_c91aabe4",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-12-13T15:51:11Z",
       "side": 1,
       "message": "We don\u0027t want this to be overridden from the environment as this only affects bp2build logs dir and would be somewhat deceptive that it can set the overall log directory.",
+      "range": {
+        "startLine": 376,
+        "startChar": 0,
+        "endLine": 379,
+        "endChar": 2
+      },
+      "revId": "51e01d46f282f5707a0d09045ed4688fa39bf874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4338dd0_a6475c14",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 48
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-13T18:11:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b857a42_c91aabe4",
       "range": {
         "startLine": 376,
         "startChar": 0,
