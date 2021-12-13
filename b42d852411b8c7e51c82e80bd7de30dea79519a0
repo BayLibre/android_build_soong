@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1077e5c2_e5cc9555",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-13T17:09:20Z",
+      "side": 1,
+      "message": "that\u0027s implied by presubmit, there\u0027s no need to call out separately.",
+      "parentUuid": "be1ba40a_0755136f",
+      "revId": "b42d852411b8c7e51c82e80bd7de30dea79519a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b4cfd7fb_c7c45dfc",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -52,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de7b1b2_8fd6a1e0",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-13T17:09:20Z",
+      "side": 1,
+      "message": "restructured differently",
+      "parentUuid": "40dbaf2c_8d52fcdd",
+      "revId": "b42d852411b8c7e51c82e80bd7de30dea79519a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3908f63_80984c8a",
@@ -65,6 +101,30 @@
       "writtenOn": "2021-12-13T11:31:14Z",
       "side": 1,
       "message": "Add a comment with an example string?",
+      "range": {
+        "startLine": 462,
+        "startChar": 3,
+        "endLine": 471,
+        "endChar": 4
+      },
+      "revId": "b42d852411b8c7e51c82e80bd7de30dea79519a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f1aa430_361b58c4",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-13T17:09:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3908f63_80984c8a",
       "range": {
         "startLine": 462,
         "startChar": 3,
