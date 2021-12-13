@@ -135,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "352444e9_50187bae",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 35
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-13T15:22:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11778b1e_b00a6555",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 556,
+        "endChar": 57
+      },
+      "revId": "a5f5c8e4060ba63df0e0d1c6d7c89bf9bd7a4298",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cbabbef_015c5258",
