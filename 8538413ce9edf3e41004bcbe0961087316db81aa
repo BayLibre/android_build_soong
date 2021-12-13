@@ -17,6 +17,24 @@
       "tag": "mailMessageId\u003d\u003cCANP3RGcok9sC4KNsRUJYJk8hFQGZFGazCiNoyeciH_dr_frnBw@mail.gmail.com\u003e",
       "revId": "8538413ce9edf3e41004bcbe0961087316db81aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8768aae7_f6e4b340",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2021-12-13T19:29:25Z",
+      "side": 1,
+      "message": "Originally I figured it might as well be on for everything, since I think there\u0027s some benefit to having it already enabled when a bug is reported, e.g. being able to ask the person encountering the bug to cat relevant maps to get some insight into what state the program is in. But if enabling BTF everywhere isn\u0027t feasible (which seems like it might be the case for mainline at least) then I still think it\u0027s useful to enable where possible.",
+      "parentUuid": "771df605_20cbc1ca",
+      "revId": "8538413ce9edf3e41004bcbe0961087316db81aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
