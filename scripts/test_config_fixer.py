@@ -39,12 +39,14 @@ def parse_args():
                       help=('overwrite package fields in the test config'))
   parser.add_argument('--test-file-name', default='', dest='test_file_name',
                       help=('overwrite test file name in the test config'))
+  parser.add_argument('--instrumentation-target-package', default='', dest='instr_target_pkg',
+                      help=('overwrite references to instrumentation target package name in certain fields in the test config'))
   parser.add_argument('input', help='input test config file')
   parser.add_argument('output', help='output test config file')
   return parser.parse_args()
 
 
-def overwrite_package_name(test_config_doc, manifest_doc, package_name):
+def overwrite_package_name(test_config_doc, manifest_doc, package_name, instr_target_pkg):
 
   manifest = parse_manifest(manifest_doc)
   original_package = manifest.getAttribute('package')
@@ -57,6 +59,8 @@ def overwrite_package_name(test_config_doc, manifest_doc, package_name):
     for option in options:
       if option.getAttribute('name') == "package" and option.getAttribute('value') == original_package:
         option.setAttribute('value', package_name)
+      if option.getAttribute('name') == "test-filter-dir":
+        option.setAttribute('value', '/data/data/' + instr_target_pkg)
 
 def overwrite_test_file_name(test_config_doc, test_file_name):
 
@@ -70,6 +74,7 @@ def overwrite_test_file_name(test_config_doc, test_file_name):
         if option.getAttribute('name') == "test-file-name":
           option.setAttribute('value', test_file_name)
 
+
 def main():
   """Program entry point."""
   try:
@@ -81,7 +86,7 @@ def main():
       if not args.manifest:
         raise RuntimeError('--manifest flag required for --package-name')
       manifest_doc = minidom.parse(args.manifest)
-      overwrite_package_name(doc, manifest_doc, args.package_name)
+      overwrite_package_name(doc, manifest_doc, args.package_name, args.instr_target_pkg)
 
     if args.test_file_name:
       overwrite_test_file_name(doc, args.test_file_name)

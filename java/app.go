@@ -1019,6 +1019,11 @@ func (a *AndroidTest) FixTestConfig(ctx android.ModuleContext, testConfig androi
 			FlagWithArg("--package-name ", *a.overridableAppProperties.Package_name)
 	}
 
+	if a.appTestProperties.Instrumentation_target_package != nil {
+		fixNeeded = true
+		command.FlagWithArg("--instrumentation-target-package ", *a.appTestProperties.Instrumentation_target_package)
+	}
+
 	if fixNeeded {
 		rule.Build("fix_test_config", "fix test config")
 		return fixedConfig

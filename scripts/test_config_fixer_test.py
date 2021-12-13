@@ -51,19 +51,20 @@ class OverwritePackageNameTest(unittest.TestCase):
       '    <test class="com.android.tradefed.testtype.AndroidJUnitTest">\n'
       '        <option name="package" value="%s"/>\n'
       '        <option name="runtime-hint" value="15s"/>\n'
+      '        <option name="test-filter-dir" value="/data/data/%s"/>\n'
       '    </test>\n'
       '</configuration>\n')
 
   def test_all(self):
-    doc = minidom.parseString(self.test_config % ("com.android.foo", "com.android.foo", "com.android.bar"))
+    doc = minidom.parseString(self.test_config % ("com.android.foo", "com.android.foo", "com.android.bar", "com.android.foo"))
     manifest = minidom.parseString(self.manifest)
 
-    test_config_fixer.overwrite_package_name(doc, manifest, "com.soong.foo")
+    test_config_fixer.overwrite_package_name(doc, manifest, "com.soong.foo", "com.soong.foo")
     output = io.StringIO()
     test_config_fixer.write_xml(output, doc)
 
     # Only the matching package name in a test node should be updated.
-    expected = self.test_config % ("com.android.foo", "com.soong.foo", "com.android.bar")
+    expected = self.test_config % ("com.android.foo", "com.soong.foo", "com.android.bar", "com.soong.foo")
     self.assertEqual(expected, output.getvalue())
 
 
