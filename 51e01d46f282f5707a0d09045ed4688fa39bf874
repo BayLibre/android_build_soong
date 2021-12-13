@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fc0a569_e66fa269",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 48
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-13T20:42:45Z",
+      "side": 1,
+      "message": "We don\u0027t need to change this right now, but in general, it\u0027s good to think about what level of flexibility is necessary now, not what might be used in the future ( go/yagni , https://testing.googleblog.com/2017/08/code-health-eliminate-yagni-smells.html).\n\nFor the code we have _right now_, each of these is only called with a single string: vals doesn\u0027t need to be able to handle varargs interface{} arguments, a single string would be sufficient.\n\nBlueprint/Soong already have functionality used widely for general error handling (e.g. ctx.Errorf/ctx.ModuleErrorf) and go has panic, so we\u0027re not likely to be extending use of this function.",
+      "parentUuid": "0932e1ba_f74bc712",
+      "range": {
+        "startLine": 69,
+        "startChar": 46,
+        "endLine": 69,
+        "endChar": 57
+      },
+      "revId": "51e01d46f282f5707a0d09045ed4688fa39bf874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fd511c5d_4781f1ea",
