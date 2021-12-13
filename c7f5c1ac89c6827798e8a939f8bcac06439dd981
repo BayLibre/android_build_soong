@@ -16,6 +16,24 @@
       "message": "1. I\u0027d name it just transform instead of visitAndReplace, but it\u0027s up to you.\n2. Would it be better to have this function return a rewritten node + an indicator if it has changed, similar to what eval does? This might reduce the number of objects that are created.\n",
       "revId": "c7f5c1ac89c6827798e8a939f8bcac06439dd981",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de078620_24b7be07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-13T23:08:44Z",
+      "side": 1,
+      "message": "1. Done.\n2. I personally think it\u0027s better to just keep it as simple as possible, at least until we can prove that a performance penalty is a concern. As is, it\u0027s only run when a $(foreach) is actually present, and even then it only runs on the hopefully pretty small expression inside of it. Let me know if you feel strongly about optimizing it though.",
+      "parentUuid": "5450d023_fe6f31fa",
+      "revId": "c7f5c1ac89c6827798e8a939f8bcac06439dd981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
