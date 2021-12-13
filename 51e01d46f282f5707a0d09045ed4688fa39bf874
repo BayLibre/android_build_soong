@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f28afa2_c6f181f3",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 48
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-13T20:51:41Z",
+      "side": 1,
+      "message": "If `panic` is acceptable over `os.Exit`, I can just use it. It won\u0027t give me the $PWD, but that\u0027s just a nicety. I don\u0027t have access to a `ctx`, otherwise yes I\u0027d have done e.g. `ModuleError` as elsewhere.\n\nBut what I\u0027m hearing it \"change this later if at all; keep this in mind\". So don\u0027t reup.",
+      "parentUuid": "7fc0a569_e66fa269",
+      "range": {
+        "startLine": 69,
+        "startChar": 46,
+        "endLine": 69,
+        "endChar": 57
+      },
+      "revId": "51e01d46f282f5707a0d09045ed4688fa39bf874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fd511c5d_4781f1ea",
