@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d541c387_b16c3d11",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-12-13T23:32:32Z",
+      "side": 1,
+      "message": "Can you add an example string?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 28
+      },
+      "revId": "43b794031c5af9e16b13c290f967e50adc10fc50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
