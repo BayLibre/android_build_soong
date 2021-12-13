@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da49e3db_d4b8a1f3",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 48
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-13T15:51:11Z",
+      "side": 0,
+      "message": "looks like there was a bad merge here",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 31
+      },
+      "revId": "eb59a6d3ea10c7c383b84c0ef3d7dd7a8015d5a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
