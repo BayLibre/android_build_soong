@@ -22,6 +22,30 @@
       },
       "revId": "c2077730565795f5c22655db985530a609918c19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35170a53_380a1204",
+        "filename": "apex/vndk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-14T17:57:17Z",
+      "side": 0,
+      "message": "I noticed that too, but I haven\u0027t investigated.",
+      "parentUuid": "01de624f_343af7af",
+      "range": {
+        "startLine": 152,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 39
+      },
+      "revId": "c2077730565795f5c22655db985530a609918c19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
