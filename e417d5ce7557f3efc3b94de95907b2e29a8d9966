@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "446c108d_7c901972",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:05:33Z",
+      "side": 1,
+      "message": "ack. I missed that.",
+      "parentUuid": "19202c0c_26bbad08",
+      "range": {
+        "startLine": 648,
+        "startChar": 0,
+        "endLine": 648,
+        "endChar": 27
+      },
+      "revId": "e417d5ce7557f3efc3b94de95907b2e29a8d9966",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "619f11ff_d879c5af",

@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcee23bf_4d3e0d95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:05:33Z",
+      "side": 1,
+      "message": "Thanks! Generally looks good, just a few suggestions/comments.",
+      "revId": "2172eae98a51bc79cda8375f395e5adcfc4ac765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40c5310c_e1187e53",
+        "filename": "android/bazel.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:05:33Z",
+      "side": 1,
+      "message": "Can you add a docstring to warn that this should only be used in the java_* bp2build converters?",
+      "range": {
+        "startLine": 650,
+        "startChar": 5,
+        "endLine": 650,
+        "endChar": 27
+      },
+      "revId": "2172eae98a51bc79cda8375f395e5adcfc4ac765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "811324bb_75c30cdd",
+        "filename": "bp2build/java_binary_host_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:05:33Z",
+      "side": 1,
+      "message": "Can you use https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/testing.go;l\u003d360-366;drc\u003d46fb7aba4dd84a1960a94a53b6b561197f722ae2 with a minimal cc_library_host_shared module instead? Same for the jni-lib-2 in other/Android.bp. You\u0027ll have to register the module factory for cc_library_host_shared for the test context too, see other tests in this directory for examples. The deps don\u0027t need to be converted to Bazel; just enough to be parseable.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 3
+      },
+      "revId": "2172eae98a51bc79cda8375f395e5adcfc4ac765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c583a7e_d1df64d3",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:05:33Z",
+      "side": 1,
+      "message": "fix indent",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "2172eae98a51bc79cda8375f395e5adcfc4ac765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c23860e3_4f36cdff",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:05:33Z",
+      "side": 1,
+      "message": "The errorprone flags shouldn\u0027t be here anymore.",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 50
+      },
+      "revId": "2172eae98a51bc79cda8375f395e5adcfc4ac765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e86de673_5dbfec4e",
+        "filename": "bp2build/java_library_host_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:05:33Z",
+      "side": 1,
+      "message": "fix indent",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "2172eae98a51bc79cda8375f395e5adcfc4ac765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "737ccf9a_79e3317e",
+        "filename": "cc/library.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2629,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:05:33Z",
+      "side": 1,
+      "message": "Also see https://android-review.googlesource.com/c/platform/build/soong/+/1917398/5/android/mutator.go, which is adding a way to create targets that only compiles for the host. We\u0027ll have to switch to this later.",
+      "revId": "2172eae98a51bc79cda8375f395e5adcfc4ac765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c67427e5_f247b049",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2088,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:05:33Z",
+      "side": 1,
+      "message": "In an ideal world, the java_binary rule should handle this.. and I think it somewhat does with the _deploy.jar implicit output? https://docs.bazel.build/versions/main/be/java.html#java_binary_implicit_outputs\n\nHave you tried that yet? The current approach is fine, but it would be good to understand what\u0027s lacking from the java_binary deploy jar JNI integration that we can\u0027t use it here in Android.",
+      "range": {
+        "startLine": 2088,
+        "startChar": 2,
+        "endLine": 2088,
+        "endChar": 116
+      },
+      "revId": "2172eae98a51bc79cda8375f395e5adcfc4ac765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
