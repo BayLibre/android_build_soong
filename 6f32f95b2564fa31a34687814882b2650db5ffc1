@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fdb6ab3_451ff828",
+        "filename": "android/bazel.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-14T14:23:34Z",
+      "side": 0,
+      "message": "Don\u0027t we need special handling in cc/bp2build.go for static/shared `enabled` property to allowlist this?\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/cc/library.go;l\u003d152;drc\u003d1263d9bdb1627f2ec2c030bcef5b53d011be3b77",
+      "range": {
+        "startLine": 444,
+        "startChar": 2,
+        "endLine": 444,
+        "endChar": 115
+      },
+      "revId": "6f32f95b2564fa31a34687814882b2650db5ffc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

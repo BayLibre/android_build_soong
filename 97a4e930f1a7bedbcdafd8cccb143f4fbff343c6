@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "025ba087_d72b5f30",
+        "filename": "android/mutator.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-14T14:23:34Z",
+      "side": 1,
+      "message": "why do we need a separate interface? This is already encoded via the HostOrDeviceSupported property: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/module.go;l\u003d806;drc\u003dd8395b1b2f434f1b30dae57b4e0bc17cfa6b83e7 and doesn\u0027t require calling a separate function between host/device conversion",
+      "range": {
+        "startLine": 545,
+        "startChar": 32,
+        "endLine": 545,
+        "endChar": 63
+      },
+      "revId": "97a4e930f1a7bedbcdafd8cccb143f4fbff343c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b623ee87_142208ff",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-14T14:23:34Z",
+      "side": 1,
+      "message": "nit: well",
+      "range": {
+        "startLine": 124,
+        "startChar": 86,
+        "endLine": 124,
+        "endChar": 90
+      },
+      "revId": "97a4e930f1a7bedbcdafd8cccb143f4fbff343c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ae5ead_4a3b44c1",
+        "filename": "bazel/properties.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-14T14:23:34Z",
+      "side": 1,
+      "message": "it seems a bit odd for SetValue to take a Label and SetSelectValue to take a *Label...",
+      "range": {
+        "startLine": 313,
+        "startChar": 86,
+        "endLine": 313,
+        "endChar": 87
+      },
+      "revId": "97a4e930f1a7bedbcdafd8cccb143f4fbff343c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d626ca3_3772ccee",
+        "filename": "bazel/properties.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-14T14:23:34Z",
+      "side": 1,
+      "message": "I read the callsite first and was struggling to figure out the order here -- since go doesn\u0027t support named params, wdyt of changing this to a struct with FalseVal and TrueVal fields?",
+      "range": {
+        "startLine": 404,
+        "startChar": 46,
+        "endLine": 404,
+        "endChar": 83
+      },
+      "revId": "97a4e930f1a7bedbcdafd8cccb143f4fbff343c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66dfa458_781f6b3a",
+        "filename": "bazel/properties.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-14T14:23:34Z",
+      "side": 1,
+      "message": "cries in lack of generics",
+      "range": {
+        "startLine": 441,
+        "startChar": 25,
+        "endLine": 441,
+        "endChar": 33
+      },
+      "revId": "97a4e930f1a7bedbcdafd8cccb143f4fbff343c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6235de8c_9f5048a8",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1458,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-14T14:23:34Z",
+      "side": 1,
+      "message": "can you add a comment that this is expected to override the value for darwin_x86_64?",
+      "range": {
+        "startLine": 1456,
+        "startChar": 0,
+        "endLine": 1458,
+        "endChar": 10
+      },
+      "revId": "97a4e930f1a7bedbcdafd8cccb143f4fbff343c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "459939bf_3ef9db00",
+        "filename": "cc/binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-14T14:23:34Z",
+      "side": 1,
+      "message": "this mutator handled both cc_binary and cc_binary_host -- this makes all targets host only?",
+      "range": {
+        "startLine": 629,
+        "startChar": 5,
+        "endLine": 629,
+        "endChar": 36
+      },
+      "revId": "97a4e930f1a7bedbcdafd8cccb143f4fbff343c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
