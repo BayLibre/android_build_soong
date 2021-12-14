@@ -16,6 +16,23 @@
       "message": "LGTM\nThanks for doing this! And also restructuring that block. 😊",
       "revId": "1263d9bdb1627f2ec2c030bcef5b53d011be3b77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9541ba8_688f7eba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-12-14T00:12:08Z",
+      "side": 1,
+      "message": "Triggered submit to try to unblock libadbd_core and libadbd_services",
+      "revId": "1263d9bdb1627f2ec2c030bcef5b53d011be3b77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
