@@ -93,6 +93,30 @@
       },
       "revId": "409f42523109a97c58e7c71ce9f6781f1f28bc60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0eb6da7d_fdf49a31",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-12-14T23:30:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "20852112_94b743b0",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 23
+      },
+      "revId": "409f42523109a97c58e7c71ce9f6781f1f28bc60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
