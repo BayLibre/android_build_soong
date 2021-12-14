@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44ab4120_727472d8",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-14T06:06:07Z",
+      "side": 1,
+      "message": "I\u0027m uncomfortable deleting this safeguard functionality in this CL. We can always delete it later.\n\n(For example, we debated doing this with mixedBuildsDisabledList before, and then very shortly thereafter started using that list again)",
+      "parentUuid": "e8c988a1_3cd65917",
+      "range": {
+        "startLine": 436,
+        "startChar": 1,
+        "endLine": 438,
+        "endChar": 45
+      },
+      "revId": "d1f5a88e83be8b73325d7da00c1ee6430d666f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c17c6c1_77227c8f",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f02d40_e0f5e7af",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-14T06:06:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c17c6c1_77227c8f",
+      "range": {
+        "startLine": 873,
+        "startChar": 4,
+        "endLine": 873,
+        "endChar": 11
+      },
+      "revId": "d1f5a88e83be8b73325d7da00c1ee6430d666f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "400aa623_695a3308",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-12-14T05:39:19Z",
       "side": 1,
       "message": "Use an enum for readability purposes? HOST, DEVICE, BOTH \n\n(https://www.teamten.com/lawrence/programming/prefer-enums-over-booleans.html)",
+      "range": {
+        "startLine": 1097,
+        "startChar": 89,
+        "endLine": 1097,
+        "endChar": 109
+      },
+      "revId": "d1f5a88e83be8b73325d7da00c1ee6430d666f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2be162fd_30116c03",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1097,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-14T06:06:07Z",
+      "side": 1,
+      "message": "TL;DR: OK, but I\u0027m resistant to it here. I\u0027ve done it anyway for your review.\n\n\nIn general I agree with this sentiment only for public-visibility APIs, whereas this is a private function that should only be called via one of the two public functions of same name.\n\nI also think given the size of this package, we\u0027re polluting the namespace with a new enum. (Also, reusing the existing HostSupported and DeviceSupported enum does not make sense here).\n\nFurthermore, I don\u0027t think golang\u0027s support of enums is sufficient for this type of API guarding; I can add pass any int as an argument; golang doesn\u0027t complain. \n\nI\u0027m not going to implement DEVICE at this time, because I have not bothered with a test case nor manual verification for it.",
+      "parentUuid": "400aa623_695a3308",
       "range": {
         "startLine": 1097,
         "startChar": 89,
@@ -133,6 +205,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bf1847d_4aaf7e00",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-14T06:06:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb8f4c02_ead32cfe",
+      "range": {
+        "startLine": 257,
+        "startChar": 48,
+        "endLine": 258,
+        "endChar": 77
+      },
+      "revId": "d1f5a88e83be8b73325d7da00c1ee6430d666f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88962e75_2802e0b8",
@@ -146,6 +242,30 @@
       "writtenOn": "2021-12-14T05:39:19Z",
       "side": 1,
       "message": "label",
+      "range": {
+        "startLine": 268,
+        "startChar": 22,
+        "endLine": 268,
+        "endChar": 29
+      },
+      "revId": "d1f5a88e83be8b73325d7da00c1ee6430d666f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59967cd9_da68bfe8",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-14T06:06:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88962e75_2802e0b8",
       "range": {
         "startLine": 268,
         "startChar": 22,
@@ -179,6 +299,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bfc305a_3dde279b",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-14T06:06:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2755980_d14eb620",
+      "range": {
+        "startLine": 1441,
+        "startChar": 0,
+        "endLine": 1446,
+        "endChar": 0
+      },
+      "revId": "d1f5a88e83be8b73325d7da00c1ee6430d666f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc713456_b00a79bc",
@@ -192,6 +336,30 @@
       "writtenOn": "2021-12-14T05:39:19Z",
       "side": 1,
       "message": "fix double indents, here and below",
+      "range": {
+        "startLine": 2194,
+        "startChar": 1,
+        "endLine": 2202,
+        "endChar": 5
+      },
+      "revId": "d1f5a88e83be8b73325d7da00c1ee6430d666f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fffd5db4_f101a838",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2202,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-14T06:06:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc713456_b00a79bc",
       "range": {
         "startLine": 2194,
         "startChar": 1,
