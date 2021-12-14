@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "171b675f_c25f4321",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-14T14:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51b3e153_f93b1fef",
+      "revId": "f293c5410d28bc971b03d55bb89ceeb9242d9b8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "102db422_8b04a549",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-12-10T17:49:37Z",
       "side": 1,
       "message": "Naming is a little awkward -- \"ShouldBp2buildConvert\"  ?",
+      "revId": "f293c5410d28bc971b03d55bb89ceeb9242d9b8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f834bba_347b2f2e",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-14T14:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "102db422_8b04a549",
       "revId": "f293c5410d28bc971b03d55bb89ceeb9242d9b8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -87,6 +123,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59075942_53280c10",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-14T14:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b83028d0_a835a413",
+      "revId": "f293c5410d28bc971b03d55bb89ceeb9242d9b8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92fe4d32_28aca5ce",
@@ -100,6 +154,30 @@
       "writtenOn": "2021-12-13T11:03:18Z",
       "side": 1,
       "message": "these two modules are repeated many times in this list. here and below.",
+      "range": {
+        "startLine": 450,
+        "startChar": 75,
+        "endLine": 450,
+        "endChar": 101
+      },
+      "revId": "f293c5410d28bc971b03d55bb89ceeb9242d9b8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ea4a878_c8af2529",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-14T14:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92fe4d32_28aca5ce",
       "range": {
         "startLine": 450,
         "startChar": 75,
@@ -133,6 +211,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e81e3134_e245ba20",
+        "filename": "android/defaults.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-14T14:41:04Z",
+      "side": 1,
+      "message": "oop. fixed meant it to be DefaultsModuleBase not DefaultableModuleBase, thanks.",
+      "parentUuid": "8813a4f5_ed7eb1fc",
+      "range": {
+        "startLine": 328,
+        "startChar": 63,
+        "endLine": 329,
+        "endChar": 32
+      },
+      "revId": "f293c5410d28bc971b03d55bb89ceeb9242d9b8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "702d603d_40a7712b",
@@ -146,6 +248,30 @@
       "writtenOn": "2021-12-13T11:03:18Z",
       "side": 1,
       "message": "Add a docstring?",
+      "range": {
+        "startLine": 180,
+        "startChar": 1,
+        "endLine": 180,
+        "endChar": 23
+      },
+      "revId": "f293c5410d28bc971b03d55bb89ceeb9242d9b8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b39ded2_fdbeaaa7",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-14T14:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "702d603d_40a7712b",
       "range": {
         "startLine": 180,
         "startChar": 1,
@@ -192,6 +318,24 @@
       "writtenOn": "2021-12-10T17:49:37Z",
       "side": 1,
       "message": "fix 😊",
+      "revId": "f293c5410d28bc971b03d55bb89ceeb9242d9b8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3036cc59_c66ddc56",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-14T14:41:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03e2e2f1_b92877ba",
       "revId": "f293c5410d28bc971b03d55bb89ceeb9242d9b8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
