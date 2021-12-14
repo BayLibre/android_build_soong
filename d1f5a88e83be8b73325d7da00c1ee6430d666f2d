@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd37bd0b_37a764b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:39:19Z",
+      "side": 1,
+      "message": "awesome :) ",
+      "revId": "d1f5a88e83be8b73325d7da00c1ee6430d666f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8c988a1_3cd65917",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:39:19Z",
+      "side": 1,
+      "message": "Can we delete this now too?",
+      "range": {
+        "startLine": 436,
+        "startChar": 1,
+        "endLine": 438,
+        "endChar": 45
+      },
+      "revId": "d1f5a88e83be8b73325d7da00c1ee6430d666f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c17c6c1_77227c8f",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:39:19Z",
+      "side": 1,
+      "message": "Should this be \"constraint values this targets can build for?\"",
+      "range": {
+        "startLine": 873,
+        "startChar": 4,
+        "endLine": 873,
+        "endChar": 11
+      },
+      "revId": "d1f5a88e83be8b73325d7da00c1ee6430d666f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "400aa623_695a3308",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1097,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:39:19Z",
+      "side": 1,
+      "message": "Use an enum for readability purposes? HOST, DEVICE, BOTH \n\n(https://www.teamten.com/lawrence/programming/prefer-enums-over-booleans.html)",
+      "range": {
+        "startLine": 1097,
+        "startChar": 89,
+        "endLine": 1097,
+        "endChar": 109
+      },
+      "revId": "d1f5a88e83be8b73325d7da00c1ee6430d666f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab4a3c96_b37b3ac3",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:39:19Z",
+      "side": 1,
+      "message": "interesting :) https://docs.microsoft.com/en-us/windows/arm/",
+      "range": {
+        "startLine": 124,
+        "startChar": 63,
+        "endLine": 124,
+        "endChar": 82
+      },
+      "revId": "d1f5a88e83be8b73325d7da00c1ee6430d666f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb8f4c02_ead32cfe",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:39:19Z",
+      "side": 1,
+      "message": "/clippy: Did you mean label attribute?",
+      "range": {
+        "startLine": 257,
+        "startChar": 48,
+        "endLine": 258,
+        "endChar": 77
+      },
+      "revId": "d1f5a88e83be8b73325d7da00c1ee6430d666f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88962e75_2802e0b8",
+        "filename": "bazel/properties.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:39:19Z",
+      "side": 1,
+      "message": "label",
+      "range": {
+        "startLine": 268,
+        "startChar": 22,
+        "endLine": 268,
+        "endChar": 29
+      },
+      "revId": "d1f5a88e83be8b73325d7da00c1ee6430d666f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2755980_d14eb620",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:39:19Z",
+      "side": 1,
+      "message": "stale code?",
+      "range": {
+        "startLine": 1441,
+        "startChar": 0,
+        "endLine": 1446,
+        "endChar": 0
+      },
+      "revId": "d1f5a88e83be8b73325d7da00c1ee6430d666f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc713456_b00a79bc",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 2202,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2021-12-14T05:39:19Z",
+      "side": 1,
+      "message": "fix double indents, here and below",
+      "range": {
+        "startLine": 2194,
+        "startChar": 1,
+        "endLine": 2202,
+        "endChar": 5
+      },
+      "revId": "d1f5a88e83be8b73325d7da00c1ee6430d666f2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
