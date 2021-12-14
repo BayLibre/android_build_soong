@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e526e2b_6c7270a4",
+        "filename": "android/bazel.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 650,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-12-14T09:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40c5310c_e1187e53",
+      "range": {
+        "startLine": 650,
+        "startChar": 5,
+        "endLine": 650,
+        "endChar": 27
+      },
+      "revId": "2172eae98a51bc79cda8375f395e5adcfc4ac765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "811324bb_75c30cdd",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-14T05:05:33Z",
       "side": 1,
       "message": "Can you use https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/testing.go;l\u003d360-366;drc\u003d46fb7aba4dd84a1960a94a53b6b561197f722ae2 with a minimal cc_library_host_shared module instead? Same for the jni-lib-2 in other/Android.bp. You\u0027ll have to register the module factory for cc_library_host_shared for the test context too, see other tests in this directory for examples. The deps don\u0027t need to be converted to Bazel; just enough to be parseable.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 3
+      },
+      "revId": "2172eae98a51bc79cda8375f395e5adcfc4ac765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d10641ad_55e499ca",
+        "filename": "bp2build/java_binary_host_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-12-14T09:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "811324bb_75c30cdd",
       "range": {
         "startLine": 54,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bf0ce09_d9542c9b",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-12-14T09:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c583a7e_d1df64d3",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "2172eae98a51bc79cda8375f395e5adcfc4ac765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c23860e3_4f36cdff",
@@ -110,6 +182,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05a37018_06cd0c48",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-12-14T09:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c23860e3_4f36cdff",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 50
+      },
+      "revId": "2172eae98a51bc79cda8375f395e5adcfc4ac765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e86de673_5dbfec4e",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-12-14T05:05:33Z",
       "side": 1,
       "message": "fix indent",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 3
+      },
+      "revId": "2172eae98a51bc79cda8375f395e5adcfc4ac765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4addf58b_4b50f637",
+        "filename": "bp2build/java_library_host_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-12-14T09:10:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e86de673_5dbfec4e",
       "range": {
         "startLine": 46,
         "startChar": 0,
@@ -163,6 +283,30 @@
       "writtenOn": "2021-12-14T05:05:33Z",
       "side": 1,
       "message": "In an ideal world, the java_binary rule should handle this.. and I think it somewhat does with the _deploy.jar implicit output? https://docs.bazel.build/versions/main/be/java.html#java_binary_implicit_outputs\n\nHave you tried that yet? The current approach is fine, but it would be good to understand what\u0027s lacking from the java_binary deploy jar JNI integration that we can\u0027t use it here in Android.",
+      "range": {
+        "startLine": 2088,
+        "startChar": 2,
+        "endLine": 2088,
+        "endChar": 116
+      },
+      "revId": "2172eae98a51bc79cda8375f395e5adcfc4ac765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e166305_b011d9e3",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2088,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-12-14T09:10:57Z",
+      "side": 1,
+      "message": "Yes I also tried _deploy.jar before choosing the current solution. The _deploy.jar includes all files of java deps, but not JNI libs. Even JNI libs could be included, it still might not work for all JNI libs because they locate/load their JNI libs in different ways from different directories in jar files or local file system.",
+      "parentUuid": "c67427e5_f247b049",
       "range": {
         "startLine": 2088,
         "startChar": 2,
