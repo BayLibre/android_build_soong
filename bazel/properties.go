@@ -566,6 +566,29 @@ func (lla LabelListAttribute) IsEmpty() bool {
 	return true
 }
 
+// IsNil returns true if the attribute has not been set for any configuration.
+func (lla LabelListAttribute) IsNil() bool {
+	if lla.Value.Includes != nil {
+		return false
+	}
+	for axis, _ := range lla.ConfigurableValues {
+		if lla.ConfigurableValues[axis].HasConfigurableValues() {
+			return false
+		}
+	}
+	return true
+}
+
+// Exclude for the given axis, config, removes Includes in labelList from Includes and appends them
+// to Excludes. This is to special case any excludes that are not specified in a bp file but need to
+// be removed, e.g. if they could cause duplicate element failures.
+func (lla *LabelListAttribute) Exclude(axis ConfigurationAxis, config string, labelList LabelList) {
+	val := lla.SelectValue(axis, config)
+	newList := SubtractBazelLabelList(val, labelList)
+	newList.Excludes = append(newList.Excludes, labelList.Includes...)
+	lla.SetSelectValue(axis, config, newList)
+}
+
 // ResolveExcludes handles excludes across the various axes, ensuring that items are removed from
 // the base value and included in default values as appropriate.
 func (lla *LabelListAttribute) ResolveExcludes() {
