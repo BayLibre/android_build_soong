@@ -16,6 +16,24 @@
       "message": "This seems odd, its overwriting test-filter-dir with a /data/data path no matter what the original value was.\n\nTracing back through the bugs it appears that the original source of this issue is that tradefed writes to /data/local/tmp, which can\u0027t be accessed by some tests due to selinux.  Would an alternate solution be to write the file to /data/local/tests/unrestricted, which should have less restrictive selinux policies?  Then you don\u0027t need to rewrite the directory to match the test, and don\u0027t need this patch.",
       "revId": "5972a5f0e7583e07059dcbe65c372dc77b86ef7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b059d814_dcc7a6af",
+        "filename": "scripts/test_config_fixer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1014491
+      },
+      "writtenOn": "2021-12-14T23:02:20Z",
+      "side": 1,
+      "message": "Yes, the code is being lazy here: it\u0027s exploiting the fact that if `test-filter-dir` is explicitly specified, it\u0027s using `/data/data` already. But I can change that to verify that if it\u0027s the expected original package name. Note that the \"original package name\" is also not the original test package name, but rather the original package that the original test package is instrumenting against.\n\nAnd for alternatives to `/data/local/tmp`: I did try `/data/local/tests/unrestricted`, which also didn\u0027t work. Let me see if I can still find the original forrest run.",
+      "parentUuid": "8ab55b19_e1650ca2",
+      "revId": "5972a5f0e7583e07059dcbe65c372dc77b86ef7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
