@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ab55b19_e1650ca2",
+        "filename": "scripts/test_config_fixer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-14T22:54:02Z",
+      "side": 1,
+      "message": "This seems odd, its overwriting test-filter-dir with a /data/data path no matter what the original value was.\n\nTracing back through the bugs it appears that the original source of this issue is that tradefed writes to /data/local/tmp, which can\u0027t be accessed by some tests due to selinux.  Would an alternate solution be to write the file to /data/local/tests/unrestricted, which should have less restrictive selinux policies?  Then you don\u0027t need to rewrite the directory to match the test, and don\u0027t need this patch.",
+      "revId": "5972a5f0e7583e07059dcbe65c372dc77b86ef7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
