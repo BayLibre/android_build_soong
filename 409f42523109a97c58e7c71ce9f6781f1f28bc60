@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80bbc482_3a4f71c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-12-14T23:28:58Z",
+      "side": 1,
+      "message": "Done - Ha, can you tell that I copy pasted from the code?",
+      "parentUuid": "8d56f6ff_53a73326",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "409f42523109a97c58e7c71ce9f6781f1f28bc60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b69dcaa9_4cbc4204",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-14T23:20:40Z",
       "side": 1,
       "message": "Should we remove bug-number coents for flags that are here to stay?\n\n(Other flags have bugs attached as well but we should probably accept that we are never going to resolve these in external projects).",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 23
+      },
+      "revId": "409f42523109a97c58e7c71ce9f6781f1f28bc60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20852112_94b743b0",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-12-14T23:28:58Z",
+      "side": 1,
+      "message": "In the future, we probably should add a `FIXME` or `TODO` tag if the bug is expected to go away. Leaving the bug number seems like reasonable documentation (\"We chose to suppress this\") for the other cases like this.",
+      "parentUuid": "b69dcaa9_4cbc4204",
       "range": {
         "startLine": 263,
         "startChar": 0,
