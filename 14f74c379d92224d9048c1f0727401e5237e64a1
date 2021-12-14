@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d71e4e2_e4c09bbe",
+        "filename": "cc/afdo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-12-14T05:12:21Z",
+      "side": 1,
+      "message": "If `libc++` is the only instance of `++`, we might be better off replacing with `xx` as they do in all of the other naming related to it upstream.",
+      "revId": "14f74c379d92224d9048c1f0727401e5237e64a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
