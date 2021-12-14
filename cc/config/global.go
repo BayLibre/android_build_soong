@@ -259,6 +259,10 @@ var (
 
 		// http://b/199369603
 		"-Wno-null-pointer-subtraction",
+
+		// http://b/197240255
+		"-Wno-unused-but-set-variable",
+		"-Wno-unused-but-set-parameter",
 	}
 
 	IllegalFlags = []string{
