@@ -52,6 +52,24 @@
       "parentUuid": "de078620_24b7be07",
       "revId": "c7f5c1ac89c6827798e8a939f8bcac06439dd981",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bb443eb_775a0286",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-14T20:59:32Z",
+      "side": 1,
+      "message": "1. Whoops, done.\n2. I made a different cl, aosp/1922864, to remove eval() entirely. Let me know what you think.",
+      "parentUuid": "287eedb5_cd418a8c",
+      "revId": "c7f5c1ac89c6827798e8a939f8bcac06439dd981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
