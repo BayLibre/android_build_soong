@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d56f6ff_53a73326",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-12-14T23:20:40Z",
+      "side": 1,
+      "message": "spurious.",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "409f42523109a97c58e7c71ce9f6781f1f28bc60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b69dcaa9_4cbc4204",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-12-14T23:20:40Z",
+      "side": 1,
+      "message": "Should we remove bug-number coents for flags that are here to stay?\n\n(Other flags have bugs attached as well but we should probably accept that we are never going to resolve these in external projects).",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 23
+      },
+      "revId": "409f42523109a97c58e7c71ce9f6781f1f28bc60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
