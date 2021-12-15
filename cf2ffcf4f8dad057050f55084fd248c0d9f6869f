@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f548970_a8262009",
+        "filename": "android/bazel.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-12-15T00:22:33Z",
+      "side": 1,
+      "message": "Could you add a b/ bug link here?",
+      "range": {
+        "startLine": 415,
+        "startChar": 41,
+        "endLine": 415,
+        "endChar": 85
+      },
+      "revId": "cf2ffcf4f8dad057050f55084fd248c0d9f6869f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb76fecc_8a8b0303",
+        "filename": "java/base.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1967,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2021-12-15T00:22:33Z",
+      "side": 1,
+      "message": "This is a bit strange to have an empty default. I think this is optional, so can we remove it?",
+      "range": {
+        "startLine": 1967,
+        "startChar": 1,
+        "endLine": 1967,
+        "endChar": 9
+      },
+      "revId": "cf2ffcf4f8dad057050f55084fd248c0d9f6869f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
