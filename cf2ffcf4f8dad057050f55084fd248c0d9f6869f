@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6632356b_d784049b",
+        "filename": "android/bazel.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-12-15T01:24:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f548970_a8262009",
+      "range": {
+        "startLine": 415,
+        "startChar": 41,
+        "endLine": 415,
+        "endChar": 85
+      },
+      "revId": "cf2ffcf4f8dad057050f55084fd248c0d9f6869f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb76fecc_8a8b0303",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-15T00:22:33Z",
       "side": 1,
       "message": "This is a bit strange to have an empty default. I think this is optional, so can we remove it?",
+      "range": {
+        "startLine": 1967,
+        "startChar": 1,
+        "endLine": 1967,
+        "endChar": 9
+      },
+      "revId": "cf2ffcf4f8dad057050f55084fd248c0d9f6869f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "547a0049_9657727b",
+        "filename": "java/base.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1967,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2021-12-15T01:24:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb76fecc_8a8b0303",
       "range": {
         "startLine": 1967,
         "startChar": 1,
