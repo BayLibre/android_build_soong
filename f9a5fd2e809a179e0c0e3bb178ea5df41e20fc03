@@ -16,6 +16,23 @@
       "message": "Weird that it got verified and then somehow lost it",
       "revId": "f9a5fd2e809a179e0c0e3bb178ea5df41e20fc03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a9bf2d4_507d8836",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-12-15T06:16:04Z",
+      "side": 1,
+      "message": "I realize now that external/ is still showing the warnings even with this added. I need to figure out what is adding the check later in the command line.",
+      "revId": "f9a5fd2e809a179e0c0e3bb178ea5df41e20fc03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
