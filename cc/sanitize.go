@@ -1459,9 +1459,9 @@ func (s *sanitizerStaticLibsMap) add(c LinkableInterface, name string) {
 // These are to be used by use_soong_sanitized_static_libraries.
 // See build/make/core/binary.mk for more details.
 func (s *sanitizerStaticLibsMap) exportToMake(ctx android.MakeVarsContext) {
-	for _, image := range android.SortedStringKeys(s.libsMap) {
-		archMap := s.libsMap[ImageVariantType(image)]
-		for _, arch := range android.SortedStringKeys(archMap) {
+	for _, image := range android.SortedKeys(s.libsMap) {
+		archMap := s.libsMap[image]
+		for _, arch := range android.SortedKeys(archMap) {
 			libs := archMap[arch]
 			sort.Strings(libs)
 

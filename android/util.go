@@ -15,6 +15,7 @@
 package android
 
 import (
+	"constraints"
 	"fmt"
 	"path/filepath"
 	"reflect"
@@ -65,19 +66,25 @@ func JoinWithSuffix(strs []string, suffix string, separator string) string {
 	return buf.String()
 }
 
-// SorterStringKeys returns the keys of the given string-keyed map in the ascending order
-func SortedStringKeys(m interface{}) []string {
-	v := reflect.ValueOf(m)
-	if v.Kind() != reflect.Map {
-		panic(fmt.Sprintf("%#v is not a map", m))
+type orderedSlice[T constraints.Ordered] []T
+
+func (s orderedSlice[T]) Len() int           { return len(s) }
+func (s orderedSlice[T]) Less(i, j int) bool { return s[i] < s[j] }
+func (s orderedSlice[T]) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
+
+// SortedKeys returns the keys of the given map in the ascending order
+func SortedKeys[K constraints.Ordered, V any](m map[K]V) []K {
+	s := make([]K, 0, len(m))
+	for key := range m {
+		s = append(s, key)
 	}
-	keys := v.MapKeys()
-	s := make([]string, 0, len(keys))
-	for _, key := range keys {
-		s = append(s, key.String())
-	}
-	sort.Strings(s)
+	sort.Sort(orderedSlice[K](s))
 	return s
+}
+
+// SorterStringKeys returns the keys of the given string-keyed map in the ascending order
+func SortedStringKeys[K ~string, V any](m map[K]V) []K {
+	return SortedKeys(m)
 }
 
 // IndexList returns the index of the first occurrence of the given string in the list or -1

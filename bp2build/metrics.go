@@ -48,7 +48,7 @@ func (metrics *CodegenMetrics) Serialize() bp2build_metrics_proto.Bp2BuildMetric
 // Print the codegen metrics to stdout.
 func (metrics *CodegenMetrics) Print() {
 	generatedTargetCount := uint64(0)
-	for _, ruleClass := range android.SortedStringKeys(metrics.ruleClassCount) {
+	for _, ruleClass := range android.SortedKeys(metrics.ruleClassCount) {
 		count := metrics.ruleClassCount[ruleClass]
 		fmt.Printf("[bp2build] %s: %d targets\n", ruleClass, count)
 		generatedTargetCount += count

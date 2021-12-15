@@ -118,7 +118,7 @@ func BuildNotices(ctx ModuleContext, noticeMap map[string]Paths) NoticeOutputs {
 	outputDir := PathForModuleOut(ctx, "notices")
 	builder := NewRuleBuilder(pctx, ctx).
 		Sbox(outputDir, PathForModuleOut(ctx, "notices.sbox.textproto"))
-	for _, installPath := range SortedStringKeys(noticeMap) {
+	for _, installPath := range SortedKeys(noticeMap) {
 		noticePath := outputDir.Join(ctx, installPath+".txt")
 		// It would be nice if sbox created directories for temporaries, but until then
 		// this is simple enough.

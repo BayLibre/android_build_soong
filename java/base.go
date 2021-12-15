@@ -928,7 +928,7 @@ func (j *Module) collectJavacFlags(
 					topLevelDirs[srcFileParts[0]] = true
 				}
 			}
-			patchPaths = append(patchPaths, android.SortedStringKeys(topLevelDirs)...)
+			patchPaths = append(patchPaths, android.SortedKeys(topLevelDirs)...)
 
 			classPath := flags.classpath.FormJavaClassPath("")
 			if classPath != "" {
