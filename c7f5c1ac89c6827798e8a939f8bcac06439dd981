@@ -70,6 +70,24 @@
       "parentUuid": "287eedb5_cd418a8c",
       "revId": "c7f5c1ac89c6827798e8a939f8bcac06439dd981",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f199956e_bc38ba9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-12-15T03:43:04Z",
+      "side": 1,
+      "message": "2. Node transformation is useful, so once it\u0027s implemented it might be used elsewhere, too, affecting performance. IMHO avoiding creating useless objects isn\u0027t that hard in this case, and spurious garbage collection is bad.",
+      "parentUuid": "3bb443eb_775a0286",
+      "revId": "c7f5c1ac89c6827798e8a939f8bcac06439dd981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
