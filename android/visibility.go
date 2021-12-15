@@ -188,9 +188,9 @@ var visibilityRuleMap = NewOnceKey("visibilityRuleMap")
 
 // The map from qualifiedModuleName to visibilityRule.
 func moduleToVisibilityRuleMap(config Config) *sync.Map {
-	return config.Once(visibilityRuleMap, func() interface{} {
+	return OncePerConfig(config, visibilityRuleMap, func() *sync.Map {
 		return &sync.Map{}
-	}).(*sync.Map)
+	})
 }
 
 // Marker interface that identifies dependencies that are excluded from visibility

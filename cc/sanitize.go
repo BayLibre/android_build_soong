@@ -1479,17 +1479,17 @@ func (s *sanitizerStaticLibsMap) exportToMake(ctx android.MakeVarsContext) {
 var cfiStaticLibsKey = android.NewOnceKey("cfiStaticLibs")
 
 func cfiStaticLibs(config android.Config) *sanitizerStaticLibsMap {
-	return config.Once(cfiStaticLibsKey, func() interface{} {
+	return android.OncePerConfig(config, cfiStaticLibsKey, func() *sanitizerStaticLibsMap {
 		return newSanitizerStaticLibsMap(cfi)
-	}).(*sanitizerStaticLibsMap)
+	})
 }
 
 var hwasanStaticLibsKey = android.NewOnceKey("hwasanStaticLibs")
 
 func hwasanStaticLibs(config android.Config) *sanitizerStaticLibsMap {
-	return config.Once(hwasanStaticLibsKey, func() interface{} {
+	return android.OncePerConfig(config, hwasanStaticLibsKey, func() *sanitizerStaticLibsMap {
 		return newSanitizerStaticLibsMap(Hwasan)
-	}).(*sanitizerStaticLibsMap)
+	})
 }
 
 func enableMinimalRuntime(sanitize *sanitize) bool {

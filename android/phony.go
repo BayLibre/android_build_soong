@@ -27,9 +27,9 @@ type phonyMap map[string]Paths
 var phonyMapLock sync.Mutex
 
 func getPhonyMap(config Config) phonyMap {
-	return config.Once(phonyMapOnceKey, func() interface{} {
+	return OncePerConfig(config, phonyMapOnceKey, func() phonyMap {
 		return make(phonyMap)
-	}).(phonyMap)
+	})
 }
 
 func addPhony(config Config, name string, deps ...Path) {

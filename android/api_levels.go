@@ -302,7 +302,7 @@ func GetApiLevelsJson(ctx PathContext) WritablePath {
 var finalCodenamesMapKey = NewOnceKey("FinalCodenamesMap")
 
 func getFinalCodenamesMap(config Config) map[string]int {
-	return config.Once(finalCodenamesMapKey, func() interface{} {
+	return OncePerConfig(config, finalCodenamesMapKey, func() map[string]int {
 		apiLevelsMap := map[string]int{
 			"G":     9,
 			"I":     14,
@@ -339,13 +339,13 @@ func getFinalCodenamesMap(config Config) map[string]int {
 		}
 
 		return apiLevelsMap
-	}).(map[string]int)
+	})
 }
 
 var apiLevelsMapKey = NewOnceKey("ApiLevelsMap")
 
 func getApiLevelsMap(config Config) map[string]int {
-	return config.Once(apiLevelsMapKey, func() interface{} {
+	return OncePerConfig(config, apiLevelsMapKey, func() map[string]int {
 		apiLevelsMap := map[string]int{
 			"G":     9,
 			"I":     14,
@@ -370,7 +370,7 @@ func getApiLevelsMap(config Config) map[string]int {
 		}
 
 		return apiLevelsMap
-	}).(map[string]int)
+	})
 }
 
 func (a *apiLevelsSingleton) GenerateBuildActions(ctx SingletonContext) {

@@ -42,22 +42,32 @@ func (once *OncePer) maybeWaitFor(key OnceKey, value interface{}) interface{} {
 // Once computes a value the first time it is called with a given key per OncePer, and returns the
 // value without recomputing when called with the same key.  key must be hashable.  If value panics
 // the panic will be propagated but the next call to Once with the same key will return nil.
-func (once *OncePer) Once(key OnceKey, value func() interface{}) interface{} {
+func Once[T any](once *OncePer, key OnceKey, value func() T) T {
+	var zero T
+
 	// Fast path: check if the key is already in the map
 	if v, ok := once.values.Load(key); ok {
-		return once.maybeWaitFor(key, v)
+		value := once.maybeWaitFor(key, v)
+		if value == nil {
+			return zero
+		}
+		return value.(T)
 	}
 
 	// Slow path: create a OnceValueWrapper and attempt to insert it
 	waiter := make(onceValueWaiter)
 	if v, loaded := once.values.LoadOrStore(key, waiter); loaded {
 		// Got a value, something else inserted its own waiter or a constructed value
-		return once.maybeWaitFor(key, v)
+		value := once.maybeWaitFor(key, v)
+		if value == nil {
+			return zero
+		}
+		return value.(T)
 	}
 
 	// The waiter is inserted, call the value constructor, store it, and signal the waiter.  Use defer in case
 	// the function panics.
-	var v interface{}
+	var v T
 	defer func() {
 		once.values.Store(key, v)
 		close(waiter)
@@ -66,6 +76,14 @@ func (once *OncePer) Once(key OnceKey, value func() interface{}) interface{} {
 	v = value()
 
 	return v
+}
+
+func OncePerConfig[T any](config Config, key OnceKey, value func() T) T {
+	return Once(&config.OncePer, key, value)
+}
+
+func (once *OncePer) Once(key OnceKey, value func() interface{}) interface{} {
+	return Once(once, key, value)
 }
 
 // Get returns the value previously computed with Once for a given key.  If Once has not been called for the given
@@ -81,28 +99,28 @@ func (once *OncePer) Get(key OnceKey) interface{} {
 
 // OnceStringSlice is the same as Once, but returns the value cast to a []string
 func (once *OncePer) OnceStringSlice(key OnceKey, value func() []string) []string {
-	return once.Once(key, func() interface{} { return value() }).([]string)
+	return Once(once, key, value)
 }
 
 // OnceStringSlice is the same as Once, but returns two values cast to []string
 func (once *OncePer) Once2StringSlice(key OnceKey, value func() ([]string, []string)) ([]string, []string) {
 	type twoStringSlice [2][]string
-	s := once.Once(key, func() interface{} {
+	s := Once(once, key, func() twoStringSlice {
 		var s twoStringSlice
 		s[0], s[1] = value()
 		return s
-	}).(twoStringSlice)
+	})
 	return s[0], s[1]
 }
 
 // OncePath is the same as Once, but returns the value cast to a Path
 func (once *OncePer) OncePath(key OnceKey, value func() Path) Path {
-	return once.Once(key, func() interface{} { return value() }).(Path)
+	return Once(once, key, value)
 }
 
 // OncePath is the same as Once, but returns the value cast to a SourcePath
 func (once *OncePer) OnceSourcePath(key OnceKey, value func() SourcePath) SourcePath {
-	return once.Once(key, func() interface{} { return value() }).(SourcePath)
+	return Once(once, key, value)
 }
 
 // OnceKey is an opaque type to be used as the key in calls to Once.

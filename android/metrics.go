@@ -50,7 +50,7 @@ func (soongMetricsSingleton) GenerateBuildActions(ctx SingletonContext) {
 		}
 		metrics.Variants++
 	})
-	ctx.Config().Once(soongMetricsOnceKey, func() interface{} {
+	OncePerConfig(ctx.Config(), soongMetricsOnceKey, func() interface{} {
 		return metrics
 	})
 }

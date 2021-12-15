@@ -47,7 +47,7 @@ var (
 
 // Construct the global boot image configs.
 func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
-	return ctx.Config().Once(bootImageConfigKey, func() interface{} {
+	return android.OncePerConfig(ctx.Config(), bootImageConfigKey, func() map[string]*bootImageConfig {
 
 		global := dexpreopt.GetGlobalConfig(ctx)
 		targets := dexpreoptTargets(ctx)
@@ -129,7 +129,7 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 		}
 
 		return configs
-	}).(map[string]*bootImageConfig)
+	})
 }
 
 func artBootImageConfig(ctx android.PathContext) *bootImageConfig {
@@ -163,7 +163,7 @@ var updatableBootConfigKey = android.NewOnceKey("apexBootConfig")
 
 // Returns apex boot config.
 func GetApexBootConfig(ctx android.PathContext) apexBootConfig {
-	return ctx.Config().Once(updatableBootConfigKey, func() interface{} {
+	return android.OncePerConfig(ctx.Config(), updatableBootConfigKey, func() apexBootConfig {
 		apexBootJars := dexpreopt.GetGlobalConfig(ctx).ApexBootJars
 
 		dir := android.PathForOutput(ctx, ctx.Config().DeviceName(), "apex_bootjars")
@@ -173,7 +173,7 @@ func GetApexBootConfig(ctx android.PathContext) apexBootConfig {
 		dexLocations := apexBootJars.DevicePaths(ctx.Config(), android.Android)
 
 		return apexBootConfig{apexBootJars, dexPaths, dexPathsByModuleName, dexLocations}
-	}).(apexBootConfig)
+	})
 }
 
 // Returns a list of paths and a list of locations for the boot jars used in dexpreopt (to be

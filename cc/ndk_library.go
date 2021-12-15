@@ -184,9 +184,9 @@ func (this *stubDecorator) initializeProperties(ctx BaseModuleContext) bool {
 }
 
 func getNDKKnownLibs(config android.Config) *[]string {
-	return config.Once(ndkKnownLibsKey, func() interface{} {
+	return android.OncePerConfig(config, ndkKnownLibsKey, func() *[]string {
 		return &[]string{}
-	}).(*[]string)
+	})
 }
 
 func (c *stubDecorator) compilerInit(ctx BaseModuleContext) {

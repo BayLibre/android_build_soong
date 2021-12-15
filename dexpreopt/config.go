@@ -233,7 +233,7 @@ var globalConfigOnceKey = android.NewOnceKey("DexpreoptGlobalConfig")
 var testGlobalConfigOnceKey = android.NewOnceKey("TestDexpreoptGlobalConfig")
 
 func getGlobalConfigRaw(ctx android.PathContext) globalConfigAndRaw {
-	return ctx.Config().Once(globalConfigOnceKey, func() interface{} {
+	return android.OncePerConfig(ctx.Config(), globalConfigOnceKey, func() globalConfigAndRaw {
 		if data, err := ctx.Config().DexpreoptGlobalConfig(ctx); err != nil {
 			panic(err)
 		} else if data != nil {
@@ -245,7 +245,7 @@ func getGlobalConfigRaw(ctx android.PathContext) globalConfigAndRaw {
 		}
 
 		// No global config filename set, see if there is a test config set
-		return ctx.Config().Once(testGlobalConfigOnceKey, func() interface{} {
+		return android.OncePerConfig(ctx.Config(), testGlobalConfigOnceKey, func() globalConfigAndRaw {
 			// Nope, return a config with preopting disabled
 			return globalConfigAndRaw{&GlobalConfig{
 				DisablePreopt:           true,
@@ -253,14 +253,14 @@ func getGlobalConfigRaw(ctx android.PathContext) globalConfigAndRaw {
 				DisableGenerateProfile:  true,
 			}, nil}
 		})
-	}).(globalConfigAndRaw)
+	})
 }
 
 // SetTestGlobalConfig sets a GlobalConfig that future calls to GetGlobalConfig
 // will return. It must be called before the first call to GetGlobalConfig for
 // the config.
 func SetTestGlobalConfig(config android.Config, globalConfig *GlobalConfig) {
-	config.Once(testGlobalConfigOnceKey, func() interface{} { return globalConfigAndRaw{globalConfig, nil} })
+	android.OncePerConfig(config, testGlobalConfigOnceKey, func() globalConfigAndRaw { return globalConfigAndRaw{globalConfig, nil} })
 }
 
 // This struct is required to convert ModuleConfig from/to JSON.
@@ -473,9 +473,9 @@ var globalSoongConfigOnceKey = android.NewOnceKey("DexpreoptGlobalSoongConfig")
 // GetGlobalSoongConfig creates a GlobalSoongConfig the first time it's called,
 // and later returns the same cached instance.
 func GetGlobalSoongConfig(ctx android.ModuleContext) *GlobalSoongConfig {
-	globalSoong := ctx.Config().Once(globalSoongConfigOnceKey, func() interface{} {
+	globalSoong := android.OncePerConfig(ctx.Config(), globalSoongConfigOnceKey, func() *GlobalSoongConfig {
 		return createGlobalSoongConfig(ctx)
-	}).(*GlobalSoongConfig)
+	})
 
 	// Always resolve the tool path from the dependency, to ensure that every
 	// module has the dependency added properly.
@@ -494,9 +494,9 @@ func GetGlobalSoongConfig(ctx android.ModuleContext) *GlobalSoongConfig {
 // ModuleContext). If there has been no prior call to GetGlobalSoongConfig, nil
 // is returned.
 func GetCachedGlobalSoongConfig(ctx android.PathContext) *GlobalSoongConfig {
-	return ctx.Config().Once(globalSoongConfigOnceKey, func() interface{} {
+	return android.OncePerConfig(ctx.Config(), globalSoongConfigOnceKey, func() *GlobalSoongConfig {
 		return (*GlobalSoongConfig)(nil)
-	}).(*GlobalSoongConfig)
+	})
 }
 
 type globalJsonSoongConfig struct {

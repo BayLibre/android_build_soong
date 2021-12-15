@@ -231,9 +231,9 @@ func init() {
 var legacyCorePlatformApiLookupKey = android.NewOnceKey("legacyCorePlatformApiLookup")
 
 func getLegacyCorePlatformApiLookup(config android.Config) map[string]struct{} {
-	return config.Once(legacyCorePlatformApiLookupKey, func() interface{} {
+	return android.OncePerConfig(config, legacyCorePlatformApiLookupKey, func() map[string]struct{} {
 		return legacyCorePlatformApiLookup
-	}).(map[string]struct{})
+	})
 }
 
 // useLegacyCorePlatformApi checks to see whether the supplied module name is in the list of modules

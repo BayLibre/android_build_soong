@@ -50,9 +50,9 @@ var (
 )
 
 func syspropImplLibraries(config android.Config) map[string]string {
-	return config.Once(syspropImplLibrariesKey, func() interface{} {
+	return android.OncePerConfig(config, syspropImplLibrariesKey, func() map[string]string {
 		return make(map[string]string)
-	}).(map[string]string)
+	})
 }
 
 // gather list of sysprop libraries

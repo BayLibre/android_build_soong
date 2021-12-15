@@ -251,7 +251,7 @@ func FixtureUseLegacyCorePlatformApi(moduleNames ...string) android.FixturePrepa
 	return android.FixtureModifyConfig(func(config android.Config) {
 		// Try and set the legacyCorePlatformApiLookup in the config, the returned value will be the
 		// actual value that is set.
-		cached := config.Once(legacyCorePlatformApiLookupKey, func() interface{} {
+		cached := android.OncePerConfig(config, legacyCorePlatformApiLookupKey, func() map[string]struct{} {
 			return lookup
 		})
 		// Make sure that the cached value is the one we need.

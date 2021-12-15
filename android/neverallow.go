@@ -714,17 +714,17 @@ func matchValue(value reflect.Value, check func(string) bool) bool {
 var neverallowRulesKey = NewOnceKey("neverallowRules")
 
 func neverallowRules(config Config) []Rule {
-	return config.Once(neverallowRulesKey, func() interface{} {
+	return OncePerConfig(config, neverallowRulesKey, func() []Rule {
 		// No test rules were set by setTestNeverallowRules, use the global rules
 		return neverallows
-	}).([]Rule)
+	})
 }
 
 // Overrides the default neverallow rules for the supplied config.
 //
 // For testing only.
 func setTestNeverallowRules(config Config, testRules []Rule) {
-	config.Once(neverallowRulesKey, func() interface{} { return testRules })
+	OncePerConfig(config, neverallowRulesKey, func() []Rule { return testRules })
 }
 
 // Prepares for a test by setting neverallow rules and enabling the mutator.

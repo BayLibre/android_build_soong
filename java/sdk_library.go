@@ -1721,9 +1721,9 @@ func (module *SdkLibrary) SdkImplementationJars(ctx android.BaseModuleContext, s
 var javaSdkLibrariesKey = android.NewOnceKey("javaSdkLibraries")
 
 func javaSdkLibraries(config android.Config) *[]string {
-	return config.Once(javaSdkLibrariesKey, func() interface{} {
+	return android.OncePerConfig(config, javaSdkLibrariesKey, func() *[]string {
 		return &[]string{}
-	}).(*[]string)
+	})
 }
 
 func (module *SdkLibrary) getApiDir() string {

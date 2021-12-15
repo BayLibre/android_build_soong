@@ -243,7 +243,7 @@ func (sdkPreSingleton) GenerateBuildActions(ctx android.SingletonContext) {
 
 	sort.Ints(sdkVersions)
 
-	ctx.Config().Once(sdkVersionsKey, func() interface{} { return sdkVersions })
+	android.OncePerConfig(ctx.Config(), sdkVersionsKey, func() []int { return sdkVersions })
 }
 
 func LatestSdkVersionInt(ctx android.EarlyModuleContext) int {
@@ -360,15 +360,15 @@ func createFrameworkAidl(stubsModules []string, path android.WritablePath, ctx a
 }
 
 func sdkFrameworkAidlPath(ctx android.PathContext) android.OutputPath {
-	return ctx.Config().Once(sdkFrameworkAidlPathKey, func() interface{} {
+	return android.OncePerConfig(ctx.Config(), sdkFrameworkAidlPathKey, func() android.OutputPath {
 		return android.PathForOutput(ctx, "framework.aidl")
-	}).(android.OutputPath)
+	})
 }
 
 func nonUpdatableFrameworkAidlPath(ctx android.PathContext) android.OutputPath {
-	return ctx.Config().Once(nonUpdatableFrameworkAidlPathKey, func() interface{} {
+	return android.OncePerConfig(ctx.Config(), nonUpdatableFrameworkAidlPathKey, func() android.OutputPath {
 		return android.PathForOutput(ctx, "framework_non_updatable.aidl")
-	}).(android.OutputPath)
+	})
 }
 
 // Create api_fingerprint.txt
@@ -418,9 +418,9 @@ func createAPIFingerprint(ctx android.SingletonContext) {
 }
 
 func ApiFingerprintPath(ctx android.PathContext) android.OutputPath {
-	return ctx.Config().Once(apiFingerprintPathKey, func() interface{} {
+	return android.OncePerConfig(ctx.Config(), apiFingerprintPathKey, func() android.OutputPath {
 		return android.PathForOutput(ctx, "api_fingerprint.txt")
-	}).(android.OutputPath)
+	})
 }
 
 func sdkMakeVars(ctx android.MakeVarsContext) {

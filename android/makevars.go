@@ -143,9 +143,9 @@ type SingletonMakeVarsProvider interface {
 var singletonMakeVarsProvidersKey = NewOnceKey("singletonMakeVarsProvidersKey")
 
 func getSingletonMakevarsProviders(config Config) *[]makeVarsProvider {
-	return config.Once(singletonMakeVarsProvidersKey, func() interface{} {
+	return OncePerConfig(config, singletonMakeVarsProvidersKey, func() *[]makeVarsProvider {
 		return &[]makeVarsProvider{}
-	}).(*[]makeVarsProvider)
+	})
 }
 
 // registerSingletonMakeVarsProvider adds a singleton that implements SingletonMakeVarsProvider to

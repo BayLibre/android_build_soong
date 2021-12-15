@@ -1011,9 +1011,9 @@ func initArchModule(m Module) {
 		}
 
 		// Get or create the arch-specific property struct types for this property struct type.
-		archPropTypes := archPropTypeMap.Once(NewCustomOnceKey(t), func() interface{} {
+		archPropTypes := Once(&archPropTypeMap, NewCustomOnceKey(t), func() []archPropTypeDesc {
 			return createArchPropTypeDesc(t)
-		}).([]archPropTypeDesc)
+		})
 
 		// Instantiate one of each arch-specific property struct type and add it to the
 		// properties for the Module.

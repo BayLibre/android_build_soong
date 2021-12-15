@@ -186,9 +186,9 @@ var (
 
 // List of sysprop_library used by property_contexts to perform type check.
 func syspropLibraries(config android.Config) *[]string {
-	return config.Once(syspropLibrariesKey, func() interface{} {
+	return android.OncePerConfig(config, syspropLibrariesKey, func() *[]string {
 		return &[]string{}
-	}).(*[]string)
+	})
 }
 
 func SyspropLibraries(config android.Config) []string {
