@@ -52,6 +52,24 @@
       "parentUuid": "b059d814_dcc7a6af",
       "revId": "5972a5f0e7583e07059dcbe65c372dc77b86ef7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11015c02_d7261ad8",
+        "filename": "scripts/test_config_fixer.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1014491
+      },
+      "writtenOn": "2021-12-15T02:11:01Z",
+      "side": 1,
+      "message": "Okay I found the test run: go/ab/I45900009999195919 (from go/forrest-run/L18500000952127685)\nSpecifically:\nhttps://android-build.googleplex.com/builds/I45900009999195919/git_master/P27996100/forrest-atest/inv_12781062018558208749/device_logcat_test_127.0.0.1:44727_9855054914984096597.txt\n\n12-02 06:08:00.083  1000  8960  8960 W .systemui.tests: type\u003d1400 audit(0.0:161): avc: denied { search } for name\u003d\"tests\" dev\u003d\"dm-48\" ino\u003d107 scontext\u003du:r:system_app:s0 tcontext\u003du:object_r:shell_test_data_file:s0 tclass\u003ddir permissive\u003d0\n\nIf it\u0027s okay to loosen up, it\u0027s still a worthwhile pursuit... I\u0027m not a fan of the current approach either.",
+      "parentUuid": "b059d814_dcc7a6af",
+      "revId": "5972a5f0e7583e07059dcbe65c372dc77b86ef7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
