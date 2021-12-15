@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cdad2d9_f71ffaf0",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1060,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-12-15T06:34:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "209a1bff_3f66bf71",
+      "range": {
+        "startLine": 1060,
+        "startChar": 8,
+        "endLine": 1060,
+        "endChar": 22
+      },
+      "revId": "85fd6f1cbb58558cf0fc88a827a209cf665ff7a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d61b3acf_432913ec",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-14T22:31:33Z",
       "side": 1,
       "message": "How about:\n\n    cmd.Text(\"zipinfo -1\").Input(file).Textf(`| sed \"s:\\(.*\\):/%s/\\1 1000 1000 0644:\";`, dir)",
+      "range": {
+        "startLine": 1068,
+        "startChar": 0,
+        "endLine": 1070,
+        "endChar": 0
+      },
+      "revId": "85fd6f1cbb58558cf0fc88a827a209cf665ff7a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80c49296_e84f0a4a",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1070,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-12-15T06:34:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d61b3acf_432913ec",
       "range": {
         "startLine": 1068,
         "startChar": 0,
