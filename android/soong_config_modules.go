@@ -371,7 +371,7 @@ func loadSoongConfigModuleTypeDefinition(ctx LoadHookContext, from string) map[s
 		}
 	}
 
-	return ctx.Config().Once(key, func() interface{} {
+	return OncePerConfig(ctx.Config(), key, func() map[string]blueprint.ModuleFactory {
 		ctx.AddNinjaFileDeps(from)
 		r, err := ctx.Config().fs.Open(from)
 		if err != nil {
@@ -408,7 +408,7 @@ func loadSoongConfigModuleTypeDefinition(ctx LoadHookContext, from string) map[s
 		}
 
 		return factories
-	}).(map[string]blueprint.ModuleFactory)
+	})
 }
 
 // configModuleFactory takes an existing soongConfigModuleFactory and a

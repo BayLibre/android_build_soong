@@ -98,7 +98,7 @@ var hiddenAPISingletonPathsKey = android.NewOnceKey("hiddenAPISingletonPathsKey"
 // from a ModuleContext that needs to reference a file that will be created by a singleton rule that hasn't
 // yet been created.
 func hiddenAPISingletonPaths(ctx android.PathContext) hiddenAPISingletonPathsStruct {
-	return ctx.Config().Once(hiddenAPISingletonPathsKey, func() interface{} {
+	return android.OncePerConfig(ctx.Config(), hiddenAPISingletonPathsKey, func() hiddenAPISingletonPathsStruct {
 		// Make the paths relative to the out/soong/hiddenapi directory instead of to the out/soong/
 		// directory. This ensures that if they are used as java_resources they do not end up in a
 		// hiddenapi directory in the resulting APK.
@@ -109,7 +109,7 @@ func hiddenAPISingletonPaths(ctx android.PathContext) hiddenAPISingletonPathsStr
 			metadata:  hiddenapiDir.Join(ctx, "hiddenapi-unsupported.csv"),
 			stubFlags: hiddenapiDir.Join(ctx, "hiddenapi-stub-flags.txt"),
 		}
-	}).(hiddenAPISingletonPathsStruct)
+	})
 }
 
 func hiddenAPISingletonFactory() android.Singleton {

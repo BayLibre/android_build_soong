@@ -97,9 +97,9 @@ var packageDefaultLicensesMap = NewOnceKey("packageDefaultLicensesMap")
 
 // The map from package dir name to default applicable licenses as a licensesContainer.
 func moduleToPackageDefaultLicensesMap(config Config) *sync.Map {
-	return config.Once(packageDefaultLicensesMap, func() interface{} {
+	return OncePerConfig(config, packageDefaultLicensesMap, func() *sync.Map {
 		return &sync.Map{}
-	}).(*sync.Map)
+	})
 }
 
 // Registers the function that maps each package to its default_applicable_licenses.

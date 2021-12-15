@@ -279,15 +279,15 @@ func vndkModuleListRemover(lister moduleListerFunc, prefix string) moduleListerF
 var vndkMustUseVendorVariantListKey = android.NewOnceKey("vndkMustUseVendorVariantListKey")
 
 func vndkMustUseVendorVariantList(cfg android.Config) []string {
-	return cfg.Once(vndkMustUseVendorVariantListKey, func() interface{} {
+	return android.OncePerConfig(cfg, vndkMustUseVendorVariantListKey, func() []string {
 		return config.VndkMustUseVendorVariantList
-	}).([]string)
+	})
 }
 
 // test may call this to override global configuration(config.VndkMustUseVendorVariantList)
 // when it is called, it must be before the first call to vndkMustUseVendorVariantList()
 func setVndkMustUseVendorVariantListForTest(config android.Config, mustUseVendorVariantList []string) {
-	config.Once(vndkMustUseVendorVariantListKey, func() interface{} {
+	android.OncePerConfig(config, vndkMustUseVendorVariantListKey, func() []string {
 		return mustUseVendorVariantList
 	})
 }

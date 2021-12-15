@@ -162,7 +162,7 @@ var pathPropertyIndexesCache OncePer
 // passing to reflect.Value.FieldByIndex.  The value is cached in a global cache by type.
 func pathPropertyIndexesForPropertyStruct(ps interface{}) [][]int {
 	key := NewCustomOnceKey(reflect.TypeOf(ps))
-	return pathPropertyIndexesCache.Once(key, func() interface{} {
+	return Once(&pathPropertyIndexesCache, key, func() [][]int {
 		return proptools.PropertyIndexesWithTag(ps, "android", "path")
-	}).([][]int)
+	})
 }

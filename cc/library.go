@@ -2068,10 +2068,10 @@ var versioningMacroNamesListKey = android.NewOnceKey("versioningMacroNamesList")
 //
 // This map is used to ensure that there aren't conflicts between these version macro names.
 func versioningMacroNamesList(config android.Config) *map[string]string {
-	return config.Once(versioningMacroNamesListKey, func() interface{} {
+	return android.OncePerConfig(config, versioningMacroNamesListKey, func() *map[string]string {
 		m := make(map[string]string)
 		return &m
-	}).(*map[string]string)
+	})
 }
 
 // alphanumeric and _ characters are preserved.

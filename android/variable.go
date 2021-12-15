@@ -1151,10 +1151,10 @@ func createVariableProperties(moduleTypeProps []interface{}, productVariables in
 	key := sliceToTypeArray(moduleTypeProps)
 
 	// Use the variablePropTypeMap OncePer to cache the result for each set of property struct types.
-	typ, _ := variablePropTypeMap.Once(NewCustomOnceKey(key), func() interface{} {
+	typ := Once(&variablePropTypeMap, NewCustomOnceKey(key), func() reflect.Type {
 		// Compute the filtered property struct type.
 		return createVariablePropertiesType(moduleTypeProps, productVariables)
-	}).(reflect.Type)
+	})
 
 	if typ == nil {
 		return nil

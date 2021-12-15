@@ -538,10 +538,10 @@ var allSystemServerJarsKey = android.NewOnceKey("allSystemServerJars")
 // TODO: eliminate the superficial global config parameter by moving global config definition
 // from java subpackage to dexpreopt.
 func AllSystemServerJars(ctx android.PathContext, global *GlobalConfig) *android.ConfiguredJarList {
-	return ctx.Config().Once(allSystemServerJarsKey, func() interface{} {
+	return android.OncePerConfig(ctx.Config(), allSystemServerJarsKey, func() *android.ConfiguredJarList {
 		allSystemServerJars := global.SystemServerJars.AppendList(global.ApexSystemServerJars)
 		return &allSystemServerJars
-	}).(*android.ConfiguredJarList)
+	})
 }
 
 // A predefined location for the system server dex jars. This is needed in order to generate

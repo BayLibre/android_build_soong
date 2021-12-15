@@ -147,7 +147,7 @@ func (overlaySingleton) GenerateBuildActions(ctx android.SingletonContext) {
 
 	appendOverlayData(ctx.Config().DeviceResourceOverlays(), device)
 	appendOverlayData(ctx.Config().ProductResourceOverlays(), product)
-	ctx.Config().Once(overlayDataKey, func() interface{} {
+	android.OncePerConfig(ctx.Config(), overlayDataKey, func() []overlayGlobResult {
 		return overlayData
 	})
 }

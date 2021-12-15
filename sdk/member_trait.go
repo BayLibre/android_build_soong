@@ -18,6 +18,7 @@ import (
 	"reflect"
 
 	"android/soong/android"
+
 	"github.com/google/blueprint/proptools"
 )
 
@@ -55,9 +56,9 @@ func (d *dynamicSdkMemberTraits) createMemberTraitListProperties() interface{} {
 
 func getDynamicSdkMemberTraits(key android.OnceKey, registeredTraits []android.SdkMemberTrait) *dynamicSdkMemberTraits {
 	// Get the cached value, creating new instance if necessary.
-	return dynamicSdkMemberTraitsMap.Once(key, func() interface{} {
+	return android.Once(&dynamicSdkMemberTraitsMap, key, func() *dynamicSdkMemberTraits {
 		return createDynamicSdkMemberTraits(registeredTraits)
-	}).(*dynamicSdkMemberTraits)
+	})
 }
 
 // Create the dynamicSdkMemberTraits from the list of registered member traits.

@@ -35,9 +35,10 @@ func init() {
 }
 
 func getNamedMapForConfig(config android.Config, key android.OnceKey) *sync.Map {
-	return config.Once(key, func() interface{} {
+	return android.OncePerConfig(config, key, func() *sync.Map {
 		return &sync.Map{}
-	}).(*sync.Map)
+	})
+
 }
 
 func makeStringOfKeys(ctx android.MakeVarsContext, key android.OnceKey) string {

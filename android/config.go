@@ -1514,7 +1514,7 @@ func createDirsMap(previous map[string]bool, dirs []string) (map[string]bool, er
 }
 
 func (c *deviceConfig) createDirsMapOnce(onceKey OnceKey, previous map[string]bool, dirs []string) map[string]bool {
-	dirMap := c.Once(onceKey, func() interface{} {
+	dirMap := Once(&c.OncePer, onceKey, func() interface{} {
 		ret, err := createDirsMap(previous, dirs)
 		if err != nil {
 			panic(fmt.Errorf("%s: %w", onceKey.key, err))
@@ -1920,10 +1920,10 @@ func EmptyConfiguredJarList() ConfiguredJarList {
 var earlyBootJarsKey = NewOnceKey("earlyBootJars")
 
 func (c *config) BootJars() []string {
-	return c.Once(earlyBootJarsKey, func() interface{} {
+	return Once(&c.OncePer, earlyBootJarsKey, func() []string {
 		list := c.productVariables.BootJars.CopyOfJars()
 		return append(list, c.productVariables.ApexBootJars.CopyOfJars()...)
-	}).([]string)
+	})
 }
 
 func (c *config) NonApexBootJars() ConfiguredJarList {

@@ -18,6 +18,7 @@ import (
 	"reflect"
 
 	"android/soong/android"
+
 	"github.com/google/blueprint/proptools"
 )
 
@@ -66,9 +67,9 @@ func (d *dynamicSdkMemberTypes) createMemberTypeListProperties() interface{} {
 
 func getDynamicSdkMemberTypes(key android.OnceKey, registeredTypes []android.SdkMemberType) *dynamicSdkMemberTypes {
 	// Get the cached value, creating new instance if necessary.
-	return dynamicSdkMemberTypesMap.Once(key, func() interface{} {
+	return android.Once(&dynamicSdkMemberTypesMap, key, func() *dynamicSdkMemberTypes {
 		return createDynamicSdkMemberTypes(registeredTypes)
-	}).(*dynamicSdkMemberTypes)
+	})
 }
 
 // Create the dynamicSdkMemberTypes from the list of registered member types.
