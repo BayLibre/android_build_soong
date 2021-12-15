@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6da96099_75e1ec5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2021-12-15T15:07:01Z",
+      "side": 1,
+      "message": "I think the linter is producing some incorrect warnings, lmk if this needs someone to be notified for a manual override of the Open-Source-Licensing -1.",
+      "revId": "eabf0f36f32c55d60efd199c574da224c64cd5e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
