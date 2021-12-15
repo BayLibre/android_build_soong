@@ -156,7 +156,7 @@ func FixtureWithPrebuiltApis(release2Modules map[string][]string) android.Fixtur
 				imports_sdk_version: "none",
 				imports_compile_dex: true,
 			}
-		`, strings.Join(android.SortedStringKeys(release2Modules), `", "`))
+		`, strings.Join(android.SortedKeys(release2Modules), `", "`))
 
 	for release, modules := range release2Modules {
 		mockFS.Merge(prebuiltApisFilesForModules([]string{release}, modules))

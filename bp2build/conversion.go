@@ -66,7 +66,7 @@ func CreateBazelFiles(
 
 func createBuildFiles(buildToTargets map[string]BazelTargets, mode CodegenMode) []BazelFile {
 	files := make([]BazelFile, 0, len(buildToTargets))
-	for _, dir := range android.SortedStringKeys(buildToTargets) {
+	for _, dir := range android.SortedKeys(buildToTargets) {
 		if mode == Bp2Build && android.ShouldKeepExistingBuildFileForDir(dir) {
 			fmt.Printf("[bp2build] Not writing generated BUILD file for dir: '%s'\n", dir)
 			continue

@@ -15,6 +15,7 @@
 package soongconfig
 
 import (
+	"constraints"
 	"fmt"
 	"io"
 	"reflect"
@@ -285,17 +286,19 @@ func (defs *Bp2BuildSoongConfigDefinitions) AddVars(mtDef SoongConfigDefinition)
 // This is a copy of the one available in soong/android/util.go, but depending
 // on the android package causes a cyclic dependency. A refactoring here is to
 // extract common utils out from android/utils.go for other packages like this.
-func sortedStringKeys(m interface{}) []string {
-	v := reflect.ValueOf(m)
-	if v.Kind() != reflect.Map {
-		panic(fmt.Sprintf("%#v is not a map", m))
+type orderedSlice[T constraints.Ordered] []T
+
+func (s orderedSlice[T]) Len() int           { return len(s) }
+func (s orderedSlice[T]) Less(i, j int) bool { return s[i] < s[j] }
+func (s orderedSlice[T]) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
+
+// sortedKeys returns the keys of the given map in the ascending order
+func sortedKeys[K constraints.Ordered, V any](m map[K]V) []K {
+	s := make([]K, 0, len(m))
+	for key := range m {
+		s = append(s, key)
 	}
-	keys := v.MapKeys()
-	s := make([]string, 0, len(keys))
-	for _, key := range keys {
-		s = append(s, key.String())
-	}
-	sort.Strings(s)
+	sort.Sort(orderedSlice[K](s))
 	return s
 }
 
@@ -303,23 +306,23 @@ func sortedStringKeys(m interface{}) []string {
 func (defs Bp2BuildSoongConfigDefinitions) String() string {
 	ret := ""
 	ret += "soong_config_bool_variables = {\n"
-	for _, boolVar := range sortedStringKeys(defs.BoolVars) {
+	for _, boolVar := range sortedKeys(defs.BoolVars) {
 		ret += fmt.Sprintf("    \"%s\": True,\n", boolVar)
 	}
 	ret += "}\n"
 	ret += "\n"
 
 	ret += "soong_config_value_variables = {\n"
-	for _, valueVar := range sortedStringKeys(defs.ValueVars) {
+	for _, valueVar := range sortedKeys(defs.ValueVars) {
 		ret += fmt.Sprintf("    \"%s\": True,\n", valueVar)
 	}
 	ret += "}\n"
 	ret += "\n"
 
 	ret += "soong_config_string_variables = {\n"
-	for _, stringVar := range sortedStringKeys(defs.StringVars) {
+	for _, stringVar := range sortedKeys(defs.StringVars) {
 		ret += fmt.Sprintf("    \"%s\": [\n", stringVar)
-		for _, choice := range sortedStringKeys(defs.StringVars[stringVar]) {
+		for _, choice := range sortedKeys(defs.StringVars[stringVar]) {
 			ret += fmt.Sprintf("        \"%s\",\n", choice)
 		}
 		ret += fmt.Sprintf("    ],\n")

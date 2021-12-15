@@ -622,7 +622,7 @@ func (p *Module) createSrcsZip(ctx android.ModuleContext, pkgPath string) androi
 
 	if len(relativeRootMap) > 0 {
 		// in order to keep stable order of soong_zip params, we sort the keys here.
-		roots := android.SortedStringKeys(relativeRootMap)
+		roots := android.SortedKeys(relativeRootMap)
 
 		parArgs := []string{}
 		if pkgPath != "" {

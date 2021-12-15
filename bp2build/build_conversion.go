@@ -238,7 +238,7 @@ func NewCodegenContext(config android.Config, context android.Context, mode Code
 // the generated attributes are sorted to ensure determinism.
 func propsToAttributes(props map[string]string) string {
 	var attributes string
-	for _, propName := range android.SortedStringKeys(props) {
+	for _, propName := range android.SortedKeys(props) {
 		attributes += fmt.Sprintf("    %s = %s,\n", propName, props[propName])
 	}
 	return attributes
@@ -605,7 +605,7 @@ func prettyPrint(propertyValue reflect.Value, indent int, emitZeroValues bool) (
 		if len(structProps) == 0 {
 			return "", nil
 		}
-		for _, k := range android.SortedStringKeys(structProps) {
+		for _, k := range android.SortedKeys(structProps) {
 			ret += makeIndent(indent + 1)
 			ret += fmt.Sprintf("%q: %s,\n", k, structProps[k])
 		}

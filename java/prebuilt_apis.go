@@ -235,7 +235,7 @@ func prebuiltApiFiles(mctx android.LoadHookContext, p *prebuiltApis) {
 	}
 
 	// Sort the keys in order to make build.ninja stable
-	for _, k := range android.SortedStringKeys(m) {
+	for _, k := range android.SortedKeys(m) {
 		info := m[k]
 		name := apiModuleName(info.module, info.scope, "latest")
 		createApiModule(mctx, name, info.path)
@@ -256,7 +256,7 @@ func prebuiltApiFiles(mctx android.LoadHookContext, p *prebuiltApis) {
 		}
 	}
 	// Create empty incompatibilities files for remaining modules
-	for _, k := range android.SortedStringKeys(m) {
+	for _, k := range android.SortedKeys(m) {
 		if _, ok := incompatibilities[k]; !ok {
 			createEmptyFile(mctx, apiModuleName(m[k].module+"-incompatibilities", m[k].scope, "latest"))
 		}
