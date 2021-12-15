@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43c27302_a708b04f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-12-15T11:22:09Z",
+      "side": 1,
+      "message": "enh/cferris/LLVM folks: This is an alternative to just turning these warnings off entirely (which is also an option), but I suspect that we\u0027ll need this functionality more in the future as well. Note that I documented this as not supporting `Android.mk`, but I am exporting a variable for use if we ever do want to add it. The problem there is that even the \"external\" support is somewhat incomplete already, as the Android.mk implementation external queries don\u0027t even check for hardware/ or vendor/. Rather than adding something that might not even be useful, I\u0027d prefer to just add this to Soong for now.\n\nccross: Please let me know if this is just too unreasonable to handle like this in Soong. I\u0027m trying to balance complexity of implementation with something that will cover our needs in trying to reduce build spam now and in the future.\n\nThanks to all reviewers in advance. Even if we don\u0027t end up submitting this, it was good to explore this area to know what we\u0027re dealing with (and how it might degrade toolchain releases in the future).",
+      "revId": "e24303f71ae13fae7b5b805196487731dde09be8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
