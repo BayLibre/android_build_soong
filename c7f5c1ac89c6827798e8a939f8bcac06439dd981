@@ -88,6 +88,24 @@
       "parentUuid": "3bb443eb_775a0286",
       "revId": "c7f5c1ac89c6827798e8a939f8bcac06439dd981",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd5b0caf_c5b4445d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-15T21:10:46Z",
+      "side": 1,
+      "message": "Changed it to not copy the starlarkExpr. I still left it without the \u0027same\u0027 return value though because it\u0027s not needed. (Even with eval(), every call to eval() just assigns the value of \u0027same\u0027 to _)",
+      "parentUuid": "f199956e_bc38ba9f",
+      "revId": "c7f5c1ac89c6827798e8a939f8bcac06439dd981",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
