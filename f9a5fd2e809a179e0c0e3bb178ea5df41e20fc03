@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "944c7db1_84b5c802",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-12-15T03:55:40Z",
+      "side": 1,
+      "message": "Weird that it got verified and then somehow lost it",
+      "revId": "f9a5fd2e809a179e0c0e3bb178ea5df41e20fc03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
