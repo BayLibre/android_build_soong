@@ -34,6 +34,24 @@
       "parentUuid": "43c27302_a708b04f",
       "revId": "e24303f71ae13fae7b5b805196487731dde09be8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0feed67_726c3a0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-12-15T17:41:48Z",
+      "side": 1,
+      "message": "Currently, we add -Wno-error\u003dunused-... as a no-override flag - it cannot be silenced by any project.  Every project sees the warning but it\u0027s not an error.  The goal is to eventually fix the warnings and use -Werror\u003dunused-... instead.\n\nSince we can\u0027t fix all external projects, aosp/1922839 tries to create an exception for them but looks like it doesn\u0027t help because the flags are in the wrong order `-Wno-unused-... -Wno-error\u003dunused...`. \n\nThis CL makes the flags be `-Wno-error\u003dunused... -Wno-unused...` for external projects by creating an additional no-override flag category that only applies to external projects.  As a consequence, external projects cannot opt into this warning at all.\n\nI think with extra work in the build system, we could add -Wno-foo as an external no-override flag iff -Wfoo is not in `local.{cflags,cppflags}` (see builder.go:482 in this CL) but I am not sure if exposing this option is worth the extra complexity.",
+      "parentUuid": "c07a7a22_93d8d7cd",
+      "revId": "e24303f71ae13fae7b5b805196487731dde09be8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
