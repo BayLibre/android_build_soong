@@ -52,6 +52,24 @@
       "parentUuid": "c07a7a22_93d8d7cd",
       "revId": "e24303f71ae13fae7b5b805196487731dde09be8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9aa858b_dfd70551",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2021-12-15T18:01:14Z",
+      "side": 1,
+      "message": "Today, nobody can opt into this warning, because we have it as an option that devs can\u0027t override. This change will eventually allow for non-3p projects to opt back into these diagnostics (as errors). Unfortunately, there\u0027s no way for 3p projects to individually opt back in even then, because we would need to remove all the `-Wall` from every 3p Android.bp/Android.mk file. A better solution there would be to push this warning down into the necessary individual Android.bp files, and then remove the \"override\" flag.",
+      "parentUuid": "a0feed67_726c3a0a",
+      "revId": "e24303f71ae13fae7b5b805196487731dde09be8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
