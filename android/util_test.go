@@ -552,7 +552,7 @@ func Test_Shard(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			t.Run("strings", func(t *testing.T) {
-				if got := ShardStrings(tt.args.strings, tt.args.shardSize); !reflect.DeepEqual(got, tt.want) {
+				if got := Shard(tt.args.strings, tt.args.shardSize); !reflect.DeepEqual(got, tt.want) {
 					t.Errorf("ShardStrings(%v, %v) = %v, want %v",
 						tt.args.strings, tt.args.shardSize, got, tt.want)
 				}
@@ -572,15 +572,15 @@ func Test_Shard(t *testing.T) {
 
 				paths := stringsToPaths(tt.args.strings)
 
-				var want []Paths
+				var want [][]Path
 				if sWant := tt.want; sWant != nil {
-					want = make([]Paths, len(sWant))
+					want = make([][]Path, len(sWant))
 					for i, w := range sWant {
 						want[i] = stringsToPaths(w)
 					}
 				}
 
-				if got := ShardPaths(paths, tt.args.shardSize); !reflect.DeepEqual(got, want) {
+				if got := Shard(paths, tt.args.shardSize); !reflect.DeepEqual(got, want) {
 					t.Errorf("ShardPaths(%v, %v) = %v, want %v",
 						paths, tt.args.shardSize, got, want)
 				}

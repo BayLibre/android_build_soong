@@ -73,7 +73,7 @@ func aapt2Compile(ctx android.ModuleContext, dir android.Path, paths android.Pat
 	// with an individual action could take 100 CPU seconds. Sharding them reduces the overhead of
 	// starting actions by a factor of 100, at the expense of recompiling more files when one
 	// changes.  Since the individual compiles are trivial it's a good tradeoff.
-	shards := android.ShardPaths(paths, AAPT2_SHARD_SIZE)
+	shards := android.Shard(paths, AAPT2_SHARD_SIZE)
 
 	ret := make(android.WritablePaths, 0, len(paths))
 

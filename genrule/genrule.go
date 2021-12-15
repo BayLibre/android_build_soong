@@ -664,7 +664,7 @@ func NewGenSrcs() *Module {
 
 		// gensrcs rules can easily hit command line limits by repeating the command for
 		// every input file.  Shard the input files into groups.
-		shards := android.ShardPaths(srcFiles, shardSize)
+		shards := android.Shard(srcFiles, shardSize)
 		var generateTasks []generateTask
 
 		for i, shard := range shards {

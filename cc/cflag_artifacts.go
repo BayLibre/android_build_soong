@@ -91,7 +91,7 @@ func (s *cflagArtifactsText) GenCFlagArtifactParts(ctx android.SingletonContext,
 	// Following loop splits the module list for each tracked C Flag into
 	// chunks of length FileBP (file breakpoint) and generates a partial artifact
 	// (intermediary file) build rule for each split.
-	moduleShards := android.ShardStrings(modules, FileBP)
+	moduleShards := android.Shard(modules, FileBP)
 	for index, shard := range moduleShards {
 		rule.Command().
 			Textf("for m in %s; do echo $m",
