@@ -1121,9 +1121,9 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 				flags.classpath = append(classpath{headerJarFileWithoutDepsOrJarjar}, flags.classpath...)
 			}
 			shardSize := int(*(j.properties.Javac_shard_size))
-			var shardSrcs []android.Paths
+			var shardSrcs [][]android.Path
 			if len(uniqueSrcFiles) > 0 {
-				shardSrcs = android.ShardPaths(uniqueSrcFiles, shardSize)
+				shardSrcs = android.Shard(uniqueSrcFiles, shardSize)
 				for idx, shardSrc := range shardSrcs {
 					classes := j.compileJavaClasses(ctx, jarName, idx, shardSrc,
 						nil, flags, extraJarDeps)

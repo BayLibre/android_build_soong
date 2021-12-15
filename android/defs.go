@@ -172,9 +172,9 @@ func WriteFileRule(ctx BuilderContext, outputFile WritablePath, content string) 
 	content += "\n"
 	if len(content) > SHARD_SIZE {
 		var chunks WritablePaths
-		for i, c := range ShardString(content, SHARD_SIZE) {
+		for i, c := range Shard([]byte(content), SHARD_SIZE) {
 			tempPath := outputFile.ReplaceExtension(ctx, fmt.Sprintf("%s.%d", outputFile.Ext(), i))
-			buildWriteFileRule(ctx, tempPath, c)
+			buildWriteFileRule(ctx, tempPath, string(c))
 			chunks = append(chunks, tempPath)
 		}
 		ctx.Build(pctx, BuildParams{

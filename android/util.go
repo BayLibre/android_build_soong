@@ -18,7 +18,6 @@ import (
 	"constraints"
 	"fmt"
 	"path/filepath"
-	"reflect"
 	"regexp"
 	"runtime"
 	"sort"
@@ -382,52 +381,18 @@ func SplitFileExt(name string) (string, string, string) {
 	return root, suffix, ext
 }
 
-// ShardPaths takes a Paths, and returns a slice of Paths where each one has at most shardSize paths.
-func ShardPaths(paths Paths, shardSize int) []Paths {
-	if len(paths) == 0 {
+// Shard takes a slice, and returns a slice of slices where each one has at most shardSize elements.
+func Shard[T any](elements []T, shardSize int) [][]T {
+	if len(elements) == 0 {
 		return nil
 	}
-	ret := make([]Paths, 0, (len(paths)+shardSize-1)/shardSize)
-	for len(paths) > shardSize {
-		ret = append(ret, paths[0:shardSize])
-		paths = paths[shardSize:]
+	ret := make([][]T, 0, (len(elements)+shardSize-1)/shardSize)
+	for len(elements) > shardSize {
+		ret = append(ret, elements[0:shardSize])
+		elements = elements[shardSize:]
 	}
-	if len(paths) > 0 {
-		ret = append(ret, paths)
-	}
-	return ret
-}
-
-// ShardString takes a string and returns a slice of strings where the length of each one is
-// at most shardSize.
-func ShardString(s string, shardSize int) []string {
-	if len(s) == 0 {
-		return nil
-	}
-	ret := make([]string, 0, (len(s)+shardSize-1)/shardSize)
-	for len(s) > shardSize {
-		ret = append(ret, s[0:shardSize])
-		s = s[shardSize:]
-	}
-	if len(s) > 0 {
-		ret = append(ret, s)
-	}
-	return ret
-}
-
-// ShardStrings takes a slice of strings, and returns a slice of slices of strings where each one has at most shardSize
-// elements.
-func ShardStrings(s []string, shardSize int) [][]string {
-	if len(s) == 0 {
-		return nil
-	}
-	ret := make([][]string, 0, (len(s)+shardSize-1)/shardSize)
-	for len(s) > shardSize {
-		ret = append(ret, s[0:shardSize])
-		s = s[shardSize:]
-	}
-	if len(s) > 0 {
-		ret = append(ret, s)
+	if len(elements) > 0 {
+		ret = append(ret, elements)
 	}
 	return ret
 }

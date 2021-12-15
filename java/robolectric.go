@@ -286,7 +286,7 @@ func (r *robolectricTest) AndroidMkEntries() []android.AndroidMkEntries {
 			if s := r.robolectricProperties.Test_options.Shards; s != nil && *s > 1 {
 				numShards := int(*s)
 				shardSize := (len(r.tests) + numShards - 1) / numShards
-				shards := android.ShardStrings(r.tests, shardSize)
+				shards := android.Shard(r.tests, shardSize)
 				for i, shard := range shards {
 					r.writeTestRunner(w, name, "Run"+name+strconv.Itoa(i), shard)
 				}
