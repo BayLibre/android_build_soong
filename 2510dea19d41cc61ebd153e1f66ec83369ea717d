@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3d6320a_89d8c5df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2021-12-15T01:51:10Z",
+      "side": 1,
+      "message": "This is a re-upload of the previous change due to a gerrit bug. b/210740685\n",
+      "revId": "2510dea19d41cc61ebd153e1f66ec83369ea717d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
