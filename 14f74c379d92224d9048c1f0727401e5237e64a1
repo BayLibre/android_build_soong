@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c4739c7_85219307",
+        "filename": "android/util.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-16T20:52:24Z",
+      "side": 1,
+      "message": "This already exists as FirstUniqueStrings",
+      "revId": "14f74c379d92224d9048c1f0727401e5237e64a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9d71e4e2_e4c09bbe",
         "filename": "cc/afdo.go",
         "patchSetId": 4
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "This is how Soong currently handles the \"libc++\" name, although I can\u0027t find the code that did this.",
       "parentUuid": "9d71e4e2_e4c09bbe",
+      "revId": "14f74c379d92224d9048c1f0727401e5237e64a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81042f7a_75dddb4c",
+        "filename": "cc/afdo.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-16T20:52:24Z",
+      "side": 1,
+      "message": "This automatically happens for names in https://cs.android.com/android/platform/superproject/+/master:build/blueprint/ninja_strings.go;l\u003d362;drc\u003d8a40148408c1b91511a649fe135962bafefebc49, maybe it is missing for variants.",
+      "parentUuid": "7ca9e21d_5b729034",
       "revId": "14f74c379d92224d9048c1f0727401e5237e64a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
