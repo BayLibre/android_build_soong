@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c5bbe4c_b6c471b4",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-16T18:37:13Z",
+      "side": 0,
+      "message": "ran into issues with this running mixed_droid over night... I have a theory but removing for now.",
+      "range": {
+        "startLine": 364,
+        "startChar": 3,
+        "endLine": 364,
+        "endChar": 130
+      },
+      "revId": "b849d4a6d5bce02eba5a8647e7555d32052e1892",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
