@@ -363,7 +363,6 @@ var (
 
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
 	bp2buildModuleDoNotConvertList = []string{
-		"libnativehelper_compat_libc++",              // Broken compile: implicit declaration of function 'strerror_r' is invalid in C99
 		"art_libdexfile_dex_instruction_list_header", // breaks libart_mterp.armng, header not found
 
 		"libandroid_runtime_lazy", // depends on unconverted modules: libbinder_headers
