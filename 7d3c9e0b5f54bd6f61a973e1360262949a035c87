@@ -16,6 +16,23 @@
       "message": "Friendly ping",
       "revId": "7d3c9e0b5f54bd6f61a973e1360262949a035c87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab05a5ef_33c87296",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2021-12-16T12:30:35Z",
+      "side": 1,
+      "message": "Presumably if you comment out this line the test fails?",
+      "revId": "7d3c9e0b5f54bd6f61a973e1360262949a035c87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
