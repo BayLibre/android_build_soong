@@ -1158,6 +1158,21 @@ def init(g, handle):
   g["OBJECTS2"] = rblf.mkpatsubst("%.c", "%.o", g["SOURCES"])
 `,
 	},
+	{
+		desc:   "is-platform-sdk-version-at-least",
+		mkname: "product.mk",
+		in: `
+ifeq ($(call is-platform-sdk-version-at-least,28),true)
+endif
+`,
+		expected: `load("//build/make/core:product_config.rbc", "rblf")
+
+def init(g, handle):
+  cfg = rblf.cfg(handle)
+  if rblf.is_platform_sdk_version_at_least(g, "28"):
+    pass
+`,
+	},
 }
 
 var known_variables = []struct {
