@@ -33,6 +33,24 @@
       "message": "Is there any reason this comment could not be output in the error message?",
       "revId": "ed3df44363b67861054d63b497b8f815b8b46e46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cdf7b5f_bacca529",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-16T15:50:03Z",
+      "side": 1,
+      "message": "I don\u0027t think several paragraphs of text are appropriate in error messages - it gets noisy and the errors can repeat a lot too.",
+      "parentUuid": "dcfe880a_ac1493da",
+      "revId": "ed3df44363b67861054d63b497b8f815b8b46e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
