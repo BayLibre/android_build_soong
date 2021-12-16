@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee70a20_90c41dc3",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-16T01:56:00Z",
+      "side": 1,
+      "message": "Transform never returns nil. If the transformer function returns nil, the original starlarkExpr will be returned unchanged.\n\nI considered allowing transform to return nil, but it becomes difficult to figure out what to do when a child of another expression is nil. For example, when the array/index in an indexExpr becomes nil.",
+      "parentUuid": "44fc00e8_ec0d96f1",
+      "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4c07e1b_e5b4e699",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-12-16T01:41:31Z",
       "side": 1,
       "message": "Ditto",
+      "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c787832_bfc58b32",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-16T01:56:00Z",
+      "side": 1,
+      "message": "Ditto. (This is going to be a lot of dittos lol)",
+      "parentUuid": "d4c07e1b_e5b4e699",
       "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb8eaa30_4487738c",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-16T01:56:00Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "ee183d2c_a080b825",
+      "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0ec6cc6_be66b121",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-12-16T01:41:31Z",
       "side": 1,
       "message": "Ditto",
+      "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "678ae63e_82f5079c",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-16T01:56:00Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "e0ec6cc6_be66b121",
       "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -86,6 +158,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05f06825_226dd962",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-16T01:56:00Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "80115ff8_f1186c9d",
+      "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5afa17b5_ae5bde75",
@@ -99,6 +189,24 @@
       "writtenOn": "2021-12-16T01:41:31Z",
       "side": 1,
       "message": "Ditto",
+      "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56b63be3_c5a25d98",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-16T01:56:00Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "5afa17b5_ae5bde75",
       "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -120,6 +228,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5e1d07_08ce6402",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-16T01:56:00Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "f5d8a0c7_9eb50df7",
+      "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d2e3600_aff8b01b",
@@ -133,6 +259,24 @@
       "writtenOn": "2021-12-16T01:41:31Z",
       "side": 1,
       "message": "Ditto",
+      "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "160c5989_c58d15cc",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-16T01:56:00Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "8d2e3600_aff8b01b",
       "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -154,6 +298,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bd011c5_88fa1c54",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-16T01:56:00Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "0cc394ae_63d57f38",
+      "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0e5a1b8_875ae065",
@@ -167,6 +329,24 @@
       "writtenOn": "2021-12-16T01:41:31Z",
       "side": 1,
       "message": "ditto",
+      "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6b2089d_7a44da47",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-16T01:56:00Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "c0e5a1b8_875ae065",
       "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -188,6 +368,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c092705_6b5bfccd",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 842,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-16T01:56:00Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "02600bdf_32625cee",
+      "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d1744eb_1e1585f9",
@@ -201,6 +399,24 @@
       "writtenOn": "2021-12-16T01:41:31Z",
       "side": 1,
       "message": "ditto",
+      "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab90a5cb_2bf4981c",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 917,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-16T01:56:00Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "5d1744eb_1e1585f9",
       "revId": "b0d32ab960517c1031c6841f31a7f3f5c44c0b33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
