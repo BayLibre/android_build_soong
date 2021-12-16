@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb25508d_261cfb54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-16T12:41:47Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "7d3c9e0b5f54bd6f61a973e1360262949a035c87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab05a5ef_33c87296",
@@ -31,6 +48,24 @@
       "writtenOn": "2021-12-16T12:30:35Z",
       "side": 1,
       "message": "Presumably if you comment out this line the test fails?",
+      "revId": "7d3c9e0b5f54bd6f61a973e1360262949a035c87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a429260b_cacd072b",
+        "filename": "apex/bootclasspath_fragment_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-16T12:41:47Z",
+      "side": 1,
+      "message": "Right. If I comment this line out, the test will fail with the error:\nbootclasspath_fragment_test.go:460: \"etc/boot-image.prof\" should not be in the APEX: expected true, actual false\n\nThe case where profiles are not disabled is covered by other tests in this file. You can see \"etc/boot-image.prof\" being part of the APEX contents on line 416 and 478",
+      "parentUuid": "ab05a5ef_33c87296",
       "revId": "7d3c9e0b5f54bd6f61a973e1360262949a035c87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
