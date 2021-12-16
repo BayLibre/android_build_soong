@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d846a62d_c550151e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-12-16T18:30:01Z",
+      "side": 1,
+      "message": "IMHO it\u0027s not needed. This macro is obsolete and has to go away.",
+      "revId": "6d7781525679fca7b04054fc71d81d287a937abd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
