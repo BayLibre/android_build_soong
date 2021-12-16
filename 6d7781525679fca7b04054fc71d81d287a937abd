@@ -16,6 +16,24 @@
       "message": "IMHO it\u0027s not needed. This macro is obsolete and has to go away.",
       "revId": "6d7781525679fca7b04054fc71d81d287a937abd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "897d193e_ecfe9af2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-16T18:56:08Z",
+      "side": 1,
+      "message": "But if we\u0027re going to make a script for it anyways, wouldn\u0027t it be better to just have it be automatically handled in mk2rbc? That way partners don\u0027t have to run the separate script, and noone has to check in extra changes.\n\nIf you\u0027re concerned about keeping an is_platform_sdk_version_at_least() function around, let me know and I can rewrite it to insert the g[\"PLATFORM_SDK_VERSION\"] \u003e XX directly into the starlark code. I just didn\u0027t do it that way initially because this was simpler.",
+      "parentUuid": "d846a62d_c550151e",
+      "revId": "6d7781525679fca7b04054fc71d81d287a937abd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
