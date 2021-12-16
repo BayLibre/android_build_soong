@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34bb2cb3_a9752fcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-12-16T17:56:55Z",
+      "side": 1,
+      "message": "Sorry for the delay in review, I just noticed I was on review list. Feel free to fix a few minor comments or submit as is.",
+      "revId": "051b18e9d4074d104773365a7dab47a92ba93fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48114dcc_c1a9e87c",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-12-16T17:56:55Z",
+      "side": 1,
+      "message": "Minor thing: I would rather put this into an `else` branch and use `jarIndex` as previously, and get rid of `endIndex` altogether. Although it is quite elegant to rely on `endIndex \u003c 0` being a stopper in the for loop, the control flow is more difficult than with a straightforward `if`/`else`.",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 264,
+        "endChar": 3
+      },
+      "revId": "051b18e9d4074d104773365a7dab47a92ba93fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b07ad67_2376f8ff",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2021-12-16T17:56:55Z",
+      "side": 1,
+      "message": "Note that you can also use backticks-quoted strings and avoid escaping double quotes.",
+      "range": {
+        "startLine": 292,
+        "startChar": 57,
+        "endLine": 292,
+        "endChar": 60
+      },
+      "revId": "051b18e9d4074d104773365a7dab47a92ba93fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
