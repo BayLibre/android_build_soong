@@ -16,6 +16,24 @@
       "message": "De we still need to keep this function? it looks all the calling of this function have been removed.",
       "revId": "c68db4b305b9186d8d9b4e83b298a33fa810d06b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f577473_134fecf8",
+        "filename": "android/paths.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1647,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-17T06:14:55Z",
+      "side": 1,
+      "message": "There are more usages outside build/soong that I\u0027ll handle separately (https://cs.android.com/android/platform/superproject/+/master:art/build/art.go;l\u003d291;drc\u003dfd846c5c2e9bc63b250c2bce271c2d6b8905f79d)",
+      "parentUuid": "10719264_ef742f92",
+      "revId": "c68db4b305b9186d8d9b4e83b298a33fa810d06b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
