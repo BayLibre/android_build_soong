@@ -893,9 +893,11 @@ x := $(SOONG_CONFIG_cvd_grub_config)
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
-  rblf.soong_config_namespace(g, "cvd")
-  rblf.soong_config_set(g, "cvd", "launch_configs", "cvd_config_auto.json")
-  rblf.soong_config_append(g, "cvd", "grub_config", "grub.cfg")
+  rblf.mk2rbc_error("product.mk:2", "SOONG_CONFIG_ variables cannot be assigned to, use soong_config_set or soong_config_append instead: SOONG_CONFIG_NAMESPACES += cvd")
+  rblf.mk2rbc_error("product.mk:3", "SOONG_CONFIG_ variables cannot be assigned to, use soong_config_set or soong_config_append instead: SOONG_CONFIG_cvd += launch_configs")
+  rblf.mk2rbc_error("product.mk:4", "SOONG_CONFIG_ variables cannot be assigned to, use soong_config_set or soong_config_append instead: SOONG_CONFIG_cvd_launch_configs = cvd_config_auto.json")
+  rblf.mk2rbc_error("product.mk:5", "SOONG_CONFIG_ variables cannot be assigned to, use soong_config_set or soong_config_append instead: SOONG_CONFIG_cvd += grub_config")
+  rblf.mk2rbc_error("product.mk:6", "SOONG_CONFIG_ variables cannot be assigned to, use soong_config_set or soong_config_append instead: SOONG_CONFIG_cvd_grub_config += grub.cfg")
   rblf.mk2rbc_error("product.mk:7", "SOONG_CONFIG_ variables cannot be referenced, use soong_config_get instead: SOONG_CONFIG_cvd_grub_config")
 `,
 	}, {
@@ -913,9 +915,11 @@ x := $(call soong_config_get,cvd,grub_config)
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
-  rblf.soong_config_namespace(g, "cvd")
-  rblf.soong_config_set(g, "cvd", "launch_configs", "cvd_config_auto.json")
-  rblf.soong_config_append(g, "cvd", "grub_config", "grub.cfg")
+  rblf.mk2rbc_error("product.mk:2", "SOONG_CONFIG_ variables cannot be assigned to, use soong_config_set or soong_config_append instead: SOONG_CONFIG_NAMESPACES += cvd")
+  rblf.mk2rbc_error("product.mk:3", "SOONG_CONFIG_ variables cannot be assigned to, use soong_config_set or soong_config_append instead: SOONG_CONFIG_cvd += launch_configs")
+  rblf.mk2rbc_error("product.mk:4", "SOONG_CONFIG_ variables cannot be assigned to, use soong_config_set or soong_config_append instead: SOONG_CONFIG_cvd_launch_configs = cvd_config_auto.json")
+  rblf.mk2rbc_error("product.mk:5", "SOONG_CONFIG_ variables cannot be assigned to, use soong_config_set or soong_config_append instead: SOONG_CONFIG_cvd += grub_config")
+  rblf.mk2rbc_error("product.mk:6", "SOONG_CONFIG_ variables cannot be assigned to, use soong_config_set or soong_config_append instead: SOONG_CONFIG_cvd_grub_config += grub.cfg")
   _x = rblf.soong_config_get(g, "cvd", "grub_config")
 `,
 	},
