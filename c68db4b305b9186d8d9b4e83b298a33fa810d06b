@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10719264_ef742f92",
+        "filename": "android/paths.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1647,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2021-12-17T01:03:31Z",
+      "side": 1,
+      "message": "De we still need to keep this function? it looks all the calling of this function have been removed.",
+      "revId": "c68db4b305b9186d8d9b4e83b298a33fa810d06b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
