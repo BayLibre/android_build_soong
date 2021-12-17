@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a5a71c_606a6f06",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-12-17T01:02:30Z",
+      "side": 1,
+      "message": "The plan was to use Eval to handle something like\nFOO :\u003d a/b/c\ninclude $(FOO)/x.mk\n\nbut there was never time to do that.\n",
+      "revId": "fc43868a5fc0a8b4fd18243d8c6950871b0b2c1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
