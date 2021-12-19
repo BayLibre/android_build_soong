@@ -2581,22 +2581,21 @@ func TestFilesInSubDir(t *testing.T) {
 	`)
 
 	generateFsRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("generateFsConfig")
-	dirs := strings.Split(generateFsRule.Args["exec_paths"], " ")
+	cmd := generateFsRule.RuleParams.Command
 
 	// Ensure that the subdirectories are all listed
-	ensureListContains(t, dirs, "etc")
-	ensureListContains(t, dirs, "etc/foo")
-	ensureListContains(t, dirs, "etc/foo/bar")
-	ensureListContains(t, dirs, "lib64")
-	ensureListContains(t, dirs, "lib64/foo")
-	ensureListContains(t, dirs, "lib64/foo/bar")
-	ensureListContains(t, dirs, "lib")
-	ensureListContains(t, dirs, "lib/foo")
-	ensureListContains(t, dirs, "lib/foo/bar")
-
-	ensureListContains(t, dirs, "bin")
-	ensureListContains(t, dirs, "bin/foo")
-	ensureListContains(t, dirs, "bin/foo/bar")
+	ensureContains(t, cmd, "/etc ")
+	ensureContains(t, cmd, "/etc/foo ")
+	ensureContains(t, cmd, "/etc/foo/bar ")
+	ensureContains(t, cmd, "/lib64 ")
+	ensureContains(t, cmd, "/lib64/foo ")
+	ensureContains(t, cmd, "/lib64/foo/bar ")
+	ensureContains(t, cmd, "/lib ")
+	ensureContains(t, cmd, "/lib/foo ")
+	ensureContains(t, cmd, "/lib/foo/bar ")
+	ensureContains(t, cmd, "/bin ")
+	ensureContains(t, cmd, "/bin/foo ")
+	ensureContains(t, cmd, "/bin/foo/bar ")
 }
 
 func TestFilesInSubDirWhenNativeBridgeEnabled(t *testing.T) {
@@ -2658,7 +2657,10 @@ func TestFilesInSubDirWhenNativeBridgeEnabled(t *testing.T) {
 }
 
 func TestVendorApex(t *testing.T) {
-	ctx := testApex(t, `
+	result := android.GroupFixturePreparers(
+		prepareForApexTest,
+		android.FixtureModifyConfig(android.SetKatiEnabledForTests),
+	).RunTestWithBp(t, `
 		apex {
 			name: "myapex",
 			key: "myapex.key",
@@ -2682,24 +2684,24 @@ func TestVendorApex(t *testing.T) {
 		}
 	`)
 
-	ensureExactContents(t, ctx, "myapex", "android_common_myapex_image", []string{
+	ensureExactContents(t, result.TestContext, "myapex", "android_common_myapex_image", []string{
 		"bin/mybin",
 		"lib64/libfoo.so",
 		// TODO(b/159195575): Add an option to use VNDK libs from VNDK APEX
 		"lib64/libc++.so",
 	})
 
-	apexBundle := ctx.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
-	data := android.AndroidMkDataForTest(t, ctx, apexBundle)
+	apexBundle := result.ModuleForTests("myapex", "android_common_myapex_image").Module().(*apexBundle)
+	data := android.AndroidMkDataForTest(t, result.TestContext, apexBundle)
 	name := apexBundle.BaseModuleName()
 	prefix := "TARGET_"
 	var builder strings.Builder
 	data.Custom(&builder, name, prefix, "", data)
-	androidMk := android.StringRelativeToTop(ctx.Config(), builder.String())
+	androidMk := android.StringRelativeToTop(result.Config, builder.String())
 	installPath := "out/target/product/test_device/vendor/apex"
 	ensureContains(t, androidMk, "LOCAL_MODULE_PATH := "+installPath)
 
-	apexManifestRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexManifestRule")
+	apexManifestRule := result.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexManifestRule")
 	requireNativeLibs := names(apexManifestRule.Args["requireNativeLibs"])
 	ensureListNotContains(t, requireNativeLibs, ":vndk")
 }
@@ -7043,6 +7045,75 @@ func testDexpreoptWithApexes(t *testing.T, bp, errmsg string, preparer android.F
 		RunTestWithBp(t, bp)
 
 	return result.TestContext
+}
+
+func TestDuplicateDeapexeresFromPrebuiltApexes(t *testing.T) {
+	preparers := android.GroupFixturePreparers(
+		java.PrepareForTestWithJavaDefaultModules,
+		PrepareForTestWithApexBuildComponents,
+	).
+		ExtendWithErrorHandler(android.FixtureExpectsAtLeastOneErrorMatchingPattern(
+			"Multiple installable prebuilt APEXes provide ambiguous deapexers: com.android.myapex and com.mycompany.android.myapex"))
+
+	bpBase := `
+		apex_set {
+			name: "com.android.myapex",
+			installable: true,
+			exported_bootclasspath_fragments: ["my-bootclasspath-fragment"],
+			set: "myapex.apks",
+		}
+
+		apex_set {
+			name: "com.mycompany.android.myapex",
+			apex_name: "com.android.myapex",
+			installable: true,
+			exported_bootclasspath_fragments: ["my-bootclasspath-fragment"],
+			set: "company-myapex.apks",
+		}
+
+		prebuilt_bootclasspath_fragment {
+			name: "my-bootclasspath-fragment",
+			apex_available: ["com.android.myapex"],
+			%s
+		}
+	`
+
+	t.Run("java_import", func(t *testing.T) {
+		_ = preparers.RunTestWithBp(t, fmt.Sprintf(bpBase, `contents: ["libfoo"]`)+`
+			java_import {
+				name: "libfoo",
+				jars: ["libfoo.jar"],
+				apex_available: ["com.android.myapex"],
+			}
+		`)
+	})
+
+	t.Run("java_sdk_library_import", func(t *testing.T) {
+		_ = preparers.RunTestWithBp(t, fmt.Sprintf(bpBase, `contents: ["libfoo"]`)+`
+			java_sdk_library_import {
+				name: "libfoo",
+				public: {
+					jars: ["libbar.jar"],
+				},
+				apex_available: ["com.android.myapex"],
+			}
+		`)
+	})
+
+	t.Run("prebuilt_bootclasspath_fragment", func(t *testing.T) {
+		_ = preparers.RunTestWithBp(t, fmt.Sprintf(bpBase, `
+			image_name: "art",
+			contents: ["libfoo"],
+		`)+`
+			java_sdk_library_import {
+				name: "libfoo",
+				public: {
+					jars: ["libbar.jar"],
+				},
+				apex_available: ["com.android.myapex"],
+			}
+		`)
+	})
 }
 
 func TestUpdatable_should_set_min_sdk_version(t *testing.T) {
