@@ -42,8 +42,6 @@ func init() {
 	pctx.Import("android/soong/android")
 
 	registerShBuildComponents(android.InitRegistrationContext)
-
-	android.RegisterBp2BuildMutator("sh_binary", ShBinaryBp2Build)
 }
 
 func registerShBuildComponents(ctx android.RegistrationContext) {
@@ -167,10 +165,6 @@ type ShBinary struct {
 }
 
 var _ android.HostToolProvider = (*ShBinary)(nil)
-
-func (s *ShBinary) InstallBypassMake() bool {
-	return true
-}
 
 type ShTest struct {
 	ShBinary
@@ -437,7 +431,7 @@ func (s *ShTest) AndroidMkEntries() []android.AndroidMkEntries {
 		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
 			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 				s.customAndroidMkEntries(entries)
-				entries.SetPath("LOCAL_MODULE_PATH", s.installDir.ToMakePath())
+				entries.SetPath("LOCAL_MODULE_PATH", s.installDir)
 				entries.AddCompatibilityTestSuites(s.testProperties.Test_suites...)
 				if s.testConfig != nil {
 					entries.SetPath("LOCAL_FULL_TEST_CONFIG", s.testConfig)
@@ -540,12 +534,7 @@ type bazelShBinaryAttributes struct {
 	// visibility
 }
 
-func ShBinaryBp2Build(ctx android.TopDownMutatorContext) {
-	m, ok := ctx.Module().(*ShBinary)
-	if !ok || !m.ConvertWithBp2build(ctx) {
-		return
-	}
-
+func (m *ShBinary) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	srcs := bazel.MakeLabelListAttribute(
 		android.BazelLabelForModuleSrc(ctx, []string{*m.properties.Src}))
 
