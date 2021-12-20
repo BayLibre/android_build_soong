@@ -33,6 +33,47 @@
       "message": "The new option is used in http://aosp/1927444 which will be submitted after this CL lands.",
       "revId": "8cbb5717a6093b2e2a709121772174d16bf96b42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6a7af94_e7870017",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-20T20:31:34Z",
+      "side": 1,
+      "message": "I\u0027d suggest keeping it java specific, you can always use a separate filegroup for the 11 sources.",
+      "parentUuid": "453ecc15_1a6f7801",
+      "revId": "8cbb5717a6093b2e2a709121772174d16bf96b42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5799a9db_895db22f",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-20T20:31:34Z",
+      "side": 1,
+      "message": "IsEnvTrue(\"EXPERIMENTAL_TARGET_JAVA_VERSION_11\")\n\nI\u0027d also suggest wrapping this in a method on ctx.Config() so you can do things like change the default from false to true in one place.",
+      "range": {
+        "startLine": 969,
+        "startChar": 34,
+        "endLine": 969,
+        "endChar": 99
+      },
+      "revId": "8cbb5717a6093b2e2a709121772174d16bf96b42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
