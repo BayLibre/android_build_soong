@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "069f959e_1b4526a4",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-20T12:01:28Z",
+      "side": 1,
+      "message": "`endIndex \u003c 0` isn\u0027t a stopper. You can see that I updated `endIndex` on line 258. I need the for loop in both cases, so I don\u0027t want to duplicate the for loop in `if`/`else`.",
+      "parentUuid": "48114dcc_c1a9e87c",
+      "range": {
+        "startLine": 260,
+        "startChar": 2,
+        "endLine": 264,
+        "endChar": 3
+      },
+      "revId": "051b18e9d4074d104773365a7dab47a92ba93fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b07ad67_2376f8ff",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-12-16T17:56:55Z",
       "side": 1,
       "message": "Note that you can also use backticks-quoted strings and avoid escaping double quotes.",
+      "range": {
+        "startLine": 292,
+        "startChar": 57,
+        "endLine": 292,
+        "endChar": 60
+      },
+      "revId": "051b18e9d4074d104773365a7dab47a92ba93fb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5730aaa0_771311ac",
+        "filename": "dexpreopt/dexpreopt.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-20T12:01:28Z",
+      "side": 1,
+      "message": "Thank you for the tip!",
+      "parentUuid": "0b07ad67_2376f8ff",
       "range": {
         "startLine": 292,
         "startChar": 57,
