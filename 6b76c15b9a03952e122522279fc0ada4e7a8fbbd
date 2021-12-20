@@ -16,6 +16,24 @@
       "message": "Just to confirm:\n\nlint is still done as usual. If it finds issues, it will fail as usual.\nIt still uses baseline just like the previous behaviour.\n\nThe new difference is that now there is always a clean baseline (i.e. no unneeded findings in the baseline) in the out/ folder [whether or not you use a baseline].\n\n",
       "revId": "6b76c15b9a03952e122522279fc0ada4e7a8fbbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "169a0ced_d79aebe2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-12-20T23:15:13Z",
+      "side": 1,
+      "message": "Correct",
+      "parentUuid": "c74787a3_e1aaa746",
+      "revId": "6b76c15b9a03952e122522279fc0ada4e7a8fbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
