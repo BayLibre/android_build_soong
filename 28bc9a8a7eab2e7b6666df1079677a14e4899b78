@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cdd897d_308c0e0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-20T16:03:06Z",
+      "side": 1,
+      "message": "Ulya, thank you for the prompt review! Colin, could you please take a look and give an owner\u0027s approval? Thanks.",
+      "revId": "28bc9a8a7eab2e7b6666df1079677a14e4899b78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
