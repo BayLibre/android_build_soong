@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a11e6440_c0644ebb",
+        "filename": "android/mutator.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-20T23:34:48Z",
+      "side": 1,
+      "message": "I\u0027m no longer using this.",
+      "parentUuid": "025ba087_d72b5f30",
+      "range": {
+        "startLine": 545,
+        "startChar": 32,
+        "endLine": 545,
+        "endChar": 63
+      },
+      "revId": "97a4e930f1a7bedbcdafd8cccb143f4fbff343c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b623ee87_142208ff",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-14T14:23:34Z",
       "side": 1,
       "message": "nit: well",
+      "range": {
+        "startLine": 124,
+        "startChar": 86,
+        "endLine": 124,
+        "endChar": 90
+      },
+      "revId": "97a4e930f1a7bedbcdafd8cccb143f4fbff343c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3ce4bc8_7366b676",
+        "filename": "bazel/configurability.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-20T23:34:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b623ee87_142208ff",
       "range": {
         "startLine": 124,
         "startChar": 86,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3624041_0572fcb0",
+        "filename": "bazel/properties.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-20T23:34:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08ae5ead_4a3b44c1",
+      "range": {
+        "startLine": 313,
+        "startChar": 86,
+        "endLine": 313,
+        "endChar": 87
+      },
+      "revId": "97a4e930f1a7bedbcdafd8cccb143f4fbff343c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d626ca3_3772ccee",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-12-14T14:23:34Z",
       "side": 1,
       "message": "I read the callsite first and was struggling to figure out the order here -- since go doesn\u0027t support named params, wdyt of changing this to a struct with FalseVal and TrueVal fields?",
+      "range": {
+        "startLine": 404,
+        "startChar": 46,
+        "endLine": 404,
+        "endChar": 83
+      },
+      "revId": "97a4e930f1a7bedbcdafd8cccb143f4fbff343c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e71a5e0b_db7764ba",
+        "filename": "bazel/properties.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-20T23:34:48Z",
+      "side": 1,
+      "message": "That feels like overkill to me, here. I know it\u0027s not ideal (thanks go), but I think adding a struct adds extra boilerplate here.\n\nI alternatively wanted to be able to pass a conversion function, but lack of function types makes that an even worse idea.\n\nWDYT? If you really think it\u0027ll look better, I\u0027ll go with it.",
+      "parentUuid": "4d626ca3_3772ccee",
       "range": {
         "startLine": 404,
         "startChar": 46,
@@ -139,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ec30427_3b8c2ecd",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 1458,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-20T23:34:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6235de8c_9f5048a8",
+      "range": {
+        "startLine": 1456,
+        "startChar": 0,
+        "endLine": 1458,
+        "endChar": 10
+      },
+      "revId": "97a4e930f1a7bedbcdafd8cccb143f4fbff343c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "459939bf_3ef9db00",
@@ -152,6 +272,30 @@
       "writtenOn": "2021-12-14T14:23:34Z",
       "side": 1,
       "message": "this mutator handled both cc_binary and cc_binary_host -- this makes all targets host only?",
+      "range": {
+        "startLine": 629,
+        "startChar": 5,
+        "endLine": 629,
+        "endChar": 36
+      },
+      "revId": "97a4e930f1a7bedbcdafd8cccb143f4fbff343c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86a89718_d5b830b3",
+        "filename": "cc/binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-20T23:34:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "459939bf_3ef9db00",
       "range": {
         "startLine": 629,
         "startChar": 5,

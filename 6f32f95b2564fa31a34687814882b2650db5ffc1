@@ -22,6 +22,30 @@
       },
       "revId": "6f32f95b2564fa31a34687814882b2650db5ffc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c084812_8e985c90",
+        "filename": "android/bazel.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-20T23:34:48Z",
+      "side": 0,
+      "message": "Ugh, you\u0027re absolutely right. This worked in my tests because I still had aosp/1908291 patched, which we should abandon.\n\nI\u0027ve made a large number of changes, including I believe fixing this. Also have updated tests.",
+      "parentUuid": "6fdb6ab3_451ff828",
+      "range": {
+        "startLine": 444,
+        "startChar": 2,
+        "endLine": 444,
+        "endChar": 115
+      },
+      "revId": "6f32f95b2564fa31a34687814882b2650db5ffc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
