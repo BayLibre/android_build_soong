@@ -16,6 +16,23 @@
       "message": "Please have a look at my attempt to add a new option to include files in the build only when EXPERIMENTAL_TARGET_JAVA_VERSION_11\u003dtrue.\n\nThis works, but I can only use it in `java_*` components. I tried having the option more generic so I can use it from `filegroup`, but couldn\u0027t get it working.\n\nI plan to remove this tag once Java 11 changes are no longer experimental.",
       "revId": "8cbb5717a6093b2e2a709121772174d16bf96b42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dce64c1e_a8bffe7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2021-12-20T12:03:42Z",
+      "side": 1,
+      "message": "The new option is used in http://aosp/1927444 which will be submitted after this CL lands.",
+      "revId": "8cbb5717a6093b2e2a709121772174d16bf96b42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
