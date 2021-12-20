@@ -786,8 +786,9 @@ type Module struct {
 	Properties       BaseProperties
 
 	// initialize before calling Init
-	hod      android.HostOrDeviceSupported
-	multilib android.Multilib
+	hod       android.HostOrDeviceSupported
+	multilib  android.Multilib
+	bazelable bool
 
 	// Allowable SdkMemberTypes of this module type.
 	sdkMemberTypes []android.SdkMemberType
@@ -1150,7 +1151,9 @@ func (c *Module) Init() android.Module {
 	}
 
 	android.InitAndroidArchModule(c, c.hod, c.multilib)
-	android.InitBazelModule(c)
+	if c.bazelable {
+		android.InitBazelModule(c)
+	}
 	android.InitApexModule(c)
 	android.InitSdkAwareModule(c)
 	android.InitDefaultableModule(c)
@@ -1381,8 +1384,6 @@ func (c *Module) isCfiAssemblySupportEnabled() bool {
 func (c *Module) InstallInRoot() bool {
 	return c.installer != nil && c.installer.installInRoot()
 }
-
-func (c *Module) InstallBypassMake() bool { return true }
 
 type baseModuleContext struct {
 	android.BaseModuleContext
@@ -3185,6 +3186,24 @@ func (c *Module) testBinary() bool {
 	return false
 }
 
+func (c *Module) benchmarkBinary() bool {
+	if b, ok := c.linker.(interface {
+		benchmarkBinary() bool
+	}); ok {
+		return b.benchmarkBinary()
+	}
+	return false
+}
+
+func (c *Module) fuzzBinary() bool {
+	if f, ok := c.linker.(interface {
+		fuzzBinary() bool
+	}); ok {
+		return f.fuzzBinary()
+	}
+	return false
+}
+
 // Header returns true if the module is a header-only variant. (See cc/library.go header()).
 func (c *Module) Header() bool {
 	if h, ok := c.linker.(interface {
@@ -3430,16 +3449,51 @@ func (c *Module) AlwaysRequiresPlatformApexVariant() bool {
 
 var _ snapshot.RelativeInstallPath = (*Module)(nil)
 
+// ConvertWithBp2build converts Module to Bazel for bp2build.
+func (c *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	prebuilt := c.IsPrebuilt()
+	if c.Binary() {
+		if !prebuilt {
+			binaryBp2build(ctx, c, ctx.ModuleType())
+		}
+	} else if c.Object() {
+		if !prebuilt {
+			objectBp2Build(ctx, c)
+		}
+	} else if c.CcLibrary() {
+		static := c.BuildStaticVariant()
+		shared := c.BuildSharedVariant()
+
+		if static && shared {
+			if !prebuilt {
+				libraryBp2Build(ctx, c)
+			}
+		} else if !static && !shared {
+			if !prebuilt {
+				libraryHeadersBp2Build(ctx, c)
+			}
+		} else if static {
+			if prebuilt {
+				prebuiltLibraryStaticBp2Build(ctx, c)
+			} else {
+				sharedOrStaticLibraryBp2Build(ctx, c, true)
+			}
+		} else if shared {
+			if prebuilt {
+				prebuiltLibrarySharedBp2Build(ctx, c)
+			} else {
+				sharedOrStaticLibraryBp2Build(ctx, c, false)
+			}
+		}
+	}
+}
+
 //
 // Defaults
 //
 type Defaults struct {
 	android.ModuleBase
 	android.DefaultsModuleBase
-	// Included to support setting bazel_module.label for multiple Soong modules to the same Bazel
-	// target. This is primarily useful for modules that were architecture specific and instead are
-	// handled in Bazel as a select().
-	android.BazelModuleBase
 	android.ApexModuleBase
 }
 
@@ -3487,8 +3541,6 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&prebuiltLinkerProperties{},
 	)
 
-	// Bazel module must be initialized _before_ Defaults to be included in cc_defaults module.
-	android.InitBazelModule(module)
 	android.InitDefaultsModule(module)
 
 	return module
