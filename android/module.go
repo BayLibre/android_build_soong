@@ -1026,7 +1026,6 @@ func InitAndroidModule(m Module) {
 	initProductVariableModule(m)
 
 	base.generalProperties = m.GetProperties()
-	base.customizableProperties = m.GetProperties()
 
 	// The default_visibility property needs to be checked and parsed by the visibility module during
 	// its checking and parsing phases so make it the primary visibility property.
@@ -1177,8 +1176,6 @@ type ModuleBase struct {
 	// the architecture. The interface{} value is an archPropRoot that is
 	// filled with arch specific values by the arch mutator.
 	archProperties [][]interface{}
-
-	customizableProperties []interface{}
 
 	// Properties specific to the Blueprint to BUILD migration.
 	bazelTargetModuleProperties bazel.BazelTargetModuleProperties
