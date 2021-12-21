@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba55f77a_c546cca8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-21T19:41:56Z",
+      "side": 1,
+      "message": "For build changes like this I suggest running a heavy presubmit (Checks tab -\u003e Run more builds) on all the build_test\u003cn\u003e targets on git_master. They\u0027re not part of the normal presubmit.",
+      "revId": "d806dd4f1d53dc64cbfc96ecda07a4b223adfbd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
