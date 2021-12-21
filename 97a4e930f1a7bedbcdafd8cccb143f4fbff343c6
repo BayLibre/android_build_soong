@@ -191,6 +191,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1dfd8f6a_d382df99",
+        "filename": "bazel/properties.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-21T13:47:03Z",
+      "side": 1,
+      "message": "I don\u0027t have super strong feelings -- let\u0027s see how things go and can adjust later if we need.",
+      "parentUuid": "e71a5e0b_db7764ba",
+      "range": {
+        "startLine": 404,
+        "startChar": 46,
+        "endLine": 404,
+        "endChar": 83
+      },
+      "revId": "97a4e930f1a7bedbcdafd8cccb143f4fbff343c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "66dfa458_781f6b3a",
         "filename": "bazel/properties.go",
         "patchSetId": 7
