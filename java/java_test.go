@@ -1514,3 +1514,80 @@ func TestErrorproneEnabledOnlyByEnvironmentVariable(t *testing.T) {
 		t.Errorf("expected errorprone to contain %q, got %q", expectedSubstring, javac.Args["javacFlags"])
 	}
 }
+
+func TestJavaStubLibraryCreatesVariants(t *testing.T) {
+	bp := `
+		java_api_stub_library {
+			name: "foo",
+		}
+		`
+	result := prepareForJavaTest.RunTestWithBp(t, bp)
+	// check variants are created
+	variants := result.ModuleVariantsForTests("foo")
+	android.AssertStringListContains(t, "variant not found", variants, "android_common_31")
+
+	// check output cotains .jar
+	outputs := result.ModuleForTests("foo", "android_common_29").AllOutputs()
+	android.AssertBoolEquals(t, "stub jar not found", true, android.SuffixInList(outputs, "foo.jar"))
+
+}
+
+func TestCompileAgainstStubLibrary(t *testing.T) {
+	bp := `
+		java_library {
+			name: "foo",
+			srcs: ["a.java"],
+			sdk_version: "@public_30",
+		}
+
+		java_api_stub_library {
+			name: "public",
+		}
+		`
+	result := prepareForJavaTest.RunTestWithBp(t, bp)
+	javac := result.ModuleForTests("foo", "android_common").Description("javac")
+	android.AssertStringDoesContain(t, "stub jar not found in classpath", javac.Args["classpath"], "android_common_30/public.jar")
+}
+
+func TestJavaApiContributionCopiesFiles(t *testing.T) {
+	bp := `
+		java_api_contribution {
+			name: "foo",
+			srcs: ["prebuilts/sdk/1/public/api.txt"],
+		}
+		api_surface {
+			name: "public.sdk",
+			contributions: [
+				"foo",
+			],
+		}
+		`
+	result := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		android.PrepareForTestWithApiSurface,
+	).RunTestWithBp(t, bp)
+
+	outputs := result.ModuleForTests("public.sdk", "").AllOutputs()
+	android.AssertBoolEquals(t, "gen Android.bp file not found", true, android.SuffixInList(outputs, "public.sdk/Android.bp"))
+}
+
+func TestAndroidAppFromApiSurface(t *testing.T) {
+	bp := `
+		android_app {
+			name: "foo",
+			sdk_version: "@public_30", // uses the special @ for api_surface
+		}
+		java_api_stub_library {
+			name: "public",
+		}
+		`
+	result := prepareForJavaTest.RunTestWithBp(t, bp)
+
+	// javac
+	javac := result.ModuleForTests("foo", "android_common").Rule("javac")
+	android.AssertStringDoesContain(t, "stub jar not found in classpath", javac.Args["classpath"], "android_common_30/public.jar")
+
+	// aapt2
+	aaptLink := result.ModuleForTests("foo", "android_common").Rule("aapt2Link")
+	android.AssertStringDoesContain(t, "stub jar not found in classpath", aaptLink.Args["flags"], "android_common_30/public.jar")
+}

@@ -21,6 +21,7 @@ package java
 import (
 	"fmt"
 	"path/filepath"
+	"strings"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -66,6 +67,13 @@ func registerJavaBuildComponents(ctx android.RegistrationContext) {
 
 	ctx.RegisterSingletonType("logtags", LogtagsSingleton)
 	ctx.RegisterSingletonType("kythe_java_extract", kytheExtractJavaFactory)
+
+	// multitree modules
+	ctx.RegisterModuleType("java_api_stub_library", JavaApiStubLibraryFactory)
+	ctx.RegisterModuleType("java_api_contribution", ApiContributionFactory)
+	ctx.PreDepsMutators(func(ctx android.RegisterMutatorsContext) {
+		ctx.BottomUp("version_mutator", versionMutator).Parallel()
+	})
 }
 
 func RegisterJavaSdkMemberTypes() {
@@ -377,6 +385,11 @@ type sdkDep struct {
 	aidl android.OptionalPath
 
 	noStandardLibs, noFrameworksLibs bool
+
+	// tmp
+	useApiSurface     bool
+	apiSurfaceName    string
+	apiSurfaceVersion string
 }
 
 func (s sdkDep) hasStandardLibs() bool {
@@ -397,6 +410,9 @@ type jniLib struct {
 
 func sdkDeps(ctx android.BottomUpMutatorContext, sdkContext android.SdkContext, d dexer) {
 	sdkDep := decodeSdkDep(ctx, sdkContext)
+	if sdkDep.useApiSurface {
+		ctx.AddVariationDependencies([]blueprint.Variation{{Mutator: "version_mutator", Variation: sdkDep.apiSurfaceVersion}}, libTag, sdkDep.apiSurfaceName)
+	}
 	if sdkDep.useModule {
 		ctx.AddVariationDependencies(nil, bootClasspathTag, sdkDep.bootclasspath...)
 		ctx.AddVariationDependencies(nil, java9LibTag, sdkDep.java9Classpath...)
@@ -1960,4 +1976,158 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 	} else {
 		clcMap.AddContextMap(dep.ClassLoaderContexts(), depName)
 	}
+}
+
+// TODO: use metalava here
+var (
+	genJavaStubRule = pctx.AndroidStaticRule("genJavaStub",
+		blueprint.RuleParams{
+			Command:     `${config.MergeZipsCmd} $out $in`,
+			CommandDeps: []string{"${config.MergeZipsCmd}"},
+		})
+)
+
+func JavaApiStubLibraryFactory() android.Module {
+	module := &StubLibrary{}
+	module.AddProperties(&module.properties)
+	InitJavaModule(module, android.HostAndDeviceSupported)
+	return module
+}
+
+type StubLibrary struct {
+	Module
+
+	properties StubProperties
+
+	stubJarPath android.WritablePath
+}
+
+type StubProperties struct {
+	Version string `blueprint:"mutated"`
+}
+
+func (stub *StubLibrary) SetVersion(version string) {
+	stub.properties.Version = version
+}
+
+func (stub *StubLibrary) StubJarPath() android.WritablePath {
+	return stub.stubJarPath
+}
+
+func (stub *StubLibrary) SetStubJarPath(path android.WritablePath) {
+	stub.stubJarPath = path
+}
+
+func (stub *StubLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	// Create fake jar for now
+	// In the future, some tool (metalava) will create stub jar from .txt api files
+
+	//apisrcs for version=<this_variant's_version>
+	apiSrcs := android.PathsForModuleSrc(ctx, []string{stub.properties.Version + "/**/*.jar"}) //TODO: Replace jar with txt
+	stub.SetStubJarPath(android.PathForModuleOut(ctx, ctx.ModuleName()+".jar"))
+	ctx.Build(pctx, android.BuildParams{
+		Rule:   genJavaStubRule,
+		Inputs: apiSrcs,
+		Output: stub.StubJarPath(),
+	})
+}
+
+func versionMutator(mctx android.BottomUpMutatorContext) {
+	// versions hardcoded for now
+	versions := []string{"29", "30", "31"}
+
+	if _, ok := mctx.Module().(*StubLibrary); ok {
+		modules := mctx.CreateVariations(versions...)
+		for index := range modules {
+			modules[index].(*StubLibrary).SetVersion(versions[index])
+		}
+	}
+}
+
+type ApiContribution struct {
+	android.ModuleBase
+	properties ApiContributionProperties
+}
+
+type ApiContributionProperties struct {
+	Srcs []string
+}
+
+func ApiContributionFactory() android.Module {
+	module := &ApiContribution{}
+	module.AddProperties(&module.properties)
+	android.InitAndroidModule(module)
+	return module
+}
+
+var (
+	cpSrcsRule = pctx.AndroidStaticRule("cpSrcs",
+		blueprint.RuleParams{
+			Command: `for file in $in; do 
+version=$$(echo $$file | tr -dc [0-9]) && mkdir -p $outDir/$$version && cp $$file $outDir/$$version;
+done && touch $out`,
+		}, "outDir")
+
+	genBuildFileRule = pctx.AndroidStaticRule("genBuildFiles",
+		blueprint.RuleParams{
+			Command: `echo -e 
+"java_api_stub_library {\n
+name: \"$api_surface_name\"\n
+}" > $out`,
+		}, "api_surface_name")
+)
+
+func (contrib *ApiContribution) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+}
+
+// Path is out/soong/.export/ but will be different in final multi-tree layout
+func outPathApiSurface(apiSurfaceContext android.ModuleContext, pathComponent string) android.OutputPath {
+	return android.PathForOutput(apiSurfaceContext, ".export", apiSurfaceContext.ModuleName(), pathComponent)
+}
+
+func (contrib *ApiContribution) CopyFiles(apiSurfaceContext android.ModuleContext) android.Paths {
+	myDir := apiSurfaceContext.OtherModuleDir(contrib)
+	var inputs android.Paths
+	for _, src := range contrib.properties.Srcs {
+		inputs = append(inputs, android.Glob(apiSurfaceContext, myDir+"/"+src, []string{})...)
+	}
+	var outputs android.WritablePaths
+	outputs = append(outputs, outPathApiSurface(apiSurfaceContext, ".timestamp."+contrib.Name()))
+
+	// Copy files to a directory, and create a .timestamp file as output
+	// WARNING: THIS IS NOT HERMETIC
+	apiSurfaceContext.Build(pctx, android.BuildParams{
+		Rule:        cpSrcsRule,
+		Inputs:      inputs,
+		Outputs:     outputs,
+		Description: "copy API txt files",
+		Args: map[string]string{
+			"outDir": outPathApiSurface(apiSurfaceContext, "").String(),
+		},
+	})
+
+	return outputs.Paths()
+}
+
+func (contrib *ApiContribution) GenerateBuildFiles(apiSurfaceContext android.ModuleContext) android.Paths {
+	genAndroidBp := outPathApiSurface(apiSurfaceContext, "Android.bp")
+	apiSurfaceContext.Build(pctx, android.BuildParams{
+		Rule:   genBuildFileRule,
+		Output: genAndroidBp,
+		Args: map[string]string{
+			"api_surface_name": parseStubModuleNameFromSurfaceName(apiSurfaceContext),
+		},
+	})
+	return []android.Path{genAndroidBp}
+}
+
+// public.api_surface --> public
+// the former is an api_surface module type, the latter is java_api_stub_library module type
+// this is necesssary because module names are unique in Soong
+// TODO: Figure out a better solution
+func parseStubModuleNameFromSurfaceName(ctx android.ModuleContext) string {
+	if !strings.HasSuffix(ctx.ModuleName(), ".sdk") {
+		ctx.PropertyErrorf("name", "%v violates naming convention, api surfaces containing java contributions should be named as <name>.api_surface", ctx.ModuleName())
+	}
+	return strings.TrimSuffix(ctx.ModuleName(), ".sdk")
 }
