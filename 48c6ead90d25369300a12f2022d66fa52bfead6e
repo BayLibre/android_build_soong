@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9634f9a9_be73c710",
+        "filename": "bp2build/sh_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2021-12-21T21:24:26Z",
+      "side": 1,
+      "message": "so this is to cover the case where filename and sub_dir are not present and the conversion is ok with that?",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 25
+      },
+      "revId": "48c6ead90d25369300a12f2022d66fa52bfead6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
