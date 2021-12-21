@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "241f0ead_88a0e161",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2021-12-21T18:04:58Z",
+      "side": 1,
+      "message": "LGTM\n\nThank you very much for disentangling this! My scars have been avenged. 😊",
+      "revId": "a3d7915c9e53125e9e26278e619eb53b24b7a08f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
