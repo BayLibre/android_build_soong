@@ -429,6 +429,10 @@ func aaptLibs(ctx android.ModuleContext, sdkContext android.SdkContext, classLoa
 			if exportPackage != nil {
 				sharedLibs = append(sharedLibs, exportPackage)
 			}
+			// TODO: Make new tag
+			if apiSurfaceModule, ok := module.(*StubLibrary); ok {
+				sharedLibs = append(sharedLibs, apiSurfaceModule.StubJarPath())
+			}
 		case frameworkResTag:
 			if exportPackage != nil {
 				sharedLibs = append(sharedLibs, exportPackage)
