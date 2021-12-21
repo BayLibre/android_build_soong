@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "100e4479_737f3a26",
+        "filename": "bazel/properties.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-21T18:25:44Z",
+      "side": 1,
+      "message": "One thing that really irked me about working with these attributes was that HasConfigurableValues is a little.. off... in some cases. Really, you should be able to just `return lla.Value.Includes !\u003d nil || lla.HasConfigurableValues()`\n\nExcept that `lla.HasConfigurableValues()` is wrong.\n\nThen again, I think this might merge conflict with my CL :) \n\nI fix it here:\n\nhttps://android-review.googlesource.com/c/platform/build/soong/+/1917398/10/bazel/properties.go#717",
+      "revId": "184ecab37d51d6f25adff662ad47ec2fba150f27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
