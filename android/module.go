@@ -1308,6 +1308,10 @@ func (m *ModuleBase) IsConvertedByBp2build() bool {
 	return len(m.commonProperties.Bp2buildInfo) > 0
 }
 
+func (j *ModuleBase) UseApiSurface(ctx EarlyModuleContext) bool {
+	return false
+}
+
 // Bp2buildTargets returns the Bazel targets bp2build generated for this module.
 func (m *ModuleBase) Bp2buildTargets() []bp2buildInfo {
 	return m.commonProperties.Bp2buildInfo

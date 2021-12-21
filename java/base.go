@@ -629,6 +629,10 @@ func (j *Module) SdkVersion(ctx android.EarlyModuleContext) android.SdkSpec {
 	return android.SdkSpecFrom(ctx, String(j.deviceProperties.Sdk_version))
 }
 
+func (j *Module) UseApiSurface(ctx android.EarlyModuleContext) bool {
+	return strings.Index(String(j.deviceProperties.Sdk_version), "@") == 0
+}
+
 func (j *Module) SystemModules() string {
 	return proptools.String(j.deviceProperties.System_modules)
 }
@@ -1834,7 +1838,9 @@ func (j *Module) collectDeps(ctx android.ModuleContext) deps {
 			// Handled by AndroidApp.collectAppDeps
 			return
 		}
-
+		if dep, ok := module.(*StubLibrary); ok {
+			deps.classpath = append(deps.classpath, dep.StubJarPath())
+		}
 		if dep, ok := module.(SdkLibraryDependency); ok {
 			switch tag {
 			case libTag:

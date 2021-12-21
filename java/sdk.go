@@ -105,6 +105,14 @@ func decodeSdkDep(ctx android.EarlyModuleContext, sdkContext android.SdkContext)
 		return sdkDep{}
 	}
 
+	// If building against api_surface using the special ^@ syntax
+	if sdkContext.UseApiSurface(ctx) {
+		return sdkDep{useApiSurface: true,
+			apiSurfaceName:    sdkVersion.Kind.String(),
+			apiSurfaceVersion: sdkVersion.ApiLevel.String(),
+			systemModules:     "core-public-stubs-system-modules"} //TODO: are system modules necessary?
+	}
+
 	if sdkVersion.UsePrebuilt(ctx) {
 		dir := filepath.Join("prebuilts", "sdk", sdkVersion.ApiLevel.String(), sdkVersion.Kind.String())
 		jar := filepath.Join(dir, "android.jar")

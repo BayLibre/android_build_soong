@@ -60,6 +60,12 @@ func (surface *ApiSurface) GenerateAndroidBuildActions(ctx ModuleContext) {
 			contributionFiles = append(contributionFiles, generatedBuildFiles...)
 			return false // no transitive dependencies
 		}
+
+		// If child is another api_surface, create a depdency edge on its phony target
+		if contribution, ok := child.(*ApiSurface); ok {
+			contributionFiles = append(contributionFiles, PathForPhony(ctx, contribution.Name()))
+			return false // ninja will handle transitive deps
+		}
 		return false
 	})
 
