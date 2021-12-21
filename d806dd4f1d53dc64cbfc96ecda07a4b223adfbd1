@@ -34,6 +34,24 @@
       "parentUuid": "ba55f77a_c546cca8",
       "revId": "d806dd4f1d53dc64cbfc96ecda07a4b223adfbd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "741847f9_53c2dbee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2021-12-21T22:06:58Z",
+      "side": 1,
+      "message": "I actually haven\u0027t noticed them being run presubmit anywhere, but you\u0027re right they\u0027re run for platform/build, and just a couple other projects: http://google3/configs/wireless/android/busytown/presubmit/prod/branch/git_master.gcl;l\u003d970-982;rcl\u003d417472055",
+      "parentUuid": "240f4590_5b466ca1",
+      "revId": "d806dd4f1d53dc64cbfc96ecda07a4b223adfbd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
