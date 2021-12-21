@@ -34,6 +34,23 @@
       "parentUuid": "c74787a3_e1aaa746",
       "revId": "6b76c15b9a03952e122522279fc0ada4e7a8fbbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38abf388_53d283f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2021-12-21T08:37:06Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m not sure you were waiting for my approval. I was just in CC so I just left a comment initially. ",
+      "revId": "6b76c15b9a03952e122522279fc0ada4e7a8fbbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
