@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a1903f7_d7d0e868",
+        "filename": "cc/binary.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-21T21:38:26Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "0c4c7ff2_f6559080",
+      "range": {
+        "startLine": 610,
+        "startChar": 12,
+        "endLine": 610,
+        "endChar": 26
+      },
+      "revId": "0a07a48a843d7e457686f6a92d3c57c218e5a269",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64795818_ecd90bc0",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "53cbf399_10dbc39b",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 3472,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-21T21:38:26Z",
+      "side": 1,
+      "message": "LOL so sorry :) \nYou get a little sneak peek into Chris\u0027s frustration with merge conflicts.",
+      "parentUuid": "64795818_ecd90bc0",
+      "range": {
+        "startLine": 3470,
+        "startChar": 0,
+        "endLine": 3472,
+        "endChar": 3
+      },
+      "revId": "0a07a48a843d7e457686f6a92d3c57c218e5a269",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e67808b4_0b7e6851",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-21T13:47:03Z",
       "side": 1,
       "message": "We should be able to use LibraryMutatedProperties.BuildStatic \u0026 LibraryMutatedProperties.BuildShared as these are only set via factories and are not variant-specific.\n\nThe issue with the previous BuildStaticVariant and BuildSharedVariant is that they also use both LibraryMutatedProperties.BuildStatic + Static.Enabled (similarly for shared) rather than just the LibraryMutatedProperties.",
+      "range": {
+        "startLine": 3473,
+        "startChar": 0,
+        "endLine": 3476,
+        "endChar": 33
+      },
+      "revId": "0a07a48a843d7e457686f6a92d3c57c218e5a269",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adcf6c4a_8a2613a4",
+        "filename": "cc/cc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 3476,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-21T21:38:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e67808b4_0b7e6851",
       "range": {
         "startLine": 3473,
         "startChar": 0,
