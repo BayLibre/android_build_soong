@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "abd8b451_42952ce8",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-21T16:52:54Z",
+      "side": 1,
+      "message": "My comment is perhaps in the wrong line. What I meant was: lets suppose that r.paths is empty, as is r.moduleTypes, and r.props, etc.\n\nThe string will look like:\n`neverallow requirements. Not allowed:\"`\n\nInstead of, perhaps\n`neverallow requirements (empty)`.",
+      "parentUuid": "11ca552e_8daa2e52",
+      "revId": "412b76e144297827acbe10a07eff2bcc31e219ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2c7fa64_065a5a14",
         "filename": "android/neverallow_test.go",
         "patchSetId": 2
