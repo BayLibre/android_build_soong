@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30325523_1a209073",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-21T16:00:55Z",
+      "side": 1,
+      "message": "nit: add -\u003e adds   \nand below",
+      "revId": "412b76e144297827acbe10a07eff2bcc31e219ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c11b0e71_91feee28",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-21T16:00:55Z",
+      "side": 1,
+      "message": "content?",
+      "revId": "412b76e144297827acbe10a07eff2bcc31e219ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "319de621_c726c927",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-21T16:00:55Z",
+      "side": 1,
+      "message": "nit: do we care that this will look a little strange if there are no constraints?",
+      "revId": "412b76e144297827acbe10a07eff2bcc31e219ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c7fa64_065a5a14",
+        "filename": "android/neverallow_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2021-12-21T16:00:55Z",
+      "side": 1,
+      "message": "nit: test which has multiple kinds of constraints?",
+      "revId": "412b76e144297827acbe10a07eff2bcc31e219ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
