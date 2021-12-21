@@ -1,0 +1,14 @@
+/*java_api_stub_library {
+ name: "public",
+}*/
+
+java_library {
+    name: "hello_world",
+    srcs: [
+        "HelloWorld.java",
+    ],
+    sdk_version: "@public_30",
+
+    // demo
+    manifest: "manifest.txt",
+}
