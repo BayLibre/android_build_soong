@@ -16,6 +16,24 @@
       "message": "filterFn is a little confusing in terms of whether it\u0027s \"allow\" or \"deny\". Add some clarity?",
       "revId": "5e648ab809efc2e0db06644bc29d90de4dd044cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cef87a1_fc1a3e06",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-21T16:50:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f232993c_42db8b8f",
+      "revId": "5e648ab809efc2e0db06644bc29d90de4dd044cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
