@@ -16,6 +16,24 @@
       "message": "For build changes like this I suggest running a heavy presubmit (Checks tab -\u003e Run more builds) on all the build_test\u003cn\u003e targets on git_master. They\u0027re not part of the normal presubmit.",
       "revId": "d806dd4f1d53dc64cbfc96ecda07a4b223adfbd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "240f4590_5b466ca1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-21T20:25:35Z",
+      "side": 1,
+      "message": "Thank you for the reminder. I didn\u0027t know that those build tests are not part of the normal presubmit. I saw them being run as part of the normal presubmit of my CL before. Maybe they are run for platform/build, but not for platform/build/soong.\n\nI\u0027ll run them once ag/16509327 and aosp/1925682 are submitted.",
+      "parentUuid": "ba55f77a_c546cca8",
+      "revId": "d806dd4f1d53dc64cbfc96ecda07a4b223adfbd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
