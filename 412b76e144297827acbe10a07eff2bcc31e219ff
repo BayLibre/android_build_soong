@@ -124,6 +124,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c28037d_d540fa3a",
+        "filename": "android/neverallow.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-21T17:01:03Z",
+      "side": 1,
+      "message": "Since it\u0027s ~only used as an error message when something is disallowed, shouldn\u0027t be an issue, but updated.",
+      "parentUuid": "abd8b451_42952ce8",
+      "revId": "412b76e144297827acbe10a07eff2bcc31e219ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2c7fa64_065a5a14",

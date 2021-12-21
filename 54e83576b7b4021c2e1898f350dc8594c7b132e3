@@ -16,6 +16,24 @@
       "message": "do we want this to be \"props: %s\" ?",
       "revId": "54e83576b7b4021c2e1898f350dc8594c7b132e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "292df937_6628a134",
+        "filename": "android/neverallow.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2021-12-21T17:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2306cba_08fa4d6f",
+      "revId": "54e83576b7b4021c2e1898f350dc8594c7b132e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
