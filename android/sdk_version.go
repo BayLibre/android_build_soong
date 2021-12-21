@@ -31,6 +31,9 @@ type SdkContext interface {
 	// TargetSdkVersion returns the SdkSpec that corresponds to the target_sdk_version property of the current module,
 	// or from sdk_version if it is not set.
 	TargetSdkVersion(ctx EarlyModuleContext) SdkSpec
+
+	// tmp: build against api surface provided by Multitree
+	UseApiSurface(ctx EarlyModuleContext) bool
 }
 
 // SdkKind represents a particular category of an SDK spec like public, system, test, etc.
@@ -216,6 +219,8 @@ func SdkSpecFrom(ctx EarlyModuleContext, str string) SdkSpec {
 }
 
 func SdkSpecFromWithConfig(config Config, str string) SdkSpec {
+	// special case multitree api_surface for now
+	str = strings.TrimPrefix(str, "@")
 	switch str {
 	// special cases first
 	case "":
@@ -241,6 +246,8 @@ func SdkSpecFromWithConfig(config Config, str string) SdkSpec {
 		var kind SdkKind
 		switch kindString {
 		case "":
+			kind = SdkPublic
+		case "public":
 			kind = SdkPublic
 		case "core":
 			kind = SdkCore
