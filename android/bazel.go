@@ -296,6 +296,9 @@ var (
 		"external/google-benchmark":                          Bp2BuildDefaultTrueRecursively,
 		"external/googletest":                                Bp2BuildDefaultTrueRecursively,
 		"external/gwp_asan":                                  Bp2BuildDefaultTrueRecursively,
+		"external/icu":                                       Bp2BuildDefaultTrueRecursively,
+		"external/icu/android_icu4j":                         Bp2BuildDefaultFalse, // java rules incomplete
+		"external/icu/icu4j":                                 Bp2BuildDefaultFalse, // java rules incomplete
 		"external/jemalloc_new":                              Bp2BuildDefaultTrueRecursively,
 		"external/jsoncpp":                                   Bp2BuildDefaultTrueRecursively,
 		"external/libcap":                                    Bp2BuildDefaultTrueRecursively,
@@ -469,13 +472,18 @@ var (
 		"libdexfiled", // depends on unconverted modules: dexfile_operator_srcs, libartbased, libartpalette
 
 		// go deps:
-		"apex-protos",               // depends on soong_zip, a go binary
-		"robolectric_tzdata",        // depends on soong_zip, a go binary
+		"apex-protos",                                                                                // depends on soong_zip, a go binary
+		"generated_android_icu4j_src_files", "generated_android_icu4j_test_files", "icu4c_test_data", // depends on unconverted modules: soong_zip
 		"host_bionic_linker_asm",    // depends on extract_linker, a go binary.
 		"host_bionic_linker_script", // depends on extract_linker, a go binary.
+		"robolectric_tzdata",        // depends on soong_zip, a go binary
 
 		// java deps
-		"bin2c_fastdeployagent", // depends on deployagent, a java binary
+		"android_icu4j_srcgen_binary",               // Bazel build error: deps not allowed without srcs; move to runtime_deps
+		"android_icu4j_srcgen", "currysrc", "icu4j", // java_library_host that requires static_libs
+		"bin2c_fastdeployagent", // depends on unconverted module: deployagent
+		"timezone-host",         // depends on unconverted modules: art.module.api.annotations
+
 	}
 
 	// Per-module denylist of cc_library modules to only generate the static
