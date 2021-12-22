@@ -16,6 +16,24 @@
       "message": "You should be using aprotoc from the build output directory and not from the PATH, which won\u0027t require this allowlist.",
       "revId": "6e424e909d91adb8d02605f91162342e82a39928",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67161bc9_f9cfec05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887650
+      },
+      "writtenOn": "2021-12-22T05:30:15Z",
+      "side": 1,
+      "message": "Got it.   We will use another way to check the pb file at run time.  \nI think we can just ignore this patch, thanks.",
+      "parentUuid": "9bc0921d_de92d622",
+      "revId": "6e424e909d91adb8d02605f91162342e82a39928",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
