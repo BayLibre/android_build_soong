@@ -39,6 +39,29 @@
       },
       "revId": "7da843444a45147b87bc361385e06932675803ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cfc2528_5220c48a",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2021-12-22T16:46:55Z",
+      "side": 1,
+      "message": "One downside is that the go/retraceme link only works for corp users. I also haven\u0027t looked at sysui to see if there are issues with disabling --force-proguard-compatibility + optimization, will try that out to see if we hit any issues.",
+      "range": {
+        "startLine": 261,
+        "startChar": 58,
+        "endLine": 261,
+        "endChar": 70
+      },
+      "revId": "7da843444a45147b87bc361385e06932675803ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
