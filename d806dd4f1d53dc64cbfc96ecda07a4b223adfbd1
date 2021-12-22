@@ -69,6 +69,23 @@
       "message": "FYI, all build_test\u003cn\u003e passed.",
       "revId": "d806dd4f1d53dc64cbfc96ecda07a4b223adfbd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b9b522_6c54bffc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-22T20:47:40Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "d806dd4f1d53dc64cbfc96ecda07a4b223adfbd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
