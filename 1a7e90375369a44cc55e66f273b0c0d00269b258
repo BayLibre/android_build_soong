@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6503f472_769fcb3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2021-12-22T23:21:13Z",
+      "side": 1,
+      "message": "Sorry for the breakage. I sent you a fix: ag/16521608. You don\u0027t have to revert the CL unless the fix doesn\u0027t work.",
+      "revId": "1a7e90375369a44cc55e66f273b0c0d00269b258",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
