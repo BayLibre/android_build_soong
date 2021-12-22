@@ -20,6 +20,7 @@ import (
 	"fmt"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
+	"strconv"
 	"strings"
 
 	"android/soong/android"
@@ -128,19 +129,16 @@ func configuredJarListToClasspathJars(ctx android.ModuleContext, configuredJars 
 				return m.Name() == configuredJars.Jar(i)
 			}, func(m android.Module) {
 				if s, ok := m.(*SdkLibrary); ok {
-					// TODO(208456999): instead of mapping "current" to latest, min_sdk_version should never be set to "current"
+					// TODO(b/208456999): instead of mapping "current" to latest, min_sdk_version should never be set to "current"
+					// TODO(b/211747008): use string codenames, do not ignore current
 					if s.minSdkVersion.Specified() {
-						if s.minSdkVersion.ApiLevel.IsCurrent() {
-							jar.minSdkVersion = ctx.Config().LatestPreviewApiLevel().String()
-						} else {
-							jar.minSdkVersion = s.minSdkVersion.ApiLevel.String()
+						if !s.minSdkVersion.ApiLevel.IsCurrent() {
+							jar.minSdkVersion = strconv.Itoa(s.minSdkVersion.ApiLevel.FinalOrFutureInt())
 						}
 					}
 					if s.maxSdkVersion.Specified() {
-						if s.maxSdkVersion.ApiLevel.IsCurrent() {
-							jar.maxSdkVersion = ctx.Config().LatestPreviewApiLevel().String()
-						} else {
-							jar.maxSdkVersion = s.maxSdkVersion.ApiLevel.String()
+						if !s.maxSdkVersion.ApiLevel.IsCurrent() {
+							jar.maxSdkVersion = strconv.Itoa(s.maxSdkVersion.ApiLevel.FinalOrFutureInt())
 						}
 					}
 				}
