@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "238ef145_e6036d45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-12-23T14:50:53Z",
+      "side": 1,
+      "message": "This makes Spandan\u0027s better fix (for b/205289292) conflict :\\",
+      "revId": "1fdd6ca88a192c61abe31d2f7a7f5721cafca1f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
