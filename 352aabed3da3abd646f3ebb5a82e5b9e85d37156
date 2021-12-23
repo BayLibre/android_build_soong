@@ -34,6 +34,24 @@
       "parentUuid": "96e440f6_a6e93515",
       "revId": "352aabed3da3abd646f3ebb5a82e5b9e85d37156",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "485366a6_aef78e7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2021-12-23T16:48:14Z",
+      "side": 1,
+      "message": "Yes, I was thinking Spandan could rebase his change on top of this one.",
+      "parentUuid": "1504f730_26fdb27b",
+      "revId": "352aabed3da3abd646f3ebb5a82e5b9e85d37156",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
