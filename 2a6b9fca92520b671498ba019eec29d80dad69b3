@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000018683558",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1930507?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "733f16c0_2c55c2c4",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-24T04:28:21Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 2066,
+        "startChar": 32,
+        "endLine": 2066,
+        "endChar": 33
+      },
+      "revId": "2a6b9fca92520b671498ba019eec29d80dad69b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000018683558",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1930507?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "682c29c3_12de399e",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2073,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-24T04:28:21Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 2073,
+        "startChar": 20,
+        "endLine": 2073,
+        "endChar": 21
+      },
+      "revId": "2a6b9fca92520b671498ba019eec29d80dad69b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000018683561",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1930507?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "d8b391ee_63a2433a",
+          "description": "Change to \"java/java.go\"",
+          "replacements": [
+            {
+              "path": "java/java.go",
+              "range": {
+                "startLine": 2126,
+                "startChar": 11,
+                "endLine": 2126,
+                "endChar": 21
+              },
+              "replacement": "necessary"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "c48c0966_383fb416",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2126,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-24T04:28:21Z",
+      "side": 1,
+      "message": "Common typo found: \"necesssary\" -- should it be \"necessary\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 2126,
+        "startChar": 11,
+        "endLine": 2126,
+        "endChar": 21
+      },
+      "revId": "2a6b9fca92520b671498ba019eec29d80dad69b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000018683561",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1930507?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "941bb882_289af5e2",
+          "description": "Change to \"java/java_test.go\"",
+          "replacements": [
+            {
+              "path": "java/java_test.go",
+              "range": {
+                "startLine": 1529,
+                "startChar": 17,
+                "endLine": 1529,
+                "endChar": 24
+              },
+              "replacement": "contains"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "46a3b58a_4707e083",
+        "filename": "java/java_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-24T04:28:21Z",
+      "side": 1,
+      "message": "Common typo found: \"cotains\" -- should it be \"contains\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 1529,
+        "startChar": 17,
+        "endLine": 1529,
+        "endChar": 24
+      },
+      "revId": "2a6b9fca92520b671498ba019eec29d80dad69b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
