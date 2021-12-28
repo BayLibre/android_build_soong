@@ -34,6 +34,23 @@
       "parentUuid": "d7bd13eb_ea2e5243",
       "revId": "458d1187c6b43931bce33144c5467e4bc7343f0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1463317_050d770a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-12-28T23:02:18Z",
+      "side": 1,
+      "message": "Can you elaborate why this change is needed -- as a refactoring it\u0027s not very useful as it makes the code longer, not shorter, and it does not appear that there will be more functions that might leverage this change.",
+      "revId": "458d1187c6b43931bce33144c5467e4bc7343f0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
