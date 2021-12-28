@@ -69,6 +69,24 @@
       "parentUuid": "a1463317_050d770a",
       "revId": "458d1187c6b43931bce33144c5467e4bc7343f0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6e4f1b4_d2faa42a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-28T23:15:22Z",
+      "side": 1,
+      "message": "Also it doesn\u0027t really make the code any longer. It\u0027s ~20 lines longer in the diff, but that\u0027s only because I added a new globalsExpr. I could replace that with identifierExpr if you want, and then the diff will have similar line counts before/after. I just thought the globalsExpr was meaningful.",
+      "parentUuid": "d75f1ee3_aed20fbe",
+      "revId": "458d1187c6b43931bce33144c5467e4bc7343f0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
