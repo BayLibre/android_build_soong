@@ -51,6 +51,24 @@
       "message": "Can you elaborate why this change is needed -- as a refactoring it\u0027s not very useful as it makes the code longer, not shorter, and it does not appear that there will be more functions that might leverage this change.",
       "revId": "458d1187c6b43931bce33144c5467e4bc7343f0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d75f1ee3_aed20fbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-28T23:13:17Z",
+      "side": 1,
+      "message": "Because it makes the code easier to understand. Here are some examples:\n\n1. ParseReference now always returns a valid expression or a badExpression, when previously it could return invalid call expressions that had to be handled separately.\n2. Functions that require special parsing are now handled the same way as other functions, instead of requiring to add more special handling code in parseReference or parseCompareSpecialCases.\n3. Special cases are no longer encoded in strings with an !\n4. There are now no functions in knownFunctions that we can\u0027t convert.\n\nAs for more functions that might leverage this change, I was planning on using this to add support for math_gt_or_eq, as that would require custom code to put the casts to int and \u003e\u003d literals into the starlark.",
+      "parentUuid": "a1463317_050d770a",
+      "revId": "458d1187c6b43931bce33144c5467e4bc7343f0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
