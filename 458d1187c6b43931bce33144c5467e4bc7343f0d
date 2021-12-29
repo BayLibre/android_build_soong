@@ -87,6 +87,24 @@
       "parentUuid": "d75f1ee3_aed20fbe",
       "revId": "458d1187c6b43931bce33144c5467e4bc7343f0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7277329b_e7351f5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2021-12-29T04:29:01Z",
+      "side": 1,
+      "message": "Overall this fairly large change seems to be replacing a switch statement with dispatch. It\u0027s unclear to me why this is a better way to handle it, it\u0027s still case-by-case handling.\nIf you insist on this, I\u0027d suggest to introduce an interface, say, funcCallParser with a single method parse(), and then implement this interface for simpleFuncCall, wildcardCall, shellCall, ... types. The knownFunctions then can map function\u0027s name to the corresponding parser type object rather than a function factory.\nAs to your math_gt_or_eq example, sure, it\u0027s needed, but I don\u0027t see how this change will make it easier.",
+      "parentUuid": "b6e4f1b4_d2faa42a",
+      "revId": "458d1187c6b43931bce33144c5467e4bc7343f0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
