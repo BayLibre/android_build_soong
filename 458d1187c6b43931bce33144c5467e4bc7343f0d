@@ -105,6 +105,24 @@
       "parentUuid": "b6e4f1b4_d2faa42a",
       "revId": "458d1187c6b43931bce33144c5467e4bc7343f0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f00d76d_b2653c7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2021-12-29T18:56:36Z",
+      "side": 1,
+      "message": "For your suggestion, wouldn\u0027t that require making a new struct type for every type of parsing function? That would mean that the parse functions couldn\u0027t be methods on parseContext, which many currently are. What would be the advantage of that?",
+      "parentUuid": "7277329b_e7351f5d",
+      "revId": "458d1187c6b43931bce33144c5467e4bc7343f0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
