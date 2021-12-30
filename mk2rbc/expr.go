@@ -17,6 +17,8 @@ package mk2rbc
 import (
 	"fmt"
 	"strings"
+
+	"go.starlark.net/syntax"
 )
 
 // Represents an expression in the Starlark code. An expression has a type.
@@ -34,9 +36,9 @@ type starlarkExpr interface {
 	transform(transformer func(expr starlarkExpr) starlarkExpr) starlarkExpr
 }
 
-func maybeString(expr starlarkExpr) (string, bool) {
-	if x, ok := expr.(*stringLiteralExpr); ok {
-		return x.literal, true
+func maybeString(expr syntax.Expr) (string, bool) {
+	if x, ok := expr.(*syntax.Literal); ok && x.Token == syntax.STRING {
+		return x.Value.(string), true
 	}
 	return "", false
 }
@@ -150,33 +152,42 @@ type interpolateExpr struct {
 	args   []starlarkExpr
 }
 
-func NewInterpolateExpr(parts []starlarkExpr) starlarkExpr {
-	result := &interpolateExpr{}
+func NewInterpolateExpr(parts []syntax.Expr) syntax.Expr {
+	chunks := make([]string, 0)
+	args := make([]syntax.Expr, 0)
 	needString := true
 	for _, part := range parts {
 		if needString {
-			if strLit, ok := part.(*stringLiteralExpr); ok {
-				result.chunks = append(result.chunks, strLit.literal)
+			if strLit, ok := part.(*syntax.Literal); ok && strLit.Token == syntax.STRING {
+				chunks = append(chunks, strLit.Value.(string))
 			} else {
-				result.chunks = append(result.chunks, "")
+				chunks = append(chunks, "")
 			}
 			needString = false
 		} else {
-			if strLit, ok := part.(*stringLiteralExpr); ok {
-				result.chunks[len(result.chunks)-1] += strLit.literal
+			if strLit, ok := part.(*syntax.Literal); ok && strLit.Token == syntax.STRING {
+				chunks[len(chunks)-1] += strLit.Value.(string)
 			} else {
-				result.args = append(result.args, part)
+				args = append(args, part)
 				needString = true
 			}
 		}
 	}
-	if len(result.chunks) == len(result.args) {
-		result.chunks = append(result.chunks, "")
+	if len(chunks) == len(args) {
+		chunks = append(chunks, "")
 	}
-	if len(result.args) == 0 {
-		return &stringLiteralExpr{literal: strings.Join(result.chunks, "")}
+	if len(args) == 0 {
+		return newStringLiteral(strings.Join(chunks, ""))
 	}
-	return result
+	format := strings.ReplaceAll(chunks[0], "%", "%%")
+	for _, chunk := range chunks[1:] {
+		format += "%s" + strings.ReplaceAll(chunk, "%", "%%")
+	}
+	return &syntax.BinaryExpr{
+		X:     newStringLiteral(format),
+		Op:    syntax.PERCENT,
+		Y:     &syntax.TupleExpr{List: args},
+	}
 }
 
 func (xi *interpolateExpr) emit(gctx *generationContext) {
@@ -238,11 +249,8 @@ type variableRefExpr struct {
 	isDefined bool
 }
 
-func NewVariableRefExpr(ref variable, isDefined bool) starlarkExpr {
-	if predefined, ok := ref.(*predefinedVariable); ok {
-		return predefined.value
-	}
-	return &variableRefExpr{ref, isDefined}
+func NewVariableRefExpr(ref variable, isDefined bool) syntax.Expr {
+	return ref.getExpr(isDefined)
 }
 
 func (v *variableRefExpr) emit(gctx *generationContext) {

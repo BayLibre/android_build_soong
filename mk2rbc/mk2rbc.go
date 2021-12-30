@@ -37,6 +37,7 @@ import (
 	"text/scanner"
 
 	mkparser "android/soong/androidmk/parser"
+	"go.starlark.net/syntax"
 )
 
 const (
@@ -67,7 +68,7 @@ const (
 )
 
 var knownFunctions = map[string]interface {
-	parse(ctx *parseContext, node mkparser.Node, args *mkparser.MakeString) starlarkExpr
+	parse(ctx *parseContext, node mkparser.Node, args *mkparser.MakeString) (syntax.Expr, *ParseError)
 }{
 	"abspath":                             &simpleCallParser{name: baseName + ".abspath", returnType: starlarkTypeString, addGlobals: false},
 	"add_soong_config_namespace":          &simpleCallParser{name: baseName + ".soong_config_namespace", returnType: starlarkTypeVoid, addGlobals: true},
@@ -165,6 +166,36 @@ type ErrorLocation struct {
 
 func (el ErrorLocation) String() string {
 	return fmt.Sprintf("%s:%d", el.MkFile, el.MkLine)
+}
+
+type ParseError struct {
+	el      ErrorLocation
+	message string
+}
+
+func (e *ParseError) toStarlark() syntax.Expr {
+	return &syntax.CallExpr{
+		Fn:   &syntax.DotExpr{
+			X:    &syntax.Ident{Name:    baseName},
+			Name: &syntax.Ident{Name:    "mk2rbc_error"},
+		},
+		Args: []syntax.Expr{
+			newStringLiteral(e.el.String()),
+			newStringLiteral(e.message),
+		},
+	}
+}
+
+func (ctx *parseContext) newParseError(node mkparser.Node, text string, args ...interface{}) *ParseError {
+	message := fmt.Sprintf(text, args...)
+	if ctx.errorLogger != nil {
+		ctx.errorLogger.NewError(ctx.errorLocation(node), node, text, args...)
+	}
+	ctx.script.hasErrors = true
+	return &ParseError{
+		el:      ctx.errorLocation(node),
+		message: message,
+	}
 }
 
 // Derives module name for a given file. It is base name
@@ -471,7 +502,7 @@ func newParseContext(ss *StarlarkScript, nodes []mkparser.Node) *parseContext {
 	for _, item := range predefined {
 		ctx.variables[item.name] = &predefinedVariable{
 			baseVariable: baseVariable{nam: item.name, typ: starlarkTypeString},
-			value:        &stringLiteralExpr{item.value},
+			value:        newStringLiteral(item.value),
 		}
 	}
 
@@ -618,8 +649,8 @@ func (ctx *parseContext) handleAssignment(a *mkparser.Assignment) {
 }
 
 func (ctx *parseContext) handleSoongNsAssignment(name string, asgn *mkparser.Assignment) {
-	val := ctx.parseMakeString(asgn, asgn.Value)
-	if xBad, ok := val.(*badExpr); ok {
+	val, err := ctx.parseMakeString(asgn, asgn.Value)
+	if err != nil {
 		ctx.wrapBadExpr(xBad)
 		return
 	}
@@ -1034,13 +1065,22 @@ func (ctx *parseContext) parseCondition(check *mkparser.Directive) starlarkNode 
 	}
 }
 
-func (ctx *parseContext) newBadExpr(node mkparser.Node, text string, args ...interface{}) starlarkExpr {
+func (ctx *parseContext) newBadExpr(node mkparser.Node, text string, args ...interface{}) syntax.Expr {
 	message := fmt.Sprintf(text, args...)
 	if ctx.errorLogger != nil {
 		ctx.errorLogger.NewError(ctx.errorLocation(node), node, text, args...)
 	}
 	ctx.script.hasErrors = true
-	return &badExpr{errorLocation: ctx.errorLocation(node), message: message}
+	return &syntax.CallExpr{
+		Fn:   &syntax.DotExpr{
+			X:    &syntax.Ident{Name:    baseName},
+			Name: &syntax.Ident{Name:    "mk2rbc_error"},
+		},
+		Args: []syntax.Expr{
+			newStringLiteral(ctx.errorLocation(node).String()),
+			newStringLiteral(message),
+		},
+	}
 }
 
 func (ctx *parseContext) parseCompare(cond *mkparser.Directive) starlarkExpr {
@@ -1309,7 +1349,7 @@ func (ctx *parseContext) parseCompareStripFuncResult(directive *mkparser.Directi
 }
 
 // parses $(...), returning an expression
-func (ctx *parseContext) parseReference(node mkparser.Node, ref *mkparser.MakeString) starlarkExpr {
+func (ctx *parseContext) parseReference(node mkparser.Node, ref *mkparser.MakeString) (syntax.Expr, *ParseError) {
 	ref.TrimLeftSpaces()
 	ref.TrimRightSpaces()
 	refDump := ref.Dump()
@@ -1317,7 +1357,7 @@ func (ctx *parseContext) parseReference(node mkparser.Node, ref *mkparser.MakeSt
 	// Handle only the case where the first (or only) word is constant
 	words := ref.SplitN(" ", 2)
 	if !words[0].Const() {
-		return ctx.newBadExpr(node, "reference is too complex: %s", refDump)
+		return nil, ctx.newParseError(node, "reference is too complex: %s", refDump)
 	}
 
 	// If it is a single word, it can be a simple variable
@@ -1325,64 +1365,66 @@ func (ctx *parseContext) parseReference(node mkparser.Node, ref *mkparser.MakeSt
 	if len(words) == 1 && !isMakeControlFunc(refDump) && refDump != "shell" {
 		if strings.HasPrefix(refDump, soongNsPrefix) {
 			// TODO (asmundak): if we find many, maybe handle them.
-			return ctx.newBadExpr(node, "SOONG_CONFIG_ variables cannot be referenced, use soong_config_get instead: %s", refDump)
+			return nil, ctx.newParseError(node, "SOONG_CONFIG_ variables cannot be referenced, use soong_config_get instead: %s", refDump)
 		}
 		// Handle substitution references: https://www.gnu.org/software/make/manual/html_node/Substitution-Refs.html
 		if strings.Contains(refDump, ":") {
 			parts := strings.SplitN(refDump, ":", 2)
 			substParts := strings.SplitN(parts[1], "=", 2)
 			if len(substParts) < 2 || strings.Count(substParts[0], "%") > 1 {
-				return ctx.newBadExpr(node, "Invalid substitution reference")
+				return nil, ctx.newParseError(node, "Invalid substitution reference")
 			}
 			if !strings.Contains(substParts[0], "%") {
 				if strings.Contains(substParts[1], "%") {
-					return ctx.newBadExpr(node, "A substitution reference must have a %% in the \"before\" part of the substitution if it has one in the \"after\" part.")
+					return nil, ctx.newParseError(node, "A substitution reference must have a %% in the \"before\" part of the substitution if it has one in the \"after\" part.")
 				}
 				substParts[0] = "%" + substParts[0]
 				substParts[1] = "%" + substParts[1]
 			}
 			v := ctx.addVariable(parts[0])
 			if v == nil {
-				return ctx.newBadExpr(node, "unknown variable %s", refDump)
+				return nil, ctx.newParseError(node, "unknown variable %s", refDump)
 			}
-			return &callExpr{
-				name:       baseName + ".mkpatsubst",
-				returnType: starlarkTypeString,
-				args: []starlarkExpr{
-					&stringLiteralExpr{literal: substParts[0]},
-					&stringLiteralExpr{literal: substParts[1]},
+			return &syntax.CallExpr{
+				Fn:     &syntax.DotExpr{
+					X:       &syntax.Ident{Name:    baseName},
+					Name:    &syntax.Ident{Name: "mkpatsubst"},
+				},
+				Args:   []syntax.Expr{
+					newStringLiteral(substParts[0]),
+					newStringLiteral(substParts[1]),
 					NewVariableRefExpr(v, ctx.lastAssignment(v.name()) != nil),
 				},
-			}
+			}, nil
 		}
 		if v := ctx.addVariable(refDump); v != nil {
-			return NewVariableRefExpr(v, ctx.lastAssignment(v.name()) != nil)
+			return NewVariableRefExpr(v, ctx.lastAssignment(v.name()) != nil), nil
 		}
-		return ctx.newBadExpr(node, "unknown variable %s", refDump)
+		return nil, ctx.newParseError(node, "unknown variable %s", refDump)
 	}
 
-	expr := &callExpr{name: words[0].Dump(), returnType: starlarkTypeUnknown}
+	name := words[0].Dump()
 	args := mkparser.SimpleMakeString("", words[0].Pos())
 	if len(words) >= 2 {
 		args = words[1]
 	}
 	args.TrimLeftSpaces()
-	if expr.name == "call" {
+	if name == "call" {
 		words = args.SplitN(",", 2)
 		if words[0].Empty() || !words[0].Const() {
-			return ctx.newBadExpr(node, "cannot handle %s", refDump)
+			return nil, ctx.newParseError(node, "cannot handle %s", refDump)
 		}
-		expr.name = words[0].Dump()
+		name = words[0].Dump()
 		if len(words) < 2 {
 			args = &mkparser.MakeString{}
 		} else {
 			args = words[1]
 		}
 	}
-	if kf, found := knownFunctions[expr.name]; found {
+	if kf, found := knownFunctions[name]; found {
 		return kf.parse(ctx, node, args)
 	} else {
-		return ctx.newBadExpr(node, "cannot handle invoking %s", expr.name)
+		return nil, ctx.newParseError(node, "cannot handle invoking %s", expr.name)
 	}
 }
 
@@ -1392,35 +1434,51 @@ type simpleCallParser struct {
 	addGlobals bool
 }
 
-func (p *simpleCallParser) parse(ctx *parseContext, node mkparser.Node, args *mkparser.MakeString) starlarkExpr {
-	expr := &callExpr{name: p.name, returnType: p.returnType}
+func (p *simpleCallParser) parse(ctx *parseContext, node mkparser.Node, args *mkparser.MakeString) (syntax.Expr, *ParseError) {
+	parsedArgs := make([]syntax.Expr, 0)
 	if p.addGlobals {
-		expr.args = append(expr.args, &globalsExpr{})
+		parsedArgs = append(parsedArgs, &globalsExpr{})
 	}
 	for _, arg := range args.Split(",") {
 		arg.TrimLeftSpaces()
 		arg.TrimRightSpaces()
-		x := ctx.parseMakeString(node, arg)
-		if xBad, ok := x.(*badExpr); ok {
-			return xBad
+		x, err := ctx.parseMakeString(node, arg)
+		if err != nil {
+			return nil, err
 		}
-		expr.args = append(expr.args, x)
+		parsedArgs = append(parsedArgs, x)
 	}
-	return expr
+	return &syntax.CallExpr{
+		Fn:     &syntax.Ident{Name: p.name},
+		Lparen: syntax.Position{},
+		Args:   nil,
+		Rparen: syntax.Position{},
+	}
 }
 
 type makeControlFuncParser struct {
 	name string
 }
 
-func (p *makeControlFuncParser) parse(ctx *parseContext, node mkparser.Node, args *mkparser.MakeString) starlarkExpr {
+func (p *makeControlFuncParser) parse(ctx *parseContext, node mkparser.Node, args *mkparser.MakeString) (starlarkExpr, *ParseError) {
 	// Make control functions need special treatment as everything
 	// after the name is a single text argument
-	x := ctx.parseMakeString(node, args)
-	if xBad, ok := x.(*badExpr); ok {
-		return xBad
+	x, err := ctx.parseMakeString(node, args)
+	if err != nil {
+		return nil, err
 	}
-	return &callExpr{
+	return &syntax.CallExpr{
+		Fn:     &syntax.Ident{
+			Name:    p.name,
+		},
+		Args:   []syntax.Expr{
+			newStringLiteral(ctx.script.mkFile),
+			x
+		},
+	}
+
+
+	&callExpr{
 		name: p.name,
 		args: []starlarkExpr{
 			&stringLiteralExpr{ctx.script.mkFile},
@@ -1706,9 +1764,9 @@ func (p *mathMaxOrMinCallParser) parse(ctx *parseContext, node mkparser.Node, ar
 	}
 }
 
-func (ctx *parseContext) parseMakeString(node mkparser.Node, mk *mkparser.MakeString) starlarkExpr {
+func (ctx *parseContext) parseMakeString(node mkparser.Node, mk *mkparser.MakeString) (syntax.Expr, *ParseError) {
 	if mk.Const() {
-		return &stringLiteralExpr{mk.Dump()}
+		return newStringLiteral(mk.Dump()), nil
 	}
 	if mkRef, ok := mk.SingleVariable(); ok {
 		return ctx.parseReference(node, mkRef)
@@ -1716,18 +1774,19 @@ func (ctx *parseContext) parseMakeString(node mkparser.Node, mk *mkparser.MakeSt
 	// If we reached here, it's neither string literal nor a simple variable,
 	// we need a full-blown interpolation node that will generate
 	// "a%b%c" % (X, Y) for a$(X)b$(Y)c
-	parts := make([]starlarkExpr, len(mk.Variables)+len(mk.Strings))
+	parts := make([]syntax.Expr, len(mk.Variables)+len(mk.Strings))
 	for i := 0; i < len(parts); i++ {
 		if i%2 == 0 {
-			parts[i] = &stringLiteralExpr{literal: mk.Strings[i/2]}
+			parts[i] = newStringLiteral(mk.Strings[i/2])
 		} else {
-			parts[i] = ctx.parseReference(node, mk.Variables[i/2].Name)
-			if x, ok := parts[i].(*badExpr); ok {
-				return x
+			var err *ParseError
+			parts[i], err = ctx.parseReference(node, mk.Variables[i/2].Name)
+			if err != nil {
+				return nil, err
 			}
 		}
 	}
-	return NewInterpolateExpr(parts)
+	return NewInterpolateExpr(parts), nil
 }
 
 // Handles the statements whose treatment is the same in all contexts: comment,

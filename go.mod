@@ -16,4 +16,8 @@ replace github.com/google/go-cmp v0.5.5 => ../../external/go-cmp
 // Indirect dep from go-cmp
 exclude golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
 
+require go.starlark.net v0.0.0-20201006213952-227f4aabceb5
+
+replace go.starlark.net v0.0.0-20201006213952-227f4aabceb5 => ../../external/starlark-go
+
 go 1.15

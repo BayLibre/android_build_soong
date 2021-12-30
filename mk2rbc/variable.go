@@ -17,11 +17,14 @@ package mk2rbc
 import (
 	"fmt"
 	"strings"
+
+	"go.starlark.net/syntax"
 )
 
 type variable interface {
 	name() string
 	emitGet(gctx *generationContext, isDefined bool)
+	getExpr(isDefined bool) syntax.Expr
 	emitSet(gctx *generationContext, asgn *assignmentNode)
 	emitDefined(gctx *generationContext)
 	valueType() starlarkType
@@ -61,8 +64,24 @@ var defaultValuesByType = map[starlarkType]string{
 	starlarkTypeVoid:    "None",
 }
 
+var defaultValuesExprByType = map[starlarkType]syntax.Expr{
+	starlarkTypeUnknown: newStringLiteral(""),
+	starlarkTypeList:    &syntax.ListExpr{List: []syntax.Expr{}},
+	starlarkTypeString:  newStringLiteral(""),
+	starlarkTypeInt:     newIntLiteral(0),
+	starlarkTypeBool:    newBoolLiteral(false),
+	starlarkTypeVoid:    &syntax.Ident{Name: "None"},
+}
+
 func (v baseVariable) defaultValueString() string {
 	if v, ok := defaultValuesByType[v.valueType()]; ok {
+		return v
+	}
+	panic(fmt.Errorf("%s has unknown type %q", v.name(), v.valueType()))
+}
+
+func (v baseVariable) defaultValue() syntax.Expr {
+	if v, ok := defaultValuesExprByType[v.valueType()]; ok {
 		return v
 	}
 	panic(fmt.Errorf("%s has unknown type %q", v.name(), v.valueType()))
@@ -120,6 +139,26 @@ func (pcv productConfigVariable) emitGet(gctx *generationContext, isDefined bool
 	}
 }
 
+func (pcv productConfigVariable) getExpr(isDefined bool) syntax.Expr {
+	if isDefined || pcv.isPreset() {
+		return &syntax.IndexExpr{
+			X:      &syntax.Ident{Name: "cfg"},
+			Y:      newStringLiteral(pcv.nam),
+		}
+	} else {
+		return &syntax.CallExpr{
+			Fn:     &syntax.DotExpr{
+				X:       &syntax.Ident{Name: "cfg"},
+				Name:    &syntax.Ident{Name: "get"},
+			},
+			Args:   []syntax.Expr{
+				newStringLiteral(pcv.nam),
+				pcv.defaultValue(),
+			},
+		}
+	}
+}
+
 func (pcv productConfigVariable) emitDefined(gctx *generationContext) {
 	gctx.writef("g.get(%q) != None", pcv.name())
 }
@@ -173,6 +212,26 @@ func (scv otherGlobalVariable) emitGet(gctx *generationContext, isDefined bool) 
 	}
 }
 
+func (scv otherGlobalVariable) getExpr(isDefined bool) syntax.Expr {
+	if isDefined || scv.isPreset() {
+		return &syntax.IndexExpr{
+			X:      &syntax.Ident{Name: "cfg"},
+			Y:      newStringLiteral(scv.nam),
+		}
+	} else {
+		return &syntax.CallExpr{
+			Fn:     &syntax.DotExpr{
+				X:       &syntax.Ident{Name: "cfg"},
+				Name:    &syntax.Ident{Name: "get"},
+			},
+			Args:   []syntax.Expr{
+				newStringLiteral(scv.nam),
+				scv.defaultValue(),
+			},
+		}
+	}
+}
+
 func (scv otherGlobalVariable) emitDefined(gctx *generationContext) {
 	gctx.writef("g.get(%q) != None", scv.name())
 }
@@ -218,30 +277,38 @@ func (lv localVariable) emitGet(gctx *generationContext, _ bool) {
 	gctx.writef("%s", lv)
 }
 
+func (lv localVariable) getExpr(isDefined bool) syntax.Expr {
+	return newStringLiteral(lv.String())
+}
+
 type predefinedVariable struct {
 	baseVariable
-	value starlarkExpr
+	value syntax.Expr
 }
 
 func (pv predefinedVariable) emitGet(gctx *generationContext, _ bool) {
-	pv.value.emit(gctx)
+	//pv.value.emit(gctx)
+}
+
+func (pv predefinedVariable) getExpr(isDefined bool) syntax.Expr {
+	return pv.value
 }
 
 func (pv predefinedVariable) emitSet(gctx *generationContext, asgn *assignmentNode) {
-	if expectedValue, ok1 := maybeString(pv.value); ok1 {
-		actualValue, ok2 := maybeString(asgn.value)
-		if ok2 {
-			if actualValue == expectedValue {
-				return
-			}
-			gctx.emitConversionError(asgn.location,
-				fmt.Sprintf("cannot set predefined variable %s to %q, its value should be %q",
-					pv.name(), actualValue, expectedValue))
-			gctx.starScript.hasErrors = true
-			return
-		}
-	}
-	panic(fmt.Errorf("cannot set predefined variable %s to %q", pv.name(), asgn.mkValue.Dump()))
+	//if expectedValue, ok1 := maybeString(pv.value); ok1 {
+	//	actualValue, ok2 := maybeString(asgn.value)
+	//	if ok2 {
+	//		if actualValue == expectedValue {
+	//			return
+	//		}
+	//		gctx.emitConversionError(asgn.location,
+	//			fmt.Sprintf("cannot set predefined variable %s to %q, its value should be %q",
+	//				pv.name(), actualValue, expectedValue))
+	//		gctx.starScript.hasErrors = true
+	//		return
+	//	}
+	//}
+	//panic(fmt.Errorf("cannot set predefined variable %s to %q", pv.name(), asgn.mkValue.Dump()))
 }
 
 func (pv predefinedVariable) emitDefined(gctx *generationContext) {
