@@ -1,0 +1,64 @@
+// Copyright 2021 The Android Open Source Project
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+package java
+
+import (
+	"android/soong/android"
+	"path/filepath"
+	"testing"
+)
+
+var prepForJavaFuzzTest = android.GroupFixturePreparers(
+	PrepareForTestWithJavaDefaultModules,
+	android.FixtureRegisterWithContext(RegisterJavaFuzzBuildComponents),
+)
+
+func TestJavaFuzz(t *testing.T) {
+	result := prepForJavaFuzzTest.RunTestWithBp(t, `
+		java_fuzz {
+			name: "foo",
+			srcs: ["a.java"],
+			libs: ["bar"],
+			static_libs: ["baz"],
+		}
+
+		java_library {
+			name: "bar",
+			srcs: ["b.java"],
+		}
+
+		java_library {
+			name: "baz",
+			srcs: ["c.java"],
+		}`)
+
+	javac := result.ModuleForTests("foo", "android_common").Rule("javac")
+	combineJar := result.ModuleForTests("foo", "android_common").Description("for javac")
+
+	if len(javac.Inputs) != 1 || javac.Inputs[0].String() != "a.java" {
+		t.Errorf(`foo inputs %v != ["a.java"]`, javac.Inputs)
+	}
+
+	baz := result.ModuleForTests("baz", "android_common").Rule("javac").Output.String()
+	barTurbine := filepath.Join("out", "soong", ".intermediates", "bar", "android_common", "turbine-combined", "bar.jar")
+	bazTurbine := filepath.Join("out", "soong", ".intermediates", "baz", "android_common", "turbine-combined", "baz.jar")
+
+	android.AssertStringDoesContain(t, "foo classpath", javac.Args["classpath"], barTurbine)
+	android.AssertStringDoesContain(t, "foo classpath", javac.Args["classpath"], bazTurbine)
+
+	if len(combineJar.Inputs) != 2 || combineJar.Inputs[1].String() != baz {
+		t.Errorf("foo combineJar inputs %v does not contain %q", combineJar.Inputs, baz)
+	}
+}
