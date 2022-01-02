@@ -39,5 +39,8 @@ bootstrap_go_package {
         "types.go",
         "variable.go",
     ],
-    deps: ["androidmk-parser"],
+    deps: [
+        "androidmk-parser",
+        "soong-finder",
+    ],
 }

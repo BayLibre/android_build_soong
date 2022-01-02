@@ -37,6 +37,7 @@ import (
 	"text/scanner"
 
 	mkparser "android/soong/androidmk/parser"
+	"android/soong/finder"
 )
 
 const (
@@ -164,7 +165,7 @@ type Request struct {
 	TracedVariables []string // trace assignment to these variables
 	TraceCalls      bool
 	SourceFS        fs.FS
-	MakefileFinder  MakefileFinder
+	MakefileFinder  *finder.Finder
 }
 
 // ErrorLogger prints errors and gathers error statistics.
@@ -386,7 +387,7 @@ type StarlarkScript struct {
 	topDir         string
 	traceCalls     bool // print enter/exit each init function
 	sourceFS       fs.FS
-	makefileFinder MakefileFinder
+	makefileFinder *finder.Finder
 	nodeLocator    func(pos mkparser.Pos) int
 }
 
@@ -405,23 +406,24 @@ type varAssignmentScope struct {
 // parseContext holds the script we are generating and all the ephemeral data
 // needed during the parsing.
 type parseContext struct {
-	script           *StarlarkScript
-	nodes            []mkparser.Node // Makefile as parsed by mkparser
-	currentNodeIndex int             // Node in it we are processing
-	ifNestLevel      int
-	moduleNameCount  map[string]int // count of imported modules with given basename
-	fatalError       error
-	outputSuffix     string
-	errorLogger      ErrorLogger
-	tracedVariables  map[string]bool // variables to be traced in the generated script
-	variables        map[string]variable
-	varAssignments   *varAssignmentScope
-	receiver         nodeReceiver // receptacle for the generated starlarkNode's
-	receiverStack    []nodeReceiver
-	outputDir        string
-	dependentModules map[string]*moduleInfo
-	soongNamespaces  map[string]map[string]bool
-	includeTops      []string
+	script                  *StarlarkScript
+	nodes                   []mkparser.Node // Makefile as parsed by mkparser
+	currentNodeIndex        int             // Node in it we are processing
+	ifNestLevel             int
+	moduleNameCount         map[string]int // count of imported modules with given basename
+	fatalError              error
+	outputSuffix            string
+	errorLogger             ErrorLogger
+	tracedVariables         map[string]bool // variables to be traced in the generated script
+	variables               map[string]variable
+	varAssignments          *varAssignmentScope
+	receiver                nodeReceiver // receptacle for the generated starlarkNode's
+	receiverStack           []nodeReceiver
+	outputDir               string
+	dependentModules        map[string]*moduleInfo
+	soongNamespaces         map[string]map[string]bool
+	includeTops             []string
+	lastStatementWasComment bool
 }
 
 func newParseContext(ss *StarlarkScript, nodes []mkparser.Node) *parseContext {
@@ -466,7 +468,7 @@ func newParseContext(ss *StarlarkScript, nodes []mkparser.Node) *parseContext {
 		variables:        make(map[string]variable),
 		dependentModules: make(map[string]*moduleInfo),
 		soongNamespaces:  make(map[string]map[string]bool),
-		includeTops:      []string{"vendor/google-devices"},
+		includeTops:      []string{},
 	}
 	ctx.pushVarAssignments()
 	for _, item := range predefined {
@@ -828,7 +830,7 @@ func (ctx *parseContext) handleSubConfig(
 			pathPattern = append(pathPattern, chunk)
 		}
 	}
-	if pathPattern[0] == "" {
+	if pathPattern[0] == "" && len(ctx.includeTops) > 0 {
 		// If pattern starts from the top. restrict it to the directories where
 		// we know inherit-product uses dynamically calculated path.
 		for _, p := range ctx.includeTops {
@@ -855,27 +857,25 @@ func (ctx *parseContext) handleSubConfig(
 }
 
 func (ctx *parseContext) findMatchingPaths(pattern []string) []string {
-	files := ctx.script.makefileFinder.Find(ctx.script.topDir)
-	if len(pattern) == 0 {
-		return files
-	}
-
 	// Create regular expression from the pattern
-	s_regexp := "^" + regexp.QuoteMeta(pattern[0])
-	for _, s := range pattern[1:] {
-		s_regexp += ".*" + regexp.QuoteMeta(s)
-	}
-	s_regexp += "$"
-	rex := regexp.MustCompile(s_regexp)
-
-	// Now match
-	var res []string
-	for _, p := range files {
-		if rex.MatchString(p) {
-			res = append(res, p)
+	s_regexp := "^.*$"
+	if len(pattern) > 0 {
+		s_regexp = "^" + regexp.QuoteMeta(pattern[0])
+		for _, s := range pattern[1:] {
+			s_regexp += ".*" + regexp.QuoteMeta(s)
 		}
+		s_regexp += "$"
 	}
-	return res
+	rex := regexp.MustCompile(s_regexp)
+	return ctx.script.makefileFinder.FindMatching(".", func(dirEntries finder.DirEntries) (dirs []string, files []string) {
+		matchingFiles := make([]string, 0)
+		for _, file := range dirEntries.FileNames {
+			if rex.MatchString(filepath.Join(dirEntries.Path, file)) {
+				matchingFiles = append(matchingFiles, file)
+			}
+		}
+		return dirEntries.DirNames, matchingFiles
+	})
 }
 
 func (ctx *parseContext) handleInheritModule(v mkparser.Node, pathExpr starlarkExpr, loadAlways bool) {
@@ -1590,6 +1590,12 @@ func (ctx *parseContext) parseMakeString(node mkparser.Node, mk *mkparser.MakeSt
 // assignment, variable (which is a macro call in reality) and all constructs that
 // do not handle in any context ('define directive and any unrecognized stuff).
 func (ctx *parseContext) handleSimpleStatement(node mkparser.Node) {
+	// Clear the includeTops with each new statement after a non-comment statement,
+	// so that include annotations placed on certain statements don't apply
+	// globally for the rest of the makefile code thereafter was well.
+	if !ctx.lastStatementWasComment && len(ctx.includeTops) > 0 {
+		ctx.includeTops = make([]string, 0)
+	}
 	switch x := node.(type) {
 	case *mkparser.Comment:
 		ctx.maybeHandleAnnotation(x)
@@ -1612,6 +1618,7 @@ func (ctx *parseContext) handleSimpleStatement(node mkparser.Node) {
 	default:
 		ctx.errorf(x, "unsupported line %s", strings.ReplaceAll(x.Dump(), "\n", "\n#"))
 	}
+	_, ctx.lastStatementWasComment = node.(*mkparser.Comment)
 }
 
 // Processes annotation. An annotation is a comment that starts with #RBC# and provides

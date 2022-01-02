@@ -21,12 +21,10 @@
 package main
 
 import (
-	"bufio"
 	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"regexp"
 	"runtime/debug"
@@ -36,7 +34,10 @@ import (
 	"time"
 
 	"android/soong/androidmk/parser"
+	"android/soong/finder"
+	"android/soong/finder/fs"
 	"android/soong/mk2rbc"
+	"android/soong/ui/logger"
 )
 
 var (
@@ -79,7 +80,7 @@ func init() {
 var backupSuffix string
 var tracedVariables []string
 var errorLogger = errorSink{data: make(map[string]datum)}
-var makefileFinder = &LinuxMakefileFinder{}
+var makefileFinder *finder.Finder
 
 func main() {
 	flag.Usage = func() {
@@ -125,6 +126,12 @@ func main() {
 		tracedVariables = strings.Split(*traceVar, ",")
 	}
 
+	if finder, err := newFinder(*outputTop); err != nil {
+		quit(err)
+	} else {
+		makefileFinder = finder
+	}
+
 	if *cpuProfile != "" {
 		f, err := os.Create(*cpuProfile)
 		if err != nil {
@@ -147,6 +154,7 @@ func main() {
 		for _, p := range products {
 			fmt.Println(p, productConfigMap[p])
 		}
+		makefileFinder.Shutdown()
 		os.Exit(0)
 	}
 
@@ -203,6 +211,7 @@ func main() {
 		errorLogger.printStatistics()
 		printStats()
 	}
+	makefileFinder.Shutdown()
 	if !ok {
 		os.Exit(1)
 	}
@@ -210,6 +219,7 @@ func main() {
 
 func quit(s interface{}) {
 	fmt.Fprintln(os.Stderr, s)
+	makefileFinder.Shutdown()
 	os.Exit(2)
 }
 
@@ -519,38 +529,36 @@ func stringsWithFreq(items []string, topN int) (string, int) {
 	return res, len(sorted)
 }
 
-type LinuxMakefileFinder struct {
-	cachedRoot      string
-	cachedMakefiles []string
-}
-
-func (l *LinuxMakefileFinder) Find(root string) []string {
-	if l.cachedMakefiles != nil && l.cachedRoot == root {
-		return l.cachedMakefiles
-	}
-	l.cachedRoot = root
-	l.cachedMakefiles = make([]string, 0)
-
-	// Return all *.mk files but not in hidden directories.
-
-	// NOTE(asmundak): as it turns out, even the WalkDir (which is an _optimized_ directory tree walker)
-	// is about twice slower than running `find` command (14s vs 6s on the internal Android source tree).
-	common_args := []string{"!", "-type", "d", "-name", "*.mk", "!", "-path", "*/.*/*"}
-	if root != "" {
-		common_args = append([]string{root}, common_args...)
-	}
-	cmd := exec.Command("/usr/bin/find", common_args...)
-	stdout, err := cmd.StdoutPipe()
-	if err == nil {
-		err = cmd.Start()
-	}
+func newFinder(outputPath string) (*finder.Finder, error) {
+	dir, err := os.Getwd()
 	if err != nil {
-		panic(fmt.Errorf("cannot get the output from %s: %s", cmd, err))
+		return nil, err
 	}
-	scanner := bufio.NewScanner(stdout)
-	for scanner.Scan() {
-		l.cachedMakefiles = append(l.cachedMakefiles, strings.TrimPrefix(scanner.Text(), "./"))
+	filesystem := fs.OsFs
+
+	// .out-dir and .find-ignore are markers for Finder to ignore siblings and
+	// subdirectories of the directory Finder finds them in, hence stopping the
+	// search recursively down those branches. It's possible that these files
+	// are in the root directory, and if they are, then the subsequent error
+	// messages are very confusing, so check for that here.
+	pruneFiles := []string{".out-dir", ".find-ignore"}
+	for _, name := range pruneFiles {
+		prunePath := filepath.Join(dir, name)
+		_, statErr := filesystem.Lstat(prunePath)
+		if statErr == nil {
+			return nil, fmt.Errorf("%s must not exist", prunePath)
+		}
 	}
-	stdout.Close()
-	return l.cachedMakefiles
+
+	cacheParams := finder.CacheParams{
+		WorkingDirectory: dir,
+		RootDirs:         []string{"."},
+		ExcludeDirs:      []string{".git", ".repo"},
+		PruneFiles:       pruneFiles,
+		IncludeFiles:     []string{},
+		IncludeSuffixes:  []string{".mk"},
+	}
+
+	fmt.Fprintf(os.Stderr, "database file: %s\n", filepath.Join(outputPath, "files_rbc.db"))
+	return finder.New(cacheParams, fs.OsFs, logger.New(os.Stderr), filepath.Join(outputPath, "files_rbc.db"))
 }
