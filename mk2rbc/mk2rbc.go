@@ -37,6 +37,7 @@ import (
 	"text/scanner"
 
 	mkparser "android/soong/androidmk/parser"
+	"android/soong/finder"
 )
 
 const (
@@ -164,7 +165,7 @@ type Request struct {
 	TracedVariables []string // trace assignment to these variables
 	TraceCalls      bool
 	SourceFS        fs.FS
-	MakefileFinder  MakefileFinder
+	MakefileFinder  *finder.Finder
 }
 
 // ErrorLogger prints errors and gathers error statistics.
@@ -386,7 +387,7 @@ type StarlarkScript struct {
 	topDir         string
 	traceCalls     bool // print enter/exit each init function
 	sourceFS       fs.FS
-	makefileFinder MakefileFinder
+	makefileFinder *finder.Finder
 	nodeLocator    func(pos mkparser.Pos) int
 }
 
@@ -466,7 +467,7 @@ func newParseContext(ss *StarlarkScript, nodes []mkparser.Node) *parseContext {
 		variables:        make(map[string]variable),
 		dependentModules: make(map[string]*moduleInfo),
 		soongNamespaces:  make(map[string]map[string]bool),
-		includeTops:      []string{"vendor/google-devices"},
+		includeTops:      []string{},
 	}
 	ctx.pushVarAssignments()
 	for _, item := range predefined {
@@ -828,7 +829,7 @@ func (ctx *parseContext) handleSubConfig(
 			pathPattern = append(pathPattern, chunk)
 		}
 	}
-	if pathPattern[0] == "" {
+	if pathPattern[0] == "" && len(ctx.includeTops) > 0 {
 		// If pattern starts from the top. restrict it to the directories where
 		// we know inherit-product uses dynamically calculated path.
 		for _, p := range ctx.includeTops {
@@ -855,27 +856,30 @@ func (ctx *parseContext) handleSubConfig(
 }
 
 func (ctx *parseContext) findMatchingPaths(pattern []string) []string {
-	files := ctx.script.makefileFinder.Find(ctx.script.topDir)
-	if len(pattern) == 0 {
-		return files
-	}
-
 	// Create regular expression from the pattern
-	s_regexp := "^" + regexp.QuoteMeta(pattern[0])
-	for _, s := range pattern[1:] {
-		s_regexp += ".*" + regexp.QuoteMeta(s)
+	s_regexp := "^.*$"
+	if len(pattern) > 0 {
+		s_regexp = "^" + regexp.QuoteMeta(pattern[0])
+		for _, s := range pattern[1:] {
+			s_regexp += ".*" + regexp.QuoteMeta(s)
+		}
+		s_regexp += "$"
 	}
-	s_regexp += "$"
 	rex := regexp.MustCompile(s_regexp)
 
-	// Now match
-	var res []string
-	for _, p := range files {
-		if rex.MatchString(p) {
-			res = append(res, p)
-		}
+	rootPath := "."
+	if len(pattern) > 0 && len(pattern[0]) > 0 {
+		rootPath = pattern[0]
 	}
-	return res
+	return ctx.script.makefileFinder.FindMatching(rootPath, func(dirEntries finder.DirEntries) (dirs []string, files []string) {
+		matchingFiles := make([]string, 0)
+		for _, file := range dirEntries.FileNames {
+			if rex.MatchString(filepath.Join(dirEntries.Path, file)) {
+				matchingFiles = append(matchingFiles, file)
+			}
+		}
+		return dirEntries.DirNames, matchingFiles
+	})
 }
 
 func (ctx *parseContext) handleInheritModule(v mkparser.Node, pathExpr starlarkExpr, loadAlways bool) {
@@ -1611,6 +1615,13 @@ func (ctx *parseContext) handleSimpleStatement(node mkparser.Node) {
 		}
 	default:
 		ctx.errorf(x, "unsupported line %s", strings.ReplaceAll(x.Dump(), "\n", "\n#"))
+	}
+
+	// Clear the includeTops after each non-comment statement,
+	// so that include annotations placed on certain statements don't apply
+	// globally for the rest of the makefile code thereafter was well.
+	if _, wasComment := node.(*mkparser.Comment); !wasComment && len(ctx.includeTops) > 0 {
+		ctx.includeTops = []string{}
 	}
 }
 
