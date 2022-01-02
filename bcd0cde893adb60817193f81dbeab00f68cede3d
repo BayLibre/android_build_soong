@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e90ee8b3_1f5cd24b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-01-02T01:24:36Z",
+      "side": 1,
+      "message": "That\u0027s a separate change.",
+      "parentUuid": "858f02b0_ded8bf69",
+      "revId": "bcd0cde893adb60817193f81dbeab00f68cede3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebe8433c_74536726",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-01-01T23:56:32Z",
       "side": 1,
       "message": "Since this jar is not to be installed on a device, should this be HostSupported?",
+      "range": {
+        "startLine": 69,
+        "startChar": 32,
+        "endLine": 69,
+        "endChar": 54
+      },
+      "revId": "bcd0cde893adb60817193f81dbeab00f68cede3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77d066d8_f3f8a165",
+        "filename": "java/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-01-02T01:24:36Z",
+      "side": 1,
+      "message": "Some java_fuzz packages would have dependencies on libraries which are compiled for devices. After testing, I determined to have java_fuzz support both host and device to be able to compile them appropriately. The \u0027Installable\u0027 property set to false a few lines above should prevent actual installation on a device.",
+      "parentUuid": "ebe8433c_74536726",
       "range": {
         "startLine": 69,
         "startChar": 32,
