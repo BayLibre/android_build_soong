@@ -316,7 +316,7 @@ func (f *Finder) FindMatching(rootPath string, filter WalkFunc) []string {
 	// format and return results
 	if isRel {
 		for i := 0; i < len(results); i++ {
-			results[i] = strings.Replace(results[i], workingDir+"/", "", 1)
+			results[i] = strings.TrimPrefix(results[i], workingDir+"/")
 		}
 	}
 	sort.Strings(results)
@@ -1466,6 +1466,7 @@ func (f *Finder) listDirSync(dir *pathMap) {
 func (f *Finder) listMatches(node *pathMap,
 	filter WalkFunc) (subDirs []*pathMap, filePaths []string) {
 	entries := DirEntries{
+		Path:      strings.TrimPrefix(node.path, f.cacheMetadata.Config.WorkingDirectory+"/"),
 		FileNames: node.FileNames,
 	}
 	entries.DirNames = make([]string, 0, len(node.children))

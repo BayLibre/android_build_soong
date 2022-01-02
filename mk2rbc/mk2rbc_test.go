@@ -16,10 +16,14 @@ package mk2rbc
 
 import (
 	"bytes"
-	"io/fs"
+	"io/ioutil"
 	"path/filepath"
 	"strings"
 	"testing"
+
+	"android/soong/finder"
+	"android/soong/finder/fs"
+	"android/soong/ui/logger"
 )
 
 var testCases = []struct {
@@ -1037,15 +1041,15 @@ MY_PATH:=foo
 $(call inherit-product,vendor/$(MY_PATH)/cfg.mk)
 `,
 		expected: `load("//build/make/core:product_config.rbc", "rblf")
-load("//vendor/foo1:cfg.star|init", _cfg_init = "init")
-load("//vendor/bar/baz:cfg.star|init", _cfg1_init = "init")
+load("//vendor/bar/baz:cfg.star|init", _cfg_init = "init")
+load("//vendor/foo1:cfg.star|init", _cfg1_init = "init")
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
   g["MY_PATH"] = "foo"
   _entry = {
-    "vendor/foo1/cfg.mk": ("_cfg", _cfg_init),
-    "vendor/bar/baz/cfg.mk": ("_cfg1", _cfg1_init),
+    "vendor/bar/baz/cfg.mk": ("_cfg", _cfg_init),
+    "vendor/foo1/cfg.mk": ("_cfg1", _cfg1_init),
   }.get("vendor/%s/cfg.mk" % g["MY_PATH"])
   (_varmod, _varmod_init) = _entry if _entry else (None, None)
   if not _varmod_init:
@@ -1265,47 +1269,17 @@ var known_variables = []struct {
 	{"PLATFORM_LIST", VarClassSoong, starlarkTypeList}, // TODO(asmundak): make it local instead of soong
 }
 
-type testMakefileFinder struct {
-	fs    fs.FS
-	root  string
-	files []string
-}
-
-func (t *testMakefileFinder) Find(root string) []string {
-	if t.files != nil || root == t.root {
-		return t.files
-	}
-	t.files = make([]string, 0)
-	fs.WalkDir(t.fs, root, func(path string, d fs.DirEntry, err error) error {
-		if err != nil {
-			return err
-		}
-		if d.IsDir() {
-			base := filepath.Base(path)
-			if base[0] == '.' && len(base) > 1 {
-				return fs.SkipDir
-			}
-			return nil
-		}
-		if strings.HasSuffix(path, ".mk") {
-			t.files = append(t.files, path)
-		}
-		return nil
-	})
-	return t.files
-}
-
 func TestGood(t *testing.T) {
 	for _, v := range known_variables {
 		KnownVariables.NewVariable(v.name, v.class, v.starlarkType)
 	}
-	fs := NewFindMockFS([]string{
+	mockFiles := []string{
 		"vendor/foo1/cfg.mk",
 		"vendor/bar/baz/cfg.mk",
 		"part.mk",
 		"foo/font.mk",
 		"bar/font.mk",
-	})
+	}
 	for _, test := range testCases {
 		t.Run(test.desc,
 			func(t *testing.T) {
@@ -1314,8 +1288,8 @@ func TestGood(t *testing.T) {
 					Reader:         bytes.NewBufferString(test.in),
 					RootDir:        ".",
 					OutputSuffix:   ".star",
-					SourceFS:       fs,
-					MakefileFinder: &testMakefileFinder{fs: fs},
+					SourceFS:       NewFindMockFS(mockFiles),
+					MakefileFinder: newMockFinder(mockFiles),
 				})
 				if err != nil {
 					t.Error(err)
@@ -1329,4 +1303,27 @@ func TestGood(t *testing.T) {
 				}
 			})
 	}
+}
+
+func newMockFinder(files []string) *finder.Finder {
+	cwd := "/foo"
+	filesDict := make(map[string][]byte)
+	for _, file := range files {
+		filesDict[filepath.Join(cwd, file)] = []byte{}
+	}
+
+	cacheParams := finder.CacheParams{
+		WorkingDirectory: cwd,
+		RootDirs:         []string{"."},
+		ExcludeDirs:      []string{".git", ".repo"},
+		PruneFiles:       []string{".out-dir", ".find-ignore"},
+		IncludeFiles:     []string{},
+		IncludeSuffixes:  []string{".mk"},
+	}
+
+	f, err := finder.New(cacheParams, fs.NewMockFs(filesDict), logger.New(ioutil.Discard), "files_rbc.db")
+	if err != nil {
+		panic("Unable to create mock finder: " + err.Error())
+	}
+	return f
 }
