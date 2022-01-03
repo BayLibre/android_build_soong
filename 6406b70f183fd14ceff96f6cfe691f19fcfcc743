@@ -16,6 +16,24 @@
       "message": "Did you figure out the reason behind why customizableProperties existed? If so, could you put it into the commit description for future readers?",
       "revId": "6406b70f183fd14ceff96f6cfe691f19fcfcc743",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d10f5f8e_8f7d1b08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-01-03T14:54:17Z",
+      "side": 1,
+      "message": "+1. The \"official\" structure of a change description looks like this:\n\n1. A short (\u003c60 chars, if you agree with what git wants) description of what the change does\n2. A longer elaboration of what\u0027s happening\n3. Any additional information\n\ne.g. (example -- I\u0027m not sure if what I\u0027m saying below is correct):\n\nRemove ModuleBase.customizableProperties.\n\nThis was really only a copy of generalProperties so there is no point of keeping it. It was added in \u003cchange\u003e so that \u003creason\u003e, but that didn\u0027t happen because \u003creason\u003e.\n\nDrive-by fix: iterate over archProperties in arch.go instead of generalProperties.",
+      "parentUuid": "9c5b829e_ff701c4a",
+      "revId": "6406b70f183fd14ceff96f6cfe691f19fcfcc743",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
