@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c5b829e_ff701c4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-01-03T05:38:05Z",
+      "side": 1,
+      "message": "Did you figure out the reason behind why customizableProperties existed? If so, could you put it into the commit description for future readers?",
+      "revId": "6406b70f183fd14ceff96f6cfe691f19fcfcc743",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
