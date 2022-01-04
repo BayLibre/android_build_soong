@@ -181,6 +181,30 @@
       },
       "revId": "bcd0cde893adb60817193f81dbeab00f68cede3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bc767e4_f133af63",
+        "filename": "java/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-04T23:58:55Z",
+      "side": 1,
+      "message": "Why is \"framework\" necessary in static_libs?  That\u0027s never going to work on the host, it depends on RPCs to system_server and calls into native code that does not exist on the host.",
+      "parentUuid": "d1bfb3c4_b7aca235",
+      "range": {
+        "startLine": 69,
+        "startChar": 32,
+        "endLine": 69,
+        "endChar": 54
+      },
+      "revId": "bcd0cde893adb60817193f81dbeab00f68cede3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
