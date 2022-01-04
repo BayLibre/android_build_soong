@@ -55,6 +55,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b2b6fef0_81b646b6",
+        "filename": "java/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-04T21:25:24Z",
+      "side": 1,
+      "message": "Prefer to put blueprint imports first, then a blank line, then soong imports.",
+      "revId": "bcd0cde893adb60817193f81dbeab00f68cede3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebe8433c_74536726",
         "filename": "java/fuzz.go",
         "patchSetId": 1
@@ -90,6 +107,30 @@
       "side": 1,
       "message": "Some java_fuzz packages would have dependencies on libraries which are compiled for devices. After testing, I determined to have java_fuzz support both host and device to be able to compile them appropriately. The \u0027Installable\u0027 property set to false a few lines above should prevent actual installation on a device.",
       "parentUuid": "ebe8433c_74536726",
+      "range": {
+        "startLine": 69,
+        "startChar": 32,
+        "endLine": 69,
+        "endChar": 54
+      },
+      "revId": "bcd0cde893adb60817193f81dbeab00f68cede3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5919075_e13b4e00",
+        "filename": "java/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-04T21:25:24Z",
+      "side": 1,
+      "message": "Can you give an example where a java_fuzz module depends on a device module?",
+      "parentUuid": "77d066d8_f3f8a165",
       "range": {
         "startLine": 69,
         "startChar": 32,
