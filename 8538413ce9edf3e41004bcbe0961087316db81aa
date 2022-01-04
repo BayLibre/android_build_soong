@@ -143,6 +143,24 @@
       "message": "Does this need to be conditional?  What\u0027s the impact of enabling it everywhere?",
       "revId": "8538413ce9edf3e41004bcbe0961087316db81aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43d9aeea_6538ebf7",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-01-04T23:56:52Z",
+      "side": 1,
+      "message": "It does need to default to off, this causes a *lot* of bloat which we don\u0027t want (at least) for mainline shipped bpf code.",
+      "parentUuid": "83543acb_666e3746",
+      "revId": "8538413ce9edf3e41004bcbe0961087316db81aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
