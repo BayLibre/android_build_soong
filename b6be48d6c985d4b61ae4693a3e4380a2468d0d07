@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad873d6c_50957a26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1881539
+      },
+      "writtenOn": "2022-01-04T09:13:57Z",
+      "side": 1,
+      "message": "Hello,\nI added you as reviewer because you reviewed https://r.android.com/1490423.\nThis CL add support for more well know types",
+      "revId": "b6be48d6c985d4b61ae4693a3e4380a2468d0d07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
