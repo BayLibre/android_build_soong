@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65c4a45a_e9e191af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-04T06:00:21Z",
+      "side": 1,
+      "message": "This cl takes us from 263 to 334 working products in internal master. (+71) It only fixes product configurations, no more board configurations pass with it.",
+      "revId": "fbc6e2ba398af22d86e481f7a1c2662745c0cc21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
