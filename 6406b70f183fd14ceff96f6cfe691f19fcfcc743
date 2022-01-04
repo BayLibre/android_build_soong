@@ -34,6 +34,24 @@
       "parentUuid": "9c5b829e_ff701c4a",
       "revId": "6406b70f183fd14ceff96f6cfe691f19fcfcc743",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c7cd422_9a9b70ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-01-04T21:19:09Z",
+      "side": 1,
+      "message": "Elaborated the commit message a bit more.\n\nLMK if it is any better in terms of clarity.",
+      "parentUuid": "d10f5f8e_8f7d1b08",
+      "revId": "6406b70f183fd14ceff96f6cfe691f19fcfcc743",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

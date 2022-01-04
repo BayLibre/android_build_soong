@@ -22,6 +22,30 @@
       },
       "revId": "69e87311010a410cb8cb676c82d1642784211a0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c40efb02_a6ae8ab0",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-01-04T21:19:09Z",
+      "side": 0,
+      "message": "Added explanation in the change description",
+      "parentUuid": "77e731b5_e7b475fc",
+      "range": {
+        "startLine": 1114,
+        "startChar": 1,
+        "endLine": 1114,
+        "endChar": 35
+      },
+      "revId": "69e87311010a410cb8cb676c82d1642784211a0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
