@@ -123,6 +123,24 @@
       "parentUuid": "7277329b_e7351f5d",
       "revId": "458d1187c6b43931bce33144c5467e4bc7343f0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c34a4389_1e7dd3de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-04T19:29:50Z",
+      "side": 1,
+      "message": "Correct, a struct type for each specific parser, and funcCallParser.parse() will have parseContext as its first argument. A struct allows to keep the needed context in an IMHO more natural way, so instead of parseSimpleCallFactory you have \ntype simpleFuncCall struct {\n  name string\n  returnType ...\n  addGlobals bool\n}\nand knownFunctions can be initialized statically.",
+      "parentUuid": "3f00d76d_b2653c7f",
+      "revId": "458d1187c6b43931bce33144c5467e4bc7343f0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
