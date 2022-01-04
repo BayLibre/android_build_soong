@@ -16,6 +16,23 @@
       "message": "This cl takes us from 263 to 334 working products in internal master. (+71) It only fixes product configurations, no more board configurations pass with it.",
       "revId": "fbc6e2ba398af22d86e481f7a1c2662745c0cc21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "395fc323_cb9c0dca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-04T18:36:42Z",
+      "side": 1,
+      "message": "The main reason for the location hints is to avoid converting the files that need not be converted at all. There are include path patterns such that dozens of the completely irrelevant makefiles would match them in the absence of the location hints. And then these irrelevant makefiles are to be converted, too, as well as the files included from them.",
+      "revId": "fbc6e2ba398af22d86e481f7a1c2662745c0cc21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
