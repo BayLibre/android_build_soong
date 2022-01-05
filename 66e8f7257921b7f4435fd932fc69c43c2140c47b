@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40cfe383_870fdcc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-01-05T17:23:55Z",
+      "side": 1,
+      "message": "The ART presubmit failure seems weird. We should probably wait to retest this presubmit with the latest binaries (once those get submitted).",
+      "revId": "66e8f7257921b7f4435fd932fc69c43c2140c47b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
