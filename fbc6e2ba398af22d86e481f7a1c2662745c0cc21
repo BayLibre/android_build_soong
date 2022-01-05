@@ -195,6 +195,24 @@
       "parentUuid": "55f2d99f_27905b6b",
       "revId": "fbc6e2ba398af22d86e481f7a1c2662745c0cc21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ab12914_e7a14d40",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-05T22:09:44Z",
+      "side": 1,
+      "message": "\u003e I agree that the scope of a location hint annotation should be the file where it is defined.\n\nSo then are you ok with aosp/1937157?",
+      "parentUuid": "a2ff378c_c19d89b0",
+      "revId": "fbc6e2ba398af22d86e481f7a1c2662745c0cc21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
