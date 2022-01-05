@@ -141,6 +141,24 @@
       "parentUuid": "e0ba2b8f_494f85c6",
       "revId": "fbc6e2ba398af22d86e481f7a1c2662745c0cc21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58d62d0f_dd03d6d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-05T18:59:54Z",
+      "side": 1,
+      "message": "Once you exclude $(LOCAL_PATH) references and the ones that already have the hints, there will be no that many left, about a dozen.",
+      "parentUuid": "0e782bc7_e96f7b89",
+      "revId": "fbc6e2ba398af22d86e481f7a1c2662745c0cc21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
