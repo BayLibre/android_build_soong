@@ -253,6 +253,30 @@
       },
       "revId": "bcd0cde893adb60817193f81dbeab00f68cede3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "427fff7d_cf61ea6c",
+        "filename": "java/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-01-05T01:59:50Z",
+      "side": 1,
+      "message": "I may be wrong in my assumption, but here is how I thought about it:\nAs long as we are compiling .class and not dex, the JVM on device and host would both be able to run it. And Jazzer works with .class anyway, so it should be fine to fuzz on a host this way.",
+      "parentUuid": "b5746a57_6477dc15",
+      "range": {
+        "startLine": 69,
+        "startChar": 32,
+        "endLine": 69,
+        "endChar": 54
+      },
+      "revId": "bcd0cde893adb60817193f81dbeab00f68cede3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
