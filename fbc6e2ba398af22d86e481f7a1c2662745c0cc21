@@ -159,6 +159,24 @@
       "parentUuid": "0e782bc7_e96f7b89",
       "revId": "fbc6e2ba398af22d86e481f7a1c2662745c0cc21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55f2d99f_27905b6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-05T19:07:02Z",
+      "side": 1,
+      "message": "There\u0027s 49 files that match that: https://source.corp.google.com/search?q\u003dp:%5Eandroid$%20-%23RBC%23.*%5Cn.*inherit-product(-if-exists)%3F,%5C%20*%5C$%20inherit-product(-if-exists)%3F,%5C%20*%5C$%20-SRC_TARGET_DIR%20-LOCAL_PATH\u0026sq\u003d\n\nRegardless, even if there are only a few files, we should still do this change (or the other slower one) because it will make it so OEMs don\u0027t have to add comments to their code.\n\nPlus this also fixes a bug that masks the issue where if you add a include-top comment to an inherit-product, it then applies globally for all future inherit-products as well.",
+      "parentUuid": "58d62d0f_dd03d6d7",
+      "revId": "fbc6e2ba398af22d86e481f7a1c2662745c0cc21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
