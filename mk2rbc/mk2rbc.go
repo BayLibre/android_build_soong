@@ -466,7 +466,7 @@ func newParseContext(ss *StarlarkScript, nodes []mkparser.Node) *parseContext {
 		variables:        make(map[string]variable),
 		dependentModules: make(map[string]*moduleInfo),
 		soongNamespaces:  make(map[string]map[string]bool),
-		includeTops:      []string{"vendor/google-devices"},
+		includeTops:      []string{},
 	}
 	ctx.pushVarAssignments()
 	for _, item := range predefined {
@@ -828,7 +828,7 @@ func (ctx *parseContext) handleSubConfig(
 			pathPattern = append(pathPattern, chunk)
 		}
 	}
-	if pathPattern[0] == "" {
+	if pathPattern[0] == "" && len(ctx.includeTops) > 0 {
 		// If pattern starts from the top. restrict it to the directories where
 		// we know inherit-product uses dynamically calculated path.
 		for _, p := range ctx.includeTops {
@@ -1611,6 +1611,9 @@ func (ctx *parseContext) handleSimpleStatement(node mkparser.Node) {
 		}
 	default:
 		ctx.errorf(x, "unsupported line %s", strings.ReplaceAll(x.Dump(), "\n", "\n#"))
+	}
+	if _, wasComment := node.(*mkparser.Comment); !wasComment && len(ctx.includeTops) > 0 {
+		ctx.includeTops = []string{}
 	}
 }
 

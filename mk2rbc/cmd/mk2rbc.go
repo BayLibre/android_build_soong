@@ -79,7 +79,7 @@ func init() {
 var backupSuffix string
 var tracedVariables []string
 var errorLogger = errorSink{data: make(map[string]datum)}
-var makefileFinder = &LinuxMakefileFinder{}
+var makefileFinder = &LinuxMakefileFinder{cache: make(map[string][]string)}
 
 func main() {
 	flag.Usage = func() {
@@ -520,16 +520,13 @@ func stringsWithFreq(items []string, topN int) (string, int) {
 }
 
 type LinuxMakefileFinder struct {
-	cachedRoot      string
-	cachedMakefiles []string
+	cache map[string][]string
 }
 
 func (l *LinuxMakefileFinder) Find(root string) []string {
-	if l.cachedMakefiles != nil && l.cachedRoot == root {
-		return l.cachedMakefiles
+	if cachedMakefiles, ok := l.cache[root]; ok {
+		return cachedMakefiles
 	}
-	l.cachedRoot = root
-	l.cachedMakefiles = make([]string, 0)
 
 	// Return all *.mk files but not in hidden directories.
 
@@ -548,9 +545,11 @@ func (l *LinuxMakefileFinder) Find(root string) []string {
 		panic(fmt.Errorf("cannot get the output from %s: %s", cmd, err))
 	}
 	scanner := bufio.NewScanner(stdout)
+	results := make([]string, 0)
 	for scanner.Scan() {
-		l.cachedMakefiles = append(l.cachedMakefiles, strings.TrimPrefix(scanner.Text(), "./"))
+		results = append(results, strings.TrimPrefix(scanner.Text(), "./"))
 	}
+	l.cache[root] = results
 	stdout.Close()
-	return l.cachedMakefiles
+	return results
 }
