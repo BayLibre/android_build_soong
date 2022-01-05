@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7492657f_5bfda04d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-01-05T20:46:13Z",
+      "side": 1,
+      "message": "Good question, was wondering the same thing, though \u0027btf: true\u0027 is probably far more readable.",
+      "revId": "c707b7229f83655a98fc267e2fa33b09cf55d28b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59d5d01c_1ec3bf69",
