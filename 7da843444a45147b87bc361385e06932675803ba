@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0a09347_444028f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2022-01-05T19:03:01Z",
+      "side": 1,
+      "message": "Are we ok with landing this as the first cut?",
+      "revId": "7da843444a45147b87bc361385e06932675803ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b06c7327_0d04912f",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-11-11T08:18:20Z",
       "side": 1,
       "message": "what is the reason for not just doing that?",
+      "range": {
+        "startLine": 258,
+        "startChar": 10,
+        "endLine": 258,
+        "endChar": 15
+      },
+      "revId": "7da843444a45147b87bc361385e06932675803ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66661473_39b4bf56",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2022-01-05T19:03:01Z",
+      "side": 1,
+      "message": "Currently compat mode is the default, so this is an attempt to add the support needed for the retrace tool test without changing existing R8 users. We could do a follow-up CL right after this to add this for compat builds too. That way we have a better chance of not reverting the retrace tool out again if issues arise with tagging. WDYT?",
+      "parentUuid": "b06c7327_0d04912f",
       "range": {
         "startLine": 258,
         "startChar": 10,
@@ -78,6 +119,30 @@
       "side": 1,
       "message": "we already added a todo here https://android-review.googlesource.com/c/platform/prebuilts/r8/+/1878502/8..17/src/com/android/tools/r8/retrace/RetraceWrapper.java#b219 but maybe we should add a bug for tracking this if we add more todos",
       "parentUuid": "9cfc2528_5220c48a",
+      "range": {
+        "startLine": 261,
+        "startChar": 58,
+        "endLine": 261,
+        "endChar": 70
+      },
+      "revId": "7da843444a45147b87bc361385e06932675803ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a1d68d9_98baa00a",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2022-01-05T19:03:01Z",
+      "side": 1,
+      "message": "As mentioned above, we can change to do this in compat builds too. That said, it would be nice to move away from compat mode as much as possible to avoid issues with reflective identification and generally shrink better.\n\nI\u0027m not sure how to resolve the go/ link for public users. Once the setup is working we could consider putting in some other url that is public?",
+      "parentUuid": "0e26e85b_9e26cf5f",
       "range": {
         "startLine": 261,
         "startChar": 58,
