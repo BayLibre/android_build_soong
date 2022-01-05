@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf60b3ee_acffaf04",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-01-05T23:41:39Z",
+      "side": 1,
+      "message": "prebuilt",
+      "range": {
+        "startLine": 457,
+        "startChar": 3,
+        "endLine": 457,
+        "endChar": 11
+      },
+      "revId": "18db666ef891ef7f7d7f90d10e555ec41ae9c21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc2c6640_576f38fc",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-01-05T23:41:39Z",
+      "side": 1,
+      "message": "omit?",
+      "range": {
+        "startLine": 458,
+        "startChar": 14,
+        "endLine": 458,
+        "endChar": 24
+      },
+      "revId": "18db666ef891ef7f7d7f90d10e555ec41ae9c21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
