@@ -205,6 +205,30 @@
       },
       "revId": "bcd0cde893adb60817193f81dbeab00f68cede3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58a7e3e3_fc54a645",
+        "filename": "java/fuzz.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-01-05T01:35:25Z",
+      "side": 1,
+      "message": "We need all the Java dependencies packaged into a jar together with the fuzz target .class for Jazzer to run them independently on Clusterfuzz hosts. framework in static_libs packages all fuzz_target dependencies into the jar, so it works well with Jazzer on a host.\nI tried initializing the module just as HostSupported, but then the dependencies were not added to the same .jar.",
+      "parentUuid": "9bc767e4_f133af63",
+      "range": {
+        "startLine": 69,
+        "startChar": 32,
+        "endLine": 69,
+        "endChar": 54
+      },
+      "revId": "bcd0cde893adb60817193f81dbeab00f68cede3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
