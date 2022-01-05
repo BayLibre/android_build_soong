@@ -134,6 +134,10 @@ type overridableAppProperties struct {
 
 	// Whether to rename the package in resources to the override name rather than the base name. Defaults to true.
 	Rename_resources_package *bool
+
+	// the APK name of this app. If not set, the APK is named after "name" property of the module. APK
+	// name is used as part of install path of the APK. e.g. /app/<apk_name>/<apk_name>.apk
+	Apk_name *string
 }
 
 type AndroidApp struct {
@@ -621,7 +625,13 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	a.aapt.useEmbeddedDex = Bool(a.appProperties.Use_embedded_dex)
 
 	// Check if the install APK name needs to be overridden.
-	a.installApkName = ctx.DeviceConfig().OverridePackageNameFor(a.Name())
+	apkName := a.Name()
+	// First, check `apk_name` property
+	if String(a.overridableAppProperties.Apk_name) != "" {
+		apkName = String(a.overridableAppProperties.Apk_name)
+	}
+	// Second, check PRODUCT_PACKAGE_NAME_OVERRIDES property
+	a.installApkName = ctx.DeviceConfig().OverridePackageNameFor(apkName)
 
 	if ctx.ModuleName() == "framework-res" {
 		// framework-res.apk is installed as system/framework/framework-res.apk
