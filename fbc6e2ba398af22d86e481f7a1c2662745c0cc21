@@ -69,6 +69,24 @@
       "parentUuid": "29483885_96310f64",
       "revId": "fbc6e2ba398af22d86e481f7a1c2662745c0cc21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe3236b5_610601fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-05T05:18:16Z",
+      "side": 1,
+      "message": "Because some $(inherit-product) statements start with a variable, but don\u0027t have a \"#RBC# include-top\" comment. In these cases we will only search under previously defined include tops, which oftentimes won\u0027t contain the makefile they\u0027re looking for.\n\nI made aosp/1937157, an equivalent, but much simpler CL to look at if it helps you understand. We could go with that one instead, but it makes mk2rbc take 7 seconds to run (repeated 3 times, so 21 seconds in total) on some products, as opposed to this cl which only makes mk2rbc take 6 seconds in total across the 3 repetitions.\n\nIn both this cl and the simplified one, if we see a $(inherit-product) that doesn\u0027t have a \"#RBC# include-top\" comment on it, we will search the whole android source tree for any possible makefile that could match the pattern.",
+      "parentUuid": "85519d8c_1b7bf638",
+      "revId": "fbc6e2ba398af22d86e481f7a1c2662745c0cc21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
