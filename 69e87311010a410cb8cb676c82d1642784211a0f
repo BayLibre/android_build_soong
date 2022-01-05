@@ -46,6 +46,30 @@
       },
       "revId": "69e87311010a410cb8cb676c82d1642784211a0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c58a47a3_53052cf3",
+        "filename": "android/arch.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1114,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-01-05T09:42:47Z",
+      "side": 0,
+      "message": "Thanks! Today I Learned what these two fields were for.",
+      "parentUuid": "c40efb02_a6ae8ab0",
+      "range": {
+        "startLine": 1114,
+        "startChar": 1,
+        "endLine": 1114,
+        "endChar": 35
+      },
+      "revId": "69e87311010a410cb8cb676c82d1642784211a0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
