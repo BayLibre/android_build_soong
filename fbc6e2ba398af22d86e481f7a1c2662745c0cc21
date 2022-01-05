@@ -177,6 +177,24 @@
       "parentUuid": "58d62d0f_dd03d6d7",
       "revId": "fbc6e2ba398af22d86e481f7a1c2662745c0cc21",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2ff378c_c19d89b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-05T22:05:36Z",
+      "side": 1,
+      "message": "I have found only 34 files, CLs to fix them are on the way.\nI agree that the scope of a location hint annotation should be the file where it is defined.",
+      "parentUuid": "55f2d99f_27905b6b",
+      "revId": "fbc6e2ba398af22d86e481f7a1c2662745c0cc21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
