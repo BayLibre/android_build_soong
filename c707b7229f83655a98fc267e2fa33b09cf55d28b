@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59d5d01c_1ec3bf69",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-05T20:34:13Z",
+      "side": 1,
+      "message": "Is there a reason not to use cflags: [\"-g\"] instead?",
+      "revId": "c707b7229f83655a98fc267e2fa33b09cf55d28b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
