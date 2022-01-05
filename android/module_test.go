@@ -615,3 +615,129 @@ func parseMkRules(t *testing.T, config Config, nodes []mkparser.Node) []installM
 
 	return rules
 }
+
+type propsTestModule struct {
+	ModuleBase
+	props struct {
+		A string `android:"arch_variant"`
+		B *bool
+		C []string
+	}
+	otherProps struct {
+		D      *int64
+		Nested struct {
+			E *string
+		}
+		F *string `blueprint:"mutated"`
+	}
+}
+
+func propsTestModuleFactory() Module {
+	module := &propsTestModule{}
+	module.AddProperties(&module.props, &module.otherProps)
+	InitAndroidArchModule(module, HostAndDeviceSupported, MultilibBoth)
+	return module
+}
+
+func (p *propsTestModule) GenerateAndroidBuildActions(ctx ModuleContext) {
+	str := "abc"
+	p.otherProps.F = &str
+}
+
+func TestUsedProperties(t *testing.T) {
+	testCases := []struct {
+		desc          string
+		bp            string
+		expectedProps []propInfo
+	}{
+		{
+			desc: "only name",
+			bp: `test {
+			name: "foo",
+		}
+	`,
+			expectedProps: []propInfo{
+				propInfo{"Name", "string"},
+			},
+		},
+		{
+			desc: "some props",
+			bp: `test {
+			name: "foo",
+			a: "abc",
+			b: true,
+			d: 123,
+		}
+	`,
+			expectedProps: []propInfo{
+				propInfo{"A", "string"},
+				propInfo{"B", "bool"},
+				propInfo{"D", "int64"},
+				propInfo{"Name", "string"},
+			},
+		},
+		{
+			desc: "unused non-pointer prop",
+			bp: `test {
+			name: "foo",
+			b: true,
+			d: 123,
+		}
+	`,
+			expectedProps: []propInfo{
+				// for non-pointer cannot distinguish between unused and intentionally set to empty
+				propInfo{"A", "string"},
+				propInfo{"B", "bool"},
+				propInfo{"D", "int64"},
+				propInfo{"Name", "string"},
+			},
+		},
+		{
+			desc: "nested props",
+			bp: `test {
+			name: "foo",
+			nested: {
+				e: "abc",
+			}
+		}
+	`,
+			expectedProps: []propInfo{
+				propInfo{"Nested.E", "string"},
+				propInfo{"Name", "string"},
+			},
+		},
+		{
+			desc: "nested props",
+			bp: `test {
+			name: "foo",
+			arch: {
+				x86_64: {
+					a: "abc",
+				},
+			}
+		}
+	`,
+			expectedProps: []propInfo{
+				propInfo{"Name", "string"},
+				propInfo{"Arch.X86_64.BlueprintEmbed.A", "string"},
+			},
+		},
+	}
+
+	for _, tc := range testCases {
+		t.Run(tc.desc, func(t *testing.T) {
+			result := GroupFixturePreparers(
+				PrepareForTestWithAllowMissingDependencies,
+				FixtureRegisterWithContext(func(ctx RegistrationContext) {
+					ctx.RegisterModuleType("test", propsTestModuleFactory)
+				}),
+				FixtureWithRootAndroidBp(tc.bp),
+			).RunTest(t)
+
+			foo := result.ModuleForTests("foo", "").Module().base()
+
+			AssertDeepEquals(t, "foo ", tc.expectedProps, foo.usedProperties())
+
+		})
+	}
+}

@@ -19,6 +19,7 @@ import (
 	"os"
 	"path"
 	"path/filepath"
+	"reflect"
 	"regexp"
 	"strings"
 	"text/scanner"
@@ -1332,7 +1333,58 @@ func (m *ModuleBase) GetUnconvertedBp2buildDeps() []string {
 }
 
 func (m *ModuleBase) AddJSONData(d *map[string]interface{}) {
-	(*d)["Android"] = map[string]interface{}{}
+	(*d)["Android"] = map[string]interface{}{
+		"used_props": m.usedProperties(),
+	}
+}
+
+type propInfo struct {
+	Name string
+	Typ  string
+}
+
+func (m *ModuleBase) usedProperties() []propInfo {
+	var info []propInfo
+	props := m.GetProperties()
+
+	var usedProp func(name string, v reflect.Value)
+	usedProp = func(name string, v reflect.Value) {
+		kind := v.Kind()
+		switch kind {
+		case reflect.Ptr, reflect.Interface:
+			if !v.IsNil() {
+				usedProp(name, v.Elem())
+			}
+		case reflect.Struct:
+			if v.IsZero() {
+				return
+			}
+			if name != "" {
+				name += "."
+			}
+			for i := 0; i < v.NumField(); i++ {
+				sTyp := v.Type().Field(i)
+				if proptools.HasTag(sTyp, "blueprint", "mutated") {
+					continue
+				}
+				sVal := v.Field(i)
+				usedProp(name+sTyp.Name, sVal)
+			}
+		case reflect.Array, reflect.Slice:
+			if v.IsNil() {
+				return
+			}
+			elKind := v.Type().Elem().Kind()
+			info = append(info, propInfo{name, elKind.String() + " " + kind.String()})
+		default:
+			info = append(info, propInfo{name, kind.String()})
+		}
+	}
+
+	for _, p := range props {
+		usedProp("", reflect.ValueOf(p).Elem())
+	}
+	return info
 }
 
 func (m *ModuleBase) ComponentDepsMutator(BottomUpMutatorContext) {}
