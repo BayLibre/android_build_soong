@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b7924f3_2e2902f6",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-06T17:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf60b3ee_acffaf04",
+      "range": {
+        "startLine": 457,
+        "startChar": 3,
+        "endLine": 457,
+        "endChar": 11
+      },
+      "revId": "18db666ef891ef7f7d7f90d10e555ec41ae9c21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc2c6640_576f38fc",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-05T23:41:39Z",
       "side": 1,
       "message": "omit?",
+      "range": {
+        "startLine": 458,
+        "startChar": 14,
+        "endLine": 458,
+        "endChar": 24
+      },
+      "revId": "18db666ef891ef7f7d7f90d10e555ec41ae9c21e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69fe508e_1004725c",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-06T17:16:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc2c6640_576f38fc",
       "range": {
         "startLine": 458,
         "startChar": 14,
