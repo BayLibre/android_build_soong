@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0df8ac8b_40c922cf",
+        "filename": "java/fuzz_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-06T01:39:17Z",
+      "side": 1,
+      "message": "The usages need updating too",
+      "range": {
+        "startLine": 48,
+        "startChar": 39,
+        "endLine": 48,
+        "endChar": 55
+      },
+      "revId": "bb0f4361ae389cf0d3646493fc5075383bceeee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
