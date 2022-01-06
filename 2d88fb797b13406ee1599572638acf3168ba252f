@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c84a3c1_d17ef40c",
+        "filename": "android/bazel_paths.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-01-06T01:29:28Z",
+      "side": 1,
+      "message": "I don\u0027t really understand why we\u0027re relaxing this, even after reading the CL description that this is for bp2build integration tests. Can you give an example use case?",
+      "range": {
+        "startLine": 369,
+        "startChar": 2,
+        "endLine": 370,
+        "endChar": 12
+      },
+      "revId": "2d88fb797b13406ee1599572638acf3168ba252f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "818ad93c_92938633",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1335,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-01-06T01:29:28Z",
+      "side": 1,
+      "message": "fix documentation?",
+      "range": {
+        "startLine": 1335,
+        "startChar": 25,
+        "endLine": 1335,
+        "endChar": 92
+      },
+      "revId": "2d88fb797b13406ee1599572638acf3168ba252f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0baa9ec2_136d27ad",
+        "filename": "android/module.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1348,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-01-06T01:29:28Z",
+      "side": 1,
+      "message": "\"missing\" / not found in an Android.bp file?",
+      "range": {
+        "startLine": 1348,
+        "startChar": 3,
+        "endLine": 1348,
+        "endChar": 31
+      },
+      "revId": "2d88fb797b13406ee1599572638acf3168ba252f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
