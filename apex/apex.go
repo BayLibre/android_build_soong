@@ -3263,17 +3263,23 @@ func rModulesPackages() map[string][]string {
 // For Bazel / bp2build
 
 type bazelApexBundleAttributes struct {
-	Manifest           bazel.LabelAttribute
-	Android_manifest   bazel.LabelAttribute
-	File_contexts      bazel.LabelAttribute
-	Key                bazel.LabelAttribute
-	Certificate        bazel.LabelAttribute
-	Min_sdk_version    *string
-	Updatable          bazel.BoolAttribute
-	Installable        bazel.BoolAttribute
-	Native_shared_libs bazel.LabelListAttribute
-	Binaries           bazel.LabelListAttribute
-	Prebuilts          bazel.LabelListAttribute
+	Manifest              bazel.LabelAttribute
+	Android_manifest      bazel.LabelAttribute
+	File_contexts         bazel.LabelAttribute
+	Key                   bazel.LabelAttribute
+	Certificate           bazel.LabelAttribute
+	Min_sdk_version       *string
+	Updatable             bazel.BoolAttribute
+	Installable           bazel.BoolAttribute
+	Binaries              bazel.LabelListAttribute
+	Prebuilts             bazel.LabelListAttribute
+	Native_shared_libs_32 bazel.LabelListAttribute
+	Native_shared_libs_64 bazel.LabelListAttribute
+}
+
+type convertedNativeSharedLibs struct {
+	Native_shared_libs_32 bazel.LabelListAttribute
+	Native_shared_libs_64 bazel.LabelListAttribute
 }
 
 // ConvertWithBp2build performs bp2build conversion of an apex
@@ -3313,9 +3319,20 @@ func (a *apexBundle) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		certificateLabelAttribute.SetValue(android.BazelLabelForModuleDepSingle(ctx, *a.overridableProperties.Certificate))
 	}
 
-	nativeSharedLibs := a.properties.ApexNativeDependencies.Native_shared_libs
-	nativeSharedLibsLabelList := android.BazelLabelForModuleDeps(ctx, nativeSharedLibs)
-	nativeSharedLibsLabelListAttribute := bazel.MakeLabelListAttribute(nativeSharedLibsLabelList)
+	nativeSharedLibs := &convertedNativeSharedLibs{
+		Native_shared_libs_32: bazel.LabelListAttribute{},
+		Native_shared_libs_64: bazel.LabelListAttribute{},
+	}
+	compileMultilib := "both"
+	if a.CompileMultilib() != nil {
+		compileMultilib = *a.CompileMultilib()
+	}
+
+	convertBothLibs(ctx, compileMultilib, a.properties.Native_shared_libs, nativeSharedLibs)
+	convertBothLibs(ctx, compileMultilib, a.properties.Multilib.Both.Native_shared_libs, nativeSharedLibs)
+	// convert32Libs(compileMultilib, a.properties.Multilib.Lib32.Native_shared_libs, nativeSharedLibs)
+	// convert64Libs(compileMultilib, a.properties.Multilib.Lib64.Native_shared_libs, nativeSharedLibs)
+	convertFirstLibs(ctx, compileMultilib, a.properties.Multilib.First.Native_shared_libs, nativeSharedLibs)
 
 	prebuilts := a.overridableProperties.Prebuilts
 	prebuiltsLabelList := android.BazelLabelForModuleDeps(ctx, prebuilts)
@@ -3335,17 +3352,18 @@ func (a *apexBundle) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	}
 
 	attrs := &bazelApexBundleAttributes{
-		Manifest:           manifestLabelAttribute,
-		Android_manifest:   androidManifestLabelAttribute,
-		File_contexts:      fileContextsLabelAttribute,
-		Min_sdk_version:    minSdkVersion,
-		Key:                keyLabelAttribute,
-		Certificate:        certificateLabelAttribute,
-		Updatable:          updatableAttribute,
-		Installable:        installableAttribute,
-		Native_shared_libs: nativeSharedLibsLabelListAttribute,
-		Binaries:           binariesLabelListAttribute,
-		Prebuilts:          prebuiltsLabelListAttribute,
+		Manifest:              manifestLabelAttribute,
+		Android_manifest:      androidManifestLabelAttribute,
+		File_contexts:         fileContextsLabelAttribute,
+		Min_sdk_version:       minSdkVersion,
+		Key:                   keyLabelAttribute,
+		Certificate:           certificateLabelAttribute,
+		Updatable:             updatableAttribute,
+		Installable:           installableAttribute,
+		Native_shared_libs_32: nativeSharedLibs.Native_shared_libs_32,
+		Native_shared_libs_64: nativeSharedLibs.Native_shared_libs_64,
+		Binaries:              binariesLabelListAttribute,
+		Prebuilts:             prebuiltsLabelListAttribute,
 	}
 
 	props := bazel.BazelTargetModuleProperties{
@@ -3354,4 +3372,84 @@ func (a *apexBundle) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	}
 
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: a.Name()}, attrs)
+}
+
+// The following conversions are based on this table where the rows are the compile_multilib
+// values and the columns are the properties.Multilib.*.Native_shared_libs. Each cell
+// represents how the libs should be compiled for a 64-bit/32-bit device: 32 means it
+// should be compiled as 32-bit, 64 means it should be compiled as 64-bit, none means it
+// should not be compiled.
+// multib/compile_multilib, 32,        64,        both,     first
+// 32,                      32/32,     none/none, 32/32,    none/32
+// 64,                      none/none, 64/none,   64/none,  64/none
+// both,                    32/32,     64/none,   32&64/32, 64/32
+// first,                   32/32,     64/none,   64/32,    64/32
+// prefer32,                32/32,     64/none,   32/32,    64/32
+// The compile_multilib and multilib combinations can generate 6 distinct values:
+// 32/32, 64/none, 32&64/32, 64/32, none/32, none/none. The first 5 values are
+// represented by Native_shared_libs_32, Native_shared_libs_64, Native_shared_libs_both,
+// Native_shared_libs_first and Native_shared_libs_32_only, and none/none will be ignored.
+// So the logic of the following conversions is to map each of the compile_multilib and
+// multilib combination to one of the 5 lists mentioned above. For example, for the
+// combination of (64, both), the value is 64/none, so the libs in
+// a.properties.Multilib.Both.Native_shared_libs will be added to Native_shared_libs_64;
+// for (first, 32) the libs in a.properties.Multilib.lib32.Native_shared_libs will be
+// added to Native_shared_libs_32_only.
+
+// func convert32Libs(compileMultilb string, libs []string, cLibs *convertedNativeSharedLibs) {
+//  switch compileMultilb {
+//	case "both", "32":
+//		cLibs.Native_shared_libs_32 = append(cLibs.Native_shared_libs_32, libs...)
+//	case "first":
+//		cLibs.Native_shared_libs_32_only = append(cLibs.Native_shared_libs_32_only, libs...)
+//	}
+//}
+
+// func convert64Libs(compileMultilb string, libs []string, cLibs *convertedNativeSharedLibs) {
+//	switch compileMultilb {
+//	case "both", "64", "first":
+//		cLibs.Native_shared_libs_64 = append(cLibs.Native_shared_libs_64, libs...)
+//	}
+//}
+
+func convertBothLibs(ctx android.TopDownMutatorContext, compileMultilb string,
+	libs []string, nativeSharedLibs *convertedNativeSharedLibs) {
+	libsLabelList := android.BazelLabelForModuleDeps(ctx, libs)
+	switch compileMultilb {
+	case "both":
+		list := bazel.LabelListAttribute{}
+		list.SetSelectValue(bazel.NoConfigAxis, "", libsLabelList)
+		nativeSharedLibs.Native_shared_libs_32.Append(list)
+		makeSharedLibsAttributes("x86_64", libsLabelList, &nativeSharedLibs.Native_shared_libs_64)
+		makeSharedLibsAttributes("arm64", libsLabelList, &nativeSharedLibs.Native_shared_libs_64)
+	case "first":
+		makeFirstSharedLibsAttributes(libsLabelList, nativeSharedLibs)
+	default:
+		ctx.PropertyErrorf("compile_multilib", "Invalid value: %s", compileMultilb)
+	}
+}
+
+func convertFirstLibs(ctx android.TopDownMutatorContext, compileMultilb string,
+	libs []string, nativeSharedLibs *convertedNativeSharedLibs) {
+	libsLabelList := android.BazelLabelForModuleDeps(ctx, libs)
+	switch compileMultilb {
+	case "both", "first":
+		makeFirstSharedLibsAttributes(libsLabelList, nativeSharedLibs)
+	default:
+		ctx.PropertyErrorf("compile_multilib", "Invalid value: %s", compileMultilb)
+	}
+}
+
+func makeFirstSharedLibsAttributes(libsLabelList bazel.LabelList, nativeSharedLibs *convertedNativeSharedLibs) {
+	makeSharedLibsAttributes("x86", libsLabelList, &nativeSharedLibs.Native_shared_libs_32)
+	makeSharedLibsAttributes("arm", libsLabelList, &nativeSharedLibs.Native_shared_libs_32)
+	makeSharedLibsAttributes("x86_64", libsLabelList, &nativeSharedLibs.Native_shared_libs_64)
+	makeSharedLibsAttributes("arm64", libsLabelList, &nativeSharedLibs.Native_shared_libs_64)
+}
+
+func makeSharedLibsAttributes(config string, libsLabelList bazel.LabelList,
+	labelListAttr *bazel.LabelListAttribute) {
+	list := bazel.LabelListAttribute{}
+	list.SetSelectValue(bazel.ArchConfigurationAxis, config, libsLabelList)
+	labelListAttr.Append(list)
 }
