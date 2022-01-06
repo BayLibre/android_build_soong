@@ -16,6 +16,23 @@
       "message": "Moved to AOSP from the internal. (See ag/16566314 for the usage)",
       "revId": "fe1258bb46920421377223695569e135ac79411f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9fc1f89_ef876f3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-06T01:52:32Z",
+      "side": 1,
+      "message": "I would expect this to cause duplicate install rule errors, you can\u0027t have two apps installing to the same location, even if one overrides the other.",
+      "revId": "fe1258bb46920421377223695569e135ac79411f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
