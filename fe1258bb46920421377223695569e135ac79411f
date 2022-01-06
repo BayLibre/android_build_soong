@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9368c915_5c548bf1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-01-06T01:46:28Z",
+      "side": 1,
+      "message": "Moved to AOSP from the internal. (See ag/16566314 for the usage)",
+      "revId": "fe1258bb46920421377223695569e135ac79411f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
