@@ -16,6 +16,23 @@
       "message": "Nice find!",
       "revId": "2fad341beb7a633f581e1a9c2d723f42a54ce7ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b80d5692_aebf3d76",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-01-06T03:59:16Z",
+      "side": 1,
+      "message": "nitpick: the white space count between \"Console:\" and the value is inconsistent with lines 186:189",
+      "revId": "2fad341beb7a633f581e1a9c2d723f42a54ce7ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
