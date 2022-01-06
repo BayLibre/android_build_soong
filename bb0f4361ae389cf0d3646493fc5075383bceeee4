@@ -22,6 +22,30 @@
       },
       "revId": "bb0f4361ae389cf0d3646493fc5075383bceeee4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e11d58c7_b6d6db49",
+        "filename": "java/fuzz_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-01-06T02:18:13Z",
+      "side": 1,
+      "message": "Oops, forgot to rerun the test, which would have let me see it.\nUpdated.",
+      "parentUuid": "0df8ac8b_40c922cf",
+      "range": {
+        "startLine": 48,
+        "startChar": 39,
+        "endLine": 48,
+        "endChar": 55
+      },
+      "revId": "bb0f4361ae389cf0d3646493fc5075383bceeee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
