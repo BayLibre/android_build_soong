@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "020fe964_6110498f",
+        "filename": "java/fuzz_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-06T00:24:41Z",
+      "side": 1,
+      "message": "This test will fail on macs, use result.Config.BuildOSCommonTarget.String() instead",
+      "range": {
+        "startLine": 47,
+        "startChar": 40,
+        "endLine": 47,
+        "endChar": 58
+      },
+      "revId": "095ada635d9e2a08c7b98beb88ccfedced221b80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
