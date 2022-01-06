@@ -64,6 +64,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4bf7eb5_0d127d5d",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3334,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-01-06T17:59:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a74b3d47_76b05ed7",
+      "range": {
+        "startLine": 3334,
+        "startChar": 5,
+        "endLine": 3334,
+        "endChar": 10
+      },
+      "revId": "fbaad48bcda0c12fe808486469f8c6e964ffcf59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2595b2da_b046ec50",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3334,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-01-06T17:59:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55fb112d_ed5c6c63",
+      "range": {
+        "startLine": 3334,
+        "startChar": 1,
+        "endLine": 3334,
+        "endChar": 70
+      },
+      "revId": "fbaad48bcda0c12fe808486469f8c6e964ffcf59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cc34f88_5dbfc65a",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-01-06T14:41:25Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 3342,
+        "startChar": 17,
+        "endLine": 3342,
+        "endChar": 31
+      },
+      "revId": "fbaad48bcda0c12fe808486469f8c6e964ffcf59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56c1fb53_d5e31ac6",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3342,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-01-06T17:59:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cc34f88_5dbfc65a",
       "range": {
         "startLine": 3342,
         "startChar": 17,
@@ -146,6 +218,54 @@
       "writtenOn": "2022-01-06T14:41:25Z",
       "side": 1,
       "message": "all of the new functions can be un-exported",
+      "range": {
+        "startLine": 3417,
+        "startChar": 5,
+        "endLine": 3417,
+        "endChar": 18
+      },
+      "revId": "fbaad48bcda0c12fe808486469f8c6e964ffcf59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b660b08f_69212ed8",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3417,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-01-06T17:59:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45dc2ae1_a624c552",
+      "range": {
+        "startLine": 3417,
+        "startChar": 19,
+        "endLine": 3417,
+        "endChar": 33
+      },
+      "revId": "fbaad48bcda0c12fe808486469f8c6e964ffcf59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26fa7d25_b7f9de23",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3417,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-01-06T17:59:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8692a66d_71af9872",
       "range": {
         "startLine": 3417,
         "startChar": 5,
