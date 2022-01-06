@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "115ff8a6_28b24ecd",
+        "filename": "java/fuzz_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-06T01:09:46Z",
+      "side": 1,
+      "message": "Go style is lowerCamelCase",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 47,
+        "endChar": 17
+      },
+      "revId": "c0577e744d7b6cf863f094ef5b6a1ac7a5113c36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
