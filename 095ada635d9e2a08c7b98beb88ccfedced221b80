@@ -22,6 +22,30 @@
       },
       "revId": "095ada635d9e2a08c7b98beb88ccfedced221b80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bac4d13_3843a1cf",
+        "filename": "java/fuzz_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-01-06T00:32:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "020fe964_6110498f",
+      "range": {
+        "startLine": 47,
+        "startChar": 40,
+        "endLine": 47,
+        "endChar": 58
+      },
+      "revId": "095ada635d9e2a08c7b98beb88ccfedced221b80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
