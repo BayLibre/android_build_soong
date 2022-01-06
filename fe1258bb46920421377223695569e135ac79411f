@@ -51,6 +51,24 @@
       "parentUuid": "f9fc1f89_ef876f3f",
       "revId": "fe1258bb46920421377223695569e135ac79411f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a8fb4d0_c745350c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-01-06T02:08:54Z",
+      "side": 1,
+      "message": "Yeah, in general, setting apk_name might cause duplicate rule. But, I think, it does only when apk_name equals to another android_app\u0027s name (or its apk_name). Setting it something wrong (causing duplicate rules) could be detected easily. In that sense, this property seems to be okay. what do you think?\n\nAs you might know, what I want is that override_apex with override_android_app has the same APK path inside the apex. What would be a better way to achieve that?\n\nThanks.",
+      "parentUuid": "a84e902d_4e17fe06",
+      "revId": "fe1258bb46920421377223695569e135ac79411f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
