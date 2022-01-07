@@ -1120,6 +1120,7 @@ func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutator
 		enabledProperty.Value = props.Enabled
 	}
 
+	// Check target arch/os variables for `enabled` flag override
 	for axis, configToProps := range archVariantProps {
 		for config, _props := range configToProps {
 			if archProps, ok := _props.(*commonProperties); ok {
@@ -1141,18 +1142,63 @@ func (attrs *CommonAttributes) fillCommonBp2BuildModuleAttrs(ctx *topDownMutator
 		}
 	}
 
-	data.Append(required)
+	productConfigEnabledAttribute := commonProductVariableBp2BuildModuleAttrs(ctx)
+	productVariableConfigExists := !productConfigEnabledAttribute.Value.IsNil()
+	noPlatformVariables := len(enabledProperty.ConfigurableValues) == 0
+	if noPlatformVariables && productVariableConfigExists {
+		// then product variable configuration overrides module-level `enable: false`
+		newValue := true
+		enabledProperty.Value = &newValue
+	}
 
-	var err error
-	constraints := constraintAttributes{}
-	constraints.Target_compatible_with, err = enabledProperty.ToLabelListAttribute(
+	platformEnabledAttribute, err := enabledProperty.ToLabelListAttribute(
 		bazel.LabelList{[]bazel.Label{bazel.Label{Label: "@platforms//:incompatible"}}, nil},
 		bazel.LabelList{[]bazel.Label{}, nil})
-
 	if err != nil {
-		ctx.ModuleErrorf("Error processing enabled attribute: %s", err)
+		ctx.ModuleErrorf("Error processing platform enabled attribute: %s", err)
 	}
+
+	data.Append(required)
+
+	constraints := constraintAttributes{}
+	moduleEnableConstraints := bazel.LabelListAttribute{}
+	moduleEnableConstraints.Append(platformEnabledAttribute)
+	moduleEnableConstraints.Append(productConfigEnabledAttribute)
+	constraints.Target_compatible_with = moduleEnableConstraints
+
 	return constraints
+}
+
+// Check product variables for `enabled` flag override.
+// This cannot be included in the target arch/os select statement above because
+// product variables are part of a different configuration axis.
+func commonProductVariableBp2BuildModuleAttrs(ctx *topDownMutatorContext) bazel.LabelListAttribute {
+	productVariableProps := ProductVariableProperties(ctx)
+	productConfigEnabledAttribute := bazel.LabelListAttribute{}
+	const propName = "Enabled"
+	if productConfigProps, exists := productVariableProps[propName]; exists {
+		for productConfigProp, prop := range productConfigProps {
+			flag, ok := prop.(*bool)
+			if !ok {
+				ctx.ModuleErrorf("Could not convert product variable %s property", proptools.PropertyNameForField(propName))
+			}
+
+			axis := productConfigProp.ConfigurationAxis()
+
+			if *flag {
+				newLabelList := bazel.LabelList{
+					[]bazel.Label{bazel.Label{
+						Label: axis.SelectKey(productConfigProp.SelectKey()),
+					}}, nil}
+				newLabelListAttribute := bazel.MakeLabelListAttribute(newLabelList)
+				productConfigEnabledAttribute.Append(newLabelListAttribute)
+			} else {
+				// TODO(delmerico): handle negative case where `enabled: false`
+			}
+		}
+	}
+
+	return productConfigEnabledAttribute
 }
 
 // A ModuleBase object contains the properties that are common to all Android
