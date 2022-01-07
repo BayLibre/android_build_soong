@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "13dafdf5_d51df7df",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1933062
+      },
+      "writtenOn": "2022-01-07T12:51:22Z",
+      "side": 1,
+      "message": "Updated. And in which file do you suggest we put the struct and the function in?",
+      "parentUuid": "28815bef_a72f7aeb",
+      "range": {
+        "startLine": 810,
+        "startChar": 1,
+        "endLine": 811,
+        "endChar": 22
+      },
+      "revId": "173282493177e4b29acc95f353f46f09b9d204bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ceb5bd1c_198e5262",
         "filename": "java/droidstubs.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-07T10:28:49Z",
       "side": 1,
       "message": "Use Paths#Strings: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/paths.go;l\u003d686-696;drc\u003dmaster",
+      "range": {
+        "startLine": 872,
+        "startChar": 2,
+        "endLine": 876,
+        "endChar": 29
+      },
+      "revId": "173282493177e4b29acc95f353f46f09b9d204bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6ff89eb_2c9bcae4",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1933062
+      },
+      "writtenOn": "2022-01-07T12:51:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ceb5bd1c_198e5262",
       "range": {
         "startLine": 872,
         "startChar": 2,
