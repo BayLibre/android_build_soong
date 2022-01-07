@@ -104,6 +104,24 @@
       "parentUuid": "5486e667_e01498e5",
       "revId": "3be5c0f435020b9460fe8d803707bdd56ec94c07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "641ecd7f_fc409775",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1699,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-07T22:57:13Z",
+      "side": 1,
+      "message": "It just save a couple of lines of code.",
+      "parentUuid": "d087073a_bc909baf",
+      "revId": "3be5c0f435020b9460fe8d803707bdd56ec94c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
