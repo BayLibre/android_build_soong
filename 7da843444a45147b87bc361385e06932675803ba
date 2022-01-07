@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b374bfa_4682bce9",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2022-01-07T17:37:36Z",
+      "side": 1,
+      "message": "Seems reasonable. SystemUI is using the compat mode, I think I tried enabling full but hit some snags, I\u0027ll try to push on that some more.",
+      "parentUuid": "66661473_39b4bf56",
+      "range": {
+        "startLine": 258,
+        "startChar": 10,
+        "endLine": 258,
+        "endChar": 15
+      },
+      "revId": "7da843444a45147b87bc361385e06932675803ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9cfc2528_5220c48a",
         "filename": "java/dex.go",
         "patchSetId": 1
@@ -143,6 +167,30 @@
       "side": 1,
       "message": "As mentioned above, we can change to do this in compat builds too. That said, it would be nice to move away from compat mode as much as possible to avoid issues with reflective identification and generally shrink better.\n\nI\u0027m not sure how to resolve the go/ link for public users. Once the setup is working we could consider putting in some other url that is public?",
       "parentUuid": "0e26e85b_9e26cf5f",
+      "range": {
+        "startLine": 261,
+        "startChar": 58,
+        "endLine": 261,
+        "endChar": 70
+      },
+      "revId": "7da843444a45147b87bc361385e06932675803ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d7d4b3b_5b054886",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2022-01-07T17:37:36Z",
+      "side": 1,
+      "message": "One option would be creating a prefix variable that SOONG can read and we can set from a device .mk file. That would let us inject \"go/retraceme \" for Google builds only (and eventually vendors could insert their own prefix). We can probably land in a quick follow-up if Colin is OK with this, but I think adding a note about refining the \"go/retraceme\" prefix in the TODO would be helpful (as this is going into AOSP).",
+      "parentUuid": "3a1d68d9_98baa00a",
       "range": {
         "startLine": 261,
         "startChar": 58,
