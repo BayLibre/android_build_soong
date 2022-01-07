@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28815bef_a72f7aeb",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-01-07T10:28:49Z",
+      "side": 1,
+      "message": "How about adding a custom struct to associate inputs and outputs with the action? e.g.\n\ntype JSONDataAction struct {\n    inputs []string\n    outputs []string\n}\n\ntype PrebuiltStubSources struct {\n    ...\n    jsonDataActions []JSONDataAction\n}\n\nand then you can have functions that turns inputs and outputs (Path or string slices) into JSONDataActions, since I expect this to be a common operation for other types of modules.",
+      "range": {
+        "startLine": 810,
+        "startChar": 1,
+        "endLine": 811,
+        "endChar": 22
+      },
+      "revId": "173282493177e4b29acc95f353f46f09b9d204bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceb5bd1c_198e5262",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-01-07T10:28:49Z",
+      "side": 1,
+      "message": "Use Paths#Strings: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/paths.go;l\u003d686-696;drc\u003dmaster",
+      "range": {
+        "startLine": 872,
+        "startChar": 2,
+        "endLine": 876,
+        "endChar": 29
+      },
+      "revId": "173282493177e4b29acc95f353f46f09b9d204bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
