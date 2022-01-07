@@ -798,6 +798,11 @@ type PrebuiltStubsSourcesProperties struct {
 	Srcs []string `android:"path"`
 }
 
+type JSONDataAction struct {
+	inputs  []string
+	outputs []string
+}
+
 type PrebuiltStubsSources struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
@@ -806,7 +811,8 @@ type PrebuiltStubsSources struct {
 
 	properties PrebuiltStubsSourcesProperties
 
-	stubsSrcJar android.Path
+	stubsSrcJar     android.Path
+	jsonDataActions []JSONDataAction
 }
 
 func (p *PrebuiltStubsSources) OutputFiles(tag string) (android.Paths, error) {
@@ -822,6 +828,11 @@ func (d *PrebuiltStubsSources) StubsSrcJar() android.Path {
 	return d.stubsSrcJar
 }
 
+func (p *PrebuiltStubsSources) AddJSONData(d *map[string]interface{}) {
+	p.ModuleBase.AddJSONData(d)
+	(*d)["Actions"] = formatJSONDataActions(p.jsonDataActions)
+}
+
 func (p *PrebuiltStubsSources) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if len(p.properties.Srcs) != 1 {
 		ctx.PropertyErrorf("srcs", "must only specify one directory path or srcjar, contains %d paths", len(p.properties.Srcs))
@@ -829,9 +840,12 @@ func (p *PrebuiltStubsSources) GenerateAndroidBuildActions(ctx android.ModuleCon
 	}
 
 	src := p.properties.Srcs[0]
+	var jsonDataAction JSONDataAction
 	if filepath.Ext(src) == ".srcjar" {
 		// This is a srcjar. We can use it directly.
 		p.stubsSrcJar = android.PathForModuleSrc(ctx, src)
+		jsonDataAction.inputs = []string{src}
+		jsonDataAction.outputs = []string{src}
 	} else {
 		outPath := android.PathForModuleOut(ctx, ctx.ModuleName()+"-"+"stubs.srcjar")
 
@@ -855,7 +869,10 @@ func (p *PrebuiltStubsSources) GenerateAndroidBuildActions(ctx android.ModuleCon
 		rule.Restat()
 		rule.Build("zip src", "Create srcjar from prebuilt source")
 		p.stubsSrcJar = outPath
+		jsonDataAction.inputs = srcPaths.Strings()
+		jsonDataAction.outputs = []string{outPath.String()}
 	}
+	p.jsonDataActions = []JSONDataAction{jsonDataAction}
 }
 
 func (p *PrebuiltStubsSources) Prebuilt() *android.Prebuilt {
@@ -864,6 +881,18 @@ func (p *PrebuiltStubsSources) Prebuilt() *android.Prebuilt {
 
 func (p *PrebuiltStubsSources) Name() string {
 	return p.prebuilt.Name(p.ModuleBase.Name())
+}
+
+// formatJSONDataActions gets the formatted JSON data of a list of JSONDataActions.
+func formatJSONDataActions(jsonDataActions []JSONDataAction) []map[string]interface{} {
+	var actions []map[string]interface{}
+	for _, jsonDataAction := range jsonDataActions {
+		actions = append(actions, map[string]interface{}{
+			"Inputs":  jsonDataAction.inputs,
+			"Outputs": jsonDataAction.outputs,
+		})
+	}
+	return actions
 }
 
 // prebuilt_stubs_sources imports a set of java source files as if they were
