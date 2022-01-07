@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b70f34e2_0de5c281",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-07T23:11:10Z",
+      "side": 1,
+      "message": "Because it wouldn\u0027t make sense to have one hardcoded global include top while everything else only applies for one statement.\n\nAlso I removed this in my other cls, and for those I tested every product on internal-master and did not see any more failures, so I think it was unused.",
+      "parentUuid": "1e1e2e8a_0d796446",
+      "revId": "6de5e89f0f470a33c64429dcfa963ce414f31e6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eff7aee7_1045e852",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-07T23:03:50Z",
       "side": 1,
       "message": "What happens with \n\n#RBC# include_top foo\n\n\n$(call inherit-product, $(MY_VAR)/...)",
+      "revId": "6de5e89f0f470a33c64429dcfa963ce414f31e6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fff3d242_0cfdd796",
+        "filename": "mk2rbc/mk2rbc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-07T23:11:10Z",
+      "side": 1,
+      "message": "It still works. I added a testcase for this.",
+      "parentUuid": "eff7aee7_1045e852",
       "revId": "6de5e89f0f470a33c64429dcfa963ce414f31e6a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
