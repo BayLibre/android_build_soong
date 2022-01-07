@@ -87,6 +87,24 @@
       "parentUuid": "2a8fb4d0_c745350c",
       "revId": "fe1258bb46920421377223695569e135ac79411f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f6ba43b_86dea847",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-07T18:10:45Z",
+      "side": 1,
+      "message": "Stem seems better, otherwise seems reasonable.",
+      "parentUuid": "5aab073c_43046f10",
+      "revId": "fe1258bb46920421377223695569e135ac79411f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
