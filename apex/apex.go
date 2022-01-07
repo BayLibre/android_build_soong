@@ -1928,6 +1928,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 									a.requiredDeps = append(a.requiredDeps, name)
 								}
 							}
+							fmt.Println("xxxxx", af.stem())
 							requireNativeLibs = append(requireNativeLibs, af.stem())
 							// Don't track further
 							return false
@@ -2135,6 +2136,11 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	if a.properties.ApexType != zipApex {
 		a.compatSymlinks = makeCompatSymlinks(a.BaseModuleName(), ctx, a.primaryApexType)
+	}
+
+	if a.Name() == "com.android.adbd" {
+		fmt.Println("xxxx provide", provideNativeLibs)
+		fmt.Println("xxxx require", requireNativeLibs)
 	}
 
 	////////////////////////////////////////////////////////////////////////////////////////////
