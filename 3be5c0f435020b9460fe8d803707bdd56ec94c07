@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1f8ec4e_dfe5e4f6",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-07T18:59:58Z",
+      "side": 1,
+      "message": "Agreed. inExpr too.",
+      "parentUuid": "3417761b_d80e46ca",
+      "revId": "3be5c0f435020b9460fe8d803707bdd56ec94c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2f38c40_4b57cce1",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91339d95_75e37c90",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-07T18:59:58Z",
+      "side": 1,
+      "message": "Technically no, but I thought it was good to have for consistency. There may be a time where we output \u003c\u003d even if it\u0027s not from a math_lt_or_eq function.",
+      "parentUuid": "e2f38c40_4b57cce1",
+      "revId": "3be5c0f435020b9460fe8d803707bdd56ec94c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5486e667_e01498e5",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-01-07T18:51:13Z",
       "side": 1,
       "message": "Can\u0027t it be just the function name?",
+      "revId": "3be5c0f435020b9460fe8d803707bdd56ec94c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d087073a_bc909baf",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1699,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-07T18:59:58Z",
+      "side": 1,
+      "message": "I kindof liked this because it prevents you from entering some nonsense string. I would\u0027ve gone with an enum if go had good enum support.\n\nLet me know if you still want it to be the function name, I don\u0027t feel too strongly about it.",
+      "parentUuid": "5486e667_e01498e5",
       "revId": "3be5c0f435020b9460fe8d803707bdd56ec94c07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
