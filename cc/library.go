@@ -381,6 +381,9 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 			None:                         linkerAttrs.stripNone,
 		},
 		Features: linkerAttrs.features,
+
+		Stubs_symbol_file: compilerAttrs.stubsSymbolFile,
+		Stubs_versions:    compilerAttrs.stubsVersions,
 	}
 
 	staticProps := bazel.BazelTargetModuleProperties{
@@ -2516,6 +2519,9 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 			},
 
 			Features: linkerAttrs.features,
+
+			Stubs_symbol_file: compilerAttrs.stubsSymbolFile,
+			Stubs_versions:    compilerAttrs.stubsVersions,
 		}
 	}
 
@@ -2589,4 +2595,7 @@ type bazelCcLibrarySharedAttributes struct {
 	Asflags    bazel.StringListAttribute
 
 	Features bazel.StringListAttribute
+
+	Stubs_symbol_file *string
+	Stubs_versions    bazel.StringListAttribute
 }
