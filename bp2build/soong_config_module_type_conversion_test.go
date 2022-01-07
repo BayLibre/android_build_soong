@@ -834,3 +834,110 @@ cc_library { name: "lib_default", bazel_module: { bp2build_available: false } }
     srcs = ["main.cc"],
 )`}})
 }
+
+func TestSoongConfigModuleType_ProductVariableConfigWithPlatformConfig(t *testing.T) {
+	bp := `
+soong_config_bool_variable {
+    name: "special_build",
+}
+
+soong_config_module_type {
+    name: "alphabet_cc_defaults",
+    module_type: "cc_defaults",
+    config_namespace: "alphabet_module",
+    bool_variables: ["special_build"],
+    properties: ["enabled"],
+}
+
+alphabet_cc_defaults {
+    name: "alphabet_sample_cc_defaults",
+    soong_config_variables: {
+        special_build: {
+			enabled: true,
+		},
+	},
+}
+
+cc_binary {
+    name: "alphabet_binary",
+    srcs: ["main.cc"],
+    defaults: ["alphabet_sample_cc_defaults"],
+	enabled: false,
+	arch: {
+        x86_64: {
+			enabled: true,
+        },
+    },
+	target: {
+		darwin: {
+			enabled: true,
+		},
+	},
+}`
+
+	runSoongConfigModuleTypeTest(t, bp2buildTestCase{
+		description:                "soong config variables - generates selects for library_linking_strategy",
+		moduleTypeUnderTest:        "cc_binary",
+		moduleTypeUnderTestFactory: cc.BinaryFactory,
+		blueprint:                  bp,
+		filesystem:                 map[string]string{},
+		expectedBazelTargets: []string{`cc_binary(
+    name = "alphabet_binary",
+    local_includes = ["."],
+    srcs = ["main.cc"],
+    target_compatible_with = ["//build/bazel/product_variables:alphabet_module__special_build__enabled"] + select({
+        "//build/bazel/platforms/os_arch:android_x86_64": [],
+        "//build/bazel/platforms/os_arch:darwin_arm64": [],
+        "//build/bazel/platforms/os_arch:darwin_x86_64": [],
+        "//build/bazel/platforms/os_arch:linux_bionic_x86_64": [],
+        "//build/bazel/platforms/os_arch:linux_glibc_x86_64": [],
+        "//build/bazel/platforms/os_arch:linux_musl_x86_64": [],
+        "//build/bazel/platforms/os_arch:windows_x86_64": [],
+        "//conditions:default": ["@platforms//:incompatible"],
+    }),
+)`}})
+}
+
+func TestSoongConfigModuleType_ProductVariableConfigOverridesEnable(t *testing.T) {
+	bp := `
+soong_config_bool_variable {
+    name: "special_build",
+}
+
+soong_config_module_type {
+    name: "alphabet_cc_defaults",
+    module_type: "cc_defaults",
+    config_namespace: "alphabet_module",
+    bool_variables: ["special_build"],
+    properties: ["enabled"],
+}
+
+alphabet_cc_defaults {
+    name: "alphabet_sample_cc_defaults",
+    soong_config_variables: {
+        special_build: {
+			enabled: true,
+		},
+	},
+}
+
+cc_binary {
+    name: "alphabet_binary",
+    srcs: ["main.cc"],
+    defaults: ["alphabet_sample_cc_defaults"],
+	enabled: false,
+}`
+
+	runSoongConfigModuleTypeTest(t, bp2buildTestCase{
+		description:                "soong config variables - generates selects for library_linking_strategy",
+		moduleTypeUnderTest:        "cc_binary",
+		moduleTypeUnderTestFactory: cc.BinaryFactory,
+		blueprint:                  bp,
+		filesystem:                 map[string]string{},
+		expectedBazelTargets: []string{`cc_binary(
+    name = "alphabet_binary",
+    local_includes = ["."],
+    srcs = ["main.cc"],
+    target_compatible_with = ["//build/bazel/product_variables:alphabet_module__special_build__enabled"],
+)`}})
+}
