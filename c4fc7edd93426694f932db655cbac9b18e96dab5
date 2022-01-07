@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0c10c1f_0657e644",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-01-07T21:59:35Z",
+      "side": 1,
+      "message": "Nice, this is way cleaner than my aosp/1871693... Is there any concern about the size of the json module graph becoming untenable? I think the benefits outweigh the cost but still wanted to bring this up",
+      "revId": "c4fc7edd93426694f932db655cbac9b18e96dab5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a07abbfa_ac94f5a8",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-01-07T21:59:35Z",
+      "side": 1,
+      "message": "I feel like \"explictly set\" would be more accurate than \"used\", but also too verbose... If you have an idea of something somewhere in the middle maybe change it, otherwise just ignore this",
+      "range": {
+        "startLine": 1346,
+        "startChar": 21,
+        "endLine": 1346,
+        "endChar": 25
+      },
+      "revId": "c4fc7edd93426694f932db655cbac9b18e96dab5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
