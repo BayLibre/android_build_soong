@@ -123,7 +123,7 @@ type variableProperties struct {
 			Whole_static_libs []string
 			Shared_libs       []string
 
-			Cmdline []string
+			Cmdline      []string
 			Srcs         []string
 			Exclude_srcs []string
 		}
