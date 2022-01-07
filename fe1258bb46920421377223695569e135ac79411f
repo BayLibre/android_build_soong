@@ -69,6 +69,24 @@
       "parentUuid": "a84e902d_4e17fe06",
       "revId": "fe1258bb46920421377223695569e135ac79411f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aab073c_43046f10",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-01-07T05:27:41Z",
+      "side": 1,
+      "message": "On a second thought, causing duplicate install rule errors by setting apk_name seems to be something like having the same error by setting stem/filename properties. For example,\n\n  cc_library { name: \"foo\", stem: \"bar\" }\n  cc_library { name: \"bar\" } \n\nHmm, maybe we can rename `apk_name` to `stem` or something?",
+      "parentUuid": "2a8fb4d0_c745350c",
+      "revId": "fe1258bb46920421377223695569e135ac79411f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
