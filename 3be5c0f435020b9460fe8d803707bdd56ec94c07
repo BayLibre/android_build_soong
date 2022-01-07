@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3417761b_d80e46ca",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-07T18:51:13Z",
+      "side": 1,
+      "message": "Eventually eqOp and binaryOp can be merged",
+      "revId": "3be5c0f435020b9460fe8d803707bdd56ec94c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2f38c40_4b57cce1",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-07T18:51:13Z",
+      "side": 1,
+      "message": "Is there such a case (math_lt_or_eq does not exist)?",
+      "revId": "3be5c0f435020b9460fe8d803707bdd56ec94c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5486e667_e01498e5",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1699,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-07T18:51:13Z",
+      "side": 1,
+      "message": "Can\u0027t it be just the function name?",
+      "revId": "3be5c0f435020b9460fe8d803707bdd56ec94c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
