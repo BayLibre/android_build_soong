@@ -122,6 +122,24 @@
       "parentUuid": "d087073a_bc909baf",
       "revId": "3be5c0f435020b9460fe8d803707bdd56ec94c07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddb4af48_1d32d75d",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1699,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-07T23:00:29Z",
+      "side": 1,
+      "message": "Done. If only go had a ternary operator...",
+      "parentUuid": "641ecd7f_fc409775",
+      "revId": "3be5c0f435020b9460fe8d803707bdd56ec94c07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
