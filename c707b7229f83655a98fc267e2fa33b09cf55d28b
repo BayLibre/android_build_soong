@@ -33,6 +33,24 @@
       "message": "Is there a reason not to use cflags: [\"-g\"] instead?",
       "revId": "c707b7229f83655a98fc267e2fa33b09cf55d28b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39aaf0a6_a3c447e3",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2022-01-08T00:21:20Z",
+      "side": 1,
+      "message": "Good point, no reason doing that wouldn\u0027t work, though I agree with Maciej that \"btf: true\" helps with readability some. If that\u0027s not enough justification for a separate property though, I\u0027m fine with just using cflags \u0026 abandoning this change",
+      "parentUuid": "59d5d01c_1ec3bf69",
+      "revId": "c707b7229f83655a98fc267e2fa33b09cf55d28b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
