@@ -105,6 +105,24 @@
       "parentUuid": "5aab073c_43046f10",
       "revId": "fe1258bb46920421377223695569e135ac79411f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f207c2e_64a23f9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-01-08T03:31:37Z",
+      "side": 1,
+      "message": "Thanks. I found that there\u0027s `stem` property available to java modules. In a separate change(aosp/1940901), it is used to decide the APK name, and in this change, the property is overridable.  For my purpose, only the other change is enough, but as you pointed out setting stem would easily cause the duplicate output error with override_android_app, which makes this change necessary.",
+      "parentUuid": "9f6ba43b_86dea847",
+      "revId": "fe1258bb46920421377223695569e135ac79411f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
