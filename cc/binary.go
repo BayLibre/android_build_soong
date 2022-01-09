@@ -427,7 +427,9 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 		linkerDeps = append(linkerDeps, ndkSharedLibDeps(ctx)...)
 	}
 
-	validations = append(validations, objs.tidyFiles...)
+	if flags.NeedTidyFiles {
+		validations = append(validations, objs.tidyFiles...)
+	}
 	linkerDeps = append(linkerDeps, flags.LdFlagsDeps...)
 
 	// Register link action.

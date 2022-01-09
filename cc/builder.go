@@ -23,6 +23,7 @@ import (
 	"runtime"
 	"strconv"
 	"strings"
+	"sync"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/pathtools"
@@ -36,6 +37,22 @@ const (
 	objectExtension        = ".o"
 	staticLibraryExtension = ".a"
 )
+
+// For transformSourceToObj to share flags among multiple
+// build rules of an android.ModuleContext and allow the
+// transformSourceToObj to be called more than once for
+// the same android.ModuleContext, we keep a map from ctx
+// to the shared counter and flags.
+// Access to the map is synchronized but not the sharedFlags
+// structure. We assume that different ctx could be processed
+// concurrently, but the same ctx does not make multiple
+// transformSourceToObj calls at the same time.
+var ctxSharedFlags sync.Map // ctx -> *sharedFlags
+
+type sharedFlags struct {
+	numSharedFlags int
+	flagsMap       map[string]string
+}
 
 var (
 	pctx = android.NewPackageContext("android/soong/cc")
@@ -387,10 +404,11 @@ type builderFlags struct {
 	toolchain     config.Toolchain
 
 	// True if these extra features are enabled.
-	tidy         bool
-	gcovCoverage bool
-	sAbiDump     bool
-	emitXrefs    bool
+	tidy          bool
+	needTidyFiles bool
+	gcovCoverage  bool
+	sAbiDump      bool
+	emitXrefs     bool
 
 	assemblerWithCpp bool // True if .s files should be processed with the c preprocessor.
 
@@ -540,8 +558,12 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles, no
 	// Multiple source files have build rules usually share the same cFlags or tidyFlags.
 	// Define only one version in this module and share it in multiple build rules.
 	// To simplify the code, the shared variables are all named as $flags<nnn>.
-	numSharedFlags := 0
-	flagsMap := make(map[string]string)
+	sharedPtr, found := ctxSharedFlags.LoadOrStore(ctx, nil)
+	if !found {
+		sharedPtr = &sharedFlags{0, make(map[string]string)}
+		ctxSharedFlags.Store(ctx, sharedPtr)
+	}
+	shared := sharedPtr.(*sharedFlags)
 
 	// Share flags only when there are multiple files or tidy rules.
 	var hasMultipleRules = len(srcFiles) > 1 || flags.tidy
@@ -553,11 +575,11 @@ func transformSourceToObj(ctx android.ModuleContext, subdir string, srcFiles, no
 			return flags
 		}
 		mapKey := kind + flags
-		n, ok := flagsMap[mapKey]
+		n, ok := shared.flagsMap[mapKey]
 		if !ok {
-			numSharedFlags += 1
-			n = strconv.Itoa(numSharedFlags)
-			flagsMap[mapKey] = n
+			shared.numSharedFlags += 1
+			n = strconv.Itoa(shared.numSharedFlags)
+			shared.flagsMap[mapKey] = n
 			ctx.Variable(pctx, kind+n, flags)
 		}
 		return "$" + kind + n

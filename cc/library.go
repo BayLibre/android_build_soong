@@ -1318,6 +1318,14 @@ func (library *libraryDecorator) linkerSpecifiedDeps(specifiedDeps specifiedDeps
 	return specifiedDeps
 }
 
+func getTidyFiles(flags builderFlags, objs Objects) android.Paths {
+	if flags.needTidyFiles {
+		return objs.tidyFiles
+	} else {
+		return nil
+	}
+}
+
 func (library *libraryDecorator) linkStatic(ctx ModuleContext,
 	flags Flags, deps PathDeps, objs Objects) android.Path {
 
@@ -1340,7 +1348,7 @@ func (library *libraryDecorator) linkStatic(ctx ModuleContext,
 		}
 	}
 
-	transformObjToStaticLib(ctx, library.objects.objFiles, deps.WholeStaticLibsFromPrebuilts, builderFlags, outputFile, nil, objs.tidyFiles)
+	transformObjToStaticLib(ctx, library.objects.objFiles, deps.WholeStaticLibsFromPrebuilts, builderFlags, outputFile, nil, getTidyFiles(builderFlags, objs))
 
 	library.coverageOutputFile = transformCoverageFilesToZip(ctx, library.objects, ctx.ModuleName())
 
@@ -1487,7 +1495,7 @@ func (library *libraryDecorator) linkShared(ctx ModuleContext,
 	linkerDeps = append(linkerDeps, deps.LateSharedLibsDeps...)
 	transformObjToDynamicBinary(ctx, objs.objFiles, sharedLibs,
 		deps.StaticLibs, deps.LateStaticLibs, deps.WholeStaticLibs,
-		linkerDeps, deps.CrtBegin, deps.CrtEnd, false, builderFlags, outputFile, implicitOutputs, objs.tidyFiles)
+		linkerDeps, deps.CrtBegin, deps.CrtEnd, false, builderFlags, outputFile, implicitOutputs, getTidyFiles(builderFlags, objs))
 
 	objs.coverageFiles = append(objs.coverageFiles, deps.StaticLibObjs.coverageFiles...)
 	objs.coverageFiles = append(objs.coverageFiles, deps.WholeStaticLibObjs.coverageFiles...)

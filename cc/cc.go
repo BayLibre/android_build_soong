@@ -210,11 +210,12 @@ type Flags struct {
 	// These must be after any module include flags, which will be in CommonFlags.
 	SystemIncludeFlags []string
 
-	Toolchain    config.Toolchain
-	Tidy         bool // True if clang-tidy is enabled.
-	GcovCoverage bool // True if coverage files should be generated.
-	SAbiDump     bool // True if header abi dumps should be generated.
-	EmitXrefs    bool // If true, generate Ninja rules to generate emitXrefs input files for Kythe
+	Toolchain     config.Toolchain
+	Tidy          bool // True if ninja .tidy rules should be generated.
+	NeedTidyFiles bool // True if .tidy files are needed for this module.
+	GcovCoverage  bool // True if coverage files should be generated.
+	SAbiDump      bool // True if header abi dumps should be generated.
+	EmitXrefs     bool // If true, generate Ninja rules to generate emitXrefs input files for Kythe
 
 	// The instruction set required for clang ("arm" or "thumb").
 	RequiredInstructionSet string
