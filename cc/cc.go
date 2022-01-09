@@ -210,11 +210,12 @@ type Flags struct {
 	// These must be after any module include flags, which will be in CommonFlags.
 	SystemIncludeFlags []string
 
-	Toolchain    config.Toolchain
-	Tidy         bool // True if clang-tidy is enabled.
-	GcovCoverage bool // True if coverage files should be generated.
-	SAbiDump     bool // True if header abi dumps should be generated.
-	EmitXrefs    bool // If true, generate Ninja rules to generate emitXrefs input files for Kythe
+	Toolchain     config.Toolchain
+	Tidy          bool // True if ninja .tidy rules should be generated.
+	NeedTidyFiles bool // True if module link should depend on .tidy files
+	GcovCoverage  bool // True if coverage files should be generated.
+	SAbiDump      bool // True if header abi dumps should be generated.
+	EmitXrefs     bool // If true, generate Ninja rules to generate emitXrefs input files for Kythe
 
 	// The instruction set required for clang ("arm" or "thumb").
 	RequiredInstructionSet string
@@ -516,6 +517,12 @@ type ModuleContextIntf interface {
 	directlyInAnyApex() bool
 	isPreventInstall() bool
 	isCfiAssemblySupportEnabled() bool
+	getSharedFlags() *SharedFlags
+}
+
+type SharedFlags struct {
+	numSharedFlags int
+	flagsMap       map[string]string
 }
 
 type ModuleContext interface {
@@ -827,6 +834,9 @@ type Module struct {
 	// Flags used to compile this module
 	flags Flags
 
+	// Shared flags among build rules of this module
+	sharedFlags SharedFlags
+
 	// only non-nil when this is a shared library that reuses the objects of a static library
 	staticAnalogue *StaticLibraryInfo
 
@@ -837,6 +847,8 @@ type Module struct {
 	objFiles android.Paths
 	// Tidy .tidy file output paths for this compilation module
 	tidyFiles android.Paths
+	// Dependent .tidy files for this module's link step
+	tidyDepFiles android.Paths
 
 	// For apex variants, this is set as apex.min_sdk_version
 	apexSdkVersion android.ApiLevel
@@ -1605,6 +1617,15 @@ func (ctx *moduleContextImpl) isPreventInstall() bool {
 	return ctx.mod.Properties.PreventInstall
 }
 
+func (ctx *moduleContextImpl) getSharedFlags() *SharedFlags {
+	shared := &ctx.mod.sharedFlags
+	if shared.flagsMap == nil {
+		shared.numSharedFlags = 0
+		shared.flagsMap = make(map[string]string)
+	}
+	return shared
+}
+
 func (ctx *moduleContextImpl) isCfiAssemblySupportEnabled() bool {
 	return ctx.mod.isCfiAssemblySupportEnabled()
 }
@@ -1866,6 +1887,7 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		c.kytheFiles = objs.kytheFiles
 		c.objFiles = objs.objFiles
 		c.tidyFiles = objs.tidyFiles
+		c.tidyDepFiles = objs.tidyDepFiles
 	}
 
 	if c.linker != nil {
