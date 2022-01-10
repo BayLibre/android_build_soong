@@ -118,6 +118,30 @@
       },
       "revId": "a708889888dc5296a8e0ff579009ae76ece92a5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6020bcb9_233a5065",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-01-10T09:59:31Z",
+      "side": 1,
+      "message": "I see. In that case, please go ahead after adding a comment about how this is temporary infrastructure (I don\u0027t want anyone to copy-paste it) and please (this is the crucial part!) do make sure that the above issue about code duplication is resolved before propagating this to other parts of the code.",
+      "parentUuid": "0bf52c35_131316b6",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 871,
+        "endChar": 63
+      },
+      "revId": "a708889888dc5296a8e0ff579009ae76ece92a5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
