@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6101563a_1c9f8635",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-10T22:18:14Z",
+      "side": 1,
+      "message": "optional: you can use proptools.Bool() here",
+      "range": {
+        "startLine": 1143,
+        "startChar": 4,
+        "endLine": 1143,
+        "endChar": 61
+      },
+      "revId": "4b4d1261d5baae3143c97f07bbd22f70c63d0144",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e899cd7a_32410d0e",
+        "filename": "android/module.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1198,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-10T22:18:14Z",
+      "side": 1,
+      "message": "Can we also add error here so we get info about it being unhandled?\n\nAlternatively, we can handle this in the same way that arch-specific are being specified. If there aren\u0027t also arch-constraints, it\u0027d just work and otherwise, get the same error you ran into initially.",
+      "range": {
+        "startLine": 1198,
+        "startChar": 4,
+        "endLine": 1198,
+        "endChar": 69
+      },
+      "revId": "4b4d1261d5baae3143c97f07bbd22f70c63d0144",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
