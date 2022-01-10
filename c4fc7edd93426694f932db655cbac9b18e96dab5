@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ab3a30c_8916839b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-10T22:47:20Z",
+      "side": 1,
+      "message": "relatively speaking, not a huge increase: 336Mb -\u003e 402Mb but also not nothing.\n\nand ./query.sh fullTransitiveDeps stayed ~30 seconds of user time",
+      "parentUuid": "e0c10c1f_0657e644",
+      "revId": "c4fc7edd93426694f932db655cbac9b18e96dab5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17709f23_d6855f2c",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-10T08:20:06Z",
       "side": 1,
       "message": "nit: typo. I guess you meant \"Type?\"",
+      "range": {
+        "startLine": 1343,
+        "startChar": 1,
+        "endLine": 1343,
+        "endChar": 4
+      },
+      "revId": "c4fc7edd93426694f932db655cbac9b18e96dab5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "537948da_fa715a90",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-10T22:47:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17709f23_d6855f2c",
       "range": {
         "startLine": 1343,
         "startChar": 1,
@@ -101,6 +143,54 @@
       "side": 1,
       "message": "+1. Do understand correctly that this code is about trying to figure out which properties are set in a particular module which would be useful for e.g. trying to figure out which properties can be removed without much cleanup work?\n\nIf so, it\u0027s an *excellent* idea, but maybe replace \"used\" with \"explicitly set\" as Romain suggested and extend the change description to explain that.",
       "parentUuid": "a07abbfa_ac94f5a8",
+      "range": {
+        "startLine": 1346,
+        "startChar": 21,
+        "endLine": 1346,
+        "endChar": 25
+      },
+      "revId": "c4fc7edd93426694f932db655cbac9b18e96dab5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e633ce2_38e5446a",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-10T22:47:20Z",
+      "side": 1,
+      "message": "Unfortunately the functions in unpack.go are primarily about combining info from the parser with the property interfaces, so they aren\u0027t a great fit. Nothing in proptools is a great match here, so I added some helpers but left it as is.",
+      "parentUuid": "1374e777_540f5352",
+      "range": {
+        "startLine": 1346,
+        "startChar": 21,
+        "endLine": 1346,
+        "endChar": 35
+      },
+      "revId": "c4fc7edd93426694f932db655cbac9b18e96dab5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc936ebf_898ae4cc",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-10T22:47:20Z",
+      "side": 1,
+      "message": "renamed but avoided using explicitly as there is _some_ inaccuracy due to non-pointer properties being impossible to distinguish from default values. Open to other names.\n\nThe goal is to find out what properties are set (including those set via defaults) to help identify potential gaps in our bp2build support.",
+      "parentUuid": "9e3fd4ea_e2ef83ad",
       "range": {
         "startLine": 1346,
         "startChar": 21,
