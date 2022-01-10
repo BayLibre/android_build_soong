@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a12f0fd0_11cb73b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-01-10T08:49:01Z",
+      "side": 1,
+      "message": "This is nice! I\u0027m wondering if it\u0027s possible to put the list of properties into something that\u0027s not in android. but in blueprint. but that opens the can of worms as to why the concept of the \"Module\" is separated into an Android-specific one and a generic one so that requires more thinking...",
+      "revId": "851a3271ceec1f623e8a2283ebeea5f71ae833a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
