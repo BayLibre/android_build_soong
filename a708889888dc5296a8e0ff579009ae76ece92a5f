@@ -46,6 +46,30 @@
       },
       "revId": "a708889888dc5296a8e0ff579009ae76ece92a5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c3cd73_60506563",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-01-10T09:35:00Z",
+      "side": 1,
+      "message": "What are those specific actions and why to you want to know specifically about those?\n\nMy confusion is that the code in build/blueprint seems to indicate that this wants to be a generic mechanism, but the code in build/soong looks otherwise. \n\nThe simplest approach would be making Droidstubs implement JSONDataSupplier just like e.g. cc.Module does without any changes to build/blueprint because that mechanism is specifically intended to allow adding module type specific data to the JSON output, but I\u0027ll hold off judgement until I understand what the use case is.",
+      "parentUuid": "4299a1eb_43d4f784",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 871,
+        "endChar": 63
+      },
+      "revId": "a708889888dc5296a8e0ff579009ae76ece92a5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
