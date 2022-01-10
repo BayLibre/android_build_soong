@@ -70,6 +70,30 @@
       },
       "revId": "a708889888dc5296a8e0ff579009ae76ece92a5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd95f239_1fa89501",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1933062
+      },
+      "writtenOn": "2022-01-10T09:38:55Z",
+      "side": 1,
+      "message": "Basically we want all GenerateAndroidBuildActions implementations to be handled, so not only Droidstubs. https://buganizer.corp.google.com/issues/198618351#comment9 may give some more details.\n\nSo where do you suggest to put the struct in?",
+      "parentUuid": "60c3cd73_60506563",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 871,
+        "endChar": 63
+      },
+      "revId": "a708889888dc5296a8e0ff579009ae76ece92a5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
