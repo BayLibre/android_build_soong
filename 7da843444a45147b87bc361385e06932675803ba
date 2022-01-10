@@ -106,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "180f8309_de014330",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2022-01-10T07:57:22Z",
+      "side": 1,
+      "message": "Linked to the retrace support bug here and updated the comment to imply this should be on for compat builds too.",
+      "parentUuid": "0b374bfa_4682bce9",
+      "range": {
+        "startLine": 258,
+        "startChar": 10,
+        "endLine": 258,
+        "endChar": 15
+      },
+      "revId": "7da843444a45147b87bc361385e06932675803ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cfc2528_5220c48a",
@@ -191,6 +215,30 @@
       "side": 1,
       "message": "One option would be creating a prefix variable that SOONG can read and we can set from a device .mk file. That would let us inject \"go/retraceme \" for Google builds only (and eventually vendors could insert their own prefix). We can probably land in a quick follow-up if Colin is OK with this, but I think adding a note about refining the \"go/retraceme\" prefix in the TODO would be helpful (as this is going into AOSP).",
       "parentUuid": "3a1d68d9_98baa00a",
+      "range": {
+        "startLine": 261,
+        "startChar": 58,
+        "endLine": 261,
+        "endChar": 70
+      },
+      "revId": "7da843444a45147b87bc361385e06932675803ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5be20aa_a5a55820",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2022-01-10T07:57:22Z",
+      "side": 1,
+      "message": "Filed a bug and updated the comment.",
+      "parentUuid": "7d7d4b3b_5b054886",
       "range": {
         "startLine": 261,
         "startChar": 58,
