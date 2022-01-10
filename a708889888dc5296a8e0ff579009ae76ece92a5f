@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3987b2d_adc6dd40",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-01-10T08:11:05Z",
+      "side": 1,
+      "message": "Is this topic intended to implement a general purpose what to dump every action in the JSON module graph file or some specific actions?\n\nThe godoc in context.go seems to indicate that it\u0027s the former, but then this code has to add the actions separately to the JSON data in addition to adding it to the Ninja file, which doesn\u0027t seem to accomplish the goal since then one would need update every GenerateAndroidBuildActions() call and keep the two in sync indefinitely in the future.\n\nMaybe the goal is to dump information about some specific actions instead?",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 871,
+        "endChar": 63
+      },
+      "revId": "a708889888dc5296a8e0ff579009ae76ece92a5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
