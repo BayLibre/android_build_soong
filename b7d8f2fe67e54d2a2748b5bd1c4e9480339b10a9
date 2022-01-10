@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000019041735",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1940894?revision\u003d6",
+      "fixSuggestions": [
+        {
+          "fixId": "6efdb1b4_83847d32",
+          "description": "Change to \"java/droidstubs.go\"",
+          "replacements": [
+            {
+              "path": "java/droidstubs.go",
+              "range": {
+                "startLine": 828,
+                "startChar": 3,
+                "endLine": 828,
+                "endChar": 11
+              },
+              "replacement": "related"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "722fd44f_35d1c9d1",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-01-10T10:22:31Z",
+      "side": 1,
+      "message": "Common typo found: \"releated\" -- should it be \"related\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 828,
+        "startChar": 3,
+        "endLine": 828,
+        "endChar": 11
+      },
+      "revId": "b7d8f2fe67e54d2a2748b5bd1c4e9480339b10a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
