@@ -16,6 +16,8 @@ package java
 
 import (
 	"github.com/google/blueprint/proptools"
+	"sort"
+	"strings"
 
 	"android/soong/android"
 	"android/soong/fuzz"
@@ -27,6 +29,7 @@ func init() {
 
 func RegisterJavaFuzzBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("java_fuzz_host", FuzzFactory)
+	ctx.RegisterSingletonType("java_fuzz_packaging", javaFuzzPackagingFactory)
 }
 
 type JavaFuzzLibrary struct {
@@ -69,4 +72,75 @@ func FuzzFactory() android.Module {
 	android.InitSdkAwareModule(module)
 	InitJavaModule(module, android.HostSupported)
 	return module
+}
+
+// Responsible for generating rules that package fuzz targets into
+// their architecture & target/host specific zip file.
+type javaFuzzPackager struct {
+	fuzz.FuzzPackager
+}
+
+func javaFuzzPackagingFactory() android.Singleton {
+	return &javaFuzzPackager{}
+}
+
+func (s *javaFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
+	// Map between each architecture + host/device combination.
+	archDirs := make(map[fuzz.ArchOs][]fuzz.FileToZip)
+
+	// List of individual fuzz targets.
+	s.FuzzTargets = make(map[string]bool)
+
+	ctx.VisitAllModules(func(module android.Module) {
+		// Discard non-fuzz targets.
+		javaModule, ok := module.(*JavaFuzzLibrary)
+		if !ok {
+			return
+		}
+
+		fuzzModuleValidator := fuzz.FuzzModule{
+			javaModule.ModuleBase,
+			javaModule.DefaultableModuleBase,
+			javaModule.ApexModuleBase,
+		}
+
+		if ok := fuzz.IsValid(fuzzModuleValidator); !ok || *javaModule.Module.properties.Installable {
+			return
+		}
+
+		hostOrTargetString := "target"
+		if rustModule.Host() {
+			hostOrTargetString = "host"
+		}
+		archString := javaModule.Arch().ArchType.String()
+
+		archDir := android.PathForIntermediates(ctx, "fuzz", hostOrTargetString, archString)
+		archOs := fuzz.ArchOs{HostOrTarget: hostOrTargetString, Arch: archString, Dir: archDir.String()}
+
+		var files []fuzz.FileToZip
+		builder := android.NewRuleBuilder(pctx, ctx)
+
+		// Package the artifacts (data, corpus, config and dictionary into a zipfile.
+		files = s.PackageArtifacts(ctx, module, javaModule.fuzzPackagedModule, archDir, builder)
+
+		// Add .jar
+		files = append(files, fuzz.FileToZip{javaModule.outputFile, ""})
+
+		archDirs[archOs], ok = s.BuildZipFile(ctx, module, javaModule.fuzzPackagedModule, files, builder, archDir, archString, "host", archOs, archDirs)
+		if !ok {
+			return
+		}
+
+	})
+	s.CreateFuzzPackage(ctx, archDirs, fuzz.Java, pctx)
+}
+
+func (s *javaFuzzPackager) MakeVars(ctx android.MakeVarsContext) {
+	packages := s.Packages.Strings()
+	sort.Strings(packages)
+
+	ctx.Strict("SOONG_JAVA_FUZZ_PACKAGING_ARCH_MODULES", strings.Join(packages, " "))
+
+	// Preallocate the slice of fuzz targets to minimize memory allocations.
+	s.PreallocateSlice(ctx, "ALL_JAVA_FUZZ_TARGETS")
 }
