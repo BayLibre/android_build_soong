@@ -33,6 +33,24 @@
       "message": "nitpick: the white space count between \"Console:\" and the value is inconsistent with lines 186:189",
       "revId": "2fad341beb7a633f581e1a9c2d723f42a54ce7ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd47fb55_28d1ffa9",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-01-10T11:46:07Z",
+      "side": 1,
+      "message": "This is clearly true but it appears that gofmt was okay with it so I guess it\u0027s fine?",
+      "parentUuid": "b80d5692_aebf3d76",
+      "revId": "2fad341beb7a633f581e1a9c2d723f42a54ce7ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
