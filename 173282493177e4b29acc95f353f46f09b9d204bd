@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "519cb4c4_28951b1a",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1933062
+      },
+      "writtenOn": "2022-01-10T03:51:38Z",
+      "side": 1,
+      "message": "Oh, sorry, I thought there\u0027s an open sourced edition, please ignore my above comment, will update later when the struct is put into context.",
+      "parentUuid": "e2b16026_a16f10fd",
+      "range": {
+        "startLine": 810,
+        "startChar": 1,
+        "endLine": 811,
+        "endChar": 22
+      },
+      "revId": "173282493177e4b29acc95f353f46f09b9d204bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ceb5bd1c_198e5262",
         "filename": "java/droidstubs.go",
         "patchSetId": 2
