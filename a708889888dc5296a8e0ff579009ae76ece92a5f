@@ -94,6 +94,30 @@
       },
       "revId": "a708889888dc5296a8e0ff579009ae76ece92a5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bf52c35_131316b6",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-01-10T09:54:08Z",
+      "side": 1,
+      "message": "The droidstubs module type was chosen because it was a simple example to get started, but eventually we do want to dump every action in the JSON module graph file, and not just specific actions.\n\nI think this CL is a good first baby step, despite the bit of duplication/boilerplate code. We can envision that following changes to other module types\u0027 GenerateAndroidBuildActions would be to reduce the need to manually create jsonDataActions structs (by integrating into the Ninja generator, for example), so that scaling the data dump across types is simple.",
+      "parentUuid": "dd95f239_1fa89501",
+      "range": {
+        "startLine": 871,
+        "startChar": 1,
+        "endLine": 871,
+        "endChar": 63
+      },
+      "revId": "a708889888dc5296a8e0ff579009ae76ece92a5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
