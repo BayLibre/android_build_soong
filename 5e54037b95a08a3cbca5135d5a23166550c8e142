@@ -106,6 +106,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d750f764_df7c923f",
+        "filename": "android/module.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-10T21:51:07Z",
+      "side": 1,
+      "message": "How should I change the comment here to reflect that?",
+      "parentUuid": "b9afe4b8_87550ee2",
+      "revId": "5e54037b95a08a3cbca5135d5a23166550c8e142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee310a9d_0c59b2f3",
