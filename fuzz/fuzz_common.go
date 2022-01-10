@@ -31,6 +31,7 @@ type Lang string
 const (
 	Cc   Lang = ""
 	Rust Lang = "rust"
+	Java Lang = "java"
 )
 
 var BoolDefault = proptools.BoolDefault
@@ -220,6 +221,9 @@ func (s *FuzzPackager) CreateFuzzPackage(ctx android.SingletonContext, archDirs 
 		if lang == Rust {
 			zipFileName = "fuzz-rust-" + hostOrTarget + "-" + arch + ".zip"
 		}
+    if lang == Java {
+      zipFileName = "fuzz-java-" + hostOrTarget + "-" + arch + ".zip"
+    }
 		outputFile := android.PathForOutput(ctx, zipFileName)
 
 		s.Packages = append(s.Packages, outputFile)
