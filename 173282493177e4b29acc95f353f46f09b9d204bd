@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2b16026_a16f10fd",
+        "filename": "java/droidstubs.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1933062
+      },
+      "writtenOn": "2022-01-10T03:30:48Z",
+      "side": 1,
+      "message": "Sure.\n\nI found it\u0027s usually \"github.com/google/blueprint\" imported. Should I create another change with the struct change and wait for the open sourced code to be updated first?",
+      "parentUuid": "3c970000_e5ff4d79",
+      "range": {
+        "startLine": 810,
+        "startChar": 1,
+        "endLine": 811,
+        "endChar": 22
+      },
+      "revId": "173282493177e4b29acc95f353f46f09b9d204bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ceb5bd1c_198e5262",
         "filename": "java/droidstubs.go",
         "patchSetId": 2
