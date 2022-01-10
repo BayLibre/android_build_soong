@@ -18,6 +18,29 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "17709f23_d6855f2c",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-01-10T08:20:06Z",
+      "side": 1,
+      "message": "nit: typo. I guess you meant \"Type?\"",
+      "range": {
+        "startLine": 1343,
+        "startChar": 1,
+        "endLine": 1343,
+        "endChar": 4
+      },
+      "revId": "c4fc7edd93426694f932db655cbac9b18e96dab5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "a07abbfa_ac94f5a8",
@@ -31,6 +54,53 @@
       "writtenOn": "2022-01-07T21:59:35Z",
       "side": 1,
       "message": "I feel like \"explictly set\" would be more accurate than \"used\", but also too verbose... If you have an idea of something somewhere in the middle maybe change it, otherwise just ignore this",
+      "range": {
+        "startLine": 1346,
+        "startChar": 21,
+        "endLine": 1346,
+        "endChar": 25
+      },
+      "revId": "c4fc7edd93426694f932db655cbac9b18e96dab5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1374e777_540f5352",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-01-10T08:20:06Z",
+      "side": 1,
+      "message": "Suggestion: implement this instead in proptools/unpack.go .\n\nIf you look at packedProperty (unpack.go:42), it already has a flag that tells whether it is used or not (it\u0027s used for figuring out which properties in the Blueprint file don\u0027t have a corresponding Go struct field), which would make it unnecessary to reimplement the descend-into-struct-and-check-blueprint-mutated-annotation logic here.",
+      "range": {
+        "startLine": 1346,
+        "startChar": 21,
+        "endLine": 1346,
+        "endChar": 35
+      },
+      "revId": "c4fc7edd93426694f932db655cbac9b18e96dab5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e3fd4ea_e2ef83ad",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-01-10T08:20:06Z",
+      "side": 1,
+      "message": "+1. Do understand correctly that this code is about trying to figure out which properties are set in a particular module which would be useful for e.g. trying to figure out which properties can be removed without much cleanup work?\n\nIf so, it\u0027s an *excellent* idea, but maybe replace \"used\" with \"explicitly set\" as Romain suggested and extend the change description to explain that.",
+      "parentUuid": "a07abbfa_ac94f5a8",
       "range": {
         "startLine": 1346,
         "startChar": 21,
