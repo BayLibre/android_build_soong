@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "986455fa_8a5ac814",
+        "filename": "android/module.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1170,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-10T21:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "558b13b7_4a2c6590",
+      "revId": "5e54037b95a08a3cbca5135d5a23166550c8e142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "270d1bb4_61dbfd08",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-10T20:51:33Z",
       "side": 1,
       "message": "LabelListAttribute is considerably more powerful (and thus more fraught with danger/ confusion) than []Label. \n\nPerhaps it best to return a []Label here and then construct the LabelListAttribute as needed from the caller?",
+      "revId": "5e54037b95a08a3cbca5135d5a23166550c8e142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57295a44_a095e079",
+        "filename": "android/module.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1171,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-10T21:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "270d1bb4_61dbfd08",
       "revId": "5e54037b95a08a3cbca5135d5a23166550c8e142",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9afe4b8_87550ee2",
+        "filename": "android/module.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-10T21:50:18Z",
+      "side": 1,
+      "message": "I\u0027ll add a remark in the bug.",
+      "parentUuid": "88f26ac2_8873275b",
+      "revId": "5e54037b95a08a3cbca5135d5a23166550c8e142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee310a9d_0c59b2f3",
@@ -69,6 +123,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2bde281_d9cdcb42",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-10T21:50:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee310a9d_0c59b2f3",
+      "revId": "5e54037b95a08a3cbca5135d5a23166550c8e142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ea15bb1_852cf8a7",
@@ -82,6 +154,24 @@
       "writtenOn": "2022-01-10T20:51:33Z",
       "side": 1,
       "message": "What about a case where enabled is set to true by default (or not present by default), and explicitly set to true via config variable? (In such cases, we should probably ignore the config variable)",
+      "revId": "5e54037b95a08a3cbca5135d5a23166550c8e142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "883e11a5_c42a3e22",
+        "filename": "bp2build/soong_config_module_type_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-10T21:50:18Z",
+      "side": 1,
+      "message": "Ah yep, I should have included this case.",
+      "parentUuid": "5ea15bb1_852cf8a7",
       "revId": "5e54037b95a08a3cbca5135d5a23166550c8e142",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
