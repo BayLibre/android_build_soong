@@ -124,6 +124,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cc93a08_c56e3b96",
+        "filename": "android/module.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-01-10T21:54:37Z",
+      "side": 1,
+      "message": "Change TODO(delmerico) to TODO(b/123456)    (with the correct ID), then make a remark in the bug :)\n\nThanks!",
+      "parentUuid": "d750f764_df7c923f",
+      "revId": "5e54037b95a08a3cbca5135d5a23166550c8e142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee310a9d_0c59b2f3",
