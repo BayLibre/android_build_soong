@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ebb40f9_bad05f13",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3406,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2022-01-10T04:38:23Z",
+      "side": 1,
+      "message": "I don\u0027t think this comment really makes it clear what \"first\" means. It seems like such a strange name. As I understand first actually means something like \"match platform\" i.e. compile for 64bit on 64bit platform, compile for 32bit on 32bit platform. Is that right? I wonder if we can pick a better name, or explain this a bit more in comments?",
+      "range": {
+        "startLine": 3406,
+        "startChar": 3,
+        "endLine": 3406,
+        "endChar": 27
+      },
+      "revId": "f510f99bc3d67dd1eb05cf2106bc7a4244fc1a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f203aa71_c45a5dc2",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3416,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2022-01-10T04:38:23Z",
+      "side": 1,
+      "message": "I just left a comment on the Starlark CL asking for comments - these comments here are great, can you please add them (or similar) to the Starlark CL as well?\n\nReason being: Soong and bp2build will be deleted one day, but the Starlark files will continue to exist and they will be where people look for documentation",
+      "range": {
+        "startLine": 3391,
+        "startChar": 0,
+        "endLine": 3416,
+        "endChar": 0
+      },
+      "revId": "f510f99bc3d67dd1eb05cf2106bc7a4244fc1a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
