@@ -49,6 +49,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90673922_ef7deef0",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3406,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-10T15:15:24Z",
+      "side": 1,
+      "message": "First is a combination of OS + arch -- for Windows, even on a 64-bit arch, 32-bit is \"first\". For other OSes, it does follow that for 64-bit arch, 64-bit is \"first\".",
+      "parentUuid": "6ebb40f9_bad05f13",
+      "range": {
+        "startLine": 3406,
+        "startChar": 3,
+        "endLine": 3406,
+        "endChar": 27
+      },
+      "revId": "f510f99bc3d67dd1eb05cf2106bc7a4244fc1a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "972b361d_2d34e983",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3414,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-10T15:15:24Z",
+      "side": 1,
+      "message": "can you clarify whether this is prefer32 as multilib.prefer32 or compile_multilib: \"prefer32\"?",
+      "range": {
+        "startLine": 3414,
+        "startChar": 9,
+        "endLine": 3414,
+        "endChar": 17
+      },
+      "revId": "f510f99bc3d67dd1eb05cf2106bc7a4244fc1a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f203aa71_c45a5dc2",
         "filename": "apex/apex.go",
         "patchSetId": 2
@@ -65,6 +112,29 @@
         "startChar": 0,
         "endLine": 3416,
         "endChar": 0
+      },
+      "revId": "f510f99bc3d67dd1eb05cf2106bc7a4244fc1a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "904ab672_46ec8da3",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3418,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-10T15:15:24Z",
+      "side": 1,
+      "message": "compileMultilib can also be:  first_prefer32, prefer32, but not sure that these are used for apexes. Can we add an error in a default case so if they are used they have to be addressed instead of silently ignored?",
+      "range": {
+        "startLine": 3418,
+        "startChar": 8,
+        "endLine": 3418,
+        "endChar": 22
       },
       "revId": "f510f99bc3d67dd1eb05cf2106bc7a4244fc1a71",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
