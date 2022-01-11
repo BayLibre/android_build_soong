@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b778e0e9_37d87144",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-11T01:20:56Z",
+      "side": 1,
+      "message": "Actually, it was wrong all the time. There is no vendor/google-devices at all.",
+      "parentUuid": "b70f34e2_0de5c281",
+      "revId": "6de5e89f0f470a33c64429dcfa963ce414f31e6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eff7aee7_1045e852",
