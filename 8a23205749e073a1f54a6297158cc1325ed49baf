@@ -22,6 +22,30 @@
       },
       "revId": "8a23205749e073a1f54a6297158cc1325ed49baf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60416856_abf7dd30",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-11T21:17:54Z",
+      "side": 1,
+      "message": "Sounds good for now, but I think its probably worth annotating the code used by the 3 failing tests with exclude_kotlinc_generated_files: false and then flipping the default to true later.",
+      "parentUuid": "0950d971_089f05de",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 308,
+        "endChar": 2
+      },
+      "revId": "8a23205749e073a1f54a6297158cc1325ed49baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
