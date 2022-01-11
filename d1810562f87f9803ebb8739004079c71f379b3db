@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "181d53d0_8f16759c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-01-11T14:30:02Z",
+      "side": 1,
+      "message": "To capture what we discussed with Liz over VC:\n\nThis approach has the advantage over the one I suggested that it captures properties set by defaults modules, which the approach that goes through unpack.go doesn\u0027t.\n\nAll the data that can be extracted from unpack.go is already captured in moduleInfo.propertyPos so in principle, the unpack.go approach wouldn\u0027t require any extra plumbing and it would have the advantage that it would be able to track properties being set to their default values.\n\nIn order to handle defaults modules with the unpack.go approach, I can imagine a way where the moduleInfo of the defaults module is merged in defaultsMutator by copying propertyPos from moduleInfo to the Defaults module in defaultsDepsMutator so that defaultsMutator can access the propertyPos of its direct dependencies like I did with my \"use less reflection\" prototype:\n\nhttps://android-review.googlesource.com/c/platform/build/soong/+/1900775/5/android/defaults.go\n\nbut it\u0027s questionable whether the extra work is worth the effort. So if Liz decides to submit this change as it is, all the power to her, if she decides to use propertyPos, all the power to her also.",
+      "revId": "d1810562f87f9803ebb8739004079c71f379b3db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
