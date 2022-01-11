@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0950d971_089f05de",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-01-11T20:26:12Z",
+      "side": 1,
+      "message": "I changed the behavior to excluding kotlinc generated files only when the new property is set to true, since there are many reflection usage in kotlin code and some errors are reported after ag/16407379 was merged. Currently ag/16407379 has been reverted.",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 308,
+        "endChar": 2
+      },
+      "revId": "8a23205749e073a1f54a6297158cc1325ed49baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
