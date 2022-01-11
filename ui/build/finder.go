@@ -61,9 +61,13 @@ func NewSourceFinder(ctx Context, config Config) (f *finder.Finder) {
 	}
 
 	// Set up configuration parameters for the Finder cache.
+	rootDirs := []string{"."}
+	if config.CdkDir() != "" {
+		rootDirs = append(rootDirs, config.CdkDir())
+	}
 	cacheParams := finder.CacheParams{
 		WorkingDirectory: dir,
-		RootDirs:         []string{"."},
+		RootDirs:         rootDirs,
 		ExcludeDirs:      []string{".git", ".repo"},
 		PruneFiles:       pruneFiles,
 		IncludeFiles: []string{
@@ -172,6 +176,19 @@ func FindSources(ctx Context, config Config, f *finder.Finder) {
 		ctx.Fatalf("Could not find modules: %v", err)
 	}
 
+	// tmp hack to create an additional file - Android.bp.combined.list
+	// Necessary since soong finder does not run in sandbox with cdk mount
+	combinedAndroidBps := androidBps
+	if config.CdkDir() != "" {
+		for _, file := range f.FindNamedAt(config.CdkDir(), "Android.bp") {
+			cleanedFile := strings.TrimPrefix(file, config.CdkDir())
+			cleanedFile = strings.TrimPrefix(cleanedFile, "/")
+			// add cdk prefix
+			cleanedFile = "cdk/" + cleanedFile
+			combinedAndroidBps = append(combinedAndroidBps, cleanedFile)
+		}
+	}
+	err = dumpListToFile(ctx, config, combinedAndroidBps, filepath.Join(dumpDir, "Android.bp.combined.list"))
 	if config.Dist() {
 		f.WaitForDbDump()
 		// Dist the files.db plain text database.
