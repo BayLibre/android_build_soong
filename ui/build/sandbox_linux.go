@@ -53,11 +53,12 @@ const nsjailPath = "prebuilts/build-tools/linux-x86/bin/nsjail"
 var sandboxConfig struct {
 	once sync.Once
 
-	working bool
-	group   string
-	srcDir  string
-	outDir  string
-	distDir string
+	working     bool
+	group       string
+	srcDir      string
+	outDir      string
+	distDir     string
+	cdkDirMount string //src:dest
 }
 
 func (c *Cmd) sandboxSupported() bool {
@@ -89,6 +90,12 @@ func (c *Cmd) sandboxSupported() bool {
 		sandboxConfig.distDir = absPath(c.ctx, c.config.DistDir())
 		if derefPath, err := filepath.EvalSymlinks(sandboxConfig.distDir); err == nil {
 			sandboxConfig.distDir = absPath(c.ctx, derefPath)
+		}
+		if c.config.CdkDir() != "" {
+			// Mount as src:dest, where
+			// src: (can be) dir in outer_tree
+			// dest: (must be) dir in inner_tree
+			sandboxConfig.cdkDirMount = c.config.CdkDir() + ":" + absPath(c.ctx, "cdk")
 		}
 
 		sandboxArgs := []string{
@@ -218,6 +225,11 @@ func (c *Cmd) wrapSandbox() {
 	}
 	for _, srcDirChild := range c.config.sandboxConfig.SrcDirRWAllowlist() {
 		sandboxArgs = append(sandboxArgs, "-B", srcDirChild)
+	}
+
+	if sandboxConfig.cdkDirMount != "" {
+		// Mount cdk gen dir as read-only
+		sandboxArgs = append(sandboxArgs, "-B", sandboxConfig.cdkDirMount)
 	}
 
 	if _, err := os.Stat(sandboxConfig.distDir); !os.IsNotExist(err) {

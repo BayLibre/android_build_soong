@@ -1013,8 +1013,7 @@ func safePathForSource(ctx PathContext, pathComponents ...string) (SourcePath, e
 	}
 
 	// absolute path already checked by validateSafePath
-	// special-case api surface gen files for now
-	if strings.HasPrefix(ret.String(), ctx.Config().soongOutDir) && !strings.Contains(ret.String(), ctx.Config().soongOutDir+"/.export") {
+	if strings.HasPrefix(ret.String(), ctx.Config().soongOutDir) {
 		return ret, fmt.Errorf("source path %q is in output", ret.String())
 	}
 
@@ -1030,8 +1029,7 @@ func pathForSource(ctx PathContext, pathComponents ...string) (SourcePath, error
 	}
 
 	// absolute path already checked by validatePath
-	// special-case for now
-	if strings.HasPrefix(ret.String(), ctx.Config().soongOutDir) && !strings.Contains(ret.String(), ctx.Config().soongOutDir+"/.export") {
+	if strings.HasPrefix(ret.String(), ctx.Config().soongOutDir) {
 		return ret, fmt.Errorf("source path %q is in output", ret.String())
 	}
 

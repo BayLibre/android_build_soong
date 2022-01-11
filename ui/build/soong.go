@@ -165,7 +165,7 @@ func primaryBuilderInvocation(
 		commonArgs = append(commonArgs, "-t")
 	}
 
-	commonArgs = append(commonArgs, "-l", filepath.Join(config.FileListDir(), "Android.bp.list"))
+	commonArgs = append(commonArgs, "-l", filepath.Join(config.FileListDir(), "Android.bp.combined.list"))
 	invocationEnv := make(map[string]string)
 	debugMode := os.Getenv("SOONG_DELVE") != ""
 
