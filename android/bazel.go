@@ -328,9 +328,7 @@ var (
 		"packages/apps/HTMLViewer":                           Bp2BuildDefaultTrue,
 		"packages/apps/Protips":                              Bp2BuildDefaultTrue,
 		"packages/modules/StatsD/lib/libstatssocket":         Bp2BuildDefaultTrueRecursively,
-		"packages/modules/adb":                               Bp2BuildDefaultTrue,
 		"packages/modules/adb/apex":                          Bp2BuildDefaultTrue,
-		"packages/modules/adb/crypto":                        Bp2BuildDefaultTrueRecursively,
 		"packages/modules/adb/libs":                          Bp2BuildDefaultTrueRecursively,
 		"packages/modules/adb/pairing_auth":                  Bp2BuildDefaultTrueRecursively,
 		"packages/modules/adb/pairing_connection":            Bp2BuildDefaultTrueRecursively,
@@ -362,7 +360,6 @@ var (
 		"system/logging/liblog":                              Bp2BuildDefaultTrueRecursively,
 		"system/sepolicy/apex":                               Bp2BuildDefaultTrueRecursively,
 		"system/timezone/apex":                               Bp2BuildDefaultTrueRecursively,
-		"system/timezone/output_data":                        Bp2BuildDefaultTrueRecursively,
 		"system/unwinding/libbacktrace":                      Bp2BuildDefaultTrueRecursively,
 		"system/unwinding/libunwindstack":                    Bp2BuildDefaultTrueRecursively,
 		"tools/apksig":                                       Bp2BuildDefaultTrue,
@@ -468,9 +465,14 @@ var (
 		"libdexfiled", // depends on unconverted modules: dexfile_operator_srcs, libartbased, libartpalette
 
 		// go deps:
-		"apex-protos",               // depends on unconverted modules: soong_zip
-		"host_bionic_linker_asm",    // depends on extract_linker, a go binary.
-		"host_bionic_linker_script", // depends on extract_linker, a go binary.
+		"apex-protos",                 // depends on unconverted modules: soong_zip
+		"host_bionic_linker_asm",      // depends on extract_linker, a go binary.
+		"host_bionic_linker_script",   // depends on extract_linker, a go binary.
+		"system/timezone/output_data", // depends on soong_zip, a go binary
+
+		// java deps:
+		"packages/modules/adb", // depends on deployagent, a java binary
+		"packages/modules/crypto",
 	}
 
 	// Per-module denylist of cc_library modules to only generate the static
