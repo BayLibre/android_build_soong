@@ -16,41 +16,72 @@ package bp2build
 
 import (
 	"android/soong/android"
+	"android/soong/cc"
 	"android/soong/genrule"
+	"android/soong/java"
+	"fmt"
 	"testing"
 )
 
-func registerGenruleModuleTypes(ctx android.RegistrationContext) {
-	ctx.RegisterModuleType("genrule_defaults", func() android.Module { return genrule.DefaultsFactory() })
-}
+func runGenruleTestCase(t *testing.T, genruleTarget string, tc bp2buildTestCase) {
+	moduleRegistrationFunc := func(ctx android.RegistrationContext) {}
+	var moduleFactory android.ModuleFactory = nil
+	switch genruleTarget {
+	case "genrule":
+		moduleFactory = genrule.GenRuleFactory
+		moduleRegistrationFunc = func(ctx android.RegistrationContext) {
+			ctx.RegisterModuleType("genrule_defaults", func() android.Module { return genrule.DefaultsFactory() })
+		}
+	case "java_genrule":
+		moduleFactory = java.GenRuleFactory
+	case "java_genrule_host":
+		moduleFactory = java.GenRuleFactoryHost
+		moduleRegistrationFunc = func(ctx android.RegistrationContext) {
+			ctx.RegisterModuleType("java_genrule", java.GenRuleFactory)
+		}
+	case "cc_genrule":
+		moduleFactory = cc.GenRuleFactory
+	}
 
-func runGenruleTestCase(t *testing.T, tc bp2buildTestCase) {
 	t.Helper()
-	(&tc).moduleTypeUnderTest = "genrule"
-	(&tc).moduleTypeUnderTestFactory = genrule.GenRuleFactory
-	runBp2BuildTestCase(t, registerGenruleModuleTypes, tc)
+	(&tc).moduleTypeUnderTest = genruleTarget
+	(&tc).moduleTypeUnderTestFactory = moduleFactory
+	runBp2BuildTestCase(t, moduleRegistrationFunc, tc)
 }
 
 func TestGenruleBp2Build(t *testing.T) {
-	otherGenruleBp := map[string]string{
-		"other/Android.bp": `genrule {
+	testTypedGenruleBp2Build(t, "", "")
+	testTypedGenruleBp2Build(t, "cc", "")
+	testTypedGenruleBp2Build(t, "java", "")
+	testTypedGenruleBp2Build(t, "java", "host")
+}
+
+func otherGenruleBp(genruleTarget string) map[string]string {
+	return map[string]string{
+		"other/Android.bp": fmt.Sprintf(`%s {
     name: "foo.tool",
     out: ["foo_tool.out"],
     srcs: ["foo_tool.in"],
     cmd: "cp $(in) $(out)",
 }
-genrule {
+%s {
     name: "other.tool",
     out: ["other_tool.out"],
     srcs: ["other_tool.in"],
     cmd: "cp $(in) $(out)",
-}`,
+}`, genruleTarget, genruleTarget),
+	}
+}
+
+func testCliVariableReplacement(t *testing.T, genruleTarget string) {
+	genDir := "$(GENDIR)"
+	if t := genruleTarget; t == "cc_genrule" || t == "java_genrule" || t == "java_genrule_host" {
+		genDir = "$(RULEDIR)"
 	}
 
-	testCases := []bp2buildTestCase{
-		{
-			description: "genrule with command line variable replacements",
-			blueprint: `genrule {
+	testCase := bp2buildTestCase{
+		description: fmt.Sprintf("%s with command line variable replacements", genruleTarget),
+		blueprint: fmt.Sprintf(`%s {
     name: "foo.tool",
     out: ["foo_tool.out"],
     srcs: ["foo_tool.in"],
@@ -58,31 +89,47 @@ genrule {
     bazel_module: { bp2build_available: true },
 }
 
-genrule {
+%s {
     name: "foo",
     out: ["foo.out"],
     srcs: ["foo.in"],
     tools: [":foo.tool"],
     cmd: "$(location :foo.tool) --genDir=$(genDir) arg $(in) $(out)",
     bazel_module: { bp2build_available: true },
-}`,
-			expectedBazelTargets: []string{
-				makeBazelTarget("genrule", "foo", attrNameToString{
-					"cmd":   `"$(location :foo.tool) --genDir=$(GENDIR) arg $(SRCS) $(OUTS)"`,
-					"outs":  `["foo.out"]`,
-					"srcs":  `["foo.in"]`,
-					"tools": `[":foo.tool"]`,
-				}),
-				makeBazelTarget("genrule", "foo.tool", attrNameToString{
-					"cmd":  `"cp $(SRCS) $(OUTS)"`,
-					"outs": `["foo_tool.out"]`,
-					"srcs": `["foo_tool.in"]`,
-				}),
-			},
+}`, genruleTarget, genruleTarget),
+		expectedBazelTargets: []string{
+			makeBazelTarget("genrule", "foo", attrNameToString{
+				"cmd":   fmt.Sprintf(`"$(location :foo.tool) --genDir=%s arg $(SRCS) $(OUTS)"`, genDir),
+				"outs":  `["foo.out"]`,
+				"srcs":  `["foo.in"]`,
+				"tools": `[":foo.tool"]`,
+			}),
+			makeBazelTarget("genrule", "foo.tool", attrNameToString{
+				"cmd":  `"cp $(SRCS) $(OUTS)"`,
+				"outs": `["foo_tool.out"]`,
+				"srcs": `["foo_tool.in"]`,
+			}),
 		},
+	}
+
+	t.Run(testCase.description, func(t *testing.T) {
+		runGenruleTestCase(t, genruleTarget, testCase)
+	})
+}
+
+func testTypedGenruleBp2Build(t *testing.T, genruleType string, genruleSuffix string) {
+	genruleTarget := "genrule"
+	if genruleType != "" {
+		genruleTarget = genruleType + "_" + genruleTarget
+	}
+	if genruleSuffix != "" {
+		genruleTarget = genruleTarget + "_" + genruleSuffix
+	}
+
+	testCases := []bp2buildTestCase{
 		{
-			description: "genrule using $(locations :label)",
-			blueprint: `genrule {
+			description: fmt.Sprintf("%s using $(locations :label)", genruleTarget),
+			blueprint: fmt.Sprintf(`%s {
     name: "foo.tools",
     out: ["foo_tool.out", "foo_tool2.out"],
     srcs: ["foo_tool.in"],
@@ -90,14 +137,14 @@ genrule {
     bazel_module: { bp2build_available: true },
 }
 
-genrule {
+%s {
     name: "foo",
     out: ["foo.out"],
     srcs: ["foo.in"],
     tools: [":foo.tools"],
     cmd: "$(locations :foo.tools) -s $(out) $(in)",
     bazel_module: { bp2build_available: true },
-}`,
+}`, genruleTarget, genruleTarget),
 			expectedBazelTargets: []string{
 				makeBazelTarget("genrule", "foo", attrNameToString{
 					"cmd":   `"$(locations :foo.tools) -s $(OUTS) $(SRCS)"`,
@@ -116,15 +163,15 @@ genrule {
 			},
 		},
 		{
-			description: "genrule using $(locations //absolute:label)",
-			blueprint: `genrule {
+			description: fmt.Sprintf("%s using $(locations //absolute:label)", genruleTarget),
+			blueprint: fmt.Sprintf(`%s {
     name: "foo",
     out: ["foo.out"],
     srcs: ["foo.in"],
     tool_files: [":foo.tool"],
     cmd: "$(locations :foo.tool) -s $(out) $(in)",
     bazel_module: { bp2build_available: true },
-}`,
+}`, genruleTarget),
 			expectedBazelTargets: []string{
 				makeBazelTarget("genrule", "foo", attrNameToString{
 					"cmd":   `"$(locations //other:foo.tool) -s $(OUTS) $(SRCS)"`,
@@ -133,18 +180,18 @@ genrule {
 					"tools": `["//other:foo.tool"]`,
 				}),
 			},
-			filesystem: otherGenruleBp,
+			filesystem: otherGenruleBp(genruleTarget),
 		},
 		{
-			description: "genrule srcs using $(locations //absolute:label)",
-			blueprint: `genrule {
+			description: fmt.Sprintf("%s srcs using $(locations //absolute:label)", genruleTarget),
+			blueprint: fmt.Sprintf(`%s {
     name: "foo",
     out: ["foo.out"],
     srcs: [":other.tool"],
     tool_files: [":foo.tool"],
     cmd: "$(locations :foo.tool) -s $(out) $(location :other.tool)",
     bazel_module: { bp2build_available: true },
-}`,
+}`, genruleTarget),
 			expectedBazelTargets: []string{
 				makeBazelTarget("genrule", "foo", attrNameToString{
 					"cmd":   `"$(locations //other:foo.tool) -s $(OUTS) $(location //other:other.tool)"`,
@@ -153,18 +200,18 @@ genrule {
 					"tools": `["//other:foo.tool"]`,
 				}),
 			},
-			filesystem: otherGenruleBp,
+			filesystem: otherGenruleBp(genruleTarget),
 		},
 		{
-			description: "genrule using $(location) label should substitute first tool label automatically",
-			blueprint: `genrule {
+			description: fmt.Sprintf("%s using $(location) label should substitute first tool label automatically", genruleTarget),
+			blueprint: fmt.Sprintf(`%s {
     name: "foo",
     out: ["foo.out"],
     srcs: ["foo.in"],
     tool_files: [":foo.tool", ":other.tool"],
     cmd: "$(location) -s $(out) $(in)",
     bazel_module: { bp2build_available: true },
-}`,
+}`, genruleTarget),
 			expectedBazelTargets: []string{
 				makeBazelTarget("genrule", "foo", attrNameToString{
 					"cmd":  `"$(location //other:foo.tool) -s $(OUTS) $(SRCS)"`,
@@ -176,18 +223,18 @@ genrule {
     ]`,
 				}),
 			},
-			filesystem: otherGenruleBp,
+			filesystem: otherGenruleBp(genruleTarget),
 		},
 		{
-			description: "genrule using $(locations) label should substitute first tool label automatically",
-			blueprint: `genrule {
+			description: fmt.Sprintf("%s using $(locations) label should substitute first tool label automatically", genruleTarget),
+			blueprint: fmt.Sprintf(`%s {
     name: "foo",
     out: ["foo.out"],
     srcs: ["foo.in"],
     tools: [":foo.tool", ":other.tool"],
     cmd: "$(locations) -s $(out) $(in)",
     bazel_module: { bp2build_available: true },
-}`,
+}`, genruleTarget),
 			expectedBazelTargets: []string{
 				makeBazelTarget("genrule", "foo", attrNameToString{
 					"cmd":  `"$(locations //other:foo.tool) -s $(OUTS) $(SRCS)"`,
@@ -199,17 +246,17 @@ genrule {
     ]`,
 				}),
 			},
-			filesystem: otherGenruleBp,
+			filesystem: otherGenruleBp(genruleTarget),
 		},
 		{
-			description: "genrule without tools or tool_files can convert successfully",
-			blueprint: `genrule {
+			description: fmt.Sprintf("%s without tools or tool_files can convert successfully", genruleTarget),
+			blueprint: fmt.Sprintf(`%s {
     name: "foo",
     out: ["foo.out"],
     srcs: ["foo.in"],
     cmd: "cp $(in) $(out)",
     bazel_module: { bp2build_available: true },
-}`,
+}`, genruleTarget),
 			expectedBazelTargets: []string{
 				makeBazelTarget("genrule", "foo", attrNameToString{
 					"cmd":  `"cp $(SRCS) $(OUTS)"`,
@@ -220,9 +267,10 @@ genrule {
 		},
 	}
 
+	testCliVariableReplacement(t, genruleTarget)
 	for _, testCase := range testCases {
 		t.Run(testCase.description, func(t *testing.T) {
-			runGenruleTestCase(t, testCase)
+			runGenruleTestCase(t, genruleTarget, testCase)
 		})
 	}
 }
@@ -357,7 +405,7 @@ genrule {
 
 	for _, testCase := range testCases {
 		t.Run(testCase.description, func(t *testing.T) {
-			runGenruleTestCase(t, testCase)
+			runGenruleTestCase(t, "genrule", testCase)
 		})
 	}
 }
