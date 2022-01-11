@@ -249,19 +249,19 @@ func (gctx *generationContext) emitPreamble() {
 	gctx.writef("load(%q, %q)", baseUri, baseName)
 	// Emit exactly one load statement for each URI.
 	loadedSubConfigs := make(map[string]string)
-	for _, sc := range gctx.starScript.inherited {
-		uri := sc.path
+	for _, mi := range gctx.starScript.inherited {
+		uri := mi.path
 		if m, ok := loadedSubConfigs[uri]; ok {
 			// No need to emit load statement, but fix module name.
-			sc.moduleLocalName = m
+			mi.moduleLocalName = m
 			continue
 		}
-		if sc.optional {
+		if mi.optional || mi.missing {
 			uri += "|init"
 		}
 		gctx.newLine()
-		gctx.writef("load(%q, %s = \"init\")", uri, sc.entryName())
-		loadedSubConfigs[uri] = sc.moduleLocalName
+		gctx.writef("load(%q, %s = \"init\")", uri, mi.entryName())
+		loadedSubConfigs[uri] = mi.moduleLocalName
 	}
 	gctx.write("\n")
 }
@@ -746,11 +746,13 @@ func (ctx *parseContext) newDependentModule(path string, optional bool) *moduleI
 		moduleLocalName += fmt.Sprintf("%d", n)
 	}
 	ctx.moduleNameCount[moduleName] = n + 1
+	_, err := fs.Stat(ctx.script.sourceFS, path)
 	mi := &moduleInfo{
 		path:            modulePath,
 		originalPath:    path,
 		moduleLocalName: moduleLocalName,
 		optional:        optional,
+		missing:         err != nil,
 	}
 	ctx.dependentModules[modulePath] = mi
 	ctx.script.inherited = append(ctx.script.inherited, mi)
