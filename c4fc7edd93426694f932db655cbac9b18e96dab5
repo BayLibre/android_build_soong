@@ -199,6 +199,30 @@
       },
       "revId": "c4fc7edd93426694f932db655cbac9b18e96dab5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfcb9178_eb5f0cd6",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-01-11T08:23:35Z",
+      "side": 1,
+      "message": "I thought you wanted to figure out what properties of a module are used. Isn\u0027t that the case?\n\nAnd in that case, isn\u0027t the parser the exact right place to do it? It knows exactly about what is being set, very conveniently represented as a map[string]*packedProperty in a place that\u0027s very close to where the data structure representing the module is also available.\n\nAmong other things, it would allow you to sidestep the \"non-pointer properties being impossible to distinguish from default values\" issue you mentioned in another thread on this review.",
+      "parentUuid": "6e633ce2_38e5446a",
+      "range": {
+        "startLine": 1346,
+        "startChar": 21,
+        "endLine": 1346,
+        "endChar": 35
+      },
+      "revId": "c4fc7edd93426694f932db655cbac9b18e96dab5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
