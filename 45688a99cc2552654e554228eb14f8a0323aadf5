@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb661ec7_1f426ff4",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-11T02:28:31Z",
+      "side": 1,
+      "message": "This seems to not be the ideal way to handle this, as you could have an inherit-product that essentially becomes an inherit-product-if-exists if the file doesn\u0027t exist. It would probably be better to only enable this functionality on files that were included via a dynamic include path. But that might be too complicated?",
+      "revId": "45688a99cc2552654e554228eb14f8a0323aadf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5bbf54f_46d3c6e7",
+        "filename": "mk2rbc/node.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-11T02:28:31Z",
+      "side": 1,
+      "message": "shouldExist() seems to be unused, remove?",
+      "revId": "45688a99cc2552654e554228eb14f8a0323aadf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ee1079a_7d76d3ed",
+        "filename": "mk2rbc/node.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-11T02:28:31Z",
+      "side": 1,
+      "message": "I think this function is unused, remove.",
+      "revId": "45688a99cc2552654e554228eb14f8a0323aadf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f2b2d12_9b3f97bc",
+        "filename": "mk2rbc/node.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-11T02:28:31Z",
+      "side": 1,
+      "message": "Should this be `im.missing || !im.loadAlways`?",
+      "revId": "45688a99cc2552654e554228eb14f8a0323aadf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
