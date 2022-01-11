@@ -165,7 +165,7 @@ func primaryBuilderInvocation(
 		commonArgs = append(commonArgs, "-t")
 	}
 
-	commonArgs = append(commonArgs, "-l", filepath.Join(config.FileListDir(), "Android.bp.list"))
+	commonArgs = append(commonArgs, "-l", filepath.Join(config.FileListDir(), "Android.bp.combined.list"))
 
 	if os.Getenv("SOONG_DELVE") != "" {
 		commonArgs = append(commonArgs, "--delve_listen", os.Getenv("SOONG_DELVE"))

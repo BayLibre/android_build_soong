@@ -1291,3 +1291,12 @@ func GetMetricsUploader(topDir string, env *Environment) string {
 
 	return ""
 }
+
+// (Outer) Directory containing CDK specific files (Android.bp, headers etc)
+// This will be RO mounted inside ANDROID_BUILD_TOP during main build
+func (c *configImpl) CdkDir() string {
+	if rawString, ok := c.environ.Get("CDK_DIR"); ok {
+		return strings.TrimSpace(rawString)
+	}
+	return ""
+}
