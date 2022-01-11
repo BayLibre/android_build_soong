@@ -223,6 +223,30 @@
       },
       "revId": "c4fc7edd93426694f932db655cbac9b18e96dab5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb122cf7_32392c4a",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-11T15:53:41Z",
+      "side": 1,
+      "message": "I agree that it would be more correct to use propertyPos, but I don\u0027t think it\u0027s worth the time to update at this time.",
+      "parentUuid": "bfcb9178_eb5f0cd6",
+      "range": {
+        "startLine": 1346,
+        "startChar": 21,
+        "endLine": 1346,
+        "endChar": 35
+      },
+      "revId": "c4fc7edd93426694f932db655cbac9b18e96dab5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
