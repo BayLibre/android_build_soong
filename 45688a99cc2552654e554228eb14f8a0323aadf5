@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "341798fc_15c20906",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-11T03:58:57Z",
+      "side": 1,
+      "message": "If inherited product configuration does not exist, inherit-product-if-exists proceeds while here we want it to fail. The bug\u0027s description elaborates somewhat on this problem.",
+      "parentUuid": "eb661ec7_1f426ff4",
+      "revId": "45688a99cc2552654e554228eb14f8a0323aadf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5bbf54f_46d3c6e7",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-11T02:28:31Z",
       "side": 1,
       "message": "shouldExist() seems to be unused, remove?",
+      "revId": "45688a99cc2552654e554228eb14f8a0323aadf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "704186f7_d80a4985",
+        "filename": "mk2rbc/node.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-11T03:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5bbf54f_46d3c6e7",
       "revId": "45688a99cc2552654e554228eb14f8a0323aadf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ab783ab_e2375760",
+        "filename": "mk2rbc/node.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-11T03:58:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee1079a_7d76d3ed",
+      "revId": "45688a99cc2552654e554228eb14f8a0323aadf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f2b2d12_9b3f97bc",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-01-11T02:28:31Z",
       "side": 1,
       "message": "Should this be `im.missing || !im.loadAlways`?",
+      "revId": "45688a99cc2552654e554228eb14f8a0323aadf5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f26ad82_2dcc4899",
+        "filename": "mk2rbc/node.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-11T03:58:57Z",
+      "side": 1,
+      "message": "I don\u0027t think so.",
+      "parentUuid": "1f2b2d12_9b3f97bc",
       "revId": "45688a99cc2552654e554228eb14f8a0323aadf5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
