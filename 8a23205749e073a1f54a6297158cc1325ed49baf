@@ -46,6 +46,30 @@
       },
       "revId": "8a23205749e073a1f54a6297158cc1325ed49baf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b14681_3e86fd6f",
+        "filename": "java/dex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-01-11T22:02:38Z",
+      "side": 1,
+      "message": "Sure. Will annotate them in some separate CLs. Thanks!",
+      "parentUuid": "60416856_abf7dd30",
+      "range": {
+        "startLine": 304,
+        "startChar": 1,
+        "endLine": 308,
+        "endChar": 2
+      },
+      "revId": "8a23205749e073a1f54a6297158cc1325ed49baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
