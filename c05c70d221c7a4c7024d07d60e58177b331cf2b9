@@ -93,6 +93,30 @@
       },
       "revId": "c05c70d221c7a4c7024d07d60e58177b331cf2b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59f417f6_30654708",
+        "filename": "xml/xml.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-01-12T13:18:53Z",
+      "side": 1,
+      "message": "I thought you have a special interest in the xml package for some reason.\n\nIs the eventual plan for every module type to have both SetJsonDataActions() calls and ctx.Build() calls that mirror each other?\n\nIn that case, I\u0027m worried that they will come out of sync: it\u0027s very easy for someone to add (or change) one but not the other.",
+      "parentUuid": "05c5d617_422e704b",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 77
+      },
+      "revId": "c05c70d221c7a4c7024d07d60e58177b331cf2b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
