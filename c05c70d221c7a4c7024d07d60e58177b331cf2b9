@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5bf6cf63_cccb3bed",
+        "filename": "rust/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1933062
+      },
+      "writtenOn": "2022-01-12T13:12:39Z",
+      "side": 1,
+      "message": "Oh, I\u0027m new to Git. I found this files was added accidentally in this CL, so I copied the content of \"Parent 1\" here. Just don\u0027t know how to revert this single file...",
+      "parentUuid": "95035c73_0dc478f5",
+      "range": {
+        "startLine": 5,
+        "startChar": 84,
+        "endLine": 5,
+        "endChar": 144
+      },
+      "revId": "c05c70d221c7a4c7024d07d60e58177b331cf2b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d02ac4e1_d9cfb416",
         "filename": "xml/xml.go",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-12T12:38:58Z",
       "side": 1,
       "message": "Why update exactly this module? Is there something unusual about xml/xml.go that I don\u0027t know?",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 77
+      },
+      "revId": "c05c70d221c7a4c7024d07d60e58177b331cf2b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c5d617_422e704b",
+        "filename": "xml/xml.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1933062
+      },
+      "writtenOn": "2022-01-12T13:12:39Z",
+      "side": 1,
+      "message": "I\u0027m updating all GenerateAndroidBuildActions implementations step by step.\n\nJust found this implementation is simple enough. You mean we don\u0027t need to update this one?",
+      "parentUuid": "d02ac4e1_d9cfb416",
       "range": {
         "startLine": 129,
         "startChar": 2,
