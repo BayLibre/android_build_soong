@@ -117,6 +117,30 @@
       },
       "revId": "c05c70d221c7a4c7024d07d60e58177b331cf2b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2adc17b_1908da97",
+        "filename": "xml/xml.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-01-12T13:21:07Z",
+      "side": 1,
+      "message": "I think the droidstubs CL was a good first step, but moving forward, it would be much better if we can integrate this system into the ctx.Build calls without having to submit a CL for each module type. i.e. less intrusive approach, so no need to duplicate SetJsonDataActions wherever there\u0027s an action being declared. This will probably be useful to discuss over a design doc.",
+      "parentUuid": "05c5d617_422e704b",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 77
+      },
+      "revId": "c05c70d221c7a4c7024d07d60e58177b331cf2b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
