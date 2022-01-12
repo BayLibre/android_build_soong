@@ -22,6 +22,30 @@
       },
       "revId": "1e73c6573ec51d41115a1c0f697ce312b42d8099",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65dc3881_76d467e2",
+        "filename": "java/dex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-01-12T17:17:38Z",
+      "side": 1,
+      "message": "Nice catch, comment on line 77 should be \"Default to false\". Sending another change to correct this. Thanks!",
+      "parentUuid": "ffef446f_93eb8c90",
+      "range": {
+        "startLine": 306,
+        "startChar": 75,
+        "endLine": 306,
+        "endChar": 80
+      },
+      "revId": "1e73c6573ec51d41115a1c0f697ce312b42d8099",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
