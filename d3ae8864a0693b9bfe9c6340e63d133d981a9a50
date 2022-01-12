@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000019129213",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1946015?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "3f6aadb4_b725f52f",
+          "description": "Change to \"build_orchestrator.bash\"",
+          "replacements": [
+            {
+              "path": "build_orchestrator.bash",
+              "range": {
+                "startLine": 18,
+                "startChar": 32,
+                "endLine": 18,
+                "endChar": 42
+              },
+              "replacement": "dynamically"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "814cf0d1_0514c4c0",
+        "filename": "build_orchestrator.bash",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-01-12T00:35:05Z",
+      "side": 1,
+      "message": "Common typo found: \"dynamicaly\" -- should it be \"dynamically\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 18,
+        "startChar": 32,
+        "endLine": 18,
+        "endChar": 42
+      },
+      "revId": "d3ae8864a0693b9bfe9c6340e63d133d981a9a50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
