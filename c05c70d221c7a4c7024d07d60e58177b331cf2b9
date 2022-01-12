@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95035c73_0dc478f5",
+        "filename": "rust/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-01-12T12:38:58Z",
+      "side": 1,
+      "message": "Why this change?",
+      "range": {
+        "startLine": 5,
+        "startChar": 84,
+        "endLine": 5,
+        "endChar": 144
+      },
+      "revId": "c05c70d221c7a4c7024d07d60e58177b331cf2b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d02ac4e1_d9cfb416",
+        "filename": "xml/xml.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-01-12T12:38:58Z",
+      "side": 1,
+      "message": "Why update exactly this module? Is there something unusual about xml/xml.go that I don\u0027t know?",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 77
+      },
+      "revId": "c05c70d221c7a4c7024d07d60e58177b331cf2b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
