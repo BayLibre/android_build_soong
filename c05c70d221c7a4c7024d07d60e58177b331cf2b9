@@ -141,6 +141,30 @@
       },
       "revId": "c05c70d221c7a4c7024d07d60e58177b331cf2b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c7d5c8c_a3f922d0",
+        "filename": "xml/xml.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-01-12T13:29:38Z",
+      "side": 1,
+      "message": "(let me know if you want to discuss this over vc/offline! specifically, it would be great to come up with a plan to specifically address the 3 requirements in https://b.corp.google.com/issues/198618351#comment1)",
+      "parentUuid": "f2adc17b_1908da97",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 77
+      },
+      "revId": "c05c70d221c7a4c7024d07d60e58177b331cf2b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
