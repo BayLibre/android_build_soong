@@ -506,3 +506,16 @@ func fakeApexMutator(mctx android.BottomUpMutatorContext) {
 		}
 	}
 }
+
+func FixtureModifyBootImageConfig(name string, configModifier func(*bootImageConfig)) android.FixturePreparer {
+	return android.FixtureModifyConfig(func(androidConfig android.Config) {
+		pathCtx := android.PathContextForTesting(androidConfig)
+		testOnlyModifyBootImageConfig(pathCtx, name, configModifier)
+	})
+}
+
+func FixtureSetBootImageInstallDirOnDevice(name string, installDir string) android.FixturePreparer {
+	return FixtureModifyBootImageConfig(name, func(config *bootImageConfig) {
+		config.installDirOnDevice = installDir
+	})
+}

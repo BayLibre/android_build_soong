@@ -41,17 +41,14 @@ func dexpreoptTargets(ctx android.PathContext) []android.Target {
 
 var (
 	bootImageConfigKey     = android.NewOnceKey("bootImageConfig")
+	bootImageConfigRawKey  = android.NewOnceKey("bootImageConfigRaw")
 	artBootImageName       = "art"
 	frameworkBootImageName = "boot"
 )
 
-// Construct the global boot image configs.
-func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
-	return ctx.Config().Once(bootImageConfigKey, func() interface{} {
-
+func genBootImageConfigRaw(ctx android.PathContext) map[string]*bootImageConfig {
+	return ctx.Config().Once(bootImageConfigRawKey, func() interface{} {
 		global := dexpreopt.GetGlobalConfig(ctx)
-		targets := dexpreoptTargets(ctx)
-		deviceDir := android.PathForOutput(ctx, ctx.Config().DeviceName())
 
 		artModules := global.ArtApexJars
 		frameworkModules := global.BootJars.RemoveList(artModules)
@@ -62,7 +59,7 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 			name:                     artBootImageName,
 			stem:                     "boot",
 			installDirOnHost:         "apex/art_boot_images/javalib",
-			installDirOnDevice:       "apex/com.android.art/javalib",
+			installDirOnDevice:       "system/framework",
 			profileInstallPathInApex: "etc/boot-image.prof",
 			modules:                  artModules,
 		}
@@ -79,10 +76,22 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 			modules:            frameworkModules,
 		}
 
-		configs := map[string]*bootImageConfig{
+		return map[string]*bootImageConfig{
 			artBootImageName:       &artCfg,
 			frameworkBootImageName: &frameworkCfg,
 		}
+	}).(map[string]*bootImageConfig)
+}
+
+// Construct the global boot image configs.
+func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
+	return ctx.Config().Once(bootImageConfigKey, func() interface{} {
+		targets := dexpreoptTargets(ctx)
+		deviceDir := android.PathForOutput(ctx, ctx.Config().DeviceName())
+
+		configs := genBootImageConfigRaw(ctx)
+		artCfg := configs[artBootImageName]
+		frameworkCfg := configs[frameworkBootImageName]
 
 		// common to all configs
 		for _, c := range configs {
@@ -130,6 +139,11 @@ func genBootImageConfigs(ctx android.PathContext) map[string]*bootImageConfig {
 
 		return configs
 	}).(map[string]*bootImageConfig)
+}
+
+func testOnlyModifyBootImageConfig(ctx android.PathContext, name string, configModifier func(config *bootImageConfig)) {
+	config := genBootImageConfigRaw(ctx)
+	configModifier(config[name])
 }
 
 func artBootImageConfig(ctx android.PathContext) *bootImageConfig {
