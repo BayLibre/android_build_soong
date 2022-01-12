@@ -21,6 +21,7 @@ import (
 	"testing"
 
 	mkparser "android/soong/androidmk/parser"
+	"github.com/google/blueprint"
 )
 
 func TestSrcIsModule(t *testing.T) {
@@ -571,6 +572,22 @@ func TestInstallKatiEnabled(t *testing.T) {
 	// but the current implementation uses a normal dependency.
 	assertDeps(symlinkRule("foo"), installRule("foo").target)
 	assertOrderOnlys(symlinkRule("foo"))
+}
+
+func TestAddJSONData(t *testing.T) {
+	jsonMap := map[string]interface{}{}
+	(&ModuleBase{}).AddJSONData(&jsonMap)
+	if _, hasKey := jsonMap["Actions"]; hasKey {
+		t.Errorf("Key \"Actions\" isn't expected here.")
+	}
+
+	jsonMap = map[string]interface{}{}
+	(&ModuleBase{
+		jsonDataActions: []blueprint.JSONDataAction{{}},
+	}).AddJSONData(&jsonMap)
+	if _, hasKey := jsonMap["Actions"]; !hasKey {
+		t.Errorf("Key \"Actions\" is expected here.")
+	}
 }
 
 type installMakeRule struct {

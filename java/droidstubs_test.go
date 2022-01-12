@@ -236,19 +236,19 @@ func TestDroidstubsWithSystemModules(t *testing.T) {
 
 func TestAddJSONData(t *testing.T) {
 	prebuiltStubsSources := PrebuiltStubsSources{}
-	prebuiltStubsSources.jsonDataActions = []blueprint.JSONDataAction{
-		blueprint.JSONDataAction{
+	prebuiltStubsSources.ModuleBase.SetJsonDataActions([]blueprint.JSONDataAction{
+		{
 			Inputs:  []string{},
 			Outputs: []string{},
 		},
-	}
+	})
 	jsonData := map[string]interface{}{}
 	prebuiltStubsSources.AddJSONData(&jsonData)
 	if fmt.Sprint(jsonData) != fmt.Sprint(
 		map[string]interface{}{
 			"Android": map[string]interface{}{},
 			"Actions": []map[string]interface{}{
-				map[string]interface{}{
+				{
 					"Inputs":  []string{},
 					"Outputs": []string{},
 				},

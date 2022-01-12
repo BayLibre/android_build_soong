@@ -807,8 +807,7 @@ type PrebuiltStubsSources struct {
 
 	properties PrebuiltStubsSourcesProperties
 
-	stubsSrcJar     android.Path
-	jsonDataActions []blueprint.JSONDataAction
+	stubsSrcJar android.Path
 }
 
 func (p *PrebuiltStubsSources) OutputFiles(tag string) (android.Paths, error) {
@@ -822,13 +821,6 @@ func (p *PrebuiltStubsSources) OutputFiles(tag string) (android.Paths, error) {
 
 func (d *PrebuiltStubsSources) StubsSrcJar() android.Path {
 	return d.stubsSrcJar
-}
-
-// AddJSONData is a temporary solution for droidstubs module to put action
-// related data into the module json graph.
-func (p *PrebuiltStubsSources) AddJSONData(d *map[string]interface{}) {
-	p.ModuleBase.AddJSONData(d)
-	(*d)["Actions"] = blueprint.FormatJSONDataActions(p.jsonDataActions)
 }
 
 func (p *PrebuiltStubsSources) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -870,7 +862,7 @@ func (p *PrebuiltStubsSources) GenerateAndroidBuildActions(ctx android.ModuleCon
 		jsonDataAction.Inputs = srcPaths.Strings()
 		jsonDataAction.Outputs = []string{outPath.String()}
 	}
-	p.jsonDataActions = []blueprint.JSONDataAction{jsonDataAction}
+	p.ModuleBase.SetJsonDataActions([]blueprint.JSONDataAction{jsonDataAction})
 }
 
 func (p *PrebuiltStubsSources) Prebuilt() *android.Prebuilt {

@@ -79,6 +79,12 @@ func (p *prebuiltEtcXml) timestampFilePath(ctx android.ModuleContext) android.Wr
 func (p *prebuiltEtcXml) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	p.PrebuiltEtc.GenerateAndroidBuildActions(ctx)
 
+	inputPath := p.PrebuiltEtc.SourceFilePath(ctx)
+	outputPath := p.timestampFilePath(ctx)
+	jsonDataAction := blueprint.JSONDataAction{
+		Inputs:  []string{inputPath.String()},
+		Outputs: []string{outputPath.String()},
+	}
 	if p.properties.Schema != nil {
 		schema := android.PathForModuleSrc(ctx, proptools.String(p.properties.Schema))
 
@@ -87,25 +93,27 @@ func (p *prebuiltEtcXml) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 			ctx.Build(pctx, android.BuildParams{
 				Rule:        xmllintDtd,
 				Description: "xmllint-dtd",
-				Input:       p.PrebuiltEtc.SourceFilePath(ctx),
-				Output:      p.timestampFilePath(ctx),
+				Input:       inputPath,
+				Output:      outputPath,
 				Implicit:    schema,
 				Args: map[string]string{
 					"dtd": schema.String(),
 				},
 			})
+			p.ModuleBase.SetJsonDataActions([]blueprint.JSONDataAction{jsonDataAction})
 			break
 		case ".xsd":
 			ctx.Build(pctx, android.BuildParams{
 				Rule:        xmllintXsd,
 				Description: "xmllint-xsd",
-				Input:       p.PrebuiltEtc.SourceFilePath(ctx),
-				Output:      p.timestampFilePath(ctx),
+				Input:       inputPath,
+				Output:      outputPath,
 				Implicit:    schema,
 				Args: map[string]string{
 					"xsd": schema.String(),
 				},
 			})
+			p.ModuleBase.SetJsonDataActions([]blueprint.JSONDataAction{jsonDataAction})
 			break
 		default:
 			ctx.PropertyErrorf("schema", "not supported extension: %q", schema.Ext())
@@ -115,12 +123,13 @@ func (p *prebuiltEtcXml) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 		ctx.Build(pctx, android.BuildParams{
 			Rule:        xmllintMinimal,
 			Description: "xmllint-minimal",
-			Input:       p.PrebuiltEtc.SourceFilePath(ctx),
-			Output:      p.timestampFilePath(ctx),
+			Input:       inputPath,
+			Output:      outputPath,
 		})
+		p.ModuleBase.SetJsonDataActions([]blueprint.JSONDataAction{jsonDataAction})
 	}
 
-	p.SetAdditionalDependencies([]android.Path{p.timestampFilePath(ctx)})
+	p.SetAdditionalDependencies([]android.Path{outputPath})
 }
 
 func PrebuiltEtcXmlFactory() android.Module {
