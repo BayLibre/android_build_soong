@@ -15,11 +15,13 @@
 package xml
 
 import (
+	"fmt"
 	"os"
 	"testing"
 
 	"android/soong/android"
 	"android/soong/etc"
+	"github.com/google/blueprint"
 )
 
 func TestMain(m *testing.M) {
@@ -81,4 +83,28 @@ func TestPrebuiltEtcXml(t *testing.T) {
 
 	m := result.ModuleForTests("foo.xml", "android_arm64_armv8-a").Module().(*prebuiltEtcXml)
 	android.AssertPathRelativeToTopEquals(t, "installDir", "out/soong/target/product/test_device/system/etc", m.InstallDirPath())
+}
+
+func TestAddJSONData(t *testing.T) {
+	prebuiltEtcXml := prebuiltEtcXml{}
+	prebuiltEtcXml.ModuleBase.SetJsonDataActions([]blueprint.JSONDataAction{
+		{
+			Inputs:  []string{},
+			Outputs: []string{},
+		},
+	})
+	jsonData := map[string]interface{}{}
+	prebuiltEtcXml.AddJSONData(&jsonData)
+	if fmt.Sprint(jsonData) != fmt.Sprint(
+		map[string]interface{}{
+			"Android": map[string]interface{}{},
+			"Actions": []map[string]interface{}{
+				{
+					"Inputs":  []string{},
+					"Outputs": []string{},
+				},
+			},
+		}) {
+		t.Errorf("The JSON data map isn't as expected %s.", jsonData)
+	}
 }
