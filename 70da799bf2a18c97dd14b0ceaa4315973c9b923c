@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09fdcab7_c91099c0",
+        "filename": "java/fuzz.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-12T18:00:14Z",
+      "side": 1,
+      "message": "This isn\u0027t quite accurate, linux_bionic is using bionic for the host.  Suggest:\n\n The",
+      "revId": "70da799bf2a18c97dd14b0ceaa4315973c9b923c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
