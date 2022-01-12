@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6809e64c_d13fe512",
+        "filename": "cc/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-12T19:30:03Z",
+      "side": 1,
+      "message": "transformSourceToObj is only called by compileObjs, and all the callers to compileObjs take a cc.ModuleContext (which wraps android.ModuleContext).  If you change transformSourceToObj to take a cc.ModuleContext you can add a method to it that returns the shared flags object.",
+      "range": {
+        "startLine": 561,
+        "startChar": 1,
+        "endLine": 567,
+        "endChar": 0
+      },
+      "revId": "2455959f1badcb8f8c21cc343d5f3e1a4f8fc4b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9261804_3be2afb2",
+        "filename": "cc/cc.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-12T19:30:03Z",
+      "side": 1,
+      "message": "Needed for what?",
+      "range": {
+        "startLine": 215,
+        "startChar": 47,
+        "endLine": 215,
+        "endChar": 70
+      },
+      "revId": "2455959f1badcb8f8c21cc343d5f3e1a4f8fc4b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7eae55a_1900f0f0",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1321,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-12T19:30:03Z",
+      "side": 1,
+      "message": "I think this would be simpler if you separated the list of tidy files and the list of files that the link step needs to depend on into different lists.  When WITH_TIDY\u003d1 or tidy: true, copy the list of tidy files to the list of linker deps.  You may be able to reuse an existing linker deps list.",
+      "revId": "2455959f1badcb8f8c21cc343d5f3e1a4f8fc4b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
