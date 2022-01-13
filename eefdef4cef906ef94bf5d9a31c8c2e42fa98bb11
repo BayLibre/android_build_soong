@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ab5c9d1_b4faa3b9",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-13T22:24:37Z",
+      "side": 1,
+      "message": "nit: can we omit NB here? it can be distracting for folks unfamiliar with the acronym",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 156,
+        "endChar": 7
+      },
+      "revId": "eefdef4cef906ef94bf5d9a31c8c2e42fa98bb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db2f4241_87a6ed3c",
+        "filename": "cc/cc.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 1946,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-13T22:24:37Z",
+      "side": 1,
+      "message": "It looks like there are a few debug messages like this left in, can you clean them up?",
+      "range": {
+        "startLine": 1943,
+        "startChar": 0,
+        "endLine": 1946,
+        "endChar": 3
+      },
+      "revId": "eefdef4cef906ef94bf5d9a31c8c2e42fa98bb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46c23d4e_1813c8b5",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-13T22:24:37Z",
+      "side": 1,
+      "message": "looking at what Soong is doing, the original input of a prebuilt is the unstripped version -- we currently aren\u0027t performing stripping on prebuilts. But it looks like having an unstripped output is relevant to Soong. Two things to address this:\n\n1. In our handling in mixed builds for now, we can use the shared library as both the stripped and unstripped output.\n\n2. Can you file a p2 bug for stripping of prebuilt shared libraries?",
+      "range": {
+        "startLine": 225,
+        "startChar": 3,
+        "endLine": 228,
+        "endChar": 4
+      },
+      "revId": "eefdef4cef906ef94bf5d9a31c8c2e42fa98bb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a735dc06_a91598e7",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-13T22:24:37Z",
+      "side": 1,
+      "message": "can you revert this change? skipping files for packaging may have correctness impacts.",
+      "range": {
+        "startLine": 381,
+        "startChar": 2,
+        "endLine": 388,
+        "endChar": 29
+      },
+      "revId": "eefdef4cef906ef94bf5d9a31c8c2e42fa98bb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a0a9e88_88fac7a5",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-13T22:24:37Z",
+      "side": 1,
+      "message": "should we verify this is non-empty given the above comment?\n\nif it is empty, we should be able to just use the output again -- the toc file isn\u0027t used it\u0027s just listed as an input in ninja",
+      "range": {
+        "startLine": 470,
+        "startChar": 37,
+        "endLine": 470,
+        "endChar": 51
+      },
+      "revId": "eefdef4cef906ef94bf5d9a31c8c2e42fa98bb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "107a6179_ec50ba81",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-13T22:24:37Z",
+      "side": 1,
+      "message": "we don\u0027t need this -- this isn\u0027t a static dep and there are no static deps?",
+      "range": {
+        "startLine": 478,
+        "startChar": 2,
+        "endLine": 478,
+        "endChar": 47
+      },
+      "revId": "eefdef4cef906ef94bf5d9a31c8c2e42fa98bb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
