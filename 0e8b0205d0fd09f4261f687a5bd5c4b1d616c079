@@ -130,6 +130,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba20b302_218abfeb",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-01-13T14:58:20Z",
+      "side": 1,
+      "message": "Sure, makes sense.",
+      "parentUuid": "0c036bd1_24ad994d",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 29
+      },
+      "revId": "0e8b0205d0fd09f4261f687a5bd5c4b1d616c079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79dd456b_502df835",
@@ -214,6 +238,30 @@
       "side": 1,
       "message": "I think they are different. `shouldInstallInApex` is a member of `bootImageConfig`, where the word \"bootImage\" is already in the class name, while `shouldInstallBootImageInApex` is a member of `BootclasspathFragmentApexContentInfo`. WDYT?",
       "parentUuid": "f5c16224_0e159eef",
+      "range": {
+        "startLine": 395,
+        "startChar": 30,
+        "endLine": 395,
+        "endChar": 49
+      },
+      "revId": "0e8b0205d0fd09f4261f687a5bd5c4b1d616c079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7d82baa_b1917015",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-01-13T14:58:20Z",
+      "side": 1,
+      "message": "Sounds good!",
+      "parentUuid": "2c7b4405_29adfcfb",
       "range": {
         "startLine": 395,
         "startChar": 30,
