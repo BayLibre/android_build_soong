@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72f5defd_a521788b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-01-13T14:50:49Z",
+      "side": 1,
+      "message": "No, we don\u0027t need it. The make entries are written by `BootclasspathFragmentModule.AndroidMkEntries` in java/bootclasspath_fragment.go and they are referenced as dependencies by `apexBundle.GenerateAndroidBuildActions` in apex.go.",
+      "parentUuid": "dda84a4e_6de2a784",
+      "revId": "0e8b0205d0fd09f4261f687a5bd5c4b1d616c079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7965a1fa_fe03c05e",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-01-13T10:45:33Z",
       "side": 1,
       "message": "Nit: reword as \"Installs for on-device boot image files\" to avoid tautology?",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 54
+      },
+      "revId": "0e8b0205d0fd09f4261f687a5bd5c4b1d616c079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3ac38ce_29f0bd13",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-01-13T14:50:49Z",
+      "side": 1,
+      "message": "Good idea!",
+      "parentUuid": "7965a1fa_fe03c05e",
       "range": {
         "startLine": 223,
         "startChar": 4,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c036bd1_24ad994d",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-01-13T14:50:49Z",
+      "side": 1,
+      "message": "I see \"should\" commonly used for this kind of booleans. For example, there are `ShouldSupportSdkVersion`, `shouldCopyBootFilesToPredefinedLocations` and `shouldBuildBootImages` in the same file.\n\nI don\u0027t have a strong preference, but `shouldInstallBootImageInApex` sounds slightly better to me.",
+      "parentUuid": "0459ac6a_840339a2",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 29
+      },
+      "revId": "0e8b0205d0fd09f4261f687a5bd5c4b1d616c079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79dd456b_502df835",
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "79593c77_386280f1",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-01-13T14:50:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79dd456b_502df835",
+      "range": {
+        "startLine": 575,
+        "startChar": 27,
+        "endLine": 575,
+        "endChar": 64
+      },
+      "revId": "0e8b0205d0fd09f4261f687a5bd5c4b1d616c079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5c16224_0e159eef",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-01-13T10:45:33Z",
       "side": 1,
       "message": "Unify the name with \u0027shouldInstallBootImageInApex\u0027 (I\u0027d make both just \"installInApex\").",
+      "range": {
+        "startLine": 395,
+        "startChar": 30,
+        "endLine": 395,
+        "endChar": 49
+      },
+      "revId": "0e8b0205d0fd09f4261f687a5bd5c4b1d616c079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c7b4405_29adfcfb",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-01-13T14:50:49Z",
+      "side": 1,
+      "message": "I think they are different. `shouldInstallInApex` is a member of `bootImageConfig`, where the word \"bootImage\" is already in the class name, while `shouldInstallBootImageInApex` is a member of `BootclasspathFragmentApexContentInfo`. WDYT?",
+      "parentUuid": "f5c16224_0e159eef",
       "range": {
         "startLine": 395,
         "startChar": 30,
