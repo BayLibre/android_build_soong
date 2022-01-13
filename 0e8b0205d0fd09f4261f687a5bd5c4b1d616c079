@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dda84a4e_6de2a784",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-01-13T10:45:33Z",
+      "side": 1,
+      "message": "Is there an accompanying change in makefiles?",
+      "revId": "0e8b0205d0fd09f4261f687a5bd5c4b1d616c079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7965a1fa_fe03c05e",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-01-13T10:45:33Z",
+      "side": 1,
+      "message": "Nit: reword as \"Installs for on-device boot image files\" to avoid tautology?",
+      "range": {
+        "startLine": 223,
+        "startChar": 4,
+        "endLine": 223,
+        "endChar": 54
+      },
+      "revId": "0e8b0205d0fd09f4261f687a5bd5c4b1d616c079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0459ac6a_840339a2",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-01-13T10:45:33Z",
+      "side": 1,
+      "message": "I\u0027d drop \"should\" in the name for brevity (here and in the method name).",
+      "range": {
+        "startLine": 396,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 29
+      },
+      "revId": "0e8b0205d0fd09f4261f687a5bd5c4b1d616c079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79dd456b_502df835",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-01-13T10:45:33Z",
+      "side": 1,
+      "message": "Nit: move to a local variable before line 568?",
+      "range": {
+        "startLine": 575,
+        "startChar": 27,
+        "endLine": 575,
+        "endChar": 64
+      },
+      "revId": "0e8b0205d0fd09f4261f687a5bd5c4b1d616c079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5c16224_0e159eef",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-01-13T10:45:33Z",
+      "side": 1,
+      "message": "Unify the name with \u0027shouldInstallBootImageInApex\u0027 (I\u0027d make both just \"installInApex\").",
+      "range": {
+        "startLine": 395,
+        "startChar": 30,
+        "endLine": 395,
+        "endChar": 49
+      },
+      "revId": "0e8b0205d0fd09f4261f687a5bd5c4b1d616c079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
