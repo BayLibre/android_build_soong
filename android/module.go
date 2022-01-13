@@ -1314,6 +1314,9 @@ type ModuleBase struct {
 	// set of dependency module:location mappings used to populate the license metadata for
 	// apex containers.
 	licenseInstallMap []string
+
+	// Help generate inputs/outputs of actions in the module json graph.
+	jsonDataActions []blueprint.JSONDataAction
 }
 
 // A struct containing all relevant information about a Bazel target converted via bp2build.
@@ -1381,6 +1384,9 @@ func (m *ModuleBase) AddJSONData(d *map[string]interface{}) {
 	(*d)["Android"] = map[string]interface{}{
 		// Properties set in Blueprint or in blueprint of a defaults modules
 		"SetProperties": m.propertiesWithValues(),
+	}
+	if len(m.jsonDataActions) > 0 {
+		(*d)["Actions"] = blueprint.FormatJSONDataActions(m.jsonDataActions)
 	}
 }
 
@@ -1918,6 +1924,12 @@ func (m *ModuleBase) VintfFragments() Paths {
 // apex container for use when generation the license metadata file.
 func (m *ModuleBase) SetLicenseInstallMap(installMap []string) {
 	m.licenseInstallMap = append(m.licenseInstallMap, installMap...)
+}
+
+// SetJsonDataActions appends the given list of blueprint.JSONDataActions to the
+// current array stored in the ModuleBase.
+func (m *ModuleBase) SetJsonDataActions(jsonDataActions []blueprint.JSONDataAction) {
+	m.jsonDataActions = append(m.jsonDataActions, jsonDataActions...)
 }
 
 func (m *ModuleBase) generateModuleTarget(ctx ModuleContext) {
@@ -2563,6 +2575,10 @@ func (m *moduleContext) Build(pctx PackageContext, params BuildParams) {
 			err.Error())
 	}
 	m.bp.Build(pctx.PackageContext, bparams)
+	m.module.base().SetJsonDataActions([]blueprint.JSONDataAction{{
+		Inputs:  bparams.Inputs,
+		Outputs: bparams.Outputs,
+	}})
 }
 
 func (m *moduleContext) Phony(name string, deps ...Path) {
