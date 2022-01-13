@@ -4981,9 +4981,15 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 	conly := []string{"-fPIC", "${config.CommonGlobalConlyflags}"}
 	cppOnly := []string{"-fPIC", "${config.CommonGlobalCppflags}", "${config.DeviceGlobalCppflags}", "${config.ArmCppflags}"}
 
+<<<<<<< PATCH SET (64dbfe Bump the default from gnu++17 to gnu++20.)
+	cflags := []string{"-Wall", "-Werror", "-std=candcpp"}
+	cstd := []string{"-std=gnu99", "-std=conly"}
+	cppstd := []string{"-std=gnu++20", "-std=cpp", "-fno-rtti"}
+=======
 	cflags := []string{"-Werror", "-std=candcpp"}
 	cstd := []string{"-std=gnu17", "-std=conly"}
 	cppstd := []string{"-std=gnu++17", "-std=cpp", "-fno-rtti"}
+>>>>>>> BASE      (c62b27 Merge "Mark android_* modules with java_resources as unconve)
 
 	lastIncludes := []string{
 		"out/soong/ndk/sysroot/usr/include",

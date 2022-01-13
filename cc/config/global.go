@@ -312,9 +312,15 @@ var (
 		"-w",
 	}
 
+<<<<<<< PATCH SET (64dbfe Bump the default from gnu++17 to gnu++20.)
+	CStdVersion               = "gnu99"
+	CppStdVersion             = "gnu++20"
+	ExperimentalCStdVersion   = "gnu11"
+=======
 	CStdVersion               = "gnu17"
 	CppStdVersion             = "gnu++17"
 	ExperimentalCStdVersion   = "gnu2x"
+>>>>>>> BASE      (c62b27 Merge "Mark android_* modules with java_resources as unconve)
 	ExperimentalCppStdVersion = "gnu++2a"
 
 	// prebuilts/clang default settings.
