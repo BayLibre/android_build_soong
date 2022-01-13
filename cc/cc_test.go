@@ -3982,7 +3982,7 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 
 	cflags := []string{"-Wall", "-Werror", "-std=candcpp"}
 	cstd := []string{"-std=gnu99", "-std=conly"}
-	cppstd := []string{"-std=gnu++17", "-std=cpp", "-fno-rtti"}
+	cppstd := []string{"-std=gnu++20", "-std=cpp", "-fno-rtti"}
 
 	lastIncludes := []string{
 		"out/soong/ndk/sysroot/usr/include",
