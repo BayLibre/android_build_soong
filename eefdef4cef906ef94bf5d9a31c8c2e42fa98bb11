@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b56fbf1_325b7b7e",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-14T21:58:24Z",
+      "side": 1,
+      "message": "1. Yes, we should remove this check and use the same output file that\u0027s currently our `.outputFile` as the unstripped output file until we\u0027ve addressed b/214600441. Let\u0027s add a TODO with the bug you filed above `.outputFile` that it needs to be changed to the stripped version.",
+      "parentUuid": "3a4edbe9_909c62f2",
+      "range": {
+        "startLine": 225,
+        "startChar": 3,
+        "endLine": 228,
+        "endChar": 4
+      },
+      "revId": "eefdef4cef906ef94bf5d9a31c8c2e42fa98bb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a735dc06_a91598e7",
         "filename": "cc/fuzz.go",
         "patchSetId": 23
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "I\u0027m not sure if what I\u0027ve done in response to this comment is what you meant, so let please let me know if I\u0027m off base.",
       "parentUuid": "0a0a9e88_88fac7a5",
+      "range": {
+        "startLine": 470,
+        "startChar": 37,
+        "endLine": 470,
+        "endChar": 51
+      },
+      "revId": "eefdef4cef906ef94bf5d9a31c8c2e42fa98bb11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d00b016_090cd1ee",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 23
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-14T21:58:24Z",
+      "side": 1,
+      "message": "we should be checking ccInfo.TocFile, not toc as android.PathForBazelOut will always return a non-empty string",
+      "parentUuid": "eed354b5_d2b2085a",
       "range": {
         "startLine": 470,
         "startChar": 37,
