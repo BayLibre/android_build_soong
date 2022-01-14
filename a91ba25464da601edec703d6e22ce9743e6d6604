@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bba99c1_2bc19811",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2022-01-14T19:59:19Z",
+      "side": 1,
+      "message": "Retrying presubmit after resolving merger errors.",
+      "revId": "a91ba25464da601edec703d6e22ce9743e6d6604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
