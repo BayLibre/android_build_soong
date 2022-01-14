@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22b7a743_ac2edd6e",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-14T23:04:11Z",
+      "side": 1,
+      "message": "*not the stripped",
+      "parentUuid": "c040b313_5c7f5551",
+      "range": {
+        "startLine": 472,
+        "startChar": 35,
+        "endLine": 472,
+        "endChar": 76
+      },
+      "revId": "fb41eff576d3075d1659d67eab465cbeea39a55c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec132081_9fef7d84",
         "filename": "cc/prebuilt.go",
         "patchSetId": 26
