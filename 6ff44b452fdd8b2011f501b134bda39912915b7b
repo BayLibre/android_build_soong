@@ -16,6 +16,24 @@
       "message": "It might be worth mentioning that lint name in the commit message, but that might also be too picky.",
       "revId": "6ff44b452fdd8b2011f501b134bda39912915b7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f869901_b8a88da7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1047255
+      },
+      "writtenOn": "2022-01-14T01:16:24Z",
+      "side": 1,
+      "message": "Updated the commit message to include the lint name and a link to a GitHub issue discussion.",
+      "parentUuid": "c37982c3_11a25fc2",
+      "revId": "6ff44b452fdd8b2011f501b134bda39912915b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
