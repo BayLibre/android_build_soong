@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc562c0f_64208ce1",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-14T23:03:53Z",
+      "side": 1,
+      "message": "unstrippedOutputFile will be nil here, we don\u0027t need to verify that fact",
+      "range": {
+        "startLine": 471,
+        "startChar": 1,
+        "endLine": 471,
+        "endChar": 43
+      },
+      "revId": "fb41eff576d3075d1659d67eab465cbeea39a55c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c040b313_5c7f5551",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-14T23:03:53Z",
+      "side": 1,
+      "message": "out is currently the unstripped output, not the unstripped",
+      "range": {
+        "startLine": 472,
+        "startChar": 35,
+        "endLine": 472,
+        "endChar": 76
+      },
+      "revId": "fb41eff576d3075d1659d67eab465cbeea39a55c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec132081_9fef7d84",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-14T23:03:53Z",
+      "side": 1,
+      "message": "can you update the test for both the unstrippedOutputFile and toc changes?",
+      "range": {
+        "startLine": 480,
+        "startChar": 1,
+        "endLine": 480,
+        "endChar": 2
+      },
+      "revId": "fb41eff576d3075d1659d67eab465cbeea39a55c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
