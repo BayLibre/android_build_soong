@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c8d42a3_0c07e967",
+        "filename": "bp2build/java_genrule_host_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-14T21:40:15Z",
+      "side": 1,
+      "message": "these tests are looking super similar -- is there a way we can reduce the duplication somewhat?",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "b01ddacf0b29c64c13d29c17a548f9fab9c4c9ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
