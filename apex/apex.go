@@ -992,6 +992,19 @@ func apexInfoMutator(mctx android.TopDownMutatorContext) {
 	}
 }
 
+var _ java.LintDepSetsIntf = (*apexBundle)(nil)
+
+func (a *apexBundle) LintDepSets() java.LintDepSets {
+	return java.LintDepSets{}
+}
+
+func (a *apexBundle) GetStrictUpdatabilityLinting() bool {
+	return a.Updatable()
+}
+
+func (a *apexBundle) SetStrictUpdatabilityLinting(strictLinting bool) {
+}
+
 // apexUniqueVariationsMutator checks if any dependencies use unique apex variations. If so, use
 // unique apex variations for this module. See android/apex.go for more about unique apex variant.
 // TODO(jiyong): move this to android/apex.go?

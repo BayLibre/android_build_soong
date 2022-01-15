@@ -661,10 +661,13 @@ func lintZip(ctx android.BuilderContext, paths android.Paths, outputPath android
 func enforceStrictUpdatabilityLintingMutator(ctx android.TopDownMutatorContext) {
 	m := ctx.Module()
 	if d, ok := m.(LintDepSetsIntf); ok && d.GetStrictUpdatabilityLinting() {
-		ctx.VisitDirectDepsWithTag(staticLibTag, func(d android.Module) {
-			if a, ok := d.(LintDepSetsIntf); ok {
+		// walk deps till a lintable module is reached
+		ctx.WalkDeps(func(child, parent android.Module) bool {
+			if a, ok := child.(LintDepSetsIntf); ok {
 				a.SetStrictUpdatabilityLinting(true)
+				return false
 			}
+			return true
 		})
 	}
 }
