@@ -98,7 +98,7 @@ func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	srcs := android.PathsForModuleSrc(ctx, bpf.properties.Srcs)
 
 	for _, src := range srcs {
-		obj := android.ObjPathWithExt(ctx, "", src, "o")
+		obj := android.PathForModuleOut(ctx, ctx.ModuleName())
 
 		ctx.Build(pctx, android.BuildParams{
 			Rule:   ccRule,

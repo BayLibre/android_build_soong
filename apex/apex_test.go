@@ -623,7 +623,7 @@ func TestDefaults(t *testing.T) {
 			java_libs: ["myjar"],
 			apps: ["AppFoo"],
 			rros: ["rro"],
-			bpfs: ["bpf"],
+			bpfs: ["bpf.o"],
 			updatable: false,
 		}
 
@@ -672,8 +672,8 @@ func TestDefaults(t *testing.T) {
 		}
 
 		bpf {
-			name: "bpf",
-			srcs: ["bpf.c", "bpf2.c"],
+			name: "bpf.o",
+			srcs: ["bpf.c"],
 		}
 
 	`)
@@ -684,7 +684,6 @@ func TestDefaults(t *testing.T) {
 		"app/AppFoo/AppFoo.apk",
 		"overlay/blue/rro.apk",
 		"etc/bpf/bpf.o",
-		"etc/bpf/bpf2.o",
 	})
 }
 
@@ -5986,7 +5985,7 @@ func TestOverrideApex(t *testing.T) {
 			name: "myapex",
 			key: "myapex.key",
 			apps: ["app"],
-			bpfs: ["bpf"],
+			bpfs: ["bpf.o"],
 			prebuilts: ["myetc"],
 			overrides: ["oldapex"],
 			updatable: false,
@@ -5996,7 +5995,7 @@ func TestOverrideApex(t *testing.T) {
 			name: "override_myapex",
 			base: "myapex",
 			apps: ["override_app"],
-			bpfs: ["override_bpf"],
+			bpfs: ["override_bpf.o"],
 			prebuilts: ["override_myetc"],
 			overrides: ["unknownapex"],
 			logging_parent: "com.foo.bar",
@@ -6038,12 +6037,12 @@ func TestOverrideApex(t *testing.T) {
 		}
 
 		bpf {
-			name: "bpf",
+			name: "bpf.o",
 			srcs: ["bpf.c"],
 		}
 
 		bpf {
-			name: "override_bpf",
+			name: "override_bpf.o",
 			srcs: ["override_bpf.c"],
 		}
 
@@ -6107,7 +6106,7 @@ func TestOverrideApex(t *testing.T) {
 	ensureContains(t, androidMk, "LOCAL_MODULE_STEM := override_myapex.apex")
 	ensureContains(t, androidMk, "LOCAL_OVERRIDES_MODULES := unknownapex myapex")
 	ensureNotContains(t, androidMk, "LOCAL_MODULE := app.myapex")
-	ensureNotContains(t, androidMk, "LOCAL_MODULE := bpf.myapex")
+	ensureNotContains(t, androidMk, "LOCAL_MODULE := bpf.o.myapex")
 	ensureNotContains(t, androidMk, "LOCAL_MODULE := override_app.myapex")
 	ensureNotContains(t, androidMk, "LOCAL_MODULE := apex_manifest.pb.myapex")
 	ensureNotContains(t, androidMk, "LOCAL_MODULE_STEM := myapex.apex")
