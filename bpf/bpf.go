@@ -130,13 +130,13 @@ func (bpf *bpf) AndroidMk() android.AndroidMkData {
 				localModulePath += "/" + bpf.properties.Sub_dir
 			}
 			for _, obj := range bpf.objs {
-				objName := name + "_" + obj.Base()
+				objName := name + "_" + bpf.Name()
 				names = append(names, objName)
 				fmt.Fprintln(w, "include $(CLEAR_VARS)")
 				fmt.Fprintln(w, "LOCAL_MODULE := ", objName)
 				data.Entries.WriteLicenseVariables(w)
 				fmt.Fprintln(w, "LOCAL_PREBUILT_MODULE_FILE :=", obj.String())
-				fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", obj.Base())
+				fmt.Fprintln(w, "LOCAL_MODULE_STEM :=", bpf.Name())
 				fmt.Fprintln(w, "LOCAL_MODULE_CLASS := ETC")
 				fmt.Fprintln(w, localModulePath)
 				fmt.Fprintln(w, "include $(BUILD_PREBUILT)")
