@@ -3355,3 +3355,18 @@ func (a *apexBundle) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: a.Name()}, attrs)
 }
+
+// Implement lintDepSetsIntf for use in enforce_strict_updatability_linting topDownMutator
+var _ java.LintDepSetsIntf = (*apexBundle)(nil)
+
+func (a *apexBundle) LintDepSets() java.LintDepSets {
+	return java.LintDepSets{}
+}
+
+// For updatable apexes, propogate strict_updatability_linting to transitive deps
+func (a *apexBundle) GetStrictUpdatabilityLinting() bool {
+	return a.Updatable()
+}
+
+func (a *apexBundle) SetStrictUpdatabilityLinting(bool) {
+}
