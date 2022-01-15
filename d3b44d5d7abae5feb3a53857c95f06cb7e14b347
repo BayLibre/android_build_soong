@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000019291552",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1950578?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "27456de9_541c58ab",
+          "description": "Change to \"apex/apex.go\"",
+          "replacements": [
+            {
+              "path": "apex/apex.go",
+              "range": {
+                "startLine": 3372,
+                "startChar": 25,
+                "endLine": 3372,
+                "endChar": 34
+              },
+              "replacement": "propagate"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "2b96fe57_0e01b6a9",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3372,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-01-15T00:36:27Z",
+      "side": 1,
+      "message": "Common typo found: \"propogate\" -- should it be \"propagate\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 3372,
+        "startChar": 25,
+        "endLine": 3372,
+        "endChar": 34
+      },
+      "revId": "d3b44d5d7abae5feb3a53857c95f06cb7e14b347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
