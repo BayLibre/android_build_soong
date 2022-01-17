@@ -112,6 +112,8 @@ type TestBinaryProperties struct {
 
 	// Add parameterized mainline modules to auto generated test config. The options will be
 	// handled by TradeFed to download and install the specified modules on the device.
+	// This option will also configire the MainlineTestModuleController so that the test is
+	// skipped if the specified modules are not preinstalled on device.
 	Test_mainline_modules []string
 
 	// Install the test into a folder named for the module in all test suites.
@@ -399,6 +401,21 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 	var configs []tradefed.Config
 	for _, module := range test.Properties.Test_mainline_modules {
 		configs = append(configs, tradefed.Option{Name: "config-descriptor:metadata", Key: "mainline-param", Value: module})
+	}
+	if test.Properties.Test_mainline_modules != nil {
+		var options []tradefed.Option
+		// test_mainline_modules is an array of strings.
+		// Each string is a list of modules separated by "+".
+		for _, elem := range test.Properties.Test_mainline_modules {
+			var modules = strings.Split(elem, "+")
+			for _, module := range modules {
+				options = append(options, tradefed.Option{Name: "mainline-module-package-name", Value: module})
+			}
+		}
+		configs = append(configs, tradefed.Object{"module_controller", "com.android.tradefed.testtype.suite.module.MainlineTestModuleController", options})
+		// Don't autogenerate the module-arg to enable the controller, because otherwise the
+		// test cannot be run on devices that don't have the module preinstalled
+		// (e.g., AOSP builds).
 	}
 	if Bool(test.Properties.Require_root) {
 		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.RootTargetPreparer", nil})
