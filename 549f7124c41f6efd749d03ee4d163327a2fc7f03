@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b4b731_00a22f70",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-01-18T18:38:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c24ea9e8_8b84f004",
+      "range": {
+        "startLine": 327,
+        "startChar": 68,
+        "endLine": 327,
+        "endChar": 73
+      },
+      "revId": "549f7124c41f6efd749d03ee4d163327a2fc7f03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a57a6ed_c596d4f4",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ae65ef_d03bef0a",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-01-18T18:38:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a57a6ed_c596d4f4",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 0
+      },
+      "revId": "549f7124c41f6efd749d03ee4d163327a2fc7f03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed93645b_af888998",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-01-17T14:54:05Z",
       "side": 1,
       "message": "64",
+      "range": {
+        "startLine": 395,
+        "startChar": 68,
+        "endLine": 395,
+        "endChar": 73
+      },
+      "revId": "549f7124c41f6efd749d03ee4d163327a2fc7f03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9a9cc3f_325cd9dd",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-01-18T18:38:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed93645b_af888998",
       "range": {
         "startLine": 395,
         "startChar": 68,
