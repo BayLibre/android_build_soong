@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "191c1e44_435eb4f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-01-18T20:26:19Z",
+      "side": 1,
+      "message": "Addressed all comments AFAICT. If the remaining two are also satisfied, I\u0027ll \u0027Done\u0027 them upon CR.",
+      "revId": "69ee490ce703e60efda5d0b4416087b21c3b1404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

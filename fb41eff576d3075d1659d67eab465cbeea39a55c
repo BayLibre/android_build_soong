@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04542dc2_b631c25d",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-01-18T20:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc562c0f_64208ce1",
+      "range": {
+        "startLine": 471,
+        "startChar": 1,
+        "endLine": 471,
+        "endChar": 43
+      },
+      "revId": "fb41eff576d3075d1659d67eab465cbeea39a55c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c040b313_5c7f5551",
@@ -71,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c66225e_62d6848a",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-01-18T20:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22b7a743_ac2edd6e",
+      "range": {
+        "startLine": 472,
+        "startChar": 35,
+        "endLine": 472,
+        "endChar": 76
+      },
+      "revId": "fb41eff576d3075d1659d67eab465cbeea39a55c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec132081_9fef7d84",
@@ -84,6 +132,30 @@
       "writtenOn": "2022-01-14T23:03:53Z",
       "side": 1,
       "message": "can you update the test for both the unstrippedOutputFile and toc changes?",
+      "range": {
+        "startLine": 480,
+        "startChar": 1,
+        "endLine": 480,
+        "endChar": 2
+      },
+      "revId": "fb41eff576d3075d1659d67eab465cbeea39a55c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa233a4c_efca7a01",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 26
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-01-18T20:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec132081_9fef7d84",
       "range": {
         "startLine": 480,
         "startChar": 1,
