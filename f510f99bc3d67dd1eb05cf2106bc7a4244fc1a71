@@ -189,6 +189,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eec1cb2d_25b03d7a",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3416,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2022-01-18T03:59:18Z",
+      "side": 1,
+      "message": "Great, thanks for trying a select",
+      "parentUuid": "26d974e4_fa95f002",
+      "range": {
+        "startLine": 3391,
+        "startChar": 0,
+        "endLine": 3416,
+        "endChar": 0
+      },
+      "revId": "f510f99bc3d67dd1eb05cf2106bc7a4244fc1a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "904ab672_46ec8da3",
