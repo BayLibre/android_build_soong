@@ -663,6 +663,9 @@ func enforceStrictUpdatabilityLintingMutator(ctx android.TopDownMutatorContext) 
 	if d, ok := m.(LintDepSetsIntf); ok && d.GetStrictUpdatabilityLinting() {
 		ctx.VisitDirectDeps(func(d android.Module) {
 			if a, ok := d.(LintDepSetsIntf); ok {
+				if d.Name() == "core-libart" || d.Name() == "core-oj" {
+					ctx.ModuleErrorf("Test: %v sets %v to strict lint", m.Name(), d.Name())
+				}
 				a.SetStrictUpdatabilityLinting(true)
 			}
 		})
