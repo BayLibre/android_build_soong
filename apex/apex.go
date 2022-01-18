@@ -3369,9 +3369,19 @@ func (a *apexBundle) LintDepSets() java.LintDepSets {
 	return java.LintDepSets{}
 }
 
+// TODO: b/<create_bug_id> Whittle the denylist
+// Transitive deps of certain mainline modules baseline NewApi errors
+// Skip these mainline modules for now
+var (
+	strictUpdatabilityModulesDenylist = []string{
+		"com.android.art",
+		"com.anrdoid.art.debug",
+	}
+)
+
 // For updatable apexes, propagate strict_updatability_linting to transitive deps
 func (a *apexBundle) GetStrictUpdatabilityLinting() bool {
-	return a.Updatable()
+	return a.Updatable() && !android.InList(a.Name(), strictUpdatabilityModulesDenylist)
 }
 
 func (a *apexBundle) SetStrictUpdatabilityLinting(bool) {
