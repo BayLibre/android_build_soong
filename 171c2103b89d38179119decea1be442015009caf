@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fa16322_a27789ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2022-01-18T16:05:20Z",
+      "side": 1,
+      "message": "Hi Colin, could you please have a look at this? We\u0027d like to land it on Thursday. It seems all branches and targets are OK with Java 11 as the default.",
+      "revId": "171c2103b89d38179119decea1be442015009caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
