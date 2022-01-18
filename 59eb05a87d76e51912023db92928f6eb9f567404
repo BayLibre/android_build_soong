@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a32ee55e_37de03c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-18T23:44:06Z",
+      "side": 1,
+      "message": "I don\u0027t understand why this would be necessary, you have two separate modules in system/bpfprogs, which will each have their own intermediate directory and shouldn\u0027t have conflicting files even if they use the same name.",
+      "revId": "59eb05a87d76e51912023db92928f6eb9f567404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
