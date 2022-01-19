@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39ade5a0_07fe5628",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-01-19T19:00:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13de06cc_209ed67d",
+      "range": {
+        "startLine": 221,
+        "startChar": 3,
+        "endLine": 221,
+        "endChar": 69
+      },
+      "revId": "bd341122eaae982645fec59fbfd643209ee32ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eba96520_b5ca9fde",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-19T18:24:15Z",
       "side": 1,
       "message": "We don\u0027t have a TocFile for prebuilts when building with Bazel. Let\u0027s omit this, so this test will be more similar to a typical mixed build.",
+      "range": {
+        "startLine": 396,
+        "startChar": 4,
+        "endLine": 396,
+        "endChar": 32
+      },
+      "revId": "bd341122eaae982645fec59fbfd643209ee32ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60e5b0b8_cff10ccd",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-01-19T19:00:22Z",
+      "side": 1,
+      "message": "I interpreted this as leaving out checking toc entirely. Please lmk if I misunderstood.",
+      "parentUuid": "eba96520_b5ca9fde",
       "range": {
         "startLine": 396,
         "startChar": 4,
