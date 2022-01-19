@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1286e95e_ea87bb47",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3406,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-01-19T06:23:15Z",
+      "side": 1,
+      "message": "no longer apply",
+      "parentUuid": "90673922_ef7deef0",
+      "range": {
+        "startLine": 3406,
+        "startChar": 3,
+        "endLine": 3406,
+        "endChar": 27
+      },
+      "revId": "f510f99bc3d67dd1eb05cf2106bc7a4244fc1a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "972b361d_2d34e983",
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "decided to not support it for now",
       "parentUuid": "972b361d_2d34e983",
+      "range": {
+        "startLine": 3414,
+        "startChar": 9,
+        "endLine": 3414,
+        "endChar": 17
+      },
+      "revId": "f510f99bc3d67dd1eb05cf2106bc7a4244fc1a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3596230_cc4d28ca",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 3414,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-01-19T06:23:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c1fa9175_b75e2123",
       "range": {
         "startLine": 3414,
         "startChar": 9,
