@@ -93,6 +93,30 @@
       },
       "revId": "bd341122eaae982645fec59fbfd643209ee32ac2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e14e96b9_1ba0c829",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-19T22:26:59Z",
+      "side": 1,
+      "message": "Just meant to leave it out of LabelToCcInfo but to cover the case at cc/prebuilt.go:477, which is the path mixed builds will currently take since we don\u0027t support ToC for prebuilt shared libraries.\n\nBut for more complete coverage, let\u0027s test both for TocFile set and unset.",
+      "parentUuid": "60e5b0b8_cff10ccd",
+      "range": {
+        "startLine": 396,
+        "startChar": 4,
+        "endLine": 396,
+        "endChar": 32
+      },
+      "revId": "bd341122eaae982645fec59fbfd643209ee32ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
