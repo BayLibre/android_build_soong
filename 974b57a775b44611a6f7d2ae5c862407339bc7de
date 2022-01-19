@@ -16,6 +16,29 @@
       "message": "Thank you!",
       "revId": "974b57a775b44611a6f7d2ae5c862407339bc7de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "346c133e_4e599f16",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 3205,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-19T16:11:41Z",
+      "side": 1,
+      "message": "Note that this would only trigger for older jars. The trigger was only really introduced for permitted_packages case. However, I appreciate Alan\u0027s feedback about the old wording.",
+      "range": {
+        "startLine": 3205,
+        "startChar": 3,
+        "endLine": 3205,
+        "endChar": 74
+      },
+      "revId": "974b57a775b44611a6f7d2ae5c862407339bc7de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
