@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13de06cc_209ed67d",
+        "filename": "cc/fuzz.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-19T18:24:15Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be commented here. TODOs should be localized to where something needs to happen for the bug.\n\nThis particular piece isn\u0027t Bazel-specific and is only looking for unstripped, not stripped outputs, so we have nothing we need to update here once we correct the Bazel rule.",
+      "range": {
+        "startLine": 221,
+        "startChar": 3,
+        "endLine": 221,
+        "endChar": 69
+      },
+      "revId": "bd341122eaae982645fec59fbfd643209ee32ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eba96520_b5ca9fde",
+        "filename": "cc/prebuilt_test.go",
+        "patchSetId": 28
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-19T18:24:15Z",
+      "side": 1,
+      "message": "We don\u0027t have a TocFile for prebuilts when building with Bazel. Let\u0027s omit this, so this test will be more similar to a typical mixed build.",
+      "range": {
+        "startLine": 396,
+        "startChar": 4,
+        "endLine": 396,
+        "endChar": 32
+      },
+      "revId": "bd341122eaae982645fec59fbfd643209ee32ac2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
