@@ -16,6 +16,24 @@
       "message": "I don\u0027t understand why this would be necessary, you have two separate modules in system/bpfprogs, which will each have their own intermediate directory and shouldn\u0027t have conflicting files even if they use the same name.",
       "revId": "59eb05a87d76e51912023db92928f6eb9f567404",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc7809de_7f186d6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2022-01-19T03:57:34Z",
+      "side": 1,
+      "message": "AFAICT the conflict occurs in $OUT/system/etc/bpf where all bpf .o files are placed after being built. If I rename a bpf .c file and update srcs (but not name) in its Android.bp, the .o file in $OUT/system/etc/bpf reflects the source file name.\n\nDefinitely open to better ways of fixing this, but with the current behavior bpf .c files essentially have to have globally unique names which seems wrong.",
+      "parentUuid": "a32ee55e_37de03c7",
+      "revId": "59eb05a87d76e51912023db92928f6eb9f567404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
