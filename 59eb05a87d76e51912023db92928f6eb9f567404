@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dc1bd2b_63974192",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2022-01-19T18:34:11Z",
+      "side": 1,
+      "message": "The immediate purpose is for tests, since AFAICT some fix for this behavior is necessary to make the test added by this topic possible. That said, the current behavior was also surprising/unintuitive to me at least (I expected changing the module name to change the name of the resulting .o file)",
+      "parentUuid": "43401837_cdea2824",
+      "revId": "59eb05a87d76e51912023db92928f6eb9f567404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c124f6e_fd90ba28",
