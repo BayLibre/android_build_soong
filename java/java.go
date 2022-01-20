@@ -1,4 +1,4 @@
-// Copyright 2015 Google Inc. All rights reserved.
+// Copyright 2016 Google Inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -325,6 +325,7 @@ func IsJniDepTag(depTag blueprint.DependencyTag) bool {
 
 var (
 	dataNativeBinsTag       = dependencyTag{name: "dataNativeBins"}
+	dataDeviceBinsTag       = dependencyTag{name: "dataDeviceBins"}
 	staticLibTag            = dependencyTag{name: "staticlib"}
 	libTag                  = dependencyTag{name: "javalib", runtimeLinked: true}
 	java9LibTag             = dependencyTag{name: "java9lib", runtimeLinked: true}
@@ -815,6 +816,9 @@ type testProperties struct {
 	// the test
 	Data []string `android:"path"`
 
+	// list of device binary modules that should be installed alongside the test
+	Data_device_bins []string `android:"arch_variant"`
+
 	// Flag to indicate whether or not to create test config automatically. If AndroidTest.xml
 	// doesn't exist next to the Android.bp, this attribute doesn't need to be set to true
 	// explicitly.
@@ -910,6 +914,12 @@ func (j *TestHost) DepsMutator(ctx android.BottomUpMutatorContext) {
 		}
 	}
 
+	if len(j.testProperties.Data_device_bins) > 0 {
+		for _, target := range ctx.MultiTargets() {
+			ctx.AddVariationDependencies(target.Variations(), dataDeviceBinsTag, j.testProperties.Data_device_bins...)
+		}
+	}
+
 	if len(j.testProperties.Jni_libs) > 0 {
 		for _, target := range ctx.MultiTargets() {
 			sharedLibVariations := append(target.Variations(), blueprint.Variation{Mutator: "link", Variation: "shared"})
@@ -925,13 +935,24 @@ func (j *TestHost) AddExtraResource(p android.Path) {
 }
 
 func (j *Test) GenerateAndroidBuildActions(ctx android.ModuleContext) {
+	var configs []tradefed.Config
+	if len(j.testProperties.Data_device_bins) > 0 {
+		moduleName := j.Name()
+		remoteDir := "/data/local/tests/unrestricted/" + moduleName + "/"
+		options := []tradefed.Option{{Name: "cleanup", Value: "true"}}
+		for _, bin := range j.testProperties.Data_device_bins {
+			options = append(options, tradefed.Option{Name: "push-file", Key: bin, Value: remoteDir + bin})
+		}
+		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.PushFilePreparer", options})
+	}
+
 	if j.testProperties.Test_options.Unit_test == nil && ctx.Host() {
 		// TODO(b/): Clean temporary heuristic to avoid unexpected onboarding.
 		defaultUnitTest := !inList("tradefed", j.properties.Libs) && !inList("cts", j.testProperties.Test_suites)
 		j.testProperties.Test_options.Unit_test = proptools.BoolPtr(defaultUnitTest)
 	}
 	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.testProperties.Test_config, j.testProperties.Test_config_template,
-		j.testProperties.Test_suites, j.testProperties.Auto_gen_config, j.testProperties.Test_options.Unit_test)
+		j.testProperties.Test_suites, configs, j.testProperties.Auto_gen_config, j.testProperties.Test_options.Unit_test)
 
 	j.data = android.PathsForModuleSrc(ctx, j.testProperties.Data)
 
@@ -973,7 +994,7 @@ func (j *TestHelperLibrary) GenerateAndroidBuildActions(ctx android.ModuleContex
 
 func (j *JavaTestImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	j.testConfig = tradefed.AutoGenJavaTestConfig(ctx, j.prebuiltTestProperties.Test_config, nil,
-		j.prebuiltTestProperties.Test_suites, nil, nil)
+		j.prebuiltTestProperties.Test_suites, nil, nil, nil)
 
 	j.Import.GenerateAndroidBuildActions(ctx)
 }
