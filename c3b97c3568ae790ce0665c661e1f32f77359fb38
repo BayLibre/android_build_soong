@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30211230_5e971bfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 31
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-01-20T17:06:31Z",
+      "side": 1,
+      "message": "Bypass-Presubmit only because of infra issues. Presubmit-Ready because we want as much to test as possible. Gerrit will run presubmit and then not care if it failed. Will NOT auto-submit.",
+      "revId": "c3b97c3568ae790ce0665c661e1f32f77359fb38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
