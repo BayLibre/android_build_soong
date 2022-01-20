@@ -16,6 +16,7 @@ package tradefed
 
 import (
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -160,6 +161,12 @@ func AutoGenNativeTestConfig(ctx android.ModuleContext, testConfigProp *string,
 func AutoGenShellTestConfig(ctx android.ModuleContext, testConfigProp *string,
 	testConfigTemplateProp *string, testSuites []string, config []Config, autoGenConfig *bool, outputFileName string) android.Path {
 	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig, testConfigTemplateProp)
+	if testConfigProp != nil {
+		fmt.Fprintln(os.Stderr, "HERE5 "+*testConfigProp)
+	}
+	if testConfigTemplateProp != nil {
+		fmt.Fprintln(os.Stderr, "HERE5 "+*testConfigTemplateProp)
+	}
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
@@ -167,6 +174,7 @@ func AutoGenShellTestConfig(ctx android.ModuleContext, testConfigProp *string,
 		} else {
 			autogenTemplateWithNameAndOutputFile(ctx, ctx.ModuleName(), autogenPath, "${ShellTestConfigTemplate}", config, outputFileName, "")
 		}
+		fmt.Fprintln(os.Stderr, "HERE6 "+autogenPath.String())
 		return autogenPath
 	}
 	return path
@@ -188,23 +196,31 @@ func AutoGenNativeBenchmarkTestConfig(ctx android.ModuleContext, testConfigProp 
 }
 
 func AutoGenJavaTestConfig(ctx android.ModuleContext, testConfigProp *string, testConfigTemplateProp *string,
-	testSuites []string, autoGenConfig *bool, unitTest *bool) android.Path {
+	testSuites []string, config []Config, autoGenConfig *bool, unitTest *bool) android.Path {
+	if testConfigProp != nil {
+		fmt.Fprintln(os.Stderr, "HERE3 "+*testConfigProp)
+	}
+	if testConfigTemplateProp != nil {
+		fmt.Fprintln(os.Stderr, "HERE3 "+*testConfigTemplateProp)
+	}
 	path, autogenPath := testConfigPath(ctx, testConfigProp, testSuites, autoGenConfig, testConfigTemplateProp)
+	fmt.Fprintln(os.Stderr, "HERE7 ", path, autogenPath)
 	if autogenPath != nil {
 		templatePath := getTestConfigTemplate(ctx, testConfigTemplateProp)
 		if templatePath.Valid() {
-			autogenTemplate(ctx, autogenPath, templatePath.String(), nil, "")
+			autogenTemplate(ctx, autogenPath, templatePath.String(), config, "")
 		} else {
 			if ctx.Device() {
-				autogenTemplate(ctx, autogenPath, "${JavaTestConfigTemplate}", nil, "")
+				autogenTemplate(ctx, autogenPath, "${JavaTestConfigTemplate}", config, "")
 			} else {
 				if Bool(unitTest) {
-					autogenTemplate(ctx, autogenPath, "${JavaHostUnitTestConfigTemplate}", nil, "")
+					autogenTemplate(ctx, autogenPath, "${JavaHostUnitTestConfigTemplate}", config, "")
 				} else {
-					autogenTemplate(ctx, autogenPath, "${JavaHostTestConfigTemplate}", nil, "")
+					autogenTemplate(ctx, autogenPath, "${JavaHostTestConfigTemplate}", config, "")
 				}
 			}
 		}
+		fmt.Fprintln(os.Stderr, "HERE2 "+autogenPath.String())
 		return autogenPath
 	}
 	return path
