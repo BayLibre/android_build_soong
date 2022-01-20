@@ -148,6 +148,7 @@ type Module struct {
 
 	makeLinkType string
 
+	afdo             *afdo
 	compiler         compiler
 	coverage         *coverage
 	clippy           *clippy
@@ -403,6 +404,7 @@ type PathDeps struct {
 	SharedLibDeps android.Paths
 	StaticLibs    android.Paths
 	ProcMacros    RustLibraries
+	AfdoProfiles  android.Paths
 
 	// depFlags and depLinkFlags are rustc and linker (clang) flags.
 	depFlags     []string
@@ -550,6 +552,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 
 	module.AddProperties(props...)
 	module.AddProperties(
+		&AfdoProperties{},
 		&BaseProperties{},
 		&cc.VendorProperties{},
 		&BenchmarkProperties{},
@@ -688,6 +691,9 @@ func (mod *Module) Init() android.Module {
 	mod.AddProperties(&mod.Properties)
 	mod.AddProperties(&mod.VendorProperties)
 
+	if mod.afdo != nil {
+		mod.AddProperties(mod.afdo.props()...)
+	}
 	if mod.compiler != nil {
 		mod.AddProperties(mod.compiler.compilerProps()...)
 	}
@@ -719,6 +725,7 @@ func newBaseModule(hod android.HostOrDeviceSupported, multilib android.Multilib)
 }
 func newModule(hod android.HostOrDeviceSupported, multilib android.Multilib) *Module {
 	module := newBaseModule(hod, multilib)
+	module.afdo = &afdo{}
 	module.coverage = &coverage{}
 	module.clippy = &clippy{}
 	module.sanitize = &sanitize{}
@@ -856,6 +863,9 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	}
 
 	// Calculate rustc flags
+	if mod.afdo != nil {
+		flags, deps = mod.afdo.flags(ctx, flags, deps)
+	}
 	if mod.compiler != nil {
 		flags = mod.compiler.compilerFlags(ctx, flags)
 		flags = mod.compiler.cfgFlags(ctx, flags)
