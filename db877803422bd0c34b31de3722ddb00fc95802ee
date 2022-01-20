@@ -85,6 +85,47 @@
       },
       "revId": "db877803422bd0c34b31de3722ddb00fc95802ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e3343ef_f9f93356",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-01-20T23:53:03Z",
+      "side": 1,
+      "message": "I\u0027d think since the method name signals it\u0027s to be used with Modules, little harm in having a compiler check that what\u0027s passed is indeed a Module?\n(I might be off on idiomatic Go usage but then so seems Soong)",
+      "parentUuid": "e86d429b_0fafaa97",
+      "range": {
+        "startLine": 149,
+        "startChar": 52,
+        "endLine": 149,
+        "endChar": 68
+      },
+      "revId": "db877803422bd0c34b31de3722ddb00fc95802ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1269d36_bd057a31",
+        "filename": "ui/metrics/bp2build_metrics_proto/bp2build_metrics.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-01-20T23:53:03Z",
+      "side": 1,
+      "message": "I am assuming this is a generated file but for some reason we have been explicitly keeping them in VCS? (probably because the go code-gen is non-deterministic or maybe there were issues with versioning?)",
+      "revId": "db877803422bd0c34b31de3722ddb00fc95802ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
