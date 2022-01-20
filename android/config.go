@@ -24,6 +24,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"reflect"
 	"runtime"
 	"strconv"
 	"strings"
@@ -272,6 +273,17 @@ func saveToBazelConfigFile(config *productVariables, outDir string) error {
 	if err != nil {
 		return fmt.Errorf("Could not create dir %s: %s", dir, err)
 	}
+
+	archVariants := []string{}
+	p := variableProperties{}
+	t := reflect.TypeOf(p.Product_variables)
+	for i := 1; i < t.NumField(); i++ {
+		f := t.Field(i)
+		if f.Tag.Get("android") == "arch_variant" {
+			archVariants = append(archVariants, f.Name)
+		}
+	}
+	config.ArchVariantProductVariables = archVariants
 
 	data, err := json.MarshalIndent(&config, "", "    ")
 	if err != nil {
