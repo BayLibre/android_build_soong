@@ -22,6 +22,30 @@
       },
       "revId": "b01ddacf0b29c64c13d29c17a548f9fab9c4c9ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a63d6c8d_f4228033",
+        "filename": "bp2build/java_genrule_host_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-20T22:21:39Z",
+      "side": 1,
+      "message": "Yes, it looks like the CC tests were just copied from the regular genrule tests, and I just copied the CC tests.\n\nI ended up just making the tests in genrule_conversion_test.go more general, and now that file tests cc_genrule, java_genrule, java_genrule_host, and genrule.",
+      "parentUuid": "2c8d42a3_0c07e967",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "b01ddacf0b29c64c13d29c17a548f9fab9c4c9ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
