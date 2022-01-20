@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a378af5_84ecf901",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 30
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-01-20T16:49:06Z",
+      "side": 1,
+      "message": "Bypass-Presubmit for infra issues, but Presubmit-Ready otherwise. Will NOT auto-submit.",
+      "revId": "7eab45c6ceaa7fba40e663607804359271a36675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
