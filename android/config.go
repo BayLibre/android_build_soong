@@ -24,6 +24,7 @@ import (
 	"io/ioutil"
 	"os"
 	"path/filepath"
+	"reflect"
 	"runtime"
 	"strconv"
 	"strings"
@@ -273,15 +274,43 @@ func saveToBazelConfigFile(config *productVariables, outDir string) error {
 		return fmt.Errorf("Could not create dir %s: %s", dir, err)
 	}
 
-	data, err := json.MarshalIndent(&config, "", "    ")
+	productVariables := []string{}
+	archVariants := []string{}
+	p := variableProperties{}
+	t := reflect.TypeOf(p.Product_variables)
+	for i := 0; i < t.NumField(); i++ {
+		f := t.Field(i)
+		productVariables = append(productVariables, strings.ToLower(f.Name))
+		if f.Tag.Get("android") == "arch_variant" {
+			archVariants = append(archVariants, strings.ToLower(f.Name))
+		}
+	}
+
+	productVariablesJson, err := json.MarshalIndent(&productVariables, "", "    ")
+	if err != nil {
+		return fmt.Errorf("cannot marshal product variable data: %s", err.Error())
+	}
+
+	archVariantsJson, err := json.MarshalIndent(&archVariants, "", "    ")
+	if err != nil {
+		return fmt.Errorf("cannot marshal arch variant product variable data: %s", err.Error())
+	}
+
+	configJson, err := json.MarshalIndent(&config, "", "    ")
 	if err != nil {
 		return fmt.Errorf("cannot marshal config data: %s", err.Error())
 	}
 
 	bzl := []string{
 		bazel.GeneratedBazelFileWarning,
-		fmt.Sprintf(`_product_vars = json.decode("""%s""")`, data),
-		"product_vars = _product_vars\n",
+		fmt.Sprintf(`_product_vars = json.decode("""%s""")`, configJson),
+		fmt.Sprintf(`_product_var_constraints = %s`, productVariablesJson),
+		fmt.Sprintf(`_arch_variant_product_var_constraints = %s`, archVariantsJson),
+		"\n",
+		"product_vars = _product_vars",
+		"product_var_constraints = _product_var_constraints",
+		"arch_variant_product_var_constraints = _arch_variant_product_var_constraints",
+		"\n",
 	}
 	err = ioutil.WriteFile(filepath.Join(dir, "product_variables.bzl"), []byte(strings.Join(bzl, "\n")), 0644)
 	if err != nil {
