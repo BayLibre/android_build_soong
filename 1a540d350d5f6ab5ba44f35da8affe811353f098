@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "626f5504_28f401e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-01-20T02:14:22Z",
+      "side": 1,
+      "message": "Just curious, is this still valid or obsolete?",
+      "revId": "1a540d350d5f6ab5ba44f35da8affe811353f098",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
