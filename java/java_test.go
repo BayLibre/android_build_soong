@@ -1460,3 +1460,37 @@ func TestErrorproneEnabledOnlyByEnvironmentVariable(t *testing.T) {
 		t.Errorf("expected errorprone to contain %q, got %q", expectedSubstring, javac.Args["javacFlags"])
 	}
 }
+
+func TestDataDeviceModules(t *testing.T) {
+	bp := `
+		java_test_host {
+			name: "foo",
+			srcs: ["test.java"],
+			data_device_bins: ["bar"],
+		}
+
+		cc_binary {
+			name: "bar",
+		}
+	`
+
+	ctx := android.GroupFixturePreparers(
+		PrepareForIntegrationTestWithJava,
+	).RunTestWithBp(t, bp)
+
+	buildOS := ctx.Config.BuildOS.String()
+	foo_variant := ctx.ModuleForTests("foo", buildOS+"_common")
+	bar_variant := ctx.ModuleForTests("bar", "android_arm64_armv8-a")
+	foo_mod := foo_variant.Module().(*TestHost)
+
+	relocated := bar_variant.Output("bar")
+	expectedInput := "out/soong/.intermediates/bar/android_arm64_armv8-a/unstripped/bar"
+	android.AssertPathRelativeToTopEquals(t, "relocation input", expectedInput, relocated.Input)
+
+	entries := android.AndroidMkEntriesForTest(t, ctx.TestContext, foo_mod)[0]
+	expectedData := []string{
+		"out/soong/.intermediates/bar/android_arm64_armv8-a/bar:bar",
+	}
+	actualData := entries.EntryMap["LOCAL_COMPATIBILITY_SUPPORT_FILES"]
+	android.AssertStringPathsRelativeToTopEquals(t, "LOCAL_TEST_DATA", ctx.Config, expectedData, actualData)
+}
