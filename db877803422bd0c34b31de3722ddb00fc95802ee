@@ -16,6 +16,75 @@
       "message": "LGTM",
       "revId": "db877803422bd0c34b31de3722ddb00fc95802ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0804e801_acac4d31",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-20T20:58:25Z",
+      "side": 1,
+      "message": "any reason to not use moduleType here also?",
+      "range": {
+        "startLine": 298,
+        "startChar": 34,
+        "endLine": 298,
+        "endChar": 53
+      },
+      "revId": "db877803422bd0c34b31de3722ddb00fc95802ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad0185b3_103bda06",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-20T20:58:25Z",
+      "side": 1,
+      "message": "should we break down unconverted by rule type too?",
+      "range": {
+        "startLine": 126,
+        "startChar": 9,
+        "endLine": 126,
+        "endChar": 31
+      },
+      "revId": "db877803422bd0c34b31de3722ddb00fc95802ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e86d429b_0fafaa97",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-20T20:58:25Z",
+      "side": 1,
+      "message": "optional: to be more go-like could define an interface with just `Name() string` here rather than importing blueprint.",
+      "range": {
+        "startLine": 149,
+        "startChar": 52,
+        "endLine": 149,
+        "endChar": 68
+      },
+      "revId": "db877803422bd0c34b31de3722ddb00fc95802ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
