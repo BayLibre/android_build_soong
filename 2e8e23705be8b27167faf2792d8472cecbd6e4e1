@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a0aff53_52c68c34",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-20T22:36:29Z",
+      "side": 1,
+      "message": "For now, these are the values we want to use as _product_variables in product_variables/constants.bzl -- not all fields in config can be used in an Android.bp file.",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 17
+      },
+      "revId": "2e8e23705be8b27167faf2792d8472cecbd6e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6490ede5_56677b55",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-20T22:36:29Z",
+      "side": 1,
+      "message": "optional: could move the to_lower to the bp2build side of things.",
+      "range": {
+        "startLine": 283,
+        "startChar": 39,
+        "endLine": 283,
+        "endChar": 45
+      },
+      "revId": "2e8e23705be8b27167faf2792d8472cecbd6e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f05df8_14388f55",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-20T22:36:29Z",
+      "side": 1,
+      "message": "rather than nesting this in config, we can export more variables in our file, for example, how we\u0027re handling Soong config variables: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/soongconfig/modules.go;l\u003d303;drc\u003d4ad40d99b08022f532d2eb2e5a4d66b3e3f6c20f\n\nconfig is based on the current lunch target, whereas _product_variables and _arch_variant_product_variables and should vary less, separating it should help distinguish the use cases better.",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 286,
+        "endChar": 7
+      },
+      "revId": "2e8e23705be8b27167faf2792d8472cecbd6e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
