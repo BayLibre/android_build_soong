@@ -16,6 +16,24 @@
       "message": "Just curious, is this still valid or obsolete?",
       "revId": "1a540d350d5f6ab5ba44f35da8affe811353f098",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed0055af_9345ae68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-01-20T06:03:30Z",
+      "side": 1,
+      "message": "eh it\u0027s obsolete",
+      "parentUuid": "626f5504_28f401e5",
+      "revId": "1a540d350d5f6ab5ba44f35da8affe811353f098",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
