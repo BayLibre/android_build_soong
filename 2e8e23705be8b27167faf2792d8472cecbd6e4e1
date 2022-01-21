@@ -68,6 +68,30 @@
       },
       "revId": "2e8e23705be8b27167faf2792d8472cecbd6e4e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdb9a1df_22bee920",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-21T16:59:06Z",
+      "side": 1,
+      "message": "What would a better name for the new output field (what were previously hardcoded _product_variables) be? Or, should I rename the variables that are currently output in soong_injection/product_config/product_variables.bzl to something more like config_vars?\n\nSince the big list from Soong config and the list of hardcoded _product_variables in product_variables/constants.bzl are both called \"product variables\", I\u0027m not sure how to distinguish the two concepts.",
+      "parentUuid": "d7f05df8_14388f55",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 286,
+        "endChar": 7
+      },
+      "revId": "2e8e23705be8b27167faf2792d8472cecbd6e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
