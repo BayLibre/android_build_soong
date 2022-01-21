@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4592ee31_c2a87e28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-21T20:45:21Z",
+      "side": 1,
+      "message": "Working on testing this now with the code in aosp/1647282/1 from the bug.",
+      "revId": "396a752d955ba14e5db25310d06f2c3db0a61a1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
