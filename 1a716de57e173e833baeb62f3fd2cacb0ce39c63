@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1f2ce59_25715d00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-01-21T22:19:08Z",
+      "side": 1,
+      "message": "Woohoo! One thing for future .1 releases is we should probably create a tracking bug in b/ so we can specify it in the commit messages. It\u0027s ok this time, since this one is pretty small (and fast).",
+      "revId": "1a716de57e173e833baeb62f3fd2cacb0ce39c63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

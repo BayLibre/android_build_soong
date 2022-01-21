@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51ae17a8_334f33c7",
+        "filename": "rust/config/lints.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-01-21T22:19:08Z",
+      "side": 0,
+      "message": "Thanks for remembering to remove this as well.",
+      "revId": "d1227b20aab158051bca306dfbf6d664d4b4cc8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
