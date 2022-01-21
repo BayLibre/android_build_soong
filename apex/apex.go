@@ -1009,8 +1009,14 @@ func apexStrictUpdatibilityLintMutator(mctx android.TopDownMutatorContext) {
 	if !mctx.Module().Enabled() {
 		return
 	}
-	if apex, ok := mctx.Module().(*apexBundle); ok && apex.Updatable() {
+	if apex, ok := mctx.Module().(*apexBundle); ok && apex.checkStrictUpdtabilityLinting() {
 		mctx.WalkDeps(func(child, parent android.Module) bool {
+			// TODO: b/215736885 Do not skip linting java libs in libcore/
+			// These libs are available on the classpath during compilation
+			// These libs are transitive deps of the sdk. See java/sdk.go:decodeSdkDep
+			if android.InList(child.Name(), libcoreJavaLibs) {
+				return false
+			}
 			if lintable, ok := child.(java.LintDepSetsIntf); ok {
 				lintable.SetStrictUpdatabilityLinting(true)
 			}
@@ -1018,6 +1024,42 @@ func apexStrictUpdatibilityLintMutator(mctx android.TopDownMutatorContext) {
 			return true
 		})
 	}
+}
+
+// TODO: b/215736885 Whittle the denylist
+// Transitive deps of certain mainline modules baseline NewApi errors
+// Skip these mainline modules for now
+var (
+	skipStrictUpdatabilityLintAllowlist = []string{
+		"com.android.art",
+		"com.android.art.debug",
+		"com.android.conscrypt",
+		"com.android.media",
+		// test apexes
+		"test_com.android.art",
+		"test_com.android.conscrypt",
+		"test_com.android.media",
+		"test_jitzygote_com.android.art",
+	}
+)
+
+var (
+	libcoreJavaLibs = []string{
+		"art.module.api.annotations.for.system.modules",
+		"art.module.public.api.stubs",
+		"art.module.public.api.stubs.module_lib",
+		"art.module.public.api.stubs.system",
+		"core-all",
+		"core-generated-annotation-stubs",
+		"core-lambda-stubs",
+		"core-lambda-stubs-for-system-modules",
+		"framework-api-annotations-lib",
+		"java.current.stubs",
+	}
+)
+
+func (a *apexBundle) checkStrictUpdtabilityLinting() bool {
+	return a.Updatable() && !android.InList(a.ApexVariationName(), skipStrictUpdatabilityLintAllowlist)
 }
 
 // apexUniqueVariationsMutator checks if any dependencies use unique apex variations. If so, use
