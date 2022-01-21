@@ -2669,6 +2669,7 @@ func makeApexAvailableBaseline() map[string][]string {
 		"avrcp_headers",
 		"bluetooth-protos-lite",
 		"bluetooth.mapsapi",
+		"bluetooth.obex",
 		"com.android.vcard",
 		"dnsresolver_aidl_interface-V2-java",
 		"ipmemorystore-aidl-interfaces-V5-java",
