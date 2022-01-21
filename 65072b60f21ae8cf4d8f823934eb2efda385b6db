@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "234149c1_6aaa0b4f",
+        "filename": "android/bazel.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-21T14:47:18Z",
+      "side": 1,
+      "message": "the allowlist is package based whereas the denylist is module based -- you can leave the packages as they were and add only the failing modules to the denylist.",
+      "range": {
+        "startLine": 471,
+        "startChar": 2,
+        "endLine": 475,
+        "endChar": 28
+      },
+      "revId": "65072b60f21ae8cf4d8f823934eb2efda385b6db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8161f83_7632f6e4",
+        "filename": "bp2build/genrule_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-21T14:47:18Z",
+      "side": 1,
+      "message": "Thanks for refactoring the tests! \n\nthis is hiding a lot of detail about the tests -- go/tott/529 go/tott/510\n\nAn alternative way to structure this that would help balance between duplication and logic/hiding away the important details:\n\nRather than the current table driven tests in testTypedGenruleBp2Build, each item in the table could be an individual table driven test, where each item in the table contains the type/factory and the body of the table driven contains the blueprint (sans type) and expected outputs. e.g.\n\n```\ndescription: fmt.Sprintf(\"%s using $(location) label should substitute first tool label automatically\", genruleTarget),\n\t\t\tblueprint: fmt.Sprintf(`%s {\n    name: \"foo\",\n    out: [\"foo.out\"],\n    srcs: [\"foo.in\"],\n    tool_files: [\":foo.tool\", \":other.tool\"],\n    cmd: \"$(location) -s $(out) $(in)\",\n    bazel_module: { bp2build_available: true },\n}`, genruleTarget),\n   expectedBazelTargets: []string{\n\tmakeBazelTarget(\"genrule\", \"foo\", attrNameToString{\n          \"cmd\":  `\"$(location //other:foo.tool) -s $(OUTS) $(SRCS)\"`,\n          \"outs\": `[\"foo.out\"]`,\n          \"srcs\": `[\"foo.in\"]`,\n          \"tools\": `[\n        \"//other:foo.tool\",\n        \"//other:other.tool\",\n    ]`,\n\t}),\n    },\n  filesystem: otherGenruleBp(genruleTarget),\n```\n\t\t\t\n--\u003e\n\n```\nfunc TestGenruleLabelShouldSubstitueFirstToolLabel(t *testing.T) {\n   testCases :\u003d []struct{\n       moduleType string\n       factory android.ModuleFactory\n       ...\n   }{\n      {\n        \"genrule\", genrule.GenRuleFactory\n      },\n      {\n        \"cc_genrule\", cc.GenRuleFactory\n      },\n      {\n        \"java_genrule\", java.GenRuleFactory\n      },\n      {\n        \"java_genrule_host\", java.GenRuleFactoryHost\n      },\n   }\n   \n   for _, tc :\u003d range testCases {\n       t.Run(tc.moduleType, func(t *testing.T) {\n           runBp2buildTestCase(t, /*register genrule*/, bp2buildTestCase{\n             blueprint: fmt.Sprintf(..., moduleType),\n             expectedBazelTargets: ...,\n             filesystem: otherGenruleBp(\"genrule\"), // this doesn\u0027t need to vary\n           })\n       })\n   }\n}\n```",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 44
+      },
+      "revId": "65072b60f21ae8cf4d8f823934eb2efda385b6db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
