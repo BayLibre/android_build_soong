@@ -16,6 +16,24 @@
       "message": "I don\u0027t know how/if the mutators interact. Is there a risk that we do this after the other mutator processed this module and as such the change is missed?",
       "revId": "b9d89ad3a0301c6c5ceaf2c14441c0f749d79b5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0150914_768e3e29",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-01-21T19:38:06Z",
+      "side": 1,
+      "message": "I think you are right here, the ordering of mutators might make this non-deterministic. Updating the implementation to make this deterministic.",
+      "parentUuid": "205dc26f_4dc87dbf",
+      "revId": "b9d89ad3a0301c6c5ceaf2c14441c0f749d79b5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
