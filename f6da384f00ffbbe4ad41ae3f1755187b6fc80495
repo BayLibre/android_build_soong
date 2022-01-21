@@ -16,6 +16,24 @@
       "message": "If I\u0027m reading this correctly, it seems like it doesn\u0027t strip the file extension in the Make code: http://cs/android/build/make/core/product.mk;l\u003d499;rcl\u003d38ba84072a209edb7d88e70cf36f4b57a73c5f03\n\nWhy strip it here?\n\nIf we don\u0027t need to strip the extension, we can get rid of the tuple in the _entry dictionary.",
       "revId": "f6da384f00ffbbe4ad41ae3f1755187b6fc80495",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25f7400a_cbda2432",
+        "filename": "mk2rbc/node.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-21T01:27:37Z",
+      "side": 1,
+      "message": "Eventually we will get rid of makefiles, so having .mk in module\u0027s name has little sense.",
+      "parentUuid": "d91eb9eb_f1ed197b",
+      "revId": "f6da384f00ffbbe4ad41ae3f1755187b6fc80495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
