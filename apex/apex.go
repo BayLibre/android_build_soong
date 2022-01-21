@@ -992,6 +992,25 @@ func apexInfoMutator(mctx android.TopDownMutatorContext) {
 	}
 }
 
+// TODO: b/215736885 Whittle the denylist
+// Transitive deps of certain mainline modules baseline NewApi errors
+// Skip these mainline modules for now
+var (
+	skipStrictUpdatabilityLintAllowlist = []string{
+		"com.android.art",
+		"com.android.art.debug",
+		"com.android.conscrypt",
+		"com.android.media",
+		"com.android.mediaprovider",
+		// test apexes
+		"test_com.android.art",
+		"test_com.android.conscrypt",
+		"test_com.android.media",
+		"test_com.android.mediaprovider",
+		"test_jitzygote_com.android.art",
+	}
+)
+
 var _ java.LintDepSetsIntf = (*apexBundle)(nil)
 
 func (a *apexBundle) LintDepSets() java.LintDepSets {
@@ -999,7 +1018,7 @@ func (a *apexBundle) LintDepSets() java.LintDepSets {
 }
 
 func (a *apexBundle) GetStrictUpdatabilityLinting() bool {
-	return a.Updatable()
+	return a.Updatable() && !android.InList(a.ApexVariationName(), skipStrictUpdatabilityLintAllowlist)
 }
 
 func (a *apexBundle) SetStrictUpdatabilityLinting(strictLinting bool) {
