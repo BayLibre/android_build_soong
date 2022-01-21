@@ -34,6 +34,24 @@
       "parentUuid": "d91eb9eb_f1ed197b",
       "revId": "f6da384f00ffbbe4ad41ae3f1755187b6fc80495",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85726391_9788f1dd",
+        "filename": "mk2rbc/node.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-21T01:32:39Z",
+      "side": 1,
+      "message": "Ok. I\u0027d consider at least removing the %q formatting here and just using %q in emitSelect() though.",
+      "parentUuid": "25f7400a_cbda2432",
+      "revId": "f6da384f00ffbbe4ad41ae3f1755187b6fc80495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
