@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49c57d13_91f2d94e",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-21T18:17:30Z",
+      "side": 1,
+      "message": "Platform_sdk_version_or_codename was added to variableProperties.Product_variables after the bzl file was created and that delta is the motivation for this change, so we can\u0027t get out of sync again 😊\n\nincluding all the fields without special handling is the right thing to do here",
+      "parentUuid": "a4cf4e55_69350390",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 17
+      },
+      "revId": "2e8e23705be8b27167faf2792d8472cecbd6e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6490ede5_56677b55",
         "filename": "android/config.go",
         "patchSetId": 1
