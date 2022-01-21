@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4cf4e55_69350390",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-21T17:29:08Z",
+      "side": 1,
+      "message": "It looks like there is some mismatch between the var names in Soong and what the targets in Bazel are: e.g. the Soong var Platform_sdk_version_or_codename doesn\u0027t have the \"_or_codename\" suffix in the Android.bp files.\n\nWould it be best to handle these special cases by hand?",
+      "parentUuid": "8a0aff53_52c68c34",
+      "range": {
+        "startLine": 281,
+        "startChar": 2,
+        "endLine": 281,
+        "endChar": 17
+      },
+      "revId": "2e8e23705be8b27167faf2792d8472cecbd6e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6490ede5_56677b55",
         "filename": "android/config.go",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-20T22:36:29Z",
       "side": 1,
       "message": "optional: could move the to_lower to the bp2build side of things.",
+      "range": {
+        "startLine": 283,
+        "startChar": 39,
+        "endLine": 283,
+        "endChar": 45
+      },
+      "revId": "2e8e23705be8b27167faf2792d8472cecbd6e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3baf4877_b74176fc",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-21T17:29:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6490ede5_56677b55",
       "range": {
         "startLine": 283,
         "startChar": 39,
