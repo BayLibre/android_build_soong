@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3feaaaae_8a6b6b4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-01-21T11:54:00Z",
+      "side": 1,
+      "message": "Looks good. Maybe we could try to detect test apexes by name (?)\n\nAlso Colin will need to be a reviewer... Maybe you want our feedback before making him a reviewer?",
+      "revId": "239aaeb3c6b92f329d68d38d2818ba6f12c7c29e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1a93365_b51afe6a",
+        "filename": "apex/apex.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-01-21T11:54:00Z",
+      "side": 1,
+      "message": "given we are going to keep writing more test apexes... should we ignore anything that starts with `test_` ?  What do people think about that?",
+      "revId": "239aaeb3c6b92f329d68d38d2818ba6f12c7c29e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
