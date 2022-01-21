@@ -1076,7 +1076,13 @@ func printfIntoProperties(ctx BottomUpMutatorContext, prefix string,
 			}
 		case reflect.Slice:
 			for j := 0; j < propertyValue.Len(); j++ {
-				err := printfIntoProperty(propertyValue.Index(j), variableValue)
+				var err error
+				switch variableValue.(type) {
+				case []string:
+					err = printfSliceValIntoProperty(propertyValue, propertyValue.Index(j), variableValue)
+				default:
+					err = printfIntoProperty(propertyValue.Index(j), variableValue)
+				}
 				if err != nil {
 					printfIntoPropertiesError(ctx, prefix, productVariablePropertyValue, i, err)
 				}
@@ -1091,18 +1097,75 @@ func printfIntoProperties(ctx BottomUpMutatorContext, prefix string,
 	}
 }
 
-func printfIntoProperty(propertyValue reflect.Value, variableValue interface{}) error {
-	s := propertyValue.String()
-
-	count := strings.Count(s, "%")
-	if count == 0 {
+func printfSliceValIntoProperty(propertyValues reflect.Value, propertyValue reflect.Value,
+	variableValue interface{}) error {
+	err := checkSlicePrintLine(propertyValues)
+	if err != nil {
+		return err
+	}
+	printLine, err := checkPrintLine(propertyValue)
+	if err != nil {
+		return err
+	}
+	// if has no % char
+	if len(printLine) == 0 {
 		return nil
 	}
-
-	if count > 1 {
-		return fmt.Errorf("product variable properties only support a single '%%'")
+	varVals := reflect.ValueOf(variableValue)
+	for i := 0; i < varVals.Len(); i++ {
+		// print the first element directly
+		if i == 0 {
+			printfIntoProperty(propertyValue, varVals.Index(i).Interface())
+			continue
+		}
+		// print and append all the rest elements
+		s := reflect.ValueOf(fmt.Sprintf(printLine, varVals.Index(i).Interface()))
+		propertyValues.Set(reflect.Append(propertyValues, s))
 	}
+	return nil
+}
 
+// for slice product variable properties, the number of elements with a single % char at most is 1
+func checkSlicePrintLine(propertyValues reflect.Value) error {
+	count := 0
+	for i := 0; i < propertyValues.Len(); i++ {
+		printLine, err := checkPrintLine(propertyValues.Index(i))
+		if err != nil {
+			return err
+		}
+		if len(printLine) == 0 {
+			continue
+		}
+		count++
+		if count > 1 {
+			return fmt.Errorf("slice product variable properties only support at most one element with a single '%%'")
+		}
+	}
+	return nil
+}
+
+func checkPrintLine(propertyValue reflect.Value) (string, error) {
+	s := propertyValue.String()
+	count := strings.Count(s, "%")
+	if count == 0 {
+		return "", nil
+	}
+	if count > 1 {
+		return "", fmt.Errorf("product variable properties only support a single '%%'")
+	}
+	return s, nil
+}
+
+func printfIntoProperty(propertyValue reflect.Value, variableValue interface{}) error {
+	s, err := checkPrintLine(propertyValue)
+	if err != nil {
+		return err
+	}
+	// if has no % char
+	if len(s) == 0 {
+		return nil
+	}
+	// when only has a single % char
 	if strings.Contains(s, "%d") {
 		switch v := variableValue.(type) {
 		case int:
