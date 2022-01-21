@@ -216,6 +216,24 @@
       "parentUuid": "f1269d36_bd057a31",
       "revId": "db877803422bd0c34b31de3722ddb00fc95802ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcddd8a6_af4b4dcb",
+        "filename": "ui/metrics/bp2build_metrics_proto/bp2build_metrics.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-21T17:11:03Z",
+      "side": 1,
+      "message": "This is a limitation of blueprint \u0026 soong\u0027s go language support.",
+      "parentUuid": "231fe265_cd24a736",
+      "revId": "db877803422bd0c34b31de3722ddb00fc95802ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
