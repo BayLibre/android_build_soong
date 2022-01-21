@@ -92,6 +92,30 @@
       },
       "revId": "2e8e23705be8b27167faf2792d8472cecbd6e4e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79273ba7_d365d1eb",
+        "filename": "android/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-21T17:26:28Z",
+      "side": 1,
+      "message": "since these eventually get turned into constraints, naming these something like:\n\nproduct_variable_constraints\narch_variant_product_variable_constraints\n\nwould make sense",
+      "parentUuid": "fdb9a1df_22bee920",
+      "range": {
+        "startLine": 286,
+        "startChar": 1,
+        "endLine": 286,
+        "endChar": 7
+      },
+      "revId": "2e8e23705be8b27167faf2792d8472cecbd6e4e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
