@@ -16,6 +16,24 @@
       "message": "See test breakage: b/215762197",
       "revId": "7794fa6c4192ae962e86afddbdbbdedf9292c275",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a29e5553_607a1634",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2022-01-21T23:38:39Z",
+      "side": 1,
+      "message": "The test breakage is real and this compiler flag change has only surfaced a bug in the test. https://r.android.com/1956922 for fix",
+      "parentUuid": "eca80d7b_5b139d95",
+      "revId": "7794fa6c4192ae962e86afddbdbbdedf9292c275",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
