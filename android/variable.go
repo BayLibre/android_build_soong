@@ -58,6 +58,15 @@ type variableProperties struct {
 			Base_dir *string
 		}
 
+		Target_recovery_updater_libs struct {
+			Static_libs []string
+			Cmd         *string
+		}
+
+		Target_recovery_updater_extra_libs struct {
+			Static_libs []string
+		}
+
 		// unbundled_build is a catch-all property to annotate modules that don't build in one or
 		// more unbundled branches, usually due to dependencies missing from the manifest.
 		Unbundled_build struct {
@@ -433,6 +442,9 @@ type productVariables struct {
 	SepolicyFreezeTestExtraPrebuiltDirs []string `json:",omitempty"`
 
 	GenerateAidlNdkPlatformBackend bool `json:",omitempty"`
+
+	Target_recovery_updater_libs       *[]string `json:",omitempty"`
+	Target_recovery_updater_extra_libs *[]string `json:",omitempty"`
 }
 
 func boolPtr(v bool) *bool {
@@ -1076,7 +1088,13 @@ func printfIntoProperties(ctx BottomUpMutatorContext, prefix string,
 			}
 		case reflect.Slice:
 			for j := 0; j < propertyValue.Len(); j++ {
-				err := printfIntoProperty(propertyValue.Index(j), variableValue)
+				var err error
+				switch variableValue.(type) {
+				case []string:
+					err = printfSliceValIntoProperty(propertyValue, j, variableValue)
+				default:
+					err = printfIntoProperty(propertyValue.Index(j), variableValue)
+				}
 				if err != nil {
 					printfIntoPropertiesError(ctx, prefix, productVariablePropertyValue, i, err)
 				}
@@ -1091,18 +1109,78 @@ func printfIntoProperties(ctx BottomUpMutatorContext, prefix string,
 	}
 }
 
-func printfIntoProperty(propertyValue reflect.Value, variableValue interface{}) error {
-	s := propertyValue.String()
-
-	count := strings.Count(s, "%")
-	if count == 0 {
+func printfSliceValIntoProperty(propVals reflect.Value, idx int, variableValue interface{}) error {
+	if idx >= propVals.Len() {
 		return nil
 	}
-
-	if count > 1 {
-		return fmt.Errorf("product variable properties only support a single '%%'")
+	propVal := propVals.Index(idx)
+	err := checkSlicePrintLine(propVals)
+	if err != nil {
+		return err
 	}
+	printLine, err := checkPrintLine(propVal)
+	if err != nil {
+		return err
+	}
+	// if has no % char
+	if len(printLine) == 0 {
+		return nil
+	}
+	varVals := reflect.ValueOf(variableValue)
+	printVals := reflect.ValueOf(&[]string{}).Elem()
+	for i := 0; i < varVals.Len(); i++ {
+		// print and append all the elements to a temp slice
+		s := reflect.ValueOf(fmt.Sprintf(printLine, varVals.Index(i).Interface()))
+		printVals.Set(reflect.Append(printVals, s))
+	}
+	// 1. delete the propVals.Index(idx) element
+	// 2. insert the printed temp slice starting at position idx of propVals
+	propVals.Set(reflect.AppendSlice(propVals.Slice(0, idx),
+		reflect.AppendSlice(printVals.Slice(0, printVals.Len()), propVals.Slice(idx+1, propVals.Len()))))
+	return nil
+}
 
+// for slice product variable properties, the number of elements with a single % char at most is 1
+func checkSlicePrintLine(propertyValues reflect.Value) error {
+	count := 0
+	for i := 0; i < propertyValues.Len(); i++ {
+		printLine, err := checkPrintLine(propertyValues.Index(i))
+		if err != nil {
+			return err
+		}
+		if len(printLine) == 0 {
+			continue
+		}
+		count++
+		if count > 1 {
+			return fmt.Errorf("slice product variable properties only support at most one element with a single '%%'")
+		}
+	}
+	return nil
+}
+
+func checkPrintLine(propertyValue reflect.Value) (string, error) {
+	s := propertyValue.String()
+	count := strings.Count(s, "%")
+	if count == 0 {
+		return "", nil
+	}
+	if count > 1 {
+		return "", fmt.Errorf("product variable properties only support a single '%%'")
+	}
+	return s, nil
+}
+
+func printfIntoProperty(propertyValue reflect.Value, variableValue interface{}) error {
+	s, err := checkPrintLine(propertyValue)
+	if err != nil {
+		return err
+	}
+	// if has no % char
+	if len(s) == 0 {
+		return nil
+	}
+	// when only has a single % char
 	if strings.Contains(s, "%d") {
 		switch v := variableValue.(type) {
 		case int:
@@ -1120,6 +1198,7 @@ func printfIntoProperty(propertyValue reflect.Value, variableValue interface{}) 
 		switch variableValue.(type) {
 		case string:
 			// Nothing
+		case []string:
 		default:
 			return fmt.Errorf("unsupported type %T for %%s", variableValue)
 		}

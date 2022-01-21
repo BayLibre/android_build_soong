@@ -15,8 +15,10 @@
 package android
 
 import (
+	"fmt"
 	"reflect"
 	"strconv"
+	"strings"
 	"testing"
 
 	"github.com/google/blueprint/proptools"
@@ -122,6 +124,136 @@ func TestPrintfIntoProperty(t *testing.T) {
 			t.Errorf("expected error")
 		} else if err == nil && v.String() != testCase.out {
 			t.Errorf("expected %q got %q", testCase.out, v.String())
+		}
+	}
+}
+
+type printfSliceIntoPropertyTestCase struct {
+	in  []string
+	val interface{}
+	out string
+	err bool
+}
+
+var nonEmptyList = []string{
+	"a",
+	"b",
+	"c",
+}
+
+var emptyList = []string{}
+
+var printfSliceValIntoPropertyTestCases = []printfSliceIntoPropertyTestCase{
+	{
+		in:  []string{"foo", "bar", "baz"},
+		val: nonEmptyList,
+		out: "[foo bar baz]",
+	},
+	{
+		in:  []string{"%s"},
+		val: nonEmptyList,
+		out: "[a b c]",
+	},
+	{
+		in:  []string{"foo1", "foo2", "%s"},
+		val: nonEmptyList,
+		out: "[foo1 foo2 a b c]",
+	},
+	{
+		in:  []string{"foo1", "foo2", "%s", "foo3", "foo4"},
+		val: nonEmptyList,
+		out: "[foo1 foo2 a b c foo3 foo4]",
+	},
+	{
+		in:  []string{"foo1", "foo2", "bar/%s", "foo3", "foo4"},
+		val: nonEmptyList,
+		out: "[foo1 foo2 bar/a bar/b bar/c foo3 foo4]",
+	},
+	{
+		in:  []string{"foo", "%%s"},
+		val: nonEmptyList,
+		err: true,
+	},
+	{
+		in:  []string{"foo", "%s", "%s"},
+		val: nonEmptyList,
+		err: true,
+	},
+	{
+		in:  []string{"foo", "bar/%s", "baz-%s"},
+		val: nonEmptyList,
+		err: true,
+	},
+	{
+		in:  []string{"foo", "%s", "%d"},
+		val: nonEmptyList,
+		err: true,
+	},
+	{
+		in:  []string{"foo", "bar", "baz"},
+		val: emptyList,
+		out: "[foo bar baz]",
+	},
+	{
+		in:  []string{"%s"},
+		val: emptyList,
+		out: "[]",
+	},
+	{
+		in:  []string{"foo1", "foo2", "%s"},
+		val: emptyList,
+		out: "[foo1 foo2]",
+	},
+	{
+		in:  []string{"foo1", "foo2", "%s", "foo3", "foo4"},
+		val: emptyList,
+		out: "[foo1 foo2 foo3 foo4]",
+	},
+	{
+		in:  []string{"foo1", "foo2", "bar/%s", "foo3", "foo4"},
+		val: emptyList,
+		out: "[foo1 foo2 foo3 foo4]",
+	},
+	{
+		in:  []string{"foo", "%%s"},
+		val: emptyList,
+		err: true,
+	},
+	{
+		in:  []string{"foo", "%s", "%s"},
+		val: emptyList,
+		err: true,
+	},
+	{
+		in:  []string{"foo", "bar/%s", "baz-%s"},
+		val: emptyList,
+		err: true,
+	},
+	{
+		in:  []string{"foo", "%s", "%d"},
+		val: emptyList,
+		err: true,
+	},
+}
+
+func TestPrintfSliceValIntoProperty(t *testing.T) {
+	for _, testCase := range printfSliceValIntoPropertyTestCases {
+		s := testCase.in
+		r := reflect.ValueOf(&s).Elem()
+		idx := 0
+		for i := 0; i < r.Len(); i++ {
+			if strings.Contains(r.Index(i).String(), "%") {
+				idx = i
+				break
+			}
+		}
+		err := printfSliceValIntoProperty(r, idx, testCase.val)
+		if err != nil && !testCase.err {
+			t.Errorf("unexpected error %s", err)
+		} else if err == nil && testCase.err {
+			t.Errorf("expected error")
+		} else if err == nil && (fmt.Sprintf("%s", r)) != testCase.out {
+			t.Errorf("expected %q got %q", testCase.out, fmt.Sprintf("%s", r))
 		}
 	}
 }
