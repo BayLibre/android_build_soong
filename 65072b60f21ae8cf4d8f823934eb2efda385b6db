@@ -117,6 +117,30 @@
       },
       "revId": "65072b60f21ae8cf4d8f823934eb2efda385b6db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a9c039e_2372bb7a",
+        "filename": "bp2build/genrule_conversion_test.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-21T17:37:57Z",
+      "side": 1,
+      "message": "Thanks! Overall looks good, left some comments that may apply throughout that would mostly just clean up unnecessary details.\n\nLeaving the genrule + genrule_defaults as is lgtm.",
+      "parentUuid": "c75be5dc_00596427",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 44
+      },
+      "revId": "65072b60f21ae8cf4d8f823934eb2efda385b6db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

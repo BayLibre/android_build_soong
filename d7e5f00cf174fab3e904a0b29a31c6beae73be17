@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95f9df38_a2d7376e",
+        "filename": "bp2build/genrule_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-21T17:37:57Z",
+      "side": 1,
+      "message": "this doesn\u0027t appear to be needed here?",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "d7e5f00cf174fab3e904a0b29a31c6beae73be17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40c80885_6c65a983",
+        "filename": "bp2build/genrule_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-21T17:37:57Z",
+      "side": 1,
+      "message": "this is unexpected, why do we need this?",
+      "range": {
+        "startLine": 84,
+        "startChar": 3,
+        "endLine": 86,
+        "endChar": 5
+      },
+      "revId": "d7e5f00cf174fab3e904a0b29a31c6beae73be17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f2061f0_6e5f5c92",
+        "filename": "bp2build/genrule_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-21T17:37:57Z",
+      "side": 1,
+      "message": "optional: could set this to false since it doesn\u0027t seem to the focus of this test",
+      "range": {
+        "startLine": 96,
+        "startChar": 40,
+        "endLine": 96,
+        "endChar": 44
+      },
+      "revId": "d7e5f00cf174fab3e904a0b29a31c6beae73be17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9cc8afc_61b6b725",
+        "filename": "bp2build/genrule_conversion_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-21T17:37:57Z",
+      "side": 1,
+      "message": "optional: you can probably omit this because the test name already describes the test. For table driven tests, go basically prepends the test name to this parameter in t.Run. With just module type, this would have:\n\nTestGenruleSrcsLocationsAbsoluteLabel/genrule\nTestGenruleSrcsLocationsAbsoluteLabel/cc_genrule\nTestGenruleSrcsLocationsAbsoluteLabel/java_genrule\nTestGenruleSrcsLocationsAbsoluteLabel/java_genrule_host",
+      "range": {
+        "startLine": 330,
+        "startChar": 20,
+        "endLine": 330,
+        "endChar": 64
+      },
+      "revId": "d7e5f00cf174fab3e904a0b29a31c6beae73be17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
