@@ -111,6 +111,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb1e8fc_a8b4496b",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-01-21T16:50:25Z",
+      "side": 1,
+      "message": "I\u0027m more inclined to just have the parameter be \"name string\" instead; I\u0027m not inclined to invent a new interface with Name() just so I can avoid depending on blueprint, even if it is more idiomatic in Go -_-\n\nSince you\u0027ve labeled optional, I\u0027m going to go ahead and keep this as-is :)",
+      "parentUuid": "0e3343ef_f9f93356",
+      "range": {
+        "startLine": 149,
+        "startChar": 52,
+        "endLine": 149,
+        "endChar": 68
+      },
+      "revId": "db877803422bd0c34b31de3722ddb00fc95802ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1269d36_bd057a31",
@@ -124,6 +148,24 @@
       "writtenOn": "2022-01-20T23:53:03Z",
       "side": 1,
       "message": "I am assuming this is a generated file but for some reason we have been explicitly keeping them in VCS? (probably because the go code-gen is non-deterministic or maybe there were issues with versioning?)",
+      "revId": "db877803422bd0c34b31de3722ddb00fc95802ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "231fe265_cd24a736",
+        "filename": "ui/metrics/bp2build_metrics_proto/bp2build_metrics.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-01-21T16:50:25Z",
+      "side": 1,
+      "message": "This is our current practice for using protobufs in Soong -- commit a proto, a \"regen.sh\" script, and run regen.sh to check in a `.pb.go` file when changes are made. There are 6 other instances of this pattern: https://cs.android.com/search?q\u003dfile:soong%20file:regen.sh\u0026sq\u003d\n\nI frankly don\u0027t offhand know the idiomatic way to handle protos in Go (outside of Bazel-land, that is). Is this a limitation of bootstrap, or of Go builds?",
+      "parentUuid": "f1269d36_bd057a31",
       "revId": "db877803422bd0c34b31de3722ddb00fc95802ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
