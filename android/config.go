@@ -232,6 +232,15 @@ func loadFromConfigFile(configurable *productVariables, filename string) error {
 			proptools.StringPtr(String(configurable.Platform_sdk_codename))
 	}
 
+	// copy Target_recovery_updater_libs and Target_recovery_updater_extra_libs to
+	// Target_recovery_updater_and_extra_libs
+	configurable.Target_recovery_updater_and_extra_libs =
+		append(configurable.Target_recovery_updater_and_extra_libs,
+			configurable.Target_recovery_updater_libs...)
+	configurable.Target_recovery_updater_and_extra_libs =
+		append(configurable.Target_recovery_updater_and_extra_libs,
+			configurable.Target_recovery_updater_extra_libs...)
+
 	return saveToBazelConfigFile(configurable, filepath.Dir(filename))
 }
 
