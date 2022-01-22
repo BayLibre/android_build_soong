@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3f61598_73a11b44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-01-22T00:33:26Z",
+      "side": 1,
+      "message": "FYI: The Build API does expose a crc32(c) and usually a MD5 (whatever is in the underlying Google Cloud Storage), so this already shouldn\u0027t be necessary.\n\n(And it looks like compress/gzip is fairly reproducible by default -- it doesn\u0027t appear to set the timestamp by default, etc)",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "1164084d8dfc0bba66309c30aef2ef0ae30fd325",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
