@@ -78,9 +78,10 @@ func (tidy *tidyFeature) flags(ctx ModuleContext, flags Flags) Flags {
 
 	// If explicitly enabled, by global default or local tidy property,
 	// set flags.NeedTidyFiles to make this module depend on .tidy files.
-	if ctx.Config().ClangTidy() || Bool(tidy.Properties.Tidy) {
-		flags.NeedTidyFiles = true
-	}
+	// if ctx.Config().ClangTidy() || Bool(tidy.Properties.Tidy) {
+	// assume global WITH_TIDY
+	flags.NeedTidyFiles = true
+	// }
 
 	// Add global WITH_TIDY_FLAGS and local tidy_flags.
 	withTidyFlags := ctx.Config().Getenv("WITH_TIDY_FLAGS")
@@ -158,7 +159,8 @@ func (tidy *tidyFeature) flags(ctx ModuleContext, flags Flags) Flags {
 	tidyChecks = tidyChecks + ",-bugprone-easily-swappable-parameters"
 	flags.TidyFlags = append(flags.TidyFlags, tidyChecks)
 
-	if ctx.Config().IsEnvTrue("WITH_TIDY") {
+	// if ctx.Config().IsEnvTrue("WITH_TIDY") {
+	if false { // assume no WITH_TIDY, no change to warnings-as-errors
 		// WITH_TIDY=1 enables clang-tidy globally. There could be many unexpected
 		// warnings from new checks and many local tidy_checks_as_errors and
 		// -warnings-as-errors can break a global build.

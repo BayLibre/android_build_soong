@@ -468,7 +468,9 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 		for _, path := range noTidySrcs {
 			noTidySrcsMap[path] = true
 		}
-		tidyTimeout := ctx.Config().Getenv("TIDY_TIMEOUT")
+		// tidyTimeout := ctx.Config().Getenv("TIDY_TIMEOUT")
+		// always assume TIDY_TIMEOUT=90
+		tidyTimeout := "90"
 		if len(tidyTimeout) > 0 {
 			tidyVars += "TIDY_TIMEOUT=" + tidyTimeout
 		}
@@ -677,7 +679,9 @@ func transformSourceToObj(ctx ModuleContext, subdir string, srcFiles, noTidySrcs
 			tidyFiles = append(tidyFiles, tidyFile)
 
 			rule := clangTidy
-			if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_CLANG_TIDY") {
+			// if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_CLANG_TIDY") {
+			// assume RBE_CLANG_TIDY is true
+			if ctx.Config().UseRBE() {
 				rule = clangTidyRE
 			}
 
