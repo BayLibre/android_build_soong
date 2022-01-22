@@ -16,6 +16,7 @@ package build
 
 import (
 	"compress/gzip"
+	"crypto/sha512"
 	"fmt"
 	"io"
 	"os"
@@ -169,4 +170,29 @@ func gzipFileToDir(src, destDir string) error {
 	}
 
 	return nil
+}
+
+// sha512FileToDir writes a the hash src to destDir with the suffix ".sha512".
+func sha512FileToDir(src, destDir string) error {
+	in, err := os.Open(src)
+	if err != nil {
+		return fmt.Errorf("failed to open %s: %s", src, err.Error())
+	}
+	defer in.Close()
+
+	dest := filepath.Join(destDir, filepath.Base(src)+".sha512")
+
+	hasher := sha512.New()
+	_, err = io.Copy(hasher, in)
+	if err != nil {
+		return fmt.Errorf("failed to sha512 %s: %s", dest, err.Error())
+	}
+	out, err := os.OpenFile(dest, os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		return fmt.Errorf("failed to open %s: %s", dest, err.Error())
+	}
+	defer out.Close()
+
+	_, err = fmt.Fprintf(out, "%x\n", hasher.Sum(nil))
+	return err
 }

@@ -225,7 +225,7 @@ func runKatiBuild(ctx Context, config Config) {
 	runKati(ctx, config, katiBuildSuffix, args, func(env *Environment) {})
 
 	// compress and dist the main build ninja file.
-	distGzipFile(ctx, config, config.KatiBuildNinjaFile())
+	distGzipSha512File(ctx, config, config.KatiBuildNinjaFile())
 
 	// Cleanup steps.
 	cleanCopyHeaders(ctx, config)
@@ -345,7 +345,7 @@ func runKatiPackage(ctx Context, config Config) {
 	})
 
 	// Compress and dist the packaging Ninja file.
-	distGzipFile(ctx, config, config.KatiPackageNinjaFile())
+	distGzipSha512File(ctx, config, config.KatiPackageNinjaFile())
 }
 
 // Run Kati on the cleanspec files to clean the build.

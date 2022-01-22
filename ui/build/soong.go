@@ -496,11 +496,11 @@ func runSoong(ctx Context, config Config) {
 		logSoongBuildMetrics(ctx, soongBuildMetrics)
 	}
 
-	distGzipFile(ctx, config, config.SoongNinjaFile(), "soong")
+	distGzipSha512File(ctx, config, config.SoongNinjaFile(), "soong")
 
 	if !config.SkipKati() {
-		distGzipFile(ctx, config, config.SoongAndroidMk(), "soong")
-		distGzipFile(ctx, config, config.SoongMakeVarsMk(), "soong")
+		distGzipSha512File(ctx, config, config.SoongAndroidMk(), "soong")
+		distGzipSha512File(ctx, config, config.SoongMakeVarsMk(), "soong")
 	}
 
 	if shouldCollectBuildSoongMetrics(config) && ctx.Metrics != nil {

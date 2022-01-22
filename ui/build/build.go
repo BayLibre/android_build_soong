@@ -308,7 +308,7 @@ func Build(ctx Context, config Config) {
 	// Write combined ninja file
 	createCombinedBuildNinjaFile(ctx, config)
 
-	distGzipFile(ctx, config, config.CombinedNinjaFile())
+	distGzipSha512File(ctx, config, config.CombinedNinjaFile())
 
 	if what&RunBuildTests != 0 {
 		testForDanglingRules(ctx, config)
@@ -328,9 +328,9 @@ func Build(ctx Context, config Config) {
 	}
 }
 
-// distGzipFile writes a compressed copy of src to the distDir if dist is enabled.  Failures
-// are printed but non-fatal.
-func distGzipFile(ctx Context, config Config, src string, subDirs ...string) {
+// distGzipSha512File writes a compressed copy of src and the sha512 of src to the
+// distDir if dist is enabled.  Failures are printed but non-fatal.
+func distGzipSha512File(ctx Context, config Config, src string, subDirs ...string) {
 	if !config.Dist() {
 		return
 	}
@@ -343,7 +343,11 @@ func distGzipFile(ctx Context, config Config, src string, subDirs ...string) {
 	}
 
 	if err := gzipFileToDir(src, destDir); err != nil {
-		ctx.Printf("failed to dist %s: %s", filepath.Base(src), err.Error())
+		ctx.Printf("failed to dist gzip of %s: %s", filepath.Base(src), err.Error())
+	}
+
+	if err := sha512FileToDir(src, destDir); err != nil {
+		ctx.Printf("failed to dist sha512 of %s: %s", filepath.Base(src), err.Error())
 	}
 }
 
