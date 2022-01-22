@@ -22,6 +22,30 @@
       },
       "revId": "1164084d8dfc0bba66309c30aef2ef0ae30fd325",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d56fbd9_f043cf43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-22T01:01:47Z",
+      "side": 1,
+      "message": "Oh cool, I didn\u0027t know that the build API had crc32\u0027s / md5\u0027s, I\u0027ll use that instead. Thanks for the tip.",
+      "parentUuid": "d3f61598_73a11b44",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 10
+      },
+      "revId": "1164084d8dfc0bba66309c30aef2ef0ae30fd325",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
