@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "170f3c26_6ae719cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2022-01-23T09:06:51Z",
+      "side": 1,
+      "message": "The failures seen in post-submit of the original change have been fixed in:\naosp/1956098\naosp/1955040\naosp/1954685\nag/16675107",
+      "revId": "609c48a0ddf3b832657eabe471460e3b8aa6ba8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
