@@ -122,7 +122,7 @@ func PythonTestHostFactory() android.Module {
 
 func PythonTestFactory() android.Module {
 	module := NewTest(android.HostAndDeviceSupported)
-	module.multilib = android.MultilibBoth
+	module.multilib = android.MultilibDeviceBothHostFirst
 
 	return module.init()
 }

@@ -18,10 +18,10 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"regexp"
 	"testing"
 
 	"android/soong/android"
+	"android/soong/cc"
 )
 
 type pyModule struct {
@@ -34,7 +34,7 @@ type pyModule struct {
 
 var (
 	buildNamePrefix          = "soong_python_test"
-	moduleVariantErrTemplate = "%s: module %q variant %q: "
+	moduleVariantErrTemplate = "%s: module %q variant \".*%s\": "
 	pkgPathErrTemplate       = moduleVariantErrTemplate +
 		"pkg_path: %q must be a relative path contained in par file."
 	badIdentifierErrTemplate = moduleVariantErrTemplate +
@@ -47,6 +47,33 @@ var (
 	badSrcFileExtErr  = moduleVariantErrTemplate + "srcs: found non (.py|.proto) file: %q!"
 	badDataFileExtErr = moduleVariantErrTemplate + "data: found (.py|.proto) file: %q!"
 	bpFile            = "Android.bp"
+	baseBpFile        = `
+python_library {
+	name: "py3-stdlib",
+	host_supported: true,
+	srcs: ["file.py"],
+	version: {
+		py2: {enabled: true },
+		py3: {enabled: true },
+	},
+}
+
+cc_binary {
+	name: "py3-launcher-autorun",
+	host_supported: true,
+	system_shared_libs: [],
+	nocrt:true,
+	no_libcrt: true,
+}
+
+cc_library {
+	name: "libsqlite",
+	host_supported: true,
+	system_shared_libs: [],
+	nocrt:true,
+	no_libcrt: true,
+}
+`
 
 	data = []struct {
 		desc      string
@@ -331,13 +358,20 @@ func TestPythonModule(t *testing.T) {
 		}
 		errorPatterns := make([]string, len(d.errors))
 		for i, s := range d.errors {
-			errorPatterns[i] = regexp.QuoteMeta(s)
+			errorPatterns[i] = s
 		}
 
 		t.Run(d.desc, func(t *testing.T) {
+			d.mockFiles["required_deps_dir/Android.bp"] = []byte(baseBpFile)
+			d.mockFiles["required_deps_dir/file.py"] = nil
 			result := android.GroupFixturePreparers(
+				android.PrepareForTestWithAndroidBuildComponents,
 				android.PrepareForTestWithDefaults,
 				PrepareForTestWithPythonBuildComponents,
+				android.FixtureRegisterWithContext(func(ctx android.RegistrationContext) {
+					ctx.RegisterModuleType("cc_binary", cc.BinaryFactory)
+					ctx.RegisterModuleType("cc_library", cc.LibraryFactory)
+				}),
 				d.mockFiles.AddToFixture(),
 			).ExtendWithErrorHandler(android.FixtureExpectsAllErrorsToMatchAPattern(errorPatterns)).
 				RunTest(t)

@@ -1398,6 +1398,11 @@ func TestDataNativeBinaries(t *testing.T) {
 		python_binary_host {
 			name: "bin",
 			srcs: ["bin.py"],
+			version: {
+				py3: {
+					embedded_launcher: false,
+				},
+			},
 		}
 	`)
 
