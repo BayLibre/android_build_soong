@@ -369,7 +369,9 @@ func (p *Module) OutputFiles(tag string) (android.Paths, error) {
 }
 
 func (p *Module) isEmbeddedLauncherEnabled() bool {
-	return p.installer != nil && Bool(p.properties.Embedded_launcher)
+	defaultValue := p.properties.Actual_version == pyVersion2
+
+	return p.installer != nil && BoolDefault(p.properties.Embedded_launcher, defaultValue)
 }
 
 func anyHasExt(paths []string, ext string) bool {
