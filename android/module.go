@@ -955,11 +955,12 @@ type hostAndDeviceProperties struct {
 type Multilib string
 
 const (
-	MultilibBoth        Multilib = "both"
-	MultilibFirst       Multilib = "first"
-	MultilibCommon      Multilib = "common"
-	MultilibCommonFirst Multilib = "common_first"
-	MultilibDefault     Multilib = ""
+	MultilibBoth                Multilib = "both"
+	MultilibFirst               Multilib = "first"
+	MultilibCommon              Multilib = "common"
+	MultilibCommonFirst         Multilib = "common_first"
+	MultilibDeviceBothHostFirst Multilib = "device_both_host_first"
+	MultilibDefault             Multilib = ""
 )
 
 type HostOrDeviceSupported int
@@ -2742,8 +2743,8 @@ func (b *baseModuleContext) VisitDirectDeps(visit func(Module)) {
 
 func (b *baseModuleContext) VisitDirectDepsWithTag(tag blueprint.DependencyTag, visit func(Module)) {
 	b.bp.VisitDirectDeps(func(module blueprint.Module) {
-		if aModule := b.validateAndroidModule(module, b.bp.OtherModuleDependencyTag(module), b.strictVisitDeps); aModule != nil {
-			if b.bp.OtherModuleDependencyTag(aModule) == tag {
+		if b.bp.OtherModuleDependencyTag(module) == tag {
+			if aModule := b.validateAndroidModule(module, b.bp.OtherModuleDependencyTag(module), b.strictVisitDeps); aModule != nil {
 				visit(aModule)
 			}
 		}

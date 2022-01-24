@@ -745,7 +745,15 @@ func decodeMultilib(base *ModuleBase, os OsType) (multilib, extraMultilib string
 
 	// If that wasn't set, use the default multilib set by the factory.
 	if multilib == "" {
-		multilib = base.commonProperties.Default_multilib
+		if defaultMultilib := base.commonProperties.Default_multilib; defaultMultilib == string(MultilibDeviceBothHostFirst) {
+			if os.Class == Device {
+				multilib = "both"
+			} else if os.Class == Host {
+				multilib = "first"
+			}
+		} else {
+			multilib = defaultMultilib
+		}
 	}
 
 	if base.commonProperties.UseTargetVariants {
