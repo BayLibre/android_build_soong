@@ -595,6 +595,14 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 
 		if a.properties.AndroidManifest != nil {
 			androidManifestFile := android.PathForModuleSrc(ctx, proptools.String(a.properties.AndroidManifest))
+
+			// If the build file has |apex_test| module, add the testOnly flag to the Android Manifest file.
+			if a.testApex {
+				androidManifestFile = java.ManifestFixer(ctx, androidManifestFile, nil,
+					nil, false, false, false,
+					false, false, "", true)
+			}
+
 			implicitInputs = append(implicitInputs, androidManifestFile)
 			optFlags = append(optFlags, "--android_manifest "+androidManifestFile.String())
 		}
