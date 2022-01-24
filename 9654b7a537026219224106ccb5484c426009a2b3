@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "effb213f_f3600021",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-24T15:18:10Z",
+      "side": 1,
+      "message": "Tags can be comma separated values. Using proptool.HasTag (https://cs.android.com/android/platform/superproject/+/master:build/blueprint/proptools/tag.go;l\u003d24;drc\u003dc1ccfee2bdff98486c1bae0edd91996e344af251) here will be more resilient to potential tag additions.",
+      "range": {
+        "startLine": 284,
+        "startChar": 5,
+        "endLine": 284,
+        "endChar": 43
+      },
+      "revId": "9654b7a537026219224106ccb5484c426009a2b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdc98dcb_e1148dd6",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-24T15:18:10Z",
+      "side": 1,
+      "message": "this just happens to work because json lists and Bazel lists are formatted the same -- can you add a todo (attached to a bug) that we should create/use throughout common functions to print starlark? This makes the 4th different way we\u0027re printing a starlark list:\n\n* https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/config/bp2build.go;l\u003d80;drc\u003d341f73550d698d32328c06f223c0d2a51dd53d8c\n* https://cs.android.com/android/platform/superproject/+/master:build/soong/android/soongconfig/modules.go;l\u003d321-325;drc\u003d4ad40d99b08022f532d2eb2e5a4d66b3e3f6c20f\n* https://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/build_conversion.go;l\u003d579-602;drc\u003d492bd91a51eeb7d110ea678c8669e5ddc929401c",
+      "range": {
+        "startLine": 289,
+        "startChar": 30,
+        "endLine": 289,
+        "endChar": 79
+      },
+      "revId": "9654b7a537026219224106ccb5484c426009a2b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "244f7212_e91f11c5",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-24T15:18:10Z",
+      "side": 1,
+      "message": "optional, could use go\u0027s multiline strings (using `) here instead",
+      "range": {
+        "startLine": 309,
+        "startChar": 2,
+        "endLine": 313,
+        "endChar": 6
+      },
+      "revId": "9654b7a537026219224106ccb5484c426009a2b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
