@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52355bb3_b7c05af4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2022-01-24T08:41:55Z",
+      "side": 1,
+      "message": "+2 but please wait for the +1 from Kousik before submitting.",
+      "revId": "240660d5456f0adb261172989a2ea5904123ee86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
