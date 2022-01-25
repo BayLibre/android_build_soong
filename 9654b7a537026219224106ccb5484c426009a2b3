@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80ce9bdc_9af29e3b",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-01-25T07:11:43Z",
+      "side": 1,
+      "message": "nit: nonArchVariantProductVariables",
+      "range": {
+        "startLine": 277,
+        "startChar": 1,
+        "endLine": 277,
+        "endChar": 17
+      },
+      "revId": "9654b7a537026219224106ccb5484c426009a2b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf28aed2_5a57042b",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-01-25T07:11:43Z",
+      "side": 1,
+      "message": "nit: archVariantProductVariables",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 13
+      },
+      "revId": "9654b7a537026219224106ccb5484c426009a2b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "effb213f_f3600021",
         "filename": "android/config.go",
         "patchSetId": 2
