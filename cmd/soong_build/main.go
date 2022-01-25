@@ -48,6 +48,7 @@ var (
 	delvePath   string
 
 	moduleGraphFile   string
+	moduleActionsFile string
 	docFile           string
 	bazelQueryViewDir string
 	bp2buildMarker    string
@@ -76,6 +77,7 @@ func init() {
 
 	// Flags representing various modes soong_build can run in
 	flag.StringVar(&moduleGraphFile, "module_graph_file", "", "JSON module graph file to output")
+	flag.StringVar(&moduleActionsFile, "module_actions_file", "", "JSON file to output inputs/outputs of actions of modules")
 	flag.StringVar(&docFile, "soong_docs", "", "build documentation file to output")
 	flag.StringVar(&bazelQueryViewDir, "bazel_queryview_dir", "", "path to the bazel queryview directory relative to --top")
 	flag.StringVar(&bp2buildMarker, "bp2build_marker", "", "If set, run bp2build, touch the specified marker file then exit")
@@ -122,6 +124,9 @@ func newConfig(availableEnv map[string]string) android.Config {
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%s", err)
 		os.Exit(1)
+	}
+	if moduleGraphFile != "" {
+		configuration.SetCaptureBuild(true)
 	}
 	return configuration
 }
@@ -185,6 +190,17 @@ func writeJsonModuleGraph(ctx *android.Context, path string) {
 
 	defer f.Close()
 	ctx.Context.PrintJSONGraph(f)
+}
+
+func writeJsonModuleActions(ctx *android.Context, path string) {
+	f, err := os.Create(shared.JoinPath(topDir, path))
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "%s", err)
+		os.Exit(1)
+	}
+
+	defer f.Close()
+	ctx.Context.PrintJSONAction(f)
 }
 
 func writeBuildGlobsNinjaFile(srcDir, buildDir string, globs func() pathtools.MultipleGlobResults, config interface{}) []string {
@@ -255,6 +271,7 @@ func doChosenActivity(configuration android.Config, extraNinjaDeps []string) str
 			return queryviewMarkerFile
 		} else if generateModuleGraphFile {
 			writeJsonModuleGraph(ctx, moduleGraphFile)
+			writeJsonModuleActions(ctx, moduleActionsFile)
 			writeDepFile(moduleGraphFile, ninjaDeps)
 			return moduleGraphFile
 		} else if generateDocFile {
