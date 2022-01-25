@@ -699,7 +699,7 @@ include $(call all-makefiles-under,$(LOCAL_PATH))
 		expected: `
 			android_library {
 				srcs: ["test.java"],
-				resource_dirs: ["res"],
+
 				jacoco: {
 					include_filter: ["foo.*"],
 				},
@@ -1439,7 +1439,7 @@ include $(BUILD_RRO_PACKAGE)
 runtime_resource_overlay {
 	name: "foo",
 	product_specific: true,
-	resource_dirs: ["res"],
+
 	sdk_version: "current",
 	theme: "FooTheme",
 
@@ -1560,6 +1560,22 @@ android_app {
     name: "foo",
     // ANDROIDMK TRANSLATION ERROR: Only $(LOCAL_PATH)/.. values are allowed
     // LOCAL_NOTICE_FILE := license_notice
+
+}
+`,
+	},
+	{
+		desc: "Drop default resource and asset dirs from bp",
+		in: `
+include $(CLEAR_VARS)
+LOCAL_MODULE := foo
+LOCAL_ASSET_DIR := $(LOCAL_PATH)/assets
+LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res
+include $(BUILD_PACKAGE)
+`,
+		expected: `
+android_app {
+		name: "foo",
 
 }
 `,
