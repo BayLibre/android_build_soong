@@ -149,7 +149,9 @@ type config struct {
 	// runs standalone.
 	katiEnabled bool
 
-	captureBuild      bool // true for tests, saves build parameters for each module
+	// True for tests and `m json-module-graph`, saves build parameters and
+	// inputs/outputs of actions for each module.
+	captureBuild      bool
 	ignoreEnvironment bool // true for tests, returns empty from all Getenv calls
 
 	fs         pathtools.FileSystem
@@ -555,6 +557,10 @@ func (c *config) mockFileSystem(bp string, fs map[string][]byte) {
 
 func (c *config) SetAllowMissingDependencies() {
 	c.productVariables.Allow_missing_dependencies = proptools.BoolPtr(true)
+}
+
+func (c *config) SetCaptureBuild(captureBuildToUpdate bool) {
+	c.captureBuild = captureBuildToUpdate
 }
 
 // BlueprintToolLocation returns the directory containing build system tools
