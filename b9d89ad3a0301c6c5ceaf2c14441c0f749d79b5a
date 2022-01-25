@@ -106,6 +106,24 @@
       "parentUuid": "432ccead_06828e4b",
       "revId": "b9d89ad3a0301c6c5ceaf2c14441c0f749d79b5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "103ae9bc_5bee0efb",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-25T23:07:15Z",
+      "side": 1,
+      "message": "I haven\u0027t fully followed this dicussion, but mutators are currently ordered by registration order such that one mutator is called on all modules before the next mutator is called on any modules.  That may get relaxed in the future, but they will still be strictly ordered on any individual module.",
+      "parentUuid": "9d88842c_1e089c80",
+      "revId": "b9d89ad3a0301c6c5ceaf2c14441c0f749d79b5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
