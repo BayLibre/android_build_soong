@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a50852be_0ee79997",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-25T22:51:52Z",
+      "side": 1,
+      "message": "This doesn\u0027t do anything about making proc_macros work, they fail to build because there is no proc_macros crate built from source.  Eventually I\u0027ll either have to make proc_macros (and their dependencies) build with glibc even when musl is enabled, or work with you to produce a rustc that is linked against musl.",
+      "revId": "e32f09312019d7dea38b058cbc23dd0ea1186cf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
