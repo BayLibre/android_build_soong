@@ -88,6 +88,24 @@
       "parentUuid": "ab578350_b9111cc6",
       "revId": "b9d89ad3a0301c6c5ceaf2c14441c0f749d79b5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d88842c_1e089c80",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-01-25T19:11:57Z",
+      "side": 1,
+      "message": "(Un-resolving this thread till we address this concern)\n\n\n\u003e We have two mutators: One of them makes sure that any module in an updatable apex also has strict linting enabled. The other actually performs the check on any module with strict linting enabled. \n\nBoth the two mutators actually do the same thing - ensuring that relevant java modules have strict lint enabled. The check itself is done by `lint_project_xml` which is invoked when one runs the build command `m lint-check`. The mutators ensure that `--disallowed-issues NewApi` is added to the lint command in the resultant ninja file based on the module\u0027s context\n\n\n\u003e Is it possible that module foo is visited by the mutator that checks for strict linting [at a time where this is not enabled, hence nothing is done] ...\n\nIn this example, foo will be visited twice (once per mutator). Irrespective of the visit order, the newly created apex mutator will ensure that `--disallowed_isues NewApi` will be present in the lint build actions of foo",
+      "parentUuid": "432ccead_06828e4b",
+      "revId": "b9d89ad3a0301c6c5ceaf2c14441c0f749d79b5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
