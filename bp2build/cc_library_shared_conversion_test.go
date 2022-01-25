@@ -30,6 +30,7 @@ const (
 
 func registerCcLibrarySharedModuleTypes(ctx android.RegistrationContext) {
 	cc.RegisterCCBuildComponents(ctx)
+	ctx.RegisterModuleType("toolchain_library", cc.ToolchainLibraryFactory)
 	ctx.RegisterModuleType("cc_library_headers", cc.LibraryHeaderFactory)
 	ctx.RegisterModuleType("cc_library_static", cc.LibraryStaticFactory)
 	ctx.RegisterModuleType("cc_library", cc.LibraryFactory)
@@ -421,7 +422,7 @@ cc_library_shared {
     include_build_directory: false,
 }
 `,
-		expectedErr: fmt.Errorf("module \"foo_shared\": nocrt is not supported for arch variants"),
+		expectedErr: fmt.Errorf("Android.bp:16:1: module \"foo_shared\": nocrt is not supported for arch variants"),
 	})
 }
 

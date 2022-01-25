@@ -68,6 +68,7 @@ bootstrap_go_package {
         "native_bridge_sdk_trait.go",
         "object.go",
         "test.go",
+        "toolchain_library.go",
 
         "ndk_abi.go",
         "ndk_headers.go",
