@@ -2585,6 +2585,13 @@ func (m *moduleContext) Build(pctx PackageContext, params BuildParams) {
 			err.Error())
 	}
 	m.bp.Build(pctx.PackageContext, bparams)
+	if m.config.captureBuild {
+		m.bp.SetJSONDataActions([]blueprint.JSONDataAction{{
+			Inputs:         append(bparams.Inputs, bparams.Implicits...),
+			Outputs:        append(bparams.Outputs, bparams.ImplicitOutputs...),
+			SymlinkOutputs: bparams.SymlinkOutputs,
+		}})
+	}
 }
 
 func (m *moduleContext) Phony(name string, deps ...Path) {
