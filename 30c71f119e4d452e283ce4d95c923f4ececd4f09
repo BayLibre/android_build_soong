@@ -20,6 +20,196 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fecffbf3_b685f6ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-25T13:53:32Z",
+      "side": 1,
+      "message": "This is good feedback! :-)  go/cl-descriptions for general google guidelines.\n\nAnother specific comment about the commit:\nThe first line should generally be kept short (50-60 chars). This is because the first line is shown in many tools, including history in codesearch, so having a descriptive and short first line helps others.",
+      "parentUuid": "64f46382_5ecc7137",
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "679c6244_477afde5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-25T13:53:32Z",
+      "side": 1,
+      "message": "nit: it\u0027s more consistent with other changes if you keep these tags at the end grouped.\n\nSo, generally your commit would look like:\n\nFirst line\n\nDescription with details.\nOn multiple lines.\n\nBug: 123\nTest: atest foo \u0026\u0026 atest --host bar \\\n      \u0026 manually checked apex file\nOtherTags: blah\nChange-Id: ASDF",
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1e545cf_20228cf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-25T13:53:32Z",
+      "side": 1,
+      "message": "Nice! Exciting! :-) \n",
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62fae40e_03fc1098",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-25T13:53:32Z",
+      "side": 1,
+      "message": "nit: this comment is mostly redundant, the logic below is readable enough that people would understand it.",
+      "range": {
+        "startLine": 599,
+        "startChar": 3,
+        "endLine": 599,
+        "endChar": 99
+      },
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aba5491_ff7fb511",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-25T13:53:32Z",
+      "side": 1,
+      "message": "nit: you may want to move the call to ManifestFixer into a private helper method that has a more descriptive name, e.g. MarkManifestTestOnly()",
+      "range": {
+        "startLine": 601,
+        "startChar": 4,
+        "endLine": 603,
+        "endChar": 28
+      },
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a15205c2_bc053150",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-25T13:53:32Z",
+      "side": 1,
+      "message": "it\u0027s probably a good idea to add the name of the parameter as a comment here, so people know what this \"false\" means.\n\nManifestFixer(ctx, ..., a.LoggingParent, false /* testOnly */)",
+      "range": {
+        "startLine": 281,
+        "startChar": 19,
+        "endLine": 281,
+        "endChar": 24
+      },
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e66af48_7304d179",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-25T13:53:32Z",
+      "side": 1,
+      "message": "Given that ManifestFixer method is used in the context outside of mainline/apex, this should be named more generically.. testOnly?",
+      "range": {
+        "startLine": 73,
+        "startChar": 55,
+        "endLine": 73,
+        "endChar": 65
+      },
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cbcc77e_eb537a77",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-25T13:53:32Z",
+      "side": 1,
+      "message": "nit: move the definition to where it is actually used? Doesn\u0027t need to be here?",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 15
+      },
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7808f30e_8aa49335",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-25T13:53:32Z",
+      "side": 1,
+      "message": "you can probably move this into the block above?\n\nif classLoaderContexts !\u003d nil {\n\t// manifest_fixer should add only the implicit SDK libraries inferred by Soong, not those added\n\t// explicitly via `uses_libs`/`optional_uses_libs`.\n\trequiredUsesLibs, optionalUsesLibs :\u003d classLoaderContexts.ImplicitUsesLibs()\n\tfor _, usesLib :\u003d range requiredUsesLibs {\n\t\targs \u003d append(args, \"--uses-library\", usesLib)\n\t}\n\tfor _, usesLib :\u003d range optionalUsesLibs {\n\t\targs \u003d append(args, \"--optional-uses-library\", usesLib)\n\t}\n}",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf63402c_9bf30313",
         "filename": "java/android_manifest.go",
         "patchSetId": 2
@@ -37,6 +227,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f5e61b43_150d43bf",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-25T13:53:32Z",
+      "side": 1,
+      "message": "Yeah, you can probably add \"--minSdkVersion\" conditionally to the rule, just like you are passing --test-only conditionally.",
+      "parentUuid": "cf63402c_9bf30313",
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7296152a_78483059",
         "filename": "scripts/manifest_fixer.py",
         "patchSetId": 2
@@ -48,6 +256,47 @@
       "writtenOn": "2022-01-25T10:35:11Z",
       "side": 1,
       "message": "do we want to do something if the testOnly attribute was false? \n\nI think it is unlikely this ever happens, but if it does... I feel like we should fail the build. Opinions?",
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c84e8d32_b8deb461",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-25T13:53:32Z",
+      "side": 1,
+      "message": "We should respect it being false I think. I can imagine a corner case where we need a test apex that must pretend as if it is not a test. Usually in similar situations, manual override should be respected.\n\nI\u0027d say, if there is already testOnly attr present, then do nothing.",
+      "parentUuid": "7296152a_78483059",
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b33e47b9_97e50c4f",
+        "filename": "scripts/manifest_fixer_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-25T13:53:32Z",
+      "side": 1,
+      "message": "AddTestOnlyApplicationTest?",
+      "range": {
+        "startLine": 531,
+        "startChar": 6,
+        "endLine": 531,
+        "endChar": 16
+      },
       "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
