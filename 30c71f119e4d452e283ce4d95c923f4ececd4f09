@@ -181,6 +181,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "709e987f_573367c2",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-01-25T16:07:20Z",
+      "side": 1,
+      "message": "I thought about this too.\n\nI recently did a few of those in *java* and realised there are two ways to do it:\n\nsomeMethod( ... , false /* testOnly */) \n\nwell... you can put the name on the left or write of the value...\n\nor\n\nsomeMethod( ... , /* testOnly\u003d */ false)\n\nThe \u003d is very useful when there\u0027s a long list of parameters with literals as it gets confusing if the value is to the left or right of the name. But that\u0027s in Java, I don\u0027t know if go has a different practice.",
+      "parentUuid": "a15205c2_bc053150",
+      "range": {
+        "startLine": 281,
+        "startChar": 19,
+        "endLine": 281,
+        "endChar": 24
+      },
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2e66af48_7304d179",
         "filename": "java/android_manifest.go",
         "patchSetId": 2
