@@ -284,6 +284,7 @@ func bootstrapBlueprint(ctx Context, config Config) {
 		config.ModuleGraphFile(),
 		[]string{
 			"--module_graph_file", config.ModuleGraphFile(),
+			"--module_action_file", config.ModuleActionFile(),
 		},
 		fmt.Sprintf("generating the Soong module graph at %s", config.ModuleGraphFile()),
 	)
