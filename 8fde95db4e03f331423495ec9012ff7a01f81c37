@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fa296fa_4aaeebc0",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-01-25T12:24:41Z",
+      "side": 1,
+      "message": "nit: actions",
+      "range": {
+        "startLine": 822,
+        "startChar": 49,
+        "endLine": 822,
+        "endChar": 55
+      },
+      "revId": "8fde95db4e03f331423495ec9012ff7a01f81c37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
