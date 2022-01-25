@@ -52,6 +52,24 @@
       "parentUuid": "f0150914_768e3e29",
       "revId": "b9d89ad3a0301c6c5ceaf2c14441c0f749d79b5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab578350_b9111cc6",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-01-25T17:03:29Z",
+      "side": 1,
+      "message": "Yes, I think it is done. Always returning true from the callback ensures that all transitive deps are traversed.\n\nAs an example,\n```\nBefore\napex_foo -\u003e javalib_foo -\u003e javalib_bar\nThis mutator exited at javalib_foo\n\nNow\napex_foo -\u003e javalib_foo -\u003e javalib_bar\nThis mutator exits at leaf node javalib_bar\n```",
+      "parentUuid": "98ce0841_63c89cbc",
+      "revId": "b9d89ad3a0301c6c5ceaf2c14441c0f749d79b5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
