@@ -822,6 +822,10 @@ func (c *configImpl) TempDir() string {
 	return shared.TempDirForOutDir(c.SoongOutDir())
 }
 
+func (c *configImpl) ModuleActionsFile() string {
+	return shared.JoinPath(c.SoongOutDir(), "module-actions.json")
+}
+
 func (c *configImpl) FileListDir() string {
 	return filepath.Join(c.OutDir(), ".module_paths")
 }

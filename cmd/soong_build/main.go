@@ -123,6 +123,9 @@ func newConfig(availableEnv map[string]string) android.Config {
 		fmt.Fprintf(os.Stderr, "%s", err)
 		os.Exit(1)
 	}
+	if moduleGraphFile != "" {
+		configuration.SetCaptureBuild(true)
+	}
 	return configuration
 }
 
