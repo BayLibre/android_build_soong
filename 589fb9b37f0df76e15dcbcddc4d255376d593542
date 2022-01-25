@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f6ab8c7_2683fa1c",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-25T21:05:40Z",
+      "side": 1,
+      "message": "Do we want this attribute as part of `testProperties`? Or just `testHostProperties`?",
+      "revId": "589fb9b37f0df76e15dcbcddc4d255376d593542",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
