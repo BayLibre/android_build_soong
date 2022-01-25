@@ -70,6 +70,24 @@
       "parentUuid": "98ce0841_63c89cbc",
       "revId": "b9d89ad3a0301c6c5ceaf2c14441c0f749d79b5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "432ccead_06828e4b",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-01-25T18:49:20Z",
+      "side": 1,
+      "message": "OK, then maybe it\u0027s because I don\u0027t know about mutators enough or maybe I didn\u0027t get my point across. \n\nSecond attempt at describing my concern:\n\nLet\u0027s think about one specific android module foo that doesn\u0027t set strict linting either way but is part of an updatable apex. \n\nWe have two mutators: One of them makes sure that any module in an updatable apex also has strict linting enabled. The other actually performs the check on any module with strict linting enabled. \n\nIs it possible that module foo is visited by the mutator that checks for strict linting [at a time where this is not enabled, hence nothing is done] and only later the other mutator enables that? [my assumption being that the checks would never be done if this happens]",
+      "parentUuid": "ab578350_b9111cc6",
+      "revId": "b9d89ad3a0301c6c5ceaf2c14441c0f749d79b5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
