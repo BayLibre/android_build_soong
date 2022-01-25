@@ -34,6 +34,24 @@
       "parentUuid": "205dc26f_4dc87dbf",
       "revId": "b9d89ad3a0301c6c5ceaf2c14441c0f749d79b5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ce0841_63c89cbc",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-01-25T16:57:40Z",
+      "side": 1,
+      "message": "Is that done? All I see is that the return false that used to be here was removed",
+      "parentUuid": "f0150914_768e3e29",
+      "revId": "b9d89ad3a0301c6c5ceaf2c14441c0f749d79b5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
