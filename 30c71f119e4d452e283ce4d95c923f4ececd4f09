@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f46382_5ecc7137",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-01-25T10:35:11Z",
+      "side": 1,
+      "message": "Apologies for commenting on the commit message...\n\nFeel free to read go/commit for a few \"practices\" of how to word commit messages. \n\nTwo main points:\n\n1. as a recommendation, the first line of the commit should be imperative (Add testOnly attribute vs Adding testOnly attribute)\n\n2. when possible, for the \"Test:\" lines, you can provide a command to run the test. E.g. \"Test: atest MyUnittestClass\". Sometimes that\u0027s not possible but given there are unit tests that were modified here, we can at least run them. Also, for unittests under soong, saying \"Test: m nothing\" is enough because that runs the unit tests.",
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf63402c_9bf30313",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-01-25T10:35:11Z",
+      "side": 1,
+      "message": "Is it possible to avoid this doubled manifest fixer rules?\n\nIt seems like we should be able to pass the arguments we know and the python script works with what it\u0027s got.",
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7296152a_78483059",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-01-25T10:35:11Z",
+      "side": 1,
+      "message": "do we want to do something if the testOnly attribute was false? \n\nI think it is unlikely this ever happens, but if it does... I feel like we should fail the build. Opinions?",
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd9f8426_34b35fb1",
+        "filename": "scripts/manifest_fixer_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-01-25T10:35:11Z",
+      "side": 1,
+      "message": "You mention \"hasCode\" in the pydoc, but that isn\u0027t tested. \n\ndid you mean to say \"testOnly is false\"?",
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
