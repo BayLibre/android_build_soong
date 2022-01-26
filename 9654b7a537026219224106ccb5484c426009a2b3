@@ -234,6 +234,30 @@
       },
       "revId": "9654b7a537026219224106ccb5484c426009a2b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "710c6495_31c69365",
+        "filename": "android/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-26T19:23:46Z",
+      "side": 1,
+      "message": "yeah, it can break indentation. I don\u0027t believe there\u0027s anything in style guide about using multiline strings.\n\nSuggested here are it would remove the need to have have elements here that are \"\\n\" but I don\u0027t have strong feelings either way.",
+      "parentUuid": "6e8801cb_8bdcd2fa",
+      "range": {
+        "startLine": 309,
+        "startChar": 2,
+        "endLine": 313,
+        "endChar": 6
+      },
+      "revId": "9654b7a537026219224106ccb5484c426009a2b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

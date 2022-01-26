@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ff50803_12552ad9",
+        "filename": "android/config.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-26T19:23:46Z",
+      "side": 1,
+      "message": "we don\u0027t need the TODO here -- this should be json -- below we call bazel\u0027s json.decode it in Bazel.",
+      "range": {
+        "startLine": 301,
+        "startChar": 1,
+        "endLine": 301,
+        "endChar": 70
+      },
+      "revId": "b14805991efbabc5911e3897b14e6baac368a153",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
