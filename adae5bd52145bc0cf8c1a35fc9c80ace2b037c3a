@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05e436df_1d36b65e",
+        "filename": "ui/build/config.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 827,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-01-26T08:43:27Z",
+      "side": 1,
+      "message": "nit: move this directly below ModuleGraphFile",
+      "range": {
+        "startLine": 825,
+        "startChar": 0,
+        "endLine": 827,
+        "endChar": 1
+      },
+      "revId": "adae5bd52145bc0cf8c1a35fc9c80ace2b037c3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
