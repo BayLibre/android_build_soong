@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "472dac65_b34b5a67",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06e21b6c_1f3b9b99",
+      "range": {
+        "startLine": 18,
+        "startChar": 17,
+        "endLine": 18,
+        "endChar": 18
+      },
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e5f1d45_a6a35ce6",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-26T12:26:38Z",
       "side": 1,
       "message": "This could actually be a link to the gerrit instance for the file. Let me suggest:\n\n[system/bpf/Android.bp](https://android.googlesource.com/platform/system/bpf/+/refs/heads/master/Android.bp)",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 39
+      },
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29726dae_a1643a47",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e5f1d45_a6a35ce6",
       "range": {
         "startLine": 36,
         "startChar": 16,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d79ed7ae_34977acc",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87176116_29ea9174",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 7
+      },
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8bd9159_434497e4",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-01-26T12:26:38Z",
       "side": 1,
       "message": "Switch to:\n\n[system/netd/tests/Android.bp](https://android.googlesource.com/platform/system/netd/+/refs/heads/master/tests/Android.bp)",
+      "range": {
+        "startLine": 62,
+        "startChar": 25,
+        "endLine": 62,
+        "endChar": 55
+      },
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda70ef9_3e708833",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8bd9159_434497e4",
       "range": {
         "startLine": 62,
         "startChar": 25,
@@ -127,6 +223,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15a957cc_e5ac3489",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b02c0fc3_e7d6f993",
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9e1d469_a9f16f1d",
@@ -140,6 +254,30 @@
       "writtenOn": "2022-01-26T12:26:38Z",
       "side": 1,
       "message": "Switch to:\n\n[bionic/tests/Android.bp](https://android.googlesource.com/platform/bionic/+/refs/heads/master/tests/Android.bp)",
+      "range": {
+        "startLine": 70,
+        "startChar": 7,
+        "endLine": 70,
+        "endChar": 32
+      },
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5afdc28e_c0c7d4e4",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9e1d469_a9f16f1d",
       "range": {
         "startLine": 70,
         "startChar": 7,
@@ -167,6 +305,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e615e5c_8e72cbb5",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d778f061_3cc65e58",
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61c72fb3_78a52df9",
@@ -180,6 +336,30 @@
       "writtenOn": "2022-01-26T12:26:38Z",
       "side": 1,
       "message": "Switch to:\n\n[system/core/libsysutils/Android.bp](https://android.googlesource.com/platform/system/core/+/refs/heads/master/libsysutils/Android.bp)",
+      "range": {
+        "startLine": 85,
+        "startChar": 12,
+        "endLine": 85,
+        "endChar": 48
+      },
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac174ac9_31815d3b",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61c72fb3_78a52df9",
       "range": {
         "startLine": 85,
         "startChar": 12,
@@ -207,6 +387,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15630351_903d108c",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76bace81_68809b08",
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd426ac0_4a693e53",
@@ -220,6 +418,30 @@
       "writtenOn": "2022-01-26T12:26:38Z",
       "side": 1,
       "message": "Switch to:\n\n[art/odrefresh/Android.bp](https://android.googlesource.com/platform/art/+/refs/heads/master/odrefresh/Android.bp)",
+      "range": {
+        "startLine": 117,
+        "startChar": 16,
+        "endLine": 117,
+        "endChar": 42
+      },
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2e9f044_350436f2",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd426ac0_4a693e53",
       "range": {
         "startLine": 117,
         "startChar": 16,
@@ -247,6 +469,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f288148e_c4f40035",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de63ecb1_67e42223",
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e625e40c_c478513d",
@@ -260,6 +500,30 @@
       "writtenOn": "2022-01-26T12:26:38Z",
       "side": 1,
       "message": "odrefresh (missing the `e`).",
+      "range": {
+        "startLine": 144,
+        "startChar": 33,
+        "endLine": 144,
+        "endChar": 41
+      },
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08710e52_2c514231",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e625e40c_c478513d",
       "range": {
         "startLine": 144,
         "startChar": 33,
@@ -293,6 +557,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9edb86d6_b06e8a80",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aee41976_190bedab",
+      "range": {
+        "startLine": 153,
+        "startChar": 27,
+        "endLine": 153,
+        "endChar": 35
+      },
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dd15030_0215695a",
@@ -306,6 +594,30 @@
       "writtenOn": "2022-01-26T12:26:38Z",
       "side": 1,
       "message": "filter",
+      "range": {
+        "startLine": 155,
+        "startChar": 26,
+        "endLine": 155,
+        "endChar": 32
+      },
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3054a442_c5a1fa4e",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dd15030_0215695a",
       "range": {
         "startLine": 155,
         "startChar": 26,
@@ -339,6 +651,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59614b3f_8f6b27dd",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c34ba998_adbadc04",
+      "range": {
+        "startLine": 160,
+        "startChar": 51,
+        "endLine": 160,
+        "endChar": 58
+      },
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "384418c4_4308fcee",
@@ -352,6 +688,30 @@
       "writtenOn": "2022-01-26T12:26:38Z",
       "side": 1,
       "message": "the",
+      "range": {
+        "startLine": 165,
+        "startChar": 26,
+        "endLine": 165,
+        "endChar": 27
+      },
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcd53b69_145c9eea",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "384418c4_4308fcee",
       "range": {
         "startLine": 165,
         "startChar": 26,
@@ -379,6 +739,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9214c17_52152f85",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19f42e30_94c2ada6",
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5808725_b4d254b1",
@@ -392,6 +770,24 @@
       "writtenOn": "2022-01-26T12:26:38Z",
       "side": 1,
       "message": "Add a new header:\n\n### The `tidy-soong` target",
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82be077e_2bce0046",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5808725_b4d254b1",
       "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -413,6 +809,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c173d9d_b3c36e7f",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db44fa01_6c9db9d7",
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bff736d_6ca9d859",
@@ -426,6 +840,24 @@
       "writtenOn": "2022-01-26T12:26:38Z",
       "side": 1,
       "message": "Maybe title this section as \"Capabilities for Android.bp and Android.mk\"",
+      "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d25ea00_f0929777",
+        "filename": "docs/tidy.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-01-26T23:08:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bff736d_6ca9d859",
       "revId": "48fa5958e7aefe956b3205e1d7bbf7240b54f1a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
