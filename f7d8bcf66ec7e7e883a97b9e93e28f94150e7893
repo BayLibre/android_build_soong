@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd436fd5_6719c0b8",
+        "filename": "apex/apex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-01-26T12:38:13Z",
+      "side": 1,
+      "message": "+aquilescanta FYI, this needs resolving. Spandan, is there a list of problematic deps you can provide the media team with?",
+      "revId": "f7d8bcf66ec7e7e883a97b9e93e28f94150e7893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0a527f4_5eab8a15",
+        "filename": "apex/apex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-01-26T12:38:13Z",
+      "side": 1,
+      "message": "+corinac ditto",
+      "revId": "f7d8bcf66ec7e7e883a97b9e93e28f94150e7893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
