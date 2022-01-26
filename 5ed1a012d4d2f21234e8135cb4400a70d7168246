@@ -33,6 +33,24 @@
       "message": "I think this will now fail TH due to changes in connectivity mainline module.\n\nTo submit this we\u0027ll need to:\n- delete the clatd.o/netd.o targets from system/netd in sc-mainline-prod\n- rename the targets in aosp/master connectivity mainline module (strip _mainline).\n\nSee:\n\nhttps://source.corp.google.com/search?q\u003dp:sc-mainline-prod%20file:Android.bp%20(clat%7Cnet)d%5B.%5Do\n\nhttps://source.corp.google.com/search?q\u003dp:aosp-master%20(clat%7Cnet)d.o_mainline\u0026sq\u003d\n\nI\u0027m perfectly happy with such changes, I just don\u0027t have +2 on sc-mainline-prod system/netd to make them.",
       "revId": "5ed1a012d4d2f21234e8135cb4400a70d7168246",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff2e3154_cb682f1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2022-01-26T01:37:09Z",
+      "side": 1,
+      "message": "Giving -2 for now just to make sure this doesn\u0027t get merged in , since it looks like it passed presubmit even after the mainline changes",
+      "parentUuid": "6a8adcc2_e2babb6a",
+      "revId": "5ed1a012d4d2f21234e8135cb4400a70d7168246",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
