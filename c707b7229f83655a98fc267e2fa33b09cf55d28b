@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "faacadad_acd572fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2022-01-26T01:46:42Z",
+      "side": 1,
+      "message": "Yeah, originally I was hesitant to have the btf option automatically strip (vs adding a separate \"strip:\" option) because stripping affects backward compatibility - it reorders the sections in a way that is going to require a patch to bpfloader to handle properly, therefore can\u0027t use it in mainline programs. I think that concern is moot now since old versions of bpfloader without https://android-review.googlesource.com/c/platform/system/bpf/+/1954096 can\u0027t load BTF-enabled programs properly anyway.\n\nNeed to revisit the correct settings for how much to strip out, then will upload a new version of this that strips out the extraneous sections.",
+      "parentUuid": "b35f6faf_e0fa375d",
+      "revId": "c707b7229f83655a98fc267e2fa33b09cf55d28b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59d5d01c_1ec3bf69",
