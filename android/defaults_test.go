@@ -19,7 +19,8 @@ import (
 )
 
 type defaultsTestProperties struct {
-	Foo []string
+	Foo   []string
+	Paths []string `android:"path"`
 }
 
 type defaultsTestModule struct {

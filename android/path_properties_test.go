@@ -173,3 +173,21 @@ func TestPathDepsMutator(t *testing.T) {
 		})
 	}
 }
+
+func TestPathPropertiesDefaults(t *testing.T) {
+	bp := `
+defaults {
+	name: "non-existent-path-reference",
+	// this module reference is nonexistent and would fail if the path properties mutator ran for
+	// defaults modules.
+	paths: [":blah"],
+}
+`
+
+	GroupFixturePreparers(
+		prepareForDefaultsTest,
+		PrepareForTestWithFilegroup,
+		FixtureWithRootAndroidBp(bp),
+	).RunTest(t)
+
+}
