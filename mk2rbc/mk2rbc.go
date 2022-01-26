@@ -862,7 +862,7 @@ func (ctx *parseContext) handleSubConfig(
 }
 
 func (ctx *parseContext) findMatchingPaths(pattern []string) []string {
-	files := ctx.script.makefileFinder.Find(ctx.script.topDir)
+	files := ctx.script.makefileFinder.Find()
 	if len(pattern) == 0 {
 		return files
 	}

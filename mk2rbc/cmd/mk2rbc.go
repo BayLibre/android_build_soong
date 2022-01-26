@@ -57,6 +57,7 @@ var (
 	cpuProfile            = flag.String("cpu_profile", "", "write cpu profile to file")
 	traceCalls            = flag.Bool("trace_calls", false, "trace function calls")
 	inputVariables        = flag.String("input_variables", "", "starlark file containing product config and global variables")
+	makefileList          = flag.String("makefile_list", "", "path to a file that is a list of all makefiles in the android source tree. If not provided, mk2rbc will find the makefiles itself (slowly)")
 )
 
 func init() {
@@ -79,7 +80,7 @@ func init() {
 var backupSuffix string
 var tracedVariables []string
 var errorLogger = errorSink{data: make(map[string]datum)}
-var makefileFinder = &LinuxMakefileFinder{}
+var makefileFinder mk2rbc.MakefileFinder
 
 func main() {
 	flag.Usage = func() {
@@ -133,6 +134,16 @@ func main() {
 		pprof.StartCPUProfile(f)
 		defer pprof.StopCPUProfile()
 	}
+
+	if *makefileList != "" {
+		makefileFinder = &FileListMakefileFinder{
+			cachedMakefiles: nil,
+			filePath:        *makefileList,
+		}
+	} else {
+		makefileFinder = &FindCommandMakefileFinder{}
+	}
+
 	// Find out global variables
 	getConfigVariables()
 	getSoongVariables()
@@ -519,25 +530,22 @@ func stringsWithFreq(items []string, topN int) (string, int) {
 	return res, len(sorted)
 }
 
-type LinuxMakefileFinder struct {
-	cachedRoot      string
+type FindCommandMakefileFinder struct {
 	cachedMakefiles []string
 }
 
-func (l *LinuxMakefileFinder) Find(root string) []string {
-	if l.cachedMakefiles != nil && l.cachedRoot == root {
+func (l *FindCommandMakefileFinder) Find() []string {
+	if l.cachedMakefiles != nil {
 		return l.cachedMakefiles
 	}
-	l.cachedRoot = root
-	l.cachedMakefiles = make([]string, 0)
 
 	// Return all *.mk files but not in hidden directories.
 
 	// NOTE(asmundak): as it turns out, even the WalkDir (which is an _optimized_ directory tree walker)
 	// is about twice slower than running `find` command (14s vs 6s on the internal Android source tree).
 	common_args := []string{"!", "-type", "d", "-name", "*.mk", "!", "-path", "*/.*/*"}
-	if root != "" {
-		common_args = append([]string{root}, common_args...)
+	if *rootDir != "" {
+		common_args = append([]string{*rootDir}, common_args...)
 	}
 	cmd := exec.Command("/usr/bin/find", common_args...)
 	stdout, err := cmd.StdoutPipe()
@@ -548,9 +556,54 @@ func (l *LinuxMakefileFinder) Find(root string) []string {
 		panic(fmt.Errorf("cannot get the output from %s: %s", cmd, err))
 	}
 	scanner := bufio.NewScanner(stdout)
+	result := make([]string, 0)
 	for scanner.Scan() {
-		l.cachedMakefiles = append(l.cachedMakefiles, strings.TrimPrefix(scanner.Text(), "./"))
+		result = append(result, strings.TrimPrefix(scanner.Text(), "./"))
 	}
 	stdout.Close()
+	err = scanner.Err()
+	if err != nil {
+		panic(fmt.Errorf("cannot get the output from %s: %s", cmd, err))
+	}
+	l.cachedMakefiles = result
 	return l.cachedMakefiles
+}
+
+type FileListMakefileFinder struct {
+	cachedMakefiles []string
+	filePath        string
+}
+
+func (l *FileListMakefileFinder) Find() []string {
+	if l.cachedMakefiles != nil {
+		return l.cachedMakefiles
+	}
+
+	var err error
+	if l.cachedMakefiles, err = readLinesOfFile(l.filePath); err != nil {
+		panic(fmt.Errorf("Cannot read %s\n", l.filePath))
+	}
+	return l.cachedMakefiles
+}
+
+func readLinesOfFile(filepath string) ([]string, error) {
+	file, err := os.Open(filepath)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	result := make([]string, 0)
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := strings.TrimSpace(scanner.Text())
+		if len(line) > 0 {
+			result = append(result, line)
+		}
+	}
+
+	if err = scanner.Err(); err != nil {
+		return nil, err
+	}
+	return result, nil
 }
