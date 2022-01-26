@@ -16,6 +16,24 @@
       "message": "Do we want this attribute as part of `testProperties`? Or just `testHostProperties`?",
       "revId": "589fb9b37f0df76e15dcbcddc4d255376d593542",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b76a324_f771910c",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-26T13:27:51Z",
+      "side": 1,
+      "message": "just `hostTestProperties` should be correct.",
+      "parentUuid": "3f6ab8c7_2683fa1c",
+      "revId": "589fb9b37f0df76e15dcbcddc4d255376d593542",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
