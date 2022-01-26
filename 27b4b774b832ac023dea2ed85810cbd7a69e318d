@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1f936aa_ea376e32",
+        "filename": "java/java.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-26T19:55:04Z",
+      "side": 1,
+      "message": "nit: this doesn\u0027t need to be exported outside of the package",
+      "range": {
+        "startLine": 956,
+        "startChar": 15,
+        "endLine": 956,
+        "endChar": 52
+      },
+      "revId": "27b4b774b832ac023dea2ed85810cbd7a69e318d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cf4f6cb_c588d353",
+        "filename": "java/java_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1521,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-26T19:55:04Z",
+      "side": 1,
+      "message": "nit: extraConfigs",
+      "range": {
+        "startLine": 1521,
+        "startChar": 16,
+        "endLine": 1521,
+        "endChar": 29
+      },
+      "revId": "27b4b774b832ac023dea2ed85810cbd7a69e318d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
