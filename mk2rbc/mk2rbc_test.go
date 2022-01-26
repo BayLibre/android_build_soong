@@ -1387,12 +1387,12 @@ type testMakefileFinder struct {
 	files []string
 }
 
-func (t *testMakefileFinder) Find(root string) []string {
-	if t.files != nil || root == t.root {
+func (t *testMakefileFinder) Find() []string {
+	if t.files != nil {
 		return t.files
 	}
 	t.files = make([]string, 0)
-	fs.WalkDir(t.fs, root, func(path string, d fs.DirEntry, err error) error {
+	fs.WalkDir(t.fs, ".", func(path string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}

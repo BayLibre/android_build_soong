@@ -520,24 +520,32 @@ func stringsWithFreq(items []string, topN int) (string, int) {
 }
 
 type LinuxMakefileFinder struct {
-	cachedRoot      string
 	cachedMakefiles []string
 }
 
-func (l *LinuxMakefileFinder) Find(root string) []string {
-	if l.cachedMakefiles != nil && l.cachedRoot == root {
+func (l *LinuxMakefileFinder) Find() []string {
+	if l.cachedMakefiles != nil {
 		return l.cachedMakefiles
 	}
-	l.cachedRoot = root
-	l.cachedMakefiles = make([]string, 0)
 
-	// Return all *.mk files but not in hidden directories.
+	// First check if out/.module_paths/configuration.list exists, and use that if so
+	outVar := os.Getenv("OUT_DIR")
+	if len(outVar) == 0 {
+		outVar = "out"
+	}
+	var err error
+	if l.cachedMakefiles, err = readLinesOfFile(filepath.Join(*rootDir, outVar, ".module_paths/configuration.list")); err == nil {
+		return l.cachedMakefiles
+	}
+	fmt.Fprintln(os.Stderr, "warning: out/.module_paths/configuration.list does not exist, will fall back to slowly searching for makefiles")
+
+	// Otherwise, find all *.mk files but not in hidden directories.
 
 	// NOTE(asmundak): as it turns out, even the WalkDir (which is an _optimized_ directory tree walker)
 	// is about twice slower than running `find` command (14s vs 6s on the internal Android source tree).
 	common_args := []string{"!", "-type", "d", "-name", "*.mk", "!", "-path", "*/.*/*"}
-	if root != "" {
-		common_args = append([]string{root}, common_args...)
+	if *rootDir != "" {
+		common_args = append([]string{*rootDir}, common_args...)
 	}
 	cmd := exec.Command("/usr/bin/find", common_args...)
 	stdout, err := cmd.StdoutPipe()
@@ -548,9 +556,37 @@ func (l *LinuxMakefileFinder) Find(root string) []string {
 		panic(fmt.Errorf("cannot get the output from %s: %s", cmd, err))
 	}
 	scanner := bufio.NewScanner(stdout)
+	result := make([]string, 0)
 	for scanner.Scan() {
-		l.cachedMakefiles = append(l.cachedMakefiles, strings.TrimPrefix(scanner.Text(), "./"))
+		result = append(result, strings.TrimPrefix(scanner.Text(), "./"))
 	}
 	stdout.Close()
+	err = scanner.Err()
+	if err != nil {
+		panic(fmt.Errorf("cannot get the output from %s: %s", cmd, err))
+	}
+	l.cachedMakefiles = result
 	return l.cachedMakefiles
+}
+
+func readLinesOfFile(filepath string) ([]string, error) {
+	file, err := os.Open(filepath)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	result := make([]string, 0)
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := strings.TrimSpace(scanner.Text())
+		if len(line) > 0 {
+			result = append(result, line)
+		}
+	}
+
+	if err = scanner.Err(); err != nil {
+		return nil, err
+	}
+	return result, nil
 }
