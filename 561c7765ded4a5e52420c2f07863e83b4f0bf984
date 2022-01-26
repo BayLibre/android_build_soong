@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6a99608_ce177c19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-01-26T18:56:26Z",
+      "side": 1,
+      "message": "This CL makes sense in conjunction with ag/16725913 which tests ag/16551194\n\nI know you prefer AOSP-first so I\u0027m doing this here",
+      "revId": "561c7765ded4a5e52420c2f07863e83b4f0bf984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
