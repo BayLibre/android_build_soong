@@ -51,6 +51,24 @@
       "parentUuid": "d0a527f4_5eab8a15",
       "revId": "f7d8bcf66ec7e7e883a97b9e93e28f94150e7893",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05cc803a_60ed77a8",
+        "filename": "apex/apex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-01-26T12:56:05Z",
+      "side": 1,
+      "message": "Some of the libraries you depend on have lint-baseline.xml with [NewApi] in it (which potentially hides issues when run on pre-T devices). It\u0027d be good to know which libraries, of course :}",
+      "parentUuid": "dfe25d20_b9af0f3a",
+      "revId": "f7d8bcf66ec7e7e883a97b9e93e28f94150e7893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
