@@ -124,6 +124,24 @@
       "parentUuid": "9d88842c_1e089c80",
       "revId": "b9d89ad3a0301c6c5ceaf2c14441c0f749d79b5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1820ce4b_62557e9b",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-01-26T11:03:35Z",
+      "side": 1,
+      "message": "Alright!\n\nAfter reading the comments above and reading how the other mutator (and the check itself) work again, I think I got it and think it works!\n\nThank you for your patience! 😊",
+      "parentUuid": "103ae9bc_5bee0efb",
+      "revId": "b9d89ad3a0301c6c5ceaf2c14441c0f749d79b5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
