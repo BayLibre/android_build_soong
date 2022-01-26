@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a24f0e9f_823599b3",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-26T15:43:39Z",
+      "side": 1,
+      "message": "Oh :) I didn\u0027t know if that was an automatic action from one of the hooks to update the date when a file gets edited. I couldn\u0027t figure out why it chose 2016 though 😄.",
+      "parentUuid": "78c82e31_b11d7ec8",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "d5ad67e44b635d6b59dcca691c9b51c46d38ba6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4583181_bc715386",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "541a32fe_a49170d3",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-26T15:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4583181_bc715386",
+      "range": {
+        "startLine": 938,
+        "startChar": 0,
+        "endLine": 938,
+        "endChar": 48
+      },
+      "revId": "d5ad67e44b635d6b59dcca691c9b51c46d38ba6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6cfdb1bf_aa589e8b",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-26T13:27:51Z",
       "side": 1,
       "message": "Can we also add a test that uses the autogen functionality?\n\nCan use similar functionality (https://cs.android.com/android/platform/superproject/+/master:build/soong/java/java_test.go;l\u003d236;drc\u003dcd1b80f067c35f2b6aed13a42df22fc63ea4529d) to get the appropriate autogen rule (https://cs.android.com/android/platform/superproject/+/master:build/soong/tradefed/autogen.go;l\u003d126;drc\u003dba2226164c9479afd1a0dae290fb2b0535aa8e97) to make sure the expected info is present",
+      "range": {
+        "startLine": 1496,
+        "startChar": 0,
+        "endLine": 1496,
+        "endChar": 1
+      },
+      "revId": "d5ad67e44b635d6b59dcca691c9b51c46d38ba6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb3ea79a_7ad58820",
+        "filename": "java/java_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-26T15:43:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6cfdb1bf_aa589e8b",
       "range": {
         "startLine": 1496,
         "startChar": 0,
