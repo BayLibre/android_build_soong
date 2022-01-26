@@ -26,7 +26,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"os/exec"
 	"path/filepath"
 	"regexp"
 	"runtime/debug"
@@ -57,6 +56,7 @@ var (
 	cpuProfile            = flag.String("cpu_profile", "", "write cpu profile to file")
 	traceCalls            = flag.Bool("trace_calls", false, "trace function calls")
 	inputVariables        = flag.String("input_variables", "", "starlark file containing product config and global variables")
+	makefileListFile      = flag.String("makefile_list", "", "path to a file that is a list of all makefiles that could be referenced")
 )
 
 func init() {
@@ -79,7 +79,7 @@ func init() {
 var backupSuffix string
 var tracedVariables []string
 var errorLogger = errorSink{data: make(map[string]datum)}
-var makefileFinder = &LinuxMakefileFinder{}
+var allMakefiles []string
 
 func main() {
 	flag.Usage = func() {
@@ -96,6 +96,9 @@ func main() {
 	}
 	if *suffix == "" {
 		quit("suffix cannot be empty")
+	}
+	if *makefileListFile == "" {
+		quit("--makefile_list is required")
 	}
 	if *outputTop != "" {
 		if err := os.MkdirAll(*outputTop, os.ModeDir+os.ModePerm); err != nil {
@@ -132,6 +135,11 @@ func main() {
 		}
 		pprof.StartCPUProfile(f)
 		defer pprof.StopCPUProfile()
+	}
+	var err error
+	allMakefiles, err = readLinesOfFile(*makefileListFile)
+	if err != nil {
+		quit(err)
 	}
 	// Find out global variables
 	getConfigVariables()
@@ -320,7 +328,7 @@ func convertOne(mkFile string) (ok bool) {
 		TracedVariables: tracedVariables,
 		TraceCalls:      *traceCalls,
 		SourceFS:        os.DirFS(*rootDir),
-		MakefileFinder:  makefileFinder,
+		AllMakefiles:    allMakefiles,
 		ErrorLogger:     errorLogger,
 	}
 	ss, err := mk2rbc.Convert(mk2starRequest)
@@ -519,38 +527,20 @@ func stringsWithFreq(items []string, topN int) (string, int) {
 	return res, len(sorted)
 }
 
-type LinuxMakefileFinder struct {
-	cachedRoot      string
-	cachedMakefiles []string
-}
-
-func (l *LinuxMakefileFinder) Find(root string) []string {
-	if l.cachedMakefiles != nil && l.cachedRoot == root {
-		return l.cachedMakefiles
-	}
-	l.cachedRoot = root
-	l.cachedMakefiles = make([]string, 0)
-
-	// Return all *.mk files but not in hidden directories.
-
-	// NOTE(asmundak): as it turns out, even the WalkDir (which is an _optimized_ directory tree walker)
-	// is about twice slower than running `find` command (14s vs 6s on the internal Android source tree).
-	common_args := []string{"!", "-type", "d", "-name", "*.mk", "!", "-path", "*/.*/*"}
-	if root != "" {
-		common_args = append([]string{root}, common_args...)
-	}
-	cmd := exec.Command("/usr/bin/find", common_args...)
-	stdout, err := cmd.StdoutPipe()
-	if err == nil {
-		err = cmd.Start()
-	}
+func readLinesOfFile(filePath string) ([]string, error) {
+	file, err := os.Open(filePath)
 	if err != nil {
-		panic(fmt.Errorf("cannot get the output from %s: %s", cmd, err))
+		return nil, err
 	}
-	scanner := bufio.NewScanner(stdout)
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	lines := make([]string, 0)
 	for scanner.Scan() {
-		l.cachedMakefiles = append(l.cachedMakefiles, strings.TrimPrefix(scanner.Text(), "./"))
+		line := strings.TrimSpace(scanner.Text())
+		if len(line) > 0 {
+			lines = append(lines, line)
+		}
 	}
-	stdout.Close()
-	return l.cachedMakefiles
+	return lines, nil
 }

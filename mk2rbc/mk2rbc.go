@@ -149,7 +149,7 @@ type Request struct {
 	TracedVariables []string // trace assignment to these variables
 	TraceCalls      bool
 	SourceFS        fs.FS
-	MakefileFinder  MakefileFinder
+	AllMakefiles    []string // List of all makefiles in the android source tree, used to find dynamically included files
 }
 
 // ErrorLogger prints errors and gathers error statistics.
@@ -376,17 +376,17 @@ type nodeReceiver interface {
 
 // Information about the generated Starlark script.
 type StarlarkScript struct {
-	mkFile         string
-	moduleName     string
-	mkPos          scanner.Position
-	nodes          []starlarkNode
-	inherited      []*moduleInfo
-	hasErrors      bool
-	topDir         string
-	traceCalls     bool // print enter/exit each init function
-	sourceFS       fs.FS
-	makefileFinder MakefileFinder
-	nodeLocator    func(pos mkparser.Pos) int
+	mkFile       string
+	moduleName   string
+	mkPos        scanner.Position
+	nodes        []starlarkNode
+	inherited    []*moduleInfo
+	hasErrors    bool
+	topDir       string
+	traceCalls   bool // print enter/exit each init function
+	sourceFS     fs.FS
+	allMakefiles []string
+	nodeLocator  func(pos mkparser.Pos) int
 }
 
 func (ss *StarlarkScript) newNode(node starlarkNode) {
@@ -829,11 +829,7 @@ func (ctx *parseContext) handleSubConfig(
 			pathPattern = append(pathPattern, chunk)
 		}
 	}
-	if pathPattern[0] == "" {
-		if len(ctx.includeTops) == 0 {
-			ctx.errorf(v, "inherit-product/include statements must not be prefixed with a variable, or must include a #RBC# include_top comment beforehand giving a root directory to search.")
-			return
-		}
+	if pathPattern[0] == "" && len(ctx.includeTops) > 0 {
 		// If pattern starts from the top. restrict it to the directories where
 		// we know inherit-product uses dynamically calculated path.
 		for _, p := range ctx.includeTops {
@@ -860,9 +856,8 @@ func (ctx *parseContext) handleSubConfig(
 }
 
 func (ctx *parseContext) findMatchingPaths(pattern []string) []string {
-	files := ctx.script.makefileFinder.Find(ctx.script.topDir)
 	if len(pattern) == 0 {
-		return files
+		return ctx.script.allMakefiles
 	}
 
 	// Create regular expression from the pattern
@@ -875,7 +870,7 @@ func (ctx *parseContext) findMatchingPaths(pattern []string) []string {
 
 	// Now match
 	var res []string
-	for _, p := range files {
+	for _, p := range ctx.script.allMakefiles {
 		if rex.MatchString(p) {
 			res = append(res, p)
 		}
@@ -1922,13 +1917,13 @@ func Convert(req Request) (*StarlarkScript, error) {
 		return nil, fmt.Errorf("bad makefile %s", req.MkFile)
 	}
 	starScript := &StarlarkScript{
-		moduleName:     moduleNameForFile(req.MkFile),
-		mkFile:         req.MkFile,
-		topDir:         req.RootDir,
-		traceCalls:     req.TraceCalls,
-		sourceFS:       req.SourceFS,
-		makefileFinder: req.MakefileFinder,
-		nodeLocator:    func(pos mkparser.Pos) int { return parser.Unpack(pos).Line },
+		moduleName:   moduleNameForFile(req.MkFile),
+		mkFile:       req.MkFile,
+		topDir:       req.RootDir,
+		traceCalls:   req.TraceCalls,
+		sourceFS:     req.SourceFS,
+		allMakefiles: req.AllMakefiles,
+		nodeLocator:  func(pos mkparser.Pos) int { return parser.Unpack(pos).Line },
 	}
 	ctx := newParseContext(starScript, nodes)
 	ctx.outputSuffix = req.OutputSuffix
