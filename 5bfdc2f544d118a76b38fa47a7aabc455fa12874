@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54774e5e_7a30e26a",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-26T19:27:13Z",
+      "side": 1,
+      "message": "this fact appears to be unused?",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 2
+      },
+      "revId": "5bfdc2f544d118a76b38fa47a7aabc455fa12874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e267adb_1207486e",
+        "filename": "ui/build/soong.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-26T19:27:13Z",
+      "side": 1,
+      "message": "has this flag been implemented? I don\u0027t see it in build/soong/cmd/soong_build/main.go",
+      "range": {
+        "startLine": 287,
+        "startChar": 6,
+        "endLine": 287,
+        "endChar": 25
+      },
+      "revId": "5bfdc2f544d118a76b38fa47a7aabc455fa12874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
