@@ -36,6 +36,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b35f6faf_e0fa375d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-01-26T01:31:34Z",
+      "side": 1,
+      "message": "Connor, does -g add *too* much debug info?\n\nWould the benefit of having a \u0027btf: true\u0027 be that we could -g, but then strip out some of the extraneous stuff?\n\nOr have some other way to get map annotations without 4x .o bloat?",
+      "revId": "c707b7229f83655a98fc267e2fa33b09cf55d28b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59d5d01c_1ec3bf69",
