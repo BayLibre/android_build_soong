@@ -781,6 +781,7 @@ func (ctx *parseContext) newDependentModule(path string, optional bool) *moduleI
 func (ctx *parseContext) handleSubConfig(
 	v mkparser.Node, pathExpr starlarkExpr, loadAlways bool, processModule func(inheritedModule)) {
 
+	fmt.Fprintf(os.Stderr, "Handling subconfig: %v\n", pathExpr)
 	// In a simple case, the name of a module to inherit/include is known statically.
 	if path, ok := maybeString(pathExpr); ok {
 		// Note that even if this directive loads a module unconditionally, a module may be
@@ -862,7 +863,7 @@ func (ctx *parseContext) handleSubConfig(
 }
 
 func (ctx *parseContext) findMatchingPaths(pattern []string) []string {
-	files := ctx.script.makefileFinder.Find(ctx.script.topDir)
+	files := ctx.script.makefileFinder.Find()
 	if len(pattern) == 0 {
 		return files
 	}
