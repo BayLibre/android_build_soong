@@ -1296,6 +1296,7 @@ type Import struct {
 	android.ApexModuleBase
 	prebuilt android.Prebuilt
 	android.SdkBase
+	android.BazelModuleBase
 
 	// Functionality common to Module and Import.
 	embeddableInModuleAndImport
@@ -1649,6 +1650,7 @@ func ImportFactory() android.Module {
 	android.InitPrebuiltModule(module, &module.properties.Jars)
 	android.InitApexModule(module)
 	android.InitSdkAwareModule(module)
+	android.InitBazelModule(module)
 	InitJavaModule(module, android.HostAndDeviceSupported)
 	return module
 }
@@ -1667,6 +1669,21 @@ func ImportFactoryHost() android.Module {
 	android.InitApexModule(module)
 	InitJavaModule(module, android.HostSupported)
 	return module
+}
+
+type importAttributes struct {
+	Jars bazel.StringListAttribute
+}
+
+func (i *Import) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	attrs := &importAttributes{}
+	attrs.Jars = bazel.MakeStringListAttribute(i.properties.Jars)
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class: "java_import",
+	}
+
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: i.ModuleBase.Name()}, attrs)
 }
 
 // dex_import module
@@ -1969,7 +1986,7 @@ type javaLibraryAttributes struct {
 	Javacopts bazel.StringListAttribute
 }
 
-func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
+func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext) *javaLibraryAttributes {
 	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs))
 	attrs := &javaLibraryAttributes{
 		Srcs: srcs,
@@ -1979,9 +1996,22 @@ func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
 		attrs.Javacopts = bazel.MakeStringListAttribute(m.properties.Javacflags)
 	}
 
+	var deps []string
 	if m.properties.Libs != nil {
-		attrs.Deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, m.properties.Libs))
+		deps = append(deps, m.properties.Libs...)
 	}
+	if m.properties.Static_libs != nil {
+		deps = append(deps, m.properties.Static_libs...)
+	}
+	if len(deps) > 0 {
+		attrs.Deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, deps))
+	}
+
+	return attrs
+}
+
+func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
+	attrs := m.convertLibraryAttrsBp2Build(ctx)
 
 	props := bazel.BazelTargetModuleProperties{
 		Rule_class:        "java_library",
