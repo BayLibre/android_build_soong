@@ -1047,6 +1047,7 @@ load("//vendor/bar/baz:cfg.star|init", _cfg1_init = "init")
 def init(g, handle):
   cfg = rblf.cfg(handle)
   g["MY_PATH"] = "foo"
+  rblf.mkwarning("product.mk:3", "Including a non-string-literal path, please convert this to a simple literal to generate cleaner starlark.")
   _entry = {
     "vendor/foo1/cfg.mk": ("_cfg", _cfg_init),
     "vendor/bar/baz/cfg.mk": ("_cfg1", _cfg1_init),
@@ -1072,6 +1073,7 @@ def init(g, handle):
   cfg = rblf.cfg(handle)
   g["MY_PATH"] = "foo"
   #RBC# include_top vendor/foo1
+  rblf.mkwarning("product.mk:4", "Including a non-string-literal path, please convert this to a simple literal to generate cleaner starlark.")
   _entry = {
     "vendor/foo1/cfg.mk": ("_cfg", _cfg_init),
   }.get("%s/cfg.mk" % g["MY_PATH"])
@@ -1098,6 +1100,7 @@ def init(g, handle):
   cfg = rblf.cfg(handle)
   g["MY_PATH"] = "foo"
   #RBC# include_top vendor/foo1
+  rblf.mkwarning("product.mk:4", "Including a non-string-literal path, please convert this to a simple literal to generate cleaner starlark.")
   _entry = {
     "vendor/foo1/cfg.mk": ("_cfg", _cfg_init),
   }.get("%s/cfg.mk" % g["MY_PATH"])
@@ -1106,6 +1109,7 @@ def init(g, handle):
     rblf.mkerror("product.mk", "Cannot find %s" % ("%s/cfg.mk" % g["MY_PATH"]))
   rblf.inherit(handle, _varmod, _varmod_init)
   #RBC# include_top vendor/foo1
+  rblf.mkwarning("product.mk:6", "Including a non-string-literal path, please convert this to a simple literal to generate cleaner starlark.")
   _entry = {
     "vendor/foo1/cfg.mk": ("_cfg", _cfg_init),
   }.get("%s/cfg.mk" % g["MY_PATH"])
@@ -1116,7 +1120,7 @@ def init(g, handle):
 `,
 	},
 	{
-		desc:   "Dynamic inherit path that lacks necessary hint",
+		desc:   "Dynamic inherit path that lacks hint",
 		mkname: "product.mk",
 		in: `
 #RBC# include_top foo
@@ -1133,9 +1137,11 @@ $(call inherit-product,$(MY_VAR)/font.mk)
 		expected: `#RBC# include_top foo
 load("//build/make/core:product_config.rbc", "rblf")
 load("//foo:font.star|init", _font_init = "init")
+load("//bar:font.star|init", _font1_init = "init")
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
+  rblf.mkwarning("product.mk:3", "Including a non-string-literal path, please convert this to a simple literal to generate cleaner starlark.")
   _entry = {
     "foo/font.mk": ("_font", _font_init),
   }.get("%s/font.mk" % g.get("MY_VAR", ""))
@@ -1145,6 +1151,7 @@ def init(g, handle):
   rblf.inherit(handle, _varmod, _varmod_init)
   #RBC# include_top foo
   # There's some space and even this comment between the include_top and the inherit-product
+  rblf.mkwarning("product.mk:9", "Including a non-string-literal path, please convert this to a simple literal to generate cleaner starlark.")
   _entry = {
     "foo/font.mk": ("_font", _font_init),
   }.get("%s/font.mk" % g.get("MY_VAR", ""))
@@ -1152,7 +1159,15 @@ def init(g, handle):
   if not _varmod_init:
     rblf.mkerror("product.mk", "Cannot find %s" % ("%s/font.mk" % g.get("MY_VAR", "")))
   rblf.inherit(handle, _varmod, _varmod_init)
-  rblf.mk2rbc_error("product.mk:11", "inherit-product/include statements must not be prefixed with a variable, or must include a #RBC# include_top comment beforehand giving a root directory to search.")
+  rblf.mkwarning("product.mk:11", "Including a non-string-literal path, please convert this to a simple literal to generate cleaner starlark.")
+  _entry = {
+    "foo/font.mk": ("_font", _font_init),
+    "bar/font.mk": ("_font1", _font1_init),
+  }.get("%s/font.mk" % g.get("MY_VAR", ""))
+  (_varmod, _varmod_init) = _entry if _entry else (None, None)
+  if not _varmod_init:
+    rblf.mkerror("product.mk", "Cannot find %s" % ("%s/font.mk" % g.get("MY_VAR", "")))
+  rblf.inherit(handle, _varmod, _varmod_init)
 `,
 	},
 	{
