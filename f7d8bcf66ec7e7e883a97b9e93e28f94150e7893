@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "996242d1_2b51e01f",
+        "filename": "apex/apex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-01-27T23:56:03Z",
+      "side": 1,
+      "message": "It would seem that most (all?) lint errors stem from \"call to method from API 30, but minSdk is 29\". Which suggests the @RequiresApi(R) added by essick@ [1] is not having any effect. I\u0027ve filed b/216679439.\n\n[1] https://source.corp.google.com/android/frameworks/base/apex/media/framework/java/android/media/MediaParser.java;l\u003d202",
+      "parentUuid": "7b27bd99_05e66e29",
+      "revId": "f7d8bcf66ec7e7e883a97b9e93e28f94150e7893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d0a527f4_5eab8a15",
         "filename": "apex/apex.go",
         "patchSetId": 10
