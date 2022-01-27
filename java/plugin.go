@@ -14,7 +14,10 @@
 
 package java
 
-import "android/soong/android"
+import (
+	"android/soong/android"
+	"android/soong/bazel"
+)
 
 func init() {
 	registerJavaPluginBuildComponents(android.InitRegistrationContext)
@@ -24,7 +27,6 @@ func registerJavaPluginBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("java_plugin", PluginFactory)
 }
 
-// A java_plugin module describes a host java library that will be used by javac as an annotation processor.
 func PluginFactory() android.Module {
 	module := &Plugin{}
 
@@ -32,6 +34,9 @@ func PluginFactory() android.Module {
 	module.AddProperties(&module.pluginProperties)
 
 	InitJavaModule(module, android.HostSupported)
+
+	android.InitBazelModule(module)
+
 	return module
 }
 
@@ -49,4 +54,44 @@ type PluginProperties struct {
 	// This necessitates disabling the turbine optimization on modules that use this plugin, which will reduce
 	// parallelism and cause more recompilation for modules that depend on modules that use this plugin.
 	Generates_api *bool
+}
+
+type pluginAttributes struct {
+	Srcs            bazel.LabelListAttribute
+	Deps            bazel.LabelListAttribute
+	Javacopts       bazel.StringListAttribute
+	Processor_class *string
+}
+
+// ConvertWithBp2build is used to convert android_app to Bazel.
+func (p *Plugin) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrcExcludes(ctx, p.properties.Srcs, p.properties.Exclude_srcs))
+	attrs := &pluginAttributes{
+		Srcs: srcs,
+	}
+
+	if p.properties.Javacflags != nil {
+		attrs.Javacopts = bazel.MakeStringListAttribute(p.properties.Javacflags)
+	}
+
+	var deps []string
+	if p.properties.Libs != nil {
+		deps = append(deps, p.properties.Libs...)
+	}
+	if p.properties.Static_libs != nil {
+		deps = append(deps, p.properties.Static_libs...)
+	}
+	if len(deps) > 0 {
+		attrs.Deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, deps))
+	}
+
+	if p.pluginProperties.Processor_class != nil {
+		attrs.Processor_class = p.pluginProperties.Processor_class
+	}
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class: "java_plugin",
+	}
+
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: p.Name()}, attrs)
 }
