@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"runtime"
 	"strconv"
@@ -35,6 +36,8 @@ import (
 const (
 	envConfigDir  = "vendor/google/tools/soong_config"
 	jsonSuffix    = "json"
+
+	configFetcher = "vendor/google/tools/soong/expconfigfetcher"
 )
 
 type Config struct{ *configImpl }
@@ -135,14 +138,47 @@ func checkTopDir(ctx Context) {
 	}
 }
 
-func loadEnvConfig(config *configImpl) error {
+// fetchEnvConfig optionally fetches environment config from an
+// experiments system to control Soong features dynamically.
+func fetchEnvConfig(config *configImpl, envConfigName string) error {
+	s, err := os.Stat(configFetcher)
+	if err != nil {
+		return err
+	}
+	if s.Mode()&0111 == 0 {
+		return fmt.Errorf("configuration fetcher binary %v is not executable: %v", configFetcher, s.Mode())
+	}
+
+	cmd := exec.Command(configFetcher, "-output_config_dir", config.OutDir())
+	if err := cmd.Start(); err != nil {
+		return err
+	}
+
+	// If a config file already exists, return immediately and run the config file
+	// fetch in the background. Otherwise, wait for the config file to be fetched.
+	outConfigFilePath := filepath.Join(config.OutDir(), envConfigName + jsonSuffix)
+	if _, err := os.Stat(outConfigFilePath); err != nil {
+		return nil
+	}
+	if err := cmd.Wait(); err != nil {
+		return err
+	}
+	return nil
+}
+
+func loadEnvConfig(ctx Context, config *configImpl) error {
 	bc := os.Getenv("ANDROID_BUILD_ENVIRONMENT_CONFIG")
 	if bc == "" {
 		return nil
 	}
+
+	if err := fetchEnvConfig(config, bc); err != nil {
+		return err
+	}
+
 	configDirs := []string{
-		os.Getenv("ANDROID_BUILD_ENVIRONMENT_CONFIG_DIR"),
 		config.OutDir(),
+		os.Getenv("ANDROID_BUILD_ENVIRONMENT_CONFIG_DIR"),
 		envConfigDir,
 	}
 	var cfgFile string
@@ -169,6 +205,7 @@ func loadEnvConfig(config *configImpl) error {
 		}
 		config.Environment().Set(k, v)
 	}
+	ctx.Verbosef("Finished loading config file %v\n", cfgFile)
 	return nil
 }
 
@@ -203,7 +240,7 @@ func NewConfig(ctx Context, args ...string) Config {
 
 	// loadEnvConfig needs to know what the OUT_DIR is, so it should
 	// be called after we determine the appropriate out directory.
-	if err := loadEnvConfig(ret); err != nil {
+	if err := loadEnvConfig(ctx, ret); err != nil {
 		ctx.Fatalln("Failed to parse env config files: %v", err)
 	}
 
