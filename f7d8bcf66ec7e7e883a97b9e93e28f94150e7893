@@ -140,6 +140,24 @@
       "parentUuid": "05cc803a_60ed77a8",
       "revId": "f7d8bcf66ec7e7e883a97b9e93e28f94150e7893",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dc6b336_6372426a",
+        "filename": "apex/apex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1765766
+      },
+      "writtenOn": "2022-01-27T11:45:36Z",
+      "side": 1,
+      "message": "We cleaned that up in ag/15684458.\n\nShould this check be looking at aosp? The modules are used from mainline-prod branch",
+      "parentUuid": "0fbafac7_66f1cc94",
+      "revId": "f7d8bcf66ec7e7e883a97b9e93e28f94150e7893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
