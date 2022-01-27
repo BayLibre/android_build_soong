@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "29ef4a4f_d4823de8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2022-01-27T00:04:14Z",
+      "side": 1,
+      "message": "Oh I also missed that you should update the OWNERS file here to point to us at least for updating the native_code_coverage.md file. chh@ is doing something similar for tidy.md.",
+      "revId": "b0900712dd9ccea81c41050492fe5061fe0dad16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3c9fa30_fcb9ddff",
         "filename": "docs/native_code_coverage.md",
         "patchSetId": 3
