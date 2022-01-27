@@ -829,11 +829,7 @@ func (ctx *parseContext) handleSubConfig(
 			pathPattern = append(pathPattern, chunk)
 		}
 	}
-	if pathPattern[0] == "" {
-		if len(ctx.includeTops) == 0 {
-			ctx.errorf(v, "inherit-product/include statements must not be prefixed with a variable, or must include a #RBC# include_top comment beforehand giving a root directory to search.")
-			return
-		}
+	if pathPattern[0] == "" && len(ctx.includeTops) > 0 {
 		// If pattern starts from the top. restrict it to the directories where
 		// we know inherit-product uses dynamically calculated path.
 		for _, p := range ctx.includeTops {
