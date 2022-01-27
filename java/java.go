@@ -1969,7 +1969,7 @@ type javaLibraryAttributes struct {
 	Javacopts bazel.StringListAttribute
 }
 
-func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
+func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext) *javaLibraryAttributes {
 	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs))
 	attrs := &javaLibraryAttributes{
 		Srcs: srcs,
@@ -1979,9 +1979,22 @@ func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
 		attrs.Javacopts = bazel.MakeStringListAttribute(m.properties.Javacflags)
 	}
 
+	var deps []string
 	if m.properties.Libs != nil {
-		attrs.Deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, m.properties.Libs))
+		deps = append(deps, m.properties.Libs...)
 	}
+	if m.properties.Static_libs != nil {
+		deps = append(deps, m.properties.Static_libs...)
+	}
+	if len(deps) > 0 {
+		attrs.Deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, deps))
+	}
+
+	return attrs
+}
+
+func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
+	attrs := m.convertLibraryAttrsBp2Build(ctx)
 
 	props := bazel.BazelTargetModuleProperties{
 		Rule_class:        "java_library",
