@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72076a84_2fa6f931",
+        "filename": "apex/apex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-01-27T11:57:40Z",
+      "side": 1,
+      "message": "Ideally I\u0027d like the NewApi check to be turned off entirely for everything in the ART module (which includes core-lambda-stubs). This check has so many false positives for them and it\u0027s a source of friction. See http://b/208656169#comment9\n\n+Orion can you please chime in on / OK this ? :)",
+      "parentUuid": "73cdb4e8_cbef882c",
+      "revId": "f7d8bcf66ec7e7e883a97b9e93e28f94150e7893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd436fd5_6719c0b8",
         "filename": "apex/apex.go",
         "patchSetId": 10
