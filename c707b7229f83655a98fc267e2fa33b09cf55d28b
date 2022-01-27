@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f5f8612_3e6bd667",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115183
+      },
+      "writtenOn": "2022-01-27T23:15:41Z",
+      "side": 1,
+      "message": "Actually, in testing the latest version section order was maintained, not sure what I was seeing before. So this doesn\u0027t add any new backwards compatibility concerns vs. the existing symtab ordering thing.\n\nCompared sizes of stripped, btf-enabled files vs. current size for a couple programs:\ntime_in_state.o: 13648 -\u003e 23160 (.BTF section alone is ~10K so this probably can\u0027t be reduced further)\n\noffload.o: 101416 -\u003e 107472\n\nSo it seems the increase after stripping may relate more to number of map definitions than overall size of the .o file",
+      "parentUuid": "faacadad_acd572fa",
+      "revId": "c707b7229f83655a98fc267e2fa33b09cf55d28b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59d5d01c_1ec3bf69",
