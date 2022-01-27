@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "73cdb4e8_cbef882c",
+        "filename": "apex/apex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-01-27T11:41:24Z",
+      "side": 1,
+      "message": "Maybe Anton knows or we will need to check with the art team... I don\u0027t know why that dependency is added but this might be acceptable (possibly it never becomes an issue in real devices). So if that\u0027s correct, what we\u0027d want to do to this ignore this specific dependency. \n\nBut let\u0027s have someone else confirm this.",
+      "parentUuid": "84eb754c_2b434fe0",
+      "revId": "f7d8bcf66ec7e7e883a97b9e93e28f94150e7893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd436fd5_6719c0b8",
         "filename": "apex/apex.go",
         "patchSetId": 10
