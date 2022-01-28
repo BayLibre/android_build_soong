@@ -16,6 +16,91 @@
       "message": "Preview only",
       "revId": "9175b40262ab602cef17f0613a59ccce62b86461",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13e8545c_4da614b3",
+        "filename": "android/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-01-28T17:52:32Z",
+      "side": 1,
+      "message": "I am thinking \"computed\" might be a better name. LMK",
+      "revId": "9175b40262ab602cef17f0613a59ccce62b86461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1914422a_d9f70257",
+        "filename": "android/derived.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-01-28T17:52:32Z",
+      "side": 1,
+      "message": "I advise only taking a cursory look at this file for now - WIP",
+      "revId": "9175b40262ab602cef17f0613a59ccce62b86461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04619f63_7391c17e",
+        "filename": "android/derived_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-01-28T17:52:32Z",
+      "side": 1,
+      "message": "Do look at these test cases.",
+      "revId": "9175b40262ab602cef17f0613a59ccce62b86461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1f7cdc9_f6a8ab92",
+        "filename": "android/derived_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-01-28T17:52:32Z",
+      "side": 1,
+      "message": "The reason I didn\u0027t want to simply let ExtendBasicProperty() give me \u0027ab\u0027 is because lexically one could put derived in the front, i.e. `test { derived: \"{\u0027string\u0027: \u0027b\u0027}\", string: \"a\"}` in which case maybe the reader might expect the resultant value to be \"ba\" instead.",
+      "revId": "9175b40262ab602cef17f0613a59ccce62b86461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8dfdaea_e2cdc17f",
+        "filename": "android/mutator.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-01-28T17:52:32Z",
+      "side": 1,
+      "message": "@jingwen so I am applying this mutator pretty early (mostly because it replaces the load hooks). You had a question regarding variant specific computations, which in theory can be achieved by applying this later but maybe let me keep it simple for now.",
+      "revId": "9175b40262ab602cef17f0613a59ccce62b86461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
