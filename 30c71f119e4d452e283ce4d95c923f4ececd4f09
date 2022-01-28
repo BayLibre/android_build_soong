@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e85facaa_8043a3de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-01-28T16:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fecffbf3_b685f6ce",
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "679c6244_477afde5",
@@ -49,6 +67,24 @@
       "writtenOn": "2022-01-25T13:53:32Z",
       "side": 1,
       "message": "nit: it\u0027s more consistent with other changes if you keep these tags at the end grouped.\n\nSo, generally your commit would look like:\n\nFirst line\n\nDescription with details.\nOn multiple lines.\n\nBug: 123\nTest: atest foo \u0026\u0026 atest --host bar \\\n      \u0026 manually checked apex file\nOtherTags: blah\nChange-Id: ASDF",
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f99c4a9_a1abc3f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-01-28T16:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "679c6244_477afde5",
       "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -128,6 +164,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20620bff_6435da46",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-01-28T16:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62fae40e_03fc1098",
+      "range": {
+        "startLine": 599,
+        "startChar": 3,
+        "endLine": 599,
+        "endChar": 99
+      },
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0aba5491_ff7fb511",
@@ -169,6 +229,54 @@
         "startChar": 10,
         "endLine": 603,
         "endChar": 21
+      },
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df1a5eb0_57e431f4",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-01-28T16:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "267ef7c7_e3835ea9",
+      "range": {
+        "startLine": 602,
+        "startChar": 10,
+        "endLine": 603,
+        "endChar": 21
+      },
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edde1c1b_2b7888ea",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 603,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-01-28T16:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aba5491_ff7fb511",
+      "range": {
+        "startLine": 601,
+        "startChar": 4,
+        "endLine": 603,
+        "endChar": 28
       },
       "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
@@ -221,6 +329,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "982586f9_41ef23b9",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-01-28T16:36:15Z",
+      "side": 1,
+      "message": "I tested both the methods mentioned above. But when the go lang formatter runs, it formats the paramter comments incorrectly in both the ways mentioned above. \n\nAfter discussion with Pedro, I have create a struct which is passed as a parameter to the ManifestFixer method which makes the code more readable now. \nDone",
+      "parentUuid": "709e987f_573367c2",
+      "range": {
+        "startLine": 281,
+        "startChar": 19,
+        "endLine": 281,
+        "endChar": 24
+      },
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e66af48_7304d179",
@@ -234,6 +366,30 @@
       "writtenOn": "2022-01-25T13:53:32Z",
       "side": 1,
       "message": "Given that ManifestFixer method is used in the context outside of mainline/apex, this should be named more generically.. testOnly?",
+      "range": {
+        "startLine": 73,
+        "startChar": 55,
+        "endLine": 73,
+        "endChar": 65
+      },
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99fc5f7d_5dbef533",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-01-28T16:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e66af48_7304d179",
       "range": {
         "startLine": 73,
         "startChar": 55,
@@ -267,6 +423,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "667ee8dc_f4d8a928",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-01-28T16:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0cbcc77e_eb537a77",
+      "range": {
+        "startLine": 76,
+        "startChar": 5,
+        "endLine": 76,
+        "endChar": 15
+      },
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7808f30e_8aa49335",
@@ -280,6 +460,30 @@
       "writtenOn": "2022-01-25T13:53:32Z",
       "side": 1,
       "message": "you can probably move this into the block above?\n\nif classLoaderContexts !\u003d nil {\n\t// manifest_fixer should add only the implicit SDK libraries inferred by Soong, not those added\n\t// explicitly via `uses_libs`/`optional_uses_libs`.\n\trequiredUsesLibs, optionalUsesLibs :\u003d classLoaderContexts.ImplicitUsesLibs()\n\tfor _, usesLib :\u003d range requiredUsesLibs {\n\t\targs \u003d append(args, \"--uses-library\", usesLib)\n\t}\n\tfor _, usesLib :\u003d range optionalUsesLibs {\n\t\targs \u003d append(args, \"--optional-uses-library\", usesLib)\n\t}\n}",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cd62116_cfceda88",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-01-28T16:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7808f30e_8aa49335",
       "range": {
         "startLine": 109,
         "startChar": 0,
@@ -360,6 +564,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e193ba08_b429a17a",
+        "filename": "scripts/manifest_fixer.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-01-28T16:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c84e8d32_b8deb461",
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b33e47b9_97e50c4f",
@@ -383,6 +605,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5fc7dca_f19a3a9f",
+        "filename": "scripts/manifest_fixer_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-01-28T16:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b33e47b9_97e50c4f",
+      "range": {
+        "startLine": 531,
+        "startChar": 6,
+        "endLine": 531,
+        "endChar": 16
+      },
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd9f8426_34b35fb1",
@@ -396,6 +642,24 @@
       "writtenOn": "2022-01-25T10:35:11Z",
       "side": 1,
       "message": "You mention \"hasCode\" in the pydoc, but that isn\u0027t tested. \n\ndid you mean to say \"testOnly is false\"?",
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3b914b0_e5e6c100",
+        "filename": "scripts/manifest_fixer_test.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-01-28T16:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd9f8426_34b35fb1",
       "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
