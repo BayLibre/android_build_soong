@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45653d0a_3f03e594",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-01-28T17:18:52Z",
+      "side": 1,
+      "message": "Nit: I think this is not \"e.g.\" because it\u0027s not and example, it\u0027s the description of what boot image files are.",
+      "range": {
+        "startLine": 1211,
+        "startChar": 32,
+        "endLine": 1211,
+        "endChar": 36
+      },
+      "revId": "e6e90db00a6923de7f446e08625989bb0bc20ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
