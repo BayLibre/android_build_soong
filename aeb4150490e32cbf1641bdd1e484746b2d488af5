@@ -16,6 +16,40 @@
       "message": "All comments resolved.",
       "revId": "aeb4150490e32cbf1641bdd1e484746b2d488af5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56e0eed3_4c78a319",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-01-28T19:40:11Z",
+      "side": 1,
+      "message": "Looking good, almost there!",
+      "revId": "aeb4150490e32cbf1641bdd1e484746b2d488af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "390a5a8b_92692f68",
+        "filename": "java/app_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2515,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-01-28T19:40:11Z",
+      "side": 1,
+      "message": "For context: this assertion changed from StringEquals to StringDoesContain because now minSdkVersion and targetSdkVersion also come in the args field but we don\u0027t want to assert them in this test (IMO).",
+      "revId": "aeb4150490e32cbf1641bdd1e484746b2d488af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
