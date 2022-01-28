@@ -34,6 +34,24 @@
       "parentUuid": "c6562ee9_daafbaf8",
       "revId": "51d6a183619b4f6313047a33be77b70752c06e17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5b1d793_cc355b64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-28T22:04:14Z",
+      "side": 1,
+      "message": "Getting rid of dynamic paths will take substantial effort and time. IMHO it\u0027s not a good idea to add yet another annoying warning to the build output that cannot be fixed. Suppressing the warning in the presence of the include path hint avoids the annoyance.",
+      "parentUuid": "169621ab_f3f13576",
+      "revId": "51d6a183619b4f6313047a33be77b70752c06e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
