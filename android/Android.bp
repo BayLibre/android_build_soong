@@ -17,6 +17,9 @@ bootstrap_go_package {
         "soong-response",
         "soong-shared",
         "soong-ui-metrics_proto",
+
+        "go-starlark-starlark",
+        "go-starlark-starlarkstruct",
         "golang-protobuf-proto",
         "golang-protobuf-encoding-prototext",
 
@@ -40,6 +43,7 @@ bootstrap_go_package {
         "depset_generic.go",
         "depset_paths.go",
         "deptag.go",
+        "derived.go",
         "expand.go",
         "filegroup.go",
         "fixture.go",
