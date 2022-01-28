@@ -22,6 +22,30 @@
       },
       "revId": "e6e90db00a6923de7f446e08625989bb0bc20ea0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2b159d0_34d15157",
+        "filename": "java/bootclasspath_fragment.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1211,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-01-28T18:23:31Z",
+      "side": 1,
+      "message": "This comment is not added by me. I\u0027m just moving the code around. I guess what this comment means is that .art, .oat and .vdex files are typical boot image files, but there can be more in the future.",
+      "parentUuid": "45653d0a_3f03e594",
+      "range": {
+        "startLine": 1211,
+        "startChar": 32,
+        "endLine": 1211,
+        "endChar": 36
+      },
+      "revId": "e6e90db00a6923de7f446e08625989bb0bc20ea0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
