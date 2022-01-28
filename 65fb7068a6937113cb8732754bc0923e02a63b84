@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7619fa71_d7cda949",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-01-28T01:26:36Z",
+      "side": 1,
+      "message": "I think you need to run cmd.Wait(), otherwise the child process will never be reaped.  Maybe \"go cmd.Wait()\" to run it in the background?",
+      "revId": "65fb7068a6937113cb8732754bc0923e02a63b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
