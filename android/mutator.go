@@ -103,6 +103,8 @@ type RegisterMutatorFunc func(RegisterMutatorsContext)
 var preArch = []RegisterMutatorFunc{
 	RegisterNamespaceMutator,
 
+	RegisterDerivedPropertiesPreArchMutator,
+
 	// Check the visibility rules are valid.
 	//
 	// This must run after the package renamer mutators so that any issues found during
