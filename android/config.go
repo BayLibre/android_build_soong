@@ -165,6 +165,8 @@ type config struct {
 	// in tests when a path doesn't exist.
 	TestAllowNonExistentPaths bool
 
+	TestAllowDirectories bool
+
 	// The list of files that when changed, must invalidate soong_build to
 	// regenerate build.ninja.
 	ninjaFileDepsSet sync.Map
@@ -372,6 +374,7 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 		// Set testAllowNonExistentPaths so that test contexts don't need to specify every path
 		// passed to PathForSource or PathForModuleSrc.
 		TestAllowNonExistentPaths: true,
+		TestAllowDirectories:      true,
 
 		BazelContext: noopBazelContext{},
 	}
@@ -1628,6 +1631,10 @@ func (c *deviceConfig) BuildDebugfsRestrictionsEnabled() bool {
 
 func (c *deviceConfig) BuildBrokenVendorPropertyNamespace() bool {
 	return c.config.productVariables.BuildBrokenVendorPropertyNamespace
+}
+
+func (c *deviceConfig) BuildBrokenInputDir(name string) bool {
+	return InList(name, c.config.productVariables.BuildBrokenInputDirModules)
 }
 
 func (c *deviceConfig) RequiresInsecureExecmemForSwiftshader() bool {
