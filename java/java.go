@@ -2005,7 +2005,7 @@ type javaLibraryAttributes struct {
 	Javacopts bazel.StringListAttribute
 }
 
-func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
+func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext) *javaLibraryAttributes {
 	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs))
 	attrs := &javaLibraryAttributes{
 		Srcs: srcs,
@@ -2018,6 +2018,12 @@ func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
 	if m.properties.Libs != nil {
 		attrs.Deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, m.properties.Libs))
 	}
+
+	return attrs
+}
+
+func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
+	attrs := m.convertLibraryAttrsBp2Build(ctx)
 
 	props := bazel.BazelTargetModuleProperties{
 		Rule_class:        "java_library",
