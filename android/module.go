@@ -680,6 +680,10 @@ type nameProperties struct {
 	Name *string
 }
 
+type computedProperties struct {
+	Computed *string
+}
+
 type commonProperties struct {
 	// emit build rules for this module
 	//
@@ -1095,6 +1099,7 @@ func InitAndroidModule(m Module) {
 	m.AddProperties(
 		&base.nameProperties,
 		&base.commonProperties,
+		&base.computedProperties,
 		&base.distProperties)
 
 	initProductVariableModule(m)
@@ -1325,6 +1330,7 @@ type ModuleBase struct {
 
 	nameProperties          nameProperties
 	commonProperties        commonProperties
+	computedProperties      computedProperties
 	distProperties          distProperties
 	variableProperties      interface{}
 	hostAndDeviceProperties hostAndDeviceProperties
