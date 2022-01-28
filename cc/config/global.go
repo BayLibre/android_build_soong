@@ -301,6 +301,12 @@ var (
 var pctx = android.NewPackageContext("android/soong/cc/config")
 
 func init() {
+	// see also asBazel() in build/soong/cc/config/bp2build.go
+	android.RegisterConstant("CLANG_DEFAULT_VERSION", &ClangDefaultVersion)
+	android.RegisterConstant("CLANG_DEFAULT_SHORT_VERSION", &ClangDefaultShortVersion)
+}
+
+func init() {
 	if runtime.GOOS == "linux" {
 		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-prefix-map=/proc/self/cwd=")
 	}
