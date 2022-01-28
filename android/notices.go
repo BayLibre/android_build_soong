@@ -16,6 +16,7 @@ package android
 
 import (
 	"path/filepath"
+	"strings"
 
 	"github.com/google/blueprint"
 )
@@ -152,4 +153,15 @@ func BuildNotices(ctx ModuleContext, noticeMap map[string]Paths) NoticeOutputs {
 		HtmlOutput:   OptionalPathForPath(htmlOutput),
 		HtmlGzOutput: OptionalPathForPath(htmlGzOutput),
 	}
+}
+
+func BuildContainerNoticeFile(ctx ModuleContext, outputFile WritablePath) {
+	depsFile := outputFile.ReplaceExtension(ctx, strings.TrimPrefix(outputFile.Ext()+".d", "."))
+	rule := NewRuleBuilder(pctx, ctx)
+	rule.Command().
+		BuiltTool("textnotice").
+		FlagWithOutput("-o ", outputFile).
+		FlagWithDepFile("-d ", depsFile).
+		Input(ctx.Module().base().licenseMetadataFile)
+	rule.Build("container_notice", "container notice file")
 }
