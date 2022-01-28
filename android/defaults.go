@@ -200,7 +200,7 @@ func InitDefaultsModule(module DefaultsModule) {
 	// Add properties that will not have defaults applied to them.
 	base := module.base()
 	defaultsVisibility := &DefaultsVisibilityProperties{}
-	module.AddProperties(&base.nameProperties, defaultsVisibility)
+	module.AddProperties(&base.nameProperties, &base.derivedProperties, defaultsVisibility)
 
 	// Unlike non-defaults modules the visibility property is not stored in m.base().commonProperties.
 	// Instead it is stored in a separate instance of commonProperties created above so clear the
