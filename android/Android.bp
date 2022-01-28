@@ -20,6 +20,8 @@ bootstrap_go_package {
         "soong-starlark-format",
         "soong-ui-metrics_proto",
 
+        "go-starlark-starlark",
+        "go-starlark-starlarkstruct",
         "golang-protobuf-proto",
         "golang-protobuf-encoding-prototext",
 
@@ -35,6 +37,7 @@ bootstrap_go_package {
         "bazel.go",
         "bazel_handler.go",
         "bazel_paths.go",
+        "computed_properties.go",
         "config.go",
         "csuite_config.go",
         "deapexer.go",
@@ -95,6 +98,7 @@ bootstrap_go_package {
         "arch_test.go",
         "bazel_handler_test.go",
         "bazel_test.go",
+        "computed_properties_test.go",
         "config_test.go",
         "csuite_config_test.go",
         "defaults_test.go",
