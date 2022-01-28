@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e19699fc_cf3b009b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-01-28T00:59:56Z",
+      "side": 1,
+      "message": "In principle, perhaps Colin should take another look at this though?",
+      "revId": "2573965c5ec944d64777fec4b2a00b103fab400d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
