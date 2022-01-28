@@ -219,6 +219,7 @@ var (
 		"external/guava":/* recursive = */ true,
 		"external/error_prone":/* recursive = */ true,
 		"external/jsr305":/* recursive = */ true,
+		"external/kotlinc":/* recursive = */ true,
 		"frameworks/ex/common":/* recursive = */ true,
 
 		"packages/apps/Music":/* recursive = */ true,
@@ -228,6 +229,7 @@ var (
 		"prebuilts/gcc":/* recursive = */ true,
 		"prebuilts/build-tools":/* recursive = */ false,
 		"prebuilts/sdk":/* recursive = */ false,
+		"prebuilts/sdk/current/androidx":/* recursive = */ false,
 		"prebuilts/sdk/current/extras/app-toolkit":/* recursive = */ false,
 		"prebuilts/sdk/current/support":/* recursive = */ false,
 		"prebuilts/sdk/tools":/* recursive = */ false,
@@ -298,6 +300,7 @@ var (
 		"external/gwp_asan":                                  Bp2BuildDefaultTrueRecursively,
 		"external/jemalloc_new":                              Bp2BuildDefaultTrueRecursively,
 		"external/jsoncpp":                                   Bp2BuildDefaultTrueRecursively,
+		"external/kotlinc/":                                  Bp2BuildDefaultTrueRecursively,
 		"external/libcap":                                    Bp2BuildDefaultTrueRecursively,
 		"external/libcxx":                                    Bp2BuildDefaultTrueRecursively,
 		"external/libcxxabi":                                 Bp2BuildDefaultTrueRecursively,
@@ -341,6 +344,7 @@ var (
 		"packages/screensavers/Basic":                        Bp2BuildDefaultTrue,
 		"packages/services/Car/tests/SampleRearViewCamera":   Bp2BuildDefaultTrue,
 		"prebuilts/clang/host/linux-x86":                     Bp2BuildDefaultTrueRecursively,
+		"prebuilts/tools/common/m2/":                         Bp2BuildDefaultTrueRecursively,
 		"system/apex":                                        Bp2BuildDefaultFalse, // TODO(b/207466993): flaky failures
 		"system/apex/proto":                                  Bp2BuildDefaultTrueRecursively,
 		"system/apex/libs":                                   Bp2BuildDefaultTrueRecursively,
@@ -366,6 +370,7 @@ var (
 		"system/timezone/output_data":                        Bp2BuildDefaultTrueRecursively,
 		"system/unwinding/libbacktrace":                      Bp2BuildDefaultTrueRecursively,
 		"system/unwinding/libunwindstack":                    Bp2BuildDefaultTrueRecursively,
+		"tools/apifinder":                                    Bp2BuildDefaultTrueRecursively,
 		"tools/apksig":                                       Bp2BuildDefaultTrue,
 		"tools/platform-compat/java/android/compat":          Bp2BuildDefaultTrueRecursively,
 	}
