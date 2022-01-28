@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6eb6186_ab6588e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1863710
+      },
+      "writtenOn": "2022-01-28T19:13:38Z",
+      "side": 1,
+      "message": "Please don\u0027t submit these for now. The problem seems to be in the configuration for the build jobs. They override the java-folder variable to a jdk9. They should be fixed today.",
+      "revId": "b9efe5409742a4638c6c4789d88ad4fd3d96bc5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
