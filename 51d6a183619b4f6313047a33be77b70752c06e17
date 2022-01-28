@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6562ee9_daafbaf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-28T02:12:37Z",
+      "side": 1,
+      "message": "It used to be that the warning was printed in the absence of the location hint. Now it will be printed always, and I am afraid this will be annoying.",
+      "revId": "51d6a183619b4f6313047a33be77b70752c06e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
