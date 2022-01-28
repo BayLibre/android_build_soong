@@ -21,6 +21,8 @@ bootstrap_go_package {
         "soong-ui-metrics_proto",
         "soong-android-allowlists",
 
+        "go-starlark-starlark",
+        "go-starlark-starlarkstruct",
         "golang-protobuf-proto",
         "golang-protobuf-encoding-prototext",
 
@@ -38,6 +40,7 @@ bootstrap_go_package {
         "bazel_handler.go",
         "bazel_paths.go",
         "buildinfo_prop.go",
+        "computed_properties.go",
         "config.go",
         "test_config.go",
         "config_bp2build.go",
@@ -104,6 +107,7 @@ bootstrap_go_package {
         "bazel_handler_test.go",
         "bazel_paths_test.go",
         "bazel_test.go",
+        "computed_properties_test.go",
         "config_test.go",
         "config_bp2build_test.go",
         "csuite_config_test.go",

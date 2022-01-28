@@ -99,6 +99,8 @@ type RegisterMutatorsContext interface {
 type RegisterMutatorFunc func(RegisterMutatorsContext)
 
 var preArch = []RegisterMutatorFunc{
+	RegisterComputedPropertiesPreArchMutator,
+
 	RegisterNamespaceMutator,
 
 	// Check the visibility rules are valid.

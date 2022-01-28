@@ -329,6 +329,12 @@ func ExportStringList(name string, value []string) {
 }
 
 func init() {
+	// see also asBazel() in build/soong/cc/config/bp2build.go
+	android.RegisterConstantForStarlark("CLANG_DEFAULT_VERSION", &ClangDefaultVersion)
+	android.RegisterConstantForStarlark("CLANG_DEFAULT_SHORT_VERSION", &ClangDefaultShortVersion)
+}
+
+func init() {
 	if runtime.GOOS == "linux" {
 		commonGlobalCflags = append(commonGlobalCflags, "-fdebug-prefix-map=/proc/self/cwd=")
 	}
