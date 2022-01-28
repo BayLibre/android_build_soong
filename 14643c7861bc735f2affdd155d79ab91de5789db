@@ -34,6 +34,57 @@
       "parentUuid": "49bee0c6_2a77c888",
       "revId": "14643c7861bc735f2affdd155d79ab91de5789db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1098a700_706f32d9",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-28T21:57:54Z",
+      "side": 1,
+      "message": "Is there any advantage of implementing this new feature inside LinuxMakefileFinder instead of having yet another type implementing MakefileFinder interface?",
+      "revId": "14643c7861bc735f2affdd155d79ab91de5789db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e63a427_d5def243",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-28T21:57:54Z",
+      "side": 1,
+      "message": "If we ever ran build, out/.module_paths/configuration.list will be present, so the subsequent standalone calls will use it regardless how old it is. Perhaps there\u0027s a better way to find out that the converter is called from the build?",
+      "revId": "14643c7861bc735f2affdd155d79ab91de5789db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d92d0388_07aa9434",
+        "filename": "mk2rbc/types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-28T21:57:54Z",
+      "side": 1,
+      "message": "What\u0027s wrong with passing the root directory?",
+      "revId": "14643c7861bc735f2affdd155d79ab91de5789db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
