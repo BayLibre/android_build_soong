@@ -34,6 +34,24 @@
       "parentUuid": "06a54834_34b38372",
       "revId": "0849c14aea2eb11479ddffb50c5467f18fd42da9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6531889_296ed648",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-01-28T21:45:51Z",
+      "side": 1,
+      "message": "you cab keep an eye on this dashboard for the total build time: https://dashboards.corp.google.com/java_com_google_wireless_android_buildtools_metrics_systems_plx_ci_soong_build_metrics_dashboard",
+      "parentUuid": "4a51450b_32cf550f",
+      "revId": "0849c14aea2eb11479ddffb50c5467f18fd42da9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
