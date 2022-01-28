@@ -529,6 +529,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b99a7a9e_5de9e1d8",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-01-28T18:24:35Z",
+      "side": 1,
+      "message": "Done\n\nHad to change some existing tests in build/soong/app_test.go to accomodate this change.",
+      "parentUuid": "f5e61b43_150d43bf",
+      "revId": "30c71f119e4d452e283ce4d95c923f4ececd4f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7296152a_78483059",
