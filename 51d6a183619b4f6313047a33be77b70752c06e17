@@ -16,6 +16,24 @@
       "message": "It used to be that the warning was printed in the absence of the location hint. Now it will be printed always, and I am afraid this will be annoying.",
       "revId": "51d6a183619b4f6313047a33be77b70752c06e17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "169621ab_f3f13576",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-28T18:47:14Z",
+      "side": 1,
+      "message": "It will only be printed if there\u0027s an inheritedDynamicModule instead of an inheritedStaticModule. I just uploaded a new patchset making it so that if there\u0027s only 1 matching makefile, it will use an inheritedStaticModule instead, which should cut down on the warnings. All other cases I think the warning is legitimate, because choosing from that _entry dictionary is very unnatural code.",
+      "parentUuid": "c6562ee9_daafbaf8",
+      "revId": "51d6a183619b4f6313047a33be77b70752c06e17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
