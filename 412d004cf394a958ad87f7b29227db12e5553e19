@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2cce61f_92af742a",
+        "filename": "cc/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-01-28T17:57:27Z",
+      "side": 0,
+      "message": "redundant because newBinary()\u0027s second argument, the bool is meant for this.",
+      "revId": "412d004cf394a958ad87f7b29227db12e5553e19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
