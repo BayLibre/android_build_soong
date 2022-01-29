@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86c9209d_76a03e4a",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-29T00:50:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1098a700_706f32d9",
+      "revId": "14643c7861bc735f2affdd155d79ab91de5789db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e63a427_d5def243",
@@ -70,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f087a962_b9a394b8",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-29T00:50:05Z",
+      "side": 1,
+      "message": "Done, you have to pass --makefile_list to use the file now.",
+      "parentUuid": "9e63a427_d5def243",
+      "revId": "14643c7861bc735f2affdd155d79ab91de5789db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d92d0388_07aa9434",
@@ -83,6 +119,24 @@
       "writtenOn": "2022-01-28T21:57:54Z",
       "side": 1,
       "message": "What\u0027s wrong with passing the root directory?",
+      "revId": "14643c7861bc735f2affdd155d79ab91de5789db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48b5d72e_f4930bd4",
+        "filename": "mk2rbc/types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-01-29T00:50:05Z",
+      "side": 1,
+      "message": "A few reasons:\n\n1. It is less efficient for the FileListMakefileFinder, because it has to filter its array based on the root, and then that list just gets filtered again in findMatchingPaths(). If it just returns the whole list we save on making an intermediate list.\n\n2. It becomes confusing relatively quickly with the file list, because we have to figure out if the requested root is an absolute or relative path, and if absolute, we have to strip the path to the android tree from it.\n\n3. It was never set to anything other than the rootDir before anyways.\n\nI also plan on making a followup cl that normalizes a lot of these paths to make it clearer, by cd\u0027ing to rootDir as soon as mk2rbc starts and then only using relative paths from then on.",
+      "parentUuid": "d92d0388_07aa9434",
       "revId": "14643c7861bc735f2affdd155d79ab91de5789db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
