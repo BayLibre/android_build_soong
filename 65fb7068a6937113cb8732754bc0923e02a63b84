@@ -16,6 +16,24 @@
       "message": "I think you need to run cmd.Wait(), otherwise the child process will never be reaped.  Maybe \"go cmd.Wait()\" to run it in the background?",
       "revId": "65fb7068a6937113cb8732754bc0923e02a63b84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c48a186_fe21c929",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-01-29T22:01:07Z",
+      "side": 1,
+      "message": "I added `go cmd.Wait()`, but I think that the child would still become a zombie if Soong itself finishes before the process can. I think that should be ok since I do expect the child process to die quickly.\n\nAlso, I added a timeout to the subprocess call so when we do wait, its time bound.",
+      "parentUuid": "7619fa71_d7cda949",
+      "revId": "65fb7068a6937113cb8732754bc0923e02a63b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
