@@ -16,6 +16,23 @@
       "message": "Please don\u0027t submit these for now. The problem seems to be in the configuration for the build jobs. They override the java-folder variable to a jdk9. They should be fixed today.",
       "revId": "b9efe5409742a4638c6c4789d88ad4fd3d96bc5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1ae5e85_63a153df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2022-01-29T00:54:46Z",
+      "side": 1,
+      "message": "lab config has been updated. There is no need to merge this revert any more. ",
+      "revId": "b9efe5409742a4638c6c4789d88ad4fd3d96bc5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
