@@ -70,6 +70,30 @@
       },
       "revId": "d000871e667a2f30e0b5fcd2cce9958c449c58ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382f3a27_e6047697",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2024,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-01-31T23:12:33Z",
+      "side": 1,
+      "message": "I think \"libs\" is compile-time dependency and should be converted to \"deps\". \n\nI don\u0027t know much about static_libs and just read its one-line doc that sounds like a compile-time dependency to me.",
+      "parentUuid": "5890baa1_6093eb19",
+      "range": {
+        "startLine": 2022,
+        "startChar": 1,
+        "endLine": 2024,
+        "endChar": 2
+      },
+      "revId": "d000871e667a2f30e0b5fcd2cce9958c449c58ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
