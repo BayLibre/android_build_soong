@@ -46,6 +46,30 @@
       },
       "revId": "323fc7a85ed0025566ad601b6432ca1a1f339932",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a3e6b1c_6311a8ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-31T19:00:33Z",
+      "side": 1,
+      "message": "Excellent question.. Nikita you should have historic context here?",
+      "parentUuid": "67a4e29c_8fcc9195",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 357
+      },
+      "revId": "323fc7a85ed0025566ad601b6432ca1a1f339932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
