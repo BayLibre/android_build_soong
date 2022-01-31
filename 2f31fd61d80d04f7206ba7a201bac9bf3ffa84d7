@@ -46,6 +46,30 @@
       },
       "revId": "2f31fd61d80d04f7206ba7a201bac9bf3ffa84d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "150dea02_67aaf386",
+        "filename": "java/plugin.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-31T20:18:53Z",
+      "side": 1,
+      "message": "We can separate this to a separate CL, but it looks like your subsequent CL is introducing a 3rd use, so it\u0027s about time to reduce some boilerplate.\n\nYeah, we probably only want to handle this for modules that are explicitly host-only. `genrule`, `filegroup` and some others don\u0027t set `commonProperties.HostOrDeviceSupported`. One option would be to add it only when `commonProperties.HostOrDeviceSupported` is non-zero.\n\nBut that would omit the *proto_library types. We probably don\u0027t necessarily _need_ it for `proto_library` but it is helpful for the `*_proto_library` cases as `full` protos generally shouldn\u0027t be used on device.",
+      "parentUuid": "799f717c_41a3ba51",
+      "range": {
+        "startLine": 86,
+        "startChar": 101,
+        "endLine": 86,
+        "endChar": 116
+      },
+      "revId": "2f31fd61d80d04f7206ba7a201bac9bf3ffa84d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
