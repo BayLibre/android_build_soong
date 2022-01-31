@@ -1736,8 +1736,9 @@ func (ctx *parseContext) parseMakeString(node mkparser.Node, mk *mkparser.MakeSt
 func (ctx *parseContext) handleSimpleStatement(node mkparser.Node) {
 	switch x := node.(type) {
 	case *mkparser.Comment:
-		ctx.maybeHandleAnnotation(x)
-		ctx.insertComment("#" + x.Comment)
+		if !ctx.maybeHandleAnnotation(x) {
+			ctx.insertComment("#" + x.Comment)
+		}
 	case *mkparser.Assignment:
 		ctx.handleAssignment(x)
 	case *mkparser.Variable:
@@ -1767,8 +1768,8 @@ func (ctx *parseContext) handleSimpleStatement(node mkparser.Node) {
 
 // Processes annotation. An annotation is a comment that starts with #RBC# and provides
 // a conversion hint -- say, where to look for the dynamically calculated inherit/include
-// paths.
-func (ctx *parseContext) maybeHandleAnnotation(cnode *mkparser.Comment) {
+// paths. Returns true if the comment was a successfully-handled annotation.
+func (ctx *parseContext) maybeHandleAnnotation(cnode *mkparser.Comment) bool {
 	maybeTrim := func(s, prefix string) (string, bool) {
 		if strings.HasPrefix(s, prefix) {
 			return strings.TrimSpace(strings.TrimPrefix(s, prefix)), true
@@ -1777,21 +1778,21 @@ func (ctx *parseContext) maybeHandleAnnotation(cnode *mkparser.Comment) {
 	}
 	annotation, ok := maybeTrim(cnode.Comment, annotationCommentPrefix)
 	if !ok {
-		return
+		return false
 	}
 	if p, ok := maybeTrim(annotation, "include_top"); ok {
 		// Don't allow duplicate include tops, because then we will generate
 		// invalid starlark code. (duplicate keys in the _entry dictionary)
 		for _, top := range ctx.includeTops {
 			if top == p {
-				return
+				return false
 			}
 		}
 		ctx.includeTops = append(ctx.includeTops, p)
-		return
+		return true
 	}
 	ctx.errorf(cnode, "unsupported annotation %s", cnode.Comment)
-
+	return true
 }
 
 func (ctx *parseContext) insertComment(s string) {

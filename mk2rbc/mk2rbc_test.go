@@ -1071,7 +1071,6 @@ load("//vendor/foo1:cfg.star|init", _cfg_init = "init")
 def init(g, handle):
   cfg = rblf.cfg(handle)
   g["MY_PATH"] = "foo"
-  #RBC# include_top vendor/foo1
   _entry = {
     "vendor/foo1/cfg.mk": ("vendor/foo1/cfg", _cfg_init),
   }.get("%s/cfg.mk" % g["MY_PATH"])
@@ -1097,7 +1096,6 @@ load("//vendor/foo1:cfg.star|init", _cfg_init = "init")
 def init(g, handle):
   cfg = rblf.cfg(handle)
   g["MY_PATH"] = "foo"
-  #RBC# include_top vendor/foo1
   _entry = {
     "vendor/foo1/cfg.mk": ("vendor/foo1/cfg", _cfg_init),
   }.get("%s/cfg.mk" % g["MY_PATH"])
@@ -1105,7 +1103,6 @@ def init(g, handle):
   if not _varmod_init:
     rblf.mkerror("product.mk", "Cannot find %s" % ("%s/cfg.mk" % g["MY_PATH"]))
   rblf.inherit(handle, _varmod, _varmod_init)
-  #RBC# include_top vendor/foo1
   _entry = {
     "vendor/foo1/cfg.mk": ("vendor/foo1/cfg", _cfg_init),
   }.get("%s/cfg.mk" % g["MY_PATH"])
@@ -1130,8 +1127,7 @@ $(call inherit-product,$(MY_VAR)/font.mk)
 
 $(call inherit-product,$(MY_VAR)/font.mk)
 `,
-		expected: `#RBC# include_top foo
-load("//build/make/core:product_config.rbc", "rblf")
+		expected: `load("//build/make/core:product_config.rbc", "rblf")
 load("//foo:font.star|init", _font_init = "init")
 
 def init(g, handle):
@@ -1143,7 +1139,6 @@ def init(g, handle):
   if not _varmod_init:
     rblf.mkerror("product.mk", "Cannot find %s" % ("%s/font.mk" % g.get("MY_VAR", "")))
   rblf.inherit(handle, _varmod, _varmod_init)
-  #RBC# include_top foo
   # There's some space and even this comment between the include_top and the inherit-product
   _entry = {
     "foo/font.mk": ("foo/font", _font_init),
