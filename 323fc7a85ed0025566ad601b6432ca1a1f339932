@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf7088ae_aabd9864",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-31T18:50:41Z",
+      "side": 1,
+      "message": "the original change says this should be done for current and none only? Why do we need to change min_sdk_version: \"Q\" for example?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 357
+      },
+      "revId": "323fc7a85ed0025566ad601b6432ca1a1f339932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
