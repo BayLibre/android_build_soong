@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "118700ad_ac61bd84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-01-31T21:42:03Z",
+      "side": 1,
+      "message": "Split off from the work on aosp/1767006, because it hasn\u0027t changed in a long time and is separable, though only useful for that CL. The original interface was introduced as part of this work, so replacing it shouldn\u0027t be problematic as there are no in-tree users.",
+      "revId": "9a96aacaf00bd18dbd03a0c1aa2a4f5707cc67af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
