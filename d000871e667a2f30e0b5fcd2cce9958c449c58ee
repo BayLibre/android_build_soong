@@ -46,6 +46,30 @@
       },
       "revId": "d000871e667a2f30e0b5fcd2cce9958c449c58ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5890baa1_6093eb19",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2024,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-01-31T19:51:08Z",
+      "side": 1,
+      "message": "So I did a little digging on this... It seems to me that `static_libs` is closest to bazel\u0027s `deps`, whereas `libs` is closest to `runtime_deps`. If we do this it will be changing the semantics of the initial `java_library` converter, but I think it is the correct way to handle the difference, and that it should be done across the various java module types... Discussed this \"offline\" with Sam and he\u0027s going to take another look at the errors\n\n@Wei, who authored the initial `java_library` converter: did you try to use `runtime_deps` for `libs` and run into issues by any chance? Or does this change sound good to you?",
+      "parentUuid": "3192e5d4_3699e322",
+      "range": {
+        "startLine": 2022,
+        "startChar": 1,
+        "endLine": 2024,
+        "endChar": 2
+      },
+      "revId": "d000871e667a2f30e0b5fcd2cce9958c449c58ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
