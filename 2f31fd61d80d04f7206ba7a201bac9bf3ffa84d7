@@ -22,6 +22,30 @@
       },
       "revId": "2f31fd61d80d04f7206ba7a201bac9bf3ffa84d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "799f717c_41a3ba51",
+        "filename": "java/plugin.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-31T18:12:50Z",
+      "side": 1,
+      "message": "I tried implementing something like this by adding \n```\nif !mod.DeviceSupported() {                                                                                                                                                                    \n    enabledProperty.SetSelectValue(bazel.OsConfigurationAxis, Android.Name, proptools.BoolPtr(false))                                                                                          \n} \n```\n\ninto the `fillCommonBp2BuildModuleAttrs` function in `android/module.go`.\n\nBut this ends up adding the platform incompatible stanza to many module types that didn\u0027t have it before: genrule, filegroup, android_app_certificate, *proto_library; and so a bunch of the unit tests fail as a result.\n\nDo we want to have this stanza for those module types? Or do we want to just restrict it to the *host module types.",
+      "parentUuid": "430cea25_a6cfd451",
+      "range": {
+        "startLine": 86,
+        "startChar": 101,
+        "endLine": 86,
+        "endChar": 116
+      },
+      "revId": "2f31fd61d80d04f7206ba7a201bac9bf3ffa84d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
