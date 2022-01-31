@@ -1152,7 +1152,6 @@ override FOO:=`,
 def init(g, handle):
   cfg = rblf.cfg(handle)
   rblf.mk2rbc_error("product.mk:2", "cannot handle override directive")
-  g["override FOO"] = ""
 `,
 	},
 	{

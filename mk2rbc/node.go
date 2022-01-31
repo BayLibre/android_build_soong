@@ -255,10 +255,6 @@ type switchCase struct {
 	nodes []starlarkNode
 }
 
-func (cb *switchCase) newNode(node starlarkNode) {
-	cb.nodes = append(cb.nodes, node)
-}
-
 func (cb *switchCase) emit(gctx *generationContext) {
 	cb.gate.emit(gctx)
 	gctx.indentLevel++
@@ -286,15 +282,6 @@ func (cb *switchCase) emit(gctx *generationContext) {
 // A single complete if ... elseif ... else ... endif sequences
 type switchNode struct {
 	ssCases []*switchCase
-}
-
-func (ssw *switchNode) newNode(node starlarkNode) {
-	switch br := node.(type) {
-	case *switchCase:
-		ssw.ssCases = append(ssw.ssCases, br)
-	default:
-		panic(fmt.Errorf("expected switchCase node, got %t", br))
-	}
 }
 
 func (ssw *switchNode) emit(gctx *generationContext) {
