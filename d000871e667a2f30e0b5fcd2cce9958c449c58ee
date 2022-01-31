@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8517ae84_de67b81e",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2024,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-31T15:56:05Z",
+      "side": 1,
+      "message": "This CL also looks like it is adding Static_libs to be handled as deps. We should mention this in the description\n\n@Romain -- Soong has separate handling of Static_libs and Libs -- should we be consolidating these into a single attribute?",
+      "range": {
+        "startLine": 2022,
+        "startChar": 1,
+        "endLine": 2024,
+        "endChar": 2
+      },
+      "revId": "d000871e667a2f30e0b5fcd2cce9958c449c58ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
