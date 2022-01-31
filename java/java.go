@@ -2039,6 +2039,17 @@ func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
 }
 
+func javaLibraryHostBp2Build(ctx android.TopDownMutatorContext, m *Library) {
+	attrs := m.convertLibraryAttrsBp2Build(ctx)
+
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "java_library",
+		Bzl_load_location: "//build/bazel/rules/java:library.bzl",
+	}
+
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: m.Name()}, attrs)
+}
+
 type javaBinaryHostAttributes struct {
 	Srcs       bazel.LabelListAttribute
 	Deps       bazel.LabelListAttribute
