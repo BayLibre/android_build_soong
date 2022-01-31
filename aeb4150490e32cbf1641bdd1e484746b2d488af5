@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c4bdae_718e1cd4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-31T18:59:07Z",
+      "side": 1,
+      "message": "nit: of apex_test",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "aeb4150490e32cbf1641bdd1e484746b2d488af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9454ede9_d01e1b18",
@@ -31,6 +54,46 @@
       "writtenOn": "2022-01-28T19:40:11Z",
       "side": 1,
       "message": "Looking good, almost there!",
+      "revId": "aeb4150490e32cbf1641bdd1e484746b2d488af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "033e777f_968715ff",
+        "filename": "apex/builder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-31T18:59:07Z",
+      "side": 1,
+      "message": "nit: this should technically be true, since apex itself doesn\u0027t contain any .dex files. But I don\u0027t think it matters too much..",
+      "range": {
+        "startLine": 410,
+        "startChar": 25,
+        "endLine": 410,
+        "endChar": 30
+      },
+      "revId": "aeb4150490e32cbf1641bdd1e484746b2d488af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb73dcd3_59817204",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-01-31T18:59:07Z",
+      "side": 1,
+      "message": "For the future, it would be nice to separate independent changes into different change lists where possible, see go/small-cls. For example, changing manifest fixer to accept struct params could be its own change, and then this change adds testonly attribute. That would minimize the diff and mental load on reviewers.",
       "revId": "aeb4150490e32cbf1641bdd1e484746b2d488af5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
