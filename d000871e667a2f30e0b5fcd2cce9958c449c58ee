@@ -22,6 +22,30 @@
       },
       "revId": "d000871e667a2f30e0b5fcd2cce9958c449c58ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3192e5d4_3699e322",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2024,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-01-31T17:06:16Z",
+      "side": 1,
+      "message": "It looks like handling the static_libs in this way for all java_libraries was causing trouble. So I moved this particular code to java_plugin (aosp/1963619) where it is needed for the features we are currently writing.\n\nThe question still stands though because I am not sure how the static_libs differ from regular libs.",
+      "parentUuid": "8517ae84_de67b81e",
+      "range": {
+        "startLine": 2022,
+        "startChar": 1,
+        "endLine": 2024,
+        "endChar": 2
+      },
+      "revId": "d000871e667a2f30e0b5fcd2cce9958c449c58ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
