@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d4cac66_a694ee96",
+        "filename": "java/plugin.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-01-31T16:02:12Z",
+      "side": 1,
+      "message": "optional: you can use proptools.BoolPtr (https://cs.android.com/android/platform/superproject/+/master:build/blueprint/proptools/proptools.go;l\u003d57;drc\u003dc1ccfee2bdff98486c1bae0edd91996e344af251) here instead",
+      "range": {
+        "startLine": 80,
+        "startChar": 81,
+        "endLine": 80,
+        "endChar": 90
+      },
+      "revId": "68a691ab1848e31890bebb3e88632e691d7ffc0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
