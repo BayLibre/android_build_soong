@@ -16,6 +16,24 @@
       "message": "We decided to make ManifestFixer public. Is that required? Is that a problem? \n\n(I mean, maybe we want to keep it private to make future changes easier... But I have the feeling that making this public may not be needed because it wasn\u0027t before)\n\nThe same goes for the new struct and its properties.\n\n(I remember we discussed this before and you said this was required... But I don\u0027t understand why it is required - but I\u0027m not a golang expert)",
       "revId": "2d305010af8f36a6b5d45560f5304094a3e0a765",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99ae22d7_af46e932",
+        "filename": "java/aar.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-01-31T09:43:10Z",
+      "side": 0,
+      "message": "It has to be public so it can be used from the apex package.",
+      "parentUuid": "67d19aa2_a2377461",
+      "revId": "2d305010af8f36a6b5d45560f5304094a3e0a765",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
