@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63f955b9_083b3609",
+        "filename": "mk2rbc/node.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-01-31T20:23:36Z",
+      "side": 1,
+      "message": "The warning is verbose but IMHO is not very clear, and doesn\u0027t mention that the include hint can suppress the warning. IMHO a message should just refer to an FAQ.",
+      "revId": "2f37d8dfe2c443c00a15b73d24fa7820ef3d8928",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
