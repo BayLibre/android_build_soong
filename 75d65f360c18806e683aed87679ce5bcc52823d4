@@ -33,6 +33,24 @@
       "message": "After further thought it would be better to not bother initializing the fields that have the default value. That would make it clearer as to which parts are significant.",
       "revId": "75d65f360c18806e683aed87679ce5bcc52823d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "482295b6_ef6603d9",
+        "filename": "apex/builder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-02-01T15:50:19Z",
+      "side": 1,
+      "message": "So should I assign the following default values in the struct - \nFor sdkContext and ClassLoaderContexts \u003d\u003e nil \nand for all the boolean values \u003d\u003e false \nand for string \u003d\u003e empty string \u003d \"\"\n\nFor Ctx and Manifest we can avoid having a default value because they are essential to pass.",
+      "parentUuid": "8bb761f4_898da1e1",
+      "revId": "75d65f360c18806e683aed87679ce5bcc52823d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
