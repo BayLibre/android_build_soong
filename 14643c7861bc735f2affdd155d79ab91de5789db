@@ -157,6 +157,24 @@
       "parentUuid": "48b5d72e_f4930bd4",
       "revId": "14643c7861bc735f2affdd155d79ab91de5789db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d1ceb67_4d1f8038",
+        "filename": "mk2rbc/types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-02-01T00:51:27Z",
+      "side": 1,
+      "message": "testMakefileFinder is never called with anything other than the top dir, no?\n\nAnyways, I reverted this for now, I\u0027ll send that followup cl with the more complete change.",
+      "parentUuid": "81f09335_f5983841",
+      "revId": "14643c7861bc735f2affdd155d79ab91de5789db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

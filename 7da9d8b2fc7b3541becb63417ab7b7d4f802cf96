@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "853b31fa_54c5cf21",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-02-01T00:51:27Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c78fd3ce_361d0814",
+      "revId": "7da9d8b2fc7b3541becb63417ab7b7d4f802cf96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6316ee4_47d49c99",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "902f3159_38289155",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-02-01T00:51:27Z",
+      "side": 1,
+      "message": "I didn\u0027t want cachedRoot or cachedMakefiles to change if there was an error. Although it doesn\u0027t matter a ton in this case because we just panic if there\u0027s an error.",
+      "parentUuid": "b6316ee4_47d49c99",
+      "revId": "7da9d8b2fc7b3541becb63417ab7b7d4f802cf96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b620cf0_bde74e65",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-02-01T00:04:35Z",
       "side": 1,
       "message": "Is TrimSpace necessary (asking this because FindCommandMakefileFinder doesn\u0027t have it).",
+      "revId": "7da9d8b2fc7b3541becb63417ab7b7d4f802cf96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c783cbf6_365cf5ec",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-02-01T00:51:27Z",
+      "side": 1,
+      "message": "I guess technically not, removed.",
+      "parentUuid": "4b620cf0_bde74e65",
       "revId": "7da9d8b2fc7b3541becb63417ab7b7d4f802cf96",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
