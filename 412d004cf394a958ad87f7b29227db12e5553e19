@@ -16,6 +16,24 @@
       "message": "redundant because newBinary()\u0027s second argument, the bool is meant for this.",
       "revId": "412d004cf394a958ad87f7b29227db12e5553e19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e57f3eb_0cf5a216",
+        "filename": "cc/binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-02-01T02:18:11Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "d2cce61f_92af742a",
+      "revId": "412d004cf394a958ad87f7b29227db12e5553e19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
