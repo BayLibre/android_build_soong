@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02135e07_da97bfc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-01T22:50:20Z",
+      "side": 1,
+      "message": "RIP: build fails on the cc_proto_library target because they used a `compatible_with` as the attribute name instead of `target_compatible_with`. Will fix soon.",
+      "revId": "817f2eda1e0be3eee5164a652cab7b2c4aebe98c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
