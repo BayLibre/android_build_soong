@@ -16,6 +16,23 @@
       "message": "All comments resolved. ",
       "revId": "75d65f360c18806e683aed87679ce5bcc52823d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bb761f4_898da1e1",
+        "filename": "apex/builder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-01T15:20:31Z",
+      "side": 1,
+      "message": "After further thought it would be better to not bother initializing the fields that have the default value. That would make it clearer as to which parts are significant.",
+      "revId": "75d65f360c18806e683aed87679ce5bcc52823d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
