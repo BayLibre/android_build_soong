@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "309ee25e_14b8f46e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-02-01T00:09:12Z",
+      "side": 1,
+      "message": "It\u0027s a comment, what\u0027s wrong with leaving it there?",
+      "revId": "80c6435b745d6f9199406d00ab0bcfd8cb655bd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
