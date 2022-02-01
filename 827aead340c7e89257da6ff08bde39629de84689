@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53274076_968c4431",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2022-02-01T22:53:54Z",
+      "side": 1,
+      "message": "Suppressing all status messages doesn\u0027t seem like a good idea. If a user really wants to suppress everything, they can redirect to /dev/null. ANDROID_QUIET_BUILD seems more useful for hiding verbose output (preserving vertical space) while keeping the more useful status information visible during the build.",
+      "revId": "827aead340c7e89257da6ff08bde39629de84689",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
