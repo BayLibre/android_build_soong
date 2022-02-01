@@ -129,6 +129,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "019af05f_d792c8c3",
+        "filename": "apex/builder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-02-01T14:23:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "291150d2_a24347fc",
+      "range": {
+        "startLine": 410,
+        "startChar": 25,
+        "endLine": 410,
+        "endChar": 30
+      },
+      "revId": "aeb4150490e32cbf1641bdd1e484746b2d488af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb73dcd3_59817204",
