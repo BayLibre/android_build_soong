@@ -203,6 +203,24 @@
       "message": "For context: this assertion changed from StringEquals to StringDoesContain because now minSdkVersion and targetSdkVersion also come in the args field but we don\u0027t want to assert them in this test (IMO).",
       "revId": "aeb4150490e32cbf1641bdd1e484746b2d488af5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9feadd10_658dc18c",
+        "filename": "java/app_test.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2515,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-02-01T14:25:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "390a5a8b_92692f68",
+      "revId": "aeb4150490e32cbf1641bdd1e484746b2d488af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
