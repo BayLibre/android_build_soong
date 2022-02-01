@@ -139,6 +139,24 @@
       "parentUuid": "d92d0388_07aa9434",
       "revId": "14643c7861bc735f2affdd155d79ab91de5789db",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81f09335_f5983841",
+        "filename": "mk2rbc/types.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-02-01T00:04:35Z",
+      "side": 1,
+      "message": "It\u0027s not a good idea to make entities depend on command-line options, makes testing awkward, etc. Of the three reasons, the performance impact I believe is negligible, the third one isn\u0027t true (see tesmakefileFinder), and I could not understand what the second one means. If it\u0027s really hard to fix, you can allow filelistMakefileFinder only when rootdir is unset or set to `.`.",
+      "parentUuid": "48b5d72e_f4930bd4",
+      "revId": "14643c7861bc735f2affdd155d79ab91de5789db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
