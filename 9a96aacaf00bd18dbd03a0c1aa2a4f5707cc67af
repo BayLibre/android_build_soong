@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "535fb9d7_f7844dc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-01T19:34:31Z",
+      "side": 1,
+      "message": "Can you add more clarification on why these are necessary?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "9a96aacaf00bd18dbd03a0c1aa2a4f5707cc67af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "118700ad_ac61bd84",
@@ -14,6 +37,29 @@
       "writtenOn": "2022-01-31T21:42:03Z",
       "side": 1,
       "message": "Split off from the work on aosp/1767006, because it hasn\u0027t changed in a long time and is separable, though only useful for that CL. The original interface was introduced as part of this work, so replacing it shouldn\u0027t be problematic as there are no in-tree users.",
+      "revId": "9a96aacaf00bd18dbd03a0c1aa2a4f5707cc67af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "626d470a_fd41b26b",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-01T19:34:31Z",
+      "side": 1,
+      "message": "The documentation (https://docs.bazel.build/versions/main/skylark/lib/PyInfo.html#transitive_sources) explicitly states that transitive_sources is a depset of .py files -- why are these being used as shared libraries below?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 64
+      },
       "revId": "9a96aacaf00bd18dbd03a0c1aa2a4f5707cc67af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
