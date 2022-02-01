@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c796985b_9f56fc64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-02-01T20:59:58Z",
+      "side": 1,
+      "message": "I\u0027ve expounded on the commit message. Please let me know if it needs further changing.",
+      "parentUuid": "535fb9d7_f7844dc1",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 25
+      },
+      "revId": "9a96aacaf00bd18dbd03a0c1aa2a4f5707cc67af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "118700ad_ac61bd84",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-01T19:34:31Z",
       "side": 1,
       "message": "The documentation (https://docs.bazel.build/versions/main/skylark/lib/PyInfo.html#transitive_sources) explicitly states that transitive_sources is a depset of .py files -- why are these being used as shared libraries below?",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 64
+      },
+      "revId": "9a96aacaf00bd18dbd03a0c1aa2a4f5707cc67af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d289d6e4_a154918d",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-02-01T20:59:58Z",
+      "side": 1,
+      "message": "The shared libraries name derives from the use of `setAndroidMkSharedLibs` to set [`androidMkSharedLibs`](https://cs.android.com/android/platform/superproject/+/master:build/soong/python/installer.go;drc\u003dffc4cc41a36ab55e8ac0adc78a22e9ec0712f535;l\u003d38) as part of the `installer` interface. The use is by `pythonInstaller` to [set](https://cs.android.com/android/platform/superproject/+/master:build/soong/python/androidmk.go;drc\u003dc68db4b305b9186d8d9b4e83b298a33fa810d06b;l\u003d87) `LOCAL_SHARED_LIBRARIES` in AndroidMkEntries. I agree it\u0027s confusing naming, but it\u0027s used in [`GenerateAndroidBuildActions`](https://cs.android.com/android/platform/superproject/+/master:build/soong/python/python.go;drc\u003dbe46fccc404c18f7b90d370835cfa350db1debd7;l\u003d487) any time the `installer` is set, which is always the case for Python binaries. It appends the shared libs associated with the embedded launcher (`GetDirectDepsWithTag(launcherSharedLibTag)`), which for us amounts to the sources used for the host python binary.",
+      "parentUuid": "626d470a_fd41b26b",
       "range": {
         "startLine": 87,
         "startChar": 0,
