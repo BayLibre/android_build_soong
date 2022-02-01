@@ -16,6 +16,24 @@
       "message": "Let\u0027s update the CL description to explicitly mention that we\u0027re: \n1. adding java_library_static (an alias for java_library) support\n2. adding static_libs dependencies to deps",
       "revId": "341979bbaf6a67ec80f0b006d330668c7c2b743a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c73658_89de18db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-01T23:00:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27728056_dda9bfdc",
+      "revId": "341979bbaf6a67ec80f0b006d330668c7c2b743a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
