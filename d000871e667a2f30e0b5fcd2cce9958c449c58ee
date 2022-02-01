@@ -94,6 +94,30 @@
       },
       "revId": "d000871e667a2f30e0b5fcd2cce9958c449c58ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76d4a80f_bf38453e",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2024,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-02-01T21:54:06Z",
+      "side": 1,
+      "message": "Thanks Wei! We dug a little more Sam and indeed it looks like it\u0027s actually `libs` that is closest to `deps`, while `static_libs` seems to be doing doing an extra step of merging all jars into a single jar as part of building the library, which doesn\u0027t have a clear bazel equivalent. I\u0027ve filed b/217236083 to investigate this further but in the meantime we\u0027ll use deps for both.",
+      "parentUuid": "382f3a27_e6047697",
+      "range": {
+        "startLine": 2022,
+        "startChar": 1,
+        "endLine": 2024,
+        "endChar": 2
+      },
+      "revId": "d000871e667a2f30e0b5fcd2cce9958c449c58ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
