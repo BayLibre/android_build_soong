@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "db8b48d9_f7c81bb9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-02-01T11:55:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45c4bdae_718e1cd4",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "aeb4150490e32cbf1641bdd1e484746b2d488af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "9454ede9_d01e1b18",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 9
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "291150d2_a24347fc",
+        "filename": "apex/builder.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-02-01T11:55:35Z",
+      "side": 1,
+      "message": "The call to ManifestFixer from the apex package is only meant for adding testOnly flag, so that other parameters should not matter here. \n\nThis same file will get called for other parameters from the java package if it is meant to be fixed for other parameters.",
+      "parentUuid": "033e777f_968715ff",
+      "range": {
+        "startLine": 410,
+        "startChar": 25,
+        "endLine": 410,
+        "endChar": 30
+      },
+      "revId": "aeb4150490e32cbf1641bdd1e484746b2d488af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cb73dcd3_59817204",
         "filename": "java/android_manifest.go",
         "patchSetId": 9
@@ -94,6 +142,24 @@
       "writtenOn": "2022-01-31T18:59:07Z",
       "side": 1,
       "message": "For the future, it would be nice to separate independent changes into different change lists where possible, see go/small-cls. For example, changing manifest fixer to accept struct params could be its own change, and then this change adds testonly attribute. That would minimize the diff and mental load on reviewers.",
+      "revId": "aeb4150490e32cbf1641bdd1e484746b2d488af5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39580120_6fdc210d",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-02-01T11:55:35Z",
+      "side": 1,
+      "message": "Thanks a lot of your inputs. I will make sure I will keep such changes in separate CLs in future.",
+      "parentUuid": "cb73dcd3_59817204",
       "revId": "aeb4150490e32cbf1641bdd1e484746b2d488af5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
