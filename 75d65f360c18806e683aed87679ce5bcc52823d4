@@ -51,6 +51,24 @@
       "parentUuid": "8bb761f4_898da1e1",
       "revId": "75d65f360c18806e683aed87679ce5bcc52823d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85cf1524_d1cd3841",
+        "filename": "apex/builder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-02T13:17:50Z",
+      "side": 1,
+      "message": "Unfortunately, you cannot specify default values in a go struct. However, the default (or in Go terms, the zero value) is the value that the struct field has when the struct is first created, so pointers are nil, ints are 0, booleans are false, string are \"\", etc.\n\nSo, you should just be able to remove the Ctx, Manifest and TestOnly settings here, the rest of the fields will be initialized to the value you want.\n\nYou can do something similar with the other initialization of ManifestFixerParams, and remove the setting TestOnly: false.\n\nUsing a struct to provide optional named parameters is not a common practice in go which is why I am still making suggestions but it is quite nice.\n\nIf Ctx and Manifest are not optional you could consider passing them as separate parameters, e.g. java.ManifestFixer(ctx, androidManifestFile, java.ManifestFixerParams{....}) that way go will detect when they are not provided.",
+      "parentUuid": "482295b6_ef6603d9",
+      "revId": "75d65f360c18806e683aed87679ce5bcc52823d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
