@@ -52,6 +52,24 @@
       "parentUuid": "60c9036e_4f73626e",
       "revId": "817f2eda1e0be3eee5164a652cab7b2c4aebe98c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ca78bd5_8da06daa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-02T16:30:09Z",
+      "side": 1,
+      "message": "For future context: https://android-review.googlesource.com/c/platform/build/soong/+/1963619/comments/430cea25_a6cfd451.\n\nAlso, do we want `cc_lite_proto_library` to be compatible with the Android platform (i.e. exlcuded from the incompatibility stanza)? The way this code is implemented, `cc_lite_proto_library` is incompatible with Android (because it doesn\u0027t have the deviceSupported flag). Is this expected?",
+      "parentUuid": "f4a455ca_4295876e",
+      "revId": "817f2eda1e0be3eee5164a652cab7b2c4aebe98c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
