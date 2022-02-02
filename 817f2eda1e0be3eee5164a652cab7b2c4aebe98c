@@ -70,6 +70,24 @@
       "parentUuid": "f4a455ca_4295876e",
       "revId": "817f2eda1e0be3eee5164a652cab7b2c4aebe98c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "734db3a3_f00192ec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-02T22:38:24Z",
+      "side": 1,
+      "message": "yeah, we should support the `target_compatible_with` attribute for both of those rules.",
+      "parentUuid": "7ca78bd5_8da06daa",
+      "revId": "817f2eda1e0be3eee5164a652cab7b2c4aebe98c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
