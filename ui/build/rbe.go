@@ -20,6 +20,7 @@ import (
 	"os"
 	"path/filepath"
 	"runtime"
+	"strings"
 	"syscall"
 	"time"
 
@@ -114,6 +115,13 @@ func startRBE(ctx Context, config Config) {
 	cmd := Command(ctx, config, "startRBE bootstrap", rbeCommand(ctx, config, bootstrapCmd))
 
 	if output, err := cmd.CombinedOutput(); err != nil {
+		if strings.Contains(string(output), "couldn't create RPC creds") {
+			errMsg := "\033[1;31mRBE authentication failed. Please run the following command and try the build again:\033[0m\n"
+			errMsg += "    \033[1mgcloud auth application-default login --no-launch-browser --disable-quota-project\n\033[0m"
+			errMsg += "Refer to go/build-fast#install-google-cloud-sdk for more information.\n"
+			fmt.Fprint(os.Stderr, errMsg)
+			ctx.Fatalf("Unable to start RBE proxy.")
+		}
 		ctx.Fatalf("Unable to start RBE reproxy\nFAILED: RBE bootstrap failed with: %v\n%s\n", err, output)
 	}
 }
