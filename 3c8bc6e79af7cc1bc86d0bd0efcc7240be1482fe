@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b11d7543_5df5b69c",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-02T20:40:59Z",
+      "side": 1,
+      "message": "Would it make sense to print this directly from RBE?  I worry that the error message could change, causing this to stop working.",
+      "revId": "3c8bc6e79af7cc1bc86d0bd0efcc7240be1482fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f08d91fa_27007f8f",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-02T20:40:59Z",
+      "side": 1,
+      "message": "How stable are these instructions?  This is going to end up branched into each release, and may be seen years from now.",
+      "revId": "3c8bc6e79af7cc1bc86d0bd0efcc7240be1482fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
