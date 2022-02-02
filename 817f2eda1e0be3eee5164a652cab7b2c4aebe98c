@@ -34,6 +34,24 @@
       "parentUuid": "02135e07_da97bfc9",
       "revId": "817f2eda1e0be3eee5164a652cab7b2c4aebe98c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a455ca_4295876e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-02T13:29:41Z",
+      "side": 1,
+      "message": "We can also update the rules under `build/bazel/rules` for `cc_proto_library` as needed",
+      "parentUuid": "60c9036e_4f73626e",
+      "revId": "817f2eda1e0be3eee5164a652cab7b2c4aebe98c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
