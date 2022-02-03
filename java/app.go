@@ -425,7 +425,8 @@ func (a *AndroidApp) aaptBuildActions(ctx android.ModuleContext) {
 
 	a.aapt.splitNames = a.appProperties.Package_splits
 	a.aapt.LoggingParent = String(a.overridableAppProperties.Logging_parent)
-	a.aapt.buildActions(ctx, android.SdkContext(a), a.classLoaderContexts, aaptLinkFlags...)
+	a.aapt.buildActions(ctx, android.SdkContext(a), a.classLoaderContexts,
+		a.usesLibraryProperties.Exclude_uses_libs, aaptLinkFlags...)
 
 	// apps manifests are handled by aapt, don't let Module see them
 	a.properties.Manifest = nil
@@ -1211,6 +1212,8 @@ type UsesLibraryProperties struct {
 	// libraries, because SDK ones are automatically picked up by Soong. The <uses-library> name
 	// normally is the same as the module name, but there are exceptions.
 	Provides_uses_lib *string
+
+	Exclude_uses_libs []string
 }
 
 // usesLibrary provides properties and helper functions for AndroidApp and AndroidAppImport to verify that the
@@ -1325,6 +1328,9 @@ func (u *usesLibrary) classLoaderContextForUsesLibDeps(ctx android.ModuleContext
 			ctx.ModuleErrorf("module %q in uses_libs or optional_uses_libs must be a java library", dep)
 		}
 	})
+
+	clcMap.ExcludeLibs(u.usesLibraryProperties.Exclude_uses_libs)
+
 	return clcMap
 }
 

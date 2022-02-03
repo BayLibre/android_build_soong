@@ -210,6 +210,17 @@ type ClassLoaderContext struct {
 	Subcontexts []*ClassLoaderContext
 }
 
+// ExcludeLibs excludes the libraries from the ClassLoaderContext and returns
+// true if the ClassLoaderContext is still significant, false if it is not.
+func (c *ClassLoaderContext) ExcludeLibs(excludedLibs []string) bool {
+	if android.InList(c.Name, excludedLibs) {
+		return false
+	}
+
+	c.Subcontexts = excludeLibsFromCLCList(c.Subcontexts, excludedLibs)
+	return true
+}
+
 // ClassLoaderContextMap is a map from SDK version to CLC. There is a special entry with key
 // AnySdkVersion that stores unconditional CLC that is added regardless of the target SDK version.
 //
@@ -406,6 +417,36 @@ func (clcMap ClassLoaderContextMap) Dump() string {
 		panic(err)
 	}
 	return string(bytes)
+}
+
+func excludeLibsFromCLCList(clcList []*ClassLoaderContext, excludedLibs []string) []*ClassLoaderContext {
+	i := 0
+	for _, clc := range clcList {
+		if clc.ExcludeLibs(excludedLibs) {
+			clcList[i] = clc
+			i += 1
+		} else {
+			// Just skip over it.
+		}
+	}
+
+	clcList = clcList[:i]
+	return clcList
+}
+
+func (clcMap ClassLoaderContextMap) ExcludeLibs(excludedLibs []string) {
+	if len(excludedLibs) == 0 {
+		return
+	}
+
+	for sdkVersion, clcList := range clcMap {
+		clcList = excludeLibsFromCLCList(clcList, excludedLibs)
+		if len(clcList) != 0 {
+			clcMap[sdkVersion] = clcList
+		} else {
+			delete(clcMap, sdkVersion)
+		}
+	}
 }
 
 // Now that the full unconditional context is known, reconstruct conditional context.
