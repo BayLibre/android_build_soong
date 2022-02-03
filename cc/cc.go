@@ -1304,8 +1304,14 @@ func (c *Module) getVndkExtendsModuleName() string {
 
 func (c *Module) IsStubs() bool {
 	if lib := c.library; lib != nil {
+		// if c.Name() == "prebuilt_libdexfile" {
+		// 	log.Printf("IsStubs %s: %t", c, lib.buildStubs())
+		// }
 		return lib.buildStubs()
 	}
+	// if c.Name() == "prebuilt_libdexfile" {
+	// 	log.Printf("IsStubs %s: no lib", c)
+	// }
 	return false
 }
 
@@ -1908,9 +1914,12 @@ func (c *Module) maybeUnhideFromMake() {
 	// force anything in the make world to link against the stubs library.  (unless it
 	// is explicitly referenced via .bootstrap suffix or the module is marked with
 	// 'bootstrap: true').
+	// if c.Name() == "prebuilt_libdexfile" {
+	// 	log.Printf("maybeUnhideFromMake %s: %t %t %t %t %t %t %t %t %t %t: IsHideFromMake %t IsSkipInstall %t", c, c.HasStubsVariants(), c.NotInPlatform(), !c.InRamdisk(), !c.InRecovery(), !c.UseVndk(), !c.static(), !c.isCoverageVariant(), c.IsStubs(), !c.InVendorRamdisk(), !android.IsModulePrebuilt(c), c.IsHideFromMake(), c.IsSkipInstall())
+	// }
 	if c.HasStubsVariants() && c.NotInPlatform() && !c.InRamdisk() &&
 		!c.InRecovery() && !c.UseVndk() && !c.static() && !c.isCoverageVariant() &&
-		c.IsStubs() && !c.InVendorRamdisk() {
+		c.IsStubs() && !c.InVendorRamdisk() && !android.IsModulePrebuilt(c) {
 		c.Properties.HideFromMake = false // unhide
 		// Note: this is still non-installable
 	}

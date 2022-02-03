@@ -2269,11 +2269,12 @@ func createVersionVariations(mctx android.BottomUpMutatorContext, versions []str
 	m := mctx.Module().(*Module)
 	isLLNDK := m.IsLlndk()
 	isVendorPublicLibrary := m.IsVendorPublicLibrary()
+	isPrebuiltWithVersions := android.IsModulePrebuilt(m) && len(versions) > 0
 
 	modules := mctx.CreateLocalVariations(variants...)
 	for i, m := range modules {
 
-		if variants[i] != "" || isLLNDK || isVendorPublicLibrary {
+		if variants[i] != "" || isLLNDK || isVendorPublicLibrary || isPrebuiltWithVersions {
 			// A stubs or LLNDK stubs variant.
 			c := m.(*Module)
 			c.sanitize = nil
