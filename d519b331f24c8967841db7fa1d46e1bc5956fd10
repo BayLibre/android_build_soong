@@ -46,6 +46,30 @@
       },
       "revId": "d519b331f24c8967841db7fa1d46e1bc5956fd10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe27b3a4_c3e1c97e",
+        "filename": "android/bazel.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-03T19:14:55Z",
+      "side": 0,
+      "message": "True, but the underlying cause hasn\u0027t been addressed, so we shouldn\u0027t allowlist modules we know are broken, even it isn\u0027t being tested on CI 😊\n\nI\u0027ll send a cl to improve our CI coverage 😊",
+      "parentUuid": "59954268_3c65a3c8",
+      "range": {
+        "startLine": 438,
+        "startChar": 81,
+        "endLine": 444,
+        "endChar": 91
+      },
+      "revId": "d519b331f24c8967841db7fa1d46e1bc5956fd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
