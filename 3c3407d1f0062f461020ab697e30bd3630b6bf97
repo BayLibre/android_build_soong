@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9313369e_8825090b",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-03T19:59:48Z",
+      "side": 1,
+      "message": "When does this branch get triggered? It looks to me like `vals` is always empty map in this case because I don\u0027t see anything that sets `vals[x] \u003d y`. Is this a Go quirk (maybe that it sets it automatically the first time, and then the second time a key is seen `ok \u003d\u003d true`)?",
+      "revId": "3c3407d1f0062f461020ab697e30bd3630b6bf97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08756980_8fd09f35",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-03T19:59:48Z",
+      "side": 1,
+      "message": "Does this value get used somewhere else? I did a quick find on this CL and don\u0027t see anything that refers to it. Since the old public `StringVars` var was a `map` type, I assume this would\u0027ve broken something if anything tried to rely on the new `[]string` type instead. Maybe we can remove it now?",
+      "revId": "3c3407d1f0062f461020ab697e30bd3630b6bf97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5486b45_e02e90d8",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-03T19:59:48Z",
+      "side": 1,
+      "message": "The old code sorts these before outputting, do we need to do that here too?",
+      "revId": "3c3407d1f0062f461020ab697e30bd3630b6bf97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba11b056_b280adff",
+        "filename": "bp2build/build_conversion.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-03T19:59:48Z",
+      "side": 1,
+      "message": "Why is this a `ret +\u003d` rather than a `return` or `ret \u003d`? In general, it seems like we don\u0027t need the `ret` variable in this function anymore because the string building happens statically in functions?",
+      "revId": "3c3407d1f0062f461020ab697e30bd3630b6bf97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b44178e9_5697acac",
+        "filename": "starlark_fmt/format.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-03T19:59:48Z",
+      "side": 1,
+      "message": "Do we need this `strings.Title` in this function as well as in PrintBool?",
+      "revId": "3c3407d1f0062f461020ab697e30bd3630b6bf97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
