@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d35122b3_60a9b70f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-02-03T16:12:40Z",
+      "side": 1,
+      "message": "As part of the body/details, please note the introduction of the `moduleType` enum for quick reference on e.g. `git log`",
+      "revId": "a4e15118bb97a1790f07de7864f4b0860622156b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3fa0112_eeda8202",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-02-03T16:12:40Z",
+      "side": 1,
+      "message": "LGTM with some nits\n\nParticularly appreciate the reliance on an enum now instead of strings to distinguish module types. Thanks!",
+      "revId": "a4e15118bb97a1790f07de7864f4b0860622156b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23c0ec75_4e6fe201",
+        "filename": "cc/cc.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 3470,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-02-03T16:12:40Z",
+      "side": 1,
+      "message": "nit: IMO `library` as the name of the type is a little deceiving given it represents the types/combinations of libraries, not the libraries themselves. It\u0027s longer, but maybe `libraryType` or `libraryKind`?",
+      "revId": "a4e15118bb97a1790f07de7864f4b0860622156b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
