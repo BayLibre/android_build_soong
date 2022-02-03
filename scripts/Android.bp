@@ -188,3 +188,8 @@ python_binary_host {
         "get_clang_version.py",
     ],
 }
+
+python_binary_host {
+    name: "generate_empty_manifest",
+    srcs: ["generate_empty_manifest.py"],
+}

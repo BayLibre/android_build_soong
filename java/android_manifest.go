@@ -19,10 +19,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/google/blueprint"
-
 	"android/soong/android"
 	"android/soong/dexpreopt"
+	"github.com/google/blueprint"
 )
 
 var manifestFixerRule = pctx.AndroidStaticRule("manifestFixer",
@@ -53,6 +52,17 @@ func targetSdkVersionForManifestFixer(ctx android.ModuleContext, sdkContext andr
 		ctx.ModuleErrorf("invalid targetSdkVersion: %s", err)
 	}
 	return targetSdkVersion
+}
+
+// GenerateEmptyManifest runs a python script to generate an empty manifest file.
+func GenerateEmptyManifest(ctx android.ModuleContext, manifest android.ModuleOutPath, testManifestJson android.Path) {
+	rule := android.NewRuleBuilder(pctx, ctx)
+	rule.Command().
+		BuiltTool("generate_empty_manifest").
+		FlagWithInput("--input=", testManifestJson).
+		FlagWithOutput("--output=", manifest)
+
+	rule.Build("generateEmptyManifest", "Compiling "+manifest.String())
 }
 
 type ManifestFixerParams struct {
@@ -152,6 +162,18 @@ func ManifestFixer(params ManifestFixerParams) android.Path {
 	fixedManifest := android.PathForModuleOut(params.Ctx, "manifest_fixer", "AndroidManifest.xml")
 	argsMapper["args"] = strings.Join(args, " ")
 
+	/*	manifest_tmpl := "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
+		"<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\">\n" +
+		"	<application android:testOnly=\"true\">\n" +
+		"	</application>\n" +
+		"</manifest>\n"
+	*/
+	/*	rule := android.NewRuleBuilder(pctx, params.Ctx)
+
+		rule.Command().Text("(").
+				Textf(`echo "'%s"`, manifest_tmpl).
+			Text(") >").Output(generatedManifest)
+	*/
 	params.Ctx.Build(pctx, android.BuildParams{
 		Rule:        manifestFixerRule,
 		Description: "fix manifest",
