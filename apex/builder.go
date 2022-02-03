@@ -618,6 +618,15 @@ func (a *apexBundle) buildUnflattenedApex(ctx android.ModuleContext) {
 
 			implicitInputs = append(implicitInputs, androidManifestFile)
 			optFlags = append(optFlags, "--android_manifest "+androidManifestFile.String())
+		} else if a.testApex {
+			// Generate the empty AndroidManifest file.
+			generatedEmptyManifest := android.PathForModuleOut(ctx, "manifest_fixer", "EmptyAndroidManifest.xml")
+			testManifestJson := android.PathForModuleSrc(ctx, proptools.String(a.properties.Manifest))
+			java.GenerateEmptyManifest(ctx, generatedEmptyManifest, testManifestJson)
+			androidManifestFile := markManifestTestOnly(ctx, generatedEmptyManifest)
+
+			implicitInputs = append(implicitInputs, androidManifestFile)
+			optFlags = append(optFlags, "--android_manifest "+androidManifestFile.String())
 		}
 
 		// Determine target/min sdk version from the context
