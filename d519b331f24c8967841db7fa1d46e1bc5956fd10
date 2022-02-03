@@ -70,6 +70,30 @@
       },
       "revId": "d519b331f24c8967841db7fa1d46e1bc5956fd10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88965fe1_1458c504",
+        "filename": "android/bazel.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-03T19:25:50Z",
+      "side": 0,
+      "message": "Ah yes, I guess that does make more sense that way :D.",
+      "parentUuid": "fe27b3a4_c3e1c97e",
+      "range": {
+        "startLine": 438,
+        "startChar": 81,
+        "endLine": 444,
+        "endChar": 91
+      },
+      "revId": "d519b331f24c8967841db7fa1d46e1bc5956fd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
