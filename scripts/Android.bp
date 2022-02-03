@@ -188,3 +188,20 @@ python_binary_host {
         "get_clang_version.py",
     ],
 }
+
+python_binary_host {
+    name: "generate_empty_manifest",
+    srcs: ["generate_empty_manifest.py"],
+}
+
+python_test_host {
+    name: "generate_empty_manifest_test",
+    main: "generate_empty_manifest_test.py",
+    srcs: [
+        "generate_empty_manifest_test.py",
+        "generate_empty_manifest.py",
+    ],
+    test_options: {
+        unit_test: true,
+    },
+}

@@ -19,10 +19,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/google/blueprint"
-
 	"android/soong/android"
 	"android/soong/dexpreopt"
+	"github.com/google/blueprint"
 )
 
 var manifestFixerRule = pctx.AndroidStaticRule("manifestFixer",
@@ -53,6 +52,17 @@ func targetSdkVersionForManifestFixer(ctx android.ModuleContext, sdkContext andr
 		ctx.ModuleErrorf("invalid targetSdkVersion: %s", err)
 	}
 	return targetSdkVersion
+}
+
+// GenerateEmptyManifest runs a python script to generate an empty manifest file.
+func GenerateEmptyManifest(ctx android.ModuleContext, manifest android.ModuleOutPath, testManifestJson android.Path) {
+	rule := android.NewRuleBuilder(pctx, ctx)
+	rule.Command().
+		BuiltTool("generate_empty_manifest").
+		FlagWithInput("--input=", testManifestJson).
+		FlagWithOutput("--output=", manifest)
+
+	rule.Build("generateEmptyManifest", "Compiling "+manifest.String())
 }
 
 type ManifestFixerParams struct {
