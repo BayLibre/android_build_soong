@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c23776_03822618",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-02-03T17:23:09Z",
+      "side": 1,
+      "message": "Actually good point. Yeah I\u0027ll change this to be in re-client rather than in Soong.",
+      "parentUuid": "b11d7543_5df5b69c",
+      "revId": "3c8bc6e79af7cc1bc86d0bd0efcc7240be1482fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f08d91fa_27007f8f",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-02T20:40:59Z",
       "side": 1,
       "message": "How stable are these instructions?  This is going to end up branched into each release, and may be seen years from now.",
+      "revId": "3c8bc6e79af7cc1bc86d0bd0efcc7240be1482fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "798030f1_766e9861",
+        "filename": "ui/build/rbe.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-02-03T17:23:09Z",
+      "side": 1,
+      "message": "These messages will be tied to a version of re-client (and future versions will have support for prod credentials in addition to oauth tokens from gcloud auth). So they do have the potential to change with re-client version (so putting them in re-client seems like a better solution overall).",
+      "parentUuid": "f08d91fa_27007f8f",
       "revId": "3c8bc6e79af7cc1bc86d0bd0efcc7240be1482fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
