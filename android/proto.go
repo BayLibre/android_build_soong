@@ -165,12 +165,11 @@ type protoAttrs struct {
 
 // Bp2buildProtoProperties converts proto properties, creating a proto_library and returning the
 // information necessary for language-specific handling.
-func Bp2buildProtoProperties(ctx Bp2buildMutatorContext, module Module, srcs bazel.LabelListAttribute) (Bp2buildProtoInfo, bool) {
+func Bp2buildProtoProperties(ctx Bp2buildMutatorContext, m ModuleBase, srcs bazel.LabelListAttribute) (Bp2buildProtoInfo, bool) {
 	var info Bp2buildProtoInfo
 	if srcs.IsEmpty() {
 		return info, false
 	}
-	m := module.base()
 
 	info.Name = m.Name() + "_proto"
 	attrs := protoAttrs{

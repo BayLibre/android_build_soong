@@ -19,6 +19,13 @@ import (
 	"strconv"
 
 	"android/soong/android"
+	"android/soong/bazel"
+
+	"github.com/google/blueprint/proptools"
+)
+
+const (
+	protoTypeDefault = "lite"
 )
 
 func genProto(ctx android.ModuleContext, protoFiles android.Paths, flags android.ProtoFlags) android.Paths {
@@ -131,4 +138,67 @@ func protoFlags(ctx android.ModuleContext, j *CommonProperties, p *android.Proto
 	flags.proto.OutParams = append(flags.proto.OutParams, j.Proto.Output_params...)
 
 	return flags
+}
+
+type bp2buildProtoDeps struct {
+	protoDep *bazel.Label
+	protoLib *bazel.Label
+}
+
+type protoAttributes struct {
+	Deps bazel.LabelListAttribute
+}
+
+func bp2buildProto(ctx android.Bp2buildMutatorContext, m *Module, protoSrcs bazel.LabelListAttribute) bp2buildProtoDeps {
+	var ret bp2buildProtoDeps
+
+	protoInfo, ok := android.Bp2buildProtoProperties(ctx, m.ModuleBase, protoSrcs)
+	if !ok {
+		return ret
+	}
+
+	var depName string
+	typ := proptools.StringDefault(protoInfo.Type, protoTypeDefault)
+	var rule_class string
+	suffix := "_java_proto"
+	switch typ {
+	case "nano":
+		suffix += "_nano"
+		rule_class = "java_nano_proto_library"
+		depName = "libprotobuf-java-nano"
+	case "micro":
+		suffix += "_micro"
+		rule_class = "java_micro_proto_library"
+		depName = "libprotobuf-java-micro"
+	case "lite":
+		suffix += "_lite"
+		rule_class = "java_lite_proto_library"
+		depName = "libprotobuf-java-lite"
+	case "full":
+		rule_class = "java_proto_library"
+		depName = "libprotobuf-java-full"
+	default:
+		ctx.PropertyErrorf("proto.type", "cannot handle conversion at this time: %q", typ)
+	}
+
+	dep := android.BazelLabelForModuleDepSingle(ctx, depName)
+	ret.protoDep = &dep
+
+	protoLabel := bazel.Label{Label: ":" + m.Name() + "_proto"}
+	var protoAttrs protoAttributes
+	protoAttrs.Deps.SetValue(bazel.LabelList{Includes: []bazel.Label{protoLabel}})
+
+	name := m.Name() + suffix
+
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        rule_class,
+			Bzl_load_location: "//build/bazel/rules/java:proto.bzl",
+		},
+		android.CommonAttributes{Name: name},
+		&protoAttrs)
+
+	ret.protoLib = &bazel.Label{Label: ":" + name}
+
+	return ret
 }
