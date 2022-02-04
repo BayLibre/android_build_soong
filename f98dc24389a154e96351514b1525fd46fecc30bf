@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eac6fe0_69425a09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-04T22:41:07Z",
+      "side": 1,
+      "message": "Would it be possible to require that an apex_test provide an AndroidManifest.xml file?",
+      "revId": "f98dc24389a154e96351514b1525fd46fecc30bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac5ce1ae_a73a43b5",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-04T22:41:07Z",
+      "side": 1,
+      "message": "blueprint imports should be kept separate from Soong imports",
+      "revId": "f98dc24389a154e96351514b1525fd46fecc30bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "949b2b3e_00d3ba5c",
+        "filename": "scripts/generate_empty_manifest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-04T22:41:07Z",
+      "side": 1,
+      "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "f98dc24389a154e96351514b1525fd46fecc30bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
