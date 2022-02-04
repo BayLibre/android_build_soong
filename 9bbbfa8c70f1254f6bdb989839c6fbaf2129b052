@@ -16,6 +16,24 @@
       "message": "Hi Ulya, I realized that I did need to be able to exclude shared libraries from being implicitly added to the manifest in the end. While I could avoid some dependencies that caused that I could not avoid them all.\n\nThis is a quick hack to test the approach (and it works). Would you mind taking a quick look to see if it looks reasonable before I spend the time cleaning it up and adding some tests.\n\nI know that I am modifying in places ClassLoaderContext objects that could be shared across multiple modules which could be a potential source of nasty bugs so that is something that I will need to rectify by copying the objects.\n\nOne slight nastiness was that I had to call the ExcludeLibs() from with aapt.buildActions() as that adds additional entries to the CLCM which is passed in. So, I have to pass the excludedLibs in alongside the CLCM.",
       "revId": "9bbbfa8c70f1254f6bdb989839c6fbaf2129b052",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93936164_2d02a9eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-04T11:08:20Z",
+      "side": 1,
+      "message": "I think the approach could work, but did you consider not adding the excluded libraries in the first place? E.g. store the list of excluded libraries in CLC (or should it be CLCM?) and check it before adding a new library. It could spare all the hassle on reconstructing and copying, and passing the list of excluded libs around.",
+      "parentUuid": "7007c970_adca08ca",
+      "revId": "9bbbfa8c70f1254f6bdb989839c6fbaf2129b052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
