@@ -16,7 +16,6 @@ package cc
 import (
 	"fmt"
 	"path/filepath"
-	"regexp"
 	"strings"
 
 	"android/soong/android"
@@ -28,16 +27,9 @@ import (
 )
 
 const (
-	cSrcPartition     = "c"
-	asSrcPartition    = "as"
-	cppSrcPartition   = "cpp"
-	protoSrcPartition = "proto"
-)
-
-var (
-	// ignoring case, checks for proto or protos as an independent word in the name, whether at the
-	// beginning, end, or middle. e.g. "proto.foo", "bar-protos", "baz_proto_srcs" would all match
-	filegroupLikelyProtoPattern = regexp.MustCompile("(?i)(^|[^a-z])proto(s)?([^a-z]|$)")
+	cSrcPartition   = "c"
+	asSrcPartition  = "as"
+	cppSrcPartition = "cpp"
 )
 
 // staticOrSharedAttributes are the Bazel-ified versions of StaticOrSharedProperties --
@@ -61,46 +53,16 @@ type staticOrSharedAttributes struct {
 	Enabled bazel.BoolAttribute
 }
 
+// groupSrcsByExtension partitions `srcs` into groups based on file extension.
 func groupSrcsByExtension(ctx android.BazelConversionPathContext, srcs bazel.LabelListAttribute) bazel.PartitionToLabelListAttribute {
-	// Check that a module is a filegroup type
-	isFilegroup := func(m blueprint.Module) bool {
-		return ctx.OtherModuleType(m) == "filegroup"
-	}
-
-	// Convert filegroup dependencies into extension-specific filegroups filtered in the filegroup.bzl
-	// macro.
-	addSuffixForFilegroup := func(suffix string) bazel.LabelMapper {
-		return func(ctx bazel.OtherModuleContext, label bazel.Label) (string, bool) {
-			m, exists := ctx.ModuleFromName(label.OriginalModuleName)
-			labelStr := label.Label
-			if !exists || !isFilegroup(m) {
-				return labelStr, false
-			}
-			return labelStr + suffix, true
-		}
-	}
-
-	isProtoFilegroup := func(ctx bazel.OtherModuleContext, label bazel.Label) (string, bool) {
-		m, exists := ctx.ModuleFromName(label.OriginalModuleName)
-		labelStr := label.Label
-		if !exists || !isFilegroup(m) {
-			return labelStr, false
-		}
-		likelyProtos := filegroupLikelyProtoPattern.MatchString(label.OriginalModuleName)
-		return labelStr, likelyProtos
-	}
-
-	// TODO(b/190006308): Handle language detection of sources in a Bazel rule.
-	partitioned := bazel.PartitionLabelListAttribute(ctx, &srcs, bazel.LabelPartitions{
-		protoSrcPartition: bazel.LabelPartition{Extensions: []string{".proto"}, LabelMapper: isProtoFilegroup},
-		cSrcPartition:     bazel.LabelPartition{Extensions: []string{".c"}, LabelMapper: addSuffixForFilegroup("_c_srcs")},
-		asSrcPartition:    bazel.LabelPartition{Extensions: []string{".s", ".S"}, LabelMapper: addSuffixForFilegroup("_as_srcs")},
+	labels := bazel.LabelPartitions{
+		cSrcPartition:  bazel.LabelPartition{Extensions: []string{".c"}, LabelMapper: android.AddSuffixForFilegroup(ctx, "_c_srcs")},
+		asSrcPartition: bazel.LabelPartition{Extensions: []string{".s", ".S"}, LabelMapper: android.AddSuffixForFilegroup(ctx, "_as_srcs")},
 		// C++ is the "catch-all" group, and comprises generated sources because we don't
 		// know the language of these sources until the genrule is executed.
-		cppSrcPartition: bazel.LabelPartition{Extensions: []string{".cpp", ".cc", ".cxx", ".mm"}, LabelMapper: addSuffixForFilegroup("_cpp_srcs"), Keep_remainder: true},
-	})
-
-	return partitioned
+		cppSrcPartition: bazel.LabelPartition{Extensions: []string{".cpp", ".cc", ".cxx", ".mm"}, LabelMapper: android.AddSuffixForFilegroup(ctx, "_cpp_srcs"), Keep_remainder: true},
+	}
+	return android.GroupSrcsByExtensionWithProto(ctx, srcs, labels)
 }
 
 // bp2BuildParseLibProps returns the attributes for a variant of a cc_library.
@@ -207,7 +169,7 @@ func bp2buildParseStaticOrSharedProps(ctx android.BazelConversionPathContext, mo
 	attrs.Srcs_c = partitionedSrcs[cSrcPartition]
 	attrs.Srcs_as = partitionedSrcs[asSrcPartition]
 
-	if !partitionedSrcs[protoSrcPartition].IsEmpty() {
+	if !partitionedSrcs[android.ProtoSrcPartition].IsEmpty() {
 		// TODO(b/208815215): determine whether this is used and add support if necessary
 		ctx.ModuleErrorf("Migrating static/shared only proto srcs is not currently supported")
 	}
@@ -376,7 +338,7 @@ func (ca *compilerAttributes) finalize(ctx android.BazelConversionPathContext, i
 	ca.srcs.ResolveExcludes()
 	partitionedSrcs := groupSrcsByExtension(ctx, ca.srcs)
 
-	ca.protoSrcs = partitionedSrcs[protoSrcPartition]
+	ca.protoSrcs = partitionedSrcs[android.ProtoSrcPartition]
 
 	for p, lla := range partitionedSrcs {
 		// if there are no sources, there is no need for headers
