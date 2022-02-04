@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fec2605_ecccb203",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-02-04T18:52:02Z",
+      "side": 1,
+      "message": "1. Changing working directory invalidates all non-absolute paths (in this case, outdir). On the other hand, I am not sure whether rootdir option is useful -- perhaps we just require it to be the current working directory?\n2. Given how closely this CL is to the previous one, perhaps they can be squashed?",
+      "revId": "c5a18aa0508fb9116f399bd76cfda5f474274e49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
