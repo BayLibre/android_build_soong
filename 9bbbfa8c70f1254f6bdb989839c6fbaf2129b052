@@ -34,6 +34,24 @@
       "parentUuid": "7007c970_adca08ca",
       "revId": "9bbbfa8c70f1254f6bdb989839c6fbaf2129b052",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19b260ce_3675a234",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-04T11:58:45Z",
+      "side": 1,
+      "message": "After realizing that I would have to pass the ExcludedLibs into aapt.buildActions I did consider adding it to CLCM but unfortunately, that is a map (rather than a structure holding a map) so it is awkward to add additional data to that. I could put it in a special key but that would be a little nasty.\n\nFiltering it out during addition means that I would have to place the logic in every place where additional entries can be added.\n\nAlso, I think that I would still have to deal with an existing CLCM that is provided by another library that contains the dependencies I am trying to handle. So, e.g. CLCM.AddContextMap would need to make sure that any ClassLoaderContexts did not match.\n\nHaving the exclusion list separate and doing it at the last minute means that I don\u0027t have to worry about how a library was added.",
+      "parentUuid": "93936164_2d02a9eb",
+      "revId": "9bbbfa8c70f1254f6bdb989839c6fbaf2129b052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
