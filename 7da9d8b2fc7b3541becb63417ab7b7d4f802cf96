@@ -73,6 +73,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78263b66_c453387e",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-02-04T18:53:20Z",
+      "side": 1,
+      "message": "Optional: this function has fairly small amount of useful code and is used only once, so it can be inlined.",
+      "revId": "7da9d8b2fc7b3541becb63417ab7b7d4f802cf96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b620cf0_bde74e65",
         "filename": "mk2rbc/cmd/mk2rbc.go",
         "patchSetId": 5
