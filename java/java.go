@@ -2007,14 +2007,23 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 type javaLibraryAttributes struct {
 	Srcs      bazel.LabelListAttribute
 	Deps      bazel.LabelListAttribute
+	Exports   bazel.LabelListAttribute
 	Javacopts bazel.StringListAttribute
 }
+
+const (
+	javaSrcPartition = "java"
+)
 
 func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext) *javaLibraryAttributes {
 	//TODO(b/209577426): Support multiple arch variants
 	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs))
+	srcPartitions := cc.GroupSrcsByExtensionWithProto(ctx, srcs, bazel.LabelPartitions{
+		javaSrcPartition: bazel.LabelPartition{Extensions: []string{".java"}, Keep_remainder: true},
+	})
+
 	attrs := &javaLibraryAttributes{
-		Srcs: srcs,
+		Srcs: srcPartitions[javaSrcPartition],
 	}
 
 	if m.properties.Javacflags != nil {
@@ -2029,7 +2038,25 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		//TODO(b/217236083) handle static libs similarly to Soong
 		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Static_libs))
 	}
+
+	protoDeps := bp2buildProto(ctx, &m.Module, srcPartitions[cc.ProtoSrcPartition])
+	if protoDeps.protoDep != nil {
+		deps.Append(bazel.LabelList{
+			Includes: []bazel.Label{*protoDeps.protoDep},
+			Excludes: nil})
+	}
+	if protoDeps.protoLib != nil {
+		deps.Append(bazel.LabelList{
+			Includes: []bazel.Label{*protoDeps.protoLib},
+			Excludes: nil})
+	}
+
 	attrs.Deps = bazel.MakeLabelListAttribute(deps)
+
+	if attrs.Srcs.IsEmpty() && !attrs.Deps.IsEmpty() {
+		attrs.Exports = attrs.Deps
+		attrs.Deps = bazel.LabelListAttribute{}
+	}
 
 	return attrs
 }

@@ -447,7 +447,7 @@ var (
 		"error_prone_core",            // b/217236083, java_library cannot have deps without srcs
 		"bouncycastle-host",           // b/217236083, java_library cannot have deps without srcs
 
-		"apex_manifest_proto_java", // b/215230097, we don't handle .proto files in java_library srcs attribute
+		//"apex_manifest_proto_java", // b/215230097, we don't handle .proto files in java_library srcs attribute
 
 		// python protos
 		"libprotobuf-python",                           // contains .proto sources
