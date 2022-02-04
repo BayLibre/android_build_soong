@@ -52,6 +52,41 @@
       "parentUuid": "93936164_2d02a9eb",
       "revId": "9bbbfa8c70f1254f6bdb989839c6fbaf2129b052",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8715301_ebb21492",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-04T12:08:31Z",
+      "side": 1,
+      "message": "\u003e unfortunately, that is a map (rather than a structure holding a map)\n\nIt can be changed to a struct, but that might require refactoring in many places where these maps are created, and the nil-map handling would also change.\n\n\u003e I would have to place the logic in every place where additional entries can be added\n\nI tried to reduce it to two places: `addContext` and `AddContextMap`.\n\n\u003e I would still have to deal with an existing CLCM that is provided by another library\n\nAh, this I didn\u0027t think of. Good point.\n\nNow that we agree on the current approach, let me know when the CL is ready for detailed review.",
+      "parentUuid": "19b260ce_3675a234",
+      "revId": "9bbbfa8c70f1254f6bdb989839c6fbaf2129b052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a81020da_3b866714",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-04T12:08:31Z",
+      "side": 1,
+      "message": "es",
+      "revId": "9bbbfa8c70f1254f6bdb989839c6fbaf2129b052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
