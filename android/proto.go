@@ -16,6 +16,7 @@ package android
 
 import (
 	"android/soong/bazel"
+	"regexp"
 	"strings"
 
 	"github.com/google/blueprint"
@@ -24,6 +25,13 @@ import (
 
 const (
 	canonicalPathFromRootDefault = true
+	ProtoSrcPartition            = "proto"
+)
+
+var (
+	// ignoring case, checks for proto or protos as an independent word in the name, whether at the
+	// beginning, end, or middle. e.g. "proto.foo", "bar-protos", "baz_proto_srcs" would all match
+	filegroupLikelyProtoPattern = regexp.MustCompile("(?i)(^|[^a-z])proto(s)?([^a-z]|$)")
 )
 
 // TODO(ccross): protos are often used to communicate between multiple modules.  If the only
@@ -165,12 +173,11 @@ type protoAttrs struct {
 
 // Bp2buildProtoProperties converts proto properties, creating a proto_library and returning the
 // information necessary for language-specific handling.
-func Bp2buildProtoProperties(ctx Bp2buildMutatorContext, module Module, srcs bazel.LabelListAttribute) (Bp2buildProtoInfo, bool) {
+func Bp2buildProtoProperties(ctx Bp2buildMutatorContext, m *ModuleBase, srcs bazel.LabelListAttribute) (Bp2buildProtoInfo, bool) {
 	var info Bp2buildProtoInfo
 	if srcs.IsEmpty() {
 		return info, false
 	}
-	m := module.base()
 
 	info.Name = m.Name() + "_proto"
 	attrs := protoAttrs{
@@ -204,4 +211,43 @@ func Bp2buildProtoProperties(ctx Bp2buildMutatorContext, module Module, srcs baz
 		&attrs)
 
 	return info, true
+}
+
+// AddSuffixForFilegroup converts filegroup dependencies into extension-specific filegroups filtered in the
+// filegroup.bzl macro.
+func AddSuffixForFilegroup(ctx BazelConversionPathContext, suffix string) bazel.LabelMapper {
+	return func(ctx_omc bazel.OtherModuleContext, label bazel.Label) (string, bool) {
+		m, exists := ctx_omc.ModuleFromName(label.OriginalModuleName)
+		labelStr := label.Label
+		if !exists || !isFilegroup(ctx, m) {
+			return labelStr, false
+		}
+		return labelStr + suffix, true
+	}
+}
+
+// isFilegroup checks that a module is a filegroup type
+func isFilegroup(ctx BazelConversionPathContext, m blueprint.Module) bool {
+	return ctx.OtherModuleType(m) == "filegroup"
+}
+
+// GroupSrcsByExtension partitions `srcs` into groups based on file extension.
+func GroupSrcsByExtensionWithProto(ctx BazelConversionPathContext, srcs bazel.LabelListAttribute, extraLabels bazel.LabelPartitions) bazel.PartitionToLabelListAttribute {
+	isProtoFilegroup := func(ctx_omc bazel.OtherModuleContext, label bazel.Label) (string, bool) {
+		m, exists := ctx_omc.ModuleFromName(label.OriginalModuleName)
+		labelStr := label.Label
+		if !exists || !isFilegroup(ctx, m) {
+			return labelStr, false
+		}
+		likelyProtos := filegroupLikelyProtoPattern.MatchString(label.OriginalModuleName)
+		return labelStr, likelyProtos
+	}
+
+	// TODO(b/190006308): Handle language detection of sources in a Bazel rule.
+	if _, ok := extraLabels[ProtoSrcPartition]; !ok {
+		extraLabels[ProtoSrcPartition] = bazel.LabelPartition{Extensions: []string{".proto"}, LabelMapper: isProtoFilegroup}
+	}
+	partitioned := bazel.PartitionLabelListAttribute(ctx, &srcs, extraLabels)
+
+	return partitioned
 }

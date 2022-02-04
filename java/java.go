@@ -2007,14 +2007,23 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 type javaLibraryAttributes struct {
 	Srcs      bazel.LabelListAttribute
 	Deps      bazel.LabelListAttribute
+	Exports   bazel.LabelListAttribute
 	Javacopts bazel.StringListAttribute
 }
+
+const (
+	javaSrcPartition = "java"
+)
 
 func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext) *javaLibraryAttributes {
 	//TODO(b/209577426): Support multiple arch variants
 	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs))
+	srcPartitions := android.GroupSrcsByExtensionWithProto(ctx, srcs, bazel.LabelPartitions{
+		javaSrcPartition: bazel.LabelPartition{Extensions: []string{".java"}, Keep_remainder: true},
+	})
+
 	attrs := &javaLibraryAttributes{
-		Srcs: srcs,
+		Srcs: srcPartitions[javaSrcPartition],
 	}
 
 	if m.properties.Javacflags != nil {
@@ -2025,10 +2034,32 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	if m.properties.Libs != nil {
 		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Libs))
 	}
+
+	var staticDeps bazel.LabelList
 	if m.properties.Static_libs != nil {
 		//TODO(b/217236083) handle static libs similarly to Soong
-		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Static_libs))
+		staticDeps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Static_libs))
 	}
+
+	var protoDeps bazel.LabelList
+	protoDepLabel := bp2buildProto(ctx, &m.Module, srcPartitions[android.ProtoSrcPartition])
+	if protoDepLabel != nil {
+		protoDeps = bazel.MakeLabelList([]bazel.Label{*protoDepLabel})
+	}
+
+	if !attrs.Srcs.IsEmpty() {
+		deps.Append(staticDeps)
+		deps.Append(protoDeps)
+	} else if deps.IsNil() {
+		staticDeps.Append(protoDeps)
+		//TODO(b/217236083) android_binary does not support the exports attriubte
+		// we should move the following Exports line outside the if statement once
+		// this bug is resolved
+		attrs.Exports = bazel.MakeLabelListAttribute(staticDeps)
+	} else {
+		ctx.ModuleErrorf("Module has direct dependencies but no sources. Bazel will not allow this.")
+	}
+
 	attrs.Deps = bazel.MakeLabelListAttribute(deps)
 
 	return attrs
