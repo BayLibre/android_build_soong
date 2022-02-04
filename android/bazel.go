@@ -489,6 +489,9 @@ var (
 
 		// java deps
 		"bin2c_fastdeployagent", // depends on deployagent, a java binary
+
+		"art-script",     // depends on unconverted modules: dalvikvm, dex2oat
+		"dex2oat-script", // depends on unconverted modules: dex2oat
 	}
 
 	// Per-module denylist of cc_library modules to only generate the static
