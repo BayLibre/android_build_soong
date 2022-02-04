@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7caef726_957198d1",
+        "filename": "android/arch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-02-04T06:16:15Z",
+      "side": 1,
+      "message": "consider splitting typo fixes and other small refactors to other CLs so it\u0027s easier to review functional changes",
+      "range": {
+        "startLine": 832,
+        "startChar": 47,
+        "endLine": 832,
+        "endChar": 54
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1e4cc58_1f7d991d",
+        "filename": "android/derived_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-02-04T06:16:15Z",
+      "side": 1,
+      "message": "Can we ensure that the supported derived property types is a subset of the list of attribute types in Bazel so conversion is straightforward? https://docs.bazel.build/versions/main/skylark/lib/attr.html",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 3
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd887c8f_c1e9f33a",
+        "filename": "android/derived_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-02-04T06:16:15Z",
+      "side": 1,
+      "message": "the `def derive(): return` seems like boilerplate to me, especially if the function body is not parameterized. Can that be omitted and prepended as an implementation detail when needed?",
+      "range": {
+        "startLine": 81,
+        "startChar": 21,
+        "endLine": 81,
+        "endChar": 45
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d4ff97e_d359cb98",
+        "filename": "android/derived_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-02-04T06:16:15Z",
+      "side": 1,
+      "message": "What\u0027s a use case for bool lists? Can we remove it?",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 3
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66151595_a54deee5",
+        "filename": "android/derived_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-02-04T06:16:15Z",
+      "side": 1,
+      "message": "nested lists aren\u0027t valid blueprint property types, is there a use case for them? If not, it\u0027s YAGNI and let\u0027s remove it first",
+      "range": {
+        "startLine": 147,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 3
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cdf887e_ca45aa76",
+        "filename": "go.mod",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-02-04T06:16:15Z",
+      "side": 1,
+      "message": "did you need all of these go.mod changes to make intellij work?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 6
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
