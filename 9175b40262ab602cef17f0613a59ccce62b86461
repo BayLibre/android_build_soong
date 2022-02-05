@@ -70,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00efe736_c4685077",
+        "filename": "android/derived.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-02-05T03:02:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1914422a_d9f70257",
+      "revId": "9175b40262ab602cef17f0613a59ccce62b86461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04619f63_7391c17e",

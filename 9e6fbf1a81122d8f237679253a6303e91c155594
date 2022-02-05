@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f19a5426_3bf03f26",
+        "filename": "android/derived.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-02-05T03:02:53Z",
+      "side": 1,
+      "message": "I guess out of habit, I found it easier to defind a set data structure, will remove ot move to a different package, e.g. android/util/set ?",
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1e4cc58_1f7d991d",
         "filename": "android/derived_test.go",
         "patchSetId": 5
