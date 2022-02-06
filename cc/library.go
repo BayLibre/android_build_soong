@@ -2279,13 +2279,25 @@ func normalizeVersions(ctx android.BaseModuleContext, versions []string) {
 }
 
 func createVersionVariations(mctx android.BottomUpMutatorContext, versions []string) {
-	// "" is for the non-stubs (implementation) variant for system modules, or the LLNDK variant
-	// for LLNDK modules.
-	variants := append(android.CopyOf(versions), "")
 
 	m := mctx.Module().(*Module)
 	isLLNDK := m.IsLlndk()
 	isVendorPublicLibrary := m.IsVendorPublicLibrary()
+	isPrebuiltWithStubs := android.IsModulePrebuilt(m) && len(versions) > 0
+
+	if strings.HasPrefix(m.Name(), "prebuilt_libclang_rt.") {
+		// The libclang_rt.* prebuilts for different sanitizers have stub.versions but aren't stubs and
+		// need an implementation variant to be installable.
+		isPrebuiltWithStubs = false
+	}
+
+	variants := android.CopyOf(versions)
+	// "" is for the non-stubs (implementation) variant for system modules, or the LLNDK variant for
+	// LLNDK modules. Prebuilts with stubs have no implementations, so skip this for those.
+	hasImplVariant := isLLNDK || isVendorPublicLibrary || !isPrebuiltWithStubs
+	if hasImplVariant {
+		variants = append(variants, "")
+	}
 
 	modules := mctx.CreateLocalVariations(variants...)
 	for i, m := range modules {
@@ -2305,16 +2317,25 @@ func createVersionVariations(mctx android.BottomUpMutatorContext, versions []str
 				// implementation module to the stubs module.
 				c.Properties.HideFromMake = true
 				lib.setStubsVersion(variants[i])
-				mctx.AddInterVariantDependency(stubImplDepTag, modules[len(modules)-1], modules[i])
+				if hasImplVariant {
+					mctx.AddInterVariantDependency(stubImplDepTag, modules[len(modules)-1], modules[i])
+				}
 			}
 		}
 	}
-	mctx.AliasVariation("")
+
 	latestVersion := ""
 	if len(versions) > 0 {
 		latestVersion = versions[len(versions)-1]
 	}
 	mctx.CreateAliasVariation("latest", latestVersion)
+
+	if hasImplVariant {
+		mctx.AliasVariation("")
+	} else {
+		mctx.CreateAliasVariation("", latestVersion)
+		mctx.AliasVariation(latestVersion)
+	}
 }
 
 func createPerApiVersionVariations(mctx android.BottomUpMutatorContext, minSdkVersion string) {
