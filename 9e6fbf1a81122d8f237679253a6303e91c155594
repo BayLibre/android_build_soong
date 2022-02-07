@@ -118,6 +118,69 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c638424a_4cddc7d0",
+        "filename": "android/derived.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-02-07T20:17:24Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be SanitizeHost?",
+      "range": {
+        "startLine": 48,
+        "startChar": 39,
+        "endLine": 48,
+        "endChar": 48
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fe3e6d6_01b33044",
+        "filename": "android/derived.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-02-07T20:17:24Z",
+      "side": 1,
+      "message": "Optional: consider only allowing the derive function in the script, so that you don\u0027t have to deal with potential name conflicts among top-level statements when merging this starlark with mk2rbc-generated starlark.",
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e25b91e5_9ce4475c",
+        "filename": "android/derived.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-02-07T20:17:24Z",
+      "side": 1,
+      "message": "Typo",
+      "range": {
+        "startLine": 80,
+        "startChar": 53,
+        "endLine": 80,
+        "endChar": 62
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f19a5426_3bf03f26",
         "filename": "android/derived.go",
         "patchSetId": 5
