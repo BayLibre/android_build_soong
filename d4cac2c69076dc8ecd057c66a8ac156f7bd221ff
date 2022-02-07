@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c038d002_5322140e",
+        "filename": "bp2build/cc_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1847,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-07T20:07:40Z",
+      "side": 1,
+      "message": "ah, sorry I missed the shared_only_attrs above",
+      "parentUuid": "31577977_22d5728a",
+      "range": {
+        "startLine": 1844,
+        "startChar": 23,
+        "endLine": 1847,
+        "endChar": 7
+      },
+      "revId": "d4cac2c69076dc8ecd057c66a8ac156f7bd221ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28c55659_121976d7",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "We ignore many properties we don\u0027t recognize in bp2build, the main reason I do this check is to reduce the overhead of going through the two loops for every cc lib, if we have to give the suggested warning that purpose is defeated.",
       "parentUuid": "28c55659_121976d7",
+      "range": {
+        "startLine": 390,
+        "startChar": 1,
+        "endLine": 390,
+        "endChar": 29
+      },
+      "revId": "d4cac2c69076dc8ecd057c66a8ac156f7bd221ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41367d15_e46ffbb0",
+        "filename": "cc/library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-07T20:07:40Z",
+      "side": 1,
+      "message": "Yes, we currently ignore many properties, but that is not the long term intention, that is an artifact of our gradual migration, we will eventually migrate all properties.\n\nWe will eventually need to iterate over arch-variant LibraryProperties regardless to support other properties like stem and suffix, so it is only a short-lived optimization.",
+      "parentUuid": "09041152_1c6bb1a3",
       "range": {
         "startLine": 390,
         "startChar": 1,
