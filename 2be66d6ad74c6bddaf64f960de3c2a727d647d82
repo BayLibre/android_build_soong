@@ -64,6 +64,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04d7ca65_f9965fe0",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-07T14:58:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32de7790_414140cf",
+      "range": {
+        "startLine": 227,
+        "startChar": 29,
+        "endLine": 227,
+        "endChar": 40
+      },
+      "revId": "2be66d6ad74c6bddaf64f960de3c2a727d647d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1c2c636_20701e9a",
@@ -77,6 +101,30 @@
       "writtenOn": "2022-02-07T13:43:54Z",
       "side": 1,
       "message": "Minor suggestion. Would returning `nil, true` here help to simplify the logic on lines 453-460 and 486-493? I mean that you could always do `modifiedList \u003d modifiedList || modifiedClc`. Similarly for `excludeLibsFromCLCList` you could always rely on the boolean flag to be `true` if the resulting list is empty.",
+      "range": {
+        "startLine": 229,
+        "startChar": 2,
+        "endLine": 229,
+        "endChar": 19
+      },
+      "revId": "2be66d6ad74c6bddaf64f960de3c2a727d647d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1e73076_0d87bb23",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-07T14:58:19Z",
+      "side": 1,
+      "message": "I tried both ways. It didn\u0027t really make much difference to me. Done.",
+      "parentUuid": "d1c2c636_20701e9a",
       "range": {
         "startLine": 229,
         "startChar": 2,
@@ -110,6 +158,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d315b274_3e7ce493",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-07T14:58:19Z",
+      "side": 1,
+      "message": "Only creating the copy on demand is, as you said, much more complicated. Given that we\u0027re only talking about a small array and this code will only run for a very small number of modules, out of tens of thousands, and those modules will exclude some libraries the performance impact of this code will be very small, the benefit from reducing that impact would be even smaller.",
+      "parentUuid": "b7319fb6_a4f10608",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 59
+      },
+      "revId": "2be66d6ad74c6bddaf64f960de3c2a727d647d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7aa74a01_482953a6",
@@ -123,6 +195,30 @@
       "writtenOn": "2022-02-07T13:43:54Z",
       "side": 1,
       "message": "\"in\" missing?",
+      "range": {
+        "startLine": 1221,
+        "startChar": 59,
+        "endLine": 1221,
+        "endChar": 71
+      },
+      "revId": "2be66d6ad74c6bddaf64f960de3c2a727d647d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc49d242_e4cf1413",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-07T14:58:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aa74a01_482953a6",
       "range": {
         "startLine": 1221,
         "startChar": 59,
@@ -156,6 +252,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "06032f29_ea3997ba",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-07T14:58:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "052762e4_ba97003b",
+      "range": {
+        "startLine": 1224,
+        "startChar": 71,
+        "endLine": 1224,
+        "endChar": 78
+      },
+      "revId": "2be66d6ad74c6bddaf64f960de3c2a727d647d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9d19a36_66220e68",
@@ -169,6 +289,24 @@
       "writtenOn": "2022-02-07T13:43:54Z",
       "side": 1,
       "message": "Is this blank line intentional?",
+      "revId": "2be66d6ad74c6bddaf64f960de3c2a727d647d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "457d0d80_a26ae69d",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-07T14:58:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9d19a36_66220e68",
       "revId": "2be66d6ad74c6bddaf64f960de3c2a727d647d82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
