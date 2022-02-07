@@ -46,6 +46,30 @@
       },
       "revId": "1c455f68a7bf95de3383ba45c0af00395ce7f093",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36f9a030_2ea8c077",
+        "filename": "java/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-07T23:37:24Z",
+      "side": 1,
+      "message": "Joe would know",
+      "parentUuid": "c1357bda_fa11dca9",
+      "range": {
+        "startLine": 84,
+        "startChar": 52,
+        "endLine": 84,
+        "endChar": 73
+      },
+      "revId": "1c455f68a7bf95de3383ba45c0af00395ce7f093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
