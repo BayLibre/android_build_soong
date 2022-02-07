@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd8642ef_9c9e2e70",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-02-07T22:51:54Z",
+      "side": 1,
+      "message": "I was wrong. Soong *is* using actual shared libraries used in the running of the .py, thus packaged with it.\n\nHowever, AFAICT there is no Bazel route through the providers of python binary that yields those shared libraries.\n\nThis was checked by going through all providers for such a target (e.g. `//build/soong/scripts/hiddenapi:merge_csv` using `libsqlite`) and seeing that none exposed the shared objs. The closest I\u0027ve found has been through `providers(target)[\"PyCcLinkParamsProvider\"].cc_info.linking_context` to yield a [`CcLinkingContext`](https://source.corp.google.com/piper///depot/google3/third_party/bazel/src/main/java/com/google/devtools/build/lib/rules/cpp/CcLinkingContext.java;rcl\u003d414390111;l\u003d51) but this is opaque to starlark, thus I cannot e.g. `.getLinkerInputs()`.",
+      "parentUuid": "d289d6e4_a154918d",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 64
+      },
+      "revId": "9a96aacaf00bd18dbd03a0c1aa2a4f5707cc67af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c674c4ad_1b29f4e2",
         "filename": "bazel/cquery/request_type_test.go",
         "patchSetId": 1
