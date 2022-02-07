@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "306c8704_66df7c41",
+        "filename": "android/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-02-07T17:29:18Z",
+      "side": 1,
+      "message": "nit: realphabetize",
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7caef726_957198d1",
         "filename": "android/arch.go",
         "patchSetId": 5
@@ -50,6 +67,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3cb6775_b286146f",
+        "filename": "android/derived.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-02-07T17:29:18Z",
+      "side": 1,
+      "message": "year :)",
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41ce3944_ae80313c",
+        "filename": "android/derived.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-02-07T17:29:18Z",
+      "side": 1,
+      "message": "What would you like me to elaborate on? :) \n\nEffectively, the cquery starlark syntax is that you have two options:\n1. By expression.  `5`, `\"hello\"`, `[x for x in foo.bar_list]` are all valid\n2. By file which must necessarily contain a function definition `def format(target)`. This format function will be invoked (and result printed) for each configured target in the query.",
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c3a763f_d87b8d88",
+        "filename": "android/derived.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-02-07T17:29:18Z",
+      "side": 1,
+      "message": "As a thought: we should take care to extensively document (and test corner cases) for any function that we provide in addition to the core starlark API.\n\n.. and, hint hint, discuss in design review 😊",
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f19a5426_3bf03f26",
         "filename": "android/derived.go",
         "patchSetId": 5
@@ -61,6 +129,24 @@
       "writtenOn": "2022-02-05T03:02:53Z",
       "side": 1,
       "message": "I guess out of habit, I found it easier to defind a set data structure, will remove ot move to a different package, e.g. android/util/set ?",
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed54f4e7_dd048dd3",
+        "filename": "android/derived.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-02-07T17:29:18Z",
+      "side": 1,
+      "message": "in what cases is this preferable to a map[string]bool{} ? Just for documentation / clarity purposes?",
+      "parentUuid": "f19a5426_3bf03f26",
       "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
