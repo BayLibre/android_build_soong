@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f95bd19c_f715f202",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-02-07T19:25:37Z",
+      "side": 1,
+      "message": "Optional: a comment describing this finder and its restrictions would be nice.",
+      "revId": "317382e1b0d180bc378eb7d0473f62cf44c88858",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

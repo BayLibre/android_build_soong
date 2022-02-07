@@ -34,6 +34,24 @@
       "parentUuid": "294107c7_9d0cccc3",
       "revId": "35ed019ce332e575cc305753e2ac595179613dce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7bb6915_24ddf4dc",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-02-07T19:25:37Z",
+      "side": 1,
+      "message": "For someone not very familiar with Android build\u0027s setup it looks strange to have an option to specify the list of the makefiles alone with the claim that this improves the processing. Only when you know that the converter gets this list for free when run during the Android build the option description starts  to make sense. That\u0027s why I thought it would be easier to say that  it\u0027s Android build-specific option (BTW, nowhere does it mention that this option will have effect only when rootdir is the default current directory).",
+      "parentUuid": "96afeaa6_4ae99750",
+      "revId": "35ed019ce332e575cc305753e2ac595179613dce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
