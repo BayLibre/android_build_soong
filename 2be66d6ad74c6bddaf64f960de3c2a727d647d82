@@ -16,6 +16,161 @@
       "message": "PTAL.",
       "revId": "2be66d6ad74c6bddaf64f960de3c2a727d647d82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54f53e01_acf26588",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-07T13:43:54Z",
+      "side": 1,
+      "message": "I slightly prefer such comments inlined in the code for each respective variant, as it is easier to remember to fix the comment when changing the code.",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 92
+      },
+      "revId": "2be66d6ad74c6bddaf64f960de3c2a727d647d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32de7790_414140cf",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-07T13:43:54Z",
+      "side": 1,
+      "message": "Can it be private?",
+      "range": {
+        "startLine": 227,
+        "startChar": 29,
+        "endLine": 227,
+        "endChar": 40
+      },
+      "revId": "2be66d6ad74c6bddaf64f960de3c2a727d647d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1c2c636_20701e9a",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-07T13:43:54Z",
+      "side": 1,
+      "message": "Minor suggestion. Would returning `nil, true` here help to simplify the logic on lines 453-460 and 486-493? I mean that you could always do `modifiedList \u003d modifiedList || modifiedClc`. Similarly for `excludeLibsFromCLCList` you could always rely on the boolean flag to be `true` if the resulting list is empty.",
+      "range": {
+        "startLine": 229,
+        "startChar": 2,
+        "endLine": 229,
+        "endChar": 19
+      },
+      "revId": "2be66d6ad74c6bddaf64f960de3c2a727d647d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7319fb6_a4f10608",
+        "filename": "dexpreopt/class_loader_context.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-07T13:43:54Z",
+      "side": 1,
+      "message": "This creates the copy eagerly, even if it turns out to be unused. It is probably ok because if the exclude list is not empty, there is likely something to be excluded. But it might be better to create the copy only on demand. I\u0027m not suggesting to rework the patch as it would complicate the code and exclusion is very rare.",
+      "range": {
+        "startLine": 452,
+        "startChar": 1,
+        "endLine": 452,
+        "endChar": 59
+      },
+      "revId": "2be66d6ad74c6bddaf64f960de3c2a727d647d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aa74a01_482953a6",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-07T13:43:54Z",
+      "side": 1,
+      "message": "\"in\" missing?",
+      "range": {
+        "startLine": 1221,
+        "startChar": 59,
+        "endLine": 1221,
+        "endChar": 71
+      },
+      "revId": "2be66d6ad74c6bddaf64f960de3c2a727d647d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "052762e4_ba97003b",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-07T13:43:54Z",
+      "side": 1,
+      "message": "\"depend\"? Plural as it refers to \"tests\".",
+      "range": {
+        "startLine": 1224,
+        "startChar": 71,
+        "endLine": 1224,
+        "endChar": 78
+      },
+      "revId": "2be66d6ad74c6bddaf64f960de3c2a727d647d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d19a36_66220e68",
+        "filename": "java/app.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1346,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-02-07T13:43:54Z",
+      "side": 1,
+      "message": "Is this blank line intentional?",
+      "revId": "2be66d6ad74c6bddaf64f960de3c2a727d647d82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
