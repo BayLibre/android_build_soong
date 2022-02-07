@@ -22,6 +22,30 @@
       },
       "revId": "1c455f68a7bf95de3383ba45c0af00395ce7f093",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1357bda_fa11dca9",
+        "filename": "java/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-07T22:40:07Z",
+      "side": 1,
+      "message": "I\u0027m not sure. I tried re-running our CI without the dependency, and it seems to be working just as well. Is there a good way to test that the runtime is not necessary? Or else if you know, I can just submit without the runtime.",
+      "parentUuid": "6f5b4219_6fe9f045",
+      "range": {
+        "startLine": 84,
+        "startChar": 52,
+        "endLine": 84,
+        "endChar": 73
+      },
+      "revId": "1c455f68a7bf95de3383ba45c0af00395ce7f093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
