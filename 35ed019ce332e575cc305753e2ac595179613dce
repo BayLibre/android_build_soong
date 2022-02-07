@@ -52,6 +52,24 @@
       "parentUuid": "96afeaa6_4ae99750",
       "revId": "35ed019ce332e575cc305753e2ac595179613dce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d0f7e7d_f9e57d7c",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-02-07T19:43:35Z",
+      "side": 1,
+      "message": "Ack. Though it should work even when rootdir is not the default working directory. It just doesn\u0027t work when the root to search is not the same as rootDir, which is never the case in the current implementation.",
+      "parentUuid": "e7bb6915_24ddf4dc",
+      "revId": "35ed019ce332e575cc305753e2ac595179613dce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

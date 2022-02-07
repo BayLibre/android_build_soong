@@ -16,6 +16,24 @@
       "message": "Optional: a comment describing this finder and its restrictions would be nice.",
       "revId": "317382e1b0d180bc378eb7d0473f62cf44c88858",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa04fc09_83139039",
+        "filename": "mk2rbc/cmd/mk2rbc.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-02-07T19:43:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f95bd19c_f715f202",
+      "revId": "317382e1b0d180bc378eb7d0473f62cf44c88858",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
