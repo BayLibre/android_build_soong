@@ -75,7 +75,7 @@ var (
 			ExecStrategy:    "${config.RECXXLinksExecStrategy}",
 			Inputs:          []string{"${out}.rsp", "$implicitInputs"},
 			RSPFiles:        []string{"${out}.rsp"},
-			OutputFiles:     []string{"${out}", "$implicitOutputs"},
+			OutputFiles:     []string{"${out}", "${out}.d", "$implicitOutputs"},
 			ToolchainInputs: []string{"$ldCmd"},
 			Platform:        map[string]string{remoteexec.PoolKey: "${config.RECXXLinksPool}"},
 		}, []string{"ldCmd", "crtBegin", "libFlags", "crtEnd", "ldFlags", "extraLibFlags"}, []string{"implicitInputs", "implicitOutputs"})
@@ -85,13 +85,14 @@ var (
 		blueprint.RuleParams{
 			// Without -no-pie, clang 7.0 adds -pie to link Android files,
 			// but -r and -pie cannot be used together.
-			Command:     "$reTemplate$ldCmd -fuse-ld=lld -nostdlib -no-pie -Wl,-r ${in} -o ${out} ${ldFlags}",
+			Command: "$reTemplate$ldCmd -fuse-ld=lld -nostdlib -no-pie -Wl,-r ${in} " +
+				"-o ${out} ${ldFlags}",
 			CommandDeps: []string{"$ldCmd"},
 		}, &remoteexec.REParams{
 			Labels:          map[string]string{"type": "link", "tool": "clang"},
 			ExecStrategy:    "${config.RECXXLinksExecStrategy}",
 			Inputs:          []string{"$inCommaList", "$implicitInputs"},
-			OutputFiles:     []string{"${out}", "$implicitOutputs"},
+			OutputFiles:     []string{"${out}", "${out}.d", "$implicitOutputs"},
 			ToolchainInputs: []string{"$ldCmd"},
 			Platform:        map[string]string{remoteexec.PoolKey: "${config.RECXXLinksPool}"},
 		}, []string{"ldCmd", "ldFlags"}, []string{"implicitInputs", "inCommaList", "implicitOutputs"})
@@ -855,13 +856,23 @@ func transformObjToDynamicBinary(ctx android.ModuleContext,
 	deps = append(deps, crtBegin...)
 	deps = append(deps, crtEnd...)
 
+	var depFile android.WritablePath
+	var depFileLdFlags string
+	depsType := blueprint.DepsNone
+	if !ctx.Windows() && !ctx.Darwin() {
+		// lld only supports --dependency-file for elf files
+		depFile = outputFile.ReplaceExtension(ctx, "d")
+		depFileLdFlags = " -Wl,--dependency-file=" + depFile.String()
+		depsType = blueprint.DepsGCC
+	}
+
 	rule := ld
 	args := map[string]string{
 		"ldCmd":         ldCmd,
 		"crtBegin":      strings.Join(crtBegin.Strings(), " "),
 		"libFlags":      strings.Join(libFlagsList, " "),
 		"extraLibFlags": flags.extraLibFlags,
-		"ldFlags":       flags.globalLdFlags + " " + flags.localLdFlags,
+		"ldFlags":       flags.globalLdFlags + " " + flags.localLdFlags + depFileLdFlags,
 		"crtEnd":        strings.Join(crtEnd.Strings(), " "),
 	}
 	if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_CXX_LINKS") {
@@ -872,6 +883,8 @@ func transformObjToDynamicBinary(ctx android.ModuleContext,
 
 	ctx.Build(pctx, android.BuildParams{
 		Rule:            rule,
+		Deps:            depsType,
+		Depfile:         depFile,
 		Description:     "link " + outputFile.Base(),
 		Output:          outputFile,
 		ImplicitOutputs: implicitOutputs,
@@ -1025,10 +1038,20 @@ func transformObjsToObj(ctx android.ModuleContext, objFiles android.Paths,
 
 	ldCmd := "${config.ClangBin}/clang++"
 
+	var depFile android.WritablePath
+	var depFileLdFlags string
+	depsType := blueprint.DepsNone
+	if !ctx.Windows() && !ctx.Darwin() {
+		// lld only supports --dependency-file for elf files
+		depFile = outputFile.ReplaceExtension(ctx, "d")
+		depFileLdFlags = " -Wl,--dependency-file=" + depFile.String()
+		depsType = blueprint.DepsGCC
+	}
+
 	rule := partialLd
 	args := map[string]string{
 		"ldCmd":   ldCmd,
-		"ldFlags": flags.globalLdFlags + " " + flags.localLdFlags,
+		"ldFlags": flags.globalLdFlags + " " + flags.localLdFlags + depFileLdFlags,
 	}
 	if ctx.Config().UseRBE() && ctx.Config().IsEnvTrue("RBE_CXX_LINKS") {
 		rule = partialLdRE
@@ -1037,6 +1060,8 @@ func transformObjsToObj(ctx android.ModuleContext, objFiles android.Paths,
 	}
 	ctx.Build(pctx, android.BuildParams{
 		Rule:        rule,
+		Deps:        depsType,
+		Depfile:     depFile,
 		Description: "link " + outputFile.Base(),
 		Output:      outputFile,
 		Inputs:      objFiles,
