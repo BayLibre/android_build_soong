@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0004ee59_b9cecf0d",
+        "filename": "android/arch.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-02-07T15:05:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7caef726_957198d1",
+      "range": {
+        "startLine": 832,
+        "startChar": 47,
+        "endLine": 832,
+        "endChar": 54
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f19a5426_3bf03f26",
         "filename": "android/derived.go",
         "patchSetId": 5
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "11acf5f8_e9dc478e",
+        "filename": "android/derived_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-02-07T15:05:44Z",
+      "side": 1,
+      "message": "YOu meant restrict the set of explicit test cases to the subset or actually add a check to strictly support only the subset?",
+      "parentUuid": "c1e4cc58_1f7d991d",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 3
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd887c8f_c1e9f33a",
         "filename": "android/derived_test.go",
         "patchSetId": 5
@@ -77,6 +125,30 @@
       "writtenOn": "2022-02-04T06:16:15Z",
       "side": 1,
       "message": "the `def derive(): return` seems like boilerplate to me, especially if the function body is not parameterized. Can that be omitted and prepended as an implementation detail when needed?",
+      "range": {
+        "startLine": 81,
+        "startChar": 21,
+        "endLine": 81,
+        "endChar": 45
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81d792c5_eca9eae9",
+        "filename": "android/derived_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-02-07T15:05:44Z",
+      "side": 1,
+      "message": "yes they can but I found it more preferable personally to just let the author see that minimal boiler plate then to be aware of it.\ntreating provided script as function body might be okayish but \"return\" insertion especially if there are branches might look more magic then convenience.\nIn any non-test script, the script tends to be longer than a couple lines, so I felt like signally the author to provide a def() seemed more straight forward.",
+      "parentUuid": "cd887c8f_c1e9f33a",
       "range": {
         "startLine": 81,
         "startChar": 21,
@@ -112,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d92e1e35_e3058966",
+        "filename": "android/derived_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-02-07T15:05:44Z",
+      "side": 1,
+      "message": "remove it as a test case, you mean right?",
+      "parentUuid": "0d4ff97e_d359cb98",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 3
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66151595_a54deee5",
         "filename": "android/derived_test.go",
         "patchSetId": 5
@@ -135,6 +231,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "52cdd40a_ad7db17c",
+        "filename": "android/derived_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-02-07T15:05:44Z",
+      "side": 1,
+      "message": "well they maybe unused but I don\u0027t think they were invalid; there is a test case in unpack_test.go https://cs.android.com/android/platform/superproject/+/master:build/blueprint/proptools/unpack_test.go;l\u003d406-426?q\u003dunpack_test.go\nI can remove this test.",
+      "parentUuid": "66151595_a54deee5",
+      "range": {
+        "startLine": 147,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 3
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4cdf887e_ca45aa76",
         "filename": "go.mod",
         "patchSetId": 5
@@ -146,6 +266,30 @@
       "writtenOn": "2022-02-04T06:16:15Z",
       "side": 1,
       "message": "did you need all of these go.mod changes to make intellij work?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 6
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7adff824_3d4f81ba",
+        "filename": "go.mod",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-02-07T15:05:44Z",
+      "side": 1,
+      "message": "not ALL but the addition of starlark.\nAlso the go.mod file itself to the best of my knowledge is solely for IDEs so far (can be verified by running m nothing with this file removed)\nNote after this CL however, go.mod actually also serves the purpose of creating go.sum (via go mod tidy) - a missing go.sum results in errors (I need to check with Sasha why that\u0027s the case but there was similar changes needed in rbcrun)",
+      "parentUuid": "4cdf887e_ca45aa76",
       "range": {
         "startLine": 1,
         "startChar": 0,
