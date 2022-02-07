@@ -237,10 +237,13 @@ func LibclangRuntimeLibrary(t Toolchain, library string) string {
 	if arch == "" {
 		return ""
 	}
-	if !t.Bionic() {
-		return "libclang_rt." + library + "-" + arch
+	suffix := ""
+	if t.Bionic() {
+		suffix = "-android"
+	} else if t.Musl() {
+		suffix = "-musl"
 	}
-	return "libclang_rt." + library + "-" + arch + "-android"
+	return "libclang_rt." + library + "-" + arch + suffix
 }
 
 func BuiltinsRuntimeLibrary(t Toolchain) string {
