@@ -16,6 +16,24 @@
       "message": "+enh as FYI. There\u0027s still a few stragglers in Android.mk files around the tree too, but I\u0027ll get those. This isn\u0027t urgent until we get a compiler update with the flag removed.",
       "revId": "a66590a98ddf59d39c5fa381bbbde8418b4f87e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5cb2e37b_56cfc03a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-02-07T17:21:56Z",
+      "side": 1,
+      "message": "heh, we removed textrel support from the dynamic linker so many years ago...",
+      "parentUuid": "fa027906_1026415f",
+      "revId": "a66590a98ddf59d39c5fa381bbbde8418b4f87e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
