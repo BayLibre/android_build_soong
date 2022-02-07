@@ -63,8 +63,10 @@ var (
 	ld, ldRE = pctx.RemoteStaticRules("ld",
 		blueprint.RuleParams{
 			Command: "$reTemplate$ldCmd ${crtBegin} @${out}.rsp " +
-				"${libFlags} ${crtEnd} -o ${out} ${ldFlags} ${extraLibFlags}",
+				"${libFlags} ${crtEnd} -o ${out} -Wl,--dependency-file=${out}.d ${ldFlags} ${extraLibFlags}",
 			CommandDeps:    []string{"$ldCmd"},
+			Depfile:        "${out}.d",
+			Deps:           blueprint.DepsGCC,
 			Rspfile:        "${out}.rsp",
 			RspfileContent: "${in}",
 			// clang -Wl,--out-implib doesn't update its output file if it hasn't changed.
@@ -75,7 +77,7 @@ var (
 			ExecStrategy:    "${config.RECXXLinksExecStrategy}",
 			Inputs:          []string{"${out}.rsp", "$implicitInputs"},
 			RSPFiles:        []string{"${out}.rsp"},
-			OutputFiles:     []string{"${out}", "$implicitOutputs"},
+			OutputFiles:     []string{"${out}", "${out}.d", "$implicitOutputs"},
 			ToolchainInputs: []string{"$ldCmd"},
 			Platform:        map[string]string{remoteexec.PoolKey: "${config.RECXXLinksPool}"},
 		}, []string{"ldCmd", "crtBegin", "libFlags", "crtEnd", "ldFlags", "extraLibFlags"}, []string{"implicitInputs", "implicitOutputs"})
@@ -85,13 +87,16 @@ var (
 		blueprint.RuleParams{
 			// Without -no-pie, clang 7.0 adds -pie to link Android files,
 			// but -r and -pie cannot be used together.
-			Command:     "$reTemplate$ldCmd -fuse-ld=lld -nostdlib -no-pie -Wl,-r ${in} -o ${out} ${ldFlags}",
+			Command: "$reTemplate$ldCmd -fuse-ld=lld -nostdlib -no-pie -Wl,-r ${in} " +
+				"-o ${out} -Wl,--dependency-file=${out}.d ${ldFlags}",
 			CommandDeps: []string{"$ldCmd"},
+			Depfile:     "${out}.d",
+			Deps:        blueprint.DepsGCC,
 		}, &remoteexec.REParams{
 			Labels:          map[string]string{"type": "link", "tool": "clang"},
 			ExecStrategy:    "${config.RECXXLinksExecStrategy}",
 			Inputs:          []string{"$inCommaList", "$implicitInputs"},
-			OutputFiles:     []string{"${out}", "$implicitOutputs"},
+			OutputFiles:     []string{"${out}", "${out}.d", "$implicitOutputs"},
 			ToolchainInputs: []string{"$ldCmd"},
 			Platform:        map[string]string{remoteexec.PoolKey: "${config.RECXXLinksPool}"},
 		}, []string{"ldCmd", "ldFlags"}, []string{"implicitInputs", "inCommaList", "implicitOutputs"})
