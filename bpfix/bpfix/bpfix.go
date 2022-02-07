@@ -174,6 +174,10 @@ var fixStepsOnce = []FixStep{
 		Name: "rewriteLicenseProperties",
 		Fix:  runPatchListMod(rewriteLicenseProperty(nil, "")),
 	},
+	{
+		Name: "reverseBoolProperties",
+		Fix:  reverseBoolProperties,
+	},
 }
 
 func NewFixRequest() FixRequest {
@@ -1817,4 +1821,28 @@ func haveSameLicense(f *Fixer) error {
 func hasProperty(mod *parser.Module, propName string) bool {
 	_, ok := mod.GetProperty(propName)
 	return ok
+}
+
+func reverseBoolProperties(f *Fixer) error {
+	boolProperties := []string{
+		"auto_gen_config",
+	}
+	for _, def := range f.tree.Defs {
+		mod, ok := def.(*parser.Module)
+		if !ok {
+			continue
+		}
+		for _, propName := range boolProperties {
+			boolVal, ok := getLiteralBoolPropertyValue(mod, propName)
+			if !ok {
+				continue
+			}
+			prop, ok := mod.GetProperty(propName)
+			if !ok {
+				continue
+			}
+			prop.Value.(*parser.Bool).Value = !boolVal
+		}
+	}
+	return nil
 }

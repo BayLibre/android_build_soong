@@ -2183,3 +2183,62 @@ func TestRemoveResourceAndAssetsIfDefault(t *testing.T) {
 		})
 	}
 }
+
+func TestReverseBoolProperties(t *testing.T) {
+	tests := []struct {
+		name string
+		in   string
+		out  string
+	}{
+		{
+			name: "auto_gen_config is true",
+			in: `
+			android_app {
+				name: "foo",
+				auto_gen_config: true,
+			}
+			`,
+			out: `
+			android_app {
+				name: "foo",
+				auto_gen_config: false,
+			}
+			`,
+		},
+		{
+			name: "auto_gen_config is false",
+			in: `
+			android_app {
+				name: "foo",
+				auto_gen_config: false,
+			}
+			`,
+			out: `
+			android_app {
+				name: "foo",
+				auto_gen_config: true,
+			}
+			`,
+		},
+		{
+			name: "does not have auto_gen_config",
+			in: `
+			android_app {
+				name: "foo",
+			}
+			`,
+			out: `
+			android_app {
+				name: "foo",
+			}
+			`,
+		},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			runPassOnce(t, test.in, test.out, func(fixer *Fixer) error {
+				return reverseBoolProperties(fixer)
+			})
+		})
+	}
+}

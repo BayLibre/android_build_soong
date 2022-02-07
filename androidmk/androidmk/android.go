@@ -232,6 +232,8 @@ func init() {
 			"LOCAL_ENFORCE_USES_LIBRARIES": "enforce_uses_libs",
 
 			"LOCAL_CHECK_ELF_FILES": "check_elf_files",
+
+			"LOCAL_DISABLE_AUTO_GENERATE_TEST_CONFIG": "auto_gen_config",
 		})
 }
 
