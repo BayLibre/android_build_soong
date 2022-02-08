@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "5605a871_279c103d",
         "filename": "bpf/bpf.go",
@@ -20,10 +21,10 @@
         "endChar": 7
       },
       "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "db6decf9_19e9e2ae",
         "filename": "bpf/bpf.go",
@@ -44,10 +45,10 @@
         "endChar": 7
       },
       "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "ab67c81f_088fe1df",
         "filename": "bpf/bpf.go",
@@ -68,10 +69,10 @@
         "endChar": 7
       },
       "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "645306d6_bb1f5a3d",
         "filename": "bpf/bpf.go",
@@ -92,10 +93,10 @@
         "endChar": 7
       },
       "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "10377a3c_cc2ae7b8",
         "filename": "bpf/bpf.go",
@@ -116,10 +117,10 @@
         "endChar": 7
       },
       "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "78f283d3_009e70ea",
         "filename": "bpf/bpf.go",
@@ -140,8 +141,31 @@
         "endChar": 7
       },
       "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f51c67_eb70563b",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-02-08T00:29:56Z",
+      "side": 1,
+      "message": "Hey Colin, I tried this, but it seems we need to handle arch as well.\n\n    --- FAIL: TestBpfDataDependency (0.08s)\n    bpf_test.go:55: Android.bp:7:3: dependency \"bpf.o\" of \"vts_test_binary_bpf_module\" missing variant:\n          os:android,image:,arch:arm64_armv8-a,sdk:\n        available variants:\n          os:android,image:,arch:common\n          os:android,image:vendor,arch:common\n\nFrom\n\n    diff --git a/bpf/bpf.go b/bpf/bpf.go\n    index 9c60abf7f..0bef0becd 100644\n    --- a/bpf/bpf.go\n    +++ b/bpf/bpf.go\n    @@ -20,6 +20,7 @@ import (\n     \t\"strings\"\n     \n     \t\"android/soong/android\"\n    +\t_ \"android/soong/cc/config\"\n     \n     \t\"github.com/google/blueprint\"\n     \t\"github.com/google/blueprint/proptools\"\n    @@ -73,8 +74,10 @@ type BpfProperties struct {\n     \tInclude_dirs []string\n     \tSub_dir      string\n     \t// If set to true, generate BTF debug info for maps \u0026 programs\n    -\tBtf    *bool\n    -\tVendor *bool\n    +\tBtf          *bool\n    +    Vendor       *bool\n    +\n    +    VendorInternal bool `blueprint:\"mutated\"`\n     }\n     \n     type bpf struct {\n    @@ -85,6 +88,38 @@ type bpf struct {\n     \tobjs android.Paths\n     }\n     \n    +var _ android.ImageInterface \u003d (*bpf)(nil)\n    +\n    +func (bpf *bpf) ImageMutatorBegin(ctx android.BaseModuleContext) {}\n    +\n    +func (bpf *bpf) CoreVariantNeeded(ctx android.BaseModuleContext) bool {\n    +    return !proptools.Bool(bpf.properties.Vendor)\n    +}\n    +\n    +func (bpf *bpf) RamdiskVariantNeeded(ctx android.BaseModuleContext) bool {\n    +    return false\n    +}\n    +\n    +func (bpf *bpf) VendorRamdiskVariantNeeded(ctx android.BaseModuleContext) bool {\n    +    return false\n    +}\n    +\n    +func (bpf *bpf) DebugRamdiskVariantNeeded(ctx android.BaseModuleContext) bool {\n    +    return false\n    +}\n    +\n    +func (bpf *bpf) RecoveryVariantNeeded(ctx android.BaseModuleContext) bool {\n    +    return false\n    +}\n    +\n    +func (bpf *bpf) ExtraImageVariations(ctx android.BaseModuleContext) []string {\n    +    return []string { \"vendor\" }\n    +}\n    +\n    +func (bpf *bpf) SetImageVariation(ctx android.BaseModuleContext, variation string, module android.Module) {\n    +    bpf.properties.VendorInternal \u003d variation \u003d\u003d \"vendor\"\n    +}\n    +\n     func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {\n     \tcflags :\u003d []string{\n     \t\t\"-nostdlibinc\",\n    @@ -132,8 +167,8 @@ func (bpf *bpf) GenerateAndroidBuildActions(ctx android.ModuleContext) {\n     \t\tif proptools.Bool(bpf.properties.Btf) {\n     \t\t\tobjStripped :\u003d android.ObjPathWithExt(ctx, \"\", src, \"o\")\n     \t\t\tctx.Build(pctx, android.BuildParams{\n    -\t\t\t\tRule:   stripRule,\n    -\t\t\t\tInput:  obj,\n    +\t\t\t\tRule: stripRule,\n    +\t\t\t\tInput: obj,\n     \t\t\t\tOutput: objStripped,\n     \t\t\t\tArgs: map[string]string{\n     \t\t\t\t\t\"stripCmd\": \"${config.ClangBin}/llvm-strip\",\n    @@ -155,9 +190,9 @@ func (bpf *bpf) AndroidMk() android.AndroidMkData {\n     \t\t\tfmt.Fprintln(w, \"LOCAL_PATH :\u003d\", moduleDir)\n     \t\t\tfmt.Fprintln(w)\n     \t\t\tlocalModulePath :\u003d \"LOCAL_MODULE_PATH :\u003d $(TARGET_OUT_ETC)/bpf\"\n    -\t\t\tif proptools.Bool(bpf.properties.Vendor) {\n    -\t\t\t\tlocalModulePath \u003d \"LOCAL_MODULE_PATH :\u003d $(TARGET_OUT_VENDOR_ETC)/bpf\"\n    -\t\t\t}\n    +                       if bpf.properties.VendorInternal {\n    +                               localModulePath \u003d \"LOCAL_MODULE_PATH :\u003d $(TARGET_OUT_VENDOR_ETC)/bpf\"\n    +                       }\n     \t\t\tif len(bpf.properties.Sub_dir) \u003e 0 {\n     \t\t\t\tlocalModulePath +\u003d \"/\" + bpf.properties.Sub_dir\n     \t\t\t}",
+      "parentUuid": "78f283d3_009e70ea",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 7
+      },
+      "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
