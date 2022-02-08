@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6ec1e0a_541034ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-02-08T12:10:21Z",
+      "side": 1,
+      "message": "In case AndroidManifest.xml is provided in apex_test, it is present in the AndroidManifest filed of the apex_test. \nSo in case the AndroidManifest field is not present in the apex_test, this CL is generating an empty AndroidManifest.xml file and passing it through the manifestFixer to add the testOnly attribute. \n\nKindly resolve this comment if it answers your question.",
+      "parentUuid": "6eac6fe0_69425a09",
+      "revId": "f98dc24389a154e96351514b1525fd46fecc30bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac5ce1ae_a73a43b5",
         "filename": "java/android_manifest.go",
         "patchSetId": 2
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c9257f0_c99d32ad",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-02-08T12:10:21Z",
+      "side": 1,
+      "message": "I ran the auto formatter and hence this result. \nShould I ignore the auto formatter and keep the blueprint import separate from Soong imports?",
+      "parentUuid": "ac5ce1ae_a73a43b5",
+      "revId": "f98dc24389a154e96351514b1525fd46fecc30bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "949b2b3e_00d3ba5c",
         "filename": "scripts/generate_empty_manifest.py",
         "patchSetId": 2
@@ -48,6 +84,30 @@
       "writtenOn": "2022-02-04T22:41:07Z",
       "side": 1,
       "message": "2022",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 21
+      },
+      "revId": "f98dc24389a154e96351514b1525fd46fecc30bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b61f1f20_0f2a29be",
+        "filename": "scripts/generate_empty_manifest.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-02-08T12:10:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "949b2b3e_00d3ba5c",
       "range": {
         "startLine": 1,
         "startChar": 17,
