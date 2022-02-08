@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8a9c765_3f49b581",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-08T05:07:35Z",
+      "side": 1,
+      "message": "aosp/1976306 fixes the duplicate genrule srcs",
+      "revId": "f6b4cd4bcd898f78f623c114572509f9d613f812",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
