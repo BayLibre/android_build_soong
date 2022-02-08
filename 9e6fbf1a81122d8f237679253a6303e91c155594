@@ -467,6 +467,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9a6de36_2e38f826",
+        "filename": "android/derived_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-02-08T16:10:43Z",
+      "side": 1,
+      "message": "IMO the migration of config plugins from Go to Starlark would naturally use some subset of attribute types supported by blueprint (unpack.go), namely int64, string, bool and pointers and lists composed of them. If there is a discrepancy between these and what Bazel supports (which I doubt) that would require some additional work anyways.\nWhile removing tests for unexpected attribute types, e.g. [][]string or []bool sounds good, I am not so sure about any explicit check to disallow them.",
+      "parentUuid": "f7c5b9fb_10444506",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 3
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd887c8f_c1e9f33a",
         "filename": "android/derived_test.go",
         "patchSetId": 5
@@ -526,6 +550,30 @@
       "side": 1,
       "message": "IMO the parameter-less `def` doesn\u0027t add much -- in what case would a parameter-less derivation be useful? \n\nIf the scripts tend to be long, I\u0027m afraid of the readability and API surface issues that will occur with embedded syntax like Starlark-in-Blueprint. Have you considered taking another approach where all Starlark has to be declared in files, and the blueprint/derived property will only take a function definition loaded from those files? This is exactly what BUILD/bzl files do -- Starlark in BUILD is far more restrictive than Starlark in .bzl. In some sense this is like transpiling Go plugins to Starlark plugins, but with a restricted API and explicit load in .bp files.",
       "parentUuid": "81d792c5_eca9eae9",
+      "range": {
+        "startLine": 81,
+        "startChar": 21,
+        "endLine": 81,
+        "endChar": 45
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2c79412_7713c065",
+        "filename": "android/derived_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-02-08T16:10:43Z",
+      "side": 1,
+      "message": "In practice a parameter-less def would be unusual. I am thinking of externalizing the starlark function to a separate file. The syntax I had in mind was\nderived: \"def derive(env):...\" for inlined script\nand\nderivedFrom: \"path/to/file\"\nfor file-imported. So, unlike Bazel\u0027s load(), the handling of files is not built into blueprint but rather done in soong.\nI\u0027ll look at BUILD.bzl files, thanks.",
+      "parentUuid": "1ea615d8_c342686e",
       "range": {
         "startLine": 81,
         "startChar": 21,
