@@ -16,6 +16,40 @@
       "message": "Please review when you have time, thanks!",
       "revId": "946d74ecfcc3786a3c79901188247f72665e1ee4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf9be3a_b443a1b9",
+        "filename": "androidmk/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-08T20:36:05Z",
+      "side": 1,
+      "message": "You can use this syntax to invert a bool during conversion",
+      "revId": "946d74ecfcc3786a3c79901188247f72665e1ee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "145dae2d_40f634a4",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-08T20:36:05Z",
+      "side": 1,
+      "message": "bpfix can be run as a standalone tool to fix known issues in Android.bp files, this would flip the bool every time you ran bpfix.",
+      "revId": "946d74ecfcc3786a3c79901188247f72665e1ee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
