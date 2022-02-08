@@ -16,6 +16,24 @@
       "message": "I think `libc_musl_sysroot_bionic_arch_headers` is not necessary in the denylist? The srcs of this Bazel target are unique.\n\n```\n$ (download build.log)\n$ grep \"is duplicated\" build.log  | awk -F \u0027 \u0027 \u0027{print $NF}\u0027 | sort | uniq\n\u0027libc_musl_sysroot_bionic_headers\u0027\n```",
       "revId": "343b1c13f95389b2616cf344ccfdc32d48059ea5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3736dcc5_56203134",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-02-08T04:48:23Z",
+      "side": 1,
+      "message": "You\u0027re right -- it depends on soong_zip, which is a go_binary that hasn\u0027t been converted with bp2build. http://cs/android/bionic/libc/Android.bp;l\u003d2705;rcl\u003d07bc617dbd2e26c4aefbe87ca31faddf945cd976 - fixing the comment.",
+      "parentUuid": "2c417085_031edc58",
+      "revId": "343b1c13f95389b2616cf344ccfdc32d48059ea5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
