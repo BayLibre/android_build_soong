@@ -25,6 +25,32 @@
       },
       "revId": "6076882950fa91b72f07e7c7c283433aba02d448",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000020189967",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1976067?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "0e70204e_f489920b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-02-08T02:39:04Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nThird-party licenses\n",
+      "range": {
+        "startLine": 13,
+        "startChar": 50,
+        "endLine": 13,
+        "endChar": 70
+      },
+      "revId": "6076882950fa91b72f07e7c7c283433aba02d448",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
