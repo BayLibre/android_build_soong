@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "80810930_ed3de487",
+        "filename": "androidmk/androidmk/android.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2022-02-08T21:21:22Z",
+      "side": 1,
+      "message": "Cool, I did not know this. Will update and use this. Thanks!",
+      "parentUuid": "9bf9be3a_b443a1b9",
+      "revId": "946d74ecfcc3786a3c79901188247f72665e1ee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "145dae2d_40f634a4",
         "filename": "bpfix/bpfix/bpfix.go",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2022-02-08T20:36:05Z",
       "side": 1,
       "message": "bpfix can be run as a standalone tool to fix known issues in Android.bp files, this would flip the bool every time you ran bpfix.",
+      "revId": "946d74ecfcc3786a3c79901188247f72665e1ee4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bef656e_1267d2e0",
+        "filename": "bpfix/bpfix/bpfix.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1826,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2022-02-08T21:21:22Z",
+      "side": 1,
+      "message": "I see. Thanks! Will remove this if the reverse can be done in the androidmk.go step.",
+      "parentUuid": "145dae2d_40f634a4",
       "revId": "946d74ecfcc3786a3c79901188247f72665e1ee4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
