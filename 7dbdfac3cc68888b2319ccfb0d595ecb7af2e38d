@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c935468_d34dfb8b",
+        "filename": "mk2rbc/node.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-02-08T20:04:46Z",
+      "side": 1,
+      "message": "As most of the time the suggestion is impractical, I\u0027d rather say \"please try to  avoid starting the include path with variable, see https://source.android.com/setup/build/bazel/product_config/issues/includes\"",
+      "revId": "7dbdfac3cc68888b2319ccfb0d595ecb7af2e38d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
