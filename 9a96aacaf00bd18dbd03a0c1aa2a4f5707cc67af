@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fef37d6_dc10d719",
+        "filename": "bazel/cquery/request_type.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-08T16:00:34Z",
+      "side": 1,
+      "message": "The requirement for `LOCAL_SHARED_LIBRARIES` is an implementation detail of Soong. `libsqlite`, the dependency you mention, is added in the Python rules:\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/python/python.go;l\u003d419-421;drc\u003dbe46fccc404c18f7b90d370835cfa350db1debd7\n\nSoong adds this to parallel the dependency on `libsqlite` in the `cc_binary`:\nhttps://cs.android.com/android/platform/superproject/+/master:external/python/cpython3/Android.bp;l\u003d384-387;drc\u003db9068f6ed005dfac84386b591fd6b7fe8459fb97\n\nIn general, Soong does not handle transitive dependencies, requiring workarounds if the transitive dependencies are necessary.\n\nOn the other hand, Bazel can better handle transitive dependencies, ensuring that the transitive dependencies are available in runfiles.\n\nMixed builds will not always be a 1:1 mapping of everything Soong does, we need to do in Bazel. Our approach should be based on ensuring runfiles are available to the python binary, not to get the shared dependencies to match Soong.",
+      "parentUuid": "cd8642ef_9c9e2e70",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 64
+      },
+      "revId": "9a96aacaf00bd18dbd03a0c1aa2a4f5707cc67af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c674c4ad_1b29f4e2",
         "filename": "bazel/cquery/request_type_test.go",
         "patchSetId": 1
