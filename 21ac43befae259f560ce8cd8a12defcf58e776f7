@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12471a65_2ef8b046",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-02-08T01:29:29Z",
+      "side": 1,
+      "message": "line it up?",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 9
+      },
+      "revId": "21ac43befae259f560ce8cd8a12defcf58e776f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec536c7_f507f2e6",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1003247
+      },
+      "writtenOn": "2022-02-08T01:29:29Z",
+      "side": 1,
+      "message": "why not else",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 3
+      },
+      "revId": "21ac43befae259f560ce8cd8a12defcf58e776f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
