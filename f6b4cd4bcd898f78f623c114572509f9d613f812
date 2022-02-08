@@ -16,6 +16,24 @@
       "message": "aosp/1976306 fixes the duplicate genrule srcs",
       "revId": "f6b4cd4bcd898f78f623c114572509f9d613f812",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc17c0d9_bddce42f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-02-08T07:43:33Z",
+      "side": 1,
+      "message": "Thanks! I\u0027ll submit this anyway, since duplicate srcs isn\u0027t the only issue affecting these cc_genrules.",
+      "parentUuid": "d8a9c765_3f49b581",
+      "revId": "f6b4cd4bcd898f78f623c114572509f9d613f812",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
