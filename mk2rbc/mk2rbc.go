@@ -1158,6 +1158,14 @@ func (ctx *parseContext) parseCompareFilterFuncResult(cond *mkparser.Directive,
 	if x, ok := xValue.(*stringLiteralExpr); !ok || x.literal != "" {
 		return nil, false
 	}
+	specialCase1 := struct {
+		StructType string `required:"callExpr"`
+		name string `required:"rblf.filter"`
+		returnType starlarkType
+		args []*struct{
+
+		}
+	}{}
 	xPattern := filterFuncCall.args[0]
 	xText := filterFuncCall.args[1]
 	var xInList *stringLiteralExpr
