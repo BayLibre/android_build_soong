@@ -389,6 +389,8 @@ ifneq (,$(filter plaf,$(PLATFORM_LIST)))
 endif
 ifeq ($(TARGET_BUILD_VARIANT), $(filter $(TARGET_BUILD_VARIANT), userdebug eng))
 endif
+ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+endif
 ifneq (,$(filter true, $(v1)$(v2)))
 endif
 ifeq (,$(filter barbet coral%,$(TARGET_PRODUCT)))
@@ -408,6 +410,8 @@ def init(g, handle):
   if "plaf" in g.get("PLATFORM_LIST", []):
     pass
   if g["TARGET_BUILD_VARIANT"] in ["userdebug", "eng"]:
+    pass
+  if rblf.filter("userdebug eng", g["TARGET_BUILD_VARIANT"]):
     pass
   if rblf.filter("true", "%s%s" % (_v1, _v2)):
     pass
