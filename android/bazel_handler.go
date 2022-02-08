@@ -306,6 +306,9 @@ func (context *bazelContext) BazelEnabled() bool {
 // then returns ("", false).
 func (context *bazelContext) cquery(label string, requestType cqueryRequest,
 	cfgKey configKey) (string, bool) {
+	if strings.Contains(label, "adbd") {
+		fmt.Println("BBBBBBB: ", label, requestType.Name())
+	}
 	key := cqueryKey{label, requestType, cfgKey}
 	if result, ok := context.results[key]; ok {
 		return result, true
