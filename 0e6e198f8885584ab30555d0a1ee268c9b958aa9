@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f615b392_268a0f96",
+        "filename": "starlark_fmt/format.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-02-08T22:17:49Z",
+      "side": 1,
+      "message": "Did you mean to test level \u003c 0?\nIsn\u0027t indent a const already set to a positive value of 4?\nIncidentally, also wondering if unsigned ints are being avoided because 0 - 1 would wrap around to 0xFFFF... ?",
+      "revId": "0e6e198f8885584ab30555d0a1ee268c9b958aa9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9d8c535_96e01638",
         "filename": "starlark_fmt/format.go",
         "patchSetId": 3
