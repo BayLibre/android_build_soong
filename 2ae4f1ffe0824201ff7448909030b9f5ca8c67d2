@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01920447_851f4fc4",
+        "filename": "android/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-02-08T17:33:11Z",
+      "side": 1,
+      "message": "Maybe pass by reference, i.e. m *ModuleBase",
+      "revId": "2ae4f1ffe0824201ff7448909030b9f5ca8c67d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
