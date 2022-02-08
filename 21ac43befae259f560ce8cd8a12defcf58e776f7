@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c5eaa8f_08b905b6",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-02-08T01:43:14Z",
+      "side": 1,
+      "message": "This is what gofmt does.",
+      "parentUuid": "12471a65_2ef8b046",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 9
+      },
+      "revId": "21ac43befae259f560ce8cd8a12defcf58e776f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ec536c7_f507f2e6",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-08T01:29:29Z",
       "side": 1,
       "message": "why not else",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 3
+      },
+      "revId": "21ac43befae259f560ce8cd8a12defcf58e776f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6e97045_a1f0b7f2",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2022-02-08T01:43:14Z",
+      "side": 1,
+      "message": "avoids 1 LOC for the type (note, waiting on comment from Colin to use image mutator here)",
+      "parentUuid": "0ec536c7_f507f2e6",
       "range": {
         "startLine": 160,
         "startChar": 2,
