@@ -69,6 +69,24 @@
       "parentUuid": "482295b6_ef6603d9",
       "revId": "75d65f360c18806e683aed87679ce5bcc52823d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50782e73_99c0f129",
+        "filename": "apex/builder.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-02-08T12:18:29Z",
+      "side": 1,
+      "message": "I will raise a separate CL to address this refactoring of the code.",
+      "parentUuid": "85cf1524_d1cd3841",
+      "revId": "75d65f360c18806e683aed87679ce5bcc52823d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
