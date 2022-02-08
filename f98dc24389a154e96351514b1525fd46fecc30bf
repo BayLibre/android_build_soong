@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5130ad60_3a0a1f6e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-08T12:25:42Z",
+      "side": 1,
+      "message": "I think that Colin was suggesting that if the AndroidManifest is not set that instead of creating an empty one the apex_test should treat that as an error.\n\nI did a quick rough search and it seems as though there are about 20+ apex_test modules that do not have an androidManifest property (unless they inherit it via defaults which is unlikely). Fixing that seems like a lot of work.\n\nAlso, the AndroidManifest property says that if unspecified a default one will be provided. Soong does not seem to do that, but it may be that the tool for building the APEX does. In which case you would need to make sure that the empty AndroidManifest you create is compatible with that automatically created one.",
+      "parentUuid": "c6ec1e0a_541034ce",
+      "revId": "f98dc24389a154e96351514b1525fd46fecc30bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac5ce1ae_a73a43b5",
         "filename": "java/android_manifest.go",
         "patchSetId": 2
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "I ran the auto formatter and hence this result. \nShould I ignore the auto formatter and keep the blueprint import separate from Soong imports?",
       "parentUuid": "ac5ce1ae_a73a43b5",
+      "revId": "f98dc24389a154e96351514b1525fd46fecc30bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90e8a5a1_a84b5df4",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-08T12:25:42Z",
+      "side": 1,
+      "message": "I don\u0027t think the formatter does much with the imports. I think that if you add a blank line before it the formatter will preserve the blank line.",
+      "parentUuid": "7c9257f0_c99d32ad",
       "revId": "f98dc24389a154e96351514b1525fd46fecc30bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
