@@ -196,6 +196,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2318601d_e49422b3",
+        "filename": "android/derived.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-02-08T06:36:11Z",
+      "side": 1,
+      "message": "+1 please have a design review session",
+      "parentUuid": "3c3a763f_d87b8d88",
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c638424a_4cddc7d0",
         "filename": "android/derived.go",
         "patchSetId": 5
@@ -425,6 +443,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7c5b9fb_10444506",
+        "filename": "android/derived_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-02-08T06:36:11Z",
+      "side": 1,
+      "message": "Both, unless there\u0027s a reason to support attribute types not supported by Bazel.",
+      "parentUuid": "11acf5f8_e9dc478e",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 3
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd887c8f_c1e9f33a",
         "filename": "android/derived_test.go",
         "patchSetId": 5
@@ -460,6 +502,30 @@
       "side": 1,
       "message": "yes they can but I found it more preferable personally to just let the author see that minimal boiler plate then to be aware of it.\ntreating provided script as function body might be okayish but \"return\" insertion especially if there are branches might look more magic then convenience.\nIn any non-test script, the script tends to be longer than a couple lines, so I felt like signally the author to provide a def() seemed more straight forward.",
       "parentUuid": "cd887c8f_c1e9f33a",
+      "range": {
+        "startLine": 81,
+        "startChar": 21,
+        "endLine": 81,
+        "endChar": 45
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ea615d8_c342686e",
+        "filename": "android/derived_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-02-08T06:36:11Z",
+      "side": 1,
+      "message": "IMO the parameter-less `def` doesn\u0027t add much -- in what case would a parameter-less derivation be useful? \n\nIf the scripts tend to be long, I\u0027m afraid of the readability and API surface issues that will occur with embedded syntax like Starlark-in-Blueprint. Have you considered taking another approach where all Starlark has to be declared in files, and the blueprint/derived property will only take a function definition loaded from those files? This is exactly what BUILD/bzl files do -- Starlark in BUILD is far more restrictive than Starlark in .bzl. In some sense this is like transpiling Go plugins to Starlark plugins, but with a restricted API and explicit load in .bp files.",
+      "parentUuid": "81d792c5_eca9eae9",
       "range": {
         "startLine": 81,
         "startChar": 21,
@@ -519,6 +585,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "226b2dc9_e88272a2",
+        "filename": "android/derived_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-02-08T06:36:11Z",
+      "side": 1,
+      "message": "Yes, also see the other comment re: mirroring supported Bazel attr types",
+      "parentUuid": "d92e1e35_e3058966",
+      "range": {
+        "startLine": 118,
+        "startChar": 5,
+        "endLine": 124,
+        "endChar": 3
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66151595_a54deee5",
         "filename": "android/derived_test.go",
         "patchSetId": 5
@@ -566,6 +656,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38b218ab_d8f2294a",
+        "filename": "android/derived_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-02-08T06:36:11Z",
+      "side": 1,
+      "message": "Ack-- this test gave the intention that nested lists are supported APIs for derived properties, which I don\u0027t think they should be?",
+      "parentUuid": "52cdd40a_ad7db17c",
+      "range": {
+        "startLine": 147,
+        "startChar": 5,
+        "endLine": 156,
+        "endChar": 3
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4cdf887e_ca45aa76",
         "filename": "go.mod",
         "patchSetId": 5
@@ -601,6 +715,30 @@
       "side": 1,
       "message": "not ALL but the addition of starlark.\nAlso the go.mod file itself to the best of my knowledge is solely for IDEs so far (can be verified by running m nothing with this file removed)\nNote after this CL however, go.mod actually also serves the purpose of creating go.sum (via go mod tidy) - a missing go.sum results in errors (I need to check with Sasha why that\u0027s the case but there was similar changes needed in rbcrun)",
       "parentUuid": "4cdf887e_ca45aa76",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 6
+      },
+      "revId": "9e6fbf1a81122d8f237679253a6303e91c155594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49e609bd_6c4ccf42",
+        "filename": "go.mod",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-02-08T06:36:11Z",
+      "side": 1,
+      "message": "\u003e Also the go.mod file itself to the best of my knowledge is solely for IDEs so far (can be verified by running m nothing with this file removed)\n\nCorrect, Soong is built with Ninja. The Ninja file is compiled from Android.bp files for Soong\u0027s bootstrap process.",
+      "parentUuid": "7adff824_3d4f81ba",
       "range": {
         "startLine": 1,
         "startChar": 0,
