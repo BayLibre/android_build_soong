@@ -65,7 +65,32 @@ type pluginAttributes struct {
 
 // ConvertWithBp2build is used to convert android_app to Bazel.
 func (p *Plugin) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	pluginName := p.Name()
 	libAttrs := p.convertLibraryAttrsBp2Build(ctx)
+
+	if !libAttrs.Exports.IsEmpty() {
+		// @android_rules java_plugin has no exports attribute
+		// Instead, we can create a wrapper library that exports dependencies
+		// as well as the plugin itself.
+		pluginName += "_java_plugin"
+		exports := libAttrs.Exports
+		libAttrs.Exports = bazel.LabelListAttribute{}
+
+		libraryAttrs := &javaLibraryAttributes{
+			Exports: exports,
+			Exported_plugins: bazel.MakeLabelListAttribute(bazel.MakeLabelList(
+				[]bazel.Label{bazel.Label{Label: ":" + pluginName}})),
+		}
+		ctx.CreateBazelTargetModule(
+			bazel.BazelTargetModuleProperties{
+				Rule_class:        "java_library",
+				Bzl_load_location: "//build/bazel/rules/java:library.bzl",
+			},
+			android.CommonAttributes{Name: p.Name()},
+			libraryAttrs,
+		)
+	}
+
 	attrs := &pluginAttributes{
 		libAttrs,
 		nil,
@@ -79,6 +104,5 @@ func (p *Plugin) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	props := bazel.BazelTargetModuleProperties{
 		Rule_class: "java_plugin",
 	}
-
-	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: p.Name()}, attrs)
+	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: pluginName}, attrs)
 }
