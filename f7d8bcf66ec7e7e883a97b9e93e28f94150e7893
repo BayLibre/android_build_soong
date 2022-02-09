@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64733c9c_1d450384",
+        "filename": "apex/apex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1015,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-02-09T01:58:39Z",
+      "side": 1,
+      "message": "I am creating an exception mechanism in the build system to skip the lint checks in libcore/ for now. Orion/Anton/Pedro, can you please lmk if this looks reasonable?",
+      "parentUuid": "72076a84_2fa6f931",
+      "revId": "f7d8bcf66ec7e7e883a97b9e93e28f94150e7893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd436fd5_6719c0b8",
         "filename": "apex/apex.go",
         "patchSetId": 10
@@ -228,6 +246,24 @@
       "side": 1,
       "message": "I think soong itself does not have context on the branch it is running in. If the modules are used from mainline-prod, can we remove the lint file in aosp to prevent soong from running the check?",
       "parentUuid": "3dc6b336_6372426a",
+      "revId": "f7d8bcf66ec7e7e883a97b9e93e28f94150e7893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a860ecc_679f29db",
+        "filename": "apex/apex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-02-09T01:58:39Z",
+      "side": 1,
+      "message": "Thanks for fixing this Corina!",
+      "parentUuid": "874edee7_d924457c",
       "revId": "f7d8bcf66ec7e7e883a97b9e93e28f94150e7893",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
