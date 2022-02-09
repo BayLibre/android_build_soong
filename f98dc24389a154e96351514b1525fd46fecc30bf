@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbd27919_1ad02e13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-02-09T13:38:26Z",
+      "side": 1,
+      "message": "Thank you for your inputs. I have changed the logic now and the apexer tool is tweaked to handle the testOnly Attribute now",
+      "parentUuid": "5130ad60_3a0a1f6e",
+      "revId": "f98dc24389a154e96351514b1525fd46fecc30bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac5ce1ae_a73a43b5",
@@ -103,6 +121,24 @@
       "side": 1,
       "message": "I don\u0027t think the formatter does much with the imports. I think that if you add a blank line before it the formatter will preserve the blank line.",
       "parentUuid": "7c9257f0_c99d32ad",
+      "revId": "f98dc24389a154e96351514b1525fd46fecc30bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5883f6f6_aae30a4d",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-02-09T13:38:26Z",
+      "side": 1,
+      "message": "No changes in this file anymore",
+      "parentUuid": "90e8a5a1_a84b5df4",
       "revId": "f98dc24389a154e96351514b1525fd46fecc30bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },

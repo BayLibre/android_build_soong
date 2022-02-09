@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1cbfd06_54f4d4ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-02-09T13:38:26Z",
+      "side": 1,
+      "message": "logic changed. Removed most of the code",
+      "parentUuid": "208b533e_d6c616ff",
+      "revId": "deddb226431b9176bb22722bf717256b77639ab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "623e3d36_1fe3136f",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-09T11:35:57Z",
       "side": 1,
       "message": "major nit [as in, you can easily ignore this]: you shouldn\u0027t need the equals sign in `--input\u003d`",
+      "revId": "deddb226431b9176bb22722bf717256b77639ab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d28409_1f6b3eba",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-02-09T13:38:26Z",
+      "side": 1,
+      "message": "Code removed. the logic has changed now.",
+      "parentUuid": "623e3d36_1fe3136f",
       "revId": "deddb226431b9176bb22722bf717256b77639ab8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
