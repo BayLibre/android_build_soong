@@ -16,6 +16,23 @@
       "message": "This CL is assuming that the manifest filed is required field in apex_test. \nAnd it points to a json file. And that json file is required to have a name filed which is the name of the package. \n\nDue to this reason, I have not added any NULL or Empty checks for fetching json data corresponding to key \u003d \u0027name\u0027, existence of the json file, manifest field being empty, \n\nIn case these NULL or Empty checks are still required, kindly reply to this comment and mentioned your inputs there.",
       "revId": "deddb226431b9176bb22722bf717256b77639ab8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "623e3d36_1fe3136f",
+        "filename": "java/android_manifest.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-02-09T11:35:57Z",
+      "side": 1,
+      "message": "major nit [as in, you can easily ignore this]: you shouldn\u0027t need the equals sign in `--input\u003d`",
+      "revId": "deddb226431b9176bb22722bf717256b77639ab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
