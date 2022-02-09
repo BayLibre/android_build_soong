@@ -319,6 +319,7 @@ var (
 		"external/selinux/libsepol":                          Bp2BuildDefaultTrueRecursively,
 		"external/zlib":                                      Bp2BuildDefaultTrueRecursively,
 		"external/zstd":                                      Bp2BuildDefaultTrueRecursively,
+		"frameworks/base/proto":                              Bp2BuildDefaultTrue,
 		"frameworks/base/media/tests/MediaDump":              Bp2BuildDefaultTrue,
 		"frameworks/base/startop/apps/test":                  Bp2BuildDefaultTrue,
 		"frameworks/native/libs/adbd_auth":                   Bp2BuildDefaultTrueRecursively,
@@ -441,13 +442,7 @@ var (
 		"conscrypt",          // b/210751803, we don't handle path property for filegroups
 		"conscrypt-for-host", // b/210751803, we don't handle path property for filegroups
 
-		"host-libprotobuf-java-lite",  // b/217236083, java_library cannot have deps without srcs
-		"host-libprotobuf-java-micro", // b/217236083, java_library cannot have deps without srcs
-		"host-libprotobuf-java-nano",  // b/217236083, java_library cannot have deps without srcs
-		"error_prone_core",            // b/217236083, java_library cannot have deps without srcs
-		"bouncycastle-host",           // b/217236083, java_library cannot have deps without srcs
-
-		"apex_manifest_proto_java", // b/215230097, we don't handle .proto files in java_library srcs attribute
+		"apex_manifest_proto_java", // b/210751803, depends on libprotobuf-java-full
 
 		// python protos
 		"libprotobuf-python",                           // contains .proto sources
@@ -509,6 +504,8 @@ var (
 
 		"art-script",     // depends on unconverted modules: dalvikvm, dex2oat
 		"dex2oat-script", // depends on unconverted modules: dex2oat
+
+		"WifiDirectDemo", // b/217236083, android_binary has no export attribute
 	}
 
 	// Per-module denylist of cc_library modules to only generate the static

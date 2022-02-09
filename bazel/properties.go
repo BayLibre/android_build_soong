@@ -65,6 +65,14 @@ type LabelList struct {
 	Excludes []Label
 }
 
+// MakeLabelList creates a LabelList from a list Label
+func MakeLabelList(labels []Label) LabelList {
+	return LabelList{
+		Includes: labels,
+		Excludes: nil,
+	}
+}
+
 func (ll *LabelList) Equals(other LabelList) bool {
 	if len(ll.Includes) != len(other.Includes) || len(ll.Excludes) != len(other.Excludes) {
 		return false

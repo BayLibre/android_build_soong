@@ -87,6 +87,7 @@ android_app {
     ]`,
 				"custom_package": `"com.google"`,
 				"deps":           `[":static_lib_dep"]`,
+				"exports":        `[":static_lib_dep"]`,
 			}),
 		}})
 }
