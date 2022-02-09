@@ -1460,6 +1460,12 @@ type bazelAndroidAppAttributes struct {
 func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	libAttrs := a.convertLibraryAttrsBp2Build(ctx)
 
+	if !libAttrs.Srcs.IsEmpty() {
+		// we cannot have deps with no sources
+		libAttrs.Deps.Append(libAttrs.Exports)
+	}
+	libAttrs.Exports = bazel.LabelListAttribute{} // android_app cannot export dependencies
+
 	manifest := proptools.StringDefault(a.aaptProperties.Manifest, "AndroidManifest.xml")
 
 	resourceFiles := bazel.LabelList{

@@ -2005,9 +2005,12 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 }
 
 type javaLibraryAttributes struct {
-	Srcs      bazel.LabelListAttribute
-	Deps      bazel.LabelListAttribute
-	Javacopts bazel.StringListAttribute
+	Srcs             bazel.LabelListAttribute
+	Deps             bazel.LabelListAttribute
+	Plugins          bazel.LabelListAttribute
+	Exports          bazel.LabelListAttribute
+	Exported_plugins bazel.LabelListAttribute
+	Javacopts        bazel.StringListAttribute
 }
 
 func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext) *javaLibraryAttributes {
@@ -2033,23 +2036,36 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	if m.properties.Libs != nil {
 		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Libs))
 	}
+
+	var exports bazel.LabelList
 	if m.properties.Static_libs != nil {
 		//TODO(b/217236083) handle static libs similarly to Soong
-		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Static_libs))
+		exports.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Static_libs))
 	}
 
-	protoDeps := bp2buildProto(ctx, &m.Module, srcPartitions[protoSrcPartition])
-	if protoDeps != nil {
-		deps.Add(protoDeps)
+	var protoDeps bazel.LabelList
+	protoDepLabel := bp2buildProto(ctx, &m.Module, srcPartitions[protoSrcPartition])
+	if protoDepLabel != nil {
+		protoDeps = bazel.MakeLabelList([]bazel.Label{*protoDepLabel})
 	}
+	exports.Append(protoDeps)
 
 	attrs.Deps = bazel.MakeLabelListAttribute(deps)
+	attrs.Exports = bazel.MakeLabelListAttribute(exports)
+	attrs.Plugins = bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrcExcludes(ctx, m.properties.Plugins, []string{}))
 
 	return attrs
 }
 
 func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
 	attrs := m.convertLibraryAttrsBp2Build(ctx)
+
+	if !attrs.Srcs.IsEmpty() {
+		// we cannot have deps with no sources
+		attrs.Deps.Append(attrs.Exports)
+	} else if !attrs.Deps.IsEmpty() {
+		ctx.ModuleErrorf("Module has direct dependencies but no sources. Bazel will not allow this.")
+	}
 
 	props := bazel.BazelTargetModuleProperties{
 		Rule_class:        "java_library",
