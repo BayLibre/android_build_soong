@@ -46,6 +46,30 @@
       },
       "revId": "66dbf38ffbd85892202a86b1e48db82e093b56b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5905ce9_b0cd760a",
+        "filename": "apex/builder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-02-09T16:42:19Z",
+      "side": 1,
+      "message": "Oh, I may have misunderstood the change to apexer then. This is fine as well, especially if we don\u0027t want apexer to be manifest_fixer as well..",
+      "parentUuid": "c3173213_6a17a3a6",
+      "range": {
+        "startLine": 616,
+        "startChar": 0,
+        "endLine": 616,
+        "endChar": 72
+      },
+      "revId": "66dbf38ffbd85892202a86b1e48db82e093b56b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
