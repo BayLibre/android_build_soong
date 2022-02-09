@@ -284,6 +284,24 @@
       "parentUuid": "874edee7_d924457c",
       "revId": "f7d8bcf66ec7e7e883a97b9e93e28f94150e7893",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db5f823b_de0315f6",
+        "filename": "apex/apex.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1765766
+      },
+      "writtenOn": "2022-02-09T10:58:00Z",
+      "side": 1,
+      "message": "No problem.\nI had a draft reply to point you to aosp/1965059, but I forgot to send it, sorry! :(",
+      "parentUuid": "874edee7_d924457c",
+      "revId": "f7d8bcf66ec7e7e883a97b9e93e28f94150e7893",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
