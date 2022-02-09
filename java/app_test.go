@@ -706,7 +706,7 @@ func TestAppJavaResources(t *testing.T) {
 	}
 
 	bar := ctx.ModuleForTests("bar", "android_common")
-	barResources := bar.Output("res/bar.jar")
+	barResources := bar.Output("dex-withres-aligned/bar.jar")
 	barApk := bar.Rule("combineApk")
 
 	if g, w := barApk.Inputs.Strings(), barResources.Output.String(); !android.InList(w, g) {
@@ -722,6 +722,7 @@ func TestAndroidResources(t *testing.T) {
 		resourceFiles              map[string][]string
 		overlayFiles               map[string][]string
 		rroDirs                    map[string][]string
+		dexFile                    map[string]string
 	}{
 		{
 			name:                       "no RRO",
@@ -756,6 +757,10 @@ func TestAndroidResources(t *testing.T) {
 			rroDirs: map[string][]string{
 				"foo": nil,
 				"bar": nil,
+			},
+			dexFile: map[string]string{
+				"foo": "out/soong/.intermediates/foo/android_common/dex/foo.jar",
+				"bar": "out/soong/.intermediates/bar/android_common/dex/bar.jar",
 			},
 		},
 		{
@@ -795,6 +800,10 @@ func TestAndroidResources(t *testing.T) {
 				"bar": nil,
 				"lib": {"device:device/vendor/blah/overlay/lib/res"},
 			},
+			dexFile: map[string]string{
+				"foo": "out/soong/.intermediates/foo/android_common/dex/foo.jar",
+				"bar": "out/soong/.intermediates/bar/android_common/dex/bar.jar",
+			},
 		},
 		{
 			name:              "enforce RRO on all",
@@ -833,6 +842,10 @@ func TestAndroidResources(t *testing.T) {
 				},
 				"bar": {"device:device/vendor/blah/overlay/bar/res"},
 				"lib": {"device:device/vendor/blah/overlay/lib/res"},
+			},
+			dexFile: map[string]string{
+				"foo": "out/soong/.intermediates/foo/android_common/dex/foo.jar",
+				"bar": "out/soong/.intermediates/bar/android_common/dex/bar.jar",
 			},
 		},
 	}
@@ -929,7 +942,7 @@ func TestAndroidResources(t *testing.T) {
 				return files
 			}
 
-			getResources := func(moduleName string) (resourceFiles, overlayFiles, rroDirs []string) {
+			getResources := func(moduleName string) (resourceFiles, overlayFiles, rroDirs []string, dexFile string) {
 				module := result.ModuleForTests(moduleName, "android_common")
 				resourceList := module.MaybeOutput("aapt2/res.list")
 				if resourceList.Rule != nil {
@@ -938,6 +951,10 @@ func TestAndroidResources(t *testing.T) {
 				overlayList := module.MaybeOutput("aapt2/overlay.list")
 				if overlayList.Rule != nil {
 					overlayFiles = resourceListToFiles(module, android.PathsRelativeToTop(overlayList.Inputs))
+				}
+				dexList := module.MaybeDescription("r8")
+				if dexList.Rule != nil {
+					dexFile = android.PathRelativeToTop(dexList.Output)
 				}
 
 				for _, d := range module.Module().(AndroidLibraryDependency).ExportedRRODirs() {
@@ -952,12 +969,12 @@ func TestAndroidResources(t *testing.T) {
 					rroDirs = append(rroDirs, prefix+android.PathRelativeToTop(d.path))
 				}
 
-				return resourceFiles, overlayFiles, rroDirs
+				return resourceFiles, overlayFiles, rroDirs, dexFile
 			}
 
 			modules := []string{"foo", "bar", "lib", "lib2"}
 			for _, module := range modules {
-				resourceFiles, overlayFiles, rroDirs := getResources(module)
+				resourceFiles, overlayFiles, rroDirs, dexFile := getResources(module)
 
 				if !reflect.DeepEqual(resourceFiles, testCase.resourceFiles[module]) {
 					t.Errorf("expected %s resource files:\n  %#v\n got:\n  %#v",
@@ -970,6 +987,10 @@ func TestAndroidResources(t *testing.T) {
 				if !reflect.DeepEqual(rroDirs, testCase.rroDirs[module]) {
 					t.Errorf("expected %s rroDirs:  %#v\n got:\n  %#v",
 						module, testCase.rroDirs[module], rroDirs)
+				}
+				if dexFile != testCase.dexFile[module] {
+					t.Errorf("expected %s dexFile: %#v\n got:\n  %#v",
+						module, testCase.dexFile[module], dexFile)
 				}
 			}
 		})

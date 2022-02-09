@@ -73,7 +73,7 @@ func TestDexpreoptEnabled(t *testing.T) {
 					name: "foo",
 					sdk_version: "current",
 				}`,
-			enabled: false,
+			enabled: true,
 		},
 		{
 			name: "app with libraries",

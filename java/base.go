@@ -1366,7 +1366,7 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 	}
 
 	if ctx.Device() && (Bool(j.properties.Installable) || Bool(j.dexProperties.Compile_dex)) {
-		if j.hasCode(ctx) {
+		if j.hasCode(ctx) || aaptSrcJar != nil {
 			if j.shouldInstrumentStatic(ctx) {
 				j.dexer.extraProguardFlagFiles = append(j.dexer.extraProguardFlagFiles,
 					android.PathForSource(ctx, "build/make/core/proguard.jacoco.flags"))
