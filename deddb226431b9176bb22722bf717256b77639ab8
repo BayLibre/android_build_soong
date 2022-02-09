@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef141a22_c2c32e72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-02-09T15:43:07Z",
+      "side": 1,
+      "message": "nit: git messages have 72 per line character default, this one is 73 :D Not the end of the world, but it may be worth configuring your editor?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 73
+      },
+      "revId": "deddb226431b9176bb22722bf717256b77639ab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "208b533e_d6c616ff",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1aa36a8_03fa6f26",
+        "filename": "apex/builder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-02-09T15:43:07Z",
+      "side": 1,
+      "message": "this call isn\u0027t really needed anymore. The flow here could be refactored into \n\nif a.properties.AndroidManifest !\u003d nil {\n  androidManifestFile :\u003d ...\n  implicitInputs \u003d append(...)\n  optFlags \u003d append(...)\n}\n\nif a.testApex {\n  optFlags \u003d append(...)\n}\n\nbasically you should be able to remove line 615-617?",
+      "range": {
+        "startLine": 616,
+        "startChar": 0,
+        "endLine": 616,
+        "endChar": 72
+      },
+      "revId": "66dbf38ffbd85892202a86b1e48db82e093b56b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
