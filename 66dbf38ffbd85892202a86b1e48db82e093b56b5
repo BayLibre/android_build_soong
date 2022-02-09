@@ -22,6 +22,30 @@
       },
       "revId": "66dbf38ffbd85892202a86b1e48db82e093b56b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3173213_6a17a3a6",
+        "filename": "apex/builder.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1930744
+      },
+      "writtenOn": "2022-02-09T16:13:27Z",
+      "side": 1,
+      "message": "The apexer only creates an AndroidManifest file if it does not exist. If --android_manifest flag is appended to opt flags, it means that an AndroidManifest does exist and hence the apexer does not generate a new one. \n\nSo to my understanding, it is required to run a manifestFixer if the AndroidManifest does exist. \nHence I think we should not remove what you have suggested.",
+      "parentUuid": "b1aa36a8_03fa6f26",
+      "range": {
+        "startLine": 616,
+        "startChar": 0,
+        "endLine": 616,
+        "endChar": 72
+      },
+      "revId": "66dbf38ffbd85892202a86b1e48db82e093b56b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
