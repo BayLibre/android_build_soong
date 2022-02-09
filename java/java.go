@@ -2034,17 +2034,30 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	if m.properties.Libs != nil {
 		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Libs))
 	}
+
+	var exports bazel.LabelList
 	if m.properties.Static_libs != nil {
 		//TODO(b/217236083) handle static libs similarly to Soong
-		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Static_libs))
+		exports.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Static_libs))
 	}
 
-	protoDeps := bp2buildProto(ctx, &m.Module, srcPartitions[android.ProtoSrcPartition])
-	if protoDeps != nil {
-		deps.Add(protoDeps)
+	var protoDeps bazel.LabelList
+	protoDepLabel := bp2buildProto(ctx, &m.Module, srcPartitions[android.ProtoSrcPartition])
+	if protoDepLabel != nil {
+		protoDeps = bazel.MakeLabelList([]bazel.Label{*protoDepLabel})
+	}
+	exports.Append(protoDeps)
+
+	if !attrs.Srcs.IsEmpty() {
+		// we cannot have deps with no sources
+		deps.Append(exports)
+		deps.Append(protoDeps)
+	} else if !deps.IsNil() {
+		ctx.ModuleErrorf("Module has direct dependencies but no sources. Bazel will not allow this.")
 	}
 
 	attrs.Deps = bazel.MakeLabelListAttribute(deps)
+	attrs.Exports = bazel.MakeLabelListAttribute(exports)
 
 	return attrs
 }
