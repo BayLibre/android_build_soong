@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9b0a692_065ad880",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-02-09T00:01:49Z",
+      "side": 1,
+      "message": "nit: Explain the \u0027why\u0027 of your change.\n\n```\nPropagate runtime_libs from Soong to Make\n\nWrite the list of a module\u0027s runtime-required libraries to the `LOCAL_RUNTIME_LIBRARIES` Makefile variable defined for each module. This enables downstream tools to correctly set up the runtime environment for execution.\n```",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "33b61881f662cef319fa20017042ef525d7374d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
