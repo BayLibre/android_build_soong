@@ -1459,6 +1459,7 @@ type bazelAndroidAppAttributes struct {
 // ConvertWithBp2build is used to convert android_app to Bazel.
 func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	libAttrs := a.convertLibraryAttrsBp2Build(ctx)
+	libAttrs.Exports = bazel.LabelListAttribute{} // android_app cannot export dependencies
 
 	manifest := proptools.StringDefault(a.aaptProperties.Manifest, "AndroidManifest.xml")
 
