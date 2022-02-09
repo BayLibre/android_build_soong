@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001aee10_81b341f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-02-09T19:39:27Z",
+      "side": 1,
+      "message": "I have added b/218702402, please please use it in Bug: tag\n\nThere is also a problem that if VAR is a list with several elements, the converter\u0027s assumption that `ifeq ($(VAR),$(filter $(VAR),foo)))` and\n`ifneq (,$(filter $(VAR),foo)))` are equivalent is not true, the it will generate the wrong code for the former case. IMHO for now the converter should just emit an error.\n",
+      "revId": "a451425316de1687158c3c1404d54aaa094a28c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
