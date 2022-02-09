@@ -2034,16 +2034,30 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	if m.properties.Libs != nil {
 		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Libs))
 	}
+
+	var staticDeps bazel.LabelList
 	if m.properties.Static_libs != nil {
 		//TODO(b/217236083) handle static libs similarly to Soong
-		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Static_libs))
+		staticDeps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Static_libs))
 	}
 
-	protoDeps := bp2buildProto(ctx, &m.Module, srcPartitions[cc.ProtoSrcPartition])
-	if protoDeps != nil {
-		deps.Append(bazel.LabelList{
-			Includes: []bazel.Label{*protoDeps},
-			Excludes: nil})
+	var protoDeps bazel.LabelList
+	protoDepLabel := bp2buildProto(ctx, &m.Module, srcPartitions[android.ProtoSrcPartition])
+	if protoDepLabel != nil {
+		protoDeps = bazel.MakeLabelList([]bazel.Label{*protoDepLabel})
+	}
+
+	if !attrs.Srcs.IsEmpty() {
+		deps.Append(staticDeps)
+		deps.Append(protoDeps)
+	} else if deps.IsNil() {
+		staticDeps.Append(protoDeps)
+		//TODO(b/217236083) android_binary does not support the exports attriubte
+		// we should move the following Exports line outside the if statement once
+		// this bug is resolved
+		attrs.Exports = bazel.MakeLabelListAttribute(staticDeps)
+	} else {
+		ctx.ModuleErrorf("Module has direct dependencies but no sources. Bazel will not allow this.")
 	}
 
 	attrs.Deps = bazel.MakeLabelListAttribute(deps)
