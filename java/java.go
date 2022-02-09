@@ -2004,13 +2004,18 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 	}
 }
 
-type javaLibraryAttributes struct {
+type javaCommonAttributes struct {
 	Srcs      bazel.LabelListAttribute
-	Deps      bazel.LabelListAttribute
+	Plugins   bazel.LabelListAttribute
 	Javacopts bazel.StringListAttribute
 }
 
-func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext) *javaLibraryAttributes {
+type javaDependencyLabels struct {
+	Deps       bazel.LabelListAttribute
+	StaticDeps bazel.LabelListAttribute
+}
+
+func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext) (*javaCommonAttributes, *javaDependencyLabels) {
 	//TODO(b/209577426): Support multiple arch variants
 	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs))
 
@@ -2021,35 +2026,64 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		protoSrcPartition: android.ProtoSrcLabelPartition,
 	})
 
-	attrs := &javaLibraryAttributes{
+	commonAttrs := &javaCommonAttributes{
 		Srcs: srcPartitions[javaSrcPartition],
+		Plugins: bazel.MakeLabelListAttribute(
+			android.BazelLabelForModuleSrcExcludes(ctx, m.properties.Plugins, []string{}),
+		),
 	}
 
 	if m.properties.Javacflags != nil {
-		attrs.Javacopts = bazel.MakeStringListAttribute(m.properties.Javacflags)
+		commonAttrs.Javacopts = bazel.MakeStringListAttribute(m.properties.Javacflags)
 	}
+
+	depLabels := &javaDependencyLabels{}
 
 	var deps bazel.LabelList
 	if m.properties.Libs != nil {
 		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Libs))
 	}
+
+	var staticDeps bazel.LabelList
 	if m.properties.Static_libs != nil {
 		//TODO(b/217236083) handle static libs similarly to Soong
-		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Static_libs))
+		staticDeps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Static_libs))
 	}
 
-	protoDeps := bp2buildProto(ctx, &m.Module, srcPartitions[protoSrcPartition])
-	if protoDeps != nil {
-		deps.Add(protoDeps)
+	var protoDeps bazel.LabelList
+	protoDepLabel := bp2buildProto(ctx, &m.Module, srcPartitions[protoSrcPartition])
+	if protoDepLabel != nil {
+		protoDeps = bazel.MakeLabelList([]bazel.Label{*protoDepLabel})
 	}
+	staticDeps.Append(protoDeps)
 
-	attrs.Deps = bazel.MakeLabelListAttribute(deps)
+	depLabels.Deps = bazel.MakeLabelListAttribute(deps)
+	depLabels.StaticDeps = bazel.MakeLabelListAttribute(staticDeps)
 
-	return attrs
+	return commonAttrs, depLabels
+}
+
+type javaLibraryAttributes struct {
+	*javaCommonAttributes
+	Deps    bazel.LabelListAttribute
+	Exports bazel.LabelListAttribute
 }
 
 func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
-	attrs := m.convertLibraryAttrsBp2Build(ctx)
+	commonAttrs, depLabels := m.convertLibraryAttrsBp2Build(ctx)
+
+	deps := depLabels.Deps
+	if !commonAttrs.Srcs.IsEmpty() {
+		deps.Append(depLabels.StaticDeps) // we should only append these if there are sources to use them
+	} else if !depLabels.Deps.IsEmpty() {
+		ctx.ModuleErrorf("Module has direct dependencies but no sources. Bazel will not allow this.")
+	}
+
+	attrs := &javaLibraryAttributes{
+		javaCommonAttributes: commonAttrs,
+		Deps:                 deps,
+		Exports:              depLabels.StaticDeps,
+	}
 
 	props := bazel.BazelTargetModuleProperties{
 		Rule_class:        "java_library",
@@ -2060,15 +2094,29 @@ func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
 }
 
 type javaBinaryHostAttributes struct {
-	Srcs       bazel.LabelListAttribute
-	Deps       bazel.LabelListAttribute
-	Main_class string
-	Jvm_flags  bazel.StringListAttribute
-	Javacopts  bazel.StringListAttribute
+	*javaCommonAttributes
+	Deps         bazel.LabelListAttribute
+	Runtime_deps bazel.LabelListAttribute
+	Main_class   string
+	Jvm_flags    bazel.StringListAttribute
 }
 
 // JavaBinaryHostBp2Build is for java_binary_host bp2build.
 func javaBinaryHostBp2Build(ctx android.TopDownMutatorContext, m *Binary) {
+	commonAttrs, depLabels := m.convertLibraryAttrsBp2Build(ctx)
+
+	deps := depLabels.Deps
+	deps.Append(depLabels.StaticDeps)
+	if m.binaryProperties.Jni_libs != nil {
+		deps.Append(bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, m.binaryProperties.Jni_libs)))
+	}
+
+	var runtimeDeps bazel.LabelListAttribute
+	if commonAttrs.Srcs.IsEmpty() {
+		runtimeDeps = deps
+		deps = bazel.LabelListAttribute{}
+	}
+
 	mainClass := ""
 	if m.binaryProperties.Main_class != nil {
 		mainClass = *m.binaryProperties.Main_class
@@ -2080,26 +2128,12 @@ func javaBinaryHostBp2Build(ctx android.TopDownMutatorContext, m *Binary) {
 		}
 		mainClass = mainClassInManifest
 	}
-	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs))
+
 	attrs := &javaBinaryHostAttributes{
-		Srcs:       srcs,
-		Main_class: mainClass,
-	}
-
-	if m.properties.Javacflags != nil {
-		attrs.Javacopts = bazel.MakeStringListAttribute(m.properties.Javacflags)
-	}
-
-	// Attribute deps
-	deps := []string{}
-	if m.properties.Static_libs != nil {
-		deps = append(deps, m.properties.Static_libs...)
-	}
-	if m.binaryProperties.Jni_libs != nil {
-		deps = append(deps, m.binaryProperties.Jni_libs...)
-	}
-	if len(deps) > 0 {
-		attrs.Deps = bazel.MakeLabelListAttribute(android.BazelLabelForModuleDeps(ctx, deps))
+		javaCommonAttributes: commonAttrs,
+		Deps:                 deps,
+		Runtime_deps:         runtimeDeps,
+		Main_class:           mainClass,
 	}
 
 	// Attribute jvm_flags
