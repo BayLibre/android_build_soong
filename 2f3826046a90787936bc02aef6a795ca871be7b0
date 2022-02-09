@@ -34,6 +34,24 @@
       "parentUuid": "f5fba913_071a4915",
       "revId": "2f3826046a90787936bc02aef6a795ca871be7b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "298829ce_a86d100d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-02-09T05:12:06Z",
+      "side": 1,
+      "message": "Hold on. I think I mis-interpreted Colin\u0027s last comment. That was for your attempt to use image mutator. But I really don\u0027t understand why vendor-specific bpf programs should be mutated by their destination image. This is not a linkable artifact, so we don\u0027t have an issue like a vendor module linking to a non-vendor bpf program, or vice versa.",
+      "parentUuid": "15942af4_0b7905bb",
+      "revId": "2f3826046a90787936bc02aef6a795ca871be7b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
