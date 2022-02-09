@@ -16,6 +16,24 @@
       "message": "Maybe pass by reference, i.e. m *ModuleBase",
       "revId": "2ae4f1ffe0824201ff7448909030b9f5ca8c67d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f942c5fd_56f22bba",
+        "filename": "android/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-09T17:18:26Z",
+      "side": 1,
+      "message": "Yeah that seems reasonable since the old code (`m :\u003d module.base()`) has type `*ModuleBase`.\n\nI wasn\u0027t sure if the original code passed by value instead of reference for a reason, so I just left it the same way.",
+      "parentUuid": "01920447_851f4fc4",
+      "revId": "2ae4f1ffe0824201ff7448909030b9f5ca8c67d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
