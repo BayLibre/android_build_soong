@@ -2048,6 +2048,12 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 
 	attrs.Deps = bazel.MakeLabelListAttribute(deps)
 
+	if attrs.Srcs.IsEmpty() && !attrs.Deps.IsEmpty() {
+		//TODO(b/217236083) handle static libs similarly to Soong
+		attrs.Exports = attrs.Deps
+		attrs.Deps = bazel.LabelListAttribute{}
+	}
+
 	return attrs
 }
 
