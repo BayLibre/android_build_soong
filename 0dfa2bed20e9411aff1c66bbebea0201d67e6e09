@@ -16,6 +16,24 @@
       "message": "Anything holding back these changes Spandan?",
       "revId": "0dfa2bed20e9411aff1c66bbebea0201d67e6e09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba274f68_343c200f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-02-09T01:54:39Z",
+      "side": 1,
+      "message": "Sorry for not following up on this sooner Anton.\n\nI think this change is dependent on skipping the lint checks in libcore/ (https://android-review.googlesource.com/c/platform/build/soong/+/1953496/comments/84eb754c_2b434fe0). I will update that CL with an exception mechanism for now, can you lmk if it looks reasonable?",
+      "parentUuid": "d826ab21_934d8cca",
+      "revId": "0dfa2bed20e9411aff1c66bbebea0201d67e6e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
