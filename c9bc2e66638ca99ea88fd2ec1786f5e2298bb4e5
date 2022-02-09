@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3c56c70_9e0273f2",
+        "filename": "apex/apex.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-02-09T10:23:32Z",
+      "side": 1,
+      "message": "Typo: Updatability",
+      "range": {
+        "startLine": 1012,
+        "startChar": 67,
+        "endLine": 1012,
+        "endChar": 78
+      },
+      "revId": "c9bc2e66638ca99ea88fd2ec1786f5e2298bb4e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3bfc8fe_4345b2ce",
+        "filename": "apex/apex.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1019,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-02-09T10:23:32Z",
+      "side": 1,
+      "message": "I wouldn\u0027t mind if the \"don\u0027t check NewApi for libcore\" was in a separate CL, approved by libcore team and perhaps referencing b/208656169 in the commit message. Unclear to me if this actually disables NewApi-linting or just disables enforcing of checkStrictUpdatabilityLinting, though?",
+      "range": {
+        "startLine": 1013,
+        "startChar": 57,
+        "endLine": 1019,
+        "endChar": 4
+      },
+      "revId": "c9bc2e66638ca99ea88fd2ec1786f5e2298bb4e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
