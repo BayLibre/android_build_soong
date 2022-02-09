@@ -58,7 +58,7 @@ func testJavaProtoSpecializedType(t *testing.T, typ string) {
 					"deps": `[":java-protos_proto"]`,
 				}),
 			makeBazelTarget("java_library", "java-protos", attrNameToString{
-				"deps": fmt.Sprintf(`[":java-protos_java_proto_%s"]`, typ),
+				"exports": fmt.Sprintf(`[":java-protos_java_proto_%s"]`, typ),
 			}),
 		},
 	})
@@ -87,7 +87,7 @@ func TestJavaProtoFull(t *testing.T) {
 					"deps": `[":java-protos_proto"]`,
 				}),
 			makeBazelTarget("java_library", "java-protos", attrNameToString{
-				"deps": `[":java-protos_java_proto"]`,
+				"exports": `[":java-protos_java_proto"]`,
 			}),
 		},
 	})

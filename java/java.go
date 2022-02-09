@@ -2034,16 +2034,36 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	if m.properties.Libs != nil {
 		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Libs))
 	}
+
+	var staticDeps bazel.LabelList
 	if m.properties.Static_libs != nil {
 		//TODO(b/217236083) handle static libs similarly to Soong
-		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Static_libs))
+		staticDeps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Static_libs))
 	}
 
-	protoDeps := bp2buildProto(ctx, &m.Module, srcPartitions[android.ProtoSrcPartition])
-	if protoDeps != nil {
-		deps.Append(bazel.LabelList{
-			Includes: []bazel.Label{*protoDeps},
-			Excludes: nil})
+	var protoDeps bazel.LabelList
+	protoDepLabel := bp2buildProto(ctx, &m.Module, srcPartitions[android.ProtoSrcPartition])
+	if protoDepLabel != nil {
+		protoDeps = bazel.MakeLabelList([]bazel.Label{*protoDepLabel})
+	}
+
+	// Bazel will not build targets that have direct dependencies and no sources, but
+	// it will build targets that "export" dependencies. This conditional is meant to
+	// emulate the fuction of the static_deps property of a Soong java_library which
+	// enables modules higher in the dependency tree to link to transitive dependencies
+	// as if they were direct dependencies.
+	// See b/217236083.
+	if attrs.Srcs.IsEmpty() && !deps.IsNil() {
+		ctx.ModuleErrorf("Module has direct dependencies but no sources. Bazel will not allow this.")
+	} else if !attrs.Srcs.IsEmpty() {
+		deps.Append(staticDeps)
+		deps.Append(protoDeps)
+	} else { // there are neither srcs nor deps
+		staticDeps.Append(protoDeps)
+		//TODO(b/217236083) android_binary does not support the exports attriubte.
+		// We should move the following Exports line outside the if statement once
+		// this bug is resolved.
+		attrs.Exports = bazel.MakeLabelListAttribute(staticDeps)
 	}
 
 	attrs.Deps = bazel.MakeLabelListAttribute(deps)
