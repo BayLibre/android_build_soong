@@ -166,6 +166,30 @@
       },
       "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9208ae9e_b793f3ac",
+        "filename": "bpf/bpf.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-09T00:34:14Z",
+      "side": 1,
+      "message": "The problem is that now you have two variants of the bpf module and neither of them match the vts_test_binary_bpf_module cc_test module, so doesn\u0027t know which one to use as its test data.  Maybe it would work if you made ExtraImageVariations only return \"vendor\" if bpf.properties.Vendor was set.",
+      "parentUuid": "b9f51c67_eb70563b",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 7
+      },
+      "revId": "5df63824d7f7933b509a038e5a67d87fedc315cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
