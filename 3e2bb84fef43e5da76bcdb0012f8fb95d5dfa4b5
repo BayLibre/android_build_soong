@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9313a8f8_8d495fef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-02-10T10:25:47Z",
+      "side": 1,
+      "message": "I wonder if there\u0027s a different approach possible to exclude libcore, that doesn\u0027t rely on hardcoding of the libs. Perhaps \n\nchanging the linting logic such that modules that set sdk_version: \"none\" just don\u0027t NewApi as a disallowed check?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "3e2bb84fef43e5da76bcdb0012f8fb95d5dfa4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8a020a7a_8da44c6d",
