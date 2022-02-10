@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de88bba6_d8b92759",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-02-10T22:11:45Z",
+      "side": 1,
+      "message": "LGTM; 1/2 nit",
+      "revId": "f610a74f4cf6728954ddfd4fcdde46e2e1642f28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b58dc94_1e1a7fc3",
+        "filename": "cc/config/x86_64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-02-10T22:11:45Z",
+      "side": 1,
+      "message": "nit: \"version\" v. \"variant\"?",
+      "revId": "f610a74f4cf6728954ddfd4fcdde46e2e1642f28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e15b9ed_9231670f",
+        "filename": "cc/config/x86_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-02-10T22:11:45Z",
+      "side": 1,
+      "message": "{ditto above}",
+      "revId": "f610a74f4cf6728954ddfd4fcdde46e2e1642f28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
