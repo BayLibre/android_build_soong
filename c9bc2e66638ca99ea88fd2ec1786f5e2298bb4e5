@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f32e42d_8d3c4b75",
+        "filename": "apex/apex.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-02-10T03:00:38Z",
+      "side": 1,
+      "message": "Thanks for catching, I have fixed the typo",
+      "parentUuid": "f3c56c70_9e0273f2",
+      "range": {
+        "startLine": 1012,
+        "startChar": 67,
+        "endLine": 1012,
+        "endChar": 78
+      },
+      "revId": "c9bc2e66638ca99ea88fd2ec1786f5e2298bb4e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3bfc8fe_4345b2ce",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-09T10:23:32Z",
       "side": 1,
       "message": "I wouldn\u0027t mind if the \"don\u0027t check NewApi for libcore\" was in a separate CL, approved by libcore team and perhaps referencing b/208656169 in the commit message. Unclear to me if this actually disables NewApi-linting or just disables enforcing of checkStrictUpdatabilityLinting, though?",
+      "range": {
+        "startLine": 1013,
+        "startChar": 57,
+        "endLine": 1019,
+        "endChar": 4
+      },
+      "revId": "c9bc2e66638ca99ea88fd2ec1786f5e2298bb4e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fe461ee_bf6fe090",
+        "filename": "apex/apex.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 1019,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-02-10T03:00:38Z",
+      "side": 1,
+      "message": "\u003e I wouldn\u0027t mind if the \"don\u0027t check NewApi for libcore\" was in a separate CL\n\nGood point, I have created aosp/1977412 to limit the scope of the current CL\n\n\n\u003e Unclear to me if this actually disables NewApi-linting or just disables enforcing of checkStrictUpdatabilityLinting, though?\n\nIIUC, it is the latter. strict_udpatability_linting is not propagated to the libcore/ library from this mutator. If the libcore/ library explicitly lists `lint{strict_udpatability_linting: true}` in their Android.bp file, they will not be allowed to disable NewApi linting",
+      "parentUuid": "f3bfc8fe_4345b2ce",
       "range": {
         "startLine": 1013,
         "startChar": 57,
