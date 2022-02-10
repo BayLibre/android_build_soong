@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05f4914b_3d8060e7",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-10T20:08:48Z",
+      "side": 1,
+      "message": "You could also use strconv.Quote here and strconv.Unquote in the reader to avoid bringing in URL weirdness",
+      "range": {
+        "startLine": 630,
+        "startChar": 33,
+        "endLine": 630,
+        "endChar": 56
+      },
+      "revId": "7979bb6a936014ab00e86aa3f414baa4a3072ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a30230d_dfbe1be3",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-10T20:08:48Z",
+      "side": 1,
+      "message": "This deserves a unit test",
+      "revId": "7979bb6a936014ab00e86aa3f414baa4a3072ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "630a8a17_5d2017c8",
+        "filename": "android/module.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 657,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-10T20:08:48Z",
+      "side": 1,
+      "message": "The sort is comparing the stringified values, but this is comparing the structs.  That will result in two structs being considered different if they have Path values constructed separately but pointing to the same filesystem path.  Is that what you intended?",
+      "revId": "7979bb6a936014ab00e86aa3f414baa4a3072ac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
