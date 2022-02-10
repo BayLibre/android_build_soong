@@ -2269,11 +2269,18 @@ func createVersionVariations(mctx android.BottomUpMutatorContext, versions []str
 	m := mctx.Module().(*Module)
 	isLLNDK := m.IsLlndk()
 	isVendorPublicLibrary := m.IsVendorPublicLibrary()
+	isPrebuiltWithStubs := android.IsModulePrebuilt(m) && len(versions) > 0
+
+	if strings.HasPrefix(m.Name(), "prebuilt_libclang_rt.") {
+		// The libclang_rt.* prebuilts for different sanitizers have stub.versions but aren't stubs and
+		// need an implementation variant to be installable.
+		isPrebuiltWithStubs = false
+	}
 
 	modules := mctx.CreateLocalVariations(variants...)
 	for i, m := range modules {
 
-		if variants[i] != "" || isLLNDK || isVendorPublicLibrary {
+		if variants[i] != "" || isLLNDK || isVendorPublicLibrary || isPrebuiltWithStubs {
 			// A stubs or LLNDK stubs variant.
 			c := m.(*Module)
 			c.sanitize = nil

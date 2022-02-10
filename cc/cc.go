@@ -1910,7 +1910,7 @@ func (c *Module) maybeUnhideFromMake() {
 	// 'bootstrap: true').
 	if c.HasStubsVariants() && c.NotInPlatform() && !c.InRamdisk() &&
 		!c.InRecovery() && !c.UseVndk() && !c.static() && !c.isCoverageVariant() &&
-		c.IsStubs() && !c.InVendorRamdisk() {
+		c.IsStubs() && !c.InVendorRamdisk() && !android.IsModulePrebuilt(c) {
 		c.Properties.HideFromMake = false // unhide
 		// Note: this is still non-installable
 	}
