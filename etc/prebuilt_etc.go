@@ -474,6 +474,7 @@ func PrebuiltUserShareFactory() android.Module {
 	// This module is device-only
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibFirst)
 	android.InitDefaultableModule(module)
+	android.InitBazelModule(module)
 	return module
 }
 
@@ -668,24 +669,16 @@ func generatePrebuiltSnapshot(s snapshot.SnapshotSingleton, ctx android.Singleto
 
 // For Bazel / bp2build
 
-type bazelPrebuiltEtcAttributes struct {
+type bazelPrebuiltFileAttributes struct {
 	Src         bazel.LabelAttribute
 	Filename    string
-	Sub_dir     string
+	Dir         string
 	Installable bazel.BoolAttribute
 }
 
 // ConvertWithBp2build performs bp2build conversion of PrebuiltEtc
-func (p *PrebuiltEtc) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
-	// All prebuilt_* modules are PrebuiltEtc, but at this time, we only convert prebuilt_etc modules.
-	if p.installDirBase != "etc" {
-		return
-	}
-
-	prebuiltEtcBp2BuildInternal(ctx, p)
-}
-
-func prebuiltEtcBp2BuildInternal(ctx android.TopDownMutatorContext, module *PrebuiltEtc) {
+// All prebuilt_* modules are PrebuiltEtc, which we treat uniformily as *PrebuiltFile*
+func (module *PrebuiltEtc) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	var srcLabelAttribute bazel.LabelAttribute
 	for axis, configToProps := range module.GetArchVariantProperties(ctx, &prebuiltEtcProperties{}) {
 		for config, p := range configToProps {
@@ -715,16 +708,16 @@ func prebuiltEtcBp2BuildInternal(ctx android.TopDownMutatorContext, module *Preb
 		installableBoolAttribute.Value = module.properties.Installable
 	}
 
-	attrs := &bazelPrebuiltEtcAttributes{
+	attrs := &bazelPrebuiltFileAttributes{
 		Src:         srcLabelAttribute,
 		Filename:    filename,
-		Sub_dir:     subDir,
+		Dir:         module.installDirBase + "/" + subDir,
 		Installable: installableBoolAttribute,
 	}
 
 	props := bazel.BazelTargetModuleProperties{
-		Rule_class:        "prebuilt_etc",
-		Bzl_load_location: "//build/bazel/rules:prebuilt_etc.bzl",
+		Rule_class:        "prebuilt_file",
+		Bzl_load_location: "//build/bazel/rules:prebuilt_file.bzl",
 	}
 
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: module.Name()}, attrs)

@@ -45,11 +45,11 @@ prebuilt_etc {
 }
 `,
 		expectedBazelTargets: []string{
-			makeBazelTarget("prebuilt_etc", "apex_tz_version", attrNameToString{
+			makeBazelTarget("prebuilt_file", "apex_tz_version", attrNameToString{
 				"filename":    `"tz_version"`,
 				"installable": `False`,
 				"src":         `"version/tz_version"`,
-				"sub_dir":     `"tz"`,
+				"dir":         `"etc/tz"`,
 			})}})
 }
 
@@ -75,7 +75,7 @@ prebuilt_etc {
 }
 `,
 		expectedBazelTargets: []string{
-			makeBazelTarget("prebuilt_etc", "apex_tz_version", attrNameToString{
+			makeBazelTarget("prebuilt_file", "apex_tz_version", attrNameToString{
 				"filename":    `"tz_version"`,
 				"installable": `False`,
 				"src": `select({
@@ -83,13 +83,13 @@ prebuilt_etc {
         "//build/bazel/platforms/arch:arm64": "arm64",
         "//conditions:default": "version/tz_version",
     })`,
-				"sub_dir": `"tz"`,
+				"dir": `"etc/tz"`,
 			})}})
 }
 
 func TestPrebuiltEtcArchAndTargetVariant(t *testing.T) {
 	runPrebuiltEtcTestCase(t, bp2buildTestCase{
-		description: "prebuilt_etc - arch variant",
+		description: "prebuilt_file - arch variant",
 		filesystem:  map[string]string{},
 		blueprint: `
 prebuilt_etc {
@@ -114,7 +114,7 @@ prebuilt_etc {
 }
 `,
 		expectedBazelTargets: []string{
-			makeBazelTarget("prebuilt_etc", "apex_tz_version", attrNameToString{
+			makeBazelTarget("prebuilt_file", "apex_tz_version", attrNameToString{
 				"filename":    `"tz_version"`,
 				"installable": `False`,
 				"src": `select({
@@ -125,6 +125,38 @@ prebuilt_etc {
         "//build/bazel/platforms/os_arch:linux_bionic_arm64": "darwin_or_arm64",
         "//conditions:default": "version/tz_version",
     })`,
-				"sub_dir": `"tz"`,
+				"dir": `"etc/tz"`,
+			})}})
+}
+
+func runPrebuiltUsrShareTestCase(t *testing.T, tc bp2buildTestCase) {
+	t.Helper()
+	(&tc).moduleTypeUnderTest = "prebuilt_usr_share"
+	(&tc).moduleTypeUnderTestFactory = etc.PrebuiltUserShareFactory
+	runBp2BuildTestCase(t, registerPrebuiltEtcModuleTypes, tc)
+}
+
+func registerPrebuiltUsrShareModuleTypes(ctx android.RegistrationContext) {
+}
+
+func TestPrebuiltUsrShareSimple(t *testing.T) {
+	runPrebuiltUsrShareTestCase(t, bp2buildTestCase{
+		description: "prebuilt_usr_share - simple example",
+		filesystem:  map[string]string{},
+		blueprint: `
+prebuilt_usr_share {
+    name: "apex_tz_version",
+    src: "version/tz_version",
+    filename: "tz_version",
+    sub_dir: "tz",
+    installable: false,
+}
+`,
+		expectedBazelTargets: []string{
+			makeBazelTarget("prebuilt_file", "apex_tz_version", attrNameToString{
+				"filename":    `"tz_version"`,
+				"installable": `False`,
+				"src":         `"version/tz_version"`,
+				"dir":         `"usr/share/tz"`,
 			})}})
 }
