@@ -1454,6 +1454,7 @@ type bazelAndroidAppAttributes struct {
 	Manifest       bazel.Label
 	Custom_package *string
 	Resource_files bazel.LabelListAttribute
+	Certificate    *string
 }
 
 // ConvertWithBp2build is used to convert android_app to Bazel.
@@ -1470,15 +1471,26 @@ func (a *AndroidApp) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 		resourceFiles.Includes = append(resourceFiles.Includes, files...)
 	}
 
+	certificate := a.overridableAppProperties.Certificate
+	certString := proptools.StringDefault(certificate, "")
+	certModule := android.SrcIsModule(certString)
+	if certModule != "" {
+		bazelLabel := android.BazelLabelForModuleDepSingle(ctx, certString)
+		certificate = proptools.StringPtr(bazelLabel.Label)
+	}
+
 	attrs := &bazelAndroidAppAttributes{
 		libAttrs,
 		android.BazelLabelForModuleSrcSingle(ctx, manifest),
 		// TODO(b/209576404): handle package name override by product variable PRODUCT_MANIFEST_PACKAGE_NAME_OVERRIDES
 		a.overridableAppProperties.Package_name,
 		bazel.MakeLabelListAttribute(resourceFiles),
+		certificate,
 	}
-	props := bazel.BazelTargetModuleProperties{Rule_class: "android_binary",
-		Bzl_load_location: "@rules_android//rules:rules.bzl"}
+	props := bazel.BazelTargetModuleProperties{
+		Rule_class:        "android_binary",
+		Bzl_load_location: "//build/bazel/rules:android_binary.bzl",
+	}
 
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: a.Name()}, attrs)
 
