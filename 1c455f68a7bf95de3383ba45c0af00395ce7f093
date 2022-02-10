@@ -70,6 +70,30 @@
       },
       "revId": "1c455f68a7bf95de3383ba45c0af00395ce7f093",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65458d49_0c44ea0c",
+        "filename": "java/proto.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-10T22:06:59Z",
+      "side": 1,
+      "message": "Joe and Liz confirmed that in java the support for stream is in the framework: android.util.proto.ProtoOutputStream and ProtoInputStream. So no additional dependency necessary.",
+      "parentUuid": "36f9a030_2ea8c077",
+      "range": {
+        "startLine": 84,
+        "startChar": 52,
+        "endLine": 84,
+        "endChar": 73
+      },
+      "revId": "1c455f68a7bf95de3383ba45c0af00395ce7f093",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
