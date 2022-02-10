@@ -1011,6 +1011,13 @@ func apexStrictUpdatibilityLintMutator(mctx android.TopDownMutatorContext) {
 	}
 	if apex, ok := mctx.Module().(*apexBundle); ok && apex.checkStrictUpdatabilityLinting() {
 		mctx.WalkDeps(func(child, parent android.Module) bool {
+			// b/208656169 Do not propagate strict updatability linting to libcore/
+			// These libs are available on the classpath during compilation
+			// These libs are transitive deps of the sdk. See java/sdk.go:decodeSdkDep
+			if android.InList(child.Name(), libcoreJavaLibs) {
+				// Do not traverse transitive deps of libcore/ libs
+				return false
+			}
 			if lintable, ok := child.(java.LintDepSetsIntf); ok {
 				lintable.SetStrictUpdatabilityLinting(true)
 			}
@@ -1034,6 +1041,21 @@ var (
 		"test_com.android.conscrypt",
 		"test_com.android.media",
 		"test_jitzygote_com.android.art",
+	}
+)
+
+var (
+	libcoreJavaLibs = []string{
+		"art.module.api.annotations.for.system.modules",
+		"art.module.public.api.stubs",
+		"art.module.public.api.stubs.module_lib",
+		"art.module.public.api.stubs.system",
+		"core-all",
+		"core-generated-annotation-stubs",
+		"core-lambda-stubs",
+		"core-lambda-stubs-for-system-modules",
+		"framework-api-annotations-lib",
+		"java.current.stubs",
 	}
 )
 
