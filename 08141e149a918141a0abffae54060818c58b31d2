@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86603ac2_f0e9c168",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-10T14:18:57Z",
+      "side": 1,
+      "message": "Can you add unit tests to cover the new functionality?",
+      "revId": "08141e149a918141a0abffae54060818c58b31d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71527172_6e52aff5",
+        "filename": "java/java.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 2050,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-10T14:18:57Z",
+      "side": 1,
+      "message": "Can you add some comments about why we\u0027re handling this differently when srcs are empty vs not?",
+      "range": {
+        "startLine": 2050,
+        "startChar": 1,
+        "endLine": 2050,
+        "endChar": 27
+      },
+      "revId": "08141e149a918141a0abffae54060818c58b31d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
