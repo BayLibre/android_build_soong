@@ -16,6 +16,23 @@
       "message": "PTAL",
       "revId": "7cd058e999df819b2bead036e094cf590fc8f5ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b4e0ee1_0a25a7fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-02-10T21:21:26Z",
+      "side": 1,
+      "message": "Don\u0027t forget: this change will need a 2nd OSL +2 vote.",
+      "revId": "7cd058e999df819b2bead036e094cf590fc8f5ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
