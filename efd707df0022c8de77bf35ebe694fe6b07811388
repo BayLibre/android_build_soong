@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000020319785",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1978406?revision\u003d8",
+      "fixSuggestions": [
+        {
+          "fixId": "e0fdca5c_d420a8fc",
+          "description": "Change to \"java/java.go\"",
+          "replacements": [
+            {
+              "path": "java/java.go",
+              "range": {
+                "startLine": 2052,
+                "startChar": 16,
+                "endLine": 2052,
+                "endChar": 23
+              },
+              "replacement": "function"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "efb21be5_bb1b8253",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2052,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-02-10T15:49:37Z",
+      "side": 1,
+      "message": "Common typo found: \"fuction\" -- should it be \"function\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 2052,
+        "startChar": 16,
+        "endLine": 2052,
+        "endChar": 23
+      },
+      "revId": "efd707df0022c8de77bf35ebe694fe6b07811388",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
