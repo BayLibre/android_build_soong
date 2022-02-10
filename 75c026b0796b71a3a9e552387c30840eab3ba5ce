@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11ac6dd8_a753d40c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-10T18:07:54Z",
+      "side": 1,
+      "message": "overall looks good, just some questions/comments about the code/test structure",
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a208f4d_45ccf852",
+        "filename": "android/proto.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-10T18:07:54Z",
+      "side": 1,
+      "message": "This isn\u0027t specific to protos and only appears to be used in the cc module -- it doesn\u0027t seem to fit here",
+      "range": {
+        "startLine": 218,
+        "startChar": 5,
+        "endLine": 218,
+        "endChar": 26
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c3b8fa1_8eb88413",
+        "filename": "android/proto.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-10T18:07:54Z",
+      "side": 1,
+      "message": "This is also quite unrelated perhaps export this function elsewhere? maybe filegroup.go or the bazel package?",
+      "range": {
+        "startLine": 230,
+        "startChar": 5,
+        "endLine": 230,
+        "endChar": 6
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8246e79_add13128",
+        "filename": "android/proto.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-10T18:07:54Z",
+      "side": 1,
+      "message": "This bug is specific to cc modules and isn\u0027t going to apply to identifying proto files (and other extensions like .logtags, .aidl). We\u0027re going to maintain splitting protos from other language sources to use `proto_library` and the more-Bazel handling of protos.",
+      "range": {
+        "startLine": 246,
+        "startChar": 1,
+        "endLine": 246,
+        "endChar": 76
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4f35218_6abaafc7",
+        "filename": "android/proto.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-10T18:07:54Z",
+      "side": 1,
+      "message": "optional: could export a proto-specific LabelPartition for users to add to their partitions rather adding/partitioning in a separate function. As the code is now, if someone has used `ProtoSrcPartition` for some reason, this would silently be omitted",
+      "range": {
+        "startLine": 248,
+        "startChar": 35,
+        "endLine": 248,
+        "endChar": 118
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc439a41_df13abd9",
+        "filename": "bp2build/java_proto_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-10T18:07:54Z",
+      "side": 1,
+      "message": "similar to https://android-review.googlesource.com/c/platform/build/soong/+/1946827/comments/c8161f83_7632f6e4, we\u0027re hiding a lot of information about the tests here.\n\nWe can likely refactor these tests again to use table driven tests to help make it clear what is varying between each case.",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d14583d_483c9728",
+        "filename": "bp2build/java_proto_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-10T18:07:54Z",
+      "side": 1,
+      "message": "can we also add a test case that uses the default proto type?",
+      "range": {
+        "startLine": 73,
+        "startChar": 8,
+        "endLine": 73,
+        "endChar": 21
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95a47245_5159e64c",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2047,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-10T18:07:54Z",
+      "side": 1,
+      "message": "You can simplify this to deps.Add(protoDeps) (https://cs.android.com/android/platform/superproject/+/master:build/soong/bazel/properties.go;l\u003d111;drc\u003d07e106ffa1943cea5bc95b3a8495b74376ddae7b)",
+      "range": {
+        "startLine": 2043,
+        "startChar": 1,
+        "endLine": 2047,
+        "endChar": 2
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b6fc2f5_840a43f8",
+        "filename": "java/proto.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-10T18:07:54Z",
+      "side": 1,
+      "message": "should we also handle stream here given your other CL?",
+      "range": {
+        "startLine": 156,
+        "startChar": 8,
+        "endLine": 156,
+        "endChar": 11
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
