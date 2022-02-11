@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb6616eb_ee4e6eac",
+        "filename": "java/app.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1480,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-02-11T16:37:18Z",
+      "side": 1,
+      "message": "Let\u0027s duplicate the Soong logic here and check if we\u0027re looking at just a string or a module, using android.SrcIsModule like Soong does above. If SrcIsModule returns a non-empty string, we should convert the module name to its bazel equivalent",
+      "range": {
+        "startLine": 1480,
+        "startChar": 2,
+        "endLine": 1480,
+        "endChar": 40
+      },
+      "revId": "c2180cc35734cc14696ad392ecd11237de5881fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
