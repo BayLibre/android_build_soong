@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "800496df_50d54cb2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-02-11T03:00:35Z",
+      "side": 1,
+      "message": "\u003e I wonder if there\u0027s a different approach possible to exclude libcore, that doesn\u0027t rely on hardcoding of the libs\n\nAgreed, I would like to avoid a hard-coded list if possible. \n\nBut I am not sure what the right heuristics should be. e.g. conscrypt uses `sdk_version: \"none\"` but currently baselines NewApi errors https://source.corp.google.com/android/external/conscrypt/Android.bp;l\u003d260. If we do not enforce this check there, it may hide relevant errors\n\nAdditionally I think modules that do not use the SDK can also have other dependencies via `static_libs` and `libs` attributes. We probably should still check that the module is not relying on NewApis from those dependencies",
+      "parentUuid": "7733a949_055adc35",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "3e2bb84fef43e5da76bcdb0012f8fb95d5dfa4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8a020a7a_8da44c6d",
