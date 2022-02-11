@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "eff14f68_334f8a10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-02-11T16:31:32Z",
+      "side": 1,
+      "message": "Maybe `sdk_version: \"none\"` and `system_modules: \"none\"`?\n\n- dependencies via `static_libs` are not relevant w.r.t NewApi checks\n- `libs` dependencies are, if the SDK APIs are depended on via `libs`, but that is not really a supported/recommended setup. I don\u0027t think any modules compile in that way?",
+      "parentUuid": "800496df_50d54cb2",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "3e2bb84fef43e5da76bcdb0012f8fb95d5dfa4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8a020a7a_8da44c6d",
