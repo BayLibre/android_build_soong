@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cf474cc_4f257833",
+        "filename": "android/proto.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-11T19:48:32Z",
+      "side": 1,
+      "message": "Yeah I had moved this function around because I thought I may use it for Java too, and apparently I forgot to move it back once I wasn\u0027t reusing it anywhere else.",
+      "parentUuid": "4a208f4d_45ccf852",
+      "range": {
+        "startLine": 218,
+        "startChar": 5,
+        "endLine": 218,
+        "endChar": 26
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c3b8fa1_8eb88413",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-10T18:07:54Z",
       "side": 1,
       "message": "This is also quite unrelated perhaps export this function elsewhere? maybe filegroup.go or the bazel package?",
+      "range": {
+        "startLine": 230,
+        "startChar": 5,
+        "endLine": 230,
+        "endChar": 6
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd9db11e_1d8559e8",
+        "filename": "android/proto.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-11T19:48:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c3b8fa1_8eb88413",
       "range": {
         "startLine": 230,
         "startChar": 5,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76492c35_aa76d3cd",
+        "filename": "android/proto.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-11T19:48:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8246e79_add13128",
+      "range": {
+        "startLine": 246,
+        "startChar": 1,
+        "endLine": 246,
+        "endChar": 76
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4f35218_6abaafc7",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-02-10T18:07:54Z",
       "side": 1,
       "message": "optional: could export a proto-specific LabelPartition for users to add to their partitions rather adding/partitioning in a separate function. As the code is now, if someone has used `ProtoSrcPartition` for some reason, this would silently be omitted",
+      "range": {
+        "startLine": 248,
+        "startChar": 35,
+        "endLine": 248,
+        "endChar": 118
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c399480_4d9775c7",
+        "filename": "android/proto.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-11T19:48:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4f35218_6abaafc7",
       "range": {
         "startLine": 248,
         "startChar": 35,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09090c42_8cd30fea",
+        "filename": "bp2build/java_proto_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-11T19:48:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc439a41_df13abd9",
+      "range": {
+        "startLine": 32,
+        "startChar": 5,
+        "endLine": 32,
+        "endChar": 18
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d14583d_483c9728",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-02-10T18:07:54Z",
       "side": 1,
       "message": "can we also add a test case that uses the default proto type?",
+      "range": {
+        "startLine": 73,
+        "startChar": 8,
+        "endLine": 73,
+        "endChar": 21
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1e54c1e_6855e48d",
+        "filename": "bp2build/java_proto_conversion_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-11T19:48:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d14583d_483c9728",
       "range": {
         "startLine": 73,
         "startChar": 8,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31ef8cc0_a17e0f89",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 2047,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-11T19:48:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95a47245_5159e64c",
+      "range": {
+        "startLine": 2043,
+        "startChar": 1,
+        "endLine": 2047,
+        "endChar": 2
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b6fc2f5_840a43f8",
@@ -192,6 +360,30 @@
       "writtenOn": "2022-02-10T18:07:54Z",
       "side": 1,
       "message": "should we also handle stream here given your other CL?",
+      "range": {
+        "startLine": 156,
+        "startChar": 8,
+        "endLine": 156,
+        "endChar": 11
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14a45e4c_50e59109",
+        "filename": "java/proto.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-11T19:48:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b6fc2f5_840a43f8",
       "range": {
         "startLine": 156,
         "startChar": 8,
