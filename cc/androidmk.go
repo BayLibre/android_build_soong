@@ -397,6 +397,16 @@ func (test *testBinary) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 		if Bool(test.Properties.Test_options.Unit_test) {
 			entries.SetBool("LOCAL_IS_UNIT_TEST", true)
 		}
+		if test.Properties.Data != nil {
+		        var dataModule []string
+		        for _, data := range test.Properties.Data {
+    				if m, _ := android.SrcIsModuleWithTag(data); m != "" {
+    					dataModule = append(dataModule, m)
+    				}
+			}
+			entries.AddStrings("LOCAL_TEST_DATA_MODULE", dataModule...)
+		}
+
 
 		entries.SetBoolIfTrue("LOCAL_COMPATIBILITY_PER_TESTCASE_DIRECTORY", Bool(test.Properties.Per_testcase_directory))
 	})

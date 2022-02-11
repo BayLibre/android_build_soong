@@ -15,6 +15,8 @@
 package cc
 
 import (
+        //"fmt"
+        
 	"path/filepath"
 	"strconv"
 	"strings"
@@ -364,7 +366,7 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 	if ctx.inVendor() || ctx.useVndk() {
 		testInstallBase = "/data/local/tests/vendor"
 	}
-
+	
 	dataSrcPaths := android.PathsForModuleSrc(ctx, test.Properties.Data)
 
 	for _, dataSrcPath := range dataSrcPaths {
