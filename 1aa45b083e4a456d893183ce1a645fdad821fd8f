@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc16bb49_2696faf7",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2022-02-11T18:35:18Z",
+      "side": 1,
+      "message": "If it does not require too much change ( or I should also add `if it is possible` first), maybe change `Linux` here to `LinuxGlibc`?",
+      "revId": "1aa45b083e4a456d893183ce1a645fdad821fd8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
