@@ -27,7 +27,7 @@ var archVariants = map[ArchType][]string{
 		"cortex-a9",
 		"cortex-a15",
 		"cortex-a53",
-		"cortex-a53-a57",
+		"cortex-a53.a57",
 		"cortex-a55",
 		"cortex-a72",
 		"cortex-a73",
