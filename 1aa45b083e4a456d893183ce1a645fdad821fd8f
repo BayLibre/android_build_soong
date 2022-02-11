@@ -16,6 +16,24 @@
       "message": "If it does not require too much change ( or I should also add `if it is possible` first), maybe change `Linux` here to `LinuxGlibc`?",
       "revId": "1aa45b083e4a456d893183ce1a645fdad821fd8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de92353e_1b9d794d",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 934,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-11T18:49:32Z",
+      "side": 1,
+      "message": "I should look into that, although I worry that it will be referenced in vendor Go code.  Maybe leave `Linux` as a deprecated alias for `LinuxGlibc`?",
+      "parentUuid": "bc16bb49_2696faf7",
+      "revId": "1aa45b083e4a456d893183ce1a645fdad821fd8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
