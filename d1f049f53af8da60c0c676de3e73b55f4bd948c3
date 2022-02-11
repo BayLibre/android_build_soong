@@ -22,6 +22,30 @@
       },
       "revId": "d1f049f53af8da60c0c676de3e73b55f4bd948c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8f5d923_bdfbd4a4",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-11T20:13:13Z",
+      "side": 1,
+      "message": "Discussed with jobredeaux@:\n\nI made some changes to address this, but the simpler way of handling exports now causes java_plugin to complain because it also does not support an exports attribute. Unlike, android_app, java_plugin probably needs to \"export\" its static_libs dependencies because there will be upstream modules which depend on it.\n\nI\u0027m going to see if we can write a macro that converts java_plugins to a java_library that with the `exported_plugin` attribute to export the plugin, and a separate `exports` attribute to exports the static libs. Romain found some code in google3 that does just this, but we will have to see if the host-compatibility attributes of java_plugins throws any wrenches in this solution.",
+      "parentUuid": "0c8e54d7_cada1c3d",
+      "range": {
+        "startLine": 2036,
+        "startChar": 0,
+        "endLine": 2066,
+        "endChar": 58
+      },
+      "revId": "d1f049f53af8da60c0c676de3e73b55f4bd948c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
