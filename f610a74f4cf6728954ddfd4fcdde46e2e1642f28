@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0c2c831_89806b3e",
+        "filename": "cc/config/x86_64_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-11T13:55:31Z",
+      "side": 1,
+      "message": "This is consistent with the error message already given for arm/arm64: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/config/arm64_device.go;l\u003d210;drc\u003dc75994d6235a023df6942fddeaa34b2a66f2e5f6",
+      "parentUuid": "0b58dc94_1e1a7fc3",
+      "revId": "f610a74f4cf6728954ddfd4fcdde46e2e1642f28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e15b9ed_9231670f",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-02-10T22:11:45Z",
       "side": 1,
       "message": "{ditto above}",
+      "revId": "f610a74f4cf6728954ddfd4fcdde46e2e1642f28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f7db3ef_4bd1ed69",
+        "filename": "cc/config/x86_device.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-11T13:55:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9e15b9ed_9231670f",
       "revId": "f610a74f4cf6728954ddfd4fcdde46e2e1642f28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
