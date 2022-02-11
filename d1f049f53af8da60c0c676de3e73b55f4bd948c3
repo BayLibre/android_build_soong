@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c8e54d7_cada1c3d",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-02-11T15:53:40Z",
+      "side": 1,
+      "message": "The more I think about it the more I think it doesn\u0027t make sense to leave the behavior of static deps incorrect in this CL:\nFor the proto dependency, it\u0027s pretty clear that we\u0027re going to have to go with the \"exports in all cases, deps if java srcs are not empty\" strategy. Since that is one of the solutions we were considering for static deps as well, I think the code will be more readable and the bp2build behavior \"more correct\" if we just do the same thing with static deps rather than what we\u0027re doing now.\nThis will consequently break the android_app bp2build converter, because android_binary doesn\u0027t support exports, but I think for now we can just empty out the \"exports\" attribute specifically for android_app, and potentially come up with a different solution for android_apps since there are more semantic differences between libs and static_libs there anyway",
+      "range": {
+        "startLine": 2036,
+        "startChar": 0,
+        "endLine": 2066,
+        "endChar": 58
+      },
+      "revId": "d1f049f53af8da60c0c676de3e73b55f4bd948c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
