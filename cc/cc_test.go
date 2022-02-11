@@ -3943,7 +3943,8 @@ func TestIncludeDirectoryOrdering(t *testing.T) {
 		"${config.ArmGenericCflags}",
 		"-target",
 		"armv7a-linux-androideabi20",
-		"-B${config.ArmGccRoot}/arm-linux-androideabi/bin",
+		// "-B${config.ArmGccRoot}/arm-linux-androideabi/bin",
+		// -B flag is removed in builder.go
 	}
 
 	expectedIncludes := []string{
