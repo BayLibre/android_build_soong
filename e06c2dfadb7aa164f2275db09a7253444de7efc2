@@ -16,6 +16,24 @@
       "message": "This seems to refer to a file created by another rule, which seems like something that may only work by accident.  Can you make clangTidyDep write the output to one file, and then have this rule copy that input file to ${out}.d?",
       "revId": "e06c2dfadb7aa164f2275db09a7253444de7efc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d42df333_c21c762d",
+        "filename": "cc/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-02-12T01:30:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc36cc58_71cac7dd",
+      "revId": "e06c2dfadb7aa164f2275db09a7253444de7efc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
