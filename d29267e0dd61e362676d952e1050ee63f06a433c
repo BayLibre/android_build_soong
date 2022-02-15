@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57193aba_e0c958e8",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-15T15:28:47Z",
+      "side": 1,
+      "message": "can we sort this list?",
+      "range": {
+        "startLine": 542,
+        "startChar": 2,
+        "endLine": 564,
+        "endChar": 9
+      },
+      "revId": "d29267e0dd61e362676d952e1050ee63f06a433c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2ef53ca_bc05aca8",
+        "filename": "cc/binary.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-15T15:28:47Z",
+      "side": 1,
+      "message": "can you add a TODO with a bug that this is the stripped binary. We should either determine whether it is necessary to provide both the stripped and unstripped version and then update the Bazel rules to provide the unstripped binary or remove the Soong logic to provide both",
+      "range": {
+        "startLine": 576,
+        "startChar": 2,
+        "endLine": 576,
+        "endChar": 80
+      },
+      "revId": "d29267e0dd61e362676d952e1050ee63f06a433c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
