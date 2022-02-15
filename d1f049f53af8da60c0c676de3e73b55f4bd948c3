@@ -46,6 +46,30 @@
       },
       "revId": "d1f049f53af8da60c0c676de3e73b55f4bd948c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6965646_396bf796",
+        "filename": "java/java.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-15T17:04:26Z",
+      "side": 1,
+      "message": "This solution seems to work for our use cases: we\u0027ll get to test it for sure when we are ready to build CaptivePortalLogin. For right now, just waiting on aosp/1985613 to merge so we can rebase and enable all of the proto tests.",
+      "parentUuid": "c8f5d923_bdfbd4a4",
+      "range": {
+        "startLine": 2036,
+        "startChar": 0,
+        "endLine": 2066,
+        "endChar": 58
+      },
+      "revId": "d1f049f53af8da60c0c676de3e73b55f4bd948c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
