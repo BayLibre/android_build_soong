@@ -48,8 +48,11 @@ android_app {
 `,
 		expectedBazelTargets: []string{
 			makeBazelTarget("android_binary", "TestApp", attrNameToString{
-				"srcs":           `["app.java"]`,
-				"manifest":       `"AndroidManifest.xml"`,
+				"srcs":     `["app.java"]`,
+				"manifest": `"AndroidManifest.xml"`,
+				"manifest_values": `{
+        "minSdkVersion": "31",
+    }`,
 				"resource_files": `["res/res.png"]`,
 			}),
 		}})
@@ -82,6 +85,9 @@ android_app {
 			makeBazelTarget("android_binary", "TestApp", attrNameToString{
 				"srcs":     `["app.java"]`,
 				"manifest": `"manifest/AndroidManifest.xml"`,
+				"manifest_values": `{
+        "minSdkVersion": "31",
+    }`,
 				"resource_files": `[
         "resa/res.png",
         "resb/res.png",
@@ -125,7 +131,10 @@ android_app {
         "//build/bazel/platforms/arch:x86": ["x86.java"],
         "//conditions:default": [],
     })`,
-				"manifest":       `"AndroidManifest.xml"`,
+				"manifest": `"AndroidManifest.xml"`,
+				"manifest_values": `{
+        "minSdkVersion": "31",
+    }`,
 				"resource_files": `["res/res.png"]`,
 			}),
 		}})
