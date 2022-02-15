@@ -53,12 +53,13 @@ func (v baseVariable) isPreset() bool {
 }
 
 var defaultValuesByType = map[starlarkType]string{
-	starlarkTypeUnknown: `""`,
-	starlarkTypeList:    "[]",
-	starlarkTypeString:  `""`,
-	starlarkTypeInt:     "0",
-	starlarkTypeBool:    "False",
-	starlarkTypeVoid:    "None",
+	starlarkTypeUnknown:  `""`,
+	starlarkTypeList:     "[]",
+	starlarkTypeString:   `""`,
+	starlarkTypeInt:      "0",
+	starlarkTypeBool:     "False",
+	starlarkTypeVoid:     "None",
+	starlarkTypeFunction: "None",
 }
 
 func (v baseVariable) defaultValueString() string {

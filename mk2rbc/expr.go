@@ -566,10 +566,11 @@ func (cx *callExpr) emit(gctx *generationContext) {
 		gctx.write("(")
 		cx.object.emit(gctx)
 		gctx.write(")")
-		gctx.write(".", cx.name, "(")
-	} else {
-		gctx.write(cx.name, "(")
+		if cx.name != "" {
+			gctx.write(".")
+		}
 	}
+	gctx.write(cx.name, "(")
 	sep := ""
 	for _, arg := range cx.args {
 		gctx.write(sep)

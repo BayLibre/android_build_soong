@@ -367,6 +367,7 @@ func init() {
 	} {
 		KnownVariables.NewVariable(kv, VarClassSoong, starlarkTypeList)
 	}
+	KnownVariables.NewVariable("BOARD_CONFIG_VENDOR_PATH", VarClassConfig, starlarkTypeFunction)
 }
 
 // Information about the generated Starlark script.
@@ -430,7 +431,6 @@ func newParseContext(ss *StarlarkScript, nodes []mkparser.Node) *parseContext {
 		{"TARGET_COPY_OUT_RECOVERY", "recovery"},
 		{"TARGET_COPY_OUT_VENDOR_RAMDISK", "vendor_ramdisk"},
 		// TODO(asmundak): to process internal config files, we need the following variables:
-		//    BOARD_CONFIG_VENDOR_PATH
 		//    TARGET_VENDOR
 		//    target_base_product
 		//
@@ -534,7 +534,14 @@ func (ctx *parseContext) handleAssignment(a *mkparser.Assignment) []starlarkNode
 	}
 	_, isTraced := ctx.tracedVariables[name]
 	asgn := &assignmentNode{lhs: lhs, mkValue: a.Value, isTraced: isTraced, location: ctx.errorLocation(a)}
-	if lhs.valueType() == starlarkTypeUnknown {
+	if lhs.name() == "BOARD_CONFIG_VENDOR_PATH" {
+		if lit, ok := ctx.parseMakeString(a, a.Value).(*stringLiteralExpr); ok {
+			mi := ctx.newDependentModule(lit.literal+"/BoardConfigVendor.mk", true)
+			asgn.value = &identifierExpr{name: mi.entryName()}
+		} else {
+			return []starlarkNode{ctx.newBadNode(a, "BOARD_CONFIG_VENDOR_PATH must be set to a string literal")}
+		}
+	} else if lhs.valueType() == starlarkTypeUnknown {
 		// Try to divine variable type from the RHS
 		asgn.value = ctx.parseMakeString(a, a.Value)
 		if xBad, ok := asgn.value.(*badExpr); ok {
@@ -544,8 +551,7 @@ func (ctx *parseContext) handleAssignment(a *mkparser.Assignment) []starlarkNode
 		if inferred_type != starlarkTypeUnknown {
 			lhs.setValueType(inferred_type)
 		}
-	}
-	if lhs.valueType() == starlarkTypeList {
+	} else if lhs.valueType() == starlarkTypeList {
 		xConcat, xBad := ctx.buildConcatExpr(a)
 		if xBad != nil {
 			return []starlarkNode{&exprNode{expr: xBad}}
@@ -743,7 +749,6 @@ func (ctx *parseContext) newDependentModule(path string, optional bool) *moduleI
 
 func (ctx *parseContext) handleSubConfig(
 	v mkparser.Node, pathExpr starlarkExpr, loadAlways bool, processModule func(inheritedModule) starlarkNode) []starlarkNode {
-
 	// In a simple case, the name of a module to inherit/include is known statically.
 	if path, ok := maybeString(pathExpr); ok {
 		// Note that even if this directive loads a module unconditionally, a module may be
@@ -860,6 +865,20 @@ func (ctx *parseContext) handleInheritModule(v mkparser.Node, args *mkparser.Mak
 }
 
 func (ctx *parseContext) handleInclude(v mkparser.Node, pathExpr starlarkExpr, loadAlways bool) []starlarkNode {
+	if varPath, ok := pathExpr.(*interpolateExpr); ok &&
+		len(varPath.chunks) == 2 && varPath.chunks[0] == "" && varPath.chunks[1] == "/BoardConfigVendor.mk" &&
+		len(varPath.args) == 1 {
+		if varExpr, ok := varPath.args[0].(*variableRefExpr); ok && varExpr.ref.name() == "BOARD_CONFIG_VENDOR_PATH" {
+			return []starlarkNode{&exprNode{&callExpr{
+				object: varExpr,
+				args: []starlarkExpr{
+					&globalsExpr{},
+					&identifierExpr{"handle"},
+				},
+				returnType: starlarkTypeVoid,
+			}}}
+		}
+	}
 	return ctx.handleSubConfig(v, pathExpr, loadAlways, func(im inheritedModule) starlarkNode {
 		return &includeNode{im, loadAlways}
 	})

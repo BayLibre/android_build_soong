@@ -23,12 +23,13 @@ const (
 	// hardwired variables. The remaining variables are first entered as
 	// having an unknown type and treated as strings, but sometimes we
 	//  can infer variable's type from the value assigned to it.
-	starlarkTypeUnknown starlarkType = iota
-	starlarkTypeList    starlarkType = iota
-	starlarkTypeString  starlarkType = iota
-	starlarkTypeInt     starlarkType = iota
-	starlarkTypeBool    starlarkType = iota
-	starlarkTypeVoid    starlarkType = iota
+	starlarkTypeUnknown  starlarkType = iota
+	starlarkTypeList     starlarkType = iota
+	starlarkTypeString   starlarkType = iota
+	starlarkTypeInt      starlarkType = iota
+	starlarkTypeBool     starlarkType = iota
+	starlarkTypeVoid     starlarkType = iota
+	starlarkTypeFunction starlarkType = iota
 )
 
 type hiddenArgType int

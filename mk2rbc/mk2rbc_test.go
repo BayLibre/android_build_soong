@@ -1324,6 +1324,26 @@ def init(g, handle):
     pass
 `,
 	},
+	{
+		desc:   "BOARD_CONFIG_VENDOR_PATH",
+		mkname: "product.mk",
+		in: `
+# Test BOARD_CONFIG_VENDOR_PATH, it should be set to a function, not a string
+
+BOARD_CONFIG_VENDOR_PATH := vendor/bar/qux
+
+include $(BOARD_CONFIG_VENDOR_PATH)/BoardConfigVendor.mk
+`,
+		expected: `# Test BOARD_CONFIG_VENDOR_PATH, it should be set to a function, not a string
+load("//build/make/core:product_config.rbc", "rblf")
+load("//vendor/bar/qux:BoardConfigVendor.star|init", _BoardConfigVendor_init = "init")
+
+def init(g, handle):
+  cfg = rblf.cfg(handle)
+  cfg["BOARD_CONFIG_VENDOR_PATH"] = _BoardConfigVendor_init
+  (cfg["BOARD_CONFIG_VENDOR_PATH"])(g, handle)
+`,
+	},
 }
 
 var known_variables = []struct {
@@ -1385,6 +1405,7 @@ func TestGood(t *testing.T) {
 	fs := NewFindMockFS([]string{
 		"vendor/foo1/cfg.mk",
 		"vendor/bar/baz/cfg.mk",
+		"vendor/bar/qux/BoardConfigVendor.mk",
 		"part.mk",
 		"foo/font.mk",
 		"bar/font.mk",
