@@ -21,6 +21,7 @@ import (
 	"strings"
 
 	"android/soong/android"
+	"android/soong/bazel"
 	"android/soong/dexpreopt"
 
 	"github.com/google/blueprint"
@@ -488,6 +489,7 @@ func aaptLibs(ctx android.ModuleContext, sdkContext android.SdkContext, classLoa
 type AndroidLibrary struct {
 	Library
 	aapt
+	android.BazelModuleBase
 
 	androidLibraryProperties androidLibraryProperties
 
@@ -591,6 +593,7 @@ func AndroidLibraryFactory() android.Module {
 
 	android.InitApexModule(module)
 	InitJavaModule(module, android.DeviceSupported)
+	android.InitBazelModule(module)
 	return module
 }
 
@@ -625,6 +628,7 @@ type AARImport struct {
 	android.ModuleBase
 	android.DefaultableModuleBase
 	android.ApexModuleBase
+	android.BazelModuleBase
 	prebuilt android.Prebuilt
 
 	// Functionality common to Module and Import.
@@ -907,5 +911,124 @@ func AARImportFactory() android.Module {
 	android.InitPrebuiltModule(module, &module.properties.Aars)
 	android.InitApexModule(module)
 	InitJavaModule(module, android.DeviceSupported)
+	android.InitBazelModule(module)
 	return module
+}
+
+type bazelAapt struct {
+	Manifest       bazel.Label
+	Resource_files bazel.LabelListAttribute
+}
+
+type bazelAndroidLibrary struct {
+	*javaLibraryAttributes
+	*bazelAapt
+}
+
+type bazelAndroidLibraryImport struct {
+	Aar     bazel.Label
+	Deps    bazel.LabelListAttribute
+	Exports bazel.LabelListAttribute
+}
+
+func (a *aapt) ConvertAaptAttrsWithBp2Build(ctx android.TopDownMutatorContext) *bazelAapt {
+	manifest := proptools.StringDefault(a.aaptProperties.Manifest, "AndroidManifest.xml")
+
+	resourceFiles := bazel.LabelList{
+		Includes: []bazel.Label{},
+	}
+	for _, dir := range android.PathsWithOptionalDefaultForModuleSrc(ctx, a.aaptProperties.Resource_dirs, "res") {
+		files := android.RootToModuleRelativePaths(ctx, androidResourceGlob(ctx, dir))
+		resourceFiles.Includes = append(resourceFiles.Includes, files...)
+	}
+	return &bazelAapt{
+		android.BazelLabelForModuleSrcSingle(ctx, manifest),
+		bazel.MakeLabelListAttribute(resourceFiles),
+	}
+}
+
+func CreateBazelAarImport(ctx android.TopDownMutatorContext, name string, bali *bazelAndroidLibraryImport) {
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "aar_import",
+			Bzl_load_location: "@rules_android//rules:rules.bzl",
+		},
+		android.CommonAttributes{Name: name},
+		bali,
+	)
+}
+
+func (a *AARImport) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	aars := android.BazelLabelForModuleSrcExcludes(ctx, a.properties.Aars, []string{})
+	supportedStaticLibs := []string{}
+	// TODO(b/): investigate and handle static_libs deps that are not imports. They are not supported for export by Bazel.
+	ctx.VisitDirectDepsWithTag(staticLibTag, func(dep android.Module) {
+		switch dep.(type) {
+		case *AARImport, *Import:
+			supportedStaticLibs = append(supportedStaticLibs, dep.Name())
+		}
+	})
+	name := android.RemoveOptionalPrebuiltPrefix(a.Name())
+	deps := android.BazelLabelForModuleDeps(ctx, android.LastUniqueStrings(append(a.properties.Static_libs, a.properties.Libs...)))
+	exports := android.BazelLabelForModuleDeps(ctx, android.LastUniqueStrings(supportedStaticLibs))
+	// Bazel only supports a single .aar file to be imported
+	if len(aars.Includes) > 1 {
+		aar_targets_to_export := []bazel.Label{}
+		for index, include := range aars.Includes {
+			if index == 0 {
+				continue
+			}
+
+			indexed_name := a.Name() + "_split_includes_" + strconv.Itoa(index)
+			CreateBazelAarImport(
+				ctx,
+				indexed_name,
+				&bazelAndroidLibraryImport{
+					Aar:     include,
+					Deps:    bazel.MakeLabelListAttribute(deps),
+					Exports: bazel.MakeLabelListAttribute(exports),
+				},
+			)
+			aar_targets_to_export = append(aar_targets_to_export, bazel.Label{Label: ":" + name})
+		}
+		exports.Includes = append(exports.Includes, aar_targets_to_export...)
+	}
+
+	CreateBazelAarImport(
+		ctx,
+		name,
+		&bazelAndroidLibraryImport{
+			Aar:     aars.Includes[0],
+			Deps:    bazel.MakeLabelListAttribute(deps),
+			Exports: bazel.MakeLabelListAttribute(exports),
+		},
+	)
+
+}
+
+func (a *AndroidLibrary) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
+	commonAttrs, depLabels := a.convertLibraryAttrsBp2Build(ctx)
+
+	deps := depLabels.Deps
+	if !commonAttrs.Srcs.IsEmpty() {
+		deps.Append(depLabels.StaticDeps) // we should only append these if there are sources to use them
+	} else if !depLabels.Deps.IsEmpty() {
+		ctx.ModuleErrorf("Module has direct dependencies but no sources. Bazel will not allow this.")
+	}
+
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{
+			Rule_class:        "android_library",
+			Bzl_load_location: "@rules_android//rules:rules.bzl",
+		},
+		android.CommonAttributes{Name: a.Name()},
+		&bazelAndroidLibrary{
+			&javaLibraryAttributes{
+				javaCommonAttributes: commonAttrs,
+				Deps:                 deps,
+				Exports:              depLabels.StaticDeps,
+			},
+			a.ConvertAaptAttrsWithBp2Build(ctx),
+		},
+	)
 }
