@@ -2238,6 +2238,7 @@ type javaCommonAttributes struct {
 	Srcs      bazel.LabelListAttribute
 	Plugins   bazel.LabelListAttribute
 	Javacopts bazel.StringListAttribute
+	Exports   bazel.LabelListAttribute
 }
 
 type javaDependencyLabels struct {
@@ -2323,12 +2324,12 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 
 	var deps bazel.LabelList
 	if m.properties.Libs != nil {
-		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Libs))
+		deps.Append(android.BazelLabelForModuleDeps(ctx, android.LastUniqueStrings(m.properties.Libs)))
 	}
 
 	var staticDeps bazel.LabelList
 	if m.properties.Static_libs != nil {
-		staticDeps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Static_libs))
+		staticDeps.Append(android.BazelLabelForModuleDeps(ctx, android.LastUniqueStrings(m.properties.Static_libs)))
 	}
 
 	protoDepLabel := bp2buildProto(ctx, &m.Module, srcPartitions[protoSrcPartition])
