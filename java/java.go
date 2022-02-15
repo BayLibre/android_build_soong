@@ -2046,9 +2046,7 @@ func DexImportFactory() android.Module {
 	return module
 }
 
-//
 // Defaults
-//
 type Defaults struct {
 	android.ModuleBase
 	android.DefaultsModuleBase
@@ -2063,29 +2061,29 @@ type Defaults struct {
 //
 // Example:
 //
-//     java_defaults {
-//         name: "example_defaults",
-//         srcs: ["common/**/*.java"],
-//         javacflags: ["-Xlint:all"],
-//         aaptflags: ["--auto-add-overlay"],
-//     }
+//	java_defaults {
+//	    name: "example_defaults",
+//	    srcs: ["common/**/*.java"],
+//	    javacflags: ["-Xlint:all"],
+//	    aaptflags: ["--auto-add-overlay"],
+//	}
 //
-//     java_library {
-//         name: "example",
-//         defaults: ["example_defaults"],
-//         srcs: ["example/**/*.java"],
-//     }
+//	java_library {
+//	    name: "example",
+//	    defaults: ["example_defaults"],
+//	    srcs: ["example/**/*.java"],
+//	}
 //
 // is functionally identical to:
 //
-//     java_library {
-//         name: "example",
-//         srcs: [
-//             "common/**/*.java",
-//             "example/**/*.java",
-//         ],
-//         javacflags: ["-Xlint:all"],
-//     }
+//	java_library {
+//	    name: "example",
+//	    srcs: [
+//	        "common/**/*.java",
+//	        "example/**/*.java",
+//	    ],
+//	    javacflags: ["-Xlint:all"],
+//	}
 func DefaultsFactory() android.Module {
 	module := &Defaults{}
 
@@ -2323,12 +2321,12 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 
 	var deps bazel.LabelList
 	if m.properties.Libs != nil {
-		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Libs))
+		deps.Append(android.BazelLabelForModuleDeps(ctx, android.LastUniqueStrings(android.CopyOf(m.properties.Libs))))
 	}
 
 	var staticDeps bazel.LabelList
 	if m.properties.Static_libs != nil {
-		staticDeps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Static_libs))
+		staticDeps.Append(android.BazelLabelForModuleDeps(ctx, android.LastUniqueStrings(android.CopyOf(m.properties.Static_libs))))
 	}
 
 	protoDepLabel := bp2buildProto(ctx, &m.Module, srcPartitions[protoSrcPartition])
