@@ -46,6 +46,7 @@ mkdir -p ${SOONG_OUT}
 cat > ${SOONG_OUT}/soong.variables << EOF
 {
     "Platform_sdk_version": ${PLATFORM_SDK_VERSION},
+    "Platform_base_sdk_extension_version": ${PLATFORM_BASE_SDK_EXTENSION_VERSION},
     "Platform_version_active_codenames": ${PLATFORM_VERSION_ALL_CODENAMES},
 
     "DeviceName": "generic_arm64",

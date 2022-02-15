@@ -20,8 +20,13 @@ import (
 	"testing"
 
 	"android/soong/android"
+
 	"github.com/google/blueprint"
 )
+
+func intPtr(v int) *int {
+	return &v
+}
 
 func TestPrebuiltApis_SystemModulesCreation(t *testing.T) {
 	result := android.GroupFixturePreparers(
@@ -53,4 +58,29 @@ func TestPrebuiltApis_SystemModulesCreation(t *testing.T) {
 	}
 	sort.Strings(expected)
 	android.AssertArrayString(t, "sdk system modules", expected, sdkSystemModules)
+}
+
+func TestPrebuiltApis_WithExtensions(t *testing.T) {
+	runTestWithBaseExtensionLevel := func(v int) string {
+		result := android.GroupFixturePreparers(
+			prepareForJavaTest,
+			android.FixtureModifyProductVariables(func(variables android.FixtureProductVariables) {
+				variables.Platform_base_sdk_extension_version = intPtr(v)
+			}),
+			FixtureWithPrebuiltApisAndExtensions(map[string][]string{
+				"31":      {"foo"},
+				"32":      {"foo", "bar"},
+				"current": {"foo", "bar"},
+			}, map[string][]string{
+				"1": {"foo"},
+				"2": {"foo", "bar"},
+			}),
+		).RunTest(t)
+		return result.ModuleForTests("foo.api.public.latest", "").Rule("generator").Implicits[0].String()
+	}
+	// Here, the base extension level is 1, so extension level 2 is the latest
+	android.AssertStringEquals(t, "Expected latest = extension level 2", "prebuilts/sdk/extensions/2/public/api/foo.txt", runTestWithBaseExtensionLevel(1))
+
+	// Here, the base extension level is 2, so 2 is not later than 32.
+	android.AssertStringEquals(t, "Expected latest = api level 32", "prebuilts/sdk/32/public/api/foo.txt", runTestWithBaseExtensionLevel(2))
 }

@@ -38,6 +38,11 @@ type prebuiltApisProperties struct {
 	// list of api version directories
 	Api_dirs []string
 
+	// Directory containing finalized api txt files for extension versions.
+	// Extension versions higher than the base sdk extension version will
+	// be assumed to be finalized later than all Api_dirs.
+	Extensions_dir *string
+
 	// The next API directory can optionally point to a directory where
 	// files incompatibility-tracking files are stored for the current
 	// "in progress" API. Each module present in one of the api_dirs will have
@@ -144,6 +149,11 @@ func globApiDirs(mctx android.LoadHookContext, p *prebuiltApis, api_dir_glob str
 	return files
 }
 
+func globExtensionDirs(mctx android.LoadHookContext, p *prebuiltApis, extension_dir_glob string) []string {
+	// <extensions-dir>/<num>/<extension-dir-glob>
+	return globScopeDir(mctx, *p.properties.Extensions_dir+"/*", extension_dir_glob)
+}
+
 func globScopeDir(mctx android.LoadHookContext, subdir string, subdir_glob string) []string {
 	var files []string
 	dir := mctx.ModuleDir() + "/" + subdir
@@ -212,17 +222,32 @@ func prebuiltApiFiles(mctx android.LoadHookContext, p *prebuiltApis) {
 		version             int
 	}
 
-	latest := make(map[string]latestApiInfo)
-	for _, f := range apiLevelFiles {
-		module, version, scope := parseFinalizedPrebuiltPath(mctx, f)
-		if strings.HasSuffix(module, "incompatibilities") {
-			continue
+	getLatest := func(files []string) map[string]latestApiInfo {
+		m := make(map[string]latestApiInfo)
+		for _, f := range files {
+			module, version, scope := parseFinalizedPrebuiltPath(mctx, f)
+			if strings.HasSuffix(module, "incompatibilities") {
+				continue
+			}
+			key := module + "." + scope
+			info, exists := m[key]
+			if !exists || version > info.version {
+				m[key] = latestApiInfo{module, scope, f, version}
+			}
 		}
+		return m
+	}
 
-		key := module + "." + scope
-		info, exists := latest[key]
-		if !exists || version > info.version {
-			latest[key] = latestApiInfo{module, scope, f, version}
+	latest := getLatest(apiLevelFiles)
+	if p.properties.Extensions_dir != nil {
+		extensionApiFiles := globExtensionDirs(mctx, p, "api/*.txt")
+		for k, v := range getLatest(extensionApiFiles) {
+			if v.version > mctx.Config().PlatformBaseSdkExtensionVersion() {
+				if _, exists := latest[k]; !exists {
+					mctx.ModuleErrorf("Module %v finalized for extension %d but never during an API level; likely error", v.module, v.version)
+				}
+				latest[k] = v
+			}
 		}
 	}
 
