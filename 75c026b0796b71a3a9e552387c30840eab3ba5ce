@@ -440,6 +440,30 @@
       },
       "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "909234a4_cbaba717",
+        "filename": "java/proto.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-02-15T21:48:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "520f7b66_e293c46e",
+      "range": {
+        "startLine": 156,
+        "startChar": 8,
+        "endLine": 156,
+        "endChar": 11
+      },
+      "revId": "75c026b0796b71a3a9e552387c30840eab3ba5ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
