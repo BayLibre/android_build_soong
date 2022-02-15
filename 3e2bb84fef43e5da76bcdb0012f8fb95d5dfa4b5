@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "32e8793e_894e1f48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-02-15T02:48:37Z",
+      "side": 1,
+      "message": "\u003e Maybe  sdk_version: \"none\"  and  system_modules: \"none\" ?\n\nI think this addresses *some* of the targets in the allowlist (like `core-all`)\n\nBut there are other libcore targets that depend on non empty system modules (as an example, `core-lambda-stubs` uses `core-all-system-modules`). We could add these system modules to an allowlist, but then we end up with a different allowlist.\n\n\n\u003e dependencies via  static_libs  are not relevant w.r.t NewApi checks ...\n\nAck, thanks for the explanation",
+      "parentUuid": "eff14f68_334f8a10",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "3e2bb84fef43e5da76bcdb0012f8fb95d5dfa4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8a020a7a_8da44c6d",
