@@ -22,6 +22,7 @@ import (
 	"strings"
 
 	"android/soong/bazel"
+	"android/soong/starlark_fmt"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/bootstrap"
@@ -860,14 +861,14 @@ func createArchPropTypeDesc(props reflect.Type) []archPropTypeDesc {
 		for i, arch := range archTypeList {
 			var variants []string
 
-			for _, archVariant := range archVariants[arch] {
-				archVariant := variantReplacer.Replace(archVariant)
-				variants = append(variants, proptools.FieldNameForProperty(archVariant))
-			}
-			for _, cpuVariant := range cpuVariants[arch] {
-				cpuVariant := variantReplacer.Replace(cpuVariant)
-				variants = append(variants, proptools.FieldNameForProperty(cpuVariant))
-			}
+			// for _, archVariant := range archVariants[arch] {
+			// archVariant := variantReplacer.Replace(archVariant)
+			// variants = append(variants, proptools.FieldNameForProperty(archVariant))
+			// }
+			//for _, cpuVariant := range cpuVariants[arch] {
+			//cpuVariant := variantReplacer.Replace(cpuVariant)
+			//variants = append(variants, proptools.FieldNameForProperty(cpuVariant))
+			//}
 			for _, feature := range archFeatures[arch] {
 				feature := variantReplacer.Replace(feature)
 				variants = append(variants, proptools.FieldNameForProperty(feature))
@@ -1309,10 +1310,10 @@ func getArchProperties(ctx BaseMutatorContext, archProperties interface{}, arch 
 			// },
 			v := variantReplacer.Replace(arch.ArchVariant)
 			if v != "" {
-				prefix := "arch." + archType.Name + "." + v
-				if variantProperties, ok := getChildPropertyStruct(ctx, archStruct, v, prefix); ok {
-					result = append(result, variantProperties)
-				}
+				// prefix := "arch." + archType.Name + "." + v
+				// if variantProperties, ok := getChildPropertyStruct(ctx, archStruct, v, prefix); ok {
+				// result = append(result, variantProperties)
+				// }
 			}
 
 			// Handle cpu-variant-specific properties in the form:
@@ -1324,13 +1325,13 @@ func getArchProperties(ctx BaseMutatorContext, archProperties interface{}, arch 
 			//     },
 			// },
 			if arch.CpuVariant != arch.ArchVariant {
-				c := variantReplacer.Replace(arch.CpuVariant)
-				if c != "" {
-					prefix := "arch." + archType.Name + "." + c
-					if cpuVariantProperties, ok := getChildPropertyStruct(ctx, archStruct, c, prefix); ok {
-						result = append(result, cpuVariantProperties)
-					}
-				}
+				// c := variantReplacer.Replace(arch.CpuVariant)
+				// if c != "" {
+				// prefix := "arch." + archType.Name + "." + c
+				// if cpuVariantProperties, ok := getChildPropertyStruct(ctx, archStruct, c, prefix); ok {
+				// result = append(result, cpuVariantProperties)
+				// }
+				// }
 			}
 
 			// Handle arch-feature-specific properties in the form:
@@ -1765,16 +1766,9 @@ func decodeArch(os OsType, arch string, archVariant, cpuVariant *string, abi []s
 		}
 	}
 
-	if a.ArchVariant == "" {
-		// Set ArchFeatures from the default arch features.
-		if featureMap, ok := defaultArchFeatureMap[os]; ok {
-			a.ArchFeatures = featureMap[archType]
-		}
-	} else {
-		// Set ArchFeatures from the arch type.
-		if featureMap, ok := archFeatureMap[archType]; ok {
-			a.ArchFeatures = featureMap[a.ArchVariant]
-		}
+	// Set ArchFeatures from the arch type.
+	if featureMap, ok := archFeatureMap[archType]; ok {
+		a.ArchFeatures = featureMap[a.ArchVariant]
 	}
 
 	return a, nil
@@ -2209,4 +2203,41 @@ func mergeStructs(ctx ArchVariantContext, propertyStructs []reflect.Value, prope
 	}
 
 	return value
+}
+
+func printArchTypeStarlarkDict(dict map[ArchType][]string) string {
+	valDict := make(map[string]string, len(dict))
+	for k, v := range dict {
+		valDict[k.String()] = starlark_fmt.PrintStringList(v, 1)
+	}
+	return starlark_fmt.PrintDict(valDict, 0)
+}
+
+func printArchTypeNestedStarlarkDict(dict map[ArchType]map[string][]string) string {
+	valDict := make(map[string]string, len(dict))
+	for k, v := range dict {
+		valDict[k.String()] = starlark_fmt.PrintStringListDict(v, 1)
+	}
+	return starlark_fmt.PrintDict(valDict, 0)
+}
+
+func StarlarkArchConfigurations() string {
+	return fmt.Sprintf(`
+_arch_to_variants = %s
+
+_arch_to_cpu_variants = %s
+
+_arch_to_features = %s
+
+_arch_feature_for_arch_variant = %s
+
+arch_to_variants = _arch_to_variants
+arch_to_cpu_variants = _arch_to_cpu_variants
+arch_to_features = _arch_to_features
+arch_feature_for_arch_variants = _arch_feature_for_arch_variant
+`, printArchTypeStarlarkDict(archVariants),
+		printArchTypeStarlarkDict(cpuVariants),
+		printArchTypeStarlarkDict(archFeatures),
+		printArchTypeNestedStarlarkDict(archFeatureMap),
+	)
 }
