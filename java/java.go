@@ -2011,8 +2011,17 @@ type javaLibraryAttributes struct {
 }
 
 func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext) *javaLibraryAttributes {
-	//TODO(b/209577426): Support multiple arch variants
-	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs))
+	var srcs bazel.LabelListAttribute
+	archVariantProps := m.GetArchVariantProperties(ctx, &CommonProperties{})
+	for axis, configToProps := range archVariantProps {
+		for config, _props := range configToProps {
+			if archProps, ok := _props.(*CommonProperties); ok {
+				archSrcs := android.BazelLabelForModuleSrcExcludes(ctx, archProps.Srcs, archProps.Exclude_srcs)
+				srcs.SetSelectValue(axis, config, archSrcs)
+			}
+		}
+	}
+
 	attrs := &javaLibraryAttributes{
 		Srcs: srcs,
 	}
@@ -2021,7 +2030,10 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		attrs.Javacopts = bazel.MakeStringListAttribute(m.properties.Javacflags)
 	}
 
-	var deps bazel.LabelList
+	// TODO(b/) remove forced dependency on android.jar
+	deps := bazel.LabelList{Includes: []bazel.Label{bazel.Label{
+		Label: "//prebuilts/sdk:android_sdk_java_import",
+	}}}
 	if m.properties.Libs != nil {
 		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Libs))
 	}
