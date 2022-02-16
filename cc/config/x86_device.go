@@ -142,6 +142,10 @@ func (t *toolchainX86) GccTriple() string {
 	return "x86_64-linux-android"
 }
 
+func (t *toolchainX86) HasGccBin() bool {
+	return false
+}
+
 func (t *toolchainX86) GccVersion() string {
 	return x86GccVersion
 }

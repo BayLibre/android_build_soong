@@ -186,6 +186,10 @@ func (t *toolchainLinux) GccTriple() string {
 	return "${config.LinuxGccTriple}"
 }
 
+func (t *toolchainLinux) HasGccBin() bool {
+	return false
+}
+
 func (t *toolchainLinux) GccVersion() string {
 	return linuxGccVersion
 }

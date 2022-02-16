@@ -92,6 +92,10 @@ func (t *toolchainLinuxBionic) GccTriple() string {
 	return "x86_64-linux-android"
 }
 
+func (t *toolchainLinuxBionic) HasGccBin() bool {
+	return false
+}
+
 func (t *toolchainLinuxBionic) GccVersion() string {
 	return "4.9"
 }

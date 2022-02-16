@@ -202,6 +202,10 @@ func (t *toolchainDarwinArm) GccTriple() string {
 	panic("unimplemented")
 }
 
+func (t *toolchainDarwinArm) HasGccBin() bool {
+	return false
+}
+
 func (t *toolchainDarwinArm) GccVersion() string {
 	panic("unimplemented")
 }
@@ -212,6 +216,10 @@ func (t *toolchainDarwinX86) GccRoot() string {
 
 func (t *toolchainDarwinX86) GccTriple() string {
 	return "${config.DarwinGccTriple}"
+}
+
+func (t *toolchainDarwinX86) HasGccBin() bool {
+	return false
 }
 
 func (t *toolchainDarwinX86) GccVersion() string {

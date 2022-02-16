@@ -180,6 +180,10 @@ func (t *toolchainWindows) GccTriple() string {
 	return "${config.WindowsGccTriple}"
 }
 
+func (t *toolchainWindows) HasGccBin() bool {
+	return true
+}
+
 func (t *toolchainWindows) GccVersion() string {
 	return windowsGccVersion
 }

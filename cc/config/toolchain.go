@@ -75,6 +75,7 @@ type Toolchain interface {
 
 	GccRoot() string
 	GccTriple() string
+	HasGccBin() bool
 	// GccVersion should return a real value, not a ninja reference
 	GccVersion() string
 	ToolPath() string
@@ -281,6 +282,11 @@ func ScudoMinimalRuntimeLibrary(t Toolchain) string {
 
 func LibFuzzerRuntimeLibrary(t Toolchain) string {
 	return LibclangRuntimeLibrary(t, "fuzzer")
+}
+
+// Return true if this toolchain needs flag "-B" + t.GccRoot() + "/" + t.GccTriple() + "/bin"
+func NeedToolPathBFlag(t Toolchain) bool {
+	return t.ToolPath() != "" || t.HasGccBin()
 }
 
 func ToolPath(t Toolchain) string {

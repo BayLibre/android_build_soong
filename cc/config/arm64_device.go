@@ -163,6 +163,10 @@ func (t *toolchainArm64) GccTriple() string {
 	return "aarch64-linux-android"
 }
 
+func (t *toolchainArm64) HasGccBin() bool {
+	return false
+}
+
 func (t *toolchainArm64) GccVersion() string {
 	return arm64GccVersion
 }

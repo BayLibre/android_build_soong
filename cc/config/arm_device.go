@@ -256,6 +256,10 @@ func (t *toolchainArm) GccTriple() string {
 	return gccTriple
 }
 
+func (t *toolchainArm) HasGccBin() bool {
+	return false
+}
+
 func (t *toolchainArm) GccVersion() string {
 	return armGccVersion
 }
