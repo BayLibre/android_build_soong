@@ -25,6 +25,12 @@
 
 # Products that are broken or otherwise don't work with multiproduct_kati
 SKIPPED_PRODUCTS=(
+    hikey
+    hikey_tv
+    hikey32
+    hikey64_only
+    hikey960
+    hikey960_tv
     mainline_sdk
 )
 
