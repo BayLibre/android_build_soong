@@ -22,6 +22,30 @@
       },
       "revId": "ab9720836b2f905c5a0bfb1389a39e6bfde09aed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8921e0ed_28096a3b",
+        "filename": "android/util.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-17T23:53:19Z",
+      "side": 1,
+      "message": "That would sort s twice, but I think it makes sense to split the repeated part out into a helper function",
+      "parentUuid": "f9674d46_9effebcf",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 118,
+        "endChar": 2
+      },
+      "revId": "ab9720836b2f905c5a0bfb1389a39e6bfde09aed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
