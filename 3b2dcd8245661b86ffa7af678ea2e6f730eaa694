@@ -16,6 +16,23 @@
       "message": "well, it builds, but I\u0027m sure there are diffs in the binaries (will verify this by checking the presubmit artifacts), but I don\u0027t know how to evaluate whether they\u0027re acceptable or not.",
       "revId": "3b2dcd8245661b86ffa7af678ea2e6f730eaa694",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e66df11f_d981a8ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-02-17T21:01:04Z",
+      "side": 1,
+      "message": "🎉\n\nThat\u0027s great! Thanks!",
+      "revId": "3b2dcd8245661b86ffa7af678ea2e6f730eaa694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
