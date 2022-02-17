@@ -26,6 +26,7 @@
 # Products that are broken or otherwise don't work with multiproduct_kati
 SKIPPED_PRODUCTS=(
     mainline_sdk
+    ndk
 )
 
 # To track how long we took to startup. %N isn't supported on Darwin, but
