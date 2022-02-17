@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef0c103c_91b73e37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-02-17T20:24:51Z",
+      "side": 1,
+      "message": "Other devices require extra firmware to boot, but can build without it, why isn\u0027t that the case here?",
+      "revId": "ff789084b1a1d387bcea2deb2058ae1e42cdcdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
