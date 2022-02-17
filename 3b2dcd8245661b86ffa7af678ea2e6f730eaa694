@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "611d3cfd_4d2010a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2022-02-17T21:02:44Z",
+      "side": 1,
+      "message": "As long as the list of exported symbols is the same we don\u0027t really care. The shared libraries are just stubs that exist only to export those symbols. The static libraries matter a bit more since they\u0027re used as-is, but as long as they\u0027re not accidentally the wrong ABI or something like that I doubt any differences are serious.",
+      "parentUuid": "7d51cb31_9b500cab",
+      "revId": "3b2dcd8245661b86ffa7af678ea2e6f730eaa694",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e66df11f_d981a8ab",
