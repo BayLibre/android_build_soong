@@ -118,6 +118,24 @@
       "message": "Why has this been separated out from the loop below? This duplicates the call to parseFinalizedPrebuiltPath.",
       "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "958e1ea4_80bbb784",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-17T17:00:57Z",
+      "side": 1,
+      "message": "Just took a look at the follow up change and it seems to be because that extracts the logic into a local function getLatest for reuse. I think that would make more sense as part of this refactoring. At least it would make it more obvious why this was extracted.",
+      "parentUuid": "1b6ef707_895e455c",
+      "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
