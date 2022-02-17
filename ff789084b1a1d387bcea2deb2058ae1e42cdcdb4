@@ -88,6 +88,24 @@
       "parentUuid": "3cb737a1_040d4949",
       "revId": "ff789084b1a1d387bcea2deb2058ae1e42cdcdb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b822e2a8_575c7011",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-17T22:40:41Z",
+      "side": 1,
+      "message": "In an Android.mk file add something like:\n\n```\nifndef TARGET_LINARO_VENDOR_VERSION\ndroidcore: $(PRODUCT_OUT)/missing-vendor-firmware\n$(PRODUCT_OUT)/missing-vendor-firmware:\n\techo \"Missing Linaro Vendor Package!\n\techo \"Please download new binaries here:\"\n\techo \"https://releases.linaro.org/android/aosp-linaro-vendor-package/extract-linaro_devices-20220210.tgz\"\n\techo \"And extract in the ANDROID_TOP_DIR\"\n\tfalse\nendif\n```\n\nYou would also need to use inherit-product-if-exists and -include to make sure the product makefiles can be parsed without the vendor package without erroring.\n\nAlso, why is the vendor package required?  Shouldn\u0027t the firmware be installed in the vendor image, and then you can build just a system.img without the vendor package and reflash it leaving vendor.img in place?",
+      "parentUuid": "b8b854e7_ca56fa47",
+      "revId": "ff789084b1a1d387bcea2deb2058ae1e42cdcdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
