@@ -16,6 +16,24 @@
       "message": "Other devices require extra firmware to boot, but can build without it, why isn\u0027t that the case here?",
       "revId": "ff789084b1a1d387bcea2deb2058ae1e42cdcdb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c65ce168_61eec1e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1131915
+      },
+      "writtenOn": "2022-02-17T20:28:08Z",
+      "side": 1,
+      "message": "We can do that but I\u0027d rather not enable building broken images. Folks could easily forget to download the Linaro vendor firmware blob and then wonder why their images aren\u0027t working.",
+      "parentUuid": "ef0c103c_91b73e37",
+      "revId": "ff789084b1a1d387bcea2deb2058ae1e42cdcdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
