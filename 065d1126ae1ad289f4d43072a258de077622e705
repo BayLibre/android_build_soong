@@ -34,6 +34,24 @@
       "parentUuid": "5d66f67e_9aba2619",
       "revId": "065d1126ae1ad289f4d43072a258de077622e705",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b86b9ae_007fd0f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2022-02-17T21:18:18Z",
+      "side": 1,
+      "message": "After offline conversation, we can merge this and revert if the clang update gets reverted.",
+      "parentUuid": "e4891c0b_60336c8f",
+      "revId": "065d1126ae1ad289f4d43072a258de077622e705",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
