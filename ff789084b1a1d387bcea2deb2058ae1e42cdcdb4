@@ -34,6 +34,24 @@
       "parentUuid": "ef0c103c_91b73e37",
       "revId": "ff789084b1a1d387bcea2deb2058ae1e42cdcdb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf4b111_808e70b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-17T20:47:10Z",
+      "side": 1,
+      "message": "What about generating rules that fail to build instead of using $(error)?  That was build_test will still verify the product variables, but the build will still fail to produce a system image.",
+      "parentUuid": "c65ce168_61eec1e4",
+      "revId": "ff789084b1a1d387bcea2deb2058ae1e42cdcdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
