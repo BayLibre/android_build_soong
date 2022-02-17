@@ -138,11 +138,14 @@ func (t *EventTracer) AddProcResInfo(name string, state *os.ProcessState) {
 
 // Begin starts tracing the event.
 func (t *EventTracer) Begin(name, desc string, _ tracer.Thread) {
-	t.push(newEvent(name, desc))
+	x := newEvent(name, desc)
+	t.push(x)
 }
 
 // End performs post calculations such as duration of the event, aggregates
 // the collected performance information into PerfInfo protobuf message.
 func (t *EventTracer) End(tracer.Thread) soong_metrics_proto.PerfInfo {
-	return t.pop().perfInfo()
+	x := t.pop().perfInfo()
+	//fmt.Println("End trace", *x.Name, *x.StartTime, *x.RealTime, *x.Description)
+	return x
 }

@@ -831,6 +831,9 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 			cmd.ImplicitOutput(PathForBazelOut(ctx, outputPath))
 		}
 		for _, inputPath := range buildStatement.InputPaths {
+			if strings.Contains(inputPath, "bazel_tools") {
+				fmt.Println("@@@@@@@@", inputPath)
+			}
 			cmd.Implicit(PathForBazelOut(ctx, inputPath))
 		}
 
@@ -848,7 +851,8 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 		// build statement have later timestamps than the outputs.
 		rule.Restat()
 
-		rule.Build(fmt.Sprintf("bazel %d", index), buildStatement.Mnemonic)
+		desc := fmt.Sprintf("%s: %s", buildStatement.Mnemonic, buildStatement.OutputPaths)
+		rule.Build(fmt.Sprintf("bazel %d", index), desc)
 	}
 }
 

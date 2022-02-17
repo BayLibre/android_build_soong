@@ -46,6 +46,7 @@ func runNinjaForBuild(ctx Context, config Config) {
 		"-d", "keepdepfile",
 		"-d", "keeprsp",
 		"-d", "stats",
+		"-d", "explain",
 		"--frontend_file", fifo,
 	}
 
