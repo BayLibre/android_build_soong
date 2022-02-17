@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef1b994_70d02a7a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1337669
+      },
+      "writtenOn": "2022-02-17T06:50:41Z",
+      "side": 1,
+      "message": "ahh so this is what you meant by \"no cflags for ramdisk targets\". It finally finally clicked...",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 33
+      },
+      "revId": "2c8075cd6fc9cf3e7347e1747e751389c8d148e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
