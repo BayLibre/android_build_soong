@@ -70,6 +70,24 @@
       "parentUuid": "5bf4b111_808e70b4",
       "revId": "ff789084b1a1d387bcea2deb2058ae1e42cdcdb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8b854e7_ca56fa47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2022-02-17T22:13:48Z",
+      "side": 1,
+      "message": "Sorry, I\u0027m not sure I understand the distinction in fail to build vs $(error). Do you have an example of what you mean?",
+      "parentUuid": "3cb737a1_040d4949",
+      "revId": "ff789084b1a1d387bcea2deb2058ae1e42cdcdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
