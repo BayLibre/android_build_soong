@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b410ba_d156182e",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-02-17T22:04:18Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 411,
+        "startChar": 8,
+        "endLine": 411,
+        "endChar": 9
+      },
+      "revId": "01b6473787cb0694de703def8f6a3e477b67014c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cf0e7de_f577f8d7",
+        "filename": "android/paths.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-02-17T22:04:18Z",
+      "side": 1,
+      "message": "should this be removed?",
+      "range": {
+        "startLine": 671,
+        "startChar": 22,
+        "endLine": 671,
+        "endChar": 74
+      },
+      "revId": "01b6473787cb0694de703def8f6a3e477b67014c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
