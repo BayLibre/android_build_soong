@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3d97d0b_108ffde7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-17T16:56:44Z",
+      "side": 1,
+      "message": "I recommend that you rebase this down the change stack below the one called \"Add base sdk extension version to the config\".\n\nI think I understand broadly what the changes are intended for but have added some comments just to clarify.",
+      "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7271248_4627dcb9",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-17T16:56:44Z",
+      "side": 1,
+      "message": "AIUI this is a general method that can be used to parse both .jar and .txt files. It combines the functionality of both parseJarPath and parseApiFilePath, including the checking of valid scopes.\n\nSome documentation would be helpful.",
+      "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0523755_41f3b03f",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-17T16:56:44Z",
+      "side": 1,
+      "message": "AIUI this logic has changed to make it easier to handle the extension directory having a slightly different structure to the existing directories.",
+      "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "179f1801_3ba35669",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-17T16:56:44Z",
+      "side": 1,
+      "message": "Some documentation would be helpful.",
+      "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d61ccb2_c8992b1a",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-17T16:56:44Z",
+      "side": 1,
+      "message": "Some documentation would be helpful. Especially if it included an example of an input file structure and the expected output of this method.",
+      "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b09aa34d_0e074174",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-17T16:56:44Z",
+      "side": 1,
+      "message": "Some documentation would be helpful. Especially if it included an example of an input file structure and the expected output of this method.",
+      "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b6ef707_895e455c",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-17T16:56:44Z",
+      "side": 1,
+      "message": "Why has this been separated out from the loop below? This duplicates the call to parseFinalizedPrebuiltPath.",
+      "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
