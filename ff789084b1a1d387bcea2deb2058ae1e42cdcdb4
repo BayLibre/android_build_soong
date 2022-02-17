@@ -106,6 +106,24 @@
       "parentUuid": "b8b854e7_ca56fa47",
       "revId": "ff789084b1a1d387bcea2deb2058ae1e42cdcdb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2aba810_88c24dfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2022-02-17T23:24:02Z",
+      "side": 1,
+      "message": "Thanks for the pointer, I\u0027ll give that a try.\n\nAs for vendor-package requirement, the vendor objects do end up in the vendor image, but also in the boot.img ramdisk, as hikey960 doesn\u0027t support abootimg v3.\n\nSo I suspect the kernel task that runs mkdtimg from the vendor pkg is whats causing the trouble. I may be able to drop that as the dtb img was mostly for the legacy hisi bootloader which isn\u0027t used by default(though I\u0027ve tried to preserve support).",
+      "parentUuid": "b822e2a8_575c7011",
+      "revId": "ff789084b1a1d387bcea2deb2058ae1e42cdcdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
