@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f4de8f5_cd519886",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-02-18T14:49:05Z",
+      "side": 1,
+      "message": "Thanks for the review, added comments to the functions for clarity.\n\n\u003e I recommend that you rebase this down the change stack below the one called \"Add base sdk extension version to the config\".\n\nWhat would that achieve..?",
+      "parentUuid": "d3d97d0b_108ffde7",
+      "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7271248_4627dcb9",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-17T16:56:44Z",
       "side": 1,
       "message": "AIUI this is a general method that can be used to parse both .jar and .txt files. It combines the functionality of both parseJarPath and parseApiFilePath, including the checking of valid scopes.\n\nSome documentation would be helpful.",
+      "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e27a3882_4e3d38e8",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-02-18T14:49:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7271248_4627dcb9",
       "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16509588_497b6327",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-02-18T14:49:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a0523755_41f3b03f",
+      "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "179f1801_3ba35669",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-02-17T16:56:44Z",
       "side": 1,
       "message": "Some documentation would be helpful.",
+      "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b86dd12_4cc729a6",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-02-18T14:49:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "179f1801_3ba35669",
       "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -86,6 +158,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d32b23d_a4297747",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-02-18T14:49:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d61ccb2_c8992b1a",
+      "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b09aa34d_0e074174",
@@ -99,6 +189,24 @@
       "writtenOn": "2022-02-17T16:56:44Z",
       "side": 1,
       "message": "Some documentation would be helpful. Especially if it included an example of an input file structure and the expected output of this method.",
+      "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c909541_0634d5dc",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-02-18T14:49:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b09aa34d_0e074174",
       "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -134,6 +242,24 @@
       "side": 1,
       "message": "Just took a look at the follow up change and it seems to be because that extracts the logic into a local function getLatest for reuse. I think that would make more sense as part of this refactoring. At least it would make it more obvious why this was extracted.",
       "parentUuid": "1b6ef707_895e455c",
+      "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2619d4eb_51f77e7f",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-02-18T14:49:05Z",
+      "side": 1,
+      "message": "I thought it was simpler this way, even ignoring the next CL. This loop just creates all the versioned api modules, and the bits below does the \"figuring out the latest\" bits. Could arguably be in different named functions too. The duplicated parseFinalizedPrebuiltPath calls probably aren\u0027t significant.\n\nCreating the getLatest closure now is a bit weird because there\u0027d only be a single call to it in this CL, so looks needlessly complicated. End of the day, the end result is the same when the topic is merged :)",
+      "parentUuid": "958e1ea4_80bbb784",
       "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
