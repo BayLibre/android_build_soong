@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c395714_309c03e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-18T15:26:12Z",
+      "side": 1,
+      "message": "Some nits.",
+      "revId": "9bc9ce9edc912ffb5aa3f7ea4f76eff7a8d70c04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ea40997_a13782d2",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-18T15:26:12Z",
+      "side": 1,
+      "message": "Generally Go doc comments start with the name of the thing being documented. e.g. in this case it would be:\n\n// parsePrebuiltPath can parse....\n\nThere is an inspection in Intellij Ultimate\u0027s Go support to flag comments which don\u0027t match the pattern.",
+      "range": {
+        "startLine": 64,
+        "startChar": 3,
+        "endLine": 64,
+        "endChar": 21
+      },
+      "revId": "9bc9ce9edc912ffb5aa3f7ea4f76eff7a8d70c04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b88fc5c8_b2c04b1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-18T15:26:12Z",
+      "side": 1,
+      "message": "Not much.\n\nI generally do refactoring before adding new code. However, there is no overlap between this change and the one below it so ultimately the order does not matter. I also thought that you might want to submit the refactoring first so that you can group the two functional changes together as they pretty much need to go in together",
+      "parentUuid": "2f4de8f5_cd519886",
+      "revId": "009e8e97452883b0c7ba91c012fe49f4897fecee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7271248_4627dcb9",
