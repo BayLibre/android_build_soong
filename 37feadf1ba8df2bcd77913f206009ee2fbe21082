@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f38af1b3_eafd3036",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-02-21T16:43:54Z",
+      "side": 1,
+      "message": "Commented on this in the first CL -- there\u0027s only one user so it\u0027s a little strange to have a function there. They\u0027re being submitted together though, so no real difference.",
+      "parentUuid": "98e538f4_26feaae7",
+      "revId": "37feadf1ba8df2bcd77913f206009ee2fbe21082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ea7fcbf_40ba5237",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-02-21T16:25:29Z",
       "side": 1,
       "message": "I think it would be worth adding a test to see what happens for \"bar\". It should behave the same as foo even though it is missing extension 1.",
+      "revId": "37feadf1ba8df2bcd77913f206009ee2fbe21082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ccf57f0_f0362ffd",
+        "filename": "java/prebuilt_apis_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-02-21T16:43:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ea7fcbf_40ba5237",
       "revId": "37feadf1ba8df2bcd77913f206009ee2fbe21082",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
