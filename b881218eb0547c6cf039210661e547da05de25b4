@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2abbd866_a392373c",
+        "filename": "java/base.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-02-21T07:28:22Z",
+      "side": 1,
+      "message": "nit: remove this as aidl is arch neutral?",
+      "range": {
+        "startLine": 234,
+        "startChar": 56,
+        "endLine": 234,
+        "endChar": 69
+      },
+      "revId": "b881218eb0547c6cf039210661e547da05de25b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
