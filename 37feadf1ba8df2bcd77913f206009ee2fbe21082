@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98e538f4_26feaae7",
+        "filename": "java/prebuilt_apis.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-21T16:25:29Z",
+      "side": 1,
+      "message": "I think the extraction of this function would be better done in the refactoring.",
+      "revId": "37feadf1ba8df2bcd77913f206009ee2fbe21082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea7fcbf_40ba5237",
+        "filename": "java/prebuilt_apis_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-02-21T16:25:29Z",
+      "side": 1,
+      "message": "I think it would be worth adding a test to see what happens for \"bar\". It should behave the same as foo even though it is missing extension 1.",
+      "revId": "37feadf1ba8df2bcd77913f206009ee2fbe21082",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
