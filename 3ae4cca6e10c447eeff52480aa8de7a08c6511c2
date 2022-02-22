@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7eb96d7_47934d27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-02-22T10:36:39Z",
+      "side": 1,
+      "message": "I was adding sh_test_host with some duplicate modules in data property and encountered error (duplicate goal). Now, I don\u0027t use the module type and not needed any longer.",
+      "revId": "3ae4cca6e10c447eeff52480aa8de7a08c6511c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
