@@ -569,11 +569,8 @@ var (
 		"prebuilt_car-ui-androidx-constraintlayout-solver",
 		"prebuilt_car-ui-androidx-constraintlayout-solver-nodeps",
 
-		"prebuilt_art-module-host-exports_okhttp-norepackage@current",        // aosp/1999250, needs Jars (arch variant)
-		"prebuilt_conscrypt-unbundled",                                       // aosp/1999250, needs Jars (arch variant)
-		"prebuilt_conscrypt-module-host-exports_conscrypt-unbundled@current", // aosp/1999250, needs Jars (arch variant)
-		"prebuilt_platform-robolectric-4.4-prebuilt",                         // aosp/1999250, needs .aar support in Jars
-		"prebuilt_platform-robolectric-4.5.1-prebuilt",                       // aosp/1999250, needs .aar support in Jars
+		"prebuilt_platform-robolectric-4.4-prebuilt",   // aosp/1999250, needs .aar support in Jars
+		"prebuilt_platform-robolectric-4.5.1-prebuilt", // aosp/1999250, needs .aar support in Jars
 	}
 
 	// Per-module denylist of cc_library modules to only generate the static
