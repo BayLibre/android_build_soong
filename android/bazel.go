@@ -381,7 +381,231 @@ var (
 
 	// Per-module allowlist to always opt modules in of both bp2build and mixed builds.
 	bp2buildModuleAlwaysConvertList = []string{
+		//  //prebuilts/module_sdk/art/1
+		"art-module-sdk_core-libart@1",
+		"art-module-sdk_core-lambda-stubs@1",
+		"art-module-sdk_stable.core.platform.api.stubs@1",
+		"art-module-sdk_core.current.stubs@1",
+		"art-module-sdk_core-generated-annotation-stubs@1",
+		"art-module-sdk_art-module-intra-core-api-stubs-system-modules-lib@1",
+		"art-module-sdk_core-libart@1",
+		"art-module-sdk_core-oj@1",
+		"art-module-sdk_core-current-stubs-for-system-modules@1",
+		"art-module-sdk_core-lambda-stubs-for-system-modules@1",
+		"art-module-sdk_legacy.core.platform.api.stubs@1",
+		"art-module-sdk_art.module.api.annotations.for.system.modules@1",
+		"art-module-sdk_core.module_lib.stubs@1",
+		"art-module-sdk_art.module.intra.core.api.stubs@1",
+		"art-module-sdk_stub-annotations@1",
+		"art-module-sdk_okhttp@1",
+		"art-module-sdk_apache-xml@1",
+		"art-module-sdk_bouncycastle@1",
+
+		//  //prebuilts/sdk/current/androidx
+		"androidx.paging_paging-common-nodeps",
+		"androidx.resourceinspection_resourceinspection-annotation-nodeps",
+		"androidx.lifecycle_lifecycle-common-nodeps",
+		"androidx.collection_collection-nodeps",
+		"androidx.lifecycle_lifecycle-common-java8-nodeps",
+		"androidx.arch.core_core-common-nodeps",
+		"androidx.collection_collection-ktx-nodeps",
+		"androidx.concurrent_concurrent-futures-nodeps",
+		"androidx.paging_paging-common-ktx-nodeps",
+		"androidx.room_room-migration-nodeps",
+		"androidx.room_room-common-nodeps",
+		"androidx.annotation_annotation-nodeps",
+
+		//  //prebuilts/module_sdk/art/current/sdk
+		"art-module-sdk_art-module-intra-core-api-stubs-system-modules-lib@current",
+		"art-module-sdk_core-lambda-stubs@current",
+		"art-module-sdk_art.module.intra.core.api.stubs@current",
+		"art-module-sdk_core-generated-annotation-stubs@current",
+		"art-module-sdk_core-libart@current",
+		"art-module-sdk_core-oj@current",
+		"art-module-sdk_art.module.api.annotations.for.system.modules@current",
+		"art-module-sdk_core-lambda-stubs-for-system-modules@current",
+		"art-module-sdk_stub-annotations@current",
+		"art-module-sdk_okhttp@current",
+		"art-module-sdk_apache-xml@current",
+		"art-module-sdk_bouncycastle@current",
+
+		//  //packages/services/Car/tests/BugReportApp/libs
+		"car-br-google-api-client-android-jar",
+		"car-br-google-http-client-jackson2-jar",
+		"car-br-google-http-client-android-jar",
+		"car-br-google-oauth-client-jar",
+		"car-br-google-api-java-client-jar",
+		"car-br-grpc-context-jar",
+		"car-br-google-http-client-jar",
+		"car-br-opencensus-contrib-http-util-jar",
+		"car-br-google-storage-services-jar",
+		"car-br-opencensus-api-jar",
+		"car-br-jackson-core-jar",
+
+		//  //packages/apps/TV/libs
+		"tv-error-prone-annotations-jar",
+		"tv-guava-android-jar",
+		"tv-auto-common-jar",
+		"tv-javax-annotations-jar",
+		"tv-lib-truth",
+		"tv-auto-factory-jar",
+		"tv-auto-value-jar",
+		"tv-guava-jre-jar",
+		"tv-lib-dagger",
+		"tv-guava-failureaccess-jar",
+		"tv-google-java-format-jar",
+
+		//  //prebuilts/module_sdk/art/1/test-exports
+		"art-module-test-exports_art_cts_jvmti_test_library@1",
+		"art-module-test-exports_expected_cts_outputs@1",
+		"art-module-test-exports_core-tests-support@1",
+		"art-module-test-exports_libcore-expectations-virtualdeviceknownfailures-jar@1",
+		"art-module-test-exports_core-test-rules@1",
+		"art-module-test-exports_core-compat-test-rules@1",
+		"art-module-test-exports_libcore-expectations-knownfailures-jar@1",
+		"art-module-test-exports_core-libart-for-host@1",
+		"art-module-test-exports_okhttp-for-host@1",
+		"art-module-test-exports_okhttp-tests-nojarjar@1",
+		"art-module-test-exports_okhttp-nojarjar@1",
+
+		//  //prebuilts/module_sdk/art/current/test-exports
+		"art-module-test-exports_art_cts_jvmti_test_library@current",
+		"art-module-test-exports_expected_cts_outputs@current",
+		"art-module-test-exports_libcore-expectations-virtualdeviceknownfailures-jar@current",
+		"art-module-test-exports_libcore-expectations-knownfailures-jar@current",
+		"art-module-test-exports_core-compat-test-rules@current",
+		"art-module-test-exports_core-tests-support@current",
+		"art-module-test-exports_core-test-rules@current",
+		"art-module-test-exports_core-libart-for-host@current",
+		"art-module-test-exports_okhttp-for-host@current",
+		"art-module-test-exports_okhttp-tests-nojarjar@current",
+		"art-module-test-exports_okhttp-nojarjar@current",
+
+		//  //prebuilts/misc/common/asm
+		"asm-analysis-7.0",
+		"asm-7.0",
+		"asm-util-7.0",
+		"asm-tree-7.0",
+		"asm-commons-7.0",
+		"asm-tree-6.0",
+		"asm-6.0",
+		"asm-util-6.0",
+		"asm-commons-6.0",
+		"asm-analysis-6.0",
+
+		//  //prebuilts/misc/common/android-support-test
+		"android-support-test-monitor-nodep",
+		"espresso-intents-nodep",
+		"android-support-test-rules-nodep",
+		"espresso-contrib-nodep",
+		"espresso-web-nodep",
+		"espresso-idling-resource-nodep",
+		"android-support-test-runner-nodep",
+		"espresso-core-nodep",
+
+		//  //external/kotlinc
+		"kotlin-annotations",
+		"kotlin-test",
+		"kotlin-stdlib-jdk7",
+		"kotlin-reflect",
+		"kotlin-stdlib-jdk8",
+		"kotlin-stdlib",
+
+		// TODO(b/221082840) convert java_imports in //packages/apps/Car/libs/car-ui-lib/...
+		// "car-ui-androidx-annotation",
+		// "car-ui-androidx-annotation-nodeps",
+		// "car-ui-androidx-collection",
+		// "car-ui-androidx-collection-nodeps",
+		// "car-ui-androidx-core-common",
+		// "car-ui-androidx-core-common-nodeps",
+		// "car-ui-androidx-lifecycle-common",
+		// "car-ui-androidx-lifecycle-common-nodeps",
+		// "car-ui-androidx-constraintlayout-solver",
+		// "car-ui-androidx-constraintlayout-solver-nodeps",
+
+		//  //prebuilts/sdk/current/extras/app-toolkit
+		"android-arch-core-common-nodeps",
+		"android-arch-lifecycle-common-nodeps",
+		"android-arch-room-common-nodeps",
+		"android-arch-paging-common-nodeps",
+		"android-arch-lifecycle-common-java8-nodeps",
+
+		//  //packages/modules/Cronet
+		"cronet_impl_platform_java",
+		"cronet_impl_common_java",
+		"cronet_impl_native_java",
+
+		//  //external/icu/icu4j
+		"icu4j-icutzdata",
+		"icu4j-testdata",
+		"icu4j-icudata",
+
+		"ub-uiautomator",
+		"androidx.test.uiautomator_uiautomator",
+
+		"android-support-annotations-nodeps",
+		"android-support-collections-nodeps",
+
+		"android-support-v8-renderscript-legacy",
+		"prebuilt_android-support-v8-renderscript",
+
+		"prebuilt_android-support-multidex",
+		"prebuilt_android-support-multidex-instrumentation",
+
+		"kxml2-android",
+		"kxml2-2.3.0",
+
+		"prebuilt_core-icu4j",
+		"i18n-module-sdk_core-icu4j@current",
+
+		"art-module-host-exports_art.module.api.annotations@1",
+		"art-module-host-exports_okhttp-norepackage@1",
+
+		"droiddriver-1.0.0-BETA1-prebuilt",
+		"droiddriver-0.9-prebuilt",
+
+		"prebuilt_core-icu4j-for-host",
+		"i18n-module-test-exports_core-icu4j-for-host@current",
+
+		"art-module-host-exports_art.module.api.annotations@current",
+		// "art-module-host-exports_okhttp-norepackage@current", needs Jars (arch variant)
+
+		"prebuilt_tzdata-testing",
+		"tzdata-module-test-exports_tzdata-testing@current",
+
+		// "prebuilt_conscrypt-unbundled", needs Jars (arch variant)
+		// "conscrypt-module-host-exports_conscrypt-unbundled@current", needs Jars (arch variant)
+
+		"prebuilt_conscrypt-for-host",
+		"conscrypt-module-test-exports_conscrypt-for-host@current",
+
+		"libincfs-prebuilt",
+		"ub-janktesthelper",
+		"drc_static_libs",
+		"tink-prebuilt",
+		//"platform-robolectric-4.4-prebuilt", needs .aar support in Jars
+		//"platform-robolectric-4.5.1-prebuilt", needs .aar support in Jars
+		"sl4a.locale_platform",
+		"sdk-core-lambda-stubs",
+		"android-support-constraint-layout-solver-nodeps",
+		"androidx-constraintlayout_constraintlayout-solver-nodeps",
+		"atf-prebuilt-jars",
+		"json-prebuilt",
+		"platform-robolectric-4.3.1-prebuilt",
+		"platform-robolectric-3.6.1-prebuilt",
+		"platform-robolectric-3.6.2-prebuilt",
+		"dexmaker-dx-target",
+		"zxing-core-1.7",
 		"junit-params-assertj-core",
+		"metalava-gradle-plugin-deps",
+		"ctsverifier-opencv",
+		"firebase-encoders-jar",
+		"glide-prebuilt",
+		"media-module-sdk_updatable-media@1",
+		"media-module-sdk_updatable-media@current",
+		"conscrypt-module-sdk_conscrypt@1",
+		"conscrypt-module-sdk_conscrypt@current",
+		"javax_annotation-api_1.3.2",
 	}
 
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
