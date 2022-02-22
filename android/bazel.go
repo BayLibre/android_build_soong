@@ -571,13 +571,13 @@ var (
 		"i18n-module-test-exports_core-icu4j-for-host@current",
 
 		"art-module-host-exports_art.module.api.annotations@current",
-		// "art-module-host-exports_okhttp-norepackage@current", needs Jars (arch variant)
+		"art-module-host-exports_okhttp-norepackage@current",
 
 		"prebuilt_tzdata-testing",
 		"tzdata-module-test-exports_tzdata-testing@current",
 
-		// "prebuilt_conscrypt-unbundled", needs Jars (arch variant)
-		// "conscrypt-module-host-exports_conscrypt-unbundled@current", needs Jars (arch variant)
+		"prebuilt_conscrypt-unbundled",
+		"conscrypt-module-host-exports_conscrypt-unbundled@current",
 
 		"prebuilt_conscrypt-for-host",
 		"conscrypt-module-test-exports_conscrypt-for-host@current",
