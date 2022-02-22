@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14ed046e_cf5efd69",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-22T19:35:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ae76475_2ca13aaf",
+      "range": {
+        "startLine": 192,
+        "startChar": 25,
+        "endLine": 192,
+        "endChar": 28
+      },
+      "revId": "af37a947a87cd6b806be8c8d8b7f625acd78536d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "439450bd_1a426cf7",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-02-21T19:27:30Z",
       "side": 1,
       "message": "b/211770050 doesn\u0027t really cover this cleanup, so I don\u0027t think it should be referenced in the TODO.",
+      "range": {
+        "startLine": 195,
+        "startChar": 29,
+        "endLine": 196,
+        "endChar": 12
+      },
+      "revId": "af37a947a87cd6b806be8c8d8b7f625acd78536d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48301732_e1025842",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-22T19:35:54Z",
+      "side": 1,
+      "message": "Filed b/220898484.",
+      "parentUuid": "439450bd_1a426cf7",
       "range": {
         "startLine": 195,
         "startChar": 29,
