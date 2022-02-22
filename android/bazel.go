@@ -396,8 +396,6 @@ var (
 	// A module can either be in this list or its directory allowlisted entirely
 	// in bp2buildDefaultConfig, but not both at the same time.
 	bp2buildModuleAlwaysConvertList = []string{
-		"junit-params-assertj-core",
-
 		//external/avb
 		"avbtool",
 		"libavb",
@@ -424,7 +422,10 @@ var (
 
 	// Per-module-type allowlist to always opt modules in of both bp2build and mixed builds
 	// when they have the same type as one listed.
-	bp2buildModuleTypeAlwaysConvertList = []string{}
+	bp2buildModuleTypeAlwaysConvertList = []string{
+		"java_import",
+		"java_import_host",
+	}
 
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
 	bp2buildModuleDoNotConvertList = []string{
@@ -562,6 +563,24 @@ var (
 		"error_prone_checkerframework_dataflow_nullaway", // TODO(b/219908977): "Error in fail: deps not allowed without srcs; move to runtime_deps?"
 
 		"libprotobuf-java-nano", // b/220869005, depends on non-public_current SDK
+
+		// TODO(b/221082840) convert java_imports in //packages/apps/Car/libs/car-ui-lib/...
+		"car-ui-androidx-annotation",
+		"car-ui-androidx-annotation-nodeps",
+		"car-ui-androidx-collection",
+		"car-ui-androidx-collection-nodeps",
+		"car-ui-androidx-core-common",
+		"car-ui-androidx-core-common-nodeps",
+		"car-ui-androidx-lifecycle-common",
+		"car-ui-androidx-lifecycle-common-nodeps",
+		"car-ui-androidx-constraintlayout-solver",
+		"car-ui-androidx-constraintlayout-solver-nodeps",
+
+		"art-module-host-exports_okhttp-norepackage@current",        // aosp/1999250, needs Jars (arch variant)
+		"conscrypt-unbundled",                                       // aosp/1999250, needs Jars (arch variant)
+		"conscrypt-module-host-exports_conscrypt-unbundled@current", // aosp/1999250, needs Jars (arch variant)
+		"platform-robolectric-4.4-prebuilt",                         // aosp/1999250, needs .aar support in Jars
+		"platform-robolectric-4.5.1-prebuilt",                       // aosp/1999250, needs .aar support in Jars
 	}
 
 	// Per-module denylist of cc_library modules to only generate the static
