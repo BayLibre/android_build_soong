@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9721d994_00ba7297",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-02-22T20:04:40Z",
+      "side": 1,
+      "message": "PTAL at this too, it\u0027s a small refactoring to support the test in https://r.android.com/1974259.",
+      "revId": "1ebef5b78c156098dc5ae30d547086187f24923e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
