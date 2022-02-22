@@ -379,6 +379,11 @@ var (
 		"tools/platform-compat/java/android/compat":          Bp2BuildDefaultTrueRecursively,
 	}
 
+	// Per-module allowlist to always opt modules in of both bp2build and mixed builds.
+	bp2buildModuleAlwaysConvertList = []string{
+		"junit-params-assertj-core",
+	}
+
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
 	bp2buildModuleDoNotConvertList = []string{
 		"libnativehelper_compat_libc", // Broken compile: implicit declaration of function 'strerror_r' is invalid in C99
@@ -544,11 +549,16 @@ var (
 
 	// Used for quicker lookups
 	bp2buildModuleDoNotConvert  = map[string]bool{}
+	bp2buildModuleAlwaysConvert = map[string]bool{}
 	bp2buildCcLibraryStaticOnly = map[string]bool{}
 	mixedBuildsDisabled         = map[string]bool{}
 )
 
 func init() {
+	for _, moduleName := range bp2buildModuleAlwaysConvertList {
+		bp2buildModuleAlwaysConvert[moduleName] = true
+	}
+
 	for _, moduleName := range bp2buildModuleDoNotConvertList {
 		bp2buildModuleDoNotConvert[moduleName] = true
 	}
@@ -632,18 +642,26 @@ func (b *BazelModuleBase) shouldConvertWithBp2build(ctx BazelConversionContext, 
 		return false
 	}
 
+	moduleNameNoPrefix := RemoveOptionalPrebuiltPrefix(module.Name())
+	alwaysConvert := bp2buildModuleAlwaysConvert[moduleNameNoPrefix]
+
 	packagePath := ctx.OtherModuleDir(module)
 	config := ctx.Config().bp2buildPackageConfig
 
 	// This is a tristate value: true, false, or unset.
 	propValue := b.bazelProperties.Bazel_module.Bp2build_available
 	if bp2buildDefaultTrueRecursively(packagePath, config) {
+		if alwaysConvert {
+			ctx.(BaseModuleContext).ModuleErrorf("%s %s", "a module cannot be in a directory marked Bp2BuildDefaultTrue",
+				"or Bp2BuildDefaultTrueRecursively and also be in the module-level allow list")
+		}
+
 		// Allow modules to explicitly opt-out.
 		return proptools.BoolDefault(propValue, true)
 	}
 
 	// Allow modules to explicitly opt-in.
-	return proptools.BoolDefault(propValue, false)
+	return proptools.BoolDefault(propValue, alwaysConvert)
 }
 
 // bp2buildDefaultTrueRecursively checks that the package contains a prefix from the
