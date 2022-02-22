@@ -2025,7 +2025,7 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	if m.properties.Libs != nil {
 		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Libs))
 	}
-	if m.properties.Static_libs != nil {
+	if m.properties.Static_libs != nil && !attrs.Srcs.IsEmpty() {
 		//TODO(b/217236083) handle static libs similarly to Soong
 		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Static_libs))
 	}
