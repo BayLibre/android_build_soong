@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "245a2b5e_a5806393",
+        "filename": "bp2build/android_app_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-23T14:33:22Z",
+      "side": 1,
+      "message": "test cases don\u0027t cover arch variant  srcs?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 1
+      },
+      "revId": "74720a2c964cc40bdd6da562852905cafab8a8fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95dd5eda_1e499683",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2036,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-23T14:33:22Z",
+      "side": 1,
+      "message": "go/small-cls -- a CL should address one thing, this looks like it is both handling arch variant sources and adding an implicit dep, can we split this into two CLs?",
+      "range": {
+        "startLine": 2033,
+        "startChar": 0,
+        "endLine": 2036,
+        "endChar": 4
+      },
+      "revId": "74720a2c964cc40bdd6da562852905cafab8a8fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
