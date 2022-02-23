@@ -971,20 +971,26 @@ type StringAttribute struct {
 	ConfigurableValues configurableStrings
 }
 
+type stringSelectValues map[string]*string
+
+func (ssv stringSelectValues) setValue(config string, val *string) {
+	if val == nil {
+		if _, ok := ssv[config]; ok {
+			delete(ssv, config)
+		}
+		return
+	}
+	ssv[config] = val
+}
+
 type configurableStrings map[ConfigurationAxis]stringSelectValues
 
-func (cs configurableStrings) setValueForAxis(axis ConfigurationAxis, config string, str *string) {
+func (cs configurableStrings) setValueForAxis(axis ConfigurationAxis, config string, val *string) {
 	if cs[axis] == nil {
 		cs[axis] = make(stringSelectValues)
 	}
-	var v = ""
-	if str != nil {
-		v = *str
-	}
-	cs[axis][config] = v
+	cs[axis].setValue(config, val)
 }
-
-type stringSelectValues map[string]string
 
 // HasConfigurableValues returns true if the attribute contains axis-specific string values.
 func (sa StringAttribute) HasConfigurableValues() bool {
@@ -997,16 +1003,16 @@ func (sa StringAttribute) HasConfigurableValues() bool {
 }
 
 // SetSelectValue set a value for a bazel select for the given axis, config and value.
-func (sa *StringAttribute) SetSelectValue(axis ConfigurationAxis, config string, str *string) {
+func (sa *StringAttribute) SetSelectValue(axis ConfigurationAxis, config string, val *string) {
 	axis.validateConfig(config)
 	switch axis.configurationType {
 	case noConfig:
-		sa.Value = str
+		sa.Value = val
 	case arch, os, osArch, productVariables:
 		if sa.ConfigurableValues == nil {
 			sa.ConfigurableValues = make(configurableStrings)
 		}
-		sa.ConfigurableValues.setValueForAxis(axis, config, str)
+		sa.ConfigurableValues.setValueForAxis(axis, config, val)
 	default:
 		panic(fmt.Errorf("Unrecognized ConfigurationAxis %s", axis))
 	}
@@ -1020,7 +1026,7 @@ func (sa *StringAttribute) SelectValue(axis ConfigurationAxis, config string) *s
 		return sa.Value
 	case arch, os, osArch, productVariables:
 		if v, ok := sa.ConfigurableValues[axis][config]; ok {
-			return &v
+			return v
 		} else {
 			return nil
 		}
@@ -1051,11 +1057,11 @@ func (sa *StringAttribute) Collapse() error {
 	_, containsProductVariables := axisTypes[productVariables]
 	if containsProductVariables {
 		if containsOs || containsArch || containsOsArch {
-			return fmt.Errorf("boolean attribute could not be collapsed as it has two or more unrelated axes")
+			return fmt.Errorf("string attribute could not be collapsed as it has two or more unrelated axes")
 		}
 	}
 	if (containsOs && containsArch) || (containsOsArch && (containsOs || containsArch)) {
-		// If a bool attribute has both os and arch configuration axes, the only
+		// If a string attribute has both os and arch configuration axes, the only
 		// way to successfully union their values is to increase the granularity
 		// of the configuration criteria to os_arch.
 		for osType, supportedArchs := range osToArchMap {
@@ -1225,15 +1231,18 @@ func (sla *StringListAttribute) SortedConfigurationAxes() []ConfigurationAxis {
 
 // DeduplicateAxesFromBase ensures no duplication of items between the no-configuration value and
 // configuration-specific values. For example, if we would convert this StringListAttribute as:
-// ["a", "b", "c"] + select({
-//    "//condition:one": ["a", "d"],
-//    "//conditions:default": [],
-// })
+//
+//	["a", "b", "c"] + select({
+//	   "//condition:one": ["a", "d"],
+//	   "//conditions:default": [],
+//	})
+//
 // after this function, we would convert this StringListAttribute as:
-// ["a", "b", "c"] + select({
-//    "//condition:one": ["d"],
-//    "//conditions:default": [],
-// })
+//
+//	["a", "b", "c"] + select({
+//	   "//condition:one": ["d"],
+//	   "//conditions:default": [],
+//	})
 func (sla *StringListAttribute) DeduplicateAxesFromBase() {
 	base := sla.Value
 	for axis, configToList := range sla.ConfigurableValues {
