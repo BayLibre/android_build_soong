@@ -136,6 +136,7 @@ type StaticProperties struct {
 // library module.
 type SharedProperties struct {
 	Shared StaticOrSharedProperties `android:"arch_variant"`
+	Suffix *string                  `android:"arch_variant"`
 }
 
 // StaticOrSharedProperties is an embedded struct representing properties to affect attributes of
@@ -336,6 +337,8 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		Whole_archive_deps:          *linkerAttrs.wholeArchiveDeps.Clone().Append(sharedAttrs.Whole_archive_deps),
 		System_dynamic_deps:         *linkerAttrs.systemDynamicDeps.Clone().Append(sharedAttrs.System_dynamic_deps),
 		sdkAttributes:               bp2BuildParseSdkAttributes(m),
+
+		Suffix: sharedAttrs.Suffix,
 	}
 
 	staticTargetAttrs := &bazelCcLibraryStaticAttributes{
@@ -398,6 +401,9 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 	for axis, configToProps := range m.GetArchVariantProperties(ctx, &LibraryProperties{}) {
 		for config, props := range configToProps {
 			if props, ok := props.(*LibraryProperties); ok {
+				if suffix := props.Suffix; suffix != nil && len(*suffix) > 0 {
+					sharedTargetAttrs.Suffix.SetSelectValue(axis, config, suffix)
+				}
 				if props.Inject_bssl_hash != nil {
 					// This is an edge case applies only to libcrypto
 					if m.Name() == "libcrypto" || m.Name() == "libcrypto_for_testing" {
@@ -2487,6 +2493,7 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 	}
 
 	commonAttrs := staticOrSharedAttributes{
+		Suffix:  libSharedOrStaticAttrs.Suffix,
 		Srcs:    compilerAttrs.srcs,
 		Srcs_c:  compilerAttrs.cSrcs,
 		Srcs_as: compilerAttrs.asSrcs,

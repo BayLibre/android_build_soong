@@ -624,3 +624,64 @@ func TestCCLibraryFlagSpaceSplitting(t *testing.T) {
 		},
 	})
 }
+
+func TestCcLibrarySharedEmptySuffix(t *testing.T) {
+	runCcLibrarySharedTestCase(t, Bp2buildTestCase{
+		Description: "cc_library_shared with empty suffix",
+		Filesystem: map[string]string{
+			"foo.c": "",
+		},
+		Blueprint: soongCcLibrarySharedPreamble + `
+cc_library_shared {
+    name: "foo_shared",
+    suffix: "",
+    srcs: ["foo.c"],
+    include_build_directory: false,
+}`,
+		ExpectedBazelTargets: []string{
+			makeBazelTarget("cc_library_shared", "foo_shared", AttrNameToString{
+				"srcs_c": `["foo.c"]`,
+			}),
+		},
+	})
+}
+
+func TestCcLibrarySharedSuffix(t *testing.T) {
+	runCcLibrarySharedTestCase(t, Bp2buildTestCase{
+		Description: "cc_library_shared with suffix",
+		Filesystem: map[string]string{
+			"foo.c": "",
+		},
+		Blueprint: soongCcLibrarySharedPreamble + `
+cc_library_shared {
+    name: "foo_shared",
+    suffix: "-suf",
+    srcs: ["foo.c"],
+    include_build_directory: false,
+}`,
+		ExpectedBazelTargets: []string{
+			makeBazelTarget("cc_library_shared", "foo_shared", AttrNameToString{
+				"srcs_c": `["foo.c"]`,
+				"suffix": `select({
+        "//build/bazel/platforms/os_arch:android_arm": "",
+        "//build/bazel/platforms/os_arch:android_arm64": "",
+        "//build/bazel/platforms/os_arch:android_x86": "",
+        "//build/bazel/platforms/os_arch:android_x86_64": "",
+        "//build/bazel/platforms/os_arch:darwin_arm64": "",
+        "//build/bazel/platforms/os_arch:darwin_x86_64": "",
+        "//build/bazel/platforms/os_arch:linux_bionic_arm64": "",
+        "//build/bazel/platforms/os_arch:linux_bionic_x86_64": "",
+        "//build/bazel/platforms/os_arch:linux_glibc_x86": "",
+        "//build/bazel/platforms/os_arch:linux_glibc_x86_64": "",
+        "//build/bazel/platforms/os_arch:linux_musl_arm": "",
+        "//build/bazel/platforms/os_arch:linux_musl_arm64": "",
+        "//build/bazel/platforms/os_arch:linux_musl_x86": "",
+        "//build/bazel/platforms/os_arch:linux_musl_x86_64": "",
+        "//build/bazel/platforms/os_arch:windows_x86": "",
+        "//build/bazel/platforms/os_arch:windows_x86_64": "",
+        "//conditions:default": "-suf",
+    })`,
+			}),
+		},
+	})
+}
