@@ -398,6 +398,9 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 	for axis, configToProps := range m.GetArchVariantProperties(ctx, &LibraryProperties{}) {
 		for config, props := range configToProps {
 			if props, ok := props.(*LibraryProperties); ok {
+				if suffix := props.Suffix; suffix != nil && len(*suffix) > 0 {
+					sharedTargetAttrs.Suffix.SetSelectValue(axis, config, suffix)
+				}
 				if props.Inject_bssl_hash != nil {
 					// This is an edge case applies only to libcrypto
 					if m.Name() == "libcrypto" || m.Name() == "libcrypto_for_testing" {
@@ -2501,6 +2504,8 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 		Implementation_whole_archive_deps: linkerAttrs.implementationWholeArchiveDeps,
 		System_dynamic_deps:               linkerAttrs.systemDynamicDeps,
 		sdkAttributes:                     bp2BuildParseSdkAttributes(module),
+
+		Suffix: libSharedOrStaticAttrs.Suffix,
 	}
 
 	var attrs interface{}
