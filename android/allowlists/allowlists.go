@@ -532,49 +532,7 @@ var (
 		"libcap",                                       // TODO(b/204913827) runfiles need to be handled in mixed builds
 		"libprotobuf-cpp-full", "libprotobuf-cpp-lite", // Unsupported product&vendor suffix. b/204811222 and b/204810610.
 
-		// Depends on libprotobuf-cpp-*
-		"libadb_pairing_connection",
-		"libadb_pairing_connection_static",
-		"libadb_pairing_server", "libadb_pairing_server_static",
-
-		// TODO(b/204811222) support suffix in cc_binary
-		"acvp_modulewrapper",
-		"android.hardware.media.c2@1.0-service-v4l2",
-		"app_process",
-		"bar_test",
-		"bench_cxa_atexit",
-		"bench_noop",
-		"bench_noop_nostl",
-		"bench_noop_static",
-		"boringssl_self_test",
-		"boringssl_self_test_vendor",
-		"bssl",
-		"cavp",
-		"crash_dump",
+		// TODO(b/240563612) Needing `stem` selection support for cc_binary
 		"crasher",
-		"libcxx_test_template",
-		"linker",
-		"memory_replay",
-		"native_bridge_guest_linker",
-		"native_bridge_stub_library_defaults",
-		"noop",
-		"simpleperf_ndk",
-		"toybox-static",
-		"zlib_bench",
-
-		// java_import[_host] issues
-		// tradefed prebuilts depend on libprotobuf
-		"prebuilt_tradefed",
-		"prebuilt_tradefed-test-framework",
-		// handcrafted BUILD.bazel files in //prebuilts/...
-		"prebuilt_r8lib-prebuilt",
-		"prebuilt_sdk-core-lambda-stubs",
-		"prebuilt_android-support-collections-nodeps",
-		"prebuilt_android-arch-core-common-nodeps",
-		"prebuilt_android-arch-lifecycle-common-java8-nodeps",
-		"prebuilt_android-arch-lifecycle-common-nodeps",
-		"prebuilt_android-support-annotations-nodeps",
-		"prebuilt_android-arch-paging-common-nodeps",
-		"prebuilt_android-arch-room-common-nodeps",
 	}
 )
