@@ -45,6 +45,30 @@
       },
       "revId": "74720a2c964cc40bdd6da562852905cafab8a8fc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4befa995_1f2a2bf1",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2036,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-23T14:35:27Z",
+      "side": 1,
+      "message": "Or update the description to make it clear why this is the same change",
+      "parentUuid": "95dd5eda_1e499683",
+      "range": {
+        "startLine": 2033,
+        "startChar": 0,
+        "endLine": 2036,
+        "endChar": 4
+      },
+      "revId": "74720a2c964cc40bdd6da562852905cafab8a8fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
