@@ -400,6 +400,9 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 	for axis, configToProps := range m.GetArchVariantProperties(ctx, &LibraryProperties{}) {
 		for config, props := range configToProps {
 			if props, ok := props.(*LibraryProperties); ok {
+				if suffix := props.Suffix; suffix != nil {
+					sharedTargetAttrs.Suffix.SetSelectValue(axis, config, suffix)
+				}
 				if props.Inject_bssl_hash != nil {
 					// This is an edge case applies only to libcrypto
 					if m.Name() == "libcrypto" || m.Name() == "libcrypto_for_testing" {
@@ -2620,6 +2623,8 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 
 			Stubs_symbol_file: compilerAttrs.stubsSymbolFile,
 			Stubs_versions:    compilerAttrs.stubsVersions,
+
+			Suffix: compilerAttrs.suffix,
 		}
 	}
 
@@ -2697,4 +2702,6 @@ type bazelCcLibrarySharedAttributes struct {
 	Stubs_symbol_file *string
 	Stubs_versions    bazel.StringListAttribute
 	Inject_bssl_hash  bazel.BoolAttribute
+
+	Suffix bazel.StringAttribute
 }
