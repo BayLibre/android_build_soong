@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b07034e_b7893887",
+        "filename": "java/gen.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-23T01:43:03Z",
+      "side": 1,
+      "message": "android.Path is an interface, which gives it complex comparison semantics.  It will probably work for all the cases you care about, but it is probably better to use path.String() as the key, or make genAidl call individualAidlFlags so it only needs the list of exception paths.",
+      "range": {
+        "startLine": 47,
+        "startChar": 113,
+        "endLine": 47,
+        "endChar": 125
+      },
+      "revId": "d825e4c9127d6a863612a90ccd4834d9d1db34d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
