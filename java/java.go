@@ -2011,7 +2011,6 @@ type javaLibraryAttributes struct {
 }
 
 func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext) *javaLibraryAttributes {
-	//TODO(b/209577426): Support multiple arch variants
 	srcs := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrcExcludes(ctx, m.properties.Srcs, m.properties.Exclude_srcs))
 	attrs := &javaLibraryAttributes{
 		Srcs: srcs,
@@ -2021,7 +2020,10 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		attrs.Javacopts = bazel.MakeStringListAttribute(m.properties.Javacflags)
 	}
 
-	var deps bazel.LabelList
+	// TODO(b/220869005) remove forced dependency on android.jar
+	deps := bazel.LabelList{Includes: []bazel.Label{bazel.Label{
+		Label: "//prebuilts/sdk:android_sdk_java_import",
+	}}}
 	if m.properties.Libs != nil {
 		deps.Append(android.BazelLabelForModuleDeps(ctx, m.properties.Libs))
 	}
