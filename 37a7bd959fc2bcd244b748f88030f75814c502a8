@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7345fb69_43380ae5",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-23T13:59:57Z",
+      "side": 1,
+      "message": "nit: could also be tool_files",
+      "range": {
+        "startLine": 499,
+        "startChar": 75,
+        "endLine": 499,
+        "endChar": 80
+      },
+      "revId": "37a7bd959fc2bcd244b748f88030f75814c502a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
