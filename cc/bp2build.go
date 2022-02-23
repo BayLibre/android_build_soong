@@ -38,11 +38,12 @@ const (
 // staticOrSharedAttributes are the Bazel-ified versions of StaticOrSharedProperties --
 // properties which apply to either the shared or static version of a cc_library module.
 type staticOrSharedAttributes struct {
-	Srcs    bazel.LabelListAttribute
-	Srcs_c  bazel.LabelListAttribute
-	Srcs_as bazel.LabelListAttribute
-	Hdrs    bazel.LabelListAttribute
-	Copts   bazel.StringListAttribute
+	Suffixes bazel.StringListAttribute
+	Srcs     bazel.LabelListAttribute
+	Srcs_c   bazel.LabelListAttribute
+	Srcs_as  bazel.LabelListAttribute
+	Hdrs     bazel.LabelListAttribute
+	Copts    bazel.StringListAttribute
 
 	Deps                              bazel.LabelListAttribute
 	Implementation_deps               bazel.LabelListAttribute
@@ -152,6 +153,7 @@ func maybePartitionExportedAndImplementationsDepsExcludes(ctx android.BazelConve
 }
 
 // Parses properties common to static and shared libraries. Also used for prebuilt libraries.
+// FIXME: lib argument unused
 func bp2buildParseStaticOrSharedProps(ctx android.BazelConversionPathContext, module *Module, lib *libraryDecorator, isStatic bool) staticOrSharedAttributes {
 	attrs := staticOrSharedAttributes{}
 
@@ -170,6 +172,10 @@ func bp2buildParseStaticOrSharedProps(ctx android.BazelConversionPathContext, mo
 
 		attrs.Whole_archive_deps.SetSelectValue(axis, config, bazelLabelForWholeDeps(ctx, props.Whole_static_libs))
 		attrs.Enabled.SetSelectValue(axis, config, props.Enabled)
+
+		if props.Suffix != nil {
+			attrs.Suffixes.SetSelectValue(axis, config, []string{*props.Suffix})
+		}
 	}
 	// system_dynamic_deps distinguishes between nil/empty list behavior:
 	//    nil -> use default values
@@ -640,6 +646,8 @@ type linkerAttributes struct {
 	stripAll                      bazel.BoolAttribute
 	stripNone                     bazel.BoolAttribute
 	features                      bazel.StringListAttribute
+
+	suffixes bazel.StringListAttribute
 }
 
 var (
@@ -649,6 +657,12 @@ var (
 func (la *linkerAttributes) bp2buildForAxisAndConfig(ctx android.BazelConversionPathContext, isBinary bool, axis bazel.ConfigurationAxis, config string, props *BaseLinkerProperties) {
 	// Use a single variable to capture usage of nocrt in arch variants, so there's only 1 error message for this module
 	var axisFeatures []string
+
+	suffixes := []string{props.Suffix}
+	if len(suffixes) > 1 {
+		ctx.ModuleErrorf("Number of suffixes expected to be 0 or 1")
+	}
+	la.suffixes.SetSelectValue(axis, config, suffixes)
 
 	wholeStaticLibs := android.FirstUniqueStrings(props.Whole_static_libs)
 	la.wholeArchiveDeps.SetSelectValue(axis, config, bazelLabelForWholeDepsExcludes(ctx, wholeStaticLibs, props.Exclude_static_libs))
@@ -944,6 +958,7 @@ func bazelLabelForSharedDepsExcludes(ctx android.BazelConversionPathContext, mod
 
 type binaryLinkerAttrs struct {
 	Linkshared *bool
+	Suffix     *string
 }
 
 func bp2buildBinaryLinkerProps(ctx android.BazelConversionPathContext, m *Module) binaryLinkerAttrs {
@@ -960,6 +975,7 @@ func bp2buildBinaryLinkerProps(ctx android.BazelConversionPathContext, m *Module
 			// nonconfigurable attribute. Only 4 AOSP modules use this feature, defer handling
 			ctx.ModuleErrorf("bp2build cannot migrate a module with arch/target-specific static_executable values")
 		}
+		attrs.Suffix = linkerProps.Suffix
 	})
 
 	return attrs
