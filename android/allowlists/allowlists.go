@@ -388,17 +388,13 @@ var (
 		"cap_names.h",                                  // TODO(b/204913827) runfiles need to be handled in mixed builds
 		"libcap",                                       // TODO(b/204913827) runfiles need to be handled in mixed builds
 		"libprotobuf-cpp-full", "libprotobuf-cpp-lite", // Unsupported product&vendor suffix. b/204811222 and b/204810610.
-
 		// Depends on libprotobuf-cpp-*
-		"libadb_pairing_connection",
-		"libadb_pairing_connection_static",
-		"libadb_pairing_server", "libadb_pairing_server_static",
+		//"libadb_pairing_connection",
+		//"libadb_pairing_connection_static",
+		//"libadb_pairing_server", "libadb_pairing_server_static",
 
-		// TODO(b/204811222) support suffix in cc_binary
+		// Suffix
 		"acvp_modulewrapper",
-		"android.hardware.media.c2@1.0-service-v4l2",
-		"app_process",
-		"bar_test",
 		"bench_cxa_atexit",
 		"bench_noop",
 		"bench_noop_nostl",
