@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b216bdc6_baec9d4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1881060
+      },
+      "writtenOn": "2022-02-23T11:00:26Z",
+      "side": 1,
+      "message": "waiting on bluetooth apex to be merged before submitting this CL (and the conflict resolution one)",
+      "revId": "ff754fb200325342521241868304715689ead4e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
