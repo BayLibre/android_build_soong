@@ -1706,6 +1706,7 @@ func ImportFactoryHost() android.Module {
 
 	android.InitPrebuiltModule(module, &module.properties.Jars)
 	android.InitApexModule(module)
+	android.InitBazelModule(module)
 	InitJavaModule(module, android.HostSupported)
 	return module
 }
