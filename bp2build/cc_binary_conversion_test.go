@@ -543,3 +543,37 @@ func TestCcBinaryConvertLex(t *testing.T) {
 		},
 	})
 }
+
+func TestCcBinaryEmptySuffix(t *testing.T) {
+	runCcBinaryTests(t, ccBinaryBp2buildTestCase{
+		description: "binary with empty suffix",
+		blueprint: `
+{rule_name} {
+    name: "foo",
+    suffix: "",
+}
+`,
+		targets: []testBazelTarget{
+			{"cc_binary", "foo", AttrNameToString{
+				"local_includes": `["."]`,
+			}},
+		},
+	})
+}
+
+func TestCcBinarySuffix(t *testing.T) {
+	runCcBinaryTests(t, ccBinaryBp2buildTestCase{
+		description: "binary with suffix",
+		blueprint: `
+{rule_name} {
+    name: "foo",
+    suffix: "-suf",
+}
+`,
+		targets: []testBazelTarget{
+			{"cc_binary", "foo-suf", AttrNameToString{
+				"local_includes": `["."]`,
+			}},
+		},
+	})
+}
