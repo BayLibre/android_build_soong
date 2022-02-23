@@ -163,6 +163,8 @@ type StaticOrSharedProperties struct {
 	Apex_available []string `android:"arch_variant"`
 
 	Installable *bool `android:"arch_variant"`
+
+	Suffix *string
 }
 
 type LibraryMutatedProperties struct {
@@ -2481,6 +2483,8 @@ func sharedOrStaticLibraryBp2Build(ctx android.TopDownMutatorContext, module *Mo
 		Whole_archive_deps:                linkerAttrs.wholeArchiveDeps,
 		Implementation_whole_archive_deps: linkerAttrs.implementationWholeArchiveDeps,
 		System_dynamic_deps:               linkerAttrs.systemDynamicDeps,
+
+		Suffix: libSharedOrStaticAttrs.Suffix,
 	}
 
 	var attrs interface{}

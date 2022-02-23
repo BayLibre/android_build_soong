@@ -36,6 +36,7 @@ const (
 // staticOrSharedAttributes are the Bazel-ified versions of StaticOrSharedProperties --
 // properties which apply to either the shared or static version of a cc_library module.
 type staticOrSharedAttributes struct {
+	Suffix  *string
 	Srcs    bazel.LabelListAttribute
 	Srcs_c  bazel.LabelListAttribute
 	Srcs_as bazel.LabelListAttribute
@@ -157,6 +158,8 @@ func bp2buildParseStaticOrSharedProps(ctx android.BazelConversionPathContext, mo
 
 		attrs.Whole_archive_deps.SetSelectValue(axis, config, bazelLabelForWholeDeps(ctx, props.Whole_static_libs))
 		attrs.Enabled.SetSelectValue(axis, config, props.Enabled)
+
+		attrs.Suffix = props.Suffix
 	}
 	// system_dynamic_deps distinguishes between nil/empty list behavior:
 	//    nil -> use default values
@@ -262,6 +265,9 @@ type compilerAttributes struct {
 
 	stubsSymbolFile *string
 	stubsVersions   bazel.StringListAttribute
+
+	// Optional suffix for the output file (before filetype)
+	suffix *string
 }
 
 type filterOutFn func(string) bool
@@ -561,6 +567,8 @@ type linkerAttributes struct {
 	stripAll                      bazel.BoolAttribute
 	stripNone                     bazel.BoolAttribute
 	features                      bazel.StringListAttribute
+
+	suffix *string
 }
 
 var (
@@ -877,6 +885,7 @@ func bazelLabelForSharedDepsExcludes(ctx android.BazelConversionPathContext, mod
 
 type binaryLinkerAttrs struct {
 	Linkshared *bool
+	Suffix     *string
 }
 
 func bp2buildBinaryLinkerProps(ctx android.BazelConversionPathContext, m *Module) binaryLinkerAttrs {
@@ -895,6 +904,7 @@ func bp2buildBinaryLinkerProps(ctx android.BazelConversionPathContext, m *Module
 				// nonconfigurable attribute. Only 4 AOSP modules use this feature, defer handling
 				ctx.ModuleErrorf("bp2build cannot migrate a module with arch/target-specific static_executable values")
 			}
+			attrs.Suffix = props.Suffix
 		}
 	}
 

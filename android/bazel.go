@@ -537,39 +537,15 @@ var (
 		"libbrotli",               // http://b/198585397, ld.lld: error: bionic/libc/arch-arm64/generic/bionic/memmove.S:95:(.text+0x10): relocation R_AARCH64_CONDBR19 out of range: -1404176 is not in [-1048576, 1048575]; references __memcpy
 		"minijail_constants_json", // http://b/200899432, bazel-built cc_genrule does not work in mixed build when it is a dependency of another soong module.
 
-		"cap_names.h",                                  // TODO(b/204913827) runfiles need to be handled in mixed builds
-		"libcap",                                       // TODO(b/204913827) runfiles need to be handled in mixed builds
+		"cap_names.h", // TODO(b/204913827) runfiles need to be handled in mixed builds
+		"libcap",      // TODO(b/204913827) runfiles need to be handled in mixed builds
+
 		"libprotobuf-cpp-full", "libprotobuf-cpp-lite", // Unsupported product&vendor suffix. b/204811222 and b/204810610.
 
 		// Depends on libprotobuf-cpp-*
 		"libadb_pairing_connection",
 		"libadb_pairing_connection_static",
 		"libadb_pairing_server", "libadb_pairing_server_static",
-
-		// TODO(b/204811222) support suffix in cc_binary
-		"acvp_modulewrapper",
-		"android.hardware.media.c2@1.0-service-v4l2",
-		"app_process",
-		"bar_test",
-		"bench_cxa_atexit",
-		"bench_noop",
-		"bench_noop_nostl",
-		"bench_noop_static",
-		"boringssl_self_test",
-		"boringssl_self_test_vendor",
-		"bssl",
-		"cavp",
-		"crash_dump",
-		"crasher",
-		"libcxx_test_template",
-		"linker",
-		"memory_replay",
-		"native_bridge_guest_linker",
-		"native_bridge_stub_library_defaults",
-		"noop",
-		"simpleperf_ndk",
-		"toybox-static",
-		"zlib_bench",
 	}
 
 	// Used for quicker lookups
