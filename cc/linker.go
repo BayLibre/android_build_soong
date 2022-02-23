@@ -235,6 +235,9 @@ type BaseLinkerProperties struct {
 
 	// list of shared libs that should not be used to build this module
 	Exclude_shared_libs []string `android:"arch_variant"`
+
+	// Optional suffix for libraries and binaries
+	Suffix string `android:"arch_variant"`
 }
 
 func invertBoolPtr(value *bool) *bool {
