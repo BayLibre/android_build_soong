@@ -22,6 +22,30 @@
       },
       "revId": "37a7bd959fc2bcd244b748f88030f75814c502a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e33b2838_54289da5",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-02-23T14:39:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7345fb69_43380ae5",
+      "range": {
+        "startLine": 499,
+        "startChar": 75,
+        "endLine": 499,
+        "endChar": 80
+      },
+      "revId": "37a7bd959fc2bcd244b748f88030f75814c502a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
