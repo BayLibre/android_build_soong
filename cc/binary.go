@@ -646,6 +646,7 @@ func binaryBp2build(ctx android.TopDownMutatorContext, m *Module, typ string) {
 // binaryAttributes contains Bazel attributes corresponding to a cc binary
 type binaryAttributes struct {
 	binaryLinkerAttrs
+
 	Srcs    bazel.LabelListAttribute
 	Srcs_c  bazel.LabelListAttribute
 	Srcs_as bazel.LabelListAttribute

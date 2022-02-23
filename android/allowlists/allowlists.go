@@ -372,30 +372,12 @@ var (
 		// b/215723302; awaiting tz{data,_version} to then rename targets conflicting with srcs
 		"tzdata",
 		"tz_version",
-	}
-
-	Bp2buildCcLibraryStaticOnlyList = []string{}
-
-	MixedBuildsDisabledList = []string{
-		"art_libdexfile_dex_instruction_list_header", // breaks libart_mterp.armng, header not found
-
-		"libbrotli",               // http://b/198585397, ld.lld: error: bionic/libc/arch-arm64/generic/bionic/memmove.S:95:(.text+0x10): relocation R_AARCH64_CONDBR19 out of range: -1404176 is not in [-1048576, 1048575]; references __memcpy
-		"minijail_constants_json", // http://b/200899432, bazel-built cc_genrule does not work in mixed build when it is a dependency of another soong module.
-
-		"cap_names.h",                                  // TODO(b/204913827) runfiles need to be handled in mixed builds
-		"libcap",                                       // TODO(b/204913827) runfiles need to be handled in mixed builds
-		"libprotobuf-cpp-full", "libprotobuf-cpp-lite", // Unsupported product&vendor suffix. b/204811222 and b/204810610.
-
-		// Depends on libprotobuf-cpp-*
-		"libadb_pairing_connection",
-		"libadb_pairing_connection_static",
-		"libadb_pairing_server", "libadb_pairing_server_static",
 
 		// TODO(b/204811222) support suffix in cc_binary
 		"acvp_modulewrapper",
-		"android.hardware.media.c2@1.0-service-v4l2",
-		"app_process",
-		"bar_test",
+		//"android.hardware.media.c2@1.0-service-v4l2",
+		//"app_process",
+		//"bar_test",
 		"bench_cxa_atexit",
 		"bench_noop",
 		"bench_noop_nostl",
@@ -415,5 +397,164 @@ var (
 		"simpleperf_ndk",
 		"toybox-static",
 		"zlib_bench",
+		"libprotobuf-cpp-lite_static",
+		"libprotobuf-cpp-lite",
+		"libprotobuf-cpp-full",
+		/*
+			// Suffix
+			"buildroot",
+			"libminijail",
+			"libadbd_core",
+			"libjsoncpp",
+			"libadb_crypto",
+			"libcxx_test_template",
+			"libprotoc_bp2build_cc_library_static",
+			"libunwindstack_no_dex",
+			"libcrypto_utils_bp2build_cc_library_static",
+			"libadbd_services",
+			"libutils_headers",
+			"libadb_tls_connection_static",
+			"jni_headers",
+			"libunwindstack",
+			"libprotoc",
+			"libadbd_bp2build_cc_library_static",
+			"libbase_bp2build_cc_library_static",
+			"libevent_bp2build_cc_library_static",
+			"libbacktrace_bp2build_cc_library_static",
+			"libstatssocket_bp2build_cc_library_static",
+			"libadbd_bp2build_cc_library_static",
+			"libadbconnection_client_bp2build_cc_library_static",
+			"libapp_processes_protos_lite_bp2build_cc_library_static",
+			"libadb_pairing_connection_bp2build_cc_library_static",
+			"libutilscallstack_bp2build_cc_library_static",
+			"libartpalette_bp2build_cc_library_static",
+			"libprocessgroup_bp2build_cc_library_static",
+			"libcrypto_utils_bp2build_cc_library_static",
+			"gwp_asan_crash_handler_bp2build_cc_library_static",
+			"bcm_object",
+			"zlib_bench",
+			"libcutils_sockets",
+			"libadb_pairing_auth_static",
+			"gwp_asan_crash_handler",
+			"libnativehelper_lazy",
+			"libnativehelper",
+			"libnativehelper_header_only",
+			"libconscrypt_openjdk_jni",
+			"libbase",
+			"libc++experimental",
+			"libnativehelper_compat_libc++",
+			"libartpalette_bp2build_cc_library_static",
+			"libprocessgroup_bp2build_cc_library_static",
+			"libadb_protos",
+			"libprotobuf-cpp-lite_static",
+			"libadb_crypto_static",
+			"libasyncio_bp2build_cc_library_static",
+			"libprocessgroup_headers",
+			"jni_platform_headers",
+			"libapp_processes_protos_full",
+			"libprotobuf-cpp-lite",
+			"libadb_pairing_connection",
+			"libbacktrace",
+			"libprotobuf-cpp-full",
+			"libssl",
+			"libc++fs",
+			"libapp_processes_protos_lite",
+			"libadb_protos_static",
+			"gwp_asan_headers",
+			"libadb_pairing_connection",*/
+		/*
+			"libartpalette",
+			"libminijail",
+			"libminijail_bp2build_cc_library_static",
+			"libziparchive_bp2build_cc_library_static",
+			"libadbd_core",
+			"liblzma",
+			"libadbd_services",
+			"libprotobuf-cpp-full",
+			"libicuuc_stubdata_bp2build_cc_library_static",
+			"libutils_headers",
+			"libcutils_bp2build_cc_library_static",*/
+	}
+
+	Bp2buildCcLibraryStaticOnlyList = []string{}
+
+	MixedBuildsDisabledList = []string{
+		"art_libdexfile_dex_instruction_list_header", // breaks libart_mterp.armng, header not found
+
+		"libbrotli",               // http://b/198585397, ld.lld: error: bionic/libc/arch-arm64/generic/bionic/memmove.S:95:(.text+0x10): relocation R_AARCH64_CONDBR19 out of range: -1404176 is not in [-1048576, 1048575]; references __memcpy
+		"minijail_constants_json", // http://b/200899432, bazel-built cc_genrule does not work in mixed build when it is a dependency of another soong module.
+
+		"cap_names.h", // TODO(b/204913827) runfiles need to be handled in mixed builds
+		"libcap",      // TODO(b/204913827) runfiles need to be handled in mixed builds
+		//"libprotobuf-cpp-full", "libprotobuf-cpp-lite", // Unsupported product&vendor suffix. b/204811222 and b/204810610.
+
+		// Depends on libprotobuf-cpp-*
+		//"libadb_pairing_connection",
+		//"libadb_pairing_connection_static",
+		//"libadb_pairing_server", "libadb_pairing_server_static",
+
+		// Suffix
+		/*"buildroot",
+		"libminijail",
+		"libadbd_core",
+		"libjsoncpp",
+		"libadb_crypto",
+		"libcxx_test_template",
+		"libprotoc_bp2build_cc_library_static",
+		"libunwindstack_no_dex",
+		"libcrypto_utils_bp2build_cc_library_static",
+		"libadbd_services",
+		"libutils_headers",
+		"libadb_tls_connection_static",
+		"jni_headers",
+		"libunwindstack",
+		"libprotoc",
+		"libadbd_bp2build_cc_library_static",
+		"libbase_bp2build_cc_library_static",
+		"libevent_bp2build_cc_library_static",
+		"libbacktrace_bp2build_cc_library_static",
+		"libstatssocket_bp2build_cc_library_static",
+		"libadbd_bp2build_cc_library_static",
+		"libadbconnection_client_bp2build_cc_library_static",
+		"libapp_processes_protos_lite_bp2build_cc_library_static",
+		"libadb_pairing_connection_bp2build_cc_library_static",
+		"libutilscallstack_bp2build_cc_library_static",
+		"libartpalette_bp2build_cc_library_static",
+		"libprocessgroup_bp2build_cc_library_static",
+		"libprotobuf-cpp-lite_static",
+		"libcrypto_utils_bp2build_cc_library_static",
+		"gwp_asan_crash_handler_bp2build_cc_library_static",
+		"bcm_object",
+		"zlib_bench",
+		"libcutils_sockets",
+		"libadb_pairing_auth_static",
+		"gwp_asan_crash_handler",
+		"libnativehelper_lazy",
+		"libnativehelper",
+		"libnativehelper_header_only",
+		"libconscrypt_openjdk_jni",
+		"libbase",
+		"libc++experimental",
+		"libnativehelper_compat_libc++",
+		"libartpalette_bp2build_cc_library_static",
+		"libprotobuf-cpp-lite",
+		"libprocessgroup_bp2build_cc_library_static",
+		"libadb_protos",
+		"libprotobuf-cpp-lite_static",
+		"libadb_crypto_static",
+		"libasyncio_bp2build_cc_library_static",
+		"libprocessgroup_headers",
+		"jni_platform_headers",
+		"libapp_processes_protos_full",
+		"libprotobuf-cpp-lite",
+		"libadb_pairing_connection",
+		"libbacktrace",
+		"libprotobuf-cpp-full",
+		"libssl",
+		"libc++fs",
+		"libapp_processes_protos_lite",
+		"libadb_protos_static",
+		"gwp_asan_headers",
+		"libadb_pairing_connection",*/
 	}
 )
