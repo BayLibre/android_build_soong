@@ -624,3 +624,45 @@ func TestCCLibraryFlagSpaceSplitting(t *testing.T) {
 		},
 	})
 }
+
+func TestCcLibrarySharedEmptySuffix(t *testing.T) {
+	runCcLibrarySharedTestCase(t, Bp2buildTestCase{
+		Description: "cc_library_shared empty suffix",
+		Filesystem: map[string]string{
+			"foo.c": "",
+		},
+		Blueprint: soongCcLibrarySharedPreamble + `
+cc_library_shared {
+    name: "foo_shared",
+    suffix: "",
+    srcs: ["foo.c"],
+    include_build_directory: false,
+}`,
+		ExpectedBazelTargets: []string{
+			makeBazelTarget("cc_library_shared", "foo_shared", AttrNameToString{
+				"srcs_c": `["foo.c"]`,
+			}),
+		},
+	})
+}
+
+func TestCcLibrarySharedSuffix(t *testing.T) {
+	runCcLibrarySharedTestCase(t, Bp2buildTestCase{
+		Description: "cc_library_shared empty suffix",
+		Filesystem: map[string]string{
+			"foo.c": "",
+		},
+		Blueprint: soongCcLibrarySharedPreamble + `
+cc_library_shared {
+    name: "foo_shared",
+    suffix: "-suf",
+    srcs: ["foo.c"],
+    include_build_directory: false,
+}`,
+		ExpectedBazelTargets: []string{
+			makeBazelTarget("cc_library_shared", "foo_shared-suf", AttrNameToString{
+				"srcs_c": `["foo.c"]`,
+			}),
+		},
+	})
+}
