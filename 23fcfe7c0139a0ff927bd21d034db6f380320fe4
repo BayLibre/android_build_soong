@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df697ecf_c2865191",
+        "filename": "android/bazel.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-02-23T07:59:45Z",
+      "side": 1,
+      "message": "nit: use a single string and `+` to concat them, instead of using %s. same for below.",
+      "range": {
+        "startLine": 667,
+        "startChar": 40,
+        "endLine": 668,
+        "endChar": 48
+      },
+      "revId": "23fcfe7c0139a0ff927bd21d034db6f380320fe4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
