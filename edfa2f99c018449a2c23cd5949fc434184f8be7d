@@ -16,6 +16,23 @@
       "message": "ping",
       "revId": "edfa2f99c018449a2c23cd5949fc434184f8be7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b400e76_ba0c3058",
+        "filename": "build_test.bash",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-02-23T01:35:46Z",
+      "side": 1,
+      "message": "Can you add comments here on why these need skipping?",
+      "revId": "edfa2f99c018449a2c23cd5949fc434184f8be7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
