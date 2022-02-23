@@ -144,6 +144,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4513a7b_2658dd3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-02-23T21:49:15Z",
+      "side": 1,
+      "message": "\u003e What about \"location in libcore/*\"?\n\nSome arguments in favor of a module based allowlist are\n1. modules can override the baseline file using `lint.baseline_filename` so it might be good to set the granularity at a module level. \n2. there is also nsjail which can change the workspace layout in theory, thus invalidating any logic that depends on module location  \n\nI dont feel too strongly about this at the moment. I am updating the allowlist logic to `location\u003d\u003dlibcore` since a more probable user workflow is adding a new module in libcore/, in which case users would have had to update the allowlist as well. \n\nThe updated implementation does an exact match on `libcore` and not child directories.\nDo you think child directories skip the check as well?",
+      "parentUuid": "de1c18ef_6f0dfe66",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "3e2bb84fef43e5da76bcdb0012f8fb95d5dfa4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8a020a7a_8da44c6d",
@@ -174,6 +198,24 @@
       "writtenOn": "2022-02-21T12:55:10Z",
       "side": 1,
       "message": "Does everything in this list need to disable linting? This one in particular seems a bit weird",
+      "revId": "3e2bb84fef43e5da76bcdb0012f8fb95d5dfa4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dd63ff7_a6282149",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-02-23T21:49:15Z",
+      "side": 1,
+      "message": "I think one of the dependency paths is\n```\ncom.android.wifi\ncom.android.wifi-bootclasspath-fragment\nart-bootclasspath-fragment\nart.module.public.api\nart.module.public.api.stubs.source\nframework-api-annotations-lib\n```\n\nThe latest patch disables linting if `directory \u003d\u003d libcore`, so this allowlist becomes redundant now",
+      "parentUuid": "90b422b0_b09209b9",
       "revId": "3e2bb84fef43e5da76bcdb0012f8fb95d5dfa4b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
