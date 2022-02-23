@@ -39,6 +39,7 @@ const (
 // staticOrSharedAttributes are the Bazel-ified versions of StaticOrSharedProperties --
 // properties which apply to either the shared or static version of a cc_library module.
 type staticOrSharedAttributes struct {
+	Suffix  bazel.StringAttribute
 	Srcs    bazel.LabelListAttribute
 	Srcs_c  bazel.LabelListAttribute
 	Srcs_as bazel.LabelListAttribute
@@ -153,6 +154,7 @@ func maybePartitionExportedAndImplementationsDepsExcludes(ctx android.BazelConve
 }
 
 // Parses properties common to static and shared libraries. Also used for prebuilt libraries.
+// FIXME: lib argument unused
 func bp2buildParseStaticOrSharedProps(ctx android.BazelConversionPathContext, module *Module, lib *libraryDecorator, isStatic bool) staticOrSharedAttributes {
 	attrs := staticOrSharedAttributes{}
 
@@ -969,6 +971,7 @@ func bazelLabelForSharedDepsExcludes(ctx android.BazelConversionPathContext, mod
 
 type binaryLinkerAttrs struct {
 	Linkshared *bool
+	Suffix     bazel.StringAttribute
 }
 
 func bp2buildBinaryLinkerProps(ctx android.BazelConversionPathContext, m *Module) binaryLinkerAttrs {
@@ -984,6 +987,9 @@ func bp2buildBinaryLinkerProps(ctx android.BazelConversionPathContext, m *Module
 			// TODO(b/202876379): Static_executable is arch-variant; however, linkshared is a
 			// nonconfigurable attribute. Only 4 AOSP modules use this feature, defer handling
 			ctx.ModuleErrorf("bp2build cannot migrate a module with arch/target-specific static_executable values")
+		}
+		if suffix := linkerProps.Suffix; suffix != nil && len(*suffix) > 0 {
+			attrs.Suffix.SetSelectValue(axis, config, suffix)
 		}
 	})
 
