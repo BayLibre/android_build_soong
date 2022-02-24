@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3734d31d_1d09bb2d",
+        "filename": "docs/rbe.json",
+        "patchSetId": 7
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-02-24T14:16:02Z",
+      "side": 1,
+      "message": "I wonder if we should add some kind of documentation for what each of these variables do in the docs?",
+      "range": {
+        "startLine": 3,
+        "startChar": 9,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "a406a819304a6988f2437d21141a2bf9f8ebcb4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1008f5c_50609629",
+        "filename": "docs/rbe.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-02-24T14:16:02Z",
+      "side": 1,
+      "message": "nit: distributing?",
+      "range": {
+        "startLine": 7,
+        "startChar": 65,
+        "endLine": 7,
+        "endChar": 75
+      },
+      "revId": "a406a819304a6988f2437d21141a2bf9f8ebcb4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
