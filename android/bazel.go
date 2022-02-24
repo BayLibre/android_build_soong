@@ -586,8 +586,8 @@ var (
 		"ub-janktesthelper",
 		"drc_static_libs",
 		"tink-prebuilt",
-		//"platform-robolectric-4.4-prebuilt", needs .aar support in Jars
-		//"platform-robolectric-4.5.1-prebuilt", needs .aar support in Jars
+		"platform-robolectric-4.4-prebuilt",
+		"platform-robolectric-4.5.1-prebuilt",
 		"sl4a.locale_platform",
 		"sdk-core-lambda-stubs",
 		"android-support-constraint-layout-solver-nodeps",
