@@ -352,6 +352,9 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 				if len(moduleNames) > 0 {
 					fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES :=", strings.Join(moduleNames, " "))
 				}
+				if len(a.requiredDeps) > 0 {
+					fmt.Fprintln(w, "LOCAL_REQUIRED_MODULES +=", strings.Join(a.requiredDeps, " "))
+				}
 				a.writeRequiredModules(w)
 				fmt.Fprintln(w, "include $(BUILD_PHONY_PACKAGE)")
 
