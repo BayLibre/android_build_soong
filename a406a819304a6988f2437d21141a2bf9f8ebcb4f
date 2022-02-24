@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17739678_6c312481",
+        "filename": "docs/rbe.json",
+        "patchSetId": 7
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-02-24T14:57:48Z",
+      "side": 1,
+      "message": "Ah I think that site may not be open to everyone? If so adding a link to it would still not be ideal. I agree that duplicating docs is also not ideal, but I prefer we have an open documentation that\u0027s accessible to everyone if we are putting these variables out here.\n\nMaybe we can check with foox@ / joehicks@ offline?",
+      "parentUuid": "3bd69cd2_44a2f387",
+      "range": {
+        "startLine": 3,
+        "startChar": 9,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "a406a819304a6988f2437d21141a2bf9f8ebcb4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1008f5c_50609629",
         "filename": "docs/rbe.md",
         "patchSetId": 7
