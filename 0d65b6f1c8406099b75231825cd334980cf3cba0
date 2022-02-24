@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e86e5045_e55e902d",
+        "filename": "docs/rbe.json",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-02-24T19:20:45Z",
+      "side": 1,
+      "message": "Could we add RBE_CLANG_TIDY_EXEC_STRATEGY and RBE_CLANG_TIDY?",
+      "revId": "0d65b6f1c8406099b75231825cd334980cf3cba0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
