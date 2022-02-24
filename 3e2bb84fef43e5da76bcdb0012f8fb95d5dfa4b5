@@ -168,6 +168,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca95e48e_26bc3884",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-02-24T11:32:06Z",
+      "side": 1,
+      "message": "If this covers the existing use-cases, I\u0027m fine with `libcore` root as the exception.\n\nHowever I wonder if you considered the alternative to propagating strict_updatability_linting. It\u0027d be cool if we kept that enabled for libcore, and just not considered NewApi to be an error for libcore. Pedro shared a pointer further up this thread to where NewApi is added as an error. WDYT? They could probably get rid of their baseline files if so.",
+      "parentUuid": "b4513a7b_2658dd3f",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "3e2bb84fef43e5da76bcdb0012f8fb95d5dfa4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8a020a7a_8da44c6d",
