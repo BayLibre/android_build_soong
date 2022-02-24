@@ -2189,7 +2189,11 @@ func javaBinaryHostBp2Build(ctx android.TopDownMutatorContext, m *Binary) {
 }
 
 type bazelJavaImportAttributes struct {
-	Jars bazel.LabelListAttribute
+	Jars    bazel.LabelListAttribute
+	Exports bazel.LabelListAttribute
+}
+type bazelAarImportAttributes struct {
+	Aar bazel.Label
 }
 
 // java_import bp2Build converter.
@@ -2197,11 +2201,39 @@ func (i *Import) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	//TODO(b/209577426): Support multiple arch variants
 	jars := bazel.MakeLabelListAttribute(android.BazelLabelForModuleSrcExcludes(ctx, i.properties.Jars, []string(nil)))
 
-	attrs := &bazelJavaImportAttributes{
-		Jars: jars,
+	jarPartition := "jar"
+	aarPartition := "aar"
+	jarsPartitions := bazel.PartitionLabelListAttribute(ctx, &jars, bazel.LabelPartitions{
+		jarPartition: bazel.LabelPartition{Extensions: []string{".jar"}, Keep_remainder: true},
+		aarPartition: bazel.LabelPartition{Extensions: []string{".aar"}},
+	})
+
+	targetName := android.RemoveOptionalPrebuiltPrefix(i.Name())
+
+	aars := jarsPartitions[aarPartition]
+	aarLabels := bazel.LabelList{}
+	if !aars.IsEmpty() {
+		for _, aar := range aars.Value.Includes {
+			aarName := targetName + "_" + strings.TrimSuffix(aar.Label, ".aar") + "_aar"
+			aarLabels.Add(&bazel.Label{Label: ":" + aarName})
+			ctx.CreateBazelTargetModule(
+				//TODO(b/222687187) use Starlark aar_import instead of native in AOSP
+				bazel.BazelTargetModuleProperties{Rule_class: "aar_import"},
+				android.CommonAttributes{Name: aarName},
+				&bazelAarImportAttributes{
+					Aar: aar,
+				},
+			)
+		}
 	}
-	props := bazel.BazelTargetModuleProperties{Rule_class: "java_import"}
 
-	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: android.RemoveOptionalPrebuiltPrefix(i.Name())}, attrs)
-
+	attrs := &bazelJavaImportAttributes{
+		Jars:    jarsPartitions[jarPartition],
+		Exports: bazel.MakeLabelListAttribute(aarLabels),
+	}
+	ctx.CreateBazelTargetModule(
+		bazel.BazelTargetModuleProperties{Rule_class: "java_import"},
+		android.CommonAttributes{Name: targetName},
+		attrs,
+	)
 }
