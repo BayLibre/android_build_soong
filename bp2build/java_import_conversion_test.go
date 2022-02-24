@@ -50,3 +50,46 @@ java_import {
 			}),
 		}})
 }
+
+func TestJavaImportAarsInJars(t *testing.T) {
+	runJavaImportTestCase(t, bp2buildTestCase{
+		description:                "Java import - jars property contains .aar files",
+		moduleTypeUnderTest:        "java_import",
+		moduleTypeUnderTestFactory: java.ImportFactory,
+		filesystem: map[string]string{
+			"import.jar":  "",
+			"import2.jar": "",
+			"import.aar":  "",
+			"import2.aar": "",
+		},
+		blueprint: `
+java_import {
+        name: "example_import",
+        jars: [
+			"import.jar",
+			"import2.jar",
+			"import.aar",
+			"import2.aar",
+		],
+        bazel_module: { bp2build_available: true },
+}
+`,
+		expectedBazelTargets: []string{
+			makeBazelTarget("aar_import", "example_import_import_aar", attrNameToString{
+				"aar": `"import.aar"`,
+			}),
+			makeBazelTarget("aar_import", "example_import_import2_aar", attrNameToString{
+				"aar": `"import2.aar"`,
+			}),
+			makeBazelTarget("java_import", "example_import", attrNameToString{
+				"jars": `[
+        "import.jar",
+        "import2.jar",
+    ]`,
+				"exports": `[
+        ":example_import_import_aar",
+        ":example_import_import2_aar",
+    ]`,
+			}),
+		}})
+}
