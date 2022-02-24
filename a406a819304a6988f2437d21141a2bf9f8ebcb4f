@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41156c60_813ca927",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546766
+      },
+      "writtenOn": "2022-02-24T14:43:02Z",
+      "side": 1,
+      "message": "Thanks for the review!",
+      "revId": "a406a819304a6988f2437d21141a2bf9f8ebcb4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3734d31d_1d09bb2d",
@@ -26,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3bd69cd2_44a2f387",
+        "filename": "docs/rbe.json",
+        "patchSetId": 7
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1546766
+      },
+      "writtenOn": "2022-02-24T14:43:02Z",
+      "side": 1,
+      "message": "Thanks! I\u0027ve thought about this: We already have explanation of each variables in the pilot plan doc (http://shortn/_vr0aN9QpQk), and we already have an ongoing effort to move it to partner dev site. \n\nInstead of keeping two copies of the explanations, maybe we can just link to the partner dev site once it\u0027s ready? WDYT?",
+      "parentUuid": "3734d31d_1d09bb2d",
+      "range": {
+        "startLine": 3,
+        "startChar": 9,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "a406a819304a6988f2437d21141a2bf9f8ebcb4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1008f5c_50609629",
         "filename": "docs/rbe.md",
         "patchSetId": 7
@@ -37,6 +78,30 @@
       "writtenOn": "2022-02-24T14:16:02Z",
       "side": 1,
       "message": "nit: distributing?",
+      "range": {
+        "startLine": 7,
+        "startChar": 65,
+        "endLine": 7,
+        "endChar": 75
+      },
+      "revId": "a406a819304a6988f2437d21141a2bf9f8ebcb4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b661311_f51c6a80",
+        "filename": "docs/rbe.md",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1546766
+      },
+      "writtenOn": "2022-02-24T14:43:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1008f5c_50609629",
       "range": {
         "startLine": 7,
         "startChar": 65,
