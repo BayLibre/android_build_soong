@@ -192,6 +192,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba628438_0516cea3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-02-25T04:47:39Z",
+      "side": 1,
+      "message": "\u003e It\u0027d be cool if we kept that enabled for libcore, and just not considered NewApi to be an error for libcore\n\nIIUC this CL should achieve that. It removes NewApi from the `disallowed_issues` flags to `lint_project_xml`\n\n```\n# Some flags omitted for brevity\n\n# cmds before\n$ tools/out/bin/lint_project_xml --baseline libcore/lint-baseline.xml --disallowed_issues NewApi\n$ tools/out/bin/lint --baseline libore/lint-baseline.xml\n\n# cmds after\n$ tools/out/bin/lint_project_xml --baseline libcore/lint-baseline.xml # baseline file can contain NewApi now\n$ tools/out/bin/lint --baseline libore/lint-baseline.xml\n```\n\nPedro, does this align with what you had in mind? Or should the `libcore` based logic be moved to\n1. build/soong/java/lint.go\n2. lint_project_xml host tool\n3. lint host tool\n4. somewhere else?",
+      "parentUuid": "ca95e48e_26bc3884",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "3e2bb84fef43e5da76bcdb0012f8fb95d5dfa4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8a020a7a_8da44c6d",
