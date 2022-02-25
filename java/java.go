@@ -1353,6 +1353,7 @@ type Import struct {
 	combinedClasspathFile android.Path
 	classLoaderContexts   dexpreopt.ClassLoaderContextMap
 	exportAidlIncludeDirs android.Paths
+	bazelOutputFiles      android.Paths
 
 	hideApexVariantFromMake bool
 
@@ -1551,17 +1552,47 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 	}
 
+	var outputFiles = android.Paths{j.combinedClasspathFile}
+	ok := j.maybeGenerateBazelBuildActions(ctx)
+	if ok {
+		outputFiles = j.bazelOutputFiles
+	}
+
 	ctx.SetProvider(JavaInfoProvider, JavaInfo{
-		HeaderJars:                     android.PathsIfNonNil(j.combinedClasspathFile),
-		ImplementationAndResourcesJars: android.PathsIfNonNil(j.combinedClasspathFile),
-		ImplementationJars:             android.PathsIfNonNil(j.combinedClasspathFile),
+		HeaderJars:                     android.PathsIfNonNil(outputFiles...),
+		ImplementationAndResourcesJars: android.PathsIfNonNil(outputFiles...),
+		ImplementationJars:             android.PathsIfNonNil(outputFiles...),
 		AidlIncludeDirs:                j.exportAidlIncludeDirs,
 	})
+}
+
+// Returns true if information was available from Bazel, false if bazel invocation still needs to occur.
+func (j *Import) maybeGenerateBazelBuildActions(ctx android.ModuleContext) bool {
+	if !j.BazelModuleBase.MixedBuildsEnabled(ctx) {
+		return false
+	}
+
+	label := j.GetBazelLabel(ctx, j)
+
+	bazelCtx := ctx.Config().BazelContext
+	filePaths, ok := bazelCtx.GetOutputFiles(label, android.GetConfigKey(ctx))
+	if !ok {
+		return false
+	}
+
+	for _, bazelOutputFile := range filePaths {
+		j.bazelOutputFiles = append(j.bazelOutputFiles, android.PathForBazelOut(ctx, bazelOutputFile))
+	}
+
+	return true
 }
 
 func (j *Import) OutputFiles(tag string) (android.Paths, error) {
 	switch tag {
 	case "", ".jar":
+		if j.bazelOutputFiles != nil {
+			return j.bazelOutputFiles, nil
+		}
 		return android.Paths{j.combinedClasspathFile}, nil
 	default:
 		return nil, fmt.Errorf("unsupported module reference tag %q", tag)
@@ -1574,12 +1605,18 @@ func (j *Import) HeaderJars() android.Paths {
 	if j.combinedClasspathFile == nil {
 		return nil
 	}
+	if j.bazelOutputFiles != nil {
+		return j.bazelOutputFiles
+	}
 	return android.Paths{j.combinedClasspathFile}
 }
 
 func (j *Import) ImplementationAndResourcesJars() android.Paths {
 	if j.combinedClasspathFile == nil {
 		return nil
+	}
+	if j.bazelOutputFiles != nil {
+		return j.bazelOutputFiles
 	}
 	return android.Paths{j.combinedClasspathFile}
 }
