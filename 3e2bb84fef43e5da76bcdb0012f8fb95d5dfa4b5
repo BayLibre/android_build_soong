@@ -216,6 +216,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2af5682_9baa1ced",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-02-25T09:42:18Z",
+      "side": 1,
+      "message": "Initially I was thinking about doing this in lint.go...\n\n\nBut this also does the job, so I\u0027m fine with this. Anton is right saying that if we actually stop doing the NewApi checks, then they could remove their baselines. On the other hand, we probably should ping them to stop relying on the NewAPi check as it seems they now except it to be there.\n\n\nPS: I just noticed my earlier link is not pointing at the right line. This is an updated one: http://cs/aosp-master/build/soong/java/lint.go;l\u003d328;rcl\u003d6a2d7c20984c7b434d17d3eab463571a41be3325",
+      "parentUuid": "ba628438_0516cea3",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "3e2bb84fef43e5da76bcdb0012f8fb95d5dfa4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8a020a7a_8da44c6d",
