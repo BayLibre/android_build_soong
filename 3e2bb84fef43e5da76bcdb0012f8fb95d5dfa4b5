@@ -240,6 +240,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "90654282_24e20bf9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-02-25T11:05:29Z",
+      "side": 1,
+      "message": "Right, what disallowed_issues does is to disallow having NewApi in the baseline. So we\u0027re turning that off for libcore, so now they _can_ have NewApi entries in their baseline. But NewApi is still an error, so libcore team will need to continue updating their baseline.\n\nBut it would be better if we changed the lint invocation of libcore/* such that NewApi was not an error, at which point the baseline can be deleted and won\u0027t have to be continuously updated. And strict_updatability_linting could still be on for libcore, if we e.g. extend it to lint other things for which libcore should be included.",
+      "parentUuid": "f2af5682_9baa1ced",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "3e2bb84fef43e5da76bcdb0012f8fb95d5dfa4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8a020a7a_8da44c6d",
