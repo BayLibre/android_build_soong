@@ -1557,3 +1557,40 @@ func TestDataDeviceBinsAutogenTradefedConfig(t *testing.T) {
 		t.Errorf("foo extraConfigs %v does not contain %q", autogen.Args["extraConfigs"], expectedAutogenConfig)
 	}
 }
+
+func TestImportMixedBuild(t *testing.T) {
+	bp := `
+		java_import {
+			name: "baz",
+			jars: [
+				"test1.jar",
+				"test2.jar",
+			],
+			bazel_module: { label: "//foo/bar:baz" },
+		}
+	`
+
+	ctx := android.GroupFixturePreparers(
+		prepareForJavaTest,
+		android.FixtureModifyConfig(func(config android.Config) {
+			config.BazelContext = android.MockBazelContext{
+				OutputBaseDir: "outputbase",
+				LabelToOutputFiles: map[string][]string{
+					"//foo/bar:baz": []string{"test1.jar", "test2.jar"},
+				},
+			}
+		}),
+	).RunTestWithBp(t, bp)
+
+	bazMod := ctx.ModuleForTests("baz", "android_common").Module()
+	producer := bazMod.(android.OutputFileProducer)
+	outputFiles, err := producer.OutputFiles("")
+	if err != nil {
+		t.Errorf("Unexpected error getting cc_binary outputfiles %s", err)
+	}
+	expectedOutputFiles := []string{
+		"outputbase/execroot/__main__/test1.jar",
+		"outputbase/execroot/__main__/test2.jar",
+	}
+	android.AssertDeepEquals(t, "output files", expectedOutputFiles, outputFiles.Strings())
+}
