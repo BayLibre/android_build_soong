@@ -16,6 +16,23 @@
       "message": "Paul is OOO. Jiyong, could you please take a look? This CL fixes a P1 bug.",
       "revId": "81e6253712eb5e9469440441756a770003a5075d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "399f8fd5_80a1d047",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-25T13:33:45Z",
+      "side": 1,
+      "message": "Both Paul and Jiyong are OOO. Liz, could you please take a look? This CL fixes a P1 bug.",
+      "revId": "81e6253712eb5e9469440441756a770003a5075d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
