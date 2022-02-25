@@ -1432,6 +1432,10 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		j.hideApexVariantFromMake = true
 	}
 
+	if j.maybeGenerateBazelBuildActions(ctx) {
+		return
+	}
+
 	if ctx.Windows() {
 		j.HideFromMake()
 	}
@@ -1473,19 +1477,7 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		addCLCFromDep(ctx, module, j.classLoaderContexts)
 	})
 
-	if Bool(j.properties.Installable) {
-		var installDir android.InstallPath
-		if ctx.InstallInTestcases() {
-			var archDir string
-			if !ctx.Host() {
-				archDir = ctx.DeviceConfig().DeviceArch()
-			}
-			installDir = android.PathForModuleInstall(ctx, ctx.ModuleName(), archDir)
-		} else {
-			installDir = android.PathForModuleInstall(ctx, "framework")
-		}
-		ctx.InstallFile(installDir, jarName, outputFile)
-	}
+	j.maybeInstall(ctx, jarName, outputFile)
 
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.properties.Aidl.Export_include_dirs)
 
@@ -1557,6 +1549,66 @@ func (j *Import) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		ImplementationJars:             android.PathsIfNonNil(j.combinedClasspathFile),
 		AidlIncludeDirs:                j.exportAidlIncludeDirs,
 	})
+}
+
+func (j *Import) maybeInstall(ctx android.ModuleContext, jarName string, outputFile android.Path) {
+	if !Bool(j.properties.Installable) {
+		return
+	}
+
+	var installDir android.InstallPath
+	if ctx.InstallInTestcases() {
+		var archDir string
+		if !ctx.Host() {
+			archDir = ctx.DeviceConfig().DeviceArch()
+		}
+		installDir = android.PathForModuleInstall(ctx, ctx.ModuleName(), archDir)
+	} else {
+		installDir = android.PathForModuleInstall(ctx, "framework")
+	}
+	ctx.InstallFile(installDir, jarName, outputFile)
+}
+
+// Returns true if information was available from Bazel, false if bazel invocation still needs to occur.
+func (j *Import) maybeGenerateBazelBuildActions(ctx android.ModuleContext) bool {
+	if !j.BazelModuleBase.MixedBuildsEnabled(ctx) {
+		return false
+	}
+
+	label := j.GetBazelLabel(ctx, j)
+	targetName := strings.Split(label, ":")
+	labelNoPrebuilt := strings.Join([]string{
+		targetName[0],
+		android.RemoveOptionalPrebuiltPrefix(targetName[1]),
+	}, ":")
+
+	bazelCtx := ctx.Config().BazelContext
+	filePaths, ok := bazelCtx.GetOutputFiles(labelNoPrebuilt, android.GetConfigKey(ctx))
+	if !ok {
+		return false
+	}
+
+	bazelJars := android.Paths{}
+	for _, bazelOutputFile := range filePaths {
+		bazelJars = append(bazelJars, android.PathForBazelOut(ctx, bazelOutputFile))
+	}
+
+	jarName := j.Stem() + ".jar"
+	outputFile := android.PathForModuleOut(ctx, "bazelCombined", jarName)
+	TransformJarsToJar(ctx, outputFile, "for prebuilts", bazelJars, android.OptionalPath{},
+		false, []string{}, []string{})
+	j.combinedClasspathFile = outputFile
+
+	ctx.SetProvider(JavaInfoProvider, JavaInfo{
+		HeaderJars:                     android.PathsIfNonNil(j.combinedClasspathFile),
+		ImplementationAndResourcesJars: android.PathsIfNonNil(j.combinedClasspathFile),
+		ImplementationJars:             android.PathsIfNonNil(j.combinedClasspathFile),
+		AidlIncludeDirs:                j.exportAidlIncludeDirs,
+	})
+
+	j.maybeInstall(ctx, jarName, outputFile)
+
+	return true
 }
 
 func (j *Import) OutputFiles(tag string) (android.Paths, error) {
@@ -2185,5 +2237,4 @@ func (i *Import) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
 	props := bazel.BazelTargetModuleProperties{Rule_class: "java_import"}
 
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{Name: android.RemoveOptionalPrebuiltPrefix(i.Name())}, attrs)
-
 }
