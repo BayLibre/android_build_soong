@@ -896,11 +896,9 @@ func (b *BazelModuleBase) shouldConvertWithBp2build(ctx BazelConversionContext, 
 	}
 
 	packagePath := ctx.OtherModuleDir(module)
-	packagePathSplit := strings.Split(packagePath, "/")
-	packagePrefix := strings.Join(packagePathSplit[:len(packagePathSplit)-1], "/")
-	if alwaysConvert && ShouldKeepExistingBuildFileForDir(packagePrefix) {
+	if alwaysConvert && ShouldKeepExistingBuildFileForDir(packagePath) {
 		ctx.(BaseModuleContext).ModuleErrorf("A module cannot be in a directory listed in bp2buildKeepExistingBuildFile"+
-			" and also be in bp2buildModuleAlwaysConvert. Directory: '%s'", packagePrefix)
+			" and also be in bp2buildModuleAlwaysConvert. Directory: '%s'", packagePath)
 
 		return false
 	}
@@ -912,7 +910,7 @@ func (b *BazelModuleBase) shouldConvertWithBp2build(ctx BazelConversionContext, 
 		if alwaysConvert {
 			ctx.(BaseModuleContext).ModuleErrorf("A module cannot be in a directory marked Bp2BuildDefaultTrue"+
 				" or Bp2BuildDefaultTrueRecursively and also be in bp2buildModuleAlwaysConvert. Directory: '%s'",
-				packagePrefix)
+				packagePath)
 		}
 
 		// Allow modules to explicitly opt-out.
