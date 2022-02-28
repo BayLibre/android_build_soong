@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e8da5c_563c5fc2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-02-28T07:32:16Z",
+      "side": 1,
+      "message": "Could you amend TestInstallExtraFlattenedApexes in apex_test.go so that the new case is covered by the test?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "81e6253712eb5e9469440441756a770003a5075d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0f629900_3a82436b",
@@ -48,6 +71,75 @@
       "writtenOn": "2022-02-28T04:14:37Z",
       "side": 1,
       "message": "ping for review. This is a urgent fix because all devices with flatten APEX have problem now.",
+      "revId": "81e6253712eb5e9469440441756a770003a5075d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52898480_e87fedb4",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-02-28T07:32:16Z",
+      "side": 1,
+      "message": "This as well",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 4
+      },
+      "revId": "81e6253712eb5e9469440441756a770003a5075d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98ee4586_24e052a4",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-02-28T07:32:16Z",
+      "side": 1,
+      "message": "Can you move this to writeRequiredModules?",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 5
+      },
+      "revId": "81e6253712eb5e9469440441756a770003a5075d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47926387_17477c30",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-02-28T07:32:16Z",
+      "side": 1,
+      "message": "This as well",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 5
+      },
       "revId": "81e6253712eb5e9469440441756a770003a5075d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
