@@ -359,6 +359,7 @@ var (
 		"packages/services/Car/tests/SampleRearViewCamera":   Bp2BuildDefaultTrue,
 		"prebuilts/clang/host/linux-x86":                     Bp2BuildDefaultTrueRecursively,
 		"prebuilts/tools/common/m2":                          Bp2BuildDefaultTrue,
+		"prebuilts/sdk/tools/jetifier/jetifier-standalone":   Bp2BuildDefaultTrue,
 		"system/apex":                                        Bp2BuildDefaultFalse, // TODO(b/207466993): flaky failures
 		"system/apex/proto":                                  Bp2BuildDefaultTrueRecursively,
 		"system/apex/libs":                                   Bp2BuildDefaultTrueRecursively,
@@ -418,6 +419,14 @@ var (
 
 		//system/extras/verity/fec
 		"fec",
+
+		//packages/apps/Car/libs/car-ui-lib/car-ui-androidx
+		// genrule dependencies for java_imports
+		"car-ui-androidx-annotation-nodeps",
+		"car-ui-androidx-collection-nodeps",
+		"car-ui-androidx-core-common-nodeps",
+		"car-ui-androidx-lifecycle-common-nodeps",
+		"car-ui-androidx-constraintlayout-solver-nodeps",
 	}
 
 	// Per-module-type allowlist to always opt modules in of both bp2build and mixed builds
@@ -564,17 +573,7 @@ var (
 
 		"libprotobuf-java-nano", // b/220869005, depends on non-public_current SDK
 
-		// TODO(b/221082840) convert java_imports in //packages/apps/Car/libs/car-ui-lib/...
-		"car-ui-androidx-annotation",
-		"car-ui-androidx-annotation-nodeps",
-		"car-ui-androidx-collection",
-		"car-ui-androidx-collection-nodeps",
-		"car-ui-androidx-core-common",
-		"car-ui-androidx-core-common-nodeps",
-		"car-ui-androidx-lifecycle-common",
-		"car-ui-androidx-lifecycle-common-nodeps",
-		"car-ui-androidx-constraintlayout-solver",
-		"car-ui-androidx-constraintlayout-solver-nodeps",
+		"car-ui-androidx-core-common", // genrule dependency creates an .aar, not a .jar
 
 		"art-module-host-exports_okhttp-norepackage@current",        // aosp/1999250, needs Jars (arch variant)
 		"conscrypt-unbundled",                                       // aosp/1999250, needs Jars (arch variant)
