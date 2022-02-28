@@ -960,6 +960,9 @@ func (j *Module) collectJavacFlags(
 }
 
 func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
+	if aaptSrcJar != nil {
+		//fmt.Printf("AAPT_SRCJAR for %s: %s\n", ctx.ModuleName(), aaptSrcJar.String())
+	}
 	j.exportAidlIncludeDirs = android.PathsForModuleSrc(ctx, j.deviceProperties.Aidl.Export_include_dirs)
 
 	deps := j.collectDeps(ctx)
