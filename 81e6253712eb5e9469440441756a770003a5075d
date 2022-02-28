@@ -33,6 +33,23 @@
       "message": "Both Paul and Jiyong are OOO. Liz, could you please take a look? This CL fixes a P1 bug.",
       "revId": "81e6253712eb5e9469440441756a770003a5075d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdf3d599_9dbad9d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2022-02-28T04:14:37Z",
+      "side": 1,
+      "message": "ping for review. This is a urgent fix because all devices with flatten APEX have problem now.",
+      "revId": "81e6253712eb5e9469440441756a770003a5075d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
