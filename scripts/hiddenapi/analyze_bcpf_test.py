@@ -154,6 +154,39 @@ Landroid/compat/Compatibility$1;-><init>()V,blocked
                 property_snippet,
                 msg="hiddenapi snippet")
 
+    def test_compute_hiddenapi_package_properties(self):
+        fs = {
+            "out/soong/.intermediates/bcpf-dir/bcpf/all-flags.csv":
+                """
+La/b/C;->m()V
+La/b/c/D;->m()V
+La/b/c/E;->m()V
+Lb/c/D;->m()V
+Lb/c/E;->m()V
+Lb/c/d/E;->m()V
+""",
+            "out/soong/hiddenapi/hiddenapi-flags.csv":
+                """
+La/b/C;->m()V
+La/b/D;->m()V
+La/b/E;->m()V
+La/b/c/D;->m()V
+La/b/c/E;->m()V
+La/b/c/d/E;->m()V
+Lb/c/D;->m()V
+Lb/c/E;->m()V
+Lb/c/d/E;->m()V
+"""
+        }
+        analyzer = self.create_analyzer_for_test(fs)
+        analyzer.load_all_flags()
+
+        split_packages, single_packages, package_prefixes = \
+            analyzer.compute_hiddenapi_package_properties()
+        self.assertEqual(["a.b"], split_packages)
+        self.assertEqual(["a.b.c"], single_packages)
+        self.assertEqual(["b"], package_prefixes)
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=3)
