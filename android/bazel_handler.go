@@ -361,7 +361,7 @@ func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.
 		// --experimental_repository_disable_download set further below.
 		// rules_java is also not needed until mixed builds start building java targets.
 		// TODO(b/197958133): Once rules_java is pulled into AOSP, remove this flag.
-		"--noautodetect_server_javabase",
+		//"--noautodetect_server_javabase",
 		"--output_base=" + absolutePath(paths.outputBase),
 		command.command,
 	}
@@ -385,7 +385,7 @@ func (r *builtinBazelRunner) issueBazelCommand(paths *bazelPaths, runName bazel.
 		fmt.Sprintf("--host_platform=%s", "//build/bazel/platforms:linux_x86_64"))
 
 	// Explicitly disable downloading rules (such as canonical C++ and Java rules) from the network.
-	cmdFlags = append(cmdFlags, "--experimental_repository_disable_download")
+	//cmdFlags = append(cmdFlags, "--experimental_repository_disable_download")
 	cmdFlags = append(cmdFlags, extraFlags...)
 
 	bazelCmd := exec.Command(paths.bazelPath, cmdFlags...)
