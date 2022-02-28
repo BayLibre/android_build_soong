@@ -25,6 +25,8 @@ import tempfile
 import typing
 import sys
 
+from signature_trie import signature_trie
+
 _STUB_FLAGS_FILE = "out/soong/hiddenapi/hiddenapi-stub-flags.txt"
 
 _FLAGS_FILE = "out/soong/hiddenapi/hiddenapi-flags.csv"
@@ -299,6 +301,7 @@ Cleaning potentially stale files.
 
         self.build_monolithic_stubs_flags()
         self.build_monolithic_flags()
+        self.analyze_hiddenapi_package_properties()
 
     def check_inconsistent_flag_lines(self, significant, module_line,
                                       monolithic_line, separator_line):
@@ -649,6 +652,227 @@ merge these properties into it.
                 os.remove(bcpf_flags_file)
 
         return bcpf_properties
+
+    BCPF = "bcpf"
+    OTHER = "other"
+    FAKE_MEMBER = ";->fake()V"
+
+    def analyze_hiddenapi_package_properties(self):
+        split_packages, single_packages, package_prefixes = \
+            self.compute_hiddenapi_package_properties()
+
+        # TODO(b/202154151): Find those classes in split packages that are not
+        #  part of an API, i.e. are an internal implementation class, and so
+        #  can, and should, be safely moved out of the split packages.
+
+        hiddenapi_snippet = ""
+        if split_packages:
+            split_packages_snippet = "\n".join(
+                [f"""            "{x}",""" for x in split_packages])
+            hiddenapi_snippet += f"""
+        // The following packages contain classes from other modules on the
+        // bootclasspath. That means that the hidden API flags for this module
+        // has to explicitly list every single class this module provides in
+        // that package to differentiate them from the classes provided by other
+        // modules. That can include private classes that are not part of the
+        // API.
+        split_packages: [
+{split_packages_snippet}
+        ],
+"""
+            self.report(f"""
+bootclasspath_fragment {self.bcpf} contains classes in packages that also
+contain classes provided by other sources, those packages are called split
+packages. Split packages should be avoided where possible but are often
+unavoidable when modularizing existing code.
+
+The hidden api processing needs to know which packages are split (and conversely
+which are not) so that it can optimize the hidden API flags to remove
+unnecessary implementation details.
+""")
+        else:
+            hiddenapi_snippet += """
+        // This module does not contain any split packages.
+        split_packages: [],
+"""
+
+        self.report("""
+By default (for backwards compatibility) the bootclasspath_fragment assumes that
+all packages are split unless one of the package_prefixes or split_packages
+properties are specified. While that is safe it is not optimal and can lead to
+unnecessary implementation details leaking into the hidden API flags. Adding an
+empty split_packages property allows the flags to be optimized and remove any
+unnecessary implementation details.
+""")
+
+        if single_packages:
+            single_packages_snippet = "".join(
+                [f"""            "{x}",""" for x in single_packages])
+            hiddenapi_snippet += f"""
+        // The following packages currently only contain classes from this
+        // bootclasspath_fragment but some of their sub-packages contain classes
+        // from other bootckasspath modules. Packages should only be listed here
+        // when necessary for legacy purposes, new packages should match a
+        // package prefix.
+        single_packages: [
+{single_packages_snippet}
+        ],
+"""
+
+        if package_prefixes:
+            package_prefixes_snippet = "\n".join(
+                [f"""            "{x}",""" for x in package_prefixes])
+            hiddenapi_snippet += f"""
+        // The following packages and all their subpackages currently only
+        // contain classes from this bootclasspath_fragment. Listing a package
+        // here won't prevent other bootclasspath modules from adding classes in
+        // any of those packages but it will prevent them from adding those
+        // classes into an API surface, e.g. public, system, etc.. Doing so will
+        // result in a build failure due to inconsistent flags.
+        package_prefixes: [
+{package_prefixes_snippet}
+        ],
+"""
+
+        # Remove leading and trailing blank lines.
+        hiddenapi_snippet = hiddenapi_snippet.strip("\n")
+
+        bcpf_dir = self.module_info.module_path(self.bcpf)
+        self.report(f"""
+Add the following snippet into the {self.bcpf} bootclasspath_fragment module
+in the {bcpf_dir}/Android.bp file. If the hidden_api block already exists then
+merge these properties into it.
+
+    hidden_api: {{
+{hiddenapi_snippet}
+    }},
+""")
+
+        signature_patterns_files = self.find_bootclasspath_fragment_output_file(
+            "signature-patterns.csv").removeprefix(self.top_dir)
+
+        self.report(f"""
+The purpose of the hiddenapi split_packages and package_prefixes properties is
+to allow the removal of implementation details from the hidden API flags to
+reduce the coupling between sdk snapshots and the APEX runtime. It cannot
+eliminate that coupling completely though. Doing so may require changes to the
+code.
+
+This tool provides support for managing those properties but it cannot decide
+whether the set of package prefixes suggested is appropriate that needs the
+input of the developer.
+
+Please run the following command:
+    m {signature_patterns_files}
+
+And then check the '{signature_patterns_files}' for any mention of
+implementation classes and packages (i.e. those classes/packages that do not
+contain any part of an API surface, including the hidden API). If they are
+found then the code should ideally be moved to a package unique to this module
+that is contained within a package that is part of an API surface.
+
+The format of the file is a list of patterns:
+
+* Patterns for split packages will list every class in that package.
+
+* Patterns for package prefixes will end with .../**.
+
+* Patterns for packages which are not split but cannot use a package prefix
+because there are sub-packages which are provided by another module will end
+with .../*.
+""")
+
+    def compute_hiddenapi_package_properties(self):
+        trie = signature_trie()
+        # Populate the trie with the classes that are provided by the
+        # bootclasspath_fragment tagging them to make it clear where they
+        # are from.
+        sorted_classes = sorted(self.classes)
+        for class_name in sorted_classes:
+            trie.add(class_name + self.FAKE_MEMBER, self.BCPF)
+
+        monolithic_classes = set()
+        abs_flags_file = os.path.join(self.top_dir, _FLAGS_FILE)
+        with open(abs_flags_file, "r", encoding="utf8") as f:
+            for line in iter(f.readline, ""):
+                signature = self.line_to_signature(line)
+                class_name = self.signature_to_class(signature)
+                if (class_name not in monolithic_classes and
+                        class_name not in self.classes):
+                    trie.add(
+                        class_name + self.FAKE_MEMBER,
+                        self.OTHER,
+                        only_if_matches=True)
+                    monolithic_classes.add(class_name)
+
+        split_packages = []
+        single_packages = []
+        package_prefixes = []
+        self.recurse_hiddenapi_packages_trie(trie, split_packages,
+                                             single_packages, package_prefixes)
+        return split_packages, single_packages, package_prefixes
+
+    def recurse_hiddenapi_packages_trie(self, node, split_packages,
+                                        single_packages, package_prefixes):
+        nodes = node.child_nodes()
+        if nodes:
+            for child in nodes:
+                # Ignore any non-package nodes.
+                if child.type != "package":
+                    continue
+
+                package = child.selector.replace("/", ".")
+
+                providers = set(child.get_matching_rows("**"))
+                if not providers:
+                    # The package and all its sub packages contain no
+                    # classes. This should never happen.
+                    pass
+                elif providers == {self.BCPF}:
+                    # The package and all its sub packages only contain
+                    # classes provided by the bootclasspath_fragment.
+                    self.log(f"Package '{package}.**' is not split")
+                    package_prefixes.append(package)
+                    # There is no point traversing into the sub packages.
+                    continue
+                elif providers == {self.OTHER}:
+                    # The package and all its sub packages contain no
+                    # classes provided by the bootclasspath_fragment.
+                    # There is no point traversing into the sub packages.
+                    self.log(f"Package '{package}.**' contains no classes from "
+                             f"{self.bcpf}")
+                    continue
+                elif self.BCPF in providers:
+                    # The package and all its sub packages contain classes
+                    # provided by the bootclasspath_fragment and other
+                    # sources.
+                    self.log(f"Package '{package}.**' contains classes from "
+                             f"{self.bcpf} and other sources")
+
+                providers = set(child.get_matching_rows("*"))
+                if not providers:
+                    # The package contains no classes.
+                    self.log(f"Package: {package} contains no classes")
+                elif providers == {self.BCPF}:
+                    # The package only contains classes provided by the
+                    # bootclasspath_fragment.
+                    self.log(f"Package '{package}.*' is not split")
+                    single_packages.append(package)
+                elif providers == {self.OTHER}:
+                    # The package contains no classes provided by the
+                    # bootclasspath_fragment. Child nodes make contain such
+                    # classes.
+                    self.log(f"Package '{package}.*' contains no classes from "
+                             f"{self.bcpf}")
+                elif self.BCPF in providers:
+                    # The package contains classes provided by both the
+                    # bootclasspath_fragment and some other source.
+                    self.log(f"Package '{package}.*' is split")
+                    split_packages.append(package)
+
+                self.recurse_hiddenapi_packages_trie(child, split_packages,
+                                                     single_packages,
+                                                     package_prefixes)
 
 
 def main(argv):
