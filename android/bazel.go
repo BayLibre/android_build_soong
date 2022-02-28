@@ -352,6 +352,7 @@ var (
 		"packages/services/Car/tests/SampleRearViewCamera":   Bp2BuildDefaultTrue,
 		"prebuilts/clang/host/linux-x86":                     Bp2BuildDefaultTrueRecursively,
 		"prebuilts/tools/common/m2":                          Bp2BuildDefaultTrue,
+		"prebuilts/sdk/tools/jetifier/jetifier-standalone":   Bp2BuildDefaultTrue,
 		"system/apex":                                        Bp2BuildDefaultFalse, // TODO(b/207466993): flaky failures
 		"system/apex/proto":                                  Bp2BuildDefaultTrueRecursively,
 		"system/apex/libs":                                   Bp2BuildDefaultTrueRecursively,
@@ -514,17 +515,17 @@ var (
 		"kotlin-stdlib-jdk8",
 		"kotlin-stdlib",
 
-		// TODO(b/221082840) convert java_imports in //packages/apps/Car/libs/car-ui-lib/...
-		// "car-ui-androidx-annotation",
-		// "car-ui-androidx-annotation-nodeps",
-		// "car-ui-androidx-collection",
-		// "car-ui-androidx-collection-nodeps",
-		// "car-ui-androidx-core-common",
-		// "car-ui-androidx-core-common-nodeps",
-		// "car-ui-androidx-lifecycle-common",
-		// "car-ui-androidx-lifecycle-common-nodeps",
-		// "car-ui-androidx-constraintlayout-solver",
-		// "car-ui-androidx-constraintlayout-solver-nodeps",
+		//  //packages/apps/Car/libs/car-ui-lib/...
+		"car-ui-androidx-annotation",
+		"car-ui-androidx-annotation-nodeps",
+		"car-ui-androidx-collection",
+		"car-ui-androidx-collection-nodeps",
+		// "car-ui-androidx-core-common", genrule dependency creates a .aar, not a .jar
+		"car-ui-androidx-core-common-nodeps",
+		"car-ui-androidx-lifecycle-common",
+		"car-ui-androidx-lifecycle-common-nodeps",
+		"car-ui-androidx-constraintlayout-solver",
+		"car-ui-androidx-constraintlayout-solver-nodeps",
 
 		//  //prebuilts/sdk/current/extras/app-toolkit, already built in prebuilts
 		//"android-arch-core-common-nodeps",
