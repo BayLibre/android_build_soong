@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "3d794e59_0acd1335",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-28T11:19:20Z",
+      "side": 1,
+      "message": "I think TestInstallExtraFlattenedApexes is unrelated to this change. It checks that both flattened apex and unflattened apex are installed on some devices (see aosp/1180925). I have a separate test `TestAndroidMk_RequiredDeps` to cover my change.",
+      "parentUuid": "d6e8da5c_563c5fc2",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "81e6253712eb5e9469440441756a770003a5075d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0f629900_3a82436b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -98,6 +122,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65da2877_1a24aeab",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-28T11:19:20Z",
+      "side": 1,
+      "message": "I\u0027d keep this here because it requires a lot of arguments from function.",
+      "parentUuid": "52898480_e87fedb4",
+      "range": {
+        "startLine": 341,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 4
+      },
+      "revId": "81e6253712eb5e9469440441756a770003a5075d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "98ee4586_24e052a4",
@@ -121,6 +169,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbd5b48b_7c0654b5",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-28T11:19:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "98ee4586_24e052a4",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 357,
+        "endChar": 5
+      },
+      "revId": "81e6253712eb5e9469440441756a770003a5075d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47926387_17477c30",
@@ -134,6 +206,30 @@
       "writtenOn": "2022-02-28T07:32:16Z",
       "side": 1,
       "message": "This as well",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 5
+      },
+      "revId": "81e6253712eb5e9469440441756a770003a5075d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ebd3e19_704fe961",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-02-28T11:19:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47926387_17477c30",
       "range": {
         "startLine": 391,
         "startChar": 0,
