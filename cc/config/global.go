@@ -214,7 +214,6 @@ var (
 		// http://b/145211066
 		"-Wno-implicit-int-float-conversion",
 		// New warnings to be fixed after clang-r377782.
-		"-Wno-int-in-bool-context",          // http://b/148287349
 		"-Wno-sizeof-array-div",             // http://b/148815709
 		"-Wno-tautological-overlap-compare", // http://b/148815696
 		// New warnings to be fixed after clang-r383902.
@@ -243,6 +242,8 @@ var (
 		"-Wno-unused-but-set-parameter",
 		// http://b/215753485
 		"-Wno-bitwise-instead-of-logical",
+		// http://b/148287349
+		"-Wno-int-in-bool-context",
 	}
 
 	// Extra cflags for external third-party projects to disable warnings that
