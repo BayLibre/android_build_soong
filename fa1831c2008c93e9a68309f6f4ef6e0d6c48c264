@@ -1,4 +1,27 @@
 {
-  "comments": [],
-  "submitRequirementResults": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbb155f6_b374d275",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-02-28T13:21:06Z",
+      "side": 1,
+      "message": "We may want to reconsider this. This can enable both a prebuilt and a built from source module.\n\nCan you discuss this in your proposal?",
+      "range": {
+        "startLine": 662,
+        "startChar": 0,
+        "endLine": 662,
+        "endChar": 66
+      },
+      "revId": "fa1831c2008c93e9a68309f6f4ef6e0d6c48c264",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
 }
