@@ -25,7 +25,11 @@ import subprocess
 import tempfile
 import textwrap
 import typing
+from enum import Enum
+
 import sys
+
+from signature_trie import signature_trie
 
 _STUB_FLAGS_FILE = "out/soong/hiddenapi/hiddenapi-stub-flags.txt"
 
@@ -130,6 +134,11 @@ class FileChange:
         return self.path < other.path
 
 
+class Action(Enum):
+    APPEND = 1
+    SET = 2
+
+
 @dataclasses.dataclass
 class HiddenApiPropertyChange:
 
@@ -138,6 +147,8 @@ class HiddenApiPropertyChange:
     values: typing.List[str]
 
     property_comment: str = ""
+
+    action: Action = Action.APPEND
 
     def snippet(self, indent):
         snippet = "\n"
@@ -155,7 +166,18 @@ class HiddenApiPropertyChange:
         # Add an additional placeholder value to identify the modification that
         # bpmodify makes.
         bpmodify_values = [_SPECIAL_PLACE_HOLDER]
-        bpmodify_values.extend(self.values)
+
+        if self.action == Action.APPEND:
+            # If adding the values to the existing values then pass the new
+            # values to bpmodify.
+            bpmodify_values.extend(self.values)
+        elif self.action == Action.SET:
+            # If setting the values to replace the existing values then just
+            # pass an extra placeholder to force bpmodify to format the list
+            # across multiple lines.
+            bpmodify_values.append(_SPECIAL_PLACE_HOLDER + "_SET")
+        else:
+            raise ValueError(f"unknown action {self.action}")
 
         packages = ",".join(bpmodify_values)
         bpmodify_runner.add_values_to_property(
@@ -220,6 +242,16 @@ class HiddenApiPropertyChange:
         if property_line_index == -1:
             logging.debug("Could not find property line in %s", bcpf_bp_file)
             return False
+
+        if self.action == Action.SET:
+            indent = extract_indent(lines[property_line_index + 1])
+            insert = [f'{indent}"{x}",' for x in self.values]
+            lines[property_line_index + 1:end_property_array_index] = insert
+            if not self.values:
+                # If the property has no values then merge the ], onto the
+                # same line as the property name.
+                del lines[property_line_index + 1]
+                lines[property_line_index] = lines[property_line_index] + "],"
 
         # Only insert a comment if the property does not already have a comment.
         line_preceding_property = lines[(property_line_index - 1)]
@@ -383,7 +415,7 @@ Making sure that {module_info_file} is up to date.
         return os.path.join(self.out_dir, "soong/.intermediates", module_path,
                             module_name)
 
-    def find_bootclasspath_fragment_output_file(self, basename):
+    def find_bootclasspath_fragment_output_file(self, basename, required=True):
         # Find the output file of the bootclasspath_fragment with the specified
         # base name.
         found_file = ""
@@ -393,7 +425,7 @@ Making sure that {module_info_file} is up to date.
                 if f == basename:
                     found_file = os.path.join(dirpath, f)
                     break
-        if not found_file:
+        if not found_file and required:
             raise Exception(f"Could not find {basename} in {bcpf_out_dir}")
         return found_file
 
@@ -470,6 +502,8 @@ Cleaning potentially stale files.
         result = Result()
 
         self.build_monolithic_flags(result)
+        self.analyze_hiddenapi_package_properties(result)
+        self.explain_how_to_check_signature_patterns()
 
         # If there were any changes that need to be made to the Android.bp
         # file then either apply or report them.
@@ -922,6 +956,226 @@ Checking custom hidden API flags....
                 self.report_hidden_api_flag_file_changes(
                     result, property_name, flags_file, rel_bcpf_flags_file,
                     bcpf_flags_file)
+
+    BCPF = "bcpf"
+    OTHER = "other"
+    FAKE_MEMBER = ";->fake()V"
+
+    @staticmethod
+    def split_package_comment(split_packages):
+        if split_packages:
+            return textwrap.dedent("""
+                The following packages contain classes from other modules on the
+                bootclasspath. That means that the hidden API flags for this
+                module has to explicitly list every single class this module
+                provides in that package to differentiate them from the classes
+                provided by other modules. That can include private classes that
+                are not part of the API.
+            """).strip("\n")
+
+        return "This module does not contain any split packages."
+
+    @staticmethod
+    def package_prefixes_comment():
+        return textwrap.dedent("""
+            The following packages and all their subpackages currently only
+            contain classes from this bootclasspath_fragment. Listing a package
+            here won't prevent other bootclasspath modules from adding classes
+            in any of those packages but it will prevent them from adding those
+            classes into an API surface, e.g. public, system, etc.. Doing so
+            will result in a build failure due to inconsistent flags.
+        """).strip("\n")
+
+    def analyze_hiddenapi_package_properties(self, result):
+        split_packages, single_packages, package_prefixes = \
+            self.compute_hiddenapi_package_properties()
+
+        # TODO(b/202154151): Find those classes in split packages that are not
+        #  part of an API, i.e. are an internal implementation class, and so
+        #  can, and should, be safely moved out of the split packages.
+
+        result.property_changes.append(
+            HiddenApiPropertyChange(
+                property_name="split_packages",
+                values=split_packages,
+                property_comment=self.split_package_comment(split_packages),
+                action=Action.SET,
+            ))
+
+        if split_packages:
+            self.report(f"""
+bootclasspath_fragment {self.bcpf} contains classes in packages that also
+contain classes provided by other sources, those packages are called split
+packages. Split packages should be avoided where possible but are often
+unavoidable when modularizing existing code.
+
+The hidden api processing needs to know which packages are split (and conversely
+which are not) so that it can optimize the hidden API flags to remove
+unnecessary implementation details.
+""")
+
+        self.report("""
+By default (for backwards compatibility) the bootclasspath_fragment assumes that
+all packages are split unless one of the package_prefixes or split_packages
+properties are specified. While that is safe it is not optimal and can lead to
+unnecessary implementation details leaking into the hidden API flags. Adding an
+empty split_packages property allows the flags to be optimized and remove any
+unnecessary implementation details.
+""")
+
+        if single_packages:
+            result.property_changes.append(
+                HiddenApiPropertyChange(
+                    property_name="single_packages",
+                    values=single_packages,
+                    property_comment=textwrap.dedent("""
+                    The following packages currently only contain classes from
+                    this bootclasspath_fragment but some of their sub-packages
+                    contain classes from other bootclasspath modules. Packages
+                    should only be listed here when necessary for legacy
+                    purposes, new packages should match a package prefix.
+                """),
+                    action=Action.SET,
+                ))
+
+        result.property_changes.append(
+            HiddenApiPropertyChange(
+                property_name="package_prefixes",
+                values=package_prefixes,
+                property_comment=self.package_prefixes_comment(),
+                action=Action.SET,
+            ))
+
+    def explain_how_to_check_signature_patterns(self):
+        signature_patterns_files = self.find_bootclasspath_fragment_output_file(
+            "signature-patterns.csv", required=False)
+        if signature_patterns_files:
+            signature_patterns_files = signature_patterns_files.removeprefix(
+                self.top_dir)
+
+            self.report(f"""
+The purpose of the hiddenapi split_packages and package_prefixes properties is
+to allow the removal of implementation details from the hidden API flags to
+reduce the coupling between sdk snapshots and the APEX runtime. It cannot
+eliminate that coupling completely though. Doing so may require changes to the
+code.
+
+This tool provides support for managing those properties but it cannot decide
+whether the set of package prefixes suggested is appropriate that needs the
+input of the developer.
+
+Please run the following command:
+    m {signature_patterns_files}
+
+And then check the '{signature_patterns_files}' for any mention of
+implementation classes and packages (i.e. those classes/packages that do not
+contain any part of an API surface, including the hidden API). If they are
+found then the code should ideally be moved to a package unique to this module
+that is contained within a package that is part of an API surface.
+
+The format of the file is a list of patterns:
+
+* Patterns for split packages will list every class in that package.
+
+* Patterns for package prefixes will end with .../**.
+
+* Patterns for packages which are not split but cannot use a package prefix
+because there are sub-packages which are provided by another module will end
+with .../*.
+""")
+
+    def compute_hiddenapi_package_properties(self):
+        trie = signature_trie()
+        # Populate the trie with the classes that are provided by the
+        # bootclasspath_fragment tagging them to make it clear where they
+        # are from.
+        sorted_classes = sorted(self.classes)
+        for class_name in sorted_classes:
+            trie.add(class_name + self.FAKE_MEMBER, self.BCPF)
+
+        monolithic_classes = set()
+        abs_flags_file = os.path.join(self.top_dir, _FLAGS_FILE)
+        with open(abs_flags_file, "r", encoding="utf8") as f:
+            for line in iter(f.readline, ""):
+                signature = self.line_to_signature(line)
+                class_name = self.signature_to_class(signature)
+                if (class_name not in monolithic_classes and
+                        class_name not in self.classes):
+                    trie.add(
+                        class_name + self.FAKE_MEMBER,
+                        self.OTHER,
+                        only_if_matches=True)
+                    monolithic_classes.add(class_name)
+
+        split_packages = []
+        single_packages = []
+        package_prefixes = []
+        self.recurse_hiddenapi_packages_trie(trie, split_packages,
+                                             single_packages, package_prefixes)
+        return split_packages, single_packages, package_prefixes
+
+    def recurse_hiddenapi_packages_trie(self, node, split_packages,
+                                        single_packages, package_prefixes):
+        nodes = node.child_nodes()
+        if nodes:
+            for child in nodes:
+                # Ignore any non-package nodes.
+                if child.type != "package":
+                    continue
+
+                package = child.selector.replace("/", ".")
+
+                providers = set(child.get_matching_rows("**"))
+                if not providers:
+                    # The package and all its sub packages contain no
+                    # classes. This should never happen.
+                    pass
+                elif providers == {self.BCPF}:
+                    # The package and all its sub packages only contain
+                    # classes provided by the bootclasspath_fragment.
+                    logging.debug("Package '%s.**' is not split", package)
+                    package_prefixes.append(package)
+                    # There is no point traversing into the sub packages.
+                    continue
+                elif providers == {self.OTHER}:
+                    # The package and all its sub packages contain no
+                    # classes provided by the bootclasspath_fragment.
+                    # There is no point traversing into the sub packages.
+                    logging.debug("Package '%s.**' contains no classes from %s",
+                                  package, self.bcpf)
+                    continue
+                elif self.BCPF in providers:
+                    # The package and all its sub packages contain classes
+                    # provided by the bootclasspath_fragment and other
+                    # sources.
+                    logging.debug(
+                        "Package '%s.**' contains classes from "
+                        "%s and other sources", package, self.bcpf)
+
+                providers = set(child.get_matching_rows("*"))
+                if not providers:
+                    # The package contains no classes.
+                    logging.debug("Package: %s contains no classes", package)
+                elif providers == {self.BCPF}:
+                    # The package only contains classes provided by the
+                    # bootclasspath_fragment.
+                    logging.debug("Package '%s.*' is not split", package)
+                    single_packages.append(package)
+                elif providers == {self.OTHER}:
+                    # The package contains no classes provided by the
+                    # bootclasspath_fragment. Child nodes make contain such
+                    # classes.
+                    logging.debug("Package '%s.*' contains no classes from %s",
+                                  package, self.bcpf)
+                elif self.BCPF in providers:
+                    # The package contains classes provided by both the
+                    # bootclasspath_fragment and some other source.
+                    logging.debug("Package '%s.*' is split", package)
+                    split_packages.append(package)
+
+                self.recurse_hiddenapi_packages_trie(child, split_packages,
+                                                     single_packages,
+                                                     package_prefixes)
 
 
 def format_comment_as_text(text, indent):
