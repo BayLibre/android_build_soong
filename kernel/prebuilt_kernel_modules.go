@@ -63,7 +63,11 @@ func prebuiltKernelModulesFactory() android.Module {
 }
 
 func (pkm *prebuiltKernelModules) KernelVersion() string {
-	return proptools.StringDefault(pkm.properties.Kernel_version, "")
+	ver := proptools.StringDefault(pkm.properties.Kernel_version, "")
+	if android.TargetGuestKernelUse != "" && ver == "5.10" {
+		return ""
+	}
+	return ver
 }
 
 func (pkm *prebuiltKernelModules) DepsMutator(ctx android.BottomUpMutatorContext) {

@@ -344,6 +344,8 @@ func main() {
 	// change between every CI build, so tracking it would require re-running Soong for every build.
 	logDir := availableEnv["LOG_DIR"]
 
+	android.TargetGuestKernelUse = configuration.Getenv("TARGET_GUEST_KERNEL_USE")
+
 	finalOutputFile := doChosenActivity(configuration, extraNinjaDeps, logDir)
 
 	writeUsedEnvironmentFile(configuration, finalOutputFile)

@@ -3460,6 +3460,10 @@ func SrcIsModuleWithTag(s string) (module, tag string) {
 		}
 	}
 
+	if TargetGuestKernelUse != "" && (strings.HasPrefix(module, "virt_device_prebuilts_kernel_modules") || strings.HasPrefix(module, "kernel_prebuilts")) && strings.Contains(module, "arm64") {
+		module = strings.ReplaceAll(module, "5.10", TargetGuestKernelUse)
+	}
+
 	return module, tag
 }
 
