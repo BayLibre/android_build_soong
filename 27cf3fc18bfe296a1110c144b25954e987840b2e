@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3905d220_56332b73",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1558,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-01T13:29:14Z",
+      "side": 0,
+      "message": "There are a few fields that we don\u0027t touch yet in Bazel (Aidl, Installation, Dexing, etc.). Should I leave comments about that?",
+      "revId": "27cf3fc18bfe296a1110c144b25954e987840b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e477f138_cabee029",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1588,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-01T13:29:14Z",
+      "side": 0,
+      "message": "Bazel doesn\u0027t handle dexing on this type of module... do we need to make a note to handle that? Also see other comment for other situations like this.",
+      "revId": "27cf3fc18bfe296a1110c144b25954e987840b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
