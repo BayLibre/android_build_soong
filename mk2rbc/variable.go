@@ -278,6 +278,11 @@ var presetVariables = map[string]bool{
 // addVariable returns a variable with a given name. A variable is
 // added if it does not exist yet.
 func (ctx *parseContext) addVariable(name string) variable {
+	// Local variables can't have special characters in them, because they
+	// will be used as starlark identifiers
+	if name == strings.ToLower(name) {
+		name = strings.ReplaceAll(strings.TrimSpace(name), "-", "_")
+	}
 	v, found := ctx.variables[name]
 	if !found {
 		_, preset := presetVariables[name]
