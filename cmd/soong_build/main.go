@@ -367,6 +367,8 @@ func main() {
 
 	ctx := newContext(configuration)
 
+	android.TargetGuestKernelUse = configuration.Getenv("TARGET_GUEST_KERNEL_USE")
+
 	var finalOutputFile string
 
 	// Run Soong for a specific activity, like bp2build, queryview
