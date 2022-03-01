@@ -465,17 +465,17 @@ func newParseContext(ss *StarlarkScript, nodes []mkparser.Node) *parseContext {
 	return ctx
 }
 
-func (ctx *parseContext) lastAssignment(name string) *assignmentNode {
+func (ctx *parseContext) lastAssignment(v variable) *assignmentNode {
 	for va := ctx.varAssignments; va != nil; va = va.outer {
-		if v, ok := va.vars[name]; ok {
+		if v, ok := va.vars[v.name()]; ok {
 			return v
 		}
 	}
 	return nil
 }
 
-func (ctx *parseContext) setLastAssignment(name string, asgn *assignmentNode) {
-	ctx.varAssignments.vars[name] = asgn
+func (ctx *parseContext) setLastAssignment(v variable, asgn *assignmentNode) {
+	ctx.varAssignments.vars[v.name()] = asgn
 }
 
 func (ctx *parseContext) pushVarAssignments() {
@@ -510,6 +510,10 @@ func (ctx *parseContext) backNode() {
 	ctx.currentNodeIndex--
 }
 
+func cleanVariableName(name string) string {
+	return strings.ReplaceAll(strings.TrimSpace(name), "-", "_")
+}
+
 func (ctx *parseContext) handleAssignment(a *mkparser.Assignment) []starlarkNode {
 	// Handle only simple variables
 	if !a.Name.Const() {
@@ -528,11 +532,12 @@ func (ctx *parseContext) handleAssignment(a *mkparser.Assignment) []starlarkNode
 	if strings.HasPrefix(name, soongNsPrefix) {
 		return ctx.handleSoongNsAssignment(strings.TrimPrefix(name, soongNsPrefix), a)
 	}
+	name = cleanVariableName(name)
 	lhs := ctx.addVariable(name)
 	if lhs == nil {
 		return []starlarkNode{ctx.newBadNode(a, "unknown variable %s", name)}
 	}
-	_, isTraced := ctx.tracedVariables[name]
+	_, isTraced := ctx.tracedVariables[lhs.name()]
 	asgn := &assignmentNode{lhs: lhs, mkValue: a.Value, isTraced: isTraced, location: ctx.errorLocation(a)}
 	if lhs.valueType() == starlarkTypeUnknown {
 		// Try to divine variable type from the RHS
@@ -565,8 +570,8 @@ func (ctx *parseContext) handleAssignment(a *mkparser.Assignment) []starlarkNode
 		}
 	}
 
-	asgn.previous = ctx.lastAssignment(name)
-	ctx.setLastAssignment(name, asgn)
+	asgn.previous = ctx.lastAssignment(lhs)
+	ctx.setLastAssignment(lhs, asgn)
 	switch a.Type {
 	case "=", ":=":
 		asgn.flavor = asgnSet
@@ -960,7 +965,7 @@ func (ctx *parseContext) parseCondition(check *mkparser.Directive) starlarkNode 
 		if !check.Args.Const() {
 			return ctx.newBadNode(check, "ifdef variable ref too complex: %s", check.Args.Dump())
 		}
-		v := NewVariableRefExpr(ctx.addVariable(check.Args.Strings[0]), false)
+		v := NewVariableRefExpr(ctx.addVariable(cleanVariableName(check.Args.Strings[0])), false)
 		if strings.HasSuffix(check.Name, "ndef") {
 			v = &notExpr{v}
 		}
@@ -1262,7 +1267,7 @@ func (ctx *parseContext) parseReference(node mkparser.Node, ref *mkparser.MakeSt
 				substParts[0] = "%" + substParts[0]
 				substParts[1] = "%" + substParts[1]
 			}
-			v := ctx.addVariable(parts[0])
+			v := ctx.addVariable(cleanVariableName(parts[0]))
 			if v == nil {
 				return ctx.newBadExpr(node, "unknown variable %s", refDump)
 			}
@@ -1272,12 +1277,12 @@ func (ctx *parseContext) parseReference(node mkparser.Node, ref *mkparser.MakeSt
 				args: []starlarkExpr{
 					&stringLiteralExpr{literal: substParts[0]},
 					&stringLiteralExpr{literal: substParts[1]},
-					NewVariableRefExpr(v, ctx.lastAssignment(v.name()) != nil),
+					NewVariableRefExpr(v, ctx.lastAssignment(v) != nil),
 				},
 			}
 		}
-		if v := ctx.addVariable(refDump); v != nil {
-			return NewVariableRefExpr(v, ctx.lastAssignment(v.name()) != nil)
+		if v := ctx.addVariable(cleanVariableName(refDump)); v != nil {
+			return NewVariableRefExpr(v, ctx.lastAssignment(v) != nil)
 		}
 		return ctx.newBadExpr(node, "unknown variable %s", refDump)
 	}

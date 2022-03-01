@@ -278,6 +278,9 @@ var presetVariables = map[string]bool{
 // addVariable returns a variable with a given name. A variable is
 // added if it does not exist yet.
 func (ctx *parseContext) addVariable(name string) variable {
+	if !identifierFullMatchRegex.MatchString(name) {
+		panic("Variable name must be a valid identifier, got: " + name)
+	}
 	v, found := ctx.variables[name]
 	if !found {
 		_, preset := presetVariables[name]
