@@ -65,6 +65,7 @@ def init(g, handle):
 PRODUCT_NAME := Pixel 3
 PRODUCT_MODEL :=
 local_var = foo
+local-var-with-dashes := bar
 `,
 		expected: `load("//build/make/core:product_config.rbc", "rblf")
 
@@ -73,6 +74,7 @@ def init(g, handle):
   cfg["PRODUCT_NAME"] = "Pixel 3"
   cfg["PRODUCT_MODEL"] = ""
   _local_var = "foo"
+  _local_var_with_dashes = "bar"
 `,
 	},
 	{
