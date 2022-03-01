@@ -334,6 +334,8 @@ func main() {
 		extraNinjaDeps = append(extraNinjaDeps, filepath.Join(configuration.SoongOutDir(), "always_rerun_for_delve"))
 	}
 
+	android.TargetKernelUse = configuration.Getenv("TARGET_KERNEL_USE")
+
 	finalOutputFile := doChosenActivity(configuration, extraNinjaDeps)
 	writeUsedEnvironmentFile(configuration, finalOutputFile)
 }
