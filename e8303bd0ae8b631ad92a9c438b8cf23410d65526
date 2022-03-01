@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "203e91df_8eee5125",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-03-01T15:55:53Z",
+      "side": 1,
+      "message": "LGTM; +1(.5) for now",
+      "revId": "e8303bd0ae8b631ad92a9c438b8cf23410d65526",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c114a55b_1632fac7",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2239,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-03-01T15:55:53Z",
+      "side": 1,
+      "message": "For DRY reasons, would it be more maintainable and/or clearer if these dispatched to a shared function that itself took either PrintStringList or PrintStringListDict as an argument?",
+      "revId": "e8303bd0ae8b631ad92a9c438b8cf23410d65526",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df56d6d1_78fa72a9",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2257,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-03-01T15:55:53Z",
+      "side": 1,
+      "message": "Why are these _*-prefixed vars introduced, vs e.g. just assigning each directly to its `%s`?",
+      "revId": "e8303bd0ae8b631ad92a9c438b8cf23410d65526",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
