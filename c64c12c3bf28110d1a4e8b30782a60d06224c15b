@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1b2152c_b42b1ec3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-01T15:18:41Z",
+      "side": 1,
+      "message": "mixed_libc is likely failing due to\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_handler.go;l\u003d364,388;drc\u003d0b52d83b6029016e7cffd9de7a7680e746f1e99c + http://b/196441639\n\nCan you comment out those lines and add a TODO with that bug to reenable them?",
+      "range": {
+        "startLine": 13,
+        "startChar": 21,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "c64c12c3bf28110d1a4e8b30782a60d06224c15b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc493cae_af6e60bf",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1428,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-01T15:18:41Z",
+      "side": 1,
+      "message": "We\u0027ll want to call `maybeGenerateBazelBuildActions` as easrly as possible to prevent building in both Soong and Bazel configuration.\n\nThere are some exceptions we\u0027ll want to make at this time, particularly related to installation.\n\nFor example: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/cc.go;l\u003d1814-1815;drc\u003d4dac32ad1a9ed1115a51c4885eae8d847e6f8699",
+      "range": {
+        "startLine": 1428,
+        "startChar": 72,
+        "endLine": 1428,
+        "endChar": 73
+      },
+      "revId": "c64c12c3bf28110d1a4e8b30782a60d06224c15b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c01b913f_bdd0efec",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1567,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-01T15:18:41Z",
+      "side": 1,
+      "message": "Let\u0027s set the provider in maybeGenerateBazelBuildActions to keep the two paths more independent.",
+      "range": {
+        "startLine": 1561,
+        "startChar": 0,
+        "endLine": 1567,
+        "endChar": 0
+      },
+      "revId": "c64c12c3bf28110d1a4e8b30782a60d06224c15b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b6b9cf_ed893a6e",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1593,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-01T15:18:41Z",
+      "side": 1,
+      "message": "Can we instead set j.combinedClasspathFile in maybeGenerateBazelBuildActions rather than repeating this logic in multiple places, particularly as it seems we\u0027ve missed a use case: https://cs.android.com/android/platform/superproject/+/master:build/soong/java/androidmk.go;l\u003d199;drc\u003d29e2f6d2c4371598ea9217ef19d3cdcf7eb30c91",
+      "range": {
+        "startLine": 1593,
+        "startChar": 7,
+        "endLine": 1593,
+        "endChar": 23
+      },
+      "revId": "c64c12c3bf28110d1a4e8b30782a60d06224c15b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "137f8641_0ab49956",
+        "filename": "java/java_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-01T15:18:41Z",
+      "side": 1,
+      "message": "java_import?",
+      "range": {
+        "startLine": 1589,
+        "startChar": 37,
+        "endLine": 1589,
+        "endChar": 46
+      },
+      "revId": "c64c12c3bf28110d1a4e8b30782a60d06224c15b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d64410d8_ba3503a5",
+        "filename": "java/java_test.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-01T15:18:41Z",
+      "side": 1,
+      "message": "Let\u0027s also test the JavaInfoProvider is as expected here",
+      "range": {
+        "startLine": 1596,
+        "startChar": 0,
+        "endLine": 1596,
+        "endChar": 1
+      },
+      "revId": "c64c12c3bf28110d1a4e8b30782a60d06224c15b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

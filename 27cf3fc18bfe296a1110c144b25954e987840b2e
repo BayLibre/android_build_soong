@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70088ebc_172ed7e5",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1558,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-01T15:18:41Z",
+      "side": 0,
+      "message": "Installation we can defer  for now. For Aidl and Dexing, let\u0027s do some digging to understand why they weren\u0027t uncovered in your analysis and update your doc to include them. When we handle for bp2build we can also handle for mixed builds at that time.",
+      "parentUuid": "3905d220_56332b73",
+      "revId": "27cf3fc18bfe296a1110c144b25954e987840b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e477f138_cabee029",
         "filename": "java/java.go",
         "patchSetId": 8
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-01T13:29:14Z",
       "side": 0,
       "message": "Bazel doesn\u0027t handle dexing on this type of module... do we need to make a note to handle that? Also see other comment for other situations like this.",
+      "revId": "27cf3fc18bfe296a1110c144b25954e987840b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e00f08c_79c93877",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1588,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-01T15:18:41Z",
+      "side": 0,
+      "message": "Addressed in comment above, but let\u0027s dig into why we didn\u0027t see these uses and address them in the conversion doc then consider mixed builds.",
+      "parentUuid": "e477f138_cabee029",
       "revId": "27cf3fc18bfe296a1110c144b25954e987840b2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
