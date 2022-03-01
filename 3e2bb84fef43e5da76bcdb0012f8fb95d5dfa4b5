@@ -264,6 +264,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ab6e9ff_1186a07f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-03-01T00:47:24Z",
+      "side": 1,
+      "message": "\u003e But it would be better if we changed the lint invocation of libcore/* such that NewApi was not an error,  at which point the baseline can be deleted and won\u0027t have to be continuously updated ...\n\n+ccross Do you have any thoughts on this? I have not fully scoped this out yet, but can this be done if `--disable NewApi` is passed to the [lint invocation](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/lint.go;l\u003d423-451;drc\u003dmaster;bpv\u003d1;bpt\u003d0) of libcore/*?  \n\nI also noticed that LintProperties has a [Disabled_Checks](https://cs.android.com/android/_/android/platform/build/soong/+/6b76c15b9a03952e122522279fc0ada4e7a8fbbd:java/lint.go;l\u003d53;bpv\u003d1;bpt\u003d0) field. It is only used in `lint_project_xml` now, could it be used in `lint` invocation as well?",
+      "parentUuid": "90654282_24e20bf9",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "3e2bb84fef43e5da76bcdb0012f8fb95d5dfa4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8a020a7a_8da44c6d",
