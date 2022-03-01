@@ -16,6 +16,29 @@
       "message": "LGTM; very welcome refactor",
       "revId": "b7f3366cbb7220888c3aed538948955f3a9377b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "230a9907_59615dd9",
+        "filename": "android/arch.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1526,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-03-01T18:08:13Z",
+      "side": 1,
+      "message": "nit: alternative is to reuse archConfig, I understand it will make each initialization part a few lines longer",
+      "range": {
+        "startLine": 1523,
+        "startChar": 2,
+        "endLine": 1526,
+        "endChar": 35
+      },
+      "revId": "b7f3366cbb7220888c3aed538948955f3a9377b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
