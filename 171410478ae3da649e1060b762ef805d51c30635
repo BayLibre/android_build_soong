@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72269a8f_7e838961",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2022-03-02T23:17:11Z",
+      "side": 1,
+      "message": "(Replied on the other CL - why not use bp2build\u0027s java_binary and java_library converters?)",
+      "revId": "171410478ae3da649e1060b762ef805d51c30635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
