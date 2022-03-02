@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "277ab14c_26843b24",
+        "filename": "androidmk/androidmk/android.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2022-03-02T18:59:42Z",
+      "side": 1,
+      "message": "To me, the if condition does not need to be updated. I think you just removed the varLiteralName(val.Variables[0]) !\u003d \"\"? If this is true, you can just keep it. Then you just need to add the following if block without modifying the lines after it.",
+      "revId": "239b00ad1a27630b9a8068fa5292a6d31e450391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
