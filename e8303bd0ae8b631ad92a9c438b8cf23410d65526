@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15b54686_c54b6895",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2239,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-02T15:52:01Z",
+      "side": 1,
+      "message": "Given that we aren\u0027t using generics at this point in Soong, the alternative is to use an interface{} which is less clear. I\u0027d prefer light repetition that is more readable and has stronger type enforcement.",
+      "parentUuid": "c114a55b_1632fac7",
+      "revId": "e8303bd0ae8b631ad92a9c438b8cf23410d65526",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df56d6d1_78fa72a9",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-03-01T15:55:53Z",
       "side": 1,
       "message": "Why are these _*-prefixed vars introduced, vs e.g. just assigning each directly to its `%s`?",
+      "revId": "e8303bd0ae8b631ad92a9c438b8cf23410d65526",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8929726f_ec1757dd",
+        "filename": "android/arch.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2257,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-02T15:52:01Z",
+      "side": 1,
+      "message": "The files with constants exported are designed to be able to be checked in as .bzl files in the long term. This is a common structure in bzl files handling constants to convey exported vs not -- it will also allow more intermediate handling of the values without changing what is exported",
+      "parentUuid": "df56d6d1_78fa72a9",
       "revId": "e8303bd0ae8b631ad92a9c438b8cf23410d65526",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
