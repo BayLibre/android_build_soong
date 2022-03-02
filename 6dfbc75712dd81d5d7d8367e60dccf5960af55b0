@@ -16,6 +16,24 @@
       "message": "This needs \"Bug: http://b/215232614\", as well as a \"Test: m rust\" line.",
       "revId": "6dfbc75712dd81d5d7d8367e60dccf5960af55b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3b15793_0393c564",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1933736
+      },
+      "writtenOn": "2022-03-02T04:50:18Z",
+      "side": 1,
+      "message": "Added. Will note to make this consistent for now on. Thank you.",
+      "parentUuid": "9f3fb269_95ae033f",
+      "revId": "6dfbc75712dd81d5d7d8367e60dccf5960af55b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
