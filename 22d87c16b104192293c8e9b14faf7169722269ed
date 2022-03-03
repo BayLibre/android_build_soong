@@ -33,6 +33,23 @@
       "message": "Colin: FYI I moving the rough description of how dexpreopt currently works here from http://go/android-art/art/aot/dexpreopt.md#dexpreopt-implementation. I wrote it mostly because I thought someone new will be working on this.",
       "revId": "22d87c16b104192293c8e9b14faf7169722269ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b36d686_e6fc0b0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-03-03T17:53:22Z",
+      "side": 1,
+      "message": "Thanks for the documentation, Ulya! Looks like most of the contents are from go/android-art/art/aot/dexpreopt.md. I\u0027m worrying that they can be easily out-of-sync. I understand that the AOSP doc and the g3doc have different visibility so that you can\u0027t add cross references between them, but I still wonder if there is a better solution. I\u0027ll wait for other reviewers to comment on this.",
+      "revId": "22d87c16b104192293c8e9b14faf7169722269ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
