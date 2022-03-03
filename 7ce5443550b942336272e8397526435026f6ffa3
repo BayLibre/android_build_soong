@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ef733a3_75326ee6",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-03-03T20:28:41Z",
+      "side": 1,
+      "message": "Running gofmt on the file. /shrug",
+      "parentUuid": "e3c74e4d_708d0da6",
+      "revId": "7ce5443550b942336272e8397526435026f6ffa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d0edde4_089cbd9b",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-03T20:21:52Z",
       "side": 1,
       "message": "nit: \"of a build. It is later dumped ...\" or maybe a comma \"of a build, which\"",
+      "revId": "7ce5443550b942336272e8397526435026f6ffa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3ac0428_c9d1f268",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-03-03T20:28:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d0edde4_089cbd9b",
       "revId": "7ce5443550b942336272e8397526435026f6ffa3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3f71303_b841b4f9",
+        "filename": "ui/metrics/mk_metrics_proto/mk_metrics.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-03-03T20:28:41Z",
+      "side": 1,
+      "message": "blueprint doesn\u0027t support generating golang protobufs from proto files as part of the build, so we need this intermediate step for proto files required by soong_ui or soong_build.",
+      "parentUuid": "af91ac55_54aadfe7",
+      "revId": "7ce5443550b942336272e8397526435026f6ffa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d0c9016_74575903",
@@ -65,6 +119,24 @@
       "writtenOn": "2022-03-03T20:21:52Z",
       "side": 1,
       "message": "typo",
+      "revId": "7ce5443550b942336272e8397526435026f6ffa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a84c56be_20036f46",
+        "filename": "ui/metrics/mk_metrics_proto/mk_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-03-03T20:28:41Z",
+      "side": 1,
+      "message": "do you mean \"defer\" -\u003e \"deferred\"? or am I missing something ? In general, if I didn\u0027t write or edit the section of the file, it probably shouldn\u0027t be lumped in with a CL which changes functionality, as that pollutes revision history.\n\n(The exception, IMO, are things which happen to be caught by a run of gofmt, as it\u0027s automated)",
+      "parentUuid": "7d0c9016_74575903",
       "revId": "7ce5443550b942336272e8397526435026f6ffa3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
