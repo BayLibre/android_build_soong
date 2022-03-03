@@ -34,6 +34,24 @@
       "parentUuid": "f09cee21_b8b0eadd",
       "revId": "892431c931ec48cd35f799567a29721c4b4243a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c608e7c3_5503c1de",
+        "filename": "mk2rbc/mk2rbc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-03-03T01:22:15Z",
+      "side": 1,
+      "message": "But the generated code is wrong.",
+      "parentUuid": "054c7c6c_d2c7c71f",
+      "revId": "892431c931ec48cd35f799567a29721c4b4243a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
