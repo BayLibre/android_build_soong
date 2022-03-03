@@ -34,6 +34,24 @@
       "parentUuid": "c3cd6fdd_1c24eb9b",
       "revId": "7ee2574d1abd9f2c3c0362e48d97aafc4b7113b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d728498c_75c1e451",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2022-03-03T20:19:29Z",
+      "side": 1,
+      "message": "None of this is for adding. I was playing around with the info and running a forrest run to see the output on the build bots.\n\nI was attempting to locate the build id and lunch variant so that the stacktrace could identify the build server from which we could download the mapping information. But you are absolutely right that we can\u0027t in general add the build id as the dex would differ for each build.\n\nThe mapping hash (as is already in the source file marker) is likely the best stable identification. But that means we need some other information in order to map a hash to either the build, or directly to the mapping file :-(",
+      "parentUuid": "aafbc335_5642a1cd",
+      "revId": "7ee2574d1abd9f2c3c0362e48d97aafc4b7113b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
