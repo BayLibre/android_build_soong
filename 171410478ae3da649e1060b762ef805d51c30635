@@ -16,6 +16,24 @@
       "message": "(Replied on the other CL - why not use bp2build\u0027s java_binary and java_library converters?)",
       "revId": "171410478ae3da649e1060b762ef805d51c30635",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48553d23_2b7cfbad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-03-03T10:15:02Z",
+      "side": 1,
+      "message": "(discussed offline - there are no source Android.bp files to convert from for bundletool)",
+      "parentUuid": "72269a8f_7e838961",
+      "revId": "171410478ae3da649e1060b762ef805d51c30635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
