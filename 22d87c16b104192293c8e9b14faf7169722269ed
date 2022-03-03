@@ -50,6 +50,24 @@
       "message": "Thanks for the documentation, Ulya! Looks like most of the contents are from go/android-art/art/aot/dexpreopt.md. I\u0027m worrying that they can be easily out-of-sync. I understand that the AOSP doc and the g3doc have different visibility so that you can\u0027t add cross references between them, but I still wonder if there is a better solution. I\u0027ll wait for other reviewers to comment on this.",
       "revId": "22d87c16b104192293c8e9b14faf7169722269ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5128fd63_eb1db48d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-03-03T17:58:51Z",
+      "side": 1,
+      "message": "Right, this is the plan: after a lengthy discussion with Martin and Santiago we decided that implementation details belong with the source code (in AOSP where they are available externally).\n\nI will either link or embed this file from go/android-art/art/aot/dexpreopt (I hoped to embed but currently it seems that embedding is only allowed for google3 files).",
+      "parentUuid": "3b36d686_e6fc0b0e",
+      "revId": "22d87c16b104192293c8e9b14faf7169722269ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
