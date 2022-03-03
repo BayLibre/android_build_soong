@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7344ef7_26def369",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-03-03T16:32:29Z",
+      "side": 1,
+      "message": "Great idea. What are you using this graph for, if I may be curious?",
+      "revId": "33cd10d745057e2515561804affd86a13a195850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
