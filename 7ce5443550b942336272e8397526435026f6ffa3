@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3c74e4d_708d0da6",
+        "filename": "ui/build/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-03-03T20:21:52Z",
+      "side": 1,
+      "message": "nitpick: what caused this formatting?",
+      "revId": "7ce5443550b942336272e8397526435026f6ffa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d0edde4_089cbd9b",
+        "filename": "ui/metrics/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-03-03T20:21:52Z",
+      "side": 1,
+      "message": "nit: \"of a build. It is later dumped ...\" or maybe a comma \"of a build, which\"",
+      "revId": "7ce5443550b942336272e8397526435026f6ffa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af91ac55_54aadfe7",
+        "filename": "ui/metrics/mk_metrics_proto/mk_metrics.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-03-03T20:21:52Z",
+      "side": 1,
+      "message": "For my info:\nWhy do we keep generated files explicitly checked in? Is it to have a better guarantee of hermeticity (i.e. opposed to controlling the version of protoc-gen-go and any lack of determinacy it may possibly have)?\nIt also hides away the flags passed to protoc-gen-go.",
+      "revId": "7ce5443550b942336272e8397526435026f6ffa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d0c9016_74575903",
+        "filename": "ui/metrics/mk_metrics_proto/mk_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-03-03T20:21:52Z",
+      "side": 1,
+      "message": "typo",
+      "revId": "7ce5443550b942336272e8397526435026f6ffa3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
