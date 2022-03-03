@@ -52,6 +52,24 @@
       "parentUuid": "aafbc335_5642a1cd",
       "revId": "7ee2574d1abd9f2c3c0362e48d97aafc4b7113b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4a29b44_6091bc34",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-03T20:46:54Z",
+      "side": 1,
+      "message": "\"build ID\" is just the value in build/make/core/build_id.mk, it\u0027s probably not what you want.  \"Build number\" is probably what you want, which you can get from using `$(cat)` in your command line to get the contents of ctx.Config().BuildNumberFile(ctx).\n\nWe don\u0027t have the name of the build server build, or the value of TARGET_BUILD_VARIANT.  You can reconstruct an approximation of TARGET_BUILD_VARIANT using `ctx.Config().Debuggable()` and `ctx.Config().Eng()`, but you won\u0027t be able to handle cases where the build server build has some extra suffix.",
+      "parentUuid": "d728498c_75c1e451",
+      "revId": "7ee2574d1abd9f2c3c0362e48d97aafc4b7113b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
