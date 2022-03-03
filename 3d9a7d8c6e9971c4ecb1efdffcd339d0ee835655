@@ -16,6 +16,24 @@
       "message": "Is this supposed to be part of this change?",
       "revId": "3d9a7d8c6e9971c4ecb1efdffcd339d0ee835655",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5785e8e9_b537beae",
+        "filename": "METADATA",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-03-03T18:16:37Z",
+      "side": 1,
+      "message": "Ack\n\nIt\u0027s really preparation for the later change to create notices from dependencies, but including it here means one fewer multi-change topic and branch for me to deal with.",
+      "parentUuid": "cf3bc5a7_b8e16ae3",
+      "revId": "3d9a7d8c6e9971c4ecb1efdffcd339d0ee835655",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
