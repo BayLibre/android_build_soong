@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf3bc5a7_b8e16ae3",
+        "filename": "METADATA",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-03T01:09:19Z",
+      "side": 1,
+      "message": "Is this supposed to be part of this change?",
+      "revId": "3d9a7d8c6e9971c4ecb1efdffcd339d0ee835655",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
