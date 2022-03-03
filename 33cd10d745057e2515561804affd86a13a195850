@@ -33,6 +33,24 @@
       "message": "Looks reasonable, but why?",
       "revId": "33cd10d745057e2515561804affd86a13a195850",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7586ca69_40b78320",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1830881
+      },
+      "writtenOn": "2022-03-03T16:52:09Z",
+      "side": 1,
+      "message": "Plan to add to our development build configuration, allowing us to compare targets and compare against previous good builds.",
+      "parentUuid": "e7344ef7_26def369",
+      "revId": "33cd10d745057e2515561804affd86a13a195850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
