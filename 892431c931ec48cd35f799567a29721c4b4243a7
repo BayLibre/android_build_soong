@@ -70,6 +70,24 @@
       "parentUuid": "c608e7c3_5503c1de",
       "revId": "892431c931ec48cd35f799567a29721c4b4243a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "940b213c_c5682504",
+        "filename": "mk2rbc/mk2rbc_test.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-03-03T23:21:01Z",
+      "side": 1,
+      "message": "With this change the Starlark-based configuration will set `FOO_BAR` variable instead of `FOO-BAR` variable. Any included makefile that references `FOO-BAR` will behave differently.",
+      "parentUuid": "365a2018_6497f0b2",
+      "revId": "892431c931ec48cd35f799567a29721c4b4243a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
