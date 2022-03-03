@@ -16,6 +16,23 @@
       "message": "Preview for PS 14 here: https://android.googlesource.com/platform/build/soong/+/refs/changes/91/2006791/14/dexpreopt/DEXPREOPT_IMPLEMENTATION.md",
       "revId": "22d87c16b104192293c8e9b14faf7169722269ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7299cde_fb670382",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-03-03T17:18:31Z",
+      "side": 1,
+      "message": "Colin: FYI I moving the rough description of how dexpreopt currently works here from http://go/android-art/art/aot/dexpreopt.md#dexpreopt-implementation. I wrote it mostly because I thought someone new will be working on this.",
+      "revId": "22d87c16b104192293c8e9b14faf7169722269ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
