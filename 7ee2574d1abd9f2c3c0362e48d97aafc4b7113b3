@@ -16,6 +16,24 @@
       "message": "Colin: do you know how to get hold of the lunch target from here?",
       "revId": "7ee2574d1abd9f2c3c0362e48d97aafc4b7113b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aafbc335_5642a1cd",
+        "filename": "java/dex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-03T19:34:30Z",
+      "side": 1,
+      "message": "Do we need all this information in the dex file?  It\u0027s going to make the dex files different for different products even if the code is the same, which will reduce the efficiency of RBE.  I\u0027m not sure what purpose it serves if we don\u0027t also have the build number, and we definitely don\u0027t want that because it would make the dex files different in every build.",
+      "parentUuid": "c3cd6fdd_1c24eb9b",
+      "revId": "7ee2574d1abd9f2c3c0362e48d97aafc4b7113b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
