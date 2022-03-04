@@ -167,11 +167,9 @@ func (tidy *tidyFeature) flags(ctx ModuleContext, flags Flags) Flags {
 	tidyChecks = tidyChecks + ",-cert-err33-c"
 	flags.TidyFlags = append(flags.TidyFlags, tidyChecks)
 
-	if ctx.Config().IsEnvTrue("WITH_TIDY") {
-		// WITH_TIDY=1 enables clang-tidy globally. There could be many unexpected
-		// warnings from new checks and many local tidy_checks_as_errors and
-		// -warnings-as-errors can break a global build.
-		// So allow all clang-tidy warnings.
+	if ctx.Config().IsEnvTrue("TIDY_OVERRIDE_LOCAL_WARNINGS_AS_ERRORS") {
+		// In some special builds like those for llvm/clang updates, we want to
+		// temporarily ignore all warnings-as-errors set by local projects.
 		inserted := false
 		for i, s := range flags.TidyFlags {
 			if strings.Contains(s, "-warnings-as-errors=") {
