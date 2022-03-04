@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26ef696b_730ef3c3",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2031,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-04T17:34:43Z",
+      "side": 1,
+      "message": "The current workaround only works for the public current sdk and will be incorrect for other sdk versions can we throw an error in the conversion if this is targeting a different sdk version?",
+      "range": {
+        "startLine": 2031,
+        "startChar": 0,
+        "endLine": 2031,
+        "endChar": 61
+      },
+      "revId": "20c8f2402248cf7761146eb80e966e2973196780",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
