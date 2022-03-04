@@ -51,7 +51,7 @@ var (
 	}
 
 	arm64Lldflags = append(arm64Ldflags,
-		"-Wl,-z,max-page-size=4096")
+		"-Wl,-z,max-page-size=16384")
 
 	arm64Cppflags = []string{}
 
