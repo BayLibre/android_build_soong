@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f73a1ac1_3fd1f29d",
+        "filename": "bp2build/java_import_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-04T16:40:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb24e8e4_89dea261",
+      "range": {
+        "startLine": 54,
+        "startChar": 23,
+        "endLine": 54,
+        "endChar": 24
+      },
+      "revId": "3b6b37b9225f55e6fbed8b28b1ee4464f8d86f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f750bff6_c650453b",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-03T14:11:59Z",
       "side": 1,
       "message": "have you seen any cases where these are in a filegroup?",
+      "range": {
+        "startLine": 2190,
+        "startChar": 60,
+        "endLine": 2190,
+        "endChar": 63
+      },
+      "revId": "3b6b37b9225f55e6fbed8b28b1ee4464f8d86f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e12b16bd_0b5419b6",
+        "filename": "java/java.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 2190,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-04T16:40:56Z",
+      "side": 1,
+      "message": "I didn\u0027t see any in AOSP.",
+      "parentUuid": "f750bff6_c650453b",
       "range": {
         "startLine": 2190,
         "startChar": 60,
