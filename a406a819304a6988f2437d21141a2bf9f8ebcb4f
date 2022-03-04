@@ -113,6 +113,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f17e5b_b65503bd",
+        "filename": "docs/rbe.json",
+        "patchSetId": 7
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1546766
+      },
+      "writtenOn": "2022-03-04T08:53:35Z",
+      "side": 1,
+      "message": "Updated with explanation for each config field. PTAL.",
+      "parentUuid": "a4b32742_c3d08f64",
+      "range": {
+        "startLine": 3,
+        "startChar": 9,
+        "endLine": 3,
+        "endChar": 16
+      },
+      "revId": "a406a819304a6988f2437d21141a2bf9f8ebcb4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1008f5c_50609629",

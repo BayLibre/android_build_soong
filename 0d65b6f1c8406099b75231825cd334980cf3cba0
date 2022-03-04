@@ -16,6 +16,24 @@
       "message": "Could we add RBE_CLANG_TIDY_EXEC_STRATEGY and RBE_CLANG_TIDY?",
       "revId": "0d65b6f1c8406099b75231825cd334980cf3cba0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c59f7b3_f3fc4e19",
+        "filename": "docs/rbe.json",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1546766
+      },
+      "writtenOn": "2022-03-04T08:53:35Z",
+      "side": 1,
+      "message": "Discussed offline with Kousik and Ramy, since ClangTidy is not widely turned on yet, we decide not to include for now.",
+      "parentUuid": "e86e5045_e55e902d",
+      "revId": "0d65b6f1c8406099b75231825cd334980cf3cba0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
