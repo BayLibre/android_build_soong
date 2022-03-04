@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6debf7d2_d6d74e03",
+        "filename": "mk2rbc/variable.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-03-04T23:11:32Z",
+      "side": 1,
+      "message": "The decision to consider a variable local is made elsewhere, and may change (say, we might want to have an annotation for that). So it would be better to have keep it in sync.",
+      "revId": "6b8439bb3e9f3215e55189e81f70c31826742dbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
