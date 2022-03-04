@@ -335,6 +335,7 @@ func (d *Droidstubs) annotationsFlags(ctx android.ModuleContext, cmd *android.Ru
 		cmd.FlagWithArg("--hide ", "HiddenTypedefConstant").
 			FlagWithArg("--hide ", "SuperfluousPrefix").
 			FlagWithArg("--hide ", "AnnotationExtraction")
+		FlagWithArg("--hide ", "BannedThrow")
 	}
 }
 
