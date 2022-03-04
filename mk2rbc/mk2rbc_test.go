@@ -92,7 +92,7 @@ def init(g, handle):
       "package1",
       "package2",
   ]
-  rblf.setdefault(handle, "PRODUCT_COPY_FILES")
+  cfg.setdefault("PRODUCT_COPY_FILES", [])
   cfg["PRODUCT_COPY_FILES"] += ["file2:target"]
   cfg["PRODUCT_PACKAGES"] += ["package3"]
   cfg["PRODUCT_COPY_FILES"] = []
@@ -725,7 +725,7 @@ PRODUCT_COPY_FILES += path1:$(TARGET_PRODUCT)/path1 $(PRODUCT_MODEL)/path2:$(TAR
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
-  rblf.setdefault(handle, "PRODUCT_COPY_FILES")
+  cfg.setdefault("PRODUCT_COPY_FILES", [])
   cfg["PRODUCT_COPY_FILES"] += (("path1:%s/path1" % g["TARGET_PRODUCT"]).split() +
       ("%s/path2:%s/path2" % (cfg.get("PRODUCT_MODEL", ""), g["TARGET_PRODUCT"])).split())
 `,
@@ -832,7 +832,7 @@ PRODUCT_COPY_FILES += $(subst foo,bar,$(files))
 def init(g, handle):
   cfg = rblf.cfg(handle)
   _files = rblf.find_and_copy("*", "from", "to")
-  rblf.setdefault(handle, "PRODUCT_COPY_FILES")
+  cfg.setdefault("PRODUCT_COPY_FILES", [])
   cfg["PRODUCT_COPY_FILES"] += rblf.mksubst("foo", "bar", _files)
 `,
 	},
@@ -854,7 +854,7 @@ PRODUCT_PACKAGES := $(PLATFORM_LIST)
 def init(g, handle):
   cfg = rblf.cfg(handle)
   cfg["PRODUCT_LIST1"] = ["a"]
-  rblf.setdefault(handle, "PRODUCT_LIST2")
+  cfg.setdefault("PRODUCT_LIST2", [])
   cfg["PRODUCT_LIST2"] += ["a"]
   cfg["PRODUCT_LIST1"] += ["b"]
   cfg["PRODUCT_LIST2"] += ["b"]
@@ -885,10 +885,10 @@ def init(g, handle):
   cfg["PRODUCT_LIST1"] = ["a"]
   if "0" == "1":
     cfg["PRODUCT_LIST1"] += ["b"]
-    rblf.setdefault(handle, "PRODUCT_LIST2")
+    cfg.setdefault("PRODUCT_LIST2", [])
     cfg["PRODUCT_LIST2"] += ["b"]
   cfg["PRODUCT_LIST1"] += ["c"]
-  rblf.setdefault(handle, "PRODUCT_LIST2")
+  cfg.setdefault("PRODUCT_LIST2", [])
   cfg["PRODUCT_LIST2"] += ["c"]
 `,
 	},

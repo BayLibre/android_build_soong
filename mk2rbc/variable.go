@@ -96,11 +96,7 @@ func (pcv productConfigVariable) emitSet(gctx *generationContext, asgn *assignme
 		emitAppend()
 	case asgnMaybeAppend:
 		// If we are not sure variable has been assigned before, emit setdefault
-		if pcv.typ == starlarkTypeList {
-			gctx.writef("%s(handle, %q)", cfnSetListDefault, pcv.name())
-		} else {
-			gctx.writef("cfg.setdefault(%q, %s)", pcv.name(), pcv.defaultValueString())
-		}
+		gctx.writef("cfg.setdefault(%q, %s)", pcv.name(), pcv.defaultValueString())
 		gctx.newLine()
 		emitAppend()
 	case asgnMaybeSet:
@@ -191,10 +187,10 @@ func (lv localVariable) String() string {
 
 func (lv localVariable) emitSet(gctx *generationContext, asgn *assignmentNode) {
 	switch asgn.flavor {
-	case asgnSet:
+	case asgnSet, asgnMaybeSet:
 		gctx.writef("%s = ", lv)
 		asgn.value.emitListVarCopy(gctx)
-	case asgnAppend:
+	case asgnAppend, asgnMaybeAppend:
 		lv.emitGet(gctx, false)
 		gctx.write(" += ")
 		value := asgn.value
@@ -203,14 +199,6 @@ func (lv localVariable) emitSet(gctx *generationContext, asgn *assignmentNode) {
 			value = &toStringExpr{expr: value}
 		}
 		value.emit(gctx)
-	case asgnMaybeAppend:
-		gctx.writef("%s(%q, ", cfnLocalAppend, lv)
-		asgn.value.emit(gctx)
-		gctx.write(")")
-	case asgnMaybeSet:
-		gctx.writef("%s(%q, ", cfnLocalSetDefault, lv)
-		asgn.value.emit(gctx)
-		gctx.write(")")
 	}
 }
 

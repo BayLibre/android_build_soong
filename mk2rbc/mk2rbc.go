@@ -50,15 +50,11 @@ const (
 	soongNsPrefix = "SOONG_CONFIG_"
 
 	// And here are the functions and variables:
-	cfnGetCfg          = baseName + ".cfg"
-	cfnMain            = baseName + ".product_configuration"
-	cfnBoardMain       = baseName + ".board_configuration"
-	cfnPrintVars       = baseName + ".printvars"
-	cfnWarning         = baseName + ".warning"
-	cfnLocalAppend     = baseName + ".local_append"
-	cfnLocalSetDefault = baseName + ".local_set_default"
-	cfnInherit         = baseName + ".inherit"
-	cfnSetListDefault  = baseName + ".setdefault"
+	cfnGetCfg    = baseName + ".cfg"
+	cfnMain      = baseName + ".product_configuration"
+	cfnBoardMain = baseName + ".board_configuration"
+	cfnPrintVars = baseName + ".printvars"
+	cfnInherit   = baseName + ".inherit"
 )
 
 const (
