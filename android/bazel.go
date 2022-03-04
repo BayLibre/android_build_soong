@@ -242,8 +242,8 @@ var (
 		"art/tools":                             Bp2BuildDefaultTrue,
 		"bionic":                                Bp2BuildDefaultTrueRecursively,
 		"bootable/recovery/tools/recovery_l10n": Bp2BuildDefaultTrue,
+		"build/bazel/examples/apex/minimal":     Bp2BuildDefaultTrueRecursively,
 		"build/bazel/examples/soong_config_variables":        Bp2BuildDefaultTrueRecursively,
-		"build/bazel/examples/apex/minimal":                  Bp2BuildDefaultTrueRecursively,
 		"build/make/tools/signapk":                           Bp2BuildDefaultTrue,
 		"build/soong":                                        Bp2BuildDefaultTrue,
 		"build/soong/cc/libbuildversion":                     Bp2BuildDefaultTrue, // Skip tests subdir
@@ -295,6 +295,7 @@ var (
 		"external/bouncycastle":                              Bp2BuildDefaultTrue,
 		"external/brotli":                                    Bp2BuildDefaultTrue,
 		"external/conscrypt":                                 Bp2BuildDefaultTrue,
+		"external/e2fsprogs/lib":                             Bp2BuildDefaultTrueRecursively,
 		"external/error_prone":                               Bp2BuildDefaultTrueRecursively,
 		"external/fmtlib":                                    Bp2BuildDefaultTrueRecursively,
 		"external/google-benchmark":                          Bp2BuildDefaultTrueRecursively,
@@ -351,8 +352,8 @@ var (
 		"prebuilts/clang/host/linux-x86":                     Bp2BuildDefaultTrueRecursively,
 		"prebuilts/tools/common/m2":                          Bp2BuildDefaultTrue,
 		"system/apex":                                        Bp2BuildDefaultFalse, // TODO(b/207466993): flaky failures
-		"system/apex/proto":                                  Bp2BuildDefaultTrueRecursively,
 		"system/apex/libs":                                   Bp2BuildDefaultTrueRecursively,
+		"system/apex/proto":                                  Bp2BuildDefaultTrueRecursively,
 		"system/core/debuggerd":                              Bp2BuildDefaultTrueRecursively,
 		"system/core/diagnose_usb":                           Bp2BuildDefaultTrueRecursively,
 		"system/core/libasyncio":                             Bp2BuildDefaultTrue,
@@ -380,8 +381,33 @@ var (
 	}
 
 	// Per-module allowlist to always opt modules in of both bp2build and mixed builds.
+	// A module can either be in this list or its directory allowlisted entirely
+	// in bp2buildDefaultConfig, but not both at the same time.
 	bp2buildModuleAlwaysConvertList = []string{
 		"junit-params-assertj-core",
+
+		//external/avb
+		"avbtool",
+		"libavb",
+		"avb_headers",
+
+		//external/fec
+		"libfec_rs",
+
+		//system/core/libsparse
+		"libsparse",
+
+		//system/extras/ext4_utils
+		"libext4_utils",
+
+		//system/extras/libfec
+		"libfec",
+
+		//system/extras/squashfs_utils
+		"libsquashfs_utils",
+
+		//system/extras/verity/fec
+		"fec",
 	}
 
 	// Per-module denylist to always opt modules out of both bp2build and mixed builds.
@@ -682,8 +708,10 @@ func (b *BazelModuleBase) shouldConvertWithBp2build(ctx BazelConversionContext, 
 	propValue := b.bazelProperties.Bazel_module.Bp2build_available
 	if bp2buildDefaultTrueRecursively(packagePath, config) {
 		if alwaysConvert {
-			ctx.(BaseModuleContext).ModuleErrorf("a module cannot be in a directory marked Bp2BuildDefaultTrue" +
-				" or Bp2BuildDefaultTrueRecursively and also be in bp2buildModuleAlwaysConvert")
+			ctx.(BaseModuleContext).ModuleErrorf(
+				"a module cannot be in a directory (%s) marked Bp2BuildDefaultTrue"+
+					" or Bp2BuildDefaultTrueRecursively and also be in bp2buildModuleAlwaysConvert",
+				packagePath)
 		}
 
 		// Allow modules to explicitly opt-out.
