@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79a11825_bd01d677",
+        "filename": "docs/rbe.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1726181
+      },
+      "writtenOn": "2022-03-07T04:31:58Z",
+      "side": 1,
+      "message": "This is a bit vague. What does contact mean here? Do you mean these are the addresses of the services?",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 46
+      },
+      "revId": "4e6eb7619d050dc3bc6b8b38cddee3ef89385899",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
