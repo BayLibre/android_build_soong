@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5167a4a_65568767",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-07T18:01:11Z",
+      "side": 1,
+      "message": "Thanks for the fix -- I was wondering how this wasn\u0027t failing on CI:\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/bp2build/Android.bp looks to be missing most java related bp2build files in testSrcs, can you update it in a separate CL?",
+      "revId": "7a62909f351c382a779a072d87020282c72c5c9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
