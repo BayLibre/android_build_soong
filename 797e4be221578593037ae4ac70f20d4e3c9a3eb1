@@ -39,6 +39,30 @@
       },
       "revId": "797e4be221578593037ae4ac70f20d4e3c9a3eb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6705d158_a4683616",
+        "filename": "rust/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-03-07T20:06:21Z",
+      "side": 1,
+      "message": "No, it doesn\u0027t seem to, though I wouldn\u0027t expect anyone to set it. I guess duplicates are fine.\n\nGating it on `no_stdlibs` would mean that it\u0027s just ignored in some cases, which seems a bit weird.",
+      "parentUuid": "cf3f0fc9_587a69c7",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 68
+      },
+      "revId": "797e4be221578593037ae4ac70f20d4e3c9a3eb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
