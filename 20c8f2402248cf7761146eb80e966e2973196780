@@ -22,6 +22,30 @@
       },
       "revId": "20c8f2402248cf7761146eb80e966e2973196780",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0306be62_2d2d3b55",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2031,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-07T16:19:49Z",
+      "side": 1,
+      "message": "There were many targets that don\u0027t use the public_current SDK, so I ended up adding a conditional to only add the public_current SDK to targets which use it. Otherwise, targets which use another SDK will fail due to missing symbols.\n\nSo far, only libprotobuf-java-nano falls into that category of explicitly depending on SDK version 9 and also requiring symbols from the SDK (it\u0027s added to the disallow list in the next CL because it only requires those symbols in arch-variant srcs).",
+      "parentUuid": "26ef696b_730ef3c3",
+      "range": {
+        "startLine": 2031,
+        "startChar": 0,
+        "endLine": 2031,
+        "endChar": 61
+      },
+      "revId": "20c8f2402248cf7761146eb80e966e2973196780",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
