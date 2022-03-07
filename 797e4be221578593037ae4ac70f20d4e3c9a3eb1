@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca6168a1_61a1f072",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2022-03-07T16:37:48Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "797e4be221578593037ae4ac70f20d4e3c9a3eb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf3f0fc9_587a69c7",
+        "filename": "rust/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2022-03-07T16:37:48Z",
+      "side": 1,
+      "message": "Wonder if we should gate this on no_stdlibs being true -- does adding sysroots here without `no_stdlibs: true` lead to compilation errors?",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 68
+      },
+      "revId": "797e4be221578593037ae4ac70f20d4e3c9a3eb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
