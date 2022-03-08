@@ -16,6 +16,24 @@
       "message": "These additions will be a bit cleaner if we have access to a method to enabled packages by module-type instead of having to allow/disallow certain modules explicitly. See https://groups.google.com/a/google.com/g/leafies-scrum/c/KwcwDg_2zUk.",
       "revId": "23fcfe7c0139a0ff927bd21d034db6f380320fe4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eabc38b_1bb2fe89",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-08T18:36:07Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "d72f53f5_46ecf32a",
+      "revId": "23fcfe7c0139a0ff927bd21d034db6f380320fe4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
