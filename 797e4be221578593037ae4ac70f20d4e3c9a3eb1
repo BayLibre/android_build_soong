@@ -63,6 +63,30 @@
       },
       "revId": "797e4be221578593037ae4ac70f20d4e3c9a3eb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b18c08cc_fa0d984a",
+        "filename": "rust/compiler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2022-03-08T15:39:36Z",
+      "side": 1,
+      "message": "I was thinking it\u0027d throw a Soong error if they were both enabled. If it doesn\u0027t cause compilation issues though then it may be alright to leave as is. I don\u0027t expect folks will be using this often.",
+      "parentUuid": "6705d158_a4683616",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 68
+      },
+      "revId": "797e4be221578593037ae4ac70f20d4e3c9a3eb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
