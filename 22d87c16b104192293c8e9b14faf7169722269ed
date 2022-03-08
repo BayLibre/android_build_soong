@@ -139,6 +139,24 @@
       "message": "I don\u0027t consider myself knowledgeable enough to do a detailed review, but +1 for the initiative to move it to AOSP.",
       "revId": "22d87c16b104192293c8e9b14faf7169722269ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c407be4b_b1fa469b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-03-08T10:05:37Z",
+      "side": 1,
+      "message": "Thanks, this text has been reviewed previously on ART wiki.",
+      "parentUuid": "fa0f58ac_a3247abc",
+      "revId": "22d87c16b104192293c8e9b14faf7169722269ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
