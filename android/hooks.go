@@ -88,7 +88,17 @@ func (l *loadHookContext) PrependProperties(props ...interface{}) {
 
 func (l *loadHookContext) CreateModule(factory ModuleFactory, props ...interface{}) Module {
 	inherited := []interface{}{&l.Module().base().commonProperties}
-	module := l.bp.CreateModule(ModuleFactoryAdaptor(factory), append(inherited, props...)...).(Module)
+
+	var typeName string
+	for _, moduleType := range moduleTypes {
+		if reflect.ValueOf(moduleType.factory) == reflect.ValueOf(factory) {
+			typeName = moduleType.name
+			break
+		}
+	}
+	typeName = typeName + "_loadHookModule"
+
+	module := l.bp.CreateModule(ModuleFactoryAdaptor(factory), typeName, append(inherited, props...)...).(Module)
 
 	if l.Module().base().variableProperties != nil && module.base().variableProperties != nil {
 		src := l.Module().base().variableProperties
