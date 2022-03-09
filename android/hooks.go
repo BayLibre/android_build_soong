@@ -15,6 +15,7 @@
 package android
 
 import (
+	"fmt"
 	"reflect"
 
 	"github.com/google/blueprint"
@@ -88,7 +89,17 @@ func (l *loadHookContext) PrependProperties(props ...interface{}) {
 
 func (l *loadHookContext) CreateModule(factory ModuleFactory, props ...interface{}) Module {
 	inherited := []interface{}{&l.Module().base().commonProperties}
-	module := l.bp.CreateModule(ModuleFactoryAdaptor(factory), append(inherited, props...)...).(Module)
+
+	var typeName string
+	if typeNameLookup, ok := ModuleTypeByFactory()[reflect.ValueOf(factory)]; ok {
+		typeName = typeNameLookup
+	} else {
+		factoryType := reflect.TypeOf(factory)
+		typeName = fmt.Sprintf("%s_%s", factoryType.PkgPath(), factoryType.Name())
+	}
+	typeName = typeName + "_loadHookModule"
+
+	module := l.bp.CreateModule(ModuleFactoryAdaptor(factory), typeName, append(inherited, props...)...).(Module)
 
 	if l.Module().base().variableProperties != nil && module.base().variableProperties != nil {
 		src := l.Module().base().variableProperties
