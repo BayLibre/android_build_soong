@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b860072_f7dbbcde",
+        "filename": "android/hooks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-09T20:59:49Z",
+      "side": 1,
+      "message": "This only works for modules which have a registered module type associated with a ModuleFactory (and probably only for factories which do not use a dynamically declared factory function; i.e. only for those which have a static function declaration).\n\nSo there are some modules which still have an unlabeled type in the json-module-graph. This could be remedied by registering those factories with a module type, or by changing the LoadHookContext.CreateModule API such that all callers have to explicitly pass a module type.\n\nI think the latter option is worse because it:\n1) requires many changes across the codebase, and\n2) requires me to either to hardcode module types in many different code locations, or create a global listing of module types that could be reused in different places: e.g.\n```\nvar (\n    JavaImportModuleType \u003d \"java_import\",\n    ...\n)\n```",
+      "revId": "b5a17a12556a9747d3d7439067fb6ea8b5847261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
