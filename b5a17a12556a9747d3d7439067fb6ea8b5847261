@@ -170,6 +170,30 @@
       },
       "revId": "b5a17a12556a9747d3d7439067fb6ea8b5847261",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd1eda36_f78731a0",
+        "filename": "android/hooks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-10T19:56:43Z",
+      "side": 1,
+      "message": "I think between https://pkg.go.dev/reflect#Value.Pointer + https://pkg.go.dev/runtime#FuncForPC we can recover some information but it is not guaranteed to be sufficient.\n\nLet\u0027s start with just adding information about modules we know the type of for now.",
+      "parentUuid": "2906c6b9_dea91697",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "b5a17a12556a9747d3d7439067fb6ea8b5847261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
