@@ -16,6 +16,70 @@
       "message": "This only works for modules which have a registered module type associated with a ModuleFactory (and probably only for factories which do not use a dynamically declared factory function; i.e. only for those which have a static function declaration).\n\nSo there are some modules which still have an unlabeled type in the json-module-graph. This could be remedied by registering those factories with a module type, or by changing the LoadHookContext.CreateModule API such that all callers have to explicitly pass a module type.\n\nI think the latter option is worse because it:\n1) requires many changes across the codebase, and\n2) requires me to either to hardcode module types in many different code locations, or create a global listing of module types that could be reused in different places: e.g.\n```\nvar (\n    JavaImportModuleType \u003d \"java_import\",\n    ...\n)\n```",
       "revId": "b5a17a12556a9747d3d7439067fb6ea8b5847261",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61a65889_ea1b3c59",
+        "filename": "android/hooks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-10T14:31:02Z",
+      "side": 1,
+      "message": "This seems reasonable, as long as we can make sure we don\u0027t impact performance greatly. If it is, we could also consider limiting this functionality to when running in a json-module-graph or similar mode\n\nThe other consideration here (and in general with changing an API) is that partners can use our exported APIs, so it it hard to remove, but instead have to have a parallel API.\n\nHardcoding names doesn\u0027t greatly concern me as it\u0027s also hard-coded in every .bp file but it is more toilsome and would require parallel apis.",
+      "parentUuid": "8b860072_f7dbbcde",
+      "revId": "b5a17a12556a9747d3d7439067fb6ea8b5847261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc4d0604_22188e67",
+        "filename": "android/hooks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-10T14:31:02Z",
+      "side": 1,
+      "message": "It seems like this may have impacts on performance -- is there a way we could cache this lookup?",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 41
+      },
+      "revId": "b5a17a12556a9747d3d7439067fb6ea8b5847261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b190d89f_27d00f98",
+        "filename": "android/hooks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-10T14:31:02Z",
+      "side": 1,
+      "message": "if we don\u0027t find a typeName, can we use information from the reflection on factory to give more details (e.g. PkgPath + Name)?",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "b5a17a12556a9747d3d7439067fb6ea8b5847261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
