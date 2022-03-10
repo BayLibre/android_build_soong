@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0296e6c8_a47b7cb6",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-10T18:57:42Z",
+      "side": 1,
+      "message": "can you add a test case that doesn\u0027t specify subDir?",
+      "range": {
+        "startLine": 706,
+        "startChar": 1,
+        "endLine": 706,
+        "endChar": 62
+      },
+      "revId": "445b3cfdc5562218a16aac66758ac9e2d902e29f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
