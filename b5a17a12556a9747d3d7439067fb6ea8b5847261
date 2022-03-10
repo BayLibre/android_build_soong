@@ -146,6 +146,30 @@
       },
       "revId": "b5a17a12556a9747d3d7439067fb6ea8b5847261",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2906c6b9_dea91697",
+        "filename": "android/hooks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-10T16:08:04Z",
+      "side": 1,
+      "message": "I didn\u0027t see any reflect functionality to uncover the original function information when not dealing with an interface value.",
+      "parentUuid": "29a826c7_346c71b9",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "b5a17a12556a9747d3d7439067fb6ea8b5847261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
