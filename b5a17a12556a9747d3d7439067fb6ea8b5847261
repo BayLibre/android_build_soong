@@ -59,6 +59,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dc7bfac_9fd2deb0",
+        "filename": "android/hooks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-10T16:05:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc4d0604_22188e67",
+      "range": {
+        "startLine": 93,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 41
+      },
+      "revId": "b5a17a12556a9747d3d7439067fb6ea8b5847261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cc68f32_d8b2351c",
+        "filename": "android/hooks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-10T16:05:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "61a65889_ea1b3c59",
+      "revId": "b5a17a12556a9747d3d7439067fb6ea8b5847261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b190d89f_27d00f98",
@@ -72,6 +114,30 @@
       "writtenOn": "2022-03-10T14:31:02Z",
       "side": 1,
       "message": "if we don\u0027t find a typeName, can we use information from the reflection on factory to give more details (e.g. PkgPath + Name)?",
+      "range": {
+        "startLine": 99,
+        "startChar": 12,
+        "endLine": 99,
+        "endChar": 20
+      },
+      "revId": "b5a17a12556a9747d3d7439067fb6ea8b5847261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a826c7_346c71b9",
+        "filename": "android/hooks.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-10T16:05:57Z",
+      "side": 1,
+      "message": "AIUI, because the function is sent to CreateModule with the type of `func () Module` (as opposed to an interface), the \"value\" of the function, in Go terms, is copied, and so reflect treats it as if it were a dynamic (lambda) function defined in the function scope. This results in reflect returning the PkgPath to be `android_CreateModule` for every function.",
+      "parentUuid": "b190d89f_27d00f98",
       "range": {
         "startLine": 99,
         "startChar": 12,
