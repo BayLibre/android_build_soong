@@ -659,7 +659,10 @@ func buildBootImageVariant(ctx android.ModuleContext, image *bootImageVariant, p
 		cmd.FlagWithInput("--dirty-image-objects=", dirtyImagePath.Path())
 	}
 
+	preloadedClassesFile := ""
+
 	if image.extends != nil {
+		preloadedClassesFile = "frameworks/base/config/preloaded-classes"
 		// It is a boot image extension, so it needs the boot image it depends on (in this case the
 		// primary ART APEX image).
 		artImage := image.primaryImages
@@ -676,8 +679,16 @@ func buildBootImageVariant(ctx android.ModuleContext, image *bootImageVariant, p
 			// before this command is run.
 			Implicits(image.primaryImagesDeps)
 	} else {
+		preloadedClassesFile = "art/build/boot/preloaded-classes"
 		// It is a primary image, so it needs a base address.
 		cmd.FlagWithArg("--base=", ctx.Config().LibartImgDeviceBaseAddress())
+	}
+
+	// We always expect a preloaded classes file to be available. However, if we cannot find it, it's
+	// OK to not pass the flag to dex2oat.
+	preloadedClassesPath := android.ExistentPathForSource(ctx, preloadedClassesFile)
+	if preloadedClassesPath.Valid() {
+		cmd.FlagWithInput("--preloaded-classes=", preloadedClassesPath.Path())
 	}
 
 	cmd.
