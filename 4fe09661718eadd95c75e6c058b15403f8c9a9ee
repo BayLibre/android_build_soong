@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd703b37_10d5b455",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2199,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-14T20:35:19Z",
+      "side": 1,
+      "message": "Yeah I was wondering about this. I don\u0027t love the label that is produced, but I wanted to make sure it would be unique and provide information about the target. Maybe I could change the `.aar` to a `_aar`?",
+      "parentUuid": "e3207e75_f760aa45",
+      "range": {
+        "startLine": 2199,
+        "startChar": 33,
+        "endLine": 2199,
+        "endChar": 41
+      },
+      "revId": "4fe09661718eadd95c75e6c058b15403f8c9a9ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bd6bb6f_cbd020ce",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-10T14:24:49Z",
       "side": 1,
       "message": "By convention, we reference rules with the \":\" prefixing to distinguish from a referencing a file",
+      "range": {
+        "startLine": 2200,
+        "startChar": 37,
+        "endLine": 2200,
+        "endChar": 44
+      },
+      "revId": "4fe09661718eadd95c75e6c058b15403f8c9a9ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "955028c2_7751b24e",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2200,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-14T20:35:19Z",
+      "side": 1,
+      "message": "Okay good to know. I was not totally sure when/why to use the `:` prefix, or if it was enforced for some contexts and not for others, etc.",
+      "parentUuid": "1bd6bb6f_cbd020ce",
       "range": {
         "startLine": 2200,
         "startChar": 37,
