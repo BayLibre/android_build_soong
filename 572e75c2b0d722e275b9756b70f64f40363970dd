@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8559c92a_cecd9c30",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-03-14T23:51:51Z",
+      "side": 1,
+      "message": "Done for all of these.",
+      "parentUuid": "e7f3ead6_e3393b30",
+      "revId": "572e75c2b0d722e275b9756b70f64f40363970dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a9e3def_24173f3d",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "278d9ecb_1f85105c",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1747,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-03-14T23:51:51Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "6a9e3def_24173f3d",
+      "revId": "572e75c2b0d722e275b9756b70f64f40363970dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b996a943_13acddcf",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-03-14T23:09:36Z",
       "side": 1,
       "message": "Optional:\n if hintType, ok:\u003dctx.typeHints[name]; !ok {\n  hintType \u003d starlarkTypeUnknown\n}\navoids having to explain this.",
+      "revId": "572e75c2b0d722e275b9756b70f64f40363970dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d768961_df18dee4",
+        "filename": "mk2rbc/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-03-14T23:51:51Z",
+      "side": 1,
+      "message": "I didn\u0027t like how I have to define hintType/ok beforehand when doing this, but done.",
+      "parentUuid": "b996a943_13acddcf",
       "revId": "572e75c2b0d722e275b9756b70f64f40363970dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
