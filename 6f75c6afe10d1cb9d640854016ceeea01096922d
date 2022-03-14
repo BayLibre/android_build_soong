@@ -22,6 +22,30 @@
       },
       "revId": "6f75c6afe10d1cb9d640854016ceeea01096922d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6890a90_db656b37",
+        "filename": "android/bazel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-14T15:19:44Z",
+      "side": 1,
+      "message": "This big list was always meant to just be temporary until there was a better way to enable all of the java_imports. The latest version of this CL won\u0027t include this list. Going to upload now.",
+      "parentUuid": "cc4a7f46_32c8fdf5",
+      "range": {
+        "startLine": 387,
+        "startChar": 1,
+        "endLine": 387,
+        "endChar": 32
+      },
+      "revId": "6f75c6afe10d1cb9d640854016ceeea01096922d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
