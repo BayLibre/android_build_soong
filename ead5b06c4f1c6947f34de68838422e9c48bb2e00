@@ -22,6 +22,30 @@
       },
       "revId": "ead5b06c4f1c6947f34de68838422e9c48bb2e00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ee39cd2_9d52bab0",
+        "filename": "Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2022-03-14T16:17:25Z",
+      "side": 1,
+      "message": "I picked it based on when this module was first added. `apex_inherit` is much more to-the-point though :) Thank you.",
+      "parentUuid": "13006e03_5b349c65",
+      "range": {
+        "startLine": 53,
+        "startChar": 22,
+        "endLine": 53,
+        "endChar": 24
+      },
+      "revId": "ead5b06c4f1c6947f34de68838422e9c48bb2e00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
