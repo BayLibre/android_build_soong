@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d08bbee_2d31c980",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-03-14T15:39:03Z",
+      "side": 1,
+      "message": "Add a comment under what conditions we expect this file to be found, and whether it is ok if it\u0027s not found (if it\u0027s not ok, add and `else` and fail the build).",
+      "range": {
+        "startLine": 688,
+        "startChar": 1,
+        "endLine": 688,
+        "endChar": 3
+      },
+      "revId": "08538cd54b712ac341e500ed8c3e9a3aae54601b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
