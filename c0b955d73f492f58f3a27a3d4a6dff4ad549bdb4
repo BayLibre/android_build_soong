@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07d73c36_5e6c2cc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-14T18:23:29Z",
+      "side": 1,
+      "message": "Haven\u0027t finished the review yet, but taking a break. \n\nLeaving a bunch of nits and a few other comments.",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9acde191_ecf7a744",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-14T18:23:29Z",
+      "side": 1,
+      "message": "Question: Is it a standard practice to prefix these with underscore if we want to signal them as private?",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "032c2bec_67f32c6a",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-14T18:23:29Z",
+      "side": 1,
+      "message": "maybe bcpf, apex and sdk could have some comment to explain what they contain? I imagine it\u0027s file paths, but to what exactly?\n\nContext: when I was reading the code below, I saw `bcpf` being used but wasn\u0027t sure what it was so it was harder to understand the code. Later I read the commit message which mentions these parameters but that info is not going to be in the source file.",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9787c6b7_f2058dd9",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-14T18:23:29Z",
+      "side": 1,
+      "message": "nit: I read these two lines of comments... and I\u0027m not sure if you finished writing the comment. Maybe it\u0027s my brain not being fully functional.",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45ed0b39_550b72c3",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-14T18:23:29Z",
+      "side": 1,
+      "message": "nit: if we make this a static method or something like that, we could write a couple of unit tests to make sure this processing works correctly and that it doesn\u0027t silently eat away any message it shouldn\u0027t.",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c6ddc71_8f5a625a",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-14T18:23:29Z",
+      "side": 1,
+      "message": "stderr and stdout is a strange choice here...\n\nfirst, we probably would want both going into the log file?\n\ndoing stderr \u003d stdout and stdout \u003d something else feels fishy... \n\nAt least maybe we could have some pipe or virtual object that prints stdout into both subprocess.STDOUT and the log file?\n\n[LMK if what I said is confusing or doesn\u0027t make sense]",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9340265e_0d3a1c27",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-14T18:23:29Z",
+      "side": 1,
+      "message": "There are some trailing whitespace warnings in this CL. Please fix.",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "900969d3_3cab38bb",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-14T18:23:29Z",
+      "side": 1,
+      "message": "nit: all_flags doesn\u0027t seem to be the right name for this variable. It will contain the path to a file, right?",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
