@@ -410,6 +410,8 @@ type parseContext struct {
 	dependentModules map[string]*moduleInfo
 	soongNamespaces  map[string]map[string]bool
 	includeTops      []string
+	typeHints        map[string]starlarkType
+	atTopOfMakefile  bool
 }
 
 func newParseContext(ss *StarlarkScript, nodes []mkparser.Node) *parseContext {
@@ -453,6 +455,8 @@ func newParseContext(ss *StarlarkScript, nodes []mkparser.Node) *parseContext {
 		dependentModules: make(map[string]*moduleInfo),
 		soongNamespaces:  make(map[string]map[string]bool),
 		includeTops:      []string{},
+		typeHints:        make(map[string]starlarkType),
+		atTopOfMakefile:  true,
 	}
 	ctx.pushVarAssignments()
 	for _, item := range predefined {
@@ -1687,7 +1691,8 @@ func (ctx *parseContext) handleSimpleStatement(node mkparser.Node) []starlarkNod
 	// Clear the includeTops after each non-comment statement
 	// so that include annotations placed on certain statements don't apply
 	// globally for the rest of the makefile was well.
-	if _, wasComment := node.(*mkparser.Comment); !wasComment && len(ctx.includeTops) > 0 {
+	if _, wasComment := node.(*mkparser.Comment); !wasComment {
+		ctx.atTopOfMakefile = false
 		ctx.includeTops = []string{}
 	}
 
@@ -1720,6 +1725,28 @@ func (ctx *parseContext) maybeHandleAnnotation(cnode *mkparser.Comment) (starlar
 			}
 		}
 		ctx.includeTops = append(ctx.includeTops, p)
+		return nil, true
+	} else if p, ok := maybeTrim(annotation, "type_hint"); ok {
+		// Type hints must come at the beginning the file, to avoid confusion
+		// if a type hint was specified later and thus only takes effect for half
+		// of the file.
+		if !ctx.atTopOfMakefile {
+			return ctx.newBadNode(cnode, "type_hint annotations must come before the first Makefile statement"), true
+		}
+		parts := regexp.MustCompile("^([a-zA-Z_][a-zA-Z0-9_-]*) +(list|string)$").FindStringSubmatch(p)
+		if parts == nil {
+			return ctx.newBadNode(cnode, "Invalid type_hint annotation: %s. Must match ^([a-zA-Z_][a-zA-Z0-9_-]*) +(list|string)$", p), true
+		}
+		varName := parts[1]
+		varType := starlarkTypeString
+		if parts[2] == "list" {
+			varType = starlarkTypeList
+		}
+		// Don't allow duplicate type hints
+		if _, ok := ctx.typeHints[varName]; ok {
+			return ctx.newBadNode(cnode, "Duplicated type hint for variable %v", varName), true
+		}
+		ctx.typeHints[varName] = varType
 		return nil, true
 	}
 	return ctx.newBadNode(cnode, "unsupported annotation %s", cnode.Comment), true
