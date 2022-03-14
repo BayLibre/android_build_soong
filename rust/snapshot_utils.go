@@ -44,6 +44,8 @@ func (mod *Module) IsSnapshotLibrary() bool {
 	if lib, ok := mod.compiler.(libraryInterface); ok {
 		// Rust-native dylibs are not snapshot supported yet. Only snapshot the rlib-std variants of rlibs.
 		return lib.shared() || lib.static() || (lib.rlib() && lib.rlibStd())
+	} else if _, ok := mod.compiler.(*procMacroDecorator); ok {
+		return true
 	}
 	return false
 }

@@ -72,6 +72,15 @@ func isSnapshotAware(cfg android.DeviceConfig, m LinkableInterface, inProprietar
 		return false
 	}
 	if m.Target().Os.Class != android.Device {
+		// Device modules might depend on Rust proc-macros, which target the host
+		// (they are effectively compiler plugins)
+		// By default we'll assume proc-macros are vendor_available since the host
+		// doesn't produce vendor variants.
+		if m.ProcMacro() {
+			if m.OutputFile().Valid() {
+				return true
+			}
+		}
 		return false
 	}
 	if m.Target().NativeBridge == android.NativeBridgeEnabled {
@@ -289,6 +298,8 @@ var ccSnapshotAction snapshot.GenerateSnapshotAction = func(s snapshot.SnapshotS
 				libType = "shared"
 			} else if m.Rlib() {
 				libType = "rlib"
+			} else if m.ProcMacro() {
+				libType = "proc_macro"
 			} else {
 				libType = "header"
 			}

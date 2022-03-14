@@ -1094,6 +1094,18 @@ func (c *Module) CoverageFiles() android.Paths {
 	panic(fmt.Errorf("CoverageFiles called on non-library module: %q", c.BaseModuleName()))
 }
 
+func (m *Module) Dylib() bool {
+	return false
+}
+
+func (m *Module) Rlib() bool {
+	return false
+}
+
+func (m *Module) ProcMacro() bool {
+	return false
+}
+
 var _ LinkableInterface = (*Module)(nil)
 
 func (c *Module) UnstrippedOutputFile() android.Path {

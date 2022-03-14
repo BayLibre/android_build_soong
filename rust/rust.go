@@ -263,6 +263,15 @@ func (mod *Module) Rlib() bool {
 	return false
 }
 
+func (mod *Module) ProcMacro() bool {
+	if mod.compiler != nil {
+		if _, ok := mod.compiler.(*procMacroDecorator); ok {
+			return true
+		}
+	}
+	return false
+}
+
 func (mod *Module) Binary() bool {
 	if binary, ok := mod.compiler.(binaryInterface); ok {
 		return binary.binary()
@@ -400,7 +409,6 @@ type Deps struct {
 type PathDeps struct {
 	DyLibs        RustLibraries
 	RLibs         RustLibraries
-	SharedLibs    android.Paths
 	SharedLibDeps android.Paths
 	StaticLibs    android.Paths
 	ProcMacros    RustLibraries
@@ -1273,10 +1281,8 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 		staticLibDepFiles = append(staticLibDepFiles, dep.OutputFile().Path())
 	}
 
-	var sharedLibFiles android.Paths
 	var sharedLibDepFiles android.Paths
 	for _, dep := range directSharedLibDeps {
-		sharedLibFiles = append(sharedLibFiles, dep.SharedLibrary)
 		if dep.TableOfContents.Valid() {
 			sharedLibDepFiles = append(sharedLibDepFiles, dep.TableOfContents.Path())
 		} else {
@@ -1296,7 +1302,6 @@ func (mod *Module) depsToPaths(ctx android.ModuleContext) PathDeps {
 
 	depPaths.RLibs = append(depPaths.RLibs, rlibDepFiles...)
 	depPaths.DyLibs = append(depPaths.DyLibs, dylibDepFiles...)
-	depPaths.SharedLibs = append(depPaths.SharedLibs, sharedLibDepFiles...)
 	depPaths.SharedLibDeps = append(depPaths.SharedLibDeps, sharedLibDepFiles...)
 	depPaths.StaticLibs = append(depPaths.StaticLibs, staticLibDepFiles...)
 	depPaths.ProcMacros = append(depPaths.ProcMacros, procMacroDepFiles...)
@@ -1467,7 +1472,10 @@ func (mod *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 	actx.AddVariationDependencies(nil, dataBinDepTag, deps.DataBins...)
 
 	// proc_macros are compiler plugins, and so we need the host arch variant as a dependendcy.
-	actx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(), procMacroDepTag, deps.ProcMacros...)
+	for _, pm := range deps.ProcMacros {
+		pm = cc.RewriteSnapshotLib(pm, cc.GetSnapshot(mod, &snapshotInfo, actx).ProcMacros)
+		actx.AddFarVariationDependencies(ctx.Config().BuildOSTarget.Variations(), procMacroDepTag, pm)
+	}
 }
 
 func BeginMutator(ctx android.BottomUpMutatorContext) {

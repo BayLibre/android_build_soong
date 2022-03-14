@@ -227,6 +227,9 @@ type LinkableInterface interface {
 	// Header returns true if this is a library headers module.
 	Header() bool
 
+	// ProcMacro returns true if this is a Rust proc-macro module.
+	ProcMacro() bool
+
 	// StaticExecutable returns true if this is a binary module with "static_executable: true".
 	StaticExecutable() bool
 

@@ -37,6 +37,12 @@ type snapshotLibraryDecorator struct {
 	}
 }
 
+type snapshotProcMacroDecorator struct {
+	cc.BaseSnapshotDecorator
+	*procMacroDecorator
+	properties cc.SnapshotLibraryProperties
+}
+
 func init() {
 	registerRustSnapshotModules(android.InitRegistrationContext)
 }
@@ -44,6 +50,8 @@ func init() {
 func registerRustSnapshotModules(ctx android.RegistrationContext) {
 	cc.VendorSnapshotImageSingleton.RegisterAdditionalModule(ctx,
 		"vendor_snapshot_rlib", VendorSnapshotRlibFactory)
+	cc.VendorSnapshotImageSingleton.RegisterAdditionalModule(ctx,
+		"vendor_snapshot_proc_macro", VendorSnapshotProcMacroFactory)
 	cc.RecoverySnapshotImageSingleton.RegisterAdditionalModule(ctx,
 		"recovery_snapshot_rlib", RecoverySnapshotRlibFactory)
 }
@@ -64,6 +72,24 @@ func snapshotLibraryFactory(image cc.SnapshotImage, moduleSuffix string) (*Modul
 	module.AddProperties(
 		&prebuilt.properties,
 		&prebuilt.sanitizerProperties,
+	)
+
+	return module, prebuilt
+}
+
+func snapshotProcMacroFactory(image cc.SnapshotImage, moduleSuffix string) (*Module, *snapshotProcMacroDecorator) {
+	module, procMacro := NewProcMacro(android.HostSupportedNoCross)
+
+	module.sanitize = nil
+	prebuilt := &snapshotProcMacroDecorator{
+		procMacroDecorator: procMacro,
+	}
+
+	module.compiler = prebuilt
+
+	prebuilt.Init(module, image, moduleSuffix)
+	module.AddProperties(
+		&prebuilt.properties,
 	)
 
 	return module, prebuilt
@@ -129,4 +155,31 @@ func (library *snapshotLibraryDecorator) IsSnapshotPrebuilt() bool {
 	return true
 }
 
+func (procMacro *snapshotProcMacroDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) android.Path {
+	procMacro.SetSnapshotAndroidMkSuffix(ctx, cc.SnapshotProcMacroSuffix)
+	outputFile := android.PathForModuleSrc(ctx, *procMacro.properties.Src)
+	procMacro.unstrippedOutputFile = outputFile
+	return outputFile
+}
+
+func (procMacro *snapshotProcMacroDecorator) rustdoc(ctx ModuleContext, flags Flags, deps PathDeps) android.OptionalPath {
+	return android.OptionalPath{}
+}
+
+func (procMacro *snapshotProcMacroDecorator) MatchesWithDevice(config android.DeviceConfig) bool {
+	// Since proc-macros are host-only modules and target the compiler, then this "matches" with
+	// all device architectures. Always return true.
+	return true
+}
+
+func (procMacro *snapshotProcMacroDecorator) IsSnapshotPrebuilt() bool {
+	return true
+}
+
+func VendorSnapshotProcMacroFactory() android.Module {
+	module, _ := snapshotProcMacroFactory(cc.VendorSnapshotImageSingleton, cc.SnapshotRlibSuffix)
+	return module.Init()
+}
+
 var _ cc.SnapshotInterface = (*snapshotLibraryDecorator)(nil)
+var _ cc.SnapshotInterface = (*snapshotProcMacroDecorator)(nil)

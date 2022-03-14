@@ -93,18 +93,20 @@ func init() {
 }
 
 const (
-	snapshotHeaderSuffix = "_header."
-	SnapshotSharedSuffix = "_shared."
-	SnapshotStaticSuffix = "_static."
-	snapshotBinarySuffix = "_binary."
-	snapshotObjectSuffix = "_object."
-	SnapshotRlibSuffix   = "_rlib."
+	snapshotHeaderSuffix    = "_header."
+	SnapshotSharedSuffix    = "_shared."
+	SnapshotStaticSuffix    = "_static."
+	snapshotBinarySuffix    = "_binary."
+	snapshotObjectSuffix    = "_object."
+	SnapshotProcMacroSuffix = "_procmacro."
+	SnapshotRlibSuffix      = "_rlib."
 )
 
 type SnapshotProperties struct {
 	Header_libs []string `android:"arch_variant"`
 	Static_libs []string `android:"arch_variant"`
 	Shared_libs []string `android:"arch_variant"`
+	Proc_macros []string `android:"arch_variant"`
 	Rlibs       []string `android:"arch_variant"`
 	Vndk_libs   []string `android:"arch_variant"`
 	Binaries    []string `android:"arch_variant"`
@@ -184,6 +186,7 @@ func (s *snapshotModule) DepsMutator(ctx android.BottomUpMutatorContext) {
 	objects := collectSnapshotMap(s.properties.Objects, snapshotSuffix, snapshotObjectSuffix)
 	staticLibs := collectSnapshotMap(s.properties.Static_libs, snapshotSuffix, SnapshotStaticSuffix)
 	sharedLibs := collectSnapshotMap(s.properties.Shared_libs, snapshotSuffix, SnapshotSharedSuffix)
+	procMacros := collectSnapshotMap(s.properties.Proc_macros, snapshotSuffix, SnapshotProcMacroSuffix)
 	rlibs := collectSnapshotMap(s.properties.Rlibs, snapshotSuffix, SnapshotRlibSuffix)
 	vndkLibs := collectSnapshotMap(s.properties.Vndk_libs, "", vndkSuffix)
 	for k, v := range vndkLibs {
@@ -197,11 +200,12 @@ func (s *snapshotModule) DepsMutator(ctx android.BottomUpMutatorContext) {
 		StaticLibs: staticLibs,
 		SharedLibs: sharedLibs,
 		Rlibs:      rlibs,
+		ProcMacros: procMacros,
 	})
 }
 
 type SnapshotInfo struct {
-	HeaderLibs, Binaries, Objects, StaticLibs, SharedLibs, Rlibs map[string]string
+	HeaderLibs, Binaries, Objects, StaticLibs, SharedLibs, Rlibs, ProcMacros map[string]string
 }
 
 var SnapshotInfoProvider = blueprint.NewMutatorProvider(SnapshotInfo{}, "deps")

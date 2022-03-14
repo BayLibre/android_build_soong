@@ -37,14 +37,6 @@ func (m *Module) SnapshotHeaders() android.Paths {
 	return android.Paths{}
 }
 
-func (m *Module) Dylib() bool {
-	return false
-}
-
-func (m *Module) Rlib() bool {
-	return false
-}
-
 func (m *Module) SnapshotRuntimeLibs() []string {
 	return m.Properties.SnapshotRuntimeLibs
 }
