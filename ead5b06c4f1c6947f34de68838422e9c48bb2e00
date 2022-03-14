@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13006e03_5b349c65",
+        "filename": "Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-03-14T04:55:13Z",
+      "side": 1,
+      "message": "nit: `26` seems to be magical. `apex_inherit`?",
+      "range": {
+        "startLine": 53,
+        "startChar": 22,
+        "endLine": 53,
+        "endChar": 24
+      },
+      "revId": "ead5b06c4f1c6947f34de68838422e9c48bb2e00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
