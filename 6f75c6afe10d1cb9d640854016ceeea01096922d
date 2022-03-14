@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc4a7f46_32c8fdf5",
+        "filename": "android/bazel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-14T15:16:15Z",
+      "side": 1,
+      "message": "this allowlist is heavily structured around packages -- why can\u0027t we convert these packages instead?",
+      "range": {
+        "startLine": 387,
+        "startChar": 1,
+        "endLine": 387,
+        "endChar": 32
+      },
+      "revId": "6f75c6afe10d1cb9d640854016ceeea01096922d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
