@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7f3ead6_e3393b30",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1736,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-03-14T23:09:36Z",
+      "side": 1,
+      "message": "A couple of suggestions:\n1. If type precedes variable name, a single line can describe a hint for multiple variables.\n2. This looks like a simple \u003ctype_token\u003e \u003cname_token\u003e case, split() can be used to tokenize.\n3. If there is a need to add more variable types (integer or boolean?), you can use a map[string]starlarkType, and the same map can be used to here to check the validity of type name.\n4. Some humans (me:-) hate to parse the error message containing regex instead of being told that either the variable type is wrong, or the name can consist only of letters, digits, underscore and dash and cannot start with digit.",
+      "revId": "572e75c2b0d722e275b9756b70f64f40363970dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a9e3def_24173f3d",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1747,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-03-14T23:09:36Z",
+      "side": 1,
+      "message": "s/Duplicated/Duplicate/",
+      "revId": "572e75c2b0d722e275b9756b70f64f40363970dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b996a943_13acddcf",
+        "filename": "mk2rbc/variable.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-03-14T23:09:36Z",
+      "side": 1,
+      "message": "Optional:\n if hintType, ok:\u003dctx.typeHints[name]; !ok {\n  hintType \u003d starlarkTypeUnknown\n}\navoids having to explain this.",
+      "revId": "572e75c2b0d722e275b9756b70f64f40363970dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
