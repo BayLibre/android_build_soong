@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a13ab8c7_8592399c",
+        "filename": "java/java.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1558,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-14T13:54:33Z",
+      "side": 0,
+      "message": "After some more digging, I was able to find that `compile_dex` is used by some LoadHookContext-created modules. I could only find one module which had the `export_include_dirs` property set under the AIDL configuration, and it was defined in [this test for apexes](https://cs.android.com/android/platform/superproject/+/master:build/soong/apex/bootclasspath_fragment_test.go;l\u003d759?q\u003d%22prebuilt_bar%22).\n\nFor posterity: these were missed because they were only used in modules created by LoadHookContext (http://b/220875679).",
+      "parentUuid": "70088ebc_172ed7e5",
+      "revId": "27cf3fc18bfe296a1110c144b25954e987840b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e477f138_cabee029",
         "filename": "java/java.go",
         "patchSetId": 8
