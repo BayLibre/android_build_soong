@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7284514_d556377a",
+        "filename": "python/python.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-14T21:01:05Z",
+      "side": 1,
+      "message": "I suspect this is due to the discussion we had earlier where Blueprint silently merges properties with the same name and that the property set in .bp files is this one: https://cs.android.com/android/platform/superproject/+/master:build/soong/android/module.go;l\u003d681;drc\u003d4101c71e63793b9a82427c550026d49a4f07e190, not the `enabled` in python",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 14
+      },
+      "revId": "cd4c25ffe8239b5ee24336e77b68227e270623bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
