@@ -2033,6 +2033,15 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		protoSrcPartition: android.ProtoSrcLabelPartition,
 	})
 
+	var javacopts []string
+	if m.properties.Javacflags != nil {
+		javacopts = append(javacopts, m.properties.Javacflags...)
+	}
+	epEnabled := m.properties.Errorprone.Enabled
+	if (ctx.Config().RunErrorProne() && epEnabled == nil) || Bool(epEnabled) {
+		javacopts = append(javacopts, m.properties.Errorprone.Javacflags...)
+	}
+
 	commonAttrs := &javaCommonAttributes{
 		Srcs: srcPartitions[javaSrcPartition],
 	}
