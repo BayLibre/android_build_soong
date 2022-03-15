@@ -2058,6 +2058,16 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		protoSrcPartition: android.ProtoSrcLabelPartition,
 	})
 
+	var javacopts []string
+	if m.properties.Javacflags != nil {
+		javacopts = append(javacopts, m.properties.Javacflags...)
+	}
+	epEnabled := m.properties.Errorprone.Enabled
+	//TODO(b/227504307) add configuration that depends on RUN_ERROR_PRONE environment variable
+	if Bool(epEnabled) {
+		javacopts = append(javacopts, m.properties.Errorprone.Javacflags...)
+	}
+
 	commonAttrs := &javaCommonAttributes{
 		Srcs: srcPartitions[javaSrcPartition],
 	}
