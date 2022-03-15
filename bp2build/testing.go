@@ -80,6 +80,7 @@ type bp2buildTestCase struct {
 	blueprint                  string
 	expectedBazelTargets       []string
 	filesystem                 map[string]string
+	environment                map[string]string
 	dir                        string
 	expectedErr                error
 	unconvertedDepsMode        unconvertedDepsMode
@@ -98,7 +99,7 @@ func runBp2BuildTestCase(t *testing.T, registerModuleTypes func(ctx android.Regi
 		}
 		filesystem[f] = []byte(content)
 	}
-	config := android.TestConfig(buildDir, nil, tc.blueprint, filesystem)
+	config := android.TestConfig(buildDir, tc.environment, tc.blueprint, filesystem)
 	ctx := android.NewTestContext(config)
 
 	registerModuleTypes(ctx)
