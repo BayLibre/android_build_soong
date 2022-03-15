@@ -33,6 +33,24 @@
       "message": "For image-specific config, I\u0027d suggest to put it in `bootImageConfig` (https://cs.android.com/android/platform/superproject/+/master:build/soong/java/dexpreopt_config.go;l\u003d49;drc\u003dd7f55164a02a5e7259cdedb72bac73dc2773e2ef). And then you can access it with `image` (`image` is `bootImageVariant`, which embeds `bootImageConfig`).",
       "revId": "27572773cb36278cb1276b23cef0ccb059d5abe6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2adfb44b_c49e9ca1",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-15T14:29:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65d6e59f_a036ab20",
+      "revId": "27572773cb36278cb1276b23cef0ccb059d5abe6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
