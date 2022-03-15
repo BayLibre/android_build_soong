@@ -129,3 +129,67 @@ java_library {
 		expectedBazelTargets: []string{},
 	})
 }
+
+func TestJavaLibraryErrorproneJavacflagsEnabledManually(t *testing.T) {
+	runJavaLibraryTestCase(t, bp2buildTestCase{
+		blueprint: `java_library {
+    name: "java-lib-1",
+    srcs: ["a.java"],
+    javacflags: ["-Xsuper-fast"],
+    errorprone: {
+		enabled: true,
+        javacflags: ["-Xep:SpeedLimit:OFF"],
+    },
+    bazel_module: { bp2build_available: true },
+}`,
+		expectedBazelTargets: []string{
+			makeBazelTarget("java_library", "java-lib-1", attrNameToString{
+				"javacopts": `[
+        "-Xsuper-fast",
+        "-Xep:SpeedLimit:OFF",
+    ]`,
+				"srcs": `["a.java"]`,
+			}),
+		},
+	})
+}
+
+func TestJavaLibraryErrorproneJavacflagsErrorproneDisabledByDefault(t *testing.T) {
+	runJavaLibraryTestCase(t, bp2buildTestCase{
+		blueprint: `java_library {
+    name: "java-lib-1",
+    srcs: ["a.java"],
+    javacflags: ["-Xsuper-fast"],
+    errorprone: {
+        javacflags: ["-Xep:SpeedLimit:OFF"],
+    },
+    bazel_module: { bp2build_available: true },
+}`,
+		expectedBazelTargets: []string{
+			makeBazelTarget("java_library", "java-lib-1", attrNameToString{
+				"javacopts": `["-Xsuper-fast"]`,
+				"srcs":      `["a.java"]`,
+			}),
+		},
+	})
+}
+
+func TestJavaLibraryErrorproneJavacflagsErrorproneDisabledManually(t *testing.T) {
+	runJavaLibraryTestCase(t, bp2buildTestCase{
+		blueprint: `java_library {
+    name: "java-lib-1",
+    srcs: ["a.java"],
+    javacflags: ["-Xsuper-fast"],
+    errorprone: {
+        javacflags: ["-Xep:SpeedLimit:OFF"],
+    },
+    bazel_module: { bp2build_available: true },
+}`,
+		expectedBazelTargets: []string{
+			makeBazelTarget("java_library", "java-lib-1", attrNameToString{
+				"javacopts": `["-Xsuper-fast"]`,
+				"srcs":      `["a.java"]`,
+			}),
+		},
+	})
+}
