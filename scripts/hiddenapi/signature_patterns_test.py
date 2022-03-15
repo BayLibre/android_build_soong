@@ -41,71 +41,71 @@ Ljava/lang/Object;->toString()Ljava/lang/String;,blocked
         patterns = self.produce_patterns_from_string(
             TestGeneratedPatterns.csvFlags)
         expected = [
-            'java/lang/*',
+            "java/lang/*",
         ]
         self.assertEqual(expected, patterns)
 
     def test_generate_split_package(self):
         patterns = self.produce_patterns_from_string(
-            TestGeneratedPatterns.csvFlags, splitPackages={'java/lang'})
+            TestGeneratedPatterns.csvFlags, splitPackages={"java/lang"})
         expected = [
-            'java/lang/Character',
-            'java/lang/Object',
-            'java/lang/ProcessBuilder',
+            "java/lang/Character",
+            "java/lang/Object",
+            "java/lang/ProcessBuilder",
         ]
         self.assertEqual(expected, patterns)
 
     def test_generate_split_package_wildcard(self):
         patterns = self.produce_patterns_from_string(
-            TestGeneratedPatterns.csvFlags, splitPackages={'*'})
+            TestGeneratedPatterns.csvFlags, splitPackages={"*"})
         expected = [
-            'java/lang/Character',
-            'java/lang/Object',
-            'java/lang/ProcessBuilder',
+            "java/lang/Character",
+            "java/lang/Object",
+            "java/lang/ProcessBuilder",
         ]
         self.assertEqual(expected, patterns)
 
     def test_generate_package_prefix(self):
         patterns = self.produce_patterns_from_string(
-            TestGeneratedPatterns.csvFlags, packagePrefixes={'java/lang'})
+            TestGeneratedPatterns.csvFlags, packagePrefixes={"java/lang"})
         expected = [
-            'java/lang/**',
+            "java/lang/**",
         ]
         self.assertEqual(expected, patterns)
 
     def test_generate_package_prefix_top_package(self):
         patterns = self.produce_patterns_from_string(
-            TestGeneratedPatterns.csvFlags, packagePrefixes={'java'})
+            TestGeneratedPatterns.csvFlags, packagePrefixes={"java"})
         expected = [
-            'java/**',
+            "java/**",
         ]
         self.assertEqual(expected, patterns)
 
     def test_split_package_wildcard_conflicts_with_other_split_packages(self):
-        errors = validate_split_packages({'*', 'java'})
+        errors = validate_split_packages({"*", "java"})
         expected = [
-            'split packages are invalid as they contain both the wildcard (*)'
-            ' and specific packages, use the wildcard or specific packages,'
-            ' not a mixture'
+            "split packages are invalid as they contain both the wildcard (*)"
+            " and specific packages, use the wildcard or specific packages,"
+            " not a mixture"
         ]
         self.assertEqual(expected, errors)
 
     def test_split_package_wildcard_conflicts_with_package_prefixes(self):
-        errors = validate_package_prefixes({'*'}, packagePrefixes={'java'})
+        errors = validate_package_prefixes({"*"}, packagePrefixes={"java"})
         expected = [
             'split package "*" conflicts with all package prefixes java\n'
-            '    add split_packages:[] to fix',
+            "    add split_packages:[] to fix",
         ]
         self.assertEqual(expected, errors)
 
     def test_split_package_conflict(self):
-        errors = validate_package_prefixes({'java/split'},
-                                           packagePrefixes={'java'})
+        errors = validate_package_prefixes({"java/split"},
+                                           packagePrefixes={"java"})
         expected = [
-            'split package java.split is matched by package prefix java',
+            "split package java.split is matched by package prefix java",
         ]
         self.assertEqual(expected, errors)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main(verbosity=2)
