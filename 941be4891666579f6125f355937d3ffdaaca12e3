@@ -16,6 +16,24 @@
       "message": "nit: new line between docstring and properties?",
       "revId": "941be4891666579f6125f355937d3ffdaaca12e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5457e8ee_f1ab502e",
+        "filename": "scripts/hiddenapi/signature_trie.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-15T15:35:14Z",
+      "side": 1,
+      "message": "Done. I had to switch from docstring to comments for the attributes as you cannot add docstrings for attributes.",
+      "parentUuid": "0a0122ec_f16ae5e6",
+      "revId": "941be4891666579f6125f355937d3ffdaaca12e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
