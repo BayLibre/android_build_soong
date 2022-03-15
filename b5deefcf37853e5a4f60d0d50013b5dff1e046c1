@@ -22,6 +22,30 @@
       },
       "revId": "b5deefcf37853e5a4f60d0d50013b5dff1e046c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fd5b573_3c2418fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-15T15:10:38Z",
+      "side": 1,
+      "message": "Yes. The dex field signature always contains a : between the field name and the type, e.g. Landroid/accounts/Account;-\u003eTAG:Ljava/lang/String;",
+      "parentUuid": "16cd3c99_c9a7fb57",
+      "range": {
+        "startLine": 11,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 54
+      },
+      "revId": "b5deefcf37853e5a4f60d0d50013b5dff1e046c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
