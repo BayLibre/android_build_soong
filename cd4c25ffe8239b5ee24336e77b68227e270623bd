@@ -22,6 +22,30 @@
       },
       "revId": "cd4c25ffe8239b5ee24336e77b68227e270623bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46f6b836_cf38e770",
+        "filename": "python/python.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-03-15T11:37:51Z",
+      "side": 1,
+      "message": "by \"merges\" do you mean \"sets the values to the same things in multiple property structs?\"",
+      "parentUuid": "b7284514_d556377a",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 14
+      },
+      "revId": "cd4c25ffe8239b5ee24336e77b68227e270623bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
