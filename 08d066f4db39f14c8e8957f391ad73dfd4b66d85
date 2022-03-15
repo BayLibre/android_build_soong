@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44a6df00_97938e29",
+        "filename": "android/bazel.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-15T21:09:45Z",
+      "side": 1,
+      "message": "With this change, can we remove modules from the always convert list?\n\nShould we also add java_import_host?",
+      "range": {
+        "startLine": 423,
+        "startChar": 2,
+        "endLine": 423,
+        "endChar": 16
+      },
+      "revId": "08d066f4db39f14c8e8957f391ad73dfd4b66d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
