@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0907677_5e5fa4e1",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-16T21:44:07Z",
+      "side": 1,
+      "message": "This is needed to create the build graph, and Soong can\u0027t read arbitrary files like apex manifests.",
+      "revId": "78c3962171d6d039276bc4d5690d53cd769ece9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
