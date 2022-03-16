@@ -16,6 +16,24 @@
       "message": "Is there a bug for this?",
       "revId": "4a1587c9a41fada8ae9ae2fc8a508eb048620aaa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dddcd56_93c38821",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1884045
+      },
+      "writtenOn": "2022-03-16T16:01:56Z",
+      "side": 1,
+      "message": "Martin is looking into the problem. I\u0027m not going to submit the revert for now.",
+      "parentUuid": "b38d0d2c_4a9ea1f7",
+      "revId": "4a1587c9a41fada8ae9ae2fc8a508eb048620aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
