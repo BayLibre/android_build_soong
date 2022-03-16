@@ -2039,6 +2039,10 @@ type javaDependencyLabels struct {
 // and also separates dependencies into dynamic dependencies and static dependencies.
 // Each corresponding Bazel target type, can have a different method for handling
 // dynamic vs. static dependencies, and so these are returned to the calling function.
+type eventLogTagsAttributes struct {
+	Srcs bazel.LabelListAttribute
+}
+
 func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext) (*javaCommonAttributes, *javaDependencyLabels) {
 	var srcs bazel.LabelListAttribute
 	archVariantProps := m.GetArchVariantProperties(ctx, &CommonProperties{})
@@ -2053,9 +2057,11 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 
 	javaSrcPartition := "java"
 	protoSrcPartition := "proto"
+	logtagSrcPartition := "logtag"
 	srcPartitions := bazel.PartitionLabelListAttribute(ctx, &srcs, bazel.LabelPartitions{
-		javaSrcPartition:  bazel.LabelPartition{Extensions: []string{".java"}, Keep_remainder: true},
-		protoSrcPartition: android.ProtoSrcLabelPartition,
+		javaSrcPartition:   bazel.LabelPartition{Extensions: []string{".java"}, Keep_remainder: true},
+		logtagSrcPartition: bazel.LabelPartition{Extensions: []string{".logtags"}},
+		protoSrcPartition:  android.ProtoSrcLabelPartition,
 	})
 
 	commonAttrs := &javaCommonAttributes{
@@ -2086,6 +2092,23 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	// that depend on a java_library with proto sources can link directly to the protobuf API,
 	// and so this should be a static dependency.
 	staticDeps.Add(protoDepLabel)
+
+	var logtagsDeps bazel.LabelList
+	if !srcPartitions[logtagSrcPartition].IsEmpty() {
+		logtagsLibName := m.Name() + "_logtags"
+		logtagsDeps = bazel.MakeLabelList([]bazel.Label{{Label: logtagsLibName}})
+		ctx.CreateBazelTargetModule(
+			bazel.BazelTargetModuleProperties{
+				Rule_class:        "event_log_tags",
+				Bzl_load_location: "//build/make/tools:event_log_tags.bzl",
+			},
+			android.CommonAttributes{Name: logtagsLibName},
+			&eventLogTagsAttributes{
+				Srcs: srcPartitions[logtagSrcPartition],
+			},
+		)
+	}
+	staticDeps.Append(logtagsDeps)
 
 	depLabels.Deps = bazel.MakeLabelListAttribute(deps)
 	depLabels.StaticDeps = bazel.MakeLabelListAttribute(staticDeps)
