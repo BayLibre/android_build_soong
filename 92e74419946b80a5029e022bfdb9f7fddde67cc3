@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0412257_d95c0aff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-03-16T17:10:18Z",
+      "side": 1,
+      "message": "will this eventually cover all bcp_fragments, once you\u0027re done updating them all?",
+      "range": {
+        "startLine": 17,
+        "startChar": 66,
+        "endLine": 19,
+        "endChar": 46
+      },
+      "revId": "92e74419946b80a5029e022bfdb9f7fddde67cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b664b1d_ab446ee7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-03-16T17:10:18Z",
+      "side": 1,
+      "message": "Is permitted_packages for jars that go into bootclasspath_fragment now redundant? If so, will we clean it up to avoid duplication? We\u0027ve been advising they all specify this",
+      "range": {
+        "startLine": 20,
+        "startChar": 53,
+        "endLine": 21,
+        "endChar": 63
+      },
+      "revId": "92e74419946b80a5029e022bfdb9f7fddde67cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
