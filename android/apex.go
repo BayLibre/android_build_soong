@@ -48,6 +48,8 @@ type ApexInfo struct {
 	// done in mergeApexVariations.
 	ApexVariationName string
 
+	ApexVersion int
+
 	// ApiLevel that this module has to support at minimum.
 	MinSdkVersion ApiLevel
 
@@ -531,6 +533,12 @@ func mergeApexVariations(ctx PathContext, apexInfos []ApexInfo) (merged []ApexIn
 		// If this is for a prebuilt apex then use the actual name of the apex variation to prevent this
 		// from being merged with other ApexInfo. See Prebuilt.ApexInfoMutator for more information.
 		if apexInfo.ForPrebuiltApex {
+			merged = append(merged, apexInfo)
+			continue
+		}
+
+		// TODO temporarily don't merge duplicates if they package apex version into the variation artifacts
+		if apexInfo.ApexVersion != 0 {
 			merged = append(merged, apexInfo)
 			continue
 		}

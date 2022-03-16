@@ -91,6 +91,9 @@ type apexBundleProperties struct {
 	// device (/apex/<apex_name>). If unspecified, follows the name property.
 	Apex_name *string
 
+	// TODO this should come from parsing the manifest, not an Android.bp prop
+	Apex_version *int64
+
 	// Determines the file contexts file for setting the security contexts to files in this APEX
 	// bundle. For platform APEXes, this should points to a file under /system/sepolicy Default:
 	// /system/sepolicy/apex/<module_name>_file_contexts.
@@ -965,6 +968,7 @@ func (a *apexBundle) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 	a.properties.ApexVariationName = apexVariationName
 	apexInfo := android.ApexInfo{
 		ApexVariationName: apexVariationName,
+		ApexVersion:       proptools.IntDefault(a.properties.Apex_version, 0),
 		MinSdkVersion:     minSdkVersion,
 		RequiredSdks:      a.RequiredSdks(),
 		Updatable:         a.Updatable(),

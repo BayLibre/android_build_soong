@@ -511,6 +511,7 @@ type ModuleContextIntf interface {
 	useClangLld(actx ModuleContext) bool
 	isForPlatform() bool
 	apexVariationName() string
+	apexVersion() int
 	apexSdkVersion() android.ApiLevel
 	bootstrap() bool
 	mustUseVendorVariant() bool
@@ -1597,6 +1598,10 @@ func (ctx *moduleContextImpl) isForPlatform() bool {
 
 func (ctx *moduleContextImpl) apexVariationName() string {
 	return ctx.ctx.Provider(android.ApexInfoProvider).(android.ApexInfo).ApexVariationName
+}
+
+func (ctx *moduleContextImpl) apexVersion() int {
+	return ctx.ctx.Provider(android.ApexInfoProvider).(android.ApexInfo).ApexVersion
 }
 
 func (ctx *moduleContextImpl) apexSdkVersion() android.ApiLevel {
