@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "964a3324_50633249",
+        "filename": "scripts/hiddenapi/signature_patterns.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-03-16T17:14:18Z",
+      "side": 0,
+      "message": "Does pylint not like filter, or was this a \"manual\" tweak?",
+      "range": {
+        "startLine": 136,
+        "startChar": 8,
+        "endLine": 136,
+        "endChar": 14
+      },
+      "revId": "a148bf195621870164a82a5471c2fe6f399ef82a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
