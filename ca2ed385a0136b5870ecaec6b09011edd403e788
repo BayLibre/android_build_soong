@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a39fac62_80af1b00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1455782
+      },
+      "writtenOn": "2022-03-16T00:58:26Z",
+      "side": 1,
+      "message": "Hi Colin, can you please give OWNERS for this change to add min_sdk_version apex_inherit to device_kernel_headers? Context in http://b/222618150, partner is looking to use this lib in a vendor APEX.",
+      "revId": "ca2ed385a0136b5870ecaec6b09011edd403e788",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
