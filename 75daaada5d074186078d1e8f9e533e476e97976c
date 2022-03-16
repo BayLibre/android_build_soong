@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e15d3ea5_c24711ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-03-16T16:35:43Z",
+      "side": 1,
+      "message": "I don\u0027t think that this will solve your pest problem even if pointed at the right directory.\n\nhttps://github.com/pest-parser/pest/blob/99cbc31419551af9cd377476382e85c43837daee/generator/src/lib.rs#L43\n\nNote how this is in the proc-macro? That means it is going to try to read this environment variable in the crate that is *using* it, then assume it has a `src/` directory underneath. This isn\u0027t going to work because:\n* 1p crates intentionally don\u0027t get CARGO flags set while building them\n* 1p crates may or may not have `src/` directories at all.",
+      "revId": "75daaada5d074186078d1e8f9e533e476e97976c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f9d4e7c_4f909fbd",
+        "filename": "rust/builder.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1416371
+      },
+      "writtenOn": "2022-03-16T16:35:43Z",
+      "side": 1,
+      "message": "This is definitely not guaranteed to contain the manifest - in fact, in the default directory layout it does not. For\n\n```\nfoo/\n  - Cargo.toml\n  - src/\n    - src/lib\n```\n\nThis will select `foo/src` as `CARGO_MANIFEST_DIR`.",
+      "revId": "75daaada5d074186078d1e8f9e533e476e97976c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
