@@ -16,6 +16,24 @@
       "message": "Why are we reformatting it? Single quotes in python is the norm AFAIK?",
       "revId": "a148bf195621870164a82a5471c2fe6f399ef82a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3ccf6db_c70d3725",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-03-16T16:41:50Z",
+      "side": 1,
+      "message": "go/pystyle says\n\n\u003e Be consistent with your choice of string quote character within a file. Pick \u0027 or \" and stick with it.\n\nThe way I interpret it is we shouldn\u0027t change existing code just because it doesn\u0027t use our favourite quote character",
+      "parentUuid": "4868b269_aa61837f",
+      "revId": "a148bf195621870164a82a5471c2fe6f399ef82a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
