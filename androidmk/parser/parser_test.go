@@ -34,6 +34,47 @@ var parserTestCases = []struct {
 			},
 		},
 	},
+	{
+		name: "Simple warning",
+		in:   `$(warning A warning)`,
+		out: []Node{
+			&Variable{
+				Name: SimpleMakeString("warning A warning", NoPos),
+			},
+		},
+	},
+	{
+		name: "Warning with #",
+		in:   `$(warning # A warning)`,
+		out: []Node{
+			&Variable{
+				Name: SimpleMakeString("warning # A warning", NoPos),
+			},
+		},
+	},
+	{
+		name: "If statement",
+		in: `ifeq (a,b) # comment
+endif`,
+		out: []Node{
+			&Directive{
+				NamePos: NoPos,
+				Name:    "ifeq",
+				Args:    SimpleMakeString("(a,b) ", NoPos),
+				EndPos:  NoPos,
+			},
+			&Comment{
+				CommentPos: NoPos,
+				Comment:    " comment",
+			},
+			&Directive{
+				NamePos: NoPos,
+				Name:    "endif",
+				Args:    SimpleMakeString("", NoPos),
+				EndPos:  NoPos,
+			},
+		},
+	},
 }
 
 func TestParse(t *testing.T) {
@@ -48,6 +89,7 @@ func TestParse(t *testing.T) {
 
 			if len(got) != len(test.out) {
 				t.Fatalf("length mismatch, expected %d nodes, got %d", len(test.out), len(got))
+				//t.Fatalf("length mismatch, expected %d nodes, got %+v", len(test.out), got[2])
 			}
 
 			for i := range got {
