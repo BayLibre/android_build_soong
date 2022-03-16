@@ -114,15 +114,25 @@ type stubDecorator struct {
 	versionScriptPath     android.ModuleGenPath
 	parsedCoverageXmlPath android.ModuleOutPath
 	installPath           android.Path
-	abiDumpPath           android.OutputPath
-	abiDiffPaths          android.Paths
+
+	// abi checks
+	canDumpAbi   *bool
+	abiDumpPath  android.OutputPath
+	abiDiffPaths android.Paths
 
 	apiLevel         android.ApiLevel
 	firstVersion     android.ApiLevel
 	unversionedUntil android.ApiLevel
 }
 
+type abiInterface interface {
+	// Returns true if the library can dump its ABI so that it can be diffed against prebuilts to check ABI stability
+	getCanDumpAbi() bool
+	setCanDumpAbi(val bool)
+}
+
 var _ versionedInterface = (*stubDecorator)(nil)
+var _ abiInterface = (*stubDecorator)(nil)
 
 func shouldUseVersionScript(ctx BaseModuleContext, stub *stubDecorator) bool {
 	return stub.apiLevel.GreaterThanOrEqualTo(stub.unversionedUntil)
@@ -319,6 +329,18 @@ func canDumpAbi() bool {
 	return runtime.GOOS != "darwin"
 }
 
+func (this *stubDecorator) getCanDumpAbi() bool {
+	if this.canDumpAbi != nil {
+		return *this.canDumpAbi
+	}
+	// Default
+	return canDumpAbi()
+}
+
+func (this *stubDecorator) setCanDumpAbi(val bool) {
+	this.canDumpAbi = &val
+}
+
 // Feature flag to disable diffing against prebuilts.
 func canDiffAbi() bool {
 	return false
@@ -444,7 +466,7 @@ func (c *stubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) O
 	nativeAbiResult := parseNativeAbiDefinition(ctx, symbolFile, c.apiLevel, "")
 	objs := compileStubLibrary(ctx, flags, nativeAbiResult.stubSrc)
 	c.versionScriptPath = nativeAbiResult.versionScript
-	if canDumpAbi() {
+	if c.getCanDumpAbi() {
 		c.dumpAbi(ctx, nativeAbiResult.symbolList)
 		if canDiffAbi() {
 			c.diffAbi(ctx)
@@ -505,7 +527,7 @@ func (stub *stubDecorator) install(ctx ModuleContext, path android.Path) {
 	stub.installPath = ctx.InstallFile(installDir, path.Base(), path)
 }
 
-func newStubLibrary() *Module {
+func newStubLibrary() (*Module, *stubDecorator) {
 	module, library := NewLibrary(android.DeviceSupported)
 	library.BuildOnlyShared()
 	module.stl = nil
@@ -525,13 +547,13 @@ func newStubLibrary() *Module {
 
 	module.AddProperties(&stub.properties, &library.MutatedProperties)
 
-	return module
+	return module, stub
 }
 
 // ndk_library creates a library that exposes a stub implementation of functions
 // and variables for use at build time only.
 func NdkLibraryFactory() android.Module {
-	module := newStubLibrary()
+	module, _ := newStubLibrary()
 	android.InitAndroidArchModule(module, android.DeviceSupported, android.MultilibBoth)
 	return module
 }
