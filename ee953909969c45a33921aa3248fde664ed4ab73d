@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29db6046_69d2649f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 37
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-17T21:46:09Z",
+      "side": 1,
+      "message": "Can we add more comments on the different cases throughout? For new folks it may be confusing why we handle this in so many different ways",
+      "revId": "ee953909969c45a33921aa3248fde664ed4ab73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e34cbcd_130195b9",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-17T21:46:09Z",
+      "side": 1,
+      "message": "Perhaps we should also mention the Exports part?",
+      "range": {
+        "startLine": 60,
+        "startChar": 39,
+        "endLine": 60,
+        "endChar": 44
+      },
+      "revId": "ee953909969c45a33921aa3248fde664ed4ab73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "522da073_b15b24f5",
+        "filename": "java/app.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 1472,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-17T21:46:09Z",
+      "side": 1,
+      "message": "have you encountered any cases like this?",
+      "range": {
+        "startLine": 1470,
+        "startChar": 2,
+        "endLine": 1472,
+        "endChar": 43
+      },
+      "revId": "ee953909969c45a33921aa3248fde664ed4ab73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d77a554d_e02873aa",
+        "filename": "java/java.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 2009,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-17T21:46:09Z",
+      "side": 1,
+      "message": "This change seems unrelated to the static_deps handling, let\u0027s split it out?\n\ngo/small-cls recommends: \"The CL makes a minimal change that addresses just one thing.\"",
+      "range": {
+        "startLine": 2009,
+        "startChar": 0,
+        "endLine": 2009,
+        "endChar": 35
+      },
+      "revId": "ee953909969c45a33921aa3248fde664ed4ab73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a34eacf_a59524be",
+        "filename": "java/java.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-17T21:46:09Z",
+      "side": 1,
+      "message": "nit: could use staticDeps.Add (https://cs.android.com/android/platform/superproject/+/master:build/soong/bazel/properties.go;l\u003d111;drc\u003d07e106ffa1943cea5bc95b3a8495b74376ddae7b) directly on protoDepLabel",
+      "range": {
+        "startLine": 2066,
+        "startChar": 1,
+        "endLine": 2066,
+        "endChar": 29
+      },
+      "revId": "ee953909969c45a33921aa3248fde664ed4ab73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd29b312_9ae50dd7",
+        "filename": "java/java.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 2119,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-17T21:46:09Z",
+      "side": 1,
+      "message": "do we have any tests for this change?",
+      "range": {
+        "startLine": 2119,
+        "startChar": 5,
+        "endLine": 2119,
+        "endChar": 27
+      },
+      "revId": "ee953909969c45a33921aa3248fde664ed4ab73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
