@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "311ffb50_beb6c832",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-03-17T02:00:33Z",
+      "side": 1,
+      "message": "Can you please find out how the parser handles\n```\nx:\u003d$(find x,x a #)\n```\nThe reason I am asking is that make complains, while ckati handles it (although not in a consistent manner.",
+      "revId": "bf5abe678d0f6de7ef7a029e1c867288c8bd0b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
