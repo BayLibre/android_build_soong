@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed93be74_b4a57e5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-17T11:49:54Z",
+      "side": 1,
+      "message": "Yes for all the runtime ones. I\u0027m not sure about test ones. However, any bcpf that does not specify one of those properties treats all packages as split by default (as that is safe). Once all bcpf are updated I can stop that from being the default behavior.",
+      "parentUuid": "c0412257_d95c0aff",
+      "range": {
+        "startLine": 17,
+        "startChar": 66,
+        "endLine": 19,
+        "endChar": 46
+      },
+      "revId": "92e74419946b80a5029e022bfdb9f7fddde67cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b664b1d_ab446ee7",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-16T17:10:18Z",
       "side": 1,
       "message": "Is permitted_packages for jars that go into bootclasspath_fragment now redundant? If so, will we clean it up to avoid duplication? We\u0027ve been advising they all specify this",
+      "range": {
+        "startLine": 20,
+        "startChar": 53,
+        "endLine": 21,
+        "endChar": 63
+      },
+      "revId": "92e74419946b80a5029e022bfdb9f7fddde67cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0304ae32_c4a7ba26",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-17T11:49:54Z",
+      "side": 1,
+      "message": "I don\u0027t think so. It is no longer needed for creating the updatable-bcp-packages.txt file in T and above (thanks to https://r.android.com/1832483) but it is still needed on the prebuilts for Q -\u003e S and might be needed for ensuring module compatibility with Q and R (both of which had a limit on the packages that could be updated).\n\nI\u0027ve sent an email about it as it needs input from ART team too.",
+      "parentUuid": "5b664b1d_ab446ee7",
       "range": {
         "startLine": 20,
         "startChar": 53,
