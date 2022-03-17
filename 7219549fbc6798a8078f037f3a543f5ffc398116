@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af4316b5_32d7fa65",
+        "filename": "scripts/hiddenapi/signature_patterns.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-03-17T15:09:07Z",
+      "side": 1,
+      "message": "putting it into an `errors` variable would IMO aid readability, ditto below",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 99,
+        "endChar": 69
+      },
+      "revId": "7219549fbc6798a8078f037f3a543f5ffc398116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2932788a_6a0e8799",
+        "filename": "scripts/hiddenapi/signature_patterns.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-03-17T15:09:07Z",
+      "side": 1,
+      "message": "I thought this would cause some errors in the tree as we\u0027ve not fixed all the jars yet? Might be misunderstanding the code though, not familiar with this script..",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 25
+      },
+      "revId": "7219549fbc6798a8078f037f3a543f5ffc398116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dafe787_3dbe235c",
+        "filename": "scripts/hiddenapi/signature_patterns.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-03-17T15:09:07Z",
+      "side": 1,
+      "message": "seems like errors is only ever assigned \"if not errors\", so you could simplify the code above to something like\n\n  if errors:\n      # run code selected for this comment and exit\n  \nkind of like \"early return\". Would make it easier to understand IMO",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 19
+      },
+      "revId": "7219549fbc6798a8078f037f3a543f5ffc398116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
