@@ -22,6 +22,30 @@
       },
       "revId": "a148bf195621870164a82a5471c2fe6f399ef82a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cce2411d_23071d49",
+        "filename": "scripts/hiddenapi/signature_patterns.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-17T10:41:13Z",
+      "side": 0,
+      "message": "No it doesn\u0027t. It prefers list comprehensions.",
+      "parentUuid": "964a3324_50633249",
+      "range": {
+        "startLine": 136,
+        "startChar": 8,
+        "endLine": 136,
+        "endChar": 14
+      },
+      "revId": "a148bf195621870164a82a5471c2fe6f399ef82a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
