@@ -46,6 +46,30 @@
       },
       "revId": "a86ffafbafc7b723bab985e034960d9f87b9a603",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cde2da88_1f9fc9a4",
+        "filename": "android/bazel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-17T22:20:38Z",
+      "side": 1,
+      "message": "I think what you\u0027ve done clarifies things.\n\nWe don\u0027t really have a good mechanism to distinguish unit tests, but the root directory doesn\u0027t have anything in its Android.bp, so this should be fine.\n\nThe logic here is getting complicated enough that we should probably write a unit test, thought it may take a bit of refactoring -- some mocking similar to https://cs.android.com/android/platform/superproject/+/master:build/soong/bazel/testing.go may be helpful.\n\nWe can put the testing in a separate CL as it may also require some restructuring of the code",
+      "parentUuid": "40182e3e_6d7e0e1d",
+      "range": {
+        "startLine": 732,
+        "startChar": 1,
+        "endLine": 732,
+        "endChar": 41
+      },
+      "revId": "a86ffafbafc7b723bab985e034960d9f87b9a603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
