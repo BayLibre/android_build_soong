@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7bc876d_80c563fd",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2042,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-17T15:19:05Z",
+      "side": 1,
+      "message": "these shouldn\u0027t universally be added to javacopts -- https://cs.android.com/android/platform/superproject/+/master:build/soong/java/base.go;l\u003d839;drc\u003dba842429a777575fb683e21c31c5d962305b93fd they\u0027re only added if the Errorprone.Enabled property is true or if environment variable RUN_ERROR_PRONE is true (https://cs.android.com/android/platform/superproject/+/master:build/soong/android/config.go;l\u003d956;drc\u003dba842429a777575fb683e21c31c5d962305b93fd)",
+      "range": {
+        "startLine": 2042,
+        "startChar": 0,
+        "endLine": 2042,
+        "endChar": 70
+      },
+      "revId": "8e5464686fd74d2b4d9dbb8180d7716d73f398b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
