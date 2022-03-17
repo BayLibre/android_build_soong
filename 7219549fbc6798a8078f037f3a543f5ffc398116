@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b6fe4af_e781d791",
+        "filename": "scripts/hiddenapi/signature_patterns.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-03-17T19:08:50Z",
+      "side": 1,
+      "message": "It\u0027s just a very long line.\n\n    msg \u003d validate_package_is_not_matched_by_package_prefix(\u0027split package\u0027, split_package, package_prefixes)\n    errors.extend(msg)",
+      "parentUuid": "e9634c16_538a6e3b",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 99,
+        "endChar": 69
+      },
+      "revId": "7219549fbc6798a8078f037f3a543f5ffc398116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2932788a_6a0e8799",
         "filename": "scripts/hiddenapi/signature_patterns.py",
         "patchSetId": 3
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "Are you suggesting replacing all code that looks like this:\n\n  errors \u003d ....\n  if not errors:\n    errors \u003d ....\n\nWith something like this:\n\n  errors \u003d ....\n  handle_errors(errors)\n\nWhere:\n  def handle_errors(errors):\n    if errors:\n      for error in errors:\n          print(error)\n      sys.exit(1)",
       "parentUuid": "8dafe787_3dbe235c",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 19
+      },
+      "revId": "7219549fbc6798a8078f037f3a543f5ffc398116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fc99202_e2ebf5d5",
+        "filename": "scripts/hiddenapi/signature_patterns.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-03-17T19:08:50Z",
+      "side": 1,
+      "message": "yeah, something like that, or maybe\n\n```\nif errors:\n  print_and_exit(errors)\n  \n...\n\nif errors:\n  print_and_exit(errors)\n```",
+      "parentUuid": "8765c172_97477030",
       "range": {
         "startLine": 261,
         "startChar": 0,
