@@ -40,6 +40,8 @@ type PackagingSpec struct {
 	executable bool
 
 	effectiveLicenseFiles *Paths
+
+	partition string
 }
 
 // Get file name of installed package
@@ -65,6 +67,10 @@ func (p *PackagingSpec) EffectiveLicenseFiles() Paths {
 		return Paths{}
 	}
 	return *p.effectiveLicenseFiles
+}
+
+func (p *PackagingSpec) Partition() string {
+	return p.partition
 }
 
 type PackageModule interface {
@@ -219,6 +225,12 @@ func (p *PackagingBase) GatherPackagingSpecs(ctx ModuleContext) map[string]Packa
 			return
 		}
 		for _, ps := range child.TransitivePackagingSpecs() {
+			// Do not install PackagingSpecs targeting the "apex" partition.
+			// "apex" partition is not a valid partition but a FAKE one used to install
+			// APEX contents for symbol lookup by imitatating "activated" paths.
+			if "apex" == ps.Partition() {
+				continue
+			}
 			if _, ok := m[ps.relPathInPackage]; !ok {
 				m[ps.relPathInPackage] = ps
 			}
