@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "981f9c94_277e99e7",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-03-17T13:29:54Z",
+      "side": 1,
+      "message": "As noted in the bug, this could be generalized to be settable so that when a packaging module sets \"partition\" property, GatherPackagingSpec gathers items targeting that partition. (If not set, gather all items)\n\nFor example, \n```\nandroid_filesystem {\n  name: \"microdroid\",\n  partition: \"system\",  // gathers packaging items targeting \"system\" partition.\n  ...\n}\n```\n\nbtw, for now, this seems to be enough. What do you think?",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 4
+      },
+      "revId": "1bb1bea0503403a1f5b6eaf35bf6a5b6cdde1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
