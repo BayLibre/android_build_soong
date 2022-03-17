@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9634c16_538a6e3b",
+        "filename": "scripts/hiddenapi/signature_patterns.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-17T16:14:56Z",
+      "side": 1,
+      "message": "I don\u0027t understand what you mean. I am collating all the errors into an errors list.",
+      "parentUuid": "af4316b5_32d7fa65",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 99,
+        "endChar": 69
+      },
+      "revId": "7219549fbc6798a8078f037f3a543f5ffc398116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2932788a_6a0e8799",
         "filename": "scripts/hiddenapi/signature_patterns.py",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-17T15:09:07Z",
       "side": 1,
       "message": "I thought this would cause some errors in the tree as we\u0027ve not fixed all the jars yet? Might be misunderstanding the code though, not familiar with this script..",
+      "range": {
+        "startLine": 190,
+        "startChar": 4,
+        "endLine": 190,
+        "endChar": 25
+      },
+      "revId": "7219549fbc6798a8078f037f3a543f5ffc398116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "817a7969_8d4b9c26",
+        "filename": "scripts/hiddenapi/signature_patterns.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-17T16:14:56Z",
+      "side": 1,
+      "message": "Very few bootclasspath_fragment modules specify the existing split_packages, package_prefixes properties. Only art-bootclasspath-fragment was broken by this code, the others were not.",
+      "parentUuid": "2932788a_6a0e8799",
       "range": {
         "startLine": 190,
         "startChar": 4,
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-17T15:09:07Z",
       "side": 1,
       "message": "seems like errors is only ever assigned \"if not errors\", so you could simplify the code above to something like\n\n  if errors:\n      # run code selected for this comment and exit\n  \nkind of like \"early return\". Would make it easier to understand IMO",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 19
+      },
+      "revId": "7219549fbc6798a8078f037f3a543f5ffc398116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8765c172_97477030",
+        "filename": "scripts/hiddenapi/signature_patterns.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-17T16:14:56Z",
+      "side": 1,
+      "message": "Are you suggesting replacing all code that looks like this:\n\n  errors \u003d ....\n  if not errors:\n    errors \u003d ....\n\nWith something like this:\n\n  errors \u003d ....\n  handle_errors(errors)\n\nWhere:\n  def handle_errors(errors):\n    if errors:\n      for error in errors:\n          print(error)\n      sys.exit(1)",
+      "parentUuid": "8dafe787_3dbe235c",
       "range": {
         "startLine": 261,
         "startChar": 0,

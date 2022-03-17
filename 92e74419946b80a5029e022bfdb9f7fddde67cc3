@@ -117,6 +117,30 @@
       },
       "revId": "92e74419946b80a5029e022bfdb9f7fddde67cc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f70988a3_ed629bbb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-17T16:14:56Z",
+      "side": 1,
+      "message": "\u003e you sure? why?\n\nBecause I had to add them to the prebuilts to fix broken builds, see https://r.android.com/1768128.\n\nEven though we don\u0027t create `updatable-bcp-packages.txt` file anymore previous builds do and if they\u0027re building against prebuilts then they need the permitted_packages property to provide the information they need.\n\n\u003e This change isn\u0027t really blocked on removing permitted_packages\n\nAgreed. My plan is to update that once I have the analyze_bcpf script available.",
+      "parentUuid": "411b3e98_c43fe7e7",
+      "range": {
+        "startLine": 20,
+        "startChar": 53,
+        "endLine": 21,
+        "endChar": 63
+      },
+      "revId": "92e74419946b80a5029e022bfdb9f7fddde67cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
