@@ -22,6 +22,30 @@
       },
       "revId": "08d066f4db39f14c8e8957f391ad73dfd4b66d85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1276997_6edba02d",
+        "filename": "android/bazel.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-17T20:20:30Z",
+      "side": 1,
+      "message": "Which modules do you mean? I removed all of the java_imports that I added.\n\nI added `java_import_host` in a separate CL because there were some java_import_host modules which required the `jetifier` binary to be enabled, and so I just did that separately.",
+      "parentUuid": "44a6df00_97938e29",
+      "range": {
+        "startLine": 423,
+        "startChar": 2,
+        "endLine": 423,
+        "endChar": 16
+      },
+      "revId": "08d066f4db39f14c8e8957f391ad73dfd4b66d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
