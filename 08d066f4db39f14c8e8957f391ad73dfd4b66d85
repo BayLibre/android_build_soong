@@ -46,6 +46,30 @@
       },
       "revId": "08d066f4db39f14c8e8957f391ad73dfd4b66d85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23033a2e_efb953fe",
+        "filename": "android/bazel.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-17T21:54:56Z",
+      "side": 1,
+      "message": "sgtm.\n\nI hadn\u0027t realized so many of the items in the always convert list were so heavily python and cc  -- I\u0027d be curious if we could allowlist this directories instead but that\u0027s a separate bug/cl",
+      "parentUuid": "a1276997_6edba02d",
+      "range": {
+        "startLine": 423,
+        "startChar": 2,
+        "endLine": 423,
+        "endChar": 16
+      },
+      "revId": "08d066f4db39f14c8e8957f391ad73dfd4b66d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
