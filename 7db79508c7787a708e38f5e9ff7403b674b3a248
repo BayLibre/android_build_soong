@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6ec4ef2_b9ce2711",
+        "filename": "android/bazel.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-17T23:47:12Z",
+      "side": 0,
+      "message": "I also wanted to call attention to this change in behavior for the module-level allowlist (`bp2buildModuleAlwaysConvertList`). This CL requires that java_import modules be prepended with \"prebuilt_\" in the allow- and deny-lists so that there is no name collision with the corresponding source module of the same name (if it exists).",
+      "revId": "7db79508c7787a708e38f5e9ff7403b674b3a248",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
