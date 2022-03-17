@@ -93,6 +93,30 @@
       },
       "revId": "92e74419946b80a5029e022bfdb9f7fddde67cc3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "411b3e98_c43fe7e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-03-17T14:50:25Z",
+      "side": 1,
+      "message": "\u003e needed on the prebuilts\n\nyou sure? why?\n\nThis change isn\u0027t really blocked on removing permitted_packages, but we should update the documentation on go/mainline-java-lib to reflect what is currently expected of library owner to define and why",
+      "parentUuid": "0304ae32_c4a7ba26",
+      "range": {
+        "startLine": 20,
+        "startChar": 53,
+        "endLine": 21,
+        "endChar": 63
+      },
+      "revId": "92e74419946b80a5029e022bfdb9f7fddde67cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
