@@ -17,6 +17,8 @@ package filesystem
 import (
 	"android/soong/android"
 	"android/soong/linkerconfig"
+
+	"github.com/google/blueprint/proptools"
 )
 
 type systemImage struct {
@@ -38,6 +40,10 @@ func systemImageFactory() android.Module {
 	module.AddProperties(&module.properties)
 	module.filesystem.buildExtraFiles = module.buildExtraFiles
 	initFilesystemModule(&module.filesystem)
+	// systemImageFactory only cares about "system" partition items.
+	// Note that "apex" module installs its contents to "apex"(fake partition) as well
+	// for symbol lookup by imitating "activated" paths.
+	module.TargetPartition = proptools.StringPtr("system")
 	return module
 }
 

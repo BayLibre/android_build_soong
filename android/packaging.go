@@ -40,6 +40,8 @@ type PackagingSpec struct {
 	executable bool
 
 	effectiveLicenseFiles *Paths
+
+	partition string
 }
 
 // Get file name of installed package
@@ -67,6 +69,10 @@ func (p *PackagingSpec) EffectiveLicenseFiles() Paths {
 	return *p.effectiveLicenseFiles
 }
 
+func (p *PackagingSpec) Partition() string {
+	return p.partition
+}
+
 type PackageModule interface {
 	Module
 	packagingBase() *PackagingBase
@@ -92,6 +98,9 @@ type PackagingBase struct {
 	// for rare cases like when there's a dependency to a module which exists in certain repo
 	// checkouts, this is needed.
 	IgnoreMissingDependencies bool
+
+	// When set, GatherPackagingSpecs() will gather items targeting the partition
+	TargetPartition *string
 }
 
 type depsProperty struct {
@@ -219,6 +228,9 @@ func (p *PackagingBase) GatherPackagingSpecs(ctx ModuleContext) map[string]Packa
 			return
 		}
 		for _, ps := range child.TransitivePackagingSpecs() {
+			if p.TargetPartition != nil && ps.Partition() != *p.TargetPartition {
+				continue
+			}
 			if _, ok := m[ps.relPathInPackage]; !ok {
 				m[ps.relPathInPackage] = ps
 			}
