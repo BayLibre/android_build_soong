@@ -22,6 +22,30 @@
       },
       "revId": "a86ffafbafc7b723bab985e034960d9f87b9a603",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40182e3e_6d7e0e1d",
+        "filename": "android/bazel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-17T22:02:05Z",
+      "side": 1,
+      "message": "I added this so that modules in unit tests which are enabled in the allowlist (e.g. java_imports) would not trigger this conditional. Apparently unit tests run in the `\".\"` package path, and this is in the KeepExistingBuildFile list, so this logic skips converting those modules.\n\nIs there a good way to differentiate unit test modules from allow-listed modules?",
+      "parentUuid": "aeb889c1_0cebf2f3",
+      "range": {
+        "startLine": 732,
+        "startChar": 1,
+        "endLine": 732,
+        "endChar": 41
+      },
+      "revId": "a86ffafbafc7b723bab985e034960d9f87b9a603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
