@@ -34,6 +34,24 @@
       "parentUuid": "4868b269_aa61837f",
       "revId": "a148bf195621870164a82a5471c2fe6f399ef82a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1fa9620_592bd6c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-17T10:37:06Z",
+      "side": 1,
+      "message": "I thought that the files were inconsistent in their usage of quotes. So I formatted it to be consistent. Turns out that I was wrong and it was consistent. At least formatting it to use single quotes makes no changes.",
+      "parentUuid": "f3ccf6db_c70d3725",
+      "revId": "a148bf195621870164a82a5471c2fe6f399ef82a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
