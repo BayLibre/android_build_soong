@@ -302,6 +302,7 @@ var (
 		"external/conscrypt":                                 Bp2BuildDefaultTrue,
 		"external/e2fsprogs/lib":                             Bp2BuildDefaultTrueRecursively,
 		"external/error_prone":                               Bp2BuildDefaultTrueRecursively,
+		"external/f2fs-tools":                                Bp2BuildDefaultTrueRecursively,
 		"external/fmtlib":                                    Bp2BuildDefaultTrueRecursively,
 		"external/google-benchmark":                          Bp2BuildDefaultTrueRecursively,
 		"external/googletest":                                Bp2BuildDefaultTrueRecursively,
