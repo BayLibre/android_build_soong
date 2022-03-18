@@ -34,6 +34,24 @@
       "parentUuid": "311ffb50_beb6c832",
       "revId": "bf5abe678d0f6de7ef7a029e1c867288c8bd0b7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34fa9750_75c97a88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-03-18T18:56:42Z",
+      "side": 1,
+      "message": "It\u0027s findstring, but it does not matter which function it is. Here\u0027s the makefile (/tmp/sp.mk):\n```\n$(info filter\u003d$(filter a,a b #))\n$(info sort\u003d$(sort b #a))\nifdef ASSIGN\n#Z:\u003d$(sort a #b)\nZ:\u003d$(filter a,a # b)\nendif\nall:\n```\n\n$ make -f /tmp/sp.mk\nfilter\u003da\nsort\u003d#a b\nmake: Nothing to be done for \u0027all\u0027.\n$ make -f /tmp/sp.mk ASSIGN\u003da\nfilter\u003da\nsort\u003d#a b\n/tmp/sp.mk:4: *** unterminated call to function \u0027sort\u0027: missing \u0027)\u0027.  Stop.\n\n\nLooks like assignments are treated differently.",
+      "parentUuid": "ebb43ca6_33f4998c",
+      "revId": "bf5abe678d0f6de7ef7a029e1c867288c8bd0b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
