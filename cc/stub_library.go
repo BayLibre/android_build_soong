@@ -126,3 +126,13 @@ func (this *apiStubDecorator) Name(name string) string {
 	// Add imoprtSuffix since importing tree can contain an ndk_library with the same name
 	return strings.Join([]string{name, this.apiSurfaceProperties.Api_surface_name, importSuffix}, ".")
 }
+
+// TODO(spandandas): write tests
+func (this *apiStubDecorator) stubGenFlags() string {
+	if this.apiSurfaceProperties.Api_surface_name == "apex" {
+		return "--apex"
+	} else if this.apiSurfaceProperties.Api_surface_name == "llndk" {
+		return "--lndk"
+	}
+	return "" // default
+}
