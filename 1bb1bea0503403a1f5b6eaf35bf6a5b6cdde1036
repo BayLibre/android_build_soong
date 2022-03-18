@@ -46,6 +46,30 @@
       },
       "revId": "1bb1bea0503403a1f5b6eaf35bf6a5b6cdde1036",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "358f6b73_84aa0ce4",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-03-18T06:15:31Z",
+      "side": 1,
+      "message": "Yes we can. then we might need a hook in PackagingBase (e.g. FilterPackagingSpecs) and SystemImage to override it to gather \"system\" partition items.",
+      "parentUuid": "de258c34_33893818",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 4
+      },
+      "revId": "1bb1bea0503403a1f5b6eaf35bf6a5b6cdde1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
