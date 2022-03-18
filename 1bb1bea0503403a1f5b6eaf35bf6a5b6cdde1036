@@ -70,6 +70,30 @@
       },
       "revId": "1bb1bea0503403a1f5b6eaf35bf6a5b6cdde1036",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d0dc175_c607e27e",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-03-18T06:42:39Z",
+      "side": 1,
+      "message": "Yes, I\u0027d like to externalize the \"apex\" string from here. It doesn\u0027t need to be in the bp file but in the go file.\n\nOr, if there\u0027s a way to express such a fake install, we could check that instead.",
+      "parentUuid": "358f6b73_84aa0ce4",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 4
+      },
+      "revId": "1bb1bea0503403a1f5b6eaf35bf6a5b6cdde1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
