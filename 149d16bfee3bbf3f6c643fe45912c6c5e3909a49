@@ -22,6 +22,30 @@
       },
       "revId": "149d16bfee3bbf3f6c643fe45912c6c5e3909a49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47a8317c_8ecbc597",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-18T22:15:22Z",
+      "side": 1,
+      "message": "Agreed, how about GatherPackagingSpecsForPartition?",
+      "parentUuid": "fce651ac_4fe8e375",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 24
+      },
+      "revId": "149d16bfee3bbf3f6c643fe45912c6c5e3909a49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
