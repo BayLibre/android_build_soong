@@ -22,6 +22,30 @@
       },
       "revId": "1bb1bea0503403a1f5b6eaf35bf6a5b6cdde1036",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de258c34_33893818",
+        "filename": "android/packaging.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-03-18T06:04:00Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be better to do this in system_image.go? The module type is explicitly for packaging things for the system partition, so pruning the ones for \"apex\" makes sense if done there.",
+      "parentUuid": "981f9c94_277e99e7",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 4
+      },
+      "revId": "1bb1bea0503403a1f5b6eaf35bf6a5b6cdde1036",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
