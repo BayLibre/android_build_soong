@@ -52,6 +52,24 @@
       "parentUuid": "ebb43ca6_33f4998c",
       "revId": "bf5abe678d0f6de7ef7a029e1c867288c8bd0b7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a55102c_01f80ac6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-03-18T19:01:27Z",
+      "side": 1,
+      "message": "It seems to work fine for me with gnu make. I added an $(info Z\u003d$(Z)) after the z assignment, and I get this:\n\n```\n$ make -f sp.mk ASSIGN\u003dA\nfilter\u003da\nsort\u003d#a b\nZ\u003da\nmake: Nothing to be done for \u0027all\u0027.\n```\n\nDo we have the same version of make?\n\n```\n$ make --version\nGNU Make 4.3\n```",
+      "parentUuid": "34fa9750_75c97a88",
+      "revId": "bf5abe678d0f6de7ef7a029e1c867288c8bd0b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
