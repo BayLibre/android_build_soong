@@ -16,6 +16,23 @@
       "message": "Thanks Jiakai, PTAL.",
       "revId": "b9a46fb62480f6412b95086c51b0a059ceef1628",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5417dab_2b0720d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038443
+      },
+      "writtenOn": "2022-03-18T13:41:45Z",
+      "side": 1,
+      "message": "Ignoring existing TH issues.",
+      "revId": "b9a46fb62480f6412b95086c51b0a059ceef1628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
