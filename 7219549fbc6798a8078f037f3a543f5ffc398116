@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "161f9a80_1048545f",
+        "filename": "scripts/hiddenapi/signature_patterns.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-18T10:55:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b6fe4af_e781d791",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 99,
+        "endChar": 69
+      },
+      "revId": "7219549fbc6798a8078f037f3a543f5ffc398116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2932788a_6a0e8799",
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "yeah, something like that, or maybe\n\n```\nif errors:\n  print_and_exit(errors)\n  \n...\n\nif errors:\n  print_and_exit(errors)\n```",
       "parentUuid": "8765c172_97477030",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 19
+      },
+      "revId": "7219549fbc6798a8078f037f3a543f5ffc398116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "273b4510_94d33a5b",
+        "filename": "scripts/hiddenapi/signature_patterns.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-18T10:55:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fc99202_e2ebf5d5",
       "range": {
         "startLine": 261,
         "startChar": 0,
