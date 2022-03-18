@@ -22,6 +22,30 @@
       },
       "revId": "800f7f7ad30b2bbb7970dc085ba89908e61c45be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cc27a2c_803ce2fb",
+        "filename": "android/soongconfig/modules.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-03-18T00:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bc115d1_e7f51fe0",
+      "range": {
+        "startLine": 642,
+        "startChar": 1,
+        "endLine": 645,
+        "endChar": 2
+      },
+      "revId": "800f7f7ad30b2bbb7970dc085ba89908e61c45be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
