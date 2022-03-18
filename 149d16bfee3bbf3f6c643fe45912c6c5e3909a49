@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fce651ac_4fe8e375",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-03-18T07:56:41Z",
+      "side": 1,
+      "message": "I thought we would have a new method on PackageModule. Not sure if this is a common pattern. Over to Colin. \n\nOther than that, looks fine. Thanks!",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 24
+      },
+      "revId": "149d16bfee3bbf3f6c643fe45912c6c5e3909a49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
