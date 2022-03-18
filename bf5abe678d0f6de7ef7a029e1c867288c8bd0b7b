@@ -16,6 +16,24 @@
       "message": "Can you please find out how the parser handles\n```\nx:\u003d$(find x,x a #)\n```\nThe reason I am asking is that make complains, while ckati handles it (although not in a consistent manner.",
       "revId": "bf5abe678d0f6de7ef7a029e1c867288c8bd0b7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebb43ca6_33f4998c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-03-18T00:16:10Z",
+      "side": 1,
+      "message": "I assume you mean $(findstring), not $(find)\n\nI tested this in an test makefile and both GNU make and ckati gave \"x\", which is as expected.\n\nI also added a test case for this and it seems fine.",
+      "parentUuid": "311ffb50_beb6c832",
+      "revId": "bf5abe678d0f6de7ef7a029e1c867288c8bd0b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
