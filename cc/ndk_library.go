@@ -463,7 +463,7 @@ func (c *stubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) O
 	}
 
 	symbolFile := String(c.properties.Symbol_file)
-	nativeAbiResult := parseNativeAbiDefinition(ctx, symbolFile, c.apiLevel, "")
+	nativeAbiResult := parseNativeAbiDefinition(ctx, symbolFile, c.apiLevel, c.stubGenFlags())
 	objs := compileStubLibrary(ctx, flags, nativeAbiResult.stubSrc)
 	c.versionScriptPath = nativeAbiResult.versionScript
 	if c.getCanDumpAbi() {
@@ -476,6 +476,11 @@ func (c *stubDecorator) compile(ctx ModuleContext, flags Flags, deps PathDeps) O
 		c.parsedCoverageXmlPath = parseSymbolFileForAPICoverage(ctx, symbolFile)
 	}
 	return objs
+}
+
+// "" is the default, symbols without special annotations are available in the NDK
+func (c *stubDecorator) stubGenFlags() string {
+	return ""
 }
 
 func (linker *stubDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
