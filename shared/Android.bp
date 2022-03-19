@@ -17,5 +17,6 @@ bootstrap_go_package {
     deps: [
         "soong-bazel",
         "golang-protobuf-proto",
+        "golang-protobuf-encoding-prototext",
     ],
 }
