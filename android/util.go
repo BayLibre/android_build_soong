@@ -15,7 +15,9 @@
 package android
 
 import (
+	"crypto/sha256"
 	"fmt"
+	"io"
 	"path/filepath"
 	"reflect"
 	"regexp"
@@ -470,4 +472,16 @@ func CheckDuplicate(values []string) (duplicate string, found bool) {
 		seen[v] = v
 	}
 	return "", false
+}
+
+// Sha256 generates SHA256 hash of the file.
+func Sha256(c Config, filepath string) string {
+	f, err := c.fs.Open(filepath)
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+	h := sha256.New()
+	io.Copy(h, f)
+	return fmt.Sprintf("%x", h.Sum(nil))
 }
