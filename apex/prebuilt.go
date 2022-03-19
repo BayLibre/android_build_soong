@@ -53,10 +53,11 @@ type prebuiltCommon struct {
 	// Properties common to both prebuilt_apex and apex_set.
 	prebuiltCommonProperties *PrebuiltCommonProperties
 
-	installDir      android.InstallPath
-	installFilename string
-	installedFile   android.InstallPath
-	outputApex      android.WritablePath
+	installDir                  android.InstallPath
+	installFilename             string
+	installedFile               android.InstallPath
+	outputApex                  android.WritablePath
+	onDevicePathOfInstalledFile string
 
 	// A list of apexFile objects created in prebuiltCommon.initApexFilesForAndroidMk which are used
 	// to create make modules in prebuiltCommon.AndroidMkEntries.
@@ -481,7 +482,7 @@ type Prebuilt struct {
 
 	properties PrebuiltProperties
 
-	inputApex android.Path
+	InputApex android.Path
 }
 
 type ApexFileProperties struct {
@@ -560,6 +561,10 @@ func (p *Prebuilt) OutputFiles(tag string) (android.Paths, error) {
 	default:
 		return nil, fmt.Errorf("unsupported module reference tag %q", tag)
 	}
+}
+
+func (p *Prebuilt) InstalledFileOnDevicePath() string {
+	return p.onDevicePathOfInstalledFile
 }
 
 // prebuilt_apex imports an `.apex` file into the build graph as if it was built with apex.
@@ -748,7 +753,7 @@ func (p *Prebuilt) ApexInfoMutator(mctx android.TopDownMutatorContext) {
 
 func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	// TODO(jungjw): Check the key validity.
-	p.inputApex = android.OptionalPathForModuleSrc(ctx, p.prebuiltCommonProperties.Selected_apex).Path()
+	p.InputApex = android.OptionalPathForModuleSrc(ctx, p.prebuiltCommonProperties.Selected_apex).Path()
 	p.installDir = android.PathForModuleInstall(ctx, "apex")
 	p.installFilename = p.InstallFilename()
 	if !strings.HasSuffix(p.installFilename, imageApexSuffix) {
@@ -757,7 +762,7 @@ func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	p.outputApex = android.PathForModuleOut(ctx, p.installFilename)
 	ctx.Build(pctx, android.BuildParams{
 		Rule:   android.Cp,
-		Input:  p.inputApex,
+		Input:  p.InputApex,
 		Output: p.outputApex,
 	})
 
@@ -777,7 +782,8 @@ func (p *Prebuilt) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	if p.installable() {
-		p.installedFile = ctx.InstallFile(p.installDir, p.installFilename, p.inputApex, p.compatSymlinks.Paths()...)
+		p.installedFile = ctx.InstallFile(p.installDir, p.installFilename, p.InputApex, p.compatSymlinks.Paths()...)
+		p.onDevicePathOfInstalledFile = android.InstallPathToOnDevicePath(ctx, p.installedFile)
 	}
 }
 
