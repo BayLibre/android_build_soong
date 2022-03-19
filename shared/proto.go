@@ -17,7 +17,9 @@ package shared
 import (
 	"io/ioutil"
 	"os"
+	"strings"
 
+	"google.golang.org/protobuf/encoding/prototext"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -30,6 +32,23 @@ func Save(pb proto.Message, filepath string) (err error) {
 	}
 	tempFilepath := filepath + ".tmp"
 	if err := ioutil.WriteFile(tempFilepath, []byte(data), 0644 /* rw-r--r-- */); err != nil {
+		return err
+	}
+
+	if err := os.Rename(tempFilepath, filepath); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// SaveTextProto takes a protobuf message, marshals to textproto
+// and is then saved to a file.
+func SaveTextProto(pb proto.Message, filepath string, header []string) (err error) {
+	lines := header
+	lines = append(lines, prototext.Format(pb))
+	tempFilepath := filepath + ".tmp"
+	if err := ioutil.WriteFile(tempFilepath, []byte(strings.Join(lines, "\n")), 0666 /* rw-rw-rw- */); err != nil {
 		return err
 	}
 

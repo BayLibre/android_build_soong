@@ -54,7 +54,8 @@ type AndroidAppImport struct {
 
 	preprocessed bool
 
-	installPath android.InstallPath
+	installPath                 android.InstallPath
+	onDevicePathOfInstalledFile string
 
 	hideApexVariantFromMake bool
 }
@@ -343,6 +344,7 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 
 	if apexInfo.IsForPlatform() {
 		a.installPath = ctx.InstallFile(installDir, apkFilename, a.outputFile)
+		a.onDevicePathOfInstalledFile = android.InstallPathToOnDevicePath(ctx, a.installPath)
 	}
 
 	// TODO: androidmk converter jni libs
@@ -366,6 +368,10 @@ func (a *AndroidAppImport) JacocoReportClassesFile() android.Path {
 
 func (a *AndroidAppImport) Certificate() Certificate {
 	return a.certificate
+}
+
+func (a *AndroidAppImport) InstalledFileOnDevicePath() string {
+	return a.onDevicePathOfInstalledFile
 }
 
 var dpiVariantGroupType reflect.Type
