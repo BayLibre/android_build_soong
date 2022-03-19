@@ -270,6 +270,11 @@ func TestAndroidAppImport_DpiVariants(t *testing.T) {
 		if strings.HasSuffix(matches[1], test.expected) {
 			t.Errorf("wrong src apk, expected: %q got: %q", test.expected, matches[1])
 		}
+		appImport := variant.Module().(*AndroidAppImport)
+		expectedOnDevicePath := "/system/app/foo/foo.apk"
+		if appImport.InstalledFileOnDevicePath() != expectedOnDevicePath {
+			t.Errorf("On device path invalid. expected: %q, actual: %q", expectedOnDevicePath, appImport.InstalledFileOnDevicePath())
+		}
 	}
 }
 
@@ -292,14 +297,17 @@ func TestAndroidAppImport_Filename(t *testing.T) {
 	testCases := []struct {
 		name     string
 		expected string
+		onDevice string
 	}{
 		{
 			name:     "foo",
 			expected: "foo.apk",
+			onDevice: "/system/app/foo/foo.apk",
 		},
 		{
 			name:     "bar",
 			expected: "bar_sample.apk",
+			onDevice: "/system/app/bar/bar_sample.apk",
 		},
 	}
 
@@ -315,6 +323,9 @@ func TestAndroidAppImport_Filename(t *testing.T) {
 		if !reflect.DeepEqual(actualValues, expectedValues) {
 			t.Errorf("Incorrect LOCAL_INSTALLED_MODULE_STEM value '%s', expected '%s'",
 				actualValues, expectedValues)
+		}
+		if a.InstalledFileOnDevicePath() != test.onDevice {
+			t.Errorf("On device path invalid. expected: %q, actual: %q", test.onDevice, a.InstalledFileOnDevicePath())
 		}
 	}
 }
@@ -402,6 +413,11 @@ func TestAndroidAppImport_ArchVariants(t *testing.T) {
 		}
 		if strings.HasSuffix(matches[1], test.expected) {
 			t.Errorf("wrong src apk, expected: %q got: %q", test.expected, matches[1])
+		}
+		a := variant.Module().(*AndroidAppImport)
+		expectedOnDevicePath := "/system/app/foo/foo.apk"
+		if a.InstalledFileOnDevicePath() != expectedOnDevicePath {
+			t.Errorf("On device path invalid. expected: %q, actual: %q", expectedOnDevicePath, a.InstalledFileOnDevicePath())
 		}
 	}
 }
