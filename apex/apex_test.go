@@ -3898,7 +3898,7 @@ func TestVndkApexWithBinder32(t *testing.T) {
 		}),
 		withBinder32bit,
 		withTargets(map[android.OsType][]android.Target{
-			android.Android: []android.Target{
+			android.Android: {
 				{Os: android.Android, Arch: android.Arch{ArchType: android.Arm, ArchVariant: "armv7-a-neon", Abi: []string{"armeabi-v7a"}},
 					NativeBridge: android.NativeBridgeDisabled, NativeBridgeHostArchName: "", NativeBridgeRelativePath: ""},
 			},
@@ -4582,8 +4582,12 @@ func TestPrebuilt(t *testing.T) {
 	prebuilt := ctx.ModuleForTests("myapex", "android_common_myapex").Module().(*Prebuilt)
 
 	expectedInput := "myapex-arm64.apex"
-	if prebuilt.inputApex.String() != expectedInput {
-		t.Errorf("inputApex invalid. expected: %q, actual: %q", expectedInput, prebuilt.inputApex.String())
+	if prebuilt.InputApex.String() != expectedInput {
+		t.Errorf("InputApex invalid. expected: %q, actual: %q", expectedInput, prebuilt.InputApex.String())
+	}
+	expectedOnDevicePath := "/system/apex/myapex.apex"
+	if prebuilt.InstalledFileOnDevicePath() != expectedOnDevicePath {
+		t.Errorf("On device path invalid. expected: %q, actual: %q", expectedOnDevicePath, prebuilt.InstalledFileOnDevicePath())
 	}
 }
 
@@ -4609,6 +4613,10 @@ func TestPrebuiltFilenameOverride(t *testing.T) {
 	expected := "notmyapex.apex"
 	if p.installFilename != expected {
 		t.Errorf("installFilename invalid. expected: %q, actual: %q", expected, p.installFilename)
+	}
+	expectedOnDevicePath := "/system/apex/notmyapex.apex"
+	if p.InstalledFileOnDevicePath() != expectedOnDevicePath {
+		t.Errorf("On device path invalid. expected: %q, actual: %q", expectedOnDevicePath, p.InstalledFileOnDevicePath())
 	}
 }
 
@@ -7666,7 +7674,7 @@ func TestApexPermittedPackagesRules(t *testing.T) {
 				}`,
 			bootJars: []string{"bcp_lib1"},
 			modulesPackages: map[string][]string{
-				"myapex": []string{
+				"myapex": {
 					"foo.bar",
 				},
 			},
@@ -7703,7 +7711,7 @@ func TestApexPermittedPackagesRules(t *testing.T) {
 			`,
 			bootJars: []string{"bcp_lib1", "bcp_lib2"},
 			modulesPackages: map[string][]string{
-				"myapex": []string{
+				"myapex": {
 					"foo.bar",
 				},
 			},
@@ -7740,7 +7748,7 @@ func TestApexPermittedPackagesRules(t *testing.T) {
 			`,
 			bootJars: []string{"bcp_lib1", "bcp_lib2"},
 			modulesPackages: map[string][]string{
-				"myapex": []string{
+				"myapex": {
 					"foo.bar",
 				},
 			},
@@ -7777,7 +7785,7 @@ func TestApexPermittedPackagesRules(t *testing.T) {
 			`,
 			bootJars: []string{"bcp_lib1", "bcp_lib2"},
 			modulesPackages: map[string][]string{
-				"myapex": []string{
+				"myapex": {
 					"foo.bar",
 				},
 			},
