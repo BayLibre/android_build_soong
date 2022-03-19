@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d84f271f_4fa46cdb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-03-19T00:19:44Z",
+      "side": 1,
+      "message": "CopyDepsToZip calls GatherPackagingSpecs. Separate method won\u0027t work well with it. Probably we could make GatherPackagingSpecs overridable and make CopyDepsToZip call it. But this would make code more complicated. Wdyt?",
+      "tag": "mailMessageId\u003d\u003cCAO-8PLbV5mmjts\u003dMCXPkVOeGEBDVf6XFnH5EBzN1W\u003d44LmZHcQ@mail.gmail.com\u003e",
+      "revId": "149d16bfee3bbf3f6c643fe45912c6c5e3909a49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fce651ac_4fe8e375",
