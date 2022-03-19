@@ -17,8 +17,10 @@ package java
 // This file contains the module implementations for android_app_import and android_test_import.
 
 import (
+	"path/filepath"
 	"reflect"
 
+	"android/soong/provenance"
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android"
@@ -57,6 +59,8 @@ type AndroidAppImport struct {
 	installPath android.InstallPath
 
 	hideApexVariantFromMake bool
+
+	provenanceMetaDataFile android.OutputPath
 }
 
 type AndroidAppImportProperties struct {
@@ -343,6 +347,10 @@ func (a *AndroidAppImport) generateAndroidBuildActions(ctx android.ModuleContext
 
 	if apexInfo.IsForPlatform() {
 		a.installPath = ctx.InstallFile(installDir, apkFilename, a.outputFile)
+		if ctx.ModuleType() == "android_app_import" && a.Enabled() && a.IsInstallable() {
+			artifactPath := filepath.Join(ctx.ModuleDir(), proptools.String(a.properties.Apk))
+			a.provenanceMetaDataFile = provenance.GenerateArtifactProvenanceMetaData(ctx, artifactPath, a.installPath)
+		}
 	}
 
 	// TODO: androidmk converter jni libs
@@ -366,6 +374,10 @@ func (a *AndroidAppImport) JacocoReportClassesFile() android.Path {
 
 func (a *AndroidAppImport) Certificate() Certificate {
 	return a.certificate
+}
+
+func (a *AndroidAppImport) ProvenanceMetaDataFile() android.OutputPath {
+	return a.provenanceMetaDataFile
 }
 
 var dpiVariantGroupType reflect.Type
