@@ -279,6 +279,7 @@ func (r *robolectricTest) AndroidMkEntries() []android.AndroidMkEntries {
 	entries.ExtraEntries = append(entries.ExtraEntries,
 		func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
 			entries.SetBool("LOCAL_UNINSTALLABLE_MODULE", true)
+			entries.SetBool("LOCAL_IS_HOST_MODULE", true)
 		})
 
 	entries.ExtraFooters = []android.AndroidMkExtraFootersFunc{
