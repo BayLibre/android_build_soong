@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7e023e8_2fac61dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-21T17:57:04Z",
+      "side": 1,
+      "message": "This seems like something we could forbid in Soong too.",
+      "revId": "cc2c1efc9a2519fba77ed82268b29d9e5680fa7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
