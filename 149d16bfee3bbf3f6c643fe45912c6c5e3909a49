@@ -21,6 +21,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aad7a8c4_be6f9cbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-03-21T03:33:38Z",
+      "side": 1,
+      "message": "CopyDepsToZip and GatherPackagingSpecs actually don\u0027t need to be a method, but  functions that accept `PackageModule`",
+      "parentUuid": "d84f271f_4fa46cdb",
+      "revId": "149d16bfee3bbf3f6c643fe45912c6c5e3909a49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fce651ac_4fe8e375",
         "filename": "android/packaging.go",
         "patchSetId": 3
