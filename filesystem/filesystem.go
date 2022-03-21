@@ -34,6 +34,11 @@ func registerBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("android_system_image", systemImageFactory)
 }
 
+type filesystemModule interface {
+	android.PackageModule
+	base() *filesystem
+}
+
 type filesystem struct {
 	android.ModuleBase
 	android.PackagingBase
@@ -95,8 +100,9 @@ func filesystemFactory() android.Module {
 	return module
 }
 
-func initFilesystemModule(module *filesystem) {
-	module.AddProperties(&module.properties)
+func initFilesystemModule(module filesystemModule) {
+	fs := module.base()
+	module.AddProperties(&fs.properties)
 	android.InitPackageModule(module)
 	android.InitAndroidMultiTargetsArchModule(module, android.DeviceSupported, android.MultilibCommon)
 }
@@ -118,6 +124,10 @@ const (
 	cpioType // uncompressed
 	unknown
 )
+
+func (f *filesystem) base() *filesystem {
+	return f
+}
 
 func (f *filesystem) fsType(ctx android.ModuleContext) fsType {
 	typeStr := proptools.StringDefault(f.properties.Type, "ext4")
