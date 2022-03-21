@@ -82,6 +82,10 @@ type PackageModule interface {
 	// be copied to a zip in CopyDepsToZip, `depTag` should implement PackagingItem marker interface.
 	AddDeps(ctx BottomUpMutatorContext, depTag blueprint.DependencyTag)
 
+	// GatherPackagingSpecs gathers transitive PackagingSpecs from deps. Used by CopyDepsToZip().
+	// Override this to customize the entries in the resulting package.
+	GatherPackagingSpecs(ctx ModuleContext) map[string]PackagingSpec
+
 	// CopyDepsToZip zips the built artifacts of the dependencies into the given zip file and
 	// returns zip entries in it. This is expected to be called in GenerateAndroidBuildActions,
 	// followed by a build rule that unzips it and creates the final output (img, zip, tar.gz,
@@ -93,6 +97,10 @@ type PackageModule interface {
 // include this struct and call InitPackageModule.
 type PackagingBase struct {
 	properties PackagingProperties
+
+	// Keep the interface so that overridable methods (e.g. GatherPackagingSpec) can be called via
+	// the interface.
+	module PackageModule
 
 	// Allows this module to skip missing dependencies. In most cases, this is not required, but
 	// for rare cases like when there's a dependency to a module which exists in certain repo
@@ -127,6 +135,8 @@ type PackagingProperties struct {
 
 func InitPackageModule(p PackageModule) {
 	base := p.packagingBase()
+	// keep interface for overridable methods
+	base.module = p
 	p.AddProperties(&base.properties)
 }
 
@@ -217,7 +227,7 @@ func (p *PackagingBase) AddDeps(ctx BottomUpMutatorContext, depTag blueprint.Dep
 	}
 }
 
-// Returns transitive PackagingSpecs from deps
+// See PackageModule.GatherPackagingSpecs
 func (p *PackagingBase) GatherPackagingSpecs(ctx ModuleContext) map[string]PackagingSpec {
 	m := make(map[string]PackagingSpec)
 	ctx.VisitDirectDeps(func(child Module) {
@@ -261,7 +271,7 @@ func (p *PackagingBase) CopySpecsToDir(ctx ModuleContext, builder *RuleBuilder, 
 
 // See PackageModule.CopyDepsToZip
 func (p *PackagingBase) CopyDepsToZip(ctx ModuleContext, zipOut WritablePath) (entries []string) {
-	m := p.GatherPackagingSpecs(ctx)
+	m := p.module.GatherPackagingSpecs(ctx)
 	builder := NewRuleBuilder(pctx, ctx)
 
 	dir := PathForModuleOut(ctx, ".zip")
