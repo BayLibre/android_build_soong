@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed8b9185_17762149",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-03-21T16:34:46Z",
+      "side": 1,
+      "message": "Uploaded addition of TestPrebuiltEtcNoSubdir",
+      "revId": "c78604e6a45e48321b67ff5b520115e5e57ee9a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
