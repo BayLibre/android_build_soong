@@ -417,7 +417,7 @@ func (a *apexBundle) androidMkForType() android.AndroidMkData {
 					fmt.Fprintf(w, "$(call dist-for-goals,%s,%s:%s)\n",
 						goal, a.installedFilesFile.String(), distFile)
 				}
-				for _, dist := range data.Entries.GetDistForGoals(a) {
+				for _, dist := range data.Entries.GetDistForGoals(a, nil) {
 					fmt.Fprintf(w, dist)
 				}
 

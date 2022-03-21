@@ -148,6 +148,9 @@ func buildContextAndCustomModuleFoo(t *testing.T, bp string) (*TestContext, *cus
 		FixtureRegisterWithContext(func(ctx RegistrationContext) {
 			ctx.RegisterModuleType("custom", customModuleFactory)
 		}),
+		FixtureModifyProductVariables(func(variables FixtureProductVariables) {
+			variables.DeviceProduct = proptools.StringPtr("bar")
+		}),
 		FixtureWithRootAndroidBp(bp),
 	).RunTest(t)
 
@@ -260,7 +263,7 @@ func TestGetDistForGoals(t *testing.T) {
 	if len(entries) != 1 {
 		t.Errorf("Expected a single AndroidMk entry, got %d", len(entries))
 	}
-	androidMkLines := entries[0].GetDistForGoals(module)
+	androidMkLines := entries[0].GetDistForGoals(module, nil)
 
 	if len(androidMkLines) != len(expectedAndroidMkLines) {
 		t.Errorf(
@@ -350,7 +353,7 @@ func TestGetDistContributions(t *testing.T) {
 			if len(entries) != 1 {
 				t.Errorf("Expected a single AndroidMk entry, got %d", len(entries))
 			}
-			distContributions := entries[0].getDistContributions(module)
+			distContributions := entries[0].getDistContributions(module, ctx)
 
 			if err := compareContributions(expectedContributions, distContributions); err != nil {
 				t.Errorf("%s\nExpected Contributions\n%sActualContributions\n%s",
@@ -399,6 +402,25 @@ func TestGetDistContributions(t *testing.T) {
 				},
 			},
 		})
+
+	testHelper(t, "append-artifact-with-product", `
+			custom {
+				name: "foo",
+				dist: {
+					targets: ["my_goal"],
+					append_artifact_with_product: true,
+				}
+			}
+`, &distContributions{
+		copiesForGoals: []*copiesForGoals{
+			{
+				goals: "my_goal",
+				copies: []distCopy{
+					distCopyForTest("one.out", "one_bar.out"),
+				},
+			},
+		},
+	})
 
 	testHelper(t, "dists-with-tag", `
 			custom {

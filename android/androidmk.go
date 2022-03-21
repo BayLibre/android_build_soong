@@ -319,7 +319,7 @@ type distCopy struct {
 }
 
 // Compute the contributions that the module makes to the dist.
-func (a *AndroidMkEntries) getDistContributions(mod blueprint.Module) *distContributions {
+func (a *AndroidMkEntries) getDistContributions(mod blueprint.Module, ctx fillInEntriesContext) *distContributions {
 	amod := mod.(Module).base()
 	name := amod.BaseModuleName()
 
@@ -408,10 +408,22 @@ func (a *AndroidMkEntries) getDistContributions(mod blueprint.Module) *distContr
 				}
 			}
 
+			ext := filepath.Ext(dest)
+			suffix := ""
 			if dist.Suffix != nil {
-				ext := filepath.Ext(dest)
-				suffix := *dist.Suffix
-				dest = strings.TrimSuffix(dest, ext) + suffix + ext
+				suffix = *dist.Suffix
+			}
+
+			productString := ""
+			if dist.Append_artifact_with_product != nil && *dist.Append_artifact_with_product {
+				if ctx == nil {
+					panic(fmt.Errorf("context must be provided if appending apk with product"))
+				}
+				productString = fmt.Sprintf("_%s", ctx.Config().DeviceProduct())
+			}
+
+			if suffix != "" || productString != "" {
+				dest = strings.TrimSuffix(dest, ext) + suffix + productString + ext
 			}
 
 			if dist.Dir != nil {
@@ -448,8 +460,8 @@ func generateDistContributionsForMake(distContributions *distContributions) []st
 
 // Compute the list of Make strings to declare phony goals and dist-for-goals
 // calls from the module's dist and dists properties.
-func (a *AndroidMkEntries) GetDistForGoals(mod blueprint.Module) []string {
-	distContributions := a.getDistContributions(mod)
+func (a *AndroidMkEntries) GetDistForGoals(mod blueprint.Module, ctx fillInEntriesContext) []string {
+	distContributions := a.getDistContributions(mod, ctx)
 	if distContributions == nil {
 		return nil
 	}
@@ -493,7 +505,7 @@ func (a *AndroidMkEntries) fillInEntries(ctx fillInEntriesContext, mod blueprint
 	a.Host_required = append(a.Host_required, amod.HostRequiredModuleNames()...)
 	a.Target_required = append(a.Target_required, amod.TargetRequiredModuleNames()...)
 
-	for _, distString := range a.GetDistForGoals(mod) {
+	for _, distString := range a.GetDistForGoals(mod, ctx) {
 		fmt.Fprintf(&a.header, distString)
 	}
 
