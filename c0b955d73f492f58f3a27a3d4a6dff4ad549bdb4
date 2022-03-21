@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11a1a59f_4ea9f0c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-21T16:35:01Z",
+      "side": 1,
+      "message": "I will try.",
+      "parentUuid": "419a1166_a6b6bf7b",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9acde191_ecf7a744",
@@ -49,6 +67,24 @@
       "writtenOn": "2022-03-14T18:23:29Z",
       "side": 1,
       "message": "Question: Is it a standard practice to prefix these with underscore if we want to signal them as private?",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e41beb76_007ed54f",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-21T16:35:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9acde191_ecf7a744",
       "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -70,6 +106,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b3cb9c6_3dc62d19",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-21T16:35:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "032c2bec_67f32c6a",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9787c6b7_f2058dd9",
@@ -83,6 +137,24 @@
       "writtenOn": "2022-03-14T18:23:29Z",
       "side": 1,
       "message": "nit: I read these two lines of comments... and I\u0027m not sure if you finished writing the comment. Maybe it\u0027s my brain not being fully functional.",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9658fae7_6dbd05f3",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-21T16:35:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9787c6b7_f2058dd9",
       "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -104,6 +176,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd7e182c_907b0bce",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-21T16:35:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45ed0b39_550b72c3",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c6ddc71_8f5a625a",
@@ -117,6 +207,24 @@
       "writtenOn": "2022-03-14T18:23:29Z",
       "side": 1,
       "message": "stderr and stdout is a strange choice here...\n\nfirst, we probably would want both going into the log file?\n\ndoing stderr \u003d stdout and stdout \u003d something else feels fishy... \n\nAt least maybe we could have some pipe or virtual object that prints stdout into both subprocess.STDOUT and the log file?\n\n[LMK if what I said is confusing or doesn\u0027t make sense]",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba530e1a_e7b37043",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-21T16:35:01Z",
+      "side": 1,
+      "message": "\u003e first, we probably would want both going into the log file?\n\nThat is what this does. According to https://docs.python.org/3/library/subprocess.html.\n\nsubprocess.STDOUT\n- Special value that can be used as the stderr argument to Popen and indicates that standard error should go into the same handle as standard output.",
+      "parentUuid": "1c6ddc71_8f5a625a",
       "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -138,6 +246,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d00700ac_b5a7dfbf",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-21T16:35:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9340265e_0d3a1c27",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "900969d3_3cab38bb",
@@ -151,6 +277,24 @@
       "writtenOn": "2022-03-14T18:23:29Z",
       "side": 1,
       "message": "nit: all_flags doesn\u0027t seem to be the right name for this variable. It will contain the path to a file, right?",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f158f996_2d07aa5f",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-21T16:35:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "900969d3_3cab38bb",
       "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
