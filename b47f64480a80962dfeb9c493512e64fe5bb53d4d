@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2442f0d6_27aa9ea8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-21T16:49:36Z",
+      "side": 1,
+      "message": "PTAL. I have split the logic for computing hidden_api package properties into a separate change.",
+      "revId": "b47f64480a80962dfeb9c493512e64fe5bb53d4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
