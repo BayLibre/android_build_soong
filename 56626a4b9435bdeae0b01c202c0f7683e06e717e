@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0323e78d_c551c314",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-03-21T06:27:21Z",
+      "side": 1,
+      "message": "ok, this is a trick :)",
+      "revId": "56626a4b9435bdeae0b01c202c0f7683e06e717e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
