@@ -22,6 +22,30 @@
       },
       "revId": "5935aa3467ddc8deb8a2115d813ff6c6be4d09a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec6cf285_2281ed70",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-03-21T06:45:43Z",
+      "side": 1,
+      "message": "In the previous change `InitPackageModule()` stores `PackageModule` interface value which wraps an actual struct instance. We need to pass the actual struct instance (in this case, `systemImage`) at L106. \n`packagingBase()` returns an embedded instance of `PackagingBase` struct which is not what we want to store/use for overridable methods.\n\nYeah, simulating OOP (esp. inheritance with overriding..) with Go is somewhat nasty.",
+      "parentUuid": "513d43db_a0abbf9e",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "5935aa3467ddc8deb8a2115d813ff6c6be4d09a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
