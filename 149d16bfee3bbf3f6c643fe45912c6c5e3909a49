@@ -39,6 +39,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5244b318_dc7ef0ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-03-21T06:29:53Z",
+      "side": 1,
+      "message": "Made GatherPackagingSpecs overridable and android_system_image overrides it to discard non-system items from the package.",
+      "parentUuid": "aad7a8c4_be6f9cbb",
+      "revId": "149d16bfee3bbf3f6c643fe45912c6c5e3909a49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fce651ac_4fe8e375",
         "filename": "android/packaging.go",
         "patchSetId": 3
@@ -74,6 +92,30 @@
       "side": 1,
       "message": "Agreed, how about GatherPackagingSpecsForPartition?",
       "parentUuid": "fce651ac_4fe8e375",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 24
+      },
+      "revId": "149d16bfee3bbf3f6c643fe45912c6c5e3909a49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b6b4328_411970c4",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-03-21T06:29:53Z",
+      "side": 1,
+      "message": "Colin, I just made GatherPackagingSpecs overridable. Having a separate GatherPackagingSpecsForPartition would be confusing because for now GatherPackagingSpecs() is used directly/indirectly by PackageModule modules.",
+      "parentUuid": "47a8317c_8ecbc597",
       "range": {
         "startLine": 103,
         "startChar": 1,
