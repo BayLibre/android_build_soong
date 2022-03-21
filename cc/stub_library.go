@@ -127,6 +127,10 @@ func (this *apiStubDecorator) Name(name string) string {
 	return strings.Join([]string{name, this.apiSurfaceProperties.Api_surface_name, importSuffix}, ".")
 }
 
+func (this *apiStubDecorator) androidmkSubName() string {
+	return strings.Join([]string{this.apiSurfaceProperties.Api_surface_name, importSuffix, this.apiLevel.String()}, ".")
+}
+
 // TODO(spandandas): write tests
 func (this *apiStubDecorator) stubGenFlags() string {
 	if this.apiSurfaceProperties.Api_surface_name == "apex" {

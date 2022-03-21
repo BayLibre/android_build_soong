@@ -483,6 +483,10 @@ func (c *stubDecorator) stubGenFlags() string {
 	return ""
 }
 
+func (c *stubDecorator) androidmkSubName() string {
+	return ndkLibrarySuffix + "." + c.apiLevel.String()
+}
+
 func (linker *stubDecorator) linkerDeps(ctx DepsContext, deps Deps) Deps {
 	return Deps{}
 }
