@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd9dafa8_7d7525b5",
+        "filename": "cc/stub_library.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-03-22T02:12:26Z",
+      "side": 1,
+      "message": "+joeo I wanted to put this WIP CL on your radar\n\nThis module type might be useful to import a connected graph of versioned library stubs into consuming API domains.\n\nExample Android.bp file created by the build orchestrator\n```\ncc_api_stub_library {\n\tname: \"foo\",\n\tapi_surface_name: \"ndk\",\n\tsymbol_file: \"foo.map.txt\",\n\tfirst_version: \"29\",\n}\n```",
+      "range": {
+        "startLine": 84,
+        "startChar": 29,
+        "endLine": 84,
+        "endChar": 48
+      },
+      "revId": "e528ba6ad9109eeb173590910dded3952db3e70d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
