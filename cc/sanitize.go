@@ -592,8 +592,20 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	if !sanitize.Properties.SanitizerEnabled && !sanitize.Properties.UbsanRuntimeDep {
 		return flags
 	}
+	if Bool(sanitize.Properties.Sanitize.Hwaddress) {
+		flags.Local.CFlags = append(flags.Local.CFlags, hwasanCflags...)
 
-	if Bool(sanitize.Properties.Sanitize.Address) {
+		for _, flag := range hwasanCommonflags {
+			flags.Local.CFlags = append(flags.Local.CFlags, "-mllvm", flag)
+		}
+		for _, flag := range hwasanCommonflags {
+			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,-mllvm,"+flag)
+		}
+
+		if Bool(sanitize.Properties.Sanitize.Writeonly) {
+			flags.Local.CFlags = append(flags.Local.CFlags, "-mllvm", "-hwasan-instrument-reads=0")
+		}
+	} else if Bool(sanitize.Properties.Sanitize.Address) {
 		if ctx.Arch().ArchType == android.Arm {
 			// Frame pointer based unwinder in ASan requires ARM frame setup.
 			// TODO: put in flags?
@@ -620,21 +632,6 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 			if flags.Toolchain.Is64Bit() {
 				flags.DynamicLinker += "64"
 			}
-		}
-	}
-
-	if Bool(sanitize.Properties.Sanitize.Hwaddress) {
-		flags.Local.CFlags = append(flags.Local.CFlags, hwasanCflags...)
-
-		for _, flag := range hwasanCommonflags {
-			flags.Local.CFlags = append(flags.Local.CFlags, "-mllvm", flag)
-		}
-		for _, flag := range hwasanCommonflags {
-			flags.Local.LdFlags = append(flags.Local.LdFlags, "-Wl,-mllvm,"+flag)
-		}
-
-		if Bool(sanitize.Properties.Sanitize.Writeonly) {
-			flags.Local.CFlags = append(flags.Local.CFlags, "-mllvm", "-hwasan-instrument-reads=0")
 		}
 	}
 
@@ -1080,13 +1077,11 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 
 		diagSanitizers = append(diagSanitizers, c.sanitize.Properties.Sanitize.Diag.Misc_undefined...)
 
-		if Bool(c.sanitize.Properties.Sanitize.Address) {
-			sanitizers = append(sanitizers, "address")
-			diagSanitizers = append(diagSanitizers, "address")
-		}
-
 		if Bool(c.sanitize.Properties.Sanitize.Hwaddress) {
 			sanitizers = append(sanitizers, "hwaddress")
+		} else if Bool(c.sanitize.Properties.Sanitize.Address) {
+			sanitizers = append(sanitizers, "address")
+			diagSanitizers = append(diagSanitizers, "address")
 		}
 
 		if Bool(c.sanitize.Properties.Sanitize.Thread) {
@@ -1160,15 +1155,15 @@ func sanitizerRuntimeMutator(mctx android.BottomUpMutatorContext) {
 		runtimeLibrary := ""
 		var extraStaticDeps []string
 		toolchain := c.toolchain(mctx)
-		if Bool(c.sanitize.Properties.Sanitize.Address) {
-			runtimeLibrary = config.AddressSanitizerRuntimeLibrary(toolchain)
-		} else if Bool(c.sanitize.Properties.Sanitize.Hwaddress) {
-			if c.staticBinary() {
+		if Bool(c.sanitize.Properties.Sanitize.Hwaddress) {
+      if c.staticBinary() {
 				runtimeLibrary = config.HWAddressSanitizerStaticLibrary(toolchain)
 				extraStaticDeps = []string{"libdl"}
 			} else {
 				runtimeLibrary = config.HWAddressSanitizerRuntimeLibrary(toolchain)
 			}
+		} else if Bool(c.sanitize.Properties.Sanitize.Address) {
+			runtimeLibrary = config.AddressSanitizerRuntimeLibrary(toolchain)
 		} else if Bool(c.sanitize.Properties.Sanitize.Thread) {
 			runtimeLibrary = config.ThreadSanitizerRuntimeLibrary(toolchain)
 		} else if Bool(c.sanitize.Properties.Sanitize.Scudo) {
