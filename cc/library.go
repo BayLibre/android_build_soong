@@ -374,6 +374,7 @@ func libraryBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		Stl:                      compilerAttrs.stl,
 		Cpp_std:                  compilerAttrs.cppStd,
 		C_std:                    compilerAttrs.cStd,
+		Use_version_lib:          linkerAttrs.useVersionLib,
 
 		Additional_linker_inputs: linkerAttrs.additionalLinkerInputs,
 

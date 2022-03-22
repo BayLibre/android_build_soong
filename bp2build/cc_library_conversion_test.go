@@ -117,6 +117,7 @@ cc_library {
     include_build_directory: false,
     sdk_version: "current",
     min_sdk_version: "29",
+    use_version_lib: true,
 }
 `,
 		expectedBazelTargets: makeCcLibraryTargets("foo-lib", attrNameToString{
@@ -142,8 +143,9 @@ cc_library {
         "//build/bazel/platforms/os:linux_bionic": ["bionic.cpp"],
         "//conditions:default": [],
     })`,
-      "sdk_version": `"current"`,
-      "min_sdk_version": `"29"`,
+			"sdk_version":     `"current"`,
+			"min_sdk_version": `"29"`,
+			"use_version_lib": `True`,
 		}),
 	})
 }
@@ -1299,6 +1301,7 @@ func makeCcLibraryTargets(name string, attrs attrNameToString) []string {
 		"stubs_symbol_file":        true,
 		"stubs_versions":           true,
 		"inject_bssl_hash":         true,
+		"use_version_lib":          true,
 	}
 	sharedAttrs := attrNameToString{}
 	staticAttrs := attrNameToString{}
