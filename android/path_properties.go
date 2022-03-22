@@ -40,26 +40,49 @@ func pathDepsMutator(ctx BottomUpMutatorContext) {
 func addPathDepsForProps(ctx BottomUpMutatorContext, props []interface{}) {
 	// Iterate through each property struct of the module extracting the contents of all properties
 	// tagged with `android:"path"`.
-	var pathProperties []string
+	var stringProperties []*string
+	var stringSliceProperties []*[]string
 	for _, ps := range props {
-		pathProperties = append(pathProperties, pathPropertiesForPropertyStruct(ps)...)
+		sp, ssp := pathPropertiesForPropertyStruct(ps)
+		stringProperties = append(stringProperties, sp...)
+		stringSliceProperties = append(stringSliceProperties, ssp...)
 	}
 
 	// Remove duplicates to avoid multiple dependencies.
-	pathProperties = FirstUniqueStrings(pathProperties)
+	// TODO: pathProperties = FirstUniqueStrings(pathProperties)
 
-	// Add dependencies to anything that is a module reference.
-	for _, s := range pathProperties {
-		if m, t := SrcIsModuleWithTag(s); m != "" {
-			ctx.AddDependency(ctx.Module(), sourceOrOutputDepTag(m, t), m)
+	// Add dependencies to anything that is a module reference.  Attempt to expand each one
+	// immediately if it is an ImmediateSourceFileProducer.
+	for _, sp := range stringProperties {
+		if m, t := SrcIsModuleWithTag(*sp); m != "" {
+			dep := ctx.AddDependency(ctx.Module(), sourceOrOutputDepTag(m, t), m)
+			if paths, ok := expandOneImmediateSrcPath(dep[0]); ok {
+				if len(paths) == 1 {
+					*sp = paths[0]
+				} else {
+					// ignore errors, they will be left unexpanded and reported later when they are
+					// expanded by PathForModuleSrc.
+				}
+			}
+		}
+	}
+
+	for _, ssp := range stringSliceProperties {
+		for i := 0; i < len(*ssp); i++ {
+			if m, t := SrcIsModuleWithTag((*ssp)[i]); m != "" {
+				dep := ctx.AddDependency(ctx.Module(), sourceOrOutputDepTag(m, t), m)
+				if paths, ok := expandOneImmediateSrcPath(dep[0]); ok {
+					*ssp = append(append((*ssp)[:i], paths...), (*ssp)[i+1:]...)
+				}
+			}
 		}
 	}
 }
 
 // pathPropertiesForPropertyStruct uses the indexes of properties that are tagged with
-// android:"path" to extract all their values from a property struct, returning them as a single
-// slice of strings.
-func pathPropertiesForPropertyStruct(ps interface{}) []string {
+// android:"path" to extract all their values from a property struct, returning them as a list of
+// pointers to strings and a list of pointers to string slices.
+func pathPropertiesForPropertyStruct(ps interface{}) (stringProperties []*string, stringSliceProperties []*[]string) {
 	v := reflect.ValueOf(ps)
 	if v.Kind() != reflect.Ptr || v.Elem().Kind() != reflect.Struct {
 		panic(fmt.Errorf("type %s is not a pointer to a struct", v.Type()))
@@ -67,7 +90,7 @@ func pathPropertiesForPropertyStruct(ps interface{}) []string {
 
 	// If the property struct is a nil pointer it can't have any paths set in it.
 	if v.IsNil() {
-		return nil
+		return nil, nil
 	}
 
 	// v is now the reflect.Value for the concrete property struct.
@@ -75,8 +98,6 @@ func pathPropertiesForPropertyStruct(ps interface{}) []string {
 
 	// Get or create the list of indexes of properties that are tagged with `android:"path"`.
 	pathPropertyIndexes := pathPropertyIndexesForPropertyStruct(ps)
-
-	var ret []string
 
 	for _, i := range pathPropertyIndexes {
 		var values []reflect.Value
@@ -98,9 +119,9 @@ func pathPropertiesForPropertyStruct(ps interface{}) []string {
 			// Collect paths from all strings and slices of strings.
 			switch sv.Kind() {
 			case reflect.String:
-				ret = append(ret, sv.String())
+				stringProperties = append(stringProperties, sv.Addr().Interface().(*string))
 			case reflect.Slice:
-				ret = append(ret, sv.Interface().([]string)...)
+				stringSliceProperties = append(stringSliceProperties, sv.Addr().Interface().(*[]string))
 			default:
 				panic(fmt.Errorf(`field %s in type %s has tag android:"path" but is not a string or slice of strings, it is a %s`,
 					v.Type().FieldByIndex(i).Name, v.Type(), sv.Type()))
@@ -108,7 +129,7 @@ func pathPropertiesForPropertyStruct(ps interface{}) []string {
 		}
 	}
 
-	return ret
+	return stringProperties, stringSliceProperties
 }
 
 // fieldsByIndex is similar to reflect.Value.FieldByIndex, but is more robust: it doesn't track

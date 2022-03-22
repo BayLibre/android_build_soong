@@ -681,6 +681,23 @@ func expandOneSrcPath(input sourcePathInput) (Paths, error) {
 	}
 }
 
+// expandOneImmediateSrcPath returns the sources provided by module if it is an
+// ImmediateSourceFileProducer for which ImmediateSrcs returns true.  It is called by the path
+// property mutator in order to expand filegroups before the deps mutators.
+func expandOneImmediateSrcPath(module blueprint.Module) (Paths, bool) {
+	if immediateSrcProducer, ok := module.(ImmediateSourceFileProducer); ok {
+		if _, ok := module.(OutputFileProducer); ok {
+			// expandOneSrcPath handles OutputFileProducers first, which would produce inconsistent
+			// results if ImmediateSourceFileProducer were sometimes handled here.
+			panic(fmt.Errorf("module %q (%T) is both a ImmediateSourceFileProducer and an OutputFileProducer", module, module))
+		}
+		if immediateSrcProducer.ImmediateSrcs() {
+			return immediateSrcProducer.Srcs(), true
+		}
+	}
+	return nil, false
+}
+
 // pathsForModuleSrcFromFullPath returns Paths rooted from the module's local
 // source directory, but strip the local source directory from the beginning of
 // each string. If incDirs is false, strip paths with a trailing '/' from the list.
