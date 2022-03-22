@@ -46,6 +46,30 @@
       },
       "revId": "cd4c25ffe8239b5ee24336e77b68227e270623bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00be47d9_841760de",
+        "filename": "python/python.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-22T18:29:58Z",
+      "side": 1,
+      "message": "Yes.\n\nBut I think I know what\u0027s happened here:\n\nAccording to the dump of properties set for python modules: `Target.Darwin.Enabled`  is specified in Android.bp files but `Enabled` never is, which is why it silently worked previously.\n\nunpack.go seems to be fine: https://r.android.com/2026804",
+      "parentUuid": "b7284514_d556377a",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 14
+      },
+      "revId": "cd4c25ffe8239b5ee24336e77b68227e270623bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
