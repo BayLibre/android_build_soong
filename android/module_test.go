@@ -563,6 +563,11 @@ type PropsTestModuleEmbedded struct {
 	Embedded_prop *string
 }
 
+type StructInSlice struct {
+	G string
+	H bool
+}
+
 type propsTestModule struct {
 	ModuleBase
 	DefaultableModuleBase
@@ -579,6 +584,8 @@ type propsTestModule struct {
 			E *string
 		}
 		F *string `blueprint:"mutated"`
+
+		Slice_of_struct []StructInSlice
 	}
 }
 
@@ -621,7 +628,7 @@ func TestUsedProperties(t *testing.T) {
 		}
 	`,
 			expectedProps: []propInfo{
-				propInfo{"Name", "string"},
+				propInfo{"Name", "string", `"foo"`},
 			},
 		},
 		{
@@ -634,10 +641,10 @@ func TestUsedProperties(t *testing.T) {
 		}
 	`,
 			expectedProps: []propInfo{
-				propInfo{"A", "string"},
-				propInfo{"B", "bool"},
-				propInfo{"D", "int64"},
-				propInfo{"Name", "string"},
+				propInfo{"A", "string", `"abc"`},
+				propInfo{"B", "bool", "true"},
+				propInfo{"D", "int64", "123"},
+				propInfo{"Name", "string", `"foo"`},
 			},
 		},
 		{
@@ -650,10 +657,10 @@ func TestUsedProperties(t *testing.T) {
 	`,
 			expectedProps: []propInfo{
 				// for non-pointer cannot distinguish between unused and intentionally set to empty
-				propInfo{"A", "string"},
-				propInfo{"B", "bool"},
-				propInfo{"D", "int64"},
-				propInfo{"Name", "string"},
+				propInfo{"A", "string", `""`},
+				propInfo{"B", "bool", "true"},
+				propInfo{"D", "int64", "123"},
+				propInfo{"Name", "string", `"foo"`},
 			},
 		},
 		{
@@ -666,8 +673,8 @@ func TestUsedProperties(t *testing.T) {
 		}
 	`,
 			expectedProps: []propInfo{
-				propInfo{"Nested.E", "string"},
-				propInfo{"Name", "string"},
+				propInfo{"Name", "string", `"foo"`},
+				propInfo{"Nested.E", "string", `"abc"`},
 			},
 		},
 		{
@@ -682,8 +689,8 @@ func TestUsedProperties(t *testing.T) {
 		}
 	`,
 			expectedProps: []propInfo{
-				propInfo{"Name", "string"},
-				propInfo{"Arch.X86_64.A", "string"},
+				propInfo{"Arch.X86_64.A", "string", `"abc"`},
+				propInfo{"Name", "string", `"foo"`},
 			},
 		},
 		{
@@ -694,8 +701,29 @@ func TestUsedProperties(t *testing.T) {
 		}
 	`,
 			expectedProps: []propInfo{
-				propInfo{"Embedded_prop", "string"},
-				propInfo{"Name", "string"},
+				propInfo{"Embedded_prop", "string", `"a"`},
+				propInfo{"Name", "string", `"foo"`},
+			},
+		},
+		{
+			desc: "struct slice",
+			bp: `test {
+			name: "foo",
+			slice_of_struct: [
+				{
+					g: "abc",
+					h: false,
+				},
+				{
+					g: "def",
+					h: true,
+				},
+			]
+		}
+	`,
+			expectedProps: []propInfo{
+				propInfo{"Name", "string", `"foo"`},
+				propInfo{"Slice_of_struct", "struct slice", `android.StructInSlice{G: "abc", H: false}, android.StructInSlice{G: "def", H: true}`},
 			},
 		},
 		{
@@ -705,19 +733,20 @@ test_defaults {
 	name: "foo_defaults",
 	a: "a",
 	b: true,
+	c: ["default_c"],
 	embedded_prop:"a",
 	arch: {
 		x86_64: {
-			a: "a",
+			a: "x86_64 a",
 		},
 	},
 }
 test {
 	name: "foo",
 	defaults: ["foo_defaults"],
-	c: ["a"],
+	c: ["c"],
 	nested: {
-		e: "d",
+		e: "nested e",
 	},
 	target: {
 		linux: {
@@ -727,15 +756,15 @@ test {
 }
 	`,
 			expectedProps: []propInfo{
-				propInfo{"A", "string"},
-				propInfo{"B", "bool"},
-				propInfo{"C", "string slice"},
-				propInfo{"Embedded_prop", "string"},
-				propInfo{"Nested.E", "string"},
-				propInfo{"Name", "string"},
-				propInfo{"Arch.X86_64.A", "string"},
-				propInfo{"Target.Linux.A", "string"},
-				propInfo{"Defaults", "string slice"},
+				propInfo{"A", "string", `"a"`},
+				propInfo{"Arch.X86_64.A", "string", `"x86_64 a"`},
+				propInfo{"B", "bool", "true"},
+				propInfo{"C", "string slice", `"default_c", "c"`},
+				propInfo{"Defaults", "string slice", `"foo_defaults"`},
+				propInfo{"Embedded_prop", "string", `"a"`},
+				propInfo{"Name", "string", `"foo"`},
+				propInfo{"Nested.E", "string", `"nested e"`},
+				propInfo{"Target.Linux.A", "string", `"a"`},
 			},
 		},
 	}
