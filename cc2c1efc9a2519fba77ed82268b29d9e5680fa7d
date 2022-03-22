@@ -16,6 +16,24 @@
       "message": "This seems like something we could forbid in Soong too.",
       "revId": "cc2c1efc9a2519fba77ed82268b29d9e5680fa7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8609e47f_0ca56a7a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-22T18:21:09Z",
+      "side": 1,
+      "message": "Yeah, I was thinking the same (potentially as a new to the team cleanup project), but I was going to start here to unblock builds in Bazel until we can cleanup .bp files.",
+      "parentUuid": "c7e023e8_2fac61dd",
+      "revId": "cc2c1efc9a2519fba77ed82268b29d9e5680fa7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
