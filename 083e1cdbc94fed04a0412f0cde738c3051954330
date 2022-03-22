@@ -34,6 +34,24 @@
       "parentUuid": "157c93f5_81eac880",
       "revId": "083e1cdbc94fed04a0412f0cde738c3051954330",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20bce24e_5cd62d24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2022-03-22T22:29:04Z",
+      "side": 1,
+      "message": "No, it\u0027s for all of them. See line 322 where it adds mte-sync to all test targets regardless of the global sanitizers.",
+      "parentUuid": "e3584e46_cbad063f",
+      "revId": "083e1cdbc94fed04a0412f0cde738c3051954330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
