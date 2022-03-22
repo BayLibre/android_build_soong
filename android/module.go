@@ -3420,6 +3420,16 @@ type SourceFileProducer interface {
 	Srcs() Paths
 }
 
+// A module that implements ImmediateSourceFileProducer can be referenced from any property that is tagged with `android:"path"`
+// using the ":module" syntax and provides a list of paths to be used as if they were listed in the property.
+// It implements SourceFileProducer as well as an extra method to determine if the output source list is already
+// known and can be expanded early during the path property mutator.  This can be useful so that deps mutators
+// can know the extensions of source files, for example to know if there are any kotlin sources in a module.
+type ImmediateSourceFileProducer interface {
+	SourceFileProducer
+	ImmediateSrcs() bool
+}
+
 // A module that implements OutputFileProducer can be referenced from any property that is tagged with `android:"path"`
 // using the ":module" syntax or ":module{.tag}" syntax and provides a list of output files to be used as if they were
 // listed in the property.

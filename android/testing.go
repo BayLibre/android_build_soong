@@ -43,7 +43,7 @@ func NewTestContext(config Config) *TestContext {
 
 	ctx.SetNameInterface(nameResolver)
 
-	ctx.postDeps = append(ctx.postDeps, registerPathDepsMutator)
+	ctx.preDeps = append(ctx.preDeps, registerPathDepsMutator)
 
 	ctx.SetFs(ctx.config.fs)
 	if ctx.config.mockBpList != "" {
@@ -170,9 +170,12 @@ var PrepareForTestDisallowNonExistentPaths = FixtureModifyConfig(func(config Con
 	config.TestAllowNonExistentPaths = false
 })
 
+// NewTestArchContext returns a TestContext that has the arch mutator registered.
 func NewTestArchContext(config Config) *TestContext {
 	ctx := NewTestContext(config)
-	ctx.preDeps = append(ctx.preDeps, registerArchMutator)
+	// Prepend registerArchMutator to preDeps so that it is before registerPathDepsMutator,
+	// which was already registered by NewTestContext.
+	ctx.preDeps = append([]RegisterMutatorFunc{registerArchMutator}, ctx.preDeps...)
 	return ctx
 }
 
