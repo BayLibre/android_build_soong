@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "157c93f5_81eac880",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2022-03-22T19:54:52Z",
+      "side": 1,
+      "message": "This should have been prevented by https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/sanitize.go;l\u003d541;drc\u003d5c8693f5d79705e2d0c52f67d0908b3a0d2ea159\n\nAny idea why that\u0027s not enough?",
+      "revId": "083e1cdbc94fed04a0412f0cde738c3051954330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
