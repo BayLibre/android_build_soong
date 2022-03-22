@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "453d497b_54e585a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 37
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-22T14:56:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29db6046_69d2649f",
+      "revId": "ee953909969c45a33921aa3248fde664ed4ab73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e34cbcd_130195b9",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-17T21:46:09Z",
       "side": 1,
       "message": "Perhaps we should also mention the Exports part?",
+      "range": {
+        "startLine": 60,
+        "startChar": 39,
+        "endLine": 60,
+        "endChar": 44
+      },
+      "revId": "ee953909969c45a33921aa3248fde664ed4ab73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11afd2fd_013834d3",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-22T14:56:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e34cbcd_130195b9",
       "range": {
         "startLine": 60,
         "startChar": 39,
@@ -66,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3dd84468_435c4000",
+        "filename": "java/app.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 1472,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-22T14:56:05Z",
+      "side": 1,
+      "message": "I don\u0027t think I have yet.",
+      "parentUuid": "522da073_b15b24f5",
+      "range": {
+        "startLine": 1470,
+        "startChar": 2,
+        "endLine": 1472,
+        "endChar": 43
+      },
+      "revId": "ee953909969c45a33921aa3248fde664ed4ab73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d77a554d_e02873aa",
         "filename": "java/java.go",
         "patchSetId": 37
@@ -77,6 +143,30 @@
       "writtenOn": "2022-03-17T21:46:09Z",
       "side": 1,
       "message": "This change seems unrelated to the static_deps handling, let\u0027s split it out?\n\ngo/small-cls recommends: \"The CL makes a minimal change that addresses just one thing.\"",
+      "range": {
+        "startLine": 2009,
+        "startChar": 0,
+        "endLine": 2009,
+        "endChar": 35
+      },
+      "revId": "ee953909969c45a33921aa3248fde664ed4ab73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a03f3416_5d8dd7b5",
+        "filename": "java/java.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 2009,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-22T14:56:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d77a554d_e02873aa",
       "range": {
         "startLine": 2009,
         "startChar": 0,
@@ -110,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ab4f2f6_ce6f9a7f",
+        "filename": "java/java.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-22T14:56:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a34eacf_a59524be",
+      "range": {
+        "startLine": 2066,
+        "startChar": 1,
+        "endLine": 2066,
+        "endChar": 29
+      },
+      "revId": "ee953909969c45a33921aa3248fde664ed4ab73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd29b312_9ae50dd7",
@@ -123,6 +237,30 @@
       "writtenOn": "2022-03-17T21:46:09Z",
       "side": 1,
       "message": "do we have any tests for this change?",
+      "range": {
+        "startLine": 2119,
+        "startChar": 5,
+        "endLine": 2119,
+        "endChar": 27
+      },
+      "revId": "ee953909969c45a33921aa3248fde664ed4ab73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c90dd419_a4e6fe66",
+        "filename": "java/java.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 2119,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-22T14:56:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd29b312_9ae50dd7",
       "range": {
         "startLine": 2119,
         "startChar": 5,
