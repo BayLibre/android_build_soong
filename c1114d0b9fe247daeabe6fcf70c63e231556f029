@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ecc748b_a35859aa",
+        "filename": "cmd/symbols_map/symbols_map_proto/symbols_map.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1079753
+      },
+      "writtenOn": "2022-03-22T18:28:35Z",
+      "side": 1,
+      "message": "what\u0027s the format of this field? Is this relative to the local build output or the build artifacts that are stored? What if the symbols file is inside of a zip?",
+      "revId": "c1114d0b9fe247daeabe6fcf70c63e231556f029",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a62639da_6b3d470f",
+        "filename": "cmd/symbols_map/symbols_map_proto/symbols_map.proto",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1079753
+      },
+      "writtenOn": "2022-03-22T18:28:35Z",
+      "side": 1,
+      "message": "what is this? e.g. elf id, r8, etc? Should it be an enum?",
+      "revId": "c1114d0b9fe247daeabe6fcf70c63e231556f029",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
