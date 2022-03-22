@@ -16,6 +16,24 @@
       "message": "This should have been prevented by https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/sanitize.go;l\u003d541;drc\u003d5c8693f5d79705e2d0c52f67d0908b3a0d2ea159\n\nAny idea why that\u0027s not enough?",
       "revId": "083e1cdbc94fed04a0412f0cde738c3051954330",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3584e46_cbad063f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1268571
+      },
+      "writtenOn": "2022-03-22T20:39:40Z",
+      "side": 1,
+      "message": "AFAICT this is only for the global sanitizers, not for the per module ones. What we have is a global hwasan sanitizer, and a per-module asan, which gets handled here: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/sanitize.go;l\u003d1330;drc\u003d5e464147c7ae8768bec275262571e268866ac00e\n\nAlso I think there is some race condition depending on the order of those two, because I cannot reproduce this on my incremental build anymore. But it happened before locally as well.",
+      "parentUuid": "157c93f5_81eac880",
+      "revId": "083e1cdbc94fed04a0412f0cde738c3051954330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
