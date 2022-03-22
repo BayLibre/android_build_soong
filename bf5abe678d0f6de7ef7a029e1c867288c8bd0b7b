@@ -70,6 +70,24 @@
       "parentUuid": "34fa9750_75c97a88",
       "revId": "bf5abe678d0f6de7ef7a029e1c867288c8bd0b7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "967e108c_b713378f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-03-22T00:51:40Z",
+      "side": 1,
+      "message": "oops, turns out I had 4.2.1 in /usr/local/bin.",
+      "parentUuid": "9a55102c_01f80ac6",
+      "revId": "bf5abe678d0f6de7ef7a029e1c867288c8bd0b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
