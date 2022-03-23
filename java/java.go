@@ -2027,6 +2027,7 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 type javaResourcesAttributes struct {
 	Resources             bazel.LabelListAttribute
 	Resource_strip_prefix *string
+	Jarjar_rules          *string
 }
 
 func (m *Library) convertJavaResourcesAttributes(ctx android.TopDownMutatorContext) *javaResourcesAttributes {
@@ -2118,6 +2119,12 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		Plugins: bazel.MakeLabelListAttribute(
 			android.BazelLabelForModuleDeps(ctx, m.properties.Plugins),
 		),
+<<<<<<< HEAD
+=======
+		Resources:             bazel.MakeLabelListAttribute(resources),
+		Resource_strip_prefix: resourceStripPrefix,
+		Jarjar_rules:          m.properties.Jarjar_rules,
+>>>>>>> f1b68d5ce (convert jarjar_rules with bp2build)
 	}
 
 	if m.properties.Javacflags != nil {
