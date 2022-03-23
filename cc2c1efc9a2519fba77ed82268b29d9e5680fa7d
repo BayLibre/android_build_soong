@@ -34,6 +34,23 @@
       "parentUuid": "c7e023e8_2fac61dd",
       "revId": "cc2c1efc9a2519fba77ed82268b29d9e5680fa7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f45db060_5f130472",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1124746
+      },
+      "writtenOn": "2022-03-23T17:26:06Z",
+      "side": 1,
+      "message": "just curious: does it matter which one should take the precedence?",
+      "revId": "cc2c1efc9a2519fba77ed82268b29d9e5680fa7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
