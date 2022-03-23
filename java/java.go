@@ -2025,9 +2025,11 @@ func addCLCFromDep(ctx android.ModuleContext, depModule android.Module,
 }
 
 type javaCommonAttributes struct {
-	Srcs      bazel.LabelListAttribute
-	Plugins   bazel.LabelListAttribute
-	Javacopts bazel.StringListAttribute
+	Srcs                  bazel.LabelListAttribute
+	Plugins               bazel.LabelListAttribute
+	Javacopts             bazel.StringListAttribute
+	Resources             bazel.LabelListAttribute
+	Resource_strip_prefix *string
 }
 
 type javaDependencyLabels struct {
@@ -2060,11 +2062,28 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		protoSrcPartition: android.ProtoSrcLabelPartition,
 	})
 
+	var resources bazel.LabelList
+	var resourceStripPrefix *string
+	if m.properties.Java_resources != nil {
+		resources.Append(android.BazelLabelForModuleSrc(ctx, m.properties.Java_resources))
+	}
+	for i, dir := range m.properties.Java_resource_dirs {
+		resources.Append(android.BazelLabelForModuleSrc(ctx, []string{dir + "/**/*"}))
+		// Bazel includes the relative path from the WORKSPACE root in the resource path, so strip it out
+		resourceStripPrefix = proptools.StringPtr(ctx.ModuleDir() + "/" + dir)
+		if i > 0 {
+			// TODO(b/226423379) allow multiple resource prefixes
+			ctx.ModuleErrorf("bp2build does not support more than one directory in java_resource_dirs (b/226423379)")
+		}
+	}
+
 	commonAttrs := &javaCommonAttributes{
 		Srcs: srcPartitions[javaSrcPartition],
 		Plugins: bazel.MakeLabelListAttribute(
 			android.BazelLabelForModuleDeps(ctx, m.properties.Plugins),
 		),
+		Resources:             bazel.MakeLabelListAttribute(resources),
+		Resource_strip_prefix: resourceStripPrefix,
 	}
 
 	if m.properties.Javacflags != nil {
