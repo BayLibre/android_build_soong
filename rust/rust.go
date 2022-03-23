@@ -27,6 +27,7 @@ import (
 	cc_config "android/soong/cc/config"
 	"android/soong/fuzz"
 	"android/soong/rust/config"
+	"android/soong/snapshot"
 )
 
 var pctx = android.NewPackageContext("android/soong/rust")
@@ -806,6 +807,13 @@ func (mod *Module) Installable() *bool {
 	return mod.Properties.Installable
 }
 
+func (mod *Module) ProcMacro() bool {
+	if pm, ok := mod.compiler.(procMacroInterface); ok {
+		return pm.ProcMacro()
+	}
+	return false
+}
+
 func (mod *Module) toolchain(ctx android.BaseModuleContext) config.Toolchain {
 	if mod.cachedToolchain == nil {
 		mod.cachedToolchain = config.FindToolchain(ctx.Os(), ctx.Arch())
@@ -1046,7 +1054,7 @@ func (mod *Module) begin(ctx BaseModuleContext) {
 }
 
 func (mod *Module) Prebuilt() *android.Prebuilt {
-	if p, ok := mod.compiler.(*prebuiltLibraryDecorator); ok {
+	if p, ok := mod.compiler.(rustPrebuilt); ok {
 		return p.prebuilt()
 	}
 	return nil
@@ -1501,6 +1509,7 @@ func (mod *Module) disableClippy() {
 }
 
 var _ android.HostToolProvider = (*Module)(nil)
+var _ snapshot.RelativeInstallPath = (*Module)(nil)
 
 func (mod *Module) HostToolPath() android.OptionalPath {
 	if !mod.Host() {
@@ -1508,6 +1517,10 @@ func (mod *Module) HostToolPath() android.OptionalPath {
 	}
 	if binary, ok := mod.compiler.(*binaryDecorator); ok {
 		return android.OptionalPathForPath(binary.baseCompiler.path)
+	} else if pm, ok := mod.compiler.(*procMacroDecorator); ok {
+		// Even though proc-macros aren't strictly "tools", since they target the compiler
+		// and act as compiler plugins, we treat them similarly.
+		return android.OptionalPathForPath(pm.baseCompiler.path)
 	}
 	return android.OptionalPath{}
 }

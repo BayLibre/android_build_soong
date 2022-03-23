@@ -33,6 +33,7 @@ type procMacroDecorator struct {
 }
 
 type procMacroInterface interface {
+	ProcMacro() bool
 }
 
 var _ compiler = (*procMacroDecorator)(nil)
@@ -90,7 +91,6 @@ func (procMacro *procMacroDecorator) autoDep(ctx android.BottomUpMutatorContext)
 	return rlibAutoDep
 }
 
-func (procMacro *procMacroDecorator) everInstallable() bool {
-	// Proc_macros are never installed
-	return false
+func (procMacro *procMacroDecorator) ProcMacro() bool {
+	return true
 }
