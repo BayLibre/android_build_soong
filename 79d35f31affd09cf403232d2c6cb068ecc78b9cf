@@ -16,6 +16,23 @@
       "message": "+zerny for r8 dictionary header parsing, +cparsons for review",
       "revId": "79d35f31affd09cf403232d2c6cb068ecc78b9cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd6ea373_c1d85262",
+        "filename": "cmd/symbols_map/r8.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2022-03-23T09:27:23Z",
+      "side": 1,
+      "message": "This should rather grab the map hash field, for example:\n\n  # pg_map_hash: SHA-256 15ca445078228571ed58ab73cfcb13775bbddd70b6d1c3cb01d5d3c78f90cbaa\n\nAdded some info on the header here:\nhttps://docs.google.com/document/d/1xiR-ft_Qugz302Pd7qs-humDm7D6h6muQWC8fPQcq7Q/edit?resourcekey\u003d0-hojOp3VPGQBNXiXqJ4o1og#heading\u003dh.obff5lmzftq1",
+      "revId": "79d35f31affd09cf403232d2c6cb068ecc78b9cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
