@@ -2011,6 +2011,7 @@ type javaCommonAttributes struct {
 	Javacopts             bazel.StringListAttribute
 	Resources             bazel.LabelListAttribute
 	Resource_strip_prefix *string
+	Jarjar_rules          *string
 }
 
 type javaDependencyLabels struct {
@@ -2061,6 +2062,7 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		),
 		Resources:             bazel.MakeLabelListAttribute(resources),
 		Resource_strip_prefix: resourceStripPrefix,
+		Jarjar_rules:          m.properties.Jarjar_rules,
 	}
 
 	if m.properties.Javacflags != nil {
