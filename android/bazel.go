@@ -309,6 +309,7 @@ var (
 		"external/icu":                                       Bp2BuildDefaultTrueRecursively,
 		"external/icu/android_icu4j":                         Bp2BuildDefaultFalse, // java rules incomplete
 		"external/icu/icu4j":                                 Bp2BuildDefaultFalse, // java rules incomplete
+		"external/jarjar":                                    Bp2BuildDefaultTrueRecursively,
 		"external/javapoet":                                  Bp2BuildDefaultTrueRecursively,
 		"external/jemalloc_new":                              Bp2BuildDefaultTrueRecursively,
 		"external/jsoncpp":                                   Bp2BuildDefaultTrueRecursively,
@@ -579,6 +580,8 @@ var (
 		"simpleperf_ndk",
 		"toybox-static",
 		"zlib_bench",
+
+		"auto_value_plugin_resources", // b/210751803, we don't handle path property for filegroups
 	}
 
 	// Used for quicker lookups
