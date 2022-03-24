@@ -25,6 +25,7 @@ var (
 		"packages/modules/Uwb",
 		"packages/modules/Virtualization",
 		"prebuilts/rust",
+		"system/core/debuggerd/tombstoned/rust",
 		"system/core/libstats/pull_rust",
 		"system/extras/profcollectd",
 		"system/extras/simpleperf",
