@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21bf2efc_dc559f80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-24T21:40:57Z",
+      "side": 1,
+      "message": "A dependency of the app that I used to test this (frameworks/ex/common:android_common) requires SDK version 8, and we don\u0027t yet support SDKs other than public_current.",
+      "revId": "6329a06152cf8079497baf957efcf92bc5066993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
