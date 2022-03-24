@@ -445,6 +445,9 @@ func (fuzz *fuzzBinary) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 
 func (test *testLibrary) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
 	ctx.subAndroidMk(entries, test.libraryDecorator)
+	if len(test.Properties.Test_suites) > 0 {
+		entries.AddCompatibilityTestSuites(test.Properties.Test_suites...)
+	}
 }
 
 func (installer *baseInstaller) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
