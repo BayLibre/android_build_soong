@@ -599,7 +599,6 @@ func (a *AndroidMkEntries) fillInEntries(ctx fillInEntriesContext, mod blueprint
 	if len(base.noticeFiles) > 0 {
 		a.SetString("LOCAL_NOTICE_FILE", strings.Join(base.noticeFiles.Strings(), " "))
 	}
-
 	if host {
 		makeOs := base.Os().String()
 		if base.Os() == Linux || base.Os() == LinuxBionic || base.Os() == LinuxMusl {
@@ -907,7 +906,6 @@ func translateAndroidMkEntriesModule(ctx SingletonContext, w io.Writer, mod blue
 		entries.fillInEntries(ctx, mod)
 		entries.write(w)
 	}
-
 	return nil
 }
 

@@ -1122,6 +1122,7 @@ func (c *Module) VndkVersion() string {
 }
 
 func (c *Module) Init() android.Module {
+	//println(fmt.Sprintf("MODULE_INIT: %s\n", c.Module().Name()))
 	c.AddProperties(&c.Properties, &c.VendorProperties)
 	if c.compiler != nil {
 		c.AddProperties(c.compiler.compilerProps()...)
@@ -3595,7 +3596,7 @@ func DefaultsFactory(props ...interface{}) android.Module {
 		&SharedProperties{},
 		&FlagExporterProperties{},
 		&BinaryLinkerProperties{},
-		&TestProperties{},
+		&TestLinkerProperties{},
 		&TestBinaryProperties{},
 		&BenchmarkProperties{},
 		&fuzz.FuzzProperties{},
