@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d8b76e_80960c8a",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1470,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-24T15:12:50Z",
+      "side": 1,
+      "message": "The use case for structs in a list is quite rare (afaik, Dists is only the property that uses a slice of structs), whereas slices of strings are quite common.\n\nI separated this into Values for slices as I think querying on elements of a slice will be a very common use case. As such\n1. needing to split a string to query on the values each time would be frustrating\n2. potentially more errorprone (e.g. splitting on `\u0027,\u0027` rather than `\u0027, \u0027`, the results may have slightly incorrect results)\n\nwdyt?",
+      "parentUuid": "88a56207_3bb1f00e",
+      "revId": "079530a27ff3148d2c3a3be5b641e209c729c8cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a6c57be_6c3d4223",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-03-24T14:27:18Z",
       "side": 1,
       "message": "See above about `Values`",
+      "revId": "079530a27ff3148d2c3a3be5b641e209c729c8cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33d6011c_eba3acb4",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-24T15:12:50Z",
+      "side": 1,
+      "message": "Responded above",
+      "parentUuid": "0a6c57be_6c3d4223",
       "revId": "079530a27ff3148d2c3a3be5b641e209c729c8cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
