@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4438b40d_21a19397",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-03-24T14:58:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6fc3fff_150e8aa2",
+      "range": {
+        "startLine": 322,
+        "startChar": 70,
+        "endLine": 322,
+        "endChar": 94
+      },
+      "revId": "e2d8e0297868a09e1865a259a3cc9a751d8ddcce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b27c57bf_4df745bc",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-23T18:46:02Z",
       "side": 1,
       "message": "To avoid having to plumb ctx everywhere is there somewhere you could initialize the AndroidMkEntries to have DeviceProduct stored in a field?",
+      "range": {
+        "startLine": 422,
+        "startChar": 38,
+        "endLine": 422,
+        "endChar": 67
+      },
+      "revId": "e2d8e0297868a09e1865a259a3cc9a751d8ddcce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "756eb594_1e18f6d8",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-03-24T14:58:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b27c57bf_4df745bc",
       "range": {
         "startLine": 422,
         "startChar": 38,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a4f134a_fde46cc2",
+        "filename": "android/androidmk_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-03-24T14:58:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f390168_3ba47e49",
+      "range": {
+        "startLine": 266,
+        "startChar": 54,
+        "endLine": 266,
+        "endChar": 57
+      },
+      "revId": "e2d8e0297868a09e1865a259a3cc9a751d8ddcce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33c4f818_3ce71e28",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-03-23T18:46:02Z",
       "side": 1,
       "message": "I worry that passing nil here will mean everything works fine until somebody adds append_artifact_with_product: true to an apex  module, and then they get a panic.",
+      "range": {
+        "startLine": 420,
+        "startChar": 57,
+        "endLine": 420,
+        "endChar": 60
+      },
+      "revId": "e2d8e0297868a09e1865a259a3cc9a751d8ddcce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "611455d1_98253e6c",
+        "filename": "apex/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-03-24T14:58:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33c4f818_3ce71e28",
       "range": {
         "startLine": 420,
         "startChar": 57,
