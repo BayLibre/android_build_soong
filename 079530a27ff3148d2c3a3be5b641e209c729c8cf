@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cefe905_a76e8dfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-24T14:27:18Z",
+      "side": 1,
+      "message": "Very excited for values in the module graph 😄.",
+      "revId": "079530a27ff3148d2c3a3be5b641e209c729c8cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88a56207_3bb1f00e",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1470,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-24T14:27:18Z",
+      "side": 1,
+      "message": "Nit: Could we just have a single Value property with type `string` here instead of having two properties which cover the same data. Since we format structs to a string before returning from `reflectionValue`, we could do the same thing for slices with `fmt.Sprintf(\"[%s]\", strings.Join(vals, \", \"))` inside the `reflectionValue` function.\n\nI might just be missing the use case for the `Values` property though.",
+      "revId": "079530a27ff3148d2c3a3be5b641e209c729c8cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a6c57be_6c3d4223",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-24T14:27:18Z",
+      "side": 1,
+      "message": "See above about `Values`",
+      "revId": "079530a27ff3148d2c3a3be5b641e209c729c8cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
