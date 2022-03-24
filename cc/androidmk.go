@@ -56,24 +56,32 @@ type subAndroidMkProvider interface {
 }
 
 func (c *Module) subAndroidMk(entries *android.AndroidMkEntries, obj interface{}) {
+	fmt.Printf("SUBANDROIDMK %s 1\n", c.Name())
 	if c.subAndroidMkOnce == nil {
 		c.subAndroidMkOnce = make(map[subAndroidMkProvider]bool)
 	}
+	fmt.Printf("SUBANDROIDMK %s 2\n", c.Name())
 	if androidmk, ok := obj.(subAndroidMkProvider); ok {
+		fmt.Printf("SUBANDROIDMK LOOP BEFORE IF %s\n", c.Name())
 		if !c.subAndroidMkOnce[androidmk] {
+			fmt.Printf("SUBANDROIDMK LOOP %s 1\n", c.Name())
 			c.subAndroidMkOnce[androidmk] = true
+			fmt.Printf("SUBANDROIDMK LOOP %s 2\n", c.Name())
 			androidmk.AndroidMkEntries(c, entries)
 		}
 	}
+	fmt.Printf("SUBANDROIDMK %s done\n", c.Name())
 }
 
 func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
+	fmt.Printf("ROOT_ANDROIDMKENTRIES %s 1\n", c.Name())
 	if c.hideApexVariantFromMake || c.Properties.HideFromMake {
 		return []android.AndroidMkEntries{{
 			Disabled: true,
 		}}
 	}
 
+	fmt.Printf("ROOT_ANDROIDMKENTRIES %s 2\n", c.Name())
 	entries := android.AndroidMkEntries{
 		OutputFile: c.outputFile,
 		// TODO(jiyong): add the APEXes providing shared libs to the required
@@ -86,6 +94,7 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 
 		ExtraEntries: []android.AndroidMkExtraEntriesFunc{
 			func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
+				fmt.Printf("ROOT_ANDROIDMKENTRIES ENTRIES FUNC %s 1\n", c.Name())
 				if len(c.Properties.Logtags) > 0 {
 					entries.AddStrings("LOCAL_LOGTAGS_FILES", c.Properties.Logtags...)
 				}
@@ -112,6 +121,8 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 					entries.AddStrings("LOCAL_RUNTIME_LIBRARIES", c.Properties.AndroidMkRuntimeLibs...)
 				}
 				entries.SetString("LOCAL_SOONG_LINK_TYPE", c.makeLinkType)
+
+				fmt.Printf("ROOT_ANDROIDMKENTRIES ENTRIES FUNC %s 2\n", c.Name())
 				if c.UseVndk() {
 					entries.SetBool("LOCAL_USE_VNDK", true)
 					if c.IsVndk() && !c.static() {
@@ -123,6 +134,8 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 						}
 					}
 				}
+
+				fmt.Printf("ROOT_ANDROIDMKENTRIES ENTRIES FUNC %s 3\n", c.Name())
 				if c.Properties.IsSdkVariant && c.Properties.SdkAndPlatformVariantVisibleToMake {
 					// Make the SDK variant uninstallable so that there are not two rules to install
 					// to the same location.
@@ -136,6 +149,8 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 		},
 		ExtraFooters: []android.AndroidMkExtraFootersFunc{
 			func(w io.Writer, name, prefix, moduleDir string) {
+
+				fmt.Printf("ROOT_ANDROIDMKENTRIES FOOTERS FUNC %s 1\n", c.Name())
 				if c.Properties.IsSdkVariant && c.Properties.SdkAndPlatformVariantVisibleToMake &&
 					c.CcLibraryInterface() && c.Shared() {
 					// Using the SDK variant as a JNI library needs a copy of the .so that
@@ -149,19 +164,29 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 		},
 	}
 
+	fmt.Printf("ROOT_ANDROIDMKENTRIES %s 3\n", c.Name())
 	for _, feature := range c.features {
 		c.subAndroidMk(&entries, feature)
 	}
 
+	fmt.Printf("ROOT_ANDROIDMKENTRIES %s 4\n", c.Name())
 	c.subAndroidMk(&entries, c.compiler)
+
+	fmt.Printf("ROOT_ANDROIDMKENTRIES %s 5\n", c.Name())
 	c.subAndroidMk(&entries, c.linker)
+
+	fmt.Printf("ROOT_ANDROIDMKENTRIES %s 6\n", c.Name())
 	if c.sanitize != nil {
 		c.subAndroidMk(&entries, c.sanitize)
 	}
+
+	fmt.Printf("ROOT_ANDROIDMKENTRIES %s 7\n", c.Name())
 	c.subAndroidMk(&entries, c.installer)
 
+	fmt.Printf("ROOT_ANDROIDMKENTRIES %s 8\n", c.Name())
 	entries.SubName += c.Properties.SubName
 
+	fmt.Printf("ROOT_ANDROIDMKENTRIES %s done\n", c.Name())
 	return []android.AndroidMkEntries{entries}
 }
 
@@ -240,6 +265,7 @@ func (library *libraryDecorator) androidMkWriteAdditionalDependenciesForSourceAb
 }
 
 func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
+	fmt.Printf("ANDROID_MK_ENTRIES %s 1\n", ctx.BaseModuleName())
 	if library.static() {
 		entries.Class = "STATIC_LIBRARIES"
 	} else if library.shared() {
@@ -260,6 +286,7 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 		entries.Class = "HEADER_LIBRARIES"
 	}
 
+	fmt.Printf("ANDROID_MK_ENTRIES %s 2\n", ctx.BaseModuleName())
 	if library.distFile != nil {
 		entries.DistFiles = android.MakeDefaultDistFiles(library.distFile)
 	}
@@ -287,6 +314,7 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 		}
 	})
 
+	fmt.Printf("ANDROID_MK_ENTRIES %s 3\n", ctx.BaseModuleName())
 	if library.shared() && !library.buildStubs() {
 		ctx.subAndroidMk(entries, library.baseInstaller)
 	} else {
@@ -308,6 +336,7 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 	// name of the library. The impl library instead gets the `.bootstrap` suffix to so that
 	// they can be exceptionally used directly when APEXes are not available (e.g. during the
 	// very early stage in the boot process).
+	fmt.Printf("ANDROID_MK_ENTRIES %s 4\n", ctx.BaseModuleName())
 	if len(library.Properties.Stubs.Versions) > 0 && !ctx.Host() && ctx.NotInPlatform() &&
 		!ctx.InRamdisk() && !ctx.InVendorRamdisk() && !ctx.InRecovery() && !ctx.UseVndk() && !ctx.static() {
 		if library.buildStubs() && library.isLatestStubVersion() {
@@ -317,6 +346,7 @@ func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries 
 			entries.SubName = ".bootstrap"
 		}
 	}
+	fmt.Printf("ANDROID_MK_ENTRIES %s 5\n", ctx.BaseModuleName())
 }
 
 func (object *objectLinker) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
@@ -445,6 +475,9 @@ func (fuzz *fuzzBinary) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 
 func (test *testLibrary) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
 	ctx.subAndroidMk(entries, test.libraryDecorator)
+	if len(test.Properties.Test_suites) > 0 {
+		entries.AddCompatibilityTestSuites(test.Properties.Test_suites...)
+	}
 }
 
 func (installer *baseInstaller) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {

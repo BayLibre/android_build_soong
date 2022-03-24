@@ -478,13 +478,24 @@ func NewTest(hod android.HostOrDeviceSupported) *Module {
 	return module
 }
 
+// TestLibraryProperties Soong properties specific to cc_test_library modules
+type TestLibraryProperties struct {
+	// list of compatibility suites (for example "cts", "vts") that the module should be
+	// installed into.
+	Test_suites []string `android:"arch_variant"`
+}
+
 type testLibrary struct {
 	testDecorator
 	*libraryDecorator
+	Properties TestLibraryProperties
 }
 
 func (test *testLibrary) linkerProps() []interface{} {
-	return append(test.testDecorator.linkerProps(), test.libraryDecorator.linkerProps()...)
+	var props []interface{}
+	props = append(props, &test.Properties)
+	props = append(props, test.testDecorator.linkerProps()...)
+	return append(props, test.libraryDecorator.linkerProps()...)
 }
 
 func (test *testLibrary) linkerInit(ctx BaseModuleContext) {
