@@ -130,6 +130,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "829af259_097c6052",
+        "filename": "java/app.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 1472,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-24T15:21:23Z",
+      "side": 1,
+      "message": "I will look to see if this exists, and otherwise can disable it in Soong.",
+      "parentUuid": "3dd84468_435c4000",
+      "range": {
+        "startLine": 1470,
+        "startChar": 2,
+        "endLine": 1472,
+        "endChar": 43
+      },
+      "revId": "ee953909969c45a33921aa3248fde664ed4ab73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d77a554d_e02873aa",
