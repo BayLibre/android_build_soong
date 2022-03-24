@@ -33,6 +33,24 @@
       "message": "ping, what\u0027s up with this CL?",
       "revId": "d9c23abeca23bfe13c65fd4d341a4d6b2b59d5be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0ad4741_d0cedbba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-03-24T02:53:34Z",
+      "side": 1,
+      "message": "One point of contention was \"Should NewApi be considered a lint error for libcore libraries\", but I never got around to solving it 😞 \nI am filing b/226460201 for NewApi check in libcore/, can you raise the priority if necessary?\n\nSubmitting the current CL with the libcore/ hack for now, so that strict_updatability_linting is enforced for the remainining transitive deps of updatable modules",
+      "parentUuid": "6f58c4c3_14a43dc7",
+      "revId": "d9c23abeca23bfe13c65fd4d341a4d6b2b59d5be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
