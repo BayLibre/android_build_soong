@@ -3366,7 +3366,7 @@ func installable(c LinkableInterface, apexInfo android.ApexInfo) bool {
 	// The platform variant doesn't need further condition. Apex variants however might not
 	// be installable because it will likely to be included in the APEX and won't appear
 	// in the system partition.
-	if apexInfo.IsForPlatform() {
+	if apexInfo.IsForPlatform() && !c.IsSdkVariant() {
 		return ret
 	}
 
