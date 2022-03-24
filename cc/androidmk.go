@@ -112,6 +112,7 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 					entries.AddStrings("LOCAL_RUNTIME_LIBRARIES", c.Properties.AndroidMkRuntimeLibs...)
 				}
 				entries.SetString("LOCAL_SOONG_LINK_TYPE", c.makeLinkType)
+
 				if c.UseVndk() {
 					entries.SetBool("LOCAL_USE_VNDK", true)
 					if c.IsVndk() && !c.static() {
@@ -123,6 +124,7 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 						}
 					}
 				}
+
 				if c.Properties.IsSdkVariant && c.Properties.SdkAndPlatformVariantVisibleToMake {
 					// Make the SDK variant uninstallable so that there are not two rules to install
 					// to the same location.
@@ -159,9 +161,7 @@ func (c *Module) AndroidMkEntries() []android.AndroidMkEntries {
 		c.subAndroidMk(&entries, c.sanitize)
 	}
 	c.subAndroidMk(&entries, c.installer)
-
 	entries.SubName += c.Properties.SubName
-
 	return []android.AndroidMkEntries{entries}
 }
 
@@ -384,8 +384,8 @@ func (test *testBinary) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 		entries.SubName = "_" + String(test.binaryDecorator.Properties.Stem)
 	}
 	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
-		if len(test.Properties.Test_suites) > 0 {
-			entries.AddCompatibilityTestSuites(test.Properties.Test_suites...)
+		if len(test.testDecorator.InstallerProperties.Test_suites) > 0 {
+			entries.AddCompatibilityTestSuites(test.testDecorator.InstallerProperties.Test_suites...)
 		}
 		if test.testConfig != nil {
 			entries.SetString("LOCAL_FULL_TEST_CONFIG", test.testConfig.String())
@@ -445,6 +445,11 @@ func (fuzz *fuzzBinary) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 
 func (test *testLibrary) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
 	ctx.subAndroidMk(entries, test.libraryDecorator)
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
+		if len(test.testDecorator.InstallerProperties.Test_suites) > 0 {
+			entries.AddCompatibilityTestSuites(test.testDecorator.InstallerProperties.Test_suites...)
+		}
+	})
 }
 
 func (installer *baseInstaller) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
