@@ -22,6 +22,30 @@
       },
       "revId": "8e5464686fd74d2b4d9dbb8180d7716d73f398b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e34eee1_d6c8b74a",
+        "filename": "java/java.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 2042,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-24T15:22:15Z",
+      "side": 1,
+      "message": "Done. I rushed on this and should have checked the equivalent Soong code before requesting a review.",
+      "parentUuid": "d7bc876d_80c563fd",
+      "range": {
+        "startLine": 2042,
+        "startChar": 0,
+        "endLine": 2042,
+        "endChar": 70
+      },
+      "revId": "8e5464686fd74d2b4d9dbb8180d7716d73f398b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
