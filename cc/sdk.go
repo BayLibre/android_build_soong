@@ -46,17 +46,10 @@ func sdkMutator(ctx android.BottomUpMutatorContext) {
 
 			// Mark the SDK variant.
 			modules[1].(*Module).Properties.IsSdkVariant = true
+			// Mark the SDK variant so that it gets a ".sdk" suffix when exposed to Make.
+			modules[1].(*Module).Properties.SdkAndPlatformVariantVisibleToMake = true
+			modules[1].(*Module).Properties.PreventInstall = true
 
-			if ctx.Config().UnbundledBuildApps() {
-				// For an unbundled apps build, hide the platform variant from Make.
-				modules[0].(*Module).Properties.HideFromMake = true
-				modules[0].(*Module).Properties.PreventInstall = true
-			} else {
-				// For a platform build, mark the SDK variant so that it gets a ".sdk" suffix when
-				// exposed to Make.
-				modules[1].(*Module).Properties.SdkAndPlatformVariantVisibleToMake = true
-				modules[1].(*Module).Properties.PreventInstall = true
-			}
 			ctx.AliasVariation("")
 		} else {
 			if m, ok := ctx.Module().(*Module); ok {
