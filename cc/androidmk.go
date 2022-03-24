@@ -239,6 +239,14 @@ func (library *libraryDecorator) androidMkWriteAdditionalDependenciesForSourceAb
 	}
 }
 
+func (test *testDecorator) androidMkWriteCompatibilityTestSuites(entries *android.AndroidMkEntries) {
+	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
+		if len(test.InstallerProperties.Test_suites) > 0 {
+			entries.AddCompatibilityTestSuites(test.InstallerProperties.Test_suites...)
+		}
+	})
+}
+
 func (library *libraryDecorator) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
 	if library.static() {
 		entries.Class = "STATIC_LIBRARIES"
@@ -383,10 +391,8 @@ func (test *testBinary) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 	if Bool(test.Properties.Test_per_src) {
 		entries.SubName = "_" + String(test.binaryDecorator.Properties.Stem)
 	}
+	test.testDecorator.androidMkWriteCompatibilityTestSuites(entries)
 	entries.ExtraEntries = append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {
-		if len(test.Properties.Test_suites) > 0 {
-			entries.AddCompatibilityTestSuites(test.Properties.Test_suites...)
-		}
 		if test.testConfig != nil {
 			entries.SetString("LOCAL_FULL_TEST_CONFIG", test.testConfig.String())
 		}
@@ -445,6 +451,7 @@ func (fuzz *fuzzBinary) AndroidMkEntries(ctx AndroidMkContext, entries *android.
 
 func (test *testLibrary) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
 	ctx.subAndroidMk(entries, test.libraryDecorator)
+	test.testDecorator.androidMkWriteCompatibilityTestSuites(entries)
 }
 
 func (installer *baseInstaller) AndroidMkEntries(ctx AndroidMkContext, entries *android.AndroidMkEntries) {
