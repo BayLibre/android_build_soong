@@ -16,6 +16,24 @@
       "message": "just to get confirmation: Older platforms (e.g. Android 10) can also accept the new path (app/Name@xxxx/Name.apk) right?",
       "revId": "0b93dd1e6bd3498a1481e6c8580a80b383053691",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e1e9475_18c1b654",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-03-25T05:55:48Z",
+      "side": 1,
+      "message": "I\u0027m not sure, maybe jham@ or joeo@ has the answer to this?",
+      "parentUuid": "dc98fb98_75cbe956",
+      "revId": "0b93dd1e6bd3498a1481e6c8580a80b383053691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
