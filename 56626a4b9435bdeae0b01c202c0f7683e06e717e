@@ -16,6 +16,24 @@
       "message": "ok, this is a trick :)",
       "revId": "56626a4b9435bdeae0b01c202c0f7683e06e717e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13cc4b0a_90590d21",
+        "filename": "android/packaging.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-25T00:17:38Z",
+      "side": 1,
+      "message": "This gets awkward because it\u0027s not idiomatic Go.\n\nI think this might work better if you split the call to GatherPackagingDeps out of CopyDepsToZip.  Then you can call GatherPackagingDeps, filter the results however you want, and then pass it to CopyDepsToZip.",
+      "parentUuid": "0323e78d_c551c314",
+      "revId": "56626a4b9435bdeae0b01c202c0f7683e06e717e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
