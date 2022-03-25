@@ -399,3 +399,9 @@ func GetSharedLibsToZip(sharedLibraries android.Paths, module LinkableInterface,
 	}
 	return files
 }
+
+func SetJNISanitizers(mod *Module, sanitizers []SanitizerType) *Module {
+	for _, san := range sanitizers {
+		mod.SetSanitizer(san, true)
+	}
+}
