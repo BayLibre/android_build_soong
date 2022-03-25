@@ -142,6 +142,30 @@
       },
       "revId": "149d16bfee3bbf3f6c643fe45912c6c5e3909a49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c54e9133_2cfb529a",
+        "filename": "android/packaging.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-03-25T03:47:48Z",
+      "side": 1,
+      "message": "Colin pointed out that OOP-style overriding is not idiomatic in Go, hence might be confusing. Just moved GatherPackagingSpecs() out of CopyDepsToZip().",
+      "parentUuid": "1b6b4328_411970c4",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 24
+      },
+      "revId": "149d16bfee3bbf3f6c643fe45912c6c5e3909a49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
