@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d9f379b_0dac3119",
+        "filename": "apex/apex.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1656,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-25T12:44:12Z",
+      "side": 1,
+      "message": "Presumably the actual value does not matter, only that it differs from one version of the APK to the next.\n\nIs BuildId() always guaranteed to be a valid file name on host and device? What if it contains say a / or a \" \" or an @ or \"../\"? It might be worth sanitizing the value here to prevent nasty errors later.",
+      "range": {
+        "startLine": 1656,
+        "startChar": 62,
+        "endLine": 1656,
+        "endChar": 84
+      },
+      "revId": "a1bf1543aab0ac9061f28978c67560a858f6b63f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
