@@ -134,6 +134,30 @@
       },
       "revId": "6329a06152cf8079497baf957efcf92bc5066993",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d045b62_043714e4",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2103,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-25T20:31:30Z",
+      "side": 1,
+      "message": "Thanks for the context, Romain!\n\nGiven that there isn\u0027t a single SDK, will we (eventually) also need to migrate information about the sdk version? e.g.\n* `ContactsProvider` has `platform_apis: true`\n* `SystemUI-tags` uses the current sdk \n* `framework-minus-apex` has `sdk_version: \"core_platform\"`\n\nWill we need to migrate other properties for the `event_log_tags` library target (e.g. `javacflags` or whether optimization is enabled)?\n\nMy light preference would be for our rule to only generate the `.java` files to use as an input in `srcs` as it doesn\u0027t require migrating additional properties or creating macros for multiple module types.\n\nBut we can also reevaluate after considering:\n* which/how many properties additional will need to migrate\n* whether we need to support multiple rules (e.g. `java_library`, `android_library`, `droidstubs`).\n\nAlso in a separate CL (low priority), can we move `build/make/tools/event_log_tags.bzl` to `build/bazel/rules` with the remaining build rules we\u0027ve written?",
+      "parentUuid": "47e1b6e0_ad13b618",
+      "range": {
+        "startLine": 2103,
+        "startChar": 4,
+        "endLine": 2103,
+        "endChar": 63
+      },
+      "revId": "6329a06152cf8079497baf957efcf92bc5066993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
