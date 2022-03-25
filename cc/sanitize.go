@@ -1407,7 +1407,7 @@ func sanitizerMutator(t SanitizerType) func(android.BottomUpMutatorContext) {
 			}
 			c.SetSanitizeDep(false)
 		} else if sanitizeable, ok := mctx.Module().(Sanitizeable); ok && sanitizeable.IsSanitizerEnabled(mctx, t.name()) {
-			// APEX modules fall here
+			// APEX and Java fuzz modules modules fall here
 			sanitizeable.AddSanitizerDependencies(mctx, t.name())
 			mctx.CreateVariations(t.variationName())
 		} else if c, ok := mctx.Module().(*Module); ok {
