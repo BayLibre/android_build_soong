@@ -8,10 +8,12 @@ bootstrap_go_package {
     deps: [
         "blueprint-proptools",
         "soong-android",
+        "soong-cc",
         "soong-remoteexec",
     ],
     srcs: [
         "config.go",
+        "bp2build.go",
         "error_prone.go",
         "kotlin.go",
         "makevars.go",
