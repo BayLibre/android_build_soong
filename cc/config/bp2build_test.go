@@ -161,12 +161,12 @@ func TestBazelToolchainVars(t *testing.T) {
 	testCases := []struct {
 		name        string
 		config      android.Config
-		vars        []bazelVarExporter
+		vars        []BazelVarExporter
 		expectedOut string
 	}{
 		{
 			name: "exports strings",
-			vars: []bazelVarExporter{
+			vars: []BazelVarExporter{
 				exportedStringVariables{
 					"a": "b",
 					"c": "d",
@@ -185,7 +185,7 @@ constants = struct(
 		},
 		{
 			name: "exports string lists",
-			vars: []bazelVarExporter{
+			vars: []BazelVarExporter{
 				exportedStringListVariables{
 					"a": []string{"b1", "b2"},
 					"c": []string{"d1", "d2"},
@@ -210,7 +210,7 @@ constants = struct(
 		},
 		{
 			name: "exports string lists dicts",
-			vars: []bazelVarExporter{
+			vars: []BazelVarExporter{
 				exportedStringListDictVariables{
 					"a": map[string][]string{"b1": []string{"b2"}},
 					"c": map[string][]string{"d1": []string{"d2"}},
@@ -233,7 +233,7 @@ constants = struct(
 		},
 		{
 			name: "exports dict with var refs",
-			vars: []bazelVarExporter{
+			vars: []BazelVarExporter{
 				exportedVariableReferenceDictVariables{
 					"a": map[string]string{"b1": "${b2}"},
 					"c": map[string]string{"d1": "${config.d2}"},
@@ -256,7 +256,7 @@ constants = struct(
 		},
 		{
 			name: "sorts across types with variable references last",
-			vars: []bazelVarExporter{
+			vars: []BazelVarExporter{
 				exportedStringVariables{
 					"b": "b-val",
 					"d": "d-val",
@@ -315,7 +315,7 @@ constants = struct(
 
 	for _, tc := range testCases {
 		t.Run(tc.name, func(t *testing.T) {
-			out := bazelToolchainVars(tc.config, tc.vars...)
+			out := BazelToolchainVars(tc.config, tc.vars...)
 			if out != tc.expectedOut {
 				t.Errorf("Expected \n%s, got \n%s", tc.expectedOut, out)
 			}
