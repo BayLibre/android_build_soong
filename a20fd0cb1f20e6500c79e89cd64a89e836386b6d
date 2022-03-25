@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81f58d50_ae480743",
+        "filename": "java/kotlin_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-25T13:04:42Z",
+      "side": 1,
+      "message": "Check refers to turbineApt but error refers to kotlinc in messages and Implicits",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 106
+      },
+      "revId": "a20fd0cb1f20e6500c79e89cd64a89e836386b6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8503d142_e8f9ba1f",
+        "filename": "java/kotlin_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-25T13:04:42Z",
+      "side": 1,
+      "message": "Here and the next check, should be turbineApt",
+      "range": {
+        "startLine": 152,
+        "startChar": 51,
+        "endLine": 152,
+        "endChar": 60
+      },
+      "revId": "a20fd0cb1f20e6500c79e89cd64a89e836386b6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
