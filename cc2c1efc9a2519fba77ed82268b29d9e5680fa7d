@@ -51,6 +51,24 @@
       "message": "just curious: does it matter which one should take the precedence?",
       "revId": "cc2c1efc9a2519fba77ed82268b29d9e5680fa7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ecb9950_057260f8",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-25T21:18:16Z",
+      "side": 1,
+      "message": "Yes, whole_static_libs is a superset of the functionality of static_libs -- static_libs _only_ compiles against a module/target, whole_static_libs compiles against a target and then links it into the resultant artifact",
+      "parentUuid": "f45db060_5f130472",
+      "revId": "cc2c1efc9a2519fba77ed82268b29d9e5680fa7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
