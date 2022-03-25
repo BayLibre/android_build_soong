@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99d6eaa9_db725601",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353982
+      },
+      "writtenOn": "2022-03-25T04:32:49Z",
+      "side": 1,
+      "message": "can we remove 225435110 from the commit comments? that bug will be used for package manager.\n\nfor presubmit faiulres fyi - https://paste.googleplex.com/5121755795423232",
+      "revId": "185d69cf30fc2a845bba8ad6df37edb3e4872d89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
