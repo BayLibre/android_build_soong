@@ -1833,7 +1833,10 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	if ctx.Failed() {
 		return
 	}
-
+	mName := c.Name()
+	if mName == "libnative_asan" {
+		fmt.Printf("\nBuilding module: %s\n", c.String())
+	}
 	if c.Properties.Clang != nil && *c.Properties.Clang == false {
 		ctx.PropertyErrorf("clang", "false (GCC) is no longer supported")
 	}
@@ -1903,6 +1906,9 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		c.kytheFiles = objs.kytheFiles
 		c.objFiles = objs.objFiles
 		c.tidyFiles = objs.tidyFiles
+		if mName == "libnative_asan" {
+			fmt.Printf("Compiling module: %s\n", c.String())
+		}
 	}
 
 	if c.linker != nil {
@@ -1921,9 +1927,15 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 				i.collectHeadersForSnapshot(ctx)
 			}
 		}
+		if mName == "libnative_asan" {
+			fmt.Printf("Linking module: %s\n", c.String())
+		}
 	}
 
 	c.maybeInstall(ctx, apexInfo)
+	//     if mName == "libnative_asan" {
+	//         fmt.Printf("\nAdding sanitizer flags: %#v\n", flags)
+	//     }
 }
 
 func (c *Module) maybeUnhideFromMake() {
