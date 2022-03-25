@@ -102,12 +102,12 @@ type lintOutputsIntf interface {
 	lintOutputs() *lintOutputs
 }
 
-type LintDepSetsIntf interface {
+type lintDepSetsIntf interface {
 	LintDepSets() LintDepSets
 
 	// Methods used to propagate strict_updatability_linting values.
-	GetStrictUpdatabilityLinting() bool
-	SetStrictUpdatabilityLinting(bool)
+	getStrictUpdatabilityLinting() bool
+	setStrictUpdatabilityLinting(bool)
 }
 
 type LintDepSets struct {
@@ -158,15 +158,15 @@ func (l *linter) LintDepSets() LintDepSets {
 	return l.outputs.depSets
 }
 
-func (l *linter) GetStrictUpdatabilityLinting() bool {
+func (l *linter) getStrictUpdatabilityLinting() bool {
 	return BoolDefault(l.properties.Lint.Strict_updatability_linting, false)
 }
 
-func (l *linter) SetStrictUpdatabilityLinting(strictLinting bool) {
+func (l *linter) setStrictUpdatabilityLinting(strictLinting bool) {
 	l.properties.Lint.Strict_updatability_linting = &strictLinting
 }
 
-var _ LintDepSetsIntf = (*linter)(nil)
+var _ lintDepSetsIntf = (*linter)(nil)
 
 var _ lintOutputsIntf = (*linter)(nil)
 
@@ -273,7 +273,7 @@ func (l *linter) writeLintProjectXML(ctx android.ModuleContext, rule *android.Ru
 	cmd.FlagForEachArg("--error_check ", l.properties.Lint.Error_checks)
 	cmd.FlagForEachArg("--fatal_check ", l.properties.Lint.Fatal_checks)
 
-	if l.GetStrictUpdatabilityLinting() {
+	if l.getStrictUpdatabilityLinting() {
 		// Verify the module does not baseline issues that endanger safe updatability.
 		if baselinePath := l.getBaselineFilepath(ctx); baselinePath.Valid() {
 			cmd.FlagWithInput("--baseline ", baselinePath.Path())
@@ -382,7 +382,7 @@ func (l *linter) lint(ctx android.ModuleContext) {
 	depSetsBuilder := NewLintDepSetBuilder().Direct(html, text, xml)
 
 	ctx.VisitDirectDepsWithTag(staticLibTag, func(dep android.Module) {
-		if depLint, ok := dep.(LintDepSetsIntf); ok {
+		if depLint, ok := dep.(lintDepSetsIntf); ok {
 			depSetsBuilder.Transitive(depLint.LintDepSets())
 		}
 	})
@@ -660,10 +660,10 @@ func lintZip(ctx android.BuilderContext, paths android.Paths, outputPath android
 // Enforce the strict updatability linting to all applicable transitive dependencies.
 func enforceStrictUpdatabilityLintingMutator(ctx android.TopDownMutatorContext) {
 	m := ctx.Module()
-	if d, ok := m.(LintDepSetsIntf); ok && d.GetStrictUpdatabilityLinting() {
+	if d, ok := m.(lintDepSetsIntf); ok && d.getStrictUpdatabilityLinting() {
 		ctx.VisitDirectDepsWithTag(staticLibTag, func(d android.Module) {
-			if a, ok := d.(LintDepSetsIntf); ok {
-				a.SetStrictUpdatabilityLinting(true)
+			if a, ok := d.(lintDepSetsIntf); ok {
+				a.setStrictUpdatabilityLinting(true)
 			}
 		})
 	}
