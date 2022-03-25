@@ -971,6 +971,16 @@ func sanitizerDepsMutator(t SanitizerType) func(android.TopDownMutatorContext) {
 		} else if sanitizeable, ok := mctx.Module().(Sanitizeable); ok {
 			// If an APEX module includes a lib which is enabled for a sanitizer T, then
 			// the APEX module is also enabled for the same sanitizer type.
+			if jniSanitizeable, ok := mctx.Module().(JniSanitizeable); ok {
+				if jniSanitizeable.IsSanitizerEnabledForJni(mctx, t.name()) {
+					mctx.VisitDirectDeps(func(child android.Module) {
+						if c, ok := child.(*Module); ok {
+							c.SetSanitizer(t, true)
+						}
+					})
+				}
+			}
+
 			mctx.VisitDirectDeps(func(child android.Module) {
 				if c, ok := child.(*Module); ok && c.sanitize.isSanitizerEnabled(t) {
 					sanitizeable.EnableSanitizer(t.name())
@@ -1280,6 +1290,11 @@ type Sanitizeable interface {
 	AddSanitizerDependencies(ctx android.BottomUpMutatorContext, sanitizerName string)
 }
 
+type JniSanitizeable interface {
+	android.Module
+	IsSanitizerEnabledForJni(ctx android.BaseModuleContext, sanitizerName string) bool
+}
+
 func (c *Module) MinimalRuntimeDep() bool {
 	return c.sanitize.Properties.MinimalRuntimeDep
 }
@@ -1407,7 +1422,7 @@ func sanitizerMutator(t SanitizerType) func(android.BottomUpMutatorContext) {
 			}
 			c.SetSanitizeDep(false)
 		} else if sanitizeable, ok := mctx.Module().(Sanitizeable); ok && sanitizeable.IsSanitizerEnabled(mctx, t.name()) {
-			// APEX modules fall here
+			// APEX and Java fuzz modules modules fall here
 			sanitizeable.AddSanitizerDependencies(mctx, t.name())
 			mctx.CreateVariations(t.variationName())
 		} else if c, ok := mctx.Module().(*Module); ok {
