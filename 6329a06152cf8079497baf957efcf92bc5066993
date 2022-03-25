@@ -62,6 +62,30 @@
       },
       "revId": "6329a06152cf8079497baf957efcf92bc5066993",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b999fe79_691b766b",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2103,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-25T17:38:00Z",
+      "side": 1,
+      "message": "Ah yes, I actually have uncommitted changes in my tree for the log_tags rule to change it to a java_library instead of android_library.\n\nBut removing the library dependency altogether may be an option as well.",
+      "parentUuid": "7fcef699_bdcb6eac",
+      "range": {
+        "startLine": 2103,
+        "startChar": 4,
+        "endLine": 2103,
+        "endChar": 63
+      },
+      "revId": "6329a06152cf8079497baf957efcf92bc5066993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
