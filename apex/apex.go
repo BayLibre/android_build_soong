@@ -1601,12 +1601,20 @@ func apexFileForAndroidApp(ctx android.BaseModuleContext, aapp androidApp) apexF
 	if aapp.Privileged() {
 		appDir = "priv-app"
 	}
-	dirInApex := filepath.Join(appDir, aapp.InstallApkName())
+	// TODO(b/225435110#comment9, 224589412, 226559955): Ensure that the path is
+	// suffixed so that PackageManager correctly "invalidates" the existing
+	// installed apk in favour of the new APK-in-APEX.  See bugs for more
+	// information.
+	dirInApex := filepath.Join(appDir, aapp.InstallApkName()+"@"+ctx.Config().BuildId())
 	fileToCopy := aapp.OutputFile()
+
 	af := newApexFile(ctx, fileToCopy, aapp.BaseModuleName(), dirInApex, app, aapp)
 	af.jacocoReportClassesFile = aapp.JacocoReportClassesFile()
 	af.lintDepSets = aapp.LintDepSets()
 	af.certificate = aapp.Certificate()
+
+	aappStem := strings.TrimSuffix(aapp.OutputFile().Base(), aapp.OutputFile().Ext()) + "@" + ctx.Config().BuildId() + ".apk"
+	af.customStem = aappStem
 
 	if app, ok := aapp.(interface {
 		OverriddenManifestPackageName() string
@@ -1836,7 +1844,7 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 						appDir = "priv-app"
 					}
 					af := newApexFile(ctx, ap.OutputFile(), ap.BaseModuleName(),
-						filepath.Join(appDir, ap.BaseModuleName()), appSet, ap)
+						filepath.Join(appDir, ap.BaseModuleName()+"@"+ctx.Config().BuildId()), appSet, ap)
 					af.certificate = java.PresignedCertificate
 					filesInfo = append(filesInfo, af)
 				} else {
