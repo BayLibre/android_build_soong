@@ -16,6 +16,29 @@
       "message": "A dependency of the app that I used to test this (frameworks/ex/common:android_common) requires SDK version 8, and we don\u0027t yet support SDKs other than public_current.",
       "revId": "6329a06152cf8079497baf957efcf92bc5066993",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c0d66d_e7d5d6fa",
+        "filename": "bp2build/java_library_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-03-25T13:50:31Z",
+      "side": 1,
+      "message": "Should this be something logtag related instead?",
+      "range": {
+        "startLine": 135,
+        "startChar": 46,
+        "endLine": 135,
+        "endChar": 79
+      },
+      "revId": "6329a06152cf8079497baf957efcf92bc5066993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
