@@ -38,6 +38,7 @@ type ExportedVariables struct {
 	exportedStringVars         ExportedStringVariables
 	exportedStringListVars     ExportedStringListVariables
 	exportedStringListDictVars ExportedStringListDictVariables
+	exportedStringVarFuncs     ExportedStringVariableFunctions
 	// Note: these can only contain references to other variables and must be printed last
 	exportedVariableReferenceDictVars ExportedVariableReferenceDictVariables
 	/// Maps containing variables that are dependent on the build config.
@@ -49,6 +50,7 @@ func NewExportedVariables() ExportedVariables {
 		exportedStringVars:                ExportedStringVariables{},
 		exportedStringListVars:            ExportedStringListVariables{},
 		exportedStringListDictVars:        ExportedStringListDictVariables{},
+		exportedStringVarFuncs:            ExportedStringVariableFunctions{},
 		exportedVariableReferenceDictVars: ExportedVariableReferenceDictVariables{},
 		exportedConfigDependingVars:       ExportedConfigDependingVariables{},
 	}
@@ -56,6 +58,18 @@ func NewExportedVariables() ExportedVariables {
 
 func (ev ExportedVariables) asBazel(config Config,
 	stringVars ExportedStringVariables, stringListVars ExportedStringListVariables, cfgDepVars ExportedConfigDependingVariables) []bazelConstant {
+
+	// don't modify existing variables map
+	stringVarsCopy := ExportedStringVariables{}
+	for k, v := range stringVars {
+		stringVarsCopy.Set(k, v)
+	}
+	stringVars = stringVarsCopy
+
+	for k, f := range ev.exportedStringVarFuncs {
+		stringVars.Set(k, f())
+	}
+
 	ret := []bazelConstant{}
 	ret = append(ret, ev.exportedStringVars.asBazel(config, stringVars, stringListVars, cfgDepVars)...)
 	ret = append(ret, ev.exportedStringListVars.asBazel(config, stringVars, stringListVars, cfgDepVars)...)
@@ -86,6 +100,13 @@ func (ev ExportedVariables) ExportVariableConfigMethod(pctx PackageContext, name
 func (ev ExportedVariables) ExportSourcePathVariable(pctx PackageContext, name string, value string) {
 	pctx.SourcePathVariable(name, value)
 	ev.exportedStringVars.Set(name, value)
+}
+
+func (ev ExportedVariables) ExportVariableFuncVariable(pctx PackageContext, name string, f func() string) {
+	pctx.VariableFunc(name, func(PackageVarContext) string {
+		return f()
+	})
+	ev.exportedStringVarFuncs.Set(name, f)
 }
 
 func (ev ExportedVariables) ExportString(name string, value string) {
@@ -230,6 +251,12 @@ func (m ExportedVariableReferenceDictVariables) asBazel(_ Config, _ ExportedStri
 		})
 	}
 	return ret
+}
+
+type ExportedStringVariableFunctions map[string]func() string
+
+func (m ExportedStringVariableFunctions) Set(k string, f func() string) {
+	m[k] = f
 }
 
 func BazelToolchainVars(config Config, exportedVars ExportedVariables) string {
