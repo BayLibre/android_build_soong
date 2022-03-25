@@ -26,8 +26,7 @@ import (
 )
 
 var (
-	pctx         = android.NewPackageContext("android/soong/java/config")
-	exportedVars = android.NewExportedVariables()
+	pctx = android.NewPackageContext("android/soong/java/config")
 
 	LegacyCorePlatformBootclasspathLibraries = []string{"legacy.core.platform.api.stubs", "core-lambda-stubs"}
 	LegacyCorePlatformSystemModules          = "legacy-core-platform-api-stubs-system-modules"
@@ -59,44 +58,28 @@ var (
 	}
 )
 
-var (
-	JavaVmFlags      = strings.Join(JavaVmFlags_List, " ")
-	JavacVmFlags     = strings.Join(JavacVmFlags_List, " ")
-	JavaVmFlags_List = []string{
-		"-XX:OnError='cat hs_err_pid%p.log'",
-		"-XX:CICompilerCount=6",
-		"-XX:+UseDynamicNumberOfGCThreads",
-	}
-	JavacVmFlags_List = []string{
-		"-J-XX:OnError='cat hs_err_pid%p.log'",
-		"-J-XX:CICompilerCount=6",
-		"-J-XX:+UseDynamicNumberOfGCThreads",
-		"-J-XX:+TieredCompilation",
-		"-J-XX:TieredStopAtLevel=1",
-	}
+const (
+	JavaVmFlags  = `-XX:OnError="cat hs_err_pid%p.log" -XX:CICompilerCount=6 -XX:+UseDynamicNumberOfGCThreads`
+	JavacVmFlags = `-J-XX:OnError="cat hs_err_pid%p.log" -J-XX:CICompilerCount=6 -J-XX:+UseDynamicNumberOfGCThreads -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1`
 )
 
 func init() {
 	pctx.Import("github.com/google/blueprint/bootstrap")
 
-	exportedVars.ExportStringStaticVariable(pctx, "JavacHeapSize", "2048M")
-	exportedVars.ExportStringStaticVariable(pctx, "JavacHeapFlags", "-J-Xmx${JavacHeapSize}")
+	pctx.StaticVariable("JavacHeapSize", "2048M")
+	pctx.StaticVariable("JavacHeapFlags", "-J-Xmx${JavacHeapSize}")
 
 	// ErrorProne can use significantly more memory than javac alone, give it a higher heap
 	// size (b/221480398).
-	exportedVars.ExportStringStaticVariable(pctx, "ErrorProneHeapSize", "4096M")
-	exportedVars.ExportStringStaticVariable(pctx, "ErrorProneHeapFlags", "-J-Xmx${ErrorProneHeapSize}")
+	pctx.StaticVariable("ErrorProneHeapSize", "4096M")
+	pctx.StaticVariable("ErrorProneHeapFlags", "-J-Xmx${ErrorProneHeapSize}")
 
-	exportedVars.ExportStringListStaticVariable(pctx, "DexFlags", []string{
-		"-JXX:OnError='cat hs_err_pid%p.log'",
-		"-JXX:CICompilerCount=6",
-		"-JXX:+UseDynamicNumberOfGCThreads",
-	})
+	pctx.StaticVariable("DexFlags", "-JXX:OnError='cat hs_err_pid%p.log' -JXX:CICompilerCount=6 -JXX:+UseDynamicNumberOfGCThreads")
 
-	exportedVars.ExportStringListStaticVariable(pctx, "CommonJdkFlags", []string{
+	pctx.StaticVariable("CommonJdkFlags", strings.Join([]string{
 		`-Xmaxerrs 9999999`,
 		`-encoding UTF-8`,
-		`-sourcepath ''`,
+		`-sourcepath ""`,
 		`-g`,
 		// Turbine leaves out bridges which can cause javac to unnecessarily insert them into
 		// subclasses (b/65645120).  Setting this flag causes our custom javac to assume that
@@ -107,10 +90,10 @@ func init() {
 
 		// b/65004097: prevent using java.lang.invoke.StringConcatFactory when using -target 1.9
 		`-XDstringConcat=inline`,
-	})
+	}, " "))
 
-	exportedVars.ExportStringListStaticVariable(pctx, "JavaVmFlags", JavaVmFlags_List)
-	exportedVars.ExportStringListStaticVariable(pctx, "JavacVmFlags", JavacVmFlags_List)
+	pctx.StaticVariable("JavaVmFlags", JavaVmFlags)
+	pctx.StaticVariable("JavacVmFlags", JavacVmFlags)
 
 	pctx.VariableConfigMethod("hostPrebuiltTag", android.Config.PrebuiltOS)
 
@@ -204,10 +187,6 @@ func init() {
 	// TODO(ccross): this should come from the signapk dependencies, but we don't have any way
 	// to express host JNI dependencies yet.
 	hostJNIToolVariableWithSdkToolsPrebuilt("SignapkJniLibrary", "libconscrypt_openjdk_jni")
-}
-
-func BazelJavaToolchainVars(config android.Config) string {
-	return android.BazelToolchainVars(config, exportedVars)
 }
 
 func hostBinToolVariableWithSdkToolsPrebuilt(name, tool string) {
