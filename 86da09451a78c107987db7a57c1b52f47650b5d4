@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f3c305b_506c32c3",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 1353982
+      },
+      "writtenOn": "2022-03-25T05:23:47Z",
+      "side": 1,
+      "message": "Hi Jingwen\n\nTo clarify\n\nwe MUST have suffix at subdir.\nbut we don\u0027t need a suffix at apk name. (if it makes more difficulties)",
+      "parentUuid": "83f998fc_8f353dda",
+      "range": {
+        "startLine": 1613,
+        "startChar": 41,
+        "endLine": 1613,
+        "endChar": 55
+      },
+      "revId": "86da09451a78c107987db7a57c1b52f47650b5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6817777_589fd60a",
         "filename": "apex/apex.go",
         "patchSetId": 6
