@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d85a7566_587c5f74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-03-25T20:28:20Z",
+      "side": 1,
+      "message": "I think it would be good to test building an android_* module that has a dependency on such a java_import. The structure of a java_import exporting an aar_import is kind of strange to me (I\u0027m even surprised bazel allows it) and I want to make sure of the semantics in Soong, i.e. are resources accessible to an android_library depending on this java_import that exports an aar_import?",
+      "revId": "7b6f327e2f62c93b72780bdd905d287589256281",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
