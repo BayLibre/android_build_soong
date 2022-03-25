@@ -15,13 +15,24 @@
 package java
 
 import (
-	"github.com/google/blueprint/proptools"
 	"sort"
 	"strings"
 
+	"github.com/google/blueprint"
+	"github.com/google/blueprint/proptools"
+
 	"android/soong/android"
+	"android/soong/cc"
 	"android/soong/fuzz"
 )
+
+type jniProperties struct {
+	// list of jni libs
+	Jni_libs []string
+
+	// sanitization
+	Sanitization *string
+}
 
 func init() {
 	RegisterJavaFuzzBuildComponents(android.InitRegistrationContext)
@@ -35,11 +46,22 @@ func RegisterJavaFuzzBuildComponents(ctx android.RegistrationContext) {
 type JavaFuzzLibrary struct {
 	Library
 	fuzzPackagedModule fuzz.FuzzPackagedModule
+	jniProperties      jniProperties
+	jniFilePaths       android.Paths
+}
+
+func (j *JavaFuzzLibrary) DepsMutator(ctx android.BottomUpMutatorContext) {
+	if len(j.jniProperties.Jni_libs) > 0 {
+		for _, target := range ctx.MultiTargets() {
+			sharedLibVariations := append(target.Variations(), blueprint.Variation{Mutator: "link", Variation: "shared"})
+			ctx.AddFarVariationDependencies(sharedLibVariations, jniLibTag, j.jniProperties.Jni_libs...)
+		}
+	}
+	j.Library.DepsMutator(ctx)
+	j.deps(ctx)
 }
 
 func (j *JavaFuzzLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
-	j.Library.GenerateAndroidBuildActions(ctx)
-
 	if j.fuzzPackagedModule.FuzzProperties.Corpus != nil {
 		j.fuzzPackagedModule.Corpus = android.PathsForModuleSrc(ctx, j.fuzzPackagedModule.FuzzProperties.Corpus)
 	}
@@ -55,6 +77,23 @@ func (j *JavaFuzzLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext)
 		android.WriteFileRule(ctx, configPath, j.fuzzPackagedModule.FuzzProperties.Fuzz_config.String())
 		j.fuzzPackagedModule.Config = configPath
 	}
+
+	ctx.VisitDirectDepsWithTag(jniLibTag, func(dep android.Module) {
+		sharedLibInfo := ctx.OtherModuleProvider(dep, cc.SharedLibraryInfoProvider).(cc.SharedLibraryInfo)
+		if sharedLibInfo.SharedLibrary != nil {
+			libPath := android.PathForModuleOut(ctx, sharedLibInfo.SharedLibrary.Base())
+			ctx.Build(pctx, android.BuildParams{
+				Rule:   android.Cp,
+				Input:  sharedLibInfo.SharedLibrary,
+				Output: libPath,
+			})
+			j.jniFilePaths = append(j.jniFilePaths, libPath)
+		} else {
+			ctx.PropertyErrorf("jni_libs", "%q of type %q is not supported", dep.Name(), ctx.OtherModuleType(dep))
+		}
+	})
+
+	j.Library.GenerateAndroidBuildActions(ctx)
 }
 
 // java_fuzz builds and links sources into a `.jar` file for the host.
@@ -65,7 +104,8 @@ func FuzzFactory() android.Module {
 	module := &JavaFuzzLibrary{}
 
 	module.addHostProperties()
-	module.Module.properties.Installable = proptools.BoolPtr(false)
+	module.AddProperties(&module.jniProperties)
+	module.Module.properties.Installable = proptools.BoolPtr(true)
 	module.AddProperties(&module.fuzzPackagedModule.FuzzProperties)
 
 	// java_fuzz packaging rules collide when both linux_glibc and linux_bionic are enabled, disable the linux_bionic variants.
@@ -83,7 +123,7 @@ func FuzzFactory() android.Module {
 
 	module.initModuleAndImport(module)
 	android.InitSdkAwareModule(module)
-	InitJavaModule(module, android.HostSupported)
+	InitJavaModuleMultiTargets(module, android.HostSupported)
 	return module
 }
 
@@ -117,7 +157,7 @@ func (s *javaFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 			javaModule.ApexModuleBase,
 		}
 
-		if ok := fuzz.IsValid(fuzzModuleValidator); !ok || *javaModule.Module.properties.Installable {
+		if ok := fuzz.IsValid(fuzzModuleValidator); !ok {
 			return
 		}
 
@@ -138,6 +178,11 @@ func (s *javaFuzzPackager) GenerateBuildActions(ctx android.SingletonContext) {
 
 		// Add .jar
 		files = append(files, fuzz.FileToZip{javaModule.outputFile, ""})
+
+		// Add jni .so files
+		for _, fPath := range javaModule.jniFilePaths {
+			files = append(files, fuzz.FileToZip{fPath, ""})
+		}
 
 		archDirs[archOs], ok = s.BuildZipFile(ctx, module, javaModule.fuzzPackagedModule, files, builder, archDir, archString, "host", archOs, archDirs)
 		if !ok {
