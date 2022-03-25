@@ -33,6 +33,142 @@
       "message": "Test breakage looks unrelated to this change (and its attached change)",
       "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa9aa8af_b0108852",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-03-25T15:23:13Z",
+      "side": 1,
+      "message": "just a bit curious, why Event had to be exported unlike all other fields here.\nAlso all other slices have a plural name, so why is this one not called `Events`?",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "825c4739_db998206",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-03-25T15:23:13Z",
+      "side": 1,
+      "message": "nit: I assume the alias has the suffix 2 because there\u0027s a variable named `metrics` somewhere?\nMaybe alias it as `metricsPkg` instead?",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f713bf0f_c3a89ccb",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-03-25T15:23:13Z",
+      "side": 1,
+      "message": "nit: I wonder if a higher order function may be nicer?\ne.g. `firstCtx.EventHandler.TimeIt(\"prepare\", func() {...})`\nensuring that Begin and Prepare always occur in pairs.",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96fd5a15_5664f4a9",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-03-25T15:23:13Z",
+      "side": 1,
+      "message": "this is a nice refactoring. kudos!",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77421162_5aecdb64",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-03-25T15:23:13Z",
+      "side": 1,
+      "message": "change writeMetrics to take a pointer reference instead.\n`android.Config` happens to be a simple wrapper for a pointer so it involves minimal copying overhead.",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7e70c9f_605a75c9",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-03-25T15:23:13Z",
+      "side": 1,
+      "message": "nit: wished this `End()` weren\u0027t almost 100 lines away from its corresponding `Begin()`",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4c077ef_9c4b6f26",
+        "filename": "ui/metrics/bp2build_metrics_proto/bp2build_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-03-25T15:23:13Z",
+      "side": 1,
+      "message": "nit : naming convention mismatch, should be `events` in line with `convertedModules`",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca62095a_f2f1ef26",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-03-25T15:23:13Z",
+      "side": 1,
+      "message": "nit: `events`",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
