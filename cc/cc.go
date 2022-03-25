@@ -1921,6 +1921,9 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 				i.collectHeadersForSnapshot(ctx)
 			}
 		}
+		if mName == "libnative_asan" {
+			fmt.Printf("Linking module: %s\n", c.String())
+		}
 	}
 
 	c.maybeInstall(ctx, apexInfo)
