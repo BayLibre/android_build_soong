@@ -639,6 +639,10 @@ func (sanitize *sanitize) flags(ctx ModuleContext, flags Flags) Flags {
 	}
 
 	if Bool(sanitize.Properties.Sanitize.Fuzzer) {
+		mName := ctx.ModuleName()
+		if mName == "libnative_asan" || mName == "example_java_fuzzer_with_native_lib" {
+			fmt.Printf("Adding Fuzzer flags for module: %s\n", mName)
+		}
 		flags.Local.CFlags = append(flags.Local.CFlags, "-fsanitize=fuzzer-no-link")
 
 		// TODO(b/131771163): LTO and Fuzzer support is mutually incompatible.
@@ -928,6 +932,23 @@ func needsCfiForVendorSnapshot(mctx android.TopDownMutatorContext) bool {
 		!c.IsSanitizerExplicitlyDisabled(cfi)
 }
 
+func logTempTD(s string, mctx android.TopDownMutatorContext, t SanitizerType) {
+	mName := mctx.Module().Name()
+	if mName == "example_java_fuzzer_with_native_lib" || mName == "libnative_asan" {
+		fmt.Printf(s, mctx.Module().Name(), t.variationName())
+	}
+}
+
+func logTempBU(s string, mctx android.BottomUpMutatorContext, t SanitizerType) bool {
+	mName := mctx.Module().Name()
+	logged := false
+	if mName == "example_java_fuzzer_with_native_lib" || mName == "libnative_asan" {
+		fmt.Printf(s, mctx.Module().Name(), t.variationName())
+		logged = true
+	}
+	return logged
+}
+
 // Propagate sanitizer requirements down from binaries
 func sanitizerDepsMutator(t SanitizerType) func(android.TopDownMutatorContext) {
 	return func(mctx android.TopDownMutatorContext) {
@@ -941,6 +962,7 @@ func sanitizerDepsMutator(t SanitizerType) func(android.TopDownMutatorContext) {
 				c.SetSanitizeDep(true)
 			}
 			if enabled {
+				logTempTD("\nsanitizerDepsMutator() -- enabled -- module: %s for sanitizer: %s\n", mctx, t)
 				isSanitizableDependencyTag := c.SanitizableDepTagChecker()
 				mctx.WalkDeps(func(child, parent android.Module) bool {
 					if !isSanitizableDependencyTag(mctx.OtherModuleDependencyTag(child)) {
@@ -1322,7 +1344,6 @@ var _ PlatformSanitizeable = (*Module)(nil)
 func sanitizerMutator(t SanitizerType) func(android.BottomUpMutatorContext) {
 	return func(mctx android.BottomUpMutatorContext) {
 		if c, ok := mctx.Module().(PlatformSanitizeable); ok && c.SanitizePropDefined() {
-
 			// Make sure we're not setting CFI to any value if it's not supported.
 			cfiSupported := mctx.Module().(PlatformSanitizeable).SanitizerSupported(cfi)
 
@@ -1332,6 +1353,7 @@ func sanitizerMutator(t SanitizerType) func(android.BottomUpMutatorContext) {
 			} else if c.IsSanitizerEnabled(t) || c.SanitizeDep() {
 				isSanitizerEnabled := c.IsSanitizerEnabled(t)
 				if c.StaticallyLinked() || c.Header() || t == Fuzzer {
+					libnative_asanYes := logTempBU("\nsanitizerMutator() -- c.StaticallyLinked() || c.Header() || t == Fuzzer -- module: %s for sanitizer: %s\n", mctx, t)
 					// Static and header libs are split into non-sanitized and sanitized variants.
 					// Shared libs are not split. However, for asan and fuzzer, we split even for shared
 					// libs because a library sanitized for asan/fuzzer can't be linked from a library
@@ -1353,6 +1375,10 @@ func sanitizerMutator(t SanitizerType) func(android.BottomUpMutatorContext) {
 					modules[1].(PlatformSanitizeable).SetSanitizer(t, true)
 					modules[0].(PlatformSanitizeable).SetSanitizeDep(false)
 					modules[1].(PlatformSanitizeable).SetSanitizeDep(false)
+
+					if libnative_asanYes {
+						fmt.Printf("\nsanitizerMutator() --  t == Fuzzer -- modules: %s, %s\n", modules[0].Name(), modules[1].Name())
+					}
 
 					if mctx.Device() && t.incompatibleWithCfi() && cfiSupported {
 						// TODO: Make sure that cfi mutator runs "after" any of the sanitizers that
@@ -1383,6 +1409,7 @@ func sanitizerMutator(t SanitizerType) func(android.BottomUpMutatorContext) {
 					}
 				} else {
 					// Shared libs are not split. Only the sanitized variant is created.
+					logTempBU("\nsanitizerMutator() -- shared lib -- module: %s for sanitizer: %s\n", mctx, t)
 					modules := mctx.CreateVariations(t.variationName())
 					modules[0].(PlatformSanitizeable).SetSanitizer(t, true)
 					modules[0].(PlatformSanitizeable).SetSanitizeDep(false)
