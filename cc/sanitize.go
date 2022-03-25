@@ -932,6 +932,7 @@ func needsCfiForVendorSnapshot(mctx android.TopDownMutatorContext) bool {
 func sanitizerDepsMutator(t SanitizerType) func(android.TopDownMutatorContext) {
 	return func(mctx android.TopDownMutatorContext) {
 		if c, ok := mctx.Module().(PlatformSanitizeable); ok {
+			fmt.Sprintf("\nsanitizing module: %s with sanitizer: %s\n", mctx.Module().Name(), t.variationName())
 			enabled := c.IsSanitizerEnabled(t)
 			if t == cfi && needsCfiForVendorSnapshot(mctx) {
 				// We shouldn't change the result of isSanitizerEnabled(cfi) to correctly
@@ -1321,8 +1322,11 @@ var _ PlatformSanitizeable = (*Module)(nil)
 // Create sanitized variants for modules that need them
 func sanitizerMutator(t SanitizerType) func(android.BottomUpMutatorContext) {
 	return func(mctx android.BottomUpMutatorContext) {
+		// 	    if mctx.Module().Name() == "example_java_fuzzer_with_native_lib" {
+		fmt.Sprintf("\nmodule: %s for sanitizer: %s\n", mctx.Module().Name(), t.variationName())
+		// 	    }
 		if c, ok := mctx.Module().(PlatformSanitizeable); ok && c.SanitizePropDefined() {
-
+			fmt.Sprintf("\nsanitizing module: %s with sanitizer: %s\n", mctx.Module().Name(), t.variationName())
 			// Make sure we're not setting CFI to any value if it's not supported.
 			cfiSupported := mctx.Module().(PlatformSanitizeable).SanitizerSupported(cfi)
 

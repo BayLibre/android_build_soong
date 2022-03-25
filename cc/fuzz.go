@@ -399,3 +399,11 @@ func GetSharedLibsToZip(sharedLibraries android.Paths, module LinkableInterface,
 	}
 	return files
 }
+
+// func SanitizeJNI(mod *Module, hod android.HostOrDeviceSupported) {
+//     _, binary := newBinary(hod, false)
+//     mod.sanitize.SetSanitizer(Fuzzer, true)
+//     mod.compiler = NewBaseCompiler()
+//     mod.linker = binary
+//     mod.installer = binary
+// }
