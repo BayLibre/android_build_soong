@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0b9fdb48_5480a8f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-03-25T17:14:08Z",
+      "side": 1,
+      "message": "Listing a single subdirectory looks like a 5-line bash script, and the recursion can be handled by calling this script from itself (maybe another 10 lines). Why writing this in Python requires 70 lines?",
+      "revId": "b3a3a2893be440da609db17ef0a93ebf0fcc30bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "852a7b8f_7f0ac4a3",
         "filename": "scripts/list_image.py",
         "patchSetId": 2
