@@ -16,6 +16,24 @@
       "message": "try\nfunc (test *testLibrary) linkerProps() []interface{} {\n\tp :\u003d append(test.testDecorator.linkerProps(), test.Properties);\n\treturn append(p, test.libraryDecorator.linkerProps()...)\n}",
       "revId": "51b32b5fe718a88b30c8d2e34854c9dd70760741",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd1ca81d_11ff514c",
+        "filename": "cc/test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-03-25T16:17:48Z",
+      "side": 1,
+      "message": "actually \np :\u003d append(test.testDecorator.linkerProps(), test.Properties);\nreturn append(test.libraryDecorator.linkerProps(), p...)",
+      "parentUuid": "35d63080_91111630",
+      "revId": "51b32b5fe718a88b30c8d2e34854c9dd70760741",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
