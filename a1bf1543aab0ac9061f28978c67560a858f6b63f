@@ -118,6 +118,30 @@
       },
       "revId": "a1bf1543aab0ac9061f28978c67560a858f6b63f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd635ba_6fbb351b",
+        "filename": "apex/apex.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1656,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-25T13:37:48Z",
+      "side": 1,
+      "message": "+1 to sanitizing\n\nafaik, core/build_id.mk is updated as part of the release system, so there should be little risk of forgetting to update BuildId in a release build.\n\nBut we should follow up to ensure that release process will update BuildId for mainline releases.",
+      "parentUuid": "54bf5e43_266cf608",
+      "range": {
+        "startLine": 1656,
+        "startChar": 62,
+        "endLine": 1656,
+        "endChar": 84
+      },
+      "revId": "a1bf1543aab0ac9061f28978c67560a858f6b63f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
