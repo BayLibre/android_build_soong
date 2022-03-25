@@ -2363,17 +2363,17 @@ func (module *SdkLibraryImport) LintDepSets() LintDepSets {
 	}
 }
 
-func (module *SdkLibraryImport) GetStrictUpdatabilityLinting() bool {
+func (module *SdkLibraryImport) getStrictUpdatabilityLinting() bool {
 	if module.implLibraryModule == nil {
 		return false
 	} else {
-		return module.implLibraryModule.GetStrictUpdatabilityLinting()
+		return module.implLibraryModule.getStrictUpdatabilityLinting()
 	}
 }
 
-func (module *SdkLibraryImport) SetStrictUpdatabilityLinting(strictLinting bool) {
+func (module *SdkLibraryImport) setStrictUpdatabilityLinting(strictLinting bool) {
 	if module.implLibraryModule != nil {
-		module.implLibraryModule.SetStrictUpdatabilityLinting(strictLinting)
+		module.implLibraryModule.setStrictUpdatabilityLinting(strictLinting)
 	}
 }
 
