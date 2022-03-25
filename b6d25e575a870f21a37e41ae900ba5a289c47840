@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60b7a731_d3a996d7",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-25T18:26:08Z",
+      "side": 1,
+      "message": "This causes a slight change in the output of constants.bzl, but is (probably) necessary for Java flags because there are some arguments with nested strings which get split mid-argument.\n\nI had to make a slight change to one of the CC config options in `x86_linux_host.go` because I got this error:\n```\nclang: error: unsupported option \u0027--sysroot prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot\u0027\n```\n\nBecause this flag is now submitted as a single string instead of two separate strings. Splitting up the flag solved this problem, but it seems strange that it caused an issue in the first place.",
+      "revId": "b6d25e575a870f21a37e41ae900ba5a289c47840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
