@@ -22,6 +22,30 @@
       },
       "revId": "a1bf1543aab0ac9061f28978c67560a858f6b63f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5330117_f318284c",
+        "filename": "apex/apex.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 1656,
+      "author": {
+        "id": 1353982
+      },
+      "writtenOn": "2022-03-25T12:56:20Z",
+      "side": 1,
+      "message": "how about just timestamp YYMMDDHHMM? that can reduce one more burden for changing core/build_id.mk every module build. (and avoid mistake)",
+      "parentUuid": "1d9f379b_0dac3119",
+      "range": {
+        "startLine": 1656,
+        "startChar": 62,
+        "endLine": 1656,
+        "endChar": 84
+      },
+      "revId": "a1bf1543aab0ac9061f28978c67560a858f6b63f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
