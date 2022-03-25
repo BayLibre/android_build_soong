@@ -39,6 +39,29 @@
       },
       "revId": "6329a06152cf8079497baf957efcf92bc5066993",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fcef699_bdcb6eac",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2103,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-25T17:04:37Z",
+      "side": 1,
+      "message": "It looks like these `event_log_tags` will always create an `android_library`, but there are occasions where `.logtags` are inputs for a `java_library`, I don\u0027t know if there\u0027s a significant difference between a `java_library` and an `android_library`, but it is unexpected.\n\nSince the logic generates .java files for .logtags files, instead of event_log_tags also creating a library, should we just be generating sources that are referenced in srcs rather  than as a dep on a library?\n\nRomain, wdyt?",
+      "range": {
+        "startLine": 2103,
+        "startChar": 4,
+        "endLine": 2103,
+        "endChar": 63
+      },
+      "revId": "6329a06152cf8079497baf957efcf92bc5066993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
