@@ -86,6 +86,30 @@
       },
       "revId": "6329a06152cf8079497baf957efcf92bc5066993",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47e1b6e0_ad13b618",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2103,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-03-25T17:47:53Z",
+      "side": 1,
+      "message": "I went back and checked on why I used an android_library originally (aosp/1822073), it is because the generated java files need access to the sdk, so we can alternately use a java_library with the neverlink-sdk in its deps",
+      "parentUuid": "7fcef699_bdcb6eac",
+      "range": {
+        "startLine": 2103,
+        "startChar": 4,
+        "endLine": 2103,
+        "endChar": 63
+      },
+      "revId": "6329a06152cf8079497baf957efcf92bc5066993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
