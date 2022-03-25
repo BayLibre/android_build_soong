@@ -22,6 +22,75 @@
       },
       "revId": "86da09451a78c107987db7a57c1b52f47650b5d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "534b03a3_61361a5e",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1600,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-03-25T05:01:48Z",
+      "side": 1,
+      "message": "This function can change the suffix if it\u0027s not .apk in outputFile.",
+      "range": {
+        "startLine": 1600,
+        "startChar": 97,
+        "endLine": 1600,
+        "endChar": 103
+      },
+      "revId": "86da09451a78c107987db7a57c1b52f47650b5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83f998fc_8f353dda",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-03-25T05:01:48Z",
+      "side": 1,
+      "message": "I think you\u0027d better remove the duplication of @BuildID logic.\n\nHow about\n\napkName :\u003d aapp.InstallApkName()+\"@\"+ctx.Config().BuildId()\ndirInApex :\u003d filepath.Join(appDir, apkName)\naf.customStem \u003d apkName+aapp.OutputFile().Ext()",
+      "range": {
+        "startLine": 1613,
+        "startChar": 41,
+        "endLine": 1613,
+        "endChar": 55
+      },
+      "revId": "86da09451a78c107987db7a57c1b52f47650b5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6817777_589fd60a",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-03-25T05:01:48Z",
+      "side": 1,
+      "message": "here as well",
+      "range": {
+        "startLine": 1849,
+        "startChar": 5,
+        "endLine": 1856,
+        "endChar": 67
+      },
+      "revId": "86da09451a78c107987db7a57c1b52f47650b5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
