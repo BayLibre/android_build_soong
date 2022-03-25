@@ -1601,7 +1601,11 @@ func apexFileForAndroidApp(ctx android.BaseModuleContext, aapp androidApp) apexF
 	if aapp.Privileged() {
 		appDir = "priv-app"
 	}
-	dirInApex := filepath.Join(appDir, aapp.InstallApkName())
+	// TODO(b/225435110#comment9, 224589412, 226559955): Ensure that the path is
+	// suffixed so that PackageManager correctly "invalidates" the existing
+	// installed apk in favour of the new APK-in-APEX.  See bugs for more
+	// information.
+	dirInApex := filepath.Join(appDir, aapp.InstallApkName()+"@"+ctx.Config().BuildId())
 	fileToCopy := aapp.OutputFile()
 	af := newApexFile(ctx, fileToCopy, aapp.BaseModuleName(), dirInApex, app, aapp)
 	af.jacocoReportClassesFile = aapp.JacocoReportClassesFile()
