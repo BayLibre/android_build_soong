@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f2479d_35344ecf",
+        "filename": "bp2build/metrics.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-03-25T20:32:39Z",
+      "side": 1,
+      "message": "We use exported methods to add elements to the other slices -- I believe that would be overkill for Event.",
+      "parentUuid": "aa9aa8af_b0108852",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "825c4739_db998206",
@@ -65,6 +83,24 @@
       "writtenOn": "2022-03-25T15:23:13Z",
       "side": 1,
       "message": "nit: I assume the alias has the suffix 2 because there\u0027s a variable named `metrics` somewhere?\nMaybe alias it as `metricsPkg` instead?",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f391a493_cdafb81c",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-03-25T20:32:39Z",
+      "side": 1,
+      "message": "oops. was done automatically by IDE. I\u0027ve renamed the original `metrics`.",
+      "parentUuid": "825c4739_db998206",
       "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -86,6 +122,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6ef770d_01951bc2",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-03-25T20:32:39Z",
+      "side": 1,
+      "message": "I prefer the existing alternative, so that scoping is preserved, etc.",
+      "parentUuid": "f713bf0f_c3a89ccb",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96fd5a15_5664f4a9",
@@ -99,6 +153,24 @@
       "writtenOn": "2022-03-25T15:23:13Z",
       "side": 1,
       "message": "this is a nice refactoring. kudos!",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72473d77_96142d54",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-03-25T20:32:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "96fd5a15_5664f4a9",
       "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -122,6 +194,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9f2da03_58e321f0",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-03-25T20:32:39Z",
+      "side": 1,
+      "message": "Why? Passing a pointer instead of value here merits nil checking, etc.",
+      "parentUuid": "77421162_5aecdb64",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7e70c9f_605a75c9",
         "filename": "cmd/soong_build/main.go",
         "patchSetId": 1
@@ -133,6 +223,24 @@
       "writtenOn": "2022-03-25T15:23:13Z",
       "side": 1,
       "message": "nit: wished this `End()` weren\u0027t almost 100 lines away from its corresponding `Begin()`",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "602c5eb8_192f905a",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-03-25T20:32:39Z",
+      "side": 1,
+      "message": "Hm, if we include the metrics writing into the bp2build scope, we alleviate this. Done.",
+      "parentUuid": "b7e70c9f_605a75c9",
       "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -154,6 +262,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5845ee9b_96a758d5",
+        "filename": "ui/metrics/bp2build_metrics_proto/bp2build_metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-03-25T20:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4c077ef_9c4b6f26",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca62095a_f2f1ef26",
@@ -167,6 +293,24 @@
       "writtenOn": "2022-03-25T15:23:13Z",
       "side": 1,
       "message": "nit: `events`",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e8944c_8ec8e438",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-03-25T20:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca62095a_f2f1ef26",
       "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
