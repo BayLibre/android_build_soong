@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5a636ae_607ae890",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1600,
+      "author": {
+        "id": 1000701
+      },
+      "writtenOn": "2022-03-25T05:00:13Z",
+      "side": 1,
+      "message": "Should this be aapp.OutputFile() not \".apk\"?\n\nIf we change this, let\u0027s do so in a followup CL.",
+      "range": {
+        "startLine": 1600,
+        "startChar": 97,
+        "endLine": 1600,
+        "endChar": 103
+      },
+      "revId": "86da09451a78c107987db7a57c1b52f47650b5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
