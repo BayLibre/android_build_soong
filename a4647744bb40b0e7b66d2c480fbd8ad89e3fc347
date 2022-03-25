@@ -245,6 +245,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b15089ce_e036b598",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-03-25T21:19:35Z",
+      "side": 1,
+      "message": "Never mind. We can\u0027t do this, because then metrics are being written before the event ends.\n\nI think the alternatives to fixing this end up making things less clean; since the Begin() and End() are in the same function, I think this is still OK.",
+      "parentUuid": "602c5eb8_192f905a",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4c077ef_9c4b6f26",
