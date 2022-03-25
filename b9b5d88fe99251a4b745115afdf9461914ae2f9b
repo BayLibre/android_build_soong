@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a71e562e_d2d9e72e",
+        "filename": "apex/apex.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-03-25T00:32:03Z",
+      "side": 1,
+      "message": "I am still investigating the source of this dependency",
+      "range": {
+        "startLine": 1055,
+        "startChar": 1,
+        "endLine": 1055,
+        "endChar": 25
+      },
+      "revId": "b9b5d88fe99251a4b745115afdf9461914ae2f9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
