@@ -210,6 +210,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af776270_872de230",
+        "filename": "cmd/soong_build/main.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-03-25T21:54:48Z",
+      "side": 1,
+      "message": "ah I think slices are reference types as well and copying is cheap and fine.",
+      "parentUuid": "f9f2da03_58e321f0",
+      "revId": "a4647744bb40b0e7b66d2c480fbd8ad89e3fc347",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b7e70c9f_605a75c9",
