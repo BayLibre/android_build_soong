@@ -96,6 +96,7 @@ bootstrap_go_package {
         "bazel_handler_test.go",
         "bazel_test.go",
         "config_test.go",
+        "config_bp2build_test.go",
         "csuite_config_test.go",
         "defaults_test.go",
         "depset_test.go",
