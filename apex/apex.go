@@ -1596,17 +1596,28 @@ type androidApp interface {
 var _ androidApp = (*java.AndroidApp)(nil)
 var _ androidApp = (*java.AndroidAppImport)(nil)
 
+func customApkStemWithBuildId(ctx android.BaseModuleContext, outputFile android.Path) string {
+	return strings.TrimSuffix(outputFile.Base(), outputFile.Ext()) + "@" + ctx.Config().BuildId() + ".apk"
+}
+
 func apexFileForAndroidApp(ctx android.BaseModuleContext, aapp androidApp) apexFile {
 	appDir := "app"
 	if aapp.Privileged() {
 		appDir = "priv-app"
 	}
-	dirInApex := filepath.Join(appDir, aapp.InstallApkName())
+
+	// TODO(224589412, 226559955): Ensure that the dirname and APK basename are
+	// suffixed so that PackageManager correctly invalidates the existing
+	// installed apk in favour of the new APK-in-APEX.  See bugs for more
+	// information.
+	dirInApex := filepath.Join(appDir, aapp.InstallApkName()+"@"+ctx.Config().BuildId())
 	fileToCopy := aapp.OutputFile()
+
 	af := newApexFile(ctx, fileToCopy, aapp.BaseModuleName(), dirInApex, app, aapp)
 	af.jacocoReportClassesFile = aapp.JacocoReportClassesFile()
 	af.lintDepSets = aapp.LintDepSets()
 	af.certificate = aapp.Certificate()
+	af.customStem = customApkStemWithBuildId(ctx, aapp.OutputFile())
 
 	if app, ok := aapp.(interface {
 		OverriddenManifestPackageName() string
@@ -1836,8 +1847,13 @@ func (a *apexBundle) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 						appDir = "priv-app"
 					}
 					af := newApexFile(ctx, ap.OutputFile(), ap.BaseModuleName(),
-						filepath.Join(appDir, ap.BaseModuleName()), appSet, ap)
+						filepath.Join(appDir, ap.BaseModuleName()+"@"+ctx.Config().BuildId()), appSet, ap)
 					af.certificate = java.PresignedCertificate
+					// TODO(224589412, 226559955): Ensure that the dirname and APK basename are
+					// suffixed so that PackageManager correctly invalidates the existing
+					// installed apk in favour of the new APK-in-APEX.  See bugs for more
+					// information.
+					af.customStem = customApkStemWithBuildId(ctx, ap.OutputFile())
 					filesInfo = append(filesInfo, af)
 				} else {
 					ctx.PropertyErrorf("apps", "%q is not an android_app module", depName)
