@@ -27,27 +27,27 @@ import (
 	"github.com/google/blueprint"
 )
 
-type bazelVarExporter interface {
-	asBazel(android.Config, exportedStringVariables, exportedStringListVariables, exportedConfigDependingVariables) []bazelConstant
+type BazelVarExporter interface {
+	asBazel(android.Config, ExportedStringVariables, ExportedStringListVariables, ExportedConfigDependingVariables) []bazelConstant
 }
 
 // Helpers for exporting cc configuration information to Bazel.
 var (
 	// Maps containing toolchain variables that are independent of the
 	// environment variables of the build.
-	exportedStringListVars     = exportedStringListVariables{}
-	exportedStringVars         = exportedStringVariables{}
+	exportedStringListVars     = ExportedStringListVariables{}
+	exportedStringVars         = ExportedStringVariables{}
 	exportedStringListDictVars = exportedStringListDictVariables{}
 	// Note: these can only contain references to other variables and must be printed last
 	exportedVariableReferenceDictVars = exportedVariableReferenceDictVariables{}
 
 	/// Maps containing variables that are dependent on the build config.
-	exportedConfigDependingVars = exportedConfigDependingVariables{}
+	exportedConfigDependingVars = ExportedConfigDependingVariables{}
 )
 
-type exportedConfigDependingVariables map[string]interface{}
+type ExportedConfigDependingVariables map[string]interface{}
 
-func (m exportedConfigDependingVariables) Set(k string, v interface{}) {
+func (m ExportedConfigDependingVariables) Set(k string, v interface{}) {
 	m[k] = v
 }
 
@@ -67,14 +67,14 @@ type bazelConstant struct {
 	sortLast           bool
 }
 
-type exportedStringVariables map[string]string
+type ExportedStringVariables map[string]string
 
-func (m exportedStringVariables) Set(k string, v string) {
+func (m ExportedStringVariables) Set(k string, v string) {
 	m[k] = v
 }
 
-func (m exportedStringVariables) asBazel(config android.Config,
-	stringVars exportedStringVariables, stringListVars exportedStringListVariables, cfgDepVars exportedConfigDependingVariables) []bazelConstant {
+func (m ExportedStringVariables) asBazel(config android.Config,
+	stringVars ExportedStringVariables, stringListVars ExportedStringListVariables, cfgDepVars ExportedConfigDependingVariables) []bazelConstant {
 	ret := make([]bazelConstant, 0, len(m))
 	for k, variableValue := range m {
 		expandedVar, err := expandVar(config, variableValue, stringVars, stringListVars, cfgDepVars)
@@ -98,15 +98,15 @@ func exportStringStaticVariable(name string, value string) {
 	exportedStringVars.Set(name, value)
 }
 
-type exportedStringListVariables map[string][]string
+type ExportedStringListVariables map[string][]string
 
-func (m exportedStringListVariables) Set(k string, v []string) {
+func (m ExportedStringListVariables) Set(k string, v []string) {
 	m[k] = v
 }
 
-func (m exportedStringListVariables) asBazel(config android.Config,
-	stringScope exportedStringVariables, stringListScope exportedStringListVariables,
-	exportedVars exportedConfigDependingVariables) []bazelConstant {
+func (m ExportedStringListVariables) asBazel(config android.Config,
+	stringScope ExportedStringVariables, stringListScope ExportedStringListVariables,
+	exportedVars ExportedConfigDependingVariables) []bazelConstant {
 	ret := make([]bazelConstant, 0, len(m))
 	// For each exported variable, recursively expand elements in the variableValue
 	// list to ensure that interpolated variables are expanded according to their values
@@ -159,8 +159,8 @@ func (m exportedStringListDictVariables) Set(k string, v map[string][]string) {
 }
 
 // Since dictionaries are not supported in Ninja, we do not expand variables for dictionaries
-func (m exportedStringListDictVariables) asBazel(_ android.Config, _ exportedStringVariables,
-	_ exportedStringListVariables, _ exportedConfigDependingVariables) []bazelConstant {
+func (m exportedStringListDictVariables) asBazel(_ android.Config, _ ExportedStringVariables,
+	_ ExportedStringListVariables, _ ExportedConfigDependingVariables) []bazelConstant {
 	ret := make([]bazelConstant, 0, len(m))
 	for k, dict := range m {
 		ret = append(ret, bazelConstant{
@@ -177,8 +177,8 @@ func (m exportedVariableReferenceDictVariables) Set(k string, v map[string]strin
 	m[k] = v
 }
 
-func (m exportedVariableReferenceDictVariables) asBazel(_ android.Config, _ exportedStringVariables,
-	_ exportedStringListVariables, _ exportedConfigDependingVariables) []bazelConstant {
+func (m exportedVariableReferenceDictVariables) asBazel(_ android.Config, _ ExportedStringVariables,
+	_ ExportedStringListVariables, _ ExportedConfigDependingVariables) []bazelConstant {
 	ret := make([]bazelConstant, 0, len(m))
 	for n, dict := range m {
 		for k, v := range dict {
@@ -204,19 +204,28 @@ func (m exportedVariableReferenceDictVariables) asBazel(_ android.Config, _ expo
 // BazelCcToolchainVars generates bzl file content containing variables for
 // Bazel's cc_toolchain configuration.
 func BazelCcToolchainVars(config android.Config) string {
-	return bazelToolchainVars(
+	return BazelToolchainVars(
 		config,
-		exportedStringListDictVars,
-		exportedStringListVars,
 		exportedStringVars,
-		exportedVariableReferenceDictVars)
+		exportedStringListVars,
+		exportedConfigDependingVars,
+		exportedVariableReferenceDictVars,
+		exportedStringListDictVars,
+	)
 }
 
-func bazelToolchainVars(config android.Config, vars ...bazelVarExporter) string {
-	ret := "# GENERATED FOR BAZEL FROM SOONG. DO NOT EDIT.\n\n"
+func BazelToolchainVars(
+	config android.Config,
+	exportedStringVars ExportedStringVariables,
+	exportedStringListVars ExportedStringListVariables,
+	exportedConfigDependingVars ExportedConfigDependingVariables,
+	vars ...BazelVarExporter) string {
+
+	varsToExpand := []BazelVarExporter{exportedStringVars, exportedStringListVars}
+	varsToExpand = append(varsToExpand, vars...)
 
 	results := []bazelConstant{}
-	for _, v := range vars {
+	for _, v := range varsToExpand {
 		results = append(results, v.asBazel(config, exportedStringVars, exportedStringListVars, exportedConfigDependingVars)...)
 	}
 
@@ -237,6 +246,7 @@ func bazelToolchainVars(config android.Config, vars ...bazelVarExporter) string 
 	}
 
 	// Build the exported constants struct.
+	ret := "# GENERATED FOR BAZEL FROM SOONG. DO NOT EDIT.\n\n"
 	ret += strings.Join(definitions, "\n\n")
 	ret += "\n\n"
 	ret += "constants = struct(\n"
@@ -279,8 +289,8 @@ func variableReference(input string) (match, error) {
 // string slice than to handle a pass-by-referenced map, which would make it
 // quite complex to track depth-first interpolations. It's also unlikely the
 // interpolation stacks are deep (n > 1).
-func expandVar(config android.Config, toExpand string, stringScope exportedStringVariables,
-	stringListScope exportedStringListVariables, exportedVars exportedConfigDependingVariables) ([]string, error) {
+func expandVar(config android.Config, toExpand string, stringScope ExportedStringVariables,
+	stringListScope ExportedStringListVariables, exportedVars ExportedConfigDependingVariables) ([]string, error) {
 
 	// Internal recursive function.
 	var expandVarInternal func(string, map[string]bool) (string, error)
@@ -322,7 +332,9 @@ func expandVar(config android.Config, toExpand string, stringScope exportedStrin
 					}
 					expandedVars = append(expandedVars, expandedVar)
 				}
-				ret += strings.Join(expandedVars, " ")
+				// Join these strings with an unused delimiter so that we don't accidentally
+				// split on something important later
+				ret += strings.Join(expandedVars, "\t")
 			} else if unexpandedVar, ok := stringScope[variable]; ok {
 				expandedVar, err := expandVarInternal(unexpandedVar, newSeenVars)
 				if err != nil {
@@ -340,13 +352,14 @@ func expandVar(config android.Config, toExpand string, stringScope exportedStrin
 				}
 				ret += expandedVar
 			} else {
+				fmt.Println(stringScope, stringListScope)
 				return "", fmt.Errorf("Unbound config variable %s", variable)
 			}
 		}
 		return ret, nil
 	}
 	var ret []string
-	for _, v := range strings.Split(toExpand, " ") {
+	for _, v := range strings.Split(toExpand, "\t") {
 		val, err := expandVarInternal(v, map[string]bool{})
 		if err != nil {
 			return ret, err

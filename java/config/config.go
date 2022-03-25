@@ -58,28 +58,44 @@ var (
 	}
 )
 
-const (
-	JavaVmFlags  = `-XX:OnError="cat hs_err_pid%p.log" -XX:CICompilerCount=6 -XX:+UseDynamicNumberOfGCThreads`
-	JavacVmFlags = `-J-XX:OnError="cat hs_err_pid%p.log" -J-XX:CICompilerCount=6 -J-XX:+UseDynamicNumberOfGCThreads -J-XX:+TieredCompilation -J-XX:TieredStopAtLevel=1`
+var (
+	JavaVmFlags      = strings.Join(JavaVmFlags_List, " ")
+	JavacVmFlags     = strings.Join(JavacVmFlags_List, " ")
+	JavaVmFlags_List = []string{
+		"-XX:OnError='cat hs_err_pid%p.log'",
+		"-XX:CICompilerCount=6",
+		"-XX:+UseDynamicNumberOfGCThreads",
+	}
+	JavacVmFlags_List = []string{
+		"-J-XX:OnError='cat hs_err_pid%p.log'",
+		"-J-XX:CICompilerCount=6",
+		"-J-XX:+UseDynamicNumberOfGCThreads",
+		"-J-XX:+TieredCompilation",
+		"-J-XX:TieredStopAtLevel=1",
+	}
 )
 
 func init() {
 	pctx.Import("github.com/google/blueprint/bootstrap")
 
-	pctx.StaticVariable("JavacHeapSize", "2048M")
-	pctx.StaticVariable("JavacHeapFlags", "-J-Xmx${JavacHeapSize}")
+	exportStringStaticVariable("JavacHeapSize", "2048M")
+	exportStringStaticVariable("JavacHeapFlags", "-J-Xmx${JavacHeapSize}")
 
 	// ErrorProne can use significantly more memory than javac alone, give it a higher heap
 	// size (b/221480398).
-	pctx.StaticVariable("ErrorProneHeapSize", "4096M")
-	pctx.StaticVariable("ErrorProneHeapFlags", "-J-Xmx${ErrorProneHeapSize}")
+	exportStringStaticVariable("ErrorProneHeapSize", "4096M")
+	exportStringStaticVariable("ErrorProneHeapFlags", "-J-Xmx${ErrorProneHeapSize}")
 
-	pctx.StaticVariable("DexFlags", "-JXX:OnError='cat hs_err_pid%p.log' -JXX:CICompilerCount=6 -JXX:+UseDynamicNumberOfGCThreads")
+	exportStringListStaticVariable("DexFlags", []string{
+		"-JXX:OnError='cat hs_err_pid%p.log'",
+		"-JXX:CICompilerCount=6",
+		"-JXX:+UseDynamicNumberOfGCThreads",
+	})
 
-	pctx.StaticVariable("CommonJdkFlags", strings.Join([]string{
+	exportStringListStaticVariable("CommonJdkFlags", []string{
 		`-Xmaxerrs 9999999`,
 		`-encoding UTF-8`,
-		`-sourcepath ""`,
+		`-sourcepath ''`,
 		`-g`,
 		// Turbine leaves out bridges which can cause javac to unnecessarily insert them into
 		// subclasses (b/65645120).  Setting this flag causes our custom javac to assume that
@@ -90,10 +106,10 @@ func init() {
 
 		// b/65004097: prevent using java.lang.invoke.StringConcatFactory when using -target 1.9
 		`-XDstringConcat=inline`,
-	}, " "))
+	})
 
-	pctx.StaticVariable("JavaVmFlags", JavaVmFlags)
-	pctx.StaticVariable("JavacVmFlags", JavacVmFlags)
+	exportStringListStaticVariable("JavaVmFlags", JavaVmFlags_List)
+	exportStringListStaticVariable("JavacVmFlags", JavacVmFlags_List)
 
 	pctx.VariableConfigMethod("hostPrebuiltTag", android.Config.PrebuiltOS)
 
