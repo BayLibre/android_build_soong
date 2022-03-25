@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "852a7b8f_7f0ac4a3",
+        "filename": "scripts/list_image.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-25T00:08:52Z",
+      "side": 1,
+      "message": "Is it worth supporting simg2img to list sparse images too?",
+      "revId": "b3a3a2893be440da609db17ef0a93ebf0fcc30bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c675975e_af640010",
+        "filename": "scripts/list_image.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-25T00:08:52Z",
+      "side": 1,
+      "message": "Is the output of this command stable enough to parse like this?",
+      "revId": "b3a3a2893be440da609db17ef0a93ebf0fcc30bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
