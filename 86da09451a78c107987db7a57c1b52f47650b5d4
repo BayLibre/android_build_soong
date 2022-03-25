@@ -47,6 +47,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62d8f756_cbf30c8d",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1600,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-03-25T05:43:38Z",
+      "side": 1,
+      "message": "Deleting this function in the latest patchset as modifying apk stems isn\u0027t needed anymore.",
+      "parentUuid": "534b03a3_61361a5e",
+      "range": {
+        "startLine": 1600,
+        "startChar": 97,
+        "endLine": 1600,
+        "endChar": 103
+      },
+      "revId": "86da09451a78c107987db7a57c1b52f47650b5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5eb2e079_e16ac23b",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1600,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-03-25T05:43:38Z",
+      "side": 1,
+      "message": "According to Cheonho\u0027s repro and bugfix, the stem doesn\u0027t need to be modified, so this function isn\u0027t needed anymore.",
+      "parentUuid": "e5a636ae_607ae890",
+      "range": {
+        "startLine": 1600,
+        "startChar": 97,
+        "endLine": 1600,
+        "endChar": 103
+      },
+      "revId": "86da09451a78c107987db7a57c1b52f47650b5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83f998fc_8f353dda",
@@ -94,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5a876a1_eb06a4c0",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1613,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-03-25T05:43:38Z",
+      "side": 1,
+      "message": "Thanks both! I\u0027ll remove the custom suffix in the APK to make things simpler, since Cheonho has verified that it\u0027s not required to fix the issue.",
+      "parentUuid": "6f3c305b_506c32c3",
+      "range": {
+        "startLine": 1613,
+        "startChar": 41,
+        "endLine": 1613,
+        "endChar": 55
+      },
+      "revId": "86da09451a78c107987db7a57c1b52f47650b5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6817777_589fd60a",
@@ -107,6 +179,30 @@
       "writtenOn": "2022-03-25T05:01:48Z",
       "side": 1,
       "message": "here as well",
+      "range": {
+        "startLine": 1849,
+        "startChar": 5,
+        "endLine": 1856,
+        "endChar": 67
+      },
+      "revId": "86da09451a78c107987db7a57c1b52f47650b5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c45eb5c3_5f0f7431",
+        "filename": "apex/apex.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1856,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-03-25T05:43:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e6817777_589fd60a",
       "range": {
         "startLine": 1849,
         "startChar": 5,
