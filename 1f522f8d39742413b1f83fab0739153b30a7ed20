@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d25d7052_1237f2fa",
+        "filename": "bcid/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-03-28T14:31:40Z",
+      "side": 1,
+      "message": "I don\u0027t think \"bcid\" should be in the AOSP codebase given that it\u0027s a Google-only term. Use something more generic, like \"soong-provenance\"?",
+      "range": {
+        "startLine": 34,
+        "startChar": 17,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "1f522f8d39742413b1f83fab0739153b30a7ed20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a3185a5_4409e27f",
+        "filename": "bcid/bcid_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-03-28T14:31:40Z",
+      "side": 1,
+      "message": "Why is hashing done in Soong instead of Soong generating a Ninja action to hash the inputs? \n\nThis has a couple of major downsides:\n\n1) incremental builds will be incorrect. Ninja is the only incrementality mechanism in the whole build, so Soong cannot invalidate itself and generate a new hash when the artifact changes.\n2) doing compute for every app/apex module for every build, not just the ones users are interested in. I was expecting something like `m app1-provenance apex1-provenance` so that Ninja would be able to figure out the minimal set of actions.",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 99
+      },
+      "revId": "1f522f8d39742413b1f83fab0739153b30a7ed20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
