@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "439eac95_0c484536",
+        "filename": "cc/config/global.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-03-28T23:58:38Z",
+      "side": 1,
+      "message": "if this goes well, i\u0027ll come back for gnu17 here, and then we can see about maybe going for gnu17 for *CStdVersion*. but one thing at a time...",
+      "revId": "fd996c9115188b2b49953a258c3ff192ec202ec9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
