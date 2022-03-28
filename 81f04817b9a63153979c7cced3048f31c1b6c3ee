@@ -16,6 +16,24 @@
       "message": "This doesn\u0027t need to be an override any more.  I\u0027d suggest changing the callers to\n\n```\nspecs :\u003d f.GatherPackagingSpecs(ctx)\nf.filterPackagingSpecs(specs)\nf.entries \u003d f.CopyDepsToZip(ctx, specs, depsZipFile)\n```\n\nOr if that\u0027s too repetitive, extract that whole block to a helper method.",
       "revId": "81f04817b9a63153979c7cced3048f31c1b6c3ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d31ca52_6eadbee0",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-03-28T22:58:49Z",
+      "side": 1,
+      "message": "\"Gather and filter\" is shared by `systemImage` as well. It was to avoid accidental mismatching between two places. Renamed it.\n\nBtw, I found \"gather/filter/CopyDepsToZip/rebase/...\" part is duplicated in two places(`buildCpioImage` and `buildImageUsingBuildImage`). Refactoring it would be a separate change.",
+      "parentUuid": "249f5fb2_4584edcf",
+      "revId": "81f04817b9a63153979c7cced3048f31c1b6c3ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
