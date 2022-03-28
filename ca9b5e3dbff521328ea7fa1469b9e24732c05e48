@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d089b68_bb1912fd",
+        "filename": "snapshot/host_fake_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2022-03-28T01:29:08Z",
+      "side": 1,
+      "message": "Can we use this value instead of `idx` and `jsonData[idx]`?",
+      "range": {
+        "startLine": 137,
+        "startChar": 10,
+        "endLine": 137,
+        "endChar": 11
+      },
+      "revId": "ca9b5e3dbff521328ea7fa1469b9e24732c05e48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
