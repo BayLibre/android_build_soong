@@ -294,3 +294,80 @@ func (ssw *switchNode) emit(gctx *generationContext) {
 		ssCase.emit(gctx)
 	}
 }
+
+type foreachNode struct {
+	varName string
+	list    starlarkExpr
+	action  []starlarkNode
+}
+
+func (f *foreachNode) emit(gctx *generationContext) {
+	gctx.newLine()
+	gctx.writef("for %s in ", f.varName)
+	f.list.emit(gctx)
+	gctx.write(":")
+	gctx.indentLevel++
+	hasStatements := false
+	for _, a := range f.action {
+		if _, ok := a.(*commentNode); !ok {
+			hasStatements = true
+		}
+		a.emit(gctx)
+	}
+	if !hasStatements {
+		gctx.emitPass()
+	}
+	gctx.indentLevel--
+}
+
+func simplifyNode(node starlarkNode) []starlarkNode {
+	switch t := node.(type) {
+	case *exprNode:
+		switch e := t.expr.(type) {
+		case *nodeExpr:
+			return e.nodes
+		case *foreachExpr:
+			return []starlarkNode{
+				&foreachNode{
+					varName: e.varName,
+					list:    e.list,
+					action:  simplifyNode(&exprNode{expr: e.action}),
+				},
+			}
+		case *ifExpr:
+			ifn := &ifNode{expr: e.condition}
+			cases := []*switchCase{
+				{
+					gate:  ifn,
+					nodes: simplifyNode(&exprNode{expr: e.ifTrue}),
+				},
+				{
+					gate:  &elseNode{},
+					nodes: simplifyNode(&exprNode{expr: e.ifFalse}),
+				},
+			}
+			if len(cases[1].nodes) == 0 {
+				// Remove else branch if it has no contents
+				cases = cases[:1]
+			} else if len(cases[0].nodes) == 0 {
+				// If the if branch has no contents but the else does,
+				// move them to the if and negate its condition
+				ifn.expr = negateExpr(ifn.expr)
+				cases[0].nodes = cases[1].nodes
+				cases = cases[:1]
+			}
+			return []starlarkNode{&switchNode{ssCases: cases}}
+		case *stringLiteralExpr:
+			// Since this is simplification function is run on nodes (aka statements),
+			// having a literal will do nothing and can be removed.
+			return []starlarkNode{}
+		case *intLiteralExpr:
+			return []starlarkNode{}
+		case *boolLiteralExpr:
+			return []starlarkNode{}
+		}
+	}
+
+	// Could not be simplified, return unchanged
+	return []starlarkNode{node}
+}

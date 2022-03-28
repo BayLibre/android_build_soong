@@ -81,6 +81,7 @@ var knownFunctions = map[string]interface {
 	"dist-for-goals":                       &simpleCallParser{name: baseName + ".mkdist_for_goals", returnType: starlarkTypeVoid, addGlobals: true},
 	"enforce-product-packages-exist":       &simpleCallParser{name: baseName + ".enforce_product_packages_exist", returnType: starlarkTypeVoid},
 	"error":                                &makeControlFuncParser{name: baseName + ".mkerror"},
+	"eval":                                 &evalParser{},
 	"findstring":                           &simpleCallParser{name: baseName + ".findstring", returnType: starlarkTypeInt},
 	"find-copy-subdir-files":               &simpleCallParser{name: baseName + ".find_and_copy", returnType: starlarkTypeList},
 	"filter":                               &simpleCallParser{name: baseName + ".filter", returnType: starlarkTypeList},
@@ -1030,49 +1031,19 @@ func (ctx *parseContext) parseCompare(cond *mkparser.Directive) starlarkExpr {
 		otherOperand = xLeft
 	}
 
-	not := func(expr starlarkExpr) starlarkExpr {
-		switch typedExpr := expr.(type) {
-		case *inExpr:
-			typedExpr.isNot = !typedExpr.isNot
-			return typedExpr
-		case *eqExpr:
-			typedExpr.isEq = !typedExpr.isEq
-			return typedExpr
-		case *binaryOpExpr:
-			switch typedExpr.op {
-			case ">":
-				typedExpr.op = "<="
-				return typedExpr
-			case "<":
-				typedExpr.op = ">="
-				return typedExpr
-			case ">=":
-				typedExpr.op = "<"
-				return typedExpr
-			case "<=":
-				typedExpr.op = ">"
-				return typedExpr
-			default:
-				return &notExpr{expr: expr}
-			}
-		default:
-			return &notExpr{expr: expr}
-		}
-	}
-
 	// If we've identified one of the operands as being a string literal, check
 	// for some special cases we can do to simplify the resulting expression.
 	if otherOperand != nil {
 		if stringOperand == "" {
 			if isEq {
-				return not(otherOperand)
+				return negateExpr(otherOperand)
 			} else {
 				return otherOperand
 			}
 		}
 		if stringOperand == "true" && otherOperand.typ() == starlarkTypeBool {
 			if !isEq {
-				return not(otherOperand)
+				return negateExpr(otherOperand)
 			} else {
 				return otherOperand
 			}
@@ -1630,6 +1601,35 @@ func (p *mathMaxOrMinCallParser) parse(ctx *parseContext, node mkparser.Node, ar
 	}
 }
 
+type evalParser struct{}
+
+func (p *evalParser) parse(ctx *parseContext, node mkparser.Node, args *mkparser.MakeString) starlarkExpr {
+	parser := mkparser.NewParser("Eval expression", strings.NewReader(args.Dump()))
+	nodes, errs := parser.Parse()
+	if errs != nil {
+		return ctx.newBadExpr(node, "Unable to parse eval statement")
+	}
+
+	if len(nodes) == 1 {
+		switch n := nodes[0].(type) {
+		case *mkparser.Assignment:
+			if n.Name.Const() {
+				return &nodeExpr{
+					nodes:         ctx.handleAssignment(n),
+					errorLocation: ctx.errorLocation(node),
+				}
+			}
+		case *mkparser.Comment:
+			return &nodeExpr{
+				nodes:         []starlarkNode{&commentNode{strings.TrimSpace("#" + n.Comment)}},
+				errorLocation: ctx.errorLocation(node),
+			}
+		}
+	}
+
+	return ctx.newBadExpr(node, "Eval expression too complex; only assignments and comments are supported")
+}
+
 func (ctx *parseContext) parseMakeString(node mkparser.Node, mk *mkparser.MakeString) starlarkExpr {
 	if mk.Const() {
 		return &stringLiteralExpr{mk.Dump()}
@@ -1687,6 +1687,16 @@ func (ctx *parseContext) handleSimpleStatement(node mkparser.Node) []starlarkNod
 		result = []starlarkNode{ctx.newBadNode(x, "unsupported line %s", strings.ReplaceAll(x.Dump(), "\n", "\n#"))}
 	}
 
+	if result == nil {
+		result = []starlarkNode{}
+	}
+
+	simplifiedResult := make([]starlarkNode, 0, len(result))
+	for _, r := range result {
+		simplifiedResult = append(simplifiedResult, simplifyNode(r)...)
+	}
+	result = simplifiedResult
+
 	// Clear the includeTops after each non-comment statement
 	// so that include annotations placed on certain statements don't apply
 	// globally for the rest of the makefile was well.
@@ -1695,9 +1705,6 @@ func (ctx *parseContext) handleSimpleStatement(node mkparser.Node) []starlarkNod
 		ctx.includeTops = []string{}
 	}
 
-	if result == nil {
-		result = []starlarkNode{}
-	}
 	return result
 }
 

@@ -221,11 +221,9 @@ func (xi *interpolateExpr) emitListVarCopy(gctx *generationContext) {
 }
 
 func (xi *interpolateExpr) transform(transformer func(expr starlarkExpr) starlarkExpr) starlarkExpr {
-	argsCopy := make([]starlarkExpr, len(xi.args))
-	for i, arg := range xi.args {
-		argsCopy[i] = arg.transform(transformer)
+	for i := range xi.args {
+		xi.args[i] = xi.args[i].transform(transformer)
 	}
-	xi.args = argsCopy
 	if replacement := transformer(xi); replacement != nil {
 		return replacement
 	} else {
@@ -591,11 +589,9 @@ func (cx *callExpr) transform(transformer func(expr starlarkExpr) starlarkExpr) 
 	if cx.object != nil {
 		cx.object = cx.object.transform(transformer)
 	}
-	argsCopy := make([]starlarkExpr, len(cx.args))
-	for i, arg := range cx.args {
-		argsCopy[i] = arg.transform(transformer)
+	for i := range cx.args {
+		cx.args[i] = cx.args[i].transform(transformer)
 	}
-	cx.args = argsCopy
 	if replacement := transformer(cx); replacement != nil {
 		return replacement
 	} else {
@@ -733,6 +729,41 @@ func (b *binaryOpExpr) transform(transformer func(expr starlarkExpr) starlarkExp
 	}
 }
 
+// nodeExpr's purpose is to wrap starlarkNodes for later substitution.
+// It should be removed before emitting the node hierarchy, or else it will emit
+// an error.
+type nodeExpr struct {
+	nodes         []starlarkNode
+	errorLocation ErrorLocation
+}
+
+func (b *nodeExpr) emit(gctx *generationContext) {
+	e := badExpr{errorLocation: b.errorLocation, message: "attempted to emit a nodeExpr. An $(eval) was probably nested too deeply"}
+	e.emit(gctx)
+}
+
+func (b *nodeExpr) typ() starlarkType {
+	return starlarkTypeVoid
+}
+
+func (b *nodeExpr) emitListVarCopy(gctx *generationContext) {
+	b.emit(gctx)
+}
+
+func (b *nodeExpr) transform(transformer func(expr starlarkExpr) starlarkExpr) starlarkExpr {
+	for _, node := range b.nodes {
+		switch t := node.(type) {
+		case *assignmentNode:
+			t.value = t.value.transform(transformer)
+		}
+	}
+	if replacement := transformer(b); replacement != nil {
+		return replacement
+	} else {
+		return b
+	}
+}
+
 type badExpr struct {
 	errorLocation ErrorLocation
 	message       string
@@ -768,4 +799,36 @@ func maybeConvertToStringList(expr starlarkExpr) starlarkExpr {
 func isEmptyString(expr starlarkExpr) bool {
 	x, ok := expr.(*stringLiteralExpr)
 	return ok && x.literal == ""
+}
+
+func negateExpr(expr starlarkExpr) starlarkExpr {
+	switch typedExpr := expr.(type) {
+	case *notExpr:
+		return typedExpr.expr
+	case *inExpr:
+		typedExpr.isNot = !typedExpr.isNot
+		return typedExpr
+	case *eqExpr:
+		typedExpr.isEq = !typedExpr.isEq
+		return typedExpr
+	case *binaryOpExpr:
+		switch typedExpr.op {
+		case ">":
+			typedExpr.op = "<="
+			return typedExpr
+		case "<":
+			typedExpr.op = ">="
+			return typedExpr
+		case ">=":
+			typedExpr.op = "<"
+			return typedExpr
+		case "<=":
+			typedExpr.op = ">"
+			return typedExpr
+		default:
+			return &notExpr{expr: expr}
+		}
+	default:
+		return &notExpr{expr: expr}
+	}
 }
