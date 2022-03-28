@@ -187,6 +187,27 @@ const (
 	Bp2BuildDefaultFalse
 )
 
+type Bp2BuildConversionAllowlist struct {
+	bp2buildDefaultConfig           Bp2BuildConfig
+	bp2buildKeepExistingBuildFile   map[string]bool
+	bp2buildModuleDoNotConvert      map[string]bool
+	bp2buildModuleAlwaysConvert     map[string]bool
+	bp2buildModuleTypeAlwaysConvert map[string]bool
+	bp2buildCcLibraryStaticOnly     map[string]bool
+	mixedBuildsDisabled             map[string]bool
+}
+
+func NewBp2BuildAllowlist() Bp2BuildConversionAllowlist {
+	return Bp2BuildConversionAllowlist{
+		bp2buildKeepExistingBuildFile:   map[string]bool{},
+		bp2buildModuleDoNotConvert:      map[string]bool{},
+		bp2buildModuleAlwaysConvert:     map[string]bool{},
+		bp2buildModuleTypeAlwaysConvert: map[string]bool{},
+		bp2buildCcLibraryStaticOnly:     map[string]bool{},
+		mixedBuildsDisabled:             map[string]bool{},
+	}
+}
+
 var (
 	// Keep any existing BUILD files (and do not generate new BUILD files) for these directories
 	// in the synthetic Bazel workspace.
@@ -615,47 +636,48 @@ var (
 		"zlib_bench",
 	}
 
-	// Used for quicker lookups
-	bp2buildModuleDoNotConvert      = map[string]bool{}
-	bp2buildModuleAlwaysConvert     = map[string]bool{}
-	bp2buildModuleTypeAlwaysConvert = map[string]bool{}
-	bp2buildCcLibraryStaticOnly     = map[string]bool{}
-	mixedBuildsDisabled             = map[string]bool{}
+	bp2buildAllowlist = NewBp2BuildAllowlist()
 )
 
 func init() {
+	bp2buildAllowlist.bp2buildDefaultConfig = bp2buildDefaultConfig
+	bp2buildAllowlist.bp2buildKeepExistingBuildFile = bp2buildKeepExistingBuildFile
+
 	for _, moduleName := range bp2buildModuleAlwaysConvertList {
-		bp2buildModuleAlwaysConvert[moduleName] = true
+		bp2buildAllowlist.bp2buildModuleAlwaysConvert[moduleName] = true
 	}
 
 	for _, moduleType := range bp2buildModuleTypeAlwaysConvertList {
-		bp2buildModuleTypeAlwaysConvert[moduleType] = true
+		bp2buildAllowlist.bp2buildModuleTypeAlwaysConvert[moduleType] = true
 	}
 
 	for _, moduleName := range bp2buildModuleDoNotConvertList {
-		bp2buildModuleDoNotConvert[moduleName] = true
+		bp2buildAllowlist.bp2buildModuleDoNotConvert[moduleName] = true
 	}
 
 	for _, moduleName := range bp2buildCcLibraryStaticOnlyList {
-		bp2buildCcLibraryStaticOnly[moduleName] = true
+		bp2buildAllowlist.bp2buildCcLibraryStaticOnly[moduleName] = true
 	}
 
 	for _, moduleName := range mixedBuildsDisabledList {
-		mixedBuildsDisabled[moduleName] = true
+		bp2buildAllowlist.mixedBuildsDisabled[moduleName] = true
 	}
 }
 
 func GenerateCcLibraryStaticOnly(moduleName string) bool {
-	return bp2buildCcLibraryStaticOnly[moduleName]
+	return bp2buildAllowlist.bp2buildCcLibraryStaticOnly[moduleName]
 }
 
 func ShouldKeepExistingBuildFileForDir(dir string) bool {
-	if _, ok := bp2buildKeepExistingBuildFile[dir]; ok {
+	return shouldKeepExistingBuildFileForDir(bp2buildAllowlist, dir)
+}
+func shouldKeepExistingBuildFileForDir(allowlist Bp2BuildConversionAllowlist, dir string) bool {
+	if _, ok := allowlist.bp2buildKeepExistingBuildFile[dir]; ok {
 		// Exact dir match
 		return true
 	}
 	// Check if subtree match
-	for prefix, recursive := range bp2buildKeepExistingBuildFile {
+	for prefix, recursive := range allowlist.bp2buildKeepExistingBuildFile {
 		if recursive {
 			if strings.HasPrefix(dir, prefix+"/") {
 				return true
@@ -689,7 +711,7 @@ func (b *BazelModuleBase) MixedBuildsEnabled(ctx ModuleContext) bool {
 		// variants of a cc_library.
 		return false
 	}
-	return !mixedBuildsDisabled[ctx.Module().Name()]
+	return !bp2buildAllowlist.mixedBuildsDisabled[ctx.Module().Name()]
 }
 
 // ConvertedToBazel returns whether this module has been converted (with bp2build or manually) to Bazel.
@@ -708,15 +730,15 @@ func (b *BazelModuleBase) ShouldConvertWithBp2build(ctx BazelConversionContext) 
 
 func (b *BazelModuleBase) shouldConvertWithBp2build(ctx BazelConversionContext, module blueprint.Module) bool {
 	moduleName := module.Name()
-	moduleNameAllowed := bp2buildModuleAlwaysConvert[moduleName]
-	moduleTypeAllowed := bp2buildModuleTypeAlwaysConvert[ctx.OtherModuleType(module)]
+	moduleNameAllowed := bp2buildAllowlist.bp2buildModuleAlwaysConvert[moduleName]
+	moduleTypeAllowed := bp2buildAllowlist.bp2buildModuleTypeAlwaysConvert[ctx.OtherModuleType(module)]
 	allowlistConvert := moduleNameAllowed || moduleTypeAllowed
 	if moduleNameAllowed && moduleTypeAllowed {
 		ctx.(BaseModuleContext).ModuleErrorf("A module cannot be in bp2buildModuleAlwaysConvert and also be" +
 			" in bp2buildModuleTypeAlwaysConvert")
 	}
 
-	if bp2buildModuleDoNotConvert[moduleName] {
+	if bp2buildAllowlist.bp2buildModuleDoNotConvert[moduleName] {
 		if moduleNameAllowed {
 			ctx.(BaseModuleContext).ModuleErrorf("a module cannot be in bp2buildModuleDoNotConvert" +
 				" and also be in bp2buildModuleAlwaysConvert")
@@ -748,6 +770,7 @@ func (b *BazelModuleBase) shouldConvertWithBp2build(ctx BazelConversionContext, 
 			ctx.(BaseModuleContext).ModuleErrorf("A module cannot be in a directory marked Bp2BuildDefaultTrue"+
 				" or Bp2BuildDefaultTrueRecursively and also be in bp2buildModuleAlwaysConvert. Directory: '%s'",
 				packagePath)
+			return false
 		}
 
 		// Allow modules to explicitly opt-out.

@@ -550,7 +550,7 @@ func NewConfig(moduleListFile string, runGoTests bool, outDir, soongOutDir strin
 	}
 
 	config.BazelContext, err = NewBazelContext(config)
-	config.bp2buildPackageConfig = bp2buildDefaultConfig
+	config.bp2buildPackageConfig = bp2buildAllowlist.bp2buildDefaultConfig
 
 	return Config{config}, err
 }
