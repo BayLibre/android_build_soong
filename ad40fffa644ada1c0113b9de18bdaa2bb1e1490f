@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f9ea263_32e409ed",
+        "filename": "cc/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-28T17:51:33Z",
+      "side": 0,
+      "message": "I think removing this will require changes in Make too.  In a platform build, Make rewrites some dependencies to include the \".sdk\" suffix.  You\u0027ll have to do that in an unbundled build too, possibly in more places than we do it for a platform build since an unbundled build should be using the sdk variants.\n\nMaybe you want to keep the HideFromMake, but remove the PreventInstall from both branches?",
+      "revId": "ad40fffa644ada1c0113b9de18bdaa2bb1e1490f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
