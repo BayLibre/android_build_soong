@@ -121,6 +121,24 @@
       "message": "Since we\u0027ll keep the `Values` property, I still think it would be nice to return this as `\"[\" + strings.Join(vals, \", \") + \"]\"`. Mostly because it can sometimes be nice to copy paste a formatted array directly into another code file (Python, Go, etc.) for analysis without having to add syntax. If there\u0027s a good reason not to do this, then sgtm too.\n\nAIUI, as written, this would print a struct in the module-graph.json as\n```\n{\n    slice: x, y, z\n}\n```\n? I think it might be clearer as\n```\n{\n    slice: [x, y, z]\n}\n```",
       "revId": "079530a27ff3148d2c3a3be5b641e209c729c8cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf4969e_3b1e6ef8",
+        "filename": "android/module.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1550,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-28T20:25:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afdb63b2_530855f2",
+      "revId": "079530a27ff3148d2c3a3be5b641e209c729c8cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
