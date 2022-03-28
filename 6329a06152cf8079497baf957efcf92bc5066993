@@ -158,6 +158,30 @@
       },
       "revId": "6329a06152cf8079497baf957efcf92bc5066993",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c1d7bab_d146f52d",
+        "filename": "java/java.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2103,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-28T16:08:35Z",
+      "side": 1,
+      "message": "Okay, sounds good. I updated the logtags rule to provide java sources instead of creating a java_library dependency.\n\nIt is easy to change our mind if we decide that a library is necessary in the future.",
+      "parentUuid": "8d045b62_043714e4",
+      "range": {
+        "startLine": 2103,
+        "startChar": 4,
+        "endLine": 2103,
+        "endChar": 63
+      },
+      "revId": "6329a06152cf8079497baf957efcf92bc5066993",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
