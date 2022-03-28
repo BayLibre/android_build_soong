@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "249f5fb2_4584edcf",
+        "filename": "filesystem/filesystem.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-28T17:34:29Z",
+      "side": 1,
+      "message": "This doesn\u0027t need to be an override any more.  I\u0027d suggest changing the callers to\n\n```\nspecs :\u003d f.GatherPackagingSpecs(ctx)\nf.filterPackagingSpecs(specs)\nf.entries \u003d f.CopyDepsToZip(ctx, specs, depsZipFile)\n```\n\nOr if that\u0027s too repetitive, extract that whole block to a helper method.",
+      "revId": "81f04817b9a63153979c7cced3048f31c1b6c3ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
