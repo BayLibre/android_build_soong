@@ -35,6 +35,7 @@ import (
 	"github.com/google/blueprint/pathtools"
 	"github.com/google/blueprint/proptools"
 
+	"android/soong/android/allowlists"
 	"android/soong/android/soongconfig"
 	"android/soong/bazel"
 	"android/soong/remoteexec"
@@ -158,7 +159,7 @@ type config struct {
 	mockBpList string
 
 	runningAsBp2Build              bool
-	bp2buildPackageConfig          Bp2BuildConfig
+	bp2buildPackageConfig          allowlists.Bp2BuildConfig
 	Bp2buildSoongConfigDefinitions soongconfig.Bp2BuildSoongConfigDefinitions
 
 	// If testAllowNonExistentPaths is true then PathForSource and PathForModuleSrc won't error
@@ -550,7 +551,7 @@ func NewConfig(moduleListFile string, runGoTests bool, outDir, soongOutDir strin
 	}
 
 	config.BazelContext, err = NewBazelContext(config)
-	config.bp2buildPackageConfig = bp2buildDefaultConfig
+	config.bp2buildPackageConfig = bp2buildAllowlist.bp2buildDefaultConfig
 
 	return Config{config}, err
 }
