@@ -16,6 +16,24 @@
       "message": "I think removing this will require changes in Make too.  In a platform build, Make rewrites some dependencies to include the \".sdk\" suffix.  You\u0027ll have to do that in an unbundled build too, possibly in more places than we do it for a platform build since an unbundled build should be using the sdk variants.\n\nMaybe you want to keep the HideFromMake, but remove the PreventInstall from both branches?",
       "revId": "ad40fffa644ada1c0113b9de18bdaa2bb1e1490f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83181863_7c3ade21",
+        "filename": "cc/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-03-28T23:31:32Z",
+      "side": 0,
+      "message": "Hmm, without \"PreventInstall\", the test that Martin described in aosp/1322698 fails with\n\n```\nout/soong/installs-aosp_x86.mk:6118: error: overriding commands for target `out/target/product/generic_x86/data/nativetest/CtsNNAPITestCases/CtsNNAPITestCases32\u0027, previously defined at out/soong/installs-aosp_x86.mk:6114\n```\n\nHere\u0027s the code if I understand correctly what you said\n\n```\nif ctx.Config().UnbundledBuildApps() {\n\t// For an unbundled apps build, hide the platform variant from Make.\n\tmodules[0].(*Module).Properties.HideFromMake \u003d true\n} else {\n\t// Mark the SDK variant so that it gets a \".sdk\" suffix when exposed to Make.\n\tmodules[1].(*Module).Properties.SdkAndPlatformVariantVisibleToMake \u003d true\n}\n```\n\nI guess the error is because both sdk/non-sdk variants are installed to the same path from Soong\u0027s perspective while \u0027sdk\u0027 module renaming is only done in \"make\".\n\nWould it help to rename the output of sdk variants even in Soong\u0027s `installFile()`?",
+      "parentUuid": "6f9ea263_32e409ed",
+      "revId": "ad40fffa644ada1c0113b9de18bdaa2bb1e1490f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
