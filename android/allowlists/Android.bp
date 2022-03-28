@@ -1,0 +1,11 @@
+package {
+    default_applicable_licenses: ["Android-Apache-2.0"],
+}
+
+bootstrap_go_package {
+    name: "soong-android-allowlists",
+    pkgPath: "android/soong/android/allowlists",
+    srcs: [
+        "allowlists.go",
+    ],
+}

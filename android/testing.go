@@ -24,6 +24,7 @@ import (
 	"sync"
 	"testing"
 
+	"android/soong/android/allowlists"
 	mkparser "android/soong/androidmk/parser"
 
 	"github.com/google/blueprint"
@@ -211,7 +212,7 @@ func (ctx *TestContext) FinalDepsMutators(f RegisterMutatorFunc) {
 	ctx.finalDeps = append(ctx.finalDeps, f)
 }
 
-func (ctx *TestContext) RegisterBp2BuildConfig(config Bp2BuildConfig) {
+func (ctx *TestContext) RegisterBp2BuildConfig(config allowlists.Bp2BuildConfig) {
 	ctx.config.bp2buildPackageConfig = config
 }
 
