@@ -16,6 +16,24 @@
       "message": "There are two presubmit failures: one is a legitimate failure to a CTS APK-in-APEX test, and the other is a device infra failure.\n\nI will need to submit this change in master together with a separate fix to StrictJavaPackagesTest.java which makes assumptions on paths to installed apks on the device. The test\u0027s package manager instance returns the paths with @BUILD_IDs correctly, but the test itself hardcodes paths without them. ",
       "revId": "ac4a9595715861c7cc607af5543370da3632366a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "269e1dae_32763b62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-03-28T16:12:42Z",
+      "side": 1,
+      "message": "See topic:pm-bug on internal master.",
+      "parentUuid": "8d685cdd_8d1558a6",
+      "revId": "ac4a9595715861c7cc607af5543370da3632366a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
