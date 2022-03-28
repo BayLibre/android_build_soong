@@ -22,6 +22,30 @@
       },
       "revId": "ca9b5e3dbff521328ea7fa1469b9e24732c05e48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e727eb4b_7e9d12e7",
+        "filename": "snapshot/host_fake_snapshot.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-28T17:54:56Z",
+      "side": 1,
+      "message": "You need `idx` to write back to the slice.  One option would be to make jsonData a `[]*hostSnapshotFakeJsonFlags`, and then you wouldn\u0027t need to modify the slice, but I don\u0027t know what `json.Marshal` would do with a pointer.",
+      "parentUuid": "4d089b68_bb1912fd",
+      "range": {
+        "startLine": 137,
+        "startChar": 10,
+        "endLine": 137,
+        "endChar": 11
+      },
+      "revId": "ca9b5e3dbff521328ea7fa1469b9e24732c05e48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
