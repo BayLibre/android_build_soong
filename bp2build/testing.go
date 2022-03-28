@@ -25,14 +25,23 @@ import (
 	"testing"
 
 	"android/soong/android"
+	"android/soong/android/allowlists"
 	"android/soong/bazel"
 )
 
 var (
 	// A default configuration for tests to not have to specify bp2build_available on top level targets.
-	bp2buildConfig = android.Bp2BuildConfig{
-		android.BP2BUILD_TOPLEVEL: android.Bp2BuildDefaultTrueRecursively,
-	}
+	bp2buildConfig = android.NewBp2BuildAllowlist(
+		allowlists.Bp2BuildConfig{
+			allowlists.BP2BUILD_TOPLEVEL: allowlists.Bp2BuildDefaultTrueRecursively,
+		},
+		nil,
+		nil,
+		nil,
+		nil,
+		nil,
+		nil,
+	)
 
 	buildDir string
 )
