@@ -34,6 +34,24 @@
       "parentUuid": "a452f2c2_04c07750",
       "revId": "4e60fd6010a3f4c7397d89a44a45ad4f03a6ceba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2510d580_70789921",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-03-29T20:38:18Z",
+      "side": 1,
+      "message": "\u003e I also plan on expanding it to allow `include` statements, to support cases like this:\n\u003e \n\u003e ```\n\u003e $(foreach x,$(MY_LIST_VAR),\\\n\u003e   $(eval MY_OTHER_VAR :\u003d $(x)\\\n\u003e   $(eval include foo/bar/baz.mk))\n\u003e ```\nIf this is solely to handle GKI,I\u0027d wait to the response. Pulling all three kernels looks strange.\n\u003e I just wanted to keep the initial cl smaller.\n\u003e \n\u003e But even without that it still helps avoid a bunch of rote work that can cause conflicts like we\u0027re seeing with other BSP imports recently. On go/rbc-dashboard, the \u003ccodeanem\u003e_2GB product has a lot of failing eval statements.\nA lot means 3, and none of them at a first glance contain anything that cannot be handled by patsubst",
+      "parentUuid": "21681373_4e95bf86",
+      "revId": "4e60fd6010a3f4c7397d89a44a45ad4f03a6ceba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
