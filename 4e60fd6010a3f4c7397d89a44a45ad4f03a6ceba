@@ -16,6 +16,24 @@
       "message": "Can you present examples where this is needed? The test cases look like something that can be handled with one of the copy-files macros.",
       "revId": "4e60fd6010a3f4c7397d89a44a45ad4f03a6ceba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21681373_4e95bf86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-03-29T18:23:34Z",
+      "side": 1,
+      "message": "I also plan on expanding it to allow `include` statements, to support cases like this:\n\n```\n$(foreach x,$(MY_LIST_VAR),\\\n  $(eval MY_OTHER_VAR :\u003d $(x)\\\n  $(eval include foo/bar/baz.mk))\n```\n\nI just wanted to keep the initial cl smaller.\n\nBut even without that it still helps avoid a bunch of rote work that can cause conflicts like we\u0027re seeing with other BSP imports recently. On go/rbc-dashboard, the \u003ccodeanem\u003e_2GB product has a lot of failing eval statements.",
+      "parentUuid": "a452f2c2_04c07750",
+      "revId": "4e60fd6010a3f4c7397d89a44a45ad4f03a6ceba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
