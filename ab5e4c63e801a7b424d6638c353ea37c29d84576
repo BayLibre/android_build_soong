@@ -88,6 +88,24 @@
       "parentUuid": "9e6500f4_4c60fab9",
       "revId": "ab5e4c63e801a7b424d6638c353ea37c29d84576",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a18d50f_77712d15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-03-29T19:44:05Z",
+      "side": 1,
+      "message": "meh, i\u0027m genuinely unsure about whether (3) isn\u0027t the right answer ... it\u0027s always tricky to know when the balance shifts from \"hurting more than helping\" to \"helping more than hurting\". if it helps you though, i\u0027ll send you the patch :-)",
+      "parentUuid": "67a115cf_c97b4dd3",
+      "revId": "ab5e4c63e801a7b424d6638c353ea37c29d84576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
