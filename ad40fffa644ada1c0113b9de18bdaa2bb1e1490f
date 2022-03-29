@@ -52,6 +52,24 @@
       "parentUuid": "83181863_7c3ade21",
       "revId": "ad40fffa644ada1c0113b9de18bdaa2bb1e1490f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df4e9e35_2ab5de65",
+        "filename": "cc/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-29T23:43:36Z",
+      "side": 0,
+      "message": "My worry is that there are places in Make that are only used for unbundled builds and don\u0027t call `use_soong_sdk_libraries` to rewrite their dependencies because it wasn\u0027t previously necessary.\n\nI think you might be on the wrong path here, because we definitely don\u0027t want to install both variants onto e.g. the system image.  Normally modules that are not installed still call ctx.InstallFile to create the PackagingSpec, and ctx.InstallFile doesn\u0027t create the install rule.  Maybe something is wrong there for transitive dependencies.",
+      "parentUuid": "e6d12602_30511357",
+      "revId": "ad40fffa644ada1c0113b9de18bdaa2bb1e1490f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
