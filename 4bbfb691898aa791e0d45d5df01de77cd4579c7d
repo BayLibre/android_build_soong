@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f86ccd78_b946a183",
+        "filename": "java/java.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-03-29T22:19:49Z",
+      "side": 1,
+      "message": "In order to check in BUILD files, we\u0027ll want to have BUILD files that don\u0027t depend on the environment, e.g. can be expressed with selects or similar.\n\nLet\u0027s defer work on support of RUN_ERRORPRONE until we determine how we want to support it in Bazel",
+      "range": {
+        "startLine": 2066,
+        "startChar": 5,
+        "endLine": 2066,
+        "endChar": 33
+      },
+      "revId": "4bbfb691898aa791e0d45d5df01de77cd4579c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
