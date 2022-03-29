@@ -89,7 +89,7 @@ type Bazelable interface {
 	HandcraftedLabel() string
 	GetBazelLabel(ctx BazelConversionPathContext, module blueprint.Module) string
 	ShouldConvertWithBp2build(ctx BazelConversionContext) bool
-	shouldConvertWithBp2build(ctx BazelConversionContext, module blueprint.Module) bool
+	shouldConvertWithBp2build(ctx BazelOtherModuleContext, ectx ErrorContext, module blueprint.Module, allowlist Bp2BuildConversionAllowlist) bool
 	GetBazelBuildFileContents(c Config, path, name string) (string, error)
 	ConvertWithBp2build(ctx TopDownMutatorContext)
 
@@ -305,54 +305,67 @@ func convertedToBazel(ctx BazelConversionContext, module blueprint.Module) bool 
 	if !ok {
 		return false
 	}
-	return b.shouldConvertWithBp2build(ctx, module) || b.HasHandcraftedLabel()
+	return b.shouldConvertWithBp2build(ctx, ctx.(BaseModuleContext), module, bp2buildAllowlist) || b.HasHandcraftedLabel()
 }
 
 // ShouldConvertWithBp2build returns whether the given BazelModuleBase should be converted with bp2build.
 func (b *BazelModuleBase) ShouldConvertWithBp2build(ctx BazelConversionContext) bool {
-	return b.shouldConvertWithBp2build(ctx, ctx.Module())
+	return b.shouldConvertWithBp2build(ctx, ctx.(BaseModuleContext), ctx.Module(), bp2buildAllowlist)
 }
 
-func (b *BazelModuleBase) shouldConvertWithBp2build(ctx BazelConversionContext, module blueprint.Module) bool {
-	moduleName := module.Name()
-	moduleNameAllowed := bp2buildAllowlist.moduleAlwaysConvert[moduleName]
-	moduleTypeAllowed := bp2buildAllowlist.moduleTypeAlwaysConvert[ctx.OtherModuleType(module)]
-	allowlistConvert := moduleNameAllowed || moduleTypeAllowed
-	if moduleNameAllowed && moduleTypeAllowed {
-		ctx.(BaseModuleContext).ModuleErrorf("A module cannot be in moduleAlwaysConvert and also be" +
-			" in moduleTypeAlwaysConvert")
-	}
+type ErrorContext interface {
+	ModuleErrorf(format string, args ...interface{})
+}
 
-	if bp2buildAllowlist.moduleDoNotConvert[moduleName] {
-		if moduleNameAllowed {
-			ctx.(BaseModuleContext).ModuleErrorf("a module cannot be in moduleDoNotConvert" +
-				" and also be in moduleAlwaysConvert")
-		}
-		return false
-	}
+type BazelOtherModuleContext interface {
+	OtherModuleType(m blueprint.Module) string
+	OtherModuleName(m blueprint.Module) string
+	OtherModuleDir(m blueprint.Module) string
+}
 
+func (b *BazelModuleBase) shouldConvertWithBp2build(ctx BazelOtherModuleContext, ectx ErrorContext, module blueprint.Module, allowlist Bp2BuildConversionAllowlist) bool {
 	if !b.bazelProps().Bazel_module.CanConvertToBazel {
 		return false
 	}
 
 	propValue := b.bazelProperties.Bazel_module.Bp2build_available
 	packagePath := ctx.OtherModuleDir(module)
+
 	// Modules in unit tests which are enabled in the allowlist by type or name
 	// trigger this conditional because unit tests run under the "." package path
 	isTestModule := packagePath == "." && proptools.BoolDefault(propValue, false)
-	if allowlistConvert && !isTestModule && ShouldKeepExistingBuildFileForDir(packagePath) {
+	if isTestModule {
+		return true
+	}
+
+	moduleName := module.Name()
+	moduleNameAllowed := allowlist.moduleAlwaysConvert[moduleName]
+	moduleTypeAllowed := allowlist.moduleTypeAlwaysConvert[ctx.OtherModuleType(module)]
+	allowlistConvert := moduleNameAllowed || moduleTypeAllowed
+	if moduleNameAllowed && moduleTypeAllowed {
+		ectx.ModuleErrorf("A module cannot be in moduleAlwaysConvert and also be in moduleTypeAlwaysConvert")
+		return false
+	}
+
+	if allowlist.moduleDoNotConvert[moduleName] {
 		if moduleNameAllowed {
-			ctx.(BaseModuleContext).ModuleErrorf("A module cannot be in a directory listed in keepExistingBuildFile"+
+			ectx.ModuleErrorf("a module cannot be in moduleDoNotConvert and also be in moduleAlwaysConvert")
+		}
+		return false
+	}
+
+	if allowlistConvert && shouldKeepExistingBuildFileForDir(allowlist, packagePath) {
+		if moduleNameAllowed {
+			ectx.ModuleErrorf("A module cannot be in a directory listed in keepExistingBuildFile"+
 				" and also be in moduleAlwaysConvert. Directory: '%s'", packagePath)
 		}
 		return false
 	}
 
-	config := ctx.Config().bp2buildPackageConfig
 	// This is a tristate value: true, false, or unset.
-	if ok, directoryPath := bp2buildDefaultTrueRecursively(packagePath, config); ok {
+	if ok, directoryPath := bp2buildDefaultTrueRecursively(packagePath, allowlist.defaultConfig); ok {
 		if moduleNameAllowed {
-			ctx.(BaseModuleContext).ModuleErrorf("A module cannot be in a directory marked Bp2BuildDefaultTrue"+
+			ectx.ModuleErrorf("A module cannot be in a directory marked Bp2BuildDefaultTrue"+
 				" or Bp2BuildDefaultTrueRecursively and also be in moduleAlwaysConvert. Directory: '%s'",
 				directoryPath)
 			return false
@@ -428,7 +441,7 @@ func registerBp2buildConversionMutator(ctx RegisterMutatorsContext) {
 
 func convertWithBp2build(ctx TopDownMutatorContext) {
 	bModule, ok := ctx.Module().(Bazelable)
-	if !ok || !bModule.shouldConvertWithBp2build(ctx, ctx.Module()) {
+	if !ok || !bModule.shouldConvertWithBp2build(ctx, ctx.(BaseModuleContext), ctx.Module(), bp2buildAllowlist) {
 		return
 	}
 
