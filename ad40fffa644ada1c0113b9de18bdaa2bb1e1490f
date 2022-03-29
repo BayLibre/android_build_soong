@@ -34,6 +34,24 @@
       "parentUuid": "6f9ea263_32e409ed",
       "revId": "ad40fffa644ada1c0113b9de18bdaa2bb1e1490f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6d12602_30511357",
+        "filename": "cc/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-03-29T07:56:55Z",
+      "side": 0,
+      "message": "Previously, \"sdk\" variants are emitted\n- without \".sdk\" suffix for unbundled build\n- with \".sdk\" suffix for platform build\n\nNow, \"sdk\" variants are emitted with \".sdk\" suffix for both builds (unbundled or platform)  since SDK variants are always marked as `SdkAndPlatformVariantVisibleToMake`.\n\nIIUC, with the current change, I guess rewriting deps to \".sdk\" for modules using SDK variants should work for both builds.",
+      "parentUuid": "83181863_7c3ade21",
+      "revId": "ad40fffa644ada1c0113b9de18bdaa2bb1e1490f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
