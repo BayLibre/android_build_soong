@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08a9fcc0_2c9740fb",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1863140
+      },
+      "writtenOn": "2022-03-29T01:48:30Z",
+      "side": 1,
+      "message": "try this,\n``` \nentries.ExtraEntries \u003d append(entries.ExtraEntries, func(ctx android.AndroidMkExtraEntriesContext, entries *android.AndroidMkEntries) {\n\tif len(test.Properties.Test_suites) \u003e 0 {\n\t\tentries.AddCompatibilityTestSuites(test.Properties.Test_suites...)\n\t}\n})\n```\nThis will resolve the panic issue, but see a new issue:\n\nbuild/make/core/main.mk:1425: error: overriding commands for target `out/host/linux-x86/testcases/libcpu_features-all_libraries/libcpu_features-all_libraries.so\u0027, previously defined at build/make/core/main.mk:1425\n\nI have not figured out how to resolve this, but this error means there are more than one rules for this .so file. So need to somehow make it to be one.",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 2
+      },
+      "revId": "9378777267ac08fce50931023ffc4c43e6c208c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
