@@ -70,6 +70,24 @@
       "parentUuid": "a6f8ee66_cd502179",
       "revId": "ab5e4c63e801a7b424d6638c353ea37c29d84576",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67a115cf_c97b4dd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-03-29T19:16:07Z",
+      "side": 1,
+      "message": "I got through about 2/3 of (1) last night, but part of it means explicitly setting c_std in the Android.bp (exactly like Bison), so (2) probably makes as much sense to unblock you if you want to keep driving this for other users.",
+      "parentUuid": "9e6500f4_4c60fab9",
+      "revId": "ab5e4c63e801a7b424d6638c353ea37c29d84576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
