@@ -52,6 +52,24 @@
       "parentUuid": "21681373_4e95bf86",
       "revId": "4e60fd6010a3f4c7397d89a44a45ad4f03a6ceba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "005e5d94_1d3fb72d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-03-29T21:05:44Z",
+      "side": 1,
+      "message": "The include statement one is for the _2GB product, not GKI. \"A lot\" means ~30 eval statements for that one product. And again, the include statements cannot be handled by patsubst.",
+      "parentUuid": "2510d580_70789921",
+      "revId": "4e60fd6010a3f4c7397d89a44a45ad4f03a6ceba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
