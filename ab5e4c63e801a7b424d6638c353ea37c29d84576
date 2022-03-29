@@ -34,6 +34,24 @@
       "parentUuid": "e5055c2b_5b5560b1",
       "revId": "ab5e4c63e801a7b424d6638c353ea37c29d84576",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6f8ee66_cd502179",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-03-29T05:35:50Z",
+      "side": 1,
+      "message": "Ah, it just moves to the next gnulib user (m4)",
+      "parentUuid": "b55b97d4_0e616ea8",
+      "revId": "ab5e4c63e801a7b424d6638c353ea37c29d84576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
