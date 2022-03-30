@@ -50,6 +50,24 @@
       "message": "nit: this could be just `debug(cmd_line)` (right?)",
       "revId": "46537e3675157a5f6c6a3485eb3009956eb45ab8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "693e9fea_4d8b5036",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-30T11:18:10Z",
+      "side": 1,
+      "message": "No. The first parameter to debug is a format string. So, if cmd_line contained say \"%s\" then it would fail. I did notice that some other places failed to provide a format string so I fixed them.",
+      "parentUuid": "1c163214_b7cc04ed",
+      "revId": "46537e3675157a5f6c6a3485eb3009956eb45ab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

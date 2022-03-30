@@ -314,6 +314,24 @@
       "message": "is it guaranteed to be safe to have `for line in lines` and then inside call `next(lines)` ?\n\nI\u0027ve never tried doing this.",
       "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03b3a5e0_29686601",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-30T11:18:10Z",
+      "side": 1,
+      "message": "It does work but apparently it\u0027s not very pythony. I\u0027ve cleaned this up a bit. I\u0027ve used a generator expression to strip trailing whitespace to avoid repeated calls to rstrip() and used zip(lines, lines, lines) to group each set of 3 lines together into a tuple and iterate over that.",
+      "parentUuid": "5973a30e_88bbcbb0",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
