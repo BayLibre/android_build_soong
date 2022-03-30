@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "704a4028_1830d754",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 44
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-03-30T16:00:50Z",
+      "side": 1,
+      "message": "Just a minor nit but looks great otherwise. Thanks Sam!",
+      "revId": "a5847fff46ee79ee6ca1b559ea71648688144f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e22c3b_ec72d973",
+        "filename": "bp2build/java_plugin_conversion_test.go",
+        "patchSetId": 44
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-03-30T16:00:50Z",
+      "side": 1,
+      "message": "no srcs",
+      "range": {
+        "startLine": 76,
+        "startChar": 27,
+        "endLine": 76,
+        "endChar": 38
+      },
+      "revId": "a5847fff46ee79ee6ca1b559ea71648688144f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
