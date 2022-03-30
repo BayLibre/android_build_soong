@@ -22,6 +22,30 @@
       },
       "revId": "4bbfb691898aa791e0d45d5df01de77cd4579c7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07ea0d08_c810db0a",
+        "filename": "java/java.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1888650
+      },
+      "writtenOn": "2022-03-30T21:19:10Z",
+      "side": 1,
+      "message": "If error prone failures are getting in your way in the immediate future, you can globally use the \"-XepDisableAllChecks\" javacopt flag until we decide on a path forward for error prone (I filed a bug that you can reference, b/227504307)",
+      "parentUuid": "f86ccd78_b946a183",
+      "range": {
+        "startLine": 2066,
+        "startChar": 5,
+        "endLine": 2066,
+        "endChar": 33
+      },
+      "revId": "4bbfb691898aa791e0d45d5df01de77cd4579c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
