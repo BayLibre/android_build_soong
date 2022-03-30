@@ -68,6 +68,24 @@
       "parentUuid": "1c163214_b7cc04ed",
       "revId": "46537e3675157a5f6c6a3485eb3009956eb45ab8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ba4febf_2b53cf52",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 9
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-30T11:57:31Z",
+      "side": 1,
+      "message": "\u003e So, if cmd_line contained say \"%s\" then it would fail\n\noh, nice catch!",
+      "parentUuid": "693e9fea_4d8b5036",
+      "revId": "46537e3675157a5f6c6a3485eb3009956eb45ab8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

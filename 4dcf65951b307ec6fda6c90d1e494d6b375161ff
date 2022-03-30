@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9742b5ab_206d22fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-30T11:57:31Z",
+      "side": 1,
+      "message": "Looking good!",
+      "revId": "4dcf65951b307ec6fda6c90d1e494d6b375161ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a8254bf_4843d4d0",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-30T11:57:31Z",
+      "side": 1,
+      "message": "mind blown!",
+      "revId": "4dcf65951b307ec6fda6c90d1e494d6b375161ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
