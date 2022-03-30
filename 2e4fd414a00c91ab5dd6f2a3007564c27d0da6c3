@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a98d3b51_3a6a91d4",
+        "filename": "android/bazel.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-03-30T19:10:28Z",
+      "side": 1,
+      "message": "nit: not related to this CL but the comment reads \"opt modules in of\". Is that \"of\" a typo?",
+      "revId": "2e4fd414a00c91ab5dd6f2a3007564c27d0da6c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
