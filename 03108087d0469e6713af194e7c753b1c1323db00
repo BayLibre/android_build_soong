@@ -121,6 +121,24 @@
       "parentUuid": "025bbf6f_758dbcc8",
       "revId": "03108087d0469e6713af194e7c753b1c1323db00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2082ef2_9ef109ac",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-30T14:07:38Z",
+      "side": 1,
+      "message": "I haven\u0027t worked in experienced python teams/I\u0027ve had very little python code I wrote reviewed so I don\u0027t know if this is pythonic or not, but I like the readability of using textwrap better. I don\u0027t know if it works with template variables (e.g. `\"{foo} bar\"`) as well as the other option(s).\n\nNote: this can be done in a follow-up CL when everything else is done. Up to you.",
+      "parentUuid": "c1e4fa5a_0af61531",
+      "revId": "03108087d0469e6713af194e7c753b1c1323db00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
