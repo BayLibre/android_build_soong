@@ -124,6 +124,24 @@
       "parentUuid": "1a18d50f_77712d15",
       "revId": "ab5e4c63e801a7b424d6638c353ea37c29d84576",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd7e023f_1234d593",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-03-30T03:59:57Z",
+      "side": 1,
+      "message": "fyi: https://android-review.googlesource.com/q/topic:m4_1.4.19 (I added Colin as the reviewer on this one, but if you want to further avoid your to-do list 🙂)",
+      "parentUuid": "6500e56c_57568275",
+      "revId": "ab5e4c63e801a7b424d6638c353ea37c29d84576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
