@@ -70,6 +70,24 @@
       "parentUuid": "e6d12602_30511357",
       "revId": "ad40fffa644ada1c0113b9de18bdaa2bb1e1490f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90c95dc7_2d639070",
+        "filename": "cc/sdk.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-03-30T02:30:05Z",
+      "side": 0,
+      "message": "\u003e I think you might be on the wrong path here, \n\nYeah, probably. I\u0027ll leave it as it is and move on. For now, we can manually manage the contents of  microdroid.",
+      "parentUuid": "df4e9e35_2ab5de65",
+      "revId": "ad40fffa644ada1c0113b9de18bdaa2bb1e1490f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
