@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b7b5312_9aa7bf77",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-30T11:43:53Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we return here? \n\nBecause it seems that inside this if we replace the lines to what we want them to be, but the later code",
+      "revId": "03108087d0469e6713af194e7c753b1c1323db00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88d8c91b_86ef458c",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-30T11:43:53Z",
+      "side": 1,
+      "message": "did you mean to declare these in this part of the file? Also, should they start with underscore?",
+      "revId": "03108087d0469e6713af194e7c753b1c1323db00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b433da1_b9f29cd2",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-30T11:43:53Z",
+      "side": 1,
+      "message": "TIL textwrap. nice!",
+      "revId": "03108087d0469e6713af194e7c753b1c1323db00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "025bbf6f_758dbcc8",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-30T11:43:53Z",
+      "side": 1,
+      "message": "nit: I see different styles for writing multiline strings. Once this work is done it\u0027s worth going through and making everything consistent.",
+      "revId": "03108087d0469e6713af194e7c753b1c1323db00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
