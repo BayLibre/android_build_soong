@@ -105,6 +105,24 @@
       "parentUuid": "bcec24df_ec893da0",
       "revId": "4e60fd6010a3f4c7397d89a44a45ad4f03a6ceba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5b29207_86aed776",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-03-30T18:41:05Z",
+      "side": 1,
+      "message": "Actually I think I can remove it by making parseReference() optionally return a starlarkNode instead of a starlarkExpr. Or make a variant, parseTopLevelReference(), that does this. Let me try that.",
+      "parentUuid": "72aed162_80ff3526",
+      "revId": "4e60fd6010a3f4c7397d89a44a45ad4f03a6ceba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
