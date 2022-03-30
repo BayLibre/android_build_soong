@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1962ebe_9a15e6c3",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-30T07:51:18Z",
+      "side": 1,
+      "message": "did you mean to have this here?",
+      "revId": "7fe94548ddf332e99cf5fa20b3da83845661ee67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4defa22c_3155906a",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-30T07:51:18Z",
+      "side": 1,
+      "message": "Just double checking: do you need parenthesis after the not? i.e. not( a and b)\n\nI can never read these kind of conditions because I never know the precedence.",
+      "revId": "7fe94548ddf332e99cf5fa20b3da83845661ee67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

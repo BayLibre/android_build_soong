@@ -297,6 +297,23 @@
       "parentUuid": "900969d3_3cab38bb",
       "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5973a30e_88bbcbb0",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-03-30T07:51:18Z",
+      "side": 1,
+      "message": "is it guaranteed to be safe to have `for line in lines` and then inside call `next(lines)` ?\n\nI\u0027ve never tried doing this.",
+      "revId": "c0b955d73f492f58f3a27a3d4a6dff4ad549bdb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
