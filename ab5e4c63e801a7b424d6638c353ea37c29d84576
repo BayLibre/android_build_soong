@@ -178,6 +178,24 @@
       "parentUuid": "cdad7d56_eef0b530",
       "revId": "ab5e4c63e801a7b424d6638c353ea37c29d84576",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c27b991_f0290a00",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-03-30T19:30:03Z",
+      "side": 1,
+      "message": "\u003e dwillemsen actually needed a newer -std for C, and it looks like recent updates to various GNU projects are starting to assume newer C standards now\n\nMore that the GNU projects configure themselves without specifying a version, but the version used during `configure` and the build need to match. So with our regen scripts, they\u0027re using our clang prebuilts and sysroot and are defaulting to C17.",
+      "parentUuid": "fed609bb_a64d4d7e",
+      "revId": "ab5e4c63e801a7b424d6638c353ea37c29d84576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
