@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1624e919_83e582f3",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-30T13:36:46Z",
+      "side": 1,
+      "message": "Your comment does not seem to have been finished. I suspect that you were worried that the change to the lines here causing problems for the following code.\n\nThis change has to be done here because the following code operates on earlier lines which would invalid the .._index variables used here.",
+      "parentUuid": "8b7b5312_9aa7bf77",
+      "revId": "03108087d0469e6713af194e7c753b1c1323db00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88d8c91b_86ef458c",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-03-30T11:43:53Z",
       "side": 1,
       "message": "did you mean to declare these in this part of the file? Also, should they start with underscore?",
+      "revId": "03108087d0469e6713af194e7c753b1c1323db00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "847a9101_9a296143",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 968,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-30T13:36:46Z",
+      "side": 1,
+      "message": "Cleaned them up.",
+      "parentUuid": "88d8c91b_86ef458c",
       "revId": "03108087d0469e6713af194e7c753b1c1323db00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -65,6 +101,24 @@
       "writtenOn": "2022-03-30T11:43:53Z",
       "side": 1,
       "message": "nit: I see different styles for writing multiline strings. Once this work is done it\u0027s worth going through and making everything consistent.",
+      "revId": "03108087d0469e6713af194e7c753b1c1323db00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1e4fa5a_0af61531",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 7
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-03-30T13:36:46Z",
+      "side": 1,
+      "message": "That is because I didn\u0027t find textwrap.dedent until recently either. Which is better?",
+      "parentUuid": "025bbf6f_758dbcc8",
       "revId": "03108087d0469e6713af194e7c753b1c1323db00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
