@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf661255_afab7756",
+        "filename": "bcid/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-03-30T23:25:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d25d7052_1237f2fa",
+      "range": {
+        "startLine": 34,
+        "startChar": 17,
+        "endLine": 34,
+        "endChar": 21
+      },
+      "revId": "1f522f8d39742413b1f83fab0739153b30a7ed20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a3185a5_4409e27f",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36bc5935_29facdfa",
+        "filename": "bcid/bcid_singleton.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-03-30T23:25:07Z",
+      "side": 1,
+      "message": "Done.\n\nInstead of generating provenance metadata in soong, created ninja rules and generate/merge metadata in ninja.",
+      "parentUuid": "5a3185a5_4409e27f",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 99
+      },
+      "revId": "1f522f8d39742413b1f83fab0739153b30a7ed20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dd4d624_7b176828",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-28T17:45:27Z",
       "side": 1,
       "message": "You would normally use 0666 here, the user\u0027s umask will mask off the bits they don\u0027t want to avoid creating world writable files.  They may deliberately be trying to create group writable files.",
+      "range": {
+        "startLine": 51,
+        "startChar": 77,
+        "endLine": 51,
+        "endChar": 81
+      },
+      "revId": "1f522f8d39742413b1f83fab0739153b30a7ed20",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7a40d43_64337e99",
+        "filename": "shared/proto.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-03-30T23:25:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dd4d624_7b176828",
       "range": {
         "startLine": 51,
         "startChar": 77,
