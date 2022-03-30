@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c40e6f26_37985df3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2022-03-30T10:46:49Z",
+      "side": 1,
+      "message": "R8 related parsing lgtm",
+      "revId": "4f92e0040262972b10b6de9b199e46cac4aa5fa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
