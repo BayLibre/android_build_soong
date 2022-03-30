@@ -87,6 +87,24 @@
       "message": "The only place where such node is created that I have found is in evalParser.parse to handle handleAssignment result, which is a StarlarkNode  slice. This is due to handleAssignment calling handleSoongNsAssignment which used to return it in order to handle the assignment to SOONG_CONFIG_NAMESPACE variable. The latter appears to be gone, so I think both handleXXXAssignment functions can now return a StarlarkNode. Perhaps it will simplify the stuff somewhat?",
       "revId": "4e60fd6010a3f4c7397d89a44a45ad4f03a6ceba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72aed162_80ff3526",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-03-30T18:34:24Z",
+      "side": 1,
+      "message": "What do you mean \"The latter appears to be gone\"? The code for soong config namespaces is still there. Do you want me to bring back aosp/1927997 to remove it?\n\nAlso, even if we did remove the soong config variable parsing, it would only make it so that the nodeExpr only needs to contain a single starlarkNode instead of a slice, which doesn\u0027t simplify it that much. I\u0027m also not a huge fan of the nodeExpr, but it was the only reasonable way I could think to do it.",
+      "parentUuid": "bcec24df_ec893da0",
+      "revId": "4e60fd6010a3f4c7397d89a44a45ad4f03a6ceba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
