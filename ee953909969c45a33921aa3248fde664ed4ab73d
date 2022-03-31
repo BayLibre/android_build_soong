@@ -180,6 +180,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18adcde7_0473d7c9",
+        "filename": "java/app.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 1472,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-31T20:37:43Z",
+      "side": 1,
+      "message": "I did a search for this (now that the module-graph.json as Values 😊), and found one android_app with `srcs\u003d[]` and a `jni_libs` property in a tests directory.\n\nThis might be a similar situation to `java_binary` modules which have `static_libs` converted to `runtime_deps`, but `android_app` does not support the `runtime_deps` attribute.\n\nSince it is a test, perhaps [android_local_test](https://docs.bazel.build/versions/main/be/android.html#android_local_test) would apply.",
+      "parentUuid": "67db4233_39406a9a",
+      "range": {
+        "startLine": 1470,
+        "startChar": 2,
+        "endLine": 1472,
+        "endChar": 43
+      },
+      "revId": "ee953909969c45a33921aa3248fde664ed4ab73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d77a554d_e02873aa",
         "filename": "java/java.go",
         "patchSetId": 37
