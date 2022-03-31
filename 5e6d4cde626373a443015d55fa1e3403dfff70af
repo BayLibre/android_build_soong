@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e19f5ffc_e8f03f64",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-31T20:57:41Z",
+      "side": 1,
+      "message": "Can this be added to testInstaller so that it doesn\u0027t have to be duplicated in testLibrary and testBinary?",
+      "revId": "5e6d4cde626373a443015d55fa1e3403dfff70af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
