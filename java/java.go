@@ -2072,9 +2072,10 @@ func (m *Library) convertJavaResourcesAttributes(ctx android.TopDownMutatorConte
 
 type javaCommonAttributes struct {
 	*javaResourcesAttributes
-	Srcs      bazel.LabelListAttribute
-	Plugins   bazel.LabelListAttribute
-	Javacopts bazel.StringListAttribute
+	Srcs         bazel.LabelListAttribute
+	Plugins      bazel.LabelListAttribute
+	Javacopts    bazel.StringListAttribute
+	Jarjar_rules *string
 }
 
 type javaDependencyLabels struct {
@@ -2113,6 +2114,7 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		Plugins: bazel.MakeLabelListAttribute(
 			android.BazelLabelForModuleDeps(ctx, m.properties.Plugins),
 		),
+		Jarjar_rules: m.properties.Jarjar_rules,
 	}
 
 	if m.properties.Javacflags != nil {
