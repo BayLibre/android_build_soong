@@ -669,6 +669,9 @@ sdk_snapshot {
 				name: "mybootclasspathfragment",
 				apex_available: ["myapex"],
 				contents: ["mysdklibrary"],
+				hidden_api: {
+					split_packages: ["*"],
+				},
 			}
 
 			java_sdk_library {
