@@ -2067,9 +2067,10 @@ func (m *Library) convertJavaResourcesAttributes(ctx android.TopDownMutatorConte
 
 type javaCommonAttributes struct {
 	*javaResourcesAttributes
-	Srcs      bazel.LabelListAttribute
-	Plugins   bazel.LabelListAttribute
-	Javacopts bazel.StringListAttribute
+	Srcs         bazel.LabelListAttribute
+	Plugins      bazel.LabelListAttribute
+	Javacopts    bazel.StringListAttribute
+	Jarjar_rules bazel.LabelAttribute
 }
 
 type javaDependencyLabels struct {
@@ -2089,12 +2090,17 @@ type eventLogTagsAttributes struct {
 
 func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext) (*javaCommonAttributes, *javaDependencyLabels) {
 	var srcs bazel.LabelListAttribute
+	var jarjarRules bazel.LabelAttribute
 	archVariantProps := m.GetArchVariantProperties(ctx, &CommonProperties{})
 	for axis, configToProps := range archVariantProps {
 		for config, _props := range configToProps {
 			if archProps, ok := _props.(*CommonProperties); ok {
 				archSrcs := android.BazelLabelForModuleSrcExcludes(ctx, archProps.Srcs, archProps.Exclude_srcs)
 				srcs.SetSelectValue(axis, config, archSrcs)
+
+				if archProps.Jarjar_rules != nil {
+					jarjarRules.SetSelectValue(axis, config, android.BazelLabelForModuleSrcSingle(ctx, *archProps.Jarjar_rules))
+				}
 			}
 		}
 	}
@@ -2143,7 +2149,8 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		Plugins: bazel.MakeLabelListAttribute(
 			android.BazelLabelForModuleDeps(ctx, m.properties.Plugins),
 		),
-		Javacopts: bazel.MakeStringListAttribute(javacopts),
+		Javacopts:    bazel.MakeStringListAttribute(javacopts),
+		Jarjar_rules: jarjarRules,
 	}
 
 	depLabels := &javaDependencyLabels{}

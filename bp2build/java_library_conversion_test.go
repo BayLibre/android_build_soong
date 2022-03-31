@@ -356,3 +356,20 @@ func TestJavaLibraryResourcesFailsWithMultipleDirs(t *testing.T) {
 		expectedBazelTargets: []string{},
 	})
 }
+
+func TestJavaLibraryJarjarRules(t *testing.T) {
+	runJavaLibraryTestCase(t, bp2buildTestCase{
+		filesystem: map[string]string{
+			"jarjar.rules": "",
+		},
+		blueprint: `java_library {
+    name: "java-lib-1",
+    jarjar_rules: "jarjar.rules",
+}`,
+		expectedBazelTargets: []string{
+			makeBazelTarget("java_library", "java-lib-1", attrNameToString{
+				"jarjar_rules": `"jarjar.rules"`,
+			}),
+		},
+	})
+}
