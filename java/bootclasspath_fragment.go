@@ -138,6 +138,9 @@ type bootclasspathFragmentProperties struct {
 	// processing as it needs access to all the classes used by a fragment including those provided
 	// by other fragments.
 	BootclasspathFragmentsDepsProperties
+
+	// Indicates whether this module is for testing purposes only.
+	Testonly *bool
 }
 
 type HiddenApiPackageProperties struct {
@@ -813,6 +816,11 @@ func (b *BootclasspathFragmentModule) createHiddenAPIFlagInput(ctx android.Modul
 	input.DependencyStubDexJarsByScope.addStubDexJarsByModule(dependencyHiddenApiInfo.TransitiveStubDexJarsByScope)
 
 	return input
+}
+
+// isTestFragment returns true if the current module is a test bootclasspath_fragment.
+func (b *BootclasspathFragmentModule) isTestFragment() bool {
+	return proptools.Bool(b.properties.Testonly)
 }
 
 // produceHiddenAPIOutput produces the hidden API all-flags.csv file (and supporting files)
