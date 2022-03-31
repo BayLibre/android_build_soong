@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee9e684_7411801c",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-31T21:10:17Z",
+      "side": 1,
+      "message": "Should this be done inside the relevant modules (possibly by calling a method in this package), and then export the output file to be merged here?",
+      "revId": "f6642fafe27a9a5d33ea42fe8818c3225eaee606",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d40acc68_869ca554",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-31T21:10:17Z",
+      "side": 1,
+      "message": "You generally shouldn\u0027t be type asserting to a concrete type, use an interface instead.  That becomes especially important if somebody wraps another type around apex.Prebuilt.\n\nThe new, bazel-like pattern is to use ctx.SetProvider in the modules that export the relevant information, and then use ctx.ModuleHasProvider and ctx.ModuleProvider to access it here.",
+      "revId": "f6642fafe27a9a5d33ea42fe8818c3225eaee606",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19362bfe_d1bc8754",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-03-31T21:10:17Z",
+      "side": 1,
+      "message": "You generally shouldn\u0027t be reading the source path directly from the other module, there\u0027s no guarantee that it is actually a path in the module\u0027s directory.  It could be a module reference (\":module_name\") to a filegroup, genrule, etc.\n\nThe module is already computing the path to its source file, you should export that from the module through an interface or provider.",
+      "revId": "f6642fafe27a9a5d33ea42fe8818c3225eaee606",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
