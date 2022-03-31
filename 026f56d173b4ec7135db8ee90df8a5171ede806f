@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8da7bf0e_7fae077e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-31T18:14:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bf562149_8091a481",
+      "revId": "026f56d173b4ec7135db8ee90df8a5171ede806f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea97a0cb_5adee8e2",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-29T13:24:47Z",
       "side": 1,
       "message": "what about exclude_java_resource_dirs?\n\nSimilarly, it looks like there are some extentions/suffixes that are always excluded in Soong: https://cs.android.com/android/platform/superproject/+/master:build/soong/java/java_resources.go;l\u003d27,36;drc\u003d66f388542d6bde2104bcdfdc79980d00e277d201",
+      "range": {
+        "startLine": 2070,
+        "startChar": 34,
+        "endLine": 2070,
+        "endChar": 52
+      },
+      "revId": "026f56d173b4ec7135db8ee90df8a5171ede806f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95b4af4d_be552da1",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2070,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-31T18:14:24Z",
+      "side": 1,
+      "message": "I tried to reuse this code in bp2build as well, but I realize this might cause some weirdness when expanding globs. I figured this would keep us compatible with Soong though (in case that excludes logic changes) until the globs situation is finalized.",
+      "parentUuid": "ea97a0cb_5adee8e2",
       "range": {
         "startLine": 2070,
         "startChar": 34,

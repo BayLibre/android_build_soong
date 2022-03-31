@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b671e0c_e6ccf4f4",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2054,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-31T18:14:24Z",
+      "side": 1,
+      "message": "I tried using `files[i].Rel()`, but it still has the full path from `$TOP`.",
+      "revId": "1f4473aa887042c314cd3e405089b02e8d4d7c39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
