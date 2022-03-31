@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68ec0b99_6cbd773e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-31T18:54:52Z",
+      "side": 1,
+      "message": "So this is kind of huge and gross, but most of the changes are just copying the allowlists into their own module.",
+      "revId": "9ba48e25f046703c7288c9c3f5ebd124c292bc74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3981a2f_25e6ce5d",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-31T18:54:52Z",
+      "side": 1,
+      "message": "Fix this.",
+      "revId": "9ba48e25f046703c7288c9c3f5ebd124c292bc74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92ffc85f_d2c725b1",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-03-31T18:54:52Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "9ba48e25f046703c7288c9c3f5ebd124c292bc74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
