@@ -858,11 +858,10 @@ func (b *BootclasspathFragmentModule) produceHiddenAPIOutput(ctx android.ModuleC
 	packagePrefixes := b.sourceOnlyProperties.Hidden_api.Package_prefixes
 	singlePackages := b.sourceOnlyProperties.Hidden_api.Single_packages
 	if splitPackages != nil || packagePrefixes != nil || singlePackages != nil {
-		if splitPackages == nil {
-			splitPackages = []string{"*"}
-		}
 		output.SignaturePatternsPath = buildRuleSignaturePatternsFile(
 			ctx, output.AllFlagsPath, splitPackages, packagePrefixes, singlePackages)
+	} else if !b.isTestFragment() {
+		ctx.ModuleErrorf(`Must specify at least one of the hidden_api split_packages, package_prefixes and single_packages properties.`)
 	}
 
 	return output
