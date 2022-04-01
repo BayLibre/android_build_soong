@@ -46,6 +46,30 @@
       },
       "revId": "43c2dcaef609c4a268bfab6c95ed924af4ead6b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b6bb46c_ef47a008",
+        "filename": "android/notices.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-04-01T04:00:52Z",
+      "side": 1,
+      "message": "Nope. It\u0027s just a noise. :-)",
+      "parentUuid": "381dbaed_18103618",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 93
+      },
+      "revId": "43c2dcaef609c4a268bfab6c95ed924af4ead6b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [

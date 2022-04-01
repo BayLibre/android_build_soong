@@ -46,6 +46,30 @@
       },
       "revId": "76ff96f88584282e89c7d5f8f2e73a35710ab358",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4b1834c_928d5b90",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-04-01T04:00:52Z",
+      "side": 0,
+      "message": "I see. I figured out apexer_test.py has the problem. Just revealed with this change. We\u0027d better fix it forward instead of reverting this one.\n\nThe missing one is aessets directory which is there but apexer_test.py doesn\u0027t pass the right one to the underlying tool (apexer)",
+      "parentUuid": "af09ce98_9f06f399",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 2
+      },
+      "revId": "76ff96f88584282e89c7d5f8f2e73a35710ab358",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
