@@ -177,6 +177,24 @@
       "parentUuid": "ad9e5783_598035bb",
       "revId": "4e60fd6010a3f4c7397d89a44a45ad4f03a6ceba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f90786b_4f457810",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-04-01T01:01:02Z",
+      "side": 1,
+      "message": "I see where you\u0027re coming from. I can do that in a followup cl, sure. (essentially bring back aosp/1927997) However it wouldn\u0027t make this cl any simpler because `knownNodeFunctions` still needs to return a slice of nodes for `inherit-product`. An `inherit-product` with a wildcard creates many inherit nodes, which is why we use the slice of nodes.",
+      "parentUuid": "401fdca4_e813ae1e",
+      "revId": "4e60fd6010a3f4c7397d89a44a45ad4f03a6ceba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

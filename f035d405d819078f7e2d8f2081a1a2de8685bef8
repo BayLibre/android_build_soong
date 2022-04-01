@@ -16,6 +16,24 @@
       "message": "This looks odd. One expects that the result of parsing a function call is a starlarkExpr. The expression for `eval` of `foreach` might need a new type of expression, but it\u0027s an expression. It looks strange that $(if ...,...,...) is not an expression.\nBTW, the old way of parsing where each handler added to sink instead of returning an expression avoided this whole issue completely. When you proposed returning the results explicitly, I forgot about that.",
       "revId": "f035d405d819078f7e2d8f2081a1a2de8685bef8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "038534b7_fd5c091b",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-04-01T01:01:02Z",
+      "side": 1,
+      "message": "`if` and `foreach` are two special cases of constructs that can be either a node or an expression. So they appear in both `knownFunctions` and `knownNodeFunctions`. We will prefer the node version of them if possible. This is so that if someone writes:\n\n```\n$(foreach module,\\\n  $(BOOT_KERNEL_MODULES_LIST),\\\n  $(if $(filter $(module),foo.ko),,$(error module \"$(module)\" has an error!)))\n```\n\nwe get:\n\n```\nfor module in g[\"BOOT_KERNEL_MODULES_LIST\"]:\n  if not rblf.filter(module, \"foo.ko\"):\n    rblf.mkerror(\"product.mk\", \"module \\\"%s\\\" has an error!\" % module)\n```\n\ninstead of:\n\n```\n[\"\" if rblf.filter(module, \"foo.ko\") else rblf.mkerror(\"product.mk\", \"module \\\"%s\\\" has an error!\" % module) for module in g[\"BOOT_KERNEL_MODULES_LIST\"]]\n```\n\nNote that we will still get the expression version of the above if it was used in an expression context, like an argument to a function call.\n\nFor `$(eval)`, `$(call inherit-product)`, and `$(call inherit-product-if-exists)`, I would argue those are definitely nodes, not expressions, as they return an empty string every time. It also wouldn\u0027t make sense to put an assignment from a eval in the middle of an expression. (ex: `\"foo %s bar\" % (PRODUCT_PACKAGES +\u003d [\"baz\"])` doesn\u0027t make any sense)",
+      "parentUuid": "122032b2_4aaf256a",
+      "revId": "f035d405d819078f7e2d8f2081a1a2de8685bef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
