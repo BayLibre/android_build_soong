@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e157088f_5cb79286",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-01T16:39:46Z",
+      "side": 1,
+      "message": "Highlights of the change:\n\n* repackaged allowlists into single struct\n* `shouldConvertWithBp2build` function has tighter interface (this helped with mocking contexts for testing)\n* allowlist definitions are moved into separate module (this wasn\u0027t really necessary, but I wanted to make it clear that the allowlist vars should not be accessed directly [and Go doesn\u0027t allow array constants...])\n\nThis isn\u0027t _as huge_ of a change as the diff would suggest, but it\u0027s kind of hard to parse even still",
+      "parentUuid": "68ec0b99_6cbd773e",
+      "revId": "9ba48e25f046703c7288c9c3f5ebd124c292bc74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3981a2f_25e6ce5d",
         "filename": "bp2build/build_conversion_test.go",
         "patchSetId": 4
