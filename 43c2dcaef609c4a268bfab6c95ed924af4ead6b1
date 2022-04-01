@@ -22,6 +22,30 @@
       },
       "revId": "43c2dcaef609c4a268bfab6c95ed924af4ead6b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "381dbaed_18103618",
+        "filename": "android/notices.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-04-01T03:57:35Z",
+      "side": 1,
+      "message": "With a quick refactor, we could make the deps file completely optional.\n\nIs the existence of the NOTICES.html.gz.d file causing a failure? Or just noise?",
+      "parentUuid": "79f1eb43_bfb355d2",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 93
+      },
+      "revId": "43c2dcaef609c4a268bfab6c95ed924af4ead6b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [

@@ -22,6 +22,30 @@
       },
       "revId": "76ff96f88584282e89c7d5f8f2e73a35710ab358",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af09ce98_9f06f399",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-04-01T03:57:35Z",
+      "side": 0,
+      "message": "The case no longer applies. There will always be license metadata from which to derive a notice; even if it is empty. b/227682097 relates to a file that is missing. Which file is missing?",
+      "parentUuid": "50823023_e248b674",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 2
+      },
+      "revId": "76ff96f88584282e89c7d5f8f2e73a35710ab358",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
