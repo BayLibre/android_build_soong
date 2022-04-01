@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2472cb33_d2b052ae",
+        "filename": "bp2build/build_conversion_test.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-01T16:32:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3981a2f_25e6ce5d",
+      "revId": "9ba48e25f046703c7288c9c3f5ebd124c292bc74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92ffc85f_d2c725b1",
@@ -48,6 +66,24 @@
       "writtenOn": "2022-03-31T18:54:52Z",
       "side": 1,
       "message": "Same.",
+      "revId": "9ba48e25f046703c7288c9c3f5ebd124c292bc74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1562b2a6_e8b686fd",
+        "filename": "bp2build/testing.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-01T16:32:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92ffc85f_d2c725b1",
       "revId": "9ba48e25f046703c7288c9c3f5ebd124c292bc74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
