@@ -202,6 +202,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1cda108_739e4ea3",
+        "filename": "java/app.go",
+        "patchSetId": 37
+      },
+      "lineNbr": 1472,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-01T15:50:05Z",
+      "side": 1,
+      "message": "Nevermind, my query was leaving a few other examples out. There are a good number (65) of such android_apps with no sources and library deps, but this may not be an error after all. Romain mentioned that android_binary may simply allow the pattern of deps with no sources by design, and so this is not an error after all.",
+      "parentUuid": "18adcde7_0473d7c9",
+      "range": {
+        "startLine": 1470,
+        "startChar": 2,
+        "endLine": 1472,
+        "endChar": 43
+      },
+      "revId": "ee953909969c45a33921aa3248fde664ed4ab73d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d77a554d_e02873aa",
