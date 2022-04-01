@@ -159,6 +159,24 @@
       "parentUuid": "b5b29207_86aed776",
       "revId": "4e60fd6010a3f4c7397d89a44a45ad4f03a6ceba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "401fdca4_e813ae1e",
+        "filename": "mk2rbc/expr.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 735,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-04-01T00:28:53Z",
+      "side": 1,
+      "message": "What I mean is that there are no references to SOONG_CONFIG_NAMESPACES variable anymore, and that was the only case where handleNsAssignment returned a a slice. There is no need to handle this variable anymore, and thus handleNsAssignment can return starlarkNode, thus handleAssignment can return starlarkNode.",
+      "parentUuid": "ad9e5783_598035bb",
+      "revId": "4e60fd6010a3f4c7397d89a44a45ad4f03a6ceba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

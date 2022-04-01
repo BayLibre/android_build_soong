@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "122032b2_4aaf256a",
+        "filename": "mk2rbc/mk2rbc.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-04-01T00:28:53Z",
+      "side": 1,
+      "message": "This looks odd. One expects that the result of parsing a function call is a starlarkExpr. The expression for `eval` of `foreach` might need a new type of expression, but it\u0027s an expression. It looks strange that $(if ...,...,...) is not an expression.\nBTW, the old way of parsing where each handler added to sink instead of returning an expression avoided this whole issue completely. When you proposed returning the results explicitly, I forgot about that.",
+      "revId": "f035d405d819078f7e2d8f2081a1a2de8685bef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
