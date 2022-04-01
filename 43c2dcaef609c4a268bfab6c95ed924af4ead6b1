@@ -1,5 +1,29 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f1eb43_bfb355d2",
+        "filename": "android/notices.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-04-01T03:44:27Z",
+      "side": 1,
+      "message": "Looks like .d file is also added to the resulting package (for example, assets/ directory in the .apex file contains NOTICES.html.gz.d as well)\n\nCan we put the deps file somewhere else so that it\u0027s not included by the apexer?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 93
+      },
+      "revId": "43c2dcaef609c4a268bfab6c95ed924af4ead6b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {

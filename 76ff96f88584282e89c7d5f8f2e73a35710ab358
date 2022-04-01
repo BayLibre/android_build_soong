@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50823023_e248b674",
+        "filename": "apex/builder.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-04-01T03:44:27Z",
+      "side": 0,
+      "message": "The change ignores this case. Probably this caused b/227682097",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 329,
+        "endChar": 2
+      },
+      "revId": "76ff96f88584282e89c7d5f8f2e73a35710ab358",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
