@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5ca2d2d_dad67614",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-04-02T00:40:06Z",
+      "side": 1,
+      "message": "Done. Moved that logic to modules.",
+      "parentUuid": "3ee9e684_7411801c",
+      "revId": "f6642fafe27a9a5d33ea42fe8818c3225eaee606",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d40acc68_869ca554",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36738370_5afd3d5d",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-04-02T00:40:06Z",
+      "side": 1,
+      "message": "Done. Used interface to get provenance metadata and merge in the singleton.",
+      "parentUuid": "d40acc68_869ca554",
+      "revId": "f6642fafe27a9a5d33ea42fe8818c3225eaee606",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19362bfe_d1bc8754",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-03-31T21:10:17Z",
       "side": 1,
       "message": "You generally shouldn\u0027t be reading the source path directly from the other module, there\u0027s no guarantee that it is actually a path in the module\u0027s directory.  It could be a module reference (\":module_name\") to a filegroup, genrule, etc.\n\nThe module is already computing the path to its source file, you should export that from the module through an interface or provider.",
+      "revId": "f6642fafe27a9a5d33ea42fe8818c3225eaee606",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84d7600e_ce96fd0f",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-04-02T00:40:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19362bfe_d1bc8754",
       "revId": "f6642fafe27a9a5d33ea42fe8818c3225eaee606",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
