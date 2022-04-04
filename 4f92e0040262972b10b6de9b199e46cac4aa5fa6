@@ -64,6 +64,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfc17c90_b5b78543",
+        "filename": "cmd/symbols_map/symbols_map.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-04T22:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69562c6c_8346ddd9",
+      "range": {
+        "startLine": 74,
+        "startChar": 43,
+        "endLine": 74,
+        "endChar": 52
+      },
+      "revId": "4f92e0040262972b10b6de9b199e46cac4aa5fa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "724e2e77_57e867f1",
+        "filename": "cmd/symbols_map/symbols_map.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-04T22:54:37Z",
+      "side": 1,
+      "message": "I tried to do that by showing the two forms of the command and their valid arguments in flags.Usage",
+      "parentUuid": "7cb849b0_9b88ed86",
+      "range": {
+        "startLine": 74,
+        "startChar": 37,
+        "endLine": 74,
+        "endChar": 70
+      },
+      "revId": "4f92e0040262972b10b6de9b199e46cac4aa5fa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc69491a_59606baa",
@@ -77,6 +125,30 @@
       "writtenOn": "2022-03-30T15:25:28Z",
       "side": 1,
       "message": "can we add testing for the merging?",
+      "range": {
+        "startLine": 173,
+        "startChar": 5,
+        "endLine": 173,
+        "endChar": 16
+      },
+      "revId": "4f92e0040262972b10b6de9b199e46cac4aa5fa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "691afc9e_304ac4e6",
+        "filename": "cmd/symbols_map/symbols_map.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-04T22:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc69491a_59606baa",
       "range": {
         "startLine": 173,
         "startChar": 5,
@@ -124,6 +196,30 @@
       "side": 1,
       "message": "Another potential option would be creating another message and having.\n\nmessage SymbolArchive {\n  // location is the path to the distributed symbol archive\n  optional string location \u003d 1 \n  optional Mappings mappings \u003d 2\n}\n\nIt saves on space, but if it\u0027s more complex to implement or deal with merging either is fine.",
       "parentUuid": "ecc68ab8_f45b9ff7",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "4f92e0040262972b10b6de9b199e46cac4aa5fa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa6cbb82_b7390b97",
+        "filename": "cmd/symbols_map/symbols_map_proto/symbols_map.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-04T22:54:37Z",
+      "side": 1,
+      "message": "The build doesn\u0027t know anything about where the symbol zip file will be distributed, that all happens at the build infrastructure layer.  Whatever fetches this proto will have to know the path to the proto and can easily also know the path to the symbols zip located next to the proto.  I think that layer will need to rewrite this proto into a version that contains the full information needed for lookup, for example by wrapping the Mapping message in one that contains an additional archive_location field.",
+      "parentUuid": "56986fba_7d1a8926",
       "range": {
         "startLine": 29,
         "startChar": 0,
