@@ -16,6 +16,24 @@
       "message": "Make this `AndroidMkEntries`, and call it with `ctx.subAndroidMk(entries, binary.testDecorator)` from `testBinary` and `testLibrary`",
       "revId": "e4cc57e95dd57c6bec225140e91f2aa5ae7f59be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "571345e5_be189f45",
+        "filename": "cc/androidmk.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-04-04T19:15:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2b77a8a_ee6e9afe",
+      "revId": "e4cc57e95dd57c6bec225140e91f2aa5ae7f59be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
