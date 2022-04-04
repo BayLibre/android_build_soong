@@ -586,10 +586,16 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 	a.onDeviceDir = android.InstallPathToOnDevicePath(ctx, a.installDir)
 
-	noticeFile := android.PathForModuleOut(ctx, "NOTICE", "NOTICE.html.gz")
+	noticeFile := android.PathForModuleOut(ctx, "NOTICE.html.gz")
 	android.BuildNoticeHtmlOutputFromLicenseMetadata(ctx, noticeFile)
+	assetPath := android.PathForModuleOut(ctx, "NOTICE", "NOTICE.html.gz")
+	builder := android.NewRuleBuilder(pctx, ctx)
+	builder.Command().Text("cp").
+		Input(noticeFile).
+		Output(assetPath)
+	builder.Build("notice_dir", "Building notice dir")
 	if Bool(a.appProperties.Embed_notices) || ctx.Config().IsEnvTrue("ALWAYS_EMBED_NOTICES") {
-		a.aapt.noticeFile = android.OptionalPathForPath(noticeFile)
+		a.aapt.noticeFile = android.OptionalPathForPath(assetPath)
 	}
 
 	a.classLoaderContexts = a.usesLibrary.classLoaderContextForUsesLibDeps(ctx)
