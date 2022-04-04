@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f0fbca_6f3226a0",
+        "filename": "cmd/sbox/sbox.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-04T18:09:04Z",
+      "side": 1,
+      "message": "should this be limited to maxErrors?",
+      "range": {
+        "startLine": 404,
+        "startChar": 22,
+        "endLine": 404,
+        "endChar": 52
+      },
+      "revId": "2f5c12ffde7d796fbfb5349f1f6a67b941bc083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
