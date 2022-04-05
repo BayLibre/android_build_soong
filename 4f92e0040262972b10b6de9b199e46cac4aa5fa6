@@ -112,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1b85bcb_2a1090de",
+        "filename": "cmd/symbols_map/symbols_map.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-05T14:16:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "724e2e77_57e867f1",
+      "range": {
+        "startLine": 74,
+        "startChar": 37,
+        "endLine": 74,
+        "endChar": 70
+      },
+      "revId": "4f92e0040262972b10b6de9b199e46cac4aa5fa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc69491a_59606baa",
