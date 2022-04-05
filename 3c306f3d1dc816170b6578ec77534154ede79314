@@ -70,6 +70,30 @@
       },
       "revId": "3c306f3d1dc816170b6578ec77534154ede79314",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0960300_c593c2e0",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-04-05T12:10:41Z",
+      "side": 1,
+      "message": "re second point: My point is that what we really want is a check that tells whether the module that I am building can safely run on platforms newer than X or not. That\u0027s what min_sdk_version is for. sdk_version just specifies the stub library that will be in the classpath.\n\nFurthermore, the current check is sometimes too restrictive, and sometimes too permissive. For example, checkSdkLinkType disallows (linktype: current) -\u003e (linktype: private_api), but allows (linktype: system_30) -\u003e (linktype: system_31), because it doesn\u0027t distinguish the different versions of the same API surface. Actually, (linktype: system_30) -\u003e (linktype: system_31) should be allowed if min_sdk_version \u003e\u003d 31, but be disallowed if min_sdk_version \u003c 31. The check based on simple comparison of rank [1] can\u0027t determine such cases.\n\n[1] https://cs.android.com/android/platform/superproject/+/master:build/soong/java/base.go;drc\u003dec198caf7e1e6e4bea5a891e399d18a6c4f917ec;l\u003d1830",
+      "parentUuid": "a9417616_68d653bd",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "3c306f3d1dc816170b6578ec77534154ede79314",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
