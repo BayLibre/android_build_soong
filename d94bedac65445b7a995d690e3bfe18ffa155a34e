@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f1440d6_e960a80c",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-05T00:50:35Z",
+      "side": 1,
+      "message": "noticeAssetPath?",
+      "range": {
+        "startLine": 622,
+        "startChar": 2,
+        "endLine": 622,
+        "endChar": 11
+      },
+      "revId": "d94bedac65445b7a995d690e3bfe18ffa155a34e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4ca5969_ea373617",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-05T00:50:35Z",
+      "side": 1,
+      "message": "noticeAssetPath?",
+      "range": {
+        "startLine": 591,
+        "startChar": 1,
+        "endLine": 591,
+        "endChar": 10
+      },
+      "revId": "d94bedac65445b7a995d690e3bfe18ffa155a34e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "303402f1_f78c223f",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-05T00:50:35Z",
+      "side": 1,
+      "message": "Unrelated to this change, but should this all be inside the Embed_notices check?",
+      "range": {
+        "startLine": 589,
+        "startChar": 1,
+        "endLine": 596,
+        "endChar": 51
+      },
+      "revId": "d94bedac65445b7a995d690e3bfe18ffa155a34e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
