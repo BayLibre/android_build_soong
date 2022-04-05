@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea0e4405_473b8a00",
+        "filename": "java/app_import.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-04-05T23:19:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "078ad007_45e32c5c",
+      "revId": "371000b1496c6581454773e9c8ebdd4e587772d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5bc9a82_d5eed816",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-05T23:05:55Z",
       "side": 1,
       "message": "make artifactPath a Path instead of a string and use it directly here",
+      "revId": "371000b1496c6581454773e9c8ebdd4e587772d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51b9cdb6_97fd0b16",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-04-05T23:19:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5bc9a82_d5eed816",
       "revId": "371000b1496c6581454773e9c8ebdd4e587772d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
