@@ -46,6 +46,30 @@
       },
       "revId": "3c306f3d1dc816170b6578ec77534154ede79314",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9417616_68d653bd",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-04-05T11:45:35Z",
+      "side": 1,
+      "message": "\u003e We could definitely expand the scope\n\nAh now I understand. It currently tracks only static dependencies such that you don\u0027t include a library that uses hidden apis. It would have to be extended to track \"don\u0027t allow linking against a library that _exports_ hidden apis\" (like framework does).\n\nNot really sure I understand the second point w.r.t sdk_version vs min_sdk_version.",
+      "parentUuid": "e77c0d0f_44dc0f8b",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "3c306f3d1dc816170b6578ec77534154ede79314",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
