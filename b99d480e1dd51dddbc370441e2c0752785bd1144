@@ -16,6 +16,24 @@
       "message": "dedent?",
       "revId": "b99d480e1dd51dddbc370441e2c0752785bd1144",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc99f129_7fc230fc",
+        "filename": "scripts/hiddenapi/analyze_bcpf.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1134,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-04-05T11:41:14Z",
+      "side": 1,
+      "message": "dedent would remove all the indent, even the part that I want and would require that I either separate the {indent_lines(...)} into a separate call to report() or indent the lines the correct amount. I couldn\u0027t see a nice way to do it.\n\nI did think about using a template library like https://cheetahtemplate.org/ and having the text in a separate file but adding dependencies would be a huge amount of work.\n\nUsing the built in string.Template may be a better option for a future clean up.",
+      "parentUuid": "f135329c_d315c92b",
+      "revId": "b99d480e1dd51dddbc370441e2c0752785bd1144",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
