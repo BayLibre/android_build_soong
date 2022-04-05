@@ -1173,6 +1173,7 @@ func TestHostFactory() android.Module {
 
 func InitTestHost(th *TestHost, installable *bool, testSuites []string, autoGenConfig *bool) {
 	th.properties.Installable = installable
+	th.properties.Instrument = true
 	th.testProperties.Auto_gen_config = autoGenConfig
 	th.testProperties.Test_suites = testSuites
 }
