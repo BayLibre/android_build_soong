@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eb801a3_50a76761",
+        "filename": "java/app_import.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-04-05T18:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63bc1601_bd7d63b4",
+      "revId": "806c3d649a9f97a1e721ae8bb6c7ebff7e0dc805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36aa3f27_3b0152cc",
@@ -87,6 +105,78 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e4d85af_cf8259ca",
+        "filename": "java/app_import.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-04-05T18:46:38Z",
+      "side": 1,
+      "message": "Done. These were copied from the singleton code which is not needed here.",
+      "parentUuid": "36aa3f27_3b0152cc",
+      "range": {
+        "startLine": 350,
+        "startChar": 49,
+        "endLine": 350,
+        "endChar": 60
+      },
+      "revId": "806c3d649a9f97a1e721ae8bb6c7ebff7e0dc805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51399892_385d375a",
+        "filename": "java/app_import.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-04-05T18:46:38Z",
+      "side": 1,
+      "message": "Currently provenance metadata is needed for prebuilt APKs and APEXes, and this check is for prebuilt APKs.",
+      "parentUuid": "b761e5fa_5d0952bc",
+      "range": {
+        "startLine": 350,
+        "startChar": 5,
+        "endLine": 350,
+        "endChar": 45
+      },
+      "revId": "806c3d649a9f97a1e721ae8bb6c7ebff7e0dc805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e814fd5c_fc1dbed6",
+        "filename": "java/app_import.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-04-05T18:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c59fe1a_b6f29434",
+      "range": {
+        "startLine": 350,
+        "startChar": 64,
+        "endLine": 350,
+        "endChar": 81
+      },
+      "revId": "806c3d649a9f97a1e721ae8bb6c7ebff7e0dc805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8d2b7d5_3175f25e",
@@ -100,6 +190,24 @@
       "writtenOn": "2022-04-05T00:12:49Z",
       "side": 1,
       "message": "Delete `$out.temp` here too",
+      "revId": "806c3d649a9f97a1e721ae8bb6c7ebff7e0dc805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03d33f57_7c49e5db",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-04-05T18:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8d2b7d5_3175f25e",
       "revId": "806c3d649a9f97a1e721ae8bb6c7ebff7e0dc805",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -127,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a77cfd8_52fb6747",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-04-05T18:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f4374fc_a9db5d57",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 26
+      },
+      "revId": "806c3d649a9f97a1e721ae8bb6c7ebff7e0dc805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06818f47_2b04171d",
@@ -140,6 +272,30 @@
       "writtenOn": "2022-04-05T00:12:49Z",
       "side": 1,
       "message": "Metadata is usually one word",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "806c3d649a9f97a1e721ae8bb6c7ebff7e0dc805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da84a7d3_3ba35056",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-04-05T18:46:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06818f47_2b04171d",
       "range": {
         "startLine": 45,
         "startChar": 11,
