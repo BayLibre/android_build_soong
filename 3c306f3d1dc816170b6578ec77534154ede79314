@@ -142,6 +142,30 @@
       },
       "revId": "3c306f3d1dc816170b6578ec77534154ede79314",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a553752e_732d7c40",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-04-05T14:13:27Z",
+      "side": 1,
+      "message": "\u003e type\n\nOK, I guess that\u0027s what you pursued for the native side of apex builds, but nothing else works that way AFAIK (well, java doesn\u0027t).",
+      "parentUuid": "e2ca24cf_d9712af0",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "3c306f3d1dc816170b6578ec77534154ede79314",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
