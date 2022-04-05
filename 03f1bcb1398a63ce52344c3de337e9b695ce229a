@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c181ff3_4581cd81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T12:40:08Z",
+      "side": 1,
+      "message": "Thanks for adding testing of this!",
+      "revId": "03f1bcb1398a63ce52344c3de337e9b695ce229a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c77f4f1e_c75df39d",
+        "filename": "android/bazel_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T12:40:08Z",
+      "side": 1,
+      "message": "nit: missing an empty line here",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 1
+      },
+      "revId": "03f1bcb1398a63ce52344c3de337e9b695ce229a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83364701_994010d8",
+        "filename": "android/bazel_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T12:40:08Z",
+      "side": 1,
+      "message": "nit missing an empty line",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 1
+      },
+      "revId": "03f1bcb1398a63ce52344c3de337e9b695ce229a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a4b551f_fa9162c0",
+        "filename": "android/bazel_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T12:40:08Z",
+      "side": 1,
+      "message": "this will enable the module regardless of other allowlisting, we should not set it to true except when testing that Bp2build_available enables a module",
+      "range": {
+        "startLine": 189,
+        "startChar": 3,
+        "endLine": 189,
+        "endChar": 47
+      },
+      "revId": "03f1bcb1398a63ce52344c3de337e9b695ce229a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26a28171_3c4d3b08",
+        "filename": "bazel/testing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T12:40:08Z",
+      "side": 1,
+      "message": "suffixing with _ is not a very go pattern, can we use ModuleName or something instead?",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "03f1bcb1398a63ce52344c3de337e9b695ce229a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
