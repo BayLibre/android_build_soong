@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be080d0c_098b5aa4",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 2103,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T13:58:13Z",
+      "side": 1,
+      "message": "Because Jarjar_rules is tagged with `android:\"path\"`, this could be a reference to another module or a path, similarly it is handled in Soong with [`android.PathForModuleSrc`](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/base.go;l\u003d1036;drc\u003d9bb9bfb349efa3e03c351bb0ce3bb1e4de013ab4), both of which are indications we should use something from android/bazel_paths.go -- probably [`android.BazelLabelForModuleSrcSingle`](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_paths.go;l\u003d162;drc\u003ddaa09efb5e00a316460faec498dc65fbca41bae0)",
+      "range": {
+        "startLine": 2103,
+        "startChar": 65,
+        "endLine": 2103,
+        "endChar": 89
+      },
+      "revId": "e0257161aa9817ca703b88cea8a3f3f7073c4062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
