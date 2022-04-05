@@ -22,6 +22,30 @@
       },
       "revId": "3c306f3d1dc816170b6578ec77534154ede79314",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e77c0d0f_44dc0f8b",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-04-05T11:35:08Z",
+      "side": 1,
+      "message": "The link type of framework is already set as such [1]. But the problem is that the link type check isn\u0027t done for every pair of dependencies [2]. We could definitely expand the scope, but doing that may cause (legit) regressions in other places. Also, it either isn\u0027t scalable as we have to add new module types and dependency tags as they are introduced. I think that\u0027s out of scope of the bug.\n\nBesides, I personally am not a fan of the link type check as it\u0027s controlled by sdk_version, not min_sdk_version. A library linked to framework.jar doesn\u0027t necessarily mean that it can\u0027t be unbundled. It might have used only public APIs. It might have used private APIs (or newer public APIs) but only when it is detected that the library is running in an environment where such APIs are available/accessible.\n\n[1] https://cs.android.com/android/platform/superproject/+/master:build/soong/java/base.go;drc\u003dec198caf7e1e6e4bea5a891e399d18a6c4f917ec;l\u003d1807\n\n[2] https://cs.android.com/android/platform/superproject/+/master:build/soong/java/base.go;drc\u003dec198caf7e1e6e4bea5a891e399d18a6c4f917ec;l\u003d522",
+      "parentUuid": "80bb0264_78389d81",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "3c306f3d1dc816170b6578ec77534154ede79314",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
