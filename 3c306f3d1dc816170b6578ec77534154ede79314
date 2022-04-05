@@ -118,6 +118,30 @@
       },
       "revId": "3c306f3d1dc816170b6578ec77534154ede79314",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2ca24cf_d9712af0",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-04-05T14:04:58Z",
+      "side": 1,
+      "message": "re: not the type\n\nThe API surface (i.e. public, system, module, etc.) shall be determined by the context. If you are building an APEX, the surface shall be module. If you are building an unbundled app, then the surface shall be public.\n\nre: compiling against system_30 with min_sdk_version 31\n\nThe same is a common configuration in the native world. You have a library that links to the stub for system_30. The library is used by two unbundled modules each of which has min_sdk_version 31 and 30. It\u0027s totally fine to use the library in the module targeting 31, because the platform 31 will provide all the APIs that the library will be using.",
+      "parentUuid": "59bb9116_fb1c6e2d",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "3c306f3d1dc816170b6578ec77534154ede79314",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
