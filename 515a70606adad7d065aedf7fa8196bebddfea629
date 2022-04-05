@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "639fcefe_9717c3cd",
+        "filename": "android/allowlists/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T12:56:41Z",
+      "side": 1,
+      "message": "license header",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8806a030_54a1fbff",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T12:56:41Z",
+      "side": 1,
+      "message": "We need the licensing header for this file",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fae3adca_0752b4a7",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T12:56:41Z",
+      "side": 1,
+      "message": "nit: go constants should be camel case (go/go-style/guide#mixed-caps)",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f9b9fd6_86b241f7",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T12:56:41Z",
+      "side": 1,
+      "message": "it\u0027d be nice for this to use the same constants as Bp2buildDefaultConfig eventually, but not as part of this cl",
+      "range": {
+        "startLine": 178,
+        "startChar": 44,
+        "endLine": 178,
+        "endChar": 48
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3842388c_bd1e17cd",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T12:56:41Z",
+      "side": 1,
+      "message": "splitting these into two is unexpected, can we embed these into a single interface?",
+      "range": {
+        "startLine": 92,
+        "startChar": 27,
+        "endLine": 92,
+        "endChar": 73
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e812e94d_ce94ddb9",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T12:56:41Z",
+      "side": 1,
+      "message": "can you add go docs for all the newly exported functions?",
+      "range": {
+        "startLine": 198,
+        "startChar": 5,
+        "endLine": 198,
+        "endChar": 25
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b51770cd_1431604c",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T12:56:41Z",
+      "side": 1,
+      "message": "nit: msising a blank line",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 1
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3ea7578_fda60230",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T12:56:41Z",
+      "side": 1,
+      "message": "if this is why we have errorcontext separate, we may be able to add ModuleErrorf to BazelConversionContext",
+      "range": {
+        "startLine": 357,
+        "startChar": 41,
+        "endLine": 357,
+        "endChar": 65
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "264652b1_6bb25bb2",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T12:56:41Z",
+      "side": 1,
+      "message": "Can you update the godocs to reflect the new return values? as is, it\u0027s a bit unclear why packagePath needs to be returned",
+      "range": {
+        "startLine": 438,
+        "startChar": 90,
+        "endLine": 438,
+        "endChar": 104
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
