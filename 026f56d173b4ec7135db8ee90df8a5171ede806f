@@ -81,6 +81,30 @@
       },
       "revId": "026f56d173b4ec7135db8ee90df8a5171ede806f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd304467_b60687f5",
+        "filename": "java/java.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 2070,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T14:51:24Z",
+      "side": 1,
+      "message": "Another option may be to refactor ResourceDirsToJarArgs to use something like [`PathsRelativeToModuleSourceDir`](https://cs.android.com/android/platform/superproject/+/master:build/soong/android/paths.go;l\u003d441;drc\u003dee68c43d4bedd32b20a365d867046a00f48325a8) that has a more direct analogue to Bazel globs -- that would likely need to be a separate CL as we\u0027ll need to verify there are no diffs to Soong builds. Especially as we\u0027d need to add support for globbing in excludes (which is supported in bazel)\n\ngiven how much work that is...we can move forward with this CL and pursue a path like that separately or defer until we support globs in bp2build",
+      "parentUuid": "95b4af4d_be552da1",
+      "range": {
+        "startLine": 2070,
+        "startChar": 34,
+        "endLine": 2070,
+        "endChar": 52
+      },
+      "revId": "026f56d173b4ec7135db8ee90df8a5171ede806f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
