@@ -228,6 +228,30 @@
       },
       "revId": "4f92e0040262972b10b6de9b199e46cac4aa5fa6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b812a56_25b109f9",
+        "filename": "cmd/symbols_map/symbols_map_proto/symbols_map.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1307230
+      },
+      "writtenOn": "2022-04-05T13:57:50Z",
+      "side": 1,
+      "message": "SGTM, thanks for clarifying.",
+      "parentUuid": "aa6cbb82_b7390b97",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "4f92e0040262972b10b6de9b199e46cac4aa5fa6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
