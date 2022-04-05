@@ -46,6 +46,30 @@
       },
       "revId": "445b3cfdc5562218a16aac66758ac9e2d902e29f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2919bfbf_1b52e88e",
+        "filename": "etc/prebuilt_etc.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T13:43:59Z",
+      "side": 1,
+      "message": "a single case is fine.",
+      "parentUuid": "0cc1dc2c_c97f943c",
+      "range": {
+        "startLine": 706,
+        "startChar": 1,
+        "endLine": 706,
+        "endChar": 62
+      },
+      "revId": "445b3cfdc5562218a16aac66758ac9e2d902e29f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
