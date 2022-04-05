@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63bc1601_bd7d63b4",
+        "filename": "java/app_import.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-05T00:12:49Z",
+      "side": 1,
+      "message": "Keep the android/soong imports grouped together",
+      "revId": "806c3d649a9f97a1e721ae8bb6c7ebff7e0dc805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36aa3f27_3b0152cc",
+        "filename": "java/app_import.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-05T00:12:49Z",
+      "side": 1,
+      "message": "This should already have been checked before GenerateAndroidBuildActions was called",
+      "range": {
+        "startLine": 350,
+        "startChar": 49,
+        "endLine": 350,
+        "endChar": 60
+      },
+      "revId": "806c3d649a9f97a1e721ae8bb6c7ebff7e0dc805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c59fe1a_b6f29434",
+        "filename": "java/app_import.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-05T00:12:49Z",
+      "side": 1,
+      "message": "This seems odd since we\u0027ve just called ctx.InstallFile",
+      "range": {
+        "startLine": 350,
+        "startChar": 64,
+        "endLine": 350,
+        "endChar": 81
+      },
+      "revId": "806c3d649a9f97a1e721ae8bb6c7ebff7e0dc805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b761e5fa_5d0952bc",
+        "filename": "java/app_import.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-05T00:12:49Z",
+      "side": 1,
+      "message": "What is this check for?",
+      "range": {
+        "startLine": 350,
+        "startChar": 5,
+        "endLine": 350,
+        "endChar": 45
+      },
+      "revId": "806c3d649a9f97a1e721ae8bb6c7ebff7e0dc805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8d2b7d5_3175f25e",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-05T00:12:49Z",
+      "side": 1,
+      "message": "Delete `$out.temp` here too",
+      "revId": "806c3d649a9f97a1e721ae8bb6c7ebff7e0dc805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f4374fc_a9db5d57",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-05T00:12:49Z",
+      "side": 1,
+      "message": "\"HasProvenanceMetadata\" sounds like this is used to check if the module has metadata, not to retrieve that metadata.  Suggest \"ProvenanceMetadata\" instead.",
+      "range": {
+        "startLine": 44,
+        "startChar": 5,
+        "endLine": 44,
+        "endChar": 26
+      },
+      "revId": "806c3d649a9f97a1e721ae8bb6c7ebff7e0dc805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06818f47_2b04171d",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-05T00:12:49Z",
+      "side": 1,
+      "message": "Metadata is usually one word",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "806c3d649a9f97a1e721ae8bb6c7ebff7e0dc805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
