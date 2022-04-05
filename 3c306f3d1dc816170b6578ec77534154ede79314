@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80bb0264_78389d81",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-04-05T09:35:38Z",
+      "side": 1,
+      "message": "another option would be to piggy-back on the link type stuff. If we make the link type of framework be \"hidden apis\" we\u0027d get a similar behavior automatically from there (and perhaps easier to extend to e.g. framework-non-updatable, framework-all etc).",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "3c306f3d1dc816170b6578ec77534154ede79314",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
