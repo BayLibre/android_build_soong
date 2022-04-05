@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35bb0f6d_5a3773a0",
+        "filename": "apex/builder.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-04-05T05:34:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f1440d6_e960a80c",
+      "range": {
+        "startLine": 622,
+        "startChar": 2,
+        "endLine": 622,
+        "endChar": 11
+      },
+      "revId": "d94bedac65445b7a995d690e3bfe18ffa155a34e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4ca5969_ea373617",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8312192c_38106fe4",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-04-05T05:34:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4ca5969_ea373617",
+      "range": {
+        "startLine": 591,
+        "startChar": 1,
+        "endLine": 591,
+        "endChar": 10
+      },
+      "revId": "d94bedac65445b7a995d690e3bfe18ffa155a34e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "303402f1_f78c223f",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-05T00:50:35Z",
       "side": 1,
       "message": "Unrelated to this change, but should this all be inside the Embed_notices check?",
+      "range": {
+        "startLine": 589,
+        "startChar": 1,
+        "endLine": 596,
+        "endChar": 51
+      },
+      "revId": "d94bedac65445b7a995d690e3bfe18ffa155a34e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8672b4b5_f5d1e407",
+        "filename": "java/app.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2022-04-05T05:34:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "303402f1_f78c223f",
       "range": {
         "startLine": 589,
         "startChar": 1,
