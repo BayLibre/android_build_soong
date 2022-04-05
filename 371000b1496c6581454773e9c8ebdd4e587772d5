@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "078ad007_45e32c5c",
+        "filename": "java/app_import.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-05T22:39:00Z",
+      "side": 1,
+      "message": "This has to be `android.PathForModuleSrc(ctx, a.properties.Apk)`",
+      "revId": "371000b1496c6581454773e9c8ebdd4e587772d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
