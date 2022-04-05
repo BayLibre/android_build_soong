@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7704c573_f32f8a84",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T15:30:25Z",
+      "side": 1,
+      "message": "I don\u0027t see this change, is it still relevant?",
+      "range": {
+        "startLine": 13,
+        "startChar": 33,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "0b31366ed67a52fb1cbd815c1f244065da63eead",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "488bc081_169cf4ef",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T15:30:25Z",
+      "side": 1,
+      "message": "can you add godocs for exported types/functions throughout",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "0b31366ed67a52fb1cbd815c1f244065da63eead",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d7bb92f_4f996240",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T15:30:25Z",
+      "side": 1,
+      "message": "will an ExportedVariables struct always use the same PackageContext?",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "0b31366ed67a52fb1cbd815c1f244065da63eead",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aba466bb_ee7d4402",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T15:30:25Z",
+      "side": 1,
+      "message": "do these set methods still need to be exported?",
+      "range": {
+        "startLine": 131,
+        "startChar": 33,
+        "endLine": 131,
+        "endChar": 36
+      },
+      "revId": "0b31366ed67a52fb1cbd815c1f244065da63eead",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e58bdf9_495fb165",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T15:30:25Z",
+      "side": 1,
+      "message": "optional: could use `GeneratedBazelFileWarning` constant instead https://cs.android.com/android/platform/superproject/+/master:build/soong/bazel/constants.go;l\u003d24;drc\u003d09f947d67e2f0541772178ee431daded2b86f526",
+      "range": {
+        "startLine": 260,
+        "startChar": 9,
+        "endLine": 260,
+        "endChar": 56
+      },
+      "revId": "0b31366ed67a52fb1cbd815c1f244065da63eead",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e319773_f7eedb21",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T15:30:25Z",
+      "side": 1,
+      "message": "this appears to be unused",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 52
+      },
+      "revId": "0b31366ed67a52fb1cbd815c1f244065da63eead",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

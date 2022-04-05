@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a55c0e5_0a1ed99f",
+        "filename": "cc/config/x86_linux_host.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T15:30:25Z",
+      "side": 1,
+      "message": "missed this one in the transformations",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "07b511151ac71b6c332d77a9f4a744de4ac1ad00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

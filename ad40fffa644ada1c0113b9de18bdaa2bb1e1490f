@@ -16,6 +16,24 @@
       "message": "I think I need a second opinion here as to whether the ordering of these lists of vars is important. I lean towards no, but I don\u0027t want to miss something subtle.\n\nEssentially this functionality is moved to `ExportedVariables.asBazel()`, and I just ordered the lists there in order of complexity of type/length of name :)",
       "revId": "ad40fffa644ada1c0113b9de18bdaa2bb1e1490f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dbdfe97_c9b8a7fe",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T15:30:25Z",
+      "side": 0,
+      "message": "the only one that requires ordering is when outputting `ExportedVariableReferenceDictVars` as it references other variables, otherwise, you ordering should be irrelevant.",
+      "parentUuid": "d1141478_3f19a21d",
+      "revId": "ad40fffa644ada1c0113b9de18bdaa2bb1e1490f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
