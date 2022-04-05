@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19c140f9_6a64d84b",
+        "filename": "android/bazel_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-05T16:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c77f4f1e_c75df39d",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 1
+      },
+      "revId": "03f1bcb1398a63ce52344c3de337e9b695ce229a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83364701_994010d8",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-05T12:40:08Z",
       "side": 1,
       "message": "nit missing an empty line",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 1
+      },
+      "revId": "03f1bcb1398a63ce52344c3de337e9b695ce229a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ed5724a_4a98c949",
+        "filename": "android/bazel_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-05T16:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83364701_994010d8",
       "range": {
         "startLine": 176,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bfdcf61_09531596",
+        "filename": "android/bazel_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-05T16:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a4b551f_fa9162c0",
+      "range": {
+        "startLine": 189,
+        "startChar": 3,
+        "endLine": 189,
+        "endChar": 47
+      },
+      "revId": "03f1bcb1398a63ce52344c3de337e9b695ce229a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26a28171_3c4d3b08",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-04-05T12:40:08Z",
       "side": 1,
       "message": "suffixing with _ is not a very go pattern, can we use ModuleName or something instead?",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "03f1bcb1398a63ce52344c3de337e9b695ce229a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d2d284e_bdcfb865",
+        "filename": "bazel/testing.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-05T16:28:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26a28171_3c4d3b08",
       "range": {
         "startLine": 26,
         "startChar": 1,
