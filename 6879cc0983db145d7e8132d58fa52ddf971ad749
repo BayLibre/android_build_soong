@@ -16,6 +16,23 @@
       "message": "Also tested bp2build.sh locally",
       "revId": "6879cc0983db145d7e8132d58fa52ddf971ad749",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1435e279_bee3be3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T23:09:39Z",
+      "side": 1,
+      "message": "bp2build and mixed_libc passed presubmit, bypassing other presubmits",
+      "revId": "6879cc0983db145d7e8132d58fa52ddf971ad749",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
