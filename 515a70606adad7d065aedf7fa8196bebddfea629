@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c665804_02780272",
+        "filename": "android/allowlists/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-05T16:28:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "639fcefe_9717c3cd",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8806a030_54a1fbff",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "231de2f4_a4e7b911",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-05T16:28:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8806a030_54a1fbff",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 18
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fae3adca_0752b4a7",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-05T12:56:41Z",
       "side": 1,
       "message": "nit: go constants should be camel case (go/go-style/guide#mixed-caps)",
+      "range": {
+        "startLine": 11,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 18
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbcb607e_77c43c08",
+        "filename": "android/allowlists/allowlists.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-05T16:28:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fae3adca_0752b4a7",
       "range": {
         "startLine": 11,
         "startChar": 1,
@@ -116,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba6f29f3_7968e127",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-05T16:28:25Z",
+      "side": 1,
+      "message": "Yep, see other comment.",
+      "parentUuid": "3842388c_bd1e17cd",
+      "range": {
+        "startLine": 92,
+        "startChar": 27,
+        "endLine": 92,
+        "endChar": 73
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e812e94d_ce94ddb9",
@@ -129,6 +225,30 @@
       "writtenOn": "2022-04-05T12:56:41Z",
       "side": 1,
       "message": "can you add go docs for all the newly exported functions?",
+      "range": {
+        "startLine": 198,
+        "startChar": 5,
+        "endLine": 198,
+        "endChar": 25
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2008725_b9956213",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-05T16:28:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e812e94d_ce94ddb9",
       "range": {
         "startLine": 198,
         "startChar": 5,
@@ -162,6 +282,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "552adf2e_03a3fff3",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-05T16:28:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b51770cd_1431604c",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 1
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3ea7578_fda60230",
@@ -185,6 +329,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8284530b_e5fdb137",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-05T16:28:25Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s a much better solution. I didn\u0027t like having to pass two contexts.",
+      "parentUuid": "d3ea7578_fda60230",
+      "range": {
+        "startLine": 357,
+        "startChar": 41,
+        "endLine": 357,
+        "endChar": 65
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "264652b1_6bb25bb2",
@@ -198,6 +366,30 @@
       "writtenOn": "2022-04-05T12:56:41Z",
       "side": 1,
       "message": "Can you update the godocs to reflect the new return values? as is, it\u0027s a bit unclear why packagePath needs to be returned",
+      "range": {
+        "startLine": 438,
+        "startChar": 90,
+        "endLine": 438,
+        "endChar": 104
+      },
+      "revId": "515a70606adad7d065aedf7fa8196bebddfea629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8843796c_c28b568d",
+        "filename": "android/bazel.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-05T16:28:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "264652b1_6bb25bb2",
       "range": {
         "startLine": 438,
         "startChar": 90,
