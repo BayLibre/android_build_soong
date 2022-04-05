@@ -94,6 +94,30 @@
       },
       "revId": "3c306f3d1dc816170b6578ec77534154ede79314",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59bb9116_fb1c6e2d",
+        "filename": "android/neverallow.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-04-05T13:55:59Z",
+      "side": 1,
+      "message": "well, min_sdk_version isn\u0027t sufficient either because it\u0027s just the number and not the type.\n\nI think checking the number and the type are two separate things, link type verifies the type and the recursive min_sdk_version verification verifies the number?\n\nNot sure I understand the example of compiling against system_30 with min_sdk_version 31. Doesn\u0027t sound like a reasonable configuration",
+      "parentUuid": "f0960300_c593c2e0",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 19
+      },
+      "revId": "3c306f3d1dc816170b6578ec77534154ede79314",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
