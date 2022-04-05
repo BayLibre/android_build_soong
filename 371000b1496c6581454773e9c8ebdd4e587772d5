@@ -16,6 +16,23 @@
       "message": "This has to be `android.PathForModuleSrc(ctx, a.properties.Apk)`",
       "revId": "371000b1496c6581454773e9c8ebdd4e587772d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5bc9a82_d5eed816",
+        "filename": "provenance/provenance_singleton.go",
+        "patchSetId": 12
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-05T23:05:55Z",
+      "side": 1,
+      "message": "make artifactPath a Path instead of a string and use it directly here",
+      "revId": "371000b1496c6581454773e9c8ebdd4e587772d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
