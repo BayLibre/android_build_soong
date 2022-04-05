@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80f067a0_9e212e77",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T15:36:51Z",
+      "side": 1,
+      "message": "godocs please :)",
+      "range": {
+        "startLine": 105,
+        "startChar": 28,
+        "endLine": 105,
+        "endChar": 54
+      },
+      "revId": "56a817ce90a8a183dfd9503dfbcb2702a351b88d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db009124_fee47b8a",
+        "filename": "java/config/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T15:36:51Z",
+      "side": 1,
+      "message": "are these used anymore?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 56
+      },
+      "revId": "56a817ce90a8a183dfd9503dfbcb2702a351b88d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c78ce997_5a4d44da",
+        "filename": "java/config/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T15:36:51Z",
+      "side": 1,
+      "message": "go style recommends camel case, not snake case",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "56a817ce90a8a183dfd9503dfbcb2702a351b88d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29df6e2d_6e6efe21",
+        "filename": "java/config/error_prone.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T15:36:51Z",
+      "side": 1,
+      "message": "this is an interesting pattern that we\u0027ll need to address in the conversion, this is fine for now but we should file a bug for how to handle this in Bazel and understand why external/error_prone/soong/error_prone.go may not be available",
+      "range": {
+        "startLine": 22,
+        "startChar": 32,
+        "endLine": 22,
+        "endChar": 73
+      },
+      "revId": "56a817ce90a8a183dfd9503dfbcb2702a351b88d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
