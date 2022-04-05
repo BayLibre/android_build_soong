@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5eed00f_756f119c",
+        "filename": "android/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-05T12:02:59Z",
+      "side": 1,
+      "message": "at risk of piling on to the bikeshedding, I also prefer \"computed\" (but really, anything works)",
+      "parentUuid": "760a23b0_884433aa",
+      "revId": "9175b40262ab602cef17f0613a59ccce62b86461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1914422a_d9f70257",
         "filename": "android/derived.go",
         "patchSetId": 1
