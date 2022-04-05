@@ -201,6 +201,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85eac135_53cd494b",
+        "filename": "java/app_import.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-04-05T21:06:44Z",
+      "side": 1,
+      "message": "This logic is also for android_test_import, which I have seen in my tests.",
+      "parentUuid": "032a0108_f862daa7",
+      "range": {
+        "startLine": 350,
+        "startChar": 5,
+        "endLine": 350,
+        "endChar": 45
+      },
+      "revId": "806c3d649a9f97a1e721ae8bb6c7ebff7e0dc805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8d2b7d5_3175f25e",
