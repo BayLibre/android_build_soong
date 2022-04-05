@@ -70,6 +70,30 @@
       },
       "revId": "84954a1337526fcadb8b7397ddf4f0e7c5fe6580",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64c889e3_26172c08",
+        "filename": "java/java.go",
+        "patchSetId": 9
+      },
+      "lineNbr": 2117,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-05T14:48:59Z",
+      "side": 1,
+      "message": "\u003e Not sure what you have in mind here, but if it\u0027s a simple cleanup, sounds great, otherwise, let\u0027s chat more to see if it\u0027s something that deserves a short design.\n\nI was hoping I could do something cool with either reflection or generics (but apparently Android is not using go1.18 yet: I got an error about generics syntax and given that we have a flag to force go1.15).\n\nBut,\n1) I learned that you can\u0027t have a generic \"method\" on a struct. It must either be a standalone function or not generic.\n\n2) This change in paricular only ended up needing to add two lines because I was already iterating through arch-variant properties.\n\n3) Since the arch variant properties are just returned as a map, I don\u0027t know if there is anything special to do to reduce the boilerplate anyways. I wanted something like this\n```\nfunc WalkArchVariantProperties[T any](ctx ArchVariantContext, m *ModuleBase, propertySet T, f func(archProps *T)) {\n  propType :\u003d reflect.ValueOf(propertySet).Type()\n  archVariantProps :\u003d m.GetArchVariantProperties(ctx, \u0026propType{})\n      for axis, configToProps :\u003d range archVariantProps {\n\t  for config, _props :\u003d range configToProps {\n\t      if archProps, ok :\u003d _props.(*propType); ok {\n\t\t  f(archProps)\n\t      }\n\t  }\n      }\n  }\n}\n```\n\nBut that `\u0026propType{}` syntax is not valid (although I assume there is some way to instantiate an empty value of some type) and similarly for the `_props.(*propType)` code. So, I didn\u0027t feel that this was that productive of a function.",
+      "parentUuid": "8da03ab5_d3884ed7",
+      "range": {
+        "startLine": 2117,
+        "startChar": 29,
+        "endLine": 2117,
+        "endChar": 41
+      },
+      "revId": "84954a1337526fcadb8b7397ddf4f0e7c5fe6580",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

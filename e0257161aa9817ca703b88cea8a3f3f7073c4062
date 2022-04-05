@@ -22,6 +22,30 @@
       },
       "revId": "e0257161aa9817ca703b88cea8a3f3f7073c4062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a2a438_90206264",
+        "filename": "java/java.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 2103,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-05T14:48:59Z",
+      "side": 1,
+      "message": "Ah I see. Time to start paying attention to the struct tags. I didn\u0027t realize these had so much information.",
+      "parentUuid": "be080d0c_098b5aa4",
+      "range": {
+        "startLine": 2103,
+        "startChar": 65,
+        "endLine": 2103,
+        "endChar": 89
+      },
+      "revId": "e0257161aa9817ca703b88cea8a3f3f7073c4062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
