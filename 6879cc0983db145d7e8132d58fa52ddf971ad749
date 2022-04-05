@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a736adfe_98ddbda6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-05T22:43:19Z",
+      "side": 1,
+      "message": "Also tested bp2build.sh locally",
+      "revId": "6879cc0983db145d7e8132d58fa52ddf971ad749",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
