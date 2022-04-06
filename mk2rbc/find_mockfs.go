@@ -4,6 +4,7 @@ import (
 	"io/fs"
 	"os"
 	"path/filepath"
+	"sort"
 	"time"
 )
 
@@ -100,6 +101,9 @@ func (m FindMockFS) ReadDir(name string) ([]fs.DirEntry, error) {
 		for _, e := range d {
 			res = append(res, e)
 		}
+		sort.Slice(res, func(i int, j int) bool {
+			return res[i].Name() < res[j].Name()
+		})
 		return res, nil
 	}
 	return nil, os.ErrNotExist
