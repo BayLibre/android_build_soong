@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "379eb1a7_556a6fb0",
+        "filename": "android/derived.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-06T07:42:02Z",
+      "side": 1,
+      "message": "Let\u0027s remove it then. TBH I don\u0027t see far enough into the future to say whether that will come to pass or not with any certainty so unless you are, I declare YAGNI.",
+      "parentUuid": "e250f745_c22ff29b",
+      "range": {
+        "startLine": 33,
+        "startChar": 3,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "e561c7fc57efe4b50ba8c163d9af5a9bef872634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1edc8966_2f44fa63",
         "filename": "android/derived.go",
         "patchSetId": 16
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I generally dislike polluting the package (but that is my general discomfort with Go and how Soong can\u0027t handle multiple packages in the same module).\n\nBut also I am using `ctx` via closure.",
       "parentUuid": "1edc8966_2f44fa63",
+      "range": {
+        "startLine": 46,
+        "startChar": 8,
+        "endLine": 46,
+        "endChar": 28
+      },
+      "revId": "e561c7fc57efe4b50ba8c163d9af5a9bef872634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "799276a1_90a86784",
+        "filename": "android/derived.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-06T07:42:02Z",
+      "side": 1,
+      "message": "I agree with that whole sentiment but I assume it\u0027s due to my past as a Java programmer. Functions with descriptive names seem preferable to long lambdas.",
+      "parentUuid": "adc97293_4484a188",
       "range": {
         "startLine": 46,
         "startChar": 8,
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "if u are asking how\u0027s this any different from `ctx.env.get()` (which I will rename to getVar()), then yes your\u0027re right not really that different.\nThe only reason I kept this is because the go function IsEnvTrue() lists a few special \"truthies\", that I didn\u0027t want to copy:\n\nreturn value \u003d\u003d \"1\" || value \u003d\u003d \"y\" || value \u003d\u003d \"yes\" || value \u003d\u003d \"on\" || value \u003d\u003d \"true\"",
       "parentUuid": "6cfbf38e_5b43daf0",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 10
+      },
+      "revId": "e561c7fc57efe4b50ba8c163d9af5a9bef872634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35657fbd_7fe0db1f",
+        "filename": "android/derived.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-06T07:42:02Z",
+      "side": 1,
+      "message": "omgwtf, you\u0027re right, I didn\u0027t realize that IsEnvTrue lists a number of strings that are understood to mean \"true\". My eyes. MY EYES!",
+      "parentUuid": "174fdf1e_d195db08",
       "range": {
         "startLine": 59,
         "startChar": 3,
@@ -367,6 +439,30 @@
       "side": 1,
       "message": "yes I did look into it and technically there could be some iteroperability but I concluded that that would come at the cost of some refactoring which would not make things more legible.\nOne obvious difference being proptools.extendPropertiesRecursive() etc. require GO structs, while I want to work with a starklark.Dict without converting it to some runtime-defined GO struct.",
       "parentUuid": "a3db7a70_6216074d",
+      "range": {
+        "startLine": 162,
+        "startChar": 5,
+        "endLine": 162,
+        "endChar": 10
+      },
+      "revId": "e561c7fc57efe4b50ba8c163d9af5a9bef872634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b208037_bf8e3003",
+        "filename": "android/derived.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-06T07:42:02Z",
+      "side": 1,
+      "message": "Yeah, I understand. I was hoping you would find a way to do this without duplicating the code, but I am not at all surprised that it didn\u0027t work out.",
+      "parentUuid": "792c8f90_6132127d",
       "range": {
         "startLine": 162,
         "startChar": 5,

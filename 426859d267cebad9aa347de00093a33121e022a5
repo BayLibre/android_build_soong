@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6787ed5_ca783bbc",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-06T07:42:02Z",
+      "side": 1,
+      "message": "nit: it\u0027s not computations but \"computedProperties\" (also in line 118)",
+      "range": {
+        "startLine": 105,
+        "startChar": 9,
+        "endLine": 105,
+        "endChar": 21
+      },
+      "revId": "426859d267cebad9aa347de00093a33121e022a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3a1f4df_b3115da9",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-06T07:42:02Z",
+      "side": 1,
+      "message": "Why are you doing the \"call anonymous func in place\" pattern instead of either inlining the code or extracting it to a separate named function?\n\nI guess it\u0027s to avoid polluting the package namespace as discussed below, but then why not call the functions runStarlarkPropertyComputation() / starlarkComputedPaths() / applyStarlarkComputedProperties() or the like which would both have a tiny chance of clashing and be less confusing to read?",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 4
+      },
+      "revId": "426859d267cebad9aa347de00093a33121e022a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b4a2fa8_68fca40e",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-06T07:42:02Z",
+      "side": 1,
+      "message": "ach, that\u0027s how one does recursive lambdas",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 10
+      },
+      "revId": "426859d267cebad9aa347de00093a33121e022a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02bc929d_4381efc2",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-06T07:42:02Z",
+      "side": 1,
+      "message": "nit: just \"get\"? (if I understand correctly, now you give the dicts names (\"product\", \"device\", \"env\") so that is not ambiguous anymore)",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 1
+      },
+      "revId": "426859d267cebad9aa347de00093a33121e022a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed6350f_ee24a664",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-06T07:42:02Z",
+      "side": 1,
+      "message": "nit: typo (\"Unusd\")",
+      "range": {
+        "startLine": 369,
+        "startChar": 5,
+        "endLine": 369,
+        "endChar": 18
+      },
+      "revId": "426859d267cebad9aa347de00093a33121e022a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5549b94_3fbbb8dc",
+        "filename": "android/computed_properties_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-06T07:42:02Z",
+      "side": 1,
+      "message": "nit: the \"\\n\\t\" part is kinda ugly here but I don\u0027t have a better idea :(",
+      "range": {
+        "startLine": 79,
+        "startChar": 37,
+        "endLine": 79,
+        "endChar": 40
+      },
+      "revId": "426859d267cebad9aa347de00093a33121e022a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
