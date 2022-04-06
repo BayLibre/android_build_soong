@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1ebc14c_c10bff88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-06T14:49:50Z",
+      "side": 1,
+      "message": "Nope, forgot to update the commit message. I changed the implementation of my workaround, so the delimiter is still just a space. This change is in aosp/2044966 now.",
+      "parentUuid": "7704c573_f32f8a84",
+      "range": {
+        "startLine": 13,
+        "startChar": 33,
+        "endLine": 14,
+        "endChar": 5
+      },
+      "revId": "0b31366ed67a52fb1cbd815c1f244065da63eead",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "488bc081_169cf4ef",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-05T15:30:25Z",
       "side": 1,
       "message": "can you add godocs for exported types/functions throughout",
+      "range": {
+        "startLine": 31,
+        "startChar": 5,
+        "endLine": 31,
+        "endChar": 21
+      },
+      "revId": "0b31366ed67a52fb1cbd815c1f244065da63eead",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a24a542_6f810055",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-06T14:49:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "488bc081_169cf4ef",
       "range": {
         "startLine": 31,
         "startChar": 5,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0db733b3_96f87be4",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-06T14:49:50Z",
+      "side": 1,
+      "message": "Oh, good question. I feel like it would make sense that it did. Rather potentially registering a variable with two different PackageContext instances but using the same export variable lists.\n\nI will add it to the struct and `NewExportedVariables()`",
+      "parentUuid": "2d7bb92f_4f996240",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "0b31366ed67a52fb1cbd815c1f244065da63eead",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aba466bb_ee7d4402",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-04-05T15:30:25Z",
       "side": 1,
       "message": "do these set methods still need to be exported?",
+      "range": {
+        "startLine": 131,
+        "startChar": 33,
+        "endLine": 131,
+        "endChar": 36
+      },
+      "revId": "0b31366ed67a52fb1cbd815c1f244065da63eead",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "347edc74_7cc08531",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-06T14:49:50Z",
+      "side": 1,
+      "message": "Nope, renamed.",
+      "parentUuid": "aba466bb_ee7d4402",
       "range": {
         "startLine": 131,
         "startChar": 33,
@@ -129,6 +225,30 @@
       "writtenOn": "2022-04-05T15:30:25Z",
       "side": 1,
       "message": "this appears to be unused",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 52
+      },
+      "revId": "0b31366ed67a52fb1cbd815c1f244065da63eead",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d626cbc7_52c82250",
+        "filename": "cc/config/global.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-06T14:49:50Z",
+      "side": 1,
+      "message": "It is used here: https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/ndk_library.go;l\u003d227?q\u003df:ndk_library.go.\n\nI think it is easiest to just keep this function since the caller is in a different package.",
+      "parentUuid": "8e319773_f7eedb21",
       "range": {
         "startLine": 312,
         "startChar": 0,

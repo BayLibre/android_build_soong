@@ -34,6 +34,24 @@
       "parentUuid": "d1141478_3f19a21d",
       "revId": "ad40fffa644ada1c0113b9de18bdaa2bb1e1490f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c2fdb0_3c4dc44c",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-06T14:49:50Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "4dbdfe97_c9b8a7fe",
+      "revId": "ad40fffa644ada1c0113b9de18bdaa2bb1e1490f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
