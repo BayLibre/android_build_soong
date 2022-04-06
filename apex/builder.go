@@ -956,8 +956,9 @@ func (a *apexBundle) buildApexDependencyInfo(ctx android.ModuleContext) {
 		}
 
 		if info, exists := depInfos[to.Name()]; exists {
-			if !android.InList(from.Name(), info.From) {
-				info.From = append(info.From, from.Name())
+			if !android.InList(from.Name(), info.FromNames()) {
+				// TODO(spandandas): Differentiate between shared and standalone deps
+				info.From = append(info.From, *android.NewApexModuleDepParent(from.Name(), android.SharedDep))
 			}
 			info.IsExternal = info.IsExternal && externalDep
 			depInfos[to.Name()] = info
@@ -977,8 +978,9 @@ func (a *apexBundle) buildApexDependencyInfo(ctx android.ModuleContext) {
 				}
 			}
 			depInfos[to.Name()] = android.ApexModuleDepInfo{
-				To:            to.Name(),
-				From:          []string{from.Name()},
+				To: to.Name(),
+				// TODO(spandandas): Differentiate between shared and standalone deps
+				From:          []android.ApexModuleDepParent{*android.NewApexModuleDepParent(from.Name(), android.SharedDep)},
 				IsExternal:    externalDep,
 				MinSdkVersion: toMinSdkVersion,
 			}

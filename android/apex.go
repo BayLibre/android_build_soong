@@ -788,11 +788,58 @@ type ApexModuleDepInfo struct {
 	// Name of the dependency
 	To string
 	// List of dependencies To belongs to. Includes APEX itself, if a direct dependency.
-	From []string
+	From []ApexModuleDepParent
 	// Whether the dependency belongs to the final compiled APEX.
 	IsExternal bool
 	// min_sdk_version of the ApexModule
 	MinSdkVersion string
+}
+
+type ApexModuleDependencyKind int
+
+const (
+	StandaloneDep ApexModuleDependencyKind = iota
+	SharedDep
+)
+
+func (k ApexModuleDependencyKind) String() string {
+	switch k {
+	case StandaloneDep:
+		return "standalone"
+	case SharedDep:
+		return "shared"
+	default:
+		fmt.Printf("%v ApexModuleDependencyKind does not define a String() name")
+		return ""
+	}
+}
+
+type ApexModuleDepParent struct {
+	Name           string
+	DependencyKind ApexModuleDependencyKind
+}
+
+func NewApexModuleDepParent(name string, dependencyKind ApexModuleDependencyKind) *ApexModuleDepParent {
+	return &ApexModuleDepParent{
+		Name:           name,
+		DependencyKind: dependencyKind,
+	}
+}
+
+func (a *ApexModuleDepInfo) FromNames() []string {
+	var allNames []string
+	for _, node := range a.From {
+		allNames = append(allNames, node.Name)
+	}
+	return allNames
+}
+
+func (a *ApexModuleDepInfo) FromUniqueDependencyKinds() []string {
+	var allDependencyKinds []string
+	for _, node := range a.From {
+		allDependencyKinds = append(allDependencyKinds, node.DependencyKind.String())
+	}
+	return SortedUniqueStrings(allDependencyKinds)
 }
 
 // A map of a dependency name to its ApexModuleDepInfo
@@ -833,7 +880,7 @@ func (d *ApexBundleDepsInfo) BuildDepsInfoLists(ctx ModuleContext, minSdkVersion
 		if info.IsExternal {
 			toName = toName + " (external)"
 		}
-		fmt.Fprintf(&fullContent, "  %s <- %s\n", toName, strings.Join(SortedUniqueStrings(info.From), ", "))
+		fmt.Fprintf(&fullContent, "  %s <- %s\n", toName, strings.Join(SortedUniqueStrings(info.FromNames()), ", "))
 		fmt.Fprintf(&flatContent, "%s\n", toName)
 	}
 
