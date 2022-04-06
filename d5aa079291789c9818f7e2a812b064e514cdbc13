@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cb79672_aa29f821",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-04-06T19:28:32Z",
+      "side": 1,
+      "message": "It\u0027s a lot cleaner, and I\u0027ve no strong feelings about the choices of recategorizations. Thanks~!",
+      "revId": "d5aa079291789c9818f7e2a812b064e514cdbc13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
