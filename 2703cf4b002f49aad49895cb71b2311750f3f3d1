@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ef5376f_6f15141b",
+        "filename": "sdk/testing.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-04-06T14:12:08Z",
+      "side": 1,
+      "message": "empty space before? Should be a separate group?",
+      "revId": "2703cf4b002f49aad49895cb71b2311750f3f3d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
