@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a62717bf_8d35addb",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-06T14:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80f067a0_9e212e77",
+      "range": {
+        "startLine": 105,
+        "startChar": 28,
+        "endLine": 105,
+        "endChar": 54
+      },
+      "revId": "56a817ce90a8a183dfd9503dfbcb2702a351b88d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db009124_fee47b8a",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e42b972_a25bd3dd",
+        "filename": "java/config/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-06T14:49:44Z",
+      "side": 1,
+      "message": "Yes, they\u0027re used in a couple of places: https://cs.android.com/search?q\u003df:.go%20f:soong%2Fjava%20config.JavacVmFlags",
+      "parentUuid": "db009124_fee47b8a",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 56
+      },
+      "revId": "56a817ce90a8a183dfd9503dfbcb2702a351b88d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c78ce997_5a4d44da",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-05T15:36:51Z",
       "side": 1,
       "message": "go style recommends camel case, not snake case",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "56a817ce90a8a183dfd9503dfbcb2702a351b88d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f107adb_f0d56e81",
+        "filename": "java/config/config.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-06T14:49:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c78ce997_5a4d44da",
       "range": {
         "startLine": 65,
         "startChar": 1,
