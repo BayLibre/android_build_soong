@@ -214,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc4a1ba6_3e3c9aaa",
+        "filename": "android/derived.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-06T06:47:40Z",
+      "side": 1,
+      "message": "Am now exposing product_variables unfiltered (albeit relying on reflection such that changes to product_variables don\u0027t require any change in starlark plumbing)",
+      "parentUuid": "3f62ed94_505b7ce6",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 67,
+        "endChar": 16
+      },
+      "revId": "e561c7fc57efe4b50ba8c163d9af5a9bef872634",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c84fdd70_49d4953d",
         "filename": "android/derived.go",
         "patchSetId": 16
