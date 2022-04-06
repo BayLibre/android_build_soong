@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57026556_fdc88e3b",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-06T20:43:22Z",
+      "side": 1,
+      "message": "tests that cover this change?",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 417,
+        "endChar": 65
+      },
+      "revId": "729637964c93bba5827ede4b515daf48f4292b25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2c02ad2_d0345eec",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-06T20:43:22Z",
+      "side": 1,
+      "message": "do we need to consider \\\"?",
+      "range": {
+        "startLine": 443,
+        "startChar": 0,
+        "endLine": 443,
+        "endChar": 18
+      },
+      "revId": "729637964c93bba5827ede4b515daf48f4292b25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4893023e_8c244f53",
+        "filename": "java/config/config.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-06T20:43:22Z",
+      "side": 1,
+      "message": "if not used outside of this package, we can not export this",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 16
+      },
+      "revId": "729637964c93bba5827ede4b515daf48f4292b25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
