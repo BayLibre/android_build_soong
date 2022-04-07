@@ -107,7 +107,8 @@ def read_signature_csv_from_file_as_dict(csv_file):
         return read_signature_csv_from_stream_as_dict(f)
 
 
-def compare_signature_flags(monolithic_flags_dict, modular_flags_dict):
+def compare_signature_flags(monolithic_flags_dict, modular_flags_dict,
+                            default_flags):
     """Compare the signature flags between the two dicts.
 
     :param monolithic_flags_dict: the dict containing the subset of the
@@ -130,7 +131,7 @@ def compare_signature_flags(monolithic_flags_dict, modular_flags_dict):
             modular_row = modular_flags_dict.get(signature, {})
             modular_flags = modular_row.get(None, [])
         else:
-            modular_flags = ["blocked"]
+            modular_flags = default_flags
         if monolithic_flags != modular_flags:
             mismatching_signatures.append(
                 (signature, modular_flags, monolithic_flags))
@@ -150,17 +151,24 @@ def main(argv):
         "filtered set of flags, and the second is a path to a set of "
         "signature patterns that identify the set of classes belonging to "
         "a single bootclasspath_fragment module, ")
+    args_parser.add_argument(
+        "--default-flag",
+        action="append",
+        help="A default flag to use if no flag found in the module flags.")
     args = args_parser.parse_args(argv[1:])
 
     # Read in all the flags into the trie
     monolithic_flags_path = args.monolithic_flags
     monolithic_trie = read_flag_trie_from_file(monolithic_flags_path)
 
+    default_flags = args.default_flag or []
+
     # For each subset specified on the command line, create dicts for the flags
     # provided by the subset and the corresponding flags from the complete set
     # of flags and compare them.
     failed = False
-    for modular_pair in args.module_flags:
+    module_pairs = args.module_flags or []
+    for modular_pair in module_pairs:
         parts = modular_pair.split(":")
         modular_flags_path = parts[0]
         modular_patterns_path = parts[1]
@@ -170,7 +178,7 @@ def main(argv):
             extract_subset_from_monolithic_flags_as_dict_from_file(
                 monolithic_trie, modular_patterns_path)
         mismatching_signatures = compare_signature_flags(
-            monolithic_flags_subset_dict, modular_flags_dict)
+            monolithic_flags_subset_dict, modular_flags_dict, default_flags)
         if mismatching_signatures:
             failed = True
             print("ERROR: Hidden API flags are inconsistent:")
