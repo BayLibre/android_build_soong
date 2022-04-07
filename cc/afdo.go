@@ -44,6 +44,8 @@ func recordMissingAfdoProfileFile(ctx android.BaseModuleContext, missing string)
 	getNamedMapForConfig(ctx.Config(), modulesMissingProfileFileKey).Store(missing, true)
 }
 
+// AfdoProperties allows developers self-service enroll for
+// automatic feedback-directed optimization using profile data.
 type AfdoProperties struct {
 	Afdo bool
 
