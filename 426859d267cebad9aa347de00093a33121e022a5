@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb4c623d_17b096c9",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-07T18:08:47Z",
+      "side": 1,
+      "message": "well that\u0027s because computedProperties is also the struct type (Cf nameProperties, distProperties etc. wrt naming convention) but yes it\u0027s okay to shadow it here.",
+      "parentUuid": "b6787ed5_ca783bbc",
+      "range": {
+        "startLine": 105,
+        "startChar": 9,
+        "endLine": 105,
+        "endChar": 21
+      },
+      "revId": "426859d267cebad9aa347de00093a33121e022a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3a1f4df_b3115da9",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-06T07:42:02Z",
       "side": 1,
       "message": "Why are you doing the \"call anonymous func in place\" pattern instead of either inlining the code or extracting it to a separate named function?\n\nI guess it\u0027s to avoid polluting the package namespace as discussed below, but then why not call the functions runStarlarkPropertyComputation() / starlarkComputedPaths() / applyStarlarkComputedProperties() or the like which would both have a tiny chance of clashing and be less confusing to read?",
+      "range": {
+        "startLine": 106,
+        "startChar": 2,
+        "endLine": 106,
+        "endChar": 4
+      },
+      "revId": "426859d267cebad9aa347de00093a33121e022a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e5f45a4_abd02d75",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-07T18:08:47Z",
+      "side": 1,
+      "message": "ok for consistency sake I\u0027ll elevate these functions to the package (I did see a few examples of using nested funcs: https://cs.android.com/android/platform/superproject/+/master:art/build/codegen.go?q\u003d%5Cw%2B%5Cs%3F:%3D%5Cs%3Ffunc%5C(%20-file:.*_test.go%20-path:test )\nYes it\u0027s not super obvious why I am nesting some functions but not all - the choice boiled down to whether \"ctx\" or any other variables were being accessed via closure.",
+      "parentUuid": "f3a1f4df_b3115da9",
       "range": {
         "startLine": 106,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33a77e49_6a8d83a5",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-07T18:08:47Z",
+      "side": 1,
+      "message": "I wonder why certain languages don\u0027t handle this in the compiler (e.g. Java, Go)",
+      "parentUuid": "7b4a2fa8_68fca40e",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 10
+      },
+      "revId": "426859d267cebad9aa347de00093a33121e022a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02bc929d_4381efc2",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-04-06T07:42:02Z",
       "side": 1,
       "message": "nit: just \"get\"? (if I understand correctly, now you give the dicts names (\"product\", \"device\", \"env\") so that is not ambiguous anymore)",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 1
+      },
+      "revId": "426859d267cebad9aa347de00093a33121e022a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "013ae949_3abe35fe",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-07T18:08:47Z",
+      "side": 1,
+      "message": "lol that was ALREADY the case and I personally did prefer `get()` or if starlark supported dunders I\u0027d have written __getitem__().",
+      "parentUuid": "02bc929d_4381efc2",
       "range": {
         "startLine": 262,
         "startChar": 0,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "540a73fe_110cea01",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-07T18:08:47Z",
+      "side": 1,
+      "message": "Actually while debugging it was a pain to see a complete set of paths. So, in the latest commit I am changing the way of tracking unused paths - admittedly a little difficult to read the code but easier to read the state variables.",
+      "parentUuid": "3ed6350f_ee24a664",
+      "range": {
+        "startLine": 369,
+        "startChar": 5,
+        "endLine": 369,
+        "endChar": 18
+      },
+      "revId": "426859d267cebad9aa347de00093a33121e022a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5549b94_3fbbb8dc",
         "filename": "android/computed_properties_test.go",
         "patchSetId": 17
@@ -129,6 +249,30 @@
       "writtenOn": "2022-04-06T07:42:02Z",
       "side": 1,
       "message": "nit: the \"\\n\\t\" part is kinda ugly here but I don\u0027t have a better idea :(",
+      "range": {
+        "startLine": 79,
+        "startChar": 37,
+        "endLine": 79,
+        "endChar": 40
+      },
+      "revId": "426859d267cebad9aa347de00093a33121e022a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9eedf5cd_d78d22d4",
+        "filename": "android/computed_properties_test.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-07T18:08:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e5549b94_3fbbb8dc",
       "range": {
         "startLine": 79,
         "startChar": 37,
