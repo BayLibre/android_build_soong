@@ -787,8 +787,7 @@ func (a *AndroidApp) buildAppDependencyInfo(ctx android.ModuleContext) {
 		}
 
 		if info, exist := depsInfo[depName]; exist {
-			// TODO(spandandas): Differentiate between shared and standalone deps
-			info.From = append(info.From, *android.NewApexModuleDepParent(from.Name(), android.SharedDep))
+			info.From = append(info.From, *android.NewApexModuleDepParent(from.Name(), a.GetApexModuleDependencyKind()))
 			info.IsExternal = info.IsExternal && externalDep
 			depsInfo[depName] = info
 		} else {
@@ -807,9 +806,8 @@ func (a *AndroidApp) buildAppDependencyInfo(ctx android.ModuleContext) {
 				}
 			}
 			depsInfo[depName] = android.ApexModuleDepInfo{
-				To: depName,
-				// TODO(spandandas): Differentiate between shared and standalone deps
-				From:          []android.ApexModuleDepParent{*android.NewApexModuleDepParent(from.Name(), android.SharedDep)},
+				To:            depName,
+				From:          []android.ApexModuleDepParent{*android.NewApexModuleDepParent(from.Name(), a.GetApexModuleDependencyKind())},
 				IsExternal:    externalDep,
 				MinSdkVersion: toMinSdkVersion,
 			}
@@ -822,6 +820,10 @@ func (a *AndroidApp) buildAppDependencyInfo(ctx android.ModuleContext) {
 
 func (a *AndroidApp) Updatable() bool {
 	return Bool(a.appProperties.Updatable)
+}
+
+func (a *AndroidApp) GetApexModuleDependencyKind() android.ApexModuleDependencyKind {
+	return android.StandaloneDep
 }
 
 func (a *AndroidApp) getCertString(ctx android.BaseModuleContext) string {

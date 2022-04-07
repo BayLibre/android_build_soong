@@ -955,10 +955,17 @@ func (a *apexBundle) buildApexDependencyInfo(ctx android.ModuleContext) {
 			return !externalDep
 		}
 
+		var parent *android.ApexModuleDepParent
+		if am, ok := from.(android.ApexModule); ok {
+			parent = android.NewApexModuleDepParent(am.Name(), am.GetApexModuleDependencyKind())
+		} else {
+			// if "from" does not implement ApexModule interface, default to SharedDep
+			// an example of this is the top-level "apex" module type
+			parent = android.NewApexModuleDepParent(from.Name(), android.SharedDep)
+		}
 		if info, exists := depInfos[to.Name()]; exists {
 			if !android.InList(from.Name(), info.FromNames()) {
-				// TODO(spandandas): Differentiate between shared and standalone deps
-				info.From = append(info.From, *android.NewApexModuleDepParent(from.Name(), android.SharedDep))
+				info.From = append(info.From, *parent)
 			}
 			info.IsExternal = info.IsExternal && externalDep
 			depInfos[to.Name()] = info
@@ -978,9 +985,8 @@ func (a *apexBundle) buildApexDependencyInfo(ctx android.ModuleContext) {
 				}
 			}
 			depInfos[to.Name()] = android.ApexModuleDepInfo{
-				To: to.Name(),
-				// TODO(spandandas): Differentiate between shared and standalone deps
-				From:          []android.ApexModuleDepParent{*android.NewApexModuleDepParent(from.Name(), android.SharedDep)},
+				To:            to.Name(),
+				From:          []android.ApexModuleDepParent{*parent},
 				IsExternal:    externalDep,
 				MinSdkVersion: toMinSdkVersion,
 			}

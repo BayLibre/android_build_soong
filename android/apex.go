@@ -263,6 +263,12 @@ type ApexModule interface {
 	// deduping. This is turned on when, for example if use_apex_name_macro is set so that each
 	// apex variant should be built with different macro definitions.
 	UniqueApexVariations() bool
+
+	// Returns the dependency kind of this module
+	// Dependency kind can be one of the following
+	// 1. Standalone: Versioned with (or specific to) a particular apex
+	// 2. Shared: Shared across apexes
+	GetApexModuleDependencyKind() ApexModuleDependencyKind
 }
 
 // Properties that are common to all module types implementing ApexModule interface.
@@ -484,6 +490,12 @@ func (m *ApexModuleBase) NotAvailableForPlatform() bool {
 // Implements ApexModule
 func (m *ApexModuleBase) SetNotAvailableForPlatform() {
 	m.ApexProperties.NotAvailableForPlatform = true
+}
+
+// Implements ApexModule
+func (m *ApexModuleBase) GetApexModuleDependencyKind() ApexModuleDependencyKind {
+	// Default is shared dependency
+	return SharedDep
 }
 
 // This function makes sure that the apex_available property is valid
@@ -881,7 +893,9 @@ func (d *ApexBundleDepsInfo) BuildDepsInfoLists(ctx ModuleContext, minSdkVersion
 			toName = toName + " (external)"
 		}
 		fmt.Fprintf(&fullContent, "  %s <- %s\n", toName, strings.Join(SortedUniqueStrings(info.FromNames()), ", "))
-		fmt.Fprintf(&flatContent, "%s\n", toName)
+		for _, depKind := range info.FromUniqueDependencyKinds() {
+			fmt.Fprintf(&flatContent, "%s,%s\n", toName, depKind)
+		}
 	}
 
 	d.fullListPath = PathForModuleOut(ctx, "depsinfo", "fulllist.txt").OutputPath
