@@ -103,6 +103,20 @@ func imageMutator(ctx BottomUpMutatorContext) {
 			return
 		}
 
+		var filtered []string
+		for _, v := range variations {
+			if ctx.Config().GenerateImageVariation(v) {
+				filtered = append(filtered, v)
+			}
+		}
+
+		variations = filtered
+
+		if len(variations) == 0 {
+			ctx.Module().Disable()
+			return
+		}
+
 		mod := ctx.CreateVariations(variations...)
 		for i, v := range variations {
 			mod[i].base().setImageVariation(v)

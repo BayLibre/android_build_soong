@@ -1139,6 +1139,14 @@ func (c *config) VndkSnapshotBuildArtifacts() bool {
 	return Bool(c.productVariables.VndkSnapshotBuildArtifacts)
 }
 
+func (c *config) GenerateImageVariation(image string) bool {
+	selectedImages := c.productVariables.SelectedImages
+	if len(selectedImages) == 0 {
+		return true
+	}
+	return InList(image, selectedImages)
+}
+
 func (c *config) HasMultilibConflict(arch ArchType) bool {
 	return c.multilibConflicts[arch]
 }

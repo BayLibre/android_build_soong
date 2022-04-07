@@ -336,8 +336,9 @@ type productVariables struct {
 	AfdoAdditionalProfileDirs []string `json:",omitempty"`
 	PgoAdditionalProfileDirs  []string `json:",omitempty"`
 
-	VndkUseCoreVariant         *bool `json:",omitempty"`
-	VndkSnapshotBuildArtifacts *bool `json:",omitempty"`
+	SelectedImages             []string `json:",omitempty"`
+	VndkUseCoreVariant         *bool    `json:",omitempty"`
+	VndkSnapshotBuildArtifacts *bool    `json:",omitempty"`
 
 	DirectedVendorSnapshot bool            `json:",omitempty"`
 	VendorSnapshotModules  map[string]bool `json:",omitempty"`
