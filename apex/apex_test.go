@@ -321,6 +321,7 @@ func TestBasicApex(t *testing.T) {
 				"myjar",
 				"myjar_dex",
 			],
+			apps : ["myapp"],
 			updatable: false,
 		}
 
@@ -512,6 +513,16 @@ func TestBasicApex(t *testing.T) {
 			sdk_version: "none",
 			system_modules: "none",
 		}
+
+		android_app {
+			name: "myapp",
+			sdk_version: "none",
+			system_modules: "none",
+			apex_available : [
+				"myapex",
+			],
+			static_libs: ["myotherjar"],
+		}
 	`)
 
 	apexRule := ctx.ModuleForTests("myapex", "android_common_myapex_image").Rule("apexRule")
@@ -594,14 +605,16 @@ func TestBasicApex(t *testing.T) {
 	fullDepsInfo := strings.Split(ctx.ModuleForTests("myapex", "android_common_myapex_image").Output("depsinfo/fulllist.txt").Args["content"], "\\n")
 	ensureListContains(t, fullDepsInfo, "  myjar(minSdkVersion:(no version)) <- myapex")
 	ensureListContains(t, fullDepsInfo, "  mylib2(minSdkVersion:(no version)) <- mylib")
-	ensureListContains(t, fullDepsInfo, "  myotherjar(minSdkVersion:(no version)) <- myjar")
+	ensureListContains(t, fullDepsInfo, "  myotherjar(minSdkVersion:(no version)) <- myapp, myjar")
 	ensureListContains(t, fullDepsInfo, "  mysharedjar(minSdkVersion:(no version)) (external) <- myjar")
 
 	flatDepsInfo := strings.Split(ctx.ModuleForTests("myapex", "android_common_myapex_image").Output("depsinfo/flatlist.txt").Args["content"], "\\n")
-	ensureListContains(t, flatDepsInfo, "myjar(minSdkVersion:(no version))")
-	ensureListContains(t, flatDepsInfo, "mylib2(minSdkVersion:(no version))")
-	ensureListContains(t, flatDepsInfo, "myotherjar(minSdkVersion:(no version))")
-	ensureListContains(t, flatDepsInfo, "mysharedjar(minSdkVersion:(no version)) (external)")
+	ensureListContains(t, flatDepsInfo, "myjar(minSdkVersion:(no version)),shared")
+	ensureListContains(t, flatDepsInfo, "mylib2(minSdkVersion:(no version)),shared")
+	//myotherjar is a dep of myapp(standalone) and myjar(shared)
+	ensureListContains(t, flatDepsInfo, "myotherjar(minSdkVersion:(no version)),shared")
+	ensureListContains(t, flatDepsInfo, "myotherjar(minSdkVersion:(no version)),standalone")
+	ensureListContains(t, flatDepsInfo, "mysharedjar(minSdkVersion:(no version)) (external),shared")
 }
 
 func TestDefaults(t *testing.T) {
@@ -1296,7 +1309,7 @@ func TestApexWithExplicitStubsDependency(t *testing.T) {
 	ensureListContains(t, fullDepsInfo, "  libfoo(minSdkVersion:(no version)) (external) <- mylib")
 
 	flatDepsInfo := strings.Split(ctx.ModuleForTests("myapex2", "android_common_myapex2_image").Output("depsinfo/flatlist.txt").Args["content"], "\\n")
-	ensureListContains(t, flatDepsInfo, "libfoo(minSdkVersion:(no version)) (external)")
+	ensureListContains(t, flatDepsInfo, "libfoo(minSdkVersion:(no version)) (external),shared")
 }
 
 func TestApexWithRuntimeLibsDependency(t *testing.T) {
