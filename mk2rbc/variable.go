@@ -194,7 +194,7 @@ type localVariable struct {
 }
 
 func (lv localVariable) String() string {
-	return "_" + lv.nam
+	return lv.nam
 }
 
 func (lv localVariable) emitSet(gctx *generationContext, asgn *assignmentNode) {

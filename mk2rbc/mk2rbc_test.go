@@ -76,9 +76,9 @@ def init(g, handle):
   cfg = rblf.cfg(handle)
   cfg["PRODUCT_NAME"] = "Pixel 3"
   cfg["PRODUCT_MODEL"] = ""
-  _local_var = "foo"
-  _local_var_with_dashes = "bar"
-  rblf.mkwarning("pixel3.mk", "local-var-with-dashes: %s" % _local_var_with_dashes)
+  local_var = "foo"
+  local_var_with_dashes = "bar"
+  rblf.mkwarning("pixel3.mk", "local-var-with-dashes: %s" % local_var_with_dashes)
   g["GLOBAL-VAR-WITH-DASHES"] = "baz"
   rblf.mkwarning("pixel3.mk", "GLOBAL-VAR-WITH-DASHES: %s" % g["GLOBAL-VAR-WITH-DASHES"])
 `,
@@ -259,8 +259,8 @@ def init(g, handle):
     cfg["PRODUCT_NAME"] = "gizmo"
   else:
     pass
-  _local_var = ""
-  if _local_var:
+  local_var = ""
+  if local_var:
     pass
 `,
 	},
@@ -445,7 +445,7 @@ def init(g, handle):
     pass
   if rblf.filter("userdebug eng", g["TARGET_BUILD_VARIANT"]):
     pass
-  if rblf.filter("true", "%s%s" % (_v1, _v2)):
+  if rblf.filter("true", "%s%s" % (v1, v2)):
     pass
   if not rblf.filter("barbet coral%", g["TARGET_PRODUCT"]):
     pass
@@ -684,8 +684,8 @@ result := $(findstring b,x y z)
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
-  _result = rblf.findstring("a", "a b c")
-  _result = rblf.findstring("b", "x y z")
+  result = rblf.findstring("a", "a b c")
+  result = rblf.findstring("b", "x y z")
 `,
 	},
 	{
@@ -871,9 +871,9 @@ PRODUCT_COPY_FILES += $(subst foo,bar,$(files))
 
 def init(g, handle):
   cfg = rblf.cfg(handle)
-  _files = rblf.find_and_copy("*", "from", "to")
+  files = rblf.find_and_copy("*", "from", "to")
   rblf.setdefault(handle, "PRODUCT_COPY_FILES")
-  cfg["PRODUCT_COPY_FILES"] += rblf.mksubst("foo", "bar", _files)
+  cfg["PRODUCT_COPY_FILES"] += rblf.mksubst("foo", "bar", files)
 `,
 	},
 	{
@@ -1007,7 +1007,7 @@ def init(g, handle):
   rblf.soong_config_namespace(g, "cvd")
   rblf.soong_config_set(g, "cvd", "launch_configs", "cvd_config_auto.json")
   rblf.soong_config_append(g, "cvd", "grub_config", "grub.cfg")
-  _x = rblf.soong_config_get(g, "cvd", "grub_config")
+  x = rblf.soong_config_get(g, "cvd", "grub_config")
 `,
 	},
 	{
@@ -1027,11 +1027,11 @@ PRODUCT_LIST1 += $(FOO)
 def init(g, handle):
   cfg = rblf.cfg(handle)
   cfg["PRODUCT_LIST1"] = ["a"]
-  _local = "b"
-  _local += " " + "c"
+  local = "b"
+  local += " " + "c"
   g["FOO"] = "d"
   g["FOO"] += " " + "e"
-  cfg["PRODUCT_LIST1"] += (_local).split()
+  cfg["PRODUCT_LIST1"] += (local).split()
   cfg["PRODUCT_LIST1"] += (g["FOO"]).split()
 `,
 	},
@@ -1524,7 +1524,7 @@ def init(g, handle):
   # You can't specify a type hint after the first statement
   rblf.mk2rbc_error("product.mk:20", "type_hint annotations must come before the first Makefile statement")
   g["MY_VAR_4"] = "foo"
-  _my_local_var_with_dashes = ["foo"]
+  my_local_var_with_dashes = ["foo"]
   g["MY_STRING_VAR"] = " ".join(rblf.expand_wildcard("foo/bar.mk"))
 `,
 	},

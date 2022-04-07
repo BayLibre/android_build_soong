@@ -322,3 +322,33 @@ func (f *foreachNode) emit(gctx *generationContext) {
 	gctx.indentLevel--
 	gctx.popVariableAssignments()
 }
+
+type functionNode struct {
+	name string
+	args []*localVariable
+	body []starlarkNode
+}
+
+func (f *functionNode) emit(gctx *generationContext) {
+	gctx.newLine()
+	gctx.writef("def %s(", f.name)
+	for i, arg := range f.args {
+		if i != 0 {
+			gctx.write(", ")
+		}
+		arg.emitGet(gctx)
+	}
+	gctx.write("):")
+	gctx.indentLevel++
+	hasStatements := false
+	for _, a := range f.body {
+		if _, ok := a.(*commentNode); !ok {
+			hasStatements = true
+		}
+		a.emit(gctx)
+	}
+	if !hasStatements {
+		gctx.emitPass()
+	}
+	gctx.indentLevel--
+}

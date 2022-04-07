@@ -284,25 +284,12 @@ func (gctx *generationContext) emit() string {
 
 	gctx.emitPreamble()
 
-	gctx.newLine()
 	// The arguments passed to the init function are the global dictionary
 	// ('g') and the product configuration dictionary ('cfg')
-	gctx.write("def init(g, handle):")
-	gctx.indentLevel++
-	if gctx.starScript.traceCalls {
-		gctx.newLine()
-		gctx.writef(`print(">%s")`, gctx.starScript.mkFile)
-	}
-	gctx.newLine()
-	gctx.writef("cfg = %s(handle)", cfnGetCfg)
 	for _, node := range ss.nodes[iNode:] {
 		node.emit(gctx)
 	}
 
-	if gctx.starScript.traceCalls {
-		gctx.newLine()
-		gctx.writef(`print("<%s")`, gctx.starScript.mkFile)
-	}
 	gctx.indentLevel--
 	gctx.write("\n")
 	return gctx.buf.String()
@@ -456,6 +443,7 @@ type parseContext struct {
 	errorLogger      ErrorLogger
 	tracedVariables  map[string]bool // variables to be traced in the generated script
 	variables        map[string]variable
+	defines          []starlarkNode
 	outputDir        string
 	dependentModules map[string]*moduleInfo
 	soongNamespaces  map[string]map[string]bool
@@ -503,6 +491,7 @@ func newParseContext(ss *StarlarkScript, nodes []mkparser.Node) *parseContext {
 		ifNestLevel:      0,
 		moduleNameCount:  make(map[string]int),
 		variables:        make(map[string]variable),
+		defines:          []starlarkNode{},
 		dependentModules: make(map[string]*moduleInfo),
 		soongNamespaces:  make(map[string]map[string]bool),
 		includeTops:      []string{},
@@ -930,15 +919,55 @@ func (ctx *parseContext) handleVariable(v *mkparser.Variable) []starlarkNode {
 	return []starlarkNode{&exprNode{expr: ctx.parseReference(v, v.Name)}}
 }
 
-func (ctx *parseContext) maybeHandleDefine(directive *mkparser.Directive) starlarkNode {
+func (ctx *parseContext) maybeHandleDefine(directive *mkparser.Directive) []starlarkNode {
 	macro_name := strings.Fields(directive.Args.Strings[0])[0]
 	// Ignore the macros that we handle
-	_, ignored := ignoredDefines[macro_name]
-	_, known := knownFunctions[macro_name]
-	if !ignored && !known {
-		return ctx.newBadNode(directive, "define is not supported: %s", macro_name)
+	if _, known := knownFunctions[macro_name]; known {
+		return []starlarkNode{ctx.newBadNode(directive, "define is not supported: %s", macro_name)}
 	}
-	return nil
+	if _, ignored := ignoredDefines[macro_name]; ignored {
+		return []starlarkNode{}
+	}
+	parts := directive.Args.SplitN("\n", 2)
+	if len(parts) != 2 || !parts[0].Const() {
+		return []starlarkNode{ctx.newBadNode(directive, "Unable to parse name of define")}
+	}
+	defineName := strings.ReplaceAll(strings.TrimSpace(parts[0].Dump()), "-", "_")
+	parts[1].TrimRightSpaces()
+	lastString := len(parts[1].Strings) - 1
+	parts[1].Strings[lastString] = strings.TrimSuffix(parts[1].Strings[lastString], "endef")
+	parser := mkparser.NewParser("define "+defineName, strings.NewReader(parts[1].Dump()))
+	nodes, errs := parser.Parse()
+	if errs != nil {
+		return []starlarkNode{ctx.newBadNode(directive, "Unable to parse "+defineName+", "+errs[0].Error())}
+	}
+
+	body := []starlarkNode{}
+	for _, n := range nodes {
+		// Anything other than a variable reference isn't allowed, because
+		// a function call will just return them as text that would have to be $(eval)'d
+		// later, which we don't support
+		if v, ok := n.(*mkparser.Variable); ok {
+			body = append(body, ctx.handleVariable(v)...)
+		} else {
+			return []starlarkNode{ctx.newBadNode(directive, "Unable to parse "+defineName+", only variable references are allowed.")}
+		}
+	}
+
+	ctx.defines = append(ctx.defines, &functionNode{
+		name: defineName,
+		args: []*localVariable{},
+		body: body,
+	})
+
+	return []starlarkNode{&assignmentNode{
+		lhs:      ctx.addVariable(defineName),
+		value:    &identifierExpr{name: defineName},
+		mkValue:  mkparser.SimpleMakeString("", directive.Pos()),
+		flavor:   asgnSet,
+		location: ctx.errorLocation(directive),
+		isTraced: false,
+	}}
 }
 
 func (ctx *parseContext) handleIfBlock(ifDirective *mkparser.Directive) starlarkNode {
@@ -1895,9 +1924,7 @@ func (ctx *parseContext) handleSimpleStatement(node mkparser.Node) []starlarkNod
 	case *mkparser.Directive:
 		switch x.Name {
 		case "define":
-			if res := ctx.maybeHandleDefine(x); res != nil {
-				result = []starlarkNode{res}
-			}
+			result = ctx.maybeHandleDefine(x)
 		case "include", "-include":
 			result = ctx.handleInclude(x)
 		case "ifeq", "ifneq", "ifdef", "ifndef":
@@ -2110,9 +2137,33 @@ func Convert(req Request) (*StarlarkScript, error) {
 			ctx.tracedVariables[v] = true
 		}
 	}
-	for ctx.hasNodes() && ctx.fatalError == nil {
-		starScript.nodes = append(starScript.nodes, ctx.handleSimpleStatement(ctx.getNode())...)
+	initFunc := &functionNode{
+		name: "init",
+		args: []*localVariable{ctx.addVariable("g").(*localVariable), ctx.addVariable("handle").(*localVariable)},
+		body: []starlarkNode{&assignmentNode{
+			lhs: ctx.addVariable("cfg"),
+			value: &callExpr{
+				object:     nil,
+				name:       cfnGetCfg,
+				args:       []starlarkExpr{&identifierExpr{name: "handle"}},
+				returnType: starlarkTypeUnknown,
+			},
+			flavor: asgnSet,
+		}},
 	}
+	for ctx.hasNodes() && ctx.fatalError == nil {
+		for _, node := range ctx.handleSimpleStatement(ctx.getNode()) {
+			// Hoist the comments at the beginning of the file to the beginning
+			// of the starlark file, instead of putting them in the init function.
+			if comment, ok := node.(*commentNode); ok && len(initFunc.body) == 1 {
+				starScript.nodes = append(starScript.nodes, comment)
+			} else {
+				initFunc.body = append(initFunc.body, node)
+			}
+		}
+	}
+	starScript.nodes = append(starScript.nodes, ctx.defines...)
+	starScript.nodes = append(starScript.nodes, initFunc)
 	if ctx.fatalError != nil {
 		return nil, ctx.fatalError
 	}
