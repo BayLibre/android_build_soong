@@ -59,3 +59,30 @@ cc_prebuilt_library_shared {
 			},
 		})
 }
+
+func TestSharedPrebuiltLibrarySharedStanza(t *testing.T) {
+	runBp2BuildTestCaseSimple(t,
+		bp2buildTestCase{
+			description:                "prebuilt library shared with shared stanza",
+			moduleTypeUnderTest:        "cc_prebuilt_library_shared",
+			moduleTypeUnderTestFactory: cc.PrebuiltSharedLibraryFactory,
+			filesystem: map[string]string{
+				"libf.so": "",
+				"libg.so": "",
+			},
+			blueprint: `
+cc_prebuilt_library_shared {
+	name: "libtest",
+	srcs: ["libf.so"],
+	shared: {
+		srcs: ["libg.so"],
+	},
+	bazel_module: { bp2build_available: true},
+}`,
+			expectedBazelTargets: []string{
+				makeBazelTarget("prebuilt_library_shared", "libtest", attrNameToString{
+					"shared_library": `"libg.so"`,
+				}),
+			},
+		})
+}
