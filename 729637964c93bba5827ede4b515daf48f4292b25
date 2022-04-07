@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "348f1ec6_b2d9d60c",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-07T17:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "57026556_fdc88e3b",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 417,
+        "endChar": 65
+      },
+      "revId": "729637964c93bba5827ede4b515daf48f4292b25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2c02ad2_d0345eec",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7724dcf9_611ab949",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-07T17:22:54Z",
+      "side": 1,
+      "message": "Yeah, this is a good idea... done.",
+      "parentUuid": "f2c02ad2_d0345eec",
+      "range": {
+        "startLine": 443,
+        "startChar": 0,
+        "endLine": 443,
+        "endChar": 18
+      },
+      "revId": "729637964c93bba5827ede4b515daf48f4292b25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4893023e_8c244f53",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-04-06T20:43:22Z",
       "side": 1,
       "message": "if not used outside of this package, we can not export this",
+      "range": {
+        "startLine": 60,
+        "startChar": 1,
+        "endLine": 60,
+        "endChar": 16
+      },
+      "revId": "729637964c93bba5827ede4b515daf48f4292b25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b95cd4e1_b81dcf80",
+        "filename": "java/config/config.go",
+        "patchSetId": 15
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-07T17:22:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4893023e_8c244f53",
       "range": {
         "startLine": 60,
         "startChar": 1,
