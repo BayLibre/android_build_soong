@@ -16,6 +16,23 @@
       "message": "Moved comment from AfdoProperties to Afdo bool ",
       "revId": "40216ae88b833aa94e65968f5a17b7b92e05032d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dab0685e_8de79b81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-08T19:16:52Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "40216ae88b833aa94e65968f5a17b7b92e05032d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
