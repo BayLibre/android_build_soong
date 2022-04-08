@@ -16,6 +16,46 @@
       "message": "I switched both files to use \" as the verify_overlaps.py was already using all \" and verify_overlaps_test.py was using a mixture.",
       "revId": "46955456d9e901910c9c596684c977077993960d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e9adbe_35d35ebc",
+        "filename": "scripts/hiddenapi/verify_overlaps_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-04-08T09:07:56Z",
+      "side": 1,
+      "message": "the conversion to double quotes seems like a distraction",
+      "range": {
+        "startLine": 56,
+        "startChar": 19,
+        "endLine": 56,
+        "endChar": 20
+      },
+      "revId": "46955456d9e901910c9c596684c977077993960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcdfafa3_25a5a3b2",
+        "filename": "scripts/hiddenapi/verify_overlaps_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-04-08T09:07:56Z",
+      "side": 1,
+      "message": "seems to fit on one line within 100 chars, ditto below",
+      "revId": "46955456d9e901910c9c596684c977077993960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
