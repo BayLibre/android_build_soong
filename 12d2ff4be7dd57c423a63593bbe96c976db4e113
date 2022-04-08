@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbb80a1a_511af362",
+        "filename": "cc/afdo.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-08T17:18:18Z",
+      "side": 1,
+      "message": "Can you move the comment to be about `Afdo` itself as that is what will be available in documentation?\n\nfor example, on go/androidbp , for cc modules, `afdo bool` is the current documentation with no mention of `AfdoProperties`, otherwise, looks good!",
+      "range": {
+        "startLine": 50,
+        "startChar": 1,
+        "endLine": 50,
+        "endChar": 5
+      },
+      "revId": "12d2ff4be7dd57c423a63593bbe96c976db4e113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
