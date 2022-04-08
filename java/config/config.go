@@ -81,11 +81,10 @@ func init() {
 	exportedVars.ExportStringStaticVariable("ErrorProneHeapSize", "4096M")
 	exportedVars.ExportStringStaticVariable("ErrorProneHeapFlags", "-J-Xmx${ErrorProneHeapSize}")
 
-	exportedVars.ExportStringListStaticVariable("DexFlags", []string{
-		`-JXX:OnError="cat hs_err_pid%p.log"`,
-		"-JXX:CICompilerCount=6",
-		"-JXX:+UseDynamicNumberOfGCThreads",
-	})
+	exportedVars.ExportStringStaticVariable("D8HeapSize", "2048M")
+	exportedVars.ExportStringStaticVariable("R8HeapSize", "2048M")
+	exportedVars.ExportStringListStaticVariable("D8Flags", append([]string{"-JXmx${D8HeapSize}"}, javaVmFlagsList...))
+	exportedVars.ExportStringListStaticVariable("R8Flags", append([]string{"-JXmx${R8HeapSize}"}, javaVmFlagsList...))
 
 	exportedVars.ExportStringListStaticVariable("CommonJdkFlags", []string{
 		`-Xmaxerrs 9999999`,
