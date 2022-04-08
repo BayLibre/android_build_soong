@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f6f208c_8f1d157a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-04-08T00:15:03Z",
+      "side": 1,
+      "message": "This is more consistent with how other hidden api scripts accept arguments.",
+      "revId": "50039b8e59e7241af94d5d4675cd28f0cd8d2427",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
