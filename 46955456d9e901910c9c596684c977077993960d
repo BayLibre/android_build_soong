@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aa5b6d3_c56e6961",
+        "filename": "scripts/hiddenapi/verify_overlaps_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-04-08T10:13:48Z",
+      "side": 1,
+      "message": "I\u0027m just following the style guide which says to be consistent. This used \" in multi line strings and ` in single line strings and the file it is testing used just \" in everything. It is easier to keep these files consistent if they use the same formatting.\n\nI don\u0027t want to spend time worrying about which file has which formatting. I\u0027d much rather just use a consistent style across all the files and have done with it.",
+      "parentUuid": "29e9adbe_35d35ebc",
+      "range": {
+        "startLine": 56,
+        "startChar": 19,
+        "endLine": 56,
+        "endChar": 20
+      },
+      "revId": "46955456d9e901910c9c596684c977077993960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcdfafa3_25a5a3b2",
@@ -54,6 +78,24 @@
       "writtenOn": "2022-04-08T09:07:56Z",
       "side": 1,
       "message": "seems to fit on one line within 100 chars, ditto below",
+      "revId": "46955456d9e901910c9c596684c977077993960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c92577ee_0814b5af",
+        "filename": "scripts/hiddenapi/verify_overlaps_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-04-08T10:13:48Z",
+      "side": 1,
+      "message": "This does fit onto a single line of 100 but pylint (as enforced by repo presubmit hooks) enforces it to be 80 characters wide, http://cs/android/tools/repohooks/tools/pylintrc?l\u003d285.\n\nPersonally, I would prefer 100 wide, I find 80 wide with a 4 character indent quite restrictive but I am just trying to follow the \"standard\" enforced by repo presubmit so that these scripts will work if/when we turn on pylint enforcement.\n\nWhile investigating this I realized that I was too lenient and removed pylint comments that disabled line length checks over the whole of this test. I added them because I thought that pylint reported line length issues with multi line strings but that does not appear to be true.",
+      "parentUuid": "fcdfafa3_25a5a3b2",
       "revId": "46955456d9e901910c9c596684c977077993960d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
