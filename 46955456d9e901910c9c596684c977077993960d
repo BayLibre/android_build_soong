@@ -116,6 +116,24 @@
       "parentUuid": "c92577ee_0814b5af",
       "revId": "46955456d9e901910c9c596684c977077993960d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b7e845a_8ccaf63a",
+        "filename": "scripts/hiddenapi/verify_overlaps_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-04-08T10:41:23Z",
+      "side": 1,
+      "message": "There is no current way to configure this on a per repository basis. However, it should be quite easy to update the pylint hook to allow a per repository configuration file.\n\nI think that changing the default for everyone is going to be contentious. Especially as it probably affects lots of people outside Google too. I\u0027m not sure I want to start that fight!",
+      "parentUuid": "f6b79b88_57b651cc",
+      "revId": "46955456d9e901910c9c596684c977077993960d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
