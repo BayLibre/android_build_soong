@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84159ce4_b7bc0046",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-08T12:36:27Z",
+      "side": 1,
+      "message": "Makes us two.",
+      "parentUuid": "33a77e49_6a8d83a5",
+      "range": {
+        "startLine": 132,
+        "startChar": 5,
+        "endLine": 132,
+        "endChar": 10
+      },
+      "revId": "426859d267cebad9aa347de00093a33121e022a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02bc929d_4381efc2",
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "Actually while debugging it was a pain to see a complete set of paths. So, in the latest commit I am changing the way of tracking unused paths - admittedly a little difficult to read the code but easier to read the state variables.",
       "parentUuid": "3ed6350f_ee24a664",
+      "range": {
+        "startLine": 369,
+        "startChar": 5,
+        "endLine": 369,
+        "endChar": 18
+      },
+      "revId": "426859d267cebad9aa347de00093a33121e022a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c7d35f2_eb334127",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 17
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-08T12:36:27Z",
+      "side": 1,
+      "message": "FWIW, I think it became much nicer this way",
+      "parentUuid": "540a73fe_110cea01",
       "range": {
         "startLine": 369,
         "startChar": 5,
