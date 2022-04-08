@@ -163,6 +163,30 @@
       },
       "revId": "56a817ce90a8a183dfd9503dfbcb2702a351b88d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8c36ca9_68f9c5ad",
+        "filename": "java/config/error_prone.go",
+        "patchSetId": 11
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-08T14:22:54Z",
+      "side": 1,
+      "message": "I\u0027ll look into this. Made a tracking bug: b/228592375.",
+      "parentUuid": "29df6e2d_6e6efe21",
+      "range": {
+        "startLine": 22,
+        "startChar": 32,
+        "endLine": 22,
+        "endChar": 73
+      },
+      "revId": "56a817ce90a8a183dfd9503dfbcb2702a351b88d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
