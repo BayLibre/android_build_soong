@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d26ea52_8bf280a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-08T14:18:19Z",
+      "side": 1,
+      "message": "Noticed and fixed a bug that the first escaped quote will make all subsequent quotes \"escaped\".",
+      "revId": "932c01cf9efab7e8dc00b7faad470b5499ad04c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

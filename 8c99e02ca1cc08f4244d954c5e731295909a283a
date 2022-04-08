@@ -22,6 +22,30 @@
       },
       "revId": "8c99e02ca1cc08f4244d954c5e731295909a283a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "544104dd_6fd49225",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-08T14:18:19Z",
+      "side": 1,
+      "message": "I kind of prefer leaving `s[i]` in this case since I also reference `s[i+1]`, and it seems more clear to use the same style for both.",
+      "parentUuid": "6ea38edf_91fe2198",
+      "range": {
+        "startLine": 441,
+        "startChar": 5,
+        "endLine": 441,
+        "endChar": 6
+      },
+      "revId": "8c99e02ca1cc08f4244d954c5e731295909a283a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
