@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dd4ed98_39fa0e37",
+        "filename": "java/config/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-08T18:05:56Z",
+      "side": 0,
+      "message": "There are references to $(DX) in art/ too.",
+      "revId": "db7e96083f17c84c821941b92b4d47b217859d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
