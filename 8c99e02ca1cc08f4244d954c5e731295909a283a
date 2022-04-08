@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ea38edf_91fe2198",
+        "filename": "android/config_bp2build.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-08T13:20:41Z",
+      "side": 1,
+      "message": "optional: we could do i,c here to remove the need to repeat s[i] but I don\u0027t have strong feelings",
+      "range": {
+        "startLine": 441,
+        "startChar": 5,
+        "endLine": 441,
+        "endChar": 6
+      },
+      "revId": "8c99e02ca1cc08f4244d954c5e731295909a283a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
