@@ -16,6 +16,24 @@
       "message": "merged-in",
       "revId": "834bbfbb1bd035db756322c7f1b5d9f5da58eb51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbf18c1b_a54da9c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1946166
+      },
+      "writtenOn": "2022-04-08T17:52:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1690c000_f9f7f5ac",
+      "revId": "834bbfbb1bd035db756322c7f1b5d9f5da58eb51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
