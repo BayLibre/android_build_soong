@@ -69,7 +69,12 @@ func init() {
 	pctx.StaticVariable("ErrorProneHeapSize", "4096M")
 	pctx.StaticVariable("ErrorProneHeapFlags", "-J-Xmx${ErrorProneHeapSize}")
 
-	pctx.StaticVariable("DexFlags", "-JXX:OnError='cat hs_err_pid%p.log' -JXX:CICompilerCount=6 -JXX:+UseDynamicNumberOfGCThreads")
+	pctx.StaticVariable("CommonDexFlags", "-JXX:OnError='cat hs_err_pid%p.log' -JXX:CICompilerCount=6 -JXX:+UseDynamicNumberOfGCThreads")
+
+	pctx.StaticVariable("D8HeapSize", "2048M")
+	pctx.StaticVariable("R8HeapSize", "2048M")
+	pctx.StaticVariable("D8Flags", "-JXmx${D8HeapSize} ${CommonDexFlags}")
+	pctx.StaticVariable("R8Flags", "-JXmx${R8HeapSize} ${CommonDexFlags}")
 
 	pctx.StaticVariable("CommonJdkFlags", strings.Join([]string{
 		`-Xmaxerrs 9999999`,
