@@ -638,7 +638,12 @@ func (a *AndroidApp) generateAndroidBuildActions(ctx android.ModuleContext) {
 	}
 
 	certificates := processMainCert(a.ModuleBase, a.getCertString(ctx), certificateDeps, ctx)
-	a.certificate = certificates[0]
+
+	// This can be reached with an empty certificate list if AllowMissingDependencies is set
+	// and the certificate property for this module is a module reference to a missing module.
+	if len(certificates) > 0 {
+		a.certificate = certificates[0]
+	}
 
 	// Build a final signed app package.
 	packageFile := android.PathForModuleOut(ctx, a.installApkName+".apk")
