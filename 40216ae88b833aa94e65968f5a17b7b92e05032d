@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bb7f19e_a9076621",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1946265
+      },
+      "writtenOn": "2022-04-08T18:59:37Z",
+      "side": 1,
+      "message": "Moved comment from AfdoProperties to Afdo bool ",
+      "revId": "40216ae88b833aa94e65968f5a17b7b92e05032d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
