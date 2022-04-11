@@ -22,6 +22,30 @@
       },
       "revId": "224730c47d05a8a37154d1c8f2fdbdfff5e24214",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f357b4bf_fdd4c620",
+        "filename": "ui/metrics/metrics_proto/metrics.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1938045
+      },
+      "writtenOn": "2022-04-11T20:40:41Z",
+      "side": 1,
+      "message": "Simply by running protoc installed on my workstation.  I tried building aprotoc from the Android source as suggested but I got an error.  I noticed that nothing else changed when using regular protoc so I\u0027m hoping it\u0027s acceptable but I can understand if there\u0027s concern.  If I need to ensure it uses the exact right version then I can expend the time to figure out what\u0027s wrong that I can\u0027t build aprotoc, it\u0027s just that adds extra unexpected effort.",
+      "parentUuid": "58b4f5e2_7fcad686",
+      "range": {
+        "startLine": 18,
+        "startChar": 19,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "224730c47d05a8a37154d1c8f2fdbdfff5e24214",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
