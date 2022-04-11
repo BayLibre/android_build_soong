@@ -70,6 +70,30 @@
       },
       "revId": "224730c47d05a8a37154d1c8f2fdbdfff5e24214",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f52cbba_4a17cde2",
+        "filename": "ui/metrics/metrics_proto/metrics.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1938045
+      },
+      "writtenOn": "2022-04-11T21:26:36Z",
+      "side": 1,
+      "message": "I was able to build it on one of the cloudtops I have for RBE experiments.  Copied the .protobuf to the cloudtop, ran aprotoc, copied the resulting .pb.go back to my workstation and submitted.  The version is now unchanged and everything else is identical.",
+      "parentUuid": "9b51a88a_637c6ea0",
+      "range": {
+        "startLine": 18,
+        "startChar": 19,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "224730c47d05a8a37154d1c8f2fdbdfff5e24214",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
