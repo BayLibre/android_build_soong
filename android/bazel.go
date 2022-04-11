@@ -448,6 +448,13 @@ var (
 		// java bugs
 		"libbase_ndk", // TODO(b/186826477): fails to link libctscamera2_jni for device (required for CtsCameraTestCases)
 
+		// TODO(b/229234643) java_sdk_library creates java_library modules whose srcs rules are not converted
+		"conscrypt.module.public.api.stubs",
+		"conscrypt.module.public.api.stubs.system",
+		"conscrypt.module.public.api.stubs.module_lib",
+		"conscrypt.module.platform.api.stubs",
+		"conscrypt.module.intra.core.api.stubs",
+
 		// python protos
 		"libprotobuf-python",                           // TODO(b/196084681): contains .proto sources
 		"apex_build_info_proto", "apex_manifest_proto", // TODO(b/196084681): a python lib with proto sources
