@@ -33,6 +33,121 @@
       "message": "I think Artur is a better reviewer of this, as I\u0027m not familiar with the syntax and behavior associated with these csv files",
       "revId": "f6ad34dabced98f8615816ef9bec132bde5c9da3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30526aad_db94f685",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-04-11T13:45:24Z",
+      "side": 1,
+      "message": "nit: a comment or pass a nil? Just an empty string here isn\u0027t very readable.",
+      "range": {
+        "startLine": 348,
+        "startChar": 98,
+        "endLine": 348,
+        "endChar": 100
+      },
+      "revId": "f6ad34dabced98f8615816ef9bec132bde5c9da3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf107ca1_f0fef14d",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-04-11T13:45:24Z",
+      "side": 1,
+      "message": "can we make this a constant / enum",
+      "range": {
+        "startLine": 907,
+        "startChar": 94,
+        "endLine": 907,
+        "endChar": 102
+      },
+      "revId": "f6ad34dabced98f8615816ef9bec132bde5c9da3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f520a892_209dc5e2",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1090,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-04-11T13:45:24Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1090,
+        "startChar": 78,
+        "endLine": 1090,
+        "endChar": 81
+      },
+      "revId": "f6ad34dabced98f8615816ef9bec132bde5c9da3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e31455c_4e342733",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-04-11T13:45:24Z",
+      "side": 1,
+      "message": "ditto about const",
+      "range": {
+        "startLine": 1096,
+        "startChar": 68,
+        "endLine": 1096,
+        "endChar": 78
+      },
+      "revId": "f6ad34dabced98f8615816ef9bec132bde5c9da3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aacca9dd_5bdc7604",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-04-11T13:45:24Z",
+      "side": 1,
+      "message": "not sure I follow, why wouldn\u0027t module flags be found?",
+      "range": {
+        "startLine": 157,
+        "startChar": 39,
+        "endLine": 157,
+        "endChar": 72
+      },
+      "revId": "f6ad34dabced98f8615816ef9bec132bde5c9da3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
