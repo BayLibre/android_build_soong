@@ -153,6 +153,7 @@ var (
 		"frameworks/av/media/codecs":                             Bp2BuildDefaultTrueRecursively,
 		"frameworks/av/services/minijail":                        Bp2BuildDefaultTrueRecursively,
 		"frameworks/base/media/tests/MediaDump":                  Bp2BuildDefaultTrue,
+		"frameworks/base/services/tests/servicestests/aidl":      Bp2BuildDefaultTrue,
 		"frameworks/base/startop/apps/test":                      Bp2BuildDefaultTrue,
 		"frameworks/base/tests/appwidgets/AppWidgetHostTest":     Bp2BuildDefaultTrueRecursively,
 		"frameworks/native/libs/adbd_auth":                       Bp2BuildDefaultTrueRecursively,
@@ -380,6 +381,7 @@ var (
 		"linker_config",
 		"java_import",
 		"java_import_host",
+		"aidl_interface_headers",
 	}
 
 	Bp2buildModuleDoNotConvertList = []string{

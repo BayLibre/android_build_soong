@@ -372,3 +372,88 @@ func TestJavaLibraryResourcesFailsWithMultipleDirs(t *testing.T) {
 		ExpectedBazelTargets: []string{},
 	})
 }
+
+func TestJavaLibraryAidl(t *testing.T) {
+	runJavaLibraryTestCase(t, bp2buildTestCase{
+		description:                "Java library - aidl creates separate dependency",
+		moduleTypeUnderTest:        "java_library",
+		moduleTypeUnderTestFactory: java.LibraryFactory,
+		blueprint: `java_library {
+        name: "example_lib",
+        srcs: [
+			"a.java",
+			"b.java",
+			"a.aidl",
+			"b.aidl",
+		],
+        bazel_module: { bp2build_available: true },
+}`,
+		expectedBazelTargets: []string{
+			makeBazelTarget("aidl_library", "example_lib_aidl_library", attrNameToString{
+				"srcs": `[
+        "a.aidl",
+        "b.aidl",
+    ]`,
+			}),
+			makeBazelTarget("java_aidl_library", "example_lib_java_aidl_library", attrNameToString{
+				"deps": `[":example_lib_aidl_library"]`,
+			}),
+			makeBazelTarget("java_library", "example_lib", attrNameToString{
+				"deps":    `[":example_lib_java_aidl_library"]`,
+				"exports": `[":example_lib_java_aidl_library"]`,
+				"srcs": `[
+        "a.java",
+        "b.java",
+    ]`,
+			}),
+		}})
+}
+
+func TestJavaLibraryAidlFilegroup(t *testing.T) {
+	runJavaLibraryTestCaseWithRegistrationCtxFunc(t, bp2buildTestCase{
+		description:                "Java library - aidl filegroup is parsed",
+		moduleTypeUnderTest:        "java_library",
+		moduleTypeUnderTestFactory: java.LibraryFactory,
+		blueprint: `
+filegroup {
+	name: "aidl_files",
+	srcs: [
+		"a.aidl",
+		"b.aidl",
+	],
+}
+java_library {
+        name: "example_lib",
+        srcs: [
+			"a.java",
+			"b.java",
+			":aidl_files",
+		],
+        bazel_module: { bp2build_available: true },
+}`,
+		expectedBazelTargets: []string{
+			makeBazelTargetNoRestrictions("filegroup", "aidl_files", attrNameToString{
+				"srcs": `[
+        "a.aidl",
+        "b.aidl",
+    ]`,
+			}),
+			makeBazelTarget("aidl_library", "example_lib_aidl_library", attrNameToString{
+				"srcs": `[":aidl_files"]`,
+			}),
+			makeBazelTarget("java_aidl_library", "example_lib_java_aidl_library", attrNameToString{
+				"deps": `[":example_lib_aidl_library"]`,
+			}),
+			makeBazelTarget("java_library", "example_lib", attrNameToString{
+				"deps":    `[":example_lib_java_aidl_library"]`,
+				"exports": `[":example_lib_java_aidl_library"]`,
+				"srcs": `[
+        "a.java",
+        "b.java",
+    ]`,
+			}),
+		},
+	}, func(ctx android.RegistrationContext) {
+		ctx.RegisterModuleType("filegroup", android.FileGroupFactory)
+	})
+}

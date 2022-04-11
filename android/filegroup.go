@@ -15,6 +15,7 @@
 package android
 
 import (
+	"regexp"
 	"strings"
 
 	"android/soong/bazel"
@@ -34,6 +35,34 @@ var PrepareForTestWithFilegroup = FixtureRegisterWithContext(func(ctx Registrati
 // IsFilegroup checks that a module is a filegroup type
 func IsFilegroup(ctx bazel.OtherModuleContext, m blueprint.Module) bool {
 	return ctx.OtherModuleType(m) == "filegroup"
+}
+
+var (
+	// ignoring case, checks for proto or protos as an independent word in the name, whether at the
+	// beginning, end, or middle. e.g. "proto.foo", "bar-protos", "baz_proto_srcs" would all match
+	filegroupLikelyProtoPattern = regexp.MustCompile("(?i)(^|[^a-z])proto(s)?([^a-z]|$)")
+	filegroupLikelyAidlPattern  = regexp.MustCompile("(?i)(^|[^a-z])aidl([^a-z]|$)")
+
+	ProtoSrcLabelPartition = bazel.LabelPartition{
+		Extensions:  []string{".proto"},
+		LabelMapper: isFilegroupWithPattern(filegroupLikelyProtoPattern),
+	}
+	AidlSrcLabelPartition = bazel.LabelPartition{
+		Extensions:  []string{".aidl"},
+		LabelMapper: isFilegroupWithPattern(filegroupLikelyAidlPattern),
+	}
+)
+
+func isFilegroupWithPattern(pattern *regexp.Regexp) bazel.LabelMapper {
+	return func(ctx bazel.OtherModuleContext, label bazel.Label) (string, bool) {
+		m, exists := ctx.ModuleFromName(label.OriginalModuleName)
+		labelStr := label.Label
+		if !exists || !IsFilegroup(ctx, m) {
+			return labelStr, false
+		}
+		likelyMatched := pattern.MatchString(label.OriginalModuleName)
+		return labelStr, likelyMatched
+	}
 }
 
 // https://docs.bazel.build/versions/master/be/general.html#filegroup
