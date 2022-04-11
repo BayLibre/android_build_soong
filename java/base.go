@@ -2032,15 +2032,28 @@ type ModuleWithStem interface {
 
 var _ ModuleWithStem = (*Module)(nil)
 
+type moduleType int
+
+const (
+	unknownModuleType moduleType = iota
+	javaLibrary
+	javaBinary
+)
+
+func typ(j android.Module) moduleType {
+	if _, ok := j.(*Library); ok {
+		return javaLibrary
+	} else if _, ok := j.(*Binary); ok {
+		return javaBinary
+	}
+	return unknownModuleType
+}
+
 func (j *Module) ConvertWithBp2build(ctx android.TopDownMutatorContext) {
-	switch ctx.ModuleType() {
-	case "java_library", "java_library_host", "java_library_static":
-		if lib, ok := ctx.Module().(*Library); ok {
-			javaLibraryBp2Build(ctx, lib)
-		}
-	case "java_binary_host":
-		if binary, ok := ctx.Module().(*Binary); ok {
-			javaBinaryHostBp2Build(ctx, binary)
-		}
+	switch typ(ctx.Module()) {
+	case javaLibrary:
+		javaLibraryBp2Build(ctx, ctx.Module().(*Library))
+	case javaBinary:
+		javaBinaryHostBp2Build(ctx, ctx.Module().(*Binary))
 	}
 }
