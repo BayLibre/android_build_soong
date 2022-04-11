@@ -46,6 +46,30 @@
       },
       "revId": "224730c47d05a8a37154d1c8f2fdbdfff5e24214",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b51a88a_637c6ea0",
+        "filename": "ui/metrics/metrics_proto/metrics.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-04-11T20:54:21Z",
+      "side": 1,
+      "message": "Right, the textual portions look ok, but I don\u0027t know how to validate the binary portions. Maybe ping joeo@ / ccross@ over chat to find out why aprotoc doesn\u0027t build? the problem with version changing is that this will again revert back to the old version when someone else actually generates this file with aprotoc 😊",
+      "parentUuid": "f357b4bf_fdd4c620",
+      "range": {
+        "startLine": 18,
+        "startChar": 19,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "224730c47d05a8a37154d1c8f2fdbdfff5e24214",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
