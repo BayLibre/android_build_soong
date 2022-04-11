@@ -16,6 +16,23 @@
       "message": "Ping.",
       "revId": "f6ad34dabced98f8615816ef9bec132bde5c9da3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1eff788_4aedfffd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-04-11T10:14:37Z",
+      "side": 1,
+      "message": "I think Artur is a better reviewer of this, as I\u0027m not familiar with the syntax and behavior associated with these csv files",
+      "revId": "f6ad34dabced98f8615816ef9bec132bde5c9da3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
