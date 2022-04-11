@@ -2037,14 +2037,19 @@ type javaDependencyLabels struct {
 	StaticDeps bazel.LabelListAttribute
 }
 
-// convertLibraryAttrsBp2Build converts a few shared attributes from java_* modules
-// and also separates dependencies into dynamic dependencies and static dependencies.
-// Each corresponding Bazel target type, can have a different method for handling
-// dynamic vs. static dependencies, and so these are returned to the calling function.
 type eventLogTagsAttributes struct {
 	Srcs bazel.LabelListAttribute
 }
 
+type aidlLibraryAttributes struct {
+	Srcs bazel.LabelListAttribute
+	Lang string
+}
+
+// convertLibraryAttrsBp2Build converts a few shared attributes from java_* modules
+// and also separates dependencies into dynamic dependencies and static dependencies.
+// Each corresponding Bazel target type, can have a different method for handling
+// dynamic vs. static dependencies, and so these are returned to the calling function.
 func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext) (*javaCommonAttributes, *javaDependencyLabels) {
 	var srcs bazel.LabelListAttribute
 	archVariantProps := m.GetArchVariantProperties(ctx, &CommonProperties{})
@@ -2060,10 +2065,12 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	javaSrcPartition := "java"
 	protoSrcPartition := "proto"
 	logtagSrcPartition := "logtag"
+	aidlSrcPartition := "aidl"
 	srcPartitions := bazel.PartitionLabelListAttribute(ctx, &srcs, bazel.LabelPartitions{
 		javaSrcPartition:   bazel.LabelPartition{Extensions: []string{".java"}, Keep_remainder: true},
 		logtagSrcPartition: bazel.LabelPartition{Extensions: []string{".logtags", ".logtag"}},
 		protoSrcPartition:  android.ProtoSrcLabelPartition,
+		aidlSrcPartition:   android.AidlSrcLabelPartition,
 	})
 
 	javaSrcs := srcPartitions[javaSrcPartition]
@@ -2084,6 +2091,24 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 		)
 	}
 	javaSrcs.Append(bazel.MakeLabelListAttribute(logtagsSrcs))
+
+	var aidlSrcs bazel.LabelList
+	if !srcPartitions[aidlSrcPartition].IsEmpty() {
+		aidlLibName := m.Name() + "_aidl"
+		aidlSrcs = bazel.MakeLabelList([]bazel.Label{{Label: ":" + aidlLibName}})
+		ctx.CreateBazelTargetModule(
+			bazel.BazelTargetModuleProperties{
+				Rule_class:        "aidl_library",
+				Bzl_load_location: "//build/bazel/rules:aidl.bzl",
+			},
+			android.CommonAttributes{Name: aidlLibName},
+			&aidlLibraryAttributes{
+				Srcs: srcPartitions[aidlSrcPartition],
+				Lang: "java",
+			},
+		)
+	}
+	javaSrcs.Append(bazel.MakeLabelListAttribute(aidlSrcs))
 
 	var javacopts []string
 	if m.properties.Javacflags != nil {
@@ -2148,7 +2173,7 @@ func javaLibraryBp2Build(ctx android.TopDownMutatorContext, m *Library) {
 			// TODO(b/220869005) remove forced dependency on current public android.jar
 			deps.Add(bazel.MakeLabelAttribute("//prebuilts/sdk:public_current_android_sdk_java_import"))
 		}
-	} else if !depLabels.Deps.IsEmpty() {
+	} else if !deps.IsEmpty() {
 		ctx.ModuleErrorf("Module has direct dependencies but no sources. Bazel will not allow this.")
 	}
 

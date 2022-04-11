@@ -251,3 +251,36 @@ func TestJavaLibraryLogTags(t *testing.T) {
 			}),
 		}})
 }
+
+func TestJavaLibraryAidl(t *testing.T) {
+	runJavaLibraryTestCase(t, bp2buildTestCase{
+		description:                "Java library - aidl creates separate dependency",
+		moduleTypeUnderTest:        "java_library",
+		moduleTypeUnderTestFactory: java.LibraryFactory,
+		blueprint: `java_library {
+        name: "example_lib",
+        srcs: [
+			"a.java",
+			"b.java",
+			"a.aidl",
+			"b.aidl",
+		],
+        bazel_module: { bp2build_available: true },
+}`,
+		expectedBazelTargets: []string{
+			makeBazelTarget("aidl_library", "example_lib_aidl", attrNameToString{
+				"lang": `"java"`,
+				"srcs": `[
+        "a.aidl",
+        "b.aidl",
+    ]`,
+			}),
+			makeBazelTarget("java_library", "example_lib", attrNameToString{
+				"srcs": `[
+        "a.java",
+        "b.java",
+        ":example_lib_aidl",
+    ]`,
+			}),
+		}})
+}
