@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58b4f5e2_7fcad686",
+        "filename": "ui/metrics/metrics_proto/metrics.pb.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-04-11T18:51:14Z",
+      "side": 1,
+      "message": "I\u0027m not sure if the version change of protoc is ok or not - how did you generate this file?",
+      "range": {
+        "startLine": 18,
+        "startChar": 19,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "224730c47d05a8a37154d1c8f2fdbdfff5e24214",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
