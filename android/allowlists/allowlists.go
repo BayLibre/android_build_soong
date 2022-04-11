@@ -265,11 +265,20 @@ var (
 		"car-ui-androidx-core-common-nodeps",
 		"car-ui-androidx-lifecycle-common-nodeps",
 		"car-ui-androidx-constraintlayout-solver-nodeps",
+
+		//packages/modules/NetworkStack/networkstackclient
+		"networkstack-aidl-interfaces_interface",
+		"ipmemorystore-aidl-interfaces_interface",
+		"networkstack-aidl-latest",
+		// sources for //frameworks/base/core/java:framework-base-core-java-aidl-headers
+		// needed for networkstack-aidl-interfaces
+		"framework-core-aidl-sources",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
 		"java_import",
 		"java_import_host",
+		"aidl_interface_headers",
 	}
 
 	Bp2buildModuleDoNotConvertList = []string{
@@ -285,6 +294,12 @@ var (
 
 		// java bugs
 		"libbase_ndk", // TODO(b/186826477): fails to link libctscamera2_jni for device (required for CtsCameraTestCases)
+		// TODO(b/229234643) java_sdk_library creates java_library modules whose srcs rules are not converted
+		"conscrypt.module.public.api.stubs",
+		"conscrypt.module.public.api.stubs.system",
+		"conscrypt.module.public.api.stubs.module_lib",
+		"conscrypt.module.platform.api.stubs",
+		"conscrypt.module.intra.core.api.stubs",
 
 		// python protos
 		"libprotobuf-python",                           // TODO(b/196084681): contains .proto sources
