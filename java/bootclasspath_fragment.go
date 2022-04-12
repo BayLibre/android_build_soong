@@ -820,7 +820,22 @@ func (b *BootclasspathFragmentModule) createHiddenAPIFlagInput(ctx android.Modul
 
 // isTestFragment returns true if the current module is a test bootclasspath_fragment.
 func (b *BootclasspathFragmentModule) isTestFragment() bool {
-	return proptools.Bool(b.properties.Testonly)
+	if proptools.Bool(b.properties.Testonly) {
+		return true
+	}
+
+	// TODO(b/194063708): Remove once test fragments all use testonly
+	// Some temporary exceptions until all test fragments use the
+	// testonly property.
+	name := b.BaseModuleName()
+	if strings.HasPrefix(name, "test_") {
+		return true
+	}
+	if name == "apex.apexd_test_bootclasspath-fragment" {
+		return true
+	}
+
+	return false
 }
 
 // produceHiddenAPIOutput produces the hidden API all-flags.csv file (and supporting files)
