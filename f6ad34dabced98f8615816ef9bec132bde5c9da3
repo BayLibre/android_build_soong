@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfbeba72_573a1b82",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-04-12T16:44:40Z",
+      "side": 1,
+      "message": "Changed the type to []string. That makes the code more general and makes it easier to specify an empty set of flags.",
+      "parentUuid": "30526aad_db94f685",
+      "range": {
+        "startLine": 348,
+        "startChar": 98,
+        "endLine": 348,
+        "endChar": 100
+      },
+      "revId": "f6ad34dabced98f8615816ef9bec132bde5c9da3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf107ca1_f0fef14d",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-04-11T13:45:24Z",
       "side": 1,
       "message": "can we make this a constant / enum",
+      "range": {
+        "startLine": 907,
+        "startChar": 94,
+        "endLine": 907,
+        "endChar": 102
+      },
+      "revId": "f6ad34dabced98f8615816ef9bec132bde5c9da3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e45c521_da2cde14",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 907,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-04-12T16:44:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf107ca1_f0fef14d",
       "range": {
         "startLine": 907,
         "startChar": 94,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f5e81cd_97581b82",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1090,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-04-12T16:44:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f520a892_209dc5e2",
+      "range": {
+        "startLine": 1090,
+        "startChar": 78,
+        "endLine": 1090,
+        "endChar": 81
+      },
+      "revId": "f6ad34dabced98f8615816ef9bec132bde5c9da3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e31455c_4e342733",
@@ -127,6 +199,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c783559_1bb1c9b2",
+        "filename": "java/hiddenapi_modular.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-04-12T16:44:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e31455c_4e342733",
+      "range": {
+        "startLine": 1096,
+        "startChar": 68,
+        "endLine": 1096,
+        "endChar": 78
+      },
+      "revId": "f6ad34dabced98f8615816ef9bec132bde5c9da3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aacca9dd_5bdc7604",
@@ -140,6 +236,30 @@
       "writtenOn": "2022-04-11T13:45:24Z",
       "side": 1,
       "message": "not sure I follow, why wouldn\u0027t module flags be found?",
+      "range": {
+        "startLine": 157,
+        "startChar": 39,
+        "endLine": 157,
+        "endChar": 72
+      },
+      "revId": "f6ad34dabced98f8615816ef9bec132bde5c9da3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d82956c5_0eb436cb",
+        "filename": "scripts/hiddenapi/verify_overlaps.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-04-12T16:44:40Z",
+      "side": 1,
+      "message": "Because they have been filtered out. I\u0027ve renamed default flag to implementation flag and improved the documentation all around to try and make this clearer.",
+      "parentUuid": "aacca9dd_5bdc7604",
       "range": {
         "startLine": 157,
         "startChar": 39,
