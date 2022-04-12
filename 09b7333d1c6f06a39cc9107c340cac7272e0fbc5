@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "928488a1_885848ef",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-04-12T16:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6e550c2_d3fd2659",
+      "range": {
+        "startLine": 178,
+        "startChar": 7,
+        "endLine": 180,
+        "endChar": 30
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcc0171e_0dec054c",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-12T14:25:23Z",
       "side": 1,
       "message": "thourhgout we need the licensing header",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59ab9ded_412b7c9f",
+        "filename": "bp2build/cc_prebuilt_library_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-04-12T16:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcc0171e_0dec054c",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9cdb054_41ac37da",
+        "filename": "bp2build/cc_prebuilt_library_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-04-12T16:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02eb6ed0_75a3cfd1",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 39
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "530b45dc_e0bed8ad",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-04-12T14:25:23Z",
       "side": 1,
       "message": "thanks for adding unit test coverage where we had none!",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4e963b9_f99d8136",
+        "filename": "bp2build/cc_prebuilt_library_static_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-04-12T16:09:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "530b45dc_e0bed8ad",
       "range": {
         "startLine": 7,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b372fc0b_d91af100",
+        "filename": "bp2build/cc_prebuilt_library_static_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-04-12T16:09:32Z",
+      "side": 1,
+      "message": "It was basically copy pasta, so it seemed totally worth it ^_^.",
+      "parentUuid": "bfeae626_e1f6dfe1",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1723d38_e385438d",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-04-12T14:25:23Z",
       "side": 1,
       "message": "I believe we\u0027ll still need to handle `enabled` if `srcs` is empty",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 9
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "493d3e35_ec6b3c01",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-04-12T16:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1723d38_e385438d",
       "range": {
         "startLine": 229,
         "startChar": 3,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae92b4d2_31a60df1",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-04-12T16:09:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0830824_254e090f",
+      "range": {
+        "startLine": 224,
+        "startChar": 2,
+        "endLine": 233,
+        "endChar": 3
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b752521d_80b7c861",
@@ -202,6 +370,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78d61a2b_1866e35b",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-04-12T16:09:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b752521d_80b7c861",
+      "range": {
+        "startLine": 359,
+        "startChar": 1,
+        "endLine": 359,
+        "endChar": 24
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcdf1027_51cad007",
@@ -215,6 +407,30 @@
       "writtenOn": "2022-04-12T14:25:23Z",
       "side": 1,
       "message": "can you add test cases for the uses you added here?",
+      "range": {
+        "startLine": 381,
+        "startChar": 5,
+        "endLine": 381,
+        "endChar": 34
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22c30c41_3ed2f077",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-04-12T16:09:32Z",
+      "side": 1,
+      "message": "Do you mean for the usages that are unrelated to cc_prebuilt_library? I assumed those were already covered by tests for their respective use cases.",
+      "parentUuid": "dcdf1027_51cad007",
       "range": {
         "startLine": 381,
         "startChar": 5,
