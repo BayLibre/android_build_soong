@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85e66494_03854c82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-12T14:25:23Z",
+      "side": 1,
+      "message": "Overall lgtm, mostly just more unit tests and splitting the refactoring/cleaning to separate CLs",
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6e550c2_d3fd2659",
+        "filename": "bp2build/cc_library_shared_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-12T14:25:23Z",
+      "side": 1,
+      "message": "these look like unrelated formatting changes -- can you split to a separate CL?",
+      "range": {
+        "startLine": 178,
+        "startChar": 7,
+        "endLine": 180,
+        "endChar": 30
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc0171e_0dec054c",
+        "filename": "bp2build/cc_prebuilt_library_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-12T14:25:23Z",
+      "side": 1,
+      "message": "thourhgout we need the licensing header",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 7
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02eb6ed0_75a3cfd1",
+        "filename": "bp2build/cc_prebuilt_library_conversion_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-12T14:25:23Z",
+      "side": 1,
+      "message": "can you add test cases that use the static and shared stanzas? e.g.\n\n```\ncc_prebuilt_library {\n   name: \"foo\",\n   static: {\n      srcs: [\"bar.a\"],\n   },\n   shared: {\n      srcs: [\"baz.so\"],\n   },\n}\n```",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 39
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "530b45dc_e0bed8ad",
+        "filename": "bp2build/cc_prebuilt_library_static_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-12T14:25:23Z",
+      "side": 1,
+      "message": "thanks for adding unit test coverage where we had none!",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 1
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfeae626_e1f6dfe1",
+        "filename": "bp2build/cc_prebuilt_library_static_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-12T14:25:23Z",
+      "side": 1,
+      "message": "can you also add a test case that uses the `static` stanza?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1723d38_e385438d",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-12T14:25:23Z",
+      "side": 1,
+      "message": "I believe we\u0027ll still need to handle `enabled` if `srcs` is empty",
+      "range": {
+        "startLine": 229,
+        "startChar": 3,
+        "endLine": 229,
+        "endChar": 9
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0830824_254e090f",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-12T14:25:23Z",
+      "side": 1,
+      "message": "optional: given the similarities with this and the previous handling -- would it make sense to split the handling of `src` into a function to keep the two in sync?",
+      "range": {
+        "startLine": 224,
+        "startChar": 2,
+        "endLine": 233,
+        "endChar": 3
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b752521d_80b7c861",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-12T14:25:23Z",
+      "side": 1,
+      "message": "all the changes for `bp2buildPropParseHelper` are unrelated -- can you split them into a separate CL? go/small-cls",
+      "range": {
+        "startLine": 359,
+        "startChar": 1,
+        "endLine": 359,
+        "endChar": 24
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcdf1027_51cad007",
+        "filename": "cc/prebuilt.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-12T14:25:23Z",
+      "side": 1,
+      "message": "can you add test cases for the uses you added here?",
+      "range": {
+        "startLine": 381,
+        "startChar": 5,
+        "endLine": 381,
+        "endChar": 34
+      },
+      "revId": "09b7333d1c6f06a39cc9107c340cac7272e0fbc5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
