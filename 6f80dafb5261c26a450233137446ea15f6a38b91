@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b451e859_e5a568bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-12T12:56:53Z",
+      "side": 1,
+      "message": "Other than odd comment endings and merge conflicts, lgtm",
+      "revId": "6f80dafb5261c26a450233137446ea15f6a38b91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a927f153_493aceb2",
+        "filename": "android/bazel.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-12T12:56:53Z",
+      "side": 1,
+      "message": "looks like a lot of these got cut off or a bad find/replace",
+      "range": {
+        "startLine": 219,
+        "startChar": 77,
+        "endLine": 219,
+        "endChar": 79
+      },
+      "revId": "6f80dafb5261c26a450233137446ea15f6a38b91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
