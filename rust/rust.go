@@ -845,7 +845,7 @@ func (mod *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	if mod.UseVndk() {
 		if mod.InProduct() && !mod.OnlyInProduct() {
 			mod.Properties.SubName += cc.ProductSuffix
-		} else {
+		} else if mod.HasNonSystemVariants() {
 			mod.Properties.SubName += cc.VendorSuffix
 		}
 	} else if mod.InRamdisk() && !mod.OnlyInRamdisk() {
