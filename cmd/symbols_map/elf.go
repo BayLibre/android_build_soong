@@ -44,7 +44,7 @@ func elfIdentifierFromReaderAt(r io.ReaderAt, filename string, allowMissing bool
 	f, err := elf.NewFile(r)
 	if err != nil {
 		if allowMissing {
-			if errors.Is(err, io.EOF) {
+			if errors.Is(err, io.EOF) || errors.Is(err, io.ErrUnexpectedEOF) {
 				return "", nil
 			}
 			if _, ok := err.(*elf.FormatError); ok {
