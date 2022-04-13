@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f555b58e_53bd2e63",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-04-13T02:19:30Z",
+      "side": 1,
+      "message": "`Sdk_version` and `Min_sdk_version` are parsed the same way as those in [DeviceProperties](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/base.go;drc\u003d713f665af47e943a378b818c3056cb30e0f786e6;bpv\u003d1;bpt\u003d1;l\u003d186?gsn\u003dDeviceProperties\u0026gs\u003dkythe%3A%2F%2Fandroid.googlesource.com%2Fplatform%2Fsuperproject%3Flang%3Dgo%3Fpath%3Dbuild%2Fsoong%2Fjava%23type%2520DeviceProperties) which is used by [android_library](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/aar.go;drc\u003d713f665af47e943a378b818c3056cb30e0f786e6;bpv\u003d1;bpt\u003d1;l\u003d581?gsn\u003dAndroidLibraryFactory\u0026gs\u003dkythe%3A%2F%2Fandroid.googlesource.com%2Fplatform%2Fsuperproject%3Flang%3Dgo%3Fpath%3Dbuild%2Fsoong%2Fjava%23func%2520AndroidLibraryFactory) (See [AARImport](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/aar.go;drc\u003d713f665af47e943a378b818c3056cb30e0f786e6;bpv\u003d1;bpt\u003d1;l\u003d656?gsn\u003dSdkVersion\u0026gs\u003dkythe%3A%2F%2Fandroid.googlesource.com%2Fplatform%2Fsuperproject%3Flang%3Dgo%3Fpath%3Dbuild%2Fsoong%2Fjava%23method%2520AARImport.SdkVersion) and [base module](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/base.go;drc\u003d713f665af47e943a378b818c3056cb30e0f786e6;bpv\u003d1;bpt\u003d1;l\u003d629?gsn\u003dSdkVersion\u0026gs\u003dkythe%3A%2F%2Fandroid.googlesource.com%2Fplatform%2Fsuperproject%3Flang%3Dgo%3Fpath%3Dbuild%2Fsoong%2Fjava%23method%2520Module.SdkVersion)).\n\nWhile making this change, I realized the documents for the fields in [DeviceProperties](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/base.go;drc\u003d713f665af47e943a378b818c3056cb30e0f786e6;bpv\u003d1;bpt\u003d1;l\u003d186?gsn\u003dDeviceProperties\u0026gs\u003dkythe%3A%2F%2Fandroid.googlesource.com%2Fplatform%2Fsuperproject%3Flang%3Dgo%3Fpath%3Dbuild%2Fsoong%2Fjava%23type%2520DeviceProperties) might be outdated according to [SdkSpecFromWithConfig](https://source.corp.google.com/android/build/soong/android/sdk_version.go;bpv\u003d1;bpt\u003d1;l\u003d218?gsn\u003dSdkSpecFromWithConfig\u0026gs\u003dKYTHE%3A%2F%2Fkythe%3A%2F%2Fgoogleplex-android.googlesource.com%2Fcodesearch%2Fandroid%3Flang%3Dgo%3Fpath%3Dbuild%2Fsoong%2Fandroid%23func%2520SdkSpecFromWithConfig)\u0027s implementation. For instance, if the input is empty, it defaults to private instead of the current platform. It\u0027s also missing \"none\" and \"core_platform\".\n\nAm I understanding it correctly? If so, I\u0027m happy to update `DeviceProperties` as well. If not, please advise.",
+      "revId": "ce0781f8f53655f7e93e351267c24013be61b4a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
