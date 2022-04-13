@@ -198,7 +198,7 @@ func TestGenerateDistContributionsForMake(t *testing.T) {
 		},
 	}
 
-	makeOutput := generateDistContributionsForMake(dc)
+	makeOutput := generateDistContributionsForMake(dc, nil)
 
 	assertStringEquals(t, `.PHONY: my_goal
 $(call dist-for-goals,my_goal,one.out:one.out)
@@ -263,7 +263,95 @@ func TestGetDistForGoals(t *testing.T) {
 	if len(entries) != 1 {
 		t.Errorf("Expected a single AndroidMk entry, got %d", len(entries))
 	}
-	androidMkLines := entries[0].GetDistForGoals(module)
+	androidMkLines := entries[0].GetDistForGoals(module, nil)
+
+	if len(androidMkLines) != len(expectedAndroidMkLines) {
+		t.Errorf(
+			"Expected %d AndroidMk lines, got %d:\n%v",
+			len(expectedAndroidMkLines),
+			len(androidMkLines),
+			androidMkLines,
+		)
+	}
+	for idx, line := range androidMkLines {
+		expectedLine := expectedAndroidMkLines[idx]
+		if line != expectedLine {
+			t.Errorf(
+				"Expected AndroidMk line to be '%s', got '%s'",
+				expectedLine,
+				line,
+			)
+		}
+	}
+}
+
+func TestGetDistForGoalsWithMetadata(t *testing.T) {
+	bp := `
+			custom {
+				name: "foo",
+				dist: {
+					targets: ["my_goal", "my_other_goal"],
+					tag: ".multiple",
+				},
+				dists: [
+					{
+						targets: ["my_second_goal"],
+						tag: ".multiple",
+					},
+					{
+						targets: ["my_third_goal"],
+						dir: "test/dir",
+					},
+					{
+						targets: ["my_fourth_goal"],
+						suffix: ".suffix",
+					},
+					{
+						targets: ["my_fifth_goal"],
+						dest: "new-name",
+					},
+					{
+						targets: ["my_sixth_goal"],
+						dest: "new-name",
+						dir: "some/dir",
+						suffix: ".suffix",
+					},
+				],
+			}
+			`
+
+	expectedAndroidMkLines := []string{
+		".PHONY: my_second_goal\n",
+		"$(if $(strip $(ALL_TARGETS.two.out.META_LIC)),,$(eval ALL_TARGETS.two.out.META_LIC := meta_lic))\n",
+		"$(call dist-for-goals,my_second_goal,two.out:two.out)\n",
+		"$(if $(strip $(ALL_TARGETS.three/four.out.META_LIC)),,$(eval ALL_TARGETS.three/four.out.META_LIC := meta_lic))\n",
+		"$(call dist-for-goals,my_second_goal,three/four.out:four.out)\n",
+		".PHONY: my_third_goal\n",
+		"$(if $(strip $(ALL_TARGETS.one.out.META_LIC)),,$(eval ALL_TARGETS.one.out.META_LIC := meta_lic))\n",
+		"$(call dist-for-goals,my_third_goal,one.out:test/dir/one.out)\n",
+		".PHONY: my_fourth_goal\n",
+		"$(if $(strip $(ALL_TARGETS.one.out.META_LIC)),,$(eval ALL_TARGETS.one.out.META_LIC := meta_lic))\n",
+		"$(call dist-for-goals,my_fourth_goal,one.out:one.suffix.out)\n",
+		".PHONY: my_fifth_goal\n",
+		"$(if $(strip $(ALL_TARGETS.one.out.META_LIC)),,$(eval ALL_TARGETS.one.out.META_LIC := meta_lic))\n",
+		"$(call dist-for-goals,my_fifth_goal,one.out:new-name)\n",
+		".PHONY: my_sixth_goal\n",
+		"$(if $(strip $(ALL_TARGETS.one.out.META_LIC)),,$(eval ALL_TARGETS.one.out.META_LIC := meta_lic))\n",
+		"$(call dist-for-goals,my_sixth_goal,one.out:some/dir/new-name.suffix)\n",
+		".PHONY: my_goal my_other_goal\n",
+		"$(if $(strip $(ALL_TARGETS.two.out.META_LIC)),,$(eval ALL_TARGETS.two.out.META_LIC := meta_lic))\n",
+		"$(call dist-for-goals,my_goal my_other_goal,two.out:two.out)\n",
+		"$(if $(strip $(ALL_TARGETS.three/four.out.META_LIC)),,$(eval ALL_TARGETS.three/four.out.META_LIC := meta_lic))\n",
+		"$(call dist-for-goals,my_goal my_other_goal,three/four.out:four.out)\n",
+	}
+
+	ctx, module := buildContextAndCustomModuleFoo(t, bp)
+	entries := AndroidMkEntriesForTest(t, ctx, module)
+	if len(entries) != 1 {
+		t.Errorf("Expected a single AndroidMk entry, got %d", len(entries))
+	}
+	metadata := PathForTesting("meta_lic")
+	androidMkLines := entries[0].GetDistForGoals(module, &metadata)
 
 	if len(androidMkLines) != len(expectedAndroidMkLines) {
 		t.Errorf(

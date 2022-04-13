@@ -448,12 +448,18 @@ func (a *AndroidMkEntries) getDistContributions(mod blueprint.Module) *distContr
 
 // generateDistContributionsForMake generates make rules that will generate the
 // dist according to the instructions in the supplied distContribution.
-func generateDistContributionsForMake(distContributions *distContributions) []string {
+func generateDistContributionsForMake(distContributions *distContributions, metadata *Path) []string {
 	var ret []string
 	for _, d := range distContributions.copiesForGoals {
 		ret = append(ret, fmt.Sprintf(".PHONY: %s\n", d.goals))
 		// Create dist-for-goals calls for each of the copy instructions.
 		for _, c := range d.copies {
+			if metadata != nil {
+				ret = append(
+					ret,
+					fmt.Sprintf("$(if $(strip $(ALL_TARGETS.%s.META_LIC)),,$(eval ALL_TARGETS.%s.META_LIC := %s))\n",
+						c.from.String(), c.from.String(), *metadata))
+			}
 			ret = append(
 				ret,
 				fmt.Sprintf("$(call dist-for-goals,%s,%s:%s)\n", d.goals, c.from.String(), c.dest))
@@ -465,13 +471,13 @@ func generateDistContributionsForMake(distContributions *distContributions) []st
 
 // Compute the list of Make strings to declare phony goals and dist-for-goals
 // calls from the module's dist and dists properties.
-func (a *AndroidMkEntries) GetDistForGoals(mod blueprint.Module) []string {
+func (a *AndroidMkEntries) GetDistForGoals(mod blueprint.Module, metadata *Path) []string {
 	distContributions := a.getDistContributions(mod)
 	if distContributions == nil {
 		return nil
 	}
 
-	return generateDistContributionsForMake(distContributions)
+	return generateDistContributionsForMake(distContributions, metadata)
 }
 
 // Write the license variables to Make for AndroidMkData.Custom(..) methods that do not call WriteAndroidMkData(..)
@@ -511,7 +517,13 @@ func (a *AndroidMkEntries) fillInEntries(ctx fillInEntriesContext, mod blueprint
 	a.Host_required = append(a.Host_required, amod.HostRequiredModuleNames()...)
 	a.Target_required = append(a.Target_required, amod.TargetRequiredModuleNames()...)
 
-	for _, distString := range a.GetDistForGoals(mod) {
+	var metadata *Path
+	if ctx.ModuleHasProvider(mod, LicenseMetadataProvider) {
+		licenseMetadata := ctx.ModuleProvider(mod, LicenseMetadataProvider).(*LicenseMetadataInfo)
+		metadata = &licenseMetadata.LicenseMetadataPath
+	}
+
+	for _, distString := range a.GetDistForGoals(mod, metadata) {
 		fmt.Fprintf(&a.header, distString)
 	}
 
