@@ -577,10 +577,9 @@ func (a *AndroidMkEntries) fillInEntries(ctx fillInEntriesContext, mod blueprint
 				a.SetString("LOCAL_MODULE_TARGET_ARCH", archStr)
 			}
 		}
-
-		if !base.InRamdisk() && !base.InVendorRamdisk() {
-			a.AddPaths("LOCAL_FULL_INIT_RC", base.initRcPaths)
-		}
+        if !base.InVendorRamdisk() {
+		    a.AddPaths("LOCAL_FULL_INIT_RC", base.initRcPaths)
+        }
 		if len(base.vintfFragmentsPaths) > 0 {
 			a.AddPaths("LOCAL_FULL_VINTF_FRAGMENTS", base.vintfFragmentsPaths)
 		}
