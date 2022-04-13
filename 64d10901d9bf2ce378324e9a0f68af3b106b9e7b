@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4ddef8d_9059c20f",
+        "filename": "bp2build/cc_prebuilt_library_static_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-13T20:45:16Z",
+      "side": 1,
+      "message": "how does Soong handle cases where there are srcs and static/shared srcs? is libf.so overridden by libg.so or would this cause a failure in Soong?\n\nIf it would cause a failure in Soong, we should also error in bp2build to prevent confusion.",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 3
+      },
+      "revId": "64d10901d9bf2ce378324e9a0f68af3b106b9e7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
