@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b517c5b7_010a80df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115178
+      },
+      "writtenOn": "2022-04-13T22:45:31Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/device/google/cuttlefish/+/2062849 resolves the issue in the referenced bug. I\u0027ll abandon this CL once it merges.",
+      "revId": "c9b329c30ad4125cd02bdb3f4710f0866eb70882",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
