@@ -22,6 +22,30 @@
       },
       "revId": "8c81305c80f74fcce3e8be8edbef8fb8919dd574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "460e7cc9_6153e2f0",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-13T18:40:31Z",
+      "side": 0,
+      "message": "I\u0027m not a VsCode user, but you could probably ask in the Leafies chat. Have you already set up VSCode as in https://g3doc.corp.google.com/devtools/editors/vscode/g3doc/setup.md?cl\u003dhead?",
+      "parentUuid": "e992c302_758ebd84",
+      "range": {
+        "startLine": 608,
+        "startChar": 5,
+        "endLine": 608,
+        "endChar": 12
+      },
+      "revId": "8c81305c80f74fcce3e8be8edbef8fb8919dd574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
