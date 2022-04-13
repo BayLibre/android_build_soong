@@ -122,6 +122,8 @@ func (library *Library) AndroidMkEntries() []android.AndroidMkEntries {
 					if library.dexpreopter.configPath != nil {
 						entries.SetPath("LOCAL_SOONG_DEXPREOPT_CONFIG", library.dexpreopter.configPath)
 					}
+
+					entries.AddStrings("LOCAL_STATIC_JAVA_LIBRARIES", library.properties.Static_libs...)
 				},
 			},
 		})
@@ -407,6 +409,8 @@ func (app *AndroidApp) AndroidMkEntries() []android.AndroidMkEntries {
 				}
 
 				entries.SetOptionalPaths("LOCAL_SOONG_LINT_REPORTS", app.linter.reports)
+
+				entries.AddStrings("LOCAL_STATIC_JAVA_LIBRARIES", app.properties.Static_libs...)
 			},
 		},
 	}}
