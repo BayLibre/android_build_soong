@@ -46,6 +46,30 @@
       },
       "revId": "8c81305c80f74fcce3e8be8edbef8fb8919dd574",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22f1fd08_7168ccd8",
+        "filename": "java/aar.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-04-13T20:39:23Z",
+      "side": 0,
+      "message": "It turned out VSCode (which used `gofmt`) did the right thing. The misalignments came from having the comments added in between the fields.",
+      "parentUuid": "460e7cc9_6153e2f0",
+      "range": {
+        "startLine": 608,
+        "startChar": 5,
+        "endLine": 608,
+        "endChar": 12
+      },
+      "revId": "8c81305c80f74fcce3e8be8edbef8fb8919dd574",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
