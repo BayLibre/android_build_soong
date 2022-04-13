@@ -474,6 +474,16 @@ func (a *AndroidMkEntries) GetDistForGoals(mod blueprint.Module) []string {
 	return generateDistContributionsForMake(distContributions)
 }
 
+// LicenseMetadataForDist returns a string to declare license metadata for a
+// DistForGoals dist.
+func (a *AndroidMkEntries) LicenseMetadataForDist(dist string, metadata Path) string {
+	if strings.Contains(dist, ".PHONY") {
+		return ""
+	}
+	target := strings.Split(strings.Split(dist, ",")[2], ":")[0]
+	return fmt.Sprintf("$(if $(strip $(ALL_TARGETS.%s.META_LIC)),,$(eval ALL_TARGETS.%s.META_LIC := %s))\n", target, target, metadata)
+}
+
 // Write the license variables to Make for AndroidMkData.Custom(..) methods that do not call WriteAndroidMkData(..)
 // It's required to propagate the license metadata even for module types that have non-standard interfaces to Make.
 func (a *AndroidMkEntries) WriteLicenseVariables(w io.Writer) {
@@ -511,8 +521,16 @@ func (a *AndroidMkEntries) fillInEntries(ctx fillInEntriesContext, mod blueprint
 	a.Host_required = append(a.Host_required, amod.HostRequiredModuleNames()...)
 	a.Target_required = append(a.Target_required, amod.TargetRequiredModuleNames()...)
 
+	var metadata *Path
+	if ctx.ModuleHasProvider(mod, LicenseMetadataProvider) {
+		licenseMetadata := ctx.ModuleProvider(mod, LicenseMetadataProvider).(*LicenseMetadataInfo)
+		metadata = &licenseMetadata.LicenseMetadataPath
+	}
 	for _, distString := range a.GetDistForGoals(mod) {
 		fmt.Fprintf(&a.header, distString)
+		if metadata != nil {
+			fmt.Fprintf(&a.header, a.LicenseMetadataForDist(distString, *metadata))
+		}
 	}
 
 	fmt.Fprintln(&a.header, "\ninclude $(CLEAR_VARS)")
