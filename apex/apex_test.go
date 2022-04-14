@@ -5812,6 +5812,7 @@ func TestApexWithTestHelperApp(t *testing.T) {
 			name: "TesterHelpAppFoo",
 			srcs: ["foo/bar/MyClass.java"],
 			apex_available: [ "myapex" ],
+			platform_apis: true,
 		}
 
 	`)

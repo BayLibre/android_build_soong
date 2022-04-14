@@ -194,6 +194,7 @@ func TestAndroidTestHelperApp_LocalDisableTestConfig(t *testing.T) {
 		android_test_helper_app {
 			name: "foo",
 			srcs: ["a.java"],
+			sdk_version: "test_current",
 		}
 	`)
 
