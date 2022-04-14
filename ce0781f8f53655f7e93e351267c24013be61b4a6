@@ -52,6 +52,24 @@
       "parentUuid": "be779fff_2d9bc366",
       "revId": "ce0781f8f53655f7e93e351267c24013be61b4a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbaa6f18_3c0e2de9",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-04-14T20:25:04Z",
+      "side": 1,
+      "message": "Done in https://android-review.googlesource.com/c/platform/build/soong/+/2065271.",
+      "parentUuid": "0f972b50_95a42a50",
+      "revId": "ce0781f8f53655f7e93e351267c24013be61b4a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
