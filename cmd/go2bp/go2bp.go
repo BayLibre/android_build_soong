@@ -335,9 +335,9 @@ Usage: %s [--rewrite <pkg-prefix>=<replace>] [-exclude <package>] [-regen <file>
 	}
 
 	cmd := exec.Command("go", "list", "-json", "./...")
-	output, err := cmd.Output()
+	output, err := cmd.CombinedOutput()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Failed to dump the go packages: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Failed to dump the go packages: %v\n%s\n", err, output)
 		os.Exit(1)
 	}
 	decoder := json.NewDecoder(bytes.NewReader(output))
