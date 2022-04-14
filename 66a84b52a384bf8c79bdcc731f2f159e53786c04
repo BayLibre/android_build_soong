@@ -16,6 +16,23 @@
       "message": "Still a couple of TODOs left.",
       "revId": "66a84b52a384bf8c79bdcc731f2f159e53786c04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c66c54c_0dd6b458",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-14T07:31:02Z",
+      "side": 1,
+      "message": "Since you indicated that there are still a few TODOs left, I only reactively addressed your comments. Let me know when it\u0027s ready for another full review round.",
+      "revId": "66a84b52a384bf8c79bdcc731f2f159e53786c04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

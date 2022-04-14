@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf703e88_fd2f7edb",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-14T07:31:02Z",
+      "side": 1,
+      "message": "I\u0027m not a Go guru, so I am not an authority. Maybe look around the code base and check what is done in other places?",
+      "parentUuid": "5fb373c6_e9fcb51e",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 5
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3ba58dd_e4f9ecd9",
         "filename": "android/computed_properties.go",
         "patchSetId": 19
@@ -206,6 +230,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3332017_f7955a83",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-14T07:31:02Z",
+      "side": 1,
+      "message": "My guiding principle is that it\u0027s always easier to go from more restrictive to more permissive than the other way round. If this proves to be a problem, we can always relax it to !\u003d 1.",
+      "parentUuid": "6119150c_73013a77",
+      "range": {
+        "startLine": 133,
+        "startChar": 24,
+        "endLine": 133,
+        "endChar": 28
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e4aa498_b947ae4c",
@@ -243,6 +291,30 @@
       "side": 1,
       "message": "yeah the stupid thing I am doing is allowing compute() to return an string to report errors (because starlark, rightly doesn\u0027t allow raising errors) and the proper signature for compute() is\n(borrowing python syntax)\n  Primitive \u003d Union[int,  str, bool]\n  Result \u003d dict[str, \u0027Result\u0027 | Primitive]\n  Error \u003d NewType(\u0027Error\u0027, str)\n  def compute(ctx: struct) -\u003e (Result, Error)\n\nUsing a tuple now as the return type.",
       "parentUuid": "8e4aa498_b947ae4c",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 13
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d9ae629_add21414",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-14T07:31:02Z",
+      "side": 1,
+      "message": "Does it make sense to report an error *and* a return value?\n\nFWIW, the Bazel dialect of Starlark uses `fail(\"this is an error\")` to signal breakage so maybe it\u0027s better to use that here, too? The reason why I\u0027m not that insistent here is that the tuple is easy to convert to the Bazel fail() with a wrapper function.",
+      "parentUuid": "a10ae36f_20cab7b8",
       "range": {
         "startLine": 149,
         "startChar": 2,
@@ -419,6 +491,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ad53da3_8efb9765",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-14T07:31:02Z",
+      "side": 1,
+      "message": "I\u0027m fairly certain a panic is not something that should happen in Golang as response to malformed user input, regardless of what Blueprint does...",
+      "parentUuid": "4cc486c4_9805e45b",
+      "range": {
+        "startLine": 366,
+        "startChar": 25,
+        "endLine": 366,
+        "endChar": 30
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9f0c41d_c99c62de",
         "filename": "android/computed_properties.go",
         "patchSetId": 19
@@ -477,6 +573,30 @@
       "side": 1,
       "message": "Which method? Proptools.BoolPtr() ?\nIt can\u0027t be inlined because `value.(bool)` isn\u0027t addressable.\nI think it\u0027s comparable to the result of a function call - which I think GoLang could in future add some syntactic sugar to be made addressable, i.e. assign to a variable and take its address but it currently doesn\u0027t do that.",
       "parentUuid": "6e430999_10048a5c",
+      "range": {
+        "startLine": 387,
+        "startChar": 36,
+        "endLine": 387,
+        "endChar": 43
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "217dc92e_b7f944bb",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-04-14T07:31:02Z",
+      "side": 1,
+      "message": "Today I Learned, move along",
+      "parentUuid": "e420cfbf_02ca54dd",
       "range": {
         "startLine": 387,
         "startChar": 36,
