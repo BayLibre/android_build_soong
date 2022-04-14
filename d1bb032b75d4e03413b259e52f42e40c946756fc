@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fb373c6_e9fcb51e",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-14T05:19:16Z",
+      "side": 1,
+      "message": "Apologies to sound too pedantic. The value is garbage - it\u0027s never read (i.e. false would mean the same as true). I am even explicitly naming the singleton garbage value as `mapGarbageValue` (aside: C++ template parameters can be integer values - but that has a different semantics and Golang `map` doesn\u0027t support non-type for `A` or `B` in `map[A]B`)\nI do concede that I have seen `map[string]bool` being used as a \"set\" in a couple of places in the codebase and maybe for consistency sake I should conform.",
+      "parentUuid": "8ef848a1_e5d6f54e",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 5
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3ba58dd_e4f9ecd9",
         "filename": "android/computed_properties.go",
         "patchSetId": 19
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-08T12:36:27Z",
       "side": 1,
       "message": "nit: maybe \"the property `%s` does not exist\"",
+      "range": {
+        "startLine": 68,
+        "startChar": 16,
+        "endLine": 68,
+        "endChar": 18
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d75274c7_851c7d2c",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-14T05:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3ba58dd_e4f9ecd9",
       "range": {
         "startLine": 68,
         "startChar": 16,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44ba6be2_bbcc1ba5",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-14T05:19:16Z",
+      "side": 1,
+      "message": "well the error reporting mechanisms I have all do include blueprint file name, line number etc\nThe main reason I am using the \"useless\" \"script\" literal is because I am adding support for externalizable scripts (this made diffing much easier to the reviewer\u0027s eyes).\nBut thanks for the feedback, I will try to shove in something more useful than \"script\".",
+      "parentUuid": "963bc6c3_6e2b95dd",
+      "range": {
+        "startLine": 116,
+        "startChar": 44,
+        "endLine": 116,
+        "endChar": 50
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93c15203_f9fc4281",
@@ -100,6 +172,30 @@
       "writtenOn": "2022-04-08T12:36:27Z",
       "side": 1,
       "message": "nit: why not \"!\u003d 1\"? Then you can also avoid the Numparams() \u003d\u003d 1 condition in line 138 and ctx-less compute() functions are not that useful, are they?",
+      "range": {
+        "startLine": 133,
+        "startChar": 24,
+        "endLine": 133,
+        "endChar": 28
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6119150c_73013a77",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-14T05:19:16Z",
+      "side": 1,
+      "message": "The only place where I thought it useful was in unit testing - but I can always write `def compute(_)` instead of `def compute()`",
+      "parentUuid": "93c15203_f9fc4281",
       "range": {
         "startLine": 133,
         "startChar": 24,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a10ae36f_20cab7b8",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-14T05:19:16Z",
+      "side": 1,
+      "message": "yeah the stupid thing I am doing is allowing compute() to return an string to report errors (because starlark, rightly doesn\u0027t allow raising errors) and the proper signature for compute() is\n(borrowing python syntax)\n  Primitive \u003d Union[int,  str, bool]\n  Result \u003d dict[str, \u0027Result\u0027 | Primitive]\n  Error \u003d NewType(\u0027Error\u0027, str)\n  def compute(ctx: struct) -\u003e (Result, Error)\n\nUsing a tuple now as the return type.",
+      "parentUuid": "8e4aa498_b947ae4c",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 13
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6870ef7e_b8a88583",
@@ -146,6 +266,30 @@
       "writtenOn": "2022-04-08T12:36:27Z",
       "side": 1,
       "message": "nit: I guess 4 characters maybe more future-proof? (and if one writes a 10K line long Starlark snippet in a Blueprint file, they deserve some discomfort...)",
+      "range": {
+        "startLine": 162,
+        "startChar": 32,
+        "endLine": 162,
+        "endChar": 33
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "103e69a7_ed92fb2c",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-14T05:19:16Z",
+      "side": 1,
+      "message": "I was thinking one shouldn\u0027t be writing files that long. but yeah I will make it more flexible after all I already know how long the file is; a meta-formatted format string is fine in this case.",
+      "parentUuid": "6870ef7e_b8a88583",
       "range": {
         "startLine": 162,
         "startChar": 32,
@@ -202,6 +346,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71317538_92945a48",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-14T05:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ebd6a52_d98eb3e4",
+      "range": {
+        "startLine": 332,
+        "startChar": 1,
+        "endLine": 332,
+        "endChar": 15
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d726d041_a385c506",
@@ -215,6 +383,30 @@
       "writtenOn": "2022-04-08T12:36:27Z",
       "side": 1,
       "message": "What if e.g. `starlarkValue` is a bool but `t` is an Int64? It looks like then it\u0027ll try to shove the Boolean into the Int64 slot?",
+      "range": {
+        "startLine": 366,
+        "startChar": 25,
+        "endLine": 366,
+        "endChar": 30
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cc486c4_9805e45b",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-14T05:19:16Z",
+      "side": 1,
+      "message": "Yes I am letting that to be a runtime error. I added a unit test for one such type mismatch (and I think Go doesn\u0027t allow type conversion between string, bool and int)\nThis let type conversions bubble up as panic is also how blueprint handles Android.bp, e.g. https://cs.android.com/android/platform/superproject/+/master:build/blueprint/proptools/extend.go;l\u003d444?q\u003dextend.go\u0026ss\u003dandroid%2Fplatform%2Fsuperproject\nBut yes I agree I could be more gracefully handling it here.",
+      "parentUuid": "d726d041_a385c506",
       "range": {
         "startLine": 366,
         "startChar": 25,
@@ -261,6 +453,30 @@
       "writtenOn": "2022-04-08T12:36:27Z",
       "side": 1,
       "message": "nit: if you look at the implementation of these methods, they aren\u0027t very sophisticated so you may want to just inline them",
+      "range": {
+        "startLine": 387,
+        "startChar": 36,
+        "endLine": 387,
+        "endChar": 43
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e420cfbf_02ca54dd",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-14T05:19:16Z",
+      "side": 1,
+      "message": "Which method? Proptools.BoolPtr() ?\nIt can\u0027t be inlined because `value.(bool)` isn\u0027t addressable.\nI think it\u0027s comparable to the result of a function call - which I think GoLang could in future add some syntactic sugar to be made addressable, i.e. assign to a variable and take its address but it currently doesn\u0027t do that.",
+      "parentUuid": "6e430999_10048a5c",
       "range": {
         "startLine": 387,
         "startChar": 36,

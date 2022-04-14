@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a0d524b_5aa6599b",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-14T05:19:16Z",
+      "side": 1,
+      "message": "Note we are NOT always failing fast. LMK if fail-fast might be more desirable (fyi, unit testing is easier with exhaustive failures).",
+      "revId": "eae819bacf46c6195df6ee0d535e9b666f1cf19e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
