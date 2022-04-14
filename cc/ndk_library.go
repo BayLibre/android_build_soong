@@ -53,7 +53,8 @@ var (
 
 	abitidy = pctx.AndroidStaticRule("abitidy",
 		blueprint.RuleParams{
-			Command:     "$abitidy --all $flags -i $in -o $out",
+			Command: "$abitidy --all $flags --eliminate-duplicates " +
+				"--sort --prune-unreachable -i $in -o $out",
 			CommandDeps: []string{"$abitidy"},
 		}, "flags")
 
