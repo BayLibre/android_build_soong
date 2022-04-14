@@ -124,6 +124,7 @@ func TestDexpreoptEnabled(t *testing.T) {
 				android_test {
 					name: "foo",
 					srcs: ["a.java"],
+					platform_apis: true,
 				}`,
 			enabled: false,
 		},
@@ -133,6 +134,7 @@ func TestDexpreoptEnabled(t *testing.T) {
 				android_test_helper_app {
 					name: "foo",
 					srcs: ["a.java"],
+					platform_apis: true,
 				}`,
 			enabled: false,
 		},

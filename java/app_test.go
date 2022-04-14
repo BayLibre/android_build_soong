@@ -127,37 +127,64 @@ func TestAppSplits(t *testing.T) {
 }
 
 func TestPlatformAPIs(t *testing.T) {
-	testJava(t, `
-		android_app {
+	testCases := []struct {
+		name          string
+		bp            string
+		expectedError string
+	}{
+		{
+			name: "set platform_apis",
+			bp: `android_app {
 			name: "foo",
 			srcs: ["a.java"],
 			platform_apis: true,
-		}
-	`)
-
-	testJava(t, `
-		android_app {
+		}`,
+		}, {
+			name: "set sdk_version",
+			bp: `android_app {
 			name: "foo",
 			srcs: ["a.java"],
 			sdk_version: "current",
-		}
-	`)
-
-	testJavaError(t, "This module has conflicting settings. sdk_version is empty, which means that this module is build against platform APIs. However platform_apis is not set to true", `
-		android_app {
+		}`,
+		}, {
+			name: "missing platform_apis and sdk_version",
+			bp: `android_app {
 			name: "bar",
 			srcs: ["b.java"],
-		}
-	`)
-
-	testJavaError(t, "This module has conflicting settings. sdk_version is not empty, which means this module cannot use platform APIs. However platform_apis is set to true.", `
-		android_app {
+		}`,
+			expectedError: "This module has conflicting settings. sdk_version is empty, which means that this module is build against platform APIs. However platform_apis is not set to true",
+		}, {
+			name: "set both platform_apis and sdk_version in android_app",
+			bp: `android_app {
 			name: "bar",
 			srcs: ["b.java"],
 			sdk_version: "system_current",
 			platform_apis: true,
-		}
-	`)
+		}`,
+			expectedError: "This module has conflicting settings. sdk_version is not empty, which means this module cannot use platform APIs. However platform_apis is set to true.",
+		}, {
+			name: "set both platform_apis and sdk_version in android_test",
+			bp: `android_test {
+			name: "bar",
+			srcs: ["test.java"],
+			sdk_version: "system_current",
+			platform_apis: true,
+		}`,
+			expectedError: "This module has conflicting settings. sdk_version is not empty, which means this module cannot use platform APIs. However platform_apis is set to true.",
+		},
+	}
+
+	for _, test := range testCases {
+		t.Run(test.name, func(t *testing.T) {
+			errorHandler := android.FixtureExpectsNoErrors
+			if test.expectedError != "" {
+				errorHandler = android.FixtureExpectsAtLeastOneErrorMatchingPattern(test.expectedError)
+			}
+			android.GroupFixturePreparers(
+				prepareForJavaTest).
+				ExtendWithErrorHandler(errorHandler).RunTestWithBp(t, test.bp)
+		})
+	}
 }
 
 func TestAndroidAppLinkType(t *testing.T) {
@@ -2072,12 +2099,14 @@ func TestOverrideAndroidAppDependency(t *testing.T) {
 			name: "baz",
 			srcs: ["b.java"],
 			instrumentation_for: "foo",
+			platform_apis: true,
 		}
 
 		android_test {
 			name: "qux",
 			srcs: ["b.java"],
 			instrumentation_for: "bar",
+			platform_apis: true,
 		}
 		`)
 
@@ -2115,6 +2144,7 @@ func TestOverrideAndroidTest(t *testing.T) {
 			name: "foo_test",
 			srcs: ["b.java"],
 			instrumentation_for: "foo",
+			platform_apis: true,
 		}
 
 		override_android_test {
@@ -2194,6 +2224,7 @@ func TestAndroidTest_FixTestConfig(t *testing.T) {
 			name: "foo_test",
 			srcs: ["b.java"],
 			instrumentation_for: "foo",
+			platform_apis: true,
 		}
 
 		android_test {
@@ -2201,6 +2232,7 @@ func TestAndroidTest_FixTestConfig(t *testing.T) {
 			srcs: ["b.java"],
 			package_name: "com.android.bar.test",
 			instrumentation_for: "foo",
+			platform_apis: true,
 		}
 
 		override_android_test {
