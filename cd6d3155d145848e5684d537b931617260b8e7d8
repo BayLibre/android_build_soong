@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3867906f_03f32261",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1433,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-14T20:13:57Z",
+      "side": 1,
+      "message": "You want the java fuzzer module to end up here.  That means implementing cc.Sanitizeable on the java fuzzer module, and having it return true for IsSanitizerEnabled(\"asan\") and IsSanitizerEnabled(\"fuzzer\")",
+      "revId": "cd6d3155d145848e5684d537b931617260b8e7d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51ee3b69_0135ffc8",
+        "filename": "java/fuzz.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-14T20:13:57Z",
+      "side": 1,
+      "message": "These variations haven\u0027t been created yet when this is called, sanitizerDepsMutator is a \"PostDeps\" mutator.  Leave them out, and then when sanitizerDepsMutator calls CreateVariations(\"\", \"asan\") on the JNI library and then CreateVariations(\"asan\") on the fuzzer module the existing dependency will be rewritten onto the JNI library\u0027s matching \"asan\" variation.",
+      "range": {
+        "startLine": 58,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 111
+      },
+      "revId": "cd6d3155d145848e5684d537b931617260b8e7d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
