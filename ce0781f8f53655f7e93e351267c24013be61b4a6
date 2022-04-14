@@ -34,6 +34,24 @@
       "parentUuid": "f555b58e_53bd2e63",
       "revId": "ce0781f8f53655f7e93e351267c24013be61b4a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f972b50_95a42a50",
+        "filename": "java/aar.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1932329
+      },
+      "writtenOn": "2022-04-14T13:57:26Z",
+      "side": 1,
+      "message": "Update: I think we should just update the docs for that too. It seems like it has defaulted to SdkPrivate for a long time now, so the docs are probably just wrong. Here\u0027s a link from an old version of the sdk_version specification code (https://source.corp.google.com/rvc-arc/build/soong/java/sdk.go;l\u003d270;bpv\u003d1;bpt\u003d0) where it does the same thing, and [`java/base.go`](https://cs.android.com/android/platform/superproject/+/master:build/soong/java/base.go;l\u003d630;drc\u003d7137c9f8df7094a992ca89247b363a57fa56fe51;bpv\u003d1;bpt\u003d0) has been doing the same thing for two years now.",
+      "parentUuid": "be779fff_2d9bc366",
+      "revId": "ce0781f8f53655f7e93e351267c24013be61b4a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
