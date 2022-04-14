@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3160cb2c_2c08d412",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380243
+      },
+      "writtenOn": "2022-04-14T11:17:25Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with the details of the build system, but the idea seems good.",
+      "revId": "2d407633ae8fbc0e513c53aa0e70dbb379eed48b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
