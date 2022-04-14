@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de5bb8db_3ad8ab26",
+        "filename": "cmd/go2bp/go2bp.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-04-14T16:40:17Z",
+      "side": 1,
+      "message": "This may include non-json output in line 343 (if `go list` ever prints a warning/etc to stderr without exiting with an error).\n\nWith `Output()` we should be able to get the stderr too:\n\n```\nOutput runs the command and returns its standard output. Any returned error will usually be of type *ExitError. If c.Stderr was nil, Output populates ExitError.Stderr.\n```\n\nUnfortunately `ExitError` doesn\u0027t include `Stderr` by default in its `Error()` method, so we\u0027d need to cast/extract it ourselves.",
+      "range": {
+        "startLine": 338,
+        "startChar": 20,
+        "endLine": 338,
+        "endChar": 34
+      },
+      "revId": "2d0cb87c0e14293d2dc7eeb848033065146d572b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
