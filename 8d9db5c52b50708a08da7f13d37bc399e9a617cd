@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b3aef7_8e3f39e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-14T21:58:58Z",
+      "side": 1,
+      "message": "This is expensive because it requires reparsing all the Android.mk files any time you modify an Android.bp file.  I think this information is already available through module_bp_java_deps.json, which is generated directly by Soong.  Is that sufficient for your use case?",
+      "revId": "8d9db5c52b50708a08da7f13d37bc399e9a617cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
