@@ -683,16 +683,19 @@ func TestDefaults(t *testing.T) {
 			name: "atestOptimize",
 			defaults: ["defaults"],
 			optimize: {enabled: true},
+			platform_apis: true,
 		}
 
 		android_test {
 			name: "atestNoOptimize",
 			defaults: ["defaults"],
+			platform_apis: true,
 		}
 
 		android_test {
 			name: "atestDefault",
 			srcs: ["a.java"],
+			platform_apis: true,
 		}
 		`)
 
