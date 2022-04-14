@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "857c52f3_5a52b4a0",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2022-04-14T00:53:30Z",
+      "side": 1,
+      "message": "Suggest use this one instead.\n\nLOCAL_STATIC_JAVA_LIBRARIES\n\nhttps://source.corp.google.com/eureka_internal/build/core/clear_vars.mk;l\u003d29",
+      "range": {
+        "startLine": 126,
+        "startChar": 25,
+        "endLine": 126,
+        "endChar": 47
+      },
+      "revId": "e244910a9542a48f65bfd986f72a429c49fe23cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
