@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbe25bfa_278bae05",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-14T16:27:18Z",
+      "side": 1,
+      "message": "Would it work to add FORCE_BUILD_LLVM_COMPONENTS\u003dtrue to the BoardConfig.mk?",
+      "revId": "104f041281b147f72b31e56a6974f092ffca5ae2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
