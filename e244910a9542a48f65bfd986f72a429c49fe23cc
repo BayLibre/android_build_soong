@@ -22,6 +22,30 @@
       },
       "revId": "e244910a9542a48f65bfd986f72a429c49fe23cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a85ef6d_84948740",
+        "filename": "java/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1308044
+      },
+      "writtenOn": "2022-04-14T00:55:20Z",
+      "side": 1,
+      "message": "Or this link.\n\nhttps://source.corp.google.com/aosp-master/build/soong/androidmk/androidmk/android.go;l\u003d168?q\u003dLOCAL_STATIC_JAVA_LIBRARIES",
+      "parentUuid": "857c52f3_5a52b4a0",
+      "range": {
+        "startLine": 126,
+        "startChar": 25,
+        "endLine": 126,
+        "endChar": 47
+      },
+      "revId": "e244910a9542a48f65bfd986f72a429c49fe23cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
