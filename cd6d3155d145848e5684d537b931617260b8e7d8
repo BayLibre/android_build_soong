@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d1b06d9_e31e6c4c",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 1433,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-15T18:02:14Z",
+      "side": 1,
+      "message": "If you\u0027re still ending up with dependencies on the unsanitized variants of the library that suggests this is not getting called on your java fuzzer module, either because the java fuzzer module doesn\u0027t implement cc.Sanitizeable correctly, or more likely because IsSanitizerEnabled is returning false.\n\nYou can verify the first at compile time by adding a compile time type assertion next to your implementation of cc.Sanitizeable:\n\nvar _ cc.Sanitizeable \u003d (*JavaFuzzLibrary)(nil)",
+      "parentUuid": "3867906f_03f32261",
+      "revId": "cd6d3155d145848e5684d537b931617260b8e7d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "51ee3b69_0135ffc8",
         "filename": "java/fuzz.go",
         "patchSetId": 6
