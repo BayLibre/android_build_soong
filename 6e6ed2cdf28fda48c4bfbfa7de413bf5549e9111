@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "726669bd_79c64f18",
+        "filename": "bp2build/cc_prebuilt_library_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-15T13:18:33Z",
+      "side": 1,
+      "message": "hmm, the difference in includes between these is unexpected, can you file a bug about handling includes for `prebuilt_library_shared`?",
+      "range": {
+        "startLine": 113,
+        "startChar": 34,
+        "endLine": 113,
+        "endChar": 35
+      },
+      "revId": "6e6ed2cdf28fda48c4bfbfa7de413bf5549e9111",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70af65cf_8d1d12b9",
+        "filename": "bp2build/cc_prebuilt_library_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-15T13:18:33Z",
+      "side": 1,
+      "message": "Description and/or test name here (and below) mentioning this is expected to be an error/why would be helpful in debuggin in the future",
+      "range": {
+        "startLine": 122,
+        "startChar": 61,
+        "endLine": 122,
+        "endChar": 67
+      },
+      "revId": "6e6ed2cdf28fda48c4bfbfa7de413bf5549e9111",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad9c2f5a_60f4acec",
+        "filename": "bp2build/cc_prebuilt_library_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-15T13:18:33Z",
+      "side": 1,
+      "message": "Can you add a portion of the expected error here and below?",
+      "range": {
+        "startLine": 138,
+        "startChar": 27,
+        "endLine": 138,
+        "endChar": 29
+      },
+      "revId": "6e6ed2cdf28fda48c4bfbfa7de413bf5549e9111",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a418ea2f_a4b541e1",
         "filename": "cc/bp2build.go",
         "patchSetId": 6
