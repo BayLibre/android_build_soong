@@ -34,6 +34,24 @@
       "parentUuid": "16b3aef7_8e3f39e1",
       "revId": "8d9db5c52b50708a08da7f13d37bc399e9a617cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26fb9bdb_4f25250a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1890551
+      },
+      "writtenOn": "2022-04-15T03:35:55Z",
+      "side": 1,
+      "message": "I wonder if you want me to add the information into module_bp_java_deps.json? please correct me if I misunderstand.",
+      "parentUuid": "a3f02144_116b5fc0",
+      "revId": "8d9db5c52b50708a08da7f13d37bc399e9a617cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
