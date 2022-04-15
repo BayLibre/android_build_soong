@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd6e0da9_11b8a1e0",
+        "filename": "bp2build/cc_prebuilt_library_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-04-15T14:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "726669bd_79c64f18",
+      "range": {
+        "startLine": 113,
+        "startChar": 34,
+        "endLine": 113,
+        "endChar": 35
+      },
+      "revId": "6e6ed2cdf28fda48c4bfbfa7de413bf5549e9111",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70af65cf_8d1d12b9",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-15T13:18:33Z",
       "side": 1,
       "message": "Description and/or test name here (and below) mentioning this is expected to be an error/why would be helpful in debuggin in the future",
+      "range": {
+        "startLine": 122,
+        "startChar": 61,
+        "endLine": 122,
+        "endChar": 67
+      },
+      "revId": "6e6ed2cdf28fda48c4bfbfa7de413bf5549e9111",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bdf4b25_68dbec40",
+        "filename": "bp2build/cc_prebuilt_library_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-04-15T14:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70af65cf_8d1d12b9",
       "range": {
         "startLine": 122,
         "startChar": 61,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "472e4794_64dbda98",
+        "filename": "bp2build/cc_prebuilt_library_conversion_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-04-15T14:32:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad9c2f5a_60f4acec",
+      "range": {
+        "startLine": 138,
+        "startChar": 27,
+        "endLine": 138,
+        "endChar": 29
+      },
+      "revId": "6e6ed2cdf28fda48c4bfbfa7de413bf5549e9111",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a418ea2f_a4b541e1",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-04-14T22:00:09Z",
       "side": 1,
       "message": "typo?",
+      "range": {
+        "startLine": 209,
+        "startChar": 72,
+        "endLine": 209,
+        "endChar": 76
+      },
+      "revId": "6e6ed2cdf28fda48c4bfbfa7de413bf5549e9111",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c28ca3e_a981dbf2",
+        "filename": "cc/bp2build.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2022-04-15T14:32:20Z",
+      "side": 1,
+      "message": "Ah yeah, I just cut-pasted and didn\u0027t notice that",
+      "parentUuid": "a418ea2f_a4b541e1",
       "range": {
         "startLine": 209,
         "startChar": 72,
