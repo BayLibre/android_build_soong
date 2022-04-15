@@ -52,6 +52,24 @@
       "parentUuid": "a3f02144_116b5fc0",
       "revId": "8d9db5c52b50708a08da7f13d37bc399e9a617cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82542205_f9fcabbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-15T05:29:47Z",
+      "side": 1,
+      "message": "Yes, it would be much cheaper to add to module_bp_java_deps.json",
+      "parentUuid": "26fb9bdb_4f25250a",
+      "revId": "8d9db5c52b50708a08da7f13d37bc399e9a617cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
