@@ -16,6 +16,24 @@
       "message": "This is expensive because it requires reparsing all the Android.mk files any time you modify an Android.bp file.  I think this information is already available through module_bp_java_deps.json, which is generated directly by Soong.  Is that sufficient for your use case?",
       "revId": "8d9db5c52b50708a08da7f13d37bc399e9a617cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3f02144_116b5fc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1890551
+      },
+      "writtenOn": "2022-04-15T02:05:28Z",
+      "side": 1,
+      "message": "Thanks for reviewing! `module_bp_java_deps.json` is not sufficient since it merges `static_libs` and `libs` into dependencies. We want to distinguish them. I wonder if you have any guidance on this case?",
+      "parentUuid": "16b3aef7_8e3f39e1",
+      "revId": "8d9db5c52b50708a08da7f13d37bc399e9a617cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
