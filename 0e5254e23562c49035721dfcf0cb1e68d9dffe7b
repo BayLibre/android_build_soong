@@ -34,6 +34,24 @@
       "parentUuid": "1986c34a_12b15695",
       "revId": "0e5254e23562c49035721dfcf0cb1e68d9dffe7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8668041b_33d17471",
+        "filename": "android/androidmk.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-15T17:54:43Z",
+      "side": 1,
+      "message": "I\u0027m not sure how singletons are related here, this is all specific to modules.  Making assumptions about how the strings returned by GetDistForGoals are formatted is going to be delicate, especially without any tests.\n\nIt should be easy enough for a.getDistContributes to write the license metadata file into the distContributions type, and then generateDistContributionsForMake will have all the information it needs to add the META_LIC assignment alongside the rest of its output.",
+      "parentUuid": "bd3a5f51_09fcb810",
+      "revId": "0e5254e23562c49035721dfcf0cb1e68d9dffe7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
