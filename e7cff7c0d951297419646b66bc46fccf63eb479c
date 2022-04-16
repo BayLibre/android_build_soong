@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d635b6_29c3565f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-04-16T00:17:43Z",
+      "side": 1,
+      "message": "Export Java library dependency information",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "e7cff7c0d951297419646b66bc46fccf63eb479c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eed52314_f683bf23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-04-16T00:17:43Z",
+      "side": 1,
+      "message": "nit: Remove the line break.",
+      "range": {
+        "startLine": 9,
+        "startChar": 104,
+        "endLine": 9,
+        "endChar": 105
+      },
+      "revId": "e7cff7c0d951297419646b66bc46fccf63eb479c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65bbc4d7_c00a3466",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-04-16T00:17:43Z",
+      "side": 1,
+      "message": "nit: Java library and Android app modules",
+      "range": {
+        "startLine": 9,
+        "startChar": 34,
+        "endLine": 9,
+        "endChar": 76
+      },
+      "revId": "e7cff7c0d951297419646b66bc46fccf63eb479c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d87643ee_2cd135a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1480888
+      },
+      "writtenOn": "2022-04-16T00:17:43Z",
+      "side": 1,
+      "message": "Why do we need static libs for the runtime environment? They\u0027re baked into the jar. If you\u0027re exporting static_libs because they themselves could have a dependency on libraries that need to be on the classpath then mention this for the reader of the change:\n\n```\nNote that while static libraries don\u0027t need to be on the Java classpath these modules could have non-static library dependencies that do need to be present.\n```",
+      "range": {
+        "startLine": 10,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 73
+      },
+      "revId": "e7cff7c0d951297419646b66bc46fccf63eb479c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
