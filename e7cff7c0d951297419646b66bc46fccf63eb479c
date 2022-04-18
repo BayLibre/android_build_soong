@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65dd1393_7eafb657",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1890551
+      },
+      "writtenOn": "2022-04-18T02:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9d635b6_29c3565f",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "e7cff7c0d951297419646b66bc46fccf63eb479c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eed52314_f683bf23",
@@ -70,6 +94,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9680bd2f_6f044ebc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1890551
+      },
+      "writtenOn": "2022-04-18T02:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65bbc4d7_c00a3466",
+      "range": {
+        "startLine": 9,
+        "startChar": 34,
+        "endLine": 9,
+        "endChar": 76
+      },
+      "revId": "e7cff7c0d951297419646b66bc46fccf63eb479c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "139f9731_79a4b559",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1890551
+      },
+      "writtenOn": "2022-04-18T02:31:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eed52314_f683bf23",
+      "range": {
+        "startLine": 9,
+        "startChar": 104,
+        "endLine": 9,
+        "endChar": 105
+      },
+      "revId": "e7cff7c0d951297419646b66bc46fccf63eb479c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d87643ee_2cd135a3",
@@ -83,6 +155,30 @@
       "writtenOn": "2022-04-16T00:17:43Z",
       "side": 1,
       "message": "Why do we need static libs for the runtime environment? They\u0027re baked into the jar. If you\u0027re exporting static_libs because they themselves could have a dependency on libraries that need to be on the classpath then mention this for the reader of the change:\n\n```\nNote that while static libraries don\u0027t need to be on the Java classpath these modules could have non-static library dependencies that do need to be present.\n```",
+      "range": {
+        "startLine": 10,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 73
+      },
+      "revId": "e7cff7c0d951297419646b66bc46fccf63eb479c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e85d3bc6_c61df2db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1890551
+      },
+      "writtenOn": "2022-04-18T02:31:37Z",
+      "side": 1,
+      "message": "Added the explanation.",
+      "parentUuid": "d87643ee_2cd135a3",
       "range": {
         "startLine": 10,
         "startChar": 54,
