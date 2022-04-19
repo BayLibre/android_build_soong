@@ -34,6 +34,24 @@
       "parentUuid": "8d685cdd_8d1558a6",
       "revId": "ac4a9595715861c7cc607af5543370da3632366a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bddbc16_713fb226",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-04-19T14:03:30Z",
+      "side": 1,
+      "message": "Resolving: this change has been merged in internal-master, but we still need to submit this (with a Merged-In tag) because there\u0027s another CL that builds on this that requires a same-topic AOSP change to platform/system/apex.",
+      "parentUuid": "269e1dae_32763b62",
+      "revId": "ac4a9595715861c7cc607af5543370da3632366a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
