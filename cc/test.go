@@ -30,7 +30,7 @@ type TestLinkerProperties struct {
 	// if set, build against the gtest library. Defaults to true.
 	Gtest *bool
 
-	// if set, use the isolated gtest runner. Defaults to false.
+	// if set, use the isolated gtest runner. Defaults to true if gtest is also true, false otherwise.
 	Isolated *bool
 }
 
@@ -256,6 +256,13 @@ func (test *testDecorator) gtest() bool {
 	return BoolDefault(test.LinkerProperties.Gtest, true)
 }
 
+func (test *testDecorator) isolated() bool {
+	if test.gtest() {
+		return BoolDefault(test.LinkerProperties.Isolated, true)
+	}
+	return BoolDefault(test.LinkerProperties.Isolated, false)
+}
+
 func (test *testDecorator) testBinary() bool {
 	return true
 }
@@ -288,7 +295,7 @@ func (test *testDecorator) linkerDeps(ctx BaseModuleContext, deps Deps) Deps {
 	if test.gtest() {
 		if ctx.useSdk() && ctx.Device() {
 			deps.StaticLibs = append(deps.StaticLibs, "libgtest_main_ndk_c++", "libgtest_ndk_c++")
-		} else if BoolDefault(test.LinkerProperties.Isolated, false) {
+		} else if test.isolated() {
 			deps.StaticLibs = append(deps.StaticLibs, "libgtest_isolated_main")
 			// The isolated library requires liblog, but adding it
 			// as a static library means unit tests cannot override
@@ -424,7 +431,7 @@ func (test *testBinary) install(ctx ModuleContext, file android.Path) {
 		var options []tradefed.Option
 		configs = append(configs, tradefed.Object{"target_preparer", "com.android.tradefed.targetprep.StopServicesSetup", options})
 	}
-	if Bool(test.testDecorator.LinkerProperties.Isolated) {
+	if test.isolated() {
 		configs = append(configs, tradefed.Option{Name: "not-shardable", Value: "true"})
 	}
 	if test.Properties.Test_options.Run_test_as != nil {
