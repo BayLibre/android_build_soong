@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "709c1177_b0bde4d7",
+        "filename": "cc/ndk_library.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1625880
+      },
+      "writtenOn": "2022-04-19T15:47:56Z",
+      "side": 1,
+      "message": "The --all flag already implies the flags you\u0027ve added here. See go/abitidy.\n\nIf I\u0027ve messed this up, please let me know. Thanks.\n\nOr is $flags turning off some things?",
+      "range": {
+        "startLine": 56,
+        "startChar": 35,
+        "endLine": 57,
+        "endChar": 31
+      },
+      "revId": "9c062a4ba7546524a9645beb15ad531ea268da71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
