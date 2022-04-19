@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a1ae8d4_b5ee0fdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2022-04-19T23:15:58Z",
+      "side": 1,
+      "message": "Started heavy presubmit run at https://android-build.googleplex.com/builds/abtd/run/L64900000954157535 to build a few internal coverage targets.",
+      "revId": "02730b93b2e7d16d186527d4df47cfd702e382e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
