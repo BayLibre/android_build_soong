@@ -213,12 +213,6 @@ import (
 // writes out a few DEXPREOPT_IMAGE_* variables for Make; these variables contain boot image names,
 // paths and so on.
 //
-// 2.5. JIT-Zygote configuration
-// -----------------------------
-//
-// One special configuration is JIT-Zygote build, when the primary ART image is used for compiling
-// apps instead of the Framework boot image extension (see DEXPREOPT_USE_ART_IMAGE and UseArtImage).
-//
 
 var artApexNames = []string{
 	"com.android.art",
