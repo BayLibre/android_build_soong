@@ -22,6 +22,30 @@
       },
       "revId": "77b99b097bccd034d9fcbfc67db5c38d1f724cdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c32f4a_815d5b69",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-04-20T11:11:47Z",
+      "side": 0,
+      "message": "Done (but it\u0027s a much larger change, and potentially more risky).",
+      "parentUuid": "d72c5ffc_3dfef996",
+      "range": {
+        "startLine": 263,
+        "startChar": 14,
+        "endLine": 263,
+        "endChar": 32
+      },
+      "revId": "77b99b097bccd034d9fcbfc67db5c38d1f724cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
