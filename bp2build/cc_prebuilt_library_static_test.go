@@ -74,6 +74,35 @@ cc_prebuilt_library_static {
 		})
 }
 
+func TestPrebuiltLibraryStaticAdditionalAttrs(t *testing.T) {
+	runBp2BuildTestCaseSimple(t,
+		bp2buildTestCase{
+			description:                "static prebuilt library additional attributes",
+			moduleTypeUnderTest:        "cc_prebuilt_library_static",
+			moduleTypeUnderTestFactory: cc.PrebuiltStaticLibraryFactory,
+			filesystem: map[string]string{
+				"libf.so":    "",
+				"testdir/1/": "",
+				"testdir/2/": "",
+			},
+			blueprint: `
+cc_prebuilt_library_static {
+	name: "libtest",
+	srcs: ["libf.so"],
+	export_include_dirs: ["testdir/1/"],
+	export_system_include_dirs: ["testdir/2/"],
+	bazel_module: { bp2build_available: true },
+}`,
+			expectedBazelTargets: []string{
+				makeBazelTarget("prebuilt_library_static", "libtest", attrNameToString{
+					"static_library":         `"libf.so"`,
+					"export_includes":        `["testdir/1/"]`,
+					"export_system_includes": `["testdir/2/"]`,
+				}),
+			},
+		})
+}
+
 func TestStaticPrebuiltLibraryStaticStanzaFails(t *testing.T) {
 	runBp2BuildTestCaseSimple(t,
 		bp2buildTestCase{

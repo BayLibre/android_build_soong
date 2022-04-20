@@ -109,9 +109,10 @@ cc_prebuilt_library {
 					"export_includes":        `["testdir/1/"]`,
 					"export_system_includes": `["testdir/2/"]`,
 				}),
-				// TODO(b/229374533): When fixed, update this test
 				makeBazelTarget("prebuilt_library_shared", "libtest", attrNameToString{
-					"shared_library": `"libf.so"`,
+					"shared_library":         `"libf.so"`,
+					"export_includes":        `["testdir/1/"]`,
+					"export_system_includes": `["testdir/2/"]`,
 				}),
 			},
 		})

@@ -61,6 +61,34 @@ cc_prebuilt_library_shared {
 		})
 }
 
+func TestPrebuiltLibrarySharedAdditionalAttrs(t *testing.T) {
+	runBp2BuildTestCaseSimple(t,
+		bp2buildTestCase{
+			description:                "shared prebuilt library additional attributes",
+			moduleTypeUnderTest:        "cc_prebuilt_library_shared",
+			moduleTypeUnderTestFactory: cc.PrebuiltSharedLibraryFactory,
+			filesystem: map[string]string{
+				"libf.so":    "",
+				"testdir/1/": "",
+				"testdir/2/": "",
+			},
+			blueprint: `
+cc_prebuilt_library_shared {
+	name: "libtest",
+	srcs: ["libf.so"],
+	export_include_dirs: ["testdir/1/"],
+	export_system_include_dirs: ["testdir/2/"],
+	bazel_module: { bp2build_available: true },
+}`,
+			expectedBazelTargets: []string{
+				makeBazelTarget("prebuilt_library_shared", "libtest", attrNameToString{
+					"shared_library":         `"libf.so"`,
+					"export_includes":        `["testdir/1/"]`,
+					"export_system_includes": `["testdir/2/"]`,
+				}),
+			},
+		})
+}
 func TestSharedPrebuiltLibrarySharedStanzaFails(t *testing.T) {
 	runBp2BuildTestCaseSimple(t,
 		bp2buildTestCase{
