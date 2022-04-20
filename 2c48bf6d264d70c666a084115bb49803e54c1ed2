@@ -16,6 +16,24 @@
       "message": "I don\u0027t think this is ever getting called, it seems specific to how apexes want to enable sanitization for the whole apex.  I think you should always return true for \"asan\" and \"fuzzer\" in IsSanitizerEnabled.",
       "revId": "2c48bf6d264d70c666a084115bb49803e54c1ed2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f008e5_bf1343cc",
+        "filename": "java/fuzz.go",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-04-20T20:17:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b5cbf05_0fba15d3",
+      "revId": "2c48bf6d264d70c666a084115bb49803e54c1ed2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
