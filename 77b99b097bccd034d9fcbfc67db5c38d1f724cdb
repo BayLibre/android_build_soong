@@ -46,6 +46,30 @@
       },
       "revId": "77b99b097bccd034d9fcbfc67db5c38d1f724cdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e63310d_a1942040",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-04-20T13:04:16Z",
+      "side": 0,
+      "message": "Sure, but it\u0027s a cleanup topic anyway. Thanks.\n\nBtw, the build errors in presubmit show that there\u0027s one more reference to the boot image in build-art-target-golem in art/Android.mk to remove: https://android-build.googleplex.com/builds/pending/P33387758/aosp_bramble-userdebug/latest/view/logs/build_error.log",
+      "parentUuid": "b6c32f4a_815d5b69",
+      "range": {
+        "startLine": 263,
+        "startChar": 14,
+        "endLine": 263,
+        "endChar": 32
+      },
+      "revId": "77b99b097bccd034d9fcbfc67db5c38d1f724cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
