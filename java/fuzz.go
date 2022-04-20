@@ -32,9 +32,29 @@ func RegisterJavaFuzzBuildComponents(ctx android.RegistrationContext) {
 	ctx.RegisterSingletonType("java_fuzz_packaging", javaFuzzPackagingFactory)
 }
 
+type jniProperties struct {
+	// list of jni libs
+	Jni_libs []string
+
+	// sanitization
+	Sanitizers []string
+}
+
+var NameToSan = map[string]string{
+	"address": "asan",
+	"fuzzer":  "fuzzer",
+}
+
+var NameToSanType = map[string]cc.SanitizerType{
+	"address": cc.Asan,
+	"fuzzer":  cc.Fuzzer,
+}
+
 type JavaFuzzLibrary struct {
 	Library
 	fuzzPackagedModule fuzz.FuzzPackagedModule
+	jniProperties      jniProperties
+	jniFilePaths       android.Paths
 }
 
 func (j *JavaFuzzLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -65,6 +85,7 @@ func FuzzFactory() android.Module {
 	module := &JavaFuzzLibrary{}
 
 	module.addHostProperties()
+	module.AddProperties(&module.jniProperties)
 	module.Module.properties.Installable = proptools.BoolPtr(false)
 	module.AddProperties(&module.fuzzPackagedModule.FuzzProperties)
 
