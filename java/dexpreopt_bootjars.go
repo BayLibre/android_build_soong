@@ -213,12 +213,6 @@ import (
 // writes out a few DEXPREOPT_IMAGE_* variables for Make; these variables contain boot image names,
 // paths and so on.
 //
-// 2.5. JIT-Zygote configuration
-// -----------------------------
-//
-// One special configuration is JIT-Zygote build, when the primary ART image is used for compiling
-// apps instead of the Framework boot image extension (see DEXPREOPT_USE_ART_IMAGE and UseArtImage).
-//
 
 var artApexNames = []string{
 	"com.android.art",
@@ -457,11 +451,6 @@ type dexpreoptBootJars struct {
 	// DEXPREOPT_USE_ART_IMAGE=true).
 	defaultBootImage *bootImageConfig
 
-	// Other boot image configs (currently the list contains only the primary ART APEX image. It
-	// used to contain an experimental JIT-Zygote image (now replaced with the ART APEX image). In
-	// the future other boot image extensions may be added.
-	otherImages []*bootImageConfig
-
 	// Build path to a config file that Soong writes for Make (to be used in makefiles that install
 	// the default boot image).
 	dexpreoptConfigForMake android.WritablePath
@@ -494,8 +483,6 @@ func (d *dexpreoptBootJars) GenerateSingletonBuildActions(ctx android.SingletonC
 
 	defaultImageConfig := defaultBootImageConfig(ctx)
 	d.defaultBootImage = defaultImageConfig
-	artBootImageConfig := artBootImageConfig(ctx)
-	d.otherImages = []*bootImageConfig{artBootImageConfig}
 }
 
 // shouldBuildBootImages determines whether boot images should be built.
@@ -926,45 +913,40 @@ func (d *dexpreoptBootJars) MakeVars(ctx android.MakeVarsContext) {
 	}
 
 	image := d.defaultBootImage
-	if image != nil {
-		ctx.Strict("DEXPREOPT_IMAGE_PROFILE_BUILT_INSTALLED", image.profileInstalls.String())
-		if image.profileLicenseMetadataFile.Valid() {
-			ctx.Strict("DEXPREOPT_IMAGE_PROFILE_LICENSE_METADATA", image.profileLicenseMetadataFile.String())
-		}
-
-		global := dexpreopt.GetGlobalConfig(ctx)
-		dexPaths, dexLocations := bcpForDexpreopt(ctx, global.PreoptWithUpdatableBcp)
-		ctx.Strict("DEXPREOPT_BOOTCLASSPATH_DEX_FILES", strings.Join(dexPaths.Strings(), " "))
-		ctx.Strict("DEXPREOPT_BOOTCLASSPATH_DEX_LOCATIONS", strings.Join(dexLocations, " "))
-
-		var imageNames []string
-		// TODO: the primary ART boot image should not be exposed to Make, as it is installed in a
-		// different way as a part of the ART APEX. However, there is a special JIT-Zygote build
-		// configuration which uses the primary ART image instead of the Framework boot image
-		// extension, and it relies on the ART image being exposed to Make. To fix this, it is
-		// necessary to rework the logic in makefiles.
-		for _, current := range append(d.otherImages, image) {
-			imageNames = append(imageNames, current.name)
-			for _, variant := range current.variants {
-				suffix := ""
-				if variant.target.Os.Class == android.Host {
-					suffix = "_host"
-				}
-				sfx := variant.name + suffix + "_" + variant.target.Arch.ArchType.String()
-				ctx.Strict("DEXPREOPT_IMAGE_VDEX_BUILT_INSTALLED_"+sfx, variant.vdexInstalls.String())
-				ctx.Strict("DEXPREOPT_IMAGE_"+sfx, variant.imagePathOnHost.String())
-				ctx.Strict("DEXPREOPT_IMAGE_DEPS_"+sfx, strings.Join(variant.imagesDeps.Strings(), " "))
-				ctx.Strict("DEXPREOPT_IMAGE_BUILT_INSTALLED_"+sfx, variant.installs.String())
-				ctx.Strict("DEXPREOPT_IMAGE_UNSTRIPPED_BUILT_INSTALLED_"+sfx, variant.unstrippedInstalls.String())
-				if variant.licenseMetadataFile.Valid() {
-					ctx.Strict("DEXPREOPT_IMAGE_LICENSE_METADATA_"+sfx, variant.licenseMetadataFile.String())
-				}
-			}
-			imageLocationsOnHost, imageLocationsOnDevice := current.getAnyAndroidVariant().imageLocations()
-			ctx.Strict("DEXPREOPT_IMAGE_LOCATIONS_ON_HOST"+current.name, strings.Join(imageLocationsOnHost, ":"))
-			ctx.Strict("DEXPREOPT_IMAGE_LOCATIONS_ON_DEVICE"+current.name, strings.Join(imageLocationsOnDevice, ":"))
-			ctx.Strict("DEXPREOPT_IMAGE_ZIP_"+current.name, current.zip.String())
-		}
-		ctx.Strict("DEXPREOPT_IMAGE_NAMES", strings.Join(imageNames, " "))
+	if image == nil {
+		return
 	}
+
+	ctx.Strict("DEXPREOPT_IMAGE_PROFILE_BUILT_INSTALLED", image.profileInstalls.String())
+	if image.profileLicenseMetadataFile.Valid() {
+		ctx.Strict("DEXPREOPT_IMAGE_PROFILE_LICENSE_METADATA", image.profileLicenseMetadataFile.String())
+	}
+
+	global := dexpreopt.GetGlobalConfig(ctx)
+	dexPaths, dexLocations := bcpForDexpreopt(ctx, global.PreoptWithUpdatableBcp)
+	ctx.Strict("DEXPREOPT_BOOTCLASSPATH_DEX_FILES", strings.Join(dexPaths.Strings(), " "))
+	ctx.Strict("DEXPREOPT_BOOTCLASSPATH_DEX_LOCATIONS", strings.Join(dexLocations, " "))
+
+	for _, variant := range image.variants {
+		suffix := ""
+		if variant.target.Os.Class == android.Host {
+			suffix = "_host"
+		}
+		sfx := suffix + "_" + variant.target.Arch.ArchType.String()
+		ctx.Strict("DEXPREOPT_IMAGE_VDEX_BUILT_INSTALLED_"+sfx, variant.vdexInstalls.String())
+		ctx.Strict("DEXPREOPT_IMAGE_"+sfx, variant.imagePathOnHost.String())
+		ctx.Strict("DEXPREOPT_IMAGE_DEPS_"+sfx, strings.Join(variant.imagesDeps.Strings(), " "))
+		ctx.Strict("DEXPREOPT_IMAGE_BUILT_INSTALLED_"+sfx, variant.installs.String())
+		ctx.Strict("DEXPREOPT_IMAGE_UNSTRIPPED_BUILT_INSTALLED_"+sfx, variant.unstrippedInstalls.String())
+		if variant.licenseMetadataFile.Valid() {
+			ctx.Strict("DEXPREOPT_IMAGE_LICENSE_METADATA_"+sfx, variant.licenseMetadataFile.String())
+		}
+	}
+	imageLocationsOnHost, imageLocationsOnDevice := image.getAnyAndroidVariant().imageLocations()
+	ctx.Strict("DEXPREOPT_IMAGE_LOCATIONS_ON_HOST", strings.Join(imageLocationsOnHost, ":"))
+	ctx.Strict("DEXPREOPT_IMAGE_LOCATIONS_ON_DEVICE", strings.Join(imageLocationsOnDevice, ":"))
+	ctx.Strict("DEXPREOPT_IMAGE_ZIP", image.zip.String())
+
+	// There used to be multiple images for JIT-Zygote mode, not there's only one.
+	ctx.Strict("DEXPREOPT_IMAGE_NAMES", image.name)
 }
