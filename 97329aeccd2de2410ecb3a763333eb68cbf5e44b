@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b17d6428_abd85189",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1887575
+      },
+      "writtenOn": "2022-04-20T18:48:33Z",
+      "side": 1,
+      "message": "Denylist tzdata and tz_version until they\u0027re updated and ready to be reenabled",
+      "revId": "97329aeccd2de2410ecb3a763333eb68cbf5e44b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
