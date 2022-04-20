@@ -76,8 +76,9 @@ func (tidy *tidyFeature) flags(ctx ModuleContext, flags Flags) Flags {
 	// the global WITH_TIDY or module 'tidy' property is true.
 	flags.Tidy = true
 
-	// If explicitly enabled, by global default or local tidy property,
+	// If explicitly enabled, by global WITH_TIDY or local tidy:true property,
 	// set flags.NeedTidyFiles to make this module depend on .tidy files.
+	// ALLOW_LOCAL_TIDY_TRUE is ignored.
 	if ctx.Config().ClangTidy() || Bool(tidy.Properties.Tidy) {
 		flags.NeedTidyFiles = true
 	}
