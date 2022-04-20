@@ -245,9 +245,6 @@ type Flags struct {
 
 // Properties used to compile all C or C++ modules
 type BaseProperties struct {
-	// Deprecated. true is the default, false is invalid.
-	Clang *bool `android:"arch_variant"`
-
 	// The API level that this module is built against. The APIs of this API level will be
 	// visible at build time, but use of any APIs newer than min_sdk_version will render the
 	// module unloadable on older devices.  In the future it will be possible to weakly-link new
@@ -1884,10 +1881,6 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	deps := c.depsToPaths(ctx)
 	if ctx.Failed() {
 		return
-	}
-
-	if c.Properties.Clang != nil && *c.Properties.Clang == false {
-		ctx.PropertyErrorf("clang", "false (GCC) is no longer supported")
 	}
 
 	flags := Flags{
