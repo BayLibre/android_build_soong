@@ -199,8 +199,9 @@ message ModuleTypeInfo {
     UNKNOWN = 0;
     SOONG = 1;
     MAKE = 2;
+    BAZEL = 3;
   }
-  // The build system, eg. Soong or Make.
+  // The build system, eg. Soong or Make or Bazel.
   optional BuildSystem build_system = 1 [default = UNKNOWN];
 
   // The module type, eg. java_library, cc_binary, and etc.
