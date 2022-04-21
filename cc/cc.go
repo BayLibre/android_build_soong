@@ -1790,6 +1790,10 @@ func (c *Module) maybeGenerateBazelActions(actx android.ModuleContext) bool {
 	// TODO(b/200841190): Support non-device OS in mixed builds.
 	if c.MixedBuildsEnabled(actx) && c.bazelHandler != nil {
 		bazelActionsUsed = c.bazelHandler.GenerateBazelBuildActions(actx, bazelModuleLabel)
+		c.logMixedBuilds(ctx, true)
+	} else {
+		c.logMixedBuilds(ctx, false)
+
 	}
 	return bazelActionsUsed
 }
