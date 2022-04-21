@@ -26,6 +26,10 @@ import (
 
 var soongMetricsOnceKey = NewOnceKey("soong metrics")
 
+//TODO(dacek@) - these should be hashsets
+var mixedBuildsDisabledModules = make(map[string]bool)
+var mixedBuildsEnabledModules = make(map[string]bool)
+
 type SoongMetrics struct {
 	Modules  int
 	Variants int
@@ -78,6 +82,23 @@ func collectMetrics(config Config, eventHandler metrics.EventHandler) *soong_met
 		}
 		metrics.Events = append(metrics.Events, &perfInfo)
 	}
+	mixedBuildsInfo := soong_metrics_proto.MixedBuildsInfo{}
+	for key, _ := range config.mixedBuildModules {
+		if _, ok := mixedBuildsEnabledModules[key]; ok {
+			module := soong_metrics_proto.MixedBuildModule{}
+			module.ModuleName = proto.String(key)
+			module.BuildSystem = proto.String("BAZEL") // proto.Uint32(soong_metrics_proto.ModuleTypeInfo_BuildSystem(soong_metrics_proto.ModuleTypeInfo_BuildSystem_value["BAZEL"]))
+			mixedBuildsInfo.Modules = append(mixedBuildsInfo.Modules, &module)
+		}
+		if _, ok := mixedBuildsDisabledModules[key]; ok {
+			module := soong_metrics_proto.MixedBuildModule{}
+			module.ModuleName = proto.String(key)
+			module.BuildSystem = proto.String("SOONG") //proto.Uint32(soong_metrics_proto.ModuleTypeInfo_BuildSystem(soong_metrics_proto.ModuleTypeInfo_BuildSystem_value["SOONG"]))
+			mixedBuildsInfo.Modules = append(mixedBuildsInfo.Modules, &module)
+		}
+
+	}
+	metrics.MixedBuildsInfo = &mixedBuildsInfo
 
 	return metrics
 }
@@ -95,4 +116,13 @@ func WriteMetrics(config Config, eventHandler metrics.EventHandler, metricsFile 
 	}
 
 	return nil
+}
+
+func LogMixedBuild(moduleName string, useBazel bool) {
+	if useBazel {
+		mixedBuildsEnabledModules[moduleName] = true
+	} else {
+		mixedBuildsDisabledModules[moduleName] = true
+	}
+
 }

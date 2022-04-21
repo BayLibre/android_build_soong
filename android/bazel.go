@@ -19,6 +19,7 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -361,7 +362,12 @@ func (b *BazelModuleBase) MixedBuildsEnabled(ctx ModuleContext) bool {
 		// variants of a cc_library.
 		return false
 	}
-	return !bp2buildAllowlist.mixedBuildsDisabled[ctx.Module().Name()]
+
+	mixedBuildEnabled := !bp2buildAllowlist.mixedBuildsDisabled[ctx.Module().Name()]
+	ctx.Config().mixedBuildModules[ctx.Module().Name()] = true
+	LogMixedBuild(ctx.Module().Name(), mixedBuildEnabled)
+
+	return mixedBuildEnabled
 }
 
 // ConvertedToBazel returns whether this module has been converted (with bp2build or manually) to Bazel.

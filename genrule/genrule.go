@@ -581,6 +581,7 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 	if g.MixedBuildsEnabled(ctx) {
 		bazelActionsUsed = g.GenerateBazelBuildActions(ctx, bazelModuleLabel)
 	}
+
 	if !bazelActionsUsed {
 		// For <= 6 outputs, just embed those directly in the users. Right now, that covers >90% of
 		// the genrules on AOSP. That will make things simpler to look at the graph in the common
