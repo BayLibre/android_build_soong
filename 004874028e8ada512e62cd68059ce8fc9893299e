@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "652db2e9_0ecc5ffe",
+        "filename": "java/fuzz.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-21T18:22:24Z",
+      "side": 1,
+      "message": "This is a data race, multiple JavaFuzzLibrary modules can be running this in parallel and modifying the same dependency.  This needs to be propagated by sanitizerDepsMutator.",
+      "revId": "004874028e8ada512e62cd68059ce8fc9893299e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
