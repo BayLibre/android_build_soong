@@ -26,6 +26,10 @@ import (
 
 var soongMetricsOnceKey = NewOnceKey("soong metrics")
 
+//TODO(dacek@) - these should be hashsets
+var mixedBuildsDisabledModules = make(map[string]struct{})
+var mixedBuildsEnabledModules = make(map[string]struct{})
+
 type SoongMetrics struct {
 	Modules  int
 	Variants int
@@ -78,6 +82,15 @@ func collectMetrics(config Config, eventHandler metrics.EventHandler) *soong_met
 		}
 		metrics.Events = append(metrics.Events, &perfInfo)
 	}
+	mixedBuildsInfo := soong_metrics_proto.MixedBuildsInfo{}
+	for module, _ := range mixedBuildsEnabledModules {
+		mixedBuildsInfo.MixedBuildEnabledModules = append(mixedBuildsInfo.MixedBuildEnabledModules, module)
+	}
+
+	for module, _ := range mixedBuildsDisabledModules {
+		mixedBuildsInfo.MixedBuildDisabledModules = append(mixedBuildsInfo.MixedBuildDisabledModules, module)
+	}
+	metrics.MixedBuildsInfo = &mixedBuildsInfo
 
 	return metrics
 }
@@ -95,4 +108,13 @@ func WriteMetrics(config Config, eventHandler metrics.EventHandler, metricsFile 
 	}
 
 	return nil
+}
+
+func LogMixedBuild(moduleName string, useBazel bool) {
+	if useBazel {
+		mixedBuildsEnabledModules[moduleName] = true
+	} else {
+		mixedBuildsDisabledModules[moduleName] = true
+	}
+
 }
