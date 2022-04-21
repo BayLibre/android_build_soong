@@ -33,6 +33,40 @@
       "message": "LGTM - deferring to Colin.",
       "revId": "a2d3b591b8c0d2944d16ed860ac28d71fc3598e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6886e302_eae89ec5",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-21T17:01:52Z",
+      "side": 1,
+      "message": "Update the comment to mention the backgrounding and the requirement to call waitForDist.",
+      "revId": "a2d3b591b8c0d2944d16ed860ac28d71fc3598e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ce2ba78_d16aeb49",
+        "filename": "ui/build/build.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-21T17:01:52Z",
+      "side": 1,
+      "message": "Same.",
+      "revId": "a2d3b591b8c0d2944d16ed860ac28d71fc3598e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
