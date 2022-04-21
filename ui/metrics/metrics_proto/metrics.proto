@@ -199,8 +199,9 @@ message ModuleTypeInfo {
     UNKNOWN = 0;
     SOONG = 1;
     MAKE = 2;
+    BAZEL = 3;
   }
-  // The build system, eg. Soong or Make.
+  // The build system, eg. Soong or Make or Bazel.
   optional BuildSystem build_system = 1 [default = UNKNOWN];
 
   // The module type, eg. java_library, cc_binary, and etc.
@@ -241,6 +242,9 @@ message SoongBuildMetrics {
 
   // Runtime metrics for soong_build execution.
   repeated PerfInfo events = 6;
+
+  // Mixed Builds information
+  optional MixedBuildsInfo = 7;
 }
 
 message ExpConfigFetcher {
@@ -260,4 +264,13 @@ message ExpConfigFetcher {
 
   // Time, in microseconds, taken by the expconfigfetcher
   optional uint64 micros = 3;
+}
+
+message MixedBuildsInfo{
+  repeated MixedBuildModule module= 1;
+}
+
+message MixedBuildModule{
+  optional string module_name = 1;
+  optional ModuleTypeInfo.BuildSystem build_system = 2;
 }
