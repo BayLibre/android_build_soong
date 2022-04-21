@@ -361,7 +361,22 @@ func (b *BazelModuleBase) MixedBuildsEnabled(ctx ModuleContext) bool {
 		// variants of a cc_library.
 		return false
 	}
-	return !bp2buildAllowlist.mixedBuildsDisabled[ctx.Module().Name()]
+
+	mixedBuildEnabled := !bp2buildAllowlist.mixedBuildsDisabled[ctx.Module().Name()]
+	logMixedBuild(ctx, mixedBuildEnabled)
+
+	return mixedBuildEnabled
+}
+
+func logMixedBuild(ctx ModuleContext, useBazel bool) {
+	moduleName := ctx.Module().Name()
+	config := ctx.Config()
+	if useBazel {
+		config.mixedBuildEnabledModules[moduleName] = struct{}{}
+	} else {
+		config.mixedBuildDisabledModules[moduleName] = struct{}{}
+	}
+
 }
 
 // ConvertedToBazel returns whether this module has been converted (with bp2build or manually) to Bazel.
