@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05cc2e95_e4a6c15d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-04-21T03:12:25Z",
+      "side": 1,
+      "message": "Please take a look again, I had to rename the source file: Bazel converter fails if src and name attributes have the same value.",
+      "revId": "fe118510297de80d59b2bf41d8b93582416b883d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
