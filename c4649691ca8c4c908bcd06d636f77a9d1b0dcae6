@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c2ef152_1250f6a2",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-04-21T21:00:54Z",
+      "side": 1,
+      "message": "I think what I\u0027m reading is:\n1. Create a singleton for this entitled \"BuildSystemStats\" or whatever jargon that gets hooked in somewhere during the analysis phase, defaulting to Soong for each. It could be as simple as a map for now. I\u0027ll need a pointer for where a good place to hook _all_ modules in resides (namely, #1 in your other comment - those that don\u0027t even call this. Is this the proper field to utilize? https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/metrics/metrics_proto/metrics.pb.go;l\u003d591;drc\u003d450b938185d40e82b0d28d8f2da134b035e72088;bpv\u003d1;bpt\u003d1 )\n2. MixedBuildsEnabled updates the value for passed keys wherever valid. I don\u0027t think this is an absurd side-effect, but we could also update it after a call if that\u0027s too \"intrusive\". (This would also allow us to do more than just \"ask\" for the log in the comment.)\n3. Write this out during the WriteMetricsMethod.",
+      "parentUuid": "36b319b5_62c041cf",
+      "revId": "c4649691ca8c4c908bcd06d636f77a9d1b0dcae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a460fc74_b9ec89b2",
         "filename": "android/bazel.go",
         "patchSetId": 1
@@ -65,6 +83,42 @@
       "writtenOn": "2022-04-21T20:06:24Z",
       "side": 1,
       "message": "you remarked offline that you were seeing an error with this; likely because of go\u0027s visibility controls.\n\nAny field / function is package-private if it starts with a lowercase letter, and package-public if with an uppercase letter.\n\nThus, renaming to `LogMixedBuilds` might fix your issue.",
+      "revId": "c4649691ca8c4c908bcd06d636f77a9d1b0dcae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2630243d_c49be3a7",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-04-21T21:00:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b890cd4c_b360ae3a",
+      "revId": "c4649691ca8c4c908bcd06d636f77a9d1b0dcae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7011084c_04c1c40e",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-04-21T21:00:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b890cd4c_b360ae3a",
       "revId": "c4649691ca8c4c908bcd06d636f77a9d1b0dcae6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
