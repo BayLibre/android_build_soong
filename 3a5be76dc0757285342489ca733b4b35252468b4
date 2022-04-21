@@ -16,6 +16,24 @@
       "message": "why remove this one?",
       "revId": "3a5be76dc0757285342489ca733b4b35252468b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e22e7a1e_fe23b1e3",
+        "filename": "apex/apex_test.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 5704,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-04-21T23:06:15Z",
+      "side": 0,
+      "message": "Since we\u0027re hardcoding __APEX_VERSION_PLACEHOLDER__ which apexer will substitute at ninja action execution time, we\u0027re no longer relying on the build_id.mk value. This makes the test redundant.",
+      "parentUuid": "59063f6d_f70c646f",
+      "revId": "3a5be76dc0757285342489ca733b4b35252468b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
