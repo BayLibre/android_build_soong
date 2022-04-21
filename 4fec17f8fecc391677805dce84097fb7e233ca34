@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd1af829_9bfcc8a2",
+        "filename": "java/config/makevars.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2022-04-21T06:20:20Z",
+      "side": 1,
+      "message": "The art test build is failing with the error:\n```\n$ ./art/test/testrunner/run_build_test_target.py -j80 art-test\nout/soong/make_vars-aosp_x86_64.mk:946: warning: D8 does not match between Make and Soong:\nout/soong/make_vars-aosp_x86_64.mk:946: warning: Make : /usr/local/google/home/zerny/ssd2/aosp/out/host/linux-x86/bin/d8\nout/soong/make_vars-aosp_x86_64.mk:946: warning: Soong: out/host/linux-x86/bin/d8\nIn file included from build/make/core/cleanbuild.mk:30:\nout/soong/make_vars-aosp_x86_64.mk:1640: error: Soong variable check failed.\n```\n\nI\u0027ve not been able to locate the cause of this issue as I assumed that this would be the place the Make variant of the D8 var is set up and that is consistent with the previous DX. \n\nAny idea of what could be the cause?",
+      "revId": "4fec17f8fecc391677805dce84097fb7e233ca34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
