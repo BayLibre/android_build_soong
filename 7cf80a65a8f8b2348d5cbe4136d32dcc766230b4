@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc85b60d_9a5daa3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1318142
+      },
+      "writtenOn": "2022-04-21T00:04:41Z",
+      "side": 1,
+      "message": "Just found another way of dist files from singleton. Will abandon aosp/2070248.",
+      "revId": "7cf80a65a8f8b2348d5cbe4136d32dcc766230b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
