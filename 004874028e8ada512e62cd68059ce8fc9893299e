@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ad166d89_1329e668",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2022-04-21T19:03:25Z",
+      "side": 1,
+      "message": "What do you mean by a different version of Jazzer? Can you elaborate?",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 63
+      },
+      "revId": "004874028e8ada512e62cd68059ce8fc9893299e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd73e0d8_d6a6233a",
+        "filename": "java/fuzz.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2022-04-21T19:03:25Z",
+      "side": 1,
+      "message": "I cant find where is this being used.",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 13
+      },
+      "revId": "004874028e8ada512e62cd68059ce8fc9893299e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dbe6d4d_3ea27485",
+        "filename": "java/fuzz.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2022-04-21T19:03:25Z",
+      "side": 1,
+      "message": "nit: does this need to be accessible outside the package?",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "004874028e8ada512e62cd68059ce8fc9893299e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "652db2e9_0ecc5ffe",
         "filename": "java/fuzz.go",
         "patchSetId": 18
