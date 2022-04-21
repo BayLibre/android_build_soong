@@ -17,6 +17,7 @@ package android
 import (
 	"io/ioutil"
 	"runtime"
+	"sort"
 
 	"github.com/google/blueprint/metrics"
 	"google.golang.org/protobuf/proto"
@@ -78,6 +79,23 @@ func collectMetrics(config Config, eventHandler metrics.EventHandler) *soong_met
 		}
 		metrics.Events = append(metrics.Events, &perfInfo)
 	}
+	mixedBuildsInfo := soong_metrics_proto.MixedBuildsInfo{}
+	enabledModules := make([]string, 0, len(config.mixedBuildEnabledModules))
+	for module, _ := range config.mixedBuildEnabledModules {
+		enabledModules = append(enabledModules, module)
+	}
+
+	disabledModules := make([]string, 0, len(config.mixedBuildDisabledModules))
+
+	for module, _ := range config.mixedBuildDisabledModules {
+		disabledModules = append(disabledModules, module)
+	}
+	sort.Strings(enabledModules)
+	sort.Strings(disabledModules)
+
+	mixedBuildsInfo.MixedBuildEnabledModules = enabledModules
+	mixedBuildsInfo.MixedBuildDisabledModules = disabledModules
+	metrics.MixedBuildsInfo = &mixedBuildsInfo
 
 	return metrics
 }
