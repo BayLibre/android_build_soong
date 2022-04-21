@@ -19,6 +19,7 @@ import (
 	"errors"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path/filepath"
 	"strings"
 
@@ -340,6 +341,8 @@ func shouldKeepExistingBuildFileForDir(allowlist bp2BuildConversionAllowlist, di
 
 // MixedBuildsEnabled checks that a module is ready to be replaced by a
 // converted or handcrafted Bazel target.
+// Per b/215752654: Should you call this method with the intention of performing
+// a mixed build, please call logMixedBuilds for the sake of metrics collection.
 func (b *BazelModuleBase) MixedBuildsEnabled(ctx ModuleContext) bool {
 	if ctx.Os() == Windows {
 		// Windows toolchains are not currently supported.
@@ -361,7 +364,34 @@ func (b *BazelModuleBase) MixedBuildsEnabled(ctx ModuleContext) bool {
 		// variants of a cc_library.
 		return false
 	}
-	return !bp2buildAllowlist.mixedBuildsDisabled[ctx.Module().Name()]
+
+	mixedBuildEnabled := !bp2buildAllowlist.mixedBuildsDisabled[ctx.Module().Name()]
+	ctx.Config().mixedBuildModules[ctx.Module().Name()] = true
+	LogMixedBuild(ctx.Module().Name(), mixedBuildEnabled)
+
+	return mixedBuildEnabled
+}
+
+func (b *BazelModuleBase) logMixedBuilds(ctx ModuleContext, useBazel bool) {
+	metricsDir := ctx.Config().Getenv("LOG_DIR")
+	if len(metricsDir) < 1 {
+		fmt.Fprintf(os.Stderr, "\nMissing required env var for logging MixedBuildsInfo: LOG_DIR\n")
+		os.Exit(1)
+	}
+	metricsFile := filepath.Join(metricsDir, "soong_build_metrics.pb")
+	moduleName := ctx.Module().Name()
+	buildSystem := "Soong"
+	if useBazel {
+		buildSystem = "Bazel"
+	}
+	logOut := fmt.Sprintf("Building Module %s with %s", moduleName, buildSystem)
+	bytes := []byte(logOut)
+
+	err := ioutil.WriteFile(absolutePath(metricsFile), bytes, 0666)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "error writing Mixed builds info %s: %s", metricsFile, err)
+		os.Exit(1)
+	}
 }
 
 // ConvertedToBazel returns whether this module has been converted (with bp2build or manually) to Bazel.
