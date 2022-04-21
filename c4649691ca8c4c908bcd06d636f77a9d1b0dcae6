@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36b319b5_62c041cf",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-21T20:06:24Z",
+      "side": 1,
+      "message": "I\u0027m wary of merely a strongly worded recommendation to \"please call logMixedBuilds\" when there\u0027s no validation that this is taking place -- i\u0027m not sure if a good alternative, but I\u0027d be on the lookout for one :)",
+      "revId": "c4649691ca8c4c908bcd06d636f77a9d1b0dcae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a460fc74_b9ec89b2",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-21T20:06:24Z",
+      "side": 1,
+      "message": "Since we\u0027re only calling this from module types which *may* be migrated to Bazel, it means that module types which we have not started migrating (such as rust_library) don\u0027t get logged at all.\n\nIt\u0027s worth documenting that there are really three types of support to log:\n\n1. Doesn\u0027t show up in mixed build metrics at all -- it has no hope of being migrated\n2. Shows up in mixed build metrics as \"Soong\" -- there\u0027s some reason it\u0027s not actually handled by mixed builds, but could conceivably be if we flip a few things\n3. Shows up in metrics as \"Bazel\" -- it was used in Mixed builds.\n\n\nComments on the proto (that I describe in the below comment) would be a good place to note this.",
+      "revId": "c4649691ca8c4c908bcd06d636f77a9d1b0dcae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd7a10f6_eb16f993",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-21T20:06:24Z",
+      "side": 1,
+      "message": "Does this mean we are writing soong_build_metrics.pb for each module for which mixed builds is enabled?\n\nWe should avoid writing to this file more than once during a run of soong_build.\n\nSee https://cs.android.com/android/platform/superproject/+/master:build/soong/cmd/soong_build/main.go;l\u003d186-198;drc\u003d715b08fd828d0f53af0a3a26e7fdc5495757b821 for an example; we make only one call to `android.WriteMetrics(configuration, eventHandler, metricsFile)`, despite having collected copious data in `eventHandler` during analysis.\n\n\nWe should attempt to collect mixed build information (mode for each module) in some configuration singleton, and then write it alongside the marshaled data from eventHandler as is done in the above code link.\n\n\nNote also that soong_build_metrics.pb is a serialized proto: https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/metrics/metrics_proto/metrics.pb.go;l\u003d1128;drc\u003d450b938185d40e82b0d28d8f2da134b035e72088\n\nso in order to preserve the format of this file, we will need to add some new fields to https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/metrics/metrics_proto/metrics.proto;drc\u003d62243a3691c950963d42b268492caf7345498445\n\nSee the adjacent `regen.sh` script for how to regenerate the `.pb.go` file after  `.pb` changes.",
+      "revId": "c4649691ca8c4c908bcd06d636f77a9d1b0dcae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b890cd4c_b360ae3a",
+        "filename": "genrule/genrule.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-21T20:06:24Z",
+      "side": 1,
+      "message": "you remarked offline that you were seeing an error with this; likely because of go\u0027s visibility controls.\n\nAny field / function is package-private if it starts with a lowercase letter, and package-public if with an uppercase letter.\n\nThus, renaming to `LogMixedBuilds` might fix your issue.",
+      "revId": "c4649691ca8c4c908bcd06d636f77a9d1b0dcae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
