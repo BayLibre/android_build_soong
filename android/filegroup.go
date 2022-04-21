@@ -116,7 +116,10 @@ func FileGroupFactory() Module {
 
 func (fg *fileGroup) maybeGenerateBazelBuildActions(ctx ModuleContext) {
 	if !fg.MixedBuildsEnabled(ctx) {
+		fg.LogMixedBuilds(ctx, false)
 		return
+	} else {
+		fg.LogMixedBuilds(ctx, true)
 	}
 
 	archVariant := ctx.Arch().String()

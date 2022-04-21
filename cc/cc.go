@@ -1791,6 +1791,8 @@ func (c *Module) maybeGenerateBazelActions(actx android.ModuleContext) bool {
 	if c.MixedBuildsEnabled(actx) && c.bazelHandler != nil {
 		bazelActionsUsed = c.bazelHandler.GenerateBazelBuildActions(actx, bazelModuleLabel)
 	}
+
+	c.LogMixedBuilds(actx, bazelActionsUsed)
 	return bazelActionsUsed
 }
 
