@@ -26,9 +26,15 @@ import (
 
 var soongMetricsOnceKey = NewOnceKey("soong metrics")
 
+var stats = BuildSystemStats{ModulesToBuildSystem: make(map[string]string)}
+
 type SoongMetrics struct {
 	Modules  int
 	Variants int
+}
+
+type BuildSystemStats struct {
+	ModulesToBuildSystem map[string]string
 }
 
 func ReadSoongMetrics(config Config) SoongMetrics {
@@ -95,4 +101,12 @@ func WriteMetrics(config Config, eventHandler metrics.EventHandler, metricsFile 
 	}
 
 	return nil
+}
+
+func LogMixedBuilds(moduleName string, useBazel bool) {
+	buildSystem := "Soong"
+	if useBazel {
+		buildSystem = "Bazel"
+	}
+	stats.ModulesToBuildSystem[moduleName] = buildSystem
 }
