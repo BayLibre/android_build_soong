@@ -52,6 +52,24 @@
       "parentUuid": "40af1271_85d36dec",
       "revId": "f321a03d52d1ca8b3df3e8c61ee05b925b94370a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0872f8d8_e58705ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2022-04-21T20:41:49Z",
+      "side": 1,
+      "message": "And for the record, even though it\u0027s an internal-only link/list, the thread is at https://groups.google.com/a/google.com/g/keystone-downstream-issues/c/EL9-leWMx98 (with currently no feedback).",
+      "parentUuid": "f4c3a986_51569925",
+      "revId": "f321a03d52d1ca8b3df3e8c61ee05b925b94370a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
