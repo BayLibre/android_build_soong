@@ -338,9 +338,9 @@ func shouldKeepExistingBuildFileForDir(allowlist bp2BuildConversionAllowlist, di
 	return false
 }
 
-// MixedBuildsEnabled checks that a module is ready to be replaced by a
+// MixedBuildsEnabled checks whether a module is ready to be replaced by a
 // converted or handcrafted Bazel target.
-func (b *BazelModuleBase) MixedBuildsEnabled(ctx ModuleContext) bool {
+func MixedBuildsEnabled(ctx ModuleContext) bool {
 	if ctx.Os() == Windows {
 		// Windows toolchains are not currently supported.
 		return false
@@ -361,7 +361,11 @@ func (b *BazelModuleBase) MixedBuildsEnabled(ctx ModuleContext) bool {
 		// variants of a cc_library.
 		return false
 	}
-	return !bp2buildAllowlist.mixedBuildsDisabled[ctx.Module().Name()]
+
+	mixedBuildEnabled := !bp2buildAllowlist.mixedBuildsDisabled[ctx.Module().Name()]
+	ctx.Config().LogMixedBuild(ctx, mixedBuildEnabled)
+
+	return mixedBuildEnabled
 }
 
 // ConvertedToBazel returns whether this module has been converted (with bp2build or manually) to Bazel.
