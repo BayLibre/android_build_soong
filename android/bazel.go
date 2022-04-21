@@ -338,30 +338,39 @@ func shouldKeepExistingBuildFileForDir(allowlist bp2BuildConversionAllowlist, di
 	return false
 }
 
-// MixedBuildsEnabled checks that a module is ready to be replaced by a
+// MixedBuildsEnabled checks whether a module is ready to be replaced by a
 // converted or handcrafted Bazel target.
-func (b *BazelModuleBase) MixedBuildsEnabled(ctx ModuleContext) bool {
+func MixedBuildsEnabled(ctx ModuleContext) bool {
+	mixedBuildEnabled := true
 	if ctx.Os() == Windows {
 		// Windows toolchains are not currently supported.
-		return false
+		mixedBuildEnabled = false
 	}
 	if !ctx.Module().Enabled() {
-		return false
+		mixedBuildEnabled = false
 	}
 	if !ctx.Config().BazelContext.BazelEnabled() {
-		return false
+		mixedBuildEnabled = false
 	}
 	if !convertedToBazel(ctx, ctx.Module()) {
-		return false
+		mixedBuildEnabled = false
 	}
 
 	if GenerateCcLibraryStaticOnly(ctx.Module().Name()) {
 		// Don't use partially-converted cc_library targets in mixed builds,
 		// since mixed builds would generally rely on both static and shared
 		// variants of a cc_library.
-		return false
+		mixedBuildEnabled = false
 	}
-	return !bp2buildAllowlist.mixedBuildsDisabled[ctx.Module().Name()]
+	if !mixedBuildEnabled {
+		ctx.Config().LogMixedBuild(ctx, mixedBuildEnabled)
+		return mixedBuildEnabled
+	}
+
+	mixedBuildEnabled = !bp2buildAllowlist.mixedBuildsDisabled[ctx.Module().Name()]
+	ctx.Config().LogMixedBuild(ctx, mixedBuildEnabled)
+
+	return mixedBuildEnabled
 }
 
 // ConvertedToBazel returns whether this module has been converted (with bp2build or manually) to Bazel.
