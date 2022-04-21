@@ -78,6 +78,15 @@ func collectMetrics(config Config, eventHandler metrics.EventHandler) *soong_met
 		}
 		metrics.Events = append(metrics.Events, &perfInfo)
 	}
+	mixedBuildsInfo := soong_metrics_proto.MixedBuildsInfo{}
+	for module, _ := range config.mixedBuildEnabledModules {
+		mixedBuildsInfo.MixedBuildEnabledModules = append(mixedBuildsInfo.MixedBuildEnabledModules, module)
+	}
+
+	for module, _ := range config.mixedBuildDisabledModules {
+		mixedBuildsInfo.MixedBuildDisabledModules = append(mixedBuildsInfo.MixedBuildDisabledModules, module)
+	}
+	metrics.MixedBuildsInfo = &mixedBuildsInfo
 
 	return metrics
 }

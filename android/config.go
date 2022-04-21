@@ -170,6 +170,10 @@ type config struct {
 	ninjaFileDepsSet sync.Map
 
 	OncePer
+
+	mixedBuildsLock           sync.Mutex
+	mixedBuildEnabledModules  map[string]struct{}
+	mixedBuildDisabledModules map[string]struct{}
 }
 
 type deviceConfig struct {
@@ -375,7 +379,9 @@ func TestConfig(buildDir string, env map[string]string, bp string, fs map[string
 		// passed to PathForSource or PathForModuleSrc.
 		TestAllowNonExistentPaths: true,
 
-		BazelContext: noopBazelContext{},
+		BazelContext:              noopBazelContext{},
+		mixedBuildDisabledModules: make(map[string]struct{}),
+		mixedBuildEnabledModules:  make(map[string]struct{}),
 	}
 	config.deviceConfig = &deviceConfig{
 		config: config,
@@ -466,8 +472,10 @@ func NewConfig(moduleListFile string, runGoTests bool, outDir, soongOutDir strin
 		runGoTests:        runGoTests,
 		multilibConflicts: make(map[ArchType]bool),
 
-		moduleListFile: moduleListFile,
-		fs:             pathtools.NewOsFs(absSrcDir),
+		moduleListFile:            moduleListFile,
+		fs:                        pathtools.NewOsFs(absSrcDir),
+		mixedBuildDisabledModules: make(map[string]struct{}),
+		mixedBuildEnabledModules:  make(map[string]struct{}),
 	}
 
 	config.deviceConfig = &deviceConfig{
