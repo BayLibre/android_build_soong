@@ -16,6 +16,24 @@
       "message": "There are references to $(DX) in art/ too.",
       "revId": "db7e96083f17c84c821941b92b4d47b217859d87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b0d5a12_35fc70c0",
+        "filename": "java/config/makevars.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2022-04-21T10:37:56Z",
+      "side": 0,
+      "message": "Usages in art/ should be fixed now.",
+      "parentUuid": "4dd4ed98_39fa0e37",
+      "revId": "db7e96083f17c84c821941b92b4d47b217859d87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
