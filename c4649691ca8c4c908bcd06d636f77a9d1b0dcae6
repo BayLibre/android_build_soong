@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a2dfc51_01001b96",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-21T21:20:25Z",
+      "side": 1,
+      "message": "1. A singleton like \"BuildSystemStats\" is the right idea. As per my other comment, it might be OK to only emit information about modules which *are* mixed-build enabled, and leave others off. That is, we need not initialize a map with all enumerated modules and flip flags, but instead simply add mixed-build-enabled module names to a set.\nThe \"Targets\" field you\u0027ve linked is not exactly what you think it is, IIUC. It\u0027s instead the targets that the user has requested be built at \"top-level\". e.g. suppose I want to build the core library `libm`. I\u0027d run `m libc` and that Targets field would contain `libm` only.\n\n2. It *is* an unusual side effect, but I\u0027m not particularly inspired with a better option right now.\n\n3. Yep!",
+      "parentUuid": "2c2ef152_1250f6a2",
+      "revId": "c4649691ca8c4c908bcd06d636f77a9d1b0dcae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a460fc74_b9ec89b2",
         "filename": "android/bazel.go",
         "patchSetId": 1
