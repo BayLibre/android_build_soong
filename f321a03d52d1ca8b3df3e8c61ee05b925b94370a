@@ -16,6 +16,24 @@
       "message": "I\u0027m leaving an unresolved comment here, since I want us to make wait until we\u0027re sure that this is automerging into Internal on git_master, and not on tm-dev.  But otherwise I have no objections.",
       "revId": "f321a03d52d1ca8b3df3e8c61ee05b925b94370a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40af1271_85d36dec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2022-04-21T18:59:34Z",
+      "side": 1,
+      "message": "see also https://android-review.googlesource.com/c/platform/build/soong/+/2054868 and https://android-review.googlesource.com/c/platform/build/soong/+/2043314...\n\nunless davidben _wants_ all the bugs to go to him (fine by me!), probably best to go with one of the others :-)\n\n(but, yes, i had no intention of submitting until/unless we hear from the keystone-downstream folks that they have no concerns...)",
+      "parentUuid": "8fa369c4_c5b02a20",
+      "revId": "f321a03d52d1ca8b3df3e8c61ee05b925b94370a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
