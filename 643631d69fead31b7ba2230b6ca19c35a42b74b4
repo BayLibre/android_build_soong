@@ -16,6 +16,47 @@
       "message": "@jdduke: Merged with your flag changes. Are you ok with this resolution using a single $(D8_COMMAND) (which mirrors the old DX setup) or should I instead maintain the \"${D8} ${D8_FLAGS}\" that you had added?",
       "revId": "643631d69fead31b7ba2230b6ca19c35a42b74b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9f741ea_701e6a72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2022-04-22T15:17:33Z",
+      "side": 1,
+      "message": "Oh apologies, didn\u0027t realize you were working on this, sorry for the conflict! Your change looks great as-is, thanks!",
+      "parentUuid": "7d0babc6_806491a7",
+      "revId": "643631d69fead31b7ba2230b6ca19c35a42b74b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f5c9e1b_a3c0216f",
+        "filename": "java/config/config.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2022-04-22T15:17:33Z",
+      "side": 1,
+      "message": "Are these vars used anywhere else? Or will they be? If not should we just move them inline (or make private by the `dexerJavaVmFlagsList` definition)?",
+      "range": {
+        "startLine": 89,
+        "startChar": 42,
+        "endLine": 89,
+        "endChar": 52
+      },
+      "revId": "643631d69fead31b7ba2230b6ca19c35a42b74b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
