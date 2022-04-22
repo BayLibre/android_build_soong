@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d0babc6_806491a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1241761
+      },
+      "writtenOn": "2022-04-22T10:39:23Z",
+      "side": 1,
+      "message": "@jdduke: Merged with your flag changes. Are you ok with this resolution using a single $(D8_COMMAND) (which mirrors the old DX setup) or should I instead maintain the \"${D8} ${D8_FLAGS}\" that you had added?",
+      "revId": "643631d69fead31b7ba2230b6ca19c35a42b74b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
