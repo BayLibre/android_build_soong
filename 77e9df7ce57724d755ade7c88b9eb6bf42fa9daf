@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "310826c1_5df28535",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-04-22T07:52:28Z",
+      "side": 1,
+      "message": "This will probably interfere with b/204776549.\n\nMaybe I would add \"Bug: foo\" with that number to this commit to bring awareness on the other issue.\n\n@hansson not sure if lint was your only concern when you created that bug or if you had other issues than that. This might fix the issue of that bug (but it feels like we are fixing the problem at the wrong end). ",
+      "revId": "77e9df7ce57724d755ade7c88b9eb6bf42fa9daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

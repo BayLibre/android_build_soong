@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49e80f7d_2a4d9e94",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-04-22T07:52:28Z",
+      "side": 0,
+      "message": "Why do we need to change these to an int?\n\nIn some places we have min/target/compile sdk versions using a codename and in theory these could be done before the dessert is finalized. \n\nCould that become an issue? (Maybe soong would convert these codenames to a large integer? Not sure...)",
+      "revId": "e31a071389c2fdecbe4bb7bf56db94662fbd3a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
