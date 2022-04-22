@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cce2008d_4ddbd18a",
+        "filename": "fuzz/fuzz_common.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-04-22T20:11:49Z",
+      "side": 1,
+      "message": "Jazzer with native dependencies with sanitization needs to be fuzzed by a different version of Jazzer: https://github.com/CodeIntelligenceTesting/jazzer#fuzzing-with-native-libraries",
+      "parentUuid": "ad166d89_1329e668",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 63
+      },
+      "revId": "004874028e8ada512e62cd68059ce8fc9893299e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd73e0d8_d6a6233a",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-21T19:03:25Z",
       "side": 1,
       "message": "I cant find where is this being used.",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 13
+      },
+      "revId": "004874028e8ada512e62cd68059ce8fc9893299e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1cab2dd_aef5a703",
+        "filename": "java/fuzz.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-04-22T20:11:49Z",
+      "side": 1,
+      "message": "oops...",
+      "parentUuid": "bd73e0d8_d6a6233a",
       "range": {
         "startLine": 69,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67a284d1_21446d63",
+        "filename": "java/fuzz.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-04-22T20:11:49Z",
+      "side": 1,
+      "message": "Updated the code. This isnt needed anymore.",
+      "parentUuid": "1dbe6d4d_3ea27485",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "004874028e8ada512e62cd68059ce8fc9893299e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "652db2e9_0ecc5ffe",
@@ -83,6 +155,24 @@
       "writtenOn": "2022-04-21T18:22:24Z",
       "side": 1,
       "message": "This is a data race, multiple JavaFuzzLibrary modules can be running this in parallel and modifying the same dependency.  This needs to be propagated by sanitizerDepsMutator.",
+      "revId": "004874028e8ada512e62cd68059ce8fc9893299e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98ae712b_6ddab8c9",
+        "filename": "java/fuzz.go",
+        "patchSetId": 18
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-04-22T20:11:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "652db2e9_0ecc5ffe",
       "revId": "004874028e8ada512e62cd68059ce8fc9893299e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
