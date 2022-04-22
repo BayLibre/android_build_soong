@@ -34,6 +34,24 @@
       "parentUuid": "49e80f7d_2a4d9e94",
       "revId": "e31a071389c2fdecbe4bb7bf56db94662fbd3a4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a7bccfa_44fe249a",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-04-22T19:58:16Z",
+      "side": 0,
+      "message": "\u003e I also couldn\u0027t figure out where the lint source code is \n\nI think it\u0027s here:\n\nhttps://source.corp.google.com/studio-main/tools/base/lint/\n\nMy assumption is that we can pass an integer or a string into lint and that lint handles both types of parameters, but I\u0027m not sure.",
+      "parentUuid": "0ce80ab6_52dac84b",
+      "revId": "e31a071389c2fdecbe4bb7bf56db94662fbd3a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
