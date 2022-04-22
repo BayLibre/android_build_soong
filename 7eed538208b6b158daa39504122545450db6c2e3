@@ -50,6 +50,24 @@
       "message": "This is amazing. How did you find this?",
       "revId": "7eed538208b6b158daa39504122545450db6c2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69be4e38_093b2c9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-22T22:54:52Z",
+      "side": 1,
+      "message": "I was trying to improve my understanding of apex, image, sdk, and version mutator, looking for opportunities to simplify them and came across this unused complexity :)",
+      "parentUuid": "891db166_709ed573",
+      "revId": "7eed538208b6b158daa39504122545450db6c2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
