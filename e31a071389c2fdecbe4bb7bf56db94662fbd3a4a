@@ -16,6 +16,24 @@
       "message": "Why do we need to change these to an int?\n\nIn some places we have min/target/compile sdk versions using a codename and in theory these could be done before the dessert is finalized. \n\nCould that become an issue? (Maybe soong would convert these codenames to a large integer? Not sure...)",
       "revId": "e31a071389c2fdecbe4bb7bf56db94662fbd3a4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ce80ab6_52dac84b",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-04-22T19:21:42Z",
+      "side": 0,
+      "message": "This part I don\u0027t fully understand. I don\u0027t see how lint could compare api versions when given codenames, since we don\u0027t give it a mapping from codename -\u003e int. So I changed everything to be an int to be safe. But if you know anything, please let me know.\n\nI also couldn\u0027t figure out where the lint source code is to debug this further. We just have a prebuilts/devtools/tools/lib/lint.jar, and all the commits that update it don\u0027t say where it\u0027s from.",
+      "parentUuid": "49e80f7d_2a4d9e94",
+      "revId": "e31a071389c2fdecbe4bb7bf56db94662fbd3a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

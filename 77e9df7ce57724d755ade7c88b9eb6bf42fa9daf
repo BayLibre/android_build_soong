@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee0cdda_e763e4fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-04-22T19:21:42Z",
+      "side": 1,
+      "message": "Added the bug.",
+      "parentUuid": "310826c1_5df28535",
+      "revId": "77e9df7ce57724d755ade7c88b9eb6bf42fa9daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd9526ad_723bdbb4",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89cefd68_aa9c45f9",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-04-22T19:21:42Z",
+      "side": 1,
+      "message": "In 2b, 3, and 4, apiLevel.IsPreview() will return true, so we will use the platform sdk version +1.",
+      "parentUuid": "fd9526ad_723bdbb4",
+      "range": {
+        "startLine": 1485,
+        "startChar": 3,
+        "endLine": 1485,
+        "endChar": 5
+      },
+      "revId": "77e9df7ce57724d755ade7c88b9eb6bf42fa9daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdea2645_55b4ad21",
@@ -54,6 +96,30 @@
       "writtenOn": "2022-04-22T09:24:56Z",
       "side": 1,
       "message": "Don\u0027t think this really makes sense, this will be 10000 if the branch isn\u0027t finalized right? in which case we\u0027ll pass 10001 to lint..?",
+      "range": {
+        "startLine": 1507,
+        "startChar": 45,
+        "endLine": 1507,
+        "endChar": 61
+      },
+      "revId": "77e9df7ce57724d755ade7c88b9eb6bf42fa9daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e94053_291867a9",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1507,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-04-22T19:21:42Z",
+      "side": 1,
+      "message": "No, this will always be the value of PLATFORM_SDK_VERSION in make. PlatformSdkVersion() is always a finalized ApiLevel. (which may not accurately represent the real state of the branch, but that\u0027s another issue)\n\nFinalOrFutureInt() was just one of the few ways I could pull the actual integer value out of the ApiLevel struct.",
+      "parentUuid": "fdea2645_55b4ad21",
       "range": {
         "startLine": 1507,
         "startChar": 45,
