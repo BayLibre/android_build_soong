@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db0ebe86_5083e06e",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-22T22:18:56Z",
+      "side": 1,
+      "message": "I think you need to copy these checks",
+      "range": {
+        "startLine": 955,
+        "startChar": 53,
+        "endLine": 957,
+        "endChar": 43
+      },
+      "revId": "1a0d65b8ee58431dcaf7e8c7e23666e765f494ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6da66ad_8e3cd2b0",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-22T22:18:56Z",
+      "side": 1,
+      "message": "Keep this comment with the original VisitDirectDeps, and add a new comment here for this behavior.",
+      "range": {
+        "startLine": 972,
+        "startChar": 0,
+        "endLine": 973,
+        "endChar": 66
+      },
+      "revId": "1a0d65b8ee58431dcaf7e8c7e23666e765f494ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "653da0ec_c50dff55",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-22T22:18:56Z",
+      "side": 1,
+      "message": "PlatformSanitizeable",
+      "range": {
+        "startLine": 977,
+        "startChar": 25,
+        "endLine": 977,
+        "endChar": 32
+      },
+      "revId": "1a0d65b8ee58431dcaf7e8c7e23666e765f494ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "860242f2_54a46daf",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-22T22:18:56Z",
+      "side": 1,
+      "message": "You should restrict this to only deps where ctx.OtherModuleDependencytag(child) \u003d\u003d jniLibTag",
+      "revId": "1a0d65b8ee58431dcaf7e8c7e23666e765f494ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "870d37b1_05d90c32",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-22T22:18:56Z",
+      "side": 1,
+      "message": "Does `SetSanitizeDep(true)` work here?",
+      "range": {
+        "startLine": 978,
+        "startChar": 9,
+        "endLine": 978,
+        "endChar": 21
+      },
+      "revId": "1a0d65b8ee58431dcaf7e8c7e23666e765f494ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
