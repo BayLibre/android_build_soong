@@ -16,6 +16,23 @@
       "message": "The change description and the nice red change size indicator looks good, but it looks like a lot of tests are broken?\n\n(with your permission, I won\u0027t look at this change before I know what that breakage is about)",
       "revId": "7eed538208b6b158daa39504122545450db6c2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0fc76d9_769afc12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-04-22T14:10:48Z",
+      "side": 1,
+      "message": "Amazing find!\n\nBreakages look unrelated; I also ran into them in another CL.",
+      "revId": "7eed538208b6b158daa39504122545450db6c2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
