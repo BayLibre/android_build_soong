@@ -16,6 +16,52 @@
       "message": "This will probably interfere with b/204776549.\n\nMaybe I would add \"Bug: foo\" with that number to this commit to bring awareness on the other issue.\n\n@hansson not sure if lint was your only concern when you created that bug or if you had other issues than that. This might fix the issue of that bug (but it feels like we are fixing the problem at the wrong end). ",
       "revId": "77e9df7ce57724d755ade7c88b9eb6bf42fa9daf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd9526ad_723bdbb4",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-04-22T09:24:56Z",
+      "side": 1,
+      "message": "I think we have the following scenarios for user-specified SDK version (and desired outcomes):\n  1) number: use that\n  2) codename: figure out what the codename is\n    a) if it refers to a finalized codename (e.g. \"S\" at this point): use the finalized int\n   b) if it refers to a non-finalized codename, use platform sdk version + 1\n  3) \"current\": should behave like the codename of the current branch (i.e. if the branch is finalized, it\u0027s an int, if it isn\u0027t, it\u0027s platform sdk version + 1\n  4) unspecified: like \"current\"\n  \nI don\u0027t think this is the behavior we\u0027re going to see with or without this change? In particular, it seems like we\u0027re going to pass 10000 in 2b, 3 and 4.",
+      "range": {
+        "startLine": 1485,
+        "startChar": 3,
+        "endLine": 1485,
+        "endChar": 5
+      },
+      "revId": "77e9df7ce57724d755ade7c88b9eb6bf42fa9daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdea2645_55b4ad21",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1507,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-04-22T09:24:56Z",
+      "side": 1,
+      "message": "Don\u0027t think this really makes sense, this will be 10000 if the branch isn\u0027t finalized right? in which case we\u0027ll pass 10001 to lint..?",
+      "range": {
+        "startLine": 1507,
+        "startChar": 45,
+        "endLine": 1507,
+        "endChar": 61
+      },
+      "revId": "77e9df7ce57724d755ade7c88b9eb6bf42fa9daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
