@@ -227,6 +227,9 @@ type BaseLinkerProperties struct {
 	// local file name to pass to the linker as --dynamic-list
 	Dynamic_list *string `android:"path,arch_variant"`
 
+	// local files to pass to the linker as --script
+	Linker_scripts []string `android:"path,arch_variant"`
+
 	// list of static libs that should not be used to build this module
 	Exclude_static_libs []string `android:"arch_variant"`
 
@@ -601,6 +604,13 @@ func (linker *baseLinker) linkerFlags(ctx ModuleContext, flags Flags) Flags {
 					"-Wl,--dynamic-list,"+dynamicList.String())
 				flags.LdFlagsDeps = append(flags.LdFlagsDeps, dynamicList.Path())
 			}
+		}
+
+		linkerScriptPaths := android.PathsForModuleSrc(ctx, linker.Properties.Linker_scripts)
+		for _, linkerScriptPath := range linkerScriptPaths {
+			flags.Local.LdFlags = append(flags.Local.LdFlags,
+				"-Wl,--script,"+linkerScriptPath.String())
+			flags.LdFlagsDeps = append(flags.LdFlagsDeps, linkerScriptPath)
 		}
 	}
 
