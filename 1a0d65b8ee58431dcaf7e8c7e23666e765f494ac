@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ae3b498_57d59b40",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-04-23T01:01:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db0ebe86_5083e06e",
+      "range": {
+        "startLine": 955,
+        "startChar": 53,
+        "endLine": 957,
+        "endChar": 43
+      },
+      "revId": "1a0d65b8ee58431dcaf7e8c7e23666e765f494ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6da66ad_8e3cd2b0",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-22T22:18:56Z",
       "side": 1,
       "message": "Keep this comment with the original VisitDirectDeps, and add a new comment here for this behavior.",
+      "range": {
+        "startLine": 972,
+        "startChar": 0,
+        "endLine": 973,
+        "endChar": 66
+      },
+      "revId": "1a0d65b8ee58431dcaf7e8c7e23666e765f494ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ff374fb_10219b4c",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 973,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-04-23T01:01:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6da66ad_8e3cd2b0",
       "range": {
         "startLine": 972,
         "startChar": 0,
@@ -87,6 +135,48 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "93ec17c6_f6bc7cf1",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-04-23T01:01:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "860242f2_54a46daf",
+      "revId": "1a0d65b8ee58431dcaf7e8c7e23666e765f494ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f2cf29a_5aa69425",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 977,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-04-23T01:01:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "653da0ec_c50dff55",
+      "range": {
+        "startLine": 977,
+        "startChar": 25,
+        "endLine": 977,
+        "endChar": 32
+      },
+      "revId": "1a0d65b8ee58431dcaf7e8c7e23666e765f494ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "870d37b1_05d90c32",
@@ -100,6 +190,30 @@
       "writtenOn": "2022-04-22T22:18:56Z",
       "side": 1,
       "message": "Does `SetSanitizeDep(true)` work here?",
+      "range": {
+        "startLine": 978,
+        "startChar": 9,
+        "endLine": 978,
+        "endChar": 21
+      },
+      "revId": "1a0d65b8ee58431dcaf7e8c7e23666e765f494ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed044a46_d1a3dd1e",
+        "filename": "cc/sanitize.go",
+        "patchSetId": 21
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1868610
+      },
+      "writtenOn": "2022-04-23T01:01:54Z",
+      "side": 1,
+      "message": "it did work! nice!",
+      "parentUuid": "870d37b1_05d90c32",
       "range": {
         "startLine": 978,
         "startChar": 9,
