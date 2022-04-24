@@ -16,6 +16,24 @@
       "message": "reply",
       "revId": "393667285ef6845a1cf4675b266158df544ce994",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "048e4f80_22e5ae5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1949038
+      },
+      "writtenOn": "2022-04-24T12:45:18Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/build/soong/+/541201/comments/a093fd13_78c7d674",
+      "parentUuid": "a093fd13_78c7d674",
+      "revId": "393667285ef6845a1cf4675b266158df544ce994",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
