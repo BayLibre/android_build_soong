@@ -40,6 +40,9 @@ type BinaryLinkerProperties struct {
 	// if set, install a symlink to the preferred architecture
 	Symlink_preferred_arch *bool `android:"arch_variant"`
 
+	// convert executable to a raw binary format.  Depends on 'static_executable'
+	Raw_binary *bool `android:"arch_variant"`
+
 	// install symlinks to the binary.  Symlink names will have the suffix and the binary
 	// extension (if any) appended
 	Symlinks []string `android:"arch_variant"`
@@ -242,6 +245,10 @@ func (binary *binaryDecorator) staticBinary() bool {
 	return binary.static()
 }
 
+func (binary *binaryDecorator) rawBinary() bool {
+	return Bool(binary.Properties.Raw_binary)
+}
+
 func (binary *binaryDecorator) binary() bool {
 	return true
 }
@@ -359,6 +366,17 @@ func (binary *binaryDecorator) link(ctx ModuleContext,
 
 	builderFlags := flagsToBuilderFlags(flags)
 	stripFlags := flagsToStripFlags(flags)
+
+	if binary.rawBinary() {
+		if !binary.static() {
+			ctx.PropertyErrorf("raw_binary", "must also set static_executable")
+		}
+
+		afterRawOutputFile := outputFile
+		outputFile = android.PathForModuleOut(ctx, "pre-raw", fileName)
+		transformBinaryRawFormat(ctx, outputFile, builderFlags, afterRawOutputFile)
+	}
+
 	if binary.stripper.NeedsStrip(ctx) {
 		if ctx.Darwin() {
 			stripFlags.StripUseGnuStrip = true
