@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c3181a5_a48e594a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-04-25T09:28:52Z",
+      "side": 1,
+      "message": "This is one of possible approaches I\u0027ve thought. PTAL.",
+      "revId": "4d3ee6e6cdba0b1d23e1c53ddbc29b879570ce37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
