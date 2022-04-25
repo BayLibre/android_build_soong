@@ -262,6 +262,14 @@ func (r *RuleBuilder) Inputs() Paths {
 	return inputList
 }
 
+func (r *RuleBuilder) InputDepsetIds() []int {
+	var result []int
+	for _, c := range r.commands {
+		result = append(result, c.implicitDepsets...)
+	}
+	return result
+}
+
 // OrderOnlys returns the list of paths that were passed to the RuleBuilderCommand.OrderOnly or
 // RuleBuilderCommand.OrderOnlys.  The list is sorted and duplicates removed.
 func (r *RuleBuilder) OrderOnlys() Paths {
@@ -722,10 +730,20 @@ func (r *RuleBuilder) Build(name string, desc string) {
 		pool = localPool
 	}
 
+	depsetCommandDeps := []string{}
+	//
+	//for _, depsetId := range r.InputDepsetIds() {
+	//	var depsetBuilder strings.Builder
+	//	depsetBuilder.WriteString("${depset_")
+	//	depsetBuilder.WriteString(strconv.Itoa(depsetId))
+	//	depsetBuilder.WriteString("}")
+	//	depsetCommandDeps = append(depsetCommandDeps, depsetBuilder.String())
+	//}
+
 	r.ctx.Build(r.pctx, BuildParams{
 		Rule: r.ctx.Rule(pctx, name, blueprint.RuleParams{
 			Command:        proptools.NinjaEscape(commandString),
-			CommandDeps:    proptools.NinjaEscapeList(tools.Strings()),
+			CommandDeps:    append(depsetCommandDeps, proptools.NinjaEscapeList(tools.Strings())...),
 			Restat:         r.restat,
 			Rspfile:        proptools.NinjaEscape(rspFile),
 			RspfileContent: rspFileContent,
@@ -751,17 +769,18 @@ func (r *RuleBuilder) Build(name string, desc string) {
 type RuleBuilderCommand struct {
 	rule *RuleBuilder
 
-	buf            strings.Builder
-	inputs         Paths
-	implicits      Paths
-	orderOnlys     Paths
-	validations    Paths
-	outputs        WritablePaths
-	symlinkOutputs WritablePaths
-	depFiles       WritablePaths
-	tools          Paths
-	packagedTools  []PackagingSpec
-	rspFiles       []rspFileAndPaths
+	buf             strings.Builder
+	inputs          Paths
+	implicits       Paths
+	implicitDepsets []int
+	orderOnlys      Paths
+	validations     Paths
+	outputs         WritablePaths
+	symlinkOutputs  WritablePaths
+	depFiles        WritablePaths
+	tools           Paths
+	packagedTools   []PackagingSpec
+	rspFiles        []rspFileAndPaths
 }
 
 type rspFileAndPaths struct {
@@ -1084,6 +1103,11 @@ func (c *RuleBuilderCommand) Inputs(paths Paths) *RuleBuilderCommand {
 // command line.
 func (c *RuleBuilderCommand) Implicit(path Path) *RuleBuilderCommand {
 	c.addImplicit(path)
+	return c
+}
+
+func (c *RuleBuilderCommand) ImplicitDepset(depsetId int) *RuleBuilderCommand {
+	c.implicitDepsets = append(c.implicitDepsets, depsetId)
 	return c
 }
 

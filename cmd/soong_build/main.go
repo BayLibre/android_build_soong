@@ -141,6 +141,7 @@ func runMixedModeBuild(configuration android.Config, firstCtx *android.Context, 
 		fmt.Fprintf(os.Stderr, "%s", err)
 		os.Exit(1)
 	}
+
 	// Second pass: Full analysis, using the bazel command results. Output ninja file.
 	secondConfig, err := android.ConfigForAdditionalRun(configuration)
 	if err != nil {
@@ -148,6 +149,8 @@ func runMixedModeBuild(configuration android.Config, firstCtx *android.Context, 
 		os.Exit(1)
 	}
 	secondCtx := newContext(secondConfig)
+	secondCtx.AddBazelDepsets(secondConfig.BazelContext.AqueryDepsets())
+
 	ninjaDeps := bootstrap.RunBlueprint(cmdlineArgs, bootstrap.DoEverything, secondCtx.Context, secondConfig)
 	ninjaDeps = append(ninjaDeps, extraNinjaDeps...)
 

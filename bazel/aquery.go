@@ -21,6 +21,7 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 )
 
@@ -76,13 +77,14 @@ type actionGraphContainer struct {
 // BuildStatement contains information to register a build statement corresponding (one to one)
 // with a Bazel action from Bazel's action graph.
 type BuildStatement struct {
-	Command      string
-	Depfile      *string
-	OutputPaths  []string
-	InputPaths   []string
-	SymlinkPaths []string
-	Env          []KeyValuePair
-	Mnemonic     string
+	Command        string
+	Depfile        *string
+	OutputPaths    []string
+	InputPaths     []string
+	InputDepsetIds []int
+	SymlinkPaths   []string
+	Env            []KeyValuePair
+	Mnemonic       string
 }
 
 // A helper type for aquery processing which facilitates retrieval of path IDs from their
@@ -96,6 +98,9 @@ type aqueryArtifactHandler struct {
 	middlemanIdToDepsetIds map[int][]int
 	// Maps depset Id to depset struct.
 	depsetIdToDepset map[int]depSetOfFiles
+	// An ordered list of depsetIds, such that if depset X depends on depset Y,
+	// then depset Y must be somewhere earlier in the list than depset X.
+	depsetIdsInOrder []int
 	// depsetIdToArtifactIdsCache is a memoization of depset flattening, because flattening
 	// may be an expensive operation.
 	depsetIdToArtifactIdsCache map[int][]int
@@ -149,9 +154,43 @@ func newAqueryHandler(aqueryResult actionGraphContainer) (*aqueryArtifactHandler
 	return &aqueryArtifactHandler{
 		middlemanIdToDepsetIds:     middlemanIdToDepsetIds,
 		depsetIdToDepset:           depsetIdToDepset,
+		depsetIdsInOrder:           getOrderedDepsets(depsetIdToDepset, aqueryResult.DepSetOfFiles),
 		depsetIdToArtifactIdsCache: map[int][]int{},
 		artifactIdToPath:           artifactIdToPath,
 	}, nil
+}
+
+// getOrderedDepsets returns an ordered slice of depsets
+// such that if slice[i] depends on slice[j], then j < i.
+func getOrderedDepsets(depsetsById map[int]depSetOfFiles, rawDepsets []depSetOfFiles) []int {
+	var processedDepsets []int
+	alreadyProcessed := make(map[int]bool)
+	// Process depsets in original order so ordering is deterministic.
+	for _, depset := range rawDepsets {
+		addOrderedDepsets_recursive(depsetsById, alreadyProcessed, depset.Id, &processedDepsets)
+	}
+	return processedDepsets
+}
+
+// If the given depset is not yet processed, adds the given depset ID to
+// orderedList (after all of its transitive dependencies are added.
+func addOrderedDepsets_recursive(depsetsById map[int]depSetOfFiles,
+	alreadyProcessedDepsets map[int]bool,
+	currentDepsetId int,
+	orderedList *[]int) {
+
+	if _, alreadyProcessed := alreadyProcessedDepsets[currentDepsetId]; alreadyProcessed {
+		fmt.Println("@@@@ DROPPING ", currentDepsetId)
+		return
+	}
+	fmt.Println("@@@@ PROCESSING ", currentDepsetId)
+	depset := depsetsById[currentDepsetId]
+	for _, depsetDepId := range depset.TransitiveDepSetIds {
+		addOrderedDepsets_recursive(depsetsById, alreadyProcessedDepsets, depsetDepId, orderedList)
+	}
+	*orderedList = append(*orderedList, currentDepsetId)
+	alreadyProcessedDepsets[currentDepsetId] = true
+	fmt.Println("@@@@ PROCESSED ", currentDepsetId)
 }
 
 func (a *aqueryArtifactHandler) getInputPaths(depsetIds []int) ([]string, error) {
@@ -230,17 +269,18 @@ func (a *aqueryArtifactHandler) artifactIdsFromDepsetId(depsetId int) ([]int, er
 // AqueryBuildStatements returns an array of BuildStatements which should be registered (and output
 // to a ninja file) to correspond one-to-one with the given action graph json proto (from a bazel
 // aquery invocation).
-func AqueryBuildStatements(aqueryJsonProto []byte) ([]BuildStatement, error) {
+func AqueryBuildStatements(aqueryJsonProto []byte) ([]BuildStatement, []blueprint.AqueryDepset, error) {
 	buildStatements := []BuildStatement{}
+	depsets := []blueprint.AqueryDepset{}
 
 	var aqueryResult actionGraphContainer
 	err := json.Unmarshal(aqueryJsonProto, &aqueryResult)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 	aqueryHandler, err := newAqueryHandler(aqueryResult)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
 
 	for _, actionEntry := range aqueryResult.Actions {
@@ -252,12 +292,12 @@ func AqueryBuildStatements(aqueryJsonProto []byte) ([]BuildStatement, error) {
 		for _, outputId := range actionEntry.OutputIds {
 			outputPath, exists := aqueryHandler.artifactIdToPath[outputId]
 			if !exists {
-				return nil, fmt.Errorf("undefined outputId %d", outputId)
+				return nil, nil, fmt.Errorf("undefined outputId %d", outputId)
 			}
 			ext := filepath.Ext(outputPath)
 			if ext == ".d" {
 				if depfile != nil {
-					return nil, fmt.Errorf("found multiple potential depfiles %q, %q", *depfile, outputPath)
+					return nil, nil, fmt.Errorf("found multiple potential depfiles %q, %q", *depfile, outputPath)
 				} else {
 					depfile = &outputPath
 				}
@@ -267,21 +307,22 @@ func AqueryBuildStatements(aqueryJsonProto []byte) ([]BuildStatement, error) {
 		}
 		inputPaths, err := aqueryHandler.getInputPaths(actionEntry.InputDepSetIds)
 		if err != nil {
-			return nil, err
+			return nil, nil, err
 		}
 
 		buildStatement := BuildStatement{
 			Command:     strings.Join(proptools.ShellEscapeListIncludingSpaces(actionEntry.Arguments), " "),
 			Depfile:     depfile,
 			OutputPaths: outputPaths,
-			InputPaths:  inputPaths,
-			Env:         actionEntry.EnvironmentVariables,
-			Mnemonic:    actionEntry.Mnemonic,
+			//InputPaths:     inputPaths,
+			InputDepsetIds: actionEntry.InputDepSetIds,
+			Env:            actionEntry.EnvironmentVariables,
+			Mnemonic:       actionEntry.Mnemonic,
 		}
 
 		if isSymlinkAction(actionEntry) {
 			if len(inputPaths) != 1 || len(outputPaths) != 1 {
-				return nil, fmt.Errorf("Expect 1 input and 1 output to symlink action, got: input %q, output %q", inputPaths, outputPaths)
+				return nil, nil, fmt.Errorf("Expect 1 input and 1 output to symlink action, got: input %q, output %q", inputPaths, outputPaths)
 			}
 			out := outputPaths[0]
 			outDir := proptools.ShellEscapeIncludingSpaces(filepath.Dir(out))
@@ -292,7 +333,7 @@ func AqueryBuildStatements(aqueryJsonProto []byte) ([]BuildStatement, error) {
 			buildStatement.SymlinkPaths = outputPaths[:]
 		} else if isTemplateExpandAction(actionEntry) && len(actionEntry.Arguments) < 1 {
 			if len(outputPaths) != 1 {
-				return nil, fmt.Errorf("Expect 1 output to template expand action, got: output %q", outputPaths)
+				return nil, nil, fmt.Errorf("Expect 1 output to template expand action, got: output %q", outputPaths)
 			}
 			expandedTemplateContent := expandTemplateContent(actionEntry)
 			// The expandedTemplateContent is escaped for being used in double quotes and shell unescape,
@@ -305,7 +346,7 @@ func AqueryBuildStatements(aqueryJsonProto []byte) ([]BuildStatement, error) {
 			buildStatement.Command = command
 		} else if isPythonZipperAction(actionEntry) {
 			if len(inputPaths) < 1 || len(outputPaths) != 1 {
-				return nil, fmt.Errorf("Expect 1+ input and 1 output to python zipper action, got: input %q, output %q", inputPaths, outputPaths)
+				return nil, nil, fmt.Errorf("Expect 1+ input and 1 output to python zipper action, got: input %q, output %q", inputPaths, outputPaths)
 			}
 			buildStatement.InputPaths, buildStatement.Command = removePy3wrapperScript(buildStatement)
 			buildStatement.Command = addCommandForPyBinaryRunfilesDir(buildStatement, inputPaths[0], outputPaths[0])
@@ -327,15 +368,30 @@ func AqueryBuildStatements(aqueryJsonProto []byte) ([]BuildStatement, error) {
 				}
 			}
 			if !pyBinaryFound {
-				return nil, fmt.Errorf("Could not find the correspondinging Python binary stub script of PythonZipper: %q", outputPaths)
+				return nil, nil, fmt.Errorf("Could not find the correspondinging Python binary stub script of PythonZipper: %q", outputPaths)
 			}
 		} else if len(actionEntry.Arguments) < 1 {
-			return nil, fmt.Errorf("received action with no command: [%v]", buildStatement)
+			return nil, nil, fmt.Errorf("received action with no command: [%v]", buildStatement)
 		}
 		buildStatements = append(buildStatements, buildStatement)
 	}
 
-	return buildStatements, nil
+	for _, depsetId := range aqueryHandler.depsetIdsInOrder {
+		depset := aqueryHandler.depsetIdToDepset[depsetId]
+		directPaths := []string{}
+		for _, artifactId := range depset.DirectArtifactIds {
+			pathString := aqueryHandler.artifactIdToPath[artifactId]
+			// TODO: Do something here to make this bazelPath := android.PathForBazelOut(ctx, pathString)
+			directPaths = append(directPaths, pathString)
+		}
+		aqueryDepset := blueprint.AqueryDepset{
+			Id:                  depset.Id,
+			DirectArtifacts:     directPaths,
+			TransitiveDepSetIds: depset.TransitiveDepSetIds,
+		}
+		depsets = append(depsets, aqueryDepset)
+	}
+	return buildStatements, depsets, nil
 }
 
 // expandTemplateContent substitutes the tokens in a template.
