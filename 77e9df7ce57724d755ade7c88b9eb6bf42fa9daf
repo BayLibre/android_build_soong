@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7bfb47fa_b7bd4838",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-04-25T09:22:03Z",
+      "side": 1,
+      "message": "so all the cases above will behave as described? I don\u0027t know the e2e flow of how these things get parsed, but this handling of \"current\" in particular looked suspicious to me (seems like it gets converted to 10000?). I could be wrong: http://cs/android/build/soong/android/api_levels.go?l\u003d232-234",
+      "parentUuid": "89cefd68_aa9c45f9",
+      "range": {
+        "startLine": 1485,
+        "startChar": 3,
+        "endLine": 1485,
+        "endChar": 5
+      },
+      "revId": "77e9df7ce57724d755ade7c88b9eb6bf42fa9daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fdea2645_55b4ad21",
         "filename": "java/base.go",
         "patchSetId": 1
@@ -120,6 +144,30 @@
       "side": 1,
       "message": "No, this will always be the value of PLATFORM_SDK_VERSION in make. PlatformSdkVersion() is always a finalized ApiLevel. (which may not accurately represent the real state of the branch, but that\u0027s another issue)\n\nFinalOrFutureInt() was just one of the few ways I could pull the actual integer value out of the ApiLevel struct.",
       "parentUuid": "fdea2645_55b4ad21",
+      "range": {
+        "startLine": 1507,
+        "startChar": 45,
+        "endLine": 1507,
+        "endChar": 61
+      },
+      "revId": "77e9df7ce57724d755ade7c88b9eb6bf42fa9daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a4f3d66_2b607833",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1507,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-04-25T09:22:03Z",
+      "side": 1,
+      "message": "OK, thanks for explaining. It\u0027s kind of bizarre from a readability perspective. Instead of using this `FinalOrFutureInt` method twice where both times the \"OrFuture\" part should never happen, can you instead add a function to ApiLevel: `FinalInt()` that throws if the ApiLevel is a preview?",
+      "parentUuid": "44e94053_291867a9",
       "range": {
         "startLine": 1507,
         "startChar": 45,
