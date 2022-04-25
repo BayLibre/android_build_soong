@@ -75,6 +75,30 @@
       },
       "revId": "b880973d431b0bc0ba2ec9f87cd8dfb14dad9f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c9c42c1_69fc1078",
+        "filename": "filesystem/raw_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-04-25T14:57:47Z",
+      "side": 1,
+      "message": "If there\u0027s a need then sure, we can add that later. Right now we do it in the linker script.",
+      "parentUuid": "4408f03c_0bd7ea49",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 4
+      },
+      "revId": "b880973d431b0bc0ba2ec9f87cd8dfb14dad9f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
