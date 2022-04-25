@@ -125,6 +125,13 @@ var (
 		},
 		"objcopyCmd", "prefix")
 
+	convertRawBinary = pctx.AndroidStaticRule("convertRawBinary",
+		blueprint.RuleParams{
+			Command:     "$objcopyCmd -O binary ${in} ${out}",
+			CommandDeps: []string{"$objcopyCmd"},
+		},
+		"objcopyCmd")
+
 	_ = pctx.SourcePathVariable("stripPath", "build/soong/scripts/strip.sh")
 	_ = pctx.SourcePathVariable("xzCmd", "prebuilts/build-tools/${config.HostPrebuiltTag}/bin/xz")
 	_ = pctx.SourcePathVariable("createMiniDebugInfo", "prebuilts/build-tools/${config.HostPrebuiltTag}/bin/create_minidebuginfo")
@@ -1059,6 +1066,22 @@ func transformBinaryPrefixSymbols(ctx android.ModuleContext, prefix string, inpu
 		Args: map[string]string{
 			"objcopyCmd": objcopyCmd,
 			"prefix":     prefix,
+		},
+	})
+}
+
+func transformBinaryRawFormat(ctx android.ModuleContext, inputFile android.Path,
+	flags builderFlags, outputFile android.WritablePath) {
+
+	objcopyCmd := "${config.ClangBin}/llvm-objcopy"
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        convertRawBinary,
+		Description: "raw format " + outputFile.Base(),
+		Output:      outputFile,
+		Input:       inputFile,
+		Args: map[string]string{
+			"objcopyCmd": objcopyCmd,
 		},
 	})
 }
