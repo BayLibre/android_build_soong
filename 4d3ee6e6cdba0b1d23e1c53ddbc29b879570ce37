@@ -16,6 +16,29 @@
       "message": "This is one of possible approaches I\u0027ve thought. PTAL.",
       "revId": "4d3ee6e6cdba0b1d23e1c53ddbc29b879570ce37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b4009cd_69143936",
+        "filename": "android/buildinfo_prop.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-04-25T09:39:35Z",
+      "side": 1,
+      "message": "nit: have all TODO-props in one place",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 60
+      },
+      "revId": "4d3ee6e6cdba0b1d23e1c53ddbc29b879570ce37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
