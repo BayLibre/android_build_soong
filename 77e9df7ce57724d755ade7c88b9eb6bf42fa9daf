@@ -107,6 +107,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5ce5005_df5ef66b",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1485,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-04-25T23:19:51Z",
+      "side": 1,
+      "message": "No, we should never return a large number like 10000. I changed both of these to be FinalInt() instead of FinalOrFutureInt() so that should be clearer now.",
+      "parentUuid": "7bfb47fa_b7bd4838",
+      "range": {
+        "startLine": 1485,
+        "startChar": 3,
+        "endLine": 1485,
+        "endChar": 5
+      },
+      "revId": "77e9df7ce57724d755ade7c88b9eb6bf42fa9daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fdea2645_55b4ad21",
@@ -168,6 +192,30 @@
       "side": 1,
       "message": "OK, thanks for explaining. It\u0027s kind of bizarre from a readability perspective. Instead of using this `FinalOrFutureInt` method twice where both times the \"OrFuture\" part should never happen, can you instead add a function to ApiLevel: `FinalInt()` that throws if the ApiLevel is a preview?",
       "parentUuid": "44e94053_291867a9",
+      "range": {
+        "startLine": 1507,
+        "startChar": 45,
+        "endLine": 1507,
+        "endChar": 61
+      },
+      "revId": "77e9df7ce57724d755ade7c88b9eb6bf42fa9daf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10eba6f8_3b6af62c",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1507,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-04-25T23:19:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a4f3d66_2b607833",
       "range": {
         "startLine": 1507,
         "startChar": 45,

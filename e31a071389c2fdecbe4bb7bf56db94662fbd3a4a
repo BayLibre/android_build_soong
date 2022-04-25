@@ -52,6 +52,24 @@
       "parentUuid": "0ce80ab6_52dac84b",
       "revId": "e31a071389c2fdecbe4bb7bf56db94662fbd3a4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c86c1d74_7b302041",
+        "filename": "java/lint.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-04-25T23:19:51Z",
+      "side": 0,
+      "message": "Thanks, looking at the code there it seems what happens is it calls [SdkVersionInfo.getVersion()](http://cs/studio-main/tools/base/sdklib/src/main/java/com/android/sdklib/SdkVersionInfo.java;l\u003d415;rcl\u003d51a2b91a9102f46858160e76247b0f4cf033ddd9), which just looks up the name from a hardcoded list and returns the latest known version if it\u0027s not found. So I think if the lint.jar became out of date, we\u0027d start seeing warnings about the minSdkVersion being too old if we gave it codenames. I think integers are the right option here.",
+      "parentUuid": "8a7bccfa_44fe249a",
+      "revId": "e31a071389c2fdecbe4bb7bf56db94662fbd3a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
