@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c526b0a6_9c14e21b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-04-25T18:13:30Z",
+      "side": 1,
+      "message": "nit: typo",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "683cddd850ce6cca619db1b3122070f5036fc3ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54c6f593_59fb71bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-04-25T18:13:30Z",
+      "side": 1,
+      "message": "I assume, based on the need for this change, that the platform code has a min sdk !\u003d compile SDK. Is that correct? Is it infeasible/difficult to fix it there?\n\nBecause we could benefit from doing NewApi checks in all code that has min sdk !\u003d compile sdk. In the sense that it probably makes sense and should be catching potential issues with the code. (Still allowing them to disable it as long as it\u0027s not shipped into mainline).",
+      "revId": "683cddd850ce6cca619db1b3122070f5036fc3ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
