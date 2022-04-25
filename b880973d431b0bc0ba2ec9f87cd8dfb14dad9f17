@@ -34,6 +34,29 @@
       "parentUuid": "07f4df40_eb88db99",
       "revId": "b880973d431b0bc0ba2ec9f87cd8dfb14dad9f17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4408f03c_0bd7ea49",
+        "filename": "filesystem/raw_binary.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1882526
+      },
+      "writtenOn": "2022-04-25T14:55:12Z",
+      "side": 1,
+      "message": "Depending on how much control the user has over their linker script, it might be convenient for this command to accept a list of sections to keep (`-j`) or exclude (`-R`)?",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 4
+      },
+      "revId": "b880973d431b0bc0ba2ec9f87cd8dfb14dad9f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
