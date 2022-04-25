@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "154ddafb_38bf9b9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-04-25T21:30:53Z",
+      "side": 1,
+      "message": "Thanks, @jobredeaux! I fixed the spaces. In addition, I also made `external/rappor` to available to `bp2build` to testify the changes.",
+      "revId": "5397f75330e6efdb1a5f2ed4ac85ee868d82cb91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
