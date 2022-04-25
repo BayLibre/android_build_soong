@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a95dd9bc_e2d88171",
+        "filename": "java/lint_defaults.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-25T17:38:45Z",
+      "side": 1,
+      "message": "Can you add a comment here why this is disabled, and mention when it is turned back on?",
+      "revId": "5c11e212350603b2af11d24b89d0405d7f282cc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
