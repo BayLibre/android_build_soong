@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07f4df40_eb88db99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-04-25T14:39:39Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be better to extend cc_binary and cc_prebuilt_binary to have a boolean property like `raw`? The cc package already is using llvm-objcopy to do things like stripping debug symbols, so that place seems to be a better place for any additional use of objcopy.",
+      "revId": "b880973d431b0bc0ba2ec9f87cd8dfb14dad9f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
