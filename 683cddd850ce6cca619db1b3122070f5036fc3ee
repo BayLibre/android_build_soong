@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce4b2a36_5a6042ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-04-25T18:39:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c526b0a6_9c14e21b",
+      "range": {
+        "startLine": 9,
+        "startChar": 16,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "683cddd850ce6cca619db1b3122070f5036fc3ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54c6f593_59fb71bd",
@@ -37,6 +61,24 @@
       "writtenOn": "2022-04-25T18:13:30Z",
       "side": 1,
       "message": "I assume, based on the need for this change, that the platform code has a min sdk !\u003d compile SDK. Is that correct? Is it infeasible/difficult to fix it there?\n\nBecause we could benefit from doing NewApi checks in all code that has min sdk !\u003d compile sdk. In the sense that it probably makes sense and should be catching potential issues with the code. (Still allowing them to disable it as long as it\u0027s not shipped into mainline).",
+      "revId": "683cddd850ce6cca619db1b3122070f5036fc3ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c34e754_47873d4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-04-25T18:39:53Z",
+      "side": 1,
+      "message": "\u003e I assume, based on the need for this change, that the platform code has a min sdk !\u003d compile SDK.\nI think for the platform library `services.core.unboosted` (as an example), min_sdk and compile_sdk are equal (both are `private_current`). As a result, the newapi checks were previously reported as warnings (inherited from defaults) and not as errors\n\n\u003e Because we could benefit from doing NewApi checks in all code that has min sdk !\u003d compile sdk. In the sense that it probably makes sense and should be catching potential issues with the code. (Still allowing them to disable it as long as it\u0027s not shipped into mainline).\nThis CL should not change for the behavior for Soong modules with min_sdk !\u003d compile sdk. NewApi will be treated as an error check for those modules. This CL silences NewApi as a warning check for Soong modules with min_sdk \u003d\u003d compile sdk",
+      "parentUuid": "54c6f593_59fb71bd",
       "revId": "683cddd850ce6cca619db1b3122070f5036fc3ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
