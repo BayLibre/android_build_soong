@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "722f2f1d_dd6b679b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2022-04-26T01:59:30Z",
+      "side": 1,
+      "message": "Looking at your other change, we should likely be adding a few checks in https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/check.go;drc\u003d18aefc19776337955c9a1a8946f188900cb4d537;l\u003d72 to make sure people are using the right properties",
+      "revId": "a922d5a65d3a5a3325aad7f18f26f4e17481c540",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31ea2df3_f0351239",
         "filename": "cc/linker.go",
         "patchSetId": 1
