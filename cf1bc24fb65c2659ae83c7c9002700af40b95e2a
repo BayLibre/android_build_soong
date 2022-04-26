@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "963649b1_22f11066",
+        "filename": "Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-04-26T05:27:35Z",
+      "side": 1,
+      "message": "build.prop is buildinfo.prop + ADDITIONAL_SYSTEM_PROPERTIES.",
+      "parentUuid": "aeb3b0e6_87361fa3",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 25
+      },
+      "revId": "cf1bc24fb65c2659ae83c7c9002700af40b95e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7f788e4c_f7adea10",
         "filename": "android/buildinfo_prop.go",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2022-04-26T04:36:17Z",
       "side": 1,
       "message": "Given that this is a singleton module, `stem` property seems not make much sense.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "cf1bc24fb65c2659ae83c7c9002700af40b95e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "795bdf85_94c2201d",
+        "filename": "android/buildinfo_prop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-04-26T05:27:35Z",
+      "side": 1,
+      "message": "fair enough. I\u0027ll try updating it on the internal change.",
+      "parentUuid": "7f788e4c_f7adea10",
       "range": {
         "startLine": 30,
         "startChar": 0,
