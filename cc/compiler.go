@@ -61,14 +61,6 @@ type BaseCompilerProperties struct {
 	// list of module-specific flags that will be used for .S compiles
 	Asflags []string `android:"arch_variant"`
 
-	// list of module-specific flags that will be used for C and C++ compiles when
-	// compiling with clang
-	Clang_cflags []string `android:"arch_variant"`
-
-	// list of module-specific flags that will be used for .S compiles when
-	// compiling with clang
-	Clang_asflags []string `android:"arch_variant"`
-
 	// the instruction set architecture to use to compile the C/C++
 	// module.
 	Instruction_set *string `android:"arch_variant"`
@@ -440,13 +432,7 @@ func (compiler *baseCompiler) compilerFlags(ctx ModuleContext, flags Flags, deps
 
 	// TODO: debug
 	flags.Local.CFlags = append(flags.Local.CFlags, esc(compiler.Properties.Release.Cflags)...)
-
-	CheckBadCompilerFlags(ctx, "clang_cflags", compiler.Properties.Clang_cflags)
-	CheckBadCompilerFlags(ctx, "clang_asflags", compiler.Properties.Clang_asflags)
-
 	flags.Local.CFlags = config.ClangFilterUnknownCflags(flags.Local.CFlags)
-	flags.Local.CFlags = append(flags.Local.CFlags, esc(compiler.Properties.Clang_cflags)...)
-	flags.Local.AsFlags = append(flags.Local.AsFlags, esc(compiler.Properties.Clang_asflags)...)
 	flags.Local.CppFlags = config.ClangFilterUnknownCflags(flags.Local.CppFlags)
 	flags.Local.ConlyFlags = config.ClangFilterUnknownCflags(flags.Local.ConlyFlags)
 	flags.Local.LdFlags = config.ClangFilterUnknownCflags(flags.Local.LdFlags)
