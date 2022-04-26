@@ -1269,6 +1269,7 @@ def init(g, handle):
 		in: `
 ifeq (,$(call foobar))
 endif
+$(local-generated-sources-dir)
 `,
 		expected: `load("//build/make/core:product_config.rbc", "rblf")
 
@@ -1276,6 +1277,7 @@ def init(g, handle):
   cfg = rblf.cfg(handle)
   if rblf.mk2rbc_error("build/product.mk:2", "cannot handle invoking foobar"):
     pass
+  rblf.mk2rbc_error("build/product.mk:4", "local-generated-sources-dir is not supported")
 `,
 	},
 	{

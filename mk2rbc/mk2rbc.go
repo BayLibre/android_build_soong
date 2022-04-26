@@ -130,6 +130,13 @@ var knownNodeFunctions = map[string]interface {
 	"foreach":                   &foreachCallNodeParser{},
 }
 
+// These look like variables, but are actually functions, and would give
+// undefined variable errors if we converted them as variables. Instead,
+// emit an error instead of converting them.
+var unsupportedFunctions = map[string]bool{
+	"local-generated-sources-dir": true,
+}
+
 // These are functions that we don't implement conversions for, but
 // we allow seeing their definitions in the product config files.
 var ignoredDefines = map[string]bool{
@@ -1262,6 +1269,12 @@ func (ctx *parseContext) parseReference(node mkparser.Node, ref *mkparser.MakeSt
 		return ctx.newBadExpr(node, "reference is too complex: %s", refDump)
 	}
 
+	if name, _, ok := ctx.maybeParseFunctionCall(node, ref); ok {
+		if _, unsupported := unsupportedFunctions[name]; unsupported {
+			return ctx.newBadExpr(node, "%s is not supported", refDump)
+		}
+	}
+
 	// If it is a single word, it can be a simple variable
 	// reference or a function call
 	if len(words) == 1 && !isMakeControlFunc(refDump) && refDump != "shell" && refDump != "eval" {
@@ -1309,9 +1322,8 @@ func (ctx *parseContext) parseReference(node mkparser.Node, ref *mkparser.MakeSt
 		} else {
 			return ctx.newBadExpr(node, "cannot handle invoking %s", name)
 		}
-	} else {
-		return ctx.newBadExpr(node, "cannot handle %s", refDump)
 	}
+	return ctx.newBadExpr(node, "cannot handle %s", refDump)
 }
 
 type simpleCallParser struct {
