@@ -32,6 +32,9 @@ type InstallerProperties struct {
 
 	// Install output directly in {partition}/xbin
 	Install_in_xbin *bool `android:"arch_variant"`
+
+	// Install output directly in {partition}/etc
+	Install_in_etc *bool `android:"arch_variant"`
 }
 
 type installLocation int
@@ -78,6 +81,8 @@ func (installer *baseInstaller) installDir(ctx ModuleContext) android.InstallPat
 		dir = ""
 	} else if installer.installInXbin() {
 		dir = "xbin"
+	} else if installer.installInEtc() {
+		dir = "etc"
 	}
 
 	if ctx.Target().NativeBridge == android.NativeBridgeEnabled {
@@ -131,4 +136,8 @@ func (installer *baseInstaller) installInRoot() bool {
 
 func (installer *baseInstaller) installInXbin() bool {
 	return Bool(installer.Properties.Install_in_xbin)
+}
+
+func (installer *baseInstaller) installInEtc() bool {
+	return Bool(installer.Properties.Install_in_etc)
 }
