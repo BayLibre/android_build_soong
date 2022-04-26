@@ -16,6 +16,24 @@
       "message": "This looks like it should work, but I wonder if it might make more sense to introduce a new `raw_binary` build rule type rather than just a flag on `cc_binary`, as the way we are currently using `cc_binary` for this feels like a bit of a hack (relying on dead code removal to avoid including all the parts of libc and everything else which won\u0027t work in a bare-metal binary), and it\u0027s necessary to also set a bunch of other flags (`static_executable`, `nocrt`, `stl` and so on). If we added a new build rule it could do the right thing by default.\n\nThoughts?",
       "revId": "8d64e314654571b5cb20dcd5d2f0d093be40ed59",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9002739a_62e324e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-04-26T15:36:18Z",
+      "side": 1,
+      "message": "I wouldn\u0027t dare reimplement `cc_binary`, it\u0027s ridiculously complicated. If we can figure out a configuration for `cc_binary` that works for us, we can always make it a `cc_default` for sharing across multiple targets.",
+      "parentUuid": "ff0ed8d0_1c0b6842",
+      "revId": "8d64e314654571b5cb20dcd5d2f0d093be40ed59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
