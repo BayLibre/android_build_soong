@@ -68,6 +68,24 @@
       "message": "Linker scripts are able to read arbitrary files, which can cause correctness problems for incremental builds. Colin, should we be running the linker within sbox? (maybe just when linker scripts are used? though it\u0027s probably easiest to do it all the time)",
       "revId": "a922d5a65d3a5a3325aad7f18f26f4e17481c540",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d3437db_cf2a84f1",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-04-26T19:42:39Z",
+      "side": 1,
+      "message": "`lld` has `--dependency-file` now, which should help mitigate this, but it isn\u0027t on yet (b/137961579).",
+      "parentUuid": "31ea2df3_f0351239",
+      "revId": "a922d5a65d3a5a3325aad7f18f26f4e17481c540",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
