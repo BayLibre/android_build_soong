@@ -1142,6 +1142,8 @@ def init(g, handle):
 MY_PATH:=foo
 #RBC# include_top vendor/foo1
 $(call inherit-product,$(MY_PATH)/cfg.mk)
+#RBC# include_top vendor/foo1
+$(call inherit-product,$(MY_OTHER_PATH))
 `,
 		expected: `load("//build/make/core:product_config.rbc", "rblf")
 load("//vendor/foo1:cfg.star|init", _cfg_init = "init")
@@ -1155,6 +1157,13 @@ def init(g, handle):
   (_varmod, _varmod_init) = _entry if _entry else (None, None)
   if not _varmod_init:
     rblf.mkerror("product.mk", "Cannot find %s" % ("%s/cfg.mk" % g["MY_PATH"]))
+  rblf.inherit(handle, _varmod, _varmod_init)
+  _entry = {
+    "vendor/foo1/cfg.mk": ("vendor/foo1/cfg", _cfg_init),
+  }.get(g.get("MY_OTHER_PATH", ""))
+  (_varmod, _varmod_init) = _entry if _entry else (None, None)
+  if not _varmod_init:
+    rblf.mkerror("product.mk", "Cannot find %s" % (g.get("MY_OTHER_PATH", "")))
   rblf.inherit(handle, _varmod, _varmod_init)
 `,
 	},
