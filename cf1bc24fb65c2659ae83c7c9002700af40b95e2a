@@ -16,6 +16,75 @@
       "message": "I\u0027ll upload to tm-dev to resolve merge conflict.",
       "revId": "cf1bc24fb65c2659ae83c7c9002700af40b95e2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeb3b0e6_87361fa3",
+        "filename": "Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-04-26T04:36:17Z",
+      "side": 1,
+      "message": "nit: why not build.prop?",
+      "range": {
+        "startLine": 125,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 25
+      },
+      "revId": "cf1bc24fb65c2659ae83c7c9002700af40b95e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f788e4c_f7adea10",
+        "filename": "android/buildinfo_prop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-04-26T04:36:17Z",
+      "side": 1,
+      "message": "Given that this is a singleton module, `stem` property seems not make much sense.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "cf1bc24fb65c2659ae83c7c9002700af40b95e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc2ffb73_933c4b5c",
+        "filename": "android/buildinfo_prop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2022-04-26T04:36:17Z",
+      "side": 1,
+      "message": "nit: redundant.",
+      "range": {
+        "startLine": 163,
+        "startChar": 27,
+        "endLine": 163,
+        "endChar": 43
+      },
+      "revId": "cf1bc24fb65c2659ae83c7c9002700af40b95e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
