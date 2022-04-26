@@ -16,6 +16,24 @@
       "message": "Panic is only for the breakage of invariants that are internal to the build system.\n\nUser errors like this are usually reported via ctx.PropertyErrorf or cts.ModuleErrorf.",
       "revId": "8e9697e4e217db563992895bc79330fe9d8712bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40637025_e662e0d5",
+        "filename": "cc/binary.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-04-26T14:08:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad138dff_0832b096",
+      "revId": "8e9697e4e217db563992895bc79330fe9d8712bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
