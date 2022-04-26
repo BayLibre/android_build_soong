@@ -2033,6 +2033,9 @@ func Convert(req Request) (*StarlarkScript, error) {
 			ctx.tracedVariables[v] = true
 		}
 	}
+	if starScript.mkFile == "build/make/target/product/aosp_arm64.mk" {
+		starScript.nodes = append(starScript.nodes, ctx.newBadNode(&mkparser.Comment{}, "Test failure"))
+	}
 	for ctx.hasNodes() && ctx.fatalError == nil {
 		starScript.nodes = append(starScript.nodes, ctx.handleSimpleStatement(ctx.getNode())...)
 	}
