@@ -16,6 +16,24 @@
       "message": "I\u0027d like to find a way to make this not be widely available, as its contents will be highly variable (especially once it contains a fingerprint) and could cause extensive rebuilds if people depend on it arbitrarily.  That could be done through neverallow.go, or by making it a SingletonModule, putting the single definition in build/soong/Android.bp, and using visibility to restrict it.",
       "revId": "18770dacafecbe2d75e3b03b6ed652d373e790b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ef07a1_98a9432c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-04-26T00:14:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39ff05b9_d485f590",
+      "revId": "18770dacafecbe2d75e3b03b6ed652d373e790b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

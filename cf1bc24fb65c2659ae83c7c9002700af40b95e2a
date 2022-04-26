@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "008cf9f8_08f71136",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-04-26T00:14:31Z",
+      "side": 1,
+      "message": "I\u0027ll upload to tm-dev to resolve merge conflict.",
+      "revId": "cf1bc24fb65c2659ae83c7c9002700af40b95e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
