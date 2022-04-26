@@ -54,6 +54,41 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "458e23fa_6a71835f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-04-26T01:43:20Z",
+      "side": 1,
+      "message": "l",
+      "revId": "b880973d431b0bc0ba2ec9f87cd8dfb14dad9f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfe37b93_f91ee7d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2022-04-26T01:43:20Z",
+      "side": 1,
+      "message": "You may extend cc.InstallerProperties [1] to have `install_in_etc`.\n\n[1] https://cs.android.com/android/platform/superproject/+/master:build/soong/cc/installer.go;drc\u003d80b102da56ab40245fc4bff17ebcba40e78dd4b8;l\u003d25",
+      "parentUuid": "b7ee4ced_7654f1ee",
+      "revId": "b880973d431b0bc0ba2ec9f87cd8dfb14dad9f17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4408f03c_0bd7ea49",
