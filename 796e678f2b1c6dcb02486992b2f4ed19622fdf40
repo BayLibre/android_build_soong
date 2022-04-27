@@ -16,6 +16,23 @@
       "message": "I\u0027m now taking a look at the build failure.",
       "revId": "796e678f2b1c6dcb02486992b2f4ed19622fdf40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e1f9769_3809334d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-04-27T04:05:02Z",
+      "side": 1,
+      "message": "Hmm. It seems that --skip-config option causes null dereferencing.",
+      "revId": "796e678f2b1c6dcb02486992b2f4ed19622fdf40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
