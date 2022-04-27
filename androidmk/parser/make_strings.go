@@ -279,6 +279,9 @@ func (ms *MakeString) TrimRightOne() {
 
 func (ms *MakeString) EndsWith(ch rune) bool {
 	s := ms.Strings[len(ms.Strings)-1]
+	if len(s) == 0 {
+		return false
+	}
 	return s[len(s)-1] == uint8(ch)
 }
 
