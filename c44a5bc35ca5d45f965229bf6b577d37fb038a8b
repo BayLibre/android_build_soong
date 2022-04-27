@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec696df0_27369bf7",
+        "filename": "android/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-27T23:05:44Z",
+      "side": 1,
+      "message": "Why is this necessary? Can\u0027t we just iterate through the two hashsets instead?",
+      "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b265bf6b_86790504",
+        "filename": "android/metrics.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-27T23:05:44Z",
+      "side": 1,
+      "message": "I think you can remove this TODO :) This is the way we can do hashsets in go",
+      "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84913d25_59e511ea",
+        "filename": "android/metrics.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-27T23:05:44Z",
+      "side": 1,
+      "message": "These are static constants, which we should try to avoid when possible. Can we add these to Config instead? Additionally, it would be good to hide the underlying fields behind functions on Config() (to leave the underlying maps as an implementation detail)",
+      "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b19e45a3_3d6a9c33",
+        "filename": "android/metrics.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-27T23:05:44Z",
+      "side": 1,
+      "message": "Note: Maps are unordered in go. When reasonable, we should avoid outputs having nondeterministic ordering. Perhaps we can sort the keys before iterating?",
+      "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70b157cd_3e3a7a8a",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-27T23:05:44Z",
+      "side": 1,
+      "message": "IIUC this new enum isn\u0027t used, correct?",
+      "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f64371ca_9334bcf5",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-27T23:05:44Z",
+      "side": 1,
+      "message": "How about instead we have two `string[]`, one for \"mixedBuildEnabled\" and one for \"mixedBuildDisabled\" ?",
+      "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
