@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c45bd8_d4616cc4",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-04-27T20:12:40Z",
+      "side": 1,
+      "message": "Maybe this can go into the comment for dexpreoptBootJars.otherImages instead, where it already talks about the ART image? Here the connection between it and d.otherImages may not be obvious.",
+      "range": {
+        "startLine": 935,
+        "startChar": 0,
+        "endLine": 936,
+        "endChar": 22
+      },
+      "revId": "442ec7fc07d5c622291cb836b8e38c760065d2df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
