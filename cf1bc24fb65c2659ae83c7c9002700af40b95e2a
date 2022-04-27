@@ -173,6 +173,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "364ef9c0_d5873faa",
+        "filename": "android/buildinfo_prop.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-04-27T00:12:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "795bdf85_94c2201d",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 13
+      },
+      "revId": "cf1bc24fb65c2659ae83c7c9002700af40b95e2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "dc2ffb73_933c4b5c",
         "filename": "android/buildinfo_prop.go",
         "patchSetId": 3

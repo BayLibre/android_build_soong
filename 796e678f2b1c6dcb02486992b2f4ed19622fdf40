@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "929fa469_9a4a46dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291338
+      },
+      "writtenOn": "2022-04-27T00:12:00Z",
+      "side": 1,
+      "message": "I\u0027m now taking a look at the build failure.",
+      "revId": "796e678f2b1c6dcb02486992b2f4ed19622fdf40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
