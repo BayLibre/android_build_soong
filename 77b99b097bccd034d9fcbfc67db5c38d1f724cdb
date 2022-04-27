@@ -94,6 +94,30 @@
       },
       "revId": "77b99b097bccd034d9fcbfc67db5c38d1f724cdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "465a9523_0f85c4a2",
+        "filename": "java/dexpreopt.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-04-27T12:41:06Z",
+      "side": 0,
+      "message": "After investigating the failures on gtests I realized that the primary boot image should be exposed to make for testing purposes (and likely for benchmarks and the apk scanner as well). So I\u0027m reverting the larger cleanup and updating the comments.",
+      "parentUuid": "f8c3fe13_6a832f57",
+      "range": {
+        "startLine": 263,
+        "startChar": 14,
+        "endLine": 263,
+        "endChar": 32
+      },
+      "revId": "77b99b097bccd034d9fcbfc67db5c38d1f724cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
