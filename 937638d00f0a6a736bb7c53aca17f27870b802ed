@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fba4e471_a78c9897",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-04-27T11:53:29Z",
+      "side": 1,
+      "message": "\u003e This reduces soong_build analysis time by about 30% for mixed builds.\nIt also reduces ninja file size by ~750MB.\n\nAmazing \\o/",
+      "revId": "937638d00f0a6a736bb7c53aca17f27870b802ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb560c4_25c5e033",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-04-27T11:53:29Z",
+      "side": 1,
+      "message": "Also print out the requesting depset.Id for clarity?",
+      "range": {
+        "startLine": 201,
+        "startChar": 28,
+        "endLine": 201,
+        "endChar": 55
+      },
+      "revId": "937638d00f0a6a736bb7c53aca17f27870b802ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff87119b_cdfd8bc1",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-04-27T11:53:29Z",
+      "side": 1,
+      "message": "Presumably this is the \"normal\" default action type? Can you add a comment to describe the else condition?",
+      "range": {
+        "startLine": 368,
+        "startChar": 3,
+        "endLine": 370,
+        "endChar": 3
+      },
+      "revId": "937638d00f0a6a736bb7c53aca17f27870b802ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e56c0816_fe28ec41",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-04-27T11:53:29Z",
+      "side": 1,
+      "message": "This for-loop is getting long and difficult to read. Extract the build statement generation and depset generation into two smaller functions operating on actionGraphContainer?",
+      "range": {
+        "startLine": 372,
+        "startChar": 2,
+        "endLine": 408,
+        "endChar": 2
+      },
+      "revId": "937638d00f0a6a736bb7c53aca17f27870b802ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "570c5c5b_75f83342",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-04-27T11:53:29Z",
+      "side": 1,
+      "message": "nit: indent",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 3
+      },
+      "revId": "937638d00f0a6a736bb7c53aca17f27870b802ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
