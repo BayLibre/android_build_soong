@@ -2089,9 +2089,11 @@ func (m *Library) convertLibraryAttrsBp2Build(ctx android.TopDownMutatorContext)
 	if m.properties.Javacflags != nil {
 		javacopts = append(javacopts, m.properties.Javacflags...)
 	}
+
 	epEnabled := m.properties.Errorprone.Enabled
-	//TODO(b/227504307) add configuration that depends on RUN_ERROR_PRONE environment variable
-	if Bool(epEnabled) {
+	// Beacause errorprone is always run in bazel, we use the errorprone's javacflags when errorprone.enabled is true or unset.
+	// TODO(b/227504307) add configuration that depends on RUN_ERROR_PRONE environment variable
+	if epEnabled == nil || *epEnabled {
 		javacopts = append(javacopts, m.properties.Errorprone.Javacflags...)
 	}
 
