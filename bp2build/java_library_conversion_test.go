@@ -181,7 +181,7 @@ func TestJavaLibraryErrorproneJavacflagsEnabledManually(t *testing.T) {
 	})
 }
 
-func TestJavaLibraryErrorproneJavacflagsErrorproneDisabledByDefault(t *testing.T) {
+func TestJavaLibraryErrorproneJavacflagsErrorproneEnabledByDefault(t *testing.T) {
 	runJavaLibraryTestCase(t, bp2buildTestCase{
 		blueprint: `java_library {
     name: "java-lib-1",
@@ -193,8 +193,11 @@ func TestJavaLibraryErrorproneJavacflagsErrorproneDisabledByDefault(t *testing.T
 }`,
 		expectedBazelTargets: []string{
 			makeBazelTarget("java_library", "java-lib-1", attrNameToString{
-				"javacopts": `["-Xsuper-fast"]`,
-				"srcs":      `["a.java"]`,
+				"javacopts": `[
+        "-Xsuper-fast",
+        "-Xep:SpeedLimit:OFF",
+    ]`,
+				"srcs": `["a.java"]`,
 			}),
 		},
 	})
