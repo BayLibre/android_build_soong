@@ -126,6 +126,17 @@ func stopRBE(ctx Context, config Config) {
 	}
 }
 
+// Check whether proper auth exists for RBE builds run within a
+// Google dev environment.
+func CheckProdCreds(ctx Context, config Config) {
+	if !config.IsGooglerEnvironment() || !config.StubbyExists() || config.GoogleProdCredsExist() {
+		return
+	}
+	fmt.Fprintln(ctx.Writer, "")
+	fmt.Fprintln(ctx.Writer, "\033[33mWARNING: Missing LOAS credentials, please run `gcert`. This will result in failing builds in the future, see go/rbe-android-default-announcement.\033[0m")
+	fmt.Fprintln(ctx.Writer, "")
+}
+
 // DumpRBEMetrics creates a metrics protobuf file containing RBE related metrics.
 // The protobuf file is created if RBE is enabled and the proxy service has
 // started. The proxy service is shutdown in order to dump the RBE metrics to the
