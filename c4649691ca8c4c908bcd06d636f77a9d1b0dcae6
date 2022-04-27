@@ -54,6 +54,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39f37cbc_eb2afee0",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-04-27T19:18:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4a2dfc51_01001b96",
+      "revId": "c4649691ca8c4c908bcd06d636f77a9d1b0dcae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a460fc74_b9ec89b2",
@@ -71,6 +89,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b65861b_cc3d7066",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-04-27T19:18:09Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a460fc74_b9ec89b2",
+      "revId": "c4649691ca8c4c908bcd06d636f77a9d1b0dcae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd7a10f6_eb16f993",
@@ -84,6 +120,24 @@
       "writtenOn": "2022-04-21T20:06:24Z",
       "side": 1,
       "message": "Does this mean we are writing soong_build_metrics.pb for each module for which mixed builds is enabled?\n\nWe should avoid writing to this file more than once during a run of soong_build.\n\nSee https://cs.android.com/android/platform/superproject/+/master:build/soong/cmd/soong_build/main.go;l\u003d186-198;drc\u003d715b08fd828d0f53af0a3a26e7fdc5495757b821 for an example; we make only one call to `android.WriteMetrics(configuration, eventHandler, metricsFile)`, despite having collected copious data in `eventHandler` during analysis.\n\n\nWe should attempt to collect mixed build information (mode for each module) in some configuration singleton, and then write it alongside the marshaled data from eventHandler as is done in the above code link.\n\n\nNote also that soong_build_metrics.pb is a serialized proto: https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/metrics/metrics_proto/metrics.pb.go;l\u003d1128;drc\u003d450b938185d40e82b0d28d8f2da134b035e72088\n\nso in order to preserve the format of this file, we will need to add some new fields to https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/metrics/metrics_proto/metrics.proto;drc\u003d62243a3691c950963d42b268492caf7345498445\n\nSee the adjacent `regen.sh` script for how to regenerate the `.pb.go` file after  `.pb` changes.",
+      "revId": "c4649691ca8c4c908bcd06d636f77a9d1b0dcae6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8384536d_8d6e83b0",
+        "filename": "android/bazel.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-04-27T19:18:09Z",
+      "side": 1,
+      "message": "PTAL",
+      "parentUuid": "cd7a10f6_eb16f993",
       "revId": "c4649691ca8c4c908bcd06d636f77a9d1b0dcae6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
