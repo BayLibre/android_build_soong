@@ -1242,8 +1242,30 @@ func (c *configImpl) rbeSockAddr(dir string) (string, error) {
 	return "", fmt.Errorf("cannot generate a proxy socket address shorter than the limit of %v", maxNameLen)
 }
 
+func (c *configImpl) IsGooglerEnvironment() bool {
+	cf := "ANDROID_BUILD_ENVIRONMENT_CONFIG"
+	if v, ok := c.environ.Get(cf); ok {
+		return v == "googler"
+	}
+	return false
+}
+
+func (c *configImpl) GoogleProdCredsExist() bool {
+	if _, err := exec.Command("/usr/bin/prodcertstatus", "--simple_output", "--nocheck_loas").Output(); err != nil {
+		return false
+	}
+	return true
+}
+
 func (c *configImpl) UseRemoteBuild() bool {
 	return c.UseGoma() || c.UseRBE()
+}
+
+func (c *configImpl) StubbyExists() bool {
+	if _, err := os.Stat("/usr/bin/stubby"); err != nil {
+		return false
+	}
+	return true
 }
 
 // RemoteParallel controls how many remote jobs (i.e., commands which contain
