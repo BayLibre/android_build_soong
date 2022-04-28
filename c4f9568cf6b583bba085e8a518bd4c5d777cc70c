@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23c6f20b_62c88cf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-28T14:24:00Z",
+      "side": 1,
+      "message": "Given that errorprone is not run in Soong by default, my preference would be to add `--javacopt\u003d\u0027-extra_checks:off\u0027` to our bazelrc to disable errorprone while we determine how errorprone will be handled in Bazel-only builds.",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "c4f9568cf6b583bba085e8a518bd4c5d777cc70c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
