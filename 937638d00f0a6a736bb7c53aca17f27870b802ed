@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20cf8367_4c2b0d83",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-28T16:46:03Z",
+      "side": 1,
+      "message": "Good idea",
+      "parentUuid": "fcb560c4_25c5e033",
+      "range": {
+        "startLine": 201,
+        "startChar": 28,
+        "endLine": 201,
+        "endChar": 55
+      },
+      "revId": "937638d00f0a6a736bb7c53aca17f27870b802ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ff87119b_cdfd8bc1",
@@ -71,6 +95,30 @@
       "writtenOn": "2022-04-27T11:53:29Z",
       "side": 1,
       "message": "Presumably this is the \"normal\" default action type? Can you add a comment to describe the else condition?",
+      "range": {
+        "startLine": 368,
+        "startChar": 3,
+        "endLine": 370,
+        "endChar": 3
+      },
+      "revId": "937638d00f0a6a736bb7c53aca17f27870b802ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9fdef2a_3b677d9b",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-28T16:46:03Z",
+      "side": 1,
+      "message": "Yes :) Clarified",
+      "parentUuid": "ff87119b_cdfd8bc1",
       "range": {
         "startLine": 368,
         "startChar": 3,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "782c51a2_73151a84",
+        "filename": "bazel/aquery.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-28T16:46:03Z",
+      "side": 1,
+      "message": "Yeah, I was torn on whether to break this up now, but you\u0027re right it\u0027s probably time :)",
+      "parentUuid": "e56c0816_fe28ec41",
+      "range": {
+        "startLine": 372,
+        "startChar": 2,
+        "endLine": 408,
+        "endChar": 2
+      },
+      "revId": "937638d00f0a6a736bb7c53aca17f27870b802ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "570c5c5b_75f83342",
@@ -117,6 +189,30 @@
       "writtenOn": "2022-04-27T11:53:29Z",
       "side": 1,
       "message": "nit: indent",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 3
+      },
+      "revId": "937638d00f0a6a736bb7c53aca17f27870b802ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd5601f6_5ff189b2",
+        "filename": "bazel/aquery_test.go",
+        "patchSetId": 6
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-28T16:46:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "570c5c5b_75f83342",
       "range": {
         "startLine": 351,
         "startChar": 0,
