@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7232e4e1_4fdc9d35",
+        "filename": "android/config.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-04-28T20:40:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec696df0_27369bf7",
+      "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b265bf6b_86790504",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a94eaac_dfdf33d5",
+        "filename": "android/metrics.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-04-28T20:40:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b265bf6b_86790504",
+      "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84913d25_59e511ea",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-04-27T23:05:44Z",
       "side": 1,
       "message": "These are static constants, which we should try to avoid when possible. Can we add these to Config instead? Additionally, it would be good to hide the underlying fields behind functions on Config() (to leave the underlying maps as an implementation detail)",
+      "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "84a31c9a_6f6ae13a",
+        "filename": "android/metrics.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-04-28T20:40:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84913d25_59e511ea",
       "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f2963e7_e079d393",
+        "filename": "android/metrics.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-04-28T20:40:40Z",
+      "side": 1,
+      "message": "What version of Go are we on? Apparently they\u0027re sorted in anything after 1.12",
+      "parentUuid": "b19e45a3_3d6a9c33",
+      "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70b157cd_3e3a7a8a",
         "filename": "ui/metrics/metrics_proto/metrics.proto",
         "patchSetId": 10
@@ -82,6 +154,24 @@
       "writtenOn": "2022-04-27T23:05:44Z",
       "side": 1,
       "message": "IIUC this new enum isn\u0027t used, correct?",
+      "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "506d9bd4_e877f44f",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-04-28T20:40:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70b157cd_3e3a7a8a",
       "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -99,6 +189,24 @@
       "writtenOn": "2022-04-27T23:05:44Z",
       "side": 1,
       "message": "How about instead we have two `string[]`, one for \"mixedBuildEnabled\" and one for \"mixedBuildDisabled\" ?",
+      "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f23ab96d_3c1f0aa9",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-04-28T20:40:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f64371ca_9334bcf5",
       "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
