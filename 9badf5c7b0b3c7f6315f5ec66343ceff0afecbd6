@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05fca1bf_f1a435c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-28T22:01:39Z",
+      "side": 1,
+      "message": "To follow up:\n\nAlso want to talk about how you tested this, and what the results look like :) A good approach here is to retrigger a mixed build (you can run `USE_BAZEL_ANALYSIS\u003d1 m nothing` to do this.)\n\nIn terms of performance impact, you can look at the EventHandler timestamp results as described by b/228874183 for a few runs. We should hopefully see no noticeable runtime difference of the `mixed_build` event with and without your change.\n\nYou can use this same approach to see what the resulting metrics look like, and verify things look good :)",
+      "parentUuid": "24f3eba2_c4b6102a",
+      "revId": "9badf5c7b0b3c7f6315f5ec66343ceff0afecbd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c5f6f42_079f6910",
         "filename": "ui/metrics/metrics_proto/metrics.proto",
         "patchSetId": 14

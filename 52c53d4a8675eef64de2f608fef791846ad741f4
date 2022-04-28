@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c887efd3_ac086c91",
+        "filename": "android/metrics.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-28T22:01:39Z",
+      "side": 1,
+      "message": "nit: Comment that these are sorted for determinism?",
+      "revId": "52c53d4a8675eef64de2f608fef791846ad741f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

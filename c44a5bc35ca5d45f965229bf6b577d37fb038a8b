@@ -177,6 +177,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00aab1b2_afd26543",
+        "filename": "android/metrics.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-28T22:01:39Z",
+      "side": 1,
+      "message": "as spoken offline looks like sorting is only for string formatting. thx for adding sorting.",
+      "parentUuid": "fc6e5f69_a742be3e",
+      "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70b157cd_3e3a7a8a",
