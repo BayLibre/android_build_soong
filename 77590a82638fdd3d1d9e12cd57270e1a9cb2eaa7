@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64483571_cabe5384",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-04-28T14:36:00Z",
+      "side": 1,
+      "message": "You\u0027ll want to cp to tm-dev too.\n\nSo for now we\u0027ll keep the separate updatable-media java_library but in time maybe we can get `stem` to work on the java_sdk_library?",
+      "revId": "77590a82638fdd3d1d9e12cd57270e1a9cb2eaa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
