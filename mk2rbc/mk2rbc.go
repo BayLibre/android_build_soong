@@ -1265,7 +1265,23 @@ func (ctx *parseContext) parseReference(node mkparser.Node, ref *mkparser.MakeSt
 	// Handle only the case where the first (or only) word is constant
 	words := ref.SplitN(" ", 2)
 	if !words[0].Const() {
-		return ctx.newBadExpr(node, "reference is too complex: %s", refDump)
+		return &callExpr{
+			object: &identifierExpr{"cfg"},
+			name:   "get",
+			args: []starlarkExpr{
+				ctx.parseMakeString(node, ref),
+				&callExpr{
+					object: &identifierExpr{"g"},
+					name:   "get",
+					args: []starlarkExpr{
+						ctx.parseMakeString(node, ref),
+						&stringLiteralExpr{literal: ""},
+					},
+					returnType: starlarkTypeUnknown,
+				},
+			},
+			returnType: starlarkTypeUnknown,
+		}
 	}
 
 	// If it is a single word, it can be a simple variable
