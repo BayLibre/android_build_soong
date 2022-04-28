@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7051702_1c8b5a72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-28T21:07:59Z",
+      "side": 1,
+      "message": "CL mostly getting there now. Any performance impact?",
+      "revId": "9badf5c7b0b3c7f6315f5ec66343ceff0afecbd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c5f6f42_079f6910",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-28T21:07:59Z",
+      "side": 1,
+      "message": "We should probably elaborate in a comment here that a single module name can appear in both lists. How about:\n\n```\n// Modules may be listed below as both enabled for Mixed Builds\n// and disabled for Mixed Builds. This implies that some variants\n// of the module are handled by Bazel in a Mixed Build, and other\n// variants of the same module are handled by Soong.\n\n// Modules that are enabled for Mixed Builds.\nrepeated string mixed_build_enabled_modules \u003d 1;\n...\n```",
+      "revId": "9badf5c7b0b3c7f6315f5ec66343ceff0afecbd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e00260_4bb630b5",
+        "filename": "ui/metrics/metrics_proto/metrics.proto",
+        "patchSetId": 14
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-28T21:07:59Z",
+      "side": 1,
+      "message": "We should make the documented semantics here verbose. Might I suggest:\n\n```\n// Modules that are not currently eligible to be handled\n// by Bazel in a Mixed Build.\n// Note that not all modules exempt from Bazel handling are\n// listed. This list includes only modules which are of a\n// Mixed-Build supported module type but are nevertheless not\n// handled by Bazel. This may occur due to being present in\n// the mixed build denylist, or as part of an unsupported\n// mixed build variant type such as Windows.\n```",
+      "revId": "9badf5c7b0b3c7f6315f5ec66343ceff0afecbd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
