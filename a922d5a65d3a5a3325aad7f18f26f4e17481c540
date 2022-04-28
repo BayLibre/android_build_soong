@@ -86,6 +86,24 @@
       "parentUuid": "31ea2df3_f0351239",
       "revId": "a922d5a65d3a5a3325aad7f18f26f4e17481c540",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f94f5ce_efb776c1",
+        "filename": "cc/linker.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-04-28T14:55:44Z",
+      "side": 1,
+      "message": "Okay, so sounds like there is a solution but we can\u0027t use it right now. Could we merge this CL as is and then improve later? We\u0027re currently passing this as `ldflags` and that doesn\u0027t even track the dependency on the linker script itself, so it would be an improvement.",
+      "parentUuid": "5d3437db_cf2a84f1",
+      "revId": "a922d5a65d3a5a3325aad7f18f26f4e17481c540",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
