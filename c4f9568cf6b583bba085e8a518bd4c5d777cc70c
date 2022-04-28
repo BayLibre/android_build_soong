@@ -46,6 +46,30 @@
       },
       "revId": "c4f9568cf6b583bba085e8a518bd4c5d777cc70c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37066867_14100bbf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-28T19:04:10Z",
+      "side": 1,
+      "message": "I agree that before Bazel is enabled for general builds we need to ensure errorprone works. We would block launch of Java support in Bazel as part of the build system on errorprone being correct.\n\nUnfortunately, it is not straightforward to just enable errorprone by default:\n\n* According to Colin, errorprone was a ~10% performance hit, so to enable it globally, we would need to justify that the build performance hit is no longer a concern or a desirable tradeoff.\n* `external/errorprone` is not available in all source trees, causing breakages if errorprone is run in those trees. We need to ensure that our solution does not cause build breakages on those trees\n\nMy recommendation that we disable errorprone in Bazel at this time is allow us to continue to make progress and reduce iterations on the conversion of errorprone-related properties while we take the time to understand the requirements and concerns around errorprone such that we implement the correct solution.",
+      "parentUuid": "f28001f5_e1f76141",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "c4f9568cf6b583bba085e8a518bd4c5d777cc70c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

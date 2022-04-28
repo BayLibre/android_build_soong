@@ -16,6 +16,24 @@
       "message": "Could we add an else statement here that disabled errorprone when m.properties.Errorprone.Enabled is false?\n\nEither by adding `-XepDisableAllChecks` or Liz\u0027s `-extra_checks:off` (not entirely sure what extra_checks:off does)",
       "revId": "50a5ba88984454a1c29cc258d79c64bcf9587085",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d9a52ce_f418130d",
+        "filename": "java/java.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 2098,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-04-28T19:04:10Z",
+      "side": 1,
+      "message": "Dependent on our solution, how we append `Errorprone.Javacflags` and how we want to handle `Errorprone:Enabled` may differ. Rather than iterating on this code through multiple CLs, I\u0027d rather wait until we\u0027ve addressed all the relevant requirements and concerns cohesively.",
+      "parentUuid": "4a632258_dd097543",
+      "revId": "50a5ba88984454a1c29cc258d79c64bcf9587085",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
