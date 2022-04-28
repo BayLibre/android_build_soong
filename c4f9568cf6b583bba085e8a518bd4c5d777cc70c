@@ -70,6 +70,30 @@
       },
       "revId": "c4f9568cf6b583bba085e8a518bd4c5d777cc70c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64a487ee_1d7dfe0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1938760
+      },
+      "writtenOn": "2022-04-28T20:31:21Z",
+      "side": 1,
+      "message": "Thanks Liz for the explanation. I\u0027m abandoning this CL in favor of aosp/2079919.",
+      "parentUuid": "37066867_14100bbf",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "c4f9568cf6b583bba085e8a518bd4c5d777cc70c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
