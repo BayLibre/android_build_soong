@@ -16,6 +16,24 @@
       "message": "Why not a single \n  return len(s) \u003e 0 \u0026\u0026 s[len-1] \u003d\u003d uint8(ch)",
       "revId": "ff3a387f2708320522813dc3240452472ec19a6c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2499bff_5e55c237",
+        "filename": "androidmk/parser/make_strings.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-04-28T23:08:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d2657dd1_81e07984",
+      "revId": "ff3a387f2708320522813dc3240452472ec19a6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
