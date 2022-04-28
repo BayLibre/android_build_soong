@@ -159,6 +159,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc6e5f69_a742be3e",
+        "filename": "android/metrics.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-04-28T21:30:49Z",
+      "side": 1,
+      "message": "https://go.dev/doc/go1.12\n\nI added sorting regardless. I\u0027ll poke around",
+      "parentUuid": "f8b9e989_bd5b58f6",
+      "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70b157cd_3e3a7a8a",
