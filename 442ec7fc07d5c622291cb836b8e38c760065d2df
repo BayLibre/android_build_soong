@@ -70,6 +70,30 @@
       },
       "revId": "442ec7fc07d5c622291cb836b8e38c760065d2df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7862d5c8_468f84b8",
+        "filename": "java/dexpreopt_bootjars.go",
+        "patchSetId": 4
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2022-04-28T09:55:47Z",
+      "side": 1,
+      "message": "Thanks, then I\u0027ll just leave it as is. I used to rely on TH asking me about unresolved comments before submission, but now it didn\u0027t.",
+      "parentUuid": "1430b7ba_88859e02",
+      "range": {
+        "startLine": 935,
+        "startChar": 0,
+        "endLine": 936,
+        "endChar": 22
+      },
+      "revId": "442ec7fc07d5c622291cb836b8e38c760065d2df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
