@@ -22,6 +22,30 @@
       },
       "revId": "c4f9568cf6b583bba085e8a518bd4c5d777cc70c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f28001f5_e1f76141",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-04-28T17:04:59Z",
+      "side": 1,
+      "message": "I would disagree with this. Whenever you change a java file, [errorprone runs in presubmit](http://google3/configs/wireless/android/busytown/platform/git_master/git_master.gcl;l\u003d2071;rcl\u003d444891856) for all java code across the whole source tree. So it\u0027s essentially enabled by default. I think when we migrate to bazel, we should just have errorprone on by default even for local builds to be consistent.",
+      "parentUuid": "23c6f20b_62c88cf7",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 23
+      },
+      "revId": "c4f9568cf6b583bba085e8a518bd4c5d777cc70c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
