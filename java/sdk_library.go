@@ -2224,7 +2224,15 @@ func (module *SdkLibraryImport) UniqueApexVariations() bool {
 }
 
 func (module *SdkLibraryImport) OutputFiles(tag string) (android.Paths, error) {
-	return module.commonOutputFiles(tag)
+	paths, err := module.commonOutputFiles(tag)
+	if paths != nil || err != nil {
+		return paths, err
+	}
+	if tag == "" && module.implLibraryModule != nil {
+		return module.implLibraryModule.OutputFiles("")
+	} else {
+		return nil, nil
+	}
 }
 
 func (module *SdkLibraryImport) GenerateAndroidBuildActions(ctx android.ModuleContext) {
