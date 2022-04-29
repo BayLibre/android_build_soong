@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46f43d15_8db9da8b",
+        "filename": "android/bazel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-29T03:19:31Z",
+      "side": 1,
+      "message": "@cparsons why does this method even have a receiver?\nShouldn\u0027t it simply be `func MixedBuildsEnabled(ctx ModuleContext) bool`",
+      "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec696df0_27369bf7",
         "filename": "android/config.go",
         "patchSetId": 10
