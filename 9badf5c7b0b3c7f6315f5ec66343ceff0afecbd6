@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3861fe32_c53fb8d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-04-29T16:26:46Z",
+      "side": 1,
+      "message": "Methodology - the first run from each will be discarded, and I\u0027ll simply \"grep real_time\" and upload that for easier parsing. \nI\u0027m not sure how some map additions and a little additional file I/O slows this down that much. There are very few operations being performed. \n\nOne nit before I proceed. I simply commented out the sort lines in metrics.go for the \"no sort\" bit. It might be a bit different if we reverted to the previous patch set of \"assign the config.mixedBuildEnabledModules to the proto output\" approach.\n\nNo Sort Pastes: \nhttps://paste.googleplex.com/6732402958270464?raw https://paste.googleplex.com/6484137775988736?raw\nhttps://paste.googleplex.com/6672399983443968?raw\n\nThis patchset\u0027s pastes:\nhttps://paste.googleplex.com/6106125121355776?raw\nhttps://paste.googleplex.com/4784808195522560?raw\nhttps://paste.googleplex.com/6049377261977600?raw\n\nmaster branch pastes:\nhttps://paste.googleplex.com/6550248764735488?raw\nhttps://paste.googleplex.com/4588952385224704?raw\nhttps://paste.googleplex.com/5611174969212928?raw\n\nI\u0027m not sure why No Sort has variation but the other two are identical throughout all 3. But regardless. I\u0027ll put these into a sheet after lunch.",
+      "parentUuid": "e0af6a3d_4e9bee76",
+      "revId": "9badf5c7b0b3c7f6315f5ec66343ceff0afecbd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c5f6f42_079f6910",
         "filename": "ui/metrics/metrics_proto/metrics.proto",
         "patchSetId": 14
