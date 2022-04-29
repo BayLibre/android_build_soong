@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf407e49_950444b1",
+        "filename": "android/bazel.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-29T22:11:39Z",
+      "side": 1,
+      "message": "if we\u0027re changing the text:\n// MixedBuildsEnabled returns true if a module is ready to be replaced...",
+      "revId": "2084301640770e06df02fef0e33f3b68f92cdf6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
