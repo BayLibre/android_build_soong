@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eaf11143_c0eaf633",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-29T03:29:02Z",
+      "side": 1,
+      "message": "metrics collection does not support an opt-out btw, does it?",
+      "parentUuid": "4222679b_57f6dfe5",
+      "revId": "9badf5c7b0b3c7f6315f5ec66343ceff0afecbd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c5f6f42_079f6910",
         "filename": "ui/metrics/metrics_proto/metrics.proto",
         "patchSetId": 14
