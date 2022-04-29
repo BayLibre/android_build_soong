@@ -16,6 +16,24 @@
       "message": "nit: Comment that these are sorted for determinism?",
       "revId": "52c53d4a8675eef64de2f608fef791846ad741f4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35760e5a_593394a3",
+        "filename": "android/metrics.go",
+        "patchSetId": 16
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-04-29T18:36:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c887efd3_ac086c91",
+      "revId": "52c53d4a8675eef64de2f608fef791846ad741f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
