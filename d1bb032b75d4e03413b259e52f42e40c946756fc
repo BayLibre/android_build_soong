@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "445c7cbc_c699aa2e",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-29T16:08:20Z",
+      "side": 1,
+      "message": "map[string]struct{} isn\u0027t uncommon see https://cs.android.com/search?q\u003dmap%5C%5B%5Cw%2B%5C%5Dstruct%20language:go",
+      "parentUuid": "bf703e88_fd2f7edb",
+      "range": {
+        "startLine": 32,
+        "startChar": 2,
+        "endLine": 32,
+        "endChar": 5
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3ba58dd_e4f9ecd9",
@@ -325,6 +349,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0941215_bc17cd62",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-29T16:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d9ae629_add21414",
+      "range": {
+        "startLine": 149,
+        "startChar": 2,
+        "endLine": 149,
+        "endChar": 13
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6870ef7e_b8a88583",
@@ -513,6 +561,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ae4e256_d541a979",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-29T16:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ad53da3_8efb9765",
+      "range": {
+        "startLine": 366,
+        "startChar": 25,
+        "endLine": 366,
+        "endChar": 30
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9f0c41d_c99c62de",
@@ -526,6 +598,30 @@
       "writtenOn": "2022-04-08T12:36:27Z",
       "side": 1,
       "message": "What if this conversion fails?",
+      "range": {
+        "startLine": 368,
+        "startChar": 2,
+        "endLine": 368,
+        "endChar": 37
+      },
+      "revId": "d1bb032b75d4e03413b259e52f42e40c946756fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "213a16e5_0bf8ce1d",
+        "filename": "android/computed_properties.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-04-29T16:08:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9f0c41d_c99c62de",
       "range": {
         "startLine": 368,
         "startChar": 2,
