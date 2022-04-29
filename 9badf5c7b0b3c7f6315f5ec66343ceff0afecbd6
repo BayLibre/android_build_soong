@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0203c71c_fe7f2df5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-29T16:00:29Z",
+      "side": 1,
+      "message": "To follow up a bit, I\u0027d really like for us to not require opt-in for acquiring these metrics, so we might want to dig into understanding why this type of collection is so slow. I\u0027m still surprised at these results, given that there are \u003c500 of these modules. Storing and sorting 500 strings shouldn\u0027t take several seconds. Some thoughts:\n\n1. Can you use eventHandler on the module sorting, to confirm whether that\u0027s actually a significant portion of lost time?\n2. We are tabulating enabled/disabled metrics for both pass1 and pass2 of Mixed Builds, where we only need it once. Can we avoid calculating it for one of these passes? (Perhaps we only do the \"MixedBuildEnabled\" check for the first pass, and then cache the results? This might have the added benefit of improving mixed builds performance, if this check is slow!)\n3. Maybe mutex blocking is a significant portion of lost time, as it ruins parallelism across the full module graph? Perhaps we want to combine mutex locks with a mutex hit we already suffer (can we combine logging Mixed Builds alongside the subsequent per-module mutex used for cquery? https://cs.android.com/android/platform/superproject/+/master:build/soong/android/bazel_handler.go;l\u003d129;drc\u003df485a95d3ae61c7cc0353e784d80e38546bf2529 To elaborate, all mixed build enabled modules will ultimately call the go method `cquery(), which uses a mutex to add requests to a queue for when we call Bazel. Can we log mixed builds module names alongside cquery, instead? Does that improve performance? The caveat for this is that we would not log mixed-builds-disabled cases, which is not too large a price to pay.\n\n\nIf we find that there are no leads here, and that acquiring these metrics is inherently slow, we can then consider making this opt-in. Some pointers for this:\n\n`mk-metrics` are already opt in. Code link: https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/config.go;l\u003d733;drc\u003d4e3c26602f9ffea00cf8bce2a86e0e7424daf8d5\n\nIt will be slightly more involved to make collection of these metrics opt-in, however, because we will need to propagate the opt-in flag to soong_build from soong_ui.\nWe can do so by propagating environment variables to the soong_build run, akin to how we do for `LOGS_DIR` and other variables determined in soong_ui: https://cs.android.com/android/platform/superproject/+/master:build/soong/ui/build/soong.go;l\u003d397;drc\u003dccd859ab174c2f15220f710c9adabbfbfd661ef9\n\nThen soong_build will evaluate these environment variables to determine whether we should collect these metrics.\n\nPlease let me know if you have any questions!",
+      "parentUuid": "e0af6a3d_4e9bee76",
+      "revId": "9badf5c7b0b3c7f6315f5ec66343ceff0afecbd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c5f6f42_079f6910",
         "filename": "ui/metrics/metrics_proto/metrics.proto",
         "patchSetId": 14
