@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e0af6a3d_4e9bee76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-29T04:21:17Z",
+      "side": 1,
+      "message": "That\u0027s.. rather surprising, and troubling. Can you do ~3 runs of each and see if these results are consistent?\n\nIf we find this is indeed a slow computation, we should indeed make this data collection opt-in with a flag. Happy to provide additional guidance with this, but it would be an unfortunate requirement.",
+      "parentUuid": "eaf11143_c0eaf633",
+      "revId": "9badf5c7b0b3c7f6315f5ec66343ceff0afecbd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1c5f6f42_079f6910",
         "filename": "ui/metrics/metrics_proto/metrics.proto",
         "patchSetId": 14

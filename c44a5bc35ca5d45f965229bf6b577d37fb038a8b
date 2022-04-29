@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "266a16a4_3ff7b27e",
+        "filename": "android/bazel.go",
+        "patchSetId": 10
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-04-29T04:21:17Z",
+      "side": 1,
+      "message": "Oversight / acccident. Removing the receiver would be an OK cleanup.",
+      "parentUuid": "46f43d15_8db9da8b",
+      "revId": "c44a5bc35ca5d45f965229bf6b577d37fb038a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ec696df0_27369bf7",
         "filename": "android/config.go",
         "patchSetId": 10
