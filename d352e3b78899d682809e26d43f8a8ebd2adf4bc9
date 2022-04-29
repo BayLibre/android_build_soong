@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f58ed3de_ce9038b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1943701
+      },
+      "writtenOn": "2022-04-29T13:29:02Z",
+      "side": 1,
+      "message": "Hi Stephen and Matthew,\n\nThis is just a small usability thing which I noticed after starting with Rust in Android. It looks like it works based on my simple test.\n\nHowever, I don\u0027t know how this will look in case of a compilation error on a remote host — it\u0027s possible that the logs end up with crufte ANSI escape sequences. It depends on what kind of smarts we have in the system that renders the logs back to HTML for display in the browser (it might ignore the escape sequences, it might strip them out or it might convert them to colored text).",
+      "revId": "d352e3b78899d682809e26d43f8a8ebd2adf4bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
