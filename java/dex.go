@@ -42,8 +42,8 @@ type DexProperties struct {
 		// True if the module containing this has it set by default.
 		EnabledByDefault bool `blueprint:"mutated"`
 
-		// If true, runs R8 in Proguard compatibility mode (default).
-		// Otherwise, runs R8 in full mode.
+		// If true, runs R8 in Proguard compatibility mode, otherwise runs R8 in full mode.
+		// Defaults to false for apps, true for libraries and tests.
 		Proguard_compatibility *bool
 
 		// If true, optimize for size by removing unused code.  Defaults to true for apps,
