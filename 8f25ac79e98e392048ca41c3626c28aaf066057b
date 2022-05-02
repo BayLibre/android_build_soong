@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "23512f4f_f68654c1",
+        "filename": "android/bazel.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-05-02T23:59:37Z",
+      "side": 1,
+      "message": "Is \"filters mixed builds possibility\" sufficient? Please provide more context.",
+      "parentUuid": "aaa53205_28c47a2e",
+      "revId": "8f25ac79e98e392048ca41c3626c28aaf066057b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de4b61ec_35eff7a9",
         "filename": "android/config.go",
         "patchSetId": 24
@@ -53,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "beb55e9d_8700007c",
+        "filename": "android/config.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 2052,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-05-02T23:59:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e2847d4_84330b55",
+      "revId": "8f25ac79e98e392048ca41c3626c28aaf066057b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13779658_c24d4aaa",
@@ -66,6 +102,24 @@
       "writtenOn": "2022-05-02T19:06:13Z",
       "side": 1,
       "message": "nit: why the empty line?",
+      "revId": "8f25ac79e98e392048ca41c3626c28aaf066057b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d4da633_21cc8440",
+        "filename": "android/metrics.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-05-02T23:59:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13779658_c24d4aaa",
       "revId": "8f25ac79e98e392048ca41c3626c28aaf066057b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
