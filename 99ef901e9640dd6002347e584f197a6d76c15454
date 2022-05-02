@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "981652e4_5260f4c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-02T09:10:05Z",
+      "side": 1,
+      "message": "Presubmits are all red, but it looks like that is the case for HEAD, too, with the same error message.",
+      "revId": "99ef901e9640dd6002347e584f197a6d76c15454",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
