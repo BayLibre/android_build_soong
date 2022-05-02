@@ -85,6 +85,7 @@ function create_mock_soong {
   copy_directory build/soong
   copy_directory build/make/tools/rbcrun
 
+  symlink_directory prebuilts/sdk
   symlink_directory prebuilts/go
   symlink_directory prebuilts/build-tools
   symlink_directory prebuilts/clang/host
@@ -115,8 +116,10 @@ function create_mock_bazel() {
   copy_directory build/bazel
 
   symlink_directory prebuilts/bazel
+  symlink_directory prebuilts/clang
   symlink_directory prebuilts/jdk
   symlink_directory external/bazel-skylib
+  symlink_directory external/bazelbuild-rules_android
 
   symlink_file WORKSPACE
   symlink_file BUILD

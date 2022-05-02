@@ -1418,6 +1418,7 @@ func (f *Finder) listDirSync(dir *pathMap) {
 				// Skip symlink dirs.
 				// We don't have to support symlink dirs because
 				// that would cause duplicates.
+				subdirs = append(subdirs, child.Name())
 			} else {
 				// We do have to support symlink files because the link name might be
 				// different than the target name
