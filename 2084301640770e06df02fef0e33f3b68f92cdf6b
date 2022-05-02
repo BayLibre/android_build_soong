@@ -16,6 +16,24 @@
       "message": "if we\u0027re changing the text:\n// MixedBuildsEnabled returns true if a module is ready to be replaced...",
       "revId": "2084301640770e06df02fef0e33f3b68f92cdf6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f37af3a_b5b07cd6",
+        "filename": "android/bazel.go",
+        "patchSetId": 19
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1948227
+      },
+      "writtenOn": "2022-05-02T18:32:27Z",
+      "side": 1,
+      "message": "I\u0027m a bit fastidious wrt grammar, so I\u0027d prefer to change it :)",
+      "parentUuid": "bf407e49_950444b1",
+      "revId": "2084301640770e06df02fef0e33f3b68f92cdf6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
