@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7961ab34_2616d000",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1911,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-02T16:57:48Z",
+      "side": 1,
+      "message": "Given that the Plugin struct is exported, it may be safer to check like https://cs.android.com/android/platform/superproject/+/master:build/soong/java/base.go;l\u003d1929;drc\u003db25a14df57d5dbd4ce8ea0a7f554d8608dec4a53 rather than relying on having called PluginFactory()",
+      "range": {
+        "startLine": 1911,
+        "startChar": 4,
+        "endLine": 1911,
+        "endChar": 70
+      },
+      "revId": "2df100860e6ea03a071d5414e6e8f3e453510c85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
