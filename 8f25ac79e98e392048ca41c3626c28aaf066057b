@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de4b61ec_35eff7a9",
+        "filename": "android/config.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 2052,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-02T19:06:13Z",
+      "side": 1,
+      "message": "I think the more common pattern is to `defer c.mixedBuildsLock.Unlock()` immediately (while it is inconsequential here, deferred calls can be compared to Java\u0027s \"finally\")",
+      "revId": "8f25ac79e98e392048ca41c3626c28aaf066057b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13779658_c24d4aaa",
+        "filename": "android/metrics.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-02T19:06:13Z",
+      "side": 1,
+      "message": "nit: why the empty line?",
+      "revId": "8f25ac79e98e392048ca41c3626c28aaf066057b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
