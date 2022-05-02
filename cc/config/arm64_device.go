@@ -50,8 +50,11 @@ var (
 		"-Wl,-z,separate-code",
 	}
 
-	arm64Lldflags = append(arm64Ldflags,
+	arm64DeviceLldflags = append(arm64Ldflags,
 		"-Wl,-z,max-page-size=4096")
+
+	arm64LinuxBionicLldflags = append(arm64Ldflags,
+		"-Wl,-z,max-page-size=65536")
 
 	arm64Cppflags = []string{}
 
@@ -99,7 +102,8 @@ func init() {
 		"prebuilts/gcc/${HostPrebuiltTag}/aarch64/aarch64-linux-android-${arm64GccVersion}")
 
 	exportedVars.ExportStringListStaticVariable("Arm64Ldflags", arm64Ldflags)
-	exportedVars.ExportStringListStaticVariable("Arm64Lldflags", arm64Lldflags)
+	exportedVars.ExportStringListStaticVariable("Arm64DeviceLldflags", arm64DeviceLldflags)
+	exportedVars.ExportStringListStaticVariable("Arm64LinuxBionicLldflags", arm64LinuxBionicLldflags)
 
 	exportedVars.ExportStringListStaticVariable("Arm64Cflags", arm64Cflags)
 	exportedVars.ExportStringListStaticVariable("Arm64Cppflags", arm64Cppflags)
@@ -232,7 +236,7 @@ func arm64ToolchainFactory(arch android.Arch) Toolchain {
 			extraLdflags,
 		}, " "),
 		lldflags: strings.Join([]string{
-			"${config.Arm64Lldflags}",
+			"${config.Arm64DeviceLldflags}",
 			extraLdflags,
 		}, " "),
 		toolchainCflags: strings.Join(toolchainCflags, " "),
