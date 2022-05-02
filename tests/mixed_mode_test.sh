@@ -18,3 +18,4 @@ function test_bazel_smoke {
 }
 
 test_bazel_smoke
+test_cc_correctness
