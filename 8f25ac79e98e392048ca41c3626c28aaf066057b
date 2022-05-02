@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aaa53205_28c47a2e",
+        "filename": "android/bazel.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-02T21:59:31Z",
+      "side": 1,
+      "message": "This comment is inaccurate. It sounds more like what `bp2buildAllowlist.mixedBuildsDisabled[ctx.Module().Name()]` is checking",
+      "revId": "8f25ac79e98e392048ca41c3626c28aaf066057b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de4b61ec_35eff7a9",
         "filename": "android/config.go",
         "patchSetId": 24
@@ -14,6 +31,24 @@
       "writtenOn": "2022-05-02T19:06:13Z",
       "side": 1,
       "message": "I think the more common pattern is to `defer c.mixedBuildsLock.Unlock()` immediately (while it is inconsequential here, deferred calls can be compared to Java\u0027s \"finally\")",
+      "revId": "8f25ac79e98e392048ca41c3626c28aaf066057b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e2847d4_84330b55",
+        "filename": "android/config.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 2052,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-02T21:59:31Z",
+      "side": 1,
+      "message": "+1, it\u0027s the most resilient to changes in this function, as exiting early before unlock would cause a deadlock otherwise.",
+      "parentUuid": "de4b61ec_35eff7a9",
       "revId": "8f25ac79e98e392048ca41c3626c28aaf066057b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
