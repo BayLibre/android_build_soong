@@ -34,6 +34,24 @@
       "parentUuid": "f58ed3de_ce9038b7",
       "revId": "d352e3b78899d682809e26d43f8a8ebd2adf4bc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ac0df7d_44dc9418",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1943701
+      },
+      "writtenOn": "2022-05-02T13:00:33Z",
+      "side": 1,
+      "message": "Super, thanks for finding this! That makes me much more comfortable with the change :-)",
+      "parentUuid": "89d93f18_67036743",
+      "revId": "d352e3b78899d682809e26d43f8a8ebd2adf4bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
