@@ -104,6 +104,7 @@ var (
 		"external/bouncycastle":                  Bp2BuildDefaultTrue,
 		"external/brotli":                        Bp2BuildDefaultTrue,
 		"external/conscrypt":                     Bp2BuildDefaultTrue,
+		"external/clang/lib":                     Bp2BuildDefaultTrue,
 		"external/e2fsprogs":                     Bp2BuildDefaultTrueRecursively,
 		"external/eigen":                         Bp2BuildDefaultTrueRecursively,
 		"external/erofs-utils":                   Bp2BuildDefaultTrueRecursively,
@@ -171,6 +172,7 @@ var (
 		"frameworks/native/opengl/tests/testPauseResume":     Bp2BuildDefaultTrue,
 		"frameworks/native/opengl/tests/testViewport":        Bp2BuildDefaultTrue,
 		"frameworks/proto_logging/stats/stats_log_api_gen":   Bp2BuildDefaultTrueRecursively,
+		"frameworks/rs/script_api":                           Bp2BuildDefaultTrue,
 
 		"hardware/interfaces":                          Bp2BuildDefaultTrue,
 		"hardware/interfaces/common/aidl":              Bp2BuildDefaultTrue,

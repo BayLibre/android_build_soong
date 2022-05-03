@@ -15,11 +15,12 @@
 package cc
 
 import (
-	"android/soong/android"
 	"path/filepath"
 	"runtime"
 	"strings"
 
+	"android/soong/android"
+	"android/soong/bazel"
 	"github.com/google/blueprint"
 )
 
@@ -131,4 +132,36 @@ func rsFlags(ctx ModuleContext, flags Flags, properties *BaseCompilerProperties)
 	)
 
 	return flags
+}
+
+type rscriptAttributes struct {
+	// Renderscrip source files
+	Srcs bazel.LabelListAttribute
+}
+
+func bp2buildRScript(ctx android.Bp2buildMutatorContext, m *Module, ca compilerAttributes) (bazel.LabelAttribute, bazel.StringListAttribute) {
+	var rscriptAttrs rscriptAttributes
+	var rsAbsIncludes bazel.StringListAttribute
+	var rsModuleName string
+
+	// Label to target module of type rscript_to_cpp we are creating that contains all renderscript sources
+	var convertedRsSrcs bazel.LabelAttribute
+
+	if !ca.rscriptSrcs.IsEmpty() {
+		rscriptAttrs.Srcs = ca.rscriptSrcs
+		rsModuleName = m.Name() + "_renderscript"
+
+		rsAbsIncludes.Value = []string{"frameworks/rs", "frameworks/rs/cpp"}
+		convertedRsSrcs = bazel.LabelAttribute{Value: &bazel.Label{Label: rsModuleName}}
+
+		ctx.CreateBazelTargetModule(
+			bazel.BazelTargetModuleProperties{
+				Rule_class:        "rscript_to_cpp",
+				Bzl_load_location: "//build/bazel/rules/cc:rscript_to_cpp.bzl",
+			},
+			android.CommonAttributes{Name: rsModuleName},
+			&rscriptAttrs)
+	}
+
+	return convertedRsSrcs, rsAbsIncludes
 }

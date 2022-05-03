@@ -28,14 +28,15 @@ import (
 )
 
 const (
-	cSrcPartition     = "c"
-	asSrcPartition    = "as"
-	asmSrcPartition   = "asm"
-	lSrcPartition     = "l"
-	llSrcPartition    = "ll"
-	cppSrcPartition   = "cpp"
-	protoSrcPartition = "proto"
-	aidlSrcPartition  = "aidl"
+	cSrcPartition       = "c"
+	asSrcPartition      = "as"
+	asmSrcPartition     = "asm"
+	lSrcPartition       = "l"
+	llSrcPartition      = "ll"
+	cppSrcPartition     = "cpp"
+	protoSrcPartition   = "proto"
+	aidlSrcPartition    = "aidl"
+	rScriptSrcPartition = "renderScript"
 )
 
 // staticOrSharedAttributes are the Bazel-ified versions of StaticOrSharedProperties --
@@ -98,8 +99,9 @@ func groupSrcsByExtension(ctx android.BazelConversionPathContext, srcs bazel.Lab
 		// 		contains .l or .ll files we will need to find a way to add a
 		// 		LabelMapper for these that identifies these filegroups and
 		//		converts them appropriately
-		lSrcPartition:  bazel.LabelPartition{Extensions: []string{".l"}},
-		llSrcPartition: bazel.LabelPartition{Extensions: []string{".ll"}},
+		lSrcPartition:       bazel.LabelPartition{Extensions: []string{".l"}},
+		llSrcPartition:      bazel.LabelPartition{Extensions: []string{".ll"}},
+		rScriptSrcPartition: bazel.LabelPartition{Extensions: []string{".fs", ".rscript"}},
 		// C++ is the "catch-all" group, and comprises generated sources because we don't
 		// know the language of these sources until the genrule is executed.
 		cppSrcPartition: bazel.LabelPartition{Extensions: []string{".cpp", ".cc", ".cxx", ".mm"}, LabelMapper: addSuffixForFilegroup("_cpp_srcs"), Keep_remainder: true},
@@ -318,6 +320,8 @@ type compilerAttributes struct {
 	llSrcs  bazel.LabelListAttribute
 	lexopts bazel.StringListAttribute
 
+	rsSrcs bazel.LabelListAttribute
+
 	hdrs bazel.LabelListAttribute
 
 	rtti bazel.BoolAttribute
@@ -332,8 +336,9 @@ type compilerAttributes struct {
 
 	includes BazelIncludes
 
-	protoSrcs bazel.LabelListAttribute
-	aidlSrcs  bazel.LabelListAttribute
+	protoSrcs   bazel.LabelListAttribute
+	aidlSrcs    bazel.LabelListAttribute
+	rscriptSrcs bazel.LabelListAttribute
 
 	stubsSymbolFile *string
 	stubsVersions   bazel.StringListAttribute
@@ -480,6 +485,7 @@ func (ca *compilerAttributes) finalize(ctx android.BazelConversionPathContext, i
 	ca.asmSrcs = partitionedSrcs[asmSrcPartition]
 	ca.lSrcs = partitionedSrcs[lSrcPartition]
 	ca.llSrcs = partitionedSrcs[llSrcPartition]
+	ca.rscriptSrcs = partitionedSrcs[rScriptSrcPartition]
 
 	ca.absoluteIncludes.DeduplicateAxesFromBase()
 	ca.localIncludes.DeduplicateAxesFromBase()
@@ -736,6 +742,10 @@ func bp2BuildParseBaseProps(ctx android.Bp2buildMutatorContext, module *Module) 
 	convertedLSrcs := bp2BuildLex(ctx, module.Name(), compilerAttrs)
 	(&compilerAttrs).srcs.Add(&convertedLSrcs.srcName)
 	(&compilerAttrs).cSrcs.Add(&convertedLSrcs.cSrcName)
+
+	convertedRsSrcs, rsAbsIncludes := bp2buildRScript(ctx, module, compilerAttrs)
+	(&compilerAttrs).srcs.Add(&convertedRsSrcs)
+	(&compilerAttrs).absoluteIncludes.Append(rsAbsIncludes)
 
 	features := compilerAttrs.features.Clone().Append(linkerAttrs.features)
 	features.DeduplicateAxesFromBase()
