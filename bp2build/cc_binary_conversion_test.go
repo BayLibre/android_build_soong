@@ -669,3 +669,34 @@ func TestCcArchVariantBinarySuffix(t *testing.T) {
 		},
 	})
 }
+
+func TestCCBinaryRscriptSrc(t *testing.T) {
+	runCcBinaryTests(t, ccBinaryBp2buildTestCase{
+		description: ``,
+		blueprint: `
+{rule_name} {
+     name : "foo",
+     srcs : [
+     "ccSrc.cc",
+      "rsSrc.rscript",
+     ],
+     include_build_directory: false,
+}
+`,
+		targets: []testBazelTarget{
+			{"rscript_to_cpp", "foo_renderscript", AttrNameToString{
+				"srcs": `["rsSrc.rscript"]`,
+			}},
+			{"cc_binary", "foo", AttrNameToString{
+				"absolute_includes": `[
+        "frameworks/rs",
+        "frameworks/rs/cpp",
+    ]`,
+				"srcs": `[
+        "ccSrc.cc",
+        "foo_renderscript",
+    ]`,
+			}},
+		},
+	})
+}
