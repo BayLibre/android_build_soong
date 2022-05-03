@@ -193,3 +193,17 @@ sh_binary_host {
     name: "list_image",
     src: "list_image.sh",
 }
+
+python_binary_host {
+    name: "beautify_proto_output",
+    srcs: [
+        "beautify_proto_output.py",
+    ],
+    version: {
+        py3: {
+            embedded_launcher: true,
+        },
+    },
+    libs: [
+    ],
+}

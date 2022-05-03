@@ -1,0 +1,5 @@
+py_binary(
+    name = "beautify_proto_output",
+    srcs = ["beautify_proto_output.py"],
+    deps = ["soong/soong_build_metrics/metrics.proto"],
+)
