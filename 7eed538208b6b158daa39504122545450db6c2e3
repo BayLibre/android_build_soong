@@ -68,6 +68,23 @@
       "parentUuid": "891db166_709ed573",
       "revId": "7eed538208b6b158daa39504122545450db6c2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a92b546_8bd906eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-03T08:48:36Z",
+      "side": 1,
+      "message": "Martin, FYI - looks as though we will not be able to use versioned snapshots anymore.\n\nAre there any plans to remove support for versioned snapshots from the build?\n\nWhy is this being removed (apart from removing something that is not being used). What bug is this being done under?",
+      "revId": "7eed538208b6b158daa39504122545450db6c2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
