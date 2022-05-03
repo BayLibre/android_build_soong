@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7f26aff3_4205765d",
+        "filename": "android/bazel.go",
+        "patchSetId": 24
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-03T03:08:05Z",
+      "side": 1,
+      "message": "\"Mixed Builds aren\u0027t explicitly disabled\" makes it sound like the \"Mixed Builds\" flag is disabled.\n\nAlso, the map `bp2buildAllowlist.mixedBuildsDisabled` allows us to explicitly disable (denylist) bazel-handling for a single module.\n\nIs there a reason you decided to extract`bp2buildAllowlist.mixedBuildsDisabled` from the mixedBuildPossible function? If it were grouped in, it makes sense for the documentation of this function to be:\n\n```\n// mixedBuildPossible returns true if a module is ready to be replaced by a\n// converted or handcrafted Bazel target.\n```\n\n(or, hey, we might not need to document it at all)\n\nand the above function documentation to be:\n\n```\n// MixedBuildsEnabled returns true if a module is ready to be replaced by a\n// converted or handcrafted Bazel target. As a side effect, calling this\n// method will also log whether this module is mixed build enaabled for\n// metrics reporting.\n```",
+      "parentUuid": "23512f4f_f68654c1",
+      "revId": "8f25ac79e98e392048ca41c3626c28aaf066057b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de4b61ec_35eff7a9",
         "filename": "android/config.go",
         "patchSetId": 24
