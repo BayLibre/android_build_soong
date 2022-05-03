@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a1c1042_95996a0f",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-03T23:01:11Z",
+      "side": 1,
+      "message": "Put this in arm64_linux_host.go?",
+      "revId": "be660365fc39654c66ec7c841a7c93e1ebf63204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd1b88e8_e37701ef",
+        "filename": "cc/config/arm64_device.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-03T23:01:11Z",
+      "side": 1,
+      "message": "Put this in arm64_linux_host.go?",
+      "revId": "be660365fc39654c66ec7c841a7c93e1ebf63204",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
