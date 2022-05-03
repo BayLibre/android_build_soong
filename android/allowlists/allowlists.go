@@ -68,6 +68,7 @@ var (
 		"build/soong/linkerconfig":           Bp2BuildDefaultTrueRecursively,
 		"build/soong/scripts":                Bp2BuildDefaultTrueRecursively,
 
+		"cts/tests/tests/rscpp/librscpptest":          Bp2BuildDefaultTrue,
 		"cts/common/device-side/nativetesthelper/jni": Bp2BuildDefaultTrueRecursively,
 
 		"dalvik/tools/dexdeps": Bp2BuildDefaultTrueRecursively,
@@ -121,6 +122,7 @@ var (
 		"external/bsdiff":                        Bp2BuildDefaultTrueRecursively,
 		"external/bzip2":                         Bp2BuildDefaultTrueRecursively,
 		"external/conscrypt":                     Bp2BuildDefaultTrue,
+		"external/clang/lib":                     Bp2BuildDefaultTrue,
 		"external/e2fsprogs":                     Bp2BuildDefaultTrueRecursively,
 		"external/eigen":                         Bp2BuildDefaultTrueRecursively,
 		"external/erofs-utils":                   Bp2BuildDefaultTrueRecursively,
@@ -205,6 +207,9 @@ var (
 		"frameworks/native/opengl/tests/testViewport":        Bp2BuildDefaultTrue,
 		"frameworks/native/services/batteryservice":          Bp2BuildDefaultTrue,
 		"frameworks/proto_logging/stats":                     Bp2BuildDefaultTrueRecursively,
+		"frameworks/rs/script_api":                           Bp2BuildDefaultTrue,
+		"frameworks/rs/cpp":                                  Bp2BuildDefaultTrue,
+		"frameworks/rs/tests/cpp_api":                        Bp2BuildDefaultTrueRecursively,
 
 		"hardware/interfaces":                          Bp2BuildDefaultTrue,
 		"hardware/interfaces/common/aidl":              Bp2BuildDefaultTrue,
@@ -647,6 +652,9 @@ var (
 		"libcodec2_soft_avcenc",
 		"libcodec2_soft_aacdec",
 		"libcodec2_soft_common",
+
+		// cc_* with renderscript sources
+		"rs-headers",
 	}
 
 	Bp2buildModuleTypeAlwaysConvertList = []string{
@@ -1292,6 +1300,11 @@ var (
 		// TODO(b/254476335): disable the following due to this bug
 		"libapexinfo",
 		"libapexinfo_tests",
+
+		// cc_* modules with rscript srcs
+		// depends on libgui_window_info_static
+		"rstest-compute-shared",
+		"rstest-compute-getpointer",
 	}
 
 	Bp2buildCcLibraryStaticOnlyList = []string{}
