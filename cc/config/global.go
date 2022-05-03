@@ -51,8 +51,6 @@ var (
 		"-g",
 		"-fdebug-default-version=5",
 
-		"-fno-strict-aliasing",
-
 		"-Werror=date-time",
 		"-Werror=pragma-pack",
 		"-Werror=pragma-pack-suspicious-include",
