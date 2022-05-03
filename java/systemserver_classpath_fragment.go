@@ -133,7 +133,7 @@ func (s *SystemServerClasspathModule) GenerateAndroidBuildActions(ctx android.Mo
 func (s *SystemServerClasspathModule) configuredJars(ctx android.ModuleContext) android.ConfiguredJarList {
 	global := dexpreopt.GetGlobalConfig(ctx)
 
-	possibleUpdatableModules := gatherPossibleApexModuleNamesAndStems(ctx, s.properties.Contents, systemServerClasspathFragmentContentDepTag)
+	possibleUpdatableModules := gatherPossibleApexModuleNamesAndStems(ctx, s.properties.Contents, systemServerClasspathContentDepTag)
 	jars, unknown := global.ApexSystemServerJars.Filter(possibleUpdatableModules)
 	// TODO(satayev): remove geotz ssc_fragment, since geotz is not part of SSCP anymore.
 	_, unknown = android.RemoveFromList("geotz", unknown)
@@ -165,7 +165,7 @@ func (s *SystemServerClasspathModule) configuredJars(ctx android.ModuleContext) 
 func (s *SystemServerClasspathModule) standaloneConfiguredJars(ctx android.ModuleContext) android.ConfiguredJarList {
 	global := dexpreopt.GetGlobalConfig(ctx)
 
-	possibleUpdatableModules := gatherPossibleApexModuleNamesAndStems(ctx, s.properties.Standalone_contents, systemServerClasspathFragmentContentDepTag)
+	possibleUpdatableModules := gatherPossibleApexModuleNamesAndStems(ctx, s.properties.Standalone_contents, systemServerClasspathStandaloneContentDepTag)
 	jars, _ := global.ApexStandaloneSystemServerJars.Filter(possibleUpdatableModules)
 
 	// TODO(jiakaiz): add a check to ensure that the contents are declared in make.
@@ -173,18 +173,18 @@ func (s *SystemServerClasspathModule) standaloneConfiguredJars(ctx android.Modul
 	return jars
 }
 
-type systemServerClasspathFragmentContentDependencyTag struct {
+type systemServerClasspathFragmentDependencyTag struct {
 	blueprint.BaseDependencyTag
 }
 
 // The systemserverclasspath_fragment contents must never depend on prebuilts.
-func (systemServerClasspathFragmentContentDependencyTag) ReplaceSourceWithPrebuilt() bool {
+func (systemServerClasspathFragmentDependencyTag) ReplaceSourceWithPrebuilt() bool {
 	return false
 }
 
 // SdkMemberType causes dependencies added with this tag to be automatically added to the sdk as if
 // they were specified using java_systemserver_libs or java_sdk_libs.
-func (b systemServerClasspathFragmentContentDependencyTag) SdkMemberType(child android.Module) android.SdkMemberType {
+func (b systemServerClasspathFragmentDependencyTag) SdkMemberType(child android.Module) android.SdkMemberType {
 	// If the module is a java_sdk_library then treat it as if it was specified in the java_sdk_libs
 	// property, otherwise treat if it was specified in the java_systemserver_libs property.
 	if javaSdkLibrarySdkMemberType.IsInstance(child) {
@@ -194,44 +194,62 @@ func (b systemServerClasspathFragmentContentDependencyTag) SdkMemberType(child a
 	return javaSystemserverLibsSdkMemberType
 }
 
-func (b systemServerClasspathFragmentContentDependencyTag) ExportMember() bool {
+func (b systemServerClasspathFragmentDependencyTag) ExportMember() bool {
 	return true
 }
 
 // Contents of system server fragments in an apex are considered to be directly in the apex, as if
 // they were listed in java_libs.
-func (systemServerClasspathFragmentContentDependencyTag) CopyDirectlyInAnyApex() {}
+func (systemServerClasspathFragmentDependencyTag) CopyDirectlyInAnyApex() {}
 
 // Contents of system server fragments require files from prebuilt apex files.
-func (systemServerClasspathFragmentContentDependencyTag) RequiresFilesFromPrebuiltApex() {}
+func (systemServerClasspathFragmentDependencyTag) RequiresFilesFromPrebuiltApex() {}
 
-var _ android.ReplaceSourceWithPrebuilt = systemServerClasspathFragmentContentDepTag
-var _ android.SdkMemberDependencyTag = systemServerClasspathFragmentContentDepTag
-var _ android.CopyDirectlyInAnyApexTag = systemServerClasspathFragmentContentDepTag
-var _ android.RequiresFilesFromPrebuiltApexTag = systemServerClasspathFragmentContentDepTag
+var _ android.ReplaceSourceWithPrebuilt = systemServerClasspathFragmentDependencyTag{}
+var _ android.SdkMemberDependencyTag = systemServerClasspathFragmentDependencyTag{}
+var _ android.CopyDirectlyInAnyApexTag = systemServerClasspathFragmentDependencyTag{}
+var _ android.RequiresFilesFromPrebuiltApexTag = systemServerClasspathFragmentDependencyTag{}
 
-// The tag used for the dependency between the systemserverclasspath_fragment module and its contents.
-var systemServerClasspathFragmentContentDepTag = systemServerClasspathFragmentContentDependencyTag{}
+// dep tag for systemserverclasspath contents
+type systemServerClasspathFragmentContentDependencyTag struct {
+	systemServerClasspathFragmentDependencyTag
+}
+
+// dep tag for systemserverclasspath standalone contents
+type systemServerClasspathFragmentStandaloneContentDependencyTag struct {
+	systemServerClasspathFragmentDependencyTag
+}
+
+var systemServerClasspathContentDepTag = systemServerClasspathFragmentContentDependencyTag{}
+var systemServerClasspathStandaloneContentDepTag = systemServerClasspathFragmentStandaloneContentDependencyTag{}
 
 func IsSystemServerClasspathFragmentContentDepTag(tag blueprint.DependencyTag) bool {
-	return tag == systemServerClasspathFragmentContentDepTag
+	return tag == systemServerClasspathContentDepTag || tag == systemServerClasspathStandaloneContentDepTag
 }
 
 func (s *SystemServerClasspathModule) ComponentDepsMutator(ctx android.BottomUpMutatorContext) {
-	module := ctx.Module()
-	_, isSourceModule := module.(*SystemServerClasspathModule)
-	var deps []string
-	deps = append(deps, s.properties.Contents...)
-	deps = append(deps, s.properties.Standalone_contents...)
+	// Returns the name of the prebuilt variation of a dependency if the current module is a prebuilt
+	cleanedDepNames := func(module android.Module, names []string) []string {
+		_, isSourceModule := module.(*SystemServerClasspathModule)
+		var cleanedNames []string
 
-	for _, name := range deps {
-		// A systemserverclasspath_fragment must depend only on other source modules, while the
-		// prebuilt_systemserverclasspath_fragment_fragment must only depend on other prebuilt modules.
-		if !isSourceModule {
-			name = android.PrebuiltNameFromSource(name)
+		for _, name := range names {
+			// A systemserverclasspath_fragment must depend only on other source modules, while the
+			// prebuilt_systemserverclasspath_fragment_fragment must only depend on other prebuilt modules.
+			if !isSourceModule {
+				name = android.PrebuiltNameFromSource(name)
+			}
+			cleanedNames = append(cleanedNames, name)
 		}
-		ctx.AddDependency(module, systemServerClasspathFragmentContentDepTag, name)
+		return cleanedNames
 	}
+
+	module := ctx.Module()
+	contents := cleanedDepNames(module, s.properties.Contents)
+	standalone_contents := cleanedDepNames(module, s.properties.Standalone_contents)
+
+	ctx.AddDependency(module, systemServerClasspathContentDepTag, contents...)
+	ctx.AddDependency(module, systemServerClasspathStandaloneContentDepTag, standalone_contents...)
 }
 
 // Collect information for opening IDE project files in java/jdeps.go.
