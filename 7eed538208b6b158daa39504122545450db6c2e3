@@ -85,6 +85,24 @@
       "message": "Martin, FYI - looks as though we will not be able to use versioned snapshots anymore.\n\nAre there any plans to remove support for versioned snapshots from the build?\n\nWhy is this being removed (apart from removing something that is not being used). What bug is this being done under?",
       "revId": "7eed538208b6b158daa39504122545450db6c2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "422e8bc7_dfee25a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-05-03T09:59:06Z",
+      "side": 1,
+      "message": "Thanks Paul. I assume the questions are aimed at Liz, not me. I\u0027m also interested in the answers.\n\nI had the impression that we need the versioned snapshots and `uses_sdks` to be able to evolve the Mainline module APIs independently of the platform SDK levels (cf. b/186201286). How will that work?",
+      "parentUuid": "0a92b546_8bd906eb",
+      "revId": "7eed538208b6b158daa39504122545450db6c2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
