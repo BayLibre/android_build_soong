@@ -282,6 +282,24 @@
       "parentUuid": "8791d67f_002e5026",
       "revId": "7eed538208b6b158daa39504122545450db6c2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f96599_abf2323f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-04T16:16:27Z",
+      "side": 1,
+      "message": "I think the trivial way to have avoided this would be to cc people in the blame list for the code being deleted.\n\nIt\u0027s hard to claim that the Android Build team \"owns\" this code, as historical understaffing has meant that teams outside the Android Build team have had to own the parts of the build relating to mainline.  Moving that ownership back into the build team will require more handoff than just claiming ownership.",
+      "parentUuid": "b83aa213_fbd5fcbb",
+      "revId": "7eed538208b6b158daa39504122545450db6c2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
