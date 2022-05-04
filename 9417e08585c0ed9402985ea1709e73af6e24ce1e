@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad843c7d_fe9575c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-04T19:07:00Z",
+      "side": 1,
+      "message": "Somewhat surprisingly since this effectively moves kotlin-annotations from `libs` to `static_libs`, this actually reduces the size on disk on some devices by 100kB.  I AFAICT, that\u0027s because r8 now sees the annotation definitions and can tell that they are source retention and don\u0027t need to be in the output dex file.",
+      "revId": "9417e08585c0ed9402985ea1709e73af6e24ce1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
