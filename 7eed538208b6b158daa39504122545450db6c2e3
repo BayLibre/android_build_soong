@@ -192,6 +192,24 @@
       "parentUuid": "5f120f1a_01040785",
       "revId": "7eed538208b6b158daa39504122545450db6c2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "799dd421_062d076d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-04T12:11:00Z",
+      "side": 1,
+      "message": "\u003e However, it\u0027s really difficult to decide one way or the other because I don\u0027t know what your plans are ...\n\nWe didn\u0027t have any concrete plans but that is what soong-discuss is for.\n\n\u003e My understanding is that Joe O and Jiyong met about two weeks ago and they have agreed upon a plan, which I haven\u0027t seen in writing yet but from what I hear, it\u0027s quite different from what this code implements here. \n\nI\u0027m not sure exactly what the plan is for and who else was involved but there are more stake holders that will be impacted by it. Presumably we will be seeing a design doc some time soon then those stake holders can comment on.\n\nIf this code was removed because of that plan then, as per your request, it seems to be premature to remove it before the plan has been approved.\n\n\u003e re: (b), the Android Build team is responsible for Soong and will be the first people who are contacted if something goes wrong with it, therefore we are the natural deciders as to what happens in its code base.\n\nThat is true. However, that does not mean that you can just do what you want without regard to the impact it has on other stake holders who will be affected by it.\n\nAll I\u0027m asking is that you follow the same rules that you expect others to follow. So, before you make significant changes, like removing this code, you at the very least should send a notification to soong-discuss to let people know and check to see if there are any issues.",
+      "parentUuid": "6c17bca1_3778dc18",
+      "revId": "7eed538208b6b158daa39504122545450db6c2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
