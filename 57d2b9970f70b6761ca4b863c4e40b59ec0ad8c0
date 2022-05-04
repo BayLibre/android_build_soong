@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d782bd3_29df101a",
+        "filename": "cc/binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-04T18:51:28Z",
+      "side": 1,
+      "message": "This is going to confuse anything downstream that expects an elf file, for example tools like check_elf_files.  It seems like you may need a different module type whose output isn\u0027t considered a binary, which takes a cc_binary as an input and produces a raw binary as an ETC class output, for example like cc_genrule does.",
+      "revId": "57d2b9970f70b6761ca4b863c4e40b59ec0ad8c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
