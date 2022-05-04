@@ -103,6 +103,24 @@
       "parentUuid": "0a92b546_8bd906eb",
       "revId": "7eed538208b6b158daa39504122545450db6c2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe04ec7_7586e87c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-04T07:24:31Z",
+      "side": 1,
+      "message": "Isn\u0027t the fact that code is unused enough reason to remove it? If it\u0027s unused it has a maintenance cost (and Soong is difficult enough to understand already) but no benefit and it looks like this code was in that category.\n\nb/186201286#comment5 and later seems to indicate that you don\u0027t agree whether versioned snapshots are necessary, either? I certainly don\u0027t know enough of your plans to tell and neither does anyone on the Android build team, which is not great because we are responsible for Soong and therefore should understand what it does...",
+      "parentUuid": "422e8bc7_dfee25a5",
+      "revId": "7eed538208b6b158daa39504122545450db6c2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
