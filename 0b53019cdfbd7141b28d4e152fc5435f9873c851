@@ -22,6 +22,30 @@
       },
       "revId": "0b53019cdfbd7141b28d4e152fc5435f9873c851",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3889f976_460a0dd3",
+        "filename": "cc/linker.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 602,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-05-04T17:34:40Z",
+      "side": 1,
+      "message": "Good point, this should be restricted to ELF generation. I\u0027ve copied what you did in the dependency file case. Let me know if that\u0027s correct.",
+      "parentUuid": "7c4cf3a1_2a5a74df",
+      "range": {
+        "startLine": 600,
+        "startChar": 3,
+        "endLine": 602,
+        "endChar": 5
+      },
+      "revId": "0b53019cdfbd7141b28d4e152fc5435f9873c851",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
