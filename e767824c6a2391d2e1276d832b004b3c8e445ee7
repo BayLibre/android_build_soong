@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15652b68_afbcaa5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-04T18:43:34Z",
+      "side": 1,
+      "message": "I see plenty of ldflags with the `-Wl,` prefix, e.g. https://cs.android.com/android/platform/superproject/+/master:bionic/libdl/Android.bp;l\u003d72?q\u003dfile:Android.bp%20%22-Wl,%22\u0026ss\u003dandroid%2Fplatform%2Fsuperproject",
+      "revId": "e767824c6a2391d2e1276d832b004b3c8e445ee7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
