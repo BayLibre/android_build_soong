@@ -276,7 +276,6 @@ var (
 
 	Bp2buildModuleDoNotConvertList = []string{
 		// cc bugs
-		"libsepol",                                  // TODO(b/207408632): Unsupported case of .l sources in cc library rules
 		"libactivitymanager_aidl",                   // TODO(b/207426160): Unsupported use of aidl sources (via Dactivity_manager_procstate_aidl) in a cc_library
 		"gen-kotlin-build-file.py",                  // TODO(b/198619163) module has same name as source
 		"libgtest_ndk_c++", "libgtest_main_ndk_c++", // TODO(b/201816222): Requires sdk_version support.
