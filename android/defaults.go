@@ -15,7 +15,10 @@
 package android
 
 import (
+	"bytes"
+	"fmt"
 	"reflect"
+	"strings"
 
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
@@ -67,9 +70,9 @@ type Defaultable interface {
 	// Set the property structures into which defaults will be added.
 	setProperties(props []interface{}, variableProperties interface{})
 
-	// Apply defaults from the supplied Defaults to the property structures supplied to
+	// Apply defaults from the supplied DefaultsModule to the property structures supplied to
 	// setProperties(...).
-	applyDefaults(TopDownMutatorContext, []Defaults)
+	applyDefaults(TopDownMutatorContext, []DefaultsModule)
 
 	// Set the hook to be called after any defaults have been applied.
 	//
@@ -115,8 +118,16 @@ type DefaultsVisibilityProperties struct {
 	Defaults_visibility []string
 }
 
+// AdditionalDefaultsProperties contains properties of defaults modules which
+// can have other defaults applied.
+type AdditionalDefaultsProperties struct {
+	Protected_properties []string
+}
+
 type DefaultsModuleBase struct {
 	DefaultableModuleBase
+
+	defaultsProperties AdditionalDefaultsProperties
 
 	// Included to support setting bazel_module.label for multiple Soong modules to the same Bazel
 	// target. This is primarily useful for modules that were architecture specific and instead are
@@ -151,6 +162,10 @@ type Defaults interface {
 	// DefaultsModuleBase will type-assert to the Defaults interface.
 	isDefaults() bool
 
+	additionalDefaultableProperties() []interface{}
+
+	protectedProperties() []string
+
 	// Get the structures containing the properties for which defaults can be provided.
 	properties() []interface{}
 
@@ -165,6 +180,14 @@ type DefaultsModule interface {
 	Module
 	Defaults
 	Bazelable
+}
+
+func (d *DefaultsModuleBase) additionalDefaultableProperties() []interface{} {
+	return []interface{}{&d.defaultsProperties}
+}
+
+func (d *DefaultsModuleBase) protectedProperties() []string {
+	return d.defaultsProperties.Protected_properties
 }
 
 func (d *DefaultsModuleBase) properties() []interface{} {
@@ -189,6 +212,10 @@ func InitDefaultsModule(module DefaultsModule) {
 		commonProperties,
 		&ApexProperties{},
 		&distProperties{})
+
+	// Additional properties of defaults modules that can themselves have
+	// defaults applied.
+	module.AddProperties(module.additionalDefaultableProperties()...)
 
 	// Bazel module must be initialized _before_ Defaults to be included in cc_defaults module.
 	InitBazelModule(module)
@@ -218,6 +245,17 @@ func InitDefaultsModule(module DefaultsModule) {
 	// The applicable licenses property for defaults is 'licenses'.
 	setPrimaryLicensesProperty(module, "licenses", &commonProperties.Licenses)
 
+	AddLoadHook(module, func(ctx LoadHookContext) {
+		for _, property := range module.protectedProperties() {
+			value := getProtectedPropertyValue(ctx, property, module.properties())
+			if !value.IsValid() {
+				ctx.PropertyErrorf(property, "property is not supported by this module type %q",
+					ctx.ModuleType())
+			} else if value.IsZero() {
+				ctx.PropertyErrorf(property, "is not set; protected properties must be explicitly set")
+			}
+		}
+	})
 }
 
 var _ Defaults = (*DefaultsModuleBase)(nil)
@@ -269,20 +307,249 @@ func applyNamespacedVariableDefaults(defaultDep Defaults, ctx TopDownMutatorCont
 	b.setNamespacedVariableProps(dst)
 }
 
+func getProtectedPropertyValue(ctx EarlyModuleContext, structuredName string, properties []interface{}) reflect.Value {
+	names := strings.Split(structuredName, ".")
+
+propertiesStructs:
+	for _, props := range properties {
+		propValue := reflect.ValueOf(props)
+		for _, name := range names {
+			for propValue.Kind() == reflect.Ptr {
+				propValue = propValue.Elem()
+			}
+
+			if propValue.Kind() != reflect.Struct {
+				panic(fmt.Errorf("expected %s to be a pointer to a struct", propValue.Type()))
+			}
+
+			fieldName := proptools.FieldNameForProperty(name)
+			fieldValue := propValue.FieldByName(fieldName)
+			if !fieldValue.IsValid() {
+				continue propertiesStructs
+			}
+
+			propValue = fieldValue
+		}
+
+		// Make sure that the value is of an allowed type.
+		value := propValue
+		allowable := false
+		propType := propValue.Type()
+		kind := propType.Kind()
+		if kind == reflect.Ptr {
+			propType = propType.Elem()
+			kind = propType.Kind()
+			if kind == reflect.Bool || kind == reflect.Int || kind == reflect.String {
+				allowable = true
+
+				// If the pointer is not nil then create a copy of its contents and return that. That is to
+				// ensure that changes to the original value referenced by the pointer do not change the
+				// returned value.
+				if !propValue.IsNil() {
+					propValue = propValue.Elem()
+					switch kind {
+					case reflect.Bool:
+						boolPtr := proptools.BoolPtr(propValue.Bool())
+						propValue = reflect.ValueOf(boolPtr)
+					case reflect.Int:
+						getter := func(v int) *int { return &v }
+						intPtr := getter(int(propValue.Int()))
+						propValue = reflect.ValueOf(intPtr)
+					case reflect.String:
+						stringPtr := proptools.StringPtr(propValue.String())
+						propValue = reflect.ValueOf(stringPtr)
+					}
+				}
+			}
+		} else if kind == reflect.Slice {
+			kind = value.Type().Elem().Kind()
+			if kind == reflect.String {
+				allowable = true
+				slice := propValue.Interface().([]string)
+				copy := append(([]string)(nil), slice...)
+				propValue = reflect.ValueOf(copy)
+			}
+		}
+		if !allowable {
+			ctx.ModuleErrorf("property %q cannot be protected because it is not an allowable type, must be one of *int, *bool, *string, or []string not %q", structuredName, propValue.Type())
+		}
+		return propValue
+	}
+
+	return reflect.Value{}
+}
+
+// defaultValueInfo contains information about each default value that applies to a protected
+// property.
+type defaultValueInfo struct {
+	// The DefaultsModule providing the value, which may be defined on that module or applied as a
+	// default from other modules.
+	module Module
+
+	// The default value, as returned by getComparableValue
+	defaultValue reflect.Value
+}
+
+// protectedPropertyInfo contains information about each property that has to be protected when
+// applying defaults.
+type protectedPropertyInfo struct {
+	// True if the property was set on the module to which defaults are applied, this is an error.
+	propertySet bool
+
+	// The original value of the property on the module, as returned by getComparableValue.
+	originalValue reflect.Value
+
+	// A list of defaults for the property that are being applied.
+	defaultValues []defaultValueInfo
+}
+
+// getComparableValue takes a reflect.Value that may be a pointer to another value and returns a
+// reflect.Value to the underlying data or the original if was not a pointer or was nil. The
+// returned values can then be compared for equality.
+func getComparableValue(value reflect.Value) reflect.Value {
+	if value.IsZero() {
+		return value
+	}
+	for value.Kind() == reflect.Ptr {
+		value = value.Elem()
+	}
+	return value
+}
+
 func (defaultable *DefaultableModuleBase) applyDefaults(ctx TopDownMutatorContext,
-	defaultsList []Defaults) {
+	defaultsList []DefaultsModule) {
+
+	// Collate information on all the properties protected by each of the default modules applied
+	// to this module.
+	allProtectedProperties := map[string]*protectedPropertyInfo{}
+	for _, defaults := range defaultsList {
+		for _, property := range defaults.protectedProperties() {
+			info := allProtectedProperties[property]
+			if info == nil {
+				info = &protectedPropertyInfo{}
+				allProtectedProperties[property] = info
+			}
+		}
+	}
+
+	// If there are any protected properties then collate information about attempts to change them.
+	var protectedPropertyInfoCollector defaultsTrackerFunc
+	if len(allProtectedProperties) > 0 {
+		protectedPropertyInfoCollector = func(ctx BaseModuleContext,
+			defaults DefaultsModule, property string, dstValue interface{}, srcValue interface{}) {
+
+			// If the property is not protected then return immediately.
+			info := allProtectedProperties[property]
+			if info == nil {
+				return
+			}
+
+			currentValue := reflect.ValueOf(dstValue)
+			if info.defaultValues == nil {
+				info.propertySet = !currentValue.IsZero()
+				info.originalValue = getComparableValue(currentValue)
+			}
+
+			defaultValue := reflect.ValueOf(srcValue)
+			if !defaultValue.IsZero() {
+				info.defaultValues = append(info.defaultValues,
+					defaultValueInfo{defaults, getComparableValue(defaultValue)})
+			}
+		}
+	}
 
 	for _, defaults := range defaultsList {
 		if ctx.Config().runningAsBp2Build {
 			applyNamespacedVariableDefaults(defaults, ctx)
 		}
+
 		for _, prop := range defaultable.defaultableProperties {
 			if prop == defaultable.defaultableVariableProperties {
-				defaultable.applyDefaultVariableProperties(ctx, defaults, prop)
+				defaultable.applyDefaultVariableProperties(ctx, defaults, prop, protectedPropertyInfoCollector)
 			} else {
-				defaultable.applyDefaultProperties(ctx, defaults, prop)
+				defaultable.applyDefaultProperties(ctx, defaults, prop, protectedPropertyInfoCollector)
 			}
 		}
+	}
+
+	// Check the status of any protected properties.
+	for property, info := range allProtectedProperties {
+		if len(info.defaultValues) == 0 {
+			// No defaults were applied to the protected properties. Possibly because this module type
+			// does not support any of them.
+			continue
+		}
+
+		// Check to make sure that there are no conflicts between the defaults.
+		conflictingDefaults := false
+		previousDefaultValue := reflect.ValueOf(false)
+		for _, defaultInfo := range info.defaultValues {
+			defaultValue := defaultInfo.defaultValue
+			if previousDefaultValue.IsZero() {
+				previousDefaultValue = defaultValue
+			} else if !reflect.DeepEqual(previousDefaultValue.Interface(), defaultValue.Interface()) {
+				conflictingDefaults = true
+				break
+			}
+		}
+
+		if conflictingDefaults {
+			var buf bytes.Buffer
+			for _, defaultInfo := range info.defaultValues {
+				buf.WriteString(fmt.Sprintf("\n    defaults module %q provides value %#v",
+					ctx.OtherModuleName(defaultInfo.module), defaultInfo.defaultValue))
+			}
+			result := buf.String()
+			ctx.ModuleErrorf("has conflicting default values for protected property %q:%s", property, result)
+			continue
+		}
+
+		// Now check to see whether there the current module tried to override/append to the defaults.
+		if info.propertySet {
+			originalValue := info.originalValue
+			// Just compare against the first defaults.
+			defaultValue := info.defaultValues[0].defaultValue
+			defaults := info.defaultValues[0].module
+
+			if originalValue.Kind() == reflect.Slice {
+				ctx.ModuleErrorf("attempts to append %q to protected property %q's value of %q defined in module %q",
+					originalValue,
+					property,
+					defaultValue,
+					ctx.OtherModuleName(defaults))
+			} else {
+				same := reflect.DeepEqual(originalValue.Interface(), defaultValue.Interface())
+				message := ""
+				if same {
+					message = fmt.Sprintf(" with a matching value (%#v) so this property can simply be removed.", originalValue)
+				} else {
+					message = fmt.Sprintf(" with a different value (override %#v with %#v) so removing the property may necessitate other changes.", defaultValue, originalValue)
+				}
+				ctx.ModuleErrorf("attempts to override protected property %q defined in module %q%s",
+					property,
+					ctx.OtherModuleName(defaults), message)
+			}
+		}
+	}
+}
+
+// defaultsTrackerFunc is the type of a function that can be used to track how defaults are applied.
+type defaultsTrackerFunc func(ctx BaseModuleContext, defaults DefaultsModule, property string,
+	dstValue interface{}, srcValue interface{})
+
+// filterForTracker wraps a defaultsTrackerFunc in a proptools.ExtendPropertyFilterFunc
+func filterForTracker(ctx BaseModuleContext, defaults DefaultsModule, tracker defaultsTrackerFunc) proptools.ExtendPropertyFilterFunc {
+	if tracker == nil {
+		return nil
+	}
+	return func(property string,
+		dstField, srcField reflect.StructField,
+		dstValue, srcValue interface{}) (bool, error) {
+
+		tracker(ctx, defaults, property, dstValue, srcValue)
+
+		// Do not filter or abort, simply delegate to the tracker.
+		return true, nil
 	}
 }
 
@@ -290,7 +557,7 @@ func (defaultable *DefaultableModuleBase) applyDefaults(ctx TopDownMutatorContex
 // property struct may not be identical between the defaults module and the defaultable module.
 // Use PrependMatchingProperties to apply whichever properties match.
 func (defaultable *DefaultableModuleBase) applyDefaultVariableProperties(ctx TopDownMutatorContext,
-	defaults Defaults, defaultableProp interface{}) {
+	defaults DefaultsModule, defaultableProp interface{}, tracker defaultsTrackerFunc) {
 	if defaultableProp == nil {
 		return
 	}
@@ -307,7 +574,9 @@ func (defaultable *DefaultableModuleBase) applyDefaultVariableProperties(ctx Top
 		proptools.CloneEmptyProperties(reflect.ValueOf(defaultsProp)).Interface(),
 	}
 
-	err := proptools.PrependMatchingProperties(dst, defaultsProp, nil)
+	filter := filterForTracker(ctx, defaults, tracker)
+
+	err := proptools.PrependMatchingProperties(dst, defaultsProp, filter)
 	if err != nil {
 		if propertyErr, ok := err.(*proptools.ExtendPropertyError); ok {
 			ctx.PropertyErrorf(propertyErr.Property, "%s", propertyErr.Err.Error())
@@ -318,11 +587,13 @@ func (defaultable *DefaultableModuleBase) applyDefaultVariableProperties(ctx Top
 }
 
 func (defaultable *DefaultableModuleBase) applyDefaultProperties(ctx TopDownMutatorContext,
-	defaults Defaults, defaultableProp interface{}) {
+	defaults DefaultsModule, defaultableProp interface{}, checker defaultsTrackerFunc) {
+
+	filter := filterForTracker(ctx, defaults, checker)
 
 	for _, def := range defaults.properties() {
 		if proptools.TypeEqual(defaultableProp, def) {
-			err := proptools.PrependProperties(defaultableProp, def, nil)
+			err := proptools.PrependProperties(defaultableProp, def, filter)
 			if err != nil {
 				if propertyErr, ok := err.(*proptools.ExtendPropertyError); ok {
 					ctx.PropertyErrorf(propertyErr.Property, "%s", propertyErr.Err.Error())
@@ -348,12 +619,12 @@ func defaultsDepsMutator(ctx BottomUpMutatorContext) {
 func defaultsMutator(ctx TopDownMutatorContext) {
 	if defaultable, ok := ctx.Module().(Defaultable); ok {
 		if len(defaultable.defaults().Defaults) > 0 {
-			var defaultsList []Defaults
+			var defaultsList []DefaultsModule
 			seen := make(map[Defaults]bool)
 
 			ctx.WalkDeps(func(module, parent Module) bool {
 				if ctx.OtherModuleDependencyTag(module) == DefaultsDepTag {
-					if defaults, ok := module.(Defaults); ok {
+					if defaults, ok := module.(DefaultsModule); ok {
 						if !seen[defaults] {
 							seen[defaults] = true
 							defaultsList = append(defaultsList, defaults)
