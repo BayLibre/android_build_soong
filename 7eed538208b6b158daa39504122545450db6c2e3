@@ -228,6 +228,24 @@
       "parentUuid": "799dd421_062d076d",
       "revId": "7eed538208b6b158daa39504122545450db6c2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4112321f_c36774be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-04T12:50:47Z",
+      "side": 1,
+      "message": "I\u0027m not sure whether we\u0027ll want this or not, but I strongly dislike that it was deleted without a discussion or even mentioning it to anyone on the team that contributed it. Seems like something we could have talked about in those biweekly syncs we have between our teams...",
+      "parentUuid": "82e0c4bb_8b02941d",
+      "revId": "7eed538208b6b158daa39504122545450db6c2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
