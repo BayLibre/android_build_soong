@@ -139,6 +139,24 @@
       "parentUuid": "dbe04ec7_7586e87c",
       "revId": "7eed538208b6b158daa39504122545450db6c2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f120f1a_01040785",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2022-05-04T10:37:05Z",
+      "side": 1,
+      "message": "I don\u0027t mind all this complexity going away, but first I\u0027d like to know that there\u0027s a plan to support versioning of SDKs between modules. All this was done to cater for that, and it\u0027s based on Jiyong\u0027s design in go/android-module-sdk. A lot of water has flowed under the bridge since then though, and I don\u0027t really know what the intended approach is these days. E.g. are we going to limit ourselves to platform SDK levels between modules as well? @hansson probably knows this best.\n\nThe reason it\u0027s not in use is that, to my knowledge, no one has had any need to evolve APIs between modules yet, at least not when the SDKs for them need to be prebuilt. In practice that means the ART module dependencies since ART is the only module that has adopted the thin manifest with prebuilt SDKs approach.\n\nIt\u0027s not fully implemented either, as Paul points out. If it was I\u0027d probably have started using it for the ART module. Instead we currently work around this problem with a combination of avoiding to evolve those APIs, keep using old prebuilts, and relying on NDK versioning instead. We\u0027re a new module since SC so that has been relatively painless so far, but I don\u0027t expect this ad-hoc approach to work for very long.\n\nThen again, we should perhaps rethink the approach with prebuilt SDKs altogether? I don\u0027t think it\u0027d be sustainable to keep all this scaffolding in place if ART is the only module using it (originally the intention was that all modules would move to this model eventually). Maybe multi-tree will give us a better way to deal with it?",
+      "parentUuid": "4446a4f1_6163732b",
+      "revId": "7eed538208b6b158daa39504122545450db6c2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
