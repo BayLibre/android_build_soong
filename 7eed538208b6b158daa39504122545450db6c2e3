@@ -210,6 +210,24 @@
       "parentUuid": "6c17bca1_3778dc18",
       "revId": "7eed538208b6b158daa39504122545450db6c2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82e0c4bb_8b02941d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-04T12:23:14Z",
+      "side": 1,
+      "message": "\u003e All I\u0027m asking is that you follow the same rules that you expect others to follow. So, before you make significant changes, like removing this code, you at the very least should send a notification to soong-discuss to let people know and check to see if there are any issues.\n\nI think that\u0027s a very reasonable thing in general to but how is this piece of code different from any other piece of dead code one might encounter in the code base? \n\nThis argument would be much stronger if the code in question was recent, but it\u0027s WAY more than a year old so you can\u0027t quite claim that uses are coming real soon now or that it\u0027s still in flux.\n\nI am aware that \"the code base of Android\" is a hazy concept and I would be delighted if you offered a reasonable set of conditions which, if fulfilled, would guarantee that any particular incompatible change doesn\u0027t harm anyone, but it looks like e-mailing soong-discuss doesn\u0027t go very far towards such a proof, does it?",
+      "parentUuid": "799dd421_062d076d",
+      "revId": "7eed538208b6b158daa39504122545450db6c2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
