@@ -300,6 +300,24 @@
       "parentUuid": "b83aa213_fbd5fcbb",
       "revId": "7eed538208b6b158daa39504122545450db6c2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d8dc4be_a2ccc5e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687194
+      },
+      "writtenOn": "2022-05-04T20:46:40Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t expect this to be a controversial change as the code has been unused for an extended time period.\n\nIf this does need use in the future, I\u0027ll happily review a revert of this CL. Paul and Martin, I\u0027ll set up some time where we can discuss the use case you may be using this CL for.\n\nSeparately, I\u0027ll set up a time or start an email thread that we can discuss how best to keep each other aware of feature requests and changes.",
+      "parentUuid": "e0f96599_abf2323f",
+      "revId": "7eed538208b6b158daa39504122545450db6c2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
