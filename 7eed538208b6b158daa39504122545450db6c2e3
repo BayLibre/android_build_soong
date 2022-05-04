@@ -246,6 +246,24 @@
       "parentUuid": "82e0c4bb_8b02941d",
       "revId": "7eed538208b6b158daa39504122545450db6c2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8791d67f_002e5026",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-04T12:51:01Z",
+      "side": 1,
+      "message": "\u003e I think that\u0027s a very reasonable thing in general to but how is this piece of code different from any other piece of dead code one might encounter in the code base?\n\nAny other piece of dead code? Like an internal function that is not used? It\u0027s quite a lot different.\n\nIt\u0027s quite large. Has lots of tests. Is accessible from Android.bp files. It also has a big impact, e.g. there are nearly 200 usages of @current in build/soong tests ALL of which are a result of trying to support this functionality.\n\n\u003e ...guarantee...\n\nGuarantee? You know full well that is impossible.\n\nHowever, it\u0027s cheap, easy and does help.",
+      "parentUuid": "82e0c4bb_8b02941d",
+      "revId": "7eed538208b6b158daa39504122545450db6c2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
