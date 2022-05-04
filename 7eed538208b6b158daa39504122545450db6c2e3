@@ -174,6 +174,24 @@
       "message": "+hansson for the mention in the last comment.",
       "revId": "7eed538208b6b158daa39504122545450db6c2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c17bca1_3778dc18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-04T11:37:50Z",
+      "side": 1,
+      "message": "There are two questions here: (a): what should be done with this particular piece of code and (b) what should the decision process look like for such changes?\n\nre: (a) if the code will ever be needed, one can dig it out from source control, that\u0027s what source control is for.\n\nIn the meantime, it appears that it\u0027s not used and therefore should not contribute to the complexity in the code base of Soong. I strongly disagree with the statement that it was you who paid all the maintenance cost: I personally spent a lot of time trying to grok this code while not realizing that it\u0027s unused and I\u0027m sure I am not the only one.\n\nHowever, it\u0027s really difficult to decide one way or the other because I don\u0027t know what your plans are and it appears that even if Liz or I had thought about reading go/android-module-sdk, it would have been only partial information at best and actively misleading at worst.\n\nMy understanding is that Joe O and Jiyong met about two weeks ago and they have agreed upon a plan, which I haven\u0027t seen in writing yet but from what I hear, it\u0027s quite different from what this code implements here. \n\nIf you point me to the code that implements (1)-(4) above, I\u0027d be happy to point my backspace at it 😊 I\u0027m open to resurrecting the code this CL deleted but only if it turns out that those plans don\u0027t quite cut it and that the code will in fact be used. Otherwise, I don\u0027t want to have what is effectively vampire code (\u003ddead and sucks your life force) in here.\n\nre: (b), the Android Build team is responsible for Soong and will be the first people who are contacted if something goes wrong with it, therefore we are the natural deciders as to what happens in its code base. \n\nWe are obligated to support whatever business goals Android has and we are also happy to accept contributions, but we must understand them and how they map to said business goals because we are on the hook for whatever they do. IOW: before you make significant changes, write a design doc, get it approved by us and only then break out your IDE. We promise we\u0027ll be reasonable about it.",
+      "parentUuid": "5f120f1a_01040785",
+      "revId": "7eed538208b6b158daa39504122545450db6c2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
