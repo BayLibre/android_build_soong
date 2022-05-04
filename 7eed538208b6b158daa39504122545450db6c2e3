@@ -121,6 +121,24 @@
       "parentUuid": "422e8bc7_dfee25a5",
       "revId": "7eed538208b6b158daa39504122545450db6c2e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4446a4f1_6163732b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-04T09:47:18Z",
+      "side": 1,
+      "message": "\u003e Isn\u0027t the fact that code is unused enough reason to remove it?\n\nNot necessarily. It depends on whether it is going to stay unused.\n\n\u003e b/186201286#comment5 and later seems to indicate that you don\u0027t agree whether versioned snapshots are necessary, either?\n\nFTR While I did make sure that the tests/build were not broken by any changes I made in that area I did not write it. So, yes it did have a maintenance cost and I was the one that paid most of it.\n\nI don\u0027t know whether it would have been needed. It is possible that it would have been useful for solving some future issues which we have not yet encountered because we have not yet done any serious development against prebuilts. That is what it was created in the first place. I did try to see if it was usable but found a number of problems and gave up.\n\n\u003e I certainly don\u0027t know enough of your plans to tell and neither does anyone on the Android build team, which is not great because we are responsible for Soong and therefore should understand what it does...\n\nCommunication goes both ways.\n\nGiven that the code has been in there for a long time and someone may have been relying on it, it seems to me that the responsibility is on the person who wants to remove it to at a minimum post on soong-discuss@ to check whether anyone has plans for it.\n\nIf they had I would have told them that removing it is only one small part of the cleanup. There is also:\n1. The logic in the sdk snapshot generation for generating a versioned snapshot.\n2. All the existing versioned snapshots in the different repositories that need cleaning up too. Although having snapshots of the released SDKs will be helpful for historical reasons so this may just involve renaming the Android.bp so it is no longer processed by Soong.\n3. The build scripts that have to handle different versions of the snapshot.\n4. The SDK finalization process when a new set of APIs is released.\n\nI think all that work justifies having a bug for it. Is there a specific bug for this work. If not there should be.\n\nWho is going to do that work?",
+      "parentUuid": "dbe04ec7_7586e87c",
+      "revId": "7eed538208b6b158daa39504122545450db6c2e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
