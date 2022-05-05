@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f253899d_7bccb260",
+        "filename": "filesystem/raw_binary.go",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-05T17:27:42Z",
+      "side": 1,
+      "message": "Does it still work if you remove these?  I think androidmk already knows the install path from the call to ctx.InstallFile.",
+      "range": {
+        "startLine": 99,
+        "startChar": 2,
+        "endLine": 104,
+        "endChar": 4
+      },
+      "revId": "6ae7f16aa5691ed65bc097ae35066bcfe794686b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
