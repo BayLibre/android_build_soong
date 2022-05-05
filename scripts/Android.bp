@@ -85,6 +85,14 @@ python_binary_host {
 }
 
 python_binary_host {
+    name: "replace_apex_version_placeholder",
+    main: "replace_apex_version_placeholder.py",
+    srcs: [
+        "replace_apex_version_placeholder.py",
+    ],
+}
+
+python_binary_host {
     name: "test_config_fixer",
     main: "test_config_fixer.py",
     srcs: [

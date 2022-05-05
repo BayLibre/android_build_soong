@@ -61,6 +61,7 @@ func init() {
 	pctx.HostBinToolVariable("zip2zip", "zip2zip")
 	pctx.HostBinToolVariable("zipalign", "zipalign")
 	pctx.HostBinToolVariable("jsonmodify", "jsonmodify")
+	pctx.HostBinToolVariable("replace_apex_version_placeholder", "replace_apex_version_placeholder")
 	pctx.HostBinToolVariable("conv_apex_manifest", "conv_apex_manifest")
 	pctx.HostBinToolVariable("extract_apks", "extract_apks")
 	pctx.HostBinToolVariable("make_f2fs", "make_f2fs")
@@ -175,6 +176,12 @@ var (
 		CommandDeps: []string{"${genNdkUsedbyApexPath}"},
 		Description: "Generate symbol list used by Apex",
 	}, "image_dir", "readelf")
+
+	replacePlaceholderRule = pctx.StaticRule("replacePlaceholderRule", blueprint.RuleParams{
+		Command:     `rm -rf ${out} && ${replace_apex_version_placeholder} --placeholder-text ${placeholder_text} ${manifest} $in $out`,
+		CommandDeps: []string{"${replace_apex_version_placeholder}"},
+		Description: "Replace apex placeholder in bundleconfig",
+	}, "manifest")
 
 	// Don't add more rules here. Consider using android.NewRuleBuilder instead.
 )
@@ -369,7 +376,18 @@ func (a *apexBundle) buildBundleConfig(ctx android.ModuleContext) android.Output
 		panic(fmt.Errorf("error while marshalling to %q: %#v", output, err))
 	}
 
-	android.WriteFileRule(ctx, output, string(j))
+	output_before_replacement := android.PathForModuleOut(ctx, "bundle_config.json")
+	android.WriteFileRule(ctx, output_before_replacement, string(j))
+
+	ctx.Build(pctx, android.BuildParams{
+		Rule:        replacePlaceholderRule,
+		Input:       output_before_replacement,
+		Output:      output,
+		Description: "diff apex image content",
+		Args: map[string]string{
+			"manifest": a.manifestJsonOut.String(),
+		},
+	})
 
 	return output.OutputPath
 }
