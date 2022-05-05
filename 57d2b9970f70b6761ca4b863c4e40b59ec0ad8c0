@@ -52,6 +52,24 @@
       "parentUuid": "d073b34b_c253af5e",
       "revId": "57d2b9970f70b6761ca4b863c4e40b59ec0ad8c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8fac66c_af656795",
+        "filename": "cc/binary.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1059815
+      },
+      "writtenOn": "2022-05-05T15:43:42Z",
+      "side": 1,
+      "message": "Ok, revived the old version. PTAL",
+      "parentUuid": "72566721_c1590f70",
+      "revId": "57d2b9970f70b6761ca4b863c4e40b59ec0ad8c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
