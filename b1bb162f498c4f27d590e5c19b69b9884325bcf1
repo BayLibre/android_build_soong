@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f11896f8_f46c8200",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-05-05T01:31:32Z",
+      "side": 1,
+      "message": "Note that I don\u0027t really think we should submit this / go with it long term, because if we\u0027re handling the replacement in soong for the build_config.json, we should probably also handle it in soong for everything else, which we aren\u0027t doing right now.",
+      "revId": "b1bb162f498c4f27d590e5c19b69b9884325bcf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
