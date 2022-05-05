@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52deecee_ae5f84f4",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-05T21:14:31Z",
+      "side": 1,
+      "message": "This is going to duplicate the srcjars in srcs as both generated and non-generated sources. Add another:\n```\n \tsrcFiles \u003d srcFiles.FilterOutByExt(\".srcjar\")\n```",
+      "revId": "ba349e97322034d30407cbf4f645aae6bd0f1fb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
