@@ -60,9 +60,11 @@ func (soongMetricsSingleton) GenerateBuildActions(ctx SingletonContext) {
 func collectMetrics(config Config, eventHandler metrics.EventHandler) *soong_metrics_proto.SoongBuildMetrics {
 	metrics := &soong_metrics_proto.SoongBuildMetrics{}
 
-	soongMetrics := ReadSoongMetrics(config)
-	metrics.Modules = proto.Uint32(uint32(soongMetrics.Modules))
-	metrics.Variants = proto.Uint32(uint32(soongMetrics.Variants))
+	// TODO: This causes a panic because the metrics singleton needs to be created
+	// in GenerateBuildActions, which is no longer called in first pass.
+	//soongMetrics := ReadSoongMetrics(config)
+	//metrics.Modules = proto.Uint32(uint32(soongMetrics.Modules))
+	//metrics.Variants = proto.Uint32(uint32(soongMetrics.Variants))
 
 	memStats := runtime.MemStats{}
 	runtime.ReadMemStats(&memStats)

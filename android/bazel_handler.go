@@ -916,6 +916,14 @@ func getConfigString(key cqueryKey) string {
 	return arch + "|" + os
 }
 
+func GetConfigKey2(ctx BottomUpMutatorContext) configKey {
+	return configKey{
+		// use string because Arch is not a valid key in go
+		arch:   ctx.Arch().String(),
+		osType: ctx.Os(),
+	}
+}
+
 func GetConfigKey(ctx ModuleContext) configKey {
 	return configKey{
 		// use string because Arch is not a valid key in go

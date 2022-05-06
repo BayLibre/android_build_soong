@@ -2047,6 +2047,17 @@ func (c *config) UseHostMusl() bool {
 	return Bool(c.productVariables.HostMusl)
 }
 
+func (c *config) LogMixedBuild2(ctx BottomUpMutatorContext, useBazel bool) {
+	moduleName := ctx.Module().Name()
+	c.mixedBuildsLock.Lock()
+	defer c.mixedBuildsLock.Unlock()
+	if useBazel {
+		c.mixedBuildEnabledModules[moduleName] = struct{}{}
+	} else {
+		c.mixedBuildDisabledModules[moduleName] = struct{}{}
+	}
+}
+
 func (c *config) LogMixedBuild(ctx ModuleContext, useBazel bool) {
 	moduleName := ctx.Module().Name()
 	c.mixedBuildsLock.Lock()

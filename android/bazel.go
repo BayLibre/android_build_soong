@@ -342,10 +342,46 @@ func shouldKeepExistingBuildFileForDir(allowlist bp2BuildConversionAllowlist, di
 // converted or handcrafted Bazel target. As a side effect, calling this
 // method will also log whether this module is mixed build enabled for
 // metrics reporting.
+func MixedBuildsEnabled2(ctx BottomUpMutatorContext) bool {
+	mixedBuildEnabled := mixedBuildPossible2(ctx)
+	ctx.Config().LogMixedBuild2(ctx, mixedBuildEnabled)
+	return mixedBuildEnabled
+}
+
+// MixedBuildsEnabled returns true if a module is ready to be replaced by a
+// converted or handcrafted Bazel target. As a side effect, calling this
+// method will also log whether this module is mixed build enabled for
+// metrics reporting.
 func MixedBuildsEnabled(ctx ModuleContext) bool {
 	mixedBuildEnabled := mixedBuildPossible(ctx)
 	ctx.Config().LogMixedBuild(ctx, mixedBuildEnabled)
 	return mixedBuildEnabled
+}
+
+// mixedBuildPossible returns true if a module is ready to be replaced by a
+// converted or handcrafted Bazel target.
+func mixedBuildPossible2(ctx BottomUpMutatorContext) bool {
+	if ctx.Os() == Windows {
+		// Windows toolchains are not currently supported.
+		return false
+	}
+	if !ctx.Module().Enabled() {
+		return false
+	}
+	if !ctx.Config().BazelContext.BazelEnabled() {
+		return false
+	}
+	if !convertedToBazel(ctx, ctx.Module()) {
+		return false
+	}
+
+	if GenerateCcLibraryStaticOnly(ctx.Module().Name()) {
+		// Don't use partially-converted cc_library targets in mixed builds,
+		// since mixed builds would generally rely on both static and shared
+		// variants of a cc_library.
+		return false
+	}
+	return !bp2buildAllowlist.mixedBuildsDisabled[ctx.Module().Name()]
 }
 
 // mixedBuildPossible returns true if a module is ready to be replaced by a

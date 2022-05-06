@@ -139,7 +139,7 @@ func runMixedModeBuild(configuration android.Config, firstCtx *android.Context, 
 	defer firstCtx.EventHandler.End("mixed_build")
 
 	firstCtx.EventHandler.Begin("prepare")
-	bootstrap.RunBlueprint(cmdlineArgs, bootstrap.StopBeforeWriteNinja, firstCtx.Context, configuration)
+	bootstrap.RunBlueprint(cmdlineArgs, bootstrap.StopBeforePrepareBuildActions, firstCtx.Context, configuration)
 	firstCtx.EventHandler.End("prepare")
 
 	firstCtx.EventHandler.Begin("bazel")

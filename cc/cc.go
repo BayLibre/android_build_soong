@@ -2206,6 +2206,30 @@ func (c *Module) DepsMutator(actx android.BottomUpMutatorContext) {
 		return
 	}
 
+	if android.MixedBuildsEnabled2(actx) && c.bazelHandler != nil {
+		var bazelModuleLabel string
+		if c.typ() == fullLibrary && c.static() {
+			// cc_library is a special case in bp2build; two targets are generated -- one for each
+			// of the shared and static variants. The shared variant keeps the module name, but the
+			// static variant uses a different suffixed name.
+			bazelModuleLabel = bazelLabelForStaticModule(actx, c)
+		} else {
+			bazelModuleLabel = c.GetBazelLabel(actx, c)
+		}
+
+		bazelCtx := actx.Config().BazelContext
+		// TODO: This is stupid and brittle, but fine for proof of concept.
+		if c.typ() == binary || c.typ() == object {
+			bazelCtx.GetOutputFiles(bazelModuleLabel, android.GetConfigKey2(actx))
+		} else {
+			// TODO: Throw away CcInfo, err. This just primes the cache.
+			_, _, err := bazelCtx.GetCcInfo(bazelModuleLabel, android.GetConfigKey2(actx))
+			if err != nil {
+				actx.ModuleErrorf("Error getting Bazel CcInfo: %s", err)
+			}
+		}
+	}
+
 	ctx := &depsContext{
 		BottomUpMutatorContext: actx,
 		moduleContextImpl: moduleContextImpl{
