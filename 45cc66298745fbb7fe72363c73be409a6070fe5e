@@ -22,6 +22,47 @@
       },
       "revId": "45cc66298745fbb7fe72363c73be409a6070fe5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f69c5c80_6efb9198",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-06T11:20:42Z",
+      "side": 1,
+      "message": "I think it uses prebuilt jarfiles from the studio projects, and I see some mentions of it there: https://cs.android.com/search?q\u003dANDROID_PREFS_ROOT\n\nI found this CL from Colin aosp/1651847, so he might know more about it.",
+      "parentUuid": "bcd19b70_9fa6fe93",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "45cc66298745fbb7fe72363c73be409a6070fe5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1342f6f9_ada7e732",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-06T11:20:42Z",
+      "side": 1,
+      "message": "I see some ",
+      "revId": "45cc66298745fbb7fe72363c73be409a6070fe5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
