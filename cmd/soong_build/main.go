@@ -546,7 +546,7 @@ func runBp2Build(configuration android.Config, extraNinjaDeps []string) {
 
 		excludes = append(excludes, getTemporaryExcludes()...)
 
-		symlinkForestDeps := bp2build.PlantSymlinkForest(
+		symlinkForestDeps := bp2build.PlantSymlinkForest(configuration,
 			topDir, workspaceRoot, generatedRoot, ".", excludes)
 
 		ninjaDeps = append(ninjaDeps, codegenContext.AdditionalNinjaDeps()...)
