@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8c871c_0e5fdbf0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-06T12:28:44Z",
+      "side": 1,
+      "message": "This was empty:\n```\n$ strings out/host/linux-x86/framework/metalava.jar | grep ANDROID_PREFS_ROOT\n```\n\nNot sure how conclusive that is",
+      "parentUuid": "f2ea4100_735f5f01",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "45cc66298745fbb7fe72363c73be409a6070fe5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1342f6f9_ada7e732",
