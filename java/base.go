@@ -1477,6 +1477,9 @@ func (j *Module) compile(ctx android.ModuleContext, aaptSrcJar android.Path) {
 		}
 	} else {
 		outputFile = implementationAndResourcesJar
+		if ctx.Device() {
+			j.writeBasicConfig(ctx)
+		}
 	}
 
 	if ctx.Device() {
