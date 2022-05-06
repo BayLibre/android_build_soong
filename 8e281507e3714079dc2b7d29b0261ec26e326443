@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf13a75_505fde64",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-05-06T23:28:17Z",
+      "side": 1,
+      "message": "As I understand it, the code is going to handle a more generic case when the result of evaluating of an per-element expression is a list. Please fix the subject, and add a generic test.",
+      "revId": "8e281507e3714079dc2b7d29b0261ec26e326443",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
