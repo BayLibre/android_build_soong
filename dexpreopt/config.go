@@ -360,10 +360,18 @@ func pathsListToStringLists(pathsList []android.OutputPaths) [][]string {
 	return ret
 }
 
+func maybePath(path android.Path) string {
+	if path != nil {
+		return path.String()
+	} else {
+		return "/nonexistent"
+	}
+}
+
 func moduleConfigToJSON(config *ModuleConfig) ([]byte, error) {
 	return json.MarshalIndent(&moduleJSONConfig{
 		BuildPath:                      config.BuildPath.String(),
-		DexPath:                        config.DexPath.String(),
+		DexPath:                        maybePath(config.DexPath),
 		ManifestPath:                   config.ManifestPath.String(),
 		ProfileClassListing:            config.ProfileClassListing.String(),
 		ProfileBootListing:             config.ProfileBootListing.String(),

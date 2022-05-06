@@ -229,6 +229,31 @@ func (d *dexpreopter) getInstallPath(
 	return defaultInstallPath
 }
 
+// The addUsesLibraryInfo function deduplicates common part of basic config and full config.
+func (d *dexpreopter) addUsesLibraryInfo(ctx android.ModuleContext, config *dexpreopt.ModuleConfig) {
+	providesUsesLib := moduleName(ctx)
+	if ulib, ok := ctx.Module().(ProvidesUsesLib); ok {
+		name := ulib.ProvidesUsesLib()
+		if name != nil {
+			providesUsesLib = *name
+		}
+	}
+
+	config.ProvidesUsesLibrary = providesUsesLib
+	config.EnforceUsesLibrariesStatusFile = dexpreopt.UsesLibrariesStatusFile(ctx)
+	config.EnforceUsesLibraries = d.enforceUsesLibs
+	config.ClassLoaderContexts = d.classLoaderContexts
+}
+
+func (d *dexpreopter) writeBasicConfig(ctx android.ModuleContext) {
+	config := &dexpreopt.ModuleConfig{
+		Name: moduleName(ctx),
+	}
+	d.addUsesLibraryInfo(ctx, config)
+	d.configPath = android.PathForModuleOut(ctx, "dexpreopt", "dexpreopt.config")
+	dexpreopt.WriteModuleConfig(ctx, config, d.configPath)
+}
+
 func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.WritablePath) {
 	global := dexpreopt.GetGlobalConfig(ctx)
 
@@ -241,14 +266,6 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Wr
 	}
 
 	dexLocation := android.InstallPathToOnDevicePath(ctx, d.installPath)
-
-	providesUsesLib := moduleName(ctx)
-	if ulib, ok := ctx.Module().(ProvidesUsesLib); ok {
-		name := ulib.ProvidesUsesLib()
-		if name != nil {
-			providesUsesLib = *name
-		}
-	}
 
 	// If it is test, make config files regardless of its dexpreopt setting.
 	// The config files are required for apps defined in make which depend on the lib.
@@ -320,11 +337,6 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Wr
 		ProfileIsTextListing: profileIsTextListing,
 		ProfileBootListing:   profileBootListing,
 
-		EnforceUsesLibrariesStatusFile: dexpreopt.UsesLibrariesStatusFile(ctx),
-		EnforceUsesLibraries:           d.enforceUsesLibs,
-		ProvidesUsesLibrary:            providesUsesLib,
-		ClassLoaderContexts:            d.classLoaderContexts,
-
 		Archs:                           archs,
 		DexPreoptImagesDeps:             imagesDeps,
 		DexPreoptImageLocationsOnHost:   hostImageLocations,
@@ -341,6 +353,7 @@ func (d *dexpreopter) dexpreopt(ctx android.ModuleContext, dexJarFile android.Wr
 		PresignedPrebuilt: d.isPresignedPrebuilt,
 	}
 
+	d.addUsesLibraryInfo(ctx, dexpreoptConfig)
 	d.configPath = android.PathForModuleOut(ctx, "dexpreopt", "dexpreopt.config")
 	dexpreopt.WriteModuleConfig(ctx, dexpreoptConfig, d.configPath)
 
