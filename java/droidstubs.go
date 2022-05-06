@@ -438,12 +438,8 @@ func metalavaUseRbe(ctx android.ModuleContext) bool {
 }
 
 func metalavaCmd(ctx android.ModuleContext, rule *android.RuleBuilder, javaVersion javaVersion, srcs android.Paths,
-	srcJarList android.Path, bootclasspath, classpath classpath, homeDir android.WritablePath) *android.RuleBuilderCommand {
-	rule.Command().Text("rm -rf").Flag(homeDir.String())
-	rule.Command().Text("mkdir -p").Flag(homeDir.String())
-
+	srcJarList android.Path, bootclasspath, classpath classpath) *android.RuleBuilderCommand {
 	cmd := rule.Command()
-	cmd.FlagWithArg("ANDROID_PREFS_ROOT=", homeDir.String())
 
 	if metalavaUseRbe(ctx) {
 		rule.Remoteable(android.RemoteRuleSupports{RBE: true})
@@ -519,9 +515,8 @@ func (d *Droidstubs) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	srcJarList := zipSyncCmd(ctx, rule, srcJarDir, d.Javadoc.srcJars)
 
-	homeDir := android.PathForModuleOut(ctx, "metalava", "home")
 	cmd := metalavaCmd(ctx, rule, javaVersion, d.Javadoc.srcFiles, srcJarList,
-		deps.bootClasspath, deps.classpath, homeDir)
+		deps.bootClasspath, deps.classpath)
 	cmd.Implicits(d.Javadoc.implicits)
 
 	d.stubsFlags(ctx, cmd, stubsDir)
