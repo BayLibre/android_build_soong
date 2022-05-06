@@ -67,6 +67,7 @@ func RegisterPreDepsMutators(ctx android.RegisterMutatorsContext) {
 
 func RegisterPostDepsMutators(ctx android.RegisterMutatorsContext) {
 	ctx.TopDown("apex_info", apexInfoMutator).Parallel()
+	ctx.TopDown("apex_updatable_app", apexUpdatableAppMutator).Parallel()
 	ctx.BottomUp("apex_unique", apexUniqueVariationsMutator).Parallel()
 	ctx.BottomUp("apex_test_for_deps", apexTestForDepsMutator).Parallel()
 	ctx.BottomUp("apex_test_for", apexTestForMutator).Parallel()
@@ -1029,6 +1030,22 @@ func apexStrictUpdatibilityLintMutator(mctx android.TopDownMutatorContext) {
 			}
 			// visit transitive deps
 			return true
+		})
+	}
+}
+
+// apexUpdatableAppMutator propogates updatable=true to apps of updatable apexes
+func apexUpdatableAppMutator(mctx android.TopDownMutatorContext) {
+	if !mctx.Module().Enabled() {
+		return
+	}
+	if apex, ok := mctx.Module().(*apexBundle); ok && apex.Updatable() {
+		// checking direct deps is sufficient since apex->apk is a direct edge, even when inherited via apex_defaults
+		mctx.VisitDirectDeps(func(module android.Module) {
+			// ignore android_test_app
+			if app, ok := module.(*java.AndroidApp); ok {
+				app.SetUpdatable(true)
+			}
 		})
 	}
 }
