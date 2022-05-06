@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcd19b70_9fa6fe93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1937565
+      },
+      "writtenOn": "2022-05-06T11:07:02Z",
+      "side": 1,
+      "message": "Or at least, so I think: grep doesn\u0027t find any matches in metalava, and I don\u0027t think metalava forks + execs anything (that would inherit the env var)?",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "45cc66298745fbb7fe72363c73be409a6070fe5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
