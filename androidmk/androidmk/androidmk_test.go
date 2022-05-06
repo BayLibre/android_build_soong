@@ -27,6 +27,7 @@ var testCases = []struct {
 	desc     string
 	in       string
 	expected string
+	clean    bool
 }{
 	{
 		desc: "basic cc_library_shared with comments",
@@ -57,6 +58,7 @@ cc_library_shared {
     exclude_srcs: ["a.c"] + ["b.c"], // Second source comment
 
 }`,
+		clean: true,
 	},
 	{
 		desc: "split local/global include_dirs (1)",
@@ -68,6 +70,7 @@ include $(BUILD_SHARED_LIBRARY)`,
 cc_library_shared {
     local_include_dirs: ["."],
 }`,
+		clean: true,
 	},
 	{
 		desc: "split local/global include_dirs (2)",
@@ -79,6 +82,7 @@ include $(BUILD_SHARED_LIBRARY)`,
 cc_library_shared {
     local_include_dirs: ["include"],
 }`,
+		clean: true,
 	},
 	{
 		desc: "split local/global include_dirs (3)",
@@ -90,6 +94,7 @@ include $(BUILD_SHARED_LIBRARY)`,
 cc_library_shared {
     include_dirs: ["system/core/include"],
 }`,
+		clean: true,
 	},
 	{
 		desc: "split local/global include_dirs (4)",
@@ -110,6 +115,7 @@ cc_library_shared {
     local_include_dirs: ["."] + ["include"] + ["test/include"],
     // Comment 3
 }`,
+		clean: true,
 	},
 	{
 		desc: "Convert to local path",
@@ -129,6 +135,7 @@ android_app {
 	asset_dirs: ["asset"],
 	jarjar_rules: "jarjar-rules.txt",
 }`,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_MODULE_STEM",
@@ -154,6 +161,7 @@ cc_library_shared {
     stem: "testing.so",
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_MODULE_HOST_OS",
@@ -187,6 +195,7 @@ cc_library_shared {
     }
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_RTTI_VALUE",
@@ -212,6 +221,7 @@ cc_library_shared {
     rtti: true,
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_ARM_MODE",
@@ -229,6 +239,7 @@ cc_library_shared {
     },
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "_<OS> suffixes",
@@ -254,6 +265,7 @@ cc_library_shared {
     },
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_SANITIZE := never",
@@ -269,6 +281,7 @@ cc_library_shared {
     },
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_SANITIZE unknown parameter",
@@ -292,6 +305,7 @@ cc_library_shared {
     },
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_SANITIZE_RECOVER",
@@ -307,6 +321,7 @@ cc_library_shared {
     },
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "version_script in LOCAL_LDFLAGS",
@@ -321,6 +336,7 @@ cc_library_shared {
     version_script: "exported32.map",
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "Handle TOP",
@@ -334,6 +350,7 @@ cc_library_shared {
 	include_dirs: ["system/core/include", "."],
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "Remove LOCAL_MODULE_TAGS optional",
@@ -348,6 +365,7 @@ cc_library_shared {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "Warn for LOCAL_MODULE_TAGS non-optional",
@@ -364,6 +382,7 @@ cc_library_shared {
 	// force installation for -userdebug and -eng builds.
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "Custom warning for LOCAL_MODULE_TAGS tests",
@@ -383,6 +402,7 @@ cc_library_shared {
 	// type. If you don't use gtest, set "gtest: false".
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "Ignore LOCAL_MODULE_TAGS tests for cc_test",
@@ -396,6 +416,7 @@ include $(BUILD_NATIVE_TEST)
 cc_test {
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "Convert LOCAL_MODULE_TAGS tests to java_test",
@@ -423,6 +444,7 @@ android_test {
 java_test_host {
 }
 `,
+		clean: true,
 	},
 
 	{
@@ -442,6 +464,7 @@ cc_library_shared {
     srcs: ["\\\"EscapeMe.cc\\\""],
 }
 `,
+		clean: true,
 	},
 	{
 
@@ -456,6 +479,7 @@ cc_library_shared {
   name: "iAmAModule",
 
 }`,
+		clean: false,
 	},
 	{
 
@@ -474,6 +498,7 @@ cc_library_shared {
     local_include_dirs: ["src/main/java"],
   }
 }`,
+		clean: true,
 	},
 	{
 		// the important part of this test case is that it confirms that androidmk doesn't
@@ -509,6 +534,7 @@ endif # b==false
 // ANDROIDMK TRANSLATION ERROR: endif from unsupported conditional
 // endif
 		`,
+		clean: false,
 	},
 	{
 		desc: "ignore all-makefiles-under",
@@ -516,6 +542,7 @@ endif # b==false
 include $(call all-makefiles-under,$(LOCAL_PATH))
 `,
 		expected: ``,
+		clean:    true,
 	},
 	{
 		desc: "proguard options for java library",
@@ -552,6 +579,7 @@ include $(call all-makefiles-under,$(LOCAL_PATH))
 				},
 			}
 		`,
+		clean: true,
 	},
 	{
 		desc: "java library",
@@ -616,6 +644,7 @@ include $(call all-makefiles-under,$(LOCAL_PATH))
 				],
 			}
 		`,
+		clean: true,
 	},
 	{
 		desc: "errorprone options for java library",
@@ -634,6 +663,7 @@ include $(call all-makefiles-under,$(LOCAL_PATH))
 				},
 			}
 		`,
+		clean: true,
 	},
 	{
 		desc: "java prebuilt",
@@ -652,6 +682,7 @@ include $(call all-makefiles-under,$(LOCAL_PATH))
 				jetifier: true,
 			}
 		`,
+		clean: true,
 	},
 	{
 		desc: "aar prebuilt",
@@ -667,6 +698,7 @@ include $(call all-makefiles-under,$(LOCAL_PATH))
 
 			}
 		`,
+		clean: true,
 	},
 
 	{
@@ -729,6 +761,7 @@ include $(call all-makefiles-under,$(LOCAL_PATH))
 				static_libs: [],
 			}
 		`,
+		clean: true,
 	},
 	{
 		desc: "cc_library shared_libs",
@@ -742,6 +775,7 @@ include $(call all-makefiles-under,$(LOCAL_PATH))
 				shared_libs: ["libfoo"],
 			}
 		`,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_STRIP_MODULE",
@@ -783,6 +817,7 @@ cc_library_shared {
     }
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "BUILD_CTS_SUPPORT_PACKAGE",
@@ -801,6 +836,7 @@ android_test_helper_app {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "BUILD_CTS_PACKAGE",
@@ -821,6 +857,7 @@ android_test {
     data: ["file1"],
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "BUILD_CTS_*_JAVA_LIBRARY",
@@ -844,6 +881,7 @@ java_library_host {
     defaults: ["cts_defaults"],
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_ANNOTATION_PROCESSORS",
@@ -861,6 +899,7 @@ java_library {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_etc_TARGET_OUT_ETC",
@@ -880,6 +919,7 @@ prebuilt_etc {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_etc_PRODUCT_OUT/system/etc",
@@ -900,6 +940,7 @@ prebuilt_etc {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_etc_TARGET_OUT_ODM/etc",
@@ -918,6 +959,7 @@ prebuilt_etc {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_etc_TARGET_OUT_PRODUCT/etc",
@@ -937,6 +979,7 @@ prebuilt_etc {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_etc_TARGET_OUT_PRODUCT_ETC",
@@ -955,6 +998,7 @@ prebuilt_etc {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_etc_TARGET_OUT_SYSTEM_EXT/etc",
@@ -973,6 +1017,7 @@ prebuilt_etc {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_etc_TARGET_OUT_SYSTEM_EXT_ETC",
@@ -992,6 +1037,7 @@ prebuilt_etc {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_etc_TARGET_OUT_VENDOR/etc",
@@ -1010,6 +1056,7 @@ prebuilt_etc {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_etc_PRODUCT_OUT/TARGET_COPY_OUT_VENDOR/etc",
@@ -1028,6 +1075,7 @@ prebuilt_etc {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_etc_TARGET_OUT_VENDOR_ETC",
@@ -1046,6 +1094,7 @@ prebuilt_etc {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_etc_TARGET_RECOVERY_ROOT_OUT/system/etc",
@@ -1064,6 +1113,7 @@ prebuilt_etc {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_usr_share",
@@ -1082,6 +1132,7 @@ prebuilt_usr_share {
 	src: "foo.txt",
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_usr_share subdir_bar",
@@ -1101,6 +1152,7 @@ prebuilt_usr_share {
 	relative_install_path: "bar",
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_usr_share_host",
@@ -1119,6 +1171,7 @@ prebuilt_usr_share_host {
 	src: "foo.txt",
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_root_host",
@@ -1138,6 +1191,7 @@ prebuilt_root_host {
 	relative_install_path: "subdir",
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_font",
@@ -1157,6 +1211,7 @@ prebuilt_font {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_font",
@@ -1177,6 +1232,7 @@ prebuilt_font {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_usr_share_host subdir_bar",
@@ -1196,6 +1252,7 @@ prebuilt_usr_share_host {
 	relative_install_path: "bar",
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_firmware subdir_bar in $(TARGET_OUT_ETC)",
@@ -1215,6 +1272,7 @@ prebuilt_firmware {
 	relative_install_path: "bar",
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_firmware subdir_bar in $(TARGET_OUT)",
@@ -1234,6 +1292,7 @@ prebuilt_firmware {
 	relative_install_path: "bar",
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_firmware subdir_bar in $(TARGET_OUT_VENDOR)",
@@ -1254,6 +1313,7 @@ prebuilt_firmware {
 	proprietary: true,
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "prebuilt_firmware subdir_bar in $(TARGET_OUT)/vendor",
@@ -1274,6 +1334,7 @@ prebuilt_firmware {
 	proprietary: true,
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "comment with ESC",
@@ -1285,6 +1346,7 @@ prebuilt_firmware {
 // Comment line 1
 // Comment line 2
 `,
+		clean: true,
 	},
 	{
 		desc: "Merge with variable reference",
@@ -1304,6 +1366,7 @@ android_app {
 	java_resource_dirs: FOO,
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_JACK_ENABLED and LOCAL_JACK_FLAGS skipped",
@@ -1320,6 +1383,7 @@ android_app {
 
 }
 		`,
+		clean: true,
 	},
 	{
 		desc: "android_app_import",
@@ -1346,6 +1410,7 @@ android_app_import {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "android_test_import prebuilt",
@@ -1371,6 +1436,7 @@ android_test_import {
 	test_suites: ["cts"],
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "dashed_variable gets renamed",
@@ -1393,6 +1459,7 @@ cc_binary {
     srcs: dashed_dash_variable,
 }
 `,
+		clean: false,
 	},
 	{
 		desc: "variableReassigned",
@@ -1422,6 +1489,7 @@ cc_binary {
 // ANDROIDMK TRANSLATION ERROR: cannot assign a variable multiple times: "src_files"
 // src_files :=
 `,
+		clean: false,
 	},
 	{
 		desc: "undefined_boolean_var",
@@ -1441,6 +1509,7 @@ cc_binary {
 
 }
 `,
+		clean: false,
 	},
 	{
 		desc: "runtime_resource_overlay",
@@ -1464,6 +1533,7 @@ runtime_resource_overlay {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_ENFORCE_USES_LIBRARIES",
@@ -1481,6 +1551,7 @@ android_app {
     enforce_uses_libs: true,
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_CERTIFICATE_LINEAGE",
@@ -1497,6 +1568,7 @@ android_test {
     lineage: "lineage",
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_USES_LIBRARIES",
@@ -1516,6 +1588,7 @@ android_app {
     ],
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_OPTIONAL_USES_LIBRARIES",
@@ -1535,6 +1608,7 @@ android_app {
     ],
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "Obsolete LOCAL_MODULE_PATH",
@@ -1553,6 +1627,7 @@ android_app {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_LICENSE_KINDS, LOCAL_LICENSE_CONDITIONS, LOCAL_NOTICE_FILE",
@@ -1584,6 +1659,7 @@ android_app {
 
 }
 `,
+		clean: false,
 	},
 	{
 		desc: "LOCAL_CHECK_ELF_FILES",
@@ -1603,6 +1679,7 @@ cc_prebuilt_library_shared {
 	check_elf_files: false,
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "Drop default resource and asset dirs from bp",
@@ -1619,6 +1696,7 @@ android_app {
 
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_GENERATED_SOURCES",
@@ -1644,6 +1722,7 @@ android_app {
 	],
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_DISABLE_AUTO_GENERATE_TEST_CONFIG is true",
@@ -1659,6 +1738,7 @@ android_app {
 	auto_gen_config: false,
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "LOCAL_DISABLE_AUTO_GENERATE_TEST_CONFIG is false",
@@ -1674,6 +1754,7 @@ android_app {
 	auto_gen_config: true,
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "privileged app",
@@ -1689,6 +1770,7 @@ android_app {
 	privileged: true
 }
 `,
+		clean: true,
 	},
 	{
 		desc: "convert android_app to android_test when having test_suites",
@@ -1704,6 +1786,7 @@ android_test {
 	test_suites: ["bar"],
 }
 `,
+		clean: true,
 	},
 }
 
@@ -1714,7 +1797,7 @@ func TestEndToEnd(t *testing.T) {
 			t.Error(err)
 		}
 
-		got, errs := ConvertFile(fmt.Sprintf("<testcase %d>", i), bytes.NewBufferString(test.in))
+		got, clean, errs := ConvertFile(fmt.Sprintf("<testcase %d>", i), bytes.NewBufferString(test.in))
 		if len(errs) > 0 {
 			t.Errorf("Unexpected errors: %q", errs)
 			continue
@@ -1722,6 +1805,10 @@ func TestEndToEnd(t *testing.T) {
 
 		if got != expected {
 			t.Errorf("failed testcase '%s'\ninput:\n%s\n\nexpected:\n%s\ngot:\n%s\n", test.desc, strings.TrimSpace(test.in), expected, got)
+		}
+
+		if clean != test.clean {
+			t.Errorf("failed testcase '%s'\nClean was %t but expected %t", test.desc, clean, test.clean)
 		}
 	}
 }

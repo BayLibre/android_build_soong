@@ -42,6 +42,8 @@ type bpFile struct {
 	bpPos scanner.Position // Position of the last emitted line to the blueprint file
 
 	inModule bool
+
+	hadWarningOrError bool
 }
 
 var invalidVariableStringToReplacement = map[string]string{
@@ -91,12 +93,15 @@ func (f *bpFile) errorf(failedNode mkparser.Node, message string, args ...interf
 	for _, l := range lines {
 		f.insertExtraComment("// " + l)
 	}
+
+	f.hadWarningOrError = true
 }
 
 // records that something unexpected occurred
 func (f *bpFile) warnf(message string, args ...interface{}) {
 	message = fmt.Sprintf(message, args...)
 	f.addErrorText(fmt.Sprintf("// ANDROIDMK TRANSLATION WARNING: %s", message))
+	f.hadWarningOrError = true
 }
 
 // adds the given error message as-is to the bottom of the (in-progress) file
@@ -129,12 +134,16 @@ type conditional struct {
 	eq   bool
 }
 
-func ConvertFile(filename string, buffer *bytes.Buffer) (string, []error) {
+// Returns:
+//  - the converted file text
+//  - whether that conversion is "clean" (no warnings or errors)
+//  - any fatal errors (not inability to translate, but e.g. inability to open a file)
+func ConvertFile(filename string, buffer *bytes.Buffer) (string, bool, []error) {
 	p := mkparser.NewParser(filename, buffer)
 
 	nodes, errs := p.Parse()
 	if len(errs) > 0 {
-		return "", errs
+		return "", false, errs
 	}
 
 	file := &bpFile{
@@ -247,10 +256,10 @@ func ConvertFile(filename string, buffer *bytes.Buffer) (string, []error) {
 	out, err := bpparser.Print(tree)
 	if err != nil {
 		errs = append(errs, err)
-		return "", errs
+		return "", false, errs
 	}
 
-	return string(out), errs
+	return string(out), !file.hadWarningOrError, errs
 }
 
 func renameVariableWithInvalidCharacters(name string) string {
