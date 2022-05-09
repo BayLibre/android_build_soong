@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81cae0d8_ed2fd7f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-05-09T14:47:07Z",
+      "side": 1,
+      "message": "Do you need to update cs/android/build/soong/apex/apex.go?l\u003d2115? It uses the tag to determine if it needs to copy a file into the apex at some point.",
+      "revId": "758bb0f57d90b8412cf2453d283f0a289cfe07eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c373032f_351f70fe",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2022-05-09T14:47:07Z",
+      "side": 1,
+      "message": "nit: I\u0027d drop \"shared\" part. Not sure if it is going to create confusion for others. Or maybe Paul has an opinion on this..",
+      "range": {
+        "startLine": 214,
+        "startChar": 34,
+        "endLine": 214,
+        "endChar": 40
+      },
+      "revId": "758bb0f57d90b8412cf2453d283f0a289cfe07eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
