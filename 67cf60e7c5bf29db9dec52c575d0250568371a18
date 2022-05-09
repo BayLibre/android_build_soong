@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80671936_0dacf5ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1787007
+      },
+      "writtenOn": "2022-05-09T14:28:08Z",
+      "side": 1,
+      "message": "It seems to have dropped a few \u003cimplements\u003e tags (but not all) - not sure that is critical to something in the pipeline.\n\nIt also seems to have dropped attributes saying API X was removed on version Y.\n\nI randomly looked into CookieSyncManager in more details. It seems to have dropped some methods that still exist (in master at least). \n\nSo the changes I investigated seem to be making the db less accurate.\n\nNot sure what to do either but I don\u0027t oppose!",
+      "revId": "67cf60e7c5bf29db9dec52c575d0250568371a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
