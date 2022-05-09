@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "111684ae_dd25d8d3",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-09T17:58:22Z",
+      "side": 0,
+      "message": "Why not just add a standalone field to this type?",
+      "revId": "77b99b097bccd034d9fcbfc67db5c38d1f724cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
