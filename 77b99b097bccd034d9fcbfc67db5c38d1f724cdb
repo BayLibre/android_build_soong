@@ -16,6 +16,24 @@
       "message": "Why not just add a standalone field to this type?",
       "revId": "77b99b097bccd034d9fcbfc67db5c38d1f724cdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e64b7508_1cda88da",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-05-09T20:45:24Z",
+      "side": 0,
+      "message": "Creating a separate tag allows us to flatten any logic in consuming functions that are based on struct-type. Off the top of my head, I can\u0027t think of any use cases for this right now (and I am not sure type assertions on depTags is necessarily better either)\n\nChanging the implementation to adding a field instead",
+      "parentUuid": "111684ae_dd25d8d3",
+      "revId": "77b99b097bccd034d9fcbfc67db5c38d1f724cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
