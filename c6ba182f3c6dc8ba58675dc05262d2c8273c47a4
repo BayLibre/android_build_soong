@@ -116,6 +116,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "940e6403_eedbd1f2",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-09T13:46:25Z",
+      "side": 1,
+      "message": "got it, and snapshotFile ends up with a dep on it?",
+      "parentUuid": "aea89ab9_af856bc9",
+      "range": {
+        "startLine": 554,
+        "startChar": 22,
+        "endLine": 554,
+        "endChar": 33
+      },
+      "revId": "c6ba182f3c6dc8ba58675dc05262d2c8273c47a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c35fc5a_ca106812",
@@ -153,6 +177,30 @@
       "side": 1,
       "message": "I have and I am using it here. However, it always sorts the keys before outputting them which I find makes the file harder to read.",
       "parentUuid": "9c35fc5a_ca106812",
+      "range": {
+        "startLine": 586,
+        "startChar": 0,
+        "endLine": 587,
+        "endChar": 24
+      },
+      "revId": "c6ba182f3c6dc8ba58675dc05262d2c8273c47a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bb44ce0_60dd5fce",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-09T13:46:25Z",
+      "side": 1,
+      "message": "maybe using a list of pairs instead of a dict would workaround that? not particularly nice though.",
+      "parentUuid": "6c12f7c0_13f0247c",
       "range": {
         "startLine": 586,
         "startChar": 0,
@@ -210,6 +258,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e16ba776_9fd45086",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-09T13:46:25Z",
+      "side": 1,
+      "message": "well, in practice I doubt there\u0027ll be any conflicts for type/deps either. but fine to leave as is too.",
+      "parentUuid": "37208043_e56ad9f6",
+      "range": {
+        "startLine": 587,
+        "startChar": 24,
+        "endLine": 591,
+        "endChar": 34
+      },
+      "revId": "c6ba182f3c6dc8ba58675dc05262d2c8273c47a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "038fcbd2_c50e9dd3",
@@ -247,6 +319,30 @@
       "side": 1,
       "message": "This surprised me too. Apparently, when you create a module using CreateModule instead of adding to a .bp file, the module type gets a suffix of \"_\" + \u003csome stuff\u003e added to it. Where \u003csome stuff\u003e itself starts with an \"_\" which is where you get the \"__\" from.\n\nI think it only affects one or maybe two modules in art so isn\u0027t a big deal.",
       "parentUuid": "038fcbd2_c50e9dd3",
+      "range": {
+        "startLine": 618,
+        "startChar": 44,
+        "endLine": 620,
+        "endChar": 50
+      },
+      "revId": "c6ba182f3c6dc8ba58675dc05262d2c8273c47a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbef7566_003cf83d",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-09T13:46:25Z",
+      "side": 1,
+      "message": "strange...",
+      "parentUuid": "478ab8d9_e39928b2",
       "range": {
         "startLine": 618,
         "startChar": 44,
