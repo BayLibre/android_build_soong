@@ -351,6 +351,30 @@
       },
       "revId": "c6ba182f3c6dc8ba58675dc05262d2c8273c47a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d234e994_9f518870",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-09T13:51:01Z",
+      "side": 1,
+      "message": "There is some logic as the module type is really what was specified in the build file and if it is created programmatically there was no build file. However, modules that are created programmatically have a string representation that identifies the parents. I\u0027m sure that there is some internal reason why they need different module types.",
+      "parentUuid": "bbef7566_003cf83d",
+      "range": {
+        "startLine": 618,
+        "startChar": 44,
+        "endLine": 620,
+        "endChar": 50
+      },
+      "revId": "c6ba182f3c6dc8ba58675dc05262d2c8273c47a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
