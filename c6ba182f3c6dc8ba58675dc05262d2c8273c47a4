@@ -16,6 +16,23 @@
       "message": "I realized after the discussion about how to access the java_sdk_library names for an sdk in the mainline_modules_sdks.py script that I also needed to access information about the bootclasspath_fragment. While you could find the names of java_sdk_library modules from looking in the snapshot zip contents you cannot do the same for the bootclasspath_fragment.\n\nThis change will produce a JSON file alongside the zip file in out/soong/mainline-sdks that provides information about the sdk. At the moment it just provides the basic, name, type, and dependencies between them. It should be easy to retrieve the contents in mainline_modules_sdks.py.",
       "revId": "c6ba182f3c6dc8ba58675dc05262d2c8273c47a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c028261_a772abc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-09T12:38:44Z",
+      "side": 1,
+      "message": "Ping.",
+      "revId": "c6ba182f3c6dc8ba58675dc05262d2c8273c47a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
