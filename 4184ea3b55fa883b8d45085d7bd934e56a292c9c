@@ -46,6 +46,30 @@
       },
       "revId": "4184ea3b55fa883b8d45085d7bd934e56a292c9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56a455d1_897743c9",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-09T23:03:17Z",
+      "side": 1,
+      "message": "+kousikk for RBE path question.  Since it\u0027s an implementation detail of the remote side of RBE it\u0027s not something Soong knows about.  Soong always uses paths relative to the top of the source tree, which would make that path irrelevant.",
+      "parentUuid": "dc37fc2b_e9f560f2",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 14
+      },
+      "revId": "4184ea3b55fa883b8d45085d7bd934e56a292c9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
