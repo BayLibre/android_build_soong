@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42a78021_cbc74d37",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-09T23:14:48Z",
+      "side": 1,
+      "message": "Can this go in the apex_info mutator to avoid adding a new mutator?",
+      "revId": "d9dcbb9bdf3403d6df4521c831c3adf44d8dae72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
