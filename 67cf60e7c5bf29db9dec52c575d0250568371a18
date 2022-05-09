@@ -16,6 +16,24 @@
       "message": "It seems to have dropped a few \u003cimplements\u003e tags (but not all) - not sure that is critical to something in the pipeline.\n\nIt also seems to have dropped attributes saying API X was removed on version Y.\n\nI randomly looked into CookieSyncManager in more details. It seems to have dropped some methods that still exist (in master at least). \n\nSo the changes I investigated seem to be making the db less accurate.\n\nNot sure what to do either but I don\u0027t oppose!",
       "revId": "67cf60e7c5bf29db9dec52c575d0250568371a18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d340d2b2_2e2a1ec7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-09T14:43:37Z",
+      "side": 1,
+      "message": "yeah, those methods and the class they\u0027re inherited from have been deprecated since API 21 so I figured it doesn\u0027t matter a whole lot. Not that I want to make it less accurate, but I think there\u0027s some underlying metalava bug here that should be fixed if this ends up being an issue.",
+      "parentUuid": "80671936_0dacf5ab",
+      "revId": "67cf60e7c5bf29db9dec52c575d0250568371a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
