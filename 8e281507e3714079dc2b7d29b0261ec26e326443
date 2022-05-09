@@ -52,6 +52,24 @@
       "parentUuid": "6aacb740_8b0af741",
       "revId": "8e281507e3714079dc2b7d29b0261ec26e326443",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c460db88_3eb80673",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-05-09T21:16:40Z",
+      "side": 1,
+      "message": "If you look at the diff from patchset 1 to patchset 2 you can see the difference. I left the example as nested foreaches but elaborate that this could be a foreach of any list.",
+      "parentUuid": "b72ae14c_fb25cb3a",
+      "revId": "8e281507e3714079dc2b7d29b0261ec26e326443",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
