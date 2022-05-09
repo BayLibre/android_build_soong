@@ -1,5 +1,23 @@
 {
-  "comments": [],
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b14a3c39_5dfa5e0d",
+        "filename": "cc/binary_test.go",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-05-09T17:32:40Z",
+      "side": 1,
+      "message": "This code does not even compile.\nPlease also note that cc/binary_test.go should be added to the testSrcs list in cc/Android.bp in order for the tests in it to be run during the build.",
+      "revId": "958c957696e1b1570c9f5feba705577baaa75c54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ],
   "submitRequirementResults": [
     {
       "submitRequirement": {
