@@ -34,6 +34,24 @@
       "parentUuid": "5bf13a75_505fde64",
       "revId": "8e281507e3714079dc2b7d29b0261ec26e326443",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b72ae14c_fb25cb3a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-05-09T21:11:19Z",
+      "side": 1,
+      "message": "\u003e Updated the commit message. There was already a generic example in the tests, the NESTED_LISTS var. NESTED_LISTS_2 was the nested foreach case.\n\nThe commit message looks the same.",
+      "parentUuid": "6aacb740_8b0af741",
+      "revId": "8e281507e3714079dc2b7d29b0261ec26e326443",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
