@@ -16,6 +16,24 @@
       "message": "This is going to duplicate the srcjars in srcs as both generated and non-generated sources. Add another:\n```\n \tsrcFiles \u003d srcFiles.FilterOutByExt(\".srcjar\")\n```",
       "revId": "ba349e97322034d30407cbf4f645aae6bd0f1fb5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fd16242_f56ca509",
+        "filename": "java/base.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 1022,
+      "author": {
+        "id": 1561651
+      },
+      "writtenOn": "2022-05-09T01:50:33Z",
+      "side": 1,
+      "message": "I think we still want to keep them in srcFiles here, so they end up in srcJars at line 1029 and get compiled later on.\n\nI changed the `j.linter` assignment at line 1495 to exclude them from srcJars.",
+      "parentUuid": "52deecee_ae5f84f4",
+      "revId": "ba349e97322034d30407cbf4f645aae6bd0f1fb5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
