@@ -35,6 +35,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "491deb11_dba16484",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-05-09T16:57:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ec764bb6_0edb3ba3",
+      "revId": "758bb0f57d90b8412cf2453d283f0a289cfe07eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "817a95e6_f330009c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-05-09T16:57:30Z",
+      "side": 1,
+      "message": "In the current patchset `java.IsSystemServerClasspathFragmentContentDepTag` in apex.go will return both `contents` and `standalone_contents` dependencies\n\nShould this be just `contents` there?",
+      "parentUuid": "81cae0d8_ed2fd7f5",
+      "revId": "758bb0f57d90b8412cf2453d283f0a289cfe07eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c373032f_351f70fe",
@@ -48,6 +84,30 @@
       "writtenOn": "2022-05-09T14:47:07Z",
       "side": 1,
       "message": "nit: I\u0027d drop \"shared\" part. Not sure if it is going to create confusion for others. Or maybe Paul has an opinion on this..",
+      "range": {
+        "startLine": 214,
+        "startChar": 34,
+        "endLine": 214,
+        "endChar": 40
+      },
+      "revId": "758bb0f57d90b8412cf2453d283f0a289cfe07eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f282ce1f_8b14f10b",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-05-09T16:57:30Z",
+      "side": 1,
+      "message": "Done\n\nI have also renamed the parent dependency tag to `systemServerClasspathFragmentDependencyTag` from `systemServerClasspathFragmentContentDependencyTag` accordingly)",
+      "parentUuid": "c373032f_351f70fe",
       "range": {
         "startLine": 214,
         "startChar": 34,
