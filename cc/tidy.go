@@ -96,10 +96,16 @@ func (tidy *tidyFeature) flags(ctx ModuleContext, flags Flags) Flags {
 	if !android.SubstringInList(flags.TidyFlags, "-header-filter=") {
 		defaultDirs := ctx.Config().Getenv("DEFAULT_TIDY_HEADER_DIRS")
 		headerFilter := "-header-filter="
+		// Default header filter should include only the module directory,
+		// not the out/soong/.../ModuleDir/...
+		// Otherwise, there will be too many warnings from generated file in out/...
+		// If a module wants to check and see warnings in the generated source files,
+		// it should specify its own -header-filter flag.
+		// "/b/f/w/" is the root of source tree when RBE is enabled.
 		if defaultDirs == "" {
-			headerFilter += ctx.ModuleDir() + "/"
+			headerFilter += "\"(^|/b/f/w/)" + ctx.ModuleDir() + "/\""
 		} else {
-			headerFilter += "\"(" + ctx.ModuleDir() + "/|" + defaultDirs + ")\""
+			headerFilter += "\"((^|/b/f/w/)" + ctx.ModuleDir() + "/|" + defaultDirs + ")\""
 		}
 		flags.TidyFlags = append(flags.TidyFlags, headerFilter)
 	}
