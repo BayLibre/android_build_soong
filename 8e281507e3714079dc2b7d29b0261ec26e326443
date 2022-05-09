@@ -70,6 +70,24 @@
       "parentUuid": "b72ae14c_fb25cb3a",
       "revId": "8e281507e3714079dc2b7d29b0261ec26e326443",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4316554_49d65d3b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1344584
+      },
+      "writtenOn": "2022-05-09T22:46:19Z",
+      "side": 1,
+      "message": "Even though I am not a native speaker, I am fairly certain that \"flatten nested foreach calls\" means that we are dealing with a third argument of a `foreach` call being another `foreach`.",
+      "parentUuid": "c460db88_3eb80673",
+      "revId": "8e281507e3714079dc2b7d29b0261ec26e326443",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
