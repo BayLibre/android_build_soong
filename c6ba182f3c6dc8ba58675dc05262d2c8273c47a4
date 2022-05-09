@@ -33,6 +33,115 @@
       "message": "Ping.",
       "revId": "c6ba182f3c6dc8ba58675dc05262d2c8273c47a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88313776_434c969e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-09T13:18:29Z",
+      "side": 1,
+      "message": "nice, thanks for adding this",
+      "revId": "c6ba182f3c6dc8ba58675dc05262d2c8273c47a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40741d0f_12647b97",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-09T13:18:29Z",
+      "side": 1,
+      "message": "Is this a getter? Just from the name, it sounds like it\u0027s an action with side effects.",
+      "range": {
+        "startLine": 554,
+        "startChar": 22,
+        "endLine": 554,
+        "endChar": 33
+      },
+      "revId": "c6ba182f3c6dc8ba58675dc05262d2c8273c47a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c35fc5a_ca106812",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-09T13:18:29Z",
+      "side": 1,
+      "message": "There\u0027s a pretty nice json package in go which writes json automatically given a struct. Are you familiar with that?",
+      "range": {
+        "startLine": 586,
+        "startChar": 0,
+        "endLine": 587,
+        "endChar": 24
+      },
+      "revId": "c6ba182f3c6dc8ba58675dc05262d2c8273c47a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85f60b5b_812da985",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-09T13:18:29Z",
+      "side": 1,
+      "message": "any particular reason we\u0027re prefixing these ones with @ ?",
+      "range": {
+        "startLine": 587,
+        "startChar": 24,
+        "endLine": 591,
+        "endChar": 34
+      },
+      "revId": "c6ba182f3c6dc8ba58675dc05262d2c8273c47a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "038fcbd2_c50e9dd3",
+        "filename": "sdk/update.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-05-09T13:18:29Z",
+      "side": 1,
+      "message": "not familiar with these.. looks potentially flaky if the format changes elsewhere in the codebase? anything we can assert here? like if it contains \"__\" then assert we got two entries..? not quite sure.",
+      "range": {
+        "startLine": 618,
+        "startChar": 44,
+        "endLine": 620,
+        "endChar": 50
+      },
+      "revId": "c6ba182f3c6dc8ba58675dc05262d2c8273c47a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
