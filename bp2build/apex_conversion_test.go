@@ -41,6 +41,24 @@ func registerApexModuleTypes(ctx android.RegistrationContext) {
 	ctx.RegisterModuleType("filegroup", android.FileGroupFactory)
 }
 
+func runOverrideApexTestCase(t *testing.T, tc bp2buildTestCase) {
+	t.Helper()
+	runBp2BuildTestCase(t, registerOverrideApexModuleTypes, tc)
+}
+
+func registerOverrideApexModuleTypes(ctx android.RegistrationContext) {
+	// CC module types needed as they can be APEX dependencies
+	cc.RegisterCCBuildComponents(ctx)
+
+	ctx.RegisterModuleType("sh_binary", sh.ShBinaryFactory)
+	ctx.RegisterModuleType("cc_binary", cc.BinaryFactory)
+	ctx.RegisterModuleType("cc_library", cc.LibraryFactory)
+	ctx.RegisterModuleType("apex_key", apex.ApexKeyFactory)
+	ctx.RegisterModuleType("android_app_certificate", java.AndroidAppCertificateFactory)
+	ctx.RegisterModuleType("filegroup", android.FileGroupFactory)
+	ctx.RegisterModuleType("apex", apex.BundleFactory)
+}
+
 func TestApexBundleSimple(t *testing.T) {
 	runApexTestCase(t, bp2buildTestCase{
 		description:                "apex - example with all props",
@@ -362,4 +380,174 @@ apex {
 		},
 	},
 }`
+}
+
+func TestBp2BuildOverrideApex(t *testing.T) {
+	runOverrideApexTestCase(t, bp2buildTestCase{
+		description:                "override_apex",
+		moduleTypeUnderTest:        "override_apex",
+		moduleTypeUnderTestFactory: apex.OverrideApexFactory,
+		filesystem:                 map[string]string{},
+		blueprint: `
+apex_key {
+	name: "com.android.apogee.key",
+	public_key: "com.android.apogee.avbpubkey",
+	private_key: "com.android.apogee.pem",
+	bazel_module: { bp2build_available: false },
+}
+
+android_app_certificate {
+	name: "com.android.apogee.certificate",
+	certificate: "com.android.apogee",
+	bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+	name: "native_shared_lib_1",
+	bazel_module: { bp2build_available: false },
+}
+
+cc_library {
+	name: "native_shared_lib_2",
+	bazel_module: { bp2build_available: false },
+}
+
+// TODO(b/194878861): Add bp2build support for prebuilt_etc
+cc_library {
+	name: "pretend_prebuilt_1",
+	bazel_module: { bp2build_available: false },
+}
+
+// TODO(b/194878861): Add bp2build support for prebuilt_etc
+cc_library {
+	name: "pretend_prebuilt_2",
+	bazel_module: { bp2build_available: false },
+}
+
+filegroup {
+	name: "com.android.apogee-file_contexts",
+	srcs: [
+			"com.android.apogee-file_contexts",
+	],
+	bazel_module: { bp2build_available: false },
+}
+
+cc_binary { name: "cc_binary_1", bazel_module: { bp2build_available: false } }
+sh_binary { name: "sh_binary_2", bazel_module: { bp2build_available: false } }
+
+apex {
+	name: "com.android.apogee",
+	manifest: "apogee_manifest.json",
+	androidManifest: "ApogeeAndroidManifest.xml",
+	file_contexts: "com.android.apogee-file_contexts",
+	min_sdk_version: "29",
+	key: "com.android.apogee.key",
+	certificate: "com.android.apogee.certificate",
+	updatable: false,
+	installable: false,
+	compressible: false,
+	native_shared_libs: [
+	    "native_shared_lib_1",
+	    "native_shared_lib_2",
+	],
+	binaries: [
+		"cc_binary_1",
+		"sh_binary_2",
+	],
+	prebuilts: [
+	    "pretend_prebuilt_1",
+	    "pretend_prebuilt_2",
+	],
+}
+
+apex_key {
+	name: "com.google.android.apogee.key",
+	public_key: "com.google.android.apogee.avbpubkey",
+	private_key: "com.google.android.apogee.pem",
+	bazel_module: { bp2build_available: false },
+}
+
+android_app_certificate {
+	name: "com.google.android.apogee.certificate",
+	certificate: "com.google.android.apogee",
+	bazel_module: { bp2build_available: false },
+}
+
+override_apex {
+	name: "com.google.android.apogee",
+    base: "com.android.apogee",
+    key: "com.google.android.apogee.key",
+    certificate: ":com.google.android.apogee.certificate",
+    prebuilts: [],
+	compressible: true,
+}
+`,
+		expectedBazelTargets: []string{
+			makeBazelTarget("apex", "com.android.apogee", attrNameToString{
+				"android_manifest": `"ApogeeAndroidManifest.xml"`,
+				"binaries": `[
+        ":cc_binary_1",
+        ":sh_binary_2",
+    ]`,
+				"certificate":     `":com.android.apogee.certificate"`,
+				"file_contexts":   `":com.android.apogee-file_contexts"`,
+				"installable":     "False",
+				"key":             `":com.android.apogee.key"`,
+				"manifest":        `"apogee_manifest.json"`,
+				"min_sdk_version": `"29"`,
+				"native_shared_libs_32": `[
+        ":native_shared_lib_1",
+        ":native_shared_lib_2",
+    ]`,
+				"native_shared_libs_64": `select({
+        "//build/bazel/platforms/arch:arm64": [
+            ":native_shared_lib_1",
+            ":native_shared_lib_2",
+        ],
+        "//build/bazel/platforms/arch:x86_64": [
+            ":native_shared_lib_1",
+            ":native_shared_lib_2",
+        ],
+        "//conditions:default": [],
+    })`,
+				"prebuilts": `[
+        ":pretend_prebuilt_1",
+        ":pretend_prebuilt_2",
+    ]`,
+				"updatable":    "False",
+				"compressible": "False",
+			}),
+
+			makeBazelTarget("apex", "com.google.android.apogee", attrNameToString{
+				"android_manifest": `"ApogeeAndroidManifest.xml"`,
+				"binaries": `[
+        ":cc_binary_1",
+        ":sh_binary_2",
+    ]`,
+				"certificate":     `":com.google.android.apogee.certificate"`,
+				"file_contexts":   `":com.android.apogee-file_contexts"`,
+				"installable":     "False",
+				"key":             `":com.google.android.apogee.key"`,
+				"manifest":        `":apogee_manifest.json"`,
+				"min_sdk_version": `"29"`,
+				"native_shared_libs_32": `[
+        ":native_shared_lib_1",
+        ":native_shared_lib_2",
+    ]`,
+				"native_shared_libs_64": `select({
+        "//build/bazel/platforms/arch:arm64": [
+            ":native_shared_lib_1",
+            ":native_shared_lib_2",
+        ],
+        "//build/bazel/platforms/arch:x86_64": [
+            ":native_shared_lib_1",
+            ":native_shared_lib_2",
+        ],
+        "//conditions:default": [],
+    })`,
+				"prebuilts":    `[]`,
+				"updatable":    "False",
+				"compressible": "True",
+			}),
+		}})
 }
