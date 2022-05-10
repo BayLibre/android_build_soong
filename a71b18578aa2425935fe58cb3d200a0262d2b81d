@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8ff88c5_23928391",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2462,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-10T08:29:50Z",
+      "side": 1,
+      "message": "Add an else clause to error out if the base module doesn\u0027t exist.",
+      "range": {
+        "startLine": 2462,
+        "startChar": 1,
+        "endLine": 2462,
+        "endChar": 94
+      },
+      "revId": "a71b18578aa2425935fe58cb3d200a0262d2b81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0be88781_57f08bca",
+        "filename": "apex/apex.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 2477,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-10T08:29:50Z",
+      "side": 1,
+      "message": "Can you add a test for this and file_contexts where they\u0027re in the same/different directories?",
+      "range": {
+        "startLine": 2469,
+        "startChar": 5,
+        "endLine": 2477,
+        "endChar": 6
+      },
+      "revId": "a71b18578aa2425935fe58cb3d200a0262d2b81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1148e52_c1ed4a55",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-10T08:29:50Z",
+      "side": 1,
+      "message": "There is bp2build support for prebuilt_etc.\n\nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/etc/prebuilt_etc.go;l\u003d681;drc\u003dc78604e6a45e48321b67ff5b520115e5e57ee9a7",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 59
+      },
+      "revId": "a71b18578aa2425935fe58cb3d200a0262d2b81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c42828_55154aa2",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-10T08:29:50Z",
+      "side": 1,
+      "message": "fix indent",
+      "range": {
+        "startLine": 430,
+        "startChar": 2,
+        "endLine": 430,
+        "endChar": 3
+      },
+      "revId": "a71b18578aa2425935fe58cb3d200a0262d2b81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8321d32_668bb1d6",
+        "filename": "bp2build/apex_conversion_test.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-10T08:29:50Z",
+      "side": 1,
+      "message": "fix indent",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 481,
+        "endChar": 18
+      },
+      "revId": "a71b18578aa2425935fe58cb3d200a0262d2b81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
