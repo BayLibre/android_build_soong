@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6131b01c_d29219f2",
+        "filename": "java/core-libraries/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-10T17:29:13Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "a2b10770343e8bfb140d422d04be8f1dc2271e1d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
