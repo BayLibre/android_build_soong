@@ -33,6 +33,26 @@ import (
 	"android/soong/bazel"
 )
 
+func init() {
+	RegisterMixedBuildsMutator(InitRegistrationContext)
+}
+
+func RegisterMixedBuildsMutator(ctx RegistrationContext) {
+	ctx.PostDepsMutators(func(ctx RegisterMutatorsContext) {
+		ctx.BottomUp("mixed_builds_prep", mixedBuildsPrepareMutator).Parallel()
+	})
+}
+
+func mixedBuildsPrepareMutator(ctx BottomUpMutatorContext) {
+	if m := ctx.Module(); m.Enabled() {
+		if mixedBuildMod, ok := m.(MixedBuildsBuildable); ok {
+			if MixedBuildsEnabled(ctx) {
+				mixedBuildMod.QueueBazelCall(ctx)
+			}
+		}
+	}
+}
+
 type cqueryRequest interface {
 	// Name returns a string name for this request type. Such request type names must be unique,
 	// and must only consist of alphanumeric characters.
@@ -916,7 +936,7 @@ func getConfigString(key cqueryKey) string {
 	return arch + "|" + os
 }
 
-func GetConfigKey(ctx ModuleContext) configKey {
+func GetConfigKey(ctx BaseModuleContext) configKey {
 	return configKey{
 		// use string because Arch is not a valid key in go
 		arch:   ctx.Arch().String(),

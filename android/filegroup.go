@@ -101,6 +101,7 @@ type fileGroup struct {
 	srcs       Paths
 }
 
+var _ MixedBuildsBuildable = (*fileGroup)(nil)
 var _ SourceFileProducer = (*fileGroup)(nil)
 
 // filegroup contains a list of files that are referenced by other modules
@@ -160,4 +161,19 @@ func (fg *fileGroup) MakeVars(ctx MakeVarsModuleContext) {
 	if makeVar := String(fg.properties.Export_to_make_var); makeVar != "" {
 		ctx.StrictRaw(makeVar, strings.Join(fg.srcs.Strings(), " "))
 	}
+}
+
+func (fg *fileGroup) QueueBazelCall(ctx BottomUpMutatorContext) error {
+	bazelCtx := ctx.Config().BazelContext
+	archVariant := ctx.Arch().String()
+	osVariant := ctx.Os()
+
+	bazelCtx.GetOutputFiles(fg.GetBazelLabel(ctx, fg), configKey{archVariant, osVariant})
+	return nil
+}
+
+func (fg *fileGroup) GenerateBazelBuildActions(ctx ModuleContext) error {
+	//TODO implement me
+	panic("implement me")
+	return nil
 }
