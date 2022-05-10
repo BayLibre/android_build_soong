@@ -16,6 +16,24 @@
       "message": "Can this go in the apex_info mutator to avoid adding a new mutator?",
       "revId": "d9dcbb9bdf3403d6df4521c831c3adf44d8dae72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cc1ecb2_eec761e4",
+        "filename": "apex/apex.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-05-10T00:05:54Z",
+      "side": 1,
+      "message": "That makes sense. I have merged this into apex_info mutator to avoid the overhead of a new mutator",
+      "parentUuid": "42a78021_cbc74d37",
+      "revId": "d9dcbb9bdf3403d6df4521c831c3adf44d8dae72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
