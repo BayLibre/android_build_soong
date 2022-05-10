@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da99f95c_aeafe220",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-10T13:27:17Z",
+      "side": 1,
+      "message": "```panic: Could not create finder for bp2build-allowlist.json files: finder encountered 1 errors: [/mnt/disks/build-disk/src/android/master/vendor/google: lstat /mnt/disks/build-disk/src/android/master/vendor/google: no such file or directory]```\n\nWe can relax finder to ignore non-existent directories.",
+      "range": {
+        "startLine": 328,
+        "startChar": 2,
+        "endLine": 328,
+        "endChar": 46
+      },
+      "revId": "e11ecb9a7ef3e21bc9cb0213b34c73502d9d1118",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4779d5_7d521b20",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1514900
+      },
+      "writtenOn": "2022-05-10T13:27:17Z",
+      "side": 1,
+      "message": "Echoing Cole\u0027s suggestion in the other CL, what do you think about implement the allowlists in an internal-only bootstrap_go_package (i.e. a Soong plugin), which links directly into Soong? It has the advantage of being a natural extension to the current Go allowlists (which would support comments, instead of JSON), and not having to deal with finder.\n\n(e.g. https://cs.android.com/android/platform/superproject/+/master:external/error_prone/soong/error_prone.go)",
+      "range": {
+        "startLine": 344,
+        "startChar": 1,
+        "endLine": 344,
+        "endChar": 44
+      },
+      "revId": "e11ecb9a7ef3e21bc9cb0213b34c73502d9d1118",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
