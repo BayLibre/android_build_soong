@@ -24,6 +24,7 @@ import (
 	"strconv"
 	"strings"
 
+	"android/soong/bazel/cquery"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -1773,25 +1774,69 @@ func GetSubnameProperty(actx android.ModuleContext, c LinkableInterface) string 
 	return subName
 }
 
-// Returns true if Bazel was successfully used for the analysis of this module.
-func (c *Module) maybeGenerateBazelActions(actx android.ModuleContext) bool {
-	var bazelModuleLabel string
+var _ android.MixedBuildsBuildable = (*Module)(nil)
+
+func (c *Module) getBazelModuleLabel(ctx android.BaseModuleContext) string {
 	if c.typ() == fullLibrary && c.static() {
 		// cc_library is a special case in bp2build; two targets are generated -- one for each
 		// of the shared and static variants. The shared variant keeps the module name, but the
 		// static variant uses a different suffixed name.
-		bazelModuleLabel = bazelLabelForStaticModule(actx, c)
+		return bazelLabelForStaticModule(ctx, c)
 	} else {
-		bazelModuleLabel = c.GetBazelLabel(actx, c)
+		return c.GetBazelLabel(ctx, c)
+	}
+}
+
+func (c *Module) QueueBazelCall(ctx android.BaseModuleContext) {
+	bazelCtx := ctx.Config().BazelContext
+	// TODO: This is stupid and brittle, but fine for proof of concept.
+	if c.typ() == binary || c.typ() == object {
+		bazelCtx.QueueBazelRequest(c.getBazelModuleLabel(ctx), cquery.GetOutputFiles, android.GetConfigKey(ctx))
+	} else {
+		bazelCtx.QueueBazelRequest(c.getBazelModuleLabel(ctx), cquery.GetCcInfo, android.GetConfigKey(ctx))
+	}
+}
+
+func (c *Module) IsMixedBuildsSupported(ctx android.BaseModuleContext) bool {
+	return c.bazelHandler != nil
+}
+
+func (c *Module) GenerateBazelBuildActions(ctx android.ModuleContext) {
+	// TODO(cparsons): Any logic in this method occurring prior to querying Bazel should be
+	// requested from Bazel instead.
+
+	// Handle the case of a test module split by `test_per_src` mutator.
+	//
+	// The `test_per_src` mutator adds an extra variation named "", depending on all the other
+	// `test_per_src` variations of the test module. Set `outputFile` to an empty path for this
+	// module and return early, as this module does not produce an output file per se.
+	if c.IsTestPerSrcAllTestsVariation() {
+		c.outputFile = android.OptionalPath{}
+		return
 	}
 
-	bazelActionsUsed := false
-	// Mixed builds mode is disabled for modules outside of device OS.
-	// TODO(b/200841190): Support non-device OS in mixed builds.
-	if android.MixedBuildsEnabled(actx) && c.bazelHandler != nil {
-		bazelActionsUsed = c.bazelHandler.GenerateBazelBuildActions(actx, bazelModuleLabel)
+	c.Properties.SubName = GetSubnameProperty(ctx, c)
+	apexInfo := ctx.Provider(android.ApexInfoProvider).(android.ApexInfo)
+	if !apexInfo.IsForPlatform() {
+		c.hideApexVariantFromMake = true
 	}
-	return bazelActionsUsed
+
+	c.makeLinkType = GetMakeLinkType(ctx, c)
+
+	mctx := &moduleContext{
+		ModuleContext: ctx,
+		moduleContextImpl: moduleContextImpl{
+			mod: c,
+		},
+	}
+	mctx.ctx = mctx
+
+	bazelModuleLabel := c.getBazelModuleLabel(ctx)
+
+	// TODO: Error handling
+	c.bazelHandler.GenerateBazelBuildActions(ctx, bazelModuleLabel)
+
+	c.maybeInstall(mctx, apexInfo)
 }
 
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
@@ -1823,11 +1868,6 @@ func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 		},
 	}
 	ctx.ctx = ctx
-
-	if c.maybeGenerateBazelActions(actx) {
-		c.maybeInstall(ctx, apexInfo)
-		return
-	}
 
 	deps := c.depsToPaths(ctx)
 	if ctx.Failed() {

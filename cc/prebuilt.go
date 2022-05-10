@@ -412,19 +412,18 @@ type prebuiltStaticLibraryBazelHandler struct {
 	library *libraryDecorator
 }
 
-func (h *prebuiltStaticLibraryBazelHandler) GenerateBazelBuildActions(ctx android.ModuleContext, label string) bool {
+func (h *prebuiltStaticLibraryBazelHandler) GenerateBazelBuildActions(ctx android.ModuleContext, label string) {
 	bazelCtx := ctx.Config().BazelContext
-	ccInfo, ok, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx))
+	ccInfo, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx))
 	if err != nil {
-		ctx.ModuleErrorf("Error getting Bazel CcInfo: %s", err)
-	}
-	if !ok {
-		return false
+		ctx.ModuleErrorf(err.Error())
+		// TODO: Better error handling.
+		return
 	}
 	staticLibs := ccInfo.CcStaticLibraryFiles
 	if len(staticLibs) > 1 {
 		ctx.ModuleErrorf("expected 1 static library from bazel target %q, got %s", label, staticLibs)
-		return false
+		return
 	}
 
 	// TODO(b/184543518): cc_prebuilt_library_static may have properties for re-exporting flags
@@ -439,7 +438,7 @@ func (h *prebuiltStaticLibraryBazelHandler) GenerateBazelBuildActions(ctx androi
 
 	if len(staticLibs) == 0 {
 		h.module.outputFile = android.OptionalPath{}
-		return true
+		return
 	}
 
 	out := android.PathForBazelOut(ctx, staticLibs[0])
@@ -452,7 +451,7 @@ func (h *prebuiltStaticLibraryBazelHandler) GenerateBazelBuildActions(ctx androi
 		TransitiveStaticLibrariesForOrdering: depSet,
 	})
 
-	return true
+	return
 }
 
 type prebuiltSharedLibraryBazelHandler struct {
@@ -462,19 +461,17 @@ type prebuiltSharedLibraryBazelHandler struct {
 	library *libraryDecorator
 }
 
-func (h *prebuiltSharedLibraryBazelHandler) GenerateBazelBuildActions(ctx android.ModuleContext, label string) bool {
+func (h *prebuiltSharedLibraryBazelHandler) GenerateBazelBuildActions(ctx android.ModuleContext, label string) {
 	bazelCtx := ctx.Config().BazelContext
-	ccInfo, ok, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx))
+	ccInfo, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx))
 	if err != nil {
-		ctx.ModuleErrorf("Error getting Bazel CcInfo for %s: %s", label, err)
-	}
-	if !ok {
-		return false
+		ctx.ModuleErrorf(err.Error())
+		return
 	}
 	sharedLibs := ccInfo.CcSharedLibraryFiles
 	if len(sharedLibs) != 1 {
 		ctx.ModuleErrorf("expected 1 shared library from bazel target %s, got %q", label, sharedLibs)
-		return false
+		return
 	}
 
 	// TODO(b/184543518): cc_prebuilt_library_shared may have properties for re-exporting flags
@@ -489,7 +486,7 @@ func (h *prebuiltSharedLibraryBazelHandler) GenerateBazelBuildActions(ctx androi
 
 	if len(sharedLibs) == 0 {
 		h.module.outputFile = android.OptionalPath{}
-		return true
+		return
 	}
 
 	out := android.PathForBazelOut(ctx, sharedLibs[0])
@@ -514,8 +511,6 @@ func (h *prebuiltSharedLibraryBazelHandler) GenerateBazelBuildActions(ctx androi
 
 	h.library.setFlagExporterInfoFromCcInfo(ctx, ccInfo)
 	h.module.maybeUnhideFromMake()
-
-	return true
 }
 
 func (p *prebuiltObjectLinker) prebuilt() *android.Prebuilt {
