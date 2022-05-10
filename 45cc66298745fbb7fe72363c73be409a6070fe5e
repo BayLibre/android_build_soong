@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9093154_25d78b07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2022-05-10T17:45:18Z",
+      "side": 1,
+      "message": "The strings will be compressed in the jar file:\n```\n$ unzip -p out/host/linux-x86/framework/metalava.jar | grep ANDROID_PREFS_ROOT\ngrep: (standard input): binary file matches\n```",
+      "parentUuid": "0b8c871c_0e5fdbf0",
+      "range": {
+        "startLine": 10,
+        "startChar": 10,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "45cc66298745fbb7fe72363c73be409a6070fe5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1342f6f9_ada7e732",
