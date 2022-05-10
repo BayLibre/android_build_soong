@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "825f2f93_3a553174",
+        "filename": "android/bazel.go",
+        "patchSetId": 2
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1535516
+      },
+      "writtenOn": "2022-05-10T22:27:19Z",
+      "side": 1,
+      "message": "I was thinking you\u0027d do this in the existing finder in finder.go. If you create a new finder, it will have to search vendor/google again, when it\u0027s already done that in the other finder.\n\nBut I suppose this doesn\u0027t matter if you switch to the plugin method like Jin is requesting.",
+      "revId": "e11ecb9a7ef3e21bc9cb0213b34c73502d9d1118",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f4779d5_7d521b20",
         "filename": "android/bazel.go",
         "patchSetId": 2
