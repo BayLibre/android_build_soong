@@ -34,6 +34,24 @@
       "parentUuid": "111684ae_dd25d8d3",
       "revId": "77b99b097bccd034d9fcbfc67db5c38d1f724cdb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c20aa9bb_c760fe1e",
+        "filename": "java/systemserver_classpath_fragment.go",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-10T10:28:13Z",
+      "side": 0,
+      "message": "I have often found that adding data and even behavior to the tag results in smaller and cleaner code. You just have to decide whether the tag is a struct that is copied everywhere, or a pointer to a struct that is shared. If you have lots of data in the tag it is better to pass around a pointer to it but you have to make sure that you don\u0027t accidentally try and change the contents as that would affect every dependency that uses it.",
+      "parentUuid": "e64b7508_1cda88da",
+      "revId": "77b99b097bccd034d9fcbfc67db5c38d1f724cdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
