@@ -70,6 +70,30 @@
       },
       "revId": "4184ea3b55fa883b8d45085d7bd934e56a292c9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ba36413_a01bc2d4",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2022-05-10T08:34:23Z",
+      "side": 1,
+      "message": "Tested clang-tidy more with and without RBE, I found that although it sometimes emit warning location with absolute path, its header-filter argument is matched with relative path. So the /b/f/w/ prefix in my earlier patch is not used and can be removed.",
+      "parentUuid": "56a455d1_897743c9",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 14
+      },
+      "revId": "4184ea3b55fa883b8d45085d7bd934e56a292c9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
