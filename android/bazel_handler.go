@@ -33,6 +33,26 @@ import (
 	"android/soong/bazel"
 )
 
+func init() {
+	RegisterMixedBuildsMutator(InitRegistrationContext)
+}
+
+func RegisterMixedBuildsMutator(ctx RegistrationContext) {
+	ctx.PostDepsMutators(func(ctx RegisterMutatorsContext) {
+		ctx.BottomUp("mixed_builds_prep", mixedBuildsPrepareMutator).Parallel()
+	})
+}
+
+func mixedBuildsPrepareMutator(ctx BottomUpMutatorContext) {
+	if m := ctx.Module(); m.Enabled() {
+		if mixedBuildMod, ok := m.(MixedBuildsBuildable); ok {
+			if mixedBuildMod.IsMixedBuildsSupported(ctx) && MixedBuildsEnabled(ctx) {
+				mixedBuildMod.QueueBazelCall(ctx)
+			}
+		}
+	}
+}
+
 type cqueryRequest interface {
 	// Name returns a string name for this request type. Such request type names must be unique,
 	// and must only consist of alphanumeric characters.
@@ -66,27 +86,26 @@ type cqueryKey struct {
 // processing a module (during Bazel mixed builds). Individual module types should define
 // their own bazel handler if they support deferring to Bazel.
 type BazelHandler interface {
-	// Issue query to Bazel to retrieve information about Bazel's view of the current module.
-	// If Bazel returns this information, set module properties on the current module to reflect
-	// the returned information.
-	// Returns true if information was available from Bazel, false if bazel invocation still needs to occur.
+	// Use information retrieved from Bazel to set properties on the current module.
 	GenerateBazelBuildActions(ctx ModuleContext, label string) bool
 }
 
 type BazelContext interface {
+	QueueBazelRequest(label string, requestType cqueryRequest, cfgKey configKey)
+
 	// The methods below involve queuing cquery requests to be later invoked
 	// by bazel. If any of these methods return (_, false), then the request
 	// has been queued to be run later.
 
 	// Returns result files built by building the given bazel target label.
-	GetOutputFiles(label string, cfgKey configKey) ([]string, bool)
+	GetOutputFiles(label string, cfgKey configKey) ([]string, error)
 
-	// TODO(cparsons): Other cquery-related methods should be added here.
 	// Returns the results of GetOutputFiles and GetCcObjectFiles in a single query (in that order).
-	GetCcInfo(label string, cfgKey configKey) (cquery.CcInfo, bool, error)
+	GetCcInfo(label string, cfgKey configKey) (cquery.CcInfo, error)
 
 	// Returns the executable binary resultant from building together the python sources
-	GetPythonBinary(label string, cfgKey configKey) (string, bool)
+	// TODO(b/232976601): Remove.
+	GetPythonBinary(label string, cfgKey configKey) (string, error)
 
 	// ** End cquery methods
 
@@ -153,19 +172,24 @@ type MockBazelContext struct {
 	LabelToPythonBinary map[string]string
 }
 
-func (m MockBazelContext) GetOutputFiles(label string, cfgKey configKey) ([]string, bool) {
-	result, ok := m.LabelToOutputFiles[label]
-	return result, ok
+func (m MockBazelContext) QueueBazelRequest(label string, requestType cqueryRequest, cfgKey configKey) {
+	//TODO implement me
+	panic("implement me")
 }
 
-func (m MockBazelContext) GetCcInfo(label string, cfgKey configKey) (cquery.CcInfo, bool, error) {
-	result, ok := m.LabelToCcInfo[label]
-	return result, ok, nil
+func (m MockBazelContext) GetOutputFiles(label string, cfgKey configKey) ([]string, error) {
+	result, _ := m.LabelToOutputFiles[label]
+	return result, nil
 }
 
-func (m MockBazelContext) GetPythonBinary(label string, cfgKey configKey) (string, bool) {
-	result, ok := m.LabelToPythonBinary[label]
-	return result, ok
+func (m MockBazelContext) GetCcInfo(label string, cfgKey configKey) (cquery.CcInfo, error) {
+	result, _ := m.LabelToCcInfo[label]
+	return result, nil
+}
+
+func (m MockBazelContext) GetPythonBinary(label string, cfgKey configKey) (string, error) {
+	result, _ := m.LabelToPythonBinary[label]
+	return result, nil
 }
 
 func (m MockBazelContext) InvokeBazel() error {
@@ -188,46 +212,56 @@ func (m MockBazelContext) AqueryDepsets() []bazel.AqueryDepset {
 
 var _ BazelContext = MockBazelContext{}
 
-func (bazelCtx *bazelContext) GetOutputFiles(label string, cfgKey configKey) ([]string, bool) {
-	rawString, ok := bazelCtx.cquery(label, cquery.GetOutputFiles, cfgKey)
-	var ret []string
-	if ok {
+func (bazelCtx *bazelContext) QueueBazelRequest(label string, requestType cqueryRequest, cfgKey configKey) {
+	key := cqueryKey{label, requestType, cfgKey}
+	bazelCtx.requestMutex.Lock()
+	defer bazelCtx.requestMutex.Unlock()
+	bazelCtx.requests[key] = true
+}
+
+func (bazelCtx *bazelContext) GetOutputFiles(label string, cfgKey configKey) ([]string, error) {
+	key := cqueryKey{label, cquery.GetOutputFiles, cfgKey}
+	if rawString, ok := bazelCtx.results[key]; ok {
 		bazelOutput := strings.TrimSpace(rawString)
-		ret = cquery.GetOutputFiles.ParseResult(bazelOutput)
+		return cquery.GetOutputFiles.ParseResult(bazelOutput), nil
+	} else {
+		return nil, fmt.Errorf("no bazel response found for %v", key)
 	}
-	return ret, ok
 }
 
-func (bazelCtx *bazelContext) GetCcInfo(label string, cfgKey configKey) (cquery.CcInfo, bool, error) {
-	result, ok := bazelCtx.cquery(label, cquery.GetCcInfo, cfgKey)
-	if !ok {
-		return cquery.CcInfo{}, ok, nil
-	}
-
-	bazelOutput := strings.TrimSpace(result)
-	ret, err := cquery.GetCcInfo.ParseResult(bazelOutput)
-	return ret, ok, err
-}
-
-func (bazelCtx *bazelContext) GetPythonBinary(label string, cfgKey configKey) (string, bool) {
-	rawString, ok := bazelCtx.cquery(label, cquery.GetPythonBinary, cfgKey)
-	var ret string
-	if ok {
+func (bazelCtx *bazelContext) GetCcInfo(label string, cfgKey configKey) (cquery.CcInfo, error) {
+	key := cqueryKey{label, cquery.GetCcInfo, cfgKey}
+	if rawString, ok := bazelCtx.results[key]; ok {
 		bazelOutput := strings.TrimSpace(rawString)
-		ret = cquery.GetPythonBinary.ParseResult(bazelOutput)
+		return cquery.GetCcInfo.ParseResult(bazelOutput)
+	} else {
+		return cquery.CcInfo{}, fmt.Errorf("no bazel response found for %v", key)
 	}
-	return ret, ok
 }
 
-func (n noopBazelContext) GetOutputFiles(label string, cfgKey configKey) ([]string, bool) {
+func (bazelCtx *bazelContext) GetPythonBinary(label string, cfgKey configKey) (string, error) {
+	key := cqueryKey{label, cquery.GetPythonBinary, cfgKey}
+	if rawString, ok := bazelCtx.results[key]; ok {
+		bazelOutput := strings.TrimSpace(rawString)
+		return cquery.GetPythonBinary.ParseResult(bazelOutput), nil
+	} else {
+		return "", fmt.Errorf("no bazel response found for %v", key)
+	}
+}
+
+func (n noopBazelContext) QueueBazelRequest(label string, requestType cqueryRequest, cfgKey configKey) {
 	panic("unimplemented")
 }
 
-func (n noopBazelContext) GetCcInfo(label string, cfgKey configKey) (cquery.CcInfo, bool, error) {
+func (n noopBazelContext) GetOutputFiles(label string, cfgKey configKey) ([]string, error) {
 	panic("unimplemented")
 }
 
-func (n noopBazelContext) GetPythonBinary(label string, cfgKey configKey) (string, bool) {
+func (n noopBazelContext) GetCcInfo(label string, cfgKey configKey) (cquery.CcInfo, error) {
+	panic("unimplemented")
+}
+
+func (n noopBazelContext) GetPythonBinary(label string, cfgKey configKey) (string, error) {
 	panic("unimplemented")
 }
 
@@ -312,24 +346,6 @@ func (p *bazelPaths) BazelMetricsDir() string {
 
 func (context *bazelContext) BazelEnabled() bool {
 	return true
-}
-
-// Adds a cquery request to the Bazel request queue, to be later invoked, or
-// returns the result of the given request if the request was already made.
-// If the given request was already made (and the results are available), then
-// returns (result, true). If the request is queued but no results are available,
-// then returns ("", false).
-func (context *bazelContext) cquery(label string, requestType cqueryRequest,
-	cfgKey configKey) (string, bool) {
-	key := cqueryKey{label, requestType, cfgKey}
-	if result, ok := context.results[key]; ok {
-		return result, true
-	} else {
-		context.requestMutex.Lock()
-		defer context.requestMutex.Unlock()
-		context.requests[key] = true
-		return "", false
-	}
 }
 
 func pwdPrefix() string {
@@ -916,7 +932,7 @@ func getConfigString(key cqueryKey) string {
 	return arch + "|" + os
 }
 
-func GetConfigKey(ctx ModuleContext) configKey {
+func GetConfigKey(ctx BaseModuleContext) configKey {
 	return configKey{
 		// use string because Arch is not a valid key in go
 		arch:   ctx.Arch().String(),

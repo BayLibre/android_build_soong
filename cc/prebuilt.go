@@ -414,11 +414,10 @@ type prebuiltStaticLibraryBazelHandler struct {
 
 func (h *prebuiltStaticLibraryBazelHandler) GenerateBazelBuildActions(ctx android.ModuleContext, label string) bool {
 	bazelCtx := ctx.Config().BazelContext
-	ccInfo, ok, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx))
+	ccInfo, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx))
 	if err != nil {
-		ctx.ModuleErrorf("Error getting Bazel CcInfo: %s", err)
-	}
-	if !ok {
+		ctx.ModuleErrorf(err.Error())
+		// TODO: Better error handling.
 		return false
 	}
 	staticLibs := ccInfo.CcStaticLibraryFiles
@@ -464,11 +463,10 @@ type prebuiltSharedLibraryBazelHandler struct {
 
 func (h *prebuiltSharedLibraryBazelHandler) GenerateBazelBuildActions(ctx android.ModuleContext, label string) bool {
 	bazelCtx := ctx.Config().BazelContext
-	ccInfo, ok, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx))
+	ccInfo, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx))
 	if err != nil {
-		ctx.ModuleErrorf("Error getting Bazel CcInfo for %s: %s", label, err)
-	}
-	if !ok {
+		ctx.ModuleErrorf(err.Error())
+		// TODO: Better error handling
 		return false
 	}
 	sharedLibs := ccInfo.CcSharedLibraryFiles

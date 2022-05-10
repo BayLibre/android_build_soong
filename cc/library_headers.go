@@ -56,12 +56,10 @@ type libraryHeaderBazelHander struct {
 
 func (h *libraryHeaderBazelHander) GenerateBazelBuildActions(ctx android.ModuleContext, label string) bool {
 	bazelCtx := ctx.Config().BazelContext
-	ccInfo, ok, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx))
+	ccInfo, err := bazelCtx.GetCcInfo(label, android.GetConfigKey(ctx))
 	if err != nil {
-		ctx.ModuleErrorf("Error getting Bazel CcInfo: %s", err)
-		return false
-	}
-	if !ok {
+		ctx.ModuleErrorf(err.Error())
+		// TODO: Better error handling.
 		return false
 	}
 

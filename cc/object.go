@@ -53,16 +53,20 @@ type objectBazelHandler struct {
 
 func (handler *objectBazelHandler) GenerateBazelBuildActions(ctx android.ModuleContext, label string) bool {
 	bazelCtx := ctx.Config().BazelContext
-	objPaths, ok := bazelCtx.GetOutputFiles(label, android.GetConfigKey(ctx))
-	if ok {
-		if len(objPaths) != 1 {
-			ctx.ModuleErrorf("expected exactly one object file for '%s', but got %s", label, objPaths)
-			return false
-		}
-
-		handler.module.outputFile = android.OptionalPathForPath(android.PathForBazelOut(ctx, objPaths[0]))
+	objPaths, err := bazelCtx.GetOutputFiles(label, android.GetConfigKey(ctx))
+	if err != nil {
+		ctx.ModuleErrorf(err.Error())
+		// TODO: Better error handling.
+		return false
 	}
-	return ok
+
+	if len(objPaths) != 1 {
+		ctx.ModuleErrorf("expected exactly one object file for '%s', but got %s", label, objPaths)
+		return false
+	}
+
+	handler.module.outputFile = android.OptionalPathForPath(android.PathForBazelOut(ctx, objPaths[0]))
+	return true
 }
 
 type ObjectLinkerProperties struct {
