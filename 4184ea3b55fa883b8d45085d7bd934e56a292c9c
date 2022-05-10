@@ -94,6 +94,30 @@
       },
       "revId": "4184ea3b55fa883b8d45085d7bd934e56a292c9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9abf4946_5fe4d2ac",
+        "filename": "cc/tidy.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1514973
+      },
+      "writtenOn": "2022-05-10T16:34:29Z",
+      "side": 1,
+      "message": "(looks like this is no longer being used, but yeah \"/b/f/w\" is a server side impl detail that can change at any point)",
+      "parentUuid": "2ba36413_a01bc2d4",
+      "range": {
+        "startLine": 104,
+        "startChar": 5,
+        "endLine": 104,
+        "endChar": 14
+      },
+      "revId": "4184ea3b55fa883b8d45085d7bd934e56a292c9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
