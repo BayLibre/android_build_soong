@@ -399,11 +399,11 @@ func modifyTestConfigToSupportArchMutator(testConfig Config) {
 	config := testConfig.config
 
 	config.Targets = map[OsType][]Target{
-		Android: []Target{
+		Android: {
 			{Android, Arch{ArchType: Arm64, ArchVariant: "armv8-a", Abi: []string{"arm64-v8a"}}, NativeBridgeDisabled, "", "", false},
 			{Android, Arch{ArchType: Arm, ArchVariant: "armv7-a-neon", Abi: []string{"armeabi-v7a"}}, NativeBridgeDisabled, "", "", false},
 		},
-		config.BuildOS: []Target{
+		config.BuildOS: {
 			{config.BuildOS, Arch{ArchType: X86_64}, NativeBridgeDisabled, "", "", false},
 			{config.BuildOS, Arch{ArchType: X86}, NativeBridgeDisabled, "", "", false},
 		},
@@ -558,7 +558,7 @@ func NewConfig(moduleListFile string, runGoTests bool, outDir, soongOutDir strin
 	}
 
 	config.BazelContext, err = NewBazelContext(config)
-	config.bp2buildPackageConfig = bp2buildAllowlist
+	config.bp2buildPackageConfig = getBp2buildAllowlist(config)
 
 	return Config{config}, err
 }

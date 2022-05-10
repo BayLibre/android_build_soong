@@ -16,12 +16,16 @@ package android
 
 import (
 	"bufio"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"io/ioutil"
 	"path/filepath"
 	"strings"
 
+	"android/soong/finder"
+	"android/soong/finder/fs"
+	"android/soong/ui/logger"
 	"github.com/google/blueprint"
 	"github.com/google/blueprint/proptools"
 
@@ -33,6 +37,9 @@ const (
 	// no package path. This is also the module dir for top level Android.bp
 	// modules.
 	Bp2BuildTopLevel = "."
+
+	// File name of bp2build configuration file in JSON format.
+	Bp2BuildAllowlistJson = "bp2build-allowlist.json"
 )
 
 type bazelModuleProperties struct {
@@ -308,6 +315,61 @@ var bp2buildAllowlist = NewBp2BuildAllowlist().
 	SetModuleDoNotConvertList(allowlists.Bp2buildModuleDoNotConvertList).
 	SetCcLibraryStaticOnlyList(allowlists.Bp2buildCcLibraryStaticOnlyList).
 	SetMixedBuildsDisabledList(allowlists.MixedBuildsDisabledList)
+
+type allowlistConfig struct {
+	Bp2BuildDefaultTrueRecursively []string
+	Bp2BuildDefaultTrue            []string
+	Bp2BuildDefaultFalse           []string
+}
+
+func getBp2buildAllowlist(c *config) bp2BuildConversionAllowlist {
+	cacheParams := finder.CacheParams{
+		WorkingDirectory: c.env["TOP"],
+		RootDirs:         []string{"vendor/google"}, // Search in vendor/google only
+		FollowSymlinks:   true,
+		ExcludeDirs:      []string{".git", ".repo"},
+		PruneFiles:       []string{},
+		IncludeFiles: []string{
+			"bp2build-allowlist.json",
+		},
+		IncludeSuffixes: []string{".json"},
+	}
+	f, err := finder.New(cacheParams, fs.OsFs, logger.New(ioutil.Discard), filepath.Join(c.soongOutDir, Bp2BuildAllowlistJson+".db"))
+	if err != nil {
+		panic(fmt.Errorf("Could not create finder for bp2build-allowlist.json files: %v", err))
+	}
+	bp2buildAllowlistFiles := f.FindNamed(Bp2BuildAllowlistJson)
+	c.addNinjaFileDeps(bp2buildAllowlistFiles...)
+
+	for _, file := range bp2buildAllowlistFiles {
+		f, err := c.fs.Open(file)
+		if err != nil {
+			panic(fmt.Errorf("Could not open %s: %s", file, err))
+		}
+		defer f.Close()
+
+		data, err := ioutil.ReadAll(f)
+		if err != nil {
+			panic(fmt.Errorf("Could not read %s: %s", file, err))
+		}
+		jsoncfg := allowlistConfig{}
+		err = json.Unmarshal(data, &jsoncfg)
+		if err != nil {
+			panic(fmt.Errorf("Could not unmarshal %s: %s", file, err))
+		}
+		for _, m := range jsoncfg.Bp2BuildDefaultFalse {
+			bp2buildAllowlist.defaultConfig[m] = allowlists.Bp2BuildDefaultFalse
+		}
+		for _, m := range jsoncfg.Bp2BuildDefaultTrue {
+			bp2buildAllowlist.defaultConfig[m] = allowlists.Bp2BuildDefaultTrue
+		}
+		for _, m := range jsoncfg.Bp2BuildDefaultTrueRecursively {
+			bp2buildAllowlist.defaultConfig[m] = allowlists.Bp2BuildDefaultTrueRecursively
+		}
+	}
+
+	return bp2buildAllowlist
+}
 
 // GenerateCcLibraryStaticOnly returns whether a cc_library module should only
 // generate a static version of itself based on the current global configuration.

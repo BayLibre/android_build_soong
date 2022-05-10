@@ -14,10 +14,12 @@ bootstrap_go_package {
         "soong-android-soongconfig",
         "soong-bazel",
         "soong-cquery",
+        "soong-finder",
         "soong-remoteexec",
         "soong-response",
         "soong-shared",
         "soong-starlark-format",
+        "soong-ui-logger",
         "soong-ui-metrics_proto",
         "soong-android-allowlists",
 
