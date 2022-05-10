@@ -1794,6 +1794,44 @@ func (c *Module) maybeGenerateBazelActions(actx android.ModuleContext) bool {
 	return bazelActionsUsed
 }
 
+var _ android.MixedBuildsBuildable = (*Module)(nil)
+
+func (c *Module) QueueBazelCall(actx android.BottomUpMutatorContext) error {
+	var bazelModuleLabel string
+	if c.typ() == fullLibrary && c.static() {
+		// cc_library is a special case in bp2build; two targets are generated -- one for each
+		// of the shared and static variants. The shared variant keeps the module name, but the
+		// static variant uses a different suffixed name.
+		bazelModuleLabel = bazelLabelForStaticModule(actx, c)
+	} else {
+		bazelModuleLabel = c.GetBazelLabel(actx, c)
+	}
+
+	bazelCtx := actx.Config().BazelContext
+	// TODO: This is stupid and brittle, but fine for proof of concept.
+	if c.typ() == binary || c.typ() == object {
+		bazelCtx.GetOutputFiles(bazelModuleLabel, android.GetConfigKey(actx))
+	} else {
+		// TODO: Throw away CcInfo, err. This just primes the cache.
+		_, _, err := bazelCtx.GetCcInfo(bazelModuleLabel, android.GetConfigKey(actx))
+		if err != nil {
+			actx.ModuleErrorf("Error getting Bazel CcInfo: %s", err)
+			return err
+		}
+	}
+	return nil
+}
+
+func (c *Module) IsMixedBuildsSupported(ctx android.BottomUpMutatorContext) bool {
+	return c.bazelHandler != nil
+}
+
+func (c *Module) GenerateBazelBuildActions(ctx android.ModuleContext) error {
+	//TODO implement me
+	panic("implement me")
+	return nil
+}
+
 func (c *Module) GenerateAndroidBuildActions(actx android.ModuleContext) {
 	// TODO(cparsons): Any logic in this method occurring prior to querying Bazel should be
 	// requested from Bazel instead.

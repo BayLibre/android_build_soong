@@ -101,6 +101,7 @@ type fileGroup struct {
 	srcs       Paths
 }
 
+var _ MixedBuildsBuildable = (*fileGroup)(nil)
 var _ SourceFileProducer = (*fileGroup)(nil)
 
 // filegroup contains a list of files that are referenced by other modules
@@ -129,8 +130,9 @@ func (fg *fileGroup) maybeGenerateBazelBuildActions(ctx ModuleContext) {
 	}
 
 	bazelCtx := ctx.Config().BazelContext
-	filePaths, ok := bazelCtx.GetOutputFiles(fg.GetBazelLabel(ctx, fg), configKey{archVariant, osVariant})
+	filePaths, ok := bazelCtx.GetOutputFiles(fg.GetBazelLabel(ctx, fg), configKey{Common.String(), CommonOS})
 	if !ok {
+		ctx.ModuleErrorf("filegroup '%s' did not get bazel results: %v %v", fg.Name(), fg.GetBazelLabel(ctx, fg), configKey{archVariant, osVariant})
 		return
 	}
 
@@ -160,4 +162,26 @@ func (fg *fileGroup) MakeVars(ctx MakeVarsModuleContext) {
 	if makeVar := String(fg.properties.Export_to_make_var); makeVar != "" {
 		ctx.StrictRaw(makeVar, strings.Join(fg.srcs.Strings(), " "))
 	}
+}
+
+func (fg *fileGroup) QueueBazelCall(ctx BottomUpMutatorContext) error {
+	//archVariant := ctx.Arch().String()
+	//osVariant := ctx.Os()
+	bazelCtx := ctx.Config().BazelContext
+
+	//bazelCtx.GetOutputFiles(fg.GetBazelLabel(ctx, fg), configKey{archVariant, osVariant})
+	// TODO: This is an icky hack, because we don't know how many src files are expected, we aren't
+	// sure whether this is commonOS.
+	bazelCtx.GetOutputFiles(fg.GetBazelLabel(ctx, fg), configKey{Common.String(), CommonOS})
+	return nil
+}
+
+func (fg *fileGroup) IsMixedBuildsSupported(ctx BottomUpMutatorContext) bool {
+	return true
+}
+
+func (fg *fileGroup) GenerateBazelBuildActions(ctx ModuleContext) error {
+	//TODO implement me
+	panic("implement me")
+	return nil
 }

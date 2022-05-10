@@ -189,6 +189,8 @@ type Module struct {
 	modulePaths []string
 }
 
+var _ android.MixedBuildsBuildable = (*Module)(nil)
+
 type taskFunc func(ctx android.ModuleContext, rawCommand string, srcFiles android.Paths) []generateTask
 
 type generateTask struct {
@@ -250,7 +252,8 @@ func toolDepsMutator(ctx android.BottomUpMutatorContext) {
 }
 
 // Returns true if information was available from Bazel, false if bazel invocation still needs to occur.
-func (c *Module) GenerateBazelBuildActions(ctx android.ModuleContext, label string) bool {
+func (c *Module) GenerateBazelBuildActions(ctx android.ModuleContext) error {
+	label := c.GetBazelLabel(ctx, c)
 	bazelCtx := ctx.Config().BazelContext
 	filePaths, ok := bazelCtx.GetOutputFiles(label, android.GetConfigKey(ctx))
 	if ok {
@@ -265,8 +268,10 @@ func (c *Module) GenerateBazelBuildActions(ctx android.ModuleContext, label stri
 		for includePath, _ := range exportIncludeDirs {
 			c.exportedIncludeDirs = append(c.exportedIncludeDirs, android.PathForBazelOut(ctx, includePath))
 		}
+	} else {
+		return fmt.Errorf("TODO: Unavailable bazel results")
 	}
-	return ok
+	return nil
 }
 
 func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
@@ -576,12 +581,13 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 
 	g.outputFiles = outputFiles.Paths()
 
-	bazelModuleLabel := g.GetBazelLabel(ctx, g)
-	bazelActionsUsed := false
+	var usedBazel bool
 	if android.MixedBuildsEnabled(ctx) {
-		bazelActionsUsed = g.GenerateBazelBuildActions(ctx, bazelModuleLabel)
+		usedBazel = true
+		g.GenerateBazelBuildActions(ctx)
+		// TODO: Better error handling
 	}
-	if !bazelActionsUsed {
+	if !usedBazel {
 		// For <= 6 outputs, just embed those directly in the users. Right now, that covers >90% of
 		// the genrules on AOSP. That will make things simpler to look at the graph in the common
 		// case. For larger sets of outputs, inject a phony target in between to limit ninja file
@@ -598,6 +604,17 @@ func (g *Module) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 			g.outputDeps = android.Paths{phonyFile}
 		}
 	}
+}
+
+func (g *Module) QueueBazelCall(ctx android.BottomUpMutatorContext) error {
+	label := g.GetBazelLabel(ctx, g)
+	bazelCtx := ctx.Config().BazelContext
+	bazelCtx.GetOutputFiles(label, android.GetConfigKey(ctx))
+	return nil
+}
+
+func (g *Module) IsMixedBuildsSupported(ctx android.BottomUpMutatorContext) bool {
+	return true
 }
 
 // Collect information for opening IDE project files in java/jdeps.go.
