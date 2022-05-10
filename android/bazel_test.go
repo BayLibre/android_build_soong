@@ -16,6 +16,9 @@ package android
 import (
 	"android/soong/android/allowlists"
 	"android/soong/bazel"
+	"android/soong/finder/fs"
+	"github.com/google/blueprint/pathtools"
+
 	"fmt"
 	"testing"
 
@@ -384,5 +387,31 @@ func TestBp2BuildAllowlist(t *testing.T) {
 				t.Errorf("Expected errors to be: %v, but were: %v", test.expectedErrors, bcc.errors)
 			}
 		})
+	}
+}
+
+func TestAllowlistInJson(t *testing.T) {
+	mockFS := map[string][]byte{}
+	mockFS["/vendor/google/build/dir1/bp2build-allowlist.json"] = []byte(`{
+		"Bp2BuildDefaultFalse": ["a/b/c"],
+		"Bp2BuildDefaultTrue": ["d/e/f"]
+	}`)
+	mockFS["/vendor/google/dir2/bp2build-allowlist.json"] = []byte(`{
+		"Bp2BuildDefaultTrueRecursively": ["g/h/i"]
+	}`)
+	fs.OsFs = fs.NewMockFs(mockFS)
+	config := &config{
+		fs: pathtools.MockFs(mockFS),
+	}
+	bp2buildAllowlist := getBp2buildAllowlist(config)
+	cases := map[string]allowlists.BazelConversionConfigEntry{
+		"a/b/c": allowlists.Bp2BuildDefaultFalse,
+		"d/e/f": allowlists.Bp2BuildDefaultTrue,
+		"g/h/i": allowlists.Bp2BuildDefaultTrueRecursively,
+	}
+	for k, v := range cases {
+		if bp2buildAllowlist.defaultConfig[k] != v {
+			t.Errorf("Invalid bp2build default config %s: expected [%v], got [%v]", k, v, bp2buildAllowlist.defaultConfig[k])
+		}
 	}
 }
