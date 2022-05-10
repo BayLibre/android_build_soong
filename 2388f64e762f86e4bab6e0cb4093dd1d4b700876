@@ -16,6 +16,24 @@
       "message": "I am not fully sold on these repetitive comments (i.e. I\u0027d rather look at what PathConfig struct says about all of its flags).",
       "revId": "2388f64e762f86e4bab6e0cb4093dd1d4b700876",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e2caca3_17af29a8",
+        "filename": "ui/build/paths/config.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1066075
+      },
+      "writtenOn": "2022-05-10T06:57:05Z",
+      "side": 1,
+      "message": "I think it\u0027s a matter of taste, but I hope it\u0027s pretty uncontroversial that these comments make the state of the world better.\n\nThe reason why I added comments to the PathConfig instances instead is that the fields in PathConfig already have their own documentation, but they never seem to be used directly.",
+      "parentUuid": "44daac53_475f6878",
+      "revId": "2388f64e762f86e4bab6e0cb4093dd1d4b700876",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
