@@ -115,6 +115,14 @@ type Bazelable interface {
 	SetBaseModuleType(baseModuleType string)
 }
 
+type MixedBuildsBuildable interface {
+	IsMixedBuildsSupported(ctx BaseModuleContext) bool
+
+	QueueBazelCall(ctx BaseModuleContext)
+
+	GenerateBazelBuildActions(ctx ModuleContext)
+}
+
 // BazelModule is a lightweight wrapper interface around Module for Bazel-convertible modules.
 type BazelModule interface {
 	Module
@@ -342,7 +350,7 @@ func shouldKeepExistingBuildFileForDir(allowlist bp2BuildConversionAllowlist, di
 // converted or handcrafted Bazel target. As a side effect, calling this
 // method will also log whether this module is mixed build enabled for
 // metrics reporting.
-func MixedBuildsEnabled(ctx ModuleContext) bool {
+func MixedBuildsEnabled(ctx BaseModuleContext) bool {
 	mixedBuildEnabled := mixedBuildPossible(ctx)
 	ctx.Config().LogMixedBuild(ctx, mixedBuildEnabled)
 	return mixedBuildEnabled
@@ -350,7 +358,7 @@ func MixedBuildsEnabled(ctx ModuleContext) bool {
 
 // mixedBuildPossible returns true if a module is ready to be replaced by a
 // converted or handcrafted Bazel target.
-func mixedBuildPossible(ctx ModuleContext) bool {
+func mixedBuildPossible(ctx BaseModuleContext) bool {
 	if ctx.Os() == Windows {
 		// Windows toolchains are not currently supported.
 		return false

@@ -101,6 +101,7 @@ type fileGroup struct {
 	srcs       Paths
 }
 
+var _ MixedBuildsBuildable = (*fileGroup)(nil)
 var _ SourceFileProducer = (*fileGroup)(nil)
 
 // filegroup contains a list of files that are referenced by other modules
@@ -114,42 +115,11 @@ func FileGroupFactory() Module {
 	return module
 }
 
-func (fg *fileGroup) maybeGenerateBazelBuildActions(ctx ModuleContext) {
-	if !MixedBuildsEnabled(ctx) {
-		return
-	}
-
-	archVariant := ctx.Arch().String()
-	osVariant := ctx.Os()
-	if len(fg.Srcs()) == 1 && fg.Srcs()[0].Base() == fg.Name() {
-		// This will be a regular file target, not filegroup, in Bazel.
-		// See FilegroupBp2Build for more information.
-		archVariant = Common.String()
-		osVariant = CommonOS
-	}
-
-	bazelCtx := ctx.Config().BazelContext
-	filePaths, ok := bazelCtx.GetOutputFiles(fg.GetBazelLabel(ctx, fg), configKey{archVariant, osVariant})
-	if !ok {
-		return
-	}
-
-	bazelOuts := make(Paths, 0, len(filePaths))
-	for _, p := range filePaths {
-		src := PathForBazelOut(ctx, p)
-		bazelOuts = append(bazelOuts, src)
-	}
-
-	fg.srcs = bazelOuts
-}
-
 func (fg *fileGroup) GenerateAndroidBuildActions(ctx ModuleContext) {
 	fg.srcs = PathsForModuleSrcExcludes(ctx, fg.properties.Srcs, fg.properties.Exclude_srcs)
 	if fg.properties.Path != nil {
 		fg.srcs = PathsWithModuleSrcSubDir(ctx, fg.srcs, String(fg.properties.Path))
 	}
-
-	fg.maybeGenerateBazelBuildActions(ctx)
 }
 
 func (fg *fileGroup) Srcs() Paths {
@@ -160,4 +130,38 @@ func (fg *fileGroup) MakeVars(ctx MakeVarsModuleContext) {
 	if makeVar := String(fg.properties.Export_to_make_var); makeVar != "" {
 		ctx.StrictRaw(makeVar, strings.Join(fg.srcs.Strings(), " "))
 	}
+}
+
+func (fg *fileGroup) QueueBazelCall(ctx BaseModuleContext) {
+	bazelCtx := ctx.Config().BazelContext
+
+	// TODO: Error handling
+	bazelCtx.GetOutputFiles(fg.GetBazelLabel(ctx, fg), configKey{Common.String(), CommonOS})
+}
+
+func (fg *fileGroup) IsMixedBuildsSupported(ctx BaseModuleContext) bool {
+	return true
+}
+
+func (fg *fileGroup) GenerateBazelBuildActions(ctx ModuleContext) {
+	fg.srcs = PathsForModuleSrcExcludes(ctx, fg.properties.Srcs, fg.properties.Exclude_srcs)
+	if fg.properties.Path != nil {
+		fg.srcs = PathsWithModuleSrcSubDir(ctx, fg.srcs, String(fg.properties.Path))
+	}
+
+	bazelCtx := ctx.Config().BazelContext
+	filePaths, ok := bazelCtx.GetOutputFiles(fg.GetBazelLabel(ctx, fg), configKey{Common.String(), CommonOS})
+	if !ok {
+		// TODO: Better error handling
+		ctx.ModuleErrorf("filegroup '%s' did not get bazel results: %v %v", fg.Name(), fg.GetBazelLabel(ctx, fg), configKey{Common.String(), CommonOS})
+		return
+	}
+
+	bazelOuts := make(Paths, 0, len(filePaths))
+	for _, p := range filePaths {
+		src := PathForBazelOut(ctx, p)
+		bazelOuts = append(bazelOuts, src)
+	}
+
+	fg.srcs = bazelOuts
 }
