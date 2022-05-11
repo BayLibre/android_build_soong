@@ -259,6 +259,11 @@ type UsesLibraryDependency interface {
 	ClassLoaderContexts() dexpreopt.ClassLoaderContextMap
 }
 
+// Provides transitive Proguard flag files to downstream DEX jars.
+type LibraryDependency interface {
+	ExportedProguardFlagFiles() android.Paths
+}
+
 // TODO(jungjw): Move this to kythe.go once it's created.
 type xref interface {
 	XrefJavaFiles() android.Paths
@@ -534,7 +539,15 @@ func normalizeJavaVersion(ctx android.BaseModuleContext, javaVersion string) jav
 type Library struct {
 	Module
 
+	exportedProguardFlagFiles android.Paths
+
 	InstallMixin func(ctx android.ModuleContext, installPath android.Path) (extraInstallDeps android.Paths)
+}
+
+var _ LibraryDependency = (*Library)(nil)
+
+func (j *Library) ExportedProguardFlagFiles() android.Paths {
+	return j.exportedProguardFlagFiles
 }
 
 var _ android.ApexModule = (*Library)(nil)
@@ -627,6 +640,16 @@ func (j *Library) GenerateAndroidBuildActions(ctx android.ModuleContext) {
 		}
 		j.installFile = ctx.InstallFile(installDir, j.Stem()+".jar", j.outputFile, extraInstallDeps...)
 	}
+
+	// TODO(b/212623640): Add test coverage.
+	j.exportedProguardFlagFiles = append(j.exportedProguardFlagFiles,
+		android.PathsForModuleSrc(ctx, j.dexProperties.Optimize.Proguard_flags_files)...)
+	ctx.VisitDirectDeps(func(m android.Module) {
+		if lib, ok := m.(LibraryDependency); ok && ctx.OtherModuleDependencyTag(m) == staticLibTag {
+			j.exportedProguardFlagFiles = append(j.exportedProguardFlagFiles, lib.ExportedProguardFlagFiles()...)
+		}
+	})
+	j.exportedProguardFlagFiles = android.FirstUniquePaths(j.exportedProguardFlagFiles)
 }
 
 func (j *Library) DepsMutator(ctx android.BottomUpMutatorContext) {

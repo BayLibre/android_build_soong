@@ -28,8 +28,8 @@ import (
 )
 
 type AndroidLibraryDependency interface {
+	LibraryDependency
 	ExportPackage() android.Path
-	ExportedProguardFlagFiles() android.Paths
 	ExportedRRODirs() []rroDir
 	ExportedStaticPackages() android.Paths
 	ExportedManifests() android.Paths
@@ -493,8 +493,7 @@ type AndroidLibrary struct {
 
 	aarFile android.WritablePath
 
-	exportedProguardFlagFiles android.Paths
-	exportedStaticPackages    android.Paths
+	exportedStaticPackages android.Paths
 }
 
 var _ android.OutputFileProducer = (*AndroidLibrary)(nil)
@@ -507,10 +506,6 @@ func (a *AndroidLibrary) OutputFiles(tag string) (android.Paths, error) {
 	default:
 		return a.Library.OutputFiles(tag)
 	}
-}
-
-func (a *AndroidLibrary) ExportedProguardFlagFiles() android.Paths {
-	return a.exportedProguardFlagFiles
 }
 
 func (a *AndroidLibrary) ExportedStaticPackages() android.Paths {
@@ -561,14 +556,19 @@ func (a *AndroidLibrary) GenerateAndroidBuildActions(ctx android.ModuleContext) 
 	a.exportedProguardFlagFiles = append(a.exportedProguardFlagFiles,
 		android.PathsForModuleSrc(ctx, a.dexProperties.Optimize.Proguard_flags_files)...)
 	ctx.VisitDirectDeps(func(m android.Module) {
-		if lib, ok := m.(AndroidLibraryDependency); ok && ctx.OtherModuleDependencyTag(m) == staticLibTag {
+		if lib, ok := m.(LibraryDependency); ok && ctx.OtherModuleDependencyTag(m) == staticLibTag {
 			a.exportedProguardFlagFiles = append(a.exportedProguardFlagFiles, lib.ExportedProguardFlagFiles()...)
+		}
+	})
+	a.exportedProguardFlagFiles = android.FirstUniquePaths(a.exportedProguardFlagFiles)
+
+	ctx.VisitDirectDeps(func(m android.Module) {
+		if lib, ok := m.(AndroidLibraryDependency); ok && ctx.OtherModuleDependencyTag(m) == staticLibTag {
 			a.exportedStaticPackages = append(a.exportedStaticPackages, lib.ExportPackage())
 			a.exportedStaticPackages = append(a.exportedStaticPackages, lib.ExportedStaticPackages()...)
 		}
 	})
 
-	a.exportedProguardFlagFiles = android.FirstUniquePaths(a.exportedProguardFlagFiles)
 	a.exportedStaticPackages = android.FirstUniquePaths(a.exportedStaticPackages)
 }
 
