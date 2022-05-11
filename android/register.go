@@ -106,12 +106,23 @@ var _ sortableComponent = &mutator{}
 
 type ModuleFactory func() Module
 
+type LateModuleFactory func() LateModule
+
 // ModuleFactoryAdaptor wraps a ModuleFactory into a blueprint.ModuleFactory by converting a Module
 // into a blueprint.Module and a list of property structs
 func ModuleFactoryAdaptor(factory ModuleFactory) blueprint.ModuleFactory {
 	return func() (blueprint.Module, []interface{}) {
 		module := factory()
 		return module, module.GetProperties()
+	}
+}
+
+// LateModuleFactoryAdaptor wraps a LateModuleFactory into a ModuleFactory by converting
+// a LateModule into a Module.
+func LateModuleFactoryAdaptor(factory LateModuleFactory) ModuleFactory {
+	return func() Module {
+		module := factory()
+		return module.(Module)
 	}
 }
 
@@ -131,6 +142,11 @@ func SingletonFactoryAdaptor(ctx *Context, factory SingletonFactory) blueprint.S
 
 func RegisterModuleType(name string, factory ModuleFactory) {
 	moduleTypes = append(moduleTypes, moduleType{name, factory})
+	RegisterModuleTypeForDocs(name, reflect.ValueOf(factory))
+}
+
+func RegisterLateModuleType(name string, factory LateModuleFactory) {
+	moduleTypes = append(moduleTypes, moduleType{name, LateModuleFactoryAdaptor(factory)})
 	RegisterModuleTypeForDocs(name, reflect.ValueOf(factory))
 }
 
@@ -240,6 +256,7 @@ func ModuleTypeByFactory() map[reflect.Value]string {
 // and test environments.
 type RegistrationContext interface {
 	RegisterModuleType(name string, factory ModuleFactory)
+	RegisterLateModuleType(name string, factory LateModuleFactory)
 	RegisterSingletonModuleType(name string, factory SingletonModuleFactory)
 	RegisterPreSingletonType(name string, factory SingletonFactory)
 	RegisterSingletonType(name string, factory SingletonFactory)
@@ -293,6 +310,16 @@ func (ctx *initRegistrationContext) RegisterModuleType(name string, factory Modu
 	}
 	ctx.moduleTypes[name] = factory
 	RegisterModuleType(name, factory)
+	RegisterModuleTypeForDocs(name, reflect.ValueOf(factory))
+}
+
+func (ctx *initRegistrationContext) RegisterLateModuleType(name string, factory LateModuleFactory) {
+	if _, present := ctx.moduleTypes[name]; present {
+		panic(fmt.Sprintf("module type %q is already registered", name))
+	}
+	adapter := LateModuleFactoryAdaptor(factory)
+	ctx.moduleTypes[name] = adapter
+	RegisterModuleType(name, adapter)
 	RegisterModuleTypeForDocs(name, reflect.ValueOf(factory))
 }
 

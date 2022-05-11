@@ -229,6 +229,8 @@ type BaseModuleContext interface {
 
 	ModuleFromName(name string) (blueprint.Module, bool)
 
+	OtherModuleVariantsFromNames(name ...string) []blueprint.Module
+
 	// VisitDirectDepsBlueprint calls visit for each direct dependency.  If there are multiple
 	// direct dependencies on the same module visit will be called multiple times on that module
 	// and OtherModuleDependencyTag will return a different tag for each.
@@ -551,6 +553,16 @@ type Module interface {
 	// TransitivePackagingSpecs returns the PackagingSpecs for this module and any transitive
 	// dependencies with dependency tags for which IsInstallDepNeeded() returns true.
 	TransitivePackagingSpecs() []PackagingSpec
+}
+
+type LateModule interface {
+	Module
+	blueprint.LateModule
+
+	// GenerateLateAndroidBuildActions is analogous to Blueprints' GenerateLateBuildActions,
+	// but GenerateLateAndroidBuildActions also has access to Android-specific information.
+	// For more information, see LateModule.GenerateLateBuildActions within Blueprint's module_ctx.go
+	GenerateLateAndroidBuildActions(ModuleContext)
 }
 
 // Qualified id for a module
@@ -1388,6 +1400,10 @@ type ModuleBase struct {
 
 	// The path to the generated license metadata file for the module.
 	licenseMetadataFile WritablePath
+}
+
+type LateModuleBase struct {
+	ModuleBase
 }
 
 // A struct containing all relevant information about a Bazel target converted via bp2build.
@@ -2331,6 +2347,39 @@ func (m *ModuleBase) GenerateBuildActions(blueprintCtx blueprint.ModuleContext) 
 	m.variables = ctx.variables
 }
 
+func (m *LateModuleBase) GenerateLateBuildActions(blueprintCtx blueprint.ModuleContext) {
+	if m.Enabled() {
+		ctx := &moduleContext{
+			module:            m.module,
+			bp:                blueprintCtx,
+			baseModuleContext: m.baseModuleContextFactory(blueprintCtx),
+			variables:         make(map[string]string),
+		}
+
+		desc := "//" + ctx.ModuleDir() + ":" + ctx.ModuleName() + " "
+		var suffix []string
+		if ctx.Os().Class != Device && ctx.Os().Class != Generic {
+			suffix = append(suffix, ctx.Os().String())
+		}
+		if !ctx.PrimaryArch() {
+			suffix = append(suffix, ctx.Arch().ArchType.String())
+		}
+		if apexInfo := ctx.Provider(ApexInfoProvider).(ApexInfo); !apexInfo.IsForPlatform() {
+			suffix = append(suffix, apexInfo.ApexVariationName)
+		}
+
+		ctx.Variable(pctx, "moduleDesc", desc)
+
+		s := ""
+		if len(suffix) > 0 {
+			s = " [" + strings.Join(suffix, " ") + "]"
+		}
+		ctx.Variable(pctx, "moduleDescSuffix", s)
+
+		m.module.(LateModule).GenerateLateAndroidBuildActions(ctx)
+	}
+}
+
 // Check the supplied dist structure to make sure that it is valid.
 //
 // property - the base property, e.g. dist or dists[1], which is combined with the
@@ -2843,6 +2892,20 @@ func (b *baseModuleContext) ModuleFromName(name string) (blueprint.Module, bool)
 	} else {
 		return b.bp.ModuleFromName(name)
 	}
+}
+
+func (b *baseModuleContext) OtherModuleVariantsFromNames(names ...string) []blueprint.Module {
+	size := 0
+	for _, name := range names {
+		modules := b.bp.ModuleVariantsFromName(name)
+		size += len(modules)
+	}
+	result := make([]blueprint.Module, 0, size)
+	for _, name := range names {
+		modules := b.bp.ModuleVariantsFromName(name)
+		result = append(result, modules...)
+	}
+	return result
 }
 
 func (b *baseModuleContext) VisitDirectDepsBlueprint(visit func(blueprint.Module)) {

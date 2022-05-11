@@ -475,6 +475,10 @@ func (ctx *TestContext) RegisterModuleType(name string, factory ModuleFactory) {
 	ctx.Context.RegisterModuleType(name, ModuleFactoryAdaptor(factory))
 }
 
+func (ctx *TestContext) RegisterLateModuleType(name string, factory LateModuleFactory) {
+	ctx.Context.RegisterModuleType(name, ModuleFactoryAdaptor(LateModuleFactoryAdaptor(factory)))
+}
+
 func (ctx *TestContext) RegisterSingletonModuleType(name string, factory SingletonModuleFactory) {
 	s, m := SingletonModuleFactoryAdaptor(name, factory)
 	ctx.RegisterSingletonType(name, s)
