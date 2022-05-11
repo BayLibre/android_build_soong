@@ -84,6 +84,18 @@ func addDependencyOntoApexModulePair(ctx android.BottomUpMutatorContext, apex st
 		}
 	}
 
+	target := ctx.Module().Target()
+	variations = append(variations,
+		blueprint.Variation{
+			Mutator:   "os",
+			Variation: target.OsVariation(),
+		},
+		blueprint.Variation{
+			Mutator:   "arch",
+			Variation: target.ArchVariation(),
+		},
+	)
+
 	addedDep := false
 	if ctx.OtherModuleDependencyVariantExists(variations, name) {
 		ctx.AddFarVariationDependencies(variations, tag, name)
