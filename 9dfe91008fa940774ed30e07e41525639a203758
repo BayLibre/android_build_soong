@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24f4b1a5_73bb850b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-11T15:24:39Z",
+      "side": 1,
+      "message": "Done. Test failed without the fix, works with it.",
+      "parentUuid": "58ad98c7_a7de29a6",
+      "revId": "9dfe91008fa940774ed30e07e41525639a203758",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddb40d0c_bad201b4",
@@ -48,6 +66,30 @@
       "writtenOn": "2022-05-11T15:02:36Z",
       "side": 1,
       "message": "These are returned by target.Variations()",
+      "range": {
+        "startLine": 89,
+        "startChar": 2,
+        "endLine": 96,
+        "endChar": 4
+      },
+      "revId": "9dfe91008fa940774ed30e07e41525639a203758",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e299c9ba_9e03a41a",
+        "filename": "java/bootclasspath.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2022-05-11T15:24:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddb40d0c_bad201b4",
       "range": {
         "startLine": 89,
         "startChar": 2,
