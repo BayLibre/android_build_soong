@@ -81,6 +81,30 @@
       },
       "revId": "9803662d27e42b4e9abe2a00884464bbddbc6987",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b1fe148_9b261ee0",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1605027
+      },
+      "writtenOn": "2022-05-11T20:29:24Z",
+      "side": 1,
+      "message": "No, I mean, describe why we need to \"prepend every path with the proper path prefix\". That is, explain the bug. The paths in the depfile are rooted from the execroot, where we need them to be rooted from the workspace root, etc.",
+      "parentUuid": "ada7d5e0_b65a0da8",
+      "range": {
+        "startLine": 884,
+        "startChar": 2,
+        "endLine": 884,
+        "endChar": 3
+      },
+      "revId": "9803662d27e42b4e9abe2a00884464bbddbc6987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
