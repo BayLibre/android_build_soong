@@ -21,6 +21,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path"
 	"path/filepath"
 	"runtime"
 	"strings"
@@ -878,7 +879,7 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 		}
 
 		// The actual Bazel action.
-		cmd.Text(" " + buildStatement.Command)
+		cmd.Text(buildStatement.Command)
 
 		for _, outputPath := range buildStatement.OutputPaths {
 			cmd.ImplicitOutput(PathForBazelOut(ctx, outputPath))
@@ -892,6 +893,20 @@ func (c *bazelSingleton) GenerateBuildActions(ctx SingletonContext) {
 		}
 
 		if depfile := buildStatement.Depfile; depfile != nil {
+			// prepend every path with the proper path prefix
+			var escape func(string, []rune, string) string
+			escape = func(str string, escapees []rune, prefix string) string {
+				if len(escapees) == 0 {
+					return str
+				} else {
+					escaped := strings.ReplaceAll(str, string(escapees[0]), prefix+string(escapees[0]))
+					return escape(escaped, escapees[1:], prefix)
+				}
+			}
+			prefix := escape(path.Join(ctx.Config().BazelContext.OutputBase(), "execroot", "__main__", `bazel-out`), []rune(`/`), `\\`)
+			//sed in prebuilts/build-tools/path/*/ doesn't support lookbehind hence the capture group
+			replacement := fmt.Sprintf(`&& sed -i'' -e "s/(^|\\s|\")bazel-out/\\1%s/g" %s`, prefix, *depfile)
+			cmd.Text(escape(replacement, []rune(`(|)`), `\`))
 			cmd.ImplicitDepFile(PathForBazelOut(ctx, *depfile))
 		}
 
