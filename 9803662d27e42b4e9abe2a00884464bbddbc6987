@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed2417dc_8a50a170",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-11T20:20:36Z",
+      "side": 1,
+      "message": "yeah (2) I was hoping to do for `m droid` so will do so later - specifically I was thinking about modifying current CI builds (assuming a no-change rebuild would become seconds of null build) - for libc I can already do so.",
+      "parentUuid": "63e6da68_864f02f2",
+      "revId": "9803662d27e42b4e9abe2a00884464bbddbc6987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8003cb91_3921b21d",
         "filename": "android/bazel_handler.go",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2022-05-11T18:09:16Z",
       "side": 1,
       "message": "Can you provide a full explanation (in comments) of why we need to do this? I can see folks looking back on this and shrugging :)",
+      "range": {
+        "startLine": 884,
+        "startChar": 2,
+        "endLine": 884,
+        "endChar": 3
+      },
+      "revId": "9803662d27e42b4e9abe2a00884464bbddbc6987",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ada7d5e0_b65a0da8",
+        "filename": "android/bazel_handler.go",
+        "patchSetId": 1
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1903985
+      },
+      "writtenOn": "2022-05-11T20:20:36Z",
+      "side": 1,
+      "message": "you mean just the escaping of backslash?",
+      "parentUuid": "8003cb91_3921b21d",
       "range": {
         "startLine": 884,
         "startChar": 2,
