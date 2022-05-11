@@ -277,6 +277,40 @@ var (
 		"libbluetooth-types-header",
 		"libaudioclient_aidl_conversion_util",
 		"libaudioutils_fixedfft",
+		"libandroid_runtime_vm_headers",
+		"com.android.media.swcodec-androidManifest",
+		"com.android.media.swcodec.certificate",
+		"com.android.media.swcodec.key",
+		"com.android.neuralnetworks-androidManifest",
+		"com.android.neuralnetworks.certificate",
+		"com.android.neuralnetworks.key",
+		"libandroid_runtime_vm_headers",
+		"libbinder_headers_platform_shared",
+		"libgsm",
+		"libhardware_headers",
+		"libnativewindow_headers",
+		"libneuralnetworks_headers",
+		"libopus",
+		"libprocpartition",
+		"libserviceutils",
+		"libstagefright_amrnb_common",
+		"libstagefright_amrwbdec",
+		"libstagefright_enc_common",
+		"libstagefright_foundation_headers",
+		"libstagefright_headers",
+		"libstagefright_m4vh263dec",
+		"libstagefright_m4vh263enc",
+		"libstagefright_mp3dec_headers",
+		"libtextclassifier_hash_headers",
+		"libtextclassifier_hash_static",
+		"libui-types",
+		"libvorbisidec",
+		"media_ndk_headers",
+		"mediaswcodec.policy",
+		"mediaswcodec.xml",
+		"philox_random_headers",
+		"server_configurable_flags",
+		"tensorflow_headers",
 
 		//external/avb
 		"avbtool",
@@ -324,8 +358,6 @@ var (
 		"linker",                // TODO(b/228316882): cc_binary uses link_crt
 		"libdebuggerd",          // TODO(b/228314770): support product variable-specific header_libs
 		"versioner",             // TODO(b/228313961):  depends on prebuilt shared library libclang-cpp_host as a shared library, which does not supply expected providers for a shared library
-		"f2fs.fibmap",           // ld.lld: error: undefined symbol: _IO
-		"f2fscrypt",             // TODO(b/234340806):  error: incompatible integer to pointer conversion initializing 'FILE *' (aka 'struct _IO_FILE *') with an expression of type 'int', and  error: incomplete definition of type 'struct mntent'
 		"apexer", "apexer_test", // Requires aapt2
 		"apexer_test_host_tools",
 		"host_apex_verifier",
