@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afaaacd0_0398b18e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064003
+      },
+      "writtenOn": "2022-05-11T23:05:13Z",
+      "side": 1,
+      "message": "Hey Colin, figured I\u0027d send this for initial thoughts before I write some tests. I\u0027m still flying a bit blind in this code, so if it\u0027s way off I\u0027m happy to scrap :)",
+      "revId": "b7e9a96ab05fb35fe80fa2e747eee06cee8bc589",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
