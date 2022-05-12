@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad98a72a_5268cab0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1878380
+      },
+      "writtenOn": "2022-05-12T20:16:44Z",
+      "side": 1,
+      "message": "Paul, do you have an opinion on this CL? (Please feel free to suggest a different reviewer)\n\nMy goal is to use this metadata to expand the apex allowed_deps.txt file. There is some additional context in this CL thread https://googleplex-android-review.git.corp.google.com/c/platform/build/soong/+/17872058/comments/cbcee192_5fd7dd91",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "f8ea64710f0da7654cbf66cd308989fd72854faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
