@@ -652,6 +652,14 @@ func MakeLabelListAttribute(value LabelList) LabelListAttribute {
 	}
 }
 
+func MakeSingleLabelListAttribute(value Label) LabelListAttribute {
+	return MakeLabelListAttribute(MakeLabelList([]Label{value}))
+}
+
+func MakeEmptyLabelListAttribute() LabelListAttribute {
+	return MakeLabelListAttribute(MakeLabelList([]Label{}))
+}
+
 func (lla *LabelListAttribute) SetValue(list LabelList) {
 	lla.SetSelectValue(NoConfigAxis, "", list)
 }

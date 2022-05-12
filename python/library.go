@@ -17,6 +17,9 @@ package python
 // This file contains the module types for building Python library.
 
 import (
+	"fmt"
+	"os"
+
 	"android/soong/android"
 	"android/soong/bazel"
 
@@ -46,6 +49,11 @@ type bazelPythonLibraryAttributes struct {
 	Srcs_version *string
 }
 
+type bazelPythonProtoLibraryAttributes struct {
+	Deps               bazel.LabelListAttribute
+	Local_include_dirs []string
+}
+
 func pythonLibBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 	// TODO(b/182306917): this doesn't fully handle all nested props versioned
 	// by the python version, which would have been handled by the version split
@@ -65,6 +73,40 @@ func pythonLibBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 	}
 
 	baseAttrs := m.makeArchVariantBaseAttributes(ctx)
+
+	if m.Name() == "libprotobuf-python" {
+		fmt.Fprintf(os.Stderr, "Srcs: %#v\n", baseAttrs.Srcs)
+	}
+
+	partitionedSrcs := bazel.PartitionLabelListAttribute(ctx, &baseAttrs.Srcs, bazel.LabelPartitions{
+		"proto": android.ProtoSrcLabelPartition,
+		"py":    bazel.LabelPartition{Keep_remainder: true},
+	})
+	baseAttrs.Srcs = partitionedSrcs["py"]
+
+	if m.Name() == "libprotobuf-python" {
+		fmt.Fprintf(os.Stderr, "partitionedSrcs[proto]: %#v\n", partitionedSrcs["proto"])
+		fmt.Fprintf(os.Stderr, "partitionedSrcs[py]: %#v\n", partitionedSrcs["py"])
+	}
+
+	if !partitionedSrcs["proto"].IsEmpty() {
+		protoInfo, _ := android.Bp2buildProtoProperties(ctx, &m.ModuleBase, partitionedSrcs["proto"])
+		protoLabel := bazel.Label{Label: ":" + protoInfo.Name}
+
+		pyProtoLibraryName := m.Name() + "_py_proto"
+		ctx.CreateBazelTargetModule(bazel.BazelTargetModuleProperties{
+			Rule_class:        "py_proto_library",
+			Bzl_load_location: "//build/bazel/rules/python:py_proto.bzl",
+		}, android.CommonAttributes{
+			Name: pyProtoLibraryName,
+		}, &bazelPythonProtoLibraryAttributes{
+			Deps:               bazel.MakeSingleLabelListAttribute(protoLabel),
+			Local_include_dirs: protoInfo.Local_include_dirs,
+		})
+
+		baseAttrs.Deps.Add(bazel.MakeLabelAttribute(":" + pyProtoLibraryName))
+	}
+
 	attrs := &bazelPythonLibraryAttributes{
 		Srcs:         baseAttrs.Srcs,
 		Deps:         baseAttrs.Deps,
@@ -76,6 +118,9 @@ func pythonLibBp2Build(ctx android.TopDownMutatorContext, m *Module) {
 		Bzl_load_location: "//build/bazel/rules/python:library.bzl",
 	}
 
+	if m.Name() == "fg_foo" {
+		fmt.Fprintf(os.Stderr, "Creating bazel target for fg_foo: %#v\n", baseAttrs.Data)
+	}
 	ctx.CreateBazelTargetModule(props, android.CommonAttributes{
 		Name: m.Name(),
 		Data: baseAttrs.Data,
