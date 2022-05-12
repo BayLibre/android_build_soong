@@ -110,6 +110,7 @@ function setup() {
 
 function run_soong() {
   build/soong/soong_ui.bash --make-mode --skip-ninja --skip-config --soong-only --skip-soong-tests "$@"
+  rm -f out/ninja_build
 }
 
 function create_mock_bazel() {
