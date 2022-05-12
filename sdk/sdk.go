@@ -254,6 +254,23 @@ func (s *sdk) newDependencyContext(mctx android.BottomUpMutatorContext) android.
 	}
 }
 
+func (s *sdk) ExportModulesFromNamespace() []string {
+	if s.IsCommonOSVariant() {
+		return nil
+	}
+
+	exported := []string{}
+	for _, member := range s.memberVariantDeps {
+		exported = append(exported, member.variant.Name())
+
+		exported = append(exported, member.exportedComponentsInfo.Components...)
+	}
+
+	return exported
+}
+
+var _ android.ExportModulesFromNamespace = (*sdk)(nil)
+
 type dependencyContext struct {
 	android.BottomUpMutatorContext
 

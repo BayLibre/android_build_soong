@@ -109,13 +109,78 @@ func newNameResolver(config android.Config) *android.NameResolver {
 		return namespacePathsToExport[namespace.Path]
 	}
 
-	return android.NewNameResolver(exportFilter)
+	var protectedNamespaces [][]string
+	if android.EnableApiBoundaryEnforcement(config) {
+		protectedNamespaces = [][]string{
+			{
+				"art",
+				"external/apache-harmony",
+				"external/apache-xml",
+				"external/okhttp",
+				"external/vixl",
+				"libcore",
+				"libnativehelper",
+			},
+			{
+				"external/conscrypt",
+			},
+			{
+				"external/icu",
+			},
+			{
+				"packages/modules/AppSearch",
+			},
+			{
+				"packages/modules/Bluetooth",
+			},
+			{
+				"packages/modules/Connectivity",
+			},
+			{
+				"packages/modules/DnsResolver",
+			},
+			{
+				"packages/modules/ExtServices",
+			},
+			{
+				"packages/modules/IPsec",
+			},
+			{
+				"packages/modules/Media",
+				"frameworks/av/apex",
+			},
+			{
+				"packages/modules/Permission",
+			},
+			{
+				"packages/modules/RuntimeI18n",
+			},
+			{
+				"packages/modules/Scheduling",
+			},
+			{
+				"packages/modules/SdkExtensions",
+			},
+			{
+				"packages/modules/StatsD",
+			},
+			{
+				"packages/modules/Uwb",
+			},
+			{
+				"packages/modules/Wifi",
+			},
+		}
+	}
+
+	return android.NewNameResolver(exportFilter, protectedNamespaces)
 }
 
 func newContext(configuration android.Config) *android.Context {
 	ctx := android.NewContext(configuration)
 	ctx.Register()
-	ctx.SetNameInterface(newNameResolver(configuration))
+	resolver := newNameResolver(configuration)
+	ctx.SetNameInterface(resolver)
 	ctx.SetAllowMissingDependencies(configuration.AllowMissingDependencies())
 	return ctx
 }

@@ -35,7 +35,7 @@ func NewTestContext(config Config) *TestContext {
 		return true
 	}
 
-	nameResolver := NewNameResolver(namespaceExportFilter)
+	nameResolver := NewNameResolver(namespaceExportFilter, nil)
 	ctx := &TestContext{
 		Context:      &Context{blueprint.NewContext(), config},
 		NameResolver: nameResolver,
